@@ -1,0 +1,1340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DEEA16DD-80E1-4BA5-8127-03C0C4C1DF38}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>ingrid.My.MyApplication</StartupObject>
+    <RootNamespace>ingrid</RootNamespace>
+    <AssemblyName>Ingrid</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PrimaryVersionType>AssemblyVersionAttribute</PrimaryVersionType>
+    <UpdateAssemblyVersion>False</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
+    <AssemblyVersionSettings>
+    </AssemblyVersionSettings>
+    <AssemblyVersion>2.10.19361.0135</AssemblyVersion>
+    <ShouldCreateLogs>True</ShouldCreateLogs>
+    <AdvancedSettingsExpanded>True</AdvancedSettingsExpanded>
+    <UpdatePackageVersion>False</UpdatePackageVersion>
+    <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
+    <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
+    <AssemblyFileVersionSettings>
+    </AssemblyFileVersionSettings>
+    <AssemblyInfoVersionSettings>
+    </AssemblyInfoVersionSettings>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>\\lsb-pc-scm005\Shared Folder\000. INGRID SETUP\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <SupportUrl>https://cagakmelon.com</SupportUrl>
+    <ProductName>INGRID</ProductName>
+    <PublisherName>Cagak Melon</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.html</WebPage>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>955</ApplicationRevision>
+    <ApplicationVersion>2.10.19060.%2a</ApplicationVersion>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsUrl>\\lsb-pc-scm005\Shared Folder\000. INGRID SETUP\</BootstrapperComponentsUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Ingrid.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Ingrid.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DocumentationFile>Ingrid.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DocumentationFile>Ingrid.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>Ingrid.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\Rule Sets\MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>Ingrid.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\inggrid_icon-1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>31F96AE3DED8C27FF5F458CA58372AABA63E7095</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>QERP_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>Custom</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Base, Version=16.4460.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Windows, Version=16.4460.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.PdfViewer.Windows, Version=16.4460.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Base, Version=16.4460.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Windows, Version=16.4460.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=16.4460.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Tools.Base, Version=16.4460.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Tools.Windows, Version=16.4460.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DataVisualization.Design" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="010. Class\clsImageLibrary.vb" />
+    <Compile Include="010. Class\clsApplication.vb" />
+    <Compile Include="010. Class\WorkspaceClass.vb" />
+    <Compile Include="010. Class\Globals.vb" />
+    <Compile Include="020. Module\Globals.vb" />
+    <Compile Include="020. Module\Mode.vb" />
+    <Compile Include="030. Form\001. Mainframe\mainframe.Designer.vb">
+      <DependentUpon>mainframe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\001. Mainframe\mainframe.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\001. Mainframe\splash.Designer.vb">
+      <DependentUpon>splash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\001. Mainframe\splash.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\010. System\010. Login\LOGIN.Designer.vb">
+      <DependentUpon>LOGIN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\010. System\010. Login\LOGIN.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\010. System\020. Notification\NTFC.Designer.vb">
+      <DependentUpon>NTFC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\010. System\020. Notification\NTFC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\010. System\030. Connection Properties\CPDB.Designer.vb">
+      <DependentUpon>CPDB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\010. System\030. Connection Properties\CPDB.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\010. System\030. Connection Properties\frmConnectionProperties.Designer.vb">
+      <DependentUpon>frmConnectionProperties.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\010. System\030. Connection Properties\frmConnectionProperties.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MCTG - Material Catalog\MCTG_Editor.Designer.vb">
+      <DependentUpon>MCTG_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MCTG - Material Catalog\MCTG_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MMGR - Material Group\MMGR.Designer.vb">
+      <DependentUpon>MMGR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MMGR - Material Group\MMGR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MMGR - Material Group\MMGR_Editor.Designer.vb">
+      <DependentUpon>MMGR_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MMGR - Material Group\MMGR_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MMTY - Material Type\MMTY.Designer.vb">
+      <DependentUpon>MMTY.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MMTY - Material Type\MMTY.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MMTY - Material Type\MMTY_Editor.Designer.vb">
+      <DependentUpon>MMTY_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MMTY - Material Type\MMTY_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MMVT - Material Valuation\MMVT.Designer.vb">
+      <DependentUpon>MMVT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MMVT - Material Valuation\MMVT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MMVT - Material Valuation\MMVT_Editor.Designer.vb">
+      <DependentUpon>MMVT_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MMVT - Material Valuation\MMVT_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MOW - Material Ownership\MOW.Designer.vb">
+      <DependentUpon>MOW.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MOW - Material Ownership\MOW.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MOW - Material Ownership\MOW_Editor.Designer.vb">
+      <DependentUpon>MOW_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MOW - Material Ownership\MOW_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MVTP - Movement Type\MVTP.Designer.vb">
+      <DependentUpon>MVTP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MVTP - Movement Type\MVTP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MVTP - Movement Type\MVTP_Editor.Designer.vb">
+      <DependentUpon>MVTP_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MVTP - Movement Type\MVTP_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\PLNT - Plant List\PLNT_Editor.Designer.vb">
+      <DependentUpon>PLNT_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\PLNT - Plant List\PLNT_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\SLOC - Storage Location\SLOC_Editor.Designer.vb">
+      <DependentUpon>SLOC_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\SLOC - Storage Location\SLOC_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\UOM - Unit Of Measurement\UOM.Designer.vb">
+      <DependentUpon>UOM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\UOM - Unit Of Measurement\UOM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\UOM - Unit Of Measurement\UOM_Editor.Designer.vb">
+      <DependentUpon>UOM_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\UOM - Unit Of Measurement\UOM_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\03. Inventory\MMIT - Material Inventory Table\MMIT.Designer.vb">
+      <DependentUpon>MMIT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\03. Inventory\MMIT - Material Inventory Table\MMIT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\03. Inventory\MMIT - Material Inventory Table\MMIT_Editor.Designer.vb">
+      <DependentUpon>MMIT_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\03. Inventory\MMIT - Material Inventory Table\MMIT_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\03. Inventory\MMSI - Material Stock Info\MMSI.Designer.vb">
+      <DependentUpon>MMSI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\03. Inventory\MMSI - Material Stock Info\MMSI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\03. Inventory\MMSI - Material Stock Info\MMSI_Editor.Designer.vb">
+      <DependentUpon>MMSI_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\03. Inventory\MMSI - Material Stock Info\MMSI_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\Additionals\MVT - Movement Type\MVT.Designer.vb">
+      <DependentUpon>MVT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\Additionals\MVT - Movement Type\MVT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\Additionals\MVT - Movement Type\MVT_Editor.Designer.vb">
+      <DependentUpon>MVT_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\Additionals\MVT - Movement Type\MVT_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\Additionals\STG - Direction List\STG.Designer.vb">
+      <DependentUpon>STG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\Additionals\STG - Direction List\STG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\Additionals\STG - Direction List\STG_Editor.Designer.vb">
+      <DependentUpon>STG_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\Additionals\STG - Direction List\STG_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\DE001 - Logistics Data Entry\DE001.Designer.vb">
+      <DependentUpon>DE001.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\DE001 - Logistics Data Entry\DE001.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\DE001 - Logistics Data Entry\DE001_Editor.Designer.vb">
+      <DependentUpon>DE001_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\DE001 - Logistics Data Entry\DE001_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\Tools\SYN01 - Import\SYN01.Designer.vb">
+      <DependentUpon>SYN01.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\Tools\SYN01 - Import\SYN01.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\Tools\SYN01 - Import\SYN01_Editor.Designer.vb">
+      <DependentUpon>SYN01_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\04. Transaction\Tools\SYN01 - Import\SYN01_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\003. Accounting\01. Dashboard\frmACDashboard.Designer.vb">
+      <DependentUpon>frmACDashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\003. Accounting\01. Dashboard\frmACDashboard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\003. Accounting\02. Master\ACBK - Accounting Book\ACBK.Designer.vb">
+      <DependentUpon>ACBK.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\003. Accounting\02. Master\ACBK - Accounting Book\ACBK.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\003. Accounting\02. Master\ACBK - Accounting Book\ACBK_Editor.Designer.vb">
+      <DependentUpon>ACBK_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\003. Accounting\02. Master\ACBK - Accounting Book\ACBK_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\003. Accounting\02. Master\ACGR - Account Group\ACGR.Designer.vb">
+      <DependentUpon>ACGR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\003. Accounting\02. Master\ACGR - Account Group\ACGR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\003. Accounting\02. Master\ACGR - Account Group\ACGR_Editor.Designer.vb">
+      <DependentUpon>ACGR_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\003. Accounting\02. Master\ACGR - Account Group\ACGR_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\CCIN - Companies\CCIN_Editor.Designer.vb">
+      <DependentUpon>CCIN_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\CCIN - Companies\CCIN_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\CDIN - Departements\CDIN_Editor.Designer.vb">
+      <DependentUpon>CDIN_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\CDIN - Departements\CDIN_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\Addins\EPLS_Position.Designer.vb">
+      <DependentUpon>EPLS_Position.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\Addins\EPLS_Position.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\EPLS_Editor.Designer.vb">
+      <DependentUpon>EPLS_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\EPLS_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\POST - Positions\POST.Designer.vb">
+      <DependentUpon>POST.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\POST - Positions\POST.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\POST - Positions\POST_Editor.Designer.vb">
+      <DependentUpon>POST_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\POST - Positions\POST_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Addins\DAR_SinglePDFViewer.Designer.vb">
+      <DependentUpon>DAR_SinglePDFViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Addins\DAR_SinglePDFViewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Addins\DAR_SinglePhotoViewer.Designer.vb">
+      <DependentUpon>DAR_SinglePhotoViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Addins\DAR_SinglePhotoViewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\CCIN - Companies\CCIN.Designer.vb">
+      <DependentUpon>CCIN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\CCIN - Companies\CCIN.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\CDIN - Departements\CDIN.Designer.vb">
+      <DependentUpon>CDIN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\CDIN - Departements\CDIN.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\EPLS.Designer.vb">
+      <DependentUpon>EPLS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\EPLS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MCTG - Material Catalog\MCTG.Designer.vb">
+      <DependentUpon>MCTG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\MCTG - Material Catalog\MCTG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\DAR.Designer.vb">
+      <DependentUpon>DAR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\DAR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\DAR_Editor.Designer.vb">
+      <DependentUpon>DAR_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\DAR_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RPTFilter.Designer.vb">
+      <DependentUpon>DAR_RPTFilter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RPTFilter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RPTContainer.Designer.vb">
+      <DependentUpon>DAR_RPTContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RPTContainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DAR_RDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.vb">
+      <DependentUpon>DAR_RDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DARD - DAR Dashboard\DARD.Designer.vb">
+      <DependentUpon>DARD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DARD - DAR Dashboard\DARD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DRAA - DAR Area List\DRAA.Designer.vb">
+      <DependentUpon>DRAA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DRAA - DAR Area List\DRAA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DRAA - DAR Area List\DRAA_Editor.Designer.vb">
+      <DependentUpon>DRAA_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DRAA - DAR Area List\DRAA_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DRTM - DAR Templates\DRTM.Designer.vb">
+      <DependentUpon>DRTM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DRTM - DAR Templates\DRTM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DRTM - DAR Templates\DRTM_Editor.Designer.vb">
+      <DependentUpon>DRTM_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Activity Reports\DRTM - DAR Templates\DRTM_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Archives\PEPR - Archived Custom Documents\PEPR.Designer.vb">
+      <DependentUpon>PEPR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Archives\PEPR - Archived Custom Documents\PEPR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Archives\PEPR - Archived Custom Documents\PEPR_Editor.Designer.vb">
+      <DependentUpon>PEPR_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\Archives\PEPR - Archived Custom Documents\PEPR_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS.Designer.vb">
+      <DependentUpon>REMS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS_Editor.Designer.vb">
+      <DependentUpon>REMS_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS_Editor_Progress.Designer.vb">
+      <DependentUpon>REMS_Editor_Progress.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS_Editor_Progress.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS_Editor_Switch.Designer.vb">
+      <DependentUpon>REMS_Editor_Switch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS_Editor_Switch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\100. Application\MODS - Application Modules\MODS.Designer.vb">
+      <DependentUpon>MODS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\100. Application\MODS - Application Modules\MODS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\100. Application\MODS - Application Modules\MODS_Editor.Designer.vb">
+      <DependentUpon>MODS_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\100. Application\MODS - Application Modules\MODS_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\100. Application\MOGS - Modules Group\MOGS.Designer.vb">
+      <DependentUpon>MOGS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\100. Application\MOGS - Modules Group\MOGS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\100. Application\SYSS - System Settings\SYSS.Designer.vb">
+      <DependentUpon>SYSS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\100. Application\SYSS - System Settings\SYSS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\100. Application\TXL - Templete List\TXL.Designer.vb">
+      <DependentUpon>TXL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\100. Application\TXL - Templete List\TXL.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\100. Application\TXL - Templete List\TXL_Editor.Designer.vb">
+      <DependentUpon>TXL_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\100. Application\TXL - Templete List\TXL_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\995. Etc\Dummy\Dummy.Designer.vb">
+      <DependentUpon>Dummy.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\995. Etc\Dummy\Dummy.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\995. Etc\Dummy\Dummy_Editor.Designer.vb">
+      <DependentUpon>Dummy_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\995. Etc\Dummy\Dummy_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\Addins\UAC_Employee.Designer.vb">
+      <DependentUpon>UAC_Employee.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\Addins\UAC_Employee.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\UAC.Designer.vb">
+      <DependentUpon>UAC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\UAC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\UAC_Editor.Designer.vb">
+      <DependentUpon>UAC_Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\UAC_Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\995. Etc\Dummy\dummy_mainframe.Designer.vb">
+      <DependentUpon>dummy_mainframe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\995. Etc\Dummy\dummy_mainframe.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\030. Tools\010. Import Data\clsImport.vb" />
+    <Compile Include="030. Form\030. Tools\010. Import Data\frmImports.Designer.vb">
+      <DependentUpon>frmImports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\030. Tools\010. Import Data\frmImports.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\PLNT - Plant List\PLNT.Designer.vb">
+      <DependentUpon>PLNT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\PLNT - Plant List\PLNT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\SLOC - Storage Location\SLOC.Designer.vb">
+      <DependentUpon>SLOC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\001. Logistics\02. Master\SLOC - Storage Location\SLOC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\005. Procurement\02. Master\VDLS - Vendor List\VDLS.Designer.vb">
+      <DependentUpon>VDLS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\020. Commands\005. Procurement\02. Master\VDLS - Vendor List\VDLS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\030. Tools\100. Communications\001. SAY - Chat Room\SAY.Designer.vb">
+      <DependentUpon>SAY.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\030. Tools\100. Communications\001. SAY - Chat Room\SAY.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="030. Form\030. Tools\999. Tutorial\frmFistGuide.Designer.vb">
+      <DependentUpon>frmFistGuide.vb</DependentUpon>
+    </Compile>
+    <Compile Include="030. Form\030. Tools\999. Tutorial\frmFistGuide.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="040. Features\App\clsAppStartup.vb" />
+    <Compile Include="902. Settings\General.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>General.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Settings.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="030. Form\001. Mainframe\mainframe.resx">
+      <DependentUpon>mainframe.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\001. Mainframe\splash.resx">
+      <DependentUpon>splash.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\010. System\010. Login\LOGIN.resx">
+      <DependentUpon>LOGIN.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\010. System\020. Notification\NTFC.resx">
+      <DependentUpon>NTFC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\010. System\030. Connection Properties\CPDB.resx">
+      <DependentUpon>CPDB.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\010. System\030. Connection Properties\frmConnectionProperties.resx">
+      <DependentUpon>frmConnectionProperties.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\02. Master\MCTG - Material Catalog\MCTG_Editor.resx">
+      <DependentUpon>MCTG_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\02. Master\MMGR - Material Group\MMGR.resx">
+      <DependentUpon>MMGR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\02. Master\MMTY - Material Type\MMTY.resx">
+      <DependentUpon>MMTY.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\02. Master\MMVT - Material Valuation\MMVT.resx">
+      <DependentUpon>MMVT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\02. Master\MOW - Material Ownership\MOW.resx">
+      <DependentUpon>MOW.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\02. Master\MVTP - Movement Type\MVTP.resx">
+      <DependentUpon>MVTP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\02. Master\PLNT - Plant List\PLNT_Editor.resx">
+      <DependentUpon>PLNT_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\02. Master\UOM - Unit Of Measurement\UOM.resx">
+      <DependentUpon>UOM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\03. Inventory\MMIT - Material Inventory Table\MMIT.resx">
+      <DependentUpon>MMIT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\03. Inventory\MMSI - Material Stock Info\MMSI.resx">
+      <DependentUpon>MMSI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\04. Transaction\Additionals\MVT - Movement Type\MVT.resx">
+      <DependentUpon>MVT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\04. Transaction\Additionals\STG - Direction List\STG.resx">
+      <DependentUpon>STG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\04. Transaction\DE001 - Logistics Data Entry\DE001.resx">
+      <DependentUpon>DE001.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\04. Transaction\DE001 - Logistics Data Entry\DE001_Editor.resx">
+      <DependentUpon>DE001_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\04. Transaction\Tools\SYN01 - Import\SYN01.resx">
+      <DependentUpon>SYN01.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\003. Accounting\01. Dashboard\frmACDashboard.resx">
+      <DependentUpon>frmACDashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\003. Accounting\02. Master\ACBK - Accounting Book\ACBK.resx">
+      <DependentUpon>ACBK.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\003. Accounting\02. Master\ACBK - Accounting Book\ACBK_Editor.resx">
+      <DependentUpon>ACBK_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\003. Accounting\02. Master\ACGR - Account Group\ACGR.resx">
+      <DependentUpon>ACGR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\003. Accounting\02. Master\ACGR - Account Group\ACGR_Editor.resx">
+      <DependentUpon>ACGR_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\004. Management\02. Master\CCIN - Companies\CCIN_Editor.resx">
+      <DependentUpon>CCIN_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\004. Management\02. Master\CDIN - Departements\CDIN_Editor.resx">
+      <DependentUpon>CDIN_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\Addins\EPLS_Position.resx">
+      <DependentUpon>EPLS_Position.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\EPLS.resx">
+      <DependentUpon>EPLS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\EPLS_Editor.resx">
+      <DependentUpon>EPLS_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\004. Management\02. Master\POST - Positions\POST.resx">
+      <DependentUpon>POST.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\004. Management\02. Master\POST - Positions\POST_Editor.resx">
+      <DependentUpon>POST_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Addins\DAR_SinglePDFViewer.resx">
+      <DependentUpon>DAR_SinglePDFViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Addins\DAR_SinglePhotoViewer.resx">
+      <DependentUpon>DAR_SinglePhotoViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\004. Management\02. Master\CCIN - Companies\CCIN.resx">
+      <DependentUpon>CCIN.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\004. Management\02. Master\CDIN - Departements\CDIN.resx">
+      <DependentUpon>CDIN.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\02. Master\MCTG - Material Catalog\MCTG.resx">
+      <DependentUpon>MCTG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\DAR.resx">
+      <DependentUpon>DAR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\DAR_Editor.resx">
+      <DependentUpon>DAR_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RPTFilter.resx">
+      <DependentUpon>DAR_RPTFilter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RPTContainer.resx">
+      <DependentUpon>DAR_RPTContainer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RContent.rdlc" />
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Activity Reports\DARD - DAR Dashboard\DARD.resx">
+      <DependentUpon>DARD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Activity Reports\DRAA - DAR Area List\DRAA.resx">
+      <DependentUpon>DRAA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Activity Reports\DRTM - DAR Templates\DRTM.resx">
+      <DependentUpon>DRTM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Archives\PEPR - Archived Custom Documents\PEPR.resx">
+      <DependentUpon>PEPR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Archives\PEPR - Archived Custom Documents\PEPR_Editor.resx">
+      <DependentUpon>PEPR_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS.resx">
+      <DependentUpon>REMS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS_Editor.resx">
+      <DependentUpon>REMS_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS_Editor_Progress.resx">
+      <DependentUpon>REMS_Editor_Progress.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS_Editor_Switch.resx">
+      <DependentUpon>REMS_Editor_Switch.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\800. System Settings\100. Application\MODS - Application Modules\MODS.resx">
+      <DependentUpon>MODS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\800. System Settings\100. Application\MODS - Application Modules\MODS_Editor.resx">
+      <DependentUpon>MODS_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\800. System Settings\100. Application\MOGS - Modules Group\MOGS.resx">
+      <DependentUpon>MOGS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\800. System Settings\100. Application\SYSS - System Settings\SYSS.resx">
+      <DependentUpon>SYSS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\800. System Settings\100. Application\TXL - Templete List\TXL_Editor.resx">
+      <DependentUpon>TXL_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\995. Etc\Dummy\Dummy.resx">
+      <DependentUpon>Dummy.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\995. Etc\Dummy\Dummy_Editor.resx">
+      <DependentUpon>Dummy_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\Addins\UAC_Employee.resx">
+      <DependentUpon>UAC_Employee.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\UAC.resx">
+      <DependentUpon>UAC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\UAC_Editor.resx">
+      <DependentUpon>UAC_Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\995. Etc\Dummy\dummy_mainframe.resx">
+      <DependentUpon>dummy_mainframe.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\030. Tools\010. Import Data\frmImports.resx">
+      <DependentUpon>frmImports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\02. Master\PLNT - Plant List\PLNT.resx">
+      <DependentUpon>PLNT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\001. Logistics\02. Master\SLOC - Storage Location\SLOC.resx">
+      <DependentUpon>SLOC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\020. Commands\005. Procurement\02. Master\VDLS - Vendor List\VDLS.resx">
+      <DependentUpon>VDLS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\030. Tools\100. Communications\001. SAY - Chat Room\SAY.resx">
+      <DependentUpon>SAY.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="030. Form\030. Tools\999. Tutorial\frmFistGuide.resx">
+      <DependentUpon>frmFistGuide.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="licenses.licx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="000. Programmer%27s Guide\All-In-One Code Framework Coding Standards.docx" />
+    <None Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.xsc">
+      <DependentUpon>DAR_RDS.xsd</DependentUpon>
+    </None>
+    <None Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DAR_RDS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.xss">
+      <DependentUpon>DAR_RDS.xsd</DependentUpon>
+    </None>
+    <None Include="902. Settings\General.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>General.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="app.config" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\mainframe_ms_start_Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\mainframe_ms_start_Logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\mainframe_ms_start_Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="030. Form\010. System\090. Password Generator\" />
+    <Folder Include="030. Form\020. Commands\001. Logistics\01. Dashboard\" />
+    <Folder Include="030. Form\020. Commands\001. Logistics\04. Transaction\DE001 - Logistics Data Entry\Addins\" />
+    <Folder Include="030. Form\020. Commands\002. Administration\01. Documents\" />
+    <Folder Include="030. Form\020. Commands\003. Accounting\03. Transaction\ACTP - Transaction Posting\" />
+    <Folder Include="030. Form\020. Commands\006. Transportation\01. Dashboard\" />
+    <Folder Include="030. Form\020. Commands\006. Transportation\02. Master\VHCL - Vehicle List\" />
+    <Folder Include="030. Form\020. Commands\006. Transportation\02. Master\VHCT - Vehicle Type\" />
+    <Folder Include="030. Form\020. Commands\100. Personal Folder\PINF - Personal Information\" />
+    <Folder Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\Addins\" />
+    <Folder Include="030. Form\020. Commands\750. Custom\To Do List\REMC - To Do List Categories\" />
+    <Folder Include="030. Form\020. Commands\800. System Settings\100. Application\MODS - Application Modules\Addins\" />
+    <Folder Include="030. Form\020. Commands\800. System Settings\900. Files\" />
+    <Folder Include="030. Form\020. Commands\990. Tools\" />
+    <Folder Include="030. Form\030. Tools\000. Console\" />
+    <Folder Include="090. Services\" />
+    <Folder Include="901. Resource\Database\" />
+    <Folder Include="901. Resource\Images\" />
+    <Folder Include="Setup Ingrid Package\" />
+    <Folder Include="x64\" />
+    <Folder Include="x86\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\mainframe_ms_master_cabinet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.ReportViewer.12.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Report Viewer 2014 Runtime</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SqlLocalDB.11.1">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2012 Express LocalDB</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SQLSysClrTypes.12.0.x86">
+      <Visible>False</Visible>
+      <ProductName>Microsoft® System CLR Types for SQL Server® 2014 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Visual.C++.14.0.x64">
+      <Visible>False</Visible>
+      <ProductName>Visual C++ "14" Runtime Libraries %28x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Visual.C++.14.0.x86">
+      <Visible>False</Visible>
+      <ProductName>Visual C++ "14" Runtime Libraries %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Plant_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Departement_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Employee_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Error_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Login_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Logout_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\TextEditor_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Plant_002_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Storage_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Catalogue_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Exports_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Imports_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="QeLogo16Red.ico" />
+    <None Include="packages.config" />
+    <EmbeddedResource Include="Resources\Error_002_90_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\Question_001_90_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\AccountGroup_001_90_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\Information_001_90_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\Alert_001_90_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\AccountingBook_001_90_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\Error_002_90_FFFFFFFF.png" />
+    <EmbeddedResource Include="Resources\Question_001_90_FFFFFFFF.png" />
+    <EmbeddedResource Include="Resources\AccountGroup_001_90_FFFFFFFF.png" />
+    <EmbeddedResource Include="Resources\Information_001_90_FFFFFFFF.png" />
+    <EmbeddedResource Include="Resources\Alert_001_90_FFFFFFFF.png" />
+    <EmbeddedResource Include="Resources\AccountingBook_001_90_FFFFFFFF.png" />
+    <EmbeddedResource Include="Resources\DailyActivity_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Microsoft.ReportViewer.Common">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.DataVisualization">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Resources\CATALOG.mdf">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Resources\catalog_log.ldf">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Resources\DEV_CATALOG.mdf">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Resources\dev_catalog_log.ldf">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Resources\ERRLOG.mdf">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Resources\errlog_log.ldf">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\DAR_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\CALENDAR_001_512_icon.png" />
+    <Content Include="Resources\CATALOG.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\catalog_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Resources\COMPRESS_001_512_icon_.png" />
+    <EmbeddedResource Include="Resources\Connected.ico" />
+    <EmbeddedResource Include="Resources\CONN_.png" />
+    <Content Include="Resources\DEV_CATALOG.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\dev_catalog_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ERRLOG.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\errlog_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Resources\SETTINGS_001_512_icon.png" />
+    <None Include="bin\x86\Debug\Resources\ERRLOG_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="bin\x86\Debug\Resources\DEV_CATALOG_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="bin\x86\Debug\Resources\CATALOG_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Include="Resources\TIMELINE_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\PRINTER_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\DAR_003_512_icon.png" />
+    <EmbeddedResource Include="Resources\SEARCH_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\DUMMY_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\ACBK_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\ACGR_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\DAR_002_512_icon.png" />
+    <EmbeddedResource Include="Resources\CCIN_002_512_icon.png" />
+    <EmbeddedResource Include="Resources\CDIN_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\GO_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\FEMALE_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\MALE_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\EPLS_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\CCIN_001_512_icon.png" />
+    <None Include="Resources\POST_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\EDIT_002_512_icon .png" />
+    <EmbeddedResource Include="Resources\PCTPRV_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\PDFPRV_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\UAC_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\MODS_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\LOGIN_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\DAR_001_512_icon.png" />
+    <EmbeddedResource Include="Resources\inggrid_icon-1.ico" />
+    <EmbeddedResource Include="Resources\Notification_001_16_FFF00000_.png" />
+    <EmbeddedResource Include="Resources\Notification_001_90_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\Notification_001_16_FFFFF000_.png" />
+    <EmbeddedResource Include="Resources\Like_002_16_#FFFC0000_.png" />
+    <EmbeddedResource Include="Resources\Like_001_16_#FFFC0000_.png" />
+    <EmbeddedResource Include="Resources\SaveAs_001_16_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\Copy_001_16_FFFFFFFF_.png" />
+    <None Include="Resources\Peek_001_90_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\Peek_001_16_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\Photo_001_90_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\Plus_001_16_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\Bullets_001_16_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\In-Grid.png" />
+    <EmbeddedResource Include="Resources\StartUp.jpg" />
+    <EmbeddedResource Include="Resources\Application_001_90_FFFFFFFF_.png" />
+    <EmbeddedResource Include="Resources\UAC_001_90_FFFFFFFF_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\CMC\CMC\CMCv\CMCv.vbproj">
+      <Project>{b4cb63b0-c6a8-415b-9d99-c212bedfa4a1}</Project>
+      <Name>CMCv</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Connect\Apps\Connect\Connect\Connect.vbproj">
+      <Project>{76294f28-a17d-486b-879f-a066e405f963}</Project>
+      <Name>Connect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Components\LibSQL\LibSQL.vbproj">
+      <Project>{9a25dfd1-063a-4d34-a7f1-6b9fc68e257a}</Project>
+      <Name>LibSQL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

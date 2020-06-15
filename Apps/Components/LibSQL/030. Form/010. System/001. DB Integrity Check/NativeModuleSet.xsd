@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NativeModuleSet" targetNamespace="http://tempuri.org/NativeModuleSet.xsd" xmlns:mstns="http://tempuri.org/NativeModuleSet.xsd" xmlns="http://tempuri.org/NativeModuleSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="NativeModuleSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="NativeModuleSet" msprop:Generator_UserDSName="NativeModuleSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="module" msprop:Generator_TableClassName="moduleDataTable" msprop:Generator_TableVarName="tablemodule" msprop:Generator_TablePropName="_module" msprop:Generator_RowDeletingName="moduleRowDeleting" msprop:Generator_RowChangingName="moduleRowChanging" msprop:Generator_RowEvHandlerName="moduleRowChangeEventHandler" msprop:Generator_RowDeletedName="moduleRowDeleted" msprop:Generator_UserTableName="module" msprop:Generator_RowChangedName="moduleRowChanged" msprop:Generator_RowEvArgName="moduleRowChangeEvent" msprop:Generator_RowClassName="moduleRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="module_id" msprop:Generator_ColumnVarNameInTable="columnmodule_id" msprop:Generator_ColumnPropNameInRow="module_id" msprop:Generator_ColumnPropNameInTable="module_idColumn" msprop:Generator_UserColumnName="module_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="module_modulegroup" msprop:Generator_ColumnVarNameInTable="columnmodule_modulegroup" msprop:Generator_ColumnPropNameInRow="module_modulegroup" msprop:Generator_ColumnPropNameInTable="module_modulegroupColumn" msprop:Generator_UserColumnName="module_modulegroup" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="module_code" msprop:Generator_ColumnVarNameInTable="columnmodule_code" msprop:Generator_ColumnPropNameInRow="module_code" msprop:Generator_ColumnPropNameInTable="module_codeColumn" msprop:Generator_UserColumnName="module_code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="module_name" msprop:Generator_ColumnVarNameInTable="columnmodule_name" msprop:Generator_ColumnPropNameInRow="module_name" msprop:Generator_ColumnPropNameInTable="module_nameColumn" msprop:Generator_UserColumnName="module_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="module_description" msprop:Generator_ColumnVarNameInTable="columnmodule_description" msprop:Generator_ColumnPropNameInRow="module_description" msprop:Generator_ColumnPropNameInTable="module_descriptionColumn" msprop:Generator_UserColumnName="module_description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="module_appminimumver" msprop:Generator_ColumnVarNameInTable="columnmodule_appminimumver" msprop:Generator_ColumnPropNameInRow="module_appminimumver" msprop:Generator_ColumnPropNameInTable="module_appminimumverColumn" msprop:Generator_UserColumnName="module_appminimumver" type="xs:string" minOccurs="0" />
+              <xs:element name="module_ismaintenance" msprop:Generator_ColumnVarNameInTable="columnmodule_ismaintenance" msprop:Generator_ColumnPropNameInRow="module_ismaintenance" msprop:Generator_ColumnPropNameInTable="module_ismaintenanceColumn" msprop:Generator_UserColumnName="module_ismaintenance" type="xs:boolean" minOccurs="0" />
+              <xs:element name="module_issystem" msprop:Generator_ColumnVarNameInTable="columnmodule_issystem" msprop:Generator_ColumnPropNameInRow="module_issystem" msprop:Generator_ColumnPropNameInTable="module_issystemColumn" msprop:Generator_UserColumnName="module_issystem" type="xs:string" minOccurs="0" />
+              <xs:element name="module_lockafter" msprop:Generator_ColumnVarNameInTable="columnmodule_lockafter" msprop:Generator_ColumnPropNameInRow="module_lockafter" msprop:Generator_ColumnPropNameInTable="module_lockafterColumn" msprop:Generator_UserColumnName="module_lockafter" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

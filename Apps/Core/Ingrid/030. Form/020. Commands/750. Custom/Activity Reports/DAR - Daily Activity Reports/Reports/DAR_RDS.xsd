@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DAR_RDS" targetNamespace="http://tempuri.org/DAR_RDS.xsd" xmlns:mstns="http://tempuri.org/DAR_RDS.xsd" xmlns="http://tempuri.org/DAR_RDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DAR_RDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DAR_RDS" msprop:Generator_UserDSName="DAR_RDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="employeeactivity" msprop:Generator_TableClassName="employeeactivityDataTable" msprop:Generator_TableVarName="tableemployeeactivity" msprop:Generator_RowChangedName="employeeactivityRowChanged" msprop:Generator_TablePropName="employeeactivity" msprop:Generator_RowDeletingName="employeeactivityRowDeleting" msprop:Generator_RowChangingName="employeeactivityRowChanging" msprop:Generator_RowEvHandlerName="employeeactivityRowChangeEventHandler" msprop:Generator_RowDeletedName="employeeactivityRowDeleted" msprop:Generator_RowClassName="employeeactivityRow" msprop:Generator_UserTableName="employeeactivity" msprop:Generator_RowEvArgName="employeeactivityRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="areaaffected_name" msprop:Generator_ColumnVarNameInTable="columnareaaffected_name" msprop:Generator_ColumnPropNameInRow="areaaffected_name" msprop:Generator_ColumnPropNameInTable="areaaffected_nameColumn" msprop:Generator_UserColumnName="areaaffected_name" type="xs:string" minOccurs="0" />
+              <xs:element name="employeeactivity_time" msprop:Generator_ColumnVarNameInTable="columnemployeeactivity_time" msprop:Generator_ColumnPropNameInRow="employeeactivity_time" msprop:Generator_ColumnPropNameInTable="employeeactivity_timeColumn" msprop:Generator_UserColumnName="employeeactivity_time" type="xs:string" minOccurs="0" />
+              <xs:element name="employeeactivity_description" msprop:Generator_ColumnVarNameInTable="columnemployeeactivity_description" msprop:Generator_ColumnPropNameInRow="employeeactivity_description" msprop:Generator_ColumnPropNameInTable="employeeactivity_descriptionColumn" msprop:Generator_UserColumnName="employeeactivity_description" type="xs:string" minOccurs="0" />
+              <xs:element name="employee_nickname" msprop:Generator_ColumnVarNameInTable="columnemployee_nickname" msprop:Generator_ColumnPropNameInRow="employee_nickname" msprop:Generator_ColumnPropNameInTable="employee_nicknameColumn" msprop:Generator_UserColumnName="employee_nickname" type="xs:string" minOccurs="0" />
+              <xs:element name="arehaaffected_order" msprop:Generator_ColumnVarNameInTable="columnarehaaffected_order" msprop:Generator_ColumnPropNameInRow="arehaaffected_order" msprop:Generator_ColumnPropNameInTable="arehaaffected_orderColumn" msprop:Generator_UserColumnName="arehaaffected_order" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
