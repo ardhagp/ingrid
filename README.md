@@ -11,7 +11,7 @@ Kebutuhan minimum sistem yang digunakanan untuk mengembangkan project ini adalah
 
 # Dependensi
 Project ini membutuhkan komponen sebagai berikut :
-1.  Syncfusion Community License ([https://www.syncfusion.com/products/communitylicense](https://www.syncfusion.com/products/communitylicense))
+1.  Syncfusion Community License ([https://www.syncfusion.com/products/communitylicense](https://www.syncfusion.com/products/communitylicense), [Mirror](https://mega.nz/file/Lh5Q2Y7A#z3D4lLgGbm_hvLU2sgMhZvh2xbiuZz_SX0htEP-20EQ))
 2.  Syncfusion - WindowsForm (16.4.0.52) ([https://www.syncfusion.com/account/downloads/studio/licensed/16_4_0_52](https://www.syncfusion.com/account/downloads/studio/licensed/16_4_0_52))
 3.  Syncfusion - FileFormat (16.4.0.52) ([https://www.syncfusion.com/account/downloads/studio/licensed/16_4_0_52](https://www.syncfusion.com/account/downloads/studio/licensed/16_4_0_52))
 4.  Microsoft Chart Control (_Nuget Package Included_)
