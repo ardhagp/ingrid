@@ -1,4 +1,4 @@
-![Welcome To My Project]($/Ingrid/Apps/Core/Ingrid/901. Resource/Images/Header.png)
+![Welcome To My Project](https://res.cloudinary.com/cagakmelon/image/upload/v1592285857/globals/assets/img/tfso/ingrid_header.png)
 
 #   <span style="color:orange">Introduction</span>
 QERP / Project Agatha / INGRID adalah sebuah aplikasi dengan berbagai macam fungsi, semacam ERP dengan flow yang lebih
