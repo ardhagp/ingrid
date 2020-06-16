@@ -1,73 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="16.3" version="16.4.1" Modules="express" RootPath="." Language="en" Id="{4EE73C59-126D-4151-86B9-A5580ACDEDE4}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="16.3" version="16.9" Modules="express" RootPath="." Language="en" Id="{4EE73C59-126D-4151-86B9-A5580ACDEDE4}">
   <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
-    <ROW Name="HiddenItems" Value="UpdaterComponent;SerValComponent;AutorunComponent;MultipleInstancesComponent;AppXProductDetailsComponent;AppXDependenciesComponent;AppXAppDetailsComponent;FixupComponent;AppXVisualAssetsComponent;AppXCapabilitiesComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;MsiJavaComponent;MsiDriverPackagesComponent;SccmComponent;ActSyncAppComponent;PreReqComponent;MsiThemeComponent;BackgroundImagesComponent;DictionaryComponent;MsiEnvComponent;ScheduledTasksComponent;CPLAppletComponent;GameUxComponent;FirewallExceptionComponent;UserAccountsComponent;MsiClassComponent;WebApplicationsComponent;MsiOdbcDataSrcComponent;SqlConnectionComponent;SharePointSlnComponent;SilverlightSlnComponent;MsiAppSearchComponent;MsiInstExSeqComponent;MsiDirectEditorComponent"/>
     <ROW Name="LowMsmCompatibility" Value="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
     <ROW Property="AI_PREDEF_LCONDS_PROPS" Value="AI_DETECTED_DOTNET_VERSION;AI_DETECTED_PHYSICAL_MEMORY"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_CMCv.dll" Value="..\..\..\..\..\CMC\CMC\CMCv\bin\x86\Debug"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Connect.exe" Value="..\..\..\..\..\Connect\Apps\Connect\Connect\bin\x86\Debug"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Ingrid.exe" Value="..\..\..\Core\Ingrid\bin\x86\Debug"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Ingrid.exe.config" Value="..\..\..\Core\Ingrid\bin\x86\Debug"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_LibSQL.dll" Value="..\..\..\Components\LibSQL\bin\x86\Debug"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MetroFramework.Design.dll" Value="..\..\..\Core\Ingrid\packages\MetroModernUI.1.4.0.0\lib\net"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MetroFramework.Fonts.dll" Value="..\..\..\Core\Ingrid\packages\MetroModernUI.1.4.0.0\lib\net"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MetroFramework.dll" Value="..\..\..\Core\Ingrid\bin\x86\Debug"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MetroFramework.dll_4" Value="..\..\..\Core\Ingrid\packages\MetroModernUI.1.4.0.0\lib\net" MultiBuildValue="DefaultBuild:..\..\..\..\..\Connect\Apps\Connect\Connect\bin\x86\Debug"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.ReportViewer.Common.dll" Value="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.ReportViewer.Common\12.0.0.0__89845dcd8080cc91"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.ReportViewer.WinForms.dll" Value="C:\Program Files (x86)\Microsoft Visual Studio 14.0\ReportViewer"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.VisualBasic.PowerPacks.dll" Value="c:\Program Files (x86)\Microsoft Visual Basic 2005 Power Packs\3.0"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.Grid.Base.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\16.4.0.52\Assemblies\4.6"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.Grid.Windows.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\16.4.0.52\Assemblies\4.6"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.Pdf.Base.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\16.4.0.52\Assemblies\4.6"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.PdfViewer.Windows.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\16.4.0.52\Assemblies\4.6"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.Shared.Base.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\16.4.0.52\Assemblies\4.6"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.Shared.Windows.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\16.4.0.52\Assemblies\4.6"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.SpellChecker.Base.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\16.4.0.52\Assemblies\4.6"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.Tools.Base.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\16.4.0.52\Assemblies\4.6"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.Tools.Windows.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\16.4.0.52\Assemblies\4.6"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Web.DataVisualization.Design.dll" Value="..\..\..\Core\Ingrid\packages\Microsoft.Chart.Controls.4.7.2046\lib\net35"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Web.DataVisualization.dll" Value="..\..\..\Core\Ingrid\packages\Microsoft.Chart.Controls.4.7.2046\lib\net35"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Windows.Forms.DataVisualization.Design.dll" Value="..\..\..\Core\Ingrid\packages\Microsoft.Chart.Controls.4.7.2046\lib\net35"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Windows.Forms.DataVisualization.dll" Value="..\..\..\Core\Ingrid\packages\Microsoft.Chart.Controls.4.7.2046\lib\net35"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_TXDocumentServer.Windows.Forms.Design.dll" Value="C:\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\assembly"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_TXTextControl.Server.dll" Value="C:\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\assembly"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_TXTextControl.Windows.Forms.Design.dll" Value="C:\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\assembly"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_TXTextControl.Windows.Forms.dll" Value="C:\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\assembly"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_TXTextControl.dll" Value="C:\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\assembly"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_CMCv.dll" Value="..\..\..\..\..\CMC\CMC\CMCv\bin\x86\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Connect.exe" Value="..\..\..\..\..\Connect\Apps\Connect\Connect\bin\x86\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Ingrid.exe" Value="..\..\..\Core\Ingrid\bin\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Ingrid.exe.config" Value="..\..\..\Core\Ingrid\bin\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_LibSQL.dll" Value="..\..\..\Components\LibSQL\bin\x86\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MetroFramework.dll" Value="..\..\..\Core\Ingrid\packages\EntityFramework.6.4.4\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MetroFramework.dll_4" Value="..\..\..\..\..\CMC\CMC\CMCv\bin\x86\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.ReportViewer.WinForms.dll" Value="..\..\..\Core\Ingrid\packages\EntityFramework.6.4.4\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.Grid.Base.dll" Value="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\PublicAssemblies"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.Grid.Windows.dll" Value="C:\Program Files (x86)\Microsoft SQL Server\120\SDK\Assemblies"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.Pdf.Base.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\FileFormats\16.4.0.52\Assemblies\4.6"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.PdfViewer.Windows.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\FileFormats\16.4.0.52\Assemblies\4.6"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.Shared.Base.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\FileFormats\16.4.0.52\Assemblies\4.6"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.Shared.Windows.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\FileFormats\16.4.0.52\Assemblies\4.6"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.SpellChecker.Base.dll" Value="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\PublicAssemblies"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syncfusion.Tools.Windows.dll" Value="C:\Program Files (x86)\Syncfusion\Essential Studio\FileFormats\16.4.0.52\Assemblies\4.6"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_TXDrawing.Windows.Forms.dll" Value="..\..\..\..\..\CMC\CMC\CMCv\bin\x86\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_TXDrawing.dll" Value="..\..\..\..\..\CMC\CMC\CMCv\bin\x86\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_TXTextControl.Windows.Forms.dll" Value="..\..\..\..\..\CMC\CMC\CMCv\bin\x86\Release"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_CMCv.dll" Value="CMCv.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Connect.exe" Value="Connect.exe"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Ingrid.exe" Value="Ingrid.exe"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Ingrid.exe.config" Value="Ingrid.exe.config"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_LibSQL.dll" Value="LibSQL.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MetroFramework.Design.dll" Value="MetroFramework.Design.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MetroFramework.Fonts.dll" Value="MetroFramework.Fonts.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MetroFramework.dll" Value="MetroFramework.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MetroFramework.dll_4" Value="MetroFramework.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.ReportViewer.Common.dll" Value="Microsoft.ReportViewer.Common.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.ReportViewer.WinForms.dll" Value="Microsoft.ReportViewer.WinForms.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.VisualBasic.PowerPacks.dll" Value="Microsoft.VisualBasic.PowerPacks.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Grid.Base.dll" Value="Syncfusion.Grid.Base.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Grid.Windows.dll" Value="Syncfusion.Grid.Windows.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MetroFramework.dll" Value="EntityFramework.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MetroFramework.dll_4" Value="TXTextControl.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.ReportViewer.WinForms.dll" Value="EntityFramework.SqlServer.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Grid.Base.dll" Value="EnvDTE.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Grid.Windows.dll" Value="Microsoft.SqlServer.Types.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Pdf.Base.dll" Value="Syncfusion.Pdf.Base.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.PdfViewer.Windows.dll" Value="Syncfusion.PdfViewer.Windows.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Shared.Base.dll" Value="Syncfusion.Shared.Base.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Shared.Windows.dll" Value="Syncfusion.Shared.Windows.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.SpellChecker.Base.dll" Value="Syncfusion.SpellChecker.Base.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Tools.Base.dll" Value="Syncfusion.Tools.Base.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Shared.Windows.dll" Value="Syncfusion.Compression.Base.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.SpellChecker.Base.dll" Value="stdole.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Tools.Windows.dll" Value="Syncfusion.Tools.Windows.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Web.DataVisualization.Design.dll" Value="System.Web.DataVisualization.Design.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Web.DataVisualization.dll" Value="System.Web.DataVisualization.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Windows.Forms.DataVisualization.Design.dll" Value="System.Windows.Forms.DataVisualization.Design.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Windows.Forms.DataVisualization.dll" Value="System.Windows.Forms.DataVisualization.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_TXDocumentServer.Windows.Forms.Design.dll" Value="TXDocumentServer.Windows.Forms.Design.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_TXTextControl.Server.dll" Value="TXTextControl.Server.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_TXTextControl.Windows.Forms.Design.dll" Value="TXTextControl.Windows.Forms.Design.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_TXDrawing.Windows.Forms.dll" Value="TXDrawing.Windows.Forms.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_TXDrawing.dll" Value="TXDrawing.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_TXTextControl.Windows.Forms.dll" Value="TXTextControl.Windows.Forms.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_TXTextControl.dll" Value="TXTextControl.dll"/>
     <ROW Property="AI_REQUIRED_DOTNET_DISPLAY" MultiBuildValue="DefaultBuild:4.8" ValueLocId="-"/>
     <ROW Property="AI_REQUIRED_DOTNET_VERSION" MultiBuildValue="DefaultBuild:4.8" ValueLocId="-"/>
     <ROW Property="AI_REQUIRED_PHYSICAL_MEMORY" MultiBuildValue="DefaultBuild:2048" ValueLocId="-"/>
@@ -93,8 +70,8 @@
     <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
-    <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003 RTM, Windows XP/2003 SP1, Windows XP SP2 x86" ValueLocId="-"/>
-    <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003 RTM, Windows XP/2003 SP1, Windows XP SP2 x86" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
@@ -114,7 +91,7 @@
     <ROW Component="CATALOG.mdf" ComponentId="{A2862F71-7CCA-4D42-85FF-E8E6FD424F20}" Directory_="Resources_Dir" Attributes="0" KeyPath="CATALOG.mdf" Type="0"/>
     <ROW Component="CagakMelon" ComponentId="{8F60A269-7AEC-4F40-B3B7-918AF53DFF54}" Directory_="CagakMelon_Dir" Attributes="0"/>
     <ROW Component="Ingrid_PrimaryOutput" ComponentId="{5486F87E-09B4-484D-BA19-4570CE956252}" Directory_="Ingrid_Dir" Attributes="0" KeyPath="Ingrid.exe"/>
-    <ROW Component="Ingrid_References" ComponentId="{83D9BFF5-72BF-4C08-A3C4-6ED48C7ADA98}" Directory_="Ingrid_Dir" Attributes="0" KeyPath="MetroFramework.dll_4"/>
+    <ROW Component="Ingrid_References" ComponentId="{83D9BFF5-72BF-4C08-A3C4-6ED48C7ADA98}" Directory_="Ingrid_Dir" Attributes="0" KeyPath="TXDrawing.dll"/>
     <ROW Component="ProductInformation" ComponentId="{A8AF1308-8837-4C07-8436-16F35488BCC5}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{A2D0BBDE-796D-41F7-8514-560FCF456164}" Directory_="SHORTCUTDIR" Attributes="0"/>
   </COMPONENT>
@@ -135,30 +112,19 @@
     <ROW File="Syncfusion.Shared.Base.dll" Component_="Ingrid_References" FileName="SYNCFU~5.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Shared.Base.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Syncfusion.Shared.Base.dll&gt;" SelfReg="false"/>
     <ROW File="Syncfusion.Shared.Windows.dll" Component_="Ingrid_References" FileName="SYNCFU~6.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Shared.Windows.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Syncfusion.Shared.Windows.dll&gt;" SelfReg="false"/>
     <ROW File="Syncfusion.SpellChecker.Base.dll" Component_="Ingrid_References" FileName="SYNCFU~7.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.SpellChecker.Base.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Syncfusion.SpellChecker.Base.dll&gt;" SelfReg="false"/>
-    <ROW File="Syncfusion.Tools.Base.dll" Component_="Ingrid_References" FileName="SYNCFU~8.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Tools.Base.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Syncfusion.Tools.Base.dll&gt;" SelfReg="false"/>
     <ROW File="Syncfusion.Tools.Windows.dll" Component_="Ingrid_References" FileName="SYNCFU~9.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Tools.Windows.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Syncfusion.Tools.Windows.dll&gt;" SelfReg="false"/>
-    <ROW File="System.Web.DataVisualization.Design.dll" Component_="Ingrid_References" FileName="SYSTEM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Web.DataVisualization.Design.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Web.DataVisualization.Design.dll&gt;" SelfReg="false"/>
-    <ROW File="System.Web.DataVisualization.dll" Component_="Ingrid_References" FileName="SYSTEM~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Web.DataVisualization.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Web.DataVisualization.dll&gt;" SelfReg="false"/>
-    <ROW File="System.Windows.Forms.DataVisualization.Design.dll" Component_="Ingrid_References" FileName="SYSTEM~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Windows.Forms.DataVisualization.Design.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Windows.Forms.DataVisualization.Design.dll&gt;" SelfReg="false"/>
-    <ROW File="System.Windows.Forms.DataVisualization.dll" Component_="Ingrid_References" FileName="SYSTEM~5.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Windows.Forms.DataVisualization.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Windows.Forms.DataVisualization.dll&gt;" SelfReg="false"/>
     <ROW File="CATALOG.mdf" Component_="CATALOG.mdf" FileName="CATALOG.mdf" Attributes="0" SourcePath="..\..\..\Core\Ingrid\901. Resource\Database\CATALOG.mdf" SelfReg="false"/>
     <ROW File="CATALOG_log.ldf" Component_="CATALOG.mdf" FileName="CATALO~1.LDF|CATALOG_log.ldf" Attributes="0" SourcePath="..\..\..\Core\Ingrid\901. Resource\Database\CATALOG_log.ldf" SelfReg="false"/>
     <ROW File="DEV_CATALOG.mdf" Component_="CATALOG.mdf" FileName="DEV_CA~1.MDF|DEV_CATALOG.mdf" Attributes="0" SourcePath="..\..\..\Core\Ingrid\901. Resource\Database\DEV_CATALOG.mdf" SelfReg="false"/>
     <ROW File="DEV_CATALOG_log.ldf" Component_="CATALOG.mdf" FileName="DEV_CA~1.LDF|DEV_CATALOG_log.ldf" Attributes="0" SourcePath="..\..\..\Core\Ingrid\901. Resource\Database\DEV_CATALOG_log.ldf" SelfReg="false"/>
     <ROW File="ERRLOG.mdf" Component_="CATALOG.mdf" FileName="ERRLOG.mdf" Attributes="0" SourcePath="..\..\..\Core\Ingrid\901. Resource\Database\ERRLOG.mdf" SelfReg="false"/>
     <ROW File="ERRLOG_log.ldf" Component_="CATALOG.mdf" FileName="ERRLOG~1.LDF|ERRLOG_log.ldf" Attributes="0" SourcePath="..\..\..\Core\Ingrid\901. Resource\Database\ERRLOG_log.ldf" SelfReg="false"/>
-    <ROW File="MetroFramework.Design.dll" Component_="Ingrid_References" FileName="METROF~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MetroFramework.Design.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MetroFramework.Design.dll&gt;" SelfReg="false"/>
     <ROW File="MetroFramework.dll_4" Component_="Ingrid_References" FileName="METROF~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MetroFramework.dll_4]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MetroFramework.dll_4&gt;" SelfReg="false"/>
-    <ROW File="MetroFramework.Fonts.dll" Component_="Ingrid_References" FileName="METROF~5.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MetroFramework.Fonts.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MetroFramework.Fonts.dll&gt;" SelfReg="false"/>
-    <ROW File="Microsoft.ReportViewer.Common.dll" Component_="Ingrid_References" FileName="MICROS~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.ReportViewer.Common.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.ReportViewer.Common.dll&gt;" SelfReg="false"/>
-    <ROW File="Microsoft.VisualBasic.PowerPacks.dll" Component_="Ingrid_References" FileName="MICROS~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.VisualBasic.PowerPacks.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.VisualBasic.PowerPacks.dll&gt;" SelfReg="false"/>
     <ROW File="Syncfusion.Pdf.Base.dll" Component_="Ingrid_References" FileName="SYNCF~10.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Pdf.Base.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Syncfusion.Pdf.Base.dll&gt;" SelfReg="false"/>
-    <ROW File="TXDocumentServer.Windows.Forms.Design.dll" Component_="Ingrid_References" FileName="TXDOCU~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_TXDocumentServer.Windows.Forms.Design.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_TXDocumentServer.Windows.Forms.Design.dll&gt;" SelfReg="false"/>
-    <ROW File="TXTextControl.dll" Component_="Ingrid_References" FileName="TXTEXT~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_TXTextControl.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_TXTextControl.dll&gt;" SelfReg="false"/>
-    <ROW File="TXTextControl.Server.dll" Component_="Ingrid_References" FileName="TXTEXT~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_TXTextControl.Server.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_TXTextControl.Server.dll&gt;" SelfReg="false"/>
-    <ROW File="TXTextControl.Windows.Forms.Design.dll" Component_="Ingrid_References" FileName="TXTEXT~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_TXTextControl.Windows.Forms.Design.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_TXTextControl.Windows.Forms.Design.dll&gt;" SelfReg="false"/>
-    <ROW File="TXTextControl.Windows.Forms.dll" Component_="Ingrid_References" FileName="TXTEXT~5.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_TXTextControl.Windows.Forms.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_TXTextControl.Windows.Forms.dll&gt;" SelfReg="false"/>
     <ROW File="Connect.exe" Component_="Ingrid_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_Connect.exe]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Connect.exe&gt;" SelfReg="false" DigSign="true"/>
+    <ROW File="TXTextControl.Windows.Forms.dll" Component_="Ingrid_References" FileName="TXTEXT~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_TXTextControl.Windows.Forms.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_TXTextControl.Windows.Forms.dll&gt;" SelfReg="false"/>
+    <ROW File="TXDrawing.Windows.Forms.dll" Component_="Ingrid_References" FileName="TXDRAW~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_TXDrawing.Windows.Forms.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_TXDrawing.Windows.Forms.dll&gt;" SelfReg="false"/>
+    <ROW File="TXDrawing.dll" Component_="Ingrid_References" FileName="TXDRAW~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_TXDrawing.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_TXDrawing.dll&gt;" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AppPathsComponent">
     <ROW Name="AI_APPPATH_PERBUILD_CMCv.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_CMCv.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_CMCv.dll]" Type="2" Content="0"/>
@@ -166,13 +132,9 @@
     <ROW Name="AI_APPPATH_PERBUILD_Ingrid.exe" Path="[|AI_PROPPATH_DIR_PERBUILD_Ingrid.exe]\[|AI_PROPPATH_FILENAME_PERBUILD_Ingrid.exe]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Ingrid.exe.config" Path="[|AI_PROPPATH_DIR_PERBUILD_Ingrid.exe.config]\[|AI_PROPPATH_FILENAME_PERBUILD_Ingrid.exe.config]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_LibSQL.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_LibSQL.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_LibSQL.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_MetroFramework.Design.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MetroFramework.Design.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MetroFramework.Design.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_MetroFramework.Fonts.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MetroFramework.Fonts.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MetroFramework.Fonts.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_MetroFramework.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MetroFramework.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MetroFramework.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_MetroFramework.dll_4" Path="[|AI_PROPPATH_DIR_PERBUILD_MetroFramework.dll_4]\[|AI_PROPPATH_FILENAME_PERBUILD_MetroFramework.dll_4]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.ReportViewer.Common.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.ReportViewer.Common.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.ReportViewer.Common.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Microsoft.ReportViewer.WinForms.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.ReportViewer.WinForms.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.ReportViewer.WinForms.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.VisualBasic.PowerPacks.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.VisualBasic.PowerPacks.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.VisualBasic.PowerPacks.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Syncfusion.Grid.Base.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Syncfusion.Grid.Base.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Grid.Base.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Syncfusion.Grid.Windows.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Syncfusion.Grid.Windows.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Grid.Windows.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Syncfusion.Pdf.Base.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Syncfusion.Pdf.Base.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Pdf.Base.dll]" Type="2" Content="0"/>
@@ -180,17 +142,10 @@
     <ROW Name="AI_APPPATH_PERBUILD_Syncfusion.Shared.Base.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Syncfusion.Shared.Base.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Shared.Base.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Syncfusion.Shared.Windows.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Syncfusion.Shared.Windows.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Shared.Windows.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Syncfusion.SpellChecker.Base.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Syncfusion.SpellChecker.Base.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.SpellChecker.Base.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_Syncfusion.Tools.Base.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Syncfusion.Tools.Base.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Tools.Base.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Syncfusion.Tools.Windows.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Syncfusion.Tools.Windows.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Syncfusion.Tools.Windows.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_System.Web.DataVisualization.Design.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Web.DataVisualization.Design.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Web.DataVisualization.Design.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_System.Web.DataVisualization.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Web.DataVisualization.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Web.DataVisualization.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_System.Windows.Forms.DataVisualization.Design.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Windows.Forms.DataVisualization.Design.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Windows.Forms.DataVisualization.Design.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_System.Windows.Forms.DataVisualization.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Windows.Forms.DataVisualization.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Windows.Forms.DataVisualization.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_TXDocumentServer.Windows.Forms.Design.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_TXDocumentServer.Windows.Forms.Design.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_TXDocumentServer.Windows.Forms.Design.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_TXTextControl.Server.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_TXTextControl.Server.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_TXTextControl.Server.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_TXTextControl.Windows.Forms.Design.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_TXTextControl.Windows.Forms.Design.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_TXTextControl.Windows.Forms.Design.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_TXDrawing.Windows.Forms.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_TXDrawing.Windows.Forms.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_TXDrawing.Windows.Forms.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_TXDrawing.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_TXDrawing.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_TXDrawing.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_TXTextControl.Windows.Forms.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_TXTextControl.Windows.Forms.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_TXTextControl.Windows.Forms.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_TXTextControl.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_TXTextControl.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_TXTextControl.dll]" Type="2" Content="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -342,9 +297,9 @@
     <ROW Action="AI_SETMIXINSTLOCATION" Sequence="748"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
-    <ROW Condition="(VersionNT64 OR ((VersionNT &lt;&gt; 501) OR (ServicePackLevel = 3))) AND ((VersionNT &lt;&gt; 502) OR (ServicePackLevel = 2))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="AI_DETECTED_DOTNET_VERSION &gt;= AI_REQUIRED_DOTNET_VERSION" Description="[ProductName] cannot be installed on systems with .NET Framework version lower than [AI_REQUIRED_DOTNET_DISPLAY]." DescriptionLocId="AI.LaunchCondition.DotNET" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="AI_DETECTED_PHYSICAL_MEMORY &gt;= AI_REQUIRED_PHYSICAL_MEMORY" Description="[ProductName] cannot be installed on systems with less physical memory than [AI_REQUIRED_PHYSICAL_MEMORY] MB." DescriptionLocId="AI.LaunchCondition.RAM" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="SETUPEXEDIR OR (REMOVE=&quot;ALL&quot;)" Description="This package can only be run from a bootstrapper." DescriptionLocId="AI.LaunchCondition.RequireBootstrapper" IsPredefined="true" Builds="DefaultBuild"/>
@@ -372,7 +327,7 @@
     <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.VsProjectComponent">
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="PrimaryOutput" OutputFile="Ingrid.exe" OutputFileShortcut="Ingrid"/>
+    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="PrimaryOutput" OutputFile="Ingrid.exe" OutputFileShortcut="AI_PROPPATH_FILENAME_PERBUILD_Ingri"/>
     <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="PrimaryOutput" OutputFile="Ingrid.exe.config"/>
     <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="CMCv.dll"/>
     <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="LibSQL.dll"/>
@@ -384,23 +339,12 @@
     <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="Syncfusion.Shared.Base.dll"/>
     <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="Syncfusion.Shared.Windows.dll"/>
     <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="Syncfusion.SpellChecker.Base.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="Syncfusion.Tools.Base.dll"/>
     <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="Syncfusion.Tools.Windows.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="System.Web.DataVisualization.Design.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="System.Web.DataVisualization.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="System.Windows.Forms.DataVisualization.Design.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="System.Windows.Forms.DataVisualization.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="MetroFramework.Design.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="MetroFramework.dll_4"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="MetroFramework.Fonts.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="Microsoft.ReportViewer.Common.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="Microsoft.VisualBasic.PowerPacks.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="Syncfusion.Pdf.Base.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="TXDocumentServer.Windows.Forms.Design.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="TXTextControl.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="TXTextControl.Server.dll"/>
-    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="TXTextControl.Windows.Forms.Design.dll"/>
     <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="TXTextControl.Windows.Forms.dll"/>
+    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="TXDrawing.Windows.Forms.dll"/>
+    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="MetroFramework.dll_4"/>
+    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="TXDrawing.dll"/>
+    <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="Syncfusion.Pdf.Base.dll"/>
     <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="Connect.exe"/>
     <ROW ProjectId="{deea16dd-80e1-4ba5-8127-03c0c4c1df38}" ProjectName="Ingrid" OutputGroup="References" OutputFile="MetroFramework.dll_4"/>
   </COMPONENT>
