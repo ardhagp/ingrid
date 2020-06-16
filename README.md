@@ -4,17 +4,21 @@ mudah untuk digunakan.
 
 # Aplikasi Developer
 Kebutuhan minimum sistem yang digunakanan untuk mengembangkan project ini adalah sebagai berikut :
-1.	Visual Studio 2015 Community Edition (VB)
+1.	Visual Studio 2015 Community Edition (VB.Net)
 2.	SQL Server 2014 Express
 3.	~~MS Access~~ / Digantikan dengan LocalDB (_Include in SQL Server 2014 Express_)
-4.	.NET Framework 4.6
+4.	.NET Framework 4.8
 
 # Dependensi
 Project ini membutuhkan komponen sebagai berikut :
-1.  Syncfusion for Desktop ([https://www.syncfusion.com/products/windows-forms](https://www.syncfusion.com/products/windows-forms))
-2.  Syncfusion Community License ([https://www.syncfusion.com/products/communitylicense](https://www.syncfusion.com/products/communitylicense))
-3.  CMC Components ([https://cagakmelon.visualstudio.com/CMC](https://cagakmelon.visualstudio.com/CMC))
+1.  Syncfusion Community License ([https://www.syncfusion.com/products/communitylicense](https://www.syncfusion.com/products/communitylicense))
+2.  Syncfusion - WindowsForm (16.4.0.52) ([https://www.syncfusion.com/account/downloads/studio/licensed/16_4_0_52](https://www.syncfusion.com/account/downloads/studio/licensed/16_4_0_52))
+3.  Syncfusion - FileFormat (16.4.0.52) ([https://www.syncfusion.com/account/downloads/studio/licensed/16_4_0_52](https://www.syncfusion.com/account/downloads/studio/licensed/16_4_0_52))
 4.  Microsoft Chart Control (_Nuget Package Included_)
+5.  Microsoft Visual Basic Power Packs 3.0 ([https://www.microsoft.com/en-us/download/details.aspx?id=25169](https://www.microsoft.com/en-us/download/details.aspx?id=25169))
+6.  
+7.  CMC Components ([https://cagakmelon.visualstudio.com/CMC](https://cagakmelon.visualstudio.com/CMC))
+
 
 # Database & Koneksi
 1.  Tambahkan user "mvu_admin" dengan password "admin" pada SQL Server.
