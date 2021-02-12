@@ -1,4 +1,6 @@
-## Welcome to GitHub Pages
+# Home
+
+## Welcome to GitHub Pages | About
 
 You can use the [editor on GitHub](https://github.com/ardhagp/ingrid/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
