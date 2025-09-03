@@ -64,7 +64,7 @@ Partial Class EPLS_Editor
         TxtPosition = New txt(components)
         TxtGradeID = New txt(components)
         BtnBrowsePosition = New btn(components)
-        TxtDepartement = New txt(components)
+        TxTDepartment = New txt(components)
         TxtCompany = New txt(components)
         tpGeneral = New TabPage()
         ULbl1 = New ULbl()
@@ -496,7 +496,7 @@ Partial Class EPLS_Editor
         tpWorkIn.Controls.Add(TxtPosition)
         tpWorkIn.Controls.Add(TxtGradeID)
         tpWorkIn.Controls.Add(BtnBrowsePosition)
-        tpWorkIn.Controls.Add(TxtDepartement)
+        tpWorkIn.Controls.Add(TxTDepartment)
         tpWorkIn.Controls.Add(TxtCompany)
         tpWorkIn.Location = New Point(4, 30)
         tpWorkIn.Margin = New Padding(4, 3, 4, 3)
@@ -889,37 +889,37 @@ Partial Class EPLS_Editor
         BtnBrowsePosition.Text = "..."
         BtnBrowsePosition.UseVisualStyleBackColor = False
         ' 
-        ' TxtDepartement
+        ' TxTDepartment
         ' 
-        TxtDepartement.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtDepartement.Location = New Point(191, 50)
-        TxtDepartement.Margin = New Padding(4, 3, 4, 3)
-        TxtDepartement.MaxLength = 255
-        TxtDepartement.Name = "TxtDepartement"
-        TxtDepartement.ReadOnly = True
-        TxtDepartement.Size = New Size(319, 29)
-        TxtDepartement.XOAutoTrim = False
-        TxtDepartement.XOHarusDiisi = False
-        TxtDepartement.XOHarusDiisiWarnaLatar = Color.LightPink
-        TxtDepartement.XOHarusDiisiWarnaLatarDefault = Color.White
-        TxtDepartement.XOHightlightSaatFokus = False
-        TxtDepartement.XOHightlightSaatFokusWarna = Color.LightYellow
-        TxtDepartement.XOIsBlank = True
-        TxtDepartement.XOIsSearchBox = False
-        TxtDepartement.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        TxtDepartement.XOPilihSemuaSaatFokus = False
-        TxtDepartement.XOPwdLengthMin = 8
-        TxtDepartement.XOPwdStrengthCalculate = False
-        TxtDepartement.XOPwdStrengthScore = 0
-        TxtDepartement.XOPwdStrengthText = Nothing
-        TxtDepartement.XORestriction = ControlCodeBase.enuRestriction.None
-        TxtDepartement.XOSearchBoxText = "Type then press Enter"
-        TxtDepartement.XOSQLText = ""
-        TxtDepartement.XOTanpaSpasi = False
-        TxtDepartement.XOValidasiField = Nothing
-        TxtDepartement.TabIndex = 201
-        TxtDepartement.TabStop = False
-        TxtDepartement.Tag = "txt"
+        TxTDepartment.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxTDepartment.Location = New Point(191, 50)
+        TxTDepartment.Margin = New Padding(4, 3, 4, 3)
+        TxTDepartment.MaxLength = 255
+        TxTDepartment.Name = "TxTDepartment"
+        TxTDepartment.ReadOnly = True
+        TxTDepartment.Size = New Size(319, 29)
+        TxTDepartment.XOAutoTrim = False
+        TxTDepartment.XOHarusDiisi = False
+        TxTDepartment.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxTDepartment.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxTDepartment.XOHightlightSaatFokus = False
+        TxTDepartment.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxTDepartment.XOIsBlank = True
+        TxTDepartment.XOIsSearchBox = False
+        TxTDepartment.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxTDepartment.XOPilihSemuaSaatFokus = False
+        TxTDepartment.XOPwdLengthMin = 8
+        TxTDepartment.XOPwdStrengthCalculate = False
+        TxTDepartment.XOPwdStrengthScore = 0
+        TxTDepartment.XOPwdStrengthText = Nothing
+        TxTDepartment.XORestriction = ControlCodeBase.enuRestriction.None
+        TxTDepartment.XOSearchBoxText = "Type then press Enter"
+        TxTDepartment.XOSQLText = ""
+        TxTDepartment.XOTanpaSpasi = False
+        TxTDepartment.XOValidasiField = Nothing
+        TxTDepartment.TabIndex = 201
+        TxTDepartment.TabStop = False
+        TxTDepartment.Tag = "txt"
         ' 
         ' TxtCompany
         ' 
@@ -1286,7 +1286,7 @@ Partial Class EPLS_Editor
     Friend WithEvents TxtPosition As txt
     Friend WithEvents TxtGradeID As txt
     Friend WithEvents BtnBrowsePosition As btn
-    Friend WithEvents TxtDepartement As txt
+    Friend WithEvents TxTDepartment As txt
     Friend WithEvents TxtCompany As txt
     Friend WithEvents tpPermissions As TabPage
     Friend WithEvents GbxModulesRoles As gbx

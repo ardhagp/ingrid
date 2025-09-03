@@ -1,10 +1,12 @@
 ﻿Module Globals
     Public V_DBE_MSSQL2008 As New CMCv.Database.Engine.MSSQL2008
+    Public V_DBE_MYSQL As New CMCv.Database.Engine.MySQL
     Public V_DBE_LocalDB As New CMCv.Database.Engine.LocalDB
     Public V_DBE_SQLite As New CMCv.Database.Engine.SQLiteV3
     Public V_DB_Properties(1) As CMCv.Database.Properties.Fields
 
     Public V_DBR_MSSQL2008(1) As CMCv.Database.Adapter.MSSQL2008.Display.Request
+    Public V_DBR_MYSQL(1) As CMCv.Database.Adapter.MySQL.Display.Request
     Public _DBP_MSSQL2008 As New CMCv.Database.Adapter.MSSQL2008.Execute
 
     Public V_SECEncrypt As New CMCv.Security.Encrypt

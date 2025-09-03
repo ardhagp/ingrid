@@ -22,10 +22,10 @@ Public Class nud
 Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
     Public Property XOAutoTrim() As Boolean
         Get
-            Return _varAutoTrim
+            Return V_AutoTrim
         End Get
         Set(value As Boolean)
-            _varAutoTrim = value
+            V_AutoTrim = value
         End Set
     End Property
 
@@ -33,10 +33,10 @@ Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
     Description("Teksboks harus diisi")>
     Public Property XOHarusDiisi As Boolean
         Get
-            Return _varHarusDiisi
+            Return V_HarusDiisi
         End Get
         Set(value As Boolean)
-            _varHarusDiisi = value
+            V_HarusDiisi = value
         End Set
     End Property
 

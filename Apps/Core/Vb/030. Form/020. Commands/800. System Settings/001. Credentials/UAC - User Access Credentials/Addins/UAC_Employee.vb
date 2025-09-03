@@ -2,7 +2,7 @@
 
 Public Class UAC_Employee
 #Region "Variables"
-    Private _SQL As New Commands.UAC.Addins.Browse.Employee
+    Private V_SQL As New Commands.UAC.Addins.Browse.Employee
     Public Event RecordSelected()
 #End Region
 

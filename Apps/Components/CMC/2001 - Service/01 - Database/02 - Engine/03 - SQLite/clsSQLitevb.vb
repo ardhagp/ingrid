@@ -128,7 +128,7 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Function GetDatabaseProperties(ByVal Fields As Properties.Fields) As Database.Properties.Fields
             Try
-                var_datareader(1) = GETDATAROW("Select SERVERADDRESS, USERNAME, PASSWORD, SERVERPORT, DBFORDATA, DBFORFILE FROM serverlist WHERE DEFAULTCONNECTION =1;")
+                var_datareader(1) = GETDATAROW("Select SERVERADDRESS, USERNAME, PASSWORD, SERVERPORT, DBFORDATA, DBFORFILE, DATABASEENGINE FROM serverlist WHERE DEFAULTCONNECTION =1;")
 
                 With var_datareader(1)
                     If .HasRows Then
@@ -138,13 +138,15 @@ Namespace Database.Engine
                         Fields.Port = CType(.GetValue(3), Integer)
                         Fields.DataStorage = .GetString(4)
                         Fields.FileStorage = .GetString(5)
+                        Fields.DatabaseEngine = .GetString(6)
                     Else
                         Fields.ServerAddress = String.Empty
                         Fields.Username = String.Empty
                         Fields.Password = String.Empty
-                        Fields.Port = 1433
+                        Fields.Port = 0
                         Fields.DataStorage = String.Empty
                         Fields.FileStorage = String.Empty
+                        Fields.DatabaseEngine = String.Empty
                     End If
                 End With
 

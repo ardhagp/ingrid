@@ -19,9 +19,9 @@ Namespace Sys.Hardware
                 Next
             Catch err As ManagementException
                 MessageBox.Show("An error occurred while querying for WMI data: " & err.Message)
-                _RESULT = "0"
+                V_result = "0"
             End Try
-            Return CType(_RESULT, Integer)
+            Return CType(V_result, Integer)
         End Function
     End Class
 End Namespace

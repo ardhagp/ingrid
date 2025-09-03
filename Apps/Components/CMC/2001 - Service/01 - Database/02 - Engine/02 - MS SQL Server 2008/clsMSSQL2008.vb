@@ -34,7 +34,9 @@ Namespace Database.Engine
         End Sub
 
         Public Sub Dispose() Implements IDisposable.Dispose
-            Dispose(True)
+            ' Do not change this code. Put cleanup code in 'Dispose(disposing As Boolean)' method
+            Dispose(disposing:=True)
+            GC.SuppressFinalize(Me)
         End Sub
 
         <SupportedOSPlatform("windows")>

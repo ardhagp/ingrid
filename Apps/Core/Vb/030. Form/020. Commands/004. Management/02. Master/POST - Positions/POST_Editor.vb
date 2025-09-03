@@ -25,19 +25,19 @@ Public Class POST_Editor
     Private Sub POST_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '#Disable Warning BC42025 ' Access of shared member, constant member, enum member or nested type through an instance
         _FirstLoad = True
-        _SQL.FILLCompany(CboCompany)
-        _SQL.FILLDepartement(CboDepartement, CboCompany)
+        _SQL.FILLCompany(V_DatabaseEngine, CboCompany)
+        _SQL.FILLDepartement(V_DatabaseEngine, CboDepartement, CboCompany)
 
         If (V_FORMAttrib.IsNew) Then
             ChkAddNew.Visible = True
         Else
             ChkAddNew.Visible = False
-            CboCompany.SelectedValue = LibSQL.Commands.POST.Editor.GETCompanyID(V_FORMAttrib.RowID)
-            _SQL.FILLDepartement(CboDepartement, CboCompany)
-            CboDepartement.SelectedValue = LibSQL.Commands.POST.Editor.GETDepartementID(V_FORMAttrib.RowID)
-            TxtPositionCode.Text = LibSQL.Commands.POST.Editor.GETPositionCode(V_FORMAttrib.RowID)
-            TxtPositionName.Text = LibSQL.Commands.POST.Editor.GETPositionName(V_FORMAttrib.RowID)
-            TxtPositionDescription.Text = LibSQL.Commands.POST.Editor.GETPositionDescription(V_FORMAttrib.RowID)
+            CboCompany.SelectedValue = LibSQL.Commands.POST.Editor.GETCompanyID(V_DatabaseEngine, V_FORMAttrib.RowID)
+            _SQL.FILLDepartement(V_DatabaseEngine, CboDepartement, CboCompany)
+            CboDepartement.SelectedValue = LibSQL.Commands.POST.Editor.GETDepartmentID(V_DatabaseEngine, V_FORMAttrib.RowID)
+            TxtPositionCode.Text = LibSQL.Commands.POST.Editor.GETPositionCode(V_DatabaseEngine, V_FORMAttrib.RowID)
+            TxtPositionName.Text = LibSQL.Commands.POST.Editor.GETPositionName(V_DatabaseEngine, V_FORMAttrib.RowID)
+            TxtPositionDescription.Text = LibSQL.Commands.POST.Editor.GETPositionDescription(V_DatabaseEngine, V_FORMAttrib.RowID)
         End If
 
         _FirstLoad = False
@@ -51,7 +51,7 @@ Public Class POST_Editor
     <SupportedOSPlatform("windows")>
     Private Sub CboCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
         If Not (_FirstLoad) Then
-            _SQL.FILLDepartement(CboDepartement, CboCompany)
+            _SQL.FILLDepartement(V_DatabaseEngine, CboDepartement, CboCompany)
         End If
     End Sub
 
@@ -60,15 +60,15 @@ Public Class POST_Editor
         If (CboDepartement.Items.Count = 0) OrElse (TxtPositionCode.XOSQLText = String.Empty) OrElse (TxtPositionName.XOSQLText = String.Empty) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Departement selected, Postition Code and Position Description are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf ((V_FORMAttrib.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
+        ElseIf ((V_FORMAttrib.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(V_DatabaseEngine, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
+        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(V_DatabaseEngine, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, V_FORMAttrib.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        If (LibSQL.Commands.POST.Editor.PUSHData(CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, TxtPositionName.XOSQLText, TxtPositionDescription.XOSQLText, V_FORMAttrib.RowID)) Then
+        If (LibSQL.Commands.POST.Editor.PUSHData(V_DatabaseEngine, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, TxtPositionName.XOSQLText, TxtPositionDescription.XOSQLText, V_FORMAttrib.RowID)) Then
             Mainframe_n_6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else

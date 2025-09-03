@@ -19,8 +19,8 @@ Public Class ACGR
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA()
-        LibSQL.Commands.ACGR.View.FILLCompany(CboCompany)
-        LibSQL.Commands.ACGR.View.FILLAccountingBook(CboAccountingBook, CboCompany)
+        LibSQL.Commands.ACGR.View.FILLCompany(V_DatabaseEngine, CboCompany)
+        LibSQL.Commands.ACGR.View.FILLAccountingBook(V_DatabaseEngine, CboAccountingBook, CboCompany)
     End Sub
 
     ''' <summary>
@@ -30,7 +30,7 @@ Public Class ACGR
     ''' <remarks>True akan memaksa data untuk direfresh tanpa filter apapun</remarks>
     <SupportedOSPlatform("windows")>
     Private Sub GETDATAGRID(Optional ByVal ForceRefresh As Boolean = False)
-        LibSQL.Commands.ACGR.View.GETAccountList(DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, ForceRefresh)
+        LibSQL.Commands.ACGR.View.GETAccountList(V_DatabaseEngine, DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, ForceRefresh)
     End Sub
 
     'Private _RowID As Integer
@@ -107,7 +107,7 @@ Public Class ACGR
         Else
             V_FORMAttrib.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.ACGR.View.DELETEData(V_FORMAttrib.RowID)) Then
+                If (LibSQL.Commands.ACGR.View.DELETEData(V_DatabaseEngine, V_FORMAttrib.RowID)) Then
                     Call GETDATAGRID(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
@@ -177,7 +177,7 @@ Public Class ACGR
     <SupportedOSPlatform("windows")>
     Private Sub CboPlant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
         If Not (_Firstload) Then
-            LibSQL.Commands.ACGR.View.FILLAccountingBook(CboAccountingBook, CboCompany)
+            LibSQL.Commands.ACGR.View.FILLAccountingBook(V_DatabaseEngine, CboAccountingBook, CboCompany)
             Call GETDATAGRID(True)
         End If
     End Sub

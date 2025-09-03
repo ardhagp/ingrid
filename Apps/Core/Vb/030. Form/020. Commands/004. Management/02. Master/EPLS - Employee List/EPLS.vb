@@ -12,7 +12,7 @@ Public Class EPLS
 
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        Commands.EPLS.View.DISPLAYDATA(DgnEPLS, SLFStatus, TxtFind, ForceRefresh)
+        Commands.EPLS.View.DISPLAYDATA(V_DatabaseEngine, DgnEPLS, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     Private Sub GETTableID()
@@ -69,7 +69,7 @@ Public Class EPLS
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnEPLS.CurrentRow.Cells("employee_fullname").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.EPLS.View.DELETEDATA(V_FORMAttrib.RowID)) Then
+                If (Commands.EPLS.View.DELETEDATA(V_DatabaseEngine, V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else

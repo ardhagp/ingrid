@@ -94,7 +94,7 @@ Public Class ControlCodeBase
     ''' <param name="BMin">Nilai minimum warna biru</param>
     ''' <param name="BMax">Nilai maksimum warna biru</param>
     Public Shared Function WarnaAcakBaru(ByVal RMin As Integer, ByVal RMax As Integer, ByVal GMin As Integer, ByVal GMax As Integer, ByVal BMin As Integer, ByVal BMax As Integer) As System.Drawing.Color
-        Return System.Drawing.Color.FromArgb(_randomcolor.Next(RMin, RMax), _randomcolor.Next(GMin, GMax), _randomcolor.Next(BMin, BMax))
+        Return System.Drawing.Color.FromArgb(V_randomcolor.Next(RMin, RMax), V_randomcolor.Next(GMin, GMax), V_randomcolor.Next(BMin, BMax))
     End Function
 
     ''' <summary>

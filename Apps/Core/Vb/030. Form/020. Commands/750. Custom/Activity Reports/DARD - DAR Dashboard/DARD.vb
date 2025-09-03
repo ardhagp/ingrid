@@ -2,7 +2,7 @@
 Imports System.Runtime.Versioning
 
 Public Class DARD
-    Private _SQL As New Commands.DARD.View
+    Private V_SQL As New Commands.DARD.View
 
     <SupportedOSPlatform("windows")>
     Private Sub DARD_Load(sender As Object, e As EventArgs) Handles MyBase.Load

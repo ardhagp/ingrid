@@ -4,7 +4,7 @@ Public Class MCTG
 
 #Region "Variables"
     Private WithEvents C_MMSMenu As New UI.View.MenuStrip
-    Private _SQL As New Commands.MCTG.View
+    Private V_SQL As New Commands.MCTG.View
 #End Region
 
 #Region "Sub Collections"
@@ -16,7 +16,7 @@ Public Class MCTG
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
         DblBuffer(DgnMCTG)
-        Commands.MCTG.View.DISPLAYDATA(DgnMCTG, SLFStatus, TxtFind, ForceRefresh)
+        Commands.MCTG.View.DISPLAYDATA(V_DatabaseEngine, DgnMCTG, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 #End Region
 

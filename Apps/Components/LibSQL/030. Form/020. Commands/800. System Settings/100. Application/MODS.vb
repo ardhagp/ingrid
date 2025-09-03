@@ -5,7 +5,7 @@ Imports CMCv
 Namespace Commands.MODS
     Public Class View
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
+        Public Shared Sub DisplayData(ByVal DBEngine As String, ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
             If (Find.XOSQLText = String.Empty) OrElse (ForceRefresh = True) Then
                 V_DBR_MSSQL2008(0).Query = String.Format("select modg.modulegroup_name, mods.module_code, mods.module_name, mods.module_description, mods.module_issystem, mods.module_ismaintenance, mods.module_id from dbo.[[sys]]module] mods inner join dbo.[[sys]]modulegroup] modg on modg.modulegroup_id = mods.module_modulegroup order by modg.modulegroup_order, mods.module_code")
             Else
@@ -17,7 +17,7 @@ Namespace Commands.MODS
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DELETEData(ByVal RowID As String) As Boolean
+        Public Shared Function DELETEData(ByVal DBEngine As String, ByVal RowID As String) As Boolean
             Dim _Success As Boolean
             Try
                 V_DBR_MSSQL2008(1).Query = String.Format("delete from dbo.[[sys]]module] where module_id = '{0}'", RowID)
@@ -33,7 +33,7 @@ Namespace Commands.MODS
 
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsDuplicate(ByVal Code As String, Optional ByVal RowID As String = "") As Boolean
+        Public Shared Function IsDuplicate(ByVal DBEngine As String, ByVal Code As String, Optional ByVal RowID As String = "") As Boolean
             Dim _IsDuplicate As Boolean
 
             Try
@@ -52,7 +52,7 @@ Namespace Commands.MODS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FILLModuleGroup(ByVal ModuleGroup As cbo)
+        Public Shared Sub FILLModuleGroup(ByVal DBEngine As String, ByVal ModuleGroup As cbo)
             V_DBR_MSSQL2008(1).Query = "select modg.modulegroup_id, modg.modulegroup_name from dbo.[[sys]]modulegroup] modg order by modg.modulegroup_order"
             V_DBR_MSSQL2008(1).Dropdown = ModuleGroup
             V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(1), "TModuleGroup")
@@ -61,7 +61,7 @@ Namespace Commands.MODS
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETMODCode(ByVal RowID As String) As String
+        Public Shared Function GETMODCode(ByVal DBEngine As String, ByVal RowID As String) As String
             Dim _Code As String
 
             V_DBR_MSSQL2008(0).Query = String.Format("select mods.module_code from dbo.[[sys]]module] mods where mods.module_id = '{0}'", RowID)
@@ -71,7 +71,7 @@ Namespace Commands.MODS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETMODName(ByVal RowID As String) As String
+        Public Shared Function GETMODName(ByVal DBEngine As String, ByVal RowID As String) As String
             Dim _Name As String
 
             V_DBR_MSSQL2008(0).Query = String.Format("select mods.module_name from dbo.[[sys]]module] mods where mods.module_id = '{0}'", RowID)
@@ -81,7 +81,7 @@ Namespace Commands.MODS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETMODGroupID(ByVal RowID As String) As String
+        Public Shared Function GETMODGroupID(ByVal DBEngine As String, ByVal RowID As String) As String
             Dim _GroupID As String
 
             V_DBR_MSSQL2008(0).Query = String.Format("select mods.module_modulegroup from dbo.[[sys]]module] mods where mods.module_id = '{0}'", RowID)
@@ -91,7 +91,7 @@ Namespace Commands.MODS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETMODDescription(ByVal RowID As String) As String
+        Public Shared Function GETMODDescription(ByVal DBEngine As String, ByVal RowID As String) As String
             Dim _Description As String
 
             V_DBR_MSSQL2008(0).Query = String.Format("select mods.module_description from dbo.[[sys]]module] mods where mods.module_id = '{0}'", RowID)
@@ -101,7 +101,7 @@ Namespace Commands.MODS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETMODSystem(ByVal RowID As String) As Boolean
+        Public Shared Function GETMODSystem(ByVal DBEngine As String, ByVal RowID As String) As Boolean
             Dim _IsSystem As Boolean
 
             Try
@@ -115,7 +115,7 @@ Namespace Commands.MODS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETMODLocked(ByVal RowID As String) As Boolean
+        Public Shared Function GETMODLocked(ByVal DBEngine As String, ByVal RowID As String) As Boolean
             Dim _IsLocked As Boolean
 
             Try
@@ -129,7 +129,7 @@ Namespace Commands.MODS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PUSHData(ByVal ID As String, ByVal GroupID As String, ByVal Code As String, ByVal Name As String, ByVal Description As String, ByVal IsSystem As Boolean, ByVal IsLocked As Boolean, Optional ByVal RowID As String = "") As Boolean
+        Public Shared Function PUSHData(ByVal DBEngine As String, ByVal ID As String, ByVal GroupID As String, ByVal Code As String, ByVal Name As String, ByVal Description As String, ByVal IsSystem As Boolean, ByVal IsLocked As Boolean, Optional ByVal RowID As String = "") As Boolean
             Dim _Success As Boolean
 
             Try

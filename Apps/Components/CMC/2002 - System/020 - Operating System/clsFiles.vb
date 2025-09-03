@@ -6,8 +6,8 @@
         ''' <param name="FilePath">Letak dan nama file tersimpan</param>
         ''' <returns>Boolean</returns>
         Public Shared Function IsExists(ByVal FilePath As String) As Boolean
-            Dim _FExists As New IO.FileInfo(FilePath)
-            Return _FExists.Exists
+            Dim V_FileIsExists As New IO.FileInfo(FilePath)
+            Return V_FileIsExists.Exists
         End Function
 
         ''' <summary>
@@ -16,8 +16,8 @@
         ''' <param name="FilePath">Letak dan nama file tersimpan</param>
         ''' <returns>Double</returns>
         Public Shared Function Size(ByVal FilePath As String) As Double
-            Dim _FSize As New IO.FileInfo(FilePath)
-            Return _FSize.Length
+            Dim V_FileSize As New IO.FileInfo(FilePath)
+            Return V_FileSize.Length
         End Function
     End Class
 
@@ -32,44 +32,43 @@
 
             'Dim _File As New Info
 
-            Dim _IsAllowed As Boolean
+            Dim V_IsAllowed As Boolean
             Dim size As String() = {"B", "KB", "MB", "GB", "TB"}
-            Dim _PhotoLength As Double = Info.Size(FilePath)
-            Dim _OriginalPhotoLength As Double = _PhotoLength
-            Dim _Order As Integer = 0
-            Dim _MaximumOrder As Integer = 0
+            Dim V_PhotoLength As Double = Info.Size(FilePath)
+            Dim V_OriginalPhotoLength As Double = V_PhotoLength
+            Dim V_Order As Integer = 0
+            Dim V_MaximumOrder As Integer = 0
 
             If MaxSize = 0 Then
-                _IsAllowed = True
-                Return _IsAllowed
-                Exit Function
+                V_IsAllowed = True
+                Return V_IsAllowed
             End If
 
-            While (_PhotoLength >= 1024 AndAlso CType(size.Length - 1, Boolean))
-                _Order += 1
-                _PhotoLength /= 1024
+            While (V_PhotoLength >= 1024 AndAlso CType(size.Length - 1, Boolean))
+                V_Order += 1
+                V_PhotoLength /= 1024
             End While
 
-            Dim _MaximumPhotoLength As Double = ((1024 ^ 2) * MaxSize) '1 indicate 1000KB or 1MB
-            Dim _MaximumPhotoLengthDisplay As Double = _MaximumPhotoLength
+            Dim V_MaximumPhotoLength As Double = ((1024 ^ 2) * MaxSize) '1 indicate 1000KB or 1MB
+            Dim V_MaximumPhotoLengthDisplay As Double = V_MaximumPhotoLength
 
-            While (_MaximumPhotoLengthDisplay >= 1024 AndAlso CType(size.Length - 1, Boolean))
-                _MaximumOrder += 1
-                _MaximumPhotoLengthDisplay /= 1024
+            While (V_MaximumPhotoLengthDisplay >= 1024 AndAlso CType(size.Length - 1, Boolean))
+                V_MaximumOrder += 1
+                V_MaximumPhotoLengthDisplay /= 1024
             End While
 
-            If _OriginalPhotoLength > _MaximumPhotoLength Then
-                Dim _ErrorBox As New CMCv.frmDialogBox("Your file size is : " & String.Format("{0:0.##} {1}", _PhotoLength, size(_Order)) & ", above the size that we can tolerate." & vbCrLf & "Please pick your file size under " & String.Format("{0:0.##} {1}", _MaximumPhotoLengthDisplay, size(_MaximumOrder)) & " and then try again.", "Limit Exceeded", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
+            If V_OriginalPhotoLength > V_MaximumPhotoLength Then
+                Dim V_ErrorBox As New CMCv.frmDialogBox("Your file size is : " & String.Format("{0:0.##} {1}", V_PhotoLength, size(V_Order)) & ", above the size that we can tolerate." & vbCrLf & "Please pick your file size under " & String.Format("{0:0.##} {1}", V_MaximumPhotoLengthDisplay, size(V_MaximumOrder)) & " and then try again.", "Limit Exceeded", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
                 If (ShowNativeDialog) Then
-                    _ErrorBox.ShowDialog()
-                    _ErrorBox.Dispose()
+                    V_ErrorBox.ShowDialog()
+                    V_ErrorBox.Dispose()
                 End If
-                _IsAllowed = False
+                V_IsAllowed = False
             Else
-                _IsAllowed = True
+                V_IsAllowed = True
             End If
 
-            Return _IsAllowed
+            Return V_IsAllowed
         End Function
     End Class
 End Namespace

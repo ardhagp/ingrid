@@ -95,10 +95,11 @@ namespace Bridge.Security
                 .MinimumLevel.Information()
                 .CreateLogger();
 
-            TimeZone localZone = TimeZone.CurrentTimeZone;
+            TimeZoneInfo localZone = TimeZoneInfo.Local;
+            // Replace obsolete TimeZone usage with TimeZoneInfo
             DateTime currentDate = DateTime.Now;
 
-            DateTime currentUTC = localZone.ToUniversalTime(currentDate);
+            DateTime currentUTC = TimeZoneInfo.ConvertTimeToUtc(currentDate, localZone);
             TimeSpan currentOffset = localZone.GetUtcOffset(currentDate);
 
             string OccuredAt = string.Format(Environment.NewLine + "--- Occured at: ---" + Environment.NewLine + "UTC: {0}" + Environment.NewLine + "Offset: {1}" + Environment.NewLine + "Device DateTime: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), currentUTC.ToString("yyyy-MM-dd HH:mm:ss"), currentOffset);

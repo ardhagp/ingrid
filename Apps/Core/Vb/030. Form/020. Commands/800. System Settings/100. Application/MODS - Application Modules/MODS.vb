@@ -2,7 +2,7 @@
 
 Public Class MODS
 #Region "Variables"
-    Private _SQL As New Commands.MODS.View
+    Private V_SQL As New Commands.MODS.View
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
     Private WithEvents _MODS_Editor As New MODS_Editor
     Public Event DATACHANGED()
@@ -13,7 +13,7 @@ Public Class MODS
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
         DblBuffer(DgnMODS)
-        Commands.MODS.View.DisplayData(DgnMODS, SLFStatus, TxtFind, ForceRefresh)
+        Commands.MODS.View.DisplayData(V_DatabaseEngine, DgnMODS, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     Private Sub GETTableID()
@@ -73,7 +73,7 @@ Public Class MODS
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.DAR.View.DELETEData(V_FORMAttrib.RowID)) Then
+                If (Commands.DAR.View.DELETEData(V_DatabaseEngine, V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
                     RaiseEvent DATACHANGED()
                     Mainframe_n_6.Ts_status.Text = "Success"

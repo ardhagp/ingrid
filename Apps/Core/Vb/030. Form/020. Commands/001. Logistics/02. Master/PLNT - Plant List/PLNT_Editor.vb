@@ -3,14 +3,14 @@
 Public Class PLNT_Editor
 #Region "Variables"
     Public Event RecordSaved()
-    Private _SQL As New LibSQL.Commands.PLNT.Editor
-    Private IsLoad As Boolean
+    Private V_SQL As New LibSQL.Commands.PLNT.Editor
+    Private V_IsLoad As Boolean
 #End Region
 
 #Region "Sub Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GETCompany()
-        Call Commands.PLNT.Editor.GETCompany(CboCompany)
+        Call Commands.PLNT.Editor.GETCompany(V_DatabaseEngine, CboCompany)
     End Sub
 
     Private Sub CheckAllInput()
@@ -32,8 +32,8 @@ Public Class PLNT_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub PLNT_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        IsLoad = True
+        V_IsLoad = True
         Call GETCompany()
-        IsLoad = False
+        V_IsLoad = False
     End Sub
 End Class

@@ -11,14 +11,14 @@ Public Class CDIN
 #Region "Subs Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        LibSQL.Commands.CDIN.View.DISPLAYDATA(DgnCDIN, SLFStatus, TxtFind, ForceRefresh)
+        LibSQL.Commands.CDIN.View.DISPLAYDATA(V_DatabaseEngine, DgnCDIN, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     Private Sub GETTableID()
         If DgnCDIN.RowCount = 0 Then
             V_FORMAttrib.RowID = "-1"
         Else
-            V_FORMAttrib.RowID = DgnCDIN.CurrentRow.Cells("departement_id").Value.ToString
+            V_FORMAttrib.RowID = DgnCDIN.CurrentRow.Cells("department_id").Value.ToString
         End If
     End Sub
 
@@ -52,7 +52,7 @@ Public Class CDIN
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.CDIN.View.DELETEDATA(V_FORMAttrib.RowID)) Then
+                If (LibSQL.Commands.CDIN.View.DELETEDATA(V_DatabaseEngine, V_FORMAttrib.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else

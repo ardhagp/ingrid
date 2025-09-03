@@ -1,6 +1,6 @@
 ﻿Module Mode
     'False to use development phase
-    Public _PRODUCTIONMODE As Boolean = My.Settings.PRODUCTIONMODE
+    Public V_PRODUCTIONMODE As Boolean = My.Settings.PRODUCTIONMODE
 
     'Still unused
     'Public Const _LOADINGTIME As Integer = 0 

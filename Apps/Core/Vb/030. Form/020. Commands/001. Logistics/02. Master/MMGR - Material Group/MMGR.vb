@@ -1,11 +1,11 @@
 ﻿Imports System.Runtime.Versioning
 
 Public Class MMGR
-    Private _SQL As New Commands.MMGR.View
+    Private V_SQL As New Commands.MMGR.View
 
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
-        Commands.MMGR.View.DISPLAYDATA(DgnMMGR, SLFStatus, TxtFind, ForceRefresh)
+        Commands.MMGR.View.DISPLAYDATA(V_DatabaseEngine, DgnMMGR, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     <SupportedOSPlatform("windows")>

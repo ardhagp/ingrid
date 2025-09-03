@@ -6,12 +6,12 @@
 Public Class DRAA
 #Region "Variables"
     'SQL Class
-    Private _SQL As New Commands.DRAA.View
+    Private V_SQL As New Commands.DRAA.View
 
     'Variabel -> Class
-    Private WithEvents _DRAA_Editor As New DRAA_Editor
-    Private WithEvents _DRAA_Reports As DAR_RPTFilter
-    Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
+    Private WithEvents V_DRAA_Editor As New DRAA_Editor
+    Private WithEvents V_DRAA_Reports As DAR_RPTFilter
+    Private WithEvents V_MMSMenu As New CMCv.UI.View.MenuStrip
 #End Region
 
     ''' <summary>
@@ -33,19 +33,19 @@ Public Class DRAA
     <SupportedOSPlatform("windows")>
     Private Sub LoadMenu()
         'Sisipkan ke dalam form
-        _MMSMenu.LoadIn(Me)
+        V_MMSMenu.LoadIn(Me)
 
         'Menampilkan Menu DATA
-        _MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        V_MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu TOOLS
-        _MMSMenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.No)
+        V_MMSMenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.No)
 
         'Menampilkan Menu REPORTS
-        _MMSMenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.No)
+        V_MMSMenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.No)
 
         'Menampilkan Menu TOOLS > View Attachment
-        _MMSMenu.Visible("EventToolsViewAttachment", CType(False, CMCv.UI.View.MenuStrip.ShowItem))
+        V_MMSMenu.Visible("EventToolsViewAttachment", CType(False, CMCv.UI.View.MenuStrip.ShowItem))
 
     End Sub
 

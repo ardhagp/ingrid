@@ -16,7 +16,7 @@ Public Class UAC_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA()
-        Commands.UAC.Editor.DisplayData(DgnUACe, V_FORMAttrib.RowID)
+        Commands.UAC.Editor.DisplayData(V_DatabaseEngine, DgnUACe, V_FORMAttrib.RowID)
     End Sub
 
     Private Sub CheckAllInput()
@@ -76,13 +76,13 @@ Public Class UAC_Editor
             ChkAddNew.Enabled = False
             ChkAddNew.Visible = False
             BtnBrowseEmployee.Visible = False
-            TxtEmployeeNumber.Text = Commands.UAC.Editor.GETEmployeeNumber(V_FORMAttrib.RowID)
-            TxtEmployeeFullName.Text = Commands.UAC.Editor.GETEmployeeFullName(V_FORMAttrib.RowID)
-            TxtUsername.Text = Commands.UAC.Editor.GETUsernameByUserID(V_FORMAttrib.RowID)
-            V_FORMAttrib.Password = Commands.UAC.Editor.GETPassword(V_FORMAttrib.RowID)
-            ChkLocked.Checked = Commands.UAC.Editor.GETLocked(V_FORMAttrib.RowID)
-            _IsAdminstrator = Commands.UAC.Editor.GETAdministrator(V_USERAttrib.UID)
-            ChkAdministrator.Checked = Commands.UAC.Editor.GETAdministrator(V_FORMAttrib.RowID)
+            TxtEmployeeNumber.Text = Commands.UAC.Editor.GETEmployeeNumber(V_DatabaseEngine, V_FORMAttrib.RowID)
+            TxtEmployeeFullName.Text = Commands.UAC.Editor.GETEmployeeFullName(V_DatabaseEngine, V_FORMAttrib.RowID)
+            TxtUsername.Text = Commands.UAC.Editor.GETUsernameByUserID(V_DatabaseEngine, V_FORMAttrib.RowID)
+            V_FORMAttrib.Password = Commands.UAC.Editor.GETPassword(V_DatabaseEngine, V_FORMAttrib.RowID)
+            ChkLocked.Checked = Commands.UAC.Editor.GETLocked(V_DatabaseEngine, V_FORMAttrib.RowID)
+            _IsAdminstrator = Commands.UAC.Editor.GETAdministrator(V_DatabaseEngine, V_USERAttrib.UID)
+            ChkAdministrator.Checked = Commands.UAC.Editor.GETAdministrator(V_DatabaseEngine, V_FORMAttrib.RowID)
             If (_IsAdminstrator) AndAlso Not (V_FORMAttrib.IsChangePasswordForm) Then
                 ChkAdministrator.Visible = True
             Else
@@ -107,17 +107,17 @@ Public Class UAC_Editor
         ElseIf ((_PWDChange) AndAlso (TxtPassword.TextLength < _MINPASSWORDLENGTH)) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure your Password meets the minimum criteria.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf ((V_FORMAttrib.IsNew) AndAlso (Commands.UAC.Editor.IsDuplicate(TxtUsername.XOSQLText))) Then
+        ElseIf ((V_FORMAttrib.IsNew) AndAlso (Commands.UAC.Editor.IsDuplicate(V_DatabaseEngine, TxtUsername.XOSQLText))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Username already registered.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (Commands.UAC.Editor.IsDuplicate(TxtUsername.XOSQLText, V_FORMAttrib.RowID))) Then
+        ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (Commands.UAC.Editor.IsDuplicate(V_DatabaseEngine, TxtUsername.XOSQLText, V_FORMAttrib.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Username already used by another employee.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
         Call CheckPWDChange()
 
-        If (Commands.UAC.Editor.PUSHData(V_FORMAttrib.Field01.ToString, TxtUsername.XOSQLText, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, V_FORMAttrib.RowID, V_FORMAttrib.Hash, _PWDChange)) Then
+        If (Commands.UAC.Editor.PUSHData(V_DatabaseEngine, V_FORMAttrib.Field01.ToString, TxtUsername.XOSQLText, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, V_FORMAttrib.RowID, V_FORMAttrib.Hash, _PWDChange)) Then
             RaiseEvent RecordSaved()
             Mainframe_n_6.Ts_status.Text = "Success"
         Else

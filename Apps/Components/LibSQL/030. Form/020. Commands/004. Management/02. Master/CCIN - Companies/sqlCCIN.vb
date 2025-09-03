@@ -7,18 +7,18 @@ Namespace Commands.CCIN
         ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DISPLAYDATA(ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
-            Dim _Where As String = "where "
+        Public Shared Sub DISPLAYDATA(ByVal DBEngine As String, ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
+            Dim V_Where As String = "where "
 
-            If (Find.XOSQLText = String.Empty) OrElse (ForceRefresh = True) Then
-                _Where = String.Format("")
+            If (Find.XOSQLText = String.Empty) OrElse (ForceRefresh) Then
+                V_Where = String.Format("")
             Else
-                _Where += String.Format(" (c.company_code ='{0}') or (c.company_name like '%{0}%') or (c.company_searchterm2 like '%{0}%') or (c.company_searchterm1 like '%{0}%') or (c.company_description " &
+                V_Where += String.Format(" (c.company_code ='{0}') or (c.company_name like '%{0}%') or (c.company_searchterm2 like '%{0}%') or (c.company_searchterm1 like '%{0}%') or (c.company_description " &
                                         "like '%{0}%')", Find.XOSQLText)
             End If
 
             V_DBR_MSSQL2008(0).Query = String.Format("SELECT c.company_id, c.company_code, c.company_name, c.company_searchterm2, c.company_searchterm1, c.company_description FROM dbo.[[man]]company] c {0} " &
-                                                    "ORDER BY C.company_code", _Where)
+                                                    "ORDER BY C.company_code", V_Where)
 
             V_DBR_MSSQL2008(0).DataGrid = DataGrid
             V_DBR_MSSQL2008(0).StatusBar = StatusBar
@@ -26,7 +26,7 @@ Namespace Commands.CCIN
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DELETEDATA(ByVal RowID As String) As Boolean
+        Public Shared Function DELETEDATA(ByVal DBEngine As String, ByVal RowID As String) As Boolean
             Dim V_Success As Boolean
             Try
                 V_DBR_MSSQL2008(0).Query = String.Format("delete from dbo.[[man]]company] where company_id='{0}'", RowID)
@@ -42,7 +42,7 @@ Namespace Commands.CCIN
 
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsDuplicate(ByVal Code As String, Optional ByVal RowID As String = "-1") As Boolean
+        Public Shared Function IsDuplicate(ByVal DBEngine As String, ByVal Code As String, Optional ByVal RowID As String = "-1") As Boolean
             Dim V_IsDuplicate As Integer
             Dim V_Where As String = "where "
 
@@ -65,7 +65,7 @@ Namespace Commands.CCIN
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PUSHData(ByVal CompanyCode As String, ByVal CompanyName As String, ByVal SearchTerm1 As String, ByVal SearchTerm2 As String, ByVal Description As String, Optional ByVal RowID As String = "-1") As Boolean
+        Public Shared Function PUSHData(ByVal DBEngine As String, ByVal CompanyCode As String, ByVal CompanyName As String, ByVal SearchTerm1 As String, ByVal SearchTerm2 As String, ByVal Description As String, Optional ByVal RowID As String = "-1") As Boolean
             Dim V_Success As Boolean
 
             Try
@@ -87,7 +87,7 @@ Namespace Commands.CCIN
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETCompanyCode(ByVal RowID As String) As String
+        Public Shared Function GETCompanyCode(ByVal DBEngine As String, ByVal RowID As String) As String
             Dim _Code As String
             V_DBR_MSSQL2008(0).Query = String.Format("select c.company_code from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
             _Code = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
@@ -95,7 +95,7 @@ Namespace Commands.CCIN
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETCompanyName(ByVal RowID As String) As String
+        Public Shared Function GETCompanyName(ByVal DBEngine As String, ByVal RowID As String) As String
             Dim _Name As String
             V_DBR_MSSQL2008(0).Query = String.Format("select c.company_name from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
             _Name = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
@@ -103,7 +103,7 @@ Namespace Commands.CCIN
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETSearchTerm1(ByVal RowID As String) As String
+        Public Shared Function GETSearchTerm1(ByVal DBEngine As String, ByVal RowID As String) As String
             Dim _SearchTerm As String
             V_DBR_MSSQL2008(0).Query = String.Format("select c.company_searchterm1 from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
             _SearchTerm = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
@@ -111,7 +111,7 @@ Namespace Commands.CCIN
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETSearchTerm2(ByVal RowID As String) As String
+        Public Shared Function GETSearchTerm2(ByVal DBEngine As String, ByVal RowID As String) As String
             Dim _SearchTerm As String
             V_DBR_MSSQL2008(0).Query = String.Format("select c.company_searchterm2 from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
             _SearchTerm = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
@@ -119,7 +119,7 @@ Namespace Commands.CCIN
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETDescription(ByVal RowID As String) As String
+        Public Shared Function GETDescription(ByVal DBEngine As String, ByVal RowID As String) As String
             Dim _Desciption As String
             V_DBR_MSSQL2008(0).Query = String.Format("select c.company_description from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
             _Desciption = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString

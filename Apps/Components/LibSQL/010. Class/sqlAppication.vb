@@ -1,6 +1,7 @@
 ﻿Imports System.Data
 Imports System.Runtime.Versioning
 Imports CMCv
+Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Namespace Application
 
@@ -62,12 +63,16 @@ Namespace Application
         Private _DS As DataSet
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function Exist(ByVal TCODE As String) As Boolean
+        Public Shared Function Exist(ByVal TCODE As String, ByVal DatabaseEngine As String) As Boolean
             Dim V_isExist As Boolean
 
             Try
-                V_DBR_MSSQL2008(1).Query = String.Format("select count(mo.module_id) from dbo.[[sys]]module] mo where mo.module_code = '{0}'", TCODE)
-                V_isExist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
+                If DatabaseEngine = "MSSQL" Then
+                    V_DBR_MSSQL2008(1).Query = String.Format("select count(mo.module_id) from dbo.[[sys]]module] mo where mo.module_code = '{0}'", TCODE)
+                    V_isExist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
+                ElseIf DatabaseEngine = "MYSQL" Then
+
+                End If
 
                 Return V_isExist
             Catch ex As Exception
@@ -76,13 +81,16 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function Locked(ByVal TCODE As String) As Boolean
+        Public Shared Function Locked(ByVal TCODE As String, ByVal DatabaseEngine As String) As Boolean
             Dim V_isLocked As Boolean
 
             Try
-                V_DBR_MSSQL2008(1).Query = String.Format("select count(mo.module_id) from dbo.[[sys]]module] mo where mo.module_code = '{0}' and mo.module_ismaintenance = 'true'", TCODE)
-                V_isLocked = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
+                If DatabaseEngine = "MSSQL" Then
+                    V_DBR_MSSQL2008(1).Query = String.Format("select count(mo.module_id) from dbo.[[sys]]module] mo where mo.module_code = '{0}' and mo.module_ismaintenance = 'true'", TCODE)
+                    V_isLocked = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
+                ElseIf DatabaseEngine = "MYSQL" Then
 
+                End If
                 Return V_isLocked
             Catch ex As Exception
                 Return False

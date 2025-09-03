@@ -44,14 +44,14 @@ Module Globals
 
 #Region "Class Globals"
     Public CBS As New ControlCodeBase
-    Public _CFILEInfo As New OperatingSystem.File.Info
+    Public V_CFILEInfo As New OperatingSystem.File.Info
 
 #End Region
 
 #Region "Variabel Global"
-    Public _randomcolor As New Random
-    Public _varAutoTrim As Boolean
-    Public _varHarusDiisi As Boolean
+    Public V_RandomColor As New Random
+    Public V_AutoTrim As Boolean
+    Public V_HarusDiisi As Boolean
 
     'Public SEC As New Security.Engine
 
@@ -59,7 +59,7 @@ Module Globals
     Public ERL As New Database.Engine.LocalDB
     Public ErrorCatcher As Catcher.Error.Fields
 
-    Public _APPVer As String
+    Public V_APPVer As String
 #End Region
 
     Public Function GETAPPVERSION() As String
@@ -68,8 +68,8 @@ Module Globals
         V_Minor = My.Application.Info.Version.Minor
         V_Build = My.Application.Info.Version.Build
         V_Revision = My.Application.Info.Version.Revision
-        _APPVer = V_Major & "." & V_Minor & "." & V_Build & "." & V_Revision
-        Return _APPVer
+        V_APPVer = V_Major & "." & V_Minor & "." & V_Build & "." & V_Revision
+        Return V_APPVer
     End Function
 
     <SupportedOSPlatform("windows")>
