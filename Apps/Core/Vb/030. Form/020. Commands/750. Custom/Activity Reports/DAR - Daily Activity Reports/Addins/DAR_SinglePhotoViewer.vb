@@ -30,10 +30,10 @@ Public Class DAR_SinglePhotoViewer
         If _Type = "String" Then
             PctbxPhoto.ImageLocation = _FILE
         ElseIf _Type = "Image" Then
-            If _TEXTMARK = String.Empty Then
+            If V_Textmark = String.Empty Then
                 PctbxPhoto.Image = _IMAGE
             Else
-                PctbxPhoto.Image = CMCv.ImageEditor.Proccessor.Editor.Watermarker(_IMAGE, _TEXTMARK)
+                PctbxPhoto.Image = CMCv.ImageEditor.Proccessor.Editor.Watermarker(_IMAGE, V_Textmark)
             End If
         End If
     End Sub

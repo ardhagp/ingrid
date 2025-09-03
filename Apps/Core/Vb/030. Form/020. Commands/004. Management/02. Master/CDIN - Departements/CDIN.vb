@@ -30,7 +30,7 @@ Public Class CDIN
         V_FORMAttrib.IsNew = True
         V_FORMAttrib.RowID = "-1"
         _CDIN_Editor = New CDIN_Editor
-        Display(_CDIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new departement data", True)
+        DISPLAY(_CDIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new departement data", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -41,7 +41,7 @@ Public Class CDIN
         Else
             V_FORMAttrib.IsNew = False
             _CDIN_Editor = New CDIN_Editor
-            Display(_CDIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your departement data", True)
+            DISPLAY(_CDIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your departement data", True)
         End If
     End Sub
 

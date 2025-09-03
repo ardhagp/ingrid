@@ -26,11 +26,10 @@ Public Class CDIN_Editor
     <SupportedOSPlatform("windows")>
     Private Sub CDIN_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If V_FORMAttrib.RowID = "-1" Then
-            If varFORMAttribute.RowID = "-1" Then
-                ChkAddNew.Visible = True
-                ChkAddNew.Checked = False
-            Else
-                ChkAddNew.Visible = False
+            ChkAddNew.Visible = True
+            ChkAddNew.Checked = False
+        Else
+            ChkAddNew.Visible = False
             ChkAddNew.Checked = False
             CboCompany.SelectedValue = Commands.CDIN.Editor.GETCompanyID(V_DatabaseEngine, V_FORMAttrib.RowID)
             TxtDeptCode.Text = Commands.CDIN.Editor.GETDeptCode(V_DatabaseEngine, V_FORMAttrib.RowID).ToString
@@ -43,15 +42,15 @@ Public Class CDIN_Editor
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Call CheckAllInput()
 
-        Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Company Code selected, Departement Code and Departement Name are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
-        Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Company Code selected, Departement Code and Departement Name are properly filled.", "Alert", frmDBdialogbox.MessageIcon.Alert, frmDBdialogbox.MessageTypes.OkOnly)
-        Return
+        If V_FORMAttrib.RowID = "-1" Then
+            Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Company Code selected, Departement Code and Departement Name are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Return
         ElseIf ((V_FORMAttrib.IsNew) AndAlso (Commands.CDIN.Editor.IsDuplicate(V_DatabaseEngine, CboCompany.SelectedValue.ToString, TxtDeptCode.XOSQLText))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Departement Code already registered.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf (Not (V_FORMAttrib.IsNew) AndAlso (Commands.CDIN.Editor.IsDuplicate(V_DatabaseEngine, CboCompany.SelectedValue.ToString, TxtDeptCode.XOSQLText, V_FORMAttrib.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Departement Code already used by another departement.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
-            Return
+        Return
         End If
 
         If (Commands.CDIN.Editor.PUSHData(V_DatabaseEngine, CboCompany.SelectedValue.ToString, TxtDeptCode.XOSQLText, TxtDeptName.XOSQLText, TxtDescription.XOSQLText, V_FORMAttrib.RowID)) Then

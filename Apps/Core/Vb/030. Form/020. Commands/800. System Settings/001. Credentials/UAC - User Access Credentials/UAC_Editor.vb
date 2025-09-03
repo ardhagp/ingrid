@@ -90,7 +90,7 @@ Public Class UAC_Editor
             End If
             TxtPassword.Text = V_FORMAttrib.Password
         End If
-        TxtPassword.XOPwdLengthMin = _MINPASSWORDLENGTH
+        TxtPassword.XOPwdLengthMin = V_MinPasswordLength
         Call GETDATA()
     End Sub
 
@@ -104,7 +104,7 @@ Public Class UAC_Editor
         ElseIf (TxtUsername.XOSQLText = String.Empty) OrElse (TxtPassword.XOSQLText = String.Empty) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Username and Password properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf ((_PWDChange) AndAlso (TxtPassword.TextLength < _MINPASSWORDLENGTH)) Then
+        ElseIf ((_PWDChange) AndAlso (TxtPassword.TextLength < V_MinPasswordLength)) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure your Password meets the minimum criteria.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf ((V_FORMAttrib.IsNew) AndAlso (Commands.UAC.Editor.IsDuplicate(V_DatabaseEngine, TxtUsername.XOSQLText))) Then
@@ -121,7 +121,7 @@ Public Class UAC_Editor
             RaiseEvent RecordSaved()
             Mainframe_n_6.Ts_status.Text = "Success"
         Else
-            Mainframe_n_6.ts_status.Text = "Failed to save"
+            Mainframe_n_6.Ts_status.Text = "Failed to save"
             Return
         End If
 

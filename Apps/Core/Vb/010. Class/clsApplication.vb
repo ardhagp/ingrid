@@ -32,11 +32,11 @@ Namespace Application
         'ReadOnly _SQL As New LibSQL.Application.Modules
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsModuleReady(ByVal TCODE As String, ByVal DatabaseEngine As String) As Boolean
+        Public Shared Function IsModuleReady(ByVal DBEngine As String, ByVal TCODE As String) As Boolean
             Dim V_IsModuleReady As Boolean
 
             Try
-                V_IsModuleReady = CType(LibSQL.Application.Modules.Exist(TCODE, DatabaseEngine), Boolean)
+                V_IsModuleReady = CType(LibSQL.Application.Modules.Exist(DBEngine, TCODE), Boolean)
 
                 Return V_IsModuleReady
             Catch ex As Exception
@@ -45,12 +45,12 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsModuleLocked(ByVal TCODE As String, ByVal DatabaseEngine As String) As Boolean
+        Public Shared Function IsModuleLocked(ByVal DBEngine As String, ByVal TCODE As String) As Boolean
             Dim V_IsModuleLocked As Boolean
 
             Try
 
-                V_IsModuleLocked = CType(LibSQL.Application.Modules.Locked(TCODE, DatabaseEngine), Boolean)
+                V_IsModuleLocked = CType(LibSQL.Application.Modules.Locked(DBEngine, TCODE), Boolean)
 
                 Return V_IsModuleLocked
             Catch ex As Exception

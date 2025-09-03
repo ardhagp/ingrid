@@ -36,12 +36,12 @@ Public Class LOGIN
 
         V_USERAttrib.UID = Commands.UAC.Login.GETUID(V_DatabaseEngine, TxtUsername.XOSQLText, TxtPassword.XOSQLText, V_USERAttrib.FirstName)
 
-        If varUSERattribute.UID = String.Empty Then
+        If V_USERAttrib.UID = String.Empty Then
             RaiseEvent LoginFailed()
             V_WrongLogin += 1
             SLFStatus.Items(0).Text = "Login Failed"
-            V_LOGUser.LoginFailed(V_DatabaseEngine, TxtUsername.XOSQLText)
-            Bridge.Security.WRITELOG.SENDLOG(TxtUsername.XOSQLText & " failed to login.", Bridge.Security.WRITELOG.LogType.Error)
+            V_LOGuser.LoginFailed(V_DatabaseEngine, TxtUsername.XOSQLText)
+            Bridge.Security.Writelog.Sendlog(TxtUsername.XOSQLText & " failed to login.", Bridge.Security.Writelog.LogType.Error)
             tmr_status.Enabled = True
             If V_WrongLogin = 3 Then
                 tmr_control.Enabled = True
@@ -53,8 +53,8 @@ Public Class LOGIN
             V_USERAttrib.Gender = Commands.UAC.Login.GETGender(V_DatabaseEngine, V_USERAttrib.UID)
             V_USERAttrib.Position = Commands.UAC.Login.GETPosition(V_DatabaseEngine, V_USERAttrib.UID)
             V_USERAttrib.IsAdministrator = Commands.UAC.Login.GETAdministrator(V_DatabaseEngine, V_USERAttrib.UID)
-            V_LOGUser.LoginSuccess(V_DatabaseEngine, V_USERAttrib.EID)
-            Bridge.Security.WRITELOG.SENDLOG(V_USERAttrib.FirstName & " is login.", Bridge.Security.WRITELOG.LogType.Information)
+            V_LOGuser.LoginSuccess(V_DatabaseEngine, V_USERAttrib.EID)
+            Bridge.Security.Writelog.Sendlog(V_USERAttrib.FirstName & " is login.", Bridge.Security.Writelog.LogType.Information)
             RaiseEvent LoginSuccess()
             Me.Close()
         End If

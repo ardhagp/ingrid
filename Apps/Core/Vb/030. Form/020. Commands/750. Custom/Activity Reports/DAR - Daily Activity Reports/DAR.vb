@@ -502,10 +502,10 @@ Public Class DAR
         If PctbxActivityPhoto.Image Is Nothing Then
             Decision("No photo selected.", "Alert", CMCv.frmDialogBox.MessageIcon.Alert, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            If _TEXTMARK = String.Empty Then
+            If V_Textmark = String.Empty Then
                 CopyPicture = PctbxActivityPhoto.Image
             Else
-                CopyPicture = CMCv.ImageEditor.Proccessor.Editor.Watermarker(PctbxActivityPhoto.Image, _TEXTMARK)
+                CopyPicture = CMCv.ImageEditor.Proccessor.Editor.Watermarker(PctbxActivityPhoto.Image, V_Textmark)
             End If
             Clipboard.SetImage(CopyPicture)
         End If
@@ -525,10 +525,10 @@ Public Class DAR
             SfdPhoto.Filter = "Photo File|*.jpg"
 
             If SfdPhoto.ShowDialog = DialogResult.OK Then
-                If _TEXTMARK = String.Empty Then
+                If V_Textmark = String.Empty Then
                     SavePicture = PctbxActivityPhoto.Image
                 Else
-                    SavePicture = CMCv.ImageEditor.Proccessor.Editor.Watermarker(PctbxActivityPhoto.Image, _TEXTMARK)
+                    SavePicture = CMCv.ImageEditor.Proccessor.Editor.Watermarker(PctbxActivityPhoto.Image, V_Textmark)
                 End If
                 SavePicture.Save(SfdPhoto.FileName, System.Drawing.Imaging.ImageFormat.Jpeg)
             End If

@@ -72,9 +72,9 @@ Namespace Commands.ACGR
         ''' <remarks>ForceRefresh = True akan menampilkan semua data tanpa filter</remarks>
         <SupportedOSPlatform("windows")>
         Public Shared Sub GETAccountList(ByVal DBEngine As String, ByVal Assets As dgn, ByVal Liability As dgn, ByVal Equity As dgn, ByVal Revenue As dgn, ByVal Expense As dgn, ByVal AccountingBook As cbo, ByVal Find As txt, Optional ForceRefresh As Boolean = False)
-            Dim V_CBO_Index As String
+            Dim V_CBO_Index As String = String.Empty
             'Isikan index combobox dengan data dari mainframe
-            varCB_index = AccountingBook.SelectedValue.ToString
+            V_CBO_Index = AccountingBook.SelectedValue.ToString
 
             If DBEngine = "MSSQL" Then
                 'Tampilkan data awal / tanpa filter / ForceRefresh=True
@@ -200,10 +200,10 @@ Namespace Commands.ACGR
 
                 V_Success = True
             Catch ex As Exception
-                varSuccess = False
+                V_Success = False
             End Try
 
-            Return varSuccess
+            Return V_Success
         End Function
 
     End Class
@@ -435,7 +435,7 @@ Namespace Commands.ACGR
                 V_IsDuplicate = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query), Integer)
             End If
 
-            If varISduplicate > 0 Then
+            If V_IsDuplicate > 0 Then
                 Return True
             Else
                 Return False
@@ -444,14 +444,14 @@ Namespace Commands.ACGR
 
         <SupportedOSPlatform("windows")>
         Public Shared Function PUSHData(ByVal DBEngine As String, ByVal AccountBookID As String, ByVal AccountGroupID As String, ByVal AccountNumber As String, ByVal AccountName As String, ByVal AccountEnable As Boolean, Optional ByVal RowID As String = "-1") As Boolean
-            Dim V_Success As Boolean
+            Dim V_Success As Boolean = False
             Try
-                Dim Hash As String = CMCv.Security.Encrypt.MD5()
+                Dim V_Hash As String = CMCv.Security.Encrypt.MD5()
 
                 If DBEngine = "MSSQL" Then
                     If RowID = "-1" Then
                         V_DBR_MSSQL2008(0).Query = String.Format("insert into dbo.[[ac]]account](account_id, account_book, account_group, account_num, account_name, account_enable) " &
-                                                            "values('{0}', '{1}','{2}','{3}','{4}','{5}')", Hash, AccountBookID, AccountGroupID, AccountNumber, AccountName, AccountEnable)
+                                                            "values('{0}', '{1}','{2}','{3}','{4}','{5}')", V_Hash, AccountBookID, AccountGroupID, AccountNumber, AccountName, AccountEnable)
                     Else
                         V_DBR_MSSQL2008(0).Query = String.Format("update dbo.[[ac]]account] set account_num = '{0}', account_name = '{1}', account_enable = '{2}' where account_id = '{3}'", AccountNumber, AccountName, AccountEnable, RowID)
                     End If
@@ -459,7 +459,7 @@ Namespace Commands.ACGR
                 ElseIf DBEngine = "MYSQL" Then
                     If RowID = "-1" Then
                         V_DBR_MYSQL(0).Query = String.Format("insert into ac_account(account_id, account_book, account_group, account_num, account_name, account_enable) " &
-                                                            "values('{0}', '{1}','{2}','{3}','{4}','{5}')", Hash, AccountBookID, AccountGroupID, AccountNumber, AccountName, AccountEnable)
+                                                            "values('{0}', '{1}','{2}','{3}','{4}','{5}')", V_Hash, AccountBookID, AccountGroupID, AccountNumber, AccountName, AccountEnable)
                     Else
                         V_DBR_MYSQL(0).Query = String.Format("update ac_account set account_num = '{0}', account_name = '{1}', account_enable = '{2}' where account_id = '{3}'", AccountNumber, AccountName, AccountEnable, RowID)
                     End If
@@ -467,10 +467,10 @@ Namespace Commands.ACGR
                 End If
                 V_Success = True
             Catch ex As Exception
-                varSuccess = False
+                V_Success = False
             End Try
 
-            Return varSuccess
+            Return V_Success
         End Function
     End Class
 End Namespace

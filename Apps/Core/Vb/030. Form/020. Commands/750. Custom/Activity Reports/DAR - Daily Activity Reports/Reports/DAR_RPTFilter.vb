@@ -111,7 +111,7 @@ Public Class DAR_RPTFilter
         End If
 
         _DAR_RPTContainer = New DAR_RPTContainer(_DS, V_USERAttrib.FirstName, _Color, GETAPPVERSION)
-        Display(_DAR_RPTContainer, IMAGEDB.Main.ImageLibrary.PRINTER_icon, "Print - Daily Activity Report", "Generated Daily Activity Report", True,)
+        DISPLAY(_DAR_RPTContainer, IMAGEDB.Main.ImageLibrary.PRINTER_ICON, "Print - Daily Activity Report", "Generated Daily Activity Report", True,)
     End Sub
 
     Private Sub _DAR_RPTContainer_ReportClosed() Handles _DAR_RPTContainer.ReportClosed

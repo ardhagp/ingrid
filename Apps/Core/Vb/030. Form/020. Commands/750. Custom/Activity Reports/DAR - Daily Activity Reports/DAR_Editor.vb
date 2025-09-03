@@ -273,7 +273,7 @@ Public Class DAR_Editor
             ElseIf Not CMCv.OperatingSystem.File.Info.IsExists(TxtPhotoPath.Text) Then
                 Decision("Your photo cannot be found.", "File not found", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
                 Return
-            ElseIf Not (OperatingSystem.File.Upload.IsAllowedSize(TxtPhotoPath.Text, _MAXUPLOADSIZE_PHOTO, True)) Then
+            ElseIf Not (OperatingSystem.File.Upload.IsAllowedSize(TxtPhotoPath.Text, V_MaxUploadSize_Photo, True)) Then
                 Return
             End If
 
@@ -386,7 +386,7 @@ Public Class DAR_Editor
             ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtFilePath.Text)) Then
                 Decision("Your file cannot be found.", "File not found", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
                 Return
-            ElseIf Not (OperatingSystem.File.Upload.IsAllowedSize(TxtFilePath.Text, _MAXUPLOADSIZE_PDF, True)) Then
+            ElseIf Not (OperatingSystem.File.Upload.IsAllowedSize(TxtFilePath.Text, V_MaxUploadSize_PDF, True)) Then
                 Return
             End If
 

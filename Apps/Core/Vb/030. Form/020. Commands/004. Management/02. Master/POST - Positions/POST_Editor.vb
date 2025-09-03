@@ -5,7 +5,7 @@ Public Class POST_Editor
 #Region "Variables"
     Public Event RecordSaved()
     Public _SQL As New LibSQL.Commands.POST.Editor
-    Public _FirstLoad As Boolean
+    Public V_ISfirstload As Boolean
 #End Region
 
 #Region "Subs Collections"
@@ -24,7 +24,7 @@ Public Class POST_Editor
     <SupportedOSPlatform("windows")>
     Private Sub POST_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '#Disable Warning BC42025 ' Access of shared member, constant member, enum member or nested type through an instance
-        _FirstLoad = True
+        V_ISfirstload = True
         _SQL.FILLCompany(V_DatabaseEngine, CboCompany)
         _SQL.FILLDepartement(V_DatabaseEngine, CboDepartement, CboCompany)
 
@@ -40,7 +40,7 @@ Public Class POST_Editor
             TxtPositionDescription.Text = LibSQL.Commands.POST.Editor.GETPositionDescription(V_DatabaseEngine, V_FORMAttrib.RowID)
         End If
 
-        _FirstLoad = False
+        V_ISfirstload = False
         '#Enable Warning BC42025 ' Access of shared member, constant member, enum member or nested type through an instance
     End Sub
 
@@ -50,7 +50,7 @@ Public Class POST_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub CboCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
-        If Not (_FirstLoad) Then
+        If Not (V_ISfirstload) Then
             _SQL.FILLDepartement(V_DatabaseEngine, CboDepartement, CboCompany)
         End If
     End Sub

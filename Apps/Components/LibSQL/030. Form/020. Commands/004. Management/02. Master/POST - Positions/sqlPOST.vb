@@ -51,10 +51,10 @@ Namespace Commands.POST
 
                 V_Success = True
             Catch ex As Exception
-                varSuccess = False
+                V_Success = False
             End Try
 
-            Return varSuccess
+            Return V_Success
         End Function
     End Class
 
@@ -78,27 +78,27 @@ Namespace Commands.POST
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Sub FILLDepartement(ByVal DBEngine As String, ByVal Departement As cbo, ByVal Company As cbo)
-            Dim V_Departement As String = String.Empty
+        Public Sub FILLDepartement(ByVal DBEngine As String, ByVal Department As cbo, ByVal Company As cbo)
+            Dim V_Department As String = String.Empty
 
             If Company.Items.Count <> 0 Then
-                V_Departement = Company.SelectedValue.ToString
+                V_Department = Company.SelectedValue.ToString
             End If
 
             If DBEngine = "MSSQL" Then
                 V_DBR_MSSQL2008(0).Query = String.Format("select d.department_id, (d.department_code + ' - ' + d.department_name) as [departement_code] from dbo.[[man]]department] d where d.department_company = '{0}' " &
-                                                    "order by d.department_code", V_Departement)
-                V_DBR_MSSQL2008(0).Dropdown = Departement
+                                                    "order by d.department_code", V_Department)
+                V_DBR_MSSQL2008(0).Dropdown = Department
                 V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(0), "Departement")
             ElseIf DBEngine = "MYSQL" Then
                 V_DBR_MYSQL(0).Query = String.Format("select d.department_id, (d.department_code + ' - ' + d.department_name) as `departement_code` from man_department d where d.department_company = '{0}' " &
-                                                    "order by d.department_code", V_Departement)
-                V_DBR_MYSQL(0).Dropdown = Departement
+                                                    "order by d.department_code", V_Department)
+                V_DBR_MYSQL(0).Dropdown = Department
                 V_DBE_MYSQL.GETDATATABLE(V_DBR_MYSQL(0), "Departement")
             End If
 
-            Departement.ValueMember = "department_id"
-            Departement.DisplayMember = "departement_code"
+            Department.ValueMember = "department_id"
+            Department.DisplayMember = "departement_code"
         End Sub
 
         <SupportedOSPlatform("Windows")>
@@ -145,7 +145,7 @@ Namespace Commands.POST
                 V_PostitionCode = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query).ToString
             End If
 
-            Return varPostitioncode
+            Return V_PostitionCode
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -160,7 +160,7 @@ Namespace Commands.POST
                 V_PostitionName = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query).ToString
             End If
 
-            Return varPostitionname
+            Return V_PostitionName
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -175,7 +175,7 @@ Namespace Commands.POST
                 V_PostitionDescription = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query).ToString
             End If
 
-            Return varPostitiondescription
+            Return V_PostitionDescription
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -233,10 +233,10 @@ Namespace Commands.POST
 
                 V_Success = True
             Catch ex As Exception
-                varSuccess = False
+                V_Success = False
             End Try
 
-            Return varSuccess
+            Return V_Success
         End Function
     End Class
 End Namespace

@@ -4,9 +4,9 @@ Imports CMCv
 Public Class ACGR_Editor
 
 #Region "Variables"
-    Private varSize As New Size(566, 445)
-    Private varSQLeditor As New Commands.ACGR.Editor
-    Private varISfirstload As Boolean
+    Private V_Size As New Size(566, 445)
+    Private V_SQLeditor As New Commands.ACGR.Editor
+    Private V_ISfirstload As Boolean
     Public Event RecordSaved()
 #End Region
 
@@ -23,10 +23,10 @@ Public Class ACGR_Editor
 #Region "Form Events"
     <SupportedOSPlatform("windows")>
     Private Sub frmACGR_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Size = varSize
+        Me.Size = V_Size
         Me.MinimumSize = Me.Size
 
-        _FirstLoad = True
+        V_ISfirstload = True
         'Fill cbo Plant
         Commands.ACGR.Editor.FILLCompany(V_DatabaseEngine, CboCompany)
 
@@ -55,14 +55,14 @@ Public Class ACGR_Editor
             CboAccountGroup.Enabled = False
         End If
 
-        _FirstLoad = False
+        V_ISfirstload = False
     End Sub
 #End Region
 
 #Region "Component Events"
     <SupportedOSPlatform("windows")>
     Private Sub CboPlant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
-        If Not (_FirstLoad) Then
+        If Not (V_ISfirstload) Then
             Commands.ACGR.Editor.FILLAccountingBook(V_DatabaseEngine, CboAccountingBook, CboCompany)
         End If
     End Sub

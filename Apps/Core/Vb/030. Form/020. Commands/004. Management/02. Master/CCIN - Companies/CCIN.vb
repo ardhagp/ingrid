@@ -4,8 +4,8 @@ Imports CMCv
 Public Class CCIN
 #Region "Variables"
     Private varSQLview As New LibSQL.Commands.CCIN.View
-    Private WithEvents frmCCINeditor As CCIN_Editor
-    Private WithEvents clsMMSmenu As New CMCv.UI.View.MenuStrip
+    Private WithEvents V_CCIN_Editor As CCIN_Editor
+    Private WithEvents _MMSmenu As New CMCv.UI.View.MenuStrip
 #End Region
 
 #Region "Function Collections"
@@ -26,39 +26,39 @@ Public Class CCIN
 
     Private Sub GETTableID()
         If DgnCCIN.RowCount = 0 Then
-            varFORMAttribute.RowID = "-1"
+            V_FORMAttrib.RowID = "-1"
         Else
-            varFORMAttribute.RowID = DgnCCIN.CurrentRow.Cells("company_id").Value.ToString
+            V_FORMAttrib.RowID = DgnCCIN.CurrentRow.Cells("company_id").Value.ToString
         End If
     End Sub
 #End Region
 
 #Region "Menu Strip Function"
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataAddNew() Handles clsMMSmenu.EventDataAddNew
-        With varFORMAttribute
+    Private Sub EventDataAddNew() Handles _MMSmenu.EventDataAddNew
+        With V_FORMAttrib
             .IsNew = True
             .RowID = "-1"
         End With
 
-        frmCCINeditor = New CCIN_Editor
-        DISPLAY(frmCCINeditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new company data", True)
+        V_CCIN_Editor = New CCIN_Editor
+        DISPLAY(V_CCIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new company data", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataEdit() Handles clsMMSmenu.EventDataEdit
+    Private Sub EventDataEdit() Handles _MMSmenu.EventDataEdit
         Call GETTableID()
         If V_FORMAttrib.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             V_FORMAttrib.IsNew = False
-            _CCIN_Editor = New CCIN_Editor
-            Display(_CCIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your company data", True)
+            V_CCIN_Editor = New CCIN_Editor
+            DISPLAY(V_CCIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your company data", True)
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
+    Private Sub EventDataDelete() Handles _MMSmenu.EventDataDelete
         Call GETTableID()
         If V_FORMAttrib.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -116,7 +116,7 @@ Public Class CCIN
 #End Region
 
     <SupportedOSPlatform("windows")>
-    Private Sub _CCIN_Editor_RecordSaved() Handles _CCIN_Editor.RecordSaved
+    Private Sub _CCIN_Editor_RecordSaved() Handles V_CCIN_Editor.RecordSaved
         Call GETDATA(True)
     End Sub
 

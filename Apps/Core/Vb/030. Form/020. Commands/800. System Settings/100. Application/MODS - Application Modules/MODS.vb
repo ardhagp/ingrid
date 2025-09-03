@@ -38,7 +38,7 @@ Public Class MODS
         V_FORMAttrib.RowID = "-1"
         V_FORMAttrib.Hash = CMCv.Security.Encrypt.MD5()
         _MODS_Editor = New MODS_Editor
-        Display(_MODS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new module", True)
+        DISPLAY(_MODS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new module", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -56,7 +56,7 @@ Public Class MODS
         Else
             V_FORMAttrib.IsNew = False
             _MODS_Editor = New MODS_Editor
-            Display(_MODS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
+            DISPLAY(_MODS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
         End If
     End Sub
 

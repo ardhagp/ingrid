@@ -71,8 +71,8 @@ Namespace Commands.DRTM
                     V_DBR_MYSQL(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from doc_template tpl {0} order by tpl.template_title", V_Where)
 
                     V_DBR_MYSQL(0).DataGrid = DateGrid
-                V_DBR_MYSQL(0).StatusBar = ContentStatusBar
-                V_DBE_MYSQL.GETDATATABLE(V_DBR_MYSQL(0), "TDARTemplate")
+                    V_DBR_MYSQL(0).StatusBar = ContentStatusBar
+                    V_DBE_MYSQL.GETDATATABLE(V_DBR_MYSQL(0), "TDARTemplate")
                 End If
             Catch ex As Exception
                 MsgBox(ex.ToString)

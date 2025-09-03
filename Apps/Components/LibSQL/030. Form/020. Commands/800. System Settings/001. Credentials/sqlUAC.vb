@@ -272,21 +272,21 @@ Namespace Commands.UAC
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
         Public Shared Function GETAdministrator(ByVal DBEngine As String, ByVal UID As String) As Boolean
-            Dim _IsAdministrator As Boolean
+            Dim V_IsAdministrator As Boolean = False
 
             Try
                 If DBEngine = "MSSQL" Then 'Run if MSSQL
                     V_DBR_MSSQL2008(0).Query = String.Format("select u.user_root from dbo.[[sys]]user] u where u.user_id = '{0}'", UID)
-                    _IsAdministrator = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Boolean)
+                    V_IsAdministrator = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Boolean)
                 ElseIf DBEngine = "MYSQL" Then 'Run if MYSQL
                     V_DBR_MYSQL(0).Query = String.Format("select u.user_root from sys_user u where u.user_id = '{0}'", UID)
-                    _IsAdministrator = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query), Boolean)
+                    V_IsAdministrator = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query), Boolean)
                 End If
             Catch ex As Exception
-                varISadministrator = False
+                V_IsAdministrator = False
             End Try
 
-            Return varISadministrator
+            Return V_IsAdministrator
         End Function
 
         Public Shared Function GETUID() As Integer
@@ -339,7 +339,7 @@ Namespace Commands.UAC
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
         Public Shared Function DELETEData(ByVal DBEngine As String, ByVal RowID As String) As Boolean
-            Dim _Success As Boolean
+            Dim V_Success As Boolean = False
             Try
                 If DBEngine = "MSSQL" Then 'Run if MSSQL
                     V_DBR_MSSQL2008(1).Query = String.Format("delete from dbo.[[sys]]user] where (user_id = '{0}')", RowID)
@@ -349,11 +349,11 @@ Namespace Commands.UAC
                     V_DBE_MYSQL.PUSHDATA(V_DBR_MYSQL(1).Query)
                 End If
 
-                varSuccess = True
+                V_Success = True
             Catch ex As Exception
-                varSuccess = False
+                V_Success = False
             End Try
-            Return varSuccess
+            Return V_Success
         End Function
     End Class
 
@@ -556,16 +556,16 @@ Namespace Commands.UAC
 
         <SupportedOSPlatform("windows")>
         Public Shared Function IsDuplicate(ByVal DBEngine As String, ByVal Username As String, Optional ByVal RowID As String = "-1") As Boolean
-            Dim _IsDuplicate As Integer = 0
+            Dim V_IsDuplicate As Integer = 0
 
             If RowID = "-1" Then
-                varDBreader_mssql2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}')", Username)
+                V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}')", Username)
             Else
-                varDBreader_mssql2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_id <> '{1}')", Username, RowID)
+                V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_id <> '{1}')", Username, RowID)
             End If
-            varISduplicate = CType(varDBengine_mssql2008.GETVALUE(varDBreader_mssql2008(1).Query, "db_universe_erp"), Integer)
+            V_IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query, "db_universe_erp"), Integer)
 
-            If varISduplicate = 0 Then
+            If V_IsDuplicate = 0 Then
                 Return False
             Else
                 Return True

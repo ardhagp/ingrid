@@ -26,9 +26,9 @@ Module Globals
     Public V_IMG_EDITOR As New CMCv.ImageEditor.Proccessor.Editor
     Public V_USERAccess As New Application.Access
     'Public V_SYSAPP As New Application.Modules
-    Public varLOGuser As New LibSQL.SystemLog.Activity.User
-    Public varLOGapp As New LibSQL.SystemLog.Activity.Application
-    Public varForcerefreshmainframedata As Boolean
+    Public V_LOGUser As New LibSQL.SystemLog.Activity.User
+    Public V_LOGApp As New LibSQL.SystemLog.Activity.Application
+    Public V_Forcerefreshmainframedata As Boolean
     'Public clsBridgelog As New Bridge.Security.WRITELOG
 
 
@@ -38,15 +38,15 @@ Module Globals
 
     'Public clsDBsqlite As Database.Engine.LocalDB
     Public clsDBsqlite As Database.Engine.SQLiteV3
-    Public WithEvents frmERC As New frmERerrorreporting
+    Public WithEvents frmERC As New frmErrorReporting
     'Public WithEvents TED As New frmTextEditor
-    Public WithEvents frmMSG As New frmDBdialogbox
+    Public WithEvents frmMSG As New frmDialogBox
 
     Public varVersionapplication As String
     Public varVersionnetworkapplication As Version
 
-    Public varFORMAttribute As New Ingrid.Main.GlobalRecord
-    Public varUSERAttribute As New Ingrid.Main.GlobalUser
+    Public V_FORMAttrib As New Ingrid.Main.GlobalRecord
+    Public V_USERAttrib As New Ingrid.Main.GlobalUser
 #End Region
 
     <SupportedOSPlatform("windows")>
@@ -100,7 +100,7 @@ Module Globals
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
     Public Sub PUSHERRORDATASHOW()
-        frmERC = New CMCv.frmERerrorreporting(clsECerrorcatcher, clsDBsqlite)
+        frmERC = New CMCv.frmErrorReporting(clsECerrorcatcher, clsDBsqlite)
         frmERC.ShowDialog()
         If Not (frmERC.ResumeNext) Then
             End
@@ -271,8 +271,8 @@ Module Globals
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
-    Public Function Decision(ByVal Message As String, ByVal Title As String, ByVal MessageIcon As CMCv.frmDBdialogbox.MessageIcon, ByVal ButtonType As CMCv.frmDBdialogbox.MessageTypes) As DialogResult
-        frmMSG = New CMCv.frmDBdialogbox(Message, Title, MessageIcon, ButtonType)
+    Public Function Decision(ByVal Message As String, ByVal Title As String, ByVal MessageIcon As CMCv.frmDialogBox.MessageIcon, ByVal ButtonType As CMCv.frmDialogBox.MessageTypes) As DialogResult
+        frmMSG = New CMCv.frmDialogBox(Message, Title, MessageIcon, ButtonType)
         Return frmMSG.ShowDialog()
         frmMSG.Dispose()
     End Function

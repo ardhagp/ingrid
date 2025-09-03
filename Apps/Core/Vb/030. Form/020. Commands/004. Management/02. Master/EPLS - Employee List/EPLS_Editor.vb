@@ -113,7 +113,7 @@ Public Class EPLS_Editor
             Mainframe_n_6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else
-            Mainframe_n_6.ts_status.Text = "Failed to save"
+            Mainframe_n_6.Ts_status.Text = "Failed to save"
             Return
         End If
 
@@ -150,7 +150,7 @@ Public Class EPLS_Editor
         OfdPhoto.Filter = "Photo File|*.Jpg;*.Jpeg"
 
         If OfdPhoto.ShowDialog = DialogResult.OK Then
-            If (OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, _MAXUPLOADSIZE_PHOTO, True)) Then
+            If (OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, V_MaxUploadSize_Photo, True)) Then
                 _Photo = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(OfdPhoto.FileName)
                 pctbxPhoto.Image = _Photo
                 _ChangePhoto = True

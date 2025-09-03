@@ -3,7 +3,7 @@
 Public Class Dummy
     Public Event Done()
     Private WithEvents V_Dummy_Editor As New Dummy_Editor
-    'Private _MMSMenu As VisualInheritanceFixer.MergeableMenuStrip
+    'Private _MMSmenu As VisualInheritanceFixer.MergeableMenuStrip
 
     <SupportedOSPlatform("Windows")>
     Private Sub AddNewToolStripMenuItem_Click(sender As Object, e As EventArgs)
@@ -17,28 +17,28 @@ Public Class Dummy
 
 #Region "CreateMenu"
     'Private Sub CreateMenu()
-    '    Dim _MMSMenu As New VisualInheritanceFixer.MergeableMenuStrip
+    '    Dim _MMSmenu As New VisualInheritanceFixer.MergeableMenuStrip
     '    Dim _item() As ToolStripMenuItem
     '    Dim _item_sub() As ToolStripMenuItem
     '    Dim _item_sep() As ToolStripSeparator
 
     '    ReDim _item(2)
-    '    _MMSMenu = New VisualInheritanceFixer.MergeableMenuStrip
-    '    _MMSMenu.Visible = True
-    '    _MMSMenu.InheritedToolStrip = SLFMenu
+    '    _MMSmenu = New VisualInheritanceFixer.MergeableMenuStrip
+    '    _MMSmenu.Visible = True
+    '    _MMSmenu.InheritedToolStrip = SLFMenu
 
     '    _item(0) = New ToolStripMenuItem() With {.Name = "DATAToolStripMenuItem", .Text = "DATA", .MergeAction = MergeAction.Insert, .MergeIndex = 1}
-    '    _MMSMenu.Items.Add(_item(0))
+    '    _MMSmenu.Items.Add(_item(0))
 
     '    _item(1) = New ToolStripMenuItem() With {.Name = "TOOLSToolStripMenuItem", .Text = "TOOLS", .MergeAction = MergeAction.Insert, .MergeIndex = 2}
-    '    _MMSMenu.Items.Add(_item(1))
+    '    _MMSmenu.Items.Add(_item(1))
 
-    '    Me.Controls.Add(_MMSMenu)
+    '    Me.Controls.Add(_MMSmenu)
 
     '    ReDim _item_sub(8)
     '    ReDim _item_sep(4)
 
-    '    For Each _s_item As ToolStripMenuItem In _MMSMenu.Items
+    '    For Each _s_item As ToolStripMenuItem In _MMSmenu.Items
 
     '        Select Case _s_item.Name
     '            Case "DATAToolStripMenuItem"
