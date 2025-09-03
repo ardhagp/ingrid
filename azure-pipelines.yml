@@ -216,7 +216,7 @@ steps:
   displayName: 'VSBuild - CI'
   inputs:
     solution: '**\*.sln'
-    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:InstallUrl="https://www.iupdt.my.id/beta/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
+    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:InstallUrl="https://ardhagp.github.io/ingrid/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
     platform: 'any cpu'
     configuration: 'release'
     clean: true
@@ -317,25 +317,15 @@ steps:
     usePAT: true
     patValue: '$(var_g_TOKEN_AZURE)'
 
-#- task: update-build-pipeline-variable@0
-#  inputs:
-#    variableName: 'var_g_Ingridversion_revision'
-#    variableDataType: 'int'
-#    newVariableValueInInt: 1
-#    pipelineUpdateComment: 'Prepare Versioning For Next Build'
-#    usePAT: true
-#    patValue: '$(var_g_TOKEN_AZURE)'
 
-#- task: version-increment-task@2
-#  inputs:
-#    versionVariable: '$(VAR_G_INGRIDVERSION_BUILD)'
-#    previewName: ''
-
-#- script: |
-#    echo Current Build: $(var_g_Ingridversion_build)
-#    set build=$(var_g_Ingridversion_build)
-#    set /a next=%build% + 1
-#    echo Next Build: %next%
-#    echo ##vso[task.setvariable variable=var_g_Ingridversion_build;isOutput=true]%next%
-#  displayName: 'Increment and Save Next Version'
-#  name: incrementStep
+#Updating Version for next revision
+- task: update-variablegroup-variable@0
+  condition: failed()
+  displayName: 'Prepare Version For Next Revision'
+  inputs:
+    variableGroupName: 'global_variables'
+    variableName: 'var_g_Ingridversion_revision'
+    variableDataType: 'int'
+    newVariableValueInInt: 1
+    usePAT: true
+    patValue: '$(var_g_TOKEN_AZURE)'
