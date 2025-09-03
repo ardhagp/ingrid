@@ -24,7 +24,7 @@ Partial Class CDIN
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         DgnCDIN = New dgn(components)
-        departement_id = New DataGridViewTextBoxColumn()
+        department_id = New DataGridViewTextBoxColumn()
         company_code = New DataGridViewTextBoxColumn()
         departement_code = New DataGridViewTextBoxColumn()
         departement_name = New DataGridViewTextBoxColumn()
@@ -65,7 +65,7 @@ Partial Class CDIN
         DgnCDIN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -73,10 +73,10 @@ Partial Class CDIN
         DgnCDIN.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         DgnCDIN.ColumnHeadersHeight = 43
         DgnCDIN.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DgnCDIN.Columns.AddRange(New DataGridViewColumn() {departement_id, company_code, departement_code, departement_name, departement_description})
+        DgnCDIN.Columns.AddRange(New DataGridViewColumn() {department_id, company_code, departement_code, departement_name, departement_description})
         DgnCDIN.Dock = DockStyle.Fill
         DgnCDIN.EnableHeadersVisualStyles = False
-        DgnCDIN.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnCDIN.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DgnCDIN.Location = New Point(0, 53)
         DgnCDIN.Margin = New Padding(4, 3, 4, 3)
         DgnCDIN.Name = "DgnCDIN"
@@ -84,7 +84,7 @@ Partial Class CDIN
         DgnCDIN.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.YellowGreen
-        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -97,14 +97,14 @@ Partial Class CDIN
         DgnCDIN.StandardTab = True
         DgnCDIN.TabIndex = 0
         ' 
-        ' departement_id
+        ' department_id
         ' 
-        departement_id.DataPropertyName = "departement_id"
-        departement_id.HeaderText = "ID"
-        departement_id.Name = "departement_id"
-        departement_id.ReadOnly = True
-        departement_id.SortMode = DataGridViewColumnSortMode.Programmatic
-        departement_id.Visible = False
+        department_id.DataPropertyName = "department_id"
+        department_id.HeaderText = "ID"
+        department_id.Name = "department_id"
+        department_id.ReadOnly = True
+        department_id.SortMode = DataGridViewColumnSortMode.Programmatic
+        department_id.Visible = False
         ' 
         ' company_code
         ' 
@@ -147,7 +147,7 @@ Partial Class CDIN
         ' 
         ' CDIN
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         ClientSize = New Size(915, 647)
         KeyPreview = True
         Margin = New Padding(7, 3, 7, 3)
@@ -164,7 +164,7 @@ Partial Class CDIN
         PerformLayout()
     End Sub
     Friend WithEvents DgnCDIN As dgn
-    Friend WithEvents departement_id As DataGridViewTextBoxColumn
+    Friend WithEvents department_id As DataGridViewTextBoxColumn
     Friend WithEvents company_code As DataGridViewTextBoxColumn
     Friend WithEvents departement_code As DataGridViewTextBoxColumn
     Friend WithEvents departement_name As DataGridViewTextBoxColumn

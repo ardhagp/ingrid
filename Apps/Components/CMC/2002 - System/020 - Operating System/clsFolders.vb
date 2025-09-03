@@ -1,8 +1,8 @@
 ﻿Namespace OperatingSystem
     Public Class Folder
         Public Shared Function Exists(ByVal FolderPath As String) As Boolean
-            Dim varFolderexists As New IO.DirectoryInfo(FolderPath)
-            Return varFolderexists.Exists
+            Dim V_FileExists As New IO.DirectoryInfo(FolderPath)
+            Return V_FileExists.Exists
         End Function
     End Class
 End Namespace

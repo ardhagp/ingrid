@@ -15,8 +15,8 @@ Public Class CONN_Editor
         C_MMSMenu.ShowMenuFILE(CMCv.UI.View.MenuStrip.ShowItem.Yes)
         _PWDChange = False
 
-        If (varFORMAttribute.IsNew) Then
-            varFORMAttribute.RowID = CMCv.Security.Encrypt.MD5()
+        If (V_FORMAttrib.IsNew) Then
+            V_FORMAttrib.RowID = CMCv.Security.Encrypt.MD5()
         Else
             Call LoadData()
         End If
@@ -24,7 +24,7 @@ Public Class CONN_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub LoadData()
-        Commands.CONN.Editor.GETRowValue(varFORMAttribute.RowID.ToString, Txt_ConnectionName, Cbo_DBEngine, Txt_Address, Txt_Port, Txt_Username, Txt_Password, _OldPassword, Txt_DataStorage, Txt_FileStorage, Chk_Default)
+        Commands.CONN.Editor.GETRowValue(V_FORMAttrib.RowID.ToString, Txt_ConnectionName, Cbo_DBEngine, Txt_Address, Txt_Port, Txt_Username, Txt_Password, _OldPassword, Txt_DataStorage, Txt_FileStorage, Chk_Default)
     End Sub
 
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
@@ -41,11 +41,11 @@ Public Class CONN_Editor
         Call CheckAllInput()
 
         If (Txt_ConnectionName.Text = String.Empty) OrElse (Txt_Address.Text = String.Empty) OrElse (Txt_Port.Text = String.Empty) OrElse (Txt_Username.Text = String.Empty) OrElse (Txt_Password.Text = String.Empty) Then
-            Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Connection Name, Address, Port, Username, Password are properly filled.", "Alert", frmDBdialogbox.MessageIcon.Alert, frmDBdialogbox.MessageTypes.OkOnly)
+            Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Connection Name, Address, Port, Username, Password are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        If (Commands.CONN.Editor.PUSHData(Txt_ConnectionName.Text, Cbo_DBEngine.Text, Txt_Address.Text, Txt_Port.Text, Txt_Username.Text, Txt_Password.Text, Txt_DataStorage.Text, Txt_FileStorage.Text, Chk_Default.Checked, varFORMAttribute.RowID.ToString, varFORMAttribute.IsNew, _PWDChange)) Then
+        If (Commands.CONN.Editor.PUSHData(Txt_ConnectionName.Text, Cbo_DBEngine.Text, Txt_Address.Text, Txt_Port.Text, Txt_Username.Text, Txt_Password.Text, Txt_DataStorage.Text, Txt_FileStorage.Text, Chk_Default.Checked, V_FORMAttrib.RowID.ToString, V_FORMAttrib.IsNew, _PWDChange)) Then
             SLFStatus.Text = "Success"
             RaiseEvent RecordSaved()
         Else
@@ -87,8 +87,8 @@ Public Class CONN_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub C_MMSMenu_EventFileUndoAll() Handles C_MMSMenu.EventFileUndoAll
-        If Decision("Do you want to undo all changes?", "Question", frmDBdialogbox.MessageIcon.Question, frmDBdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
-            If (varFORMAttribute.IsNew) Then
+        If Decision("Do you want to undo all changes?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
+            If (V_FORMAttrib.IsNew) Then
                 Txt_ConnectionName.Clear()
                 Txt_Address.Clear()
                 Txt_Port.Clear()

@@ -49,10 +49,10 @@ Public Class CONN
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub GETTableID()
-        varFORMAttribute.RowID = "-1"
+        V_FORMAttrib.RowID = "-1"
 
         If DgnConnection.RowCount > 0 Then
-            varFORMAttribute.RowID = DgnConnection.CurrentRow.Cells("ID").Value
+            V_FORMAttrib.RowID = DgnConnection.CurrentRow.Cells("ID").Value
         End If
     End Sub
 #End Region
@@ -63,7 +63,7 @@ Public Class CONN
 
         Bridge.Security.WRITELOG.SENDLOG("Connection Settings is opened.", Bridge.Security.WRITELOG.LogType.Information)
 
-        varDBengine_sqlite.Open(v_IsProduction)
+        V_DBE_SQLite.Open(v_IsProduction)
 
         Call LoadMenu()
 
@@ -81,7 +81,7 @@ Public Class CONN
     Private Sub CONN_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
         If Not (v_IsExtension) Then
             '_DBE_LocalDB.Close()
-            varDBengine_sqlite.Close()
+            V_DBE_SQLite.Close()
         End If
 
         Bridge.Security.WRITELOG.SENDLOG("Connection Settings is closed.", Bridge.Security.WRITELOG.LogType.Information)
@@ -98,8 +98,8 @@ Public Class CONN
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles C_MMSMenu.EventDataAddNew
-        varFORMAttribute.IsNew = True
-        varFORMAttribute.RowID = "-1"
+        V_FORMAttrib.IsNew = True
+        V_FORMAttrib.RowID = "-1"
         V_CONN_Editor = New CONN_Editor
         Display(V_CONN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new connection", True)
         SLFStatus.Text = String.Empty
@@ -111,10 +111,10 @@ Public Class CONN
     <SupportedOSPlatform("windows")>
     Public Sub EventDataEdit() Handles C_MMSMenu.EventDataEdit
         Call GETTableID()
-        varFORMAttribute.IsNew = False
+        V_FORMAttrib.IsNew = False
 
-        If varFORMAttribute.RowID Is "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDBdialogbox.MessageIcon.Error, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
+        If V_FORMAttrib.RowID Is "-1" Then
+            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             V_CONN_Editor = New CONN_Editor
             Display(V_CONN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update connection", True)
@@ -129,12 +129,12 @@ Public Class CONN
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles C_MMSMenu.EventDataDelete
         Call GETTableID()
-        If varFORMAttribute.RowID Is "-1" Then
-            Decision("no record selected", "error", CMCv.frmDBdialogbox.MessageIcon.Error, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
+        If V_FORMAttrib.RowID Is "-1" Then
+            Decision("no record selected", "error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            varFORMAttribute.IsNew = False
-            If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnConnection.CurrentRow.Cells("connectionname").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.frmDBdialogbox.MessageIcon.Question, CMCv.frmDBdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.CONN.View.DELETEData(varFORMAttribute.RowID.ToString)) Then
+            V_FORMAttrib.IsNew = False
+            If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnConnection.CurrentRow.Cells("connectionname").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If (Commands.CONN.View.DELETEData(V_FORMAttrib.RowID.ToString)) Then
                     Call GETDATA(True)
                     SLFStatus.Text = "Success"
                 Else

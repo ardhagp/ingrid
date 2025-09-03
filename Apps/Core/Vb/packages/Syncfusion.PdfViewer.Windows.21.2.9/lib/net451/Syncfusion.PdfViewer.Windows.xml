@@ -2476,7 +2476,7 @@
             <summary>
             Zooms the document to the specified value.
             </summary>
-            <param name="pfrmErrorentage">Value in PfrmErrorentage</param>
+            <param name="percentage">Value in Percentage</param>
         </member>
         <member name="M:Syncfusion.PdfViewer.Base.IPdfDocumentView.GoToFirstPage">
             <summary>
@@ -3393,14 +3393,14 @@
         <member name="F:Syncfusion.Windows.Forms.PdfViewer.Switches.RecordNavigationControlEvents">
             <summary>Enable Tracing for RecordNavigationControl events.</summary>
         </member>
-        <member name="F:Syncfusion.Windows.Forms.PdfViewer.Switches.SplittfrmErrorontrolEvents">
-            <summary>Enable Tracing for SplittfrmErrorontrol events.</summary>
+        <member name="F:Syncfusion.Windows.Forms.PdfViewer.Switches.SplitterControlEvents">
+            <summary>Enable Tracing for SplitterControl events.</summary>
         </member>
         <member name="F:Syncfusion.Windows.Forms.PdfViewer.Switches.TabBarEvents">
             <summary>Enable Tracing for TabBar events.</summary>
         </member>
-        <member name="F:Syncfusion.Windows.Forms.PdfViewer.Switches.TabBarSplittfrmErrorontrolEvents">
-            <summary>Enable Tracing for TabBarSplittfrmErrorontrol events.</summary>
+        <member name="F:Syncfusion.Windows.Forms.PdfViewer.Switches.TabBarSplitterControlEvents">
+            <summary>Enable Tracing for TabBarSplitterControl events.</summary>
         </member>
         <member name="F:Syncfusion.Windows.Forms.PdfViewer.Switches.MouseControllerDispatcherEvents">
             <summary>Enable Tracing for MouseControllerDispatcher events.</summary>
@@ -3528,11 +3528,11 @@
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.MouseControllerDispatcher.SetActiveController(Syncfusion.Windows.Forms.PdfViewer.IMouseController)">
             <summary>
-            Changes the active controller and raises an ActiveControllfrmErrorhanged event.
+            Changes the active controller and raises an ActiveControllerChanged event.
             </summary>
             <param name="value"></param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.MouseControllerDispatcher.SetMouseHovfrmErrorontroller(Syncfusion.Windows.Forms.PdfViewer.IMouseController,System.EventArgs)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.MouseControllerDispatcher.SetMouseHoverController(Syncfusion.Windows.Forms.PdfViewer.IMouseController,System.EventArgs)">
             <summary>
             Sets the controller that will receive mouse hovering messages. If the controller is changed,
             MouseHoverLeave and MouseHoverEnter calls are made.
@@ -3540,9 +3540,9 @@
             <param name="value"></param>
             <param name="e"></param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.MouseControllerDispatcher.OnActiveControllfrmErrorhanged(System.EventArgs)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.MouseControllerDispatcher.OnActiveControllerChanged(System.EventArgs)">
             <summary>
-            Raises the <see cref="E:Syncfusion.Windows.Forms.PdfViewer.MouseControllerDispatcher.ActiveControllfrmErrorhanged"/> event.
+            Raises the <see cref="E:Syncfusion.Windows.Forms.PdfViewer.MouseControllerDispatcher.ActiveControllerChanged"/> event.
             </summary>
             <param name="e">A <see cref="T:System.EventArgs"/> that contains the event data.</param>
         </member>
@@ -3638,7 +3638,7 @@
             </summary>
             <param name="e">A <see cref="T:System.EventArgs"/> that contains the event data.</param>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.MouseControllerDispatcher.ActiveControllfrmErrorhanged">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.MouseControllerDispatcher.ActiveControllerChanged">
             <summary>
             Indicates that the active controller has changed.
             </summary>
@@ -3652,7 +3652,7 @@
             has pressed a mouse button.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.MouseControllerDispatcher.MouseHovfrmErrorontroller">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.MouseControllerDispatcher.MouseHoverController">
             <summary>
             Returns the controller that currently receives mouse hovering messages.
             </summary>
@@ -4116,13 +4116,13 @@
             </summary>
             <value>A <see cref="T:System.String"/> value.</value>
         </member>
-        <member name="T:Syncfusion.Windows.Forms.PdfViewer.IGetfrmMessageProcListener">
+        <member name="T:Syncfusion.Windows.Forms.PdfViewer.IGetMsgProcListener">
             <exclude/>
         </member>
         <member name="F:Syncfusion.Windows.Forms.PdfViewer.ThreadHooks.IgnoreWndProcNcodeZero">
             <summary>
             Workaround for incident 35141. When calling Timer.Stop in GridGroupDropArea
-            this ends up calling MdiSysMenuProvider.frmMessageHook 
+            this ends up calling MdiSysMenuProvider.MsgHook 
             </summary>
         </member>
         <member name="T:Syncfusion.Windows.Forms.PdfViewer.RuntimeEnvironment">
@@ -4640,7 +4640,7 @@
             <summary></summary>
             <param name="control"></param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollBarCustomDraw.OnAftfrmErrorontrolConfigure(System.Windows.Forms.Control)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollBarCustomDraw.OnAfterControlConfigure(System.Windows.Forms.Control)">
             <summary></summary>
             <param name="control"></param>
         </member>
@@ -4818,9 +4818,9 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollBarCustomDraw.GetAftfrmErrorontrolsDockStyle">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollBarCustomDraw.GetAfterControlsDockStyle">
             <summary>
-            Gets DockStyle of aftfrmErrorontrols.
+            Gets DockStyle of afterControls.
             </summary>
             <returns></returns>
         </member>
@@ -4924,7 +4924,7 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollBarCustomDraw.OnAftfrmErrorontrolConfigure(System.Object,Syncfusion.Windows.Forms.PdfViewer.ConfigureControlEventArgs)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollBarCustomDraw.OnAfterControlConfigure(System.Object,Syncfusion.Windows.Forms.PdfViewer.ConfigureControlEventArgs)">
             <summary></summary>
             <param name="e"></param>
             <param name="sender"></param>
@@ -5211,7 +5211,7 @@
             Reset horizontal scrollbar to default height.
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.HScrollBarCustomDraw.GetAftfrmErrorontrolsDockStyle">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.HScrollBarCustomDraw.GetAfterControlsDockStyle">
             <summary>
             Gets dockStyle for controls which situated before scroll.
             </summary>
@@ -5806,7 +5806,7 @@
             <param name="scheme">Office2007 color scheme.</param>
             <returns>Color table.</returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.ColorTableOffice2007.RegistfrmErrorolorTable(Syncfusion.Windows.Forms.PdfViewer.ScrollBarCustomDrawStyles,Syncfusion.Windows.Forms.PdfViewer.ScrollBarOffice2007ColorScheme,Syncfusion.Windows.Forms.PdfViewer.ColorTableOffice2007)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.ColorTableOffice2007.RegisterColorTable(Syncfusion.Windows.Forms.PdfViewer.ScrollBarCustomDrawStyles,Syncfusion.Windows.Forms.PdfViewer.ScrollBarOffice2007ColorScheme,Syncfusion.Windows.Forms.PdfViewer.ColorTableOffice2007)">
             <summary>
             Registers color table within internal collection.
             </summary>
@@ -6098,7 +6098,7 @@
             <param name="scheme">Office2010 color scheme.</param>
             <returns>Color table.</returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.ColorTableOffice2010.RegistfrmErrorolorTable(Syncfusion.Windows.Forms.PdfViewer.ScrollBarCustomDrawStyles,Syncfusion.Windows.Forms.PdfViewer.ScrollBarOffice2010ColorScheme,Syncfusion.Windows.Forms.PdfViewer.ColorTableOffice2010)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.ColorTableOffice2010.RegisterColorTable(Syncfusion.Windows.Forms.PdfViewer.ScrollBarCustomDrawStyles,Syncfusion.Windows.Forms.PdfViewer.ScrollBarOffice2010ColorScheme,Syncfusion.Windows.Forms.PdfViewer.ColorTableOffice2010)">
             <summary>
             Registers color table within internal collection.
             </summary>
@@ -8260,7 +8260,7 @@
             Returns a reference to a scrollbar contained in a user control.
             </summary>
             <remarks>
-            SplittfrmErrorontrol	and	Workbookcontrol	check for the IScrollBarContainer to get the
+            Splittercontrol	and	Workbookcontrol	check for the IScrollBarContainer to get the
             scrollbar. This	enables	you	to replace the shared scrollbar with any user control
             that also has a	scrollbar. An example is the <see cref="T:Syncfusion.Windows.Forms.RecordNavigationScrollBar"/>.
             </remarks>
@@ -8668,23 +8668,23 @@
             is same as Parent's background.
             </summary>
         </member>
-        <member name="T:Syncfusion.Windows.Forms.PdfViewer.IScrollBarWrappfrmErrorontainer">
+        <member name="T:Syncfusion.Windows.Forms.PdfViewer.IScrollBarWrapperContainer">
             <summary>
             This interface provides properties for accessing a vertical and horizontal <see cref="T:Syncfusion.Windows.Forms.PdfViewer.ScrollBarWrapper"/>
-            and an <see cref="M:Syncfusion.Windows.Forms.PdfViewer.IScrollBarWrappfrmErrorontainer.UpdateScrollBars"/> method.
+            and an <see cref="M:Syncfusion.Windows.Forms.PdfViewer.IScrollBarWrapperContainer.UpdateScrollBars"/> method.
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.IScrollBarWrappfrmErrorontainer.UpdateScrollBars">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.IScrollBarWrapperContainer.UpdateScrollBars">
             <summary>
             Updates scrollbars to reflect recent changes in scroll position, minimum and maximum scroll position values.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.IScrollBarWrappfrmErrorontainer.VScrollBar">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.IScrollBarWrapperContainer.VScrollBar">
             <summary>
             Returns a reference to an object with vertical scrollbar settings of the control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.IScrollBarWrappfrmErrorontainer.HScrollBar">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.IScrollBarWrapperContainer.HScrollBar">
             <summary>
             Returns a reference to an object with horizontal scrollbar settings of the control.
             </summary>
@@ -9443,7 +9443,7 @@
         <member name="F:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.inDispose">
             <summary></summary>
         </member>
-        <member name="F:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.nTimfrmErrorount">
+        <member name="F:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.nTimerCount">
             <summary>
             Internal only.
             </summary>
@@ -9704,19 +9704,19 @@
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.WndProc(System.Windows.Forms.Message@)">
             <override/>
             <summary></summary>
-            <param name="frmMessage"/>
+            <param name="msg"/>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.WmNcCalcSize(System.Windows.Forms.Message@)">
             <summary></summary>
-            <param name="frmMessage"/>
+            <param name="msg"/>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.WmNcPaint(System.Windows.Forms.Message@)">
             <summary></summary>
-            <param name="frmMessage"/>
+            <param name="msg"/>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.WmPaint(System.Windows.Forms.Message@)">
             <summary></summary>
-            <param name="frmMessage"/>
+            <param name="msg"/>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.WmSetCursor(System.Windows.Forms.Message@)">
             <summary>
@@ -9735,11 +9735,11 @@
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.WmMouseDown(System.Windows.Forms.Message@)">
             <summary></summary>
-            <param name="frmMessage"/>
+            <param name="msg"/>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.WmMouseUp(System.Windows.Forms.Message@)">
             <summary></summary>
-            <param name="frmMessage"/>
+            <param name="msg"/>
         </member>
         <member name="F:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.verticalScrollValue">
             <summary>
@@ -9785,7 +9785,7 @@
             <summary>
             Decode the touch messages to do corresponding operations
             </summary>
-            <param name="frmMessage">windows touch messages</param>
+            <param name="msg">windows touch messages</param>
             <returns>return true when the message properly handled otherwise it will be false</returns>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.ApplyScrollbarColorTable">
@@ -10383,7 +10383,7 @@
             Increases small change of the ScrollBar.
             </summary>
             <param name="scrollBar"/>
-            <param name="nTimfrmErrorount"/>
+            <param name="nTimerCount"/>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.ScrollTipFeedbacks">
             <summary></summary>
@@ -10436,28 +10436,28 @@
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.SendMessage(System.Int32,System.IntPtr,System.IntPtr)">
             <summary></summary>
             <returns></returns>
-            <param name="frmMessage"/>
+            <param name="msg"/>
             <param name="wparam"/>
             <param name="lparam"/>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.SendMessage(System.Int32,System.IntPtr,System.Int32)">
             <summary></summary>
             <returns></returns>
-            <param name="frmMessage"/>
+            <param name="msg"/>
             <param name="wparam"/>
             <param name="lparam"/>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.SendMessage(System.Int32,System.Int32,System.IntPtr)">
             <summary></summary>
             <returns></returns>
-            <param name="frmMessage"/>
+            <param name="msg"/>
             <param name="wparam"/>
             <param name="lparam"/>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ScrollControl.SendMessage(System.Int32,System.Int32,System.Int32)">
             <summary></summary>
             <returns></returns>
-            <param name="frmMessage"/>
+            <param name="msg"/>
             <param name="wparam"/>
             <param name="lparam"/>
         </member>
@@ -11489,14 +11489,14 @@
             <summary>
             Indicates whether the rows were split at the given y coordinate.
             </summary>
-            <param name="cy">The vertical position in pfrmErrorentages of the splitter control's height.</param>
+            <param name="cy">The vertical position in percentages of the splitter control's height.</param>
             <returns>True if rows were split successfully; False if they were already split or the operation aborted.</returns>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.IDynamicSplitterFrame.SplitColumn(System.Int32)">
             <summary>
             Indicates whether the columns were split horizontally at the specified x coordinate.
             </summary>
-            <param name="cx">The horizontal position in pfrmErrorentages of the splitter control's width.</param>
+            <param name="cx">The horizontal position in percentages of the splitter control's width.</param>
             <returns>True if columns were split successfully; False if they were already split or the operation aborted.</returns>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.IDynamicSplitterFrame.DeleteRow(System.Int32)">
@@ -11590,7 +11590,7 @@
         </member>
         <member name="T:Syncfusion.Windows.Forms.PdfViewer.DynamicSplitBars">
             <summary>
-            Defines split behavior for a <see cref="T:Syncfusion.Windows.Forms.SplittfrmErrorontrol"/>.
+            Defines split behavior for a <see cref="T:Syncfusion.Windows.Forms.SplitterControl"/>.
             </summary>
         </member>
         <member name="F:Syncfusion.Windows.Forms.PdfViewer.DynamicSplitBars.None">
@@ -12410,7 +12410,7 @@
             make this property return the default color the next time it is queried.
             </remarks>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2003Colors.ControlGrippfrmErrorolor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2003Colors.ControlGripperColor">
             <summary>
             Gets or sets the color of the gripper.
             </summary>
@@ -12570,7 +12570,7 @@
             make this property return the default color the next time it is queried.
             </remarks>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2003Colors.GroupBarHeadfrmErrorolorLight">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2003Colors.GroupBarHeaderColorLight">
             <summary>
             Gets or sets the light-gradient color of groupBar header.
             </summary>
@@ -12580,7 +12580,7 @@
             make this property return the default color the next time it is queried.
             </remarks>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2003Colors.GroupBarHeadfrmErrorolorDark">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2003Colors.GroupBarHeaderColorDark">
             <summary>
             Gets or sets the dark-gradient color of groupBar header.
             </summary>
@@ -12675,7 +12675,7 @@
             Colors for blue colorscheme of the Office2007 visual style.
             </summary>
         </member>
-        <member name="F:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.s_silvfrmErrorolors">
+        <member name="F:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.s_silverColors">
             <summary>
             Colors for silver colorscheme of the Office2007 visual style.
             </summary>
@@ -12822,52 +12822,52 @@
             Gets or sets a dropdown selected gradient dark color for date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickfrmErrorheckBoxNormalColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickerCheckBoxNormalColor">
             <summary>
             Gets or sets a checkbox color for date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickfrmErrorheckBoxSelectedColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickerCheckBoxSelectedColor">
             <summary>
             Gets or sets a checkbox selected color for date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickfrmErrorheckBoxBorderPushedColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickerCheckBoxBorderPushedColor">
             <summary>
             Gets or sets a checkbox pushed border color for date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickfrmErrorheckBoxBorderNormalColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickerCheckBoxBorderNormalColor">
             <summary>
             Gets or sets a checkbox border color for date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickfrmErrorheckBoxInnerRectBorderNormalColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickerCheckBoxInnerRectBorderNormalColor">
             <summary>
             Gets or sets a checkbox inner rectangle border color for date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickfrmErrorheckBoxInnerRectBorderSelectedColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickerCheckBoxInnerRectBorderSelectedColor">
             <summary>
             Gets or sets a checkbox inner rectangle selected border color for date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickfrmErrorheckBoxInnerRectBorderPushedColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickerCheckBoxInnerRectBorderPushedColor">
             <summary>
             Gets or sets a checkbox inner rectangle pushed border color for date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickfrmErrorheckBoxInnerRectFillNormalColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickerCheckBoxInnerRectFillNormalColor">
             <summary>
             Gets or sets a checkbox inner rectangle filling color for date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickfrmErrorheckBoxInnerRectFillSelectedColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickerCheckBoxInnerRectFillSelectedColor">
             <summary>
             Gets or sets a checkbox inner rectangle filling selected color for date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickfrmErrorheckBoxInnerRectFillPushedColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.DataTimePickerCheckBoxInnerRectFillPushedColor">
             <summary>
             Gets or sets a checkbox inner rectangle filling pushed color for date time picker control.
             </summary>
@@ -12932,12 +12932,12 @@
             Gets or sets gradient light color for group bar item control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.GroupBarHeadfrmErrorolorDark">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.GroupBarHeaderColorDark">
             <summary>
             Gets or sets group bar control's header gradient color dark.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.GroupBarHeadfrmErrorolorLight">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.GroupBarHeaderColorLight">
             <summary>
             Gets or sets group bar control's header gradient color light.
             </summary>
@@ -12992,12 +12992,12 @@
             Gets or sets group bar control's header text color.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.GroupBarSplittfrmErrorolorDark">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.GroupBarSplitterColorDark">
             <summary>
             Gets or sets gradient dark color for splitter of group bar control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.GroupBarSplittfrmErrorolorLight">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.GroupBarSplitterColorLight">
             <summary>
             Gets or sets gradient light color for splitter of group bar control.
             </summary>
@@ -13867,7 +13867,7 @@
             Used in drawing of Tab bar splitter control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.TabBarSplitterSizeGrippfrmErrorolor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2007Colors.TabBarSplitterSizeGripperColor">
             <summary>
             Used in drawing of Tab bar splitter control.
             </summary>
@@ -14029,12 +14029,12 @@
             Initialize colors for Blue colorscheme of the Office2007 visual style.
             </summary>
         </member>
-        <member name="T:Syncfusion.Windows.Forms.PdfViewer.Office2007SilvfrmErrorolors">
+        <member name="T:Syncfusion.Windows.Forms.PdfViewer.Office2007SilverColors">
             <summary>
             Provides colors for silver colorscheme of the Office2007 visual style.
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.Office2007SilvfrmErrorolors.InitializeColors">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.Office2007SilverColors.InitializeColors">
             <summary>
             Initialize colors for Silver colorscheme of the Office2007 visual style.
             </summary>
@@ -14416,7 +14416,7 @@
             Colors for blue colorscheme of the Office2010 visual style.
             </summary>
         </member>
-        <member name="F:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.s_silvfrmErrorolors">
+        <member name="F:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.s_silverColors">
             <summary>
             Colors for silver colorscheme of the Office2010 visual style.
             </summary>
@@ -14563,52 +14563,52 @@
             Gets or sets a dropdown selected gradient dark color for Date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickfrmErrorheckBoxNormalColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickerCheckBoxNormalColor">
             <summary>
             Gets or sets a checkbox color for Date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickfrmErrorheckBoxSelectedColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickerCheckBoxSelectedColor">
             <summary>
             Gets or sets a checkbox selected color for Date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickfrmErrorheckBoxBorderPushedColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickerCheckBoxBorderPushedColor">
             <summary>
             Gets or sets a checkbox pushed border color for Date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickfrmErrorheckBoxBorderNormalColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickerCheckBoxBorderNormalColor">
             <summary>
             Gets or sets a checkbox border color for Date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickfrmErrorheckBoxInnerRectBorderNormalColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickerCheckBoxInnerRectBorderNormalColor">
             <summary>
             Gets or sets a checkbox inner rectangle border color for Date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickfrmErrorheckBoxInnerRectBorderSelectedColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickerCheckBoxInnerRectBorderSelectedColor">
             <summary>
             Gets or sets a checkbox inner rectangle selected border color for Date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickfrmErrorheckBoxInnerRectBorderPushedColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickerCheckBoxInnerRectBorderPushedColor">
             <summary>
             Gets or sets a checkbox inner rectangle pushed border color for Date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickfrmErrorheckBoxInnerRectFillNormalColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickerCheckBoxInnerRectFillNormalColor">
             <summary>
             Gets or sets a checkbox inner rectangle filling color for Date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickfrmErrorheckBoxInnerRectFillSelectedColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickerCheckBoxInnerRectFillSelectedColor">
             <summary>
             Gets or sets a checkbox inner rectangle filling selected color for Date time picker control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickfrmErrorheckBoxInnerRectFillPushedColor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.DataTimePickerCheckBoxInnerRectFillPushedColor">
             <summary>
             Gets or sets a checkbox inner rectangle filling pushed color for Date time picker control.
             </summary>
@@ -14678,12 +14678,12 @@
             Gets or sets gradient light color for group bar item control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.GroupBarHeadfrmErrorolorDark">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.GroupBarHeaderColorDark">
             <summary>
             Gets or sets group bar control's header gradient color dark.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.GroupBarHeadfrmErrorolorLight">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.GroupBarHeaderColorLight">
             <summary>
             Gets or sets group bar control's header gradient color light.
             </summary>
@@ -14743,12 +14743,12 @@
             Gets or sets group bar control's header text color.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.GroupBarSplittfrmErrorolorDark">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.GroupBarSplitterColorDark">
             <summary>
             Gets or sets gradient dark color for splitter of group bar control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.GroupBarSplittfrmErrorolorLight">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.GroupBarSplitterColorLight">
             <summary>
             Gets or sets gradient light color for splitter of group bar control.
             </summary>
@@ -15618,7 +15618,7 @@
             Used in drawing of Tab bar splitter control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.TabBarSplitterSizeGrippfrmErrorolor">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.Office2010Colors.TabBarSplitterSizeGripperColor">
             <summary>
             Used in drawing of Tab bar splitter control.
             </summary>
@@ -15775,12 +15775,12 @@
             Initialize colors for Blue colorscheme of the Office2010 visual style.
             </summary>
         </member>
-        <member name="T:Syncfusion.Windows.Forms.PdfViewer.Office2010SilvfrmErrorolors">
+        <member name="T:Syncfusion.Windows.Forms.PdfViewer.Office2010SilverColors">
             <summary>
             Provides colors for silver colorscheme of the Office2010 visual style.
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.Office2010SilvfrmErrorolors.InitializeColors">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.Office2010SilverColors.InitializeColors">
             <summary>
             Initialize colors for Silver colorscheme of the Office2010 visual style.
             </summary>
@@ -16617,7 +16617,7 @@
             <param name="borderStyle"/>
             <param name="border3DStyle"/>
             <param name="borderSingle"/>
-            <param name="BorderColor"/>
+            <param name="borderColor"/>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ControlDrawing.DrawBorder(System.Drawing.Graphics,System.Drawing.Rectangle,System.Windows.Forms.BorderStyle,System.Windows.Forms.Border3DStyle,System.Windows.Forms.ButtonBorderStyle,System.Drawing.Color,System.Windows.Forms.Border3DSide)">
             <summary></summary>
@@ -16626,7 +16626,7 @@
             <param name="borderStyle"/>
             <param name="border3DStyle"/>
             <param name="borderSingle"/>
-            <param name="BorderColor"/>
+            <param name="borderColor"/>
             <param name="sides"/>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.ControlDrawing.DrawFillColor(System.Drawing.Graphics,System.Drawing.Rectangle,System.Drawing.Color)">
@@ -16713,7 +16713,7 @@
             <param name="borderStyle">border style.</param>
             <param name="border3DStyle">3D border style.</param>
             <param name="borderSingle">border style in single mode.</param>
-            <param name="BorderColor">border color in single mode.</param>
+            <param name="borderColor">border color in single mode.</param>
             <param name="sides">sides that have to be drawn by methods.</param>
             <param name="useTransform">True - fix known bug in method, otherwise leave 
             old code (for compatibility only).</param>
@@ -17115,11 +17115,11 @@
             <summary></summary>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.XPThemes.RegistfrmErrorontrolDrawing(Syncfusion.Windows.Forms.PdfViewer.ThemedControlDrawing)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.XPThemes.RegisterControlDrawing(Syncfusion.Windows.Forms.PdfViewer.ThemedControlDrawing)">
             <summary></summary>
             <param name="tcd"/>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.XPThemes.UnregistfrmErrorontrolDrawing(Syncfusion.Windows.Forms.PdfViewer.ThemedControlDrawing)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.XPThemes.UnregisterControlDrawing(Syncfusion.Windows.Forms.PdfViewer.ThemedControlDrawing)">
             <summary></summary>
             <param name="tcd"/>
         </member>
@@ -17303,7 +17303,7 @@
             Reset vertical scrollbar to default width.
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.VScrollBarCustomDraw.GetAftfrmErrorontrolsDockStyle">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.VScrollBarCustomDraw.GetAfterControlsDockStyle">
             <summary>
             Gets dockStyle for controls which situated before scroll.
             </summary>
@@ -18009,7 +18009,7 @@
             <param name="pageIndex"></param>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.OpenURL(Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol,System.String,System.Drawing.Point)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.OpenURL(Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl,System.String,System.Drawing.Point)">
             <summary>
             Opens the weblink in browser
             </summary>
@@ -18178,7 +18178,7 @@
             <summary>
             
             </summary>
-            <param name="frmMessage"></param>
+            <param name="msg"></param>
             <param name="keyData"></param>
             <returns></returns>
         </member>
@@ -18262,15 +18262,15 @@
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.OnPageClicked(Syncfusion.Windows.Forms.PdfViewer.PageClickedEventArgs)">
             <summary>
-            Invoked when the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageClicked"/> attached event reaches an element in its route that is derived from this class. Implement this method to add class handling for <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageClicked"/> event.
+            Invoked when the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageClicked"/> attached event reaches an element in its route that is derived from this class. Implement this method to add class handling for <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageClicked"/> event.
             </summary>
-            <param name="eventArgs">The <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PageClickedEventArgs"/> that contains the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageClicked"/> event data. </param>
+            <param name="eventArgs">The <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PageClickedEventArgs"/> that contains the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageClicked"/> event data. </param>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.OnPageMouseMove(Syncfusion.Windows.Forms.PdfViewer.PageMouseMoveEventArgs)">
             <summary>
-            Invoked when the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageMouseMove"/> attached event reaches an element in its route that is derived from this class. Implement this method to add class handling for <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageMouseMove"/> event.
+            Invoked when the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageMouseMove"/> attached event reaches an element in its route that is derived from this class. Implement this method to add class handling for <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageMouseMove"/> event.
             </summary>
-            <param name="eventArgs">The <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PageMouseMoveEventArgs"/> that contains the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageMouseMove"/> event data. </param>
+            <param name="eventArgs">The <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PageMouseMoveEventArgs"/> that contains the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageMouseMove"/> event data. </param>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.DrawImage(System.Drawing.Imaging.Metafile,System.Drawing.Printing.PrintPageEventArgs)">
             <summary>
@@ -18281,9 +18281,9 @@
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.ZoomTo(System.Int32)">
             <summary>
-            Magnifies the page of the document to the provided zoom pfrmErrorentage.
+            Magnifies the page of the document to the provided zoom percentage.
             </summary>
-            <param name="pfrmErrorentage">Zoom pfrmErrorentage</param>
+            <param name="percentage">Zoom percentage</param>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.ZoomTo(Syncfusion.Windows.Forms.PdfViewer.ZoomMode)">
             <summary>
@@ -18441,7 +18441,7 @@
         </member>
         <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.ErrorOccurred">
             <summary>
-            Occurs when the error occurred in PdfViewfrmErrorontrol
+            Occurs when the error occurred in PdfViewerControl
             </summary>
         </member>
         <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.NavigationButtonStatesChanged">
@@ -18476,7 +18476,7 @@
         </member>
         <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.HyperlinkClicked">
             <summary>
-            Occurs when the Hyperlink is clicked in a page of <see cref="!:Syncfusion.Windows.PdfViewer.PdfViewfrmErrorontrol"/>
+            Occurs when the Hyperlink is clicked in a page of <see cref="!:Syncfusion.Windows.PdfViewer.PdfViewerControl"/>
             </summary>
         </member>
         <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.HyperlinkMouseOver">
@@ -18547,9 +18547,9 @@
             Gets or sets a value indicating whether text search is enabled. Default value is true.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.MinimumZoomPfrmErrorentage">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.MinimumZoomPercentage">
             <summary>
-            Gets and sets the minimum zoom pfrmErrorentage. The value should be in between 10 and 400. The default value is 50.
+            Gets and sets the minimum zoom percentage. The value should be in between 10 and 400. The default value is 50.
             </summary>
         </member>
         <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.LoadedDocument">
@@ -18569,7 +18569,7 @@
         </member>
         <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.VisualStyle">
             <summary>
-            Visual style of the PdfViewfrmErrorontrol.
+            Visual style of the PdfViewerControl.
             </summary>
         </member>
         <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.IsDocumentLoaded">
@@ -18660,9 +18660,9 @@
             Gets the page count.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.ZoomPfrmErrorentage">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.ZoomPercentage">
             <summary>
-            Gets the current zoom pfrmErrorentage.
+            Gets the current zoom percentage.
             </summary>
         </member>
         <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.CurrentPageIndex">
@@ -18744,171 +18744,171 @@
         <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfDocumentView.GESTUREINFO">
             <exclude/>
         </member>
-        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol">
+        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl">
             <summary>
-            PdfViewfrmErrorontrol helps to view and print PDF files. The DocumentToolbar helps to navigate
+            PdfViewerControl helps to view and print PDF files. The DocumentToolbar helps to navigate
             easily anywhere inside the document and also provides direct access to open, save and print
             documents.
             </summary>
             <summary>
-            PdfViewfrmErrorontrol helps to view and print PDF files. The DocumentToolbar helps to navigate
+            PdfViewerControl helps to view and print PDF files. The DocumentToolbar helps to navigate
             easily anywhere inside the document and also provides direct access to open, save and print
             documents.
             </summary>
             <summary>
-            PdfViewfrmErrorontrol helps to view and print PDF files. The DocumentToolbar helps to navigate
+            PdfViewerControl helps to view and print PDF files. The DocumentToolbar helps to navigate
             easily anywhere inside the document and also provides direct access to open, save and print
             documents.
             </summary>
         </member>
-        <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.m_themeStyle">
+        <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.m_themeStyle">
             <summary>
-            It contains the value of the <see cref="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ThemeStyle"/> property.
+            It contains the value of the <see cref="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ThemeStyle"/> property.
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.OnThemeNameChanged(System.String)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.OnThemeNameChanged(System.String)">
             <summary>
             Notifies when a theme name is changed.
             </summary>
             <param name="themeName">Represents the theme name.</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.GetControlName(System.String)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.GetControlName(System.String)">
             <exclude/>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.#ctor">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.#ctor">
             <summary>
-            Initializes PdfViewfrmErrorontrol.
+            Initializes PdfViewerControl.
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.WireAllMouseEvents(System.Windows.Forms.Control)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.WireAllMouseEvents(System.Windows.Forms.Control)">
             <summary>
             To wire up all the Mouse events
             </summary>
-            <param name="pdfViewfrmErrorontrol">Control to which the events should be wired</param>
+            <param name="pdfViewerControl">Control to which the events should be wired</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ButtonClick(System.Object,Syncfusion.Windows.Forms.PdfViewer.ButtonClickedEventArgs)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ButtonClick(System.Object,Syncfusion.Windows.Forms.PdfViewer.ButtonClickedEventArgs)">
             <summary>
             Represents the toolbar button click
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ViewfrmErrorontrol_MouseClick(System.Object,System.Windows.Forms.MouseEventArgs)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ViewerControl_MouseClick(System.Object,System.Windows.Forms.MouseEventArgs)">
             <summary>
             Represents the method that will handle the mouse click event.  
             </summary>
             <param name="sender">The sender the contains a PdfViewer.</param>
             <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> that contains the event data.</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ViewfrmErrorontrol_MouseMove(System.Object,System.Windows.Forms.MouseEventArgs)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ViewerControl_MouseMove(System.Object,System.Windows.Forms.MouseEventArgs)">
             <summary>
             Represents the method that will handle the mouse move event.  
             </summary>
             <param name="sender">The sender the contains a PdfViewer.</param>
             <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> that contains the event data.</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ViewfrmErrorontrol_MouseDown(System.Object,System.Windows.Forms.MouseEventArgs)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ViewerControl_MouseDown(System.Object,System.Windows.Forms.MouseEventArgs)">
             <summary>
             Represents the method that will handle the mouse down event.  
             </summary>
             <param name="sender">The sender the contains a PdfViewer.</param>
             <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> that contains the event data.</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ViewfrmErrorontrol_MouseUp(System.Object,System.Windows.Forms.MouseEventArgs)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ViewerControl_MouseUp(System.Object,System.Windows.Forms.MouseEventArgs)">
             <summary>
             Represents the method that will handle the mouse up event.  
             </summary>
             <param name="sender">The sender the contains a PdfViewer.</param>
             <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> that contains the event data.</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ZoomTo(System.Int32)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ZoomTo(System.Int32)">
             <summary>
-            Magnifies the page of the document to the provided zoom pfrmErrorentage.
+            Magnifies the page of the document to the provided zoom percentage.
             </summary>
-            <param name="pfrmErrorentage">Zoom pfrmErrorentage</param>
+            <param name="percentage">Zoom percentage</param>
         </member>
-        <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageClicked">
+        <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageClicked">
             <summary>
-            Occurs when a page is clicked in <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol"/>
-            </summary>
-        </member>
-        <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageMouseMove">
-            <summary>
-            Occurs when the mouse pointer moves over the page in <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol"/>
+            Occurs when a page is clicked in <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl"/>
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.Load(System.String)">
+        <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageMouseMove">
+            <summary>
+            Occurs when the mouse pointer moves over the page in <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl"/>
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.Load(System.String)">
             <summary>
             Loads a Pdf document in the Pdf viewer
             </summary>
             <param name="filePath">The path for the Pdf document to display in the pdf viewer</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.Load(System.String,System.String)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.Load(System.String,System.String)">
             <summary>
             Loads a Pdf document in the Pdf viewer
             </summary>
             <param name="filePath">The path for the Pdf document to display in the pdf viewer</param>
             <param name="password">The password for opening the document.</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.Load(Syncfusion.Pdf.Parsing.PdfLoadedDocument)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.Load(Syncfusion.Pdf.Parsing.PdfLoadedDocument)">
             <summary>
             Loads a pdf document in the Pdf viewer from the specified PdfLoadedDocuemnt.
             </summary>
             <param name="loadedDocument">The PdfLoadedDocument to be viewed in the PdfViewer</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.OnMouseWheel(System.Windows.Forms.MouseEventArgs)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.OnMouseWheel(System.Windows.Forms.MouseEventArgs)">
             <exclude/>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.Load(System.IO.Stream)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.Load(System.IO.Stream)">
             <summary>
             Loads a Pdf document  in the Pdf viewer from the specified stream.
             </summary>
             <param name="stream">A stream that contains the data for the Pdf document</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.OnSizeChanged(System.EventArgs)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.OnSizeChanged(System.EventArgs)">
             <exclude/>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.Unload">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.Unload">
             <summary>
             Unloads the Pdf document
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.Dispose">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.Dispose">
             <summary>
             Clean up any resources being used.
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ExportAsImage(System.Int32)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ExportAsImage(System.Int32)">
             <summary>
             Exports the specified page as Image
             </summary>
             <param name="pageIndex">The page index to be converted into image</param>
             <returns>Returns the specified page as Image</returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.FindText(System.String,System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.List{System.Drawing.RectangleF}}@)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.FindText(System.String,System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.List{System.Drawing.RectangleF}}@)">
             <summary>
             Returns the page number and rectangle positions of the text matchs
             </summary>
             <param name="text">The text to be searched</param>
             <param name="matchRect">Holds the page number and rectangle positions of the text matches</param>       
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.SearchText(System.String)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.SearchText(System.String)">
             <summary>
             Searches the text 
             </summary>
             <param name="text">The text to be searched</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.SearchNextText(System.String)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.SearchNextText(System.String)">
             <summary>
             Search the next occurrence of the text.
             </summary>
             <param name="targetString">The text to be searched</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.SearchPreviousText(System.String)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.SearchPreviousText(System.String)">
             <summary>
             Search the previous occurrence of the text.
             </summary>
             <param name="targetString">The text to be searched</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ExportAsImage(System.Int32,System.Single,System.Single)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ExportAsImage(System.Int32,System.Single,System.Single)">
             <summary>
             Exports the specified page as Image with respect to dpi specified.
             </summary>
@@ -18917,7 +18917,7 @@
             <param name="dpiY">The vertical DPI of the resultant image.</param>
             <returns>Returns the specified page as Image  with custom resolution</returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ExportAsImage(System.Int32,System.Int32,System.Single,System.Single)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ExportAsImage(System.Int32,System.Int32,System.Single,System.Single)">
             <summary>
             Exports the specified pages as Images with respect to dpi specified.
             </summary>
@@ -18927,7 +18927,7 @@
             <param name="dpiY">The vertical DPI of the resultant image.</param>
             <returns>Returns the specified pages as Images with custom resolution</returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ExportAsImage(System.Int32,System.Int32)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ExportAsImage(System.Int32,System.Int32)">
             <summary>
             Exports the specified pages as Images
             </summary>
@@ -18935,7 +18935,7 @@
             <param name="endIndex">The ending page index</param>
             <returns>Returns the specified pages as Images</returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ExportAsImage(System.Int32,System.Int32,System.Drawing.SizeF,System.Boolean)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ExportAsImage(System.Int32,System.Int32,System.Drawing.SizeF,System.Boolean)">
             <summary>
             Exports the specified pages as Images
             </summary>
@@ -18945,7 +18945,7 @@
             <param name="keepAspectRatio">Whether need to maintain the pdf page size</param>
             <returns>Returns the specified pages as images with custom size</returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ExportAsImage(System.Int32,System.Int32,System.Drawing.SizeF,System.Single,System.Single,System.Boolean)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ExportAsImage(System.Int32,System.Int32,System.Drawing.SizeF,System.Single,System.Single,System.Boolean)">
             <summary>
             Exports the specified pages as Images
             </summary>
@@ -18957,14 +18957,14 @@
             <param name="keepAspectRatio">Whether need to maintain the pdf page size</param>
             <returns>Returns the specified pages as images with custom size and resolution</returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ExportAsMetafile(System.Int32)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ExportAsMetafile(System.Int32)">
             <summary>
             Exports the specified page as System.Drawing.Imaging.Metafile
             </summary>
             <param name="pageIndex">The index of the PDF page.</param>
             <returns>Metafile</returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ExportAsMetafile(System.Int32,System.Int32)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ExportAsMetafile(System.Int32,System.Int32)">
             <summary>
             Exports the specified pages as System.Drawing.Imaging.Metafile
             </summary>
@@ -18972,7 +18972,7 @@
             <param name="endIndex">The end index of the PDF page</param>
             <returns>Array of Metafile</returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ExportAsImage(System.Int32,System.Drawing.SizeF,System.Boolean)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ExportAsImage(System.Int32,System.Drawing.SizeF,System.Boolean)">
             <summary>
             Exports the specified page as Image
             </summary>
@@ -18981,7 +18981,7 @@
             <param name="keepAspectRatio">Whether need to maintain the pdf page size</param>
             Returns the specified page as image with custom size
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ExportAsImage(System.Int32,System.Drawing.SizeF,System.Single,System.Single,System.Boolean)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ExportAsImage(System.Int32,System.Drawing.SizeF,System.Single,System.Single,System.Boolean)">
             <summary>
             Exports the specified page as Image
             </summary>
@@ -18992,13 +18992,13 @@
             <param name="keepAspectRatio">Whether need to maintain the pdf page size</param>
             Returns the specified page as image with custom size and resolution
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.GoToPageAtIndex(System.Int32)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.GoToPageAtIndex(System.Int32)">
             <summary>
             Navigates to the specified page.
             </summary>
             <param name="index">The page index</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.GoToBookmark(Syncfusion.Pdf.Interactive.PdfBookmark)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.GoToBookmark(Syncfusion.Pdf.Interactive.PdfBookmark)">
             <summary>
             Navigates to the location of the bookmark.
             </summary>
@@ -19006,64 +19006,64 @@
             <example>
             <code lang="C#">
             <![CDATA[
-            PdfBookmarkBase bookmark = pdfViewfrmErrorontrol1.LoadedDocument.Bookmarks;
+            PdfBookmarkBase bookmark = pdfViewerControl1.LoadedDocument.Bookmarks;
             if (bookmark.Count > 0)
-            pdfViewfrmErrorontrol1.GoToBookmark(bookmark[0]);]]>
+            pdfViewerControl1.GoToBookmark(bookmark[0]);]]>
             </code>
             </example>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ShowTextSearchBar">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ShowTextSearchBar">
             <summary>
             Display text search bar for search text in viewer.
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.Print(System.Boolean)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.Print(System.Boolean)">
             <summary>
             Prints the document loaded in the viewer.
             </summary>
             <param name="showPrintDialog">If set to true, displays the PrintDialog box. Prints in silent mode when set to false.</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.Print(System.Boolean,System.Boolean)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.Print(System.Boolean,System.Boolean)">
             <summary>
             Prints the document loaded in the viewer.
             </summary>
             <param name="showPrintDialog">If set to true, displays the PrintDialog box. Prints in silent mode when set to false.</param>
             <param name="printDocumentAsText">If set to true, text elements are printed as selectable text. Otherwise it is printed as non selectable text</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.Print(System.String)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.Print(System.String)">
             <summary>
             Prints the document on the specified printer.
             </summary>
             <param name="printerName">The name of the destination printer to print the PDF document.</param> 
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
             <summary>
             
             </summary>
-            <param name="frmMessage"></param>
+            <param name="msg"></param>
             <param name="keyData"></param>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.OnPageMouseMove(Syncfusion.Windows.Forms.PdfViewer.PageMouseMoveEventArgs)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.OnPageMouseMove(Syncfusion.Windows.Forms.PdfViewer.PageMouseMoveEventArgs)">
             <summary>
-            Invoked when the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageMouseMove"/> attached event reaches an element in its route that is derived from this class. Implement this method to add class handling for <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageMouseMove"/> event.
+            Invoked when the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageMouseMove"/> attached event reaches an element in its route that is derived from this class. Implement this method to add class handling for <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageMouseMove"/> event.
             </summary>
-            <param name="eventArgs">The <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PageMouseMoveEventArgs"/> that contains the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageMouseMove"/> event data. </param>
+            <param name="eventArgs">The <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PageMouseMoveEventArgs"/> that contains the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageMouseMove"/> event data. </param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.OnPageClicked(Syncfusion.Windows.Forms.PdfViewer.PageClickedEventArgs)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.OnPageClicked(Syncfusion.Windows.Forms.PdfViewer.PageClickedEventArgs)">
             <summary>
-            Invoked when the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageClicked"/> attached event reaches an element in its route that is derived from this class. Implement this method to add class handling for <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageClicked"/> event.
+            Invoked when the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageClicked"/> attached event reaches an element in its route that is derived from this class. Implement this method to add class handling for <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageClicked"/> event.
             </summary>
-            <param name="eventArgs">The <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PageClickedEventArgs"/> that contains the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageClicked"/> event data. </param>
+            <param name="eventArgs">The <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PageClickedEventArgs"/> that contains the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageClicked"/> event data. </param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ExtractText(System.Int32,System.Collections.Generic.List{Syncfusion.Windows.Forms.PdfViewer.TextData}@)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ExtractText(System.Int32,System.Collections.Generic.List{Syncfusion.Windows.Forms.PdfViewer.TextData}@)">
             <summary>
             Extracts text along with its format from the PDF Page.
             </summary>
             <param name="textDataCollection">Provides the text data collection</param>
             <returns>Returns the extracted text.</returns>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ExtractText(System.Int32,Syncfusion.Pdf.TextLines@)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ExtractText(System.Int32,Syncfusion.Pdf.TextLines@)">
             <summary>
             Extracts text from the page of PDF document with lines and words collection.
             </summary>
@@ -19071,139 +19071,139 @@
             <param name="textLines">Holds the lines with bounds in the page.</param>
             <returns>The Extracted Text.</returns>
         </member>
-        <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.components">
+        <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.components">
             <summary>
             Required designer variable.
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.Dispose(System.Boolean)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.Dispose(System.Boolean)">
             <summary>
             Clean up any resources being used.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.InitializeComponent">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify 
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ThemeStyle">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ThemeStyle">
             <summary>
-            Gets or sets the <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerVisualStyle"/> value used to customize the appearance of the <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol"/>.
+            Gets or sets the <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerVisualStyle"/> value used to customize the appearance of the <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl"/>.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.RenderingEngine">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.RenderingEngine">
             <summary>
             Specifies the rendering mode for PdfViewer.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.IsTextSelectionEnabled">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.IsTextSelectionEnabled">
             <summary>
             Gets or sets a value indicating whether text selection is enabled. Default value is true.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.IsTextSearchEnabled">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.IsTextSearchEnabled">
             <summary>
             Gets or sets a value indicating whether text search is enabled. Default value is true.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PrintDocument">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PrintDocument">
             <summary>
             Gets the print document
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.MinimumZoomPfrmErrorentage">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.MinimumZoomPercentage">
             <summary>
-            Gets and sets the minimum zoom pfrmErrorentage. The value should be in between 10 and 400. The default value is 50.
+            Gets and sets the minimum zoom percentage. The value should be in between 10 and 400. The default value is 50.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.LoadedDocument">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.LoadedDocument">
             <summary>
-            Gets the LoadedDocument of <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol"/>
+            Gets the LoadedDocument of <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl"/>
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.DocumentInformation">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.DocumentInformation">
             <summary>
             Gets the information of the PDF document loaded
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ReferencePath">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ReferencePath">
             <summary>
             Specifes the Pdfium path in PDF Viewer control
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.VisualStyle">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.VisualStyle">
             <summary>
-            Visual style of the PdfViewfrmErrorontrol.
+            Visual style of the PdfViewerControl.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageCount">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageCount">
             <summary>
             Gets the page count
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageBorderThickness">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageBorderThickness">
             <summary>
             Get or set the thickness of the page border. Default value is 1.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.IsBookmarkEnabled">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.IsBookmarkEnabled">
             <summary>
             Enables or disables the bookmark feature.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.IsDocumentLoaded">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.IsDocumentLoaded">
             <summary>
             Returns true, if the PDF document is loaded in PDF viewer control. Default value is false.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PrinterSettings">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PrinterSettings">
             <summary>
             Represents printer settings for the document to be printed.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.MessageBoxSettings">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.MessageBoxSettings">
             <summary>
             Gets and sets the message box settings.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.TextSearchSettings">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.TextSearchSettings">
             <summary>
             Defines the textsearch settings when searching the text in the document
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ToolbarSettings">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ToolbarSettings">
             <summary>
             Represents document toolbar settings for PdfViewer.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ShowToolBar">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ShowToolBar">
             <summary>
             Gets and sets the visibility of the toolbar
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ShowVerticalScrollBar">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ShowVerticalScrollBar">
             <summary>
-            Gets and sets the boolean value to show and hide the vertical scrollbar in <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol"/>
+            Gets and sets the boolean value to show and hide the vertical scrollbar in <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl"/>
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ShowHorizontalScrollBar">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ShowHorizontalScrollBar">
             <summary>
-            Gets and sets the boolean value to show and hide the horizontal scrollbar in <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol"/>
+            Gets and sets the boolean value to show and hide the horizontal scrollbar in <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl"/>
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.CursorMode">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.CursorMode">
             <summary>
             Gets and sets the Cursor Mode
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.EnableContextMenu">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.EnableContextMenu">
             <summary>
             Enables or disables the context menu.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.SpaceBetweenPages">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.SpaceBetweenPages">
             <summary>
             Defines the page gap between the pages. The minimum value of ‘SpaceBetweenPages’ is 0.
             </summary>
@@ -19211,162 +19211,162 @@
             Default value is 8. The unit of ‘SpaceBetweenPages’ is pixel.
             </remarks>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.HorizontalScrollOffset">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.HorizontalScrollOffset">
             <summary>
             Gets or sets the horizontal scroll offset of the control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.VerticalScrollOffset">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.VerticalScrollOffset">
             <summary>
             Gets or sets the vertical scroll offset of the control.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.CurrentPageIndex">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.CurrentPageIndex">
             <summary>
             Returns the index of the current page displayed in the Viewer
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.EnableNotificationBar">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.EnableNotificationBar">
             <summary>
             Enables the display of Notification bar on setting true.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ZoomMode">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ZoomMode">
             <summary>
             Gets and sets the Zoom Mode
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ScrollDisplacementValue">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ScrollDisplacementValue">
             <summary>
             Gets or sets the displacement value for scrolling.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ZoomPfrmErrorentage">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ZoomPercentage">
             <summary>
-            Gets the current zoom pfrmErrorentage.
+            Gets the current zoom percentage.
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ErrorOccurred">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ErrorOccurred">
             <summary>
-            Occurs when the error occurred in PdfViewfrmErrorontrol
+            Occurs when the error occurred in PdfViewerControl
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.DocumentLoading">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.DocumentLoading">
             <summary>
             Occurs when the PDF document is loading.
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ButtonClicked">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ButtonClicked">
             <summary>
             Occurs when button clicked.
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ScrollChanged">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ScrollChanged">
             <summary>
             Occurs when scroll is changed.
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.KeyPressed">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.KeyPressed">
             <summary>
             Occurs when a key is pressed
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.DocumentLoaded">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.DocumentLoaded">
             <summary>
             Occurs when the pdf document is loaded
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.HyperlinkClicked">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.HyperlinkClicked">
             <summary>
-            Occurs when the Hyperlink is clicked in a page of <see cref="!:Syncfusion.Windows.PdfViewer.PdfViewfrmErrorontrol"/>
+            Occurs when the Hyperlink is clicked in a page of <see cref="!:Syncfusion.Windows.PdfViewer.PdfViewerControl"/>
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.HyperlinkMouseOver">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.HyperlinkMouseOver">
             <summary>
             Occurs when the mouse is moved over the hyperlink.
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ImagePreRender">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ImagePreRender">
             <summary>
             Occurs prior to the rendering of every image in the document
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.CurrentPageChanged">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.CurrentPageChanged">
             <summary>
             Occurs when current page is changed.
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.TextSelectionCompleted">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.TextSelectionCompleted">
             <summary>
             Event triggered once the text selection was completed
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.DocumentUnloaded">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.DocumentUnloaded">
             <summary>
             Occurs when the PDF document is unloaded
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.BeginSave">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.BeginSave">
             <summary>
             Occurs before initiating the save operation of the PDF document.
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.EndSave">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.EndSave">
             <summary>
             Occurs after the completion of the save operation.
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PrintProgress">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PrintProgress">
             <summary>
             Occurs to provide information on how much of printing content were submitted to printing subsystem
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.BeginPrint">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.BeginPrint">
             <summary>
             Occurs when the print is called and before the first page of the document prints.
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.EndPrint">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.EndPrint">
             <summary>
             Occurs when the last page of the document has printed. This event also occurs if the printing process is canceled or an exception occurs during the printing process.
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.TextSearchInitiated">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.TextSearchInitiated">
             <summary>
             Occurs when the text search is initiated.
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.TextMatchFound">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.TextMatchFound">
             <summary>
             Occurs when a match for the searched text found.
             </summary>
         </member>
-        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.TextSearchCompleted">
+        <member name="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.TextSearchCompleted">
             <summary>
             Occurs when a text search operation is completed.
             </summary>
         </member>
-        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ButtonClickedEventHandler">
+        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ButtonClickedEventHandler">
             <summary>
             Delegate used for button clicked event.
             </summary>
         </member>
-        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.KeyPressedEventHandler">
+        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.KeyPressedEventHandler">
             <summary>
             Delegate used for KeyPressed event.
             </summary>
         </member>
-        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.DocumentLoadedEventHandler">
+        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.DocumentLoadedEventHandler">
             <summary>
             Delegate used for DocumentLoaded event.
             </summary>
         </member>
-        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ImagePreRenderEventHandler">
+        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ImagePreRenderEventHandler">
             <summary>
             Delegate used for ImagePreRender event.
             </summary>
         </member>
-        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.TextSelectionCompletedEventHandler">
+        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.TextSelectionCompletedEventHandler">
             <summary>
             Delegate used for TextSelectionCompleted event.
             </summary>
@@ -19656,7 +19656,7 @@
         </member>
         <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerVisualStyle">
             <summary>
-            Represents the class to define the style for <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol"/> control.
+            Represents the class to define the style for <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl"/> control.
             </summary>
         </member>
         <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerVisualStyle.m_defaultStyle">
@@ -19705,15 +19705,15 @@
         </member>
         <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerStyleInfoIdentity.m_pdfViewer">
             <summary>
-             Maintains the PdfViewfrmErrorontrol for create the identity. 
+             Maintains the PdfViewerControl for create the identity. 
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerStyleInfoIdentity.#ctor(Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerStyleInfoIdentity.#ctor(Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl)">
             <summary>
             Initializes a new instance of the <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerStyleInfoIdentity"/> class.
             </summary>
             <param name="pdfViewer">
-            <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol"/> to create an identity.
+            <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl"/> to create an identity.
             </param>
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.PdfViewerStyleInfoIdentity.GetBaseStyles(Syncfusion.Styles.IStyleInfo)">
@@ -19907,7 +19907,7 @@
         </member>
         <member name="T:Syncfusion.Windows.Forms.PdfViewer.HyperlinkClickedEventArgs">
             <summary>
-            Provides data for the <see cref="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.HyperlinkClicked"/> event.
+            Provides data for the <see cref="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.HyperlinkClicked"/> event.
             </summary> 
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.HyperlinkClickedEventArgs.#ctor(System.String,System.Drawing.Point)">
@@ -19930,7 +19930,7 @@
         </member>
         <member name="T:Syncfusion.Windows.Forms.PdfViewer.HyperlinkMouseOverEventArgs">
             <summary>
-            Provides data for the <see cref="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.HyperlinkMouseOver"/> event.
+            Provides data for the <see cref="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.HyperlinkMouseOver"/> event.
             </summary> 
         </member>
         <member name="M:Syncfusion.Windows.Forms.PdfViewer.HyperlinkMouseOverEventArgs.#ctor(System.String,System.Drawing.Point)">
@@ -19963,9 +19963,9 @@
             Represents printer settings for the document to be printed.
             </summary>
         </member>
-        <member name="F:Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings.ScalePfrmErrorentage">
+        <member name="F:Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings.ScalePercentage">
             <summary>
-            Scale pfrmErrorentage of the content. This value is applicable only if PageSizings is CustomScale. Default value is 100.
+            Scale percentage of the content. This value is applicable only if PageSizings is CustomScale. Default value is 100.
             </summary>
         </member>
         <member name="P:Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings.ShowPrintStatusDialog">
@@ -20109,7 +20109,7 @@
         </member>
         <member name="T:Syncfusion.Windows.Forms.PdfViewer.ErrorOccurredEventArgs">
             <summary>
-            Event arguments for the <see cref="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.ErrorOccurred"/> event
+            Event arguments for the <see cref="E:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.ErrorOccurred"/> event
             </summary>
         </member>
         <member name="P:Syncfusion.Windows.Forms.PdfViewer.ErrorOccurredEventArgs.Message">
@@ -20124,12 +20124,12 @@
         </member>
         <member name="T:Syncfusion.Windows.Forms.PdfViewer.PageClickedEventArgs">
             <summary>
-            Provides data for the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageClicked"/> event
+            Provides data for the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageClicked"/> event
             </summary>
         </member>
         <member name="T:Syncfusion.Windows.Forms.PdfViewer.PageMouseEventArgs">
             <summary>
-            Provides data for the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageClicked"/> and <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageMouseMove"/> events
+            Provides data for the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageClicked"/> and <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageMouseMove"/> events
             </summary>
         </member>
         <member name="P:Syncfusion.Windows.Forms.PdfViewer.PageMouseEventArgs.PageIndex">
@@ -20144,7 +20144,7 @@
         </member>
         <member name="T:Syncfusion.Windows.Forms.PdfViewer.PageMouseMoveEventArgs">
             <summary>
-            Provides data for the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol.PageMouseMove"/> event
+            Provides data for the <see cref="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl.PageMouseMove"/> event
             </summary>
         </member>
         <member name="T:Syncfusion.Windows.Forms.PdfViewer.MessageBoxSettings">
@@ -20210,7 +20210,7 @@
         </member>
         <member name="T:Syncfusion.Windows.Forms.PdfViewer.DocumentToolbar">
             <summary>
-            Toolbar for the PdfViewfrmErrorontrol.
+            Toolbar for the PdfViewerControl.
             </summary>
             <exclude/>
             <exclude/>
@@ -20276,7 +20276,7 @@
         </member>
         <member name="T:Syncfusion.Windows.Forms.PdfViewer.NotificationBar">
             <summary>
-            NotificationBar for the PdfViewfrmErrorontrol.
+            NotificationBar for the PdfViewerControl.
             </summary>
             <exclude/>
             <exclude />
@@ -20356,17 +20356,17 @@
             Gets or sets the font of the text displayed in the link.
             </summary>
         </member>
-        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorursorMode">
+        <member name="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerCursorMode">
             <summary>
             Represent the cursor modes
             </summary>
         </member>
-        <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorursorMode.SelectTool">
+        <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerCursorMode.SelectTool">
             <summary>
             This tool is used for selecting texts.
             </summary>
         </member>
-        <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorursorMode.HandTool">
+        <member name="F:Syncfusion.Windows.Forms.PdfViewer.PdfViewerCursorMode.HandTool">
             <summary>
             This tool is used for dragging and scrolling the pages in any direction (pan).
             </summary>
@@ -20433,7 +20433,7 @@
             Represents document toolbar settings for PdfViewer.
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.DocumentToolbarSettings.#ctor(Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.DocumentToolbarSettings.#ctor(Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl)">
             <summary>
             Initializes the ToolbarItem
             </summary>
@@ -20524,9 +20524,9 @@
             Represents document toolbar items
             </summary>
         </member>
-        <member name="M:Syncfusion.Windows.Forms.PdfViewer.ToolbarItem.#ctor(Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol)">
+        <member name="M:Syncfusion.Windows.Forms.PdfViewer.ToolbarItem.#ctor(Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl)">
             <summary>
-            Initializes a new instance of the <see cref="T:Syncfusion.Windows.Forms.PdfViewer.ToolbarItem"/> of the specified <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewfrmErrorontrol"/>.
+            Initializes a new instance of the <see cref="T:Syncfusion.Windows.Forms.PdfViewer.ToolbarItem"/> of the specified <see cref="T:Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl"/>.
             </summary>
             <param name="control">The control with which the toolbar item belongs to.</param>
         </member>
@@ -20580,7 +20580,7 @@
             Custom event argument class used to notify when a key is pressed.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.PdfViewer.KeyPressEventArgs.frmMessage">
+        <member name="P:Syncfusion.Windows.Forms.PdfViewer.KeyPressEventArgs.msg">
             <summary>
             Returns the message.
             </summary>

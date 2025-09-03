@@ -39,16 +39,16 @@ Partial Class LOGIN
         ' 
         PnlBottomButton.Controls.Add(BtnCancel)
         PnlBottomButton.Controls.Add(BtnLogin)
-        PnlBottomButton.Location = New Point(0, 152)
-        PnlBottomButton.Margin = New Padding(5, 3, 5, 3)
-        PnlBottomButton.Size = New Size(441, 58)
+        PnlBottomButton.Location = New Point(0, 265)
+        PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
+        PnlBottomButton.Size = New Size(630, 97)
         PnlBottomButton.Controls.SetChildIndex(BtnLogin, 0)
         PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
         ' 
         ' pnl_
         ' 
-        pnl_.Margin = New Padding(5, 3, 5, 3)
-        pnl_.Size = New Size(441, 61)
+        pnl_.Margin = New Padding(7, 5, 7, 5)
+        pnl_.Size = New Size(630, 104)
         ' 
         ' SLFPanel
         ' 
@@ -56,8 +56,8 @@ Partial Class LOGIN
         SLFPanel.Controls.Add(Lbl1)
         SLFPanel.Controls.Add(TxtPassword)
         SLFPanel.Controls.Add(TxtUsername)
-        SLFPanel.Margin = New Padding(5, 3, 5, 3)
-        SLFPanel.Size = New Size(441, 210)
+        SLFPanel.Margin = New Padding(7, 5, 7, 5)
+        SLFPanel.Size = New Size(630, 362)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(TxtUsername, 0)
         SLFPanel.Controls.SetChildIndex(TxtPassword, 0)
@@ -75,17 +75,17 @@ Partial Class LOGIN
         BtnLogin.FlatStyle = FlatStyle.Flat
         BtnLogin.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnLogin.ForeColor = Color.White
-        BtnLogin.Location = New Point(186, 8)
-        BtnLogin.Margin = New Padding(4, 3, 4, 3)
+        BtnLogin.Location = New Point(266, 13)
+        BtnLogin.Margin = New Padding(6, 5, 6, 5)
         BtnLogin.Name = "BtnLogin"
-        BtnLogin.Size = New Size(117, 46)
+        BtnLogin.Size = New Size(167, 77)
+        BtnLogin.TabIndex = 2
+        BtnLogin.Text = "&Login"
+        BtnLogin.UseVisualStyleBackColor = False
         BtnLogin.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
         BtnLogin.XOTampilkanFocusBorder = False
         BtnLogin.XOValidasiSemuaInput = False
         BtnLogin.XOValidasiSemuaInputTag = Nothing
-        BtnLogin.TabIndex = 2
-        BtnLogin.Text = "&Login"
-        BtnLogin.UseVisualStyleBackColor = False
         ' 
         ' BtnCancel
         ' 
@@ -98,27 +98,29 @@ Partial Class LOGIN
         BtnCancel.FlatStyle = FlatStyle.Flat
         BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
-        BtnCancel.Location = New Point(310, 8)
-        BtnCancel.Margin = New Padding(4, 3, 4, 3)
+        BtnCancel.Location = New Point(443, 13)
+        BtnCancel.Margin = New Padding(6, 5, 6, 5)
         BtnCancel.Name = "BtnCancel"
-        BtnCancel.Size = New Size(117, 46)
+        BtnCancel.Size = New Size(167, 77)
+        BtnCancel.TabIndex = 3
+        BtnCancel.Text = "&Cancel"
+        BtnCancel.UseVisualStyleBackColor = False
         BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
         BtnCancel.XOTampilkanFocusBorder = False
         BtnCancel.XOValidasiSemuaInput = False
         BtnCancel.XOValidasiSemuaInputTag = Nothing
-        BtnCancel.TabIndex = 3
-        BtnCancel.Text = "&Cancel"
-        BtnCancel.UseVisualStyleBackColor = False
         ' 
         ' TxtUsername
         ' 
         TxtUsername.AcceptsReturn = True
         TxtUsername.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtUsername.Location = New Point(127, 37)
-        TxtUsername.Margin = New Padding(4, 3, 4, 3)
+        TxtUsername.Location = New Point(181, 62)
+        TxtUsername.Margin = New Padding(6, 5, 6, 5)
         TxtUsername.MaxLength = 255
         TxtUsername.Name = "TxtUsername"
-        TxtUsername.Size = New Size(266, 29)
+        TxtUsername.Size = New Size(378, 39)
+        TxtUsername.TabIndex = 0
+        TxtUsername.Tag = "txt"
         TxtUsername.XOAutoTrim = True
         TxtUsername.XOHarusDiisi = True
         TxtUsername.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -138,19 +140,19 @@ Partial Class LOGIN
         TxtUsername.XOSQLText = ""
         TxtUsername.XOTanpaSpasi = False
         TxtUsername.XOValidasiField = Nothing
-        TxtUsername.TabIndex = 0
-        TxtUsername.Tag = "txt"
         ' 
         ' TxtPassword
         ' 
         TxtPassword.AcceptsReturn = True
         TxtPassword.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtPassword.Location = New Point(127, 77)
-        TxtPassword.Margin = New Padding(4, 3, 4, 3)
+        TxtPassword.Location = New Point(181, 128)
+        TxtPassword.Margin = New Padding(6, 5, 6, 5)
         TxtPassword.MaxLength = 255
         TxtPassword.Name = "TxtPassword"
         TxtPassword.PasswordChar = "●"c
-        TxtPassword.Size = New Size(266, 29)
+        TxtPassword.Size = New Size(378, 39)
+        TxtPassword.TabIndex = 1
+        TxtPassword.Tag = "txt"
         TxtPassword.XOAutoTrim = False
         TxtPassword.XOHarusDiisi = True
         TxtPassword.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -170,32 +172,30 @@ Partial Class LOGIN
         TxtPassword.XOSQLText = ""
         TxtPassword.XOTanpaSpasi = False
         TxtPassword.XOValidasiField = Nothing
-        TxtPassword.TabIndex = 1
-        TxtPassword.Tag = "txt"
         ' 
         ' Lbl1
         ' 
         Lbl1.AutoSize = True
         Lbl1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Lbl1.Location = New Point(26, 40)
-        Lbl1.Margin = New Padding(4, 0, 4, 0)
+        Lbl1.Location = New Point(37, 67)
+        Lbl1.Margin = New Padding(6, 0, 6, 0)
         Lbl1.Name = "Lbl1"
-        Lbl1.Size = New Size(81, 21)
-        Lbl1.XOCustomElipsis = False
+        Lbl1.Size = New Size(121, 32)
         Lbl1.TabIndex = 998
         Lbl1.Text = "Username"
+        Lbl1.XOCustomElipsis = False
         ' 
         ' Lbl2
         ' 
         Lbl2.AutoSize = True
         Lbl2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Lbl2.Location = New Point(31, 81)
-        Lbl2.Margin = New Padding(4, 0, 4, 0)
+        Lbl2.Location = New Point(44, 135)
+        Lbl2.Margin = New Padding(6, 0, 6, 0)
         Lbl2.Name = "Lbl2"
-        Lbl2.Size = New Size(76, 21)
-        Lbl2.XOCustomElipsis = False
+        Lbl2.Size = New Size(111, 32)
         Lbl2.TabIndex = 999
         Lbl2.Text = "Password"
+        Lbl2.XOCustomElipsis = False
         ' 
         ' tmr_status
         ' 
@@ -207,12 +207,12 @@ Partial Class LOGIN
         ' 
         ' LOGIN
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(441, 293)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(630, 488)
         ControlBox = False
         FormBorderStyle = FormBorderStyle.FixedDialog
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
+        Margin = New Padding(10, 5, 10, 5)
         Name = "LOGIN"
         PnlBottomButton.ResumeLayout(False)
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

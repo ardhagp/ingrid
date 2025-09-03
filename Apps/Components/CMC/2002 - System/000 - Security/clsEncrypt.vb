@@ -18,32 +18,59 @@ Namespace Security
         End Function
 
         Public Shared Function MD5(Optional ByVal Message As String = "") As String
-            Dim varEmessage As String
-            Dim varGuid As String
+            Dim _EMessage As String
+            Dim _GUID As String
 
             If Message = String.Empty Then
-                varGuid = System.Guid.NewGuid.ToString
-                varEmessage = EncryptProvider.Md5(CStr(Now) & RandomString() & varGuid)
+                _GUID = System.Guid.NewGuid.ToString
+                _EMessage = EncryptProvider.Md5(CStr(Now) & RandomString() & _GUID)
             Else
-                varEmessage = EncryptProvider.Md5(Message)
+                _EMessage = EncryptProvider.Md5(Message)
             End If
 
-            Return varEmessage
+            Return _EMessage
         End Function
 
         <SupportedOSPlatform("windows")>
         Public Shared Function AES(Message As String) As String
-            Dim varEmessage As String = EncryptProvider.AESEncrypt(Message, varSalt)
-            Return varEmessage
+            Dim _EMessage As String = EncryptProvider.AESEncrypt(Message, V_SALT)
+            Return _EMessage
         End Function
+
+        'Public Function Rijndael(ByVal Message As String) As String
+        '    Security.Engine.EncryptionAlgorithm = Engine.Algorithm.Rijndael
+        '    Security.Engine.Encoding = Engine.EncodingType.HEX
+        '    Security.Engine.Key = V_SALT
+
+        '    If Security.Engine.EncryptString(Message) Then
+        '        Return Security.Engine.Content
+        '    Else
+        '        Return String.Empty
+        '    End If
+
+        'End Function
     End Class
 
     Public Class Decrypt
         <SupportedOSPlatform("windows")>
         Public Shared Function AES(Message As String) As String
-            Dim varEmessage As String = EncryptProvider.AESDecrypt(Message, varSalt)
-            Return varEmessage
+            Dim _EMessage As String = EncryptProvider.AESDecrypt(Message, V_SALT)
+            Return _EMessage
         End Function
+
+        'Public Function Rijndael(ByVal Message As String) As String
+        '    Security.Engine.EncryptionAlgorithm = Engine.Algorithm.Rijndael
+        '    Security.Engine.Encoding = Engine.EncodingType.HEX
+        '    Security.Engine.Key = V_SALT
+        '    Security.Engine.Content = Message
+
+        '    If Security.Engine.DecryptString Then
+        '        Return Security.Engine.Content
+        '    Else
+        '        Return String.Empty
+        '    End If
+
+        'End Function
     End Class
 End Namespace
 

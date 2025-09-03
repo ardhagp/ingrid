@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class Rdo
+Public Class rdo
     Inherits System.Windows.Forms.RadioButton
 
     <SupportedOSPlatform("windows")>

@@ -6,7 +6,7 @@
 ''' Datagridview dengan warna random dan nomor urut baris.
 ''' </summary>
 ''' <remarks></remarks>
-Public Class Dgn
+Public Class dgn
     Public Event XOSelected()
     'Public Event SLF_NewGridColor()
 
@@ -14,7 +14,7 @@ Public Class Dgn
     Public Sub New()
         InitializeComponent()
         Call ActivateLicenses()
-        'MyBase.AlternatingRowsDefaultCellStyle.BackColor = clsCodebase.WarnaAcakBaru(190, 190, 190, 255, 255, 255)
+        'MyBase.AlternatingRowsDefaultCellStyle.BackColor = CBS.WarnaAcakBaru(190, 190, 190, 255, 255, 255)
         MyBase.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         MyBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         MyBase.ColumnHeadersHeightSizeMode = Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
@@ -65,6 +65,8 @@ Public Class Dgn
             If e.RowIndex > 0 And e.ColumnIndex = 0 Then
                 If MyBase.Item(0, e.RowIndex - 1).Value Is e.Value Then
                     e.Value = String.Empty
+                    'MyBase.AdvancedCellBorderStyle.Top = Windows.Forms.DataGridViewAdvancedCellBorderStyle.None
+                    'MyBase.Rows(e.RowIndex).DefaultCellStyle.BackColor = System.Drawing.Color.White
                 ElseIf e.RowIndex < MyBase.Rows.Count - 1 Then
 
                 End If

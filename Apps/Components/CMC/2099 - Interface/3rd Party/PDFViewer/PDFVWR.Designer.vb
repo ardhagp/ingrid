@@ -137,6 +137,6 @@ Partial Class PDFVWR
         PerformLayout()
 
     End Sub
-    Public WithEvents BtnClose As Btn
+    Public WithEvents BtnClose As btn
     Public WithEvents PDFContent As Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl
 End Class

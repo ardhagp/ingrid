@@ -25,6 +25,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DatabaseSchema_Data", "..\.
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DatabaseSchema_File", "..\..\..\Database\SQL Server\DatabaseSchema_File\DatabaseSchema_File.sqlproj", "{87C38661-71CF-4FC5-A4DE-BB0F67CBBA4D}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LibApp", "..\..\Components\LibApp\LibApp.vbproj", "{621C876F-21DD-45D2-A581-9036F148D771}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,40 +67,15 @@ Global
 		{87C38661-71CF-4FC5-A4DE-BB0F67CBBA4D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{87C38661-71CF-4FC5-A4DE-BB0F67CBBA4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87C38661-71CF-4FC5-A4DE-BB0F67CBBA4D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{621C876F-21DD-45D2-A581-9036F148D771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{621C876F-21DD-45D2-A581-9036F148D771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{621C876F-21DD-45D2-A581-9036F148D771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{621C876F-21DD-45D2-A581-9036F148D771}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FDE0D5C1-0BDC-4513-BEF5-FF1FDE1B569F}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 9
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://dev.azure.com/cagakmelon
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = ..\\..\\Components\\LibSQL\\LibSQL.vbproj
-		SccProjectName1 = ../../Components/LibSQL
-		SccLocalPath1 = ..\\..\\Components\\LibSQL
-		SccProjectUniqueName2 = Ingrid.vbproj
-		SccLocalPath2 = .
-		SccProjectUniqueName3 = ..\\..\\Components\\CMC\\CMCv.vbproj
-		SccProjectName3 = ../../Components/CMC
-		SccLocalPath3 = ..\\..\\Components\\CMC
-		SccProjectUniqueName4 = ..\\..\\Components\\Connect\\Connect.vbproj
-		SccProjectName4 = ../../Components/Connect
-		SccLocalPath4 = ..\\..\\Components\\Connect
-		SccProjectUniqueName5 = ..\\..\\Components\\Bridge\\Bridge.csproj
-		SccProjectName5 = ../../Components/Bridge
-		SccLocalPath5 = ..\\..\\Components\\Bridge
-		SccProjectUniqueName6 = ..\\..\\Components\\Ingrid-Launcher\\IngridLauncher.vbproj
-		SccProjectName6 = ../../Components/Ingrid-Launcher
-		SccLocalPath6 = ..\\..\\Components\\Ingrid-Launcher
-		SccProjectUniqueName7 = ..\\..\\..\\Database\\SQL\u0020Server\\DatabaseSchema_Data\\DatabaseSchema_Data.sqlproj
-		SccProjectName7 = ../../../Database/SQL\u0020Server/DatabaseSchema_Data
-		SccLocalPath7 = ..\\..\\..\\Database\\SQL\u0020Server\\DatabaseSchema_Data
-		SccProjectUniqueName8 = ..\\..\\..\\Database\\SQL\u0020Server\\DatabaseSchema_File\\DatabaseSchema_File.sqlproj
-		SccProjectName8 = ../../../Database/SQL\u0020Server/DatabaseSchema_File
-		SccLocalPath8 = ..\\..\\..\\Database\\SQL\u0020Server\\DatabaseSchema_File
 	EndGlobalSection
 EndGlobal

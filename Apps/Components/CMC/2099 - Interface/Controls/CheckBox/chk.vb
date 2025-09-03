@@ -5,7 +5,7 @@
 ''' <summary>
 ''' Custom checkbox
 ''' </summary>
-Public Class Chk
+Public Class chk
     Inherits System.Windows.Forms.CheckBox
 
     <SupportedOSPlatform("windows")>

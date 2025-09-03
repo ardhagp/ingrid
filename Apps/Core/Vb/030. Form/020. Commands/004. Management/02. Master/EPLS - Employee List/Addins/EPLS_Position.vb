@@ -2,15 +2,15 @@
 
 Public Class EPLS_Position
 #Region "Variables"
-    Private varSQL As New Commands.EPLS.Addins.Browse.Position
+    Private _SQL As New Commands.EPLS.Addins.Browse.Position
     Public Event RecordSelected()
 #End Region
 
 #Region "Subs Collections"
     Private Sub GETTableID()
-        varFORMAttribute.RowID = "-1"
+        V_FORMAttrib.RowID = "-1"
         If DgnAddinPosition.RowCount > 0 Then
-            varFORMAttribute.RowID = DgnAddinPosition.CurrentRow.Cells("employee_id").Value.ToString
+            V_FORMAttrib.RowID = DgnAddinPosition.CurrentRow.Cells("employee_id").Value.ToString
         End If
     End Sub
 
@@ -22,13 +22,13 @@ Public Class EPLS_Position
 
     Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
         If DgnAddinPosition.RowCount = 0 Then
-            Decision("No record selected", "Error", CMCv.frmDBdialogbox.MessageIcon.Error, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             With DgnAddinPosition.CurrentRow
-                varFORMAttribute.Field01 = .Cells("company_name").Value
-                varFORMAttribute.Field02 = .Cells("departement_name").Value
-                varFORMAttribute.Field03 = .Cells("position_id").Value
-                varFORMAttribute.Field04 = .Cells("position_name").Value
+                V_FORMAttrib.Field01 = .Cells("company_name").Value
+                V_FORMAttrib.Field02 = .Cells("departement_name").Value
+                V_FORMAttrib.Field03 = .Cells("position_id").Value
+                V_FORMAttrib.Field04 = .Cells("position_name").Value
             End With
             RaiseEvent RecordSelected()
             Me.Close()

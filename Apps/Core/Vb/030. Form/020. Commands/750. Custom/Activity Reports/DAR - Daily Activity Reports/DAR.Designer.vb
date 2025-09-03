@@ -42,29 +42,29 @@ Partial Class DAR
         Dim DataGridViewCellStyle19 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle21 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle20 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Pnl1 = New Pnl(components)
+        Pnl1 = New pnl(components)
         SpcDate = New SplitContainer()
-        Pnl3 = New Pnl(components)
-        DgnDARDate = New Dgn(components)
+        Pnl3 = New pnl(components)
+        DgnDARDate = New dgn(components)
         employeeactivity_datetime = New DataGridViewTextBoxColumn()
         employeeactivity_longdate = New DataGridViewTextBoxColumn()
-        Pnl4 = New Pnl(components)
-        TbctlStatistic = New Tbctl(components)
+        Pnl4 = New pnl(components)
+        TbctlStatistic = New tbctl(components)
         dailyreports = New TabPage()
-        SpcContent = New Spc(components)
-        DgnDARActivity = New Dgn(components)
+        SpcContent = New spc(components)
+        DgnDARActivity = New dgn(components)
         areaaffected_name = New DataGridViewTextBoxColumn()
         employeeactivity_time = New DataGridViewTextBoxColumn()
         employeeactivity_description = New DataGridViewTextBoxColumn()
         employee_nickname = New DataGridViewTextBoxColumn()
         employee_id = New DataGridViewTextBoxColumn()
         employeeactivity_id = New DataGridViewTextBoxColumn()
-        SttActivity = New Stt(components)
+        SttActivity = New stt(components)
         ToolStripStatusLabel1 = New ToolStripStatusLabel()
-        TbctlAttachment = New Tbctl(components)
+        TbctlAttachment = New tbctl(components)
         TPPhotos = New TabPage()
-        SpcPhoto = New Spc(components)
-        DgnPhoto = New Dgn(components)
+        SpcPhoto = New spc(components)
+        DgnPhoto = New dgn(components)
         photo_id = New DataGridViewTextBoxColumn()
         photo_filename = New DataGridViewTextBoxColumn()
         photo_content = New DataGridViewImageColumn()
@@ -76,22 +76,14 @@ Partial Class DAR
         photo_employee_fullname = New DataGridViewTextBoxColumn()
         photo_view = New DataGridViewButtonColumn()
         TlpPhotoButton = New TableLayoutPanel()
-        PctbxActivityPhoto = New Pctbx(components)
+        PctbxActivityPhoto = New pctbx(components)
         TlpCopySave = New TableLayoutPanel()
-        BtnCopyPhoto = New Btn(components)
-        BtnSave = New Btn(components)
-        BtnLike = New Btn(components)
+        BtnCopyPhoto = New btn(components)
+        BtnSave = New btn(components)
+        BtnLike = New btn(components)
         TPFiles = New TabPage()
-        DgnFile = New Dgn(components)
-        CboBy = New Cbo(components)
-        ChkEnableDateFilter = New Chk(components)
-        ChkEnableByFilter = New Chk(components)
-        DtpMonth = New Dtp(components)
-        miniToolStrip = New Stt(components)
-        SfdPhoto = New SaveFileDialog()
-        ToolTip1 = New ToolTip(components)
+        DgnFile = New dgn(components)
         file_id = New DataGridViewTextBoxColumn()
-        file_filename = New DataGridViewTextBoxColumn()
         file_tag = New DataGridViewTextBoxColumn()
         file_content = New DataGridViewTextBoxColumn()
         file_employee_nickname = New DataGridViewTextBoxColumn()
@@ -101,6 +93,13 @@ Partial Class DAR
         file_uploader = New DataGridViewTextBoxColumn()
         file_employee_fullname = New DataGridViewTextBoxColumn()
         file_view = New DataGridViewButtonColumn()
+        CboBy = New cbo(components)
+        ChkEnableDateFilter = New chk(components)
+        ChkEnableByFilter = New chk(components)
+        DtpMonth = New dtp(components)
+        miniToolStrip = New stt(components)
+        SfdPhoto = New SaveFileDialog()
+        ToolTip1 = New ToolTip(components)
         PnlFind.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
@@ -142,8 +141,8 @@ Partial Class DAR
         PnlFind.Controls.Add(ChkEnableDateFilter)
         PnlFind.Controls.Add(ChkEnableByFilter)
         PnlFind.Controls.Add(DtpMonth)
-        PnlFind.Margin = New Padding(5, 3, 5, 3)
-        PnlFind.Size = New Size(1155, 53)
+        PnlFind.Margin = New Padding(7, 5, 7, 5)
+        PnlFind.Size = New Size(1650, 88)
         PnlFind.Controls.SetChildIndex(TxtFind, 0)
         PnlFind.Controls.SetChildIndex(DtpMonth, 0)
         PnlFind.Controls.SetChildIndex(LblFind, 0)
@@ -154,25 +153,25 @@ Partial Class DAR
         ' 
         ' BtnClear
         ' 
-        BtnClear.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
+        BtnClear.FlatAppearance.BorderColor = Color.FromArgb(195, 0, 0)
         BtnClear.FlatAppearance.BorderSize = 2
-        BtnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
+        BtnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 20, 20)
         ' 
         ' TxtFind
         ' 
-        TxtFind.Margin = New Padding(5, 3, 5, 3)
+        TxtFind.Margin = New Padding(7, 5, 7, 5)
         ' 
         ' pnl_
         ' 
-        pnl_.Margin = New Padding(5, 3, 5, 3)
-        pnl_.Size = New Size(1155, 61)
+        pnl_.Margin = New Padding(7, 5, 7, 5)
+        pnl_.Size = New Size(1650, 104)
         pnl_.Text = "https://www.paypal.me/ardhagp"
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(Pnl1)
-        SLFPanel.Margin = New Padding(5, 3, 5, 3)
-        SLFPanel.Size = New Size(1155, 554)
+        SLFPanel.Margin = New Padding(7, 5, 7, 5)
+        SLFPanel.Size = New Size(1650, 1044)
         SLFPanel.Controls.SetChildIndex(PnlFind, 0)
         SLFPanel.Controls.SetChildIndex(Pnl1, 0)
         ' 
@@ -180,17 +179,17 @@ Partial Class DAR
         ' 
         Pnl1.Controls.Add(SpcDate)
         Pnl1.Dock = DockStyle.Fill
-        Pnl1.Location = New Point(0, 53)
-        Pnl1.Margin = New Padding(4, 3, 4, 3)
+        Pnl1.Location = New Point(0, 88)
+        Pnl1.Margin = New Padding(6, 5, 6, 5)
         Pnl1.Name = "Pnl1"
-        Pnl1.Size = New Size(1155, 501)
+        Pnl1.Size = New Size(1650, 956)
         Pnl1.TabIndex = 0
         ' 
         ' SpcDate
         ' 
         SpcDate.Dock = DockStyle.Fill
         SpcDate.Location = New Point(0, 0)
-        SpcDate.Margin = New Padding(4, 3, 4, 3)
+        SpcDate.Margin = New Padding(6, 5, 6, 5)
         SpcDate.Name = "SpcDate"
         ' 
         ' SpcDate.Panel1
@@ -201,9 +200,9 @@ Partial Class DAR
         ' SpcDate.Panel2
         ' 
         SpcDate.Panel2.Controls.Add(Pnl4)
-        SpcDate.Size = New Size(1155, 501)
-        SpcDate.SplitterDistance = 324
-        SpcDate.SplitterWidth = 7
+        SpcDate.Size = New Size(1650, 956)
+        SpcDate.SplitterDistance = 464
+        SpcDate.SplitterWidth = 10
         SpcDate.TabIndex = 2
         ' 
         ' Pnl3
@@ -211,25 +210,25 @@ Partial Class DAR
         Pnl3.Controls.Add(DgnDARDate)
         Pnl3.Dock = DockStyle.Fill
         Pnl3.Location = New Point(0, 0)
-        Pnl3.Margin = New Padding(4, 3, 4, 3)
+        Pnl3.Margin = New Padding(6, 5, 6, 5)
         Pnl3.Name = "Pnl3"
-        Pnl3.Size = New Size(324, 501)
+        Pnl3.Size = New Size(464, 956)
         Pnl3.TabIndex = 0
         ' 
         ' DgnDARDate
         ' 
         DgnDARDate.AllowUserToAddRows = False
         DgnDARDate.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(219), CByte(249), CByte(127))
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(204, 214, 104)
         DgnDARDate.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DgnDARDate.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
-        DgnDARDate.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+        DgnDARDate.BackgroundColor = Color.FromArgb(255, 255, 192)
         DgnDARDate.BorderStyle = BorderStyle.None
         DgnDARDate.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnDARDate.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -240,15 +239,15 @@ Partial Class DAR
         DgnDARDate.Columns.AddRange(New DataGridViewColumn() {employeeactivity_datetime, employeeactivity_longdate})
         DgnDARDate.Dock = DockStyle.Fill
         DgnDARDate.EnableHeadersVisualStyles = False
-        DgnDARDate.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnDARDate.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DgnDARDate.Location = New Point(0, 0)
-        DgnDARDate.Margin = New Padding(4, 3, 4, 3)
+        DgnDARDate.Margin = New Padding(6, 5, 6, 5)
         DgnDARDate.Name = "DgnDARDate"
         DgnDARDate.ReadOnly = True
         DgnDARDate.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = Color.YellowGreen
-        DataGridViewCellStyle5.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle5.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle5.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle5.SelectionForeColor = Color.Black
@@ -256,7 +255,7 @@ Partial Class DAR
         DgnDARDate.RowHeadersWidth = 62
         DgnDARDate.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnDARDate.RowTemplate.Height = 30
-        DgnDARDate.Size = New Size(324, 501)
+        DgnDARDate.Size = New Size(464, 956)
         DgnDARDate.StandardTab = True
         DgnDARDate.TabIndex = 0
         DgnDARDate.XOGroupFirstRows = False
@@ -283,7 +282,7 @@ Partial Class DAR
         employeeactivity_longdate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         employeeactivity_longdate.DataPropertyName = "employeeactivity_longdate"
         DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle4.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
         employeeactivity_longdate.DefaultCellStyle = DataGridViewCellStyle4
         employeeactivity_longdate.HeaderText = "Date"
@@ -297,31 +296,31 @@ Partial Class DAR
         Pnl4.Controls.Add(TbctlStatistic)
         Pnl4.Dock = DockStyle.Fill
         Pnl4.Location = New Point(0, 0)
-        Pnl4.Margin = New Padding(4, 3, 4, 3)
+        Pnl4.Margin = New Padding(6, 5, 6, 5)
         Pnl4.Name = "Pnl4"
-        Pnl4.Size = New Size(824, 501)
+        Pnl4.Size = New Size(1176, 956)
         Pnl4.TabIndex = 0
         ' 
         ' TbctlStatistic
         ' 
         TbctlStatistic.Controls.Add(dailyreports)
         TbctlStatistic.Dock = DockStyle.Fill
-        TbctlStatistic.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TbctlStatistic.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TbctlStatistic.Location = New Point(0, 0)
-        TbctlStatistic.Margin = New Padding(4, 3, 4, 3)
+        TbctlStatistic.Margin = New Padding(6, 5, 6, 5)
         TbctlStatistic.Name = "TbctlStatistic"
         TbctlStatistic.SelectedIndex = 0
-        TbctlStatistic.Size = New Size(824, 501)
+        TbctlStatistic.Size = New Size(1176, 956)
         TbctlStatistic.TabIndex = 100
         ' 
         ' dailyreports
         ' 
         dailyreports.Controls.Add(SpcContent)
-        dailyreports.Location = New Point(4, 30)
-        dailyreports.Margin = New Padding(4, 3, 4, 3)
+        dailyreports.Location = New Point(4, 41)
+        dailyreports.Margin = New Padding(6, 5, 6, 5)
         dailyreports.Name = "dailyreports"
-        dailyreports.Padding = New Padding(4, 3, 4, 3)
-        dailyreports.Size = New Size(816, 467)
+        dailyreports.Padding = New Padding(6, 5, 6, 5)
+        dailyreports.Size = New Size(1168, 911)
         dailyreports.TabIndex = 0
         dailyreports.Text = "Daily Reports"
         dailyreports.UseVisualStyleBackColor = True
@@ -329,8 +328,8 @@ Partial Class DAR
         ' SpcContent
         ' 
         SpcContent.Dock = DockStyle.Fill
-        SpcContent.Location = New Point(4, 3)
-        SpcContent.Margin = New Padding(4, 3, 4, 3)
+        SpcContent.Location = New Point(6, 5)
+        SpcContent.Margin = New Padding(6, 5, 6, 5)
         SpcContent.Name = "SpcContent"
         SpcContent.Orientation = Orientation.Horizontal
         ' 
@@ -344,25 +343,25 @@ Partial Class DAR
         ' 
         SpcContent.Panel2.Controls.Add(TbctlAttachment)
         SpcContent.Panel2MinSize = 0
-        SpcContent.Size = New Size(808, 461)
-        SpcContent.SplitterDistance = 207
-        SpcContent.SplitterWidth = 5
+        SpcContent.Size = New Size(1156, 901)
+        SpcContent.SplitterDistance = 406
+        SpcContent.SplitterWidth = 8
         SpcContent.TabIndex = 102
         ' 
         ' DgnDARActivity
         ' 
         DgnDARActivity.AllowUserToAddRows = False
         DgnDARActivity.AllowUserToDeleteRows = False
-        DataGridViewCellStyle6.BackColor = Color.FromArgb(CByte(209), CByte(211), CByte(172))
+        DataGridViewCellStyle6.BackColor = Color.FromArgb(191, 202, 156)
         DgnDARActivity.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
         DgnDARActivity.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
-        DgnDARActivity.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+        DgnDARActivity.BackgroundColor = Color.FromArgb(255, 255, 192)
         DgnDARActivity.BorderStyle = BorderStyle.None
         DgnDARActivity.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnDARActivity.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle7.BackColor = Color.YellowGreen
-        DataGridViewCellStyle7.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle7.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle7.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle7.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle7.SelectionForeColor = Color.Black
@@ -373,7 +372,7 @@ Partial Class DAR
         DgnDARActivity.Columns.AddRange(New DataGridViewColumn() {areaaffected_name, employeeactivity_time, employeeactivity_description, employee_nickname, employee_id, employeeactivity_id})
         DataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle12.BackColor = SystemColors.Window
-        DataGridViewCellStyle12.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle12.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle12.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText
@@ -381,16 +380,16 @@ Partial Class DAR
         DgnDARActivity.DefaultCellStyle = DataGridViewCellStyle12
         DgnDARActivity.Dock = DockStyle.Fill
         DgnDARActivity.EnableHeadersVisualStyles = False
-        DgnDARActivity.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnDARActivity.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DgnDARActivity.Location = New Point(0, 0)
-        DgnDARActivity.Margin = New Padding(4, 3, 4, 3)
+        DgnDARActivity.Margin = New Padding(6, 5, 6, 5)
         DgnDARActivity.MultiSelect = False
         DgnDARActivity.Name = "DgnDARActivity"
         DgnDARActivity.ReadOnly = True
         DgnDARActivity.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle13.BackColor = Color.YellowGreen
-        DataGridViewCellStyle13.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle13.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle13.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle13.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle13.SelectionForeColor = Color.Black
@@ -398,7 +397,7 @@ Partial Class DAR
         DgnDARActivity.RowHeadersDefaultCellStyle = DataGridViewCellStyle13
         DgnDARActivity.RowHeadersWidth = 62
         DgnDARActivity.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DgnDARActivity.Size = New Size(808, 185)
+        DgnDARActivity.Size = New Size(1156, 384)
         DgnDARActivity.StandardTab = True
         DgnDARActivity.TabIndex = 102
         DgnDARActivity.XOGroupFirstRows = True
@@ -452,7 +451,7 @@ Partial Class DAR
         employee_nickname.Name = "employee_nickname"
         employee_nickname.ReadOnly = True
         employee_nickname.SortMode = DataGridViewColumnSortMode.Programmatic
-        employee_nickname.Width = 76
+        employee_nickname.Width = 107
         ' 
         ' employee_id
         ' 
@@ -480,39 +479,39 @@ Partial Class DAR
         ' 
         SttActivity.ImageScalingSize = New Size(24, 24)
         SttActivity.Items.AddRange(New ToolStripItem() {ToolStripStatusLabel1})
-        SttActivity.Location = New Point(0, 185)
+        SttActivity.Location = New Point(0, 384)
         SttActivity.Name = "SttActivity"
-        SttActivity.Padding = New Padding(1, 0, 16, 0)
-        SttActivity.Size = New Size(808, 22)
+        SttActivity.Padding = New Padding(1, 0, 23, 0)
+        SttActivity.Size = New Size(1156, 22)
         SttActivity.TabIndex = 103
         SttActivity.Text = "Stt1"
         ' 
         ' ToolStripStatusLabel1
         ' 
         ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        ToolStripStatusLabel1.Size = New Size(0, 17)
+        ToolStripStatusLabel1.Size = New Size(0, 15)
         ' 
         ' TbctlAttachment
         ' 
         TbctlAttachment.Controls.Add(TPPhotos)
         TbctlAttachment.Controls.Add(TPFiles)
         TbctlAttachment.Dock = DockStyle.Fill
-        TbctlAttachment.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TbctlAttachment.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TbctlAttachment.Location = New Point(0, 0)
-        TbctlAttachment.Margin = New Padding(4, 3, 4, 3)
+        TbctlAttachment.Margin = New Padding(6, 5, 6, 5)
         TbctlAttachment.Name = "TbctlAttachment"
         TbctlAttachment.SelectedIndex = 0
-        TbctlAttachment.Size = New Size(808, 249)
+        TbctlAttachment.Size = New Size(1156, 487)
         TbctlAttachment.TabIndex = 0
         ' 
         ' TPPhotos
         ' 
         TPPhotos.Controls.Add(SpcPhoto)
-        TPPhotos.Location = New Point(4, 30)
-        TPPhotos.Margin = New Padding(4, 3, 4, 3)
+        TPPhotos.Location = New Point(4, 41)
+        TPPhotos.Margin = New Padding(6, 5, 6, 5)
         TPPhotos.Name = "TPPhotos"
-        TPPhotos.Padding = New Padding(4, 3, 4, 3)
-        TPPhotos.Size = New Size(800, 215)
+        TPPhotos.Padding = New Padding(6, 5, 6, 5)
+        TPPhotos.Size = New Size(1148, 442)
         TPPhotos.TabIndex = 0
         TPPhotos.Text = "Photos"
         TPPhotos.UseVisualStyleBackColor = True
@@ -520,8 +519,8 @@ Partial Class DAR
         ' SpcPhoto
         ' 
         SpcPhoto.Dock = DockStyle.Fill
-        SpcPhoto.Location = New Point(4, 3)
-        SpcPhoto.Margin = New Padding(4, 3, 4, 3)
+        SpcPhoto.Location = New Point(6, 5)
+        SpcPhoto.Margin = New Padding(6, 5, 6, 5)
         SpcPhoto.Name = "SpcPhoto"
         ' 
         ' SpcPhoto.Panel1
@@ -532,24 +531,24 @@ Partial Class DAR
         ' 
         SpcPhoto.Panel2.Controls.Add(TlpPhotoButton)
         SpcPhoto.Panel2MinSize = 300
-        SpcPhoto.Size = New Size(792, 209)
-        SpcPhoto.SplitterDistance = 326
-        SpcPhoto.SplitterWidth = 7
+        SpcPhoto.Size = New Size(1136, 432)
+        SpcPhoto.SplitterDistance = 468
+        SpcPhoto.SplitterWidth = 10
         SpcPhoto.TabIndex = 2
         ' 
         ' DgnPhoto
         ' 
         DgnPhoto.AllowUserToAddRows = False
         DgnPhoto.AllowUserToDeleteRows = False
-        DataGridViewCellStyle14.BackColor = Color.FromArgb(CByte(220), CByte(194), CByte(170))
+        DataGridViewCellStyle14.BackColor = Color.FromArgb(196, 230, 91)
         DgnPhoto.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle14
-        DgnPhoto.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+        DgnPhoto.BackgroundColor = Color.FromArgb(255, 255, 192)
         DgnPhoto.BorderStyle = BorderStyle.None
         DgnPhoto.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnPhoto.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle15.BackColor = Color.YellowGreen
-        DataGridViewCellStyle15.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle15.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle15.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle15.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle15.SelectionForeColor = Color.Black
@@ -560,16 +559,16 @@ Partial Class DAR
         DgnPhoto.Columns.AddRange(New DataGridViewColumn() {photo_id, photo_filename, photo_content, photo_uploader_nickname, photo_content_size, photo_score, photo_datetime, photo_uploader, photo_employee_fullname, photo_view})
         DgnPhoto.Dock = DockStyle.Fill
         DgnPhoto.EnableHeadersVisualStyles = False
-        DgnPhoto.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnPhoto.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DgnPhoto.Location = New Point(0, 0)
-        DgnPhoto.Margin = New Padding(4, 3, 4, 3)
+        DgnPhoto.Margin = New Padding(6, 5, 6, 5)
         DgnPhoto.MultiSelect = False
         DgnPhoto.Name = "DgnPhoto"
         DgnPhoto.ReadOnly = True
         DgnPhoto.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle17.BackColor = Color.YellowGreen
-        DataGridViewCellStyle17.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle17.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle17.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle17.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle17.SelectionForeColor = Color.Black
@@ -577,7 +576,7 @@ Partial Class DAR
         DgnPhoto.RowHeadersDefaultCellStyle = DataGridViewCellStyle17
         DgnPhoto.RowHeadersWidth = 62
         DgnPhoto.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DgnPhoto.Size = New Size(326, 209)
+        DgnPhoto.Size = New Size(468, 432)
         DgnPhoto.StandardTab = True
         DgnPhoto.TabIndex = 2
         DgnPhoto.XOGroupFirstRows = False
@@ -625,7 +624,7 @@ Partial Class DAR
         photo_uploader_nickname.Name = "photo_uploader_nickname"
         photo_uploader_nickname.ReadOnly = True
         photo_uploader_nickname.SortMode = DataGridViewColumnSortMode.Programmatic
-        photo_uploader_nickname.Width = 81
+        photo_uploader_nickname.Width = 115
         ' 
         ' photo_content_size
         ' 
@@ -638,7 +637,7 @@ Partial Class DAR
         photo_content_size.Name = "photo_content_size"
         photo_content_size.ReadOnly = True
         photo_content_size.SortMode = DataGridViewColumnSortMode.Programmatic
-        photo_content_size.Width = 54
+        photo_content_size.Width = 76
         ' 
         ' photo_score
         ' 
@@ -649,7 +648,7 @@ Partial Class DAR
         photo_score.Name = "photo_score"
         photo_score.ReadOnly = True
         photo_score.SortMode = DataGridViewColumnSortMode.Programmatic
-        photo_score.Width = 17
+        photo_score.Width = 27
         ' 
         ' photo_datetime
         ' 
@@ -660,7 +659,7 @@ Partial Class DAR
         photo_datetime.Name = "photo_datetime"
         photo_datetime.ReadOnly = True
         photo_datetime.SortMode = DataGridViewColumnSortMode.Programmatic
-        photo_datetime.Width = 82
+        photo_datetime.Width = 117
         ' 
         ' photo_uploader
         ' 
@@ -700,17 +699,17 @@ Partial Class DAR
         ' TlpPhotoButton
         ' 
         TlpPhotoButton.ColumnCount = 1
-        TlpPhotoButton.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
+        TlpPhotoButton.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100.0F))
         TlpPhotoButton.Controls.Add(PctbxActivityPhoto, 0, 0)
         TlpPhotoButton.Controls.Add(TlpCopySave, 0, 1)
         TlpPhotoButton.Dock = DockStyle.Fill
         TlpPhotoButton.Location = New Point(0, 0)
-        TlpPhotoButton.Margin = New Padding(4, 3, 4, 3)
+        TlpPhotoButton.Margin = New Padding(6, 5, 6, 5)
         TlpPhotoButton.Name = "TlpPhotoButton"
         TlpPhotoButton.RowCount = 2
-        TlpPhotoButton.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
-        TlpPhotoButton.RowStyles.Add(New RowStyle(SizeType.Absolute, 42F))
-        TlpPhotoButton.Size = New Size(459, 209)
+        TlpPhotoButton.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0F))
+        TlpPhotoButton.RowStyles.Add(New RowStyle(SizeType.Absolute, 70.0F))
+        TlpPhotoButton.Size = New Size(658, 432)
         TlpPhotoButton.TabIndex = 0
         ' 
         ' PctbxActivityPhoto
@@ -721,10 +720,10 @@ Partial Class DAR
         PctbxActivityPhoto.Dock = DockStyle.Fill
         PctbxActivityPhoto.ErrorImage = CType(resources.GetObject("PctbxActivityPhoto.ErrorImage"), Image)
         PctbxActivityPhoto.InitialImage = CType(resources.GetObject("PctbxActivityPhoto.InitialImage"), Image)
-        PctbxActivityPhoto.Location = New Point(4, 3)
-        PctbxActivityPhoto.Margin = New Padding(4, 3, 4, 3)
+        PctbxActivityPhoto.Location = New Point(6, 5)
+        PctbxActivityPhoto.Margin = New Padding(6, 5, 6, 5)
         PctbxActivityPhoto.Name = "PctbxActivityPhoto"
-        PctbxActivityPhoto.Size = New Size(451, 161)
+        PctbxActivityPhoto.Size = New Size(646, 352)
         PctbxActivityPhoto.SizeMode = PictureBoxSizeMode.Zoom
         PctbxActivityPhoto.TabIndex = 105
         PctbxActivityPhoto.TabStop = False
@@ -734,21 +733,21 @@ Partial Class DAR
         ' TlpCopySave
         ' 
         TlpCopySave.ColumnCount = 3
-        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 40F))
-        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 23F))
-        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 23F))
+        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
+        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 57.0F))
+        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
+        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 33.0F))
+        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 33.0F))
         TlpCopySave.Controls.Add(BtnCopyPhoto, 0, 0)
         TlpCopySave.Controls.Add(BtnSave, 2, 0)
         TlpCopySave.Controls.Add(BtnLike, 1, 0)
         TlpCopySave.Dock = DockStyle.Fill
-        TlpCopySave.Location = New Point(4, 170)
-        TlpCopySave.Margin = New Padding(4, 3, 4, 3)
+        TlpCopySave.Location = New Point(6, 367)
+        TlpCopySave.Margin = New Padding(6, 5, 6, 5)
         TlpCopySave.Name = "TlpCopySave"
         TlpCopySave.RowCount = 1
-        TlpCopySave.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
-        TlpCopySave.Size = New Size(451, 36)
+        TlpCopySave.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0F))
+        TlpCopySave.Size = New Size(646, 60)
         TlpCopySave.TabIndex = 106
         ' 
         ' BtnCopyPhoto
@@ -756,18 +755,18 @@ Partial Class DAR
         BtnCopyPhoto.BackColor = Color.Black
         BtnCopyPhoto.Cursor = Cursors.Hand
         BtnCopyPhoto.Dock = DockStyle.Fill
-        BtnCopyPhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
+        BtnCopyPhoto.FlatAppearance.BorderColor = Color.FromArgb(0, 0, 0)
         BtnCopyPhoto.FlatAppearance.BorderSize = 2
-        BtnCopyPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
+        BtnCopyPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 20, 20)
         BtnCopyPhoto.FlatStyle = FlatStyle.Flat
-        BtnCopyPhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCopyPhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCopyPhoto.ForeColor = Color.White
-        BtnCopyPhoto.Image = My.Resources.Resources.COPY_001_16_ICON
+        BtnCopyPhoto.Image = Global.Ingrid.My.Resources.Resources.COPY_001_16_ICON
         BtnCopyPhoto.ImageAlign = ContentAlignment.MiddleRight
-        BtnCopyPhoto.Location = New Point(4, 3)
-        BtnCopyPhoto.Margin = New Padding(4, 3, 4, 3)
+        BtnCopyPhoto.Location = New Point(6, 5)
+        BtnCopyPhoto.Margin = New Padding(6, 5, 6, 5)
         BtnCopyPhoto.Name = "BtnCopyPhoto"
-        BtnCopyPhoto.Size = New Size(197, 30)
+        BtnCopyPhoto.Size = New Size(282, 50)
         BtnCopyPhoto.TabIndex = 3
         BtnCopyPhoto.UseVisualStyleBackColor = False
         BtnCopyPhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
@@ -780,18 +779,18 @@ Partial Class DAR
         BtnSave.BackColor = Color.Black
         BtnSave.Cursor = Cursors.Hand
         BtnSave.Dock = DockStyle.Fill
-        BtnSave.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
+        BtnSave.FlatAppearance.BorderColor = Color.FromArgb(0, 0, 0)
         BtnSave.FlatAppearance.BorderSize = 2
-        BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
+        BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 20, 20)
         BtnSave.FlatStyle = FlatStyle.Flat
-        BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnSave.ForeColor = Color.White
-        BtnSave.Image = My.Resources.Resources.DOWNLOAD_001_16_ICON
+        BtnSave.Image = Global.Ingrid.My.Resources.Resources.DOWNLOAD_001_16_ICON
         BtnSave.ImageAlign = ContentAlignment.MiddleLeft
-        BtnSave.Location = New Point(249, 3)
-        BtnSave.Margin = New Padding(4, 3, 4, 3)
+        BtnSave.Location = New Point(357, 5)
+        BtnSave.Margin = New Padding(6, 5, 6, 5)
         BtnSave.Name = "BtnSave"
-        BtnSave.Size = New Size(198, 30)
+        BtnSave.Size = New Size(283, 50)
         BtnSave.TabIndex = 4
         BtnSave.UseVisualStyleBackColor = False
         BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
@@ -804,17 +803,17 @@ Partial Class DAR
         BtnLike.BackColor = Color.Black
         BtnLike.Cursor = Cursors.Hand
         BtnLike.Dock = DockStyle.Fill
-        BtnLike.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
+        BtnLike.FlatAppearance.BorderColor = Color.FromArgb(0, 0, 0)
         BtnLike.FlatAppearance.BorderSize = 2
-        BtnLike.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
+        BtnLike.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 20, 20)
         BtnLike.FlatStyle = FlatStyle.Flat
-        BtnLike.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnLike.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnLike.ForeColor = Color.White
-        BtnLike.Image = My.Resources.Resources.LIKE_001_16_ICON
-        BtnLike.Location = New Point(209, 3)
-        BtnLike.Margin = New Padding(4, 3, 4, 3)
+        BtnLike.Image = Global.Ingrid.My.Resources.Resources.LIKE_001_16_ICON
+        BtnLike.Location = New Point(300, 5)
+        BtnLike.Margin = New Padding(6, 5, 6, 5)
         BtnLike.Name = "BtnLike"
-        BtnLike.Size = New Size(32, 30)
+        BtnLike.Size = New Size(45, 50)
         BtnLike.TabIndex = 6
         BtnLike.UseVisualStyleBackColor = False
         BtnLike.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
@@ -825,11 +824,11 @@ Partial Class DAR
         ' TPFiles
         ' 
         TPFiles.Controls.Add(DgnFile)
-        TPFiles.Location = New Point(4, 30)
-        TPFiles.Margin = New Padding(4, 3, 4, 3)
+        TPFiles.Location = New Point(4, 41)
+        TPFiles.Margin = New Padding(6, 5, 6, 5)
         TPFiles.Name = "TPFiles"
-        TPFiles.Padding = New Padding(4, 3, 4, 3)
-        TPFiles.Size = New Size(800, 215)
+        TPFiles.Padding = New Padding(6, 5, 6, 5)
+        TPFiles.Size = New Size(1148, 442)
         TPFiles.TabIndex = 1
         TPFiles.Text = "PDF"
         TPFiles.UseVisualStyleBackColor = True
@@ -838,9 +837,9 @@ Partial Class DAR
         ' 
         DgnFile.AllowUserToAddRows = False
         DgnFile.AllowUserToDeleteRows = False
-        DataGridViewCellStyle18.BackColor = Color.FromArgb(CByte(214), CByte(239), CByte(112))
+        DataGridViewCellStyle18.BackColor = Color.FromArgb(240, 230, 159)
         DgnFile.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle18
-        DgnFile.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+        DgnFile.BackgroundColor = Color.FromArgb(255, 255, 192)
         DgnFile.BorderStyle = BorderStyle.None
         DgnFile.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnFile.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
@@ -854,12 +853,12 @@ Partial Class DAR
         DgnFile.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle19
         DgnFile.ColumnHeadersHeight = 43
         DgnFile.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DgnFile.Columns.AddRange(New DataGridViewColumn() {file_id, file_filename, file_tag, file_content, file_employee_nickname, file_content_size, file_score, file_datetime, file_uploader, file_employee_fullname, file_view})
+        DgnFile.Columns.AddRange(New DataGridViewColumn() {file_id, file_tag, file_content, file_employee_nickname, file_content_size, file_score, file_datetime, file_uploader, file_employee_fullname, file_view})
         DgnFile.Dock = DockStyle.Fill
         DgnFile.EnableHeadersVisualStyles = False
         DgnFile.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DgnFile.Location = New Point(4, 3)
-        DgnFile.Margin = New Padding(4, 3, 4, 3)
+        DgnFile.Location = New Point(6, 5)
+        DgnFile.Margin = New Padding(6, 5, 6, 5)
         DgnFile.MultiSelect = False
         DgnFile.Name = "DgnFile"
         DgnFile.ReadOnly = True
@@ -874,76 +873,11 @@ Partial Class DAR
         DgnFile.RowHeadersDefaultCellStyle = DataGridViewCellStyle21
         DgnFile.RowHeadersWidth = 62
         DgnFile.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DgnFile.Size = New Size(792, 209)
+        DgnFile.Size = New Size(1136, 432)
         DgnFile.StandardTab = True
         DgnFile.TabIndex = 3
         DgnFile.XOGroupFirstRows = False
         DgnFile.XOGunakanNomorBaris = True
-        ' 
-        ' CboBy
-        ' 
-        CboBy.DropDownStyle = ComboBoxStyle.DropDownList
-        CboBy.FlatStyle = FlatStyle.Flat
-        CboBy.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        CboBy.FormattingEnabled = True
-        CboBy.Location = New Point(798, 13)
-        CboBy.Margin = New Padding(4, 3, 4, 3)
-        CboBy.Name = "CboBy"
-        CboBy.Size = New Size(207, 29)
-        CboBy.TabIndex = 806
-        ' 
-        ' ChkEnableDateFilter
-        ' 
-        ChkEnableDateFilter.AutoSize = True
-        ChkEnableDateFilter.BackColor = Color.Transparent
-        ChkEnableDateFilter.FlatStyle = FlatStyle.Flat
-        ChkEnableDateFilter.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        ChkEnableDateFilter.Location = New Point(451, 15)
-        ChkEnableDateFilter.Margin = New Padding(4, 3, 4, 3)
-        ChkEnableDateFilter.Name = "ChkEnableDateFilter"
-        ChkEnableDateFilter.Size = New Size(79, 25)
-        ChkEnableDateFilter.TabIndex = 803
-        ChkEnableDateFilter.Text = "By Date"
-        ChkEnableDateFilter.UseVisualStyleBackColor = False
-        ' 
-        ' ChkEnableByFilter
-        ' 
-        ChkEnableByFilter.AutoSize = True
-        ChkEnableByFilter.BackColor = Color.Transparent
-        ChkEnableByFilter.FlatStyle = FlatStyle.Flat
-        ChkEnableByFilter.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        ChkEnableByFilter.Location = New Point(744, 15)
-        ChkEnableByFilter.Margin = New Padding(4, 3, 4, 3)
-        ChkEnableByFilter.Name = "ChkEnableByFilter"
-        ChkEnableByFilter.Size = New Size(43, 25)
-        ChkEnableByFilter.TabIndex = 805
-        ChkEnableByFilter.Text = "By"
-        ChkEnableByFilter.UseVisualStyleBackColor = False
-        ' 
-        ' DtpMonth
-        ' 
-        DtpMonth.CustomFormat = "MMMM yyyy"
-        DtpMonth.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        DtpMonth.Format = DateTimePickerFormat.Custom
-        DtpMonth.Location = New Point(551, 13)
-        DtpMonth.Margin = New Padding(4, 3, 4, 3)
-        DtpMonth.MaxDate = New Date(2026, 6, 10, 0, 0, 0, 0)
-        DtpMonth.MinDate = New Date(1916, 6, 10, 0, 0, 0, 0)
-        DtpMonth.Name = "DtpMonth"
-        DtpMonth.ShowUpDown = True
-        DtpMonth.Size = New Size(172, 29)
-        DtpMonth.TabIndex = 804
-        DtpMonth.XOResetOnDisabled = False
-        ' 
-        ' miniToolStrip
-        ' 
-        miniToolStrip.AutoSize = False
-        miniToolStrip.Dock = DockStyle.None
-        miniToolStrip.ImageScalingSize = New Size(24, 24)
-        miniToolStrip.Location = New Point(1, 1)
-        miniToolStrip.Name = "miniToolStrip"
-        miniToolStrip.Size = New Size(543, 22)
-        miniToolStrip.TabIndex = 103
         ' 
         ' file_id
         ' 
@@ -954,15 +888,6 @@ Partial Class DAR
         file_id.Name = "file_id"
         file_id.ReadOnly = True
         file_id.SortMode = DataGridViewColumnSortMode.Programmatic
-        file_id.Visible = False
-        ' 
-        ' file_filename
-        ' 
-        file_filename.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        file_filename.DataPropertyName = "file_filename"
-        file_filename.HeaderText = "File Name"
-        file_filename.Name = "file_filename"
-        file_filename.ReadOnly = True
         ' 
         ' file_tag
         ' 
@@ -973,7 +898,7 @@ Partial Class DAR
         file_tag.Name = "file_tag"
         file_tag.ReadOnly = True
         file_tag.SortMode = DataGridViewColumnSortMode.Programmatic
-        file_tag.Width = 50
+        file_tag.Width = 70
         ' 
         ' file_content
         ' 
@@ -996,7 +921,7 @@ Partial Class DAR
         file_employee_nickname.Name = "file_employee_nickname"
         file_employee_nickname.ReadOnly = True
         file_employee_nickname.SortMode = DataGridViewColumnSortMode.Programmatic
-        file_employee_nickname.Width = 81
+        file_employee_nickname.Width = 115
         ' 
         ' file_content_size
         ' 
@@ -1009,7 +934,7 @@ Partial Class DAR
         file_content_size.Name = "file_content_size"
         file_content_size.ReadOnly = True
         file_content_size.SortMode = DataGridViewColumnSortMode.Programmatic
-        file_content_size.Width = 54
+        file_content_size.Width = 76
         ' 
         ' file_score
         ' 
@@ -1020,7 +945,7 @@ Partial Class DAR
         file_score.Name = "file_score"
         file_score.ReadOnly = True
         file_score.SortMode = DataGridViewColumnSortMode.Programmatic
-        file_score.Width = 17
+        file_score.Width = 27
         ' 
         ' file_datetime
         ' 
@@ -1031,7 +956,7 @@ Partial Class DAR
         file_datetime.Name = "file_datetime"
         file_datetime.ReadOnly = True
         file_datetime.SortMode = DataGridViewColumnSortMode.Programmatic
-        file_datetime.Width = 82
+        file_datetime.Width = 117
         ' 
         ' file_uploader
         ' 
@@ -1067,12 +992,77 @@ Partial Class DAR
         file_view.UseColumnTextForButtonValue = True
         file_view.Width = 20
         ' 
+        ' CboBy
+        ' 
+        CboBy.DropDownStyle = ComboBoxStyle.DropDownList
+        CboBy.FlatStyle = FlatStyle.Flat
+        CboBy.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        CboBy.FormattingEnabled = True
+        CboBy.Location = New Point(1140, 22)
+        CboBy.Margin = New Padding(6, 5, 6, 5)
+        CboBy.Name = "CboBy"
+        CboBy.Size = New Size(294, 40)
+        CboBy.TabIndex = 806
+        ' 
+        ' ChkEnableDateFilter
+        ' 
+        ChkEnableDateFilter.AutoSize = True
+        ChkEnableDateFilter.BackColor = Color.Transparent
+        ChkEnableDateFilter.FlatStyle = FlatStyle.Flat
+        ChkEnableDateFilter.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkEnableDateFilter.Location = New Point(644, 25)
+        ChkEnableDateFilter.Margin = New Padding(6, 5, 6, 5)
+        ChkEnableDateFilter.Name = "ChkEnableDateFilter"
+        ChkEnableDateFilter.Size = New Size(118, 36)
+        ChkEnableDateFilter.TabIndex = 803
+        ChkEnableDateFilter.Text = "By Date"
+        ChkEnableDateFilter.UseVisualStyleBackColor = False
+        ' 
+        ' ChkEnableByFilter
+        ' 
+        ChkEnableByFilter.AutoSize = True
+        ChkEnableByFilter.BackColor = Color.Transparent
+        ChkEnableByFilter.FlatStyle = FlatStyle.Flat
+        ChkEnableByFilter.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkEnableByFilter.Location = New Point(1063, 25)
+        ChkEnableByFilter.Margin = New Padding(6, 5, 6, 5)
+        ChkEnableByFilter.Name = "ChkEnableByFilter"
+        ChkEnableByFilter.Size = New Size(61, 36)
+        ChkEnableByFilter.TabIndex = 805
+        ChkEnableByFilter.Text = "By"
+        ChkEnableByFilter.UseVisualStyleBackColor = False
+        ' 
+        ' DtpMonth
+        ' 
+        DtpMonth.CustomFormat = "MMMM yyyy"
+        DtpMonth.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        DtpMonth.Format = DateTimePickerFormat.Custom
+        DtpMonth.Location = New Point(787, 22)
+        DtpMonth.Margin = New Padding(6, 5, 6, 5)
+        DtpMonth.MaxDate = New Date(2026, 6, 10, 0, 0, 0, 0)
+        DtpMonth.MinDate = New Date(1916, 6, 10, 0, 0, 0, 0)
+        DtpMonth.Name = "DtpMonth"
+        DtpMonth.ShowUpDown = True
+        DtpMonth.Size = New Size(244, 39)
+        DtpMonth.TabIndex = 804
+        DtpMonth.XOResetOnDisabled = False
+        ' 
+        ' miniToolStrip
+        ' 
+        miniToolStrip.AutoSize = False
+        miniToolStrip.Dock = DockStyle.None
+        miniToolStrip.ImageScalingSize = New Size(24, 24)
+        miniToolStrip.Location = New Point(1, 1)
+        miniToolStrip.Name = "miniToolStrip"
+        miniToolStrip.Size = New Size(543, 22)
+        miniToolStrip.TabIndex = 103
+        ' 
         ' DAR
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(1155, 637)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1650, 1170)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
+        Margin = New Padding(10, 5, 10, 5)
         Name = "DAR"
         PnlFind.ResumeLayout(False)
         PnlFind.PerformLayout()
@@ -1152,6 +1142,16 @@ Partial Class DAR
     Friend WithEvents employee_nickname As DataGridViewTextBoxColumn
     Friend WithEvents employee_id As DataGridViewTextBoxColumn
     Friend WithEvents employeeactivity_id As DataGridViewTextBoxColumn
+    Friend WithEvents file_id As DataGridViewTextBoxColumn
+    Friend WithEvents file_tag As DataGridViewTextBoxColumn
+    Friend WithEvents file_content As DataGridViewTextBoxColumn
+    Friend WithEvents file_employee_nickname As DataGridViewTextBoxColumn
+    Friend WithEvents file_content_size As DataGridViewTextBoxColumn
+    Friend WithEvents file_score As DataGridViewTextBoxColumn
+    Friend WithEvents file_datetime As DataGridViewTextBoxColumn
+    Friend WithEvents file_uploader As DataGridViewTextBoxColumn
+    Friend WithEvents file_employee_fullname As DataGridViewTextBoxColumn
+    Friend WithEvents file_view As DataGridViewButtonColumn
     Friend WithEvents photo_id As DataGridViewTextBoxColumn
     Friend WithEvents photo_filename As DataGridViewTextBoxColumn
     Friend WithEvents photo_content As DataGridViewImageColumn
@@ -1162,15 +1162,4 @@ Partial Class DAR
     Friend WithEvents photo_uploader As DataGridViewTextBoxColumn
     Friend WithEvents photo_employee_fullname As DataGridViewTextBoxColumn
     Friend WithEvents photo_view As DataGridViewButtonColumn
-    Friend WithEvents file_id As DataGridViewTextBoxColumn
-    Friend WithEvents file_filename As DataGridViewTextBoxColumn
-    Friend WithEvents file_tag As DataGridViewTextBoxColumn
-    Friend WithEvents file_content As DataGridViewTextBoxColumn
-    Friend WithEvents file_employee_nickname As DataGridViewTextBoxColumn
-    Friend WithEvents file_content_size As DataGridViewTextBoxColumn
-    Friend WithEvents file_score As DataGridViewTextBoxColumn
-    Friend WithEvents file_datetime As DataGridViewTextBoxColumn
-    Friend WithEvents file_uploader As DataGridViewTextBoxColumn
-    Friend WithEvents file_employee_fullname As DataGridViewTextBoxColumn
-    Friend WithEvents file_view As DataGridViewButtonColumn
 End Class

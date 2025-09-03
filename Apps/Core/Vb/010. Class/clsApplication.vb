@@ -5,21 +5,20 @@ Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Namespace Application
     Public Class Access
-        ReadOnly _SQL As New LibSQL.Application.Access
+        ReadOnly V_SQL As New LibSQL.Application.Access
 
         <SupportedOSPlatform("windows")>
-        Public Function User(ByVal varTCode As String, ByVal UID As String, ByVal TypeOfAccess As LibSQL.Application.Access.TypeOfAccess, Optional Status As Stt = Nothing) As Boolean
-            Dim varAccessvalue As Boolean
+        Public Function User(ByVal TCODE As String, ByVal UID As String, ByVal TypeOfAccess As LibSQL.Application.Access.TypeOfAccess, Optional Status As stt = Nothing) As Boolean
+            Dim V_AccessValue As Boolean
 
             Try
-                varAccessvalue = CType(_SQL.User(varTCode, UID, TypeOfAccess), Boolean)
+                V_AccessValue = CType(V_SQL.User(TCODE, UID, TypeOfAccess), Boolean)
 
-                If varAccessvalue = False Then
+                If Not V_AccessValue Then
                     SystemSounds.Exclamation.Play()
                 End If
 
-                Return varAccessvalue
-
+                Return V_AccessValue
             Catch ex As Exception
                 SystemSounds.Exclamation.Play()
                 Return False
@@ -33,27 +32,27 @@ Namespace Application
         'ReadOnly _SQL As New LibSQL.Application.Modules
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsModuleReady(ByVal varTCode As String) As Boolean
-            Dim varISmoduleready As Boolean
+        Public Shared Function IsModuleReady(ByVal DBEngine As String, ByVal TCODE As String) As Boolean
+            Dim V_IsModuleReady As Boolean
 
             Try
-                varISmoduleready = CType(LibSQL.Application.Modules.Exist(varTCode), Boolean)
+                V_IsModuleReady = CType(LibSQL.Application.Modules.Exist(DBEngine, TCODE), Boolean)
 
-                Return varISmoduleready
+                Return V_IsModuleReady
             Catch ex As Exception
                 Return False
             End Try
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsModuleLocked(ByVal varTCode As String) As Boolean
-            Dim varISmodulelocked As Boolean
+        Public Shared Function IsModuleLocked(ByVal DBEngine As String, ByVal TCODE As String) As Boolean
+            Dim V_IsModuleLocked As Boolean
 
             Try
 
-                varISmodulelocked = CType(LibSQL.Application.Modules.Locked(varTCode), Boolean)
+                V_IsModuleLocked = CType(LibSQL.Application.Modules.Locked(DBEngine, TCODE), Boolean)
 
-                Return varISmodulelocked
+                Return V_IsModuleLocked
             Catch ex As Exception
                 Return False
             End Try
@@ -61,59 +60,59 @@ Namespace Application
     End Class
 
     Public Class Marquee
-        Private varCurrenttext As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.,-=\][!@#$%^&*()_+"
-        Private varText As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.,-=\][!@#$%^&*()_+"
-        Private varDirection As Direction = Direction.Left
-        Private varScrolllength As Integer = 1000000
-        Public varMarqueetext As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.,-=\][!@#$%^&*()_+"
+        Private V_CurrentText As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.,-=\][!@#$%^&*()_+"
+        Private V_Text As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.,-=\][!@#$%^&*()_+"
+        Private V_Direction As Direction = Direction.Left
+        Private V_ScrollLength As Integer = 1000000
+        Public V_MarqueeText As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.,-=\][!@#$%^&*()_+"
         Public ReadOnly Property MarqueeText As String
             Get
-                Return varMarqueetext
+                Return V_MarqueeText
             End Get
         End Property
         Public Property ScrollDirection As Direction
             Get
-                Return varDirection
+                Return V_Direction
             End Get
             Set(ByVal value As Direction)
-                varDirection = value
+                V_Direction = value
             End Set
         End Property
         Private ReadOnly Property CurrentText As String
             Get
-                Return varCurrenttext
+                Return V_CurrentText
             End Get
         End Property
         Public Property Text As String
             Get
-                Return varText
+                Return V_Text
             End Get
             Set(ByVal value As String)
-                varText = value
-                varCurrenttext = value
+                V_Text = value
+                V_CurrentText = value
             End Set
         End Property
         Public Property ScrollLength As Integer
             Get
-                Return varScrolllength
+                Return V_ScrollLength
             End Get
             Set(ByVal value As Integer)
                 If value < 1 Then value = 1
-                varScrolllength = value
+                V_ScrollLength = value
             End Set
         End Property
         Public Sub Tick()
-            If ScrollLength > Len(varText) Then ScrollLength = Len(varText)
+            If ScrollLength > Len(V_Text) Then ScrollLength = Len(V_Text)
             If ScrollDirection = Direction.Left Then
-                Dim MoveCharacter As String = Mid$(varCurrenttext, 1, 1)
-                varCurrenttext = Replace(varCurrenttext, MoveCharacter, "", 1, 1)
-                varCurrenttext &= MoveCharacter
-                varMarqueetext = Mid$(varCurrenttext, 1, varScrolllength)
+                Dim MoveCharacter As String = Mid$(V_CurrentText, 1, 1)
+                V_CurrentText = Replace(V_CurrentText, MoveCharacter, "", 1, 1)
+                V_CurrentText &= MoveCharacter
+                V_MarqueeText = Mid$(V_CurrentText, 1, V_ScrollLength)
             ElseIf ScrollDirection = Direction.Right Then
-                Dim MoveCharacter As String = Mid$(varCurrenttext, Len(varCurrenttext), 1)
-                varCurrenttext = Mid$(varCurrenttext, 1, Len(varCurrenttext) - 1)
-                varCurrenttext = MoveCharacter & varCurrenttext
-                varMarqueetext = Mid$(varCurrenttext, 1, varScrolllength)
+                Dim MoveCharacter As String = Mid$(V_CurrentText, Len(V_CurrentText), 1)
+                V_CurrentText = Mid$(V_CurrentText, 1, Len(V_CurrentText) - 1)
+                V_CurrentText = MoveCharacter & V_CurrentText
+                V_MarqueeText = Mid$(V_CurrentText, 1, V_ScrollLength)
             End If
         End Sub
         Public Enum Direction

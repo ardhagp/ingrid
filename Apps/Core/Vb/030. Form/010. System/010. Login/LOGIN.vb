@@ -2,12 +2,12 @@
 
 Public Class LOGIN
 #Region "Variables"
-    Private clsSQL As New LibSQL.Commands.UAC.Login
+    Private V_SQL As New LibSQL.Commands.UAC.Login
     Public Event LoginSuccess()
     Public Event LoginFailed()
-    Private varLoginwrong As Integer
-    Private varLoginhold As Integer
-    Private varStatustimer As Integer
+    Private V_WrongLogin As Integer
+    Private V_HoldLogin As Integer
+    Private V_StatusTimer As Integer
 #End Region
 
 #Region "Subs Collection"
@@ -34,38 +34,35 @@ Public Class LOGIN
             Return
         End If
 
-        varUSERattribute.UID = Commands.UAC.Login.GETUID(TxtUsername.XOSQLText, TxtPassword.XOSQLText, varUSERattribute.FirstName)
+        V_USERAttrib.UID = Commands.UAC.Login.GETUID(V_DatabaseEngine, TxtUsername.XOSQLText, TxtPassword.XOSQLText, V_USERAttrib.FirstName)
 
-        If varUSERattribute.UID = String.Empty Then
+        If V_USERAttrib.UID = String.Empty Then
             RaiseEvent LoginFailed()
-            varLoginwrong += 1
+            V_WrongLogin += 1
             SLFStatus.Items(0).Text = "Login Failed"
-            varLOGUser.LoginFailed(TxtUsername.XOSQLText)
+            V_LOGuser.LoginFailed(V_DatabaseEngine, TxtUsername.XOSQLText)
             Bridge.Security.Writelog.Sendlog(TxtUsername.XOSQLText & " failed to login.", Bridge.Security.Writelog.LogType.Error)
             tmr_status.Enabled = True
-            If varLoginwrong = 3 Then
+            If V_WrongLogin = 3 Then
                 tmr_control.Enabled = True
             End If
         Else
-            With varUSERAttribute
-                .EID = Commands.UAC.Login.GETEID(varUSERAttribute.UID)
-                .FirstName = Commands.UAC.Login.GETFirstName(varUSERAttribute.UID)
-                .EmployeeNumber = Commands.UAC.Login.GETEmployeeNumber(varUSERAttribute.UID)
-                .Gender = Commands.UAC.Login.GETGender(varUSERAttribute.UID)
-                .Position = Commands.UAC.Login.GETPosition(varUSERAttribute.UID)
-                .IsAdministrator = Commands.UAC.Login.GETAdministrator(varUSERAttribute.UID)
-            End With
-
-            varLOGUser.LoginSuccess(varUSERAttribute.EID)
-            Bridge.Security.Writelog.Sendlog(varUSERattribute.FirstName & " is login.", Bridge.Security.Writelog.LogType.Information)
+            V_USERAttrib.EID = Commands.UAC.Login.GETEID(V_DatabaseEngine, V_USERAttrib.UID)
+            V_USERAttrib.FirstName = Commands.UAC.Login.GETFirstName(V_DatabaseEngine, V_USERAttrib.UID)
+            V_USERAttrib.EmployeeNumber = Commands.UAC.Login.GETEmployeeNumber(V_DatabaseEngine, V_USERAttrib.UID)
+            V_USERAttrib.Gender = Commands.UAC.Login.GETGender(V_DatabaseEngine, V_USERAttrib.UID)
+            V_USERAttrib.Position = Commands.UAC.Login.GETPosition(V_DatabaseEngine, V_USERAttrib.UID)
+            V_USERAttrib.IsAdministrator = Commands.UAC.Login.GETAdministrator(V_DatabaseEngine, V_USERAttrib.UID)
+            V_LOGuser.LoginSuccess(V_DatabaseEngine, V_USERAttrib.EID)
+            Bridge.Security.Writelog.Sendlog(V_USERAttrib.FirstName & " is login.", Bridge.Security.Writelog.LogType.Information)
             RaiseEvent LoginSuccess()
             Me.Close()
         End If
     End Sub
 
     Private Sub LOGIN_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        varLoginwrong = 0
-        varLoginhold = 15
+        V_WrongLogin = 0
+        V_HoldLogin = 15
         SLFStatus.Items(0).Text = String.Empty
         TxtUsername.Clear()
         TxtPassword.Clear()
@@ -80,17 +77,17 @@ Public Class LOGIN
     End Sub
 
     Private Sub tmr_status_Tick(sender As Object, e As EventArgs) Handles tmr_status.Tick
-        If varStatustimer = 5 Then
+        If V_StatusTimer = 5 Then
             SLFStatus.Items(0).Text = ""
             tmr_status.Enabled = False
-            varStatustimer = 0
+            V_StatusTimer = 0
         Else
-            varStatustimer += 1
+            V_StatusTimer += 1
         End If
     End Sub
 
     Private Sub tmr_control_Tick(sender As Object, e As EventArgs) Handles tmr_control.Tick
-        If varLoginhold = 30 Then
+        If V_HoldLogin = 30 Then
             tmr_control.Enabled = False
             TxtUsername.Text = String.Empty
             TxtPassword.Text = String.Empty
@@ -99,14 +96,14 @@ Public Class LOGIN
             BtnLogin.Enabled = True
             BtnCancel.Enabled = True
             TxtUsername.Focus()
-            varLoginwrong = 0
-            varLoginhold = 0
+            V_WrongLogin = 0
+            V_HoldLogin = 0
         Else
             TxtUsername.Enabled = False
             TxtPassword.Enabled = False
             BtnLogin.Enabled = False
             BtnCancel.Enabled = False
-            varLoginhold += 1
+            V_HoldLogin += 1
         End If
     End Sub
 

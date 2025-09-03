@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class Meb
+Public Class meb
     Inherits System.Windows.Forms.MaskedTextBox
 
     <SupportedOSPlatform("windows")>
@@ -18,28 +18,28 @@ Public Class Meb
     End Sub
 
 #Region "Properti"
-    Private varHarusdiisi As Boolean
+    Private _varHarusDiisi As Boolean
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Maskeditbox harus diisi")>
     Public Property XOHarusDiisi As Boolean
         Get
-            Return varHarusdiisi
+            Return _varHarusDiisi
         End Get
         Set(value As Boolean)
-            varHarusdiisi = value
+            _varHarusDiisi = value
         End Set
     End Property
 
-    Private varHarusdiisiWarnaLatarDefault As System.Drawing.Color
-    Private varHarusdiisiWarnaLatar As System.Drawing.Color
+    Private _varHarusDiisiWarnaLatarDefault As System.Drawing.Color
+    Private _varHarusDiisiWarnaLatar As System.Drawing.Color
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Warna saat teksboks tidak diisi")>
     Public Property XOHarusDiisiWarnaLatar As System.Drawing.Color
         Get
-            Return varHarusdiisiWarnaLatar
+            Return _varHarusDiisiWarnaLatar
         End Get
         Set(value As System.Drawing.Color)
-            varHarusdiisiWarnaLatar = value
+            _varHarusDiisiWarnaLatar = value
         End Set
     End Property
 
@@ -47,46 +47,46 @@ Public Class Meb
     System.ComponentModel.Description("Warna saat teksboks tidak diisi jika bernilai False")>
     Public Property XOHarusDiisiWarnaLatarDefault As System.Drawing.Color
         Get
-            Return varHarusdiisiWarnaLatarDefault
+            Return _varHarusDiisiWarnaLatarDefault
         End Get
         Set(value As System.Drawing.Color)
-            varHarusdiisiWarnaLatarDefault = value
+            _varHarusDiisiWarnaLatarDefault = value
         End Set
     End Property
 
-    Private varHightlightSaatFokus As Boolean
+    Private _varHightlightSaatFokus As Boolean
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
     Public Property XOHightlightSaatFokus() As Boolean
         Get
-            Return varHightlightSaatFokus
+            Return _varHightlightSaatFokus
         End Get
         Set(value As Boolean)
-            varHightlightSaatFokus = value
+            _varHightlightSaatFokus = value
         End Set
     End Property
 
-    Private varHighlightsaatfokuswarna As System.Drawing.Color
+    Private _varHighlightSaatFokusWarna As System.Drawing.Color
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Warna highlight")>
     Public Property XOHightlightSaatFokusWarna() As System.Drawing.Color
         Get
-            Return varHighlightsaatfokuswarna
+            Return _varHighlightSaatFokusWarna
         End Get
         Set(value As System.Drawing.Color)
-            varHighlightsaatfokuswarna = value
+            _varHighlightSaatFokusWarna = value
         End Set
     End Property
 
-    Private varPilihsemuasaatfokus As Boolean
+    Private _varPilihSemuaSaatFokus As Boolean
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Memilih semua teks saat fokus")>
     Public Property XOPilihSemuaSaatFokus() As Boolean
         Get
-            Return varPilihsemuasaatfokus
+            Return _varPilihSemuaSaatFokus
         End Get
         Set(value As Boolean)
-            varPilihsemuasaatfokus = value
+            _varPilihSemuaSaatFokus = value
         End Set
     End Property
 #End Region
@@ -106,7 +106,11 @@ Public Class Meb
     End Sub
 
     Private Sub txt_LostFocus(sender As Object, e As System.EventArgs) Handles Me.LostFocus
-        If XOHarusDiisi Then
+        'If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Not Me.SLFHarusDiisi Then
+        '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
+        'ElseIf Me.XOHightlightSaatFokus AndAlso Not Me.Focused Then
+        '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
+        If XOHarusDiisi Then 'AndAlso Me.Text.Trim = "" Then
             MyBase.BackColor = Me.XOHarusDiisiWarnaLatar
         Else
             MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault

@@ -3618,7 +3618,7 @@
             Gets or sets an <see cref="T:Syncfusion.Office.OfficeMathBaseCollection"/> collection that represents the functions contained within an equation. Read-only.
             </summary>
         </member>
-        <member name="P:Syncfusion.Office.IOfficeMath.OwnfrmErrorolumn">
+        <member name="P:Syncfusion.Office.IOfficeMath.OwnerColumn">
             <summary>
             Gets a <see cref="T:Syncfusion.Office.IOfficeMathMatrixColumn"/> object that represents the parent column in a matrix. Read-only.
             </summary>
@@ -3758,7 +3758,7 @@
             Gets an integer that represents the nesting level for an <see cref="T:Syncfusion.Office.IOfficeMath"/> object. Read-only.
             </summary>
         </member>
-        <member name="P:Syncfusion.Office.OfficeMath.OwnfrmErrorolumn">
+        <member name="P:Syncfusion.Office.OfficeMath.OwnerColumn">
             <summary>
             Gets a <see cref="T:Syncfusion.Office.IOfficeMathMatrixColumn"/> object that represents the parent column in a matrix. Read-only.
             </summary>

@@ -3,11 +3,11 @@
 Public Class REMS
 
 #Region "Variables"
-    Private _SQL As New Commands.REMS.View
-    Private _SelectedGroup As String = ""
-    Private _IsClosing As Boolean = False
-    Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
-    Private WithEvents _REMS_Switch As REMS_Editor_Switch
+    Private V_SQL As New Commands.REMS.View
+    Private V_SelectedGroup As String = ""
+    Private V_IsClosing As Boolean = False
+    Private WithEvents V_MMSMenu As New CMCv.UI.View.MenuStrip
+    Private WithEvents V_REMS_Switch As REMS_Editor_Switch
 
     <SupportedOSPlatform("windows")>
     Private Sub REMS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -19,17 +19,17 @@ Public Class REMS
 
     <SupportedOSPlatform("windows")>
     Private Sub LoadMenu()
-        _MMSMenu.LoadIn(Me)
-        _MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
-        _MMSMenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
-        _MMSMenu.Visible("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
-        _MMSMenu.Checked("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
+        V_MMSMenu.LoadIn(Me)
+        V_MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        V_MMSMenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        V_MMSMenu.Visible("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
+        V_MMSMenu.Checked("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub _MMSMenu_EventDataEdit() Handles _MMSMenu.EventDataEdit
-        _REMS_Switch = New REMS_Editor_Switch
-        DISPLAY(_REMS_Switch, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Please Select",, True,)
+    Private Sub _MMSMenu_EventDataEdit() Handles V_MMSMenu.EventDataEdit
+        V_REMS_Switch = New REMS_Editor_Switch
+        DISPLAY(V_REMS_Switch, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Please Select",, True,)
     End Sub
 #End Region
 
@@ -38,7 +38,7 @@ Public Class REMS
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub GetTableID()
-        Select Case _SelectedGroup
+        Select Case V_SelectedGroup
             Case "tpOnProgress"
                 'GetAccountID(DgnACGRAssets)
                 'SLFStatus.Items(0).Text = DgnACGRAssets.RowCount & " Row(s)"
@@ -52,13 +52,13 @@ Public Class REMS
     End Sub
 
     Private Sub TbctlToDoList_Selected(sender As Object, e As TabControlEventArgs) Handles TbctlToDoList.Selected
-        If _IsClosing = False Then
-            _SelectedGroup = TbctlToDoList.SelectedTab.Name
+        If Not V_IsClosing Then
+            V_SelectedGroup = TbctlToDoList.SelectedTab.Name
             Call GetTableID()
         End If
     End Sub
 
     Private Sub REMS_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        _IsClosing = True
+        V_IsClosing = True
     End Sub
 End Class

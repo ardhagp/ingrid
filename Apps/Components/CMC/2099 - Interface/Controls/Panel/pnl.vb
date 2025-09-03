@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class Pnl
+Public Class pnl
     Inherits System.Windows.Forms.Panel
 
     <SupportedOSPlatform("windows")>

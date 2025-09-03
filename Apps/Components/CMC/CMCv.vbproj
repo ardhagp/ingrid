@@ -108,127 +108,129 @@
       <DependentUpon>PHTRZ.vb</DependentUpon>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Button\btn.Designer.vb">
-      <DependentUpon>Btn.vb</DependentUpon>
+      <DependentUpon>btn.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Button\Btn.vb">
+    <Compile Update="2099 - Interface\Controls\Button\btn.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\CheckBox\chk.Designer.vb">
-      <DependentUpon>Chk.vb</DependentUpon>
+      <DependentUpon>chk.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\CheckBox\Chk.vb">
+    <Compile Update="2099 - Interface\Controls\CheckBox\chk.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\ComboBox\cbo.Designer.vb">
-      <DependentUpon>Cbo.vb</DependentUpon>
+      <DependentUpon>cbo.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\ComboBox\Cbo.vb">
+    <Compile Update="2099 - Interface\Controls\ComboBox\cbo.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Context Menu\csmnu.Designer.vb">
-      <DependentUpon>Csmnu.vb</DependentUpon>
+      <DependentUpon>csmnu.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Context Menu\Csmnu.vb">
+    <Compile Update="2099 - Interface\Controls\Context Menu\csmnu.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\DataGridView\dgn.Designer.vb">
-      <DependentUpon>Dgn.vb</DependentUpon>
+      <DependentUpon>dgn.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\DataGridView\Dgn.vb" />
+    <Compile Update="2099 - Interface\Controls\DataGridView\dgn.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="2099 - Interface\Controls\DateTimePicker\dtp.Designer.vb">
-      <DependentUpon>Dtp.vb</DependentUpon>
+      <DependentUpon>dtp.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\DateTimePicker\Dtp.vb">
+    <Compile Update="2099 - Interface\Controls\DateTimePicker\dtp.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\GroupBox\gbx.Designer.vb">
-      <DependentUpon>Gbx.vb</DependentUpon>
+      <DependentUpon>gbx.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\GroupBox\Gbx.vb">
+    <Compile Update="2099 - Interface\Controls\GroupBox\gbx.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Label\lbl.Designer.vb">
-      <DependentUpon>Lbl.vb</DependentUpon>
+      <DependentUpon>lbl.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Label\Lbl.vb">
+    <Compile Update="2099 - Interface\Controls\Label\lbl.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\LinkLabel\lnklbl.Designer.vb">
-      <DependentUpon>Lnklbl.vb</DependentUpon>
+      <DependentUpon>lnklbl.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\LinkLabel\Lnklbl.vb">
+    <Compile Update="2099 - Interface\Controls\LinkLabel\lnklbl.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\MaskEditBox\meb.Designer.vb">
-      <DependentUpon>Meb.vb</DependentUpon>
+      <DependentUpon>meb.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\MaskEditBox\Meb.vb">
+    <Compile Update="2099 - Interface\Controls\MaskEditBox\meb.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Menu Strip\mnu.Designer.vb">
-      <DependentUpon>Mnu.vb</DependentUpon>
+      <DependentUpon>mnu.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Menu Strip\Mnu.vb">
+    <Compile Update="2099 - Interface\Controls\Menu Strip\mnu.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\NumericUpDown\nud.Designer.vb">
-      <DependentUpon>Nud.vb</DependentUpon>
+      <DependentUpon>nud.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\NumericUpDown\Nud.vb">
+    <Compile Update="2099 - Interface\Controls\NumericUpDown\nud.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Panel\pnl.Designer.vb">
-      <DependentUpon>Pnl.vb</DependentUpon>
+      <DependentUpon>pnl.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Panel\Pnl.vb">
+    <Compile Update="2099 - Interface\Controls\Panel\pnl.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\PictureBox\pctbx.Designer.vb">
-      <DependentUpon>Pctbx.vb</DependentUpon>
+      <DependentUpon>pctbx.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\PictureBox\Pctbx.vb">
+    <Compile Update="2099 - Interface\Controls\PictureBox\pctbx.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\ProgressBar\pgb.Designer.vb">
-      <DependentUpon>Pgb.vb</DependentUpon>
+      <DependentUpon>pgb.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\ProgressBar\Pgb.vb">
+    <Compile Update="2099 - Interface\Controls\ProgressBar\pgb.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\RadioButton\rdo.Designer.vb">
-      <DependentUpon>Rdo.vb</DependentUpon>
+      <DependentUpon>rdo.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\RadioButton\Rdo.vb">
+    <Compile Update="2099 - Interface\Controls\RadioButton\rdo.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\SplitContainer\spc.Designer.vb">
-      <DependentUpon>Spc.vb</DependentUpon>
+      <DependentUpon>spc.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\SplitContainer\Spc.vb">
+    <Compile Update="2099 - Interface\Controls\SplitContainer\spc.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Status Strip\stt.Designer.vb">
-      <DependentUpon>Stt.vb</DependentUpon>
+      <DependentUpon>stt.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Status Strip\Stt.vb">
+    <Compile Update="2099 - Interface\Controls\Status Strip\stt.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\TabControl\tbctl.Designer.vb">
-      <DependentUpon>Tbctl.vb</DependentUpon>
+      <DependentUpon>tbctl.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\TabControl\Tbctl.vb">
+    <Compile Update="2099 - Interface\Controls\TabControl\tbctl.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\TextBox\txt.Designer.vb">
-      <DependentUpon>Txt.vb</DependentUpon>
+      <DependentUpon>txt.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\TextBox\Txt.vb">
+    <Compile Update="2099 - Interface\Controls\TextBox\txt.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\TreeView\tv.Designer.vb">
-      <DependentUpon>Tv.vb</DependentUpon>
+      <DependentUpon>tv.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\TreeView\Tv.vb">
+    <Compile Update="2099 - Interface\Controls\TreeView\tv.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Forms\Templates\Windows7\Blank.Designer.vb">
@@ -513,6 +515,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.1.0" />
     <PackageReference Include="NETCore.Encrypt" Version="2.1.1" />
     <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.19" />
     <PackageReference Include="Syncfusion.Grid.Windows" Version="23.1.41" />

@@ -6,22 +6,22 @@ Namespace Sys.Hardware
     <SupportedOSPlatform("windows")>
     Public Class Keyboard
         Public Shared Function Installed() As Integer
-            Dim varResult As Integer = 0
 
             Try
+                Dim _Result As Integer = 0
 
                 Dim searcher As New ManagementObjectSearcher(
                     "root\CIMV2",
                     "SELECT * FROM Win32_Keyboard")
 
                 For Each queryObj As ManagementObject In searcher.Get()
-                    varResult += 1
+                    _Result += 1
                 Next
             Catch err As ManagementException
                 MessageBox.Show("An error occurred while querying for WMI data: " & err.Message)
-                varResult = 0
+                V_result = "0"
             End Try
-            Return CType(varResult, Integer)
+            Return CType(V_result, Integer)
         End Function
     End Class
 End Namespace

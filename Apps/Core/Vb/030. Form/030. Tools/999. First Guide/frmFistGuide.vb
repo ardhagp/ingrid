@@ -1,9 +1,9 @@
 ﻿Public Class frmFistGuide
-    Private clsFieldrecord As New Ingrid.Main.GlobalRecord
-    Private varStep As Integer
+    Private Field_Record As New Ingrid.Main.GlobalRecord
+    Private _Step As Integer
 
     Private Sub Btn_Process_Click(sender As Object, e As EventArgs) Handles Btn_Process.Click
-        If varStep = 1 Then
+        If _Step = 1 Then
 
             If (Txt_Company.XOIsBlank) OrElse (Txt_Department.XOIsBlank) OrElse (Txt_Position.XOIsBlank) OrElse (Txt_EmployeeName.XOIsBlank) OrElse (Txt_EmployeeID.XOIsBlank) Then
                 MsgBox("Field(s) cannot be emptied", MsgBoxStyle.Critical, "Ingrid")
@@ -23,23 +23,21 @@
                 Exit Sub
             End If
 
-            With clsFieldrecord
-                .Field01 = CMCv.Security.Encrypt.MD5(Txt_Company.Text.ToUpper)
-                .Field02 = CMCv.Security.Encrypt.MD5(Txt_Department.Text.ToUpper)
-                .Field03 = CMCv.Security.Encrypt.MD5(Txt_Position.Text.ToUpper)
-                .Field04 = CMCv.Security.Encrypt.MD5(Txt_EmployeeID.Text.ToUpper)
-            End With
+            Field_Record.Field01 = CMCv.Security.Encrypt.MD5(Txt_Company.Text.ToUpper)
+            Field_Record.Field02 = CMCv.Security.Encrypt.MD5(Txt_Department.Text.ToUpper)
+            Field_Record.Field03 = CMCv.Security.Encrypt.MD5(Txt_Position.Text.ToUpper)
+            Field_Record.Field04 = CMCv.Security.Encrypt.MD5(Txt_EmployeeID.Text.ToUpper)
 
             Gbx_Company.Visible = False
             Gbx_Login.Visible = True
 
-            varStep += 1
-            Lbl_Step.Text = String.Format("Step {0} :", varStep)
+            _Step += 1
+            Lbl_Step.Text = String.Format("Step {0} :", _Step)
 
             Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
             Btn_Close.Text = "&Prev"
 
-        ElseIf varStep = 2 Then
+        ElseIf _Step = 2 Then
             If (Txt_Username.XOIsBlank) OrElse (Txt_Password.XOIsBlank) Then
                 MsgBox("Field(s) cannot be emptied", MsgBoxStyle.Critical, "Ingrid")
 
@@ -62,43 +60,43 @@
             Gbx_Login.Visible = False
             Gbx_Modules.Visible = True
 
-            varStep += 1
-            Lbl_Step.Text = String.Format("Step {0} :", varStep)
+            _Step += 1
+            Lbl_Step.Text = String.Format("Step {0} :", _Step)
 
-        ElseIf varStep = 3 Then
+        ElseIf _Step = 3 Then
             'TODO: Continue next step, open SQLite Database for App_Settings.db
-            'varERL.
+            'ERL.
 
-            varStep += 1
-            Lbl_Step.Text = String.Format("Step {0} :", varStep)
+            _Step += 1
+            Lbl_Step.Text = String.Format("Step {0} :", _Step)
 
         End If
     End Sub
 
     Private Sub frmFistGuide_Load(sender As Object, e As EventArgs) Handles Me.Load
-        varStep = 1
+        _Step = 1
         Gbx_Company.Visible = True
         Gbx_Login.Visible = False
     End Sub
 
     Private Sub Btn_Close_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
-        If varStep = 1 Then
+        If _Step = 1 Then
             Me.Close()
-        ElseIf varStep = 2 Then
+        ElseIf _Step = 2 Then
             Gbx_Company.Visible = True
             Gbx_Login.Visible = False
 
-            varStep -= 1
-            Lbl_Step.Text = String.Format("Step {0} :", varStep)
+            _Step -= 1
+            Lbl_Step.Text = String.Format("Step {0} :", _Step)
 
             Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
             Btn_Close.Text = "&Close"
-        ElseIf varStep = 3 Then
+        ElseIf _Step = 3 Then
             Gbx_Login.Visible = True
             Gbx_Modules.Visible = False
 
-            varStep -= 1
-            Lbl_Step.Text = String.Format("Step {0} :", varStep)
+            _Step -= 1
+            Lbl_Step.Text = String.Format("Step {0} :", _Step)
         End If
     End Sub
 

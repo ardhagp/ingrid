@@ -3,9 +3,9 @@ Imports System.Net.Sockets
 Imports System.Threading
 
 Public Class SAY
-    Private varServer As TcpListener = Nothing
-    Private varServerthread As Thread = Nothing
-    Private varThreads As New List(Of Thread)
+    Private _Server As TcpListener = Nothing
+    Private _ServerThread As Thread = Nothing
+    Private _Threads As New List(Of Thread)
 
     Public Sub New()
 
@@ -13,28 +13,28 @@ Public Class SAY
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        varServer = New TcpListener(IPAddress.Any, 8786)
-        varServerthread = New Thread(AddressOf ConnectionListener)
-        varServerthread.IsBackground = True
-        varServerthread.Start()
+        _Server = New TcpListener(IPAddress.Any, 8786)
+        _ServerThread = New Thread(AddressOf ConnectionListener)
+        _ServerThread.IsBackground = True
+        _ServerThread.Start()
     End Sub
 
     Private Sub ConnectionListener()
         Try
-            varServer.Start()
+            _Server.Start()
             While True
-                Dim varClient As TcpClient = varServer.AcceptTcpClient
-                Dim varThread As New Thread(AddressOf StartChatForm)
-                varThread.Start(varClient)
+                Dim _Client As TcpClient = _Server.AcceptTcpClient
+                Dim _T As New Thread(AddressOf StartChatForm)
+                _T.Start(_Client)
             End While
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
-        varServer.Stop()
+        _Server.Stop()
     End Sub
 
     Private Sub StartChatForm()
         'app run...code here.
-        varThreads.Remove(Thread.CurrentThread)
+        _Threads.Remove(Thread.CurrentThread)
     End Sub
 End Class

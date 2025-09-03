@@ -6,8 +6,8 @@
         ''' <param name="FilePath">Letak dan nama file tersimpan</param>
         ''' <returns>Boolean</returns>
         Public Shared Function IsExists(ByVal FilePath As String) As Boolean
-            Dim varFileexist As New IO.FileInfo(FilePath)
-            Return varFileexist.Exists
+            Dim V_FileIsExists As New IO.FileInfo(FilePath)
+            Return V_FileIsExists.Exists
         End Function
 
         ''' <summary>
@@ -15,9 +15,9 @@
         ''' </summary>
         ''' <param name="FilePath">Letak dan nama file tersimpan</param>
         ''' <returns>Double</returns>
-        Public Shared Function varSize(ByVal FilePath As String) As Double
-            Dim varFilesize As New IO.FileInfo(FilePath)
-            Return varFilesize.Length
+        Public Shared Function Size(ByVal FilePath As String) As Double
+            Dim V_FileSize As New IO.FileInfo(FilePath)
+            Return V_FileSize.Length
         End Function
     End Class
 
@@ -32,44 +32,43 @@
 
             'Dim _File As New Info
 
-            Dim varISallowed As Boolean
-            Dim varSize As String() = {"B", "KB", "MB", "GB", "TB"}
-            Dim varPhotolength As Double = Info.varSize(FilePath)
-            Dim varOriginalphotolength As Double = varPhotolength
-            Dim varOrder As Integer = 0
-            Dim varMaximumorder As Integer = 0
+            Dim V_IsAllowed As Boolean
+            Dim size As String() = {"B", "KB", "MB", "GB", "TB"}
+            Dim V_PhotoLength As Double = Info.Size(FilePath)
+            Dim V_OriginalPhotoLength As Double = V_PhotoLength
+            Dim V_Order As Integer = 0
+            Dim V_MaximumOrder As Integer = 0
 
             If MaxSize = 0 Then
-                varISallowed = True
-                Return varISallowed
-                Exit Function
+                V_IsAllowed = True
+                Return V_IsAllowed
             End If
 
-            While (varPhotolength >= 1024 AndAlso CType(varSize.Length - 1, Boolean))
-                varOrder += 1
-                varPhotolength /= 1024
+            While (V_PhotoLength >= 1024 AndAlso CType(size.Length - 1, Boolean))
+                V_Order += 1
+                V_PhotoLength /= 1024
             End While
 
-            Dim varMaximumphotolength As Double = ((1024 ^ 2) * MaxSize) '1 indicate 1000KB or 1MB
-            Dim varMaximumphotoLengthdisplay As Double = varMaximumphotolength
+            Dim V_MaximumPhotoLength As Double = ((1024 ^ 2) * MaxSize) '1 indicate 1000KB or 1MB
+            Dim V_MaximumPhotoLengthDisplay As Double = V_MaximumPhotoLength
 
-            While (varMaximumphotoLengthdisplay >= 1024 AndAlso CType(varSize.Length - 1, Boolean))
-                varMaximumorder += 1
-                varMaximumphotoLengthdisplay /= 1024
+            While (V_MaximumPhotoLengthDisplay >= 1024 AndAlso CType(size.Length - 1, Boolean))
+                V_MaximumOrder += 1
+                V_MaximumPhotoLengthDisplay /= 1024
             End While
 
-            If varOriginalphotolength > varMaximumphotolength Then
-                Dim frmMSG As New CMCv.frmDBdialogbox("Your file varSize is : " & String.Format("{0:0.##} {1}", varPhotolength, varSize(varOrder)) & ", above the varSize that we can tolerate." & vbCrLf & "Please pick your file varSize under " & String.Format("{0:0.##} {1}", varMaximumphotoLengthdisplay, varSize(varMaximumorder)) & " and then try again.", "Limit Exceeded", frmDBdialogbox.MessageIcon.Error, frmDBdialogbox.MessageTypes.OkOnly)
+            If V_OriginalPhotoLength > V_MaximumPhotoLength Then
+                Dim V_ErrorBox As New CMCv.frmDialogBox("Your file size is : " & String.Format("{0:0.##} {1}", V_PhotoLength, size(V_Order)) & ", above the size that we can tolerate." & vbCrLf & "Please pick your file size under " & String.Format("{0:0.##} {1}", V_MaximumPhotoLengthDisplay, size(V_MaximumOrder)) & " and then try again.", "Limit Exceeded", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
                 If (ShowNativeDialog) Then
-                    frmMSG.ShowDialog()
-                    frmMSG.Dispose()
+                    V_ErrorBox.ShowDialog()
+                    V_ErrorBox.Dispose()
                 End If
-                varISallowed = False
+                V_IsAllowed = False
             Else
-                varISallowed = True
+                V_IsAllowed = True
             End If
 
-            Return varISallowed
+            Return V_IsAllowed
         End Function
     End Class
 End Namespace

@@ -69,6 +69,8 @@ Namespace Database.Engine
                     varFilepath(0) = Application.StartupPath & "\Resources\DEV_CATALOG.mdb"
                 End If
 
+                Dim V_FileInfo As New OperatingSystem.File.Info
+
                 If OperatingSystem.File.Info.IsExists(varFilepath(0)) Then
                     varConnectionstring(0) = varMsa2003c.MicrosoftOLEDBStandard(varFilepath(0), "admin", "")
 
@@ -114,9 +116,9 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub SaveErrorData(ByVal clsErrorcatcher As Catcher.Error.Fields)
-            Dim varNowdatetime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
-            Call PUSHDATA("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & clsErrorcatcher.Type & "','" & clsErrorcatcher.Message & "'," & clsErrorcatcher.Number & ",'" & clsErrorcatcher.InternalStackTrace & "'," & clsErrorcatcher.EnableErrorReporting & ",'" & varNowdatetime & "');", varConnection(1), varCommand(1))
+        Public Sub SaveErrorData(ByVal ErrorCatcher As Catcher.Error.Fields)
+            Dim NowDateTime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
+            Call PUSHDATA("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & ErrorCatcher.Type & "','" & ErrorCatcher.Message & "'," & ErrorCatcher.Number & ",'" & ErrorCatcher.InternalStackTrace & "'," & ErrorCatcher.EnableErrorReporting & ",'" & NowDateTime & "');", varConnection(1), varCommand(1))
         End Sub
 
         <SupportedOSPlatform("windows")>

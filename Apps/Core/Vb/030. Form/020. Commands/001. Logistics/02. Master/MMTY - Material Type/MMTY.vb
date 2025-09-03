@@ -2,7 +2,7 @@
 
 Public Class MMTY
     'Private _SQL As New LibSQL.Commands.MMTY.View
-    Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
+    Private WithEvents V_MMSMenu As New CMCv.UI.View.MenuStrip
 
 #Region "Menu Strip Functions"
 
@@ -10,12 +10,12 @@ Public Class MMTY
 
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
-        Commands.MMTY.View.DisplayData(DgnMMTY, SLFStatus, TxtFind, ForceRefresh)
+        Commands.MMTY.View.DisplayData(V_DatabaseEngine, DgnMMTY, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub frmMMTY_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        _MMSMenu.LoadIn(Me)
+        V_MMSMenu.LoadIn(Me)
         Call GETDATA(True)
     End Sub
 
@@ -32,6 +32,4 @@ Public Class MMTY
             Call GETDATA()
         End If
     End Sub
-
-
 End Class

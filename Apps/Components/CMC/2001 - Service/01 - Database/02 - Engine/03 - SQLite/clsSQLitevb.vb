@@ -4,72 +4,68 @@ Imports System.Runtime.Versioning
 
 Namespace Database.Engine
     Public Class SQLiteV3
-        Private ReadOnly varConnectionstring(2) As String
-        Private ReadOnly varFilepath(2) As String
+        Private ReadOnly var_connectionstring(2) As String
+        Private ReadOnly var_filepath(2) As String
 
-        Private ReadOnly varConnection(2) As SQLite.SQLiteConnection
-        Private ReadOnly varCommand(2) As SQLite.SQLiteCommand
-        Private ReadOnly varDatareader(2) As SQLite.SQLiteDataReader
+        Private ReadOnly var_connection(2) As SQLite.SQLiteConnection
+        Private ReadOnly var_command(2) As SQLite.SQLiteCommand
+        Private ReadOnly var_datareader(2) As SQLite.SQLiteDataReader
 
-        Private ReadOnly varSqlite As New Connect.SQLiteConnection
-
-        Shared ReadOnly varBaseCatalog As String = "\Resources\catalog.db"
-        Shared ReadOnly varBaseDevCatalog As String = "\Resources\dev_catalog.db"
-        Shared ReadOnly varErrorlog As String = "\Resources\errlog.db"
+        Private ReadOnly var_sqlite As New Connect.SQLiteConnection
 
         <SupportedOSPlatform("windows")>
         Public Shared Function CheckDBCatalog() As Boolean
             Try
-                Dim varDbpath As String = Nothing
-                Dim varDbexists(3) As Boolean
+                Dim var_dbpath As String = Nothing
+                Dim var_dbexists(3) As Boolean
 
-                Dim varLocation As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
+                Dim var_location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
 
-                System.IO.Directory.CreateDirectory(varLocation & "\Resources")
+                System.IO.Directory.CreateDirectory(var_location & "\Resources")
 
-                varDbpath = varLocation & varBaseCatalog
-                If OperatingSystem.File.Info.IsExists(varDbpath) Then
-                    varDbexists(1) = True
+                var_dbpath = var_location & "\Resources\catalog.db"
+                If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                    var_dbexists(1) = True
                 Else
-                    System.IO.File.Copy(Application.StartupPath & varBaseCatalog, varLocation & varBaseCatalog, True)
-                    If OperatingSystem.File.Info.IsExists(varDbpath) Then
-                        varDbexists(1) = True
+                    System.IO.File.Copy(Application.StartupPath & "\Resources\catalog.db", var_location & "\Resources\catalog.db", True)
+                    If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                        var_dbexists(1) = True
                     Else
-                        varDbexists(1) = False
+                        var_dbexists(1) = False
                     End If
                 End If
 
-                varDbpath = varLocation & varBaseDevCatalog
-                If OperatingSystem.File.Info.IsExists(varDbpath) Then
-                    varDbexists(2) = True
+                var_dbpath = var_location & "\Resources\dev_catalog.db"
+                If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                    var_dbexists(2) = True
                 Else
-                    System.IO.File.Copy(Application.StartupPath & varBaseDevCatalog, varLocation & varBaseDevCatalog, True)
-                    If OperatingSystem.File.Info.IsExists(varDbpath) Then
-                        varDbexists(2) = True
+                    System.IO.File.Copy(Application.StartupPath & "\Resources\dev_catalog.db", var_location & "\Resources\dev_catalog.db", True)
+                    If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                        var_dbexists(2) = True
                     Else
-                        varDbexists(2) = False
+                        var_dbexists(2) = False
                     End If
                 End If
 
-                varDbpath = varLocation & varErrorlog
-                If OperatingSystem.File.Info.IsExists(varDbpath) Then
-                    varDbexists(3) = True
+                var_dbpath = var_location & "\Resources\errlog.db"
+                If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                    var_dbexists(3) = True
                 Else
-                    System.IO.File.Copy(Application.StartupPath & varErrorlog, varLocation & varErrorlog, True)
-                    If OperatingSystem.File.Info.IsExists(varDbpath) Then
-                        varDbexists(3) = True
+                    System.IO.File.Copy(Application.StartupPath & "\Resources\errlog.db", var_location & "\Resources\errlog.db", True)
+                    If OperatingSystem.File.Info.IsExists(var_dbpath) Then
+                        var_dbexists(3) = True
                     Else
-                        varDbexists(3) = False
+                        var_dbexists(3) = False
                     End If
                 End If
 
-                If ((varDbexists(1)) AndAlso (varDbexists(3))) OrElse ((varDbexists(2)) AndAlso (varDbexists(3))) Then
+                If ((var_dbexists(1)) AndAlso (var_dbexists(3))) OrElse ((var_dbexists(2)) AndAlso (var_dbexists(3))) Then
                     Return True
                 Else
                     Return False
                 End If
             Catch ex As Exception
-                Call PUSHERRORDATA("[CheckDBCatalog] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[CheckDBCatalog] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
                 Return False
             End Try
@@ -78,7 +74,7 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub Open(Optional ByVal IsProductionMode As Boolean = False)
             Try
-                Dim varLocation As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
+                Dim var_location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
 
                 If Not (CheckDBCatalog()) Then
                     Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, "File configuration Not found", 0.ToString, "", GETAPPVERSION, False, True, False)
@@ -87,32 +83,34 @@ Namespace Database.Engine
                 End If
 
                 If (IsProductionMode) Then
-                    varFilepath(0) = varLocation & varBaseCatalog
+                    var_filepath(0) = var_location & "\Resources\catalog.db"
                 Else
-                    varFilepath(0) = varLocation & varBaseDevCatalog
+                    var_filepath(0) = var_location & "\Resources\dev_catalog.db"
                 End If
 
-                If OperatingSystem.File.Info.IsExists(varFilepath(0)) Then
-                    varFilepath(0) = Replace(varFilepath(0), "\", "\\")
+                Dim var_fileinfo As New OperatingSystem.File.Info
 
-                    varConnectionstring(0) = varSqlite.SQLiteBasic(varFilepath(0))
+                If OperatingSystem.File.Info.IsExists(var_filepath(0)) Then
+                    var_filepath(0) = Replace(var_filepath(0), "\", "\\")
 
-                    varConnection(1) = New SQLite.SQLiteConnection(varConnectionstring(0)) 'OleDb.OleDbConnection(_CS(0))
-                    varConnection(1).Open()
+                    var_connectionstring(0) = var_sqlite.SQLiteBasic(var_filepath(0))
+
+                    var_connection(1) = New SQLite.SQLiteConnection(var_connectionstring(0)) 'OleDb.OleDbConnection(_CS(0))
+                    var_connection(1).Open()
                 End If
 
-                varFilepath(1) = varLocation & varErrorlog
+                var_filepath(1) = var_location & "\Resources\errlog.db"
 
-                If OperatingSystem.File.Info.IsExists(varFilepath(1)) Then
-                    varFilepath(1) = Replace(varFilepath(1), "\", "\\")
+                If OperatingSystem.File.Info.IsExists(var_filepath(1)) Then
+                    var_filepath(1) = Replace(var_filepath(1), "\", "\\")
 
-                    varConnectionstring(1) = varSqlite.SQLiteBasic(varFilepath(1))
+                    var_connectionstring(1) = var_sqlite.SQLiteBasic(var_filepath(1))
 
-                    varConnection(2) = New SQLite.SQLiteConnection(varConnectionstring(1))
-                    varConnection(2).Open()
+                    var_connection(2) = New SQLite.SQLiteConnection(var_connectionstring(1))
+                    var_connection(2).Open()
                 End If
             Catch ex As Exception
-                Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
             End Try
         End Sub
@@ -122,7 +120,7 @@ Namespace Database.Engine
             Try
 
             Catch ex As Exception
-                Call PUSHERRORDATA("[OpenAppSettings] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[OpenAppSettings] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
             End Try
         End Sub
@@ -130,9 +128,9 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Function GetDatabaseProperties(ByVal Fields As Properties.Fields) As Database.Properties.Fields
             Try
-                varDatareader(1) = GETDATAROW("Select SERVERADDRESS, USERNAME, PASSWORD, SERVERPORT, DBFORDATA, DBFORFILE FROM serverlist WHERE DEFAULTCONNECTION =1;")
+                var_datareader(1) = GETDATAROW("Select SERVERADDRESS, USERNAME, PASSWORD, SERVERPORT, DBFORDATA, DBFORFILE, DATABASEENGINE FROM serverlist WHERE DEFAULTCONNECTION =1;")
 
-                With varDatareader(1)
+                With var_datareader(1)
                     If .HasRows Then
                         Fields.ServerAddress = .GetString(0)
                         Fields.Username = .GetString(1)
@@ -140,31 +138,33 @@ Namespace Database.Engine
                         Fields.Port = CType(.GetValue(3), Integer)
                         Fields.DataStorage = .GetString(4)
                         Fields.FileStorage = .GetString(5)
+                        Fields.DatabaseEngine = .GetString(6)
                     Else
                         Fields.ServerAddress = String.Empty
                         Fields.Username = String.Empty
                         Fields.Password = String.Empty
-                        Fields.Port = 1433
+                        Fields.Port = 0
                         Fields.DataStorage = String.Empty
                         Fields.FileStorage = String.Empty
+                        Fields.DatabaseEngine = String.Empty
                     End If
                 End With
 
                 Return Fields
             Catch ex As Exception
-                Call PUSHERRORDATA("[GetDatabaseProperties] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[GetDatabaseProperties] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
                 Return Nothing
             End Try
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub SaveErrorData(ByVal clsErrorcatcher As Catcher.Error.Fields)
+        Public Sub SaveErrorData(ByVal ErrorCatcher As Catcher.Error.Fields)
             Try
-                Dim varNowdatetime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
-                Call PUSHDATA("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & clsErrorcatcher.Type & "','" & clsErrorcatcher.Message & "'," & clsErrorcatcher.Number & ",'" & clsErrorcatcher.InternalStackTrace & "'," & clsErrorcatcher.EnableErrorReporting & ",'" & varNowdatetime & "');")
+                Dim NowDateTime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
+                Call PUSHDATA("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & ErrorCatcher.Type & "','" & ErrorCatcher.Message & "'," & ErrorCatcher.Number & ",'" & ErrorCatcher.InternalStackTrace & "'," & ErrorCatcher.EnableErrorReporting & ",'" & NowDateTime & "');")
             Catch ex As Exception
-                PUSHERRORDATA("[SaveErrorData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
+                PUSHERRORDATA("[SaveErrorData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 PUSHERRORDATASHOW()
             End Try
         End Sub
@@ -172,19 +172,19 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Private Function GETDATAROW(ByVal Query As String) As SQLite.SQLiteDataReader
             Try
-                varCommand(1) = New SQLite.SQLiteCommand With {
-                                .Connection = varConnection(1),
+                var_command(1) = New SQLite.SQLiteCommand With {
+                                .Connection = var_connection(1),
                                 .CommandType = CommandType.Text,
                                 .CommandText = Query
                                                     }
 
-                varDatareader(0) = varCommand(1).ExecuteReader
+                var_datareader(0) = var_command(1).ExecuteReader
 
-                If varDatareader(0).HasRows Then
-                    varDatareader(0).Read()
+                If var_datareader(0).HasRows Then
+                    var_datareader(0).Read()
                 End If
 
-                Return varDatareader(0)
+                Return var_datareader(0)
             Catch ex As SQLite.SQLiteException
                 Call PUSHERRORDATA("[GETDATAROW] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.StackTrace, ex.ErrorCode.ToString, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
@@ -195,23 +195,23 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Function GETVALUE(ByVal Query As String) As Object
             Try
-                Dim varRowvalue As Object
+                Dim var_rowvalue As Object
 
-                If (varConnection(1) Is Nothing) Then
-                    varConnection(1).Open()
+                If (var_connection(1) Is Nothing) Then
+                    var_connection(1).Open()
                 End If
 
-                varCommand(1) = New SQLite.SQLiteCommand With {
-                                .Connection = varConnection(1),
+                var_command(1) = New SQLite.SQLiteCommand With {
+                                .Connection = var_connection(1),
                                 .CommandTimeout = 30,
                                 .CommandText = Query
                     }
 
-                varRowvalue = varCommand(1).ExecuteScalar
+                var_rowvalue = var_command(1).ExecuteScalar
 
-                Return varRowvalue
+                Return var_rowvalue
             Catch ex As Exception
-                Call PUSHERRORDATA("[GETVALUE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[GETVALUE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
                 Return Nothing
             End Try
@@ -220,52 +220,52 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub GETDATATABLE(ByVal DBR As Adapter.SQLite.Display.Request, ByVal TableName As String)
 
-            Dim varDataadapter(1) As SQLite.SQLiteDataAdapter
+            Dim var_dataadapter(1) As SQLite.SQLiteDataAdapter
 
             Try
                 GC.Collect()
 
-                Dim varDataset As New DataSet
-                Dim varBindingsource As New BindingSource
+                Dim var_dataset As New DataSet
+                Dim var_bindingsource As New BindingSource
 
-                If (varCommand(1) Is Nothing) Then
-                    varCommand(1) = New SQLite.SQLiteCommand
+                If (var_command(1) Is Nothing) Then
+                    var_command(1) = New SQLite.SQLiteCommand
                 End If
 
-                varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandTimeout = 30
+                var_command(1).Connection = var_connection(1)
+                var_command(1).CommandTimeout = 30
 
-                varCommand(1).CommandText = DBR.Query
+                var_command(1).CommandText = DBR.Query
 
-                varDataadapter(1) = New SQLite.SQLiteDataAdapter(varCommand(1))
-                varDataadapter(1).Fill(varDataset, TableName)
+                var_dataadapter(1) = New SQLite.SQLiteDataAdapter(var_command(1))
+                var_dataadapter(1).Fill(var_dataset, TableName)
 
-                varBindingsource = New BindingSource(varDataset, TableName)
+                var_bindingsource = New BindingSource(var_dataset, TableName)
 
                 If Not (DBR.DataGrid Is Nothing) Then
-                    DBR.DataGrid.DataSource = varBindingsource
+                    DBR.DataGrid.DataSource = var_bindingsource
                 End If
 
                 If Not (DBR.Dropdown Is Nothing) Then
-                    DBR.Dropdown.DataSource = varBindingsource
+                    DBR.Dropdown.DataSource = var_bindingsource
                 End If
 
                 If Not (DBR.StatusBar Is Nothing) AndAlso (DBR.StatusBar.Items.Count <> 0) Then
-                    DBR.StatusBar.Items(0).Text = varBindingsource.Count & " Row(s)"
+                    DBR.StatusBar.Items(0).Text = var_bindingsource.Count & " Row(s)"
                 End If
 
                 If Not (DBR.Chart Is Nothing) Then
-                    DBR.Chart.DataSource = varBindingsource
+                    DBR.Chart.DataSource = var_bindingsource
                 End If
 
             Catch ex As SQLite.SQLiteException
-                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
             Catch ex As InvalidCastException
-                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
             Catch ex As Exception
-                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
             End Try
         End Sub
@@ -273,12 +273,13 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub PUSHDATA(ByVal Query As String)
             Try
-                Using varTransaction = varConnection(1).BeginTransaction
-                    Dim varWcommand = varConnection(1).CreateCommand
+                Using TX = var_connection(1).BeginTransaction
+                    Dim W_CMD = var_connection(1).CreateCommand
+                    W_CMD.CommandText = Query
 
-                    varWcommand.CommandText = Query
-                    varWcommand.ExecuteNonQuery()
-                    varTransaction.Commit()
+                    W_CMD.ExecuteNonQuery()
+
+                    TX.Commit()
                 End Using
 
             Catch ex As SQLite.SQLiteException
@@ -288,10 +289,10 @@ Namespace Database.Engine
         End Sub
 
         Public Sub Close()
-            varConnection(1).Close()
-            varConnection(2).Close()
-            varConnection(1).Dispose()
-            varConnection(2).Dispose()
+            var_connection(1).Close()
+            var_connection(2).Close()
+            var_connection(1).Dispose()
+            var_connection(2).Dispose()
         End Sub
     End Class
 End Namespace

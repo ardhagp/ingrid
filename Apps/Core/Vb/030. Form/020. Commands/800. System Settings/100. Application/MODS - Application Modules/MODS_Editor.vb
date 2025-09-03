@@ -3,14 +3,14 @@ Imports CMCv
 
 Public Class MODS_Editor
 #Region "Variables"
-    Private _SQL As New Commands.MODS.Editor
+    Private V_SQL As New Commands.MODS.Editor
     Public Event RecordSaved()
 #End Region
 
 #Region "Subs Collection"
     <SupportedOSPlatform("windows")>
     Private Sub FILLGroup(ByVal ModuleGroup As cbo)
-        Commands.MODS.Editor.FILLModuleGroup(ModuleGroup)
+        Commands.MODS.Editor.FILLModuleGroup(V_DatabaseEngine, ModuleGroup)
     End Sub
 
     Private Sub CheckAllInput()
@@ -27,20 +27,20 @@ Public Class MODS_Editor
         DgnUserRoles.XOGETNewColor()
 
         Call FILLGroup(CboGroup)
-        If (varFORMAttribute.IsNew) Then
+        If (V_FORMAttrib.IsNew) Then
             ChkAddNew.Enabled = True
             ChkAddNew.Visible = True
             CboGroup.Focus()
         Else
             ChkAddNew.Enabled = False
             ChkAddNew.Visible = False
-            TxtID.Text = varFORMAttribute.RowID
-            CboGroup.SelectedValue = Commands.MODS.Editor.GETMODGroupID(varFORMAttribute.RowID)
-            TxtCode.Text = Commands.MODS.Editor.GETMODCode(varFORMAttribute.RowID)
-            TxtName.Text = Commands.MODS.Editor.GETMODName(varFORMAttribute.RowID)
-            TxtDescription.Text = Commands.MODS.Editor.GETMODDescription(varFORMAttribute.RowID)
-            ChkSystem.Checked = Commands.MODS.Editor.GETMODSystem(varFORMAttribute.RowID)
-            ChkLocked.Checked = Commands.MODS.Editor.GETMODLocked(varFORMAttribute.RowID)
+            TxtID.Text = V_FORMAttrib.RowID
+            CboGroup.SelectedValue = Commands.MODS.Editor.GETMODGroupID(V_DatabaseEngine, V_FORMAttrib.RowID)
+            TxtCode.Text = Commands.MODS.Editor.GETMODCode(V_DatabaseEngine, V_FORMAttrib.RowID)
+            TxtName.Text = Commands.MODS.Editor.GETMODName(V_DatabaseEngine, V_FORMAttrib.RowID)
+            TxtDescription.Text = Commands.MODS.Editor.GETMODDescription(V_DatabaseEngine, V_FORMAttrib.RowID)
+            ChkSystem.Checked = Commands.MODS.Editor.GETMODSystem(V_DatabaseEngine, V_FORMAttrib.RowID)
+            ChkLocked.Checked = Commands.MODS.Editor.GETMODLocked(V_DatabaseEngine, V_FORMAttrib.RowID)
             TxtCode.ReadOnly = True
         End If
     End Sub
@@ -51,17 +51,17 @@ Public Class MODS_Editor
         Call CheckAllInput()
 
         If (CboGroup.Items.Count = 0) OrElse (TxtCode.XOSQLText = String.Empty) OrElse (TxtName.XOSQLText = String.Empty) Then
-            Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Module Group selected, Module Code and Module Name are properly filled.", "Alert", frmDBdialogbox.MessageIcon.Alert, frmDBdialogbox.MessageTypes.OkOnly)
+            Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Module Group selected, Module Code and Module Name are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (varFORMAttribute.IsNew) AndAlso (Commands.MODS.Editor.IsDuplicate(TxtCode.XOSQLText)) Then
-            Decision("Cannot save your record." & Environment.NewLine & "This Departement Code already registered.", "Alert", frmDBdialogbox.MessageIcon.Alert, frmDBdialogbox.MessageTypes.OkOnly)
+        ElseIf (V_FORMAttrib.IsNew) AndAlso (Commands.MODS.Editor.IsDuplicate(V_DatabaseEngine, TxtCode.XOSQLText)) Then
+            Decision("Cannot save your record." & Environment.NewLine & "This Departement Code already registered.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf Not (varFORMAttribute.IsNew) AndAlso (Commands.MODS.Editor.IsDuplicate(TxtCode.XOSQLText, varFORMAttribute.RowID)) Then
-            Decision("Cannot save your record." & Environment.NewLine & "This Departement Code already used by another departement.", "Alert", frmDBdialogbox.MessageIcon.Alert, frmDBdialogbox.MessageTypes.OkOnly)
+        ElseIf Not (V_FORMAttrib.IsNew) AndAlso (Commands.MODS.Editor.IsDuplicate(V_DatabaseEngine, TxtCode.XOSQLText, V_FORMAttrib.RowID)) Then
+            Decision("Cannot save your record." & Environment.NewLine & "This Departement Code already used by another departement.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        If (Commands.MODS.Editor.PUSHData(TxtID.XOSQLText, CboGroup.SelectedValue.ToString, TxtCode.XOSQLText, TxtName.XOSQLText, TxtDescription.XOSQLText, ChkSystem.Checked, ChkLocked.Checked, varFORMAttribute.RowID)) Then
+        If (Commands.MODS.Editor.PUSHData(V_DatabaseEngine, TxtID.XOSQLText, CboGroup.SelectedValue.ToString, TxtCode.XOSQLText, TxtName.XOSQLText, TxtDescription.XOSQLText, ChkSystem.Checked, ChkLocked.Checked, V_FORMAttrib.RowID)) Then
             RaiseEvent RecordSaved()
             Mainframe_n_6.Ts_status.Text = "Success"
         Else
@@ -89,7 +89,7 @@ Public Class MODS_Editor
     End Sub
 
     Private Sub TxtCode_TextChanged(sender As Object, e As EventArgs) Handles TxtCode.TextChanged
-        If (varFORMAttribute.IsNew) Then
+        If (V_FORMAttrib.IsNew) Then
             TxtID.Text = CMCv.Security.Encrypt.MD5(TxtCode.XOSQLText.ToUpper)
         End If
     End Sub

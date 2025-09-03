@@ -5,6 +5,6 @@
     [position_name]        VARCHAR (50)  NULL,
     [position_description] VARCHAR (255) NULL,
     CONSTRAINT [PK_man_position] PRIMARY KEY CLUSTERED ([position_id] ASC),
-    CONSTRAINT [FK_man_position_man_departement] FOREIGN KEY ([position_departement]) REFERENCES [dbo].[[man]]departement] ([departement_id]) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT [FK_man_position_man_departement] FOREIGN KEY ([position_departement]) REFERENCES [dbo].[[man]]department] ([department_id]) ON DELETE CASCADE ON UPDATE CASCADE
 );
 

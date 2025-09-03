@@ -14,62 +14,62 @@ Module Globals
 
 #Region "Security Globals"
     <SupportedOSPlatform("windows")>
-    Public clsBridgekey As New Bridge.Security.Getkey
+    Public V_BRIDGE_KEY As New Bridge.Security.GETKEY
 
     <SupportedOSPlatform("windows")>
-    Public clsBridgelog As New Bridge.Security.Writelog
+    Public V_BRIDGE_LOG As New Bridge.Security.WRITELOG
 
     <SupportedOSPlatform("windows")>
-    Public varSalt As String = clsBridgekey.Salt()
+    Public V_SALT As String = V_BRIDGE_KEY.SALT()
 
     <SupportedOSPlatform("windows")>
-    Public varSyncfusionkey As String = clsBridgekey.Syncfusion
+    Public V_SyncfusionKey As String = V_BRIDGE_KEY.SYNCFUSION
 
     ''' <summary>
     ''' This security will be retired
     ''' </summary>
-    Public clsSecurityencrypt As New Security.Encrypt
+    Public V_SECEncrypt As New Security.Encrypt
 
     ''' <summary>
     ''' This security will be retired
     ''' </summary>
-    Public clsSecuritydecrypt As New Security.Decrypt
+    Public V_SECDecrypt As New Security.Decrypt
 
     'new security
-    Public clsSecurity_aes As System.Security.Cryptography.Aes
-    Public clsSecurity_md5 As System.Security.Cryptography.MD5
-    Public clsSecurity_crc32 As New System.IO.Hashing.Crc32
+    Public V_SEC_AES As System.Security.Cryptography.Aes
+    Public V_SEC_MD5 As System.Security.Cryptography.MD5
+    Public V_SEC_CRC32 As New System.IO.Hashing.Crc32
 
 #End Region
 
 #Region "Class Globals"
-    Public clsCodebase As New ControlCodeBase
-    Public clsFileinfo As New OperatingSystem.File.Info
+    Public CBS As New ControlCodeBase
+    Public V_CFILEInfo As New OperatingSystem.File.Info
 
 #End Region
 
 #Region "Variabel Global"
-    Public varRandomcolor As New Random
-    Public varAutoTrim As Boolean
-    Public varHarusDiisi As Boolean
+    Public V_RandomColor As New Random
+    Public V_AutoTrim As Boolean
+    Public V_HarusDiisi As Boolean
 
     'Public SEC As New Security.Engine
 
-    Public frmERC As New frmERerrorreporting
-    Public clsDBsqlite As New Database.Engine.SQLiteV3
-    Public clsECerrorcatcher As Catcher.Error.Fields
+    Public ERC As New frmErrorReporting
+    Public ERL As New Database.Engine.LocalDB
+    Public ErrorCatcher As Catcher.Error.Fields
 
-    Public varVersionapplication As String
+    Public V_APPVer As String
 #End Region
 
     Public Function GETAPPVERSION() As String
-        Dim varMajor, varMinor, varBuild, varRevision As Integer
-        varMajor = My.Application.Info.Version.Major
-        varMinor = My.Application.Info.Version.Minor
-        varBuild = My.Application.Info.Version.Build
-        varRevision = My.Application.Info.Version.Revision
-        varVersionapplication = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
-        Return varVersionapplication
+        Dim V_Major, V_Minor, V_Build, V_Revision As Integer
+        V_Major = My.Application.Info.Version.Major
+        V_Minor = My.Application.Info.Version.Minor
+        V_Build = My.Application.Info.Version.Build
+        V_Revision = My.Application.Info.Version.Revision
+        V_APPVer = V_Major & "." & V_Minor & "." & V_Build & "." & V_Revision
+        Return V_APPVer
     End Function
 
     <SupportedOSPlatform("windows")>
@@ -77,15 +77,45 @@ Module Globals
         'License for Syncfusion
 
         'nuget version : 21.2.9
-        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(varSyncfusionkey)
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(V_SyncfusionKey)
     End Sub
+
+    'Public Function CREATESECURITY(ByVal IsEncrypt As Boolean, ByVal Message As String)
+    '    Try
+    '        SEC = New Security.Engine
+    '        Dim SECAlgorithm As Security.Engine.Algorithm = Security.Engine.Algorithm.Rijndael
+    '        Security.Engine.EncryptionAlgorithm = SECAlgorithm
+    '        Security.Engine.Key = ""
+
+    '        If (IsEncrypt) Then
+    '            If Security.Engine.EncryptString(Message) Then
+    '                Message = Security.Engine.Content
+    '            Else
+    '                Message = Security.Engine.CryptoException.Message
+    '            End If
+    '        Else
+    '            Security.Engine.Content = Message
+    '            If Security.Engine.DecryptString Then
+    '                Message = Security.Engine.Content
+    '            Else
+    '                Message = Security.Engine.CryptoException.Message
+    '            End If
+    '        End If
+
+    '        Return Message
+    '    Catch ex As Exception
+    '        Call PUSHERRORDATA("[CREATESECURITY] $\Ingrid\Apps\Components\CMC\2090 - Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
+    '        PUSHERRORDATASHOW()
+    '        Return Nothing
+    '    End Try
+    'End Function
 
     Public Sub GETMACHINENAME()
         'GET Machinge Name
     End Sub
 
     Public Sub PUSHERRORDATA(ByVal FromSender As String, ByVal ErrorType As Catcher.Error.Fields.TypeOfFaulties, ByVal ErrorMessage As String, ByVal ErrorNumber As String, ByVal InternalStackTrace As String, ByVal AppVersion As String, Optional ByVal EnableErrorReporting As Boolean = True, Optional ByVal SaveError As Boolean = True, Optional ByVal ResumeNext As Boolean = True)
-        With clsECerrorcatcher
+        With ErrorCatcher
             .FromSender = FromSender
             .Type = ErrorType
             .Message = ErrorMessage
@@ -100,17 +130,13 @@ Module Globals
 
     <SupportedOSPlatform("windows")>
     Public Sub PUSHERRORDATASHOW()
-        frmERC = New frmERerrorreporting(clsECerrorcatcher, )
-
-        With frmERC
-            .SLFNamaForm.Text = "Lady Bug (Error Catcher)"
-            .SLFSubNamaForm.Text = "Please check detail below and report to system administrator."
-            .ShowDialog()
-        End With
-
-        If Not (frmERC.ResumeNext) Then
+        ERC = New frmErrorReporting(ErrorCatcher, )
+        ERC.SLFNamaForm.Text = "Lady Bug (Error Catcher)"
+        ERC.SLFSubNamaForm.Text = "Please check detail below and report to system administrator."
+        ERC.ShowDialog()
+        If Not (ERC.ResumeNext) Then
             Process.GetCurrentProcess.Kill()
         End If
-        frmERC.Dispose()
+        ERC.Dispose()
     End Sub
 End Module

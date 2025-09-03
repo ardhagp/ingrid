@@ -4,7 +4,7 @@ Imports System.Drawing.Drawing2D
 Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
-Public Class Pgb
+Public Class pgb
     Inherits System.Windows.Forms.ProgressBar
 
     <SupportedOSPlatform("windows")>

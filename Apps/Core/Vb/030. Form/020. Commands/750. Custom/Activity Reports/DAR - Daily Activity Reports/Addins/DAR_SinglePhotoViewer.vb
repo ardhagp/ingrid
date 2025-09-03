@@ -1,9 +1,9 @@
 ﻿Imports System.Runtime.Versioning
 
 Public Class DAR_SinglePhotoViewer
-    Private varFile As String
-    Private varImage As Image
-    Private varType As String
+    Private _FILE As String
+    Private _IMAGE As Image
+    Private _Type As String
 
     Public Sub New(ByVal File As String)
 
@@ -11,8 +11,8 @@ Public Class DAR_SinglePhotoViewer
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        varFile = File
-        varType = "String"
+        _FILE = File
+        _Type = "String"
     End Sub
 
     Public Sub New(ByVal Photo As Image)
@@ -21,19 +21,19 @@ Public Class DAR_SinglePhotoViewer
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        varImage = Photo
-        varType = "Image"
+        _IMAGE = Photo
+        _Type = "Image"
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub DAR_SinglePhotoViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If varType = "String" Then
-            PctbxPhoto.ImageLocation = varFile
-        ElseIf varType = "Image" Then
-            If varTextmark = String.Empty Then
-                PctbxPhoto.Image = varImage
+        If _Type = "String" Then
+            PctbxPhoto.ImageLocation = _FILE
+        ElseIf _Type = "Image" Then
+            If V_Textmark = String.Empty Then
+                PctbxPhoto.Image = _IMAGE
             Else
-                PctbxPhoto.Image = CMCv.ImageEditor.Proccessor.Editor.Watermarker(varImage, varTextmark)
+                PctbxPhoto.Image = CMCv.ImageEditor.Proccessor.Editor.Watermarker(_IMAGE, V_Textmark)
             End If
         End If
     End Sub

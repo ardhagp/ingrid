@@ -1991,9 +1991,9 @@
             Indicates whether to enable / disable the check digits.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Barcode.PdfUnidimensionalBarcode.intfrmErrorharacterGap">
+        <member name="F:Syncfusion.Pdf.Barcode.PdfUnidimensionalBarcode.interCharacterGap">
             <summary>
-            Indicates the intfrmErrorharcter gap between bars.
+            Indicates the intercharcter gap between bars.
             </summary>
         </member>
         <member name="F:Syncfusion.Pdf.Barcode.PdfUnidimensionalBarcode.barcodeToTextGapHeight">
@@ -2772,9 +2772,9 @@
             Gets or sets the validation expression to validate the given text.
             </summary>
         </member>
-        <member name="P:Syncfusion.Pdf.Barcode.PdfUnidimensionalBarcode.IntfrmErrorharacterGap">
+        <member name="P:Syncfusion.Pdf.Barcode.PdfUnidimensionalBarcode.IntercharacterGap">
             <summary>
-            Gets or sets the IntfrmErrorharacterGap. 
+            Gets or sets the IntercharacterGap. 
             </summary>
         </member>
         <member name="M:Syncfusion.Pdf.Barcode.PdfCodabarBarcode.#ctor">
@@ -3753,7 +3753,7 @@
             </code>
             </example> 
             <remarks> Only the following symbols are allowed in a Code 39 barcode:Only the following symbols are allowed in a Code 39 barcode: 1 2 3 4 5 6 7 8 9 0 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z - . $ / + % SPACE
-            All alphabetic characters are uppfrmErrorase. If lowfrmErrorase characters are required, then a Code 39 Extended barcode must be used.
+            All alphabetic characters are uppercase. If lowercase characters are required, then a Code 39 Extended barcode must be used.
             </remarks>
             <seealso cref="T:Syncfusion.Pdf.Barcode.PdfCodabarBarcode"/> Class
             <seealso cref="T:Syncfusion.Pdf.Barcode.PdfCode11Barcode"/> Class
@@ -4178,7 +4178,7 @@
             </code>
             </example> 
             <remarks> Only the following symbols are allowed in a Code 93 barcode: 1 2 3 4 5 6 7 8 9 0 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z - . $ / + % SPACE
-            All alphabetic characters are uppfrmErrorase. If lowfrmErrorase characters are required, then a Code 93 Extended barcode must be used.
+            All alphabetic characters are uppercase. If lowercase characters are required, then a Code 93 Extended barcode must be used.
             </remarks>
             <seealso cref="T:Syncfusion.Pdf.Barcode.PdfCodabarBarcode"/> Class
             <seealso cref="T:Syncfusion.Pdf.Barcode.PdfCode11Barcode"/> Class
@@ -5802,7 +5802,7 @@
             Check if mode is mixing mode.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Barcode.PdfQRBarcode.mixVersionfrmError">
+        <member name="F:Syncfusion.Pdf.Barcode.PdfQRBarcode.mixVersionERC">
             <summary>
             Set version for mixing mode.
             </summary>
@@ -6958,7 +6958,7 @@
             <param name="version">Version.</param>
             <param name="correctionLevel">Error correction level.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.Barcode.PdfErrorCorrectionCodewords.GetfrmErrorW">
+        <member name="M:Syncfusion.Pdf.Barcode.PdfErrorCorrectionCodewords.GetERCW">
             <summary>
             Gets the Error correction code word
             <returns>Error correction code word.</returns>
@@ -15733,7 +15733,7 @@
             Gets or sets the cutting plane opacity. 
             </summary>
             <Value> A float value specifies the opacity of the annotation.</Value>
-            <remarks>The opacity is given in pfrmErrorents, 100 is full opacity, 0 is no opacity.</remarks>
+            <remarks>The opacity is given in percents, 100 is full opacity, 0 is no opacity.</remarks>
             <example>
             <code lang="CS">
             //Create a new PDF document.
@@ -16758,7 +16758,7 @@
             </summary>
             <value>A number indicating the opacity of the cutting plane using a standard additive blend mode. </value>
             <example>
-            <remarks>The opacity is given in pfrmErrorents, 100 is full opacity, 0 is no opacity.</remarks>
+            <remarks>The opacity is given in percents, 100 is full opacity, 0 is no opacity.</remarks>
             <code lang="CS">
             //Create a new PDF document.
             PdfDocument document = new PdfDocument();
@@ -18393,7 +18393,7 @@
             <summary>
             Gets or sets the rendering opacity. 
             </summary>
-            <remarks>The opacity is given in pfrmErrorents, 100 is full opacity, 0 is no opacity.</remarks>
+            <remarks>The opacity is given in percents, 100 is full opacity, 0 is no opacity.</remarks>
             <example>
             <code lang="CS">
             //Create a new PDF document.
@@ -20801,7 +20801,7 @@
             Internal variable to store dictionary.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Interactive.PdfAnnotation.m_innfrmErrorolor">
+        <member name="F:Syncfusion.Pdf.Interactive.PdfAnnotation.m_innerColor">
             <summary>
             To specifying the Inner color with which to fill the annotation
             </summary>
@@ -21102,11 +21102,11 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Pdf.Interactive.PdfAnnotation.IsMatched(Syncfusion.Pdf.PdfDocumentLayfrmErrorollection,Syncfusion.Pdf.Primitives.IPdfPrimitive,Syncfusion.Pdf.PdfLoadedPage)">
+        <member name="M:Syncfusion.Pdf.Interactive.PdfAnnotation.IsMatched(Syncfusion.Pdf.PdfDocumentLayerCollection,Syncfusion.Pdf.Primitives.IPdfPrimitive,Syncfusion.Pdf.PdfLoadedPage)">
             <summary>
             Finds the excepted object with layer collection
             </summary>
-            <param name="layfrmErrorollection"></param>
+            <param name="layerCollection"></param>
             <param name="expectedObject"></param>
             <param name="page"></param>
         </member>
@@ -21297,7 +21297,7 @@
             Gets or Sets the Opacity of the annotation.
             </summary>
         </member>
-        <member name="P:Syncfusion.Pdf.Interactive.PdfAnnotation.InnfrmErrorolor">
+        <member name="P:Syncfusion.Pdf.Interactive.PdfAnnotation.InnerColor">
             <summary>
             Get or set the inner color of the annotation. Default color is transparent
             </summary>
@@ -23025,7 +23025,7 @@
             //Creates a new Rectangle annotation.
             RectangleF rectannot = new RectangleF(0, 30, 100, 50);
             PdfRectangleAnnotation rectangleannotation = new PdfRectangleAnnotation(rectannot, "RectangleAnnotation");
-            rectangleannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+            rectangleannotation.InnerColor = new PdfColor(Color.Red);
             rectangleannotation.Color = new PdfColor(Color.Yellow);
             page.Graphics.DrawString("Rectangle Annotation", font, brush, new PointF(0, 0));
             //Add the annotation to the page
@@ -23052,7 +23052,7 @@
             Dim brush As PdfBrush = New PdfSolidBrush(System.Drawing.Color.Black)
             Dim rectannot As RectangleF = New RectangleF(0, 30, 100, 50)
             Dim rectangleannotation As PdfRectangleAnnotation = New PdfRectangleAnnotation(rectannot, "RectangleAnnotation")
-            rectangleannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+            rectangleannotation.InnerColor = New PdfColor(Color.Red)
             rectangleannotation.Color = New PdfColor(Color.Yellow)
             page.Graphics.DrawString("Rectangle Annotation", font, brush, New PointF(0, 0))
             Dim popup As PdfPopupAnnotation = New PdfPopupAnnotation
@@ -23094,7 +23094,7 @@
             //Creates a new Rectangle annotation.
             RectangleF rectannot = new RectangleF(0, 30, 100, 50);
             PdfRectangleAnnotation rectangleannotation = new PdfRectangleAnnotation(rectannot, "RectangleAnnotation");
-            rectangleannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+            rectangleannotation.InnerColor = new PdfColor(Color.Red);
             rectangleannotation.Color = new PdfColor(Color.Yellow);
             page.Graphics.DrawString("Rectangle Annotation", font, brush, new PointF(0, 0));
             //Add the annotation to the page
@@ -23121,7 +23121,7 @@
             Dim brush As PdfBrush = New PdfSolidBrush(System.Drawing.Color.Black)
             Dim rectannot As RectangleF = New RectangleF(0, 30, 100, 50)
             Dim rectangleannotation As PdfRectangleAnnotation = New PdfRectangleAnnotation(rectannot, "RectangleAnnotation")
-            rectangleannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+            rectangleannotation.InnerColor = New PdfColor(Color.Red)
             rectangleannotation.Color = New PdfColor(Color.Yellow)
             page.Graphics.DrawString("Rectangle Annotation", font, brush, New PointF(0, 0))
             Dim popup As PdfPopupAnnotation = New PdfPopupAnnotation
@@ -23157,7 +23157,7 @@
             //Creates a new Rectangle annotation.
             RectangleF rectannot = new RectangleF(0, 30, 100, 50);
             PdfRectangleAnnotation rectangleannotation = new PdfRectangleAnnotation(rectannot, "RectangleAnnotation");
-            rectangleannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+            rectangleannotation.InnerColor = new PdfColor(Color.Red);
             rectangleannotation.Color = new PdfColor(Color.Yellow);
             page.Graphics.DrawString("Rectangle Annotation", font, brush, new PointF(0, 0));
             //Add the annotation to the page
@@ -23184,7 +23184,7 @@
             Dim brush As PdfBrush = New PdfSolidBrush(System.Drawing.Color.Black)
             Dim rectannot As RectangleF = New RectangleF(0, 30, 100, 50)
             Dim rectangleannotation As PdfRectangleAnnotation = New PdfRectangleAnnotation(rectannot, "RectangleAnnotation")
-            rectangleannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+            rectangleannotation.InnerColor = New PdfColor(Color.Red)
             rectangleannotation.Color = New PdfColor(Color.Yellow)
             page.Graphics.DrawString("Rectangle Annotation", font, brush, New PointF(0, 0))
             Dim popup As PdfPopupAnnotation = New PdfPopupAnnotation
@@ -25521,7 +25521,7 @@
         </member>
         <member name="P:Syncfusion.Pdf.Interactive.PdfLineAnnotation.InnerLineColor">
             <summary>
-            Gets or sets an InnfrmErrorolor of the PdfLineAnnotation.
+            Gets or sets an InnerColor of the PdfLineAnnotation.
             </summary>
             <value>The <see cref="T:Syncfusion.Pdf.Graphics.PdfColor"/> which draws the outline of the inner color of the line annotation.</value>
             <example>
@@ -28311,7 +28311,7 @@
             PdfPolygonAnnotation polygonannotation = new PdfPolygonAnnotation(points, "Polygon");
             //Set the text and font
             polygonannotation.Text = "Hello";
-            polygonannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+            polygonannotation.InnerColor = new PdfColor(Color.Red);
             PdfBorderEffect borderEffect = new PdfBorderEffect();
             borderEffect.Intensity=2;
             borderEffect.Style = PdfBorderEffectStyle.Cloudy;
@@ -28338,7 +28338,7 @@
             Dim polygonannotation As PdfPolygonAnnotation = New PdfPolygonAnnotation(points, "Ploycon")
             'Set the text and font
             polygonannotation.Text = "Hello"
-            polygonannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+            polygonannotation.InnerColor = New PdfColor(Color.Red)
             Dim borderEffect As PdfBorderEffect = New PdfBorderEffect()
             borderEffect.Intensity=2;
             borderEffect.Style = PdfBorderEffectStyle.Cloudy
@@ -28550,7 +28550,7 @@
             //Creates a new Rectangle annotation.
             RectangleF rectannot = new RectangleF(0, 30, 100, 50);
             PdfRectangleAnnotation rectangleannotation = new PdfRectangleAnnotation(rectannot, "RectangleAnnotation");
-            rectangleannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+            rectangleannotation.InnerColor = new PdfColor(Color.Red);
             rectangleannotation.Color = new PdfColor(Color.Yellow);
             page.Graphics.DrawString("Rectangle Annotation", font, brush, new PointF(0, 0));
             //Add the annotation to the page
@@ -28572,7 +28572,7 @@
             'Creates a new Rectangle annotation.
             Dim rectannot As RectangleF = New RectangleF(0, 30, 100, 50)
             Dim rectangleannotation As PdfRectangleAnnotation = New PdfRectangleAnnotation(rectannot, "RectangleAnnotation")
-            rectangleannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+            rectangleannotation.InnerColor = New PdfColor(Color.Red)
             rectangleannotation.Color = New PdfColor(Color.Yellow)
             page.Graphics.DrawString("Rectangle Annotation", font, brush, New PointF(0, 0))
             'Add the annotation to the page
@@ -28604,7 +28604,7 @@
             //Creates a new Square annotation.
             PdfSquareAnnotation squareannotation = new PdfSquareAnnotation(new RectangleF(0, 30, 80, 80));
             squareannotation.Text = "SquareAnnotation";
-            squareannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+            squareannotation.InnerColor = new PdfColor(Color.Red);
             squareannotation.Color = new PdfColor(Color.Yellow);
             page.Graphics.DrawString("Square Annotation", font, brush, new PointF(0, 0));
             //Add the annotation to the page.
@@ -28626,7 +28626,7 @@
             'Creates a new Square annotation.
             Dim squareannotation As PdfSquareAnnotation = New PdfSquareAnnotation(New RectangleF(0, 30, 80, 80))
             squareannotation.Text = "SquareAnnotation"
-            squareannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+            squareannotation.InnerColor = New PdfColor(Color.Red)
             squareannotation.Color = New PdfColor(Color.Yellow)
             page.Graphics.DrawString("Square Annotation", font, brush, New PointF(0, 0))
             'Add annotation to the page.
@@ -28668,7 +28668,7 @@
              PdfBrush brush = new PdfSolidBrush(System.Drawing.Color.Black);
              //Creates a new Square annotation.
              PdfSquareAnnotation squareannotation = new PdfSquareAnnotation(new RectangleF(0, 30, 80, 80),"SquareAnnotation");
-             squareannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+             squareannotation.InnerColor = new PdfColor(Color.Red);
              squareannotation.Color = new PdfColor(Color.Yellow);
              page.Graphics.DrawString("Square Annotation", font, brush, new PointF(0, 0));
              //Add the annotation to the page.
@@ -28689,7 +28689,7 @@
              Dim brush As PdfBrush = New PdfSolidBrush(System.Drawing.Color.Black)
              'Creates a new Square annotation.
              Dim squareannotation As PdfSquareAnnotation = New PdfSquareAnnotation(New RectangleF(0, 30, 80, 80),"SquareAnnotation")
-             squareannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+             squareannotation.InnerColor = New PdfColor(Color.Red)
              squareannotation.Color = New PdfColor(Color.Yellow)
              page.Graphics.DrawString("Square Annotation", font, brush, New PointF(0, 0))
              'Add annotation to the page.
@@ -28747,7 +28747,7 @@
             //Creates a new Square annotation.
             PdfSquareAnnotation squareannotation = new PdfSquareAnnotation(new RectangleF(0, 30, 80, 80));
             squareannotation.Text = "SquareAnnotation";
-            squareannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+            squareannotation.InnerColor = new PdfColor(Color.Red);
             squareannotation.Color = new PdfColor(Color.Yellow);
             page.Graphics.DrawString("Square Annotation", font, brush, new PointF(0, 0));
             //Add review state
@@ -28770,7 +28770,7 @@
             Dim brush As PdfBrush = New PdfSolidBrush(System.Drawing.Color.Black)
             Dim squareannotation As PdfSquareAnnotation = New PdfSquareAnnotation(New RectangleF(0, 30, 80, 80))
             squareannotation.Text = "SquareAnnotation"
-            squareannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+            squareannotation.InnerColor = New PdfColor(Color.Red)
             squareannotation.Color = New PdfColor(Color.Yellow)
             page.Graphics.DrawString("Square Annotation", font, brush, New PointF(0, 0))
             Dim popup As PdfPopupAnnotation = New PdfPopupAnnotation
@@ -28801,7 +28801,7 @@
             //Creates a new Square annotation.
             PdfSquareAnnotation squareannotation = new PdfSquareAnnotation(new RectangleF(0, 30, 80, 80));
             squareannotation.Text = "SquareAnnotation";
-            squareannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+            squareannotation.InnerColor = new PdfColor(Color.Red);
             squareannotation.Color = new PdfColor(Color.Yellow);
             page.Graphics.DrawString("Square Annotation", font, brush, new PointF(0, 0));
             PdfPopupAnnotation popupComments = new PdfPopupAnnotation();
@@ -28822,7 +28822,7 @@
             Dim brush As PdfBrush = New PdfSolidBrush(System.Drawing.Color.Black)
             Dim squareannotation As PdfSquareAnnotation = New PdfSquareAnnotation(New RectangleF(0, 30, 80, 80))
             squareannotation.Text = "SquareAnnotation"
-            squareannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+            squareannotation.InnerColor = New PdfColor(Color.Red)
             squareannotation.Color = New PdfColor(Color.Yellow)
             page.Graphics.DrawString("Square Annotation", font, brush, New PointF(0, 0))
             Dim popupComments As PdfPopupAnnotation = New PdfPopupAnnotation
@@ -28852,7 +28852,7 @@
             //Creates a new square annotation.
             PdfSquareAnnotation squareannotation = new PdfSquareAnnotation(new RectangleF(0, 30, 80, 80));
             squareannotation.Text = "SquareAnnotation";
-            squareannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+            squareannotation.InnerColor = new PdfColor(Color.Red);
             PdfBorderEffect borderEffect = new PdfBorderEffect();
             borderEffect.Intensity=2;
             borderEffect.Style = PdfBorderEffectStyle.Cloudy;
@@ -28878,7 +28878,7 @@
             'Creates a new square annotation.
             Dim squareannotation As PdfSquareAnnotation = New PdfSquareAnnotation(New RectangleF(0, 30, 80, 80))
             squareannotation.Text = "SquareAnnotation"
-            squareannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+            squareannotation.InnerColor = New PdfColor(Color.Red)
              Dim borderEffect As PdfBorderEffect()
             borderEffect.Intensity=2;
             borderEffect.Style = PdfBorderEffectStyle.Cloudy
@@ -28910,7 +28910,7 @@
              //Creates a new Square annotation.
              PdfSquareAnnotation squareannotation = new PdfSquareAnnotation(new RectangleF(0, 30, 80, 80));
              squareannotation.Text = "SquareAnnotation";
-             squareannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+             squareannotation.InnerColor = new PdfColor(Color.Red);
              LineBorder border = new LineBorder();
              border.BorderStyle = PdfBorderStyle.Solid;
              border.BorderWidth = 2;
@@ -28936,7 +28936,7 @@
              'Creates a new Square annotation.
              Dim squareannotation As PdfSquareAnnotation = New PdfSquareAnnotation(New RectangleF(0, 30, 80, 80))
              squareannotation.Text = "SquareAnnotation"
-             squareannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+             squareannotation.InnerColor = New PdfColor(Color.Red)
               Dim border As LineBorder = New LineBorder()
              border.BorderStyle = PdfBorderStyle.Solid
              border.BorderWidth = 2
@@ -28973,7 +28973,7 @@
             //Creates a new Rectangle annotation.
             RectangleF rectannot = new RectangleF(0, 30, 100, 50);
             PdfRectangleAnnotation rectangleannotation = new PdfRectangleAnnotation(rectannot, "RectangleAnnotation");
-            rectangleannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+            rectangleannotation.InnerColor = new PdfColor(Color.Red);
             rectangleannotation.Color = new PdfColor(Color.Yellow);
             page.Graphics.DrawString("Rectangle Annotation", font, brush, new PointF(0, 0));
             //Add the annotation to the page
@@ -28995,7 +28995,7 @@
             'Creates a new Rectangle annotation.
             Dim rectannot As RectangleF = New RectangleF(0, 30, 100, 50)
             Dim rectangleannotation As PdfRectangleAnnotation = New PdfRectangleAnnotation(rectannot, "RectangleAnnotation")
-            rectangleannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+            rectangleannotation.InnerColor = New PdfColor(Color.Red)
             rectangleannotation.Color = New PdfColor(Color.Yellow)
             page.Graphics.DrawString("Rectangle Annotation", font, brush, New PointF(0, 0))
             'Add the annotation to the page
@@ -29042,7 +29042,7 @@
              //Creates a new Rectangle annotation.
              RectangleF rectannot = new RectangleF(0, 30, 100, 50);
              PdfRectangleAnnotation rectangleannotation = new PdfRectangleAnnotation(rectannot, "RectangleAnnotation");
-             rectangleannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+             rectangleannotation.InnerColor = new PdfColor(Color.Red);
              rectangleannotation.Color = new PdfColor(Color.Yellow);
              page.Graphics.DrawString("Rectangle Annotation", font, brush, new PointF(0, 0));
              //Add the annotation to the page
@@ -29066,7 +29066,7 @@
             Dim brush As PdfBrush = New PdfSolidBrush(System.Drawing.Color.Black)
             Dim rectannot As RectangleF = New RectangleF(0, 30, 100, 50)
             Dim rectangleannotation As PdfRectangleAnnotation = New PdfRectangleAnnotation(rectannot, "RectangleAnnotation")
-            rectangleannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+            rectangleannotation.InnerColor = New PdfColor(Color.Red)
             rectangleannotation.Color = New PdfColor(Color.Yellow)
             page.Graphics.DrawString("Rectangle Annotation", font, brush, New PointF(0, 0))
             Dim popup As PdfPopupAnnotation = New PdfPopupAnnotation
@@ -29098,7 +29098,7 @@
             //Creates a new Rectangle annotation.
             RectangleF rectannot = new RectangleF(0, 30, 100, 50);
             PdfRectangleAnnotation rectangleannotation = new PdfRectangleAnnotation(rectannot, "RectangleAnnotation");
-            rectangleannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+            rectangleannotation.InnerColor = new PdfColor(Color.Red);
             rectangleannotation.Color = new PdfColor(Color.Yellow);
             page.Graphics.DrawString("Rectangle Annotation", font, brush, new PointF(0, 0));
             //Add the annotation to the page
@@ -29120,7 +29120,7 @@
             Dim brush As PdfBrush = New PdfSolidBrush(System.Drawing.Color.Black)
             Dim rectannot As RectangleF = New RectangleF(0, 30, 100, 50)
             Dim rectangleannotation As PdfRectangleAnnotation = New PdfRectangleAnnotation(rectannot, "RectangleAnnotation")
-            rectangleannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+            rectangleannotation.InnerColor = New PdfColor(Color.Red)
             rectangleannotation.Color = New PdfColor(Color.Yellow)
             page.Graphics.DrawString("Rectangle Annotation", font, brush, New PointF(0, 0))
             Dim popupComments As PdfPopupAnnotation = New PdfPopupAnnotation
@@ -29148,9 +29148,9 @@
              PdfRedactionAnnotation annot = new PdfRedactionAnnotation();
              //set the bounds
              annot.Bounds = new Rectangle(100, 120, 100, 100);
-             //set the innfrmErrorolor
-            annot.InnfrmErrorolor = Color.Aqua;
-             //set the BorderColor
+             //set the innercolor
+            annot.InnerColor = Color.Aqua;
+             //set the bordercolor
              annot.BorderColor = Color.Orange;
              //set the textcolor
              annot.TextColor = Color.Yellow;
@@ -29178,9 +29178,9 @@
              Dim annot As PdfRedactionAnnotation = New PdfRedactionAnnotation()
              //set the bounds
              annot.Bounds = New Rectangle(100, 120, 100, 100)
-             //set the innfrmErrorolor
-             annot.InnfrmErrorolor = Color.Aqua
-             //set the BorderColor
+             //set the innercolor
+             annot.InnerColor = Color.Aqua
+             //set the bordercolor
              annot.BorderColor = Color.Orange
              //set the textcolor
              annot.TextColor = Color.Yellow
@@ -29197,7 +29197,7 @@
              </code>
              </example>
         </member>
-        <member name="F:Syncfusion.Pdf.Interactive.PdfRedactionAnnotation.BorderColor">
+        <member name="F:Syncfusion.Pdf.Interactive.PdfRedactionAnnotation.borderColor">
             <summary>
             Used to represent the border color of the redaction annotation.
             </summary>
@@ -29271,9 +29271,9 @@
              PdfRedactionAnnotation annot = new PdfRedactionAnnotation();
              //set the bounds
              annot.Bounds = new Rectangle(100, 120, 100, 100);
-             //set the innfrmErrorolor
-            annot.InnfrmErrorolor = Color.Aqua;
-             //set the BorderColor
+             //set the innercolor
+            annot.InnerColor = Color.Aqua;
+             //set the bordercolor
              annot.BorderColor = Color.Orange;
              //set the textcolor
              annot.TextColor = Color.Yellow;
@@ -29301,9 +29301,9 @@
              Dim annot As PdfRedactionAnnotation = New PdfRedactionAnnotation()
              //set the bounds
              annot.Bounds = New Rectangle(100, 120, 100, 100)
-             //set the innfrmErrorolor
-             annot.InnfrmErrorolor = Color.Aqua
-             //set the BorderColor
+             //set the innercolor
+             annot.InnerColor = Color.Aqua
+             //set the bordercolor
              annot.BorderColor = Color.Orange
              //set the textcolor
              annot.TextColor = Color.Yellow
@@ -29334,9 +29334,9 @@
              PdfRedactionAnnotation annot = new PdfRedactionAnnotation();
              //set the bounds
              annot.Bounds = new Rectangle(100, 120, 100, 100);
-             //set the innfrmErrorolor
-            annot.InnfrmErrorolor = Color.Aqua;
-             //set the BorderColor
+             //set the innercolor
+            annot.InnerColor = Color.Aqua;
+             //set the bordercolor
              annot.BorderColor = Color.Orange;
              //set the textcolor
              annot.TextColor = Color.Yellow;
@@ -29364,9 +29364,9 @@
              Dim annot As PdfRedactionAnnotation = New PdfRedactionAnnotation()
              //set the bounds
              annot.Bounds = New Rectangle(100, 120, 100, 100)
-             //set the innfrmErrorolor
-             annot.InnfrmErrorolor = Color.Aqua
-             //set the BorderColor
+             //set the innercolor
+             annot.InnerColor = Color.Aqua
+             //set the bordercolor
              annot.BorderColor = Color.Orange
              //set the textcolor
              annot.TextColor = Color.Yellow
@@ -29397,9 +29397,9 @@
              PdfRedactionAnnotation annot = new PdfRedactionAnnotation();
              //set the bounds
              annot.Bounds = new Rectangle(100, 120, 100, 100);
-             //set the innfrmErrorolor
-            annot.InnfrmErrorolor = Color.Aqua;
-             //set the BorderColor
+             //set the innercolor
+            annot.InnerColor = Color.Aqua;
+             //set the bordercolor
              annot.BorderColor = Color.Orange;
              //set the textcolor
              annot.TextColor = Color.Yellow;
@@ -29427,9 +29427,9 @@
              Dim annot As PdfRedactionAnnotation = New PdfRedactionAnnotation()
              //set the bounds
              annot.Bounds = New Rectangle(100, 120, 100, 100)
-             //set the innfrmErrorolor
-             annot.InnfrmErrorolor = Color.Aqua
-             //set the BorderColor
+             //set the innercolor
+             annot.InnerColor = Color.Aqua
+             //set the bordercolor
              annot.BorderColor = Color.Orange
              //set the textcolor
              annot.TextColor = Color.Yellow
@@ -29460,9 +29460,9 @@
              PdfRedactionAnnotation annot = new PdfRedactionAnnotation();
              //set the bounds
              annot.Bounds = new Rectangle(100, 120, 100, 100);
-             //set the innfrmErrorolor
-            annot.InnfrmErrorolor = Color.Aqua;
-             //set the BorderColor
+             //set the innercolor
+            annot.InnerColor = Color.Aqua;
+             //set the bordercolor
              annot.BorderColor = Color.Orange;
              //set the textcolor
              annot.TextColor = Color.Yellow;
@@ -29490,9 +29490,9 @@
              Dim annot As PdfRedactionAnnotation = New PdfRedactionAnnotation()
              //set the bounds
              annot.Bounds = New Rectangle(100, 120, 100, 100)
-             //set the innfrmErrorolor
-             annot.InnfrmErrorolor = Color.Aqua
-             //set the BorderColor
+             //set the innercolor
+             annot.InnerColor = Color.Aqua
+             //set the bordercolor
              annot.BorderColor = Color.Orange
              //set the textcolor
              annot.TextColor = Color.Yellow
@@ -29511,7 +29511,7 @@
         </member>
         <member name="P:Syncfusion.Pdf.Interactive.PdfRedactionAnnotation.BorderColor">
              <summary>
-             Get  or set the BorderColor of redaction annotation
+             Get  or set the bordercolor of redaction annotation
              </summary>
              <example>
              <code lang="CS">
@@ -29523,9 +29523,9 @@
              PdfRedactionAnnotation annot = new PdfRedactionAnnotation();
              //set the bounds
              annot.Bounds = new Rectangle(100, 120, 100, 100);
-             //set the innfrmErrorolor
-            annot.InnfrmErrorolor = Color.Aqua;
-             //set the BorderColor
+             //set the innercolor
+            annot.InnerColor = Color.Aqua;
+             //set the bordercolor
              annot.BorderColor = Color.Orange;
              //set the textcolor
              annot.TextColor = Color.Yellow;
@@ -29553,9 +29553,9 @@
              Dim annot As PdfRedactionAnnotation = New PdfRedactionAnnotation()
              //set the bounds
              annot.Bounds = New Rectangle(100, 120, 100, 100)
-             //set the innfrmErrorolor
-             annot.InnfrmErrorolor = Color.Aqua
-             //set the BorderColor
+             //set the innercolor
+             annot.InnerColor = Color.Aqua
+             //set the bordercolor
              annot.BorderColor = Color.Orange
              //set the textcolor
              annot.TextColor = Color.Yellow
@@ -29586,9 +29586,9 @@
              PdfRedactionAnnotation annot = new PdfRedactionAnnotation();
              //set the bounds
              annot.Bounds = new Rectangle(100, 120, 100, 100);
-             //set the innfrmErrorolor
-            annot.InnfrmErrorolor = Color.Aqua;
-             //set the BorderColor
+             //set the innercolor
+            annot.InnerColor = Color.Aqua;
+             //set the bordercolor
              annot.BorderColor = Color.Orange;
              //set the textcolor
              annot.TextColor = Color.Yellow;
@@ -29616,9 +29616,9 @@
              Dim annot As PdfRedactionAnnotation = New PdfRedactionAnnotation()
              //set the bounds
              annot.Bounds = New Rectangle(100, 120, 100, 100)
-             //set the innfrmErrorolor
-             annot.InnfrmErrorolor = Color.Aqua
-             //set the BorderColor
+             //set the innercolor
+             annot.InnerColor = Color.Aqua
+             //set the bordercolor
              annot.BorderColor = Color.Orange
              //set the textcolor
              annot.TextColor = Color.Yellow
@@ -29649,9 +29649,9 @@
              PdfRedactionAnnotation annot = new PdfRedactionAnnotation();
              //set the bounds
              annot.Bounds = new Rectangle(100, 120, 100, 100);
-             //set the innfrmErrorolor
-            annot.InnfrmErrorolor = Color.Aqua;
-             //set the BorderColor
+             //set the innercolor
+            annot.InnerColor = Color.Aqua;
+             //set the bordercolor
              annot.BorderColor = Color.Orange;
              //set the textcolor
              annot.TextColor = Color.Yellow;
@@ -29679,9 +29679,9 @@
              Dim annot As PdfRedactionAnnotation = New PdfRedactionAnnotation()
              //set the bounds
              annot.Bounds = New Rectangle(100, 120, 100, 100)
-             //set the innfrmErrorolor
-             annot.InnfrmErrorolor = Color.Aqua
-             //set the BorderColor
+             //set the innercolor
+             annot.InnerColor = Color.Aqua
+             //set the bordercolor
              annot.BorderColor = Color.Orange
              //set the textcolor
              annot.TextColor = Color.Yellow
@@ -29712,9 +29712,9 @@
              PdfRedactionAnnotation annot = new PdfRedactionAnnotation();
              //set the bounds
              annot.Bounds = new Rectangle(100, 120, 100, 100);
-             //set the innfrmErrorolor
-            annot.InnfrmErrorolor = Color.Aqua;
-             //set the BorderColor
+             //set the innercolor
+            annot.InnerColor = Color.Aqua;
+             //set the bordercolor
              annot.BorderColor = Color.Orange;
              //set the textcolor
              annot.TextColor = Color.Yellow;
@@ -29742,9 +29742,9 @@
              Dim annot As PdfRedactionAnnotation = New PdfRedactionAnnotation()
              //set the bounds
              annot.Bounds = New Rectangle(100, 120, 100, 100)
-             //set the innfrmErrorolor
-             annot.InnfrmErrorolor = Color.Aqua
-             //set the BorderColor
+             //set the innercolor
+             annot.InnerColor = Color.Aqua
+             //set the bordercolor
              annot.BorderColor = Color.Orange
              //set the textcolor
              annot.TextColor = Color.Yellow
@@ -31710,7 +31710,7 @@
              //Creates a new Square annotation.
              PdfSquareMeasurementAnnotation squareannotation = new PdfSquareMeasurementAnnotation(new RectangleF(0, 30, 80, 80));
              squareannotation.Text = "SquareAnnotation";
-             squareannotation.InnfrmErrorolor = new PdfColor(Color.Red);
+             squareannotation.InnerColor = new PdfColor(Color.Red);
              LineBorder border = new LineBorder();
              border.BorderStyle = PdfBorderStyle.Solid;
              border.BorderWidth = 2;
@@ -31736,7 +31736,7 @@
              'Creates a new Square annotation.
              Dim squareannotation As PdfSquareMeasurementAnnotation = New PdfSquareMeasurementAnnotation(New RectangleF(0, 30, 80, 80))
              squareannotation.Text = "SquareAnnotation"
-             squareannotation.InnfrmErrorolor = New PdfColor(Color.Red)
+             squareannotation.InnerColor = New PdfColor(Color.Red)
               Dim border As LineBorder = New LineBorder()
              border.BorderStyle = PdfBorderStyle.Solid
              border.BorderWidth = 2
@@ -39204,7 +39204,7 @@
             Represents the currency values
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Xfa.PdfXfaNumericType.PfrmErrorent">
+        <member name="F:Syncfusion.Pdf.Xfa.PdfXfaNumericType.Percent">
             <summary>
             Represents the persentage values
             </summary>
@@ -42772,7 +42772,7 @@
             Represents the background heigh.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Xfa.PdfXfaForm.m_bordfrmErrorount">
+        <member name="F:Syncfusion.Pdf.Xfa.PdfXfaForm.m_borderCount">
             <summary>
             Represents the background count.
             </summary>
@@ -52628,7 +52628,7 @@
             Gets or sets the id of destination
             </summary>
         </member>
-        <member name="P:Syncfusion.Pdf.HtmlToPdf.HtmlInternalLink.HeadfrmErrorontent">
+        <member name="P:Syncfusion.Pdf.HtmlToPdf.HtmlInternalLink.HeaderContent">
             <summary>
             Gets or sets the header content
             </summary>
@@ -52785,7 +52785,7 @@
             Indicating whether it is first page
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.HtmlToPdf.HtmlToPdfToc.isTabLeadfrmErrorhar">
+        <member name="F:Syncfusion.Pdf.HtmlToPdf.HtmlToPdfToc.isTabLeaderChar">
             <summary>
             Indicating whether the tab leader char empty 
             </summary>
@@ -52847,7 +52847,7 @@
             //Set tab leader style.
             toc.TabLeader = HtmlToPdfToc.TabLeaderStyle.Dash;
             //Set table leader character.
-            toc.TabLeadfrmErrorhar = 'c';                
+            toc.TabLeaderChar = 'c';                
             //Set toc to webkit settings.
             settings.Toc = toc;
             //Assign WebKit settings to HTML converter
@@ -52890,7 +52890,7 @@
             'Set tab leader style.
             toc.TabLeader = HtmlToPdfToc.TabLeaderStyle.Dash
             'Set table leader character.
-            toc.TabLeadfrmErrorhar = "c"
+            toc.TabLeaderChar = "c"
             'Set toc to webkit settings.
             settings.Toc = toc
             'Assign WebKit settings to HTML converter
@@ -52918,7 +52918,7 @@
             Draw table of content 
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.HtmlToPdf.HtmlToPdfToc.DrawHeadfrmErrorontent(System.Drawing.RectangleF,Syncfusion.Pdf.Graphics.PdfGraphics,Syncfusion.Pdf.HtmlToPdf.HtmlInternalLink)">
+        <member name="M:Syncfusion.Pdf.HtmlToPdf.HtmlToPdfToc.DrawHeaderContent(System.Drawing.RectangleF,Syncfusion.Pdf.Graphics.PdfGraphics,Syncfusion.Pdf.HtmlToPdf.HtmlInternalLink)">
             <summary>
             Draw rectangle inner text 
             </summary>
@@ -53310,7 +53310,7 @@
             //Set tab leader style.
             toc.TabLeader = HtmlToPdfToc.TabLeaderStyle.Dash;
             //Set table leader character.
-            toc.TabLeadfrmErrorhar = 'c';                
+            toc.TabLeaderChar = 'c';                
             //Set toc to webkit settings.
             settings.Toc = toc;
             //Assign WebKit settings to HTML converter
@@ -53353,7 +53353,7 @@
             'Set tab leader style.
             toc.TabLeader = HtmlToPdfToc.TabLeaderStyle.Dash
             'Set table leader character.
-            toc.TabLeadfrmErrorhar = "c"
+            toc.TabLeaderChar = "c"
             'Set toc to webkit settings.
             settings.Toc = toc
             'Assign WebKit settings to HTML converter
@@ -53366,7 +53366,7 @@
             </code> 
             </example>
         </member>
-        <member name="P:Syncfusion.Pdf.HtmlToPdf.HtmlToPdfToc.TabLeadfrmErrorhar">
+        <member name="P:Syncfusion.Pdf.HtmlToPdf.HtmlToPdfToc.TabLeaderChar">
             <summary>
             Gets or sets the tab leader character to connect the chapter titles and section headings to their corresponding page numbers
             </summary>
@@ -53403,7 +53403,7 @@
             //Set tab leader style.
             toc.TabLeader = HtmlToPdfToc.TabLeaderStyle.Dash;
             //Set table leader character.
-            toc.TabLeadfrmErrorhar = 'c';                
+            toc.TabLeaderChar = 'c';                
             //Set toc to webkit settings.
             settings.Toc = toc;
             //Assign WebKit settings to HTML converter
@@ -53446,7 +53446,7 @@
             'Set tab leader style.
             toc.TabLeader = HtmlToPdfToc.TabLeaderStyle.Dash
             'Set table leader character.
-            toc.TabLeadfrmErrorhar = "c"
+            toc.TabLeaderChar = "c"
             'Set toc to webkit settings.
             settings.Toc = toc
             'Assign WebKit settings to HTML converter
@@ -53496,7 +53496,7 @@
             //Set tab leader style.
             toc.TabLeader = HtmlToPdfToc.TabLeaderStyle.Dash;
             //Set table leader character.
-            toc.TabLeadfrmErrorhar = 'c';                
+            toc.TabLeaderChar = 'c';                
             //Set toc to webkit settings.
             settings.Toc = toc;
             //Assign WebKit settings to HTML converter
@@ -53539,7 +53539,7 @@
             'Set tab leader style.
             toc.TabLeader = HtmlToPdfToc.TabLeaderStyle.Dash
             'Set table leader character.
-            toc.TabLeadfrmErrorhar = "c"
+            toc.TabLeaderChar = "c"
             'Set toc to webkit settings.
             settings.Toc = toc
             'Assign WebKit settings to HTML converter
@@ -53644,7 +53644,7 @@
              //Set tab leader style.
              toc.TabLeader = HtmlToPdfToc.TabLeaderStyle.Dash;
              //Set table leader character.
-             toc.TabLeadfrmErrorhar = 'c';                
+             toc.TabLeaderChar = 'c';                
              //Set toc to webkit settings.
              settings.Toc = toc;
              //Assign WebKit settings to HTML converter
@@ -53687,7 +53687,7 @@
              'Set tab leader style.
              toc.TabLeader = HtmlToPdfToc.TabLeaderStyle.Dash
              'Set table leader character.
-             toc.TabLeadfrmErrorhar = "c"
+             toc.TabLeaderChar = "c"
              'Set toc to webkit settings.
              settings.Toc = toc
              'Assign WebKit settings to HTML converter
@@ -54589,9 +54589,9 @@
             //PdfLoadedRedactionAnnotation  annot = document.Pages[0].Annotations[0] as PdfLoadedRedactionAnnotation;
             //Get the line ending style
             // annot.Bounds = new Rectangle(100, 120, 100, 100);
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua;
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua;
+            //set the bordercolor
             // annot.BorderColor = Color.Orange;
             //set the textcolor
             // annot.TextColor = Color.Yellow;
@@ -54612,9 +54612,9 @@
             //Dim annot As PdfLoadedRedactionAnnotation = TryCast(document.Pages(0).Annotations(0), PdfLoadedRedactionAnnotation)
             //set the bounds
             //annot.Bounds = New Rectangle(100, 120, 100, 100)
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua
+            //set the bordercolor
             //annot.BorderColor = Color.Orange
             //set the textcolor
             // annot.TextColor = Color.Yellow
@@ -55095,7 +55095,7 @@
             <param name="keyName">Name of the key.</param>
             <returns>The value of the number specified by the string key.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.Interactive.PdfLoadedStyledAnnotation.ObtainInnfrmErrorolor">
+        <member name="M:Syncfusion.Pdf.Interactive.PdfLoadedStyledAnnotation.ObtainInnerColor">
             <summary>
             Get the inner line color
             </summary>
@@ -55226,7 +55226,7 @@
             Gets or sets the Opacity of the annotation, Default value is 1.0f
             </summary>
         </member>
-        <member name="P:Syncfusion.Pdf.Interactive.PdfLoadedStyledAnnotation.InnfrmErrorolor">
+        <member name="P:Syncfusion.Pdf.Interactive.PdfLoadedStyledAnnotation.InnerColor">
             <summary>
             Gets or sets the inner color of the annotation, Default color is transparent
             </summary>
@@ -55434,7 +55434,7 @@
             Get whether border is present or not.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Interactive.PdfLoadedRedactionAnnotation.BorderColor">
+        <member name="F:Syncfusion.Pdf.Interactive.PdfLoadedRedactionAnnotation.borderColor">
             <summary>
             Used to represent the border color of the redaction annotation.
             </summary>
@@ -55508,7 +55508,7 @@
         </member>
         <member name="M:Syncfusion.Pdf.Interactive.PdfLoadedRedactionAnnotation.ObtainBorderColor">
             <summary>
-            Get the BorderColor of redaction annotation
+            Get the bordercolor of redaction annotation
             </summary>
         </member>
         <member name="M:Syncfusion.Pdf.Interactive.PdfLoadedRedactionAnnotation.ObtainTextColor">
@@ -55542,9 +55542,9 @@
             //PdfLoadedRedactionAnnotation  annot = document.Pages[0].Annotations[0] as PdfLoadedRedactionAnnotation;
             //Get the line ending style
             // annot.Bounds = new Rectangle(100, 120, 100, 100);
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua;
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua;
+            //set the bordercolor
             // annot.BorderColor = Color.Orange;
             //set the textcolor
             // annot.TextColor = Color.Yellow;
@@ -55565,9 +55565,9 @@
             //Dim annot As PdfLoadedRedactionAnnotation = TryCast(document.Pages(0).Annotations(0), PdfLoadedRedactionAnnotation)
             //set the bounds
             //annot.Bounds = New Rectangle(100, 120, 100, 100)
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua
+            //set the bordercolor
             //annot.BorderColor = Color.Orange
             //set the textcolor
             // annot.TextColor = Color.Yellow
@@ -55595,9 +55595,9 @@
             //PdfLoadedRedactionAnnotation  annot = document.Pages[0].Annotations[0] as PdfLoadedRedactionAnnotation;
             //Get the line ending style
             // annot.Bounds = new Rectangle(100, 120, 100, 100);
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua;
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua;
+            //set the bordercolor
             // annot.BorderColor = Color.Orange;
             //set the textcolor
             // annot.TextColor = Color.Yellow;
@@ -55618,9 +55618,9 @@
             //Dim annot As PdfLoadedRedactionAnnotation = TryCast(document.Pages(0).Annotations(0), PdfLoadedRedactionAnnotation)
             //set the bounds
             //annot.Bounds = New Rectangle(100, 120, 100, 100)
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua
+            //set the bordercolor
             //annot.BorderColor = Color.Orange
             //set the textcolor
             // annot.TextColor = Color.Yellow
@@ -55648,9 +55648,9 @@
             //PdfLoadedRedactionAnnotation  annot = document.Pages[0].Annotations[0] as PdfLoadedRedactionAnnotation;
             //Get the line ending style
             // annot.Bounds = new Rectangle(100, 120, 100, 100);
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua;
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua;
+            //set the bordercolor
             // annot.BorderColor = Color.Orange;
             //set the textcolor
             // annot.TextColor = Color.Yellow;
@@ -55671,9 +55671,9 @@
             //Dim annot As PdfLoadedRedactionAnnotation = TryCast(document.Pages(0).Annotations(0), PdfLoadedRedactionAnnotation)
             //set the bounds
             //annot.Bounds = New Rectangle(100, 120, 100, 100)
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua
+            //set the bordercolor
             //annot.BorderColor = Color.Orange
             //set the textcolor
             // annot.TextColor = Color.Yellow
@@ -55701,9 +55701,9 @@
             //PdfLoadedRedactionAnnotation  annot = document.Pages[0].Annotations[0] as PdfLoadedRedactionAnnotation;
             //Get the line ending style
             // annot.Bounds = new Rectangle(100, 120, 100, 100);
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua;
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua;
+            //set the bordercolor
             // annot.BorderColor = Color.Orange;
             //set the textcolor
             // annot.TextColor = Color.Yellow;
@@ -55724,9 +55724,9 @@
             //Dim annot As PdfLoadedRedactionAnnotation = TryCast(document.Pages(0).Annotations(0), PdfLoadedRedactionAnnotation)
             //set the bounds
             //annot.Bounds = New Rectangle(100, 120, 100, 100)
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua
+            //set the bordercolor
             //annot.BorderColor = Color.Orange
             //set the textcolor
             // annot.TextColor = Color.Yellow
@@ -55754,9 +55754,9 @@
             //PdfLoadedRedactionAnnotation  annot = document.Pages[0].Annotations[0] as PdfLoadedRedactionAnnotation;
             //Get the line ending style
             // annot.Bounds = new Rectangle(100, 120, 100, 100);
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua;
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua;
+            //set the bordercolor
             // annot.BorderColor = Color.Orange;
             //set the textcolor
             // annot.TextColor = Color.Yellow;
@@ -55777,9 +55777,9 @@
             //Dim annot As PdfLoadedRedactionAnnotation = TryCast(document.Pages(0).Annotations(0), PdfLoadedRedactionAnnotation)
             //set the bounds
             //annot.Bounds = New Rectangle(100, 120, 100, 100)
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua
+            //set the bordercolor
             //annot.BorderColor = Color.Orange
             //set the textcolor
             // annot.TextColor = Color.Yellow
@@ -55798,7 +55798,7 @@
         </member>
         <member name="P:Syncfusion.Pdf.Interactive.PdfLoadedRedactionAnnotation.BorderColor">
             <summary>
-            Get  or set the BorderColor of redaction annotation
+            Get  or set the bordercolor of redaction annotation
             </summary>
             <example>
              /// <code lang="CS">
@@ -55807,9 +55807,9 @@
             //PdfLoadedRedactionAnnotation  annot = document.Pages[0].Annotations[0] as PdfLoadedRedactionAnnotation;
             //Get the line ending style
             // annot.Bounds = new Rectangle(100, 120, 100, 100);
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua;
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua;
+            //set the bordercolor
             // annot.BorderColor = Color.Orange;
             //set the textcolor
             // annot.TextColor = Color.Yellow;
@@ -55830,9 +55830,9 @@
             //Dim annot As PdfLoadedRedactionAnnotation = TryCast(document.Pages(0).Annotations(0), PdfLoadedRedactionAnnotation)
             //set the bounds
             //annot.Bounds = New Rectangle(100, 120, 100, 100)
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua
+            //set the bordercolor
             //annot.BorderColor = Color.Orange
             //set the textcolor
             // annot.TextColor = Color.Yellow
@@ -55860,9 +55860,9 @@
             //PdfLoadedRedactionAnnotation  annot = document.Pages[0].Annotations[0] as PdfLoadedRedactionAnnotation;
             //Get the line ending style
             // annot.Bounds = new Rectangle(100, 120, 100, 100);
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua;
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua;
+            //set the bordercolor
             // annot.BorderColor = Color.Orange;
             //set the textcolor
             // annot.TextColor = Color.Yellow;
@@ -55883,9 +55883,9 @@
             //Dim annot As PdfLoadedRedactionAnnotation = TryCast(document.Pages(0).Annotations(0), PdfLoadedRedactionAnnotation)
             //set the bounds
             //annot.Bounds = New Rectangle(100, 120, 100, 100)
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua
+            //set the bordercolor
             //annot.BorderColor = Color.Orange
             //set the textcolor
             // annot.TextColor = Color.Yellow
@@ -55913,9 +55913,9 @@
             //PdfLoadedRedactionAnnotation  annot = document.Pages[0].Annotations[0] as PdfLoadedRedactionAnnotation;
             //Get the line ending style
             // annot.Bounds = new Rectangle(100, 120, 100, 100);
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua;
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua;
+            //set the bordercolor
             // annot.BorderColor = Color.Orange;
             //set the textcolor
             // annot.TextColor = Color.Yellow;
@@ -55937,9 +55937,9 @@
             //Dim annot As PdfLoadedRedactionAnnotation = TryCast(document.Pages(0).Annotations(0), PdfLoadedRedactionAnnotation)
             //set the bounds
             //annot.Bounds = New Rectangle(100, 120, 100, 100)
-            //set the innfrmErrorolor
-            //annot.InnfrmErrorolor = Color.Aqua
-            //set the BorderColor
+            //set the innercolor
+            //annot.InnerColor = Color.Aqua
+            //set the bordercolor
             //annot.BorderColor = Color.Orange
             //set the textcolor
             // annot.TextColor = Color.Yellow
@@ -61542,7 +61542,7 @@
             Represents appearance of the widget annotation.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Interactive.WidgetAppearance.m_BorderColor">
+        <member name="F:Syncfusion.Pdf.Interactive.WidgetAppearance.m_borderColor">
             <summary>
             Internal variable to store border's color.
             </summary>
@@ -61755,7 +61755,7 @@
             Type of icon used in file attachment annotation.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Interactive.PdfAttachmentIcon.PapfrmErrorlip">
+        <member name="F:Syncfusion.Pdf.Interactive.PdfAttachmentIcon.Paperclip">
             <summary>
             Type of icon used in file attachment annotation.
             </summary>
@@ -66808,7 +66808,7 @@
             Initialize encoder.
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.Compression.PdfJBIG2Compressor.Initialize(Syncfusion.Pdf.Compression.JBIG2EncodfrmErrorontext@)">
+        <member name="M:Syncfusion.Pdf.Compression.PdfJBIG2Compressor.Initialize(Syncfusion.Pdf.Compression.JBIG2EncoderContext@)">
             <summary>
             Initialize encoder context.
             </summary>
@@ -69371,7 +69371,7 @@
             Manufacturer notes.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Compression.JBIG2.TiffTag.EXIF_USfrmErrorOMMENT">
+        <member name="F:Syncfusion.Pdf.Compression.JBIG2.TiffTag.EXIF_USERCOMMENT">
             <summary>
             User comments.
             </summary>
@@ -69636,7 +69636,7 @@
             Message codes used in code to signal errors, warning and trace messages.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Compression.JBIG2.J_MESSAGE_CODE.JfrmMessage_NOMESSAGE">
+        <member name="F:Syncfusion.Pdf.Compression.JBIG2.J_MESSAGE_CODE.JMSG_NOMESSAGE">
             <summary>
             Must be first entry!
             </summary>
@@ -70121,12 +70121,12 @@
             
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Compression.JBIG2.J_MESSAGE_CODE.JfrmMessage_UNKNOWNfrmMessageCODE">
+        <member name="F:Syncfusion.Pdf.Compression.JBIG2.J_MESSAGE_CODE.JMSG_UNKNOWNMSGCODE">
             <summary>
             
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Compression.JBIG2.J_MESSAGE_CODE.JfrmMessage_LASTfrmMessageCODE">
+        <member name="F:Syncfusion.Pdf.Compression.JBIG2.J_MESSAGE_CODE.JMSG_LASTMSGCODE">
             <summary>
             
             </summary>
@@ -72313,7 +72313,7 @@
         </member>
         <member name="M:Syncfusion.Pdf.Compression.JBIG2.Internal.Ex1PassCQuantizer.alloc_fs_workspace">
             <summary>
-            Allocate varWorkspace for Floyd-Steinberg errors.
+            Allocate workspace for Floyd-Steinberg errors.
             </summary>
         </member>
         <member name="M:Syncfusion.Pdf.Compression.JBIG2.Internal.Ex1PassCQuantizer.largest_input_value(System.Int32,System.Int32)">
@@ -80913,7 +80913,7 @@
             The variable used to store the Optimized dictionary collection 
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfDocumentBase.documentLayfrmErrorollection">
+        <member name="F:Syncfusion.Pdf.PdfDocumentBase.documentLayerCollection">
             <summary>
             variable used to maintain layers in loaded document
             </summary>
@@ -87019,9 +87019,9 @@
             Holds the stream of the mask image associated with the original image
             </summary>
         </member>
-        <member name="P:Syncfusion.Pdf.ImageStructure.BitsPfrmErroromponent">
+        <member name="P:Syncfusion.Pdf.ImageStructure.BitsPerComponent">
             <summary>
-            Gets BitsPfrmErroromponent value of the original image
+            Gets BitsPerComponent value of the original image
             </summary>
         </member>
         <member name="T:Syncfusion.Pdf.ImageStructure.ImagePreRenderEventHandler">
@@ -89018,11 +89018,11 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Pdf.Interactive.PdfField.IsMatched(Syncfusion.Pdf.PdfDocumentLayfrmErrorollection,Syncfusion.Pdf.Primitives.IPdfPrimitive,Syncfusion.Pdf.PdfLoadedPage)">
+        <member name="M:Syncfusion.Pdf.Interactive.PdfField.IsMatched(Syncfusion.Pdf.PdfDocumentLayerCollection,Syncfusion.Pdf.Primitives.IPdfPrimitive,Syncfusion.Pdf.PdfLoadedPage)">
             <summary>
             Finds the excepted object with layer collection
             </summary>
-            <param name="layfrmErrorollection"></param>
+            <param name="layerCollection"></param>
             <param name="expectedObject"></param>
             <param name="page"></param>
         </member>
@@ -109619,7 +109619,7 @@
              </code>
              </example>
         </member>
-        <member name="T:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve">
+        <member name="T:Syncfusion.Pdf.Graphics.PdfBezierCurve">
             <summary>
             Represents Bezier curve shape.
             </summary>
@@ -109629,8 +109629,8 @@
             PdfDocument document = new PdfDocument();
             //Add a new PDF page.
             PdfPage page = document.Pages.Add();   
-            //Create new instance of PdfBezifrmErrorurve.
-            PdfBezifrmErrorurve bezier = new PdfBezifrmErrorurve(0, 0, 100, 50, 50, 50, 100, 100);
+            //Create new instance of PdfBezierCurve.
+            PdfBezierCurve bezier = new PdfBezierCurve(0, 0, 100, 50, 50, 50, 100, 100);
             //Draw the bezier curve to PDF page.
             bezier.Draw(page, new PointF(300, 200));
             //Save the PDF docment.
@@ -109643,8 +109643,8 @@
             Dim document As New PdfDocument()
             'Add a new PDF page.
             Dim page As PdfPage = document.Pages.Add()   
-            'Create new instance of PdfBezifrmErrorurve.
-            Dim bezier As New PdfBezifrmErrorurve(0, 0, 100, 50, 50, 50, 100, 100)
+            'Create new instance of PdfBezierCurve.
+            Dim bezier As New PdfBezierCurve(0, 0, 100, 50, 50, 50, 100, 100)
             'Draw the bezier curve to PDF page.
             bezier.Draw(page, New PointF(300, 200))
             'Save the PDF docment.
@@ -109654,29 +109654,29 @@
             </code>
             </example>
         </member>
-        <member name="F:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.m_startPoint">
+        <member name="F:Syncfusion.Pdf.Graphics.PdfBezierCurve.m_startPoint">
             <summary>
             Local variable to store the start Point.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.m_firstControlPoint">
+        <member name="F:Syncfusion.Pdf.Graphics.PdfBezierCurve.m_firstControlPoint">
             <summary>
             Local variable to store the firstC ontrol Point.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.m_secondControlPoint">
+        <member name="F:Syncfusion.Pdf.Graphics.PdfBezierCurve.m_secondControlPoint">
             <summary>
             Local variable to store the second Control Point.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.m_endPoint">
+        <member name="F:Syncfusion.Pdf.Graphics.PdfBezierCurve.m_endPoint">
             <summary>
             Local variable to store the end Point.
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.#ctor(System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF)">
+        <member name="M:Syncfusion.Pdf.Graphics.PdfBezierCurve.#ctor(System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF)">
             <summary>
-            Initializes a new instance of the <see cref="T:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve"/> class with the specified <see cref="T:System.Drawing.PointF"/> structure
+            Initializes a new instance of the <see cref="T:Syncfusion.Pdf.Graphics.PdfBezierCurve"/> class with the specified <see cref="T:System.Drawing.PointF"/> structure
             </summary>
             <param name="startPoint">PointF structure that represents the starting point of the curve.</param>
             <param name="firstControlPoint">PointF structure that represents the first control point for the curve.</param>
@@ -109688,8 +109688,8 @@
             PdfDocument document = new PdfDocument();
             //Add a new PDF page.
             PdfPage page = document.Pages.Add();       
-            //Create new instance of PdfBezifrmErrorurve.
-            PdfBezifrmErrorurve bezier = new PdfBezifrmErrorurve(new PointF(0, 0), new PointF(100, 50), new PointF(50, 50), new PointF(100, 100));
+            //Create new instance of PdfBezierCurve.
+            PdfBezierCurve bezier = new PdfBezierCurve(new PointF(0, 0), new PointF(100, 50), new PointF(50, 50), new PointF(100, 100));
             //Draw the bezier curve to PDF page.
             bezier.Draw(page, new PointF(300, 200));
             //Save the PDF docment.
@@ -109702,8 +109702,8 @@
             Dim document As New PdfDocument()
             'Add a new PDF page.
             Dim page As PdfPage = document.Pages.Add()        
-            'Create new instance of PdfBezifrmErrorurve.
-            Dim bezier As New PdfBezifrmErrorurve(New PointF(0, 0), New PointF(100, 50), New PointF(50, 50), New PointF(100, 100))
+            'Create new instance of PdfBezierCurve.
+            Dim bezier As New PdfBezierCurve(New PointF(0, 0), New PointF(100, 50), New PointF(50, 50), New PointF(100, 100))
             'Draw the bezier curve to PDF page.
             bezier.Draw(page, New PointF(300, 200))
             'Save the PDF docment.
@@ -109712,9 +109712,9 @@
             document.Close(True)
             </code></example>
         </member>
-        <member name="M:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Syncfusion.Pdf.Graphics.PdfBezierCurve.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve"/> class with the specified pair of coordinates and control points
+            Initializes a new instance of the <see cref="T:Syncfusion.Pdf.Graphics.PdfBezierCurve"/> class with the specified pair of coordinates and control points
             </summary>
             <param name="startPointX">The x-coordinate of the starting point of the curve.</param>
             <param name="startPointY">The y-coordinate of the starting point of the curve.</param>
@@ -109730,8 +109730,8 @@
             PdfDocument document = new PdfDocument();
             //Add a new PDF page.
             PdfPage page = document.Pages.Add();        
-            //Create new instance of PdfBezifrmErrorurve.
-            PdfBezifrmErrorurve bezier = new PdfBezifrmErrorurve(0, 0, 100, 50, 50, 50, 100, 100);
+            //Create new instance of PdfBezierCurve.
+            PdfBezierCurve bezier = new PdfBezierCurve(0, 0, 100, 50, 50, 50, 100, 100);
             //Draw the bezier curve to PDF page.
             bezier.Draw(page, new PointF(300, 200));
             //Save the PDF docment.
@@ -109744,8 +109744,8 @@
             Dim document As New PdfDocument()
             'Add a new PDF page.
             Dim page As PdfPage = document.Pages.Add()       
-            'Create new instance of PdfBezifrmErrorurve.
-            Dim bezier As New PdfBezifrmErrorurve(0, 0, 100, 50, 50, 50, 100, 100)
+            'Create new instance of PdfBezierCurve.
+            Dim bezier As New PdfBezierCurve(0, 0, 100, 50, 50, 50, 100, 100)
             'Draw the bezier curve to PDF page.
             bezier.Draw(page, New PointF(300, 200))
             'Save the PDF docment.
@@ -109755,9 +109755,9 @@
             </code>
             </example>
         </member>
-        <member name="M:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.#ctor(Syncfusion.Pdf.Graphics.PdfPen,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF)">
+        <member name="M:Syncfusion.Pdf.Graphics.PdfBezierCurve.#ctor(Syncfusion.Pdf.Graphics.PdfPen,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF)">
             <summary>
-            Initializes a new instance of the <see cref="T:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve"/> class with the specified pen and <see cref="T:System.Drawing.PointF"/> structure.
+            Initializes a new instance of the <see cref="T:Syncfusion.Pdf.Graphics.PdfBezierCurve"/> class with the specified pen and <see cref="T:System.Drawing.PointF"/> structure.
             </summary>
             <param name="pen">Pen that determines the color, width, and style of the curve.</param>
             <param name="startPoint">PointF structure that represents the starting point of the curve.</param>
@@ -109772,8 +109772,8 @@
             PdfPage page = document.Pages.Add();
             //Create new PDF Pen.
             PdfPen pen = new PdfPen(Color.Red);
-            //Create new instance of PdfBezifrmErrorurve.
-            PdfBezifrmErrorurve bezier = new PdfBezifrmErrorurve(pen, new PointF(0, 0), new PointF(100, 50), new PointF(50, 50), new PointF(100, 100));
+            //Create new instance of PdfBezierCurve.
+            PdfBezierCurve bezier = new PdfBezierCurve(pen, new PointF(0, 0), new PointF(100, 50), new PointF(50, 50), new PointF(100, 100));
             //Draw the bezier curve to PDF page.
             bezier.Draw(page, new PointF(300, 200));
             //Save the PDF docment.
@@ -109788,8 +109788,8 @@
             Dim page As PdfPage = document.Pages.Add()
             'Create new PDF Pen.
             Dim pen As New PdfPen(Color.Red)
-            'Create new instance of PdfBezifrmErrorurve.
-            Dim bezier As New PdfBezifrmErrorurve(pen, New PointF(0, 0), New PointF(100, 50), New PointF(50, 50), New PointF(100, 100))
+            'Create new instance of PdfBezierCurve.
+            Dim bezier As New PdfBezierCurve(pen, New PointF(0, 0), New PointF(100, 50), New PointF(50, 50), New PointF(100, 100))
             'Draw the bezier curve to PDF page.
             bezier.Draw(page, New PointF(300, 200))
             'Save the PDF docment.
@@ -109798,9 +109798,9 @@
             document.Close(True)
             </code></example>
         </member>
-        <member name="M:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.#ctor(Syncfusion.Pdf.Graphics.PdfPen,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Syncfusion.Pdf.Graphics.PdfBezierCurve.#ctor(Syncfusion.Pdf.Graphics.PdfPen,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve"/> class with the specified pair of coordinates and control points
+            Initializes a new instance of the <see cref="T:Syncfusion.Pdf.Graphics.PdfBezierCurve"/> class with the specified pair of coordinates and control points
             </summary>
             <param name="pen">Pen that determines the color, width, and style of the curve.</param>
             <param name="startPointX">The x-coordinate of the starting point of the curve.</param>
@@ -109819,8 +109819,8 @@
             PdfPage page = document.Pages.Add();
             //Create new PDF Pen.
             PdfPen pen = new PdfPen(Color.Red);
-            //Create new instance of PdfBezifrmErrorurve.
-            PdfBezifrmErrorurve bezier = new PdfBezifrmErrorurve(pen, 0, 0, 100, 50, 50, 50, 100, 100);
+            //Create new instance of PdfBezierCurve.
+            PdfBezierCurve bezier = new PdfBezierCurve(pen, 0, 0, 100, 50, 50, 50, 100, 100);
             //Draw the bezier curve to PDF page.
             bezier.Draw(page, new PointF(300, 200));
             //Save the PDF docment.
@@ -109835,8 +109835,8 @@
             Dim page As PdfPage = document.Pages.Add()
             'Create new PDF Pen.
             Dim pen As New PdfPen(Color.Red)
-            'Create new instance of PdfBezifrmErrorurve.
-            Dim bezier As New PdfBezifrmErrorurve(pen, 0, 0, 100, 50, 50, 50, 100, 100)
+            'Create new instance of PdfBezierCurve.
+            Dim bezier As New PdfBezierCurve(pen, 0, 0, 100, 50, 50, 50, 100, 100)
             'Draw the bezier curve to PDF page.
             bezier.Draw(page, New PointF(300, 200))
             'Save the PDF docment.
@@ -109846,24 +109846,24 @@
             </code>
             </example>
         </member>
-        <member name="M:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.#ctor">
+        <member name="M:Syncfusion.Pdf.Graphics.PdfBezierCurve.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve"/> class.
+            Initializes a new instance of the <see cref="T:Syncfusion.Pdf.Graphics.PdfBezierCurve"/> class.
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.GetBoundsInternal">
+        <member name="M:Syncfusion.Pdf.Graphics.PdfBezierCurve.GetBoundsInternal">
             <summary>
             Overloaded. Returns a rectangle that bounds this element.
             </summary>
             <returns>Returns a rectangle that bounds this element.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.DrawInternal(Syncfusion.Pdf.Graphics.PdfGraphics)">
+        <member name="M:Syncfusion.Pdf.Graphics.PdfBezierCurve.DrawInternal(Syncfusion.Pdf.Graphics.PdfGraphics)">
             <summary>
             Draws an element on the Graphics.
             </summary>
             <param name="graphics">Graphics context where the element should be printed.</param>
         </member>
-        <member name="P:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.StartPoint">
+        <member name="P:Syncfusion.Pdf.Graphics.PdfBezierCurve.StartPoint">
             <summary>
             Gets or sets the starting point of the curve
             </summary>
@@ -109879,8 +109879,8 @@
             PointF firstControlPoint = new PointF(100, 50);
             PointF secondControlPoint = new PointF(50, 50);
             PointF endPoint = new PointF(100, 100);
-            //Create new instance of PdfBezifrmErrorurve.
-            PdfBezifrmErrorurve bezier = new PdfBezifrmErrorurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint);
+            //Create new instance of PdfBezierCurve.
+            PdfBezierCurve bezier = new PdfBezierCurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint);
             //Set start point.
             bezier.StartPoint = startPoint;
             //Set first control point.
@@ -109907,8 +109907,8 @@
             Dim firstControlPoint As New PointF(100, 50)
             Dim secondControlPoint As New PointF(50, 50)
             Dim endPoint As New PointF(100, 100)
-            'Create new instance of PdfBezifrmErrorurve.
-            Dim bezier As New PdfBezifrmErrorurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint)
+            'Create new instance of PdfBezierCurve.
+            Dim bezier As New PdfBezierCurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint)
             'Set start point.
             bezier.StartPoint = startPoint
             'Set first control point.
@@ -109926,7 +109926,7 @@
             </code> 
             </example>
         </member>
-        <member name="P:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.FirstControlPoint">
+        <member name="P:Syncfusion.Pdf.Graphics.PdfBezierCurve.FirstControlPoint">
             <summary>
             Gets or sets the first control point of the curve.
             </summary>
@@ -109942,8 +109942,8 @@
             PointF firstControlPoint = new PointF(100, 50);
             PointF secondControlPoint = new PointF(50, 50);
             PointF endPoint = new PointF(100, 100);
-            //Create new instance of PdfBezifrmErrorurve.
-            PdfBezifrmErrorurve bezier = new PdfBezifrmErrorurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint);
+            //Create new instance of PdfBezierCurve.
+            PdfBezierCurve bezier = new PdfBezierCurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint);
             //Set start point.
             bezier.StartPoint = startPoint;
             //Set first control point.
@@ -109970,8 +109970,8 @@
             Dim firstControlPoint As New PointF(100, 50)
             Dim secondControlPoint As New PointF(50, 50)
             Dim endPoint As New PointF(100, 100)
-            'Create new instance of PdfBezifrmErrorurve.
-            Dim bezier As New PdfBezifrmErrorurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint)
+            'Create new instance of PdfBezierCurve.
+            Dim bezier As New PdfBezierCurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint)
             'Set start point.
             bezier.StartPoint = startPoint
             'Set first control point.
@@ -109989,7 +109989,7 @@
             </code> 
             </example>
         </member>
-        <member name="P:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.SecondControlPoint">
+        <member name="P:Syncfusion.Pdf.Graphics.PdfBezierCurve.SecondControlPoint">
             <summary>
             Gets or sets the second control point of the curve
             </summary>
@@ -110005,8 +110005,8 @@
             PointF firstControlPoint = new PointF(100, 50);
             PointF secondControlPoint = new PointF(50, 50);
             PointF endPoint = new PointF(100, 100);
-            //Create new instance of PdfBezifrmErrorurve.
-            PdfBezifrmErrorurve bezier = new PdfBezifrmErrorurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint);
+            //Create new instance of PdfBezierCurve.
+            PdfBezierCurve bezier = new PdfBezierCurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint);
             //Set start point.
             bezier.StartPoint = startPoint;
             //Set first control point.
@@ -110033,8 +110033,8 @@
             Dim firstControlPoint As New PointF(100, 50)
             Dim secondControlPoint As New PointF(50, 50)
             Dim endPoint As New PointF(100, 100)
-            'Create new instance of PdfBezifrmErrorurve.
-            Dim bezier As New PdfBezifrmErrorurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint)
+            'Create new instance of PdfBezierCurve.
+            Dim bezier As New PdfBezierCurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint)
             'Set start point.
             bezier.StartPoint = startPoint
             'Set first control point.
@@ -110052,7 +110052,7 @@
             </code> 
             </example>
         </member>
-        <member name="P:Syncfusion.Pdf.Graphics.PdfBezifrmErrorurve.EndPoint">
+        <member name="P:Syncfusion.Pdf.Graphics.PdfBezierCurve.EndPoint">
             <summary>
             Gets or sets the ending point of the curve.
             </summary>
@@ -110068,8 +110068,8 @@
             PointF firstControlPoint = new PointF(100, 50);
             PointF secondControlPoint = new PointF(50, 50);
             PointF endPoint = new PointF(100, 100);
-            //Create new instance of PdfBezifrmErrorurve.
-            PdfBezifrmErrorurve bezier = new PdfBezifrmErrorurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint);
+            //Create new instance of PdfBezierCurve.
+            PdfBezierCurve bezier = new PdfBezierCurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint);
             //Set start point.
             bezier.StartPoint = startPoint;
             //Set first control point.
@@ -110096,8 +110096,8 @@
             Dim firstControlPoint As New PointF(100, 50)
             Dim secondControlPoint As New PointF(50, 50)
             Dim endPoint As New PointF(100, 100)
-            'Create new instance of PdfBezifrmErrorurve.
-            Dim bezier As New PdfBezifrmErrorurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint)
+            'Create new instance of PdfBezierCurve.
+            Dim bezier As New PdfBezierCurve(pen, startPoint, firstControlPoint, secondControlPoint, endPoint)
             'Set start point.
             bezier.StartPoint = startPoint
             'Set first control point.
@@ -117968,7 +117968,7 @@
             <param name="fontFamily">The font family.</param>
             <param name="fontMetrics">The font metrics.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.Graphics.Fonts.PdfCjkFontDescryptorFactory.FillHanyangSystefrmMessageothicMedium(Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.Graphics.PdfCjkFontFamily,Syncfusion.Pdf.Graphics.Fonts.PdfFontMetrics)">
+        <member name="M:Syncfusion.Pdf.Graphics.Fonts.PdfCjkFontDescryptorFactory.FillHanyangSystemsGothicMedium(Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.Graphics.PdfCjkFontFamily,Syncfusion.Pdf.Graphics.Fonts.PdfFontMetrics)">
             <summary>
             Fills the hanyang systems gothic medium font descryptor.
             </summary>
@@ -119568,7 +119568,7 @@
             <param name="size">Size of the font.</param>
             <returns>Returns font metrics depending on the font settings.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.Graphics.Fonts.PdfCjkStandardFontMetricsFactory.GetHanyangSystefrmMessageothicMediumMetrix(Syncfusion.Pdf.Graphics.PdfCjkFontFamily,Syncfusion.Pdf.Graphics.PdfFontStyle,System.Single)">
+        <member name="M:Syncfusion.Pdf.Graphics.Fonts.PdfCjkStandardFontMetricsFactory.GetHanyangSystemsGothicMediumMetrix(Syncfusion.Pdf.Graphics.PdfCjkFontFamily,Syncfusion.Pdf.Graphics.PdfFontStyle,System.Single)">
             <summary>
             Gets the hanyang systems gothic medium font metrix.
             </summary>
@@ -123520,7 +123520,7 @@
             <summary>
             Checks if current symbol is euro number.
             </summary>
-            <param name="charactfrmErrorodes">Array of elements types.</param>
+            <param name="characterCodes">Array of elements types.</param>
             <param name="index">Index of current symbol.</param>
             <returns>True - if current symbol is euro number, False otherwise.</returns>
         </member>
@@ -123528,7 +123528,7 @@
             <summary>
             Checks if current symbol is euro number.
             </summary>
-            <param name="charactfrmErrorodes">Array of elements types.</param>
+            <param name="characterCodes">Array of elements types.</param>
             <param name="index">Index of current symbol.</param>
             <returns>True - if current symbol is euro number, False otherwise.</returns>
         </member>
@@ -123546,7 +123546,7 @@
             <summary>
             Checks if array of flags contains at least on RTL symbol.
             </summary>
-            <param name="charactfrmErrorodes">Array of flags.</param>
+            <param name="characterCodes">Array of flags.</param>
             <returns>True if array of flags contains at least on RTL symbol, False otherwise.</returns>
         </member>
         <member name="M:Syncfusion.Pdf.Graphics.Fonts.RtlRenderer.WriteInLTR(System.Char[],System.Char,System.Boolean,System.Int32@,System.Int32@)">
@@ -125599,7 +125599,7 @@
             </code> 
             </example>
         </member>
-        <member name="F:Syncfusion.Pdf.Graphics.PdfCjkFontFamily.HanyangSystefrmMessageothicMedium">
+        <member name="F:Syncfusion.Pdf.Graphics.PdfCjkFontFamily.HanyangSystemsGothicMedium">
             <summary>
             Represents the Hanyang Systems Gothic Medium font.
             </summary>
@@ -126707,8 +126707,8 @@
             <summary>
             The Average Character Width parameter specifies
             the arithmetic average of the escapement (width)
-            of all of the 26 lowfrmErrorase letters a through z of the Latin alphabet
-            and the space character. If any of the 26 lowfrmErrorase letters are not present,
+            of all of the 26 lowercase letters a through z of the Latin alphabet
+            and the space character. If any of the 26 lowercase letters are not present,
             this parameter should equal the weighted average of all glyphs in the font.
             For non-UGL (platform 3, encoding 0) fonts, use the unweighted average.
             </summary>
@@ -145844,7 +145844,7 @@
         </member>
         <member name="M:Syncfusion.Pdf.Graphics.PdfTransformationMatrix.Rotate(System.Single)">
             <summary>
-            Rotates coordinate system in countfrmErrorlockwise direction.
+            Rotates coordinate system in counterclockwise direction.
             </summary>
             <param name="angle">The angle of the rotation (in degrees).</param>
             <property name="flag" value="Finished"/>
@@ -147264,10 +147264,10 @@
             or emphasizes saturation.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.Graphics.ColorIntent.PfrmErroreptual">
+        <member name="F:Syncfusion.Pdf.Graphics.ColorIntent.Perceptual">
             <summary>
             Colors are represented in a manner that provides a pleasing
-            pfrmErroreptual appearance.
+            perceptual appearance.
             </summary>
         </member>
         <member name="T:Syncfusion.Pdf.Graphics.PdfBlendMode">
@@ -147657,7 +147657,7 @@
         </member>
         <member name="F:Syncfusion.Pdf.Graphics.PdfGridImagePosition.Stretch">
             <summary>
-            The image is stretched by the pfrmErrorentages required to fit the width and height of the cell.
+            The image is stretched by the percentages required to fit the width and height of the cell.
             </summary>
         </member>
         <member name="F:Syncfusion.Pdf.Graphics.PdfGridImagePosition.Tile">
@@ -147809,7 +147809,7 @@
             The text color of the form element.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.HtmlToPdf.HtmlFormElement.m_BorderColor">
+        <member name="F:Syncfusion.Pdf.HtmlToPdf.HtmlFormElement.m_borderColor">
             <summary>
             The border color of the form element.
             </summary>
@@ -151502,7 +151502,7 @@
             Fill &amp;&amp; Stroke operator.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.IO.Operators.AppendBezifrmErrorurve">
+        <member name="F:Syncfusion.Pdf.IO.Operators.AppendBezierCurve">
             <summary>
             Append a cubic Bezier curve to the current path.
             </summary>
@@ -151758,12 +151758,12 @@
             Even-odd filling method marker.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.IO.Operators.AppendBezifrmErrorurve2">
+        <member name="F:Syncfusion.Pdf.IO.Operators.AppendBezierCurve2">
             <summary>
             The operator to apped bezier curve with x2 y2 x3 y3 set.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.IO.Operators.AppendBezifrmErrorurve1">
+        <member name="F:Syncfusion.Pdf.IO.Operators.AppendBezierCurve1">
             <summary>
             The operator to apped bezier curve with x1 y1 x3 y3 set.
             </summary>
@@ -154333,12 +154333,12 @@
         </member>
         <member name="F:Syncfusion.Pdf.Native.StringInfoCtype1.C1_UPPER">
             <summary>
-            UppfrmErrorase
+            Uppercase
             </summary>
         </member>
         <member name="F:Syncfusion.Pdf.Native.StringInfoCtype1.C1_LOWER">
             <summary>
-            LowfrmErrorase
+            Lowercase
             </summary>
         </member>
         <member name="F:Syncfusion.Pdf.Native.StringInfoCtype1.C1_DIGIT">
@@ -157332,7 +157332,7 @@
             Gets the collection of the page's layers (Read only).
             </summary>
             <value>
-            The <see cref="T:Syncfusion.Pdf.PdfPageLayfrmErrorollection"/> that represents the page's layers
+            The <see cref="T:Syncfusion.Pdf.PdfPageLayerCollection"/> that represents the page's layers
             </value>
             <example>
             <code lang="CS">
@@ -157341,7 +157341,7 @@
             //Add page to the document
             PdfPage page=document.Pages.Add();
             //Get the page layer
-            PdfPageLayfrmErrorollection angle = page.Layers;
+            PdfPageLayerCollection angle = page.Layers;
             //Save and close the PDF document
             document.Save("output.Pdf");
             document.Close(true);
@@ -157352,7 +157352,7 @@
             'Add page to the document
             Dim page As PdfPage = document.Pages.Add()
             'Get the page layer
-            Dim angle As PdfPageLayfrmErrorollection = page.Layers
+            Dim angle As PdfPageLayerCollection = page.Layers
             'Save and close the PDF document
             document.Save("output.Pdf")
             document.Close(True)
@@ -158895,7 +158895,7 @@
             //Get Graphics
             PdfGraphics graphics = page.Graphics;
             //Get page Layers
-            PdfPageLayfrmErrorollection layers = page.Layers;
+            PdfPageLayerCollection layers = page.Layers;
             //Get actual page size
             SizeF clientSize = page.GetClientSize();
             //Insert page in the document
@@ -158912,7 +158912,7 @@
             'Get Graphics
             Dim graphics As PdfGraphics = page.Graphics
             'Get page Layers
-            Dim layers As PdfPageLayfrmErrorollection = page.Layers
+            Dim layers As PdfPageLayerCollection = page.Layers
             'Get actual page size
             Dim clientSize As SizeF = page.GetClientSize()
             'Insert page in the document
@@ -159612,16 +159612,16 @@
         </member>
         <member name="P:Syncfusion.Pdf.PdfPageLayer.Layers">
             <summary>
-            Gets the collection of <see cref="T:Syncfusion.Pdf.PdfPageLayer"/>, this collection handle by the class <see cref="T:Syncfusion.Pdf.PdfPageLayfrmErrorollection"/>
+            Gets the collection of <see cref="T:Syncfusion.Pdf.PdfPageLayer"/>, this collection handle by the class <see cref="T:Syncfusion.Pdf.PdfPageLayerCollection"/>
             </summary>
-            <value>The <see cref="T:Syncfusion.Pdf.PdfPageLayfrmErrorollection"/> used to handle collection of <see cref="T:Syncfusion.Pdf.PdfPageLayer"/></value>
+            <value>The <see cref="T:Syncfusion.Pdf.PdfPageLayerCollection"/> used to handle collection of <see cref="T:Syncfusion.Pdf.PdfPageLayer"/></value>
         </member>
         <member name="P:Syncfusion.Pdf.PdfPageLayer.Syncfusion#Pdf#IPdfWrapper#Element">
             <summary>
             Gets the wrapped element.
             </summary>
         </member>
-        <member name="T:Syncfusion.Pdf.PdfPageLayfrmErrorollection">
+        <member name="T:Syncfusion.Pdf.PdfPageLayerCollection">
              <summary>
              The class provides methods and properties to handle the collections of <see cref="T:Syncfusion.Pdf.PdfPageLayer"/>
              </summary>
@@ -159674,69 +159674,69 @@
             </code>
             </example>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfPageLayfrmErrorollection.m_page">
+        <member name="F:Syncfusion.Pdf.PdfPageLayerCollection.m_page">
             <summary>
             Parent page.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfPageLayfrmErrorollection.m_sublayer">
+        <member name="F:Syncfusion.Pdf.PdfPageLayerCollection.m_sublayer">
             <summary>
             Indicates if Sublayer is present.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfPageLayfrmErrorollection.parentLayfrmErrorount">
+        <member name="F:Syncfusion.Pdf.PdfPageLayerCollection.parentLayerCount">
             <summary>
             Stores the number of first level layers in the document.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfPageLayfrmErrorollection.m_OptionalContent">
+        <member name="F:Syncfusion.Pdf.PdfPageLayerCollection.m_OptionalContent">
             <summary>
             Stores the optional content dictionary
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfPageLayfrmErrorollection.m_layfrmErrorollection">
+        <member name="F:Syncfusion.Pdf.PdfPageLayerCollection.m_layerCollection">
             <summary>
             Stores the layer id and helps to avoid the duplicate entries.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfPageLayfrmErrorollection.m_isLayfrmErrorontainsResource">
+        <member name="F:Syncfusion.Pdf.PdfPageLayerCollection.m_isLayerContainsResource">
             <summary>
             Indicates if the loaded layers have resource dictionary.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfPageLayfrmErrorollection.s_syncLockLayer">
+        <member name="F:Syncfusion.Pdf.PdfPageLayerCollection.s_syncLockLayer">
             <summary>
             Helps to lock Adding layers to page in multi threading
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfPageLayfrmErrorollection.m_bdcCount">
+        <member name="F:Syncfusion.Pdf.PdfPageLayerCollection.m_bdcCount">
             <summary>
             BeginMarkContent count
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfPageLayfrmErrorollection.documentLayers">
+        <member name="F:Syncfusion.Pdf.PdfPageLayerCollection.documentLayers">
             <summary>
             variable used to maintain layers in loaded document
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.#ctor">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:PdfPageLayfrmErrorollection"/> class
+            Initializes a new instance of the <see cref="T:PdfPageLayerCollection"/> class
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.#ctor(Syncfusion.Pdf.PdfPageBase)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.#ctor(Syncfusion.Pdf.PdfPageBase)">
             <summary>
-            Initializes a new instance of the <see cref="T:PdfPageLayfrmErrorollection"/> class with PDF page
+            Initializes a new instance of the <see cref="T:PdfPageLayerCollection"/> class with PDF page
             </summary>
             <param name="page">Parent page for the layers in the collection.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.Add">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.Add">
             <summary>
             Creates a new <see cref="T:Syncfusion.Pdf.PdfPageLayer"/> and adds it to the end of the collection.
             </summary>
             <returns>Created <see cref="T:Syncfusion.Pdf.PdfPageLayer"/></returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.Add(System.String,System.Boolean)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.Add(System.String,System.Boolean)">
             <summary>
             Creates a new <see cref="T:Syncfusion.Pdf.PdfPageLayer"/> with name and Boolean flag to set the visibility of layer,
             and adds it to the end of the collection.
@@ -159745,40 +159745,40 @@
             <param name="Visible">Layer Visibility.</param>
             <returns>Created <see cref="T:Syncfusion.Pdf.PdfPageLayer"/>.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.Add(System.String)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.Add(System.String)">
             <summary>
             Creates a new <see cref="T:Syncfusion.Pdf.PdfPageLayer"/> with name and adds it to the end of the collection.
             </summary>
             <param name="LayerName">Layer Name.</param>
             <returns>Created <see cref="T:Syncfusion.Pdf.PdfPageLayer"/>.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.Add(Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.Add(Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Adds <see cref="T:Syncfusion.Pdf.PdfPageLayer"/> to the collection.
             </summary>
             <param name="layer">The <see cref="T:Syncfusion.Pdf.PdfPageLayer"/> object.</param>
             <remarks>The layers belonging to the same page can be added to the collection only.</remarks>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.CreateLayer(Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.CreateLayer(Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Creates a  Optional Content Properties and adds it to Catalog.
             </summary>
             <param name="layer">Layer.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.setPrintOption(Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.setPrintOption(Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Creates Usage Dictionary and adds it to OCG dictionary
             </summary>
             <param name="layer"></param>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.CreateLayerLoadedPage(Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.CreateLayerLoadedPage(Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             creates a pdf page layer from loaded page
             </summary>
             <param name="layer"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.Insert(System.Int32,Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.Insert(System.Int32,Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Inserts <see cref="T:Syncfusion.Pdf.PdfPageLayer"/> into the collection at specified index
             </summary>
@@ -159786,83 +159786,83 @@
             <param name="layer"><see cref="T:Syncfusion.Pdf.PdfPageLayer"/> object.</param>
             <remarks>The layers belonging to the same page can be added to the collection only.</remarks>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.CreateOptionalContentDictionary(Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.CreateOptionalContentDictionary(Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Creates a  Optional Content Groups and adds it to OC Properties.
             </summary>
             <param name="layer">Layer.</param>
             <returns>primitive as pdfarray.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.CreateOptionalContentDictionary(Syncfusion.Pdf.PdfPageLayer,System.Boolean)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.CreateOptionalContentDictionary(Syncfusion.Pdf.PdfPageLayer,System.Boolean)">
             <summary>
             Creates a  Optional Content Groups and adds it to OC Properties.
             </summary>
             <param name="layer">Layer.</param>
             <returns>primitive as pdfarray.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.WriteEndMark">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.WriteEndMark">
             <summary>
             Writes End of Marked Content in Content Stream
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.CreateOptionalContentViews(Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.CreateOptionalContentViews(Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Creates  Optional Content Views and adds it to OC Properties.
             </summary>
             <param name="layer">Layer.</param>
             <returns>m_dictionary.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.CreateOptionalContentViews(Syncfusion.Pdf.PdfPageLayer,System.Boolean)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.CreateOptionalContentViews(Syncfusion.Pdf.PdfPageLayer,System.Boolean)">
             <summary>
             Creates  Optional Content Views and adds it to OC Properties.
             </summary>
             <param name="layer">Layer.</param>
             <returns>m_dictionary.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.Remove(Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.Remove(Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Removes layer from the collection.
             </summary>
             <param name="layer"><see cref="T:Syncfusion.Pdf.PdfPageLayer"/> object.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.Remove(System.String)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.Remove(System.String)">
             <summary>
             Removes <see cref="T:Syncfusion.Pdf.PdfPageLayer"/> from the collection by its name.
             </summary>
             <param name="name">Name of the layer.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.RemoveAt(System.Int32)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.RemoveAt(System.Int32)">
             <summary>
             Removes layer by its index from collections
             </summary>
             <param name="index">Index of the layer.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.Contains(Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.Contains(Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Checks whether collection contains <see cref="T:Syncfusion.Pdf.PdfPageLayer"/>.
             </summary>
             <param name="layer"><see cref="T:Syncfusion.Pdf.PdfPageLayer"/> object.</param>
             <returns>True - if collection contains layer, False otherwise.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.IndexOf(Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.IndexOf(Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Returns index of the <see cref="T:Syncfusion.Pdf.PdfPageLayer"/> in the collection if exists, -1 otherwise.
             </summary>
             <param name="layer"><see cref="T:Syncfusion.Pdf.PdfPageLayer"/> object.</param>
             <returns>Returns index of the layer in the collection if exists, -1 otherwise.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.Clear">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.Clear">
             <summary>
-            Clears layers from the <see cref="T:Syncfusion.Pdf.PdfPageLayfrmErrorollection"/>.
+            Clears layers from the <see cref="T:Syncfusion.Pdf.PdfPageLayerCollection"/>.
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.CombineContent(System.IO.Stream)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.CombineContent(System.IO.Stream)">
             <summary>
             Combines the content into the specified stream.
             </summary>
             <param name="stream">The stream.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.CombineProcess(Syncfusion.Pdf.PdfLoadedPage,System.Boolean,System.IO.Stream,System.Byte[])">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.CombineProcess(Syncfusion.Pdf.PdfLoadedPage,System.Boolean,System.IO.Stream,System.Byte[])">
             <summary>
             Combine page content into specified stream
             </summary>
@@ -159871,61 +159871,61 @@
             <param name="stream"></param>
             <param name="endl"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.AddLayer(System.Int32,Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.AddLayer(System.Int32,Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Registers layer at the page.
             </summary>
             <param name="index">Index of the layer in the collection.</param>
             <param name="layer">The new layer.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.RemoveLayer(Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.RemoveLayer(Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Removes layer from the page.
             </summary>
             <param name="layer">The layer.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.RemoveLayerReference(Syncfusion.Pdf.PdfLoadedPage,Syncfusion.Pdf.PdfPageLayer,System.Boolean)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.RemoveLayerReference(Syncfusion.Pdf.PdfLoadedPage,Syncfusion.Pdf.PdfPageLayer,System.Boolean)">
             <summary>
             Remove layer reference from ocg, order, on and off array
             </summary>
             <param name="m_page"></param>
             <param name="layer"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.RemoveLayerReference(Syncfusion.Pdf.PdfPage,Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.RemoveLayerReference(Syncfusion.Pdf.PdfPage,Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Remove layer reference from ocg, order, on and off array
             </summary>
             <param name="m_page"></param>
             <param name="layer"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.InsertLayer(System.Int32,Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.InsertLayer(System.Int32,Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Registers layer at the page.
             </summary>
             <param name="index">Index of the layer in the collection.</param>
             <param name="layer">The new layer.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.ParseLayers(Syncfusion.Pdf.PdfPageBase)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.ParseLayers(Syncfusion.Pdf.PdfPageBase)">
             <summary>
             Parses the layers.
             </summary>
             <param name="loadedPage">The loaded page.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.CheckVisible(Syncfusion.Pdf.Primitives.PdfDictionary,System.Collections.Generic.Dictionary{Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfPageLayer})">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.CheckVisible(Syncfusion.Pdf.Primitives.PdfDictionary,System.Collections.Generic.Dictionary{Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfPageLayer})">
             <summary>
             Check visibilty of loaded layer
             </summary>
             <param name="ocproperties"></param>
             <param name="m_layerDictionary"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.SortLayerList(Syncfusion.Pdf.Primitives.PdfDictionary,System.Collections.Generic.Dictionary{Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfPageLayer})">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.SortLayerList(Syncfusion.Pdf.Primitives.PdfDictionary,System.Collections.Generic.Dictionary{Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfPageLayer})">
             <summary>
             Make layers as correct order, based on Optical content group
             </summary>
             <param name="ocPropertie"></param>
-            <param name="layfrmErrorollection"></param>
+            <param name="layerCollection"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.PageContainsLayer(Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.Primitives.PdfDictionary,System.Boolean@,System.Boolean@)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.PageContainsLayer(Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.Primitives.PdfDictionary,System.Boolean@,System.Boolean@)">
             <summary>
             Check whether page contains any layer
             </summary>
@@ -159934,7 +159934,7 @@
             <param name="isPropertieLayer"></param>
             <param name="isResourceLayer"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.AddLayer(Syncfusion.Pdf.PdfPageBase,Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.Primitives.PdfReferenceHolder,System.String,System.Collections.Generic.Dictionary{Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfPageLayer},System.Boolean)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.AddLayer(Syncfusion.Pdf.PdfPageBase,Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.Primitives.PdfReferenceHolder,System.String,System.Collections.Generic.Dictionary{Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfPageLayer},System.Boolean)">
             <summary>
             Add layer to page
             </summary>
@@ -159942,9 +159942,9 @@
             <param name="dictionary"></param>
             <param name="reference"></param>
             <param name="key"></param>
-            <param name="pageLayfrmErrorollection"></param>
+            <param name="pageLayerCollection"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.ParseResourceLayer(Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfPageBase,System.Collections.Generic.Dictionary{Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfPageLayer},System.Collections.Generic.Dictionary{Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.Primitives.PdfDictionary})">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.ParseResourceLayer(Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfPageBase,System.Collections.Generic.Dictionary{Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfPageLayer},System.Collections.Generic.Dictionary{Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.Primitives.PdfDictionary})">
             <summary>
             Parse resouces contains layer 
             </summary>
@@ -159954,20 +159954,20 @@
             <param name="loadedPage"></param>
             <param name="m_layerDictionary"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.RemoveLayfrmErrorontent(Syncfusion.Pdf.PdfPageLayer)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.RemoveLayerContent(Syncfusion.Pdf.PdfPageLayer)">
             <summary>
             Remove Layer content from page
             </summary>
             <param name="layer"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.FindOperator(System.Int32)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.FindOperator(System.Int32)">
             <summary>
             Find Operator
             </summary>
             <param name="token"></param>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.StreamWrite(System.String[],System.String,System.Boolean,Syncfusion.Pdf.Primitives.PdfStream)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.StreamWrite(System.String[],System.String,System.Boolean,Syncfusion.Pdf.Primitives.PdfStream)">
             <summary>
             Rewrite PDFLayer content stream
             </summary>
@@ -159976,7 +159976,7 @@
             <param name="skip"></param>
             <param name="data"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.ProcessBeginMarkContent(Syncfusion.Pdf.PdfPageLayer,System.String,System.String[],Syncfusion.Pdf.Primitives.PdfStream)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.ProcessBeginMarkContent(Syncfusion.Pdf.PdfPageLayer,System.String,System.String[],Syncfusion.Pdf.Primitives.PdfStream)">
             <summary>
             Process Begin Mark Content to remove layer content
             </summary>
@@ -159985,7 +159985,7 @@
             <param name="operands"></param>
             <param name="data"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfPageLayfrmErrorollection.FindLayersContent(Syncfusion.Pdf.PdfPageLayer,Syncfusion.Pdf.ContentParser,Syncfusion.Pdf.Primitives.PdfStream,System.Boolean)">
+        <member name="M:Syncfusion.Pdf.PdfPageLayerCollection.FindLayersContent(Syncfusion.Pdf.PdfPageLayer,Syncfusion.Pdf.ContentParser,Syncfusion.Pdf.Primitives.PdfStream,System.Boolean)">
             <summary>
             Process layer content
             </summary>
@@ -159995,13 +159995,13 @@
             <param name="isSkip"></param>
             <returns></returns>
         </member>
-        <member name="P:Syncfusion.Pdf.PdfPageLayfrmErrorollection.Item(System.Int32)">
+        <member name="P:Syncfusion.Pdf.PdfPageLayerCollection.Item(System.Int32)">
             <summary>
-            Gets or sets <see cref="T:Syncfusion.Pdf.PdfPageLayer"/> by its index from <see cref="T:Syncfusion.Pdf.PdfPageLayfrmErrorollection"/>
+            Gets or sets <see cref="T:Syncfusion.Pdf.PdfPageLayer"/> by its index from <see cref="T:Syncfusion.Pdf.PdfPageLayerCollection"/>
             </summary>
             <remarks>The layers belonging to the same page can be added to the collection only.</remarks>
         </member>
-        <member name="P:Syncfusion.Pdf.PdfPageLayfrmErrorollection.IsSkip">
+        <member name="P:Syncfusion.Pdf.PdfPageLayerCollection.IsSkip">
             <summary>
             Skip Operators 
             </summary>
@@ -160321,7 +160321,7 @@
             <summary>
             Gets the collection of child <see cref="T:Syncfusion.Pdf.PdfLayer"/>
             </summary>
-            <value>The <see cref="T:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection"/> used to handle collection of <see cref="T:Syncfusion.Pdf.PdfLayer"/></value>
+            <value>The <see cref="T:Syncfusion.Pdf.PdfDocumentLayerCollection"/> used to handle collection of <see cref="T:Syncfusion.Pdf.PdfLayer"/></value>
         </member>
         <member name="P:Syncfusion.Pdf.PdfLayer.Locked">
             <summary>
@@ -160376,70 +160376,70 @@
             Gets the wrapped element.
             </summary>
         </member>
-        <member name="T:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection">
+        <member name="T:Syncfusion.Pdf.PdfDocumentLayerCollection">
             <summary>
             The class provides methods and properties to handle the collections of <see cref="T:Syncfusion.Pdf.PdfLayer"/>
             </summary>   
         </member>
-        <member name="F:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.m_sublayer">
+        <member name="F:Syncfusion.Pdf.PdfDocumentLayerCollection.m_sublayer">
             <summary>
             Indicates if Sublayer is present.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.m_OptionalContent">
+        <member name="F:Syncfusion.Pdf.PdfDocumentLayerCollection.m_OptionalContent">
             <summary>
             Stores the optional content dictionary
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.m_isLayfrmErrorontainsResource">
+        <member name="F:Syncfusion.Pdf.PdfDocumentLayerCollection.m_isLayerContainsResource">
             <summary>
             Indicates if the loaded layers have resource dictionary.
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.s_syncLockLayer">
+        <member name="F:Syncfusion.Pdf.PdfDocumentLayerCollection.s_syncLockLayer">
             <summary>
             Helps to lock Adding layers to page in multi threading
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.document">
+        <member name="F:Syncfusion.Pdf.PdfDocumentLayerCollection.document">
             <summary>
             Indicates document to create layer in PDF document
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.m_parent">
+        <member name="F:Syncfusion.Pdf.PdfDocumentLayerCollection.m_parent">
             <summary>
             Indicates sublayer of layers in PDF layer
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.layerDictionary">
+        <member name="F:Syncfusion.Pdf.PdfDocumentLayerCollection.layerDictionary">
             <summary>
             Indicates a dictionary to store  all layer in PDF document
             </summary>
         </member>
-        <member name="F:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.m_bdcCount">
+        <member name="F:Syncfusion.Pdf.PdfDocumentLayerCollection.m_bdcCount">
             <summary>
             BeginMarkContent count
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.#ctor">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:PdfDocumentLayfrmErrorollection"/> class
+            Initializes a new instance of the <see cref="T:PdfDocumentLayerCollection"/> class
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.#ctor(Syncfusion.Pdf.PdfDocumentBase,Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.#ctor(Syncfusion.Pdf.PdfDocumentBase,Syncfusion.Pdf.PdfLayer)">
             <summary>
-            Initializes a new instance of the <see cref="T:PdfDocumentLayfrmErrorollection"/> class
+            Initializes a new instance of the <see cref="T:PdfDocumentLayerCollection"/> class
             </summary>
             <param name="document"></param>
             <param name="layer"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.#ctor(Syncfusion.Pdf.PdfDocumentBase)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.#ctor(Syncfusion.Pdf.PdfDocumentBase)">
             <summary>
-            Initializes a new instance of the <see cref="T:PdfDocumentLayfrmErrorollection"/> class
+            Initializes a new instance of the <see cref="T:PdfDocumentLayerCollection"/> class
             </summary>
             <param name="document"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.Add(System.String,System.Boolean)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.Add(System.String,System.Boolean)">
             <summary>
             Creates a new <see cref="T:Syncfusion.Pdf.PdfLayer"/> with name and Boolean flag to set the visibility of layer,
             and adds it to the end of the collection.
@@ -160448,61 +160448,61 @@
             <param name="visible">Layer Visibility.</param>
             <returns>Created <see cref="T:Syncfusion.Pdf.PdfLayer"/>.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.Add(System.String)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.Add(System.String)">
             <summary>
             Creates a new <see cref="T:Syncfusion.Pdf.PdfLayer"/> with name and adds it to the end of the collection.
             </summary>
             <param name="name">Layer Name.</param>
             <returns>Created <see cref="T:Syncfusion.Pdf.PdfLayer"/>.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.Add(Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.Add(Syncfusion.Pdf.PdfLayer)">
             <summary>
             Add layer in list collection of PDFLayer
             </summary>
             <param name="layer"></param>
             <returns>index of created layer</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.CreateLayer(Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.CreateLayer(Syncfusion.Pdf.PdfLayer)">
             <summary>
             Creates a  Optional Content Properties and adds it to Catalog.
             </summary>
             <param name="layer">Layer.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.setPrintOption(Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.setPrintOption(Syncfusion.Pdf.PdfLayer)">
             <summary>
             Creates Usage Dictionary and adds it to OCG dictionary
             </summary>
             <param name="layer"></param>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.CreateLayerLoadedDocument(Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.CreateLayerLoadedDocument(Syncfusion.Pdf.PdfLayer)">
             <summary>
             Creates a pdf layer from loaded PDF document
             </summary>
             <param name="layer"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.Move(System.Int32,Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.Move(System.Int32,Syncfusion.Pdf.PdfLayer)">
             <summary>
             Move <see cref="T:Syncfusion.Pdf.PdfLayer"/> into the collection at specified index
             </summary>
             <param name="index">Index of the layer.</param>
             <param name="layer"><see cref="T:Syncfusion.Pdf.PdfLayer"/> object.</param>        
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.CreateOptionalContentDictionary(Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.CreateOptionalContentDictionary(Syncfusion.Pdf.PdfLayer)">
             <summary>
             Creates a  Optional Content Groups and adds it to OC Properties.
             </summary>
             <param name="layer">Layer.</param>
             <returns>primitive as pdfarray.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.CreateOptionalContentDictionary(Syncfusion.Pdf.PdfLayer,System.Boolean)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.CreateOptionalContentDictionary(Syncfusion.Pdf.PdfLayer,System.Boolean)">
             <summary>
             Creates a  Optional Content Groups and adds it to OC Properties.
             </summary>
             <param name="layer">Layer.</param>
             <returns>primitive as pdfarray.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.CreateSublayer(Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.CreateSublayer(Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfLayer)">
             <summary>
             Creating Nested/Sublayer layer for parent layer
             </summary>
@@ -160510,130 +160510,130 @@
             <param name="reference"></param>
             <param name="layer"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.CreateOptionalContentViews(Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.CreateOptionalContentViews(Syncfusion.Pdf.PdfLayer)">
             <summary>
             Creates  Optional Content Views and adds it to OC Properties.
             </summary>
             <param name="layer">Layer.</param>
             <returns>m_dictionary.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.CreateOptionalContentViews(Syncfusion.Pdf.PdfLayer,System.Boolean)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.CreateOptionalContentViews(Syncfusion.Pdf.PdfLayer,System.Boolean)">
             <summary>
             Creates  Optional Content Views and adds it to OC Properties.
             </summary>
             <param name="layer">Layer.</param>
             <returns>m_dictionary.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.Remove(Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.Remove(Syncfusion.Pdf.PdfLayer)">
             <summary>
             Removes layer from the collection of Layer.
             </summary>
             <param name="layer"><see cref="T:Syncfusion.Pdf.PdfLayer"/> object.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.Remove(Syncfusion.Pdf.PdfLayer,System.Boolean)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.Remove(Syncfusion.Pdf.PdfLayer,System.Boolean)">
             <summary>
             Removes layer from the collection and remove graphical content, If removeGraphicalContent is true.
             </summary>
             <param name="layer"><see cref="T:Syncfusion.Pdf.PdfLayer"/> object.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.Remove(System.String)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.Remove(System.String)">
             <summary>
             Removes <see cref="T:Syncfusion.Pdf.PdfLayer"/> from the collection by its name. 
             If document have muliple layer with same name, it removes all PdfLayers from document.
             </summary>
             <param name="name">Name of the layer.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.Remove(System.String,System.Boolean)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.Remove(System.String,System.Boolean)">
             <summary>
             Remove layer from its collection by its name and remove graphical content, If removeGraphicalContent is true
             </summary>
             <param name="name"></param>
             <param name="removeGraphicalContent"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.RemoveAt(System.Int32)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.RemoveAt(System.Int32)">
             <summary>
             Removes layer by its index from collections
             </summary>
             <param name="index">Index of the layer.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.RemoveAt(System.Int32,System.Boolean)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.RemoveAt(System.Int32,System.Boolean)">
             <summary>
             Removes layer by its index from collections and remove graphical content if removeGraphicalContent is true
             </summary>
             <param name="index">Index of the layer.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.Contains(Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.Contains(Syncfusion.Pdf.PdfLayer)">
             <summary>
             Checks whether collection contains <see cref="T:Syncfusion.Pdf.PdfLayer"/>.
             </summary>
             <param name="layer"><see cref="T:Syncfusion.Pdf.PdfLayer"/> object.</param>
             <returns>True - if collection contains layer, False otherwise.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.Contains(System.String)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.Contains(System.String)">
             <summary>
             Checks whether collection contains <see cref="T:Syncfusion.Pdf.PdfLayer"/> by layer name.
             </summary>
             <param name="name"></param>
             <returns>True - if collection contains layer, False otherwise.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.IndexOf(Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.IndexOf(Syncfusion.Pdf.PdfLayer)">
             <summary>
             Returns index of the <see cref="T:Syncfusion.Pdf.PdfLayer"/> in the collection if exists, -1 otherwise.
             </summary>
             <param name="layer"><see cref="T:Syncfusion.Pdf.PdfLayer"/> object.</param>
             <returns>Returns index of the layer in the collection if exists, -1 otherwise.</returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.Clear">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.Clear">
             <summary>
-            Clears layers from the <see cref="T:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection"/>.
+            Clears layers from the <see cref="T:Syncfusion.Pdf.PdfDocumentLayerCollection"/>.
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.RemoveLayer(Syncfusion.Pdf.PdfLayer,System.Boolean)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.RemoveLayer(Syncfusion.Pdf.PdfLayer,System.Boolean)">
             <summary>
             Remove layer from document and remove graphics if remove content is true
             </summary>
             <param name="layer"></param>
             <param name="isRemoveContent"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.InsertLayer(System.Int32,Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.InsertLayer(System.Int32,Syncfusion.Pdf.PdfLayer)">
             <summary>
             Registers layer at specified index in layer collection
             </summary>
             <param name="index">Index of the layer in the collection.</param>
             <param name="layer">Pdf layer.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.CheckLayerVisible(Syncfusion.Pdf.Primitives.PdfDictionary)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.CheckLayerVisible(Syncfusion.Pdf.Primitives.PdfDictionary)">
             <summary>
             Check and set layer visible
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.CheckLayerLock(Syncfusion.Pdf.Primitives.PdfDictionary)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.CheckLayerLock(Syncfusion.Pdf.Primitives.PdfDictionary)">
             <summary>
             Check and set layer lock
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.RemoveOCG(Syncfusion.Pdf.PdfLayer,Syncfusion.Pdf.Primitives.PdfArray)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.RemoveOCG(Syncfusion.Pdf.PdfLayer,Syncfusion.Pdf.Primitives.PdfArray)">
             <summary>
             Remove layer reference from OCGroup
             </summary>
             <param name="layer"></param>
             <param name="ocGroup"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.RemoveUsage(Syncfusion.Pdf.PdfLayer,Syncfusion.Pdf.Primitives.PdfArray)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.RemoveUsage(Syncfusion.Pdf.PdfLayer,Syncfusion.Pdf.Primitives.PdfArray)">
             <summary>
             Remove layer reference from usage application
             </summary>
             <param name="layer"></param>
             <param name="m_usage"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.RemoveOrder(Syncfusion.Pdf.PdfLayer,Syncfusion.Pdf.Primitives.PdfArray,System.Collections.Generic.List{Syncfusion.Pdf.Primitives.PdfArray})">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.RemoveOrder(Syncfusion.Pdf.PdfLayer,Syncfusion.Pdf.Primitives.PdfArray,System.Collections.Generic.List{Syncfusion.Pdf.Primitives.PdfArray})">
             <summary>
             Remove layer reference from Order
             </summary>
             <param name="layer"></param>
             <param name="order"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.RemoveVisible(Syncfusion.Pdf.PdfLayer,Syncfusion.Pdf.Primitives.PdfArray,Syncfusion.Pdf.Primitives.PdfArray)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.RemoveVisible(Syncfusion.Pdf.PdfLayer,Syncfusion.Pdf.Primitives.PdfArray,Syncfusion.Pdf.Primitives.PdfArray)">
             <summary>
             Remove layer reference from On and Off
             </summary>
@@ -160641,25 +160641,25 @@
             <param name="on"></param>
             <param name="off"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.RemoveLocked(Syncfusion.Pdf.PdfLayer,Syncfusion.Pdf.Primitives.PdfArray)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.RemoveLocked(Syncfusion.Pdf.PdfLayer,Syncfusion.Pdf.Primitives.PdfArray)">
             <summary>
             Remove layer reference from locked
             </summary>
             <param name="layer"></param>
             <param name="locked"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.RemoveLayfrmErrorontent(Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.RemoveLayerContent(Syncfusion.Pdf.PdfLayer)">
             <summary>
             Remove graphics content for PDF layer
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.CheckParentLayer(Syncfusion.Pdf.Primitives.PdfDictionary)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.CheckParentLayer(Syncfusion.Pdf.Primitives.PdfDictionary)">
             <summary>
             Check parent layer 
             </summary>
             <param name="ocProperties"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.ParsingLayerOrder(Syncfusion.Pdf.PdfLayer,Syncfusion.Pdf.Primitives.PdfArray,System.Collections.Generic.Dictionary{Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfLayer})">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.ParsingLayerOrder(Syncfusion.Pdf.PdfLayer,Syncfusion.Pdf.Primitives.PdfArray,System.Collections.Generic.Dictionary{Syncfusion.Pdf.Primitives.PdfReferenceHolder,Syncfusion.Pdf.PdfLayer})">
             <summary>
             Parsing order array to get parent layer
             </summary>
@@ -160667,14 +160667,14 @@
             <param name="array"></param>
             <param name="layerDictionary"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.FindOperator(System.Int32)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.FindOperator(System.Int32)">
             <summary>
             Find Operator
             </summary>
             <param name="token"></param>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.StreamWrite(System.String[],System.String,System.Boolean,Syncfusion.Pdf.Primitives.PdfStream)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.StreamWrite(System.String[],System.String,System.Boolean,Syncfusion.Pdf.Primitives.PdfStream)">
             <summary>
             Rewrite PDFLayer content stream
             </summary>
@@ -160683,7 +160683,7 @@
             <param name="skip"></param>
             <param name="data"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.ProcessBeginMarkContent(Syncfusion.Pdf.PdfLayer,System.String,System.String[],Syncfusion.Pdf.Primitives.PdfStream)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.ProcessBeginMarkContent(Syncfusion.Pdf.PdfLayer,System.String,System.String[],Syncfusion.Pdf.Primitives.PdfStream)">
             <summary>
             Process Begin Mark Content to remove layer content
             </summary>
@@ -160692,23 +160692,23 @@
             <param name="operands"></param>
             <param name="data"></param>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.CreateLayerHierarchical(Syncfusion.Pdf.Primitives.PdfDictionary)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.CreateLayerHierarchical(Syncfusion.Pdf.Primitives.PdfDictionary)">
             <summary>
             Create layer with respective hierarchical
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.AddChildlayer(Syncfusion.Pdf.PdfLayer)">
+        <member name="M:Syncfusion.Pdf.PdfDocumentLayerCollection.AddChildlayer(Syncfusion.Pdf.PdfLayer)">
             <summary>
             Add child layers
             </summary>
             <param name="pdflayer"></param>
         </member>
-        <member name="P:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.Item(System.Int32)">
+        <member name="P:Syncfusion.Pdf.PdfDocumentLayerCollection.Item(System.Int32)">
             <summary>
-            Gets or sets <see cref="T:Syncfusion.Pdf.PdfLayer"/> by its index from <see cref="T:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection"/>
+            Gets or sets <see cref="T:Syncfusion.Pdf.PdfLayer"/> by its index from <see cref="T:Syncfusion.Pdf.PdfDocumentLayerCollection"/>
             </summary>       
         </member>
-        <member name="P:Syncfusion.Pdf.PdfDocumentLayfrmErrorollection.IsSkip">
+        <member name="P:Syncfusion.Pdf.PdfDocumentLayerCollection.IsSkip">
             <summary>
             Skip Operators 
             </summary>
@@ -165202,22 +165202,22 @@
         </member>
         <member name="F:Syncfusion.Pdf.PdfNumberStyle.LowerLatin">
             <summary>
-            LowfrmErrorase letters a-z.
+            Lowercase letters a-z.
             </summary>
         </member>
         <member name="F:Syncfusion.Pdf.PdfNumberStyle.LowerRoman">
             <summary>
-            LowfrmErrorase roman numerals.
+            Lowercase roman numerals.
             </summary>
         </member>
         <member name="F:Syncfusion.Pdf.PdfNumberStyle.UpperLatin">
             <summary>
-            UppfrmErrorase letters A-Z.
+            Uppercase letters A-Z.
             </summary>
         </member>
         <member name="F:Syncfusion.Pdf.PdfNumberStyle.UpperRoman">
             <summary>
-            UppfrmErrorase roman numerals.
+            Uppercase roman numerals.
             </summary>
         </member>
         <member name="T:Syncfusion.Pdf.PdfDockStyle">
@@ -167888,7 +167888,7 @@
             //Load the existing PdfFreeTextAnnotation
             PdfLoadedFreeTextAnnotation  free = document.Pages[0].Annotations[0] as PdfLoadedFreeTextAnnotation;
             //Get the BorderColor
-            PdfColor BorderColor = free.BorderColor;
+            PdfColor borderColor = free.BorderColor;
             //Set the BorderColor
             free.BorderColor = new PdfColor(Color.Blue);
             //save the document
@@ -167902,7 +167902,7 @@
             'Load the existing PdfFreeTextAnnotation
             Dim free As PdfLoadedFreeTextAnnotation = document.Pages(0).Annotations(0)
             'Get the BorderColor
-            Dim BorderColor As PdfColor = free.BorderColor
+            Dim borderColor As PdfColor = free.BorderColor
             'Set the BorderColor
             free.BorderColor = new PdfColor(Color.Blue)
             'save the document
@@ -178224,7 +178224,7 @@
             <summary>
             Checks if the text contains RTL character or number.
             </summary>
-            <param name="charactfrmErrorodes">Array of symbols.</param>
+            <param name="characterCodes">Array of symbols.</param>
             <returns>True if the text contans RTL character or number.</returns>
         </member>
         <member name="M:Syncfusion.Pdf.Parsing.PdfLoadedTextBoxField.GetFontHeight(Syncfusion.Pdf.Graphics.PdfFontFamily)">
@@ -185756,7 +185756,7 @@
         </member>
         <member name="P:Syncfusion.Pdf.Parsing.RedactionProgressEventArgs.Progress">
             <summary>
-            Gets the  redaction progress in pfrmErrorentage.
+            Gets the  redaction progress in percentage.
             </summary>
             <remarks>Progress constantly increases from 0 to 100.
             100 value means that redaction prcoess completed for entire document.</remarks>
@@ -185802,7 +185802,7 @@
         </member>
         <member name="P:Syncfusion.Pdf.Parsing.PdfAConversionProgressEventArgs.ProgressValue">
             <summary>
-            Gets the PDF/A conversion progress in pfrmErrorentage.
+            Gets the PDF/A conversion progress in percentage.
             </summary>
             <remarks>Progress constantly increases from 0 to 100. If the value reaches 100 means, that PDF/A conversion process completed for the entire document.</remarks>
         </member>
@@ -194167,7 +194167,7 @@
             <param name="bounds">The bounds of the cell.</param>
             <param name="value">The cell value.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.Grid.PdfGridLayouter.RaiseAftfrmErrorellLayout(Syncfusion.Pdf.Graphics.PdfGraphics,System.Int32,System.Int32,System.Drawing.RectangleF,System.String,Syncfusion.Pdf.Grid.PdfGridCellStyle,System.Boolean)">
+        <member name="M:Syncfusion.Pdf.Grid.PdfGridLayouter.RaiseAfterCellLayout(Syncfusion.Pdf.Graphics.PdfGraphics,System.Int32,System.Int32,System.Drawing.RectangleF,System.String,Syncfusion.Pdf.Grid.PdfGridCellStyle,System.Boolean)">
             <summary>
             Raises the after cell layout event.
             </summary>
@@ -195507,7 +195507,7 @@
             // Add a new header to PdfGrid.
             pdfGrid.Headers.Add(1);
             // Get the header collection.
-            PdfGridHeadfrmErrorollection collection = pdfGrid.Headers;
+            PdfGridHeaderCollection collection = pdfGrid.Headers;
             // Set the header names.
             collection[0].Cells[0].Value = "Header1";
             collection[0].Cells[1].Value = "Header2";
@@ -195538,7 +195538,7 @@
             ' Add a new header to PdfGrid.
             pdfGrid.Headers.Add(1)
             ' Get the header collection.
-            Dim collection As PdfGridHeadfrmErrorollection = pdfGrid.Headers
+            Dim collection As PdfGridHeaderCollection = pdfGrid.Headers
             ' Set the header names.
             collection(0).Cells(0).Value = "Header1"
             collection(0).Cells(1).Value = "Header2"
@@ -199452,7 +199452,7 @@
             </code>
             </example>
         </member>
-        <member name="T:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection">
+        <member name="T:Syncfusion.Pdf.Grid.PdfGridHeaderCollection">
             <summary>
             Provides customization of the settings for the header.
             </summary>
@@ -199511,19 +199511,19 @@
             </code>
             </example>
         </member>
-        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.#ctor(Syncfusion.Pdf.Grid.PdfGrid)">
+        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.#ctor(Syncfusion.Pdf.Grid.PdfGrid)">
             <summary>
-            Initializes a new instance of the <see cref="T:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection"/> class with the parent grid.
+            Initializes a new instance of the <see cref="T:Syncfusion.Pdf.Grid.PdfGridHeaderCollection"/> class with the parent grid.
             </summary>
             <param name="grid">The parent grid.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.Add(Syncfusion.Pdf.Grid.PdfGridRow)">
+        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.Add(Syncfusion.Pdf.Grid.PdfGridRow)">
             <summary>
             Adds the specified row.
             </summary>
             <param name="row">The row.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.Add(System.Int32)">
+        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.Add(System.Int32)">
             <summary>
             <see cref="T:Syncfusion.Pdf.Grid.PdfGrid"/> enables you to quickly and easily add rows to the header at run time.
             </summary>
@@ -199585,7 +199585,7 @@
             </code>
             </example>
         </member>
-        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.Clear">
+        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.Clear">
             <summary>
             Removes all the header information in the <see cref="T:Syncfusion.Pdf.Grid.PdfGrid"/>.
             </summary>
@@ -199644,7 +199644,7 @@
             </code>
             </example>
         </member>
-        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.ApplyStyle(Syncfusion.Pdf.Grid.PdfGridStyleBase)">
+        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.ApplyStyle(Syncfusion.Pdf.Grid.PdfGridStyleBase)">
             <summary>
             Enables you to set the appearance of the header row in a <see cref="T:Syncfusion.Pdf.Grid.PdfGrid"/>.
             </summary>
@@ -199710,7 +199710,7 @@
             </code>
             </example>
         </member>
-        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.GetEnumerator">
+        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.GetEnumerator">
             <summary>
             Returns an enumerator that iterates through a collection.
             </summary>
@@ -199775,9 +199775,9 @@
             </code>
             </example>
         </member>
-        <member name="P:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.Item(System.Int32)">
+        <member name="P:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.Item(System.Int32)">
             <summary>
-            Gets a <see cref="T:Syncfusion.Pdf.Grid.PdfGridRow"/> object that represents the header row in a <see cref="T:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection"/> control.[Read-Only]
+            Gets a <see cref="T:Syncfusion.Pdf.Grid.PdfGridRow"/> object that represents the header row in a <see cref="T:Syncfusion.Pdf.Grid.PdfGridHeaderCollection"/> control.[Read-Only]
             </summary>
             <value></value>
             <example>
@@ -199835,7 +199835,7 @@
             </code>
             </example>
         </member>
-        <member name="P:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.Count">
+        <member name="P:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.Count">
             <summary>
              Gets the number of header in the <see cref="T:Syncfusion.Pdf.Grid.PdfGrid"/>.[Read-Only]
             </summary>
@@ -199895,18 +199895,18 @@
             </code>
             </example>
         </member>
-        <member name="T:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.PdfGridHeaderRowEnumerator">
+        <member name="T:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.PdfGridHeaderRowEnumerator">
             <summary>
             Column collection enumerator.
             </summary>
         </member>
-        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.PdfGridHeaderRowEnumerator.#ctor(Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection)">
+        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.PdfGridHeaderRowEnumerator.#ctor(Syncfusion.Pdf.Grid.PdfGridHeaderCollection)">
             <summary>
             Initializes a new instance of the <see cref="!:PdfGridRowEnumerator"/> struct.
             </summary>
             <param name="rowCollection">The row collection.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.PdfGridHeaderRowEnumerator.MoveNext">
+        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.PdfGridHeaderRowEnumerator.MoveNext">
             <summary>
             Advances the enumerator to the next element of the collection.
             </summary>
@@ -199917,7 +199917,7 @@
             The collection was modified after the enumerator was created.
             </exception>
         </member>
-        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.PdfGridHeaderRowEnumerator.Reset">
+        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.PdfGridHeaderRowEnumerator.Reset">
             <summary>
             Sets the enumerator to its initial position, which is before the first element in the collection.
             </summary>
@@ -199925,12 +199925,12 @@
             The collection was modified after the enumerator was created.
             </exception>
         </member>
-        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.PdfGridHeaderRowEnumerator.CheckIndex">
+        <member name="M:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.PdfGridHeaderRowEnumerator.CheckIndex">
             <summary>
             Checks the index.
             </summary>
         </member>
-        <member name="P:Syncfusion.Pdf.Grid.PdfGridHeadfrmErrorollection.PdfGridHeaderRowEnumerator.Current">
+        <member name="P:Syncfusion.Pdf.Grid.PdfGridHeaderCollection.PdfGridHeaderRowEnumerator.Current">
             <summary>
             Gets the current.
             </summary>
@@ -212133,7 +212133,7 @@
             <param name="bounds">The bounds of the cell.</param>
             <param name="value">The cell value.</param>
         </member>
-        <member name="M:Syncfusion.Pdf.Tables.LightTableLayouter.RaiseAftfrmErrorellLayout(Syncfusion.Pdf.Graphics.PdfGraphics,System.Int32,System.Int32,System.Drawing.RectangleF,System.String)">
+        <member name="M:Syncfusion.Pdf.Tables.LightTableLayouter.RaiseAfterCellLayout(Syncfusion.Pdf.Graphics.PdfGraphics,System.Int32,System.Int32,System.Drawing.RectangleF,System.String)">
             <summary>
             Raises the after cell layout event.
             </summary>
@@ -231687,7 +231687,7 @@
             <summary>
             Checks if the text contains RTL character or number.
             </summary>
-            <param name="charactfrmErrorodes">Array of symbols.</param>
+            <param name="characterCodes">Array of symbols.</param>
             <returns>True if the text contans RTL character or number.</returns>
         </member>
         <member name="M:Syncfusion.XPS.XPSRenderer.GetPathFromGeometry(System.String)">
@@ -232503,7 +232503,7 @@
         <member name="F:Syncfusion.XPS.SweepDirection.Clockwise">
             <remarks/>
         </member>
-        <member name="F:Syncfusion.XPS.SweepDirection.CountfrmErrorlockwise">
+        <member name="F:Syncfusion.XPS.SweepDirection.Counterclockwise">
             <remarks/>
         </member>
         <member name="T:Syncfusion.XPS.PolyBezierSegment">
@@ -233466,7 +233466,7 @@
         <member name="F:Syncfusion.XPS.OXPSSweepDirection.Clockwise">
             <remarks/>
         </member>
-        <member name="F:Syncfusion.XPS.OXPSSweepDirection.CountfrmErrorlockwise">
+        <member name="F:Syncfusion.XPS.OXPSSweepDirection.Counterclockwise">
             <remarks/>
         </member>
         <member name="T:Syncfusion.XPS.OXPSPolyBezierSegment">

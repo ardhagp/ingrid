@@ -3,8 +3,8 @@ Imports CMCv
 
 Public Class ACBK
 #Region "Variables"
-    Private WithEvents clsMMSmenu As New CMCv.UI.View.MenuStrip
-    Private clsSQL As New Commands.ACBK.View
+    Private WithEvents C_MMSMenu As New CMCv.UI.View.MenuStrip
+    Private _SQL As New Commands.ACBK.View
 #End Region
 
 #Region "Sub Collections"
@@ -15,7 +15,17 @@ Public Class ACBK
 #End Region
 
 #Region "Menu Strip Functions"
-    'TODO: Add Menu Items
+    'Private Sub AddNewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddNewToolStripMenuItem.Click
+    '    V_FORMAttrib.IsNew = True
+    '    Display(ACBK_Editor, QERP.Main.ImageLibrary.EDIT_icon, "Add New Record", "New accounting book record for plant", True)
+    'End Sub
+
+    'Private Sub EditToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem.Click
+    '    V_FORMAttrib.IsNew = False
+    '    Display(ACBK_Editor, QERP.Main.ImageLibrary.EDIT_icon, "Update Record", "Update your accounting book data", True)
+
+    'End Sub
+
 #End Region
 
 #Region "Upper Form Bar"
@@ -36,15 +46,15 @@ Public Class ACBK
 #Region "Form Events"
     <SupportedOSPlatform("windows")>
     Private Sub frmACBK_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        clsMMSmenu.LoadIn(Me)
-        clsMMSmenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
+        C_MMSMenu.LoadIn(Me)
+        C_MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
 
         Call GETDATA()
     End Sub
 #End Region
 
 #Region "Component Events"
-    'TODO: Add Component Events
+
 #End Region
 
 End Class

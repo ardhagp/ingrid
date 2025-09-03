@@ -281,6 +281,10 @@ Namespace UI.View
                             varSubmenu.Visible = _EventToolsViewAttachmentVisible
                         End If
                     End If
+                    'If SubMenu.Name = MenuName Then
+                    '    _IsVisible = _EventToolsViewAttachmentVisible
+                    '    SubMenu.Visible = _EventToolsViewAttachmentVisible
+                    'End If
                 Next
             Catch ex As Exception
                 Return False
@@ -302,6 +306,11 @@ Namespace UI.View
                             Return
                         End If
                     End If
+                    'If SubMenu.Name = MenuName Then
+                    '    SubMenu.Visible = ctype(Value,boolean)
+                    '    _EventToolsViewAttachmentVisible = ctype(Value,boolean)
+                    '    Return
+                    'End If
                 Next
             Catch ex As Exception
                 MsgBox(ex.ToString)
@@ -320,6 +329,10 @@ Namespace UI.View
                             varSubmenu.Checked = _EventToolsViewAttachmentChecked
                         End If
                     End If
+                    'If SubMenu.name = MenuName Then
+                    '    _IsChecked = _EventToolsViewAttachmentChecked
+                    '    SubMenu.Checked = _EventToolsViewAttachmentChecked
+                    'End If
                 Next
             Catch ex As Exception
                 Return False
@@ -341,6 +354,11 @@ Namespace UI.View
                             Return
                         End If
                     End If
+                    'If SubMenu.Name = MenuName Then
+                    '    SubMenu.Checked = Value
+                    '    _EventToolsViewAttachmentChecked = Value
+                    '    Return
+                    'End If
                 Next
             Catch ex As Exception
                 MsgBox(ex.ToString)
@@ -363,6 +381,8 @@ Namespace UI.View
             _item(3).Visible = CType(Value, Boolean)
         End Sub
 #End Region
+
+
     End Class
 
     Public Class ContextMenu
@@ -374,6 +394,8 @@ Namespace UI.View
 #End Region
 
         Public Sub LoadInGrid(ByVal Grid As dgn)
+
+            'Dim _item_sub() As ToolStripMenuItem
 
             _CSMenu = New ContextMenuStrip
             ReDim _item(1)

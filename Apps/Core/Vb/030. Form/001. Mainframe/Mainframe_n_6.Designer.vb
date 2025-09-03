@@ -98,7 +98,7 @@ Partial Class Mainframe_n_6
         Ms_start_Settings = New ToolStripMenuItem()
         Ms_g_line2 = New ToolStripSeparator()
         Ms_start_Exit = New ToolStripMenuItem()
-        varWorkspace = New ToolStripMenuItem()
+        WORKSPACE = New ToolStripMenuItem()
         Ms_workspace_Cascade = New ToolStripMenuItem()
         Ms_workspace_TileVertical = New ToolStripMenuItem()
         Ms_workspace_TileHorizontal = New ToolStripMenuItem()
@@ -173,10 +173,10 @@ Partial Class Mainframe_n_6
         Ms_mainframe.BackColor = Color.White
         Ms_mainframe.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Ms_mainframe.ImageScalingSize = New Size(24, 24)
-        Ms_mainframe.Items.AddRange(New ToolStripItem() {APPSYSTEM, varWorkspace, HELP, USERMENU, SUPPORT})
+        Ms_mainframe.Items.AddRange(New ToolStripItem() {APPSYSTEM, WORKSPACE, HELP, USERMENU, SUPPORT})
         Ms_mainframe.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow
         Ms_mainframe.Location = New Point(0, 0)
-        Ms_mainframe.MdiWindowListItem = varWorkspace
+        Ms_mainframe.MdiWindowListItem = WORKSPACE
         Ms_mainframe.Name = "Ms_mainframe"
         Ms_mainframe.Padding = New Padding(9, 3, 0, 3)
         Ms_mainframe.Size = New Size(1120, 42)
@@ -247,13 +247,13 @@ Partial Class Mainframe_n_6
         Ms_start_Exit.Size = New Size(343, 40)
         Ms_start_Exit.Text = "&Exit"
         ' 
-        ' varWorkspace
+        ' WORKSPACE
         ' 
-        varWorkspace.DropDownItems.AddRange(New ToolStripItem() {Ms_workspace_Cascade, Ms_workspace_TileVertical, Ms_workspace_TileHorizontal, ToolStripSeparator1, Ms_workspace_InputCommand, Ms_workspace_Maximize, ToolStripMenuItem1, Ms_workspace_CloseAll})
-        varWorkspace.MergeIndex = 800
-        varWorkspace.Name = "varWorkspace"
-        varWorkspace.Size = New Size(164, 36)
-        varWorkspace.Text = "&varWorkspace"
+        WORKSPACE.DropDownItems.AddRange(New ToolStripItem() {Ms_workspace_Cascade, Ms_workspace_TileVertical, Ms_workspace_TileHorizontal, ToolStripSeparator1, Ms_workspace_InputCommand, Ms_workspace_Maximize, ToolStripMenuItem1, Ms_workspace_CloseAll})
+        WORKSPACE.MergeIndex = 800
+        WORKSPACE.Name = "WORKSPACE"
+        WORKSPACE.Size = New Size(164, 36)
+        WORKSPACE.Text = "&WORKSPACE"
         ' 
         ' Ms_workspace_Cascade
         ' 
@@ -1225,7 +1225,7 @@ Partial Class Mainframe_n_6
     Friend WithEvents Ms_start_Settings As ToolStripMenuItem
     Friend WithEvents Ms_g_line2 As ToolStripSeparator
     Friend WithEvents Ms_start_Exit As ToolStripMenuItem
-    Friend WithEvents varWorkspace As ToolStripMenuItem
+    Friend WithEvents WORKSPACE As ToolStripMenuItem
     Friend WithEvents Ms_workspace_Cascade As ToolStripMenuItem
     Friend WithEvents Ms_workspace_TileVertical As ToolStripMenuItem
     Friend WithEvents Ms_workspace_TileHorizontal As ToolStripMenuItem

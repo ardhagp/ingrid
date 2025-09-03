@@ -1,8 +1,8 @@
-﻿<System.Drawing.ToolboxBitmap(GetType(CMCv.Btn), "btn.ico")>
-Partial Class Btn
+﻿<System.Drawing.ToolboxBitmap(GetType(CMCv.btn), "btn.ico")> _
+Partial Class btn
     Inherits System.Windows.Forms.Button
 
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Public Sub New(ByVal container As System.ComponentModel.IContainer)
         MyClass.New()
 
@@ -15,7 +15,7 @@ Partial Class Btn
 
 
     'Component overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -32,7 +32,7 @@ Partial Class Btn
     'NOTE: The following procedure is required by the Component Designer
     'It can be modified using the Component Designer.
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
+    <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New System.ComponentModel.Container()
     End Sub

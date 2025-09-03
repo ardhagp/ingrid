@@ -2,7 +2,7 @@
 
 Imports System.Runtime.Versioning
 
-Public Class Tv
+Public Class tv
     Inherits System.Windows.Forms.TreeView
 
     <SupportedOSPlatform("windows")>

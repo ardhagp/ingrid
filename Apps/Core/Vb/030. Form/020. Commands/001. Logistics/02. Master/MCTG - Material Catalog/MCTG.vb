@@ -3,8 +3,8 @@
 Public Class MCTG
 
 #Region "Variables"
-    Private WithEvents clsMMSmenu As New UI.View.MenuStrip
-    Private clsSQL As New Commands.MCTG.View
+    Private WithEvents C_MMSMenu As New UI.View.MenuStrip
+    Private V_SQL As New Commands.MCTG.View
 #End Region
 
 #Region "Sub Collections"
@@ -16,28 +16,28 @@ Public Class MCTG
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
         DblBuffer(DgnMCTG)
-        Commands.MCTG.View.DISPLAYDATA(DgnMCTG, SLFStatus, TxtFind, ForceRefresh)
+        Commands.MCTG.View.DISPLAYDATA(V_DatabaseEngine, DgnMCTG, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 #End Region
 
 #Region "Menu Strip Function"
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataRefresh() Handles clsMMSmenu.EventDataRefresh
+    Private Sub EventDataRefresh() Handles C_MMSMenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
     End Sub
 
-    Private Sub EventDataClose() Handles clsMMSmenu.EventDataClose
+    Private Sub EventDataClose() Handles C_MMSMenu.EventDataClose
         Me.Close()
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventToolsImport() Handles clsMMSmenu.EventToolsImport
-        DISPLAY(New frmImports(Import.Data.DataType.TypeofImports.MaterialMastfrmErroratalog), IMAGEDB.Main.ImageLibrary.IMPORTS_ICON, "Catalog Imports", "Imports your catalog data from other database", True)
+    Private Sub EventToolsImport() Handles C_MMSMenu.EventToolsImport
+        DISPLAY(New frmImports(Import.Data.DataType.TypeofImports.MaterialMasterCatalog), IMAGEDB.Main.ImageLibrary.IMPORTS_ICON, "Catalog Imports", "Imports your catalog data from other database", True)
     End Sub
 
-    Private Sub EventToolsFind() Handles clsMMSmenu.EventToolsFind
+    Private Sub EventToolsFind() Handles C_MMSMenu.EventToolsFind
         TxtFind.Focus()
     End Sub
 #End Region
@@ -73,19 +73,19 @@ Public Class MCTG
     <SupportedOSPlatform("windows")>
     Private Sub LoadMenu()
         'Sisipkan ke dalam form
-        clsMMSmenu.LoadIn(Me)
+        C_MMSMenu.LoadIn(Me)
 
         'Menampilkan Menu DATA
-        clsMMSmenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        C_MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu TOOLS
-        clsMMSmenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        C_MMSMenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu REPORTS
-        clsMMSmenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        C_MMSMenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu TOOLS > View Attachment
-        clsMMSmenu.Visible("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
+        C_MMSMenu.Visible("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
 
     End Sub
 

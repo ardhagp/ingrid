@@ -1,4 +1,4 @@
-﻿Public Class frmDBdialogbox
+﻿Public Class frmDialogBox
 
 #Region "Initialize"
     ''' <summary>
@@ -29,28 +29,28 @@
 
         ' Event triggered by Message Icon.
         Select Case MessageIcon
-            Case frmDBdialogbox.MessageIcon.Alert
+            Case frmDialogBox.MessageIcon.Alert
                 Me.SLFLogo.Image = My.Resources.ALERT_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.Orange
                 If Caption = String.Empty Then
                     Me.Text = "Alert"
                     SLFNamaForm.Text = "Alert"
                 End If
-            Case frmDBdialogbox.MessageIcon.Error
+            Case frmDialogBox.MessageIcon.Error
                 Me.SLFLogo.Image = My.Resources.ERROR_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.Red
                 If Caption = String.Empty Then
                     Me.Text = "Error"
                     SLFNamaForm.Text = "Error"
                 End If
-            Case frmDBdialogbox.MessageIcon.Information
+            Case frmDialogBox.MessageIcon.Information
                 Me.SLFLogo.Image = My.Resources.INFORMATION_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.SteelBlue
                 If Caption = String.Empty Then
                     Me.Text = "Information"
                     SLFNamaForm.Text = "Information"
                 End If
-            Case frmDBdialogbox.MessageIcon.Question
+            Case frmDialogBox.MessageIcon.Question
                 Me.SLFLogo.Image = My.Resources.QUESTION_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.DodgerBlue
                 If Caption = String.Empty Then

@@ -3,22 +3,22 @@
 Public Class CDIN
 
 #Region "Variables"
-    Private varSQLview As New LibSQL.Commands.CDIN.View
-    Private WithEvents frmCDINeditor As CDIN_Editor
-    Private WithEvents clsMMSmenu As New CMCv.UI.View.MenuStrip
+    Private _SQL As New LibSQL.Commands.CDIN.View
+    Private WithEvents _CDIN_Editor As CDIN_Editor
+    Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
 #End Region
 
 #Region "Subs Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        LibSQL.Commands.CDIN.View.DISPLAYDATA(DgnCDIN, SLFStatus, TxtFind, ForceRefresh)
+        LibSQL.Commands.CDIN.View.DISPLAYDATA(V_DatabaseEngine, DgnCDIN, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     Private Sub GETTableID()
         If DgnCDIN.RowCount = 0 Then
-            varFORMAttribute.RowID = "-1"
+            V_FORMAttrib.RowID = "-1"
         Else
-            varFORMAttribute.RowID = DgnCDIN.CurrentRow.Cells("departement_id").Value.ToString
+            V_FORMAttrib.RowID = DgnCDIN.CurrentRow.Cells("department_id").Value.ToString
         End If
     End Sub
 
@@ -26,51 +26,53 @@ Public Class CDIN
 
 #Region "Menu Strip Function"
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataAddNew() Handles clsMMSmenu.EventDataAddNew
-        varFORMAttribute.IsNew = True
-        varFORMAttribute.RowID = "-1"
-        frmCDINeditor = New CDIN_Editor
-        DISPLAY(frmCDINeditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new departement data", True)
+    Private Sub EventDataAddNew() Handles _MMSMenu.EventDataAddNew
+        V_FORMAttrib.IsNew = True
+        V_FORMAttrib.RowID = "-1"
+        _CDIN_Editor = New CDIN_Editor
+        DISPLAY(_CDIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new departement data", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataEdit() Handles clsMMSmenu.EventDataEdit
+    Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
         Call GETTableID()
-        If varFORMAttribute.RowID = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDBdialogbox.MessageIcon.Error, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
+        If V_FORMAttrib.RowID = "-1" Then
+            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            varFORMAttribute.IsNew = False
-            frmCDINeditor = New CDIN_Editor
-            DISPLAY(frmCDINeditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your departement data", True)
+            V_FORMAttrib.IsNew = False
+            _CDIN_Editor = New CDIN_Editor
+            DISPLAY(_CDIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your departement data", True)
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataDelete() Handles clsMMSmenu.EventDataDelete
+    Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
         Call GETTableID()
-        If varFORMAttribute.RowID = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDBdialogbox.MessageIcon.Error, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
+        If V_FORMAttrib.RowID = "-1" Then
+            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            If Decision("Do you want to delete this record?", "Delete", CMCv.frmDBdialogbox.MessageIcon.Question, CMCv.frmDBdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes AndAlso (LibSQL.Commands.CDIN.View.DELETEDATA(varFORMAttribute.RowID)) Then
-                Call GETDATA(True)
-                Mainframe_n_6.Ts_status.Text = "Success"
-            Else
-                Mainframe_n_6.Ts_status.Text = "Delete failed"
+            If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If (LibSQL.Commands.CDIN.View.DELETEDATA(V_DatabaseEngine, V_FORMAttrib.RowID)) Then
+                    Call GETDATA(True)
+                    Mainframe_n_6.Ts_status.Text = "Success"
+                Else
+                    Mainframe_n_6.Ts_status.Text = "Delete failed"
+                End If
             End If
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataRefresh() Handles clsMMSmenu.EventDataRefresh
+    Private Sub EventDataRefresh() Handles _MMSMenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
     End Sub
 
-    Private Sub EventDataClose() Handles clsMMSmenu.EventDataClose
+    Private Sub EventDataClose() Handles _MMSMenu.EventDataClose
         Me.Close()
     End Sub
 
-    Private Sub EventToolsFind() Handles clsMMSmenu.EventToolsFind
+    Private Sub EventToolsFind() Handles _MMSMenu.EventToolsFind
         TxtFind.Focus()
     End Sub
 #End Region
@@ -78,11 +80,8 @@ Public Class CDIN
 #Region "Form Events"
     <SupportedOSPlatform("windows")>
     Private Sub CDIN_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        With clsMMSmenu
-            .LoadIn(Me)
-            .ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
-        End With
-
+        _MMSMenu.LoadIn(Me)
+        _MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
         Call GETDATA()
         TxtFind.ClearSearch()
     End Sub
@@ -105,7 +104,8 @@ Public Class CDIN
 #End Region
 
     <SupportedOSPlatform("windows")>
-    Private Sub _CDIN_Editor_RecordSaved() Handles frmCDINeditor.RecordSaved
+    Private Sub _CDIN_Editor_RecordSaved() Handles _CDIN_Editor.RecordSaved
         Call GETDATA()
     End Sub
+
 End Class

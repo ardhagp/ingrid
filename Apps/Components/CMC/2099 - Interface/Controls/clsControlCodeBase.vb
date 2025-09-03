@@ -94,7 +94,7 @@ Public Class ControlCodeBase
     ''' <param name="BMin">Nilai minimum warna biru</param>
     ''' <param name="BMax">Nilai maksimum warna biru</param>
     Public Shared Function WarnaAcakBaru(ByVal RMin As Integer, ByVal RMax As Integer, ByVal GMin As Integer, ByVal GMax As Integer, ByVal BMin As Integer, ByVal BMax As Integer) As System.Drawing.Color
-        Return System.Drawing.Color.FromArgb(varRandomcolor.Next(RMin, RMax), varRandomcolor.Next(GMin, GMax), varRandomcolor.Next(BMin, BMax))
+        Return System.Drawing.Color.FromArgb(V_randomcolor.Next(RMin, RMax), V_randomcolor.Next(GMin, GMax), V_randomcolor.Next(BMin, BMax))
     End Function
 
     ''' <summary>
@@ -135,4 +135,18 @@ Public Class ControlCodeBase
 
         Return System.Drawing.Color.FromArgb(re, gr, bl)
     End Function
+
+    'Public Function GantiJenisKapital(ByVal _valJenisKapital As enuJenisKapital) As System.Windows.Forms.CharacterCasing
+    '    Dim _varKapital As System.Windows.Forms.CharacterCasing
+    '    Select Case _valJenisKapital
+    '        Case enuJenisKapital.KAPITALSEMUA
+    '            _varKapital = System.Windows.Forms.CharacterCasing.Upper
+    '        Case enuJenisKapital.kecilsemua
+    '            _varKapital = System.Windows.Forms.CharacterCasing.Lower
+    '        Case enuJenisKapital.Normal
+    '            _varKapital = System.Windows.Forms.CharacterCasing.Normal
+    '    End Select
+
+    '    Return _varKapital
+    'End Function
 End Class

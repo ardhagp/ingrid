@@ -57,23 +57,23 @@ Partial Class CONN_Editor
         PnlBottomButton.Controls.Add(Btn_Test)
         PnlBottomButton.Controls.Add(BtnCancel)
         PnlBottomButton.Controls.Add(BtnSave)
-        PnlBottomButton.Location = New Point(0, 431)
-        PnlBottomButton.Margin = New Padding(5, 3, 5, 3)
-        PnlBottomButton.Size = New Size(565, 58)
+        PnlBottomButton.Location = New Point(0, 730)
+        PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
+        PnlBottomButton.Size = New Size(807, 97)
         PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
         PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
         PnlBottomButton.Controls.SetChildIndex(Btn_Test, 0)
         ' 
         ' pnl_
         ' 
-        pnl_.Margin = New Padding(5, 3, 5, 3)
-        pnl_.Size = New Size(565, 61)
+        pnl_.Margin = New Padding(7, 5, 7, 5)
+        pnl_.Size = New Size(807, 104)
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(TbctlBasic)
-        SLFPanel.Margin = New Padding(5, 3, 5, 3)
-        SLFPanel.Size = New Size(565, 489)
+        SLFPanel.Margin = New Padding(7, 5, 7, 5)
+        SLFPanel.Size = New Size(807, 827)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(TbctlBasic, 0)
         ' 
@@ -88,10 +88,10 @@ Partial Class CONN_Editor
         BtnSave.FlatStyle = FlatStyle.Flat
         BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnSave.ForeColor = Color.White
-        BtnSave.Location = New Point(310, 8)
-        BtnSave.Margin = New Padding(4, 3, 4, 3)
+        BtnSave.Location = New Point(443, 13)
+        BtnSave.Margin = New Padding(6, 5, 6, 5)
         BtnSave.Name = "BtnSave"
-        BtnSave.Size = New Size(117, 46)
+        BtnSave.Size = New Size(167, 77)
         BtnSave.TabIndex = 10
         BtnSave.Text = "&Save"
         BtnSave.UseVisualStyleBackColor = False
@@ -111,10 +111,10 @@ Partial Class CONN_Editor
         BtnCancel.FlatStyle = FlatStyle.Flat
         BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
-        BtnCancel.Location = New Point(434, 8)
-        BtnCancel.Margin = New Padding(4, 3, 4, 3)
+        BtnCancel.Location = New Point(620, 13)
+        BtnCancel.Margin = New Padding(6, 5, 6, 5)
         BtnCancel.Name = "BtnCancel"
-        BtnCancel.Size = New Size(117, 46)
+        BtnCancel.Size = New Size(167, 77)
         BtnCancel.TabIndex = 11
         BtnCancel.Text = "&Close"
         BtnCancel.UseVisualStyleBackColor = False
@@ -128,15 +128,16 @@ Partial Class CONN_Editor
         TbctlBasic.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         TbctlBasic.Controls.Add(tp1_)
         TbctlBasic.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TbctlBasic.Location = New Point(14, 7)
-        TbctlBasic.Margin = New Padding(4, 3, 4, 3)
+        TbctlBasic.Location = New Point(20, 12)
+        TbctlBasic.Margin = New Padding(6, 5, 6, 5)
         TbctlBasic.Name = "TbctlBasic"
         TbctlBasic.SelectedIndex = 0
-        TbctlBasic.Size = New Size(537, 417)
+        TbctlBasic.Size = New Size(767, 707)
         TbctlBasic.TabIndex = 997
         ' 
         ' tp1_
         ' 
+        tp1_.AutoScroll = True
         tp1_.Controls.Add(Cbo_DBEngine)
         tp1_.Controls.Add(ULbl1)
         tp1_.Controls.Add(ULbl_FileStorage)
@@ -154,11 +155,11 @@ Partial Class CONN_Editor
         tp1_.Controls.Add(ULbl_Name)
         tp1_.Controls.Add(Txt_ConnectionName)
         tp1_.Controls.Add(Txt_Address)
-        tp1_.Location = New Point(4, 30)
-        tp1_.Margin = New Padding(4, 3, 4, 3)
+        tp1_.Location = New Point(4, 41)
+        tp1_.Margin = New Padding(6, 5, 6, 5)
         tp1_.Name = "tp1_"
-        tp1_.Padding = New Padding(4, 3, 4, 3)
-        tp1_.Size = New Size(529, 383)
+        tp1_.Padding = New Padding(6, 5, 6, 5)
+        tp1_.Size = New Size(759, 662)
         tp1_.TabIndex = 0
         tp1_.Text = "CONFIG"
         tp1_.UseVisualStyleBackColor = True
@@ -170,18 +171,19 @@ Partial Class CONN_Editor
         Cbo_DBEngine.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Cbo_DBEngine.FormattingEnabled = True
         Cbo_DBEngine.Items.AddRange(New Object() {"MYSQL", "SQL SERVER"})
-        Cbo_DBEngine.Location = New Point(214, 65)
+        Cbo_DBEngine.Location = New Point(306, 108)
+        Cbo_DBEngine.Margin = New Padding(4, 5, 4, 5)
         Cbo_DBEngine.Name = "Cbo_DBEngine"
-        Cbo_DBEngine.Size = New Size(306, 29)
+        Cbo_DBEngine.Size = New Size(413, 40)
         Cbo_DBEngine.TabIndex = 2
         ' 
         ' ULbl1
         ' 
         ULbl1.BackColor = Color.AliceBlue
-        ULbl1.Location = New Point(8, 65)
-        ULbl1.Margin = New Padding(4, 3, 4, 3)
+        ULbl1.Location = New Point(11, 108)
+        ULbl1.Margin = New Padding(6, 5, 6, 5)
         ULbl1.Name = "ULbl1"
-        ULbl1.Size = New Size(197, 33)
+        ULbl1.Size = New Size(281, 55)
         ULbl1.SLFText = "DB Engine"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
@@ -191,10 +193,10 @@ Partial Class CONN_Editor
         ' ULbl_FileStorage
         ' 
         ULbl_FileStorage.BackColor = Color.MistyRose
-        ULbl_FileStorage.Location = New Point(8, 309)
-        ULbl_FileStorage.Margin = New Padding(5, 6, 5, 6)
+        ULbl_FileStorage.Location = New Point(11, 515)
+        ULbl_FileStorage.Margin = New Padding(7, 10, 7, 10)
         ULbl_FileStorage.Name = "ULbl_FileStorage"
-        ULbl_FileStorage.Size = New Size(197, 33)
+        ULbl_FileStorage.Size = New Size(281, 55)
         ULbl_FileStorage.SLFText = "File Storage"
         ULbl_FileStorage.SLFTextAdjuster = False
         ULbl_FileStorage.SLFTextBorder = False
@@ -204,10 +206,10 @@ Partial Class CONN_Editor
         ' ULbl_DataStorage
         ' 
         ULbl_DataStorage.BackColor = Color.MistyRose
-        ULbl_DataStorage.Location = New Point(8, 269)
-        ULbl_DataStorage.Margin = New Padding(5, 6, 5, 6)
+        ULbl_DataStorage.Location = New Point(11, 448)
+        ULbl_DataStorage.Margin = New Padding(7, 10, 7, 10)
         ULbl_DataStorage.Name = "ULbl_DataStorage"
-        ULbl_DataStorage.Size = New Size(197, 33)
+        ULbl_DataStorage.Size = New Size(281, 55)
         ULbl_DataStorage.SLFText = "Data Storage"
         ULbl_DataStorage.SLFTextAdjuster = False
         ULbl_DataStorage.SLFTextBorder = False
@@ -218,11 +220,11 @@ Partial Class CONN_Editor
         ' 
         Txt_FileStorage.BackColor = Color.White
         Txt_FileStorage.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_FileStorage.Location = New Point(214, 309)
-        Txt_FileStorage.Margin = New Padding(4, 3, 4, 3)
+        Txt_FileStorage.Location = New Point(306, 515)
+        Txt_FileStorage.Margin = New Padding(6, 5, 6, 5)
         Txt_FileStorage.MaxLength = 255
         Txt_FileStorage.Name = "Txt_FileStorage"
-        Txt_FileStorage.Size = New Size(306, 29)
+        Txt_FileStorage.Size = New Size(413, 39)
         Txt_FileStorage.TabIndex = 8
         Txt_FileStorage.Tag = "txt"
         Txt_FileStorage.XOAutoTrim = True
@@ -249,11 +251,11 @@ Partial Class CONN_Editor
         ' 
         Txt_DataStorage.BackColor = Color.White
         Txt_DataStorage.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_DataStorage.Location = New Point(214, 269)
-        Txt_DataStorage.Margin = New Padding(4, 3, 4, 3)
+        Txt_DataStorage.Location = New Point(306, 448)
+        Txt_DataStorage.Margin = New Padding(6, 5, 6, 5)
         Txt_DataStorage.MaxLength = 255
         Txt_DataStorage.Name = "Txt_DataStorage"
-        Txt_DataStorage.Size = New Size(306, 29)
+        Txt_DataStorage.Size = New Size(413, 39)
         Txt_DataStorage.TabIndex = 7
         Txt_DataStorage.Tag = "txt"
         Txt_DataStorage.XOAutoTrim = True
@@ -282,10 +284,10 @@ Partial Class CONN_Editor
         Chk_Default.BackColor = Color.Transparent
         Chk_Default.FlatStyle = FlatStyle.Flat
         Chk_Default.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Chk_Default.Location = New Point(214, 350)
-        Chk_Default.Margin = New Padding(4, 3, 4, 3)
+        Chk_Default.Location = New Point(306, 583)
+        Chk_Default.Margin = New Padding(6, 5, 6, 5)
         Chk_Default.Name = "Chk_Default"
-        Chk_Default.Size = New Size(204, 25)
+        Chk_Default.Size = New Size(313, 36)
         Chk_Default.TabIndex = 9
         Chk_Default.Text = "Set as Default Connection"
         Chk_Default.UseVisualStyleBackColor = False
@@ -294,12 +296,12 @@ Partial Class CONN_Editor
         ' 
         Txt_Password.BackColor = Color.White
         Txt_Password.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Password.Location = New Point(214, 229)
-        Txt_Password.Margin = New Padding(4, 3, 4, 3)
+        Txt_Password.Location = New Point(306, 382)
+        Txt_Password.Margin = New Padding(6, 5, 6, 5)
         Txt_Password.MaxLength = 255
         Txt_Password.Name = "Txt_Password"
         Txt_Password.PasswordChar = "●"c
-        Txt_Password.Size = New Size(306, 29)
+        Txt_Password.Size = New Size(413, 39)
         Txt_Password.TabIndex = 6
         Txt_Password.Tag = "txt"
         Txt_Password.XOAutoTrim = False
@@ -326,11 +328,11 @@ Partial Class CONN_Editor
         ' 
         Txt_Username.BackColor = Color.White
         Txt_Username.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Username.Location = New Point(214, 188)
-        Txt_Username.Margin = New Padding(4, 3, 4, 3)
+        Txt_Username.Location = New Point(306, 313)
+        Txt_Username.Margin = New Padding(6, 5, 6, 5)
         Txt_Username.MaxLength = 255
         Txt_Username.Name = "Txt_Username"
-        Txt_Username.Size = New Size(306, 29)
+        Txt_Username.Size = New Size(413, 39)
         Txt_Username.TabIndex = 5
         Txt_Username.Tag = "txt"
         Txt_Username.XOAutoTrim = True
@@ -356,10 +358,10 @@ Partial Class CONN_Editor
         ' ULbl_Password
         ' 
         ULbl_Password.BackColor = Color.AliceBlue
-        ULbl_Password.Location = New Point(8, 229)
-        ULbl_Password.Margin = New Padding(5, 6, 5, 6)
+        ULbl_Password.Location = New Point(11, 382)
+        ULbl_Password.Margin = New Padding(7, 10, 7, 10)
         ULbl_Password.Name = "ULbl_Password"
-        ULbl_Password.Size = New Size(197, 33)
+        ULbl_Password.Size = New Size(281, 55)
         ULbl_Password.SLFText = "Password"
         ULbl_Password.SLFTextAdjuster = False
         ULbl_Password.SLFTextBorder = False
@@ -369,10 +371,10 @@ Partial Class CONN_Editor
         ' ULbl_Username
         ' 
         ULbl_Username.BackColor = Color.AliceBlue
-        ULbl_Username.Location = New Point(8, 188)
-        ULbl_Username.Margin = New Padding(5, 6, 5, 6)
+        ULbl_Username.Location = New Point(11, 313)
+        ULbl_Username.Margin = New Padding(7, 10, 7, 10)
         ULbl_Username.Name = "ULbl_Username"
-        ULbl_Username.Size = New Size(197, 33)
+        ULbl_Username.Size = New Size(281, 55)
         ULbl_Username.SLFText = "Username"
         ULbl_Username.SLFTextAdjuster = False
         ULbl_Username.SLFTextBorder = False
@@ -382,10 +384,10 @@ Partial Class CONN_Editor
         ' ULbl_Port
         ' 
         ULbl_Port.BackColor = Color.AliceBlue
-        ULbl_Port.Location = New Point(8, 148)
-        ULbl_Port.Margin = New Padding(5, 6, 5, 6)
+        ULbl_Port.Location = New Point(11, 247)
+        ULbl_Port.Margin = New Padding(7, 10, 7, 10)
         ULbl_Port.Name = "ULbl_Port"
-        ULbl_Port.Size = New Size(197, 33)
+        ULbl_Port.Size = New Size(281, 55)
         ULbl_Port.SLFText = "Port"
         ULbl_Port.SLFTextAdjuster = False
         ULbl_Port.SLFTextBorder = False
@@ -396,11 +398,11 @@ Partial Class CONN_Editor
         ' 
         Txt_Port.BackColor = Color.White
         Txt_Port.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Port.Location = New Point(214, 148)
-        Txt_Port.Margin = New Padding(4, 3, 4, 3)
+        Txt_Port.Location = New Point(306, 247)
+        Txt_Port.Margin = New Padding(6, 5, 6, 5)
         Txt_Port.MaxLength = 255
         Txt_Port.Name = "Txt_Port"
-        Txt_Port.Size = New Size(114, 29)
+        Txt_Port.Size = New Size(161, 39)
         Txt_Port.TabIndex = 4
         Txt_Port.Tag = "txt"
         Txt_Port.TextAlign = HorizontalAlignment.Center
@@ -427,10 +429,10 @@ Partial Class CONN_Editor
         ' ULbl_Address
         ' 
         ULbl_Address.BackColor = Color.AliceBlue
-        ULbl_Address.Location = New Point(8, 107)
-        ULbl_Address.Margin = New Padding(5, 6, 5, 6)
+        ULbl_Address.Location = New Point(11, 178)
+        ULbl_Address.Margin = New Padding(7, 10, 7, 10)
         ULbl_Address.Name = "ULbl_Address"
-        ULbl_Address.Size = New Size(197, 33)
+        ULbl_Address.Size = New Size(281, 55)
         ULbl_Address.SLFText = "Address"
         ULbl_Address.SLFTextAdjuster = False
         ULbl_Address.SLFTextBorder = False
@@ -440,10 +442,10 @@ Partial Class CONN_Editor
         ' ULbl_Name
         ' 
         ULbl_Name.BackColor = Color.AliceBlue
-        ULbl_Name.Location = New Point(8, 23)
-        ULbl_Name.Margin = New Padding(5, 6, 5, 6)
+        ULbl_Name.Location = New Point(11, 38)
+        ULbl_Name.Margin = New Padding(7, 10, 7, 10)
         ULbl_Name.Name = "ULbl_Name"
-        ULbl_Name.Size = New Size(197, 33)
+        ULbl_Name.Size = New Size(281, 55)
         ULbl_Name.SLFText = "Connection Name"
         ULbl_Name.SLFTextAdjuster = False
         ULbl_Name.SLFTextBorder = False
@@ -454,11 +456,11 @@ Partial Class CONN_Editor
         ' 
         Txt_ConnectionName.BackColor = Color.White
         Txt_ConnectionName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_ConnectionName.Location = New Point(214, 23)
-        Txt_ConnectionName.Margin = New Padding(4, 3, 4, 3)
+        Txt_ConnectionName.Location = New Point(306, 38)
+        Txt_ConnectionName.Margin = New Padding(6, 5, 6, 5)
         Txt_ConnectionName.MaxLength = 255
         Txt_ConnectionName.Name = "Txt_ConnectionName"
-        Txt_ConnectionName.Size = New Size(306, 29)
+        Txt_ConnectionName.Size = New Size(413, 39)
         Txt_ConnectionName.TabIndex = 0
         Txt_ConnectionName.Tag = "txt"
         Txt_ConnectionName.XOAutoTrim = True
@@ -485,11 +487,11 @@ Partial Class CONN_Editor
         ' 
         Txt_Address.BackColor = Color.White
         Txt_Address.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Address.Location = New Point(214, 107)
-        Txt_Address.Margin = New Padding(4, 3, 4, 3)
+        Txt_Address.Location = New Point(306, 178)
+        Txt_Address.Margin = New Padding(6, 5, 6, 5)
         Txt_Address.MaxLength = 255
         Txt_Address.Name = "Txt_Address"
-        Txt_Address.Size = New Size(306, 29)
+        Txt_Address.Size = New Size(413, 39)
         Txt_Address.TabIndex = 3
         Txt_Address.Tag = "txt"
         Txt_Address.XOAutoTrim = True
@@ -522,10 +524,10 @@ Partial Class CONN_Editor
         Btn_Test.FlatStyle = FlatStyle.Flat
         Btn_Test.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Btn_Test.ForeColor = Color.White
-        Btn_Test.Location = New Point(14, 8)
-        Btn_Test.Margin = New Padding(4, 3, 4, 3)
+        Btn_Test.Location = New Point(20, 13)
+        Btn_Test.Margin = New Padding(6, 5, 6, 5)
         Btn_Test.Name = "Btn_Test"
-        Btn_Test.Size = New Size(117, 46)
+        Btn_Test.Size = New Size(167, 77)
         Btn_Test.TabIndex = 12
         Btn_Test.Text = "Test"
         Btn_Test.UseVisualStyleBackColor = False
@@ -537,13 +539,13 @@ Partial Class CONN_Editor
         ' 
         ' CONN_Editor
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(565, 572)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(807, 953)
         ControlBox = False
         FormBorderStyle = FormBorderStyle.FixedSingle
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
+        Margin = New Padding(10, 5, 10, 5)
         Name = "CONN_Editor"
         PnlBottomButton.ResumeLayout(False)
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

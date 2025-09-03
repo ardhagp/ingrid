@@ -2,7 +2,7 @@
 Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
-Public Class Pctbx
+Public Class pctbx
     Inherits System.Windows.Forms.PictureBox
     'Private initimg As New System.Drawing.Image
 
