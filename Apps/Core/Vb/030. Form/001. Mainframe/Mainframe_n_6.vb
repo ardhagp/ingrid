@@ -1,4 +1,6 @@
-﻿Imports System.IO
+﻿'For clickonce .net 6 prequisites please paste here : C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VisualStudio\BootstrapperPackages
+
+Imports System.IO
 Imports System.Data
 Imports System.ComponentModel
 Imports System.Runtime.Versioning
@@ -11,7 +13,7 @@ Public Class Mainframe_n_6
     End Interface
 
     Public Interface ICommandName
-        ReadOnly Property TCODE As String
+        ReadOnly Property varTCode As String
     End Interface
 #End Region
 
@@ -25,7 +27,7 @@ Public Class Mainframe_n_6
     Private WithEvents V_UAC_Editor As UAC_Editor
     'Private WithEvents _CSETTINGS As New Connect.CONN
 
-    Private F_SYSS As SYSS
+    Private frmSYSS As SYSS
 
     Private V_SQL As New LibSQL.Mainframe.Database
     Private V_SQL_DBCheck As New LibSQL.Commands.DBIC.Applications
@@ -82,7 +84,7 @@ Public Class Mainframe_n_6
             USERMENU.BackColor = Global.System.Drawing.Color.LightPink
             USERMENU.ForeColor = Global.System.Drawing.Color.Black
         Else
-            USERMENU.Text = V_USERAttrib.FirstName
+            USERMENU.Text = varUSERAttribute.FirstName
             USERMENU.BackColor = Global.System.Drawing.Color.Yellow
             USERMENU.ForeColor = Global.System.Drawing.Color.Black
         End If
@@ -99,7 +101,7 @@ Public Class Mainframe_n_6
     Private Sub CloseAllWindows(Optional ByVal Forced As Boolean = False)
         Try
             If Not (Forced) Then
-                If Global.System.Windows.Forms.MessageBox.Show("Do you want to close all workspace windows?", "Close All Windows", Global.System.Windows.Forms.MessageBoxButtons.YesNo, Global.System.Windows.Forms.MessageBoxIcon.Question) = Global.System.Windows.Forms.DialogResult.Yes Then
+                If Global.System.Windows.Forms.MessageBox.Show("Do you want to close all varWorkspace windows?", "Close All Windows", Global.System.Windows.Forms.MessageBoxButtons.YesNo, Global.System.Windows.Forms.MessageBoxIcon.Question) = Global.System.Windows.Forms.DialogResult.Yes Then
                     'tmdi_.AttachedTo = Nothing
                     For Each OpenedForms As CMCv.frmStandard In Tmdi_.MdiChildren
                         OpenedForms.Close()
@@ -119,11 +121,11 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EnterCommand(ByVal TCode As String)
+    Private Sub EnterCommand(ByVal varTCode As String)
 
         'For Modules That Not Required Login
-        If (TCode.ToUpper.Trim = "RESET") OrElse (TCode.ToUpper.Trim = "PHTRZ") Then
-            Globals.Workspace.Open(Me, TCode.ToUpper.Trim, St_mainframe)
+        If (varTCode.ToUpper.Trim = "RESET") OrElse (varTCode.ToUpper.Trim = "PHTRZ") Then
+            Globals.varWorkspace.Open(Me, varTCode.ToUpper.Trim, St_mainframe)
             Txt_shortcut.Clear()
             Return
         Else
@@ -142,9 +144,9 @@ Public Class Mainframe_n_6
             System.Media.SystemSounds.Beep.Play()
 
             Return
-        ElseIf Not (V_USERAccess.User(TCode.ToUpper.Trim, V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.View, St_mainframe)) Then
+        ElseIf Not (varUSRaccess.User(varTCode.ToUpper.Trim, varUSERAttribute.UID, LibSQL.Application.Access.TypeOfAccess.View, St_mainframe)) Then
 
-            St_mainframe.Items(0).Text = "You are not authorized to access : " & TCode.ToUpper.Trim
+            St_mainframe.Items(0).Text = "You are not authorized to access : " & varTCode.ToUpper.Trim
 
             Bridge.Security.Writelog.Sendlog(V_USERAttrib.FirstName & " trying to open Restricted Module " & TCode.ToUpper.Trim, Bridge.Security.Writelog.LogType.Error)
 
@@ -152,9 +154,8 @@ Public Class Mainframe_n_6
 
             Return
         Else
-            'tmdi_.AttachedTo = Me
-            Bridge.Security.WRITELOG.SENDLOG(V_USERAttrib.FirstName & " opening Module " & TCode.ToUpper.Trim, Bridge.Security.WRITELOG.LogType.Information)
-            Globals.Workspace.Open(Me, TCode.ToUpper.Trim, St_mainframe)
+            Globals.varWorkspace.Open(Me, varTCode.ToUpper.Trim, St_mainframe)
+            Bridge.Security.Writelog.Sendlog(varUSERAttribute.FirstName & " opening Module " & varTCode.ToUpper.Trim, Bridge.Security.Writelog.LogType.Information)
             Txt_shortcut.Clear()
         End If
     End Sub
@@ -170,9 +171,9 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Function LoginClicked() As Boolean
-        If V_USERAttrib.UID = String.Empty Then
-            V_LOGIN = New LOGIN
-            Display(V_LOGIN, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, "Login Screen", "Please enter your credential to access continue", True)
+        If varUSERAttribute.UID = String.Empty Then
+            frmLOGIN = New LOGIN
+            DISPLAY(frmLOGIN, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, "Login Screen", "Please enter your credential to access continue", True)
         End If
         If V_USERAttrib.UID = String.Empty Then
             V_Session = False
@@ -191,21 +192,15 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub LogoutClicked()
-        If Decision("Are you sure want to logout from system?", "Logout", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
-            Bridge.Security.WRITELOG.SENDLOG(V_USERAttrib.FirstName & " is logout.", Bridge.Security.WRITELOG.LogType.Information)
+        If Decision("Are you sure want to logout from system?", "Logout", frmDBdialogbox.MessageIcon.Question, frmDBdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+            Bridge.Security.Writelog.Sendlog(varUSERAttribute.FirstName & " is logout.", Bridge.Security.Writelog.LogType.Information)
             Call SystemLogout()
             V_LOGUser.Logout(V_DatabaseEngine, V_USERAttrib.EID)
             Call ClearLoginData()
         End If
-
-        'If Global.System.Windows.Forms.MessageBox.Show("Are you sure want to logout from system?", "Logout", Global.System.Windows.Forms.MessageBoxButtons.YesNo, Global.System.Windows.Forms.MessageBoxIcon.Question) = Global.System.Windows.Forms.DialogResult.Yes Then
-        '    Call SystemLogout()
-        '    V_LOGUser.Logout(V_USERAttrib.EID)
-        '    Call ClearLoginData()
-        'End If
     End Sub
 
-    'Workspace Menu
+    'varWorkspace Menu
     Private Sub Ms_workspace_Cascade_Click(sender As Object, e As EventArgs) Handles Ms_workspace_Cascade.Click
         Me.LayoutMdi(MdiLayout.Cascade)
     End Sub
@@ -234,11 +229,14 @@ Public Class Mainframe_n_6
     <SupportedOSPlatform("windows")>
     Private Sub ChangePasswordToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangePasswordToolStripMenuItem.Click
         Try
-            V_FORMAttrib.RowID = V_USERAttrib.UID
-            V_FORMAttrib.IsNew = False
-            V_FORMAttrib.IsChangePasswordForm = True
-            V_UAC_Editor = New UAC_Editor
-            Display(V_UAC_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Change My Account", "Update your account username or password", True)
+            With varFORMAttribute
+                .RowID = varUSERAttribute.UID
+                .IsNew = False
+                .IsChangePasswordForm = True
+            End With
+
+            frmUACeditor = New UAC_Editor
+            DISPLAY(frmUACeditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Change My Account", "Update your account username or password", True)
 
         Catch ex As Exception
             PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
@@ -268,11 +266,11 @@ Public Class Mainframe_n_6
             'splash.Show()
             Call SystemLogout()
             Call FirstLoad()
-            V_USERAttrib.UID = String.Empty
+            varUSERAttribute.UID = String.Empty
 
             'Retrieve app version
-            V_APPVer = GETAPPVERSION()
-            Text += " - Ver. " & V_APPVer
+            varVersionapplication = GETAPPVERSION()
+            Text += " - Ver. " & varVersionapplication
 
             V_DatabaseEngine = LibSQL.Mainframe.Database.DBEngine
 
@@ -332,11 +330,11 @@ Public Class Mainframe_n_6
     <SupportedOSPlatform("windows")>
     Private Sub SystemLogout(Optional ByVal IsLogout As Boolean = True)
         If Not (IsLogout) Then
-            ms_start_Login.Visible = False
-            ms_start_Login.Enabled = False
-            ms_start_Logout.Visible = True
-            ms_start_Logout.Enabled = True
-            ms_start_Connection.Enabled = False
+            Ms_start_Login.Visible = False
+            Ms_start_Login.Enabled = False
+            Ms_start_Logout.Visible = True
+            Ms_start_Logout.Enabled = True
+            Ms_start_Connection.Enabled = False
             MyAccountToolStripMenuItem.Enabled = True
             LoginToolStripMenuItem.Visible = False
             LoginToolStripMenuItem.Enabled = False
@@ -350,12 +348,12 @@ Public Class Mainframe_n_6
             Call GetStorage()
             Call GetSettings()
         Else
-            V_USERAttrib.UID = String.Empty
+            varUSERAttribute.UID = String.Empty
             Ms_start_Login.Visible = True
-            ms_start_Login.Enabled = True
-            ms_start_Logout.Visible = False
-            ms_start_Logout.Enabled = False
-            ms_start_Connection.Enabled = True
+            Ms_start_Login.Enabled = True
+            Ms_start_Logout.Visible = False
+            Ms_start_Logout.Enabled = False
+            Ms_start_Connection.Enabled = True
             MyAccountToolStripMenuItem.Enabled = False
             LoginToolStripMenuItem.Visible = True
             LoginToolStripMenuItem.Enabled = True
@@ -381,22 +379,7 @@ Public Class Mainframe_n_6
     End Sub
 
     Private Sub UpdateToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        'Dim currentVersions As String = String.Empty
-        'Dim recentVersions As String = String.Empty
-        'Dim pathSimpleUpdater As String = String.Empty
-
-        'currentVersions = Global.System.Windows.Forms.Application.StartupPath & "\current.txt"
-
-        'If _PRODUCTIONMODE = True Then
-        '    recentVersions = "\\ls-pc-098\Shared Folder\911. Software\QERP\Network\recent.txt"
-        'Else
-        '    recentVersions = "D:\0\recent.txt"
-        'End If
-
-        'pathSimpleUpdater = Global.System.Windows.Forms.Application.StartupPath & "\AppUpdater.exe"
-
-        'AKLib.SimpleUpdater.FromDefinedList(currentVersions, recentVersions, pathSimpleUpdater)
-
+        'TODO: Update method
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -404,12 +387,12 @@ Public Class Mainframe_n_6
         Call EnterCommand("PHTRZ")
     End Sub
 
-    Private Sub V_PHTRZ_Done() Handles V_PHTRZ.Done
-        V_PHTRZ.Dispose()
+    Private Sub V_PHTRZ_Done() Handles frmPHTRZ.Done
+        frmPHTRZ.Dispose()
     End Sub
 
-    Private Sub V_CONN_Done() Handles V_CONN.ConnectFrameClose 'uncomment this when add Connect to library
-        V_CONN.Dispose()
+    Private Sub V_CONN_Done() Handles varCONN.ConnectFrameClose 'uncomment this when add Connect to library
+        varCONN.Dispose()
     End Sub
 
     Private Sub ContentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentsToolStripMenuItem.Click
@@ -437,10 +420,10 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub GetProfile()
-        PnlProfile.Visible = LibSQL.Application.ProfilePanel.Show(V_USERAttrib.IsAdministrator)
+        PnlProfile.Visible = LibSQL.Application.ProfilePanel.Show(varUSERAttribute.IsAdministrator)
         If (PnlProfile.Visible) Then
             LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome
-            LblEmpNumber.Text = v_USERAttrib.EmployeeNumber
+            LblEmpNumber.Text = varUSERAttribute.EmployeeNumber
 
             Dim V_Nama = V_USERAttrib.FirstName.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
             LblEmployeeName.Text = String.Join(" ", V_Nama.Take(2))
@@ -460,41 +443,41 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub GetStorage()
-        Dim V_DataCurrentSize As Integer
-        Dim V_FileCurrentSize As Integer
-        Dim V_FreeSpace As Integer
+        Dim varDatacurrentsize As Integer
+        Dim varFilecurrentsize As Integer
+        Dim varFreespace As Integer
 
-        PnlStorage.Visible = LibSQL.Application.StorageSense.Show(V_USERAttrib.IsAdministrator)
+        PnlStorage.Visible = LibSQL.Application.StorageSense.Show(varUSERAttribute.IsAdministrator)
 
         If (PnlStorage.Visible) Then
             PnlStorage.Height = 158
 
-            V_FreeSpace = CType(LibSQL.Application.StorageSense.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp"), Integer)
-            pgDataStorage.Maximum = V_FreeSpace
+            varFreespace = CType(LibSQL.Application.StorageSense.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp"), Integer)
+            pgDataStorage.Maximum = varFreespace
 
-            V_DataCurrentSize = CType(LibSQL.Application.StorageSense.DataCurrentSize, Integer)
-            pgDataStorage.Value = V_DataCurrentSize
+            varDatacurrentsize = CType(LibSQL.Application.StorageSense.DataCurrentSize, Integer)
+            pgDataStorage.Value = varDatacurrentsize
 
-            lblDataStorage.Text = String.Format("{0} / {1}", IIf(V_DataCurrentSize < 1024, V_DataCurrentSize & " MB", Math.Round((V_DataCurrentSize / 1024), 2) & " GB"), Math.Round((V_FreeSpace / 1024), 2) & " GB")
+            lblDataStorage.Text = String.Format("{0} / {1}", IIf(varDatacurrentsize < 1024, varDatacurrentsize & " MB", Math.Round((varDatacurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
 
-            V_FreeSpace = CType(LibSQL.Application.StorageSense.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp_file"), Integer)
-            pgFileStorage.Maximum = V_FreeSpace
+            varFreespace = CType(LibSQL.Application.StorageSense.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp_file"), Integer)
+            pgFileStorage.Maximum = varFreespace
 
-            V_FileCurrentSize = CType(LibSQL.Application.StorageSense.FileCurrentSize, Integer)
-            pgFileStorage.Value = V_FileCurrentSize
+            varFilecurrentsize = CType(LibSQL.Application.StorageSense.FileCurrentSize, Integer)
+            pgFileStorage.Value = varFilecurrentsize
 
-            lblFileStorage.Text = String.Format("{0} / {1}", IIf(V_FileCurrentSize < 1024, V_FileCurrentSize & " MB", Math.Round((V_FileCurrentSize / 1024), 2) & " GB"), Math.Round((V_FreeSpace / 1024), 2) & " GB")
+            lblFileStorage.Text = String.Format("{0} / {1}", IIf(varFilecurrentsize < 1024, varFilecurrentsize & " MB", Math.Round((varFilecurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub NotificationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotificationToolStripMenuItem.Click
-        Dim _NTFC As New NTFC
-        Display(_NTFC, IMAGEDB.Main.ImageLibrary.NOTIF_ICON, "Notification", "Show all notification that addressed to you", True)
+        Dim frmNTFC As New NTFC
+        DISPLAY(frmNTFC, IMAGEDB.Main.ImageLibrary.NOTIF_ICON, "Notification", "Show all notification that addressed to you", True)
     End Sub
 
     Private Sub Ts_status_Click(sender As Object, e As EventArgs) Handles Ts_status.Click
-        'waiting some code here
+        'TODO: Status method
     End Sub
 
     Private Sub Ts_status_TextChanged(sender As Object, e As EventArgs) Handles Ts_status.TextChanged
@@ -514,7 +497,7 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub V_LOGIN_LoginSuccess() Handles V_LOGIN.LoginSuccess
+    Private Sub V_LOGIN_LoginSuccess() Handles frmLOGIN.LoginSuccess
         Call GetNotification()
         PnlProfile.Visible = True
     End Sub
@@ -523,21 +506,16 @@ Public Class Mainframe_n_6
         GC.Collect()
     End Sub
 
-    'Private Sub BtnExecute2_Click(sender As Object, e As EventArgs) Handles BtnExecute2.Click
-    '    Call EnterCommand(Txt_shortcut.XOSQLText)
-    '    Txt_shortcut.AutoCompleteCustomSource.Add(Txt_shortcut.XOSQLText.Trim)
-    'End Sub
-
     <SupportedOSPlatform("windows")>
     Private Sub TmrMOD_Tick(sender As Object, e As EventArgs) Handles TmrMOD.Tick
-        If (v_ForceRefreshMainframeData) Then
+        If (varForcerefreshmainframedata) Then
             Call CommandAutoComplete()
-            v_ForceRefreshMainframeData = False
+            varForcerefreshmainframedata = False
         End If
     End Sub
 
-    Private Sub WORKSPACE_Click(sender As Object, e As EventArgs) Handles WORKSPACE.Click
-        'waiting some code here
+    Private Sub WORKSPACE_Click(sender As Object, e As EventArgs) Handles varWorkspace.Click
+        'TODO: Workspace method
     End Sub
 
     Private Sub SUPPORT_Click(sender As Object, e As EventArgs) Handles SUPPORT.Click
@@ -591,7 +569,7 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub V_LOGIN_LoginFailed() Handles V_LOGIN.LoginFailed
+    Private Sub V_LOGIN_LoginFailed() Handles frmLOGIN.LoginFailed
         Call ClearLoginData()
         Call SystemLogout(True)
     End Sub
@@ -610,10 +588,10 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Public Shared Sub GetSettings()
-        _MAXUPLOADSIZE_PDF = LibSQL.Application.Modules.MaxPDFAllowed
-        _MAXUPLOADSIZE_PHOTO = LibSQL.Application.Modules.MaxPhotoAllowed
-        _MINPASSWORDLENGTH = LibSQL.Application.Modules.MinPasswordLength
-        _TEXTMARK = LibSQL.Application.Modules.TextMark(V_USERAttrib.IsAdministrator)
+        varMaxuploadsize_pdf = LibSQL.Application.Modules.MaxPDFAllowed
+        varMaxuploadsize_photo = LibSQL.Application.Modules.MaxPhotoAllowed
+        varMinpasswordlength = LibSQL.Application.Modules.MinPasswordLength
+        varTextmark = LibSQL.Application.Modules.TextMark(varUSERAttribute.IsAdministrator)
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -633,7 +611,7 @@ Public Class Mainframe_n_6
     Private Sub Ms_start_connection_app_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_app.Click 'uncomment this when add Connect to library
         V_CONN = New Connect.CONN(V_PRODUCTIONMODE, True)
 
-        DISPLAY(V_CONN, IMAGEDB.Main.ImageLibrary.CONN_ICON, "Connection Settings", "Configure Ingrid database connection", True)
+        DISPLAY(varCONN, IMAGEDB.Main.ImageLibrary.CONN_ICON, "Connection Settings", "Configure Ingrid database connection", True)
     End Sub
 
     Private Sub Ms_start_connection_folder_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_folder.Click
@@ -646,14 +624,14 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub Mainframe_n_6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Bridge.Security.WRITELOG.SENDLOG("Ingrid Main App is closed.", Bridge.Security.WRITELOG.LogType.Information)
+        Bridge.Security.Writelog.Sendlog("Ingrid Main App is closed.", Bridge.Security.Writelog.LogType.Information)
         RaiseEvent IngridFrameClose()
     End Sub
 
+    'TODO: Reactivate when supported by .net 6
     'Private Sub Application_Idle(ByVal sender As Object, ByVal e As EventArgs)
     'only supported in .net 4.8, please reactivate this when supported by .net 6
     'MsgBox("You are idle")
     'End Sub
 
-    'For clickonce .net 6 prequisites please paste here : C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VisualStudio\BootstrapperPackages
 End Class

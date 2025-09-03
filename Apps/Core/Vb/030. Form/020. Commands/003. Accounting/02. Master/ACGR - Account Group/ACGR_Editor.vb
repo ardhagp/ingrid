@@ -4,9 +4,9 @@ Imports CMCv
 Public Class ACGR_Editor
 
 #Region "Variables"
-    Private _Size As New Size(566, 445)
-    Private _SQL As New Commands.ACGR.Editor
-    Private _FirstLoad As Boolean
+    Private varSize As New Size(566, 445)
+    Private varSQLeditor As New Commands.ACGR.Editor
+    Private varISfirstload As Boolean
     Public Event RecordSaved()
 #End Region
 
@@ -23,7 +23,7 @@ Public Class ACGR_Editor
 #Region "Form Events"
     <SupportedOSPlatform("windows")>
     Private Sub frmACGR_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Size = _Size
+        Me.Size = varSize
         Me.MinimumSize = Me.Size
 
         _FirstLoad = True

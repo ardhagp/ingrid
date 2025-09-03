@@ -54,9 +54,9 @@ Public Class PLNT
             Exit Sub
         End If
         Call GETTableID()
-        V_FORMAttrib.IsNew = False
-        If V_FORMAttrib.RowID = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+        varFORMAttribute.IsNew = False
+        If varFORMAttribute.RowID = "-1" Then
+            Decision("No record selected", "Error", CMCv.frmDBdialogbox.MessageIcon.Error, CMCv.frmDBdialogbox.MessageTypes.OkOnly)
         Else
             V_PLNT_Editor = New PLNT_Editor
             DISPLAY(V_PLNT_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update plant data", True)
@@ -98,7 +98,7 @@ Public Class PLNT
 #End Region
 
 #Region "Upper Form Bar"
-
+    'TODO: Add upper form bar
 #End Region
 
 #Region "Main Form Events"
@@ -115,5 +115,4 @@ Public Class PLNT
         TxtFind.ClearSearch()
     End Sub
 #End Region
-
 End Class

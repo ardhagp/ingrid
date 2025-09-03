@@ -3,13 +3,12 @@
 Public Class ACGR
 
 #Region "Variables"
-    Private _SQL As New LibSQL.Commands.ACGR.View
-    Private _SelectedGroup As String = ""
-    Private _Firstload As Boolean = True
-    Private _IsClosing As Boolean = False
-    Private WithEvents _ACGR_Editor As New ACGR_Editor
-    Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
-
+    Private varSQLview As New LibSQL.Commands.ACGR.View
+    Private varSelectedgroup As String = ""
+    Private varISfirstload As Boolean = True
+    Private varISclosing As Boolean = False
+    Private WithEvents frmACGReditor As New ACGR_Editor
+    Private WithEvents clsMMSmenu As New CMCv.UI.View.MenuStrip
 #End Region
 
 #Region "Sub Collections"
@@ -40,14 +39,14 @@ Public Class ACGR
     ''' </summary>
     ''' <param name="GridTable"></param>
     ''' <remarks></remarks>
-    Private Function GetAccountID(ByVal GridTable As CMCv.dgn) As String
+    Private Function GetAccountID(ByVal GridTable As CMCv.Dgn) As String
         With GridTable
             If .Rows.Count < 1 Then
-                V_FORMAttrib.RowID = "-1"
+                varFORMAttribute.RowID = "-1"
             Else
-                V_FORMAttrib.RowID = .CurrentRow.Cells(0).Value.ToString
+                varFORMAttribute.RowID = .CurrentRow.Cells(0).Value.ToString
             End If
-            Return V_FORMAttrib.RowID
+            Return varFORMAttribute.RowID
         End With
     End Function
 
@@ -56,7 +55,7 @@ Public Class ACGR
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub GetTableID()
-        Select Case _SelectedGroup
+        Select Case varSelectedgroup
             Case "tpAssets"
                 GetAccountID(DgnACGRAssets)
                 SLFStatus.Items(0).Text = DgnACGRAssets.RowCount & " Row(s)"
@@ -79,16 +78,18 @@ Public Class ACGR
 
 #Region "Menu Strip Function"
     <SupportedOSPlatform("windows")>
-    Private Sub _MMSMenu_EventDataAddNew() Handles _MMSMenu.EventDataAddNew
-        V_FORMAttrib.IsNew = True
-        V_FORMAttrib.RowID = "-1"
-        _ACGR_Editor = New ACGR_Editor
-        Display(_ACGR_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new account for each accounting book and accounting group", True)
+    Private Sub _MMSMenu_EventDataAddNew() Handles clsMMSmenu.EventDataAddNew
+        With varFORMAttribute
+            .RowID = "-1"
+            .IsNew = True
+        End With
+        frmACGReditor = New ACGR_Editor
+        DISPLAY(frmACGReditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new account for each accounting book and accounting group", True)
         Call GetTableID()
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub _MMSMenu_EventDataEdit() Handles _MMSMenu.EventDataEdit
+    Private Sub _MMSMenu_EventDataEdit() Handles clsMMSmenu.EventDataEdit
         Call GetTableID()
         V_FORMAttrib.IsNew = False
         If V_FORMAttrib.RowID = "-1" Then

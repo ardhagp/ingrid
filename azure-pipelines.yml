@@ -52,6 +52,45 @@ variables:
 
 steps:
 
+#Sent notification to Discord
+#- task: fizzcode-discordhook@1
+#  inputs:
+#    DiscordChannelID: '$(var_g_Discord_WebhookID)'
+#    DiscordToken: '$(var_g_Discord_WebhookKey)'
+#    UserName: 'Azure Devops'
+#    Title: 'Start Compiling [$(System.TeamProject):$(Build.SourceBranchName)]'
+#    Message: 'Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform on $(Build.StartTime)'
+
+- task: ado-discord-webhook@2
+  displayName: 'Compile Start'
+  condition: always()
+  inputs:
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
+    embeds: |
+      [
+        {
+          "type": "rich",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Start Compiling",
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "color": 0xffde59,
+          "fields": [
+            {
+              "name": "Build.Pipeline",
+              "value": "$(Build.Repository.Name)",
+              "inline": true
+            },
+            {
+              "name": "Build.Number",
+              "value": "$(Build.BuildNumber)",
+              "inline": true
+            }
+          ],
+          "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
+        }
+      ]
+
 #Installing Nuget
 - task: NuGetToolInstaller@1
   displayName: 'Nuget Install'
@@ -177,7 +216,7 @@ steps:
   displayName: 'VSBuild - CI'
   inputs:
     solution: '**\*.sln'
-    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:InstallUrl="https://www.iupdt.my.id/beta/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
+    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:InstallUrl="https://ardhagp.github.io/ingrid/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
     platform: 'any cpu'
     configuration: 'release'
     clean: true
@@ -204,9 +243,85 @@ steps:
       echo "---------------------------"
       more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
 
+- task: ado-discord-webhook@2
+  displayName: 'Compile Success'
+  condition: succeeded()
+  inputs:
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
+    embeds: |
+      [
+        {
+          "type": "rich",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Compile Success!",
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "color": 0x00ff00,
+          "fields": [
+            {
+              "name": "Build.Pipeline",
+              "value": "$(Build.Repository.Name)",
+              "inline": true
+            },
+            {
+              "name": "Build.Number",
+              "value": "$(Build.BuildNumber)",
+              "inline": true
+            }
+          ],
+          "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
+        }
+      ]
+
+
+- task: ado-discord-webhook@2
+  displayName: 'Compile Failed'
+  condition: failed()
+  inputs:
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
+    embeds: |
+      [
+        {
+          "type": "rich",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Compile Failed!",
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "color": 0xff0000,
+          "fields": [
+            {
+              "name": "Build.Pipeline",
+              "value": "$(Build.Repository.Name)",
+              "inline": true
+            },
+            {
+              "name": "Build.Number",
+              "value": "$(Build.BuildNumber)",
+              "inline": true
+            }
+          ],
+          "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
+        }
+      ]
+
+
 #Updating Version for next build
 - task: update-variablegroup-variable@0
-  displayName: 'Prepare Versioning For Next Build'
+  condition: succeeded()
+  displayName: 'Prepare Version For Next Build'
+  inputs:
+    variableGroupName: 'global_variables'
+    variableName: 'var_g_Ingridversion_build'
+    variableDataType: 'int'
+    newVariableValueInInt: 1
+    usePAT: true
+    patValue: '$(var_g_TOKEN_AZURE)'
+
+
+#Updating Version for next revision
+- task: update-variablegroup-variable@0
+  condition: failed()
+  displayName: 'Prepare Version For Next Revision'
   inputs:
     variableGroupName: 'global_variables'
     variableName: 'var_g_Ingridversion_revision'

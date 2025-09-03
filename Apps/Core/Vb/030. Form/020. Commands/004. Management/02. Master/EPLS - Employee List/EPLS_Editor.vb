@@ -6,16 +6,16 @@ Public Class EPLS_Editor
     Private _SQL As New Commands.EPLS.Editor
     Private _SQL_User As New Commands.UAC.Editor
     Public Event RecordSaved()
-    Private WithEvents F_AddinPosition As New EPLS_Position
-    Private _HavePhoto As Integer
-    Private _ChangePhoto As Boolean
-    Private _PositionID As String
-    Private _Photo As System.Drawing.Image
 #End Region
 
 #Region "Subs Collections"
 
 #End Region
+    Private WithEvents F_AddinPosition As New EPLS_Position
+    Private _HavePhoto As Integer
+    Private _ChangePhoto As Boolean
+    Private _PositionID As String
+    Private _Photo As System.Drawing.Image
 
     <SupportedOSPlatform("windows")>
     Private Sub EPLS_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load

@@ -4,7 +4,7 @@ Imports CMCv
 
 Namespace Commands.POST
     Public Class View
-        'ReadOnly _DBR_MSSQL2008(2) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(ByVal DBEngine As String, ByVal Grid As dgn, ByVal Status As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
@@ -51,15 +51,15 @@ Namespace Commands.POST
 
                 V_Success = True
             Catch ex As Exception
-                V_Success = False
+                varSuccess = False
             End Try
 
-            Return V_Success
+            Return varSuccess
         End Function
     End Class
 
     Public Class Editor
-        ReadOnly _DBR_MSSQL2008(2) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
         Public Sub FILLCompany(ByVal DBEngine As String, ByVal Company As cbo)
@@ -145,7 +145,7 @@ Namespace Commands.POST
                 V_PostitionCode = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query).ToString
             End If
 
-            Return V_PostitionCode
+            Return varPostitioncode
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -160,7 +160,7 @@ Namespace Commands.POST
                 V_PostitionName = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query).ToString
             End If
 
-            Return V_PostitionName
+            Return varPostitionname
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -175,7 +175,7 @@ Namespace Commands.POST
                 V_PostitionDescription = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query).ToString
             End If
 
-            Return V_PostitionDescription
+            Return varPostitiondescription
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -233,10 +233,10 @@ Namespace Commands.POST
 
                 V_Success = True
             Catch ex As Exception
-                V_Success = False
+                varSuccess = False
             End Try
 
-            Return V_Success
+            Return varSuccess
         End Function
     End Class
 End Namespace

@@ -5,7 +5,7 @@ Imports CMCv
 Namespace Commands.ACGR
     Public Class View
 #Region "Variables"
-        ReadOnly _DBR_MSSQL2008(3) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly varDBreader_mssql2008(3) As Database.Adapter.MSSQL2008.Display.Request
 #End Region
 
         ''' <summary>
@@ -74,7 +74,7 @@ Namespace Commands.ACGR
         Public Shared Sub GETAccountList(ByVal DBEngine As String, ByVal Assets As dgn, ByVal Liability As dgn, ByVal Equity As dgn, ByVal Revenue As dgn, ByVal Expense As dgn, ByVal AccountingBook As cbo, ByVal Find As txt, Optional ForceRefresh As Boolean = False)
             Dim V_CBO_Index As String
             'Isikan index combobox dengan data dari mainframe
-            V_CBO_Index = AccountingBook.SelectedValue.ToString
+            varCB_index = AccountingBook.SelectedValue.ToString
 
             If DBEngine = "MSSQL" Then
                 'Tampilkan data awal / tanpa filter / ForceRefresh=True
@@ -200,17 +200,17 @@ Namespace Commands.ACGR
 
                 V_Success = True
             Catch ex As Exception
-                V_Success = False
+                varSuccess = False
             End Try
 
-            Return V_Success
+            Return varSuccess
         End Function
 
     End Class
 
     Public Class Editor
 #Region "Variables"
-        ReadOnly _DBR_MSSQL2008(3) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly varDBreader_mssql2008(3) As Database.Adapter.MSSQL2008.Display.Request
 #End Region
 
         ''' <summary>
@@ -435,7 +435,7 @@ Namespace Commands.ACGR
                 V_IsDuplicate = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query), Integer)
             End If
 
-            If V_IsDuplicate > 0 Then
+            If varISduplicate > 0 Then
                 Return True
             Else
                 Return False
@@ -467,10 +467,10 @@ Namespace Commands.ACGR
                 End If
                 V_Success = True
             Catch ex As Exception
-                V_Success = False
+                varSuccess = False
             End Try
 
-            Return V_Success
+            Return varSuccess
         End Function
     End Class
 End Namespace

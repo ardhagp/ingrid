@@ -23,5 +23,8 @@
     <EmbeddedResource Update="030. Form\020. Commands\001. Connection\CONN.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="My Project\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

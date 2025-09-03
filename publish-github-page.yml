@@ -193,15 +193,15 @@ steps:
     rootFolderOrFile: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(build.ArtifactStagingDirectory)/Ingrid.zip'
+    archiveFile: '$(build.ArtifactStagingDirectory)/ingrid.zip'
     replaceExistingArchive: true
 
 #Upload Artifact prepare for Relase via FTP
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact.. ingrid-beta'
+  displayName: 'Publish Artifact.. ingrid-artifact'
   inputs:
     PathtoPublish: '$(build.ArtifactStagingDirectory)'
-    ArtifactName: 'ingrid-beta'
+    ArtifactName: 'ingrid-artifact'
     publishLocation: 'Container'
 
 #Direct publish to Github Pages
@@ -212,9 +212,22 @@ steps:
     githubusername: 'ardhagp'
     githubemail: '$(var_g_Email)'
     githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
-    repositoryname: 'Ingrid'
+    repositoryname: 'ingrid'
     branchname: 'publish'
-    commitmessage: 'Release v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)'
+    commitmessage: 'Release ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build)'
+
+#Direct publish to Github Release
+#- task: GitHubRelease@1
+#  inputs:
+#    gitHubConnection: 'GitHub'
+#    repositoryName: 'ardhagp/ingrid'
+#    action: 'create'
+#    target: '$(Build.SourceVersion)'
+#    tagSource: 'gitTag'
+#    tagPattern: 'Tag'
+#    title: 'Title'
+#    changeLogCompareToRelease: 'lastFullRelease'
+#    changeLogType: 'commitBased'
 
 #- task: AzureStaticWebApp@0
 #  displayName: 'Publishing Static Web App'
@@ -249,12 +262,12 @@ steps:
       more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
 
 #Updating Version for next build
-- task: update-variablegroup-variable@0
-  displayName: 'Prepare Versioning For Next Build'
-  inputs:
-    variableGroupName: 'global_variables'
-    variableName: 'var_g_Ingridversion_revision'
-    variableDataType: 'int'
-    newVariableValueInInt: 1
-    usePAT: true
-    patValue: '$(var_g_TOKEN_AZURE)'
+#- task: update-variablegroup-variable@0
+#  displayName: 'Prepare Versioning For Next Build'
+#  inputs:
+#    variableGroupName: 'global_variables'
+#    variableName: 'var_g_Ingridversion_revision'
+#    variableDataType: 'int'
+#    newVariableValueInInt: 1
+#    usePAT: true
+#    patValue: '$(var_g_TOKEN_AZURE)'

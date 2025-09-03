@@ -4,8 +4,8 @@ Imports CMCv
 Public Class CCIN_Editor
 
 #Region "Variables"
+    Private varSQLeditor As New LibSQL.Commands.CCIN.Editor
     Public Event RecordSaved()
-    Private _SQL As New LibSQL.Commands.CCIN.Editor
 #End Region
 
 #Region "Subs Collections"

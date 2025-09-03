@@ -210,11 +210,11 @@ Namespace Commands.UAC
             Dim V_IsAuth As Integer
 
             If AuthType = EnuAuthType.Read Then
-
+                'TODO: Read method
             ElseIf AuthType = EnuAuthType.Write Then
-
+                'TODO: Write method
             ElseIf AuthType = EnuAuthType.Execute Then
-
+                'TODO: Execute method
             End If
 
             If DBEngine = "MSSQL" Then 'Run if MSSQL
@@ -283,10 +283,10 @@ Namespace Commands.UAC
                     _IsAdministrator = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query), Boolean)
                 End If
             Catch ex As Exception
-                _IsAdministrator = False
+                varISadministrator = False
             End Try
 
-            Return _IsAdministrator
+            Return varISadministrator
         End Function
 
         Public Shared Function GETUID() As Integer
@@ -349,11 +349,11 @@ Namespace Commands.UAC
                     V_DBE_MYSQL.PUSHDATA(V_DBR_MYSQL(1).Query)
                 End If
 
-                _Success = True
+                varSuccess = True
             Catch ex As Exception
-                _Success = False
+                varSuccess = False
             End Try
-            Return _Success
+            Return varSuccess
         End Function
     End Class
 
@@ -559,13 +559,13 @@ Namespace Commands.UAC
             Dim _IsDuplicate As Integer = 0
 
             If RowID = "-1" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}')", Username)
+                varDBreader_mssql2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}')", Username)
             Else
-                V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_id <> '{1}')", Username, RowID)
+                varDBreader_mssql2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_id <> '{1}')", Username, RowID)
             End If
-            _IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
+            varISduplicate = CType(varDBengine_mssql2008.GETVALUE(varDBreader_mssql2008(1).Query, "db_universe_erp"), Integer)
 
-            If _IsDuplicate = 0 Then
+            If varISduplicate = 0 Then
                 Return False
             Else
                 Return True

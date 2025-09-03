@@ -36,7 +36,7 @@ Public Class LOGIN
 
         V_USERAttrib.UID = Commands.UAC.Login.GETUID(V_DatabaseEngine, TxtUsername.XOSQLText, TxtPassword.XOSQLText, V_USERAttrib.FirstName)
 
-        If V_USERAttrib.UID = String.Empty Then
+        If varUSERattribute.UID = String.Empty Then
             RaiseEvent LoginFailed()
             V_WrongLogin += 1
             SLFStatus.Items(0).Text = "Login Failed"

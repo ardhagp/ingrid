@@ -3,13 +3,13 @@ Imports CMCv
 
 Public Class CCIN
 #Region "Variables"
-    Private _SQL As New LibSQL.Commands.CCIN.View
-    Private WithEvents _CCIN_Editor As CCIN_Editor
-    Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
+    Private varSQLview As New LibSQL.Commands.CCIN.View
+    Private WithEvents frmCCINeditor As CCIN_Editor
+    Private WithEvents clsMMSmenu As New CMCv.UI.View.MenuStrip
 #End Region
 
 #Region "Function Collections"
-
+    'TODO: Functions
 #End Region
 
 #Region "Sub Collections"
@@ -26,24 +26,27 @@ Public Class CCIN
 
     Private Sub GETTableID()
         If DgnCCIN.RowCount = 0 Then
-            V_FORMAttrib.RowID = "-1"
+            varFORMAttribute.RowID = "-1"
         Else
-            V_FORMAttrib.RowID = DgnCCIN.CurrentRow.Cells("company_id").Value.ToString
+            varFORMAttribute.RowID = DgnCCIN.CurrentRow.Cells("company_id").Value.ToString
         End If
     End Sub
 #End Region
 
 #Region "Menu Strip Function"
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataAddNew() Handles _MMSMenu.EventDataAddNew
-        V_FORMAttrib.IsNew = True
-        V_FORMAttrib.RowID = "-1"
-        _CCIN_Editor = New CCIN_Editor
-        Display(_CCIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new company data", True)
+    Private Sub EventDataAddNew() Handles clsMMSmenu.EventDataAddNew
+        With varFORMAttribute
+            .IsNew = True
+            .RowID = "-1"
+        End With
+
+        frmCCINeditor = New CCIN_Editor
+        DISPLAY(frmCCINeditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new company data", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
+    Private Sub EventDataEdit() Handles clsMMSmenu.EventDataEdit
         Call GETTableID()
         If V_FORMAttrib.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)

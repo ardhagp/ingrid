@@ -4,7 +4,7 @@ Imports CMCv
 
 Namespace Commands.CDIN
     Public Class View
-        ReadOnly _DBR_MSSQL2008(2) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub DISPLAYDATA(ByVal DBEngine As String, ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
@@ -62,7 +62,7 @@ Namespace Commands.CDIN
     End Class
 
     Public Class Editor
-        ReadOnly _DBR_MSSQL2008(2) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
         Public Shared Function IsDuplicate(ByVal DBEngine As String, ByVal CompanyID As String, ByVal DeptCode As String, Optional ByVal RowID As String = "-1") As Boolean
