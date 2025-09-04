@@ -174,7 +174,7 @@ if (confirm("Please ensure that you have saved your work and closed the Ingrid a
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <p>ArdhaGp | <a href="" rel="sponsored" target="_self">Ingrid</a> | 2018 - Now | <a href="https://templatemo.com/tm-557-grad-school" rel="sponsored" target="_blank">TEMPLATEMO</a></p>
+          <p>ArdhaGp | <a href="" rel="sponsored" target="_self">Ingrid</a> | 2018 - <span id="current-year"></span> | <a href="https://templatemo.com/tm-557-grad-school" rel="sponsored" target="_blank">TEMPLATEMO</a></p>
         </div>
       </div>
     </div>
@@ -243,7 +243,11 @@ if (confirm("Please ensure that you have saved your work and closed the Ingrid a
         });
     </script>
     <script src="https://embed.small.chat/TB8KJGPSPC060V5WBSH1.js" async></script>
+  <script>
+  document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
 </body>
 
 </html>
+
 
