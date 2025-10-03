@@ -4,7 +4,7 @@
  Source Server         : Aiven.io
  Source Server Type    : MySQL
  Source Server Version : 80035 (8.0.35)
- Source Host           : ingrid-db-ingrid.h.aivencloud.com:27623
+ Source Host           : localhost:3306
  Source Schema         : defaultdb
 
  Target Server Type    : MySQL
