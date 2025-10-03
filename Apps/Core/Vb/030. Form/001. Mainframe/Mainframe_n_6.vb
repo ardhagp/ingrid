@@ -243,6 +243,7 @@ Public Class Mainframe_n_6
             PUSHERRORDATASHOW()
         End Try
     End Sub
+
 #End Region
 
 #Region "Form Events"
@@ -626,6 +627,10 @@ Public Class Mainframe_n_6
     Private Sub Mainframe_n_6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Bridge.Security.Writelog.Sendlog("Ingrid Main App is closed.", Bridge.Security.Writelog.LogType.Information)
         RaiseEvent IngridFrameClose()
+    End Sub
+
+    Private Sub Mainframe_n_6_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+
     End Sub
 
     'TODO: Reactivate when supported by .net 6
