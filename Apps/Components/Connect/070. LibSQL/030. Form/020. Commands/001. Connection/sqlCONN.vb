@@ -4,89 +4,106 @@ Namespace Commands.CONN
     <SupportedOSPlatform("windows")>
     Public Class View
 
-        Public Shared Sub DisplayData(ByVal Datagrid As CMCv.dgn, ByVal StatusBar As CMCv.stt, ByVal Find As CMCv.txt, Optional ByVal ForceRefresh As Boolean = False)
-            If (Find.XOSQLText = String.Empty) OrElse (ForceRefresh) Then
-                V_DBR_SQLITE(0).Query = "select serverlist.ID, serverlist.CONNECTIONNAME, serverlist.DATABASEENGINE, serverlist.SERVERADDRESS, serverlist.SERVERPORT, serverlist.DEFAULTCONNECTION from serverlist ORDER BY serverlist.CONNECTIONNAME;"
-            Else
-                V_DBR_SQLITE(0).Query = String.Format("select serverlist.ID, serverlist.CONNECTIONNAME, serverlist.DATABASEENGINE, serverlist.SERVERADDRESS, serverlist.SERVERPORT, serverlist.DEFAULTCONNECTION from serverlist where (serverlist.CONNECTIONNAME like '%{0}%') or (serverlist.SERVERADDRESS like '%{0}%') or (serverlist.SERVERPORT like '%{0}%') ORDER BY serverlist.CONNECTIONNAME;", Find.XOSQLText)
+        Public Shared Sub DisplayData(ByVal datagrid As CMCv.dgn, ByVal statusbar As CMCv.stt,
+                                      ByVal find As CMCv.txt, Optional forcerefresh As Boolean = False)
+
+            If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then 'to display all data
+                V_DBR_SQLITE(0).Query = "select serverlist.ID, serverlist.CONNECTIONNAME, " &
+                    "serverlist.DATABASEENGINE, serverlist.SERVERADDRESS, serverlist.SERVERPORT, " &
+                    "serverlist.DEFAULTCONNECTION from serverlist ORDER BY serverlist.CONNECTIONNAME;"
+            Else 'to display filtered data
+                V_DBR_SQLITE(0).Query = String.Format("select serverlist.ID, serverlist.CONNECTIONNAME, " &
+                                                      "serverlist.DATABASEENGINE, serverlist.SERVERADDRESS, " &
+                                                      "serverlist.SERVERPORT, serverlist.DEFAULTCONNECTION from " &
+                                                      "serverlist where (serverlist.CONNECTIONNAME Like '%{0}%') or " &
+                                                      "(serverlist.SERVERADDRESS Like '%{0}%') or " &
+                                                      "(serverlist.SERVERPORT like '%{0}%') " &
+                                                      "ORDER BY serverlist.CONNECTIONNAME;", find.XOSQLText)
             End If
-            V_DBR_SQLITE(0).DataGrid = Datagrid
-            V_DBR_SQLITE(0).StatusBar = StatusBar
+            V_DBR_SQLITE(0).DataGrid = datagrid
+            V_DBR_SQLITE(0).StatusBar = statusbar
             V_DBE_SQLite.GETDATATABLE(V_DBR_SQLITE(0), "TDBList")
         End Sub
 
-        Public Shared Function DELETEData(ByVal RowID As String) As Boolean
-            Dim _Success As Boolean
+        Public Shared Function DELETEData(ByVal rowID As String) As Boolean
+            Dim varSuccess As Boolean
             Try
-                V_DBR_SQLITE(1).Query = String.Format("DELETE FROM serverlist WHERE ID = '{0}';", RowID)
+                V_DBR_SQLITE(1).Query = String.Format("DELETE FROM serverlist WHERE ID = '{0}';", rowID)
                 V_DBE_SQLite.PUSHDATA(V_DBR_SQLITE(1).Query)
-                _Success = True
+                varSuccess = True
             Catch ex As Exception
-                _Success = False
+                varSuccess = False
             End Try
-            Return _Success
+            Return varSuccess
         End Function
     End Class
 
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GETRowValue(ByVal RowID As String, ByVal ConnectionName As CMCv.txt, ByVal DBEngine As CMCv.cbo, ByVal Address As CMCv.txt, ByVal Port As CMCv.txt, ByVal Username As CMCv.txt, ByVal Password As CMCv.txt, ByVal OldPassword As String, ByVal DataStorage As CMCv.txt, ByVal IsDefault As CMCv.chk)
-            V_DBR_SQLITE(1).Query = String.Format("select serverlist.CONNECTIONNAME from serverlist where serverlist.ID ='{0}'", RowID)
-            ConnectionName.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
+        Public Shared Sub GETRowValue(ByVal rowID As String, ByVal connectionname As CMCv.txt, ByVal dbengine As CMCv.cbo,
+                                      ByVal address As CMCv.txt, ByVal port As CMCv.txt, ByVal username As CMCv.txt,
+                                      ByVal password As CMCv.txt, ByVal databasename As CMCv.txt, ByVal oldpassword As String, ByVal isdefault As CMCv.chk)
+            V_DBR_SQLITE(1).Query = String.Format("select serverlist.CONNECTIONNAME from serverlist where serverlist.ID ='{0}'", rowID)
+            connectionname.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
 
-            V_DBR_SQLITE(1).Query = String.Format("select serverlist.DATABASEENGINE from serverlist where serverlist.ID ='{0}'", RowID)
-            DBEngine.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
+            V_DBR_SQLITE(1).Query = String.Format("select serverlist.DATABASEENGINE from serverlist where serverlist.ID ='{0}'", rowID)
+            dbengine.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
 
-            V_DBR_SQLITE(1).Query = String.Format("select serverlist.SERVERADDRESS from serverlist where serverlist.ID ='{0}'", RowID)
-            Address.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
+            V_DBR_SQLITE(1).Query = String.Format("select serverlist.SERVERADDRESS from serverlist where serverlist.ID ='{0}'", rowID)
+            address.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
 
-            V_DBR_SQLITE(1).Query = String.Format("select serverlist.SERVERPORT from serverlist where serverlist.ID ='{0}'", RowID)
-            Port.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
+            V_DBR_SQLITE(1).Query = String.Format("select serverlist.SERVERPORT from serverlist where serverlist.ID ='{0}'", rowID)
+            port.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
 
-            V_DBR_SQLITE(1).Query = String.Format("select serverlist.USERNAME from serverlist where serverlist.ID ='{0}'", RowID)
-            Username.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
+            V_DBR_SQLITE(1).Query = String.Format("select serverlist.USERNAME from serverlist where serverlist.ID ='{0}'", rowID)
+            username.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
 
-            V_DBR_SQLITE(1).Query = String.Format("select serverlist.PASSWORD from serverlist where serverlist.ID ='{0}'", RowID)
-            Password.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
-            OldPassword = Password.Text
+            V_DBR_SQLITE(1).Query = String.Format("select serverlist.PASSWORD from serverlist where serverlist.ID ='{0}'", rowID)
+            password.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
+            oldpassword = password.Text
 
-            V_DBR_SQLITE(1).Query = String.Format("select serverlist.DBFORDATA from serverlist where serverlist.ID ='{0}'", RowID)
-            DataStorage.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
+            V_DBR_SQLITE(1).Query = String.Format("select serverlist.DBFORDATA from serverlist where serverlist.ID ='{0}'", rowID)
+            databasename.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
 
             'V_DBR_SQLITE(1).Query = String.Format("select serverlist.DBFORFILE from serverlist serverlist where serverlist.ID ='{0}'", RowID)
             'FileStorage.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
 
-            V_DBR_SQLITE(1).Query = String.Format("select serverlist.DEFAULTCONNECTION from serverlist where serverlist.ID ='{0}'", RowID)
-            IsDefault.Checked = CType(V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query), Boolean)
+            V_DBR_SQLITE(1).Query = String.Format("select serverlist.DEFAULTCONNECTION from serverlist where serverlist.ID ='{0}'", rowID)
+            isdefault.Checked = CType(V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query), Boolean)
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PUSHData(ByVal ConnectionName As String, ByVal DBEngine As String, ByVal Address As String, ByVal Port As String, ByVal Username As String, ByVal Password As String, ByVal DataStorage As String, ByVal IsDefault As Boolean, ByVal RowID As String, ByVal IsNew As Boolean, ByVal IsPasswordChange As Boolean) As Boolean
-            Dim V_Success As Boolean
-            Dim V_IsDefaultActivate As String = ""
+        Public Shared Function PUSHData(ByVal connectionname As String, ByVal dbengine As String,
+                                        ByVal address As String, ByVal port As String,
+                                        ByVal username As String, ByVal password As String,
+                                        ByVal databasename As String, ByVal isdefault As Boolean,
+                                        ByVal rowID As String, ByVal isnew As Boolean,
+                                        ByVal ispasswordchange As Boolean) As Boolean
+            Dim varSuccess As Boolean
+            Dim varIsDefaultActivate As String = ""
 
             Try
-                If (IsDefault) Then 'to check if isdefault is set
-                    V_IsDefaultActivate = "update serverlist set DEFAULTCONNECTION=0;"
+                If (isdefault) Then 'to check if isdefault is set
+                    varIsDefaultActivate = "update serverlist set DEFAULTCONNECTION=0;"
                 End If
 
-                If (IsNew) Then
-                    V_DBR_SQLITE(1).Query = V_IsDefaultActivate & $"insert into serverlist(ID, CONNECTIONNAME, DATABASEENGINE, SERVERADDRESS, SERVERPORT, USERNAME, PASSWORD, DBFORDATA, DEFAULTCONNECTION) values ('{RowID}','{ConnectionName}','{DBEngine}','{Address}',{Port},'{Username}','{Security.Encrypt.AES(Password)}','{DataStorage}',{IsDefault})"
+                If (isnew) Then
+                    V_DBR_SQLITE(1).Query = varIsDefaultActivate & $"insert into serverlist(ID, CONNECTIONNAME, DATABASEENGINE, SERVERADDRESS, SERVERPORT, USERNAME, PASSWORD, DBFORDATA, DEFAULTCONNECTION) values ('{rowID}','{connectionname}','{dbengine}','{address}',{port},'{username}','{Security.Encrypt.AES(password)}',{databasename},{isdefault})"
                 Else
-                    If Not (IsPasswordChange) Then
-                        V_DBR_SQLITE(1).Query = V_IsDefaultActivate & String.Format("update serverlist set CONNECTIONNAME='{1}', SERVERADDRESS='{2}', SERVERPORT={3}, USERNAME='{4}', DEFAULTCONNECTION={5}, DBFORDATA='{6}', DATABASEENGINE='{7}' where ID='{0}'", RowID, ConnectionName, Address, Port, Username, IsDefault, DataStorage, DBEngine)
+                    If Not (ispasswordchange) Then
+                        V_DBR_SQLITE(1).Query = varIsDefaultActivate & String.Format("update serverlist set CONNECTIONNAME='{1}', DATABASEENGINE='{2}', SERVERADDRESS='{3}', SERVERPORT={4}, USERNAME='{5}', DBFORDATA='{6}', DEFAULTCONNECTION={7} where ID='{0}'", rowID, connectionname, dbengine, address, port, username, databasename, isdefault)
                     Else
-                        V_DBR_SQLITE(1).Query = V_IsDefaultActivate & String.Format("update serverlist set CONNECTIONNAME='{1}', SERVERADDRESS='{2}', SERVERPORT={3}, USERNAME='{4}', PASSWORD='{5}', DEFAULTCONNECTION={6}, DBFORFILE='{7}', DATABASEENGINE='{9}' where ID='{0}'", RowID, ConnectionName, Address, Port, Username, Security.Encrypt.AES(Password), IsDefault, DataStorage, DBEngine)
+                        V_DBR_SQLITE(1).Query = varIsDefaultActivate & String.Format("update serverlist set CONNECTIONNAME='{1}', DATABASEENGINE='{2}', SERVERADDRESS='{3}', SERVERPORT={4}, USERNAME='{5}', PASSWORD='{6}', DBFORDATA='{7}', DEFAULTCONNECTION={8} where ID='{0}'", rowID, connectionname, dbengine, address, port, username, Security.Encrypt.AES(password), databasename, isdefault)
                     End If
                 End If
 
                 V_DBE_SQLite.PUSHDATA(V_DBR_SQLITE(1).Query)
-                V_Success = True
+                varSuccess = True
             Catch ex As Exception
-                V_Success = False
+                varSuccess = False
             End Try
 
-            Return V_Success
+            Return varSuccess
         End Function
     End Class
 

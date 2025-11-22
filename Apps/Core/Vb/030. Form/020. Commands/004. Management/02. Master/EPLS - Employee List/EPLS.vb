@@ -16,10 +16,10 @@ Public Class EPLS
     End Sub
 
     Private Sub GETTableID()
-        V_FORMAttrib.RowID = "-1"
+        varFormAttributes.RowID = "-1"
 
         If DgnEPLS.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnEPLS.CurrentRow.Cells("employee_id").Value.ToString
+            varFormAttributes.RowID = DgnEPLS.CurrentRow.Cells("employee_id").Value.ToString
         End If
     End Sub
 #End Region
@@ -27,13 +27,13 @@ Public Class EPLS
 #Region "Menu Strip Functions"
     <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles C_MMSMenu.EventDataAddNew
-        If Not (V_USERAccess.User("EPLS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+        If Not (varUserAccess.User("EPLS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        V_FORMAttrib.IsNew = True
-        V_FORMAttrib.RowID = "-1"
+        varFormAttributes.IsNew = True
+        varFormAttributes.RowID = "-1"
 
         F_EPLS_Editor = New EPLS_Editor
         DISPLAY(F_EPLS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new employee data", True)
@@ -41,17 +41,17 @@ Public Class EPLS
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles C_MMSMenu.EventDataEdit
-        If Not (V_USERAccess.User("EPLS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+        If Not (varUserAccess.User("EPLS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
         Call GETTableID()
-        V_FORMAttrib.IsNew = False
-        If V_FORMAttrib.RowID = "-1" Then
+        varFormAttributes.IsNew = False
+        If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            V_FORMAttrib.IsNew = False
+            varFormAttributes.IsNew = False
             F_EPLS_Editor = New EPLS_Editor
             DISPLAY(F_EPLS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
         End If
@@ -59,17 +59,17 @@ Public Class EPLS
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles C_MMSMenu.EventDataDelete
-        If Not (V_USERAccess.User("EPLS", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+        If Not (varUserAccess.User("EPLS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
         Call GETTableID()
-        If V_FORMAttrib.RowID = "-1" Then
+        If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnEPLS.CurrentRow.Cells("employee_fullname").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.EPLS.View.DELETEDATA(V_DatabaseEngine, V_FORMAttrib.RowID)) Then
+                If (Commands.EPLS.View.DELETEDATA(V_DatabaseEngine, varFormAttributes.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else

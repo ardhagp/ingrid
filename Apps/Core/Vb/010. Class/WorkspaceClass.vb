@@ -264,6 +264,6 @@ Public Class WorkspaceClass
     End Sub
 
     Private Shared Sub V_MODS_DATACHANGED() Handles V_MODS.DATACHANGED
-        V_Forcerefreshmainframedata = True
+        varForceRefreshMainframeData = True
     End Sub
 End Class

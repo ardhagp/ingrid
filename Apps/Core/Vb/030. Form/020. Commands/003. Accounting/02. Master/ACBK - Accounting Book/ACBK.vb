@@ -16,12 +16,12 @@ Public Class ACBK
 
 #Region "Menu Strip Functions"
     'Private Sub AddNewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddNewToolStripMenuItem.Click
-    '    V_FORMAttrib.IsNew = True
+    '    varFormAttributes.IsNew = True
     '    Display(ACBK_Editor, QERP.Main.ImageLibrary.EDIT_icon, "Add New Record", "New accounting book record for plant", True)
     'End Sub
 
     'Private Sub EditToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem.Click
-    '    V_FORMAttrib.IsNew = False
+    '    varFormAttributes.IsNew = False
     '    Display(ACBK_Editor, QERP.Main.ImageLibrary.EDIT_icon, "Update Record", "Update your accounting book data", True)
 
     'End Sub

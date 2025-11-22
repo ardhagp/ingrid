@@ -12,7 +12,10 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="URL_Wiki" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://ardhagp.github.io/ingrid/</Value>
+      <Value Profile="(Default)">https://github.com/ardhagp/ingrid/wiki/01.-Home</Value>
+    </Setting>
+    <Setting Name="URL_Saweria" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://saweria.co/ardhagp</Value>
     </Setting>
   </Settings>
 </SettingsFile>

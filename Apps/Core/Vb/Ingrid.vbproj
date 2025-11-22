@@ -578,15 +578,15 @@
     <ProjectReference Include="..\..\Components\LibSQL\LibSQL.vbproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="AWSSDK.S3" Version="4.0.6.13" />
+    <PackageReference Include="AWSSDK.S3" Version="4.0.13.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Syncfusion.Grid.Windows" Version="23.1.41" />
     <PackageReference Include="Syncfusion.Shared.Base" Version="23.1.41" />
     <PackageReference Include="Syncfusion.Tools.Windows" Version="23.1.41" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-    <PackageReference Include="System.ComponentModel.Composition" Version="9.0.9" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="10.0.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="System.Management" Version="9.0.9" />
+    <PackageReference Include="System.Management" Version="10.0.0" />
     <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
   </ItemGroup>
   <ItemGroup>
