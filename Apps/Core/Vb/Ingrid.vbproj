@@ -578,6 +578,7 @@
     <ProjectReference Include="..\..\Components\LibSQL\LibSQL.vbproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AWSSDK.S3" Version="4.0.6.13" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Syncfusion.Grid.Windows" Version="23.1.41" />
     <PackageReference Include="Syncfusion.Shared.Base" Version="23.1.41" />

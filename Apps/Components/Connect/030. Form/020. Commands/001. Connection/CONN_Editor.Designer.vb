@@ -25,24 +25,22 @@ Partial Class CONN_Editor
         BtnCancel = New btn(components)
         TbctlBasic = New tbctl(components)
         tp1_ = New TabPage()
-        Cbo_DBEngine = New cbo(components)
+        BtnTest = New btn(components)
+        CboDBEngine = New cbo(components)
         ULbl1 = New ULbl()
-        ULbl_FileStorage = New ULbl()
         ULbl_DataStorage = New ULbl()
-        Txt_FileStorage = New txt(components)
-        Txt_DataStorage = New txt(components)
-        Chk_Default = New chk(components)
-        Txt_Password = New txt(components)
-        Txt_Username = New txt(components)
+        TxtDataStorage = New txt(components)
+        ChkDefault = New chk(components)
+        TxtPassword = New txt(components)
+        TxtUsername = New txt(components)
         ULbl_Password = New ULbl()
         ULbl_Username = New ULbl()
         ULbl_Port = New ULbl()
-        Txt_Port = New txt(components)
+        TxtPort = New txt(components)
         ULbl_Address = New ULbl()
         ULbl_Name = New ULbl()
-        Txt_ConnectionName = New txt(components)
-        Txt_Address = New txt(components)
-        Btn_Test = New btn(components)
+        TxtConnectionName = New txt(components)
+        TxtAddress = New txt(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
@@ -54,7 +52,6 @@ Partial Class CONN_Editor
         ' 
         ' PnlBottomButton
         ' 
-        PnlBottomButton.Controls.Add(Btn_Test)
         PnlBottomButton.Controls.Add(BtnCancel)
         PnlBottomButton.Controls.Add(BtnSave)
         PnlBottomButton.Location = New Point(0, 730)
@@ -62,7 +59,6 @@ Partial Class CONN_Editor
         PnlBottomButton.Size = New Size(807, 97)
         PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
         PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
-        PnlBottomButton.Controls.SetChildIndex(Btn_Test, 0)
         ' 
         ' pnl_
         ' 
@@ -138,230 +134,207 @@ Partial Class CONN_Editor
         ' tp1_
         ' 
         tp1_.AutoScroll = True
-        tp1_.Controls.Add(Cbo_DBEngine)
+        tp1_.Controls.Add(BtnTest)
+        tp1_.Controls.Add(CboDBEngine)
         tp1_.Controls.Add(ULbl1)
-        tp1_.Controls.Add(ULbl_FileStorage)
         tp1_.Controls.Add(ULbl_DataStorage)
-        tp1_.Controls.Add(Txt_FileStorage)
-        tp1_.Controls.Add(Txt_DataStorage)
-        tp1_.Controls.Add(Chk_Default)
-        tp1_.Controls.Add(Txt_Password)
-        tp1_.Controls.Add(Txt_Username)
+        tp1_.Controls.Add(TxtDataStorage)
+        tp1_.Controls.Add(ChkDefault)
+        tp1_.Controls.Add(TxtPassword)
+        tp1_.Controls.Add(TxtUsername)
         tp1_.Controls.Add(ULbl_Password)
         tp1_.Controls.Add(ULbl_Username)
         tp1_.Controls.Add(ULbl_Port)
-        tp1_.Controls.Add(Txt_Port)
+        tp1_.Controls.Add(TxtPort)
         tp1_.Controls.Add(ULbl_Address)
         tp1_.Controls.Add(ULbl_Name)
-        tp1_.Controls.Add(Txt_ConnectionName)
-        tp1_.Controls.Add(Txt_Address)
+        tp1_.Controls.Add(TxtConnectionName)
+        tp1_.Controls.Add(TxtAddress)
         tp1_.Location = New Point(4, 41)
         tp1_.Margin = New Padding(6, 5, 6, 5)
         tp1_.Name = "tp1_"
         tp1_.Padding = New Padding(6, 5, 6, 5)
         tp1_.Size = New Size(759, 662)
         tp1_.TabIndex = 0
-        tp1_.Text = "CONFIG"
+        tp1_.Text = "DATA STORAGE"
         tp1_.UseVisualStyleBackColor = True
         ' 
-        ' Cbo_DBEngine
+        ' BtnTest
         ' 
-        Cbo_DBEngine.DropDownStyle = ComboBoxStyle.DropDownList
-        Cbo_DBEngine.FlatStyle = FlatStyle.Flat
-        Cbo_DBEngine.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Cbo_DBEngine.FormattingEnabled = True
-        Cbo_DBEngine.Items.AddRange(New Object() {"MYSQL", "SQL SERVER"})
-        Cbo_DBEngine.Location = New Point(306, 108)
-        Cbo_DBEngine.Margin = New Padding(4, 5, 4, 5)
-        Cbo_DBEngine.Name = "Cbo_DBEngine"
-        Cbo_DBEngine.Size = New Size(413, 40)
-        Cbo_DBEngine.TabIndex = 2
+        BtnTest.BackColor = Color.Yellow
+        BtnTest.Cursor = Cursors.Hand
+        BtnTest.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(195), CByte(0))
+        BtnTest.FlatAppearance.BorderSize = 2
+        BtnTest.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(255), CByte(20))
+        BtnTest.FlatStyle = FlatStyle.Flat
+        BtnTest.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnTest.ForeColor = Color.Black
+        BtnTest.Location = New Point(306, 588)
+        BtnTest.Margin = New Padding(6, 5, 6, 5)
+        BtnTest.Name = "BtnTest"
+        BtnTest.Size = New Size(262, 51)
+        BtnTest.TabIndex = 10
+        BtnTest.Text = "Test Connection"
+        BtnTest.UseVisualStyleBackColor = False
+        BtnTest.XOJenisTombol = ControlCodeBase.enuJenisTombol.Warning
+        BtnTest.XOTampilkanFocusBorder = False
+        BtnTest.XOValidasiSemuaInput = False
+        BtnTest.XOValidasiSemuaInputTag = Nothing
+        ' 
+        ' CboDBEngine
+        ' 
+        CboDBEngine.DropDownStyle = ComboBoxStyle.DropDownList
+        CboDBEngine.FlatStyle = FlatStyle.Flat
+        CboDBEngine.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        CboDBEngine.FormattingEnabled = True
+        CboDBEngine.Items.AddRange(New Object() {"MYSQL", "SQL SERVER"})
+        CboDBEngine.Location = New Point(306, 108)
+        CboDBEngine.Margin = New Padding(4, 5, 4, 5)
+        CboDBEngine.Name = "CboDBEngine"
+        CboDBEngine.Size = New Size(413, 40)
+        CboDBEngine.TabIndex = 2
         ' 
         ' ULbl1
         ' 
         ULbl1.BackColor = Color.AliceBlue
-        ULbl1.Location = New Point(11, 108)
-        ULbl1.Margin = New Padding(6, 5, 6, 5)
+        ULbl1.Location = New Point(18, 109)
+        ULbl1.Margin = New Padding(10, 8, 10, 8)
         ULbl1.Name = "ULbl1"
-        ULbl1.Size = New Size(281, 55)
+        ULbl1.Size = New Size(275, 39)
         ULbl1.SLFText = "DB Engine"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
         ULbl1.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Default
         ULbl1.TabIndex = 1010
         ' 
-        ' ULbl_FileStorage
-        ' 
-        ULbl_FileStorage.BackColor = Color.MistyRose
-        ULbl_FileStorage.Location = New Point(11, 515)
-        ULbl_FileStorage.Margin = New Padding(7, 10, 7, 10)
-        ULbl_FileStorage.Name = "ULbl_FileStorage"
-        ULbl_FileStorage.Size = New Size(281, 55)
-        ULbl_FileStorage.SLFText = "File Storage"
-        ULbl_FileStorage.SLFTextAdjuster = False
-        ULbl_FileStorage.SLFTextBorder = False
-        ULbl_FileStorage.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Red
-        ULbl_FileStorage.TabIndex = 1009
-        ' 
         ' ULbl_DataStorage
         ' 
         ULbl_DataStorage.BackColor = Color.MistyRose
-        ULbl_DataStorage.Location = New Point(11, 448)
-        ULbl_DataStorage.Margin = New Padding(7, 10, 7, 10)
+        ULbl_DataStorage.Location = New Point(18, 448)
+        ULbl_DataStorage.Margin = New Padding(12, 17, 12, 17)
         ULbl_DataStorage.Name = "ULbl_DataStorage"
-        ULbl_DataStorage.Size = New Size(281, 55)
-        ULbl_DataStorage.SLFText = "Data Storage"
+        ULbl_DataStorage.Size = New Size(275, 39)
+        ULbl_DataStorage.SLFText = "Database Name"
         ULbl_DataStorage.SLFTextAdjuster = False
         ULbl_DataStorage.SLFTextBorder = False
         ULbl_DataStorage.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Red
         ULbl_DataStorage.TabIndex = 1008
         ' 
-        ' Txt_FileStorage
+        ' TxtDataStorage
         ' 
-        Txt_FileStorage.BackColor = Color.White
-        Txt_FileStorage.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_FileStorage.Location = New Point(306, 515)
-        Txt_FileStorage.Margin = New Padding(6, 5, 6, 5)
-        Txt_FileStorage.MaxLength = 255
-        Txt_FileStorage.Name = "Txt_FileStorage"
-        Txt_FileStorage.Size = New Size(413, 39)
-        Txt_FileStorage.TabIndex = 8
-        Txt_FileStorage.Tag = "txt"
-        Txt_FileStorage.XOAutoTrim = True
-        Txt_FileStorage.XOHarusDiisi = True
-        Txt_FileStorage.XOHarusDiisiWarnaLatar = Color.LightPink
-        Txt_FileStorage.XOHarusDiisiWarnaLatarDefault = Color.White
-        Txt_FileStorage.XOHightlightSaatFokus = True
-        Txt_FileStorage.XOHightlightSaatFokusWarna = Color.LightYellow
-        Txt_FileStorage.XOIsBlank = True
-        Txt_FileStorage.XOIsSearchBox = False
-        Txt_FileStorage.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_FileStorage.XOPilihSemuaSaatFokus = False
-        Txt_FileStorage.XOPwdLengthMin = 0
-        Txt_FileStorage.XOPwdStrengthCalculate = False
-        Txt_FileStorage.XOPwdStrengthScore = 0
-        Txt_FileStorage.XOPwdStrengthText = Nothing
-        Txt_FileStorage.XORestriction = ControlCodeBase.enuRestriction.None
-        Txt_FileStorage.XOSearchBoxText = "Type then press Enter"
-        Txt_FileStorage.XOSQLText = ""
-        Txt_FileStorage.XOTanpaSpasi = False
-        Txt_FileStorage.XOValidasiField = Nothing
+        TxtDataStorage.BackColor = Color.White
+        TxtDataStorage.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtDataStorage.Location = New Point(306, 448)
+        TxtDataStorage.Margin = New Padding(6, 5, 6, 5)
+        TxtDataStorage.MaxLength = 255
+        TxtDataStorage.Name = "TxtDataStorage"
+        TxtDataStorage.Size = New Size(413, 39)
+        TxtDataStorage.TabIndex = 7
+        TxtDataStorage.Tag = "txt"
+        TxtDataStorage.XOAutoTrim = True
+        TxtDataStorage.XOHarusDiisi = True
+        TxtDataStorage.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtDataStorage.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtDataStorage.XOHightlightSaatFokus = True
+        TxtDataStorage.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtDataStorage.XOIsBlank = True
+        TxtDataStorage.XOIsSearchBox = False
+        TxtDataStorage.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtDataStorage.XOPilihSemuaSaatFokus = False
+        TxtDataStorage.XOPwdLengthMin = 8
+        TxtDataStorage.XOPwdStrengthCalculate = False
+        TxtDataStorage.XOPwdStrengthScore = 0
+        TxtDataStorage.XOPwdStrengthText = Nothing
+        TxtDataStorage.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtDataStorage.XOSearchBoxText = "Type then press Enter"
+        TxtDataStorage.XOSQLText = ""
+        TxtDataStorage.XOTanpaSpasi = True
+        TxtDataStorage.XOValidasiField = Nothing
         ' 
-        ' Txt_DataStorage
+        ' ChkDefault
         ' 
-        Txt_DataStorage.BackColor = Color.White
-        Txt_DataStorage.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_DataStorage.Location = New Point(306, 448)
-        Txt_DataStorage.Margin = New Padding(6, 5, 6, 5)
-        Txt_DataStorage.MaxLength = 255
-        Txt_DataStorage.Name = "Txt_DataStorage"
-        Txt_DataStorage.Size = New Size(413, 39)
-        Txt_DataStorage.TabIndex = 7
-        Txt_DataStorage.Tag = "txt"
-        Txt_DataStorage.XOAutoTrim = True
-        Txt_DataStorage.XOHarusDiisi = True
-        Txt_DataStorage.XOHarusDiisiWarnaLatar = Color.LightPink
-        Txt_DataStorage.XOHarusDiisiWarnaLatarDefault = Color.White
-        Txt_DataStorage.XOHightlightSaatFokus = True
-        Txt_DataStorage.XOHightlightSaatFokusWarna = Color.LightYellow
-        Txt_DataStorage.XOIsBlank = True
-        Txt_DataStorage.XOIsSearchBox = False
-        Txt_DataStorage.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_DataStorage.XOPilihSemuaSaatFokus = False
-        Txt_DataStorage.XOPwdLengthMin = 8
-        Txt_DataStorage.XOPwdStrengthCalculate = False
-        Txt_DataStorage.XOPwdStrengthScore = 0
-        Txt_DataStorage.XOPwdStrengthText = Nothing
-        Txt_DataStorage.XORestriction = ControlCodeBase.enuRestriction.None
-        Txt_DataStorage.XOSearchBoxText = "Type then press Enter"
-        Txt_DataStorage.XOSQLText = ""
-        Txt_DataStorage.XOTanpaSpasi = False
-        Txt_DataStorage.XOValidasiField = Nothing
+        ChkDefault.AutoSize = True
+        ChkDefault.BackColor = Color.Transparent
+        ChkDefault.FlatStyle = FlatStyle.Flat
+        ChkDefault.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkDefault.Location = New Point(306, 518)
+        ChkDefault.Margin = New Padding(6, 5, 6, 5)
+        ChkDefault.Name = "ChkDefault"
+        ChkDefault.Size = New Size(313, 36)
+        ChkDefault.TabIndex = 9
+        ChkDefault.Text = "Set as Default Connection"
+        ChkDefault.UseVisualStyleBackColor = False
         ' 
-        ' Chk_Default
+        ' TxtPassword
         ' 
-        Chk_Default.AutoSize = True
-        Chk_Default.BackColor = Color.Transparent
-        Chk_Default.FlatStyle = FlatStyle.Flat
-        Chk_Default.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Chk_Default.Location = New Point(306, 583)
-        Chk_Default.Margin = New Padding(6, 5, 6, 5)
-        Chk_Default.Name = "Chk_Default"
-        Chk_Default.Size = New Size(313, 36)
-        Chk_Default.TabIndex = 9
-        Chk_Default.Text = "Set as Default Connection"
-        Chk_Default.UseVisualStyleBackColor = False
+        TxtPassword.BackColor = Color.White
+        TxtPassword.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPassword.Location = New Point(306, 382)
+        TxtPassword.Margin = New Padding(6, 5, 6, 5)
+        TxtPassword.MaxLength = 255
+        TxtPassword.Name = "TxtPassword"
+        TxtPassword.PasswordChar = "●"c
+        TxtPassword.Size = New Size(413, 39)
+        TxtPassword.TabIndex = 6
+        TxtPassword.Tag = "txt"
+        TxtPassword.XOAutoTrim = False
+        TxtPassword.XOHarusDiisi = True
+        TxtPassword.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtPassword.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtPassword.XOHightlightSaatFokus = True
+        TxtPassword.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtPassword.XOIsBlank = True
+        TxtPassword.XOIsSearchBox = False
+        TxtPassword.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtPassword.XOPilihSemuaSaatFokus = False
+        TxtPassword.XOPwdLengthMin = 8
+        TxtPassword.XOPwdStrengthCalculate = False
+        TxtPassword.XOPwdStrengthScore = 0
+        TxtPassword.XOPwdStrengthText = Nothing
+        TxtPassword.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtPassword.XOSearchBoxText = "Type then press Enter"
+        TxtPassword.XOSQLText = ""
+        TxtPassword.XOTanpaSpasi = False
+        TxtPassword.XOValidasiField = Nothing
         ' 
-        ' Txt_Password
+        ' TxtUsername
         ' 
-        Txt_Password.BackColor = Color.White
-        Txt_Password.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Password.Location = New Point(306, 382)
-        Txt_Password.Margin = New Padding(6, 5, 6, 5)
-        Txt_Password.MaxLength = 255
-        Txt_Password.Name = "Txt_Password"
-        Txt_Password.PasswordChar = "●"c
-        Txt_Password.Size = New Size(413, 39)
-        Txt_Password.TabIndex = 6
-        Txt_Password.Tag = "txt"
-        Txt_Password.XOAutoTrim = False
-        Txt_Password.XOHarusDiisi = True
-        Txt_Password.XOHarusDiisiWarnaLatar = Color.LightPink
-        Txt_Password.XOHarusDiisiWarnaLatarDefault = Color.White
-        Txt_Password.XOHightlightSaatFokus = True
-        Txt_Password.XOHightlightSaatFokusWarna = Color.LightYellow
-        Txt_Password.XOIsBlank = True
-        Txt_Password.XOIsSearchBox = False
-        Txt_Password.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_Password.XOPilihSemuaSaatFokus = False
-        Txt_Password.XOPwdLengthMin = 8
-        Txt_Password.XOPwdStrengthCalculate = False
-        Txt_Password.XOPwdStrengthScore = 0
-        Txt_Password.XOPwdStrengthText = Nothing
-        Txt_Password.XORestriction = ControlCodeBase.enuRestriction.None
-        Txt_Password.XOSearchBoxText = "Type then press Enter"
-        Txt_Password.XOSQLText = ""
-        Txt_Password.XOTanpaSpasi = False
-        Txt_Password.XOValidasiField = Nothing
-        ' 
-        ' Txt_Username
-        ' 
-        Txt_Username.BackColor = Color.White
-        Txt_Username.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Username.Location = New Point(306, 313)
-        Txt_Username.Margin = New Padding(6, 5, 6, 5)
-        Txt_Username.MaxLength = 255
-        Txt_Username.Name = "Txt_Username"
-        Txt_Username.Size = New Size(413, 39)
-        Txt_Username.TabIndex = 5
-        Txt_Username.Tag = "txt"
-        Txt_Username.XOAutoTrim = True
-        Txt_Username.XOHarusDiisi = True
-        Txt_Username.XOHarusDiisiWarnaLatar = Color.LightPink
-        Txt_Username.XOHarusDiisiWarnaLatarDefault = Color.White
-        Txt_Username.XOHightlightSaatFokus = True
-        Txt_Username.XOHightlightSaatFokusWarna = Color.LightYellow
-        Txt_Username.XOIsBlank = True
-        Txt_Username.XOIsSearchBox = False
-        Txt_Username.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_Username.XOPilihSemuaSaatFokus = False
-        Txt_Username.XOPwdLengthMin = 8
-        Txt_Username.XOPwdStrengthCalculate = False
-        Txt_Username.XOPwdStrengthScore = 0
-        Txt_Username.XOPwdStrengthText = Nothing
-        Txt_Username.XORestriction = ControlCodeBase.enuRestriction.None
-        Txt_Username.XOSearchBoxText = "Type then press Enter"
-        Txt_Username.XOSQLText = ""
-        Txt_Username.XOTanpaSpasi = False
-        Txt_Username.XOValidasiField = Nothing
+        TxtUsername.BackColor = Color.White
+        TxtUsername.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtUsername.Location = New Point(306, 313)
+        TxtUsername.Margin = New Padding(6, 5, 6, 5)
+        TxtUsername.MaxLength = 255
+        TxtUsername.Name = "TxtUsername"
+        TxtUsername.Size = New Size(413, 39)
+        TxtUsername.TabIndex = 5
+        TxtUsername.Tag = "txt"
+        TxtUsername.XOAutoTrim = True
+        TxtUsername.XOHarusDiisi = True
+        TxtUsername.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtUsername.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtUsername.XOHightlightSaatFokus = True
+        TxtUsername.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtUsername.XOIsBlank = True
+        TxtUsername.XOIsSearchBox = False
+        TxtUsername.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtUsername.XOPilihSemuaSaatFokus = False
+        TxtUsername.XOPwdLengthMin = 8
+        TxtUsername.XOPwdStrengthCalculate = False
+        TxtUsername.XOPwdStrengthScore = 0
+        TxtUsername.XOPwdStrengthText = Nothing
+        TxtUsername.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtUsername.XOSearchBoxText = "Type then press Enter"
+        TxtUsername.XOSQLText = ""
+        TxtUsername.XOTanpaSpasi = False
+        TxtUsername.XOValidasiField = Nothing
         ' 
         ' ULbl_Password
         ' 
         ULbl_Password.BackColor = Color.AliceBlue
-        ULbl_Password.Location = New Point(11, 382)
-        ULbl_Password.Margin = New Padding(7, 10, 7, 10)
+        ULbl_Password.Location = New Point(18, 382)
+        ULbl_Password.Margin = New Padding(12, 17, 12, 17)
         ULbl_Password.Name = "ULbl_Password"
-        ULbl_Password.Size = New Size(281, 55)
+        ULbl_Password.Size = New Size(275, 39)
         ULbl_Password.SLFText = "Password"
         ULbl_Password.SLFTextAdjuster = False
         ULbl_Password.SLFTextBorder = False
@@ -371,10 +344,10 @@ Partial Class CONN_Editor
         ' ULbl_Username
         ' 
         ULbl_Username.BackColor = Color.AliceBlue
-        ULbl_Username.Location = New Point(11, 313)
-        ULbl_Username.Margin = New Padding(7, 10, 7, 10)
+        ULbl_Username.Location = New Point(18, 313)
+        ULbl_Username.Margin = New Padding(12, 17, 12, 17)
         ULbl_Username.Name = "ULbl_Username"
-        ULbl_Username.Size = New Size(281, 55)
+        ULbl_Username.Size = New Size(275, 39)
         ULbl_Username.SLFText = "Username"
         ULbl_Username.SLFTextAdjuster = False
         ULbl_Username.SLFTextBorder = False
@@ -384,55 +357,55 @@ Partial Class CONN_Editor
         ' ULbl_Port
         ' 
         ULbl_Port.BackColor = Color.AliceBlue
-        ULbl_Port.Location = New Point(11, 247)
-        ULbl_Port.Margin = New Padding(7, 10, 7, 10)
+        ULbl_Port.Location = New Point(18, 247)
+        ULbl_Port.Margin = New Padding(12, 17, 12, 17)
         ULbl_Port.Name = "ULbl_Port"
-        ULbl_Port.Size = New Size(281, 55)
+        ULbl_Port.Size = New Size(275, 39)
         ULbl_Port.SLFText = "Port"
         ULbl_Port.SLFTextAdjuster = False
         ULbl_Port.SLFTextBorder = False
         ULbl_Port.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Default
         ULbl_Port.TabIndex = 1003
         ' 
-        ' Txt_Port
+        ' TxtPort
         ' 
-        Txt_Port.BackColor = Color.White
-        Txt_Port.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Port.Location = New Point(306, 247)
-        Txt_Port.Margin = New Padding(6, 5, 6, 5)
-        Txt_Port.MaxLength = 255
-        Txt_Port.Name = "Txt_Port"
-        Txt_Port.Size = New Size(161, 39)
-        Txt_Port.TabIndex = 4
-        Txt_Port.Tag = "txt"
-        Txt_Port.TextAlign = HorizontalAlignment.Center
-        Txt_Port.XOAutoTrim = True
-        Txt_Port.XOHarusDiisi = True
-        Txt_Port.XOHarusDiisiWarnaLatar = Color.LightPink
-        Txt_Port.XOHarusDiisiWarnaLatarDefault = Color.White
-        Txt_Port.XOHightlightSaatFokus = True
-        Txt_Port.XOHightlightSaatFokusWarna = Color.LightYellow
-        Txt_Port.XOIsBlank = True
-        Txt_Port.XOIsSearchBox = False
-        Txt_Port.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_Port.XOPilihSemuaSaatFokus = False
-        Txt_Port.XOPwdLengthMin = 8
-        Txt_Port.XOPwdStrengthCalculate = False
-        Txt_Port.XOPwdStrengthScore = 0
-        Txt_Port.XOPwdStrengthText = Nothing
-        Txt_Port.XORestriction = ControlCodeBase.enuRestriction.OnlyNumber
-        Txt_Port.XOSearchBoxText = "Type then press Enter"
-        Txt_Port.XOSQLText = ""
-        Txt_Port.XOTanpaSpasi = False
-        Txt_Port.XOValidasiField = Nothing
+        TxtPort.BackColor = Color.White
+        TxtPort.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPort.Location = New Point(306, 247)
+        TxtPort.Margin = New Padding(6, 5, 6, 5)
+        TxtPort.MaxLength = 255
+        TxtPort.Name = "TxtPort"
+        TxtPort.Size = New Size(161, 39)
+        TxtPort.TabIndex = 4
+        TxtPort.Tag = "txt"
+        TxtPort.TextAlign = HorizontalAlignment.Center
+        TxtPort.XOAutoTrim = True
+        TxtPort.XOHarusDiisi = True
+        TxtPort.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtPort.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtPort.XOHightlightSaatFokus = True
+        TxtPort.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtPort.XOIsBlank = True
+        TxtPort.XOIsSearchBox = False
+        TxtPort.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtPort.XOPilihSemuaSaatFokus = False
+        TxtPort.XOPwdLengthMin = 8
+        TxtPort.XOPwdStrengthCalculate = False
+        TxtPort.XOPwdStrengthScore = 0
+        TxtPort.XOPwdStrengthText = Nothing
+        TxtPort.XORestriction = ControlCodeBase.enuRestriction.OnlyNumber
+        TxtPort.XOSearchBoxText = "Type then press Enter"
+        TxtPort.XOSQLText = ""
+        TxtPort.XOTanpaSpasi = False
+        TxtPort.XOValidasiField = Nothing
         ' 
         ' ULbl_Address
         ' 
         ULbl_Address.BackColor = Color.AliceBlue
-        ULbl_Address.Location = New Point(11, 178)
-        ULbl_Address.Margin = New Padding(7, 10, 7, 10)
+        ULbl_Address.Location = New Point(18, 178)
+        ULbl_Address.Margin = New Padding(12, 17, 12, 17)
         ULbl_Address.Name = "ULbl_Address"
-        ULbl_Address.Size = New Size(281, 55)
+        ULbl_Address.Size = New Size(275, 39)
         ULbl_Address.SLFText = "Address"
         ULbl_Address.SLFTextAdjuster = False
         ULbl_Address.SLFTextBorder = False
@@ -442,100 +415,77 @@ Partial Class CONN_Editor
         ' ULbl_Name
         ' 
         ULbl_Name.BackColor = Color.AliceBlue
-        ULbl_Name.Location = New Point(11, 38)
-        ULbl_Name.Margin = New Padding(7, 10, 7, 10)
+        ULbl_Name.Location = New Point(18, 38)
+        ULbl_Name.Margin = New Padding(12, 17, 12, 17)
         ULbl_Name.Name = "ULbl_Name"
-        ULbl_Name.Size = New Size(281, 55)
+        ULbl_Name.Size = New Size(275, 39)
         ULbl_Name.SLFText = "Connection Name"
         ULbl_Name.SLFTextAdjuster = False
         ULbl_Name.SLFTextBorder = False
         ULbl_Name.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Default
         ULbl_Name.TabIndex = 1000
         ' 
-        ' Txt_ConnectionName
+        ' TxtConnectionName
         ' 
-        Txt_ConnectionName.BackColor = Color.White
-        Txt_ConnectionName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_ConnectionName.Location = New Point(306, 38)
-        Txt_ConnectionName.Margin = New Padding(6, 5, 6, 5)
-        Txt_ConnectionName.MaxLength = 255
-        Txt_ConnectionName.Name = "Txt_ConnectionName"
-        Txt_ConnectionName.Size = New Size(413, 39)
-        Txt_ConnectionName.TabIndex = 0
-        Txt_ConnectionName.Tag = "txt"
-        Txt_ConnectionName.XOAutoTrim = True
-        Txt_ConnectionName.XOHarusDiisi = True
-        Txt_ConnectionName.XOHarusDiisiWarnaLatar = Color.LightPink
-        Txt_ConnectionName.XOHarusDiisiWarnaLatarDefault = Color.White
-        Txt_ConnectionName.XOHightlightSaatFokus = True
-        Txt_ConnectionName.XOHightlightSaatFokusWarna = Color.LightYellow
-        Txt_ConnectionName.XOIsBlank = True
-        Txt_ConnectionName.XOIsSearchBox = False
-        Txt_ConnectionName.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_ConnectionName.XOPilihSemuaSaatFokus = False
-        Txt_ConnectionName.XOPwdLengthMin = 8
-        Txt_ConnectionName.XOPwdStrengthCalculate = False
-        Txt_ConnectionName.XOPwdStrengthScore = 0
-        Txt_ConnectionName.XOPwdStrengthText = Nothing
-        Txt_ConnectionName.XORestriction = ControlCodeBase.enuRestriction.None
-        Txt_ConnectionName.XOSearchBoxText = "Type then press Enter"
-        Txt_ConnectionName.XOSQLText = ""
-        Txt_ConnectionName.XOTanpaSpasi = False
-        Txt_ConnectionName.XOValidasiField = Nothing
+        TxtConnectionName.BackColor = Color.White
+        TxtConnectionName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtConnectionName.Location = New Point(306, 38)
+        TxtConnectionName.Margin = New Padding(6, 5, 6, 5)
+        TxtConnectionName.MaxLength = 255
+        TxtConnectionName.Name = "TxtConnectionName"
+        TxtConnectionName.Size = New Size(413, 39)
+        TxtConnectionName.TabIndex = 0
+        TxtConnectionName.Tag = "txt"
+        TxtConnectionName.XOAutoTrim = True
+        TxtConnectionName.XOHarusDiisi = True
+        TxtConnectionName.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtConnectionName.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtConnectionName.XOHightlightSaatFokus = True
+        TxtConnectionName.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtConnectionName.XOIsBlank = True
+        TxtConnectionName.XOIsSearchBox = False
+        TxtConnectionName.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtConnectionName.XOPilihSemuaSaatFokus = False
+        TxtConnectionName.XOPwdLengthMin = 8
+        TxtConnectionName.XOPwdStrengthCalculate = False
+        TxtConnectionName.XOPwdStrengthScore = 0
+        TxtConnectionName.XOPwdStrengthText = Nothing
+        TxtConnectionName.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtConnectionName.XOSearchBoxText = "Type then press Enter"
+        TxtConnectionName.XOSQLText = ""
+        TxtConnectionName.XOTanpaSpasi = False
+        TxtConnectionName.XOValidasiField = Nothing
         ' 
-        ' Txt_Address
+        ' TxtAddress
         ' 
-        Txt_Address.BackColor = Color.White
-        Txt_Address.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Address.Location = New Point(306, 178)
-        Txt_Address.Margin = New Padding(6, 5, 6, 5)
-        Txt_Address.MaxLength = 255
-        Txt_Address.Name = "Txt_Address"
-        Txt_Address.Size = New Size(413, 39)
-        Txt_Address.TabIndex = 3
-        Txt_Address.Tag = "txt"
-        Txt_Address.XOAutoTrim = True
-        Txt_Address.XOHarusDiisi = True
-        Txt_Address.XOHarusDiisiWarnaLatar = Color.LightPink
-        Txt_Address.XOHarusDiisiWarnaLatarDefault = Color.White
-        Txt_Address.XOHightlightSaatFokus = True
-        Txt_Address.XOHightlightSaatFokusWarna = Color.LightYellow
-        Txt_Address.XOIsBlank = True
-        Txt_Address.XOIsSearchBox = False
-        Txt_Address.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt_Address.XOPilihSemuaSaatFokus = False
-        Txt_Address.XOPwdLengthMin = 8
-        Txt_Address.XOPwdStrengthCalculate = False
-        Txt_Address.XOPwdStrengthScore = 0
-        Txt_Address.XOPwdStrengthText = Nothing
-        Txt_Address.XORestriction = ControlCodeBase.enuRestriction.None
-        Txt_Address.XOSearchBoxText = "Type then press Enter"
-        Txt_Address.XOSQLText = ""
-        Txt_Address.XOTanpaSpasi = False
-        Txt_Address.XOValidasiField = Nothing
-        ' 
-        ' Btn_Test
-        ' 
-        Btn_Test.BackColor = Color.RoyalBlue
-        Btn_Test.Cursor = Cursors.Hand
-        Btn_Test.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
-        Btn_Test.FlatAppearance.BorderSize = 2
-        Btn_Test.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
-        Btn_Test.FlatStyle = FlatStyle.Flat
-        Btn_Test.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Btn_Test.ForeColor = Color.White
-        Btn_Test.Location = New Point(20, 13)
-        Btn_Test.Margin = New Padding(6, 5, 6, 5)
-        Btn_Test.Name = "Btn_Test"
-        Btn_Test.Size = New Size(167, 77)
-        Btn_Test.TabIndex = 12
-        Btn_Test.Text = "Test"
-        Btn_Test.UseVisualStyleBackColor = False
-        Btn_Test.Visible = False
-        Btn_Test.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        Btn_Test.XOTampilkanFocusBorder = False
-        Btn_Test.XOValidasiSemuaInput = False
-        Btn_Test.XOValidasiSemuaInputTag = Nothing
+        TxtAddress.BackColor = Color.White
+        TxtAddress.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtAddress.Location = New Point(306, 178)
+        TxtAddress.Margin = New Padding(6, 5, 6, 5)
+        TxtAddress.MaxLength = 255
+        TxtAddress.Name = "TxtAddress"
+        TxtAddress.Size = New Size(413, 39)
+        TxtAddress.TabIndex = 3
+        TxtAddress.Tag = "txt"
+        TxtAddress.XOAutoTrim = True
+        TxtAddress.XOHarusDiisi = True
+        TxtAddress.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtAddress.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtAddress.XOHightlightSaatFokus = True
+        TxtAddress.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtAddress.XOIsBlank = True
+        TxtAddress.XOIsSearchBox = False
+        TxtAddress.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtAddress.XOPilihSemuaSaatFokus = False
+        TxtAddress.XOPwdLengthMin = 8
+        TxtAddress.XOPwdStrengthCalculate = False
+        TxtAddress.XOPwdStrengthScore = 0
+        TxtAddress.XOPwdStrengthText = Nothing
+        TxtAddress.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtAddress.XOSearchBoxText = "Type then press Enter"
+        TxtAddress.XOSQLText = ""
+        TxtAddress.XOTanpaSpasi = False
+        TxtAddress.XOValidasiField = Nothing
         ' 
         ' CONN_Editor
         ' 
@@ -564,22 +514,20 @@ Partial Class CONN_Editor
     Friend WithEvents BtnCancel As btn
     Friend WithEvents TbctlBasic As tbctl
     Friend WithEvents tp1_ As TabPage
-    Friend WithEvents Txt_Address As txt
-    Friend WithEvents Txt_ConnectionName As txt
-    Friend WithEvents Txt_Port As txt
+    Friend WithEvents TxtAddress As txt
+    Friend WithEvents TxtConnectionName As txt
+    Friend WithEvents TxtPort As txt
     Friend WithEvents ULbl_Address As ULbl
-    Friend WithEvents ULbl_Name As ULbl
     Friend WithEvents ULbl_Password As ULbl
     Friend WithEvents ULbl_Username As ULbl
     Friend WithEvents ULbl_Port As ULbl
-    Friend WithEvents Txt_Password As txt
-    Friend WithEvents Txt_Username As txt
-    Friend WithEvents Btn_Test As btn
-    Friend WithEvents Chk_Default As chk
-    Friend WithEvents Txt_FileStorage As txt
-    Friend WithEvents Txt_DataStorage As txt
-    Friend WithEvents ULbl_FileStorage As ULbl
+    Friend WithEvents TxtPassword As txt
+    Friend WithEvents TxtUsername As txt
+    Friend WithEvents ChkDefault As chk
+    Friend WithEvents TxtDataStorage As txt
     Friend WithEvents ULbl_DataStorage As ULbl
     Friend WithEvents ULbl1 As ULbl
-    Friend WithEvents Cbo_DBEngine As cbo
+    Friend WithEvents CboDBEngine As cbo
+    Friend WithEvents ULbl_Name As ULbl
+    Friend WithEvents BtnTest As btn
 End Class

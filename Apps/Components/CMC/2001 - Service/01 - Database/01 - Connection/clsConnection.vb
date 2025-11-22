@@ -12,24 +12,24 @@ Namespace Database.Connect
         ''' <summary>
         ''' Koneksi database Access 2003 menggunakan OLEDB
         ''' </summary>
-        ''' <param name="DatabasePath">Direktori database</param>
-        ''' <param name="Username">Username</param>
-        ''' <param name="Password">Kata sandi</param>
+        ''' <param name="databasepath">Direktori database</param>
+        ''' <param name="username">username</param>
+        ''' <param name="password">Kata sandi</param>
         ''' <returns>String</returns>
         ''' <remarks></remarks>
-        Function Microsoftoledbstandard(ByVal DatabasePath As String, ByVal Username As String, ByVal Password As String) As String
+        Function Microsoftoledbstandard(ByVal databasepath As String, ByVal username As String, ByVal password As String) As String
 #End Region
 
 #Region "ODBC"
         ''' <summary>
         ''' Koneksi database Access 2003 Standard
         ''' </summary>
-        ''' <param name="DatabasePath">Direktori database</param>
-        ''' <param name="Username">Username</param>
-        ''' <param name="Password">Kata sandi</param>
+        ''' <param name="databasepath">Direktori database</param>
+        ''' <param name="username">username</param>
+        ''' <param name="password">Kata sandi</param>
         ''' <returns>String</returns>
         ''' <remarks></remarks>
-        Function Microsoftodbcstandard(ByVal DatabasePath As String, ByVal Username As String, ByVal Password As String) As String
+        Function Microsoftodbcstandard(ByVal databasepath As String, ByVal username As String, ByVal password As String) As String
 #End Region
     End Interface
 
@@ -39,22 +39,22 @@ Namespace Database.Connect
         ''' <summary>
         ''' Koneksi SQL Server 2008 Standard
         ''' </summary>
-        ''' <param name="ServerAddress">Alamat server</param>
-        ''' <param name="DatabaseName">Nama database</param>
-        ''' <param name="Username">Username</param>
-        ''' <param name="Password">Password</param>
+        ''' <param name="serveraddress">Alamat server</param>
+        ''' <param name="databasename">Nama database</param>
+        ''' <param name="username">username</param>
+        ''' <param name="password">password</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function Mssql2008standard(ByVal ServerAddress As String, ByVal ServerPort As Integer, ByVal DatabaseName As String, ByVal Username As String, ByVal Password As String) As String
+        Function Mssql2008standard(ByVal serveraddress As String, ByVal serverport As Integer, ByVal databasename As String, ByVal username As String, ByVal password As String) As String
 
         ''' <summary>
         ''' Koneksi SQL Server 2008 Trusted Connection
         ''' </summary>
-        ''' <param name="ServerAddress">Alamat server</param>
-        ''' <param name="DatabaseName">Nama database</param>
+        ''' <param name="serveraddress">Alamat server</param>
+        ''' <param name="databasename">Nama database</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Function Mssql2008trustedconnection(ByVal ServerAddress As String, ByVal DatabaseName As String) As String
+        Function Mssql2008trustedconnection(ByVal serveraddress As String, ByVal databasename As String) As String
 #End Region
     End Interface
 
@@ -63,13 +63,13 @@ Namespace Database.Connect
         ''' <summary>
         ''' 
         ''' </summary>
-        ''' <param name="ServerAddress">Database server address</param>
-        ''' <param name="ServerPort">Database port</param>
-        ''' <param name="DatabaseName">Database name</param>
-        ''' <param name="Username">Username to access database</param>
-        ''' <param name="Password">PPassword to access dadtabase</param>
+        ''' <param name="serveraddress">Database server address</param>
+        ''' <param name="serverport">Database port</param>
+        ''' <param name="databasename">Database name</param>
+        ''' <param name="username">username to access database</param>
+        ''' <param name="password">PPassword to access dadtabase</param>
         ''' <returns></returns>
-        Function Mysqlforcessl(ByVal ServerAddress As String, ByVal ServerPort As Integer, ByVal DatabaseName As String, ByVal Username As String, ByVal Password As String) As String
+        Function Mysqlforcessl(ByVal serveraddress As String, ByVal serverport As Integer, ByVal databasename As String, ByVal username As String, ByVal password As String) As String
     End Interface
 
     Friend Interface ILocaldbconnections
@@ -82,138 +82,138 @@ Namespace Database.Connect
         ''' <summary>
         ''' 
         ''' </summary>
-        ''' <param name="DBFileName"></param>
+        ''' <param name="dbfilename"></param>
         ''' <returns></returns>
-        Function LocalDBAttachDB(ByVal DBFileName As String) As String
+        Function LocalDBAttachDB(ByVal dbfilename As String) As String
 
         ''' <summary>
         ''' 
         ''' </summary>
-        ''' <param name="InstanceName"></param>
+        ''' <param name="instancename"></param>
         ''' <returns></returns>
-        Function LocalDBSpecifiedInstance(ByVal InstanceName As String) As String
+        Function LocalDBSpecifiedInstance(ByVal instancename As String) As String
 
         ''' <summary>
         ''' 
         ''' </summary>
-        ''' <param name="DBFileName"></param>
+        ''' <param name="dbfilename"></param>
         ''' <returns></returns>
-        Function LocalDBInitialCatalog(ByVal DBFileName As String) As String
+        Function LocalDBInitialCatalog(ByVal dbfilename As String) As String
 
     End Interface
 
     Friend Interface ISqlite
-        Function SQLiteBasic(ByVal DBFile As String) As String
+        Function SQLiteBasic(ByVal dbfile As String) As String
 
-        Function SQLiteOpenWithPassword(ByVal DBFile As String, ByVal Password As String) As String
+        Function SQLiteOpenWithPassword(ByVal dbfile As String, ByVal password As String) As String
 
     End Interface
 
     '-----------------------------------------------------------------------------
-    Public Class MSAccess2003Connection
+    Public Class Msaccess2003connection
         Implements IMsaccess2003connections
         ''' <summary>
         ''' Koneksi database Access 2003
         ''' </summary>
-        ''' <param name="DatabasePath">Direktori database</param>
-        ''' <param name="Username">Username</param>
-        ''' <param name="Password">Kata sandi</param>
+        ''' <param name="databasepath">Direktori database</param>
+        ''' <param name="username">username</param>
+        ''' <param name="password">Kata sandi</param>
         ''' <returns>String</returns>
         ''' <remarks></remarks>
-        Public Function Microsoftodbcstandard(DatabasePath As String, Username As String, Password As String) As String Implements IMsaccess2003connections.Microsoftodbcstandard
-            V_result = "Driver={Microsoft Access Driver (*.mdb)};Dbq=" & DatabasePath & ";Uid=" & Username & ";Pwd=" & Password & ";"
-            Return V_result
+        Public Function Microsoftodbcstandard(databasepath As String, username As String, password As String) As String Implements IMsaccess2003connections.Microsoftodbcstandard
+            V_Result = "Driver={Microsoft Access Driver (*.mdb)};Dbq=" & databasepath & ";Uid=" & username & ";Pwd=" & password & ";"
+            Return V_Result
         End Function
 
         ''' <summary>
         ''' 
         ''' </summary>
-        ''' <param name="DatabasePath"></param>
-        ''' <param name="Username"></param>
-        ''' <param name="Password"></param>
+        ''' <param name="databasepath"></param>
+        ''' <param name="username"></param>
+        ''' <param name="password"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Public Function Microsoftoledbstandard(DatabasePath As String, Username As String, Password As String) As String Implements IMsaccess2003connections.Microsoftoledbstandard
-            V_result = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & DatabasePath & ";User Id=" & Username & ";Password=" & Password & ";"
-            Return V_result
+        Public Function Microsoftoledbstandard(databasepath As String, username As String, password As String) As String Implements IMsaccess2003connections.Microsoftoledbstandard
+            V_Result = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & databasepath & ";User Id=" & username & ";password=" & password & ";"
+            Return V_Result
         End Function
     End Class
 
-    Public Class MSSQLServer2008Connection
+    Public Class Mssqlserver2008connection
         Implements IMssqlserver2008connections
 
         ''' <summary>
         ''' 
         ''' </summary>
-        ''' <param name="ServerAddress"></param>
-        ''' <param name="ServerPort"></param>
-        ''' <param name="DatabaseName"></param>
-        ''' <param name="Username"></param>
-        ''' <param name="Password"></param>
+        ''' <param name="serveraddress"></param>
+        ''' <param name="serverport"></param>
+        ''' <param name="databasename"></param>
+        ''' <param name="username"></param>
+        ''' <param name="password"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Public Function Mssql2008standard(ServerAddress As String, ByVal ServerPort As Integer, ByVal DatabaseName As String, Username As String, Password As String) As String Implements IMssqlserver2008connections.Mssql2008standard
-            V_result = String.Format(CultureInfo.CurrentCulture, "Server = {0},{1}; Database = {2}; User Id = {3}; Password = {4};", ServerAddress.Trim, ServerPort, DatabaseName, Username.Trim, Password)
-            Return V_result
+        Public Function Mssql2008standard(serveraddress As String, ByVal serverport As Integer, ByVal databasename As String, username As String, password As String) As String Implements IMssqlserver2008connections.Mssql2008standard
+            V_Result = String.Format(CultureInfo.CurrentCulture, "Server = {0},{1}; Database = {2}; User Id = {3}; password = {4};", serveraddress.Trim, serverport, databasename, username.Trim, password)
+            Return V_Result
         End Function
 
         ''' <summary>
         ''' 
         ''' </summary>
-        ''' <param name="ServerAddress"></param>
-        ''' <param name="DatabaseName"></param>
+        ''' <param name="serveraddress"></param>
+        ''' <param name="databasename"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Public Function Mssql2008trustedconnection(ServerAddress As String, DatabaseName As String) As String Implements IMssqlserver2008connections.Mssql2008trustedconnection
-            V_result = "Server = " & ServerAddress.Trim & "; Database = " & DatabaseName & "; Trusted_Connection = True;"
-            Return V_result
+        Public Function Mssql2008trustedconnection(serveraddress As String, databasename As String) As String Implements IMssqlserver2008connections.Mssql2008trustedconnection
+            V_Result = "Server = " & serveraddress.Trim & "; Database = " & databasename & "; Trusted_Connection = True;"
+            Return V_Result
         End Function
     End Class
 
-    Public Class MySQLConnection
+    Public Class Mysqlconnection
         Implements IMysqlconnections
 
-        Public Function Mysqlforcessl(ServerAddress As String, ServerPort As Integer, DatabaseName As String, Username As String, Password As String) As String Implements IMysqlconnections.Mysqlforcessl
-            V_result = String.Format(CultureInfo.CurrentCulture, "Server={0};Database={1};Port={2};Uid={3};Pwd={4};SslMode=Required;", ServerAddress, DatabaseName, ServerPort, Username, Password)
-            Return V_result
+        Public Function Mysqlforcessl(serveraddress As String, serverport As Integer, databasename As String, username As String, password As String) As String Implements IMysqlconnections.Mysqlforcessl
+            V_Result = String.Format(CultureInfo.CurrentCulture, "Server={0};Database={1};Port={2};Uid={3};Pwd={4};SslMode=Required;", serveraddress, databasename, serverport, username, password)
+            Return V_Result
         End Function
     End Class
 
     Public Class LocalDBConnection
         Implements ILocaldbconnections
 
-        Public Function LocalDBAttachDB(DBFileName As String) As String Implements ILocaldbconnections.LocalDBAttachDB
-            V_result = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=" & DBFileName & ";"
-            Return V_result
+        Public Function LocalDBAttachDB(dbfilename As String) As String Implements ILocaldbconnections.LocalDBAttachDB
+            V_Result = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=" & dbfilename & ";"
+            Return V_Result
         End Function
 
         Public Function LocalDBAutomaticInstance() As String Implements ILocaldbconnections.LocalDBAutomaticInstance
-            V_result = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;"
-            Return V_result
+            V_Result = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;"
+            Return V_Result
         End Function
 
-        Public Function LocalDBSpecifiedInstance(InstanceName As String) As String Implements ILocaldbconnections.LocalDBSpecifiedInstance
-            V_result = "Server=(localdb)\" & InstanceName & ";Integrated Security=true;"
-            Return V_result
+        Public Function LocalDBSpecifiedInstance(instancename As String) As String Implements ILocaldbconnections.LocalDBSpecifiedInstance
+            V_Result = "Server=(localdb)\" & instancename & ";Integrated Security=true;"
+            Return V_Result
         End Function
 
-        Public Function LocalDBInitialCatalog(DBFileName As String) As String Implements ILocaldbconnections.LocalDBInitialCatalog
-            V_result = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=" & DBFileName & ";Encrypt=False; TrustServerCertificate=False;"
-            Return V_result
+        Public Function LocalDBInitialCatalog(dbfilename As String) As String Implements ILocaldbconnections.LocalDBInitialCatalog
+            V_Result = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=" & dbfilename & ";Encrypt=False; TrustServerCertificate=False;"
+            Return V_Result
         End Function
     End Class
 
     Public Class SQLiteConnection
         Implements ISqlite
 
-        Public Function SQLiteBasic(DBFile As String) As String Implements ISqlite.SQLiteBasic
-            'V_result = "Data Source=" & DBFile & ";Version=3;Mode=ReadWrite;Journal Mode=Off;"
-            V_result = "Data Source=" & DBFile & ";Version=3;Journal Mode=Persist;Synchronous=Full;Max Page Count=5000;"
-            Return V_result
+        Public Function SQLiteBasic(dbfile As String) As String Implements ISqlite.SQLiteBasic
+            'V_result = "Data Source=" & dbfile & ";Version=3;Mode=ReadWrite;Journal Mode=Off;"
+            V_Result = "Data Source=" & dbfile & ";Version=3;Journal Mode=Persist;Synchronous=Full;Max Page Count=5000;"
+            Return V_Result
         End Function
 
-        Public Function SQLiteOpenWithPassword(DBFile As String, Password As String) As String Implements ISqlite.SQLiteOpenWithPassword
-            V_result = "Data Source=" & DBFile & ";Password=" & Password & ";"
+        Public Function SQLiteOpenWithPassword(dbfile As String, password As String) As String Implements ISqlite.SQLiteOpenWithPassword
+            V_Result = "Data Source=" & dbfile & ";password=" & password & ";"
             Return V_result
         End Function
     End Class

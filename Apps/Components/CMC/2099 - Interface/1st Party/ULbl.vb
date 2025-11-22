@@ -139,4 +139,16 @@ Public Class ULbl
             iLoop = 0
         End If
     End Sub
+
+    Private Sub ULbl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        '
+    End Sub
+
+    Private Sub ULbl_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        UText.Height = Me.Height
+    End Sub
+
+    Private Sub ULbl_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
+        UText.Height = Me.Height
+    End Sub
 End Class

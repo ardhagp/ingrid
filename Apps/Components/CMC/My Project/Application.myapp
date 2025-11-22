@@ -8,5 +8,5 @@
   <ApplicationType>1</ApplicationType>
   <SaveMySettingsOnExit>true</SaveMySettingsOnExit>
   <MainForm></MainForm>
-  <HighDpiMode>1</HighDpiMode>
+  <HighDpiMode>0</HighDpiMode>
 </MyApplicationData>
