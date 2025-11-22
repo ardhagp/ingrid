@@ -22,58 +22,59 @@ Partial Class ULbl
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
+        components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ULbl))
-        Me.UHead = New CMCv.pctbx(Me.components)
-        Me.UText = New CMCv.lbl(Me.components)
-        Me.tmr_ = New System.Windows.Forms.Timer(Me.components)
-        CType(Me.UHead, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'UHead
-        '
-        Me.UHead.BackColor = System.Drawing.Color.DarkGray
-        Me.UHead.Dock = System.Windows.Forms.DockStyle.Left
-        Me.UHead.ErrorImage = CType(resources.GetObject("UHead.ErrorImage"), System.Drawing.Image)
-        Me.UHead.InitialImage = CType(resources.GetObject("UHead.InitialImage"), System.Drawing.Image)
-        Me.UHead.Location = New System.Drawing.Point(0, 0)
-        Me.UHead.Name = "UHead"
-        Me.UHead.Size = New System.Drawing.Size(10, 29)
-        Me.UHead.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.UHead.XOTampilkanBorder = False
-        Me.UHead.XOWarnaBorder = System.Drawing.Color.DodgerBlue
-        Me.UHead.TabIndex = 0
-        Me.UHead.TabStop = False
-        '
-        'UText
-        '
-        Me.UText.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.UText.BackColor = System.Drawing.Color.Transparent
-        Me.UText.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.UText.Location = New System.Drawing.Point(10, 0)
-        Me.UText.Name = "UText"
-        Me.UText.Size = New System.Drawing.Size(137, 29)
-        Me.UText.XOCustomElipsis = False
-        Me.UText.TabIndex = 1
-        Me.UText.Text = "Text"
-        Me.UText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'tmr_
-        '
-        '
-        'ULbl
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.Controls.Add(Me.UHead)
-        Me.Controls.Add(Me.UText)
-        Me.Name = "ULbl"
-        Me.Size = New System.Drawing.Size(150, 29)
-        CType(Me.UHead, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
+        UHead = New pctbx(components)
+        UText = New lbl(components)
+        tmr_ = New System.Windows.Forms.Timer(components)
+        CType(UHead, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' UHead
+        ' 
+        UHead.BackColor = Drawing.Color.DarkGray
+        UHead.Dock = Windows.Forms.DockStyle.Left
+        UHead.ErrorImage = CType(resources.GetObject("UHead.ErrorImage"), Drawing.Image)
+        UHead.InitialImage = CType(resources.GetObject("UHead.InitialImage"), Drawing.Image)
+        UHead.Location = New System.Drawing.Point(0, 0)
+        UHead.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        UHead.Name = "UHead"
+        UHead.Size = New System.Drawing.Size(17, 56)
+        UHead.SizeMode = Windows.Forms.PictureBoxSizeMode.Zoom
+        UHead.TabIndex = 0
+        UHead.TabStop = False
+        UHead.XOTampilkanBorder = False
+        UHead.XOWarnaBorder = Drawing.Color.DodgerBlue
+        ' 
+        ' UText
+        ' 
+        UText.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Bottom Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
+        UText.BackColor = Drawing.Color.Transparent
+        UText.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        UText.Location = New System.Drawing.Point(17, 0)
+        UText.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        UText.Name = "UText"
+        UText.Size = New System.Drawing.Size(228, 56)
+        UText.TabIndex = 1
+        UText.Text = "Text"
+        UText.TextAlign = Drawing.ContentAlignment.MiddleLeft
+        UText.XOCustomElipsis = False
+        ' 
+        ' tmr_
+        ' 
+        ' 
+        ' ULbl
+        ' 
+        AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+        AutoScaleMode = Windows.Forms.AutoScaleMode.Font
+        BackColor = Drawing.Color.WhiteSmoke
+        Controls.Add(UHead)
+        Controls.Add(UText)
+        Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Name = "ULbl"
+        Size = New System.Drawing.Size(250, 56)
+        CType(UHead, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
 
     End Sub
 

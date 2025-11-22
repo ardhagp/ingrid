@@ -30,7 +30,7 @@ Namespace Commands.CONN
 
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GETRowValue(ByVal RowID As String, ByVal ConnectionName As CMCv.txt, ByVal DBEngine As CMCv.cbo, ByVal Address As CMCv.txt, ByVal Port As CMCv.txt, ByVal Username As CMCv.txt, ByVal Password As CMCv.txt, ByVal OldPassword As String, ByVal DataStorage As CMCv.txt, ByVal FileStorage As CMCv.txt, ByVal IsDefault As CMCv.chk)
+        Public Shared Sub GETRowValue(ByVal RowID As String, ByVal ConnectionName As CMCv.txt, ByVal DBEngine As CMCv.cbo, ByVal Address As CMCv.txt, ByVal Port As CMCv.txt, ByVal Username As CMCv.txt, ByVal Password As CMCv.txt, ByVal OldPassword As String, ByVal DataStorage As CMCv.txt, ByVal IsDefault As CMCv.chk)
             V_DBR_SQLITE(1).Query = String.Format("select serverlist.CONNECTIONNAME from serverlist where serverlist.ID ='{0}'", RowID)
             ConnectionName.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
 
@@ -53,15 +53,15 @@ Namespace Commands.CONN
             V_DBR_SQLITE(1).Query = String.Format("select serverlist.DBFORDATA from serverlist where serverlist.ID ='{0}'", RowID)
             DataStorage.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
 
-            V_DBR_SQLITE(1).Query = String.Format("select serverlist.DBFORFILE from serverlist serverlist where serverlist.ID ='{0}'", RowID)
-            FileStorage.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
+            'V_DBR_SQLITE(1).Query = String.Format("select serverlist.DBFORFILE from serverlist serverlist where serverlist.ID ='{0}'", RowID)
+            'FileStorage.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
 
             V_DBR_SQLITE(1).Query = String.Format("select serverlist.DEFAULTCONNECTION from serverlist where serverlist.ID ='{0}'", RowID)
             IsDefault.Checked = CType(V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query), Boolean)
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PUSHData(ByVal ConnectionName As String, ByVal DBEngine As String, ByVal Address As String, ByVal Port As String, ByVal Username As String, ByVal Password As String, ByVal DataStorage As String, ByVal FileStorage As String, ByVal IsDefault As Boolean, ByVal RowID As String, ByVal IsNew As Boolean, ByVal IsPasswordChange As Boolean) As Boolean
+        Public Shared Function PUSHData(ByVal ConnectionName As String, ByVal DBEngine As String, ByVal Address As String, ByVal Port As String, ByVal Username As String, ByVal Password As String, ByVal DataStorage As String, ByVal IsDefault As Boolean, ByVal RowID As String, ByVal IsNew As Boolean, ByVal IsPasswordChange As Boolean) As Boolean
             Dim V_Success As Boolean
             Dim V_IsDefaultActivate As String = ""
 
@@ -71,12 +71,12 @@ Namespace Commands.CONN
                 End If
 
                 If (IsNew) Then
-                    V_DBR_SQLITE(1).Query = V_IsDefaultActivate & $"insert into serverlist(ID, CONNECTIONNAME, DATABASEENGINE, SERVERADDRESS, SERVERPORT, USERNAME, PASSWORD, DBFORDATA, DBFORFILE, DEFAULTCONNECTION) values ('{RowID}','{ConnectionName}','{DBEngine}','{Address}',{Port},'{Username}','{Security.Encrypt.AES(Password)}','{DataStorage}','{FileStorage}',{IsDefault})"
+                    V_DBR_SQLITE(1).Query = V_IsDefaultActivate & $"insert into serverlist(ID, CONNECTIONNAME, DATABASEENGINE, SERVERADDRESS, SERVERPORT, USERNAME, PASSWORD, DBFORDATA, DEFAULTCONNECTION) values ('{RowID}','{ConnectionName}','{DBEngine}','{Address}',{Port},'{Username}','{Security.Encrypt.AES(Password)}','{DataStorage}',{IsDefault})"
                 Else
                     If Not (IsPasswordChange) Then
-                        V_DBR_SQLITE(1).Query = V_IsDefaultActivate & String.Format("update serverlist set CONNECTIONNAME='{1}', SERVERADDRESS='{2}', SERVERPORT={3}, USERNAME='{4}', DEFAULTCONNECTION={5}, DBFORDATA='{6}', DBFORFILE='{7}', DATABASEENGINE='{8}' where ID='{0}'", RowID, ConnectionName, Address, Port, Username, IsDefault, DataStorage, FileStorage, DBEngine)
+                        V_DBR_SQLITE(1).Query = V_IsDefaultActivate & String.Format("update serverlist set CONNECTIONNAME='{1}', SERVERADDRESS='{2}', SERVERPORT={3}, USERNAME='{4}', DEFAULTCONNECTION={5}, DBFORDATA='{6}', DATABASEENGINE='{7}' where ID='{0}'", RowID, ConnectionName, Address, Port, Username, IsDefault, DataStorage, DBEngine)
                     Else
-                        V_DBR_SQLITE(1).Query = V_IsDefaultActivate & String.Format("update serverlist set CONNECTIONNAME='{1}', SERVERADDRESS='{2}', SERVERPORT={3}, USERNAME='{4}', PASSWORD='{5}', DEFAULTCONNECTION={6}, DBFORDATA='{7}', DBFORFILE='{8}', DATABASEENGINE='{9}' where ID='{0}'", RowID, ConnectionName, Address, Port, Username, Security.Encrypt.AES(Password), IsDefault, DataStorage, FileStorage, DBEngine)
+                        V_DBR_SQLITE(1).Query = V_IsDefaultActivate & String.Format("update serverlist set CONNECTIONNAME='{1}', SERVERADDRESS='{2}', SERVERPORT={3}, USERNAME='{4}', PASSWORD='{5}', DEFAULTCONNECTION={6}, DBFORFILE='{7}', DATABASEENGINE='{9}' where ID='{0}'", RowID, ConnectionName, Address, Port, Username, Security.Encrypt.AES(Password), IsDefault, DataStorage, DBEngine)
                     End If
                 End If
 
