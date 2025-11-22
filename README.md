@@ -6,7 +6,7 @@
 #   <span style="color:darkorange">**About Project & Status**</span>
 Ingrid is a Desktop Application for Windows OS that has many modules for every purposes, made by your request.
 
-[![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d1728d753b8c4b579d97a467bf751322)](https://app.codacy.com/gh/ardhagp/ingrid/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![dotnet CI Build](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet-ci-build.yml/badge.svg)](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet-ci-build.yml) [![Build Status](https://dev.azure.com/ardhagp/ingrid/_apis/build/status%2Fgithub-linked%2Fscheduled%2Fazure-pipelines?branchName=master)](https://dev.azure.com/ardhagp/ingrid/_build/latest?definitionId=12&branchName=master) [![Better Stack Badge](https://uptime.betterstack.com/status-badges/v3/monitor/182mi.svg)](https://ingrid.betteruptime.com/) [![Static Badge](https://img.shields.io/badge/Download-Ingrid.zip-gold)](https://ardhagp.github.io/Ingrid/Ingrid.zip)
+[![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d1728d753b8c4b579d97a467bf751322)](https://app.codacy.com/gh/ardhagp/ingrid/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![dotnet CI Build](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet-ci-build.yml/badge.svg)](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet-ci-build.yml) [![Build Status](https://dev.azure.com/ardhagp/ingrid/_apis/build/status%2Fgithub-linked%2Fscheduled%2Fazure-pipelines?branchName=master)](https://dev.azure.com/ardhagp/ingrid/_build/latest?definitionId=12&branchName=master) [![Better Stack Badge](https://uptime.betterstack.com/status-badges/v3/monitor/182mi.svg)](https://ingrid.betteruptime.com/) [![Static Badge](https://img.shields.io/badge/Download-ingrid--offline.zip-gold)](https://ardhagp.github.io/ingrid/ingrid-offline.zip)
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 #   <span style="color:darkorange">**Tools You Need**</span>
@@ -80,7 +80,8 @@ This application is released under the [MIT license]($/Ingrid/LICENSE). You can 
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 #   <span style="color:darkorange">**Navigation**</span>
-| <span style="color:darkcyan">Helpful Pages :</span> | [Ingrid Web](https://ardhagp.github.io/Ingrid) | [Ingrid Wiki](https://github.com/ardhagp/Ingrid/wiki) |
+| <span style="color:darkcyan">Helpful Pages :</span> | [Ingrid Web](https://ardhagp.github.io/ingrid) | [Ingrid Wiki](https://github.com/ardhagp/ingrid/wiki/01.-Home) |
 | -- | -- | -- |
+
 
 
