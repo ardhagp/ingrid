@@ -16,10 +16,10 @@ Public Class UAC
     End Sub
 
     Private Sub GETTableID()
-        V_FORMAttrib.RowID = "-1"
+        varFormAttributes.RowID = "-1"
 
         If DgnUAC.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnUAC.CurrentRow.Cells("user_id").Value.ToString
+            varFormAttributes.RowID = DgnUAC.CurrentRow.Cells("user_id").Value.ToString
         End If
     End Sub
 #End Region
@@ -28,36 +28,36 @@ Public Class UAC
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles V_MMSMenu.EventDataAddNew
-        V_FORMAttrib.IsChangePasswordForm = False
+        varFormAttributes.IsChangePasswordForm = False
 
-        If Not (V_USERAccess.User("UAC", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+        If Not (varUserAccess.User("UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        V_FORMAttrib.IsNew = True
-        V_FORMAttrib.RowID = "-1"
-        V_FORMAttrib.Hash = Security.Encrypt.MD5()
+        varFormAttributes.IsNew = True
+        varFormAttributes.RowID = "-1"
+        varFormAttributes.Hash = Security.Encrypt.MD5()
         V_UAC_Editor = New UAC_Editor
         DISPLAY(V_UAC_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new credential data", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles V_MMSMenu.EventDataEdit
-        V_FORMAttrib.IsChangePasswordForm = False
+        varFormAttributes.IsChangePasswordForm = False
 
-        If Not (V_USERAccess.User("UAC", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+        If Not (varUserAccess.User("UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
         Call GETTableID()
-        V_FORMAttrib.IsNew = False
+        varFormAttributes.IsNew = False
 
-        If V_FORMAttrib.RowID = "-1" Then
+        If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            V_FORMAttrib.IsNew = False
+            varFormAttributes.IsNew = False
             V_UAC_Editor = New UAC_Editor
             DISPLAY(V_UAC_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
         End If
@@ -65,18 +65,18 @@ Public Class UAC
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles V_MMSMenu.EventDataDelete
-        If Not (V_USERAccess.User("UAC", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+        If Not (varUserAccess.User("UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
         Call GETTableID()
 
-        If V_FORMAttrib.RowID = "-1" Then
+        If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.UAC.View.DELETEData(V_DatabaseEngine, V_FORMAttrib.RowID)) Then
+                If (Commands.UAC.View.DELETEData(V_DatabaseEngine, varFormAttributes.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else

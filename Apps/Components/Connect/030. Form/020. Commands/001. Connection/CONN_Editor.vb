@@ -1,25 +1,37 @@
 ﻿Imports System.Runtime.Versioning
-Imports MySql.Data.MySqlClient
-'Imports Syncfusion.Styles ' For future use if needed
+Imports CMCv
 
 Public Class CONN_Editor
 
 #Region "Declarations"
     Public Event RecordSaved()
-    Private WithEvents C_MMSMenu As New CMCv.UI.View.MenuStrip
-    Private _SQL As New Commands.CONN.Editor
-    Private _PWDChange As Boolean
-    Private _OldPassword As String
+    Private WithEvents ComponentMainframeMenu As New CMCv.UI.View.MenuStrip
+    Private varSQL As New Commands.CONN.Editor
+    Private varPasswordChange As Boolean
+    Private varOldPassword As String
+#End Region
 
 #Region "Functions and Subs"
-    ''' <summary>
-    ''' Loads existing connection data into the form fields based on the RowID.
-    ''' </summary>
+
     <SupportedOSPlatform("windows")>
     Private Sub LoadData()
-        Commands.CONN.Editor.GETRowValue(varFormAttributes.RowID.ToString, TxtConnectionName, CboDBEngine,
-                                         TxtAddress, TxtPort, TxtUsername, TxtPassword,
-                                         VarOldPassword, TxtDataStorage, ChkDefault)
+        Commands.CONN.Editor.GETRowValue(varFormAttributes.RowID.ToString, TxtConnectionName, CboDBEngine, TxtAddress, TxtPort, TxtUsername, TxtPassword, TxtDatabaseName, varOldPassword, ChkDefault)
+    End Sub
+
+    Private Sub CheckAllInput()
+        TxtConnectionName.Focus()
+        TxtAddress.Focus()
+        TxtPort.Focus()
+        TxtUsername.Focus()
+        TxtPassword.Focus()
+    End Sub
+
+    Private Sub CheckPasswordChange()
+        If TxtPassword.XOSQLText = varOldPassword Then
+            varPasswordChange = False
+        Else
+            varPasswordChange = True
+        End If
     End Sub
 
     ''' <summary>
@@ -29,20 +41,12 @@ Public Class CONN_Editor
     Private Sub Save()
         Call CheckAllInput()
 
-        If (TxtConnectionName.Text = String.Empty) OrElse (TxtAddress.Text = String.Empty) OrElse
-            (TxtPort.Text = String.Empty) OrElse (TxtUsername.Text = String.Empty) OrElse
-            (TxtPassword.Text = String.Empty) Then
-            Decision("Cannot save your record." & Environment.NewLine & "Make sure you have " &
-                     "Connection Name, Address, Port, Username, Password are properly filled.",
-                     "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+        If (TxtConnectionName.Text = String.Empty) OrElse (TxtAddress.Text = String.Empty) OrElse (TxtPort.Text = String.Empty) OrElse (TxtUsername.Text = String.Empty) OrElse (TxtPassword.Text = String.Empty) OrElse (TxtDatabaseName.Text = String.Empty) Then
+            Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Connection Name, Address, Port, Username, Password and Database Name are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        If Commands.CONN.Editor.PUSHData(TxtConnectionName.Text, CboDBEngine.Text, TxtAddress.Text,
-                                          TxtPort.Text, TxtUsername.Text, TxtPassword.Text,
-                                          TxtDataStorage.Text, ChkDefault.Checked,
-                                          varFormAttributes.RowID.ToString, varFormAttributes.IsNew,
-                                          VarPWDChange) Then
+        If (Commands.CONN.Editor.PUSHData(TxtConnectionName.Text, CboDBEngine.Text, TxtAddress.Text, TxtPort.Text, TxtUsername.Text, TxtPassword.Text, TxtDatabaseName.Text, ChkDefault.Checked, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, varPasswordChange)) Then
             SLFStatus.Text = "Success"
             RaiseEvent RecordSaved()
         Else
@@ -52,70 +56,17 @@ Public Class CONN_Editor
 
         Me.Close()
     End Sub
-
-    ''' <summary>
-    ''' Tests a MySQL connection string by opening and closing the connection.
-    ''' Returns True if successful, False otherwise.
-    ''' </summary>
-    <SupportedOSPlatform("windows")>
-    Public Shared Function TestConnection(connectionString As String) As Boolean
-        Try
-            If String.IsNullOrWhiteSpace(connectionString) Then
-                Decision("Connection string is empty.", "Alert", frmDialogBox.MessageIcon.Alert,
-                         frmDialogBox.MessageTypes.OkOnly)
-                Return False
-            End If
-
-            Using conn As New MySqlConnection(connectionString)
-                conn.Open()
-                ' If we reach here, connection succeeded
-                Return True
-            End Using
-        Catch ex As MySqlException
-            ' Handle MySQL-specific errors (wrong host, bad credentials, etc.)
-            Decision("MySQL Error: " & ex.Message, "Error", frmDialogBox.MessageIcon.Error,
-                     frmDialogBox.MessageTypes.OkOnly)
-            Return False
-        Catch ex As Exception
-            ' Handle other unexpected errors
-            Decision("General Error: " & ex.Message, "Error", frmDialogBox.MessageIcon.Error,
-                     frmDialogBox.MessageTypes.OkOnly)
-            Return False
-        End Try
-    End Function
-
-    ''' <summary>
-    ''' Forces focus on all input fields to trigger any validation or formatting logic.
-    ''' </summary>
-    Private Sub CheckAllInput()
-        TxtConnectionName.Focus()
-        TxtAddress.Focus()
-        TxtPort.Focus()
-        TxtUsername.Focus()
-        TxtPassword.Focus()
-    End Sub
-
-    ''' <summary>
-    ''' Checks if the password field has been changed compared to the old password.
-    ''' </summary>
-    Private Sub CheckPasswordChange()
-        If TxtPassword.XOSQLText = VarOldPassword Then
-            VarPWDChange = False
-        Else
-            VarPWDChange = True
-        End If
-    End Sub
 #End Region
 
 #Region "Form Events"
     ''' <summary>
-    ''' Handles the form load event, initializing the menu and loading data if editing an existing record.
+    ''' Loads existing connection data into the form fields based on the RowID.
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub CONN_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ComponentMainframeMenu.LoadIn(Me, True)
-        ComponentMainframeMenu.ShowMenuFILE(CMCv.UI.View.MenuStrip.ShowItem.Yes)
-        VarPWDChange = False
+        componentMainframeMenu.LoadIn(Me, True)
+        componentMainframeMenu.ShowMenuFILE(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        varPasswordChange = False
 
         If (varFormAttributes.IsNew) Then
             varFormAttributes.RowID = CMCv.Security.Encrypt.MD5()
@@ -150,25 +101,18 @@ Public Class CONN_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub ComponentMainframeMenu_EventFileUndoAll() Handles ComponentMainframeMenu.EventFileUndoAll
-        If Decision("Do you want to undo all changes?", "Question",
-                    frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) =
-                    DialogResult.Yes Then
-            If varFormAttributes.IsNew Then
+        If Decision("Do you want to undo all changes?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
+            If (varFormAttributes.IsNew) Then
                 TxtConnectionName.Clear()
                 TxtAddress.Clear()
                 TxtPort.Clear()
                 TxtUsername.Clear()
                 TxtPassword.Clear()
-                TxtDataStorage.Clear()
+                TxtDatabaseName.Clear()
             Else
                 Call LoadData()
             End If
         End If
-    End Sub
-
-    <SupportedOSPlatform("windows")>
-    Private Sub BtnTest_Click(sender As Object, e As EventArgs) Handles BtnTest.Click
-        Call TestConnection("")
     End Sub
 #End Region
 

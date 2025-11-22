@@ -15,10 +15,10 @@ Public Class POST
     End Sub
 
     Private Sub GETTableID()
-        V_FORMAttrib.RowID = "-1"
+        varFormAttributes.RowID = "-1"
 
         If DgnPOST.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnPOST.CurrentRow.Cells("position_id").Value.ToString
+            varFormAttributes.RowID = DgnPOST.CurrentRow.Cells("position_id").Value.ToString
         End If
     End Sub
 #End Region
@@ -26,8 +26,8 @@ Public Class POST
 #Region "Menu Strip Functions"
     <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles _MMSMenu.EventDataAddNew
-        V_FORMAttrib.IsNew = True
-        V_FORMAttrib.RowID = "-1"
+        varFormAttributes.IsNew = True
+        varFormAttributes.RowID = "-1"
         _POST_Editor = New POST_Editor
         DISPLAY(_POST_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new job position data", True)
     End Sub
@@ -35,9 +35,9 @@ Public Class POST
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
         Call GETTableID()
-        V_FORMAttrib.IsNew = False
+        varFormAttributes.IsNew = False
         _POST_Editor = New POST_Editor
-        If V_FORMAttrib.RowID = "-1" Then
+        If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             DISPLAY(_POST_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your position data", True)
@@ -48,12 +48,12 @@ Public Class POST
     Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
         Call GETTableID()
 
-        If V_FORMAttrib.RowID = "-1" Then
+        If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            V_FORMAttrib.IsNew = False
+            varFormAttributes.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.POST.View.DELETEData(V_DatabaseEngine, V_FORMAttrib.RowID)) Then
+                If (LibSQL.Commands.POST.View.DELETEData(V_DatabaseEngine, varFormAttributes.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
@@ -196,13 +196,13 @@ Public Class POST
         Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
             Try
-                If Not (V_USERAccess.User("POST", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+                If Not (varUserAccess.User("POST", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
                     Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                     Return
                 End If
 
-                V_FORMAttrib.IsNew = True
-                V_FORMAttrib.RowID = "-1"
+                varFormAttributes.IsNew = True
+                varFormAttributes.RowID = "-1"
 
                 _POST_Editor = New POST_Editor
                 DISPLAY(_POST_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new employee data", True)
@@ -217,17 +217,17 @@ Public Class POST
         Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
             Try
-                If Not (V_USERAccess.User("POST", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+                If Not (varUserAccess.User("POST", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
                     Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                     Return
                 End If
 
                 Call GETTableID()
-                V_FORMAttrib.IsNew = False
-                If V_FORMAttrib.RowID = "-1" Then
+                varFormAttributes.IsNew = False
+                If varFormAttributes.RowID = "-1" Then
                     Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                 Else
-                    V_FORMAttrib.IsNew = False
+                    varFormAttributes.IsNew = False
                     _POST_Editor = New POST_Editor
                     DISPLAY(_POST_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
                 End If
@@ -242,17 +242,17 @@ Public Class POST
         Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
             Try
-                If Not (V_USERAccess.User("POST", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+                If Not (varUserAccess.User("POST", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
                     Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                     Return
                 End If
 
                 Call GETTableID()
-                If V_FORMAttrib.RowID = "-1" Then
+                If varFormAttributes.RowID = "-1" Then
                     Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                 Else
                     If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                        If LibSQL.Commands.POST.View.DELETEData(V_DatabaseEngine, V_FORMAttrib.RowID) Then
+                        If LibSQL.Commands.POST.View.DELETEData(V_DatabaseEngine, varFormAttributes.RowID) Then
                             Call GETDATA(True)
                             Mainframe_n_6.Ts_status.Text = "Success"
                         Else

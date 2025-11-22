@@ -25,11 +25,10 @@ Partial Class CONN_Editor
         BtnCancel = New btn(components)
         TbctlBasic = New tbctl(components)
         tp1_ = New TabPage()
-        BtnTest = New btn(components)
         CboDBEngine = New cbo(components)
         ULbl1 = New ULbl()
-        ULbl_DataStorage = New ULbl()
-        TxtDataStorage = New txt(components)
+        ULbl_DatabaseName = New ULbl()
+        TxtDatabaseName = New txt(components)
         ChkDefault = New chk(components)
         TxtPassword = New txt(components)
         TxtUsername = New txt(components)
@@ -41,6 +40,7 @@ Partial Class CONN_Editor
         ULbl_Name = New ULbl()
         TxtConnectionName = New txt(components)
         TxtAddress = New txt(components)
+        Btn_Test = New btn(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
@@ -52,13 +52,15 @@ Partial Class CONN_Editor
         ' 
         ' PnlBottomButton
         ' 
+        PnlBottomButton.Controls.Add(Btn_Test)
         PnlBottomButton.Controls.Add(BtnCancel)
         PnlBottomButton.Controls.Add(BtnSave)
-        PnlBottomButton.Location = New Point(0, 730)
+        PnlBottomButton.Location = New Point(0, 637)
         PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
         PnlBottomButton.Size = New Size(807, 97)
         PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
         PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
+        PnlBottomButton.Controls.SetChildIndex(Btn_Test, 0)
         ' 
         ' pnl_
         ' 
@@ -69,7 +71,7 @@ Partial Class CONN_Editor
         ' 
         SLFPanel.Controls.Add(TbctlBasic)
         SLFPanel.Margin = New Padding(7, 5, 7, 5)
-        SLFPanel.Size = New Size(807, 827)
+        SLFPanel.Size = New Size(807, 734)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(TbctlBasic, 0)
         ' 
@@ -128,17 +130,16 @@ Partial Class CONN_Editor
         TbctlBasic.Margin = New Padding(6, 5, 6, 5)
         TbctlBasic.Name = "TbctlBasic"
         TbctlBasic.SelectedIndex = 0
-        TbctlBasic.Size = New Size(767, 707)
+        TbctlBasic.Size = New Size(767, 614)
         TbctlBasic.TabIndex = 997
         ' 
         ' tp1_
         ' 
         tp1_.AutoScroll = True
-        tp1_.Controls.Add(BtnTest)
         tp1_.Controls.Add(CboDBEngine)
         tp1_.Controls.Add(ULbl1)
-        tp1_.Controls.Add(ULbl_DataStorage)
-        tp1_.Controls.Add(TxtDataStorage)
+        tp1_.Controls.Add(ULbl_DatabaseName)
+        tp1_.Controls.Add(TxtDatabaseName)
         tp1_.Controls.Add(ChkDefault)
         tp1_.Controls.Add(TxtPassword)
         tp1_.Controls.Add(TxtUsername)
@@ -154,32 +155,10 @@ Partial Class CONN_Editor
         tp1_.Margin = New Padding(6, 5, 6, 5)
         tp1_.Name = "tp1_"
         tp1_.Padding = New Padding(6, 5, 6, 5)
-        tp1_.Size = New Size(759, 662)
+        tp1_.Size = New Size(759, 569)
         tp1_.TabIndex = 0
-        tp1_.Text = "DATA STORAGE"
+        tp1_.Text = "CONFIG"
         tp1_.UseVisualStyleBackColor = True
-        ' 
-        ' BtnTest
-        ' 
-        BtnTest.BackColor = Color.Yellow
-        BtnTest.Cursor = Cursors.Hand
-        BtnTest.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(195), CByte(0))
-        BtnTest.FlatAppearance.BorderSize = 2
-        BtnTest.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(255), CByte(20))
-        BtnTest.FlatStyle = FlatStyle.Flat
-        BtnTest.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        BtnTest.ForeColor = Color.Black
-        BtnTest.Location = New Point(306, 588)
-        BtnTest.Margin = New Padding(6, 5, 6, 5)
-        BtnTest.Name = "BtnTest"
-        BtnTest.Size = New Size(262, 51)
-        BtnTest.TabIndex = 10
-        BtnTest.Text = "Test Connection"
-        BtnTest.UseVisualStyleBackColor = False
-        BtnTest.XOJenisTombol = ControlCodeBase.enuJenisTombol.Warning
-        BtnTest.XOTampilkanFocusBorder = False
-        BtnTest.XOValidasiSemuaInput = False
-        BtnTest.XOValidasiSemuaInputTag = Nothing
         ' 
         ' CboDBEngine
         ' 
@@ -197,59 +176,59 @@ Partial Class CONN_Editor
         ' ULbl1
         ' 
         ULbl1.BackColor = Color.AliceBlue
-        ULbl1.Location = New Point(18, 109)
-        ULbl1.Margin = New Padding(10, 8, 10, 8)
+        ULbl1.Location = New Point(11, 108)
+        ULbl1.Margin = New Padding(6, 5, 6, 5)
         ULbl1.Name = "ULbl1"
-        ULbl1.Size = New Size(275, 39)
+        ULbl1.Size = New Size(281, 40)
         ULbl1.SLFText = "DB Engine"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
         ULbl1.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Default
         ULbl1.TabIndex = 1010
         ' 
-        ' ULbl_DataStorage
+        ' ULbl_DatabaseName
         ' 
-        ULbl_DataStorage.BackColor = Color.MistyRose
-        ULbl_DataStorage.Location = New Point(18, 448)
-        ULbl_DataStorage.Margin = New Padding(12, 17, 12, 17)
-        ULbl_DataStorage.Name = "ULbl_DataStorage"
-        ULbl_DataStorage.Size = New Size(275, 39)
-        ULbl_DataStorage.SLFText = "Database Name"
-        ULbl_DataStorage.SLFTextAdjuster = False
-        ULbl_DataStorage.SLFTextBorder = False
-        ULbl_DataStorage.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Red
-        ULbl_DataStorage.TabIndex = 1008
+        ULbl_DatabaseName.BackColor = Color.MistyRose
+        ULbl_DatabaseName.Location = New Point(11, 448)
+        ULbl_DatabaseName.Margin = New Padding(7, 10, 7, 10)
+        ULbl_DatabaseName.Name = "ULbl_DatabaseName"
+        ULbl_DatabaseName.Size = New Size(281, 39)
+        ULbl_DatabaseName.SLFText = "Database Name"
+        ULbl_DatabaseName.SLFTextAdjuster = False
+        ULbl_DatabaseName.SLFTextBorder = False
+        ULbl_DatabaseName.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Red
+        ULbl_DatabaseName.TabIndex = 1008
         ' 
-        ' TxtDataStorage
+        ' TxtDatabaseName
         ' 
-        TxtDataStorage.BackColor = Color.White
-        TxtDataStorage.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtDataStorage.Location = New Point(306, 448)
-        TxtDataStorage.Margin = New Padding(6, 5, 6, 5)
-        TxtDataStorage.MaxLength = 255
-        TxtDataStorage.Name = "TxtDataStorage"
-        TxtDataStorage.Size = New Size(413, 39)
-        TxtDataStorage.TabIndex = 7
-        TxtDataStorage.Tag = "txt"
-        TxtDataStorage.XOAutoTrim = True
-        TxtDataStorage.XOHarusDiisi = True
-        TxtDataStorage.XOHarusDiisiWarnaLatar = Color.LightPink
-        TxtDataStorage.XOHarusDiisiWarnaLatarDefault = Color.White
-        TxtDataStorage.XOHightlightSaatFokus = True
-        TxtDataStorage.XOHightlightSaatFokusWarna = Color.LightYellow
-        TxtDataStorage.XOIsBlank = True
-        TxtDataStorage.XOIsSearchBox = False
-        TxtDataStorage.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        TxtDataStorage.XOPilihSemuaSaatFokus = False
-        TxtDataStorage.XOPwdLengthMin = 8
-        TxtDataStorage.XOPwdStrengthCalculate = False
-        TxtDataStorage.XOPwdStrengthScore = 0
-        TxtDataStorage.XOPwdStrengthText = Nothing
-        TxtDataStorage.XORestriction = ControlCodeBase.enuRestriction.None
-        TxtDataStorage.XOSearchBoxText = "Type then press Enter"
-        TxtDataStorage.XOSQLText = ""
-        TxtDataStorage.XOTanpaSpasi = True
-        TxtDataStorage.XOValidasiField = Nothing
+        TxtDatabaseName.BackColor = Color.White
+        TxtDatabaseName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtDatabaseName.Location = New Point(306, 448)
+        TxtDatabaseName.Margin = New Padding(6, 5, 6, 5)
+        TxtDatabaseName.MaxLength = 255
+        TxtDatabaseName.Name = "TxtDatabaseName"
+        TxtDatabaseName.Size = New Size(413, 39)
+        TxtDatabaseName.TabIndex = 7
+        TxtDatabaseName.Tag = "txt"
+        TxtDatabaseName.XOAutoTrim = True
+        TxtDatabaseName.XOHarusDiisi = True
+        TxtDatabaseName.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtDatabaseName.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtDatabaseName.XOHightlightSaatFokus = True
+        TxtDatabaseName.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtDatabaseName.XOIsBlank = True
+        TxtDatabaseName.XOIsSearchBox = False
+        TxtDatabaseName.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtDatabaseName.XOPilihSemuaSaatFokus = False
+        TxtDatabaseName.XOPwdLengthMin = 8
+        TxtDatabaseName.XOPwdStrengthCalculate = False
+        TxtDatabaseName.XOPwdStrengthScore = 0
+        TxtDatabaseName.XOPwdStrengthText = Nothing
+        TxtDatabaseName.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtDatabaseName.XOSearchBoxText = "Type then press Enter"
+        TxtDatabaseName.XOSQLText = ""
+        TxtDatabaseName.XOTanpaSpasi = False
+        TxtDatabaseName.XOValidasiField = Nothing
         ' 
         ' ChkDefault
         ' 
@@ -257,7 +236,7 @@ Partial Class CONN_Editor
         ChkDefault.BackColor = Color.Transparent
         ChkDefault.FlatStyle = FlatStyle.Flat
         ChkDefault.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        ChkDefault.Location = New Point(306, 518)
+        ChkDefault.Location = New Point(306, 512)
         ChkDefault.Margin = New Padding(6, 5, 6, 5)
         ChkDefault.Name = "ChkDefault"
         ChkDefault.Size = New Size(313, 36)
@@ -331,10 +310,10 @@ Partial Class CONN_Editor
         ' ULbl_Password
         ' 
         ULbl_Password.BackColor = Color.AliceBlue
-        ULbl_Password.Location = New Point(18, 382)
-        ULbl_Password.Margin = New Padding(12, 17, 12, 17)
+        ULbl_Password.Location = New Point(11, 382)
+        ULbl_Password.Margin = New Padding(7, 10, 7, 10)
         ULbl_Password.Name = "ULbl_Password"
-        ULbl_Password.Size = New Size(275, 39)
+        ULbl_Password.Size = New Size(281, 39)
         ULbl_Password.SLFText = "Password"
         ULbl_Password.SLFTextAdjuster = False
         ULbl_Password.SLFTextBorder = False
@@ -344,10 +323,10 @@ Partial Class CONN_Editor
         ' ULbl_Username
         ' 
         ULbl_Username.BackColor = Color.AliceBlue
-        ULbl_Username.Location = New Point(18, 313)
-        ULbl_Username.Margin = New Padding(12, 17, 12, 17)
+        ULbl_Username.Location = New Point(11, 313)
+        ULbl_Username.Margin = New Padding(7, 10, 7, 10)
         ULbl_Username.Name = "ULbl_Username"
-        ULbl_Username.Size = New Size(275, 39)
+        ULbl_Username.Size = New Size(281, 39)
         ULbl_Username.SLFText = "Username"
         ULbl_Username.SLFTextAdjuster = False
         ULbl_Username.SLFTextBorder = False
@@ -357,10 +336,10 @@ Partial Class CONN_Editor
         ' ULbl_Port
         ' 
         ULbl_Port.BackColor = Color.AliceBlue
-        ULbl_Port.Location = New Point(18, 247)
-        ULbl_Port.Margin = New Padding(12, 17, 12, 17)
+        ULbl_Port.Location = New Point(11, 247)
+        ULbl_Port.Margin = New Padding(7, 10, 7, 10)
         ULbl_Port.Name = "ULbl_Port"
-        ULbl_Port.Size = New Size(275, 39)
+        ULbl_Port.Size = New Size(281, 39)
         ULbl_Port.SLFText = "Port"
         ULbl_Port.SLFTextAdjuster = False
         ULbl_Port.SLFTextBorder = False
@@ -402,10 +381,10 @@ Partial Class CONN_Editor
         ' ULbl_Address
         ' 
         ULbl_Address.BackColor = Color.AliceBlue
-        ULbl_Address.Location = New Point(18, 178)
-        ULbl_Address.Margin = New Padding(12, 17, 12, 17)
+        ULbl_Address.Location = New Point(11, 178)
+        ULbl_Address.Margin = New Padding(7, 10, 7, 10)
         ULbl_Address.Name = "ULbl_Address"
-        ULbl_Address.Size = New Size(275, 39)
+        ULbl_Address.Size = New Size(281, 39)
         ULbl_Address.SLFText = "Address"
         ULbl_Address.SLFTextAdjuster = False
         ULbl_Address.SLFTextBorder = False
@@ -415,10 +394,10 @@ Partial Class CONN_Editor
         ' ULbl_Name
         ' 
         ULbl_Name.BackColor = Color.AliceBlue
-        ULbl_Name.Location = New Point(18, 38)
-        ULbl_Name.Margin = New Padding(12, 17, 12, 17)
+        ULbl_Name.Location = New Point(11, 38)
+        ULbl_Name.Margin = New Padding(7, 10, 7, 10)
         ULbl_Name.Name = "ULbl_Name"
-        ULbl_Name.Size = New Size(275, 39)
+        ULbl_Name.Size = New Size(281, 39)
         ULbl_Name.SLFText = "Connection Name"
         ULbl_Name.SLFTextAdjuster = False
         ULbl_Name.SLFTextBorder = False
@@ -487,10 +466,32 @@ Partial Class CONN_Editor
         TxtAddress.XOTanpaSpasi = False
         TxtAddress.XOValidasiField = Nothing
         ' 
+        ' Btn_Test
+        ' 
+        Btn_Test.BackColor = Color.Yellow
+        Btn_Test.Cursor = Cursors.Hand
+        Btn_Test.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(195), CByte(0))
+        Btn_Test.FlatAppearance.BorderSize = 2
+        Btn_Test.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(255), CByte(20))
+        Btn_Test.FlatStyle = FlatStyle.Flat
+        Btn_Test.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Btn_Test.ForeColor = Color.Black
+        Btn_Test.Location = New Point(20, 13)
+        Btn_Test.Margin = New Padding(6, 5, 6, 5)
+        Btn_Test.Name = "Btn_Test"
+        Btn_Test.Size = New Size(167, 77)
+        Btn_Test.TabIndex = 12
+        Btn_Test.Text = "Test"
+        Btn_Test.UseVisualStyleBackColor = False
+        Btn_Test.XOJenisTombol = ControlCodeBase.enuJenisTombol.Warning
+        Btn_Test.XOTampilkanFocusBorder = False
+        Btn_Test.XOValidasiSemuaInput = False
+        Btn_Test.XOValidasiSemuaInputTag = Nothing
+        ' 
         ' CONN_Editor
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
-        ClientSize = New Size(807, 953)
+        ClientSize = New Size(807, 860)
         ControlBox = False
         FormBorderStyle = FormBorderStyle.FixedSingle
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
@@ -518,16 +519,16 @@ Partial Class CONN_Editor
     Friend WithEvents TxtConnectionName As txt
     Friend WithEvents TxtPort As txt
     Friend WithEvents ULbl_Address As ULbl
+    Friend WithEvents ULbl_Name As ULbl
     Friend WithEvents ULbl_Password As ULbl
     Friend WithEvents ULbl_Username As ULbl
     Friend WithEvents ULbl_Port As ULbl
     Friend WithEvents TxtPassword As txt
     Friend WithEvents TxtUsername As txt
+    Friend WithEvents Btn_Test As btn
     Friend WithEvents ChkDefault As chk
-    Friend WithEvents TxtDataStorage As txt
-    Friend WithEvents ULbl_DataStorage As ULbl
+    Friend WithEvents TxtDatabaseName As txt
+    Friend WithEvents ULbl_DatabaseName As ULbl
     Friend WithEvents ULbl1 As ULbl
     Friend WithEvents CboDBEngine As cbo
-    Friend WithEvents ULbl_Name As ULbl
-    Friend WithEvents BtnTest As btn
 End Class

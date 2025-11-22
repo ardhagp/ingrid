@@ -42,11 +42,11 @@ Public Class ACGR
     Private Function GetAccountID(ByVal GridTable As CMCv.dgn) As String
         With GridTable
             If .Rows.Count < 1 Then
-                V_FORMAttrib.RowID = "-1"
+                varFormAttributes.RowID = "-1"
             Else
-                V_FORMAttrib.RowID = .CurrentRow.Cells(0).Value.ToString
+                varFormAttributes.RowID = .CurrentRow.Cells(0).Value.ToString
             End If
-            Return V_FORMAttrib.RowID
+            Return varFormAttributes.RowID
         End With
     End Function
 
@@ -79,7 +79,7 @@ Public Class ACGR
 #Region "Menu Strip Function"
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataAddNew() Handles _MMSmenu.EventDataAddNew
-        With V_FORMAttrib
+        With varFormAttributes
             .RowID = "-1"
             .IsNew = True
         End With
@@ -91,8 +91,8 @@ Public Class ACGR
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataEdit() Handles _MMSmenu.EventDataEdit
         Call GetTableID()
-        V_FORMAttrib.IsNew = False
-        If V_FORMAttrib.RowID = "-1" Then
+        varFormAttributes.IsNew = False
+        If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             frmACGReditor = New ACGR_Editor
@@ -103,12 +103,12 @@ Public Class ACGR
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataDelete() Handles _MMSmenu.EventDataDelete
         Call GetTableID()
-        If V_FORMAttrib.RowID = "-1" Then
+        If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            V_FORMAttrib.IsNew = False
+            varFormAttributes.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.ACGR.View.DELETEData(V_DatabaseEngine, V_FORMAttrib.RowID)) Then
+                If (LibSQL.Commands.ACGR.View.DELETEData(V_DatabaseEngine, varFormAttributes.RowID)) Then
                     Call GETDATAGRID(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else

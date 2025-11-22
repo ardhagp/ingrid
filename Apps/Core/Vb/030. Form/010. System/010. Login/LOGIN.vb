@@ -2,15 +2,18 @@
 
 Public Class LOGIN
 #Region "Variables"
-    Private V_SQL As New LibSQL.Commands.UAC.Login
+    Private varSQL As New LibSQL.Commands.UAC.Login
     Public Event LoginSuccess()
     Public Event LoginFailed()
-    Private V_WrongLogin As Integer
-    Private V_HoldLogin As Integer
-    Private V_StatusTimer As Integer
+    Private varWrongLogin As Integer
+    Private varHoldLogin As Integer
+    Private varStatusTimer As Integer
 #End Region
 
 #Region "Subs Collection"
+    ''' <summary>
+    ''' CheckAllInput ensures all input fields are focused to trigger validation.
+    ''' </summary>
     Private Sub CheckAllInput()
         TxtUsername.Focus()
         TxtPassword.Focus()
@@ -25,7 +28,7 @@ Public Class LOGIN
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles BtnLogin.Click
-        Call ExecLogin()
+        Call ExecLogin() '''login process
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -34,35 +37,35 @@ Public Class LOGIN
             Return
         End If
 
-        V_USERAttrib.UID = Commands.UAC.Login.GETUID(V_DatabaseEngine, TxtUsername.XOSQLText, TxtPassword.XOSQLText, V_USERAttrib.FirstName)
+        varUserAttributes.UID = Commands.UAC.Login.GETUID(V_DatabaseEngine, TxtUsername.XOSQLText, TxtPassword.XOSQLText, varUserAttributes.FirstName)
 
-        If V_USERAttrib.UID = String.Empty Then
+        If varUserAttributes.UID = String.Empty Then
             RaiseEvent LoginFailed()
-            V_WrongLogin += 1
+            varWrongLogin += 1
             SLFStatus.Items(0).Text = "Login Failed"
-            V_LOGuser.LoginFailed(V_DatabaseEngine, TxtUsername.XOSQLText)
+            varLogUser.LoginFailed(V_DatabaseEngine, TxtUsername.XOSQLText)
             Bridge.Security.Writelog.Sendlog(TxtUsername.XOSQLText & " failed to login.", Bridge.Security.Writelog.LogType.Error)
             tmr_status.Enabled = True
-            If V_WrongLogin = 3 Then
+            If varWrongLogin = 3 Then
                 tmr_control.Enabled = True
             End If
         Else
-            V_USERAttrib.EID = Commands.UAC.Login.GETEID(V_DatabaseEngine, V_USERAttrib.UID)
-            V_USERAttrib.FirstName = Commands.UAC.Login.GETFirstName(V_DatabaseEngine, V_USERAttrib.UID)
-            V_USERAttrib.EmployeeNumber = Commands.UAC.Login.GETEmployeeNumber(V_DatabaseEngine, V_USERAttrib.UID)
-            V_USERAttrib.Gender = Commands.UAC.Login.GETGender(V_DatabaseEngine, V_USERAttrib.UID)
-            V_USERAttrib.Position = Commands.UAC.Login.GETPosition(V_DatabaseEngine, V_USERAttrib.UID)
-            V_USERAttrib.IsAdministrator = Commands.UAC.Login.GETAdministrator(V_DatabaseEngine, V_USERAttrib.UID)
-            V_LOGuser.LoginSuccess(V_DatabaseEngine, V_USERAttrib.EID)
-            Bridge.Security.Writelog.Sendlog(V_USERAttrib.FirstName & " is login.", Bridge.Security.Writelog.LogType.Information)
+            varUserAttributes.EID = Commands.UAC.Login.GETEID(V_DatabaseEngine, varUserAttributes.UID)
+            varUserAttributes.FirstName = Commands.UAC.Login.GETFirstName(V_DatabaseEngine, varUserAttributes.UID)
+            varUserAttributes.EmployeeNumber = Commands.UAC.Login.GETEmployeeNumber(V_DatabaseEngine, varUserAttributes.UID)
+            varUserAttributes.Gender = Commands.UAC.Login.GETGender(V_DatabaseEngine, varUserAttributes.UID)
+            varUserAttributes.Position = Commands.UAC.Login.GETPosition(V_DatabaseEngine, varUserAttributes.UID)
+            varUserAttributes.IsAdministrator = Commands.UAC.Login.GETAdministrator(V_DatabaseEngine, varUserAttributes.UID)
+            varLogUser.LoginSuccess(V_DatabaseEngine, varUserAttributes.EID)
+            Bridge.Security.Writelog.Sendlog(varUserAttributes.FirstName & " is login.", Bridge.Security.Writelog.LogType.Information)
             RaiseEvent LoginSuccess()
             Me.Close()
         End If
     End Sub
 
     Private Sub LOGIN_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        V_WrongLogin = 0
-        V_HoldLogin = 15
+        varWrongLogin = 0
+        varHoldLogin = 15
         SLFStatus.Items(0).Text = String.Empty
         TxtUsername.Clear()
         TxtPassword.Clear()
@@ -72,22 +75,22 @@ Public Class LOGIN
     <SupportedOSPlatform("windows")>
     Private Sub TxtPassword_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtPassword.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Call ExecLogin()
+            Call ExecLogin() '''login process
         End If
     End Sub
 
     Private Sub tmr_status_Tick(sender As Object, e As EventArgs) Handles tmr_status.Tick
-        If V_StatusTimer = 5 Then
+        If varStatusTimer = 5 Then
             SLFStatus.Items(0).Text = ""
             tmr_status.Enabled = False
-            V_StatusTimer = 0
+            varStatusTimer = 0
         Else
-            V_StatusTimer += 1
+            varStatusTimer += 1
         End If
     End Sub
 
     Private Sub tmr_control_Tick(sender As Object, e As EventArgs) Handles tmr_control.Tick
-        If V_HoldLogin = 30 Then
+        If varHoldLogin = 30 Then '''allow login again
             tmr_control.Enabled = False
             TxtUsername.Text = String.Empty
             TxtPassword.Text = String.Empty
@@ -96,14 +99,14 @@ Public Class LOGIN
             BtnLogin.Enabled = True
             BtnCancel.Enabled = True
             TxtUsername.Focus()
-            V_WrongLogin = 0
-            V_HoldLogin = 0
-        Else
+            varWrongLogin = 0
+            varHoldLogin = 0
+        Else '''hold login
             TxtUsername.Enabled = False
             TxtPassword.Enabled = False
             BtnLogin.Enabled = False
             BtnCancel.Enabled = False
-            V_HoldLogin += 1
+            varHoldLogin += 1
         End If
     End Sub
 

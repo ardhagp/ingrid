@@ -515,9 +515,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MySql.Data" Version="9.4.0" />
+    <PackageReference Include="MySql.Data" Version="9.5.0" />
     <PackageReference Include="NETCore.Encrypt" Version="2.1.1" />
-    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.19" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.24" />
     <PackageReference Include="Syncfusion.Grid.Windows" Version="23.1.41" />
     <PackageReference Include="Syncfusion.Licensing" Version="23.1.41" />
     <PackageReference Include="Syncfusion.PdfViewer.Windows" Version="23.1.41" />
@@ -526,10 +526,10 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="System.ComponentModel.Composition" Version="9.0.9" />
-    <PackageReference Include="System.Data.OleDb" Version="9.0.9" />
-    <PackageReference Include="System.IO.Hashing" Version="9.0.9" />
-    <PackageReference Include="System.Management" Version="9.0.9" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="10.0.0" />
+    <PackageReference Include="System.Data.OleDb" Version="10.0.0" />
+    <PackageReference Include="System.IO.Hashing" Version="10.0.0" />
+    <PackageReference Include="System.Management" Version="10.0.0" />
     <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
   </ItemGroup>
   <ItemGroup>

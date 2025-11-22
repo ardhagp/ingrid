@@ -21,10 +21,10 @@ Public Class PLNT
     ''' Get row ID on record clicked
     ''' </summary>
     Private Sub GETTableID()
-        V_FORMAttrib.RowID = "-1"
+        varFormAttributes.RowID = "-1"
 
         If DgnPLNT.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnPLNT.CurrentRow.Cells("plant_id").Value.ToString
+            varFormAttributes.RowID = DgnPLNT.CurrentRow.Cells("plant_id").Value.ToString
         End If
     End Sub
 
@@ -36,12 +36,12 @@ Public Class PLNT
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataAddNew() Handles V_MMSMenu.EventDataAddNew
-        If V_USERAccess.User("PLNT", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Add) = False Then
+        If varUserAccess.User("PLNT", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add) = False Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Exit Sub
         End If
-        V_FORMAttrib.IsNew = True
-        V_FORMAttrib.RowID = "-1"
+        varFormAttributes.IsNew = True
+        varFormAttributes.RowID = "-1"
         V_PLNT_Editor = New PLNT_Editor
         DISPLAY(V_PLNT_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new plant", True)
         Mainframe_n_6.Ts_status.Text = String.Empty
@@ -49,13 +49,13 @@ Public Class PLNT
 
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataEdit() Handles V_MMSMenu.EventDataEdit
-        If V_USERAccess.User("PLNT", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Edit) = False Then
+        If varUserAccess.User("PLNT", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit) = False Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Exit Sub
         End If
         Call GETTableID()
-        V_FORMAttrib.IsNew = False
-        If V_FORMAttrib.RowID = "-1" Then
+        varFormAttributes.IsNew = False
+        If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             V_PLNT_Editor = New PLNT_Editor
@@ -66,17 +66,17 @@ Public Class PLNT
 
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataDelete() Handles V_MMSMenu.EventDataDelete
-        If V_USERAccess.User("PLNT", V_USERAttrib.UID, LibSQL.Application.Access.TypeOfAccess.Delete) = False Then
+        If varUserAccess.User("PLNT", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete) = False Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Exit Sub
         End If
         Call GETTableID()
-        If V_FORMAttrib.RowID = "-1" Then
+        If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            V_FORMAttrib.IsNew = False
+            varFormAttributes.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If LibSQL.Commands.PLNT.View.DELETEDATA(V_DatabaseEngine, V_FORMAttrib.RowID) = True Then
+                If LibSQL.Commands.PLNT.View.DELETEDATA(V_DatabaseEngine, varFormAttributes.RowID) = True Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else

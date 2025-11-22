@@ -24,11 +24,11 @@ Module Globals
     Public V_DatabaseEngine As String
     Public V_IMG_COMPRESS As New CMCv.ImageEditor.Proccessor.Compress
     Public V_IMG_EDITOR As New CMCv.ImageEditor.Proccessor.Editor
-    Public V_USERAccess As New Application.Access
+    Public varUserAccess As New Application.Access
     'Public V_SYSAPP As New Application.Modules
-    Public V_LOGUser As New LibSQL.SystemLog.Activity.User
-    Public V_LOGApp As New LibSQL.SystemLog.Activity.Application
-    Public V_Forcerefreshmainframedata As Boolean
+    Public varLogUser As New LibSQL.SystemLog.Activity.User
+    Public varLogApplication As New LibSQL.SystemLog.Activity.Application
+    Public varForceRefreshMainframeData As Boolean
     'Public clsBridgelog As New Bridge.Security.WRITELOG
 
 
@@ -45,8 +45,8 @@ Module Globals
     Public varVersionapplication As String
     Public varVersionnetworkapplication As Version
 
-    Public V_FORMAttrib As New Ingrid.Main.GlobalRecord
-    Public V_USERAttrib As New Ingrid.Main.GlobalUser
+    Public varFormAttributes As New Ingrid.Main.GlobalRecord
+    Public varUserAttributes As New Ingrid.Main.GlobalUser
 #End Region
 
     <SupportedOSPlatform("windows")>
@@ -70,32 +70,36 @@ Module Globals
 #Region "Error Log"
 
     ''' <summary>
-    ''' Metode untuk menyimpan log error
+    ''' Store error data to error catcher class
     ''' </summary>
-    ''' <param name="ErrorType">Tipe Error</param>
-    ''' <param name="ErrorMessage">Pesan Error</param>
-    ''' <param name="ErrorNumber">Nomor Error</param>
-    ''' <param name="InternalStackTrace">Internal Stack Trace</param>
-    ''' <param name="AppVersion">Versi Aplikasi</param>
-    ''' <param name="EnableErrorReporting">True/False</param>
-    ''' <param name="SaveError">True/False</param>
-    ''' <param name="ResumeNext">Lanjutkan saat terjadi kesalahan</param>
-    ''' <remarks></remarks>
-    Public Sub PUSHERRORDATA(ByVal ErrorType As Catcher.Error.Fields.TypeOfFaulties, ByVal ErrorMessage As String, ByVal ErrorNumber As String, ByVal InternalStackTrace As String, ByVal AppVersion As String, Optional ByVal EnableErrorReporting As Boolean = True, Optional ByVal SaveError As Boolean = True, Optional ByVal ResumeNext As Boolean = True)
+    ''' <param name="errortype"></param>
+    ''' <param name="errormessage"></param>
+    ''' <param name="errornumber"></param>
+    ''' <param name="internalstacktrace"></param>
+    ''' <param name="appversion"></param>
+    ''' <param name="enableerrorreporting"></param>
+    ''' <param name="saveerror"></param>
+    ''' <param name="resumenext"></param>
+    Public Sub PUSHERRORDATA(ByVal errortype As Catcher.Error.Fields.TypeOfFaulties,
+                             ByVal errormessage As String, ByVal errornumber As String,
+                             ByVal internalstacktrace As String, ByVal appversion As String,
+                             Optional enableerrorreporting As Boolean = True,
+                             Optional saveerror As Boolean = True,
+                             Optional resumenext As Boolean = True)
         With clsECerrorcatcher
-            .Type = ErrorType
-            .Message = ErrorMessage
-            .Number = ErrorNumber
-            .InternalStackTrace = InternalStackTrace
-            .AppVersion = AppVersion
-            .EnableErrorReporting = EnableErrorReporting
-            .SaveError = SaveError
-            .ResumeNext = ResumeNext
+            .Type = errortype
+            .Message = errormessage
+            .Number = errornumber
+            .InternalStackTrace = internalstacktrace
+            .AppVersion = appversion
+            .EnableErrorReporting = enableerrorreporting
+            .SaveError = saveerror
+            .ResumeNext = resumenext
         End With
     End Sub
 
     ''' <summary>
-    ''' Metode untuk menampilkan log error
+    ''' Display Error Reporting Form
     ''' </summary>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
@@ -111,7 +115,7 @@ Module Globals
 #Region "Get App Version"
 
     ''' <summary>
-    ''' Return App Version
+    ''' Return Application Version
     ''' </summary>
     ''' <returns>String</returns>
     ''' <remarks></remarks>
@@ -141,7 +145,7 @@ Module Globals
 #Region "Check Modules Folder"
 
     ''' <summary>
-    ''' Memeriksa Folder tempat menyimpan semua module
+    ''' Check and Create Required Folder
     ''' </summary>
     Public Function CHECKREQUIREDFOLDER(ByVal Optional GetDirName As DirName = Nothing) As String
         If Not Directory.Exists("Commands") Then
@@ -187,31 +191,35 @@ Module Globals
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Sub DISPLAY(ByVal formName As CMCv.frmStandard, Optional ByVal FormImage As System.Drawing.Image = Nothing, Optional ByVal FormTitle As String = "", Optional ByVal FormSubTitle As String = "", Optional ByVal IsDialog As Boolean = False, Optional ByVal ParentFrame As Windows.Forms.Form = Nothing)
+    Public Sub DISPLAY(ByVal formName As CMCv.frmStandard, Optional formimage As System.Drawing.Image = Nothing,
+                       Optional formtitle As String = "", Optional formsubtitle As String = "",
+                       Optional isdialog As Boolean = False, Optional parentframe As Windows.Forms.Form = Nothing)
         Try
-            formName.SLFNamaForm.Text = FormTitle
-            If FormImage IsNot Nothing Then
-                formName.SLFLogo.Image = FormImage
-            End If
-            formName.SLFSubNamaForm.Text = FormSubTitle
-            If Not (IsDialog) Then
-                If (formName.IsHandleCreated) Then
-                    formName.Focus()
-                Else
-                    If ParentFrame IsNot Nothing Then
-                        formName.Visible = False
-                        formName.MdiParent = ParentFrame
-                        'formName.WindowState = FormWindowState.Maximized
-                        formName.Show()
-                        formName.Visible = True
-                    Else
-                        formName.Show()
-                    End If
-                End If
-            Else
-                formName.ShowDialog()
-                formName.Dispose()
-            End If
+            formName.SLFNamaForm.Text = formtitle
+            'If formimage IsNot Nothing Then
+            '    formName.SLFLogo.Image = formimage
+            'End If
+            'formName.SLFSubNamaForm.Text = formsubtitle
+            'If Not (isdialog) Then
+            '    If (formName.IsHandleCreated) Then
+            '        formName.Focus()
+            '    Else
+            '        If parentframe IsNot Nothing Then
+            '            formName.Visible = False
+            '            formName.MdiParent = parentframe
+            '            'formName.WindowState = FormWindowState.Maximized
+            '            formName.Show()
+            '            formName.Visible = True
+            '        Else
+            '            formName.Show()
+            '        End If
+            '    End If
+            'Else
+            '    formName.ShowDialog()
+            '    formName.Dispose()
+            'End If
+
+
         Catch ex As Exception
             PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
             PUSHERRORDATASHOW()

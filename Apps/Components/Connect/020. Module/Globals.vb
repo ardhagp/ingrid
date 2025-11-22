@@ -50,6 +50,10 @@ Module Globals
     End Function
 #End Region
 
+    ''' <summary>
+    ''' Enable double buffering on DataGridView to reduce flickering
+    ''' </summary>
+    ''' <param name="gridview"></param>
     Public Sub DblBuffer(ByVal gridview As DataGridView)
         Try
             Dim systemType As Type = gridview.GetType()
@@ -66,33 +70,71 @@ Module Globals
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Display form with specified parameters
+    ''' </summary>
+    ''' <param name="formname"></param>
+    ''' <param name="formimage"></param>
+    ''' <param name="formtitle"></param>
+    ''' <param name="formsubtitle"></param>
+    ''' <param name="isdialog"></param>
+    ''' <param name="parentframe"></param>
     Public Sub Display(ByVal formname As CMCv.Std_Fo, Optional ByVal formimage As System.Drawing.Image = Nothing,
                        Optional ByVal formtitle As String = "", Optional ByVal formsubtitle As String = "",
                        Optional ByVal isdialog As Boolean = False,
                        Optional ByVal parentframe As Windows.Forms.Form = Nothing)
         Try
             formname.SLFNamaForm.Text = formtitle
+
+            ''' The old code below is replaced with improved logic
+            'If formimage IsNot Nothing Then
+            '    formname.SLFLogo.Image = formimage
+            'End If
+            'formname.SLFSubNamaForm.Text = formsubtitle
+            'If Not (isdialog) Then
+            '    If (formname.IsHandleCreated) Then
+            '        formname.Focus()
+            '    Else
+            '        If parentframe IsNot Nothing Then
+            '            formname.Visible = False
+            '            formname.MdiParent = parentframe
+            '            formname.WindowState = FormWindowState.Maximized
+            '            formname.Show()
+            '            formname.Visible = True
+            '        Else
+            '            formname.Show()
+            '        End If
+            '    End If
+            'Else
+            '    formname.ShowDialog()
+            '    formname.Dispose()
+            'End If
+
             If formimage IsNot Nothing Then
                 formname.SLFLogo.Image = formimage
             End If
+
             formname.SLFSubNamaForm.Text = formsubtitle
-            If Not (isdialog) Then
-                If (formname.IsHandleCreated) Then
-                    formname.Focus()
-                Else
-                    If parentframe IsNot Nothing Then
-                        formname.Visible = False
-                        formname.MdiParent = parentframe
-                        formname.WindowState = FormWindowState.Maximized
-                        formname.Show()
-                        formname.Visible = True
-                    Else
-                        formname.Show()
-                    End If
-                End If
-            Else
+
+            If isdialog Then
                 formname.ShowDialog()
                 formname.Dispose()
+                Return
+            End If
+
+            If formname.IsHandleCreated Then
+                formname.Focus()
+                Return
+            End If
+
+            If parentframe IsNot Nothing Then
+                formname.Visible = False
+                formname.MdiParent = parentframe
+                formname.WindowState = FormWindowState.Maximized
+                formname.Show()
+                formname.Visible = True
+            Else
+                formname.Show()
             End If
         Catch ex As Exception
             Call PUSHERRORDATA("[Display] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb",
@@ -102,10 +144,10 @@ Module Globals
         End Try
     End Sub
 
-#Region "Get App Version"
+#Region "Get Application Version"
 
     ''' <summary>
-    ''' Fungsi untuk mendapatkan versi app
+    ''' Get application version
     ''' </summary>
     ''' <returns>String</returns>
     ''' <remarks></remarks>
@@ -163,7 +205,7 @@ Module Globals
     End Sub
 
     ''' <summary>
-    ''' Metode untuk menampilkan log error
+    ''' Show error reporting dialog box
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub PUSHERRORDATASHOW()

@@ -35,6 +35,9 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Core\Vb\Ingrid.vbproj" />
     <ProjectReference Include="..\Bridge\Bridge.csproj" />
     <ProjectReference Include="..\Connect\Connect.vbproj" />

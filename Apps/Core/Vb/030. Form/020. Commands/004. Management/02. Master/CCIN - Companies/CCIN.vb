@@ -26,9 +26,9 @@ Public Class CCIN
 
     Private Sub GETTableID()
         If DgnCCIN.RowCount = 0 Then
-            V_FORMAttrib.RowID = "-1"
+            varFormAttributes.RowID = "-1"
         Else
-            V_FORMAttrib.RowID = DgnCCIN.CurrentRow.Cells("company_id").Value.ToString
+            varFormAttributes.RowID = DgnCCIN.CurrentRow.Cells("company_id").Value.ToString
         End If
     End Sub
 #End Region
@@ -36,7 +36,7 @@ Public Class CCIN
 #Region "Menu Strip Function"
     <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles _MMSmenu.EventDataAddNew
-        With V_FORMAttrib
+        With varFormAttributes
             .IsNew = True
             .RowID = "-1"
         End With
@@ -48,10 +48,10 @@ Public Class CCIN
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles _MMSmenu.EventDataEdit
         Call GETTableID()
-        If V_FORMAttrib.RowID = "-1" Then
+        If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            V_FORMAttrib.IsNew = False
+            varFormAttributes.IsNew = False
             V_CCIN_Editor = New CCIN_Editor
             DISPLAY(V_CCIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your company data", True)
         End If
@@ -60,12 +60,12 @@ Public Class CCIN
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles _MMSmenu.EventDataDelete
         Call GETTableID()
-        If V_FORMAttrib.RowID = "-1" Then
+        If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            V_FORMAttrib.IsNew = False
+            varFormAttributes.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.CCIN.View.DELETEDATA(V_DatabaseEngine, V_FORMAttrib.RowID)) Then
+                If (LibSQL.Commands.CCIN.View.DELETEDATA(V_DatabaseEngine, varFormAttributes.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else

@@ -10,8 +10,8 @@ Public Class NTFC
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA()
         DblBuffer(DgnNotification)
-        Commands.NTFC.View.DISPLAY(V_DatabaseEngine, DgnNotification, V_USERAttrib.EID)
-        Mainframe_n_6.USERMENU.Text = V_USERAttrib.FirstName
+        Commands.NTFC.View.DISPLAY(V_DatabaseEngine, DgnNotification, varUserAttributes.EID)
+        Mainframe_n_6.USERMENU.Text = varUserAttributes.FirstName
         Mainframe_n_6.NotificationToolStripMenuItem.Text = "0 Notification(s)"
     End Sub
 #End Region

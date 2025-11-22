@@ -38,28 +38,30 @@ Partial Class App_Launcher
         ' Lbl1
         ' 
         Lbl1.BackColor = Color.Transparent
-        Lbl1.Font = New Font("Segoe UI", 72.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Lbl1.Font = New Font("Segoe UI", 72F, FontStyle.Bold, GraphicsUnit.Point)
         Lbl1.ForeColor = Color.White
-        Lbl1.Location = New Point(9, -5)
+        Lbl1.Location = New Point(13, -8)
+        Lbl1.Margin = New Padding(4, 0, 4, 0)
         Lbl1.Name = "Lbl1"
-        Lbl1.Size = New Size(368, 128)
-        Lbl1.XOCustomElipsis = False
+        Lbl1.Size = New Size(526, 213)
         Lbl1.TabIndex = 0
         Lbl1.Text = "Ingrid"
         Lbl1.TextAlign = ContentAlignment.TopCenter
+        Lbl1.XOCustomElipsis = False
         ' 
         ' LblBuild
         ' 
         LblBuild.BackColor = Color.Transparent
-        LblBuild.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LblBuild.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         LblBuild.ForeColor = Color.White
-        LblBuild.Location = New Point(205, 112)
+        LblBuild.Location = New Point(293, 187)
+        LblBuild.Margin = New Padding(4, 0, 4, 0)
         LblBuild.Name = "LblBuild"
-        LblBuild.Size = New Size(120, 51)
-        LblBuild.XOCustomElipsis = False
+        LblBuild.Size = New Size(171, 85)
         LblBuild.TabIndex = 1
         LblBuild.Text = "Build"
         LblBuild.TextAlign = ContentAlignment.TopRight
+        LblBuild.XOCustomElipsis = False
         ' 
         ' BtnLaunch
         ' 
@@ -68,40 +70,43 @@ Partial Class App_Launcher
         BtnLaunch.FlatAppearance.BorderSize = 2
         BtnLaunch.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
         BtnLaunch.FlatStyle = FlatStyle.Flat
-        BtnLaunch.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnLaunch.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnLaunch.ForeColor = Color.White
-        BtnLaunch.Location = New Point(138, 381)
+        BtnLaunch.Location = New Point(197, 635)
+        BtnLaunch.Margin = New Padding(4, 5, 4, 5)
         BtnLaunch.Name = "BtnLaunch"
-        BtnLaunch.Size = New Size(100, 40)
+        BtnLaunch.Size = New Size(143, 67)
+        BtnLaunch.TabIndex = 1
+        BtnLaunch.Text = "&Launch"
+        BtnLaunch.UseVisualStyleBackColor = False
         BtnLaunch.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
         BtnLaunch.XOTampilkanFocusBorder = False
         BtnLaunch.XOValidasiSemuaInput = False
         BtnLaunch.XOValidasiSemuaInputTag = Nothing
-        BtnLaunch.TabIndex = 1
-        BtnLaunch.Text = "&Launch"
-        BtnLaunch.UseVisualStyleBackColor = False
         ' 
         ' Lbl3
         ' 
         Lbl3.BackColor = Color.White
         Lbl3.BorderStyle = BorderStyle.Fixed3D
         Lbl3.Font = New Font("Segoe UI", 2F, FontStyle.Regular, GraphicsUnit.Point)
-        Lbl3.Location = New Point(205, 110)
+        Lbl3.Location = New Point(293, 183)
+        Lbl3.Margin = New Padding(4, 0, 4, 0)
         Lbl3.Name = "Lbl3"
-        Lbl3.Size = New Size(160, 2)
-        Lbl3.XOCustomElipsis = False
+        Lbl3.Size = New Size(229, 3)
         Lbl3.TabIndex = 3
+        Lbl3.XOCustomElipsis = False
         ' 
         ' Lbl4
         ' 
         Lbl4.BackColor = Color.White
         Lbl4.BorderStyle = BorderStyle.Fixed3D
         Lbl4.Font = New Font("Segoe UI", 2F, FontStyle.Regular, GraphicsUnit.Point)
-        Lbl4.Location = New Point(9, 110)
+        Lbl4.Location = New Point(13, 183)
+        Lbl4.Margin = New Padding(4, 0, 4, 0)
         Lbl4.Name = "Lbl4"
-        Lbl4.Size = New Size(126, 2)
-        Lbl4.XOCustomElipsis = False
+        Lbl4.Size = New Size(180, 3)
         Lbl4.TabIndex = 4
+        Lbl4.XOCustomElipsis = False
         ' 
         ' CboApplication
         ' 
@@ -109,9 +114,10 @@ Partial Class App_Launcher
         CboApplication.FlatStyle = FlatStyle.Flat
         CboApplication.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         CboApplication.FormattingEnabled = True
-        CboApplication.Location = New Point(107, 302)
+        CboApplication.Location = New Point(155, 503)
+        CboApplication.Margin = New Padding(4, 5, 4, 5)
         CboApplication.Name = "CboApplication"
-        CboApplication.Size = New Size(93, 29)
+        CboApplication.Size = New Size(131, 40)
         CboApplication.TabIndex = 0
         ' 
         ' tmrCountdown
@@ -123,31 +129,34 @@ Partial Class App_Launcher
         Lbl5.BackColor = Color.Transparent
         Lbl5.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl5.ForeColor = Color.White
-        Lbl5.Location = New Point(33, 305)
+        Lbl5.Location = New Point(13, 508)
+        Lbl5.Margin = New Padding(4, 0, 4, 0)
         Lbl5.Name = "Lbl5"
-        Lbl5.Size = New Size(74, 21)
-        Lbl5.XOCustomElipsis = False
+        Lbl5.Size = New Size(134, 35)
         Lbl5.TabIndex = 6
         Lbl5.Text = "Opening"
+        Lbl5.TextAlign = ContentAlignment.TopRight
+        Lbl5.XOCustomElipsis = False
         ' 
         ' LblCountdown
         ' 
         LblCountdown.BackColor = Color.Transparent
         LblCountdown.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         LblCountdown.ForeColor = Color.White
-        LblCountdown.Location = New Point(206, 305)
+        LblCountdown.Location = New Point(294, 508)
+        LblCountdown.Margin = New Padding(4, 0, 4, 0)
         LblCountdown.Name = "LblCountdown"
-        LblCountdown.Size = New Size(144, 21)
-        LblCountdown.XOCustomElipsis = False
+        LblCountdown.Size = New Size(232, 35)
         LblCountdown.TabIndex = 7
         LblCountdown.Text = "app in 3 seconds..."
+        LblCountdown.XOCustomElipsis = False
         ' 
         ' App_Launcher
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.Black
-        ClientSize = New Size(377, 450)
+        ClientSize = New Size(539, 750)
         ControlBox = False
         Controls.Add(LblCountdown)
         Controls.Add(Lbl5)
@@ -159,6 +168,7 @@ Partial Class App_Launcher
         Controls.Add(Lbl1)
         FormBorderStyle = FormBorderStyle.None
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        Margin = New Padding(4, 5, 4, 5)
         Name = "App_Launcher"
         StartPosition = FormStartPosition.CenterScreen
         ResumeLayout(False)

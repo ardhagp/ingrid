@@ -8,9 +8,9 @@ Public Class UAC_Employee
 
 #Region "Subs Collections"
     Private Sub GETTableID()
-        V_FORMAttrib.RowID = "-1"
+        varFormAttributes.RowID = "-1"
         If DgnAddinEmployee.RowCount > 0 Then
-            V_FORMAttrib.RowID = DgnAddinEmployee.CurrentRow.Cells("employee_id").Value.ToString
+            varFormAttributes.RowID = DgnAddinEmployee.CurrentRow.Cells("employee_id").Value.ToString
         End If
     End Sub
 
@@ -31,9 +31,9 @@ Public Class UAC_Employee
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             With DgnAddinEmployee.CurrentRow
-                V_FORMAttrib.Field01 = .Cells("employee_id").Value
-                V_FORMAttrib.Field02 = .Cells("employee_number").Value
-                V_FORMAttrib.Field03 = .Cells("employee_fullname").Value
+                varFormAttributes.Field01 = .Cells("employee_id").Value
+                varFormAttributes.Field02 = .Cells("employee_number").Value
+                varFormAttributes.Field03 = .Cells("employee_fullname").Value
             End With
             RaiseEvent RecordSelected()
             Me.Close()
