@@ -6,12 +6,12 @@ Public Class CONN
     Public Event ConnectFrameOpen()
     Public Event ConnectFrameClose()
 
-    Private WithEvents C_MMSMenu As New UI.View.MenuStrip
-    Private WithEvents V_CONN_Editor As New CONN_Editor
+    Private WithEvents comMainframeMenu As New UI.View.MenuStrip
+    Private WithEvents frmCONN_Editor As New CONN_Editor
 
-    Private V_SQL As New Commands.CONN.View
-    Private V_IsProduction As Boolean = True
-    Private V_IsExtension As Boolean = False
+    Private varSQL As New Commands.CONN.View
+    Private varIsProduction As Boolean = True
+    Private varIsExtension As Boolean = False
 
     Public Sub New()
 
@@ -19,7 +19,7 @@ Public Class CONN
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        V_IsProduction = True
+        varIsProduction = True
     End Sub
 
     Public Sub New(Optional ByVal IsProduction As Boolean = False, Optional ByVal IsExtension As Boolean = True)
@@ -28,20 +28,19 @@ Public Class CONN
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        V_IsProduction = IsProduction
-        V_IsExtension = IsExtension
+        varIsProduction = IsProduction
+        varIsExtension = IsExtension
     End Sub
 
 #Region "Sub Collections"
     ''' <summary>
-    ''' Ambil data dari database untuk mengisi datagrid Catalog
+    ''' Get data from database
     ''' </summary>
-    ''' <param name="ForceRefresh">True/False</param>
-    ''' <remarks>True untuk mengambil data tanpa filter</remarks>
+    ''' <param name="forcerefresh"></param>
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
-        DblBuffer(DgnConnection)
-        Commands.CONN.View.DisplayData(DgnConnection, SLFStatus, TxtFind, ForceRefresh)
+    Private Sub GETDATA(Optional forcerefresh As Boolean = False)
+        DblBuffer(DgnConnection) ''' Enable double buffering to reduce flickering
+        Commands.CONN.View.DisplayData(DgnConnection, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     ''' <summary>
@@ -59,32 +58,32 @@ Public Class CONN
 
     <SupportedOSPlatform("windows")>
     Private Sub CONN_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        RaiseEvent ConnectFrameOpen()
+        RaiseEvent ConnectFrameOpen() ''' Notify that the connection settings form is opened
 
-        Bridge.Security.WRITELOG.SENDLOG("Connection Settings is opened.", Bridge.Security.WRITELOG.LogType.Information)
+        Bridge.Security.Writelog.Sendlog("Connection Settings is opened.", Bridge.Security.Writelog.LogType.Information) ''' Log the event
 
-        V_DBE_SQLite.Open(v_IsProduction)
+        V_DBE_SQLite.Open(varIsProduction) ''' Open database connection
 
-        Call LoadMenu()
+        Call LoadMenu() ''' Load mainframe menu
 
-        DgnConnection.XOGETNewColor()
+        DgnConnection.XOGETNewColor() ''' Apply custom color scheme
 
-        Call GETDATA(True)
+        Call GETDATA(True) ''' Load data into the grid
     End Sub
 
     Private Sub LoadMenu()
-        C_MMSMenu.LoadIn(Me, True)
-        C_MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
+        comMainframeMenu.LoadIn(Me, True) ''' Load menu into the form
+        comMainframeMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes) ''' Show data-related menu items
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub CONN_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
-        If Not (v_IsExtension) Then
+        If Not (varIsExtension) Then
             '_DBE_LocalDB.Close()
             V_DBE_SQLite.Close()
         End If
 
-        Bridge.Security.WRITELOG.SENDLOG("Connection Settings is closed.", Bridge.Security.WRITELOG.LogType.Information)
+        Bridge.Security.Writelog.Sendlog("Connection Settings is closed.", Bridge.Security.Writelog.LogType.Information)
 
         RaiseEvent ConnectFrameClose()
     End Sub
@@ -97,11 +96,11 @@ Public Class CONN
     ''' Add new data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataAddNew() Handles C_MMSMenu.EventDataAddNew
+    Private Sub EventDataAddNew() Handles comMainframeMenu.EventDataAddNew
         varFormAttributes.IsNew = True
         varFormAttributes.RowID = "-1"
-        V_CONN_Editor = New CONN_Editor
-        Display(V_CONN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new connection", True)
+        frmCONN_Editor = New CONN_Editor
+        Display(frmCONN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new connection", True)
         SLFStatus.Text = String.Empty
     End Sub
 
@@ -109,15 +108,15 @@ Public Class CONN
     ''' Edit existing data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Public Sub EventDataEdit() Handles C_MMSMenu.EventDataEdit
+    Public Sub EventDataEdit() Handles comMainframeMenu.EventDataEdit
         Call GETTableID()
         varFormAttributes.IsNew = False
 
         If varFormAttributes.RowID Is "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            V_CONN_Editor = New CONN_Editor
-            Display(V_CONN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update connection", True)
+            frmCONN_Editor = New CONN_Editor
+            Display(frmCONN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update connection", True)
         End If
 
         SLFStatus.Text = String.Empty
@@ -127,7 +126,7 @@ Public Class CONN
     ''' Delete selected data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataDelete() Handles C_MMSMenu.EventDataDelete
+    Private Sub EventDataDelete() Handles comMainframeMenu.EventDataDelete
         Call GETTableID()
         If varFormAttributes.RowID Is "-1" Then
             Decision("no record selected", "error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -145,12 +144,12 @@ Public Class CONN
     End Sub
 
     Private Sub FindToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        Call GETDATA(False)
+        Call GETDATA(False) ''' Load data with filter applied
     End Sub
 
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Call GETDATA(False)
+            Call GETDATA(False) ''' Load data with filter applied
         End If
     End Sub
 
@@ -161,14 +160,14 @@ Public Class CONN
     ''' <summary>
     ''' Search mode
     ''' </summary>
-    Private Sub EventToolsFind() Handles C_MMSMenu.EventToolsFind
+    Private Sub EventToolsFind() Handles comMainframeMenu.EventToolsFind
         TxtFind.Focus()
     End Sub
 
     ''' <summary>
     ''' Load data with filter applied
     ''' </summary>
-    Private Sub EventDataRefresh() Handles C_MMSMenu.EventDataRefresh
+    Private Sub EventDataRefresh() Handles comMainframeMenu.EventDataRefresh
         TxtFind.Clear()
         Call GETDATA(True)
     End Sub
@@ -176,17 +175,20 @@ Public Class CONN
     ''' <summary>
     ''' Close form
     ''' </summary>
-    Private Sub EventDataClose() Handles C_MMSMenu.EventDataClose
+    Private Sub EventDataClose() Handles comMainframeMenu.EventDataClose
         Me.Close()
     End Sub
 
+    ''' <summary>
+    ''' Clear search filter
+    ''' </summary>
     Private Sub ClearFind()
         TxtFind.Clear()
         TxtFind.ClearSearch()
         Call GETDATA(True)
     End Sub
 
-    Private Sub V_CONN_Editor_RecordSaved() Handles V_CONN_Editor.RecordSaved
+    Private Sub frmCONN_Editor_RecordSaved() Handles frmCONN_Editor.RecordSaved
         TxtFind.Clear()
         Call GETDATA(True)
     End Sub
