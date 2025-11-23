@@ -88,7 +88,7 @@ Namespace Commands.CONN
                 End If
 
                 If (isnew) Then
-                    V_DBR_SQLITE(1).Query = varIsDefaultActivate & $"insert into serverlist(ID, CONNECTIONNAME, DATABASEENGINE, SERVERADDRESS, SERVERPORT, USERNAME, PASSWORD, DBFORDATA, DEFAULTCONNECTION) values ('{rowID}','{connectionname}','{dbengine}','{address}',{port},'{username}','{Security.Encrypt.AES(password)}',{databasename},{isdefault})"
+                    V_DBR_SQLITE(1).Query = varIsDefaultActivate & $"insert into serverlist(ID, CONNECTIONNAME, DATABASEENGINE, SERVERADDRESS, SERVERPORT, USERNAME, PASSWORD, DBFORDATA, DBFORFILE, DEFAULTCONNECTION) values ('{rowID}','{connectionname}','{dbengine}','{address}',{port},'{username}','{Security.Encrypt.AES(password)}','{databasename}','',{isdefault})"
                 Else
                     If Not (ispasswordchange) Then
                         V_DBR_SQLITE(1).Query = varIsDefaultActivate & String.Format("update serverlist set CONNECTIONNAME='{1}', DATABASEENGINE='{2}', SERVERADDRESS='{3}', SERVERPORT={4}, USERNAME='{5}', DBFORDATA='{6}', DEFAULTCONNECTION={7} where ID='{0}'", rowID, connectionname, dbengine, address, port, username, databasename, isdefault)
