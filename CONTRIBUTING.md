@@ -23,60 +23,60 @@ Please feel free to use the coding standards when you are writing VC++/VC#/VB.NE
 
 **Table of Contents**
 
-1 Overview [1](#overview)
-1.1 Principles & Themes [1](#principles-themes)
-1.2 Terminology [1](#terminology)
-2 General Coding Standards [3](#general-coding-standards)
-2.1 Clarity and Consistency [3](#clarity-and-consistency)
-2.2 Formatting and Style [3](#formatting-and-style)
-2.3 Using Libraries [5](#using-libraries)
-2.4 Global Variables [5](#global-variables)
-2.5 Variable Declarations and Initalizations [5](#variable-declarations-and-initalizations)
-2.6 Function Declarations and Calls [6](#function-declarations-and-calls)
-2.7 Statements [8](#statements)
-2.8 Enums [8](#enums)
-2.9 Whitespace [13](#whitespace)
-2.10 Braces [14](#braces)
-2.11 Comments [15](#comments)
-2.12 Regions [23](#regions)
-3 C++ Coding Standards [25](#c-coding-standards)
-3.1 Compiler Options [25](#compiler-options)
-3.2 Files and Structure [26](#files-and-structure)
-3.3 Naming Conventions [27](#naming-conventions)
-3.4 Pointers [30](#pointers)
-3.5 Constants [31](#constants)
-3.6 Casting [32](#casting)
-3.7 Sizeof [32](#sizeof)
-3.8 Strings [33](#strings)
-3.9 Arrays [34](#arrays)
-3.10 Macros [35](#macros)
-3.11 Functions [35](#functions)
-3.12 Structures [38](#structures)
-3.13 Classes [38](#classes)
-3.14 COM [44](#com)
-3.15 Allocations [45](#allocations)
-3.16 Errors and Exceptions [46](#errors-and-exceptions)
-3.17 Resource Cleanup [48](#resource-cleanup)
-3.18 Control Flow [50](#control-flow)
-4 .NET Coding Standards [54](#net-coding-standards)
-4.1 Design Guidelines for Developing Class Libraries [54](#design-guidelines-for-developing-class-libraries)
-4.2 Files and Structure [54](#files-and-structure-1)
-4.3 Assembly Properties [54](#assembly-properties)
-4.4 Naming Convensions [54](#naming-convensions)
-4.5 Constants [57](#constants-1)
-4.6 Strings [58](#strings-1)
-4.7 Arrays and Collections [59](#arrays-and-collections)
-4.8 Structures [61](#structures-1)
-4.9 Classes [62](#classes-1)
-4.10 Namespaces [65](#namespaces)
-4.11 Errors and Exceptions [65](#errors-and-exceptions-1)
-4.12 Resource Cleanup [68](#resource-cleanup-1)
-4.13 Interop [80](#interop)
+1. Overview [1](#overview)
+    * Principles & Themes [1](##principles-themes)
+    * Terminology [1](##terminology)
+2. General Coding Standards [3](#general-coding-standards)
+    * Clarity and Consistency [3](#clarity-and-consistency)
+    * Formatting and Style [3](#formatting-and-style)
+    * Using Libraries [5](#using-libraries)
+    * Global Variables [5](#global-variables)
+    * Variable Declarations and Initalizations [5](#variable-declarations-and-initalizations)
+    * Function Declarations and Calls [6](#function-declarations-and-calls)
+    * Statements [8](#statements)
+    * Enums [8](#enums)
+    * Whitespace [13](#whitespace)
+    * Braces [14](#braces)
+    * Comments [15](#comments)
+    * Regions [23](#regions)
+3. C++ Coding Standards [25](#c-coding-standards)
+    * Compiler Options [25](#compiler-options)
+    * Files and Structure [26](#files-and-structure)
+    * Naming Conventions [27](#naming-conventions)
+    * Pointers [30](#pointers)
+    * Constants [31](#constants)
+    * Casting [32](#casting)
+    * Sizeof [32](#sizeof)
+    * Strings [33](#strings)
+    * Arrays [34](#arrays)
+    * Macros [35](#macros)
+    * Functions [35](#functions)
+    * Structures [38](#structures)
+    * Classes [38](#classes)
+    * COM [44](#com)
+    * Allocations [45](#allocations)
+    * Errors and Exceptions [46](#errors-and-exceptions)
+    * Resource Cleanup [48](#resource-cleanup)
+    * Control Flow [50](#control-flow)
+4. .NET Coding Standards [54](#net-coding-standards)
+    * Design Guidelines for Developing Class Libraries [54](#design-guidelines-for-developing-class-libraries)
+    * Files and Structure [54](#files-and-structure-1)
+    * Assembly Properties [54](#assembly-properties)
+    * Naming Convensions [54](#naming-convensions)
+    * Constants [57](#constants-1)
+    * Strings [58](#strings-1)
+    * Arrays and Collections [59](#arrays-and-collections)
+    * Structures [61](#structures-1)
+    * Classes [62](#classes-1)
+    * Namespaces [65](#namespaces)
+    * Errors and Exceptions [65](#errors-and-exceptions-1)
+    * Resource Cleanup [68](#resource-cleanup-1)
+    * Interop [80](#interop)
 
-## Overview
+# Overview
 This document defines the native C++ and .NET coding standard for the [All-In-One Code Framework](http://1code.codeplex.com) project team. This standard derives from the experience of product development efforts and is continuously evolving. If you discover a new best practice or a topic that is not covered, please bring that to the attention of the [All-In-One Code Framework Project Group](mailto:onecode@microsoft.com) and have the conclusion added to this document.
 
-No set of guidelines will satisfy everyone. The goal of a standard is to create efficiencies across a community of developers. Applying a set of well-defined coding standards will result in code with fewer bugs, and better maintainability. Adopting an unfamiliar standard may be awkward initially, but the pain fades quickly and the benefits are quickly realized, especially when you inherit ownership of others\' code.
+No set of guidelines will satisfy everyone. The goal of a standard is to create efficiencies across a community of developers. Applying a set of well-defined coding standards will result in code with fewer bugs, and better maintainability. Adopting an unfamiliar standard may be awkward initially, but the pain fades quickly and the benefits are quickly realized, especially when you inherit ownership of others code.
 
 ## Principles & Themes
 High-quality samples exhibit the following characteristics because
@@ -84,106 +84,46 @@ customers use them as examples of best practices:
 
 1.  **Understandable.** Samples must be clearly readable and straightforward. They must showcase the key things they're designed to demonstrate. The relevant parts of a sample should be easy to reuse. Samples should not contain unnecessary code. They must include appropriate documentation.
 
-2.  **Correct.** Samples must demonstrate properly how to perform the
-    key things they are designed to teach. They must compile cleanly,
-    run correctly as documented, and be tested.
+2.  **Correct.** Samples must demonstrate properly how to perform the key things they are designed to teach. They must compile cleanly, run correctly as documented, and be tested.
 
-3.  **Consistent.** Samples should follow consistent coding style and
-    layout to make the code easier to read. Likewise, samples should be
-    consistent with each other to make them easier to use together.
-    Consistency shows craftsmanship and attention to detail.
+3.  **Consistent.** Samples should follow consistent coding style and layout to make the code easier to read. Likewise, samples should be consistent with each other to make them easier to use together. Consistency shows craftsmanship and attention to detail.
 
-4.  **Modern.** Samples should demonstrate current practices such as use
-    of Unicode, error handling, defensive programming, and portability.
-    They should use current recommendations for runtime library and API
-    functions. They should use recommended project & build settings.
+4.  **Modern.** Samples should demonstrate current practices such as use of Unicode, error handling, defensive programming, and portability. They should use current recommendations for runtime library and API functions. They should use recommended project & build settings.
 
-5.  **Safe.** Samples must comply with legal, privacy, and policy
-    standards. They must not demonstrate hacks or poor programming
-    practices. They must not permanently alter machine state. All
-    installation and execution steps must be reversible.
+5.  **Safe.** Samples must comply with legal, privacy, and policy standards. They must not demonstrate hacks or poor programming practices. They must not permanently alter machine state. All installation and execution steps must be reversible.
 
-6.  **Secure.** The samples should demonstrate how to use secure
-    programming practices such as least privilege, secure versions of
-    runtime library functions, and SDL-recommended project settings.
+6.  **Secure.** The samples should demonstrate how to use secure programming practices such as least privilege, secure versions of runtime library functions, and SDL-recommended project settings.
 
-The proper use of programming practices, design, and language features
-determines how well samples can achieve these. This code standard is
-designed to help you create samples that serve as "best practices" for
-customers to emulate.
+The proper use of programming practices, design, and language features determines how well samples can achieve these. This code standard is designed to help you create samples that serve as "best practices" for customers to emulate.
 
 ## Terminology
+Through-out this document there will be recommendations or suggestions for standards and practices. Some practices are very important and must be followed, others are guidelines that are beneficial in certain scenarios but are not applicable everywhere. In order to clearly state the intent of the standards and practices that are discussed we will use the following terminology.
 
-Through-out this document there will be recommendations or suggestions
-for standards and practices. Some practices are very important and must
-be followed, others are guidelines that are beneficial in certain
-scenarios but are not applicable everywhere. In order to clearly state
-the intent of the standards and practices that are discussed we will use
-the following terminology.
 
-+--------------+----------------------------------+------------------------+
-| Wording      | Intent                           | Justification          |
-+==============+==================================+========================+
-| 🗹 **Do\...** | This standard or practice should | These standards are    |
-|              | be followed in all cases. If you | present to mitigate    |
-|              | think that your specific         | bugs.                  |
-|              | application is exempt, it        |                        |
-|              | probably isn\'t.                 |                        |
-+--------------+----------------------------------+                        |
-| 🗷 **Do       | This standard or practice should |                        |
-| Not\...**    | never be applied.                |                        |
-+--------------+----------------------------------+------------------------+
-| 🗹 **You      | This standard or practice should | These standards are    |
-| should\...** | be followed in most cases.       | typically stylistic    |
-|              |                                  | and attempt to promote |
-|              |                                  | a consistent and clear |
-|              |                                  | style.                 |
-+--------------+----------------------------------+                        |
-| 🗷 **You      | This standard or practice should |                        |
-| should       | not be followed, unless there\'s |                        |
-| not\...**    | reasonable justification.        |                        |
-+--------------+----------------------------------+------------------------+
-| 🗹 **You      | This standard or practice can be | These standards are    |
-| can...**     | followed if you want to; it\'s   | typically stylistic,   |
-|              | not necessarily good or bad.     | but are not            |
-|              | There are probably implications  | ubiquitously adopted.  |
-|              | to following the practice        |                        |
-|              | (dependencies, or constraints)   |                        |
-|              | that should be considered before |                        |
-|              | adopting it.                     |                        |
-+--------------+----------------------------------+------------------------+
+| Wording | Intent | Justification |
+| -- | -- | -- |
+| 🗹 **Do...** | This standard or practice should be followed in all cases. If you think that your specific application is exempt, it probably isn't. | These standards are present to mitigate bugs. |
+| 🗷 **Do Not...** | This standard or practice should never be applied. | |
+| 🗹 **You should...** | This standard or practice should be followed in most cases. | These standards are typically stylistic and attempt to promote a consistent and clear style.|
+| 🗷 **You should not...** | This standard or practice should not be followed, unless there's reasonable justification. |  |
+| 🗹 **You can...** | This standard or practice can be followed if you want to; it's not necessarily good or bad. There are probably implications to following the practice (dependencies, or constraints) that should be considered before adopting it. | These standards are typically stylistic, but are not ubiquitously adopted. |
 
 # General Coding Standards
-
-These general coding standards can be applied to all languages - they
-provide high-level guidance to the style, formatting and structure of
-your source code.
+These general coding standards can be applied to all languages - they provide high-level guidance to the style, formatting and structure of your source code.
 
 ## Clarity and Consistency
+🗹 **Do** ensure that clarity, readability and transparency are paramount. These coding standards strive to ensure that the resultant code is easy to understand and maintain, but nothing beats fundamentally clear, concise, self-documenting code.
 
-🗹 **Do** ensure that clarity, readability and transparency are
-paramount. These coding standards strive to ensure that the resultant
-code is easy to understand and maintain, but nothing beats fundamentally
-clear, concise, self-documenting code.
-
-🗹 **Do** ensure that when applying these coding standards that they are
-applied consistently.
+🗹 **Do** ensure that when applying these coding standards that they are applied consistently.
 
 ## Formatting and Style
-
-🗷 **Do not** use tabs. It\'s generally accepted across Microsoft that
-tabs shouldn\'t be used in source files - different text editors use
-different spacing to render tabs, and this causes formatting confusion.
-All code should be written using four spaces for indentation.
+🗷 **Do not** use tabs. It's generally accepted across Microsoft that tabs shouldn't be used in source files - different text editors use different spacing to render tabs, and this causes formatting confusion. All code should be written using four spaces for indentation.
 
 Visual Studio text editor can be configured to insert spaces for tabs.
 
 ![](https://res.cloudinary.com/cagakmelon/image/upload/v1763856830/apps/ingrid-assets/contributing.md/formating-vs-settings.png)
 
-🗹 **You should** limit the length of lines of code. Having overly long
-lines inhibits the readability of code. Break the code line when the
-line length is greater than column 78 for readability. If column 78
-looks too narrow, use column 86 or 90.
+🗹 **You should** limit the length of lines of code. Having overly long lines inhibits the readability of code. Break the code line when the line length is greater than column 78 for readability. If column 78 looks too narrow, use column 86 or 90.
 
 Visual C++ sample:
 
@@ -197,275 +137,207 @@ Visual Basic sample:
 
 ![](https://res.cloudinary.com/cagakmelon/image/upload/v1763856830/apps/ingrid-assets/contributing.md/formating-tab-vb.png)
 
-🗹 **Do** use a fixed-width font, typically Courier New, in your code
-editor.
+🗹 **Do** use a fixed-width font, typically Courier New, in your code editor.
 
-![](media/image5.png){width="6.208370516185477in"
-height="3.6373272090988626in"}
+![](https://res.cloudinary.com/cagakmelon/image/upload/v1763926644/apps/ingrid-assets/contributing.md/formating-vs-settings2.png)
 
 ## Using Libraries
-
-🗷 **Do not** reference unnecessary libraries, include unnecessary header
-files, or reference unnecessary assemblies. Paying attention to small
-things like this can improve build times, minimize chances for mistakes,
-and give readers a good impression.
+🗷 **Do not** reference unnecessary libraries, include unnecessary header files, or reference unnecessary assemblies. Paying attention to small things like this can improve build times, minimize chances for mistakes, and give readers a good impression.
 
 ## Global Variables
-
-🗹 **Do** minimize global variables. To use global variables properly,
-always pass them to functions through parameter values. Never reference
-them inside of functions or classes directly because doing so creates a
-side effect that alters the state of the global without the caller
-knowing. The same goes for static variables. If you need to modify a
-global variable, you should do so either as an output parameter or
-return a copy of the global.
+🗹 **Do** minimize global variables. To use global variables properly, always pass them to functions through parameter values. Never reference them inside of functions or classes directly because doing so creates a side effect that alters the state of the global without the caller knowing. The same goes for static variables. If you need to modify a global variable, you should do so either as an output parameter or return a copy of the global.
 
 ## Variable Declarations and Initalizations
-
-🗹 **Do** declare local variables in the minimum scope block that can
-contain them, typically just before use if the language allows;
-otherwise, at the top of that scope block.
+🗹 **Do** declare local variables in the minimum scope block that can contain them, typically just before use if the language allows; otherwise, at the top of that scope block.
 
 🗹 **Do** initialize variables when they are declared.
 
-🗹 **Do** declare and initialize/assign local variables on a single line
-where the language allows it. This reduces vertical space and makes sure
-that a variable does not exist in an un-initialized state or in a state
-that will immediately change.
+🗹 **Do** declare and initialize/assign local variables on a single line where the language allows it. This reduces vertical space and makes sure that a variable does not exist in an un-initialized state or in a state that will immediately change.
 
-// C++ sample:
 ```
+// C++ sample:
 HANDLE hToken = NULL;
 PSID pIntegritySid = NULL;
 STARTUPINFO si = { sizeof(si) };
 PROCESS_INFORMATION pi = { 0 };
 ```
 
-// C# sample:
 ```
+// C# sample:
 string name = myObject.Name;
 int val = time.Hours;
 ```
 
-\' VB.NET sample:
 ```
+' VB.NET sample:
 Dim name As String = myObject.Name
 Dim val As Integer = time.Hours
 ```
 
-🗷 **Do not** declare multiple variables in a single line. One
-declaration per line is recommended since it encourages commenting, and
-could avoid confusion. As a Visual C++ example,
+🗷 **Do not** declare multiple variables in a single line. One declaration per line is recommended since it encourages commenting, and could avoid confusion. As a Visual C++ example,
 
-> Good:
->
-> CodeExample \*pFirst = NULL; // Pointer of the first element.
->
-> CodeExample \*pSecond = NULL; // Pointer of the second element.
->
-> Bad:
->
-> CodeExample \*pFirst, \*pSecond;
+Good:
+```
+CodeExample *pFirst = NULL; // Pointer of the first element.
+CodeExample *pSecond = NULL; // Pointer of the second element.
+```
+
+Bad:
+```
+CodeExample *pFirst, *pSecond;
+```
 
 The latter example is often mistakenly written as:
-
-> CodeExample \*pFirst, pSecond;
+```
+CodeExample *pFirst, pSecond;
+```
 
 Which is *actually* equivalent to:
-
-> CodeExample \*pFirst;
->
-> CodeExample pSecond;
+```
+CodeExample *pFirst;
+CodeExample pSecond;
+```
 
 ## Function Declarations and Calls
-
-The function/method name, return value and parameter list can take
-several forms. Ideally this can all fit on a single line. If there are
-many arguments that don\'t fit on a line those can be wrapped, many per
-line or one per line. Put the return type on the same line as the
-function/method name. For example,
+The function/method name, return value and parameter list can take several forms. Ideally this can all fit on a single line. If there are many arguments that don\'t fit on a line those can be wrapped, many per line or one per line. Put the return type on the same line as the function/method name. For example,
 
 Single Line Format:
-
+```
 // C++ function declaration sample:
-
 HRESULT DoSomeFunctionCall(int param1, int param2, int \*param3);
+```
 
+```
 // C++ / C# function call sample:
-
 hr = DoSomeFunctionCall(param1, param2, param3);
+```
 
-\' VB.NET function call sample:
-
+```
+' VB.NET function call sample:
 hr = DoSomeFunctionCall(param1, param2, param3)
+```
 
 Multiple Line Formats:
-
+```
 // C++ function declaration sample:
+HRESULT DoSomeFunctionCall(int param1, int param2, int \*param3,
+int param4, int param5);
+```
 
-> HRESULT DoSomeFunctionCall(int param1, int param2, int \*param3,
->
-> int param4, int param5);
-
+```
 // C++ / C# function call sample:
+hr = DoSomeFunctionCall(param1, param2, param3,
+param4, param5);
+```
 
-> hr = DoSomeFunctionCall(param1, param2, param3,
->
-> param4, param5);
+```
+' VB.NET function call sample:
+hr = DoSomeFunctionCall(param1, param2, param3, _
+param4, param5)
+```
 
-\' VB.NET function call sample:
+When breaking up the parameter list into multiple lines, each type/parameter pair should line up under the preceding one, the first one being on a new line, indented one tab. Parameter lists for function/method *calls* should be formatted in the same manner.
 
-> hr = DoSomeFunctionCall(param1, param2, param3, \_
->
-> param4, param5)
-
-When breaking up the parameter list into multiple lines, each
-type/parameter pair should line up under the preceding one, the first
-one being on a new line, indented one tab. Parameter lists for
-function/method *calls* should be formatted in the same manner.
-
+```
 // C++ function declaration sample:
+HRESULT DoSomeFunctionCall(
+HWND hwnd, // You can comment parameters, too
+T1 param1, // Indicates something
+T2 param2, // Indicates something else
+T3 param3, // Indicates more
+T4 param4, // Indicates even more
+T5 param5); // You get the idea
+```
 
-> HRESULT DoSomeFunctionCall(
->
-> HWND hwnd, // You can comment parameters, too
->
-> T1 param1, // Indicates something
->
-> T2 param2, // Indicates something else
->
-> T3 param3, // Indicates more
->
-> T4 param4, // Indicates even more
->
-> T5 param5); // You get the idea
-
+```
 // C++ / C# function call sample:
-
-> hr = DoSomeFunctionCall(
->
-> hwnd,
->
-> param1,
->
-> param2,
->
-> param3,
->
-> param4,
-
+hr = DoSomeFunctionCall(
+hwnd,
+param1,
+param2,
+param3,
+param4,
 param5);
+```
 
-\' VB.NET function call sample:
-
-> hr = DoSomeFunctionCall( \_
->
-> hwnd, \_
->
-> param1, \_
->
-> param2, \_
->
-> param3, \_
->
-> param4, \_
-
+```
+' VB.NET function call sample:
+hr = DoSomeFunctionCall( _
+hwnd, _
+param1, _
+param2, _
+param3, _
+param4, _
 param5)
+```
 
-🗹 **Do** order parameters, grouping the in parameters first, the out
-parameters last. Within the group, order the parameters based on what
-will help programmers supply the right values. For example, if a
-function takes arguments named "left" and "right", put "left" before
-"right" so that their place match their names. When designing a series
-of functions which take the same arguments, use a consistent order
-across the functions. For example, if one function takes an input handle
-as the first parameter, all of the related functions should also take
-the same input handle as the first parameter.
+🗹 **Do** order parameters, grouping the in parameters first, the out parameters last. Within the group, order the parameters based on what will help programmers supply the right values. For example, if a function takes arguments named "left" and "right", put "left" before "right" so that their place match their names. When designing a series of functions which take the same arguments, use a consistent order across the functions. For example, if one function takes an input handle as the first parameter, all of the related functions should also take the same input handle as the first parameter.
 
 ## Statements
+🗷 **Do not** put more than one statement on a single line because it makes stepping through the code in a debugger much more difficult.
 
-🗷 **Do not** put more than one statement on a single line because it
-makes stepping through the code in a debugger much more difficult.
+Good:
 
-> Good:
-
-// C++ / C# sample:
 ```
+// C++ / C# sample:
 a = 1;
 b = 2;
 ```
 
-\' VB.NET sample:
 ```
+' VB.NET sample:
 If (IsAdministrator()) Then
 Console.WriteLine(\"YES\")
 End If
 ```
 
-> Bad:
-
+Bad:
+```
 // C++ / C# sample:
+a = 1; b = 2;
+```
 
-> a = 1; b = 2;
-
-\' VB.NET sample:
-
-> If (IsAdministrator()) Then Console.WriteLine(\"YES\")
+```
+' VB.NET sample:
+If (IsAdministrator()) Then Console.WriteLine(\"YES\")
+```
 
 ## Enums
+🗹 **Do** use an enum to strongly type parameters, properties, and return values that represent sets of values.
 
-🗹 **Do** use an enum to strongly type parameters, properties, and return
-values that represent sets of values.
+🗹 **Do** favor using an enum over static constants or "#define" values. An enum is a structure with a set of static constants. The reason to follow this guideline is because you will get some additional compiler and reflection support if you define an enum versus manually defining a structure with static constants.
 
-🗹 **Do** favor using an enum over static constants or "#define" values .
-An enum is a structure with a set of static constants. The reason to
-follow this guideline is because you will get some additional compiler
-and reflection support if you define an enum versus manually defining a
-structure with static constants.
+Good:
+```
+// C++ sample:
+enum Color
+{
+Red,
+Green,
+Blue
+};
+```
 
-> Good:
->
-> // C++ sample:
->
-> enum Color
->
-> {
->
-> Red,
->
-> Green,
->
-> Blue
->
-> };
->
-> // C# sample:
->
-> public enum Color
->
-> {
->
-> Red,
->
-> Green,
->
-> Blue
->
-> }
->
-> \' VB.NET sample:
->
-> Public Enum Color
->
-> Red
->
-> Green
->
-> Blue
->
-> End Enum
->
-> Bad:
+```
+// C# sample:
+public enum Color
+{
+Red,
+Green,
+Blue
+}
+```
+
+```
+' VB.NET sample:
+Public Enum Color
+Red
+Green
+Blue
+End Enum
+```
+
+ Bad:
 >
 > // C++ sample:
 >
