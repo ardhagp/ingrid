@@ -220,7 +220,7 @@ hr = DoSomeFunctionCall(param1, param2, param3)
 Multiple Line Formats:
 ```
 // C++ function declaration sample:
-HRESULT DoSomeFunctionCall(int param1, int param2, int \*param3,
+HRESULT DoSomeFunctionCall(int param1, int param2, int *param3,
 int param4, int param5);
 ```
 
@@ -287,7 +287,7 @@ b = 2;
 ```
 ' VB.NET sample:
 If (IsAdministrator()) Then
-Console.WriteLine(\"YES\")
+Console.WriteLine("YES")
 End If
 ```
 
@@ -299,7 +299,7 @@ a = 1; b = 2;
 
 ```
 ' VB.NET sample:
-If (IsAdministrator()) Then Console.WriteLine(\"YES\")
+If (IsAdministrator()) Then Console.WriteLine("YES")
 ```
 
 ## Enums
