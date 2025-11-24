@@ -1,3 +1,6 @@
+> [!NOTE]
+> This source taken from codeplex.com in 2010.
+
 # All-In-One Code Framework Coding Standards
  ![](https://img.shields.io/badge/by-Jialiang_Ge-red)
 
@@ -155,7 +158,7 @@ Visual Basic sample:
 
 🗹 **Do** declare and initialize/assign local variables on a single line where the language allows it. This reduces vertical space and makes sure that a variable does not exist in an un-initialized state or in a state that will immediately change.
 
-```c++
+```cpp
 // C++ sample:
 HANDLE hToken = NULL;
 PSID pIntegritySid = NULL;
@@ -178,23 +181,23 @@ Dim val As Integer = time.Hours
 🗷 **Do not** declare multiple variables in a single line. One declaration per line is recommended since it encourages commenting, and could avoid confusion. As a Visual C++ example,
 
 Good:
-```c++
+```cpp
 CodeExample *pFirst = NULL; // Pointer of the first element.
 CodeExample *pSecond = NULL; // Pointer of the second element.
 ```
 
 Bad:
-```c++
+```cpp
 CodeExample *pFirst, *pSecond;
 ```
 
 The latter example is often mistakenly written as:
-```c++
+```cpp
 CodeExample *pFirst, pSecond;
 ```
 
 Which is *actually* equivalent to:
-```c++
+```cpp
 CodeExample *pFirst;
 CodeExample pSecond;
 ```
@@ -203,12 +206,12 @@ CodeExample pSecond;
 The function/method name, return value and parameter list can take several forms. Ideally this can all fit on a single line. If there are many arguments that don\'t fit on a line those can be wrapped, many per line or one per line. Put the return type on the same line as the function/method name. For example,
 
 Single Line Format:
-```c++
+```cpp
 // C++ function declaration sample:
 HRESULT DoSomeFunctionCall(int param1, int param2, int \*param3);
 ```
 
-```c++
+```cpp
 // C++ / C# function call sample:
 hr = DoSomeFunctionCall(param1, param2, param3);
 ```
@@ -219,57 +222,57 @@ hr = DoSomeFunctionCall(param1, param2, param3)
 ```
 
 Multiple Line Formats:
-```c++
+```cpp
 // C++ function declaration sample:
 HRESULT DoSomeFunctionCall(int param1, int param2, int *param3,
-int param4, int param5);
+        int param4, int param5);
 ```
 
-```c++
+```cpp
 // C++ / C# function call sample:
 hr = DoSomeFunctionCall(param1, param2, param3,
-param4, param5);
+     param4, param5);
 ```
 
 ```vb
 ' VB.NET function call sample:
 hr = DoSomeFunctionCall(param1, param2, param3, _
-param4, param5)
+     param4, param5)
 ```
 
 When breaking up the parameter list into multiple lines, each type/parameter pair should line up under the preceding one, the first one being on a new line, indented one tab. Parameter lists for function/method *calls* should be formatted in the same manner.
 
-```c++
+```cpp
 // C++ function declaration sample:
 HRESULT DoSomeFunctionCall(
 HWND hwnd, // You can comment parameters, too
-T1 param1, // Indicates something
-T2 param2, // Indicates something else
-T3 param3, // Indicates more
-T4 param4, // Indicates even more
-T5 param5); // You get the idea
+    T1 param1, // Indicates something
+    T2 param2, // Indicates something else
+    T3 param3, // Indicates more
+    T4 param4, // Indicates even more
+    T5 param5); // You get the idea
 ```
 
 ```cpp
 // C++ / C# function call sample:
 hr = DoSomeFunctionCall(
-hwnd,
-param1,
-param2,
-param3,
-param4,
-param5);
+     hwnd,
+     param1,
+     param2,
+     param3,
+     param4,
+     param5);
 ```
 
 ```vb
 ' VB.NET function call sample:
 hr = DoSomeFunctionCall( _
-hwnd, _
-param1, _
-param2, _
-param3, _
-param4, _
-param5)
+     hwnd, _
+     param1, _
+     param2, _
+     param3, _
+     param4, _
+     param5)
 ```
 
 🗹 **Do** order parameters, grouping the in parameters first, the out parameters last. Within the group, order the parameters based on what will help programmers supply the right values. For example, if a function takes arguments named "left" and "right", put "left" before "right" so that their place match their names. When designing a series of functions which take the same arguments, use a consistent order across the functions. For example, if one function takes an input handle as the first parameter, all of the related functions should also take the same input handle as the first parameter.
@@ -287,7 +290,7 @@ b = 2;
 ```vb
 ' VB.NET sample:
 If (IsAdministrator()) Then
-Console.WriteLine("YES")
+     Console.WriteLine("YES")
 End If
 ```
 
@@ -312,9 +315,9 @@ Good:
 // C++ sample:
 enum Color
 {
-Red,
-Green,
-Blue
+     Red,
+     Green,
+     Blue
 };
 ```
 
@@ -322,18 +325,18 @@ Blue
 // C# sample:
 public enum Color
 {
-Red,
-Green,
-Blue
+     Red,
+     Green,
+     Blue
 }
 ```
 
 ```vb
 ' VB.NET sample:
 Public Enum Color
-Red
-Green
-Blue
+     Red
+     Green
+     Blue
 End Enum
 ```
 
@@ -343,6 +346,7 @@ End Enum
 const int RED = 0;
 const int GREEN = 1;
 const int BLUE = 2;
+
 #define RED 0
 #define GREEN 1
 #define BLUE 2
@@ -352,18 +356,18 @@ const int BLUE = 2;
 // C# sample:
 public static class Color
 {
-public const int Red = 0;
-public const int Green = 1;
-public const int Blue = 2;
+     public const int Red = 0;
+     public const int Green = 1;
+     public const int Blue = 2;
 }
 ```
 
 ```vb
 ' VB.NET sample:
 Public Class Color
-Public Const Red As Integer = 0
-Public Const Green As Integer = 1
-Public Const Blue As Integer = 2
+     Public Const Red As Integer = 0
+     Public Const Green As Integer = 1
+     Public Const Blue As Integer = 2
 End Class
 ```
 
@@ -376,9 +380,9 @@ particular enum, the most common default value for the enum should be assigned t
 // C++ sample:
 enum Compression
 {
-None = 0,
-GZip,
-Deflate
+     None = 0,
+     GZip,
+     Deflate
 };
 ```
 
@@ -386,18 +390,18 @@ Deflate
 // C# sample:
 public enum Compression
 {
-None = 0,
-GZip,
-Deflate
+     None = 0,
+     GZip,
+     Deflate
 }
 ```
 
 ```vb
 ' VB.NET sample:
 Public Enum Compression
-None = 0
-GZip
-Deflate
+     None = 0
+     GZip
+     Deflate
 End Enum
 ```
 
@@ -408,14 +412,14 @@ Good:
 // C# sample:
 if (c > Color.Black || c < Color.White)
 {
-throw new ArgumentOutOfRangeException(...);
+     throw new ArgumentOutOfRangeException(...);
 }
 ```
 
  ```vb
 ' VB.NET sample:
 If (c > Color.Black Or c < Color.White) Then
-Throw New ArgumentOutOfRangeException(...);
+     Throw New ArgumentOutOfRangeException(...);
 End If
 ```
 
@@ -424,14 +428,14 @@ Bad:
 // C# sample:
 if (!Enum.IsDefined(typeof(Color), c))
 {
-throw new InvalidEnumArgumentException(...);
+     throw new InvalidEnumArgumentException(...);
 }
 ```
 
 ```vb
 ' VB.NET sample:
 If Not [Enum].IsDefined(GetType(Color), c) Then
-Throw New ArgumentOutOfRangeException(...);
+     Throw New ArgumentOutOfRangeException(...);
 End If
 ```
 
@@ -446,10 +450,10 @@ Flag enums are designed to support bitwise operations on the enum values. A comm
 // C++ sample:
 enum AttributeTargets
 {
-Assembly = 0x0001,
-Class = 0x0002,
-Struct = 0x0004
-...
+     Assembly = 0x0001,
+     Class = 0x0002,
+     Struct = 0x0004
+     ...
 };
 ```
 
@@ -458,10 +462,10 @@ Struct = 0x0004
 [Flags]
 public enum AttributeTargets
 {
-Assembly = 0x0001,
-Class = 0x0002,
-Struct = 0x0004,
-...
+     Assembly = 0x0001,
+     Class = 0x0002,
+     Struct = 0x0004,
+     ...
 }
 ```
 
@@ -469,10 +473,10 @@ Struct = 0x0004,
 ' VB.NET sample:
 <Flags()> _
 Public Enum AttributeTargets
-Assembly = &H1
-Class = &H2
-Struct = &H4
-...
+     Assembly = &H1
+     Class = &H2
+     Struct = &H4
+     ...
 End Enum
 ```
 
@@ -482,9 +486,9 @@ End Enum
 // C++ sample:
 enum FileAccess
 {
-Read = 0x1,
-Write = 0x2,
-ReadWrite = Read | Write
+     Read = 0x1,
+     Write = 0x2,
+     ReadWrite = Read | Write
 };
 ```
 
@@ -493,9 +497,9 @@ ReadWrite = Read | Write
 [Flags]
 public enum FileAccess
 {
-Read = 0x1,
-Write = 0x2,
-ReadWrite = Read | Write
+     Read = 0x1,
+     Write = 0x2,
+     ReadWrite = Read | Write
 }
 ```
 
@@ -503,9 +507,9 @@ ReadWrite = Read | Write
 ' VB.NET sample:
 <Flags()> _
 Public Enum FileAccess
-Read = &H1
-Write = &H2
-ReadWrite = Read Or Write
+     Read = &H1
+     Write = &H2
+     ReadWrite = Read Or Write
 End Enum
 ```
 
@@ -516,15 +520,15 @@ Bad:
 [Flags]
 public enum SomeFlag
 {
-ValueA = 0, // This might be confusing to users
-ValueB = 1,
-ValueC = 2,
-ValueBAndC = ValueB | ValueC,
+     ValueA = 0, // This might be confusing to users
+     ValueB = 1,
+     ValueC = 2,
+     ValueBAndC = ValueB | ValueC,
 }
 SomeFlag flags = GetValue();
 if ((flags & SomeFlag.ValueA) == SomeFlag.ValueA)
 {
-...
+     ...
 }
 ```
 
@@ -533,14 +537,15 @@ Good:
 [Flags]
 public enum BorderStyle
 {
-Fixed3D = 0x1,
-FixedSingle = 0x2,
-None = 0x0
+     Fixed3D = 0x1,
+     FixedSingle = 0x2,
+     None = 0x0
 }
+
 if (foo.BorderStyle == BorderStyle.None)
-{
-...
-}
+     {
+          ...
+     }
 ```
 
 ## Whitespace
@@ -553,10 +558,11 @@ Good:
 // C++ sample:
 void ProcessItem(const Item& item)
 {
-int counter = 0;
-if(...)
-{
-}
+     int counter = 0;
+
+     if(...)
+     {
+     }
 }
 ```
 
@@ -565,12 +571,16 @@ Bad:
 // C++ sample:
 void ProcessItem(const Item& item)
 {
-int counter = 0;
-// Implementation starts here
-//
-if(...)
-{
-}
+     int counter = 0;
+
+
+     // Implementation starts here
+     //
+     if(...)
+     {
+     }
+
+
 }
 ```
 
@@ -603,44 +613,31 @@ If (x = y) Then ' Single space separates operators
 ```
 
 Bad:
-
+```CPP
 // C++ / C# sample:
+CreateFoo (); // Space between function name and parenthesis
+Method(myChar,0,1); // No spaces after commas
+CreateFoo( myChar, 0, 1 ); // Space before first arg, after last arg
+x = array\[ index \]; // Spaces inside brackets
+while(x == y) // No space before flow control statements
+if (x==y) // No space separates operators
+```
 
-> CreateFoo (); // Space between function name and parenthesis
->
-> Method(myChar,0,1); // No spaces after commas
->
-> CreateFoo( myChar, 0, 1 ); // Space before first arg, after last arg
->
-> x = array\[ index \]; // Spaces inside brackets
->
-> while(x == y) // No space before flow control statements
->
-> if (x==y) // No space separates operators
-
-\' VB.NET sample:
-
-> CreateFoo () \' Space between function name and parenthesis
->
-> Method(myChar,0,1) \' No spaces after commas
->
-> CreateFoo( myChar, 0, 1 ) \' Space before first arg, after last arg
->
-> x = array( index ) \' Spaces inside brackets
->
-> While(x = y) \' No space before flow control statements
->
-> If (x=y) Then \' No space separates operators
+```VB
+' VB.NET sample:
+CreateFoo () ' Space between function name and parenthesis
+Method(myChar,0,1) ' No spaces after commas
+CreateFoo( myChar, 0, 1 ) ' Space before first arg, after last arg
+x = array( index ) ' Spaces inside brackets
+While(x = y) ' No space before flow control statements
+If (x=y) Then ' No space separates operators
+```
 
 ## Braces
 
-🗹 **Do** use Allman bracing style in [All-In-One Code
-Framework](http://1code.codeplex.com) code samples.
+🗹 **Do** use Allman bracing style in [All-In-One Code Framework](http://1code.codeplex.com) code samples.
 
-The Allman style is named after Eric Allman. It is sometimes referred to
-as \"ANSI style\". The style puts the brace associated with a control
-statement on the next line, indented to the same level as the control
-statement. Statements within the braces are indented to the next level.
+The Allman style is named after Eric Allman. It is sometimes referred to as "ANSI style". The style puts the brace associated with a control statement on the next line, indented to the same level as the control statement. Statements within the braces are indented to the next level.
 
 > Good:
 
