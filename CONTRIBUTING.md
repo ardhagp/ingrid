@@ -1,5 +1,5 @@
 > [!NOTE]
-> This source taken from codeplex.com in 2010.
+> This source taken from codeplex.com in 2011.
 
 # All-In-One Code Framework Coding Standards
  ![](https://img.shields.io/badge/by-Jialiang_Ge-red)
@@ -639,213 +639,166 @@ If (x=y) Then ' No space separates operators
 
 The Allman style is named after Eric Allman. It is sometimes referred to as "ANSI style". The style puts the brace associated with a control statement on the next line, indented to the same level as the control statement. Statements within the braces are indented to the next level.
 
-> Good:
+Good:
+```CPP
+// C++ / C# sample:
+if (x > 5)
+{
+     y = 0;
+}
+```
 
+```vb
+' VB.NET sample:
+If (x > 5) Then
+     y = 0
+End If
+```
+
+Bad (in All-In-One Code Framework samples):
+```cpp
 // C++ / C# sample:
 
-> if (x \> 5)
->
-> {
->
-> y = 0;
->
-> }
+if (x > 5) {
+     y = 0;
+}
+```
 
-\' VB.NET sample:
+🗹 **You should** use braces around single line conditionals. Doing this makes it easier to add code to these conditionals in the future and avoids ambiguities should the tabbing of the file become disturbed.
 
-> If (x \> 5) Then
->
-> y = 0
->
-> End If
->
-> Bad (in All-In-One Code Framework samples):
-
+Good:
+```cpp
 // C++ / C# sample:
 
-> if (x \> 5) {
->
-> y = 0;
->
-> }
+if (x > 5)
+{
+     y = 0;
+}
+```
 
-🗹 **You should** use braces around single line conditionals. Doing this
-makes it easier to add code to these conditionals in the future and
-avoids ambiguities should the tabbing of the file become disturbed.
+```vb
+' VB.NET sample:
+If (x > 5) Then
+     y = 0
+End If
+```
 
-> Good:
-
+Bad:
+```cpp
 // C++ / C# sample:
 
-> if (x \> 5)
->
-> {
->
-> y = 0;
->
-> }
+if (x > 5) y = 0;
+```
 
-\' VB.NET sample:
+```vb
+' VB.NET sample:
 
-> If (x \> 5) Then
->
-> y = 0
->
-> End If
->
-> Bad:
-
-// C++ / C# sample:
-
-> if (x \> 5) y = 0;
-
-\' VB.NET sample:
-
-> If (x \> 5) Then y = 0
+If (x > 5) Then y = 0
+```
 
 ## Comments
+🗹 **You should** use comments that summarize what a piece of code is designed to do and why. **Do not** use comments to repeat the code.
 
-🗹 **You should** use comments that summarize what a piece of code is
-designed to do and why. **Do not** use comments to repeat the code.
+Good:
+```cpp
+// Determine whether system is running Windows Vista or later operating
+// systems (major version >= 6) because they support linked tokens, but
+// previous versions (major version < 6) do not.
+```
 
-> Good:
->
-> // Determine whether system is running Windows Vista or later
-> operating
->
-> // systems (major version \>= 6) because they support linked tokens,
-> but
->
-> // previous versions (major version \< 6) do not.
->
-> Bad:
->
-> // The following code sets the variable i to the starting value of the
->
-> // array. Then it loops through each item in the array.
+Bad:
+```cpp
+// The following code sets the variable i to the starting value of the
+// array. Then it loops through each item in the array.
+```
 
-🗹 **You should** use '//' comments instead of '/\* \*/' for comments for
-C++ and C# code comments. The single-line syntax (// ...) is preferred
-even when a comment spans multiple lines.
+🗹 **You should** use '//' comments instead of '/* */' for comments for C++ and C# code comments. The single-line syntax (// ...) is preferred even when a comment spans multiple lines.
 
-> // Determine whether system is running Windows Vista or later
-> operating
->
-> // systems (major version \>= 6) because they support linked tokens,
-> but
->
-> // previous versions (major version \< 6) do not.
->
-> if (Environment.OSVersion.Version.Major \>= 6)
->
-> {
->
-> }
->
-> \' Get and display the process elevation information
-> (IsProcessElevated)
->
-> \' and integrity level (GetProcessIntegrityLevel). The information is
-> not
->
-> \' available on operating systems prior to Windows Vista.
->
-> If (Environment.OSVersion.Version.Major \>= 6) Then
->
-> End If
+```cpp
+// Determine whether system is running Windows Vista or later operating
+// systems (major version >= 6) because they support linked tokens, but
+// previous versions (major version < 6) do not.
 
-🗹 **You should** indent comments at the same level as the code they
-describe.
+if (Environment.OSVersion.Version.Major >= 6)
+{
+}
+```
 
-🗹 **You should** use full sentences with initial caps, a terminating
-period and proper punctuation and spelling in comments.
+```vb
+' Get and display the process elevation information
+(IsProcessElevated)
 
-> Good:
->
-> // Intialize the components on the Windows Form.
->
-> InitializeComponent();
->
-> \' Intialize the components on the Windows Form.
->
-> InitializeComponent()
->
-> Bad:
->
-> //intialize the components on the Windows Form.
->
-> InitializeComponent();
->
-> \'intialize the components on the Windows Form
->
-> InitializeComponent()
+' and integrity level (GetProcessIntegrityLevel). The information is not
+' available on operating systems prior to Windows Vista.
+If (Environment.OSVersion.Version.Major >= 6) Then
+End If
+```
+
+🗹 **You should** indent comments at the same level as the code they describe.
+
+🗹 **You should** use full sentences with initial caps, a terminating period and proper punctuation and spelling in comments.
+
+Good:
+```cpp
+// Intialize the components on the Windows Form.
+InitializeComponent();
+```
+
+```vb
+' Intialize the components on the Windows Form.
+InitializeComponent()
+```
+
+Bad:
+```cpp
+//intialize the components on the Windows Form.
+InitializeComponent();
+```
+
+```vb
+'intialize the components on the Windows Form
+InitializeComponent()
+```
 
 ### Inline Code Comments
+Inline comments should be included on their own line and should be indented at the same level as the code they are commenting on, with a blank line before, but none after. Comments describing a block of code should appear on a line by themselves, indented as the code they describe, with one blank line before it and one blank line after it. For example:
 
-Inline comments should be included on their own line and should be
-indented at the same level as the code they are commenting on, with a
-blank line before, but none after. Comments describing a block of code
-should appear on a line by themselves, indented as the code they
-describe, with one blank line before it and one blank line after it. For
-example:
+```cpp
+if (MAXVAL >= exampleLength)
+{
+     // Reprort the error.
+     ReportError(GetLastError());
 
-> if (MAXVAL \>= exampleLength)
->
-> {
->
-> // Reprort the error.
->
-> ReportError(GetLastError());
->
-> // The value is out of range, we cannot continue.
->
-> return E_INVALIDARG;
->
-> }
+     // The value is out of range, we cannot continue.
+     return E_INVALIDARG;
+}
+```
 
-Inline comments are permissible on the same line as the actual code only
-when giving a brief description of a structure member, class member
-variable, parameter, or a short statement. In this case it is a good
-idea to align the comments for all variables. For example:
+Inline comments are permissible on the same line as the actual code only when giving a brief description of a structure member, class member variable, parameter, or a short statement. In this case it is a good idea to align the comments for all variables. For example:
 
-> class Example
->
-> {
->
-> public:
->
-> \...
->
-> void TestFunction
->
-> {
->
-> \...
->
-> do
->
-> {
->
-> \...
->
-> }
->
-> while (!fFinished); // Continue if not finished.
->
-> }
->
-> private:
->
-> int m_length; // The length of the example
->
-> float m_accuracy; // The accuracy of the example
->
-> };
+```cpp
+class Example
+{
+     public:
+     ...
 
-🗷 **You should not** drown your code in comments. Commenting every line
-with obvious descriptions of what the code does actually hinders
-readability and comprehension. Single-line comments should be used when
-the code is doing something that might not be immediately obvious.
+          void TestFunction
+          {
+               ...
+               do
+               {
+                    ...
+               }
+               while (!fFinished); // Continue if not finished.
+          }
+
+private:
+     int m_length; // The length of the example
+     float m_accuracy; // The accuracy of the example
+};
+```
+
+🗷 **You should not** drown your code in comments. Commenting every line with obvious descriptions of what the code does actually hinders readability and comprehension. Single-line comments should be used when the code is doing something that might not be immediately obvious.
 
 The following example contains many unnecessary comments:
 
