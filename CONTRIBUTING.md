@@ -1,5 +1,6 @@
 # All-In-One Code Framework Coding Standards
-by  **Jialiang Ge**
+ ![](https://img.shields.io/badge/by-Jialiang_Ge-red)
+
 
 This document describes the coding style guideline for native C++ and .NET (C# and VB.NET) programming used by the Microsoft All-In-One Code Framework project team.
 
@@ -154,7 +155,7 @@ Visual Basic sample:
 
 🗹 **Do** declare and initialize/assign local variables on a single line where the language allows it. This reduces vertical space and makes sure that a variable does not exist in an un-initialized state or in a state that will immediately change.
 
-```
+```c++
 // C++ sample:
 HANDLE hToken = NULL;
 PSID pIntegritySid = NULL;
@@ -162,13 +163,13 @@ STARTUPINFO si = { sizeof(si) };
 PROCESS_INFORMATION pi = { 0 };
 ```
 
-```
+```cs
 // C# sample:
 string name = myObject.Name;
 int val = time.Hours;
 ```
 
-```
+```vb
 ' VB.NET sample:
 Dim name As String = myObject.Name
 Dim val As Integer = time.Hours
@@ -177,23 +178,23 @@ Dim val As Integer = time.Hours
 🗷 **Do not** declare multiple variables in a single line. One declaration per line is recommended since it encourages commenting, and could avoid confusion. As a Visual C++ example,
 
 Good:
-```
+```c++
 CodeExample *pFirst = NULL; // Pointer of the first element.
 CodeExample *pSecond = NULL; // Pointer of the second element.
 ```
 
 Bad:
-```
+```c++
 CodeExample *pFirst, *pSecond;
 ```
 
 The latter example is often mistakenly written as:
-```
+```c++
 CodeExample *pFirst, pSecond;
 ```
 
 Which is *actually* equivalent to:
-```
+```c++
 CodeExample *pFirst;
 CodeExample pSecond;
 ```
@@ -202,35 +203,35 @@ CodeExample pSecond;
 The function/method name, return value and parameter list can take several forms. Ideally this can all fit on a single line. If there are many arguments that don\'t fit on a line those can be wrapped, many per line or one per line. Put the return type on the same line as the function/method name. For example,
 
 Single Line Format:
-```
+```c++
 // C++ function declaration sample:
 HRESULT DoSomeFunctionCall(int param1, int param2, int \*param3);
 ```
 
-```
+```c++
 // C++ / C# function call sample:
 hr = DoSomeFunctionCall(param1, param2, param3);
 ```
 
-```
+```vb
 ' VB.NET function call sample:
 hr = DoSomeFunctionCall(param1, param2, param3)
 ```
 
 Multiple Line Formats:
-```
+```c++
 // C++ function declaration sample:
 HRESULT DoSomeFunctionCall(int param1, int param2, int *param3,
 int param4, int param5);
 ```
 
-```
+```c++
 // C++ / C# function call sample:
 hr = DoSomeFunctionCall(param1, param2, param3,
 param4, param5);
 ```
 
-```
+```vb
 ' VB.NET function call sample:
 hr = DoSomeFunctionCall(param1, param2, param3, _
 param4, param5)
@@ -238,7 +239,7 @@ param4, param5)
 
 When breaking up the parameter list into multiple lines, each type/parameter pair should line up under the preceding one, the first one being on a new line, indented one tab. Parameter lists for function/method *calls* should be formatted in the same manner.
 
-```
+```c++
 // C++ function declaration sample:
 HRESULT DoSomeFunctionCall(
 HWND hwnd, // You can comment parameters, too
@@ -249,7 +250,7 @@ T4 param4, // Indicates even more
 T5 param5); // You get the idea
 ```
 
-```
+```cpp
 // C++ / C# function call sample:
 hr = DoSomeFunctionCall(
 hwnd,
@@ -260,7 +261,7 @@ param4,
 param5);
 ```
 
-```
+```vb
 ' VB.NET function call sample:
 hr = DoSomeFunctionCall( _
 hwnd, _
@@ -277,14 +278,13 @@ param5)
 🗷 **Do not** put more than one statement on a single line because it makes stepping through the code in a debugger much more difficult.
 
 Good:
-
-```
+```cpp
 // C++ / C# sample:
 a = 1;
 b = 2;
 ```
 
-```
+```vb
 ' VB.NET sample:
 If (IsAdministrator()) Then
 Console.WriteLine("YES")
@@ -292,12 +292,12 @@ End If
 ```
 
 Bad:
-```
+```cpp
 // C++ / C# sample:
 a = 1; b = 2;
 ```
 
-```
+```vb
 ' VB.NET sample:
 If (IsAdministrator()) Then Console.WriteLine("YES")
 ```
@@ -308,7 +308,7 @@ If (IsAdministrator()) Then Console.WriteLine("YES")
 🗹 **Do** favor using an enum over static constants or "#define" values. An enum is a structure with a set of static constants. The reason to follow this guideline is because you will get some additional compiler and reflection support if you define an enum versus manually defining a structure with static constants.
 
 Good:
-```
+```cpp
 // C++ sample:
 enum Color
 {
@@ -318,7 +318,7 @@ Blue
 };
 ```
 
-```
+```cs
 // C# sample:
 public enum Color
 {
@@ -328,7 +328,7 @@ Blue
 }
 ```
 
-```
+```vb
 ' VB.NET sample:
 Public Enum Color
 Red
@@ -338,400 +338,271 @@ End Enum
 ```
 
  Bad:
->
-> // C++ sample:
->
-> const int RED = 0;
->
-> const int GREEN = 1;
->
-> const int BLUE = 2;
->
-> #define RED 0
->
-> #define GREEN 1
->
-> #define BLUE 2
->
-> // C# sample:
->
-> public static class Color
->
-> {
->
-> public const int Red = 0;
->
-> public const int Green = 1;
->
-> public const int Blue = 2;
->
-> }
->
-> \' VB.NET sample:
->
-> Public Class Color
->
-> Public Const Red As Integer = 0
->
-> Public Const Green As Integer = 1
->
-> Public Const Blue As Integer = 2
->
-> End Class
+```cpp
+// C++ sample:
+const int RED = 0;
+const int GREEN = 1;
+const int BLUE = 2;
+#define RED 0
+#define GREEN 1
+#define BLUE 2
+```
 
-🗷 **Do not** use an enum for open sets (such as the operating system
-version, names of your friends, etc.).
+```cs
+// C# sample:
+public static class Color
+{
+public const int Red = 0;
+public const int Green = 1;
+public const int Blue = 2;
+}
+```
 
-🗹 **Do** provide a value of zero on simple enums. Consider calling the
-value something like "None." If such value is not appropriate for this
-particular enum, the most common default value for the enum should be
-assigned the underlying value of zero.
+```vb
+' VB.NET sample:
+Public Class Color
+Public Const Red As Integer = 0
+Public Const Green As Integer = 1
+Public Const Blue As Integer = 2
+End Class
+```
 
-> // C++ sample:
->
-> enum Compression
->
-> {
->
-> None = 0,
->
-> GZip,
->
-> Deflate
->
-> };
->
-> // C# sample:
->
-> public enum Compression
->
-> {
->
-> None = 0,
->
-> GZip,
->
-> Deflate
->
-> }
->
-> \' VB.NET sample:
->
-> Public Enum Compression
->
-> None = 0
->
-> GZip
->
-> Deflate
->
-> End Enum
+🗷 **Do not** use an enum for open sets (such as the operating system version, names of your friends, etc.).
 
-🗷 **Do not** use Enum.IsDefined for enum range checks in .NET. There are
-really two problems with Enum.IsDefined. First it loads reflection and a
-bunch of cold type metadata, making it a surprisingly expensive call.
-Second, there is a versioning issue here.
+🗹 **Do** provide a value of zero on simple enums. Consider calling the value something like "None." If such value is not appropriate for this
+particular enum, the most common default value for the enum should be assigned the underlying value of zero.
 
-> Good:
->
-> // C# sample:
->
-> if (c \> Color.Black \|\| c \< Color.White)
->
-> {
->
-> throw new ArgumentOutOfRangeException(\...);
->
-> }
->
-> \' VB.NET sample:
->
-> If (c \> Color.Black Or c \< Color.White) Then
->
-> Throw New ArgumentOutOfRangeException(\...);
->
-> End If
->
-> Bad:
->
-> // C# sample:
->
-> if (!Enum.IsDefined(typeof(Color), c))
->
-> {
->
-> throw new InvalidEnumArgumentException(\...);
->
-> }
->
-> \' VB.NET sample:
->
-> If Not \[Enum\].IsDefined(GetType(Color), c) Then
->
-> Throw New ArgumentOutOfRangeException(\...);
->
-> End If
+```cpp
+// C++ sample:
+enum Compression
+{
+None = 0,
+GZip,
+Deflate
+};
+```
+
+```cs
+// C# sample:
+public enum Compression
+{
+None = 0,
+GZip,
+Deflate
+}
+```
+
+```vb
+' VB.NET sample:
+Public Enum Compression
+None = 0
+GZip
+Deflate
+End Enum
+```
+
+🗷 **Do not** use Enum.IsDefined for enum range checks in .NET. There are really two problems with Enum.IsDefined. First it loads reflection and a bunch of cold type metadata, making it a surprisingly expensive call. Second, there is a versioning issue here.
+
+Good:
+```cpp
+// C# sample:
+if (c > Color.Black || c < Color.White)
+{
+throw new ArgumentOutOfRangeException(...);
+}
+```
+
+ ```vb
+' VB.NET sample:
+If (c > Color.Black Or c < Color.White) Then
+Throw New ArgumentOutOfRangeException(...);
+End If
+```
+
+Bad:
+```cs
+// C# sample:
+if (!Enum.IsDefined(typeof(Color), c))
+{
+throw new InvalidEnumArgumentException(...);
+}
+```
+
+```vb
+' VB.NET sample:
+If Not [Enum].IsDefined(GetType(Color), c) Then
+Throw New ArgumentOutOfRangeException(...);
+End If
+```
 
 ### Flag Enums
+Flag enums are designed to support bitwise operations on the enum values. A common example of the flags enum is a list of options.
 
-Flag enums are designed to support bitwise operations on the enum
-values. A common example of the flags enum is a list of options.
+🗹 **Do** apply the System.FlagsAttribute to flag enums in .NET. **Do not** apply this attribute to simple enums.
 
-🗹 **Do** apply the System.FlagsAttribute to flag enums in .NET. **Do
-not** apply this attribute to simple enums.
+🗹 **Do** use powers of two for the flags enum values so they can be freely combined using the bitwise OR operation. For example,
 
-🗹 **Do** use powers of two for the flags enum values so they can be
-freely combined using the bitwise OR operation. For example,
+```cpp
+// C++ sample:
+enum AttributeTargets
+{
+Assembly = 0x0001,
+Class = 0x0002,
+Struct = 0x0004
+...
+};
+```
 
-> // C++ sample:
->
-> enum AttributeTargets
->
-> {
->
-> Assembly = 0x0001,
->
-> Class = 0x0002,
->
-> Struct = 0x0004
->
-> \...
->
-> };
->
-> // C# sample:
->
-> \[Flags\]
->
-> public enum AttributeTargets
->
-> {
->
-> Assembly = 0x0001,
->
-> Class = 0x0002,
->
-> Struct = 0x0004,
->
-> \...
->
-> }
->
-> \' VB.NET sample:
->
-> \<Flags()\> \_
->
-> Public Enum AttributeTargets
->
-> Assembly = &H1
->
-> Class = &H2
->
-> Struct = &H4
->
-> \...
->
-> End Enum
+```cs
+// C# sample:
+[Flags]
+public enum AttributeTargets
+{
+Assembly = 0x0001,
+Class = 0x0002,
+Struct = 0x0004,
+...
+}
+```
 
-🗹 **You should** provide special enum values for commonly used
-combinations of flags. Bitwise operations are an advanced concept and
-should not be required for simple tasks. FileAccess.ReadWrite is an
-example of such a special value. However, **you should not** create flag
-enums where certain combinations of values are invalid.
+```vb
+' VB.NET sample:
+<Flags()> _
+Public Enum AttributeTargets
+Assembly = &H1
+Class = &H2
+Struct = &H4
+...
+End Enum
+```
 
-> // C++ sample:
->
-> enum FileAccess
->
-> {
->
-> Read = 0x1,
->
-> Write = 0x2,
->
-> ReadWrite = Read \| Write
->
-> };
->
-> // C# sample:
->
-> \[Flags\]
->
-> public enum FileAccess
->
-> {
->
-> Read = 0x1,
->
-> Write = 0x2,
->
-> ReadWrite = Read \| Write
->
-> }
->
-> \' VB.NET sample:
->
-> \<Flags()\> \_
->
-> Public Enum FileAccess
->
-> Read = &H1
->
-> Write = &H2
->
-> ReadWrite = Read Or Write
->
-> End Enum
+🗹 **You should** provide special enum values for commonly used combinations of flags. Bitwise operations are an advanced concept and should not be required for simple tasks. FileAccess.ReadWrite is an example of such a special value. However, **you should not** create flag enums where certain combinations of values are invalid.
 
-🗷 **You should not** use flag enum values of zero, unless the value
-represents "all flags are cleared" and is named appropriately as "None".
-The following C# example shows a common implementation of a check that
-programmers use to determine if a flag is set (see the if-statement
-below). The check works as expected for all flag enum values except the
-value of zero, where the Boolean expression always evaluates to true.
+```cpp
+// C++ sample:
+enum FileAccess
+{
+Read = 0x1,
+Write = 0x2,
+ReadWrite = Read | Write
+};
+```
 
-> Bad:
->
-> \[Flags\]
->
-> public enum SomeFlag
->
-> {
->
-> ValueA = 0, // This might be confusing to users
->
-> ValueB = 1,
->
-> ValueC = 2,
->
-> ValueBAndC = ValueB \| ValueC,
->
-> }
->
-> SomeFlag flags = GetValue();
->
-> if ((flags & SomeFlag.ValueA) == SomeFlag.ValueA)
->
-> {
->
-> \...
->
-> }
->
-> Good:
->
-> \[Flags\]
->
-> public enum BorderStyle
->
-> {
->
-> Fixed3D = 0x1,
->
-> FixedSingle = 0x2,
->
-> None = 0x0
->
-> }
->
-> if (foo.BorderStyle == BorderStyle.None)
->
-> {
->
-> \...
->
-> }
+```cs
+// C# sample:
+[Flags]
+public enum FileAccess
+{
+Read = 0x1,
+Write = 0x2,
+ReadWrite = Read | Write
+}
+```
+
+```vb
+' VB.NET sample:
+<Flags()> _
+Public Enum FileAccess
+Read = &H1
+Write = &H2
+ReadWrite = Read Or Write
+End Enum
+```
+
+🗷 **You should not** use flag enum values of zero, unless the value represents "all flags are cleared" and is named appropriately as "None". The following C# example shows a common implementation of a check that programmers use to determine if a flag is set (see the if-statement below). The check works as expected for all flag enum values except the value of zero, where the Boolean expression always evaluates to true.
+
+Bad:
+```cpp
+[Flags]
+public enum SomeFlag
+{
+ValueA = 0, // This might be confusing to users
+ValueB = 1,
+ValueC = 2,
+ValueBAndC = ValueB | ValueC,
+}
+SomeFlag flags = GetValue();
+if ((flags & SomeFlag.ValueA) == SomeFlag.ValueA)
+{
+...
+}
+```
+
+Good:
+```cpp
+[Flags]
+public enum BorderStyle
+{
+Fixed3D = 0x1,
+FixedSingle = 0x2,
+None = 0x0
+}
+if (foo.BorderStyle == BorderStyle.None)
+{
+...
+}
+```
 
 ## Whitespace
 
 ### Blank Lines
+🗹 **You should** use blank lines to separate groups of related statements. Omit extra blank lines that do not make the code easier to read. For example, you can have a blank line between variable declarations and code.
 
-🗹 **You should** use blank lines to separate groups of related
-statements. Omit extra blank lines that do not make the code easier to
-read. For example, you can have a blank line between variable
-declarations and code.
-
-> Good:
-
+Good:
+```cpp
 // C++ sample:
+void ProcessItem(const Item& item)
+{
+int counter = 0;
+if(...)
+{
+}
+}
+```
 
-> void ProcessItem(const Item& item)
->
-> {
->
-> int counter = 0;
->
-> if(\...)
->
-> {
->
-> }
->
-> }
->
-> Bad:
-
+Bad:
+```cpp
 // C++ sample:
+void ProcessItem(const Item& item)
+{
+int counter = 0;
+// Implementation starts here
+//
+if(...)
+{
+}
+}
+```
 
-> void ProcessItem(const Item& item)
->
-> {
->
-> int counter = 0;
->
-> // Implementation starts here
->
-> //
->
-> if(\...)
->
-> {
->
-> }
->
-> }
+In this example of bad usage of blank lines, there are multiple blank lines between the local variable declarations, and multiple blank likes after the 'if' block.
 
-In this example of bad usage of blank lines, there are multiple blank
-lines between the local variable declarations, and multiple blank likes
-after the 'if' block.
-
-🗹 **You should** use two blank lines to separate method implementations
-and class declarations.
+🗹 **You should** use two blank lines to separate method implementations and class declarations.
 
 ### Spaces
-
-Spaces improve readability by decreasing code density. Here are some
-guidelines for the use of space characters within code:
+Spaces improve readability by decreasing code density. Here are some guidelines for the use of space characters within code:
 
 🗹 **You should** use spaces within a line as follows.
 
-> Good:
-
+Good:
+```cpp
 // C++ / C# sample:
+CreateFoo(); // No space between function name and parenthesis
+Method(myChar, 0, 1); // Single space after a comma
+x = array\[index\]; // No spaces inside brackets
+while (x == y) // Single space before flow control statements
+if (x == y) // Single space separates operators
+```
 
-> CreateFoo(); // No space between function name and parenthesis
->
-> Method(myChar, 0, 1); // Single space after a comma
->
-> x = array\[index\]; // No spaces inside brackets
->
-> while (x == y) // Single space before flow control statements
->
-> if (x == y) // Single space separates operators
+```vb
+' VB.NET sample:
+CreateFoo() ' No space between function name and parenthesis
+Method(myChar, 0, 1) ' Single space after a comma
+x = array(index) ' No spaces inside brackets
+While (x = y) ' Single space before flow control statements
+If (x = y) Then ' Single space separates operators
+```
 
-\' VB.NET sample:
-
-> CreateFoo() \' No space between function name and parenthesis
->
-> Method(myChar, 0, 1) \' Single space after a comma
->
-> x = array(index) \' No spaces inside brackets
->
-> While (x = y) \' Single space before flow control statements
->
-> If (x = y) Then \' Single space separates operators
->
-> Bad:
+Bad:
 
 // C++ / C# sample:
 
