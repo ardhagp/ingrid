@@ -802,91 +802,61 @@ private:
 
 The following example contains many unnecessary comments:
 
-> Bad:
->
-> // Loop through each item in the wrinkles array
->
-> for (int i = 0; i \<= nLastWrinkle; i++)
->
-> {
->
-> Wrinkle \*pWrinkle = apWrinkles\[i\]; // Get the next wrinkle
->
-> if (pWrinkle-\>IsNew() && // Process if it's a new wrinkle
->
-> nMaxImpact \< pWrinkle-\>GetImpact()) // And it has the biggest impact
->
-> {
->
-> nMaxImpact = pWrinkle-\>GetImpact(); // Save its impact for comparison
->
-> pBestWrinkle = pWrinkle; // Remember this wrinkle as well
->
-> }
->
-> }
+Bad:
+```cpp
+// Loop through each item in the wrinkles array
+for (int i = 0; i <= nLastWrinkle; i++)
+{
+     Wrinkle *pWrinkle = apWrinkles[i]; // Get the next wrinkle
+     if (pWrinkle->IsNew() && // Process if it's a new wrinkle
+          nMaxImpact < pWrinkle->GetImpact()) // And it has the biggest impact
+     {
+          nMaxImpact = pWrinkle->GetImpact(); // Save its impact for comparison
+          pBestWrinkle = pWrinkle; // Remember this wrinkle as well
+     }
+}
+```
 
 A better implementation would be:
 
-> Good:
->
-> // Loop through each item in the wrinkles array, find the Wrinkle with
->
-> // the largest impact that is new, and store it in 'pBestWrinkle'.
->
-> for (int i = 0; i \<= nLastWrinkle; i++)
->
-> {
->
-> Wrinkle \*pWrinkle = apWrinkles\[i\];
->
-> if (pWrinkle-\>IsNew() && nMaxImpact \< pWrinkle-\>GetImpact())
->
-> {
->
-> nMaxImpact = pWrinkle-\>GetImpact();
->
-> pBestWrinkle = pWrinkle;
->
-> }
->
-> }
+Good:
+```cpp
+// Loop through each item in the wrinkles array, find the Wrinkle with
+// the largest impact that is new, and store it in 'pBestWrinkle'.
+for (int i = 0; i <= nLastWrinkle; i++)
+{
+     Wrinkle *pWrinkle = apWrinkles[i];
+    if (pWrinkle->IsNew() && nMaxImpact < pWrinkle->GetImpact())
+    {
+         nMaxImpact = pWrinkle->GetImpact();
+         pBestWrinkle = pWrinkle;
+    }
+}
+```
 
-🗹 **You should** add comments to call out non-intuitive or behavior that
-is not obvious from reading the code.
+🗹 **You should** add comments to call out non-intuitive or behavior that is not obvious from reading the code.
 
 ### File Header Comments
-
-🗹 **Do** have a file header comment at the start of every human-created
-code file. The header comment templates are as follows:
+🗹 **Do** have a file header comment at the start of every human-created code file. The header comment templates are as follows:
 
 VC++ and VC# file header comment template:
+```cpp
+/****************************** Module Header ******************************\
+Module Name: <File Name>
+Project: <Sample Name>
+Copyright (c) Microsoft Corporation.
 
-> /\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* Module
-> Header \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\\
->
-> Module Name: \<File Name\>
->
-> Project: \<Sample Name\>
->
-> Copyright (c) Microsoft Corporation.
->
-> \<Description of the file\>
->
-> This source is subject to the Microsoft Public License.
->
-> See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
->
-> All other rights reserved.
->
-> THIS CODE AND INFORMATION IS PROVIDED \"AS IS\" WITHOUT WARRANTY OF
-> ANY KIND,
->
-> EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
->
-> WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
->
-> \\\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+<Description of the file>
+
+This source is subject to the Microsoft Public License.
+See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
+All other rights reserved.
+
+THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+\***************************************************************************/
+```
 
 VB.NET file header comment template:
 
