@@ -6,6 +6,27 @@
 #   <span style="color:darkorange">**About Project & Status**</span>
 Ingrid is a Desktop Application for Windows OS that has many modules for every purposes, made by your request.
 
+## Project Branch
+```mermaid
+flowchart LR
+id1(📦 master) --> id2(♾️ dev)
+id2(♾️ dev) --> id3(🛠️ fix)
+id2(♾️ dev) --> id4(🔄 feature)
+id2(♾️ dev) --> id5(📗 doc)
+id1(📦 master) --> id6(☁️ publish)
+```
+
+| Branch | Description | Merge To |
+| -- | -- | -- |
+| master | For publishing / deployment only | - |
+| dev | Active development | master |
+| fix | Branch to fixing issues | dev |
+| feature | Branch to add new features | dev |
+| doc | Branch for updating README / CONTRIBUTING / other documentations | dev |
+| publish | Branch for Github.io Project Static Web Page | - |
+
+
+## Current Status
 [![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d1728d753b8c4b579d97a467bf751322)](https://app.codacy.com/gh/ardhagp/ingrid/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![dotnet CI Build](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet-ci-build.yml/badge.svg)](https://github.com/ardhagp/Ingrid/actions/workflows/dotnet-ci-build.yml) [![Build Status](https://dev.azure.com/ardhagp/ingrid/_apis/build/status%2Fgithub-linked%2Fscheduled%2Fazure-pipelines?branchName=master)](https://dev.azure.com/ardhagp/ingrid/_build/latest?definitionId=12&branchName=master) [![Better Stack Badge](https://uptime.betterstack.com/status-badges/v3/monitor/182mi.svg)](https://ingrid.betteruptime.com/) [![Static Badge](https://img.shields.io/badge/Download-ingrid--offline.zip-gold)](https://ardhagp.github.io/ingrid/ingrid-offline.zip)
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
@@ -51,7 +72,7 @@ No worries, you are still able to manage by using Dev PowerShell with this comma
 | dotnet user-secrets remove KeyName | Remove specified KeyName |
 
 then type this command using PowerShell:
-```
+```cmd
 dotnet user-secrets set KEYS:SALT "<input random characters including Upper and Lower Case, Symbols and Space>"
 dotnet user-secrets set KEYS:SYNCFUSION "<input your Syncfusion Key>"
 dotnet user-secrets set KEYS:BETTERSTACK_LOG "<input your BetterStack Key>"
@@ -60,28 +81,44 @@ dotnet user-secrets set KEYS:BETTERSTACK_LOG "<input your BetterStack Key>"
 > You should use sha256 hash for your _KEYS:SALT_ to prevent error when decrypting stored password.
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
-## About Keys :
-### 1. Syncfusion
+
+# About Keys
+## 1. Syncfusion
 To obtain Syncfusion Key, please sign up with <span style="color:orange">**Community License**</span> and visit this page : [Syncfusion](https://www.syncfusion.com/account/downloads)
 Then follow this steps below :
 
 ![](https://res.cloudinary.com/cagakmelon/image/upload/v1696932718/apps/ingrid-assets/readme.md/get_license_key.png)
 
-### 2. BetterStack
+## 2. BetterStack
 To obtain BetterStack Key, please sign up <span style="color:orange">**BetterStack**</span> and open [https://betterstack.com/settings](https://betterstack.com/settings) 
 
 ![](https://res.cloudinary.com/cagakmelon/image/upload/v1712380400/apps/ingrid-assets/readme.md/2024-04-06_120426.jpg)
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
+
+# About Publishing Plan
+```mermaid
+flowchart LR
+id1([♾️ Azure Devops]) --> id20(📦 Github.io ✅)
+id1([♾️ Azure Devops]) --> id21([📂 FTP ⏳])
+id20(Github.io ✅) --> id30([ClickOnce - Installer ✅])
+id20(Github.io ✅) --> id31([Offline - Installer ✅])
+id20(Github.io ✅) --> id32([MSIX - Portable⏳])
+```
+
+![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
+
 #   <span style="color:darkorange">**About License**</span>
 This application is released under the [MIT license]($/Ingrid/LICENSE). You can use the code for any purpose, including commercial projects.
 
 ![MIT License](https://res.cloudinary.com/cagakmelon/image/upload/v1697064703/apps/ingrid-assets/readme.md/license.png)
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
+
 #   <span style="color:darkorange">**Navigation**</span>
-| <span style="color:darkcyan">Helpful Pages :</span> | [Ingrid Web](https://ardhagp.github.io/ingrid) | [Ingrid Wiki](https://github.com/ardhagp/ingrid/wiki/01.-Home) |
-| -- | -- | -- |
+| [App Page](https://ardhagp.github.io/ingrid) | [Wiki](https://github.com/ardhagp/ingrid/wiki/01.-Home) | Status Page | Tip (Indonesia) |
+| -- | -- | -- | -- |
+
 
 
 
