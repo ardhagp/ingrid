@@ -860,391 +860,242 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 VB.NET file header comment template:
 
-> \'\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* Module
-> Header
-> \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\\
->
-> \' Module Name: \<File Name\>
->
-> \' Project: \<Sample Name\>
->
-> \' Copyright (c) Microsoft Corporation.
->
-> \'
->
-> \' \<Description of the file\>
->
-> \'
->
-> \' This source is subject to the Microsoft Public License.
->
-> \' See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
->
-> \' All other rights reserved.
->
-> \'
->
-> \' THIS CODE AND INFORMATION IS PROVIDED \"AS IS\" WITHOUT WARRANTY OF
-> ANY KIND,
->
-> \' EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-> IMPLIED
->
-> \' WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
-> PURPOSE.
->
-> \'\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+```vb
+'***************************** Module Header *******************************\
+' Module Name:  <File Name>
+' Project:      <Sample Name>
+' Copyright (c) Microsoft Corporation.
+' 
+' <Description of the file>
+' 
+' This source is subject to the Microsoft Public License.
+' See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
+' All other rights reserved.
+' 
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+' EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
+' WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+'***************************************************************************/
+```
 
 For example,
+```cpp
+/****************************** Module Header ******************************\
+Module Name:  CppUACSelfElevation.cpp
+Project:      CppUACSelfElevation
+Copyright (c) Microsoft Corporation.
 
-> /\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* Module
-> Header \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\\
->
-> Module Name: CppUACSelfElevation.cpp
->
-> Project: CppUACSelfElevation
->
-> Copyright (c) Microsoft Corporation.
->
-> User Account Control (UAC) is a new security component in Windows
-> Vista and
->
-> newer operating systems. With UAC fully enabled, interactive
-> administrators
->
-> normally run with least user privileges. This example demonstrates how
-> to
->
-> check the privilege level of the current process, and how to
-> self-elevate
->
-> the process by giving explicit consent with the Consent UI.
->
-> This source is subject to the Microsoft Public License.
->
-> See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
->
-> All other rights reserved.
->
-> THIS CODE AND INFORMATION IS PROVIDED \"AS IS\" WITHOUT WARRANTY OF
-> ANY KIND,
->
-> EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
->
-> WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
->
-> \\\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+User Account Control (UAC) is a new security component in Windows Vista and 
+newer operating systems. With UAC fully enabled, interactive administrators 
+normally run with least user privileges. This example demonstrates how to 
+check the privilege level of the current process, and how to self-elevate 
+the process by giving explicit consent with the Consent UI. 
+
+This source is subject to the Microsoft Public License.
+See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
+All other rights reserved.
+
+THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
+EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+\***************************************************************************/
+```
 
 ### Class Comments
-
-🗹 **You should** provide banner comments for all classes and structures
-that are non-trivial. The level of commenting should be appropriate
-based on the audience of the code.
+🗹 **You should** provide banner comments for all classes and structures that are non-trivial. The level of commenting should be appropriate based on the audience of the code.
 
 C++ class comment template:
+```cpp
+//
+//   NAME: class <Class name>
+//   DESCRIPTION: <Class description>
+//
+```
 
-> //
->
-> // NAME: class \<Class name\>
->
-> // DESCRIPTION: \<Class description\>
->
-> //
-
-C# and VB.NET use .NET descriptive XML Documentation comments. When you
-compile .NET projects with /doc the compiler will search for all XML
-tags in the source code and create an XML documentation file.
+C# and VB.NET use .NET descriptive XML Documentation comments. When you compile .NET projects with /doc the compiler will search for all XML tags in the source code and create an XML documentation file.
 
 C# class comment template:
-
-> /// \<summary\>
->
-> /// \<Class description\>
->
-> /// \</summary\>
+```cs
+/// <summary>
+/// <Class description>
+/// </summary>
+```
 
 VB.NET class comment template:
-
-> \'\'\' \<summary\>
->
-> \'\'\' \<Class description\>
->
-> \'\'\' \</summary\>
+```vb
+''' <summary>
+''' <Class description>
+''' </summary>
+```
 
 For example,
+```cs
+//
+//   NAME: class CodeExample
+//   DESCRIPTION: The CodeExample class represents an example of code, and 
+//   tracks the length and complexity of the example.
+//
+class CodeExample
+{
+    ...
+};
 
-> //
->
-> // NAME: class CodeExample
->
-> // DESCRIPTION: The CodeExample class represents an example of code,
-> and
->
-> // tracks the length and complexity of the example.
->
-> //
->
-> class CodeExample
->
-> {
->
-> \...
->
-> };
->
-> /// \<summary\>
->
-> /// The CodeExample class represents an example of code, and tracks
->
-> /// the length and complexity of the example.
->
-> /// \</summary\>
->
-> public class CodeExample
->
-> {
->
-> \...\
-> }
+/// <summary>
+/// The CodeExample class represents an example of code, and tracks 
+/// the length and complexity of the example.
+/// </summary>
+public class CodeExample
+{
+    ...
+}
+```
 
 ### Function Comments
-
-🗹 **You should** provide banner comments for all public and non-public
-functions that are not trivial. The level of commenting should be
-appropriate based on the audience of the code.
+🗹 **You should** provide banner comments for all public and non-public functions that are not trivial. The level of commenting should be appropriate based on the audience of the code.
 
 C++ function comment template:
+```cpp
+/*---------------------------------------------------------------------------
+FUNCTION: <Funtion prototype>
 
-> /\*\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
->
-> FUNCTION: \<Funtion prototype\>
->
-> PURPOSE:
->
-> \<Function description\>
->
-> PARAMETERS:
->
-> \<Parameter name\> --\<Parameter description\>
->
-> RETURN VALUE:
->
-> \<Description of function return value\>
->
-> EXCEPTION:
->
-> \<Exception that may be thrown by the function\>
->
-> EXAMPLE CALL:
->
-> \<Example call of the function\>
->
-> REMARKS:
->
-> \<Additional remarks of the function\>
->
-> \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--\*/
+PURPOSE: 
+    <Function description>
 
-C# and VB.NET use descriptive XML Documentation comments. At least a
-\<summary\> element and also a \<parameters\> element and \<returns\>
-element, where applicable, are required. Methods that throw exceptions
-should make use of the \<exception\> element to indicate to consumers
-what exceptions may be thrown.
+PARAMETERS:
+    <Parameter name> –<Parameter description>
+
+RETURN VALUE: 
+    <Description of function return value>
+
+EXCEPTION: 
+    <Exception that may be thrown by the function>
+
+EXAMPLE CALL:
+    <Example call of the function>
+
+REMARKS: 
+    <Additional remarks of the function>
+---------------------------------------------------------------------------*/
+```
+
+C# and VB.NET use descriptive XML Documentation comments. At least a <summary> element and also a <parameters> element and <returns> element, where applicable, are required. Methods that throw exceptions should make use of the <exception> element to indicate to consumers what exceptions may be thrown.
 
 C# function comment template:
+```cs
+/// <summary>
+/// <Function description>
+/// </summary>
+/// <param name="Parameter name">
+/// <Parameter description>
+/// </param>
+/// <returns>
+/// <Description of function return value>
+/// </returns>
+/// <exception cref="<Exception type>">
+/// <Exception that may be thrown by the function>
+/// </exception>
+```
 
-> /// \<summary\>
->
-> /// \<Function description\>
->
-> /// \</summary\>
->
-> /// \<param name=\"Parameter name\"\>
->
-> /// \<Parameter description\>
->
-> /// \</param\>
->
-> /// \<returns\>
->
-> /// \<Description of function return value\>
->
-> /// \</returns\>
->
-> /// \<exception cref=\"\<Exception type\>\"\>
->
-> /// \<Exception that may be thrown by the function\>
->
-> /// \</exception\>
 
 VB.NET function comment template:
 
-> \'\'\' \<summary\>
->
-> \'\'\' \<Function description\>
->
-> \'\'\' \</summary\>
->
-> \'\'\' \<param name=\"Parameter name\"\>
->
-> \'\'\' \<Parameter description\>
->
-> \'\'\' \</param\>
->
-> \'\'\' \<returns\>
->
-> \'\'\' \<Description of function return value\>
->
-> \'\'\' \</returns\>
->
-> \'\'\' \<exception cref=\"\<Exception type\>\"\>
->
-> \'\'\' \<Exception that may be thrown by the function\>
->
-> \'\'\' \</exception\>
+```vb
+''' <summary>
+''' <Function description>
+''' </summary>
+''' <param name="Parameter name">
+''' <Parameter description>
+''' </param>
+''' <returns>
+''' <Description of function return value>
+''' </returns>
+''' <exception cref="<Exception type>">
+''' <Exception that may be thrown by the function>
+''' </exception>
+```
 
 For example,
+```cs
+/*---------------------------------------------------------------------------
+FUNCTION: IsUserInAdminGroup(HANDLE hToken)
 
-> /\*\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
->
-> FUNCTION: IsUserInAdminGroup(HANDLE hToken)
->
-> PURPOSE:
->
-> The function checks whether the primary access token of the process
->
-> belongs to user account that is a member of the local Administrators
->
-> group, even if it currently is not elevated.
->
-> PARAMETERS:
->
-> hToken -- the handle to an access token.
->
-> RETURN VALUE:
->
-> Returns TRUE if the primary access token of the process belongs to
-> user
->
-> account that is a member of the local Administrators group. Returns
-> FALSE
->
-> if the token does not.
->
-> EXCEPTION:
->
-> If this function fails, it throws a C++ DWORD exception which contains
->
-> the Win32 error code of the failure.
->
-> EXAMPLE CALL:
->
-> try
->
-> {
->
-> if (IsUserInAdminGroup(hToken))
->
-> wprintf (L\"User is a member of the Administrators group\\n\");
->
-> else
->
-> wprintf (L\"User is not a member of the Administrators group\\n\");
->
-> }
->
-> catch (DWORD dwError)
->
-> {
->
-> wprintf(L\"IsUserInAdminGroup failed w/err %lu\\n\", dwError);
->
-> }
->
-> \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--\*/
->
-> /// \<summary\>
->
-> /// The function checks whether the primary access token of the
-> process
->
-> /// belongs to user account that is a member of the local
-> Administrators
->
-> /// group, even if it currently is not elevated.
->
-> /// \</summary\>
->
-> /// \<param name=\"token\"\>The handle to an access token\</param\>
->
-> /// \<returns\>
->
-> /// Returns true if the primary access token of the process belongs to
->
-> /// user account that is a member of the local Administrators group.
->
-> /// Returns false if the token does not.
->
-> /// \</returns\>
->
-> /// \<exception cref=\"System.ComponentModel.Win32Exception\"\>
->
-> /// When any native Windows API call fails, the function throws a
->
-> /// Win32Exception with the last error code.
->
-> /// \</exception\>
+PURPOSE: 
+    The function checks whether the primary access token of the process
+    belongs to user account that is a member of the local Administrators
+    group, even if it currently is not elevated.
 
-Any method or function which can fail with side-effects should have
-those side-effects clearly communicated in the function comment. As a
-general rule, code should be written so that it has no side-effects in
-error or failure cases; the presence of such side-effects should have
-some clear justification when the code is written. (Such justification
-is not necessary for routines which zero-out or otherwise overwrite some
-output-only parameter.)
+PARAMETERS:
+    hToken – the handle to an access token.
+
+RETURN VALUE: 
+    Returns TRUE if the primary access token of the process belongs to user 
+    account that is a member of the local Administrators group. Returns FALSE 
+    if the token does not.
+
+EXCEPTION: 
+    If this function fails, it throws a C++ DWORD exception which contains 
+    the Win32 error code of the failure.
+
+ EXAMPLE CALL:
+    try 
+    {
+        if (IsUserInAdminGroup(hToken))
+            wprintf (L"User is a member of the Administrators group\n");
+        else
+            wprintf (L"User is not a member of the Administrators group\n");
+    }
+    catch (DWORD dwError)
+    {
+        wprintf(L"IsUserInAdminGroup failed w/err %lu\n", dwError);
+    }
+---------------------------------------------------------------------------*/
+
+/// <summary>
+/// The function checks whether the primary access token of the process 
+/// belongs to user account that is a member of the local Administrators 
+/// group, even if it currently is not elevated.
+/// </summary>
+/// <param name="token">The handle to an access token</param>
+/// <returns>
+/// Returns true if the primary access token of the process belongs to 
+/// user account that is a member of the local Administrators group. 
+/// Returns false if the token does not.
+/// </returns>
+/// <exception cref="System.ComponentModel.Win32Exception">
+/// When any native Windows API call fails, the function throws a 
+/// Win32Exception with the last error code.
+/// </exception>
+```
+
+Any method or function which can fail with side-effects should have those side-effects clearly communicated in the function comment. As a general rule, code should be written so that it has no side-effects in error or failure cases; the presence of such side-effects should have some clear justification when the code is written. (Such justification is not necessary for routines which zero-out or otherwise overwrite some output-only parameter.)
 
 ### Commenting Out Code
+Commenting out code is necessary when you demonstrate multiple ways of doing something. The ways except the first one are commented out. Use [-or-] to separate the multiple ways. For example,
+```cpp
+// C++ / C# sample:
+// Demo the first solution.
+DemoSolution1();
 
-Commenting out code is necessary when you demonstrate multiple ways of
-doing something. The ways except the first one are commented out. Use
-\[-or-\] to separate the multiple ways. For example,
+// [-or-]
 
-> // C++ / C# sample:
->
-> // Demo the first solution.
->
-> DemoSolution1();
->
-> // \[-or-\]
->
-> // Demo the second solution.
->
-> //DemoSolution2();
->
-> \' VB.NET sample:
->
-> \' Demo the first solution.
->
-> DemoSolution1();
->
-> \' \[-or-\]
->
-> \' Demo the second solution.
->
-> \'DemoSolution2();
+// Demo the second solution.
+//DemoSolution2();
+
+' VB.NET sample:
+' Demo the first solution.
+DemoSolution1();
+
+' [-or-]
+
+' Demo the second solution.
+'DemoSolution2();
+```
 
 ### TODO Comments
-
-🗷 **Do not** use TODO comments in any released samples. Every sample
-must be complete and not require a list of unfinished tasks sprinkled
-throughout the code.
+🗷 **Do not** use TODO comments in any released samples. Every sample must be complete and not require a list of unfinished tasks sprinkled throughout the code.
 
 ## Regions
-
-🗹 **Do** use region declarations where there is a large amount of code
-that would benefit from this organization. Grouping the large amount of
-code by scope or functionality improves readability and structure of the
-code.
+🗹 **Do** use region declarations where there is a large amount of code that would benefit from this organization. Grouping the large amount of code by scope or functionality improves readability and structure of the code.
 
 C++ regions:
 
