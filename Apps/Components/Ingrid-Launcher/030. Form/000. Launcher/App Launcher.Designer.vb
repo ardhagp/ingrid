@@ -33,6 +33,7 @@ Partial Class App_Launcher
         tmrCountdown = New Timer(components)
         Lbl5 = New CMCv.lbl(components)
         LblCountdown = New CMCv.lbl(components)
+        BtnClose = New CMCv.btn(components)
         SuspendLayout()
         ' 
         ' Lbl1
@@ -151,6 +152,27 @@ Partial Class App_Launcher
         LblCountdown.Text = "app in 3 seconds..."
         LblCountdown.XOCustomElipsis = False
         ' 
+        ' BtnClose
+        ' 
+        BtnClose.BackColor = Color.Red
+        BtnClose.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
+        BtnClose.FlatAppearance.BorderSize = 2
+        BtnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
+        BtnClose.FlatStyle = FlatStyle.Flat
+        BtnClose.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnClose.ForeColor = Color.White
+        BtnClose.Location = New Point(476, 12)
+        BtnClose.Name = "BtnClose"
+        BtnClose.Size = New Size(46, 45)
+        BtnClose.TabIndex = 8
+        BtnClose.Text = "X"
+        BtnClose.UseVisualStyleBackColor = False
+        BtnClose.Visible = False
+        BtnClose.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
+        BtnClose.XOTampilkanFocusBorder = False
+        BtnClose.XOValidasiSemuaInput = False
+        BtnClose.XOValidasiSemuaInputTag = Nothing
+        ' 
         ' App_Launcher
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
@@ -158,6 +180,7 @@ Partial Class App_Launcher
         BackColor = Color.Black
         ClientSize = New Size(539, 750)
         ControlBox = False
+        Controls.Add(BtnClose)
         Controls.Add(LblCountdown)
         Controls.Add(Lbl5)
         Controls.Add(CboApplication)
@@ -183,4 +206,5 @@ Partial Class App_Launcher
     Friend WithEvents tmrCountdown As Timer
     Friend WithEvents Lbl5 As CMCv.lbl
     Friend WithEvents LblCountdown As CMCv.lbl
+    Friend WithEvents BtnClose As CMCv.btn
 End Class
