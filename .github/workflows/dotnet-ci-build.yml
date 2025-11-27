@@ -5,9 +5,9 @@ name: dotnet CI Build
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "dev" ]
 
 jobs:
   build:
@@ -22,8 +22,8 @@ jobs:
       with:
         dotnet-version: 7.0.x
     - name: Restore dependencies
-      run: dotnet restore ./Apps/Core/Vb/Ingrid.vbproj
+      run: dotnet restore ./Apps/Components/Ingrid-Launcher/IngridLauncher.vbproj
     - name: Build
-      run: msbuild ./Apps/Core/Vb/Ingrid.vbproj -t:rebuild -verbosity:diag -property:Configuration=Release
+      run: msbuild ./Apps/Components/Ingrid-Launcher/IngridLauncher.vbproj -t:rebuild -verbosity:diag -property:Configuration=Release
     - name: Test
-      run: dotnet test ./Apps/Core/Vb/Ingrid.vbproj --no-build --verbosity normal
+      run: dotnet test ./Apps/Components/Ingrid-Launcher/IngridLauncher.vbproj --no-build --verbosity normal

@@ -579,7 +579,16 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AWSSDK.S3" Version="4.0.13.1" />
+    <PackageReference Include="coverlet.collector" Version="6.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.msbuild" Version="6.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="ReportGenerator" Version="5.5.0" />
     <PackageReference Include="Syncfusion.Grid.Windows" Version="23.1.41" />
     <PackageReference Include="Syncfusion.Shared.Base" Version="23.1.41" />
     <PackageReference Include="Syncfusion.Tools.Windows" Version="23.1.41" />
