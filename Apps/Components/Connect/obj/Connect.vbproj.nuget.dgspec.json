@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\Connect\\Connect.vbproj": {}
+    "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj": {}
   },
   "projects": {
-    "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\Bridge\\Bridge.csproj": {
+    "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\Bridge\\Bridge.csproj",
+        "projectUniqueName": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj",
         "projectName": "Bridge",
-        "projectPath": "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\Bridge\\Bridge.csproj",
+        "projectPath": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj",
         "packagesPath": "C:\\Users\\titoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\Bridge\\obj\\",
+        "outputPath": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Core\\Vb\\NuGet.Config",
+          "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Core\\Vb\\NuGet.Config",
           "C:\\Users\\titoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -26,6 +26,7 @@
           "net7.0-windows"
         ],
         "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -87,20 +88,20 @@
         }
       }
     },
-    "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\CMC\\CMCv.vbproj": {
+    "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\CMC\\CMCv.vbproj",
+        "projectUniqueName": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj",
         "projectName": "CMCv",
-        "projectPath": "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\CMC\\CMCv.vbproj",
+        "projectPath": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj",
         "packagesPath": "C:\\Users\\titoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\CMC\\obj\\",
+        "outputPath": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Core\\Vb\\NuGet.Config",
+          "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Core\\Vb\\NuGet.Config",
           "C:\\Users\\titoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -109,14 +110,15 @@
           "net7.0-windows"
         ],
         "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0-windows7.0": {
             "targetAlias": "net7.0-windows",
             "projectReferences": {
-              "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\Bridge\\Bridge.csproj": {
-                "projectPath": "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\Bridge\\Bridge.csproj"
+              "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj": {
+                "projectPath": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj"
               }
             }
           }
@@ -225,20 +227,20 @@
         }
       }
     },
-    "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\Connect\\Connect.vbproj": {
+    "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\Connect\\Connect.vbproj",
+        "projectUniqueName": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj",
         "projectName": "Connect",
-        "projectPath": "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\Connect\\Connect.vbproj",
+        "projectPath": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\Connect\\Connect.vbproj",
         "packagesPath": "C:\\Users\\titoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\Connect\\obj\\",
+        "outputPath": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\Connect\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Core\\Vb\\NuGet.Config",
+          "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Core\\Vb\\NuGet.Config",
           "C:\\Users\\titoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -247,14 +249,15 @@
           "net7.0-windows"
         ],
         "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0-windows7.0": {
             "targetAlias": "net7.0-windows",
             "projectReferences": {
-              "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\CMC\\CMCv.vbproj": {
-                "projectPath": "C:\\Users\\titoa\\source\\repos\\ardhagp\\ingrid\\Apps\\Components\\CMC\\CMCv.vbproj"
+              "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj": {
+                "projectPath": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj"
               }
             }
           }

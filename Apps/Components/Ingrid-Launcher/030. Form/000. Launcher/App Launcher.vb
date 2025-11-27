@@ -65,6 +65,7 @@ Public Class App_Launcher
         ConnectMainframe.Dispose()
         LblCountdown.Text = "by clicking Launch button"
         Me.Show()
+        BtnClose.Visible = True
     End Sub
 
     Private Sub IngridMainframe_IngridFrameOpen() Handles IngridMainframe.IngridFrameOpen
@@ -73,5 +74,9 @@ Public Class App_Launcher
 
     Private Sub ConnectMainframe_ConnectFrameOpen() Handles ConnectMainframe.ConnectFrameOpen
         Me.Hide()
+    End Sub
+
+    Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
+        Me.Close()
     End Sub
 End Class
