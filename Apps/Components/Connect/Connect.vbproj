@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net7.0-windows</TargetFramework>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <StartupObject>Connect.CONN</StartupObject>
     <MyType>WindowsForms</MyType>
     <SccProjectName>SAK</SccProjectName>

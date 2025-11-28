@@ -212,7 +212,7 @@ Module Globals
         ERC = New CMCv.frmErrorReporting(ErrorCatcher, V_DBE_SQLite)
         ERC.ShowDialog()
         If Not (ERC.ResumeNext) Then
-            End
+            Return
         End If
     End Sub
 #End Region

@@ -622,7 +622,7 @@ Public Class Mainframe_n_6
 
         Me.Close()
         System.Windows.Forms.Application.Exit()
-        End
+        Return
     End Sub
 
     <SupportedOSPlatform("windows")>

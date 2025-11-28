@@ -107,7 +107,7 @@ Module Globals
         frmERC = New CMCv.frmErrorReporting(clsECerrorcatcher, clsDBsqlite)
         frmERC.ShowDialog()
         If Not (frmERC.ResumeNext) Then
-            End
+            Return
         End If
     End Sub
 #End Region
