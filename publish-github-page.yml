@@ -44,6 +44,36 @@ variables:
 
 steps:
 
+- task: ado-discord-webhook@2
+  displayName: 'Deployment Start'
+  condition: always()
+  inputs:
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
+    embeds: |
+      [
+        {
+          "type": "rich",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Start Deploying to https://ardhagp.github.io/ingrid/",
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "color": 0xffde59,
+          "fields": [
+            {
+              "name": "Build.Pipeline",
+              "value": "$(Build.Repository.Name)",
+              "inline": true
+            },
+            {
+              "name": "Build.Number",
+              "value": "$(Build.BuildNumber)",
+              "inline": true
+            }
+          ],
+          "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
+        }
+      ]
+
 #Installing Nuget
 - task: NuGetToolInstaller@1
   displayName: 'Nuget Install'
@@ -80,7 +110,7 @@ steps:
     parameterSearchText: '= V_BRIDGE_KEY.SALT()'
     parameterReplaceText: '= "$(var_g_Salt)"'
     parameterTypeOfSearch: 'filesSearchPattern'
-    parameterFilesPattern: '*.vb'
+#    parameterFilesPattern: '*.vb'
 
 #Replacing Syncfusion Key
 - task: ReplaceInFilesTextByText@2
@@ -90,7 +120,7 @@ steps:
     parameterSearchText: '= V_BRIDGE_KEY.SYNCFUSION()'
     parameterReplaceText: '= "$(var_g_SyncfusionKey)"'
     parameterTypeOfSearch: 'filesSearchPattern'
-    parameterFilesPattern: '*.vb'
+#    parameterFilesPattern: '*.vb'
 
 #Replacing BetterStack Key
 - task: ReplaceInFilesTextByText@2
@@ -100,7 +130,7 @@ steps:
     parameterSearchText: 'sourceToken: KEYLOG.BETTERSTACK_LOG()'
     parameterReplaceText: 'sourceToken: "$(var_g_BetterStack_Log)"'
     parameterTypeOfSearch: 'filesSearchPattern'
-    parameterFilesPattern: '*.cs'
+#    parameterFilesPattern: '*.cs'
 
 #Replacing Version: Major
 - task: ReplaceInFilesTextByText@2
@@ -110,7 +140,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Major'
     parameterReplaceText: '$(var_g_Ingridversion_major)'
     parameterTypeOfSearch: 'filesSearchPattern'
-    parameterFilesPattern: '*.vb'
+#    parameterFilesPattern: '*.vb'
 
 #Replacing Version: Minor
 - task: ReplaceInFilesTextByText@2
@@ -120,7 +150,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Minor'
     parameterReplaceText: '$(var_g_Ingridversion_minor)'
     parameterTypeOfSearch: 'filesSearchPattern'
-    parameterFilesPattern: '*.vb'
+#    parameterFilesPattern: '*.vb'
 
 #Replacing Version: Build
 - task: ReplaceInFilesTextByText@2
@@ -130,7 +160,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Build'
     parameterReplaceText: '$(var_g_Ingridversion_build)'
     parameterTypeOfSearch: 'filesSearchPattern'
-    parameterFilesPattern: '*.vb'
+#    parameterFilesPattern: '*.vb'
 
 #Replacing Version: Revision
 - task: ReplaceInFilesTextByText@2
@@ -140,7 +170,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Revision'
     parameterReplaceText: '$(var_g_Ingridversion_revision)'
     parameterTypeOfSearch: 'filesSearchPattern'
-    parameterFilesPattern: '*.vb'
+#    parameterFilesPattern: '*.vb'
 
 #Checking new value from variables
 - task: CmdLine@2
@@ -162,10 +192,13 @@ steps:
       
       cd $(Build.SourcesDirectory)
       dir /b /s /A-D /o:gn
-      echo "---------------------------"
-      echo "Reading CMC\Globals.vb"
-      echo "---------------------------"
-      more ".\Apps\Components\CMC\2090 - Module\Globals.vb"
+#      echo "Reading CMC\Globals.vb"
+#      echo "---------------------------"
+#      more ".\Apps\Components\CMC\2090 - Module\Globals.vb"
+#      echo "---------------------------"
+#      echo "Reading Apps\Core\Module\Globals.vb"
+#      echo "---------------------------"
+#      more ".\Apps\Core\Vb\020. Module\Globals.vb"
 
 #Build Ingrid App
 - task: VSBuild@1
@@ -178,6 +211,26 @@ steps:
     clean: true
     maximumCpuCount: true
     createLogFile: true
+
+#List of File in $(Build.SourcesDirectory)
+- task: CmdLine@2
+  displayName: 'File List - Post Build $(Build.SourcesDirectory)'
+  inputs:
+    script: |
+      echo "---------------------------"
+      echo "Print File List - Post Build"
+      echo "---------------------------"
+      cd $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\
+      dir /b /s /A-D /o:gn
+      echo "---------------------------"
+      echo "Reading Artifact Directory"
+      echo "---------------------------"
+      cd $(build.ArtifactStagingDirectory)
+      dir /b /s /A-D /o:gn
+      echo "---------------------------"
+      echo "Reading Ingrid.Application"
+      echo "---------------------------"
+      more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\Ingrid.application
 
 #Prepare Artifact for Github Page and FTP Server
 - task: CopyFiles@2
@@ -196,7 +249,7 @@ steps:
     archiveFile: '$(build.ArtifactStagingDirectory)/ingrid.zip'
     replaceExistingArchive: true
 
-#Upload Artifact prepare for Relase via FTP
+#Publish Artifact for Relase via FTP
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact.. ingrid-artifact'
   inputs:
@@ -241,33 +294,45 @@ steps:
 #    azure_static_web_apps_api_token: '$(var_g_TOKEN_SWA)'
 #    production_branch: 'publish'
 
-#List of File in $(Build.SourcesDirectory)
-- task: CmdLine@2
-  displayName: 'File List - Post Build $(Build.SourcesDirectory)'
+- task: ado-discord-webhook@2
+  displayName: 'Deployment Success'
+  condition: succeeded()
   inputs:
-    script: |
-      echo "---------------------------"
-      echo "Print File List - Post Build"
-      echo "---------------------------"
-      cd $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\
-      dir /b /s /A-D /o:gn
-      echo "---------------------------"
-      echo "Reading Artifact Directory"
-      echo "---------------------------"
-      cd $(build.ArtifactStagingDirectory)
-      dir /b /s /A-D /o:gn
-      echo "---------------------------"
-      echo "Reading Ingrid.Application"
-      echo "---------------------------"
-      more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
+    embeds: |
+      [
+        {
+          "type": "rich",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Deployment Success!",
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "color": 0x00ff00,
+          "fields": [
+            {
+              "name": "Build.Pipeline",
+              "value": "$(Build.Repository.Name)",
+              "inline": true
+            },
+            {
+              "name": "Build.Number",
+              "value": "$(Build.BuildNumber)",
+              "inline": true
+            }
+          ],
+          "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
+        }
+      ]
+
 
 #Updating Version for next build
-#- task: update-variablegroup-variable@0
-#  displayName: 'Prepare Versioning For Next Build'
-#  inputs:
-#    variableGroupName: 'global_variables'
-#    variableName: 'var_g_Ingridversion_revision'
-#    variableDataType: 'int'
-#    newVariableValueInInt: 1
-#    usePAT: true
-#    patValue: '$(var_g_TOKEN_AZURE)'
+- task: update-variablegroup-variable@0
+  condition: succeeded()
+  displayName: 'Prepare Version For Next Build'
+  inputs:
+    variableGroupName: 'global_variables'
+    variableName: 'var_g_Ingridversion_minor'
+    variableDataType: 'int'
+    newVariableValueInInt: 1
+    usePAT: true
+    patValue: '$(var_g_TOKEN_AZURE)'
