@@ -246,7 +246,7 @@ steps:
     rootFolderOrFile: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(build.ArtifactStagingDirectory)/ingrid.zip'
+    archiveFile: '$(build.ArtifactStagingDirectory)/ingrid-offline.zip'
     replaceExistingArchive: true
 
 #Publish Artifact for Relase via FTP
