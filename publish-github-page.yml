@@ -110,7 +110,7 @@ steps:
     parameterSearchText: '= V_BRIDGE_KEY.SALT()'
     parameterReplaceText: '= "$(var_g_Salt)"'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.vb'
 
 #Replacing Syncfusion Key
 - task: ReplaceInFilesTextByText@2
@@ -120,7 +120,7 @@ steps:
     parameterSearchText: '= V_BRIDGE_KEY.SYNCFUSION()'
     parameterReplaceText: '= "$(var_g_SyncfusionKey)"'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.vb'
 
 #Replacing BetterStack Key
 - task: ReplaceInFilesTextByText@2
@@ -130,7 +130,7 @@ steps:
     parameterSearchText: 'sourceToken: KEYLOG.BETTERSTACK_LOG()'
     parameterReplaceText: 'sourceToken: "$(var_g_BetterStack_Log)"'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.cs'
+    parameterFilesPattern: '*.cs'
 
 #Replacing Version: Major
 - task: ReplaceInFilesTextByText@2
@@ -140,7 +140,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Major'
     parameterReplaceText: '$(var_g_Ingridversion_major)'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.vb'
 
 #Replacing Version: Minor
 - task: ReplaceInFilesTextByText@2
@@ -150,7 +150,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Minor'
     parameterReplaceText: '$(var_g_Ingridversion_minor)'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.vb'
 
 #Replacing Version: Build
 - task: ReplaceInFilesTextByText@2
@@ -160,7 +160,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Build'
     parameterReplaceText: '$(var_g_Ingridversion_build)'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.vb'
 
 #Replacing Version: Revision
 - task: ReplaceInFilesTextByText@2
@@ -170,7 +170,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Revision'
     parameterReplaceText: '$(var_g_Ingridversion_revision)'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.vb'
 
 #Checking new value from variables
 - task: CmdLine@2
@@ -192,13 +192,13 @@ steps:
       
       cd $(Build.SourcesDirectory)
       dir /b /s /A-D /o:gn
-#      echo "Reading CMC\Globals.vb"
-#      echo "---------------------------"
-#      more ".\Apps\Components\CMC\2090 - Module\Globals.vb"
-#      echo "---------------------------"
-#      echo "Reading Apps\Core\Module\Globals.vb"
-#      echo "---------------------------"
-#      more ".\Apps\Core\Vb\020. Module\Globals.vb"
+      echo "Reading CMC\Globals.vb"
+      echo "---------------------------"
+      more ".\Apps\Components\CMC\2090 - Module\Globals.vb"
+      echo "---------------------------"
+      echo "Reading Apps\Core\Module\Globals.vb"
+      echo "---------------------------"
+      more ".\Apps\Core\Vb\020. Module\Globals.vb"
 
 #Build Ingrid App
 - task: VSBuild@1
