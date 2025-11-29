@@ -19,6 +19,7 @@
     <ApplicationIcon>Resources\ingrid_icon_2.ico</ApplicationIcon>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <OptionStrict>On</OptionStrict>
+    <AssemblyName>Ingrid</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineDebug>True</DefineDebug>

@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net7.0-windows</TargetFramework>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <StartupObject>Ingrid.My.MyApplication</StartupObject>
     <MyType>WindowsForms</MyType>
     <SccProjectName>SAK</SccProjectName>
@@ -93,6 +93,7 @@
     <ApplicationIcon>Resources\ingrid_icon_2.ico</ApplicationIcon>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <OptionStrict>On</OptionStrict>
+    <AssemblyName>Ingrid.Core</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Import Include="CMCv" />
