@@ -93,6 +93,7 @@
     <ApplicationIcon>Resources\ingrid_icon_2.ico</ApplicationIcon>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <OptionStrict>On</OptionStrict>
+    <AssemblyName>Ingrid.Core</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Import Include="CMCv" />
