@@ -3,16 +3,18 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net.
 
+# Trigger set to dev branch
 trigger:
-- none
+- dev
 
-schedules:
-- cron: '0 17 * * *'
-  displayName: Daily midnight build
-  branches:
-    include:
-    - master
-  always: true
+# Automatic schedule removed — manual build only
+# schedules:
+# - cron: '0 17 * * *'
+#  displayName: Daily midnight build
+#  branches:
+#    include:
+#    - master
+#  always: true
 
 pool:
   vmImage: 'windows-latest'
@@ -241,7 +243,7 @@ steps:
       echo "---------------------------"
       echo "Reading Ingrid.Application"
       echo "---------------------------"
-      more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\IngridLauncher.application
+      more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\Ingrid.application
 
 - task: ado-discord-webhook@2
   displayName: 'Compile Success'
