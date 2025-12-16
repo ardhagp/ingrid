@@ -9,10 +9,10 @@ Ingrid is a Desktop Application for Windows OS that has many modules for every p
 ## Project Branch
 ```mermaid
 flowchart LR
-id1(📦 master) --> id2(♾️ dev)
-id2(♾️ dev) --> id3(🛠️ fix)
-id2(♾️ dev) --> id4(🔄 feature)
-id2(♾️ dev) --> id5(📗 doc)
+id2(♾️ dev) --> id1(📦 master)
+id3(🛠️ fix) --> id2(♾️ dev)
+id4(🔄 feature) --> id2(♾️ dev)
+id5(📗 doc) --> id2(♾️ dev)
 id1(📦 master) --> id6(☁️ publish)
 ```
 
@@ -100,10 +100,8 @@ To obtain BetterStack Key, please sign up <span style="color:orange">**BetterSta
 ```mermaid
 flowchart LR
 id1([♾️ Azure Devops]) --> id20(📦 Github.io ✅)
-id1([♾️ Azure Devops]) --> id21([📂 FTP ⏳])
-id20(Github.io ✅) --> id30([ClickOnce - Installer ✅])
+id20(Github.io ✅) --> id30([ClickOnce - Web Install ✅])
 id20(Github.io ✅) --> id31([Offline - Installer ✅])
-id20(Github.io ✅) --> id32([MSIX - Portable⏳])
 ```
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
@@ -118,6 +116,7 @@ This application is released under the [MIT license]($/Ingrid/LICENSE). You can 
 #   <span style="color:darkorange">**Navigation**</span>
 | [App Page](https://ardhagp.github.io/ingrid) | [Wiki](https://github.com/ardhagp/ingrid/wiki/01.-Home) | Status Page | Tip (Indonesia) |
 | -- | -- | -- | -- |
+
 
 
 
