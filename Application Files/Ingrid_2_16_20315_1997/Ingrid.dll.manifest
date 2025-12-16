@@ -96,7 +96,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>0dUgzjuEqq0/iTi6xhMDMOvO1nDzP+qv+CCPAsEdVKM=</dsig:DigestValue>
+      <dsig:DigestValue>mPQPlDEJbVa3Q0sxkYV8m/c9E9Vmgd5PNr2KBQZYme4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="CMCv.dll" size="1279488">
@@ -105,7 +105,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>i7nnYkUlf6Vf3tqLb8eg+B3UeIgOl+JlSysHnYa4LIM=</dsig:DigestValue>
+      <dsig:DigestValue>BcNtV/5RwY3y3YrGlFDyt4mf/xB6EaD2sP92Ff7f1aU=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Connect.dll" size="213504">
@@ -114,7 +114,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>U//XArJjWvizAKAXDgZTOUi+s234tDJDwyY15rj5GIw=</dsig:DigestValue>
+      <dsig:DigestValue>vasMew9tIfUkgBOZOGKxC1Ovo+2FN6cogsNURdJdd+4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="cs\Microsoft.CodeAnalysis.resources.dll" size="45736">
@@ -276,7 +276,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>IHrVT8v0lQNNo1oq3GckorNjJMVOceTaf4UDwi6cwJo=</dsig:DigestValue>
+      <dsig:DigestValue>OJuPgoVRxZy2ozfBsc6TL7oobGNiMLYoKA27iwmlLfQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Ingrid.deps.json" size="62575">
@@ -288,13 +288,13 @@
       <dsig:DigestValue>5m8YVNYpvZp11uqCHjWXrpg3pZK8kbles4lL4PNRmNU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Ingrid.dll" size="570880">
+  <file name="Ingrid.dll" size="571392">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>O/hobUJ7d5TFmuErw6/rGLuF8gIGoDQcGG3WlNW3DYw=</dsig:DigestValue>
+      <dsig:DigestValue>ZGSe2LlgS1M7VtFSwGH1tBVZfnFyqvR9TO1S44kLJbc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Ingrid.dll.config" size="816">
@@ -312,7 +312,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>K877FTbtAZemo6lGr4HwbX9dKSyFGSaBrSX+pGxYITg=</dsig:DigestValue>
+      <dsig:DigestValue>yAn41bUNQoozOS3TpNf7sParV/dJ9IZWW9JFh8ZdDf4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Ingrid.runtimeconfig.json" size="372">
@@ -459,13 +459,13 @@
       <dsig:DigestValue>/OaEgaekvoE4B7smUi9Q/BaxoIdbCkJV3TGNGhs4jvU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="LibSQL.dll" size="355328">
+  <file name="LibSQL.dll" size="355840">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>00o23Xr+epToyOE8bqZR48F46Ola2GFukhiTNQHG6I8=</dsig:DigestValue>
+      <dsig:DigestValue>hkrPgdRhwhsHPTIbvjoXtcOpkWNQzunbAEVHO0oyTTg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Microsoft.Bcl.AsyncInterfaces.dll" size="20272">
