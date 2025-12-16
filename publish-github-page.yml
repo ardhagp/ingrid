@@ -240,6 +240,17 @@ steps:
     Contents: '**'
     TargetFolder: '$(build.ArtifactStagingDirectory)'
 
+- task: CmdLine@2
+  displayName: 'Copy Files to BackBlaze'
+  inputs:
+    script: |
+      aws s3 cp "$(Build.ArtifactStagingDirectory)" s3://ingrid-blob/ --recursive \
+        --endpoint-url https://s3.us-west-004.backblazeb2.com
+  env:
+    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+
+
 - task: ArchiveFiles@2
   displayName: 'Compressing Files to.. $(build.ArtifactStagingDirectory)'
   inputs:
