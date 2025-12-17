@@ -169,8 +169,7 @@ https://templatemo.com/tm-557-grad-school
     </div>
   </footer>
 
-
-  <!-- Scripts -->
+<!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -219,7 +218,7 @@ https://templatemo.com/tm-557-grad-school
           });
         };
 
-        $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
+        $('.scroll-to-section').on('click', 'a', function (e) {
           if($(e.target).hasClass('external')) {
             return;
           }
@@ -232,6 +231,10 @@ https://templatemo.com/tm-557-grad-school
           checkSection();
         });
     </script>
+    
+  <script>
+  document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
 
 <!-- Ingrid.NET Windows 8 Style Modal -->
 <div id="customModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:1000;">
