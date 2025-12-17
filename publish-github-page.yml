@@ -3,6 +3,15 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net.
 
+# Important notice
+# $(var_g_Ingridversion_major) : ingrid major version
+# $(var_g_Ingridversion_minor) : publishing number
+# $(var_g_Ingridversion_build) : build / compile number
+# $(var_g_Ingridversion_revision) : failed build / compile number
+# $(var_NET) : .NET version
+# $(var_BuildConfiguration) : build configuration (Debug/Release)
+# $(var_Platform) : platform configuration (Any CPU/x86/x64)
+
 trigger:
 - none
 
@@ -110,7 +119,7 @@ steps:
     parameterSearchText: '= V_BRIDGE_KEY.SALT()'
     parameterReplaceText: '= "$(var_g_Salt)"'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.vb'
 
 #Replacing Syncfusion Key
 - task: ReplaceInFilesTextByText@2
@@ -120,7 +129,7 @@ steps:
     parameterSearchText: '= V_BRIDGE_KEY.SYNCFUSION()'
     parameterReplaceText: '= "$(var_g_SyncfusionKey)"'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.vb'
 
 #Replacing BetterStack Key
 - task: ReplaceInFilesTextByText@2
@@ -130,7 +139,7 @@ steps:
     parameterSearchText: 'sourceToken: KEYLOG.BETTERSTACK_LOG()'
     parameterReplaceText: 'sourceToken: "$(var_g_BetterStack_Log)"'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.cs'
+    parameterFilesPattern: '*.cs'
 
 #Replacing Version: Major
 - task: ReplaceInFilesTextByText@2
@@ -140,7 +149,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Major'
     parameterReplaceText: '$(var_g_Ingridversion_major)'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.vb'
 
 #Replacing Version: Minor
 - task: ReplaceInFilesTextByText@2
@@ -150,7 +159,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Minor'
     parameterReplaceText: '$(var_g_Ingridversion_minor)'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.vb'
 
 #Replacing Version: Build
 - task: ReplaceInFilesTextByText@2
@@ -160,7 +169,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Build'
     parameterReplaceText: '$(var_g_Ingridversion_build)'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.vb'
 
 #Replacing Version: Revision
 - task: ReplaceInFilesTextByText@2
@@ -170,7 +179,7 @@ steps:
     parameterSearchText: 'My.Application.Info.Version.Revision'
     parameterReplaceText: '$(var_g_Ingridversion_revision)'
     parameterTypeOfSearch: 'filesSearchPattern'
-#    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.vb'
 
 #Checking new value from variables
 - task: CmdLine@2
@@ -192,20 +201,20 @@ steps:
       
       cd $(Build.SourcesDirectory)
       dir /b /s /A-D /o:gn
-#      echo "Reading CMC\Globals.vb"
-#      echo "---------------------------"
-#      more ".\Apps\Components\CMC\2090 - Module\Globals.vb"
-#      echo "---------------------------"
-#      echo "Reading Apps\Core\Module\Globals.vb"
-#      echo "---------------------------"
-#      more ".\Apps\Core\Vb\020. Module\Globals.vb"
+      echo "Reading CMC\Globals.vb"
+      echo "---------------------------"
+      more ".\Apps\Components\CMC\2090 - Module\Globals.vb"
+      echo "---------------------------"
+      echo "Reading Apps\Core\Module\Globals.vb"
+      echo "---------------------------"
+      more ".\Apps\Core\Vb\020. Module\Globals.vb"
 
 #Build Ingrid App
 - task: VSBuild@1
   displayName: 'VSBuild - Midnight Build'
   inputs:
     solution: '**\*.sln'
-    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:InstallUrl="https://ardhagp.github.io/ingrid/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
+    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:BootstrapperComponents="Microsoft.NetCore.DesktopRuntime.7.x86" /p:InstallUrl="https://ingrid-blob.s3.us-west-004.backblazeb2.com/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
     platform: '$(var_Platform)'
     configuration: '$(var_BuildConfiguration)'
     clean: true
@@ -232,7 +241,7 @@ steps:
       echo "---------------------------"
       more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\Ingrid.application
 
-#Prepare Artifact for Github Page and FTP Server
+#Packing deployment to Artifact Directory
 - task: CopyFiles@2
   displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory)'
   inputs:
@@ -240,6 +249,23 @@ steps:
     Contents: '**'
     TargetFolder: '$(build.ArtifactStagingDirectory)'
 
+# Sent Artifact to Backblaze
+- task: PowerShell@2
+  displayName: 'Copy Files to BackBlaze'
+  inputs: 
+    targetType: 'inline'
+    script: |
+     python -m pip install --upgrade pip
+     pip install awscli
+     aws s3 cp "$(Build.ArtifactStagingDirectory)" s3://ingrid-blob/ --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
+  env:
+    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+
+# to remove existing files use this : aws s3 rm "s3://ingrid-blob/" --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
+     
+
+# Compressing Artifact to Zip
 - task: ArchiveFiles@2
   displayName: 'Compressing Files to.. $(build.ArtifactStagingDirectory)'
   inputs:
@@ -250,18 +276,18 @@ steps:
     replaceExistingArchive: true
 
 #Publish Artifact for Relase via FTP
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact.. ingrid-artifact'
-  inputs:
-    PathtoPublish: '$(build.ArtifactStagingDirectory)'
-    ArtifactName: 'ingrid-artifact'
-    publishLocation: 'Container'
+# - task: PublishBuildArtifacts@1
+#  displayName: 'Publish Artifact.. ingrid-artifact'
+#  inputs:
+#    PathtoPublish: '$(build.ArtifactStagingDirectory)'
+#    ArtifactName: 'ingrid-artifact'
+#    publishLocation: 'Container'
 
 #Direct publish to Github Pages
 - task: GitHubPagesPublish@1
   displayName: 'Publishing App To Github Pages'
   inputs:
-    docPath: '$(build.ArtifactStagingDirectory)\*'
+    docPath: '$(build.ArtifactStagingDirectory)\ingrid-offline.zip'
     githubusername: 'ardhagp'
     githubemail: '$(var_g_Email)'
     githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
@@ -332,6 +358,17 @@ steps:
   inputs:
     variableGroupName: 'global_variables'
     variableName: 'var_g_Ingridversion_minor'
+    variableDataType: 'int'
+    newVariableValueInInt: 1
+    usePAT: true
+    patValue: '$(var_g_TOKEN_AZURE)'
+
+- task: update-variablegroup-variable@0
+  condition: failed()
+  displayName: 'Prepare Version For Next Build'
+  inputs:
+    variableGroupName: 'global_variables'
+    variableName: 'var_g_Ingridversion_revision'
     variableDataType: 'int'
     newVariableValueInInt: 1
     usePAT: true
