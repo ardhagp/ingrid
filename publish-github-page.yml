@@ -240,10 +240,14 @@ steps:
     Contents: '**'
     TargetFolder: '$(build.ArtifactStagingDirectory)'
 
+- script: |
+    pip install awscli
+  displayName: 'Install AWS CLI'
+
 - task: CmdLine@2
   displayName: 'Copy Files to BackBlaze'
   inputs:
-    script: |
+    script: |      
       aws s3 cp "$(Build.ArtifactStagingDirectory)" s3://ingrid-blob/ --recursive \
         --endpoint-url https://s3.us-west-004.backblazeb2.com
   env:
