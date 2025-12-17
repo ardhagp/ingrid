@@ -247,6 +247,10 @@ steps:
     script: |
      python -m pip install --upgrade pip
      pip install awscli
+     aws s3 mv "s3://ingrid-blob/Application Files/" "s3://ingrid-blob/Application Files/archives/" \
+       --recursive \
+       --exclude "archives/*" \
+       --endpoint-url https://s3.us-west-004.backblazeb2.com
      aws s3 cp "$(Build.ArtifactStagingDirectory)" s3://ingrid-blob/ --recursive `
        --endpoint-url https://s3.us-west-004.backblazeb2.com
   env:
