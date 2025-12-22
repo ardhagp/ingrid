@@ -116,28 +116,28 @@ steps:
   displayName: 'Replacing: V_BRIDGEKEY.SALT'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
-    parameterSearchText: '= V_BRIDGE_KEY.SALT()'
-    parameterReplaceText: '= "$(var_g_Salt)"'
+    parameterSearchText: 'config.GetSection("KEYS")["SALT"]'
+    parameterReplaceText: '"$(var_g_Salt)"'
     parameterTypeOfSearch: 'filesSearchPattern'
-    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.cs'
 
 #Replacing Syncfusion Key
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: V_BRIDGEKEY.SYNCFUSION'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
-    parameterSearchText: '= V_BRIDGE_KEY.SYNCFUSION()'
-    parameterReplaceText: '= "$(var_g_SyncfusionKey)"'
+    parameterSearchText: 'config.GetSection("KEYS")["SYNCFUSION"]'
+    parameterReplaceText: '"$(var_g_SyncfusionKey)"'
     parameterTypeOfSearch: 'filesSearchPattern'
-    parameterFilesPattern: '*.vb'
+    parameterFilesPattern: '*.cs'
 
 #Replacing BetterStack Key
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: V_BRIDGEKEY.BETTERSTACK_LOG'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
-    parameterSearchText: 'sourceToken: KEYLOG.BETTERSTACK_LOG()'
-    parameterReplaceText: 'sourceToken: "$(var_g_BetterStack_Log)"'
+    parameterSearchText: 'config.GetSection("KEYS")["BETTERSTACK_LOG"]'
+    parameterReplaceText: '"$(var_g_BetterStack_Log)"'
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.cs'
 
