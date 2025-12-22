@@ -13,6 +13,7 @@ Public Class App_Launcher
         Bridge.Security.WRITELOG.SENDLOG("Ingrid Launcher started." & Environment.NewLine & "--- App Ver. " & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision & " ---", Bridge.Security.WRITELOG.LogType.Information)
 
         Call ActivateLicenses()
+
         LblBuild.Text = String.Format("Build {0}" & Environment.NewLine & "Rev. {1}", My.Application.Info.Version.Build, My.Application.Info.Version.Revision)
         Var_Second = 4
         LblCountdown.Text = String.Format("app in {0} seconds...", Var_Second)
