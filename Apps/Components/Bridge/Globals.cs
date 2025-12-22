@@ -6,7 +6,7 @@ namespace Bridge.Security
     public class Getkey
     {
         /// <summary>
-        /// 
+        /// Get Salt Key from User Secrets
         /// </summary>
         /// <returns></returns>
         public string Salt()
@@ -27,6 +27,10 @@ namespace Bridge.Security
             }
         }
 
+        /// <summary>
+        /// Get Syncfusion Key from User Secrets
+        /// </summary>
+        /// <returns></returns>
         public string Syncfusion()
         {
             var config = new ConfigurationBuilder()
@@ -45,13 +49,17 @@ namespace Bridge.Security
             }
         }
 
+        /// <summary>
+        /// Get Betterstack Log Key from User Secrets
+        /// </summary>
+        /// <returns></returns>
         public string Betterstack_log()        
         {
             var config = new ConfigurationBuilder()
                 .AddUserSecrets<Getkey>()
                 .Build();
 
-            var V_KEY = config.GetSection("KEYS")["BETTERSTACK_LOG"];
+            var V_KEY =  config.GetSection("KEYS")["BETTERSTACK_LOG"];
 
             if (V_KEY != null)
             {
@@ -63,16 +71,27 @@ namespace Bridge.Security
             }
         }
     }
-    
+
+    /// <summary>
+    /// Logging class to send logs to Betterstack
+    /// </summary>
     public class Writelog
     {
-
+        /// <summary>
+        /// Type of log entry
+        /// </summary>
         public enum LogType
         {
             Information,
             Error
         }
 
+        /// <summary>
+        /// Send log to Betterstack
+        /// </summary>
+        /// <param name="Messages"></param>
+        /// <param name="TypeOfLog"></param>
+        /// <returns></returns>
         public static async Task Sendlog(string Messages, LogType TypeOfLog)
         {
             try
@@ -84,6 +103,13 @@ namespace Bridge.Security
                 await Writelogs(ex.Message,LogType.Error);
             }
         }
+
+        /// <summary>
+        /// Write logs to Betterstack
+        /// </summary>
+        /// <param name="Messages"></param>
+        /// <param name="TypeOfLog"></param>
+        /// <returns></returns>
         private static async Task Writelogs(string Messages, LogType TypeOfLog)
         {
             await Task.Delay(0);
