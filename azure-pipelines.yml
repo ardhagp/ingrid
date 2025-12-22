@@ -5,7 +5,7 @@
 
 # Trigger set to dev branch
 trigger:
-- dev
+- none
 
 # Automatic schedule removed — manual build only
 # schedules:
