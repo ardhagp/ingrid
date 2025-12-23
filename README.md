@@ -27,7 +27,7 @@ id1(📦 master) --> id6(☁️ publish)
 
 
 ## Current Status
-[![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d1728d753b8c4b579d97a467bf751322)](https://app.codacy.com/gh/ardhagp/ingrid/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![dev Build](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml/badge.svg?branch=dev)](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml) [![Build Status](https://dev.azure.com/ardhagp/ingrid/_apis/build/status%2Fgithub-linked%2Fscheduled%2Fazure-pipelines?branchName=master)](https://dev.azure.com/ardhagp/ingrid/_build/latest?definitionId=12&branchName=master) [![Better Stack Badge](https://uptime.betterstack.com/status-badges/v3/monitor/182mi.svg)](https://ingrid.betteruptime.com/) [![Static Badge](https://img.shields.io/badge/Download-ingrid--offline.zip-gold)](https://ardhagp.github.io/ingrid/ingrid-offline.zip)
+[![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d1728d753b8c4b579d97a467bf751322)](https://app.codacy.com/gh/ardhagp/ingrid/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![dev Build](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml/badge.svg?branch=dev)](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml) [![Releasel](https://github.com/ardhagp/ingrid/actions/workflows/azure-release.yml/badge.svg?branch=master&event=status)](https://github.com/ardhagp/ingrid/actions/workflows/azure-release.yml) [![Better Stack Badge](https://uptime.betterstack.com/status-badges/v3/monitor/182mi.svg)](https://ingrid.betteruptime.com/) [![Static Badge](https://img.shields.io/badge/Download-ingrid--offline.zip-gold)](https://ardhagp.github.io/ingrid/ingrid-offline.zip)
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 #   <span style="color:darkorange">**Tools You Need**</span>
@@ -115,6 +115,7 @@ This application is released under the [MIT license]($/Ingrid/LICENSE). You can 
 #   <span style="color:darkorange">**Navigation**</span>
 | [App Page](https://ardhagp.github.io/ingrid) | [Wiki](https://github.com/ardhagp/ingrid/wiki/) | [Status Page](https://stats.uptimerobot.com/w2qHYcTmKb) | Tip (Indonesia) |
 | -- | -- | -- | -- |
+
 
 
 
