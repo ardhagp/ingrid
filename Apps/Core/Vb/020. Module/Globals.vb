@@ -124,12 +124,10 @@ Module Globals
         Try
             Dim varMajor, varMinor, varBuild, varRevision As Integer
 
-            With My.Application.Info.Version
-                varMajor = .Major
-                varMinor = .Minor
-                varBuild = .Build
-                varRevision = .Revision
-            End With
+            varMajor = My.Application.Info.Version.Major
+            varMinor = My.Application.Info.Version.Minor
+            varBuild = My.Application.Info.Version.Build
+            varRevision = My.Application.Info.Version.Revision
 
             varVersionapplication = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
             Return varVersionapplication

@@ -99,9 +99,8 @@ To obtain BetterStack Key, please sign up <span style="color:orange">**BetterSta
 # About Publishing Plan
 ```mermaid
 flowchart LR
-id1([♾️ Azure Devops]) --> id20(📦 Github.io ✅)
-id20(Github.io ✅) --> id30([ClickOnce - Web Install ✅])
-id20(Github.io ✅) --> id31([Offline - Installer ✅])
+id1(♾️ Azure Devops) --> id30([📦 ClickOnce]) --> id19(🔥 Backblaze) --> id20([🌐 Github.io])
+id1(♾️ Azure Devops) --> id31([📦 .zip]) --> id20(🌐 Github.io) 
 ```
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
@@ -114,8 +113,10 @@ This application is released under the [MIT license]($/Ingrid/LICENSE). You can 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 
 #   <span style="color:darkorange">**Navigation**</span>
-| [App Page](https://ardhagp.github.io/ingrid) | [Wiki](https://github.com/ardhagp/ingrid/wiki/01.-Home) | Status Page | Tip (Indonesia) |
+| [App Page](https://ardhagp.github.io/ingrid) | [Wiki](https://github.com/ardhagp/ingrid/wiki/) | [Status Page](https://stats.uptimerobot.com/w2qHYcTmKb) | Tip (Indonesia) |
 | -- | -- | -- | -- |
+
+
 
 
 

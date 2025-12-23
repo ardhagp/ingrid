@@ -1,0 +1,333 @@
+# .NET Desktop
+# Build and run tests for .NET Desktop or Windows classic desktop solutions.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net.
+
+# Trigger set to dev branch
+trigger:
+- none
+
+# Automatic schedule removed — manual build only
+# schedules:
+# - cron: '0 17 * * *'
+#  displayName: Daily midnight build
+#  branches:
+#    include:
+#    - master
+#  always: true
+
+pool:
+  vmImage: 'windows-latest'
+
+#Assigning variables from Environment
+variables:
+- group: global_variables
+
+- name: var_p_Email
+  value: $[variables.var_g_Email]
+
+- name: var_p_Platform
+  value: $[variables.var_Platform]
+- name: var_p_BuildConfiguration
+  value: $[variables.var_BuildConfiguration]
+
+- name: var_p_Ingridversion_major
+  value: $[variables.var_g_Ingridversion_major]
+- name: var_p_Ingridversion_minor
+  value: $[variables.var_g_Ingridversion_minor]
+- name: var_p_Ingridversion_build
+  value: $[variables.var_g_Ingridversion_build]
+- name: var_p_Ingridversion_revision
+  value: $[variables.var_g_Ingridversion_revision]
+
+- name: var_p_BetterStack_Log
+  value: $[variables.var_g_BetterStack_Log]
+- name: var_p_SyncfusionKey
+  value: $[variables.var_g_SyncfusionKey]
+- name: var_p_Salt
+  value: $[variables.var_g_Salt]
+
+- name: var_p_TOKEN_GITHUB
+  value: $[variables.var_g_TOKEN_GITHUB]
+- name: var_p_TOKEN_AZURE
+  value: $[variables.var_g_TOKEN_AZURE]
+
+steps:
+
+#Sent notification to Discord
+#- task: fizzcode-discordhook@1
+#  inputs:
+#    DiscordChannelID: '$(var_g_Discord_WebhookID)'
+#    DiscordToken: '$(var_g_Discord_WebhookKey)'
+#    UserName: 'Azure Devops'
+#    Title: 'Start Compiling [$(System.TeamProject):$(Build.SourceBranchName)]'
+#    Message: 'Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform on $(Build.StartTime)'
+
+- task: ado-discord-webhook@2
+  displayName: 'Compile Start'
+  condition: always()
+  inputs:
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
+    embeds: |
+      [
+        {
+          "type": "rich",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Start Compiling",
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "color": 0xffde59,
+          "fields": [
+            {
+              "name": "Build.Pipeline",
+              "value": "$(Build.Repository.Name)",
+              "inline": true
+            },
+            {
+              "name": "Build.Number",
+              "value": "$(Build.BuildNumber)",
+              "inline": true
+            }
+          ],
+          "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
+        }
+      ]
+
+#Installing Nuget
+- task: NuGetToolInstaller@1
+  displayName: 'Nuget Install'
+  inputs:
+    versionSpec: 
+    checkLatest: true
+
+#List of Files in $(Build.SourcesDirectory)
+- task: CmdLine@2
+  displayName: 'Pre-Build File List in $(Build.SourcesDirectory)'
+  inputs:
+    script: |
+      echo "File List - $(Build.SourcesDirectory)"
+      
+      cd $(Build.SourcesDirectory)
+      dir /b /s /A-D /o:gn
+
+#Nuget Restore
+- task: NuGetCommand@2
+  displayName: 'NuGet Restore'
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'config'
+    noCache: false
+    nugetConfigPath: './Apps/Core/Vb/NuGet.config'
+    externalFeedCredentials: 'ingrid'
+
+#Replacing SALT Key
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: V_BRIDGEKEY.SALT'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: '= V_BRIDGE_KEY.SALT()'
+    parameterReplaceText: '= "$(var_g_Salt)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+#Replacing Syncfusion Key
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: V_BRIDGEKEY.SYNCFUSION'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: '= V_BRIDGE_KEY.SYNCFUSION()'
+    parameterReplaceText: '= "$(var_g_SyncfusionKey)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+#Replacing BetterStack Key
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: V_BRIDGEKEY.BETTERSTACK_LOG'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'sourceToken: KEYLOG.BETTERSTACK_LOG()'
+    parameterReplaceText: 'sourceToken: "$(var_g_BetterStack_Log)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+#Replacing Version: Major
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: {VERSION_MAJOR}'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'My.Application.Info.Version.Major'
+    parameterReplaceText: '$(var_g_Ingridversion_major)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+#Replacing Version: Minor
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: {VERSION_MINOR}'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'My.Application.Info.Version.Minor'
+    parameterReplaceText: '$(var_g_Ingridversion_minor)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+#Replacing Version: Build
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: {VERSION_BUILD}'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'My.Application.Info.Version.Build'
+    parameterReplaceText: '$(var_g_Ingridversion_build)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+#Replacing Version: Revision
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: {VERSION_REVISION}'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'My.Application.Info.Version.Revision'
+    parameterReplaceText: '$(var_g_Ingridversion_revision)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+
+#Checking new value from variables
+- task: CmdLine@2
+  displayName: 'Check Text Replacement'
+  inputs:
+    script: |
+      echo BetterStackLog: $(var_g_BetterStack_Log)
+      echo Major: $(var_g_Ingridversion_major)
+      echo Minor: $(var_g_Ingridversion_minor)
+      echo Build: $(var_g_Ingridversion_build)
+      echo Revision: $(var_g_Ingridversion_revision)
+
+#Review content of code
+- task: CmdLine@2
+  displayName: 'Reviewing Codes'
+  inputs:
+    script: |
+      echo "File List - Ingrid-CI-Build"
+      
+      cd $(Build.SourcesDirectory)
+      dir /b /s /A-D /o:gn
+      echo "---------------------------"
+#      echo "Reading CMC\Globals.vb"
+#      echo "---------------------------"
+#      more ".\Apps\Components\CMC\2090 - Module\Globals.vb"
+#      echo "---------------------------"
+#      echo "Reading Apps\Core\Module\Globals.vb"
+#      echo "---------------------------"
+#      more ".\Apps\Core\Vb\020. Module\Globals.vb"
+
+#Build Ingrid App
+- task: VSBuild@1
+  displayName: 'VSBuild - CI'
+  inputs:
+    solution: '**\*.sln'
+    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:InstallUrl="https://ardhagp.github.io/ingrid/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
+    platform: 'any cpu'
+    configuration: 'release'
+    clean: true
+    maximumCpuCount: true
+    createLogFile: true
+
+#List of File in $(Build.SourcesDirectory)
+- task: CmdLine@2
+  displayName: 'File List - Post Build $(Build.SourcesDirectory)'
+  inputs:
+    script: |
+      echo "---------------------------"
+      echo "Print File List - Post Build"
+      echo "---------------------------"
+      cd $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\
+      dir /b /s /A-D /o:gn
+      echo "---------------------------"
+      echo "Reading Artifact Directory"
+      echo "---------------------------"
+      cd $(build.ArtifactStagingDirectory)
+      dir /b /s /A-D /o:gn
+      echo "---------------------------"
+      echo "Reading Ingrid.Application"
+      echo "---------------------------"
+      more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\Ingrid.application
+
+- task: ado-discord-webhook@2
+  displayName: 'Compile Success'
+  condition: succeeded()
+  inputs:
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
+    embeds: |
+      [
+        {
+          "type": "rich",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Compile Success!",
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "color": 0x00ff00,
+          "fields": [
+            {
+              "name": "Build.Pipeline",
+              "value": "$(Build.Repository.Name)",
+              "inline": true
+            },
+            {
+              "name": "Build.Number",
+              "value": "$(Build.BuildNumber)",
+              "inline": true
+            }
+          ],
+          "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
+        }
+      ]
+
+
+- task: ado-discord-webhook@2
+  displayName: 'Compile Failed'
+  condition: failed()
+  inputs:
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
+    embeds: |
+      [
+        {
+          "type": "rich",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Compile Failed!",
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "color": 0xff0000,
+          "fields": [
+            {
+              "name": "Build.Pipeline",
+              "value": "$(Build.Repository.Name)",
+              "inline": true
+            },
+            {
+              "name": "Build.Number",
+              "value": "$(Build.BuildNumber)",
+              "inline": true
+            }
+          ],
+          "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
+        }
+      ]
+
+
+#Updating Version for next build
+- task: update-variablegroup-variable@0
+  condition: succeeded()
+  displayName: 'Prepare Version For Next Build'
+  inputs:
+    variableGroupName: 'global_variables'
+    variableName: 'var_g_Ingridversion_build'
+    variableDataType: 'int'
+    newVariableValueInInt: 1
+    usePAT: true
+    patValue: '$(var_g_TOKEN_AZURE)'
+
+
+#Updating Version for next revision
+- task: update-variablegroup-variable@0
+  condition: failed()
+  displayName: 'Prepare Version For Next Revision'
+  inputs:
+    variableGroupName: 'global_variables'
+    variableName: 'var_g_Ingridversion_revision'
+    variableDataType: 'int'
+    newVariableValueInInt: 1
+    usePAT: true
+    patValue: '$(var_g_TOKEN_AZURE)'
