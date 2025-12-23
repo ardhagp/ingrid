@@ -54,7 +54,7 @@ variables:
 steps:
 
 - task: ado-discord-webhook@2
-  displayName: 'Deployment Start'
+  displayName: 'Start compiling'
   condition: always()
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
@@ -64,7 +64,7 @@ steps:
       [
         {
           "type": "rich",
-          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Start Deploying to https://ardhagp.github.io/ingrid/",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Start compiling Ingrid App",
           "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
           "color": 0xffde59,
           "fields": [
@@ -249,6 +249,24 @@ steps:
     Contents: '**'
     TargetFolder: '$(build.ArtifactStagingDirectory)'
 
+- task: ado-discord-webhook@2
+  displayName: 'Transfering application to Backblaze'
+  condition: succeeded()
+  inputs:
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
+    embeds: |
+      [
+        {
+          "type": "rich",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Transfering application to Backblaze",
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "color": 0xf6ff00,
+          "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
+        }
+      ]
+
 # Sent Artifact to Backblaze
 - task: PowerShell@2
   displayName: 'Copy Files to BackBlaze'
@@ -257,13 +275,11 @@ steps:
     script: |
      python -m pip install --upgrade pip
      pip install awscli
+     aws s3 rm "s3://ingrid-blob/" --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
      aws s3 cp "$(Build.ArtifactStagingDirectory)" s3://ingrid-blob/ --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
-
-# to remove existing files use this : aws s3 rm "s3://ingrid-blob/" --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
-     
 
 # Compressing Artifact to Zip
 - task: ArchiveFiles@2
@@ -282,6 +298,25 @@ steps:
 #    PathtoPublish: '$(build.ArtifactStagingDirectory)'
 #    ArtifactName: 'ingrid-artifact'
 #    publishLocation: 'Container'
+
+
+- task: ado-discord-webhook@2
+  displayName: 'Transfering compressed application to Github.io'
+  condition: succeeded()
+  inputs:
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
+    embeds: |
+      [
+        {
+          "type": "rich",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Transfering compressed application to Github.io",
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "color": 0xf6ff00,
+          "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
+        }
+      ]
 
 #Direct publish to Github Pages
 - task: GitHubPagesPublish@1
@@ -321,7 +356,7 @@ steps:
 #    production_branch: 'publish'
 
 - task: ado-discord-webhook@2
-  displayName: 'Deployment Success'
+  displayName: 'Compiling finished successfuly'
   condition: succeeded()
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
@@ -331,7 +366,7 @@ steps:
       [
         {
           "type": "rich",
-          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Deployment Success!",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Compile Success!",
           "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
           "color": 0x00ff00,
           "fields": [
@@ -350,6 +385,35 @@ steps:
         }
       ]
 
+- task: ado-discord-webhook@2
+  displayName: 'Compiling failed'
+  condition: failed()
+  inputs:
+    webhookId: '$(var_g_Discord_WebhookID)'
+    webhookKey: '$(var_g_Discord_WebhookKey)'
+    name: 'Azure Devops'
+    embeds: |
+      [
+        {
+          "type": "rich",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Compiling failed",
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "color": 0xff0000,
+          "fields": [
+            {
+              "name": "Build.Pipeline",
+              "value": "$(Build.Repository.Name)",
+              "inline": true
+            },
+            {
+              "name": "Revision.Number",
+              "value": "$(var_g_Ingridversion_revision)",
+              "inline": true
+            }
+          ],
+          "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
+        }
+      ]
 
 #Updating Version for next build
 - task: update-variablegroup-variable@0
