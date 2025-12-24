@@ -19,7 +19,7 @@ Namespace Database.Engine
                 Dim var_dbpath As String = Nothing
                 Dim var_dbexists(3) As Boolean
 
-                Dim var_location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
+                Dim var_location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\ardhagp\Ingrid .NET"
 
                 System.IO.Directory.CreateDirectory(var_location & "\Resources")
 
