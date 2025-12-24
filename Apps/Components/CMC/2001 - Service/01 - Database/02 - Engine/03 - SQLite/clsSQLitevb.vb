@@ -74,7 +74,7 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub Open(Optional ByVal IsProductionMode As Boolean = False)
             Try
-                Dim var_location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
+                Dim var_location As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\ardhagp\Ingrid .NET"
 
                 If Not (CheckDBCatalog()) Then
                     Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, "File configuration Not found", 0.ToString, "", GETAPPVERSION, False, True, False)
