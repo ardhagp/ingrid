@@ -404,16 +404,25 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Update="Resources\catalog.db">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\CATALOG.mdf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Resources\catalog_log.ldf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\dev_catalog.db">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\DEV_CATALOG.mdf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Resources\dev_catalog_log.ldf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\errlog.db">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Resources\ERRLOG.mdf">
@@ -517,15 +526,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\CALENDAR_001_512_icon.png" />
     <Content Include="Resources\app_settings.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\catalog.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\dev_catalog.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\errlog.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ingrid_icon_2.ico" />
@@ -636,9 +636,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\app_settings.db" />
-    <None Remove="Resources\catalog.db" />
-    <None Remove="Resources\dev_catalog.db" />
-    <None Remove="Resources\errlog.db" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="My Project\Resources.resx">
