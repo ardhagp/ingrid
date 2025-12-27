@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.Versioning
+﻿Imports System.Net.Http
+Imports System.Runtime.Versioning
 Imports CMCv
 
 Public Class CONN_Editor
@@ -56,6 +57,24 @@ Public Class CONN_Editor
 
         Me.Close()
     End Sub
+
+    <SupportedOSPlatform("windows")>
+    Function ReadConnectionString() As String
+        Try
+            Dim url As String = txtImportAddress.Text.Trim()
+            Using client As New HttpClient()
+                Dim response = client.GetAsync(url).Result
+                response.EnsureSuccessStatusCode()
+                Dim content = response.Content.ReadAsStringAsync().Result
+                Return content.Trim()
+            End Using
+
+        Catch ex As Exception
+            PUSHERRORDATA("CONN Editor", Catcher.Error.Fields.TypeOfFaulties.SupportServiceWeb, ex.ToString, "0", "", "", True, True, True)
+            PUSHERRORDATASHOW()
+        End Try
+    End Function
+
 #End Region
 
 #Region "Form Events"
@@ -114,6 +133,23 @@ Public Class CONN_Editor
             End If
         End If
     End Sub
+
+    <SupportedOSPlatform("windows")>
+    Private Sub btnGet_Click(sender As Object, e As EventArgs) Handles btnGet.Click
+        Dim conn As String = ReadConnectionString()
+        txtImportContent.Text = conn
+        txtImportContent.Text += Environment.NewLine & Environment.NewLine & CMCv.Security.Decrypt.GetSalt
+    End Sub
+
+    Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+        Call CheckAllInput()
+
+        Dim exportConn As String = String.Format("{0}||{1}||{2}||{3}||{4}||{5}||{6}||{7}", TxtConnectionName.Text.Trim, CboDBEngine.Text.Trim, TxtAddress.Text.Trim, TxtPort.Text, TxtUsername.Text.Trim, TxtPassword.Text.Trim, TxtDatabaseName.Text.Trim, ChkDefault.Checked.ToString())
+
+        txtImportContent.Text = exportConn
+    End Sub
+
+
 #End Region
 
 End Class

@@ -32,9 +32,15 @@ Namespace Security
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function AES(Message As String) As String
-            Dim _EMessage As String = EncryptProvider.AESEncrypt(Message, V_SALT)
-            Return _EMessage
+        Public Shared Function AES(message As String) As String
+            Dim varMessage As String = EncryptProvider.AESEncrypt(message, V_SALT)
+            Try
+                Return varMessage
+            Catch ex As Exception
+                PUSHERRORDATA("$Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString(), ex.StackTrace, GETAPPVERSION, True, False, False)
+                PUSHERRORDATASHOW()
+                Return String.Empty
+            End Try
         End Function
 
         'Public Function Rijndael(ByVal Message As String) As String
@@ -53,9 +59,27 @@ Namespace Security
 
     Public Class Decrypt
         <SupportedOSPlatform("windows")>
-        Public Shared Function AES(Message As String) As String
-            Dim _EMessage As String = EncryptProvider.AESDecrypt(Message, V_SALT)
-            Return _EMessage
+        Public Shared Function AES(message As String) As String
+            Try
+                Dim varMessage As String = EncryptProvider.AESDecrypt(message, V_SALT)
+                Return varMessage
+            Catch ex As Exception
+                PUSHERRORDATA("$Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString(), ex.StackTrace, GETAPPVERSION, True, False, False)
+                PUSHERRORDATASHOW()
+                Return String.Empty
+            End Try
+        End Function
+
+        <SupportedOSPlatform("windows")>
+        Public Shared Function GetSalt() As String
+            Try
+                Dim varMessage As String = V_SALT
+                Return varMessage
+            Catch ex As Exception
+                PUSHERRORDATA("$Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString(), ex.StackTrace, GETAPPVERSION, True, False, False)
+                PUSHERRORDATASHOW()
+                Return String.Empty
+            End Try
         End Function
 
         'Public Function Rijndael(ByVal Message As String) As String
