@@ -4,7 +4,7 @@ Imports NETCore.Encrypt
 
 Namespace Security
     Public Class Encrypt
-
+        Private Shared ReadOnly Table As UInteger() = CreateTable()
         Private Shared Function RandomString() As String
             Dim r As New Random
             Dim s As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
@@ -32,9 +32,15 @@ Namespace Security
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function AES(Message As String) As String
-            Dim _EMessage As String = EncryptProvider.AESEncrypt(Message, V_SALT)
-            Return _EMessage
+        Public Shared Function AES(message As String) As String
+            Dim varMessage As String = EncryptProvider.AESEncrypt(message, V_SALT)
+            Try
+                Return varMessage
+            Catch ex As Exception
+                PUSHERRORDATA("$Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString(), ex.StackTrace, GETAPPVERSION, True, False, False)
+                PUSHERRORDATASHOW()
+                Return String.Empty
+            End Try
         End Function
 
         'Public Function Rijndael(ByVal Message As String) As String
@@ -49,13 +55,79 @@ Namespace Security
         '    End If
 
         'End Function
+
+        <SupportedOSPlatform("windows")>
+        Public Shared Function CRC32(message As String, Optional returnashex As Boolean = True) As String
+            Try
+                Dim varCRCvalue As UInteger
+                varCRCvalue = ComputeCRC(message)
+
+                If returnashex Then
+                    Return varCRCvalue.ToString("X8")
+                Else
+                    Return varCRCvalue.ToString()
+                End If
+            Catch ex As Exception
+                PUSHERRORDATA("$Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString(), ex.StackTrace, GETAPPVERSION, True, False, False)
+                PUSHERRORDATASHOW()
+                Return String.Empty
+            End Try
+        End Function
+        Private Shared Function ComputeCRC(message As String) As UInteger
+            Dim bytes = Encoding.UTF8.GetBytes(message)
+            Dim crc As UInteger = &HFFFFFFFFUI
+
+            For Each b As Byte In bytes
+                Dim idx As Integer = CInt((crc And &HFFUI) Xor CUInt(b))
+                crc = (crc >> 1) Xor Table(idx)
+            Next
+
+            Return Not crc
+        End Function
+
+        Private Shared Function CreateTable() As UInteger()
+            Const poly As UInteger = &HEDB88320UI
+            Dim table(255) As UInteger
+
+            For i As Integer = 0 To 255
+                Dim crc As UInteger = CUInt(i)
+                For j As Integer = 0 To 7
+                    If (crc And 1UI) = 1UI Then
+                        crc = (crc >> 1) Xor poly
+                    Else
+                        crc >>= 1
+                    End If
+                Next
+                table(i) = crc
+            Next
+
+            Return table
+        End Function
     End Class
 
     Public Class Decrypt
         <SupportedOSPlatform("windows")>
-        Public Shared Function AES(Message As String) As String
-            Dim _EMessage As String = EncryptProvider.AESDecrypt(Message, V_SALT)
-            Return _EMessage
+        Public Shared Function AES(message As String) As String
+            Try
+                Dim varMessage As String = EncryptProvider.AESDecrypt(message, V_SALT)
+                Return varMessage
+            Catch ex As Exception
+                PUSHERRORDATA("$Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString(), ex.StackTrace, GETAPPVERSION, True, False, False)
+                PUSHERRORDATASHOW()
+                Return String.Empty
+            End Try
+        End Function
+
+        <SupportedOSPlatform("windows")>
+        Public Shared Function GetSalt() As String
+            Try
+                Dim varMessage As String = V_SALT
+                Return varMessage
+            Catch ex As Exception
+                PUSHERRORDATA("$Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString(), ex.StackTrace, GETAPPVERSION, True, False, False)
+                PUSHERRORDATASHOW()
+                Return String.Empty
+            End Try
         End Function
 
         'Public Function Rijndael(ByVal Message As String) As String
