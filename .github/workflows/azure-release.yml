@@ -260,9 +260,9 @@ steps:
       [
         {
           "type": "rich",
-          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Transfering application to Backblaze",
-          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
-          "color": 0xf6ff00,
+          "title": "Transfering application",
+          "description": "Transfering Ingrid v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor) to Backblaze Cloud.",
+          "color": 0xee27f5,
           "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
         }
       ]
@@ -275,8 +275,8 @@ steps:
     script: |
      python -m pip install --upgrade pip
      pip install awscli
-     aws s3 rm "s3://ingrid-blob/" --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
-     aws s3 cp "$(Build.ArtifactStagingDirectory)" s3://ingrid-blob/ --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
+     aws s3 rm "s3://ingrid-blob/files/" --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
+     aws s3 cp "$(Build.ArtifactStagingDirectory)" s3://ingrid-blob/files/ --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
@@ -301,7 +301,7 @@ steps:
 
 
 - task: ado-discord-webhook@2
-  displayName: 'Transfering compressed application to Github.io'
+  displayName: 'Transfering application'
   condition: succeeded()
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
@@ -311,9 +311,9 @@ steps:
       [
         {
           "type": "rich",
-          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Transfering compressed application to Github.io",
-          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
-          "color": 0xf6ff00,
+          "title": "Transfering application",
+          "description": "Transfering Ingrid v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor) to Github.io page.",
+          "color": 0xee27f5,
           "url": "$(System.CollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=logs"
         }
       ]
@@ -356,7 +356,7 @@ steps:
 #    production_branch: 'publish'
 
 - task: ado-discord-webhook@2
-  displayName: 'Compiling finished successfuly'
+  displayName: 'Compile and Publish finished successfuly'
   condition: succeeded()
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
@@ -366,8 +366,8 @@ steps:
       [
         {
           "type": "rich",
-          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Compile Success!",
-          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Compile and Publish Success!",
+          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor) for $(var_Platform) platform.",
           "color": 0x00ff00,
           "fields": [
             {
@@ -396,8 +396,8 @@ steps:
       [
         {
           "type": "rich",
-          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Compiling failed",
-          "description": "Ingrid ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build) for $(var_Platform) platform.",
+          "title": "[$(System.TeamProject):$(Build.SourceBranchName)] • Compile and Publish failed",
+          "description": "Ingrid v$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor) for $(var_Platform) platform.",
           "color": 0xff0000,
           "fields": [
             {
