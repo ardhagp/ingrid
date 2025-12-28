@@ -126,33 +126,33 @@ Namespace Database.Engine
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Function GetDatabaseProperties(ByVal Fields As Properties.Fields) As Database.Properties.Fields
+        Public Function GetDatabaseProperties(ByVal fields As Properties.Fields) As Database.Properties.Fields
             Try
                 var_datareader(1) = GETDATAROW("Select SERVERADDRESS, USERNAME, PASSWORD, SERVERPORT, DBFORDATA, DBFORFILE, DATABASEENGINE FROM serverlist WHERE DEFAULTCONNECTION =1;")
 
                 With var_datareader(1)
                     If .HasRows Then
-                        Fields.ServerAddress = .GetString(0)
-                        Fields.Username = .GetString(1)
-                        Fields.Password = CMCv.Security.Decrypt.AES(.GetString(2))
-                        Fields.Port = CType(.GetValue(3), Integer)
-                        Fields.DataStorage = .GetString(4)
-                        Fields.FileStorage = .GetString(5)
-                        Fields.DatabaseEngine = .GetString(6)
+                        fields.ServerAddress = .GetString(0)
+                        fields.Username = .GetString(1)
+                        fields.Password = CMCv.Security.Decrypt.AES(.GetString(2))
+                        fields.Port = CType(.GetValue(3), Integer)
+                        fields.DataStorage = .GetString(4)
+                        fields.FileStorage = .GetString(5)
+                        fields.DatabaseEngine = .GetString(6)
                     Else
-                        Fields.ServerAddress = String.Empty
-                        Fields.Username = String.Empty
-                        Fields.Password = String.Empty
-                        Fields.Port = 0
-                        Fields.DataStorage = String.Empty
-                        Fields.FileStorage = String.Empty
-                        Fields.DatabaseEngine = String.Empty
+                        fields.ServerAddress = String.Empty
+                        fields.Username = String.Empty
+                        fields.Password = String.Empty
+                        fields.Port = 0
+                        fields.DataStorage = String.Empty
+                        fields.FileStorage = String.Empty
+                        fields.DatabaseEngine = String.Empty
                     End If
                 End With
 
-                Return Fields
+                Return fields
             Catch ex As Exception
-                Call PUSHERRORDATA("[GetDatabaseProperties] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
+                Call PUSHERRORDATA("[GetDatabaseProperties] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
                 Call PUSHERRORDATASHOW()
                 Return Nothing
             End Try

@@ -58,8 +58,8 @@ Namespace Commands.CONN
             V_DBR_SQLITE(1).Query = String.Format("select serverlist.USERNAME from serverlist where serverlist.ID ='{0}'", rowID)
             username.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
 
-            V_DBR_SQLITE(1).Query = CMCv.Security.Decrypt.AES(String.Format("select serverlist.PASSWORD from serverlist where serverlist.ID ='{0}'", rowID))
-            password.Text = V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString
+            V_DBR_SQLITE(1).Query = String.Format("select serverlist.PASSWORD from serverlist where serverlist.ID ='{0}'", rowID)
+            password.Text = CMCv.Security.Decrypt.AES(V_DBE_SQLite.GETVALUE(V_DBR_SQLITE(1).Query).ToString)
             oldpassword = password.Text
 
             V_DBR_SQLITE(1).Query = String.Format("select serverlist.DBFORDATA from serverlist where serverlist.ID ='{0}'", rowID)

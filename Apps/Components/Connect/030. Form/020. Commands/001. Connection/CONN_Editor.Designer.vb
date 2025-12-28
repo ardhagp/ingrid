@@ -42,13 +42,13 @@ Partial Class CONN_Editor
         TxtConnectionName = New txt(components)
         TxtAddress = New txt(components)
         tp2_ = New TabPage()
-        Btn2 = New btn(components)
-        Btn1 = New btn(components)
+        btnImport = New btn(components)
+        btnSaveAs = New btn(components)
         Pnl1 = New pnl(components)
         txtImportContent = New txt(components)
         btnGet = New btn(components)
         ULbl2 = New ULbl()
-        txtImportAddress = New txt(components)
+        txtImportCode = New txt(components)
         Btn_Test = New btn(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -209,10 +209,10 @@ Partial Class CONN_Editor
         ' ULbl1
         ' 
         ULbl1.BackColor = Color.AliceBlue
-        ULbl1.Location = New Point(14, 108)
-        ULbl1.Margin = New Padding(8, 6, 8, 6)
+        ULbl1.Location = New Point(16, 108)
+        ULbl1.Margin = New Padding(10, 8, 10, 8)
         ULbl1.Name = "ULbl1"
-        ULbl1.Size = New Size(277, 40)
+        ULbl1.Size = New Size(272, 40)
         ULbl1.SLFText = "DB Engine"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
@@ -222,10 +222,10 @@ Partial Class CONN_Editor
         ' ULbl_DatabaseName
         ' 
         ULbl_DatabaseName.BackColor = Color.MistyRose
-        ULbl_DatabaseName.Location = New Point(15, 448)
-        ULbl_DatabaseName.Margin = New Padding(9, 13, 9, 13)
+        ULbl_DatabaseName.Location = New Point(16, 448)
+        ULbl_DatabaseName.Margin = New Padding(12, 17, 12, 17)
         ULbl_DatabaseName.Name = "ULbl_DatabaseName"
-        ULbl_DatabaseName.Size = New Size(276, 39)
+        ULbl_DatabaseName.Size = New Size(272, 39)
         ULbl_DatabaseName.SLFText = "Database Name"
         ULbl_DatabaseName.SLFTextAdjuster = False
         ULbl_DatabaseName.SLFTextBorder = False
@@ -343,10 +343,10 @@ Partial Class CONN_Editor
         ' ULbl_Password
         ' 
         ULbl_Password.BackColor = Color.AliceBlue
-        ULbl_Password.Location = New Point(15, 382)
-        ULbl_Password.Margin = New Padding(9, 13, 9, 13)
+        ULbl_Password.Location = New Point(16, 386)
+        ULbl_Password.Margin = New Padding(12, 17, 12, 17)
         ULbl_Password.Name = "ULbl_Password"
-        ULbl_Password.Size = New Size(276, 39)
+        ULbl_Password.Size = New Size(272, 35)
         ULbl_Password.SLFText = "Password"
         ULbl_Password.SLFTextAdjuster = False
         ULbl_Password.SLFTextBorder = False
@@ -356,10 +356,10 @@ Partial Class CONN_Editor
         ' ULbl_Username
         ' 
         ULbl_Username.BackColor = Color.AliceBlue
-        ULbl_Username.Location = New Point(15, 312)
-        ULbl_Username.Margin = New Padding(9, 13, 9, 13)
+        ULbl_Username.Location = New Point(16, 313)
+        ULbl_Username.Margin = New Padding(12, 17, 12, 17)
         ULbl_Username.Name = "ULbl_Username"
-        ULbl_Username.Size = New Size(276, 40)
+        ULbl_Username.Size = New Size(272, 39)
         ULbl_Username.SLFText = "Username"
         ULbl_Username.SLFTextAdjuster = False
         ULbl_Username.SLFTextBorder = False
@@ -369,10 +369,10 @@ Partial Class CONN_Editor
         ' ULbl_Port
         ' 
         ULbl_Port.BackColor = Color.AliceBlue
-        ULbl_Port.Location = New Point(15, 247)
-        ULbl_Port.Margin = New Padding(9, 13, 9, 13)
+        ULbl_Port.Location = New Point(16, 247)
+        ULbl_Port.Margin = New Padding(12, 17, 12, 17)
         ULbl_Port.Name = "ULbl_Port"
-        ULbl_Port.Size = New Size(276, 39)
+        ULbl_Port.Size = New Size(272, 39)
         ULbl_Port.SLFText = "Port"
         ULbl_Port.SLFTextAdjuster = False
         ULbl_Port.SLFTextBorder = False
@@ -414,10 +414,10 @@ Partial Class CONN_Editor
         ' ULbl_Address
         ' 
         ULbl_Address.BackColor = Color.AliceBlue
-        ULbl_Address.Location = New Point(15, 178)
-        ULbl_Address.Margin = New Padding(9, 13, 9, 13)
+        ULbl_Address.Location = New Point(16, 178)
+        ULbl_Address.Margin = New Padding(12, 17, 12, 17)
         ULbl_Address.Name = "ULbl_Address"
-        ULbl_Address.Size = New Size(276, 39)
+        ULbl_Address.Size = New Size(272, 39)
         ULbl_Address.SLFText = "Address"
         ULbl_Address.SLFTextAdjuster = False
         ULbl_Address.SLFTextBorder = False
@@ -427,10 +427,10 @@ Partial Class CONN_Editor
         ' ULbl_Name
         ' 
         ULbl_Name.BackColor = Color.AliceBlue
-        ULbl_Name.Location = New Point(14, 38)
-        ULbl_Name.Margin = New Padding(9, 13, 9, 13)
+        ULbl_Name.Location = New Point(16, 38)
+        ULbl_Name.Margin = New Padding(12, 17, 12, 17)
         ULbl_Name.Name = "ULbl_Name"
-        ULbl_Name.Size = New Size(277, 39)
+        ULbl_Name.Size = New Size(272, 39)
         ULbl_Name.SLFText = "Connection Name"
         ULbl_Name.SLFTextAdjuster = False
         ULbl_Name.SLFTextBorder = False
@@ -501,59 +501,59 @@ Partial Class CONN_Editor
         ' 
         ' tp2_
         ' 
-        tp2_.Controls.Add(Btn2)
-        tp2_.Controls.Add(Btn1)
+        tp2_.Controls.Add(btnImport)
+        tp2_.Controls.Add(btnSaveAs)
         tp2_.Controls.Add(Pnl1)
         tp2_.Controls.Add(btnGet)
         tp2_.Controls.Add(ULbl2)
-        tp2_.Controls.Add(txtImportAddress)
+        tp2_.Controls.Add(txtImportCode)
         tp2_.Location = New Point(4, 41)
         tp2_.Name = "tp2_"
         tp2_.Padding = New Padding(3)
         tp2_.Size = New Size(759, 569)
         tp2_.TabIndex = 1
-        tp2_.Text = "IMPORT"
+        tp2_.Text = "IMPORT / EXPORT"
         tp2_.UseVisualStyleBackColor = True
         ' 
-        ' Btn2
+        ' btnImport
         ' 
-        Btn2.BackColor = Color.RoyalBlue
-        Btn2.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
-        Btn2.FlatAppearance.BorderSize = 2
-        Btn2.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
-        Btn2.FlatStyle = FlatStyle.Flat
-        Btn2.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Btn2.ForeColor = Color.White
-        Btn2.Location = New Point(6, 467)
-        Btn2.Name = "Btn2"
-        Btn2.Size = New Size(150, 60)
-        Btn2.TabIndex = 6
-        Btn2.Text = "Import"
-        Btn2.UseVisualStyleBackColor = False
-        Btn2.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        Btn2.XOTampilkanFocusBorder = False
-        Btn2.XOValidasiSemuaInput = False
-        Btn2.XOValidasiSemuaInputTag = Nothing
+        btnImport.BackColor = Color.RoyalBlue
+        btnImport.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
+        btnImport.FlatAppearance.BorderSize = 2
+        btnImport.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
+        btnImport.FlatStyle = FlatStyle.Flat
+        btnImport.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        btnImport.ForeColor = Color.White
+        btnImport.Location = New Point(6, 467)
+        btnImport.Name = "btnImport"
+        btnImport.Size = New Size(150, 60)
+        btnImport.TabIndex = 6
+        btnImport.Text = "Import"
+        btnImport.UseVisualStyleBackColor = False
+        btnImport.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
+        btnImport.XOTampilkanFocusBorder = False
+        btnImport.XOValidasiSemuaInput = False
+        btnImport.XOValidasiSemuaInputTag = Nothing
         ' 
-        ' Btn1
+        ' btnSaveAs
         ' 
-        Btn1.BackColor = Color.RoyalBlue
-        Btn1.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
-        Btn1.FlatAppearance.BorderSize = 2
-        Btn1.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
-        Btn1.FlatStyle = FlatStyle.Flat
-        Btn1.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Btn1.ForeColor = Color.White
-        Btn1.Location = New Point(603, 467)
-        Btn1.Name = "Btn1"
-        Btn1.Size = New Size(150, 60)
-        Btn1.TabIndex = 5
-        Btn1.Text = "Save As"
-        Btn1.UseVisualStyleBackColor = False
-        Btn1.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        Btn1.XOTampilkanFocusBorder = False
-        Btn1.XOValidasiSemuaInput = False
-        Btn1.XOValidasiSemuaInputTag = Nothing
+        btnSaveAs.BackColor = Color.RoyalBlue
+        btnSaveAs.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
+        btnSaveAs.FlatAppearance.BorderSize = 2
+        btnSaveAs.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
+        btnSaveAs.FlatStyle = FlatStyle.Flat
+        btnSaveAs.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        btnSaveAs.ForeColor = Color.White
+        btnSaveAs.Location = New Point(603, 467)
+        btnSaveAs.Name = "btnSaveAs"
+        btnSaveAs.Size = New Size(150, 60)
+        btnSaveAs.TabIndex = 5
+        btnSaveAs.Text = "Save As"
+        btnSaveAs.UseVisualStyleBackColor = False
+        btnSaveAs.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
+        btnSaveAs.XOTampilkanFocusBorder = False
+        btnSaveAs.XOValidasiSemuaInput = False
+        btnSaveAs.XOValidasiSemuaInputTag = Nothing
         ' 
         ' Pnl1
         ' 
@@ -617,44 +617,44 @@ Partial Class CONN_Editor
         ' ULbl2
         ' 
         ULbl2.BackColor = Color.Moccasin
-        ULbl2.Location = New Point(34, 17)
-        ULbl2.Margin = New Padding(5, 6, 5, 6)
+        ULbl2.Location = New Point(9, 17)
+        ULbl2.Margin = New Padding(6, 8, 6, 8)
         ULbl2.Name = "ULbl2"
-        ULbl2.Size = New Size(207, 39)
-        ULbl2.SLFText = "Address"
+        ULbl2.Size = New Size(231, 39)
+        ULbl2.SLFText = "Connection Code"
         ULbl2.SLFTextAdjuster = False
         ULbl2.SLFTextBorder = False
         ULbl2.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
         ULbl2.TabIndex = 1
         ' 
-        ' txtImportAddress
+        ' txtImportCode
         ' 
-        txtImportAddress.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        txtImportAddress.Location = New Point(249, 17)
-        txtImportAddress.MaxLength = 255
-        txtImportAddress.Name = "txtImportAddress"
-        txtImportAddress.Size = New Size(348, 39)
-        txtImportAddress.TabIndex = 0
-        txtImportAddress.Tag = "txt"
-        txtImportAddress.XOAutoTrim = False
-        txtImportAddress.XOHarusDiisi = False
-        txtImportAddress.XOHarusDiisiWarnaLatar = Color.LightPink
-        txtImportAddress.XOHarusDiisiWarnaLatarDefault = Color.White
-        txtImportAddress.XOHightlightSaatFokus = True
-        txtImportAddress.XOHightlightSaatFokusWarna = Color.LightYellow
-        txtImportAddress.XOIsBlank = False
-        txtImportAddress.XOIsSearchBox = False
-        txtImportAddress.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        txtImportAddress.XOPilihSemuaSaatFokus = False
-        txtImportAddress.XOPwdLengthMin = 8
-        txtImportAddress.XOPwdStrengthCalculate = False
-        txtImportAddress.XOPwdStrengthScore = 0
-        txtImportAddress.XOPwdStrengthText = Nothing
-        txtImportAddress.XORestriction = ControlCodeBase.enuRestriction.None
-        txtImportAddress.XOSearchBoxText = "Type then press Enter"
-        txtImportAddress.XOSQLText = ""
-        txtImportAddress.XOTanpaSpasi = False
-        txtImportAddress.XOValidasiField = Nothing
+        txtImportCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        txtImportCode.Location = New Point(249, 17)
+        txtImportCode.MaxLength = 255
+        txtImportCode.Name = "txtImportCode"
+        txtImportCode.Size = New Size(348, 39)
+        txtImportCode.TabIndex = 0
+        txtImportCode.Tag = "txt"
+        txtImportCode.XOAutoTrim = False
+        txtImportCode.XOHarusDiisi = False
+        txtImportCode.XOHarusDiisiWarnaLatar = Color.LightPink
+        txtImportCode.XOHarusDiisiWarnaLatarDefault = Color.White
+        txtImportCode.XOHightlightSaatFokus = True
+        txtImportCode.XOHightlightSaatFokusWarna = Color.LightYellow
+        txtImportCode.XOIsBlank = False
+        txtImportCode.XOIsSearchBox = False
+        txtImportCode.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        txtImportCode.XOPilihSemuaSaatFokus = False
+        txtImportCode.XOPwdLengthMin = 8
+        txtImportCode.XOPwdStrengthCalculate = False
+        txtImportCode.XOPwdStrengthScore = 0
+        txtImportCode.XOPwdStrengthText = Nothing
+        txtImportCode.XORestriction = ControlCodeBase.enuRestriction.None
+        txtImportCode.XOSearchBoxText = "Type then press Enter"
+        txtImportCode.XOSQLText = ""
+        txtImportCode.XOTanpaSpasi = False
+        txtImportCode.XOValidasiField = Nothing
         ' 
         ' Btn_Test
         ' 
@@ -727,11 +727,11 @@ Partial Class CONN_Editor
     Friend WithEvents CboDBEngine As cbo
     Friend WithEvents tp2_ As TabPage
     Friend WithEvents ULbl2 As ULbl
-    Friend WithEvents txtImportAddress As txt
+    Friend WithEvents txtImportCode As txt
     Friend WithEvents btnGet As btn
     Friend WithEvents Pnl1 As pnl
     Friend WithEvents txtImportContent As txt
     Friend WithEvents btnExport As btn
-    Friend WithEvents Btn2 As btn
-    Friend WithEvents Btn1 As btn
+    Friend WithEvents btnImport As btn
+    Friend WithEvents btnSaveAs As btn
 End Class
