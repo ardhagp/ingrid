@@ -189,7 +189,7 @@ steps:
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'My.Settings.ConnectionURL'
-    parameterReplaceText: '$(var_g_DownloadCenter)'
+    parameterReplaceText: '"$(var_g_DownloadCenter)"'
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.vb'
 
