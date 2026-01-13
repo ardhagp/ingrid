@@ -114,34 +114,33 @@ namespace Bridge.Security
         {
             await Task.Delay(0);
 
-            Bridge.Security.Getkey KEYLOG = new Bridge.Security.Getkey();
+            Getkey KEYLOG = new Getkey();
 
-            Serilog.Log.Logger = new LoggerConfiguration()
+            Log.Logger = new LoggerConfiguration()
                 .WriteTo.BetterStack(sourceToken: KEYLOG.Betterstack_log())
                 .MinimumLevel.Information()
                 .CreateLogger();
 
             TimeZoneInfo localZone = TimeZoneInfo.Local;
-            // Replace obsolete TimeZone usage with TimeZoneInfo
             DateTime currentDate = DateTime.Now;
 
             DateTime currentUTC = TimeZoneInfo.ConvertTimeToUtc(currentDate, localZone);
             TimeSpan currentOffset = localZone.GetUtcOffset(currentDate);
 
-            string OccuredAt = string.Format(Environment.NewLine + "--- Occured at: ---" + Environment.NewLine + "UTC: {0}" + Environment.NewLine + "Offset: {1}" + Environment.NewLine + "Device DateTime: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), currentUTC.ToString("yyyy-MM-dd HH:mm:ss"), currentOffset);
+            string OccuredAt = string.Format(Environment.NewLine + "--- Timestamp: ---" + Environment.NewLine + "UTC: {0}" + Environment.NewLine + "Offset: {1}" + Environment.NewLine + "Device DateTime: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), currentUTC.ToString("yyyy-MM-dd HH:mm:ss"), currentOffset);
 
             Messages += OccuredAt;
 
             if (TypeOfLog == LogType.Information)
             {
-                Serilog.Log.Information(Messages);
+                Log.Information(Messages);
             }
             else
             {
-                Serilog.Log.Error(Messages);
+                Log.Error(Messages);
             }
 
-            Serilog.Log.CloseAndFlush();
+            await Log.CloseAndFlushAsync();
         }
     }
 }
