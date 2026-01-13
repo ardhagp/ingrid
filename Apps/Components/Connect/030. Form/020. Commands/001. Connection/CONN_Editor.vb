@@ -172,12 +172,16 @@ Public Class CONN_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub btnGet_Click(sender As Object, e As EventArgs) Handles btnGet.Click
+        Dim varDownloadCenter As String = String.Empty
+
         If txtImportCode.Text = String.Empty Then
             MessageBox.Show("Please enter the connection code to import.")
             Return
         End If
 
-        Dim conn As String = ReadConnectionString(My.Settings.ConnectionURL, txtImportCode.Text)
+        varDownloadCenter = My.Settings.ConnectionURL
+
+        Dim conn As String = ReadConnectionString(varDownloadCenter, txtImportCode.Text)
         txtImportContent.Text = conn
     End Sub
 
