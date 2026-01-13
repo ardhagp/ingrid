@@ -24,6 +24,8 @@ variables:
 
 - name: var_p_Email
   value: $[variables.var_g_Email]
+- name: var_p_DownloadCenter
+  value: $[variables.var_g_DownloadCenter]
 
 - name: var_p_Platform
   value: $[variables.var_Platform]
@@ -181,6 +183,16 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.vb'
 
+#Replacing DownloadCenterURL
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: {DOWNLOADCENTER_URL}'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'My.Settings.ConnectionURL'
+    parameterReplaceText: '$(var_g_DownloadCenter)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.vb'
+
 #Checking new value from variables
 - task: CmdLine@2
   displayName: 'Check Text Replacement'
@@ -191,6 +203,7 @@ steps:
       echo Minor: $(var_g_Ingridversion_minor)
       echo Build: $(var_g_Ingridversion_build)
       echo Revision: $(var_g_Ingridversion_revision)
+      echo DownloadCenter: $(var_g_DownloadCenter)
 
 #Review content of code
 - task: CmdLine@2
