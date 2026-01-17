@@ -9,7 +9,7 @@ Public Class PLNT
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
         DblBuffer(DgnPLNT)
-        LibSQL.Commands.PLNT.View.DisplayData(V_DatabaseEngine, DgnPLNT, SLFStatus, TxtFind, ForceRefresh)
+        LibSQL.Commands.PLNT.View.DisplayData(varDatabaseEngine, DgnPLNT, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -76,7 +76,7 @@ Public Class PLNT
         Else
             varFormAttributes.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If LibSQL.Commands.PLNT.View.DELETEDATA(V_DatabaseEngine, varFormAttributes.RowID) = True Then
+                If LibSQL.Commands.PLNT.View.DELETEDATA(varDatabaseEngine, varFormAttributes.RowID) = True Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else

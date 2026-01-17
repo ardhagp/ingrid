@@ -5,7 +5,7 @@ Public Class MMGR
 
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
-        Commands.MMGR.View.DISPLAYDATA(V_DatabaseEngine, DgnMMGR, SLFStatus, TxtFind, ForceRefresh)
+        Commands.MMGR.View.DISPLAYDATA(varDatabaseEngine, DgnMMGR, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     <SupportedOSPlatform("windows")>

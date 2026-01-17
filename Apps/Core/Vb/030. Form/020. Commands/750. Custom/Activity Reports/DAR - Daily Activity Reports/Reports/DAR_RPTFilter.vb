@@ -9,17 +9,17 @@ Public Class DAR_RPTFilter
 
     <SupportedOSPlatform("windows")>
     Private Sub FillEmployee()
-        Commands.DAR.View.FillEmployee(V_DatabaseEngine, CboBy)
+        Commands.DAR.View.FillEmployee(varDatabaseEngine, CboBy)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub GETAffectedArea()
-        Commands.DAR.Editor.GETAffectedArea(V_DatabaseEngine, CboArea)
+        Commands.DAR.Editor.GETAffectedArea(varDatabaseEngine, CboArea)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub GETActivity()
-        Commands.DAR.Editor.GETTemplateTitle(V_DatabaseEngine, CboActivity)
+        Commands.DAR.Editor.GETTemplateTitle(varDatabaseEngine, CboActivity)
     End Sub
 
     Private Sub ChkFrom_CheckedChanged(sender As Object, e As EventArgs) Handles ChkFrom.CheckedChanged
@@ -100,7 +100,7 @@ Public Class DAR_RPTFilter
     <SupportedOSPlatform("windows")>
     Private Sub BtnShow_Click(sender As Object, e As EventArgs) Handles BtnShow.Click
         _DS = New DAR_RDS
-        Commands.DAR.Reports.DISPLAY(V_DatabaseEngine, ChkFrom, ChkTo, ChkArea, ChkActivity, ChkBy, DtpFrom, DtpTo, CboArea, CboActivity, CboBy, TxtDescription, _DS)
+        Commands.DAR.Reports.DISPLAY(varDatabaseEngine, ChkFrom, ChkTo, ChkArea, ChkActivity, ChkBy, DtpFrom, DtpTo, CboArea, CboActivity, CboBy, TxtDescription, _DS)
 
         Dim _Color As Boolean
 

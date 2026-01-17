@@ -6,9 +6,9 @@ Namespace Database.Engine
     Public Class MSSQL2008
         Implements IDisposable
 
-        Private ReadOnly V_CONN(1) As SqlClient.SqlConnection
-        Private ReadOnly V_CMD(1) As SqlClient.SqlCommand
-        Private V_Adapter As SqlClient.SqlDataAdapter
+        Private ReadOnly varConnection(1) As SqlClient.SqlConnection
+        Private ReadOnly varCommand(1) As SqlClient.SqlCommand
+        Private varAdapter As SqlClient.SqlDataAdapter
 
         Private ReadOnly V_MSSQL2008 As New Connect.MSSQLServer2008Connection
 
@@ -21,14 +21,11 @@ Namespace Database.Engine
 
         Protected Overridable Sub Dispose(disposing As Boolean)
             If Not disposedValue Then
-                If disposing Then
-                    If V_Adapter IsNot Nothing Then
-                        V_Adapter.Dispose()
-                    End If
+                If disposing AndAlso varAdapter IsNot Nothing Then
+                    varAdapter.Dispose()
                 End If
 
-                V_Adapter = Nothing
-
+                varAdapter = Nothing
                 disposedValue = True
             End If
         End Sub
@@ -40,231 +37,388 @@ Namespace Database.Engine
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Function Open(ByVal Fields As Properties.Fields, Optional ByVal Splash As Form = Nothing) As Boolean
-            Dim V_Success As Boolean
+        Public Function Open(ByVal fields As Properties.Fields, Optional ByVal splash As Form = Nothing) As Boolean
+            Dim varSuccess As Boolean
             Try
-                V_CONN(1) = New SqlClient.SqlConnection(V_MSSQL2008.MSSQL2008Standard(Fields.ServerAddress, Fields.Port, Fields.DataStorage, Fields.Username, Fields.Password))
-                V_CONN(1).Open()
-                V_Success = True
+                varConnection(1) = New SqlClient.SqlConnection(V_MSSQL2008.Mssql2008standard(fields.ServerAddress, fields.Port, fields.DataStorage, fields.Username, fields.Password))
+                varConnection(1).Open()
+                varSuccess = True
             Catch ex As SqlClient.SqlException
-                Splash?.Close()
-                V_Success = False
-                Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.ErrorCode.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
-                Call PUSHERRORDATASHOW()
+                splash?.Close()
+                varSuccess = False
+
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
             End Try
-            Return V_Success
+            Return varSuccess
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETDATAROW(ByVal Query As String, Optional ByVal DatabaseName As String = "db_universe_erp") As SqlClient.SqlDataReader ', ByVal MyConnection As SqlClient.SqlConnection, ByVal MyCommand As SqlClient.SqlCommand) As SqlClient.SqlDataReader
-            Dim V_DR(1) As SqlClient.SqlDataReader
+        Public Function GetDataRow(ByVal query As String, Optional ByVal databasename As String = "db_universe_erp") As SqlClient.SqlDataReader ', ByVal MyConnection As SqlClient.SqlConnection, ByVal MyCommand As SqlClient.SqlCommand) As SqlClient.SqlDataReader
+            Dim varDataReader(1) As SqlClient.SqlDataReader
 
             Try
-                Dim V_CMD_0 As New SqlClient.SqlCommand
+                Dim varCommand0 As New SqlClient.SqlCommand
 
-                Query = "USE " & DatabaseName & "; " & Query
+                query = "USE " & databasename & "; " & query
 
-                V_CMD_0 = New SqlClient.SqlCommand(Query, V_CONN(1))
-                V_DR(1) = V_CMD_0.ExecuteReader(CommandBehavior.CloseConnection)
+                varCommand0 = New SqlClient.SqlCommand(query, varConnection(1))
+                varDataReader(1) = varCommand0.ExecuteReader(CommandBehavior.CloseConnection)
 
-                If V_DR(1).HasRows Then
-                    V_DR(1).Read()
+                If varDataReader(1).HasRows Then
+                    varDataReader(1).Read()
                 End If
 
-                Return V_DR(1)
+                Return varDataReader(1)
             Catch ex As SqlClient.SqlException
-                Call PUSHERRORDATA("[GETDATAROW] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.StackTrace, ex.ErrorCode.ToString, GETAPPVERSION, False, , False)
-                Call PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
                 Return Nothing
             Catch ex As Exception
-                Call PUSHERRORDATA("[GETDATAROW] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.StackTrace, 0.ToString, GETAPPVERSION, False, , False)
-                Call PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
                 Return Nothing
             End Try
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETVALUE(ByVal Query As String, Optional ByVal DatabaseName As String = "db_universe_erp") As Object
+        Public Function GetValue(ByVal query As String, Optional ByVal databasename As String = "db_universe_erp") As Object
             Try
-                Dim V_ROWValue As Object
+                Dim varRowValue As Object
 
-                V_CMD(1) = New SqlClient.SqlCommand With {
-                .Connection = V_CONN(1),
+                varCommand(1) = New SqlClient.SqlCommand With {
+                .Connection = varConnection(1),
                 .CommandType = CommandType.Text,
                 .CommandTimeout = 30}
 
-                Query = "USE " & DatabaseName & "; " & Query
+                query = "USE " & databasename & "; " & query
 
-                V_CMD(1).CommandText = Query
+                varCommand(1).CommandText = query
 
-                V_ROWValue = V_CMD(1).ExecuteScalar
+                varRowValue = varCommand(1).ExecuteScalar
 
-                Return V_ROWValue
+                Return varRowValue
 
             Catch ex As Exception
-                Call PUSHERRORDATA("[GETVALUE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
-                Call PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
                 Return Nothing
             End Try
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GETDATASET(ByVal DBR As Adapter.MSSQL2008.Display.Request, ByVal TableName As String, Optional ByVal DatabaseName As String = "db_universe_erp") As DataSet
-            Dim V_DA(1) As SqlClient.SqlDataAdapter
+        Public Function GetDataSet(ByVal dbr As Adapter.MSSQL2008.Display.Request, ByVal tablename As String, Optional ByVal databasename As String = "db_universe_erp") As DataSet
+            Dim varDataAdapter(1) As SqlClient.SqlDataAdapter
 
             Try
                 GC.Collect()
 
                 Dim varDataset As New DataSet
-                Dim V_BS As New BindingSource
+                Dim varBindingSource As New BindingSource
 
-                If IsNothing(V_CMD(1)) Then
-                    V_CMD(1) = New SqlClient.SqlCommand
+                If IsNothing(varCommand(1)) Then
+                    varCommand(1) = New SqlClient.SqlCommand
                 End If
 
-                V_CMD(1).Connection = V_CONN(1)
-                V_CMD(1).CommandType = CommandType.Text
-                V_CMD(1).CommandTimeout = 30
+                varCommand(1).Connection = varConnection(1)
+                varCommand(1).CommandType = CommandType.Text
+                varCommand(1).CommandTimeout = 30
 
-                DBR.Query = "USE " & DatabaseName & "; " & DBR.Query
+                dbr.Query = "USE " & databasename & "; " & dbr.Query
 
-                V_CMD(1).CommandText = DBR.Query
+                varCommand(1).CommandText = dbr.Query
 
-                V_DA(1) = New SqlClient.SqlDataAdapter(V_CMD(1))
-                V_DA(1).Fill(varDataset, TableName)
+                varDataAdapter(1) = New SqlClient.SqlDataAdapter(varCommand(1))
+                varDataAdapter(1).Fill(varDataset, tablename)
 
-                V_BS = New BindingSource(varDataset, TableName)
+                varBindingSource = New BindingSource(varDataset, tablename)
 
                 Return varDataset
             Catch ex As Exception
-                Call PUSHERRORDATA("[GETDATASET] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.StackTrace, 0.ToString, GETAPPVERSION, False, , False)
-                Call PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[GetDataSet] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
                 Return Nothing
             End Try
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub GETDATATABLE(ByVal DBR As Adapter.MSSQL2008.Display.Request, ByVal TableName As String, Optional ByVal DatabaseName As String = "db_universe_erp")
+        Public Sub GetDataTable(ByVal dbr As Adapter.MSSQL2008.Display.Request, ByVal tablename As String, Optional ByVal databasename As String = "db_universe_erp")
 
-            Dim V_DA(1) As SqlClient.SqlDataAdapter
+            Dim varDataAdapter(1) As SqlClient.SqlDataAdapter
 
             Try
                 GC.Collect()
 
                 Dim varDataset As New DataSet
-                Dim V_BS As New BindingSource
+                Dim varBindingSource As New BindingSource
 
-                If (V_CMD(1) Is Nothing) Then
-                    V_CMD(1) = New SqlClient.SqlCommand
+                If (varCommand(1) Is Nothing) Then
+                    varCommand(1) = New SqlClient.SqlCommand
                 End If
 
-                V_CMD(1).Connection = V_CONN(1)
-                V_CMD(1).CommandType = CommandType.Text
-                V_CMD(1).CommandTimeout = 30
+                varCommand(1).Connection = varConnection(1)
+                varCommand(1).CommandType = CommandType.Text
+                varCommand(1).CommandTimeout = 30
 
-                DBR.Query = "USE " & DatabaseName & "; " & DBR.Query
+                dbr.Query = "USE " & databasename & "; " & dbr.Query
 
-                V_CMD(1).CommandText = DBR.Query
+                varCommand(1).CommandText = dbr.Query
 
-                V_DA(1) = New SqlClient.SqlDataAdapter(V_CMD(1))
-                V_DA(1).Fill(varDataset, TableName)
-                V_BS = New BindingSource(varDataset, TableName)
+                varDataAdapter(1) = New SqlClient.SqlDataAdapter(varCommand(1))
+                varDataAdapter(1).Fill(varDataset, tablename)
+                varBindingSource = New BindingSource(varDataset, tablename)
 
-                If Not (DBR.DataGrid Is Nothing) Then
-                    DBR.DataGrid.DataSource = V_BS
+                If Not (dbr.DataGrid Is Nothing) Then
+                    dbr.DataGrid.DataSource = varBindingSource
                 End If
 
-                If Not (DBR.Dropdown Is Nothing) Then
-                    DBR.Dropdown.DataSource = V_BS
+                If Not (dbr.Dropdown Is Nothing) Then
+                    dbr.Dropdown.DataSource = varBindingSource
                 End If
 
-                If Not (DBR.StatusBar Is Nothing) AndAlso (DBR.StatusBar.Items.Count <> 0) Then
-                    DBR.StatusBar.Items(0).Text = V_BS.Count & " Row(s)"
+                If Not (dbr.StatusBar Is Nothing) AndAlso (dbr.StatusBar.Items.Count <> 0) Then
+                    dbr.StatusBar.Items(0).Text = varBindingSource.Count & " Row(s)"
                 End If
 
-                If Not (DBR.Chart Is Nothing) Then
-                    DBR.Chart.DataSource = V_BS
+                If Not (dbr.Chart Is Nothing) Then
+                    dbr.Chart.DataSource = varBindingSource
                 End If
 
             Catch ex As SqlClient.SqlException
-                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
-                Call PUSHERRORDATASHOW()
-            Catch ex As InvalidCastException
-                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
-                Call PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
             Catch ex As Exception
-                Call PUSHERRORDATA("[GETDATATABLE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
-                Call PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
             End Try
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Sub PUSHDATA(ByVal Query As String, Optional ByVal DatabaseName As String = "db_universe_erp")
+        Public Sub PushData(ByVal query As String, Optional ByVal databasename As String = "db_universe_erp")
             Try
-                V_CMD(1) = New SqlClient.SqlCommand With {
-                .Connection = V_CONN(1),
+                varCommand(1) = New SqlClient.SqlCommand With {
+                .Connection = varConnection(1),
                 .CommandType = CommandType.Text}
 
-                Query = "USE " & DatabaseName & "; " & Query
+                query = "USE " & databasename & "; " & query
 
-                V_CMD(1).CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH", Query)
-                V_CMD(1).ExecuteNonQuery()
+                varCommand(1).CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH", query)
+                varCommand(1).ExecuteNonQuery()
             Catch ex As Exception
-                Call PUSHERRORDATA("[PUSHDATA] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, "0", ex.StackTrace, GETAPPVERSION, False, False, False)
-                Call PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[PushData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
             End Try
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Function PUSHIMAGE(ByVal CMD As SqlClient.SqlCommand) As Boolean
-            Dim V_Success As Boolean
+        Public Function PushImage(ByVal cmd As SqlClient.SqlCommand) As Boolean
+            Dim varSuccess As Boolean
 
             Try
-                V_CMD(1) = New SqlClient.SqlCommand
+                varCommand(1) = New SqlClient.SqlCommand
 
-                If CMD IsNot Nothing Then
-                    V_CMD(1) = CMD
+                If cmd IsNot Nothing Then
+                    varCommand(1) = cmd
                 End If
 
-                V_CMD(1).Connection = V_CONN(1)
-                V_CMD(1).CommandType = CommandType.Text
-                V_CMD(1).ExecuteNonQuery()
-                V_Success = True
+                varCommand(1).Connection = varConnection(1)
+                varCommand(1).CommandType = CommandType.Text
+                varCommand(1).ExecuteNonQuery()
+                varSuccess = True
             Catch ex As Exception
-                V_Success = False
-                Call PUSHERRORDATA("[PUSHIMAGE] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, False, False)
-                Call PUSHERRORDATASHOW()
+                varSuccess = False
+
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[PushImage] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
             End Try
 
-            Return V_Success
+            Return varSuccess
         End Function
 
-        Public Function FILLDATASET(ByVal Query As String, ByVal DataSetName As DataSet, ByVal TableName As String, Optional ByVal DatabaseName As String = "db_universe_erp") As DataSet
+        <SupportedOSPlatform("windows")>
+        Public Function FillDataset(ByVal query As String, ByVal datasetname As DataSet, ByVal tablename As String, Optional ByVal databasename As String = "db_universe_erp") As DataSet
             GC.Collect()
 
             Try
-                V_CMD(1) = New SqlClient.SqlCommand With {
-                .Connection = V_CONN(1),
+                varCommand(1) = New SqlClient.SqlCommand With {
+                .Connection = varConnection(1),
                 .CommandType = CommandType.Text}
 
-                Query = "USE " & DatabaseName & "; " & Query
+                query = "USE " & databasename & "; " & query
 
-                V_CMD(1).CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH", Query)
-                V_Adapter = New SqlClient.SqlDataAdapter(V_CMD(1))
-                V_Adapter.Fill(DataSetName, TableName)
-                V_Adapter = Nothing
-                V_Adapter.Dispose()
+                varCommand(1).CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH", query)
+                varAdapter = New SqlClient.SqlDataAdapter(varCommand(1))
+                varAdapter.Fill(datasetname, tablename)
+                varAdapter = Nothing
+                varAdapter.Dispose()
             Catch ex As Exception
-                DataSetName = Nothing
-                Call PUSHERRORDATA("[FILLDATASET] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, False, False)
+                datasetname = Nothing
+
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[FillDataset] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
             End Try
 
-            Return DataSetName
+            Return datasetname
         End Function
 
         Public Sub Close()
-            V_CONN(1).Close()
-            V_CONN(1).Dispose()
+            varConnection(1).Close()
+            varConnection(1).Dispose()
         End Sub
     End Class
 

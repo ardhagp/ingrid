@@ -5,18 +5,37 @@ Public Class App_Launcher
     Private WithEvents IngridMainframe As New Mainframe_n_6
     Private WithEvents ConnectMainframe As New CONN
 
-    Private V_BRIDGE As New Bridge.Security.WRITELOG
-
-    Private Var_Second As Integer
+    Private varSecond As Integer
+    Private varVersion As String
 
     Private Sub App_Launcher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Bridge.Security.WRITELOG.SENDLOG("Ingrid Launcher started." & Environment.NewLine & "--- App Ver. " & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision & " ---", Bridge.Security.WRITELOG.LogType.Information)
+        varVersion = String.Format("{0}.{1}.{2}.{3}", My.Application.Info.Version.Major, My.Application.Info.Version.Minor, My.Application.Info.Version.Build, My.Application.Info.Version.Revision)
+
+        With proLog
+            .AppVersion = varVersion
+            .FromSender = "$IngridLauncher\030. FOrm\000. Launcher\App Launcher.vb"
+            .InternalStackTrace = ""
+            .Message = "Ingrid Launcher started."
+            .Number = 0
+            .ResumeNext = True
+            .SaveInBetterLog = True
+            .SaveLogInLocal = False
+            .ShowErrorReporting = False
+            .TypeOfFaulty = CMCv.Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+            .TypeOfLog = CMCv.Ladybug.Log.Fields.TypeOfLogs.Information
+        End With
+
+        Dim clsLog As New CMCv.Ladybug.Log.Events
+        clsLog.ShowData(proLog)
+        clsLog = Nothing
+
+        'Bridge.Security.Writelog.Sendlog("Ingrid Launcher started." & Environment.NewLine & "--- App Ver. " & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision & " ---", Bridge.Security.Writelog.LogType.Information)
 
         Call ActivateLicenses()
 
         LblBuild.Text = String.Format("Build {0}" & Environment.NewLine & "Rev. {1}", My.Application.Info.Version.Build, My.Application.Info.Version.Revision)
-        Var_Second = 4
-        LblCountdown.Text = String.Format("app in {0} seconds...", Var_Second)
+        varSecond = 4
+        LblCountdown.Text = String.Format("app in {0} seconds...", varSecond)
 
         With CboApplication.Items
             .Add("Connect")
@@ -36,15 +55,15 @@ Public Class App_Launcher
     End Sub
 
     Private Sub tmrCountdown_Tick(sender As Object, e As EventArgs) Handles tmrCountdown.Tick
-        Var_Second -= 1
+        varSecond -= 1
 
-        If (Var_Second = 0) Then
+        If (varSecond = 0) Then
             Call OpenApp(CboApplication.SelectedIndex)
             tmrCountdown.Enabled = False
-        ElseIf (Var_Second > 1) Then
-            LblCountdown.Text = String.Format("app in {0} seconds...", Var_Second)
+        ElseIf (varSecond > 1) Then
+            LblCountdown.Text = String.Format("app in {0} seconds...", varSecond)
         Else
-            LblCountdown.Text = String.Format("app in {0} second...", Var_Second)
+            LblCountdown.Text = String.Format("app in {0} second...", varSecond)
         End If
     End Sub
 

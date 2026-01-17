@@ -57,19 +57,19 @@ Module Globals
 
     Public ERC As New frmErrorReporting
     Public ERL As New Database.Engine.LocalDB
-    Public ErrorCatcher As Catcher.Error.Fields
+    Public proLog As Ladybug.Log.Fields
 
-    Public V_APPVer As String
+    Public varApplicationVersion As String
 #End Region
 
-    Public Function GETAPPVERSION() As String
-        Dim V_Major, V_Minor, V_Build, V_Revision As Integer
-        V_Major = My.Application.Info.Version.Major
-        V_Minor = My.Application.Info.Version.Minor
-        V_Build = My.Application.Info.Version.Build
-        V_Revision = My.Application.Info.Version.Revision
-        V_APPVer = V_Major & "." & V_Minor & "." & V_Build & "." & V_Revision
-        Return V_APPVer
+    Public Function GetAppVersion() As String
+        Dim varMajor, varMinor, varBuild, varRevision As Integer
+        varMajor = My.Application.Info.Version.Major
+        varMinor = My.Application.Info.Version.Minor
+        varBuild = My.Application.Info.Version.Build
+        varRevision = My.Application.Info.Version.Revision
+        varApplicationVersion = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
+        Return varApplicationVersion
     End Function
 
     <SupportedOSPlatform("windows")>
@@ -104,8 +104,8 @@ Module Globals
 
     '        Return Message
     '    Catch ex As Exception
-    '        Call PUSHERRORDATA("[CREATESECURITY] $\Ingrid\Apps\Components\CMC\2090 - Module\Globals.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
-    '        PUSHERRORDATASHOW()
+    '        Call SUBlogdatapush("[CREATESECURITY] $\Ingrid\Apps\Components\CMC\2090 - Module\Globals.vb", Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, False)
+    '        SUBlogdatashow()
     '        Return Nothing
     '    End Try
     'End Function
@@ -114,29 +114,4 @@ Module Globals
         'GET Machinge Name
     End Sub
 
-    Public Sub PUSHERRORDATA(ByVal FromSender As String, ByVal ErrorType As Catcher.Error.Fields.TypeOfFaulties, ByVal ErrorMessage As String, ByVal ErrorNumber As String, ByVal InternalStackTrace As String, ByVal AppVersion As String, Optional ByVal EnableErrorReporting As Boolean = True, Optional ByVal SaveError As Boolean = True, Optional ByVal ResumeNext As Boolean = True)
-        With ErrorCatcher
-            .FromSender = FromSender
-            .Type = ErrorType
-            .Message = ErrorMessage
-            .Number = ErrorNumber
-            .InternalStackTrace = InternalStackTrace
-            .AppVersion = AppVersion
-            .EnableErrorReporting = EnableErrorReporting
-            .SaveError = SaveError
-            .ResumeNext = ResumeNext
-        End With
-    End Sub
-
-    <SupportedOSPlatform("windows")>
-    Public Sub PUSHERRORDATASHOW()
-        ERC = New frmErrorReporting(ErrorCatcher, )
-        ERC.SLFNamaForm.Text = "Lady Bug (Error Catcher)"
-        ERC.SLFSubNamaForm.Text = "Please check detail below and report to system administrator."
-        ERC.ShowDialog()
-        If Not (ERC.ResumeNext) Then
-            Process.GetCurrentProcess.Kill()
-        End If
-        ERC.Dispose()
-    End Sub
 End Module

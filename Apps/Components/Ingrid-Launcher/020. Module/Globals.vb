@@ -1,6 +1,5 @@
 ﻿Imports System.Runtime.Versioning
 
-
 Module Globals
 #Region "Activate Licenses"
         <SupportedOSPlatform("windows")>
@@ -12,4 +11,6 @@ Module Globals
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(varSyncfusionkey)
         End Sub
 #End Region
-    End Module
+
+    Public proLog As New CMCv.Ladybug.Log.Fields
+End Module

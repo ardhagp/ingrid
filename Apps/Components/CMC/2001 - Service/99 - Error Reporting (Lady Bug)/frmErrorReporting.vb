@@ -1,7 +1,8 @@
 ﻿Imports System.Runtime.Versioning
+Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Public Class frmErrorReporting
-    'Private Catcher As New Catcher.Error.Fields
+    'Private Catcher As New Ladybug.Log.Fields
     Public ResumeNext As Boolean
 
     'Private ERL As New Database.Engine.LocalDB
@@ -17,48 +18,34 @@ Public Class frmErrorReporting
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Public Sub New(ByVal ErrorCatcher As Catcher.Error.Fields, Optional ByVal DBEngine As Database.Engine.SQLiteV3 = Nothing)
+    Public Sub New(ByVal proLog As Ladybug.Log.Fields, Optional ByVal varDBengine As Database.Engine.SQLiteV3 = Nothing)
         InitializeComponent()
-        TxtErrorType.Text = TypeOfFaultiesConverter(ErrorCatcher)
-        TxtErrorMessage.Text = ErrorCatcher.Message & System.Environment.NewLine & System.Environment.NewLine & "Sender: " & ErrorCatcher.FromSender
-        TxtErrorNumber.Text = ErrorCatcher.Number
-        TxtAppBuild.Text = ErrorCatcher.AppVersion
-        ChkErrorReporting.Enabled = ErrorCatcher.EnableErrorReporting
-        ResumeNext = ErrorCatcher.ResumeNext
+
+        TxtErrorType.Text = proLog.TypeOfFaulty.ToString()
+        TxtErrorMessage.Text = proLog.Message & System.Environment.NewLine & System.Environment.NewLine & "Sender: " & proLog.FromSender
+        TxtErrorNumber.Text = CStr(proLog.Number)
+        TxtAppBuild.Text = proLog.AppVersion
+        ChkErrorReporting.Enabled = proLog.ShowErrorReporting
+        ResumeNext = proLog.ResumeNext
 
         'Send Error to Ingrid Log Center
-        Bridge.Security.WRITELOG.SENDLOG(TxtErrorMessage.Text & Environment.NewLine & "Error Number: " & TxtErrorNumber.Text & Environment.NewLine & "Error Type: " & TxtErrorType.Text & Environment.NewLine & "App Build: " & TxtAppBuild.Text, Bridge.Security.WRITELOG.LogType.Error)
-
-        'Record Error into local database
-        If (ErrorCatcher.SaveError) Then
-            If DBEngine Is Nothing Then
-                Return
-            End If
-            ERL = DBEngine
-            ERL.Open()
-            ERL.SaveErrorData(ErrorCatcher)
+        If (proLog.SaveInBetterLog) Then
+            Bridge.Security.Writelog.Sendlog("""message"" : """ & proLog.Message & """," & Environment.NewLine & """sender"" : " & proLog.FromSender & """," & Environment.NewLine & """error_number"" : " & TxtErrorNumber.Text & "," & Environment.NewLine & """error_type"" : """ & TxtErrorType.Text & """," & Environment.NewLine & """version"" : """ & TxtAppBuild.Text & """,", proLog.TypeOfLog.ToString())
         End If
 
+        'Record Error into local database
+        If (proLog.SaveLogInLocal) Then
+            If varDBengine Is Nothing Then
+                Return
+            End If
+            ERL = varDBengine
+            ERL.Open()
+            ERL.SaveErrorData(proLog)
+        End If
 
         'Tbctl1.TabPages.RemoveByKey("tp_SystemInformation")
 
     End Sub
-
-    Private Function TypeOfFaultiesConverter(ByVal ErrorCatcher As Catcher.Error.Fields) As String
-        Dim Result As String = ""
-        Select Case ErrorCatcher.Type
-            Case CType(20010102, Catcher.Error.Fields.TypeOfFaulties)
-                Result = "SupportServiceDatabaseEngine"
-            Case CType(200102, Catcher.Error.Fields.TypeOfFaulties)
-                Result = "SupportServiceSOAP"
-            Case CType(200103, Catcher.Error.Fields.TypeOfFaulties)
-                Result = "SupportServiceWeb"
-            Case CType(100100, Catcher.Error.Fields.TypeOfFaulties)
-                Result = "ApplicationRunTime"
-        End Select
-
-        Return Result
-    End Function
 
     Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
         Me.Close()
