@@ -15,11 +15,11 @@ namespace Bridge.Security
                 .AddUserSecrets<Getkey>()
                 .Build();
 
-            var V_KEY = config.GetSection("KEYS")["SALT"];
+            var varKEY = config.GetSection("KEYS")["SALT"];
 
-            if (V_KEY != null)
+            if (varKEY != null)
             {
-                return V_KEY;
+                return varKEY;
             }
             else
             {
@@ -37,11 +37,11 @@ namespace Bridge.Security
                 .AddUserSecrets<Getkey>()
                 .Build();
 
-            var V_KEY = config.GetSection("KEYS")["SYNCFUSION"];
+            var varKEY = config.GetSection("KEYS")["SYNCFUSION"];
 
-            if (V_KEY != null)
+            if (varKEY != null)
             {
-                return V_KEY;
+                return varKEY;
             }
             else
             {
@@ -59,11 +59,11 @@ namespace Bridge.Security
                 .AddUserSecrets<Getkey>()
                 .Build();
 
-            var V_KEY =  config.GetSection("KEYS")["BETTERSTACK_LOG"];
+            var varKEY =  config.GetSection("KEYS")["BETTERSTACK_LOG"];
 
-            if (V_KEY != null)
+            if (varKEY != null)
             {
-                return V_KEY;
+                return varKEY;
             }
             else
             {
@@ -72,27 +72,26 @@ namespace Bridge.Security
         }
     }
 
+    
     /// <summary>
     /// Logging class to send logs to Betterstack
     /// </summary>
     public class Writelog
     {
         /// <summary>
-        /// Type of log entry
+        /// Sends a log entry to BetterStack. If the initial write fails,
+        /// the exception message is logged instead.
         /// </summary>
-        public enum LogType
-        {
-            Information,
-            Error
-        }
-
-        /// <summary>
-        /// Send log to Betterstack
-        /// </summary>
-        /// <param name="Messages"></param>
-        /// <param name="TypeOfLog"></param>
-        /// <returns></returns>
-        public static async Task Sendlog(string Messages, LogType TypeOfLog)
+        /// <param name="Messages">
+        /// The log message to send.
+        /// </param>
+        /// <param name="TypeOfLog">
+        /// The category or severity of the log entry. Fields like "Warning", "Information", "Debug", "Fatal", or "Error".
+        /// </param>
+        /// <returns>
+        /// An asynchronous task representing the log operation.
+        /// </returns>
+        public static async Task Sendlog(string Messages, string TypeOfLog)
         {
             try
             {
@@ -100,7 +99,7 @@ namespace Bridge.Security
             }
             catch (Exception ex)
             {
-                await Writelogs(ex.Message,LogType.Error);
+                await Writelogs(ex.Message, TypeOfLog);
             }
         }
 
@@ -110,7 +109,7 @@ namespace Bridge.Security
         /// <param name="Messages"></param>
         /// <param name="TypeOfLog"></param>
         /// <returns></returns>
-        private static async Task Writelogs(string Messages, LogType TypeOfLog)
+        private static async Task Writelogs(string Messages, string TypeOfLog)
         {
             await Task.Delay(0);
 
@@ -127,17 +126,33 @@ namespace Bridge.Security
             DateTime currentUTC = TimeZoneInfo.ConvertTimeToUtc(currentDate, localZone);
             TimeSpan currentOffset = localZone.GetUtcOffset(currentDate);
 
-            string OccuredAt = string.Format(Environment.NewLine + "--- Timestamp: ---" + Environment.NewLine + "UTC: {0}" + Environment.NewLine + "Offset: {1}" + Environment.NewLine + "Device DateTime: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), currentUTC.ToString("yyyy-MM-dd HH:mm:ss"), currentOffset);
+            string Timestamp = string.Format(Environment.NewLine  + "\"utc\": \"{0}\"," + Environment.NewLine + "\"device\" : \"" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\"," + Environment.NewLine + "\"offset\" : \"{1}\"", currentUTC.ToString("yyyy-MM-dd HH:mm:ss"), currentOffset);
 
-            Messages += OccuredAt;
+            Messages = "{"+Messages;
+            Messages += Timestamp;
+            Messages += "}";
 
-            if (TypeOfLog == LogType.Information)
+            switch (TypeOfLog)
             {
-                Log.Information(Messages);
-            }
-            else
-            {
-                Log.Error(Messages);
+                case "Warning":
+                    Log.Warning(Messages);
+                    break;
+
+                case "Information":
+                    Log.Information(Messages);
+                    break;
+
+                case "Debug":
+                    Log.Debug(Messages);
+                    break;
+
+                case "Fatal":
+                    Log.Fatal(Messages);
+                    break;
+
+                case "Error":
+                    Log.Error(Messages);    
+                    break;
             }
 
             await Log.CloseAndFlushAsync();

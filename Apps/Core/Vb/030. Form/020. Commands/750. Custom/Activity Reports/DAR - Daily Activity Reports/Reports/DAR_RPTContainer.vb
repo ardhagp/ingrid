@@ -38,18 +38,35 @@ Public Class DAR_RPTContainer
     Private Sub DAR_RPTContainer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             Dim _DSo = New ReportDataSource("employeeactivity", _DS.Tables(0))
-            Rv_.LocalReport.DataSources.Clear()
-            Rv_.LocalReport.DataSources.Add(_DSo)
-            Rv_.LocalReport.ReportEmbeddedResource = "ingrid.DAR_RContent.rdlc"
-            Rv_.LocalReport.SetParameters(CType(New ReportParameter("paramCreator", _Creator), ReportParameter))
-            Rv_.LocalReport.SetParameters(CType(New ReportParameter("paramColor", _Color.ToString), ReportParameter))
-            Rv_.LocalReport.SetParameters(CType(New ReportParameter("paramVersion", _Version), ReportParameter))
-            Rv_.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout)
-            Rv_.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth
-            Rv_.RefreshReport()
+            With Rv_
+                .LocalReport.DataSources.Clear()
+                .LocalReport.DataSources.Add(_DSo)
+                .LocalReport.ReportEmbeddedResource = "ingrid.DAR_RContent.rdlc"
+                .LocalReport.SetParameters(CType(New ReportParameter("paramCreator", _Creator), ReportParameter))
+                .LocalReport.SetParameters(CType(New ReportParameter("paramColor", _Color.ToString), ReportParameter))
+                .LocalReport.SetParameters(CType(New ReportParameter("paramVersion", _Version), ReportParameter))
+                .SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout)
+                .ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth
+                .RefreshReport()
+            End With
         Catch ex As Exception
-            Call PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.tostring, ex.StackTrace, GETAPPVERSION, False, True, True)
-            Call PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GetAppVersion()
+                .FromSender = "[DAR_RPTContainer_Load] $Ingrid\Apps\Core\Vb\030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RPTContainer.vb"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
         End Try
 
     End Sub

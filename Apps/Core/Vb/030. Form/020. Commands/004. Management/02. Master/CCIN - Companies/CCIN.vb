@@ -21,7 +21,7 @@ Public Class CCIN
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
-        LibSQL.Commands.CCIN.View.DISPLAYDATA(V_DatabaseEngine, DgnCCIN, SLFStatus, TxtFind, ForceRefresh)
+        LibSQL.Commands.CCIN.View.DISPLAYDATA(varDatabaseEngine, DgnCCIN, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     Private Sub GETTableID()
@@ -65,7 +65,7 @@ Public Class CCIN
         Else
             varFormAttributes.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.CCIN.View.DELETEDATA(V_DatabaseEngine, varFormAttributes.RowID)) Then
+                If (LibSQL.Commands.CCIN.View.DELETEDATA(varDatabaseEngine, varFormAttributes.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else

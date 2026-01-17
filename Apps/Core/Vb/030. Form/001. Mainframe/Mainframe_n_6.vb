@@ -22,20 +22,20 @@ Public Class Mainframe_n_6
     Public Event IngridFrameClose()
 
     Private WithEvents varLOGIN As New LOGIN
-    Private WithEvents varCONN As New Connect.CONN(V_PRODUCTIONMODE) 'uncomment this when add Connect to library
+    Private WithEvents varCONN As New Connect.CONN(varProductionMode) 'uncomment this when add Connect to library
     Private WithEvents varPHTRZ As New CMCv.PHTRZ
-    Private WithEvents varUAC_Editor As UAC_Editor
+    Private WithEvents varUACeditor As UAC_Editor
     'Private WithEvents _CSETTINGS As New Connect.CONN
 
     Private varSYSS As SYSS
 
     Private varSQL As New LibSQL.Mainframe.Database
     Private varSQL_DBCheck As New LibSQL.Commands.DBIC.Applications
-    Private V_SQL_Notification As New LibSQL.Application.Notification
-    Private V_SQL_RunningText As New LibSQL.Application.RunningText
-    Private V_SQL_Modules As New LibSQL.Application.Modules
-    Private V_SQL_Profiles As New LibSQL.Application.ProfilePanel
-    Private V_SQL_Storage As New LibSQL.Application.StorageSense
+    Private varSqlNotification As New LibSQL.Application.Notification
+    Private varSqlRunningText As New LibSQL.Application.RunningText
+    Private varSqlModules As New LibSQL.Application.Modules
+    Private varSqlProfiles As New LibSQL.Application.ProfilePanel
+    Private varSqlStorage As New LibSQL.Application.StorageSense
     Private varGetNotifCounter As Integer
     Private varClearStatus As Integer
     Private varSession As Boolean
@@ -54,7 +54,7 @@ Public Class Mainframe_n_6
             'Txt_shortcut.AutoCompleteSource = Nothing
             Txt_shortcut.AutoCompleteMode = AutoCompleteMode.SuggestAppend
 
-            varDataset = V_SQL_Modules.DisplayAutoComplete '.DisplayAutoComplete(varFormAttributes.RowID, DgnPictureList)
+            varDataset = varSqlModules.DisplayAutoComplete '.DisplayAutoComplete(varFormAttributes.RowID, DgnPictureList)
 
             If varDataset Is Nothing Then
                 Return
@@ -67,13 +67,29 @@ Public Class Mainframe_n_6
             Txt_shortcut.AutoCompleteCustomSource = varList
             Txt_shortcut.AutoCompleteSource = AutoCompleteSource.CustomSource
         Catch ex As Exception
-            PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
+            With proLog
+                .AppVersion = GETAPPVERSION()
+                .FromSender = "[CommandAutoComplete] Mainframe"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
         End Try
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub GetRunningText()
-        TxtRunning.Visible = V_SQL_RunningText.Show(varUserAttributes.IsAdministrator)
+        TxtRunning.Visible = varSqlRunningText.Show(varUserAttributes.IsAdministrator)
     End Sub
 
     ''' <summary>
@@ -81,7 +97,7 @@ Public Class Mainframe_n_6
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub GetNotification()
-        varTotalNotification = V_SQL_Notification.Exist(varUserAttributes.EID)
+        varTotalNotification = varSqlNotification.Exist(varUserAttributes.EID)
         If varTotalNotification > 0 Then
             USERMENU.Text = varUserAttributes.FirstName & "*"
             USERMENU.BackColor = Global.System.Drawing.Color.LightPink
@@ -123,8 +139,23 @@ Public Class Mainframe_n_6
                 '    Next
             End If
         Catch ex As Exception
-            PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
-            PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GETAPPVERSION()
+                .FromSender = "[CloseAllWindows] Mainframe"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
         End Try
     End Sub
 
@@ -141,12 +172,12 @@ Public Class Mainframe_n_6
         End If
 
         ''' Check Module Availability
-        If Not (Application.Modules.IsModuleReady(V_DatabaseEngine, commandcode.ToUpper.Trim)) Then
+        If Not (Application.Modules.IsModuleReady(varDatabaseEngine, commandcode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "Module " & commandcode.ToUpper.Trim & " not found."
             Return
-        ElseIf (Application.Modules.IsModuleLocked(V_DatabaseEngine, commandcode.ToUpper.Trim)) Then
+        ElseIf (Application.Modules.IsModuleLocked(varDatabaseEngine, commandcode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
-            Bridge.Security.Writelog.Sendlog(varUserAttributes.FirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim, Bridge.Security.Writelog.LogType.Error)
+            Bridge.Security.Writelog.Sendlog("""message"" : """ & varUserAttributes.FirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """", "Warning")
             Decision("[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.frmDialogBox.MessageIcon.Information, CMCv.frmDialogBox.MessageTypes.OkOnly)
 
             System.Media.SystemSounds.Beep.Play()
@@ -156,14 +187,14 @@ Public Class Mainframe_n_6
 
             St_mainframe.Items(0).Text = "You are not authorized to access : " & commandcode.ToUpper.Trim
 
-            Bridge.Security.Writelog.Sendlog(varUserAttributes.FirstName & " trying to open Restricted Module " & commandcode.ToUpper.Trim, Bridge.Security.Writelog.LogType.Error)
+            Bridge.Security.Writelog.Sendlog("""message"" : " & varUserAttributes.FirstName & " trying to open Restricted Module " & commandcode.ToUpper.Trim & """", "Warning")
 
             System.Media.SystemSounds.Beep.Play()
 
             Return
         Else ''' Open Module
             Globals.varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
-            Bridge.Security.Writelog.Sendlog(varUserAttributes.FirstName & " opening Module " & commandcode.ToUpper.Trim, Bridge.Security.Writelog.LogType.Information)
+            Bridge.Security.Writelog.Sendlog("""message"" : " & varUserAttributes.FirstName & " opening Module " & commandcode.ToUpper.Trim & """", "Information")
             Txt_shortcut.Clear()
         End If
     End Sub
@@ -201,9 +232,9 @@ Public Class Mainframe_n_6
     <SupportedOSPlatform("windows")>
     Private Sub LogoutClicked()
         If Decision("Are you sure want to logout from system?", "Logout", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
-            Bridge.Security.Writelog.Sendlog(varUserAttributes.FirstName & " is logout.", Bridge.Security.Writelog.LogType.Information)
+            Bridge.Security.Writelog.Sendlog("""message"" : " & varUserAttributes.FirstName & " is logout.""", "Information")
             Call SystemLogout()
-            varLogUser.Logout(V_DatabaseEngine, varUserAttributes.EID)
+            varLogUser.Logout(varDatabaseEngine, varUserAttributes.EID)
             Call ClearLoginData()
         End If
     End Sub
@@ -243,12 +274,27 @@ Public Class Mainframe_n_6
                 .IsChangePasswordForm = True
             End With
 
-            varUAC_Editor = New UAC_Editor
-            DISPLAY(varUAC_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Change My Account", "Update your account username or password", True)
+            varUACeditor = New UAC_Editor
+            DISPLAY(varUACeditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Change My Account", "Update your account username or password", True)
 
         Catch ex As Exception
-            PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
-            PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GETAPPVERSION()
+                .FromSender = "[ChangePasswordToolStripMenuItem] $Ingrid\Apps\Core\Vb\030. Form\001. Mainframe\Mainframe_n_6.vb"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
         End Try
     End Sub
 
@@ -261,7 +307,7 @@ Public Class Mainframe_n_6
             TmrNotif.Enabled = True
             RaiseEvent IngridFrameOpen()
 
-            Bridge.Security.Writelog.Sendlog("Ingrid Main App is opened.", Bridge.Security.Writelog.LogType.Information)
+            Bridge.Security.Writelog.Sendlog("""message"" : ""Ingrid Main App is opened.""", "Information")
 
             Call ActivateLicenses()
 
@@ -269,7 +315,7 @@ Public Class Mainframe_n_6
             Tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererVS2010)
             varGetNotifCounter = 58
             varForceRefreshMainframeData = False
-            TmrStatus.Interval = V_StatusTimeWait * 1000
+            TmrStatus.Interval = varStatusTimeWait * 1000
 
 
             'splash.Show()
@@ -281,11 +327,11 @@ Public Class Mainframe_n_6
             varVersionapplication = GETAPPVERSION()
             Text += " - Ver. " & varVersionapplication
 
-            V_DatabaseEngine = LibSQL.Mainframe.Database.DBEngine
+            varDatabaseEngine = LibSQL.Mainframe.Database.DBEngine
 
-            If Mainframe.Database.Connect(V_PRODUCTIONMODE) Then
+            If Mainframe.Database.Connect(varProductionMode) Then
                 Ts_connection.Text = "Connected"
-                varLogApplication.Run(V_DatabaseEngine)
+                varLogApplication.Run(varDatabaseEngine)
             Else
                 Ts_connection.Text = "Disconnected"
                 Decision("Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -296,12 +342,27 @@ Public Class Mainframe_n_6
 
             Call CommandAutoComplete() 'TODO: Raised Error
 
-            If Not (LibSQL.Commands.DBIC.Applications.IsCompanyExist(V_DatabaseEngine) OrElse Not LibSQL.Commands.DBIC.Applications.IsDepartmentExist(V_DatabaseEngine)) Then
+            If Not (LibSQL.Commands.DBIC.Applications.IsCompanyExist(varDatabaseEngine) OrElse Not LibSQL.Commands.DBIC.Applications.IsDepartmentExist(varDatabaseEngine)) Then
                 DISPLAY(frmFistGuide,, "First Guide", "", True, Me)
             End If
         Catch ex As Exception
-            PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
-            PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GETAPPVERSION()
+                .FromSender = "[Load] Mainframe"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
         End Try
     End Sub
 
@@ -435,11 +496,11 @@ Public Class Mainframe_n_6
             LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome
             LblEmpNumber.Text = varUserAttributes.EmployeeNumber
 
-            Dim V_Nama = varUserAttributes.FirstName.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
-            LblEmployeeName.Text = String.Join(" ", V_Nama.Take(2))
+            Dim varNama = varUserAttributes.FirstName.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+            LblEmployeeName.Text = String.Join(" ", varNama.Take(2))
 
             LblPosition.Text = varUserAttributes.Position
-            PctProfile.Image = V_SQL_Profiles.GETPhoto(varUserAttributes.EID, varUserAttributes.Gender)
+            PctProfile.Image = varSqlProfiles.GETPhoto(varUserAttributes.EID, varUserAttributes.Gender)
             PnlProfile.Height = 191
         Else
             LblWelcome.Text = String.Empty
@@ -501,7 +562,7 @@ Public Class Mainframe_n_6
 
     Private Sub TmrStatus_Tick(sender As Object, e As EventArgs) Handles TmrStatus.Tick
         varClearStatus += 1
-        If varClearStatus = V_StatusTimeWait Then
+        If varClearStatus = varStatusTimeWait Then
             Call ClearStatus()
         End If
     End Sub
@@ -556,8 +617,23 @@ Public Class Mainframe_n_6
                 File.Delete(varDeleteFile)
             Next
         Catch ex As Exception
-            PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.ToString, "", ex.StackTrace, GETAPPVERSION, False, True, True)
-            PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GETAPPVERSION()
+                .FromSender = "[Closing] Mainframe"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
         End Try
     End Sub
 
@@ -606,17 +682,17 @@ Public Class Mainframe_n_6
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Public Shared Sub GetSettings()
-        V_MaxUploadSize_PDF = LibSQL.Application.Modules.MaxPDFAllowed
-        V_MaxUploadSize_Photo = LibSQL.Application.Modules.MaxPhotoAllowed
-        V_MinPasswordLength = LibSQL.Application.Modules.MinPasswordLength
-        V_Textmark = LibSQL.Application.Modules.TextMark(varUserAttributes.IsAdministrator)
+        varMaxUploadSizePDF = LibSQL.Application.Modules.MaxPDFAllowed
+        varMaxUploadSizePhoto = LibSQL.Application.Modules.MaxPhotoAllowed
+        varMinPasswordLength = LibSQL.Application.Modules.MinPasswordLength
+        varTextmark = LibSQL.Application.Modules.TextMark(varUserAttributes.IsAdministrator)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub Ms_start_Exit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
         If (varSession) Then
             Call SystemLogout() ''' Logout Process
-            varLogUser.Logout(V_DatabaseEngine, varUserAttributes.EID)
+            varLogUser.Logout(varDatabaseEngine, varUserAttributes.EID)
             Call ClearLoginData() ''' Clear Login Data
         End If
 
@@ -627,7 +703,7 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub Ms_start_connection_app_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_app.Click 'uncomment this when add Connect to library
-        varCONN = New Connect.CONN(V_PRODUCTIONMODE, True)
+        varCONN = New Connect.CONN(varProductionMode, True)
 
         DISPLAY(varCONN, IMAGEDB.Main.ImageLibrary.CONN_ICON, "Connection Settings", "Configure Ingrid database connection", True)
     End Sub
@@ -643,7 +719,7 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub Mainframe_n_6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Bridge.Security.Writelog.Sendlog("Ingrid Main App is closed.", Bridge.Security.Writelog.LogType.Information)
+        Bridge.Security.Writelog.Sendlog("""message"" : Ingrid Main App is closed.""", "Information")
         RaiseEvent IngridFrameClose()
     End Sub
 
