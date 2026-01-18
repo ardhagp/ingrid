@@ -30,7 +30,7 @@ Public Class Mainframe_n_6
     Private varSYSS As SYSS
 
     Private varSQL As New LibSQL.Mainframe.Database
-    Private varSQL_DBCheck As New LibSQL.Commands.DBIC.Applications
+    Private varSqlDBcheck As New LibSQL.Commands.DBIC.Applications
     Private varSqlNotification As New LibSQL.Application.Notification
     Private varSqlRunningText As New LibSQL.Application.RunningText
     Private varSqlModules As New LibSQL.Application.Modules
@@ -68,7 +68,7 @@ Public Class Mainframe_n_6
             Txt_shortcut.AutoCompleteSource = AutoCompleteSource.CustomSource
         Catch ex As Exception
             With proLog
-                .AppVersion = GETAPPVERSION()
+                .AppVersion = GetAppVersion()
                 .FromSender = "[CommandAutoComplete] Mainframe"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
@@ -140,7 +140,7 @@ Public Class Mainframe_n_6
             End If
         Catch ex As Exception
             With proLog
-                .AppVersion = GETAPPVERSION()
+                .AppVersion = GetAppVersion()
                 .FromSender = "[CloseAllWindows] Mainframe"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
@@ -177,7 +177,7 @@ Public Class Mainframe_n_6
             Return
         ElseIf (Application.Modules.IsModuleLocked(varDatabaseEngine, commandcode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
-            Bridge.Security.Writelog.Sendlog("""message"" : """ & varUserAttributes.FirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """", "Warning")
+            Bridge.Security.Writelog.Sendlog("""message"" : """ & varUserAttributes.FirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
             Decision("[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.frmDialogBox.MessageIcon.Information, CMCv.frmDialogBox.MessageTypes.OkOnly)
 
             System.Media.SystemSounds.Beep.Play()
@@ -194,7 +194,7 @@ Public Class Mainframe_n_6
             Return
         Else ''' Open Module
             Globals.varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
-            Bridge.Security.Writelog.Sendlog("""message"" : " & varUserAttributes.FirstName & " opening Module " & commandcode.ToUpper.Trim & """", "Information")
+            Bridge.Security.Writelog.Sendlog("""message"" : " & varUserAttributes.FirstName & " opening Module " & commandcode.ToUpper.Trim & """,", "Information")
             Txt_shortcut.Clear()
         End If
     End Sub
@@ -232,7 +232,7 @@ Public Class Mainframe_n_6
     <SupportedOSPlatform("windows")>
     Private Sub LogoutClicked()
         If Decision("Are you sure want to logout from system?", "Logout", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
-            Bridge.Security.Writelog.Sendlog("""message"" : " & varUserAttributes.FirstName & " is logout.""", "Information")
+            Bridge.Security.Writelog.Sendlog("""message"" : " & varUserAttributes.FirstName & " is logout."",", "Information")
             Call SystemLogout()
             varLogUser.Logout(varDatabaseEngine, varUserAttributes.EID)
             Call ClearLoginData()
@@ -307,7 +307,7 @@ Public Class Mainframe_n_6
             TmrNotif.Enabled = True
             RaiseEvent IngridFrameOpen()
 
-            Bridge.Security.Writelog.Sendlog("""message"" : ""Ingrid Main App is opened.""", "Information")
+            Bridge.Security.Writelog.Sendlog("""message"" : ""Ingrid Main App is opened."",", "Information")
 
             Call ActivateLicenses()
 
@@ -610,7 +610,7 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub Mainframe_Closing(sender As Object, e As CancelEventArgs) Handles MyBase.Closing
-        Dim varRequiredFolder = CHECKREQUIREDFOLDER(DirName.PDF)
+        Dim varRequiredFolder = CheckRequiredFolder(DirName.PDF)
 
         Try
             For Each varDeleteFile In Directory.GetFiles(varRequiredFolder, "*.*", SearchOption.TopDirectoryOnly)
@@ -705,7 +705,7 @@ Public Class Mainframe_n_6
     Private Sub Ms_start_connection_app_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_app.Click 'uncomment this when add Connect to library
         varCONN = New Connect.CONN(varProductionMode, True)
 
-        DISPLAY(varCONN, IMAGEDB.Main.ImageLibrary.CONN_ICON, "Connection Settings", "Configure Ingrid database connection", True)
+        Display(varCONN, IMAGEDB.Main.ImageLibrary.CONN_ICON, "Connection Settings", "Configure Ingrid database connection", True)
     End Sub
 
     Private Sub Ms_start_connection_folder_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_folder.Click
@@ -719,7 +719,7 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub Mainframe_n_6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Bridge.Security.Writelog.Sendlog("""message"" : Ingrid Main App is closed.""", "Information")
+        Bridge.Security.Writelog.Sendlog("""message"" : Ingrid Main App is closed."",", "Information")
         RaiseEvent IngridFrameClose()
     End Sub
 
