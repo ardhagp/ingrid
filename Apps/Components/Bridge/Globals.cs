@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Serilog;
 
 namespace Bridge.Security
@@ -8,7 +8,10 @@ namespace Bridge.Security
         /// <summary>
         /// Get Salt Key from User Secrets
         /// </summary>
-        /// <returns></returns>
+        /// <summary>
+        /// Retrieves the 'SALT' secret from user secrets under the "KEYS" section.
+        /// </summary>
+        /// <returns>The value of KEYS:SALT if present; otherwise an empty string.</returns>
         public string Salt()
         {
             var config = new ConfigurationBuilder()
@@ -30,7 +33,10 @@ namespace Bridge.Security
         /// <summary>
         /// Get Syncfusion Key from User Secrets
         /// </summary>
-        /// <returns></returns>
+        /// <summary>
+        /// Retrieves the Syncfusion key from user secrets (KEYS:SYNCFUSION).
+        /// </summary>
+        /// <returns>The Syncfusion key if found; otherwise an empty string.</returns>
         public string Syncfusion()
         {
             var config = new ConfigurationBuilder()
@@ -52,7 +58,10 @@ namespace Bridge.Security
         /// <summary>
         /// Get Betterstack Log Key from User Secrets
         /// </summary>
-        /// <returns></returns>
+        /// <summary>
+        /// Retrieve the BetterStack source token from user secrets (KEYS:BETTERSTACK_LOG) or return an empty string if not configured.
+        /// </summary>
+        /// <returns>The BetterStack source token when present; otherwise an empty string.</returns>
         public string Betterstack_log()        
         {
             var config = new ConfigurationBuilder()
@@ -90,7 +99,11 @@ namespace Bridge.Security
         /// </param>
         /// <returns>
         /// An asynchronous task representing the log operation.
-        /// </returns>
+        /// <summary>
+        /// Writes the provided message to BetterStack and, if writing fails, retries by logging the caught exception's message.
+        /// </summary>
+        /// <param name="Messages">The log message payload; will be wrapped into the JSON-like payload sent to the sink.</param>
+        /// <param name="TypeOfLog">The severity level to emit (e.g., "Warning", "Information", "Debug", "Fatal", "Error").</param>
         public static async Task Sendlog(string Messages, string TypeOfLog)
         {
             try
@@ -108,7 +121,11 @@ namespace Bridge.Security
         /// </summary>
         /// <param name="Messages"></param>
         /// <param name="TypeOfLog"></param>
-        /// <returns></returns>
+        /// <summary>
+        /// Sends the provided message to BetterStack using the Betterstack token from user secrets and records a timestamped log entry with the specified severity.
+        /// </summary>
+        /// <param name="Messages">The log payload body; it will be wrapped into a JSON-like object and augmented with a UTC timestamp, local device timestamp, and offset.</param>
+        /// <param name="TypeOfLog">The log level to emit; allowed values are "Warning", "Information", "Debug", "Fatal", and "Error".</param>
         private static async Task Writelogs(string Messages, string TypeOfLog)
         {
             await Task.Delay(0);
@@ -159,4 +176,3 @@ namespace Bridge.Security
         }
     }
 }
-
