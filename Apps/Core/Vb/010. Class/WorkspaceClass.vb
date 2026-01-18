@@ -258,8 +258,23 @@ Public Class WorkspaceClass
             End Select
 
         Catch ex As Exception
-            Call PUSHERRORDATA(CMCv.Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, 0.ToString, ex.StackTrace, GETAPPVERSION, , True, True)
-            Call PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GetAppVersion()
+                .FromSender = "[Open] $Ingrid\Apps\Core\Vb\010. Class\WorkspaceClass.vb"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
         End Try
     End Sub
 

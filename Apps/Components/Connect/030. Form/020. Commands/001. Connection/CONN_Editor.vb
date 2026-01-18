@@ -106,8 +106,25 @@ Public Class CONN_Editor
             End Using
 
         Catch ex As Exception
-            PUSHERRORDATA("CONN Editor", Catcher.Error.Fields.TypeOfFaulties.SupportServiceWeb, ex.ToString, "0", "", "", True, True, True)
-            PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GetAppVersion()
+                .FromSender = "[ReadConnectionString] $Ingrid\Apps\Components\Connect\030. Form\020. Commands\001. Connection\CONN_Editor.vb"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
+
+            Return Nothing
         End Try
     End Function
 
@@ -172,12 +189,16 @@ Public Class CONN_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub btnGet_Click(sender As Object, e As EventArgs) Handles btnGet.Click
+        Dim varDownloadCenter As String = String.Empty
+
         If txtImportCode.Text = String.Empty Then
             MessageBox.Show("Please enter the connection code to import.")
             Return
         End If
 
-        Dim conn As String = ReadConnectionString(My.Settings.ConnectionURL, txtImportCode.Text)
+        varDownloadCenter = My.Settings.ConnectionURL
+
+        Dim conn As String = ReadConnectionString(varDownloadCenter, txtImportCode.Text)
         txtImportContent.Text = conn
     End Sub
 

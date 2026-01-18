@@ -12,7 +12,7 @@ Public Class UAC
 
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        Commands.UAC.View.DisplayData(V_DatabaseEngine, DgnUAC, SLFStatus, TxtFind, ForceRefresh)
+        Commands.UAC.View.DisplayData(varDatabaseEngine, DgnUAC, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     Private Sub GETTableID()
@@ -76,7 +76,7 @@ Public Class UAC
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.UAC.View.DELETEData(V_DatabaseEngine, varFormAttributes.RowID)) Then
+                If (Commands.UAC.View.DELETEData(varDatabaseEngine, varFormAttributes.RowID)) Then
                     Call GETDATA(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else

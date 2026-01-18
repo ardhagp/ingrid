@@ -21,12 +21,12 @@ Public Class DAR_Editor
 #Region "Sub Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GETAffectedArea()
-        Commands.DAR.Editor.GETAffectedArea(V_DatabaseEngine, CboArea)
+        Commands.DAR.Editor.GETAffectedArea(varDatabaseEngine, CboArea)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub GETTemplateTitle()
-        Commands.DAR.Editor.GETTemplateTitle(V_DatabaseEngine, CboTemplate)
+        Commands.DAR.Editor.GETTemplateTitle(varDatabaseEngine, CboTemplate)
     End Sub
 
     Public Sub CheckAllInput()
@@ -48,7 +48,7 @@ Public Class DAR_Editor
         DgnPictureList.Rows.Clear()
         TxtPhotoPath.Clear()
 
-        V_DS(0) = V_SQL.DisplayPhotoGrid(V_DatabaseEngine, varFormAttributes.RowID.ToString, DgnPictureList)
+        V_DS(0) = V_SQL.DisplayPhotoGrid(varDatabaseEngine, varFormAttributes.RowID.ToString, DgnPictureList)
 
         For i As Integer = 0 To V_DS(0).Tables("TPhotoFileEditor").Rows.Count - 1
             DgnPictureList.Rows.Add(V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_id"), V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_filename"), V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_datetime"), V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_content"), "", V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_uploader"))
@@ -64,7 +64,7 @@ Public Class DAR_Editor
         V_DS(1) = New DataSet
 
         DblBuffer(DgnFileList)
-        V_DS(1) = V_SQL.DisplayFileGrid(V_DatabaseEngine, varFormAttributes.RowID.ToString, DgnFileList)
+        V_DS(1) = V_SQL.DisplayFileGrid(varDatabaseEngine, varFormAttributes.RowID.ToString, DgnFileList)
 
         For i As Integer = 0 To V_DS(1).Tables("TFileEditor").Rows.Count - 1
             DgnFileList.Rows.Add(V_DS(1).Tables("TFileEditor").Rows(i).Item("file_id"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_filename"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_tag"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_datetime"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_content"), "", V_DS(1).Tables("TFileEditor").Rows(i).Item("file_uploader"))
@@ -139,10 +139,10 @@ Public Class DAR_Editor
     Private Sub BtnGETContent_Click(sender As Object, e As EventArgs) Handles BtnGETContent.Click
         If Not (varFormAttributes.IsNew) Then
             If Decision("Do you want to replace Description with template content?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(V_DatabaseEngine, CboTemplate)
+                TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(varDatabaseEngine, CboTemplate)
             End If
         Else
-            TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(V_DatabaseEngine, CboTemplate)
+            TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(varDatabaseEngine, CboTemplate)
         End If
     End Sub
 
@@ -179,7 +179,7 @@ Public Class DAR_Editor
             Return
         End If
 
-        If (Commands.DAR.Editor.PUSHData(V_DatabaseEngine, CboArea.SelectedValue.ToString, CboTemplate.SelectedValue.ToString, CType(DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, String), CType(MebStart.Text.Replace(".", ":"), String), CType(DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, String), CType(MebEnd.Text.Replace(".", ":"), String), TxtContent.XOSQLText, TxtFeedback.XOSQLText, varUserAttributes.UID, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, V_ExtQuery)) Then
+        If (Commands.DAR.Editor.PUSHData(varDatabaseEngine, CboArea.SelectedValue.ToString, CboTemplate.SelectedValue.ToString, CType(DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, String), CType(MebStart.Text.Replace(".", ":"), String), CType(DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, String), CType(MebEnd.Text.Replace(".", ":"), String), TxtContent.XOSQLText, TxtFeedback.XOSQLText, varUserAttributes.UID, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, V_ExtQuery)) Then
             V_ExtQuery = String.Empty
             Mainframe_n_6.Ts_status.Text = "Success"
 
@@ -191,7 +191,7 @@ Public Class DAR_Editor
             Next
 
             If V_NewPhotoAdded > 0 Then
-                If (Commands.DAR.Editor.PUSHPhoto(V_DatabaseEngine, DgnPictureList, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, DtpStart.Value)) Then
+                If (Commands.DAR.Editor.PUSHPhoto(varDatabaseEngine, DgnPictureList, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, DtpStart.Value)) Then
                     Mainframe_n_6.Ts_status.Text = "Success + All pictures has been added"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Success + With errors while adding pictures"
@@ -210,7 +210,7 @@ Public Class DAR_Editor
             Next
 
             If V_NewFileAdded > 0 Then
-                If (Commands.DAR.Editor.PUSHFile(V_DatabaseEngine, DgnFileList, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, DtpStart.Value)) Then
+                If (Commands.DAR.Editor.PUSHFile(varDatabaseEngine, DgnFileList, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, DtpStart.Value)) Then
                     Mainframe_n_6.Ts_status.Text = "Success + All file has been added"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Success + With errors while adding files"
@@ -238,7 +238,7 @@ Public Class DAR_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub LoadData()
-        Commands.DAR.Editor.GETRowValue(V_DatabaseEngine, varFormAttributes.RowID.ToString, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
+        Commands.DAR.Editor.GETRowValue(varDatabaseEngine, varFormAttributes.RowID.ToString, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
         Call LoadAttachment()
     End Sub
 #End Region
@@ -248,10 +248,10 @@ Public Class DAR_Editor
         If e.KeyCode = Keys.Enter Then
             If Not (varFormAttributes.IsNew) Then
                 If Decision("Do you want to replace Description with template content?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(V_DatabaseEngine, CboTemplate)
+                    TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(varDatabaseEngine, CboTemplate)
                 End If
             Else
-                TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(V_DatabaseEngine, CboTemplate)
+                TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(varDatabaseEngine, CboTemplate)
             End If
         End If
     End Sub
@@ -273,7 +273,7 @@ Public Class DAR_Editor
             ElseIf Not CMCv.OperatingSystem.File.Info.IsExists(TxtPhotoPath.Text) Then
                 Decision("Your photo cannot be found.", "File not found", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
                 Return
-            ElseIf Not (OperatingSystem.File.Upload.IsAllowedSize(TxtPhotoPath.Text, V_MaxUploadSize_Photo, True)) Then
+            ElseIf Not (OperatingSystem.File.Upload.IsAllowedSize(TxtPhotoPath.Text, varMaxUploadSizePhoto, True)) Then
                 Return
             End If
 
@@ -386,7 +386,7 @@ Public Class DAR_Editor
             ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtFilePath.Text)) Then
                 Decision("Your file cannot be found.", "File not found", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
                 Return
-            ElseIf Not (OperatingSystem.File.Upload.IsAllowedSize(TxtFilePath.Text, V_MaxUploadSize_PDF, True)) Then
+            ElseIf Not (OperatingSystem.File.Upload.IsAllowedSize(TxtFilePath.Text, varMaxUploadSizePDF, True)) Then
                 Return
             End If
 

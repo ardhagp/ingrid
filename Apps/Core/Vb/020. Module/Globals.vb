@@ -1,7 +1,6 @@
 ﻿Imports System.IO
 Imports System.Reflection
 Imports System.Runtime.Versioning
-'Imports System.Deployment.application
 
 Module Globals
 #Region "Activate Licenses"
@@ -21,7 +20,7 @@ Module Globals
     Public varFileinfo As New CMCv.OperatingSystem.File.Info
     Public FolderHandler As New CMCv.OperatingSystem.Folder
     'Public SecurityEngine As New Security.Engine
-    Public V_DatabaseEngine As String
+    Public varDatabaseEngine As String
     Public V_IMG_COMPRESS As New CMCv.ImageEditor.Proccessor.Compress
     Public V_IMG_EDITOR As New CMCv.ImageEditor.Proccessor.Editor
     Public varUserAccess As New Application.Access
@@ -31,14 +30,10 @@ Module Globals
     Public varForceRefreshMainframeData As Boolean
     'Public clsBridgelog As New Bridge.Security.WRITELOG
 
-
+    Public proLog As New CMCv.Ladybug.Log.Fields
     Public varSecurityencrypt As New CMCv.Security.Encrypt
 
-    Public clsECerrorcatcher As New Catcher.Error.Fields
-
     'Public clsDBsqlite As Database.Engine.LocalDB
-    Public clsDBsqlite As Database.Engine.SQLiteV3
-    Public WithEvents frmERC As New frmErrorReporting
     'Public WithEvents TED As New frmTextEditor
     Public WithEvents frmMSG As New frmDialogBox
 
@@ -56,61 +51,31 @@ Module Globals
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Public Sub DblBuffer(ByVal GridView As DataGridView)
+    Public Sub DblBuffer(ByVal gridview As DataGridView)
         Try
-            Dim systemType As Type = GridView.GetType()
+            Dim systemType As Type = gridview.GetType()
             Dim propertyInfo As PropertyInfo = systemType.GetProperty("DoubleBuffered", bindingAttr:=BindingFlags.Instance Or BindingFlags.NonPublic)
-            propertyInfo.SetValue(GridView, True, Nothing)
+            propertyInfo.SetValue(gridview, True, Nothing)
         Catch ex As Exception
-            PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
-            PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GetAppVersion()
+                .FromSender = "[DblBuffer] $Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
         End Try
     End Sub
-
-#Region "Error Log"
-
-    ''' <summary>
-    ''' Store error data to error catcher class
-    ''' </summary>
-    ''' <param name="errortype"></param>
-    ''' <param name="errormessage"></param>
-    ''' <param name="errornumber"></param>
-    ''' <param name="internalstacktrace"></param>
-    ''' <param name="appversion"></param>
-    ''' <param name="enableerrorreporting"></param>
-    ''' <param name="saveerror"></param>
-    ''' <param name="resumenext"></param>
-    Public Sub PUSHERRORDATA(ByVal errortype As Catcher.Error.Fields.TypeOfFaulties,
-                             ByVal errormessage As String, ByVal errornumber As String,
-                             ByVal internalstacktrace As String, ByVal appversion As String,
-                             Optional enableerrorreporting As Boolean = True,
-                             Optional saveerror As Boolean = True,
-                             Optional resumenext As Boolean = True)
-        With clsECerrorcatcher
-            .Type = errortype
-            .Message = errormessage
-            .Number = errornumber
-            .InternalStackTrace = internalstacktrace
-            .AppVersion = appversion
-            .EnableErrorReporting = enableerrorreporting
-            .SaveError = saveerror
-            .ResumeNext = resumenext
-        End With
-    End Sub
-
-    ''' <summary>
-    ''' Display Error Reporting Form
-    ''' </summary>
-    ''' <remarks></remarks>
-    <SupportedOSPlatform("windows")>
-    Public Sub PUSHERRORDATASHOW()
-        frmERC = New CMCv.frmErrorReporting(clsECerrorcatcher, clsDBsqlite)
-        frmERC.ShowDialog()
-        If Not (frmERC.ResumeNext) Then
-            Return
-        End If
-    End Sub
-#End Region
 
 #Region "Get App Version"
 
@@ -120,7 +85,7 @@ Module Globals
     ''' <returns>String</returns>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Function GETAPPVERSION() As String
+    Public Function GetAppVersion() As String
         Try
             Dim varMajor, varMinor, varBuild, varRevision As Integer
 
@@ -132,8 +97,24 @@ Module Globals
             varVersionapplication = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
             Return varVersionapplication
         Catch ex As Exception
-            PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, "0.0.0", False, True, True)
-            PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GetAppVersion()
+                .FromSender = "[DblBuffer] $Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
+
             varVersionapplication = " - Failed Getting Version"
             Return varVersionapplication
         End Try
@@ -145,7 +126,7 @@ Module Globals
     ''' <summary>
     ''' Check and Create Required Folder
     ''' </summary>
-    Public Function CHECKREQUIREDFOLDER(ByVal Optional GetDirName As DirName = Nothing) As String
+    Public Function CheckRequiredFolder(ByVal Optional getdirname As DirName = Nothing) As String
         If Not Directory.Exists("Commands") Then
             Directory.CreateDirectory("Commands")
         End If
@@ -156,7 +137,7 @@ Module Globals
             Directory.CreateDirectory("Files.Photo")
         End If
 
-        Select Case GetDirName
+        Select Case getdirname
             Case DirName.Commands
                 Return Directory.GetCurrentDirectory & "\Commands\" 'Folder for detachable modules
             Case DirName.PDF
@@ -189,7 +170,7 @@ Module Globals
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Sub DISPLAY(ByVal formName As CMCv.frmStandard, Optional formimage As System.Drawing.Image = Nothing,
+    Public Sub Display(ByVal formName As CMCv.frmStandard, Optional formimage As System.Drawing.Image = Nothing,
                        Optional formtitle As String = "", Optional formsubtitle As String = "",
                        Optional isdialog As Boolean = False, Optional parentframe As Windows.Forms.Form = Nothing)
         Try
@@ -219,8 +200,23 @@ Module Globals
 
 
         Catch ex As Exception
-            PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
-            PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GETAPPVERSION()
+                .FromSender = "[Open] $Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
         End Try
     End Sub
 
@@ -235,34 +231,49 @@ Module Globals
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Sub DISPLAY(ByVal FormName As CMCv.Std_Fo, Optional ByVal FormImage As System.Drawing.Image = Nothing, Optional ByVal FormTitle As String = "", Optional ByVal FormSubTitle As String = "", Optional ByVal IsDialog As Boolean = False, Optional ByVal ParentFrame As Windows.Forms.Form = Nothing)
+    Public Sub Display(ByVal formname As CMCv.Std_Fo, Optional ByVal formimage As System.Drawing.Image = Nothing, Optional ByVal formtitle As String = "", Optional ByVal formsubtitle As String = "", Optional ByVal isdialog As Boolean = False, Optional ByVal parentframe As Windows.Forms.Form = Nothing)
         Try
-            FormName.SLFNamaForm.Text = FormTitle
-            If FormImage IsNot Nothing Then
-                FormName.SLFLogo.Image = FormImage
+            formname.SLFNamaForm.Text = formtitle
+            If formimage IsNot Nothing Then
+                formname.SLFLogo.Image = formimage
             End If
-            FormName.SLFSubNamaForm.Text = FormSubTitle
-            If Not (IsDialog) Then
-                If (FormName.IsHandleCreated) Then
-                    FormName.Focus()
+            formname.SLFSubNamaForm.Text = formsubtitle
+            If Not (isdialog) Then
+                If (formname.IsHandleCreated) Then
+                    formname.Focus()
                 Else
-                    If ParentFrame IsNot Nothing Then
-                        FormName.Visible = False
-                        FormName.MdiParent = ParentFrame
-                        FormName.WindowState = FormWindowState.Maximized
-                        FormName.Show()
-                        FormName.Visible = True
+                    If parentframe IsNot Nothing Then
+                        formname.Visible = False
+                        formname.MdiParent = parentframe
+                        formname.WindowState = FormWindowState.Maximized
+                        formname.Show()
+                        formname.Visible = True
                     Else
-                        FormName.Show()
+                        formname.Show()
                     End If
                 End If
             Else
-                FormName.ShowDialog()
-                FormName.Dispose()
+                formname.ShowDialog()
+                formname.Dispose()
             End If
         Catch ex As Exception
-            Call PUSHERRORDATA(Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
-            Call PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GETAPPVERSION()
+                .FromSender = "[Open] $Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
         End Try
     End Sub
 #End Region
@@ -277,8 +288,8 @@ Module Globals
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
-    Public Function Decision(ByVal Message As String, ByVal Title As String, ByVal MessageIcon As CMCv.frmDialogBox.MessageIcon, ByVal ButtonType As CMCv.frmDialogBox.MessageTypes) As DialogResult
-        frmMSG = New CMCv.frmDialogBox(Message, Title, MessageIcon, ButtonType)
+    Public Function Decision(ByVal message As String, ByVal title As String, ByVal messageicon As CMCv.frmDialogBox.MessageIcon, ByVal buttontype As CMCv.frmDialogBox.MessageTypes) As DialogResult
+        frmMSG = New CMCv.frmDialogBox(message, title, messageicon, buttontype)
         Return frmMSG.ShowDialog()
         frmMSG.Dispose()
     End Function

@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Serilog;
 
 namespace Bridge.Security
@@ -8,18 +8,21 @@ namespace Bridge.Security
         /// <summary>
         /// Get Salt Key from User Secrets
         /// </summary>
-        /// <returns></returns>
+        /// <summary>
+        /// Retrieves the 'SALT' secret from user secrets under the "KEYS" section.
+        /// </summary>
+        /// <returns>The value of KEYS:SALT if present; otherwise an empty string.</returns>
         public string Salt()
         {
             var config = new ConfigurationBuilder()
                 .AddUserSecrets<Getkey>()
                 .Build();
 
-            var V_KEY = config.GetSection("KEYS")["SALT"];
+            var varKEY = config.GetSection("KEYS")["SALT"];
 
-            if (V_KEY != null)
+            if (varKEY != null)
             {
-                return V_KEY;
+                return varKEY;
             }
             else
             {
@@ -30,18 +33,21 @@ namespace Bridge.Security
         /// <summary>
         /// Get Syncfusion Key from User Secrets
         /// </summary>
-        /// <returns></returns>
+        /// <summary>
+        /// Retrieves the Syncfusion key from user secrets (KEYS:SYNCFUSION).
+        /// </summary>
+        /// <returns>The Syncfusion key if found; otherwise an empty string.</returns>
         public string Syncfusion()
         {
             var config = new ConfigurationBuilder()
                 .AddUserSecrets<Getkey>()
                 .Build();
 
-            var V_KEY = config.GetSection("KEYS")["SYNCFUSION"];
+            var varKEY = config.GetSection("KEYS")["SYNCFUSION"];
 
-            if (V_KEY != null)
+            if (varKEY != null)
             {
-                return V_KEY;
+                return varKEY;
             }
             else
             {
@@ -52,18 +58,21 @@ namespace Bridge.Security
         /// <summary>
         /// Get Betterstack Log Key from User Secrets
         /// </summary>
-        /// <returns></returns>
+        /// <summary>
+        /// Retrieve the BetterStack source token from user secrets (KEYS:BETTERSTACK_LOG) or return an empty string if not configured.
+        /// </summary>
+        /// <returns>The BetterStack source token when present; otherwise an empty string.</returns>
         public string Betterstack_log()        
         {
             var config = new ConfigurationBuilder()
                 .AddUserSecrets<Getkey>()
                 .Build();
 
-            var V_KEY =  config.GetSection("KEYS")["BETTERSTACK_LOG"];
+            var varKEY =  config.GetSection("KEYS")["BETTERSTACK_LOG"];
 
-            if (V_KEY != null)
+            if (varKEY != null)
             {
-                return V_KEY;
+                return varKEY;
             }
             else
             {
@@ -72,27 +81,30 @@ namespace Bridge.Security
         }
     }
 
+    
     /// <summary>
     /// Logging class to send logs to Betterstack
     /// </summary>
     public class Writelog
     {
         /// <summary>
-        /// Type of log entry
+        /// Sends a log entry to BetterStack. If the initial write fails,
+        /// the exception message is logged instead.
         /// </summary>
-        public enum LogType
-        {
-            Information,
-            Error
-        }
-
+        /// <param name="Messages">
+        /// The log message to send.
+        /// </param>
+        /// <param name="TypeOfLog">
+        /// The category or severity of the log entry. Fields like "Warning", "Information", "Debug", "Fatal", or "Error".
+        /// </param>
+        /// <returns>
+        /// An asynchronous task representing the log operation.
         /// <summary>
-        /// Send log to Betterstack
+        /// Writes the provided message to BetterStack and, if writing fails, retries by logging the caught exception's message.
         /// </summary>
-        /// <param name="Messages"></param>
-        /// <param name="TypeOfLog"></param>
-        /// <returns></returns>
-        public static async Task Sendlog(string Messages, LogType TypeOfLog)
+        /// <param name="Messages">The log message payload; will be wrapped into the JSON-like payload sent to the sink.</param>
+        /// <param name="TypeOfLog">The severity level to emit (e.g., "Warning", "Information", "Debug", "Fatal", "Error").</param>
+        public static async Task Sendlog(string Messages, string TypeOfLog)
         {
             try
             {
@@ -100,7 +112,7 @@ namespace Bridge.Security
             }
             catch (Exception ex)
             {
-                await Writelogs(ex.Message,LogType.Error);
+                await Writelogs(ex.Message, TypeOfLog);
             }
         }
 
@@ -109,40 +121,58 @@ namespace Bridge.Security
         /// </summary>
         /// <param name="Messages"></param>
         /// <param name="TypeOfLog"></param>
-        /// <returns></returns>
-        private static async Task Writelogs(string Messages, LogType TypeOfLog)
+        /// <summary>
+        /// Sends the provided message to BetterStack using the Betterstack token from user secrets and records a timestamped log entry with the specified severity.
+        /// </summary>
+        /// <param name="Messages">The log payload body; it will be wrapped into a JSON-like object and augmented with a UTC timestamp, local device timestamp, and offset.</param>
+        /// <param name="TypeOfLog">The log level to emit; allowed values are "Warning", "Information", "Debug", "Fatal", and "Error".</param>
+        private static async Task Writelogs(string Messages, string TypeOfLog)
         {
             await Task.Delay(0);
 
-            Bridge.Security.Getkey KEYLOG = new Bridge.Security.Getkey();
+            Getkey KEYLOG = new Getkey();
 
-            Serilog.Log.Logger = new LoggerConfiguration()
+            Log.Logger = new LoggerConfiguration()
                 .WriteTo.BetterStack(sourceToken: KEYLOG.Betterstack_log())
                 .MinimumLevel.Information()
                 .CreateLogger();
 
             TimeZoneInfo localZone = TimeZoneInfo.Local;
-            // Replace obsolete TimeZone usage with TimeZoneInfo
             DateTime currentDate = DateTime.Now;
 
             DateTime currentUTC = TimeZoneInfo.ConvertTimeToUtc(currentDate, localZone);
             TimeSpan currentOffset = localZone.GetUtcOffset(currentDate);
 
-            string OccuredAt = string.Format(Environment.NewLine + "--- Occured at: ---" + Environment.NewLine + "UTC: {0}" + Environment.NewLine + "Offset: {1}" + Environment.NewLine + "Device DateTime: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), currentUTC.ToString("yyyy-MM-dd HH:mm:ss"), currentOffset);
+            string Timestamp = string.Format(Environment.NewLine  + "\"utc\": \"{0}\"," + Environment.NewLine + "\"device\" : \"" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\"," + Environment.NewLine + "\"offset\" : \"{1}\"", currentUTC.ToString("yyyy-MM-dd HH:mm:ss"), currentOffset);
 
-            Messages += OccuredAt;
+            Messages = "{"+Messages;
+            Messages += Timestamp;
+            Messages += "}";
 
-            if (TypeOfLog == LogType.Information)
+            switch (TypeOfLog)
             {
-                Serilog.Log.Information(Messages);
-            }
-            else
-            {
-                Serilog.Log.Error(Messages);
+                case "Warning":
+                    Log.Warning(Messages);
+                    break;
+
+                case "Information":
+                    Log.Information(Messages);
+                    break;
+
+                case "Debug":
+                    Log.Debug(Messages);
+                    break;
+
+                case "Fatal":
+                    Log.Fatal(Messages);
+                    break;
+
+                case "Error":
+                    Log.Error(Messages);    
+                    break;
             }
 
-            Serilog.Log.CloseAndFlush();
+            await Log.CloseAndFlushAsync();
         }
     }
 }
-

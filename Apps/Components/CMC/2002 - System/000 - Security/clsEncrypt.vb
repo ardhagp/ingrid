@@ -37,8 +37,24 @@ Namespace Security
             Try
                 Return varMessage
             Catch ex As Exception
-                PUSHERRORDATA("$Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString(), ex.StackTrace, GETAPPVERSION, True, False, False)
-                PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[AES] $Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
                 Return String.Empty
             End Try
         End Function
@@ -63,13 +79,29 @@ Namespace Security
                 varCRCvalue = ComputeCRC(message)
 
                 If returnashex Then
-                    Return varCRCvalue.ToString("X8")
+                    Return varCRCvalue.ToString("X8", Globalization.CultureInfo.InvariantCulture)
                 Else
-                    Return varCRCvalue.ToString()
+                    Return varCRCvalue.ToString(Globalization.CultureInfo.InvariantCulture)
                 End If
             Catch ex As Exception
-                PUSHERRORDATA("$Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString(), ex.StackTrace, GETAPPVERSION, True, False, False)
-                PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[CRC32] $Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
                 Return String.Empty
             End Try
         End Function
@@ -112,8 +144,24 @@ Namespace Security
                 Dim varMessage As String = EncryptProvider.AESDecrypt(message, V_SALT)
                 Return varMessage
             Catch ex As Exception
-                PUSHERRORDATA("$Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString(), ex.StackTrace, GETAPPVERSION, True, False, False)
-                PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[AES] $Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
                 Return String.Empty
             End Try
         End Function
@@ -124,8 +172,24 @@ Namespace Security
                 Dim varMessage As String = V_SALT
                 Return varMessage
             Catch ex As Exception
-                PUSHERRORDATA("$Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message, ex.HResult.ToString(), ex.StackTrace, GETAPPVERSION, True, False, False)
-                PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[GetSalt] $Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
                 Return String.Empty
             End Try
         End Function

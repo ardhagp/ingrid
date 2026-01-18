@@ -22,14 +22,14 @@ Public Class CONN
         varIsProduction = True
     End Sub
 
-    Public Sub New(Optional ByVal IsProduction As Boolean = False, Optional ByVal IsExtension As Boolean = True)
+    Public Sub New(Optional ByVal isproduction As Boolean = False, Optional ByVal isextension As Boolean = True)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        varIsProduction = IsProduction
-        varIsExtension = IsExtension
+        varIsProduction = isproduction
+        varIsExtension = isextension
     End Sub
 
 #Region "Sub Collections"
@@ -60,7 +60,7 @@ Public Class CONN
     Private Sub CONN_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RaiseEvent ConnectFrameOpen() ''' Notify that the connection settings form is opened
 
-        Bridge.Security.Writelog.Sendlog("Connection Settings is opened.", Bridge.Security.Writelog.LogType.Information) ''' Log the event
+        Bridge.Security.Writelog.Sendlog("""message"" : ""Connection Settings is opened."",", "Information") ''' Log the event
 
         V_DBE_SQLite.Open(varIsProduction) ''' Open database connection
 
@@ -83,7 +83,7 @@ Public Class CONN
             V_DBE_SQLite.Close()
         End If
 
-        Bridge.Security.Writelog.Sendlog("Connection Settings is closed.", Bridge.Security.Writelog.LogType.Information)
+        Bridge.Security.Writelog.Sendlog("""Connection Settings is closed."",", "Information")
 
         RaiseEvent ConnectFrameClose()
     End Sub

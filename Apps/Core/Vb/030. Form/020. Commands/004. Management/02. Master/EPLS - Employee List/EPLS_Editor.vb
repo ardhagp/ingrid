@@ -30,36 +30,36 @@ Public Class EPLS_Editor
             ChkAddNew.Checked = False
 
             'Personal Detail
-            TxtFullName.Text = Commands.EPLS.Editor.GETEmployeeFullName(V_DatabaseEngine, varFormAttributes.RowID)
-            CboGender.SelectedItem = Commands.EPLS.Editor.GETGender(V_DatabaseEngine, varFormAttributes.RowID)
-            TxtPersonalID.Text = Commands.EPLS.Editor.GETPersonalID(V_DatabaseEngine, varFormAttributes.RowID)
-            DtpBirthDate.Value = CDate(Commands.EPLS.Editor.GETBirthDate(V_DatabaseEngine, varFormAttributes.RowID))
-            TxtBirthPlace.Text = Commands.EPLS.Editor.GETBirthPlace(V_DatabaseEngine, varFormAttributes.RowID)
-            TxtAddress.Text = Commands.EPLS.Editor.GETAddress(V_DatabaseEngine, varFormAttributes.RowID)
+            TxtFullName.Text = Commands.EPLS.Editor.GETEmployeeFullName(varDatabaseEngine, varFormAttributes.RowID)
+            CboGender.SelectedItem = Commands.EPLS.Editor.GETGender(varDatabaseEngine, varFormAttributes.RowID)
+            TxtPersonalID.Text = Commands.EPLS.Editor.GETPersonalID(varDatabaseEngine, varFormAttributes.RowID)
+            DtpBirthDate.Value = CDate(Commands.EPLS.Editor.GETBirthDate(varDatabaseEngine, varFormAttributes.RowID))
+            TxtBirthPlace.Text = Commands.EPLS.Editor.GETBirthPlace(varDatabaseEngine, varFormAttributes.RowID)
+            TxtAddress.Text = Commands.EPLS.Editor.GETAddress(varDatabaseEngine, varFormAttributes.RowID)
 
             'Work In...
-            TxtCompany.Text = Commands.EPLS.Editor.GETCompany(V_DatabaseEngine, varFormAttributes.RowID)
-            TxTDepartment.Text = Commands.EPLS.Editor.GETDepartment(V_DatabaseEngine, varFormAttributes.RowID)
-            _PositionID = Commands.EPLS.Editor.GETPositionID(V_DatabaseEngine, varFormAttributes.RowID)
-            TxtPosition.Text = Commands.EPLS.Editor.GETPosition(V_DatabaseEngine, varFormAttributes.RowID)
-            TxtGradeID.Text = Commands.EPLS.Editor.GETGradeID(V_DatabaseEngine, varFormAttributes.RowID)
-            TxtGrade.Text = Commands.EPLS.Editor.GETGrade(V_DatabaseEngine, varFormAttributes.RowID)
-            TxtEmployeeNumber.Text = Commands.EPLS.Editor.GETEmployeeNumber(V_DatabaseEngine, varFormAttributes.RowID)
-            TxtEmployeeNickname.Text = Commands.EPLS.Editor.GETEmployeeNickname(V_DatabaseEngine, varFormAttributes.RowID)
-            TxtContractTypeID.Text = Commands.EPLS.Editor.GETContractTypeID(V_DatabaseEngine, varFormAttributes.RowID)
-            TxtContractType.Text = Commands.EPLS.Editor.GETContractType(V_DatabaseEngine, varFormAttributes.RowID)
-            ChkActiveEmployee.Checked = Commands.EPLS.Editor.GETActiveEmployee(V_DatabaseEngine, varFormAttributes.RowID)
-            _HavePhoto = Commands.EPLS.Editor.GETIsHavePhoto(V_DatabaseEngine, varFormAttributes.RowID)
+            TxtCompany.Text = Commands.EPLS.Editor.GETCompany(varDatabaseEngine, varFormAttributes.RowID)
+            TxTDepartment.Text = Commands.EPLS.Editor.GETDepartment(varDatabaseEngine, varFormAttributes.RowID)
+            _PositionID = Commands.EPLS.Editor.GETPositionID(varDatabaseEngine, varFormAttributes.RowID)
+            TxtPosition.Text = Commands.EPLS.Editor.GETPosition(varDatabaseEngine, varFormAttributes.RowID)
+            TxtGradeID.Text = Commands.EPLS.Editor.GETGradeID(varDatabaseEngine, varFormAttributes.RowID)
+            TxtGrade.Text = Commands.EPLS.Editor.GETGrade(varDatabaseEngine, varFormAttributes.RowID)
+            TxtEmployeeNumber.Text = Commands.EPLS.Editor.GETEmployeeNumber(varDatabaseEngine, varFormAttributes.RowID)
+            TxtEmployeeNickname.Text = Commands.EPLS.Editor.GETEmployeeNickname(varDatabaseEngine, varFormAttributes.RowID)
+            TxtContractTypeID.Text = Commands.EPLS.Editor.GETContractTypeID(varDatabaseEngine, varFormAttributes.RowID)
+            TxtContractType.Text = Commands.EPLS.Editor.GETContractType(varDatabaseEngine, varFormAttributes.RowID)
+            ChkActiveEmployee.Checked = Commands.EPLS.Editor.GETActiveEmployee(varDatabaseEngine, varFormAttributes.RowID)
+            _HavePhoto = Commands.EPLS.Editor.GETIsHavePhoto(varDatabaseEngine, varFormAttributes.RowID)
 
             'Permissions
-            TxtLogin.Text = Commands.UAC.Editor.GETUsernameByEmployeeID(V_DatabaseEngine, varFormAttributes.RowID)
-            varFormAttributes.Field01 = Commands.UAC.Editor.GETUIDByEmployeeID(V_DatabaseEngine, varFormAttributes.RowID)
-            Commands.UAC.Editor.DisplayData(V_DatabaseEngine, DgnModulesRoles, varFormAttributes.Field01.ToString)
+            TxtLogin.Text = Commands.UAC.Editor.GETUsernameByEmployeeID(varDatabaseEngine, varFormAttributes.RowID)
+            varFormAttributes.Field01 = Commands.UAC.Editor.GETUIDByEmployeeID(varDatabaseEngine, varFormAttributes.RowID)
+            Commands.UAC.Editor.DisplayData(varDatabaseEngine, DgnModulesRoles, varFormAttributes.Field01.ToString)
 
             TxtPersonalID.Focus()
 
             If _HavePhoto > 0 Then
-                pctbxPhoto.Image = _SQL.GETPhoto(V_DatabaseEngine, varFormAttributes.RowID)
+                pctbxPhoto.Image = _SQL.GETPhoto(varDatabaseEngine, varFormAttributes.RowID)
             End If
         End If
 
@@ -88,20 +88,20 @@ Public Class EPLS_Editor
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Call CheckAllInputs()
 
-        If (Commands.EPLS.Editor.IsPersonalIDExist(V_DatabaseEngine, varFormAttributes.IsNew, TxtPersonalID.Text, varFormAttributes.RowID)) Then
+        If (Commands.EPLS.Editor.IsPersonalIDExist(varDatabaseEngine, varFormAttributes.IsNew, TxtPersonalID.Text, varFormAttributes.RowID)) Then
             Decision("Cannot save your record." & Environment.NewLine & "Duplicate Personal ID", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf (TxtPersonalID.XOSQLText = String.Empty) OrElse (_PositionID = String.Empty) OrElse (TxtEmployeeNumber.XOSQLText = String.Empty) OrElse (TxtFullName.XOSQLText = String.Empty) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Personal ID, Company, Department, Postition, Employee Number and Full Name are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf Not (Commands.EPLS.Editor.IsPositionExist(V_DatabaseEngine, _PositionID)) Then
+        ElseIf Not (Commands.EPLS.Editor.IsPositionExist(varDatabaseEngine, _PositionID)) Then
             Decision("Cannot save your record." & Environment.NewLine & "Position not found.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             SLFStatus.Items(0).Text = "Position not found"
             Return
-        ElseIf (varFormAttributes.IsNew) AndAlso (Commands.EPLS.Editor.IsDuplicate(V_DatabaseEngine, _PositionID, TxtEmployeeNumber.XOSQLText)) Then
+        ElseIf (varFormAttributes.IsNew) AndAlso (Commands.EPLS.Editor.IsDuplicate(varDatabaseEngine, _PositionID, TxtEmployeeNumber.XOSQLText)) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Employee Number already used.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf Not (varFormAttributes.IsNew) AndAlso (Commands.EPLS.Editor.IsDuplicate(V_DatabaseEngine, _PositionID, TxtEmployeeNumber.XOSQLText, varFormAttributes.RowID)) Then
+        ElseIf Not (varFormAttributes.IsNew) AndAlso (Commands.EPLS.Editor.IsDuplicate(varDatabaseEngine, _PositionID, TxtEmployeeNumber.XOSQLText, varFormAttributes.RowID)) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Employee Number already used by another employee.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf _HavePhoto = 0 Then
@@ -109,7 +109,7 @@ Public Class EPLS_Editor
             Return
         End If
 
-        If (Commands.EPLS.Editor.PUSHData(V_DatabaseEngine, TxtPersonalID.XOSQLText, _PositionID, TxtEmployeeNumber.XOSQLText, TxtFullName.XOSQLText, DtpBirthDate, TxtBirthPlace.XOSQLText, TxtAddress.XOSQLText, TxtEmployeeNickname.XOSQLText, ChkActiveEmployee.Checked, CboGender.SelectedItem.ToString, _Photo, _ChangePhoto, varUserAttributes.EID, varFormAttributes.RowID)) Then
+        If (Commands.EPLS.Editor.PUSHData(varDatabaseEngine, TxtPersonalID.XOSQLText, _PositionID, TxtEmployeeNumber.XOSQLText, TxtFullName.XOSQLText, DtpBirthDate, TxtBirthPlace.XOSQLText, TxtAddress.XOSQLText, TxtEmployeeNickname.XOSQLText, ChkActiveEmployee.Checked, CboGender.SelectedItem.ToString, _Photo, _ChangePhoto, varUserAttributes.EID, varFormAttributes.RowID)) Then
             Mainframe_n_6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else
@@ -150,7 +150,7 @@ Public Class EPLS_Editor
         OfdPhoto.Filter = "Photo File|*.Jpg;*.Jpeg"
 
         If OfdPhoto.ShowDialog = DialogResult.OK Then
-            If (OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, V_MaxUploadSize_Photo, True)) Then
+            If (OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, varMaxUploadSizePhoto, True)) Then
                 _Photo = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(OfdPhoto.FileName)
                 pctbxPhoto.Image = _Photo
                 _ChangePhoto = True

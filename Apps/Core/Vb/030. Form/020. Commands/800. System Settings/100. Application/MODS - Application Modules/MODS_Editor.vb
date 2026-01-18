@@ -10,7 +10,7 @@ Public Class MODS_Editor
 #Region "Subs Collection"
     <SupportedOSPlatform("windows")>
     Private Sub FILLGroup(ByVal ModuleGroup As cbo)
-        Commands.MODS.Editor.FILLModuleGroup(V_DatabaseEngine, ModuleGroup)
+        Commands.MODS.Editor.FILLModuleGroup(varDatabaseEngine, ModuleGroup)
     End Sub
 
     Private Sub CheckAllInput()
@@ -35,12 +35,12 @@ Public Class MODS_Editor
             ChkAddNew.Enabled = False
             ChkAddNew.Visible = False
             TxtID.Text = varFormAttributes.RowID
-            CboGroup.SelectedValue = Commands.MODS.Editor.GETMODGroupID(V_DatabaseEngine, varFormAttributes.RowID)
-            TxtCode.Text = Commands.MODS.Editor.GETMODCode(V_DatabaseEngine, varFormAttributes.RowID)
-            TxtName.Text = Commands.MODS.Editor.GETMODName(V_DatabaseEngine, varFormAttributes.RowID)
-            TxtDescription.Text = Commands.MODS.Editor.GETMODDescription(V_DatabaseEngine, varFormAttributes.RowID)
-            ChkSystem.Checked = Commands.MODS.Editor.GETMODSystem(V_DatabaseEngine, varFormAttributes.RowID)
-            ChkLocked.Checked = Commands.MODS.Editor.GETMODLocked(V_DatabaseEngine, varFormAttributes.RowID)
+            CboGroup.SelectedValue = Commands.MODS.Editor.GETMODGroupID(varDatabaseEngine, varFormAttributes.RowID)
+            TxtCode.Text = Commands.MODS.Editor.GETMODCode(varDatabaseEngine, varFormAttributes.RowID)
+            TxtName.Text = Commands.MODS.Editor.GETMODName(varDatabaseEngine, varFormAttributes.RowID)
+            TxtDescription.Text = Commands.MODS.Editor.GETMODDescription(varDatabaseEngine, varFormAttributes.RowID)
+            ChkSystem.Checked = Commands.MODS.Editor.GETMODSystem(varDatabaseEngine, varFormAttributes.RowID)
+            ChkLocked.Checked = Commands.MODS.Editor.GETMODLocked(varDatabaseEngine, varFormAttributes.RowID)
             TxtCode.ReadOnly = True
         End If
     End Sub
@@ -53,15 +53,15 @@ Public Class MODS_Editor
         If (CboGroup.Items.Count = 0) OrElse (TxtCode.XOSQLText = String.Empty) OrElse (TxtName.XOSQLText = String.Empty) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Module Group selected, Module Code and Module Name are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (varFormAttributes.IsNew) AndAlso (Commands.MODS.Editor.IsDuplicate(V_DatabaseEngine, TxtCode.XOSQLText)) Then
+        ElseIf (varFormAttributes.IsNew) AndAlso (Commands.MODS.Editor.IsDuplicate(varDatabaseEngine, TxtCode.XOSQLText)) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Departement Code already registered.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf Not (varFormAttributes.IsNew) AndAlso (Commands.MODS.Editor.IsDuplicate(V_DatabaseEngine, TxtCode.XOSQLText, varFormAttributes.RowID)) Then
+        ElseIf Not (varFormAttributes.IsNew) AndAlso (Commands.MODS.Editor.IsDuplicate(varDatabaseEngine, TxtCode.XOSQLText, varFormAttributes.RowID)) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Departement Code already used by another departement.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        If (Commands.MODS.Editor.PUSHData(V_DatabaseEngine, TxtID.XOSQLText, CboGroup.SelectedValue.ToString, TxtCode.XOSQLText, TxtName.XOSQLText, TxtDescription.XOSQLText, ChkSystem.Checked, ChkLocked.Checked, varFormAttributes.RowID)) Then
+        If (Commands.MODS.Editor.PUSHData(varDatabaseEngine, TxtID.XOSQLText, CboGroup.SelectedValue.ToString, TxtCode.XOSQLText, TxtName.XOSQLText, TxtDescription.XOSQLText, ChkSystem.Checked, ChkLocked.Checked, varFormAttributes.RowID)) Then
             RaiseEvent RecordSaved()
             Mainframe_n_6.Ts_status.Text = "Success"
         Else

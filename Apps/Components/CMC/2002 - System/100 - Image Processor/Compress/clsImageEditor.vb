@@ -8,46 +8,46 @@ Namespace ImageEditor.Proccessor
         <SupportedOSPlatform("windows")>
         Public Shared Function OutputAsFile(ByVal File As String, ByVal SaveAs As String) As Boolean
             ' Get a bitmap.
-            Dim V_Success As Boolean
+            Dim varSuccess As Boolean
             Try
-                Dim V_Photo As New Bitmap(File)
-                Dim V_TmpPhoto As New Bitmap(V_Photo)
+                Dim varPhoto As New Bitmap(File)
+                Dim varTmpPhoto As New Bitmap(varPhoto)
                 Dim jpgEncoder As ImageCodecInfo = GetEncoder(ImageFormat.Jpeg)
 
                 ' Create an Encoder object based on the GUID
                 ' for the Quality parameter category.
-                Dim myEncoder As System.Drawing.Imaging.Encoder = System.Drawing.Imaging.Encoder.Quality
+                Dim varEncoder As System.Drawing.Imaging.Encoder = System.Drawing.Imaging.Encoder.Quality
 
                 ' Create an EncoderParameters object.
                 ' An EncoderParameters object has an array of EncoderParameter
                 ' objects. In this case, there is only one
                 ' EncoderParameter object in the array.
-                Dim V_myEncoderParameters As New EncoderParameters(1)
+                Dim varEncoderParameters As New EncoderParameters(1)
 
-                Dim V_MemoryStream As New MemoryStream
+                Dim varMemoryStream As New MemoryStream
 
-                Dim V_myEncoderParameter As New EncoderParameter(myEncoder, 20&)
+                Dim varEncoderParameter As New EncoderParameter(varEncoder, 20&)
 
-                V_myEncoderParameters.Param(0) = V_myEncoderParameter
+                varEncoderParameters.Param(0) = varEncoderParameter
 
-                V_TmpPhoto.Save(V_MemoryStream, System.Drawing.Imaging.ImageFormat.Jpeg)
+                varTmpPhoto.Save(varMemoryStream, System.Drawing.Imaging.ImageFormat.Jpeg)
 
-                Dim V_NewPhoto As New Bitmap(System.Drawing.Image.FromStream(V_MemoryStream))
+                Dim varNewPhoto As New Bitmap(System.Drawing.Image.FromStream(varMemoryStream))
 
                 '_NewPhoto = System.Drawing.Image.FromStream(_MemoryStream)
-                V_NewPhoto.Save(SaveAs, jpgEncoder, V_myEncoderParameters)
-                V_NewPhoto.Dispose()
-                V_MemoryStream.Dispose()
-                V_TmpPhoto.Dispose()
-                V_Photo.Dispose()
-                V_Success = True
+                varNewPhoto.Save(SaveAs, jpgEncoder, varEncoderParameters)
+                varNewPhoto.Dispose()
+                varMemoryStream.Dispose()
+                varTmpPhoto.Dispose()
+                varPhoto.Dispose()
+                varSuccess = True
             Catch ex As Exception
-                V_Success = False
+                varSuccess = False
             End Try
 
             GC.Collect()
 
-            Return V_Success
+            Return varSuccess
         End Function
 
         ''' <summary>
@@ -59,37 +59,53 @@ Namespace ImageEditor.Proccessor
         Public Shared Function OutputAsImage(ByVal File As String) As System.Drawing.Image
             ' Get a bitmap.
             Try
-                Dim V_Photo As New Bitmap(File)
+                Dim varPhoto As New Bitmap(File)
                 Dim jpgEncoder As ImageCodecInfo = GetEncoder(ImageFormat.Jpeg)
 
                 ' Create an Encoder object based on the GUID
                 ' for the Quality parameter category.
-                Dim myEncoder As System.Drawing.Imaging.Encoder = System.Drawing.Imaging.Encoder.Quality
+                Dim varEncoder As System.Drawing.Imaging.Encoder = System.Drawing.Imaging.Encoder.Quality
 
                 ' Create an EncoderParameters object.
                 ' An EncoderParameters object has an array of EncoderParameter
                 ' objects. In this case, there is only one
                 ' EncoderParameter object in the array.
-                Dim V_myEncoderParameters As New EncoderParameters(1)
+                Dim varEncoderParameters As New EncoderParameters(1)
 
-                Dim V_myEncoderParameter As New EncoderParameter(myEncoder, 20&)
-                V_myEncoderParameters.Param(0) = V_myEncoderParameter
+                Dim varEncoderParameter As New EncoderParameter(varEncoder, 20&)
+                varEncoderParameters.Param(0) = varEncoderParameter
 
-                Dim V_NewImage As System.Drawing.Image = Nothing
+                Dim varNewImage As System.Drawing.Image = Nothing
 
-                Dim V_MemoryStream = New MemoryStream()
+                Dim varMemoryStream = New MemoryStream()
                 '_Photo.Save(_MemoryStream, System.Drawing.Imaging.ImageFormat.Jpeg)
-                V_Photo.Save(V_MemoryStream, jpgEncoder, V_myEncoderParameters)
+                varPhoto.Save(varMemoryStream, jpgEncoder, varEncoderParameters)
                 'Dim _Byte = _MemoryStream.ToArray
 
-                V_NewImage = System.Drawing.Image.FromStream(V_MemoryStream)
+                varNewImage = System.Drawing.Image.FromStream(varMemoryStream)
 
                 GC.Collect()
 
-                Return V_NewImage
+                Return varNewImage
             Catch ex As Exception
-                PUSHERRORDATA("[OutputAsImage] $\Ingrid\Apps\Components\CMC\2002 - System\100 - Image Processor\Compress\clsImageEditor.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.ToString, "-1", "", "", True, True, True)
-                PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[OutputAsImage] $\Ingrid\Apps\Components\CMC\2002 - System\100 - Image Processor\Compress\clsImageEditor.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
                 Return Nothing
             End Try
         End Function
@@ -103,24 +119,40 @@ Namespace ImageEditor.Proccessor
         Public Shared Function OutputAsImage(ByVal File As FileStream) As System.Drawing.Image
             ' Get a bitmap.
             Try
-                Dim V_NewImage As System.Drawing.Image = Nothing
-                Dim V_MemoryStream = New MemoryStream()
+                Dim varNewImage As System.Drawing.Image = Nothing
+                Dim varMemoryStream = New MemoryStream()
 
-                V_MemoryStream.SetLength(File.Length)
-                File.Read(V_MemoryStream.GetBuffer, 0, CType(File.Length, Integer))
+                varMemoryStream.SetLength(File.Length)
+                File.Read(varMemoryStream.GetBuffer, 0, CType(File.Length, Integer))
 
-                V_MemoryStream.Flush()
+                varMemoryStream.Flush()
                 File.Close()
-                V_MemoryStream.Close()
+                varMemoryStream.Close()
 
-                V_NewImage = System.Drawing.Image.FromStream(V_MemoryStream)
+                varNewImage = System.Drawing.Image.FromStream(varMemoryStream)
 
                 GC.Collect()
 
-                Return V_NewImage
+                Return varNewImage
             Catch ex As Exception
-                PUSHERRORDATA("[OutputAsImage] $\Ingrid\Apps\Components\CMC\2002 - System\100 - Image Processor\Compress\clsImageEditor.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.ToString, "-1", "", "", True, True, True)
-                PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[OutputAsImage] $\Ingrid\Apps\Components\CMC\2002 - System\100 - Image Processor\Compress\clsImageEditor.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
                 Return Nothing
             End Try
         End Function
@@ -134,108 +166,139 @@ Namespace ImageEditor.Proccessor
         Public Shared Function OutputAsImage(ByVal File() As Byte) As System.Drawing.Image
             ' Get a bitmap.
             Try
-                Dim V_NewImage As System.Drawing.Image = Nothing
-                Dim V_MemoryStream = New MemoryStream()
+                Dim varNewImage As System.Drawing.Image = Nothing
+                Dim varMemoryStream = New MemoryStream()
 
-                V_MemoryStream.Write(File, 0, File.Length)
-                V_MemoryStream.Seek(0, SeekOrigin.Begin)
+                varMemoryStream.Write(File, 0, File.Length)
+                varMemoryStream.Seek(0, SeekOrigin.Begin)
 
-                V_NewImage = System.Drawing.Image.FromStream(V_MemoryStream)
+                varNewImage = System.Drawing.Image.FromStream(varMemoryStream)
 
                 GC.Collect()
 
-                Return V_NewImage
+                Return varNewImage
             Catch ex As Exception
-                PUSHERRORDATA("[OutputAsImage] $\Ingrid\Apps\Components\CMC\2002 - System\100 - Image Processor\Compress\clsImageEditor.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.ToString, "-1", "", "", True, True, True)
-                PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[OutputAsImage] $\Ingrid\Apps\Components\CMC\2002 - System\100 - Image Processor\Compress\clsImageEditor.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
                 Return Nothing
             End Try
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function OutputAsByte(ByVal File As String) As Byte()
+        Public Shared Function OutputAsByte(ByVal file As String) As Byte()
             ' Get a bitmap.
-            Dim V_Photo As New Bitmap(File)
+            Dim varPhoto As New Bitmap(file)
 
             ' Create an Encoder object based on the GUID
             ' for the Quality parameter category.
-            Dim myEncoder As System.Drawing.Imaging.Encoder = System.Drawing.Imaging.Encoder.Quality
+            Dim varEncoder As System.Drawing.Imaging.Encoder = System.Drawing.Imaging.Encoder.Quality
 
             ' Create an EncoderParameters object.
             ' An EncoderParameters object has an array of EncoderParameter
             ' objects. In this case, there is only one
             ' EncoderParameter object in the array.
-            Dim V_myEncoderParameters As New EncoderParameters(1)
+            Dim varEncoderParameters As New EncoderParameters(1)
 
-            Dim V_myEncoderParameter As New EncoderParameter(myEncoder, 20&)
-            V_myEncoderParameters.Param(0) = V_myEncoderParameter
+            Dim varEncoderParameter As New EncoderParameter(varEncoder, 20&)
+            varEncoderParameters.Param(0) = varEncoderParameter
             '_Photo.Save(SaveAs, jpgEncoder, myEncoderParameters)
 
-            Dim V_MemoryStream = New MemoryStream()
-            V_Photo.Save(V_MemoryStream, System.Drawing.Imaging.ImageFormat.Jpeg)
+            Dim varMemoryStream = New MemoryStream()
+            varPhoto.Save(varMemoryStream, System.Drawing.Imaging.ImageFormat.Jpeg)
 
-            Dim V_Byte = V_MemoryStream.ToArray
+            Dim varByte = varMemoryStream.ToArray
 
             GC.Collect()
 
-            Return V_Byte
+            Return varByte
         End Function
 
         <SupportedOSPlatform("windows")>
         Private Shared Function GetEncoder(ByVal format As ImageFormat) As ImageCodecInfo
-            Dim V_Codecs As ImageCodecInfo() = ImageCodecInfo.GetImageDecoders()
+            Dim varCodecs As ImageCodecInfo() = ImageCodecInfo.GetImageDecoders()
 
-            Dim V_codec As ImageCodecInfo
-            For Each V_codec In V_Codecs
-                If V_codec.FormatID = format.Guid Then
-                    Return V_codec
+            Dim varCodec As ImageCodecInfo
+            For Each varCodec In varCodecs
+                If varCodec.FormatID = format.Guid Then
+                    Return varCodec
                 End If
-            Next v_codec
+            Next varCodec
             Return Nothing
         End Function
     End Class
 
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Function Watermarker(ByVal Picture As System.Drawing.Image, ByVal Text As String) As System.Drawing.Image
+        Public Shared Function WaterMarker(ByVal picture As System.Drawing.Image, ByVal watermarktext As String) As System.Drawing.Image
             Try
-                Dim V_BMP As New Bitmap(Picture)
-                Dim V_WaterText As String = Text
-                Dim V_Canvas As Graphics = Graphics.FromImage(V_BMP)
-                Dim V_StringSizeF As SizeF,
-    V_DesiredWidth As Double,
-    V_DesiredWidth2 As Double,
-    V_DesireHeight As Double,
-    V_wmFont As Font,
-    V_RequiredFontSize As Double,
-    V_Ratio As Double
+                Dim varBitmap As New Bitmap(picture)
+                Dim varWaterText As String = watermarktext
+                Dim varCanvas As Graphics = Graphics.FromImage(varBitmap)
+                Dim varStringSizeF As SizeF,
+    varDesiredWidth As Double,
+    varDesiredWidth2 As Double,
+    varDesireHeight As Double,
+    varwmFont As Font,
+    varRequiredFontSize As Double,
+    varRatio As Double
 
-                V_wmFont = New Font("Verdana", 14, FontStyle.Bold)
+                varwmFont = New Font("Verdana", 14, FontStyle.Bold)
 
-                V_DesiredWidth = V_BMP.Width * 0.5
-                V_DesiredWidth2 = V_BMP.Width * 0.25
-                V_DesireHeight = V_BMP.Height * 0.5
+                varDesiredWidth = varBitmap.Width * 0.5
+                varDesiredWidth2 = varBitmap.Width * 0.25
+                varDesireHeight = varBitmap.Height * 0.5
 
-                V_StringSizeF = V_Canvas.MeasureString(V_WaterText, V_wmFont)
-                V_Ratio = V_StringSizeF.Width / V_wmFont.SizeInPoints
-                V_RequiredFontSize = V_DesiredWidth / V_Ratio
+                varStringSizeF = varCanvas.MeasureString(varWaterText, varwmFont)
+                varRatio = varStringSizeF.Width / varwmFont.SizeInPoints
+                varRequiredFontSize = varDesiredWidth / varRatio
 
-                V_wmFont = New Font("Verdana", CType(V_RequiredFontSize, Single), CType(FontStyle.Bold, FontStyle))
+                varwmFont = New Font("Verdana", CType(varRequiredFontSize, Single), CType(FontStyle.Bold, FontStyle))
 
-                V_Canvas.DrawString(V_WaterText,
-        V_wmFont,
-        New SolidBrush(Color.FromArgb(128, 0, 0, 0)), CType(V_DesiredWidth2 + 2, Single), CType(V_DesireHeight + 2, Single))
+                varCanvas.DrawString(varWaterText,
+        varwmFont,
+        New SolidBrush(Color.FromArgb(128, 0, 0, 0)), CType(varDesiredWidth2 + 2, Single), CType(varDesireHeight + 2, Single))
 
-                V_Canvas.DrawString(V_WaterText,
-        V_wmFont,
-        CType(New SolidBrush(Color.FromArgb(128, 255, 255, 255)), Brush), CType(V_DesiredWidth2, Single), CType(V_DesireHeight, Single))
+                varCanvas.DrawString(varWaterText,
+        varwmFont,
+        CType(New SolidBrush(Color.FromArgb(128, 255, 255, 255)), Brush), CType(varDesiredWidth2, Single), CType(varDesireHeight, Single))
 
-                V_BMP.SetResolution(96, 96)
+                varBitmap.SetResolution(96, 96)
 
-                Return V_BMP
+                Return varBitmap
             Catch ex As Exception
-                PUSHERRORDATA("[Watermarker] $\Ingrid\Apps\Components\CMC\2002 - System\100 - Image Processor\Compress\clsImageEditor.vb", Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.ToString, "-1", "", "", True, True, True)
-                PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[WaterMarker] $\Ingrid\Apps\Components\CMC\2002 - System\100 - Image Processor\Compress\clsImageEditor.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
                 Return Nothing
             End Try
         End Function

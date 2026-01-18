@@ -1,4 +1,6 @@
-﻿Namespace Ingrid.Main
+﻿Imports System.Runtime.Versioning
+
+Namespace Ingrid.Main
 
     Public Class GlobalRecord
         Property IsNew As Boolean

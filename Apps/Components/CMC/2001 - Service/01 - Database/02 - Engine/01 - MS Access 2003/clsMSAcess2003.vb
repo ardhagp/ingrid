@@ -51,19 +51,34 @@ Namespace Database.Engine
                     Return False
                 End If
             Catch ex As Exception
-                Call PUSHERRORDATA("[CheckDBCatalog] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, "", ex.StackTrace, GETAPPVERSION, False, , False)
-                Call PUSHERRORDATASHOW()
-                Return False
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[CheckDBCatalog] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
                 Return False
             End Try
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub Open(Optional ByVal IsProductionMode As Boolean = False)
+        Public Sub Open(Optional ByVal isproductionmode As Boolean = False)
             Try
                 CheckDBCatalog()
 
-                If (IsProductionMode) Then
+                If (isproductionmode) Then
                     varFilepath(0) = Application.StartupPath & "\Resources\CATALOG.mdb"
                 Else
                     varFilepath(0) = Application.StartupPath & "\Resources\DEV_CATALOG.mdb"
@@ -72,7 +87,7 @@ Namespace Database.Engine
                 Dim V_FileInfo As New OperatingSystem.File.Info
 
                 If OperatingSystem.File.Info.IsExists(varFilepath(0)) Then
-                    varConnectionstring(0) = varMsa2003c.MicrosoftOLEDBStandard(varFilepath(0), "admin", "")
+                    varConnectionstring(0) = varMsa2003c.Microsoftoledbstandard(varFilepath(0), "admin", "")
 
                     varConnection(0) = New OleDb.OleDbConnection(varConnectionstring(0))
                     varConnection(0).Open()
@@ -81,58 +96,88 @@ Namespace Database.Engine
                 varFilepath(1) = Application.StartupPath & "\Resources\ERRLOG.mdb"
 
                 If OperatingSystem.File.Info.IsExists(varFilepath(1)) Then
-                    varConnectionstring(1) = varMsa2003c.MicrosoftOLEDBStandard(varFilepath(1), "admin", "")
+                    varConnectionstring(1) = varMsa2003c.Microsoftoledbstandard(varFilepath(1), "admin", "")
 
                     varConnection(1) = New OleDb.OleDbConnection(varConnectionstring(1))
                     varConnection(1).Open()
                 End If
 
             Catch ex As Exception
-                Call PUSHERRORDATA("[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, "0", ex.StackTrace, GETAPPVERSION, False, , False)
-                Call PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+                Return
             End Try
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Function GetDatabaseProperties(ByVal Fields As Database.Properties.Fields) As Database.Properties.Fields
+        Public Function GetDatabaseProperties(ByVal fields As Database.Properties.Fields) As Database.Properties.Fields
             Try
                 varDatareader(0) = GETDATAROW("SELECT LIST.SERVERADDRESS, LIST.USERNAME, LIST.PASSWORD, LIST.ACCEPTEDLINECONNECTION FROM LIST WHERE LIST.ID =1;", varConnection(0), varCommand(0))
 
                 With varDatareader(0)
-                    Fields.ServerAddress = .GetString(0)
-                    Fields.Username = .GetString(1)
-                    Fields.Password = CMCv.Security.Decrypt.AES(.GetString(2))
-                    Fields.Port = CType(.GetValue(3), Integer)
-                    Fields.DataStorage = .GetString(4)
-                    Fields.FileStorage = .GetString(5)
+                    fields.ServerAddress = .GetString(0)
+                    fields.Username = .GetString(1)
+                    fields.Password = CMCv.Security.Decrypt.AES(.GetString(2))
+                    fields.Port = CType(.GetValue(3), Integer)
+                    fields.DataStorage = .GetString(4)
+                    fields.FileStorage = .GetString(5)
                 End With
 
-                Return Fields
+                Return fields
             Catch ex As System.Data.OleDb.OleDbException
-                Call PUSHERRORDATA("[GetDatabaseProperties] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.ErrorCode.ToString, ex.StackTrace, GETAPPVERSION, False, , False)
-                Call PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[GetDatabaseProperties] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.ErrorCode
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
                 Return Nothing
             End Try
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub SaveErrorData(ByVal ErrorCatcher As Catcher.Error.Fields)
-            Dim NowDateTime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
-            Call PUSHDATA("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & ErrorCatcher.Type & "','" & ErrorCatcher.Message & "'," & ErrorCatcher.Number & ",'" & ErrorCatcher.InternalStackTrace & "'," & ErrorCatcher.EnableErrorReporting & ",'" & NowDateTime & "');", varConnection(1), varCommand(1))
+        Public Sub SaveErrorData(ByVal proLog As Ladybug.Log.Fields)
+            Dim varNowdatetime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
+            Call PUSHDATA("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & proLog.TypeOfFaulty & "','" & proLog.Message & "'," & proLog.Number & ",'" & proLog.InternalStackTrace & "'," & proLog.ShowErrorReporting & ",'" & varNowdatetime & "');", varConnection(1), varCommand(1))
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Shared Function GETDATAROW(ByVal Query As String, ByVal MyConnection As OleDb.OleDbConnection, ByVal MyCommand As OleDb.OleDbCommand) As OleDb.OleDbDataReader
+        Private Shared Function GetDataRow(ByVal query As String, ByVal myconnection As OleDb.OleDbConnection, ByVal mycommand As OleDb.OleDbCommand) As OleDb.OleDbDataReader
             Try
                 Dim varDatareader As OleDb.OleDbDataReader
 
-                MyCommand = New OleDb.OleDbCommand With {
-                .Connection = MyConnection,
+                mycommand = New OleDb.OleDbCommand With {
+                .Connection = myconnection,
                 .CommandType = CommandType.Text,
-                .CommandText = Query}
+                .CommandText = query}
 
-                MyCommand = New System.Data.OleDb.OleDbCommand(Query, MyConnection)
-                varDatareader = MyCommand.ExecuteReader
+                mycommand = New System.Data.OleDb.OleDbCommand(query, myconnection)
+                varDatareader = mycommand.ExecuteReader
 
                 If varDatareader.HasRows Then
                     varDatareader.Read()
@@ -140,23 +185,54 @@ Namespace Database.Engine
 
                 Return varDatareader
             Catch ex As System.Data.OleDb.OleDbException
-                Call PUSHERRORDATA("[GETDATAROW] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.StackTrace, ex.ErrorCode.ToString, GETAPPVERSION, False, , False)
-                Call PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
                 Return Nothing
             End Try
         End Function
 
         <SupportedOSPlatform("windows")>
-        Private Shared Sub PUSHDATA(ByVal Query As String, ByVal MyConnection As OleDb.OleDbConnection, ByVal MyCommand As OleDb.OleDbCommand)
+        Private Shared Sub PushData(ByVal query As String, ByVal myconnection As OleDb.OleDbConnection, ByVal mycommand As OleDb.OleDbCommand)
             Try
-                MyCommand = New OleDb.OleDbCommand With {
-                .Connection = MyConnection,
+                mycommand = New OleDb.OleDbCommand With {
+                .Connection = myconnection,
                 .CommandType = CommandType.Text,
-                .CommandText = Query}
-                MyCommand.ExecuteNonQuery()
+                .CommandText = query}
+                mycommand.ExecuteNonQuery()
             Catch ex As System.Data.OleDb.OleDbException
-                Call PUSHERRORDATA("[PUSHDATA] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb", Catcher.Error.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.ErrorCode.ToString, ex.StackTrace, GETAPPVERSION, False, False, False)
-                Call PUSHERRORDATASHOW()
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[PushData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
             End Try
         End Sub
 

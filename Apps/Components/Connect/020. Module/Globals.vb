@@ -18,6 +18,7 @@ Module Globals
     Public V_DBP_SQLITE As New SQLite.Execute
 
     Public varSecurityEncryption As New Security.Encrypt
+    Public proLog As New Ladybug.Log.Fields
 
     Public varMajor As Integer = My.Application.Info.Version.Major
     Public varMinor As Integer = My.Application.Info.Version.Minor
@@ -27,7 +28,7 @@ Module Globals
 
     Public WithEvents MSG As New frmDialogBox
     Public WithEvents ERC As New frmErrorReporting
-    Public ErrorCatcher As New Catcher.Error.Fields
+    Public ErrorCatcher As New Ladybug.Log.Fields
 
     Public varFormAttributes As New Connect.Main.GlobalRecord
 
@@ -62,11 +63,23 @@ Module Globals
                                                                       BindingFlags.NonPublic)
             propertyInfo.SetValue(gridview, True, Nothing)
         Catch ex As Exception
-            PUSHERRORDATA("[DblBuffer] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb",
-                          Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime,
-                          ex.Message.ToString, ex.HResult.ToString, ex.StackTrace,
-                          GETAPPVERSION, False, True, True)
-            PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GETAPPVERSION()
+                .FromSender = "[DblBuffer] $Ingrid\Apps\Components\Connect\020. Module\Globals.vb"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
         End Try
     End Sub
 
@@ -85,30 +98,6 @@ Module Globals
                        Optional ByVal parentframe As Windows.Forms.Form = Nothing)
         Try
             formname.SLFNamaForm.Text = formtitle
-
-            ''' The old code below is replaced with improved logic
-            'If formimage IsNot Nothing Then
-            '    formname.SLFLogo.Image = formimage
-            'End If
-            'formname.SLFSubNamaForm.Text = formsubtitle
-            'If Not (isdialog) Then
-            '    If (formname.IsHandleCreated) Then
-            '        formname.Focus()
-            '    Else
-            '        If parentframe IsNot Nothing Then
-            '            formname.Visible = False
-            '            formname.MdiParent = parentframe
-            '            formname.WindowState = FormWindowState.Maximized
-            '            formname.Show()
-            '            formname.Visible = True
-            '        Else
-            '            formname.Show()
-            '        End If
-            '    End If
-            'Else
-            '    formname.ShowDialog()
-            '    formname.Dispose()
-            'End If
 
             If formimage IsNot Nothing Then
                 formname.SLFLogo.Image = formimage
@@ -137,10 +126,23 @@ Module Globals
                 formname.Show()
             End If
         Catch ex As Exception
-            Call PUSHERRORDATA("[Display] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb",
-                               Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message,
-                               ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, True)
-            Call PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GETAPPVERSION()
+                .FromSender = "[Display] $Ingrid\Apps\Components\Connect\020. Module\Globals.vb"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
         End Try
     End Sub
 
@@ -151,7 +153,7 @@ Module Globals
     ''' </summary>
     ''' <returns>String</returns>
     ''' <remarks></remarks>
-    Public Function GETAPPVERSION() As String
+    Public Function GetAppVersion() As String
         Try
             Dim varMajor, varMinor, varBuild, varRevision As Integer
             varMajor = My.Application.Info.Version.Major
@@ -161,10 +163,24 @@ Module Globals
             varApplicationVersion = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
             Return varApplicationVersion
         Catch ex As Exception
-            PUSHERRORDATA("[GETAPPVERSION] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb",
-                          Catcher.Error.Fields.TypeOfFaulties.ApplicationRunTime, ex.Message,
-                          ex.HResult.ToString, ex.StackTrace, "0.0.0", False, True, True)
-            PUSHERRORDATASHOW()
+            With proLog
+                .AppVersion = GetAppVersion()
+                .FromSender = "[GetAppVersion] $Ingrid\Apps\Components\Connect\020. Module\Globals.vb"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+
+            Dim clsLog As New Ladybug.Log.Events
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
+
             varApplicationVersion = "0.0.0"
             Return varApplicationVersion
         End Try
@@ -173,47 +189,47 @@ Module Globals
 
 
 #Region "Error Log"
-    ''' <summary>
-    ''' Function to temporarily store error log data
-    ''' </summary>
-    ''' <param name="fromsender"></param>
-    ''' <param name="errortype"></param>
-    ''' <param name="errormessage"></param>
-    ''' <param name="errornumber"></param>
-    ''' <param name="internalstacktrace"></param>
-    ''' <param name="appversion"></param>
-    ''' <param name="enableerrorreporting"></param>
-    ''' <param name="saveerror"></param>
-    ''' <param name="resumenext"></param>
-    Public Sub PUSHERRORDATA(ByVal fromsender As String, ByVal errortype As Catcher.Error.Fields.TypeOfFaulties,
-                             ByVal errormessage As String, ByVal errornumber As String,
-                             ByVal internalstacktrace As String, ByVal appversion As String,
-                             Optional enableerrorreporting As Boolean = True,
-                             Optional saveerror As Boolean = True,
-                             Optional resumenext As Boolean = True)
-        With ErrorCatcher
-            .FromSender = fromsender
-            .Type = errortype
-            .Message = errormessage
-            .Number = errornumber
-            .InternalStackTrace = internalstacktrace
-            .AppVersion = appversion
-            .EnableErrorReporting = enableerrorreporting
-            .SaveError = saveerror
-            .ResumeNext = resumenext
-        End With
-    End Sub
+    '''' <summary>
+    '''' Function to temporarily store error log data
+    '''' </summary>
+    '''' <param name="fromsender"></param>
+    '''' <param name="errortype"></param>
+    '''' <param name="errormessage"></param>
+    '''' <param name="errornumber"></param>
+    '''' <param name="internalstacktrace"></param>
+    '''' <param name="appversion"></param>
+    '''' <param name="enableerrorreporting"></param>
+    '''' <param name="saveerror"></param>
+    '''' <param name="resumenext"></param>
+    'Public Sub SUBlogdatapush(ByVal fromsender As String, ByVal errortype As Ladybug.Log.Fields.TypeOfFaulties,
+    '                         ByVal errormessage As String, ByVal errornumber As String,
+    '                         ByVal internalstacktrace As String, ByVal appversion As String,
+    '                         Optional enableerrorreporting As Boolean = True,
+    '                         Optional saveerror As Boolean = True,
+    '                         Optional resumenext As Boolean = True)
+    '    With ErrorCatcher
+    '        .FromSender = fromsender
+    '        .Type = errortype
+    '        .Message = errormessage
+    '        .Number = errornumber
+    '        .InternalStackTrace = internalstacktrace
+    '        .AppVersion = appversion
+    '        .EnableErrorReporting = enableerrorreporting
+    '        .SaveError = saveerror
+    '        .ResumeNext = resumenext
+    '    End With
+    'End Sub
 
-    ''' <summary>
-    ''' Show error reporting dialog box
-    ''' </summary>
-    ''' <remarks></remarks>
-    Public Sub PUSHERRORDATASHOW()
-        ERC = New CMCv.frmErrorReporting(ErrorCatcher, V_DBE_SQLite)
-        ERC.ShowDialog()
-        If Not (ERC.ResumeNext) Then
-            Return
-        End If
-    End Sub
+    '''' <summary>
+    '''' Show error reporting dialog box
+    '''' </summary>
+    '''' <remarks></remarks>
+    'Public Sub SUBlogdatashow()
+    '    ERC = New CMCv.frmErrorReporting(ErrorCatcher, V_DBE_SQLite)
+    '    ERC.ShowDialog()
+    '    If Not (ERC.ResumeNext) Then
+    '        Return
+    '    End If
+    'End Sub
 #End Region
 End Module
