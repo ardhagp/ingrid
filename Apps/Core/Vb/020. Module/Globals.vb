@@ -59,7 +59,7 @@ Module Globals
         Catch ex As Exception
             With proLog
                 .AppVersion = GetAppVersion()
-                .FromSender = "[DblBuffer] $Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
+                .FromSender = "[DblBuffer] $\Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult
@@ -99,7 +99,7 @@ Module Globals
         Catch ex As Exception
             With proLog
                 .AppVersion = GetAppVersion()
-                .FromSender = "[DblBuffer] $Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
+                .FromSender = "[DblBuffer] $\Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult
@@ -202,7 +202,7 @@ Module Globals
         Catch ex As Exception
             With proLog
                 .AppVersion = GETAPPVERSION()
-                .FromSender = "[Open] $Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
+                .FromSender = "[Open] $\Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult
@@ -259,7 +259,7 @@ Module Globals
         Catch ex As Exception
             With proLog
                 .AppVersion = GETAPPVERSION()
-                .FromSender = "[Open] $Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
+                .FromSender = "[Open] $\Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult

@@ -39,7 +39,7 @@ Namespace Security
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
-                    .FromSender = "[AES] $Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
+                    .FromSender = "[AES] $\Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
                     .Number = ex.HResult
@@ -86,7 +86,7 @@ Namespace Security
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
-                    .FromSender = "[CRC32] $Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
+                    .FromSender = "[CRC32] $\Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
                     .Number = ex.HResult
@@ -146,7 +146,7 @@ Namespace Security
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
-                    .FromSender = "[AES] $Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
+                    .FromSender = "[AES] $\Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
                     .Number = ex.HResult
@@ -174,7 +174,7 @@ Namespace Security
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
-                    .FromSender = "[GetSalt] $Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
+                    .FromSender = "[GetSalt] $\Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
                     .Number = ex.HResult

@@ -6,12 +6,12 @@ Imports CMCv.Database.Adapter
 Imports MySql.Data
 
 Namespace Database.Engine
-    Public Class MySQL
+    Public Class Mysql
         Implements IDisposable
 
         Private ReadOnly varConnection(1) As MySqlClient.MySqlConnection
         Private ReadOnly varCommand(1) As MySqlClient.MySqlCommand
-        Private varDataAdapter As MySqlClient.MySqlDataAdapter
+        Private ReadOnly varDataAdapter As MySqlClient.MySqlDataAdapter
 
         Private ReadOnly varMySQL As New Connect.Mysqlconnection
 
@@ -31,19 +31,9 @@ Namespace Database.Engine
                 If disposing Then
                     varDataAdapter?.Dispose()
                 End If
-
-                ' TODO: free unmanaged resources (unmanaged objects) and override finalizer
-                ' TODO: set large fields to null
                 disposedValue = True
             End If
         End Sub
-
-        ' 'TODO: override finalizer only if 'Dispose(disposing As Boolean)' has code to free unmanaged resources
-        ' Protected Overrides Sub Finalize()
-        '     ' Do not change this code. Put cleanup code in 'Dispose(disposing As Boolean)' method
-        '     Dispose(disposing:=False)
-        '     MyBase.Finalize()
-        ' End Sub
 
         ''' <summary>
         ''' Opens a MySQL database connection using the connection parameters provided 
@@ -109,7 +99,7 @@ Namespace Database.Engine
         ''' Returns Nothing if an exception occurs.
         ''' </returns>
         <SupportedOSPlatform("windows")>
-        Public Function GetDataRow(ByVal query As String, Optional ByVal databasename As String = "defaultdb") As MySqlClient.MySqlDataReader
+        Public Function GetDataRow(ByVal query As String, ByVal databasename As String) As MySqlClient.MySqlDataReader
             Dim varDataReader(1) As MySqlClient.MySqlDataReader
 
             Try
@@ -128,7 +118,7 @@ Namespace Database.Engine
             Catch ex As MySqlClient.MySqlException
                 With proLog
                     .AppVersion = GetAppVersion()
-                    .FromSender = "[GetDataRow] $Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
+                    .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
                     .Number = ex.HResult
@@ -143,11 +133,12 @@ Namespace Database.Engine
                 Dim clsLog As New Ladybug.Log.Events
                 clsLog.ShowData(proLog)
                 clsLog = Nothing
+
                 Return Nothing
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
-                    .FromSender = "[GetDataRow] $Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
+                    .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
                     .Number = ex.HResult
@@ -182,7 +173,7 @@ Namespace Database.Engine
         ''' Returns Nothing if an exception occurs.
         ''' </returns>
         <SupportedOSPlatform("windows")>
-        Public Function GetValue(ByVal query As String, Optional ByVal databasename As String = "defaultdb") As Object
+        Public Function GetValue(ByVal query As String, ByVal databasename As String) As Object
             Try
                 Dim varRowValue As Object
 
@@ -237,7 +228,7 @@ Namespace Database.Engine
         ''' The method automatically prepends a USE statement before executing the query.
         ''' </param>
         <SupportedOSPlatform("windows")>
-        Public Function GetDataSet(ByVal dbr As Adapter.MySQL.Display.Request, ByVal tablename As String, Optional ByVal databasename As String = "defaultdb") As DataSet
+        Public Function GetDataSet(ByVal dbr As Adapter.MySQL.Display.Request, ByVal tablename As String, ByVal databasename As String) As DataSet
             Dim varDataAdapter(1) As MySqlClient.MySqlDataAdapter
 
             Try
@@ -513,10 +504,10 @@ Namespace Database.Engine
                 query = "USE " & databasename & "; " & query
 
                 varCommand(1).CommandText = String.Format(CultureInfo.CurrentCulture, "RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH", query)
-                varDataAdapter = New MySqlClient.MySqlDataAdapter(varCommand(1))
-                varDataAdapter.Fill(datasetname, tablename)
-                varDataAdapter = Nothing
-                varDataAdapter.Dispose()
+
+                Using varDataAdapter = New MySqlClient.MySqlDataAdapter(varCommand(1))
+                    varDataAdapter.Fill(datasetname, tablename)
+                End Using
             Catch ex As Exception
                 datasetname = Nothing
                 With proLog

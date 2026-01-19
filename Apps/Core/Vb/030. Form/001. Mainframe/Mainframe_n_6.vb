@@ -280,7 +280,7 @@ Public Class Mainframe_n_6
         Catch ex As Exception
             With proLog
                 .AppVersion = GETAPPVERSION()
-                .FromSender = "[ChangePasswordToolStripMenuItem] $Ingrid\Apps\Core\Vb\030. Form\001. Mainframe\Mainframe_n_6.vb"
+                .FromSender = "[ChangePasswordToolStripMenuItem] $\Ingrid\Apps\Core\Vb\030. Form\001. Mainframe\Mainframe_n_6.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult

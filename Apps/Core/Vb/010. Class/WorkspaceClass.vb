@@ -260,7 +260,7 @@ Public Class WorkspaceClass
         Catch ex As Exception
             With proLog
                 .AppVersion = GetAppVersion()
-                .FromSender = "[Open] $Ingrid\Apps\Core\Vb\010. Class\WorkspaceClass.vb"
+                .FromSender = "[Open] $\Ingrid\Apps\Core\Vb\010. Class\WorkspaceClass.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult

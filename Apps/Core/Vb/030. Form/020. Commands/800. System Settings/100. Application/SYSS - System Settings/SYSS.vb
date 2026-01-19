@@ -80,7 +80,7 @@ Public Class SYSS
         Catch ex As Exception
             With proLog
                 .AppVersion = GetAppVersion()
-                .FromSender = "[BtnSave_Click] $Ingrid\Apps\Core\Vb\030. Form\020. Commands\800. System Settings\100. Application\SYSS - System Settings\SYSS.vb"
+                .FromSender = "[BtnSave_Click] $\Ingrid\Apps\Core\Vb\030. Form\020. Commands\800. System Settings\100. Application\SYSS - System Settings\SYSS.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult

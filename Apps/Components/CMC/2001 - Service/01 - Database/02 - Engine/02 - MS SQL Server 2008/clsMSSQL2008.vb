@@ -3,14 +3,14 @@ Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
 Namespace Database.Engine
-    Public Class MSSQL2008
+    Public Class Mssql2008
         Implements IDisposable
 
         Private ReadOnly varConnection(1) As SqlClient.SqlConnection
         Private ReadOnly varCommand(1) As SqlClient.SqlCommand
         Private varAdapter As SqlClient.SqlDataAdapter
 
-        Private ReadOnly V_MSSQL2008 As New Connect.MSSQLServer2008Connection
+        Private ReadOnly V_MSSQL2008 As New Connect.Mssqlserver2008connection
 
         Public Enum DatabaseID
             DbDefault
@@ -70,7 +70,7 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GetDataRow(ByVal query As String, Optional ByVal databasename As String = "db_universe_erp") As SqlClient.SqlDataReader ', ByVal MyConnection As SqlClient.SqlConnection, ByVal MyCommand As SqlClient.SqlCommand) As SqlClient.SqlDataReader
+        Public Function GetDataRow(ByVal query As String, ByVal databasename As String) As SqlClient.SqlDataReader ', ByVal MyConnection As SqlClient.SqlConnection, ByVal MyCommand As SqlClient.SqlCommand) As SqlClient.SqlDataReader
             Dim varDataReader(1) As SqlClient.SqlDataReader
 
             Try
@@ -130,7 +130,7 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GetValue(ByVal query As String, Optional ByVal databasename As String = "db_universe_erp") As Object
+        Public Function GetValue(ByVal query As String, ByVal databasename As String) As Object
             Try
                 Dim varRowValue As Object
 
@@ -171,7 +171,7 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GetDataSet(ByVal dbr As Adapter.MSSQL2008.Display.Request, ByVal tablename As String, Optional ByVal databasename As String = "db_universe_erp") As DataSet
+        Public Function GetDataSet(ByVal dbr As Adapter.MSSQL2008.Display.Request, ByVal tablename As String, ByVal databasename As String) As DataSet
             Dim varDataAdapter(1) As SqlClient.SqlDataAdapter
 
             Try
@@ -312,7 +312,7 @@ Namespace Database.Engine
 
                 query = "USE " & databasename & "; " & query
 
-                varCommand(1).CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH", query)
+                varCommand(1).CommandText = String.Format(Globalization.CultureInfo.InvariantCulture, "RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH", query)
                 varCommand(1).ExecuteNonQuery()
             Catch ex As Exception
                 With proLog
@@ -386,11 +386,14 @@ Namespace Database.Engine
 
                 query = "USE " & databasename & "; " & query
 
-                varCommand(1).CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH", query)
-                varAdapter = New SqlClient.SqlDataAdapter(varCommand(1))
-                varAdapter.Fill(datasetname, tablename)
-                varAdapter = Nothing
-                varAdapter.Dispose()
+                varCommand(1).CommandText = String.Format(Globalization.CultureInfo.InvariantCulture, "RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH", query)
+
+                Using varAdapter = New SqlClient.SqlDataAdapter(varCommand(1))
+                    varAdapter.Fill(datasetname, tablename)
+                End Using
+
+                'varAdapter = Nothing
+                'varAdapter.Dispose()
             Catch ex As Exception
                 datasetname = Nothing
 
