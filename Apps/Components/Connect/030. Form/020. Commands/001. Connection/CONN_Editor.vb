@@ -1,11 +1,6 @@
-﻿Imports System.Configuration
-Imports System.Data.SQLite
-Imports System.IO
+﻿Imports System.IO
 Imports System.Net.Http
-Imports System.Net.Security
 Imports System.Runtime.Versioning
-Imports CMCv
-Imports Org.BouncyCastle.Crypto.Agreement.Kdf
 
 Public Class CONN_Editor
 
@@ -268,8 +263,10 @@ Public Class CONN_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub btnSaveAs_Click(sender As Object, e As EventArgs) Handles btnSaveAs.Click
-        Dim varDialog As New FolderBrowserDialog()
-        varDialog.Description = "Select a folder to save the connection config"
+        Dim varDialog As New FolderBrowserDialog With {
+        .Description = "Select a folder to save the connection config"
+        }
+
 
         If varConnectionName = String.Empty Then
             MessageBox.Show("Please export the connection first to generate the connection code.")

@@ -45,7 +45,22 @@ Public Class LOGIN
             SLFStatus.Items(0).Text = "Login Failed"
             varLogUser.LoginFailed(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText)
 
-            Bridge.Security.Writelog.Sendlog("""message"" : """ & TxtUsername.XOSQLText & " failed to login."",", "Warning")
+            Dim clsLog As New Ladybug.Log.Events
+            With proLog
+                .Message = TxtUsername.XOSQLText & " failed to login."
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Warning
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
+                .ResumeNext = True
+                .Number = 0
+                .InternalStackTrace = String.Empty
+                .SaveInBetterLog = True
+                .SaveLogInLocal = True
+                .ShowErrorReporting = False
+                .FromSender = "LOGIN"
+                .AppVersion = GetAppVersion()
+            End With
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
 
             tmr_status.Enabled = True
             If varWrongLogin = 3 Then
@@ -62,7 +77,24 @@ Public Class LOGIN
             End With
 
             varLogUser.LoginSuccess(varDatabaseName, varDatabaseEngine, varProperties.EmployeeID)
-            Bridge.Security.Writelog.Sendlog("""message"" : " & varProperties.FirstName & " is login."",", "Information")
+
+            Dim clsLog As New Ladybug.Log.Events
+            With proLog
+                .Message = varProperties.FirstName & " is login."
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Information
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
+                .ResumeNext = True
+                .Number = 0
+                .InternalStackTrace = String.Empty
+                .SaveInBetterLog = True
+                .SaveLogInLocal = True
+                .ShowErrorReporting = False
+                .FromSender = "LOGIN"
+                .AppVersion = GetAppVersion()
+            End With
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
+
             RaiseEvent LoginSuccess()
             Me.Close()
         End If

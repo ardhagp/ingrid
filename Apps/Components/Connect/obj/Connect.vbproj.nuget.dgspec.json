@@ -135,6 +135,9 @@
             "projectReferences": {
               "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj": {
                 "projectPath": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\Bridge\\Bridge.csproj"
+              },
+              "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\LibApp\\LibApp.vbproj": {
+                "projectPath": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\LibApp\\LibApp.vbproj"
               }
             }
           }

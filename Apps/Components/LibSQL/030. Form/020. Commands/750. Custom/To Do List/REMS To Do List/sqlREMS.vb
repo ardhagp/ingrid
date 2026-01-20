@@ -16,11 +16,11 @@ Namespace Commands.REMS
                     varWhere += "and (td.todos_ispublic=1 or (td.todos_ispublic=0 and (td.todos_id in (select tdc.todosworker_todos from [[cus]]todosworker] tdc where tdc.todosworker_employee = 'A23DA83B6023AA21A45BD87E73E23494') or td.todos_createdby = 'A23DA83B6023AA21A45BD87E73E23494')))"
                 End If
 
-                V_DBR_MSSQL2008(0).Query = String.Format("select td.todos_id, td.todos_name, td.todos_datestart, td.todos_dateend, td.todos_dayleft, td.todos_priority, td.todos_totalvalue, td.todos_currentvalue, td.todos_percentage, td.todos_instruction, td.todos_createdby, td.todos_datecreated, td.todos_iscomplete, td.todos_completedby, td.todos_verifiedby, td.todos_ispublic from db_universe_erp.dbo.[[cus]]todos] td {0} order by td.todos_priority, td.todos_datestart asc", varWhere)
+                varDatabaseRequestMssql2008(0).Query = String.Format("select td.todos_id, td.todos_name, td.todos_datestart, td.todos_dateend, td.todos_dayleft, td.todos_priority, td.todos_totalvalue, td.todos_currentvalue, td.todos_percentage, td.todos_instruction, td.todos_createdby, td.todos_datecreated, td.todos_iscomplete, td.todos_completedby, td.todos_verifiedby, td.todos_ispublic from db_universe_erp.dbo.[[cus]]todos] td {0} order by td.todos_priority, td.todos_datestart asc", varWhere)
 
-                V_DBR_MSSQL2008(0).DataGrid = progressgrid
-                V_DBR_MSSQL2008(0).StatusBar = todostatusbar
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TToDosProgress")
+                varDatabaseRequestMssql2008(0).DataGrid = progressgrid
+                varDatabaseRequestMssql2008(0).StatusBar = todostatusbar
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TToDosProgress")
 
             Catch ex As Exception
 

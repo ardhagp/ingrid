@@ -6,8 +6,7 @@ Module Globals
 #Region "Activate Licenses"
     <SupportedOSPlatform("windows")>
     Public Sub ActivateLicenses()
-        Dim clsBridgekey As New Bridge.Security.Getkey
-        Dim varSyncfusionkey As String = clsBridgekey.Syncfusion()
+        Dim varSyncfusionkey As String = Bridge.Security.Getkey.Syncfusion()
 
         'License for Syncfusion
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(varSyncfusionkey)
@@ -43,6 +42,7 @@ Module Globals
 
     Public varFormProperties As New LibApp.Ingrid.Global.Properties
     Public varProperties As New LibApp.Ingrid.Global.Properties
+    Public varAccountingProperties As New LibApp.Ingrid.Accounting.Properties
 #End Region
 
     <SupportedOSPlatform("windows")>

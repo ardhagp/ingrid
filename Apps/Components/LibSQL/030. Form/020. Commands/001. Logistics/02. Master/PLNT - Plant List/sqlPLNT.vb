@@ -29,12 +29,12 @@ Namespace Commands.PLNT
                     varWhere += String.Format("(p.plant_code like '%{0}%') or (p.plant_name like '%{0}%') or (p.plant_name2 like '%{0}%') or (p.plant_postalcode like '%{0}%')", find.XOSQLText)
                 End If
 
-                V_DBR_MSSQL2008(0).Query = String.Format("select p.plant_id, p.plant_code, p.plant_name, p.plant_name2, p.plant_description, p.plant_city, p.plant_postalcode, p.plant_searchterm1, p.plant_searchterm2 from " &
+                varDatabaseRequestMssql2008(0).Query = String.Format("select p.plant_id, p.plant_code, p.plant_name, p.plant_name2, p.plant_description, p.plant_city, p.plant_postalcode, p.plant_searchterm1, p.plant_searchterm2 from " &
                                                     "dbo.man_company c inner join dbo.[[log]]plant] p on p.plant_company = c.company_id {0} order by c.company_code, p.plant_code;", varWhere)
 
-                V_DBR_MSSQL2008(0).DataGrid = datagrid
-                V_DBR_MSSQL2008(0).StatusBar = statusbar
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TPlant")
+                varDatabaseRequestMssql2008(0).DataGrid = datagrid
+                varDatabaseRequestMssql2008(0).StatusBar = statusbar
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TPlant")
             ElseIf dbengine = "MYSQL" Then
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     varWhere = String.Format("")
@@ -47,7 +47,7 @@ Namespace Commands.PLNT
 
                 V_DBR_MYSQL(0).DataGrid = datagrid
                 V_DBR_MYSQL(0).StatusBar = statusbar
-                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TPlant")
+                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TPlant")
             End If
         End Sub
 
@@ -64,12 +64,12 @@ Namespace Commands.PLNT
 
             Try
                 If dbengine = "MSSQL" Then
-                    V_DBR_MSSQL2008(1).Query = String.Format("delete from dbo.doc_employeeactivity where employeeactivity_id = '{0}';delete from db_universe_erp_file.dbo.sto_file where file_parent = '{0}';", rowid)
-                    V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                    varDatabaseRequestMssql2008(1).Query = String.Format("delete from dbo.doc_employeeactivity where employeeactivity_id = '{0}';delete from db_universe_erp_file.dbo.sto_file where file_parent = '{0}';", rowid)
+                    varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                     varSuccess = True
                 ElseIf dbengine = "MYSQL" Then
                     V_DBR_MYSQL(1).Query = String.Format("delete from dbo.doc_employeeactivity where employeeactivity_id = '{0}';delete from db_universe_erp_file.dbo.sto_file where file_parent = '{0}';", rowid)
-                    V_DBE_MYSQL.PushData(databasename, V_DBR_MYSQL(1).Query)
+                    varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
                     varSuccess = True
                 End If
             Catch ex As Exception
@@ -100,12 +100,12 @@ Namespace Commands.PLNT
             Try
                 If dbengine = "MSSQL" Then
                     If rowid = String.Empty Then
-                        V_DBR_MSSQL2008(0).Query = String.Format("select count(mods.module_id) as module_found from dbo.sys_module mods where mods.module_code = '{0}'")
+                        varDatabaseRequestMssql2008(0).Query = String.Format("select count(mods.module_id) as module_found from dbo.sys_module mods where mods.module_code = '{0}'")
                     Else
-                        V_DBR_MSSQL2008(0).Query = String.Format("select count(mods.module_id) as module_found from dbo.sys_module mods where mods.module_code = '{0}' and mods.module_id <> '{1}'")
+                        varDatabaseRequestMssql2008(0).Query = String.Format("select count(mods.module_id) as module_found from dbo.sys_module mods where mods.module_code = '{0}' and mods.module_id <> '{1}'")
                     End If
 
-                    varIsDuplicate = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Boolean)
+                    varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Boolean)
                 ElseIf dbengine = "MYSQL" Then
                     If rowid = String.Empty Then
                         V_DBR_MYSQL(0).Query = String.Format("select count(mods.module_id) as module_found from dbo.sys_module mods where mods.module_code = '{0}'")
@@ -113,7 +113,7 @@ Namespace Commands.PLNT
                         V_DBR_MYSQL(0).Query = String.Format("select count(mods.module_id) as module_found from dbo.sys_module mods where mods.module_code = '{0}' and mods.module_id <> '{1}'")
                     End If
 
-                    varIsDuplicate = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(0).Query), Boolean)
+                    varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(0).Query), Boolean)
                 End If
 
                 Return varIsDuplicate
@@ -131,15 +131,15 @@ Namespace Commands.PLNT
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetCompany(databasename As String, dbengine As String, listofcompany As CMCv.cbo)
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = "select com.company_id, '[' + com.company_code + '] - ' + com.company_name as [company_name] from dbo.man_company com order by com.company_code"
-                V_DBR_MSSQL2008(1).Dropdown = listofcompany
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(1), "TCompany")
+                varDatabaseRequestMssql2008(1).Query = "select com.company_id, '[' + com.company_code + '] - ' + com.company_name as [company_name] from dbo.man_company com order by com.company_code"
+                varDatabaseRequestMssql2008(1).Dropdown = listofcompany
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TCompany")
                 listofcompany.DisplayMember = "company_name"
                 listofcompany.ValueMember = "company_id"
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = "select com.company_id, '[' + com.company_code + '] - ' + com.company_name as [company_name] from dbo.man_company com order by com.company_code"
                 V_DBR_MYSQL(1).Dropdown = listofcompany
-                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(1), "TCompany")
+                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(1), "TCompany")
                 listofcompany.DisplayMember = "company_name"
                 listofcompany.ValueMember = "company_id"
             End If

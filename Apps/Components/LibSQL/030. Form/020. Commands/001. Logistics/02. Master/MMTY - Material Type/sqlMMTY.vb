@@ -20,16 +20,16 @@ Namespace Commands.MMTY
         Public Shared Sub DisplayData(databasename As String, dbengine As String, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
             If dbengine = "MSSQL" Then
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
-                    V_DBR_MSSQL2008(0).Query = "select mt.materialtype_id, mt.materialtype_description,(convert(varchar(255),(select count(m.material_id) from dbo.log_material m where " &
+                    varDatabaseRequestMssql2008(0).Query = "select mt.materialtype_id, mt.materialtype_description,(convert(varchar(255),(select count(m.material_id) from dbo.log_material m where " &
                     "m.material_materialtype = mt.materialtype_id)) + '  item(s)') as itemcount from dbo.log_materialtype mt"
                 Else
-                    V_DBR_MSSQL2008(0).Query = String.Format("select mt.materialtype_id, mt.materialtype_description,(convert(varchar(255),(select count(m.material_id) from dbo.log_material m where " &
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select mt.materialtype_id, mt.materialtype_description,(convert(varchar(255),(select count(m.material_id) from dbo.log_material m where " &
                                                         "m.material_materialtype = mt.materialtype_id)) + '  item(s)') as itemcount from dbo.log_materialtype mt WHERE mt.materialtype_id LIKE '%{0}%' OR " &
                                                         "mt.materialtype_description LIKE '%{0}%'", find.XOSQLText)
                 End If
-                V_DBR_MSSQL2008(0).DataGrid = datagrid
-                V_DBR_MSSQL2008(0).StatusBar = statusbar
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TMaterialType")
+                varDatabaseRequestMssql2008(0).DataGrid = datagrid
+                varDatabaseRequestMssql2008(0).StatusBar = statusbar
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TMaterialType")
             ElseIf dbengine = "MYSQL" Then
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     V_DBR_MYSQL(0).Query = "select mt.materialtype_id, mt.materialtype_description,(convert(varchar(255),(select count(m.material_id) from log_material m where " &
@@ -41,7 +41,7 @@ Namespace Commands.MMTY
                 End If
                 V_DBR_MYSQL(0).DataGrid = datagrid
                 V_DBR_MYSQL(0).StatusBar = statusbar
-                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TMaterialType")
+                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TMaterialType")
             End If
         End Sub
     End Class

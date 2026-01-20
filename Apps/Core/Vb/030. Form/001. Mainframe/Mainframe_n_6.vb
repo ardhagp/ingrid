@@ -307,7 +307,22 @@ Public Class Mainframe_n_6
             TmrNotif.Enabled = True
             RaiseEvent IngridFrameOpen()
 
-            Bridge.Security.Writelog.Sendlog("""message"" : ""Ingrid Main App is opened."",", "Information")
+            Dim clsLog As New Ladybug.Log.Events
+            With proLog
+                .Message = "Ingrid Main App is opened."
+                .FromSender = "Mainframe_n_6 Load Event"
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Information
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
+                .ResumeNext = True
+                .InternalStackTrace = String.Empty
+                .ShowErrorReporting = False
+                .SaveInBetterLog = True
+                .SaveLogInLocal = True
+                .Number = 0
+                .AppVersion = GetAppVersion()
+            End With
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
 
             Call ActivateLicenses()
 
@@ -613,6 +628,23 @@ Public Class Mainframe_n_6
         Dim varRequiredFolder = CheckRequiredFolder(DirName.PDF)
 
         Try
+            Dim clsLog As New Ladybug.Log.Events
+            With proLog
+                .Message = "Ingrid Main App is closing."
+                .FromSender = "Mainframe_n_6 Closing Event"
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Information
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
+                .ResumeNext = True
+                .InternalStackTrace = String.Empty
+                .Number = 0
+                .ShowErrorReporting = False
+                .SaveInBetterLog = True
+                .SaveLogInLocal = True
+                .AppVersion = GetAppVersion()
+            End With
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
+
             For Each varDeleteFile In Directory.GetFiles(varRequiredFolder, "*.*", SearchOption.TopDirectoryOnly)
                 File.Delete(varDeleteFile)
             Next
@@ -719,7 +751,6 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub Mainframe_n_6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Bridge.Security.Writelog.Sendlog("""message"" : Ingrid Main App is closed."",", "Information")
         RaiseEvent IngridFrameClose()
     End Sub
 

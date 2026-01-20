@@ -7,7 +7,7 @@ Imports CMCv
 
 Namespace Commands.DAR
     Public Class View
-        'ReDim V_DBR_MSSQL2008(3)
+        'ReDim varDatabaseRequestMssql2008(3)
         Public varIsEmpFilter As Boolean
         Public varEmployeeID As String
         Public varContentID As String
@@ -22,17 +22,17 @@ Namespace Commands.DAR
 
             If dbengine = "MSSQL" Then
                 For varRow = 0 To 0
-                    V_DBR_MSSQL2008(0).Query = String.Format("select count(mods.modulesettings_id) from dbo.[[sys]]modulesettings] mods inner join " &
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select count(mods.modulesettings_id) from dbo.[[sys]]modulesettings] mods inner join " &
                                                         "dbo.sys_module mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') " &
                                                         "and (mods.modulesettings_user = '{0}') and (mods.modulesettings_attribute = '{1}')", uid, varAttribute(varRow))
-                    varIsExist = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Integer)
+                    varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
 
                     If varIsExist = 0 Then
-                        V_DBR_MSSQL2008(1).Query = String.Format("insert into dbo.[[sys]]modulesettings](modulesettings_id, modulesettings_module," &
+                        varDatabaseRequestMssql2008(1).Query = String.Format("insert into dbo.[[sys]]modulesettings](modulesettings_id, modulesettings_module," &
                                                             "modulesettings_user, modulesettings_attribute, modulesettings_value) values('{0}', " &
                                                             "(select mo.module_id from dbo.sys_module mo where mo.module_code = 'DAR'),'{1}','{2}'," &
                                                             "'False')", CMCv.Security.Encrypt.MD5(), uid, varAttribute(varRow))
-                        V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                        varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                     End If
                 Next
             ElseIf dbengine = "MYSQL" Then
@@ -40,14 +40,14 @@ Namespace Commands.DAR
                     V_DBR_MYSQL(0).Query = String.Format("select count(mods.modulesettings_id) from sys_modulesettings mods inner join " &
                                                         "sys_module mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') " &
                                                         "and (mods.modulesettings_user = '{0}') and (mods.modulesettings_attribute = '{1}')", uid, varAttribute(varRow))
-                    varIsExist = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(0).Query), Integer)
+                    varIsExist = CType(varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(0).Query), Integer)
 
                     If varIsExist = 0 Then
                         V_DBR_MYSQL(1).Query = String.Format("insert into sys_modulesettings(modulesettings_id, modulesettings_module," &
                                                             "modulesettings_user, modulesettings_attribute, modulesettings_value) values('{0}', " &
                                                             "(select mo.module_id from sys_module mo where mo.module_code = 'DAR'),'{1}','{2}'," &
                                                             "'False')", CMCv.Security.Encrypt.MD5(), uid, varAttribute(varRow))
-                        V_DBE_MYSQL.PushData(databasename, V_DBR_MYSQL(1).Query)
+                        varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
                     End If
                 Next
             End If
@@ -60,11 +60,11 @@ Namespace Commands.DAR
 
             End If
 
-            V_DBR_MSSQL2008(0).Query = String.Format("select mods.modulesettings_value from dbo.[[sys]]modulesettings] mods inner join dbo.sys_module " &
+            varDatabaseRequestMssql2008(0).Query = String.Format("select mods.modulesettings_value from dbo.[[sys]]modulesettings] mods inner join dbo.sys_module " &
                                                     "mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') and " &
                                                     "(mods.modulesettings_user = '{0}') and (mods.modulesettings_attribute = '{1}')", uid, "ViewPhotoTab")
 
-            varValue = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Boolean)
+            varValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Boolean)
 
             Return varValue
         End Function
@@ -81,11 +81,11 @@ Namespace Commands.DAR
                 End If
 
 
-                V_DBR_MSSQL2008(1).Query = String.Format("update dbo.[[sys]]modulesettings] set modulesettings_value = '{0}' where (modulesettings_module = " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("update dbo.[[sys]]modulesettings] set modulesettings_value = '{0}' where (modulesettings_module = " &
                                                         "(select mo.module_id from dbo.sys_module mo where mo.module_code = 'DAR')) and " &
                                                         "(modulesettings_user = '{1}') and (modulesettings_attribute = '{2}')", values, uid, attribute)
 
-                V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
 
                 varIsSuccess = True
             Catch ex As Exception
@@ -103,11 +103,11 @@ Namespace Commands.DAR
 
             End If
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_id, em.employee_fullname from dbo.man_employee em where em.employee_id in " &
+            varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_id, em.employee_fullname from dbo.man_employee em where em.employee_id in " &
                                                     "(select ea.employeeactivity_employee from dbo.doc_employeeactivity ea group by " &
                                                     "ea.employeeactivity_employee) order by em.employee_fullname;")
-            V_DBR_MSSQL2008(1).Dropdown = employee
-            V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(1), "TEmployee")
+            varDatabaseRequestMssql2008(1).Dropdown = employee
+            varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TEmployee")
             employee.DisplayMember = "employee_fullname"
             employee.ValueMember = "employee_id"
         End Sub
@@ -168,14 +168,14 @@ Namespace Commands.DAR
                         End If
                     End If
 
-                    V_DBR_MSSQL2008(0).Query = String.Format("select ea.employeeactivity_datetime, (convert(varchar,ea.employeeactivity_datetime,106) + '' + " &
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select ea.employeeactivity_datetime, (convert(varchar,ea.employeeactivity_datetime,106) + '' + " &
                                                         "char(13) + char(10) + '' + left(datename(dw,ea.employeeactivity_datetime),3)) as [employeeactivity_longdate] " &
                                                         "from dbo.doc_employeeactivity ea {0} group by ea.employeeactivity_datetime " &
                                                         "order by ea.employeeactivity_datetime desc", varWhere)
 
-                    V_DBR_MSSQL2008(0).DataGrid = dategrid
-                    V_DBR_MSSQL2008(0).StatusBar = datestatusbar
-                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TDailyReportsDate")
+                    varDatabaseRequestMssql2008(0).DataGrid = dategrid
+                    varDatabaseRequestMssql2008(0).StatusBar = datestatusbar
+                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TDailyReportsDate")
 
                     varIsEmpFilter = chkbyfilter.Checked
                 ElseIf dbengine = "MYSQL" Then
@@ -230,7 +230,7 @@ Namespace Commands.DAR
 
                     V_DBR_MYSQL(0).DataGrid = dategrid
                     V_DBR_MYSQL(0).StatusBar = datestatusbar
-                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TDailyReportsDate")
+                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TDailyReportsDate")
 
                     varIsEmpFilter = chkbyfilter.Checked
                 End If
@@ -261,7 +261,7 @@ Namespace Commands.DAR
                 varWhere += String.Format(" (ea.employeeactivity_datetime = '{0}')", V_CONTENTDATE_S)
 
                 If dbengine = "MSSQL" Then
-                    ReDim V_DBR_MSSQL2008(3)
+                    ReDim varDatabaseRequestMssql2008(3)
 
                     'add text query-cut
                     If (find.XOSQLText <> String.Empty) Then
@@ -323,7 +323,7 @@ Namespace Commands.DAR
                         "then employeeactivity_description else convert(varchar(max),employeeactivity_description) + char(13) + char(10) + char(13) + char(10) " &
                     "+ '--- Feedback Note : ---' + char(13) + char(10) + convert(varchar(max),ea.employeeactivity_feedback) end as [employeeactivity_description]"
 
-                    V_DBR_MSSQL2008(2).Query = String.Format("select aa.areaaffected_name, {1}, {2}, case when (ea.employeeactivity_lastupdate is not null) and " &
+                    varDatabaseRequestMssql2008(2).Query = String.Format("select aa.areaaffected_name, {1}, {2}, case when (ea.employeeactivity_lastupdate is not null) and " &
                                                             "(ea.employeeactivity_employee <> ea.employeeactivity_lastupdate) then " &
                                                             "(convert(varchar(max), e.employee_nickname) + ' / ' + convert(varchar(max), " &
                                                             "(select em.employee_nickname from dbo.man_employee em where " &
@@ -333,13 +333,13 @@ Namespace Commands.DAR
                                                             "inner join dbo.man_employee e on ea.employeeactivity_employee = e.employee_id {0} order by " &
                                                             "aa.areaaffected_order, ea.employeeactivity_time", varWhere, varTimeFormat(2), varDescription)
 
-                    V_DBR_MSSQL2008(2).DataGrid = contentgrid
-                    V_DBR_MSSQL2008(2).StatusBar = contentstatusbar
-                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(2), "TDailyActivity")
+                    varDatabaseRequestMssql2008(2).DataGrid = contentgrid
+                    varDatabaseRequestMssql2008(2).StatusBar = contentstatusbar
+                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(2), "TDailyActivity")
 
-                    If V_DBR_MSSQL2008(2).DataGrid Is Nothing Then
-                        V_DBR_MSSQL2008(2).DataGrid = contentgrid
-                        V_DBR_MSSQL2008(2).StatusBar = contentstatusbar
+                    If varDatabaseRequestMssql2008(2).DataGrid Is Nothing Then
+                        varDatabaseRequestMssql2008(2).DataGrid = contentgrid
+                        varDatabaseRequestMssql2008(2).StatusBar = contentstatusbar
                     End If
 
                     If (photogrid Is Nothing) AndAlso (filegrid Is Nothing) Then
@@ -347,10 +347,10 @@ Namespace Commands.DAR
                     End If
 
                     If (showattachment) Then
-                        If V_DBR_MSSQL2008(2).DataGrid.RowCount = 0 Then
+                        If varDatabaseRequestMssql2008(2).DataGrid.RowCount = 0 Then
                             varContentID = "-1"
                         Else
-                            varContentID = V_DBR_MSSQL2008(2).DataGrid.CurrentRow.Cells("employeeactivity_id").Value.ToString
+                            varContentID = varDatabaseRequestMssql2008(2).DataGrid.CurrentRow.Cells("employeeactivity_id").Value.ToString
                         End If
                         Call DisplayPhotoGrid(databasename, dbengine, varContentID, photogrid)
                         Call DisplayFileGrid(databasename, dbengine, varContentID, filegrid)
@@ -430,7 +430,7 @@ Namespace Commands.DAR
 
                     V_DBR_MYSQL(2).DataGrid = contentgrid
                     V_DBR_MYSQL(2).StatusBar = contentstatusbar
-                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(2), "TDailyActivity")
+                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(2), "TDailyActivity")
 
                     If V_DBR_MYSQL(2).DataGrid Is Nothing Then
                         V_DBR_MYSQL(2).DataGrid = contentgrid
@@ -458,19 +458,19 @@ Namespace Commands.DAR
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayPhotoGrid(databasename As String, dbengine As String, contentid As String, filegrid As dgn, Optional recordyear As String = "")
-            ReDim V_DBR_MSSQL2008(5)
+            ReDim varDatabaseRequestMssql2008(5)
             Dim V_CONTENTID As String = contentid
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(4).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, (convert(varchar(25),fi.file_content_size) + ' KB') " &
+                varDatabaseRequestMssql2008(4).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, (convert(varchar(25),fi.file_content_size) + ' KB') " &
                                                     "as [file_content_size], (convert(varchar(3),fi.file_score) + ' like(s)') as [file_score], " &
                                                     "fi.file_datetime, fi.file_uploader, (select em.employee_fullname from dbo.man_employee em where " &
                                                     "em.employee_id = fi.file_uploader) as [employee_fullname], (select em.employee_nickname " &
                                                     "from dbo.man_employee em where em.employee_id = fi.file_uploader) as [employee_nickname], " &
                                                     "'' as [file_view] from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' " &
                                                     "and fi.file_filetype = 'jpg') order by fi.file_score desc, fi.file_datetime;", V_CONTENTID)
-                V_DBR_MSSQL2008(4).DataGrid = filegrid
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(4), "TPhotoFile")
+                varDatabaseRequestMssql2008(4).DataGrid = filegrid
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(4), "TPhotoFile")
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(4).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, (convert(varchar(25),fi.file_content_size) + ' KB') " &
                                                     "as [file_content_size], (convert(varchar(3),fi.file_score) + ' like(s)') as [file_score], " &
@@ -480,17 +480,17 @@ Namespace Commands.DAR
                                                     "'' as [file_view] from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' " &
                                                     "and fi.file_filetype = 'jpg') order by fi.file_score desc, fi.file_datetime;", V_CONTENTID)
                 V_DBR_MYSQL(4).DataGrid = filegrid
-                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(4), "TPhotoFile")
+                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(4), "TPhotoFile")
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayFileGrid(databasename As String, dbengine As String, contentid As String, filegrid As dgn, Optional recordyear As String = "")
-            ReDim V_DBR_MSSQL2008(6)
+            ReDim varDatabaseRequestMssql2008(6)
             Dim varContentID As String = contentid
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(5).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, '' as [file_content], " &
+                varDatabaseRequestMssql2008(5).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, '' as [file_content], " &
                                                     "(convert(varchar(25),fi.file_content_size) + ' KB') as [file_content_size], " &
                                                     "(convert(varchar(3),fi.file_score) + ' like(s)') as [file_score], fi.file_datetime, " &
                                                     "fi.file_uploader, (select em.employee_fullname from dbo.man_employee em where " &
@@ -498,8 +498,8 @@ Namespace Commands.DAR
                                                     "from dbo.man_employee em where em.employee_id = fi.file_uploader) as [employee_nickname], " &
                                                     "'' as [file_view] from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'pdf') order by fi.file_datetime;", varContentID)
-                V_DBR_MSSQL2008(5).DataGrid = filegrid
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(5), "TFile")
+                varDatabaseRequestMssql2008(5).DataGrid = filegrid
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(5), "TFile")
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(5).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, '' as [file_content], " &
                                                     "(convert(varchar(25),fi.file_content_size) + ' KB') as [file_content_size], " &
@@ -510,7 +510,7 @@ Namespace Commands.DAR
                                                     "'' as [file_view] from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'pdf') order by fi.file_datetime;", varContentID)
                 V_DBR_MYSQL(5).DataGrid = filegrid
-                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(5), "TFile")
+                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(5), "TFile")
             End If
         End Sub
 
@@ -519,13 +519,13 @@ Namespace Commands.DAR
             Dim varFile As Object = Nothing
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select fi.file_content from db_universe_erp_file.dbo.sto_file fi where fi.file_id = '{0}'", rowid)
+                varDatabaseRequestMssql2008(1).Query = String.Format("select fi.file_content from db_universe_erp_file.dbo.sto_file fi where fi.file_id = '{0}'", rowid)
 
-                varFile = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query)
+                varFile = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query)
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = String.Format("select fi.file_content from db_universe_erp_file.dbo.sto_file fi where fi.file_id = '{0}'", rowid)
 
-                varFile = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query)
+                varFile = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query)
             End If
 
             Return varFile
@@ -536,13 +536,13 @@ Namespace Commands.DAR
             Dim varSuccess As Boolean = False
             Try
                 If dbengine = "MSSQL" Then
-                    V_DBR_MSSQL2008(1).Query = String.Format("delete from dbo.doc_employeeactivity where employeeactivity_id = '{0}';delete " &
+                    varDatabaseRequestMssql2008(1).Query = String.Format("delete from dbo.doc_employeeactivity where employeeactivity_id = '{0}';delete " &
                                                         "from db_universe_erp_file.dbo.sto_file where file_parent = '{0}';", rowid)
-                    V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                    varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dbengine = "MYSQL" Then
                     V_DBR_MYSQL(1).Query = String.Format("delete from doc_employeeactivity where employeeactivity_id = '{0}';delete " &
                                                         "from sto_file where file_parent = '{0}';", rowid)
-                    V_DBE_MYSQL.PushData(databasename, V_DBR_MYSQL(1).Query)
+                    varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
                 End If
 
                 varSuccess = True
@@ -557,13 +557,13 @@ Namespace Commands.DAR
             Dim varResult As Integer = 0
             Try
                 If dbengine = "MSSQL" Then
-                    V_DBR_MSSQL2008(1).Query = String.Format("select count(ff.filefeedback_id) as [islike] from db_universe_erp_file.dbo.sto_filefeedback ff " &
+                    varDatabaseRequestMssql2008(1).Query = String.Format("select count(ff.filefeedback_id) as [islike] from db_universe_erp_file.dbo.sto_filefeedback ff " &
                                                         "where ff.filefeedback_file = '{0}' and ff.filefeedback_employee = '{1}';", fileid, eid)
-                    varResult = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Integer)
+                    varResult = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
                 ElseIf dbengine = "MYSQL" Then
                     V_DBR_MYSQL(1).Query = String.Format("select count(ff.filefeedback_id) as `islike` from sto_filefeedback ff " &
                                                         "where ff.filefeedback_file = '{0}' and ff.filefeedback_employee = '{1}';", fileid, eid)
-                    varResult = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query), Integer)
+                    varResult = CType(varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query), Integer)
                 End If
 
             Catch ex As Exception
@@ -583,7 +583,7 @@ Namespace Commands.DAR
 
             Try
                 If dbengine = "MSSQL" Then
-                    V_DBR_MSSQL2008(1).Query = String.Format("insert into db_universe_erp_file.dbo.sto_filefeedback(filefeedback_datetime, filefeedback_file, " &
+                    varDatabaseRequestMssql2008(1).Query = String.Format("insert into db_universe_erp_file.dbo.sto_filefeedback(filefeedback_datetime, filefeedback_file, " &
                                                         "filefeedback_employee, filefeedback_type, filefeedback_value, filefeedback_text) values(GETDATE(), " &
                                                         "'{0}', '{1}', 'Like', 1, 'N/A'); insert into dbo.[[sys]]notification](notification_datetime, " &
                                                         "notification_employee, notification_message, notification_isread) values(GETDATE(), '{2}', " &
@@ -592,7 +592,7 @@ Namespace Commands.DAR
                                                         "set file_score = (select count(ff.filefeedback_value) " &
                                                         "from db_universe_erp_file.dbo.sto_filefeedback ff where (ff.filefeedback_file = '{0}') and " &
                                                         "(ff.filefeedback_type = 'Like')) where (file_id = '{0}');", fileid, eid, fileowner)
-                    V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                    varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dbengine = "MYSQL" Then
                     V_DBR_MYSQL(1).Query = String.Format("insert into db_universe_erp_file.dbo.sto_filefeedback(filefeedback_datetime, filefeedback_file, " &
                                                         "filefeedback_employee, filefeedback_type, filefeedback_value, filefeedback_text) values(GETDATE(), " &
@@ -603,7 +603,7 @@ Namespace Commands.DAR
                                                         "set file_score = (select count(ff.filefeedback_value) " &
                                                         "from db_universe_erp_file.dbo.sto_filefeedback ff where (ff.filefeedback_file = '{0}') and " &
                                                         "(ff.filefeedback_type = 'Like')) where (file_id = '{0}');", fileid, eid, fileowner)
-                    V_DBE_MYSQL.PushData(databasename, V_DBR_MYSQL(1).Query)
+                    varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
                 End If
 
                 varSuccess = True
@@ -621,13 +621,13 @@ Namespace Commands.DAR
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetAffectedArea(databasename As String, dbengine As String, listofaffectedarea As CMCv.cbo)
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = "select aa.areaaffected_id, aa.areaaffected_name from dbo.doc_areaaffected aa order by aa.areaaffected_order"
-                V_DBR_MSSQL2008(1).Dropdown = listofaffectedarea
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(1), "TAffectedArea")
+                varDatabaseRequestMssql2008(1).Query = "select aa.areaaffected_id, aa.areaaffected_name from dbo.doc_areaaffected aa order by aa.areaaffected_order"
+                varDatabaseRequestMssql2008(1).Dropdown = listofaffectedarea
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TAffectedArea")
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = "select aa.areaaffected_id, aa.areaaffected_name from doc_areaaffected aa order by aa.areaaffected_order"
                 V_DBR_MYSQL(1).Dropdown = listofaffectedarea
-                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(1), "TAffectedArea")
+                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(1), "TAffectedArea")
             End If
 
             listofaffectedarea.DisplayMember = "areaaffected_name"
@@ -637,15 +637,15 @@ Namespace Commands.DAR
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetTemplateTitle(databasename As String, dbengine As String, listoftemplate As CMCv.cbo)
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = "select tp.template_id, tp.template_title from dbo.doc_template tp inner join dbo.sys_module mo on " &
+                varDatabaseRequestMssql2008(1).Query = "select tp.template_id, tp.template_title from dbo.doc_template tp inner join dbo.sys_module mo on " &
                 "mo.module_id = tp.template_module where mo.module_code = 'DAR' order by tp.template_title"
-                V_DBR_MSSQL2008(1).Dropdown = listoftemplate
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(1), "TTemplate")
+                varDatabaseRequestMssql2008(1).Dropdown = listoftemplate
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TTemplate")
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = "select tp.template_id, tp.template_title from doc_template tp inner join sys_module mo on " &
                 "mo.module_id = tp.template_module where mo.module_code = 'DAR' order by tp.template_title"
                 V_DBR_MYSQL(1).Dropdown = listoftemplate
-                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(1), "TTemplate")
+                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(1), "TTemplate")
             End If
 
             listoftemplate.DisplayMember = "template_title"
@@ -657,11 +657,11 @@ Namespace Commands.DAR
             Dim varTemplateContent As String = String.Empty
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select tp.template_text1 from dbo.doc_template tp where tp.template_id = '{0}'", listoftemplate.SelectedValue)
-                varTemplateContent = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                varDatabaseRequestMssql2008(1).Query = String.Format("select tp.template_text1 from dbo.doc_template tp where tp.template_id = '{0}'", listoftemplate.SelectedValue)
+                varTemplateContent = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = String.Format("select tp.template_text1 from doc_template tp where tp.template_id = '{0}'", listoftemplate.SelectedValue)
-                varTemplateContent = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                varTemplateContent = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
             End If
 
             Return varTemplateContent
@@ -674,13 +674,13 @@ Namespace Commands.DAR
             Dim varTimePart(3) As String
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_datetime from dbo.doc_employeeactivity ea " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_datetime from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varDatePart(0) = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                varDatePart(0) = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
-                V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_time from dbo.doc_employeeactivity ea " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_time from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varTimeParts(0) = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), TimeSpan)
+                varTimeParts(0) = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), TimeSpan)
 
                 varDatePart(2) = Convert.ToString(varTimeParts(0))
                 varTimePart = varDatePart(2).Split(":")
@@ -689,13 +689,13 @@ Namespace Commands.DAR
                 datepart.Value = CType(varDatePart(0), Date)
                 timepart.Text = varDatePart(1)
 
-                V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_datetime_end from dbo.doc_employeeactivity ea " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_datetime_end from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varDatePart(0) = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                varDatePart(0) = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
-                V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_time_end from dbo.doc_employeeactivity ea " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_time_end from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varTimeParts(0) = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), TimeSpan)
+                varTimeParts(0) = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), TimeSpan)
 
                 varDatePart(2) = Convert.ToString(varTimeParts(0))
                 varTimePart = varDatePart(2).Split(":")
@@ -704,31 +704,31 @@ Namespace Commands.DAR
                 datepartend.Value = CType(varDatePart(0), Date)
                 timepartend.Text = varDatePart(1)
 
-                V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_areaaffected from dbo.doc_employeeactivity ea " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_areaaffected from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                listofaffectedarea.SelectedValue = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query)
+                listofaffectedarea.SelectedValue = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query)
 
-                V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_template from dbo.doc_employeeactivity ea " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_template from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                listoftemplate.SelectedValue = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query)
+                listoftemplate.SelectedValue = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query)
 
-                V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_description from dbo.doc_employeeactivity ea " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_description from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                templatecontent.Text = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                templatecontent.Text = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
                 Dim varFeedback As Object
-                V_DBR_MSSQL2008(1).Query = String.Format("select ea.employeeactivity_feedback from dbo.doc_employeeactivity ea " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_feedback from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varFeedback = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query)
+                varFeedback = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query)
                 feedBack.Text = IIf(IsDBNull(varFeedback), "", varFeedback).ToString
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_datetime from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varDatePart(0) = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                varDatePart(0) = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
 
                 V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_time from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varTimeParts(0) = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query), TimeSpan)
+                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query), TimeSpan)
 
                 varDatePart(2) = Convert.ToString(varTimeParts(0))
                 varTimePart = varDatePart(2).Split(":")
@@ -739,11 +739,11 @@ Namespace Commands.DAR
 
                 V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_datetime_end from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varDatePart(0) = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                varDatePart(0) = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
 
                 V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_time_end from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varTimeParts(0) = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query), TimeSpan)
+                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query), TimeSpan)
 
                 varDatePart(2) = Convert.ToString(varTimeParts(0))
                 varTimePart = varDatePart(2).Split(":")
@@ -754,20 +754,20 @@ Namespace Commands.DAR
 
                 V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_areaaffected from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                listofaffectedarea.SelectedValue = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query)
+                listofaffectedarea.SelectedValue = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query)
 
                 V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_template from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                listoftemplate.SelectedValue = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query)
+                listoftemplate.SelectedValue = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query)
 
                 V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_description from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                templatecontent.Text = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                templatecontent.Text = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
 
                 Dim varFeedback As Object
                 V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_feedback from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varFeedback = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query)
+                varFeedback = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query)
 
                 feedBack.Text = IIf(IsDBNull(varFeedback), "", varFeedback).ToString
             End If
@@ -776,20 +776,20 @@ Namespace Commands.DAR
         <SupportedOSPlatform("windows")>
         Public Function DisplayPhotoGrid(databasename As String, dbengine As String, rowid As String, filegrid As dgn) As DataSet
             V_DS = New DataSet
-            'ReDim V_DBR_MSSQL2008(3)
+            'ReDim varDatabaseRequestMssql2008(3)
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, fi.file_datetime, fi.file_uploader " &
+                varDatabaseRequestMssql2008(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, fi.file_datetime, fi.file_uploader " &
                                                     "from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'jpg') order by fi.file_datetime;", rowid)
 
-                V_DS = V_DBE_MSSQL2008.GetDataSet(databasename, V_DBR_MSSQL2008(2), "TPhotoFileEditor")
+                V_DS = varDatabaseEngineMssql2008.GetDataSet(databasename, varDatabaseRequestMssql2008(2), "TPhotoFileEditor")
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, fi.file_datetime, fi.file_uploader " &
                                                     "from sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'jpg') order by fi.file_datetime;", rowid)
 
-                V_DS = V_DBE_MYSQL.GetDataSet(databasename, V_DBR_MYSQL(2), "TPhotoFileEditor")
+                V_DS = varDatabaseEngineMysql.GetDataSet(databasename, V_DBR_MYSQL(2), "TPhotoFileEditor")
             End If
 
             Return V_DS
@@ -798,20 +798,20 @@ Namespace Commands.DAR
         <SupportedOSPlatform("windows")>
         Public Function DisplayFileGrid(databasename As String, dbengine As String, rowid As String, filegrid As dgn) As DataSet
             V_DS = New DataSet
-            'ReDim V_DBR_MSSQL2008(3)
+            'ReDim varDatabaseRequestMssql2008(3)
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, fi.file_content, fi.file_datetime, fi.file_uploader " &
+                varDatabaseRequestMssql2008(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, fi.file_content, fi.file_datetime, fi.file_uploader " &
                                                     "from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'pdf') order by fi.file_datetime;", rowid)
 
-                V_DS = V_DBE_MSSQL2008.GetDataSet(databasename, V_DBR_MSSQL2008(2), "TFileEditor")
+                V_DS = varDatabaseEngineMssql2008.GetDataSet(databasename, varDatabaseRequestMssql2008(2), "TFileEditor")
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, fi.file_content, fi.file_datetime, fi.file_uploader " &
                                                     "from sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'pdf') order by fi.file_datetime;", rowid)
 
-                V_DS = V_DBE_MYSQL.GetDataSet(databasename, V_DBR_MYSQL(2), "TFileEditor")
+                V_DS = varDatabaseEngineMysql.GetDataSet(databasename, V_DBR_MYSQL(2), "TFileEditor")
             End If
 
             Return V_DS
@@ -824,7 +824,7 @@ Namespace Commands.DAR
             Try
                 If dbengine = "MSSQL" Then
                     If (isnew) Then
-                        V_DBR_MSSQL2008(1).Query = String.Format("insert into dbo.doc_employeeactivity(employeeactivity_id, employeeactivity_areaaffected, " &
+                        varDatabaseRequestMssql2008(1).Query = String.Format("insert into dbo.doc_employeeactivity(employeeactivity_id, employeeactivity_areaaffected, " &
                                                             "employeeactivity_template, employeeactivity_datetime, employeeactivity_time, " &
                                                             "employeeactivity_datetime_end, employeeactivity_time_end, employeeactivity_description, " &
                                                             "employeeactivity_employee,employeeactivity_feedback,employeeactivity_createon) values " &
@@ -832,7 +832,7 @@ Namespace Commands.DAR
                                                             "from dbo.sys_user usr where usr.user_id = '{8}'),'{9}', " &
                                                             "(select getdate()));", rowid, areaaffected, activitytemplate, datepart, timepart, datepartend, timepartend, content, userid, feedback)
                     Else
-                        V_DBR_MSSQL2008(1).Query = String.Format("update dbo.doc_employeeactivity set employeeactivity_datetime = '{0}', " &
+                        varDatabaseRequestMssql2008(1).Query = String.Format("update dbo.doc_employeeactivity set employeeactivity_datetime = '{0}', " &
                                                             "employeeactivity_time = '{1}', employeeactivity_datetime_end = '{2}', " &
                                                             "employeeactivity_time_end = '{3}', employeeactivity_areaaffected = '{4}', " &
                                                             "employeeactivity_template = '{5}', employeeactivity_description = '{6}', " &
@@ -840,15 +840,15 @@ Namespace Commands.DAR
                                                             "where usr.user_id = '{7}'), employeeactivity_feedback = '{9}', " &
                                                             "employeeactivity_updateon = (select getdate()) where employeeactivity_id = '{8}';", datepart, timepart, datepartend, timepartend, areaaffected, activitytemplate, content, userid, rowid, feedback)
 
-                        V_DBR_MSSQL2008(1).Query += String.Format("update db_universe_erp_file.dbo.sto_file set file_parentdate = '{0}' " &
+                        varDatabaseRequestMssql2008(1).Query += String.Format("update db_universe_erp_file.dbo.sto_file set file_parentdate = '{0}' " &
                                                              "where file_parent = '{1}';", datepart, rowid)
                     End If
 
                     If extendedquery IsNot String.Empty Then
-                        V_DBR_MSSQL2008(1).Query += extendedquery
+                        varDatabaseRequestMssql2008(1).Query += extendedquery
                     End If
 
-                    V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                    varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dbengine = "MYSQL" Then
                     If (isnew) Then
                         V_DBR_MYSQL(1).Query = String.Format("insert into doc_employeeactivity(employeeactivity_id, employeeactivity_areaaffected, " &
@@ -875,7 +875,7 @@ Namespace Commands.DAR
                         V_DBR_MYSQL(1).Query += extendedquery
                     End If
 
-                    V_DBE_MYSQL.PushData(databasename, V_DBR_MYSQL(1).Query)
+                    varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
                 End If
 
                 varSuccess = True
@@ -928,7 +928,7 @@ Namespace Commands.DAR
 
                             varCommand.Parameters.AddWithValue("@DateNow", Row.Cells("photo_datetime").Value)
 
-                            varSuccess = V_DBE_MSSQL2008.PushImage(varCommand)
+                            varSuccess = varDatabaseEngineMssql2008.PushImage(varCommand)
                         End If
                     Next
                 ElseIf dbengine = "MYSQL" Then
@@ -968,7 +968,7 @@ Namespace Commands.DAR
 
                             varCommand.Parameters.AddWithValue("@DateNow", Row.Cells("photo_datetime").Value)
 
-                            varSuccess = V_DBE_MYSQL.PushImage(varCommand)
+                            varSuccess = varDatabaseEngineMysql.PushImage(varCommand)
                         End If
                     Next
                 End If
@@ -1025,7 +1025,7 @@ Namespace Commands.DAR
 
                             varCommand.Parameters.AddWithValue("@DateNow", Row.Cells("file_datetime").Value)
 
-                            varSuccess = V_DBE_MSSQL2008.PushImage(varCommand)
+                            varSuccess = varDatabaseEngineMssql2008.PushImage(varCommand)
                         End If
                     Next
                 ElseIf dbengine = "MYSQL" Then
@@ -1068,7 +1068,7 @@ Namespace Commands.DAR
 
                             varCommand.Parameters.AddWithValue("@DateNow", varRow.Cells("file_datetime").Value)
 
-                            varSuccess = V_DBE_MYSQL.PushImage(varCommand)
+                            varSuccess = varDatabaseEngineMysql.PushImage(varCommand)
                         End If
                     Next
                 End If
@@ -1193,7 +1193,7 @@ Namespace Commands.DAR
                     "convert(varchar(max),employeeactivity_description) + char(13) + char(10) + char(13) + char(10) + '--- Feedback Note : ---' " &
                     "+ char(13) + char(10) + convert(varchar(max),ea.employeeactivity_feedback) end as [employeeactivity_description]"
 
-                    V_DBR_MSSQL2008(0).Query = String.Format("select aa.areaaffected_name, {1}, {2}, case when (ea.employeeactivity_lastupdate is not null) " &
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select aa.areaaffected_name, {1}, {2}, case when (ea.employeeactivity_lastupdate is not null) " &
                                                         "and (ea.employeeactivity_employee <> ea.employeeactivity_lastupdate) then " &
                                                         "(convert(varchar(max),e.employee_nickname) + ' / ' + " &
                                                         "convert(varchar(max),(select em.employee_nickname from dbo.man_employee em " &
@@ -1204,7 +1204,7 @@ Namespace Commands.DAR
                                                         "inner join dbo.man_employee e on ea.employeeactivity_employee = e.employee_id {0} " &
                                                         "order by aa.areaaffected_order", varWhere, varTimeFormat(2), varDescription)
 
-                    datasetname = V_DBE_MSSQL2008.FillDataset(databasename, V_DBR_MSSQL2008(0).Query, datasetname, "employeeactivity")
+                    datasetname = varDatabaseEngineMssql2008.FillDataset(databasename, varDatabaseRequestMssql2008(0).Query, datasetname, "employeeactivity")
                 ElseIf dbengine = "MYSQL" Then
                     'same day with different time
                     varTimeFormat(1) = String.Format("(cast(ea.employeeactivity_time as varchar(8)) + ' - ' + " &
@@ -1241,7 +1241,7 @@ Namespace Commands.DAR
                                                         "inner join man_employee e on ea.employeeactivity_employee = e.employee_id {0} " &
                                                         "order by aa.areaaffected_order", varWhere, varTimeFormat(2), varDescription)
 
-                    datasetname = V_DBE_MYSQL.FillDataSet(databasename, V_DBR_MYSQL(0).Query, datasetname, "employeeactivity")
+                    datasetname = varDatabaseEngineMysql.FillDataSet(databasename, V_DBR_MYSQL(0).Query, datasetname, "employeeactivity")
                 End If
             Catch ex As Exception
                 datasetname = Nothing

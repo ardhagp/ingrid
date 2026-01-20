@@ -82,7 +82,21 @@ Public Class ACGR_Editor
             Return
         End If
 
-        If (Commands.ACGR.Editor.PushData(varDatabaseName, varDatabaseEngine, CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSQLText, TxtAccountName.XOSQLText, ChkEnable.Checked, Convert.ToString(varFormProperties.RowID))) Then
+        With varProperties
+            .DatabaseName = varDatabaseName
+            .DatabaseEngine = varDatabaseEngine
+            .RowID = Convert.ToString(varFormProperties.RowID)
+        End With
+
+        With varAccountingProperties
+            .AccountBookID = CboAccountingBook.SelectedValue.ToString
+            .AccountGroupID = CboAccountGroup.SelectedValue.ToString
+            .AccountNumber = TxtAccountNumber.XOSQLText
+            .AccountName = TxtAccountName.XOSQLText
+            .AccountEnabled = ChkEnable.Checked
+        End With
+
+        If (Commands.ACGR.Editor.PushData(varProperties, varAccountingProperties)) Then
             Mainframe_n_6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else

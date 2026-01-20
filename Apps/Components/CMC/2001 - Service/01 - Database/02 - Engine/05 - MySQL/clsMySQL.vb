@@ -53,10 +53,14 @@ Namespace Database.Engine
         ''' Errors are logged through the Ladybug logging system.
         ''' </returns>
         <SupportedOSPlatform("windows")>
-        Public Function Open(ByVal fields As Properties.Fields, Optional ByVal splash As Form = Nothing) As Boolean
+        Public Function Open(databaseproperties As LibApp.Ingrid.Global.Properties, Optional splash As Form = Nothing) As Boolean
+            If databaseproperties Is Nothing Then
+                databaseproperties = New LibApp.Ingrid.Global.Properties
+            End If
+
             Dim varSuccess As Boolean
             Try
-                varConnection(1) = New MySqlClient.MySqlConnection(varMySQL.Mysqlforcessl(fields.ServerAddress, fields.Port, fields.DatabaseName, fields.Username, fields.Password))
+                varConnection(1) = New MySqlClient.MySqlConnection(varMySQL.Mysqlforcessl(databaseproperties.ServerAddress, databaseproperties.ServerPort, databaseproperties.DatabaseName, databaseproperties.Username, databaseproperties.Password))
                 varConnection(1).Open()
                 varSuccess = True
             Catch ex As MySqlClient.MySqlException

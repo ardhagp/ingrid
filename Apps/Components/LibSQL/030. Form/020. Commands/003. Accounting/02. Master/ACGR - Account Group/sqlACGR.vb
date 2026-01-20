@@ -16,13 +16,13 @@ Namespace Commands.ACGR
         <SupportedOSPlatform("windows")>
         Public Shared Sub FillCompany(databasename As String, dbengine As String, company As cbo)
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select cm.company_id, (cm.company_code + ' - ' + cm.company_name) as [company_name] from dbo.man_company cm order by cm.company_code")
-                V_DBR_MSSQL2008(1).Dropdown = company
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(1), "TCompany")
+                varDatabaseRequestMssql2008(1).Query = String.Format("select cm.company_id, (cm.company_code + ' - ' + cm.company_name) as [company_name] from dbo.man_company cm order by cm.company_code")
+                varDatabaseRequestMssql2008(1).Dropdown = company
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TCompany")
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = String.Format("select cm.company_id, (cm.company_code + ' - ' + cm.company_name) as `company_name` from man_company cm order by cm.company_code")
                 V_DBR_MYSQL(1).Dropdown = company
-                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(1), "TCompany")
+                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(1), "TCompany")
             End If
 
             company.DisplayMember = "company_name"
@@ -43,15 +43,15 @@ Namespace Commands.ACGR
             End If
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select ab.book_id, (ab.book_code + ' - ' + ab.book_bookname) as [book_bookname] from dbo.ac_book ab inner join dbo.man_company cm on ab.book_company = cm.company_id " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ab.book_id, (ab.book_code + ' - ' + ab.book_bookname) as [book_bookname] from dbo.ac_book ab inner join dbo.man_company cm on ab.book_company = cm.company_id " &
                                                     "where ab.book_company = '{0}'", varCompanyID)
-                V_DBR_MSSQL2008(1).Dropdown = accountingbook
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(1), "TAccountingBook")
+                varDatabaseRequestMssql2008(1).Dropdown = accountingbook
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TAccountingBook")
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = String.Format("select ab.book_id, (ab.book_code + ' - ' + ab.book_bookname) as `book_bookname` from ac_book ab inner join man_company cm on ab.book_company = cm.company_id " &
                                                     "where ab.book_company = '{0}'", varCompanyID)
                 V_DBR_MYSQL(1).Dropdown = accountingbook
-                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(1), "TAccountingBook")
+                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(1), "TAccountingBook")
             End If
 
             accountingbook.DisplayMember = "book_bookname"
@@ -72,115 +72,115 @@ Namespace Commands.ACGR
         ''' <remarks>ForceRefresh = True akan menampilkan semua data tanpa filter</remarks>
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetAccountList(databasename As String, dbengine As String, assets As dgn, liability As dgn, equity As dgn, revenue As dgn, expense As dgn, accountingbook As cbo, find As txt, Optional forcerefresh As Boolean = False)
-            Dim V_CBO_Index As String = String.Empty
+            Dim varCboIndex As String
             'Isikan index combobox dengan data dari mainframe
-            V_CBO_Index = accountingbook.SelectedValue.ToString
+            varCboIndex = accountingbook.SelectedValue.ToString
 
             If dbengine = "MSSQL" Then
                 'Tampilkan data awal / tanpa filter / ForceRefresh=True
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
-                    V_DBR_MSSQL2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", V_CBO_Index)
-                    V_DBR_MSSQL2008(0).DataGrid = assets
-                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TAssets")
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
+                                                        "where acc.account_book = '{0}' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", varCboIndex)
+                    varDatabaseRequestMssql2008(0).DataGrid = assets
+                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TAssets")
 
-                    V_DBR_MSSQL2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_group = '9350CB36E672BD4333FF51590CC06B7A' order by acc.account_num", V_CBO_Index)
-                    V_DBR_MSSQL2008(0).DataGrid = liability
-                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TLiability")
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
+                                                        "where acc.account_book = '{0}' and acc.account_group = '9350CB36E672BD4333FF51590CC06B7A' order by acc.account_num", varCboIndex)
+                    varDatabaseRequestMssql2008(0).DataGrid = liability
+                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TLiability")
 
-                    V_DBR_MSSQL2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_group = 'C5A59ADFD8978BE3B64F37B47ECDE743' order by acc.account_num", V_CBO_Index)
-                    V_DBR_MSSQL2008(0).DataGrid = equity
-                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TEquity")
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
+                                                        "where acc.account_book = '{0}' and acc.account_group = 'C5A59ADFD8978BE3B64F37B47ECDE743' order by acc.account_num", varCboIndex)
+                    varDatabaseRequestMssql2008(0).DataGrid = equity
+                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TEquity")
 
-                    V_DBR_MSSQL2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_group = 'F7E86014BCE4308D75F212605D711332' order by acc.account_num", V_CBO_Index)
-                    V_DBR_MSSQL2008(0).DataGrid = revenue
-                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TRevenue")
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
+                                                        "where acc.account_book = '{0}' and acc.account_group = 'F7E86014BCE4308D75F212605D711332' order by acc.account_num", varCboIndex)
+                    varDatabaseRequestMssql2008(0).DataGrid = revenue
+                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TRevenue")
 
-                    V_DBR_MSSQL2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_group = '49A2747735077FAB5B2B0B96E67AC297' order by acc.account_num", V_CBO_Index)
-                    V_DBR_MSSQL2008(0).DataGrid = expense
-                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TExpense")
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
+                                                        "where acc.account_book = '{0}' and acc.account_group = '49A2747735077FAB5B2B0B96E67AC297' order by acc.account_num", varCboIndex)
+                    varDatabaseRequestMssql2008(0).DataGrid = expense
+                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TExpense")
                 Else 'Tampilkan data berdasarkan filter
-                    V_DBR_MSSQL2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", V_CBO_Index, find.XOSQLText)
-                    V_DBR_MSSQL2008(0).DataGrid = assets
-                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TAssets")
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", varCboIndex, find.XOSQLText)
+                    varDatabaseRequestMssql2008(0).DataGrid = assets
+                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TAssets")
 
-                    V_DBR_MSSQL2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '9350CB36E672BD4333FF51590CC06B7A' order by acc.account_num", V_CBO_Index, find.XOSQLText)
-                    V_DBR_MSSQL2008(0).DataGrid = liability
-                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TLiability")
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '9350CB36E672BD4333FF51590CC06B7A' order by acc.account_num", varCboIndex, find.XOSQLText)
+                    varDatabaseRequestMssql2008(0).DataGrid = liability
+                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TLiability")
 
-                    V_DBR_MSSQL2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'C5A59ADFD8978BE3B64F37B47ECDE743' order by acc.account_num", V_CBO_Index, find.XOSQLText)
-                    V_DBR_MSSQL2008(0).DataGrid = equity
-                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TEquity")
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'C5A59ADFD8978BE3B64F37B47ECDE743' order by acc.account_num", varCboIndex, find.XOSQLText)
+                    varDatabaseRequestMssql2008(0).DataGrid = equity
+                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TEquity")
 
-                    V_DBR_MSSQL2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'F7E86014BCE4308D75F212605D711332' order by acc.account_num", V_CBO_Index, find.XOSQLText)
-                    V_DBR_MSSQL2008(0).DataGrid = revenue
-                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TRevenue")
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'F7E86014BCE4308D75F212605D711332' order by acc.account_num", varCboIndex, find.XOSQLText)
+                    varDatabaseRequestMssql2008(0).DataGrid = revenue
+                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TRevenue")
 
-                    V_DBR_MSSQL2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '49A2747735077FAB5B2B0B96E67AC297' order by acc.account_num", V_CBO_Index, find.XOSQLText)
-                    V_DBR_MSSQL2008(0).DataGrid = expense
-                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TExpense")
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '49A2747735077FAB5B2B0B96E67AC297' order by acc.account_num", varCboIndex, find.XOSQLText)
+                    varDatabaseRequestMssql2008(0).DataGrid = expense
+                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TExpense")
                 End If
             ElseIf dbengine = "MYSQL" Then
                 'Tampilkan data awal / tanpa filter / ForceRefresh=True
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     V_DBR_MYSQL(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", V_CBO_Index)
+                                                        "where acc.account_book = '{0}' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", varCboIndex)
                     V_DBR_MYSQL(0).DataGrid = assets
-                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TAssets")
+                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TAssets")
 
                     V_DBR_MYSQL(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_group = '9350CB36E672BD4333FF51590CC06B7A' order by acc.account_num", V_CBO_Index)
+                                                        "where acc.account_book = '{0}' and acc.account_group = '9350CB36E672BD4333FF51590CC06B7A' order by acc.account_num", varCboIndex)
                     V_DBR_MYSQL(0).DataGrid = liability
-                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TLiability")
+                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TLiability")
 
                     V_DBR_MYSQL(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_group = 'C5A59ADFD8978BE3B64F37B47ECDE743' order by acc.account_num", V_CBO_Index)
+                                                        "where acc.account_book = '{0}' and acc.account_group = 'C5A59ADFD8978BE3B64F37B47ECDE743' order by acc.account_num", varCboIndex)
                     V_DBR_MYSQL(0).DataGrid = equity
-                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TEquity")
+                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TEquity")
 
                     V_DBR_MYSQL(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_group = 'F7E86014BCE4308D75F212605D711332' order by acc.account_num", V_CBO_Index)
+                                                        "where acc.account_book = '{0}' and acc.account_group = 'F7E86014BCE4308D75F212605D711332' order by acc.account_num", varCboIndex)
                     V_DBR_MYSQL(0).DataGrid = revenue
-                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TRevenue")
+                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TRevenue")
 
                     V_DBR_MYSQL(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_group = '49A2747735077FAB5B2B0B96E67AC297' order by acc.account_num", V_CBO_Index)
+                                                        "where acc.account_book = '{0}' and acc.account_group = '49A2747735077FAB5B2B0B96E67AC297' order by acc.account_num", varCboIndex)
                     V_DBR_MYSQL(0).DataGrid = expense
-                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TExpense")
+                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TExpense")
                 Else 'Tampilkan data berdasarkan filter
                     V_DBR_MYSQL(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", V_CBO_Index, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", varCboIndex, find.XOSQLText)
                     V_DBR_MYSQL(0).DataGrid = assets
-                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TAssets")
+                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TAssets")
 
                     V_DBR_MYSQL(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '9350CB36E672BD4333FF51590CC06B7A' order by acc.account_num", V_CBO_Index, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '9350CB36E672BD4333FF51590CC06B7A' order by acc.account_num", varCboIndex, find.XOSQLText)
                     V_DBR_MYSQL(0).DataGrid = liability
-                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TLiability")
+                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TLiability")
 
                     V_DBR_MYSQL(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'C5A59ADFD8978BE3B64F37B47ECDE743' order by acc.account_num", V_CBO_Index, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'C5A59ADFD8978BE3B64F37B47ECDE743' order by acc.account_num", varCboIndex, find.XOSQLText)
                     V_DBR_MYSQL(0).DataGrid = equity
-                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TEquity")
+                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TEquity")
 
                     V_DBR_MYSQL(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'F7E86014BCE4308D75F212605D711332' order by acc.account_num", V_CBO_Index, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'F7E86014BCE4308D75F212605D711332' order by acc.account_num", varCboIndex, find.XOSQLText)
                     V_DBR_MYSQL(0).DataGrid = revenue
-                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TRevenue")
+                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TRevenue")
 
                     V_DBR_MYSQL(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '49A2747735077FAB5B2B0B96E67AC297' order by acc.account_num", V_CBO_Index, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '49A2747735077FAB5B2B0B96E67AC297' order by acc.account_num", varCboIndex, find.XOSQLText)
                     V_DBR_MYSQL(0).DataGrid = expense
-                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TExpense")
+                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TExpense")
                 End If
             End If
         End Sub
@@ -191,11 +191,11 @@ Namespace Commands.ACGR
 
             Try
                 If dbengine = "MSSQL" Then
-                    V_DBR_MSSQL2008(1).Query = String.Format("delete from dbo.ac_account where account_id = '{0}'", rowid)
-                    V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                    varDatabaseRequestMssql2008(1).Query = String.Format("delete from dbo.ac_account where account_id = '{0}'", rowid)
+                    varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dbengine = "MYSQL" Then
                     V_DBR_MYSQL(1).Query = String.Format("delete from ac_account where account_id = '{0}'", rowid)
-                    V_DBE_MYSQL.PushData(databasename, V_DBR_MYSQL(1).Query)
+                    varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
                 End If
 
                 varSuccess = True
@@ -221,13 +221,13 @@ Namespace Commands.ACGR
         <SupportedOSPlatform("windows")>
         Public Shared Sub FillCompany(databasename As String, dbengine As String, company As cbo)
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select cm.company_id, (cm.company_code + ' - ' + cm.company_name) as [company_name] from dbo.man_company cm order by cm.company_code")
-                V_DBR_MSSQL2008(1).Dropdown = company
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(1), "TCompany")
+                varDatabaseRequestMssql2008(1).Query = String.Format("select cm.company_id, (cm.company_code + ' - ' + cm.company_name) as [company_name] from dbo.man_company cm order by cm.company_code")
+                varDatabaseRequestMssql2008(1).Dropdown = company
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TCompany")
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = String.Format("select cm.company_id, (cm.company_code + ' - ' + cm.company_name) as `company_name` from man_company cm order by cm.company_code")
                 V_DBR_MYSQL(1).Dropdown = company
-                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(1), "TCompany")
+                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(1), "TCompany")
             End If
 
             company.DisplayMember = "company_name"
@@ -248,15 +248,15 @@ Namespace Commands.ACGR
             End If
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select ab.book_id, (ab.book_code + ' - ' + ab.book_bookname) as [book_bookname] from dbo.ac_book ab inner join dbo.man_company cm on ab.book_company = cm.company_id " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ab.book_id, (ab.book_code + ' - ' + ab.book_bookname) as [book_bookname] from dbo.ac_book ab inner join dbo.man_company cm on ab.book_company = cm.company_id " &
                                                     "where ab.book_company = '{0}'", varCompanyID)
-                V_DBR_MSSQL2008(1).Dropdown = accountingbook
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(1), "TAccountingBook")
+                varDatabaseRequestMssql2008(1).Dropdown = accountingbook
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TAccountingBook")
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = String.Format("select ab.book_id, (ab.book_code + ' - ' + ab.book_bookname) as `book_bookname` from ac_book ab inner join man_company cm on ab.book_company = cm.company_id " &
                                                     "where ab.book_company = '{0}'", varCompanyID)
                 V_DBR_MYSQL(1).Dropdown = accountingbook
-                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(1), "TAccountingBook")
+                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(1), "TAccountingBook")
             End If
 
             accountingbook.DisplayMember = "book_bookname"
@@ -271,13 +271,13 @@ Namespace Commands.ACGR
         <SupportedOSPlatform("windows")>
         Public Shared Sub FillAccountGroup(databasename As String, dbengine As String, accountgroup As cbo)
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = "select ag.group_id, ag.group_name + ' (' + ag.group_inline + ')' as group_name from dbo.[[ac]]group] ag order by ag.group_order"
-                V_DBR_MSSQL2008(1).Dropdown = accountgroup
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(1), "TAccountingBook")
+                varDatabaseRequestMssql2008(1).Query = "select ag.group_id, ag.group_name + ' (' + ag.group_inline + ')' as group_name from dbo.[[ac]]group] ag order by ag.group_order"
+                varDatabaseRequestMssql2008(1).Dropdown = accountgroup
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TAccountingBook")
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = "select ag.group_id, ag.group_name + ' (' + ag.group_inline + ')' as group_name from ac_group ag order by ag.group_order"
                 V_DBR_MYSQL(1).Dropdown = accountgroup
-                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(1), "TAccountingBook")
+                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(1), "TAccountingBook")
             End If
 
             accountgroup.DisplayMember = "group_name"
@@ -295,11 +295,11 @@ Namespace Commands.ACGR
             Dim varCompanyID As String = String.Empty
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select ab.book_company from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
-                varCompanyID = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ab.book_company from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
+                varCompanyID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = String.Format("select ab.book_company from ac_account ac inner join ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
-                varCompanyID = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                varCompanyID = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
             End If
 
             Return varCompanyID
@@ -316,11 +316,11 @@ Namespace Commands.ACGR
             Dim varAccountBookID As String = String.Empty
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select ab.book_id from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
-                varAccountBookID = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ab.book_id from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
+                varAccountBookID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = String.Format("select ab.book_id from ac_account ac inner join ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
-                varAccountBookID = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                varAccountBookID = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
             End If
 
             Return varAccountBookID
@@ -337,11 +337,11 @@ Namespace Commands.ACGR
             Dim varAccountGroupID As String = String.Empty
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select ac.account_group from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
-                varAccountGroupID = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ac.account_group from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
+                varAccountGroupID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = String.Format("select ac.account_group from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
-                varAccountGroupID = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                varAccountGroupID = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
             End If
 
             Return varAccountGroupID
@@ -358,11 +358,11 @@ Namespace Commands.ACGR
             Dim varAccountNumber As String = String.Empty
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select ac.account_num from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
-                varAccountNumber = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ac.account_num from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
+                varAccountNumber = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = String.Format("select ac.account_num from ac_account ac inner join ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
-                varAccountNumber = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                varAccountNumber = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
             End If
 
             Return varAccountNumber
@@ -379,11 +379,11 @@ Namespace Commands.ACGR
             Dim varAccountNumber As String = String.Empty
 
             If dbengine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select ac.account_name from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
-                varAccountNumber = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ac.account_name from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
+                varAccountNumber = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
             ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(1).Query = String.Format("select ac.account_name from ac_account ac inner join ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
-                varAccountNumber = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                varAccountNumber = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
             End If
 
             Return varAccountNumber
@@ -395,11 +395,11 @@ Namespace Commands.ACGR
 
             Try
                 If dbengine = "MSSQL" Then
-                    V_DBR_MSSQL2008(1).Query = String.Format("select ac.account_enable from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
-                    varEnableTransaction = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Boolean)
+                    varDatabaseRequestMssql2008(1).Query = String.Format("select ac.account_enable from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
+                    varEnableTransaction = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Boolean)
                 ElseIf dbengine = "MYSQL" Then
                     V_DBR_MYSQL(1).Query = String.Format("select ac.account_enable from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
-                    varEnableTransaction = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query), Boolean)
+                    varEnableTransaction = CType(varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query), Boolean)
                 End If
             Catch ex As Exception
                 varEnableTransaction = False
@@ -415,14 +415,14 @@ Namespace Commands.ACGR
 
             If dbengine = "MSSQL" Then
                 If rowid = "-1" Then
-                    varWhere += String.Format("ac.account_book = '{0}' and ac.account_num = '{1}'", accountbookid, accountnumber)
+                    varWhere &= $"ac.account_book = '{accountbookid}' and ac.account_num = '{accountnumber}'"
                 Else
-                    varWhere += String.Format("ac.account_book = '{0}' and ac.account_num = '{1}' and ac.account_id <> '{2}'", accountbookid, accountnumber, rowid)
+                    varWhere &= String.Format("ac.account_book = '{0}' and ac.account_num = '{1}' and ac.account_id <> '{2}'", accountbookid, accountnumber, rowid)
                 End If
 
-                V_DBR_MSSQL2008(1).Query = String.Format("select count(ac.account_id) as [rows] from dbo.ac_account ac {0}", varWhere)
+                varDatabaseRequestMssql2008(1).Query = String.Format("select count(ac.account_id) as [rows] from dbo.ac_account ac {0}", varWhere)
 
-                varIsDuplicate = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Integer)
+                varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
             ElseIf dbengine = "MYSQL" Then
                 If rowid = "-1" Then
                     varWhere += String.Format("ac.account_book = '{0}' and ac.account_num = '{1}'", accountbookid, accountnumber)
@@ -432,7 +432,7 @@ Namespace Commands.ACGR
 
                 V_DBR_MYSQL(1).Query = String.Format("select count(ac.account_id) as `rows` from ac_account ac {0}", varWhere)
 
-                varIsDuplicate = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query), Integer)
+                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query), Integer)
             End If
 
             If varIsDuplicate > 0 Then
@@ -443,27 +443,27 @@ Namespace Commands.ACGR
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushData(databasename As String, dbengine As String, accountbookid As String, accountgroupid As String, accountnumber As String, accountname As String, accountenable As Boolean, Optional rowid As String = "-1") As Boolean
-            Dim varSuccess As Boolean = False
+        Public Shared Function PushData(globalproperties As LibApp.Ingrid.Global.Properties, accountingproperties As LibApp.Ingrid.Accounting.Properties) As Boolean
+            Dim varSuccess As Boolean
             Try
                 Dim varHash As String = CMCv.Security.Encrypt.MD5()
 
-                If dbengine = "MSSQL" Then
-                    If rowid = "-1" Then
-                        V_DBR_MSSQL2008(0).Query = String.Format("insert into dbo.ac_account(account_id, account_book, account_group, account_num, account_name, account_enable) " &
-                                                            "values('{0}', '{1}','{2}','{3}','{4}','{5}')", varHash, accountbookid, accountgroupid, accountnumber, accountname, accountenable)
+                If globalproperties.DatabaseEngine = "MSSQL" Then
+                    If Convert.ToString(globalproperties.RowID) = "-1" Then
+                        varDatabaseRequestMssql2008(0).Query = $"insert into dbo.ac_account(account_id, account_book, account_group, account_num, account_name, account_enable) " &
+                                                   $"values('{varHash}', '{accountingproperties.AccountBookID}','{accountingproperties.AccountGroupID}','{accountingproperties.AccountNumber}','{accountingproperties.AccountName}','{accountingproperties.AccountEnabled}')"
                     Else
-                        V_DBR_MSSQL2008(0).Query = String.Format("update dbo.ac_account set account_num = '{0}', account_name = '{1}', account_enable = '{2}' where account_id = '{3}'", accountnumber, accountname, accountenable, rowid)
+                        varDatabaseRequestMssql2008(0).Query = $"update dbo.ac_account set account_num = '{accountingproperties.AccountNumber}', account_name = '{accountingproperties.AccountName}', account_enable = '{accountingproperties.AccountEnabled}' where account_id = '{globalproperties.RowID}'"
                     End If
-                    V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(0).Query)
-                ElseIf dbengine = "MYSQL" Then
-                    If rowid = "-1" Then
-                        V_DBR_MYSQL(0).Query = String.Format("insert into ac_account(account_id, account_book, account_group, account_num, account_name, account_enable) " &
-                                                            "values('{0}', '{1}','{2}','{3}','{4}','{5}')", varHash, accountbookid, accountgroupid, accountnumber, accountname, accountenable)
+                    varDatabaseEngineMssql2008.PushData(globalproperties.DatabaseName, varDatabaseRequestMssql2008(0).Query)
+                ElseIf globalproperties.DatabaseEngine = "MYSQL" Then
+                    If Convert.ToString(globalproperties.RowID) = "-1" Then
+                        V_DBR_MYSQL(0).Query = $"insert into ac_account(account_id, account_book, account_group, account_num, account_name, account_enable) " &
+                                               $"values('{varHash}', '{accountingproperties.AccountBookID}','{accountingproperties.AccountGroupID}','{accountingproperties.AccountNumber}','{accountingproperties.AccountName}','{accountingproperties.AccountEnabled}')"
                     Else
-                        V_DBR_MYSQL(0).Query = String.Format("update ac_account set account_num = '{0}', account_name = '{1}', account_enable = '{2}' where account_id = '{3}'", accountnumber, accountname, accountenable, rowid)
+                        V_DBR_MYSQL(0).Query = $"update ac_account set account_num = '{accountingproperties.AccountNumber}', account_name = '{accountingproperties.AccountName}', account_enable = '{accountingproperties.AccountEnabled}' where account_id = '{globalproperties.RowID}'"
                     End If
-                    V_DBE_MYSQL.PushData(databasename, V_DBR_MYSQL(0).Query)
+                    varDatabaseEngineMysql.PushData(globalproperties.DatabaseName, V_DBR_MYSQL(0).Query)
                 End If
                 varSuccess = True
             Catch ex As Exception
