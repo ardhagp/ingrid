@@ -82,7 +82,7 @@ Public Class DAR
         V_MMSMenu.Visible("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
 
         'Mengambil nilai dari database usersettings, jika ya maka tampilkan Menu Show Attachment
-        If (Commands.DAR.View.CheckSettings(varDatabaseName, varDatabaseEngine, varUserAttributes.UID, "viewphototab")) Then
+        If (Commands.DAR.View.CheckSettings(varDatabaseName, varDatabaseEngine, varProperties.UserID, "viewphototab")) Then
             V_MMSMenu.Checked("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
             SpcContent.Panel2Collapsed = False
             Call LoadAttachment(V_ShowAttachment)
@@ -168,11 +168,11 @@ Public Class DAR
     ''' <summary>
     ''' Get row ID on record clicked
     ''' </summary>
-    Private Sub GetTableID()
-        varFormAttributes.RowID = "-1"
+    Private Sub GetRowID()
+        varFormProperties.RowID = "-1"
 
         If DgnDARActivity.RowCount > 0 Then
-            varFormAttributes.RowID = DgnDARActivity.CurrentRow.Cells("employeeactivity_id").Value.ToString
+            varFormProperties.RowID = DgnDARActivity.CurrentRow.Cells("employeeactivity_id").Value.ToString
         End If
     End Sub
 
@@ -215,12 +215,12 @@ Public Class DAR
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles V_MMSMenu.EventDataAddNew
-        If Not (varUserAccess.User(varDatabaseName, "DAR", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+        If Not (varUserAccess.User(varDatabaseName, "DAR", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
-        varFormAttributes.IsNew = True
-        varFormAttributes.RowID = "-1"
+        varFormProperties.IsNew = True
+        varFormProperties.RowID = "-1"
         F_DAR_Editor = New DAR_Editor
         Display(F_DAR_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new activity", True)
         Mainframe_n_6.Ts_status.Text = String.Empty
@@ -231,15 +231,15 @@ Public Class DAR
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Public Sub EventDataEdit() Handles V_MMSMenu.EventDataEdit
-        If Not (varUserAccess.User(varDatabaseName, "DAR", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+        If Not (varUserAccess.User(varDatabaseName, "DAR", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        Call GetTableID()
-        varFormAttributes.IsNew = False
+        Call GetRowID()
+        varFormProperties.IsNew = False
 
-        If varFormAttributes.RowID Is "-1" Then
+        If Convert.ToString(varFormProperties.RowID) Is "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             F_DAR_Editor = New DAR_Editor
@@ -253,17 +253,17 @@ Public Class DAR
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles V_MMSMenu.EventDataDelete
-        If Not (varUserAccess.User(varDatabaseName, "DAR", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+        If Not (varUserAccess.User(varDatabaseName, "DAR", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
-        Call GetTableID()
-        If varFormAttributes.RowID Is "-1" Then
+        Call GetRowID()
+        If Convert.ToString(varFormProperties.RowID) Is "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            varFormAttributes.IsNew = False
+            varFormProperties.IsNew = False
             If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.DAR.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID.ToString)) Then
+                If (Commands.DAR.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID).ToString)) Then
                     Call GETDATA(True)
                     Call FillEmployee()
                     Mainframe_n_6.Ts_status.Text = "Success"
@@ -369,9 +369,9 @@ Public Class DAR
     <SupportedOSPlatform("windows")>
     Private Sub DAR_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If (V_MMSMenu.Checked("EventToolsViewAttachment")) Then
-            Commands.DAR.View.SaveSettings(varDatabaseName, varDatabaseEngine, varUserAttributes.UID, "ViewPhotoTab", "True")
+            Commands.DAR.View.SaveSettings(varDatabaseName, varDatabaseEngine, varProperties.UserID, "ViewPhotoTab", "True")
         Else
-            Commands.DAR.View.SaveSettings(varDatabaseName, varDatabaseEngine, varUserAttributes.UID, "ViewPhotoTab", "False")
+            Commands.DAR.View.SaveSettings(varDatabaseName, varDatabaseEngine, varProperties.UserID, "ViewPhotoTab", "False")
         End If
     End Sub
 
@@ -542,8 +542,8 @@ Public Class DAR
         If PctbxActivityPhoto.Image Is Nothing Then
             Decision("No photo selected.", "Alert", CMCv.frmDialogBox.MessageIcon.Alert, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            If Not (Commands.DAR.View.IsLike(varDatabaseName, varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varUserAttributes.EID)) Then
-                If (Commands.DAR.View.LikePhoto(varDatabaseName, varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varUserAttributes.EID, DgnDARActivity.CurrentRow.Cells("employee_id").Value.ToString)) Then
+            If Not (Commands.DAR.View.IsLike(varDatabaseName, varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varProperties.EmployeeID)) Then
+                If (Commands.DAR.View.LikePhoto(varDatabaseName, varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varProperties.EmployeeID, DgnDARActivity.CurrentRow.Cells("employee_id").Value.ToString)) Then
                     Mainframe_n_6.Ts_status.Text = DgnPhoto.CurrentRow.Cells("photo_employee_fullname").Value.ToString & " would like to say thank you for your appreciation."
                 Else
                     SLFStatus.Items(0).Text = ""
@@ -566,7 +566,7 @@ Public Class DAR
 
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventReportShow() Handles V_MMSMenu.EventReportShow
-        If Not (varUserAccess.User(varDatabaseName, "DAR", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Report)) Then
+        If Not (varUserAccess.User(varDatabaseName, "DAR", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Report)) Then
             Decision("You are not authorized to : Generate Report", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If

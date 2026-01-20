@@ -38,11 +38,11 @@ Namespace Commands.DRTM
                         varWhere += String.Format(")")
                     End If
 
-                    V_DBR_MSSQL2008(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from dbo.doc_template tpl {0} order by tpl.template_title", varWhere)
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from dbo.doc_template tpl {0} order by tpl.template_title", varWhere)
 
-                    V_DBR_MSSQL2008(0).DataGrid = dategrid
-                    V_DBR_MSSQL2008(0).StatusBar = contentstatusbar
-                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TDARTemplate")
+                    varDatabaseRequestMssql2008(0).DataGrid = dategrid
+                    varDatabaseRequestMssql2008(0).StatusBar = contentstatusbar
+                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TDARTemplate")
                 ElseIf dbengine = "MYSQL" Then
                     If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
                         varWhere += "tpl.template_module = (select mdl.module_id from sys_module mdl where mdl.module_code = 'DAR') "
@@ -72,7 +72,7 @@ Namespace Commands.DRTM
 
                     V_DBR_MYSQL(0).DataGrid = dategrid
                     V_DBR_MYSQL(0).StatusBar = contentstatusbar
-                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TDARTemplate")
+                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TDARTemplate")
                 End If
             Catch ex As Exception
                 MsgBox(ex.ToString)

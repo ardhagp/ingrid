@@ -65,7 +65,7 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub Open(Optional ByVal isproductionmode As Boolean = False)
+        Public Sub Open(Optional isproductionmode As Boolean = False)
             Try
                 Dim varLocation As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\ardhagp\Ingrid .NET"
 
@@ -142,20 +142,20 @@ Namespace Database.Engine
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Function GetDatabaseProperties(ByVal fields As Properties.Fields) As Database.Properties.Fields
+        Public Function GetDatabaseProperties(globalproperties As LibApp.Ingrid.Global.Properties) As LibApp.Ingrid.Global.Properties
             Try
                 varDataReader(1) = GetDataRow("Select LIST.SERVERADDRESS, LIST.USERNAME, LIST.PASSWORD, LIST.SERVERPORT, LIST.DBFORDATA, LIST.DBFORFILE FROM LIST WHERE LIST.DEFAULTCONNECTION =1;")
 
                 With varDataReader(1)
-                    fields.ServerAddress = .GetString(0)
-                    fields.Username = .GetString(1)
-                    fields.Password = CMCv.Security.Decrypt.AES(.GetString(2))
-                    fields.Port = CType(.GetValue(3), Integer)
-                    fields.DatabaseName = .GetString(4)
-                    fields.FileStorage = .GetString(5)
+                    globalproperties.ServerAddress = .GetString(0)
+                    globalproperties.Username = .GetString(1)
+                    globalproperties.Password = CMCv.Security.Decrypt.AES(.GetString(2))
+                    globalproperties.ServerPort = CType(.GetValue(3), Integer)
+                    globalproperties.DatabaseName = .GetString(4)
+                    globalproperties.FileStorage = .GetString(5)
                 End With
 
-                Return fields
+                Return globalproperties
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()

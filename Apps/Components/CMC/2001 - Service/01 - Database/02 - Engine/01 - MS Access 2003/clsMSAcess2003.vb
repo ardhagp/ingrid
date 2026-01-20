@@ -53,9 +53,9 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Private Shared Function EnsureDbExists(relativePath As String, baseFolder As String) As Boolean
-            Dim targetPath = IO.Path.Combine(baseFolder, relativePath)
-            Dim sourcePath = IO.Path.Combine(Application.StartupPath, relativePath)
+        Private Shared Function EnsureDbExists(relativepath As String, basefolder As String) As Boolean
+            Dim targetPath = IO.Path.Combine(basefolder, relativepath)
+            Dim sourcePath = IO.Path.Combine(Application.StartupPath, relativepath)
 
             If Not IO.File.Exists(targetPath) Then
                 IO.File.Copy(sourcePath, targetPath, True)
@@ -65,7 +65,7 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub Open(Optional ByVal isproductionmode As Boolean = False)
+        Public Sub Open(Optional isproductionmode As Boolean = False)
             Try
                 CheckDBCatalog()
 
@@ -116,20 +116,20 @@ Namespace Database.Engine
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Function GetDatabaseProperties(ByVal fields As Database.Properties.Fields) As Database.Properties.Fields
+        Public Function GetDatabaseProperties(globalproperties As LibApp.Ingrid.Global.Properties) As LibApp.Ingrid.Global.Properties
             Try
                 varDatareader(0) = GetDataRow("SELECT LIST.SERVERADDRESS, LIST.USERNAME, LIST.PASSWORD, LIST.ACCEPTEDLINECONNECTION FROM LIST WHERE LIST.ID =1;", varConnection(0), varCommand(0))
 
                 With varDatareader(0)
-                    fields.ServerAddress = .GetString(0)
-                    fields.Username = .GetString(1)
-                    fields.Password = CMCv.Security.Decrypt.AES(.GetString(2))
-                    fields.Port = CType(.GetValue(3), Integer)
-                    fields.DatabaseName = .GetString(4)
-                    fields.FileStorage = .GetString(5)
+                    globalproperties.ServerAddress = .GetString(0)
+                    globalproperties.Username = .GetString(1)
+                    globalproperties.Password = CMCv.Security.Decrypt.AES(.GetString(2))
+                    globalproperties.ServerPort = CType(.GetValue(3), Integer)
+                    globalproperties.DatabaseName = .GetString(4)
+                    globalproperties.FileStorage = .GetString(5)
                 End With
 
-                Return fields
+                Return globalproperties
             Catch ex As System.Data.OleDb.OleDbException
                 With proLog
                     .AppVersion = GetAppVersion()

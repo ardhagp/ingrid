@@ -1715,6 +1715,7 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Bridge": "1.0.0",
+          "LibApp": "1.0.0",
           "Microsoft.CSharp": "4.7.0",
           "MySql.Data": "9.5.0",
           "NETCore.Encrypt": "2.1.1",
@@ -1741,6 +1742,19 @@
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WindowsForms"
         ]
+      },
+      "LibApp/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "ReportGenerator": "5.5.0"
+        },
+        "compile": {
+          "bin/placeholder/LibApp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LibApp.dll": {}
+        }
       }
     }
   },
@@ -4935,11 +4949,17 @@
       "type": "project",
       "path": "../CMC/CMCv.vbproj",
       "msbuildProject": "../CMC/CMCv.vbproj"
+    },
+    "LibApp/1.0.0": {
+      "type": "project",
+      "path": "../LibApp/LibApp.vbproj",
+      "msbuildProject": "../LibApp/LibApp.vbproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
       "CMCv >= 1.0.0",
+      "LibApp >= 1.0.0",
       "ReportGenerator >= 5.5.0",
       "System.Data.DataSetExtensions >= 4.5.0",
       "System.Management >= 10.0.0",
@@ -4982,6 +5002,9 @@
           "projectReferences": {
             "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj": {
               "projectPath": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\CMC\\CMCv.vbproj"
+            },
+            "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\LibApp\\LibApp.vbproj": {
+              "projectPath": "C:\\Users\\titoa\\source\\repos\\Ingrid\\Apps\\Components\\LibApp\\LibApp.vbproj"
             }
           }
         }

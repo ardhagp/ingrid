@@ -1,5 +1,5 @@
 ﻿Public Class frmFistGuide
-    Private Field_Record As New Ingrid.Main.GlobalRecord
+    Private Field_Record As New LibApp.Ingrid.Global.Properties
     Private _Step As Integer
 
     Private Sub Btn_Process_Click(sender As Object, e As EventArgs) Handles Btn_Process.Click
@@ -20,7 +20,7 @@
                     Txt_EmployeeID.Focus()
                 End If
 
-                Exit Sub
+                Return
             End If
 
             Field_Record.Field01 = CMCv.Security.Encrypt.MD5(Txt_Company.Text.ToUpper)
@@ -32,7 +32,7 @@
             Gbx_Login.Visible = True
 
             _Step += 1
-            Lbl_Step.Text = String.Format("Step {0} :", _Step)
+            Lbl_Step.Text = $"Step {_Step} :"
 
             Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
             Btn_Close.Text = "&Prev"
@@ -47,13 +47,13 @@
                     Txt_Password.Focus()
                 End If
 
-                Exit Sub
+                Return
             End If
 
             If Txt_Password.XOPwdStrengthScore < 70 Then
                 MsgBox("Your password is not strong enough!", MsgBoxStyle.Exclamation, "Ingrid")
                 Txt_Password.Focus()
-                Exit Sub
+                Return
             End If
 
             Gbx_Company.Visible = False
@@ -61,14 +61,14 @@
             Gbx_Modules.Visible = True
 
             _Step += 1
-            Lbl_Step.Text = String.Format("Step {0} :", _Step)
+            Lbl_Step.Text = $"Step {_Step} :"
 
         ElseIf _Step = 3 Then
             'TODO: Continue next step, open SQLite Database for App_Settings.db
             'ERL.
 
             _Step += 1
-            Lbl_Step.Text = String.Format("Step {0} :", _Step)
+            Lbl_Step.Text = $"Step {_Step} :"
 
         End If
     End Sub

@@ -39,11 +39,11 @@ Namespace Commands.DRAA
 
                 End If
 
-                V_DBR_MSSQL2008(0).Query = String.Format("select aa.areaaffected_id, aa.areaaffected_order, aa.areaaffected_name from dbo.doc_areaaffected aa {0} order by aa.areaaffected_order, aa.areaaffected_name", varWhere)
+                varDatabaseRequestMssql2008(0).Query = String.Format("select aa.areaaffected_id, aa.areaaffected_order, aa.areaaffected_name from dbo.doc_areaaffected aa {0} order by aa.areaaffected_order, aa.areaaffected_name", varWhere)
 
-                V_DBR_MSSQL2008(0).DataGrid = contentgrid
-                V_DBR_MSSQL2008(0).StatusBar = contentstatusbar
-                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TAreaAffected")
+                varDatabaseRequestMssql2008(0).DataGrid = contentgrid
+                varDatabaseRequestMssql2008(0).StatusBar = contentstatusbar
+                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TAreaAffected")
 
             Catch ex As Exception
                 MsgBox(ex.ToString)

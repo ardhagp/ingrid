@@ -15,11 +15,11 @@ Public Class UAC
         Commands.UAC.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnUAC, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
-    Private Sub GetTableID()
-        varFormAttributes.RowID = "-1"
+    Private Sub GetRowID()
+        varFormProperties.RowID = "-1"
 
         If DgnUAC.RowCount > 0 Then
-            varFormAttributes.RowID = DgnUAC.CurrentRow.Cells("user_id").Value.ToString
+            varFormProperties.RowID = DgnUAC.CurrentRow.Cells("user_id").Value.ToString
         End If
     End Sub
 #End Region
@@ -28,55 +28,55 @@ Public Class UAC
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles V_MMSMenu.EventDataAddNew
-        varFormAttributes.IsChangePasswordForm = False
+        varFormProperties.IsChangePasswordForm = False
 
-        If Not (varUserAccess.User(varDatabaseName, "UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+        If Not (varUserAccess.User(varDatabaseName, "UAC", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        varFormAttributes.IsNew = True
-        varFormAttributes.RowID = "-1"
-        varFormAttributes.Hash = Security.Encrypt.MD5()
+        varFormProperties.IsNew = True
+        varFormProperties.RowID = "-1"
+        varFormProperties.Hash = Security.Encrypt.MD5()
         V_UAC_Editor = New UAC_Editor
         DISPLAY(V_UAC_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new credential data", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles V_MMSMenu.EventDataEdit
-        varFormAttributes.IsChangePasswordForm = False
+        varFormProperties.IsChangePasswordForm = False
 
-        If Not (varUserAccess.User(varDatabaseName, "UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+        If Not (varUserAccess.User(varDatabaseName, "UAC", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        Call GETTableID()
-        varFormAttributes.IsNew = False
+        Call GetRowID()
+        varFormProperties.IsNew = False
 
-        If varFormAttributes.RowID = "-1" Then
+        If Convert.ToString(varFormProperties.RowID) = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            varFormAttributes.IsNew = False
+            varFormProperties.IsNew = False
             V_UAC_Editor = New UAC_Editor
-            DISPLAY(V_UAC_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
+            Display(V_UAC_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles V_MMSMenu.EventDataDelete
-        If Not (varUserAccess.User(varDatabaseName, "UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+        If Not (varUserAccess.User(varDatabaseName, "UAC", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        Call GETTableID()
+        Call GetRowID()
 
-        If varFormAttributes.RowID = "-1" Then
+        If Convert.ToString(varFormProperties.RowID) = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.UAC.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)) Then
+                If (Commands.UAC.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else

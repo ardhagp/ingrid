@@ -27,20 +27,20 @@ Public Class MODS_Editor
         DgnUserRoles.XOGETNewColor()
 
         Call FillGroup(CboGroup)
-        If (varFormAttributes.IsNew) Then
+        If (varFormProperties.IsNew) Then
             ChkAddNew.Enabled = True
             ChkAddNew.Visible = True
             CboGroup.Focus()
         Else
             ChkAddNew.Enabled = False
             ChkAddNew.Visible = False
-            TxtID.Text = varFormAttributes.RowID
-            CboGroup.SelectedValue = Commands.MODS.Editor.GetMODgroupid(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)
-            TxtCode.Text = Commands.MODS.Editor.GetMODcode(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)
-            TxtName.Text = Commands.MODS.Editor.GetMODname(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)
-            TxtDescription.Text = Commands.MODS.Editor.GETMODDescription(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)
-            ChkSystem.Checked = Commands.MODS.Editor.GetMODsystem(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)
-            ChkLocked.Checked = Commands.MODS.Editor.GETMODLocked(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)
+            TxtID.Text = Convert.ToString(varFormProperties.RowID)
+            CboGroup.SelectedValue = Commands.MODS.Editor.GetMODgroupid(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            TxtCode.Text = Commands.MODS.Editor.GetMODcode(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            TxtName.Text = Commands.MODS.Editor.GetMODname(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            TxtDescription.Text = Commands.MODS.Editor.GETMODDescription(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            ChkSystem.Checked = Commands.MODS.Editor.GetMODsystem(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            ChkLocked.Checked = Commands.MODS.Editor.GETMODLocked(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
 
             TxtCode.ReadOnly = True
         End If
@@ -54,15 +54,15 @@ Public Class MODS_Editor
         If (CboGroup.Items.Count = 0) OrElse (TxtCode.XOSQLText = String.Empty) OrElse (TxtName.XOSQLText = String.Empty) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Module Group selected, Module Code and Module Name are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (varFormAttributes.IsNew) AndAlso (Commands.MODS.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, TxtCode.XOSQLText)) Then
+        ElseIf (varFormProperties.IsNew) AndAlso (Commands.MODS.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, TxtCode.XOSQLText)) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Departement Code already registered.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf Not (varFormAttributes.IsNew) AndAlso (Commands.MODS.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, TxtCode.XOSQLText, varFormAttributes.RowID)) Then
+        ElseIf Not (varFormProperties.IsNew) AndAlso (Commands.MODS.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, TxtCode.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Departement Code already used by another departement.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        If (Commands.MODS.Editor.PushData(varDatabaseName, varDatabaseEngine, TxtID.XOSQLText, CboGroup.SelectedValue.ToString, TxtCode.XOSQLText, TxtName.XOSQLText, TxtDescription.XOSQLText, ChkSystem.Checked, ChkLocked.Checked, varFormAttributes.RowID)) Then
+        If (Commands.MODS.Editor.PushData(varDatabaseName, varDatabaseEngine, TxtID.XOSQLText, CboGroup.SelectedValue.ToString, TxtCode.XOSQLText, TxtName.XOSQLText, TxtDescription.XOSQLText, ChkSystem.Checked, ChkLocked.Checked, Convert.ToString(varFormProperties.RowID))) Then
             RaiseEvent RecordSaved()
             Mainframe_n_6.Ts_status.Text = "Success"
         Else
@@ -90,7 +90,7 @@ Public Class MODS_Editor
     End Sub
 
     Private Sub TxtCode_TextChanged(sender As Object, e As EventArgs) Handles TxtCode.TextChanged
-        If (varFormAttributes.IsNew) Then
+        If (varFormProperties.IsNew) Then
             TxtID.Text = CMCv.Security.Encrypt.MD5(TxtCode.XOSQLText.ToUpper)
         End If
     End Sub

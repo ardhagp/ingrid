@@ -559,5 +559,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bridge\Bridge.csproj" />
+    <ProjectReference Include="..\LibApp\LibApp.vbproj" />
   </ItemGroup>
 </Project>

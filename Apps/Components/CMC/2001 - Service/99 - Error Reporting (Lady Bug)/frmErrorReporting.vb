@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
-Public Class FRMerrorreporting
+Public Class FrmErrorReporting
     'Private Catcher As New Ladybug.Log.Fields
     Private ResumeNext As Boolean
 
@@ -18,7 +18,7 @@ Public Class FRMerrorreporting
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Public Sub New(ByVal proLog As Ladybug.Log.Fields, Optional ByVal varDBengine As Database.Engine.SQLiteV3 = Nothing)
+    Public Sub New(ByVal proLog As Ladybug.Log.Fields, Optional dbengine As Database.Engine.SQLiteV3 = Nothing)
         InitializeComponent()
 
         TxtErrorType.Text = proLog.TypeOfFaulty.ToString()
@@ -32,16 +32,13 @@ Public Class FRMerrorreporting
 
         'Send Error to Ingrid Log Center
         If (proLog.SaveInBetterLog) Then
-            varMessage = """message"" : """ & proLog.Message & """," & Environment.NewLine & """sender"" : """ & proLog.FromSender & """," & Environment.NewLine & """error_number"" : " & TxtErrorNumber.Text & "," & Environment.NewLine & """error_type"" : """ & TxtErrorType.Text & """," & Environment.NewLine & """version"" : """ & TxtAppBuild.Text & ""","
+            varMessage = """message"" : """ & proLog.Message & """," & Environment.NewLine & """sender"" : """ & proLog.FromSender & """," & Environment.NewLine & """error_number"" : " & proLog.Number & "," & Environment.NewLine & """error_type"" : """ & proLog.TypeOfFaulty.ToString() & """," & Environment.NewLine & """log_type"" : """ & proLog.TypeOfLog.ToString() & """," & Environment.NewLine & """version"" : """ & proLog.AppVersion & ""","
             Bridge.Security.Writelog.Sendlog(varMessage, proLog.TypeOfLog.ToString())
         End If
 
         'Record Error into local database
         If (proLog.SaveLogInLocal) Then
-            If varDBengine Is Nothing Then
-                Return
-            End If
-            ERL = varDBengine
+            ERL = dbengine
             ERL.Open()
             ERL.SaveErrorData(proLog)
         End If
