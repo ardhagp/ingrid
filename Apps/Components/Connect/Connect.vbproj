@@ -115,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CMC\CMCv.vbproj" />
+    <ProjectReference Include="..\LibApp\LibApp.vbproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="My Project\Settings.settings">

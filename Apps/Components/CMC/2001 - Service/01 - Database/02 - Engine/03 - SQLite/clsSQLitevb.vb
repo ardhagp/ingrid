@@ -138,15 +138,15 @@ Namespace Database.Engine
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
-        Public Shared Sub OpenAppSettings()
-            Try
+        '<SupportedOSPlatform("windows")>
+        'Public Shared Sub OpenAppSettings()
+        '    Try
 
-            Catch ex As Exception
-                'Call SUBlogdatapush("[OpenAppSettings] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
-                'Call SUBlogdatashow()
-            End Try
-        End Sub
+        '    Catch ex As Exception
+        '        'Call SUBlogdatapush("[OpenAppSettings] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
+        '        'Call SUBlogdatashow()
+        '    End Try
+        'End Sub
 
         <SupportedOSPlatform("windows")>
         Public Function GetDatabaseProperties(ByVal fields As Properties.Fields) As Database.Properties.Fields

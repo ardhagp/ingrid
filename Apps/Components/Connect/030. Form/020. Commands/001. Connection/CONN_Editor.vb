@@ -13,7 +13,7 @@ Public Class CONN_Editor
     Public Event RecordSaved()
     Private WithEvents ComponentMainframeMenu As New CMCv.UI.View.MenuStrip
     Private varSQL As New Commands.CONN.Editor
-    Private varPasswordChange As Boolean
+    Private varIsPasswordChange As Boolean
     Private varOldPassword As String
     Private varConnectionName As String
 #End Region
@@ -22,17 +22,50 @@ Public Class CONN_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub LoadData()
-        Commands.CONN.Editor.GETRowValue(varFormAttributes.RowID.ToString, TxtConnectionName, CboDBEngine, TxtAddress, TxtPort, TxtUsername, TxtPassword, TxtDatabaseName, varOldPassword, ChkDefault)
+        Try
+            Commands.CONN.Editor.GetRowValue(varProperties)
+
+            With varProperties
+                If (.IsMasked) Then
+                    TxtAddress.UseSystemPasswordChar = True
+                    TxtPort.UseSystemPasswordChar = True
+                    TxtUsername.UseSystemPasswordChar = True
+                    TxtDatabaseName.UseSystemPasswordChar = True
+                End If
+
+                TxtConnectionName.Text = .ConnectionName
+                CboDBEngine.Text = .DatabaseEngine
+                TxtAddress.Text = .ServerAddress
+                TxtPort.Text = Convert.ToString(.ServerPort)
+                TxtUsername.Text = .Username
+                TxtPassword.Text = .Password
+                varOldPassword = .PasswordOld
+                TxtDatabaseName.Text = .DatabaseName
+                ChkDefault.Checked = .IsDefault
+                ChkIsMasked.Checked = .IsMasked
+            End With
+        Catch ex As Exception
+            Dim clsLog As New Ladybug.Log.Events
+            With proLog
+                .AppVersion = GetAppVersion()
+                .FromSender = "[LoadData] $\Ingrid\Apps\Components\Connect\030. Form\020. Commands\001. Connection\CONN_Editor.vb"
+                .InternalStackTrace = ex.StackTrace
+                .Message = ex.Message
+                .Number = ex.HResult
+                .ResumeNext = True
+                .SaveInBetterLog = True
+                .SaveLogInLocal = False
+                .ShowErrorReporting = True
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+            End With
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
+        End Try
     End Sub
 
     Private Function CheckAllInput() As Boolean
         Dim varValidScore As Integer = 0
-        'TxtConnectionName.Focus()
-        'TxtAddress.Focus()
-        'TxtPort.Focus()
-        'TxtUsername.Focus()
-        'TxtPassword.Focus()
-        'TxtDatabaseName.Focus()
 
         If TxtConnectionName.Text = String.Empty Then
             varValidScore += 1
@@ -61,9 +94,9 @@ Public Class CONN_Editor
 
     Private Sub CheckPasswordChange()
         If TxtPassword.XOSQLText = varOldPassword Then
-            varPasswordChange = False
+            varIsPasswordChange = False
         Else
-            varPasswordChange = True
+            varIsPasswordChange = True
         End If
     End Sub
 
@@ -81,7 +114,22 @@ Public Class CONN_Editor
             Return
         End If
 
-        If (Commands.CONN.Editor.PUSHData(TxtConnectionName.Text, CboDBEngine.Text, TxtAddress.Text, TxtPort.Text, TxtUsername.Text, TxtPassword.Text, TxtDatabaseName.Text, ChkDefault.Checked, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, varPasswordChange)) Then
+        With varProperties
+            .ConnectionName = TxtConnectionName.Text
+            .DatabaseEngine = CboDBEngine.Text
+            .ServerAddress = TxtAddress.Text
+            .ServerPort = Convert.ToInt32(TxtPort.Text)
+            .Username = TxtUsername.Text
+            .Password = TxtPassword.Text
+            .DatabaseName = TxtDatabaseName.Text
+            .IsDefault = ChkDefault.Checked
+            .IsMasked = ChkIsMasked.Checked
+            .IsNew = varProperties.IsNew
+            .IsPasswordChanged = varIsPasswordChange
+            .RowID = Convert.ToString(varProperties.RowID)
+        End With
+
+        If (Commands.CONN.Editor.PushData(varProperties)) Then
             SLFStatus.Text = "Success"
             RaiseEvent RecordSaved()
         Else
@@ -137,14 +185,17 @@ Public Class CONN_Editor
     <SupportedOSPlatform("windows")>
     Private Sub CONN_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ComponentMainframeMenu.LoadIn(Me, True)
-        ComponentMainframeMenu.ShowMenuFILE(CMCv.UI.View.MenuStrip.ShowItem.Yes)
-        varPasswordChange = False
+        ComponentMainframeMenu.ShowMenuFile(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        varIsPasswordChange = False
 
-        If (varFormAttributes.IsNew) Then
-            varFormAttributes.RowID = CMCv.Security.Encrypt.MD5()
+        If (varProperties.IsNew) Then
+            varProperties.RowID = CMCv.Security.Encrypt.MD5()
+            ChkIsMasked.Visible = True
         Else
+            ChkIsMasked.Visible = False
             Call LoadData()
         End If
+
     End Sub
 #End Region
 
@@ -174,7 +225,7 @@ Public Class CONN_Editor
     <SupportedOSPlatform("windows")>
     Private Sub ComponentMainframeMenu_EventFileUndoAll() Handles ComponentMainframeMenu.EventFileUndoAll
         If Decision("Do you want to undo all changes?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
-            If (varFormAttributes.IsNew) Then
+            If (varProperties.IsNew) Then
                 TxtConnectionName.Clear()
                 TxtAddress.Clear()
                 TxtPort.Clear()
@@ -209,7 +260,7 @@ Public Class CONN_Editor
         End If
 
         Dim exportConn As String
-        exportConn = String.Format("{0}||{1}||{2}||{3}||{4}||{5}||{6}||{7}", TxtConnectionName.Text.Trim, CboDBEngine.Text.Trim, TxtAddress.Text.Trim, TxtPort.Text, TxtUsername.Text.Trim, CMCv.Security.Encrypt.AES(TxtPassword.Text.Trim), TxtDatabaseName.Text.Trim, ChkDefault.Checked.ToString())
+        exportConn = $"{TxtConnectionName.Text.Trim}||{CboDBEngine.Text.Trim}||{CMCv.Security.Encrypt.AES(TxtAddress.Text.Trim)}||{CMCv.Security.Encrypt.AES(TxtPort.Text)}||{CMCv.Security.Encrypt.AES(TxtUsername.Text.Trim)}||{CMCv.Security.Encrypt.AES(TxtPassword.Text)}||{CMCv.Security.Encrypt.AES(TxtDatabaseName.Text.Trim)}||{Convert.ToString(ChkDefault.Checked)}||{Convert.ToString(ChkIsMasked.Checked)}"
 
         txtImportContent.Text = CMCv.Security.Encrypt.AES(exportConn)
         varConnectionName = CMCv.Security.Encrypt.CRC32(TxtConnectionName.Text.Trim)
@@ -217,16 +268,16 @@ Public Class CONN_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub btnSaveAs_Click(sender As Object, e As EventArgs) Handles btnSaveAs.Click
-        Dim dlg As New FolderBrowserDialog()
-        dlg.Description = "Select a folder to save the connection config"
+        Dim varDialog As New FolderBrowserDialog()
+        varDialog.Description = "Select a folder to save the connection config"
 
         If varConnectionName = String.Empty Then
             MessageBox.Show("Please export the connection first to generate the connection code.")
             Return
         End If
 
-        If dlg.ShowDialog() = DialogResult.OK Then
-            Dim selectedPath As String = dlg.SelectedPath
+        If varDialog.ShowDialog() = DialogResult.OK Then
+            Dim selectedPath As String = varDialog.SelectedPath
 
             ' Compute CRC (example)
             Dim crc As String = varConnectionName  ' replace with your CRC5 or CRC32 result
@@ -259,22 +310,38 @@ Public Class CONN_Editor
         Dim decryptedConn As String
         decryptedConn = CMCv.Security.Decrypt.AES(txtImportContent.Text.Trim)
 
-        Dim varConnproperties() As String = decryptedConn.Split(New String() {"||"}, StringSplitOptions.None)
+        Dim varConnproperties() As String = decryptedConn.Split({"||"}, StringSplitOptions.None)
 
-        If varConnproperties.Length <> 8 Then
+        If varConnproperties.Length <> 9 Then
             MessageBox.Show("The connection content is invalid.")
             Return
         End If
 
         TxtConnectionName.Text = varConnproperties(0)
         CboDBEngine.Text = varConnproperties(1)
-        TxtAddress.Text = varConnproperties(2)
-        TxtPort.Text = varConnproperties(3)
-        TxtUsername.Text = varConnproperties(4)
+        TxtAddress.Text = CMCv.Security.Decrypt.AES(varConnproperties(2))
+        TxtPort.Text = CMCv.Security.Decrypt.AES(varConnproperties(3))
+        TxtUsername.Text = CMCv.Security.Decrypt.AES(varConnproperties(4))
         TxtPassword.Text = CMCv.Security.Decrypt.AES(varConnproperties(5))
-        TxtDatabaseName.Text = varConnproperties(6)
+        TxtDatabaseName.Text = CMCv.Security.Decrypt.AES(varConnproperties(6))
         ChkDefault.Checked = Convert.ToBoolean(varConnproperties(7))
+        ChkIsMasked.Checked = Convert.ToBoolean(varConnproperties(8))
+        Call ChangeIsMaskedState()
         MessageBox.Show("Connection imported successfully.")
+    End Sub
+
+    Private Sub ChangeIsMaskedState()
+        If (ChkIsMasked.Checked) Then
+            TxtAddress.UseSystemPasswordChar = True
+            TxtPort.UseSystemPasswordChar = True
+            TxtUsername.UseSystemPasswordChar = True
+            TxtDatabaseName.UseSystemPasswordChar = True
+        Else
+            TxtAddress.UseSystemPasswordChar = False
+            TxtPort.UseSystemPasswordChar = False
+            TxtUsername.UseSystemPasswordChar = False
+            TxtDatabaseName.UseSystemPasswordChar = False
+        End If
     End Sub
 #End Region
 

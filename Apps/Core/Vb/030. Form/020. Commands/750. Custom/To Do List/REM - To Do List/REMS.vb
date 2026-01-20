@@ -37,7 +37,7 @@ Public Class REMS
     ''' Prosedur untuk mendapatkan Tabel ID
     ''' </summary>
     ''' <remarks></remarks>
-    Private Sub GetTableID()
+    Private Sub GetRowID()
         Select Case V_SelectedGroup
             Case "tpOnProgress"
                 'GetAccountID(DgnACGRAssets)
@@ -54,7 +54,7 @@ Public Class REMS
     Private Sub TbctlToDoList_Selected(sender As Object, e As TabControlEventArgs) Handles TbctlToDoList.Selected
         If Not V_IsClosing Then
             V_SelectedGroup = TbctlToDoList.SelectedTab.Name
-            Call GetTableID()
+            Call GetRowID()
         End If
     End Sub
 

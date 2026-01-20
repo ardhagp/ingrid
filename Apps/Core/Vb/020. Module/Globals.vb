@@ -41,8 +41,8 @@ Module Globals
     Public varVersionapplication As String
     Public varVersionnetworkapplication As Version
 
-    Public varFormAttributes As New Ingrid.Main.GlobalRecord
-    Public varUserAttributes As New Ingrid.Main.GlobalUser
+    Public varFormProperties As New LibApp.Ingrid.Global.Properties
+    Public varProperties As New LibApp.Ingrid.Global.Properties
 #End Region
 
     <SupportedOSPlatform("windows")>

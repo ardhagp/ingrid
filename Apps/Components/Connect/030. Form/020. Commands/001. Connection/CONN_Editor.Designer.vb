@@ -25,6 +25,7 @@ Partial Class CONN_Editor
         BtnCancel = New btn(components)
         TbctlBasic = New tbctl(components)
         tp1_ = New TabPage()
+        ChkIsMasked = New chk(components)
         btnExport = New btn(components)
         CboDBEngine = New cbo(components)
         ULbl1 = New ULbl()
@@ -50,6 +51,7 @@ Partial Class CONN_Editor
         ULbl2 = New ULbl()
         txtImportCode = New txt(components)
         Btn_Test = New btn(components)
+        TtAllComponents = New ToolTip(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
@@ -148,6 +150,7 @@ Partial Class CONN_Editor
         ' tp1_
         ' 
         tp1_.AutoScroll = True
+        tp1_.Controls.Add(ChkIsMasked)
         tp1_.Controls.Add(btnExport)
         tp1_.Controls.Add(CboDBEngine)
         tp1_.Controls.Add(ULbl1)
@@ -173,6 +176,19 @@ Partial Class CONN_Editor
         tp1_.Text = "CONFIG"
         tp1_.UseVisualStyleBackColor = True
         ' 
+        ' ChkIsMasked
+        ' 
+        ChkIsMasked.AutoSize = True
+        ChkIsMasked.BackColor = Color.Transparent
+        ChkIsMasked.FlatStyle = FlatStyle.Flat
+        ChkIsMasked.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkIsMasked.Location = New Point(306, 556)
+        ChkIsMasked.Name = "ChkIsMasked"
+        ChkIsMasked.Size = New Size(288, 36)
+        ChkIsMasked.TabIndex = 10
+        ChkIsMasked.Text = "Unreadable after saving"
+        ChkIsMasked.UseVisualStyleBackColor = False
+        ' 
         ' btnExport
         ' 
         btnExport.BackColor = Color.RoyalBlue
@@ -182,10 +198,10 @@ Partial Class CONN_Editor
         btnExport.FlatStyle = FlatStyle.Flat
         btnExport.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         btnExport.ForeColor = Color.White
-        btnExport.Location = New Point(569, 565)
+        btnExport.Location = New Point(569, 615)
         btnExport.Name = "btnExport"
         btnExport.Size = New Size(150, 60)
-        btnExport.TabIndex = 1011
+        btnExport.TabIndex = 11
         btnExport.Text = "Export"
         btnExport.UseVisualStyleBackColor = False
         btnExport.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
@@ -568,7 +584,7 @@ Partial Class CONN_Editor
         txtImportContent.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         txtImportContent.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         txtImportContent.Location = New Point(3, 15)
-        txtImportContent.MaxLength = 255
+        txtImportContent.MaxLength = 0
         txtImportContent.Multiline = True
         txtImportContent.Name = "txtImportContent"
         txtImportContent.Size = New Size(741, 371)
@@ -678,6 +694,11 @@ Partial Class CONN_Editor
         Btn_Test.XOValidasiSemuaInput = False
         Btn_Test.XOValidasiSemuaInputTag = Nothing
         ' 
+        ' TtAllComponents
+        ' 
+        TtAllComponents.IsBalloon = True
+        TtAllComponents.ToolTipIcon = ToolTipIcon.Info
+        ' 
         ' CONN_Editor
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
@@ -734,4 +755,6 @@ Partial Class CONN_Editor
     Friend WithEvents btnExport As btn
     Friend WithEvents btnImport As btn
     Friend WithEvents btnSaveAs As btn
+    Friend WithEvents ChkIsMasked As chk
+    Friend WithEvents TtAllComponents As ToolTip
 End Class

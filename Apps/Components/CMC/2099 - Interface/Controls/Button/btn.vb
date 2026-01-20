@@ -111,6 +111,9 @@ Public Class btn
             Case ControlCodeBase.enuJenisTombol.Warning
                 MyBase.BackColor = Drawing.Color.Yellow
                 MyBase.ForeColor = Drawing.Color.Black
+            Case ControlCodeBase.enuJenisTombol.Disabled
+                MyBase.BackColor = Drawing.Color.Gray
+                MyBase.ForeColor = Drawing.Color.DarkGray
             Case ControlCodeBase.enuJenisTombol.Custom
                 'MyBase.BackColor = System.Drawing.Color.Orange
                 'MyBase.ForeColor = Drawing.Color.Black

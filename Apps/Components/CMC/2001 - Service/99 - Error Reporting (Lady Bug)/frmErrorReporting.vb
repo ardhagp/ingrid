@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
-Public Class FRMerrorreporting
+Public Class FrmErrorReporting
     'Private Catcher As New Ladybug.Log.Fields
     Private ResumeNext As Boolean
 

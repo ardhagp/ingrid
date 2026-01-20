@@ -1,25 +1,22 @@
 Namespace Ingrid.Database
     Public Class Properties
-        Private V_Text As String
+        Private varText As String
         Public Property Engine As String
             Get
-                Return V_Text
+                Return varText
             End Get
             Set(value As String)
-                V_Text = value
+                varText = value
             End Set
         End Property
 
         Public Property DatabaseName As String
             Get
-
+                Return varText
             End Get
             Set(value As String)
-
+                varText = value
             End Set
         End Property
     End Class
-
-
-
 End Namespace

@@ -7,10 +7,10 @@ Public Class EPLS_Position
 #End Region
 
 #Region "Subs Collections"
-    Private Sub GetTableID()
-        varFormAttributes.RowID = "-1"
+    Private Sub GetRowID()
+        varFormProperties.RowID = "-1"
         If DgnAddinPosition.RowCount > 0 Then
-            varFormAttributes.RowID = DgnAddinPosition.CurrentRow.Cells("employee_id").Value.ToString
+            varFormProperties.RowID = DgnAddinPosition.CurrentRow.Cells("employee_id").Value.ToString
         End If
     End Sub
 
@@ -25,10 +25,10 @@ Public Class EPLS_Position
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             With DgnAddinPosition.CurrentRow
-                varFormAttributes.Field01 = .Cells("company_name").Value
-                varFormAttributes.Field02 = .Cells("departement_name").Value
-                varFormAttributes.Field03 = .Cells("position_id").Value
-                varFormAttributes.Field04 = .Cells("position_name").Value
+                varFormProperties.Field01 = .Cells("company_name").Value
+                varFormProperties.Field02 = .Cells("departement_name").Value
+                varFormProperties.Field03 = .Cells("position_id").Value
+                varFormProperties.Field04 = .Cells("position_name").Value
             End With
             RaiseEvent RecordSelected()
             Me.Close()

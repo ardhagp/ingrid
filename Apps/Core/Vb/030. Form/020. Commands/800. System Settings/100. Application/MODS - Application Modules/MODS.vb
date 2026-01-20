@@ -16,11 +16,11 @@ Public Class MODS
         Commands.MODS.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnMODS, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
-    Private Sub GetTableID()
-        varFormAttributes.RowID = "-1"
+    Private Sub GetRowID()
+        varFormProperties.RowID = "-1"
 
         If DgnMODS.RowCount > 0 Then
-            varFormAttributes.RowID = DgnMODS.CurrentRow.Cells("module_id").Value.ToString
+            varFormProperties.RowID = DgnMODS.CurrentRow.Cells("module_id").Value.ToString
         End If
     End Sub
 #End Region
@@ -29,32 +29,32 @@ Public Class MODS
 
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataAddNew() Handles _MMSMenu.EventDataAddNew
-        If Not (varUserAccess.User(varDatabaseName, "MODS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+        If Not (varUserAccess.User(varDatabaseName, "MODS", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        varFormAttributes.IsNew = True
-        varFormAttributes.RowID = "-1"
-        varFormAttributes.Hash = CMCv.Security.Encrypt.MD5()
+        varFormProperties.IsNew = True
+        varFormProperties.RowID = "-1"
+        varFormProperties.Hash = CMCv.Security.Encrypt.MD5()
         _MODS_Editor = New MODS_Editor
         DISPLAY(_MODS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new module", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
-        If Not (varUserAccess.User(varDatabaseName, "UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+        If Not (varUserAccess.User(varDatabaseName, "UAC", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        Call GETTableID()
-        varFormAttributes.IsNew = False
+        Call GetRowID()
+        varFormProperties.IsNew = False
 
-        If varFormAttributes.RowID = "-1" Then
+        If convert.tostring(varFormProperties.RowID) = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            varFormAttributes.IsNew = False
+            varFormProperties.IsNew = False
             _MODS_Editor = New MODS_Editor
             DISPLAY(_MODS_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
         End If
@@ -62,18 +62,18 @@ Public Class MODS
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
-        If Not (varUserAccess.User(varDatabaseName, "MODS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+        If Not (varUserAccess.User(varDatabaseName, "MODS", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        Call GETTableID()
+        Call GetRowID()
 
-        If varFormAttributes.RowID = "-1" Then
+        If convert.tostring(varFormProperties.RowID) = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.DAR.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)) Then
+                If (Commands.DAR.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
                     Call GETDATA(True)
                     RaiseEvent DATACHANGED()
                     Mainframe_n_6.Ts_status.Text = "Success"

@@ -28,16 +28,16 @@ Public Class POST_Editor
         _SQL.FillCompany(varDatabaseName, varDatabaseEngine, CboCompany)
         _SQL.FillDepartement(varDatabaseName, varDatabaseEngine, CboDepartement, CboCompany)
 
-        If (varFormAttributes.IsNew) Then
+        If (varFormProperties.IsNew) Then
             ChkAddNew.Visible = True
         Else
             ChkAddNew.Visible = False
-            CboCompany.SelectedValue = LibSQL.Commands.POST.Editor.GetCompanyID(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)
+            CboCompany.SelectedValue = LibSQL.Commands.POST.Editor.GetCompanyID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
             _SQL.FillDepartement(varDatabaseName, varDatabaseEngine, CboDepartement, CboCompany)
-            CboDepartement.SelectedValue = LibSQL.Commands.POST.Editor.GetDepartmentID(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)
-            TxtPositionCode.Text = LibSQL.Commands.POST.Editor.GetPositionCode(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)
-            TxtPositionName.Text = LibSQL.Commands.POST.Editor.GetPositionName(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)
-            TxtPositionDescription.Text = LibSQL.Commands.POST.Editor.GetPositionDescription(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)
+            CboDepartement.SelectedValue = LibSQL.Commands.POST.Editor.GetDepartmentID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            TxtPositionCode.Text = LibSQL.Commands.POST.Editor.GetPositionCode(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            TxtPositionName.Text = LibSQL.Commands.POST.Editor.GetPositionName(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            TxtPositionDescription.Text = LibSQL.Commands.POST.Editor.GetPositionDescription(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
         End If
 
         V_ISfirstload = False
@@ -60,15 +60,15 @@ Public Class POST_Editor
         If (CboDepartement.Items.Count = 0) OrElse (TxtPositionCode.XOSQLText = String.Empty) OrElse (TxtPositionName.XOSQLText = String.Empty) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Departement selected, Postition Code and Position Description are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf ((varFormAttributes.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, varFormAttributes.RowID))) Then
+        ElseIf ((varFormProperties.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (Not (varFormAttributes.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, varFormAttributes.RowID))) Then
+        ElseIf (Not (varFormProperties.IsNew) AndAlso (LibSQL.Commands.POST.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        If (LibSQL.Commands.POST.Editor.PushData(varDatabaseName, varDatabaseEngine, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, TxtPositionName.XOSQLText, TxtPositionDescription.XOSQLText, varFormAttributes.RowID)) Then
+        If (LibSQL.Commands.POST.Editor.PushData(varDatabaseName, varDatabaseEngine, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, TxtPositionName.XOSQLText, TxtPositionDescription.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
             Mainframe_n_6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else

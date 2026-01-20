@@ -110,7 +110,7 @@ Public Class DAR_RPTFilter
             _Color = False
         End If
 
-        _DAR_RPTContainer = New DAR_RPTContainer(_DS, varUserAttributes.FirstName, _Color, GETAPPVERSION)
+        _DAR_RPTContainer = New DAR_RPTContainer(_DS, varProperties.FirstName, _Color, GETAPPVERSION)
         DISPLAY(_DAR_RPTContainer, IMAGEDB.Main.ImageLibrary.PRINTER_ICON, "Print - Daily Activity Report", "Generated Daily Activity Report", True,)
     End Sub
 
