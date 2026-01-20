@@ -9,7 +9,7 @@ Namespace Tools.Import.SharedFunction
 
         <SupportedOSPlatform("windows")>
         Public Function TotalRows(databasename As String, Query As String, ByVal Keyword As String) As Integer
-            varRowCount = CType(V_DBE_MSSQL2008.GetValue(databasename, Query.Replace("%n", Keyword)), Integer)
+            varRowCount = CType(varDatabaseEngineMssql2008.GetValue(databasename, Query.Replace("%n", Keyword)), Integer)
             Return varRowCount
         End Function
     End Class
@@ -94,7 +94,7 @@ Namespace Tools.Import.MaterialMaster
                     varCSVrow += 1
                 End While
                 Try
-                    V_DBE_MSSQL2008.PushData(databasename, _DBP_MSSQL2008.Query)
+                    varDatabaseEngineMssql2008.PushData(databasename, _DBP_MSSQL2008.Query)
                 Catch ex As Exception
                     varIsSuccess = False
                 End Try

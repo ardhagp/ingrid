@@ -25,7 +25,6 @@ Partial Class CONN
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         DgnConnection = New dgn(components)
-        Btn_Close = New btn(components)
         id = New DataGridViewTextBoxColumn()
         connectionname = New DataGridViewTextBoxColumn()
         databaseengine = New DataGridViewTextBoxColumn()
@@ -33,6 +32,7 @@ Partial Class CONN
         serverport = New DataGridViewTextBoxColumn()
         defaultconnection = New DataGridViewCheckBoxColumn()
         spring = New DataGridViewTextBoxColumn()
+        Btn_Close = New btn(components)
         PnlBottomButton.SuspendLayout()
         PnlFind.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -45,7 +45,8 @@ Partial Class CONN
         ' PnlBottomButton
         ' 
         PnlBottomButton.Controls.Add(Btn_Close)
-        PnlBottomButton.Location = New Point(0, 499)
+        PnlBottomButton.Location = New Point(0, 847)
+        PnlBottomButton.Margin = New Padding(7, 10, 7, 10)
         PnlBottomButton.Controls.SetChildIndex(Btn_Close, 0)
         ' 
         ' BtnClear
@@ -56,36 +57,38 @@ Partial Class CONN
         ' 
         ' TxtFind
         ' 
-        TxtFind.Margin = New Padding(5, 3, 5, 3)
+        TxtFind.Margin = New Padding(7, 5, 7, 5)
         ' 
         ' SLFLogo
         ' 
         SLFLogo.BackColor = Color.Transparent
         SLFLogo.Image = CType(resources.GetObject("SLFLogo.Image"), Image)
-        SLFLogo.Margin = New Padding(5, 3, 5, 3)
-        SLFLogo.Size = New Size(59, 59)
+        SLFLogo.Margin = New Padding(7, 5, 7, 5)
+        SLFLogo.Size = New Size(84, 98)
         ' 
         ' SLFSubNamaForm
         ' 
-        SLFSubNamaForm.Margin = New Padding(5, 0, 5, 0)
-        SLFSubNamaForm.Size = New Size(207, 15)
+        SLFSubNamaForm.Margin = New Padding(7, 0, 7, 0)
+        SLFSubNamaForm.Size = New Size(311, 25)
         SLFSubNamaForm.Text = "Configure Ingrid database connection"
         ' 
         ' SLFNamaForm
         ' 
-        SLFNamaForm.Margin = New Padding(5, 0, 5, 0)
-        SLFNamaForm.Size = New Size(244, 32)
+        SLFNamaForm.Margin = New Padding(7, 0, 7, 0)
+        SLFNamaForm.Size = New Size(359, 48)
         SLFNamaForm.Text = "Connection Settings"
         ' 
         ' pnl_
         ' 
-        pnl_.Size = New Size(915, 68)
+        pnl_.Margin = New Padding(7, 10, 7, 10)
+        pnl_.Size = New Size(1307, 113)
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(DgnConnection)
-        SLFPanel.Location = New Point(0, 68)
-        SLFPanel.Size = New Size(915, 557)
+        SLFPanel.Location = New Point(0, 113)
+        SLFPanel.Margin = New Padding(7, 10, 7, 10)
+        SLFPanel.Size = New Size(1307, 943)
         SLFPanel.Controls.SetChildIndex(PnlFind, 0)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(DgnConnection, 0)
@@ -94,7 +97,7 @@ Partial Class CONN
         ' 
         DgnConnection.AllowUserToAddRows = False
         DgnConnection.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(215), CByte(212), CByte(129))
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(211), CByte(247), CByte(133))
         DgnConnection.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DgnConnection.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnConnection.BorderStyle = BorderStyle.None
@@ -114,8 +117,8 @@ Partial Class CONN
         DgnConnection.Dock = DockStyle.Fill
         DgnConnection.EnableHeadersVisualStyles = False
         DgnConnection.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DgnConnection.Location = New Point(0, 53)
-        DgnConnection.Margin = New Padding(4, 3, 4, 3)
+        DgnConnection.Location = New Point(0, 88)
+        DgnConnection.Margin = New Padding(6, 5, 6, 5)
         DgnConnection.Name = "DgnConnection"
         DgnConnection.ReadOnly = True
         DgnConnection.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
@@ -127,12 +130,85 @@ Partial Class CONN
         DataGridViewCellStyle3.SelectionForeColor = Color.Black
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
         DgnConnection.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DgnConnection.RowHeadersWidth = 62
         DgnConnection.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DgnConnection.Size = New Size(915, 446)
+        DgnConnection.Size = New Size(1307, 759)
         DgnConnection.StandardTab = True
         DgnConnection.TabIndex = 997
         DgnConnection.XOGroupFirstRows = False
         DgnConnection.XOGunakanNomorBaris = True
+        ' 
+        ' id
+        ' 
+        id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        id.DataPropertyName = "ID"
+        id.HeaderText = "ID"
+        id.MinimumWidth = 8
+        id.Name = "id"
+        id.ReadOnly = True
+        id.Visible = False
+        id.Width = 150
+        ' 
+        ' connectionname
+        ' 
+        connectionname.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        connectionname.DataPropertyName = "CONNECTIONNAME"
+        connectionname.HeaderText = "CONNECTION NAME"
+        connectionname.MinimumWidth = 8
+        connectionname.Name = "connectionname"
+        connectionname.ReadOnly = True
+        connectionname.Width = 187
+        ' 
+        ' databaseengine
+        ' 
+        databaseengine.DataPropertyName = "DATABASEENGINE"
+        databaseengine.HeaderText = "DB ENGINE"
+        databaseengine.MinimumWidth = 8
+        databaseengine.Name = "databaseengine"
+        databaseengine.ReadOnly = True
+        databaseengine.Width = 150
+        ' 
+        ' serveraddress
+        ' 
+        serveraddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        serveraddress.DataPropertyName = "SERVERADDRESS"
+        serveraddress.HeaderText = "SERVER ADDRESS"
+        serveraddress.MinimumWidth = 8
+        serveraddress.Name = "serveraddress"
+        serveraddress.ReadOnly = True
+        serveraddress.Width = 171
+        ' 
+        ' serverport
+        ' 
+        serverport.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        serverport.DataPropertyName = "SERVERPORT"
+        serverport.HeaderText = "PORT"
+        serverport.MinimumWidth = 8
+        serverport.Name = "serverport"
+        serverport.ReadOnly = True
+        serverport.Width = 86
+        ' 
+        ' defaultconnection
+        ' 
+        defaultconnection.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        defaultconnection.DataPropertyName = "DEFAULTCONNECTION"
+        defaultconnection.FalseValue = "0"
+        defaultconnection.HeaderText = "DEFAULT"
+        defaultconnection.MinimumWidth = 8
+        defaultconnection.Name = "defaultconnection"
+        defaultconnection.ReadOnly = True
+        defaultconnection.Resizable = DataGridViewTriState.True
+        defaultconnection.SortMode = DataGridViewColumnSortMode.Automatic
+        defaultconnection.TrueValue = "1"
+        defaultconnection.Width = 113
+        ' 
+        ' spring
+        ' 
+        spring.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        spring.HeaderText = ""
+        spring.MinimumWidth = 8
+        spring.Name = "spring"
+        spring.ReadOnly = True
         ' 
         ' Btn_Close
         ' 
@@ -144,9 +220,10 @@ Partial Class CONN
         Btn_Close.FlatStyle = FlatStyle.Flat
         Btn_Close.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Btn_Close.ForeColor = Color.White
-        Btn_Close.Location = New Point(803, 11)
+        Btn_Close.Location = New Point(1147, 18)
+        Btn_Close.Margin = New Padding(4, 5, 4, 5)
         Btn_Close.Name = "Btn_Close"
-        Btn_Close.Size = New Size(100, 40)
+        Btn_Close.Size = New Size(143, 67)
         Btn_Close.TabIndex = 1
         Btn_Close.Text = "&Close"
         Btn_Close.UseVisualStyleBackColor = False
@@ -155,79 +232,15 @@ Partial Class CONN
         Btn_Close.XOValidasiSemuaInput = False
         Btn_Close.XOValidasiSemuaInputTag = Nothing
         ' 
-        ' id
-        ' 
-        id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        id.DataPropertyName = "ID"
-        id.HeaderText = "ID"
-        id.Name = "id"
-        id.ReadOnly = True
-        id.Visible = False
-        id.Width = 44
-        ' 
-        ' connectionname
-        ' 
-        connectionname.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        connectionname.DataPropertyName = "CONNECTIONNAME"
-        connectionname.HeaderText = "CONNECTION NAME"
-        connectionname.Name = "connectionname"
-        connectionname.ReadOnly = True
-        connectionname.Width = 132
-        ' 
-        ' databaseengine
-        ' 
-        databaseengine.DataPropertyName = "DATABASEENGINE"
-        databaseengine.HeaderText = "DB ENGINE"
-        databaseengine.Name = "databaseengine"
-        databaseengine.ReadOnly = True
-        ' 
-        ' serveraddress
-        ' 
-        serveraddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        serveraddress.DataPropertyName = "SERVERADDRESS"
-        serveraddress.HeaderText = "SERVER ADDRESS"
-        serveraddress.Name = "serveraddress"
-        serveraddress.ReadOnly = True
-        serveraddress.Width = 125
-        ' 
-        ' serverport
-        ' 
-        serverport.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        serverport.DataPropertyName = "SERVERPORT"
-        serverport.HeaderText = "PORT"
-        serverport.Name = "serverport"
-        serverport.ReadOnly = True
-        serverport.Width = 61
-        ' 
-        ' defaultconnection
-        ' 
-        defaultconnection.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-        defaultconnection.DataPropertyName = "DEFAULTCONNECTION"
-        defaultconnection.FalseValue = "0"
-        defaultconnection.HeaderText = "DEFAULT"
-        defaultconnection.Name = "defaultconnection"
-        defaultconnection.ReadOnly = True
-        defaultconnection.Resizable = DataGridViewTriState.True
-        defaultconnection.SortMode = DataGridViewColumnSortMode.Automatic
-        defaultconnection.TrueValue = "1"
-        defaultconnection.Width = 79
-        ' 
-        ' spring
-        ' 
-        spring.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        spring.HeaderText = ""
-        spring.Name = "spring"
-        spring.ReadOnly = True
-        ' 
         ' CONN
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(915, 647)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1307, 1078)
         ControlBox = False
         FormBorderStyle = FormBorderStyle.FixedSingle
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         KeyPreview = True
-        Margin = New Padding(8, 3, 8, 3)
+        Margin = New Padding(11, 5, 11, 5)
         Name = "CONN"
         StartPosition = FormStartPosition.CenterScreen
         PnlBottomButton.ResumeLayout(False)

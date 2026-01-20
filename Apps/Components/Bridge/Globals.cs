@@ -12,7 +12,7 @@ namespace Bridge.Security
         /// Retrieves the 'SALT' secret from user secrets under the "KEYS" section.
         /// </summary>
         /// <returns>The value of KEYS:SALT if present; otherwise an empty string.</returns>
-        public string Salt()
+        public static string Salt()
         {
             var config = new ConfigurationBuilder()
                 .AddUserSecrets<Getkey>()
@@ -37,7 +37,7 @@ namespace Bridge.Security
         /// Retrieves the Syncfusion key from user secrets (KEYS:SYNCFUSION).
         /// </summary>
         /// <returns>The Syncfusion key if found; otherwise an empty string.</returns>
-        public string Syncfusion()
+        public static string Syncfusion()
         {
             var config = new ConfigurationBuilder()
                 .AddUserSecrets<Getkey>()
@@ -62,7 +62,7 @@ namespace Bridge.Security
         /// Retrieve the BetterStack source token from user secrets (KEYS:BETTERSTACK_LOG) or return an empty string if not configured.
         /// </summary>
         /// <returns>The BetterStack source token when present; otherwise an empty string.</returns>
-        public string Betterstack_log()        
+        public static string Betterstack_log()        
         {
             var config = new ConfigurationBuilder()
                 .AddUserSecrets<Getkey>()
@@ -85,7 +85,7 @@ namespace Bridge.Security
     /// <summary>
     /// Logging class to send logs to Betterstack
     /// </summary>
-    public class Writelog
+    public static class Writelog
     {
         /// <summary>
         /// Sends a log entry to BetterStack. If the initial write fails,
@@ -130,10 +130,8 @@ namespace Bridge.Security
         {
             await Task.Delay(0);
 
-            Getkey KEYLOG = new Getkey();
-
             Log.Logger = new LoggerConfiguration()
-                .WriteTo.BetterStack(sourceToken: KEYLOG.Betterstack_log())
+                .WriteTo.BetterStack(sourceToken: Getkey.Betterstack_log())
                 .MinimumLevel.Information()
                 .CreateLogger();
 

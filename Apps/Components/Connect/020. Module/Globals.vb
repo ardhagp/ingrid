@@ -1,21 +1,18 @@
 ﻿Imports CMCv.Database.Engine
-Imports CMCv.Database.Properties
 Imports CMCv.Database.Adapter
-
-Imports Bridge.Security
-
 Imports System.Reflection
 Imports System.Runtime.Versioning
 
 <SupportedOSPlatform("windows")>
 Module Globals
-    Public v_dbe_mssql2008 As New CMCv.Database.Engine.MSSQL2008
-    Public V_DBE_SQLite As New SQLiteV3
-    Public V_DB_Properties(1) As Fields
-    Public V_BRIDGE_LOG As New WRITELOG
+    'TODO:Remove
+    'Public varDatabaseEngineMssql2008 As New CMCv.Database.Engine.Mssql2008
+    'Public varDatabaseProperties(1) As Fields
+    'Public V_BRIDGE_LOG As Writelog
+    'Public varDatabaseProviderSqlite As New SQLite.Execute
 
-    Public V_DBR_SQLITE(1) As SQLite.Display.Request
-    Public V_DBP_SQLITE As New SQLite.Execute
+    Public varDatabaseEngineSqlite As New SQLiteV3
+    Public varDatabaseRequestSqlite(1) As SQLite.Display.Request
 
     Public varSecurityEncryption As New Security.Encrypt
     Public proLog As New Ladybug.Log.Fields
@@ -30,7 +27,7 @@ Module Globals
     Public WithEvents ERC As New frmErrorReporting
     Public ErrorCatcher As New Ladybug.Log.Fields
 
-    Public varFormAttributes As New Connect.Main.GlobalRecord
+    Public varProperties As New LibApp.Ingrid.Global.Properties
 
 #Region "Custom Message Box"
     ''' <summary>
@@ -41,9 +38,9 @@ Module Globals
     ''' <param name="messageicon"></param>
     ''' <param name="buttontype"></param>
     ''' <returns></returns>
-    Public Function Decision(ByVal message As String, ByVal title As String,
-                             ByVal messageicon As CMCv.frmDialogBox.MessageIcon,
-                             ByVal buttontype As CMCv.frmDialogBox.MessageTypes) As _
+    Public Function Decision(message As String, title As String,
+                             messageicon As CMCv.frmDialogBox.MessageIcon,
+                             buttontype As CMCv.frmDialogBox.MessageTypes) As _
                              System.Windows.Forms.DialogResult
         MSG = New CMCv.frmDialogBox(message, title, messageicon, buttontype)
         Return MSG.ShowDialog()
@@ -57,14 +54,14 @@ Module Globals
     ''' <param name="gridview"></param>
     Public Sub DblBuffer(ByVal gridview As DataGridView)
         Try
-            Dim systemType As Type = gridview.GetType()
-            Dim propertyInfo As PropertyInfo = systemType.GetProperty("DoubleBuffered",
+            Dim varSystemType As Type = gridview.GetType()
+            Dim varPropertyInfo As PropertyInfo = varSystemType.GetProperty("DoubleBuffered",
                                                                       BindingFlags.Instance Or
                                                                       BindingFlags.NonPublic)
-            propertyInfo.SetValue(gridview, True, Nothing)
+            varPropertyInfo.SetValue(gridview, True, Nothing)
         Catch ex As Exception
             With proLog
-                .AppVersion = GETAPPVERSION()
+                .AppVersion = GetAppVersion()
                 .FromSender = "[DblBuffer] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
@@ -92,10 +89,10 @@ Module Globals
     ''' <param name="formsubtitle"></param>
     ''' <param name="isdialog"></param>
     ''' <param name="parentframe"></param>
-    Public Sub Display(ByVal formname As CMCv.Std_Fo, Optional ByVal formimage As System.Drawing.Image = Nothing,
-                       Optional ByVal formtitle As String = "", Optional ByVal formsubtitle As String = "",
-                       Optional ByVal isdialog As Boolean = False,
-                       Optional ByVal parentframe As Windows.Forms.Form = Nothing)
+    Public Sub Display(formname As CMCv.Std_Fo, Optional formimage As System.Drawing.Image = Nothing,
+                       Optional formtitle As String = "", Optional formsubtitle As String = "",
+                       Optional isdialog As Boolean = False,
+                       Optional parentframe As Windows.Forms.Form = Nothing)
         Try
             formname.SLFNamaForm.Text = formtitle
 
@@ -127,7 +124,7 @@ Module Globals
             End If
         Catch ex As Exception
             With proLog
-                .AppVersion = GETAPPVERSION()
+                .AppVersion = GetAppVersion()
                 .FromSender = "[Display] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
@@ -187,49 +184,4 @@ Module Globals
     End Function
 #End Region
 
-
-#Region "Error Log"
-    '''' <summary>
-    '''' Function to temporarily store error log data
-    '''' </summary>
-    '''' <param name="fromsender"></param>
-    '''' <param name="errortype"></param>
-    '''' <param name="errormessage"></param>
-    '''' <param name="errornumber"></param>
-    '''' <param name="internalstacktrace"></param>
-    '''' <param name="appversion"></param>
-    '''' <param name="enableerrorreporting"></param>
-    '''' <param name="saveerror"></param>
-    '''' <param name="resumenext"></param>
-    'Public Sub SUBlogdatapush(ByVal fromsender As String, ByVal errortype As Ladybug.Log.Fields.TypeOfFaulties,
-    '                         ByVal errormessage As String, ByVal errornumber As String,
-    '                         ByVal internalstacktrace As String, ByVal appversion As String,
-    '                         Optional enableerrorreporting As Boolean = True,
-    '                         Optional saveerror As Boolean = True,
-    '                         Optional resumenext As Boolean = True)
-    '    With ErrorCatcher
-    '        .FromSender = fromsender
-    '        .Type = errortype
-    '        .Message = errormessage
-    '        .Number = errornumber
-    '        .InternalStackTrace = internalstacktrace
-    '        .AppVersion = appversion
-    '        .EnableErrorReporting = enableerrorreporting
-    '        .SaveError = saveerror
-    '        .ResumeNext = resumenext
-    '    End With
-    'End Sub
-
-    '''' <summary>
-    '''' Show error reporting dialog box
-    '''' </summary>
-    '''' <remarks></remarks>
-    'Public Sub SUBlogdatashow()
-    '    ERC = New CMCv.frmErrorReporting(ErrorCatcher, V_DBE_SQLite)
-    '    ERC.ShowDialog()
-    '    If Not (ERC.ResumeNext) Then
-    '        Return
-    '    End If
-    'End Sub
-#End Region
 End Module

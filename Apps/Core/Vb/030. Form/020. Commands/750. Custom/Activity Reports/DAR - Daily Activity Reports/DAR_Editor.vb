@@ -48,7 +48,7 @@ Public Class DAR_Editor
         DgnPictureList.Rows.Clear()
         TxtPhotoPath.Clear()
 
-        V_DS(0) = V_SQL.DisplayPhotoGrid(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID.ToString, DgnPictureList)
+        V_DS(0) = V_SQL.DisplayPhotoGrid(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID).ToString, DgnPictureList)
 
         For i As Integer = 0 To V_DS(0).Tables("TPhotoFileEditor").Rows.Count - 1
             DgnPictureList.Rows.Add(V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_id"), V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_filename"), V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_datetime"), V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_content"), "", V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_uploader"))
@@ -64,7 +64,7 @@ Public Class DAR_Editor
         V_DS(1) = New DataSet
 
         DblBuffer(DgnFileList)
-        V_DS(1) = V_SQL.DisplayFileGrid(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID.ToString, DgnFileList)
+        V_DS(1) = V_SQL.DisplayFileGrid(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID).ToString, DgnFileList)
 
         For i As Integer = 0 To V_DS(1).Tables("TFileEditor").Rows.Count - 1
             DgnFileList.Rows.Add(V_DS(1).Tables("TFileEditor").Rows(i).Item("file_id"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_filename"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_tag"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_datetime"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_content"), "", V_DS(1).Tables("TFileEditor").Rows(i).Item("file_uploader"))
@@ -108,8 +108,8 @@ Public Class DAR_Editor
             varMinute = Now.Minute.ToString
         End If
 
-        If (varFormAttributes.IsNew) Then
-            varFormAttributes.RowID = CMCv.Security.Encrypt.MD5()
+        If (varFormProperties.IsNew) Then
+            varFormProperties.RowID = CMCv.Security.Encrypt.MD5()
             MebStart.Text = varHour & ":" & varMinute
             MebEnd.Text = varHour & ":" & varMinute
             TxtContent.Text = String.Empty
@@ -137,7 +137,7 @@ Public Class DAR_Editor
 #Region "Component Events"
     <SupportedOSPlatform("windows")>
     Private Sub BtnGETContent_Click(sender As Object, e As EventArgs) Handles BtnGETContent.Click
-        If Not (varFormAttributes.IsNew) Then
+        If Not (varFormProperties.IsNew) Then
             If Decision("Do you want to replace Description with template content?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 TxtContent.Text = Commands.DAR.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
             End If
@@ -179,7 +179,7 @@ Public Class DAR_Editor
             Return
         End If
 
-        If (Commands.DAR.Editor.PushData(varDatabaseName, varDatabaseEngine, CboArea.SelectedValue.ToString, CboTemplate.SelectedValue.ToString, CType(DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, String), CType(MebStart.Text.Replace(".", ":"), String), CType(DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, String), CType(MebEnd.Text.Replace(".", ":"), String), TxtContent.XOSQLText, TxtFeedback.XOSQLText, varUserAttributes.UID, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, V_ExtQuery)) Then
+        If (Commands.DAR.Editor.PushData(varDatabaseName, varDatabaseEngine, CboArea.SelectedValue.ToString, CboTemplate.SelectedValue.ToString, CType(DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, String), CType(MebStart.Text.Replace(".", ":"), String), CType(DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, String), CType(MebEnd.Text.Replace(".", ":"), String), TxtContent.XOSQLText, TxtFeedback.XOSQLText, varProperties.UserID, Convert.ToString(varFormProperties.RowID).ToString, varFormProperties.IsNew, V_ExtQuery)) Then
             V_ExtQuery = String.Empty
             Mainframe_n_6.Ts_status.Text = "Success"
 
@@ -191,7 +191,7 @@ Public Class DAR_Editor
             Next
 
             If V_NewPhotoAdded > 0 Then
-                If (Commands.DAR.Editor.PushPhoto(varDatabaseEngine, DgnPictureList, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, DtpStart.Value)) Then
+                If (Commands.DAR.Editor.PushPhoto(varDatabaseEngine, DgnPictureList, Convert.ToString(varFormProperties.RowID).ToString, varFormProperties.IsNew, DtpStart.Value)) Then
                     Mainframe_n_6.Ts_status.Text = "Success + All pictures has been added"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Success + With errors while adding pictures"
@@ -210,7 +210,7 @@ Public Class DAR_Editor
             Next
 
             If varNewFileAdded > 0 Then
-                If (Commands.DAR.Editor.PushFile(varDatabaseEngine, DgnFileList, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, DtpStart.Value)) Then
+                If (Commands.DAR.Editor.PushFile(varDatabaseEngine, DgnFileList, Convert.ToString(varFormProperties.RowID).ToString, varFormProperties.IsNew, DtpStart.Value)) Then
                     Mainframe_n_6.Ts_status.Text = "Success + All file has been added"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Success + With errors while adding files"
@@ -231,13 +231,13 @@ Public Class DAR_Editor
         If Not (ChkAddNew.Checked) Then
             Me.Close()
         Else
-            varFormAttributes.RowID = CMCv.Security.Encrypt.MD5()
+            varFormProperties.RowID = CMCv.Security.Encrypt.MD5()
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub LoadData()
-        Commands.DAR.Editor.GetRowValue(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID.ToString, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
+        Commands.DAR.Editor.GetRowValue(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID).ToString, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
         Call LoadAttachment()
     End Sub
 #End Region
@@ -245,7 +245,7 @@ Public Class DAR_Editor
     <SupportedOSPlatform("windows")>
     Private Sub CboTemplate_KeyDown(sender As Object, e As KeyEventArgs) Handles CboTemplate.KeyDown
         If e.KeyCode = Keys.Enter Then
-            If Not (varFormAttributes.IsNew) Then
+            If Not (varFormProperties.IsNew) Then
                 If Decision("Do you want to replace Description with template content?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                     TxtContent.Text = Commands.DAR.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
                 End If
@@ -280,7 +280,7 @@ Public Class DAR_Editor
             Dim V_Date As Date = Now
             Dim V_Photo As System.Drawing.Image = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(TxtPhotoPath.Text) 'System.Drawing.Image.FromFile(TxtPhotoPath.Text)
 
-            Row = New Object() {CMCv.Security.Encrypt.MD5(), IO.Path.GetFileNameWithoutExtension(TxtPhotoPath.Text), V_Date, V_Photo, "Add", varUserAttributes.EID}
+            Row = New Object() {CMCv.Security.Encrypt.MD5(), IO.Path.GetFileNameWithoutExtension(TxtPhotoPath.Text), V_Date, V_Photo, "Add", varProperties.EmployeeID}
 
             With DgnPictureList.Rows
                 .Add(Row)
@@ -393,7 +393,7 @@ Public Class DAR_Editor
             Dim V_Date As Date = Now
             'Dim _PDFFile As Object = New IO.FileStream(TxtFilePath.Text, FileMode.Open, FileAccess.Read) 'System.Drawing.Image.FromFile(TxtPhotoPath.Text)
 
-            Row = New Object() {CMCv.Security.Encrypt.MD5(), IO.Path.GetFileNameWithoutExtension(TxtFilePath.Text), CboFileTag.Text, V_Date, TxtFilePath.Text, "Add", varUserAttributes.EID}
+            Row = New Object() {CMCv.Security.Encrypt.MD5(), IO.Path.GetFileNameWithoutExtension(TxtFilePath.Text), CboFileTag.Text, V_Date, TxtFilePath.Text, "Add", varProperties.EmployeeID}
 
             With DgnFileList.Rows
                 .Add(Row)
@@ -432,7 +432,7 @@ Public Class DAR_Editor
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventFileUndoAll() Handles V_MMSMenu.EventFileUndoAll
         If Decision("Do you want to undo all changes?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
-            If (varFormAttributes.IsNew) Then
+            If (varFormProperties.IsNew) Then
                 DtpStart.Value = Now.Date
                 DtpEnd.Value = Now.Date
                 CboArea.SelectedIndex = 0

@@ -24,11 +24,11 @@ Public Class CCIN
         LibSQL.Commands.CCIN.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnCCIN, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
-    Private Sub GetTableID()
+    Private Sub GetRowID()
         If DgnCCIN.RowCount = 0 Then
-            varFormAttributes.RowID = "-1"
+            varFormProperties.RowID = "-1"
         Else
-            varFormAttributes.RowID = DgnCCIN.CurrentRow.Cells("company_id").Value.ToString
+            varFormProperties.RowID = DgnCCIN.CurrentRow.Cells("company_id").Value.ToString
         End If
     End Sub
 #End Region
@@ -36,36 +36,36 @@ Public Class CCIN
 #Region "Menu Strip Function"
     <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles _MMSmenu.EventDataAddNew
-        With varFormAttributes
+        With varFormProperties
             .IsNew = True
             .RowID = "-1"
         End With
 
         V_CCIN_Editor = New CCIN_Editor
-        DISPLAY(V_CCIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new company data", True)
+        Display(V_CCIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new company data", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles _MMSmenu.EventDataEdit
-        Call GETTableID()
-        If varFormAttributes.RowID = "-1" Then
+        Call GetRowID()
+        If Convert.ToString(varFormProperties.RowID) = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            varFormAttributes.IsNew = False
+            varFormProperties.IsNew = False
             V_CCIN_Editor = New CCIN_Editor
-            DISPLAY(V_CCIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your company data", True)
+            Display(V_CCIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your company data", True)
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles _MMSmenu.EventDataDelete
-        Call GETTableID()
-        If varFormAttributes.RowID = "-1" Then
+        Call GetRowID()
+        If Convert.ToString(varFormProperties.RowID) = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            varFormAttributes.IsNew = False
+            varFormProperties.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.CCIN.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)) Then
+                If (LibSQL.Commands.CCIN.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else

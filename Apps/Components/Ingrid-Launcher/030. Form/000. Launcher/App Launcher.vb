@@ -13,13 +13,13 @@ Public Class App_Launcher
 
         With proLog
             .AppVersion = varVersion
-            .FromSender = "$IngridLauncher\030. FOrm\000. Launcher\App Launcher.vb"
+            .FromSender = "$\IngridLauncher\030. FOrm\000. Launcher\App Launcher.vb"
             .InternalStackTrace = ""
             .Message = "Ingrid Launcher started."
             .Number = 0
             .ResumeNext = True
             .SaveInBetterLog = True
-            .SaveLogInLocal = False
+            .SaveLogInLocal = True
             .ShowErrorReporting = False
             .TypeOfFaulty = CMCv.Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
             .TypeOfLog = CMCv.Ladybug.Log.Fields.TypeOfLogs.Information
@@ -28,8 +28,6 @@ Public Class App_Launcher
         Dim clsLog As New CMCv.Ladybug.Log.Events
         clsLog.ShowData(proLog)
         clsLog = Nothing
-
-        'Bridge.Security.Writelog.Sendlog("Ingrid Launcher started." & Environment.NewLine & "--- App Ver. " & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision & " ---", Bridge.Security.Writelog.LogType.Information)
 
         Call ActivateLicenses()
 
@@ -98,5 +96,9 @@ Public Class App_Launcher
 
     Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
         Me.Close()
+    End Sub
+
+    Private Sub App_Launcher_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+
     End Sub
 End Class

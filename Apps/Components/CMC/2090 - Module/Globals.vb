@@ -14,16 +14,16 @@ Module Globals
 
 #Region "Security Globals"
     <SupportedOSPlatform("windows")>
-    Public V_BRIDGE_KEY As New Bridge.Security.GETKEY
+    Public V_BRIDGE_KEY As Bridge.Security.Getkey
 
     <SupportedOSPlatform("windows")>
-    Public V_BRIDGE_LOG As New Bridge.Security.WRITELOG
+    Public V_BRIDGE_LOG As Bridge.Security.Writelog
 
     <SupportedOSPlatform("windows")>
-    Public V_SALT As String = V_BRIDGE_KEY.SALT()
+    Public V_SALT As String = Bridge.Security.Getkey.Salt()
 
     <SupportedOSPlatform("windows")>
-    Public V_SyncfusionKey As String = V_BRIDGE_KEY.SYNCFUSION
+    Public V_SyncfusionKey As String = Bridge.Security.Getkey.Syncfusion
 
     ''' <summary>
     ''' This security will be retired
@@ -33,7 +33,7 @@ Module Globals
     ''' <summary>
     ''' This security will be retired
     ''' </summary>
-    Public V_SECDecrypt As New Security.Decrypt
+    'Public V_SECDecrypt As New Security.Decrypt
 
     'new security
     Public V_SEC_AES As System.Security.Cryptography.Aes

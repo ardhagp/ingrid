@@ -1,11 +1,11 @@
 ﻿Module Globals
-    Public V_DBE_MSSQL2008 As New CMCv.Database.Engine.MSSQL2008
-    Public V_DBE_MYSQL As New CMCv.Database.Engine.MySQL
-    Public V_DBE_LocalDB As New CMCv.Database.Engine.LocalDB
-    Public V_DBE_SQLite As New CMCv.Database.Engine.SQLiteV3
-    Public V_DB_Properties(1) As CMCv.Database.Properties.Fields
+    Public varDatabaseEngineMssql2008 As New CMCv.Database.Engine.Mssql2008
+    Public varDatabaseEngineMysql As New CMCv.Database.Engine.Mysql
+    Public varDatabaseEngineLocaldb As New CMCv.Database.Engine.LocalDB
+    Public varDatabaseEngineSqlite As New CMCv.Database.Engine.SQLiteV3
+    Public databaseproperties(1) As LibApp.Ingrid.Global.Properties
 
-    Public V_DBR_MSSQL2008(1) As CMCv.Database.Adapter.MSSQL2008.Display.Request
+    Public varDatabaseRequestMssql2008(1) As CMCv.Database.Adapter.MSSQL2008.Display.Request
     Public V_DBR_MYSQL(1) As CMCv.Database.Adapter.MySQL.Display.Request
     Public _DBP_MSSQL2008 As New CMCv.Database.Adapter.MSSQL2008.Execute
 
@@ -33,8 +33,8 @@
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
-    Public Function Decision(ByVal Message As String, ByVal Title As String, ByVal MessageIcon As CMCv.frmDialogBox.MessageIcon, ByVal ButtonType As CMCv.frmDialogBox.MessageTypes) As System.Windows.Forms.DialogResult
-        MSG = New CMCv.frmDialogBox(Message, Title, MessageIcon, ButtonType)
+    Public Function Decision(message As String, title As String, messageicon As CMCv.frmDialogBox.MessageIcon, ByVal buttontype As CMCv.frmDialogBox.MessageTypes) As System.Windows.Forms.DialogResult
+        MSG = New CMCv.frmDialogBox(message, title, messageicon, buttontype)
         Return MSG.ShowDialog()
         MSG.Dispose()
     End Function

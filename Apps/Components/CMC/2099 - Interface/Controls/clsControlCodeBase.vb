@@ -10,6 +10,7 @@ Public Class ControlCodeBase
         No = 2
         [Default] = 3
         Warning = 4
+        Disabled = 5
         Custom = 99
     End Enum
 

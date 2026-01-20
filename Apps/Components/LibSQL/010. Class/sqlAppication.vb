@@ -14,7 +14,7 @@ Namespace Application
             Report = 5
         End Enum
 
-        Private ReadOnly V_DBR_MSSQL2008(2) As Database.Adapter.MSSQL2008.Display.Request
+        Private ReadOnly varDatabaseRequestMssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
         Public Function User(databasename As String, tcode As String, uid As String, typeofaccess As TypeOfAccess) As Boolean
@@ -36,15 +36,15 @@ Namespace Application
 
             Try
                 Dim varIsRoot As Integer = 0
-                V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) from dbo.sys_user usr where (usr.user_id = '{0}') and (usr.user_root = 1)", uid)
+                varDatabaseRequestMssql2008(1).Query = String.Format("select count(usr.user_id) from dbo.sys_user usr where (usr.user_id = '{0}') and (usr.user_root = 1)", uid)
 
-                varIsRoot = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Integer)
+                varIsRoot = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
 
                 If varIsRoot = 1 Then
                     Return True
                 Else
-                    V_DBR_MSSQL2008(1).Query = String.Format("select count(uac.useraccess_id) as [useraccess_id] from dbo.[[sys]]useraccess] uac inner join dbo.sys_module mo on mo.module_id = uac.useraccess_module where (mo.module_code = '{0}') and (uac.useraccess_user = '{1}') and ({2} = 1)", tcode, uid, varTypeOfAccess)
-                    varView = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Integer)
+                    varDatabaseRequestMssql2008(1).Query = String.Format("select count(uac.useraccess_id) as [useraccess_id] from dbo.[[sys]]useraccess] uac inner join dbo.sys_module mo on mo.module_id = uac.useraccess_module where (mo.module_code = '{0}') and (uac.useraccess_user = '{1}') and ({2} = 1)", tcode, uid, varTypeOfAccess)
+                    varView = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
 
                     If varView = 0 Then
                         Return False
@@ -68,8 +68,8 @@ Namespace Application
 
             Try
                 If dbengine = "MSSQL" Then
-                    V_DBR_MSSQL2008(1).Query = String.Format("select count(mo.module_id) from dbo.sys_module mo where mo.module_code = '{0}'", tcode)
-                    varIsExist = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Boolean)
+                    varDatabaseRequestMssql2008(1).Query = String.Format("select count(mo.module_id) from dbo.sys_module mo where mo.module_code = '{0}'", tcode)
+                    varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Boolean)
                 ElseIf dbengine = "MYSQL" Then
 
                 End If
@@ -86,8 +86,8 @@ Namespace Application
 
             Try
                 If dbengine = "MSSQL" Then
-                    V_DBR_MSSQL2008(1).Query = String.Format("select count(mo.module_id) from dbo.sys_module mo where mo.module_code = '{0}' and mo.module_ismaintenance = 'true'", tcode)
-                    varIsLocked = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Boolean)
+                    varDatabaseRequestMssql2008(1).Query = String.Format("select count(mo.module_id) from dbo.sys_module mo where mo.module_code = '{0}' and mo.module_ismaintenance = 'true'", tcode)
+                    varIsLocked = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Boolean)
                 ElseIf dbengine = "MYSQL" Then
 
                 End If
@@ -102,9 +102,9 @@ Namespace Application
             Try
                 varDataSet = New DataSet
 
-                V_DBR_MSSQL2008(2).Query = "select mods.module_code from dbo.sys_module mods where mods.module_issystem = 0 order by mods.module_code"
+                varDatabaseRequestMssql2008(2).Query = "select mods.module_code from dbo.sys_module mods where mods.module_issystem = 0 order by mods.module_code"
 
-                varDataSet = V_DBE_MSSQL2008.GetDataSet(databasename, V_DBR_MSSQL2008(2), "TCMD")
+                varDataSet = varDatabaseEngineMssql2008.GetDataSet(databasename, varDatabaseRequestMssql2008(2), "TCMD")
 
                 Return varDataSet
             Catch ex As Exception
@@ -117,9 +117,9 @@ Namespace Application
             Dim varSettingValue As Double
 
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_uploadpdf from db_universe_erp.dbo.sys_settings s")
+                varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_uploadpdf from db_universe_erp.dbo.sys_settings s")
 
-                varSettingValue = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Double)
+                varSettingValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Double)
             Catch ex As Exception
                 varSettingValue = 0.9
             End Try
@@ -132,9 +132,9 @@ Namespace Application
             Dim varSettingValue As Double
 
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_uploadphoto from db_universe_erp.dbo.sys_settings s")
+                varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_uploadphoto from db_universe_erp.dbo.sys_settings s")
 
-                varSettingValue = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Double)
+                varSettingValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Double)
             Catch ex As Exception
                 varSettingValue = 0.9
             End Try
@@ -147,9 +147,9 @@ Namespace Application
             Dim varMinPasswordLength As Integer
 
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_minpasswordlength from db_universe_erp.dbo.sys_settings s")
+                varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_minpasswordlength from db_universe_erp.dbo.sys_settings s")
 
-                varMinPasswordLength = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Integer)
+                varMinPasswordLength = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
             Catch ex As Exception
                 varMinPasswordLength = 8
             End Try
@@ -163,13 +163,13 @@ Namespace Application
             Dim varSettingValue As String
 
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("select s.settings_showwatermark from dbo.sys_settings s where s.settings_id = 1")
-                varValue = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Integer)
+                varDatabaseRequestMssql2008(0).Query = String.Format("select s.settings_showwatermark from dbo.sys_settings s where s.settings_id = 1")
+                varValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
 
-                V_DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_textmark from db_universe_erp.dbo.sys_settings s")
+                varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_textmark from db_universe_erp.dbo.sys_settings s")
 
                 If (varValue = 1 AndAlso (isadministrator)) OrElse (varValue = 2 AndAlso Not (isadministrator)) OrElse (varValue = 3) Then
-                    varSettingValue = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query).ToString
+                    varSettingValue = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
                 Else
                     varSettingValue = String.Empty
                 End If
@@ -182,15 +182,15 @@ Namespace Application
     End Class
 
     Public Class Notification
-        Private ReadOnly V_DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
+        Private ReadOnly varDatabaseRequestMssql2008(1) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
         Public Function Exist(databasename As String, employeeid As String) As Integer
             Dim varIsExist As Integer
 
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("select count(nt.notification_id) as [new_notification] from dbo.[[sys]]notification] nt where (nt.notification_employee = '{0}') and (nt.notification_isread = 0)", employeeid)
-                varIsExist = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Integer)
+                varDatabaseRequestMssql2008(0).Query = String.Format("select count(nt.notification_id) as [new_notification] from dbo.[[sys]]notification] nt where (nt.notification_employee = '{0}') and (nt.notification_isread = 0)", employeeid)
+                varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
 
                 Return varIsExist
             Catch ex As Exception
@@ -200,15 +200,15 @@ Namespace Application
     End Class
 
     Public Class RunningText
-        Private ReadOnly V_DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
+        Private ReadOnly varDatabaseRequestMssql2008(1) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
         Public Function Show(databasename As String, Optional isadministrator As Boolean = False) As Boolean
             Dim varValue As Integer
 
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("select s.settings_showrunningtext from dbo.sys_settings s where s.settings_id = 1")
-                varValue = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Integer)
+                varDatabaseRequestMssql2008(0).Query = String.Format("select s.settings_showrunningtext from dbo.sys_settings s where s.settings_id = 1")
+                varValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
 
                 If varValue = 1 AndAlso (isadministrator) Then
                     Return True
@@ -232,8 +232,8 @@ Namespace Application
             Dim varValue As Integer
 
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_showstorage from dbo.sys_settings s")
-                varValue = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Integer)
+                varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_showstorage from dbo.sys_settings s")
+                varValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
 
                 If varValue = 1 AndAlso (IsAdmininstrator) Then
                     Return True
@@ -254,8 +254,8 @@ Namespace Application
             Dim varSize As Double
 
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("SELECT (size*8)/1024 AS SizeMB FROM sys.database_files where name='db_universe_erp'")
-                varSize = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Double)
+                varDatabaseRequestMssql2008(0).Query = String.Format("SELECT (size*8)/1024 AS SizeMB FROM sys.database_files where name='db_universe_erp'")
+                varSize = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Double)
 
                 Return varSize
             Catch ex As Exception
@@ -268,8 +268,8 @@ Namespace Application
             Dim varSize As Double
 
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("SELECT (size*8)/1024 AS SizeMB FROM sys.database_files where name='db_universe_erp_file'")
-                varSize = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Double)
+                varDatabaseRequestMssql2008(0).Query = String.Format("SELECT (size*8)/1024 AS SizeMB FROM sys.database_files where name='db_universe_erp_file'")
+                varSize = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Double)
 
                 Return varSize
             Catch ex As Exception
@@ -289,11 +289,11 @@ Namespace Application
             Try
                 'Line 1 For Production
                 If sizetype = 1 Then
-                    V_DBR_MSSQL2008(0).Query = String.Format("SELECT max_db_size_in_gb = CASE WHEN engine_edition = 4 THEN CASE WHEN d.sversion_name LIKE '%203%' THEN (10 * 1024)  WHEN d.sversion_name LIKE '%202%' THEN (10 * 1024)  WHEN d.sversion_name LIKE '%201%' THEN (10 * 1024) WHEN d.sversion_name LIKE '%2008 R2%' THEN (10 * 1024) WHEN d.sversion_name LIKE '%2008%' THEN (4 * 1024) WHEN d.sversion_name LIKE '%2005%' THEN (4 * 1024) END ELSE '0' END FROM (SELECT sversion_name = v.ver, engine_edition = SERVERPROPERTY('EngineEdition'), edition = SERVERPROPERTY('Edition'), server_name = SERVERPROPERTY('ServerName') FROM (SELECT ver = @@VERSION) v) d")
-                    varSize = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Double)
+                    varDatabaseRequestMssql2008(0).Query = String.Format("SELECT max_db_size_in_gb = CASE WHEN engine_edition = 4 THEN CASE WHEN d.sversion_name LIKE '%203%' THEN (10 * 1024)  WHEN d.sversion_name LIKE '%202%' THEN (10 * 1024)  WHEN d.sversion_name LIKE '%201%' THEN (10 * 1024) WHEN d.sversion_name LIKE '%2008 R2%' THEN (10 * 1024) WHEN d.sversion_name LIKE '%2008%' THEN (4 * 1024) WHEN d.sversion_name LIKE '%2005%' THEN (4 * 1024) END ELSE '0' END FROM (SELECT sversion_name = v.ver, engine_edition = SERVERPROPERTY('EngineEdition'), edition = SERVERPROPERTY('Edition'), server_name = SERVERPROPERTY('ServerName') FROM (SELECT ver = @@VERSION) v) d")
+                    varSize = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Double)
                 Else
-                    V_DBR_MSSQL2008(0).Query = "select sv.var_value from [dbo].[[sys]]variables] sv where sv.var_name = 'drive_free_space'"
-                    varSize = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Double)
+                    varDatabaseRequestMssql2008(0).Query = "select sv.var_value from [dbo].[[sys]]variables] sv where sv.var_name = 'drive_free_space'"
+                    varSize = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Double)
                 End If
 
 
@@ -318,8 +318,8 @@ Namespace Application
             Dim varBytes As Byte()
 
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("select f.file_content from db_universe_erp_file.dbo.sto_file f where f.file_parent = '{0}' and f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_filetype = 'jpg'", employeeid)
-                varBytes = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Byte())
+                varDatabaseRequestMssql2008(0).Query = String.Format("select f.file_content from db_universe_erp_file.dbo.sto_file f where f.file_parent = '{0}' and f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_filetype = 'jpg'", employeeid)
+                varBytes = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Byte())
 
                 If Not IsNothing(varBytes) Then
                     varPhoto = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(varBytes)
@@ -343,8 +343,8 @@ Namespace Application
             Dim varValue As Integer
 
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("select top 1 s.settings_showprofile from dbo.sys_settings s")
-                varValue = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Integer)
+                varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_showprofile from dbo.sys_settings s")
+                varValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
 
                 If varValue = 1 AndAlso (isadministrator) Then
                     Return True
@@ -366,8 +366,8 @@ Namespace Application
             Dim varWelcome As String
 
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("select top 1 t.template_text1 from dbo.doc_template t where t.template_module = 'F2887E94E365C068D1CCB3FF03DB7969' and t.template_title = 'PROFILE' order by newid()")
-                varWelcome = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query).ToString
+                varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 t.template_text1 from dbo.doc_template t where t.template_module = 'F2887E94E365C068D1CCB3FF03DB7969' and t.template_title = 'PROFILE' order by newid()")
+                varWelcome = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
 
                 Return varWelcome
             Catch ex As Exception

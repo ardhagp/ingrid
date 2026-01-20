@@ -7,19 +7,19 @@ Namespace Mainframe
         Public Shared Function Connect(Optional isproduction As Boolean = False, Optional splashscreen As Form = Nothing) As Boolean
             Dim varSuccess As Boolean
             Try
-                V_DBE_SQLite.Open(isproduction)
-                V_DB_Properties(1) = V_DBE_SQLite.GetDatabaseProperties(V_DB_Properties(1))
+                varDatabaseEngineSqlite.Open(isproduction)
+                databaseproperties(1) = varDatabaseEngineSqlite.GetDatabaseProperties(databaseproperties(1))
 
-                If V_DB_Properties(1).DatabaseEngine = "MSSQL" AndAlso (V_DBE_MSSQL2008.Open(V_DB_Properties(1), splashscreen)) Then
+                If databaseproperties(1).DatabaseEngine = "MSSQL" AndAlso (varDatabaseEngineMssql2008.Open(databaseproperties(1), splashscreen)) Then
                     varSuccess = True
-                ElseIf V_DB_Properties(1).DatabaseEngine = "MYSQL" AndAlso (V_DBE_MYSQL.Open(V_DB_Properties(1), splashscreen)) Then
+                ElseIf databaseproperties(1).DatabaseEngine = "MYSQL" AndAlso (varDatabaseEngineMysql.Open(databaseproperties(1), splashscreen)) Then
                     varSuccess = True
                 Else
                     splashscreen?.Close()
                     varSuccess = False
                 End If
 
-                V_DBE_SQLite.Close()
+                varDatabaseEngineSqlite.Close()
 
             Catch ex As Exception
                 MsgBox(ex.ToString)
@@ -34,21 +34,21 @@ Namespace Mainframe
         Public Shared Function DatabaseEngine() As String
             Dim varDBengine As String
 
-            V_DBE_SQLite.Open(True)
-            V_DB_Properties(1) = V_DBE_SQLite.GetDatabaseProperties(V_DB_Properties(1))
-            varDBEngine = V_DB_Properties(1).DatabaseEngine
-            V_DBE_SQLite.Close()
-            Return varDBEngine
+            varDatabaseEngineSqlite.Open(True)
+            databaseproperties(1) = varDatabaseEngineSqlite.GetDatabaseProperties(databaseproperties(1))
+            varDBengine = databaseproperties(1).DatabaseEngine
+            varDatabaseEngineSqlite.Close()
+            Return varDBengine
         End Function
 
         <SupportedOSPlatform("windows")>
         Public Shared Function DatabaseName() As String
             Dim varDBname As String
 
-            V_DBE_SQLite.Open(True)
-            V_DB_Properties(1) = V_DBE_SQLite.GetDatabaseProperties(V_DB_Properties(1))
-            varDBname = V_DB_Properties(1).DatabaseName
-            V_DBE_SQLite.Close()
+            varDatabaseEngineSqlite.Open(True)
+            databaseproperties(1) = varDatabaseEngineSqlite.GetDatabaseProperties(databaseproperties(1))
+            varDBname = databaseproperties(1).DatabaseName
+            varDatabaseEngineSqlite.Close()
             Return varDBname
         End Function
     End Class

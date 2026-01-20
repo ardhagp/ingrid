@@ -37,32 +37,64 @@ Public Class LOGIN
             Return
         End If
 
-        varUserAttributes.UID = Commands.UAC.Login.GetUID(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText, TxtPassword.XOSQLText, varUserAttributes.FirstName)
+        varProperties.UserID = Commands.UAC.Login.GetUID(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText, TxtPassword.XOSQLText, varProperties.FirstName)
 
-        If varUserAttributes.UID = String.Empty Then
+        If varProperties.UserID = String.Empty Then
             RaiseEvent LoginFailed()
             varWrongLogin += 1
             SLFStatus.Items(0).Text = "Login Failed"
             varLogUser.LoginFailed(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText)
 
-            Bridge.Security.Writelog.Sendlog("""message"" : """ & TxtUsername.XOSQLText & " failed to login."",", "Warning")
+            Dim clsLog As New Ladybug.Log.Events
+            With proLog
+                .Message = TxtUsername.XOSQLText & " failed to login."
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Warning
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
+                .ResumeNext = True
+                .Number = 0
+                .InternalStackTrace = String.Empty
+                .SaveInBetterLog = True
+                .SaveLogInLocal = True
+                .ShowErrorReporting = False
+                .FromSender = "LOGIN"
+                .AppVersion = GetAppVersion()
+            End With
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
 
             tmr_status.Enabled = True
             If varWrongLogin = 3 Then
                 tmr_control.Enabled = True
             End If
         Else
-            With varUserAttributes
-                .EID = Commands.UAC.Login.GetEID(varDatabaseName, varDatabaseEngine, varUserAttributes.UID)
-                .FirstName = Commands.UAC.Login.GETFirstName(varDatabaseName, varDatabaseEngine, varUserAttributes.UID)
-                .EmployeeNumber = Commands.UAC.Login.GetEmployeeNumber(varDatabaseName, varDatabaseEngine, varUserAttributes.UID)
-                .Gender = Commands.UAC.Login.GetGender(varDatabaseName, varDatabaseEngine, varUserAttributes.UID)
-                .Position = Commands.UAC.Login.GetPosition(varDatabaseName, varDatabaseEngine, varUserAttributes.UID)
-                .IsAdministrator = Commands.UAC.Login.GetAdministrator(varDatabaseName, varDatabaseEngine, varUserAttributes.UID)
+            With varProperties
+                .EmployeeID = Commands.UAC.Login.GetEID(varDatabaseName, varDatabaseEngine, varProperties.UserID)
+                .FirstName = Commands.UAC.Login.GETFirstName(varDatabaseName, varDatabaseEngine, varProperties.UserID)
+                .EmployeeNumber = Commands.UAC.Login.GetEmployeeNumber(varDatabaseName, varDatabaseEngine, varProperties.UserID)
+                .Gender = Commands.UAC.Login.GetGender(varDatabaseName, varDatabaseEngine, varProperties.UserID)
+                .EmployeePosition = Commands.UAC.Login.GetPosition(varDatabaseName, varDatabaseEngine, varProperties.UserID)
+                .IsAdministrator = Commands.UAC.Login.GetAdministrator(varDatabaseName, varDatabaseEngine, varProperties.UserID)
             End With
 
-            varLogUser.LoginSuccess(varDatabaseName, varDatabaseEngine, varUserAttributes.EID)
-            Bridge.Security.Writelog.Sendlog("""message"" : " & varUserAttributes.FirstName & " is login."",", "Information")
+            varLogUser.LoginSuccess(varDatabaseName, varDatabaseEngine, varProperties.EmployeeID)
+
+            Dim clsLog As New Ladybug.Log.Events
+            With proLog
+                .Message = varProperties.FirstName & " is login."
+                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Information
+                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
+                .ResumeNext = True
+                .Number = 0
+                .InternalStackTrace = String.Empty
+                .SaveInBetterLog = True
+                .SaveLogInLocal = True
+                .ShowErrorReporting = False
+                .FromSender = "LOGIN"
+                .AppVersion = GetAppVersion()
+            End With
+            clsLog.ShowData(proLog)
+            clsLog = Nothing
+
             RaiseEvent LoginSuccess()
             Me.Close()
         End If

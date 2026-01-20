@@ -60,11 +60,11 @@ Public Class DRAA
     ''' <summary>
     ''' Get row ID on record clicked
     ''' </summary>
-    Private Sub GetTableID()
-        varFormAttributes.RowID = "-1"
+    Private Sub GetRowID()
+        varFormProperties.RowID = "-1"
 
         If DgnArea.RowCount > 0 Then
-            varFormAttributes.RowID = DgnArea.CurrentRow.Cells("affectedarea_id").Value.ToString
+            varFormProperties.RowID = DgnArea.CurrentRow.Cells("affectedarea_id").Value.ToString
         End If
     End Sub
 

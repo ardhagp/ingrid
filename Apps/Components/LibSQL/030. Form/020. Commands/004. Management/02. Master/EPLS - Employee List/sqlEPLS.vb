@@ -9,7 +9,7 @@ Namespace Commands.EPLS
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(databasename As String, dbengine As String, grid As dgn, status As CMCv.stt, find As txt, Optional forcerefresh As Boolean = False)
-            ReDim V_DBR_MSSQL2008(2)
+            ReDim varDatabaseRequestMssql2008(2)
             Dim varWhere As String = String.Format("where ")
 
             If (find.Text = String.Empty) AndAlso (forcerefresh) Then
@@ -19,24 +19,24 @@ Namespace Commands.EPLS
                                         "em.employee_nickname like '%{0}%'", find.XOSQLText)
             End If
 
-            V_DBR_MSSQL2008(0).Query = String.Format("select em.employee_id, cm.company_code, dp.departement_code, ps.position_code, (select gd.employeegrade_code from dbo.man_employeegrade gd " &
+            varDatabaseRequestMssql2008(0).Query = String.Format("select em.employee_id, cm.company_code, dp.departement_code, ps.position_code, (select gd.employeegrade_code from dbo.man_employeegrade gd " &
                                                     "where gd.employeegrade_id = em.employee_grade) as [employee_grade], em.employee_number, em.employee_fullname, em.employee_nickname, (select ct.contracttype_code " &
                                                     "from dbo.[[man]]contracttype] ct where ct.contracttype_id = em.employee_contracttype) as [employee_contracttype], employee_gender, (case em.employee_active when 0 then 'No' " &
                                                     "when 1 then 'Yes' end) as [employee_active] from dbo.man_employee em inner join dbo.man_position ps on ps.position_id = em.employee_position " &
                                                     "inner join dbo.man_department dp on dp.department_id = ps.position_departement inner join dbo.man_company cm on cm.company_id = dp.departement_company {0} " &
                                                     "order by cm.company_code, dp.departement_code, ps.position_code, em.employee_fullname", varWhere)
 
-            V_DBR_MSSQL2008(0).DataGrid = grid
-            V_DBR_MSSQL2008(0).StatusBar = status
-            V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TEmployee")
+            varDatabaseRequestMssql2008(0).DataGrid = grid
+            varDatabaseRequestMssql2008(0).StatusBar = status
+            varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TEmployee")
         End Sub
 
         <SupportedOSPlatform("windows")>
         Public Shared Function DeleteData(databasename As String, dbengine As String, rowid As String) As Boolean
             Dim varSuccess As Boolean = False
             Try
-                V_DBR_MSSQL2008(1).Query = String.Format("delete from dbo.man_employee where (employee_id = '{0}')", rowid)
-                V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                varDatabaseRequestMssql2008(1).Query = String.Format("delete from dbo.man_employee where (employee_id = '{0}')", rowid)
+                varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
 
                 varSuccess = True
             Catch ex As Exception
@@ -54,15 +54,15 @@ Namespace Commands.EPLS
             Dim varCompany As String
 
             If positionid = "-1" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select cm.company_name from dbo.man_employee em inner join dbo.man_position ps on ps.position_id = em.employee_position " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select cm.company_name from dbo.man_employee em inner join dbo.man_position ps on ps.position_id = em.employee_position " &
                                                         "inner join dbo.man_department dp on dp.department_id = ps.position_departement inner join dbo.man_company cm on cm.company_id = dp.departement_company " &
                                                         "where (em.employee_id = '{0}')", rowid)
             Else
-                V_DBR_MSSQL2008(1).Query = String.Format("select cm.company_name from dbo.man_position ps inner join dbo.man_department dp on dp.department_id = ps.position_departement " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select cm.company_name from dbo.man_position ps inner join dbo.man_department dp on dp.department_id = ps.position_departement " &
                                                         "inner join dbo.man_company cm on cm.company_id = dp.departement_company where (ps.position_id = '{0}')", positionid)
             End If
 
-            varCompany = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varCompany = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varCompany
         End Function
@@ -72,14 +72,14 @@ Namespace Commands.EPLS
             Dim varDepartment As String = String.Empty
 
             If positionid = "-1" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select dp.departement_name from dbo.man_employee em inner join dbo.man_position ps on ps.position_id = em.employee_position " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select dp.departement_name from dbo.man_employee em inner join dbo.man_position ps on ps.position_id = em.employee_position " &
                                                         "inner join dbo.man_department dp on dp.department_id = ps.position_departement where (em.employee_id = '{0}')", rowid)
             Else
-                V_DBR_MSSQL2008(1).Query = String.Format("select dp.departement_name from dbo.man_position ps inner join dbo.man_department dp on dp.department_id = ps.position_departement " &
+                varDatabaseRequestMssql2008(1).Query = String.Format("select dp.departement_name from dbo.man_position ps inner join dbo.man_department dp on dp.department_id = ps.position_departement " &
                                                         "where (ps.position_id = '{0}')", positionid)
             End If
 
-            varDepartment = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varDepartment = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varDepartment
         End Function
@@ -88,9 +88,9 @@ Namespace Commands.EPLS
         Public Shared Function GETPositionID(databasename As String, dbengine As String, rowid As String) As String
             Dim varPositionID As String = String.Empty
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_position from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
+            varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_position from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varPositionID = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varPositionID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varPositionID
         End Function
@@ -100,12 +100,12 @@ Namespace Commands.EPLS
             Dim varPosition As String = String.Empty
 
             If positionid = "-1" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select ps.position_name from dbo.man_employee em inner join dbo.man_position ps on ps.position_id = em.employee_position where (em.employee_id = '{0}')", rowid)
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ps.position_name from dbo.man_employee em inner join dbo.man_position ps on ps.position_id = em.employee_position where (em.employee_id = '{0}')", rowid)
             Else
-                V_DBR_MSSQL2008(1).Query = String.Format("select ps.position_name from dbo.man_position ps where (ps.position_id = '{0}')", positionid)
+                varDatabaseRequestMssql2008(1).Query = String.Format("select ps.position_name from dbo.man_position ps where (ps.position_id = '{0}')", positionid)
             End If
 
-            varPosition = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varPosition = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varPosition
         End Function
@@ -114,9 +114,9 @@ Namespace Commands.EPLS
         Public Shared Function GetGradeID(databasename As String, dbengine As String, rowid As String) As String
             Dim varGradeID As String
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_grade from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
+            varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_grade from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varGradeID = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varGradeID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varGradeID
         End Function
@@ -125,9 +125,9 @@ Namespace Commands.EPLS
         Public Shared Function GetGrade(databasename As String, dbengine As String, rowid As String) As String
             Dim varGrade As String
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select gd.employeegrade_name from dbo.man_employee em inner join dbo.man_employeegrade gd on gd.employeegrade_id = em.employee_grade where (em.employee_id = '{0}')", rowid)
+            varDatabaseRequestMssql2008(1).Query = String.Format("select gd.employeegrade_name from dbo.man_employee em inner join dbo.man_employeegrade gd on gd.employeegrade_id = em.employee_grade where (em.employee_id = '{0}')", rowid)
 
-            varGrade = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varGrade = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varGrade
         End Function
@@ -136,9 +136,9 @@ Namespace Commands.EPLS
         Public Shared Function GetPersonalID(databasename As String, dbengine As String, rowid As String) As String
             Dim varPersonalID As String
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select e.employee_personalid from dbo.man_employee e where e.employee_id = '{0}'", rowid)
+            varDatabaseRequestMssql2008(1).Query = String.Format("select e.employee_personalid from dbo.man_employee e where e.employee_id = '{0}'", rowid)
 
-            varPersonalID = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varPersonalID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varPersonalID
         End Function
@@ -147,9 +147,9 @@ Namespace Commands.EPLS
         Public Shared Function GetBirthDate(databasename As String, dbengine As String, rowid As String) As Date
             Dim varBirthDate As Date
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select e.employee_birthdate from dbo.man_employee e where e.employee_id = '{0}'", rowid)
+            varDatabaseRequestMssql2008(1).Query = String.Format("select e.employee_birthdate from dbo.man_employee e where e.employee_id = '{0}'", rowid)
 
-            varBirthDate = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Date)
+            varBirthDate = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Date)
 
             Return varBirthDate
         End Function
@@ -158,9 +158,9 @@ Namespace Commands.EPLS
         Public Shared Function GetBirthPlace(databasename As String, dbengine As String, rowid As String) As String
             Dim varBirthPlace As String
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select e.employee_birthplace from dbo.man_employee e where e.employee_id = '{0}'", rowid)
+            varDatabaseRequestMssql2008(1).Query = String.Format("select e.employee_birthplace from dbo.man_employee e where e.employee_id = '{0}'", rowid)
 
-            varBirthPlace = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varBirthPlace = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varBirthPlace
         End Function
@@ -169,9 +169,9 @@ Namespace Commands.EPLS
         Public Shared Function GetAddress(databasename As String, dbengine As String, rowid As String) As String
             Dim varBirthPlace As String
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select e.employee_address from dbo.man_employee e where e.employee_id = '{0}'", rowid)
+            varDatabaseRequestMssql2008(1).Query = String.Format("select e.employee_address from dbo.man_employee e where e.employee_id = '{0}'", rowid)
 
-            varBirthPlace = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varBirthPlace = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varBirthPlace
         End Function
@@ -180,9 +180,9 @@ Namespace Commands.EPLS
         Public Shared Function GETEmployeeNumber(databasename As String, dbengine As String, rowid As String) As String
             Dim varEmployeeNumber As String
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_number from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
+            varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_number from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varEmployeeNumber = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varEmployeeNumber = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varEmployeeNumber
         End Function
@@ -191,9 +191,9 @@ Namespace Commands.EPLS
         Public Shared Function GetEmployeeFullName(databasename As String, dbengine As String, rowid As String) As String
             Dim varEmployeeName As String
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_fullname from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
+            varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_fullname from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varEmployeeName = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varEmployeeName = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varEmployeeName
         End Function
@@ -202,9 +202,9 @@ Namespace Commands.EPLS
         Public Shared Function GetEmployeeNickname(databasename As String, dbengine As String, rowid As String) As String
             Dim varNickname As String
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_nickname from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
+            varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_nickname from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varNickname = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varNickname = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varNickname
         End Function
@@ -213,9 +213,9 @@ Namespace Commands.EPLS
         Public Shared Function GetContractTypeID(databasename As String, dbengine As String, rowid As String) As String
             Dim varContractTypeID As String
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_contracttype from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
+            varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_contracttype from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varContractTypeID = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varContractTypeID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varContractTypeID
         End Function
@@ -224,10 +224,10 @@ Namespace Commands.EPLS
         Public Shared Function GetContractType(databasename As String, dbengine As String, rowid As String) As String
             Dim varContractType As String
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select cp.contracttype_name from dbo.man_employee em inner join dbo.[[man]]contracttype] cp on cp.contracttype_id = em.employee_contracttype " &
+            varDatabaseRequestMssql2008(1).Query = String.Format("select cp.contracttype_name from dbo.man_employee em inner join dbo.[[man]]contracttype] cp on cp.contracttype_id = em.employee_contracttype " &
                                                     "where (em.employee_id = '{0}')", rowid)
 
-            varContractType = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            varContractType = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varContractType
         End Function
@@ -236,9 +236,9 @@ Namespace Commands.EPLS
         Public Shared Function GetActiveEmployee(databasename As String, dbengine As String, rowid As String) As Boolean
             Dim varActiveEmployee As Boolean = False
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_active from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
+            varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_active from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varActiveEmployee = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Boolean)
+            varActiveEmployee = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Boolean)
 
             Return varActiveEmployee
         End Function
@@ -248,8 +248,8 @@ Namespace Commands.EPLS
             Dim varGender As String
 
             Try
-                V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_gender from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
-                varGender = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_gender from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
+                varGender = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
             Catch ex As Exception
                 varGender = "MALE"
             End Try
@@ -261,8 +261,8 @@ Namespace Commands.EPLS
         Public Shared Function GetIsHavePhoto(databasename As String, dbengine As String, rowid As String) As Integer
             Dim varIsHavePhoto As Integer = 0
 
-            V_DBR_MSSQL2008(0).Query = String.Format("select count(f.file_id) as total from db_universe_erp_file.dbo.sto_file f where (f.file_parent = '{0}') and (f.file_tag = 'EMPLOYEE-PROFILE-PHOTO');", rowid)
-            varIsHavePhoto = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Integer)
+            varDatabaseRequestMssql2008(0).Query = String.Format("select count(f.file_id) as total from db_universe_erp_file.dbo.sto_file f where (f.file_parent = '{0}') and (f.file_tag = 'EMPLOYEE-PROFILE-PHOTO');", rowid)
+            varIsHavePhoto = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
 
             Return varIsHavePhoto
         End Function
@@ -273,8 +273,8 @@ Namespace Commands.EPLS
             Dim varBytes As Byte()
 
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("select f.file_content from db_universe_erp_file.dbo.sto_file f where f.file_parent = '{0}' and f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_filetype = 'jpg'", rowid)
-                varBytes = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Byte())
+                varDatabaseRequestMssql2008(0).Query = String.Format("select f.file_content from db_universe_erp_file.dbo.sto_file f where f.file_parent = '{0}' and f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_filetype = 'jpg'", rowid)
+                varBytes = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Byte())
 
                 If Not IsNothing(varBytes) Then
                     varPhoto = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(varBytes)
@@ -291,11 +291,11 @@ Namespace Commands.EPLS
             Dim varIsExist As Integer = 0
 
             If isnew Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select count(em.employee_personalid) from dbo.man_employee em where em.employee_personalid = '{0}'", personalid)
+                varDatabaseRequestMssql2008(1).Query = String.Format("select count(em.employee_personalid) from dbo.man_employee em where em.employee_personalid = '{0}'", personalid)
             Else
-                V_DBR_MSSQL2008(1).Query = String.Format("select count(em.employee_personalid) from dbo.man_employee em where (em.employee_personalid = '{0}' and em.employee_id <> '{1}')", personalid, employeeid)
+                varDatabaseRequestMssql2008(1).Query = String.Format("select count(em.employee_personalid) from dbo.man_employee em where (em.employee_personalid = '{0}' and em.employee_id <> '{1}')", personalid, employeeid)
             End If
-            varIsExist = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Integer)
+            varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
 
             If varIsExist = 0 Then
                 Return False
@@ -308,8 +308,8 @@ Namespace Commands.EPLS
         Public Shared Function IsPositionExist(databasename As String, dbengine As String, positionid As String) As Boolean
             Dim varIsExist As Integer = 0
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select count(ps.position_id) as [rows] from dbo.man_position ps where (ps.position_id = '{0}')", positionid)
-            varIsExist = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Integer)
+            varDatabaseRequestMssql2008(1).Query = String.Format("select count(ps.position_id) as [rows] from dbo.man_position ps where (ps.position_id = '{0}')", positionid)
+            varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
 
             If varIsExist = 0 Then
                 Return False
@@ -332,10 +332,10 @@ Namespace Commands.EPLS
                                         "inner join dbo.man_department dp1 on dp1.department_id = ps1.position_departement where ps1.position_id = '{1}') and (em.employee_id <> '{2}')", employeenumber, positionid, rowid)
             End If
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select count(em.employee_id) as [rows] from dbo.man_employee em inner join dbo.man_position ps on ps.position_id = em.employee_position " &
+            varDatabaseRequestMssql2008(1).Query = String.Format("select count(em.employee_id) as [rows] from dbo.man_employee em inner join dbo.man_position ps on ps.position_id = em.employee_position " &
                                                     "inner join dbo.man_department dp on dp.department_id = ps.position_departement {0}", varWhere)
 
-            varIsDuplicate = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Integer)
+            varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
 
             If varIsDuplicate = 0 Then
                 Return False
@@ -352,17 +352,17 @@ Namespace Commands.EPLS
 
             Try
                 If rowid = "-1" Then
-                    V_DBR_MSSQL2008(1).Query = String.Format("insert into dbo.man_employee(employee_id, employee_personalid, employee_position, employee_number, employee_fullname, employee_birthdate, employee_birthplace, " &
+                    varDatabaseRequestMssql2008(1).Query = String.Format("insert into dbo.man_employee(employee_id, employee_personalid, employee_position, employee_number, employee_fullname, employee_birthdate, employee_birthplace, " &
                                                             "employee_address, employee_nickname, employee_active, employee_gender) " &
                                                             "values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}');", varHash, personalid, position, employeenumber, employeefullname, varEmployeeBirthDate, employeebirthplace, employeeaddress, employeenickname, activeemployee, employeegender)
                 Else
                     varHash = rowid
-                    V_DBR_MSSQL2008(1).Query = String.Format("update dbo.man_employee set employee_position = '{0}', employee_number = '{1}', employee_fullname = '{2}', employee_birthdate = '{3}', employee_birthplace = '{4}', " &
+                    varDatabaseRequestMssql2008(1).Query = String.Format("update dbo.man_employee set employee_position = '{0}', employee_number = '{1}', employee_fullname = '{2}', employee_birthdate = '{3}', employee_birthplace = '{4}', " &
                                                             "employee_address = '{5}', employee_nickname = '{6}', employee_active = '{7}', employee_gender = '{8}', employee_personalid = '{9}' " &
                                                             "where employee_id = '{10}';", position, employeenumber, employeefullname, varEmployeeBirthDate, employeebirthplace, employeeaddress, employeenickname, activeemployee, employeegender, personalid, rowid)
                 End If
 
-                'V_DBE_MSSQL2008.PUSHDATA(V_DBR_MSSQL2008(1).Query)
+                'varDatabaseEngineMssql2008.PUSHDATA(varDatabaseRequestMssql2008(1).Query)
                 Dim varQuery As String = String.Empty
                 Dim varCommand As SqlClient.SqlCommand = Nothing
                 varCommand = New SqlClient.SqlCommand
@@ -380,7 +380,7 @@ Namespace Commands.EPLS
                                               "file_tag = 'EMPLOYEE-PROFILE-PHOTO';", varHash)
                     End If
 
-                    V_DBR_MSSQL2008(1).Query += varQuery
+                    varDatabaseRequestMssql2008(1).Query += varQuery
 
                     varCommand.Parameters.AddWithValue("@ID", varPhotoHash)
                     varCommand.Parameters.AddWithValue("@ParentID", varHash)
@@ -402,9 +402,9 @@ Namespace Commands.EPLS
                 End If
 
                 varCommand.CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' " &
-                                                 "GOTO RETRY END END CATCH", V_DBR_MSSQL2008(1).Query)
+                                                 "GOTO RETRY END END CATCH", varDatabaseRequestMssql2008(1).Query)
 
-                varSuccess = V_DBE_MSSQL2008.PushImage(varCommand)
+                varSuccess = varDatabaseEngineMssql2008.PushImage(varCommand)
 
             Catch ex As Exception
                 varSuccess = False

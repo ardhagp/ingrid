@@ -1,5 +1,4 @@
 ﻿Imports System.Runtime.Versioning
-Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Public Class WorkspaceClass
 #Region "Variables"

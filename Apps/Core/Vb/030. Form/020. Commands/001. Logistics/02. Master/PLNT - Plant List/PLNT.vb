@@ -20,11 +20,11 @@ Public Class PLNT
     ''' <summary>
     ''' Get row ID on record clicked
     ''' </summary>
-    Private Sub GetTableID()
-        varFormAttributes.RowID = "-1"
+    Private Sub GetRowID()
+        varFormProperties.RowID = "-1"
 
         If DgnPLNT.RowCount > 0 Then
-            varFormAttributes.RowID = DgnPLNT.CurrentRow.Cells("plant_id").Value.ToString
+            varFormProperties.RowID = DgnPLNT.CurrentRow.Cells("plant_id").Value.ToString
         End If
     End Sub
 
@@ -36,12 +36,12 @@ Public Class PLNT
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataAddNew() Handles V_MMSMenu.EventDataAddNew
-        If varUserAccess.User(varDatabaseName, "PLNT", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add) = False Then
+        If varUserAccess.User(varDatabaseName, "PLNT", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add) = False Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
-        varFormAttributes.IsNew = True
-        varFormAttributes.RowID = "-1"
+        varFormProperties.IsNew = True
+        varFormProperties.RowID = "-1"
         V_PLNT_Editor = New PLNT_Editor
         DISPLAY(V_PLNT_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new plant", True)
         Mainframe_n_6.Ts_status.Text = String.Empty
@@ -49,13 +49,13 @@ Public Class PLNT
 
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataEdit() Handles V_MMSMenu.EventDataEdit
-        If varUserAccess.User(varDatabaseName, "PLNT", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit) = False Then
+        If varUserAccess.User(varDatabaseName, "PLNT", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit) = False Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Exit Sub
         End If
-        Call GETTableID()
-        varFormAttributes.IsNew = False
-        If varFormAttributes.RowID = "-1" Then
+        Call GetRowID()
+        varFormProperties.IsNew = False
+        If Convert.ToString(varFormProperties.RowID) = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             V_PLNT_Editor = New PLNT_Editor
@@ -66,17 +66,17 @@ Public Class PLNT
 
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataDelete() Handles V_MMSMenu.EventDataDelete
-        If varUserAccess.User(varDatabaseName, "PLNT", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete) = False Then
+        If varUserAccess.User(varDatabaseName, "PLNT", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete) = False Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
-        Call GetTableID()
-        If varFormAttributes.RowID = "-1" Then
+        Call GetRowID()
+        If Convert.ToString(varFormProperties.RowID) = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            varFormAttributes.IsNew = False
+            varFormProperties.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If LibSQL.Commands.PLNT.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID) = True Then
+                If LibSQL.Commands.PLNT.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID)) = True Then
                     Call GetData(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
