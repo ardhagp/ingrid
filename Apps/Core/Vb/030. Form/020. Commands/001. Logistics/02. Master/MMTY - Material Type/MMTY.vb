@@ -9,27 +9,27 @@ Public Class MMTY
 #End Region
 
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
-        Commands.MMTY.View.DisplayData(varDatabaseEngine, DgnMMTY, SLFStatus, TxtFind, ForceRefresh)
+    Private Sub GetData(Optional forcerefresh As Boolean = False)
+        Commands.MMTY.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnMMTY, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub frmMMTY_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         V_MMSMenu.LoadIn(Me)
-        Call GETDATA(True)
+        Call GetData(True)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
-        Call GETDATA(True)
+        Call GetData(True)
         TxtFind.ClearSearch()
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Call GETDATA()
+            Call GetData()
         End If
     End Sub
 End Class

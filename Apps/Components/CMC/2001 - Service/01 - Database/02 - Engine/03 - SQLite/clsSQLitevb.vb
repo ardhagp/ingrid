@@ -159,7 +159,7 @@ Namespace Database.Engine
                         fields.Username = .GetString(1)
                         fields.Password = CMCv.Security.Decrypt.AES(.GetString(2))
                         fields.Port = CType(.GetValue(3), Integer)
-                        fields.DataStorage = .GetString(4)
+                        fields.DatabaseName = .GetString(4)
                         fields.FileStorage = .GetString(5)
                         fields.DatabaseEngine = .GetString(6)
                     Else
@@ -167,7 +167,7 @@ Namespace Database.Engine
                         fields.Username = String.Empty
                         fields.Password = String.Empty
                         fields.Port = 0
-                        fields.DataStorage = String.Empty
+                        fields.DatabaseName = String.Empty
                         fields.FileStorage = String.Empty
                         fields.DatabaseEngine = String.Empty
                     End If

@@ -14,7 +14,7 @@ Public Class DARD
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub GETChart()
-        Commands.DARD.View.GETDailyStatistic(chrtDaily)
+        Commands.DARD.View.GetDailyStatistic(varDatabaseName, chrtDaily)
         chrtDaily.Series("Series1").ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
         chrtDaily.Series("Series1").IsValueShownAsLabel = True
         chrtDaily.BorderlineWidth = 2
@@ -23,13 +23,13 @@ Public Class DARD
         chrtDaily.Series("Series1").BorderColor = Color.Red
         chrtDaily.Series("Series1").BorderWidth = 5
 
-        Commands.DARD.View.GETYearlyStatistic(chrtYearly)
+        Commands.DARD.View.GetYearlyStatistic(varDatabaseName, chrtYearly)
         chrtYearly.Series("Series1").ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column
         chrtYearly.Series("Series1").IsValueShownAsLabel = True
         chrtYearly.BorderColor = Color.MidnightBlue
         chrtYearly.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.All
 
-        Commands.DARD.View.GETMonthlyStatistic(chrtMonthly)
+        Commands.DARD.View.GetMonthlyStatistic(varDatabaseName, chrtMonthly)
         chrtMonthly.Series("Series1").ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column
         chrtMonthly.Series("Series1").IsValueShownAsLabel = True
         chrtMonthly.BorderColor = Color.MidnightBlue

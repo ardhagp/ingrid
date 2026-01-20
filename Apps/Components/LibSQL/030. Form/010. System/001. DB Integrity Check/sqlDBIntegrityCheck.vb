@@ -19,15 +19,15 @@ Namespace Commands.DBIC
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsCompanyExist(ByVal DatabaseEngine As String) As Boolean
+        Public Shared Function IsCompanyExist(databasename As String, databaseengine As String) As Boolean
             Dim V_IsExist As Integer
 
-            If DatabaseEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(0).Query = String.Format("select count(c.company_id) as [company_count] from dbo.[[man]]company] as c")
-                V_IsExist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
+            If databaseengine = "MSSQL" Then
+                V_DBR_MSSQL2008(0).Query = String.Format("select count(c.company_id) as [company_count] from dbo.man_company as c")
+                V_IsExist = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Integer)
             Else
                 V_DBR_MYSQL(0).Query = String.Format("select count(c.company_id) as `company_count` from man_company as c")
-                V_IsExist = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query), Integer)
+                V_IsExist = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(0).Query), Integer)
             End If
 
 
@@ -39,16 +39,16 @@ Namespace Commands.DBIC
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsDepartmentExist(ByVal DBEngine As String) As Boolean
+        Public Shared Function IsDepartmentExist(databasename As String, dbengine As String) As Boolean
             Dim V_IsExist As Integer
 
             'TODO: Create MYSQL version
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(0).Query = String.Format("select count(d.department_id) as [department_count] from dbo.[[man]]department] as d")
-                V_IsExist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
-            ElseIf DBEngine = "MYSQL" Then
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(0).Query = String.Format("select count(d.department_id) as [department_count] from dbo.man_department as d")
+                V_IsExist = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Integer)
+            ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(0).Query = String.Format("select count(d.department_id) as `department_count` from man_department as d")
-                V_IsExist = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query), Integer)
+                V_IsExist = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(0).Query), Integer)
             End If
 
 

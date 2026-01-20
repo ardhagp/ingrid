@@ -11,11 +11,11 @@ Public Class EPLS
 #Region "Subs Collections"
 
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        Commands.EPLS.View.DISPLAYDATA(varDatabaseEngine, DgnEPLS, SLFStatus, TxtFind, ForceRefresh)
+    Private Sub GetData(Optional forcerefresh As Boolean = False)
+        Commands.EPLS.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnEPLS, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
-    Private Sub GETTableID()
+    Private Sub GetTableID()
         varFormAttributes.RowID = "-1"
 
         If DgnEPLS.RowCount > 0 Then
@@ -27,7 +27,7 @@ Public Class EPLS
 #Region "Menu Strip Functions"
     <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles C_MMSMenu.EventDataAddNew
-        If Not (varUserAccess.User("EPLS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+        If Not (varUserAccess.User(varDatabaseName, "EPLS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
@@ -41,12 +41,12 @@ Public Class EPLS
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles C_MMSMenu.EventDataEdit
-        If Not (varUserAccess.User("EPLS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+        If Not (varUserAccess.User(varDatabaseName, "EPLS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        Call GETTableID()
+        Call GetTableID()
         varFormAttributes.IsNew = False
         If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -59,7 +59,7 @@ Public Class EPLS
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles C_MMSMenu.EventDataDelete
-        If Not (varUserAccess.User("EPLS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+        If Not (varUserAccess.User(varDatabaseName, "EPLS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
@@ -69,8 +69,8 @@ Public Class EPLS
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnEPLS.CurrentRow.Cells("employee_fullname").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.EPLS.View.DELETEDATA(varDatabaseEngine, varFormAttributes.RowID)) Then
-                    Call GETDATA(True)
+                If (Commands.EPLS.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)) Then
+                    Call GetData(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Delete failed"
@@ -97,27 +97,27 @@ Public Class EPLS
     <SupportedOSPlatform("windows")>
     Private Sub EPLS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         C_MMSMenu.LoadIn(Me)
-        C_MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
-        Call GETDATA()
+        C_MMSMenu.ShowMenuData(UI.View.MenuStrip.ShowItem.Yes)
+        Call GetData()
         TxtFind.ClearSearch()
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Call GETDATA()
+            Call GetData()
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub F_EPLS_Editor_RecordSaved() Handles F_EPLS_Editor.RecordSaved
-        Call GETDATA()
+        Call GetData()
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
-        Call GETDATA(True)
+        Call GetData(True)
         TxtFind.ClearSearch()
     End Sub
 

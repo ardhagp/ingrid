@@ -34,7 +34,7 @@ Public Class DAR
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub FillEmployee()
-        Commands.DAR.View.FillEmployee(varDatabaseEngine, CboBy)
+        Commands.DAR.View.FillEmployee(varDatabaseName, varDatabaseEngine, CboBy)
     End Sub
 
     ''' <summary>
@@ -42,7 +42,7 @@ Public Class DAR
     ''' </summary>
     ''' <param name="ForceRefresh">Boolean</param>
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
+    Private Sub GetData(Optional forcerefresh As Boolean = False)
         'Menyatakan bahwa datagrid belum selesai memuat data
         V_LoadDGDateFinished = False
         V_LoadDGContentFinished = False
@@ -55,7 +55,7 @@ Public Class DAR
         V_ShowAttachment = V_MMSMenu.Checked("EventToolsViewAttachment")
 
         'Mengisi Datagrid dengan data dari database    
-        V_SQL.DisplayMainGrid(varDatabaseEngine, TxtFind, DgnDARDate, SLFStatus, SttActivity, ChkEnableDateFilter, DtpMonth, ChkEnableByFilter, CboBy, ForceRefresh)
+        V_SQL.DisplayMainGrid(varDatabaseName, varDatabaseEngine, TxtFind, DgnDARDate, SLFStatus, SttActivity, ChkEnableDateFilter, DtpMonth, ChkEnableByFilter, CboBy, forcerefresh)
 
         'Mengisi Datagrid Activity dengan data dari database
         Call OnDgnDateChange()
@@ -82,7 +82,7 @@ Public Class DAR
         V_MMSMenu.Visible("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
 
         'Mengambil nilai dari database usersettings, jika ya maka tampilkan Menu Show Attachment
-        If (Commands.DAR.View.CheckSettings(varDatabaseEngine, varUserAttributes.UID, "viewphototab")) Then
+        If (Commands.DAR.View.CheckSettings(varDatabaseName, varDatabaseEngine, varUserAttributes.UID, "viewphototab")) Then
             V_MMSMenu.Checked("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
             SpcContent.Panel2Collapsed = False
             Call LoadAttachment(V_ShowAttachment)
@@ -117,7 +117,7 @@ Public Class DAR
             V_CurrentDate = Now.AddYears(2)
             V_CurrentDate_S = "9999-12-31"
         End If
-        V_SQL.DisplaySecondGrid(varDatabaseEngine, V_CurrentDate_S, DgnDARActivity, SttActivity, TxtFind, V_ShowAttachment, DgnPhoto, DgnFile)
+        V_SQL.DisplaySecondGrid(varDatabaseName, varDatabaseEngine, V_CurrentDate_S, DgnDARActivity, SttActivity, TxtFind, V_ShowAttachment, DgnPhoto, DgnFile)
 
         Call PhotoPlugin(V_ShowAttachment)
     End Sub
@@ -136,8 +136,8 @@ Public Class DAR
     ''' Menampilkan foto pada picture box
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Public Sub PhotoPlugin(ByVal IsTabAttachmentVisible As Boolean)
-        If (IsTabAttachmentVisible) Then
+    Public Sub PhotoPlugin(ByVal istabattachmentvisible As Boolean)
+        If (istabattachmentvisible) Then
             If DgnPhoto.RowCount = 0 Then
                 PctbxActivityPhoto.Image = Nothing
                 BtnCopyPhoto.Enabled = False
@@ -159,8 +159,8 @@ Public Class DAR
     ''' Get photo by option
     ''' </summary>
     ''' <param name="IsTabOpen"></param>
-    Public Sub GETPHOTOS(Optional ByVal IsTabOpen As Boolean = False)
-        If (IsTabOpen) AndAlso (DgnDARActivity.RowCount <> 0) Then
+    Public Sub GetPhotos(Optional istabopen As Boolean = False)
+        If (istabopen) AndAlso (DgnDARActivity.RowCount <> 0) Then
             'waiting some code
         End If
     End Sub
@@ -168,7 +168,7 @@ Public Class DAR
     ''' <summary>
     ''' Get row ID on record clicked
     ''' </summary>
-    Private Sub GETTableID()
+    Private Sub GetTableID()
         varFormAttributes.RowID = "-1"
 
         If DgnDARActivity.RowCount > 0 Then
@@ -196,15 +196,15 @@ Public Class DAR
     ''' Load attachment
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Private Sub LoadAttachment(ByVal IsTabAttachmentVisible As Boolean)
-        If (IsTabAttachmentVisible) Then
+    Private Sub LoadAttachment(ByVal istabattachmentvisible As Boolean)
+        If (istabattachmentvisible) Then
             DblBuffer(DgnPhoto)
-            Commands.DAR.View.DisplayPhotoGrid(varDatabaseEngine, V_ContentID, DgnPhoto)
+            Commands.DAR.View.DisplayPhotoGrid(varDatabaseName, varDatabaseEngine, V_ContentID, DgnPhoto)
 
             Call PhotoPlugin(V_ShowAttachment)
 
             DblBuffer(DgnFile)
-            Commands.DAR.View.DisplayFileGrid(varDatabaseEngine, V_ContentID, DgnFile)
+            Commands.DAR.View.DisplayFileGrid(varDatabaseName, varDatabaseEngine, V_ContentID, DgnFile)
         End If
     End Sub
 #End Region
@@ -215,14 +215,14 @@ Public Class DAR
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles V_MMSMenu.EventDataAddNew
-        If Not (varUserAccess.User("DAR", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+        If Not (varUserAccess.User(varDatabaseName, "DAR", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
         varFormAttributes.IsNew = True
         varFormAttributes.RowID = "-1"
         F_DAR_Editor = New DAR_Editor
-        DISPLAY(F_DAR_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new activity", True)
+        Display(F_DAR_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new activity", True)
         Mainframe_n_6.Ts_status.Text = String.Empty
     End Sub
 
@@ -231,12 +231,12 @@ Public Class DAR
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Public Sub EventDataEdit() Handles V_MMSMenu.EventDataEdit
-        If Not (varUserAccess.User("DAR", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+        If Not (varUserAccess.User(varDatabaseName, "DAR", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
-        Call GETTableID()
+        Call GetTableID()
         varFormAttributes.IsNew = False
 
         If varFormAttributes.RowID Is "-1" Then
@@ -253,17 +253,17 @@ Public Class DAR
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles V_MMSMenu.EventDataDelete
-        If Not (varUserAccess.User("DAR", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+        If Not (varUserAccess.User(varDatabaseName, "DAR", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
-        Call GETTableID()
+        Call GetTableID()
         If varFormAttributes.RowID Is "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             varFormAttributes.IsNew = False
             If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.DAR.View.DELETEData(varDatabaseEngine, varFormAttributes.RowID.ToString)) Then
+                If (Commands.DAR.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID.ToString)) Then
                     Call GETDATA(True)
                     Call FillEmployee()
                     Mainframe_n_6.Ts_status.Text = "Success"
@@ -332,14 +332,14 @@ Public Class DAR
     <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Call GETDATA(False)
+            Call GetData(False)
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub DtpMonth_KeyDown(sender As Object, e As KeyEventArgs) Handles DtpMonth.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Call GETDATA(False)
+            Call GetData(False)
         End If
     End Sub
 
@@ -369,9 +369,9 @@ Public Class DAR
     <SupportedOSPlatform("windows")>
     Private Sub DAR_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If (V_MMSMenu.Checked("EventToolsViewAttachment")) Then
-            Commands.DAR.View.SaveSettings(varDatabaseEngine, varUserAttributes.UID, "ViewPhotoTab", "True")
+            Commands.DAR.View.SaveSettings(varDatabaseName, varDatabaseEngine, varUserAttributes.UID, "ViewPhotoTab", "True")
         Else
-            Commands.DAR.View.SaveSettings(varDatabaseEngine, varUserAttributes.UID, "ViewPhotoTab", "False")
+            Commands.DAR.View.SaveSettings(varDatabaseName, varDatabaseEngine, varUserAttributes.UID, "ViewPhotoTab", "False")
         End If
     End Sub
 
@@ -443,7 +443,7 @@ Public Class DAR
 
         If TypeOf sendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
             V_DAR_SinglePhotoViewer = New DAR_SinglePhotoViewer(PctbxActivityPhoto.Image)
-            DISPLAY(V_DAR_SinglePhotoViewer, IMAGEDB.Main.ImageLibrary.PCTPRV_ICON, "Photo Viewer", "Preview your photo", True)
+            Display(V_DAR_SinglePhotoViewer, IMAGEDB.Main.ImageLibrary.PCTPRV_ICON, "Photo Viewer", "Preview your photo", True)
             Mainframe_n_6.Ts_status.Text = String.Empty
         End If
     End Sub
@@ -477,12 +477,12 @@ Public Class DAR
                 V_FullPath = V_DirTempLocation & V_FileName & ".pdf"
 
                 If (Not System.IO.File.Exists(V_FullPath)) Then
-                    _Bytes = CType(Commands.DAR.View.GETPDFFile(varDatabaseEngine, V_FileName), Byte())
+                    _Bytes = CType(Commands.DAR.View.GetPdfFile(varDatabaseName, varDatabaseEngine, V_FileName), Byte())
                     System.IO.File.WriteAllBytes(V_FullPath, _Bytes)
                 End If
 
                 V_DAR_SinglePDFViewer = New DAR_SinglePDFViewer(V_FullPath, V_FileName, True)
-                DISPLAY(V_DAR_SinglePDFViewer, IMAGEDB.Main.ImageLibrary.PDFPRV_ICON, "PDF Viewer", "Preview your file", True)
+                Display(V_DAR_SinglePDFViewer, IMAGEDB.Main.ImageLibrary.PDFPRV_ICON, "PDF Viewer", "Preview your file", True)
                 Mainframe_n_6.Ts_status.Text = String.Empty
 
                 _Bytes = Nothing
@@ -497,25 +497,25 @@ Public Class DAR
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnCopyPhoto_Click(sender As Object, e As EventArgs) Handles BtnCopyPhoto.Click
-        Dim CopyPicture As Image
+        Dim varCopyPicture As Image
 
         If PctbxActivityPhoto.Image Is Nothing Then
             Decision("No photo selected.", "Alert", CMCv.frmDialogBox.MessageIcon.Alert, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If varTextmark = String.Empty Then
-                CopyPicture = PctbxActivityPhoto.Image
+                varCopyPicture = PctbxActivityPhoto.Image
             Else
-                CopyPicture = CMCv.ImageEditor.Proccessor.Editor.Watermarker(PctbxActivityPhoto.Image, varTextmark)
+                varCopyPicture = CMCv.ImageEditor.Proccessor.Editor.WaterMarker(PctbxActivityPhoto.Image, varTextmark)
             End If
-            Clipboard.SetImage(CopyPicture)
+            Clipboard.SetImage(varCopyPicture)
         End If
-        CopyPicture = Nothing
+        varCopyPicture = Nothing
         'CopyPicture.Dispose()
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-        Dim SavePicture As Image
+        Dim varSavePicture As Image
 
         If PctbxActivityPhoto.Image Is Nothing Then
             Decision("No photo selected.", "Alert", CMCv.frmDialogBox.MessageIcon.Alert, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -526,14 +526,14 @@ Public Class DAR
 
             If SfdPhoto.ShowDialog = DialogResult.OK Then
                 If varTextmark = String.Empty Then
-                    SavePicture = PctbxActivityPhoto.Image
+                    varSavePicture = PctbxActivityPhoto.Image
                 Else
-                    SavePicture = CMCv.ImageEditor.Proccessor.Editor.Watermarker(PctbxActivityPhoto.Image, varTextmark)
+                    varSavePicture = CMCv.ImageEditor.Proccessor.Editor.WaterMarker(PctbxActivityPhoto.Image, varTextmark)
                 End If
-                SavePicture.Save(SfdPhoto.FileName, System.Drawing.Imaging.ImageFormat.Jpeg)
+                varSavePicture.Save(SfdPhoto.FileName, System.Drawing.Imaging.ImageFormat.Jpeg)
             End If
         End If
-        SavePicture = Nothing
+        varSavePicture = Nothing
         'SavePicture.Dispose()
     End Sub
 
@@ -542,8 +542,8 @@ Public Class DAR
         If PctbxActivityPhoto.Image Is Nothing Then
             Decision("No photo selected.", "Alert", CMCv.frmDialogBox.MessageIcon.Alert, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            If Not (Commands.DAR.View.IsLike(varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varUserAttributes.EID)) Then
-                If (Commands.DAR.View.LikePhoto(varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varUserAttributes.EID, DgnDARActivity.CurrentRow.Cells("employee_id").Value.ToString)) Then
+            If Not (Commands.DAR.View.IsLike(varDatabaseName, varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varUserAttributes.EID)) Then
+                If (Commands.DAR.View.LikePhoto(varDatabaseName, varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varUserAttributes.EID, DgnDARActivity.CurrentRow.Cells("employee_id").Value.ToString)) Then
                     Mainframe_n_6.Ts_status.Text = DgnPhoto.CurrentRow.Cells("photo_employee_fullname").Value.ToString & " would like to say thank you for your appreciation."
                 Else
                     SLFStatus.Items(0).Text = ""
@@ -556,7 +556,7 @@ Public Class DAR
 #Region "WithEvents"
     <SupportedOSPlatform("windows")>
     Private Sub F_DAR_Editor_RecordSaved() Handles F_DAR_Editor.RecordSaved
-        Call GETDATA(True)
+        Call GetData(True)
         Call FillEmployee()
     End Sub
 
@@ -566,12 +566,12 @@ Public Class DAR
 
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventReportShow() Handles V_MMSMenu.EventReportShow
-        If Not (varUserAccess.User("DAR", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Report)) Then
+        If Not (varUserAccess.User(varDatabaseName, "DAR", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Report)) Then
             Decision("You are not authorized to : Generate Report", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
         F_DAR_Reports = New DAR_RPTFilter
-        DISPLAY(F_DAR_Reports, IMAGEDB.Main.ImageLibrary.SEARCH_ICON, "Report Filter", "", True,)
+        Display(F_DAR_Reports, IMAGEDB.Main.ImageLibrary.SEARCH_ICON, "Report Filter", "", True,)
     End Sub
 #End Region
 

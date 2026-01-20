@@ -4,8 +4,8 @@ Public Class MMGR
     Private V_SQL As New Commands.MMGR.View
 
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
-        Commands.MMGR.View.DISPLAYDATA(varDatabaseEngine, DgnMMGR, SLFStatus, TxtFind, ForceRefresh)
+    Private Sub GetData(Optional forcerefresh As Boolean = False)
+        Commands.MMGR.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnMMGR, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     <SupportedOSPlatform("windows")>

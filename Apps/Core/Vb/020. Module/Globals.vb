@@ -21,6 +21,7 @@ Module Globals
     Public FolderHandler As New CMCv.OperatingSystem.Folder
     'Public SecurityEngine As New Security.Engine
     Public varDatabaseEngine As String
+    Public varDatabaseName As String
     Public V_IMG_COMPRESS As New CMCv.ImageEditor.Proccessor.Compress
     Public V_IMG_EDITOR As New CMCv.ImageEditor.Proccessor.Editor
     Public varUserAccess As New Application.Access

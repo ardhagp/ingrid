@@ -7,57 +7,57 @@ Namespace Commands.CCIN
         ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DISPLAYDATA(ByVal DBEngine As String, ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
-            Dim V_Where As String = "where "
+        Public Shared Sub DisplayData(databasename As String, dbengine As String, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
+            Dim varWhere As String = "where "
 
-            If (Find.XOSQLText = String.Empty) OrElse (ForceRefresh) Then
-                V_Where = String.Format("")
+            If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
+                varWhere = String.Format("")
             Else
-                V_Where += String.Format(" (c.company_code ='{0}') or (c.company_name like '%{0}%') or (c.company_searchterm2 like '%{0}%') or (c.company_searchterm1 like '%{0}%') or (c.company_description " &
-                                        "like '%{0}%')", Find.XOSQLText)
+                varWhere += String.Format(" (c.company_code ='{0}') or (c.company_name like '%{0}%') or (c.company_searchterm2 like '%{0}%') or (c.company_searchterm1 like '%{0}%') or (c.company_description " &
+                                        "like '%{0}%')", find.XOSQLText)
             End If
 
-            V_DBR_MSSQL2008(0).Query = String.Format("SELECT c.company_id, c.company_code, c.company_name, c.company_searchterm2, c.company_searchterm1, c.company_description FROM dbo.[[man]]company] c {0} " &
-                                                    "ORDER BY C.company_code", V_Where)
+            V_DBR_MSSQL2008(0).Query = String.Format("SELECT c.company_id, c.company_code, c.company_name, c.company_searchterm2, c.company_searchterm1, c.company_description FROM dbo.man_company c {0} " &
+                                                    "ORDER BY C.company_code", varWhere)
 
-            V_DBR_MSSQL2008(0).DataGrid = DataGrid
-            V_DBR_MSSQL2008(0).StatusBar = StatusBar
-            V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(0), "TCompany")
+            V_DBR_MSSQL2008(0).DataGrid = datagrid
+            V_DBR_MSSQL2008(0).StatusBar = statusbar
+            V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TCompany")
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DELETEDATA(ByVal DBEngine As String, ByVal RowID As String) As Boolean
-            Dim V_Success As Boolean
+        Public Shared Function DeleteData(databasename As String, dbengine As String, rowid As String) As Boolean
+            Dim varSuccess As Boolean
             Try
-                V_DBR_MSSQL2008(0).Query = String.Format("delete from dbo.[[man]]company] where company_id='{0}'", RowID)
-                V_DBE_MSSQL2008.PUSHDATA(V_DBR_MSSQL2008(0).Query)
-                V_Success = True
+                V_DBR_MSSQL2008(0).Query = String.Format("delete from dbo.man_company where company_id='{0}'", rowid)
+                V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(0).Query)
+                varSuccess = True
             Catch ex As Exception
-                V_Success = False
+                varSuccess = False
             End Try
-            Return V_Success
+            Return varSuccess
         End Function
 
     End Class
 
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsDuplicate(ByVal DBEngine As String, ByVal Code As String, Optional ByVal RowID As String = "-1") As Boolean
-            Dim V_IsDuplicate As Integer
-            Dim V_Where As String = "where "
+        Public Shared Function IsDuplicate(databasename As String, dbengine As String, code As String, Optional rowid As String = "-1") As Boolean
+            Dim varIsDuplicate As Integer
+            Dim varWhere As String = "where "
 
-            If RowID = "-1" Then
-                V_Where += String.Format(" c.company_code = '{0}'", Code)
+            If rowid = "-1" Then
+                varWhere += String.Format(" c.company_code = '{0}'", code)
             Else
-                V_Where += String.Format(" c.company_code = '{0}' and c.company_id <> '{1}'", Code, RowID)
+                varWhere += String.Format(" c.company_code = '{0}' and c.company_id <> '{1}'", code, rowid)
             End If
 
-            V_DBR_MSSQL2008(1).Query = String.Format("select count(c.company_id) as [isduplicate] from dbo.[[man]]company] c {0}", V_Where)
+            V_DBR_MSSQL2008(1).Query = String.Format("select count(c.company_id) as [isduplicate] from dbo.man_company c {0}", varWhere)
 
 
-            V_IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
+            varIsDuplicate = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Integer)
 
-            If V_IsDuplicate = 0 Then
+            If varIsDuplicate = 0 Then
                 Return False
             Else
                 Return True
@@ -65,65 +65,65 @@ Namespace Commands.CCIN
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PUSHData(ByVal DBEngine As String, ByVal CompanyCode As String, ByVal CompanyName As String, ByVal SearchTerm1 As String, ByVal SearchTerm2 As String, ByVal Description As String, Optional ByVal RowID As String = "-1") As Boolean
-            Dim V_Success As Boolean
+        Public Shared Function PushData(databasename As String, dbengine As String, companycode As String, companyname As String, searchterm1 As String, searchterm2 As String, description As String, Optional rowid As String = "-1") As Boolean
+            Dim varSuccess As Boolean
 
             Try
-                If RowID = "-1" Then
-                    Dim Hash As String = CMCv.Security.Encrypt.MD5()
-                    V_DBR_MSSQL2008(1).Query = String.Format("insert into dbo.[[man]]company](company_id,company_code,company_name,company_searchterm1,company_searchterm2,company_description) " &
-                                                            "values('{0}', '{1}','{2}','{3}','{4}','{5}')", Hash, CompanyCode, CompanyName, SearchTerm1, SearchTerm2, Description)
+                If rowid = "-1" Then
+                    Dim varHash As String = CMCv.Security.Encrypt.MD5()
+                    V_DBR_MSSQL2008(1).Query = String.Format("insert into dbo.man_company(company_id,company_code,company_name,company_searchterm1,company_searchterm2,company_description) " &
+                                                            "values('{0}', '{1}','{2}','{3}','{4}','{5}')", varHash, companycode, companyname, searchterm1, searchterm2, description)
                 Else
-                    V_DBR_MSSQL2008(1).Query = String.Format("update dbo.[[man]]company] set company_code='{0}',company_name='{1}',company_searchterm1='{2}',company_searchterm2='{3}',company_description='{4}' " &
-                                                            "where company_id='{5}'", CompanyCode, CompanyName, SearchTerm1, SearchTerm2, Description, RowID)
+                    V_DBR_MSSQL2008(1).Query = String.Format("update dbo.man_company set company_code='{0}',company_name='{1}',company_searchterm1='{2}',company_searchterm2='{3}',company_description='{4}' " &
+                                                            "where company_id='{5}'", companycode, companyname, searchterm1, searchterm2, description, rowid)
                 End If
-                V_DBE_MSSQL2008.PUSHDATA(V_DBR_MSSQL2008(1).Query)
-                V_Success = True
+                V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                varSuccess = True
             Catch ex As Exception
-                V_Success = False
+                varSuccess = False
             End Try
 
-            Return V_Success
+            Return varSuccess
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETCompanyCode(ByVal DBEngine As String, ByVal RowID As String) As String
-            Dim _Code As String
-            V_DBR_MSSQL2008(0).Query = String.Format("select c.company_code from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
-            _Code = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
-            Return _Code
+        Public Shared Function GetCompanyCode(databasename As String, dbengine As String, ByVal rowid As String) As String
+            Dim varCode As String
+            V_DBR_MSSQL2008(0).Query = String.Format("select c.company_code from dbo.man_company c where c.company_id = '{0}'", rowid)
+            varCode = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query).ToString
+            Return varCode
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETCompanyName(ByVal DBEngine As String, ByVal RowID As String) As String
-            Dim _Name As String
-            V_DBR_MSSQL2008(0).Query = String.Format("select c.company_name from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
-            _Name = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
-            Return _Name
+        Public Shared Function GetCompanyName(databasename As String, dbengine As String, rowid As String) As String
+            Dim varName As String
+            V_DBR_MSSQL2008(0).Query = String.Format("select c.company_name from dbo.man_company c where c.company_id = '{0}'", rowid)
+            varName = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query).ToString
+            Return varName
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETSearchTerm1(ByVal DBEngine As String, ByVal RowID As String) As String
-            Dim _SearchTerm As String
-            V_DBR_MSSQL2008(0).Query = String.Format("select c.company_searchterm1 from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
-            _SearchTerm = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
-            Return _SearchTerm
+        Public Shared Function GetSearchTerm1(databasename As String, dbengine As String, rowid As String) As String
+            Dim varSearchTerm As String
+            V_DBR_MSSQL2008(0).Query = String.Format("select c.company_searchterm1 from dbo.man_company c where c.company_id = '{0}'", rowid)
+            varSearchTerm = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query).ToString
+            Return varSearchTerm
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETSearchTerm2(ByVal DBEngine As String, ByVal RowID As String) As String
-            Dim _SearchTerm As String
-            V_DBR_MSSQL2008(0).Query = String.Format("select c.company_searchterm2 from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
-            _SearchTerm = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
-            Return _SearchTerm
+        Public Shared Function GetSearchTerm2(databasename As String, dbengine As String, rowid As String) As String
+            Dim varSearchTerm As String
+            V_DBR_MSSQL2008(0).Query = String.Format("select c.company_searchterm2 from dbo.man_company c where c.company_id = '{0}'", rowid)
+            varSearchTerm = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query).ToString
+            Return varSearchTerm
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETDescription(ByVal DBEngine As String, ByVal RowID As String) As String
-            Dim _Desciption As String
-            V_DBR_MSSQL2008(0).Query = String.Format("select c.company_description from dbo.[[man]]company] c where c.company_id = '{0}'", RowID)
-            _Desciption = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
-            Return _Desciption
+        Public Shared Function GetDescription(databasename As String, dbengine As String, rowid As String) As String
+            Dim varDesciption As String
+            V_DBR_MSSQL2008(0).Query = String.Format("select c.company_description from dbo.man_company c where c.company_id = '{0}'", rowid)
+            varDesciption = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query).ToString
+            Return varDesciption
         End Function
     End Class
 End Namespace

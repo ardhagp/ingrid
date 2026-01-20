@@ -9,8 +9,8 @@ Public Class ACBK
 
 #Region "Sub Collections"
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA()
-        Commands.ACBK.View.DISPLAYDATA(DgnACBK, SLFStatus, TxtFind, True)
+    Private Sub GetData()
+        Commands.ACBK.View.DisplayData(varDatabaseName, DgnACBK, SLFStatus, TxtFind, True)
     End Sub
 #End Region
 

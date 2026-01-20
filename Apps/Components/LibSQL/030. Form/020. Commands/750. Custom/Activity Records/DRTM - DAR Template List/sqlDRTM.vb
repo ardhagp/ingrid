@@ -4,75 +4,75 @@ Imports CMCv
 
 Namespace Commands.DRTM
     Public Class View
-        Public V_IsEmpFilter As Boolean
-        Public V_EID As String
-        Public V_ContentID As String
+        Public varIsEmpFilter As Boolean
+        Public varEID As String
+        Public varContentID As String
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayGrid(ByVal DBEngine As String, ByVal Find As txt, ByVal DateGrid As dgn, ByVal ContentStatusBar As stt, Optional ByVal ForceRefresh As Boolean = False)
+        Public Shared Sub DisplayGrid(databasename As String, dbengine As String, find As txt, dategrid As dgn, contentstatusbar As stt, Optional forcerefresh As Boolean = False)
             Try
-                Dim V_Where As String = String.Format("where ")
+                Dim varWhere As String = String.Format("where ")
 
-                If DBEngine = "MSSQL" Then
-                    If (Find.XOSQLText = String.Empty) AndAlso (ForceRefresh = True) Then
-                        V_Where += "tpl.template_module = (select mdl.module_id from dbo.[[sys]]module] mdl where mdl.module_code = 'DAR') "
+                If dbengine = "MSSQL" Then
+                    If (find.XOSQLText = String.Empty) AndAlso (forcerefresh = True) Then
+                        varWhere += "tpl.template_module = (select mdl.module_id from dbo.sys_module mdl where mdl.module_code = 'DAR') "
                     Else
-                        V_Where += "tpl.template_module = (select mdl.module_id from dbo.[[sys]]module] mdl where mdl.module_code = 'DAR') and "
+                        varWhere += "tpl.template_module = (select mdl.module_id from dbo.sys_module mdl where mdl.module_code = 'DAR') and "
 
-                        Dim V_ContainText() As String = Find.XOSQLText.Split("||")
-                        Dim V_Repeater As Integer = 0
+                        Dim varContainText() As String = find.XOSQLText.Split("||")
+                        Dim varRepeater As Integer = 0
 
-                        V_Where += String.Format("(")
+                        varWhere += String.Format("(")
 
-                        For Each V_Text As String In V_ContainText
-                            If V_Text <> "" Then
-                                If V_Repeater = 0 Then
-                                    V_Where += String.Format("tpl.template_text1 like '%{0}%'", V_Text)
+                        For Each varText As String In varContainText
+                            If varText <> "" Then
+                                If varRepeater = 0 Then
+                                    varWhere.Append(CChar($"tpl.template_text1 LIKE '%{varText}%'"))
                                 Else
-                                    V_Where += String.Format(" and tpl.template_text1 like '%{0}%'", V_Text)
+                                    varWhere.Append(CChar($" and tpl.template_text1 like '%{varText}%'"))
                                 End If
                             End If
-                            V_Repeater += 1
+                            varRepeater += 1
                         Next
 
-                        V_Where += String.Format(")")
+                        varWhere += String.Format(")")
                     End If
 
-                    V_DBR_MSSQL2008(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from dbo.[[doc]]template] tpl {0} order by tpl.template_title", V_Where)
+                    V_DBR_MSSQL2008(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from dbo.doc_template tpl {0} order by tpl.template_title", varWhere)
 
-                    V_DBR_MSSQL2008(0).DataGrid = DateGrid
-                    V_DBR_MSSQL2008(0).StatusBar = ContentStatusBar
-                    V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(0), "TDARTemplate")
-                ElseIf DBEngine = "MYSQL" Then
-                    If (Find.XOSQLText = String.Empty) AndAlso (ForceRefresh = True) Then
-                        V_Where += "tpl.template_module = (select mdl.module_id from sys_module mdl where mdl.module_code = 'DAR') "
+                    V_DBR_MSSQL2008(0).DataGrid = dategrid
+                    V_DBR_MSSQL2008(0).StatusBar = contentstatusbar
+                    V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TDARTemplate")
+                ElseIf dbengine = "MYSQL" Then
+                    If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
+                        varWhere += "tpl.template_module = (select mdl.module_id from sys_module mdl where mdl.module_code = 'DAR') "
                     Else
-                        V_Where += "tpl.template_module = (select mdl.module_id from sys_module mdl where mdl.module_code = 'DAR') and "
+                        varWhere += "tpl.template_module = (select mdl.module_id from sys_module mdl where mdl.module_code = 'DAR') and "
 
-                        Dim V_ContainText() As String = Find.XOSQLText.Split("||")
-                        Dim V_Repeater As Integer = 0
+                        Dim varContainText() As String = find.XOSQLText.Split("||")
+                        Dim varRepeater As Integer = 0
 
-                        V_Where += String.Format("(")
+                        varWhere.Append(CChar("("))
 
-                        For Each V_Text As String In V_ContainText
-                            If V_Text <> "" Then
-                                If V_Repeater = 0 Then
-                                    V_Where += String.Format("tpl.template_text1 like '%{0}%'", V_Text)
+                        For Each varText As String In varContainText
+                            If varText <> "" Then
+                                If varRepeater = 0 Then
+                                    varWhere.Append(CChar($"tpl.template_text1 like '%{varText}%'"))
                                 Else
-                                    V_Where += String.Format(" and tpl.template_text1 like '%{0}%'", V_Text)
+                                    varWhere.Append(CChar($" and tpl.template_text1 like '%{varText}%'"))
                                 End If
                             End If
-                            V_Repeater += 1
+                            varRepeater += 1
                         Next
 
-                        V_Where += String.Format(")")
+                        varWhere.Append(CChar(")"))
                     End If
 
-                    V_DBR_MYSQL(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from doc_template tpl {0} order by tpl.template_title", V_Where)
+                    V_DBR_MYSQL(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from doc_template tpl {0} order by tpl.template_title", varWhere)
 
-                    V_DBR_MYSQL(0).DataGrid = DateGrid
-                    V_DBR_MYSQL(0).StatusBar = ContentStatusBar
-                    V_DBE_MYSQL.GETDATATABLE(V_DBR_MYSQL(0), "TDARTemplate")
+                    V_DBR_MYSQL(0).DataGrid = dategrid
+                    V_DBR_MYSQL(0).StatusBar = contentstatusbar
+                    V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TDARTemplate")
                 End If
             Catch ex As Exception
                 MsgBox(ex.ToString)

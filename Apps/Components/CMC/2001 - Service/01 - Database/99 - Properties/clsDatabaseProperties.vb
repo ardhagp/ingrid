@@ -7,7 +7,7 @@ Namespace Database.Properties
         Public Property Username As String
         Public Property Password As String
         Public Property Port As Integer
-        Public Property DataStorage As String
+        Public Property DatabaseName As String
         Public Property FileStorage As String
         Public Property IsConnected As Boolean
 

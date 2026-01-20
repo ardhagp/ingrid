@@ -14,7 +14,7 @@ Public Class REMS
         Call LoadMenu()
         TxtFind.ClearSearch()
 
-        Commands.REMS.View.DisplayGrid(DgnOnProgress, DgnDone, DgnVerified, SLFStatus)
+        Commands.REMS.View.DisplayGrid(varDatabaseName, DgnOnProgress, DgnDone, DgnVerified, SLFStatus)
     End Sub
 
     <SupportedOSPlatform("windows")>

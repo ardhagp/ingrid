@@ -11,11 +11,11 @@ Public Class UAC
 #Region "Subs Collections"
 
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        Commands.UAC.View.DisplayData(varDatabaseEngine, DgnUAC, SLFStatus, TxtFind, ForceRefresh)
+    Private Sub GetData(Optional ByVal ForceRefresh As Boolean = False)
+        Commands.UAC.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnUAC, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
-    Private Sub GETTableID()
+    Private Sub GetTableID()
         varFormAttributes.RowID = "-1"
 
         If DgnUAC.RowCount > 0 Then
@@ -30,7 +30,7 @@ Public Class UAC
     Private Sub EventDataAddNew() Handles V_MMSMenu.EventDataAddNew
         varFormAttributes.IsChangePasswordForm = False
 
-        If Not (varUserAccess.User("UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+        If Not (varUserAccess.User(varDatabaseName, "UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
@@ -46,7 +46,7 @@ Public Class UAC
     Private Sub EventDataEdit() Handles V_MMSMenu.EventDataEdit
         varFormAttributes.IsChangePasswordForm = False
 
-        If Not (varUserAccess.User("UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+        If Not (varUserAccess.User(varDatabaseName, "UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
@@ -65,7 +65,7 @@ Public Class UAC
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles V_MMSMenu.EventDataDelete
-        If Not (varUserAccess.User("UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+        If Not (varUserAccess.User(varDatabaseName, "UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
@@ -76,8 +76,8 @@ Public Class UAC
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.UAC.View.DELETEData(varDatabaseEngine, varFormAttributes.RowID)) Then
-                    Call GETDATA(True)
+                If (Commands.UAC.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)) Then
+                    Call GetData(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Delete failed"
@@ -89,7 +89,7 @@ Public Class UAC
     <SupportedOSPlatform("windows")>
     Private Sub EventDataRefresh() Handles V_MMSMenu.EventDataRefresh
         TxtFind.Clear()
-        Call GETDATA(True)
+        Call GetData(True)
     End Sub
 
     Private Sub EventDataClose() Handles V_MMSMenu.EventDataClose
@@ -106,26 +106,26 @@ Public Class UAC
         V_MMSMenu.LoadIn(Me)
         V_MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
         DgnUAC.XOGETNewColor()
-        Call GETDATA()
+        Call GetData()
         TxtFind.ClearSearch()
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Call GETDATA()
+            Call GetData()
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
-        Call GETDATA(True)
+        Call GetData(True)
         TxtFind.ClearSearch()
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub _UAC_Editor_RecordSaved() Handles V_UAC_Editor.RecordSaved
-        Call GETDATA()
+        Call GetData()
     End Sub
 End Class

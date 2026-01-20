@@ -20,11 +20,11 @@ Public Class CCIN
     ''' <param name="ForceRefresh">True/False</param>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
-        LibSQL.Commands.CCIN.View.DISPLAYDATA(varDatabaseEngine, DgnCCIN, SLFStatus, TxtFind, ForceRefresh)
+    Private Sub GetData(Optional forcerefresh As Boolean = False)
+        LibSQL.Commands.CCIN.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnCCIN, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
-    Private Sub GETTableID()
+    Private Sub GetTableID()
         If DgnCCIN.RowCount = 0 Then
             varFormAttributes.RowID = "-1"
         Else
@@ -65,8 +65,8 @@ Public Class CCIN
         Else
             varFormAttributes.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.CCIN.View.DELETEDATA(varDatabaseEngine, varFormAttributes.RowID)) Then
-                    Call GETDATA(True)
+                If (LibSQL.Commands.CCIN.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)) Then
+                    Call GetData(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Delete failed"
@@ -78,7 +78,7 @@ Public Class CCIN
     <SupportedOSPlatform("windows")>
     Private Sub EventDataRefresh() Handles _MMSMenu.EventDataRefresh
         TxtFind.Clear()
-        Call GETDATA(True)
+        Call GetData(True)
     End Sub
 
     Private Sub EventDataClose() Handles _MMSMenu.EventDataClose
@@ -94,8 +94,8 @@ Public Class CCIN
     <SupportedOSPlatform("windows")>
     Private Sub frmCompany_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _MMSMenu.LoadIn(Me)
-        _MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
-        Call GETDATA(True)
+        _MMSmenu.ShowMenuData(UI.View.MenuStrip.ShowItem.Yes)
+        Call GetData(True)
     End Sub
 #End Region
 
@@ -103,21 +103,21 @@ Public Class CCIN
     <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Call GETDATA()
+            Call GetData()
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
-        Call GETDATA(True)
+        Call GetData(True)
         TxtFind.ClearSearch()
     End Sub
 #End Region
 
     <SupportedOSPlatform("windows")>
     Private Sub _CCIN_Editor_RecordSaved() Handles V_CCIN_Editor.RecordSaved
-        Call GETDATA(True)
+        Call GetData(True)
     End Sub
 
 End Class

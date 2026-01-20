@@ -21,7 +21,7 @@ Namespace Database.Engine
         ''' Releases the resources used by this instance. When disposing 
         ''' is True, both managed and unmanaged resources can be cleaned up; otherwise only 
         ''' unmanaged resources should be released.
-        ''' </summary>
+        ''' </summary> 
         ''' <param name="disposing">
         ''' True to dispose managed resources such as the data adapter; False when called 
         ''' from the finalizer and only unmanaged cleanup should occur.
@@ -56,7 +56,7 @@ Namespace Database.Engine
         Public Function Open(ByVal fields As Properties.Fields, Optional ByVal splash As Form = Nothing) As Boolean
             Dim varSuccess As Boolean
             Try
-                varConnection(1) = New MySqlClient.MySqlConnection(varMySQL.Mysqlforcessl(fields.ServerAddress, fields.Port, fields.DataStorage, fields.Username, fields.Password))
+                varConnection(1) = New MySqlClient.MySqlConnection(varMySQL.Mysqlforcessl(fields.ServerAddress, fields.Port, fields.DatabaseName, fields.Username, fields.Password))
                 varConnection(1).Open()
                 varSuccess = True
             Catch ex As MySqlClient.MySqlException
@@ -87,19 +87,19 @@ Namespace Database.Engine
         ''' <summary>
         ''' Executes a SQL query and returns a single DataRow from the result set.
         ''' </summary>
+        ''' <param name="databasename">
+        ''' The target MySQL database name.
+        ''' </param>
         ''' <param name="query">
         ''' The SQL query to execute. The method automatically prepends the database 
         ''' selection (USE databasename) before running the query.
-        ''' </param>
-        ''' <param name="databasename">
-        ''' Optional. The target MySQL database name. Defaults to "defaultdb".
         ''' </param>
         ''' <returns>
         ''' A MySqlDataReader positioned at the first row of the result set. 
         ''' Returns Nothing if an exception occurs.
         ''' </returns>
         <SupportedOSPlatform("windows")>
-        Public Function GetDataRow(ByVal query As String, ByVal databasename As String) As MySqlClient.MySqlDataReader
+        Public Function GetDataRow(databasename As String, query As String) As MySqlClient.MySqlDataReader
             Dim varDataReader(1) As MySqlClient.MySqlDataReader
 
             Try
@@ -173,7 +173,7 @@ Namespace Database.Engine
         ''' Returns Nothing if an exception occurs.
         ''' </returns>
         <SupportedOSPlatform("windows")>
-        Public Function GetValue(ByVal query As String, ByVal databasename As String) As Object
+        Public Function GetValue(databasename As String, query As String) As Object
             Try
                 Dim varRowValue As Object
 
@@ -216,6 +216,10 @@ Namespace Database.Engine
         ''' <summary>
         ''' Executes a SQL query and returns the results in a DataSet.
         ''' </summary>
+        ''' <param name="databasename">
+        ''' The target MySQL database name. 
+        ''' The method automatically prepends a USE statement before executing the query.
+        ''' </param>
         ''' <param name="dbr">
         ''' A request object containing the SQL query to execute.
         ''' </param>
@@ -223,12 +227,8 @@ Namespace Database.Engine
         ''' The name of the DataTable inside the DataSet where the query results 
         ''' will be stored.
         ''' </param>
-        ''' <param name="databasename">
-        ''' Optional. The target MySQL database name. Defaults to "defaultdb". 
-        ''' The method automatically prepends a USE statement before executing the query.
-        ''' </param>
         <SupportedOSPlatform("windows")>
-        Public Function GetDataSet(ByVal dbr As Adapter.MySQL.Display.Request, ByVal tablename As String, ByVal databasename As String) As DataSet
+        Public Function GetDataSet(databasename As String, dbr As Adapter.MySQL.Display.Request, tablename As String) As DataSet
             Dim varDataAdapter(1) As MySqlClient.MySqlDataAdapter
 
             Try
@@ -283,6 +283,10 @@ Namespace Database.Engine
         ''' resulting table to any UI components provided in the request object 
         ''' (DataGrid, Dropdown, StatusBar, or Chart).
         ''' </summary>
+        ''' <param name="databasename">
+        ''' The target MySQL database name.
+        ''' The method automatically prepends a USE statement before executing the query.
+        ''' </param>
         ''' <param name="dbr">
         ''' A request object containing the SQL query and optional UI controls 
         ''' that will receive the resulting data (DataGrid, Dropdown, StatusBar, Chart).
@@ -291,12 +295,8 @@ Namespace Database.Engine
         ''' The name of the DataTable inside the DataSet where the query results 
         ''' will be stored and used as the binding source.
         ''' </param>
-        ''' <param name="databasename">
-        ''' Optional. The target MySQL database name. Defaults to "defaultdb". 
-        ''' The method automatically prepends a USE statement before executing the query.
-        ''' </param>
         <SupportedOSPlatform("windows")>
-        Public Sub GetDataTable(ByVal dbr As Adapter.MySQL.Display.Request, ByVal tablename As String, Optional ByVal databasename As String = "defaultdb")
+        Public Sub GetDataTable(databasename As String, dbr As Adapter.MySQL.Display.Request, tablename As String)
 
             Dim varDataAdapterPrivate(1) As MySqlClient.MySqlDataAdapter
 
@@ -382,16 +382,16 @@ Namespace Database.Engine
         ''' This method is typically used for INSERT, UPDATE, DELETE, or other 
         ''' data‑manipulation statements.
         ''' </summary>
-        ''' <param name="query">
-        ''' The SQL command to execute. The method automatically prepends the 
-        ''' database selection (USE databasename) before running the query.
-        ''' </param>
         ''' <param name="databasename">
         ''' Optional. The target database name to apply the query to. 
         ''' Defaults to "defaultdb".
         ''' </param>
+        ''' <param name="query">
+        ''' The SQL command to execute. The method automatically prepends the 
+        ''' database selection (USE databasename) before running the query.
+        ''' </param>
         <SupportedOSPlatform("windows")>
-        Public Sub PushData(ByVal query As String, Optional ByVal databasename As String = "defaultdb")
+        Public Sub PushData(databasename As String, ByVal query As String)
             Try
                 varCommand(1) = New MySqlClient.MySqlCommand With {
                 .Connection = varConnection(1),
@@ -477,6 +477,9 @@ Namespace Database.Engine
         ''' Executes a SQL query against the specified MySQL database and fills the given DataSet 
         ''' with the results using the provided table name.
         ''' </summary>
+        ''' <param name="databasename">
+        ''' The target database name.
+        ''' </param>
         ''' <param name="query">
         ''' The SQL query to execute. The function automatically prepends the database selection (USE ...).
         ''' </param>
@@ -486,14 +489,11 @@ Namespace Database.Engine
         ''' <param name="tablename">
         ''' The name of the DataTable inside the DataSet where the results will be stored.
         ''' </param>
-        ''' <param name="databasename">
-        ''' Optional. The target database name. Defaults to "defaultdb".
-        ''' </param>
         ''' <returns>
         ''' The filled DataSet. Returns Nothing if an exception occurs.
         ''' </returns>
         <SupportedOSPlatform("windows")>
-        Public Function FillDataSet(ByVal query As String, ByVal datasetname As DataSet, ByVal tablename As String, Optional ByVal databasename As String = "defaultdb") As DataSet
+        Public Function FillDataSet(databasename As String, query As String, datasetname As DataSet, tablename As String) As DataSet
             GC.Collect()
 
             Try

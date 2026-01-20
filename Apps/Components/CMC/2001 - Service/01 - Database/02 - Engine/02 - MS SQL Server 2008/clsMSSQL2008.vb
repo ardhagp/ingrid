@@ -36,11 +36,17 @@ Namespace Database.Engine
             GC.SuppressFinalize(Me)
         End Sub
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="fields"></param>
+        ''' <param name="splash"></param>
+        ''' <returns></returns>
         <SupportedOSPlatform("windows")>
         Public Function Open(ByVal fields As Properties.Fields, Optional ByVal splash As Form = Nothing) As Boolean
             Dim varSuccess As Boolean
             Try
-                varConnection(1) = New SqlClient.SqlConnection(V_MSSQL2008.Mssql2008standard(fields.ServerAddress, fields.Port, fields.DataStorage, fields.Username, fields.Password))
+                varConnection(1) = New SqlClient.SqlConnection(V_MSSQL2008.Mssql2008standard(fields.ServerAddress, fields.Port, fields.DatabaseName, fields.Username, fields.Password))
                 varConnection(1).Open()
                 varSuccess = True
             Catch ex As SqlClient.SqlException
@@ -69,6 +75,12 @@ Namespace Database.Engine
             Return varSuccess
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="query"></param>
+        ''' <param name="databasename"></param>
+        ''' <returns></returns>
         <SupportedOSPlatform("windows")>
         Public Function GetDataRow(ByVal query As String, ByVal databasename As String) As SqlClient.SqlDataReader ', ByVal MyConnection As SqlClient.SqlConnection, ByVal MyCommand As SqlClient.SqlCommand) As SqlClient.SqlDataReader
             Dim varDataReader(1) As SqlClient.SqlDataReader
@@ -129,8 +141,14 @@ Namespace Database.Engine
             End Try
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="databasename"></param>
+        ''' <param name="query"></param>
+        ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Function GetValue(ByVal query As String, ByVal databasename As String) As Object
+        Public Function GetValue(databasename As String, query As String) As Object
             Try
                 Dim varRowValue As Object
 
@@ -170,8 +188,15 @@ Namespace Database.Engine
             End Try
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="databasename"></param>
+        ''' <param name="dbr"></param>
+        ''' <param name="tablename"></param>
+        ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Function GetDataSet(ByVal dbr As Adapter.MSSQL2008.Display.Request, ByVal tablename As String, ByVal databasename As String) As DataSet
+        Public Function GetDataSet(databasename As String, dbr As Adapter.MSSQL2008.Display.Request, tablename As String) As DataSet
             Dim varDataAdapter(1) As SqlClient.SqlDataAdapter
 
             Try
@@ -221,8 +246,14 @@ Namespace Database.Engine
             End Try
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="databasename"></param>
+        ''' <param name="dbr"></param>
+        ''' <param name="tablename"></param>
         <SupportedOSPlatform("windows")>
-        Public Sub GetDataTable(ByVal dbr As Adapter.MSSQL2008.Display.Request, ByVal tablename As String, Optional ByVal databasename As String = "db_universe_erp")
+        Public Sub GetDataTable(databasename As String, dbr As Adapter.MSSQL2008.Display.Request, ByVal tablename As String)
 
             Dim varDataAdapter(1) As SqlClient.SqlDataAdapter
 
@@ -303,8 +334,13 @@ Namespace Database.Engine
             End Try
         End Sub
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="databasename"></param>
+        ''' <param name="query"></param>
         <SupportedOSPlatform("windows")>
-        Public Sub PushData(ByVal query As String, Optional ByVal databasename As String = "db_universe_erp")
+        Public Sub PushData(databasename As String, query As String)
             Try
                 varCommand(1) = New SqlClient.SqlCommand With {
                 .Connection = varConnection(1),
@@ -335,6 +371,11 @@ Namespace Database.Engine
             End Try
         End Sub
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="cmd"></param>
+        ''' <returns></returns>
         <SupportedOSPlatform("windows")>
         Public Function PushImage(ByVal cmd As SqlClient.SqlCommand) As Boolean
             Dim varSuccess As Boolean
@@ -375,8 +416,16 @@ Namespace Database.Engine
             Return varSuccess
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="databasename"></param>
+        ''' <param name="query"></param>
+        ''' <param name="datasetname"></param>
+        ''' <param name="tablename"></param>
+        ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Function FillDataset(ByVal query As String, ByVal datasetname As DataSet, ByVal tablename As String, Optional ByVal databasename As String = "db_universe_erp") As DataSet
+        Public Function FillDataset(databasename As String, query As String, datasetname As DataSet, tablename As String) As DataSet
             GC.Collect()
 
             Try

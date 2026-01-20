@@ -2,7 +2,7 @@
 
 Public Class MODS
 #Region "Variables"
-    Private V_SQL As New Commands.MODS.View
+    Private varSql As New Commands.MODS.View
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
     Private WithEvents _MODS_Editor As New MODS_Editor
     Public Event DATACHANGED()
@@ -11,12 +11,12 @@ Public Class MODS
 #Region "Subs Collection"
 
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
+    Private Sub GetData(Optional ByVal forcerefresh As Boolean = False)
         DblBuffer(DgnMODS)
-        Commands.MODS.View.DisplayData(varDatabaseEngine, DgnMODS, SLFStatus, TxtFind, ForceRefresh)
+        Commands.MODS.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnMODS, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
-    Private Sub GETTableID()
+    Private Sub GetTableID()
         varFormAttributes.RowID = "-1"
 
         If DgnMODS.RowCount > 0 Then
@@ -29,7 +29,7 @@ Public Class MODS
 
     <SupportedOSPlatform("windows")>
     Private Sub _MMSMenu_EventDataAddNew() Handles _MMSMenu.EventDataAddNew
-        If Not (varUserAccess.User("MODS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+        If Not (varUserAccess.User(varDatabaseName, "MODS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
             Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
@@ -43,7 +43,7 @@ Public Class MODS
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
-        If Not (varUserAccess.User("UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+        If Not (varUserAccess.User(varDatabaseName, "UAC", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
@@ -62,7 +62,7 @@ Public Class MODS
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
-        If Not (varUserAccess.User("MODS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+        If Not (varUserAccess.User(varDatabaseName, "MODS", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
             Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
@@ -73,7 +73,7 @@ Public Class MODS
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.DAR.View.DELETEData(varDatabaseEngine, varFormAttributes.RowID)) Then
+                If (Commands.DAR.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)) Then
                     Call GETDATA(True)
                     RaiseEvent DATACHANGED()
                     Mainframe_n_6.Ts_status.Text = "Success"

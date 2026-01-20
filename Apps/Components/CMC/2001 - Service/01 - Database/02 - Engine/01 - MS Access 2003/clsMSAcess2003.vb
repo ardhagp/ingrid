@@ -125,7 +125,7 @@ Namespace Database.Engine
                     fields.Username = .GetString(1)
                     fields.Password = CMCv.Security.Decrypt.AES(.GetString(2))
                     fields.Port = CType(.GetValue(3), Integer)
-                    fields.DataStorage = .GetString(4)
+                    fields.DatabaseName = .GetString(4)
                     fields.FileStorage = .GetString(5)
                 End With
 

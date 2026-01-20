@@ -132,10 +132,6 @@
     <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="dbo\Views\vw_dbsize.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </None>
     <Build Include="dbo\Functions\md5.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
@@ -444,26 +440,6 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="dbo\Views\vw_z19_perwo_1.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="dbo\Views\vw_z19_permm_1.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="dbo\Views\vw_vendor_1.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="dbo\Views\vw_reservation_1.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="Security\mvu_ridwan.sql" />
-    <Build Include="Security\mvu_ardhagp.sql" />
-    <Build Include="Security\msaccess.sql" />
-    <Build Include="Security\RoleMemberships.sql" />
     <Build Include="dbo\Views\vw_db_size.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>

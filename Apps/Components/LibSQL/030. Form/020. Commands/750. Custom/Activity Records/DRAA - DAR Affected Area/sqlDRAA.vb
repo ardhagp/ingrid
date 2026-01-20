@@ -5,45 +5,45 @@ Imports CMCv
 Namespace Commands.DRAA
     Public Class View
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayMainGrid(ByVal Find As txt, ByVal ContentGrid As dgn, ContentStatusBar As stt, Optional ByVal ForceRefresh As Boolean = False)
+        Public Shared Sub DisplayMainGrid(databasename As String, find As txt, contentgrid As dgn, contentstatusbar As stt, Optional forcerefresh As Boolean = False)
             Try
-                Dim _Where As String = String.Format("where ")
+                Dim varWhere As String = String.Format("where ")
 
-                If (Find.XOSQLText = String.Empty) AndAlso (ForceRefresh = True) Then
-                    _Where += String.Format("(aa.areaaffected_name like '%{0}%')", Find.XOSQLText)
+                If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
+                    varWhere += String.Format("(aa.areaaffected_name like '%{0}%')", find.XOSQLText)
                 Else
-                    If Find.XOSQLText = String.Empty Then
+                    If find.XOSQLText = String.Empty Then
 
-                    ElseIf Find.XOSQLText.Trim.Contains("||") = False Then
-                        _Where += String.Format("(aa.areaaffected_name like '%{0}%')", Find.XOSQLText)
+                    ElseIf find.XOSQLText.Trim.Contains("||") = False Then
+                        varWhere += String.Format("(aa.areaaffected_name like '%{0}%')", find.XOSQLText)
                     Else
-                        Dim _ContainText() As String = Find.XOSQLText.Split("||")
-                        Dim _Repeater As Integer = 0
+                        Dim varContainText() As String = find.XOSQLText.Split("||")
+                        Dim varRepeater As Integer = 0
 
-                        _Where += String.Format("(")
+                        varWhere += String.Format("(")
 
-                        For Each _Text As String In _ContainText
-                            If Not _Text = "" Then
-                                If _Repeater = 0 Then
-                                    _Where += String.Format("aa.areaaffected_name like '%{0}%'", _Text)
+                        For Each varText As String In varContainText
+                            If varText <> "" Then
+                                If varRepeater = 0 Then
+                                    varWhere.Append(CChar($"aa.areaaffected_name like '%{varText}%'"))
                                 Else
-                                    _Where += String.Format(" and aa.areaaffected_name like '%{0}%'", _Text)
+                                    varWhere.Append(CChar($" and aa.areaaffected_name like '%{varText}%'"))
                                 End If
                             End If
 
-                            _Repeater += 1
+                            varRepeater += 1
                         Next
 
-                        _Where += String.Format(")")
+                        varWhere += String.Format(")")
                     End If
 
                 End If
 
-                V_DBR_MSSQL2008(0).Query = String.Format("select aa.areaaffected_id, aa.areaaffected_order, aa.areaaffected_name from dbo.[[doc]]areaaffected] aa {0} order by aa.areaaffected_order, aa.areaaffected_name", _Where)
+                V_DBR_MSSQL2008(0).Query = String.Format("select aa.areaaffected_id, aa.areaaffected_order, aa.areaaffected_name from dbo.doc_areaaffected aa {0} order by aa.areaaffected_order, aa.areaaffected_name", varWhere)
 
-                V_DBR_MSSQL2008(0).DataGrid = ContentGrid
-                V_DBR_MSSQL2008(0).StatusBar = ContentStatusBar
-                V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(0), "TAreaAffected")
+                V_DBR_MSSQL2008(0).DataGrid = contentgrid
+                V_DBR_MSSQL2008(0).StatusBar = contentstatusbar
+                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TAreaAffected")
 
             Catch ex As Exception
                 MsgBox(ex.ToString)

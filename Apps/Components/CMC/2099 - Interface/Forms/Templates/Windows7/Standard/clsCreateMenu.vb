@@ -365,20 +365,20 @@ Namespace UI.View
             End Try
         End Sub
 
-        Public Sub ShowMenuDATA(Optional ByVal Value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
-            _item(0).Visible = CType(Value, Boolean)
+        Public Sub ShowMenuData(Optional value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
+            _item(0).Visible = CType(value, Boolean)
         End Sub
 
-        Public Sub ShowMenuTOOLS(Optional ByVal Value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
-            _item(1).Visible = CType(Value, Boolean)
+        Public Sub ShowMenuTools(Optional value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
+            _item(1).Visible = CType(value, Boolean)
         End Sub
 
-        Public Sub ShowMenuREPORTS(Optional ByVal Value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
-            _item(2).Visible = CType(Value, Boolean)
+        Public Sub ShowMenuReports(Optional value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
+            _item(2).Visible = CType(value, Boolean)
         End Sub
 
-        Public Sub ShowMenuFILE(Optional ByVal Value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
-            _item(3).Visible = CType(Value, Boolean)
+        Public Sub ShowMenuFile(Optional value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
+            _item(3).Visible = CType(value, Boolean)
         End Sub
 #End Region
 

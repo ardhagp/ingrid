@@ -6,7 +6,7 @@ Public Class SYSS
     Private _SQL_Editor As New Commands.SYSS.Editor
 
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA()
+    Private Sub GetData()
         'Get Profile
         With CboProfile.Items
             .Clear()
@@ -15,7 +15,7 @@ Public Class SYSS
             .Add("User Only")
             .Add("All Users")
         End With
-        CboProfile.SelectedIndex = CType(Commands.SYSS.View.GETSettingValue(varDatabaseEngine, "settings_showprofile"), Integer)
+        CboProfile.SelectedIndex = CType(Commands.SYSS.View.GetSettingValue(varDatabaseName, varDatabaseEngine, "settings_showprofile"), Integer)
 
         'Get Storage
         With CboStorage.Items
@@ -25,7 +25,7 @@ Public Class SYSS
             .Add("User Only")
             .Add("All Users")
         End With
-        CboStorage.SelectedIndex = CType(Commands.SYSS.View.GETSettingValue(varDatabaseEngine, "settings_showstorage"), Integer)
+        CboStorage.SelectedIndex = CType(Commands.SYSS.View.GetSettingValue(varDatabaseName, varDatabaseEngine, "settings_showstorage"), Integer)
 
         'Get NewsTicker
         With CboNewsTicker.Items
@@ -35,13 +35,13 @@ Public Class SYSS
             .Add("User Only")
             .Add("All Users")
         End With
-        CboNewsTicker.SelectedIndex = CType(Commands.SYSS.View.GETSettingValue(varDatabaseEngine, "settings_showrunningtext"), Integer)
+        CboNewsTicker.SelectedIndex = CType(Commands.SYSS.View.GetSettingValue(varDatabaseName, varDatabaseEngine, "settings_showrunningtext"), Integer)
 
         'Get Minimum Photo Upload
-        nudUploadPhoto.Value = CType(Commands.SYSS.View.GETSettingValue(varDatabaseEngine, "settings_uploadphoto"), Decimal)
+        nudUploadPhoto.Value = CType(Commands.SYSS.View.GetSettingValue(varDatabaseName, varDatabaseEngine, "settings_uploadphoto"), Decimal)
 
         'Get Minimum PDF Upload
-        nudUploadPDF.Value = CType(Commands.SYSS.View.GETSettingValue(varDatabaseEngine, "settings_uploadpdf"), Decimal)
+        nudUploadPDF.Value = CType(Commands.SYSS.View.GetSettingValue(varDatabaseName, varDatabaseEngine, "settings_uploadpdf"), Decimal)
 
         'Get Watermark
         With CboWatermark.Items
@@ -51,11 +51,11 @@ Public Class SYSS
             .Add("User Only")
             .Add("All Users")
         End With
-        CboWatermark.SelectedIndex = CType(Commands.SYSS.View.GETSettingValue(varDatabaseEngine, "settings_showwatermark"), Integer)
-        TxtWatermark.Text = Commands.SYSS.View.GETSettingValue(varDatabaseEngine, "settings_textmark").ToString
+        CboWatermark.SelectedIndex = CType(Commands.SYSS.View.GetSettingValue(varDatabaseName, varDatabaseEngine, "settings_showwatermark"), Integer)
+        TxtWatermark.Text = Commands.SYSS.View.GetSettingValue(varDatabaseName,varDatabaseEngine, "settings_textmark").ToString
 
         'Get Minimum Password
-        nudMinPassword.Value = CType(Commands.SYSS.View.GETSettingValue(varDatabaseEngine, "settings_minpasswordlength"), Decimal)
+        nudMinPassword.Value = CType(Commands.SYSS.View.GetSettingValue(varDatabaseName, varDatabaseEngine, "settings_minpasswordlength"), Decimal)
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -74,7 +74,7 @@ Public Class SYSS
     <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Try
-            If (Commands.SYSS.Editor.SaveSettings(varDatabaseEngine, CboProfile.SelectedIndex, CboStorage.SelectedIndex, CboNewsTicker.SelectedIndex, CType(nudUploadPhoto.Value, Integer), CType(nudUploadPDF.Value, Integer), CboWatermark.SelectedIndex, TxtWatermark.XOSQLText, CType(nudMinPassword.Value, Integer))) Then
+            If (Commands.SYSS.Editor.SaveSettings(varDatabaseName, varDatabaseEngine, CboProfile.SelectedIndex, CboStorage.SelectedIndex, CboNewsTicker.SelectedIndex, CType(nudUploadPhoto.Value, Integer), CType(nudUploadPDF.Value, Integer), CboWatermark.SelectedIndex, TxtWatermark.XOSQLText, CType(nudMinPassword.Value, Integer))) Then
                 SLFStatus.Items(0).Text = "Saved"
             End If
         Catch ex As Exception
