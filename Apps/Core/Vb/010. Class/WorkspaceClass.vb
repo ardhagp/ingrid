@@ -54,27 +54,27 @@ Public Class WorkspaceClass
 #End Region
 
     <SupportedOSPlatform("windows")>
-    Public Sub Open(ByVal Mainframe As Form, ByVal TCode As String, Optional StatusBar As CMCv.stt = Nothing)
+    Public Sub Open(mainframe As Form, tcode As String, Optional statusbar As CMCv.stt = Nothing)
         Try
-            V_TCode = TCode.ToString.Split("-".ToCharArray, StringSplitOptions.RemoveEmptyEntries)
+            V_TCode = tcode.ToString.Split("-".ToCharArray, StringSplitOptions.RemoveEmptyEntries)
             '_CommandExist = True
             '_CommandRestricted = False
-            V_MODSName = LibSQL.Workspace.GETModuleName(TCode)
-            V_MODSDesc = LibSQL.Workspace.GETModuleDescription(TCode)
+            V_MODSName = LibSQL.Workspace.GetModuleName(varDatabaseName, varDatabaseEngine, tcode)
+            V_MODSDesc = LibSQL.Workspace.GetModuleDescription(varDatabaseName, varDatabaseEngine, tcode)
 
             Select Case V_TCode(0)
                 'ACCOUNTING
                 Case "ACGR"
                     If (Not (V_ACGR.IsHandleCreated)) OrElse (IsNothing(V_ACGR)) Then
                         V_ACGR = New ACGR
-                        DISPLAY(V_ACGR, IMAGEDB.Main.ImageLibrary.ACGR_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_ACGR, IMAGEDB.Main.ImageLibrary.ACGR_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_ACGR.Focus()
                     End If
                 Case "ACBK"
                     If (Not (V_ACBK.IsHandleCreated)) OrElse (IsNothing(V_ACBK)) Then
                         V_ACBK = New ACBK
-                        DISPLAY(V_ACBK, IMAGEDB.Main.ImageLibrary.ACBK_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_ACBK, IMAGEDB.Main.ImageLibrary.ACBK_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_ACBK.Focus()
                     End If
@@ -84,35 +84,35 @@ Public Class WorkspaceClass
                 Case "MCTG"
                     If (Not (V_MCTG.IsHandleCreated)) OrElse (IsNothing(V_MCTG)) Then
                         V_MCTG = New MCTG
-                        DISPLAY(V_MCTG, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_MCTG, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_MCTG.Focus()
                     End If
                 Case "MMTY"
                     If (Not (V_MMTY.IsHandleCreated)) OrElse (IsNothing(V_MMTY)) Then
                         V_MMTY = New MMTY
-                        DISPLAY(V_MMTY, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_MMTY, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_MMTY.Focus()
                     End If
                 Case "MMGR"
                     If (Not (V_MMGR.IsHandleCreated)) OrElse (IsNothing(V_MMGR)) Then
                         V_MMGR = New MMGR
-                        DISPLAY(V_MMGR, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_MMGR, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_MMGR.Focus()
                     End If
                 Case "SLOC"
                     If (Not (V_SLOC.IsHandleCreated)) OrElse (IsNothing(V_SLOC)) Then
                         V_SLOC = New SLOC
-                        DISPLAY(V_SLOC, IMAGEDB.Main.ImageLibrary.STORAGE_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_SLOC, IMAGEDB.Main.ImageLibrary.STORAGE_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_SLOC.Focus()
                     End If
                 Case "PLNT"
                     If (Not (V_PLNT.IsHandleCreated)) OrElse (IsNothing(V_PLNT)) Then
                         V_PLNT = New PLNT
-                        DISPLAY(V_PLNT, IMAGEDB.Main.ImageLibrary.PLANT_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_PLNT, IMAGEDB.Main.ImageLibrary.PLANT_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_PLNT.Focus()
                     End If
@@ -122,28 +122,28 @@ Public Class WorkspaceClass
                 Case "CCIN"
                     If (Not (V_CCIN.IsHandleCreated)) OrElse (IsNothing(V_CCIN)) Then
                         V_CCIN = New CCIN
-                        DISPLAY(V_CCIN, IMAGEDB.Main.ImageLibrary.CCIN_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_CCIN, IMAGEDB.Main.ImageLibrary.CCIN_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_CCIN.Focus()
                     End If
                 Case "CDIN"
                     If (Not (V_CDIN.IsHandleCreated)) OrElse (IsNothing(V_CDIN)) Then
                         V_CDIN = New CDIN
-                        DISPLAY(V_CDIN, IMAGEDB.Main.ImageLibrary.CDIN_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_CDIN, IMAGEDB.Main.ImageLibrary.CDIN_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_CDIN.Focus()
                     End If
                 Case "EPLS"
                     If (Not (V_EPLS.IsHandleCreated)) OrElse (IsNothing(V_EPLS)) Then
                         V_EPLS = New EPLS
-                        DISPLAY(V_EPLS, IMAGEDB.Main.ImageLibrary.EPLS_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_EPLS, IMAGEDB.Main.ImageLibrary.EPLS_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_EPLS.Focus()
                     End If
                 Case "POST"
                     If (Not (V_POST.IsHandleCreated)) OrElse (IsNothing(V_POST)) Then
                         V_POST = New POST
-                        DISPLAY(V_POST, IMAGEDB.Main.ImageLibrary.POST_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_POST, IMAGEDB.Main.ImageLibrary.POST_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_POST.Focus()
                     End If
@@ -153,49 +153,49 @@ Public Class WorkspaceClass
                 Case "DAR"
                     If (Not (V_DAR.IsHandleCreated)) OrElse (IsNothing(V_DAR)) Then
                         V_DAR = New DAR
-                        DISPLAY(V_DAR, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_DAR, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_DAR.Focus()
                     End If
                 Case "DARD"
                     If (Not (V_DARD.IsHandleCreated)) OrElse (IsNothing(V_DARD)) Then
                         V_DARD = New DARD
-                        DISPLAY(V_DARD, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_DARD, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_DAR.Focus()
                     End If
                 Case "DRTM"
                     If (Not (V_DRTM.IsHandleCreated)) OrElse (IsNothing(V_DRTM)) Then
                         V_DRTM = New DRTM
-                        DISPLAY(V_DRTM, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_DRTM, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_DRTM.Focus()
                     End If
                 Case "DRAA"
                     If (Not (V_DRAA.IsHandleCreated)) OrElse (IsNothing(V_DRAA)) Then
                         V_DRAA = New DRAA
-                        DISPLAY(V_DRAA, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_DRAA, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_DRAA.Focus()
                     End If
                 Case "PEPR"
                     If (Not (V_PEPR.IsHandleCreated)) OrElse (IsNothing(V_PEPR)) Then
                         V_PEPR = New PEPR
-                        DISPLAY(V_PEPR, IMAGEDB.Main.ImageLibrary.JJP_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_PEPR, IMAGEDB.Main.ImageLibrary.JJP_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_REMS.Focus()
                     End If
                 Case "REMS"
                     If (Not (V_REMS.IsHandleCreated)) OrElse (IsNothing(V_REMS)) Then
                         V_REMS = New REMS
-                        DISPLAY(V_REMS, IMAGEDB.Main.ImageLibrary.JJP_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_REMS, IMAGEDB.Main.ImageLibrary.JJP_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_REMS.Focus()
                     End If
                 Case "SAY"
                     If (Not (V_SAY.IsHandleCreated)) OrElse (IsNothing(V_SAY)) Then
                         V_SAY = New SAY
-                        DISPLAY(V_SAY, IMAGEDB.Main.ImageLibrary.PLANT_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False,)
+                        Display(V_SAY, IMAGEDB.Main.ImageLibrary.PLANT_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False,)
                     Else
                         V_CCIN.Focus()
                     End If
@@ -205,28 +205,28 @@ Public Class WorkspaceClass
                 Case "MODS"
                     If (Not (V_MODS.IsHandleCreated)) OrElse (IsNothing(V_MODS)) Then
                         V_MODS = New MODS
-                        DISPLAY(V_MODS, IMAGEDB.Main.ImageLibrary.MODS_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_MODS, IMAGEDB.Main.ImageLibrary.MODS_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_MODS.Focus()
                     End If
                 Case "MOGS"
                     If (Not (V_MOGS.IsHandleCreated)) OrElse (IsNothing(V_MOGS)) Then
                         V_MOGS = New MOGS
-                        DISPLAY(V_MOGS, IMAGEDB.Main.ImageLibrary.MODS_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_MOGS, IMAGEDB.Main.ImageLibrary.MODS_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_MOGS.Focus()
                     End If
                 Case "UAC"
                     If (Not (V_UAC.IsHandleCreated)) OrElse (IsNothing(V_UAC)) Then
                         V_UAC = New UAC
-                        DISPLAY(V_UAC, IMAGEDB.Main.ImageLibrary.UAC_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_UAC, IMAGEDB.Main.ImageLibrary.UAC_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_UAC.Focus()
                     End If
                 Case "SYSS"
                     If (Not (V_SYSS.IsHandleCreated)) OrElse (IsNothing(V_SYSS)) Then
                         V_SYSS = New SYSS
-                        DISPLAY(V_SYSS, IMAGEDB.Main.ImageLibrary.UAC_ICON, "[" & TCode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, Mainframe)
+                        Display(V_SYSS, IMAGEDB.Main.ImageLibrary.UAC_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
                     Else
                         V_SYSS.Focus()
                     End If
@@ -236,14 +236,14 @@ Public Class WorkspaceClass
                 Case CType("DUMMY", Char)
                     If (Not (V_DUMMY.IsHandleCreated)) OrElse (IsNothing(V_DUMMY)) Then
                         V_DUMMY = New Dummy
-                        DISPLAY(V_DUMMY, IMAGEDB.Main.ImageLibrary.DUMMY_ICON, "[DUMMY] Dummy Form", "Dummy Form for testing", False, Mainframe)
+                        Display(V_DUMMY, IMAGEDB.Main.ImageLibrary.DUMMY_ICON, "[DUMMY] Dummy Form", "Dummy Form for testing", False, mainframe)
                     Else
                         V_DUMMY.Focus()
                     End If
                 Case "PHTRZ"
                     If (Not (V_DUMMY.IsHandleCreated)) OrElse (IsNothing(V_DUMMY)) Then
                         V_PHTRZ = New CMCv.PHTRZ
-                        DISPLAY(V_PHTRZ, IMAGEDB.Main.ImageLibrary.COMPRESS_ICON, V_MODSName, V_MODSDesc, True,)
+                        Display(V_PHTRZ, IMAGEDB.Main.ImageLibrary.COMPRESS_ICON, V_MODSName, V_MODSDesc, True,)
                     Else
                         V_PHTRZ.Focus()
                     End If
@@ -251,7 +251,7 @@ Public Class WorkspaceClass
                 Case "RESET"
                     If (Not (V_RESET.IsHandleCreated)) OrElse (IsNothing(V_RESET)) Then
                         V_RESET = New RESET
-                        DISPLAY(V_RESET, IMAGEDB.Main.ImageLibrary.RESET_ICON, "[RESET] Reset Your Application Settings", "Restore your application to initial configuration", True,)
+                        Display(V_RESET, IMAGEDB.Main.ImageLibrary.RESET_ICON, "[RESET] Reset Your Application Settings", "Restore your application to initial configuration", True,)
                     Else
                         V_RESET.Focus()
                     End If
@@ -260,7 +260,7 @@ Public Class WorkspaceClass
         Catch ex As Exception
             With proLog
                 .AppVersion = GetAppVersion()
-                .FromSender = "[Open] $Ingrid\Apps\Core\Vb\010. Class\WorkspaceClass.vb"
+                .FromSender = "[Open] $\Ingrid\Apps\Core\Vb\010. Class\WorkspaceClass.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult

@@ -16,7 +16,7 @@ Public Class UAC_Employee
 
     <SupportedOSPlatform("windows")>
     Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        Commands.UAC.Addins.Browse.Employee.DISPLAYDATA(DgnAddinEmployee, SLFStatus, TxtFind, ForceRefresh)
+        Commands.UAC.Addins.Browse.Employee.DisplayData(varDatabaseName, DgnAddinEmployee, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
 #End Region

@@ -16,48 +16,28 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Shared Function CheckDBCatalog() As Boolean
             Try
-                Dim vardbpath As String = Nothing
-                Dim vardbexists(2) As Boolean
+                Dim baseFolder = IO.Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "ardhagp\Ingrid .NET"
+        )
 
-                System.IO.Directory.CreateDirectory(Application.StartupPath & "\Resources")
+                Dim resourcesFolder = IO.Path.Combine(baseFolder, "Resources")
+                IO.Directory.CreateDirectory(resourcesFolder)
 
-                vardbpath = Application.StartupPath & "\Resources\CATALOG.mdb"
-                If OperatingSystem.File.Info.IsExists(vardbpath) Then
-                    vardbexists(1) = True
-                Else
-                    'My.Computer.FileSystem.WriteAllBytes(Application.StartupPath & "\Resources", My.Resources.catalog, True)
-                    vardbexists(1) = False
-                End If
+                Dim prodOk = EnsureDbExists("Resources\catalog.mdb", baseFolder)
+                Dim devOk = EnsureDbExists("Resources\dev_catalog.mdb", baseFolder)
+                Dim logOk = EnsureDbExists("Resources\errlog.mdb", baseFolder)
 
-                vardbpath = Application.StartupPath & "\Resources\DEV_CATALOG.mdb"
-                If OperatingSystem.File.Info.IsExists(vardbpath) Then
-                    vardbexists(2) = True
-                Else
-                    'My.Computer.FileSystem.WriteAllBytes(Application.StartupPath & "\Resources", My.Resources.dev_catalog, True)
-                    vardbexists(2) = False
-                End If
+                Return (prodOk AndAlso logOk) OrElse (devOk AndAlso logOk)
 
-                vardbpath = Application.StartupPath & "\Resources\ERRLOG.mdb"
-                If OperatingSystem.File.Info.IsExists(vardbpath) Then
-                    vardbexists(2) = True
-                Else
-                    'My.Computer.FileSystem.WriteAllBytes(Application.StartupPath & "\Resources", My.Resources.errlog, True)
-                    vardbexists(2) = False
-                End If
-
-                If (vardbexists(1)) AndAlso (vardbexists(2)) Then
-                    Return True
-                Else
-                    Return False
-                End If
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
-                    .FromSender = "[CheckDBCatalog] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb"
+                    .FromSender = "[CheckDBCatalog] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
                     .Number = ex.HResult
-                    .ResumeNext = True
+                    .ResumeNext = False
                     .SaveInBetterLog = True
                     .SaveLogInLocal = False
                     .ShowErrorReporting = True
@@ -67,10 +47,21 @@ Namespace Database.Engine
 
                 Dim clsLog As New Ladybug.Log.Events
                 clsLog.ShowData(proLog)
-                clsLog = Nothing
 
                 Return False
             End Try
+        End Function
+
+        <SupportedOSPlatform("windows")>
+        Private Shared Function EnsureDbExists(relativePath As String, baseFolder As String) As Boolean
+            Dim targetPath = IO.Path.Combine(baseFolder, relativePath)
+            Dim sourcePath = IO.Path.Combine(Application.StartupPath, relativePath)
+
+            If Not IO.File.Exists(targetPath) Then
+                IO.File.Copy(sourcePath, targetPath, True)
+            End If
+
+            Return IO.File.Exists(targetPath)
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -79,12 +70,12 @@ Namespace Database.Engine
                 CheckDBCatalog()
 
                 If (isproductionmode) Then
-                    varFilepath(0) = Application.StartupPath & "\Resources\CATALOG.mdb"
+                    varFilepath(0) = Application.StartupPath & "\Resources\catalog.mdb"
                 Else
-                    varFilepath(0) = Application.StartupPath & "\Resources\DEV_CATALOG.mdb"
+                    varFilepath(0) = Application.StartupPath & "\Resources\dev_catalog.mdb"
                 End If
 
-                Dim V_FileInfo As New OperatingSystem.File.Info
+                'Dim varFileInfo As New OperatingSystem.File.Info
 
                 If OperatingSystem.File.Info.IsExists(varFilepath(0)) Then
                     varConnectionstring(0) = varMsa2003c.Microsoftoledbstandard(varFilepath(0), "admin", "")
@@ -93,7 +84,7 @@ Namespace Database.Engine
                     varConnection(0).Open()
                 End If
 
-                varFilepath(1) = Application.StartupPath & "\Resources\ERRLOG.mdb"
+                varFilepath(1) = Application.StartupPath & "\Resources\errlog.mdb"
 
                 If OperatingSystem.File.Info.IsExists(varFilepath(1)) Then
                     varConnectionstring(1) = varMsa2003c.Microsoftoledbstandard(varFilepath(1), "admin", "")
@@ -127,14 +118,14 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Function GetDatabaseProperties(ByVal fields As Database.Properties.Fields) As Database.Properties.Fields
             Try
-                varDatareader(0) = GETDATAROW("SELECT LIST.SERVERADDRESS, LIST.USERNAME, LIST.PASSWORD, LIST.ACCEPTEDLINECONNECTION FROM LIST WHERE LIST.ID =1;", varConnection(0), varCommand(0))
+                varDatareader(0) = GetDataRow("SELECT LIST.SERVERADDRESS, LIST.USERNAME, LIST.PASSWORD, LIST.ACCEPTEDLINECONNECTION FROM LIST WHERE LIST.ID =1;", varConnection(0), varCommand(0))
 
                 With varDatareader(0)
                     fields.ServerAddress = .GetString(0)
                     fields.Username = .GetString(1)
                     fields.Password = CMCv.Security.Decrypt.AES(.GetString(2))
                     fields.Port = CType(.GetValue(3), Integer)
-                    fields.DataStorage = .GetString(4)
+                    fields.DatabaseName = .GetString(4)
                     fields.FileStorage = .GetString(5)
                 End With
 
@@ -163,7 +154,7 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub SaveErrorData(ByVal proLog As Ladybug.Log.Fields)
             Dim varNowdatetime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
-            Call PUSHDATA("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & proLog.TypeOfFaulty & "','" & proLog.Message & "'," & proLog.Number & ",'" & proLog.InternalStackTrace & "'," & proLog.ShowErrorReporting & ",'" & varNowdatetime & "');", varConnection(1), varCommand(1))
+            Call PushData("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & proLog.TypeOfFaulty & "','" & proLog.Message & "'," & proLog.Number & ",'" & proLog.InternalStackTrace & "'," & proLog.ShowErrorReporting & ",'" & varNowdatetime & "');", varConnection(1), varCommand(1))
         End Sub
 
         <SupportedOSPlatform("windows")>

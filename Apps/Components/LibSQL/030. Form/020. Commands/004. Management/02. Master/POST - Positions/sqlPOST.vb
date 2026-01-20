@@ -7,54 +7,54 @@ Namespace Commands.POST
         'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(ByVal DBEngine As String, ByVal Grid As dgn, ByVal Status As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
+        Public Shared Sub DisplayData(databasename As String, dbengine As String, grid As dgn, status As stt, find As txt, Optional forcerefresh As Boolean = False)
             'ReDim V_DBR_MSSQL2008(2)
-            Dim V_Where As String = "where "
+            Dim varWhere As String = "where "
 
-            If (Find.XOSQLText = String.Empty) AndAlso (ForceRefresh) Then
-                V_Where = String.Format("")
+            If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
+                varWhere = String.Format("")
             Else
-                V_Where += String.Format("(c.company_code Like '%{0}%') or (d.department_code like '%{0}%') or (ps.position_code like '%{0}%') or (ps.position_name like '%{0}%')", Find.XOSQLText)
+                varWhere += String.Format("(c.company_code Like '%{0}%') or (d.department_code like '%{0}%') or (ps.position_code like '%{0}%') or (ps.position_name like '%{0}%')", find.XOSQLText)
             End If
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(0).Query = String.Format("select c.company_code, d.department_code, ps.position_id, ps.position_code,ps.position_name, ps.position_description from dbo.[[man]]position] ps " &
-                                                    "inner join dbo.[[man]]department] d on d.department_id = ps.position_departement inner join dbo.[[man]]company] c on c.company_id = d.department_company {0} " &
-                                                    "order by c.company_code, d.department_code, ps.position_code", V_Where)
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(0).Query = String.Format("select c.company_code, d.department_code, ps.position_id, ps.position_code,ps.position_name, ps.position_description from dbo.man_position ps " &
+                                                    "inner join dbo.man_department d on d.department_id = ps.position_departement inner join dbo.man_company c on c.company_id = d.department_company {0} " &
+                                                    "order by c.company_code, d.department_code, ps.position_code", varWhere)
 
-                V_DBR_MSSQL2008(0).DataGrid = Grid
-                V_DBR_MSSQL2008(0).StatusBar = Status
-                V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(0), "TPositions")
-            ElseIf DBEngine = "MYSQL" Then
+                V_DBR_MSSQL2008(0).DataGrid = grid
+                V_DBR_MSSQL2008(0).StatusBar = status
+                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TPositions")
+            ElseIf dbengine = "MYSQL" Then
                 V_DBR_MSSQL2008(0).Query = String.Format("select c.company_code, d.department_code, ps.position_id, ps.position_code,ps.position_name, ps.position_description from man_position ps " &
                                                     "inner join man_department d on d.department_id = ps.position_departement inner join man_company c on c.company_id = d.department_company {0} " &
-                                                    "order by c.company_code, d.department_code, ps.position_code", V_Where)
+                                                    "order by c.company_code, d.department_code, ps.position_code", varWhere)
 
-                V_DBR_MYSQL(0).DataGrid = Grid
-                V_DBR_MYSQL(0).StatusBar = Status
-                V_DBE_MYSQL.GETDATATABLE(V_DBR_MYSQL(0), "TPositions")
+                V_DBR_MYSQL(0).DataGrid = grid
+                V_DBR_MYSQL(0).StatusBar = status
+                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TPositions")
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DELETEData(ByVal DBEngine As String, ByVal RowID As String) As Boolean
-            Dim V_Success As Boolean = False
+        Public Shared Function DeleteData(databasename As String, dbengine As String, rowid As String) As Boolean
+            Dim varSuccess As Boolean = False
 
             Try
-                If DBEngine = "MSSQL" Then
-                    V_DBR_MSSQL2008(1).Query = String.Format("delete from dbo.[[man]]position] where (position_id = '{0}')", RowID)
-                    V_DBE_MSSQL2008.PUSHDATA(V_DBR_MSSQL2008(1).Query)
-                ElseIf DBEngine = "MYSQL" Then
-                    V_DBR_MYSQL(1).Query = String.Format("delete from man_position where (position_id = '{0}')", RowID)
-                    V_DBE_MYSQL.PUSHDATA(V_DBR_MYSQL(1).Query)
+                If dbengine = "MSSQL" Then
+                    V_DBR_MSSQL2008(1).Query = String.Format("delete from dbo.man_position where (position_id = '{0}')", rowid)
+                    V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                ElseIf dbengine = "MYSQL" Then
+                    V_DBR_MYSQL(1).Query = String.Format("delete from man_position where (position_id = '{0}')", rowid)
+                    V_DBE_MYSQL.PushData(databasename, V_DBR_MYSQL(1).Query)
                 End If
 
-                V_Success = True
+                varSuccess = True
             Catch ex As Exception
-                V_Success = False
+                varSuccess = False
             End Try
 
-            Return V_Success
+            Return varSuccess
         End Function
     End Class
 
@@ -62,142 +62,142 @@ Namespace Commands.POST
         'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
-        Public Sub FILLCompany(ByVal DBEngine As String, ByVal Company As cbo)
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(0).Query = "select c.company_id, (c.company_code+ ' - ' + c.company_name) as [company_name] from dbo.[[man]]company] c order by c.company_code"
-                V_DBR_MSSQL2008(0).Dropdown = Company
-                V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(0), "TCompany")
-            ElseIf DBEngine = "MYSQL" Then
+        Public Sub FillCompany(databasename As String, dbengine As String, company As cbo)
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(0).Query = "select c.company_id, (c.company_code+ ' - ' + c.company_name) as [company_name] from dbo.man_company c order by c.company_code"
+                V_DBR_MSSQL2008(0).Dropdown = company
+                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TCompany")
+            ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(0).Query = "select c.company_id, (c.company_code+ ' - ' + c.company_name) as `company_name` from man_company c order by c.company_code"
-                V_DBR_MYSQL(0).Dropdown = Company
-                V_DBE_MYSQL.GETDATATABLE(V_DBR_MYSQL(0), "TCompany")
+                V_DBR_MYSQL(0).Dropdown = company
+                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TCompany")
             End If
 
-            Company.ValueMember = "company_id"
-            Company.DisplayMember = "company_name"
+            company.ValueMember = "company_id"
+            company.DisplayMember = "company_name"
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Sub FILLDepartement(ByVal DBEngine As String, ByVal Department As cbo, ByVal Company As cbo)
-            Dim V_Department As String = String.Empty
+        Public Sub FillDepartement(databasename As String, dbengine As String, department As cbo, company As cbo)
+            Dim varDepartment As String = String.Empty
 
-            If Company.Items.Count <> 0 Then
-                V_Department = Company.SelectedValue.ToString
+            If company.Items.Count <> 0 Then
+                varDepartment = company.SelectedValue.ToString
             End If
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(0).Query = String.Format("select d.department_id, (d.department_code + ' - ' + d.department_name) as [departement_code] from dbo.[[man]]department] d where d.department_company = '{0}' " &
-                                                    "order by d.department_code", V_Department)
-                V_DBR_MSSQL2008(0).Dropdown = Department
-                V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(0), "Departement")
-            ElseIf DBEngine = "MYSQL" Then
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(0).Query = String.Format("select d.department_id, (d.department_code + ' - ' + d.department_name) as [departement_code] from dbo.man_department d where d.department_company = '{0}' " &
+                                                    "order by d.department_code", varDepartment)
+                V_DBR_MSSQL2008(0).Dropdown = department
+                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "Departement")
+            ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(0).Query = String.Format("select d.department_id, (d.department_code + ' - ' + d.department_name) as `departement_code` from man_department d where d.department_company = '{0}' " &
-                                                    "order by d.department_code", V_Department)
-                V_DBR_MYSQL(0).Dropdown = Department
-                V_DBE_MYSQL.GETDATATABLE(V_DBR_MYSQL(0), "Departement")
+                                                    "order by d.department_code", varDepartment)
+                V_DBR_MYSQL(0).Dropdown = department
+                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "Departement")
             End If
 
-            Department.ValueMember = "department_id"
-            Department.DisplayMember = "departement_code"
+            department.ValueMember = "department_id"
+            department.DisplayMember = "departement_code"
         End Sub
 
         <SupportedOSPlatform("Windows")>
-        Public Shared Function GETCompanyID(ByVal DBEngine As String, ByVal RowID As String) As String
-            Dim V_CompanyID As String = String.Empty
+        Public Shared Function GetCompanyID(databasename As String, dbengine As String, rowid As String) As String
+            Dim varCompanyID As String = String.Empty
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(0).Query = String.Format("select d.department_company from dbo.[[man]]position] ps inner join dbo.[[man]]department] d on d.department_id = ps.position_departement " &
-                                                    "where ps.position_id = '{0}'", RowID)
-                V_CompanyID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
-            ElseIf DBEngine = "MYSQL" Then
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(0).Query = String.Format("select d.department_company from dbo.man_position ps inner join dbo.man_department d on d.department_id = ps.position_departement " &
+                                                    "where ps.position_id = '{0}'", rowid)
+                varCompanyID = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query).ToString
+            ElseIf dbengine = "MYSQL" Then
                 V_DBR_MYSQL(0).Query = String.Format("select d.department_company from man_position ps inner join man_department d on d.department_id = ps.position_departement " &
-                                                    "where ps.position_id = '{0}'", RowID)
-                V_CompanyID = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query).ToString
+                                                    "where ps.position_id = '{0}'", rowid)
+                varCompanyID = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(0).Query).ToString
             End If
 
-            Return V_CompanyID
+            Return varCompanyID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETDepartmentID(ByVal DBEngine As String, ByVal RowID As String) As String
-            Dim V_DepartementID As String = String.Empty
+        Public Shared Function GetDepartmentID(databasename As String, dbengine As String, rowid As String) As String
+            Dim varDepartementID As String = String.Empty
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(0).Query = String.Format("select ps.position_departement from dbo.[[man]]position] ps where ps.position_id = '{0}'", RowID)
-                V_DepartementID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
-            ElseIf DBEngine = "MYSQL" Then
-                V_DBR_MYSQL(0).Query = String.Format("select ps.position_departement from man_position ps where ps.position_id = '{0}'", RowID)
-                V_DepartementID = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query).ToString
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(0).Query = String.Format("select ps.position_departement from dbo.man_position ps where ps.position_id = '{0}'", rowid)
+                varDepartementID = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query).ToString
+            ElseIf dbengine = "MYSQL" Then
+                V_DBR_MYSQL(0).Query = String.Format("select ps.position_departement from man_position ps where ps.position_id = '{0}'", rowid)
+                varDepartementID = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(0).Query).ToString
             End If
 
-            Return V_DepartementID
+            Return varDepartementID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETPositionCode(ByVal DBEngine As String, ByVal RowID As String) As String
-            Dim V_PostitionCode As String = String.Empty
+        Public Shared Function GetPositionCode(databasename As String, dbengine As String, rowid As String) As String
+            Dim varPostitionCode As String = String.Empty
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(0).Query = String.Format("select ps.position_code from dbo.[[man]]position] ps where ps.position_id = '{0}'", RowID)
-                V_PostitionCode = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
-            ElseIf DBEngine = "MYSQL" Then
-                V_DBR_MYSQL(0).Query = String.Format("select ps.position_code from man_position ps where ps.position_id = '{0}'", RowID)
-                V_PostitionCode = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query).ToString
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(0).Query = String.Format("select ps.position_code from dbo.man_position ps where ps.position_id = '{0}'", rowid)
+                varPostitionCode = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query).ToString
+            ElseIf dbengine = "MYSQL" Then
+                V_DBR_MYSQL(0).Query = String.Format("select ps.position_code from man_position ps where ps.position_id = '{0}'", rowid)
+                varPostitionCode = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(0).Query).ToString
             End If
 
-            Return V_PostitionCode
+            Return varPostitionCode
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETPositionName(ByVal DBEngine As String, ByVal RowID As String) As String
-            Dim V_PostitionName As String = String.Empty
+        Public Shared Function GetPositionName(databasename As String, dbengine As String, rowid As String) As String
+            Dim varPostitionName As String = String.Empty
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(0).Query = String.Format("select ps.position_name from dbo.[[man]]position] ps where ps.position_id = '{0}'", RowID)
-                V_PostitionName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
-            ElseIf DBEngine = "MYSQL" Then
-                V_DBR_MYSQL(0).Query = String.Format("select ps.position_name from man_position ps where ps.position_id = '{0}'", RowID)
-                V_PostitionName = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query).ToString
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(0).Query = String.Format("select ps.position_name from dbo.man_position ps where ps.position_id = '{0}'", rowid)
+                varPostitionName = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query).ToString
+            ElseIf dbengine = "MYSQL" Then
+                V_DBR_MYSQL(0).Query = String.Format("select ps.position_name from man_position ps where ps.position_id = '{0}'", rowid)
+                varPostitionName = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(0).Query).ToString
             End If
 
-            Return V_PostitionName
+            Return varPostitionName
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETPositionDescription(ByVal DBEngine As String, ByVal RowID As String) As String
-            Dim V_PostitionDescription As String = String.Empty
+        Public Shared Function GetPositionDescription(databasename As String, dbengine As String, rowid As String) As String
+            Dim varPostitionDescription As String = String.Empty
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(0).Query = String.Format("select ps.position_description from dbo.[[man]]position] ps where ps.position_id = '{0}'", RowID)
-                V_PostitionDescription = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query).ToString
-            ElseIf DBEngine = "MYSQL" Then
-                V_DBR_MYSQL(0).Query = String.Format("select ps.position_description from man_position ps where ps.position_id = '{0}'", RowID)
-                V_PostitionDescription = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query).ToString
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(0).Query = String.Format("select ps.position_description from dbo.man_position ps where ps.position_id = '{0}'", rowid)
+                varPostitionDescription = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query).ToString
+            ElseIf dbengine = "MYSQL" Then
+                V_DBR_MYSQL(0).Query = String.Format("select ps.position_description from man_position ps where ps.position_id = '{0}'", rowid)
+                varPostitionDescription = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(0).Query).ToString
             End If
 
-            Return V_PostitionDescription
+            Return varPostitionDescription
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsDuplicate(ByVal DBEngine As String, ByVal Departement As String, ByVal PositionCode As String, ByVal RowID As String) As Boolean
-            Dim V_IsDuplicate As Integer = 0
-            Dim V_Where As String = "where "
+        Public Shared Function IsDuplicate(databasename As String, dbengine As String, departement As String, positioncode As String, Optional rowid As String = "-1") As Boolean
+            Dim varIsDuplicate As Integer = 0
+            Dim varWhere As String = "where "
 
-            If RowID = "-1" Then
-                V_Where += String.Format("(ps.position_departement = '{0}') and (ps.position_code = '{1}')", Departement, PositionCode)
+            If rowid = "-1" Then
+                varWhere += String.Format("(ps.position_departement = '{0}') and (ps.position_code = '{1}')", departement, positioncode)
             Else
-                V_Where += String.Format("(ps.position_departement = '{0}') and (ps.position_code = '{1}' and ps.position_id <> '{2}')", Departement, PositionCode, RowID)
+                varWhere += String.Format("(ps.position_departement = '{0}') and (ps.position_code = '{1}' and ps.position_id <> '{2}')", departement, positioncode, rowid)
             End If
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(0).Query = String.Format("select (ps.position_id) as [rows] from dbo.[[man]]position] ps {0}", V_Where)
-                V_IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
-            ElseIf DBEngine = "MYSQL" Then
-                V_DBR_MYSQL(0).Query = String.Format("select (ps.position_id) as [rows] from man_position ps {0}", V_Where)
-                V_IsDuplicate = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query), Integer)
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(0).Query = String.Format("select (ps.position_id) as [rows] from dbo.man_position ps {0}", varWhere)
+                varIsDuplicate = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Integer)
+            ElseIf dbengine = "MYSQL" Then
+                V_DBR_MYSQL(0).Query = String.Format("select (ps.position_id) as [rows] from man_position ps {0}", varWhere)
+                varIsDuplicate = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(0).Query), Integer)
             End If
 
-            If V_IsDuplicate = 0 Then
+            If varIsDuplicate = 0 Then
                 Return False
             Else
                 Return True
@@ -205,38 +205,37 @@ Namespace Commands.POST
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PUSHData(ByVal DBEngine As String, ByVal Department As String, ByVal Code As String, ByVal Name As String, ByVal Description As String, Optional ByVal RowID As String = "-1") As Boolean
-            Dim V_Success As Boolean = False
+        Public Shared Function PushData(databasename As String, dbengine As String, department As String, code As String, name As String, description As String, Optional ByVal rowid As String = "-1") As Boolean
+            Dim varSuccess As Boolean = False
+            Dim varHash As String = CMCv.Security.Encrypt.MD5()
 
             Try
-                If DBEngine = "MSSQL" Then
-                    If RowID = "-1" Then
-                        Dim Hash As String = CMCv.Security.Encrypt.MD5()
-                        V_DBR_MSSQL2008(1).Query = String.Format("insert into dbo.[[man]]position](position_id, position_departement, position_code, position_name, position_description) " &
-                                                            "values ('{0}', '{1}', '{2}', '{3}', '{4}')", Hash, Department, Code, Name, Description)
+                If dbengine = "MSSQL" Then
+                    If rowid = "-1" Then
+                        V_DBR_MSSQL2008(1).Query = String.Format("insert into dbo.man_position(position_id, position_departement, position_code, position_name, position_description) " &
+                                                            "values ('{0}', '{1}', '{2}', '{3}', '{4}')", varHash, department, code, name, description)
                     Else
-                        V_DBR_MSSQL2008(1).Query = String.Format("update dbo.[[man]]position] set position_departement = '{0}', position_code = '{1}', position_name = '{2}', position_description = '{3}' " &
-                                                            "where position_id = '{4}'", Department, Code, Name, Description, RowID)
+                        V_DBR_MSSQL2008(1).Query = String.Format("update dbo.man_position set position_departement = '{0}', position_code = '{1}', position_name = '{2}', position_description = '{3}' " &
+                                                            "where position_id = '{4}'", department, code, name, description, rowid)
                     End If
-                    V_DBE_MSSQL2008.PUSHDATA(V_DBR_MSSQL2008(1).Query)
-                ElseIf DBEngine = "MYSQL" Then
-                    If RowID = "-1" Then
-                        Dim Hash As String = CMCv.Security.Encrypt.MD5()
+                    V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                ElseIf dbengine = "MYSQL" Then
+                    If rowid = "-1" Then
                         V_DBR_MYSQL(1).Query = String.Format("insert into man_position(position_id, position_departement, position_code, position_name, position_description) " &
-                                                            "values ('{0}', '{1}', '{2}', '{3}', '{4}')", Hash, Department, Code, Name, Description)
+                                                            "values ('{0}', '{1}', '{2}', '{3}', '{4}')", varHash, department, code, name, description)
                     Else
                         V_DBR_MYSQL(1).Query = String.Format("update man_position set position_departement = '{0}', position_code = '{1}', position_name = '{2}', position_description = '{3}' " &
-                                                            "where position_id = '{4}'", Department, Code, Name, Description, RowID)
+                                                            "where position_id = '{4}'", department, code, name, description, rowid)
                     End If
-                    V_DBE_MYSQL.PUSHDATA(V_DBR_MYSQL(1).Query)
+                    V_DBE_MYSQL.PushData(databasename, V_DBR_MYSQL(1).Query)
                 End If
 
-                V_Success = True
+                varSuccess = True
             Catch ex As Exception
-                V_Success = False
+                varSuccess = False
             End Try
 
-            Return V_Success
+            Return varSuccess
         End Function
     End Class
 End Namespace

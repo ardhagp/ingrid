@@ -65,7 +65,7 @@ Module Globals
         Catch ex As Exception
             With proLog
                 .AppVersion = GETAPPVERSION()
-                .FromSender = "[DblBuffer] $Ingrid\Apps\Components\Connect\020. Module\Globals.vb"
+                .FromSender = "[DblBuffer] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult
@@ -128,7 +128,7 @@ Module Globals
         Catch ex As Exception
             With proLog
                 .AppVersion = GETAPPVERSION()
-                .FromSender = "[Display] $Ingrid\Apps\Components\Connect\020. Module\Globals.vb"
+                .FromSender = "[Display] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult
@@ -165,7 +165,7 @@ Module Globals
         Catch ex As Exception
             With proLog
                 .AppVersion = GetAppVersion()
-                .FromSender = "[GetAppVersion] $Ingrid\Apps\Components\Connect\020. Module\Globals.vb"
+                .FromSender = "[GetAppVersion] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult

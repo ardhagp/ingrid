@@ -52,7 +52,7 @@ Public Class DAR_RPTContainer
         Catch ex As Exception
             With proLog
                 .AppVersion = GetAppVersion()
-                .FromSender = "[DAR_RPTContainer_Load] $Ingrid\Apps\Core\Vb\030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RPTContainer.vb"
+                .FromSender = "[DAR_RPTContainer_Load] $\Ingrid\Apps\Core\Vb\030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RPTContainer.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult

@@ -37,13 +37,13 @@ Public Class LOGIN
             Return
         End If
 
-        varUserAttributes.UID = Commands.UAC.Login.GETUID(varDatabaseEngine, TxtUsername.XOSQLText, TxtPassword.XOSQLText, varUserAttributes.FirstName)
+        varUserAttributes.UID = Commands.UAC.Login.GetUID(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText, TxtPassword.XOSQLText, varUserAttributes.FirstName)
 
         If varUserAttributes.UID = String.Empty Then
             RaiseEvent LoginFailed()
             varWrongLogin += 1
             SLFStatus.Items(0).Text = "Login Failed"
-            varLogUser.LoginFailed(varDatabaseEngine, TxtUsername.XOSQLText)
+            varLogUser.LoginFailed(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText)
 
             Bridge.Security.Writelog.Sendlog("""message"" : """ & TxtUsername.XOSQLText & " failed to login."",", "Warning")
 
@@ -53,15 +53,15 @@ Public Class LOGIN
             End If
         Else
             With varUserAttributes
-                .EID = Commands.UAC.Login.GETEID(varDatabaseEngine, varUserAttributes.UID)
-                .FirstName = Commands.UAC.Login.GETFirstName(varDatabaseEngine, varUserAttributes.UID)
-                .EmployeeNumber = Commands.UAC.Login.GETEmployeeNumber(varDatabaseEngine, varUserAttributes.UID)
-                .Gender = Commands.UAC.Login.GETGender(varDatabaseEngine, varUserAttributes.UID)
-                .Position = Commands.UAC.Login.GETPosition(varDatabaseEngine, varUserAttributes.UID)
-                .IsAdministrator = Commands.UAC.Login.GETAdministrator(varDatabaseEngine, varUserAttributes.UID)
+                .EID = Commands.UAC.Login.GetEID(varDatabaseName, varDatabaseEngine, varUserAttributes.UID)
+                .FirstName = Commands.UAC.Login.GETFirstName(varDatabaseName, varDatabaseEngine, varUserAttributes.UID)
+                .EmployeeNumber = Commands.UAC.Login.GetEmployeeNumber(varDatabaseName, varDatabaseEngine, varUserAttributes.UID)
+                .Gender = Commands.UAC.Login.GetGender(varDatabaseName, varDatabaseEngine, varUserAttributes.UID)
+                .Position = Commands.UAC.Login.GetPosition(varDatabaseName, varDatabaseEngine, varUserAttributes.UID)
+                .IsAdministrator = Commands.UAC.Login.GetAdministrator(varDatabaseName, varDatabaseEngine, varUserAttributes.UID)
             End With
 
-            varLogUser.LoginSuccess(varDatabaseEngine, varUserAttributes.EID)
+            varLogUser.LoginSuccess(varDatabaseName, varDatabaseEngine, varUserAttributes.EID)
             Bridge.Security.Writelog.Sendlog("""message"" : " & varUserAttributes.FirstName & " is login."",", "Information")
             RaiseEvent LoginSuccess()
             Me.Close()

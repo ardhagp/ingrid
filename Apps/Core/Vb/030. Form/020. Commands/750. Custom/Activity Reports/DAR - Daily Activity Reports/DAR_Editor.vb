@@ -21,12 +21,12 @@ Public Class DAR_Editor
 #Region "Sub Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GETAffectedArea()
-        Commands.DAR.Editor.GETAffectedArea(varDatabaseEngine, CboArea)
+        Commands.DAR.Editor.GetAffectedArea(varDatabaseName, varDatabaseEngine, CboArea)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub GETTemplateTitle()
-        Commands.DAR.Editor.GETTemplateTitle(varDatabaseEngine, CboTemplate)
+        Commands.DAR.Editor.GetTemplateTitle(varDatabaseName, varDatabaseEngine, CboTemplate)
     End Sub
 
     Public Sub CheckAllInput()
@@ -48,7 +48,7 @@ Public Class DAR_Editor
         DgnPictureList.Rows.Clear()
         TxtPhotoPath.Clear()
 
-        V_DS(0) = V_SQL.DisplayPhotoGrid(varDatabaseEngine, varFormAttributes.RowID.ToString, DgnPictureList)
+        V_DS(0) = V_SQL.DisplayPhotoGrid(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID.ToString, DgnPictureList)
 
         For i As Integer = 0 To V_DS(0).Tables("TPhotoFileEditor").Rows.Count - 1
             DgnPictureList.Rows.Add(V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_id"), V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_filename"), V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_datetime"), V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_content"), "", V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_uploader"))
@@ -64,7 +64,7 @@ Public Class DAR_Editor
         V_DS(1) = New DataSet
 
         DblBuffer(DgnFileList)
-        V_DS(1) = V_SQL.DisplayFileGrid(varDatabaseEngine, varFormAttributes.RowID.ToString, DgnFileList)
+        V_DS(1) = V_SQL.DisplayFileGrid(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID.ToString, DgnFileList)
 
         For i As Integer = 0 To V_DS(1).Tables("TFileEditor").Rows.Count - 1
             DgnFileList.Rows.Add(V_DS(1).Tables("TFileEditor").Rows(i).Item("file_id"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_filename"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_tag"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_datetime"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_content"), "", V_DS(1).Tables("TFileEditor").Rows(i).Item("file_uploader"))
@@ -139,10 +139,10 @@ Public Class DAR_Editor
     Private Sub BtnGETContent_Click(sender As Object, e As EventArgs) Handles BtnGETContent.Click
         If Not (varFormAttributes.IsNew) Then
             If Decision("Do you want to replace Description with template content?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(varDatabaseEngine, CboTemplate)
+                TxtContent.Text = Commands.DAR.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
             End If
         Else
-            TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(varDatabaseEngine, CboTemplate)
+            TxtContent.Text = Commands.DAR.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
         End If
     End Sub
 
@@ -179,7 +179,7 @@ Public Class DAR_Editor
             Return
         End If
 
-        If (Commands.DAR.Editor.PUSHData(varDatabaseEngine, CboArea.SelectedValue.ToString, CboTemplate.SelectedValue.ToString, CType(DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, String), CType(MebStart.Text.Replace(".", ":"), String), CType(DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, String), CType(MebEnd.Text.Replace(".", ":"), String), TxtContent.XOSQLText, TxtFeedback.XOSQLText, varUserAttributes.UID, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, V_ExtQuery)) Then
+        If (Commands.DAR.Editor.PushData(varDatabaseName, varDatabaseEngine, CboArea.SelectedValue.ToString, CboTemplate.SelectedValue.ToString, CType(DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, String), CType(MebStart.Text.Replace(".", ":"), String), CType(DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, String), CType(MebEnd.Text.Replace(".", ":"), String), TxtContent.XOSQLText, TxtFeedback.XOSQLText, varUserAttributes.UID, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, V_ExtQuery)) Then
             V_ExtQuery = String.Empty
             Mainframe_n_6.Ts_status.Text = "Success"
 
@@ -191,7 +191,7 @@ Public Class DAR_Editor
             Next
 
             If V_NewPhotoAdded > 0 Then
-                If (Commands.DAR.Editor.PUSHPhoto(varDatabaseEngine, DgnPictureList, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, DtpStart.Value)) Then
+                If (Commands.DAR.Editor.PushPhoto(varDatabaseEngine, DgnPictureList, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, DtpStart.Value)) Then
                     Mainframe_n_6.Ts_status.Text = "Success + All pictures has been added"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Success + With errors while adding pictures"
@@ -202,15 +202,15 @@ Public Class DAR_Editor
             End If
 
             'Add new File
-            Dim V_NewFileAdded As Integer = 0
+            Dim varNewFileAdded As Integer = 0
             For Each V_Row As DataGridViewRow In DgnFileList.Rows
                 If V_Row.Cells("file_status").Value.ToString Is "Add" Then
-                    V_NewFileAdded += 1
+                    varNewFileAdded += 1
                 End If
             Next
 
-            If V_NewFileAdded > 0 Then
-                If (Commands.DAR.Editor.PUSHFile(varDatabaseEngine, DgnFileList, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, DtpStart.Value)) Then
+            If varNewFileAdded > 0 Then
+                If (Commands.DAR.Editor.PushFile(varDatabaseEngine, DgnFileList, varFormAttributes.RowID.ToString, varFormAttributes.IsNew, DtpStart.Value)) Then
                     Mainframe_n_6.Ts_status.Text = "Success + All file has been added"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Success + With errors while adding files"
@@ -219,7 +219,6 @@ Public Class DAR_Editor
                 DgnFileList.Rows.Clear()
                 PctbxPhoto.Image = Nothing
             End If
-
 
             RaiseEvent RecordSaved()
         Else
@@ -238,7 +237,7 @@ Public Class DAR_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub LoadData()
-        Commands.DAR.Editor.GETRowValue(varDatabaseEngine, varFormAttributes.RowID.ToString, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
+        Commands.DAR.Editor.GetRowValue(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID.ToString, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
         Call LoadAttachment()
     End Sub
 #End Region
@@ -248,10 +247,10 @@ Public Class DAR_Editor
         If e.KeyCode = Keys.Enter Then
             If Not (varFormAttributes.IsNew) Then
                 If Decision("Do you want to replace Description with template content?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(varDatabaseEngine, CboTemplate)
+                    TxtContent.Text = Commands.DAR.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
                 End If
             Else
-                TxtContent.Text = Commands.DAR.Editor.GETTemplateContent(varDatabaseEngine, CboTemplate)
+                TxtContent.Text = Commands.DAR.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
             End If
         End If
     End Sub
@@ -324,7 +323,7 @@ Public Class DAR_Editor
         If TypeOf V_Sendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
             If Decision("Do you want to remove selected photo?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
                 If DgnPictureList.CurrentRow.Cells("photo_status").Value IsNot "Add" Then
-                    V_ExtQuery += String.Format("delete from db_universe_erp_file.dbo.[[sto]]file] where [file_id] = '{0}';", DgnPictureList.CurrentRow.Cells("photo_id").Value)
+                    V_ExtQuery += String.Format("delete from db_universe_erp_file.dbo.sto_file where [file_id] = '{0}';", DgnPictureList.CurrentRow.Cells("photo_id").Value)
                 End If
 
                 DgnPictureList.Rows.Remove(DgnPictureList.SelectedRows(0))
@@ -413,7 +412,7 @@ Public Class DAR_Editor
         If TypeOf V_Sendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
             If Decision("Do you want to remove selected file?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
                 If DgnFileList.CurrentRow.Cells("file_status").Value IsNot "Add" Then
-                    V_ExtQuery += String.Format("delete from db_universe_erp_file.dbo.[[sto]]file] where [file_id] = '{0}';", DgnFileList.CurrentRow.Cells("file_id").Value)
+                    V_ExtQuery += String.Format("delete from db_universe_erp_file.dbo.sto_file where [file_id] = '{0}';", DgnFileList.CurrentRow.Cells("file_id").Value)
                 End If
                 DgnFileList.Rows.Remove(DgnFileList.SelectedRows(0))
 

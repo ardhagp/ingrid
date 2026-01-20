@@ -14,9 +14,9 @@ Public Class MCTG
     ''' <param name="ForceRefresh">True/False</param>
     ''' <remarks>True untuk mengambil data tanpa filter</remarks>
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA(Optional ForceRefresh As Boolean = False)
+    Private Sub GetData(Optional forcerefresh As Boolean = False)
         DblBuffer(DgnMCTG)
-        Commands.MCTG.View.DISPLAYDATA(varDatabaseEngine, DgnMCTG, SLFStatus, TxtFind, ForceRefresh)
+        Commands.MCTG.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnMCTG, SLFStatus, TxtFind, forcerefresh)
     End Sub
 #End Region
 

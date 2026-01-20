@@ -59,7 +59,7 @@ ByVal FormatFlags As Windows.Forms.TextFormatFlags) As String
             If File.Exists(_varOriginalSourceFile) Then
                 Select Case _Source
                     Case Import.Data.DataType.TypeofImports.MaterialMasterCatalog
-                        _SQL_Catalog.Execute(TxtProgress, _varOriginalSourceFile)
+                        _SQL_Catalog.Execute(varDatabaseName, TxtProgress, _varOriginalSourceFile)
                     Case Import.Data.DataType.TypeofImports.MaterialMasterPlant
                         'nothing
                 End Select

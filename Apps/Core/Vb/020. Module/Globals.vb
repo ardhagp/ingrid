@@ -21,6 +21,7 @@ Module Globals
     Public FolderHandler As New CMCv.OperatingSystem.Folder
     'Public SecurityEngine As New Security.Engine
     Public varDatabaseEngine As String
+    Public varDatabaseName As String
     Public V_IMG_COMPRESS As New CMCv.ImageEditor.Proccessor.Compress
     Public V_IMG_EDITOR As New CMCv.ImageEditor.Proccessor.Editor
     Public varUserAccess As New Application.Access
@@ -59,7 +60,7 @@ Module Globals
         Catch ex As Exception
             With proLog
                 .AppVersion = GetAppVersion()
-                .FromSender = "[DblBuffer] $Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
+                .FromSender = "[DblBuffer] $\Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult
@@ -99,7 +100,7 @@ Module Globals
         Catch ex As Exception
             With proLog
                 .AppVersion = GetAppVersion()
-                .FromSender = "[DblBuffer] $Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
+                .FromSender = "[DblBuffer] $\Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult
@@ -202,7 +203,7 @@ Module Globals
         Catch ex As Exception
             With proLog
                 .AppVersion = GETAPPVERSION()
-                .FromSender = "[Open] $Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
+                .FromSender = "[Open] $\Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult
@@ -259,7 +260,7 @@ Module Globals
         Catch ex As Exception
             With proLog
                 .AppVersion = GETAPPVERSION()
-                .FromSender = "[Open] $Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
+                .FromSender = "[Open] $\Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult
