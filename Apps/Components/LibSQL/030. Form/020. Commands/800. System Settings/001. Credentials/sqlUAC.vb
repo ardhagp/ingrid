@@ -23,41 +23,41 @@ Namespace Commands.UAC
         ''' <returns></returns>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETUID(ByVal DBEngine As String, ByVal Username As String, ByVal Password As String, Optional ByVal AdditionalField As Object = Nothing) As String
-            Dim V_UID As String = String.Empty
-            Dim V_Exist As Integer = 0
+        Public Shared Function GetUID(databasename As String, dbengine As String, username As String, password As String, Optional additionalfield As Object = Nothing) As String
+            Dim varUserID As String = String.Empty
+            Dim varExist As Integer = 0
             Try
-                If DBEngine = "MSSQL" Then 'Run if MSSQL
-                    V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", Username, CMCv.Security.Encrypt.MD5(Password))
-                    V_Exist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Integer)
+                If dbengine = "MSSQL" Then 'Run if MSSQL
+                    V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.sys_user usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", username, CMCv.Security.Encrypt.MD5(password))
+                    varExist = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Integer)
 
-                    If V_Exist = 0 Then
-                        V_UID = String.Empty
+                    If varExist = 0 Then
+                        varUserID = String.Empty
                     Else
-                        V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_id from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", Username, CMCv.Security.Encrypt.MD5(Password))
-                        V_UID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
+                        V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_id from dbo.sys_user usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", username, CMCv.Security.Encrypt.MD5(password))
+                        varUserID = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
 
-                        V_DBR_MSSQL2008(1).Query = String.Format("update dbo.[[sys]]user] set user_lastlogin = getdate() where user_id = '{0}'", V_UID)
-                        V_DBE_MSSQL2008.PUSHDATA(V_DBR_MSSQL2008(1).Query)
+                        V_DBR_MSSQL2008(1).Query = String.Format("update dbo.sys_user set user_lastlogin = getdate() where user_id = '{0}'", varUserID)
+                        V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
                     End If
-                ElseIf DBEngine = "MYSQL" Then 'Run if MYSQL
-                    V_DBR_MYSQL(1).Query = String.Format("select count(usr.user_id) as user_id from sys_user usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", Username, CMCv.Security.Encrypt.MD5(Password))
-                    V_Exist = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query), Integer)
+                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                    V_DBR_MYSQL(1).Query = String.Format("select count(usr.user_id) as user_id from sys_user usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", username, CMCv.Security.Encrypt.MD5(password))
+                    varExist = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query), Integer)
 
-                    If V_Exist = 0 Then
-                        V_UID = String.Empty
+                    If varExist = 0 Then
+                        varUserID = String.Empty
                     Else
-                        V_DBR_MYSQL(1).Query = String.Format("select usr.user_id from sys_user usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", Username, CMCv.Security.Encrypt.MD5(Password))
-                        V_UID = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query).ToString
+                        V_DBR_MYSQL(1).Query = String.Format("select usr.user_id from sys_user usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", username, CMCv.Security.Encrypt.MD5(password))
+                        varUserID = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
 
-                        V_DBR_MYSQL(1).Query = String.Format("update sys_user set user_lastlogin = getdate() where user_id = '{0}'", V_UID)
-                        V_DBE_MYSQL.PUSHDATA(V_DBR_MYSQL(1).Query)
+                        V_DBR_MYSQL(1).Query = String.Format("update sys_user set user_lastlogin = getdate() where user_id = '{0}'", varUserID)
+                        V_DBE_MYSQL.PushData(databasename, V_DBR_MYSQL(1).Query)
                     End If
                 End If
             Catch ex As Exception
-                V_UID = String.Empty
+                varUserID = String.Empty
             End Try
-            Return V_UID
+            Return varUserID
         End Function
 
         ''' <summary>
@@ -66,62 +66,62 @@ Namespace Commands.UAC
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETEID(ByVal DBEngine As String, ByVal UID As String) As String
-            Dim V_EID As String = String.Empty
+        Public Shared Function GetEID(databasename As String, dbengine As String, uid As String) As String
+            Dim varEmployeeID As String
 
             Try
-                V_EID = String.Empty
+                varEmployeeID = String.Empty
 
-                If DBEngine = "MSSQL" Then 'Run if MSSQL
-                    V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_employee from dbo.[[sys]]user] usr where usr.user_id = '{0}';", UID)
-                    V_EID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
-                ElseIf DBEngine = "MYSQL" Then 'Run if MYSQL
-                    V_DBR_MYSQL(1).Query = String.Format("select usr.user_employee from sys_user usr where usr.user_id = '{0}';", UID)
-                    V_EID = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query).ToString
+                If dbengine = "MSSQL" Then 'Run if MSSQL
+                    V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_employee from dbo.sys_user usr where usr.user_id = '{0}';", uid)
+                    varEmployeeID = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                    V_DBR_MYSQL(1).Query = String.Format("select usr.user_employee from sys_user usr where usr.user_id = '{0}';", uid)
+                    varEmployeeID = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
                 End If
             Catch ex As Exception
-                V_EID = String.Empty
+                varEmployeeID = String.Empty
             End Try
 
-            Return V_EID
+            Return varEmployeeID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETFirstName(ByVal DBEngine As String, ByVal UID As String) As String
-            Dim V_FullName As String = String.Empty
+        Public Shared Function GetFirstName(databasename As String, dbengine As String, uid As String) As String
+            Dim varFullName As String = String.Empty
 
             Try
-                If DBEngine = "MSSQL" Then 'Run if MSSQL
-                    V_DBR_MSSQL2008(1).Query = String.Format("select emp.employee_fullname from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", UID)
-                    V_FullName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
-                ElseIf DBEngine = "MYSQL" Then 'Run if MYSQL
-                    V_DBR_MYSQL(1).Query = String.Format("select emp.employee_fullname from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{0}')", UID)
-                    V_FullName = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query).ToString
+                If dbengine = "MSSQL" Then 'Run if MSSQL
+                    V_DBR_MSSQL2008(1).Query = String.Format("select emp.employee_fullname from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
+                    varFullName = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                    V_DBR_MYSQL(1).Query = String.Format("select emp.employee_fullname from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{0}')", uid)
+                    varFullName = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
                 End If
             Catch ex As Exception
-                V_FullName = String.Empty
+                varFullName = String.Empty
             End Try
 
-            Return V_FullName
+            Return varFullName
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETLastName(ByVal DBEngine As String, ByVal UID As String) As String
-            Dim V_FullName As String = String.Empty
+        Public Shared Function GetLastName(databasename As String, dbengine As String, uid As String) As String
+            Dim varFullName As String = String.Empty
 
             Try
-                If DBEngine = "MSSQL" Then 'Run if MSSQL
-                    V_DBR_MSSQL2008(1).Query = String.Format("select emp.employee_fullname from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", UID)
-                    V_FullName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
-                ElseIf DBEngine = "MYSQL" Then 'Run if MYSQL
-                    V_DBR_MYSQL(1).Query = String.Format("select emp.employee_fullname from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{0}')", UID)
-                    V_FullName = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query).ToString
+                If dbengine = "MSSQL" Then 'Run if MSSQL
+                    V_DBR_MSSQL2008(1).Query = String.Format("select emp.employee_fullname from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
+                    varFullName = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                    V_DBR_MYSQL(1).Query = String.Format("select emp.employee_fullname from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{0}')", uid)
+                    varFullName = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
                 End If
             Catch ex As Exception
-                V_FullName = String.Empty
+                varFullName = String.Empty
             End Try
 
-            Return V_FullName
+            Return varFullName
         End Function
 
         ''' <summary>
@@ -130,22 +130,22 @@ Namespace Commands.UAC
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETEmployeeNumber(ByVal DBEngine As String, ByVal UID As String) As String
-            Dim V_EmployeeNumber As String = String.Empty
+        Public Shared Function GetEmployeeNumber(databasename As String, dbengine As String, uid As String) As String
+            Dim varEmployeeNumber As String = String.Empty
 
             Try
-                If DBEngine = "MSSQL" Then 'Run if MSSQL
-                    V_DBR_MSSQL2008(1).Query = String.Format("select emp.employee_number from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", UID)
-                    V_EmployeeNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
-                ElseIf DBEngine = "MYSQL" Then 'Run if MYSQL
-                    V_DBR_MYSQL(1).Query = String.Format("select emp.employee_number from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", UID)
-                    V_EmployeeNumber = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query).ToString
+                If dbengine = "MSSQL" Then 'Run if MSSQL
+                    V_DBR_MSSQL2008(1).Query = String.Format("select emp.employee_number from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
+                    varEmployeeNumber = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                    V_DBR_MYSQL(1).Query = String.Format("select emp.employee_number from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
+                    varEmployeeNumber = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
                 End If
             Catch ex As Exception
-                V_EmployeeNumber = String.Empty
+                varEmployeeNumber = String.Empty
             End Try
 
-            Return V_EmployeeNumber
+            Return varEmployeeNumber
         End Function
 
         ''' <summary>
@@ -154,22 +154,22 @@ Namespace Commands.UAC
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETGender(ByVal DBEngine As String, ByVal UID As String) As String
-            Dim V_EmployeeNumber As String = String.Empty
+        Public Shared Function GetGender(databasename As String, dbengine As String, uid As String) As String
+            Dim varEmployeeNumber As String = String.Empty
 
             Try
-                If DBEngine = "MSSQL" Then 'Run if MSSQL
-                    V_DBR_MSSQL2008(1).Query = String.Format("select emp.employee_gender from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", UID)
-                    V_EmployeeNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
-                ElseIf DBEngine = "MYSQL" Then 'Run if MYSQL
-                    V_DBR_MYSQL(1).Query = String.Format("select emp.employee_gender from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{0}')", UID)
-                    V_EmployeeNumber = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query).ToString
+                If dbengine = "MSSQL" Then 'Run if MSSQL
+                    V_DBR_MSSQL2008(1).Query = String.Format("select emp.employee_gender from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
+                    varEmployeeNumber = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                    V_DBR_MYSQL(1).Query = String.Format("select emp.employee_gender from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{0}')", uid)
+                    varEmployeeNumber = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
                 End If
             Catch ex As Exception
-                V_EmployeeNumber = "MALE"
+                varEmployeeNumber = "MALE"
             End Try
 
-            Return V_EmployeeNumber
+            Return varEmployeeNumber
         End Function
 
         ''' <summary>
@@ -178,24 +178,24 @@ Namespace Commands.UAC
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETPosition(ByVal DBEngine As String, ByVal UID As String) As String
-            Dim V_EmployeeNumber As String = String.Empty
+        Public Shared Function GetPosition(databasename As String, dbengine As String, uid As String) As String
+            Dim varEmployeeNumber As String = String.Empty
 
             Try
-                If DBEngine = "MSSQL" Then 'Run if MSSQL
-                    V_DBR_MSSQL2008(1).Query = String.Format("select p.position_name from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] emp on emp.employee_id = usr.user_employee " &
-                                                        "inner join dbo.[[man]]position] p on p.position_id = emp.employee_position where (usr.[user_id] = '{0}')", UID)
-                    V_EmployeeNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
-                ElseIf DBEngine = "MYSQL" Then 'Run if MYSQL
+                If dbengine = "MSSQL" Then 'Run if MSSQL
+                    V_DBR_MSSQL2008(1).Query = String.Format("select p.position_name from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee " &
+                                                        "inner join dbo.man_position p on p.position_id = emp.employee_position where (usr.[user_id] = '{0}')", uid)
+                    varEmployeeNumber = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
                     V_DBR_MYSQL(1).Query = String.Format("select p.position_name from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee " &
-                                                        "inner join man_position p on p.position_id = emp.employee_position where (usr.user_id = '{0}')", UID)
-                    V_EmployeeNumber = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query).ToString
+                                                        "inner join man_position p on p.position_id = emp.employee_position where (usr.user_id = '{0}')", uid)
+                    varEmployeeNumber = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
                 End If
             Catch ex As Exception
-                V_EmployeeNumber = "#ERROR"
+                varEmployeeNumber = "#ERROR"
             End Try
 
-            Return V_EmployeeNumber
+            Return varEmployeeNumber
         End Function
 
         ''' <summary>
@@ -206,26 +206,26 @@ Namespace Commands.UAC
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETAccess(ByVal DBEngine As String, ByVal AuthType As EnuAuthType, ByVal SysModule As String, ByVal UID As Integer) As Boolean
-            Dim V_IsAuth As Integer
+        Public Shared Function GetAccess(databasename As String, dbengine As String, authtype As EnuAuthType, sysmodule As String, uid As Integer) As Boolean
+            Dim varIsAuth As Integer
 
-            If AuthType = EnuAuthType.Read Then
+            If authtype = EnuAuthType.Read Then
                 'TODO: Read method
-            ElseIf AuthType = EnuAuthType.Write Then
+            ElseIf authtype = EnuAuthType.Write Then
                 'TODO: Write method
-            ElseIf AuthType = EnuAuthType.Execute Then
+            ElseIf authtype = EnuAuthType.Execute Then
                 'TODO: Execute method
             End If
 
-            If DBEngine = "MSSQL" Then 'Run if MSSQL
+            If dbengine = "MSSQL" Then 'Run if MSSQL
                 V_DBR_MSSQL2008(0).Query = ""
-                V_IsAuth = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Integer)
-            ElseIf DBEngine = "MYSQL" Then 'Run if MYSQL
+                varIsAuth = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Integer)
+            ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
                 V_DBR_MYSQL(0).Query = ""
-                V_IsAuth = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query), Integer)
+                varIsAuth = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(0).Query), Integer)
             End If
 
-            If V_IsAuth = 0 Then
+            If varIsAuth = 0 Then
                 Return False
             Else
                 Return True
@@ -238,31 +238,30 @@ Namespace Commands.UAC
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Function GETPhoto(ByVal DBEngine As String, ByVal UID As String) As System.Drawing.Image
+        Public Function GetPhoto(databasename As String, dbengine As String, uid As String) As System.Drawing.Image
             'TODO: To be moved into cloud storage
 
-            Dim V_UID As String = UID
-            Dim V_Photo As System.Drawing.Image = Nothing
-            Dim V_FileStream As IO.FileStream = Nothing
+            Dim varUID As String = uid
+            Dim varPhoto As System.Drawing.Image = Nothing
+            Dim varFileStream As IO.FileStream = Nothing
 
             Try
-                If DBEngine = "MSSQL" Then
-                    V_DBR_MSSQL2008(0).Query = String.Format("SELECT f.file_content FROM db_universe_erp_file.dbo.[[sto]]file] f where f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_parent = '{0}' ;", V_UID)
-                    V_FileStream = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), FileStream)
-                ElseIf DBEngine = "MYSQL" Then
-                    V_DBR_MYSQL(0).Query = String.Format("SELECT f.file_content FROM db_universe_erp_file.dbo.[[sto]]file] f where f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_parent = '{0}' ;", V_UID)
-                    V_FileStream = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query), FileStream)
+                If dbengine = "MSSQL" Then
+                    V_DBR_MSSQL2008(0).Query = String.Format("SELECT f.file_content FROM db_universe_erp_file.dbo.sto_file f where f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_parent = '{0}' ;", varUID)
+                    varFileStream = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), FileStream)
+                ElseIf dbengine = "MYSQL" Then
+                    V_DBR_MYSQL(0).Query = String.Format("SELECT f.file_content FROM db_universe_erp_file.dbo.sto_file f where f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_parent = '{0}' ;", varUID)
+                    varFileStream = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(0).Query), FileStream)
                 End If
 
-                If V_FileStream IsNot Nothing Then
-                    V_Photo = ImageEditor.Proccessor.Compress.OutputAsImage(V_FileStream)
+                If varFileStream IsNot Nothing Then
+                    varPhoto = ImageEditor.Proccessor.Compress.OutputAsImage(varFileStream)
                 End If
             Catch ex As Exception
-                V_Photo = Nothing
+                varPhoto = Nothing
             End Try
 
-            Return V_Photo
-
+            Return varPhoto
         End Function
 
         ''' <summary>
@@ -271,25 +270,25 @@ Namespace Commands.UAC
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETAdministrator(ByVal DBEngine As String, ByVal UID As String) As Boolean
-            Dim V_IsAdministrator As Boolean = False
+        Public Shared Function GetAdministrator(databasename As String, dbengine As String, uid As String) As Boolean
+            Dim varIsAdministrator As Boolean = False
 
             Try
-                If DBEngine = "MSSQL" Then 'Run if MSSQL
-                    V_DBR_MSSQL2008(0).Query = String.Format("select u.user_root from dbo.[[sys]]user] u where u.user_id = '{0}'", UID)
-                    V_IsAdministrator = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(0).Query), Boolean)
-                ElseIf DBEngine = "MYSQL" Then 'Run if MYSQL
-                    V_DBR_MYSQL(0).Query = String.Format("select u.user_root from sys_user u where u.user_id = '{0}'", UID)
-                    V_IsAdministrator = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(0).Query), Boolean)
+                If dbengine = "MSSQL" Then 'Run if MSSQL
+                    V_DBR_MSSQL2008(0).Query = String.Format("select u.user_root from dbo.sys_user u where u.user_id = '{0}'", uid)
+                    varIsAdministrator = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(0).Query), Boolean)
+                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                    V_DBR_MYSQL(0).Query = String.Format("select u.user_root from sys_user u where u.user_id = '{0}'", uid)
+                    varIsAdministrator = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(0).Query), Boolean)
                 End If
             Catch ex As Exception
-                V_IsAdministrator = False
+                varIsAdministrator = False
             End Try
 
-            Return V_IsAdministrator
+            Return varIsAdministrator
         End Function
 
-        Public Shared Function GETUID() As Integer
+        Public Shared Function GetUID() As Integer
             Return 1
         End Function
     End Class
@@ -304,31 +303,31 @@ Namespace Commands.UAC
         ''' <param name="Find"></param>
         ''' <param name="ForceRefresh"></param>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(ByVal DBEngine As String, ByVal DataGrid As dgn, ByVal StatusBar As stt, ByVal Find As txt, Optional ByVal ForceRefresh As Boolean = False)
-            If DBEngine = "MSSQL" Then 'Run if MSSQL
-                If (Find.XOSQLText = String.Empty) OrElse (ForceRefresh) Then
+        Public Shared Sub DisplayData(databasename As String, dbengine As String, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
+            If dbengine = "MSSQL" Then 'Run if MSSQL
+                If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     V_DBR_MSSQL2008(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as [user_root], usr.user_lastlogin, " &
-                                                            "usr.user_locked from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee order by em.employee_fullname")
+                                                            "usr.user_locked from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee order by em.employee_fullname")
                 Else
                     V_DBR_MSSQL2008(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as [user_root], usr.user_lastlogin, " &
-                                                            "usr.user_locked from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where (em.employee_number = '{0}') or " &
-                                                            "(em.employee_fullname like '%{0}%') or (usr.user_username = '{0}') order by em.employee_fullname", Find.XOSQLText)
+                                                            "usr.user_locked from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where (em.employee_number = '{0}') or " &
+                                                            "(em.employee_fullname like '%{0}%') or (usr.user_username = '{0}') order by em.employee_fullname", find.XOSQLText)
                 End If
-                V_DBR_MSSQL2008(0).DataGrid = DataGrid
-                V_DBR_MSSQL2008(0).StatusBar = StatusBar
-                V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(0), "TUAC")
-            ElseIf DBEngine = "MYSQL" Then 'Run in MYSQL
-                If (Find.XOSQLText = String.Empty) OrElse (ForceRefresh) Then
+                V_DBR_MSSQL2008(0).DataGrid = datagrid
+                V_DBR_MSSQL2008(0).StatusBar = statusbar
+                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(0), "TUAC")
+            ElseIf dbengine = "MYSQL" Then 'Run in MYSQL
+                If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     V_DBR_MYSQL(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as `user_root`, usr.user_lastlogin, " &
                                                             "usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee order by em.employee_fullname")
                 Else
                     V_DBR_MYSQL(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as `user_root`, usr.user_lastlogin, " &
                                                             "usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where (em.employee_number = '{0}') or " &
-                                                            "(em.employee_fullname like '%{0}%') or (usr.user_username = '{0}') order by em.employee_fullname", Find.XOSQLText)
+                                                            "(em.employee_fullname like '%{0}%') or (usr.user_username = '{0}') order by em.employee_fullname", find.XOSQLText)
                 End If
-                V_DBR_MYSQL(0).DataGrid = DataGrid
-                V_DBR_MYSQL(0).StatusBar = StatusBar
-                V_DBE_MYSQL.GETDATATABLE(V_DBR_MYSQL(0), "TUAC")
+                V_DBR_MYSQL(0).DataGrid = datagrid
+                V_DBR_MYSQL(0).StatusBar = statusbar
+                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(0), "TUAC")
             End If
         End Sub
 
@@ -338,22 +337,22 @@ Namespace Commands.UAC
         ''' <param name="RowID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function DELETEData(ByVal DBEngine As String, ByVal RowID As String) As Boolean
-            Dim V_Success As Boolean = False
+        Public Shared Function DeleteData(databasename As String, dbengine As String, rowid As String) As Boolean
+            Dim varSuccess As Boolean
             Try
-                If DBEngine = "MSSQL" Then 'Run if MSSQL
-                    V_DBR_MSSQL2008(1).Query = String.Format("delete from dbo.[[sys]]user] where (user_id = '{0}')", RowID)
-                    V_DBE_MSSQL2008.PUSHDATA(V_DBR_MSSQL2008(1).Query)
-                ElseIf DBEngine = "MYSQL" Then 'Run if MYSQL
-                    V_DBR_MYSQL(1).Query = String.Format("delete from sys_user where (user_id = '{0}')", RowID)
-                    V_DBE_MYSQL.PUSHDATA(V_DBR_MYSQL(1).Query)
+                If dbengine = "MSSQL" Then 'Run if MSSQL
+                    V_DBR_MSSQL2008(1).Query = String.Format("delete from dbo.sys_user where (user_id = '{0}')", rowid)
+                    V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                    V_DBR_MYSQL(1).Query = String.Format("delete from sys_user where (user_id = '{0}')", rowid)
+                    V_DBE_MYSQL.PushData(databasename, V_DBR_MYSQL(1).Query)
                 End If
 
-                V_Success = True
+                varSuccess = True
             Catch ex As Exception
-                V_Success = False
+                varSuccess = False
             End Try
-            Return V_Success
+            Return varSuccess
         End Function
     End Class
 
@@ -362,34 +361,34 @@ Namespace Commands.UAC
     ''' </summary>
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(ByVal DBEngine As String, ByVal Grid As dgn, Optional ByVal RowID As String = "-1")
-            If DBEngine = "MSSQL" Then
+        Public Shared Sub DisplayData(databasename As String, dbengine As String, grid As dgn, Optional rowid As String = "-1")
+            If dbengine = "MSSQL" Then
                 ReDim V_DBR_MSSQL2008(2)
 
-                If RowID = "-1" Then
+                If rowid = "-1" Then
                     V_DBR_MSSQL2008(2).Query = String.Format("select mog.modulegroup_name, mo.module_code, 0 as [useraccess_view], 0 as [useraccess_add], 0 as [useraccess_edit], 0 as [useraccess_delete], " &
-                                                            "0 as [useraccess_reports], '' as [useraccess_id], mo.module_id from dbo.[[sys]]module] mo inner join dbo.[[sys]]modulegroup] mog " &
+                                                            "0 as [useraccess_reports], '' as [useraccess_id], mo.module_id from dbo.sys_module mo inner join dbo.[[sys]]modulegroup] mog " &
                                                             "on mog.modulegroup_id = mo.module_modulegroup order by mog.modulegroup_order, mo.module_code")
                 Else
-                    V_DBR_MSSQL2008(2).Query = String.Format("select mog.modulegroup_name, mo.module_code, (select uac1.useraccess_view from dbo.[[sys]]useraccess] uac1 inner join dbo.[[sys]]module] mo1 " &
+                    V_DBR_MSSQL2008(2).Query = String.Format("select mog.modulegroup_name, mo.module_code, (select uac1.useraccess_view from dbo.[[sys]]useraccess] uac1 inner join dbo.sys_module mo1 " &
                                                             "on mo1.module_id = uac1.useraccess_module where uac1.useraccess_user = '{0}' and mo1.module_code = mo.module_code) as [useraccess_view], (select uac1.useraccess_add " &
-                                                            "from dbo.[[sys]]useraccess] uac1 inner join dbo.[[sys]]module] mo1 on mo1.module_id = uac1.useraccess_module where uac1.useraccess_user = '{0}' and " &
-                                                            "mo1.module_code = mo.module_code) as [useraccess_add], (select uac1.useraccess_edit from dbo.[[sys]]useraccess] uac1 inner join dbo.[[sys]]module] mo1 " &
+                                                            "from dbo.[[sys]]useraccess] uac1 inner join dbo.sys_module mo1 on mo1.module_id = uac1.useraccess_module where uac1.useraccess_user = '{0}' and " &
+                                                            "mo1.module_code = mo.module_code) as [useraccess_add], (select uac1.useraccess_edit from dbo.[[sys]]useraccess] uac1 inner join dbo.sys_module mo1 " &
                                                             "on mo1.module_id = uac1.useraccess_module where uac1.useraccess_user = '{0}' and mo1.module_code = mo.module_code) as [useraccess_edit], " &
-                                                            "(select uac1.useraccess_delete from dbo.[[sys]]useraccess] uac1 inner join dbo.[[sys]]module] mo1 on mo1.module_id = uac1.useraccess_module " &
+                                                            "(select uac1.useraccess_delete from dbo.[[sys]]useraccess] uac1 inner join dbo.sys_module mo1 on mo1.module_id = uac1.useraccess_module " &
                                                             "where uac1.useraccess_user = '{0}' and mo1.module_code = mo.module_code) as [useraccess_delete], (select uac1.useraccess_reports from dbo.[[sys]]useraccess] uac1 " &
-                                                            "inner join dbo.[[sys]]module] mo1 on mo1.module_id = uac1.useraccess_module where uac1.useraccess_user = '{0}' and " &
-                                                            "mo1.module_code = mo.module_code) as [useraccess_reports], (select uac1.useraccess_id from dbo.[[sys]]useraccess] uac1 inner join dbo.[[sys]]module] mo1 " &
+                                                            "inner join dbo.sys_module mo1 on mo1.module_id = uac1.useraccess_module where uac1.useraccess_user = '{0}' and " &
+                                                            "mo1.module_code = mo.module_code) as [useraccess_reports], (select uac1.useraccess_id from dbo.[[sys]]useraccess] uac1 inner join dbo.sys_module mo1 " &
                                                             "on mo1.module_id = uac1.useraccess_module where uac1.useraccess_user = '{0}' and mo1.module_code = mo.module_code) as [useraccess_id], mo.module_id " &
-                                                            "from dbo.[[sys]]module] mo inner join dbo.[[sys]]modulegroup] mog on mog.modulegroup_id = mo.module_modulegroup order by mog.modulegroup_order, mo.module_code", RowID)
+                                                            "from dbo.sys_module mo inner join dbo.[[sys]]modulegroup] mog on mog.modulegroup_id = mo.module_modulegroup order by mog.modulegroup_order, mo.module_code", rowid)
                 End If
 
-                V_DBR_MSSQL2008(2).DataGrid = Grid
-                V_DBE_MSSQL2008.GETDATATABLE(V_DBR_MSSQL2008(2), "TUserAccess")
-            ElseIf DBEngine = "MYSQL" Then
+                V_DBR_MSSQL2008(2).DataGrid = grid
+                V_DBE_MSSQL2008.GetDataTable(databasename, V_DBR_MSSQL2008(2), "TUserAccess")
+            ElseIf dbengine = "MYSQL" Then
                 ReDim V_DBR_MYSQL(2)
 
-                If RowID = "-1" Then
+                If rowid = "-1" Then
                     V_DBR_MYSQL(2).Query = String.Format("select mog.modulegroup_name, mo.module_code, 0 as [useraccess_view], 0 as [useraccess_add], 0 as [useraccess_edit], 0 as [useraccess_delete], " &
                                                             "0 as [useraccess_reports], '' as [useraccess_id], mo.module_id from sys_module mo inner join sys_modulegroup mog " &
                                                             "on mog.modulegroup_id = mo.module_modulegroup order by mog.modulegroup_order, mo.module_code")
@@ -404,168 +403,168 @@ Namespace Commands.UAC
                                                             "inner join sys_module mo1 on mo1.module_id = uac1.useraccess_module where uac1.useraccess_user = '{0}' and " &
                                                             "mo1.module_code = mo.module_code) as [useraccess_reports], (select uac1.useraccess_id from sys_useraccess uac1 inner join sys_module mo1 " &
                                                             "on mo1.module_id = uac1.useraccess_module where uac1.useraccess_user = '{0}' and mo1.module_code = mo.module_code) as [useraccess_id], mo.module_id " &
-                                                            "from sys_module mo inner join sys_modulegroup mog on mog.modulegroup_id = mo.module_modulegroup order by mog.modulegroup_order, mo.module_code", RowID)
+                                                            "from sys_module mo inner join sys_modulegroup mog on mog.modulegroup_id = mo.module_modulegroup order by mog.modulegroup_order, mo.module_code", rowid)
                 End If
 
-                V_DBR_MYSQL(2).DataGrid = Grid
-                V_DBE_MYSQL.GETDATATABLE(V_DBR_MYSQL(2), "TUserAccess")
+                V_DBR_MYSQL(2).DataGrid = grid
+                V_DBE_MYSQL.GetDataTable(databasename, V_DBR_MYSQL(2), "TUserAccess")
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETUIDByEmployeeID(ByVal DBEngine As String, ByVal EmployeeID As String) As String
-            Dim V_UID As String = String.Empty
+        Public Shared Function GetUIDbyEmployeeID(databasename As String, dbengine As String, employeeid As String) As String
+            Dim varUID As String = String.Empty
 
             Try
-                If DBEngine = "MSSQL" Then
-                    V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_id from dbo.[[sys]]user] usr where usr.user_employee = '{0}';", EmployeeID)
+                If dbengine = "MSSQL" Then
+                    V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_id from dbo.sys_user usr where usr.user_employee = '{0}';", employeeid)
 
-                    V_UID = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
-                    IIf(IsDBNull(V_UID), "", V_UID)
-                ElseIf DBEngine = "MYSQL" Then
-                    V_DBR_MYSQL(1).Query = String.Format("select usr.user_id from sys_user usr where usr.user_employee = '{0}';", EmployeeID)
+                    varUID = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+                    IIf(IsDBNull(varUID), "", varUID)
+                ElseIf dbengine = "MYSQL" Then
+                    V_DBR_MYSQL(1).Query = String.Format("select usr.user_id from sys_user usr where usr.user_employee = '{0}';", employeeid)
 
-                    V_UID = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query).ToString
-                    IIf(IsDBNull(V_UID), "", V_UID)
+                    varUID = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                    IIf(IsDBNull(varUID), "", varUID)
                 End If
             Catch ex As Exception
-                V_UID = Nothing
+                varUID = Nothing
             End Try
 
-            Return V_UID
+            Return varUID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETEmployeeNumber(ByVal DBEngine As String, ByVal UserID As String) As String
-            Dim V_EmployeeNumber As String = String.Empty
+        Public Shared Function GetEmployeeNumber(databasename As String, dbengine As String, userid As String) As String
+            Dim varEmployeeNumber As String = String.Empty
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_number from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_number from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                V_EmployeeNumber = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
-            ElseIf DBEngine = "MYSQL" Then
-                V_DBR_MYSQL(1).Query = String.Format("select em.employee_number from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
+                varEmployeeNumber = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            ElseIf dbengine = "MYSQL" Then
+                V_DBR_MYSQL(1).Query = String.Format("select em.employee_number from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                V_EmployeeNumber = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query).ToString
+                varEmployeeNumber = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
             End If
 
-            Return V_EmployeeNumber
+            Return varEmployeeNumber
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETEmployeeFullName(ByVal DBEngine As String, ByVal UserID As String) As String
-            Dim V_EmployeeFullName As String = String.Empty
+        Public Shared Function GetEmployeeFullName(databasename As String, dbengine As String, userid As String) As String
+            Dim varEmployeeFullName As String = String.Empty
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_fullname from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(1).Query = String.Format("select em.employee_fullname from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                V_EmployeeFullName = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
-            ElseIf DBEngine = "MYSQL" Then
-                V_DBR_MYSQL(1).Query = String.Format("select em.employee_fullname from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
+                varEmployeeFullName = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            ElseIf dbengine = "MYSQL" Then
+                V_DBR_MYSQL(1).Query = String.Format("select em.employee_fullname from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                V_EmployeeFullName = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query).ToString
+                varEmployeeFullName = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
             End If
 
-            Return V_EmployeeFullName
+            Return varEmployeeFullName
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETUsernameByUserID(ByVal DBEngine As String, ByVal UserID As String) As String
-            Dim V_Username As String = String.Empty
+        Public Shared Function GetUsernameByUserID(databasename As String, dbengine As String, ByVal userid As String) As String
+            Dim varUsername As String = String.Empty
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_username from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_username from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                V_Username = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
-            ElseIf DBEngine = "MYSQL" Then
-                V_DBR_MYSQL(1).Query = String.Format("select usr.user_username from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
+                varUsername = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            ElseIf dbengine = "MYSQL" Then
+                V_DBR_MYSQL(1).Query = String.Format("select usr.user_username from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                V_Username = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query).ToString
+                varUsername = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
             End If
 
-            Return V_Username
+            Return varUsername
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETUsernameByEmployeeID(ByVal DBEngine As String, ByVal EmployeeID As String) As String
-            Dim V_Username As String = String.Empty
+        Public Shared Function GetUsernameByEmployeeID(databasename As String, dbengine As String, employeeid As String) As String
+            Dim varUsername As String = String.Empty
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_username from dbo.[[sys]]user] usr where usr.user_employee = '{0}'", EmployeeID)
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_username from dbo.sys_user usr where usr.user_employee = '{0}'", employeeid)
 
-                V_Username = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
-            ElseIf DBEngine = "MYSQL" Then
-                V_DBR_MYSQL(1).Query = String.Format("select usr.user_username from sys_user usr where usr.user_employee = '{0}'", EmployeeID)
+                varUsername = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            ElseIf dbengine = "MYSQL" Then
+                V_DBR_MYSQL(1).Query = String.Format("select usr.user_username from sys_user usr where usr.user_employee = '{0}'", employeeid)
 
-                V_Username = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query).ToString
+                varUsername = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
             End If
 
-            Return V_Username
+            Return varUsername
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETPassword(ByVal DBEngine As String, ByVal UserID As String) As String
-            Dim V_Password As String = String.Empty
+        Public Shared Function GetPassword(databasename As String, dbengine As String, userid As String) As String
+            Dim varPassword As String = String.Empty
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_password from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_password from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                V_Password = V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query).ToString
-            ElseIf DBEngine = "MYSQL" Then
-                V_DBR_MYSQL(1).Query = String.Format("select usr.user_password from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
+                varPassword = V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query).ToString
+            ElseIf dbengine = "MYSQL" Then
+                V_DBR_MYSQL(1).Query = String.Format("select usr.user_password from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                V_Password = V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query).ToString
+                varPassword = V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
             End If
 
-            Return V_Password
+            Return varPassword
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETLocked(ByVal DBEngine As String, ByVal UserID As String) As Boolean
-            Dim V_Locked As Boolean = True
+        Public Shared Function GetLocked(databasename As String, dbengine As String, userid As String) As Boolean
+            Dim varLocked As Boolean = True
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_locked from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_locked from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                V_Locked = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
-            ElseIf DBEngine = "MYSQL" Then
-                V_DBR_MYSQL(1).Query = String.Format("select usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
+                varLocked = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Boolean)
+            ElseIf dbengine = "MYSQL" Then
+                V_DBR_MYSQL(1).Query = String.Format("select usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                V_Locked = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query), Boolean)
+                varLocked = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query), Boolean)
             End If
 
-            Return V_Locked
+            Return varLocked
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETAdministrator(ByVal DBEngine As String, ByVal UserID As String) As Boolean
-            Dim V_Root As Boolean = False
+        Public Shared Function GetAdministrator(databasename As String, dbengine As String, userid As String) As Boolean
+            Dim varRoot As Boolean = False
 
-            If DBEngine = "MSSQL" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_root from dbo.[[sys]]user] usr inner join dbo.[[man]]employee] em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
+            If dbengine = "MSSQL" Then
+                V_DBR_MSSQL2008(1).Query = String.Format("select usr.user_root from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                V_Root = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query), Boolean)
-            ElseIf DBEngine = "MYSQL" Then
-                V_DBR_MYSQL(1).Query = String.Format("select usr.user_root from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", UserID)
+                varRoot = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Boolean)
+            ElseIf dbengine = "MYSQL" Then
+                V_DBR_MYSQL(1).Query = String.Format("select usr.user_root from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                V_Root = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(1).Query), Boolean)
+                varRoot = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(1).Query), Boolean)
             End If
 
-            Return V_Root
+            Return varRoot
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsDuplicate(ByVal DBEngine As String, ByVal Username As String, Optional ByVal RowID As String = "-1") As Boolean
-            Dim V_IsDuplicate As Integer = 0
+        Public Shared Function IsDuplicate(databasename As String, dbengine As String, username As String, Optional rowid As String = "-1") As Boolean
+            Dim varIsDuplicate As Integer = 0
 
-            If RowID = "-1" Then
-                V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}')", Username)
+            If rowid = "-1" Then
+                V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.sys_user usr where (usr.user_username = '{0}')", username)
             Else
-                V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.[[sys]]user] usr where (usr.user_username = '{0}') and (usr.user_id <> '{1}')", Username, RowID)
+                V_DBR_MSSQL2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.sys_user usr where (usr.user_username = '{0}') and (usr.user_id <> '{1}')", username, rowid)
             End If
-            V_IsDuplicate = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(1).Query, "db_universe_erp"), Integer)
+            varIsDuplicate = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(1).Query), Integer)
 
-            If V_IsDuplicate = 0 Then
+            If varIsDuplicate = 0 Then
                 Return False
             Else
                 Return True
@@ -573,101 +572,101 @@ Namespace Commands.UAC
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PUSHData(ByVal DBEngine As String, ByVal EmployeeID As String, ByVal Username As String, ByVal Password As String, ByVal Locked As Boolean, ByVal Administrator As Boolean, ByVal UAC As dgn, Optional ByVal RowID As String = "-1", Optional ByVal Hash As String = "", Optional ByVal IsPasswordChange As Boolean = False) As Boolean
-            Dim V_Success As Boolean = False
+        Public Shared Function PushData(databasename As String, dbengine As String, employeeid As String, username As String, password As String, locked As Boolean, administrator As Boolean, uac As dgn, Optional rowid As String = "-1", Optional hash As String = "", Optional ispasswordchange As Boolean = False) As Boolean
+            Dim varSuccess As Boolean = False
 
             Try
-                Dim V_EQuery As String = String.Empty
+                Dim varEQuery As String = String.Empty
 
-                If DBEngine = "MSSQL" Then 'Run if MSSQL
+                If dbengine = "MSSQL" Then 'Run if MSSQL
                     ReDim V_DBR_MSSQL2008(4)
 
-                    If RowID = "-1" Then
-                        V_DBR_MSSQL2008(1).Query = String.Format("insert into dbo.[[sys]]user](user_id, user_employee, user_username, user_password, user_locked, user_root, user_datecreated) " &
-                                                                "values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', (select getdate()));", Hash, EmployeeID, Username, Password, Locked, Administrator)
+                    If rowid = "-1" Then
+                        V_DBR_MSSQL2008(1).Query = String.Format("insert into dbo.sys_user(user_id, user_employee, user_username, user_password, user_locked, user_root, user_datecreated) " &
+                                                                "values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', (select getdate()));", hash, employeeid, username, password, locked, administrator)
 
 
-                        For Each Row As DataGridViewRow In UAC.Rows
-                            V_EQuery = String.Format("insert into dbo.[[sys]]useraccess](useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) " &
-                                                    "values('{0}', '{1}', (select mo.module_id from dbo.[[sys]]module] mo " &
-                                                    "where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", CMCv.Security.Encrypt.MD5(), Hash, Row.Cells("module_code").Value, Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_reports").Value)
-                            V_DBR_MSSQL2008(1).Query += V_EQuery
+                        For Each Row As DataGridViewRow In uac.Rows
+                            varEQuery = String.Format("insert into dbo.[[sys]]useraccess](useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) " &
+                                                    "values('{0}', '{1}', (select mo.module_id from dbo.sys_module mo " &
+                                                    "where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", CMCv.Security.Encrypt.MD5(), hash, Row.Cells("module_code").Value, Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_reports").Value)
+                            V_DBR_MSSQL2008(1).Query += varEQuery
                         Next
 
                     Else
-                        If (IsPasswordChange) Then
-                            V_DBR_MSSQL2008(1).Query = String.Format("update dbo.[[sys]]user] set user_username = '{0}', user_password = '{1}', user_locked = '{2}', user_root = '{3}' where user_id = '{4}';", Username, Password, Locked, Administrator, RowID)
+                        If (ispasswordchange) Then
+                            V_DBR_MSSQL2008(1).Query = String.Format("update dbo.sys_user set user_username = '{0}', user_password = '{1}', user_locked = '{2}', user_root = '{3}' where user_id = '{4}';", username, password, locked, administrator, rowid)
                         Else
-                            V_DBR_MSSQL2008(1).Query = String.Format("update dbo.[[sys]]user] set user_username = '{0}', user_locked = '{1}', user_root = '{2}' where user_id = '{3}';", Username, Locked, Administrator, RowID)
+                            V_DBR_MSSQL2008(1).Query = String.Format("update dbo.sys_user set user_username = '{0}', user_locked = '{1}', user_root = '{2}' where user_id = '{3}';", username, locked, administrator, rowid)
                         End If
 
                         Dim _Exist As Integer = 0
-                        For Each Row As DataGridViewRow In UAC.Rows
-                            V_DBR_MSSQL2008(3).Query = String.Format("select count(uac.useraccess_id) as [useraccess_id] from dbo.[[sys]]useraccess] uac inner join dbo.[[sys]]module] mo on mo.module_id = uac.useraccess_module " &
-                                                                    "where uac.useraccess_user = '{0}' and mo.module_code = '{1}'", RowID, Row.Cells("module_code").Value)
-                            _Exist = CType(V_DBE_MSSQL2008.GETVALUE(V_DBR_MSSQL2008(3).Query), Integer)
+                        For Each Row As DataGridViewRow In uac.Rows
+                            V_DBR_MSSQL2008(3).Query = String.Format("select count(uac.useraccess_id) as [useraccess_id] from dbo.[[sys]]useraccess] uac inner join dbo.sys_module mo on mo.module_id = uac.useraccess_module " &
+                                                                    "where uac.useraccess_user = '{0}' and mo.module_code = '{1}'", rowid, Row.Cells("module_code").Value)
+                            _Exist = CType(V_DBE_MSSQL2008.GetValue(databasename, V_DBR_MSSQL2008(3).Query), Integer)
 
                             If _Exist = 0 Then
-                                V_EQuery = String.Format("insert into dbo.[[sys]]useraccess](useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) " &
-                                                        "values('{0}', '{1}', (select mo.module_id from dbo.[[sys]]module] mo " &
-                                                        "where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", CMCv.Security.Encrypt.MD5(), RowID, Row.Cells("module_code").Value, Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_reports").Value)
+                                varEQuery = String.Format("insert into dbo.[[sys]]useraccess](useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) " &
+                                                        "values('{0}', '{1}', (select mo.module_id from dbo.sys_module mo " &
+                                                        "where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", CMCv.Security.Encrypt.MD5(), rowid, Row.Cells("module_code").Value, Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_reports").Value)
                             Else
-                                V_EQuery = String.Format("update dbo.[[sys]]useraccess] set useraccess_view = '{0}', useraccess_add = '{1}', useraccess_edit = '{2}', useraccess_delete = '{3}', useraccess_reports = '{5}' " &
+                                varEQuery = String.Format("update dbo.[[sys]]useraccess] set useraccess_view = '{0}', useraccess_add = '{1}', useraccess_edit = '{2}', useraccess_delete = '{3}', useraccess_reports = '{5}' " &
                                                         "where useraccess_id = '{4}';", Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_id").Value, Row.Cells("useraccess_reports").Value)
                             End If
-                            V_DBR_MSSQL2008(1).Query += V_EQuery
+                            V_DBR_MSSQL2008(1).Query += varEQuery
                         Next
                     End If
-                    V_DBE_MSSQL2008.PUSHDATA(V_DBR_MSSQL2008(1).Query)
-                    V_Success = True
+                    V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                    varSuccess = True
 
-                ElseIf DBEngine = "MYSQL" Then 'Run if MYSQL
+                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
                     ReDim V_DBR_MYSQL(4)
 
-                    If RowID = "-1" Then
+                    If rowid = "-1" Then
                         V_DBR_MYSQL(1).Query = String.Format("insert into sys_user(user_id, user_employee, user_username, user_password, user_locked, user_root, user_datecreated) " &
-                                                                "values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', (select getdate()));", Hash, EmployeeID, Username, Password, Locked, Administrator)
+                                                                "values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', (select getdate()));", hash, employeeid, username, password, locked, administrator)
 
 
-                        For Each Row As DataGridViewRow In UAC.Rows
-                            V_EQuery = String.Format("insert into sys_useraccess(useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) " &
+                        For Each Row As DataGridViewRow In uac.Rows
+                            varEQuery = String.Format("insert into sys_useraccess(useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) " &
                                                     "values('{0}', '{1}', (select mo.module_id from sys_module mo " &
-                                                    "where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", CMCv.Security.Encrypt.MD5(), Hash, Row.Cells("module_code").Value, Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_reports").Value)
-                            V_DBR_MYSQL(1).Query += V_EQuery
+                                                    "where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", CMCv.Security.Encrypt.MD5(), hash, Row.Cells("module_code").Value, Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_reports").Value)
+                            V_DBR_MYSQL(1).Query += varEQuery
                         Next
 
                     Else
-                        If (IsPasswordChange) Then
-                            V_DBR_MYSQL(1).Query = String.Format("update sys_user set user_username = '{0}', user_password = '{1}', user_locked = '{2}', user_root = '{3}' where user_id = '{4}';", Username, Password, Locked, Administrator, RowID)
+                        If (ispasswordchange) Then
+                            V_DBR_MYSQL(1).Query = String.Format("update sys_user set user_username = '{0}', user_password = '{1}', user_locked = '{2}', user_root = '{3}' where user_id = '{4}';", username, password, locked, administrator, rowid)
                         Else
-                            V_DBR_MYSQL(1).Query = String.Format("update sys_user set user_username = '{0}', user_locked = '{1}', user_root = '{2}' where user_id = '{3}';", Username, Locked, Administrator, RowID)
+                            V_DBR_MYSQL(1).Query = String.Format("update sys_user set user_username = '{0}', user_locked = '{1}', user_root = '{2}' where user_id = '{3}';", username, locked, administrator, rowid)
                         End If
 
                         Dim _Exist As Integer = 0
-                        For Each Row As DataGridViewRow In UAC.Rows
+                        For Each Row As DataGridViewRow In uac.Rows
                             V_DBR_MYSQL(3).Query = String.Format("select count(uac.useraccess_id) as [useraccess_id] from sys_useraccess uac inner join sys_module mo on mo.module_id = uac.useraccess_module " &
-                                                                    "where uac.useraccess_user = '{0}' and mo.module_code = '{1}'", RowID, Row.Cells("module_code").Value)
-                            _Exist = CType(V_DBE_MYSQL.GETVALUE(V_DBR_MYSQL(3).Query), Integer)
+                                                                    "where uac.useraccess_user = '{0}' and mo.module_code = '{1}'", rowid, Row.Cells("module_code").Value)
+                            _Exist = CType(V_DBE_MYSQL.GetValue(databasename, V_DBR_MYSQL(3).Query), Integer)
 
                             If _Exist = 0 Then
-                                V_EQuery = String.Format("insert into sys_useraccess(useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) " &
+                                varEQuery = String.Format("insert into sys_useraccess(useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) " &
                                                         "values('{0}', '{1}', (select mo.module_id from sys_module mo " &
-                                                        "where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", CMCv.Security.Encrypt.MD5(), RowID, Row.Cells("module_code").Value, Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_reports").Value)
+                                                        "where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", CMCv.Security.Encrypt.MD5(), rowid, Row.Cells("module_code").Value, Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_reports").Value)
                             Else
-                                V_EQuery = String.Format("update sys_useraccess set useraccess_view = '{0}', useraccess_add = '{1}', useraccess_edit = '{2}', useraccess_delete = '{3}', useraccess_reports = '{5}' " &
+                                varEQuery = String.Format("update sys_useraccess set useraccess_view = '{0}', useraccess_add = '{1}', useraccess_edit = '{2}', useraccess_delete = '{3}', useraccess_reports = '{5}' " &
                                                         "where useraccess_id = '{4}';", Row.Cells("useraccess_view").Value, Row.Cells("useraccess_add").Value, Row.Cells("useraccess_edit").Value, Row.Cells("useraccess_delete").Value, Row.Cells("useraccess_id").Value, Row.Cells("useraccess_reports").Value)
                             End If
-                            V_DBR_MYSQL(1).Query += V_EQuery
+                            V_DBR_MYSQL(1).Query += varEQuery
                         Next
                     End If
-                    V_DBE_MYSQL.PUSHDATA(V_DBR_MYSQL(1).Query)
-                    V_Success = True
+                    V_DBE_MYSQL.PushData(databasename, V_DBR_MYSQL(1).Query)
+                    varSuccess = True
                 End If
             Catch ex As Exception
-                V_Success = False
+                varSuccess = False
             End Try
 
-            Return V_Success
+            Return varSuccess
         End Function
     End Class
 

@@ -7,7 +7,7 @@ Public Class EPLS_Position
 #End Region
 
 #Region "Subs Collections"
-    Private Sub GETTableID()
+    Private Sub GetTableID()
         varFormAttributes.RowID = "-1"
         If DgnAddinPosition.RowCount > 0 Then
             varFormAttributes.RowID = DgnAddinPosition.CurrentRow.Cells("employee_id").Value.ToString
@@ -15,8 +15,8 @@ Public Class EPLS_Position
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        Commands.EPLS.Addins.Browse.Position.DISPLAYDATA(DgnAddinPosition, SLFStatus, TxtFind, ForceRefresh)
+    Private Sub GetData(Optional forcerefresh As Boolean = False)
+        Commands.EPLS.Addins.Browse.Position.DisplayData(varDatabaseName, DgnAddinPosition, SLFStatus, TxtFind, forcerefresh)
     End Sub
 #End Region
 
@@ -37,7 +37,7 @@ Public Class EPLS_Position
 
     <SupportedOSPlatform("windows")>
     Private Sub EPLS_Position_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call GETDATA()
+        Call GetData()
     End Sub
 
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
@@ -47,13 +47,13 @@ Public Class EPLS_Position
     <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Call GETDATA()
+            Call GetData()
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
-        Call GETDATA(True)
+        Call GetData(True)
     End Sub
 End Class

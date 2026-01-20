@@ -10,11 +10,11 @@ Public Class POST
 
 #Region "Subs Collections"
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        LibSQL.Commands.POST.View.DisplayData(varDatabaseEngine, DgnPOST, SLFStatus, TxtFind, ForceRefresh)
+    Private Sub GetData(Optional forcerefresh As Boolean = False)
+        LibSQL.Commands.POST.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnPOST, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
-    Private Sub GETTableID()
+    Private Sub GetTableID()
         varFormAttributes.RowID = "-1"
 
         If DgnPOST.RowCount > 0 Then
@@ -34,13 +34,13 @@ Public Class POST
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
-        Call GETTableID()
+        Call GetTableID()
         varFormAttributes.IsNew = False
         _POST_Editor = New POST_Editor
         If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            DISPLAY(_POST_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your position data", True)
+            Display(_POST_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your position data", True)
         End If
     End Sub
 
@@ -53,8 +53,8 @@ Public Class POST
         Else
             varFormAttributes.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.POST.View.DELETEData(varDatabaseEngine, varFormAttributes.RowID)) Then
-                    Call GETDATA(True)
+                If (LibSQL.Commands.POST.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)) Then
+                    Call GetData(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Delete failed"
@@ -90,20 +90,20 @@ Public Class POST
     <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Call GETDATA()
+            Call GetData()
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
-        Call GETDATA(True)
+        Call GetData(True)
         TxtFind.ClearSearch()
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub _POST_Editor_RecordSaved() Handles _POST_Editor.RecordSaved
-        Call GETDATA(True)
+        Call GetData(True)
     End Sub
 
 #Region "UNUSED : CreateMenu"
@@ -196,7 +196,7 @@ Public Class POST
         Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
             Try
-                If Not (varUserAccess.User("POST", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+                If Not (varUserAccess.User(varDatabaseName, "POST", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
                     Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                     Return
                 End If
@@ -217,7 +217,7 @@ Public Class POST
         Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
             Try
-                If Not (varUserAccess.User("POST", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+                If Not (varUserAccess.User(varDatabaseName, "POST", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
                     Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                     Return
                 End If
@@ -242,7 +242,7 @@ Public Class POST
         Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
             Try
-                If Not (varUserAccess.User("POST", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+                If Not (varUserAccess.User(varDatabaseName, "POST", varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
                     Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                     Return
                 End If
@@ -252,8 +252,8 @@ Public Class POST
                     Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                 Else
                     If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                        If LibSQL.Commands.POST.View.DELETEData(varDatabaseEngine, varFormAttributes.RowID) Then
-                            Call GETDATA(True)
+                        If LibSQL.Commands.POST.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID) Then
+                            Call GetData(True)
                             Mainframe_n_6.Ts_status.Text = "Success"
                         Else
                             Mainframe_n_6.Ts_status.Text = "Delete failed"

@@ -34,8 +34,8 @@ Namespace Ladybug.Log
 
     Public Class Events
 
-        Public WithEvents frmERC As New frmErrorReporting
-        Private clsDBsqlite As Database.Engine.SQLiteV3
+        Public WithEvents FRMerc As New FRMerrorreporting
+        Private ReadOnly clsDBsqlite As Database.Engine.SQLiteV3
 
         ''' <summary>
         ''' Display Error Reporting Form
@@ -43,20 +43,23 @@ Namespace Ladybug.Log
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
         Public Sub ShowData(ByVal proLog As Ladybug.Log.Fields)
+            Dim varMessage As String
+
             If Not (proLog.ShowErrorReporting) Then
-                Bridge.Security.Writelog.Sendlog("""message"" : """ & proLog.Message & """," & Environment.NewLine & """sender"" : """ & proLog.FromSender & """," & Environment.NewLine & """error_number"" : " & proLog.Number & "," & Environment.NewLine & """error_type"" : """ & proLog.TypeOfFaulty.ToString() & """," & Environment.NewLine & """log_type"" : """ & proLog.TypeOfLog.ToString() & """," & Environment.NewLine & """version"" : """ & proLog.AppVersion & """,", proLog.TypeOfLog.ToString())
+                varMessage = """message"" : """ & proLog.Message & """," & Environment.NewLine & """sender"" : """ & proLog.FromSender & """," & Environment.NewLine & """error_number"" : " & proLog.Number & "," & Environment.NewLine & """error_type"" : """ & proLog.TypeOfFaulty.ToString() & """," & Environment.NewLine & """log_type"" : """ & proLog.TypeOfLog.ToString() & """," & Environment.NewLine & """version"" : """ & proLog.AppVersion & ""","
+                Bridge.Security.Writelog.Sendlog(varMessage, proLog.TypeOfLog.ToString())
                 Return
             End If
 
-            frmERC = New CMCv.frmErrorReporting(proLog, If(proLog.SaveLogInLocal, Nothing, clsDBsqlite))
-            frmERC.ShowDialog()
-
-            If Not (frmERC.ResumeNext) Then
+            If Not (proLog.ResumeNext) Then
                 Process.GetCurrentProcess.Kill()
                 Return
             End If
 
-            frmERC.Dispose()
+            FRMerc = New CMCv.FRMerrorreporting(proLog, If(proLog.SaveLogInLocal, Nothing, clsDBsqlite))
+            FRMerc.ShowDialog()
+
+            FRMerc.Dispose()
         End Sub
     End Class
 End Namespace

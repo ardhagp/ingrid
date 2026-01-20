@@ -7,30 +7,30 @@ Namespace Commands.RESET
 
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Function PUSHData(ByVal DBEngine As String) As Boolean
-            Dim V_Success As Boolean = False
+        Public Shared Function PushData(databasename As String, dbengine As String) As Boolean
+            Dim varSuccess As Boolean = False
 
             Try
-                If DBEngine = "MSSQL" Then
-                    V_DBR_MSSQL2008(1).Query = String.Format("update [db_universe_erp].[dbo].[[sys]]settings] set [settings_showprofile] = 0, " &
+                If dbengine = "MSSQL" Then
+                    V_DBR_MSSQL2008(1).Query = String.Format("update [db_universe_erp].[dbo].sys_settings set [settings_showprofile] = 0, " &
                                                         "[settings_showstorage] = 0, [settings_showwatermark] = 0, [settings_showrunningtext] = 0, " &
                                                         "[settings_uploadphoto] = 30, [settings_uploadpdf] = 30, [settings_textmark] = '', " &
                                                         "[settings_minpasswordlength] = 3")
-                    V_DBE_MSSQL2008.PUSHDATA(V_DBR_MSSQL2008(1).Query)
-                ElseIf DBEngine = "MYSQL" Then
+                    V_DBE_MSSQL2008.PushData(databasename, V_DBR_MSSQL2008(1).Query)
+                ElseIf dbengine = "MYSQL" Then
                     V_DBR_MYSQL(1).Query = String.Format("update sys_settings set settings_showprofile = 0, " &
                                                         "settings_showstorage = 0, settings_showwatermark = 0, settings_showrunningtext = 0, " &
                                                         "settings_uploadphoto = 30, settings_uploadpdf = 30, settings_textmark = '', " &
                                                         "settings_minpasswordlength = 3")
-                    V_DBE_MYSQL.PUSHDATA(V_DBR_MYSQL(1).Query)
+                    V_DBE_MYSQL.PushData(databasename, V_DBR_MYSQL(1).Query)
                 End If
 
-                V_Success = True
+                varSuccess = True
             Catch ex As Exception
-                V_Success = False
+                varSuccess = False
             End Try
 
-            Return V_Success
+            Return varSuccess
         End Function
     End Class
 

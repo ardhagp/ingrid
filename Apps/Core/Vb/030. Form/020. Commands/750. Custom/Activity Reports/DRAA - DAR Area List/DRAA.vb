@@ -24,7 +24,7 @@ Public Class DRAA
         DblBuffer(DgnArea)
 
         'Mengisi Datagrid dengan data dari database    
-        Commands.DRAA.View.DisplayMainGrid(TxtFind, DgnArea, SLFStatus, ForceRefresh)
+        Commands.DRAA.View.DisplayMainGrid(varDatabaseName, TxtFind, DgnArea, SLFStatus, ForceRefresh)
     End Sub
 
     ''' <summary>
@@ -36,13 +36,13 @@ Public Class DRAA
         V_MMSMenu.LoadIn(Me)
 
         'Menampilkan Menu DATA
-        V_MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        V_MMSMenu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu TOOLS
-        V_MMSMenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.No)
+        V_MMSMenu.ShowMenuTools(CMCv.UI.View.MenuStrip.ShowItem.No)
 
         'Menampilkan Menu REPORTS
-        V_MMSMenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.No)
+        V_MMSMenu.ShowMenuReports(CMCv.UI.View.MenuStrip.ShowItem.No)
 
         'Menampilkan Menu TOOLS > View Attachment
         V_MMSMenu.Visible("EventToolsViewAttachment", CType(False, CMCv.UI.View.MenuStrip.ShowItem))
@@ -60,7 +60,7 @@ Public Class DRAA
     ''' <summary>
     ''' Get row ID on record clicked
     ''' </summary>
-    Private Sub GETTableID()
+    Private Sub GetTableID()
         varFormAttributes.RowID = "-1"
 
         If DgnArea.RowCount > 0 Then

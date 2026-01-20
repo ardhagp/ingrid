@@ -16,62 +16,28 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Shared Function CheckDbCatalog() As Boolean
             Try
-                Dim varDBpath As String = Nothing
-                Dim varDBexists(3) As Boolean
+                Dim baseFolder = IO.Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "ardhagp\Ingrid .NET"
+        )
 
-                Dim varLocation As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
+                Dim resourcesFolder = IO.Path.Combine(baseFolder, "Resources")
+                IO.Directory.CreateDirectory(resourcesFolder)
 
-                System.IO.Directory.CreateDirectory(varLocation & "\Resources")
+                Dim prodOk = EnsureDbExists("Resources\catalog.mdf", baseFolder)
+                Dim devOk = EnsureDbExists("Resources\dev_catalog.mdf", baseFolder)
+                Dim logOk = EnsureDbExists("Resources\errlog.mdf", baseFolder)
 
-                varDBpath = varLocation & "\Resources\CATALOG.mdf"
-                If OperatingSystem.File.Info.IsExists(varDBpath) Then
-                    varDBexists(1) = True
-                Else
-                    System.IO.File.Copy(Application.StartupPath & "\Resources\CATALOG.mdf", varLocation & "\Resources\CATALOG.mdf", True)
-                    If OperatingSystem.File.Info.IsExists(varDBpath) Then
-                        varDBexists(1) = True
-                    Else
-                        varDBexists(1) = False
-                    End If
-                End If
+                Return (prodOk AndAlso logOk) OrElse (devOk AndAlso logOk)
 
-                varDBpath = varLocation & "\Resources\DEV_CATALOG.mdf"
-                If OperatingSystem.File.Info.IsExists(varDBpath) Then
-                    varDBexists(2) = True
-                Else
-                    System.IO.File.Copy(Application.StartupPath & "\Resources\DEV_CATALOG.mdf", varLocation & "\Resources\DEV_CATALOG.mdf", True)
-                    If OperatingSystem.File.Info.IsExists(varDBpath) Then
-                        varDBexists(2) = True
-                    Else
-                        varDBexists(2) = False
-                    End If
-                End If
-
-                varDBpath = varLocation & "\Resources\ERRLOG.mdf"
-                If OperatingSystem.File.Info.IsExists(varDBpath) Then
-                    varDBexists(3) = True
-                Else
-                    System.IO.File.Copy(Application.StartupPath & "\Resources\ERRLOG.mdf", varLocation & "\Resources\ERRLOG.mdf", True)
-                    If OperatingSystem.File.Info.IsExists(varDBpath) Then
-                        varDBexists(3) = True
-                    Else
-                        varDBexists(3) = False
-                    End If
-                End If
-
-                If ((varDBexists(1)) AndAlso (varDBexists(3))) OrElse ((varDBexists(2)) AndAlso (varDBexists(3))) Then
-                    Return True
-                Else
-                    Return False
-                End If
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
-                    .FromSender = "[CheckDbCatalog] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb"
+                    .FromSender = "[CheckDBCatalog] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
                     .Number = ex.HResult
-                    .ResumeNext = True
+                    .ResumeNext = False
                     .SaveInBetterLog = True
                     .SaveLogInLocal = False
                     .ShowErrorReporting = True
@@ -81,21 +47,32 @@ Namespace Database.Engine
 
                 Dim clsLog As New Ladybug.Log.Events
                 clsLog.ShowData(proLog)
-                clsLog = Nothing
 
                 Return False
             End Try
         End Function
 
         <SupportedOSPlatform("windows")>
+        Private Shared Function EnsureDbExists(relativePath As String, baseFolder As String) As Boolean
+            Dim targetPath = IO.Path.Combine(baseFolder, relativePath)
+            Dim sourcePath = IO.Path.Combine(Application.StartupPath, relativePath)
+
+            If Not IO.File.Exists(targetPath) Then
+                IO.File.Copy(sourcePath, targetPath, True)
+            End If
+
+            Return IO.File.Exists(targetPath)
+        End Function
+
+        <SupportedOSPlatform("windows")>
         Public Sub Open(Optional ByVal isproductionmode As Boolean = False)
             Try
-                Dim varLocation As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\Cagak Melon\Ingrid"
+                Dim varLocation As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\ardhagp\Ingrid .NET"
 
                 If Not (CheckDbCatalog()) Then
                     With proLog
                         .AppVersion = GetAppVersion()
-                        .FromSender = "[CheckDbCatalog] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb"
+                        .FromSender = "[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb"
                         .InternalStackTrace = ""
                         .Message = "File configuration Not found"
                         .Number = -1
@@ -114,9 +91,9 @@ Namespace Database.Engine
                 End If
 
                 If (isproductionmode) Then
-                    varFilePath(0) = varLocation & "\Resources\CATALOG.mdf"
+                    varFilePath(0) = varLocation & "\Resources\catalog.mdf"
                 Else
-                    varFilePath(0) = varLocation & "\Resources\DEV_CATALOG.mdf"
+                    varFilePath(0) = varLocation & "\Resources\dev_catalog.mdf"
                 End If
 
                 'Dim FileInfo As New OperatingSystem.File.Info
@@ -130,7 +107,7 @@ Namespace Database.Engine
                     '    GoTo FileNotFound
                 End If
 
-                varFilePath(1) = varLocation & "\Resources\ERRLOG.mdf"
+                varFilePath(1) = varLocation & "\Resources\errlog.mdf"
 
                 If OperatingSystem.File.Info.IsExists(varFilePath(1)) Then
                     varConnectionString(1) = varLocalDB.LocalDBInitialCatalog(varFilePath(1))
@@ -174,7 +151,7 @@ Namespace Database.Engine
                     fields.Username = .GetString(1)
                     fields.Password = CMCv.Security.Decrypt.AES(.GetString(2))
                     fields.Port = CType(.GetValue(3), Integer)
-                    fields.DataStorage = .GetString(4)
+                    fields.DatabaseName = .GetString(4)
                     fields.FileStorage = .GetString(5)
                 End With
 
@@ -206,7 +183,7 @@ Namespace Database.Engine
         Public Sub SaveErrorData(ByVal proLog As Ladybug.Log.Fields)
             Try
                 Dim varNowdatetime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
-                Call PUSHDATA("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & proLog.TypeOfFaulty & "','" & proLog.Message & "'," & proLog.Number & ",'" & proLog.InternalStackTrace & "'," & proLog.ShowErrorReporting & ",'" & varNowdatetime & "');")
+                Call PushData("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & proLog.TypeOfFaulty & "','" & proLog.Message & "'," & proLog.Number & ",'" & proLog.InternalStackTrace & "'," & proLog.ShowErrorReporting & ",'" & varNowdatetime & "');")
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()

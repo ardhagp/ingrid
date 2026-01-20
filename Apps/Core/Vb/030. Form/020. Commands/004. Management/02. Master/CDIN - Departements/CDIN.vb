@@ -10,11 +10,11 @@ Public Class CDIN
 
 #Region "Subs Collections"
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
-        LibSQL.Commands.CDIN.View.DISPLAYDATA(varDatabaseEngine, DgnCDIN, SLFStatus, TxtFind, ForceRefresh)
+    Private Sub GetData(Optional ByVal forcerefresh As Boolean = False)
+        LibSQL.Commands.CDIN.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnCDIN, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
-    Private Sub GETTableID()
+    Private Sub GetTableID()
         If DgnCDIN.RowCount = 0 Then
             varFormAttributes.RowID = "-1"
         Else
@@ -30,30 +30,30 @@ Public Class CDIN
         varFormAttributes.IsNew = True
         varFormAttributes.RowID = "-1"
         _CDIN_Editor = New CDIN_Editor
-        DISPLAY(_CDIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new departement data", True)
+        Display(_CDIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new departement data", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
-        Call GETTableID()
+        Call GetTableID()
         If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             varFormAttributes.IsNew = False
             _CDIN_Editor = New CDIN_Editor
-            DISPLAY(_CDIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your departement data", True)
+            Display(_CDIN_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your departement data", True)
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
-        Call GETTableID()
+        Call GetTableID()
         If varFormAttributes.RowID = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.CDIN.View.DELETEDATA(varDatabaseEngine, varFormAttributes.RowID)) Then
-                    Call GETDATA(True)
+                If (LibSQL.Commands.CDIN.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)) Then
+                    Call GetData(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Delete failed"

@@ -10,8 +10,8 @@ Public Class CDIN_Editor
 
 #Region "Subs Collections"
     <SupportedOSPlatform("windows")>
-    Private Sub FILLCompany(ByVal Company As cbo)
-        _SQL.FILLCompany(varDatabaseEngine, Company)
+    Private Sub FillCompany(company As cbo)
+        _SQL.FillCompany(varDatabaseName, varDatabaseEngine, company)
     End Sub
 
     Private Sub CheckAllInput()
@@ -31,10 +31,10 @@ Public Class CDIN_Editor
         Else
             ChkAddNew.Visible = False
             ChkAddNew.Checked = False
-            CboCompany.SelectedValue = Commands.CDIN.Editor.GETCompanyID(varDatabaseEngine, varFormAttributes.RowID)
-            TxtDeptCode.Text = Commands.CDIN.Editor.GETDeptCode(varDatabaseEngine, varFormAttributes.RowID).ToString
-            TxtDeptName.Text = Commands.CDIN.Editor.GETDeptName(varDatabaseEngine, varFormAttributes.RowID).ToString
-            TxtDescription.Text = Commands.CDIN.Editor.GETDescription(varDatabaseEngine, varFormAttributes.RowID).ToString
+            CboCompany.SelectedValue = Commands.CDIN.Editor.GetCompanyID(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)
+            TxtDeptCode.Text = Commands.CDIN.Editor.GetDeptCode(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID).ToString
+            TxtDeptName.Text = Commands.CDIN.Editor.GETDeptName(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID).ToString
+            TxtDescription.Text = Commands.CDIN.Editor.GetDescription(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID).ToString
         End If
     End Sub
 
@@ -45,15 +45,15 @@ Public Class CDIN_Editor
         If varFormAttributes.RowID = "-1" Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Company Code selected, Departement Code and Departement Name are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf ((varFormAttributes.IsNew) AndAlso (Commands.CDIN.Editor.IsDuplicate(varDatabaseEngine, CboCompany.SelectedValue.ToString, TxtDeptCode.XOSQLText))) Then
+        ElseIf ((varFormAttributes.IsNew) AndAlso (Commands.CDIN.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, CboCompany.SelectedValue.ToString, TxtDeptCode.XOSQLText))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Departement Code already registered.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (Not (varFormAttributes.IsNew) AndAlso (Commands.CDIN.Editor.IsDuplicate(varDatabaseEngine, CboCompany.SelectedValue.ToString, TxtDeptCode.XOSQLText, varFormAttributes.RowID))) Then
+        ElseIf (Not (varFormAttributes.IsNew) AndAlso (Commands.CDIN.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, CboCompany.SelectedValue.ToString, TxtDeptCode.XOSQLText, varFormAttributes.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Departement Code already used by another departement.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
         Return
         End If
 
-        If (Commands.CDIN.Editor.PUSHData(varDatabaseEngine, CboCompany.SelectedValue.ToString, TxtDeptCode.XOSQLText, TxtDeptName.XOSQLText, TxtDescription.XOSQLText, varFormAttributes.RowID)) Then
+        If (Commands.CDIN.Editor.PUSHData(varDatabaseName, varDatabaseEngine, CboCompany.SelectedValue.ToString, TxtDeptCode.XOSQLText, TxtDeptName.XOSQLText, TxtDescription.XOSQLText, varFormAttributes.RowID)) Then
             RaiseEvent RecordSaved()
             Mainframe_n_6.Ts_status.Text = "Success"
         Else

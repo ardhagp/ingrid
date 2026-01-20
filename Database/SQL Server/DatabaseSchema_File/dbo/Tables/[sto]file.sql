@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[[sto]]file] (
+﻿CREATE TABLE [dbo].sto_file (
     [file_id]           CHAR (32)       NOT NULL,
     [file_parent]       CHAR (32)       NULL,
     [file_filename]     VARCHAR (255)   CONSTRAINT [DF_[sto]]file_file_filename] DEFAULT ('-') NULL,
@@ -19,5 +19,5 @@
 
 GO
 CREATE NONCLUSTERED INDEX [IX_[sto]]file]
-    ON [dbo].[[sto]]file]([file_filename] ASC);
+    ON [dbo].sto_file([file_filename] ASC);
 

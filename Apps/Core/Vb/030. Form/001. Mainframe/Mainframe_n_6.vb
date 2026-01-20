@@ -29,7 +29,7 @@ Public Class Mainframe_n_6
 
     Private varSYSS As SYSS
 
-    Private varSQL As New LibSQL.Mainframe.Database
+    Private varSql As New LibSQL.Mainframe.Database
     Private varSqlDBcheck As New LibSQL.Commands.DBIC.Applications
     Private varSqlNotification As New LibSQL.Application.Notification
     Private varSqlRunningText As New LibSQL.Application.RunningText
@@ -54,7 +54,7 @@ Public Class Mainframe_n_6
             'Txt_shortcut.AutoCompleteSource = Nothing
             Txt_shortcut.AutoCompleteMode = AutoCompleteMode.SuggestAppend
 
-            varDataset = varSqlModules.DisplayAutoComplete '.DisplayAutoComplete(varFormAttributes.RowID, DgnPictureList)
+            varDataset = varSqlModules.DisplayAutoComplete(varDatabaseName) '.DisplayAutoComplete(varFormAttributes.RowID, DgnPictureList)
 
             If varDataset Is Nothing Then
                 Return
@@ -89,7 +89,7 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub GetRunningText()
-        TxtRunning.Visible = varSqlRunningText.Show(varUserAttributes.IsAdministrator)
+        TxtRunning.Visible = varSqlRunningText.Show(varDatabaseName, varUserAttributes.IsAdministrator)
     End Sub
 
     ''' <summary>
@@ -97,7 +97,7 @@ Public Class Mainframe_n_6
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub GetNotification()
-        varTotalNotification = varSqlNotification.Exist(varUserAttributes.EID)
+        varTotalNotification = varSqlNotification.Exist(varDatabaseName, varUserAttributes.EID)
         If varTotalNotification > 0 Then
             USERMENU.Text = varUserAttributes.FirstName & "*"
             USERMENU.BackColor = Global.System.Drawing.Color.LightPink
@@ -172,10 +172,10 @@ Public Class Mainframe_n_6
         End If
 
         ''' Check Module Availability
-        If Not (Application.Modules.IsModuleReady(varDatabaseEngine, commandcode.ToUpper.Trim)) Then
+        If Not (Application.Modules.IsModuleReady(varDatabaseName, varDatabaseEngine, commandcode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "Module " & commandcode.ToUpper.Trim & " not found."
             Return
-        ElseIf (Application.Modules.IsModuleLocked(varDatabaseEngine, commandcode.ToUpper.Trim)) Then
+        ElseIf (Application.Modules.IsModuleLocked(varDatabaseName, varDatabaseEngine, commandcode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
             Bridge.Security.Writelog.Sendlog("""message"" : """ & varUserAttributes.FirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
             Decision("[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.frmDialogBox.MessageIcon.Information, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -183,7 +183,7 @@ Public Class Mainframe_n_6
             System.Media.SystemSounds.Beep.Play()
 
             Return
-        ElseIf Not (varUserAccess.User(commandcode.ToUpper.Trim, varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.View, St_mainframe)) Then ''' Check User Access
+        ElseIf Not (varUserAccess.User(varDatabaseName, commandcode.ToUpper.Trim, varUserAttributes.UID, LibSQL.Application.Access.TypeOfAccess.View, St_mainframe)) Then ''' Check User Access
 
             St_mainframe.Items(0).Text = "You are not authorized to access : " & commandcode.ToUpper.Trim
 
@@ -212,7 +212,7 @@ Public Class Mainframe_n_6
     Private Function LoginClicked() As Boolean
         If varUserAttributes.UID = String.Empty Then
             varLOGIN = New LOGIN
-            DISPLAY(varLOGIN, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, "Sign In", "Please enter your credentials to continue", True)
+            Display(varLOGIN, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, "Sign In", "Please enter your credentials to continue", True)
         End If
         If varUserAttributes.UID = String.Empty Then
             varSession = False
@@ -234,7 +234,7 @@ Public Class Mainframe_n_6
         If Decision("Are you sure want to logout from system?", "Logout", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
             Bridge.Security.Writelog.Sendlog("""message"" : " & varUserAttributes.FirstName & " is logout."",", "Information")
             Call SystemLogout()
-            varLogUser.Logout(varDatabaseEngine, varUserAttributes.EID)
+            varLogUser.Logout(varDatabaseName, varDatabaseEngine, varUserAttributes.EID)
             Call ClearLoginData()
         End If
     End Sub
@@ -280,7 +280,7 @@ Public Class Mainframe_n_6
         Catch ex As Exception
             With proLog
                 .AppVersion = GETAPPVERSION()
-                .FromSender = "[ChangePasswordToolStripMenuItem] $Ingrid\Apps\Core\Vb\030. Form\001. Mainframe\Mainframe_n_6.vb"
+                .FromSender = "[ChangePasswordToolStripMenuItem] $\Ingrid\Apps\Core\Vb\030. Form\001. Mainframe\Mainframe_n_6.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult
@@ -317,7 +317,6 @@ Public Class Mainframe_n_6
             varForceRefreshMainframeData = False
             TmrStatus.Interval = varStatusTimeWait * 1000
 
-
             'splash.Show()
             Call SystemLogout()
             Call FirstLoad()
@@ -327,11 +326,12 @@ Public Class Mainframe_n_6
             varVersionapplication = GETAPPVERSION()
             Text += " - Ver. " & varVersionapplication
 
-            varDatabaseEngine = LibSQL.Mainframe.Database.DBEngine
+            varDatabaseEngine = LibSQL.Mainframe.Database.DatabaseEngine
+            varDatabaseName = LibSQL.Mainframe.Database.DatabaseName
 
             If Mainframe.Database.Connect(varProductionMode) Then
                 Ts_connection.Text = "Connected"
-                varLogApplication.Run(varDatabaseEngine)
+                varLogApplication.Run(varDatabaseName, varDatabaseEngine)
             Else
                 Ts_connection.Text = "Disconnected"
                 Decision("Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
@@ -342,8 +342,8 @@ Public Class Mainframe_n_6
 
             Call CommandAutoComplete() 'TODO: Raised Error
 
-            If Not (LibSQL.Commands.DBIC.Applications.IsCompanyExist(varDatabaseEngine) OrElse Not LibSQL.Commands.DBIC.Applications.IsDepartmentExist(varDatabaseEngine)) Then
-                DISPLAY(frmFistGuide,, "First Guide", "", True, Me)
+            If Not (LibSQL.Commands.DBIC.Applications.IsCompanyExist(varDatabaseName, varDatabaseEngine) OrElse Not LibSQL.Commands.DBIC.Applications.IsDepartmentExist(varDatabaseName, varDatabaseEngine)) Then
+                Display(frmFistGuide,, "First Guide", "", True, Me)
             End If
         Catch ex As Exception
             With proLog
@@ -491,16 +491,16 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub GetProfile()
-        PnlProfile.Visible = LibSQL.Application.ProfilePanel.Show(varUserAttributes.IsAdministrator)
+        PnlProfile.Visible = LibSQL.Application.ProfilePanel.Show(varDatabaseName, varUserAttributes.IsAdministrator)
         If (PnlProfile.Visible) Then
-            LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome
+            LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome(varDatabaseName)
             LblEmpNumber.Text = varUserAttributes.EmployeeNumber
 
             Dim varNama = varUserAttributes.FirstName.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
             LblEmployeeName.Text = String.Join(" ", varNama.Take(2))
 
             LblPosition.Text = varUserAttributes.Position
-            PctProfile.Image = varSqlProfiles.GETPhoto(varUserAttributes.EID, varUserAttributes.Gender)
+            PctProfile.Image = varSqlProfiles.GetPhoto(varDatabaseName, varUserAttributes.EID, varUserAttributes.Gender)
             PnlProfile.Height = 191
         Else
             LblWelcome.Text = String.Empty
@@ -518,23 +518,23 @@ Public Class Mainframe_n_6
         Dim varFilecurrentsize As Integer
         Dim varFreespace As Integer
 
-        PnlStorage.Visible = LibSQL.Application.StorageSense.Show(varUserAttributes.IsAdministrator)
+        PnlStorage.Visible = LibSQL.Application.StorageSense.Show(varDatabaseName, varUserAttributes.IsAdministrator)
 
         If (PnlStorage.Visible) Then
             PnlStorage.Height = 158
 
-            varFreespace = CType(LibSQL.Application.StorageSense.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp"), Integer)
+            varFreespace = CType(LibSQL.Application.StorageSense.MaxSize(varDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace), Integer)
             pgDataStorage.Maximum = varFreespace
 
-            varDatacurrentsize = CType(LibSQL.Application.StorageSense.DataCurrentSize, Integer)
+            varDatacurrentsize = CType(LibSQL.Application.StorageSense.DataCurrentSize(varDatabaseName), Integer)
             pgDataStorage.Value = varDatacurrentsize
 
             lblDataStorage.Text = String.Format("{0} / {1}", IIf(varDatacurrentsize < 1024, varDatacurrentsize & " MB", Math.Round((varDatacurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
 
-            varFreespace = CType(LibSQL.Application.StorageSense.MaxSize(LibSQL.Application.StorageSense.DBSizeType.FreeSpace, "db_universe_erp_file"), Integer)
+            varFreespace = CType(LibSQL.Application.StorageSense.MaxSize(varDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace), Integer)
             pgFileStorage.Maximum = varFreespace
 
-            varFilecurrentsize = CType(LibSQL.Application.StorageSense.FileCurrentSize, Integer)
+            varFilecurrentsize = CType(LibSQL.Application.StorageSense.FileCurrentSize(varDatabaseName), Integer)
             pgFileStorage.Value = varFilecurrentsize
 
             lblFileStorage.Text = String.Format("{0} / {1}", IIf(varFilecurrentsize < 1024, varFilecurrentsize & " MB", Math.Round((varFilecurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
@@ -682,17 +682,17 @@ Public Class Mainframe_n_6
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Public Shared Sub GetSettings()
-        varMaxUploadSizePDF = LibSQL.Application.Modules.MaxPDFAllowed
-        varMaxUploadSizePhoto = LibSQL.Application.Modules.MaxPhotoAllowed
-        varMinPasswordLength = LibSQL.Application.Modules.MinPasswordLength
-        varTextmark = LibSQL.Application.Modules.TextMark(varUserAttributes.IsAdministrator)
+        varMaxUploadSizePDF = LibSQL.Application.Modules.MaxPDFallowed(varDatabaseName)
+        varMaxUploadSizePhoto = LibSQL.Application.Modules.MaxPhotoallowed(varDatabaseName)
+        varMinPasswordLength = LibSQL.Application.Modules.MinPasswordLength(varDatabaseName)
+        varTextmark = LibSQL.Application.Modules.TextMark(varDatabaseName, varUserAttributes.IsAdministrator)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub Ms_start_Exit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
         If (varSession) Then
             Call SystemLogout() ''' Logout Process
-            varLogUser.Logout(varDatabaseEngine, varUserAttributes.EID)
+            varLogUser.Logout(varDatabaseName, varDatabaseEngine, varUserAttributes.EID)
             Call ClearLoginData() ''' Clear Login Data
         End If
 

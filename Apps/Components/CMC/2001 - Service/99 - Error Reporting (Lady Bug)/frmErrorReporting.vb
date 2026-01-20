@@ -1,9 +1,9 @@
 ﻿Imports System.Runtime.Versioning
 Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
-Public Class frmErrorReporting
+Public Class FRMerrorreporting
     'Private Catcher As New Ladybug.Log.Fields
-    Public ResumeNext As Boolean
+    Private ResumeNext As Boolean
 
     'Private ERL As New Database.Engine.LocalDB
     Private ERL As New Database.Engine.SQLiteV3
@@ -28,9 +28,12 @@ Public Class frmErrorReporting
         ChkErrorReporting.Enabled = proLog.ShowErrorReporting
         ResumeNext = proLog.ResumeNext
 
+        Dim varMessage As String
+
         'Send Error to Ingrid Log Center
         If (proLog.SaveInBetterLog) Then
-            Bridge.Security.Writelog.Sendlog("""message"" : """ & proLog.Message & """," & Environment.NewLine & """sender"" : " & proLog.FromSender & """," & Environment.NewLine & """error_number"" : " & TxtErrorNumber.Text & "," & Environment.NewLine & """error_type"" : """ & TxtErrorType.Text & """," & Environment.NewLine & """version"" : """ & TxtAppBuild.Text & """,", proLog.TypeOfLog.ToString())
+            varMessage = """message"" : """ & proLog.Message & """," & Environment.NewLine & """sender"" : """ & proLog.FromSender & """," & Environment.NewLine & """error_number"" : " & TxtErrorNumber.Text & "," & Environment.NewLine & """error_type"" : """ & TxtErrorType.Text & """," & Environment.NewLine & """version"" : """ & TxtAppBuild.Text & ""","
+            Bridge.Security.Writelog.Sendlog(varMessage, proLog.TypeOfLog.ToString())
         End If
 
         'Record Error into local database
@@ -51,7 +54,7 @@ Public Class frmErrorReporting
         Me.Close()
         Me.Dispose()
         If Not (ResumeNext) Then
-            'put your code here
+            Process.GetCurrentProcess.Kill()
         End If
     End Sub
 End Class

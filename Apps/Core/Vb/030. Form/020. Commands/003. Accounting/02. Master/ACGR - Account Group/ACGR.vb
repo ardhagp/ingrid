@@ -17,9 +17,9 @@ Public Class ACGR
     ''' </summary>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA()
-        LibSQL.Commands.ACGR.View.FILLCompany(varDatabaseEngine, CboCompany)
-        LibSQL.Commands.ACGR.View.FILLAccountingBook(varDatabaseEngine, CboAccountingBook, CboCompany)
+    Private Sub GetData()
+        LibSQL.Commands.ACGR.View.FillCompany(varDatabaseName, varDatabaseEngine, CboCompany)
+        LibSQL.Commands.ACGR.View.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
     End Sub
 
     ''' <summary>
@@ -28,8 +28,8 @@ Public Class ACGR
     ''' <param name="ForceRefresh">True / False</param>
     ''' <remarks>True akan memaksa data untuk direfresh tanpa filter apapun</remarks>
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATAGRID(Optional ByVal ForceRefresh As Boolean = False)
-        LibSQL.Commands.ACGR.View.GETAccountList(varDatabaseEngine, DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, ForceRefresh)
+    Private Sub GetDataGrid(Optional forcerefresh As Boolean = False)
+        LibSQL.Commands.ACGR.View.GetAccountList(varDatabaseName, varDatabaseEngine, DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, forcerefresh)
     End Sub
 
     'Private _RowID As Integer
@@ -39,8 +39,8 @@ Public Class ACGR
     ''' </summary>
     ''' <param name="GridTable"></param>
     ''' <remarks></remarks>
-    Private Function GetAccountID(ByVal GridTable As CMCv.dgn) As String
-        With GridTable
+    Private Function GetAccountID(gridtable As CMCv.dgn) As String
+        With gridtable
             If .Rows.Count < 1 Then
                 varFormAttributes.RowID = "-1"
             Else
@@ -108,8 +108,8 @@ Public Class ACGR
         Else
             varFormAttributes.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.ACGR.View.DELETEData(varDatabaseEngine, varFormAttributes.RowID)) Then
-                    Call GETDATAGRID(True)
+                If (LibSQL.Commands.ACGR.View.DeleteData(varDatabaseName, varDatabaseEngine, varFormAttributes.RowID)) Then
+                    Call GetDataGrid(True)
                     Mainframe_n_6.Ts_status.Text = "Success"
                 Else
                     Mainframe_n_6.Ts_status.Text = "Delete failed"
@@ -151,8 +151,8 @@ Public Class ACGR
         _MMSmenu.LoadIn(Me)
         _MMSmenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
-        Call GETDATA()
-        Call GETDATAGRID()
+        Call GetData()
+        Call GetDataGrid()
         V_Selectedgroup = TbctlAccountGroup.SelectedTab.Name
         Call GetTableID()
         V_ISfirstload = False
@@ -170,7 +170,7 @@ Public Class ACGR
     <SupportedOSPlatform("windows")>
     Private Sub CboAccountingBook_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboAccountingBook.SelectedIndexChanged
         If Not (V_ISfirstload) Then
-            Call GETDATAGRID(True)
+            Call GetDataGrid(True)
             Call GetTableID()
         End If
     End Sub
@@ -178,8 +178,8 @@ Public Class ACGR
     <SupportedOSPlatform("windows")>
     Private Sub CboPlant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
         If Not (V_ISfirstload) Then
-            LibSQL.Commands.ACGR.View.FILLAccountingBook(varDatabaseEngine, CboAccountingBook, CboCompany)
-            Call GETDATAGRID(True)
+            LibSQL.Commands.ACGR.View.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
+            Call GetDataGrid(True)
         End If
     End Sub
 #End Region
@@ -187,7 +187,7 @@ Public Class ACGR
 #Region "WithEvents"
     <SupportedOSPlatform("windows")>
     Private Sub RecordSaved() Handles frmACGReditor.RecordSaved
-        Call GETDATAGRID(True)
+        Call GetDataGrid(True)
     End Sub
 #End Region
 
