@@ -1,18 +1,14 @@
 ﻿Imports System.Runtime.Versioning
 Imports System.Text
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-Imports CMCv
-Imports Microsoft.Reporting.Map.WebForms.BingMaps
 
 <SupportedOSPlatform("windows")>
-Public Class CONN
+Public Class FRMconn
+    Private WithEvents FRMconn_editor As FRMconnEditor
+    Private WithEvents COMmainframemenu As New UI.View.MenuStrip
+
     Public Event ConnectFrameOpen()
     Public Event ConnectFrameClose()
 
-    Private WithEvents COMmainframemenu As New UI.View.MenuStrip
-    Private WithEvents FRMconn_editor As New CONN_Editor
-
-    Private varSQL As New Commands.CONN.View
     Private varIsProduction As Boolean = True
     Private varIsExtension As Boolean = False
 
@@ -43,7 +39,7 @@ Public Class CONN
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional forcerefresh As Boolean = False)
         DblBuffer(DgnConnection) ''' Enable double buffering to reduce flickering
-        Commands.CONN.View.DisplayData(DgnConnection, SLFStatus, TxtFind, forcerefresh)
+        CMDconn.View.DisplayData(DgnConnection, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     ''' <summary>
@@ -60,7 +56,7 @@ Public Class CONN
 #End Region
 
     <SupportedOSPlatform("windows")>
-    Private Sub CONN_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FRMconn_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RaiseEvent ConnectFrameOpen() ''' Notify that the connection settings form is opened
 
         Bridge.Security.Writelog.Sendlog("""message"" : ""Connection Settings is opened."",", "Information") ''' Log the event
@@ -80,9 +76,8 @@ Public Class CONN
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub CONN_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
+    Private Sub FRMconn_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
         If Not (varIsExtension) Then
-            '_DBE_LocalDB.Close()
             varDatabaseEngineSqlite.Close()
         End If
 
@@ -102,7 +97,7 @@ Public Class CONN
     Private Sub EventDataAddNew() Handles COMmainframemenu.EventDataAddNew
         varProperties.IsNew = True
         varProperties.RowID = "-1"
-        FRMconn_editor = New CONN_Editor
+        FRMconn_editor = New FRMconnEditor
         Display(FRMconn_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new connection", True)
         SLFStatus.Text = String.Empty
     End Sub
@@ -118,7 +113,7 @@ Public Class CONN
         If varProperties.RowID Is "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            FRMconn_editor = New CONN_Editor
+            FRMconn_editor = New FRMconnEditor
             Display(FRMconn_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update connection", True)
         End If
 
@@ -152,7 +147,7 @@ Public Class CONN
                 varMessage.AppendLine(varLine)
 
                 If Decision(Convert.ToString(varMessage), "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    If (Commands.CONN.View.DeleteData(Convert.ToString(varProperties.RowID))) Then
+                    If (CMDconn.View.DeleteData(Convert.ToString(varProperties.RowID))) Then
                         Call GetData(True)
                         SLFStatus.Text = "Success"
                     Else
@@ -184,8 +179,7 @@ Public Class CONN
     ''' Load data with filter applied
     ''' </summary>
     Private Sub EventDataRefresh() Handles COMmainframemenu.EventDataRefresh
-        TxtFind.Clear()
-        Call GetData(True)
+        Call SavedOrRefresh()
     End Sub
 
     ''' <summary>
@@ -204,12 +198,16 @@ Public Class CONN
         Call GetData(True)
     End Sub
 
-    Private Sub frmCONN_Editor_RecordSaved() Handles FRMconn_editor.RecordSaved
+    Private Sub SavedOrRefresh()
         TxtFind.Clear()
         Call GetData(True)
     End Sub
 
-    Private Sub Btn_Close_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
+    Private Sub FRMconnEditorSaved() Handles FRMconn_editor.EventRecordSaved
+        Call SavedOrRefresh()
+    End Sub
+
+    Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
         Me.Close()
     End Sub
 End Class

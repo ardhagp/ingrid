@@ -1,9 +1,8 @@
 ﻿Imports System.ComponentModel
 Imports System.Globalization
-Imports System.Management
-Imports System.Runtime.InteropServices
 Imports System.Runtime.Versioning
 Imports System.Text.RegularExpressions
+Imports System.Windows.Forms
 
 ''' <project>Mainframe : txt (Textbox Custom Component)</project>
 ''' <author>Ardha Gp</author>
@@ -43,173 +42,173 @@ Public Class txt
 #Region "Properties"
     <Category("Text"),
     Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
-    Private _varAutoTrim As Boolean
+    Private varAutoTrim As Boolean
     Public Property XOAutoTrim() As Boolean
         Get
-            Return _varAutoTrim
+            Return varAutoTrim
         End Get
         Set(value As Boolean)
-            _varAutoTrim = value
+            varAutoTrim = value
         End Set
     End Property
 
     <Category("Text"),
     Description("Teksboks harus diisi")>
-    Private _varHarusDiisi As Boolean
+    Private varHarusDiisi As Boolean
     Public Property XOHarusDiisi As Boolean
         Get
-            Return _varHarusDiisi
+            Return varHarusDiisi
         End Get
         Set(value As Boolean)
-            _varHarusDiisi = value
+            varHarusDiisi = value
         End Set
     End Property
 
-    Private _varHightlightSaatFokus As Boolean
+    Private varHightlightSaatFokus As Boolean
     <Category("Text"),
     Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
     Public Property XOHightlightSaatFokus() As Boolean
         Get
-            Return _varHightlightSaatFokus
+            Return varHightlightSaatFokus
         End Get
         Set(value As Boolean)
-            _varHightlightSaatFokus = value
+            varHightlightSaatFokus = value
         End Set
     End Property
 
-    Private _varHighlightSaatFokusWarna As System.Drawing.Color
+    Private varHighlightSaatFokusWarna As System.Drawing.Color
     <Category("Text"),
     Description("Warna highlight")>
     Public Property XOHightlightSaatFokusWarna() As System.Drawing.Color
         Get
-            Return _varHighlightSaatFokusWarna
+            Return varHighlightSaatFokusWarna
         End Get
         Set(value As System.Drawing.Color)
-            _varHighlightSaatFokusWarna = value
+            varHighlightSaatFokusWarna = value
         End Set
     End Property
 
     <Category("Text"),
    Description("Panjang password minimum")>
-    Private _varPwdLengthMin As Integer
+    Private varPwdLengthMin As Integer
     Public Property XOPwdLengthMin As Integer
         Get
-            Return _varPwdLengthMin
+            Return varPwdLengthMin
         End Get
         Set(value As Integer)
-            _varPwdLengthMin = value
+            varPwdLengthMin = value
         End Set
     End Property
 
     <Category("Text"),
    Description("Aktifkan penghitung kekuatan password")>
-    Private _varPwdStrengthCalculate As Boolean
+    Private varPwdStrengthCalculate As Boolean
     Public Property XOPwdStrengthCalculate As Boolean
         Get
-            Return _varPwdStrengthCalculate
+            Return varPwdStrengthCalculate
         End Get
         Set(value As Boolean)
-            _varPwdStrengthCalculate = value
+            varPwdStrengthCalculate = value
         End Set
     End Property
 
     <Category("Text"),
    Description("Indikator kekuatan password (skor)")>
-    Private _varPwdStrengthScore As Integer
+    Private varPwdStrengthScore As Integer
     Public Property XOPwdStrengthScore As Integer
         Get
-            Return _varPwdStrengthScore
+            Return varPwdStrengthScore
         End Get
         Set(value As Integer)
-            _varPwdStrengthScore = value
+            varPwdStrengthScore = value
         End Set
     End Property
 
     <Category("Text"),
    Description("Indikator kekuatan password (teks)")>
-    Private _varPwdStrengthText As String
+    Private varPwdStrengthText As String
     Public Property XOPwdStrengthText As String
         Get
-            Return _varPwdStrengthText
+            Return varPwdStrengthText
         End Get
         Set(value As String)
-            _varPwdStrengthText = value
+            varPwdStrengthText = value
         End Set
     End Property
 
     <Category("Text"),
    Description("Mengisi teksboks kosong dengan tanda (-)")>
-    Private _varTanpaSpasi As Boolean
+    Private varTanpaSpasi As Boolean
     Public Property XOTanpaSpasi As Boolean
         Get
-            Return _varTanpaSpasi
+            Return varTanpaSpasi
         End Get
         Set(value As Boolean)
-            _varTanpaSpasi = value
+            varTanpaSpasi = value
         End Set
     End Property
 
     <Category("Text"),
    Description("Teks yang dikonversi untuk sql")>
-    Private _varSQLText As String
+    Private varSQLText As String
     Public Property XOSQLText As String
         Get
-            Return _varSQLText
+            Return varSQLText
         End Get
         Set(value As String)
-            _varSQLText = value
+            varSQLText = value
         End Set
     End Property
 
-    Private _varHarusDiisiWarnaLatarDefault As System.Drawing.Color
-    Private _varHarusDiisiWarnaLatar As System.Drawing.Color
+    Private varHarusDiisiWarnaLatar As System.Drawing.Color
     <Category("Text"),
     Description("Warna saat teksboks tidak diisi")>
     Public Property XOHarusDiisiWarnaLatar As System.Drawing.Color
         Get
-            Return _varHarusDiisiWarnaLatar
+            Return varHarusDiisiWarnaLatar
         End Get
         Set(value As System.Drawing.Color)
-            _varHarusDiisiWarnaLatar = value
+            varHarusDiisiWarnaLatar = value
         End Set
     End Property
 
+    Private varHarusDiisiWarnaLatarDefault As System.Drawing.Color
     <Category("Text"),
     Description("Warna saat teksboks tidak diisi jika bernilai False")>
     Public Property XOHarusDiisiWarnaLatarDefault As System.Drawing.Color
         Get
-            Return _varHarusDiisiWarnaLatarDefault
+            Return varHarusDiisiWarnaLatarDefault
         End Get
         Set(value As System.Drawing.Color)
-            _varHarusDiisiWarnaLatarDefault = value
+            varHarusDiisiWarnaLatarDefault = value
         End Set
     End Property
 
-    Private _varValidasiField As String
+    Private varValidasiField As String
     <Category("Text"),
     Description("Field yang ditampilkan saat validasi tidak diisi")>
     Public Property XOValidasiField As String
         Get
-            Return _varValidasiField
+            Return varValidasiField
         End Get
         Set(value As String)
-            _varValidasiField = value
+            varValidasiField = value
         End Set
     End Property
 
-    Private _varPilihSemuaSaatFokus As Boolean
+    Private varPilihSemuaSaatFokus As Boolean
     <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Memilih semua teks saat fokus")>
     Public Property XOPilihSemuaSaatFokus() As Boolean
         Get
-            Return _varPilihSemuaSaatFokus
+            Return varPilihSemuaSaatFokus
         End Get
         Set(value As Boolean)
-            _varPilihSemuaSaatFokus = value
+            varPilihSemuaSaatFokus = value
         End Set
     End Property
 
-    Private _varIsBlank As Boolean
+    Private varIsBlank As Boolean
     ''' <summary>
     ''' Nilai ini terisi secara otomatis
     ''' </summary>
@@ -218,75 +217,75 @@ Public Class txt
     ''' <remarks></remarks>
     Public Property XOIsBlank() As Boolean
         Get
-            Return _varIsBlank
+            Return varIsBlank
         End Get
         Set(value As Boolean)
-            _varIsBlank = value
+            varIsBlank = value
         End Set
     End Property
 
-    Private _varJenisKapital As ControlCodeBase.enuJenisKapital
+    Private varJenisKapital As ControlCodeBase.enuJenisKapital
     <Category("Text"),
     Description("Isi akan diubah menjadi kapital semua")>
     Public Property XOJenisKapital As ControlCodeBase.enuJenisKapital
         Get
-            Return _varJenisKapital
+            Return varJenisKapital
         End Get
         Set(value As ControlCodeBase.enuJenisKapital)
-            _varJenisKapital = value
+            varJenisKapital = value
         End Set
     End Property
 
-    Private _varRestriction As ControlCodeBase.enuRestriction
+    Private varRestriction As ControlCodeBase.enuRestriction
     Public Property XORestriction As ControlCodeBase.enuRestriction
         Get
-            Return _varRestriction
+            Return varRestriction
         End Get
         Set(value As ControlCodeBase.enuRestriction)
-            _varRestriction = value
+            varRestriction = value
         End Set
     End Property
 
-    Private _varIsSearchBox As Boolean
+    Private varIsSearchBox As Boolean
     Public Property XOIsSearchBox As Boolean
         Get
-            Return _varIsSearchBox
+            Return varIsSearchBox
         End Get
         Set(value As Boolean)
-            _varIsSearchBox = value
+            varIsSearchBox = value
         End Set
     End Property
 
-    Private _varSearchBoxText As String
+    Private varSearchBoxText As String
     Public Property XOSearchBoxText As String
         Get
-            Return _varSearchBoxText
+            Return varSearchBoxText
         End Get
         Set(value As String)
-            _varSearchBoxText = value
+            varSearchBoxText = value
         End Set
     End Property
 #End Region
 
 #Region "Function"
-    Private Function SQLSafeText(ByVal txtControl As txt) As String
-        Dim _SQLSafeText As String = txtControl.Text
+    Private Function SqlSafeText(txtControl As txt) As String
+        Dim varSqlSafeText As String = txtControl.Text
 
-        If (txtControl.XOIsSearchBox = True) AndAlso (txtControl.Text = txtControl.XOSearchBoxText) Then
-            _SQLSafeText = String.Empty
+        If (txtControl.XOIsSearchBox) AndAlso (txtControl.Text = txtControl.XOSearchBoxText) Then
+            varSqlSafeText = String.Empty
         End If
 
-        _SQLSafeText = _SQLSafeText.Replace("'", "").Replace(";", "").Replace("--", "").Replace("drop table ", "").Replace("update ", "").Replace("insert into ", "").Replace("--", "").Replace("xp_", "").Trim
+        varSqlSafeText = varSqlSafeText.Replace("select ", "").Replace("'", "").Replace(";", "").Replace("--", "").Replace("drop table ", "").Replace("update ", "").Replace("insert into ", "").Replace("--", "").Replace("xp_", "").Trim
         If XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA Then
-            _SQLSafeText = _SQLSafeText.ToUpper(CultureInfo.CurrentCulture)
+            varSQLSafeText = varSQLSafeText.ToUpper(CultureInfo.CurrentCulture)
         ElseIf XOJenisKapital = ControlCodeBase.enuJenisKapital.kecilsemua Then
-            _SQLSafeText = _SQLSafeText.ToLower(CultureInfo.CurrentCulture)
+            varSQLSafeText = varSQLSafeText.ToLower(CultureInfo.CurrentCulture)
         End If
-        Return _SQLSafeText
+        Return varSQLSafeText
     End Function
 
-    Private Sub CheckRestriction(ByVal _valEnuRestriction As ControlCodeBase.enuRestriction)
-        Select Case _valEnuRestriction
+    Private Sub CheckRestriction(valenurestriction As ControlCodeBase.enuRestriction)
+        Select Case valenurestriction
             Case ControlCodeBase.enuRestriction.None
                 'Do nothing
             Case ControlCodeBase.enuRestriction.OnlyNumber
@@ -304,102 +303,138 @@ Public Class txt
 #End Region
 
 #Region "Password Strength Indicator"
-    Private _Password As String
-    Private _ChrPassword() As Char
-    Private _MinPasswordLength As Integer = 8
-    Private _BaseScore As Integer
-    Private _Score As Integer
-    Private _Result As String
-    Private _Bonus As New Bonus
-    Private _Num As New Num
+    Private varPassword As String
+    Private varChrPassword() As Char
+    Private varMinPasswordLength As Integer = 8
+    Private varBaseScore As Integer
+    Private varScore As Integer
+    Private varResult As String
+    Private varBonus As New Bonus
+    Private varNum As New Num
 
-    Private Sub InitPasswordStrength(ByVal UserInput As String)
-        _Password = UserInput
-        _ChrPassword = _Password.ToCharArray()
+    Private Sub InitPasswordStrength(userinput As String)
+        varPassword = userinput
+        varChrPassword = varPassword.ToCharArray()
 
-        _Num.Excess = 0
-        _Num.Upper = 0
-        _Num.Numbers = 0
-        _Num.Symbols = 0
-        _Bonus.Combo = 0
-        _Bonus.FlatLower = 0
-        _Bonus.FlatNumber = 0
-        _BaseScore = 0
-        _Score = 0
+        varNum.Excess = 0
+        varNum.Upper = 0
+        varNum.Numbers = 0
+        varNum.Symbols = 0
+        varBonus.Combo = 0
+        varBonus.FlatLower = 0
+        varBonus.FlatNumber = 0
+        varBaseScore = 0
+        varScore = 0
     End Sub
 
     Private Sub AnalyzePassword()
 
-        For i = 0 To (_Password.Length - 1)
-            If Regex.IsMatch(_ChrPassword(i), "[0-9]") Then
-                _Num.Upper += 1
-            ElseIf Regex.IsMatch(_ChrPassword(i), "[A-Z]") Then
-                _Num.Numbers += 2
-            ElseIf Regex.IsMatch(_ChrPassword(i), "\W") Then
-                _Num.Symbols += 3
+        For i = 0 To (varPassword.Length - 1)
+            If Regex.IsMatch(varChrPassword(i), "[0-9]") Then
+                varNum.Upper += 1
+            ElseIf Regex.IsMatch(varChrPassword(i), "[A-Z]") Then
+                varNum.Numbers += 2
+            ElseIf Regex.IsMatch(varChrPassword(i), "\W") Then
+                varNum.Symbols += 3
             End If
         Next
 
         'If _Match1.Success Then
-        '        _Num.Upper += 1
+        '        varNum.Upper += 1
         '    ElseIf _Match2.Success Then
-        '    _Num.Numbers += 1
+        '    varNum.Numbers += 1
         'ElseIf _Match3.Success Then
-        '    _Num.Symbols += 1
+        '    varNum.Symbols += 1
         'End If
         '    i += 1
         'Next
 
-        _Num.Excess = _Password.Length - _MinPasswordLength
+        varNum.Excess = varPassword.Length - varMinPasswordLength
 
-        If (_Num.Upper > 0 AndAlso _Num.Numbers > 0 AndAlso _Num.Symbols > 0) Then
-            _Bonus.Combo = 25
-        ElseIf (_Num.Upper > 0 AndAlso _Num.Numbers > 0) OrElse (_Num.Upper > 0 AndAlso _Num.Symbols > 0) OrElse (_Num.Numbers > 0 AndAlso _Num.Symbols > 0) Then
-            _Bonus.Combo = 15
+        If (varNum.Upper > 0 AndAlso varNum.Numbers > 0 AndAlso varNum.Symbols > 0) Then
+            varBonus.Combo = 25
+        ElseIf (varNum.Upper > 0 AndAlso varNum.Numbers > 0) OrElse (varNum.Upper > 0 AndAlso varNum.Symbols > 0) OrElse (varNum.Numbers > 0 AndAlso varNum.Symbols > 0) Then
+            varBonus.Combo = 15
         End If
 
-        If Regex.IsMatch(_Password, "^[\sa-z]+$") Then
-            _Bonus.FlatLower = -15
+        If Regex.IsMatch(varPassword, "^[\sa-z]+$") Then
+            varBonus.FlatLower = -15
         End If
 
-        If Regex.IsMatch(_Password, "^[\s0-9]+$") Then
-            _Bonus.FlatLower = -35
+        If Regex.IsMatch(varPassword, "^[\s0-9]+$") Then
+            varBonus.FlatLower = -35
         End If
 
     End Sub
 
     Private Function OutputResultScore() As Integer
-        _Score = _BaseScore + (_Num.Excess * _Bonus.Excess) + (_Num.Upper * _Bonus.Upper) + (_Num.Numbers * _Bonus.Numbers) + (_Num.Symbols * _Bonus.Symbols) + _Bonus.Combo + _Bonus.FlatLower + _Bonus.FlatNumber
+        varScore = varBaseScore + (varNum.Excess * varBonus.Excess) + (varNum.Upper * varBonus.Upper) + (varNum.Numbers * varBonus.Numbers) + (varNum.Symbols * varBonus.Symbols) + varBonus.Combo + varBonus.FlatLower + varBonus.FlatNumber
 
-        If _Score < 0 Then
-            _Score = 0
-        ElseIf _Score > 100 Then
-            _Score = 100
+        If varScore < 0 Then
+            varScore = 0
+        ElseIf varScore > 100 Then
+            varScore = 100
         End If
 
-        Return _Score
+        Return varScore
     End Function
 
     Private Function OutputResultText() As String
-        _Result = String.Empty
-        If _Password.Trim = "" Then
-            _Result = "Password must not be empty"
-        ElseIf _Password.Length < _MinPasswordLength Then
-            _Result = "At least " & _MinPasswordLength & " characters please!"
-        ElseIf _Score < 50 Then
-            _Result = "Weak!"
-        ElseIf (_Score >= 50 AndAlso _Score < 75) Then
-            _Result = "Average!"
-        ElseIf (_Score >= 75 AndAlso _Score < 100) Then
-            _Result = "Strong!"
-        ElseIf _Score >= 100 Then
-            _Result = "Secure!"
+        varResult = String.Empty
+        If varPassword.Trim = "" Then
+            varResult = "Password must not be empty"
+        ElseIf varPassword.Length < varMinPasswordLength Then
+            varResult = "At least " & varMinPasswordLength & " characters please!"
+        ElseIf varScore < 50 Then
+            varResult = "Weak!"
+        ElseIf (varScore >= 50 AndAlso varScore < 75) Then
+            varResult = "Average!"
+        ElseIf (varScore >= 75 AndAlso varScore < 100) Then
+            varResult = "Strong!"
+        ElseIf varScore >= 100 Then
+            varResult = "Secure!"
         End If
-        Return _Result
+        Return varResult
     End Function
 #End Region
 
-    Private _varFlagAutoSelect As Boolean
+    Private Sub Txt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
+        Select Case Me.XORestriction
+            Case ControlCodeBase.enuRestriction.None
+            ' Allow all input
+
+            Case ControlCodeBase.enuRestriction.OnlyNumber
+                If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+                    e.Handled = True
+                End If
+
+            Case ControlCodeBase.enuRestriction.OnlyText
+                If Not Char.IsLetter(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+                    e.Handled = True
+                End If
+
+            Case ControlCodeBase.enuRestriction.TextAndNumber
+                If Not (Char.IsLetterOrDigit(e.KeyChar)) AndAlso Not Char.IsControl(e.KeyChar) Then
+                    e.Handled = True
+                End If
+
+            Case ControlCodeBase.enuRestriction.TextAndSymbol
+                ' Allow letters, digits, punctuation, symbols, and control chars
+                If Not (Char.IsLetterOrDigit(e.KeyChar) OrElse Char.IsPunctuation(e.KeyChar) OrElse Char.IsSymbol(e.KeyChar)) AndAlso Not Char.IsControl(e.KeyChar) Then
+                    e.Handled = True
+                End If
+
+            Case ControlCodeBase.enuRestriction.Email
+                ' Allow letters, digits, and common email symbols
+                Dim allowedChars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._-"
+                If Not allowedChars.Contains(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+                    e.Handled = True
+                End If
+        End Select
+    End Sub
+
+
+    Private varFlagAutoSelect As Boolean
 
     <SupportedOSPlatform("windows")>
     Private Sub txt_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
@@ -407,7 +442,7 @@ Public Class txt
 
         If Me.XOPilihSemuaSaatFokus AndAlso (MouseButtons = Windows.Forms.MouseButtons.None) Then
             Me.SelectAll()
-            _varFlagAutoSelect = True
+            varFlagAutoSelect = True
         End If
         If Me.XOHightlightSaatFokus Then
             MyBase.BackColor = Me.XOHightlightSaatFokusWarna
@@ -428,13 +463,13 @@ Public Class txt
     End Sub
 
     Private Sub txt_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
-        If (e.Control And e.KeyCode = Windows.Forms.Keys.A) Then
+        If (e.Control AndAlso e.KeyCode = Windows.Forms.Keys.A) Then
             Me.SelectAll()
         End If
     End Sub
 
     Private Sub txt_Leave(sender As Object, e As System.EventArgs) Handles Me.Leave
-        _varFlagAutoSelect = False
+        varFlagAutoSelect = False
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -443,8 +478,8 @@ Public Class txt
             Me.Text = Me.Text.Trim()
         End If
 
-        If Me.ReadOnly = False Then
-            If Me.XOHarusDiisi = True AndAlso Me.Text.Trim = "" Then
+        If Not (Me.ReadOnly) Then
+            If (Me.XOHarusDiisi) AndAlso Me.Text.Trim = String.Empty Then
                 MyBase.BackColor = Me.XOHarusDiisiWarnaLatar
             Else
                 MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
@@ -453,7 +488,7 @@ Public Class txt
 
         Call FontSearchBox(False)
 
-        If (Me.XOPwdStrengthCalculate = True) Then
+        If (Me.XOPwdStrengthCalculate) Then
             Call InitPasswordStrength(MyBase.Text)
             Call AnalyzePassword()
             Me.XOPwdStrengthScore = OutputResultScore()
@@ -462,20 +497,20 @@ Public Class txt
     End Sub
 
     Private Sub txt_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
-        If Me.XOHightlightSaatFokus AndAlso Me.ReadOnly = False Then
+        If Me.XOHightlightSaatFokus AndAlso Not (Me.ReadOnly) Then
             MyBase.BackColor = Me.XOHightlightSaatFokusWarna
         End If
     End Sub
 
     Private Sub txt_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
-        If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Me.ReadOnly = False Then
+        If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Not (Me.ReadOnly) Then
             MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
         End If
     End Sub
 
     Private Sub txt_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseUp
-        If Me.XOPilihSemuaSaatFokus AndAlso (Not _varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
-            _varFlagAutoSelect = True
+        If Me.XOPilihSemuaSaatFokus AndAlso (Not varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
+            varFlagAutoSelect = True
             Me.SelectAll()
         End If
     End Sub
@@ -483,22 +518,24 @@ Public Class txt
     Private Sub txt_TextChanged(sender As Object, e As System.EventArgs) Handles Me.TextChanged
         XOSQLText = SQLSafeText(Me)
 
-        If Me.Text = Nothing Then
-            XOSQLText = ""
+        If Me.Text = String.Empty Then
+            XOSQLText = String.Empty
+            XOIsBlank = True
+        Else
+            XOIsBlank = False
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Public Sub FontSearchBox(ByVal OnFocus As Boolean)
+    Public Sub FontSearchBox(onfocus As Boolean)
         Try
-            If Me.XOIsSearchBox = True Then
-                If OnFocus = True AndAlso Me.Text = Me.XOSearchBoxText Then
-                    Me.Text = ""
+            If (Me.XOIsSearchBox) Then
+                If (onfocus) AndAlso Me.Text = Me.XOSearchBoxText Then
+                    Me.Text = String.Empty
                     Me.Font = New System.Drawing.Font(Me.Font, System.Drawing.FontStyle.Regular)
                     Me.ForeColor = System.Drawing.SystemColors.WindowText
-                ElseIf OnFocus = True AndAlso Me.Text = String.Empty Then
-
-                ElseIf OnFocus = False AndAlso Me.Text = String.Empty Then
+                    'ElseIf (onfocus) AndAlso Me.Text = String.Empty Then
+                ElseIf Not (onfocus) AndAlso Me.Text = String.Empty Then
                     Me.Font = New System.Drawing.Font(Me.Font, System.Drawing.FontStyle.Italic)
                     Me.ForeColor = System.Drawing.Color.LightGray
                     Me.Text = Me.XOSearchBoxText
@@ -507,12 +544,12 @@ Public Class txt
                 MyBase.Font = New System.Drawing.Font(MyBase.Font, System.Drawing.FontStyle.Regular)
             End If
         Catch ex As Exception
-
+            MsgBox(ex.ToString)
         End Try
     End Sub
 
     Private Sub txt_Validating(sender As Object, e As CancelEventArgs) Handles Me.Validating
-        If Me.XOHarusDiisi = True AndAlso Me.Text.Trim = "" Then
+        If (Me.XOHarusDiisi) AndAlso Me.Text.Trim = String.Empty Then
             Me.XOIsBlank = True
         Else
             Me.XOIsBlank = False

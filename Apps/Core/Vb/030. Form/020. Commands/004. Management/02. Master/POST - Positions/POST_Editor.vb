@@ -69,10 +69,10 @@ Public Class POST_Editor
         End If
 
         If (LibSQL.Commands.POST.Editor.PushData(varDatabaseName, varDatabaseEngine, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, TxtPositionName.XOSQLText, TxtPositionDescription.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
-            Mainframe_n_6.Ts_status.Text = "Success"
+            FRMmainframe6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else
-            Mainframe_n_6.ts_status.Text = "Failed to save"
+            FRMmainframe6.ts_status.Text = "Failed to save"
             Return
         End If
 

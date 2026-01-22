@@ -181,7 +181,7 @@ Public Class DAR_Editor
 
         If (Commands.DAR.Editor.PushData(varDatabaseName, varDatabaseEngine, CboArea.SelectedValue.ToString, CboTemplate.SelectedValue.ToString, CType(DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, String), CType(MebStart.Text.Replace(".", ":"), String), CType(DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, String), CType(MebEnd.Text.Replace(".", ":"), String), TxtContent.XOSQLText, TxtFeedback.XOSQLText, varProperties.UserID, Convert.ToString(varFormProperties.RowID).ToString, varFormProperties.IsNew, V_ExtQuery)) Then
             V_ExtQuery = String.Empty
-            Mainframe_n_6.Ts_status.Text = "Success"
+            FRMmainframe6.Ts_status.Text = "Success"
 
             Dim V_NewPhotoAdded As Integer = 0
             For Each V_Row As DataGridViewRow In DgnPictureList.Rows
@@ -192,9 +192,9 @@ Public Class DAR_Editor
 
             If V_NewPhotoAdded > 0 Then
                 If (Commands.DAR.Editor.PushPhoto(varDatabaseEngine, DgnPictureList, Convert.ToString(varFormProperties.RowID).ToString, varFormProperties.IsNew, DtpStart.Value)) Then
-                    Mainframe_n_6.Ts_status.Text = "Success + All pictures has been added"
+                    FRMmainframe6.Ts_status.Text = "Success + All pictures has been added"
                 Else
-                    Mainframe_n_6.Ts_status.Text = "Success + With errors while adding pictures"
+                    FRMmainframe6.Ts_status.Text = "Success + With errors while adding pictures"
                 End If
 
                 DgnPictureList.Rows.Clear()
@@ -211,9 +211,9 @@ Public Class DAR_Editor
 
             If varNewFileAdded > 0 Then
                 If (Commands.DAR.Editor.PushFile(varDatabaseEngine, DgnFileList, Convert.ToString(varFormProperties.RowID).ToString, varFormProperties.IsNew, DtpStart.Value)) Then
-                    Mainframe_n_6.Ts_status.Text = "Success + All file has been added"
+                    FRMmainframe6.Ts_status.Text = "Success + All file has been added"
                 Else
-                    Mainframe_n_6.Ts_status.Text = "Success + With errors while adding files"
+                    FRMmainframe6.Ts_status.Text = "Success + With errors while adding files"
                 End If
 
                 DgnFileList.Rows.Clear()
@@ -222,7 +222,7 @@ Public Class DAR_Editor
 
             RaiseEvent RecordSaved()
         Else
-            Mainframe_n_6.Ts_status.Text = "Failed to save"
+            FRMmainframe6.Ts_status.Text = "Failed to save"
             Return
         End If
 

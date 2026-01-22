@@ -2,23 +2,31 @@
 Imports System.Net.Http
 Imports System.Runtime.Versioning
 
-Public Class CONN_Editor
+Public Class FRMconnEditor
 
 #Region "Declarations"
-    Public Event RecordSaved()
     Private WithEvents ComponentMainframeMenu As New CMCv.UI.View.MenuStrip
-    Private varSQL As New Commands.CONN.Editor
+
+    Public Event EventRecordSaved()
+
     Private varIsPasswordChange As Boolean
     Private varOldPassword As String
     Private varConnectionName As String
 #End Region
 
 #Region "Functions and Subs"
+    Public Sub New()
 
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
     <SupportedOSPlatform("windows")>
     Private Sub LoadData()
         Try
-            Commands.CONN.Editor.GetRowValue(varProperties)
+            CMDconn.Editor.GetRowValue(varProperties)
 
             With varProperties
                 If (.IsMasked) Then
@@ -124,15 +132,14 @@ Public Class CONN_Editor
             .RowID = Convert.ToString(varProperties.RowID)
         End With
 
-        If (Commands.CONN.Editor.PushData(varProperties)) Then
+        If (CMDconn.Editor.PushData(varProperties)) Then
             SLFStatus.Text = "Success"
-            RaiseEvent RecordSaved()
+            RaiseEvent EventRecordSaved()
+            Me.Close()
         Else
             SLFStatus.Text = "Failed to save"
             Return
         End If
-
-        Me.Close()
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -178,7 +185,7 @@ Public Class CONN_Editor
     ''' Loads existing connection data into the form fields based on the RowID.
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Private Sub CONN_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FRMconnEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ComponentMainframeMenu.LoadIn(Me, True)
         ComponentMainframeMenu.ShowMenuFile(CMCv.UI.View.MenuStrip.ShowItem.Yes)
         varIsPasswordChange = False

@@ -44,7 +44,7 @@ Public Class PLNT
         varFormProperties.RowID = "-1"
         V_PLNT_Editor = New PLNT_Editor
         DISPLAY(V_PLNT_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new plant", True)
-        Mainframe_n_6.Ts_status.Text = String.Empty
+        FRMmainframe6.Ts_status.Text = String.Empty
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -61,7 +61,7 @@ Public Class PLNT
             V_PLNT_Editor = New PLNT_Editor
             Display(V_PLNT_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update plant data", True)
         End If
-        Mainframe_n_6.Ts_status.Text = String.Empty
+        FRMmainframe6.Ts_status.Text = String.Empty
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -78,9 +78,9 @@ Public Class PLNT
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If LibSQL.Commands.PLNT.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID)) = True Then
                     Call GetData(True)
-                    Mainframe_n_6.Ts_status.Text = "Success"
+                    FRMmainframe6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.Ts_status.Text = "Delete failed"
+                    FRMmainframe6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If

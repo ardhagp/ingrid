@@ -58,10 +58,10 @@ Public Class CCIN_Editor
         End If
 
         If (Commands.CCIN.Editor.PushData(varDatabaseName, varDatabaseEngine, TxtCode.XOSQLText, TxtName.XOSQLText, TxtSearchTerm1.XOSQLText, TxtSearchTerm2.XOSQLText, TxtDescription.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
-            Mainframe_n_6.Ts_status.Text = "Success"
+            FRMmainframe6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else
-            Mainframe_n_6.Ts_status.Text = "Failed to save"
+            FRMmainframe6.Ts_status.Text = "Failed to save"
             Return
         End If
 

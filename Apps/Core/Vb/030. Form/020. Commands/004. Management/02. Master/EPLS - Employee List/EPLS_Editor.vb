@@ -110,10 +110,10 @@ Public Class EPLS_Editor
         End If
 
         If (Commands.EPLS.Editor.PushData(varDatabaseName, varDatabaseEngine, TxtPersonalID.XOSQLText, _PositionID, TxtEmployeeNumber.XOSQLText, TxtFullName.XOSQLText, DtpBirthDate, TxtBirthPlace.XOSQLText, TxtAddress.XOSQLText, TxtEmployeeNickname.XOSQLText, ChkActiveEmployee.Checked, CboGender.SelectedItem.ToString, _Photo, _ChangePhoto, varProperties.EmployeeID, Convert.ToString(varFormProperties.RowID))) Then
-            Mainframe_n_6.Ts_status.Text = "Success"
+            FRMmainframe6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else
-            Mainframe_n_6.Ts_status.Text = "Failed to save"
+            FRMmainframe6.Ts_status.Text = "Failed to save"
             Return
         End If
 

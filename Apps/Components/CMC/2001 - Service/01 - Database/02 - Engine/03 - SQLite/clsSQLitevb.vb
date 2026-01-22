@@ -12,7 +12,7 @@ Namespace Database.Engine
         Private ReadOnly varDataReader(2) As SQLite.SQLiteDataReader
 
         Private ReadOnly varSqlite As New Connect.SQLiteConnection
-        Private varTX As SQLite.SQLiteTransaction
+        'Private varTX As SQLite.SQLiteTransaction
         Private varIsProductionMode As Boolean
 
         <SupportedOSPlatform("windows")>
@@ -388,6 +388,8 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub PushData(query As String)
             Try
+                Dim varTX As SQLite.SQLiteTransaction
+
                 If (varIsProductionMode) AndAlso (varTX Is Nothing) Then
                     varTX = varConnection(1).BeginTransaction
                 ElseIf Not (varIsProductionMode) AndAlso (varTX Is Nothing) Then

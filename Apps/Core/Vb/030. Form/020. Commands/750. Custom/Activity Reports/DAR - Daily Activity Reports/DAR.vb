@@ -223,7 +223,7 @@ Public Class DAR
         varFormProperties.RowID = "-1"
         F_DAR_Editor = New DAR_Editor
         Display(F_DAR_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new activity", True)
-        Mainframe_n_6.Ts_status.Text = String.Empty
+        FRMmainframe6.Ts_status.Text = String.Empty
     End Sub
 
     ''' <summary>
@@ -245,7 +245,7 @@ Public Class DAR
             F_DAR_Editor = New DAR_Editor
             DISPLAY(F_DAR_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "update activity", True)
         End If
-        Mainframe_n_6.Ts_status.Text = String.Empty
+        FRMmainframe6.Ts_status.Text = String.Empty
     End Sub
 
     ''' <summary>
@@ -266,9 +266,9 @@ Public Class DAR
                 If (Commands.DAR.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID).ToString)) Then
                     Call GETDATA(True)
                     Call FillEmployee()
-                    Mainframe_n_6.Ts_status.Text = "Success"
+                    FRMmainframe6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.Ts_status.Text = "Delete failed"
+                    FRMmainframe6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If
@@ -444,7 +444,7 @@ Public Class DAR
         If TypeOf sendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
             V_DAR_SinglePhotoViewer = New DAR_SinglePhotoViewer(PctbxActivityPhoto.Image)
             Display(V_DAR_SinglePhotoViewer, IMAGEDB.Main.ImageLibrary.PCTPRV_ICON, "Photo Viewer", "Preview your photo", True)
-            Mainframe_n_6.Ts_status.Text = String.Empty
+            FRMmainframe6.Ts_status.Text = String.Empty
         End If
     End Sub
 
@@ -483,7 +483,7 @@ Public Class DAR
 
                 V_DAR_SinglePDFViewer = New DAR_SinglePDFViewer(V_FullPath, V_FileName, True)
                 Display(V_DAR_SinglePDFViewer, IMAGEDB.Main.ImageLibrary.PDFPRV_ICON, "PDF Viewer", "Preview your file", True)
-                Mainframe_n_6.Ts_status.Text = String.Empty
+                FRMmainframe6.Ts_status.Text = String.Empty
 
                 _Bytes = Nothing
             End If
@@ -544,7 +544,7 @@ Public Class DAR
         Else
             If Not (Commands.DAR.View.IsLike(varDatabaseName, varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varProperties.EmployeeID)) Then
                 If (Commands.DAR.View.LikePhoto(varDatabaseName, varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varProperties.EmployeeID, DgnDARActivity.CurrentRow.Cells("employee_id").Value.ToString)) Then
-                    Mainframe_n_6.Ts_status.Text = DgnPhoto.CurrentRow.Cells("photo_employee_fullname").Value.ToString & " would like to say thank you for your appreciation."
+                    FRMmainframe6.Ts_status.Text = DgnPhoto.CurrentRow.Cells("photo_employee_fullname").Value.ToString & " would like to say thank you for your appreciation."
                 Else
                     SLFStatus.Items(0).Text = ""
                 End If

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class CONN_Editor
+Partial Class FRMconnEditor
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -20,7 +20,7 @@ Partial Class CONN_Editor
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CONN_Editor))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMconnEditor))
         BtnSave = New btn(components)
         BtnCancel = New btn(components)
         TbctlBasic = New tbctl(components)
@@ -273,7 +273,7 @@ Partial Class CONN_Editor
         TxtDatabaseName.XOPwdStrengthCalculate = False
         TxtDatabaseName.XOPwdStrengthScore = 0
         TxtDatabaseName.XOPwdStrengthText = Nothing
-        TxtDatabaseName.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtDatabaseName.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
         TxtDatabaseName.XOSearchBoxText = "Type then press Enter"
         TxtDatabaseName.XOSQLText = ""
         TxtDatabaseName.XOTanpaSpasi = False
@@ -350,7 +350,7 @@ Partial Class CONN_Editor
         TxtUsername.XOPwdStrengthCalculate = False
         TxtUsername.XOPwdStrengthScore = 0
         TxtUsername.XOPwdStrengthText = Nothing
-        TxtUsername.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtUsername.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
         TxtUsername.XOSearchBoxText = "Type then press Enter"
         TxtUsername.XOSQLText = ""
         TxtUsername.XOTanpaSpasi = False
@@ -699,7 +699,7 @@ Partial Class CONN_Editor
         TtAllComponents.IsBalloon = True
         TtAllComponents.ToolTipIcon = ToolTipIcon.Info
         ' 
-        ' CONN_Editor
+        ' FRMconnEditor
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         ClientSize = New Size(807, 860)
@@ -708,7 +708,7 @@ Partial Class CONN_Editor
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         KeyPreview = True
         Margin = New Padding(10, 5, 10, 5)
-        Name = "CONN_Editor"
+        Name = "FRMconnEditor"
         PnlBottomButton.ResumeLayout(False)
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
         pnl_.ResumeLayout(False)

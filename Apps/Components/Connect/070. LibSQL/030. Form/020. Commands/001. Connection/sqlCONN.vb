@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Namespace Commands.CONN
+Namespace CMDconn
     <SupportedOSPlatform("windows")>
     Public Class View
 
@@ -34,7 +34,7 @@ Namespace Commands.CONN
                     .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
                     .AppVersion = GetAppVersion()
                 End With
-                clsLog.showdata(proLog)
+                clsLog.ShowData(proLog)
                 clsLog = Nothing
             End Try
         End Sub

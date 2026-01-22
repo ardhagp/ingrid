@@ -71,9 +71,9 @@ Public Class EPLS
             If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnEPLS.CurrentRow.Cells("employee_fullname").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If (Commands.EPLS.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
-                    Mainframe_n_6.Ts_status.Text = "Success"
+                    FRMmainframe6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.Ts_status.Text = "Delete failed"
+                    FRMmainframe6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If

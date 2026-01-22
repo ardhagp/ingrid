@@ -120,9 +120,9 @@ Public Class UAC_Editor
 
         If (Commands.UAC.Editor.PushData(varDatabaseName, varDatabaseEngine, varFormProperties.Field01.ToString, TxtUsername.XOSQLText, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, Convert.ToString(varFormProperties.RowID), varFormProperties.Hash, _PWDChange)) Then
             RaiseEvent RecordSaved()
-            Mainframe_n_6.Ts_status.Text = "Success"
+            FRMmainframe6.Ts_status.Text = "Success"
         Else
-            Mainframe_n_6.Ts_status.Text = "Failed to save"
+            FRMmainframe6.Ts_status.Text = "Failed to save"
             Return
         End If
 

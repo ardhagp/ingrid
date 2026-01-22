@@ -1,5 +1,4 @@
 ﻿Imports System.Runtime.Versioning
-Imports CMCv
 
 Public Class ACGR_Editor
 
@@ -97,10 +96,10 @@ Public Class ACGR_Editor
         End With
 
         If (Commands.ACGR.Editor.PushData(varProperties, varAccountingProperties)) Then
-            Mainframe_n_6.Ts_status.Text = "Success"
+            FRMmainframe6.Ts_status.Text = "Success"
             RaiseEvent RecordSaved()
         Else
-            Mainframe_n_6.Ts_status.Text = "Failed to save"
+            FRMmainframe6.Ts_status.Text = "Failed to save"
             Return
         End If
 

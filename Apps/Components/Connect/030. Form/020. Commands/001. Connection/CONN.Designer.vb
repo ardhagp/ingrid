@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class CONN
+Partial Class FRMconn
     Inherits CMCv.Std_Fi_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -20,10 +20,10 @@ Partial Class CONN
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CONN))
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMconn))
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
         DgnConnection = New dgn(components)
         id = New DataGridViewTextBoxColumn()
         connectionname = New DataGridViewTextBoxColumn()
@@ -97,20 +97,20 @@ Partial Class CONN
         ' 
         DgnConnection.AllowUserToAddRows = False
         DgnConnection.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(211), CByte(247), CByte(133))
-        DgnConnection.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(221), CByte(195), CByte(120))
+        DgnConnection.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         DgnConnection.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnConnection.BorderStyle = BorderStyle.None
         DgnConnection.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnConnection.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
-        DataGridViewCellStyle2.SelectionForeColor = Color.Black
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DgnConnection.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = Color.YellowGreen
+        DataGridViewCellStyle5.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
+        DataGridViewCellStyle5.SelectionForeColor = Color.Black
+        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
+        DgnConnection.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         DgnConnection.ColumnHeadersHeight = 43
         DgnConnection.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DgnConnection.Columns.AddRange(New DataGridViewColumn() {id, connectionname, databaseengine, serveraddress, serverport, defaultconnection, spring})
@@ -122,14 +122,14 @@ Partial Class CONN
         DgnConnection.Name = "DgnConnection"
         DgnConnection.ReadOnly = True
         DgnConnection.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = Color.YellowGreen
-        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
-        DataGridViewCellStyle3.SelectionForeColor = Color.Black
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-        DgnConnection.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = Color.YellowGreen
+        DataGridViewCellStyle6.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle6.SelectionForeColor = Color.Black
+        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+        DgnConnection.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         DgnConnection.RowHeadersWidth = 62
         DgnConnection.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DgnConnection.Size = New Size(1307, 759)
@@ -232,7 +232,7 @@ Partial Class CONN
         Btn_Close.XOValidasiSemuaInput = False
         Btn_Close.XOValidasiSemuaInputTag = Nothing
         ' 
-        ' CONN
+        ' FRMconn
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         ClientSize = New Size(1307, 1078)
@@ -241,7 +241,7 @@ Partial Class CONN
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         KeyPreview = True
         Margin = New Padding(11, 5, 11, 5)
-        Name = "CONN"
+        Name = "FRMconn"
         StartPosition = FormStartPosition.CenterScreen
         PnlBottomButton.ResumeLayout(False)
         PnlFind.ResumeLayout(False)

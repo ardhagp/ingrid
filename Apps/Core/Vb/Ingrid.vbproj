@@ -209,8 +209,8 @@
     <Compile Update="030. Form\020. Commands\003. Accounting\02. Master\ACBK - Accounting Book\ACBK_Editor.Designer.vb">
       <DependentUpon>ACBK_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\003. Accounting\02. Master\ACGR - Account Group\ACGR.Designer.vb">
-      <DependentUpon>ACGR.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\003. Accounting\02. Master\ACGR - Account Group\FRMacgr.Designer.vb">
+      <DependentUpon>FRMacgr.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\003. Accounting\02. Master\ACGR - Account Group\ACGR_Editor.Designer.vb">
       <DependentUpon>ACGR_Editor.vb</DependentUpon>

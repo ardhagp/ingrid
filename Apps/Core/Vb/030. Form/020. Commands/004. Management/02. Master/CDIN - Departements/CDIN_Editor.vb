@@ -55,9 +55,9 @@ Public Class CDIN_Editor
 
         If (Commands.CDIN.Editor.PUSHData(varDatabaseName, varDatabaseEngine, CboCompany.SelectedValue.ToString, TxtDeptCode.XOSQLText, TxtDeptName.XOSQLText, TxtDescription.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
             RaiseEvent RecordSaved()
-            Mainframe_n_6.Ts_status.Text = "Success"
+            FRMmainframe6.Ts_status.Text = "Success"
         Else
-            Mainframe_n_6.ts_status.Text = "Failed to save"
+            FRMmainframe6.ts_status.Text = "Failed to save"
             Return
         End If
 

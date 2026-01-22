@@ -76,9 +76,9 @@ Public Class MODS
                 If (Commands.DAR.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
                     Call GETDATA(True)
                     RaiseEvent DATACHANGED()
-                    Mainframe_n_6.Ts_status.Text = "Success"
+                    FRMmainframe6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.Ts_status.Text = "Delete failed"
+                    FRMmainframe6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If

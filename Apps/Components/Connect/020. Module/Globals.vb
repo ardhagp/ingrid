@@ -52,7 +52,7 @@ Module Globals
     ''' Enable double buffering on DataGridView to reduce flickering
     ''' </summary>
     ''' <param name="gridview"></param>
-    Public Sub DblBuffer(ByVal gridview As DataGridView)
+    Public Sub DblBuffer(gridview As DataGridView)
         Try
             Dim varSystemType As Type = gridview.GetType()
             Dim varPropertyInfo As PropertyInfo = varSystemType.GetProperty("DoubleBuffered",

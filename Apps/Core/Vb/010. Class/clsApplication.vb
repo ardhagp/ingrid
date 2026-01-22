@@ -1,7 +1,5 @@
 ﻿Imports System.Media
 Imports System.Runtime.Versioning
-Imports CMCv
-Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Namespace Application
     Public Class Access
@@ -74,7 +72,7 @@ Namespace Application
             Get
                 Return varDirection
             End Get
-            Set(ByVal value As Direction)
+            Set(value As Direction)
                 varDirection = value
             End Set
         End Property
@@ -87,7 +85,7 @@ Namespace Application
             Get
                 Return varText
             End Get
-            Set(ByVal value As String)
+            Set(value As String)
                 varText = value
                 varCurrentText = value
             End Set
@@ -96,22 +94,23 @@ Namespace Application
             Get
                 Return varScrollLength
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 If value < 1 Then value = 1
                 varScrollLength = value
             End Set
         End Property
         Public Sub Tick()
+            Dim varMoveCharacter As String
             If ScrollLength > Len(varText) Then ScrollLength = Len(varText)
             If ScrollDirection = Direction.Left Then
-                Dim MoveCharacter As String = Mid$(varCurrentText, 1, 1)
-                varCurrentText = Replace(varCurrentText, MoveCharacter, "", 1, 1)
-                varCurrentText &= MoveCharacter
+                varMoveCharacter = Mid$(varCurrentText, 1, 1)
+                varCurrentText = Replace(varCurrentText, varMoveCharacter, "", 1, 1)
+                varCurrentText &= varMoveCharacter
                 varMarqueeText = Mid$(varCurrentText, 1, varScrollLength)
             ElseIf ScrollDirection = Direction.Right Then
-                Dim MoveCharacter As String = Mid$(varCurrentText, Len(varCurrentText), 1)
+                varMoveCharacter = Mid$(varCurrentText, Len(varCurrentText), 1)
                 varCurrentText = Mid$(varCurrentText, 1, Len(varCurrentText) - 1)
-                varCurrentText = MoveCharacter & varCurrentText
+                varCurrentText = varMoveCharacter & varCurrentText
                 varMarqueeText = Mid$(varCurrentText, 1, varScrollLength)
             End If
         End Sub
