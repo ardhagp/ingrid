@@ -1,4 +1,4 @@
-﻿Namespace Database.Adapter.MSSQL2008.Display
+﻿Namespace Database.Adapter.Mssql2008.Display
     Public Structure Request
         Public Property Query As String
         Public Property DataGrid As dgn
@@ -8,7 +8,7 @@
     End Structure
 End Namespace
 
-Namespace Database.Adapter.MSSQL2008
+Namespace Database.Adapter.Mssql2008
     Public Structure Execute
         Public Property Query As String
     End Structure

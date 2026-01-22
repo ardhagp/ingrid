@@ -1,9 +1,9 @@
 ﻿Imports Ingrid
 Imports Connect
 
-Public Class App_Launcher
-    Private WithEvents IngridMainframe As New Mainframe_n_6
-    Private WithEvents ConnectMainframe As New CONN
+Public Class FRMapplauncher
+    Private WithEvents IngridMainframe As New FRMmainframe6
+    Private WithEvents Frm_conn As New FRMconn
 
     Private varSecond As Integer
     Private varVersion As String
@@ -44,8 +44,8 @@ Public Class App_Launcher
         tmrCountdown.Enabled = True
     End Sub
 
-    Private Sub BtnLaunch_Click(sender As Object, e As EventArgs) Handles BtnLaunch.Click
-        Call OpenApp(CboApplication.SelectedIndex)
+    Private Sub BtnLaunch_Click(sender As Object, e As EventArgs)
+        OpenApp(CboApplication.SelectedIndex)
     End Sub
 
     Private Sub IngridMainframe_IngridFrameClose() Handles IngridMainframe.IngridFrameClose
@@ -65,22 +65,22 @@ Public Class App_Launcher
         End If
     End Sub
 
-    Private Sub OpenApp(ByVal AppNameIndex As Integer)
+    Private Sub OpenApp(appNameindex As Integer)
         Try
-            If AppNameIndex = 0 Then
-                ConnectMainframe.Show()
-            ElseIf AppNameIndex = 1 Then
+            If appNameindex = 0 Then
+                Frm_conn.Show()
+            ElseIf appNameindex = 1 Then
                 IngridMainframe.Show()
             End If
-            My.Settings.DefaultApp = AppNameIndex
+            My.Settings.DefaultApp = appNameindex
             My.Settings.Save()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
     End Sub
 
-    Private Sub ConnectMainframe_ConnectFrameClose() Handles ConnectMainframe.ConnectFrameClose
-        ConnectMainframe.Dispose()
+    Private Sub ConnectMainframe_ConnectFrameClose() Handles Frm_conn.ConnectFrameClose
+        Frm_conn.Dispose()
         LblCountdown.Text = "by clicking Launch button"
         Me.Show()
         BtnClose.Visible = True
@@ -90,12 +90,12 @@ Public Class App_Launcher
         Me.Close()
     End Sub
 
-    Private Sub ConnectMainframe_ConnectFrameOpen() Handles ConnectMainframe.ConnectFrameOpen
+    Private Sub ConnectMainframe_ConnectFrameOpen() Handles Frm_conn.ConnectFrameOpen
         Me.Hide()
     End Sub
 
-    Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
-        Me.Close()
+    Private Sub BtnClose_Click(sender As Object, e As EventArgs)
+        Close()
     End Sub
 
     Private Sub App_Launcher_Closed(sender As Object, e As EventArgs) Handles Me.Closed

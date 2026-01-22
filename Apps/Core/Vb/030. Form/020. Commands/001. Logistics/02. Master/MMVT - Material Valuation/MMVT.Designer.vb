@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class MMVT
-    Inherits CMCv.Std_Fi
+Partial Class FRMmmvt
+    Inherits CMCv.FRMstandardFind
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -20,9 +20,9 @@ Partial Class MMVT
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
         DgnMMVT = New dgn(components)
         PnlFind.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -40,11 +40,12 @@ Partial Class MMVT
         ' 
         ' TxtFind
         ' 
-        TxtFind.Margin = New Padding(5, 3, 5, 3)
+        TxtFind.Margin = New Padding(7, 5, 7, 5)
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(DgnMMVT)
+        SLFPanel.Size = New Size(1307, 952)
         SLFPanel.Controls.SetChildIndex(PnlFind, 0)
         SLFPanel.Controls.SetChildIndex(DgnMMVT, 0)
         ' 
@@ -52,51 +53,52 @@ Partial Class MMVT
         ' 
         DgnMMVT.AllowUserToAddRows = False
         DgnMMVT.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(195), CByte(194), CByte(132))
-        DgnMMVT.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(232), CByte(198), CByte(107))
+        DgnMMVT.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         DgnMMVT.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnMMVT.BorderStyle = BorderStyle.None
         DgnMMVT.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnMMVT.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
-        DataGridViewCellStyle2.SelectionForeColor = Color.Black
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DgnMMVT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = Color.YellowGreen
+        DataGridViewCellStyle5.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
+        DataGridViewCellStyle5.SelectionForeColor = Color.Black
+        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
+        DgnMMVT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         DgnMMVT.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DgnMMVT.Dock = DockStyle.Fill
         DgnMMVT.EnableHeadersVisualStyles = False
         DgnMMVT.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DgnMMVT.Location = New Point(0, 53)
-        DgnMMVT.Margin = New Padding(4, 3, 4, 3)
+        DgnMMVT.Location = New Point(0, 88)
+        DgnMMVT.Margin = New Padding(6, 5, 6, 5)
         DgnMMVT.Name = "DgnMMVT"
         DgnMMVT.ReadOnly = True
         DgnMMVT.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = Color.YellowGreen
-        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
-        DataGridViewCellStyle3.SelectionForeColor = Color.Black
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-        DgnMMVT.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = Color.YellowGreen
+        DataGridViewCellStyle6.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle6.SelectionForeColor = Color.Black
+        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+        DgnMMVT.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DgnMMVT.RowHeadersWidth = 62
         DgnMMVT.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DgnMMVT.Size = New Size(915, 511)
-        DgnMMVT.XOGroupFirstRows = False
-        DgnMMVT.XOGunakanNomorBaris = False
+        DgnMMVT.Size = New Size(1307, 864)
         DgnMMVT.StandardTab = True
         DgnMMVT.TabIndex = 802
+        DgnMMVT.XOGroupFirstRows = False
+        DgnMMVT.XOGunakanNomorBaris = False
         ' 
-        ' MMVT
+        ' FRMmmvt
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(915, 647)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1307, 1078)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
-        Name = "MMVT"
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMmmvt"
         PnlFind.ResumeLayout(False)
         PnlFind.PerformLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

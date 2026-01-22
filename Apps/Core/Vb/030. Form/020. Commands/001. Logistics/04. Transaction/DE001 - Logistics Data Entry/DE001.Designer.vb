@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class DE001
-    Inherits CMCv.Std_Fi
+Partial Class FRMde001
+    Inherits CMCv.FRMstandardFind
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -19,31 +19,39 @@ Partial Class DE001
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.PnlFind.SuspendLayout()
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnl_.SuspendLayout()
-        Me.SLFPanel.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'BtnClear
-        '
-        Me.BtnClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(195, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BtnClear.FlatAppearance.BorderSize = 2
-        Me.BtnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(20, Byte), Integer))
-        '
-        'DE001
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(784, 561)
-        Me.Name = "DE001"
-        Me.PnlFind.ResumeLayout(False)
-        Me.PnlFind.PerformLayout()
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnl_.ResumeLayout(False)
-        Me.pnl_.PerformLayout()
-        Me.SLFPanel.ResumeLayout(False)
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        PnlFind.SuspendLayout()
+        CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
+        pnl_.SuspendLayout()
+        SLFPanel.SuspendLayout()
+        CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' BtnClear
+        ' 
+        BtnClear.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
+        BtnClear.FlatAppearance.BorderSize = 2
+        BtnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
+        ' 
+        ' TxtFind
+        ' 
+        TxtFind.Margin = New Padding(8, 12, 8, 12)
+        ' 
+        ' FRMde001
+        ' 
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1307, 1079)
+        KeyPreview = True
+        Margin = New Padding(22, 44, 22, 44)
+        Name = "FRMde001"
+        PnlFind.ResumeLayout(False)
+        PnlFind.PerformLayout()
+        CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
+        pnl_.ResumeLayout(False)
+        pnl_.PerformLayout()
+        SLFPanel.ResumeLayout(False)
+        CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
+        PerformLayout()
 
     End Sub
 

@@ -1,3 +1,3 @@
-﻿Public Class DE001_Editor
-
+﻿Public Class FRMde001Editor
+    'TODO: Implement Editor Form for Logistics Data Entry
 End Class

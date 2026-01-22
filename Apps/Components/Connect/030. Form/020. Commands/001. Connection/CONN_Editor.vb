@@ -2,7 +2,7 @@
 Imports System.Net.Http
 Imports System.Runtime.Versioning
 
-Public Class CONN_Editor
+Public Class FRMconnEditor
 
 #Region "Declarations"
     Public Event RecordSaved()
@@ -105,7 +105,7 @@ Public Class CONN_Editor
         End If
 
         If (TxtConnectionName.Text = String.Empty) OrElse (TxtAddress.Text = String.Empty) OrElse (TxtPort.Text = String.Empty) OrElse (TxtUsername.Text = String.Empty) OrElse (TxtPassword.Text = String.Empty) OrElse (TxtDatabaseName.Text = String.Empty) Then
-            Decision("Cannot save your record." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision("Cannot save your record." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
@@ -178,7 +178,7 @@ Public Class CONN_Editor
     ''' Loads existing connection data into the form fields based on the RowID.
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Private Sub CONN_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FRMconnEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ComponentMainframeMenu.LoadIn(Me, True)
         ComponentMainframeMenu.ShowMenuFile(CMCv.UI.View.MenuStrip.ShowItem.Yes)
         varIsPasswordChange = False
@@ -195,13 +195,13 @@ Public Class CONN_Editor
 #End Region
 
 #Region "Control Events"
-    Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
-        Me.Close()
+    Private Sub BtnCancel_Click(sender As Object, e As EventArgs)
+        Close
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-        Call Save()
+    Private Sub BtnSave_Click(sender As Object, e As EventArgs)
+        Save
     End Sub
 
     Private Sub TxtPassword_LostFocus(sender As Object, e As EventArgs) Handles TxtPassword.LostFocus
@@ -219,7 +219,7 @@ Public Class CONN_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub ComponentMainframeMenu_EventFileUndoAll() Handles ComponentMainframeMenu.EventFileUndoAll
-        If Decision("Do you want to undo all changes?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
+        If Decision("Do you want to undo all changes?", "Question", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
             If (varProperties.IsNew) Then
                 TxtConnectionName.Clear()
                 TxtAddress.Clear()
@@ -234,8 +234,8 @@ Public Class CONN_Editor
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub btnGet_Click(sender As Object, e As EventArgs) Handles btnGet.Click
-        Dim varDownloadCenter As String = String.Empty
+    Private Sub btnGet_Click(sender As Object, e As EventArgs)
+        Dim varDownloadCenter = String.Empty
 
         If txtImportCode.Text = String.Empty Then
             MessageBox.Show("Please enter the connection code to import.")
@@ -244,25 +244,25 @@ Public Class CONN_Editor
 
         varDownloadCenter = My.Settings.ConnectionURL
 
-        Dim conn As String = ReadConnectionString(varDownloadCenter, txtImportCode.Text)
+        Dim conn = ReadConnectionString(varDownloadCenter, txtImportCode.Text)
         txtImportContent.Text = conn
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
-        If Not CheckAllInput() Then
+    Private Sub btnExport_Click(sender As Object, e As EventArgs)
+        If Not CheckAllInput Then
             Return
         End If
 
         Dim exportConn As String
-        exportConn = $"{TxtConnectionName.Text.Trim}||{CboDBEngine.Text.Trim}||{CMCv.Security.Encrypt.AES(TxtAddress.Text.Trim)}||{CMCv.Security.Encrypt.AES(TxtPort.Text)}||{CMCv.Security.Encrypt.AES(TxtUsername.Text.Trim)}||{CMCv.Security.Encrypt.AES(TxtPassword.Text)}||{CMCv.Security.Encrypt.AES(TxtDatabaseName.Text.Trim)}||{Convert.ToString(ChkDefault.Checked)}||{Convert.ToString(ChkIsMasked.Checked)}"
+        exportConn = $"{TxtConnectionName.Text.Trim}||{CboDBEngine.Text.Trim}||{Security.Encrypt.AES(TxtAddress.Text.Trim)}||{Security.Encrypt.AES(TxtPort.Text)}||{Security.Encrypt.AES(TxtUsername.Text.Trim)}||{Security.Encrypt.AES(TxtPassword.Text)}||{Security.Encrypt.AES(TxtDatabaseName.Text.Trim)}||{Convert.ToString(ChkDefault.Checked)}||{Convert.ToString(ChkIsMasked.Checked)}"
 
-        txtImportContent.Text = CMCv.Security.Encrypt.AES(exportConn)
-        varConnectionName = CMCv.Security.Encrypt.CRC32(TxtConnectionName.Text.Trim)
+        txtImportContent.Text = Security.Encrypt.AES(exportConn)
+        varConnectionName = Security.Encrypt.CRC32(TxtConnectionName.Text.Trim)
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub btnSaveAs_Click(sender As Object, e As EventArgs) Handles btnSaveAs.Click
+    Private Sub btnSaveAs_Click(sender As Object, e As EventArgs)
         Dim varDialog As New FolderBrowserDialog With {
         .Description = "Select a folder to save the connection config"
         }
@@ -273,14 +273,14 @@ Public Class CONN_Editor
             Return
         End If
 
-        If varDialog.ShowDialog() = DialogResult.OK Then
-            Dim selectedPath As String = varDialog.SelectedPath
+        If varDialog.ShowDialog = DialogResult.OK Then
+            Dim selectedPath = varDialog.SelectedPath
 
             ' Compute CRC (example)
-            Dim crc As String = varConnectionName  ' replace with your CRC5 or CRC32 result
+            Dim crc = varConnectionName  ' replace with your CRC5 or CRC32 result
 
             ' Create CRC folder
-            Dim crcFolder As String = Path.Combine(selectedPath, crc)
+            Dim crcFolder = Path.Combine(selectedPath, crc)
             If Not Directory.Exists(crcFolder) Then
                 Directory.CreateDirectory(crcFolder)
             End If
@@ -290,7 +290,7 @@ Public Class CONN_Editor
             encrypted = txtImportContent.Text.Trim
 
             ' Save as host.conn
-            Dim filePath As String = Path.Combine(crcFolder, "host.conn")
+            Dim filePath = Path.Combine(crcFolder, "host.conn")
             File.WriteAllText(filePath, encrypted)
 
             MessageBox.Show("Config saved to: " & filePath)
@@ -298,16 +298,16 @@ Public Class CONN_Editor
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub btnImport_Click(sender As Object, e As EventArgs) Handles btnImport.Click
+    Private Sub btnImport_Click(sender As Object, e As EventArgs)
         If txtImportContent.Text = String.Empty Then
             MessageBox.Show("Please enter the connection content to import.")
             Return
         End If
 
         Dim decryptedConn As String
-        decryptedConn = CMCv.Security.Decrypt.AES(txtImportContent.Text.Trim)
+        decryptedConn = Security.Decrypt.AES(txtImportContent.Text.Trim)
 
-        Dim varConnproperties() As String = decryptedConn.Split({"||"}, StringSplitOptions.None)
+        Dim varConnproperties = decryptedConn.Split({"||"}, StringSplitOptions.None)
 
         If varConnproperties.Length <> 9 Then
             MessageBox.Show("The connection content is invalid.")
@@ -316,14 +316,14 @@ Public Class CONN_Editor
 
         TxtConnectionName.Text = varConnproperties(0)
         CboDBEngine.Text = varConnproperties(1)
-        TxtAddress.Text = CMCv.Security.Decrypt.AES(varConnproperties(2))
-        TxtPort.Text = CMCv.Security.Decrypt.AES(varConnproperties(3))
-        TxtUsername.Text = CMCv.Security.Decrypt.AES(varConnproperties(4))
-        TxtPassword.Text = CMCv.Security.Decrypt.AES(varConnproperties(5))
-        TxtDatabaseName.Text = CMCv.Security.Decrypt.AES(varConnproperties(6))
+        TxtAddress.Text = Security.Decrypt.AES(varConnproperties(2))
+        TxtPort.Text = Security.Decrypt.AES(varConnproperties(3))
+        TxtUsername.Text = Security.Decrypt.AES(varConnproperties(4))
+        TxtPassword.Text = Security.Decrypt.AES(varConnproperties(5))
+        TxtDatabaseName.Text = Security.Decrypt.AES(varConnproperties(6))
         ChkDefault.Checked = Convert.ToBoolean(varConnproperties(7))
         ChkIsMasked.Checked = Convert.ToBoolean(varConnproperties(8))
-        Call ChangeIsMaskedState()
+        ChangeIsMaskedState
         MessageBox.Show("Connection imported successfully.")
     End Sub
 

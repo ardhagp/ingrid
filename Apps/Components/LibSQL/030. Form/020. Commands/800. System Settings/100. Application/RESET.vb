@@ -18,11 +18,11 @@ Namespace Commands.RESET
                                                         "[settings_minpasswordlength] = 3")
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dbengine = "MYSQL" Then
-                    V_DBR_MYSQL(1).Query = String.Format("update sys_settings set settings_showprofile = 0, " &
+                    varDatabaseRequestMysql(1).Query = String.Format("update sys_settings set settings_showprofile = 0, " &
                                                         "settings_showstorage = 0, settings_showwatermark = 0, settings_showrunningtext = 0, " &
                                                         "settings_uploadphoto = 30, settings_uploadpdf = 30, settings_textmark = '', " &
                                                         "settings_minpasswordlength = 3")
-                    varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
+                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
                 End If
 
                 varSuccess = True

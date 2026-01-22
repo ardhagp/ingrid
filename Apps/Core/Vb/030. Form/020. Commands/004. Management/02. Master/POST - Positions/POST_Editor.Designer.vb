@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class POST_Editor
+Partial Class FRMpostEditor
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -45,17 +45,17 @@ Partial Class POST_Editor
         PnlBottomButton.Controls.Add(ChkAddNew)
         PnlBottomButton.Controls.Add(BtnCancel)
         PnlBottomButton.Controls.Add(BtnSave)
-        PnlBottomButton.Location = New Point(0, 399)
-        PnlBottomButton.Margin = New Padding(5, 3, 5, 3)
-        PnlBottomButton.Size = New Size(598, 58)
+        PnlBottomButton.Location = New Point(0, 677)
+        PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
+        PnlBottomButton.Size = New Size(854, 97)
         PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
         PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
         PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
         ' 
         ' pnl_
         ' 
-        pnl_.Margin = New Padding(5, 3, 5, 3)
-        pnl_.Size = New Size(598, 61)
+        pnl_.Margin = New Padding(7, 5, 7, 5)
+        pnl_.Size = New Size(854, 104)
         ' 
         ' SLFPanel
         ' 
@@ -69,8 +69,8 @@ Partial Class POST_Editor
         SLFPanel.Controls.Add(CboDepartement)
         SLFPanel.Controls.Add(CboCompany)
         SLFPanel.Controls.Add(TxtPositionCode)
-        SLFPanel.Margin = New Padding(5, 3, 5, 3)
-        SLFPanel.Size = New Size(598, 457)
+        SLFPanel.Margin = New Padding(7, 5, 7, 5)
+        SLFPanel.Size = New Size(854, 774)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(TxtPositionCode, 0)
         SLFPanel.Controls.SetChildIndex(CboCompany, 0)
@@ -86,12 +86,14 @@ Partial Class POST_Editor
         ' TxtPositionDescription
         ' 
         TxtPositionDescription.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtPositionDescription.Location = New Point(196, 173)
-        TxtPositionDescription.Margin = New Padding(4, 3, 4, 3)
+        TxtPositionDescription.Location = New Point(280, 288)
+        TxtPositionDescription.Margin = New Padding(6, 5, 6, 5)
         TxtPositionDescription.MaxLength = 255
         TxtPositionDescription.Multiline = True
         TxtPositionDescription.Name = "TxtPositionDescription"
-        TxtPositionDescription.Size = New Size(383, 134)
+        TxtPositionDescription.Size = New Size(545, 221)
+        TxtPositionDescription.TabIndex = 4
+        TxtPositionDescription.Tag = "txt"
         TxtPositionDescription.XOAutoTrim = False
         TxtPositionDescription.XOHarusDiisi = False
         TxtPositionDescription.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -111,17 +113,17 @@ Partial Class POST_Editor
         TxtPositionDescription.XOSQLText = ""
         TxtPositionDescription.XOTanpaSpasi = False
         TxtPositionDescription.XOValidasiField = Nothing
-        TxtPositionDescription.TabIndex = 4
-        TxtPositionDescription.Tag = "txt"
         ' 
         ' TxtPositionName
         ' 
         TxtPositionName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtPositionName.Location = New Point(196, 133)
-        TxtPositionName.Margin = New Padding(4, 3, 4, 3)
+        TxtPositionName.Location = New Point(280, 222)
+        TxtPositionName.Margin = New Padding(6, 5, 6, 5)
         TxtPositionName.MaxLength = 255
         TxtPositionName.Name = "TxtPositionName"
-        TxtPositionName.Size = New Size(240, 29)
+        TxtPositionName.Size = New Size(341, 39)
+        TxtPositionName.TabIndex = 3
+        TxtPositionName.Tag = "txt"
         TxtPositionName.XOAutoTrim = True
         TxtPositionName.XOHarusDiisi = True
         TxtPositionName.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -141,8 +143,6 @@ Partial Class POST_Editor
         TxtPositionName.XOSQLText = ""
         TxtPositionName.XOTanpaSpasi = False
         TxtPositionName.XOValidasiField = Nothing
-        TxtPositionName.TabIndex = 3
-        TxtPositionName.Tag = "txt"
         ' 
         ' CboDepartement
         ' 
@@ -151,10 +151,10 @@ Partial Class POST_Editor
         CboDepartement.FlatStyle = FlatStyle.Flat
         CboDepartement.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         CboDepartement.FormattingEnabled = True
-        CboDepartement.Location = New Point(196, 52)
-        CboDepartement.Margin = New Padding(4, 3, 4, 3)
+        CboDepartement.Location = New Point(280, 87)
+        CboDepartement.Margin = New Padding(6, 5, 6, 5)
         CboDepartement.Name = "CboDepartement"
-        CboDepartement.Size = New Size(240, 29)
+        CboDepartement.Size = New Size(341, 40)
         CboDepartement.TabIndex = 1
         ' 
         ' CboCompany
@@ -164,20 +164,22 @@ Partial Class POST_Editor
         CboCompany.FlatStyle = FlatStyle.Flat
         CboCompany.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         CboCompany.FormattingEnabled = True
-        CboCompany.Location = New Point(196, 12)
-        CboCompany.Margin = New Padding(4, 3, 4, 3)
+        CboCompany.Location = New Point(280, 20)
+        CboCompany.Margin = New Padding(6, 5, 6, 5)
         CboCompany.Name = "CboCompany"
-        CboCompany.Size = New Size(240, 29)
+        CboCompany.Size = New Size(341, 40)
         CboCompany.TabIndex = 0
         ' 
         ' TxtPositionCode
         ' 
         TxtPositionCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtPositionCode.Location = New Point(196, 92)
-        TxtPositionCode.Margin = New Padding(4, 3, 4, 3)
+        TxtPositionCode.Location = New Point(280, 153)
+        TxtPositionCode.Margin = New Padding(6, 5, 6, 5)
         TxtPositionCode.MaxLength = 255
         TxtPositionCode.Name = "TxtPositionCode"
-        TxtPositionCode.Size = New Size(240, 29)
+        TxtPositionCode.Size = New Size(341, 39)
+        TxtPositionCode.TabIndex = 2
+        TxtPositionCode.Tag = "txt"
         TxtPositionCode.XOAutoTrim = True
         TxtPositionCode.XOHarusDiisi = True
         TxtPositionCode.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -197,8 +199,6 @@ Partial Class POST_Editor
         TxtPositionCode.XOSQLText = ""
         TxtPositionCode.XOTanpaSpasi = False
         TxtPositionCode.XOValidasiField = Nothing
-        TxtPositionCode.TabIndex = 2
-        TxtPositionCode.Tag = "txt"
         ' 
         ' BtnSave
         ' 
@@ -211,17 +211,17 @@ Partial Class POST_Editor
         BtnSave.FlatStyle = FlatStyle.Flat
         BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnSave.ForeColor = Color.White
-        BtnSave.Location = New Point(343, 8)
-        BtnSave.Margin = New Padding(4, 3, 4, 3)
+        BtnSave.Location = New Point(490, 13)
+        BtnSave.Margin = New Padding(6, 5, 6, 5)
         BtnSave.Name = "BtnSave"
-        BtnSave.Size = New Size(117, 46)
+        BtnSave.Size = New Size(167, 77)
+        BtnSave.TabIndex = 801
+        BtnSave.Text = "&Save"
+        BtnSave.UseVisualStyleBackColor = False
         BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
         BtnSave.XOTampilkanFocusBorder = False
         BtnSave.XOValidasiSemuaInput = False
         BtnSave.XOValidasiSemuaInputTag = Nothing
-        BtnSave.TabIndex = 801
-        BtnSave.Text = "&Save"
-        BtnSave.UseVisualStyleBackColor = False
         ' 
         ' BtnCancel
         ' 
@@ -232,19 +232,19 @@ Partial Class POST_Editor
         BtnCancel.FlatAppearance.BorderSize = 2
         BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnCancel.FlatStyle = FlatStyle.Flat
-        BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
-        BtnCancel.Location = New Point(467, 8)
-        BtnCancel.Margin = New Padding(4, 3, 4, 3)
+        BtnCancel.Location = New Point(667, 13)
+        BtnCancel.Margin = New Padding(6, 5, 6, 5)
         BtnCancel.Name = "BtnCancel"
-        BtnCancel.Size = New Size(117, 46)
+        BtnCancel.Size = New Size(167, 77)
+        BtnCancel.TabIndex = 802
+        BtnCancel.Text = "&Close"
+        BtnCancel.UseVisualStyleBackColor = False
         BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
         BtnCancel.XOTampilkanFocusBorder = False
         BtnCancel.XOValidasiSemuaInput = False
         BtnCancel.XOValidasiSemuaInputTag = Nothing
-        BtnCancel.TabIndex = 802
-        BtnCancel.Text = "&Close"
-        BtnCancel.UseVisualStyleBackColor = False
         ' 
         ' ChkAddNew
         ' 
@@ -254,10 +254,10 @@ Partial Class POST_Editor
         ChkAddNew.FlatStyle = FlatStyle.Flat
         ChkAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         ChkAddNew.ForeColor = Color.Tomato
-        ChkAddNew.Location = New Point(193, 13)
-        ChkAddNew.Margin = New Padding(4, 3, 4, 3)
+        ChkAddNew.Location = New Point(263, 22)
+        ChkAddNew.Margin = New Padding(6, 5, 6, 5)
         ChkAddNew.Name = "ChkAddNew"
-        ChkAddNew.Size = New Size(146, 25)
+        ChkAddNew.Size = New Size(221, 36)
         ChkAddNew.TabIndex = 803
         ChkAddNew.Text = "Add new on Save"
         ChkAddNew.UseVisualStyleBackColor = False
@@ -265,10 +265,10 @@ Partial Class POST_Editor
         ' ULbl1
         ' 
         ULbl1.BackColor = Color.Moccasin
-        ULbl1.Location = New Point(14, 12)
-        ULbl1.Margin = New Padding(5, 3, 5, 3)
+        ULbl1.Location = New Point(20, 20)
+        ULbl1.Margin = New Padding(7, 5, 7, 5)
         ULbl1.Name = "ULbl1"
-        ULbl1.Size = New Size(175, 33)
+        ULbl1.Size = New Size(250, 55)
         ULbl1.SLFText = "Company"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
@@ -278,10 +278,10 @@ Partial Class POST_Editor
         ' ULbl2
         ' 
         ULbl2.BackColor = Color.Moccasin
-        ULbl2.Location = New Point(14, 52)
-        ULbl2.Margin = New Padding(5, 3, 5, 3)
+        ULbl2.Location = New Point(20, 87)
+        ULbl2.Margin = New Padding(7, 5, 7, 5)
         ULbl2.Name = "ULbl2"
-        ULbl2.Size = New Size(175, 33)
+        ULbl2.Size = New Size(250, 55)
         ULbl2.SLFText = "Department"
         ULbl2.SLFTextAdjuster = False
         ULbl2.SLFTextBorder = False
@@ -291,10 +291,10 @@ Partial Class POST_Editor
         ' ULbl3
         ' 
         ULbl3.BackColor = Color.Moccasin
-        ULbl3.Location = New Point(14, 92)
-        ULbl3.Margin = New Padding(5, 3, 5, 3)
+        ULbl3.Location = New Point(20, 153)
+        ULbl3.Margin = New Padding(7, 5, 7, 5)
         ULbl3.Name = "ULbl3"
-        ULbl3.Size = New Size(175, 33)
+        ULbl3.Size = New Size(250, 55)
         ULbl3.SLFText = "Position Code"
         ULbl3.SLFTextAdjuster = False
         ULbl3.SLFTextBorder = False
@@ -304,10 +304,10 @@ Partial Class POST_Editor
         ' ULbl4
         ' 
         ULbl4.BackColor = Color.Moccasin
-        ULbl4.Location = New Point(14, 133)
-        ULbl4.Margin = New Padding(5, 3, 5, 3)
+        ULbl4.Location = New Point(20, 222)
+        ULbl4.Margin = New Padding(7, 5, 7, 5)
         ULbl4.Name = "ULbl4"
-        ULbl4.Size = New Size(175, 33)
+        ULbl4.Size = New Size(250, 55)
         ULbl4.SLFText = "Position Name"
         ULbl4.SLFTextAdjuster = False
         ULbl4.SLFTextBorder = False
@@ -317,23 +317,23 @@ Partial Class POST_Editor
         ' ULbl5
         ' 
         ULbl5.BackColor = Color.Moccasin
-        ULbl5.Location = New Point(14, 173)
-        ULbl5.Margin = New Padding(5, 3, 5, 3)
+        ULbl5.Location = New Point(20, 288)
+        ULbl5.Margin = New Padding(7, 5, 7, 5)
         ULbl5.Name = "ULbl5"
-        ULbl5.Size = New Size(175, 135)
+        ULbl5.Size = New Size(250, 225)
         ULbl5.SLFText = "Description"
         ULbl5.SLFTextAdjuster = False
         ULbl5.SLFTextBorder = False
         ULbl5.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
         ULbl5.TabIndex = 1018
         ' 
-        ' POST_Editor
+        ' FRMpostEditor
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(598, 540)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(854, 900)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
-        Name = "POST_Editor"
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMpostEditor"
         PnlBottomButton.ResumeLayout(False)
         PnlBottomButton.PerformLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

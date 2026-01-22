@@ -1,3 +1,3 @@
-﻿Public Class Std_Fi
+﻿Public Class FRMstandardFind
 
 End Class

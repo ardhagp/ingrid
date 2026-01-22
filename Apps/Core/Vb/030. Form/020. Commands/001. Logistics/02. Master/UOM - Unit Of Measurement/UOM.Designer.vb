@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class UOM
-    Inherits CMCv.Std_Fi
+Partial Class FRMuom
+    Inherits CMCv.FRMstandardFind
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -20,9 +20,9 @@ Partial Class UOM
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
         DgnUOM = New dgn(components)
         PnlFind.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -40,11 +40,12 @@ Partial Class UOM
         ' 
         ' TxtFind
         ' 
-        TxtFind.Margin = New Padding(5, 3, 5, 3)
+        TxtFind.Margin = New Padding(7, 5, 7, 5)
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(DgnUOM)
+        SLFPanel.Size = New Size(1307, 952)
         SLFPanel.Controls.SetChildIndex(PnlFind, 0)
         SLFPanel.Controls.SetChildIndex(DgnUOM, 0)
         ' 
@@ -52,51 +53,52 @@ Partial Class UOM
         ' 
         DgnUOM.AllowUserToAddRows = False
         DgnUOM.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(254), CByte(212), CByte(152))
-        DgnUOM.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(192), CByte(212), CByte(154))
+        DgnUOM.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         DgnUOM.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnUOM.BorderStyle = BorderStyle.None
         DgnUOM.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnUOM.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
-        DataGridViewCellStyle2.SelectionForeColor = Color.Black
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DgnUOM.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = Color.YellowGreen
+        DataGridViewCellStyle5.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
+        DataGridViewCellStyle5.SelectionForeColor = Color.Black
+        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
+        DgnUOM.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         DgnUOM.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DgnUOM.Dock = DockStyle.Fill
         DgnUOM.EnableHeadersVisualStyles = False
         DgnUOM.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DgnUOM.Location = New Point(0, 53)
-        DgnUOM.Margin = New Padding(4, 3, 4, 3)
+        DgnUOM.Location = New Point(0, 88)
+        DgnUOM.Margin = New Padding(6, 5, 6, 5)
         DgnUOM.Name = "DgnUOM"
         DgnUOM.ReadOnly = True
         DgnUOM.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = Color.YellowGreen
-        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
-        DataGridViewCellStyle3.SelectionForeColor = Color.Black
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-        DgnUOM.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = Color.YellowGreen
+        DataGridViewCellStyle6.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle6.SelectionForeColor = Color.Black
+        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+        DgnUOM.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DgnUOM.RowHeadersWidth = 62
         DgnUOM.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DgnUOM.Size = New Size(915, 511)
-        DgnUOM.XOGroupFirstRows = False
-        DgnUOM.XOGunakanNomorBaris = False
+        DgnUOM.Size = New Size(1307, 864)
         DgnUOM.StandardTab = True
         DgnUOM.TabIndex = 802
+        DgnUOM.XOGroupFirstRows = False
+        DgnUOM.XOGunakanNomorBaris = False
         ' 
-        ' UOM
+        ' FRMuom
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(915, 647)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1307, 1078)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
-        Name = "UOM"
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMuom"
         PnlFind.ResumeLayout(False)
         PnlFind.PerformLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

@@ -1,8 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class MMTY
-    'Private _SQL As New LibSQL.Commands.MMTY.View
-    Private WithEvents V_MMSMenu As New CMCv.UI.View.MenuStrip
+Public Class FRMmmty
+    Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
 #Region "Menu Strip Functions"
 
@@ -14,8 +13,8 @@ Public Class MMTY
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub frmMMTY_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        V_MMSMenu.LoadIn(Me)
+    Private Sub FRMmmty_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Com_mms_Menu.LoadIn(Me)
         Call GetData(True)
     End Sub
 

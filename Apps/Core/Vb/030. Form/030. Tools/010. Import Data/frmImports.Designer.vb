@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frmImports
+Partial Class FRMimports
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -19,162 +19,114 @@ Partial Class frmImports
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Me.Pnl1 = New CMCv.pnl(Me.components)
-        Me.LblFileName = New CMCv.lbl(Me.components)
-        Me.BtnBrowse = New CMCv.btn(Me.components)
-        Me.TxtProgress = New CMCv.txt(Me.components)
-        Me.BtnSave = New CMCv.btn(Me.components)
-        Me.BtnClose = New CMCv.btn(Me.components)
-        Me.od = New System.Windows.Forms.OpenFileDialog()
-        Me.PnlBottomButton.SuspendLayout()
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnl_.SuspendLayout()
-        Me.SLFPanel.SuspendLayout()
-        Me.Pnl1.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'PnlBottomButton
-        '
-        Me.PnlBottomButton.Controls.Add(Me.BtnClose)
-        Me.PnlBottomButton.Controls.Add(Me.BtnSave)
-        '
-        'SLFPanel
-        '
-        Me.SLFPanel.Controls.Add(Me.TxtProgress)
-        Me.SLFPanel.Controls.Add(Me.Pnl1)
-        Me.SLFPanel.Controls.SetChildIndex(Me.PnlBottomButton, 0)
-        Me.SLFPanel.Controls.SetChildIndex(Me.Pnl1, 0)
-        Me.SLFPanel.Controls.SetChildIndex(Me.TxtProgress, 0)
-        '
-        'Pnl1
-        '
-        Me.Pnl1.Controls.Add(Me.LblFileName)
-        Me.Pnl1.Controls.Add(Me.BtnBrowse)
-        Me.Pnl1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Pnl1.Location = New System.Drawing.Point(0, 0)
-        Me.Pnl1.Name = "Pnl1"
-        Me.Pnl1.Size = New System.Drawing.Size(657, 46)
-        Me.Pnl1.TabIndex = 1
-        '
-        'LblFileName
-        '
-        Me.LblFileName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LblFileName.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.LblFileName.Location = New System.Drawing.Point(118, 13)
-        Me.LblFileName.Name = "LblFileName"
-        Me.LblFileName.Size = New System.Drawing.Size(527, 23)
-        Me.LblFileName.XOCustomElipsis = True
-        Me.LblFileName.TabIndex = 1
-        '
-        'BtnBrowse
-        '
-        Me.BtnBrowse.BackColor = System.Drawing.Color.Orange
-        Me.BtnBrowse.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnBrowse.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(195, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BtnBrowse.FlatAppearance.BorderSize = 2
-        Me.BtnBrowse.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(185, Byte), Integer), CType(CType(20, Byte), Integer))
-        Me.BtnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnBrowse.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.BtnBrowse.Location = New System.Drawing.Point(12, 3)
-        Me.BtnBrowse.Name = "BtnBrowse"
-        Me.BtnBrowse.Size = New System.Drawing.Size(100, 40)
-        Me.BtnBrowse.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Custom
-        Me.BtnBrowse.XOTampilkanFocusBorder = False
-        Me.BtnBrowse.XOValidasiSemuaInput = False
-        Me.BtnBrowse.XOValidasiSemuaInputTag = Nothing
-        Me.BtnBrowse.TabIndex = 0
-        Me.BtnBrowse.Text = "Browse..."
-        Me.BtnBrowse.UseVisualStyleBackColor = False
-        '
-        'TxtProgress
-        '
-        Me.TxtProgress.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TxtProgress.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TxtProgress.Location = New System.Drawing.Point(0, 46)
-        Me.TxtProgress.MaxLength = 2147483647
-        Me.TxtProgress.Multiline = True
-        Me.TxtProgress.Name = "TxtProgress"
-        Me.TxtProgress.ReadOnly = True
-        Me.TxtProgress.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtProgress.Size = New System.Drawing.Size(657, 245)
-        Me.TxtProgress.XOAutoTrim = False
-        Me.TxtProgress.XOHarusDiisi = False
-        Me.TxtProgress.XOHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
-        Me.TxtProgress.XOHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
-        Me.TxtProgress.XOHightlightSaatFokus = False
-        Me.TxtProgress.XOHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
-        Me.TxtProgress.XOPilihSemuaSaatFokus = False
-        Me.TxtProgress.XOTanpaSpasi = False
-        Me.TxtProgress.XOValidasiField = Nothing
-        Me.TxtProgress.TabIndex = 2
-        Me.TxtProgress.Tag = "txt"
-        Me.TxtProgress.WordWrap = False
-        '
-        'BtnSave
-        '
-        Me.BtnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnSave.BackColor = System.Drawing.Color.LimeGreen
-        Me.BtnSave.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(145, Byte), Integer), CType(CType(50, Byte), Integer))
-        Me.BtnSave.FlatAppearance.BorderSize = 2
-        Me.BtnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.BtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnSave.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.BtnSave.ForeColor = System.Drawing.Color.White
-        Me.BtnSave.Location = New System.Drawing.Point(545, 3)
-        Me.BtnSave.Name = "BtnSave"
-        Me.BtnSave.Size = New System.Drawing.Size(100, 40)
-        Me.BtnSave.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        Me.BtnSave.XOTampilkanFocusBorder = False
-        Me.BtnSave.XOValidasiSemuaInput = False
-        Me.BtnSave.XOValidasiSemuaInputTag = Nothing
-        Me.BtnSave.TabIndex = 0
-        Me.BtnSave.Text = "Save"
-        Me.BtnSave.UseVisualStyleBackColor = False
-        '
-        'BtnClose
-        '
-        Me.BtnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnClose.BackColor = System.Drawing.Color.Red
-        Me.BtnClose.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(195, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BtnClose.FlatAppearance.BorderSize = 2
-        Me.BtnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(20, Byte), Integer))
-        Me.BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnClose.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.BtnClose.ForeColor = System.Drawing.Color.White
-        Me.BtnClose.Location = New System.Drawing.Point(439, 3)
-        Me.BtnClose.Name = "BtnClose"
-        Me.BtnClose.Size = New System.Drawing.Size(100, 40)
-        Me.BtnClose.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        Me.BtnClose.XOTampilkanFocusBorder = False
-        Me.BtnClose.XOValidasiSemuaInput = False
-        Me.BtnClose.XOValidasiSemuaInputTag = Nothing
-        Me.BtnClose.TabIndex = 1
-        Me.BtnClose.Text = "Close"
-        Me.BtnClose.UseVisualStyleBackColor = False
-        '
-        'od
-        '
-        Me.od.DefaultExt = "[*.csv]"
-        Me.od.SupportMultiDottedExtensions = True
-        Me.od.Title = "Browse file to import..."
-        '
-        'frmImports
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(657, 479)
-        Me.Name = "frmImports"
-        Me.PnlBottomButton.ResumeLayout(False)
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnl_.ResumeLayout(False)
-        Me.SLFPanel.ResumeLayout(False)
-        Me.SLFPanel.PerformLayout()
-        Me.Pnl1.ResumeLayout(False)
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        components = New ComponentModel.Container()
+        Pnl1 = New pnl(components)
+        LblFileName = New lbl(components)
+        TxtProgress = New txt(components)
+        od = New OpenFileDialog()
+        CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
+        pnl_.SuspendLayout()
+        SLFPanel.SuspendLayout()
+        CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+        Pnl1.SuspendLayout()
+        SuspendLayout()
+        ' 
+        ' PnlBottomButton
+        ' 
+        PnlBottomButton.Location = New Point(0, 699)
+        PnlBottomButton.Size = New Size(1095, 96)
+        ' 
+        ' pnl_
+        ' 
+        pnl_.Size = New Size(1095, 104)
+        ' 
+        ' SLFPanel
+        ' 
+        SLFPanel.Controls.Add(TxtProgress)
+        SLFPanel.Controls.Add(Pnl1)
+        SLFPanel.Size = New Size(1095, 795)
+        SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+        SLFPanel.Controls.SetChildIndex(Pnl1, 0)
+        SLFPanel.Controls.SetChildIndex(TxtProgress, 0)
+        ' 
+        ' Pnl1
+        ' 
+        Pnl1.Controls.Add(LblFileName)
+        Pnl1.Dock = DockStyle.Top
+        Pnl1.Location = New Point(0, 0)
+        Pnl1.Margin = New Padding(5, 6, 5, 6)
+        Pnl1.Name = "Pnl1"
+        Pnl1.Size = New Size(1095, 88)
+        Pnl1.TabIndex = 1
+        ' 
+        ' LblFileName
+        ' 
+        LblFileName.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        LblFileName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LblFileName.Location = New Point(197, 25)
+        LblFileName.Margin = New Padding(5, 0, 5, 0)
+        LblFileName.Name = "LblFileName"
+        LblFileName.Size = New Size(879, 44)
+        LblFileName.TabIndex = 1
+        LblFileName.XOCustomElipsis = True
+        ' 
+        ' TxtProgress
+        ' 
+        TxtProgress.Dock = DockStyle.Fill
+        TxtProgress.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtProgress.Location = New Point(0, 88)
+        TxtProgress.Margin = New Padding(5, 6, 5, 6)
+        TxtProgress.MaxLength = Integer.MaxValue
+        TxtProgress.Multiline = True
+        TxtProgress.Name = "TxtProgress"
+        TxtProgress.ReadOnly = True
+        TxtProgress.ScrollBars = ScrollBars.Both
+        TxtProgress.Size = New Size(1095, 611)
+        TxtProgress.TabIndex = 2
+        TxtProgress.Tag = "txt"
+        TxtProgress.WordWrap = False
+        TxtProgress.XOAutoTrim = False
+        TxtProgress.XOHarusDiisi = False
+        TxtProgress.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtProgress.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtProgress.XOHightlightSaatFokus = False
+        TxtProgress.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtProgress.XOIsBlank = True
+        TxtProgress.XOIsSearchBox = False
+        TxtProgress.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtProgress.XOPilihSemuaSaatFokus = False
+        TxtProgress.XOPwdLengthMin = 8
+        TxtProgress.XOPwdStrengthCalculate = False
+        TxtProgress.XOPwdStrengthScore = 0
+        TxtProgress.XOPwdStrengthText = Nothing
+        TxtProgress.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtProgress.XOSearchBoxText = "Type then press Enter"
+        TxtProgress.XOSQLText = Nothing
+        TxtProgress.XOTanpaSpasi = False
+        TxtProgress.XOValidasiField = Nothing
+        ' 
+        ' od
+        ' 
+        od.DefaultExt = "[*.csv]"
+        od.SupportMultiDottedExtensions = True
+        od.Title = "Browse file to import..."
+        ' 
+        ' FRMimports
+        ' 
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1095, 921)
+        KeyPreview = True
+        Margin = New Padding(22, 44, 22, 44)
+        Name = "FRMimports"
+        CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
+        pnl_.ResumeLayout(False)
+        pnl_.PerformLayout()
+        SLFPanel.ResumeLayout(False)
+        SLFPanel.PerformLayout()
+        CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+        Pnl1.ResumeLayout(False)
+        ResumeLayout(False)
+        PerformLayout()
 
     End Sub
     Friend WithEvents Pnl1 As CMCv.pnl

@@ -4,7 +4,7 @@ Imports System.IO
 Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.EPLS
+Namespace CMDepls
     Public Class View
 
         <SupportedOSPlatform("windows")>
@@ -47,7 +47,6 @@ Namespace Commands.EPLS
     End Class
 
     Public Class Editor
-        ReadOnly varImage As New CMCv.ImageEditor.Proccessor.Compress
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GetCompany(databasename As String, dbengine As String, rowid As String, Optional positionid As String = "-1") As String
@@ -85,7 +84,7 @@ Namespace Commands.EPLS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETPositionID(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetPositionID(databasename As String, dbengine As String, rowid As String) As String
             Dim varPositionID As String = String.Empty
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_position from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
@@ -96,7 +95,7 @@ Namespace Commands.EPLS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETPosition(databasename As String, dbengine As String, rowid As String, Optional positionid As String = "-1") As String
+        Public Shared Function GetPosition(databasename As String, dbengine As String, rowid As String, Optional positionid As String = "-1") As String
             Dim varPosition As String = String.Empty
 
             If positionid = "-1" Then
@@ -177,7 +176,7 @@ Namespace Commands.EPLS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETEmployeeNumber(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetEmployeeNumber(databasename As String, dbengine As String, rowid As String) As String
             Dim varEmployeeNumber As String
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_number from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
@@ -259,7 +258,7 @@ Namespace Commands.EPLS
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GetIsHavePhoto(databasename As String, dbengine As String, rowid As String) As Integer
-            Dim varIsHavePhoto As Integer = 0
+            Dim varIsHavePhoto As Integer
 
             varDatabaseRequestMssql2008(0).Query = String.Format("select count(f.file_id) as total from db_universe_erp_file.dbo.sto_file f where (f.file_parent = '{0}') and (f.file_tag = 'EMPLOYEE-PROFILE-PHOTO');", rowid)
             varIsHavePhoto = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
@@ -268,7 +267,7 @@ Namespace Commands.EPLS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GetPhoto(databasename As String, dbengine As String, rowid As String) As Image
+        Public Shared Function GetPhoto(databasename As String, dbengine As String, rowid As String) As Image
             Dim varPhoto As System.Drawing.Image = Nothing
             Dim varBytes As Byte()
 

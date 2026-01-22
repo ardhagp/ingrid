@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class CDIN_Editor
+Partial Class FRMcdinEditor
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -43,17 +43,17 @@ Partial Class CDIN_Editor
         PnlBottomButton.Controls.Add(ChkAddNew)
         PnlBottomButton.Controls.Add(BtnSave)
         PnlBottomButton.Controls.Add(BtnCancel)
-        PnlBottomButton.Location = New Point(0, 267)
-        PnlBottomButton.Margin = New Padding(5, 3, 5, 3)
-        PnlBottomButton.Size = New Size(611, 58)
+        PnlBottomButton.Location = New Point(0, 457)
+        PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
+        PnlBottomButton.Size = New Size(873, 97)
         PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
         PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
         PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
         ' 
         ' pnl_
         ' 
-        pnl_.Margin = New Padding(5, 3, 5, 3)
-        pnl_.Size = New Size(611, 61)
+        pnl_.Margin = New Padding(7, 5, 7, 5)
+        pnl_.Size = New Size(873, 104)
         ' 
         ' SLFPanel
         ' 
@@ -65,8 +65,8 @@ Partial Class CDIN_Editor
         SLFPanel.Controls.Add(TxtDeptName)
         SLFPanel.Controls.Add(CboCompany)
         SLFPanel.Controls.Add(TxtDeptCode)
-        SLFPanel.Margin = New Padding(5, 3, 5, 3)
-        SLFPanel.Size = New Size(611, 325)
+        SLFPanel.Margin = New Padding(7, 5, 7, 5)
+        SLFPanel.Size = New Size(873, 554)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(TxtDeptCode, 0)
         SLFPanel.Controls.SetChildIndex(CboCompany, 0)
@@ -88,17 +88,17 @@ Partial Class CDIN_Editor
         BtnSave.FlatStyle = FlatStyle.Flat
         BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnSave.ForeColor = Color.White
-        BtnSave.Location = New Point(356, 8)
-        BtnSave.Margin = New Padding(4, 3, 4, 3)
+        BtnSave.Location = New Point(509, 13)
+        BtnSave.Margin = New Padding(6, 5, 6, 5)
         BtnSave.Name = "BtnSave"
-        BtnSave.Size = New Size(117, 46)
+        BtnSave.Size = New Size(167, 77)
+        BtnSave.TabIndex = 4
+        BtnSave.Text = "&Save"
+        BtnSave.UseVisualStyleBackColor = False
         BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
         BtnSave.XOTampilkanFocusBorder = False
         BtnSave.XOValidasiSemuaInput = False
         BtnSave.XOValidasiSemuaInputTag = Nothing
-        BtnSave.TabIndex = 4
-        BtnSave.Text = "&Save"
-        BtnSave.UseVisualStyleBackColor = False
         ' 
         ' BtnCancel
         ' 
@@ -109,28 +109,30 @@ Partial Class CDIN_Editor
         BtnCancel.FlatAppearance.BorderSize = 2
         BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnCancel.FlatStyle = FlatStyle.Flat
-        BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
-        BtnCancel.Location = New Point(480, 8)
-        BtnCancel.Margin = New Padding(4, 3, 4, 3)
+        BtnCancel.Location = New Point(686, 13)
+        BtnCancel.Margin = New Padding(6, 5, 6, 5)
         BtnCancel.Name = "BtnCancel"
-        BtnCancel.Size = New Size(117, 46)
+        BtnCancel.Size = New Size(167, 77)
+        BtnCancel.TabIndex = 6
+        BtnCancel.Text = "&Close"
+        BtnCancel.UseVisualStyleBackColor = False
         BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
         BtnCancel.XOTampilkanFocusBorder = False
         BtnCancel.XOValidasiSemuaInput = False
         BtnCancel.XOValidasiSemuaInputTag = Nothing
-        BtnCancel.TabIndex = 6
-        BtnCancel.Text = "&Close"
-        BtnCancel.UseVisualStyleBackColor = False
         ' 
         ' TxtDeptCode
         ' 
         TxtDeptCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtDeptCode.Location = New Point(196, 52)
-        TxtDeptCode.Margin = New Padding(4, 3, 4, 3)
+        TxtDeptCode.Location = New Point(280, 87)
+        TxtDeptCode.Margin = New Padding(6, 5, 6, 5)
         TxtDeptCode.MaxLength = 255
         TxtDeptCode.Name = "TxtDeptCode"
-        TxtDeptCode.Size = New Size(240, 29)
+        TxtDeptCode.Size = New Size(341, 39)
+        TxtDeptCode.TabIndex = 1
+        TxtDeptCode.Tag = "txt"
         TxtDeptCode.XOAutoTrim = True
         TxtDeptCode.XOHarusDiisi = True
         TxtDeptCode.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -150,8 +152,6 @@ Partial Class CDIN_Editor
         TxtDeptCode.XOSQLText = ""
         TxtDeptCode.XOTanpaSpasi = False
         TxtDeptCode.XOValidasiField = Nothing
-        TxtDeptCode.TabIndex = 1
-        TxtDeptCode.Tag = "txt"
         ' 
         ' CboCompany
         ' 
@@ -160,20 +160,22 @@ Partial Class CDIN_Editor
         CboCompany.FlatStyle = FlatStyle.Flat
         CboCompany.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         CboCompany.FormattingEnabled = True
-        CboCompany.Location = New Point(196, 12)
-        CboCompany.Margin = New Padding(4, 3, 4, 3)
+        CboCompany.Location = New Point(280, 20)
+        CboCompany.Margin = New Padding(6, 5, 6, 5)
         CboCompany.Name = "CboCompany"
-        CboCompany.Size = New Size(240, 29)
+        CboCompany.Size = New Size(341, 40)
         CboCompany.TabIndex = 0
         ' 
         ' TxtDeptName
         ' 
         TxtDeptName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtDeptName.Location = New Point(196, 92)
-        TxtDeptName.Margin = New Padding(4, 3, 4, 3)
+        TxtDeptName.Location = New Point(280, 153)
+        TxtDeptName.Margin = New Padding(6, 5, 6, 5)
         TxtDeptName.MaxLength = 255
         TxtDeptName.Name = "TxtDeptName"
-        TxtDeptName.Size = New Size(240, 29)
+        TxtDeptName.Size = New Size(341, 39)
+        TxtDeptName.TabIndex = 2
+        TxtDeptName.Tag = "txt"
         TxtDeptName.XOAutoTrim = True
         TxtDeptName.XOHarusDiisi = True
         TxtDeptName.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -193,18 +195,18 @@ Partial Class CDIN_Editor
         TxtDeptName.XOSQLText = ""
         TxtDeptName.XOTanpaSpasi = False
         TxtDeptName.XOValidasiField = Nothing
-        TxtDeptName.TabIndex = 2
-        TxtDeptName.Tag = "txt"
         ' 
         ' TxtDescription
         ' 
         TxtDescription.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtDescription.Location = New Point(196, 133)
-        TxtDescription.Margin = New Padding(4, 3, 4, 3)
+        TxtDescription.Location = New Point(280, 222)
+        TxtDescription.Margin = New Padding(6, 5, 6, 5)
         TxtDescription.MaxLength = 255
         TxtDescription.Multiline = True
         TxtDescription.Name = "TxtDescription"
-        TxtDescription.Size = New Size(402, 112)
+        TxtDescription.Size = New Size(573, 184)
+        TxtDescription.TabIndex = 3
+        TxtDescription.Tag = "txt"
         TxtDescription.XOAutoTrim = False
         TxtDescription.XOHarusDiisi = False
         TxtDescription.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -224,8 +226,6 @@ Partial Class CDIN_Editor
         TxtDescription.XOSQLText = ""
         TxtDescription.XOTanpaSpasi = False
         TxtDescription.XOValidasiField = Nothing
-        TxtDescription.TabIndex = 3
-        TxtDescription.Tag = "txt"
         ' 
         ' ChkAddNew
         ' 
@@ -235,10 +235,10 @@ Partial Class CDIN_Editor
         ChkAddNew.FlatStyle = FlatStyle.Flat
         ChkAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         ChkAddNew.ForeColor = Color.Tomato
-        ChkAddNew.Location = New Point(203, 17)
-        ChkAddNew.Margin = New Padding(4, 3, 4, 3)
+        ChkAddNew.Location = New Point(278, 28)
+        ChkAddNew.Margin = New Padding(6, 5, 6, 5)
         ChkAddNew.Name = "ChkAddNew"
-        ChkAddNew.Size = New Size(146, 25)
+        ChkAddNew.Size = New Size(221, 36)
         ChkAddNew.TabIndex = 5
         ChkAddNew.Text = "Add new on Save"
         ChkAddNew.UseVisualStyleBackColor = False
@@ -246,10 +246,10 @@ Partial Class CDIN_Editor
         ' ULbl1
         ' 
         ULbl1.BackColor = Color.Moccasin
-        ULbl1.Location = New Point(14, 12)
-        ULbl1.Margin = New Padding(5, 3, 5, 3)
+        ULbl1.Location = New Point(20, 20)
+        ULbl1.Margin = New Padding(7, 5, 7, 5)
         ULbl1.Name = "ULbl1"
-        ULbl1.Size = New Size(175, 33)
+        ULbl1.Size = New Size(250, 55)
         ULbl1.SLFText = "Company"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
@@ -259,10 +259,10 @@ Partial Class CDIN_Editor
         ' ULbl2
         ' 
         ULbl2.BackColor = Color.Moccasin
-        ULbl2.Location = New Point(14, 52)
-        ULbl2.Margin = New Padding(5, 3, 5, 3)
+        ULbl2.Location = New Point(20, 87)
+        ULbl2.Margin = New Padding(7, 5, 7, 5)
         ULbl2.Name = "ULbl2"
-        ULbl2.Size = New Size(175, 33)
+        ULbl2.Size = New Size(250, 55)
         ULbl2.SLFText = "Dept. Code"
         ULbl2.SLFTextAdjuster = False
         ULbl2.SLFTextBorder = False
@@ -272,10 +272,10 @@ Partial Class CDIN_Editor
         ' ULbl3
         ' 
         ULbl3.BackColor = Color.Moccasin
-        ULbl3.Location = New Point(14, 92)
-        ULbl3.Margin = New Padding(5, 3, 5, 3)
+        ULbl3.Location = New Point(20, 153)
+        ULbl3.Margin = New Padding(7, 5, 7, 5)
         ULbl3.Name = "ULbl3"
-        ULbl3.Size = New Size(175, 33)
+        ULbl3.Size = New Size(250, 55)
         ULbl3.SLFText = "Dept. Name"
         ULbl3.SLFTextAdjuster = False
         ULbl3.SLFTextBorder = False
@@ -285,23 +285,23 @@ Partial Class CDIN_Editor
         ' ULbl4
         ' 
         ULbl4.BackColor = Color.Moccasin
-        ULbl4.Location = New Point(14, 133)
-        ULbl4.Margin = New Padding(5, 3, 5, 3)
+        ULbl4.Location = New Point(20, 222)
+        ULbl4.Margin = New Padding(7, 5, 7, 5)
         ULbl4.Name = "ULbl4"
-        ULbl4.Size = New Size(175, 113)
+        ULbl4.Size = New Size(250, 188)
         ULbl4.SLFText = "Description"
         ULbl4.SLFTextAdjuster = False
         ULbl4.SLFTextBorder = False
         ULbl4.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
         ULbl4.TabIndex = 1007
         ' 
-        ' CDIN_Editor
+        ' FRMcdinEditor
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(611, 408)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(873, 680)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
-        Name = "CDIN_Editor"
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMcdinEditor"
         PnlBottomButton.ResumeLayout(False)
         PnlBottomButton.PerformLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

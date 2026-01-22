@@ -1,14 +1,14 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class ACGR
+Public Class FRMacgr
 
 #Region "Variables"
-    Private V_SQLview As New LibSQL.Commands.ACGR.View
-    Private V_Selectedgroup As String = ""
-    Private V_ISfirstload As Boolean = True
-    Private V_ISclosing As Boolean = False
-    Private WithEvents frmACGReditor As New ACGR_Editor
-    Private WithEvents _MMSmenu As New CMCv.UI.View.MenuStrip
+    Private WithEvents Frm_acgr_Editor As New FRMacgrEditor
+    Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
+
+    Private varSelectedGroup As String = String.Empty
+    Private varIsFirstLoad As Boolean = True
+    Private varIsClosing As Boolean = False
 #End Region
 
 #Region "Sub Collections"
@@ -18,8 +18,8 @@ Public Class ACGR
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
     Private Sub GetData()
-        LibSQL.Commands.ACGR.View.FillCompany(varDatabaseName, varDatabaseEngine, CboCompany)
-        LibSQL.Commands.ACGR.View.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
+        LibSQL.CMDacgr.View.FillCompany(varDatabaseName, varDatabaseEngine, CboCompany)
+        LibSQL.CMDacgr.View.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
     End Sub
 
     ''' <summary>
@@ -29,7 +29,7 @@ Public Class ACGR
     ''' <remarks>True akan memaksa data untuk direfresh tanpa filter apapun</remarks>
     <SupportedOSPlatform("windows")>
     Private Sub GetDataGrid(Optional forcerefresh As Boolean = False)
-        LibSQL.Commands.ACGR.View.GetAccountList(varDatabaseName, varDatabaseEngine, DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, forcerefresh)
+        LibSQL.CMDacgr.View.GetAccountList(varDatabaseName, varDatabaseEngine, DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, forcerefresh)
     End Sub
 
     'Private _RowID As Integer
@@ -51,26 +51,27 @@ Public Class ACGR
     End Function
 
     ''' <summary>
-    ''' Prosedur untuk mendapatkan Tabel ID
+    ''' Procedure for retrieving the RowID.
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub GetRowID()
-        Select Case V_Selectedgroup
+        Const consTail As String = " Row(s)"
+        Select Case varSelectedGroup
             Case "tpAssets"
                 GetAccountID(DgnACGRAssets)
-                SLFStatus.Items(0).Text = DgnACGRAssets.RowCount & " Row(s)"
+                SLFStatus.Items(0).Text = DgnACGRAssets.RowCount & consTail
             Case "tpLiabilities"
                 GetAccountID(DgnACGRLiabities)
-                SLFStatus.Items(0).Text = DgnACGRLiabities.RowCount & " Row(s)"
+                SLFStatus.Items(0).Text = DgnACGRLiabities.RowCount & consTail
             Case "tpEquity"
                 GetAccountID(DgnACGREquity)
-                SLFStatus.Items(0).Text = DgnACGREquity.RowCount & " Row(s)"
+                SLFStatus.Items(0).Text = DgnACGREquity.RowCount & consTail
             Case "tpRevenue"
                 GetAccountID(DgnACGRRevenue)
-                SLFStatus.Items(0).Text = DgnACGRRevenue.RowCount & " Row(s)"
+                SLFStatus.Items(0).Text = DgnACGRRevenue.RowCount & consTail
             Case "tpExpense"
                 GetAccountID(DgnACGRExpense)
-                SLFStatus.Items(0).Text = DgnACGRExpense.RowCount & " Row(s)"
+                SLFStatus.Items(0).Text = DgnACGRExpense.RowCount & consTail
         End Select
     End Sub
 
@@ -78,48 +79,48 @@ Public Class ACGR
 
 #Region "Menu Strip Function"
     <SupportedOSPlatform("windows")>
-    Private Sub _MMSMenu_EventDataAddNew() Handles _MMSmenu.EventDataAddNew
+    Private Sub CommmsMenu_EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
         With varFormProperties
             .RowID = "-1"
             .IsNew = True
         End With
-        frmACGReditor = New ACGR_Editor
-        Display(frmACGReditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new account for each accounting book and accounting group", True)
+        Frm_acgr_Editor = New FRMacgrEditor
+        Display(Frm_acgr_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new account for each accounting book and accounting group", True)
         Call GetRowID()
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub _MMSMenu_EventDataEdit() Handles _MMSmenu.EventDataEdit
+    Private Sub CommmsMenu_EventDataEdit() Handles Com_mms_Menu.EventDataEdit
         Call GetRowID()
         varFormProperties.IsNew = False
         If Convert.ToString(Convert.ToString(varFormProperties.RowID)) = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
-            frmACGReditor = New ACGR_Editor
-            Display(frmACGReditor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your account data", True)
+            Frm_acgr_Editor = New FRMacgrEditor
+            Display(Frm_acgr_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your account data", True)
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub _MMSMenu_EventDataDelete() Handles _MMSmenu.EventDataDelete
+    Private Sub CommmsMenu_EventDataDelete() Handles Com_mms_Menu.EventDataDelete
         Call GetRowID()
         If Convert.ToString(Convert.ToString(varFormProperties.RowID)) = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             varFormProperties.IsNew = False
-            If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.ACGR.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(Convert.ToString(varFormProperties.RowID)))) Then
+            If Decision("Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If (LibSQL.CMDacgr.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(Convert.ToString(varFormProperties.RowID)))) Then
                     Call GetDataGrid(True)
-                    Mainframe_n_6.Ts_status.Text = "Success"
+                    FRMmainframe6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.Ts_status.Text = "Delete failed"
+                    FRMmainframe6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If
         Call GetRowID()
     End Sub
 
-    Private Sub _MMSMenu_EventToolsFind() Handles _MMSmenu.EventToolsFind
+    Private Sub CommmsMenu_EventToolsFind() Handles Com_mms_Menu.EventToolsFind
         TxtFind.Focus()
     End Sub
 #End Region
@@ -143,33 +144,33 @@ Public Class ACGR
 
 #Region "Main Form Events"
     Private Sub frmAccountGroup_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        V_ISclosing = True
+        varIsClosing = True
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub frmAccountGroup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        _MMSmenu.LoadIn(Me)
-        _MMSmenu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        Com_mms_Menu.LoadIn(Me)
+        Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         Call GetData()
         Call GetDataGrid()
-        V_Selectedgroup = TbctlAccountGroup.SelectedTab.Name
+        varSelectedGroup = TbctlAccountGroup.SelectedTab.Name
         Call GetRowID()
-        V_ISfirstload = False
+        varIsFirstLoad = False
     End Sub
 #End Region
 
 #Region "Component Events"
     Private Sub TbctlAccountGroup_Selected(sender As Object, e As TabControlEventArgs) Handles TbctlAccountGroup.Selected
-        If Not (V_ISclosing) Then
-            V_Selectedgroup = TbctlAccountGroup.SelectedTab.Name
+        If Not (varIsClosing) Then
+            varSelectedGroup = TbctlAccountGroup.SelectedTab.Name
             Call GetRowID()
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub CboAccountingBook_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboAccountingBook.SelectedIndexChanged
-        If Not (V_ISfirstload) Then
+        If Not (varIsFirstLoad) Then
             Call GetDataGrid(True)
             Call GetRowID()
         End If
@@ -177,8 +178,8 @@ Public Class ACGR
 
     <SupportedOSPlatform("windows")>
     Private Sub CboPlant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
-        If Not (V_ISfirstload) Then
-            LibSQL.Commands.ACGR.View.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
+        If Not (varIsFirstLoad) Then
+            LibSQL.CMDacgr.View.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
             Call GetDataGrid(True)
         End If
     End Sub
@@ -186,7 +187,7 @@ Public Class ACGR
 
 #Region "WithEvents"
     <SupportedOSPlatform("windows")>
-    Private Sub RecordSaved() Handles frmACGReditor.RecordSaved
+    Private Sub RecordSaved() Handles Frm_acgr_Editor.EventRecordSaved
         Call GetDataGrid(True)
     End Sub
 #End Region

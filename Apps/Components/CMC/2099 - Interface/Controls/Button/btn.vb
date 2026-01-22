@@ -12,7 +12,7 @@ Imports System.Runtime.Versioning
 ''' Custom button
 ''' </summary>
 ''' <remarks></remarks>
-Public Class btn
+Public Class Btn
     Inherits System.Windows.Forms.Button
     Public Event ValidasiBerhasil()
 
@@ -32,40 +32,40 @@ Public Class btn
         MyBase.DoubleBuffered = True
     End Sub
 
-    Private _varJenisTombol As ControlCodeBase.enuJenisTombol
+    Private varJenisTombol As ControlCodeBase.enuJenisTombol
     <Category("Text"),
     Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
     Public Property XOJenisTombol() As ControlCodeBase.enuJenisTombol
         Get
-            Return _varJenisTombol
+            Return varJenisTombol
         End Get
         Set(value As ControlCodeBase.enuJenisTombol)
-            _varJenisTombol = value
+            varJenisTombol = value
             GantiWarnaTombol(value)
         End Set
     End Property
 
-    Private _varValidasiSemuaInput As Boolean
+    Private varValidasiSemuaInput As Boolean
     <Category("Text"),
     Description("Memvalidasi semua input telah diisi")>
     Public Property XOValidasiSemuaInput() As Boolean
         Get
-            Return _varValidasiSemuaInput
+            Return varValidasiSemuaInput
         End Get
         Set(value As Boolean)
-            _varValidasiSemuaInput = value
+            varValidasiSemuaInput = value
         End Set
     End Property
 
-    Private _varValidasiSemuaInputTag As String
+    Private varValidasiSemuaInputTag As String
     <Category("Text"),
     Description("Teksboks dengan Tag ini yang akan divalidasi")>
     Public Property XOValidasiSemuaInputTag() As String
         Get
-            Return _varValidasiSemuaInputTag
+            Return varValidasiSemuaInputTag
         End Get
         Set(value As String)
-            _varValidasiSemuaInputTag = value
+            varValidasiSemuaInputTag = value
         End Set
     End Property
 
@@ -96,9 +96,9 @@ Public Class btn
     ''' <summary>
     ''' Ganti warna tombol.
     ''' </summary>
-    ''' <param name="_valEnuJenisTombol">Enumerasi jenis tombol.</param>
-    Private Sub GantiWarnaTombol(ByVal _valEnuJenisTombol As ControlCodeBase.enuJenisTombol)
-        Select Case _valEnuJenisTombol
+    ''' <param name="enujenistombol">Enumerasi jenis tombol.</param>
+    Private Sub GantiWarnaTombol(enujenistombol As ControlCodeBase.enuJenisTombol)
+        Select Case enujenistombol
             Case ControlCodeBase.enuJenisTombol.Yes
                 MyBase.BackColor = Drawing.Color.LimeGreen
                 MyBase.ForeColor = Drawing.Color.White
@@ -121,26 +121,26 @@ Public Class btn
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub btn_BackColorChanged(sender As Object, e As System.EventArgs) Handles Me.BackColorChanged
+    Private Sub Btn_BackColorChanged(sender As Object, e As System.EventArgs) Handles Me.BackColorChanged
         If Me.FlatStyle = Windows.Forms.FlatStyle.Flat Then
             MyBase.FlatAppearance.BorderColor = ControlCodeBase.AmbilWarna(MyBase.BackColor, ControlCodeBase.enuOpasitasWarna.Darker, 60)
             MyBase.FlatAppearance.MouseOverBackColor = ControlCodeBase.AmbilWarna(MyBase.BackColor, ControlCodeBase.enuOpasitasWarna.Lighter, 20)
         End If
     End Sub
 
-    Private _varTampilkanFocusBorder As Boolean
+    Private varTampilkanFocusBorder As Boolean
     Protected Overrides ReadOnly Property ShowFocusCues() As Boolean
         Get
-            Return _varTampilkanFocusBorder
+            Return varTampilkanFocusBorder
         End Get
     End Property
 
     Public Property XOTampilkanFocusBorder() As Boolean
         Get
-            Return _varTampilkanFocusBorder
+            Return varTampilkanFocusBorder
         End Get
         Set(value As Boolean)
-            _varTampilkanFocusBorder = value
+            varTampilkanFocusBorder = value
         End Set
     End Property
 

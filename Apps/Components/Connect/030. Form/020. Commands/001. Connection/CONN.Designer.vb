@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class CONN
-    Inherits CMCv.Std_Fi_Fo
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class FRMconn
+    Inherits CMCv.FRMstandardFindFooter
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,10 +17,10 @@ Partial Class CONN
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CONN))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMconn))
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
@@ -32,7 +32,7 @@ Partial Class CONN
         serverport = New DataGridViewTextBoxColumn()
         defaultconnection = New DataGridViewCheckBoxColumn()
         spring = New DataGridViewTextBoxColumn()
-        Btn_Close = New btn(components)
+        Btn_Close = New Btn(components)
         PnlBottomButton.SuspendLayout()
         PnlFind.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -105,7 +105,7 @@ Partial Class CONN
         DgnConnection.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -116,7 +116,7 @@ Partial Class CONN
         DgnConnection.Columns.AddRange(New DataGridViewColumn() {id, connectionname, databaseengine, serveraddress, serverport, defaultconnection, spring})
         DgnConnection.Dock = DockStyle.Fill
         DgnConnection.EnableHeadersVisualStyles = False
-        DgnConnection.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnConnection.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DgnConnection.Location = New Point(0, 88)
         DgnConnection.Margin = New Padding(6, 5, 6, 5)
         DgnConnection.Name = "DgnConnection"
@@ -124,7 +124,7 @@ Partial Class CONN
         DgnConnection.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.YellowGreen
-        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -218,7 +218,7 @@ Partial Class CONN
         Btn_Close.FlatAppearance.BorderSize = 2
         Btn_Close.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         Btn_Close.FlatStyle = FlatStyle.Flat
-        Btn_Close.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Btn_Close.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Btn_Close.ForeColor = Color.White
         Btn_Close.Location = New Point(1147, 18)
         Btn_Close.Margin = New Padding(4, 5, 4, 5)
@@ -234,14 +234,14 @@ Partial Class CONN
         ' 
         ' CONN
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
         ClientSize = New Size(1307, 1078)
         ControlBox = False
         FormBorderStyle = FormBorderStyle.FixedSingle
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         KeyPreview = True
         Margin = New Padding(11, 5, 11, 5)
-        Name = "CONN"
+        Name = "FRMconn"
         StartPosition = FormStartPosition.CenterScreen
         PnlBottomButton.ResumeLayout(False)
         PnlFind.ResumeLayout(False)
@@ -257,7 +257,7 @@ Partial Class CONN
     End Sub
 
     Friend WithEvents DgnConnection As dgn
-    Friend WithEvents Btn_Close As btn
+    Friend WithEvents Btn_Close As Btn
     Friend WithEvents id As DataGridViewTextBoxColumn
     Friend WithEvents connectionname As DataGridViewTextBoxColumn
     Friend WithEvents databaseengine As DataGridViewTextBoxColumn

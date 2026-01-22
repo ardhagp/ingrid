@@ -1,7 +1,6 @@
 ﻿Imports System.Data
 Imports System.Runtime.Versioning
 Imports CMCv
-Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Namespace Application
 
@@ -14,10 +13,10 @@ Namespace Application
             Report = 5
         End Enum
 
-        Private ReadOnly varDatabaseRequestMssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
+        Private Shared ReadOnly varDatabaseRequestMssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
-        Public Function User(databasename As String, tcode As String, uid As String, typeofaccess As TypeOfAccess) As Boolean
+        Public Shared Function User(databasename As String, tcode As String, uid As String, typeofaccess As TypeOfAccess) As Boolean
             Dim varView As Integer
             Dim varTypeOfAccess As String = String.Empty
 
@@ -148,7 +147,6 @@ Namespace Application
 
             Try
                 varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_minpasswordlength from db_universe_erp.dbo.sys_settings s")
-
                 varMinPasswordLength = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
             Catch ex As Exception
                 varMinPasswordLength = 8
@@ -309,9 +307,6 @@ Namespace Application
     End Class
 
     Public Class ProfilePanel
-        ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
-        ReadOnly _IMG As New CMCv.ImageEditor.Proccessor.Compress
-
         <SupportedOSPlatform("windows")>
         Public Function GetPhoto(databasename As String, employeeid As String, gender As String) As System.Drawing.Image
             Dim varPhoto As System.Drawing.Image
@@ -326,7 +321,6 @@ Namespace Application
                 Else
                     If (gender = "MALE") OrElse (gender = "") Then
                         varPhoto = My.Resources.MALE_001_512_icon
-
                     Else
                         varPhoto = My.Resources.FEMALE_001_512_icon
                     End If

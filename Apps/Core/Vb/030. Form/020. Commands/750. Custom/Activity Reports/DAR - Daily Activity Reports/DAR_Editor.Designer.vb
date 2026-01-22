@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class DAR_Editor
+Partial Class FRMdarEditor
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -20,7 +20,7 @@ Partial Class DAR_Editor
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DAR_Editor))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMdarEditor))
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
@@ -46,6 +46,13 @@ Partial Class DAR_Editor
         BtnBrowsePhoto = New btn(components)
         PctbxPhoto = New pctbx(components)
         DgnPictureList = New dgn(components)
+        photo_id = New DataGridViewTextBoxColumn()
+        photo_filename = New DataGridViewTextBoxColumn()
+        photo_datetime = New DataGridViewTextBoxColumn()
+        photo_content = New DataGridViewImageColumn()
+        photo_status = New DataGridViewTextBoxColumn()
+        photo_uploader = New DataGridViewTextBoxColumn()
+        photo_delete = New DataGridViewButtonColumn()
         BtnPeekPhoto = New btn(components)
         TxtPhotoPath = New txt(components)
         BtnAddPhoto = New btn(components)
@@ -53,6 +60,14 @@ Partial Class DAR_Editor
         PnlFile = New pnl(components)
         BtnBrowseFile = New btn(components)
         DgnFileList = New dgn(components)
+        file_id = New DataGridViewTextBoxColumn()
+        file_filename = New DataGridViewTextBoxColumn()
+        file_tag = New DataGridViewTextBoxColumn()
+        file_datetime = New DataGridViewTextBoxColumn()
+        file_content = New DataGridViewTextBoxColumn()
+        file_status = New DataGridViewTextBoxColumn()
+        file_uploader = New DataGridViewTextBoxColumn()
+        file_delete = New DataGridViewButtonColumn()
         CboFileTag = New cbo(components)
         TxtFilePath = New txt(components)
         BtnAddFile = New btn(components)
@@ -65,21 +80,6 @@ Partial Class DAR_Editor
         ULbl5 = New ULbl()
         ULbl6 = New ULbl()
         ULbl7 = New ULbl()
-        photo_id = New DataGridViewTextBoxColumn()
-        photo_filename = New DataGridViewTextBoxColumn()
-        photo_datetime = New DataGridViewTextBoxColumn()
-        photo_content = New DataGridViewImageColumn()
-        photo_status = New DataGridViewTextBoxColumn()
-        photo_uploader = New DataGridViewTextBoxColumn()
-        photo_delete = New DataGridViewButtonColumn()
-        file_id = New DataGridViewTextBoxColumn()
-        file_filename = New DataGridViewTextBoxColumn()
-        file_tag = New DataGridViewTextBoxColumn()
-        file_datetime = New DataGridViewTextBoxColumn()
-        file_content = New DataGridViewTextBoxColumn()
-        file_status = New DataGridViewTextBoxColumn()
-        file_uploader = New DataGridViewTextBoxColumn()
-        file_delete = New DataGridViewButtonColumn()
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
@@ -449,7 +449,7 @@ Partial Class DAR_Editor
         BtnBrowsePhoto.FlatStyle = FlatStyle.Flat
         BtnBrowsePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnBrowsePhoto.ForeColor = Color.White
-        BtnBrowsePhoto.Image = Global.Ingrid.My.Resources.Resources.FOLDER_001_16_ICON
+        BtnBrowsePhoto.Image = My.Resources.Resources.FOLDER_001_16_ICON
         BtnBrowsePhoto.Location = New Point(6, 5)
         BtnBrowsePhoto.Margin = New Padding(6, 5, 6, 5)
         BtnBrowsePhoto.Name = "BtnBrowsePhoto"
@@ -465,7 +465,7 @@ Partial Class DAR_Editor
         ' 
         PctbxPhoto.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
         PctbxPhoto.BackColor = Color.DarkSlateGray
-        PctbxPhoto.BackgroundImage = Global.Ingrid.My.Resources.Resources.PCTPRV_001_512_icon
+        PctbxPhoto.BackgroundImage = My.Resources.Resources.PCTPRV_001_512_icon
         PctbxPhoto.BackgroundImageLayout = ImageLayout.Zoom
         PctbxPhoto.ErrorImage = CType(resources.GetObject("PctbxPhoto.ErrorImage"), Image)
         PctbxPhoto.InitialImage = CType(resources.GetObject("PctbxPhoto.InitialImage"), Image)
@@ -484,7 +484,7 @@ Partial Class DAR_Editor
         DgnPictureList.AllowUserToAddRows = False
         DgnPictureList.AllowUserToDeleteRows = False
         DgnPictureList.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(253), CByte(221), CByte(121))
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(247), CByte(236), CByte(167))
         DgnPictureList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DgnPictureList.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         DgnPictureList.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
@@ -493,7 +493,7 @@ Partial Class DAR_Editor
         DgnPictureList.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -503,7 +503,7 @@ Partial Class DAR_Editor
         DgnPictureList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DgnPictureList.Columns.AddRange(New DataGridViewColumn() {photo_id, photo_filename, photo_datetime, photo_content, photo_status, photo_uploader, photo_delete})
         DgnPictureList.EnableHeadersVisualStyles = False
-        DgnPictureList.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnPictureList.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DgnPictureList.Location = New Point(6, 73)
         DgnPictureList.Margin = New Padding(6, 5, 6, 5)
         DgnPictureList.MultiSelect = False
@@ -512,7 +512,7 @@ Partial Class DAR_Editor
         DgnPictureList.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.YellowGreen
-        DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -527,6 +527,82 @@ Partial Class DAR_Editor
         DgnPictureList.XOGroupFirstRows = False
         DgnPictureList.XOGunakanNomorBaris = True
         ' 
+        ' photo_id
+        ' 
+        photo_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        photo_id.DataPropertyName = "file_id"
+        photo_id.HeaderText = "ID"
+        photo_id.MinimumWidth = 8
+        photo_id.Name = "photo_id"
+        photo_id.ReadOnly = True
+        photo_id.SortMode = DataGridViewColumnSortMode.Programmatic
+        photo_id.Visible = False
+        ' 
+        ' photo_filename
+        ' 
+        photo_filename.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        photo_filename.DataPropertyName = "file_filename"
+        photo_filename.HeaderText = "File Name"
+        photo_filename.MinimumWidth = 8
+        photo_filename.Name = "photo_filename"
+        photo_filename.ReadOnly = True
+        ' 
+        ' photo_datetime
+        ' 
+        photo_datetime.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        photo_datetime.DataPropertyName = "file_datetime"
+        photo_datetime.HeaderText = "Date Added"
+        photo_datetime.MinimumWidth = 8
+        photo_datetime.Name = "photo_datetime"
+        photo_datetime.ReadOnly = True
+        photo_datetime.SortMode = DataGridViewColumnSortMode.Programmatic
+        photo_datetime.Width = 127
+        ' 
+        ' photo_content
+        ' 
+        photo_content.DataPropertyName = "file_content"
+        photo_content.HeaderText = "Photo"
+        photo_content.MinimumWidth = 8
+        photo_content.Name = "photo_content"
+        photo_content.ReadOnly = True
+        photo_content.SortMode = DataGridViewColumnSortMode.Programmatic
+        photo_content.Visible = False
+        photo_content.Width = 150
+        ' 
+        ' photo_status
+        ' 
+        photo_status.DataPropertyName = "file_status"
+        photo_status.HeaderText = "Status"
+        photo_status.MinimumWidth = 8
+        photo_status.Name = "photo_status"
+        photo_status.ReadOnly = True
+        photo_status.SortMode = DataGridViewColumnSortMode.NotSortable
+        photo_status.Visible = False
+        photo_status.Width = 150
+        ' 
+        ' photo_uploader
+        ' 
+        photo_uploader.DataPropertyName = "file_uploader"
+        photo_uploader.HeaderText = "Uploader"
+        photo_uploader.MinimumWidth = 8
+        photo_uploader.Name = "photo_uploader"
+        photo_uploader.ReadOnly = True
+        photo_uploader.SortMode = DataGridViewColumnSortMode.Programmatic
+        photo_uploader.Visible = False
+        photo_uploader.Width = 150
+        ' 
+        ' photo_delete
+        ' 
+        photo_delete.DataPropertyName = "file_delete"
+        photo_delete.HeaderText = ""
+        photo_delete.MinimumWidth = 8
+        photo_delete.Name = "photo_delete"
+        photo_delete.ReadOnly = True
+        photo_delete.Text = "🗑"
+        photo_delete.ToolTipText = "Delete"
+        photo_delete.UseColumnTextForButtonValue = True
+        photo_delete.Width = 19
+        ' 
         ' BtnPeekPhoto
         ' 
         BtnPeekPhoto.BackColor = Color.Black
@@ -535,9 +611,9 @@ Partial Class DAR_Editor
         BtnPeekPhoto.FlatAppearance.BorderSize = 2
         BtnPeekPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnPeekPhoto.FlatStyle = FlatStyle.Flat
-        BtnPeekPhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnPeekPhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnPeekPhoto.ForeColor = Color.White
-        BtnPeekPhoto.Image = Global.Ingrid.My.Resources.Resources.ZOOMNORMAL_001_16_ICON
+        BtnPeekPhoto.Image = My.Resources.Resources.ZOOMNORMAL_001_16_ICON
         BtnPeekPhoto.Location = New Point(483, 5)
         BtnPeekPhoto.Margin = New Padding(6, 5, 6, 5)
         BtnPeekPhoto.Name = "BtnPeekPhoto"
@@ -551,7 +627,7 @@ Partial Class DAR_Editor
         ' 
         ' TxtPhotoPath
         ' 
-        TxtPhotoPath.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPhotoPath.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TxtPhotoPath.Location = New Point(70, 5)
         TxtPhotoPath.Margin = New Padding(6, 5, 6, 5)
         TxtPhotoPath.MaxLength = 255
@@ -588,9 +664,9 @@ Partial Class DAR_Editor
         BtnAddPhoto.FlatAppearance.BorderSize = 2
         BtnAddPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnAddPhoto.FlatStyle = FlatStyle.Flat
-        BtnAddPhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnAddPhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnAddPhoto.ForeColor = Color.White
-        BtnAddPhoto.Image = Global.Ingrid.My.Resources.Resources.ADD_001_16_ICON
+        BtnAddPhoto.Image = My.Resources.Resources.ADD_001_16_ICON
         BtnAddPhoto.Location = New Point(549, 5)
         BtnAddPhoto.Margin = New Padding(6, 5, 6, 5)
         BtnAddPhoto.Name = "BtnAddPhoto"
@@ -637,9 +713,9 @@ Partial Class DAR_Editor
         BtnBrowseFile.FlatAppearance.BorderSize = 2
         BtnBrowseFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnBrowseFile.FlatStyle = FlatStyle.Flat
-        BtnBrowseFile.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnBrowseFile.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnBrowseFile.ForeColor = Color.White
-        BtnBrowseFile.Image = Global.Ingrid.My.Resources.Resources.FOLDER_001_16_ICON
+        BtnBrowseFile.Image = My.Resources.Resources.FOLDER_001_16_ICON
         BtnBrowseFile.Location = New Point(6, 5)
         BtnBrowseFile.Margin = New Padding(6, 5, 6, 5)
         BtnBrowseFile.Name = "BtnBrowseFile"
@@ -656,7 +732,7 @@ Partial Class DAR_Editor
         DgnFileList.AllowUserToAddRows = False
         DgnFileList.AllowUserToDeleteRows = False
         DgnFileList.AllowUserToResizeRows = False
-        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(218), CByte(192), CByte(107))
+        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(238), CByte(213), CByte(101))
         DgnFileList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         DgnFileList.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         DgnFileList.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
@@ -665,7 +741,7 @@ Partial Class DAR_Editor
         DgnFileList.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = Color.YellowGreen
-        DataGridViewCellStyle5.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle5.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle5.SelectionForeColor = Color.Black
@@ -675,7 +751,7 @@ Partial Class DAR_Editor
         DgnFileList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DgnFileList.Columns.AddRange(New DataGridViewColumn() {file_id, file_filename, file_tag, file_datetime, file_content, file_status, file_uploader, file_delete})
         DgnFileList.EnableHeadersVisualStyles = False
-        DgnFileList.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnFileList.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DgnFileList.Location = New Point(6, 73)
         DgnFileList.Margin = New Padding(6, 5, 6, 5)
         DgnFileList.MultiSelect = False
@@ -684,7 +760,7 @@ Partial Class DAR_Editor
         DgnFileList.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle6.BackColor = Color.YellowGreen
-        DataGridViewCellStyle6.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle6.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle6.SelectionForeColor = Color.Black
@@ -699,11 +775,99 @@ Partial Class DAR_Editor
         DgnFileList.XOGroupFirstRows = False
         DgnFileList.XOGunakanNomorBaris = True
         ' 
+        ' file_id
+        ' 
+        file_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        file_id.DataPropertyName = "file_id"
+        file_id.HeaderText = "ID"
+        file_id.MinimumWidth = 8
+        file_id.Name = "file_id"
+        file_id.ReadOnly = True
+        file_id.SortMode = DataGridViewColumnSortMode.Programmatic
+        file_id.Visible = False
+        ' 
+        ' file_filename
+        ' 
+        file_filename.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        file_filename.DataPropertyName = "file_name"
+        file_filename.HeaderText = "File Name"
+        file_filename.MinimumWidth = 8
+        file_filename.Name = "file_filename"
+        file_filename.ReadOnly = True
+        ' 
+        ' file_tag
+        ' 
+        file_tag.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        file_tag.DataPropertyName = "file_tag"
+        file_tag.HeaderText = "Tag"
+        file_tag.MinimumWidth = 8
+        file_tag.Name = "file_tag"
+        file_tag.ReadOnly = True
+        file_tag.SortMode = DataGridViewColumnSortMode.Programmatic
+        file_tag.Width = 70
+        ' 
+        ' file_datetime
+        ' 
+        file_datetime.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        file_datetime.DataPropertyName = "file_datetime"
+        file_datetime.HeaderText = "Date Added"
+        file_datetime.MinimumWidth = 8
+        file_datetime.Name = "file_datetime"
+        file_datetime.ReadOnly = True
+        file_datetime.SortMode = DataGridViewColumnSortMode.Programmatic
+        file_datetime.Width = 127
+        ' 
+        ' file_content
+        ' 
+        file_content.DataPropertyName = "file_content"
+        file_content.HeaderText = "File"
+        file_content.MinimumWidth = 8
+        file_content.Name = "file_content"
+        file_content.ReadOnly = True
+        file_content.Resizable = DataGridViewTriState.True
+        file_content.SortMode = DataGridViewColumnSortMode.Programmatic
+        file_content.Visible = False
+        file_content.Width = 150
+        ' 
+        ' file_status
+        ' 
+        file_status.DataPropertyName = "file_status"
+        file_status.HeaderText = "Status"
+        file_status.MinimumWidth = 8
+        file_status.Name = "file_status"
+        file_status.ReadOnly = True
+        file_status.SortMode = DataGridViewColumnSortMode.NotSortable
+        file_status.Visible = False
+        file_status.Width = 150
+        ' 
+        ' file_uploader
+        ' 
+        file_uploader.DataPropertyName = "file_uploader"
+        file_uploader.HeaderText = "Uploader"
+        file_uploader.MinimumWidth = 8
+        file_uploader.Name = "file_uploader"
+        file_uploader.ReadOnly = True
+        file_uploader.SortMode = DataGridViewColumnSortMode.Programmatic
+        file_uploader.Visible = False
+        file_uploader.Width = 150
+        ' 
+        ' file_delete
+        ' 
+        file_delete.DataPropertyName = "file_delete"
+        file_delete.HeaderText = ""
+        file_delete.MinimumWidth = 8
+        file_delete.Name = "file_delete"
+        file_delete.ReadOnly = True
+        file_delete.Text = "🗑"
+        file_delete.ToolTipText = "Delete"
+        file_delete.UseColumnTextForButtonValue = True
+        file_delete.Width = 19
+        ' 
         ' CboFileTag
         ' 
         CboFileTag.DropDownStyle = ComboBoxStyle.DropDownList
         CboFileTag.FlatStyle = FlatStyle.Flat
-        CboFileTag.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        CboFileTag.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         CboFileTag.FormattingEnabled = True
         CboFileTag.Location = New Point(440, 5)
         CboFileTag.Margin = New Padding(6, 5, 6, 5)
@@ -713,7 +877,7 @@ Partial Class DAR_Editor
         ' 
         ' TxtFilePath
         ' 
-        TxtFilePath.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtFilePath.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TxtFilePath.Location = New Point(70, 5)
         TxtFilePath.Margin = New Padding(6, 5, 6, 5)
         TxtFilePath.MaxLength = 255
@@ -750,9 +914,9 @@ Partial Class DAR_Editor
         BtnAddFile.FlatAppearance.BorderSize = 2
         BtnAddFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnAddFile.FlatStyle = FlatStyle.Flat
-        BtnAddFile.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnAddFile.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnAddFile.ForeColor = Color.White
-        BtnAddFile.Image = Global.Ingrid.My.Resources.Resources.ADD_001_16_ICON
+        BtnAddFile.Image = My.Resources.Resources.ADD_001_16_ICON
         BtnAddFile.Location = New Point(827, 5)
         BtnAddFile.Margin = New Padding(6, 5, 6, 5)
         BtnAddFile.Name = "BtnAddFile"
@@ -772,9 +936,9 @@ Partial Class DAR_Editor
         BtnPeekFile.FlatAppearance.BorderSize = 2
         BtnPeekFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnPeekFile.FlatStyle = FlatStyle.Flat
-        BtnPeekFile.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnPeekFile.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnPeekFile.ForeColor = Color.White
-        BtnPeekFile.Image = Global.Ingrid.My.Resources.Resources.ZOOMNORMAL_001_16_ICON
+        BtnPeekFile.Image = My.Resources.Resources.ZOOMNORMAL_001_16_ICON
         BtnPeekFile.Location = New Point(761, 5)
         BtnPeekFile.Margin = New Padding(6, 5, 6, 5)
         BtnPeekFile.Name = "BtnPeekFile"
@@ -881,177 +1045,13 @@ Partial Class DAR_Editor
         ULbl7.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
         ULbl7.TabIndex = 1009
         ' 
-        ' photo_id
-        ' 
-        photo_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        photo_id.DataPropertyName = "file_id"
-        photo_id.HeaderText = "ID"
-        photo_id.MinimumWidth = 8
-        photo_id.Name = "photo_id"
-        photo_id.ReadOnly = True
-        photo_id.SortMode = DataGridViewColumnSortMode.Programmatic
-        photo_id.Visible = False
-        ' 
-        ' photo_filename
-        ' 
-        photo_filename.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        photo_filename.DataPropertyName = "file_filename"
-        photo_filename.HeaderText = "File Name"
-        photo_filename.MinimumWidth = 8
-        photo_filename.Name = "photo_filename"
-        photo_filename.ReadOnly = True
-        ' 
-        ' photo_datetime
-        ' 
-        photo_datetime.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        photo_datetime.DataPropertyName = "file_datetime"
-        photo_datetime.HeaderText = "Date Added"
-        photo_datetime.MinimumWidth = 8
-        photo_datetime.Name = "photo_datetime"
-        photo_datetime.ReadOnly = True
-        photo_datetime.SortMode = DataGridViewColumnSortMode.Programmatic
-        photo_datetime.Width = 127
-        ' 
-        ' photo_content
-        ' 
-        photo_content.DataPropertyName = "file_content"
-        photo_content.HeaderText = "Photo"
-        photo_content.MinimumWidth = 8
-        photo_content.Name = "photo_content"
-        photo_content.ReadOnly = True
-        photo_content.SortMode = DataGridViewColumnSortMode.Programmatic
-        photo_content.Visible = False
-        photo_content.Width = 150
-        ' 
-        ' photo_status
-        ' 
-        photo_status.DataPropertyName = "file_status"
-        photo_status.HeaderText = "Status"
-        photo_status.MinimumWidth = 8
-        photo_status.Name = "photo_status"
-        photo_status.ReadOnly = True
-        photo_status.SortMode = DataGridViewColumnSortMode.NotSortable
-        photo_status.Visible = False
-        photo_status.Width = 150
-        ' 
-        ' photo_uploader
-        ' 
-        photo_uploader.DataPropertyName = "file_uploader"
-        photo_uploader.HeaderText = "Uploader"
-        photo_uploader.MinimumWidth = 8
-        photo_uploader.Name = "photo_uploader"
-        photo_uploader.ReadOnly = True
-        photo_uploader.SortMode = DataGridViewColumnSortMode.Programmatic
-        photo_uploader.Visible = False
-        photo_uploader.Width = 150
-        ' 
-        ' photo_delete
-        ' 
-        photo_delete.DataPropertyName = "file_delete"
-        photo_delete.HeaderText = ""
-        photo_delete.MinimumWidth = 8
-        photo_delete.Name = "photo_delete"
-        photo_delete.ReadOnly = True
-        photo_delete.Text = "🗑"
-        photo_delete.ToolTipText = "Delete"
-        photo_delete.UseColumnTextForButtonValue = True
-        photo_delete.Width = 19
-        ' 
-        ' file_id
-        ' 
-        file_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        file_id.DataPropertyName = "file_id"
-        file_id.HeaderText = "ID"
-        file_id.MinimumWidth = 8
-        file_id.Name = "file_id"
-        file_id.ReadOnly = True
-        file_id.SortMode = DataGridViewColumnSortMode.Programmatic
-        file_id.Visible = False
-        ' 
-        ' file_filename
-        ' 
-        file_filename.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        file_filename.DataPropertyName = "file_name"
-        file_filename.HeaderText = "File Name"
-        file_filename.MinimumWidth = 8
-        file_filename.Name = "file_filename"
-        file_filename.ReadOnly = True
-        ' 
-        ' file_tag
-        ' 
-        file_tag.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        file_tag.DataPropertyName = "file_tag"
-        file_tag.HeaderText = "Tag"
-        file_tag.MinimumWidth = 8
-        file_tag.Name = "file_tag"
-        file_tag.ReadOnly = True
-        file_tag.SortMode = DataGridViewColumnSortMode.Programmatic
-        file_tag.Width = 70
-        ' 
-        ' file_datetime
-        ' 
-        file_datetime.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        file_datetime.DataPropertyName = "file_datetime"
-        file_datetime.HeaderText = "Date Added"
-        file_datetime.MinimumWidth = 8
-        file_datetime.Name = "file_datetime"
-        file_datetime.ReadOnly = True
-        file_datetime.SortMode = DataGridViewColumnSortMode.Programmatic
-        file_datetime.Width = 127
-        ' 
-        ' file_content
-        ' 
-        file_content.DataPropertyName = "file_content"
-        file_content.HeaderText = "File"
-        file_content.MinimumWidth = 8
-        file_content.Name = "file_content"
-        file_content.ReadOnly = True
-        file_content.Resizable = DataGridViewTriState.True
-        file_content.SortMode = DataGridViewColumnSortMode.Programmatic
-        file_content.Visible = False
-        file_content.Width = 150
-        ' 
-        ' file_status
-        ' 
-        file_status.DataPropertyName = "file_status"
-        file_status.HeaderText = "Status"
-        file_status.MinimumWidth = 8
-        file_status.Name = "file_status"
-        file_status.ReadOnly = True
-        file_status.SortMode = DataGridViewColumnSortMode.NotSortable
-        file_status.Visible = False
-        file_status.Width = 150
-        ' 
-        ' file_uploader
-        ' 
-        file_uploader.DataPropertyName = "file_uploader"
-        file_uploader.HeaderText = "Uploader"
-        file_uploader.MinimumWidth = 8
-        file_uploader.Name = "file_uploader"
-        file_uploader.ReadOnly = True
-        file_uploader.SortMode = DataGridViewColumnSortMode.Programmatic
-        file_uploader.Visible = False
-        file_uploader.Width = 150
-        ' 
-        ' file_delete
-        ' 
-        file_delete.DataPropertyName = "file_delete"
-        file_delete.HeaderText = ""
-        file_delete.MinimumWidth = 8
-        file_delete.Name = "file_delete"
-        file_delete.ReadOnly = True
-        file_delete.Text = "🗑"
-        file_delete.ToolTipText = "Delete"
-        file_delete.UseColumnTextForButtonValue = True
-        file_delete.Width = 19
-        ' 
-        ' DAR_Editor
+        ' FRMdarEditor
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         ClientSize = New Size(1203, 1170)
         KeyPreview = True
         Margin = New Padding(10, 5, 10, 5)
-        Name = "DAR_Editor"
+        Name = "FRMdarEditor"
         PnlBottomButton.ResumeLayout(False)
         PnlBottomButton.PerformLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

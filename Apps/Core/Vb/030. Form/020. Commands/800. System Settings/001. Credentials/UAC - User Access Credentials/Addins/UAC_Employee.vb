@@ -1,8 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class UAC_Employee
+Public Class FRMuacEmployee
 #Region "Variables"
-    Private V_SQL As New Commands.UAC.Addins.Browse.Employee
     Public Event RecordSelected()
 #End Region
 
@@ -16,19 +15,19 @@ Public Class UAC_Employee
 
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional forcerefresh As Boolean = False)
-        Commands.UAC.Addins.Browse.Employee.DisplayData(varDatabaseName, DgnAddinEmployee, SLFStatus, TxtFind, forcerefresh)
+        CMDuac.Addins.Browse.Employee.DisplayData(varDatabaseName, DgnAddinEmployee, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
 #End Region
 
     <SupportedOSPlatform("windows")>
-    Private Sub UAC_Employee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub RMuacEmployee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call GetData()
     End Sub
 
     Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
         If DgnAddinEmployee.RowCount = 0 Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             With DgnAddinEmployee.CurrentRow
                 varFormProperties.Field01 = .Cells("employee_id").Value
@@ -47,14 +46,14 @@ Public Class UAC_Employee
     <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Call GETDATA()
+            Call GetData()
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
-        Call GETDATA(True)
+        Call GetData(True)
         TxtFind.ClearSearch()
     End Sub
 End Class

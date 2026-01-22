@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class DAR_SinglePhotoViewer
+Partial Class FRMdarSinglePhotoViewer
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -20,9 +20,9 @@ Partial Class DAR_SinglePhotoViewer
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(DAR_SinglePhotoViewer))
-        BtnClose = New CMCv.btn(components)
-        PctbxPhoto = New CMCv.pctbx(components)
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMdarSinglePhotoViewer))
+        BtnClose = New btn(components)
+        PctbxPhoto = New pctbx(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
@@ -34,21 +34,21 @@ Partial Class DAR_SinglePhotoViewer
         ' PnlBottomButton
         ' 
         PnlBottomButton.Controls.Add(BtnClose)
-        PnlBottomButton.Location = New Point(0, 412)
-        PnlBottomButton.Margin = New Padding(5, 3, 5, 3)
-        PnlBottomButton.Size = New Size(766, 58)
+        PnlBottomButton.Location = New Point(0, 699)
+        PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
+        PnlBottomButton.Size = New Size(1094, 97)
         PnlBottomButton.Controls.SetChildIndex(BtnClose, 0)
         ' 
         ' pnl_
         ' 
-        pnl_.Margin = New Padding(5, 3, 5, 3)
-        pnl_.Size = New Size(766, 61)
+        pnl_.Margin = New Padding(7, 5, 7, 5)
+        pnl_.Size = New Size(1094, 104)
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(PctbxPhoto)
-        SLFPanel.Margin = New Padding(5, 3, 5, 3)
-        SLFPanel.Size = New Size(766, 470)
+        SLFPanel.Margin = New Padding(7, 5, 7, 5)
+        SLFPanel.Size = New Size(1094, 796)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(PctbxPhoto, 0)
         ' 
@@ -63,17 +63,17 @@ Partial Class DAR_SinglePhotoViewer
         BtnClose.FlatStyle = FlatStyle.Flat
         BtnClose.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnClose.ForeColor = Color.White
-        BtnClose.Location = New Point(635, 8)
-        BtnClose.Margin = New Padding(4, 3, 4, 3)
+        BtnClose.Location = New Point(907, 13)
+        BtnClose.Margin = New Padding(6, 5, 6, 5)
         BtnClose.Name = "BtnClose"
-        BtnClose.Size = New Size(117, 46)
-        BtnClose.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        BtnClose.XOTampilkanFocusBorder = False
-        BtnClose.XOValidasiSemuaInput = False
-        BtnClose.XOValidasiSemuaInputTag = Nothing
+        BtnClose.Size = New Size(167, 77)
         BtnClose.TabIndex = 0
         BtnClose.Text = "&Close"
         BtnClose.UseVisualStyleBackColor = False
+        BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
+        BtnClose.XOTampilkanFocusBorder = False
+        BtnClose.XOValidasiSemuaInput = False
+        BtnClose.XOValidasiSemuaInputTag = Nothing
         ' 
         ' PctbxPhoto
         ' 
@@ -82,22 +82,22 @@ Partial Class DAR_SinglePhotoViewer
         PctbxPhoto.ErrorImage = CType(resources.GetObject("PctbxPhoto.ErrorImage"), Image)
         PctbxPhoto.InitialImage = CType(resources.GetObject("PctbxPhoto.InitialImage"), Image)
         PctbxPhoto.Location = New Point(0, 0)
-        PctbxPhoto.Margin = New Padding(4, 3, 4, 3)
+        PctbxPhoto.Margin = New Padding(6, 5, 6, 5)
         PctbxPhoto.Name = "PctbxPhoto"
-        PctbxPhoto.Size = New Size(766, 412)
+        PctbxPhoto.Size = New Size(1094, 699)
         PctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
-        PctbxPhoto.XOTampilkanBorder = False
-        PctbxPhoto.XOWarnaBorder = Color.DodgerBlue
         PctbxPhoto.TabIndex = 996
         PctbxPhoto.TabStop = False
+        PctbxPhoto.XOTampilkanBorder = False
+        PctbxPhoto.XOWarnaBorder = Color.DodgerBlue
         ' 
-        ' DAR_SinglePhotoViewer
+        ' FRMdarSinglePhotoViewer
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(766, 553)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1094, 922)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
-        Name = "DAR_SinglePhotoViewer"
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMdarSinglePhotoViewer"
         WindowState = FormWindowState.Maximized
         PnlBottomButton.ResumeLayout(False)
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

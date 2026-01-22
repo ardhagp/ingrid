@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class PHTRZ
+Partial Class FRMphotoresizer
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -19,323 +19,259 @@ Partial Class PHTRZ
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PHTRZ))
-        Me.BtnClose = New CMCv.btn(Me.components)
-        Me.BtnSave = New CMCv.btn(Me.components)
-        Me.ChkAddNew = New CMCv.chk(Me.components)
-        Me.TlpMain = New System.Windows.Forms.TableLayoutPanel()
-        Me.PnlLoad = New CMCv.pnl(Me.components)
-        Me.Lbl1 = New CMCv.lbl(Me.components)
-        Me.TxtLoad = New CMCv.txt(Me.components)
-        Me.BtnLoad = New CMCv.btn(Me.components)
-        Me.PnlSave = New CMCv.pnl(Me.components)
-        Me.ChkSaveAsACopy = New CMCv.chk(Me.components)
-        Me.TxtSave = New CMCv.txt(Me.components)
-        Me.Lbl2 = New CMCv.lbl(Me.components)
-        Me.PctbxPhoto = New CMCv.pctbx(Me.components)
-        Me.OfdLoad = New System.Windows.Forms.OpenFileDialog()
-        Me.PnlBottomButton.SuspendLayout()
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnl_.SuspendLayout()
-        Me.SLFPanel.SuspendLayout()
-        CType(Me.SLFBackground, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TlpMain.SuspendLayout()
-        Me.PnlLoad.SuspendLayout()
-        Me.PnlSave.SuspendLayout()
-        CType(Me.PctbxPhoto, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'PnlBottomButton
-        '
-        Me.PnlBottomButton.Controls.Add(Me.ChkAddNew)
-        Me.PnlBottomButton.Controls.Add(Me.BtnSave)
-        Me.PnlBottomButton.Controls.Add(Me.BtnClose)
-        Me.PnlBottomButton.Location = New System.Drawing.Point(0, 353)
-        Me.PnlBottomButton.Size = New System.Drawing.Size(657, 50)
-        Me.PnlBottomButton.Controls.SetChildIndex(Me.BtnClose, 0)
-        Me.PnlBottomButton.Controls.SetChildIndex(Me.BtnSave, 0)
-        Me.PnlBottomButton.Controls.SetChildIndex(Me.ChkAddNew, 0)
-        '
-        'SLFLogo
-        '
-        Me.SLFLogo.Image = Global.CMCv.My.Resources.Resources.Resize_001_90_FFFFFFFF_
-        '
-        'pnl_
-        '
-        Me.pnl_.Size = New System.Drawing.Size(657, 54)
-        '
-        'SLFPanel
-        '
-        Me.SLFPanel.Controls.Add(Me.TlpMain)
-        Me.SLFPanel.Size = New System.Drawing.Size(657, 403)
-        Me.SLFPanel.Controls.SetChildIndex(Me.PnlBottomButton, 0)
-        Me.SLFPanel.Controls.SetChildIndex(Me.TlpMain, 0)
-        '
-        'BtnClose
-        '
-        Me.BtnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnClose.BackColor = System.Drawing.Color.Red
-        Me.BtnClose.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(195, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BtnClose.FlatAppearance.BorderSize = 2
-        Me.BtnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(20, Byte), Integer))
-        Me.BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnClose.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.BtnClose.ForeColor = System.Drawing.Color.White
-        Me.BtnClose.Location = New System.Drawing.Point(545, 6)
-        Me.BtnClose.Name = "BtnClose"
-        Me.BtnClose.Size = New System.Drawing.Size(100, 40)
-        Me.BtnClose.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        Me.BtnClose.XOTampilkanFocusBorder = False
-        Me.BtnClose.XOValidasiSemuaInput = False
-        Me.BtnClose.XOValidasiSemuaInputTag = Nothing
-        Me.BtnClose.TabIndex = 7
-        Me.BtnClose.Text = "&Close"
-        Me.BtnClose.UseVisualStyleBackColor = False
-        '
-        'BtnSave
-        '
-        Me.BtnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnSave.BackColor = System.Drawing.Color.LimeGreen
-        Me.BtnSave.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(145, Byte), Integer), CType(CType(50, Byte), Integer))
-        Me.BtnSave.FlatAppearance.BorderSize = 2
-        Me.BtnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.BtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnSave.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.BtnSave.ForeColor = System.Drawing.Color.White
-        Me.BtnSave.Location = New System.Drawing.Point(439, 6)
-        Me.BtnSave.Name = "BtnSave"
-        Me.BtnSave.Size = New System.Drawing.Size(100, 40)
-        Me.BtnSave.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        Me.BtnSave.XOTampilkanFocusBorder = False
-        Me.BtnSave.XOValidasiSemuaInput = False
-        Me.BtnSave.XOValidasiSemuaInputTag = Nothing
-        Me.BtnSave.TabIndex = 5
-        Me.BtnSave.Text = "&Save"
-        Me.BtnSave.UseVisualStyleBackColor = False
-        '
-        'ChkAddNew
-        '
-        Me.ChkAddNew.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ChkAddNew.AutoSize = True
-        Me.ChkAddNew.BackColor = System.Drawing.Color.Transparent
-        Me.ChkAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ChkAddNew.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ChkAddNew.ForeColor = System.Drawing.Color.OrangeRed
-        Me.ChkAddNew.Location = New System.Drawing.Point(260, 14)
-        Me.ChkAddNew.Name = "ChkAddNew"
-        Me.ChkAddNew.Size = New System.Drawing.Size(173, 25)
-        Me.ChkAddNew.TabIndex = 6
-        Me.ChkAddNew.Text = "Resize another photo"
-        Me.ChkAddNew.UseVisualStyleBackColor = False
-        '
-        'TlpMain
-        '
-        Me.TlpMain.ColumnCount = 1
-        Me.TlpMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TlpMain.Controls.Add(Me.PnlLoad, 0, 0)
-        Me.TlpMain.Controls.Add(Me.PnlSave, 0, 2)
-        Me.TlpMain.Controls.Add(Me.PctbxPhoto, 0, 1)
-        Me.TlpMain.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TlpMain.Location = New System.Drawing.Point(0, 0)
-        Me.TlpMain.Name = "TlpMain"
-        Me.TlpMain.RowCount = 3
-        Me.TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56.0!))
-        Me.TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56.0!))
-        Me.TlpMain.Size = New System.Drawing.Size(657, 353)
-        Me.TlpMain.TabIndex = 996
-        '
-        'PnlLoad
-        '
-        Me.PnlLoad.Controls.Add(Me.Lbl1)
-        Me.PnlLoad.Controls.Add(Me.TxtLoad)
-        Me.PnlLoad.Controls.Add(Me.BtnLoad)
-        Me.PnlLoad.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PnlLoad.Location = New System.Drawing.Point(3, 3)
-        Me.PnlLoad.Name = "PnlLoad"
-        Me.PnlLoad.Size = New System.Drawing.Size(651, 50)
-        Me.PnlLoad.TabIndex = 0
-        '
-        'Lbl1
-        '
-        Me.Lbl1.AutoSize = True
-        Me.Lbl1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Lbl1.Location = New System.Drawing.Point(9, 15)
-        Me.Lbl1.Name = "Lbl1"
-        Me.Lbl1.Size = New System.Drawing.Size(118, 21)
-        Me.Lbl1.XOCustomElipsis = False
-        Me.Lbl1.TabIndex = 2
-        Me.Lbl1.Text = "Original Picture"
-        '
-        'TxtLoad
-        '
-        Me.TxtLoad.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtLoad.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TxtLoad.Location = New System.Drawing.Point(133, 12)
-        Me.TxtLoad.MaxLength = 255
-        Me.TxtLoad.Name = "TxtLoad"
-        Me.TxtLoad.ReadOnly = True
-        Me.TxtLoad.Size = New System.Drawing.Size(403, 29)
-        Me.TxtLoad.XOAutoTrim = False
-        Me.TxtLoad.XOHarusDiisi = False
-        Me.TxtLoad.XOHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
-        Me.TxtLoad.XOHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
-        Me.TxtLoad.XOHightlightSaatFokus = False
-        Me.TxtLoad.XOHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
-        Me.TxtLoad.XOIsBlank = True
-        Me.TxtLoad.XOIsSearchBox = False
-        Me.TxtLoad.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
-        Me.TxtLoad.XOPilihSemuaSaatFokus = False
-        Me.TxtLoad.XOPwdLengthMin = 8
-        Me.TxtLoad.XOPwdStrengthCalculate = False
-        Me.TxtLoad.XOPwdStrengthScore = 0
-        Me.TxtLoad.XOPwdStrengthText = Nothing
-        Me.TxtLoad.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
-        Me.TxtLoad.XOSearchBoxText = "Type then press Enter"
-        Me.TxtLoad.XOSQLText = ""
-        Me.TxtLoad.XOTanpaSpasi = False
-        Me.TxtLoad.XOValidasiField = Nothing
-        Me.TxtLoad.TabIndex = 1
-        Me.TxtLoad.Tag = "txt"
-        '
-        'BtnLoad
-        '
-        Me.BtnLoad.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnLoad.BackColor = System.Drawing.Color.RoyalBlue
-        Me.BtnLoad.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnLoad.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(5, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(165, Byte), Integer))
-        Me.BtnLoad.FlatAppearance.BorderSize = 2
-        Me.BtnLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(85, Byte), Integer), CType(CType(125, Byte), Integer), CType(CType(245, Byte), Integer))
-        Me.BtnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnLoad.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.BtnLoad.ForeColor = System.Drawing.Color.White
-        Me.BtnLoad.Location = New System.Drawing.Point(542, 5)
-        Me.BtnLoad.Name = "BtnLoad"
-        Me.BtnLoad.Size = New System.Drawing.Size(100, 40)
-        Me.BtnLoad.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.[Default]
-        Me.BtnLoad.XOTampilkanFocusBorder = False
-        Me.BtnLoad.XOValidasiSemuaInput = False
-        Me.BtnLoad.XOValidasiSemuaInputTag = Nothing
-        Me.BtnLoad.TabIndex = 0
-        Me.BtnLoad.Text = "&Load"
-        Me.BtnLoad.UseVisualStyleBackColor = False
-        '
-        'PnlSave
-        '
-        Me.PnlSave.Controls.Add(Me.ChkSaveAsACopy)
-        Me.PnlSave.Controls.Add(Me.TxtSave)
-        Me.PnlSave.Controls.Add(Me.Lbl2)
-        Me.PnlSave.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PnlSave.Location = New System.Drawing.Point(3, 300)
-        Me.PnlSave.Name = "PnlSave"
-        Me.PnlSave.Size = New System.Drawing.Size(651, 50)
-        Me.PnlSave.TabIndex = 1
-        '
-        'ChkSaveAsACopy
-        '
-        Me.ChkSaveAsACopy.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ChkSaveAsACopy.AutoSize = True
-        Me.ChkSaveAsACopy.BackColor = System.Drawing.Color.Transparent
-        Me.ChkSaveAsACopy.Enabled = False
-        Me.ChkSaveAsACopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ChkSaveAsACopy.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ChkSaveAsACopy.Location = New System.Drawing.Point(542, 13)
-        Me.ChkSaveAsACopy.Name = "ChkSaveAsACopy"
-        Me.ChkSaveAsACopy.Size = New System.Drawing.Size(92, 25)
-        Me.ChkSaveAsACopy.TabIndex = 2
-        Me.ChkSaveAsACopy.TabStop = False
-        Me.ChkSaveAsACopy.Text = "As a copy"
-        Me.ChkSaveAsACopy.UseVisualStyleBackColor = False
-        '
-        'TxtSave
-        '
-        Me.TxtSave.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtSave.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TxtSave.Location = New System.Drawing.Point(132, 12)
-        Me.TxtSave.MaxLength = 255
-        Me.TxtSave.Name = "TxtSave"
-        Me.TxtSave.Size = New System.Drawing.Size(404, 29)
-        Me.TxtSave.XOAutoTrim = False
-        Me.TxtSave.XOHarusDiisi = False
-        Me.TxtSave.XOHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
-        Me.TxtSave.XOHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
-        Me.TxtSave.XOHightlightSaatFokus = False
-        Me.TxtSave.XOHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
-        Me.TxtSave.XOIsBlank = True
-        Me.TxtSave.XOIsSearchBox = False
-        Me.TxtSave.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
-        Me.TxtSave.XOPilihSemuaSaatFokus = False
-        Me.TxtSave.XOPwdLengthMin = 8
-        Me.TxtSave.XOPwdStrengthCalculate = False
-        Me.TxtSave.XOPwdStrengthScore = 0
-        Me.TxtSave.XOPwdStrengthText = Nothing
-        Me.TxtSave.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
-        Me.TxtSave.XOSearchBoxText = "Type then press Enter"
-        Me.TxtSave.XOSQLText = ""
-        Me.TxtSave.XOTanpaSpasi = False
-        Me.TxtSave.XOValidasiField = Nothing
-        Me.TxtSave.TabIndex = 4
-        Me.TxtSave.Tag = "txt"
-        '
-        'Lbl2
-        '
-        Me.Lbl2.AutoSize = True
-        Me.Lbl2.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Lbl2.Location = New System.Drawing.Point(64, 15)
-        Me.Lbl2.Name = "Lbl2"
-        Me.Lbl2.Size = New System.Drawing.Size(62, 21)
-        Me.Lbl2.XOCustomElipsis = False
-        Me.Lbl2.TabIndex = 0
-        Me.Lbl2.Text = "Save To"
-        '
-        'PctbxPhoto
-        '
-        Me.PctbxPhoto.BackColor = System.Drawing.Color.Transparent
-        Me.PctbxPhoto.BackgroundImage = Global.CMCv.My.Resources.Resources.Resize_001_90_FFFFFFFF_
-        Me.PctbxPhoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PctbxPhoto.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PctbxPhoto.ErrorImage = CType(resources.GetObject("PctbxPhoto.ErrorImage"), System.Drawing.Image)
-        Me.PctbxPhoto.InitialImage = CType(resources.GetObject("PctbxPhoto.InitialImage"), System.Drawing.Image)
-        Me.PctbxPhoto.Location = New System.Drawing.Point(3, 59)
-        Me.PctbxPhoto.Name = "PctbxPhoto"
-        Me.PctbxPhoto.Size = New System.Drawing.Size(651, 235)
-        Me.PctbxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PctbxPhoto.XOTampilkanBorder = False
-        Me.PctbxPhoto.XOWarnaBorder = System.Drawing.Color.DodgerBlue
-        Me.PctbxPhoto.TabIndex = 2
-        Me.PctbxPhoto.TabStop = False
-        '
-        'OfdLoad
-        '
-        Me.OfdLoad.FileName = "OpenFileDialog1"
-        '
-        'PHTRZ
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(657, 479)
-        Me.KeyPreview = True
-        Me.Name = "PHTRZ"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.PnlBottomButton.ResumeLayout(False)
-        Me.PnlBottomButton.PerformLayout()
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnl_.ResumeLayout(False)
-        Me.pnl_.PerformLayout()
-        Me.SLFPanel.ResumeLayout(False)
-        CType(Me.SLFBackground, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TlpMain.ResumeLayout(False)
-        Me.PnlLoad.ResumeLayout(False)
-        Me.PnlLoad.PerformLayout()
-        Me.PnlSave.ResumeLayout(False)
-        Me.PnlSave.PerformLayout()
-        CType(Me.PctbxPhoto, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        components = New ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMphotoresizer))
+        ChkAddNew = New chk(components)
+        TlpMain = New Windows.Forms.TableLayoutPanel()
+        PnlLoad = New pnl(components)
+        Lbl1 = New lbl(components)
+        TxtLoad = New txt(components)
+        PnlSave = New pnl(components)
+        ChkSaveAsACopy = New chk(components)
+        TxtSave = New txt(components)
+        Lbl2 = New lbl(components)
+        PctbxPhoto = New pctbx(components)
+        OfdLoad = New Windows.Forms.OpenFileDialog()
+        PnlBottomButton.SuspendLayout()
+        CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
+        pnl_.SuspendLayout()
+        SLFPanel.SuspendLayout()
+        CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+        TlpMain.SuspendLayout()
+        PnlLoad.SuspendLayout()
+        PnlSave.SuspendLayout()
+        CType(PctbxPhoto, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' PnlBottomButton
+        ' 
+        PnlBottomButton.Controls.Add(ChkAddNew)
+        PnlBottomButton.Location = New System.Drawing.Point(0, 602)
+        PnlBottomButton.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
+        PnlBottomButton.Size = New System.Drawing.Size(1095, 96)
+        PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
+        ' 
+        ' SLFLogo
+        ' 
+        SLFLogo.Image = CType(resources.GetObject("SLFLogo.Image"), Drawing.Image)
+        ' 
+        ' pnl_
+        ' 
+        pnl_.Size = New System.Drawing.Size(1095, 201)
+        ' 
+        ' SLFPanel
+        ' 
+        SLFPanel.Controls.Add(TlpMain)
+        SLFPanel.Size = New System.Drawing.Size(1095, 698)
+        SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+        SLFPanel.Controls.SetChildIndex(TlpMain, 0)
+        ' 
+        ' ChkAddNew
+        ' 
+        ChkAddNew.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Right
+        ChkAddNew.AutoSize = True
+        ChkAddNew.BackColor = Drawing.Color.Transparent
+        ChkAddNew.FlatStyle = Windows.Forms.FlatStyle.Flat
+        ChkAddNew.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        ChkAddNew.ForeColor = Drawing.Color.OrangeRed
+        ChkAddNew.Location = New System.Drawing.Point(460, 27)
+        ChkAddNew.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        ChkAddNew.Name = "ChkAddNew"
+        ChkAddNew.Size = New System.Drawing.Size(262, 36)
+        ChkAddNew.TabIndex = 6
+        ChkAddNew.Text = "Resize another photo"
+        ChkAddNew.UseVisualStyleBackColor = False
+        ' 
+        ' TlpMain
+        ' 
+        TlpMain.ColumnCount = 1
+        TlpMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(Windows.Forms.SizeType.Percent, 100F))
+        TlpMain.Controls.Add(PnlLoad, 0, 0)
+        TlpMain.Controls.Add(PnlSave, 0, 2)
+        TlpMain.Controls.Add(PctbxPhoto, 0, 1)
+        TlpMain.Dock = Windows.Forms.DockStyle.Fill
+        TlpMain.Location = New System.Drawing.Point(0, 0)
+        TlpMain.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        TlpMain.Name = "TlpMain"
+        TlpMain.RowCount = 3
+        TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Absolute, 108F))
+        TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Percent, 100F))
+        TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Absolute, 108F))
+        TlpMain.Size = New System.Drawing.Size(1095, 602)
+        TlpMain.TabIndex = 996
+        ' 
+        ' PnlLoad
+        ' 
+        PnlLoad.Controls.Add(Lbl1)
+        PnlLoad.Controls.Add(TxtLoad)
+        PnlLoad.Dock = Windows.Forms.DockStyle.Fill
+        PnlLoad.Location = New System.Drawing.Point(5, 6)
+        PnlLoad.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        PnlLoad.Name = "PnlLoad"
+        PnlLoad.Size = New System.Drawing.Size(1085, 96)
+        PnlLoad.TabIndex = 0
+        ' 
+        ' Lbl1
+        ' 
+        Lbl1.AutoSize = True
+        Lbl1.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        Lbl1.Location = New System.Drawing.Point(15, 29)
+        Lbl1.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Lbl1.Name = "Lbl1"
+        Lbl1.Size = New System.Drawing.Size(178, 32)
+        Lbl1.TabIndex = 2
+        Lbl1.Text = "Original Picture"
+        Lbl1.XOCustomElipsis = False
+        ' 
+        ' TxtLoad
+        ' 
+        TxtLoad.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
+        TxtLoad.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        TxtLoad.Location = New System.Drawing.Point(222, 23)
+        TxtLoad.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        TxtLoad.MaxLength = 255
+        TxtLoad.Name = "TxtLoad"
+        TxtLoad.ReadOnly = True
+        TxtLoad.Size = New System.Drawing.Size(669, 39)
+        TxtLoad.TabIndex = 1
+        TxtLoad.Tag = "txt"
+        TxtLoad.XOAutoTrim = False
+        TxtLoad.XOHarusDiisi = False
+        TxtLoad.XOHarusDiisiWarnaLatar = Drawing.Color.LightPink
+        TxtLoad.XOHarusDiisiWarnaLatarDefault = Drawing.Color.White
+        TxtLoad.XOHightlightSaatFokus = False
+        TxtLoad.XOHightlightSaatFokusWarna = Drawing.Color.LightYellow
+        TxtLoad.XOIsBlank = True
+        TxtLoad.XOIsSearchBox = False
+        TxtLoad.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtLoad.XOPilihSemuaSaatFokus = False
+        TxtLoad.XOPwdLengthMin = 8
+        TxtLoad.XOPwdStrengthCalculate = False
+        TxtLoad.XOPwdStrengthScore = 0
+        TxtLoad.XOPwdStrengthText = Nothing
+        TxtLoad.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtLoad.XOSearchBoxText = "Type then press Enter"
+        TxtLoad.XOSQLText = ""
+        TxtLoad.XOTanpaSpasi = False
+        TxtLoad.XOValidasiField = Nothing
+        ' 
+        ' PnlSave
+        ' 
+        PnlSave.Controls.Add(ChkSaveAsACopy)
+        PnlSave.Controls.Add(TxtSave)
+        PnlSave.Controls.Add(Lbl2)
+        PnlSave.Dock = Windows.Forms.DockStyle.Fill
+        PnlSave.Location = New System.Drawing.Point(5, 500)
+        PnlSave.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        PnlSave.Name = "PnlSave"
+        PnlSave.Size = New System.Drawing.Size(1085, 96)
+        PnlSave.TabIndex = 1
+        ' 
+        ' ChkSaveAsACopy
+        ' 
+        ChkSaveAsACopy.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Right
+        ChkSaveAsACopy.AutoSize = True
+        ChkSaveAsACopy.BackColor = Drawing.Color.Transparent
+        ChkSaveAsACopy.Enabled = False
+        ChkSaveAsACopy.FlatStyle = Windows.Forms.FlatStyle.Flat
+        ChkSaveAsACopy.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        ChkSaveAsACopy.Location = New System.Drawing.Point(920, 25)
+        ChkSaveAsACopy.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        ChkSaveAsACopy.Name = "ChkSaveAsACopy"
+        ChkSaveAsACopy.Size = New System.Drawing.Size(137, 36)
+        ChkSaveAsACopy.TabIndex = 2
+        ChkSaveAsACopy.TabStop = False
+        ChkSaveAsACopy.Text = "As a copy"
+        ChkSaveAsACopy.UseVisualStyleBackColor = False
+        ' 
+        ' TxtSave
+        ' 
+        TxtSave.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
+        TxtSave.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        TxtSave.Location = New System.Drawing.Point(220, 23)
+        TxtSave.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        TxtSave.MaxLength = 255
+        TxtSave.Name = "TxtSave"
+        TxtSave.Size = New System.Drawing.Size(671, 39)
+        TxtSave.TabIndex = 4
+        TxtSave.Tag = "txt"
+        TxtSave.XOAutoTrim = False
+        TxtSave.XOHarusDiisi = False
+        TxtSave.XOHarusDiisiWarnaLatar = Drawing.Color.LightPink
+        TxtSave.XOHarusDiisiWarnaLatarDefault = Drawing.Color.White
+        TxtSave.XOHightlightSaatFokus = False
+        TxtSave.XOHightlightSaatFokusWarna = Drawing.Color.LightYellow
+        TxtSave.XOIsBlank = True
+        TxtSave.XOIsSearchBox = False
+        TxtSave.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtSave.XOPilihSemuaSaatFokus = False
+        TxtSave.XOPwdLengthMin = 8
+        TxtSave.XOPwdStrengthCalculate = False
+        TxtSave.XOPwdStrengthScore = 0
+        TxtSave.XOPwdStrengthText = Nothing
+        TxtSave.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtSave.XOSearchBoxText = "Type then press Enter"
+        TxtSave.XOSQLText = ""
+        TxtSave.XOTanpaSpasi = False
+        TxtSave.XOValidasiField = Nothing
+        ' 
+        ' Lbl2
+        ' 
+        Lbl2.AutoSize = True
+        Lbl2.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        Lbl2.Location = New System.Drawing.Point(107, 29)
+        Lbl2.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Lbl2.Name = "Lbl2"
+        Lbl2.Size = New System.Drawing.Size(96, 32)
+        Lbl2.TabIndex = 0
+        Lbl2.Text = "Save To"
+        Lbl2.XOCustomElipsis = False
+        ' 
+        ' PctbxPhoto
+        ' 
+        PctbxPhoto.BackColor = Drawing.Color.Transparent
+        PctbxPhoto.BackgroundImage = CType(resources.GetObject("PctbxPhoto.BackgroundImage"), Drawing.Image)
+        PctbxPhoto.BackgroundImageLayout = Windows.Forms.ImageLayout.Zoom
+        PctbxPhoto.Dock = Windows.Forms.DockStyle.Fill
+        PctbxPhoto.ErrorImage = CType(resources.GetObject("PctbxPhoto.ErrorImage"), Drawing.Image)
+        PctbxPhoto.InitialImage = CType(resources.GetObject("PctbxPhoto.InitialImage"), Drawing.Image)
+        PctbxPhoto.Location = New System.Drawing.Point(5, 114)
+        PctbxPhoto.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        PctbxPhoto.Name = "PctbxPhoto"
+        PctbxPhoto.Size = New System.Drawing.Size(1085, 374)
+        PctbxPhoto.SizeMode = Windows.Forms.PictureBoxSizeMode.Zoom
+        PctbxPhoto.TabIndex = 2
+        PctbxPhoto.TabStop = False
+        PctbxPhoto.XOTampilkanBorder = False
+        PctbxPhoto.XOWarnaBorder = Drawing.Color.DodgerBlue
+        ' 
+        ' OfdLoad
+        ' 
+        OfdLoad.FileName = "OpenFileDialog1"
+        ' 
+        ' FRMphotoresizer
+        ' 
+        AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+        ClientSize = New System.Drawing.Size(1095, 921)
+        KeyPreview = True
+        Margin = New System.Windows.Forms.Padding(22, 44, 22, 44)
+        Name = "FRMphotoresizer"
+        WindowState = Windows.Forms.FormWindowState.Maximized
+        PnlBottomButton.ResumeLayout(False)
+        PnlBottomButton.PerformLayout()
+        CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
+        pnl_.ResumeLayout(False)
+        pnl_.PerformLayout()
+        SLFPanel.ResumeLayout(False)
+        CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+        TlpMain.ResumeLayout(False)
+        PnlLoad.ResumeLayout(False)
+        PnlLoad.PerformLayout()
+        PnlSave.ResumeLayout(False)
+        PnlSave.PerformLayout()
+        CType(PctbxPhoto, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
+        PerformLayout()
 
     End Sub
 

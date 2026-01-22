@@ -10,7 +10,7 @@ Namespace Database.Engine
         Private ReadOnly varCommand(1) As SqlClient.SqlCommand
         Private varAdapter As SqlClient.SqlDataAdapter
 
-        Private ReadOnly V_MSSQL2008 As New Connect.Mssqlserver2008connection
+        Private ReadOnly varMssql2008Connection As New Connect.Mssqlserver2008connection
 
         Public Enum DatabaseID
             DbDefault
@@ -50,7 +50,7 @@ Namespace Database.Engine
 
             Dim varSuccess As Boolean
             Try
-                varConnection(1) = New SqlClient.SqlConnection(V_MSSQL2008.Mssql2008standard(databaseproperties.ServerAddress, databaseproperties.ServerPort, databaseproperties.DatabaseName, databaseproperties.Username, databaseproperties.Password))
+                varConnection(1) = New SqlClient.SqlConnection(varMssql2008Connection.Mssql2008standard(databaseproperties.ServerAddress, databaseproperties.ServerPort, databaseproperties.DatabaseName, databaseproperties.Username, databaseproperties.Password))
                 varConnection(1).Open()
                 varSuccess = True
             Catch ex As SqlClient.SqlException

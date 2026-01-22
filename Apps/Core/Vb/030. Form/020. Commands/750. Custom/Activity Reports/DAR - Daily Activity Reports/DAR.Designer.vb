@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class DAR
-    Inherits CMCv.Std_Fi
+Partial Class FRMdar
+    Inherits CMCv.FRMstandardFind
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -37,7 +37,7 @@ Partial Class DAR
         Dim DataGridViewCellStyle15 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle17 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle16 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DAR))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMdar))
         Dim DataGridViewCellStyle18 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle19 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle21 As DataGridViewCellStyle = New DataGridViewCellStyle()
@@ -153,9 +153,9 @@ Partial Class DAR
         ' 
         ' BtnClear
         ' 
-        BtnClear.FlatAppearance.BorderColor = Color.FromArgb(195, 0, 0)
+        BtnClear.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
         BtnClear.FlatAppearance.BorderSize = 2
-        BtnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 20, 20)
+        BtnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         ' 
         ' TxtFind
         ' 
@@ -219,16 +219,16 @@ Partial Class DAR
         ' 
         DgnDARDate.AllowUserToAddRows = False
         DgnDARDate.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(204, 214, 104)
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(194), CByte(244), CByte(148))
         DgnDARDate.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DgnDARDate.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
-        DgnDARDate.BackgroundColor = Color.FromArgb(255, 255, 192)
+        DgnDARDate.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnDARDate.BorderStyle = BorderStyle.None
         DgnDARDate.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnDARDate.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -239,7 +239,7 @@ Partial Class DAR
         DgnDARDate.Columns.AddRange(New DataGridViewColumn() {employeeactivity_datetime, employeeactivity_longdate})
         DgnDARDate.Dock = DockStyle.Fill
         DgnDARDate.EnableHeadersVisualStyles = False
-        DgnDARDate.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnDARDate.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DgnDARDate.Location = New Point(0, 0)
         DgnDARDate.Margin = New Padding(6, 5, 6, 5)
         DgnDARDate.Name = "DgnDARDate"
@@ -247,7 +247,7 @@ Partial Class DAR
         DgnDARDate.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = Color.YellowGreen
-        DataGridViewCellStyle5.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle5.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle5.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle5.SelectionForeColor = Color.Black
@@ -282,7 +282,7 @@ Partial Class DAR
         employeeactivity_longdate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         employeeactivity_longdate.DataPropertyName = "employeeactivity_longdate"
         DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle4.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
         employeeactivity_longdate.DefaultCellStyle = DataGridViewCellStyle4
         employeeactivity_longdate.HeaderText = "Date"
@@ -305,7 +305,7 @@ Partial Class DAR
         ' 
         TbctlStatistic.Controls.Add(dailyreports)
         TbctlStatistic.Dock = DockStyle.Fill
-        TbctlStatistic.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TbctlStatistic.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TbctlStatistic.Location = New Point(0, 0)
         TbctlStatistic.Margin = New Padding(6, 5, 6, 5)
         TbctlStatistic.Name = "TbctlStatistic"
@@ -352,16 +352,16 @@ Partial Class DAR
         ' 
         DgnDARActivity.AllowUserToAddRows = False
         DgnDARActivity.AllowUserToDeleteRows = False
-        DataGridViewCellStyle6.BackColor = Color.FromArgb(191, 202, 156)
+        DataGridViewCellStyle6.BackColor = Color.FromArgb(CByte(242), CByte(217), CByte(108))
         DgnDARActivity.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
         DgnDARActivity.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
-        DgnDARActivity.BackgroundColor = Color.FromArgb(255, 255, 192)
+        DgnDARActivity.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnDARActivity.BorderStyle = BorderStyle.None
         DgnDARActivity.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnDARActivity.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle7.BackColor = Color.YellowGreen
-        DataGridViewCellStyle7.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle7.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle7.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle7.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle7.SelectionForeColor = Color.Black
@@ -372,7 +372,7 @@ Partial Class DAR
         DgnDARActivity.Columns.AddRange(New DataGridViewColumn() {areaaffected_name, employeeactivity_time, employeeactivity_description, employee_nickname, employee_id, employeeactivity_id})
         DataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle12.BackColor = SystemColors.Window
-        DataGridViewCellStyle12.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle12.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle12.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText
@@ -380,7 +380,7 @@ Partial Class DAR
         DgnDARActivity.DefaultCellStyle = DataGridViewCellStyle12
         DgnDARActivity.Dock = DockStyle.Fill
         DgnDARActivity.EnableHeadersVisualStyles = False
-        DgnDARActivity.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnDARActivity.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DgnDARActivity.Location = New Point(0, 0)
         DgnDARActivity.Margin = New Padding(6, 5, 6, 5)
         DgnDARActivity.MultiSelect = False
@@ -389,7 +389,7 @@ Partial Class DAR
         DgnDARActivity.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle13.BackColor = Color.YellowGreen
-        DataGridViewCellStyle13.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle13.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle13.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle13.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle13.SelectionForeColor = Color.Black
@@ -496,7 +496,7 @@ Partial Class DAR
         TbctlAttachment.Controls.Add(TPPhotos)
         TbctlAttachment.Controls.Add(TPFiles)
         TbctlAttachment.Dock = DockStyle.Fill
-        TbctlAttachment.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TbctlAttachment.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TbctlAttachment.Location = New Point(0, 0)
         TbctlAttachment.Margin = New Padding(6, 5, 6, 5)
         TbctlAttachment.Name = "TbctlAttachment"
@@ -540,15 +540,15 @@ Partial Class DAR
         ' 
         DgnPhoto.AllowUserToAddRows = False
         DgnPhoto.AllowUserToDeleteRows = False
-        DataGridViewCellStyle14.BackColor = Color.FromArgb(196, 230, 91)
+        DataGridViewCellStyle14.BackColor = Color.FromArgb(CByte(212), CByte(247), CByte(137))
         DgnPhoto.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle14
-        DgnPhoto.BackgroundColor = Color.FromArgb(255, 255, 192)
+        DgnPhoto.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnPhoto.BorderStyle = BorderStyle.None
         DgnPhoto.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnPhoto.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle15.BackColor = Color.YellowGreen
-        DataGridViewCellStyle15.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle15.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle15.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle15.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle15.SelectionForeColor = Color.Black
@@ -559,7 +559,7 @@ Partial Class DAR
         DgnPhoto.Columns.AddRange(New DataGridViewColumn() {photo_id, photo_filename, photo_content, photo_uploader_nickname, photo_content_size, photo_score, photo_datetime, photo_uploader, photo_employee_fullname, photo_view})
         DgnPhoto.Dock = DockStyle.Fill
         DgnPhoto.EnableHeadersVisualStyles = False
-        DgnPhoto.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnPhoto.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DgnPhoto.Location = New Point(0, 0)
         DgnPhoto.Margin = New Padding(6, 5, 6, 5)
         DgnPhoto.MultiSelect = False
@@ -568,7 +568,7 @@ Partial Class DAR
         DgnPhoto.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle17.BackColor = Color.YellowGreen
-        DataGridViewCellStyle17.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle17.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle17.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle17.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle17.SelectionForeColor = Color.Black
@@ -699,7 +699,7 @@ Partial Class DAR
         ' TlpPhotoButton
         ' 
         TlpPhotoButton.ColumnCount = 1
-        TlpPhotoButton.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100.0F))
+        TlpPhotoButton.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
         TlpPhotoButton.Controls.Add(PctbxActivityPhoto, 0, 0)
         TlpPhotoButton.Controls.Add(TlpCopySave, 0, 1)
         TlpPhotoButton.Dock = DockStyle.Fill
@@ -707,8 +707,8 @@ Partial Class DAR
         TlpPhotoButton.Margin = New Padding(6, 5, 6, 5)
         TlpPhotoButton.Name = "TlpPhotoButton"
         TlpPhotoButton.RowCount = 2
-        TlpPhotoButton.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0F))
-        TlpPhotoButton.RowStyles.Add(New RowStyle(SizeType.Absolute, 70.0F))
+        TlpPhotoButton.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
+        TlpPhotoButton.RowStyles.Add(New RowStyle(SizeType.Absolute, 70F))
         TlpPhotoButton.Size = New Size(658, 432)
         TlpPhotoButton.TabIndex = 0
         ' 
@@ -733,11 +733,11 @@ Partial Class DAR
         ' TlpCopySave
         ' 
         TlpCopySave.ColumnCount = 3
-        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
-        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 57.0F))
-        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
-        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 33.0F))
-        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 33.0F))
+        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 57F))
+        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 33F))
+        TlpCopySave.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 33F))
         TlpCopySave.Controls.Add(BtnCopyPhoto, 0, 0)
         TlpCopySave.Controls.Add(BtnSave, 2, 0)
         TlpCopySave.Controls.Add(BtnLike, 1, 0)
@@ -746,7 +746,7 @@ Partial Class DAR
         TlpCopySave.Margin = New Padding(6, 5, 6, 5)
         TlpCopySave.Name = "TlpCopySave"
         TlpCopySave.RowCount = 1
-        TlpCopySave.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0F))
+        TlpCopySave.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
         TlpCopySave.Size = New Size(646, 60)
         TlpCopySave.TabIndex = 106
         ' 
@@ -755,13 +755,13 @@ Partial Class DAR
         BtnCopyPhoto.BackColor = Color.Black
         BtnCopyPhoto.Cursor = Cursors.Hand
         BtnCopyPhoto.Dock = DockStyle.Fill
-        BtnCopyPhoto.FlatAppearance.BorderColor = Color.FromArgb(0, 0, 0)
+        BtnCopyPhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
         BtnCopyPhoto.FlatAppearance.BorderSize = 2
-        BtnCopyPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 20, 20)
+        BtnCopyPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnCopyPhoto.FlatStyle = FlatStyle.Flat
-        BtnCopyPhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCopyPhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCopyPhoto.ForeColor = Color.White
-        BtnCopyPhoto.Image = Global.Ingrid.My.Resources.Resources.COPY_001_16_ICON
+        BtnCopyPhoto.Image = My.Resources.Resources.COPY_001_16_ICON
         BtnCopyPhoto.ImageAlign = ContentAlignment.MiddleRight
         BtnCopyPhoto.Location = New Point(6, 5)
         BtnCopyPhoto.Margin = New Padding(6, 5, 6, 5)
@@ -779,13 +779,13 @@ Partial Class DAR
         BtnSave.BackColor = Color.Black
         BtnSave.Cursor = Cursors.Hand
         BtnSave.Dock = DockStyle.Fill
-        BtnSave.FlatAppearance.BorderColor = Color.FromArgb(0, 0, 0)
+        BtnSave.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
         BtnSave.FlatAppearance.BorderSize = 2
-        BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 20, 20)
+        BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnSave.FlatStyle = FlatStyle.Flat
-        BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnSave.ForeColor = Color.White
-        BtnSave.Image = Global.Ingrid.My.Resources.Resources.DOWNLOAD_001_16_ICON
+        BtnSave.Image = My.Resources.Resources.DOWNLOAD_001_16_ICON
         BtnSave.ImageAlign = ContentAlignment.MiddleLeft
         BtnSave.Location = New Point(357, 5)
         BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -803,13 +803,13 @@ Partial Class DAR
         BtnLike.BackColor = Color.Black
         BtnLike.Cursor = Cursors.Hand
         BtnLike.Dock = DockStyle.Fill
-        BtnLike.FlatAppearance.BorderColor = Color.FromArgb(0, 0, 0)
+        BtnLike.FlatAppearance.BorderColor = Color.FromArgb(CByte(0), CByte(0), CByte(0))
         BtnLike.FlatAppearance.BorderSize = 2
-        BtnLike.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 20, 20)
+        BtnLike.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         BtnLike.FlatStyle = FlatStyle.Flat
-        BtnLike.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnLike.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnLike.ForeColor = Color.White
-        BtnLike.Image = Global.Ingrid.My.Resources.Resources.LIKE_001_16_ICON
+        BtnLike.Image = My.Resources.Resources.LIKE_001_16_ICON
         BtnLike.Location = New Point(300, 5)
         BtnLike.Margin = New Padding(6, 5, 6, 5)
         BtnLike.Name = "BtnLike"
@@ -837,9 +837,9 @@ Partial Class DAR
         ' 
         DgnFile.AllowUserToAddRows = False
         DgnFile.AllowUserToDeleteRows = False
-        DataGridViewCellStyle18.BackColor = Color.FromArgb(240, 230, 159)
+        DataGridViewCellStyle18.BackColor = Color.FromArgb(CByte(250), CByte(233), CByte(118))
         DgnFile.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle18
-        DgnFile.BackgroundColor = Color.FromArgb(255, 255, 192)
+        DgnFile.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnFile.BorderStyle = BorderStyle.None
         DgnFile.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnFile.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
@@ -1057,13 +1057,13 @@ Partial Class DAR
         miniToolStrip.Size = New Size(543, 22)
         miniToolStrip.TabIndex = 103
         ' 
-        ' DAR
+        ' FRMdar
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         ClientSize = New Size(1650, 1170)
         KeyPreview = True
         Margin = New Padding(10, 5, 10, 5)
-        Name = "DAR"
+        Name = "FRMdar"
         PnlFind.ResumeLayout(False)
         PnlFind.PerformLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

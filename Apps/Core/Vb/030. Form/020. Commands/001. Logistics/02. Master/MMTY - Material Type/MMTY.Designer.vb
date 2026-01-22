@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class MMTY
-    Inherits CMCv.Std_Fi
+Partial Class FRMmmty
+    Inherits CMCv.FRMstandardFind
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -20,10 +20,10 @@ Partial Class MMTY
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
         DgnMMTY = New dgn(components)
         materialtype_id = New DataGridViewTextBoxColumn()
         materialtype_description = New DataGridViewTextBoxColumn()
@@ -44,11 +44,12 @@ Partial Class MMTY
         ' 
         ' TxtFind
         ' 
-        TxtFind.Margin = New Padding(5, 3, 5, 3)
+        TxtFind.Margin = New Padding(7, 5, 7, 5)
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(DgnMMTY)
+        SLFPanel.Size = New Size(1307, 952)
         SLFPanel.Controls.SetChildIndex(PnlFind, 0)
         SLFPanel.Controls.SetChildIndex(DgnMMTY, 0)
         ' 
@@ -56,61 +57,64 @@ Partial Class MMTY
         ' 
         DgnMMTY.AllowUserToAddRows = False
         DgnMMTY.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(242), CByte(249), CByte(185))
-        DgnMMTY.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.BackColor = Color.FromArgb(CByte(247), CByte(241), CByte(124))
+        DgnMMTY.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
         DgnMMTY.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnMMTY.BorderStyle = BorderStyle.None
         DgnMMTY.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnMMTY.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
-        DataGridViewCellStyle2.SelectionForeColor = Color.Black
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DgnMMTY.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = Color.YellowGreen
+        DataGridViewCellStyle6.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = Color.YellowGreen
+        DataGridViewCellStyle6.SelectionForeColor = Color.Black
+        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+        DgnMMTY.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         DgnMMTY.ColumnHeadersHeight = 43
         DgnMMTY.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DgnMMTY.Columns.AddRange(New DataGridViewColumn() {materialtype_id, materialtype_description, itemcount})
         DgnMMTY.Dock = DockStyle.Fill
         DgnMMTY.EnableHeadersVisualStyles = False
         DgnMMTY.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DgnMMTY.Location = New Point(0, 53)
-        DgnMMTY.Margin = New Padding(4, 3, 4, 3)
+        DgnMMTY.Location = New Point(0, 88)
+        DgnMMTY.Margin = New Padding(6, 5, 6, 5)
         DgnMMTY.Name = "DgnMMTY"
         DgnMMTY.ReadOnly = True
         DgnMMTY.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = Color.YellowGreen
-        DataGridViewCellStyle4.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = Color.Yellow
-        DataGridViewCellStyle4.SelectionForeColor = Color.Black
-        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
-        DgnMMTY.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = Color.YellowGreen
+        DataGridViewCellStyle8.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle8.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle8.SelectionForeColor = Color.Black
+        DataGridViewCellStyle8.WrapMode = DataGridViewTriState.True
+        DgnMMTY.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DgnMMTY.RowHeadersWidth = 62
         DgnMMTY.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DgnMMTY.Size = New Size(915, 511)
-        DgnMMTY.XOGroupFirstRows = False
-        DgnMMTY.XOGunakanNomorBaris = True
+        DgnMMTY.Size = New Size(1307, 864)
         DgnMMTY.StandardTab = True
         DgnMMTY.TabIndex = 0
+        DgnMMTY.XOGroupFirstRows = False
+        DgnMMTY.XOGunakanNomorBaris = True
         ' 
         ' materialtype_id
         ' 
         materialtype_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
         materialtype_id.DataPropertyName = "materialtype_id"
         materialtype_id.HeaderText = "Material Type"
+        materialtype_id.MinimumWidth = 8
         materialtype_id.Name = "materialtype_id"
         materialtype_id.ReadOnly = True
         materialtype_id.SortMode = DataGridViewColumnSortMode.Programmatic
-        materialtype_id.Width = 5
+        materialtype_id.Width = 8
         ' 
         ' materialtype_description
         ' 
         materialtype_description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         materialtype_description.DataPropertyName = "materialtype_description"
         materialtype_description.HeaderText = "Type Description"
+        materialtype_description.MinimumWidth = 8
         materialtype_description.Name = "materialtype_description"
         materialtype_description.ReadOnly = True
         materialtype_description.SortMode = DataGridViewColumnSortMode.Programmatic
@@ -119,21 +123,22 @@ Partial Class MMTY
         ' 
         itemcount.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
         itemcount.DataPropertyName = "itemcount"
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight
-        itemcount.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleRight
+        itemcount.DefaultCellStyle = DataGridViewCellStyle7
         itemcount.HeaderText = "Consist of"
+        itemcount.MinimumWidth = 8
         itemcount.Name = "itemcount"
         itemcount.ReadOnly = True
         itemcount.SortMode = DataGridViewColumnSortMode.Programmatic
-        itemcount.Width = 5
+        itemcount.Width = 8
         ' 
-        ' MMTY
+        ' FRMmmty
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(915, 647)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1307, 1078)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
-        Name = "MMTY"
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMmmty"
         PnlFind.ResumeLayout(False)
         PnlFind.PerformLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

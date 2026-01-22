@@ -33,7 +33,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.Ingrid.Mainframe_n_6
+            Me.MainForm = Global.Ingrid.FRMmainframe6
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _

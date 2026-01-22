@@ -36,23 +36,23 @@ Public Class dgn
     End Sub
 
 
-    Private _varGunakanNomorBaris As Boolean
+    Private varGunakanNomorBaris As Boolean
     Public Property XOGunakanNomorBaris() As Boolean
         Get
-            Return _varGunakanNomorBaris
+            Return varGunakanNomorBaris
         End Get
         Set(ByVal value As Boolean)
-            _varGunakanNomorBaris = value
+            varGunakanNomorBaris = value
         End Set
     End Property
 
-    Private _varGroupFirstRows As Boolean
+    Private varGroupFirstRows As Boolean
     Public Property XOGroupFirstRows As Boolean
         Get
-            Return _varGroupFirstRows
+            Return varGroupFirstRows
         End Get
         Set(value As Boolean)
-            _varGroupFirstRows = value
+            varGroupFirstRows = value
         End Set
     End Property
 
@@ -61,17 +61,14 @@ Public Class dgn
     End Function
 
     Private Sub dgn_CellFormatting(sender As Object, e As Windows.Forms.DataGridViewCellFormattingEventArgs) Handles Me.CellFormatting
-        If XOGroupFirstRows = True Then
-            If e.RowIndex > 0 And e.ColumnIndex = 0 Then
-                If MyBase.Item(0, e.RowIndex - 1).Value Is e.Value Then
-                    e.Value = String.Empty
-                    'MyBase.AdvancedCellBorderStyle.Top = Windows.Forms.DataGridViewAdvancedCellBorderStyle.None
-                    'MyBase.Rows(e.RowIndex).DefaultCellStyle.BackColor = System.Drawing.Color.White
-                ElseIf e.RowIndex < MyBase.Rows.Count - 1 Then
-
-                End If
+        If (XOGroupFirstRows) AndAlso (e.RowIndex > 0 AndAlso e.ColumnIndex = 0) Then
+            If MyBase.Item(0, e.RowIndex - 1).Value Is e.Value Then
+                e.Value = String.Empty
+                'MyBase.AdvancedCellBorderStyle.Top = Windows.Forms.DataGridViewAdvancedCellBorderStyle.None
+                'MyBase.Rows(e.RowIndex).DefaultCellStyle.BackColor = System.Drawing.Color.White
+            ElseIf e.RowIndex < MyBase.Rows.Count - 1 Then
+                'TODO: Create formating 
             End If
-
         End If
     End Sub
 
@@ -86,24 +83,24 @@ Public Class dgn
         End If
     End Sub
 
-    Public Enum eGETNewColor
+    Public Enum EGetNewColor
         Yes
         No
     End Enum
 
-    Public Sub XOGETNewColor()
-        Call GENERATENewColor()
+    Public Sub XOGeTNewColor()
+        Call GenerateNewColor()
     End Sub
 
     Private Sub dgn_HandleCreated(sender As Object, e As EventArgs) Handles Me.HandleCreated
-        Call GENERATENewColor()
+        Call GenerateNewColor()
     End Sub
 
     Private Sub dgn_SelectionChanged(sender As Object, e As EventArgs) Handles Me.SelectionChanged
         RaiseEvent XOSelected()
     End Sub
 
-    Private Sub GENERATENewColor()
+    Private Sub GenerateNewColor()
         MyBase.AlternatingRowsDefaultCellStyle.BackColor = ControlCodeBase.WarnaAcakBaru(190, 255, 190, 255, 90, 190)
     End Sub
 End Class

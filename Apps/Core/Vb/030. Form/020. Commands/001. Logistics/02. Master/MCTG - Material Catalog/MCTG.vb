@@ -1,10 +1,9 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class MCTG
+Public Class FRMmctg
 
 #Region "Variables"
-    Private WithEvents C_MMSMenu As New UI.View.MenuStrip
-    Private V_SQL As New Commands.MCTG.View
+    Private WithEvents Com_mms_Menu As New UI.View.MenuStrip
 #End Region
 
 #Region "Sub Collections"
@@ -23,21 +22,21 @@ Public Class MCTG
 #Region "Menu Strip Function"
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataRefresh() Handles C_MMSMenu.EventDataRefresh
+    Private Sub EventDataRefresh() Handles Com_mms_Menu.EventDataRefresh
         TxtFind.Clear()
-        Call GETDATA(True)
+        Call GetData(True)
     End Sub
 
-    Private Sub EventDataClose() Handles C_MMSMenu.EventDataClose
+    Private Sub EventDataClose() Handles Com_mms_Menu.EventDataClose
         Me.Close()
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventToolsImport() Handles C_MMSMenu.EventToolsImport
-        DISPLAY(New frmImports(Import.Data.DataType.TypeofImports.MaterialMasterCatalog), IMAGEDB.Main.ImageLibrary.IMPORTS_ICON, "Catalog Imports", "Imports your catalog data from other database", True)
+    Private Sub EventToolsImport() Handles Com_mms_Menu.EventToolsImport
+        Display(New FRMimports(Import.Data.DataType.TypeofImports.MaterialMasterCatalog), IMAGEDB.Main.ImageLibrary.IMPORTS_ICON, "Catalog Imports", "Imports your catalog data from other database", True)
     End Sub
 
-    Private Sub EventToolsFind() Handles C_MMSMenu.EventToolsFind
+    Private Sub EventToolsFind() Handles Com_mms_Menu.EventToolsFind
         TxtFind.Focus()
     End Sub
 #End Region
@@ -47,21 +46,21 @@ Public Class MCTG
     <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Call GETDATA()
+            Call GetData()
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles TxtFind.Click
         TxtFind.Clear()
-        Call GETDATA(True)
+        Call GetData(True)
         TxtFind.ClearSearch()
     End Sub
 #End Region
 
 #Region "Form Events"
     <SupportedOSPlatform("windows")>
-    Private Sub MCTG_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FMRmctg_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call LoadMenu()
         Call LoadDGN()
         Call ClearFind()
@@ -73,32 +72,32 @@ Public Class MCTG
     <SupportedOSPlatform("windows")>
     Private Sub LoadMenu()
         'Sisipkan ke dalam form
-        C_MMSMenu.LoadIn(Me)
+        Com_mms_Menu.LoadIn(Me)
 
         'Menampilkan Menu DATA
-        C_MMSMenu.ShowMenuDATA(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu TOOLS
-        C_MMSMenu.ShowMenuTOOLS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        Com_mms_Menu.ShowMenuTools(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu REPORTS
-        C_MMSMenu.ShowMenuREPORTS(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        Com_mms_Menu.ShowMenuReports(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu TOOLS > View Attachment
-        C_MMSMenu.Visible("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
+        Com_mms_Menu.Visible("EventToolsViewAttachment", CType(True, CMCv.UI.View.MenuStrip.ShowItem))
 
     End Sub
 
-    Private Sub LoadDGN()
+    Private Sub LoadDgn()
         'Memuat warna acak
-        DgnMCTG.XOGETNewColor()
+        DgnMCTG.XOGeTNewColor()
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub ClearFind()
         TxtFind.Clear()
         TxtFind.ClearSearch()
-        Call GETDATA(True)
+        Call GetData(True)
     End Sub
 
 #End Region

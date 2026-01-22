@@ -1,4 +1,4 @@
-﻿Public Class Splash
+﻿Public Class FRMsplash
     'Public _AbleToClose As Boolean
     'Private _Tick As Integer = 0
 

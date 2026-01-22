@@ -1,4 +1,4 @@
-﻿Public Class frmDialogBox
+﻿Public Class FRMdialogbox
 
 #Region "Initialize"
     ''' <summary>
@@ -29,28 +29,28 @@
 
         ' Event triggered by Message Icon.
         Select Case MessageIcon
-            Case frmDialogBox.MessageIcon.Alert
+            Case FRMdialogbox.MessageIcon.Alert
                 Me.SLFLogo.Image = My.Resources.ALERT_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.Orange
                 If Caption = String.Empty Then
                     Me.Text = "Alert"
                     SLFNamaForm.Text = "Alert"
                 End If
-            Case frmDialogBox.MessageIcon.Error
+            Case FRMdialogbox.MessageIcon.Error
                 Me.SLFLogo.Image = My.Resources.ERROR_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.Red
                 If Caption = String.Empty Then
                     Me.Text = "Error"
                     SLFNamaForm.Text = "Error"
                 End If
-            Case frmDialogBox.MessageIcon.Information
+            Case FRMdialogbox.MessageIcon.Information
                 Me.SLFLogo.Image = My.Resources.INFORMATION_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.SteelBlue
                 If Caption = String.Empty Then
                     Me.Text = "Information"
                     SLFNamaForm.Text = "Information"
                 End If
-            Case frmDialogBox.MessageIcon.Question
+            Case FRMdialogbox.MessageIcon.Question
                 Me.SLFLogo.Image = My.Resources.QUESTION_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.DodgerBlue
                 If Caption = String.Empty Then
@@ -105,29 +105,29 @@
 #End Region
 
 #Region "Component Events"
-    Private Sub BtnYes_Click(sender As Object, e As EventArgs) Handles BtnYes.Click
-        Me.DialogResult = Windows.Forms.DialogResult.Yes
-        Me.Close()
+    Private Sub BtnYes_Click(sender As Object, e As EventArgs)
+        DialogResult = Windows.Forms.DialogResult.Yes
+        Close
     End Sub
 
-    Private Sub BtnNo_Click(sender As Object, e As EventArgs) Handles BtnNo.Click
-        Me.DialogResult = Windows.Forms.DialogResult.No
-        Me.Close()
+    Private Sub BtnNo_Click(sender As Object, e As EventArgs)
+        DialogResult = Windows.Forms.DialogResult.No
+        Close
     End Sub
 
-    Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
-        Me.DialogResult = Windows.Forms.DialogResult.OK
-        Me.Close()
+    Private Sub BtnOk_Click(sender As Object, e As EventArgs)
+        DialogResult = Windows.Forms.DialogResult.OK
+        Close
     End Sub
 
-    Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
-        Me.DialogResult = Windows.Forms.DialogResult.Cancel
-        Me.Close()
+    Private Sub BtnCancel_Click(sender As Object, e As EventArgs)
+        DialogResult = Windows.Forms.DialogResult.Cancel
+        Close
     End Sub
 
-    Private Sub BtnOkOnly_Click(sender As Object, e As EventArgs) Handles BtnOkOnly.Click
-        Me.DialogResult = Windows.Forms.DialogResult.OK
-        Me.Close()
+    Private Sub BtnOkOnly_Click(sender As Object, e As EventArgs)
+        DialogResult = Windows.Forms.DialogResult.OK
+        Close
     End Sub
 
 #End Region

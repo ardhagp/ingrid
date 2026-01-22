@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class DAR_RPTContainer
+Partial Class FRMdarRptContainer
     Inherits CMCv.Rpt_Bsc
 
     'Form overrides dispose to clean up the component list.
@@ -34,19 +34,17 @@ Partial Class DAR_RPTContainer
         ' Rv_
         ' 
         Rv_.Dock = DockStyle.Fill
+        Rv_.DocumentMapWidth = 1
         Rv_.Location = New Point(0, 0)
-        Rv_.Margin = New Padding(4, 3, 4, 3)
+        Rv_.Margin = New Padding(6, 5, 6, 5)
         Rv_.Name = "Rv_"
         Rv_.ServerReport.BearerToken = Nothing
-        Rv_.Size = New Size(915, 506)
+        Rv_.Size = New Size(0, 0)
         Rv_.TabIndex = 996
         ' 
         ' PnlBottomButton
         ' 
-        PnlBottomButton.Location = New Point(0, 506)
-        ' 
-        ' SLFPanel
-        ' 
+        PnlBottomButton.Margin = New Padding(10, 17, 10, 17)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(Rv_, 0)
         ' 
@@ -61,12 +59,12 @@ Partial Class DAR_RPTContainer
         DAR_RDS.Namespace = "http://tempuri.org/DAR_RDS.xsd"
         DAR_RDS.SchemaSerializationMode = Data.SchemaSerializationMode.IncludeSchema
         ' 
-        ' DAR_RPTContainer
+        ' FRMdarRptContainer
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
-        ClientSize = New Size(915, 647)
-        Margin = New Padding(8, 3, 8, 3)
-        Name = "DAR_RPTContainer"
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1307, 1078)
+        Margin = New Padding(11, 5, 11, 5)
+        Name = "FRMdarRptContainer"
         WindowState = FormWindowState.Maximized
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
         pnl_.ResumeLayout(False)
@@ -81,4 +79,5 @@ Partial Class DAR_RPTContainer
 
     Friend WithEvents EmployeeactivityBindingSource As BindingSource
     Friend WithEvents DAR_RDS As DAR_RDS
+    Friend WithEvents Rv_ As Microsoft.Reporting.WinForms.ReportViewer
 End Class

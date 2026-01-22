@@ -11,7 +11,7 @@ Namespace Database.Engine
         Private ReadOnly varCommand(2) As SQLite.SQLiteCommand
         Private ReadOnly varDataReader(2) As SQLite.SQLiteDataReader
 
-        Private ReadOnly varSqlite As New Connect.SQLiteConnection
+        Private ReadOnly varSqliteConnection As New Connect.SQLiteConnection
         Private varTX As SQLite.SQLiteTransaction
         Private varIsProductionMode As Boolean
 
@@ -100,14 +100,14 @@ Namespace Database.Engine
                 If (isproductionmode) AndAlso OperatingSystem.File.Info.IsExists(varFilePath(0)) Then
                     varFilePath(0) = Replace(varFilePath(0), "\", "\\")
 
-                    varConnectionString(0) = varSqlite.SQLiteBasic(varFilePath(0))
+                    varConnectionString(0) = varSqliteConnection.SQLiteBasic(varFilePath(0))
 
                     varConnection(1) = New SQLite.SQLiteConnection(varConnectionString(0)) 'OleDb.OleDbConnection(_CS(0))
                     varConnection(1).Open()
                 ElseIf Not (isproductionmode) AndAlso (OperatingSystem.File.Info.IsExists(varFilePath(1))) Then
                     varFilePath(1) = Replace(varFilePath(1), "\", "\\")
 
-                    varConnectionString(1) = varSqlite.SQLiteBasic(varFilePath(1))
+                    varConnectionString(1) = varSqliteConnection.SQLiteBasic(varFilePath(1))
 
                     varConnection(2) = New SQLite.SQLiteConnection(varConnectionString(1))
                     varConnection(2).Open()
@@ -202,7 +202,7 @@ Namespace Database.Engine
                 Dim varDateTime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
                 Dim varQuery As String
                 varQuery = $"insert into ERRORLOG(ERRORDATETIME,ERRORTYPE,ERRORNUMBER,ERRORDESCRIPTION,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDONEREPORTED) values " &
-                           $"('{varDateTime}','{proLog.TypeOfFaulty.ToString()}','{proLog.Number}','{proLog.Message}','{proLog.InternalStackTrace}','{proLog.ShowErrorReporting}','1')"
+                           $"('{varDateTime}','{proLog.TypeOfFaulty}','{proLog.Number}','{proLog.Message}','{proLog.InternalStackTrace}','{proLog.ShowErrorReporting}','1')"
                 Call PushData(varQuery)
             Catch ex As Exception
                 With proLog

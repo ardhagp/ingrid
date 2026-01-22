@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class MCTG_Editor
+Partial Class FRMmctgEditor
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -27,27 +27,27 @@ Partial Class MCTG_Editor
         ' 
         ' PnlBottomButton
         ' 
-        PnlBottomButton.Location = New Point(0, 286)
-        PnlBottomButton.Margin = New Padding(5, 3, 5, 3)
-        PnlBottomButton.Size = New Size(532, 58)
+        PnlBottomButton.Location = New Point(0, 489)
+        PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
+        PnlBottomButton.Size = New Size(760, 97)
         ' 
         ' pnl_
         ' 
-        pnl_.Margin = New Padding(5, 3, 5, 3)
-        pnl_.Size = New Size(532, 61)
+        pnl_.Margin = New Padding(7, 5, 7, 5)
+        pnl_.Size = New Size(760, 104)
         ' 
         ' SLFPanel
         ' 
-        SLFPanel.Margin = New Padding(5, 3, 5, 3)
-        SLFPanel.Size = New Size(532, 344)
+        SLFPanel.Margin = New Padding(7, 5, 7, 5)
+        SLFPanel.Size = New Size(760, 586)
         ' 
-        ' MCTG_Editor
+        ' FRMmctgEditor
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(532, 427)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(760, 712)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
-        Name = "MCTG_Editor"
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMmctgEditor"
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
         pnl_.ResumeLayout(False)
         pnl_.PerformLayout()

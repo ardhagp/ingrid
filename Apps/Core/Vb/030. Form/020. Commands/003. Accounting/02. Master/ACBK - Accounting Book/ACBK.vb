@@ -1,16 +1,14 @@
 ﻿Imports System.Runtime.Versioning
-Imports CMCv
 
-Public Class ACBK
+Public Class FRMacbk
 #Region "Variables"
-    Private WithEvents C_MMSMenu As New CMCv.UI.View.MenuStrip
-    Private _SQL As New Commands.ACBK.View
+    Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 #End Region
 
 #Region "Sub Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GetData()
-        Commands.ACBK.View.DisplayData(varDatabaseName, DgnACBK, SLFStatus, TxtFind, True)
+        CMDacbk.View.DisplayData(varDatabaseName, DgnACBK, SLFStatus, TxtFind, True)
     End Sub
 #End Region
 
@@ -32,24 +30,24 @@ Public Class ACBK
     <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
-            Call GETDATA()
+            Call GetData()
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         TxtFind.Clear()
-        Call GETDATA()
+        Call GetData()
     End Sub
 #End Region
 
 #Region "Form Events"
     <SupportedOSPlatform("windows")>
-    Private Sub frmACBK_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        C_MMSMenu.LoadIn(Me)
-        C_MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
+    Private Sub FRMacbk_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Com_mms_Menu.LoadIn(Me)
+        Com_mms_Menu.ShowMenuData(UI.View.MenuStrip.ShowItem.Yes)
 
-        Call GETDATA()
+        Call GetData()
     End Sub
 #End Region
 

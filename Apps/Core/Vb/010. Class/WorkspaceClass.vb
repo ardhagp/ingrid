@@ -2,264 +2,333 @@
 
 Public Class WorkspaceClass
 #Region "Variables"
-    Private ReadOnly V_CommandExist As Boolean
-    Private ReadOnly V_CommandRestricted As Boolean
-    Private V_TCode As String()
-    Private ReadOnly V_SQL As New LibSQL.Workspace
-    Private V_MODSName As String
-    Private V_MODSDesc As String
+    'Private ReadOnly varCommandExist As Boolean
+    'Private ReadOnly varCommandRestricted As Boolean
+    'Private ReadOnly V_SQL As New LibSQL.Workspace
+
+    Private varCommandCode As String()
+    Private varModuleCode As String
+    Private varModuleCaption As String
 #End Region
 
 #Region "Declare Modules"
     'Accounting
-    Private WithEvents V_ACGR As New ACGR
-    Private WithEvents V_ACBK As New ACBK
+    Private WithEvents Frm_acgr As New FRMacgr
+    Private WithEvents Frm_acbk As New FRMacbk
 
     'Management
-    Private WithEvents V_CCIN As New CCIN
-    Private WithEvents V_CDIN As New CDIN
-    Private WithEvents V_POST As New POST
-    Private WithEvents V_EPLS As New EPLS
+    Private WithEvents Frm_ccin As New FRMccin
+    Private WithEvents Frm_cdin As New FRMcdin
+    Private WithEvents Frm_post As New FRMpost
+    Private WithEvents Frm_epls As New FRMepls
 
     'Logistic
-    Private WithEvents V_PLNT As New PLNT
-    Private WithEvents V_SLOC As New SLOC
-    Private WithEvents V_MCTG As New MCTG
-    Private WithEvents V_MMTY As New MMTY
-    Private WithEvents V_MMGR As New MMGR
+    Private WithEvents Frm_plnt As New FRMplnt
+    Private WithEvents Frm_sloc As New FRMsloc
+    Private WithEvents Frm_mctg As New FRMmctg
+    Private WithEvents Frm_mmty As New FRMmmty
+    Private WithEvents Frm_mmgr As New FRMmmgr
 
     'Custom
-    Private WithEvents V_DAR As New DAR
-    Private WithEvents V_DARD As New DARD
-    Private WithEvents V_DRTM As New DRTM
-    Private WithEvents V_DRAA As New DRAA
-    Private WithEvents V_PEPR As New PEPR
-    Private WithEvents V_REMS As New REMS
+    Private WithEvents Frm_dar As New FRMdar
+    Private WithEvents Frm_dard As New FRMdard
+    Private WithEvents Frm_drtm As New FRMdrtm
+    Private WithEvents Frm_draa As New FRMdraa
+    Private WithEvents Frm_pepr As New PEPR
+    Private WithEvents Frm_rems As New REMS
 
     'System
-    Private WithEvents V_UAC As New UAC
-    Private WithEvents V_MODS As New MODS
-    Private WithEvents V_MOGS As New MOGS
-    Private WithEvents V_SYSS As New SYSS
+    Private WithEvents Frm_uac As New UAC
+    Private WithEvents Frm_mods As New FRMmods
+    Private WithEvents Frm_mogs As New MOGS
+    Private WithEvents Frm_syss As New SYSS
 
     'Tools
-    Private WithEvents V_SAY As New SAY
-    Private WithEvents V_PHTRZ As New CMCv.PHTRZ
+    Private WithEvents Frm_say As New FRMsay
+    Private WithEvents Frm_phtrz As New CMCv.FRMphotoresizer
 
-    'DummVy
-    Private WithEvents V_DUMMY As New Dummy
-
-    Private WithEvents V_RESET As New RESET
+    'Others
+    Private WithEvents Frm_dummy As New Dummy
+    Private WithEvents Frm_reset As New RESET
 #End Region
 
     <SupportedOSPlatform("windows")>
     Public Sub Open(mainframe As Form, tcode As String, Optional statusbar As CMCv.stt = Nothing)
         Try
-            V_TCode = tcode.ToString.Split("-".ToCharArray, StringSplitOptions.RemoveEmptyEntries)
+            varCommandCode = tcode.ToString.Split("-".ToCharArray, StringSplitOptions.RemoveEmptyEntries)
+
             '_CommandExist = True
             '_CommandRestricted = False
-            V_MODSName = LibSQL.Workspace.GetModuleName(varDatabaseName, varDatabaseEngine, tcode)
-            V_MODSDesc = LibSQL.Workspace.GetModuleDescription(varDatabaseName, varDatabaseEngine, tcode)
 
-            Select Case V_TCode(0)
+            varModuleCode = LibSQL.Workspace.GetModuleName(varDatabaseName, varDatabaseEngine, tcode)
+            varModuleCaption = LibSQL.Workspace.GetModuleDescription(varDatabaseName, varDatabaseEngine, tcode)
+
+            Dim titleBase As String = "[" & tcode.ToUpper & "] "
+
+            Select Case varCommandCode(0)
                 'ACCOUNTING
                 Case "ACGR"
-                    If (Not (V_ACGR.IsHandleCreated)) OrElse (IsNothing(V_ACGR)) Then
-                        V_ACGR = New ACGR
-                        Display(V_ACGR, IMAGEDB.Main.ImageLibrary.ACGR_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_ACGR.Focus()
-                    End If
+                    EnsureOpen(Of FRMacgr)(Frm_acgr, IMAGEDB.Main.ImageLibrary.ACGR_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "ACBK"
-                    If (Not (V_ACBK.IsHandleCreated)) OrElse (IsNothing(V_ACBK)) Then
-                        V_ACBK = New ACBK
-                        Display(V_ACBK, IMAGEDB.Main.ImageLibrary.ACBK_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_ACBK.Focus()
-                    End If
+                    EnsureOpen(Of FRMacbk)(Frm_acbk, IMAGEDB.Main.ImageLibrary.ACBK_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
 
-
-                    'LOGISTICS
+                'LOGISTICS
                 Case "MCTG"
-                    If (Not (V_MCTG.IsHandleCreated)) OrElse (IsNothing(V_MCTG)) Then
-                        V_MCTG = New MCTG
-                        Display(V_MCTG, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_MCTG.Focus()
-                    End If
+                    EnsureOpen(Of FRMmctg)(Frm_mctg, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "MMTY"
-                    If (Not (V_MMTY.IsHandleCreated)) OrElse (IsNothing(V_MMTY)) Then
-                        V_MMTY = New MMTY
-                        Display(V_MMTY, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_MMTY.Focus()
-                    End If
+                    EnsureOpen(Of FRMmmty)(Frm_mmty, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "MMGR"
-                    If (Not (V_MMGR.IsHandleCreated)) OrElse (IsNothing(V_MMGR)) Then
-                        V_MMGR = New MMGR
-                        Display(V_MMGR, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_MMGR.Focus()
-                    End If
+                    EnsureOpen(Of FRMmmgr)(Frm_mmgr, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "SLOC"
-                    If (Not (V_SLOC.IsHandleCreated)) OrElse (IsNothing(V_SLOC)) Then
-                        V_SLOC = New SLOC
-                        Display(V_SLOC, IMAGEDB.Main.ImageLibrary.STORAGE_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_SLOC.Focus()
-                    End If
+                    EnsureOpen(Of FRMsloc)(Frm_sloc, IMAGEDB.Main.ImageLibrary.STORAGE_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "PLNT"
-                    If (Not (V_PLNT.IsHandleCreated)) OrElse (IsNothing(V_PLNT)) Then
-                        V_PLNT = New PLNT
-                        Display(V_PLNT, IMAGEDB.Main.ImageLibrary.PLANT_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_PLNT.Focus()
-                    End If
+                    EnsureOpen(Of FRMplnt)(Frm_plnt, IMAGEDB.Main.ImageLibrary.PLANT_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
 
-
-                    'MANAGEMENT
+                'MANAGEMENT
                 Case "CCIN"
-                    If (Not (V_CCIN.IsHandleCreated)) OrElse (IsNothing(V_CCIN)) Then
-                        V_CCIN = New CCIN
-                        Display(V_CCIN, IMAGEDB.Main.ImageLibrary.CCIN_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_CCIN.Focus()
-                    End If
+                    EnsureOpen(Of FRMccin)(Frm_ccin, IMAGEDB.Main.ImageLibrary.CCIN_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "CDIN"
-                    If (Not (V_CDIN.IsHandleCreated)) OrElse (IsNothing(V_CDIN)) Then
-                        V_CDIN = New CDIN
-                        Display(V_CDIN, IMAGEDB.Main.ImageLibrary.CDIN_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_CDIN.Focus()
-                    End If
+                    EnsureOpen(Of FRMcdin)(Frm_cdin, IMAGEDB.Main.ImageLibrary.CDIN_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "EPLS"
-                    If (Not (V_EPLS.IsHandleCreated)) OrElse (IsNothing(V_EPLS)) Then
-                        V_EPLS = New EPLS
-                        Display(V_EPLS, IMAGEDB.Main.ImageLibrary.EPLS_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_EPLS.Focus()
-                    End If
+                    EnsureOpen(Of FRMepls)(Frm_epls, IMAGEDB.Main.ImageLibrary.EPLS_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "POST"
-                    If (Not (V_POST.IsHandleCreated)) OrElse (IsNothing(V_POST)) Then
-                        V_POST = New POST
-                        Display(V_POST, IMAGEDB.Main.ImageLibrary.POST_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_POST.Focus()
-                    End If
+                    EnsureOpen(Of FRMpost)(Frm_post, IMAGEDB.Main.ImageLibrary.POST_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
 
-
-                    'CUSTOM
+                'CUSTOM
                 Case "DAR"
-                    If (Not (V_DAR.IsHandleCreated)) OrElse (IsNothing(V_DAR)) Then
-                        V_DAR = New DAR
-                        Display(V_DAR, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_DAR.Focus()
-                    End If
+                    EnsureOpen(Of FRMdar)(Frm_dar, IMAGEDB.Main.ImageLibrary.DAR_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "DARD"
-                    If (Not (V_DARD.IsHandleCreated)) OrElse (IsNothing(V_DARD)) Then
-                        V_DARD = New DARD
-                        Display(V_DARD, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_DAR.Focus()
-                    End If
+                    EnsureOpen(Of FRMdard)(Frm_dard, IMAGEDB.Main.ImageLibrary.DAR_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "DRTM"
-                    If (Not (V_DRTM.IsHandleCreated)) OrElse (IsNothing(V_DRTM)) Then
-                        V_DRTM = New DRTM
-                        Display(V_DRTM, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_DRTM.Focus()
-                    End If
+                    EnsureOpen(Of FRMdrtm)(Frm_drtm, IMAGEDB.Main.ImageLibrary.DAR_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "DRAA"
-                    If (Not (V_DRAA.IsHandleCreated)) OrElse (IsNothing(V_DRAA)) Then
-                        V_DRAA = New DRAA
-                        Display(V_DRAA, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_DRAA.Focus()
-                    End If
+                    EnsureOpen(Of FRMdraa)(Frm_draa, IMAGEDB.Main.ImageLibrary.DAR_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "PEPR"
-                    If (Not (V_PEPR.IsHandleCreated)) OrElse (IsNothing(V_PEPR)) Then
-                        V_PEPR = New PEPR
-                        Display(V_PEPR, IMAGEDB.Main.ImageLibrary.JJP_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_REMS.Focus()
-                    End If
+                    EnsureOpen(Of PEPR)(Frm_pepr, IMAGEDB.Main.ImageLibrary.JJP_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "REMS"
-                    If (Not (V_REMS.IsHandleCreated)) OrElse (IsNothing(V_REMS)) Then
-                        V_REMS = New REMS
-                        Display(V_REMS, IMAGEDB.Main.ImageLibrary.JJP_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_REMS.Focus()
-                    End If
+                    EnsureOpen(Of REMS)(Frm_rems, IMAGEDB.Main.ImageLibrary.JJP_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
+
                 Case "SAY"
-                    If (Not (V_SAY.IsHandleCreated)) OrElse (IsNothing(V_SAY)) Then
-                        V_SAY = New SAY
-                        Display(V_SAY, IMAGEDB.Main.ImageLibrary.PLANT_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False,)
-                    Else
-                        V_CCIN.Focus()
-                    End If
+                    EnsureOpen(Of FRMsay)(Frm_say, IMAGEDB.Main.ImageLibrary.PLANT_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
 
-
-                    'SYSTEM
+                'SYSTEM
                 Case "MODS"
-                    If (Not (V_MODS.IsHandleCreated)) OrElse (IsNothing(V_MODS)) Then
-                        V_MODS = New MODS
-                        Display(V_MODS, IMAGEDB.Main.ImageLibrary.MODS_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_MODS.Focus()
-                    End If
+                    EnsureOpen(Of FRMmods)(Frm_mods, IMAGEDB.Main.ImageLibrary.MODS_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "MOGS"
-                    If (Not (V_MOGS.IsHandleCreated)) OrElse (IsNothing(V_MOGS)) Then
-                        V_MOGS = New MOGS
-                        Display(V_MOGS, IMAGEDB.Main.ImageLibrary.MODS_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_MOGS.Focus()
-                    End If
+                    EnsureOpen(Of MOGS)(Frm_mogs, IMAGEDB.Main.ImageLibrary.MODS_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "UAC"
-                    If (Not (V_UAC.IsHandleCreated)) OrElse (IsNothing(V_UAC)) Then
-                        V_UAC = New UAC
-                        Display(V_UAC, IMAGEDB.Main.ImageLibrary.UAC_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_UAC.Focus()
-                    End If
+                    EnsureOpen(Of UAC)(Frm_uac, IMAGEDB.Main.ImageLibrary.UAC_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
                 Case "SYSS"
-                    If (Not (V_SYSS.IsHandleCreated)) OrElse (IsNothing(V_SYSS)) Then
-                        V_SYSS = New SYSS
-                        Display(V_SYSS, IMAGEDB.Main.ImageLibrary.UAC_ICON, "[" & tcode.ToUpper & "] " & V_MODSName, V_MODSDesc, False, mainframe)
-                    Else
-                        V_SYSS.Focus()
-                    End If
+                    EnsureOpen(Of SYSS)(Frm_syss, IMAGEDB.Main.ImageLibrary.UAC_ICON, titleBase & varModuleCode, varModuleCaption, False, mainframe)
 
-
-                 'INSIDE APPS
-                Case CType("DUMMY", Char)
-                    If (Not (V_DUMMY.IsHandleCreated)) OrElse (IsNothing(V_DUMMY)) Then
-                        V_DUMMY = New Dummy
-                        Display(V_DUMMY, IMAGEDB.Main.ImageLibrary.DUMMY_ICON, "[DUMMY] Dummy Form", "Dummy Form for testing", False, mainframe)
-                    Else
-                        V_DUMMY.Focus()
-                    End If
+                'INSIDE APPS
+                Case "DUMMY"
+                    EnsureOpen(Of Dummy)(Frm_dummy, IMAGEDB.Main.ImageLibrary.DUMMY_ICON, "[DUMMY] Dummy Form", "Dummy Form for testing", False, mainframe)
                 Case "PHTRZ"
-                    If (Not (V_DUMMY.IsHandleCreated)) OrElse (IsNothing(V_DUMMY)) Then
-                        V_PHTRZ = New CMCv.PHTRZ
-                        Display(V_PHTRZ, IMAGEDB.Main.ImageLibrary.COMPRESS_ICON, V_MODSName, V_MODSDesc, True,)
-                    Else
-                        V_PHTRZ.Focus()
-                    End If
-
+                    EnsureOpen(Of CMCv.FRMphotoresizer)(Frm_phtrz, IMAGEDB.Main.ImageLibrary.COMPRESS_ICON, varModuleCode, varModuleCaption, True, mainframe)
                 Case "RESET"
-                    If (Not (V_RESET.IsHandleCreated)) OrElse (IsNothing(V_RESET)) Then
-                        V_RESET = New RESET
-                        Display(V_RESET, IMAGEDB.Main.ImageLibrary.RESET_ICON, "[RESET] Reset Your Application Settings", "Restore your application to initial configuration", True,)
-                    Else
-                        V_RESET.Focus()
-                    End If
+                    EnsureOpen(Of RESET)(Frm_reset, IMAGEDB.Main.ImageLibrary.RESET_ICON, "[RESET] Reset Your Application Settings", "Restore your application to initial configuration", True, mainframe)
             End Select
+
+            'Select Case varCommandCode(0)
+            '    'ACCOUNTING
+            '    Case "ACGR"
+            '        If (Not (Frm_acgr.IsHandleCreated)) OrElse (IsNothing(Frm_acgr)) Then
+            '            Frm_acgr = New FRMacgr
+            '            Display(Frm_acgr, IMAGEDB.Main.ImageLibrary.ACGR_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_acgr.Focus()
+            '        End If
+            '    Case "ACBK"
+            '        If (Not (Frm_acbk.IsHandleCreated)) OrElse (IsNothing(Frm_acbk)) Then
+            '            Frm_acbk = New FRMacbk
+            '            Display(Frm_acbk, IMAGEDB.Main.ImageLibrary.ACBK_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_acbk.Focus()
+            '        End If
+
+
+            '        'LOGISTICS
+            '    Case "MCTG"
+            '        If (Not (Frm_mctg.IsHandleCreated)) OrElse (IsNothing(Frm_mctg)) Then
+            '            Frm_mctg = New FRMmctg
+            '            Display(Frm_mctg, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_mctg.Focus()
+            '        End If
+            '    Case "MMTY"
+            '        If (Not (Frm_mmty.IsHandleCreated)) OrElse (IsNothing(Frm_mmty)) Then
+            '            Frm_mmty = New FRMmmty
+            '            Display(Frm_mmty, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_mmty.Focus()
+            '        End If
+            '    Case "MMGR"
+            '        If (Not (Frm_mmgr.IsHandleCreated)) OrElse (IsNothing(Frm_mmgr)) Then
+            '            Frm_mmgr = New FRMmmgr
+            '            Display(Frm_mmgr, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_mmgr.Focus()
+            '        End If
+            '    Case "SLOC"
+            '        If (Not (Frm_sloc.IsHandleCreated)) OrElse (IsNothing(Frm_sloc)) Then
+            '            Frm_sloc = New FRMsloc
+            '            Display(Frm_sloc, IMAGEDB.Main.ImageLibrary.STORAGE_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_sloc.Focus()
+            '        End If
+            '    Case "PLNT"
+            '        If (Not (Frm_plnt.IsHandleCreated)) OrElse (IsNothing(Frm_plnt)) Then
+            '            Frm_plnt = New FRMplnt
+            '            Display(Frm_plnt, IMAGEDB.Main.ImageLibrary.PLANT_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_plnt.Focus()
+            '        End If
+
+
+            '        'MANAGEMENT
+            '    Case "CCIN"
+            '        If (Not (Frm_ccin.IsHandleCreated)) OrElse (IsNothing(Frm_ccin)) Then
+            '            Frm_ccin = New FRMccin
+            '            Display(Frm_ccin, IMAGEDB.Main.ImageLibrary.CCIN_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_ccin.Focus()
+            '        End If
+            '    Case "CDIN"
+            '        If (Not (Frm_cdin.IsHandleCreated)) OrElse (IsNothing(Frm_cdin)) Then
+            '            Frm_cdin = New FRMcdin
+            '            Display(Frm_cdin, IMAGEDB.Main.ImageLibrary.CDIN_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_cdin.Focus()
+            '        End If
+            '    Case "EPLS"
+            '        If (Not (Frm_epls.IsHandleCreated)) OrElse (IsNothing(Frm_epls)) Then
+            '            Frm_epls = New FRMepls
+            '            Display(Frm_epls, IMAGEDB.Main.ImageLibrary.EPLS_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_epls.Focus()
+            '        End If
+            '    Case "POST"
+            '        If (Not (Frm_post.IsHandleCreated)) OrElse (IsNothing(Frm_post)) Then
+            '            Frm_post = New FRMpost
+            '            Display(Frm_post, IMAGEDB.Main.ImageLibrary.POST_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_post.Focus()
+            '        End If
+
+
+            '        'CUSTOM
+            '    Case "DAR"
+            '        If (Not (Frm_dar.IsHandleCreated)) OrElse (IsNothing(Frm_dar)) Then
+            '            Frm_dar = New FRMdar
+            '            Display(Frm_dar, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_dar.Focus()
+            '        End If
+            '    Case "DARD"
+            '        If (Not (Frm_dard.IsHandleCreated)) OrElse (IsNothing(Frm_dard)) Then
+            '            Frm_dard = New FRMdard
+            '            Display(Frm_dard, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_dar.Focus()
+            '        End If
+            '    Case "DRTM"
+            '        If (Not (Frm_drtm.IsHandleCreated)) OrElse (IsNothing(Frm_drtm)) Then
+            '            Frm_drtm = New FRMdrtm
+            '            Display(Frm_drtm, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_drtm.Focus()
+            '        End If
+            '    Case "DRAA"
+            '        If (Not (Frm_draa.IsHandleCreated)) OrElse (IsNothing(Frm_draa)) Then
+            '            Frm_draa = New FRMdraa
+            '            Display(Frm_draa, IMAGEDB.Main.ImageLibrary.DAR_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_draa.Focus()
+            '        End If
+            '    Case "PEPR"
+            '        If (Not (Frm_pepr.IsHandleCreated)) OrElse (IsNothing(Frm_pepr)) Then
+            '            Frm_pepr = New PEPR
+            '            Display(Frm_pepr, IMAGEDB.Main.ImageLibrary.JJP_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_pepr.Focus()
+            '        End If
+            '    Case "REMS"
+            '        If (Not (Frm_rems.IsHandleCreated)) OrElse (IsNothing(Frm_rems)) Then
+            '            Frm_rems = New REMS
+            '            Display(Frm_rems, IMAGEDB.Main.ImageLibrary.JJP_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_rems.Focus()
+            '        End If
+            '    Case "SAY"
+            '        If (Not (Frm_say.IsHandleCreated)) OrElse (IsNothing(Frm_say)) Then
+            '            Frm_say = New SAY
+            '            Display(Frm_say, IMAGEDB.Main.ImageLibrary.PLANT_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False,)
+            '        Else
+            '            Frm_ccin.Focus()
+            '        End If
+
+
+            '        'SYSTEM
+            '    Case "MODS"
+            '        If (Not (Frm_mods.IsHandleCreated)) OrElse (IsNothing(Frm_mods)) Then
+            '            Frm_mods = New FRMmods
+            '            Display(Frm_mods, IMAGEDB.Main.ImageLibrary.MODS_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_mods.Focus()
+            '        End If
+            '    Case "MOGS"
+            '        If (Not (Frm_mogs.IsHandleCreated)) OrElse (IsNothing(Frm_mogs)) Then
+            '            Frm_mogs = New MOGS
+            '            Display(Frm_mogs, IMAGEDB.Main.ImageLibrary.MODS_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_mogs.Focus()
+            '        End If
+            '    Case "UAC"
+            '        If (Not (Frm_uac.IsHandleCreated)) OrElse (IsNothing(Frm_uac)) Then
+            '            Frm_uac = New UAC
+            '            Display(Frm_uac, IMAGEDB.Main.ImageLibrary.UAC_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_uac.Focus()
+            '        End If
+            '    Case "SYSS"
+            '        If (Not (Frm_syss.IsHandleCreated)) OrElse (IsNothing(Frm_syss)) Then
+            '            Frm_syss = New SYSS
+            '            Display(Frm_syss, IMAGEDB.Main.ImageLibrary.UAC_ICON, "[" & tcode.ToUpper & "] " & varModuleCode, varModuleCaption, False, mainframe)
+            '        Else
+            '            Frm_syss.Focus()
+            '        End If
+
+
+            '     'INSIDE APPS
+            '    Case CType("DUMMY", Char)
+            '        If (Not (Frm_dummy.IsHandleCreated)) OrElse (IsNothing(Frm_dummy)) Then
+            '            Frm_dummy = New Dummy
+            '            Display(Frm_dummy, IMAGEDB.Main.ImageLibrary.DUMMY_ICON, "[DUMMY] Dummy Form", "Dummy Form for testing", False, mainframe)
+            '        Else
+            '            Frm_dummy.Focus()
+            '        End If
+            '    Case "PHTRZ"
+            '        If (Not (Frm_phtrz.IsHandleCreated)) OrElse (IsNothing(Frm_dummy)) Then
+            '            Frm_phtrz = New FRMphotoresizer
+            '            Display(Frm_phtrz, IMAGEDB.Main.ImageLibrary.COMPRESS_ICON, varModuleCode, varModuleCaption, True,)
+            '        Else
+            '            Frm_phtrz.Focus()
+            '        End If
+
+            '    Case "RESET"
+            '        If (Not (Frm_reset.IsHandleCreated)) OrElse (IsNothing(Frm_reset)) Then
+            '            Frm_reset = New RESET
+            '            Display(Frm_reset, IMAGEDB.Main.ImageLibrary.RESET_ICON, "[RESET] Reset Your Application Settings", "Restore your application to initial configuration", True,)
+            '        Else
+            '            Frm_reset.Focus()
+            '        End If
+            'End Select
 
         Catch ex As Exception
             With proLog
                 .AppVersion = GetAppVersion()
-                .FromSender = "[Open] $\Ingrid\Apps\Core\Vb\010. Class\WorkspaceClass.vb"
+                .FromSender = "[Open] $\Ingrid\Apps\Core\Vb\010. Class\[WorkspaceClass.vb]"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult
@@ -277,7 +346,21 @@ Public Class WorkspaceClass
         End Try
     End Sub
 
-    Private Shared Sub V_MODS_DATACHANGED() Handles V_MODS.DATACHANGED
+    Private Shared Sub FRMmods_EventDataChanged() Handles Frm_mods.EventDataChanged
         varForceRefreshMainframeData = True
+    End Sub
+
+    ''' <summary>
+    ''' Ensures a form instance exists and is shown (or focused if already created).
+    ''' This reduces method complexity by centralizing the open-or-focus logic.
+    ''' </summary>
+    <SupportedOSPlatform("windows")>
+    Private Sub EnsureOpen(Of F As {CMCv.FRMstandard, New})(ByRef formcode As F, icon As Object, title As String, caption As String, Optional isModal As Boolean = False, Optional parent As Form = Nothing)
+        If formcode Is Nothing OrElse Not formcode.IsHandleCreated Then
+            formcode = New F()
+            Display(formcode, CType(icon, Image), title, caption, isModal, parent)
+        Else
+            formcode.Focus()
+        End If
     End Sub
 End Class

@@ -1,4 +1,4 @@
-﻿Namespace Database.Adapter.LocalDB.Display
+﻿Namespace Database.Adapter.LocalDb.Display
     Public Structure Request
         Public Property Query As String
         Public Property DataGrid As dgn
@@ -8,7 +8,7 @@
     End Structure
 End Namespace
 
-Namespace Database.Adapter.LocalDB
+Namespace Database.Adapter.LocalDb
     Public Structure Execute
         Public Property Query As String
     End Structure

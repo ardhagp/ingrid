@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class DAR_RPTFilter
+Partial Class FRMdarRptFilter
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -47,16 +47,16 @@ Partial Class DAR_RPTFilter
         ' 
         PnlBottomButton.Controls.Add(BtnCancel)
         PnlBottomButton.Controls.Add(BtnShow)
-        PnlBottomButton.Location = New Point(0, 376)
-        PnlBottomButton.Margin = New Padding(5, 3, 5, 3)
-        PnlBottomButton.Size = New Size(509, 58)
+        PnlBottomButton.Location = New Point(0, 639)
+        PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
+        PnlBottomButton.Size = New Size(727, 97)
         PnlBottomButton.Controls.SetChildIndex(BtnShow, 0)
         PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
         ' 
         ' pnl_
         ' 
-        pnl_.Margin = New Padding(5, 3, 5, 3)
-        pnl_.Size = New Size(509, 61)
+        pnl_.Margin = New Padding(7, 5, 7, 5)
+        pnl_.Size = New Size(727, 104)
         ' 
         ' SLFPanel
         ' 
@@ -74,8 +74,8 @@ Partial Class DAR_RPTFilter
         SLFPanel.Controls.Add(ChkTo)
         SLFPanel.Controls.Add(DtpFrom)
         SLFPanel.Controls.Add(ChkFrom)
-        SLFPanel.Margin = New Padding(5, 3, 5, 3)
-        SLFPanel.Size = New Size(509, 434)
+        SLFPanel.Margin = New Padding(7, 5, 7, 5)
+        SLFPanel.Size = New Size(727, 736)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(ChkFrom, 0)
         SLFPanel.Controls.SetChildIndex(DtpFrom, 0)
@@ -103,10 +103,10 @@ Partial Class DAR_RPTFilter
         BtnShow.FlatStyle = FlatStyle.Flat
         BtnShow.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnShow.ForeColor = Color.White
-        BtnShow.Location = New Point(254, 8)
-        BtnShow.Margin = New Padding(4, 3, 4, 3)
+        BtnShow.Location = New Point(363, 13)
+        BtnShow.Margin = New Padding(6, 5, 6, 5)
         BtnShow.Name = "BtnShow"
-        BtnShow.Size = New Size(117, 46)
+        BtnShow.Size = New Size(167, 77)
         BtnShow.TabIndex = 99
         BtnShow.Text = "&Show"
         BtnShow.UseVisualStyleBackColor = False
@@ -126,10 +126,10 @@ Partial Class DAR_RPTFilter
         BtnCancel.FlatStyle = FlatStyle.Flat
         BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
-        BtnCancel.Location = New Point(378, 8)
-        BtnCancel.Margin = New Padding(4, 3, 4, 3)
+        BtnCancel.Location = New Point(540, 13)
+        BtnCancel.Margin = New Padding(6, 5, 6, 5)
         BtnCancel.Name = "BtnCancel"
-        BtnCancel.Size = New Size(117, 46)
+        BtnCancel.Size = New Size(167, 77)
         BtnCancel.TabIndex = 98
         BtnCancel.Text = "&Cancel"
         BtnCancel.UseVisualStyleBackColor = False
@@ -144,10 +144,10 @@ Partial Class DAR_RPTFilter
         ChkFrom.BackColor = Color.Transparent
         ChkFrom.FlatStyle = FlatStyle.Flat
         ChkFrom.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        ChkFrom.Location = New Point(47, 44)
-        ChkFrom.Margin = New Padding(4, 3, 4, 3)
+        ChkFrom.Location = New Point(67, 73)
+        ChkFrom.Margin = New Padding(6, 5, 6, 5)
         ChkFrom.Name = "ChkFrom"
-        ChkFrom.Size = New Size(39, 25)
+        ChkFrom.Size = New Size(55, 36)
         ChkFrom.TabIndex = 0
         ChkFrom.Text = "In"
         ChkFrom.UseVisualStyleBackColor = False
@@ -155,12 +155,12 @@ Partial Class DAR_RPTFilter
         ' DtpFrom
         ' 
         DtpFrom.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        DtpFrom.Location = New Point(144, 39)
-        DtpFrom.Margin = New Padding(4, 3, 4, 3)
+        DtpFrom.Location = New Point(206, 65)
+        DtpFrom.Margin = New Padding(6, 5, 6, 5)
         DtpFrom.MaxDate = New Date(2028, 6, 24, 0, 0, 0, 0)
         DtpFrom.MinDate = New Date(1918, 6, 24, 0, 0, 0, 0)
         DtpFrom.Name = "DtpFrom"
-        DtpFrom.Size = New Size(321, 29)
+        DtpFrom.Size = New Size(457, 39)
         DtpFrom.TabIndex = 5
         DtpFrom.XOResetOnDisabled = True
         ' 
@@ -170,10 +170,10 @@ Partial Class DAR_RPTFilter
         ChkTo.BackColor = Color.Transparent
         ChkTo.FlatStyle = FlatStyle.Flat
         ChkTo.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        ChkTo.Location = New Point(47, 84)
-        ChkTo.Margin = New Padding(4, 3, 4, 3)
+        ChkTo.Location = New Point(67, 140)
+        ChkTo.Margin = New Padding(6, 5, 6, 5)
         ChkTo.Name = "ChkTo"
-        ChkTo.Size = New Size(41, 25)
+        ChkTo.Size = New Size(60, 36)
         ChkTo.TabIndex = 1
         ChkTo.Text = "To"
         ChkTo.UseVisualStyleBackColor = False
@@ -181,12 +181,12 @@ Partial Class DAR_RPTFilter
         ' DtpTo
         ' 
         DtpTo.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        DtpTo.Location = New Point(144, 80)
-        DtpTo.Margin = New Padding(4, 3, 4, 3)
+        DtpTo.Location = New Point(206, 133)
+        DtpTo.Margin = New Padding(6, 5, 6, 5)
         DtpTo.MaxDate = New Date(2028, 6, 24, 0, 0, 0, 0)
         DtpTo.MinDate = New Date(1918, 6, 24, 0, 0, 0, 0)
         DtpTo.Name = "DtpTo"
-        DtpTo.Size = New Size(321, 29)
+        DtpTo.Size = New Size(457, 39)
         DtpTo.TabIndex = 6
         DtpTo.XOResetOnDisabled = True
         ' 
@@ -196,10 +196,10 @@ Partial Class DAR_RPTFilter
         ChkArea.BackColor = Color.Transparent
         ChkArea.FlatStyle = FlatStyle.Flat
         ChkArea.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        ChkArea.Location = New Point(47, 121)
-        ChkArea.Margin = New Padding(4, 3, 4, 3)
+        ChkArea.Location = New Point(67, 202)
+        ChkArea.Margin = New Padding(6, 5, 6, 5)
         ChkArea.Name = "ChkArea"
-        ChkArea.Size = New Size(58, 25)
+        ChkArea.Size = New Size(83, 36)
         ChkArea.TabIndex = 2
         ChkArea.Text = "Area"
         ChkArea.UseVisualStyleBackColor = False
@@ -210,10 +210,10 @@ Partial Class DAR_RPTFilter
         CboArea.FlatStyle = FlatStyle.Flat
         CboArea.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         CboArea.FormattingEnabled = True
-        CboArea.Location = New Point(144, 120)
-        CboArea.Margin = New Padding(4, 3, 4, 3)
+        CboArea.Location = New Point(206, 200)
+        CboArea.Margin = New Padding(6, 5, 6, 5)
         CboArea.Name = "CboArea"
-        CboArea.Size = New Size(321, 29)
+        CboArea.Size = New Size(457, 40)
         CboArea.TabIndex = 7
         ' 
         ' CboActivity
@@ -222,10 +222,10 @@ Partial Class DAR_RPTFilter
         CboActivity.FlatStyle = FlatStyle.Flat
         CboActivity.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         CboActivity.FormattingEnabled = True
-        CboActivity.Location = New Point(144, 160)
-        CboActivity.Margin = New Padding(4, 3, 4, 3)
+        CboActivity.Location = New Point(206, 267)
+        CboActivity.Margin = New Padding(6, 5, 6, 5)
         CboActivity.Name = "CboActivity"
-        CboActivity.Size = New Size(321, 29)
+        CboActivity.Size = New Size(457, 40)
         CboActivity.TabIndex = 8
         ' 
         ' ChkActivity
@@ -234,10 +234,10 @@ Partial Class DAR_RPTFilter
         ChkActivity.BackColor = Color.Transparent
         ChkActivity.FlatStyle = FlatStyle.Flat
         ChkActivity.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        ChkActivity.Location = New Point(47, 162)
-        ChkActivity.Margin = New Padding(4, 3, 4, 3)
+        ChkActivity.Location = New Point(67, 270)
+        ChkActivity.Margin = New Padding(6, 5, 6, 5)
         ChkActivity.Name = "ChkActivity"
-        ChkActivity.Size = New Size(77, 25)
+        ChkActivity.Size = New Size(113, 36)
         ChkActivity.TabIndex = 3
         ChkActivity.Text = "Activity"
         ChkActivity.UseVisualStyleBackColor = False
@@ -248,10 +248,10 @@ Partial Class DAR_RPTFilter
         CboBy.FlatStyle = FlatStyle.Flat
         CboBy.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         CboBy.FormattingEnabled = True
-        CboBy.Location = New Point(144, 201)
-        CboBy.Margin = New Padding(4, 3, 4, 3)
+        CboBy.Location = New Point(206, 335)
+        CboBy.Margin = New Padding(6, 5, 6, 5)
         CboBy.Name = "CboBy"
-        CboBy.Size = New Size(321, 29)
+        CboBy.Size = New Size(457, 40)
         CboBy.TabIndex = 9
         ' 
         ' ChkBy
@@ -260,10 +260,10 @@ Partial Class DAR_RPTFilter
         ChkBy.BackColor = Color.Transparent
         ChkBy.FlatStyle = FlatStyle.Flat
         ChkBy.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        ChkBy.Location = New Point(47, 202)
-        ChkBy.Margin = New Padding(4, 3, 4, 3)
+        ChkBy.Location = New Point(67, 337)
+        ChkBy.Margin = New Padding(6, 5, 6, 5)
         ChkBy.Name = "ChkBy"
-        ChkBy.Size = New Size(43, 25)
+        ChkBy.Size = New Size(61, 36)
         ChkBy.TabIndex = 4
         ChkBy.Text = "By"
         ChkBy.UseVisualStyleBackColor = False
@@ -271,11 +271,11 @@ Partial Class DAR_RPTFilter
         ' TxtDescription
         ' 
         TxtDescription.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtDescription.Location = New Point(144, 241)
-        TxtDescription.Margin = New Padding(4, 3, 4, 3)
+        TxtDescription.Location = New Point(206, 402)
+        TxtDescription.Margin = New Padding(6, 5, 6, 5)
         TxtDescription.MaxLength = 255
         TxtDescription.Name = "TxtDescription"
-        TxtDescription.Size = New Size(321, 29)
+        TxtDescription.Size = New Size(457, 39)
         TxtDescription.TabIndex = 10
         TxtDescription.Tag = "txt"
         TxtDescription.XOAutoTrim = False
@@ -301,10 +301,10 @@ Partial Class DAR_RPTFilter
         ' LblNote
         ' 
         LblNote.Font = New Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point)
-        LblNote.Location = New Point(139, 278)
-        LblNote.Margin = New Padding(4, 0, 4, 0)
+        LblNote.Location = New Point(199, 463)
+        LblNote.Margin = New Padding(6, 0, 6, 0)
         LblNote.Name = "LblNote"
-        LblNote.Size = New Size(327, 60)
+        LblNote.Size = New Size(467, 100)
         LblNote.TabIndex = 1007
         LblNote.Text = "Note : The more specific your filter," & vbCrLf & "the more faster report will load."
         LblNote.XOCustomElipsis = False
@@ -315,10 +315,10 @@ Partial Class DAR_RPTFilter
         RdoColor.Checked = True
         RdoColor.FlatStyle = FlatStyle.Flat
         RdoColor.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        RdoColor.Location = New Point(144, 336)
-        RdoColor.Margin = New Padding(4, 3, 4, 3)
+        RdoColor.Location = New Point(206, 560)
+        RdoColor.Margin = New Padding(6, 5, 6, 5)
         RdoColor.Name = "RdoColor"
-        RdoColor.Size = New Size(65, 25)
+        RdoColor.Size = New Size(94, 36)
         RdoColor.TabIndex = 1008
         RdoColor.TabStop = True
         RdoColor.Text = "Color"
@@ -329,25 +329,25 @@ Partial Class DAR_RPTFilter
         RdoBlackWhite.AutoSize = True
         RdoBlackWhite.FlatStyle = FlatStyle.Flat
         RdoBlackWhite.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        RdoBlackWhite.Location = New Point(248, 336)
-        RdoBlackWhite.Margin = New Padding(4, 3, 4, 3)
+        RdoBlackWhite.Location = New Point(354, 560)
+        RdoBlackWhite.Margin = New Padding(6, 5, 6, 5)
         RdoBlackWhite.Name = "RdoBlackWhite"
-        RdoBlackWhite.Size = New Size(125, 25)
+        RdoBlackWhite.Size = New Size(188, 36)
         RdoBlackWhite.TabIndex = 1009
         RdoBlackWhite.TabStop = True
         RdoBlackWhite.Text = "Black && White"
         RdoBlackWhite.UseVisualStyleBackColor = True
         ' 
-        ' DAR_RPTFilter
+        ' FRMdarRptFilter
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(509, 517)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(727, 862)
         FormBorderStyle = FormBorderStyle.FixedSingle
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
+        Margin = New Padding(10, 5, 10, 5)
         MaximizeBox = False
         MinimizeBox = False
-        Name = "DAR_RPTFilter"
+        Name = "FRMdarRptFilter"
         PnlBottomButton.ResumeLayout(False)
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
         pnl_.ResumeLayout(False)

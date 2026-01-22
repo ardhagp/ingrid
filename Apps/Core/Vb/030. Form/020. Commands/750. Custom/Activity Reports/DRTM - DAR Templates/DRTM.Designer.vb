@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class DRTM
-    Inherits CMCv.Std_Fi
+Partial Class FRMdrtm
+    Inherits CMCv.FRMstandardFind
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -20,9 +20,9 @@ Partial Class DRTM
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
         DgnTemplate = New dgn(components)
         template_id = New DataGridViewTextBoxColumn()
         template_title = New DataGridViewTextBoxColumn()
@@ -43,11 +43,12 @@ Partial Class DRTM
         ' 
         ' TxtFind
         ' 
-        TxtFind.Margin = New Padding(5, 3, 5, 3)
+        TxtFind.Margin = New Padding(7, 5, 7, 5)
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(DgnTemplate)
+        SLFPanel.Size = New Size(1307, 952)
         SLFPanel.Controls.SetChildIndex(PnlFind, 0)
         SLFPanel.Controls.SetChildIndex(DgnTemplate, 0)
         ' 
@@ -55,77 +56,81 @@ Partial Class DRTM
         ' 
         DgnTemplate.AllowUserToAddRows = False
         DgnTemplate.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(203), CByte(236), CByte(181))
-        DgnTemplate.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(197), CByte(211), CByte(109))
+        DgnTemplate.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         DgnTemplate.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnTemplate.BorderStyle = BorderStyle.None
         DgnTemplate.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnTemplate.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
-        DataGridViewCellStyle2.SelectionForeColor = Color.Black
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DgnTemplate.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = Color.YellowGreen
+        DataGridViewCellStyle5.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
+        DataGridViewCellStyle5.SelectionForeColor = Color.Black
+        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
+        DgnTemplate.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         DgnTemplate.ColumnHeadersHeight = 43
         DgnTemplate.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DgnTemplate.Columns.AddRange(New DataGridViewColumn() {template_id, template_title, template_text1})
         DgnTemplate.Dock = DockStyle.Fill
         DgnTemplate.EnableHeadersVisualStyles = False
         DgnTemplate.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DgnTemplate.Location = New Point(0, 53)
-        DgnTemplate.Margin = New Padding(4, 3, 4, 3)
+        DgnTemplate.Location = New Point(0, 88)
+        DgnTemplate.Margin = New Padding(6, 5, 6, 5)
         DgnTemplate.Name = "DgnTemplate"
         DgnTemplate.ReadOnly = True
         DgnTemplate.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = Color.YellowGreen
-        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
-        DataGridViewCellStyle3.SelectionForeColor = Color.Black
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-        DgnTemplate.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = Color.YellowGreen
+        DataGridViewCellStyle6.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle6.SelectionForeColor = Color.Black
+        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+        DgnTemplate.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DgnTemplate.RowHeadersWidth = 62
         DgnTemplate.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DgnTemplate.Size = New Size(915, 511)
-        DgnTemplate.XOGroupFirstRows = False
-        DgnTemplate.XOGunakanNomorBaris = False
+        DgnTemplate.Size = New Size(1307, 864)
         DgnTemplate.StandardTab = True
         DgnTemplate.TabIndex = 802
+        DgnTemplate.XOGroupFirstRows = False
+        DgnTemplate.XOGunakanNomorBaris = False
         ' 
         ' template_id
         ' 
         template_id.DataPropertyName = "template_id"
         template_id.HeaderText = "ID"
+        template_id.MinimumWidth = 8
         template_id.Name = "template_id"
         template_id.ReadOnly = True
+        template_id.Width = 150
         ' 
         ' template_title
         ' 
         template_title.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         template_title.DataPropertyName = "template_title"
         template_title.HeaderText = "Name / Title"
+        template_title.MinimumWidth = 8
         template_title.Name = "template_title"
         template_title.ReadOnly = True
-        template_title.Width = 70
         ' 
         ' template_text1
         ' 
         template_text1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         template_text1.DataPropertyName = "template_text1"
         template_text1.HeaderText = "Template Text"
+        template_text1.MinimumWidth = 8
         template_text1.Name = "template_text1"
         template_text1.ReadOnly = True
         ' 
-        ' DRTM
+        ' FRMdrtm
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(915, 647)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1307, 1078)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
-        Name = "DRTM"
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMdrtm"
         PnlFind.ResumeLayout(False)
         PnlFind.PerformLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

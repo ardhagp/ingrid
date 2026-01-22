@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Std_Fi_Fo
-    Inherits CMCv.Std_Fi
+Partial Class FRMstandardFindFooter
+    Inherits CMCv.FRMstandardFind
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -66,7 +66,7 @@ Partial Class Std_Fi_Fo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(784, 561)
-        Me.Name = "frmStandard_FFC"
+        Me.Name = "FRMstandardFindFooter"
         Me.PnlFind.ResumeLayout(False)
         Me.PnlFind.PerformLayout()
         CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).EndInit()

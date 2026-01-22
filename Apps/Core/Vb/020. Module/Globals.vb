@@ -21,8 +21,8 @@ Module Globals
     'Public SecurityEngine As New Security.Engine
     Public varDatabaseEngine As String
     Public varDatabaseName As String
-    Public V_IMG_COMPRESS As New CMCv.ImageEditor.Proccessor.Compress
-    Public V_IMG_EDITOR As New CMCv.ImageEditor.Proccessor.Editor
+    Public varImageCompress As New CMCv.ImageEditor.Proccessor.Compress
+    Public varImageEditor As New CMCv.ImageEditor.Proccessor.Editor
     Public varUserAccess As New Application.Access
     'Public V_SYSAPP As New Application.Modules
     Public varLogUser As New LibSQL.SystemLog.Activity.User
@@ -35,7 +35,7 @@ Module Globals
 
     'Public clsDBsqlite As Database.Engine.LocalDB
     'Public WithEvents TED As New frmTextEditor
-    Public WithEvents frmMSG As New frmDialogBox
+    Public WithEvents frmMSG As New FRMdialogbox
 
     Public varVersionapplication As String
     Public varVersionnetworkapplication As Version
@@ -47,8 +47,8 @@ Module Globals
 
     <SupportedOSPlatform("windows")>
     Public Sub FirstLoad()
-        Call GETAPPVERSION()
-        Call CHECKREQUIREDFOLDER()
+        Call GetAppVersion()
+        Call CheckRequiredFolder()
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -159,68 +159,6 @@ Module Globals
 #End Region
 
 #Region "Display Form"
-
-    ''' <summary>
-    ''' Untuk menampilkan form Standard
-    ''' </summary>
-    ''' <param name="formName">Nama Form</param>
-    ''' <param name="FormImage">Form Icon</param>
-    ''' <param name="FormTitle">Form Title</param>
-    ''' <param name="FormSubTitle">Form Subtitle</param>
-    ''' <param name="IsDialog">True/False</param>
-    ''' <param name="ParentFrame">MDI</param>
-    ''' <remarks></remarks>
-    <SupportedOSPlatform("windows")>
-    Public Sub Display(ByVal formName As CMCv.frmStandard, Optional formimage As System.Drawing.Image = Nothing,
-                       Optional formtitle As String = "", Optional formsubtitle As String = "",
-                       Optional isdialog As Boolean = False, Optional parentframe As Windows.Forms.Form = Nothing)
-        Try
-            formName.SLFNamaForm.Text = formtitle
-            'If formimage IsNot Nothing Then
-            '    formName.SLFLogo.Image = formimage
-            'End If
-            'formName.SLFSubNamaForm.Text = formsubtitle
-            'If Not (isdialog) Then
-            '    If (formName.IsHandleCreated) Then
-            '        formName.Focus()
-            '    Else
-            '        If parentframe IsNot Nothing Then
-            '            formName.Visible = False
-            '            formName.MdiParent = parentframe
-            '            'formName.WindowState = FormWindowState.Maximized
-            '            formName.Show()
-            '            formName.Visible = True
-            '        Else
-            '            formName.Show()
-            '        End If
-            '    End If
-            'Else
-            '    formName.ShowDialog()
-            '    formName.Dispose()
-            'End If
-
-
-        Catch ex As Exception
-            With proLog
-                .AppVersion = GETAPPVERSION()
-                .FromSender = "[Open] $\Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
-                .InternalStackTrace = ex.StackTrace
-                .Message = ex.Message
-                .Number = ex.HResult
-                .ResumeNext = True
-                .SaveInBetterLog = True
-                .SaveLogInLocal = False
-                .ShowErrorReporting = True
-                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
-                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
-            End With
-
-            Dim clsLog As New Ladybug.Log.Events
-            clsLog.ShowData(proLog)
-            clsLog = Nothing
-        End Try
-    End Sub
-
     ''' <summary>
     ''' Untuk menampilkan form Standard + Footer Container
     ''' </summary>
@@ -232,12 +170,13 @@ Module Globals
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Sub Display(ByVal formname As CMCv.Std_Fo, Optional ByVal formimage As System.Drawing.Image = Nothing, Optional ByVal formtitle As String = "", Optional ByVal formsubtitle As String = "", Optional ByVal isdialog As Boolean = False, Optional ByVal parentframe As Windows.Forms.Form = Nothing)
+    Public Sub Display(formname As CMCv.FRMstandard, Optional formimage As System.Drawing.Image = Nothing, Optional formtitle As String = "", Optional formsubtitle As String = "", Optional isdialog As Boolean = False, Optional parentframe As Windows.Forms.Form = Nothing)
         Try
             formname.SLFNamaForm.Text = formtitle
             If formimage IsNot Nothing Then
                 formname.SLFLogo.Image = formimage
             End If
+
             formname.SLFSubNamaForm.Text = formsubtitle
             If Not (isdialog) Then
                 If (formname.IsHandleCreated) Then
@@ -259,7 +198,7 @@ Module Globals
             End If
         Catch ex As Exception
             With proLog
-                .AppVersion = GETAPPVERSION()
+                .AppVersion = GetAppVersion()
                 .FromSender = "[Open] $\Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
@@ -289,8 +228,8 @@ Module Globals
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
-    Public Function Decision(ByVal message As String, ByVal title As String, ByVal messageicon As CMCv.frmDialogBox.MessageIcon, ByVal buttontype As CMCv.frmDialogBox.MessageTypes) As DialogResult
-        frmMSG = New CMCv.frmDialogBox(message, title, messageicon, buttontype)
+    Public Function Decision(ByVal message As String, ByVal title As String, ByVal messageicon As CMCv.FRMdialogbox.MessageIcon, ByVal buttontype As CMCv.FRMdialogbox.MessageTypes) As DialogResult
+        frmMSG = New CMCv.FRMdialogbox(message, title, messageicon, buttontype)
         Return frmMSG.ShowDialog()
         frmMSG.Dispose()
     End Function

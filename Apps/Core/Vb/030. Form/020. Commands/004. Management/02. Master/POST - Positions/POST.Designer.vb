@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class POST
-    Inherits CMCv.Std_Fi
+Partial Class FRMpost
+    Inherits CMCv.FRMstandardFind
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -20,9 +20,9 @@ Partial Class POST
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
         DgnPOST = New dgn(components)
         company_code = New DataGridViewTextBoxColumn()
         departement_code = New DataGridViewTextBoxColumn()
@@ -46,11 +46,12 @@ Partial Class POST
         ' 
         ' TxtFind
         ' 
-        TxtFind.Margin = New Padding(5, 3, 5, 3)
+        TxtFind.Margin = New Padding(7, 5, 7, 5)
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(DgnPOST)
+        SLFPanel.Size = New Size(1307, 952)
         SLFPanel.Controls.SetChildIndex(PnlFind, 0)
         SLFPanel.Controls.SetChildIndex(DgnPOST, 0)
         ' 
@@ -58,111 +59,119 @@ Partial Class POST
         ' 
         DgnPOST.AllowUserToAddRows = False
         DgnPOST.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(254), CByte(192), CByte(182))
-        DgnPOST.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(230), CByte(226), CByte(98))
+        DgnPOST.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         DgnPOST.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnPOST.BorderStyle = BorderStyle.None
         DgnPOST.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnPOST.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
-        DataGridViewCellStyle2.SelectionForeColor = Color.Black
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DgnPOST.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = Color.YellowGreen
+        DataGridViewCellStyle5.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
+        DataGridViewCellStyle5.SelectionForeColor = Color.Black
+        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
+        DgnPOST.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         DgnPOST.ColumnHeadersHeight = 43
         DgnPOST.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DgnPOST.Columns.AddRange(New DataGridViewColumn() {company_code, departement_code, position_id, position_code, position_name, position_description})
         DgnPOST.Dock = DockStyle.Fill
         DgnPOST.EnableHeadersVisualStyles = False
         DgnPOST.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DgnPOST.Location = New Point(0, 53)
-        DgnPOST.Margin = New Padding(4, 3, 4, 3)
+        DgnPOST.Location = New Point(0, 88)
+        DgnPOST.Margin = New Padding(6, 5, 6, 5)
         DgnPOST.Name = "DgnPOST"
         DgnPOST.ReadOnly = True
         DgnPOST.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = Color.YellowGreen
-        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
-        DataGridViewCellStyle3.SelectionForeColor = Color.Black
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-        DgnPOST.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = Color.YellowGreen
+        DataGridViewCellStyle6.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle6.SelectionForeColor = Color.Black
+        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+        DgnPOST.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DgnPOST.RowHeadersWidth = 62
         DgnPOST.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DgnPOST.Size = New Size(915, 511)
-        DgnPOST.XOGroupFirstRows = False
-        DgnPOST.XOGunakanNomorBaris = True
+        DgnPOST.Size = New Size(1307, 864)
         DgnPOST.StandardTab = True
         DgnPOST.TabIndex = 0
+        DgnPOST.XOGroupFirstRows = False
+        DgnPOST.XOGunakanNomorBaris = True
         ' 
         ' company_code
         ' 
         company_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         company_code.DataPropertyName = "company_code"
         company_code.HeaderText = "Company"
+        company_code.MinimumWidth = 8
         company_code.Name = "company_code"
         company_code.ReadOnly = True
         company_code.SortMode = DataGridViewColumnSortMode.Programmatic
-        company_code.Width = 85
+        company_code.Width = 117
         ' 
         ' departement_code
         ' 
         departement_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         departement_code.DataPropertyName = "departement_code"
         departement_code.HeaderText = "Departement"
+        departement_code.MinimumWidth = 8
         departement_code.Name = "departement_code"
         departement_code.ReadOnly = True
         departement_code.SortMode = DataGridViewColumnSortMode.Programmatic
-        departement_code.Width = 105
+        departement_code.Width = 149
         ' 
         ' position_id
         ' 
         position_id.DataPropertyName = "position_id"
         position_id.HeaderText = "ID"
+        position_id.MinimumWidth = 8
         position_id.Name = "position_id"
         position_id.ReadOnly = True
         position_id.SortMode = DataGridViewColumnSortMode.Programmatic
         position_id.Visible = False
+        position_id.Width = 150
         ' 
         ' position_code
         ' 
         position_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         position_code.DataPropertyName = "position_code"
         position_code.HeaderText = "Code"
+        position_code.MinimumWidth = 8
         position_code.Name = "position_code"
         position_code.ReadOnly = True
         position_code.SortMode = DataGridViewColumnSortMode.Programmatic
-        position_code.Width = 60
+        position_code.Width = 83
         ' 
         ' position_name
         ' 
         position_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         position_name.DataPropertyName = "position_name"
         position_name.HeaderText = "Position Name"
+        position_name.MinimumWidth = 8
         position_name.Name = "position_name"
         position_name.ReadOnly = True
         position_name.SortMode = DataGridViewColumnSortMode.Programmatic
-        position_name.Width = 102
+        position_name.Width = 148
         ' 
         ' position_description
         ' 
         position_description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         position_description.DataPropertyName = "position_description"
         position_description.HeaderText = "Description"
+        position_description.MinimumWidth = 8
         position_description.Name = "position_description"
         position_description.ReadOnly = True
         position_description.SortMode = DataGridViewColumnSortMode.Programmatic
         ' 
-        ' POST
+        ' FRMpost
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(915, 647)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1307, 1078)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
-        Name = "POST"
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMpost"
         PnlFind.ResumeLayout(False)
         PnlFind.PerformLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

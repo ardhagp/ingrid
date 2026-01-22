@@ -1,9 +1,4 @@
-﻿Imports System.ComponentModel
-Imports System.IO
-Imports System.Security.Cryptography
-Imports System.Text
-Imports System.Text.Encoding
-
+﻿
 Namespace Security
     Public Class Engine
         ''' <summary>

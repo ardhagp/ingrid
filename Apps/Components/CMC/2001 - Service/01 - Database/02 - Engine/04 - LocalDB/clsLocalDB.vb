@@ -11,7 +11,7 @@ Namespace Database.Engine
         Private ReadOnly varCommand(2) As SqlClient.SqlCommand
         Private ReadOnly varDataReader(2) As SqlClient.SqlDataReader
 
-        Private ReadOnly varLocalDB As New Connect.LocalDBConnection
+        Private ReadOnly varLocalDbConnection As New Connect.LocalDbConnection
 
         <SupportedOSPlatform("windows")>
         Public Shared Function CheckDbCatalog() As Boolean
@@ -99,7 +99,7 @@ Namespace Database.Engine
                 'Dim FileInfo As New OperatingSystem.File.Info
 
                 If OperatingSystem.File.Info.IsExists(varFilePath(0)) Then
-                    varConnectionString(0) = varLocalDB.LocalDBInitialCatalog(varFilePath(0))
+                    varConnectionString(0) = varLocalDbConnection.LocalDBInitialCatalog(varFilePath(0))
 
                     varConnection(1) = New SqlClient.SqlConnection(varConnectionString(0)) 'OleDb.OleDbConnection(_CS(0))
                     varConnection(1).Open()
@@ -110,7 +110,7 @@ Namespace Database.Engine
                 varFilePath(1) = varLocation & "\Resources\errlog.mdf"
 
                 If OperatingSystem.File.Info.IsExists(varFilePath(1)) Then
-                    varConnectionString(1) = varLocalDB.LocalDBInitialCatalog(varFilePath(1))
+                    varConnectionString(1) = varLocalDbConnection.LocalDBInitialCatalog(varFilePath(1))
 
                     varConnection(2) = New SqlClient.SqlConnection(varConnectionString(1))
                     varConnection(2).Open()

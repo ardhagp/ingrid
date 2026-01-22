@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class ACBK
-    Inherits CMCv.frmStandard
+Partial Class FRMacbk
+    Inherits CMCv.FRMstandard
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -20,10 +20,10 @@ Partial Class ACBK
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Pnl1 = New pnl(components)
         BtnClear = New btn(components)
         Lbl1 = New lbl(components)
@@ -46,6 +46,7 @@ Partial Class ACBK
         ' 
         SLFPanel.Controls.Add(DgnACBK)
         SLFPanel.Controls.Add(Pnl1)
+        SLFPanel.Size = New Size(1307, 952)
         ' 
         ' Pnl1
         ' 
@@ -54,9 +55,9 @@ Partial Class ACBK
         Pnl1.Controls.Add(TxtFind)
         Pnl1.Dock = DockStyle.Top
         Pnl1.Location = New Point(0, 0)
-        Pnl1.Margin = New Padding(4, 3, 4, 3)
+        Pnl1.Margin = New Padding(6, 5, 6, 5)
         Pnl1.Name = "Pnl1"
-        Pnl1.Size = New Size(915, 53)
+        Pnl1.Size = New Size(1307, 88)
         Pnl1.TabIndex = 800
         ' 
         ' BtnClear
@@ -69,38 +70,40 @@ Partial Class ACBK
         BtnClear.FlatStyle = FlatStyle.Flat
         BtnClear.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnClear.ForeColor = Color.White
-        BtnClear.Location = New Point(306, 3)
-        BtnClear.Margin = New Padding(4, 3, 4, 3)
+        BtnClear.Location = New Point(437, 5)
+        BtnClear.Margin = New Padding(6, 5, 6, 5)
         BtnClear.Name = "BtnClear"
-        BtnClear.Size = New Size(117, 46)
+        BtnClear.Size = New Size(167, 77)
+        BtnClear.TabIndex = 801
+        BtnClear.Text = "Clear"
+        BtnClear.UseVisualStyleBackColor = False
         BtnClear.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
         BtnClear.XOTampilkanFocusBorder = False
         BtnClear.XOValidasiSemuaInput = False
         BtnClear.XOValidasiSemuaInputTag = Nothing
-        BtnClear.TabIndex = 801
-        BtnClear.Text = "Clear"
-        BtnClear.UseVisualStyleBackColor = False
         ' 
         ' Lbl1
         ' 
         Lbl1.AutoSize = True
         Lbl1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Lbl1.Location = New Point(14, 15)
-        Lbl1.Margin = New Padding(4, 0, 4, 0)
+        Lbl1.Location = New Point(20, 25)
+        Lbl1.Margin = New Padding(6, 0, 6, 0)
         Lbl1.Name = "Lbl1"
-        Lbl1.Size = New Size(40, 21)
-        Lbl1.XOCustomElipsis = False
+        Lbl1.Size = New Size(60, 32)
         Lbl1.TabIndex = 5
         Lbl1.Text = "Find"
+        Lbl1.XOCustomElipsis = False
         ' 
         ' TxtFind
         ' 
         TxtFind.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtFind.Location = New Point(74, 12)
-        TxtFind.Margin = New Padding(4, 3, 4, 3)
+        TxtFind.Location = New Point(106, 20)
+        TxtFind.Margin = New Padding(6, 5, 6, 5)
         TxtFind.MaxLength = 255
         TxtFind.Name = "TxtFind"
-        TxtFind.Size = New Size(224, 29)
+        TxtFind.Size = New Size(318, 39)
+        TxtFind.TabIndex = 800
+        TxtFind.Tag = "txt"
         TxtFind.XOAutoTrim = False
         TxtFind.XOHarusDiisi = False
         TxtFind.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -120,109 +123,114 @@ Partial Class ACBK
         TxtFind.XOSQLText = Nothing
         TxtFind.XOTanpaSpasi = False
         TxtFind.XOValidasiField = Nothing
-        TxtFind.TabIndex = 800
-        TxtFind.Tag = "txt"
         ' 
         ' DgnACBK
         ' 
         DgnACBK.AllowUserToAddRows = False
         DgnACBK.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(198), CByte(193), CByte(185))
-        DgnACBK.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.BackColor = Color.FromArgb(CByte(212), CByte(193), CByte(168))
+        DgnACBK.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
         DgnACBK.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnACBK.BorderStyle = BorderStyle.None
         DgnACBK.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnACBK.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
-        DataGridViewCellStyle2.SelectionForeColor = Color.Black
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DgnACBK.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = Color.YellowGreen
+        DataGridViewCellStyle6.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = Color.YellowGreen
+        DataGridViewCellStyle6.SelectionForeColor = Color.Black
+        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+        DgnACBK.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         DgnACBK.ColumnHeadersHeight = 43
         DgnACBK.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DgnACBK.Columns.AddRange(New DataGridViewColumn() {book_id, company_code, book_code, book_bookname, book_datecreated})
         DgnACBK.Dock = DockStyle.Fill
         DgnACBK.EnableHeadersVisualStyles = False
         DgnACBK.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DgnACBK.Location = New Point(0, 53)
-        DgnACBK.Margin = New Padding(4, 3, 4, 3)
+        DgnACBK.Location = New Point(0, 88)
+        DgnACBK.Margin = New Padding(6, 5, 6, 5)
         DgnACBK.Name = "DgnACBK"
         DgnACBK.ReadOnly = True
         DgnACBK.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = Color.YellowGreen
-        DataGridViewCellStyle4.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = Color.Yellow
-        DataGridViewCellStyle4.SelectionForeColor = Color.Black
-        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
-        DgnACBK.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = Color.YellowGreen
+        DataGridViewCellStyle8.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle8.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle8.SelectionForeColor = Color.Black
+        DataGridViewCellStyle8.WrapMode = DataGridViewTriState.True
+        DgnACBK.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DgnACBK.RowHeadersWidth = 62
         DgnACBK.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DgnACBK.Size = New Size(915, 511)
-        DgnACBK.XOGroupFirstRows = False
-        DgnACBK.XOGunakanNomorBaris = True
+        DgnACBK.Size = New Size(1307, 864)
         DgnACBK.StandardTab = True
         DgnACBK.TabIndex = 0
+        DgnACBK.XOGroupFirstRows = False
+        DgnACBK.XOGunakanNomorBaris = True
         ' 
         ' book_id
         ' 
         book_id.DataPropertyName = "book_id"
         book_id.HeaderText = "ID"
+        book_id.MinimumWidth = 8
         book_id.Name = "book_id"
         book_id.ReadOnly = True
         book_id.Visible = False
+        book_id.Width = 150
         ' 
         ' company_code
         ' 
         company_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         company_code.DataPropertyName = "company_code"
         company_code.HeaderText = "Company"
+        company_code.MinimumWidth = 8
         company_code.Name = "company_code"
         company_code.ReadOnly = True
         company_code.SortMode = DataGridViewColumnSortMode.Programmatic
-        company_code.Width = 85
+        company_code.Width = 117
         ' 
         ' book_code
         ' 
         book_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         book_code.DataPropertyName = "book_code"
-        DataGridViewCellStyle3.BackColor = Color.GreenYellow
-        book_code.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.BackColor = Color.GreenYellow
+        book_code.DefaultCellStyle = DataGridViewCellStyle7
         book_code.HeaderText = "Acc Book Code"
+        book_code.MinimumWidth = 8
         book_code.Name = "book_code"
         book_code.ReadOnly = True
         book_code.SortMode = DataGridViewColumnSortMode.Programmatic
-        book_code.Width = 80
+        book_code.Width = 149
         ' 
         ' book_bookname
         ' 
         book_bookname.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         book_bookname.DataPropertyName = "book_bookname"
         book_bookname.HeaderText = "Book Name"
+        book_bookname.MinimumWidth = 8
         book_bookname.Name = "book_bookname"
         book_bookname.ReadOnly = True
         book_bookname.SortMode = DataGridViewColumnSortMode.Programmatic
-        book_bookname.Width = 88
+        book_bookname.Width = 124
         ' 
         ' book_datecreated
         ' 
         book_datecreated.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         book_datecreated.DataPropertyName = "book_datecreated"
         book_datecreated.HeaderText = "Created On"
+        book_datecreated.MinimumWidth = 8
         book_datecreated.Name = "book_datecreated"
         book_datecreated.ReadOnly = True
         book_datecreated.SortMode = DataGridViewColumnSortMode.Programmatic
         ' 
-        ' ACBK
+        ' FRMacbk
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(915, 647)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1307, 1078)
         KeyPreview = True
-        Margin = New Padding(6, 3, 6, 3)
-        Name = "ACBK"
+        Margin = New Padding(9, 5, 9, 5)
+        Name = "FRMacbk"
         Text = "Nama Form"
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
         pnl_.ResumeLayout(False)

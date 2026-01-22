@@ -13,7 +13,7 @@ Namespace Database.Engine
         Private ReadOnly varCommand(1) As MySqlClient.MySqlCommand
         Private ReadOnly varDataAdapter As MySqlClient.MySqlDataAdapter
 
-        Private ReadOnly varMySQL As New Connect.Mysqlconnection
+        Private ReadOnly varMySqlConnection As New Connect.Mysqlconnection
 
         Private disposedValue As Boolean
 
@@ -60,7 +60,7 @@ Namespace Database.Engine
 
             Dim varSuccess As Boolean
             Try
-                varConnection(1) = New MySqlClient.MySqlConnection(varMySQL.Mysqlforcessl(databaseproperties.ServerAddress, databaseproperties.ServerPort, databaseproperties.DatabaseName, databaseproperties.Username, databaseproperties.Password))
+                varConnection(1) = New MySqlClient.MySqlConnection(varMySqlConnection.Mysqlforcessl(databaseproperties.ServerAddress, databaseproperties.ServerPort, databaseproperties.DatabaseName, databaseproperties.Username, databaseproperties.Password))
                 varConnection(1).Open()
                 varSuccess = True
             Catch ex As MySqlClient.MySqlException

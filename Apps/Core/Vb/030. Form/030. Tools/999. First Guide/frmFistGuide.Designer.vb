@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frmFistGuide
+Partial Class FRMfirstguide
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -23,7 +23,6 @@ Partial Class frmFistGuide
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Btn_Process = New btn(components)
         Lbl_Step = New lbl(components)
         Gbx_Company = New gbx(components)
         ULbl5 = New ULbl()
@@ -36,9 +35,7 @@ Partial Class frmFistGuide
         Txt_Position = New txt(components)
         Txt_Department = New txt(components)
         Txt_Company = New txt(components)
-        Btn_Close = New btn(components)
         Gbx_Login = New gbx(components)
-        Btn_Check = New btn(components)
         UPwdStrength1 = New UPwdStrength()
         ULbl7 = New ULbl()
         ULbl6 = New ULbl()
@@ -47,7 +44,6 @@ Partial Class frmFistGuide
         object_da28eea8_631c_4534_a532_605841b1d2bd = New lbl(components)
         Gbx_Modules = New gbx(components)
         Dgn1 = New dgn(components)
-        PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
         SLFPanel.SuspendLayout()
@@ -60,16 +56,14 @@ Partial Class frmFistGuide
         ' 
         ' PnlBottomButton
         ' 
-        PnlBottomButton.Controls.Add(Btn_Close)
-        PnlBottomButton.Controls.Add(Btn_Process)
-        PnlBottomButton.Location = New Point(0, 397)
-        PnlBottomButton.Size = New Size(479, 58)
-        PnlBottomButton.Controls.SetChildIndex(Btn_Process, 0)
-        PnlBottomButton.Controls.SetChildIndex(Btn_Close, 0)
+        PnlBottomButton.Location = New Point(0, 674)
+        PnlBottomButton.Margin = New Padding(7, 10, 7, 10)
+        PnlBottomButton.Size = New Size(684, 97)
         ' 
         ' pnl_
         ' 
-        pnl_.Size = New Size(479, 61)
+        pnl_.Margin = New Padding(7, 10, 7, 10)
+        pnl_.Size = New Size(684, 104)
         ' 
         ' SLFPanel
         ' 
@@ -77,40 +71,22 @@ Partial Class frmFistGuide
         SLFPanel.Controls.Add(Gbx_Modules)
         SLFPanel.Controls.Add(Gbx_Login)
         SLFPanel.Controls.Add(Gbx_Company)
-        SLFPanel.Size = New Size(479, 455)
+        SLFPanel.Margin = New Padding(7, 10, 7, 10)
+        SLFPanel.Size = New Size(684, 771)
         SLFPanel.Controls.SetChildIndex(Gbx_Company, 0)
         SLFPanel.Controls.SetChildIndex(Gbx_Login, 0)
         SLFPanel.Controls.SetChildIndex(Gbx_Modules, 0)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(Lbl_Step, 0)
         ' 
-        ' Btn_Process
-        ' 
-        Btn_Process.BackColor = Color.RoyalBlue
-        Btn_Process.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
-        Btn_Process.FlatAppearance.BorderSize = 2
-        Btn_Process.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
-        Btn_Process.FlatStyle = FlatStyle.Flat
-        Btn_Process.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Btn_Process.ForeColor = Color.White
-        Btn_Process.Location = New Point(367, 11)
-        Btn_Process.Name = "Btn_Process"
-        Btn_Process.Size = New Size(100, 40)
-        Btn_Process.TabIndex = 1
-        Btn_Process.Text = "&Next"
-        Btn_Process.UseVisualStyleBackColor = False
-        Btn_Process.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        Btn_Process.XOTampilkanFocusBorder = False
-        Btn_Process.XOValidasiSemuaInput = False
-        Btn_Process.XOValidasiSemuaInputTag = Nothing
-        ' 
         ' Lbl_Step
         ' 
         Lbl_Step.AutoSize = True
         Lbl_Step.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Lbl_Step.Location = New Point(18, 18)
+        Lbl_Step.Location = New Point(26, 30)
+        Lbl_Step.Margin = New Padding(4, 0, 4, 0)
         Lbl_Step.Name = "Lbl_Step"
-        Lbl_Step.Size = New Size(65, 21)
+        Lbl_Step.Size = New Size(98, 32)
         Lbl_Step.TabIndex = 996
         Lbl_Step.Text = "Step 1 :"
         Lbl_Step.XOCustomElipsis = False
@@ -128,9 +104,11 @@ Partial Class frmFistGuide
         Gbx_Company.Controls.Add(Txt_Department)
         Gbx_Company.Controls.Add(Txt_Company)
         Gbx_Company.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Gbx_Company.Location = New Point(12, 42)
+        Gbx_Company.Location = New Point(17, 70)
+        Gbx_Company.Margin = New Padding(4, 5, 4, 5)
         Gbx_Company.Name = "Gbx_Company"
-        Gbx_Company.Size = New Size(455, 349)
+        Gbx_Company.Padding = New Padding(4, 5, 4, 5)
+        Gbx_Company.Size = New Size(650, 582)
         Gbx_Company.TabIndex = 998
         Gbx_Company.TabStop = False
         Gbx_Company.Text = "About You && Your Company"
@@ -138,10 +116,10 @@ Partial Class frmFistGuide
         ' ULbl5
         ' 
         ULbl5.BackColor = Color.Moccasin
-        ULbl5.Location = New Point(7, 184)
-        ULbl5.Margin = New Padding(4, 3, 4, 3)
+        ULbl5.Location = New Point(10, 307)
+        ULbl5.Margin = New Padding(6, 5, 6, 5)
         ULbl5.Name = "ULbl5"
-        ULbl5.Size = New Size(175, 33)
+        ULbl5.Size = New Size(250, 55)
         ULbl5.SLFText = "Your Employee ID#"
         ULbl5.SLFTextAdjuster = False
         ULbl5.SLFTextBorder = False
@@ -151,10 +129,11 @@ Partial Class frmFistGuide
         ' Txt_EmployeeID
         ' 
         Txt_EmployeeID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_EmployeeID.Location = New Point(189, 184)
+        Txt_EmployeeID.Location = New Point(270, 307)
+        Txt_EmployeeID.Margin = New Padding(4, 5, 4, 5)
         Txt_EmployeeID.MaxLength = 255
         Txt_EmployeeID.Name = "Txt_EmployeeID"
-        Txt_EmployeeID.Size = New Size(260, 29)
+        Txt_EmployeeID.Size = New Size(370, 39)
         Txt_EmployeeID.TabIndex = 5
         Txt_EmployeeID.Tag = "txt"
         Txt_EmployeeID.XOAutoTrim = True
@@ -180,10 +159,10 @@ Partial Class frmFistGuide
         ' ULbl4
         ' 
         ULbl4.BackColor = Color.Moccasin
-        ULbl4.Location = New Point(7, 145)
-        ULbl4.Margin = New Padding(4, 3, 4, 3)
+        ULbl4.Location = New Point(10, 242)
+        ULbl4.Margin = New Padding(6, 5, 6, 5)
         ULbl4.Name = "ULbl4"
-        ULbl4.Size = New Size(175, 33)
+        ULbl4.Size = New Size(250, 55)
         ULbl4.SLFText = "Your Name"
         ULbl4.SLFTextAdjuster = False
         ULbl4.SLFTextBorder = False
@@ -193,10 +172,10 @@ Partial Class frmFistGuide
         ' ULbl3
         ' 
         ULbl3.BackColor = Color.Moccasin
-        ULbl3.Location = New Point(7, 106)
-        ULbl3.Margin = New Padding(4, 3, 4, 3)
+        ULbl3.Location = New Point(10, 177)
+        ULbl3.Margin = New Padding(6, 5, 6, 5)
         ULbl3.Name = "ULbl3"
-        ULbl3.Size = New Size(175, 33)
+        ULbl3.Size = New Size(250, 55)
         ULbl3.SLFText = "Position"
         ULbl3.SLFTextAdjuster = False
         ULbl3.SLFTextBorder = False
@@ -206,10 +185,10 @@ Partial Class frmFistGuide
         ' ULbl2
         ' 
         ULbl2.BackColor = Color.Moccasin
-        ULbl2.Location = New Point(7, 67)
-        ULbl2.Margin = New Padding(4, 3, 4, 3)
+        ULbl2.Location = New Point(10, 112)
+        ULbl2.Margin = New Padding(6, 5, 6, 5)
         ULbl2.Name = "ULbl2"
-        ULbl2.Size = New Size(175, 33)
+        ULbl2.Size = New Size(250, 55)
         ULbl2.SLFText = "Department"
         ULbl2.SLFTextAdjuster = False
         ULbl2.SLFTextBorder = False
@@ -219,10 +198,10 @@ Partial Class frmFistGuide
         ' ULbl1
         ' 
         ULbl1.BackColor = Color.Moccasin
-        ULbl1.Location = New Point(7, 28)
-        ULbl1.Margin = New Padding(4, 3, 4, 3)
+        ULbl1.Location = New Point(10, 47)
+        ULbl1.Margin = New Padding(6, 5, 6, 5)
         ULbl1.Name = "ULbl1"
-        ULbl1.Size = New Size(175, 33)
+        ULbl1.Size = New Size(250, 55)
         ULbl1.SLFText = "Company"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
@@ -232,10 +211,11 @@ Partial Class frmFistGuide
         ' Txt_EmployeeName
         ' 
         Txt_EmployeeName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_EmployeeName.Location = New Point(189, 145)
+        Txt_EmployeeName.Location = New Point(270, 242)
+        Txt_EmployeeName.Margin = New Padding(4, 5, 4, 5)
         Txt_EmployeeName.MaxLength = 255
         Txt_EmployeeName.Name = "Txt_EmployeeName"
-        Txt_EmployeeName.Size = New Size(260, 29)
+        Txt_EmployeeName.Size = New Size(370, 39)
         Txt_EmployeeName.TabIndex = 4
         Txt_EmployeeName.Tag = "txt"
         Txt_EmployeeName.XOAutoTrim = True
@@ -261,10 +241,11 @@ Partial Class frmFistGuide
         ' Txt_Position
         ' 
         Txt_Position.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Position.Location = New Point(189, 106)
+        Txt_Position.Location = New Point(270, 177)
+        Txt_Position.Margin = New Padding(4, 5, 4, 5)
         Txt_Position.MaxLength = 255
         Txt_Position.Name = "Txt_Position"
-        Txt_Position.Size = New Size(260, 29)
+        Txt_Position.Size = New Size(370, 39)
         Txt_Position.TabIndex = 3
         Txt_Position.Tag = "txt"
         Txt_Position.XOAutoTrim = True
@@ -290,10 +271,11 @@ Partial Class frmFistGuide
         ' Txt_Department
         ' 
         Txt_Department.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Department.Location = New Point(189, 67)
+        Txt_Department.Location = New Point(270, 112)
+        Txt_Department.Margin = New Padding(4, 5, 4, 5)
         Txt_Department.MaxLength = 255
         Txt_Department.Name = "Txt_Department"
-        Txt_Department.Size = New Size(260, 29)
+        Txt_Department.Size = New Size(370, 39)
         Txt_Department.TabIndex = 2
         Txt_Department.Tag = "txt"
         Txt_Department.XOAutoTrim = True
@@ -319,10 +301,11 @@ Partial Class frmFistGuide
         ' Txt_Company
         ' 
         Txt_Company.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Company.Location = New Point(189, 28)
+        Txt_Company.Location = New Point(270, 47)
+        Txt_Company.Margin = New Padding(4, 5, 4, 5)
         Txt_Company.MaxLength = 255
         Txt_Company.Name = "Txt_Company"
-        Txt_Company.Size = New Size(260, 29)
+        Txt_Company.Size = New Size(370, 39)
         Txt_Company.TabIndex = 1
         Txt_Company.Tag = "txt"
         Txt_Company.XOAutoTrim = True
@@ -345,68 +328,30 @@ Partial Class frmFistGuide
         Txt_Company.XOTanpaSpasi = False
         Txt_Company.XOValidasiField = Nothing
         ' 
-        ' Btn_Close
-        ' 
-        Btn_Close.BackColor = Color.Red
-        Btn_Close.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
-        Btn_Close.FlatAppearance.BorderSize = 2
-        Btn_Close.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
-        Btn_Close.FlatStyle = FlatStyle.Flat
-        Btn_Close.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Btn_Close.ForeColor = Color.White
-        Btn_Close.Location = New Point(261, 11)
-        Btn_Close.Name = "Btn_Close"
-        Btn_Close.Size = New Size(100, 40)
-        Btn_Close.TabIndex = 2
-        Btn_Close.Text = "&Close"
-        Btn_Close.UseVisualStyleBackColor = False
-        Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-        Btn_Close.XOTampilkanFocusBorder = False
-        Btn_Close.XOValidasiSemuaInput = False
-        Btn_Close.XOValidasiSemuaInputTag = Nothing
-        ' 
         ' Gbx_Login
         ' 
-        Gbx_Login.Controls.Add(Btn_Check)
         Gbx_Login.Controls.Add(UPwdStrength1)
         Gbx_Login.Controls.Add(ULbl7)
         Gbx_Login.Controls.Add(ULbl6)
         Gbx_Login.Controls.Add(Txt_Password)
         Gbx_Login.Controls.Add(Txt_Username)
         Gbx_Login.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Gbx_Login.Location = New Point(12, 42)
+        Gbx_Login.Location = New Point(17, 70)
+        Gbx_Login.Margin = New Padding(4, 5, 4, 5)
         Gbx_Login.Name = "Gbx_Login"
-        Gbx_Login.Size = New Size(455, 349)
+        Gbx_Login.Padding = New Padding(4, 5, 4, 5)
+        Gbx_Login.Size = New Size(650, 582)
         Gbx_Login.TabIndex = 1007
         Gbx_Login.TabStop = False
         Gbx_Login.Text = "About Your Login"
         ' 
-        ' Btn_Check
-        ' 
-        Btn_Check.BackColor = Color.RoyalBlue
-        Btn_Check.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
-        Btn_Check.FlatAppearance.BorderSize = 2
-        Btn_Check.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
-        Btn_Check.FlatStyle = FlatStyle.Flat
-        Btn_Check.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Btn_Check.ForeColor = Color.White
-        Btn_Check.Location = New Point(349, 159)
-        Btn_Check.Name = "Btn_Check"
-        Btn_Check.Size = New Size(100, 40)
-        Btn_Check.TabIndex = 11
-        Btn_Check.Text = "&Check"
-        Btn_Check.UseVisualStyleBackColor = False
-        Btn_Check.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        Btn_Check.XOTampilkanFocusBorder = False
-        Btn_Check.XOValidasiSemuaInput = False
-        Btn_Check.XOValidasiSemuaInputTag = Nothing
-        ' 
         ' UPwdStrength1
         ' 
         UPwdStrength1.BackColor = Color.Transparent
-        UPwdStrength1.Location = New Point(189, 102)
+        UPwdStrength1.Location = New Point(270, 170)
+        UPwdStrength1.Margin = New Padding(6, 8, 6, 8)
         UPwdStrength1.Name = "UPwdStrength1"
-        UPwdStrength1.Size = New Size(260, 51)
+        UPwdStrength1.Size = New Size(371, 85)
         UPwdStrength1.SLFPasswordStrengthScore = 0
         UPwdStrength1.SLFPasswordStrengthText = Nothing
         UPwdStrength1.TabIndex = 10
@@ -414,10 +359,10 @@ Partial Class frmFistGuide
         ' ULbl7
         ' 
         ULbl7.BackColor = Color.MistyRose
-        ULbl7.Location = New Point(7, 67)
-        ULbl7.Margin = New Padding(4, 3, 4, 3)
+        ULbl7.Location = New Point(10, 112)
+        ULbl7.Margin = New Padding(6, 5, 6, 5)
         ULbl7.Name = "ULbl7"
-        ULbl7.Size = New Size(175, 33)
+        ULbl7.Size = New Size(250, 55)
         ULbl7.SLFText = "Password"
         ULbl7.SLFTextAdjuster = False
         ULbl7.SLFTextBorder = False
@@ -427,10 +372,10 @@ Partial Class frmFistGuide
         ' ULbl6
         ' 
         ULbl6.BackColor = Color.MistyRose
-        ULbl6.Location = New Point(7, 28)
-        ULbl6.Margin = New Padding(4, 3, 4, 3)
+        ULbl6.Location = New Point(10, 47)
+        ULbl6.Margin = New Padding(6, 5, 6, 5)
         ULbl6.Name = "ULbl6"
-        ULbl6.Size = New Size(175, 33)
+        ULbl6.Size = New Size(250, 55)
         ULbl6.SLFText = "Username"
         ULbl6.SLFTextAdjuster = False
         ULbl6.SLFTextBorder = False
@@ -440,10 +385,11 @@ Partial Class frmFistGuide
         ' Txt_Password
         ' 
         Txt_Password.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Password.Location = New Point(189, 67)
+        Txt_Password.Location = New Point(270, 112)
+        Txt_Password.Margin = New Padding(4, 5, 4, 5)
         Txt_Password.MaxLength = 255
         Txt_Password.Name = "Txt_Password"
-        Txt_Password.Size = New Size(260, 29)
+        Txt_Password.Size = New Size(370, 39)
         Txt_Password.TabIndex = 7
         Txt_Password.Tag = "txt"
         Txt_Password.UseSystemPasswordChar = True
@@ -470,10 +416,11 @@ Partial Class frmFistGuide
         ' Txt_Username
         ' 
         Txt_Username.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Txt_Username.Location = New Point(189, 28)
+        Txt_Username.Location = New Point(270, 47)
+        Txt_Username.Margin = New Padding(4, 5, 4, 5)
         Txt_Username.MaxLength = 255
         Txt_Username.Name = "Txt_Username"
-        Txt_Username.Size = New Size(260, 29)
+        Txt_Username.Size = New Size(370, 39)
         Txt_Username.TabIndex = 6
         Txt_Username.Tag = "txt"
         Txt_Username.XOAutoTrim = True
@@ -515,9 +462,11 @@ Partial Class frmFistGuide
         ' 
         Gbx_Modules.Controls.Add(Dgn1)
         Gbx_Modules.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Gbx_Modules.Location = New Point(12, 42)
+        Gbx_Modules.Location = New Point(17, 70)
+        Gbx_Modules.Margin = New Padding(4, 5, 4, 5)
         Gbx_Modules.Name = "Gbx_Modules"
-        Gbx_Modules.Size = New Size(455, 349)
+        Gbx_Modules.Padding = New Padding(4, 5, 4, 5)
+        Gbx_Modules.Size = New Size(650, 582)
         Gbx_Modules.TabIndex = 1008
         Gbx_Modules.TabStop = False
         Gbx_Modules.Text = "Preparing Necessary Modules"
@@ -527,7 +476,7 @@ Partial Class frmFistGuide
         ' 
         Dgn1.AllowUserToAddRows = False
         Dgn1.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(208), CByte(249), CByte(176))
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(250), CByte(228), CByte(102))
         Dgn1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Dgn1.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         Dgn1.BorderStyle = BorderStyle.None
@@ -544,7 +493,8 @@ Partial Class frmFistGuide
         Dgn1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Dgn1.EnableHeadersVisualStyles = False
         Dgn1.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        Dgn1.Location = New Point(6, 63)
+        Dgn1.Location = New Point(9, 105)
+        Dgn1.Margin = New Padding(4, 5, 4, 5)
         Dgn1.Name = "Dgn1"
         Dgn1.ReadOnly = True
         Dgn1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
@@ -556,25 +506,25 @@ Partial Class frmFistGuide
         DataGridViewCellStyle3.SelectionForeColor = Color.Black
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
         Dgn1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Dgn1.RowHeadersWidth = 62
         Dgn1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Dgn1.RowTemplate.Height = 25
-        Dgn1.Size = New Size(443, 280)
+        Dgn1.Size = New Size(633, 467)
         Dgn1.StandardTab = True
         Dgn1.TabIndex = 0
         Dgn1.XOGroupFirstRows = False
         Dgn1.XOGunakanNomorBaris = False
         ' 
-        ' frmFistGuide
+        ' FRMfirstguide
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(479, 538)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(684, 897)
         ControlBox = False
         FormBorderStyle = FormBorderStyle.FixedToolWindow
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
-        Name = "frmFistGuide"
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMfirstguide"
         ShowIcon = False
-        PnlBottomButton.ResumeLayout(False)
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
         pnl_.ResumeLayout(False)
         pnl_.PerformLayout()

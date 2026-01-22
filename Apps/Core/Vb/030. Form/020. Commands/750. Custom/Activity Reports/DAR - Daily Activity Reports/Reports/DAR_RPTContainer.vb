@@ -2,7 +2,7 @@
 Imports Microsoft.Reporting.WinForms
 Imports System.Runtime.Versioning
 
-Public Class DAR_RPTContainer
+Public Class FRMdarRptContainer
     Public Event ReportClosed()
     Public _DS As New DAR_RDS
     Public _Creator As String

@@ -29,19 +29,19 @@ Namespace Commands.NTFC
                                                     "order by nt.notification_datetime desc)", eid)
                 varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
             ElseIf dbengine = "MySQL" Then
-                V_DBR_MYSQL(0).Query = String.Format("Select top 100 ((Case nt.notification_isread When 0 Then '*NEW* ' else '' end) + convert(varchar(max), " &
+                varDatabaseRequestMysql(0).Query = String.Format("Select top 100 ((Case nt.notification_isread When 0 Then '*NEW* ' else '' end) + convert(varchar(max), " &
                                                     "nt.notification_message)) as [notification_message], nt.notification_datetime " &
                                                     "from sys_notification nt where (nt.notification_employee = '{0}')  order by " &
                                                     "nt.notification_datetime desc", eid)
 
-                V_DBR_MYSQL(0).DataGrid = notificationgrid
-                V_DBR_MYSQL(0).StatusBar = Nothing
-                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TNotification")
+                varDatabaseRequestMysql(0).DataGrid = notificationgrid
+                varDatabaseRequestMysql(0).StatusBar = Nothing
+                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "TNotification")
 
-                V_DBR_MYSQL(1).Query = String.Format("update sys_notification set notification_isread = 1 where notification_datetime <= (select " &
+                varDatabaseRequestMysql(1).Query = String.Format("update sys_notification set notification_isread = 1 where notification_datetime <= (select " &
                                                     "top 1 nt.notification_datetime from sys_notification nt where (nt.notification_employee = '{0}') " &
                                                     "order by nt.notification_datetime desc)", eid)
-                varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
+                varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
             End If
         End Sub
     End Class

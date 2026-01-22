@@ -14,16 +14,16 @@ Module Globals
 
 #Region "Security Globals"
     <SupportedOSPlatform("windows")>
-    Public V_BRIDGE_KEY As Bridge.Security.Getkey
+    Public bridgeKey As Bridge.Security.Getkey
 
     <SupportedOSPlatform("windows")>
-    Public V_BRIDGE_LOG As Bridge.Security.Writelog
+    Public brigeWritelog As Bridge.Security.Writelog
 
     <SupportedOSPlatform("windows")>
-    Public V_SALT As String = Bridge.Security.Getkey.Salt()
+    Public bridgeSalt As String = Bridge.Security.Getkey.Salt()
 
     <SupportedOSPlatform("windows")>
-    Public V_SyncfusionKey As String = Bridge.Security.Getkey.Syncfusion
+    Public bridgeSyncfusionKey As String = Bridge.Security.Getkey.Syncfusion
 
     ''' <summary>
     ''' This security will be retired
@@ -55,7 +55,7 @@ Module Globals
 
     'Public SEC As New Security.Engine
 
-    Public ERC As New frmErrorReporting
+    Public ERC As New FRMerrorreporting
     Public ERL As New Database.Engine.LocalDB
     Public proLog As Ladybug.Log.Fields
 
@@ -77,7 +77,7 @@ Module Globals
         'License for Syncfusion
 
         'nuget version : 21.2.9
-        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(V_SyncfusionKey)
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(bridgeSyncfusionKey)
     End Sub
 
     'Public Function CREATESECURITY(ByVal IsEncrypt As Boolean, ByVal Message As String)

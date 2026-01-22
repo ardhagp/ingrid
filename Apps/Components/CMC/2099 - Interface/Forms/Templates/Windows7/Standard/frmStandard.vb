@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class frmStandard
+Public Class FRMstandard
 
     <SupportedOSPlatform("windows")>
     Private Sub frmStandard_Load(sender As Object, e As EventArgs) Handles Me.Load

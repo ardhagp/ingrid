@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class DAR_SinglePhotoViewer
+Public Class FRMdarSinglePhotoViewer
     Private _FILE As String
     Private _IMAGE As Image
     Private _Type As String

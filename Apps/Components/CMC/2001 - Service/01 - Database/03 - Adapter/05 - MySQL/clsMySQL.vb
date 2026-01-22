@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Namespace Database.Adapter.MySQL.Display
+Namespace Database.Adapter.Mysql.Display
     Public Structure Request
         Public Property Query As String
         Public Property Cmd As MySqlCommand
@@ -11,7 +11,7 @@ Namespace Database.Adapter.MySQL.Display
     End Structure
 End Namespace
 
-Namespace Database.Adapter.MySQL
+Namespace Database.Adapter.Mysql
     Public Structure Execute
         Public Property Query As String
         Public Property Cmd As MySqlCommand

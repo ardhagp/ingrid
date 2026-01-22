@@ -3,7 +3,7 @@ Imports CMCv
 
 Public Class UAC
 #Region "Variables"
-    Private V_SQL As New Commands.UAC.View
+    Private V_SQL As New CmdUAC.View
     Private WithEvents V_UAC_Editor As UAC_Editor
     Private WithEvents V_MMSMenu As New CMCv.UI.View.MenuStrip
 #End Region
@@ -12,7 +12,7 @@ Public Class UAC
 
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional ByVal ForceRefresh As Boolean = False)
-        Commands.UAC.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnUAC, SLFStatus, TxtFind, ForceRefresh)
+        CmdUAC.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnUAC, SLFStatus, TxtFind, ForceRefresh)
     End Sub
 
     Private Sub GetRowID()
@@ -31,7 +31,7 @@ Public Class UAC
         varFormProperties.IsChangePasswordForm = False
 
         If Not (varUserAccess.User(varDatabaseName, "UAC", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
-            Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
@@ -47,7 +47,7 @@ Public Class UAC
         varFormProperties.IsChangePasswordForm = False
 
         If Not (varUserAccess.User(varDatabaseName, "UAC", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
-            Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
@@ -55,7 +55,7 @@ Public Class UAC
         varFormProperties.IsNew = False
 
         If Convert.ToString(varFormProperties.RowID) = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             varFormProperties.IsNew = False
             V_UAC_Editor = New UAC_Editor
@@ -66,21 +66,21 @@ Public Class UAC
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles V_MMSMenu.EventDataDelete
         If Not (varUserAccess.User(varDatabaseName, "UAC", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
-            Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
         Call GetRowID()
 
         If Convert.ToString(varFormProperties.RowID) = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
-            If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (Commands.UAC.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
+            If Decision("Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If (CmdUAC.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
-                    Mainframe_n_6.Ts_status.Text = "Success"
+                    FRMmainframe6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.Ts_status.Text = "Delete failed"
+                    FRMmainframe6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If
