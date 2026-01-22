@@ -1,17 +1,19 @@
 ﻿Imports System.Runtime.Versioning
-Imports CMCv
 
-Public Class POST
+Public Class FRMpost
 #Region "Variables"
-    Private _SQL As New LibSQL.Commands.POST.View
-    Private WithEvents _POST_Editor As New POST_Editor
-    Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
+    'Private _SQL As New LibSQL.CmdPOST.View
+    Private WithEvents Frm_post_Editor As New FRMpostEditor
+    Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
+
+    Const varNoRecordSelected As String = "No record selected"
+    Const varError As String = "Error"
 #End Region
 
 #Region "Subs Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional forcerefresh As Boolean = False)
-        LibSQL.Commands.POST.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnPOST, SLFStatus, TxtFind, forcerefresh)
+        LibSQL.CMDpost.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnPOST, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     Private Sub GetRowID()
@@ -25,65 +27,65 @@ Public Class POST
 
 #Region "Menu Strip Functions"
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataAddNew() Handles _MMSMenu.EventDataAddNew
+    Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
         varFormProperties.IsNew = True
         varFormProperties.RowID = "-1"
-        _POST_Editor = New POST_Editor
-        DISPLAY(_POST_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new job position data", True)
+        Frm_post_Editor = New FRMpostEditor
+        Display(Frm_post_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new job position data", True)
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataEdit() Handles _MMSMenu.EventDataEdit
+    Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
         Call GetRowID()
         varFormProperties.IsNew = False
-        _POST_Editor = New POST_Editor
-        If convert.tostring(varFormProperties.RowID) = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+        Frm_post_Editor = New FRMpostEditor
+        If Convert.ToString(varFormProperties.RowID) = "-1" Then
+            Decision(varNoRecordSelected, varError, CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
-            Display(_POST_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your position data", True)
+            Display(Frm_post_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your position data", True)
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataDelete() Handles _MMSMenu.EventDataDelete
+    Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
         Call GetRowID()
 
-        If convert.tostring(varFormProperties.RowID) = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+        If Convert.ToString(varFormProperties.RowID) = "-1" Then
+            Decision(varNoRecordSelected, varError, CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             varFormProperties.IsNew = False
-            If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.POST.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
+            If Decision("Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If (CMDpost.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
-                    Mainframe_n_6.Ts_status.Text = "Success"
+                    FRMmainframe6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.Ts_status.Text = "Delete failed"
+                    FRMmainframe6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataRefresh() Handles _MMSMenu.EventDataRefresh
+    Private Sub EventDataRefresh() Handles Com_mms_Menu.EventDataRefresh
         TxtFind.Clear()
-        Call GETDATA(True)
+        Call GetData(True)
     End Sub
 
-    Private Sub EventDataClose() Handles _MMSMenu.EventDataClose
+    Private Sub EventDataClose() Handles Com_mms_Menu.EventDataClose
         Me.Close()
     End Sub
 
-    Private Sub EventDataFind() Handles _MMSMenu.EventToolsFind
+    Private Sub EventDataFind() Handles Com_mms_Menu.EventToolsFind
         TxtFind.Focus()
     End Sub
 
 #End Region
 
     <SupportedOSPlatform("windows")>
-    Private Sub POST_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        _MMSMenu.LoadIn(Me)
-        _MMSMenu.ShowMenuDATA(UI.View.MenuStrip.ShowItem.Yes)
-        Call GETDATA(True)
+    Private Sub FRMpost_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Com_mms_Menu.LoadIn(Me)
+        Com_mms_Menu.ShowMenuData(UI.View.MenuStrip.ShowItem.Yes)
+        Call GetData(True)
         TxtFind.ClearSearch()
     End Sub
 
@@ -102,89 +104,89 @@ Public Class POST
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub _POST_Editor_RecordSaved() Handles _POST_Editor.RecordSaved
+    Private Sub FRMpostEditor_RecordSaved() Handles Frm_post_Editor.RecordSaved
         Call GetData(True)
     End Sub
 
 #Region "UNUSED : CreateMenu"
     <SupportedOSPlatform("windows")>
     Private Sub CreateMenu()
-        Dim _MMSMenu As New CMCv.mnu
-        Dim _item As ToolStripMenuItem()
-        Dim _item_sub As ToolStripMenuItem()
-        Dim _item_sep As ToolStripSeparator()
+        Dim Com_mms_Menu As New CMCv.mnu
+        Dim varItemMenu As ToolStripMenuItem()
+        Dim varItemSub As ToolStripMenuItem()
+        Dim varItemSeparator As ToolStripSeparator()
 
-        ReDim _item(2)
-        _MMSMenu = New CMCv.mnu
-        _MMSMenu.Visible = False
+        ReDim varItemMenu(2)
+        Com_mms_Menu = New CMCv.mnu
+        Com_mms_Menu.Visible = False
 
-        _item(0) = New ToolStripMenuItem() With {.Name = "DATAToolStripMenuItem", .Text = "DATA", .MergeAction = MergeAction.Insert, .MergeIndex = 1}
-        _MMSMenu.Items.Add(_item(0))
+        varItemMenu(0) = New ToolStripMenuItem() With {.Name = "DATAToolStripMenuItem", .Text = "DATA", .MergeAction = MergeAction.Insert, .MergeIndex = 1}
+        Com_mms_Menu.Items.Add(varItemMenu(0))
 
-        _item(1) = New ToolStripMenuItem() With {.Name = "TOOLSToolStripMenuItem", .Text = "TOOLS", .MergeAction = MergeAction.Insert, .MergeIndex = 2}
-        _MMSMenu.Items.Add(_item(1))
+        varItemMenu(1) = New ToolStripMenuItem() With {.Name = "TOOLSToolStripMenuItem", .Text = "TOOLS", .MergeAction = MergeAction.Insert, .MergeIndex = 2}
+        Com_mms_Menu.Items.Add(varItemMenu(1))
 
-        Me.Controls.Add(_MMSMenu)
+        Me.Controls.Add(Com_mms_Menu)
 
-        ReDim _item_sub(8)
-        ReDim _item_sep(4)
+        ReDim varItemSub(8)
+        ReDim varItemSeparator(4)
 
-        For Each _s_item As ToolStripMenuItem In _MMSMenu.Items
+        For Each varEachItem As ToolStripMenuItem In Com_mms_Menu.Items
 
-            Select Case _s_item.Name
+            Select Case varEachItem.Name
                 Case "DATAToolStripMenuItem"
                     'Insert "Add New..."
-                    _item_sub(0) = New ToolStripMenuItem() With {.Name = "AddNewToolStripMenuItem", .Text = "Add New...", .ShortcutKeys = CType(Keys.Control + Keys.N, Keys), .ShortcutKeyDisplayString = "Ctrl+N"}
-                    _s_item.DropDown.Items.Add(_item_sub(0))
-                    AddHandler _item_sub(0).Click, AddressOf AddNewToolStripMenuItem_Clicked
+                    varItemSub(0) = New ToolStripMenuItem() With {.Name = "AddNewToolStripMenuItem", .Text = "Add New...", .ShortcutKeys = CType(Keys.Control + Keys.N, Keys), .ShortcutKeyDisplayString = "Ctrl+N"}
+                    varEachItem.DropDown.Items.Add(varItemSub(0))
+                    AddHandler varItemSub(0).Click, AddressOf AddNewToolStripMenuItem_Clicked
 
                     'Insert "Edit..."
-                    _item_sub(1) = New ToolStripMenuItem() With {.Name = "EditToolStripMenuItem", .Text = "Edit...", .ShortcutKeys = CType(Keys.Control + Keys.E, Keys), .ShortcutKeyDisplayString = "Ctrl+E"}
-                    _s_item.DropDown.Items.Add(_item_sub(1))
-                    AddHandler _item_sub(1).Click, AddressOf EditToolStripMenuItem_Clicked
+                    varItemSub(1) = New ToolStripMenuItem() With {.Name = "EditToolStripMenuItem", .Text = "Edit...", .ShortcutKeys = CType(Keys.Control + Keys.E, Keys), .ShortcutKeyDisplayString = "Ctrl+E"}
+                    varEachItem.DropDown.Items.Add(varItemSub(1))
+                    AddHandler varItemSub(1).Click, AddressOf EditToolStripMenuItem_Clicked
 
                     'Insert "Delete..."
-                    _item_sub(2) = New ToolStripMenuItem() With {.Name = "DeleteToolStripMenuItem", .Text = "Delete", .ShortcutKeys = Keys.Delete, .ShortcutKeyDisplayString = "Del"}
-                    _s_item.DropDown.Items.Add(_item_sub(2))
-                    AddHandler _item_sub(2).Click, AddressOf DeleteToolStripMenuItem_Clicked
+                    varItemSub(2) = New ToolStripMenuItem() With {.Name = "DeleteToolStripMenuItem", .Text = "Delete", .ShortcutKeys = Keys.Delete, .ShortcutKeyDisplayString = "Del"}
+                    varEachItem.DropDown.Items.Add(varItemSub(2))
+                    AddHandler varItemSub(2).Click, AddressOf DeleteToolStripMenuItem_Clicked
 
                     'Insert "Separator"
-                    _item_sep(0) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem1"}
-                    _s_item.DropDown.Items.Add(_item_sep(0))
+                    varItemSeparator(0) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem1"}
+                    varEachItem.DropDown.Items.Add(varItemSeparator(0))
 
                     'Insert "Refresh"
-                    _item_sub(3) = New ToolStripMenuItem() With {.Name = "RefreshToolStripMenuItem", .Text = "Refresh", .ShortcutKeys = Keys.F5, .ShortcutKeyDisplayString = "F5"}
-                    _s_item.DropDown.Items.Add(_item_sub(3))
-                    AddHandler _item_sub(3).Click, AddressOf RefreshToolStripMenuItem_Clicked
+                    varItemSub(3) = New ToolStripMenuItem() With {.Name = "RefreshToolStripMenuItem", .Text = "Refresh", .ShortcutKeys = Keys.F5, .ShortcutKeyDisplayString = "F5"}
+                    varEachItem.DropDown.Items.Add(varItemSub(3))
+                    AddHandler varItemSub(3).Click, AddressOf RefreshToolStripMenuItem_Clicked
 
                     'Insert "Separator"
-                    _item_sep(1) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem2"}
-                    _s_item.DropDown.Items.Add(_item_sep(1))
+                    varItemSeparator(1) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem2"}
+                    varEachItem.DropDown.Items.Add(varItemSeparator(1))
 
                     'Insert "Close"
-                    _item_sub(4) = New ToolStripMenuItem() With {.Name = "CloseToolStripMenuItem", .Text = "Close", .ShortcutKeys = CType(Keys.Control + Keys.Q, Keys), .ShortcutKeyDisplayString = "Ctrl+Q"}
-                    _s_item.DropDown.Items.Add(_item_sub(4))
-                    AddHandler _item_sub(4).Click, AddressOf CloseToolStripMenuItem_Clicked
+                    varItemSub(4) = New ToolStripMenuItem() With {.Name = "CloseToolStripMenuItem", .Text = "Close", .ShortcutKeys = CType(Keys.Control + Keys.Q, Keys), .ShortcutKeyDisplayString = "Ctrl+Q"}
+                    varEachItem.DropDown.Items.Add(varItemSub(4))
+                    AddHandler varItemSub(4).Click, AddressOf CloseToolStripMenuItem_Clicked
 
                 Case "TOOLSToolStripMenuItem"
                     'Insert "Import"
-                    _item_sub(5) = New ToolStripMenuItem() With {.Name = "ImportToolStripMenuItem", .Text = "Import...", .Enabled = False}
-                    _s_item.DropDown.Items.Add(_item_sub(5))
-                    AddHandler _item_sub(5).Click, AddressOf ImportToolStripMenuItem_Clicked
+                    varItemSub(5) = New ToolStripMenuItem() With {.Name = "ImportToolStripMenuItem", .Text = "Import...", .Enabled = False}
+                    varEachItem.DropDown.Items.Add(varItemSub(5))
+                    AddHandler varItemSub(5).Click, AddressOf ImportToolStripMenuItem_Clicked
 
                     'Insert "Export"
-                    _item_sub(6) = New ToolStripMenuItem() With {.Name = "CloseToolStripMenuItem", .Text = "Export...", .Enabled = False}
-                    _s_item.DropDown.Items.Add(_item_sub(6))
-                    AddHandler _item_sub(6).Click, AddressOf ExportToolStripMenuItem_Clicked
+                    varItemSub(6) = New ToolStripMenuItem() With {.Name = "CloseToolStripMenuItem", .Text = "Export...", .Enabled = False}
+                    varEachItem.DropDown.Items.Add(varItemSub(6))
+                    AddHandler varItemSub(6).Click, AddressOf ExportToolStripMenuItem_Clicked
 
                     'Insert "Separator"
-                    _item_sep(2) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem3"}
-                    _s_item.DropDown.Items.Add(_item_sep(2))
+                    varItemSeparator(2) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem3"}
+                    varEachItem.DropDown.Items.Add(varItemSeparator(2))
 
                     'Insert "Find"
-                    _item_sub(7) = New ToolStripMenuItem() With {.Name = "FindToolStripMenuItem", .Text = "Find", .ShortcutKeys = CType(Keys.Control + Keys.F, Keys), .ShortcutKeyDisplayString = "Ctrl+F"}
-                    _s_item.DropDown.Items.Add(_item_sub(7))
-                    AddHandler _item_sub(7).Click, AddressOf FindToolStripMenuItem_Clicked
+                    varItemSub(7) = New ToolStripMenuItem() With {.Name = "FindToolStripMenuItem", .Text = "Find", .ShortcutKeys = CType(Keys.Control + Keys.F, Keys), .ShortcutKeyDisplayString = "Ctrl+F"}
+                    varEachItem.DropDown.Items.Add(varItemSub(7))
+                    AddHandler varItemSub(7).Click, AddressOf FindToolStripMenuItem_Clicked
             End Select
         Next
     End Sub
@@ -197,15 +199,15 @@ Public Class POST
         If item IsNot Nothing Then
             Try
                 If Not (varUserAccess.User(varDatabaseName, "POST", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
-                    Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                    Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                     Return
                 End If
 
                 varFormProperties.IsNew = True
                 varFormProperties.RowID = "-1"
 
-                _POST_Editor = New POST_Editor
-                DISPLAY(_POST_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new employee data", True)
+                Frm_post_Editor = New FRMpostEditor
+                Display(Frm_post_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new employee data", True)
             Catch ex As Exception
                 MsgBox(ex.ToString)
             End Try
@@ -218,18 +220,18 @@ Public Class POST
         If item IsNot Nothing Then
             Try
                 If Not (varUserAccess.User(varDatabaseName, "POST", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
-                    Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                    Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                     Return
                 End If
 
                 Call GetRowID()
                 varFormProperties.IsNew = False
-                If convert.tostring(varFormProperties.RowID) = "-1" Then
-                    Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                If Convert.ToString(varFormProperties.RowID) = "-1" Then
+                    Decision(varNoRecordSelected, varError, CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Else
                     varFormProperties.IsNew = False
-                    _POST_Editor = New POST_Editor
-                    DISPLAY(_POST_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
+                    Frm_post_Editor = New FRMpostEditor
+                    Display(Frm_post_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your employee data", True)
                 End If
             Catch ex As Exception
                 MsgBox(ex.ToString)
@@ -240,30 +242,44 @@ Public Class POST
     <SupportedOSPlatform("windows")>
     Private Sub DeleteToolStripMenuItem_Clicked(sender As Object, e As EventArgs)
         Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
-        If item IsNot Nothing Then
-            Try
-                If Not (varUserAccess.User(varDatabaseName, "POST", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
-                    Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
-                    Return
-                End If
+        If item Is Nothing Then Return
 
-                Call GetRowID()
-                If convert.tostring(varFormProperties.RowID) = "-1" Then
-                    Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
-                Else
-                    If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                        If LibSQL.Commands.POST.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID)) Then
-                            Call GetData(True)
-                            Mainframe_n_6.Ts_status.Text = "Success"
-                        Else
-                            Mainframe_n_6.Ts_status.Text = "Delete failed"
-                        End If
-                    End If
-                End If
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            End Try
-        End If
+        Try
+            ' Authorization check
+            If Not varUserAccess.User(varDatabaseName, "POST", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete) Then
+                Decision("You are not authorized to : Delete record", "Not Authorized",
+                         CMCv.FRMdialogbox.MessageIcon.Error,
+                         CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Return
+            End If
+
+            ' Get RowID
+            GetRowID()
+            If Convert.ToString(varFormProperties.RowID) = "-1" Then
+                Decision(varNoRecordSelected, varError,
+                         CMCv.FRMdialogbox.MessageIcon.Error,
+                         CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Return
+            End If
+
+            ' Confirm delete
+            If Decision("Do you want to delete this record?", "Delete",
+                        CMCv.FRMdialogbox.MessageIcon.Question,
+                        CMCv.FRMdialogbox.MessageTypes.YesNo) <> Windows.Forms.DialogResult.Yes Then
+                Return
+            End If
+
+            ' Execute delete
+            If LibSQL.CMDpost.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID)) Then
+                GetData(True)
+                FRMmainframe6.Ts_status.Text = "Success"
+            Else
+                FRMmainframe6.Ts_status.Text = "Delete failed"
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 
     <SupportedOSPlatform("windows")>

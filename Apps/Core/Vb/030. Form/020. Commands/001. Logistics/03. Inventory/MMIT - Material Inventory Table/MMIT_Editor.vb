@@ -1,3 +1,3 @@
-﻿Public Class MMIT_Editor
-
+﻿Public Class FRMmmitEditor
+    'TODO: Implement Editor Form for Material Inventory Table
 End Class

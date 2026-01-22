@@ -3,7 +3,7 @@ Imports System.Runtime.Versioning
 Imports System.Security.Principal
 Imports Syncfusion.Windows.Forms.Tools.Win32API
 
-Public Class frmImports
+Public Class FRMimports
     Private _Source As Import.Data.DataType.TypeofImports
     Private _varOriginalSourceFile As String
     Private _SQL_Catalog As New LibSQL.Tools.Import.MaterialMaster.Catalog
@@ -24,13 +24,13 @@ Public Class frmImports
     End Sub
 
     <Obsolete>
-    Private Sub BtnBrowse_Click(sender As Object, e As EventArgs) Handles BtnBrowse.Click
-        Dim FileLoaded As Integer = 0
+    Private Sub BtnBrowse_Click(sender As Object, e As EventArgs)
+        Dim FileLoaded = 0
 
         od.Filter = "Comma Separated Values|*.csv"
         od.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString
-        FileLoaded = od.ShowDialog()
-        If FileLoaded <> System.Windows.Forms.DialogResult.Cancel Then
+        FileLoaded = od.ShowDialog
+        If FileLoaded <> DialogResult.Cancel Then
             _varOriginalSourceFile = od.FileName
             LblFileName.Text = CompactString(_varOriginalSourceFile, LblFileName.Width, LblFileName.Font, TextFormatFlags.PathEllipsis)
             TxtProgress.AppendText("Preparing : " & _varOriginalSourceFile & Environment.NewLine)
@@ -53,7 +53,7 @@ ByVal FormatFlags As Windows.Forms.TextFormatFlags) As String
     End Function
 
     <SupportedOSPlatform("windows")>
-    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+    Private Sub BtnSave_Click(sender As Object, e As EventArgs)
         If _varOriginalSourceFile <> String.Empty Then
             TxtProgress.AppendText("Checking if your file exist... ")
             If File.Exists(_varOriginalSourceFile) Then
@@ -69,7 +69,7 @@ ByVal FormatFlags As Windows.Forms.TextFormatFlags) As String
         End If
     End Sub
 
-    Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
-        Me.Close()
+    Private Sub BtnClose_Click(sender As Object, e As EventArgs)
+        Close
     End Sub
 End Class

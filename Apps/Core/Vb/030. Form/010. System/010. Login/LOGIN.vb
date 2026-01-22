@@ -2,9 +2,9 @@
 
 Public Class LOGIN
 #Region "Variables"
-    Private varSQL As New LibSQL.Commands.UAC.Login
-    Public Event LoginSuccess()
-    Public Event LoginFailed()
+    Public Event EventLoginSuccess()
+    Public Event EventLoginFailed()
+
     Private varWrongLogin As Integer
     Private varHoldLogin As Integer
     Private varStatusTimer As Integer
@@ -22,7 +22,7 @@ Public Class LOGIN
 #End Region
 
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
-        RaiseEvent LoginFailed()
+        RaiseEvent EventLoginFailed()
         Me.Close()
     End Sub
 
@@ -37,10 +37,10 @@ Public Class LOGIN
             Return
         End If
 
-        varProperties.UserID = Commands.UAC.Login.GetUID(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText, TxtPassword.XOSQLText, varProperties.FirstName)
+        varProperties.UserID = CMDuac.Login.GetUID(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText, TxtPassword.XOSQLText, varProperties.FirstName)
 
         If varProperties.UserID = String.Empty Then
-            RaiseEvent LoginFailed()
+            RaiseEvent EventLoginFailed()
             varWrongLogin += 1
             SLFStatus.Items(0).Text = "Login Failed"
             varLogUser.LoginFailed(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText)
@@ -68,12 +68,12 @@ Public Class LOGIN
             End If
         Else
             With varProperties
-                .EmployeeID = Commands.UAC.Login.GetEID(varDatabaseName, varDatabaseEngine, varProperties.UserID)
-                .FirstName = Commands.UAC.Login.GETFirstName(varDatabaseName, varDatabaseEngine, varProperties.UserID)
-                .EmployeeNumber = Commands.UAC.Login.GetEmployeeNumber(varDatabaseName, varDatabaseEngine, varProperties.UserID)
-                .Gender = Commands.UAC.Login.GetGender(varDatabaseName, varDatabaseEngine, varProperties.UserID)
-                .EmployeePosition = Commands.UAC.Login.GetPosition(varDatabaseName, varDatabaseEngine, varProperties.UserID)
-                .IsAdministrator = Commands.UAC.Login.GetAdministrator(varDatabaseName, varDatabaseEngine, varProperties.UserID)
+                .EmployeeID = CmdUAC.Login.GetEID(varDatabaseName, varDatabaseEngine, varProperties.UserID)
+                .FirstName = CmdUAC.Login.GETFirstName(varDatabaseName, varDatabaseEngine, varProperties.UserID)
+                .EmployeeNumber = CmdUAC.Login.GetEmployeeNumber(varDatabaseName, varDatabaseEngine, varProperties.UserID)
+                .Gender = CmdUAC.Login.GetGender(varDatabaseName, varDatabaseEngine, varProperties.UserID)
+                .EmployeePosition = CmdUAC.Login.GetPosition(varDatabaseName, varDatabaseEngine, varProperties.UserID)
+                .IsAdministrator = CmdUAC.Login.GetAdministrator(varDatabaseName, varDatabaseEngine, varProperties.UserID)
             End With
 
             varLogUser.LoginSuccess(varDatabaseName, varDatabaseEngine, varProperties.EmployeeID)
@@ -95,7 +95,7 @@ Public Class LOGIN
             clsLog.ShowData(proLog)
             clsLog = Nothing
 
-            RaiseEvent LoginSuccess()
+            RaiseEvent EventLoginSuccess()
             Me.Close()
         End If
     End Sub

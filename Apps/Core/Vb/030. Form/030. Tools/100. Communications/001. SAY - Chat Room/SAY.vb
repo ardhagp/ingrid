@@ -2,7 +2,7 @@
 Imports System.Net.Sockets
 Imports System.Threading
 
-Public Class SAY
+Public Class FRMsay
     Private _Server As TcpListener = Nothing
     Private _ServerThread As Thread = Nothing
     Private _Threads As New List(Of Thread)

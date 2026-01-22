@@ -1,17 +1,10 @@
 ﻿Imports System.Runtime.Versioning
 
-''' <summary>
-''' Module : DRAA View
-''' </summary>
-Public Class DRAA
+Public Class FRMdraa
 #Region "Variables"
-    'SQL Class
-    Private V_SQL As New Commands.DRAA.View
-
-    'Variabel -> Class
-    Private WithEvents V_DRAA_Editor As New DRAA_Editor
-    Private WithEvents V_DRAA_Reports As DAR_RPTFilter
-    Private WithEvents V_MMSMenu As New CMCv.UI.View.MenuStrip
+    Private WithEvents Frm_draa_Editor As New FRMdraaEditor
+    Private WithEvents Frm_draa_Reports As FRMdarRptFilter
+    Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 #End Region
 
     ''' <summary>
@@ -19,12 +12,12 @@ Public Class DRAA
     ''' </summary>
     ''' <param name="ForceRefresh">Boolean</param>
     <SupportedOSPlatform("windows")>
-    Private Sub GETDATA(Optional ByVal ForceRefresh As Boolean = False)
+    Private Sub GetData(Optional forcerefresh As Boolean = False)
         'Buffer Datagrid
         DblBuffer(DgnArea)
 
         'Mengisi Datagrid dengan data dari database    
-        Commands.DRAA.View.DisplayMainGrid(varDatabaseName, TxtFind, DgnArea, SLFStatus, ForceRefresh)
+        Commands.DRAA.View.DisplayMainGrid(varDatabaseName, TxtFind, DgnArea, SLFStatus, forcerefresh)
     End Sub
 
     ''' <summary>
@@ -33,28 +26,28 @@ Public Class DRAA
     <SupportedOSPlatform("windows")>
     Private Sub LoadMenu()
         'Sisipkan ke dalam form
-        V_MMSMenu.LoadIn(Me)
+        Com_mms_Menu.LoadIn(Me)
 
         'Menampilkan Menu DATA
-        V_MMSMenu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
         'Menampilkan Menu TOOLS
-        V_MMSMenu.ShowMenuTools(CMCv.UI.View.MenuStrip.ShowItem.No)
+        Com_mms_Menu.ShowMenuTools(CMCv.UI.View.MenuStrip.ShowItem.No)
 
         'Menampilkan Menu REPORTS
-        V_MMSMenu.ShowMenuReports(CMCv.UI.View.MenuStrip.ShowItem.No)
+        Com_mms_Menu.ShowMenuReports(CMCv.UI.View.MenuStrip.ShowItem.No)
 
         'Menampilkan Menu TOOLS > View Attachment
-        V_MMSMenu.Visible("EventToolsViewAttachment", CType(False, CMCv.UI.View.MenuStrip.ShowItem))
+        Com_mms_Menu.Visible("EventToolsViewAttachment", CType(False, CMCv.UI.View.MenuStrip.ShowItem))
 
     End Sub
 
     ''' <summary>
     ''' Memuat setting datagrid
     ''' </summary>
-    Private Sub LoadDGN()
+    Private Sub LoadDgn()
         'Memuat warna acak
-        DgnArea.XOGETNewColor()
+        DgnArea.XOGeTNewColor()
     End Sub
 
     ''' <summary>
@@ -75,20 +68,18 @@ Public Class DRAA
     Private Sub ClearFind()
         TxtFind.Clear()
         TxtFind.ClearSearch()
-        Call GETDATA(True)
+        Call GetData(True)
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub DRAA_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FRMdraa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Memuat Menu
         Call LoadMenu()
 
         'Memuat Datagrid
-        Call LoadDGN()
+        Call LoadDgn()
 
         'Memuat Data
         Call ClearFind()
     End Sub
-
-
 End Class

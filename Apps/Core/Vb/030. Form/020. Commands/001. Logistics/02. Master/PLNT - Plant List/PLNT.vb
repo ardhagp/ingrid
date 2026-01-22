@@ -1,15 +1,14 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class PLNT
-    Private V_SQL As New LibSQL.Commands.PLNT.View
-    Private WithEvents V_PLNT_Editor As New PLNT_Editor
-    Private WithEvents V_MMSMenu As New CMCv.UI.View.MenuStrip
+Public Class FRMplnt
+    Private WithEvents Frm_plnt_Editor As New FRMplntEditor
+    Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
 #Region "Sub Collections"
     <SupportedOSPlatform("windows")>
-    Private Sub GetData(Optional ByVal ForceRefresh As Boolean = False)
+    Private Sub GetData(Optional forcerefresh As Boolean = False)
         DblBuffer(DgnPLNT)
-        LibSQL.Commands.PLNT.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnPLNT, SLFStatus, TxtFind, ForceRefresh)
+        CMDplnt.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnPLNT, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -35,64 +34,64 @@ Public Class PLNT
     ''' Add new data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Private Sub _MMSMenu_EventDataAddNew() Handles V_MMSMenu.EventDataAddNew
-        If varUserAccess.User(varDatabaseName, "PLNT", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add) = False Then
-            Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+    Private Sub CommmsMenu_EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
+        If Not varUserAccess.User(varDatabaseName, "PLNT", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add) Then
+            Decision("You are not authorized to : Add new record", "Not Authorized", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
         varFormProperties.IsNew = True
         varFormProperties.RowID = "-1"
-        V_PLNT_Editor = New PLNT_Editor
-        DISPLAY(V_PLNT_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new plant", True)
-        Mainframe_n_6.Ts_status.Text = String.Empty
+        Frm_plnt_Editor = New FRMplntEditor
+        Display(Frm_plnt_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new plant", True)
+        FRMmainframe6.Ts_status.Text = String.Empty
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub _MMSMenu_EventDataEdit() Handles V_MMSMenu.EventDataEdit
-        If varUserAccess.User(varDatabaseName, "PLNT", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit) = False Then
-            Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
-            Exit Sub
+    Private Sub CommmsMenu_EventDataEdit() Handles Com_mms_Menu.EventDataEdit
+        If Not varUserAccess.User(varDatabaseName, "PLNT", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit) Then
+            Decision("You are not authorized to : Modify existing record", "Not Authorized", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            Return
         End If
         Call GetRowID()
         varFormProperties.IsNew = False
         If Convert.ToString(varFormProperties.RowID) = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
-            V_PLNT_Editor = New PLNT_Editor
-            Display(V_PLNT_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update plant data", True)
+            Frm_plnt_Editor = New FRMplntEditor
+            Display(Frm_plnt_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update plant data", True)
         End If
-        Mainframe_n_6.Ts_status.Text = String.Empty
+        FRMmainframe6.Ts_status.Text = String.Empty
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub _MMSMenu_EventDataDelete() Handles V_MMSMenu.EventDataDelete
-        If varUserAccess.User(varDatabaseName, "PLNT", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete) = False Then
-            Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+    Private Sub CommmsMenu_EventDataDelete() Handles Com_mms_Menu.EventDataDelete
+        If Not varUserAccess.User(varDatabaseName, "PLNT", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete) Then
+            Decision("You are not authorized to : Delete record", "Not Authorized", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
         Call GetRowID()
         If Convert.ToString(varFormProperties.RowID) = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             varFormProperties.IsNew = False
-            If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If LibSQL.Commands.PLNT.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID)) = True Then
+            If Decision("Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If CMDplnt.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID)) Then
                     Call GetData(True)
-                    Mainframe_n_6.Ts_status.Text = "Success"
+                    FRMmainframe6.Ts_status.Text = "Success"
                 Else
-                    Mainframe_n_6.Ts_status.Text = "Delete failed"
+                    FRMmainframe6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End If
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub _MMSMenu_EventDataRefresh() Handles V_MMSMenu.EventDataRefresh
+    Private Sub CommmsMenu_EventDataRefresh() Handles Com_mms_Menu.EventDataRefresh
         TxtFind.Clear()
         Call GetData(True)
     End Sub
 
-    Private Sub _MMSMenu_EventDataClose() Handles V_MMSMenu.EventDataClose
+    Private Sub CommmsMenu_EventDataClose() Handles Com_mms_Menu.EventDataClose
         Me.Close()
     End Sub
 #End Region
@@ -103,9 +102,9 @@ Public Class PLNT
 
 #Region "Main Form Events"
     <SupportedOSPlatform("windows")>
-    Private Sub PLNT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        V_MMSMenu.LoadIn(Me)
-        DgnPLNT.XOGETNewColor()
+    Private Sub FRMplnt_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Com_mms_Menu.LoadIn(Me)
+        DgnPLNT.XOGeTNewColor()
         Call ClearFind()
     End Sub
 

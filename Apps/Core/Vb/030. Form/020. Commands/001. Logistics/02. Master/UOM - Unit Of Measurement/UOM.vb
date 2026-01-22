@@ -1,3 +1,3 @@
-﻿Public Class UOM
-
+﻿Public Class FRMuom
+    'TODO: Implement Form for Unit Of Measurement
 End Class

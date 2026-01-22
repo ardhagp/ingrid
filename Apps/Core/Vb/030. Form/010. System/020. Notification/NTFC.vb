@@ -11,8 +11,8 @@ Public Class NTFC
     Private Sub GETDATA()
         DblBuffer(DgnNotification)
         Commands.NTFC.View.Display(varDatabaseName, varDatabaseEngine, DgnNotification, varProperties.EmployeeID)
-        Mainframe_n_6.USERMENU.Text = varProperties.FirstName
-        Mainframe_n_6.NotificationToolStripMenuItem.Text = "0 Notification(s)"
+        FRMmainframe6.USERMENU.Text = varProperties.FirstName
+        FRMmainframe6.NotificationToolStripMenuItem.Text = "0 Notification(s)"
     End Sub
 #End Region
 

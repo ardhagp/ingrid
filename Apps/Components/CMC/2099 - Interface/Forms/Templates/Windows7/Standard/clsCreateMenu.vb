@@ -6,9 +6,9 @@ Imports Syncfusion.Windows.Forms.Tools.XPMenus
 Namespace UI.View
     <SupportedOSPlatform("windows")>
     Public Class MenuStrip
-        Private _MMSMenu As New CMCv.mnu
-        Private _item As ToolStripMenuItem()
-        Private _item_sub As ToolStripMenuItem()
+        Private com_mms_Menu As New CMCv.mnu
+        Private varItemMenu As ToolStripMenuItem()
+        Private varItemSubMenu As ToolStripMenuItem()
 
         Public Event EventDataAddNew()
         Public Event EventDataEdit()
@@ -24,7 +24,7 @@ Namespace UI.View
         Public Event EventFileCancel()
         Public Event EventReportShow()
 
-        Private _EventToolsViewAttachmentVisible As Boolean
+        Private EventToolsViewAttachmentVisible As Boolean
         Private _EventToolsViewAttachmentChecked As Boolean
 
         Public Enum ShowItem
@@ -39,127 +39,127 @@ Namespace UI.View
         ''' </summary>
         ''' <param name="FormName">Nama form dimana menu akan ditampilkan</param>
         ''' <remarks></remarks>
-        Public Sub LoadIn(ByVal FormName As Form, Optional ByVal IsShown As Boolean = False)
-            Dim _item_sep As ToolStripSeparator()
+        Public Sub LoadIn(formname As Form, Optional isshown As Boolean = False)
+            Dim varItemSeparator As ToolStripSeparator()
 
-            ReDim _item(4)
-            '_MMSMenu = New CMCv.mnu
-            With _MMSMenu
-                .Visible = IsShown
+            ReDim varItemMenu(4)
+            'com_mms_Menu = New CMCv.mnu
+            With com_mms_Menu
+                .Visible = isshown
                 .Font = New Drawing.Font("Segoe UI", 12)
             End With
 
 
             'Add menu RECORD
-            _item(0) = New ToolStripMenuItem() With {.Name = "RECORD", .Text = "RECORD", .MergeAction = Windows.Forms.MergeAction.Insert, .MergeIndex = 1}
-            _MMSMenu.Items.Add(_item(0))
+            varItemMenu(0) = New ToolStripMenuItem() With {.Name = "RECORD", .Text = "RECORD", .MergeAction = Windows.Forms.MergeAction.Insert, .MergeIndex = 1}
+            com_mms_Menu.Items.Add(varItemMenu(0))
 
             'Add menu TOOLS
-            _item(1) = New ToolStripMenuItem() With {.Name = "TOOLS", .Text = "TOOLS", .MergeAction = Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
-            _MMSMenu.Items.Add(_item(1))
+            varItemMenu(1) = New ToolStripMenuItem() With {.Name = "TOOLS", .Text = "TOOLS", .MergeAction = Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
+            com_mms_Menu.Items.Add(varItemMenu(1))
 
             'Add menu TOOLS
-            _item(2) = New ToolStripMenuItem() With {.Name = "REPORTS", .Text = "REPORTS", .MergeAction = Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
-            _MMSMenu.Items.Add(_item(2))
+            varItemMenu(2) = New ToolStripMenuItem() With {.Name = "REPORTS", .Text = "REPORTS", .MergeAction = Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
+            com_mms_Menu.Items.Add(varItemMenu(2))
 
             'Add menu FILE
-            _item(3) = New ToolStripMenuItem() With {.Name = "FILE", .Text = "FILE", .MergeAction = Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
-            _MMSMenu.Items.Add(_item(3))
+            varItemMenu(3) = New ToolStripMenuItem() With {.Name = "FILE", .Text = "FILE", .MergeAction = Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
+            com_mms_Menu.Items.Add(varItemMenu(3))
 
-            For Each _item As ToolStripMenuItem In _MMSMenu.Items
-                _item.Visible = False
+            For Each varItemMenu As ToolStripMenuItem In com_mms_Menu.Items
+                varItemMenu.Visible = False
             Next
 
-            FormName.Controls.Add(_MMSMenu)
+            formname.Controls.Add(com_mms_Menu)
 
-            ReDim _item_sub(12) 'normal items
-            ReDim _item_sep(5) 'separator items
+            ReDim varItemSubMenu(12) 'normal items
+            ReDim varItemSeparator(5) 'separator items
 
-            For Each _s_item As ToolStripMenuItem In _MMSMenu.Items
+            For Each varEachItem As ToolStripMenuItem In com_mms_Menu.Items
 
-                Select Case _s_item.Name
+                Select Case varEachItem.Name
                     Case "RECORD"
                         'Insert "Add New..."
-                        _item_sub(0) = New ToolStripMenuItem() With {.Name = "EventDataAddNew", .Text = "Add New...", .ShortcutKeys = CType(Keys.Control + Keys.N, Keys), .ShortcutKeyDisplayString = "Ctrl+N"}
-                        _s_item.DropDown.Items.Add(_item_sub(0))
-                        AddHandler _item_sub(0).Click, AddressOf EventDataAddNew_Clicked
+                        varItemSubMenu(0) = New ToolStripMenuItem() With {.Name = "EventDataAddNew", .Text = "Add New...", .ShortcutKeys = CType(Keys.Control + Keys.N, Keys), .ShortcutKeyDisplayString = "Ctrl+N"}
+                        varEachItem.DropDown.Items.Add(varItemSubMenu(0))
+                        AddHandler varItemSubMenu(0).Click, AddressOf EventDataAddNew_Clicked
 
                         'Insert "Edit..."
-                        _item_sub(1) = New ToolStripMenuItem() With {.Name = "EventDataEdit", .Text = "Edit...", .ShortcutKeys = CType(Keys.Control + Keys.E, Keys), .ShortcutKeyDisplayString = "Ctrl+E"}
-                        _s_item.DropDown.Items.Add(_item_sub(1))
-                        AddHandler _item_sub(1).Click, AddressOf EventDataEdit_Clicked
+                        varItemSubMenu(1) = New ToolStripMenuItem() With {.Name = "EventDataEdit", .Text = "Edit...", .ShortcutKeys = CType(Keys.Control + Keys.E, Keys), .ShortcutKeyDisplayString = "Ctrl+E"}
+                        varEachItem.DropDown.Items.Add(varItemSubMenu(1))
+                        AddHandler varItemSubMenu(1).Click, AddressOf EventDataEdit_Clicked
 
                         'Insert "Delete..."
-                        _item_sub(2) = New ToolStripMenuItem() With {.Name = "EventDataDelete", .Text = "Delete", .ShortcutKeys = CType(Keys.Control + Keys.Delete, Keys), .ShortcutKeyDisplayString = "Ctrl+Del"}
-                        _s_item.DropDown.Items.Add(_item_sub(2))
-                        AddHandler _item_sub(2).Click, AddressOf EventDataDelete_Clicked
+                        varItemSubMenu(2) = New ToolStripMenuItem() With {.Name = "EventDataDelete", .Text = "Delete", .ShortcutKeys = CType(Keys.Control + Keys.Delete, Keys), .ShortcutKeyDisplayString = "Ctrl+Del"}
+                        varEachItem.DropDown.Items.Add(varItemSubMenu(2))
+                        AddHandler varItemSubMenu(2).Click, AddressOf EventDataDelete_Clicked
 
                         'Insert "Separator"
-                        _item_sep(0) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem1"}
-                        _s_item.DropDown.Items.Add(_item_sep(0))
+                        varItemSeparator(0) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem1"}
+                        varEachItem.DropDown.Items.Add(varItemSeparator(0))
 
                         'Insert "Find"
-                        _item_sub(3) = New ToolStripMenuItem() With {.Name = "EventToolsFind", .Text = "Find", .ShortcutKeys = CType(Keys.Control + Keys.F, Keys), .ShortcutKeyDisplayString = "Ctrl+F"}
-                        _s_item.DropDown.Items.Add(_item_sub(3))
-                        AddHandler _item_sub(3).Click, AddressOf EventToolsFind_Clicked
+                        varItemSubMenu(3) = New ToolStripMenuItem() With {.Name = "EventToolsFind", .Text = "Find", .ShortcutKeys = CType(Keys.Control + Keys.F, Keys), .ShortcutKeyDisplayString = "Ctrl+F"}
+                        varEachItem.DropDown.Items.Add(varItemSubMenu(3))
+                        AddHandler varItemSubMenu(3).Click, AddressOf EventToolsFind_Clicked
 
                         'Insert "Refresh"
-                        _item_sub(4) = New ToolStripMenuItem() With {.Name = "EventDataRefresh", .Text = "Refresh", .ShortcutKeys = Keys.F5, .ShortcutKeyDisplayString = "F5"}
-                        _s_item.DropDown.Items.Add(_item_sub(4))
-                        AddHandler _item_sub(4).Click, AddressOf EventDataRefresh_Clicked
+                        varItemSubMenu(4) = New ToolStripMenuItem() With {.Name = "EventDataRefresh", .Text = "Refresh", .ShortcutKeys = Keys.F5, .ShortcutKeyDisplayString = "F5"}
+                        varEachItem.DropDown.Items.Add(varItemSubMenu(4))
+                        AddHandler varItemSubMenu(4).Click, AddressOf EventDataRefresh_Clicked
 
                         'Insert "Separator"
-                        _item_sep(1) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem2"}
-                        _s_item.DropDown.Items.Add(_item_sep(1))
+                        varItemSeparator(1) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem2"}
+                        varEachItem.DropDown.Items.Add(varItemSeparator(1))
 
                         'Insert "Close"
-                        _item_sub(5) = New ToolStripMenuItem() With {.Name = "EventDataClose", .Text = "Close", .ShortcutKeys = CType(Keys.Control + Keys.F4, Keys), .ShortcutKeyDisplayString = "Ctrl+F4"}
-                        _s_item.DropDown.Items.Add(_item_sub(5))
-                        AddHandler _item_sub(5).Click, AddressOf EventDataClose_Clicked
+                        varItemSubMenu(5) = New ToolStripMenuItem() With {.Name = "EventDataClose", .Text = "Close", .ShortcutKeys = CType(Keys.Control + Keys.F4, Keys), .ShortcutKeyDisplayString = "Ctrl+F4"}
+                        varEachItem.DropDown.Items.Add(varItemSubMenu(5))
+                        AddHandler varItemSubMenu(5).Click, AddressOf EventDataClose_Clicked
 
                     Case "TOOLS"
                         'Insert "Import"
-                        _item_sub(6) = New ToolStripMenuItem() With {.Name = "EventToolsImport", .Text = "Import...", .Enabled = False}
-                        _s_item.DropDown.Items.Add(_item_sub(6))
-                        AddHandler _item_sub(6).Click, AddressOf EventToolsImport_Clicked
+                        varItemSubMenu(6) = New ToolStripMenuItem() With {.Name = "EventToolsImport", .Text = "Import...", .Enabled = False}
+                        varEachItem.DropDown.Items.Add(varItemSubMenu(6))
+                        AddHandler varItemSubMenu(6).Click, AddressOf EventToolsImport_Clicked
 
                         'Insert "Export"
-                        _item_sub(7) = New ToolStripMenuItem() With {.Name = "EventToolsExport", .Text = "Export...", .Enabled = False}
-                        _s_item.DropDown.Items.Add(_item_sub(7))
-                        AddHandler _item_sub(7).Click, AddressOf EventToolsExport_Clicked
+                        varItemSubMenu(7) = New ToolStripMenuItem() With {.Name = "EventToolsExport", .Text = "Export...", .Enabled = False}
+                        varEachItem.DropDown.Items.Add(varItemSubMenu(7))
+                        AddHandler varItemSubMenu(7).Click, AddressOf EventToolsExport_Clicked
 
                         'Insert "Separator"
-                        _item_sep(2) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem3"}
-                        _s_item.DropDown.Items.Add(_item_sep(2))
+                        varItemSeparator(2) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem3"}
+                        varEachItem.DropDown.Items.Add(varItemSeparator(2))
 
                         'Insert "ViewAttachment"
-                        _item_sub(8) = New ToolStripMenuItem() With {.Name = "EventToolsViewAttachment", .Text = "Attachment Viewer", .Visible = False, .CheckOnClick = True, .Checked = False, .ShortcutKeys = CType(Keys.Alt + Keys.P, Keys), .ShortcutKeyDisplayString = "Alt+P"}
-                        _s_item.DropDown.Items.Add(_item_sub(8))
-                        AddHandler _item_sub(8).Click, AddressOf EventToolsViewAttachment_Clicked
+                        varItemSubMenu(8) = New ToolStripMenuItem() With {.Name = "EventToolsViewAttachment", .Text = "Attachment Viewer", .Visible = False, .CheckOnClick = True, .Checked = False, .ShortcutKeys = CType(Keys.Alt + Keys.P, Keys), .ShortcutKeyDisplayString = "Alt+P"}
+                        varEachItem.DropDown.Items.Add(varItemSubMenu(8))
+                        AddHandler varItemSubMenu(8).Click, AddressOf EventToolsViewAttachment_Clicked
                     Case "FILE"
                         'Insert "Save"
-                        _item_sub(9) = New ToolStripMenuItem() With {.Name = "EventToolsSave", .Text = "Save", .ShortcutKeys = CType(Keys.Control + Keys.S, Keys), .ShortcutKeyDisplayString = "Ctrl+S"}
-                        _s_item.DropDown.Items.Add(_item_sub(9))
-                        AddHandler _item_sub(9).Click, AddressOf EventFileSave_Clicked
+                        varItemSubMenu(9) = New ToolStripMenuItem() With {.Name = "EventToolsSave", .Text = "Save", .ShortcutKeys = CType(Keys.Control + Keys.S, Keys), .ShortcutKeyDisplayString = "Ctrl+S"}
+                        varEachItem.DropDown.Items.Add(varItemSubMenu(9))
+                        AddHandler varItemSubMenu(9).Click, AddressOf EventFileSave_Clicked
 
                         'Insert "Undo All"
-                        _item_sub(10) = New ToolStripMenuItem() With {.Name = "EventToolsUndoAll", .Text = "Undo All", .ShortcutKeys = CType(Keys.Control + Keys.Z, Keys), .ShortcutKeyDisplayString = "Ctrl+Z"}
-                        _s_item.DropDown.Items.Add(_item_sub(10))
-                        AddHandler _item_sub(10).Click, AddressOf EventFileUndoAll_Clicked
+                        varItemSubMenu(10) = New ToolStripMenuItem() With {.Name = "EventToolsUndoAll", .Text = "Undo All", .ShortcutKeys = CType(Keys.Control + Keys.Z, Keys), .ShortcutKeyDisplayString = "Ctrl+Z"}
+                        varEachItem.DropDown.Items.Add(varItemSubMenu(10))
+                        AddHandler varItemSubMenu(10).Click, AddressOf EventFileUndoAll_Clicked
 
                         'Insert "Separator"
-                        _item_sep(3) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem3"}
-                        _s_item.DropDown.Items.Add(_item_sep(3))
+                        varItemSeparator(3) = New ToolStripSeparator With {.Name = "SeparatorToolStripMenuItem3"}
+                        varEachItem.DropDown.Items.Add(varItemSeparator(3))
 
                         'Insert "Close"
-                        _item_sub(11) = New ToolStripMenuItem() With {.Name = "EventFileCancel", .Text = "Cancel", .ShortcutKeys = CType(Keys.Control + Keys.F4, Keys), .ShortcutKeyDisplayString = "Ctrl+F4"}
-                        _s_item.DropDown.Items.Add(_item_sub(11))
-                        AddHandler _item_sub(11).Click, AddressOf EventFileCancel_Clicked
+                        varItemSubMenu(11) = New ToolStripMenuItem() With {.Name = "EventFileCancel", .Text = "Cancel", .ShortcutKeys = CType(Keys.Control + Keys.F4, Keys), .ShortcutKeyDisplayString = "Ctrl+F4"}
+                        varEachItem.DropDown.Items.Add(varItemSubMenu(11))
+                        AddHandler varItemSubMenu(11).Click, AddressOf EventFileCancel_Clicked
                     Case "REPORTS"
                         'Insert "Report"
-                        _item_sub(12) = New ToolStripMenuItem() With {.Name = "EventReportsShow", .Text = "Generate...", .ShortcutKeys = CType(Keys.Control + Keys.L, Keys), .ShortcutKeyDisplayString = "Ctrl+L"}
-                        _s_item.DropDown.Items.Add(_item_sub(12))
-                        AddHandler _item_sub(12).Click, AddressOf EventReportsView_Clicked
+                        varItemSubMenu(12) = New ToolStripMenuItem() With {.Name = "EventReportsShow", .Text = "Generate...", .ShortcutKeys = CType(Keys.Control + Keys.L, Keys), .ShortcutKeyDisplayString = "Ctrl+L"}
+                        varEachItem.DropDown.Items.Add(varItemSubMenu(12))
+                        AddHandler varItemSubMenu(12).Click, AddressOf EventReportsView_Clicked
                 End Select
             Next
         End Sub
@@ -268,97 +268,80 @@ Namespace UI.View
 #End Region
 
 #Region "Subs Collections"
-        Public Function Visible(ByVal MenuName As String) As Boolean
-            Dim _IsVisible As Boolean = False
-            Dim varSubmenu As ToolStripMenuItem
+        Public Function Visible(ByVal menuname As String) As Boolean
+            Dim varIsVisible As Boolean = False
+            Dim varSubMenu As ToolStripMenuItem
 
             Try
-                For Each SubMenu As Object In _item_sub
-                    If TypeOf SubMenu Is ToolStripMenuItem Then
-                        varSubmenu = CType(SubMenu, ToolStripMenuItem)
-                        If varSubmenu.Name = MenuName Then
-                            _IsVisible = _EventToolsViewAttachmentVisible
-                            varSubmenu.Visible = _EventToolsViewAttachmentVisible
+                For Each varEachSubMenu As Object In varItemSubMenu
+                    If TypeOf varEachSubMenu Is ToolStripMenuItem Then
+                        varSubMenu = CType(varEachSubMenu, ToolStripMenuItem)
+                        If varSubMenu.Name = menuname Then
+                            varIsVisible = EventToolsViewAttachmentVisible
+                            varSubMenu.Visible = EventToolsViewAttachmentVisible
                         End If
                     End If
-                    'If SubMenu.Name = MenuName Then
-                    '    _IsVisible = _EventToolsViewAttachmentVisible
-                    '    SubMenu.Visible = _EventToolsViewAttachmentVisible
-                    'End If
                 Next
             Catch ex As Exception
                 Return False
                 MsgBox(ex.ToString)
             End Try
-            Return _IsVisible
+            Return varIsVisible
         End Function
 
-        Public Sub Visible(ByVal MenuName As String, ByVal Value As ShowItem)
-            Try
-                Dim varSubmenu As ToolStripMenuItem
+        Public Sub Visible(menuname As String, value As ShowItem)
+            Dim varSubmenu As ToolStripMenuItem
 
-                For Each SubMenu As Object In _item_sub
-                    If TypeOf SubMenu Is ToolStripMenuItem Then
-                        varSubmenu = CType(SubMenu, ToolStripMenuItem)
-                        If varSubmenu.Name = MenuName Then
-                            varSubmenu.Visible = CType(Value, Boolean)
-                            _EventToolsViewAttachmentVisible = CType(Value, Boolean)
+            Try
+                For Each varEachSubMenu As Object In varItemSubMenu
+                    If TypeOf varEachSubMenu Is ToolStripMenuItem Then
+                        varSubmenu = CType(varEachSubMenu, ToolStripMenuItem)
+                        If varSubmenu.Name = menuname Then
+                            varSubmenu.Visible = CType(value, Boolean)
+                            EventToolsViewAttachmentVisible = CType(value, Boolean)
                             Return
                         End If
                     End If
-                    'If SubMenu.Name = MenuName Then
-                    '    SubMenu.Visible = ctype(Value,boolean)
-                    '    _EventToolsViewAttachmentVisible = ctype(Value,boolean)
-                    '    Return
-                    'End If
                 Next
             Catch ex As Exception
                 MsgBox(ex.ToString)
             End Try
         End Sub
 
-        Public Function Checked(ByVal MenuName As String) As Boolean
-            Dim _IsChecked As Boolean = False
+        Public Function Checked(menuname As String) As Boolean
+            Dim varIsChecked As Boolean = False
             Dim varSubmenu As ToolStripMenuItem
+
             Try
-                For Each SubMenu As Object In _item_sub
-                    If TypeOf SubMenu Is ToolStripMenuItem Then
-                        varSubmenu = CType(SubMenu, ToolStripMenuItem)
-                        If varSubmenu.Name = MenuName Then
-                            _IsChecked = _EventToolsViewAttachmentChecked
+                For Each varEachSubMenu As Object In varItemSubMenu
+                    If TypeOf varEachSubMenu Is ToolStripMenuItem Then
+                        varSubmenu = CType(varEachSubMenu, ToolStripMenuItem)
+                        If varSubmenu.Name = menuname Then
+                            varIsChecked = _EventToolsViewAttachmentChecked
                             varSubmenu.Checked = _EventToolsViewAttachmentChecked
                         End If
                     End If
-                    'If SubMenu.name = MenuName Then
-                    '    _IsChecked = _EventToolsViewAttachmentChecked
-                    '    SubMenu.Checked = _EventToolsViewAttachmentChecked
-                    'End If
                 Next
             Catch ex As Exception
                 Return False
                 MsgBox(ex.ToString)
             End Try
-            Return _IsChecked
+            Return varIsChecked
         End Function
 
-        Public Sub Checked(ByVal MenuName As String, ByVal Value As ShowItem)
-            Try
-                Dim varSubmenu As ToolStripMenuItem
+        Public Sub Checked(menuname As String, value As ShowItem)
+            Dim varSubmenu As ToolStripMenuItem
 
-                For Each SubMenu As Object In _item_sub
-                    If TypeOf SubMenu Is ToolStripMenuItem Then
-                        varSubmenu = CType(SubMenu, ToolStripMenuItem)
-                        If varSubmenu.Name = MenuName Then
-                            varSubmenu.Checked = CType(Value, Boolean)
-                            _EventToolsViewAttachmentChecked = CType(Value, Boolean)
+            Try
+                For Each varEachSubMenu As Object In varItemSubMenu
+                    If TypeOf varEachSubMenu Is ToolStripMenuItem Then
+                        varSubmenu = CType(varEachSubMenu, ToolStripMenuItem)
+                        If varSubmenu.Name = menuname Then
+                            varSubmenu.Checked = CType(value, Boolean)
+                            _EventToolsViewAttachmentChecked = CType(value, Boolean)
                             Return
                         End If
                     End If
-                    'If SubMenu.Name = MenuName Then
-                    '    SubMenu.Checked = Value
-                    '    _EventToolsViewAttachmentChecked = Value
-                    '    Return
-                    'End If
                 Next
             Catch ex As Exception
                 MsgBox(ex.ToString)
@@ -366,19 +349,19 @@ Namespace UI.View
         End Sub
 
         Public Sub ShowMenuData(Optional value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
-            _item(0).Visible = CType(value, Boolean)
+            varItemMenu(0).Visible = CType(value, Boolean)
         End Sub
 
         Public Sub ShowMenuTools(Optional value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
-            _item(1).Visible = CType(value, Boolean)
+            varItemMenu(1).Visible = CType(value, Boolean)
         End Sub
 
         Public Sub ShowMenuReports(Optional value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
-            _item(2).Visible = CType(value, Boolean)
+            varItemMenu(2).Visible = CType(value, Boolean)
         End Sub
 
         Public Sub ShowMenuFile(Optional value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
-            _item(3).Visible = CType(value, Boolean)
+            varItemMenu(3).Visible = CType(value, Boolean)
         End Sub
 #End Region
 
@@ -386,34 +369,34 @@ Namespace UI.View
     End Class
 
     Public Class ContextMenu
-        Private _CSMenu As New ContextMenuStrip
-        Private _item As ToolStripMenuItem()
+        Private COM_cs_Menu As New ContextMenuStrip
+        Private varItemMenu As ToolStripMenuItem()
 
 #Region "Public Events"
         Public Event ContextCopy()
 #End Region
 
-        Public Sub LoadInGrid(ByVal Grid As dgn)
+        Public Sub LoadInGrid(grid As dgn)
 
-            'Dim _item_sub() As ToolStripMenuItem
+            'Dim varItemSubMenu() As ToolStripMenuItem
 
-            _CSMenu = New ContextMenuStrip
-            ReDim _item(1)
+            COM_cs_Menu = New ContextMenuStrip
+            ReDim varItemMenu(1)
 
-            _CSMenu.Visible = True
+            COM_cs_Menu.Visible = True
 
-            _item(0) = New ToolStripMenuItem() With {.Name = "COPYCELL", .Text = "Copy"}
-            _CSMenu.Items.Add(_item(0))
-            AddHandler _item(0).Click, AddressOf ContextCopy_Clicked
-            Grid.ContextMenuStrip = _CSMenu
+            varItemMenu(0) = New ToolStripMenuItem() With {.Name = "COPYCELL", .Text = "Copy"}
+            COM_cs_Menu.Items.Add(varItemMenu(0))
+            AddHandler varItemMenu(0).Click, AddressOf ContextCopy_Clicked
+            grid.ContextMenuStrip = COM_cs_Menu
 
 
         End Sub
 
 #Region "Context Menu Events"
         Private Sub ContextCopy_Clicked(sender As Object, e As EventArgs)
-            Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
-            If item IsNot Nothing Then
+            Dim varItemMenu As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+            If varItemMenu IsNot Nothing Then
                 'Your external code will be executed here
                 RaiseEvent ContextCopy()
             End If

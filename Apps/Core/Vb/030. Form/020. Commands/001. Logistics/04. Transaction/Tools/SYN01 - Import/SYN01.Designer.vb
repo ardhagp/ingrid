@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class SYN01
-    Inherits CMCv.Std_Fi
+Partial Class FRMsyn01
+    Inherits CMCv.FRMstandardFind
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -34,15 +34,19 @@ Partial Class SYN01
         ' 
         ' TxtFind
         ' 
-        TxtFind.Margin = New Padding(5, 3, 5, 3)
+        TxtFind.Margin = New Padding(7, 5, 7, 5)
         ' 
-        ' SYN01
+        ' SLFPanel
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(915, 647)
+        SLFPanel.Size = New Size(1307, 952)
+        ' 
+        ' FRMsyn01
+        ' 
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1307, 1078)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
-        Name = "SYN01"
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMsyn01"
         PnlFind.ResumeLayout(False)
         PnlFind.PerformLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

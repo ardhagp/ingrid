@@ -2,10 +2,8 @@
 Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.CCIN
+Namespace CMDccin
     Public Class View
-        ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
-
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(databasename As String, dbengine As String, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
             Dim varWhere As String = "where "

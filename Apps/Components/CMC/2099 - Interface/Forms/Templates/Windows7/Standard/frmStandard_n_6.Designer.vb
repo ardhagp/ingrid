@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frmStandard_n_6
-    Inherits CMCv.Blank
+Partial Class FRMstandard6
+    Inherits CMCv.FRMblank
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -25,6 +25,6 @@ Partial Class frmStandard_n_6
         components = New System.ComponentModel.Container
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Text = "frmStandard_n_6"
+        Me.Text = "FRMstandard6"
     End Sub
 End Class

@@ -1,4 +1,4 @@
-﻿Namespace Database.Adapter.SQLite.Display
+﻿Namespace Database.Adapter.Sqlite.Display
     Public Structure Request
         Public Property Query As String
         Public Property DataGrid As dgn
@@ -8,7 +8,7 @@
     End Structure
 End Namespace
 
-Namespace Database.Adapter.SQLite
+Namespace Database.Adapter.Sqlite
     Public Structure Execute
         Public Property Query As String
     End Structure

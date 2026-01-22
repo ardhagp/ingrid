@@ -1,3 +1,3 @@
-﻿Public Class Std_Fi_Fo
+﻿Public Class FRMstandardFindFooter
 
 End Class

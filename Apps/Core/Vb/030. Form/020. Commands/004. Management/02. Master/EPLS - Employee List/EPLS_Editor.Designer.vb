@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class EPLS_Editor
+Partial Class FRMeplsEditor
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -20,7 +20,7 @@ Partial Class EPLS_Editor
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(EPLS_Editor))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMeplsEditor))
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
@@ -102,17 +102,17 @@ Partial Class EPLS_Editor
         PnlBottomButton.Controls.Add(BtnCancel)
         PnlBottomButton.Controls.Add(BtnSave)
         PnlBottomButton.Controls.Add(ChkAddNew)
-        PnlBottomButton.Location = New Point(0, 438)
-        PnlBottomButton.Margin = New Padding(5, 3, 5, 3)
-        PnlBottomButton.Size = New Size(827, 58)
+        PnlBottomButton.Location = New Point(0, 742)
+        PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
+        PnlBottomButton.Size = New Size(1181, 97)
         PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
         PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
         PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
         ' 
         ' pnl_
         ' 
-        pnl_.Margin = New Padding(5, 3, 5, 3)
-        pnl_.Size = New Size(827, 61)
+        pnl_.Margin = New Padding(7, 5, 7, 5)
+        pnl_.Size = New Size(1181, 104)
         ' 
         ' SLFPanel
         ' 
@@ -121,8 +121,8 @@ Partial Class EPLS_Editor
         SLFPanel.Controls.Add(BtnBrowsePhoto)
         SLFPanel.Controls.Add(pctbxPhoto)
         SLFPanel.Controls.Add(pcbxFrame)
-        SLFPanel.Margin = New Padding(5, 3, 5, 3)
-        SLFPanel.Size = New Size(827, 496)
+        SLFPanel.Margin = New Padding(7, 5, 7, 5)
+        SLFPanel.Size = New Size(1181, 839)
         SLFPanel.Controls.SetChildIndex(pcbxFrame, 0)
         SLFPanel.Controls.SetChildIndex(pctbxPhoto, 0)
         SLFPanel.Controls.SetChildIndex(BtnBrowsePhoto, 0)
@@ -138,10 +138,10 @@ Partial Class EPLS_Editor
         ChkAddNew.FlatStyle = FlatStyle.Flat
         ChkAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         ChkAddNew.ForeColor = Color.Tomato
-        ChkAddNew.Location = New Point(419, 17)
-        ChkAddNew.Margin = New Padding(4, 3, 4, 3)
+        ChkAddNew.Location = New Point(586, 28)
+        ChkAddNew.Margin = New Padding(6, 5, 6, 5)
         ChkAddNew.Name = "ChkAddNew"
-        ChkAddNew.Size = New Size(146, 25)
+        ChkAddNew.Size = New Size(221, 36)
         ChkAddNew.TabIndex = 803
         ChkAddNew.Text = "Add new on Save"
         ChkAddNew.UseVisualStyleBackColor = False
@@ -157,17 +157,17 @@ Partial Class EPLS_Editor
         BtnSave.FlatStyle = FlatStyle.Flat
         BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnSave.ForeColor = Color.White
-        BtnSave.Location = New Point(572, 8)
-        BtnSave.Margin = New Padding(4, 3, 4, 3)
+        BtnSave.Location = New Point(817, 13)
+        BtnSave.Margin = New Padding(6, 5, 6, 5)
         BtnSave.Name = "BtnSave"
-        BtnSave.Size = New Size(117, 46)
+        BtnSave.Size = New Size(167, 77)
+        BtnSave.TabIndex = 801
+        BtnSave.Text = "&Save"
+        BtnSave.UseVisualStyleBackColor = False
         BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
         BtnSave.XOTampilkanFocusBorder = False
         BtnSave.XOValidasiSemuaInput = False
         BtnSave.XOValidasiSemuaInputTag = Nothing
-        BtnSave.TabIndex = 801
-        BtnSave.Text = "&Save"
-        BtnSave.UseVisualStyleBackColor = False
         ' 
         ' BtnCancel
         ' 
@@ -178,19 +178,19 @@ Partial Class EPLS_Editor
         BtnCancel.FlatAppearance.BorderSize = 2
         BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnCancel.FlatStyle = FlatStyle.Flat
-        BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
-        BtnCancel.Location = New Point(696, 8)
-        BtnCancel.Margin = New Padding(4, 3, 4, 3)
+        BtnCancel.Location = New Point(994, 13)
+        BtnCancel.Margin = New Padding(6, 5, 6, 5)
         BtnCancel.Name = "BtnCancel"
-        BtnCancel.Size = New Size(117, 46)
+        BtnCancel.Size = New Size(167, 77)
+        BtnCancel.TabIndex = 802
+        BtnCancel.Text = "&Close"
+        BtnCancel.UseVisualStyleBackColor = False
         BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
         BtnCancel.XOTampilkanFocusBorder = False
         BtnCancel.XOValidasiSemuaInput = False
         BtnCancel.XOValidasiSemuaInputTag = Nothing
-        BtnCancel.TabIndex = 802
-        BtnCancel.Text = "&Close"
-        BtnCancel.UseVisualStyleBackColor = False
         ' 
         ' pctbxPhoto
         ' 
@@ -199,16 +199,16 @@ Partial Class EPLS_Editor
         pctbxPhoto.ErrorImage = CType(resources.GetObject("pctbxPhoto.ErrorImage"), Image)
         pctbxPhoto.Image = CType(resources.GetObject("pctbxPhoto.Image"), Image)
         pctbxPhoto.InitialImage = CType(resources.GetObject("pctbxPhoto.InitialImage"), Image)
-        pctbxPhoto.Location = New Point(653, 99)
-        pctbxPhoto.Margin = New Padding(4, 3, 4, 3)
+        pctbxPhoto.Location = New Point(933, 165)
+        pctbxPhoto.Margin = New Padding(6, 5, 6, 5)
         pctbxPhoto.Name = "pctbxPhoto"
-        pctbxPhoto.Padding = New Padding(18, 17, 18, 17)
-        pctbxPhoto.Size = New Size(125, 145)
+        pctbxPhoto.Padding = New Padding(26, 28, 26, 28)
+        pctbxPhoto.Size = New Size(179, 242)
         pctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
-        pctbxPhoto.XOTampilkanBorder = False
-        pctbxPhoto.XOWarnaBorder = Color.Transparent
         pctbxPhoto.TabIndex = 1038
         pctbxPhoto.TabStop = False
+        pctbxPhoto.XOTampilkanBorder = False
+        pctbxPhoto.XOWarnaBorder = Color.Transparent
         ' 
         ' BtnBrowsePhoto
         ' 
@@ -219,19 +219,19 @@ Partial Class EPLS_Editor
         BtnBrowsePhoto.FlatAppearance.BorderSize = 2
         BtnBrowsePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
         BtnBrowsePhoto.FlatStyle = FlatStyle.Flat
-        BtnBrowsePhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnBrowsePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnBrowsePhoto.ForeColor = Color.White
-        BtnBrowsePhoto.Location = New Point(653, 257)
-        BtnBrowsePhoto.Margin = New Padding(4, 3, 4, 3)
+        BtnBrowsePhoto.Location = New Point(933, 428)
+        BtnBrowsePhoto.Margin = New Padding(6, 5, 6, 5)
         BtnBrowsePhoto.Name = "BtnBrowsePhoto"
-        BtnBrowsePhoto.Size = New Size(125, 48)
+        BtnBrowsePhoto.Size = New Size(179, 80)
+        BtnBrowsePhoto.TabIndex = 800
+        BtnBrowsePhoto.Text = "Browse"
+        BtnBrowsePhoto.UseVisualStyleBackColor = False
         BtnBrowsePhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
         BtnBrowsePhoto.XOTampilkanFocusBorder = False
         BtnBrowsePhoto.XOValidasiSemuaInput = False
         BtnBrowsePhoto.XOValidasiSemuaInputTag = Nothing
-        BtnBrowsePhoto.TabIndex = 800
-        BtnBrowsePhoto.Text = "Browse"
-        BtnBrowsePhoto.UseVisualStyleBackColor = False
         ' 
         ' OfdPhoto
         ' 
@@ -244,25 +244,25 @@ Partial Class EPLS_Editor
         pcbxFrame.BorderStyle = BorderStyle.FixedSingle
         pcbxFrame.ErrorImage = CType(resources.GetObject("pcbxFrame.ErrorImage"), Image)
         pcbxFrame.InitialImage = CType(resources.GetObject("pcbxFrame.InitialImage"), Image)
-        pcbxFrame.Location = New Point(647, 93)
-        pcbxFrame.Margin = New Padding(4, 3, 4, 3)
+        pcbxFrame.Location = New Point(924, 155)
+        pcbxFrame.Margin = New Padding(6, 5, 6, 5)
         pcbxFrame.Name = "pcbxFrame"
-        pcbxFrame.Size = New Size(136, 157)
+        pcbxFrame.Size = New Size(193, 260)
         pcbxFrame.SizeMode = PictureBoxSizeMode.Zoom
-        pcbxFrame.XOTampilkanBorder = False
-        pcbxFrame.XOWarnaBorder = Color.DodgerBlue
         pcbxFrame.TabIndex = 1040
         pcbxFrame.TabStop = False
+        pcbxFrame.XOTampilkanBorder = False
+        pcbxFrame.XOWarnaBorder = Color.DodgerBlue
         ' 
         ' tpPermissions
         ' 
         tpPermissions.Controls.Add(GbxModulesRoles)
         tpPermissions.Controls.Add(GbxCredetials)
-        tpPermissions.Location = New Point(4, 30)
-        tpPermissions.Margin = New Padding(4, 3, 4, 3)
+        tpPermissions.Location = New Point(4, 41)
+        tpPermissions.Margin = New Padding(6, 5, 6, 5)
         tpPermissions.Name = "tpPermissions"
-        tpPermissions.Padding = New Padding(4, 3, 4, 3)
-        tpPermissions.Size = New Size(573, 382)
+        tpPermissions.Padding = New Padding(6, 5, 6, 5)
+        tpPermissions.Size = New Size(822, 661)
         tpPermissions.TabIndex = 1
         tpPermissions.Text = "PERMISSIONS"
         tpPermissions.UseVisualStyleBackColor = True
@@ -272,12 +272,12 @@ Partial Class EPLS_Editor
         GbxModulesRoles.AutoSize = True
         GbxModulesRoles.Controls.Add(DgnModulesRoles)
         GbxModulesRoles.Dock = DockStyle.Fill
-        GbxModulesRoles.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        GbxModulesRoles.Location = New Point(4, 111)
-        GbxModulesRoles.Margin = New Padding(4, 3, 4, 3)
+        GbxModulesRoles.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        GbxModulesRoles.Location = New Point(6, 185)
+        GbxModulesRoles.Margin = New Padding(6, 5, 6, 5)
         GbxModulesRoles.Name = "GbxModulesRoles"
-        GbxModulesRoles.Padding = New Padding(4, 3, 4, 3)
-        GbxModulesRoles.Size = New Size(565, 268)
+        GbxModulesRoles.Padding = New Padding(6, 5, 6, 5)
+        GbxModulesRoles.Size = New Size(810, 471)
         GbxModulesRoles.TabIndex = 0
         GbxModulesRoles.TabStop = False
         GbxModulesRoles.Text = "Modules or roles"
@@ -286,7 +286,7 @@ Partial Class EPLS_Editor
         ' 
         DgnModulesRoles.AllowUserToAddRows = False
         DgnModulesRoles.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(246), CByte(229), CByte(149))
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(244), CByte(243), CByte(143))
         DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnModulesRoles.BorderStyle = BorderStyle.None
@@ -294,7 +294,7 @@ Partial Class EPLS_Editor
         DgnModulesRoles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -305,49 +305,54 @@ Partial Class EPLS_Editor
         DgnModulesRoles.Columns.AddRange(New DataGridViewColumn() {modulegroup_name, module_code, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports, useraccess_id, module_id})
         DgnModulesRoles.Dock = DockStyle.Fill
         DgnModulesRoles.EnableHeadersVisualStyles = False
-        DgnModulesRoles.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
-        DgnModulesRoles.Location = New Point(4, 25)
-        DgnModulesRoles.Margin = New Padding(4, 3, 4, 3)
+        DgnModulesRoles.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnModulesRoles.Location = New Point(6, 37)
+        DgnModulesRoles.Margin = New Padding(6, 5, 6, 5)
         DgnModulesRoles.Name = "DgnModulesRoles"
         DgnModulesRoles.ReadOnly = True
         DgnModulesRoles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.YellowGreen
-        DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
         DataGridViewCellStyle3.SelectionForeColor = Color.Black
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
         DgnModulesRoles.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DgnModulesRoles.RowHeadersWidth = 62
         DgnModulesRoles.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DgnModulesRoles.Size = New Size(557, 240)
-        DgnModulesRoles.XOGroupFirstRows = True
-        DgnModulesRoles.XOGunakanNomorBaris = True
+        DgnModulesRoles.Size = New Size(798, 429)
         DgnModulesRoles.StandardTab = True
         DgnModulesRoles.TabIndex = 0
+        DgnModulesRoles.XOGroupFirstRows = True
+        DgnModulesRoles.XOGunakanNomorBaris = True
         ' 
         ' modulegroup_name
         ' 
         modulegroup_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         modulegroup_name.DataPropertyName = "modulegroup_name"
         modulegroup_name.HeaderText = "Module Group"
+        modulegroup_name.MinimumWidth = 8
         modulegroup_name.Name = "modulegroup_name"
         modulegroup_name.ReadOnly = True
+        modulegroup_name.Width = 142
         ' 
         ' module_code
         ' 
         module_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         module_code.DataPropertyName = "module_code"
         module_code.HeaderText = "Module Code"
+        module_code.MinimumWidth = 8
         module_code.Name = "module_code"
         module_code.ReadOnly = True
-        module_code.Width = 95
+        module_code.Width = 135
         ' 
         ' useraccess_view
         ' 
         useraccess_view.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
         useraccess_view.DataPropertyName = "useraccess_view"
         useraccess_view.HeaderText = "View"
+        useraccess_view.MinimumWidth = 8
         useraccess_view.Name = "useraccess_view"
         useraccess_view.ReadOnly = True
         useraccess_view.Resizable = DataGridViewTriState.True
@@ -359,6 +364,7 @@ Partial Class EPLS_Editor
         useraccess_add.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
         useraccess_add.DataPropertyName = "useraccess_add"
         useraccess_add.HeaderText = "Add"
+        useraccess_add.MinimumWidth = 8
         useraccess_add.Name = "useraccess_add"
         useraccess_add.ReadOnly = True
         useraccess_add.Resizable = DataGridViewTriState.True
@@ -370,6 +376,7 @@ Partial Class EPLS_Editor
         useraccess_edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
         useraccess_edit.DataPropertyName = "useraccess_edit"
         useraccess_edit.HeaderText = "Edit"
+        useraccess_edit.MinimumWidth = 8
         useraccess_edit.Name = "useraccess_edit"
         useraccess_edit.ReadOnly = True
         useraccess_edit.Resizable = DataGridViewTriState.True
@@ -381,6 +388,7 @@ Partial Class EPLS_Editor
         useraccess_delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
         useraccess_delete.DataPropertyName = "useraccess_delete"
         useraccess_delete.HeaderText = "Del"
+        useraccess_delete.MinimumWidth = 8
         useraccess_delete.Name = "useraccess_delete"
         useraccess_delete.ReadOnly = True
         useraccess_delete.Resizable = DataGridViewTriState.True
@@ -392,6 +400,7 @@ Partial Class EPLS_Editor
         useraccess_reports.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
         useraccess_reports.DataPropertyName = "useraccess_reports"
         useraccess_reports.HeaderText = "Rpt"
+        useraccess_reports.MinimumWidth = 8
         useraccess_reports.Name = "useraccess_reports"
         useraccess_reports.ReadOnly = True
         useraccess_reports.Resizable = DataGridViewTriState.True
@@ -403,30 +412,34 @@ Partial Class EPLS_Editor
         useraccess_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         useraccess_id.DataPropertyName = "useraccess_id"
         useraccess_id.HeaderText = "UID"
+        useraccess_id.MinimumWidth = 8
         useraccess_id.Name = "useraccess_id"
         useraccess_id.ReadOnly = True
         useraccess_id.Visible = False
+        useraccess_id.Width = 150
         ' 
         ' module_id
         ' 
         module_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         module_id.DataPropertyName = "module_id"
         module_id.HeaderText = "Module ID"
+        module_id.MinimumWidth = 8
         module_id.Name = "module_id"
         module_id.ReadOnly = True
         module_id.Visible = False
+        module_id.Width = 150
         ' 
         ' GbxCredetials
         ' 
         GbxCredetials.Controls.Add(ULbl7)
         GbxCredetials.Controls.Add(TxtLogin)
         GbxCredetials.Dock = DockStyle.Top
-        GbxCredetials.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        GbxCredetials.Location = New Point(4, 3)
-        GbxCredetials.Margin = New Padding(4, 3, 4, 3)
+        GbxCredetials.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        GbxCredetials.Location = New Point(6, 5)
+        GbxCredetials.Margin = New Padding(6, 5, 6, 5)
         GbxCredetials.Name = "GbxCredetials"
-        GbxCredetials.Padding = New Padding(4, 3, 4, 3)
-        GbxCredetials.Size = New Size(565, 108)
+        GbxCredetials.Padding = New Padding(6, 5, 6, 5)
+        GbxCredetials.Size = New Size(810, 180)
         GbxCredetials.TabIndex = 3
         GbxCredetials.TabStop = False
         GbxCredetials.Text = "Credentials"
@@ -434,10 +447,10 @@ Partial Class EPLS_Editor
         ' ULbl7
         ' 
         ULbl7.BackColor = Color.Moccasin
-        ULbl7.Location = New Point(8, 46)
-        ULbl7.Margin = New Padding(5, 6, 5, 6)
+        ULbl7.Location = New Point(11, 77)
+        ULbl7.Margin = New Padding(7, 10, 7, 10)
         ULbl7.Name = "ULbl7"
-        ULbl7.Size = New Size(175, 33)
+        ULbl7.Size = New Size(250, 55)
         ULbl7.SLFText = "Login"
         ULbl7.SLFTextAdjuster = True
         ULbl7.SLFTextBorder = False
@@ -447,13 +460,16 @@ Partial Class EPLS_Editor
         ' TxtLogin
         ' 
         TxtLogin.BackColor = Color.White
-        TxtLogin.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtLogin.Location = New Point(191, 46)
-        TxtLogin.Margin = New Padding(4, 3, 4, 3)
+        TxtLogin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtLogin.Location = New Point(273, 77)
+        TxtLogin.Margin = New Padding(6, 5, 6, 5)
         TxtLogin.MaxLength = 255
         TxtLogin.Name = "TxtLogin"
         TxtLogin.ReadOnly = True
-        TxtLogin.Size = New Size(240, 29)
+        TxtLogin.Size = New Size(341, 39)
+        TxtLogin.TabIndex = 300
+        TxtLogin.Tag = "txt"
+        TxtLogin.TextAlign = HorizontalAlignment.Center
         TxtLogin.XOAutoTrim = False
         TxtLogin.XOHarusDiisi = False
         TxtLogin.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -473,9 +489,6 @@ Partial Class EPLS_Editor
         TxtLogin.XOSQLText = ""
         TxtLogin.XOTanpaSpasi = False
         TxtLogin.XOValidasiField = Nothing
-        TxtLogin.TabIndex = 300
-        TxtLogin.Tag = "txt"
-        TxtLogin.TextAlign = HorizontalAlignment.Center
         ' 
         ' tpWorkIn
         ' 
@@ -498,10 +511,10 @@ Partial Class EPLS_Editor
         tpWorkIn.Controls.Add(BtnBrowsePosition)
         tpWorkIn.Controls.Add(TxTDepartment)
         tpWorkIn.Controls.Add(TxtCompany)
-        tpWorkIn.Location = New Point(4, 30)
-        tpWorkIn.Margin = New Padding(4, 3, 4, 3)
+        tpWorkIn.Location = New Point(4, 41)
+        tpWorkIn.Margin = New Padding(6, 5, 6, 5)
         tpWorkIn.Name = "tpWorkIn"
-        tpWorkIn.Size = New Size(573, 382)
+        tpWorkIn.Size = New Size(822, 661)
         tpWorkIn.TabIndex = 2
         tpWorkIn.Text = "WORK IN"
         tpWorkIn.UseVisualStyleBackColor = True
@@ -509,10 +522,10 @@ Partial Class EPLS_Editor
         ' ULbl14
         ' 
         ULbl14.BackColor = Color.Moccasin
-        ULbl14.Location = New Point(8, 252)
-        ULbl14.Margin = New Padding(5, 6, 5, 6)
+        ULbl14.Location = New Point(11, 420)
+        ULbl14.Margin = New Padding(7, 10, 7, 10)
         ULbl14.Name = "ULbl14"
-        ULbl14.Size = New Size(175, 33)
+        ULbl14.Size = New Size(250, 55)
         ULbl14.SLFText = "Initial"
         ULbl14.SLFTextAdjuster = True
         ULbl14.SLFTextBorder = False
@@ -522,10 +535,10 @@ Partial Class EPLS_Editor
         ' ULbl13
         ' 
         ULbl13.BackColor = Color.Moccasin
-        ULbl13.Location = New Point(8, 211)
-        ULbl13.Margin = New Padding(5, 6, 5, 6)
+        ULbl13.Location = New Point(11, 352)
+        ULbl13.Margin = New Padding(7, 10, 7, 10)
         ULbl13.Name = "ULbl13"
-        ULbl13.Size = New Size(175, 33)
+        ULbl13.Size = New Size(250, 55)
         ULbl13.SLFText = "Contract Type"
         ULbl13.SLFTextAdjuster = True
         ULbl13.SLFTextBorder = False
@@ -535,10 +548,10 @@ Partial Class EPLS_Editor
         ' ULbl12
         ' 
         ULbl12.BackColor = Color.Moccasin
-        ULbl12.Location = New Point(8, 171)
-        ULbl12.Margin = New Padding(5, 6, 5, 6)
+        ULbl12.Location = New Point(11, 285)
+        ULbl12.Margin = New Padding(7, 10, 7, 10)
         ULbl12.Name = "ULbl12"
-        ULbl12.Size = New Size(175, 33)
+        ULbl12.Size = New Size(250, 55)
         ULbl12.SLFText = "Emp. Number"
         ULbl12.SLFTextAdjuster = True
         ULbl12.SLFTextBorder = False
@@ -548,10 +561,10 @@ Partial Class EPLS_Editor
         ' ULbl11
         ' 
         ULbl11.BackColor = Color.Moccasin
-        ULbl11.Location = New Point(8, 130)
-        ULbl11.Margin = New Padding(5, 6, 5, 6)
+        ULbl11.Location = New Point(11, 217)
+        ULbl11.Margin = New Padding(7, 10, 7, 10)
         ULbl11.Name = "ULbl11"
-        ULbl11.Size = New Size(175, 33)
+        ULbl11.Size = New Size(250, 55)
         ULbl11.SLFText = "Grade"
         ULbl11.SLFTextAdjuster = True
         ULbl11.SLFTextBorder = False
@@ -561,10 +574,10 @@ Partial Class EPLS_Editor
         ' ULbl10
         ' 
         ULbl10.BackColor = Color.Moccasin
-        ULbl10.Location = New Point(8, 90)
-        ULbl10.Margin = New Padding(5, 6, 5, 6)
+        ULbl10.Location = New Point(11, 150)
+        ULbl10.Margin = New Padding(7, 10, 7, 10)
         ULbl10.Name = "ULbl10"
-        ULbl10.Size = New Size(175, 33)
+        ULbl10.Size = New Size(250, 55)
         ULbl10.SLFText = "Position"
         ULbl10.SLFTextAdjuster = True
         ULbl10.SLFTextBorder = False
@@ -574,10 +587,10 @@ Partial Class EPLS_Editor
         ' ULbl9
         ' 
         ULbl9.BackColor = Color.Moccasin
-        ULbl9.Location = New Point(8, 50)
-        ULbl9.Margin = New Padding(5, 6, 5, 6)
+        ULbl9.Location = New Point(11, 83)
+        ULbl9.Margin = New Padding(7, 10, 7, 10)
         ULbl9.Name = "ULbl9"
-        ULbl9.Size = New Size(175, 33)
+        ULbl9.Size = New Size(250, 55)
         ULbl9.SLFText = "Department"
         ULbl9.SLFTextAdjuster = True
         ULbl9.SLFTextBorder = False
@@ -587,10 +600,10 @@ Partial Class EPLS_Editor
         ' ULbl6
         ' 
         ULbl6.BackColor = Color.Moccasin
-        ULbl6.Location = New Point(8, 9)
-        ULbl6.Margin = New Padding(5, 6, 5, 6)
+        ULbl6.Location = New Point(11, 15)
+        ULbl6.Margin = New Padding(7, 10, 7, 10)
         ULbl6.Name = "ULbl6"
-        ULbl6.Size = New Size(175, 33)
+        ULbl6.Size = New Size(250, 55)
         ULbl6.SLFText = "Company"
         ULbl6.SLFTextAdjuster = True
         ULbl6.SLFTextBorder = False
@@ -602,23 +615,26 @@ Partial Class EPLS_Editor
         ChkActiveEmployee.AutoSize = True
         ChkActiveEmployee.BackColor = Color.Transparent
         ChkActiveEmployee.FlatStyle = FlatStyle.Flat
-        ChkActiveEmployee.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        ChkActiveEmployee.Location = New Point(191, 292)
-        ChkActiveEmployee.Margin = New Padding(4, 3, 4, 3)
+        ChkActiveEmployee.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkActiveEmployee.Location = New Point(273, 487)
+        ChkActiveEmployee.Margin = New Padding(6, 5, 6, 5)
         ChkActiveEmployee.Name = "ChkActiveEmployee"
-        ChkActiveEmployee.Size = New Size(140, 25)
+        ChkActiveEmployee.Size = New Size(213, 36)
         ChkActiveEmployee.TabIndex = 211
         ChkActiveEmployee.Text = "Active employee"
         ChkActiveEmployee.UseVisualStyleBackColor = False
         ' 
         ' TxtEmployeeNickname
         ' 
-        TxtEmployeeNickname.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtEmployeeNickname.Location = New Point(191, 252)
-        TxtEmployeeNickname.Margin = New Padding(4, 3, 4, 3)
+        TxtEmployeeNickname.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtEmployeeNickname.Location = New Point(273, 420)
+        TxtEmployeeNickname.Margin = New Padding(6, 5, 6, 5)
         TxtEmployeeNickname.MaxLength = 255
         TxtEmployeeNickname.Name = "TxtEmployeeNickname"
-        TxtEmployeeNickname.Size = New Size(72, 29)
+        TxtEmployeeNickname.Size = New Size(101, 39)
+        TxtEmployeeNickname.TabIndex = 210
+        TxtEmployeeNickname.Tag = "txt"
+        TxtEmployeeNickname.TextAlign = HorizontalAlignment.Center
         TxtEmployeeNickname.XOAutoTrim = True
         TxtEmployeeNickname.XOHarusDiisi = False
         TxtEmployeeNickname.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -638,19 +654,19 @@ Partial Class EPLS_Editor
         TxtEmployeeNickname.XOSQLText = ""
         TxtEmployeeNickname.XOTanpaSpasi = False
         TxtEmployeeNickname.XOValidasiField = Nothing
-        TxtEmployeeNickname.TabIndex = 210
-        TxtEmployeeNickname.Tag = "txt"
-        TxtEmployeeNickname.TextAlign = HorizontalAlignment.Center
         ' 
         ' TxtContractType
         ' 
-        TxtContractType.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtContractType.Location = New Point(271, 211)
-        TxtContractType.Margin = New Padding(4, 3, 4, 3)
+        TxtContractType.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtContractType.Location = New Point(387, 352)
+        TxtContractType.Margin = New Padding(6, 5, 6, 5)
         TxtContractType.MaxLength = 255
         TxtContractType.Name = "TxtContractType"
         TxtContractType.ReadOnly = True
-        TxtContractType.Size = New Size(240, 29)
+        TxtContractType.Size = New Size(341, 39)
+        TxtContractType.TabIndex = 209
+        TxtContractType.TabStop = False
+        TxtContractType.Tag = "txt"
         TxtContractType.XOAutoTrim = False
         TxtContractType.XOHarusDiisi = False
         TxtContractType.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -670,19 +686,20 @@ Partial Class EPLS_Editor
         TxtContractType.XOSQLText = ""
         TxtContractType.XOTanpaSpasi = False
         TxtContractType.XOValidasiField = Nothing
-        TxtContractType.TabIndex = 209
-        TxtContractType.TabStop = False
-        TxtContractType.Tag = "txt"
         ' 
         ' TxtContractTypeID
         ' 
-        TxtContractTypeID.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtContractTypeID.Location = New Point(191, 211)
-        TxtContractTypeID.Margin = New Padding(4, 3, 4, 3)
+        TxtContractTypeID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtContractTypeID.Location = New Point(273, 352)
+        TxtContractTypeID.Margin = New Padding(6, 5, 6, 5)
         TxtContractTypeID.MaxLength = 255
         TxtContractTypeID.Name = "TxtContractTypeID"
         TxtContractTypeID.ReadOnly = True
-        TxtContractTypeID.Size = New Size(72, 29)
+        TxtContractTypeID.Size = New Size(101, 39)
+        TxtContractTypeID.TabIndex = 208
+        TxtContractTypeID.TabStop = False
+        TxtContractTypeID.Tag = "txt"
+        TxtContractTypeID.TextAlign = HorizontalAlignment.Center
         TxtContractTypeID.XOAutoTrim = False
         TxtContractTypeID.XOHarusDiisi = False
         TxtContractTypeID.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -702,19 +719,18 @@ Partial Class EPLS_Editor
         TxtContractTypeID.XOSQLText = ""
         TxtContractTypeID.XOTanpaSpasi = False
         TxtContractTypeID.XOValidasiField = Nothing
-        TxtContractTypeID.TabIndex = 208
-        TxtContractTypeID.TabStop = False
-        TxtContractTypeID.Tag = "txt"
-        TxtContractTypeID.TextAlign = HorizontalAlignment.Center
         ' 
         ' TxtEmployeeNumber
         ' 
-        TxtEmployeeNumber.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtEmployeeNumber.Location = New Point(191, 171)
-        TxtEmployeeNumber.Margin = New Padding(4, 3, 4, 3)
+        TxtEmployeeNumber.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtEmployeeNumber.Location = New Point(273, 285)
+        TxtEmployeeNumber.Margin = New Padding(6, 5, 6, 5)
         TxtEmployeeNumber.MaxLength = 255
         TxtEmployeeNumber.Name = "TxtEmployeeNumber"
-        TxtEmployeeNumber.Size = New Size(198, 29)
+        TxtEmployeeNumber.Size = New Size(281, 39)
+        TxtEmployeeNumber.TabIndex = 207
+        TxtEmployeeNumber.Tag = "txt"
+        TxtEmployeeNumber.TextAlign = HorizontalAlignment.Center
         TxtEmployeeNumber.XOAutoTrim = True
         TxtEmployeeNumber.XOHarusDiisi = True
         TxtEmployeeNumber.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -734,19 +750,19 @@ Partial Class EPLS_Editor
         TxtEmployeeNumber.XOSQLText = ""
         TxtEmployeeNumber.XOTanpaSpasi = False
         TxtEmployeeNumber.XOValidasiField = Nothing
-        TxtEmployeeNumber.TabIndex = 207
-        TxtEmployeeNumber.Tag = "txt"
-        TxtEmployeeNumber.TextAlign = HorizontalAlignment.Center
         ' 
         ' TxtGrade
         ' 
-        TxtGrade.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtGrade.Location = New Point(271, 130)
-        TxtGrade.Margin = New Padding(4, 3, 4, 3)
+        TxtGrade.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtGrade.Location = New Point(387, 217)
+        TxtGrade.Margin = New Padding(6, 5, 6, 5)
         TxtGrade.MaxLength = 255
         TxtGrade.Name = "TxtGrade"
         TxtGrade.ReadOnly = True
-        TxtGrade.Size = New Size(240, 29)
+        TxtGrade.Size = New Size(341, 39)
+        TxtGrade.TabIndex = 206
+        TxtGrade.TabStop = False
+        TxtGrade.Tag = "txt"
         TxtGrade.XOAutoTrim = False
         TxtGrade.XOHarusDiisi = False
         TxtGrade.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -766,19 +782,19 @@ Partial Class EPLS_Editor
         TxtGrade.XOSQLText = ""
         TxtGrade.XOTanpaSpasi = False
         TxtGrade.XOValidasiField = Nothing
-        TxtGrade.TabIndex = 206
-        TxtGrade.TabStop = False
-        TxtGrade.Tag = "txt"
         ' 
         ' TxtPositionID
         ' 
         TxtPositionID.BackColor = Color.LightPink
-        TxtPositionID.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtPositionID.Location = New Point(191, 90)
-        TxtPositionID.Margin = New Padding(4, 3, 4, 3)
+        TxtPositionID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPositionID.Location = New Point(273, 150)
+        TxtPositionID.Margin = New Padding(6, 5, 6, 5)
         TxtPositionID.MaxLength = 255
         TxtPositionID.Name = "TxtPositionID"
-        TxtPositionID.Size = New Size(72, 29)
+        TxtPositionID.Size = New Size(101, 39)
+        TxtPositionID.TabIndex = 202
+        TxtPositionID.Tag = "txt"
+        TxtPositionID.TextAlign = HorizontalAlignment.Center
         TxtPositionID.XOAutoTrim = True
         TxtPositionID.XOHarusDiisi = True
         TxtPositionID.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -798,19 +814,19 @@ Partial Class EPLS_Editor
         TxtPositionID.XOSQLText = ""
         TxtPositionID.XOTanpaSpasi = True
         TxtPositionID.XOValidasiField = Nothing
-        TxtPositionID.TabIndex = 202
-        TxtPositionID.Tag = "txt"
-        TxtPositionID.TextAlign = HorizontalAlignment.Center
         ' 
         ' TxtPosition
         ' 
-        TxtPosition.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtPosition.Location = New Point(271, 90)
-        TxtPosition.Margin = New Padding(4, 3, 4, 3)
+        TxtPosition.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPosition.Location = New Point(387, 150)
+        TxtPosition.Margin = New Padding(6, 5, 6, 5)
         TxtPosition.MaxLength = 255
         TxtPosition.Name = "TxtPosition"
         TxtPosition.ReadOnly = True
-        TxtPosition.Size = New Size(240, 29)
+        TxtPosition.Size = New Size(341, 39)
+        TxtPosition.TabIndex = 203
+        TxtPosition.TabStop = False
+        TxtPosition.Tag = "txt"
         TxtPosition.XOAutoTrim = False
         TxtPosition.XOHarusDiisi = False
         TxtPosition.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -830,19 +846,20 @@ Partial Class EPLS_Editor
         TxtPosition.XOSQLText = ""
         TxtPosition.XOTanpaSpasi = False
         TxtPosition.XOValidasiField = Nothing
-        TxtPosition.TabIndex = 203
-        TxtPosition.TabStop = False
-        TxtPosition.Tag = "txt"
         ' 
         ' TxtGradeID
         ' 
-        TxtGradeID.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtGradeID.Location = New Point(191, 130)
-        TxtGradeID.Margin = New Padding(4, 3, 4, 3)
+        TxtGradeID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtGradeID.Location = New Point(273, 217)
+        TxtGradeID.Margin = New Padding(6, 5, 6, 5)
         TxtGradeID.MaxLength = 255
         TxtGradeID.Name = "TxtGradeID"
         TxtGradeID.ReadOnly = True
-        TxtGradeID.Size = New Size(72, 29)
+        TxtGradeID.Size = New Size(101, 39)
+        TxtGradeID.TabIndex = 205
+        TxtGradeID.TabStop = False
+        TxtGradeID.Tag = "txt"
+        TxtGradeID.TextAlign = HorizontalAlignment.Center
         TxtGradeID.XOAutoTrim = False
         TxtGradeID.XOHarusDiisi = False
         TxtGradeID.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -862,10 +879,6 @@ Partial Class EPLS_Editor
         TxtGradeID.XOSQLText = ""
         TxtGradeID.XOTanpaSpasi = False
         TxtGradeID.XOValidasiField = Nothing
-        TxtGradeID.TabIndex = 205
-        TxtGradeID.TabStop = False
-        TxtGradeID.Tag = "txt"
-        TxtGradeID.TextAlign = HorizontalAlignment.Center
         ' 
         ' BtnBrowsePosition
         ' 
@@ -875,29 +888,32 @@ Partial Class EPLS_Editor
         BtnBrowsePosition.FlatAppearance.BorderSize = 2
         BtnBrowsePosition.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
         BtnBrowsePosition.FlatStyle = FlatStyle.Flat
-        BtnBrowsePosition.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnBrowsePosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnBrowsePosition.ForeColor = Color.White
-        BtnBrowsePosition.Location = New Point(518, 90)
-        BtnBrowsePosition.Margin = New Padding(4, 3, 4, 3)
+        BtnBrowsePosition.Location = New Point(740, 150)
+        BtnBrowsePosition.Margin = New Padding(6, 5, 6, 5)
         BtnBrowsePosition.Name = "BtnBrowsePosition"
-        BtnBrowsePosition.Size = New Size(46, 33)
+        BtnBrowsePosition.Size = New Size(66, 55)
+        BtnBrowsePosition.TabIndex = 204
+        BtnBrowsePosition.Text = "..."
+        BtnBrowsePosition.UseVisualStyleBackColor = False
         BtnBrowsePosition.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
         BtnBrowsePosition.XOTampilkanFocusBorder = False
         BtnBrowsePosition.XOValidasiSemuaInput = False
         BtnBrowsePosition.XOValidasiSemuaInputTag = Nothing
-        BtnBrowsePosition.TabIndex = 204
-        BtnBrowsePosition.Text = "..."
-        BtnBrowsePosition.UseVisualStyleBackColor = False
         ' 
         ' TxTDepartment
         ' 
         TxTDepartment.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxTDepartment.Location = New Point(191, 50)
-        TxTDepartment.Margin = New Padding(4, 3, 4, 3)
+        TxTDepartment.Location = New Point(273, 83)
+        TxTDepartment.Margin = New Padding(6, 5, 6, 5)
         TxTDepartment.MaxLength = 255
         TxTDepartment.Name = "TxTDepartment"
         TxTDepartment.ReadOnly = True
-        TxTDepartment.Size = New Size(319, 29)
+        TxTDepartment.Size = New Size(454, 39)
+        TxTDepartment.TabIndex = 201
+        TxTDepartment.TabStop = False
+        TxTDepartment.Tag = "txt"
         TxTDepartment.XOAutoTrim = False
         TxTDepartment.XOHarusDiisi = False
         TxTDepartment.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -917,19 +933,19 @@ Partial Class EPLS_Editor
         TxTDepartment.XOSQLText = ""
         TxTDepartment.XOTanpaSpasi = False
         TxTDepartment.XOValidasiField = Nothing
-        TxTDepartment.TabIndex = 201
-        TxTDepartment.TabStop = False
-        TxTDepartment.Tag = "txt"
         ' 
         ' TxtCompany
         ' 
         TxtCompany.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtCompany.Location = New Point(191, 9)
-        TxtCompany.Margin = New Padding(4, 3, 4, 3)
+        TxtCompany.Location = New Point(273, 15)
+        TxtCompany.Margin = New Padding(6, 5, 6, 5)
         TxtCompany.MaxLength = 255
         TxtCompany.Name = "TxtCompany"
         TxtCompany.ReadOnly = True
-        TxtCompany.Size = New Size(319, 29)
+        TxtCompany.Size = New Size(454, 39)
+        TxtCompany.TabIndex = 200
+        TxtCompany.TabStop = False
+        TxtCompany.Tag = "txt"
         TxtCompany.XOAutoTrim = False
         TxtCompany.XOHarusDiisi = False
         TxtCompany.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -949,9 +965,6 @@ Partial Class EPLS_Editor
         TxtCompany.XOSQLText = ""
         TxtCompany.XOTanpaSpasi = False
         TxtCompany.XOValidasiField = Nothing
-        TxtCompany.TabIndex = 200
-        TxtCompany.TabStop = False
-        TxtCompany.Tag = "txt"
         ' 
         ' tpGeneral
         ' 
@@ -968,11 +981,11 @@ Partial Class EPLS_Editor
         tpGeneral.Controls.Add(TxtPersonalID)
         tpGeneral.Controls.Add(CboGender)
         tpGeneral.Controls.Add(TxtFullName)
-        tpGeneral.Location = New Point(4, 30)
-        tpGeneral.Margin = New Padding(4, 3, 4, 3)
+        tpGeneral.Location = New Point(4, 41)
+        tpGeneral.Margin = New Padding(6, 5, 6, 5)
         tpGeneral.Name = "tpGeneral"
-        tpGeneral.Padding = New Padding(4, 3, 4, 3)
-        tpGeneral.Size = New Size(573, 382)
+        tpGeneral.Padding = New Padding(6, 5, 6, 5)
+        tpGeneral.Size = New Size(822, 661)
         tpGeneral.TabIndex = 0
         tpGeneral.Text = "PERSONAL"
         tpGeneral.UseVisualStyleBackColor = True
@@ -980,10 +993,10 @@ Partial Class EPLS_Editor
         ' ULbl1
         ' 
         ULbl1.BackColor = Color.Moccasin
-        ULbl1.Location = New Point(8, 9)
-        ULbl1.Margin = New Padding(5, 6, 5, 6)
+        ULbl1.Location = New Point(11, 15)
+        ULbl1.Margin = New Padding(7, 10, 7, 10)
         ULbl1.Name = "ULbl1"
-        ULbl1.Size = New Size(175, 33)
+        ULbl1.Size = New Size(250, 55)
         ULbl1.SLFText = "Personal ID"
         ULbl1.SLFTextAdjuster = True
         ULbl1.SLFTextBorder = False
@@ -993,10 +1006,10 @@ Partial Class EPLS_Editor
         ' ULbl5
         ' 
         ULbl5.BackColor = Color.Moccasin
-        ULbl5.Location = New Point(8, 211)
-        ULbl5.Margin = New Padding(5, 6, 5, 6)
+        ULbl5.Location = New Point(11, 352)
+        ULbl5.Margin = New Padding(7, 10, 7, 10)
         ULbl5.Name = "ULbl5"
-        ULbl5.Size = New Size(175, 155)
+        ULbl5.Size = New Size(250, 258)
         ULbl5.SLFText = "Address"
         ULbl5.SLFTextAdjuster = True
         ULbl5.SLFTextBorder = False
@@ -1006,10 +1019,10 @@ Partial Class EPLS_Editor
         ' ULbl4
         ' 
         ULbl4.BackColor = Color.Moccasin
-        ULbl4.Location = New Point(8, 171)
-        ULbl4.Margin = New Padding(5, 6, 5, 6)
+        ULbl4.Location = New Point(11, 285)
+        ULbl4.Margin = New Padding(7, 10, 7, 10)
         ULbl4.Name = "ULbl4"
-        ULbl4.Size = New Size(175, 33)
+        ULbl4.Size = New Size(250, 55)
         ULbl4.SLFText = "Gender"
         ULbl4.SLFTextAdjuster = True
         ULbl4.SLFTextBorder = False
@@ -1019,10 +1032,10 @@ Partial Class EPLS_Editor
         ' ULbl3
         ' 
         ULbl3.BackColor = Color.Moccasin
-        ULbl3.Location = New Point(8, 130)
-        ULbl3.Margin = New Padding(5, 6, 5, 6)
+        ULbl3.Location = New Point(11, 217)
+        ULbl3.Margin = New Padding(7, 10, 7, 10)
         ULbl3.Name = "ULbl3"
-        ULbl3.Size = New Size(175, 33)
+        ULbl3.Size = New Size(250, 55)
         ULbl3.SLFText = "Birth Place"
         ULbl3.SLFTextAdjuster = True
         ULbl3.SLFTextBorder = False
@@ -1032,10 +1045,10 @@ Partial Class EPLS_Editor
         ' ULbl16
         ' 
         ULbl16.BackColor = Color.Moccasin
-        ULbl16.Location = New Point(8, 90)
-        ULbl16.Margin = New Padding(5, 6, 5, 6)
+        ULbl16.Location = New Point(11, 150)
+        ULbl16.Margin = New Padding(7, 10, 7, 10)
         ULbl16.Name = "ULbl16"
-        ULbl16.Size = New Size(175, 33)
+        ULbl16.Size = New Size(250, 55)
         ULbl16.SLFText = "Date of Birth"
         ULbl16.SLFTextAdjuster = True
         ULbl16.SLFTextBorder = False
@@ -1045,10 +1058,10 @@ Partial Class EPLS_Editor
         ' ULbl2
         ' 
         ULbl2.BackColor = Color.Moccasin
-        ULbl2.Location = New Point(8, 50)
-        ULbl2.Margin = New Padding(5, 6, 5, 6)
+        ULbl2.Location = New Point(11, 83)
+        ULbl2.Margin = New Padding(7, 10, 7, 10)
         ULbl2.Name = "ULbl2"
-        ULbl2.Size = New Size(175, 33)
+        ULbl2.Size = New Size(250, 55)
         ULbl2.SLFText = "Full Name"
         ULbl2.SLFTextAdjuster = True
         ULbl2.SLFTextBorder = False
@@ -1059,13 +1072,15 @@ Partial Class EPLS_Editor
         ' 
         TxtAddress.BackColor = Color.White
         TxtAddress.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtAddress.Location = New Point(191, 211)
-        TxtAddress.Margin = New Padding(4, 3, 4, 3)
+        TxtAddress.Location = New Point(273, 352)
+        TxtAddress.Margin = New Padding(6, 5, 6, 5)
         TxtAddress.MaxLength = 1024
         TxtAddress.Multiline = True
         TxtAddress.Name = "TxtAddress"
         TxtAddress.ScrollBars = ScrollBars.Both
-        TxtAddress.Size = New Size(374, 154)
+        TxtAddress.Size = New Size(533, 254)
+        TxtAddress.TabIndex = 105
+        TxtAddress.Tag = "txt"
         TxtAddress.XOAutoTrim = True
         TxtAddress.XOHarusDiisi = False
         TxtAddress.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -1085,18 +1100,18 @@ Partial Class EPLS_Editor
         TxtAddress.XOSQLText = ""
         TxtAddress.XOTanpaSpasi = False
         TxtAddress.XOValidasiField = Nothing
-        TxtAddress.TabIndex = 105
-        TxtAddress.Tag = "txt"
         ' 
         ' TxtBirthPlace
         ' 
         TxtBirthPlace.BackColor = Color.White
         TxtBirthPlace.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtBirthPlace.Location = New Point(191, 130)
-        TxtBirthPlace.Margin = New Padding(4, 3, 4, 3)
+        TxtBirthPlace.Location = New Point(273, 217)
+        TxtBirthPlace.Margin = New Padding(6, 5, 6, 5)
         TxtBirthPlace.MaxLength = 255
         TxtBirthPlace.Name = "TxtBirthPlace"
-        TxtBirthPlace.Size = New Size(240, 29)
+        TxtBirthPlace.Size = New Size(341, 39)
+        TxtBirthPlace.TabIndex = 103
+        TxtBirthPlace.Tag = "txt"
         TxtBirthPlace.XOAutoTrim = True
         TxtBirthPlace.XOHarusDiisi = False
         TxtBirthPlace.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -1116,30 +1131,30 @@ Partial Class EPLS_Editor
         TxtBirthPlace.XOSQLText = ""
         TxtBirthPlace.XOTanpaSpasi = False
         TxtBirthPlace.XOValidasiField = Nothing
-        TxtBirthPlace.TabIndex = 103
-        TxtBirthPlace.Tag = "txt"
         ' 
         ' DtpBirthDate
         ' 
         DtpBirthDate.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        DtpBirthDate.Location = New Point(191, 90)
-        DtpBirthDate.Margin = New Padding(4, 3, 4, 3)
+        DtpBirthDate.Location = New Point(273, 150)
+        DtpBirthDate.Margin = New Padding(6, 5, 6, 5)
         DtpBirthDate.MaxDate = New Date(2029, 4, 3, 0, 0, 0, 0)
         DtpBirthDate.MinDate = New Date(1919, 4, 3, 0, 0, 0, 0)
         DtpBirthDate.Name = "DtpBirthDate"
-        DtpBirthDate.Size = New Size(276, 29)
-        DtpBirthDate.XOResetOnDisabled = False
+        DtpBirthDate.Size = New Size(393, 39)
         DtpBirthDate.TabIndex = 102
+        DtpBirthDate.XOResetOnDisabled = False
         ' 
         ' TxtPersonalID
         ' 
         TxtPersonalID.BackColor = Color.LightPink
         TxtPersonalID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtPersonalID.Location = New Point(191, 9)
-        TxtPersonalID.Margin = New Padding(4, 3, 4, 3)
+        TxtPersonalID.Location = New Point(273, 15)
+        TxtPersonalID.Margin = New Padding(6, 5, 6, 5)
         TxtPersonalID.MaxLength = 16
         TxtPersonalID.Name = "TxtPersonalID"
-        TxtPersonalID.Size = New Size(240, 29)
+        TxtPersonalID.Size = New Size(341, 39)
+        TxtPersonalID.TabIndex = 100
+        TxtPersonalID.Tag = "txt"
         TxtPersonalID.XOAutoTrim = True
         TxtPersonalID.XOHarusDiisi = True
         TxtPersonalID.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -1159,8 +1174,6 @@ Partial Class EPLS_Editor
         TxtPersonalID.XOSQLText = ""
         TxtPersonalID.XOTanpaSpasi = False
         TxtPersonalID.XOValidasiField = Nothing
-        TxtPersonalID.TabIndex = 100
-        TxtPersonalID.Tag = "txt"
         ' 
         ' CboGender
         ' 
@@ -1169,21 +1182,23 @@ Partial Class EPLS_Editor
         CboGender.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         CboGender.FormattingEnabled = True
         CboGender.Items.AddRange(New Object() {"FEMALE", "MALE"})
-        CboGender.Location = New Point(191, 171)
-        CboGender.Margin = New Padding(4, 3, 4, 3)
+        CboGender.Location = New Point(273, 285)
+        CboGender.Margin = New Padding(6, 5, 6, 5)
         CboGender.Name = "CboGender"
-        CboGender.Size = New Size(159, 29)
+        CboGender.Size = New Size(225, 40)
         CboGender.TabIndex = 104
         ' 
         ' TxtFullName
         ' 
         TxtFullName.BackColor = Color.LightPink
         TxtFullName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtFullName.Location = New Point(191, 50)
-        TxtFullName.Margin = New Padding(4, 3, 4, 3)
+        TxtFullName.Location = New Point(273, 83)
+        TxtFullName.Margin = New Padding(6, 5, 6, 5)
         TxtFullName.MaxLength = 255
         TxtFullName.Name = "TxtFullName"
-        TxtFullName.Size = New Size(319, 29)
+        TxtFullName.Size = New Size(454, 39)
+        TxtFullName.TabIndex = 101
+        TxtFullName.Tag = "txt"
         TxtFullName.XOAutoTrim = True
         TxtFullName.XOHarusDiisi = True
         TxtFullName.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -1203,8 +1218,6 @@ Partial Class EPLS_Editor
         TxtFullName.XOSQLText = ""
         TxtFullName.XOTanpaSpasi = False
         TxtFullName.XOValidasiField = Nothing
-        TxtFullName.TabIndex = 101
-        TxtFullName.Tag = "txt"
         ' 
         ' TbctlEmployee
         ' 
@@ -1213,34 +1226,34 @@ Partial Class EPLS_Editor
         TbctlEmployee.Controls.Add(tpWorkIn)
         TbctlEmployee.Controls.Add(tpPermissions)
         TbctlEmployee.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TbctlEmployee.Location = New Point(14, 15)
-        TbctlEmployee.Margin = New Padding(4, 3, 4, 3)
+        TbctlEmployee.Location = New Point(20, 25)
+        TbctlEmployee.Margin = New Padding(6, 5, 6, 5)
         TbctlEmployee.Name = "TbctlEmployee"
         TbctlEmployee.SelectedIndex = 0
-        TbctlEmployee.Size = New Size(581, 416)
+        TbctlEmployee.Size = New Size(830, 706)
         TbctlEmployee.TabIndex = 1039
         ' 
         ' ULbl8
         ' 
         ULbl8.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         ULbl8.BackColor = Color.Moccasin
-        ULbl8.Location = New Point(621, 50)
-        ULbl8.Margin = New Padding(5, 3, 5, 3)
+        ULbl8.Location = New Point(887, 83)
+        ULbl8.Margin = New Padding(7, 5, 7, 5)
         ULbl8.Name = "ULbl8"
-        ULbl8.Size = New Size(175, 33)
+        ULbl8.Size = New Size(250, 55)
         ULbl8.SLFText = "Photo"
         ULbl8.SLFTextAdjuster = False
         ULbl8.SLFTextBorder = False
         ULbl8.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
         ULbl8.TabIndex = 1041
         ' 
-        ' EPLS_Editor
+        ' FRMeplsEditor
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(827, 579)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1181, 965)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
-        Name = "EPLS_Editor"
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMeplsEditor"
         PnlBottomButton.ResumeLayout(False)
         PnlBottomButton.PerformLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

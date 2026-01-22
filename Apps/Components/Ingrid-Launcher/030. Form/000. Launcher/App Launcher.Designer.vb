@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class App_Launcher
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class FRMapplauncher
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,26 +20,26 @@ Partial Class App_Launcher
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(App_Launcher))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMapplauncher))
         Lbl1 = New CMCv.lbl(components)
         LblBuild = New CMCv.lbl(components)
-        BtnLaunch = New CMCv.btn(components)
+        BtnLaunch = New CMCv.Btn(components)
         Lbl3 = New CMCv.lbl(components)
         Lbl4 = New CMCv.lbl(components)
         CboApplication = New CMCv.cbo(components)
         tmrCountdown = New Timer(components)
         Lbl5 = New CMCv.lbl(components)
         LblCountdown = New CMCv.lbl(components)
-        BtnClose = New CMCv.btn(components)
+        BtnClose = New CMCv.Btn(components)
         SuspendLayout()
         ' 
         ' Lbl1
         ' 
         Lbl1.BackColor = Color.Transparent
-        Lbl1.Font = New Font("Segoe UI", 72F, FontStyle.Bold, GraphicsUnit.Point)
+        Lbl1.Font = New Font("Segoe UI", 72.0F, FontStyle.Bold, GraphicsUnit.Point)
         Lbl1.ForeColor = Color.White
         Lbl1.Location = New Point(13, -8)
         Lbl1.Margin = New Padding(4, 0, 4, 0)
@@ -53,7 +53,7 @@ Partial Class App_Launcher
         ' LblBuild
         ' 
         LblBuild.BackColor = Color.Transparent
-        LblBuild.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LblBuild.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         LblBuild.ForeColor = Color.White
         LblBuild.Location = New Point(293, 187)
         LblBuild.Margin = New Padding(4, 0, 4, 0)
@@ -71,7 +71,7 @@ Partial Class App_Launcher
         BtnLaunch.FlatAppearance.BorderSize = 2
         BtnLaunch.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
         BtnLaunch.FlatStyle = FlatStyle.Flat
-        BtnLaunch.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnLaunch.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnLaunch.ForeColor = Color.White
         BtnLaunch.Location = New Point(197, 635)
         BtnLaunch.Margin = New Padding(4, 5, 4, 5)
@@ -89,7 +89,7 @@ Partial Class App_Launcher
         ' 
         Lbl3.BackColor = Color.White
         Lbl3.BorderStyle = BorderStyle.Fixed3D
-        Lbl3.Font = New Font("Segoe UI", 2F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl3.Font = New Font("Segoe UI", 2.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl3.Location = New Point(293, 183)
         Lbl3.Margin = New Padding(4, 0, 4, 0)
         Lbl3.Name = "Lbl3"
@@ -101,7 +101,7 @@ Partial Class App_Launcher
         ' 
         Lbl4.BackColor = Color.White
         Lbl4.BorderStyle = BorderStyle.Fixed3D
-        Lbl4.Font = New Font("Segoe UI", 2F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl4.Font = New Font("Segoe UI", 2.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl4.Location = New Point(13, 183)
         Lbl4.Margin = New Padding(4, 0, 4, 0)
         Lbl4.Name = "Lbl4"
@@ -113,7 +113,7 @@ Partial Class App_Launcher
         ' 
         CboApplication.DropDownStyle = ComboBoxStyle.DropDownList
         CboApplication.FlatStyle = FlatStyle.Flat
-        CboApplication.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        CboApplication.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         CboApplication.FormattingEnabled = True
         CboApplication.Location = New Point(155, 503)
         CboApplication.Margin = New Padding(4, 5, 4, 5)
@@ -128,7 +128,7 @@ Partial Class App_Launcher
         ' Lbl5
         ' 
         Lbl5.BackColor = Color.Transparent
-        Lbl5.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Lbl5.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Lbl5.ForeColor = Color.White
         Lbl5.Location = New Point(13, 508)
         Lbl5.Margin = New Padding(4, 0, 4, 0)
@@ -142,7 +142,7 @@ Partial Class App_Launcher
         ' LblCountdown
         ' 
         LblCountdown.BackColor = Color.Transparent
-        LblCountdown.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LblCountdown.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         LblCountdown.ForeColor = Color.White
         LblCountdown.Location = New Point(294, 508)
         LblCountdown.Margin = New Padding(4, 0, 4, 0)
@@ -159,7 +159,7 @@ Partial Class App_Launcher
         BtnClose.FlatAppearance.BorderSize = 2
         BtnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnClose.FlatStyle = FlatStyle.Flat
-        BtnClose.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnClose.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnClose.ForeColor = Color.White
         BtnClose.Location = New Point(476, 12)
         BtnClose.Name = "BtnClose"
@@ -175,7 +175,7 @@ Partial Class App_Launcher
         ' 
         ' App_Launcher
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.Black
         ClientSize = New Size(539, 750)
@@ -192,19 +192,19 @@ Partial Class App_Launcher
         FormBorderStyle = FormBorderStyle.None
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Margin = New Padding(4, 5, 4, 5)
-        Name = "App_Launcher"
+        Name = "FRMapplauncher"
         StartPosition = FormStartPosition.CenterScreen
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents Lbl1 As CMCv.lbl
     Friend WithEvents LblBuild As CMCv.lbl
-    Friend WithEvents BtnLaunch As CMCv.btn
+    Friend WithEvents BtnLaunch As CMCv.Btn
     Friend WithEvents Lbl3 As CMCv.lbl
     Friend WithEvents Lbl4 As CMCv.lbl
     Friend WithEvents CboApplication As CMCv.cbo
     Friend WithEvents tmrCountdown As Timer
     Friend WithEvents Lbl5 As CMCv.lbl
     Friend WithEvents LblCountdown As CMCv.lbl
-    Friend WithEvents BtnClose As CMCv.btn
+    Friend WithEvents BtnClose As CMCv.Btn
 End Class

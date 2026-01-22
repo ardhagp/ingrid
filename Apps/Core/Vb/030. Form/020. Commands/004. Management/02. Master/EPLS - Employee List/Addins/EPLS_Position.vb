@@ -1,8 +1,8 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class EPLS_Position
+Public Class FRMeplsPosition
 #Region "Variables"
-    Private _SQL As New Commands.EPLS.Addins.Browse.Position
+    'Private _SQL As New Commands.EPLS.Addins.Browse.Position
     Public Event RecordSelected()
 #End Region
 
@@ -16,13 +16,13 @@ Public Class EPLS_Position
 
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional forcerefresh As Boolean = False)
-        Commands.EPLS.Addins.Browse.Position.DisplayData(varDatabaseName, DgnAddinPosition, SLFStatus, TxtFind, forcerefresh)
+        CMDepls.Addins.Browse.Position.DisplayData(varDatabaseName, DgnAddinPosition, SLFStatus, TxtFind, forcerefresh)
     End Sub
 #End Region
 
     Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
         If DgnAddinPosition.RowCount = 0 Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             With DgnAddinPosition.CurrentRow
                 varFormProperties.Field01 = .Cells("company_name").Value
@@ -36,7 +36,7 @@ Public Class EPLS_Position
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub EPLS_Position_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FRMeplsPosition_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call GetData()
     End Sub
 

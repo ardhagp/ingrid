@@ -1,3 +1,3 @@
-﻿Public Class MCTG_Editor
+﻿Public Class FRMmctgEditor
 
 End Class

@@ -1,32 +1,35 @@
 ﻿Imports System.Data
-Imports System.IO
 Imports System.Runtime.Versioning
 Imports System.Text
-Imports CMCv
-Imports Serilog.Sinks.Http
 
-Public Class DAR_Editor
+Public Class FRMdarEditor
 #Region "Variables"
-    Public Event RecordSaved()
-    Private V_DAR_SinglePhotoViewer As DAR_SinglePhotoViewer
-    Private V_DAR_SinglePDFViewer As DAR_SinglePDFViewer
-    Private V_SQL As New Commands.DAR.Editor
-    Private WithEvents V_MMSMenu As New CMCv.UI.View.MenuStrip
-    Private V_DS(2) As DataSet
-    Private V_PhotoByte As Byte()
-    Private V_ExtQuery As String
+    Private Frm_dar_SinglePhotoViewer As FRMdarSinglePhotoViewer
+    Private Frm_dar_SinglePdfViewer As FRMdarSinglePdfViewer
+
+    Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
+    Public Event EventRecordSaved()
+
+    Const varTableFileEditor As String = "TFileEditor"
+    Const varTablePhotoFileEditor As String = "TPhotoFileEditor"
+    Const varQuestionMessage As String = "Question"
+
+    Private varDataSet(2) As DataSet
+    Private varPhotoByte As Byte()
+    Private varExtendedQuery As String
     Private varHour, varMinute As String
+
 #End Region
 
 #Region "Sub Collections"
     <SupportedOSPlatform("windows")>
-    Private Sub GETAffectedArea()
-        Commands.DAR.Editor.GetAffectedArea(varDatabaseName, varDatabaseEngine, CboArea)
+    Private Sub GetAffectedArea()
+        CMDdar.Editor.GetAffectedArea(varDatabaseName, varDatabaseEngine, CboArea)
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub GETTemplateTitle()
-        Commands.DAR.Editor.GetTemplateTitle(varDatabaseName, varDatabaseEngine, CboTemplate)
+    Private Sub GetTemplateTitle()
+        CMDdar.Editor.GetTemplateTitle(varDatabaseName, varDatabaseEngine, CboTemplate)
     End Sub
 
     Public Sub CheckAllInput()
@@ -42,16 +45,16 @@ Public Class DAR_Editor
 
     <SupportedOSPlatform("windows")>
     Public Sub LoadAttachment()
-        V_DS(0) = New DataSet
+        varDataSet(0) = New DataSet
 
         DblBuffer(DgnPictureList)
         DgnPictureList.Rows.Clear()
         TxtPhotoPath.Clear()
 
-        V_DS(0) = V_SQL.DisplayPhotoGrid(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID).ToString, DgnPictureList)
+        varDataSet(0) = CMDdar.Editor.DisplayPhotoGrid(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID).ToString, DgnPictureList)
 
-        For i As Integer = 0 To V_DS(0).Tables("TPhotoFileEditor").Rows.Count - 1
-            DgnPictureList.Rows.Add(V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_id"), V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_filename"), V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_datetime"), V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_content"), "", V_DS(0).Tables("TPhotoFileEditor").Rows(i).Item("file_uploader"))
+        For i As Integer = 0 To varDataSet(0).Tables(varTablePhotoFileEditor).Rows.Count - 1
+            DgnPictureList.Rows.Add(varDataSet(0).Tables(varTablePhotoFileEditor).Rows(i).Item("file_id"), varDataSet(0).Tables(varTablePhotoFileEditor).Rows(i).Item("file_filename"), varDataSet(0).Tables(varTablePhotoFileEditor).Rows(i).Item("file_datetime"), varDataSet(0).Tables(varTablePhotoFileEditor).Rows(i).Item("file_content"), "", varDataSet(0).Tables(varTablePhotoFileEditor).Rows(i).Item("file_uploader"))
         Next
 
         If DgnPictureList.RowCount = 0 Then
@@ -61,13 +64,13 @@ Public Class DAR_Editor
         DgnFileList.Rows.Clear()
         TxtFilePath.Clear()
 
-        V_DS(1) = New DataSet
+        varDataSet(1) = New DataSet
 
         DblBuffer(DgnFileList)
-        V_DS(1) = V_SQL.DisplayFileGrid(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID).ToString, DgnFileList)
+        varDataSet(1) = CMDdar.Editor.DisplayFileGrid(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID).ToString, DgnFileList)
 
-        For i As Integer = 0 To V_DS(1).Tables("TFileEditor").Rows.Count - 1
-            DgnFileList.Rows.Add(V_DS(1).Tables("TFileEditor").Rows(i).Item("file_id"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_filename"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_tag"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_datetime"), V_DS(1).Tables("TFileEditor").Rows(i).Item("file_content"), "", V_DS(1).Tables("TFileEditor").Rows(i).Item("file_uploader"))
+        For i As Integer = 0 To varDataSet(1).Tables(varTableFileEditor).Rows.Count - 1
+            DgnFileList.Rows.Add(varDataSet(1).Tables(varTableFileEditor).Rows(i).Item("file_id"), varDataSet(1).Tables(varTableFileEditor).Rows(i).Item("file_filename"), varDataSet(1).Tables(varTableFileEditor).Rows(i).Item("file_tag"), varDataSet(1).Tables(varTableFileEditor).Rows(i).Item("file_datetime"), varDataSet(1).Tables(varTableFileEditor).Rows(i).Item("file_content"), "", varDataSet(1).Tables(varTableFileEditor).Rows(i).Item("file_uploader"))
         Next
     End Sub
 #End Region
@@ -87,14 +90,14 @@ Public Class DAR_Editor
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub frmDailyActivityReports_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call GETAffectedArea()
-        Call GETTemplateTitle()
+    Private Sub FRMdarEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Call GetAffectedArea()
+        Call GetTemplateTitle()
 
-        V_MMSMenu.LoadIn(Me, True)
-        V_MMSMenu.ShowMenuFILE(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        Com_mms_Menu.LoadIn(Me, True)
+        Com_mms_Menu.ShowMenuFile(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
-        DgnPictureList.XOGETNewColor()
+        DgnPictureList.XOGeTNewColor()
 
         If Now.Hour.ToString.Length = 1 Then
             varHour = "0" & Now.Hour.ToString
@@ -120,15 +123,16 @@ Public Class DAR_Editor
             ChkAddNew.Visible = False
         End If
 
-        CboFileTag.Items.Add("PACKING LIST / MANIFEST")
-        CboFileTag.SelectedIndex = 0
-        CboFileTag.Items.Add("CERTIFICATE")
-        CboFileTag.Items.Add("MSDS / MANUALS")
-        CboFileTag.Items.Add("BOOK / REFERENCE")
-        CboFileTag.Items.Add("LETTER / AGREEMENT")
-        CboFileTag.Items.Add("REVISION")
-        CboFileTag.Items.Add("OTHERS")
-
+        With CboFileTag
+            .Items.Add("PACKING LIST / MANIFEST")
+            .SelectedIndex = 0
+            .Items.Add("CERTIFICATE")
+            .Items.Add("MSDS / MANUALS")
+            .Items.Add("BOOK / REFERENCE")
+            .Items.Add("LETTER / AGREEMENT")
+            .Items.Add("REVISION")
+            .Items.Add("OTHERS")
+        End With
         DtpStart.MaxDate = DtpEnd.Value
         DtpEnd.MinDate = DtpStart.Value
     End Sub
@@ -136,13 +140,13 @@ Public Class DAR_Editor
 
 #Region "Component Events"
     <SupportedOSPlatform("windows")>
-    Private Sub BtnGETContent_Click(sender As Object, e As EventArgs) Handles BtnGETContent.Click
+    Private Sub BtnGetContent_Click(sender As Object, e As EventArgs) Handles BtnGETContent.Click
         If Not (varFormProperties.IsNew) Then
-            If Decision("Do you want to replace Description with template content?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                TxtContent.Text = Commands.DAR.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
+            If Decision("Do you want to replace Description with template content?", varQuestionMessage, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
             End If
         Else
-            TxtContent.Text = Commands.DAR.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
+            TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
         End If
     End Sub
 
@@ -157,44 +161,44 @@ Public Class DAR_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub Save()
-        Dim V_ActivityStart_S As String
-        Dim V_ActivityEnd_S As String
-        Dim V_ActivityStart_D As Date
-        Dim V_ActivityEnd_D As Date
+        Dim varActivityStartString As String
+        Dim varActivityEndString As String
+        Dim varActivityStartDate As Date
+        Dim varActivityEndDate As Date
 
         Call CheckAllInput()
 
         If (TxtContent.Text = String.Empty) OrElse (CboArea.Items.Count = 0) OrElse (CboTemplate.Items.Count = 0) OrElse (MebStart.Text = String.Empty) OrElse (MebEnd.Text = String.Empty) Then
-            Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Start Time, End Time, Area Affected, Activity Template selected and Description are properly filled.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Start Time, End Time, Area Affected, Activity Template selected and Description are properly filled.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
-        V_ActivityStart_S = DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day & " " & MebStart.Text
-        V_ActivityEnd_S = DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day & " " & MebEnd.Text
-        V_ActivityStart_D = CDate(V_ActivityStart_S)
-        V_ActivityEnd_D = CDate(V_ActivityEnd_S)
+        varActivityStartString = DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day & " " & MebStart.Text
+        varActivityEndString = DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day & " " & MebEnd.Text
+        varActivityStartDate = CDate(varActivityStartString)
+        varActivityEndDate = CDate(varActivityEndString)
 
-        If (V_ActivityStart_D > V_ActivityEnd_D) Then
-            Decision("Cannot save your record." & Environment.NewLine & "Start Time should be less than End Time.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+        If (varActivityStartDate > varActivityEndDate) Then
+            Decision("Cannot save your record." & Environment.NewLine & "Start Time should be less than End Time.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
-        If (Commands.DAR.Editor.PushData(varDatabaseName, varDatabaseEngine, CboArea.SelectedValue.ToString, CboTemplate.SelectedValue.ToString, CType(DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, String), CType(MebStart.Text.Replace(".", ":"), String), CType(DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, String), CType(MebEnd.Text.Replace(".", ":"), String), TxtContent.XOSQLText, TxtFeedback.XOSQLText, varProperties.UserID, Convert.ToString(varFormProperties.RowID).ToString, varFormProperties.IsNew, V_ExtQuery)) Then
-            V_ExtQuery = String.Empty
-            Mainframe_n_6.Ts_status.Text = "Success"
+        If (CMDdar.Editor.PushData(varDatabaseName, varDatabaseEngine, CboArea.SelectedValue.ToString, CboTemplate.SelectedValue.ToString, CType(DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, String), CType(MebStart.Text.Replace(".", ":"), String), CType(DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, String), CType(MebEnd.Text.Replace(".", ":"), String), TxtContent.XOSQLText, TxtFeedback.XOSQLText, varProperties.UserID, Convert.ToString(varFormProperties.RowID).ToString, varFormProperties.IsNew, varExtendedQuery)) Then
+            varExtendedQuery = String.Empty
+            FRMmainframe6.Ts_status.Text = "Success"
 
-            Dim V_NewPhotoAdded As Integer = 0
-            For Each V_Row As DataGridViewRow In DgnPictureList.Rows
-                If V_Row.Cells("photo_status").Value.ToString Is "Add" Then
-                    V_NewPhotoAdded += 1
+            Dim varNewPhotoAdded As Integer = 0
+            For Each varEachRow As DataGridViewRow In DgnPictureList.Rows
+                If varEachRow.Cells("photo_status").Value.ToString Is "Add" Then
+                    varNewPhotoAdded += 1
                 End If
             Next
 
-            If V_NewPhotoAdded > 0 Then
-                If (Commands.DAR.Editor.PushPhoto(varDatabaseEngine, DgnPictureList, Convert.ToString(varFormProperties.RowID).ToString, varFormProperties.IsNew, DtpStart.Value)) Then
-                    Mainframe_n_6.Ts_status.Text = "Success + All pictures has been added"
+            If varNewPhotoAdded > 0 Then
+                If (CMDdar.Editor.PushPhoto(varDatabaseEngine, DgnPictureList, Convert.ToString(varFormProperties.RowID).ToString, varFormProperties.IsNew, DtpStart.Value)) Then
+                    FRMmainframe6.Ts_status.Text = "Success + All pictures has been added"
                 Else
-                    Mainframe_n_6.Ts_status.Text = "Success + With errors while adding pictures"
+                    FRMmainframe6.Ts_status.Text = "Success + With errors while adding pictures"
                 End If
 
                 DgnPictureList.Rows.Clear()
@@ -203,26 +207,26 @@ Public Class DAR_Editor
 
             'Add new File
             Dim varNewFileAdded As Integer = 0
-            For Each V_Row As DataGridViewRow In DgnFileList.Rows
-                If V_Row.Cells("file_status").Value.ToString Is "Add" Then
+            For Each varEachRow As DataGridViewRow In DgnFileList.Rows
+                If varEachRow.Cells("file_status").Value.ToString Is "Add" Then
                     varNewFileAdded += 1
                 End If
             Next
 
             If varNewFileAdded > 0 Then
-                If (Commands.DAR.Editor.PushFile(varDatabaseEngine, DgnFileList, Convert.ToString(varFormProperties.RowID).ToString, varFormProperties.IsNew, DtpStart.Value)) Then
-                    Mainframe_n_6.Ts_status.Text = "Success + All file has been added"
+                If (CMDdar.Editor.PushFile(varDatabaseEngine, DgnFileList, Convert.ToString(varFormProperties.RowID).ToString, varFormProperties.IsNew, DtpStart.Value)) Then
+                    FRMmainframe6.Ts_status.Text = "Success + All file has been added"
                 Else
-                    Mainframe_n_6.Ts_status.Text = "Success + With errors while adding files"
+                    FRMmainframe6.Ts_status.Text = "Success + With errors while adding files"
                 End If
 
                 DgnFileList.Rows.Clear()
                 PctbxPhoto.Image = Nothing
             End If
 
-            RaiseEvent RecordSaved()
+            RaiseEvent EventRecordSaved()
         Else
-            Mainframe_n_6.Ts_status.Text = "Failed to save"
+            FRMmainframe6.Ts_status.Text = "Failed to save"
             Return
         End If
 
@@ -237,7 +241,7 @@ Public Class DAR_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub LoadData()
-        Commands.DAR.Editor.GetRowValue(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID).ToString, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
+        CMDdar.Editor.GetRowValue(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID).ToString, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
         Call LoadAttachment()
     End Sub
 #End Region
@@ -246,11 +250,11 @@ Public Class DAR_Editor
     Private Sub CboTemplate_KeyDown(sender As Object, e As KeyEventArgs) Handles CboTemplate.KeyDown
         If e.KeyCode = Keys.Enter Then
             If Not (varFormProperties.IsNew) Then
-                If Decision("Do you want to replace Description with template content?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    TxtContent.Text = Commands.DAR.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
+                If Decision("Do you want to replace Description with template content?", varQuestionMessage, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                    TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
                 End If
             Else
-                TxtContent.Text = Commands.DAR.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
+                TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngine, CboTemplate)
             End If
         End If
     End Sub
@@ -267,23 +271,23 @@ Public Class DAR_Editor
     Private Sub BtnAddPhoto_Click(sender As Object, e As EventArgs) Handles BtnAddPhoto.Click
         Try
             If TxtPhotoPath.Text.Trim = String.Empty Then
-                Decision("Plase pick your photo first.", "No file selected", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
+                Decision("Plase pick your photo first.", "No file selected", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf Not CMCv.OperatingSystem.File.Info.IsExists(TxtPhotoPath.Text) Then
-                Decision("Your photo cannot be found.", "File not found", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
+                Decision("Your photo cannot be found.", "File not found", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf Not (OperatingSystem.File.Upload.IsAllowedSize(TxtPhotoPath.Text, varMaxUploadSizePhoto, True)) Then
+            ElseIf Not CMCv.OperatingSystem.File.Upload.IsAllowedSize(TxtPhotoPath.Text, varMaxUploadSizePhoto, True) Then
                 Return
             End If
 
-            Dim Row As Object() = Nothing
-            Dim V_Date As Date = Now
-            Dim V_Photo As System.Drawing.Image = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(TxtPhotoPath.Text) 'System.Drawing.Image.FromFile(TxtPhotoPath.Text)
+            Dim varRow As Object() = Nothing
+            Dim varDate As Date = Now
+            Dim varPhoto As System.Drawing.Image = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(TxtPhotoPath.Text) 'System.Drawing.Image.FromFile(TxtPhotoPath.Text)
 
-            Row = New Object() {CMCv.Security.Encrypt.MD5(), IO.Path.GetFileNameWithoutExtension(TxtPhotoPath.Text), V_Date, V_Photo, "Add", varProperties.EmployeeID}
+            varRow = New Object() {CMCv.Security.Encrypt.MD5(), IO.Path.GetFileNameWithoutExtension(TxtPhotoPath.Text), varDate, varPhoto, "Add", varProperties.EmployeeID}
 
             With DgnPictureList.Rows
-                .Add(Row)
+                .Add(varRow)
             End With
 
             TxtPhotoPath.Text = String.Empty
@@ -305,25 +309,25 @@ Public Class DAR_Editor
     <SupportedOSPlatform("windows")>
     Private Sub BtnPeekPhoto_Click(sender As Object, e As EventArgs) Handles BtnPeekPhoto.Click
         If TxtPhotoPath.Text.Trim = String.Empty Then
-            Decision("Plase pick your photo first.", "No file selected", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
+            Decision("Plase pick your photo first.", "No file selected", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf Not CMCv.OperatingSystem.File.Info.IsExists(TxtPhotoPath.Text) Then
-            Decision("Your photo cannot be found.", "File not found", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
+            Decision("Your photo cannot be found.", "File not found", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
-        V_DAR_SinglePhotoViewer = New DAR_SinglePhotoViewer(TxtPhotoPath.Text)
-        DISPLAY(V_DAR_SinglePhotoViewer, IMAGEDB.Main.ImageLibrary.PCTPRV_ICON, "Photo Viewer", "Preview your photo", True)
+        Frm_dar_SinglePhotoViewer = New FRMdarSinglePhotoViewer(TxtPhotoPath.Text)
+        Display(Frm_dar_SinglePhotoViewer, IMAGEDB.Main.ImageLibrary.PCTPRV_ICON, "Photo Viewer", "Preview your photo", True)
 
     End Sub
 
     Private Sub DgnPictureList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnPictureList.CellContentClick
-        Dim V_Sendergrid = DirectCast(sender, dgn)
+        Dim varSendergrid = DirectCast(sender, dgn)
 
-        If TypeOf V_Sendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
-            If Decision("Do you want to remove selected photo?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
+        If TypeOf varSendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
+            If Decision("Do you want to remove selected photo?", varQuestionMessage, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 If DgnPictureList.CurrentRow.Cells("photo_status").Value IsNot "Add" Then
-                    V_ExtQuery += String.Format("delete from db_universe_erp_file.dbo.sto_file where [file_id] = '{0}';", DgnPictureList.CurrentRow.Cells("photo_id").Value)
+                    varExtendedQuery += String.Format("delete from db_universe_erp_file.dbo.sto_file where [file_id] = '{0}';", DgnPictureList.CurrentRow.Cells("photo_id").Value)
                 End If
 
                 DgnPictureList.Rows.Remove(DgnPictureList.SelectedRows(0))
@@ -336,7 +340,7 @@ Public Class DAR_Editor
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub DgnPictureList_SLF_Selected() Handles DgnPictureList.XOSelected
+    Private Sub DgnPictureList_XoSelected() Handles DgnPictureList.XOSelected
         If DgnPictureList.RowCount <> 0 Then
             If DgnPictureList.CurrentRow.Cells("photo_status").Value.ToString Is "Add" Then
                 PctbxPhoto.Image = CType(DgnPictureList.CurrentRow.Cells("photo_content").Value, Image)
@@ -345,10 +349,10 @@ Public Class DAR_Editor
                 'string64 = DgnPictureList.CurrentRow.Cells("photo_content").Value.ToString
                 '_PhotoByte = Convert.FromBase64String(string64)
 
-                V_PhotoByte = CType(DgnPictureList.CurrentRow.Cells("photo_content").Value, Byte())
+                varPhotoByte = CType(DgnPictureList.CurrentRow.Cells("photo_content").Value, Byte())
 
-                Dim V_PhotoStream = New System.IO.MemoryStream(V_PhotoByte)
-                PctbxPhoto.Image = System.Drawing.Image.FromStream(V_PhotoStream)
+                Dim varPhotoStream = New System.IO.MemoryStream(varPhotoByte)
+                PctbxPhoto.Image = System.Drawing.Image.FromStream(varPhotoStream)
             End If
         End If
     End Sub
@@ -366,37 +370,37 @@ Public Class DAR_Editor
     <SupportedOSPlatform("windows")>
     Private Sub BtnPeekFile_Click(sender As Object, e As EventArgs) Handles BtnPeekFile.Click
         If TxtFilePath.Text.Trim = String.Empty Then
-            Decision("Plase pick your file first.", "No file selected", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
+            Decision("Plase pick your file first.", "No file selected", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtFilePath.Text)) Then
-            Decision("Your file cannot be found.", "File not found", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
+            Decision("Your file cannot be found.", "File not found", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
-        V_DAR_SinglePDFViewer = New DAR_SinglePDFViewer(TxtFilePath.Text, "", False)
-        DISPLAY(V_DAR_SinglePDFViewer, IMAGEDB.Main.ImageLibrary.PDFPRV_ICON, "PDF Viewer", "Preview your file", True)
+        Frm_dar_SinglePdfViewer = New FRMdarSinglePdfViewer(TxtFilePath.Text, "", False)
+        Display(Frm_dar_SinglePdfViewer, IMAGEDB.Main.ImageLibrary.PDFPRV_ICON, "PDF Viewer", "Preview your file", True)
     End Sub
 
     Private Sub BtnAddFile_Click(sender As Object, e As EventArgs) Handles BtnAddFile.Click
         Try
             If TxtFilePath.Text.Trim = String.Empty Then
-                Decision("Plase pick your PDF file first.", "No file selected", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
+                Decision("Plase pick your PDF file first.", "No file selected", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtFilePath.Text)) Then
-                Decision("Your file cannot be found.", "File not found", frmDialogBox.MessageIcon.Error, frmDialogBox.MessageTypes.OkOnly)
+                Decision("Your file cannot be found.", "File not found", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf Not (OperatingSystem.File.Upload.IsAllowedSize(TxtFilePath.Text, varMaxUploadSizePDF, True)) Then
+            ElseIf Not CMCv.OperatingSystem.File.Upload.IsAllowedSize(TxtFilePath.Text, varMaxUploadSizePDF, True) Then
                 Return
             End If
 
-            Dim Row As Object() = Nothing
-            Dim V_Date As Date = Now
+            Dim varRow As Object() = Nothing
+            Dim varDate As Date = Now
             'Dim _PDFFile As Object = New IO.FileStream(TxtFilePath.Text, FileMode.Open, FileAccess.Read) 'System.Drawing.Image.FromFile(TxtPhotoPath.Text)
 
-            Row = New Object() {CMCv.Security.Encrypt.MD5(), IO.Path.GetFileNameWithoutExtension(TxtFilePath.Text), CboFileTag.Text, V_Date, TxtFilePath.Text, "Add", varProperties.EmployeeID}
+            varRow = New Object() {CMCv.Security.Encrypt.MD5(), IO.Path.GetFileNameWithoutExtension(TxtFilePath.Text), CboFileTag.Text, varDate, TxtFilePath.Text, "Add", varProperties.EmployeeID}
 
             With DgnFileList.Rows
-                .Add(Row)
+                .Add(varRow)
             End With
 
             TxtFilePath.Text = String.Empty
@@ -407,12 +411,12 @@ Public Class DAR_Editor
     End Sub
 
     Private Sub DgnFileList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnFileList.CellContentClick
-        Dim V_Sendergrid = DirectCast(sender, dgn)
+        Dim varSendergrid = DirectCast(sender, dgn)
 
-        If TypeOf V_Sendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
-            If Decision("Do you want to remove selected file?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
+        If TypeOf varSendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
+            If Decision("Do you want to remove selected file?", varQuestionMessage, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 If DgnFileList.CurrentRow.Cells("file_status").Value IsNot "Add" Then
-                    V_ExtQuery += String.Format("delete from db_universe_erp_file.dbo.sto_file where [file_id] = '{0}';", DgnFileList.CurrentRow.Cells("file_id").Value)
+                    varExtendedQuery += String.Format("delete from db_universe_erp_file.dbo.sto_file where [file_id] = '{0}';", DgnFileList.CurrentRow.Cells("file_id").Value)
                 End If
                 DgnFileList.Rows.Remove(DgnFileList.SelectedRows(0))
 
@@ -421,17 +425,17 @@ Public Class DAR_Editor
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub _MMSMenu_EventFileSave() Handles V_MMSMenu.EventFileSave
+    Private Sub CommmsMenu_EventFileSave() Handles Com_mms_Menu.EventFileSave
         Call Save()
     End Sub
 
-    Private Sub _MMSMenu_EventFileCancel() Handles V_MMSMenu.EventFileCancel
+    Private Sub CommmsMenu_EventFileCancel() Handles Com_mms_Menu.EventFileCancel
         Me.Close()
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub _MMSMenu_EventFileUndoAll() Handles V_MMSMenu.EventFileUndoAll
-        If Decision("Do you want to undo all changes?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
+    Private Sub CommmsMenu_EventFileUndoAll() Handles Com_mms_Menu.EventFileUndoAll
+        If Decision("Do you want to undo all changes?", varQuestionMessage, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
             If (varFormProperties.IsNew) Then
                 DtpStart.Value = Now.Date
                 DtpEnd.Value = Now.Date

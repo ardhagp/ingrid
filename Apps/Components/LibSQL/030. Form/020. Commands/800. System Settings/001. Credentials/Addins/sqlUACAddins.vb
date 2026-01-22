@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.UAC.Addins.Browse
+Namespace CMDuac.Addins.Browse
     Public Class Employee
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(databasename As String, grid As dgn, status As CMCv.stt, find As txt, Optional forcerefresh As Boolean = False)

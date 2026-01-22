@@ -1,3 +1,3 @@
-﻿Public Class MMSI_Editor
-
+﻿Public Class FRMmmsiEditor
+    'TODO: Implement Editor Form for Material Stock Info
 End Class

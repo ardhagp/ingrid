@@ -1,37 +1,37 @@
 ﻿
 Imports System.Runtime.Versioning
 
-Public Class DARD
-    Private V_SQL As New Commands.DARD.View
+Public Class FRMdard
+    Const varSeries1Message As String = "Series1"
 
     <SupportedOSPlatform("windows")>
-    Private Sub DARD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call GETChart()
+    Private Sub FRMdard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Call GetChart()
     End Sub
 
     ''' <summary>
     ''' Load chart data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Private Sub GETChart()
-        Commands.DARD.View.GetDailyStatistic(varDatabaseName, chrtDaily)
-        chrtDaily.Series("Series1").ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        chrtDaily.Series("Series1").IsValueShownAsLabel = True
+    Private Sub GetChart()
+        CMDdard.View.GetDailyStatistic(varDatabaseName, chrtDaily)
+        chrtDaily.Series(varSeries1Message).ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        chrtDaily.Series(varSeries1Message).IsValueShownAsLabel = True
         chrtDaily.BorderlineWidth = 2
         chrtDaily.BorderColor = Color.MidnightBlue
         chrtDaily.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.All
-        chrtDaily.Series("Series1").BorderColor = Color.Red
-        chrtDaily.Series("Series1").BorderWidth = 5
+        chrtDaily.Series(varSeries1Message).BorderColor = Color.Red
+        chrtDaily.Series(varSeries1Message).BorderWidth = 5
 
-        Commands.DARD.View.GetYearlyStatistic(varDatabaseName, chrtYearly)
-        chrtYearly.Series("Series1").ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column
-        chrtYearly.Series("Series1").IsValueShownAsLabel = True
+        CMDdard.View.GetYearlyStatistic(varDatabaseName, chrtYearly)
+        chrtYearly.Series(varSeries1Message).ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column
+        chrtYearly.Series(varSeries1Message).IsValueShownAsLabel = True
         chrtYearly.BorderColor = Color.MidnightBlue
         chrtYearly.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.All
 
-        Commands.DARD.View.GetMonthlyStatistic(varDatabaseName, chrtMonthly)
-        chrtMonthly.Series("Series1").ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column
-        chrtMonthly.Series("Series1").IsValueShownAsLabel = True
+        CMDdard.View.GetMonthlyStatistic(varDatabaseName, chrtMonthly)
+        chrtMonthly.Series(varSeries1Message).ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column
+        chrtMonthly.Series(varSeries1Message).IsValueShownAsLabel = True
         chrtMonthly.BorderColor = Color.MidnightBlue
         chrtMonthly.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.All
     End Sub

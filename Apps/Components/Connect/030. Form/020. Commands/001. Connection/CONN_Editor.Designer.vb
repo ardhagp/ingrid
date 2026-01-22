@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class CONN_Editor
+Partial Class FRMconnEditor
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -20,13 +20,10 @@ Partial Class CONN_Editor
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CONN_Editor))
-        BtnSave = New btn(components)
-        BtnCancel = New btn(components)
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMconnEditor))
         TbctlBasic = New tbctl(components)
         tp1_ = New TabPage()
         ChkIsMasked = New chk(components)
-        btnExport = New btn(components)
         CboDBEngine = New cbo(components)
         ULbl1 = New ULbl()
         ULbl_DatabaseName = New ULbl()
@@ -43,16 +40,11 @@ Partial Class CONN_Editor
         TxtConnectionName = New txt(components)
         TxtAddress = New txt(components)
         tp2_ = New TabPage()
-        btnImport = New btn(components)
-        btnSaveAs = New btn(components)
         Pnl1 = New pnl(components)
         txtImportContent = New txt(components)
-        btnGet = New btn(components)
         ULbl2 = New ULbl()
         txtImportCode = New txt(components)
-        Btn_Test = New btn(components)
         TtAllComponents = New ToolTip(components)
-        PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
         SLFPanel.SuspendLayout()
@@ -65,74 +57,22 @@ Partial Class CONN_Editor
         ' 
         ' PnlBottomButton
         ' 
-        PnlBottomButton.Controls.Add(Btn_Test)
-        PnlBottomButton.Controls.Add(BtnCancel)
-        PnlBottomButton.Controls.Add(BtnSave)
-        PnlBottomButton.Location = New Point(0, 637)
+        PnlBottomButton.Location = New Point(0, 540)
         PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
         PnlBottomButton.Size = New Size(807, 97)
-        PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
-        PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
-        PnlBottomButton.Controls.SetChildIndex(Btn_Test, 0)
         ' 
         ' pnl_
         ' 
         pnl_.Margin = New Padding(7, 5, 7, 5)
-        pnl_.Size = New Size(807, 104)
+        pnl_.Size = New Size(807, 201)
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(TbctlBasic)
         SLFPanel.Margin = New Padding(7, 5, 7, 5)
-        SLFPanel.Size = New Size(807, 734)
+        SLFPanel.Size = New Size(807, 637)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(TbctlBasic, 0)
-        ' 
-        ' BtnSave
-        ' 
-        BtnSave.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        BtnSave.BackColor = Color.LimeGreen
-        BtnSave.Cursor = Cursors.Hand
-        BtnSave.FlatAppearance.BorderColor = Color.FromArgb(CByte(50), CByte(145), CByte(50))
-        BtnSave.FlatAppearance.BorderSize = 2
-        BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
-        BtnSave.FlatStyle = FlatStyle.Flat
-        BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        BtnSave.ForeColor = Color.White
-        BtnSave.Location = New Point(444, 13)
-        BtnSave.Margin = New Padding(6, 5, 6, 5)
-        BtnSave.Name = "BtnSave"
-        BtnSave.Size = New Size(167, 77)
-        BtnSave.TabIndex = 10
-        BtnSave.Text = "&Save"
-        BtnSave.UseVisualStyleBackColor = False
-        BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-        BtnSave.XOTampilkanFocusBorder = False
-        BtnSave.XOValidasiSemuaInput = False
-        BtnSave.XOValidasiSemuaInputTag = Nothing
-        ' 
-        ' BtnCancel
-        ' 
-        BtnCancel.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        BtnCancel.BackColor = Color.Red
-        BtnCancel.Cursor = Cursors.Hand
-        BtnCancel.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
-        BtnCancel.FlatAppearance.BorderSize = 2
-        BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
-        BtnCancel.FlatStyle = FlatStyle.Flat
-        BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        BtnCancel.ForeColor = Color.White
-        BtnCancel.Location = New Point(621, 13)
-        BtnCancel.Margin = New Padding(6, 5, 6, 5)
-        BtnCancel.Name = "BtnCancel"
-        BtnCancel.Size = New Size(167, 77)
-        BtnCancel.TabIndex = 11
-        BtnCancel.Text = "&Close"
-        BtnCancel.UseVisualStyleBackColor = False
-        BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-        BtnCancel.XOTampilkanFocusBorder = False
-        BtnCancel.XOValidasiSemuaInput = False
-        BtnCancel.XOValidasiSemuaInputTag = Nothing
         ' 
         ' TbctlBasic
         ' 
@@ -144,14 +84,13 @@ Partial Class CONN_Editor
         TbctlBasic.Margin = New Padding(6, 5, 6, 5)
         TbctlBasic.Name = "TbctlBasic"
         TbctlBasic.SelectedIndex = 0
-        TbctlBasic.Size = New Size(767, 614)
+        TbctlBasic.Size = New Size(767, 517)
         TbctlBasic.TabIndex = 997
         ' 
         ' tp1_
         ' 
         tp1_.AutoScroll = True
         tp1_.Controls.Add(ChkIsMasked)
-        tp1_.Controls.Add(btnExport)
         tp1_.Controls.Add(CboDBEngine)
         tp1_.Controls.Add(ULbl1)
         tp1_.Controls.Add(ULbl_DatabaseName)
@@ -171,7 +110,7 @@ Partial Class CONN_Editor
         tp1_.Margin = New Padding(6, 5, 6, 5)
         tp1_.Name = "tp1_"
         tp1_.Padding = New Padding(6, 5, 6, 5)
-        tp1_.Size = New Size(759, 569)
+        tp1_.Size = New Size(759, 472)
         tp1_.TabIndex = 0
         tp1_.Text = "CONFIG"
         tp1_.UseVisualStyleBackColor = True
@@ -188,26 +127,6 @@ Partial Class CONN_Editor
         ChkIsMasked.TabIndex = 10
         ChkIsMasked.Text = "Unreadable after saving"
         ChkIsMasked.UseVisualStyleBackColor = False
-        ' 
-        ' btnExport
-        ' 
-        btnExport.BackColor = Color.RoyalBlue
-        btnExport.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
-        btnExport.FlatAppearance.BorderSize = 2
-        btnExport.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
-        btnExport.FlatStyle = FlatStyle.Flat
-        btnExport.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        btnExport.ForeColor = Color.White
-        btnExport.Location = New Point(569, 615)
-        btnExport.Name = "btnExport"
-        btnExport.Size = New Size(150, 60)
-        btnExport.TabIndex = 11
-        btnExport.Text = "Export"
-        btnExport.UseVisualStyleBackColor = False
-        btnExport.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        btnExport.XOTampilkanFocusBorder = False
-        btnExport.XOValidasiSemuaInput = False
-        btnExport.XOValidasiSemuaInputTag = Nothing
         ' 
         ' CboDBEngine
         ' 
@@ -517,59 +436,16 @@ Partial Class CONN_Editor
         ' 
         ' tp2_
         ' 
-        tp2_.Controls.Add(btnImport)
-        tp2_.Controls.Add(btnSaveAs)
         tp2_.Controls.Add(Pnl1)
-        tp2_.Controls.Add(btnGet)
         tp2_.Controls.Add(ULbl2)
         tp2_.Controls.Add(txtImportCode)
         tp2_.Location = New Point(4, 41)
         tp2_.Name = "tp2_"
         tp2_.Padding = New Padding(3)
-        tp2_.Size = New Size(759, 569)
+        tp2_.Size = New Size(759, 472)
         tp2_.TabIndex = 1
         tp2_.Text = "IMPORT / EXPORT"
         tp2_.UseVisualStyleBackColor = True
-        ' 
-        ' btnImport
-        ' 
-        btnImport.BackColor = Color.RoyalBlue
-        btnImport.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
-        btnImport.FlatAppearance.BorderSize = 2
-        btnImport.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
-        btnImport.FlatStyle = FlatStyle.Flat
-        btnImport.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        btnImport.ForeColor = Color.White
-        btnImport.Location = New Point(6, 467)
-        btnImport.Name = "btnImport"
-        btnImport.Size = New Size(150, 60)
-        btnImport.TabIndex = 6
-        btnImport.Text = "Import"
-        btnImport.UseVisualStyleBackColor = False
-        btnImport.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        btnImport.XOTampilkanFocusBorder = False
-        btnImport.XOValidasiSemuaInput = False
-        btnImport.XOValidasiSemuaInputTag = Nothing
-        ' 
-        ' btnSaveAs
-        ' 
-        btnSaveAs.BackColor = Color.RoyalBlue
-        btnSaveAs.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
-        btnSaveAs.FlatAppearance.BorderSize = 2
-        btnSaveAs.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
-        btnSaveAs.FlatStyle = FlatStyle.Flat
-        btnSaveAs.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        btnSaveAs.ForeColor = Color.White
-        btnSaveAs.Location = New Point(603, 467)
-        btnSaveAs.Name = "btnSaveAs"
-        btnSaveAs.Size = New Size(150, 60)
-        btnSaveAs.TabIndex = 5
-        btnSaveAs.Text = "Save As"
-        btnSaveAs.UseVisualStyleBackColor = False
-        btnSaveAs.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        btnSaveAs.XOTampilkanFocusBorder = False
-        btnSaveAs.XOValidasiSemuaInput = False
-        btnSaveAs.XOValidasiSemuaInputTag = Nothing
         ' 
         ' Pnl1
         ' 
@@ -609,26 +485,6 @@ Partial Class CONN_Editor
         txtImportContent.XOSQLText = ""
         txtImportContent.XOTanpaSpasi = False
         txtImportContent.XOValidasiField = Nothing
-        ' 
-        ' btnGet
-        ' 
-        btnGet.BackColor = Color.RoyalBlue
-        btnGet.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
-        btnGet.FlatAppearance.BorderSize = 2
-        btnGet.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
-        btnGet.FlatStyle = FlatStyle.Flat
-        btnGet.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        btnGet.ForeColor = Color.White
-        btnGet.Location = New Point(603, 6)
-        btnGet.Name = "btnGet"
-        btnGet.Size = New Size(150, 60)
-        btnGet.TabIndex = 2
-        btnGet.Text = "Get"
-        btnGet.UseVisualStyleBackColor = False
-        btnGet.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        btnGet.XOTampilkanFocusBorder = False
-        btnGet.XOValidasiSemuaInput = False
-        btnGet.XOValidasiSemuaInputTag = Nothing
         ' 
         ' ULbl2
         ' 
@@ -672,34 +528,12 @@ Partial Class CONN_Editor
         txtImportCode.XOTanpaSpasi = False
         txtImportCode.XOValidasiField = Nothing
         ' 
-        ' Btn_Test
-        ' 
-        Btn_Test.BackColor = Color.Yellow
-        Btn_Test.Cursor = Cursors.Hand
-        Btn_Test.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(195), CByte(0))
-        Btn_Test.FlatAppearance.BorderSize = 2
-        Btn_Test.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(255), CByte(20))
-        Btn_Test.FlatStyle = FlatStyle.Flat
-        Btn_Test.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Btn_Test.ForeColor = Color.Black
-        Btn_Test.Location = New Point(20, 13)
-        Btn_Test.Margin = New Padding(6, 5, 6, 5)
-        Btn_Test.Name = "Btn_Test"
-        Btn_Test.Size = New Size(167, 77)
-        Btn_Test.TabIndex = 12
-        Btn_Test.Text = "Test"
-        Btn_Test.UseVisualStyleBackColor = False
-        Btn_Test.XOJenisTombol = ControlCodeBase.enuJenisTombol.Warning
-        Btn_Test.XOTampilkanFocusBorder = False
-        Btn_Test.XOValidasiSemuaInput = False
-        Btn_Test.XOValidasiSemuaInputTag = Nothing
-        ' 
         ' TtAllComponents
         ' 
         TtAllComponents.IsBalloon = True
         TtAllComponents.ToolTipIcon = ToolTipIcon.Info
         ' 
-        ' CONN_Editor
+        ' FRMconnEditor
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         ClientSize = New Size(807, 860)
@@ -708,8 +542,7 @@ Partial Class CONN_Editor
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         KeyPreview = True
         Margin = New Padding(10, 5, 10, 5)
-        Name = "CONN_Editor"
-        PnlBottomButton.ResumeLayout(False)
+        Name = "FRMconnEditor"
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
         pnl_.ResumeLayout(False)
         pnl_.PerformLayout()

@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Std_Fi
-    Inherits CMCv.frmStandard
+Partial Class FRMstandardFind
+    Inherits CMCv.FRMstandard
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -21,7 +21,7 @@ Partial Class Std_Fi
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.PnlFind = New CMCv.pnl(Me.components)
-        Me.BtnClear = New CMCv.btn(Me.components)
+        Me.BtnClear = New CMCv.Btn(Me.components)
         Me.LblFind = New CMCv.lbl(Me.components)
         Me.TxtFind = New CMCv.txt(Me.components)
         CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -106,7 +106,7 @@ Partial Class Std_Fi
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(784, 561)
-        Me.Name = "frmStandard_Find"
+        Me.Name = "FRMstandardFind"
         Me.Text = "Nama Form"
         CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnl_.ResumeLayout(False)

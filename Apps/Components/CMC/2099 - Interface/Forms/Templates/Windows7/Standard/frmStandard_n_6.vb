@@ -1,3 +1,3 @@
-﻿Public Class frmStandard_n_6
+﻿Public Class FRMstandard6
 
 End Class

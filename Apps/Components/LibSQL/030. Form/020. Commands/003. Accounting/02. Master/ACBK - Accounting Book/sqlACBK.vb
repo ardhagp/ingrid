@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.ACBK
+Namespace CMDacbk
     Public Class View
 
         <SupportedOSPlatform("windows")>

@@ -1,3 +1,3 @@
-﻿Public Class SYN01_Editor
-
+﻿Public Class FRMsyn01Editor
+    'TODO: Implement Editor Form for SYN01 - Import
 End Class

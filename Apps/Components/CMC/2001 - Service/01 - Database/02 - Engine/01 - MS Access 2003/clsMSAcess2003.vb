@@ -11,7 +11,7 @@ Namespace Database.Engine
         Private ReadOnly varCommand(2) As OleDb.OleDbCommand
         Private ReadOnly varDatareader(2) As OleDb.OleDbDataReader
 
-        Private ReadOnly varMsa2003c As New Connect.MSAccess2003Connection
+        Private ReadOnly varMsa2003Connection As New Connect.Msaccess2003connection
 
         <SupportedOSPlatform("windows")>
         Public Shared Function CheckDBCatalog() As Boolean
@@ -78,7 +78,7 @@ Namespace Database.Engine
                 'Dim varFileInfo As New OperatingSystem.File.Info
 
                 If OperatingSystem.File.Info.IsExists(varFilepath(0)) Then
-                    varConnectionstring(0) = varMsa2003c.Microsoftoledbstandard(varFilepath(0), "admin", "")
+                    varConnectionstring(0) = varMsa2003Connection.Microsoftoledbstandard(varFilepath(0), "admin", "")
 
                     varConnection(0) = New OleDb.OleDbConnection(varConnectionstring(0))
                     varConnection(0).Open()
@@ -87,7 +87,7 @@ Namespace Database.Engine
                 varFilepath(1) = Application.StartupPath & "\Resources\errlog.mdb"
 
                 If OperatingSystem.File.Info.IsExists(varFilepath(1)) Then
-                    varConnectionstring(1) = varMsa2003c.Microsoftoledbstandard(varFilepath(1), "admin", "")
+                    varConnectionstring(1) = varMsa2003Connection.Microsoftoledbstandard(varFilepath(1), "admin", "")
 
                     varConnection(1) = New OleDb.OleDbConnection(varConnectionstring(1))
                     varConnection(1).Open()

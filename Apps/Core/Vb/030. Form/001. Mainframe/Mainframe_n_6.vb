@@ -5,11 +5,11 @@ Imports System.Data
 Imports System.ComponentModel
 Imports System.Runtime.Versioning
 
-Public Class Mainframe_n_6
+Public Class FRMmainframe6
 
 #Region "Interfaces"
     Public Interface ICommandFunction
-        Function LoadCommand() As CMCv.frmStandard
+        Function LoadCommand() As CMCv.FRMstandard
     End Interface
 
     Public Interface ICommandName
@@ -21,9 +21,9 @@ Public Class Mainframe_n_6
     Public Event IngridFrameOpen()
     Public Event IngridFrameClose()
 
-    Private WithEvents varLOGIN As New LOGIN
-    Private WithEvents varCONN As New Connect.CONN(varProductionMode) 'uncomment this when add Connect to library
-    Private WithEvents varPHTRZ As New CMCv.PHTRZ
+    Private WithEvents Frm_login As New LOGIN
+    Private WithEvents Frm_conn As New Connect.FRMconn(varProductionMode)
+    Private WithEvents varPHTRZ As New CMCv.FRMphotoresizer
     Private WithEvents varUACeditor As UAC_Editor
     'Private WithEvents _CSETTINGS As New Connect.CONN
 
@@ -128,7 +128,7 @@ Public Class Mainframe_n_6
         Try
             If Not (forced) AndAlso (Global.System.Windows.Forms.MessageBox.Show("Do you want to close all varWorkspace windows?", "Close All Windows", Global.System.Windows.Forms.MessageBoxButtons.YesNo, Global.System.Windows.Forms.MessageBoxIcon.Question) = Global.System.Windows.Forms.DialogResult.Yes) Then
 
-                For Each openedforms As CMCv.frmStandard In Tmdi_.MdiChildren
+                For Each openedforms As CMCv.FRMstandard In Tmdi_.MdiChildren
                     openedforms.Close()
                     openedforms.Dispose()
                 Next
@@ -178,7 +178,7 @@ Public Class Mainframe_n_6
         ElseIf (Application.Modules.IsModuleLocked(varDatabaseName, varDatabaseEngine, commandcode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
             Bridge.Security.Writelog.Sendlog("""message"" : """ & varProperties.FirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
-            Decision("[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.frmDialogBox.MessageIcon.Information, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.FRMdialogbox.MessageIcon.Information, CMCv.FRMdialogbox.MessageTypes.OkOnly)
 
             System.Media.SystemSounds.Beep.Play()
 
@@ -204,15 +204,15 @@ Public Class Mainframe_n_6
 #Region "Application Menu"
     'Start Menu
     <SupportedOSPlatform("windows")>
-    Private Sub Ms_start_Login_Click(sender As Object, e As EventArgs) Handles Ms_start_Login.Click
+    Private Sub MsstartLogin_Click(sender As Object, e As EventArgs) Handles Ms_start_Login.Click
         Call LoginClicked()
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Function LoginClicked() As Boolean
         If varProperties.UserID = String.Empty Then
-            varLOGIN = New LOGIN
-            Display(varLOGIN, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, "Sign In", "Please enter your credentials to continue", True)
+            Frm_login = New LOGIN
+            Display(Frm_login, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, "Sign In", "Please enter your credentials to continue", True)
         End If
         If varProperties.UserID = String.Empty Then
             varSession = False
@@ -225,13 +225,13 @@ Public Class Mainframe_n_6
     End Function
 
     <SupportedOSPlatform("windows")>
-    Private Sub Ms_start_Logout_Click(sender As Object, e As EventArgs) Handles Ms_start_Logout.Click
+    Private Sub MsstartLogout_Click(sender As Object, e As EventArgs) Handles Ms_start_Logout.Click
         Call LogoutClicked()
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub LogoutClicked()
-        If Decision("Are you sure want to logout from system?", "Logout", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
+        If Decision("Are you sure want to logout from system?", "Logout", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
             Bridge.Security.Writelog.Sendlog("""message"" : " & varProperties.FirstName & " is logout."",", "Information")
             Call SystemLogout()
             varLogUser.Logout(varDatabaseName, varDatabaseEngine, varProperties.EmployeeID)
@@ -240,28 +240,28 @@ Public Class Mainframe_n_6
     End Sub
 
     'varWorkspace Menu
-    Private Sub Ms_workspace_Cascade_Click(sender As Object, e As EventArgs) Handles Ms_workspace_Cascade.Click
+    Private Sub MsworkspaceCascade_Click(sender As Object, e As EventArgs) Handles Ms_workspace_Cascade.Click
         Me.LayoutMdi(MdiLayout.Cascade)
     End Sub
 
-    Private Sub Ms_workspace_TileVertical_Click(sender As Object, e As EventArgs) Handles Ms_workspace_TileVertical.Click
+    Private Sub MsworkspaceTileVertical_Click(sender As Object, e As EventArgs) Handles Ms_workspace_TileVertical.Click
         Me.LayoutMdi(MdiLayout.TileVertical)
     End Sub
 
-    Private Sub Ms_workspace_TileHorizontal_Click(sender As Object, e As EventArgs) Handles Ms_workspace_TileHorizontal.Click
+    Private Sub MsworkspaceTileHorizontal_Click(sender As Object, e As EventArgs) Handles Ms_workspace_TileHorizontal.Click
         Me.LayoutMdi(MdiLayout.TileHorizontal)
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub Ms_workspace_CloseAll_Click(sender As Object, e As EventArgs) Handles Ms_workspace_CloseAll.Click
+    Private Sub MsworkspaceCloseAll_Click(sender As Object, e As EventArgs) Handles Ms_workspace_CloseAll.Click
         Call CloseAllWindows()
     End Sub
 
-    Private Sub Ms_workspace_InputCommand_Click(sender As Object, e As EventArgs) Handles Ms_workspace_InputCommand.Click
+    Private Sub MsworkspaceInputCommand_Click(sender As Object, e As EventArgs) Handles Ms_workspace_InputCommand.Click
         Txt_shortcut.Focus()
     End Sub
 
-    Private Sub Ms_workspace_Maximize_Click(sender As Object, e As EventArgs) Handles Ms_workspace_Maximize.Click
+    Private Sub MsworkspaceMaximize_Click(sender As Object, e As EventArgs) Handles Ms_workspace_Maximize.Click
         Me.WindowState = FormWindowState.Maximized
     End Sub
 
@@ -280,7 +280,7 @@ Public Class Mainframe_n_6
         Catch ex As Exception
             With proLog
                 .AppVersion = GetAppVersion()
-                .FromSender = "[ChangePasswordToolStripMenuItem] $\Ingrid\Apps\Core\Vb\030. Form\001. Mainframe\Mainframe_n_6.vb"
+                .FromSender = "[ChangePasswordToolStripMenuItem] $\Ingrid\Apps\Core\Vb\030. Form\001. Mainframe\FRMmainframe6.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
                 .Number = ex.HResult
@@ -310,7 +310,7 @@ Public Class Mainframe_n_6
             Dim clsLog As New Ladybug.Log.Events
             With proLog
                 .Message = "Ingrid Main App is opened."
-                .FromSender = "Mainframe_n_6 Load Event"
+                .FromSender = "FRMmainframe6 Load Event"
                 .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Information
                 .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
                 .ResumeNext = True
@@ -349,16 +349,16 @@ Public Class Mainframe_n_6
                 varLogApplication.Run(varDatabaseName, varDatabaseEngine)
             Else
                 Ts_connection.Text = "Disconnected"
-                Decision("Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                Decision("Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             'splash.Close()
 
-            Call CommandAutoComplete() 'TODO: Raised Error
+            Call CommandAutoComplete()
 
             If Not (LibSQL.Commands.DBIC.Applications.IsCompanyExist(varDatabaseName, varDatabaseEngine) OrElse Not LibSQL.Commands.DBIC.Applications.IsDepartmentExist(varDatabaseName, varDatabaseEngine)) Then
-                Display(frmFistGuide,, "First Guide", "", True, Me)
+                Display(FRMfirstguide,, "First Guide", "", True, Me)
             End If
         Catch ex As Exception
             With proLog
@@ -385,7 +385,7 @@ Public Class Mainframe_n_6
 
 #Region "Components Events"
     <SupportedOSPlatform("windows")>
-    Private Sub Tv_mainframe_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles Tv_mainframe.NodeMouseDoubleClick
+    Private Sub Tvmainframe_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles Tv_mainframe.NodeMouseDoubleClick
         Try
             With Tv_mainframe.SelectedNode
                 If .Name = "nd_file" Then
@@ -463,21 +463,17 @@ Public Class Mainframe_n_6
         End If
     End Sub
 
-    Private Sub UpdateToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        'TODO: Update method
-    End Sub
-
     <SupportedOSPlatform("windows")>
     Private Sub PhotoResizerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PhotoResizerToolStripMenuItem.Click
         Call EnterCommand("PHTRZ")
     End Sub
 
-    Private Sub varPHTRZ_Done() Handles varPHTRZ.Done
+    Private Sub FRMphtrz_Done() Handles varPHTRZ.EventDone
         varPHTRZ.Dispose()
     End Sub
 
-    Private Sub varCONN_Done() Handles varCONN.ConnectFrameClose 'uncomment this when add Connect to library
-        varCONN.Dispose()
+    Private Sub Frmconn_Done() Handles Frm_conn.ConnectFrameClose
+        Frm_conn.Dispose()
     End Sub
 
     Private Sub ContentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentsToolStripMenuItem.Click
@@ -558,15 +554,11 @@ Public Class Mainframe_n_6
 
     <SupportedOSPlatform("windows")>
     Private Sub NotificationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotificationToolStripMenuItem.Click
-        Dim frmNTFC As New NTFC
-        Display(frmNTFC, IMAGEDB.Main.ImageLibrary.NOTIF_ICON, "Notification", "Show all notification that addressed to you", True)
+        Dim varNotification As New NTFC
+        Display(varNotification, IMAGEDB.Main.ImageLibrary.NOTIF_ICON, "Notification", "Show all notification that addressed to you", True)
     End Sub
 
-    Private Sub Ts_status_Click(sender As Object, e As EventArgs) Handles Ts_status.Click
-        'TODO: Status method
-    End Sub
-
-    Private Sub Ts_status_TextChanged(sender As Object, e As EventArgs) Handles Ts_status.TextChanged
+    Private Sub Tsstatus_TextChanged(sender As Object, e As EventArgs) Handles Ts_status.TextChanged
         varClearStatus = 0
         If Ts_status.Text = String.Empty Then
             TmrStatus.Enabled = False
@@ -583,12 +575,12 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub V_LOGIN_LoginSuccess() Handles varLOGIN.LoginSuccess
+    Private Sub Frmlogin_LoginSuccess() Handles Frm_login.EventLoginSuccess
         Call GetNotification()
         PnlProfile.Visible = True
     End Sub
 
-    Private Sub Tmr_gc_Tick(sender As Object, e As EventArgs) Handles Tmr_gc.Tick
+    Private Sub Tmrgc_Tick(sender As Object, e As EventArgs) Handles Tmr_gc.Tick
         GC.Collect()
     End Sub
 
@@ -598,10 +590,6 @@ Public Class Mainframe_n_6
             Call CommandAutoComplete() ''' Refresh Command Auto Complete
             varForceRefreshMainframeData = False
         End If
-    End Sub
-
-    Private Sub WORKSPACE_Click(sender As Object, e As EventArgs) Handles WORKSPACE.Click
-        'TODO: Workspace method
     End Sub
 
     Private Sub SUPPORT_Click(sender As Object, e As EventArgs) Handles SUPPORT.Click
@@ -631,7 +619,7 @@ Public Class Mainframe_n_6
             Dim clsLog As New Ladybug.Log.Events
             With proLog
                 .Message = "Ingrid Main App is closing."
-                .FromSender = "Mainframe_n_6 Closing Event"
+                .FromSender = "FRMmainframe6 Closing Event"
                 .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Information
                 .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
                 .ResumeNext = True
@@ -669,7 +657,7 @@ Public Class Mainframe_n_6
         End Try
     End Sub
 
-    Private Sub Tmr_runningtext_Tick(sender As Object, e As EventArgs) Handles Tmr_runningtext.Tick
+    Private Sub Tmrrunningtext_Tick(sender As Object, e As EventArgs) Handles Tmr_runningtext.Tick
         varMyMarquee.Tick()
         TxtRunning.Text = varMyMarquee.MarqueeText
     End Sub
@@ -684,12 +672,12 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub Ms_start_Settings_Click(sender As Object, e As EventArgs) Handles Ms_start_Settings.Click
+    Private Sub MsstartSettings_Click(sender As Object, e As EventArgs) Handles Ms_start_Settings.Click
         Call EnterCommand("SYSS")
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub V_LOGIN_LoginFailed() Handles varLOGIN.LoginFailed
+    Private Sub Frmlogin_LoginFailed() Handles Frm_login.EventLoginFailed
         Call ClearLoginData()
         Call SystemLogout(True)
     End Sub
@@ -721,7 +709,7 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub Ms_start_Exit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
+    Private Sub MsstartExit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
         If (varSession) Then
             Call SystemLogout() ''' Logout Process
             varLogUser.Logout(varDatabaseName, varDatabaseEngine, varProperties.EmployeeID)
@@ -734,13 +722,13 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub Ms_start_connection_app_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_app.Click 'uncomment this when add Connect to library
-        varCONN = New Connect.CONN(varProductionMode, True)
+    Private Sub Msstartconnectionapp_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_app.Click 'uncomment this when add Connect to library
+        Frm_conn = New Connect.FRMconn(varProductionMode, True)
 
-        Display(varCONN, IMAGEDB.Main.ImageLibrary.CONN_ICON, "Connection Settings", "Configure Ingrid database connection", True)
+        Display(Frm_conn, IMAGEDB.Main.ImageLibrary.CONN_ICON, "Connection Settings", "Configure Ingrid database connection", True)
     End Sub
 
-    Private Sub Ms_start_connection_folder_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_folder.Click
+    Private Sub Msstartconnectionfolder_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_folder.Click
         Try
             ''' Open Resources Folder
             Process.Start(New ProcessStartInfo(My.Application.Info.DirectoryPath & "\Resources\") With {.UseShellExecute = True})
@@ -750,13 +738,10 @@ Public Class Mainframe_n_6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub Mainframe_n_6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+    Private Sub Frmmainframe6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         RaiseEvent IngridFrameClose()
     End Sub
 
-    Private Sub Mainframe_n_6_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
-        'TODO: Dispose method
-    End Sub
 
     'TODO: Reactivate when supported by .net 6
     'Private Sub Application_Idle(ByVal sender As Object, ByVal e As EventArgs)

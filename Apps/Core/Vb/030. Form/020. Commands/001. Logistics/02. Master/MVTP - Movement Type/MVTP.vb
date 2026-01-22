@@ -1,3 +1,3 @@
-﻿Public Class MVTP
-
+﻿Public Class FRMmvtp
+    'TODO: Implement Form for Movement Type
 End Class

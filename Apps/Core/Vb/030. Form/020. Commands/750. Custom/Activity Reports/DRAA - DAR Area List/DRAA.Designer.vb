@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class DRAA
-    Inherits CMCv.frmStandard
+Partial Class FRMdraa
+    Inherits CMCv.FRMstandard
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -20,9 +20,9 @@ Partial Class DRAA
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Pnl1 = New pnl(components)
         BtnClear = New btn(components)
         Lbl1 = New lbl(components)
@@ -43,6 +43,7 @@ Partial Class DRAA
         ' 
         SLFPanel.Controls.Add(DgnArea)
         SLFPanel.Controls.Add(Pnl1)
+        SLFPanel.Size = New Size(1307, 952)
         ' 
         ' Pnl1
         ' 
@@ -51,9 +52,9 @@ Partial Class DRAA
         Pnl1.Controls.Add(TxtFind)
         Pnl1.Dock = DockStyle.Top
         Pnl1.Location = New Point(0, 0)
-        Pnl1.Margin = New Padding(4, 3, 4, 3)
+        Pnl1.Margin = New Padding(6, 5, 6, 5)
         Pnl1.Name = "Pnl1"
-        Pnl1.Size = New Size(915, 53)
+        Pnl1.Size = New Size(1307, 88)
         Pnl1.TabIndex = 801
         ' 
         ' BtnClear
@@ -66,38 +67,40 @@ Partial Class DRAA
         BtnClear.FlatStyle = FlatStyle.Flat
         BtnClear.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         BtnClear.ForeColor = Color.White
-        BtnClear.Location = New Point(306, 3)
-        BtnClear.Margin = New Padding(4, 3, 4, 3)
+        BtnClear.Location = New Point(437, 5)
+        BtnClear.Margin = New Padding(6, 5, 6, 5)
         BtnClear.Name = "BtnClear"
-        BtnClear.Size = New Size(117, 46)
+        BtnClear.Size = New Size(167, 77)
+        BtnClear.TabIndex = 801
+        BtnClear.Text = "Clear"
+        BtnClear.UseVisualStyleBackColor = False
         BtnClear.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
         BtnClear.XOTampilkanFocusBorder = False
         BtnClear.XOValidasiSemuaInput = False
         BtnClear.XOValidasiSemuaInputTag = Nothing
-        BtnClear.TabIndex = 801
-        BtnClear.Text = "Clear"
-        BtnClear.UseVisualStyleBackColor = False
         ' 
         ' Lbl1
         ' 
         Lbl1.AutoSize = True
         Lbl1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Lbl1.Location = New Point(14, 15)
-        Lbl1.Margin = New Padding(4, 0, 4, 0)
+        Lbl1.Location = New Point(20, 25)
+        Lbl1.Margin = New Padding(6, 0, 6, 0)
         Lbl1.Name = "Lbl1"
-        Lbl1.Size = New Size(40, 21)
-        Lbl1.XOCustomElipsis = False
+        Lbl1.Size = New Size(60, 32)
         Lbl1.TabIndex = 5
         Lbl1.Text = "Find"
+        Lbl1.XOCustomElipsis = False
         ' 
         ' TxtFind
         ' 
         TxtFind.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        TxtFind.Location = New Point(74, 12)
-        TxtFind.Margin = New Padding(4, 3, 4, 3)
+        TxtFind.Location = New Point(106, 20)
+        TxtFind.Margin = New Padding(6, 5, 6, 5)
         TxtFind.MaxLength = 255
         TxtFind.Name = "TxtFind"
-        TxtFind.Size = New Size(224, 29)
+        TxtFind.Size = New Size(318, 39)
+        TxtFind.TabIndex = 800
+        TxtFind.Tag = "txt"
         TxtFind.XOAutoTrim = False
         TxtFind.XOHarusDiisi = False
         TxtFind.XOHarusDiisiWarnaLatar = Color.LightPink
@@ -117,86 +120,88 @@ Partial Class DRAA
         TxtFind.XOSQLText = Nothing
         TxtFind.XOTanpaSpasi = False
         TxtFind.XOValidasiField = Nothing
-        TxtFind.TabIndex = 800
-        TxtFind.Tag = "txt"
         ' 
         ' DgnArea
         ' 
         DgnArea.AllowUserToAddRows = False
         DgnArea.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(192), CByte(228), CByte(156))
-        DgnArea.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(209), CByte(242), CByte(153))
+        DgnArea.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         DgnArea.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DgnArea.BorderStyle = BorderStyle.None
         DgnArea.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgnArea.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.YellowGreen
-        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
-        DataGridViewCellStyle2.SelectionForeColor = Color.Black
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DgnArea.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = Color.YellowGreen
+        DataGridViewCellStyle5.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
+        DataGridViewCellStyle5.SelectionForeColor = Color.Black
+        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
+        DgnArea.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         DgnArea.ColumnHeadersHeight = 43
         DgnArea.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DgnArea.Columns.AddRange(New DataGridViewColumn() {areaaffected_id, areaaffected_order, areaaffected_name})
         DgnArea.Dock = DockStyle.Fill
         DgnArea.EnableHeadersVisualStyles = False
         DgnArea.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DgnArea.Location = New Point(0, 53)
-        DgnArea.Margin = New Padding(4, 3, 4, 3)
+        DgnArea.Location = New Point(0, 88)
+        DgnArea.Margin = New Padding(6, 5, 6, 5)
         DgnArea.Name = "DgnArea"
         DgnArea.ReadOnly = True
         DgnArea.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = Color.YellowGreen
-        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
-        DataGridViewCellStyle3.SelectionForeColor = Color.Black
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-        DgnArea.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = Color.YellowGreen
+        DataGridViewCellStyle6.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle6.SelectionForeColor = Color.Black
+        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+        DgnArea.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DgnArea.RowHeadersWidth = 62
         DgnArea.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DgnArea.Size = New Size(915, 511)
-        DgnArea.XOGroupFirstRows = False
-        DgnArea.XOGunakanNomorBaris = True
+        DgnArea.Size = New Size(1307, 864)
         DgnArea.StandardTab = True
         DgnArea.TabIndex = 803
+        DgnArea.XOGroupFirstRows = False
+        DgnArea.XOGunakanNomorBaris = True
         ' 
         ' areaaffected_id
         ' 
         areaaffected_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         areaaffected_id.DataPropertyName = "areaaffected_id"
         areaaffected_id.HeaderText = "ID"
+        areaaffected_id.MinimumWidth = 8
         areaaffected_id.Name = "areaaffected_id"
         areaaffected_id.ReadOnly = True
-        areaaffected_id.Width = 44
+        areaaffected_id.Width = 61
         ' 
         ' areaaffected_order
         ' 
         areaaffected_order.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         areaaffected_order.DataPropertyName = "areaaffected_order"
         areaaffected_order.HeaderText = "Order"
+        areaaffected_order.MinimumWidth = 8
         areaaffected_order.Name = "areaaffected_order"
         areaaffected_order.ReadOnly = True
-        areaaffected_order.Width = 63
+        areaaffected_order.Width = 87
         ' 
         ' areaaffected_name
         ' 
         areaaffected_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         areaaffected_name.DataPropertyName = "areaaffected_name"
         areaaffected_name.HeaderText = "Area Name"
+        areaaffected_name.MinimumWidth = 8
         areaaffected_name.Name = "areaaffected_name"
         areaaffected_name.ReadOnly = True
         ' 
-        ' DRAA
+        ' FRMdraa
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(915, 647)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1307, 1078)
         KeyPreview = True
-        Margin = New Padding(6, 3, 6, 3)
-        Name = "DRAA"
+        Margin = New Padding(9, 5, 9, 5)
+        Name = "FRMdraa"
         Text = "Nama Form"
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
         pnl_.ResumeLayout(False)

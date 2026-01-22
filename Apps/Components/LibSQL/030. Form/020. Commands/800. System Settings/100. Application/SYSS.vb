@@ -12,8 +12,8 @@ Namespace Commands.SYSS
                     varDatabaseRequestMssql2008(0).Query = String.Format("select {0} from dbo.sys_settings st where st.settings_id = 1", dbcolumn)
                     varValue = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query)
                 ElseIf dbengine = "MYSQL" Then
-                    V_DBR_MYSQL(0).Query = String.Format("select {0} from sys_settings st where st.settings_id = 1", dbcolumn)
-                    varValue = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(0).Query)
+                    varDatabaseRequestMysql(0).Query = String.Format("select {0} from sys_settings st where st.settings_id = 1", dbcolumn)
+                    varValue = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query)
                 End If
 
                 Return varValue
@@ -34,11 +34,11 @@ Namespace Commands.SYSS
 
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dbengine = "MYSQL" Then
-                    V_DBR_MYSQL(1).Query = String.Format("update dbo.sys_settings set settings_showprofile = {0}, settings_showstorage = {1}, settings_showrunningtext = {2}, settings_uploadphoto = {3}, " &
+                    varDatabaseRequestMysql(1).Query = String.Format("update dbo.sys_settings set settings_showprofile = {0}, settings_showstorage = {1}, settings_showrunningtext = {2}, settings_uploadphoto = {3}, " &
                                                         "settings_uploadpdf = {4},  settings_showwatermark = {5}, settings_textmark = '{6}', settings_minpasswordlength = {7} " &
                                                         "where settings_id = 1", profile, storage, newsticker, minphoto, minpdf, watermark, watermarktext, minpassword)
 
-                    varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
+                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
                 End If
 
                 Return True

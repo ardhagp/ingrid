@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frmStandard
-    Inherits CMCv.Blank
+Partial Class FRMstandard
+    Inherits CMCv.FRMblank
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -20,7 +20,7 @@ Partial Class frmStandard
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStandard))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMstandard))
         Me.pnl_ = New CMCv.pnl(Me.components)
         Me.SLFLogo = New CMCv.pctbx(Me.components)
         Me.SLFBackground = New CMCv.pctbx(Me.components)
@@ -143,7 +143,7 @@ Partial Class frmStandard
         Me.Controls.Add(Me.SLFPanel)
         Me.Controls.Add(Me.SLFStatus)
         Me.Controls.Add(Me.pnl_)
-        Me.Name = "frmStandard"
+        Me.Name = "FRMstandard"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.pnl_.ResumeLayout(False)
         Me.pnl_.PerformLayout()

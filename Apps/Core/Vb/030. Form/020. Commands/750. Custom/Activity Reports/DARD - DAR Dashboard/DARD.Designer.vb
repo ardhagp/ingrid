@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class DARD
-    Inherits CMCv.Std_Fi
+Partial Class FRMdard
+    Inherits CMCv.FRMstandardFind
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -20,16 +20,16 @@ Partial Class DARD
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim ChartArea1 As DataVisualization.Charting.ChartArea = New DataVisualization.Charting.ChartArea()
-        Dim Legend1 As DataVisualization.Charting.Legend = New DataVisualization.Charting.Legend()
-        Dim Series1 As DataVisualization.Charting.Series = New DataVisualization.Charting.Series()
-        Dim Title1 As DataVisualization.Charting.Title = New DataVisualization.Charting.Title()
-        Dim ChartArea2 As DataVisualization.Charting.ChartArea = New DataVisualization.Charting.ChartArea()
-        Dim Series2 As DataVisualization.Charting.Series = New DataVisualization.Charting.Series()
-        Dim Title2 As DataVisualization.Charting.Title = New DataVisualization.Charting.Title()
-        Dim ChartArea3 As DataVisualization.Charting.ChartArea = New DataVisualization.Charting.ChartArea()
-        Dim Series3 As DataVisualization.Charting.Series = New DataVisualization.Charting.Series()
-        Dim Title3 As DataVisualization.Charting.Title = New DataVisualization.Charting.Title()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New DataVisualization.Charting.Series()
+        Dim Title1 As System.Windows.Forms.DataVisualization.Charting.Title = New DataVisualization.Charting.Title()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New DataVisualization.Charting.ChartArea()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New DataVisualization.Charting.Series()
+        Dim Title2 As System.Windows.Forms.DataVisualization.Charting.Title = New DataVisualization.Charting.Title()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New DataVisualization.Charting.ChartArea()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New DataVisualization.Charting.Series()
+        Dim Title3 As System.Windows.Forms.DataVisualization.Charting.Title = New DataVisualization.Charting.Title()
         Tbctl1 = New tbctl(components)
         tp_Dashboard = New TabPage()
         tlpUpper = New TableLayoutPanel()
@@ -53,8 +53,8 @@ Partial Class DARD
         ' 
         ' PnlFind
         ' 
-        PnlFind.Margin = New Padding(5, 3, 5, 3)
-        PnlFind.Size = New Size(1155, 53)
+        PnlFind.Margin = New Padding(7, 5, 7, 5)
+        PnlFind.Size = New Size(1650, 88)
         ' 
         ' BtnClear
         ' 
@@ -64,18 +64,18 @@ Partial Class DARD
         ' 
         ' TxtFind
         ' 
-        TxtFind.Margin = New Padding(5, 3, 5, 3)
+        TxtFind.Margin = New Padding(7, 5, 7, 5)
         ' 
         ' pnl_
         ' 
-        pnl_.Margin = New Padding(5, 3, 5, 3)
-        pnl_.Size = New Size(1155, 61)
+        pnl_.Margin = New Padding(7, 5, 7, 5)
+        pnl_.Size = New Size(1650, 104)
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(Tbctl1)
-        SLFPanel.Margin = New Padding(5, 3, 5, 3)
-        SLFPanel.Size = New Size(1155, 763)
+        SLFPanel.Margin = New Padding(7, 5, 7, 5)
+        SLFPanel.Size = New Size(1650, 1044)
         SLFPanel.Controls.SetChildIndex(PnlFind, 0)
         SLFPanel.Controls.SetChildIndex(Tbctl1, 0)
         ' 
@@ -84,22 +84,22 @@ Partial Class DARD
         Tbctl1.Controls.Add(tp_Dashboard)
         Tbctl1.Dock = DockStyle.Fill
         Tbctl1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Tbctl1.Location = New Point(0, 53)
-        Tbctl1.Margin = New Padding(4, 3, 4, 3)
+        Tbctl1.Location = New Point(0, 88)
+        Tbctl1.Margin = New Padding(6, 5, 6, 5)
         Tbctl1.Name = "Tbctl1"
         Tbctl1.SelectedIndex = 0
-        Tbctl1.Size = New Size(1155, 710)
+        Tbctl1.Size = New Size(1650, 956)
         Tbctl1.TabIndex = 802
         ' 
         ' tp_Dashboard
         ' 
         tp_Dashboard.AutoScroll = True
         tp_Dashboard.Controls.Add(tlpUpper)
-        tp_Dashboard.Location = New Point(4, 30)
-        tp_Dashboard.Margin = New Padding(4, 3, 4, 3)
+        tp_Dashboard.Location = New Point(4, 41)
+        tp_Dashboard.Margin = New Padding(6, 5, 6, 5)
         tp_Dashboard.Name = "tp_Dashboard"
-        tp_Dashboard.Padding = New Padding(4, 3, 4, 3)
-        tp_Dashboard.Size = New Size(1147, 676)
+        tp_Dashboard.Padding = New Padding(6, 5, 6, 5)
+        tp_Dashboard.Size = New Size(1642, 911)
         tp_Dashboard.TabIndex = 0
         tp_Dashboard.Text = "DASHBOARD"
         tp_Dashboard.UseVisualStyleBackColor = True
@@ -108,17 +108,17 @@ Partial Class DARD
         ' 
         tlpUpper.ColumnCount = 1
         tlpUpper.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
-        tlpUpper.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 23F))
+        tlpUpper.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 33F))
         tlpUpper.Controls.Add(chrtDaily, 0, 0)
         tlpUpper.Controls.Add(tlpMiddle, 0, 1)
         tlpUpper.Dock = DockStyle.Fill
-        tlpUpper.Location = New Point(4, 3)
-        tlpUpper.Margin = New Padding(4, 3, 4, 3)
+        tlpUpper.Location = New Point(6, 5)
+        tlpUpper.Margin = New Padding(6, 5, 6, 5)
         tlpUpper.Name = "tlpUpper"
         tlpUpper.RowCount = 2
         tlpUpper.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         tlpUpper.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        tlpUpper.Size = New Size(1139, 670)
+        tlpUpper.Size = New Size(1630, 901)
         tlpUpper.TabIndex = 0
         ' 
         ' chrtDaily
@@ -140,10 +140,10 @@ Partial Class DARD
         Legend1.LegendStyle = DataVisualization.Charting.LegendStyle.Row
         Legend1.Name = "Legend1"
         chrtDaily.Legends.Add(Legend1)
-        chrtDaily.Location = New Point(4, 3)
-        chrtDaily.Margin = New Padding(4, 3, 4, 3)
+        chrtDaily.Location = New Point(6, 5)
+        chrtDaily.Margin = New Padding(6, 5, 6, 5)
         chrtDaily.Name = "chrtDaily"
-        chrtDaily.Padding = New Padding(6)
+        chrtDaily.Padding = New Padding(9, 10, 9, 10)
         Series1.ChartArea = "ChartArea1"
         Series1.ChartType = DataVisualization.Charting.SeriesChartType.Line
         Series1.CustomProperties = "IsXAxisQuantitative=True, EmptyPointValue=Zero"
@@ -155,7 +155,7 @@ Partial Class DARD
         Series1.Legend = "Legend1"
         Series1.Name = "Series1"
         chrtDaily.Series.Add(Series1)
-        chrtDaily.Size = New Size(1131, 329)
+        chrtDaily.Size = New Size(1618, 440)
         chrtDaily.TabIndex = 1
         chrtDaily.TabStop = False
         Title1.DockedToChartArea = "ChartArea1"
@@ -174,12 +174,12 @@ Partial Class DARD
         tlpMiddle.Controls.Add(chrtMonthly, 0, 0)
         tlpMiddle.Controls.Add(chrtYearly, 0, 0)
         tlpMiddle.Dock = DockStyle.Fill
-        tlpMiddle.Location = New Point(4, 338)
-        tlpMiddle.Margin = New Padding(4, 3, 4, 3)
+        tlpMiddle.Location = New Point(6, 455)
+        tlpMiddle.Margin = New Padding(6, 5, 6, 5)
         tlpMiddle.Name = "tlpMiddle"
         tlpMiddle.RowCount = 1
         tlpMiddle.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
-        tlpMiddle.Size = New Size(1131, 329)
+        tlpMiddle.Size = New Size(1618, 441)
         tlpMiddle.TabIndex = 0
         ' 
         ' chrtMonthly
@@ -191,8 +191,8 @@ Partial Class DARD
         ChartArea2.Name = "ChartArea1"
         chrtMonthly.ChartAreas.Add(ChartArea2)
         chrtMonthly.Dock = DockStyle.Fill
-        chrtMonthly.Location = New Point(456, 3)
-        chrtMonthly.Margin = New Padding(4, 3, 4, 3)
+        chrtMonthly.Location = New Point(653, 5)
+        chrtMonthly.Margin = New Padding(6, 5, 6, 5)
         chrtMonthly.Name = "chrtMonthly"
         chrtMonthly.Palette = DataVisualization.Charting.ChartColorPalette.Fire
         Series2.ChartArea = "ChartArea1"
@@ -200,7 +200,7 @@ Partial Class DARD
         Series2.LabelBackColor = Color.FromArgb(CByte(255), CByte(192), CByte(255))
         Series2.Name = "Series1"
         chrtMonthly.Series.Add(Series2)
-        chrtMonthly.Size = New Size(671, 323)
+        chrtMonthly.Size = New Size(959, 431)
         chrtMonthly.TabIndex = 2
         chrtMonthly.TabStop = False
         Title2.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
@@ -220,8 +220,8 @@ Partial Class DARD
         ChartArea3.Name = "ChartArea1"
         chrtYearly.ChartAreas.Add(ChartArea3)
         chrtYearly.Dock = DockStyle.Fill
-        chrtYearly.Location = New Point(4, 3)
-        chrtYearly.Margin = New Padding(4, 3, 4, 3)
+        chrtYearly.Location = New Point(6, 5)
+        chrtYearly.Margin = New Padding(6, 5, 6, 5)
         chrtYearly.Name = "chrtYearly"
         Series3.ChartArea = "ChartArea1"
         Series3.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
@@ -229,7 +229,7 @@ Partial Class DARD
         Series3.LabelBackColor = Color.FromArgb(CByte(255), CByte(192), CByte(255))
         Series3.Name = "Series1"
         chrtYearly.Series.Add(Series3)
-        chrtYearly.Size = New Size(444, 323)
+        chrtYearly.Size = New Size(635, 431)
         chrtYearly.TabIndex = 1
         chrtYearly.TabStop = False
         Title3.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
@@ -239,13 +239,13 @@ Partial Class DARD
         Title3.Text = "Yearly"
         chrtYearly.Titles.Add(Title3)
         ' 
-        ' DARD
+        ' FRMdard
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        ClientSize = New Size(1155, 846)
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1650, 1170)
         KeyPreview = True
-        Margin = New Padding(7, 3, 7, 3)
-        Name = "DARD"
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMdard"
         PnlFind.ResumeLayout(False)
         PnlFind.PerformLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

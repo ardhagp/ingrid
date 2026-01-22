@@ -1,16 +1,14 @@
-﻿Imports System.Runtime.Versioning
+﻿Imports System.Data.Common
+Imports System.Runtime.Versioning
 Imports System.Text
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-Imports CMCv
-Imports Microsoft.Reporting.Map.WebForms.BingMaps
 
 <SupportedOSPlatform("windows")>
-Public Class CONN
+Public Class FRMconn
     Public Event ConnectFrameOpen()
     Public Event ConnectFrameClose()
 
-    Private WithEvents COMmainframemenu As New UI.View.MenuStrip
-    Private WithEvents FRMconn_editor As New CONN_Editor
+    Private WithEvents Com_mainframe_menu As New UI.View.MenuStrip
+    Private WithEvents Frm_conn_Editor As New FRMconnEditor
 
     Private varSQL As New Commands.CONN.View
     Private varIsProduction As Boolean = True
@@ -60,7 +58,7 @@ Public Class CONN
 #End Region
 
     <SupportedOSPlatform("windows")>
-    Private Sub CONN_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FRMconn_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RaiseEvent ConnectFrameOpen() ''' Notify that the connection settings form is opened
 
         Bridge.Security.Writelog.Sendlog("""message"" : ""Connection Settings is opened."",", "Information") ''' Log the event
@@ -69,18 +67,18 @@ Public Class CONN
 
         Call LoadMenu() ''' Load mainframe menu
 
-        DgnConnection.XOGETNewColor() ''' Apply custom color scheme
+        DgnConnection.XOGeTNewColor() ''' Apply custom color scheme
 
         Call GetData(True) ''' Load data into the grid
     End Sub
 
     Private Sub LoadMenu()
-        COMmainframemenu.LoadIn(Me, True) ''' Load menu into the form
-        COMmainframemenu.ShowMenuData(UI.View.MenuStrip.ShowItem.Yes) ''' Show data-related menu items
+        Com_mainframe_menu.LoadIn(Me, True) ''' Load menu into the form
+        Com_mainframe_menu.ShowMenuData(UI.View.MenuStrip.ShowItem.Yes) ''' Show data-related menu items
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub CONN_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
+    Private Sub FRMconn_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
         If Not (varIsExtension) Then
             '_DBE_LocalDB.Close()
             varDatabaseEngineSqlite.Close()
@@ -91,19 +89,19 @@ Public Class CONN
         RaiseEvent ConnectFrameClose()
     End Sub
 
-    Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
-        Call ClearFind()
+    Private Sub BtnClear_Click(sender As Object, e As EventArgs)
+        ClearFind()
     End Sub
 
     ''' <summary>
     ''' Add new data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataAddNew() Handles COMmainframemenu.EventDataAddNew
+    Private Sub EventDataAddNew() Handles Com_mainframe_menu.EventDataAddNew
         varProperties.IsNew = True
         varProperties.RowID = "-1"
-        FRMconn_editor = New CONN_Editor
-        Display(FRMconn_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new connection", True)
+        Frm_conn_Editor = New FRMconnEditor
+        Display(Frm_conn_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new connection", True)
         SLFStatus.Text = String.Empty
     End Sub
 
@@ -111,15 +109,15 @@ Public Class CONN
     ''' Edit existing data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Public Sub EventDataEdit() Handles COMmainframemenu.EventDataEdit
+    Public Sub EventDataEdit() Handles Com_mainframe_menu.EventDataEdit
         Call GetRowID()
         varProperties.IsNew = False
 
         If varProperties.RowID Is "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
-            FRMconn_editor = New CONN_Editor
-            Display(FRMconn_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update connection", True)
+            Frm_conn_Editor = New FRMconnEditor
+            Display(Frm_conn_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update connection", True)
         End If
 
         SLFStatus.Text = String.Empty
@@ -129,10 +127,10 @@ Public Class CONN
     ''' Delete selected data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataDelete() Handles COMmainframemenu.EventDataDelete
+    Private Sub EventDataDelete() Handles Com_mainframe_menu.EventDataDelete
         Call GetRowID()
         If varProperties.RowID Is "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             varProperties.IsNew = False
 
@@ -151,7 +149,7 @@ Public Class CONN
 
                 varMessage.AppendLine(varLine)
 
-                If Decision(Convert.ToString(varMessage), "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If Decision(Convert.ToString(varMessage), "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                     If (Commands.CONN.View.DeleteData(Convert.ToString(varProperties.RowID))) Then
                         Call GetData(True)
                         SLFStatus.Text = "Success"
@@ -176,14 +174,14 @@ Public Class CONN
     ''' <summary>
     ''' Search mode
     ''' </summary>
-    Private Sub EventToolsFind() Handles COMmainframemenu.EventToolsFind
+    Private Sub EventToolsFind() Handles Com_mainframe_menu.EventToolsFind
         TxtFind.Focus()
     End Sub
 
     ''' <summary>
     ''' Load data with filter applied
     ''' </summary>
-    Private Sub EventDataRefresh() Handles COMmainframemenu.EventDataRefresh
+    Private Sub EventDataRefresh() Handles Com_mainframe_menu.EventDataRefresh
         TxtFind.Clear()
         Call GetData(True)
     End Sub
@@ -191,7 +189,7 @@ Public Class CONN
     ''' <summary>
     ''' Close form
     ''' </summary>
-    Private Sub EventDataClose() Handles COMmainframemenu.EventDataClose
+    Private Sub EventDataClose() Handles Com_mainframe_menu.EventDataClose
         Me.Close()
     End Sub
 
@@ -204,12 +202,12 @@ Public Class CONN
         Call GetData(True)
     End Sub
 
-    Private Sub frmCONN_Editor_RecordSaved() Handles FRMconn_editor.RecordSaved
+    Private Sub FRMconnEditor_RecordSaved() Handles Frm_conn_Editor.RecordSaved
         TxtFind.Clear()
         Call GetData(True)
     End Sub
 
-    Private Sub Btn_Close_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
-        Me.Close()
+    Private Sub BtnClose_Click(sender As Object, e As EventArgs)
+        Close()
     End Sub
 End Class

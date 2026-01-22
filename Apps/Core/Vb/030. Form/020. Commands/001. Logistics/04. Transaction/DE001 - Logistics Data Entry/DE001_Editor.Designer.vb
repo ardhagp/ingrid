@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class DE001_Editor
+Partial Class FRMde001Editor
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -19,165 +19,183 @@ Partial Class DE001_Editor
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Me.BtnSave = New CMCv.btn(Me.components)
-        Me.BtnClose = New CMCv.btn(Me.components)
-        Me.Txt1 = New CMCv.txt(Me.components)
-        Me.LblNumber = New CMCv.lbl(Me.components)
-        Me.Cbo1 = New CMCv.cbo(Me.components)
-        Me.LblGroup = New CMCv.lbl(Me.components)
-        Me.LblDate = New CMCv.lbl(Me.components)
-        Me.PnlBottomButton.SuspendLayout()
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnl_.SuspendLayout()
-        Me.SLFPanel.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'PnlBottomButton
-        '
-        Me.PnlBottomButton.Controls.Add(Me.BtnClose)
-        Me.PnlBottomButton.Controls.Add(Me.BtnSave)
-        Me.PnlBottomButton.Controls.SetChildIndex(Me.BtnSave, 0)
-        Me.PnlBottomButton.Controls.SetChildIndex(Me.BtnClose, 0)
-        '
-        'SLFPanel
-        '
-        Me.SLFPanel.Controls.Add(Me.LblDate)
-        Me.SLFPanel.Controls.Add(Me.LblGroup)
-        Me.SLFPanel.Controls.Add(Me.Cbo1)
-        Me.SLFPanel.Controls.Add(Me.LblNumber)
-        Me.SLFPanel.Controls.Add(Me.Txt1)
-        Me.SLFPanel.Controls.SetChildIndex(Me.PnlBottomButton, 0)
-        Me.SLFPanel.Controls.SetChildIndex(Me.Txt1, 0)
-        Me.SLFPanel.Controls.SetChildIndex(Me.LblNumber, 0)
-        Me.SLFPanel.Controls.SetChildIndex(Me.Cbo1, 0)
-        Me.SLFPanel.Controls.SetChildIndex(Me.LblGroup, 0)
-        Me.SLFPanel.Controls.SetChildIndex(Me.LblDate, 0)
-        '
-        'BtnSave
-        '
-        Me.BtnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnSave.BackColor = System.Drawing.Color.LimeGreen
-        Me.BtnSave.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(145, Byte), Integer), CType(CType(50, Byte), Integer))
-        Me.BtnSave.FlatAppearance.BorderSize = 2
-        Me.BtnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(225, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.BtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnSave.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.BtnSave.ForeColor = System.Drawing.Color.White
-        Me.BtnSave.Location = New System.Drawing.Point(566, 7)
-        Me.BtnSave.Name = "BtnSave"
-        Me.BtnSave.Size = New System.Drawing.Size(100, 40)
-        Me.BtnSave.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-        Me.BtnSave.XOTampilkanFocusBorder = False
-        Me.BtnSave.XOValidasiSemuaInput = False
-        Me.BtnSave.XOValidasiSemuaInputTag = Nothing
-        Me.BtnSave.TabIndex = 1
-        Me.BtnSave.Text = "&Save"
-        Me.BtnSave.UseVisualStyleBackColor = False
-        '
-        'BtnClose
-        '
-        Me.BtnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnClose.BackColor = System.Drawing.Color.Red
-        Me.BtnClose.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(195, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BtnClose.FlatAppearance.BorderSize = 2
-        Me.BtnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(20, Byte), Integer))
-        Me.BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnClose.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.BtnClose.ForeColor = System.Drawing.Color.White
-        Me.BtnClose.Location = New System.Drawing.Point(672, 7)
-        Me.BtnClose.Name = "BtnClose"
-        Me.BtnClose.Size = New System.Drawing.Size(100, 40)
-        Me.BtnClose.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-        Me.BtnClose.XOTampilkanFocusBorder = False
-        Me.BtnClose.XOValidasiSemuaInput = False
-        Me.BtnClose.XOValidasiSemuaInputTag = Nothing
-        Me.BtnClose.TabIndex = 2
-        Me.BtnClose.Text = "&Close"
-        Me.BtnClose.UseVisualStyleBackColor = False
-        '
-        'Txt1
-        '
-        Me.Txt1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Txt1.Location = New System.Drawing.Point(141, 10)
-        Me.Txt1.MaxLength = 255
-        Me.Txt1.Name = "Txt1"
-        Me.Txt1.Size = New System.Drawing.Size(206, 29)
-        Me.Txt1.XOAutoTrim = False
-        Me.Txt1.XOHarusDiisi = False
-        Me.Txt1.XOHarusDiisiWarnaLatar = System.Drawing.Color.LightPink
-        Me.Txt1.XOHarusDiisiWarnaLatarDefault = System.Drawing.Color.White
-        Me.Txt1.XOHightlightSaatFokus = False
-        Me.Txt1.XOHightlightSaatFokusWarna = System.Drawing.Color.LightYellow
-        Me.Txt1.XOIsBlank = True
-        Me.Txt1.XOJenisKapital = CMCv.ControlCodeBase.enuJenisKapital.Normal
-        Me.Txt1.XOPilihSemuaSaatFokus = False
-        Me.Txt1.XORestriction = CMCv.ControlCodeBase.enuRestriction.None
-        Me.Txt1.XOSQLText = ""
-        Me.Txt1.XOTanpaSpasi = False
-        Me.Txt1.XOValidasiField = Nothing
-        Me.Txt1.TabIndex = 996
-        Me.Txt1.Tag = "txt"
-        '
-        'LblNumber
-        '
-        Me.LblNumber.AutoSize = True
-        Me.LblNumber.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.LblNumber.Location = New System.Drawing.Point(52, 13)
-        Me.LblNumber.Name = "LblNumber"
-        Me.LblNumber.Size = New System.Drawing.Size(83, 21)
-        Me.LblNumber.XOCustomElipsis = False
-        Me.LblNumber.TabIndex = 997
-        Me.LblNumber.Text = "Manifest #"
-        '
-        'Cbo1
-        '
-        Me.Cbo1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Cbo1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Cbo1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Cbo1.FormattingEnabled = True
-        Me.Cbo1.Location = New System.Drawing.Point(141, 45)
-        Me.Cbo1.Name = "Cbo1"
-        Me.Cbo1.Size = New System.Drawing.Size(121, 29)
-        Me.Cbo1.TabIndex = 998
-        '
-        'LblGroup
-        '
-        Me.LblGroup.AutoSize = True
-        Me.LblGroup.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.LblGroup.Location = New System.Drawing.Point(17, 48)
-        Me.LblGroup.Name = "LblGroup"
-        Me.LblGroup.Size = New System.Drawing.Size(118, 21)
-        Me.LblGroup.XOCustomElipsis = False
-        Me.LblGroup.TabIndex = 999
-        Me.LblGroup.Text = "Manifest Group"
-        '
-        'LblDate
-        '
-        Me.LblDate.AutoSize = True
-        Me.LblDate.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.LblDate.Location = New System.Drawing.Point(378, 13)
-        Me.LblDate.Name = "LblDate"
-        Me.LblDate.Size = New System.Drawing.Size(102, 21)
-        Me.LblDate.XOCustomElipsis = False
-        Me.LblDate.TabIndex = 1000
-        Me.LblDate.Text = "Start Loading"
-        '
-        'DE001_Editor
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(784, 561)
-        Me.Name = "DE001_Editor"
-        Me.PnlBottomButton.ResumeLayout(False)
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnl_.ResumeLayout(False)
-        Me.pnl_.PerformLayout()
-        Me.SLFPanel.ResumeLayout(False)
-        Me.SLFPanel.PerformLayout()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        components = New ComponentModel.Container()
+        BtnSave = New btn(components)
+        BtnClose = New btn(components)
+        Txt1 = New txt(components)
+        LblNumber = New lbl(components)
+        Cbo1 = New cbo(components)
+        LblGroup = New lbl(components)
+        LblDate = New lbl(components)
+        PnlBottomButton.SuspendLayout()
+        CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
+        pnl_.SuspendLayout()
+        SLFPanel.SuspendLayout()
+        CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' PnlBottomButton
+        ' 
+        PnlBottomButton.Controls.Add(BtnClose)
+        PnlBottomButton.Controls.Add(BtnSave)
+        PnlBottomButton.Location = New Point(0, 857)
+        PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
+        PnlBottomButton.Controls.SetChildIndex(BtnClose, 0)
+        ' 
+        ' SLFPanel
+        ' 
+        SLFPanel.Controls.Add(LblDate)
+        SLFPanel.Controls.Add(LblGroup)
+        SLFPanel.Controls.Add(Cbo1)
+        SLFPanel.Controls.Add(LblNumber)
+        SLFPanel.Controls.Add(Txt1)
+        SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+        SLFPanel.Controls.SetChildIndex(Txt1, 0)
+        SLFPanel.Controls.SetChildIndex(LblNumber, 0)
+        SLFPanel.Controls.SetChildIndex(Cbo1, 0)
+        SLFPanel.Controls.SetChildIndex(LblGroup, 0)
+        SLFPanel.Controls.SetChildIndex(LblDate, 0)
+        ' 
+        ' BtnSave
+        ' 
+        BtnSave.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        BtnSave.BackColor = Color.LimeGreen
+        BtnSave.Cursor = Cursors.Hand
+        BtnSave.FlatAppearance.BorderColor = Color.FromArgb(CByte(50), CByte(145), CByte(50))
+        BtnSave.FlatAppearance.BorderSize = 2
+        BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
+        BtnSave.FlatStyle = FlatStyle.Flat
+        BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnSave.ForeColor = Color.White
+        BtnSave.Location = New Point(943, 13)
+        BtnSave.Margin = New Padding(5, 6, 5, 6)
+        BtnSave.Name = "BtnSave"
+        BtnSave.Size = New Size(167, 77)
+        BtnSave.TabIndex = 1
+        BtnSave.Text = "&Save"
+        BtnSave.UseVisualStyleBackColor = False
+        BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
+        BtnSave.XOTampilkanFocusBorder = False
+        BtnSave.XOValidasiSemuaInput = False
+        BtnSave.XOValidasiSemuaInputTag = Nothing
+        ' 
+        ' BtnClose
+        ' 
+        BtnClose.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        BtnClose.BackColor = Color.Red
+        BtnClose.Cursor = Cursors.Hand
+        BtnClose.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
+        BtnClose.FlatAppearance.BorderSize = 2
+        BtnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
+        BtnClose.FlatStyle = FlatStyle.Flat
+        BtnClose.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnClose.ForeColor = Color.White
+        BtnClose.Location = New Point(1120, 13)
+        BtnClose.Margin = New Padding(5, 6, 5, 6)
+        BtnClose.Name = "BtnClose"
+        BtnClose.Size = New Size(167, 77)
+        BtnClose.TabIndex = 2
+        BtnClose.Text = "&Close"
+        BtnClose.UseVisualStyleBackColor = False
+        BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
+        BtnClose.XOTampilkanFocusBorder = False
+        BtnClose.XOValidasiSemuaInput = False
+        BtnClose.XOValidasiSemuaInputTag = Nothing
+        ' 
+        ' Txt1
+        ' 
+        Txt1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Txt1.Location = New Point(235, 19)
+        Txt1.Margin = New Padding(5, 6, 5, 6)
+        Txt1.MaxLength = 255
+        Txt1.Name = "Txt1"
+        Txt1.Size = New Size(341, 39)
+        Txt1.TabIndex = 996
+        Txt1.Tag = "txt"
+        Txt1.XOAutoTrim = False
+        Txt1.XOHarusDiisi = False
+        Txt1.XOHarusDiisiWarnaLatar = Color.LightPink
+        Txt1.XOHarusDiisiWarnaLatarDefault = Color.White
+        Txt1.XOHightlightSaatFokus = False
+        Txt1.XOHightlightSaatFokusWarna = Color.LightYellow
+        Txt1.XOIsBlank = True
+        Txt1.XOIsSearchBox = False
+        Txt1.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        Txt1.XOPilihSemuaSaatFokus = False
+        Txt1.XOPwdLengthMin = 8
+        Txt1.XOPwdStrengthCalculate = False
+        Txt1.XOPwdStrengthScore = 0
+        Txt1.XOPwdStrengthText = Nothing
+        Txt1.XORestriction = ControlCodeBase.enuRestriction.None
+        Txt1.XOSearchBoxText = "Type then press Enter"
+        Txt1.XOSQLText = ""
+        Txt1.XOTanpaSpasi = False
+        Txt1.XOValidasiField = Nothing
+        ' 
+        ' LblNumber
+        ' 
+        LblNumber.AutoSize = True
+        LblNumber.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LblNumber.Location = New Point(87, 25)
+        LblNumber.Margin = New Padding(5, 0, 5, 0)
+        LblNumber.Name = "LblNumber"
+        LblNumber.Size = New Size(128, 32)
+        LblNumber.TabIndex = 997
+        LblNumber.Text = "Manifest #"
+        LblNumber.XOCustomElipsis = False
+        ' 
+        ' Cbo1
+        ' 
+        Cbo1.DropDownStyle = ComboBoxStyle.DropDownList
+        Cbo1.FlatStyle = FlatStyle.Flat
+        Cbo1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Cbo1.FormattingEnabled = True
+        Cbo1.Location = New Point(235, 87)
+        Cbo1.Margin = New Padding(5, 6, 5, 6)
+        Cbo1.Name = "Cbo1"
+        Cbo1.Size = New Size(199, 40)
+        Cbo1.TabIndex = 998
+        ' 
+        ' LblGroup
+        ' 
+        LblGroup.AutoSize = True
+        LblGroup.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LblGroup.Location = New Point(28, 92)
+        LblGroup.Margin = New Padding(5, 0, 5, 0)
+        LblGroup.Name = "LblGroup"
+        LblGroup.Size = New Size(180, 32)
+        LblGroup.TabIndex = 999
+        LblGroup.Text = "Manifest Group"
+        LblGroup.XOCustomElipsis = False
+        ' 
+        ' LblDate
+        ' 
+        LblDate.AutoSize = True
+        LblDate.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LblDate.Location = New Point(630, 25)
+        LblDate.Margin = New Padding(5, 0, 5, 0)
+        LblDate.Name = "LblDate"
+        LblDate.Size = New Size(154, 32)
+        LblDate.TabIndex = 1000
+        LblDate.Text = "Start Loading"
+        LblDate.XOCustomElipsis = False
+        ' 
+        ' FRMde001Editor
+        ' 
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(1307, 1079)
+        KeyPreview = True
+        Margin = New Padding(22, 44, 22, 44)
+        Name = "FRMde001Editor"
+        PnlBottomButton.ResumeLayout(False)
+        CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
+        pnl_.ResumeLayout(False)
+        pnl_.PerformLayout()
+        SLFPanel.ResumeLayout(False)
+        SLFPanel.PerformLayout()
+        CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
+        PerformLayout()
 
     End Sub
 

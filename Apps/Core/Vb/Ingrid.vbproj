@@ -200,8 +200,8 @@
     <Compile Update="030. Form\020. Commands\001. Logistics\04. Transaction\Tools\SYN01 - Import\SYN01_Editor.Designer.vb">
       <DependentUpon>SYN01_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\003. Accounting\01. Dashboard\frmACDashboard.Designer.vb">
-      <DependentUpon>frmACDashboard.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\003. Accounting\01. Dashboard\AC_Dashboard.Designer.vb">
+      <DependentUpon>AC_Dashboard.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\003. Accounting\02. Master\ACBK - Accounting Book\ACBK.Designer.vb">
       <DependentUpon>ACBK.vb</DependentUpon>

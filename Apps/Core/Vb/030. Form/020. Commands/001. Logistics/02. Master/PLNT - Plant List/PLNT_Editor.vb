@@ -1,16 +1,15 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class PLNT_Editor
+Public Class FRMplntEditor
 #Region "Variables"
-    Public Event RecordSaved()
-    Private V_SQL As New LibSQL.Commands.PLNT.Editor
-    Private V_IsLoad As Boolean
+    Public Event EventRecordSaved()
+    Private varIsLoad As Boolean
 #End Region
 
 #Region "Sub Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GetCompany()
-        Call Commands.PLNT.Editor.GetCompany(varDatabaseName, varDatabaseEngine, CboCompany)
+        Call CMDplnt.Editor.GetCompany(varDatabaseName, varDatabaseEngine, CboCompany)
     End Sub
 
     Private Sub CheckAllInput()
@@ -31,9 +30,9 @@ Public Class PLNT_Editor
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub PLNT_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        V_IsLoad = True
+    Private Sub FRMplntEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        varIsLoad = True
         Call GetCompany()
-        V_IsLoad = False
+        varIsLoad = False
     End Sub
 End Class

@@ -5,13 +5,13 @@ Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 Imports CMCv
 
-Namespace Commands.DAR
+Namespace CMDdar
     Public Class View
         'ReDim varDatabaseRequestMssql2008(3)
-        Public varIsEmpFilter As Boolean
-        Public varEmployeeID As String
-        Public varContentID As String
-        Public varContentYear As String
+        Private Shared varIsEmpFilter As Boolean
+        Private Shared varEmployeeID As String
+        Private Shared varContentID As String
+        Private ReadOnly varContentYear As String
 
         <SupportedOSPlatform("windows")>
         Public Shared Function CheckSettings(databasename As String, dbengine As String, uid As String, attribute As String) As Boolean
@@ -37,17 +37,17 @@ Namespace Commands.DAR
                 Next
             ElseIf dbengine = "MYSQL" Then
                 For varRow = 0 To 0
-                    V_DBR_MYSQL(0).Query = String.Format("select count(mods.modulesettings_id) from sys_modulesettings mods inner join " &
+                    varDatabaseRequestMysql(0).Query = String.Format("select count(mods.modulesettings_id) from sys_modulesettings mods inner join " &
                                                         "sys_module mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') " &
                                                         "and (mods.modulesettings_user = '{0}') and (mods.modulesettings_attribute = '{1}')", uid, varAttribute(varRow))
-                    varIsExist = CType(varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(0).Query), Integer)
+                    varIsExist = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
 
                     If varIsExist = 0 Then
-                        V_DBR_MYSQL(1).Query = String.Format("insert into sys_modulesettings(modulesettings_id, modulesettings_module," &
+                        varDatabaseRequestMysql(1).Query = String.Format("insert into sys_modulesettings(modulesettings_id, modulesettings_module," &
                                                             "modulesettings_user, modulesettings_attribute, modulesettings_value) values('{0}', " &
                                                             "(select mo.module_id from sys_module mo where mo.module_code = 'DAR'),'{1}','{2}'," &
                                                             "'False')", CMCv.Security.Encrypt.MD5(), uid, varAttribute(varRow))
-                        varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
+                        varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
                     End If
                 Next
             End If
@@ -113,7 +113,7 @@ Namespace Commands.DAR
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Sub DisplayMainGrid(databasename As String, dbengine As String, find As txt, dategrid As dgn, datestatusbar As stt, contentstatusbar As stt, chkdatefilter As chk, dtpdatefilter As dtp, chkbyfilter As chk, cbobyfilter As cbo, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayMainGrid(databasename As String, dbengine As String, find As txt, dategrid As dgn, datestatusbar As stt, contentstatusbar As stt, chkdatefilter As chk, dtpdatefilter As dtp, chkbyfilter As chk, cbobyfilter As cbo, Optional forcerefresh As Boolean = False)
             Try
                 Dim varWhere As String = String.Format("where ")
 
@@ -223,14 +223,14 @@ Namespace Commands.DAR
                         End If
                     End If
 
-                    V_DBR_MYSQL(0).Query = String.Format("select ea.employeeactivity_datetime, (convert(varchar,ea.employeeactivity_datetime,106) + '' + " &
+                    varDatabaseRequestMysql(0).Query = String.Format("select ea.employeeactivity_datetime, (convert(varchar,ea.employeeactivity_datetime,106) + '' + " &
                                                         "char(13) + char(10) + '' + left(datename(dw,ea.employeeactivity_datetime),3)) as `employeeactivity_longdate` " &
                                                         "from doc_employeeactivity ea {0} group by ea.employeeactivity_datetime " &
                                                         "order by ea.employeeactivity_datetime desc", varWhere)
 
-                    V_DBR_MYSQL(0).DataGrid = dategrid
-                    V_DBR_MYSQL(0).StatusBar = datestatusbar
-                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TDailyReportsDate")
+                    varDatabaseRequestMysql(0).DataGrid = dategrid
+                    varDatabaseRequestMysql(0).StatusBar = datestatusbar
+                    varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "TDailyReportsDate")
 
                     varIsEmpFilter = chkbyfilter.Checked
                 End If
@@ -241,7 +241,7 @@ Namespace Commands.DAR
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Sub DisplaySecondGrid(databasename As String, dbengine As String, dategrid As String, contentgrid As dgn, contentstatusbar As stt, find As txt, Optional showattachment As Boolean = False, Optional photogrid As dgn = Nothing, Optional filegrid As dgn = Nothing)
+        Public Shared Sub DisplaySecondGrid(databasename As String, dbengine As String, dategrid As String, contentgrid As dgn, contentstatusbar As stt, find As txt, Optional showattachment As Boolean = False, Optional photogrid As dgn = Nothing, Optional filegrid As dgn = Nothing)
             Try
                 'Dim _CONTENTDATE As Date
                 Dim V_CONTENTDATE_S As String = String.Empty
@@ -356,7 +356,7 @@ Namespace Commands.DAR
                         Call DisplayFileGrid(databasename, dbengine, varContentID, filegrid)
                     End If
                 ElseIf dbengine = "MYSQL" Then
-                    ReDim V_DBR_MYSQL(3)
+                    ReDim varDatabaseRequestMysql(3)
 
                     'add text query-cut
                     If (find.XOSQLText <> String.Empty) Then
@@ -418,7 +418,7 @@ Namespace Commands.DAR
                         "then employeeactivity_description else convert(varchar(max),employeeactivity_description) + char(13) + char(10) + char(13) + char(10) " &
                     "+ '--- Feedback Note : ---' + char(13) + char(10) + convert(varchar(max),ea.employeeactivity_feedback) end as `employeeactivity_description`"
 
-                    V_DBR_MYSQL(2).Query = String.Format("select aa.areaaffected_name, {1}, {2}, case when (ea.employeeactivity_lastupdate is not null) and " &
+                    varDatabaseRequestMysql(2).Query = String.Format("select aa.areaaffected_name, {1}, {2}, case when (ea.employeeactivity_lastupdate is not null) and " &
                                                             "(ea.employeeactivity_employee <> ea.employeeactivity_lastupdate) then " &
                                                             "(convert(varchar(max), e.employee_nickname) + ' / ' + convert(varchar(max), " &
                                                             "(select em.employee_nickname from man_employee em where " &
@@ -428,13 +428,13 @@ Namespace Commands.DAR
                                                             "inner join man_employee e on ea.employeeactivity_employee = e.employee_id {0} order by " &
                                                             "aa.areaaffected_order, ea.employeeactivity_time", varWhere, varTimeFormat(2), varDescription)
 
-                    V_DBR_MYSQL(2).DataGrid = contentgrid
-                    V_DBR_MYSQL(2).StatusBar = contentstatusbar
-                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(2), "TDailyActivity")
+                    varDatabaseRequestMysql(2).DataGrid = contentgrid
+                    varDatabaseRequestMysql(2).StatusBar = contentstatusbar
+                    varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(2), "TDailyActivity")
 
-                    If V_DBR_MYSQL(2).DataGrid Is Nothing Then
-                        V_DBR_MYSQL(2).DataGrid = contentgrid
-                        V_DBR_MYSQL(2).StatusBar = contentstatusbar
+                    If varDatabaseRequestMysql(2).DataGrid Is Nothing Then
+                        varDatabaseRequestMysql(2).DataGrid = contentgrid
+                        varDatabaseRequestMysql(2).StatusBar = contentstatusbar
                     End If
 
                     If (photogrid Is Nothing) AndAlso (filegrid Is Nothing) Then
@@ -442,10 +442,10 @@ Namespace Commands.DAR
                     End If
 
                     If (showattachment) Then
-                        If V_DBR_MYSQL(2).DataGrid.RowCount = 0 Then
+                        If varDatabaseRequestMysql(2).DataGrid.RowCount = 0 Then
                             varContentID = "-1"
                         Else
-                            varContentID = V_DBR_MYSQL(2).DataGrid.CurrentRow.Cells("employeeactivity_id").Value.ToString
+                            varContentID = varDatabaseRequestMysql(2).DataGrid.CurrentRow.Cells("employeeactivity_id").Value.ToString
                         End If
                         Call DisplayPhotoGrid(databasename, dbengine, varContentID, photogrid)
                         Call DisplayFileGrid(databasename, dbengine, varContentID, filegrid)
@@ -472,15 +472,15 @@ Namespace Commands.DAR
                 varDatabaseRequestMssql2008(4).DataGrid = filegrid
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(4), "TPhotoFile")
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(4).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, (convert(varchar(25),fi.file_content_size) + ' KB') " &
+                varDatabaseRequestMysql(4).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, (convert(varchar(25),fi.file_content_size) + ' KB') " &
                                                     "as [file_content_size], (convert(varchar(3),fi.file_score) + ' like(s)') as [file_score], " &
                                                     "fi.file_datetime, fi.file_uploader, (select em.employee_fullname from dbo.man_employee em where " &
                                                     "em.employee_id = fi.file_uploader) as [employee_fullname], (select em.employee_nickname " &
                                                     "from dbo.man_employee em where em.employee_id = fi.file_uploader) as [employee_nickname], " &
                                                     "'' as [file_view] from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' " &
                                                     "and fi.file_filetype = 'jpg') order by fi.file_score desc, fi.file_datetime;", V_CONTENTID)
-                V_DBR_MYSQL(4).DataGrid = filegrid
-                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(4), "TPhotoFile")
+                varDatabaseRequestMysql(4).DataGrid = filegrid
+                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(4), "TPhotoFile")
             End If
         End Sub
 
@@ -501,7 +501,7 @@ Namespace Commands.DAR
                 varDatabaseRequestMssql2008(5).DataGrid = filegrid
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(5), "TFile")
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(5).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, '' as [file_content], " &
+                varDatabaseRequestMysql(5).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, '' as [file_content], " &
                                                     "(convert(varchar(25),fi.file_content_size) + ' KB') as [file_content_size], " &
                                                     "(convert(varchar(3),fi.file_score) + ' like(s)') as [file_score], fi.file_datetime, " &
                                                     "fi.file_uploader, (select em.employee_fullname from dbo.man_employee em where " &
@@ -509,8 +509,8 @@ Namespace Commands.DAR
                                                     "from dbo.man_employee em where em.employee_id = fi.file_uploader) as [employee_nickname], " &
                                                     "'' as [file_view] from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'pdf') order by fi.file_datetime;", varContentID)
-                V_DBR_MYSQL(5).DataGrid = filegrid
-                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(5), "TFile")
+                varDatabaseRequestMysql(5).DataGrid = filegrid
+                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(5), "TFile")
             End If
         End Sub
 
@@ -523,9 +523,9 @@ Namespace Commands.DAR
 
                 varFile = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query)
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(1).Query = String.Format("select fi.file_content from db_universe_erp_file.dbo.sto_file fi where fi.file_id = '{0}'", rowid)
+                varDatabaseRequestMysql(1).Query = String.Format("select fi.file_content from db_universe_erp_file.dbo.sto_file fi where fi.file_id = '{0}'", rowid)
 
-                varFile = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query)
+                varFile = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query)
             End If
 
             Return varFile
@@ -540,9 +540,9 @@ Namespace Commands.DAR
                                                         "from db_universe_erp_file.dbo.sto_file where file_parent = '{0}';", rowid)
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dbengine = "MYSQL" Then
-                    V_DBR_MYSQL(1).Query = String.Format("delete from doc_employeeactivity where employeeactivity_id = '{0}';delete " &
+                    varDatabaseRequestMysql(1).Query = String.Format("delete from doc_employeeactivity where employeeactivity_id = '{0}';delete " &
                                                         "from sto_file where file_parent = '{0}';", rowid)
-                    varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
+                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
                 End If
 
                 varSuccess = True
@@ -561,9 +561,9 @@ Namespace Commands.DAR
                                                         "where ff.filefeedback_file = '{0}' and ff.filefeedback_employee = '{1}';", fileid, eid)
                     varResult = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
                 ElseIf dbengine = "MYSQL" Then
-                    V_DBR_MYSQL(1).Query = String.Format("select count(ff.filefeedback_id) as `islike` from sto_filefeedback ff " &
+                    varDatabaseRequestMysql(1).Query = String.Format("select count(ff.filefeedback_id) as `islike` from sto_filefeedback ff " &
                                                         "where ff.filefeedback_file = '{0}' and ff.filefeedback_employee = '{1}';", fileid, eid)
-                    varResult = CType(varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query), Integer)
+                    varResult = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), Integer)
                 End If
 
             Catch ex As Exception
@@ -594,7 +594,7 @@ Namespace Commands.DAR
                                                         "(ff.filefeedback_type = 'Like')) where (file_id = '{0}');", fileid, eid, fileowner)
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dbengine = "MYSQL" Then
-                    V_DBR_MYSQL(1).Query = String.Format("insert into db_universe_erp_file.dbo.sto_filefeedback(filefeedback_datetime, filefeedback_file, " &
+                    varDatabaseRequestMysql(1).Query = String.Format("insert into db_universe_erp_file.dbo.sto_filefeedback(filefeedback_datetime, filefeedback_file, " &
                                                         "filefeedback_employee, filefeedback_type, filefeedback_value, filefeedback_text) values(GETDATE(), " &
                                                         "'{0}', '{1}', 'Like', 1, 'N/A'); insert into dbo.[[sys]]notification](notification_datetime, " &
                                                         "notification_employee, notification_message, notification_isread) values(GETDATE(), '{2}', " &
@@ -603,7 +603,7 @@ Namespace Commands.DAR
                                                         "set file_score = (select count(ff.filefeedback_value) " &
                                                         "from db_universe_erp_file.dbo.sto_filefeedback ff where (ff.filefeedback_file = '{0}') and " &
                                                         "(ff.filefeedback_type = 'Like')) where (file_id = '{0}');", fileid, eid, fileowner)
-                    varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
+                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
                 End If
 
                 varSuccess = True
@@ -616,7 +616,7 @@ Namespace Commands.DAR
     End Class
 
     Public Class Editor
-        Private V_DS As DataSet
+        Private Shared varDataSet As DataSet
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetAffectedArea(databasename As String, dbengine As String, listofaffectedarea As CMCv.cbo)
@@ -625,9 +625,9 @@ Namespace Commands.DAR
                 varDatabaseRequestMssql2008(1).Dropdown = listofaffectedarea
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TAffectedArea")
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(1).Query = "select aa.areaaffected_id, aa.areaaffected_name from doc_areaaffected aa order by aa.areaaffected_order"
-                V_DBR_MYSQL(1).Dropdown = listofaffectedarea
-                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(1), "TAffectedArea")
+                varDatabaseRequestMysql(1).Query = "select aa.areaaffected_id, aa.areaaffected_name from doc_areaaffected aa order by aa.areaaffected_order"
+                varDatabaseRequestMysql(1).Dropdown = listofaffectedarea
+                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(1), "TAffectedArea")
             End If
 
             listofaffectedarea.DisplayMember = "areaaffected_name"
@@ -642,10 +642,10 @@ Namespace Commands.DAR
                 varDatabaseRequestMssql2008(1).Dropdown = listoftemplate
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TTemplate")
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(1).Query = "select tp.template_id, tp.template_title from doc_template tp inner join sys_module mo on " &
+                varDatabaseRequestMysql(1).Query = "select tp.template_id, tp.template_title from doc_template tp inner join sys_module mo on " &
                 "mo.module_id = tp.template_module where mo.module_code = 'DAR' order by tp.template_title"
-                V_DBR_MYSQL(1).Dropdown = listoftemplate
-                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(1), "TTemplate")
+                varDatabaseRequestMysql(1).Dropdown = listoftemplate
+                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(1), "TTemplate")
             End If
 
             listoftemplate.DisplayMember = "template_title"
@@ -660,8 +660,8 @@ Namespace Commands.DAR
                 varDatabaseRequestMssql2008(1).Query = String.Format("select tp.template_text1 from dbo.doc_template tp where tp.template_id = '{0}'", listoftemplate.SelectedValue)
                 varTemplateContent = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(1).Query = String.Format("select tp.template_text1 from doc_template tp where tp.template_id = '{0}'", listoftemplate.SelectedValue)
-                varTemplateContent = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                varDatabaseRequestMysql(1).Query = String.Format("select tp.template_text1 from doc_template tp where tp.template_id = '{0}'", listoftemplate.SelectedValue)
+                varTemplateContent = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
             End If
 
             Return varTemplateContent
@@ -722,13 +722,13 @@ Namespace Commands.DAR
                 varFeedback = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query)
                 feedBack.Text = IIf(IsDBNull(varFeedback), "", varFeedback).ToString
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_datetime from doc_employeeactivity ea " &
+                varDatabaseRequestMysql(1).Query = String.Format("select ea.employeeactivity_datetime from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varDatePart(0) = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                varDatePart(0) = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
 
-                V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_time from doc_employeeactivity ea " &
+                varDatabaseRequestMysql(1).Query = String.Format("select ea.employeeactivity_time from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query), TimeSpan)
+                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), TimeSpan)
 
                 varDatePart(2) = Convert.ToString(varTimeParts(0))
                 varTimePart = varDatePart(2).Split(":")
@@ -737,13 +737,13 @@ Namespace Commands.DAR
                 datepart.Value = CType(varDatePart(0), Date)
                 timepart.Text = varDatePart(1)
 
-                V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_datetime_end from doc_employeeactivity ea " &
+                varDatabaseRequestMysql(1).Query = String.Format("select ea.employeeactivity_datetime_end from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varDatePart(0) = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                varDatePart(0) = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
 
-                V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_time_end from doc_employeeactivity ea " &
+                varDatabaseRequestMysql(1).Query = String.Format("select ea.employeeactivity_time_end from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query), TimeSpan)
+                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), TimeSpan)
 
                 varDatePart(2) = Convert.ToString(varTimeParts(0))
                 varTimePart = varDatePart(2).Split(":")
@@ -752,30 +752,30 @@ Namespace Commands.DAR
                 datepartend.Value = CType(varDatePart(0), Date)
                 timepartend.Text = varDatePart(1)
 
-                V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_areaaffected from doc_employeeactivity ea " &
+                varDatabaseRequestMysql(1).Query = String.Format("select ea.employeeactivity_areaaffected from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                listofaffectedarea.SelectedValue = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query)
+                listofaffectedarea.SelectedValue = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query)
 
-                V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_template from doc_employeeactivity ea " &
+                varDatabaseRequestMysql(1).Query = String.Format("select ea.employeeactivity_template from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                listoftemplate.SelectedValue = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query)
+                listoftemplate.SelectedValue = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query)
 
-                V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_description from doc_employeeactivity ea " &
+                varDatabaseRequestMysql(1).Query = String.Format("select ea.employeeactivity_description from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                templatecontent.Text = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query).ToString
+                templatecontent.Text = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
 
                 Dim varFeedback As Object
-                V_DBR_MYSQL(1).Query = String.Format("select ea.employeeactivity_feedback from doc_employeeactivity ea " &
+                varDatabaseRequestMysql(1).Query = String.Format("select ea.employeeactivity_feedback from doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varFeedback = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(1).Query)
+                varFeedback = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query)
 
                 feedBack.Text = IIf(IsDBNull(varFeedback), "", varFeedback).ToString
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Function DisplayPhotoGrid(databasename As String, dbengine As String, rowid As String, filegrid As dgn) As DataSet
-            V_DS = New DataSet
+        Public Shared Function DisplayPhotoGrid(databasename As String, dbengine As String, rowid As String, filegrid As dgn) As DataSet
+            varDataSet = New DataSet
             'ReDim varDatabaseRequestMssql2008(3)
 
             If dbengine = "MSSQL" Then
@@ -783,21 +783,21 @@ Namespace Commands.DAR
                                                     "from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'jpg') order by fi.file_datetime;", rowid)
 
-                V_DS = varDatabaseEngineMssql2008.GetDataSet(databasename, varDatabaseRequestMssql2008(2), "TPhotoFileEditor")
+                varDataSet = varDatabaseEngineMssql2008.GetDataSet(databasename, varDatabaseRequestMssql2008(2), "TPhotoFileEditor")
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, fi.file_datetime, fi.file_uploader " &
+                varDatabaseRequestMysql(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, fi.file_datetime, fi.file_uploader " &
                                                     "from sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'jpg') order by fi.file_datetime;", rowid)
 
-                V_DS = varDatabaseEngineMysql.GetDataSet(databasename, V_DBR_MYSQL(2), "TPhotoFileEditor")
+                varDataSet = varDatabaseEngineMysql.GetDataSet(databasename, varDatabaseRequestMysql(2), "TPhotoFileEditor")
             End If
 
-            Return V_DS
+            Return varDataSet
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function DisplayFileGrid(databasename As String, dbengine As String, rowid As String, filegrid As dgn) As DataSet
-            V_DS = New DataSet
+        Public Shared Function DisplayFileGrid(databasename As String, dbengine As String, rowid As String, filegrid As dgn) As DataSet
+            varDataSet = New DataSet
             'ReDim varDatabaseRequestMssql2008(3)
 
             If dbengine = "MSSQL" Then
@@ -805,16 +805,16 @@ Namespace Commands.DAR
                                                     "from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'pdf') order by fi.file_datetime;", rowid)
 
-                V_DS = varDatabaseEngineMssql2008.GetDataSet(databasename, varDatabaseRequestMssql2008(2), "TFileEditor")
+                varDataSet = varDatabaseEngineMssql2008.GetDataSet(databasename, varDatabaseRequestMssql2008(2), "TFileEditor")
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, fi.file_content, fi.file_datetime, fi.file_uploader " &
+                varDatabaseRequestMysql(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, fi.file_content, fi.file_datetime, fi.file_uploader " &
                                                     "from sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'pdf') order by fi.file_datetime;", rowid)
 
-                V_DS = varDatabaseEngineMysql.GetDataSet(databasename, V_DBR_MYSQL(2), "TFileEditor")
+                varDataSet = varDatabaseEngineMysql.GetDataSet(databasename, varDatabaseRequestMysql(2), "TFileEditor")
             End If
 
-            Return V_DS
+            Return varDataSet
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -851,7 +851,7 @@ Namespace Commands.DAR
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dbengine = "MYSQL" Then
                     If (isnew) Then
-                        V_DBR_MYSQL(1).Query = String.Format("insert into doc_employeeactivity(employeeactivity_id, employeeactivity_areaaffected, " &
+                        varDatabaseRequestMysql(1).Query = String.Format("insert into doc_employeeactivity(employeeactivity_id, employeeactivity_areaaffected, " &
                                                             "employeeactivity_template, employeeactivity_datetime, employeeactivity_time, " &
                                                             "employeeactivity_datetime_end, employeeactivity_time_end, employeeactivity_description, " &
                                                             "employeeactivity_employee,employeeactivity_feedback,employeeactivity_createon) values " &
@@ -859,7 +859,7 @@ Namespace Commands.DAR
                                                             "from sys_user usr where usr.user_id = '{8}'),'{9}', " &
                                                             "(select curdate()));", rowid, areaaffected, activitytemplate, datepart, timepart, datepartend, timepartend, content, userid, feedback)
                     Else
-                        V_DBR_MYSQL(1).Query = String.Format("update doc_employeeactivity set employeeactivity_datetime = '{0}', " &
+                        varDatabaseRequestMysql(1).Query = String.Format("update doc_employeeactivity set employeeactivity_datetime = '{0}', " &
                                                             "employeeactivity_time = '{1}', employeeactivity_datetime_end = '{2}', " &
                                                             "employeeactivity_time_end = '{3}', employeeactivity_areaaffected = '{4}', " &
                                                             "employeeactivity_template = '{5}', employeeactivity_description = '{6}', " &
@@ -867,15 +867,15 @@ Namespace Commands.DAR
                                                             "where usr.user_id = '{7}'), employeeactivity_feedback = '{9}', " &
                                                             "employeeactivity_updateon = (select curdate()) where employeeactivity_id = '{8}';", datepart, timepart, datepartend, timepartend, areaaffected, activitytemplate, content, userid, rowid, feedback)
 
-                        V_DBR_MYSQL(1).Query += String.Format("update sto_file set file_parentdate = '{0}' " &
+                        varDatabaseRequestMysql(1).Query += String.Format("update sto_file set file_parentdate = '{0}' " &
                                                              "where file_parent = '{1}';", datepart, rowid)
                     End If
 
                     If extendedquery IsNot String.Empty Then
-                        V_DBR_MYSQL(1).Query += extendedquery
+                        varDatabaseRequestMysql(1).Query += extendedquery
                     End If
 
-                    varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
+                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
                 End If
 
                 varSuccess = True
@@ -1230,7 +1230,7 @@ Namespace Commands.DAR
                     "convert(varchar(max),employeeactivity_description) + char(13) + char(10) + char(13) + char(10) + '--- Feedback Note : ---' " &
                     "+ char(13) + char(10) + convert(varchar(max),ea.employeeactivity_feedback) end as [employeeactivity_description]"
 
-                    V_DBR_MYSQL(0).Query = String.Format("select aa.areaaffected_name, {1}, {2}, case when (ea.employeeactivity_lastupdate is not null) " &
+                    varDatabaseRequestMysql(0).Query = String.Format("select aa.areaaffected_name, {1}, {2}, case when (ea.employeeactivity_lastupdate is not null) " &
                                                         "and (ea.employeeactivity_employee <> ea.employeeactivity_lastupdate) then " &
                                                         "(convert(varchar(max),e.employee_nickname) + ' / ' + " &
                                                         "convert(varchar(max),(select em.employee_nickname from dbo.man_employee em " &
@@ -1241,7 +1241,7 @@ Namespace Commands.DAR
                                                         "inner join man_employee e on ea.employeeactivity_employee = e.employee_id {0} " &
                                                         "order by aa.areaaffected_order", varWhere, varTimeFormat(2), varDescription)
 
-                    datasetname = varDatabaseEngineMysql.FillDataSet(databasename, V_DBR_MYSQL(0).Query, datasetname, "employeeactivity")
+                    datasetname = varDatabaseEngineMysql.FillDataSet(databasename, varDatabaseRequestMysql(0).Query, datasetname, "employeeactivity")
                 End If
             Catch ex As Exception
                 datasetname = Nothing
