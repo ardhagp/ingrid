@@ -476,7 +476,7 @@ Partial Class FRMfirstguide
         ' 
         Dgn1.AllowUserToAddRows = False
         Dgn1.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(250), CByte(228), CByte(102))
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(233), CByte(203), CByte(138))
         Dgn1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Dgn1.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         Dgn1.BorderStyle = BorderStyle.None

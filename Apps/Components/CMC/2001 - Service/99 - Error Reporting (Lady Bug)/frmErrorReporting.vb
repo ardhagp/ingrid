@@ -1,19 +1,18 @@
 ﻿Imports System.Runtime.Versioning
-Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Public Class FRMerrorreporting
-    'Private Catcher As New Ladybug.Log.Fields
-    Private ResumeNext As Boolean
+        'Private Catcher As New Ladybug.Log.Fields
+        Private ResumeNext As Boolean
 
-    'Private ERL As New Database.Engine.LocalDB
-    Private ERL As New Database.Engine.SQLiteV3
+        'Private ERL As New Database.Engine.LocalDB
+        Private ERL As New Database.Engine.SQLiteV3
 
-    Public Sub New()
-        ' This call is required by the designer.
-        InitializeComponent()
+        Public Sub New()
+            ' This call is required by the designer.
+            InitializeComponent()
 
-        ' Add any initialization after the InitializeComponent() call.
-    End Sub
+            ' Add any initialization after the InitializeComponent() call.
+        End Sub
 
     <SupportedOSPlatform("windows")>
     Public Sub New(ByVal proLog As Ladybug.Log.Fields, Optional dbengine As Database.Engine.SQLiteV3 = Nothing)
@@ -45,11 +44,12 @@ Public Class FRMerrorreporting
 
     End Sub
 
-    Private Sub BtnClose_Click(sender As Object, e As EventArgs)
-        Close
-        Dispose
+    Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
+        Close()
+        Dispose()
+
         If Not ResumeNext Then
-            Process.GetCurrentProcess.Kill
+            Process.GetCurrentProcess.Kill()
         End If
     End Sub
 End Class

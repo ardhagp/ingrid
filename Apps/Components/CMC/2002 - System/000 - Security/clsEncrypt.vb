@@ -19,11 +19,11 @@ Namespace Security
 
         Public Shared Function MD5(Optional message As String = "") As String
             Dim varEMessage As String
-            Dim varGUID As String
+            Dim varGuid As String
 
             If message = String.Empty Then
-                varGUID = System.Guid.NewGuid.ToString
-                varEMessage = EncryptProvider.Md5(CStr(Now) & RandomString() & varGUID)
+                varGuid = System.Guid.NewGuid.ToString
+                varEMessage = EncryptProvider.Md5(CStr(Now) & RandomString() & varGuid)
             Else
                 varEMessage = EncryptProvider.Md5(message)
             End If

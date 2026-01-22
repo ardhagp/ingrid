@@ -105,29 +105,29 @@
 #End Region
 
 #Region "Component Events"
-    Private Sub BtnYes_Click(sender As Object, e As EventArgs)
+    Private Sub BtnYes_Click(sender As Object, e As EventArgs) Handles BtnYes.Click
         DialogResult = Windows.Forms.DialogResult.Yes
-        Close
+        Close()
     End Sub
 
-    Private Sub BtnNo_Click(sender As Object, e As EventArgs)
+    Private Sub BtnNo_Click(sender As Object, e As EventArgs) Handles BtnNo.Click
         DialogResult = Windows.Forms.DialogResult.No
-        Close
+        Close()
     End Sub
 
-    Private Sub BtnOk_Click(sender As Object, e As EventArgs)
+    Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
         DialogResult = Windows.Forms.DialogResult.OK
-        Close
+        Close()
     End Sub
 
-    Private Sub BtnCancel_Click(sender As Object, e As EventArgs)
+    Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
         DialogResult = Windows.Forms.DialogResult.Cancel
-        Close
+        Close()
     End Sub
 
-    Private Sub BtnOkOnly_Click(sender As Object, e As EventArgs)
+    Private Sub BtnOkOnly_Click(sender As Object, e As EventArgs) Handles BtnOkOnly.Click
         DialogResult = Windows.Forms.DialogResult.OK
-        Close
+        Close()
     End Sub
 
 #End Region

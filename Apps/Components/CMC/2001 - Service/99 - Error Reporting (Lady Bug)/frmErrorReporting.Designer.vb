@@ -21,6 +21,7 @@ Partial Class FRMerrorreporting
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMerrorreporting))
+        BtnClose = New Btn(components)
         Tbctl1 = New tbctl(components)
         tp_ApplicationFault = New Windows.Forms.TabPage()
         Lbl4 = New lbl(components)
@@ -45,9 +46,11 @@ Partial Class FRMerrorreporting
         ' PnlBottomButton
         ' 
         PnlBottomButton.Controls.Add(ChkErrorReporting)
+        PnlBottomButton.Controls.Add(BtnClose)
         PnlBottomButton.Location = New System.Drawing.Point(0, 768)
         PnlBottomButton.Margin = New System.Windows.Forms.Padding(7, 5, 7, 5)
         PnlBottomButton.Size = New System.Drawing.Size(1086, 97)
+        PnlBottomButton.Controls.SetChildIndex(BtnClose, 0)
         PnlBottomButton.Controls.SetChildIndex(ChkErrorReporting, 0)
         ' 
         ' SLFLogo
@@ -70,6 +73,29 @@ Partial Class FRMerrorreporting
         SLFPanel.Size = New System.Drawing.Size(1086, 865)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(Tbctl1, 0)
+        ' 
+        ' BtnClose
+        ' 
+        BtnClose.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Right
+        BtnClose.BackColor = Drawing.Color.Red
+        BtnClose.Cursor = Windows.Forms.Cursors.Hand
+        BtnClose.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(0), CByte(0))
+        BtnClose.FlatAppearance.BorderSize = 2
+        BtnClose.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
+        BtnClose.FlatStyle = Windows.Forms.FlatStyle.Flat
+        BtnClose.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+        BtnClose.ForeColor = Drawing.Color.White
+        BtnClose.Location = New System.Drawing.Point(635, 8)
+        BtnClose.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        BtnClose.Name = "BtnClose"
+        BtnClose.Size = New System.Drawing.Size(143, 67)
+        BtnClose.TabIndex = 0
+        BtnClose.Text = "Close"
+        BtnClose.UseVisualStyleBackColor = False
+        BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
+        BtnClose.XOTampilkanFocusBorder = False
+        BtnClose.XOValidasiSemuaInput = False
+        BtnClose.XOValidasiSemuaInputTag = Nothing
         ' 
         ' Tbctl1
         ' 
@@ -312,8 +338,9 @@ Partial Class FRMerrorreporting
         ' 
         ' FRMerrorreporting
         ' 
-        AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+        AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
         ClientSize = New System.Drawing.Size(1086, 1000)
+        ControlBox = False
         FormBorderStyle = Windows.Forms.FormBorderStyle.FixedSingle
         KeyPreview = True
         Margin = New System.Windows.Forms.Padding(10, 5, 10, 5)

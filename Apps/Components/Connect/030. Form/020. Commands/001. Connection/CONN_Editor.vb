@@ -3,11 +3,18 @@ Imports System.Net.Http
 Imports System.Runtime.Versioning
 
 Public Class FRMconnEditor
+    'Public Sub New()
+
+    '    ' This call is required by the designer.
+    '    InitializeComponent()
+
+    '    ' Add any initialization after the InitializeComponent() call.
+
+    'End Sub
 
 #Region "Declarations"
     Public Event RecordSaved()
-    Private WithEvents ComponentMainframeMenu As New CMCv.UI.View.MenuStrip
-    Private varSQL As New Commands.CONN.Editor
+    Private WithEvents Com_mainframe_Menu As New CMCv.UI.View.MenuStrip
     Private varIsPasswordChange As Boolean
     Private varOldPassword As String
     Private varConnectionName As String
@@ -18,7 +25,7 @@ Public Class FRMconnEditor
     <SupportedOSPlatform("windows")>
     Private Sub LoadData()
         Try
-            Commands.CONN.Editor.GetRowValue(varProperties)
+            CMDconn.Editor.GetRowValue(varProperties)
 
             With varProperties
                 If (.IsMasked) Then
@@ -68,7 +75,7 @@ Public Class FRMconnEditor
         If TxtAddress.Text = String.Empty Then
             varValidScore += 1
         End If
-        If TxtPort.Text = CStr(0) Then
+        If TxtPort.Text = String.Empty Then
             varValidScore += 1
         End If
         If TxtUsername.Text = String.Empty Then
@@ -124,7 +131,7 @@ Public Class FRMconnEditor
             .RowID = Convert.ToString(varProperties.RowID)
         End With
 
-        If (Commands.CONN.Editor.PushData(varProperties)) Then
+        If (CMDconn.Editor.PushData(varProperties)) Then
             SLFStatus.Text = "Success"
             RaiseEvent RecordSaved()
         Else
@@ -179,8 +186,8 @@ Public Class FRMconnEditor
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub FRMconnEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ComponentMainframeMenu.LoadIn(Me, True)
-        ComponentMainframeMenu.ShowMenuFile(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+        Com_mainframe_Menu.LoadIn(Me, True)
+        Com_mainframe_Menu.ShowMenuFile(CMCv.UI.View.MenuStrip.ShowItem.Yes)
         varIsPasswordChange = False
 
         If (varProperties.IsNew) Then
@@ -195,13 +202,13 @@ Public Class FRMconnEditor
 #End Region
 
 #Region "Control Events"
-    Private Sub BtnCancel_Click(sender As Object, e As EventArgs)
-        Close
+    Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
+        Close()
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub BtnSave_Click(sender As Object, e As EventArgs)
-        Save
+    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+        Save()
     End Sub
 
     Private Sub TxtPassword_LostFocus(sender As Object, e As EventArgs) Handles TxtPassword.LostFocus
@@ -209,16 +216,16 @@ Public Class FRMconnEditor
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub ComponentMainframeMenu_EventFileSave() Handles ComponentMainframeMenu.EventFileSave
+    Private Sub ComponentMainframeMenu_EventFileSave() Handles Com_mainframe_Menu.EventFileSave
         Call Save()
     End Sub
 
-    Private Sub ComponentMainframeMenu_EventFileCancel() Handles ComponentMainframeMenu.EventFileCancel
+    Private Sub ComponentMainframeMenu_EventFileCancel() Handles Com_mainframe_Menu.EventFileCancel
         Me.Close()
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub ComponentMainframeMenu_EventFileUndoAll() Handles ComponentMainframeMenu.EventFileUndoAll
+    Private Sub ComponentMainframeMenu_EventFileUndoAll() Handles Com_mainframe_Menu.EventFileUndoAll
         If Decision("Do you want to undo all changes?", "Question", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
             If (varProperties.IsNew) Then
                 TxtConnectionName.Clear()
@@ -234,7 +241,7 @@ Public Class FRMconnEditor
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub btnGet_Click(sender As Object, e As EventArgs)
+    Private Sub btnGet_Click(sender As Object, e As EventArgs) Handles btnGet.Click
         Dim varDownloadCenter = String.Empty
 
         If txtImportCode.Text = String.Empty Then
@@ -249,8 +256,8 @@ Public Class FRMconnEditor
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub btnExport_Click(sender As Object, e As EventArgs)
-        If Not CheckAllInput Then
+    Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+        If Not CheckAllInput() Then
             Return
         End If
 
@@ -262,11 +269,10 @@ Public Class FRMconnEditor
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub btnSaveAs_Click(sender As Object, e As EventArgs)
+    Private Sub btnSaveAs_Click(sender As Object, e As EventArgs) Handles btnSaveAs.Click
         Dim varDialog As New FolderBrowserDialog With {
         .Description = "Select a folder to save the connection config"
         }
-
 
         If varConnectionName = String.Empty Then
             MessageBox.Show("Please export the connection first to generate the connection code.")
@@ -298,7 +304,7 @@ Public Class FRMconnEditor
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub btnImport_Click(sender As Object, e As EventArgs)
+    Private Sub btnImport_Click(sender As Object, e As EventArgs) Handles btnImport.Click
         If txtImportContent.Text = String.Empty Then
             MessageBox.Show("Please enter the connection content to import.")
             Return
@@ -323,7 +329,7 @@ Public Class FRMconnEditor
         TxtDatabaseName.Text = Security.Decrypt.AES(varConnproperties(6))
         ChkDefault.Checked = Convert.ToBoolean(varConnproperties(7))
         ChkIsMasked.Checked = Convert.ToBoolean(varConnproperties(8))
-        ChangeIsMaskedState
+        ChangeIsMaskedState()
         MessageBox.Show("Connection imported successfully.")
     End Sub
 

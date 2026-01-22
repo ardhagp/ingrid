@@ -11,7 +11,7 @@ Namespace Database.Engine
         Private ReadOnly varCommand(2) As OleDb.OleDbCommand
         Private ReadOnly varDatareader(2) As OleDb.OleDbDataReader
 
-        Private ReadOnly varMsa2003Connection As New Connect.Msaccess2003connection
+        'Private ReadOnly varMsa2003Connection As New Connect.Msaccess2003connection
 
         <SupportedOSPlatform("windows")>
         Public Shared Function CheckDBCatalog() As Boolean

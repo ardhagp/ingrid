@@ -44,7 +44,7 @@ Public Class FRMapplauncher
         tmrCountdown.Enabled = True
     End Sub
 
-    Private Sub BtnLaunch_Click(sender As Object, e As EventArgs)
+    Private Sub BtnLaunch_Click(sender As Object, e As EventArgs) Handles BtnLaunch.Click
         OpenApp(CboApplication.SelectedIndex)
     End Sub
 
@@ -94,7 +94,7 @@ Public Class FRMapplauncher
         Me.Hide()
     End Sub
 
-    Private Sub BtnClose_Click(sender As Object, e As EventArgs)
+    Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
         Close()
     End Sub
 

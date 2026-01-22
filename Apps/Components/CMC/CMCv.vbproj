@@ -300,6 +300,7 @@
     <EmbeddedResource Include="2001 - Service\01 - Database\01 - Connection\Manual+Source\MSSQL2008 Manual.pdf" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\" />
     <Folder Include="2001 - Service\02 - SOAP\" />
     <Folder Include="2001 - Service\03 - Web\" />
     <Folder Include="2001 - Service\04 - Map\Bing\" />
@@ -541,6 +542,7 @@
     <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\clsMSAcess2003.vb" />
     <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\MergeableMenuStrip.Designer.vb" />
     <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\MergeableMenuStrip.vb" />
     <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\MergeableStatusStrip.Designer.vb" />

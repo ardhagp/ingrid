@@ -2,15 +2,14 @@
 Imports System.Runtime.Versioning
 Imports System.Text
 
-<SupportedOSPlatform("windows")>
 Public Class FRMconn
     Public Event ConnectFrameOpen()
     Public Event ConnectFrameClose()
 
-    Private WithEvents Com_mainframe_menu As New UI.View.MenuStrip
-    Private WithEvents Frm_conn_Editor As New FRMconnEditor
+    Private WithEvents Com_mms_Menu As UI.View.MenuStrip
+    Private WithEvents Frm_conn_Editor As FRMconnEditor
 
-    Private varSQL As New Commands.CONN.View
+    'Private varSQL As New Commands.CONN.View
     Private varIsProduction As Boolean = True
     Private varIsExtension As Boolean = False
 
@@ -41,7 +40,7 @@ Public Class FRMconn
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional forcerefresh As Boolean = False)
         DblBuffer(DgnConnection) ''' Enable double buffering to reduce flickering
-        Commands.CONN.View.DisplayData(DgnConnection, SLFStatus, TxtFind, forcerefresh)
+        CMDconn.View.DisplayData(DgnConnection, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     ''' <summary>
@@ -72,9 +71,11 @@ Public Class FRMconn
         Call GetData(True) ''' Load data into the grid
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub LoadMenu()
-        Com_mainframe_menu.LoadIn(Me, True) ''' Load menu into the form
-        Com_mainframe_menu.ShowMenuData(UI.View.MenuStrip.ShowItem.Yes) ''' Show data-related menu items
+        Com_mms_Menu = New UI.View.MenuStrip()
+        Com_mms_Menu.LoadIn(Me, True) ''' Load menu into the form
+        Com_mms_Menu.ShowMenuData(UI.View.MenuStrip.ShowItem.Yes) ''' Show data-related menu items
     End Sub
 
     <SupportedOSPlatform("windows")>
@@ -89,7 +90,7 @@ Public Class FRMconn
         RaiseEvent ConnectFrameClose()
     End Sub
 
-    Private Sub BtnClear_Click(sender As Object, e As EventArgs)
+    Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         ClearFind()
     End Sub
 
@@ -97,19 +98,23 @@ Public Class FRMconn
     ''' Add new data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataAddNew() Handles Com_mainframe_menu.EventDataAddNew
+    Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
+        'Try
         varProperties.IsNew = True
-        varProperties.RowID = "-1"
-        Frm_conn_Editor = New FRMconnEditor
-        Display(Frm_conn_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new connection", True)
-        SLFStatus.Text = String.Empty
+            varProperties.RowID = "-1"
+            Frm_conn_Editor = New FRMconnEditor()
+            Display(Frm_conn_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new connection", True)
+            SLFStatus.Text = String.Empty
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
     End Sub
 
     ''' <summary>
     ''' Edit existing data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Public Sub EventDataEdit() Handles Com_mainframe_menu.EventDataEdit
+    Public Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
         Call GetRowID()
         varProperties.IsNew = False
 
@@ -127,7 +132,7 @@ Public Class FRMconn
     ''' Delete selected data
     ''' </summary>
     <SupportedOSPlatform("windows")>
-    Private Sub EventDataDelete() Handles Com_mainframe_menu.EventDataDelete
+    Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
         Call GetRowID()
         If varProperties.RowID Is "-1" Then
             Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
@@ -150,7 +155,7 @@ Public Class FRMconn
                 varMessage.AppendLine(varLine)
 
                 If Decision(Convert.ToString(varMessage), "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    If (Commands.CONN.View.DeleteData(Convert.ToString(varProperties.RowID))) Then
+                    If (CMDconn.View.DeleteData(Convert.ToString(varProperties.RowID))) Then
                         Call GetData(True)
                         SLFStatus.Text = "Success"
                     Else
@@ -161,10 +166,12 @@ Public Class FRMconn
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub FindToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Call GetData(False) ''' Load data with filter applied
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call GetData(False) ''' Load data with filter applied
@@ -174,14 +181,15 @@ Public Class FRMconn
     ''' <summary>
     ''' Search mode
     ''' </summary>
-    Private Sub EventToolsFind() Handles Com_mainframe_menu.EventToolsFind
+    Private Sub EventToolsFind() Handles Com_mms_Menu.EventToolsFind
         TxtFind.Focus()
     End Sub
 
     ''' <summary>
     ''' Load data with filter applied
     ''' </summary>
-    Private Sub EventDataRefresh() Handles Com_mainframe_menu.EventDataRefresh
+    <SupportedOSPlatform("windows")>
+    Private Sub EventDataRefresh() Handles Com_mms_Menu.EventDataRefresh
         TxtFind.Clear()
         Call GetData(True)
     End Sub
@@ -189,25 +197,28 @@ Public Class FRMconn
     ''' <summary>
     ''' Close form
     ''' </summary>
-    Private Sub EventDataClose() Handles Com_mainframe_menu.EventDataClose
+    Private Sub EventDataClose() Handles Com_mms_Menu.EventDataClose
         Me.Close()
     End Sub
 
     ''' <summary>
     ''' Clear search filter
     ''' </summary>
+    <SupportedOSPlatform("windows")>
     Private Sub ClearFind()
         TxtFind.Clear()
         TxtFind.ClearSearch()
         Call GetData(True)
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub FRMconnEditor_RecordSaved() Handles Frm_conn_Editor.RecordSaved
         TxtFind.Clear()
         Call GetData(True)
     End Sub
 
-    Private Sub BtnClose_Click(sender As Object, e As EventArgs)
-        Close()
+    <SupportedOSPlatform("windows")>
+    Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
+        Me.Close()
     End Sub
 End Class

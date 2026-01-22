@@ -1,7 +1,5 @@
 ﻿Imports System.Runtime.Versioning
 Imports System.Windows.Forms
-Imports Syncfusion.Windows.Forms.Tools
-Imports Syncfusion.Windows.Forms.Tools.XPMenus
 
 Namespace UI.View
     <SupportedOSPlatform("windows")>
@@ -10,19 +8,19 @@ Namespace UI.View
         Private varItemMenu As ToolStripMenuItem()
         Private varItemSubMenu As ToolStripMenuItem()
 
-        Public Event EventDataAddNew()
-        Public Event EventDataEdit()
-        Public Event EventDataDelete()
-        Public Event EventDataRefresh()
-        Public Event EventDataClose()
-        Public Event EventToolsImport()
-        Public Event EventToolsExport()
-        Public Event EventToolsFind()
-        Public Event EventToolsViewAttachment()
-        Public Event EventFileSave()
-        Public Event EventFileUndoAll()
-        Public Event EventFileCancel()
-        Public Event EventReportShow()
+        Public Shared Event EventDataAddNew()
+        Public Shared Event EventDataEdit()
+        Public Shared Event EventDataDelete()
+        Public Shared Event EventDataRefresh()
+        Public Shared Event EventDataClose()
+        Public Shared Event EventToolsImport()
+        Public Shared Event EventToolsExport()
+        Public Shared Event EventToolsFind()
+        Public Shared Event EventToolsViewAttachment()
+        Public Shared Event EventFileSave()
+        Public Shared Event EventFileUndoAll()
+        Public Shared Event EventFileCancel()
+        Public Shared Event EventReportShow()
 
         Private EventToolsViewAttachmentVisible As Boolean
         Private _EventToolsViewAttachmentChecked As Boolean
