@@ -1,7 +1,7 @@
 ﻿Imports System
 Imports System.Runtime.Versioning
 
-Namespace Commands.SYSS
+Namespace CMDsyss
     Public Class View
         <SupportedOSPlatform("windows")>
         Public Shared Function GetSettingValue(databasename As String, dbengine As String, dbcolumn As String) As Object

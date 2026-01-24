@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.EPLS.Addins.Browse
+Namespace CMDepls.Addins.Browse
     Public Class Position
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(databasename As String, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)

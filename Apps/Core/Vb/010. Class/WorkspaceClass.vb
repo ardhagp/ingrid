@@ -18,8 +18,8 @@ Public Class WorkspaceClass
     'Management
     Private WithEvents Frm_ccin As New FRMccin
     Private WithEvents Frm_cdin As New FRMcdin
-    Private WithEvents Frm_post As New POST
-    Private WithEvents Frm_epls As New EPLS
+    Private WithEvents Frm_post As New FRMpost
+    Private WithEvents Frm_epls As New FRMepls
 
     'Logistic
     Private WithEvents Frm_plnt As New FRMplnt
@@ -38,17 +38,17 @@ Public Class WorkspaceClass
 
     'System
     Private WithEvents Frm_uac As New FRMuac
-    Private WithEvents Frm_mods As New MODS
-    Private WithEvents Frm_mogs As New MOGS
-    Private WithEvents Frm_syss As New SYSS
+    Private WithEvents Frm_mods As New FRMmods
+    Private WithEvents Frm_mogs As New FRMmogs
+    Private WithEvents Frm_syss As New FRMsyss
 
     'Tools
-    Private WithEvents Frm_say As New SAY
+    Private WithEvents Frm_say As New FRMsay
     Private WithEvents Frm_phtrz As New CMCv.PHTRZ
 
     'Others
     Private WithEvents Frm_dummy As New FRMdummy
-    Private WithEvents Frm_reset As New RESET
+    Private WithEvents Frm_reset As New FRMreset
 #End Region
 
     <SupportedOSPlatform("windows")>
@@ -133,14 +133,14 @@ Public Class WorkspaceClass
                     End If
                 Case "EPLS"
                     If (Not (Frm_epls.IsHandleCreated)) OrElse (IsNothing(Frm_epls)) Then
-                        Frm_epls = New EPLS
+                        Frm_epls = New FRMepls
                         Display(Frm_epls, IMAGEDB.Main.ImageLibrary.EPLS_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_epls.Focus()
                     End If
                 Case "POST"
                     If (Not (Frm_post.IsHandleCreated)) OrElse (IsNothing(Frm_post)) Then
-                        Frm_post = New POST
+                        Frm_post = New FRMpost
                         Display(Frm_post, IMAGEDB.Main.ImageLibrary.POST_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_post.Focus()
@@ -192,7 +192,7 @@ Public Class WorkspaceClass
                     End If
                 Case "SAY"
                     If (Not (Frm_say.IsHandleCreated)) OrElse (IsNothing(Frm_say)) Then
-                        Frm_say = New SAY
+                        Frm_say = New FRMsay
                         Display(Frm_say, IMAGEDB.Main.ImageLibrary.PLANT_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False,)
                     Else
                         Frm_ccin.Focus()
@@ -202,14 +202,14 @@ Public Class WorkspaceClass
                     'SYSTEM
                 Case "MODS"
                     If (Not (Frm_mods.IsHandleCreated)) OrElse (IsNothing(Frm_mods)) Then
-                        Frm_mods = New MODS
+                        Frm_mods = New FRMmods
                         Display(Frm_mods, IMAGEDB.Main.ImageLibrary.MODS_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_mods.Focus()
                     End If
                 Case "MOGS"
                     If (Not (Frm_mogs.IsHandleCreated)) OrElse (IsNothing(Frm_mogs)) Then
-                        Frm_mogs = New MOGS
+                        Frm_mogs = New FRMmogs
                         Display(Frm_mogs, IMAGEDB.Main.ImageLibrary.MODS_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_mogs.Focus()
@@ -223,7 +223,7 @@ Public Class WorkspaceClass
                     End If
                 Case "SYSS"
                     If (Not (Frm_syss.IsHandleCreated)) OrElse (IsNothing(Frm_syss)) Then
-                        Frm_syss = New SYSS
+                        Frm_syss = New FRMsyss
                         Display(Frm_syss, IMAGEDB.Main.ImageLibrary.UAC_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_syss.Focus()
@@ -248,7 +248,7 @@ Public Class WorkspaceClass
 
                 Case "RESET"
                     If (Not (Frm_reset.IsHandleCreated)) OrElse (IsNothing(Frm_reset)) Then
-                        Frm_reset = New RESET
+                        Frm_reset = New FRMreset
                         Display(Frm_reset, IMAGEDB.Main.ImageLibrary.RESET_ICON, "[RESET] Reset Your Application Settings", "Restore your application to initial configuration", True,)
                     Else
                         Frm_reset.Focus()
@@ -276,7 +276,7 @@ Public Class WorkspaceClass
         End Try
     End Sub
 
-    Private Shared Sub V_MODS_DATACHANGED() Handles Frm_mods.DATACHANGED
+    Private Shared Sub FRMmods_EventDataChanged() Handles Frm_mods.EventDataChanged
         varForceRefreshMainframeData = True
     End Sub
 End Class

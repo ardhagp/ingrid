@@ -365,7 +365,7 @@ Public Class FRMmainframe6
             Call CommandAutoComplete() 'TODO: Raised Error
 
             If Not (LibSQL.Commands.DBIC.Applications.IsCompanyExist(varDatabaseName, varDatabaseEngine) OrElse Not LibSQL.Commands.DBIC.Applications.IsDepartmentExist(varDatabaseName, varDatabaseEngine)) Then
-                Display(frmFistGuide,, "First Guide", "", True, Me)
+                Display(FRMfirstguide,, "First Guide", "", True, Me)
             End If
         Catch ex As Exception
             With proLog

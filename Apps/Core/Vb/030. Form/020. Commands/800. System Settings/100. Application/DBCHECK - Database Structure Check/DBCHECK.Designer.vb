@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class DBCHECK
+Partial Class FRMdbcheck
     Inherits CMCv.Std_Fi
 
     'Form overrides dispose to clean up the component list.
@@ -31,7 +31,8 @@ Partial Class DBCHECK
         ' 
         ' PnlFind
         ' 
-        PnlFind.Size = New Size(800, 53)
+        PnlFind.Margin = New Padding(7, 10, 7, 10)
+        PnlFind.Size = New Size(1143, 88)
         ' 
         ' BtnClear
         ' 
@@ -46,23 +47,27 @@ Partial Class DBCHECK
         ' 
         ' TxtFind
         ' 
+        TxtFind.Margin = New Padding(7, 10, 7, 10)
         TxtFind.Visible = False
         ' 
         ' pnl_
         ' 
-        pnl_.Size = New Size(800, 61)
+        pnl_.Margin = New Padding(7, 10, 7, 10)
+        pnl_.Size = New Size(1143, 104)
         ' 
         ' SLFPanel
         ' 
-        SLFPanel.Size = New Size(800, 367)
+        SLFPanel.Margin = New Padding(7, 10, 7, 10)
+        SLFPanel.Size = New Size(1143, 624)
         ' 
-        ' DBCHECK
+        ' FRMdbcheck
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(1143, 750)
         KeyPreview = True
-        Name = "DBCHECK"
+        Margin = New Padding(19, 38, 19, 38)
+        Name = "FRMdbcheck"
         Text = "DBCHECK"
         PnlFind.ResumeLayout(False)
         PnlFind.PerformLayout()

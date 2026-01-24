@@ -1,9 +1,6 @@
-﻿Imports System
-Imports System.Runtime.Versioning
-Imports CMCv
-Imports FxResources
+﻿Imports System.Runtime.Versioning
 
-Namespace Commands.RESET
+Namespace CMDreset
 
     Public Class Editor
         <SupportedOSPlatform("windows")>

@@ -5,7 +5,7 @@ Public Class FRMuacEditor
 
 #Region "Variables"
     Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
-    Private WithEvents Frm_employee_Addin As New UAC_Employee
+    Private WithEvents Frm_employee_Addin As New FRMuacEmployee
 
     Public Event EventRecordSaved()
 
@@ -31,14 +31,14 @@ Public Class FRMuacEditor
     End Sub
 #End Region
 
-    Private Sub FRMemployeeAddin_RecordSelected() Handles Frm_employee_Addin.RecordSelected
+    Private Sub FRMemployeeAddin_RecordSelected() Handles Frm_employee_Addin.EventRecordSelected
         TxtEmployeeNumber.Text = IIf(IsDBNull(varFormProperties.Field02), "", varFormProperties.Field02).ToString
         TxtEmployeeFullName.Text = varFormProperties.Field03.ToString
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnBrowseEmployee_Click(sender As Object, e As EventArgs) Handles BtnBrowseEmployee.Click
-        Frm_employee_Addin = New UAC_Employee
+        Frm_employee_Addin = New FRMuacEmployee
         Display(Frm_employee_Addin, IMAGEDB.Main.ImageLibrary.SEARCH_ICON, "Find Employee", "Browse for employee data", True)
     End Sub
 

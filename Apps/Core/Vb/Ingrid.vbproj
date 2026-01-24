@@ -221,17 +221,17 @@
     <Compile Update="030. Form\020. Commands\004. Management\02. Master\CDIN - Departements\FRMcdinEditor.Designer.vb">
       <DependentUpon>FRMcdinEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\Addins\EPLS_Position.Designer.vb">
-      <DependentUpon>EPLS_Position.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\Addins\FRMeplsPosition.Designer.vb">
+      <DependentUpon>FRMeplsPosition.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\EPLS_Editor.Designer.vb">
-      <DependentUpon>EPLS_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\FRMeplsEditor.Designer.vb">
+      <DependentUpon>FRMeplsEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\004. Management\02. Master\POST - Positions\POST.Designer.vb">
-      <DependentUpon>POST.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\004. Management\02. Master\POST - Positions\FRMpost.Designer.vb">
+      <DependentUpon>FRMpost.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\004. Management\02. Master\POST - Positions\POST_Editor.Designer.vb">
-      <DependentUpon>POST_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\004. Management\02. Master\POST - Positions\FRMpostEditor.Designer.vb">
+      <DependentUpon>FRMpostEditor.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Addins\DAR_SinglePDFViewer.Designer.vb">
       <DependentUpon>DAR_SinglePDFViewer.vb</DependentUpon>
@@ -245,8 +245,8 @@
     <Compile Update="030. Form\020. Commands\004. Management\02. Master\CDIN - Departements\FRMcdin.Designer.vb">
       <DependentUpon>FRMcdin.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\EPLS.Designer.vb">
-      <DependentUpon>EPLS.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\FRMepls.Designer.vb">
+      <DependentUpon>FRMepls.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MCTG - Material Catalog\FRMmctg.Designer.vb">
       <DependentUpon>FRMmctg.vb</DependentUpon>
@@ -304,23 +304,23 @@
     <Compile Update="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS_Editor_Switch.Designer.vb">
       <DependentUpon>REMS_Editor_Switch.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\MODS - Application Modules\MODS.Designer.vb">
-      <DependentUpon>MODS.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\MODS - Application Modules\FRMmods.Designer.vb">
+      <DependentUpon>FRMmods.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\MODS - Application Modules\MODS_Editor.Designer.vb">
-      <DependentUpon>MODS_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\MODS - Application Modules\FRMmodsEditor.Designer.vb">
+      <DependentUpon>FRMmodsEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\MOGS - Modules Group\MOGS.Designer.vb">
-      <DependentUpon>MOGS.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\MOGS - Modules Group\FRMmogs.Designer.vb">
+      <DependentUpon>FRMmogs.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\SYSS - System Settings\SYSS.Designer.vb">
-      <DependentUpon>SYSS.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\SYSS - System Settings\FRMsyss.Designer.vb">
+      <DependentUpon>FRMsyss.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\TXL - Templete List\TXL.Designer.vb">
-      <DependentUpon>TXL.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\TXL - Templete List\FRMtxl.Designer.vb">
+      <DependentUpon>FRMtxl.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\TXL - Templete List\TXL_Editor.Designer.vb">
-      <DependentUpon>TXL_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\TXL - Templete List\FRMtxlEditor.Designer.vb">
+      <DependentUpon>FRMtxlEditor.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\995. Etc\Dummy\FRMdummy.Designer.vb">
       <DependentUpon>FRMdummy.vb</DependentUpon>
@@ -328,8 +328,8 @@
     <Compile Update="030. Form\020. Commands\995. Etc\Dummy\FRMdummyEditor.Designer.vb">
       <DependentUpon>FRMdummyEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\Addins\UAC_Employee.Designer.vb">
-      <DependentUpon>UAC_Employee.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\Addins\FRMuacEmployee.Designer.vb">
+      <DependentUpon>FRMuacEmployee.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\FRMuac.Designer.vb">
       <DependentUpon>FRMuac.vb</DependentUpon>
@@ -341,7 +341,7 @@
       <DependentUpon>FRMdummyMainframe.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\030. Tools\010. Import Data\frmImports.Designer.vb">
-      <DependentUpon>frmImports.vb</DependentUpon>
+      <DependentUpon>FRMimports.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\PLNT - Plant List\FRMplnt.Designer.vb">
       <DependentUpon>FRMplnt.vb</DependentUpon>
@@ -349,14 +349,14 @@
     <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\SLOC - Storage Location\FRMsloc.Designer.vb">
       <DependentUpon>FRMsloc.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\005. Procurement\02. Master\VDLS - Vendor List\VDLS.Designer.vb">
-      <DependentUpon>VDLS.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\005. Procurement\02. Master\VDLS - Vendor List\FRMvdls.Designer.vb">
+      <DependentUpon>FRMvdls.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\030. Tools\100. Communications\001. SAY - Chat Room\SAY.Designer.vb">
-      <DependentUpon>SAY.vb</DependentUpon>
+    <Compile Update="030. Form\030. Tools\100. Communications\001. SAY - Chat Room\FRMsay.Designer.vb">
+      <DependentUpon>FRMsay.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\030. Tools\999. First Guide\frmFistGuide.Designer.vb">
-      <DependentUpon>frmFistGuide.vb</DependentUpon>
+    <Compile Update="030. Form\030. Tools\999. First Guide\FRMfirstguide.Designer.vb">
+      <DependentUpon>FRMfirstguide.vb</DependentUpon>
     </Compile>
     <Compile Update="902. Settings\General.Designer.vb">
       <AutoGen>True</AutoGen>

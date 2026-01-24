@@ -1,3 +1,3 @@
-﻿Public Class DBCHECK
+﻿Public Class FRMdbcheck
 
 End Class

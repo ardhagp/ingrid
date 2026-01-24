@@ -1,0 +1,520 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class FRMmodsEditor
+    Inherits CMCv.Std_Fo
+
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()>
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing AndAlso components IsNot Nothing Then
+            components.Dispose()
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()>
+    Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        BtnSave = New btn(components)
+        BtnCancel = New btn(components)
+        ChkAddNew = New chk(components)
+        Tbctl1 = New tbctl(components)
+        tpGeneral = New TabPage()
+        ULbl5 = New ULbl()
+        ULbl4 = New ULbl()
+        ULbl3 = New ULbl()
+        ULbl2 = New ULbl()
+        ULbl1 = New ULbl()
+        ChkSystem = New chk(components)
+        TxtCode = New txt(components)
+        ChkLocked = New chk(components)
+        CboGroup = New cbo(components)
+        TxtDescription = New txt(components)
+        TxtName = New txt(components)
+        TxtID = New txt(components)
+        tpPermissions = New TabPage()
+        GbxAccessBy = New gbx(components)
+        DgnUserRoles = New dgn(components)
+        PnlBottomButton.SuspendLayout()
+        CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
+        pnl_.SuspendLayout()
+        SLFPanel.SuspendLayout()
+        CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+        Tbctl1.SuspendLayout()
+        tpGeneral.SuspendLayout()
+        tpPermissions.SuspendLayout()
+        GbxAccessBy.SuspendLayout()
+        CType(DgnUserRoles, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' PnlBottomButton
+        ' 
+        PnlBottomButton.Controls.Add(ChkAddNew)
+        PnlBottomButton.Controls.Add(BtnCancel)
+        PnlBottomButton.Controls.Add(BtnSave)
+        PnlBottomButton.Location = New Point(0, 585)
+        PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
+        PnlBottomButton.Size = New Size(947, 97)
+        PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
+        PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
+        PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
+        ' 
+        ' pnl_
+        ' 
+        pnl_.Margin = New Padding(7, 5, 7, 5)
+        pnl_.Size = New Size(947, 104)
+        ' 
+        ' SLFPanel
+        ' 
+        SLFPanel.Controls.Add(Tbctl1)
+        SLFPanel.Margin = New Padding(7, 5, 7, 5)
+        SLFPanel.Size = New Size(947, 682)
+        SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+        SLFPanel.Controls.SetChildIndex(Tbctl1, 0)
+        ' 
+        ' BtnSave
+        ' 
+        BtnSave.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        BtnSave.BackColor = Color.LimeGreen
+        BtnSave.Cursor = Cursors.Hand
+        BtnSave.FlatAppearance.BorderColor = Color.FromArgb(CByte(50), CByte(145), CByte(50))
+        BtnSave.FlatAppearance.BorderSize = 2
+        BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
+        BtnSave.FlatStyle = FlatStyle.Flat
+        BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnSave.ForeColor = Color.White
+        BtnSave.Location = New Point(583, 13)
+        BtnSave.Margin = New Padding(6, 5, 6, 5)
+        BtnSave.Name = "BtnSave"
+        BtnSave.Size = New Size(167, 77)
+        BtnSave.TabIndex = 6
+        BtnSave.Text = "&Save"
+        BtnSave.UseVisualStyleBackColor = False
+        BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
+        BtnSave.XOTampilkanFocusBorder = False
+        BtnSave.XOValidasiSemuaInput = False
+        BtnSave.XOValidasiSemuaInputTag = Nothing
+        ' 
+        ' BtnCancel
+        ' 
+        BtnCancel.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        BtnCancel.BackColor = Color.Red
+        BtnCancel.Cursor = Cursors.Hand
+        BtnCancel.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
+        BtnCancel.FlatAppearance.BorderSize = 2
+        BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
+        BtnCancel.FlatStyle = FlatStyle.Flat
+        BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCancel.ForeColor = Color.White
+        BtnCancel.Location = New Point(760, 13)
+        BtnCancel.Margin = New Padding(6, 5, 6, 5)
+        BtnCancel.Name = "BtnCancel"
+        BtnCancel.Size = New Size(167, 77)
+        BtnCancel.TabIndex = 8
+        BtnCancel.Text = "&Cancel"
+        BtnCancel.UseVisualStyleBackColor = False
+        BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
+        BtnCancel.XOTampilkanFocusBorder = False
+        BtnCancel.XOValidasiSemuaInput = False
+        BtnCancel.XOValidasiSemuaInputTag = Nothing
+        ' 
+        ' ChkAddNew
+        ' 
+        ChkAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        ChkAddNew.AutoSize = True
+        ChkAddNew.BackColor = Color.Transparent
+        ChkAddNew.FlatStyle = FlatStyle.Flat
+        ChkAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkAddNew.ForeColor = Color.Tomato
+        ChkAddNew.Location = New Point(352, 28)
+        ChkAddNew.Margin = New Padding(6, 5, 6, 5)
+        ChkAddNew.Name = "ChkAddNew"
+        ChkAddNew.Size = New Size(221, 36)
+        ChkAddNew.TabIndex = 7
+        ChkAddNew.Text = "Add new on Save"
+        ChkAddNew.UseVisualStyleBackColor = False
+        ' 
+        ' Tbctl1
+        ' 
+        Tbctl1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        Tbctl1.Controls.Add(tpGeneral)
+        Tbctl1.Controls.Add(tpPermissions)
+        Tbctl1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Tbctl1.Location = New Point(20, 12)
+        Tbctl1.Margin = New Padding(6, 5, 6, 5)
+        Tbctl1.Name = "Tbctl1"
+        Tbctl1.SelectedIndex = 0
+        Tbctl1.Size = New Size(907, 562)
+        Tbctl1.TabIndex = 0
+        ' 
+        ' tpGeneral
+        ' 
+        tpGeneral.AutoScroll = True
+        tpGeneral.Controls.Add(ULbl5)
+        tpGeneral.Controls.Add(ULbl4)
+        tpGeneral.Controls.Add(ULbl3)
+        tpGeneral.Controls.Add(ULbl2)
+        tpGeneral.Controls.Add(ULbl1)
+        tpGeneral.Controls.Add(ChkSystem)
+        tpGeneral.Controls.Add(TxtCode)
+        tpGeneral.Controls.Add(ChkLocked)
+        tpGeneral.Controls.Add(CboGroup)
+        tpGeneral.Controls.Add(TxtDescription)
+        tpGeneral.Controls.Add(TxtName)
+        tpGeneral.Controls.Add(TxtID)
+        tpGeneral.Location = New Point(4, 41)
+        tpGeneral.Margin = New Padding(6, 5, 6, 5)
+        tpGeneral.Name = "tpGeneral"
+        tpGeneral.Padding = New Padding(6, 5, 6, 5)
+        tpGeneral.Size = New Size(899, 517)
+        tpGeneral.TabIndex = 0
+        tpGeneral.Text = "General"
+        tpGeneral.UseVisualStyleBackColor = True
+        ' 
+        ' ULbl5
+        ' 
+        ULbl5.BackColor = Color.Moccasin
+        ULbl5.Location = New Point(11, 288)
+        ULbl5.Margin = New Padding(7, 10, 7, 10)
+        ULbl5.Name = "ULbl5"
+        ULbl5.Size = New Size(250, 55)
+        ULbl5.SLFText = "Description"
+        ULbl5.SLFTextAdjuster = False
+        ULbl5.SLFTextBorder = False
+        ULbl5.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl5.TabIndex = 1021
+        ' 
+        ' ULbl4
+        ' 
+        ULbl4.BackColor = Color.Moccasin
+        ULbl4.Location = New Point(11, 222)
+        ULbl4.Margin = New Padding(7, 10, 7, 10)
+        ULbl4.Name = "ULbl4"
+        ULbl4.Size = New Size(250, 55)
+        ULbl4.SLFText = "Module Name"
+        ULbl4.SLFTextAdjuster = False
+        ULbl4.SLFTextBorder = False
+        ULbl4.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl4.TabIndex = 1020
+        ' 
+        ' ULbl3
+        ' 
+        ULbl3.BackColor = Color.Moccasin
+        ULbl3.Location = New Point(11, 153)
+        ULbl3.Margin = New Padding(7, 10, 7, 10)
+        ULbl3.Name = "ULbl3"
+        ULbl3.Size = New Size(250, 55)
+        ULbl3.SLFText = "Code"
+        ULbl3.SLFTextAdjuster = False
+        ULbl3.SLFTextBorder = False
+        ULbl3.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl3.TabIndex = 1019
+        ' 
+        ' ULbl2
+        ' 
+        ULbl2.BackColor = Color.Moccasin
+        ULbl2.Location = New Point(11, 87)
+        ULbl2.Margin = New Padding(7, 10, 7, 10)
+        ULbl2.Name = "ULbl2"
+        ULbl2.Size = New Size(250, 55)
+        ULbl2.SLFText = "Group"
+        ULbl2.SLFTextAdjuster = False
+        ULbl2.SLFTextBorder = False
+        ULbl2.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl2.TabIndex = 1018
+        ' 
+        ' ULbl1
+        ' 
+        ULbl1.BackColor = Color.Moccasin
+        ULbl1.Location = New Point(11, 20)
+        ULbl1.Margin = New Padding(7, 10, 7, 10)
+        ULbl1.Name = "ULbl1"
+        ULbl1.Size = New Size(250, 55)
+        ULbl1.SLFText = "Module ID"
+        ULbl1.SLFTextAdjuster = False
+        ULbl1.SLFTextBorder = False
+        ULbl1.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl1.TabIndex = 1017
+        ' 
+        ' ChkSystem
+        ' 
+        ChkSystem.AutoSize = True
+        ChkSystem.BackColor = Color.Transparent
+        ChkSystem.FlatStyle = FlatStyle.Flat
+        ChkSystem.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkSystem.Location = New Point(270, 355)
+        ChkSystem.Margin = New Padding(6, 5, 6, 5)
+        ChkSystem.Name = "ChkSystem"
+        ChkSystem.Size = New Size(201, 36)
+        ChkSystem.TabIndex = 6
+        ChkSystem.Text = "System Module"
+        ChkSystem.UseVisualStyleBackColor = False
+        ' 
+        ' TxtCode
+        ' 
+        TxtCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtCode.Location = New Point(273, 153)
+        TxtCode.Margin = New Padding(6, 5, 6, 5)
+        TxtCode.MaxLength = 255
+        TxtCode.Name = "TxtCode"
+        TxtCode.Size = New Size(217, 39)
+        TxtCode.TabIndex = 3
+        TxtCode.Tag = "txt"
+        TxtCode.XOAutoTrim = True
+        TxtCode.XOHarusDiisi = True
+        TxtCode.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtCode.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtCode.XOHightlightSaatFokus = False
+        TxtCode.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtCode.XOIsBlank = True
+        TxtCode.XOIsSearchBox = False
+        TxtCode.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+        TxtCode.XOPilihSemuaSaatFokus = True
+        TxtCode.XOPwdLengthMin = 8
+        TxtCode.XOPwdStrengthCalculate = False
+        TxtCode.XOPwdStrengthScore = 0
+        TxtCode.XOPwdStrengthText = Nothing
+        TxtCode.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtCode.XOSearchBoxText = "Type then press Enter"
+        TxtCode.XOSQLText = ""
+        TxtCode.XOTanpaSpasi = True
+        TxtCode.XOValidasiField = Nothing
+        ' 
+        ' ChkLocked
+        ' 
+        ChkLocked.AutoSize = True
+        ChkLocked.BackColor = Color.Transparent
+        ChkLocked.FlatStyle = FlatStyle.Flat
+        ChkLocked.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkLocked.Location = New Point(270, 415)
+        ChkLocked.Margin = New Padding(6, 5, 6, 5)
+        ChkLocked.Name = "ChkLocked"
+        ChkLocked.Size = New Size(144, 36)
+        ChkLocked.TabIndex = 7
+        ChkLocked.Text = "Is Locked?"
+        ChkLocked.UseVisualStyleBackColor = False
+        ' 
+        ' CboGroup
+        ' 
+        CboGroup.DropDownStyle = ComboBoxStyle.DropDownList
+        CboGroup.FlatStyle = FlatStyle.Flat
+        CboGroup.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        CboGroup.FormattingEnabled = True
+        CboGroup.Location = New Point(273, 87)
+        CboGroup.Margin = New Padding(6, 5, 6, 5)
+        CboGroup.Name = "CboGroup"
+        CboGroup.Size = New Size(341, 40)
+        CboGroup.TabIndex = 2
+        ' 
+        ' TxtDescription
+        ' 
+        TxtDescription.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtDescription.Location = New Point(273, 288)
+        TxtDescription.Margin = New Padding(6, 5, 6, 5)
+        TxtDescription.MaxLength = 255
+        TxtDescription.Name = "TxtDescription"
+        TxtDescription.Size = New Size(551, 39)
+        TxtDescription.TabIndex = 5
+        TxtDescription.Tag = "txt"
+        TxtDescription.XOAutoTrim = True
+        TxtDescription.XOHarusDiisi = True
+        TxtDescription.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtDescription.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtDescription.XOHightlightSaatFokus = False
+        TxtDescription.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtDescription.XOIsBlank = True
+        TxtDescription.XOIsSearchBox = False
+        TxtDescription.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtDescription.XOPilihSemuaSaatFokus = False
+        TxtDescription.XOPwdLengthMin = 8
+        TxtDescription.XOPwdStrengthCalculate = False
+        TxtDescription.XOPwdStrengthScore = 0
+        TxtDescription.XOPwdStrengthText = Nothing
+        TxtDescription.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtDescription.XOSearchBoxText = "Type then press Enter"
+        TxtDescription.XOSQLText = ""
+        TxtDescription.XOTanpaSpasi = False
+        TxtDescription.XOValidasiField = Nothing
+        ' 
+        ' TxtName
+        ' 
+        TxtName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtName.Location = New Point(273, 222)
+        TxtName.Margin = New Padding(6, 5, 6, 5)
+        TxtName.MaxLength = 255
+        TxtName.Name = "TxtName"
+        TxtName.Size = New Size(378, 39)
+        TxtName.TabIndex = 4
+        TxtName.Tag = "txt"
+        TxtName.XOAutoTrim = True
+        TxtName.XOHarusDiisi = True
+        TxtName.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtName.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtName.XOHightlightSaatFokus = False
+        TxtName.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtName.XOIsBlank = True
+        TxtName.XOIsSearchBox = False
+        TxtName.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtName.XOPilihSemuaSaatFokus = True
+        TxtName.XOPwdLengthMin = 8
+        TxtName.XOPwdStrengthCalculate = False
+        TxtName.XOPwdStrengthScore = 0
+        TxtName.XOPwdStrengthText = Nothing
+        TxtName.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtName.XOSearchBoxText = "Type then press Enter"
+        TxtName.XOSQLText = ""
+        TxtName.XOTanpaSpasi = False
+        TxtName.XOValidasiField = Nothing
+        ' 
+        ' TxtID
+        ' 
+        TxtID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtID.Location = New Point(273, 20)
+        TxtID.Margin = New Padding(6, 5, 6, 5)
+        TxtID.MaxLength = 255
+        TxtID.Name = "TxtID"
+        TxtID.ReadOnly = True
+        TxtID.Size = New Size(551, 39)
+        TxtID.TabIndex = 1
+        TxtID.Tag = "txt"
+        TxtID.XOAutoTrim = False
+        TxtID.XOHarusDiisi = False
+        TxtID.XOHarusDiisiWarnaLatar = Color.LightPink
+        TxtID.XOHarusDiisiWarnaLatarDefault = Color.White
+        TxtID.XOHightlightSaatFokus = False
+        TxtID.XOHightlightSaatFokusWarna = Color.LightYellow
+        TxtID.XOIsBlank = True
+        TxtID.XOIsSearchBox = False
+        TxtID.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+        TxtID.XOPilihSemuaSaatFokus = False
+        TxtID.XOPwdLengthMin = 8
+        TxtID.XOPwdStrengthCalculate = False
+        TxtID.XOPwdStrengthScore = 0
+        TxtID.XOPwdStrengthText = Nothing
+        TxtID.XORestriction = ControlCodeBase.enuRestriction.None
+        TxtID.XOSearchBoxText = "Type then press Enter"
+        TxtID.XOSQLText = ""
+        TxtID.XOTanpaSpasi = False
+        TxtID.XOValidasiField = Nothing
+        ' 
+        ' tpPermissions
+        ' 
+        tpPermissions.Controls.Add(GbxAccessBy)
+        tpPermissions.Location = New Point(4, 41)
+        tpPermissions.Margin = New Padding(6, 5, 6, 5)
+        tpPermissions.Name = "tpPermissions"
+        tpPermissions.Padding = New Padding(6, 5, 6, 5)
+        tpPermissions.Size = New Size(899, 517)
+        tpPermissions.TabIndex = 1
+        tpPermissions.Text = "Permissions"
+        tpPermissions.UseVisualStyleBackColor = True
+        ' 
+        ' GbxAccessBy
+        ' 
+        GbxAccessBy.Controls.Add(DgnUserRoles)
+        GbxAccessBy.Dock = DockStyle.Fill
+        GbxAccessBy.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        GbxAccessBy.Location = New Point(6, 5)
+        GbxAccessBy.Margin = New Padding(6, 5, 6, 5)
+        GbxAccessBy.Name = "GbxAccessBy"
+        GbxAccessBy.Padding = New Padding(6, 5, 6, 5)
+        GbxAccessBy.Size = New Size(887, 507)
+        GbxAccessBy.TabIndex = 0
+        GbxAccessBy.TabStop = False
+        GbxAccessBy.Text = "User or roles"
+        ' 
+        ' DgnUserRoles
+        ' 
+        DgnUserRoles.AllowUserToAddRows = False
+        DgnUserRoles.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(248), CByte(234), CByte(188))
+        DgnUserRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DgnUserRoles.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+        DgnUserRoles.BorderStyle = BorderStyle.None
+        DgnUserRoles.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+        DgnUserRoles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.YellowGreen
+        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
+        DataGridViewCellStyle2.SelectionForeColor = Color.Black
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        DgnUserRoles.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DgnUserRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DgnUserRoles.Dock = DockStyle.Fill
+        DgnUserRoles.EnableHeadersVisualStyles = False
+        DgnUserRoles.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DgnUserRoles.Location = New Point(6, 37)
+        DgnUserRoles.Margin = New Padding(6, 5, 6, 5)
+        DgnUserRoles.Name = "DgnUserRoles"
+        DgnUserRoles.ReadOnly = True
+        DgnUserRoles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.YellowGreen
+        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle3.SelectionForeColor = Color.Black
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        DgnUserRoles.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DgnUserRoles.RowHeadersWidth = 62
+        DgnUserRoles.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        DgnUserRoles.Size = New Size(875, 465)
+        DgnUserRoles.StandardTab = True
+        DgnUserRoles.TabIndex = 0
+        DgnUserRoles.XOGroupFirstRows = False
+        DgnUserRoles.XOGunakanNomorBaris = False
+        ' 
+        ' FRMmodsEditor
+        ' 
+        AutoScaleDimensions = New SizeF(10F, 25F)
+        ClientSize = New Size(947, 808)
+        KeyPreview = True
+        Margin = New Padding(10, 5, 10, 5)
+        Name = "FRMmodsEditor"
+        PnlBottomButton.ResumeLayout(False)
+        PnlBottomButton.PerformLayout()
+        CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
+        pnl_.ResumeLayout(False)
+        pnl_.PerformLayout()
+        SLFPanel.ResumeLayout(False)
+        CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+        Tbctl1.ResumeLayout(False)
+        tpGeneral.ResumeLayout(False)
+        tpGeneral.PerformLayout()
+        tpPermissions.ResumeLayout(False)
+        GbxAccessBy.ResumeLayout(False)
+        CType(DgnUserRoles, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
+        PerformLayout()
+    End Sub
+    Friend WithEvents ChkAddNew As CMCv.chk
+    Friend WithEvents BtnCancel As CMCv.btn
+    Friend WithEvents BtnSave As CMCv.btn
+    Friend WithEvents Tbctl1 As CMCv.tbctl
+    Friend WithEvents tpGeneral As TabPage
+    Friend WithEvents TxtCode As CMCv.txt
+    Friend WithEvents ChkLocked As CMCv.chk
+    Friend WithEvents CboGroup As CMCv.cbo
+    Friend WithEvents TxtDescription As CMCv.txt
+    Friend WithEvents TxtName As CMCv.txt
+    Friend WithEvents TxtID As CMCv.txt
+    Friend WithEvents tpPermissions As TabPage
+    Friend WithEvents GbxAccessBy As CMCv.gbx
+    Friend WithEvents DgnUserRoles As CMCv.dgn
+    Friend WithEvents ChkSystem As CMCv.chk
+    Friend WithEvents ULbl5 As CMCv.ULbl
+    Friend WithEvents ULbl4 As CMCv.ULbl
+    Friend WithEvents ULbl3 As CMCv.ULbl
+    Friend WithEvents ULbl2 As CMCv.ULbl
+    Friend WithEvents ULbl1 As CMCv.ULbl
+End Class

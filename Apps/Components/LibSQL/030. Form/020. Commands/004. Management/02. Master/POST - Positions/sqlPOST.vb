@@ -1,8 +1,7 @@
-﻿Imports System
-Imports System.Runtime.Versioning
+﻿Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.POST
+Namespace CMDpost
     Public Class View
         'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
@@ -62,7 +61,7 @@ Namespace Commands.POST
         'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
-        Public Sub FillCompany(databasename As String, dbengine As String, company As cbo)
+        Public Shared Sub FillCompany(databasename As String, dbengine As String, company As cbo)
             If dbengine = "MSSQL" Then
                 varDatabaseRequestMssql2008(0).Query = "select c.company_id, (c.company_code+ ' - ' + c.company_name) as [company_name] from dbo.man_company c order by c.company_code"
                 varDatabaseRequestMssql2008(0).Dropdown = company
@@ -78,7 +77,7 @@ Namespace Commands.POST
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Sub FillDepartement(databasename As String, dbengine As String, department As cbo, company As cbo)
+        Public Shared Sub FillDepartement(databasename As String, dbengine As String, department As cbo, company As cbo)
             Dim varDepartment As String = String.Empty
 
             If company.Items.Count <> 0 Then

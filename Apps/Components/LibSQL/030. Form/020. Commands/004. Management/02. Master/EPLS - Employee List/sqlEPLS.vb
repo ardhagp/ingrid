@@ -4,7 +4,7 @@ Imports System.IO
 Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.EPLS
+Namespace CMDepls
     Public Class View
 
         <SupportedOSPlatform("windows")>
@@ -268,7 +268,7 @@ Namespace Commands.EPLS
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GetPhoto(databasename As String, dbengine As String, rowid As String) As Image
+        Public Shared Function GetPhoto(databasename As String, dbengine As String, rowid As String) As Image
             Dim varPhoto As System.Drawing.Image = Nothing
             Dim varBytes As Byte()
 

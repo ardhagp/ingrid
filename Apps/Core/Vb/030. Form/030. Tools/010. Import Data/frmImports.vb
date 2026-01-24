@@ -1,11 +1,9 @@
 ﻿Imports System.IO
 Imports System.Runtime.Versioning
-Imports System.Security.Principal
-Imports Syncfusion.Windows.Forms.Tools.Win32API
 
-Public Class frmImports
-    Private _Source As Import.Data.DataType.TypeofImports
-    Private _varOriginalSourceFile As String
+Public Class FRMimports
+    Private varSource As Import.Data.DataType.TypeofImports
+    Private varOriginalSourceFile As String
     Private _SQL_Catalog As New LibSQL.Tools.Import.MaterialMaster.Catalog
 
     Public Sub New()
@@ -14,52 +12,49 @@ Public Class frmImports
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        _varOriginalSourceFile = String.Empty
+        varOriginalSourceFile = String.Empty
     End Sub
 
-    Public Sub New(ByVal Source As Import.Data.DataType.TypeofImports)
+    Public Sub New(source As Import.Data.DataType.TypeofImports)
         InitializeComponent()
-        _Source = Source
-        _varOriginalSourceFile = String.Empty
+        varSource = source
+        varOriginalSourceFile = String.Empty
     End Sub
 
-    <Obsolete>
     Private Sub BtnBrowse_Click(sender As Object, e As EventArgs) Handles BtnBrowse.Click
-        Dim FileLoaded As Integer = 0
+        Dim varFileLoaded As Integer
 
         od.Filter = "Comma Separated Values|*.csv"
         od.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString
-        FileLoaded = od.ShowDialog()
-        If FileLoaded <> System.Windows.Forms.DialogResult.Cancel Then
-            _varOriginalSourceFile = od.FileName
-            LblFileName.Text = CompactString(_varOriginalSourceFile, LblFileName.Width, LblFileName.Font, TextFormatFlags.PathEllipsis)
-            TxtProgress.AppendText("Preparing : " & _varOriginalSourceFile & Environment.NewLine)
+        varFileLoaded = od.ShowDialog()
+        If varFileLoaded <> System.Windows.Forms.DialogResult.Cancel Then
+            varOriginalSourceFile = od.FileName
+            LblFileName.Text = CompactString(varOriginalSourceFile, LblFileName.Width, LblFileName.Font, TextFormatFlags.PathEllipsis)
+            TxtProgress.AppendText("Preparing : " & varOriginalSourceFile & Environment.NewLine)
             TxtProgress.AppendText("Click [SAVE] to start importing your data..." & Environment.NewLine)
         End If
     End Sub
 
-    <Obsolete>
-    Private Function CompactString(ByVal MyString As String, ByVal Width As Integer,
-ByVal Font As Drawing.Font,
-ByVal FormatFlags As Windows.Forms.TextFormatFlags) As String
+    Private Function CompactString(mystring As String, width As Integer,
+font As Drawing.Font,
+formatflags As Windows.Forms.TextFormatFlags) As String
 
-        Dim Result As String = String.Copy(MyString)
+        Dim varResult As String = String.Copy(mystring)
 
-        TextRenderer.MeasureText(Result, Font, New Drawing.Size(Width, 0),
-            FormatFlags Or TextFormatFlags.ModifyString)
+        TextRenderer.MeasureText(varResult, font, New Drawing.Size(width, 0),
+            formatflags Or TextFormatFlags.ModifyString)
 
-        Return Result
-
+        Return varResult
     End Function
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-        If _varOriginalSourceFile <> String.Empty Then
+        If varOriginalSourceFile <> String.Empty Then
             TxtProgress.AppendText("Checking if your file exist... ")
-            If File.Exists(_varOriginalSourceFile) Then
-                Select Case _Source
+            If File.Exists(varOriginalSourceFile) Then
+                Select Case varSource
                     Case Import.Data.DataType.TypeofImports.MaterialMasterCatalog
-                        _SQL_Catalog.Execute(varDatabaseName, TxtProgress, _varOriginalSourceFile)
+                        _SQL_Catalog.Execute(varDatabaseName, TxtProgress, varOriginalSourceFile)
                     Case Import.Data.DataType.TypeofImports.MaterialMasterPlant
                         'nothing
                 End Select
