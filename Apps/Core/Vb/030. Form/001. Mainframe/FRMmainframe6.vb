@@ -21,7 +21,7 @@ Public Class FRMmainframe6
     Private WithEvents Frm_login As New FRMlogin
     Private WithEvents Frm_conn As New Connect.FRMconn(varProductionMode) 'uncomment this when add Connect to library
     Private WithEvents Frm_phtrz As New CMCv.PHTRZ
-    Private WithEvents Frm_uac_editor As UAC_Editor
+    Private WithEvents Frm_uac_editor As FRMuacEditor
 
     Public Event EventMainframeOpen()
     Public Event EventMainframeClose()
@@ -275,7 +275,7 @@ Public Class FRMmainframe6
                 .IsChangePasswordForm = True
             End With
 
-            Frm_uac_editor = New UAC_Editor
+            Frm_uac_editor = New FRMuacEditor
             Display(Frm_uac_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Change My Account", "Update your account username or password", True)
 
         Catch ex As Exception

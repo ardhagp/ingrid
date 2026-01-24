@@ -37,7 +37,7 @@ Public Class WorkspaceClass
     Private WithEvents Frm_rems As New REMS
 
     'System
-    Private WithEvents Frm_uac As New UAC
+    Private WithEvents Frm_uac As New FRMuac
     Private WithEvents Frm_mods As New MODS
     Private WithEvents Frm_mogs As New MOGS
     Private WithEvents Frm_syss As New SYSS
@@ -47,7 +47,7 @@ Public Class WorkspaceClass
     Private WithEvents Frm_phtrz As New CMCv.PHTRZ
 
     'Others
-    Private WithEvents Frm_dummy As New Dummy
+    Private WithEvents Frm_dummy As New FRMdummy
     Private WithEvents Frm_reset As New RESET
 #End Region
 
@@ -216,7 +216,7 @@ Public Class WorkspaceClass
                     End If
                 Case "UAC"
                     If (Not (Frm_uac.IsHandleCreated)) OrElse (IsNothing(Frm_uac)) Then
-                        Frm_uac = New UAC
+                        Frm_uac = New FRMuac
                         Display(Frm_uac, IMAGEDB.Main.ImageLibrary.UAC_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_uac.Focus()
@@ -233,7 +233,7 @@ Public Class WorkspaceClass
                  'INSIDE APPS
                 Case CType("DUMMY", Char)
                     If (Not (Frm_dummy.IsHandleCreated)) OrElse (IsNothing(Frm_dummy)) Then
-                        Frm_dummy = New Dummy
+                        Frm_dummy = New FRMdummy
                         Display(Frm_dummy, IMAGEDB.Main.ImageLibrary.DUMMY_ICON, "[DUMMY] Dummy Form", "Dummy Form for testing", False, mainframe)
                     Else
                         Frm_dummy.Focus()

@@ -322,23 +322,23 @@
     <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\TXL - Templete List\TXL_Editor.Designer.vb">
       <DependentUpon>TXL_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\995. Etc\Dummy\Dummy.Designer.vb">
-      <DependentUpon>Dummy.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\995. Etc\Dummy\FRMdummy.Designer.vb">
+      <DependentUpon>FRMdummy.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\995. Etc\Dummy\Dummy_Editor.Designer.vb">
-      <DependentUpon>Dummy_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\995. Etc\Dummy\FRMdummyEditor.Designer.vb">
+      <DependentUpon>FRMdummyEditor.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\Addins\UAC_Employee.Designer.vb">
       <DependentUpon>UAC_Employee.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\UAC.Designer.vb">
-      <DependentUpon>UAC.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\FRMuac.Designer.vb">
+      <DependentUpon>FRMuac.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\UAC_Editor.Designer.vb">
-      <DependentUpon>UAC_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\800. System Settings\001. Credentials\UAC - User Access Credentials\FRMuacEditor.Designer.vb">
+      <DependentUpon>FRMuacEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\995. Etc\Dummy\dummy_mainframe.Designer.vb">
-      <DependentUpon>dummy_mainframe.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\995. Etc\Dummy\FRMdummyMainframe.Designer.vb">
+      <DependentUpon>FRMdummyMainframe.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\030. Tools\010. Import Data\frmImports.Designer.vb">
       <DependentUpon>frmImports.vb</DependentUpon>
