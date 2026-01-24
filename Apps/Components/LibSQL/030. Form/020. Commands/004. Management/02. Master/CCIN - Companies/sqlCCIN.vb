@@ -2,7 +2,7 @@
 Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.CCIN
+Namespace CMDccin
     Public Class View
         ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
 

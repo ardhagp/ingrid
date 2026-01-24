@@ -16,8 +16,8 @@ Public Class WorkspaceClass
     Private WithEvents Frm_acbk As New FRMacbk
 
     'Management
-    Private WithEvents Frm_ccin As New CCIN
-    Private WithEvents Frm_cdin As New CDIN
+    Private WithEvents Frm_ccin As New FRMccin
+    Private WithEvents Frm_cdin As New FRMcdin
     Private WithEvents Frm_post As New POST
     Private WithEvents Frm_epls As New EPLS
 
@@ -119,14 +119,14 @@ Public Class WorkspaceClass
                     'MANAGEMENT
                 Case "CCIN"
                     If (Not (Frm_ccin.IsHandleCreated)) OrElse (IsNothing(Frm_ccin)) Then
-                        Frm_ccin = New CCIN
+                        Frm_ccin = New FRMccin
                         Display(Frm_ccin, IMAGEDB.Main.ImageLibrary.CCIN_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_ccin.Focus()
                     End If
                 Case "CDIN"
                     If (Not (Frm_cdin.IsHandleCreated)) OrElse (IsNothing(Frm_cdin)) Then
-                        Frm_cdin = New CDIN
+                        Frm_cdin = New FRMcdin
                         Display(Frm_cdin, IMAGEDB.Main.ImageLibrary.CDIN_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_cdin.Focus()

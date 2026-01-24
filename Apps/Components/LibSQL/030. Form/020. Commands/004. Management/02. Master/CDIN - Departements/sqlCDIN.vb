@@ -2,7 +2,7 @@
 Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.CDIN
+Namespace CMDcdin
     Public Class View
         'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
@@ -99,7 +99,7 @@ Namespace Commands.CDIN
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub FillCompany(databasename As String, dbengine As String, company As cbo)
+        Public Shared Sub FillCompany(databasename As String, dbengine As String, company As cbo)
             If dbengine = "MSSQL" Then
                 varDatabaseRequestMssql2008(0).Query = "select c.company_id, (c.company_code + ' - ' + c.company_name) as [company_code] from dbo.man_company c order by c.company_code"
                 varDatabaseRequestMssql2008(0).Dropdown = company
