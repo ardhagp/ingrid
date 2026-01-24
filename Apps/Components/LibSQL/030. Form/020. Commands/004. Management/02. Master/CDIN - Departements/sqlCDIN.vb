@@ -31,12 +31,12 @@ Namespace Commands.CDIN
                     varWhere += String.Format(" (c.company_code like '%{0}%') or (d.department_code like '%{0}%') or (d.department_name like '%{0}%') or (d.department_description like '%{0}%')", find.XOSQLText)
                 End If
 
-                V_DBR_MYSQL(0).Query = String.Format("select d.department_id, c.company_code, d.department_code, d.department_name, d.department_description from man_department d inner join man_company] c " &
+                varDatabaseRequestMysql(0).Query = String.Format("select d.department_id, c.company_code, d.department_code, d.department_name, d.department_description from man_department d inner join man_company] c " &
                                                     "on d.department_company = c.company_id {0} order by c.company_code, d.department_code ", varWhere)
 
-                V_DBR_MYSQL(0).DataGrid = datagrid
-                V_DBR_MYSQL(0).StatusBar = statusbar
-                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TDepartment")
+                varDatabaseRequestMysql(0).DataGrid = datagrid
+                varDatabaseRequestMysql(0).StatusBar = statusbar
+                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "TDepartment")
             End If
         End Sub
 
@@ -49,8 +49,8 @@ Namespace Commands.CDIN
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                     varSuccess = True
                 ElseIf dbengine = "MYSQL" Then
-                    V_DBR_MYSQL(1).Query = String.Format("delete from man_department where (department_id = '{0}')", rowid)
-                    varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
+                    varDatabaseRequestMysql(1).Query = String.Format("delete from man_department where (department_id = '{0}')", rowid)
+                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
                     varSuccess = True
                 End If
             Catch ex As Exception
@@ -86,9 +86,9 @@ Namespace Commands.CDIN
                     varWhere += String.Format("(d.department_company = '{0}') and (d.department_code = '{1}') and (d.department_id <> '{2}')", companyid, deptcode, rowid)
                 End If
 
-                V_DBR_MYSQL(0).Query = String.Format("select count(d.department_id) as `rows` from man_department d {0}", varWhere)
+                varDatabaseRequestMysql(0).Query = String.Format("select count(d.department_id) as `rows` from man_department d {0}", varWhere)
 
-                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(0).Query), Integer)
+                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
             End If
 
             If varIsDuplicate = 0 Then
@@ -107,9 +107,9 @@ Namespace Commands.CDIN
                 company.ValueMember = "company_id"
                 company.DisplayMember = "company_code"
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(0).Query = "select c.company_id, (c.company_code + ' - ' + c.company_name) as `company_code` from man_company c order by c.company_code"
-                V_DBR_MYSQL(0).Dropdown = company
-                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TCompany")
+                varDatabaseRequestMysql(0).Query = "select c.company_id, (c.company_code + ' - ' + c.company_name) as `company_code` from man_company c order by c.company_code"
+                varDatabaseRequestMysql(0).Dropdown = company
+                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "TCompany")
                 company.ValueMember = "company_id"
                 company.DisplayMember = "company_code"
             End If
@@ -123,8 +123,8 @@ Namespace Commands.CDIN
                 varDatabaseRequestMssql2008(0).Query = String.Format("select d.department_company from dbo.man_department d where d.department_id = '{0}'", rowid)
                 varCompanyID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(0).Query = String.Format("select d.department_company from man_department d where d.department_id = '{0}'", rowid)
-                varCompanyID = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(0).Query).ToString
+                varDatabaseRequestMysql(0).Query = String.Format("select d.department_company from man_department d where d.department_id = '{0}'", rowid)
+                varCompanyID = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query).ToString
             End If
             Return varCompanyID
         End Function
@@ -137,8 +137,8 @@ Namespace Commands.CDIN
                 varDatabaseRequestMssql2008(0).Query = String.Format("select d.department_code from dbo.man_department d where d.department_id = '{0}'", rowid)
                 varDeptCode = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(0).Query = String.Format("select d.department_code from man_department d where d.department_id = '{0}'", rowid)
-                varDeptCode = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(0).Query).ToString
+                varDatabaseRequestMysql(0).Query = String.Format("select d.department_code from man_department d where d.department_id = '{0}'", rowid)
+                varDeptCode = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query).ToString
             End If
             Return varDeptCode
         End Function
@@ -151,8 +151,8 @@ Namespace Commands.CDIN
                 varDatabaseRequestMssql2008(0).Query = String.Format("select d.department_name from dbo.man_department d where d.department_id = '{0}'", rowid)
                 varDeptName = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(0).Query = String.Format("select d.department_name from man_department d where d.department_id = '{0}'", rowid)
-                varDeptName = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(0).Query).ToString
+                varDatabaseRequestMysql(0).Query = String.Format("select d.department_name from man_department d where d.department_id = '{0}'", rowid)
+                varDeptName = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query).ToString
             End If
             Return varDeptName
         End Function
@@ -165,8 +165,8 @@ Namespace Commands.CDIN
                 varDatabaseRequestMssql2008(0).Query = String.Format("select d.department_description from dbo.man_department d where d.department_id = '{0}'", rowid)
                 varDescription = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
             ElseIf dbengine = "MYSQL" Then
-                V_DBR_MYSQL(0).Query = String.Format("select d.department_description from man_department d where d.department_id = '{0}'", rowid)
-                varDescription = varDatabaseEngineMysql.GetValue(databasename, V_DBR_MYSQL(0).Query).ToString
+                varDatabaseRequestMysql(0).Query = String.Format("select d.department_description from man_department d where d.department_id = '{0}'", rowid)
+                varDescription = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query).ToString
             End If
             Return varDescription
         End Function
@@ -188,14 +188,14 @@ Namespace Commands.CDIN
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dbengine = "MYSQL" Then
                     If rowid = "-1" Then
-                        V_DBR_MYSQL(1).Query = String.Format("insert into dbo.man_department(department_id, departement_company, departement_code, departement_name, departement_description) " &
+                        varDatabaseRequestMysql(1).Query = String.Format("insert into dbo.man_department(department_id, departement_company, departement_code, departement_name, departement_description) " &
                                                             "values('{0}', '{1}', '{2}', '{3}', '{4}')", varHash, company, departementcode, departementname, departementdescription)
                     Else
-                        V_DBR_MYSQL(1).Query = String.Format("update man_department set departement_company = '{0}', departement_code = '{1}', departement_name = '{2}', departement_description = '{3}' " &
+                        varDatabaseRequestMysql(1).Query = String.Format("update man_department set departement_company = '{0}', departement_code = '{1}', departement_name = '{2}', departement_description = '{3}' " &
                                                             "where department_id = '{4}'", company, departementcode, departementname, departementdescription, rowid)
                     End If
 
-                    varDatabaseEngineMysql.PushData(databasename, V_DBR_MYSQL(1).Query)
+                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
                 End If
                 varSuccess = True
             Catch ex As Exception

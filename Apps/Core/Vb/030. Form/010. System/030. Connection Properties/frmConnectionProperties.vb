@@ -1,3 +1,3 @@
-﻿Public Class frmConnectionProperties
+﻿Public Class FRMconnectionproperties
 
 End Class

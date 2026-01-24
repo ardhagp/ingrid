@@ -2,7 +2,7 @@
 
 Public Class UAC_Employee
 #Region "Variables"
-    Private V_SQL As New Commands.UAC.Addins.Browse.Employee
+    'Private V_SQL As New cmduac.Addins.Browse.Employee
     Public Event RecordSelected()
 #End Region
 
@@ -16,7 +16,7 @@ Public Class UAC_Employee
 
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional forcerefresh As Boolean = False)
-        Commands.UAC.Addins.Browse.Employee.DisplayData(varDatabaseName, DgnAddinEmployee, SLFStatus, TxtFind, forcerefresh)
+        cmduac.Addins.Browse.Employee.DisplayData(varDatabaseName, DgnAddinEmployee, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
 #End Region

@@ -6,7 +6,7 @@
     Public databaseproperties(1) As LibApp.Ingrid.Global.Properties
 
     Public varDatabaseRequestMssql2008(1) As CMCv.Database.Adapter.MSSQL2008.Display.Request
-    Public V_DBR_MYSQL(1) As CMCv.Database.Adapter.MySQL.Display.Request
+    Public varDatabaseRequestMysql(1) As CMCv.Database.Adapter.MySQL.Display.Request
     Public _DBP_MSSQL2008 As New CMCv.Database.Adapter.MSSQL2008.Execute
 
     Public V_SECEncrypt As New CMCv.Security.Encrypt

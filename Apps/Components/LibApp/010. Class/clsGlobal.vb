@@ -1,10 +1,16 @@
 ﻿Namespace Ingrid.Global
+    Public Enum DatabaseEngine
+        [MSSQL]
+        [MYSQL]
+    End Enum
+
     ''' <summary>
     ''' 
     ''' </summary>
     Public Class Properties
         Property ConnectionName As String
         Property DatabaseEngine As String
+        Property DatabaseEngineE As Ingrid.Global.DatabaseEngine
         Property DatabaseName As String
         Property EmployeeID As String
         Property EmployeeNumber As String

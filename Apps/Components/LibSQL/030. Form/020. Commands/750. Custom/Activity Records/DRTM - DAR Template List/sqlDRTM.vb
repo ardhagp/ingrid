@@ -68,11 +68,11 @@ Namespace Commands.DRTM
                         varWhere.Append(CChar(")"))
                     End If
 
-                    V_DBR_MYSQL(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from doc_template tpl {0} order by tpl.template_title", varWhere)
+                    varDatabaseRequestMysql(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from doc_template tpl {0} order by tpl.template_title", varWhere)
 
-                    V_DBR_MYSQL(0).DataGrid = dategrid
-                    V_DBR_MYSQL(0).StatusBar = contentstatusbar
-                    varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TDARTemplate")
+                    varDatabaseRequestMysql(0).DataGrid = dategrid
+                    varDatabaseRequestMysql(0).StatusBar = contentstatusbar
+                    varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "TDARTemplate")
                 End If
             Catch ex As Exception
                 MsgBox(ex.ToString)

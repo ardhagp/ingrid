@@ -7,7 +7,7 @@ Namespace SystemLog.Activity
         ReadOnly V_DBR_MySQL(1) As String
 
         <SupportedOSPlatform("windows")>
-        Public Sub LoginFailed(databasename As String, ByVal dbengine As String, ByVal username As String)
+        Public Sub LoginFailed(databasename As String, dbengine As String, username As String)
             Try
                 If dbengine = "MSSQL" Then 'Run if MSSQL
                     varDatabaseRequestMssql2008(0) = String.Format("insert into dbo.[[sys]]log](log_user, log_date, log_message, log_machine, log_os, log_appver) values('N/A', getdate(), 'Failed login with username : {0}', '{1}', '{2}', '{3}');", username, My.Computer.Name, My.Computer.Info.OSFullName, _APPVer)
@@ -22,13 +22,13 @@ Namespace SystemLog.Activity
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Sub LoginSuccess(databasename As String, dbengine As String, eid As String)
+        Public Sub LoginSuccess(databasename As String, dbengine As String, employeeid As String)
             Try
                 If dbengine = "MSSQL" Then 'Run if MSSQL
-                    varDatabaseRequestMssql2008(0) = String.Format("insert into dbo.[[sys]]log](log_user, log_date, log_message, log_machine, log_os, log_appver) values('{0}', getdate(), 'Login Success', '{1}', '{2}', '{3}');", eid, My.Computer.Name, My.Computer.Info.OSFullName, _APPVer)
+                    varDatabaseRequestMssql2008(0) = String.Format("insert into dbo.[[sys]]log](log_user, log_date, log_message, log_machine, log_os, log_appver) values('{0}', getdate(), 'Login Success', '{1}', '{2}', '{3}');", employeeid, My.Computer.Name, My.Computer.Info.OSFullName, _APPVer)
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(0))
                 ElseIf dbengine = "MYSQL" Then 'Run if MYSQL    
-                    V_DBR_MySQL(0) = String.Format("insert into sys_log(log_user, log_date, log_message, log_machine, log_os, log_appver) values('{0}', getdate(), 'Login Success', '{1}', '{2}', '{3}');", eid, My.Computer.Name, My.Computer.Info.OSFullName, _APPVer)
+                    V_DBR_MySQL(0) = String.Format("insert into sys_log(log_user, log_date, log_message, log_machine, log_os, log_appver) values('{0}', getdate(), 'Login Success', '{1}', '{2}', '{3}');", employeeid, My.Computer.Name, My.Computer.Info.OSFullName, _APPVer)
                     varDatabaseEngineMysql.PushData(databasename, V_DBR_MySQL(0))
                 End If
             Catch ex As Exception
@@ -37,13 +37,13 @@ Namespace SystemLog.Activity
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Sub Logout(databasename As String, dbengine As String, eid As String)
+        Public Sub Logout(databasename As String, dbengine As String, employeeid As String)
             Try
                 If dbengine = "MSSQL" Then 'Run if MSSQL
-                    varDatabaseRequestMssql2008(0) = String.Format("insert into dbo.[[sys]]log](log_user, log_date, log_message, log_machine, log_os, log_appver) values('{0}', getdate(), 'Logout', '{1}', '{2}', '{3}');", eid, My.Computer.Name, My.Computer.Info.OSFullName, _APPVer)
+                    varDatabaseRequestMssql2008(0) = String.Format("insert into dbo.[[sys]]log](log_user, log_date, log_message, log_machine, log_os, log_appver) values('{0}', getdate(), 'Logout', '{1}', '{2}', '{3}');", employeeid, My.Computer.Name, My.Computer.Info.OSFullName, _APPVer)
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(0))
                 ElseIf dbengine = "MYSQL" Then 'Run if MYSQL    
-                    V_DBR_MySQL(0) = String.Format("insert into dbo.[[sys]]log](log_user, log_date, log_message, log_machine, log_os, log_appver) values('{0}', getdate(), 'Logout', '{1}', '{2}', '{3}');", eid, My.Computer.Name, My.Computer.Info.OSFullName, _APPVer)
+                    V_DBR_MySQL(0) = String.Format("insert into dbo.[[sys]]log](log_user, log_date, log_message, log_machine, log_os, log_appver) values('{0}', getdate(), 'Logout', '{1}', '{2}', '{3}');", employeeid, My.Computer.Name, My.Computer.Info.OSFullName, _APPVer)
                     varDatabaseEngineMysql.PushData(databasename, V_DBR_MySQL(0))
                 End If
             Catch ex As Exception

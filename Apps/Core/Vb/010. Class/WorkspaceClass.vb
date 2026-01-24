@@ -13,7 +13,7 @@ Public Class WorkspaceClass
 #Region "Declare Modules"
     'Accounting
     Private WithEvents Frm_acgr As New FRMacgr
-    Private WithEvents Frm_acbk As New ACBK
+    Private WithEvents Frm_acbk As New FRMacbk
 
     'Management
     Private WithEvents Frm_ccin As New CCIN
@@ -22,11 +22,11 @@ Public Class WorkspaceClass
     Private WithEvents Frm_epls As New EPLS
 
     'Logistic
-    Private WithEvents Frm_plnt As New PLNT
-    Private WithEvents Frm_sloc As New SLOC
-    Private WithEvents Frm_mctg As New MCTG
-    Private WithEvents Frm_mmty As New MMTY
-    Private WithEvents Frm_mmgr As New MMGR
+    Private WithEvents Frm_plnt As New FRMplnt
+    Private WithEvents Frm_sloc As New FRMsloc
+    Private WithEvents Frm_mctg As New FRMmctg
+    Private WithEvents Frm_mmty As New FRMmmty
+    Private WithEvents Frm_mmgr As New FRMmmgr
 
     'Custom
     Private WithEvents Frm_dar As New DAR
@@ -71,7 +71,7 @@ Public Class WorkspaceClass
                     End If
                 Case "ACBK"
                     If (Not (Frm_acbk.IsHandleCreated)) OrElse (IsNothing(Frm_acbk)) Then
-                        Frm_acbk = New ACBK
+                        Frm_acbk = New FRMacbk
                         Display(Frm_acbk, IMAGEDB.Main.ImageLibrary.ACBK_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_acbk.Focus()
@@ -81,35 +81,35 @@ Public Class WorkspaceClass
                     'LOGISTICS
                 Case "MCTG"
                     If (Not (Frm_mctg.IsHandleCreated)) OrElse (IsNothing(Frm_mctg)) Then
-                        Frm_mctg = New MCTG
+                        Frm_mctg = New FRMmctg
                         Display(Frm_mctg, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_mctg.Focus()
                     End If
                 Case "MMTY"
                     If (Not (Frm_mmty.IsHandleCreated)) OrElse (IsNothing(Frm_mmty)) Then
-                        Frm_mmty = New MMTY
+                        Frm_mmty = New FRMmmty
                         Display(Frm_mmty, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_mmty.Focus()
                     End If
                 Case "MMGR"
                     If (Not (Frm_mmgr.IsHandleCreated)) OrElse (IsNothing(Frm_mmgr)) Then
-                        Frm_mmgr = New MMGR
+                        Frm_mmgr = New FRMmmgr
                         Display(Frm_mmgr, IMAGEDB.Main.ImageLibrary.CATALOGUE_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_mmgr.Focus()
                     End If
                 Case "SLOC"
                     If (Not (Frm_sloc.IsHandleCreated)) OrElse (IsNothing(Frm_sloc)) Then
-                        Frm_sloc = New SLOC
+                        Frm_sloc = New FRMsloc
                         Display(Frm_sloc, IMAGEDB.Main.ImageLibrary.STORAGE_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_sloc.Focus()
                     End If
                 Case "PLNT"
                     If (Not (Frm_plnt.IsHandleCreated)) OrElse (IsNothing(Frm_plnt)) Then
-                        Frm_plnt = New PLNT
+                        Frm_plnt = New FRMplnt
                         Display(Frm_plnt, IMAGEDB.Main.ImageLibrary.PLANT_ICON, "[" & tcode.ToUpper & "] " & varModuleName, varModuleCaption, False, mainframe)
                     Else
                         Frm_plnt.Focus()

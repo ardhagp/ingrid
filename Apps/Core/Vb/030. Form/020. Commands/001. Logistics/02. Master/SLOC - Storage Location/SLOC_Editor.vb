@@ -1,3 +1,3 @@
-﻿Public Class SLOC_Editor
+﻿Public Class FRMslocEditor
 
 End Class

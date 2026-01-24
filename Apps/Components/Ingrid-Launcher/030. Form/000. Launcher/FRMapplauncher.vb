@@ -67,6 +67,9 @@ Public Class FRMapplauncher
 
     Private Sub OpenApp(appnameindex As Integer)
         Try
+            My.Settings.DefaultApp = appnameindex
+            My.Settings.Save()
+
             If appnameindex = 0 Then
                 Frm_conn = New FRMconn
                 Frm_conn.Show()
@@ -74,8 +77,7 @@ Public Class FRMapplauncher
                 Frm_mainframe6 = New FRMmainframe6
                 Frm_mainframe6.Show()
             End If
-            My.Settings.DefaultApp = appnameindex
-            My.Settings.Save()
+
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -83,8 +85,8 @@ Public Class FRMapplauncher
 
     Private Sub Frmconn_ConnectFrameClose() Handles Frm_conn.ConnectFrameClose
         Frm_conn.Dispose()
-        LblCountdown.Text = "by clicking Launch button"
         Me.Show()
+        LblCountdown.Text = "by clicking Launch button"
         BtnClose.Visible = True
     End Sub
 

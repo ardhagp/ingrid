@@ -4,7 +4,7 @@ Imports CMCv
 Public Class UAC_Editor
 
 #Region "Variables"
-    Private _SQL As New Commands.UAC.Editor
+    Private _SQL As New cmduac.Editor
     Private WithEvents _MMSMenu As New CMCv.UI.View.MenuStrip
     Private WithEvents _AddinEmployee As New UAC_Employee
     Private _IsAdminstrator As Boolean
@@ -16,7 +16,7 @@ Public Class UAC_Editor
 
     <SupportedOSPlatform("windows")>
     Private Sub GetData()
-        Commands.UAC.Editor.DisplayData(varDatabaseName, varDatabaseEngine, DgnUACe, Convert.ToString(varFormProperties.RowID))
+        cmduac.Editor.DisplayData(varDatabaseName, varDatabaseEngine, DgnUACe, Convert.ToString(varFormProperties.RowID))
     End Sub
 
     Private Sub CheckAllInput()
@@ -76,14 +76,14 @@ Public Class UAC_Editor
             ChkAddNew.Enabled = False
             ChkAddNew.Visible = False
             BtnBrowseEmployee.Visible = False
-            TxtEmployeeNumber.Text = Commands.UAC.Editor.GetEmployeeNumber(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            TxtEmployeeFullName.Text = Commands.UAC.Editor.GetEmployeeFullName(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            TxtUsername.Text = Commands.UAC.Editor.GetUsernameByUserID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            TxtUsername.Text = Commands.UAC.Editor.GetUsernameByUserID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            varFormProperties.Password = Commands.UAC.Editor.GetPassword(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            ChkLocked.Checked = Commands.UAC.Editor.GetLocked(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            _IsAdminstrator = Commands.UAC.Editor.GetAdministrator(varDatabaseName, varDatabaseEngine, varProperties.UserID)
-            ChkAdministrator.Checked = Commands.UAC.Editor.GetAdministrator(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            TxtEmployeeNumber.Text = cmduac.Editor.GetEmployeeNumber(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            TxtEmployeeFullName.Text = cmduac.Editor.GetEmployeeFullName(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            TxtUsername.Text = cmduac.Editor.GetUsernameByUserID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            TxtUsername.Text = cmduac.Editor.GetUsernameByUserID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            varFormProperties.Password = cmduac.Editor.GetPassword(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            ChkLocked.Checked = cmduac.Editor.GetLocked(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            _IsAdminstrator = cmduac.Editor.GetAdministrator(varDatabaseName, varDatabaseEngine, varProperties.UserID)
+            ChkAdministrator.Checked = cmduac.Editor.GetAdministrator(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
             If (_IsAdminstrator) AndAlso Not (varFormProperties.IsChangePasswordForm) Then
                 ChkAdministrator.Visible = True
             Else
@@ -108,17 +108,17 @@ Public Class UAC_Editor
         ElseIf ((_PWDChange) AndAlso (TxtPassword.TextLength < varMinPasswordLength)) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure your Password meets the minimum criteria.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf ((varFormProperties.IsNew) AndAlso (Commands.UAC.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText))) Then
+        ElseIf ((varFormProperties.IsNew) AndAlso (cmduac.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Username already registered.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
-        ElseIf (Not (varFormProperties.IsNew) AndAlso (Commands.UAC.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
+        ElseIf (Not (varFormProperties.IsNew) AndAlso (cmduac.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Username already used by another employee.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
         Call CheckPWDChange()
 
-        If (Commands.UAC.Editor.PushData(varDatabaseName, varDatabaseEngine, varFormProperties.Field01.ToString, TxtUsername.XOSQLText, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, Convert.ToString(varFormProperties.RowID), varFormProperties.Hash, _PWDChange)) Then
+        If (cmduac.Editor.PushData(varDatabaseName, varDatabaseEngine, varFormProperties.Field01.ToString, TxtUsername.XOSQLText, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, Convert.ToString(varFormProperties.RowID), varFormProperties.Hash, _PWDChange)) Then
             RaiseEvent RecordSaved()
             FRMmainframe6.Ts_status.Text = "Success"
         Else

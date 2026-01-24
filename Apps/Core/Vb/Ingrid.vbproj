@@ -104,71 +104,71 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="030. Form\001. Mainframe\Splash.Designer.vb">
-      <DependentUpon>Splash.vb</DependentUpon>
+    <Compile Update="030. Form\001. Mainframe\FRMsplash.Designer.vb">
+      <DependentUpon>FRMsplash.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\010. System\010. Login\LOGIN.Designer.vb">
-      <DependentUpon>LOGIN.vb</DependentUpon>
+    <Compile Update="030. Form\010. System\010. Login\FRMlogin.Designer.vb">
+      <DependentUpon>FRMlogin.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\010. System\020. Notification\NTFC.Designer.vb">
-      <DependentUpon>NTFC.vb</DependentUpon>
+    <Compile Update="030. Form\010. System\020. Notification\FRMntfc.Designer.vb">
+      <DependentUpon>FRMntfc.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\010. System\030. Connection Properties\CPDB.Designer.vb">
-      <DependentUpon>CPDB.vb</DependentUpon>
+    <Compile Update="030. Form\010. System\030. Connection Properties\FRMcpdb.Designer.vb">
+      <DependentUpon>FRMcpdb.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\010. System\030. Connection Properties\frmConnectionProperties.Designer.vb">
-      <DependentUpon>frmConnectionProperties.vb</DependentUpon>
+      <DependentUpon>FRMconnectionproperties.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MCTG - Material Catalog\MCTG_Editor.Designer.vb">
-      <DependentUpon>MCTG_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MCTG - Material Catalog\FRMmctgEditor.Designer.vb">
+      <DependentUpon>FRMmctgEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MMGR - Material Group\MMGR.Designer.vb">
-      <DependentUpon>MMGR.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MMGR - Material Group\FRMmmgr.Designer.vb">
+      <DependentUpon>FRMmmgr.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MMGR - Material Group\MMGR_Editor.Designer.vb">
-      <DependentUpon>MMGR_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MMGR - Material Group\FRMmmgrEditor.Designer.vb">
+      <DependentUpon>FRMmmgrEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MMTY - Material Type\MMTY.Designer.vb">
-      <DependentUpon>MMTY.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MMTY - Material Type\FRMmmty.Designer.vb">
+      <DependentUpon>FRMmmty.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MMTY - Material Type\MMTY_Editor.Designer.vb">
-      <DependentUpon>MMTY_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MMTY - Material Type\FRMmmtyEditor.Designer.vb">
+      <DependentUpon>FRMmmtyEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MMVT - Material Valuation\MMVT.Designer.vb">
-      <DependentUpon>MMVT.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MMVT - Material Valuation\FRMmmvt.Designer.vb">
+      <DependentUpon>FRMmmvt.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MMVT - Material Valuation\MMVT_Editor.Designer.vb">
-      <DependentUpon>MMVT_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MMVT - Material Valuation\FRMmmvtEditor.Designer.vb">
+      <DependentUpon>FRMmmvtEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MOW - Material Ownership\MOW.Designer.vb">
-      <DependentUpon>MOW.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MOW - Material Ownership\FRMmow.Designer.vb">
+      <DependentUpon>FRMmow.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MOW - Material Ownership\MOW_Editor.Designer.vb">
-      <DependentUpon>MOW_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MOW - Material Ownership\FRMmowEditor.Designer.vb">
+      <DependentUpon>FRMmowEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MVTP - Movement Type\MVTP.Designer.vb">
-      <DependentUpon>MVTP.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MVTP - Movement Type\FRMmvtp.Designer.vb">
+      <DependentUpon>FRMmvtp.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MVTP - Movement Type\MVTP_Editor.Designer.vb">
-      <DependentUpon>MVTP_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MVTP - Movement Type\FRMmvtpEditor.Designer.vb">
+      <DependentUpon>FRMmvtpEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\PLNT - Plant List\PLNT_Editor.Designer.vb">
-      <DependentUpon>PLNT_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\PLNT - Plant List\FRMplntEditor.Designer.vb">
+      <DependentUpon>FRMplntEditor.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\SLOC - Storage Location\SLOC_Editor.Designer.vb">
       <DependentUpon>SLOC_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\UOM - Unit Of Measurement\UOM.Designer.vb">
-      <DependentUpon>UOM.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\UOM - Unit Of Measurement\FRMuom.Designer.vb">
+      <DependentUpon>FRMuom.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\UOM - Unit Of Measurement\UOM_Editor.Designer.vb">
-      <DependentUpon>UOM_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\UOM - Unit Of Measurement\FRMuomEditor.Designer.vb">
+      <DependentUpon>FRMuomEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\03. Inventory\MMIT - Material Inventory Table\MMIT.Designer.vb">
-      <DependentUpon>MMIT.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\03. Inventory\MMIT - Material Inventory Table\FRMmmit.Designer.vb">
+      <DependentUpon>FRMmmit.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\03. Inventory\MMIT - Material Inventory Table\MMIT_Editor.Designer.vb">
-      <DependentUpon>MMIT_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\03. Inventory\MMIT - Material Inventory Table\FRMmmitEditor.Designer.vb">
+      <DependentUpon>FRMmmitEditor.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\001. Logistics\03. Inventory\MMSI - Material Stock Info\MMSI.Designer.vb">
       <DependentUpon>MMSI.vb</DependentUpon>
@@ -203,17 +203,17 @@
     <Compile Update="030. Form\020. Commands\003. Accounting\01. Dashboard\frmACDashboard.Designer.vb">
       <DependentUpon>frmACDashboard.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\003. Accounting\02. Master\ACBK - Accounting Book\ACBK.Designer.vb">
-      <DependentUpon>ACBK.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\003. Accounting\02. Master\ACBK - Accounting Book\FRMacbk.Designer.vb">
+      <DependentUpon>FRMacbk.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\003. Accounting\02. Master\ACBK - Accounting Book\ACBK_Editor.Designer.vb">
-      <DependentUpon>ACBK_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\003. Accounting\02. Master\ACBK - Accounting Book\FRMacbkEditor.Designer.vb">
+      <DependentUpon>FRMacbkEditor.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\003. Accounting\02. Master\ACGR - Account Group\FRMacgr.Designer.vb">
       <DependentUpon>FRMacgr.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\003. Accounting\02. Master\ACGR - Account Group\ACGR_Editor.Designer.vb">
-      <DependentUpon>ACGR_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\003. Accounting\02. Master\ACGR - Account Group\FRMacgrEditor.Designer.vb">
+      <DependentUpon>FRMacgrEditor.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\004. Management\02. Master\CCIN - Companies\CCIN_Editor.Designer.vb">
       <DependentUpon>CCIN_Editor.vb</DependentUpon>
@@ -248,8 +248,8 @@
     <Compile Update="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\EPLS.Designer.vb">
       <DependentUpon>EPLS.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MCTG - Material Catalog\MCTG.Designer.vb">
-      <DependentUpon>MCTG.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MCTG - Material Catalog\FRMmctg.Designer.vb">
+      <DependentUpon>FRMmctg.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\DAR.Designer.vb">
       <DependentUpon>DAR.vb</DependentUpon>
@@ -343,11 +343,11 @@
     <Compile Update="030. Form\030. Tools\010. Import Data\frmImports.Designer.vb">
       <DependentUpon>frmImports.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\PLNT - Plant List\PLNT.Designer.vb">
-      <DependentUpon>PLNT.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\PLNT - Plant List\FRMplnt.Designer.vb">
+      <DependentUpon>FRMplnt.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\SLOC - Storage Location\SLOC.Designer.vb">
-      <DependentUpon>SLOC.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\SLOC - Storage Location\FRMsloc.Designer.vb">
+      <DependentUpon>FRMsloc.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\005. Procurement\02. Master\VDLS - Vendor List\VDLS.Designer.vb">
       <DependentUpon>VDLS.vb</DependentUpon>

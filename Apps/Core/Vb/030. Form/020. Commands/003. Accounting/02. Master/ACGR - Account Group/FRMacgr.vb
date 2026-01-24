@@ -3,7 +3,7 @@
 Public Class FRMacgr
 
 #Region "Variables"
-    Private WithEvents Frm_acgr_Editor As New ACGR_Editor
+    Private WithEvents Frm_acgr_Editor As New FRMacgrEditor
     Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
     Private varSelectedGroup As String = String.Empty
@@ -20,8 +20,8 @@ Public Class FRMacgr
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
     Private Sub GetData()
-        LibSQL.Commands.ACGR.View.FillCompany(varDatabaseName, varDatabaseEngine, CboCompany)
-        LibSQL.Commands.ACGR.View.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
+        CMDacgr.View.FillCompany(varDatabaseName, varDatabaseEngine, CboCompany)
+        CMDacgr.View.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
     End Sub
 
     ''' <summary>
@@ -31,7 +31,7 @@ Public Class FRMacgr
     ''' <remarks>True akan memaksa data untuk direfresh tanpa filter apapun</remarks>
     <SupportedOSPlatform("windows")>
     Private Sub GetDataGrid(Optional forcerefresh As Boolean = False)
-        LibSQL.Commands.ACGR.View.GetAccountList(varDatabaseName, varDatabaseEngine, DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, forcerefresh)
+        CMDacgr.View.GetAccountList(varDatabaseName, varDatabaseEngine, DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, forcerefresh)
     End Sub
 
     'Private _RowID As Integer
@@ -85,7 +85,7 @@ Public Class FRMacgr
             .RowID = "-1"
             .IsNew = True
         End With
-        Frm_acgr_Editor = New ACGR_Editor
+        Frm_acgr_Editor = New FRMacgrEditor
         Display(Frm_acgr_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new account for each accounting book and accounting group", True)
         Call GetRowID()
     End Sub
@@ -97,7 +97,7 @@ Public Class FRMacgr
         If Convert.ToString(Convert.ToString(varFormProperties.RowID)) = "-1" Then
             Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            Frm_acgr_Editor = New ACGR_Editor
+            Frm_acgr_Editor = New FRMacgrEditor
             Display(Frm_acgr_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your account data", True)
         End If
     End Sub
@@ -110,7 +110,7 @@ Public Class FRMacgr
         Else
             varFormProperties.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (LibSQL.Commands.ACGR.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(Convert.ToString(varFormProperties.RowID)))) Then
+                If (CMDacgr.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(Convert.ToString(varFormProperties.RowID)))) Then
                     Call GetDataGrid(True)
                     FRMmainframe6.Ts_status.Text = "Success"
                 Else
@@ -180,7 +180,7 @@ Public Class FRMacgr
     <SupportedOSPlatform("windows")>
     Private Sub CboPlant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
         If Not (varIsFirstLoad) Then
-            LibSQL.Commands.ACGR.View.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
+            CMDacgr.View.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
             Call GetDataGrid(True)
         End If
     End Sub
@@ -188,7 +188,7 @@ Public Class FRMacgr
 
 #Region "WithEvents"
     <SupportedOSPlatform("windows")>
-    Private Sub RecordSaved() Handles Frm_acgr_Editor.RecordSaved
+    Private Sub EventRecordSaved() Handles Frm_acgr_Editor.EventRecordSaved
         Call GetDataGrid(True)
     End Sub
 #End Region

@@ -18,7 +18,7 @@ Public Class FRMmainframe6
 #End Region
 
 #Region "Declaration"
-    Private WithEvents Frm_login As New LOGIN
+    Private WithEvents Frm_login As New FRMlogin
     Private WithEvents Frm_conn As New Connect.FRMconn(varProductionMode) 'uncomment this when add Connect to library
     Private WithEvents Frm_phtrz As New CMCv.PHTRZ
     Private WithEvents Frm_uac_editor As UAC_Editor
@@ -212,7 +212,7 @@ Public Class FRMmainframe6
     <SupportedOSPlatform("windows")>
     Private Function LoginClicked() As Boolean
         If varProperties.UserID = String.Empty Then
-            Frm_login = New LOGIN
+            Frm_login = New FRMlogin
             Display(Frm_login, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, "Sign In", "Please enter your credentials to continue", True)
         End If
         If varProperties.UserID = String.Empty Then
@@ -342,8 +342,14 @@ Public Class FRMmainframe6
             varVersionapplication = GetAppVersion()
             Text += " - Ver. " & varVersionapplication
 
-            varDatabaseEngine = LibSQL.Mainframe.Database.DatabaseEngine
+            'Retrieve Database Connection
             varDatabaseName = LibSQL.Mainframe.Database.DatabaseName
+            varDatabaseEngine = LibSQL.Mainframe.Database.DatabaseEngine
+            If varDatabaseEngine = "MSSQL" Then
+                varDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL
+            ElseIf varDatabaseEngine = "MYSQL" Then
+                varDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL
+            End If
 
             If Mainframe.Database.Connect(varProductionMode) Then
                 Ts_connection.Text = "Connected"
@@ -559,7 +565,7 @@ Public Class FRMmainframe6
 
     <SupportedOSPlatform("windows")>
     Private Sub NotificationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotificationToolStripMenuItem.Click
-        Dim frmNTFC As New NTFC
+        Dim frmNTFC As New FRMntfc
         Display(frmNTFC, IMAGEDB.Main.ImageLibrary.NOTIF_ICON, "Notification", "Show all notification that addressed to you", True)
     End Sub
 
@@ -584,7 +590,7 @@ Public Class FRMmainframe6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub V_LOGIN_LoginSuccess() Handles Frm_login.LoginSuccess
+    Private Sub V_LOGIN_LoginSuccess() Handles Frm_login.EventLoginSuccess
         Call GetNotification()
         PnlProfile.Visible = True
     End Sub
@@ -690,7 +696,7 @@ Public Class FRMmainframe6
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub V_LOGIN_LoginFailed() Handles Frm_login.LoginFailed
+    Private Sub V_LOGIN_LoginFailed() Handles Frm_login.EventLoginFailed
         Call ClearLoginData()
         Call SystemLogout(True)
     End Sub

@@ -4,7 +4,7 @@ Imports CMCv
 Public Class EPLS_Editor
 #Region "Variables"
     Private _SQL As New Commands.EPLS.Editor
-    Private _SQL_User As New Commands.UAC.Editor
+    Private _SQL_User As New cmduac.Editor
     Public Event RecordSaved()
 #End Region
 
@@ -52,9 +52,9 @@ Public Class EPLS_Editor
             _HavePhoto = Commands.EPLS.Editor.GetIsHavePhoto(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
 
             'Permissions
-            TxtLogin.Text = Commands.UAC.Editor.GetUsernameByEmployeeID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            varFormProperties.Field01 = Commands.UAC.Editor.GetUIDbyEmployeeID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            Commands.UAC.Editor.DisplayData(varDatabaseName, varDatabaseEngine, DgnModulesRoles, varFormProperties.Field01.ToString)
+            TxtLogin.Text = cmduac.Editor.GetUsernameByEmployeeID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            varFormProperties.Field01 = cmduac.Editor.GetUIDbyEmployeeID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            cmduac.Editor.DisplayData(varDatabaseName, varDatabaseEngine, DgnModulesRoles, varFormProperties.Field01.ToString)
 
             TxtPersonalID.Focus()
 

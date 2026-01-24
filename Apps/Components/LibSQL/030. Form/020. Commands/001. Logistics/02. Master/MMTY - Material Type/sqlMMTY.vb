@@ -32,16 +32,16 @@ Namespace Commands.MMTY
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TMaterialType")
             ElseIf dbengine = "MYSQL" Then
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
-                    V_DBR_MYSQL(0).Query = "select mt.materialtype_id, mt.materialtype_description,(convert(varchar(255),(select count(m.material_id) from log_material m where " &
+                    varDatabaseRequestMysql(0).Query = "select mt.materialtype_id, mt.materialtype_description,(convert(varchar(255),(select count(m.material_id) from log_material m where " &
                     "m.material_materialtype = mt.materialtype_id)) + '  item(s)') as itemcount from log_materialtype mt"
                 Else
-                    V_DBR_MYSQL(0).Query = String.Format("select mt.materialtype_id, mt.materialtype_description,(convert(varchar(255),(select count(m.material_id) from log_material m where " &
+                    varDatabaseRequestMysql(0).Query = String.Format("select mt.materialtype_id, mt.materialtype_description,(convert(varchar(255),(select count(m.material_id) from log_material m where " &
                                                         "m.material_materialtype = mt.materialtype_id)) + '  item(s)') as itemcount from log_materialtype mt WHERE mt.materialtype_id LIKE '%{0}%' OR " &
                                                         "mt.materialtype_description LIKE '%{0}%'", find.XOSQLText)
                 End If
-                V_DBR_MYSQL(0).DataGrid = datagrid
-                V_DBR_MYSQL(0).StatusBar = statusbar
-                varDatabaseEngineMysql.GetDataTable(databasename, V_DBR_MYSQL(0), "TMaterialType")
+                varDatabaseRequestMysql(0).DataGrid = datagrid
+                varDatabaseRequestMysql(0).StatusBar = statusbar
+                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "TMaterialType")
             End If
         End Sub
     End Class
