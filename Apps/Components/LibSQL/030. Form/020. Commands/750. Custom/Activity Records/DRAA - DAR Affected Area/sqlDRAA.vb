@@ -2,7 +2,7 @@
 Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.DRAA
+Namespace CMDdraa
     Public Class View
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayMainGrid(databasename As String, find As txt, contentgrid As dgn, contentstatusbar As stt, Optional forcerefresh As Boolean = False)

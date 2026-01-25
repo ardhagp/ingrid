@@ -1,9 +1,7 @@
-﻿Imports System
-Imports System.Runtime.Versioning
-Imports System.Windows.Forms
+﻿Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.REMS
+Namespace CMDrems
     Public Class View
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayGrid(databasename As String, progressgrid As dgn, donegrid As dgn, verifiedgrid As dgn, todostatusbar As stt, Optional showall As Boolean = False)

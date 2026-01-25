@@ -5,13 +5,13 @@ Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 Imports CMCv
 
-Namespace Commands.DAR
+Namespace CMDdar
     Public Class View
         'ReDim varDatabaseRequestMssql2008(3)
-        Public varIsEmpFilter As Boolean
-        Public varEmployeeID As String
-        Public varContentID As String
-        Public varContentYear As String
+        Private Shared varIsEmpFilter As Boolean
+        Private Shared varEmployeeID As String
+        Private Shared varContentID As String
+        Private Shared varContentYear As String
 
         <SupportedOSPlatform("windows")>
         Public Shared Function CheckSettings(databasename As String, dbengine As String, uid As String, attribute As String) As Boolean
@@ -113,7 +113,7 @@ Namespace Commands.DAR
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Sub DisplayMainGrid(databasename As String, dbengine As String, find As txt, dategrid As dgn, datestatusbar As stt, contentstatusbar As stt, chkdatefilter As chk, dtpdatefilter As dtp, chkbyfilter As chk, cbobyfilter As cbo, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayMainGrid(databasename As String, dbengine As String, find As txt, dategrid As dgn, datestatusbar As stt, contentstatusbar As stt, chkdatefilter As chk, dtpdatefilter As dtp, chkbyfilter As chk, cbobyfilter As cbo, Optional forcerefresh As Boolean = False)
             Try
                 Dim varWhere As String = String.Format("where ")
 
@@ -241,7 +241,7 @@ Namespace Commands.DAR
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Sub DisplaySecondGrid(databasename As String, dbengine As String, dategrid As String, contentgrid As dgn, contentstatusbar As stt, find As txt, Optional showattachment As Boolean = False, Optional photogrid As dgn = Nothing, Optional filegrid As dgn = Nothing)
+        Public Shared Sub DisplaySecondGrid(databasename As String, dbengine As String, dategrid As String, contentgrid As dgn, contentstatusbar As stt, find As txt, Optional showattachment As Boolean = False, Optional photogrid As dgn = Nothing, Optional filegrid As dgn = Nothing)
             Try
                 'Dim _CONTENTDATE As Date
                 Dim V_CONTENTDATE_S As String = String.Empty
@@ -616,7 +616,7 @@ Namespace Commands.DAR
     End Class
 
     Public Class Editor
-        Private V_DS As DataSet
+        Private Shared V_DS As DataSet
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetAffectedArea(databasename As String, dbengine As String, listofaffectedarea As CMCv.cbo)
@@ -774,7 +774,7 @@ Namespace Commands.DAR
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Function DisplayPhotoGrid(databasename As String, dbengine As String, rowid As String, filegrid As dgn) As DataSet
+        Public Shared Function DisplayPhotoGrid(databasename As String, dbengine As String, rowid As String, filegrid As dgn) As DataSet
             V_DS = New DataSet
             'ReDim varDatabaseRequestMssql2008(3)
 
@@ -796,7 +796,7 @@ Namespace Commands.DAR
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function DisplayFileGrid(databasename As String, dbengine As String, rowid As String, filegrid As dgn) As DataSet
+        Public Shared Function DisplayFileGrid(databasename As String, dbengine As String, rowid As String, filegrid As dgn) As DataSet
             V_DS = New DataSet
             'ReDim varDatabaseRequestMssql2008(3)
 

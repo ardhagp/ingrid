@@ -1,20 +1,20 @@
 ﻿Imports System.IO
 Imports System.Runtime.Versioning
 
-Public Class PDFVWR
+Public Class FRMpdfViewer
 
-    Private _LocalFS As FileStream
+    Private varLocalFs As FileStream
     Public Property LocalFS As FileStream
         Get
-            Return _LocalFS
+            Return varLocalFs
         End Get
         Set(value As FileStream)
-            _LocalFS = value
+            varLocalFs = value
         End Set
     End Property
 
     <SupportedOSPlatform("windows")>
-    Private Sub PDFVWR_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FRMpdfViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call ActivateLicenses()
 
         'use this line for old version of pdf handler
@@ -31,20 +31,20 @@ Public Class PDFVWR
         Disable = 0
     End Enum
 
-    Public Sub PDFVWR_LoadDocument(ByVal FS As Object, ByVal FileName As String)
-        PDFContent.Load(CType(FS, Stream))
+    Public Sub FRMpdfViewerLoadDocument(fs As Object, filenname As String)
+        PDFContent.Load(CType(fs, Stream))
     End Sub
 
-    Public Sub PDFVWR_EnableFileOpen(ByVal EnableProperties As IsActive)
-        If EnableProperties = IsActive.Enable Then
+    Public Sub FRMpdfViewerEnableFileOpen(enableproperties As IsActive)
+        If enableproperties = IsActive.Enable Then
             PDFContent.ToolbarSettings.OpenButton.IsEnabled = True
         Else
             PDFContent.ToolbarSettings.OpenButton.IsEnabled = False
         End If
     End Sub
 
-    Public Sub PDFVWR_EnableFileSave(ByVal EnableProperties As IsActive)
-        If EnableProperties = IsActive.Enable Then
+    Public Sub FRMpdfViewerEnableFileSave(enableproperties As IsActive)
+        If enableproperties = IsActive.Enable Then
             PDFContent.ToolbarSettings.SaveButton.IsEnabled = True
         Else
             PDFContent.ToolbarSettings.SaveButton.IsEnabled = False

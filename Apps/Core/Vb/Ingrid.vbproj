@@ -251,11 +251,11 @@
     <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MCTG - Material Catalog\FRMmctg.Designer.vb">
       <DependentUpon>FRMmctg.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\DAR.Designer.vb">
-      <DependentUpon>DAR.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\FRMdar.Designer.vb">
+      <DependentUpon>FRMdar.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\DAR_Editor.Designer.vb">
-      <DependentUpon>DAR_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\FRMdarEditor.Designer.vb">
+      <DependentUpon>FRMdarEditor.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RPTFilter.Designer.vb">
       <DependentUpon>DAR_RPTFilter.vb</DependentUpon>
@@ -271,38 +271,38 @@
     <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.vb">
       <DependentUpon>DAR_RDS.xsd</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DARD - DAR Dashboard\DARD.Designer.vb">
-      <DependentUpon>DARD.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DARD - DAR Dashboard\FRMdard.Designer.vb">
+      <DependentUpon>FRMdard.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DRAA - DAR Area List\DRAA.Designer.vb">
-      <DependentUpon>DRAA.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DRAA - DAR Area List\FRMdraa.Designer.vb">
+      <DependentUpon>FRMdraa.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DRAA - DAR Area List\DRAA_Editor.Designer.vb">
-      <DependentUpon>DRAA_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DRAA - DAR Area List\FRMdraaEditor.Designer.vb">
+      <DependentUpon>FRMdraaEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DRTM - DAR Templates\DRTM.Designer.vb">
-      <DependentUpon>DRTM.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DRTM - DAR Templates\FRMdrtm.Designer.vb">
+      <DependentUpon>FRMdrtm.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DRTM - DAR Templates\DRTM_Editor.Designer.vb">
-      <DependentUpon>DRTM_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DRTM - DAR Templates\FRMdrtmEditor.Designer.vb">
+      <DependentUpon>FRMdrtmEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\Archives\PEPR - Archived Custom Documents\PEPR.Designer.vb">
-      <DependentUpon>PEPR.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\Archives\PEPR - Archived Custom Documents\FRMpepr.Designer.vb">
+      <DependentUpon>FRMpepr.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\Archives\PEPR - Archived Custom Documents\PEPR_Editor.Designer.vb">
-      <DependentUpon>PEPR_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\Archives\PEPR - Archived Custom Documents\FRMpeprEditor.Designer.vb">
+      <DependentUpon>FRMpeprEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS.Designer.vb">
-      <DependentUpon>REMS.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\FRMrems.Designer.vb">
+      <DependentUpon>FRMrems.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS_Editor.Designer.vb">
-      <DependentUpon>REMS_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\FRMremsEditor.Designer.vb">
+      <DependentUpon>FRMremsEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS_Editor_Progress.Designer.vb">
-      <DependentUpon>REMS_Editor_Progress.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\FRMremsEditorProgress.Designer.vb">
+      <DependentUpon>FRMremsEditorProgress.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\REMS_Editor_Switch.Designer.vb">
-      <DependentUpon>REMS_Editor_Switch.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\FRMremsEditorSwitch.Designer.vb">
+      <DependentUpon>FRMremsEditorSwitch.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\800. System Settings\100. Application\MODS - Application Modules\FRMmods.Designer.vb">
       <DependentUpon>FRMmods.vb</DependentUpon>

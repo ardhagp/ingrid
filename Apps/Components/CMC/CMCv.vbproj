@@ -101,11 +101,11 @@
     <Compile Update="2099 - Interface\3rd Party\PDFViewer\PDFVWR.Designer.vb">
       <DependentUpon>PDFVWR.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\3rd Party\PhotoViewer\PhotoViewer.Designer.vb">
-      <DependentUpon>PhotoViewer.vb</DependentUpon>
+    <Compile Update="2099 - Interface\3rd Party\PhotoViewer\FRMphotoViewer.Designer.vb">
+      <DependentUpon>FRMphotoViewer.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\3rd Party\PhotoResizer\PHTRZ.Designer.vb">
-      <DependentUpon>PHTRZ.vb</DependentUpon>
+    <Compile Update="2099 - Interface\3rd Party\PhotoResizer\FRMphtrz.Designer.vb">
+      <DependentUpon>FRMphtrz.vb</DependentUpon>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Button\btn.Designer.vb">
       <DependentUpon>btn.vb</DependentUpon>

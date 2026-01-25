@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class PDFVWR
+Partial Class FRMpdfViewer
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -20,10 +20,10 @@ Partial Class PDFVWR
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim MessageBoxSettings1 As Syncfusion.Windows.Forms.PdfViewer.MessageBoxSettings = New Windows.Forms.PdfViewer.MessageBoxSettings()
-        Dim PdfViewerPrinterSettings1 As Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings = New Windows.PdfViewer.PdfViewerPrinterSettings()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PDFVWR))
-        Dim TextSearchSettings1 As Syncfusion.Windows.Forms.PdfViewer.TextSearchSettings = New Windows.Forms.PdfViewer.TextSearchSettings()
+        Dim MessageBoxSettings2 As Syncfusion.Windows.Forms.PdfViewer.MessageBoxSettings = New Windows.Forms.PdfViewer.MessageBoxSettings()
+        Dim PdfViewerPrinterSettings2 As Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings = New Windows.PdfViewer.PdfViewerPrinterSettings()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMpdfViewer))
+        Dim TextSearchSettings2 As Syncfusion.Windows.Forms.PdfViewer.TextSearchSettings = New Windows.Forms.PdfViewer.TextSearchSettings()
         BtnClose = New btn(components)
         PDFContent = New Windows.Forms.PdfViewer.PdfViewerControl()
         PnlBottomButton.SuspendLayout()
@@ -36,21 +36,21 @@ Partial Class PDFVWR
         ' PnlBottomButton
         ' 
         PnlBottomButton.Controls.Add(BtnClose)
-        PnlBottomButton.Location = New System.Drawing.Point(0, 412)
-        PnlBottomButton.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
-        PnlBottomButton.Size = New System.Drawing.Size(766, 58)
+        PnlBottomButton.Location = New System.Drawing.Point(0, 699)
+        PnlBottomButton.Margin = New System.Windows.Forms.Padding(7, 5, 7, 5)
+        PnlBottomButton.Size = New System.Drawing.Size(1094, 97)
         PnlBottomButton.Controls.SetChildIndex(BtnClose, 0)
         ' 
         ' pnl_
         ' 
-        pnl_.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
-        pnl_.Size = New System.Drawing.Size(766, 61)
+        pnl_.Margin = New System.Windows.Forms.Padding(7, 5, 7, 5)
+        pnl_.Size = New System.Drawing.Size(1094, 104)
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(PDFContent)
-        SLFPanel.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
-        SLFPanel.Size = New System.Drawing.Size(766, 470)
+        SLFPanel.Margin = New System.Windows.Forms.Padding(7, 5, 7, 5)
+        SLFPanel.Size = New System.Drawing.Size(1094, 796)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(PDFContent, 0)
         ' 
@@ -65,10 +65,10 @@ Partial Class PDFVWR
         BtnClose.FlatStyle = Windows.Forms.FlatStyle.Flat
         BtnClose.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
         BtnClose.ForeColor = Drawing.Color.White
-        BtnClose.Location = New System.Drawing.Point(635, 8)
-        BtnClose.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        BtnClose.Location = New System.Drawing.Point(907, 13)
+        BtnClose.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         BtnClose.Name = "BtnClose"
-        BtnClose.Size = New System.Drawing.Size(117, 46)
+        BtnClose.Size = New System.Drawing.Size(167, 77)
         BtnClose.TabIndex = 1
         BtnClose.Text = "&Close"
         BtnClose.UseVisualStyleBackColor = False
@@ -90,43 +90,43 @@ Partial Class PDFVWR
         PDFContent.IsTextSearchEnabled = True
         PDFContent.IsTextSelectionEnabled = True
         PDFContent.Location = New System.Drawing.Point(0, 0)
-        PDFContent.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        MessageBoxSettings1.EnableNotification = True
-        PDFContent.MessageBoxSettings = MessageBoxSettings1
+        PDFContent.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        MessageBoxSettings2.EnableNotification = True
+        PDFContent.MessageBoxSettings = MessageBoxSettings2
         PDFContent.MinimumZoomPercentage = 50
         PDFContent.Name = "PDFContent"
         PDFContent.PageBorderThickness = 1
-        PdfViewerPrinterSettings1.Copies = 1
-        PdfViewerPrinterSettings1.PageOrientation = Windows.PdfViewer.PdfViewerPrintOrientation.Auto
-        PdfViewerPrinterSettings1.PageSize = Windows.PdfViewer.PdfViewerPrintSize.ActualSize
-        PdfViewerPrinterSettings1.PrintLocation = CType(resources.GetObject("PdfViewerPrinterSettings1.PrintLocation"), Drawing.PointF)
-        PdfViewerPrinterSettings1.ShowPrintStatusDialog = True
-        PDFContent.PrinterSettings = PdfViewerPrinterSettings1
+        PdfViewerPrinterSettings2.Copies = 1
+        PdfViewerPrinterSettings2.PageOrientation = Windows.PdfViewer.PdfViewerPrintOrientation.Auto
+        PdfViewerPrinterSettings2.PageSize = Windows.PdfViewer.PdfViewerPrintSize.ActualSize
+        PdfViewerPrinterSettings2.PrintLocation = CType(resources.GetObject("PdfViewerPrinterSettings2.PrintLocation"), Drawing.PointF)
+        PdfViewerPrinterSettings2.ShowPrintStatusDialog = True
+        PDFContent.PrinterSettings = PdfViewerPrinterSettings2
         PDFContent.ReferencePath = Nothing
         PDFContent.ScrollDisplacementValue = 0
         PDFContent.ShowHorizontalScrollBar = True
         PDFContent.ShowToolBar = True
         PDFContent.ShowVerticalScrollBar = True
-        PDFContent.Size = New System.Drawing.Size(766, 412)
+        PDFContent.Size = New System.Drawing.Size(1094, 699)
         PDFContent.SpaceBetweenPages = 8
         PDFContent.TabIndex = 999
         PDFContent.Text = "PDF Controls"
-        TextSearchSettings1.CurrentInstanceColor = Drawing.Color.FromArgb(CByte(127), CByte(255), CByte(171), CByte(64))
-        TextSearchSettings1.HighlightAllInstance = True
-        TextSearchSettings1.OtherInstanceColor = Drawing.Color.FromArgb(CByte(127), CByte(254), CByte(255), CByte(0))
-        PDFContent.TextSearchSettings = TextSearchSettings1
+        TextSearchSettings2.CurrentInstanceColor = Drawing.Color.FromArgb(CByte(127), CByte(255), CByte(171), CByte(64))
+        TextSearchSettings2.HighlightAllInstance = True
+        TextSearchSettings2.OtherInstanceColor = Drawing.Color.FromArgb(CByte(127), CByte(254), CByte(255), CByte(0))
+        PDFContent.TextSearchSettings = TextSearchSettings2
         PDFContent.ThemeName = "Office2016Colorful"
         PDFContent.VerticalScrollOffset = 0
         PDFContent.VisualStyle = Windows.Forms.PdfViewer.VisualStyle.Office2016Colorful
         PDFContent.ZoomMode = Windows.Forms.PdfViewer.ZoomMode.FitPage
         ' 
-        ' PDFVWR
+        ' FRMpdfViewer
         ' 
-        AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
-        ClientSize = New System.Drawing.Size(766, 553)
+        AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+        ClientSize = New System.Drawing.Size(1094, 922)
         KeyPreview = True
-        Margin = New System.Windows.Forms.Padding(7, 3, 7, 3)
-        Name = "PDFVWR"
+        Margin = New System.Windows.Forms.Padding(10, 5, 10, 5)
+        Name = "FRMpdfViewer"
         PnlBottomButton.ResumeLayout(False)
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
         pnl_.ResumeLayout(False)

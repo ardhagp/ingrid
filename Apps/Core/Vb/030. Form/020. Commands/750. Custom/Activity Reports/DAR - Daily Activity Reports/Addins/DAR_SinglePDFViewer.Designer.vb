@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class DAR_SinglePDFViewer
-    Inherits CMCv.PDFVWR
+    Inherits CMCv.FRMpdfViewer
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>

@@ -2,7 +2,7 @@
 Imports System.Runtime.Versioning
 Imports System.Windows.Forms.DataVisualization.Charting
 
-Namespace Commands.DARD
+Namespace CMDdard
     Public Class View
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetDailyStatistic(databasename As String, chrt As Chart)

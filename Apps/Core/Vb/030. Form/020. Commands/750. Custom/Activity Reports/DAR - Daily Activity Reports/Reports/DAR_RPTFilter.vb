@@ -1,25 +1,25 @@
 ﻿Imports System.Runtime.Versioning
 
 Public Class DAR_RPTFilter
-    Private _SQLview As New Commands.DAR.View
-    Private _SQLeditor As New Commands.DAR.Editor
-    Private _SQL As New Commands.DAR.Reports
+    Private _SQLview As New CMDdar.View
+    Private _SQLeditor As New CMDdar.Editor
+    Private _SQL As New CMDdar.Reports
     Private _DS As DAR_RDS
     Private WithEvents _DAR_RPTContainer As DAR_RPTContainer
 
     <SupportedOSPlatform("windows")>
     Private Sub FillEmployee()
-        Commands.DAR.View.FillEmployee(varDatabaseName, varDatabaseEngine, CboBy)
+        CMDdar.View.FillEmployee(varDatabaseName, varDatabaseEngine, CboBy)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub GETAffectedArea()
-        Commands.DAR.Editor.GetAffectedArea(varDatabaseName, varDatabaseEngine, CboArea)
+        CMDdar.Editor.GetAffectedArea(varDatabaseName, varDatabaseEngine, CboArea)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub GETActivity()
-        Commands.DAR.Editor.GetTemplateTitle(varDatabaseName, varDatabaseEngine, CboActivity)
+        CMDdar.Editor.GetTemplateTitle(varDatabaseName, varDatabaseEngine, CboActivity)
     End Sub
 
     Private Sub ChkFrom_CheckedChanged(sender As Object, e As EventArgs) Handles ChkFrom.CheckedChanged
@@ -100,7 +100,7 @@ Public Class DAR_RPTFilter
     <SupportedOSPlatform("windows")>
     Private Sub BtnShow_Click(sender As Object, e As EventArgs) Handles BtnShow.Click
         _DS = New DAR_RDS
-        Commands.DAR.Reports.Display(varDatabaseName, varDatabaseEngine, ChkFrom, ChkTo, ChkArea, ChkActivity, ChkBy, DtpFrom, DtpTo, CboArea, CboActivity, CboBy, TxtDescription, _DS)
+        CMDdar.Reports.Display(varDatabaseName, varDatabaseEngine, ChkFrom, ChkTo, ChkArea, ChkActivity, ChkBy, DtpFrom, DtpTo, CboArea, CboActivity, CboBy, TxtDescription, _DS)
 
         Dim _Color As Boolean
 
