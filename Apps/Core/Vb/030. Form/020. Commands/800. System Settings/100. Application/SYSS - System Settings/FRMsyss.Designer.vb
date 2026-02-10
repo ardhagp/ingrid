@@ -155,7 +155,7 @@ Partial Class FRMsyss
         ULbl3.SLFText = "Show News Ticker"
         ULbl3.SLFTextAdjuster = False
         ULbl3.SLFTextBorder = False
-        ULbl3.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl3.TabIndex = 9
         ' 
         ' ULbl2
@@ -168,7 +168,7 @@ Partial Class FRMsyss
         ULbl2.SLFText = "Show Storage"
         ULbl2.SLFTextAdjuster = False
         ULbl2.SLFTextBorder = False
-        ULbl2.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl2.TabIndex = 8
         ' 
         ' ULbl1
@@ -181,7 +181,7 @@ Partial Class FRMsyss
         ULbl1.SLFText = "Show Profile"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
-        ULbl1.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl1.TabIndex = 7
         ' 
         ' CboProfile
@@ -259,7 +259,7 @@ Partial Class FRMsyss
         ULbl7.SLFText = "Text"
         ULbl7.SLFTextAdjuster = False
         ULbl7.SLFTextBorder = False
-        ULbl7.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl7.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl7.TabIndex = 15
         ' 
         ' ULbl6
@@ -272,7 +272,7 @@ Partial Class FRMsyss
         ULbl6.SLFText = "Show To"
         ULbl6.SLFTextAdjuster = False
         ULbl6.SLFTextBorder = False
-        ULbl6.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl6.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl6.TabIndex = 14
         ' 
         ' CboWatermark
@@ -345,7 +345,7 @@ Partial Class FRMsyss
         ULbl5.SLFText = "PDF"
         ULbl5.SLFTextAdjuster = False
         ULbl5.SLFTextBorder = False
-        ULbl5.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl5.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl5.TabIndex = 17
         ' 
         ' ULbl4
@@ -358,7 +358,7 @@ Partial Class FRMsyss
         ULbl4.SLFText = "Photo"
         ULbl4.SLFTextAdjuster = False
         ULbl4.SLFTextBorder = False
-        ULbl4.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl4.TabIndex = 16
         ' 
         ' Lbl7
@@ -444,7 +444,7 @@ Partial Class FRMsyss
         ULbl8.SLFText = "Minimum Length"
         ULbl8.SLFTextAdjuster = False
         ULbl8.SLFTextBorder = False
-        ULbl8.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl8.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl8.TabIndex = 2
         ' 
         ' nudMinPassword

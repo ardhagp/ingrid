@@ -1,7 +1,6 @@
 ﻿Imports System.Data
 Imports System.Runtime.Versioning
 Imports CMCv
-Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Namespace Application
 
@@ -71,7 +70,7 @@ Namespace Application
                     varDatabaseRequestMssql2008(1).Query = String.Format("select count(mo.module_id) from dbo.sys_module mo where mo.module_code = '{0}'", tcode)
                     varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Boolean)
                 ElseIf dbengine = "MYSQL" Then
-
+                    'execute mysql query here
                 End If
 
                 Return varIsExist

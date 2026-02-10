@@ -27,7 +27,7 @@ Public Class FRMuacEmployee
 
     Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
         If DgnAddinEmployee.RowCount = 0 Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             With DgnAddinEmployee.CurrentRow
                 varFormProperties.Field01 = .Cells("employee_id").Value

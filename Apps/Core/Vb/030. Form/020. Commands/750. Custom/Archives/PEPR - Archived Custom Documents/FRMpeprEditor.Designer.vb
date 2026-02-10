@@ -852,7 +852,7 @@ Partial Class FRMpeprEditor
         ULbl1.SLFText = "Archive Code"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
-        ULbl1.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl1.TabIndex = 1009
         ' 
         ' ULbl2
@@ -865,7 +865,7 @@ Partial Class FRMpeprEditor
         ULbl2.SLFText = "Name / Title"
         ULbl2.SLFTextAdjuster = False
         ULbl2.SLFTextBorder = False
-        ULbl2.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl2.TabIndex = 1010
         ' 
         ' ULbl3
@@ -878,7 +878,7 @@ Partial Class FRMpeprEditor
         ULbl3.SLFText = "Category"
         ULbl3.SLFTextAdjuster = False
         ULbl3.SLFTextBorder = False
-        ULbl3.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl3.TabIndex = 1011
         ' 
         ' ULbl4
@@ -891,7 +891,7 @@ Partial Class FRMpeprEditor
         ULbl4.SLFText = "Short Desc."
         ULbl4.SLFTextAdjuster = False
         ULbl4.SLFTextBorder = False
-        ULbl4.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl4.TabIndex = 1012
         ' 
         ' ULbl5
@@ -904,7 +904,7 @@ Partial Class FRMpeprEditor
         ULbl5.SLFText = "Keywords"
         ULbl5.SLFTextAdjuster = False
         ULbl5.SLFTextBorder = False
-        ULbl5.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl5.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl5.TabIndex = 1013
         ' 
         ' ULbl6
@@ -917,7 +917,7 @@ Partial Class FRMpeprEditor
         ULbl6.SLFText = "Attachment(s)"
         ULbl6.SLFTextAdjuster = False
         ULbl6.SLFTextBorder = False
-        ULbl6.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl6.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl6.TabIndex = 1014
         ' 
         ' FRMpeprEditor

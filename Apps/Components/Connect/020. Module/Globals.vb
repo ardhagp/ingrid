@@ -23,7 +23,7 @@ Module Globals
     Public varRevision As Integer = My.Application.Info.Version.Revision
     Public varApplicationVersion As String = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
 
-    Public WithEvents MSG As New frmDialogBox
+    Public WithEvents MSG As New FRMdialogbox
     Public WithEvents ERC As New frmErrorReporting
     Public ErrorCatcher As New Ladybug.Log.Fields
 
@@ -39,10 +39,10 @@ Module Globals
     ''' <param name="buttontype"></param>
     ''' <returns></returns>
     Public Function Decision(message As String, title As String,
-                             messageicon As CMCv.frmDialogBox.MessageIcon,
-                             buttontype As CMCv.frmDialogBox.MessageTypes) As _
+                             messageicon As CMCv.FRMdialogbox.MessageIcon,
+                             buttontype As CMCv.FRMdialogbox.MessageTypes) As _
                              System.Windows.Forms.DialogResult
-        MSG = New CMCv.frmDialogBox(message, title, messageicon, buttontype)
+        MSG = New CMCv.FRMdialogbox(message, title, messageicon, buttontype)
         Return MSG.ShowDialog()
         MSG.Dispose()
     End Function

@@ -4,7 +4,7 @@ Imports System.Drawing.Drawing2D
 Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
-Public Class pgb
+Public Class Pgb
     Inherits System.Windows.Forms.ProgressBar
 
     <SupportedOSPlatform("windows")>
@@ -12,8 +12,8 @@ Public Class pgb
         InitializeComponent()
         Call ActivateLicenses()
         MyBase.ForeColor = Color.DodgerBlue
-        Me.XOArahGradien = ControlCodeBase.enuArahGradien.Horizontal
-        Me.XOWarnaProgressBar = ControlCodeBase.enuJenisWarna.Solid
+        Me.XOArahGradien = ControlCodeBase.ArahGradien.Horizontal
+        Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Solid
         Me.SetStyle(ControlStyles.UserPaint, True)
     End Sub
 
@@ -35,13 +35,13 @@ Public Class pgb
         rec.Width = CInt(Math.Truncate((rec.Width * scalefactor) - 4))
         rec.Height -= 4
 
-        If Me.XOWarnaProgressBar = ControlCodeBase.enuJenisWarna.Gradien AndAlso Me.XOArahGradien = ControlCodeBase.enuArahGradien.Vertikal Then
+        If Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Gradien AndAlso Me.XOArahGradien = ControlCodeBase.ArahGradien.Vertikal Then
             brush = New LinearGradientBrush(rec, Me.ForeColor, Me.BackColor, LinearGradientMode.Vertical)
-        ElseIf Me.XOWarnaProgressBar = ControlCodeBase.enuJenisWarna.Solid AndAlso Me.XOArahGradien = ControlCodeBase.enuArahGradien.Vertikal Then
+        ElseIf Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Solid AndAlso Me.XOArahGradien = ControlCodeBase.ArahGradien.Vertikal Then
             brush = New LinearGradientBrush(rec, Me.ForeColor, Me.ForeColor, LinearGradientMode.Vertical)
-        ElseIf Me.XOWarnaProgressBar = ControlCodeBase.enuJenisWarna.Gradien AndAlso Me.XOArahGradien = ControlCodeBase.enuArahGradien.Horizontal Then
+        ElseIf Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Gradien AndAlso Me.XOArahGradien = ControlCodeBase.ArahGradien.Horizontal Then
             brush = New LinearGradientBrush(rec, Me.ForeColor, Me.BackColor, LinearGradientMode.Horizontal)
-        ElseIf Me.XOWarnaProgressBar = ControlCodeBase.enuJenisWarna.Solid AndAlso Me.XOArahGradien = ControlCodeBase.enuArahGradien.Horizontal Then
+        ElseIf Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Solid AndAlso Me.XOArahGradien = ControlCodeBase.ArahGradien.Horizontal Then
             brush = New LinearGradientBrush(rec, Me.ForeColor, Me.ForeColor, LinearGradientMode.Horizontal)
         End If
         brush2 = New LinearGradientBrush(rec, Me.BackColor, Me.BackColor, LinearGradientMode.Vertical)
@@ -51,27 +51,27 @@ Public Class pgb
         e.Graphics.FillRectangle(brush, 2, 2, rec.Width, rec.Height)
     End Sub
 
-    Private _varWarnaProgressBar As ControlCodeBase.enuJenisWarna
+    Private varWarnaProgressBar As ControlCodeBase.JenisWarna
     <Category("Appearance"),
     Description("Warna progressbar")>
-    Public Property XOWarnaProgressBar As ControlCodeBase.enuJenisWarna
+    Public Property XOWarnaProgressBar As ControlCodeBase.JenisWarna
         Get
-            Return _varWarnaProgressBar
+            Return varWarnaProgressBar
         End Get
-        Set(value As ControlCodeBase.enuJenisWarna)
-            _varWarnaProgressBar = value
+        Set(value As ControlCodeBase.JenisWarna)
+            varWarnaProgressBar = value
         End Set
     End Property
 
-    Private _varArahGradien As ControlCodeBase.enuArahGradien
+    Private varArahGradien As ControlCodeBase.ArahGradien
     <Category("Appearance"),
     Description("Arah gradien")>
-    Public Property XOArahGradien As ControlCodeBase.enuArahGradien
+    Public Property XOArahGradien As ControlCodeBase.ArahGradien
         Get
-            Return _varArahGradien
+            Return varArahGradien
         End Get
-        Set(value As ControlCodeBase.enuArahGradien)
-            _varArahGradien = value
+        Set(value As ControlCodeBase.ArahGradien)
+            varArahGradien = value
         End Set
     End Property
 #End Region

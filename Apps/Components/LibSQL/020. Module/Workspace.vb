@@ -1,5 +1,4 @@
-﻿Imports System
-Imports System.Runtime.Versioning
+﻿Imports System.Runtime.Versioning
 
 Public Class Workspace
     <SupportedOSPlatform("windows")>

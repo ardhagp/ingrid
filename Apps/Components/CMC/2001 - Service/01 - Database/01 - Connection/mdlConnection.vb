@@ -1,7 +1,7 @@
 ﻿Module mdlConnection
 #Region "Variables"
-    Friend V_Result As String
-    Friend V_Param As String
-    Friend V_Info As String
+    Friend varResult As String
+    Friend varParam As String
+    Friend varInfo As String
 #End Region
 End Module

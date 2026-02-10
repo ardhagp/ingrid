@@ -18,7 +18,7 @@ Public Class ControlCodeBase
     ''' Enumerasi jenis warna label
     ''' </summary>
     ''' <remarks></remarks>
-    Public Enum enuJenisLabel
+    Public Enum JenisLabel
         [Default] = 1
         Green = 2
         Red = 3
@@ -31,7 +31,7 @@ Public Class ControlCodeBase
     ''' Enumerasi jenis warna
     ''' </summary>
     ''' <remarks></remarks>
-    Public Enum enuJenisWarna
+    Public Enum JenisWarna
         Solid = 1
         Gradien = 2
     End Enum
@@ -40,7 +40,7 @@ Public Class ControlCodeBase
     ''' Enumerasi arah gradien
     ''' </summary>
     ''' <remarks></remarks>
-    Public Enum enuArahGradien
+    Public Enum ArahGradien
         Vertikal = 1
         Horizontal = 2
     End Enum
@@ -49,7 +49,7 @@ Public Class ControlCodeBase
     ''' Enumerasi jenis validasi
     ''' </summary>
     ''' <remarks></remarks>
-    Public Enum enuJenisValidasi
+    Public Enum JenisValidasi
         Email = 1
         HanyaAngka = 2
         TanpaValidasi = 99
@@ -94,8 +94,8 @@ Public Class ControlCodeBase
     ''' <param name="GMax">Nilai maksimum warna hijau</param>
     ''' <param name="BMin">Nilai minimum warna biru</param>
     ''' <param name="BMax">Nilai maksimum warna biru</param>
-    Public Shared Function WarnaAcakBaru(ByVal RMin As Integer, ByVal RMax As Integer, ByVal GMin As Integer, ByVal GMax As Integer, ByVal BMin As Integer, ByVal BMax As Integer) As System.Drawing.Color
-        Return System.Drawing.Color.FromArgb(V_randomcolor.Next(RMin, RMax), V_randomcolor.Next(GMin, GMax), V_randomcolor.Next(BMin, BMax))
+    Public Shared Function WarnaAcakBaru(rmin As Integer, rmax As Integer, gmin As Integer, gmax As Integer, bmin As Integer, bmax As Integer) As System.Drawing.Color
+        Return System.Drawing.Color.FromArgb(varRandomColor.Next(rmin, rmax), varRandomColor.Next(gmin, gmax), varRandomColor.Next(bmin, bmax))
     End Function
 
     ''' <summary>
@@ -106,31 +106,31 @@ Public Class ControlCodeBase
     ''' <param name="ValIntensitasPerubahan">Intensitas perubahan.</param>
     ''' <returns>Wara RGB</returns>
     <SupportedOSPlatform("windows")>
-    Public Shared Function AmbilWarna(ByVal ValWarnaObjek As System.Drawing.Color, ByVal ValOpasitasWarna As enuOpasitasWarna, ByVal ValIntensitasPerubahan As Integer) As System.Drawing.Color
-        Dim re As Integer = ValWarnaObjek.R
-        Dim gr As Integer = ValWarnaObjek.G
-        Dim bl As Integer = ValWarnaObjek.B
+    Public Shared Function AmbilWarna(valwarnaObjek As System.Drawing.Color, valopasitaswarna As enuOpasitasWarna, valintensitasperubahan As Integer) As System.Drawing.Color
+        Dim re As Integer = valwarnaObjek.R
+        Dim gr As Integer = valwarnaObjek.G
+        Dim bl As Integer = valwarnaObjek.B
 
-        Select Case ValOpasitasWarna
+        Select Case valopasitaswarna
             Case enuOpasitasWarna.Darker
-                If (re >= (0 + ValIntensitasPerubahan)) Then
-                    re -= ValIntensitasPerubahan
+                If (re >= (0 + valintensitasperubahan)) Then
+                    re -= valintensitasperubahan
                 End If
-                If (gr >= (0 + ValIntensitasPerubahan)) Then
-                    gr -= ValIntensitasPerubahan
+                If (gr >= (0 + valintensitasperubahan)) Then
+                    gr -= valintensitasperubahan
                 End If
-                If (bl >= (0 + ValIntensitasPerubahan)) Then
-                    bl -= ValIntensitasPerubahan
+                If (bl >= (0 + valintensitasperubahan)) Then
+                    bl -= valintensitasperubahan
                 End If
             Case enuOpasitasWarna.Lighter
-                If (re <= (255 - ValIntensitasPerubahan)) Then
-                    re += ValIntensitasPerubahan
+                If (re <= (255 - valintensitasperubahan)) Then
+                    re += valintensitasperubahan
                 End If
-                If (gr <= (255 - ValIntensitasPerubahan)) Then
-                    gr += ValIntensitasPerubahan
+                If (gr <= (255 - valintensitasperubahan)) Then
+                    gr += valintensitasperubahan
                 End If
-                If (bl <= (255 - ValIntensitasPerubahan)) Then
-                    bl += ValIntensitasPerubahan
+                If (bl <= (255 - valintensitasperubahan)) Then
+                    bl += valintensitasperubahan
                 End If
         End Select
 

@@ -16,7 +16,7 @@ Public Class ULbl
         Me.SLFTextAdjuster = False
         Me.SLFText = "Text"
         Me.SLFTextBorder = False
-        Me.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Default
+        Me.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
     End Sub
 
     Private _varText As String
@@ -57,67 +57,67 @@ Public Class ULbl
         End If
     End Sub
 
-    Private _varReadjustText As Boolean
+    Private varReadjustText As Boolean
     <System.ComponentModel.Description("Enable this to readjust text
 ")>
     Public Property SLFTextAdjuster As Boolean
         Get
-            Return _varReadjustText
+            Return varReadjustText
         End Get
         Set(value As Boolean)
-            _varReadjustText = value
+            varReadjustText = value
             Call ReadjustText(value)
         End Set
     End Property
 
-    Private Sub ReadjustText(ByVal _value As Boolean)
-        If _value = True Then
+    Private Sub ReadjustText(value As Boolean)
+        If value Then
             tmr_.Enabled = True
         Else
             tmr_.Enabled = False
         End If
     End Sub
 
-    Private _varWarnaLabel As ControlCodeBase.enuJenisLabel
+    Private varWarnaLabel As ControlCodeBase.JenisLabel
     <System.ComponentModel.Description("Color options")>
-    Public Property SLFWarnaLabel() As ControlCodeBase.enuJenisLabel
+    Public Property SLFWarnaLabel() As ControlCodeBase.JenisLabel
         Get
-            Return _varWarnaLabel
+            Return varWarnaLabel
         End Get
-        Set(value As ControlCodeBase.enuJenisLabel)
-            _varWarnaLabel = value
+        Set(value As ControlCodeBase.JenisLabel)
+            varWarnaLabel = value
             GantiWarnaLabel(value)
         End Set
     End Property
 
-    Private Sub GantiWarnaLabel(ByVal _valEnuJenisTombol As ControlCodeBase.enuJenisLabel)
-        Select Case _valEnuJenisTombol
-            Case ControlCodeBase.enuJenisLabel.Green
+    Private Sub GantiWarnaLabel(valEnuJenisTombol As ControlCodeBase.JenisLabel)
+        Select Case valEnuJenisTombol
+            Case ControlCodeBase.JenisLabel.Green
                 UText.ForeColor = Drawing.Color.Black
                 UText.BackColor = Drawing.Color.Transparent
                 UHead.BackColor = Drawing.Color.LimeGreen
                 MyBase.BackColor = Drawing.Color.MintCream
-            Case ControlCodeBase.enuJenisLabel.Red
+            Case ControlCodeBase.JenisLabel.Red
                 UText.ForeColor = Drawing.Color.Black
                 UText.BackColor = Drawing.Color.Transparent
                 UHead.BackColor = Drawing.Color.Red
                 MyBase.BackColor = Drawing.Color.MistyRose
-            Case ControlCodeBase.enuJenisLabel.Default
+            Case ControlCodeBase.JenisLabel.Default
                 UText.ForeColor = Drawing.Color.Black
                 UText.BackColor = Drawing.Color.Transparent
                 UHead.BackColor = Drawing.Color.RoyalBlue
                 MyBase.BackColor = Drawing.Color.AliceBlue
-            Case ControlCodeBase.enuJenisLabel.Yellow
+            Case ControlCodeBase.JenisLabel.Yellow
                 UText.ForeColor = Drawing.Color.Black
                 UText.BackColor = Drawing.Color.Transparent
                 UHead.BackColor = Drawing.Color.DarkOrange
                 MyBase.BackColor = Drawing.Color.Moccasin
-            Case ControlCodeBase.enuJenisLabel.Grey
+            Case ControlCodeBase.JenisLabel.Grey
                 UText.ForeColor = Drawing.Color.Black
                 UText.BackColor = Drawing.Color.Transparent
                 UHead.BackColor = Drawing.Color.DarkGray
                 MyBase.BackColor = Drawing.Color.WhiteSmoke
-            Case ControlCodeBase.enuJenisLabel.Custom
+            Case ControlCodeBase.JenisLabel.Custom
                 UText.ForeColor = Drawing.Color.Black
                 UText.BackColor = Drawing.Color.Transparent
                 'UHead.BackColor = System.Drawing.Color.Orange

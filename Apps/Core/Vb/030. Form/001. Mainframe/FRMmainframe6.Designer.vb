@@ -1012,7 +1012,7 @@ Partial Class FRMmainframe6
         ' LblPosition
         ' 
         LblPosition.AutoSize = True
-        LblPosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        LblPosition.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         LblPosition.ForeColor = Color.Yellow
         LblPosition.Location = New Point(187, 157)
         LblPosition.Margin = New Padding(4, 0, 4, 0)
@@ -1118,7 +1118,7 @@ Partial Class FRMmainframe6
         TxtRunning.BackColor = Color.White
         TxtRunning.BorderStyle = BorderStyle.FixedSingle
         TxtRunning.Dock = DockStyle.Top
-        TxtRunning.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtRunning.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtRunning.Location = New Point(0, 42)
         TxtRunning.Margin = New Padding(4, 5, 4, 5)
         TxtRunning.MaxLength = 255

@@ -277,11 +277,11 @@ Public Class txt
 
         varSqlSafeText = varSqlSafeText.Replace("select ", "").Replace("'", "").Replace(";", "").Replace("--", "").Replace("drop table ", "").Replace("update ", "").Replace("insert into ", "").Replace("--", "").Replace("xp_", "").Trim
         If XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA Then
-            varSQLSafeText = varSQLSafeText.ToUpper(CultureInfo.CurrentCulture)
+            varSqlSafeText = varSqlSafeText.ToUpper(CultureInfo.CurrentCulture)
         ElseIf XOJenisKapital = ControlCodeBase.enuJenisKapital.kecilsemua Then
-            varSQLSafeText = varSQLSafeText.ToLower(CultureInfo.CurrentCulture)
+            varSqlSafeText = varSqlSafeText.ToLower(CultureInfo.CurrentCulture)
         End If
-        Return varSQLSafeText
+        Return varSqlSafeText
     End Function
 
     Private Sub CheckRestriction(valenurestriction As ControlCodeBase.enuRestriction)

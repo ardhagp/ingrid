@@ -272,7 +272,7 @@ Partial Class FRMpostEditor
         ULbl1.SLFText = "Company"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
-        ULbl1.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl1.TabIndex = 1014
         ' 
         ' ULbl2
@@ -285,7 +285,7 @@ Partial Class FRMpostEditor
         ULbl2.SLFText = "Department"
         ULbl2.SLFTextAdjuster = False
         ULbl2.SLFTextBorder = False
-        ULbl2.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl2.TabIndex = 1015
         ' 
         ' ULbl3
@@ -298,7 +298,7 @@ Partial Class FRMpostEditor
         ULbl3.SLFText = "Position Code"
         ULbl3.SLFTextAdjuster = False
         ULbl3.SLFTextBorder = False
-        ULbl3.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl3.TabIndex = 1016
         ' 
         ' ULbl4
@@ -311,7 +311,7 @@ Partial Class FRMpostEditor
         ULbl4.SLFText = "Position Name"
         ULbl4.SLFTextAdjuster = False
         ULbl4.SLFTextBorder = False
-        ULbl4.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl4.TabIndex = 1017
         ' 
         ' ULbl5
@@ -324,7 +324,7 @@ Partial Class FRMpostEditor
         ULbl5.SLFText = "Description"
         ULbl5.SLFTextAdjuster = False
         ULbl5.SLFTextBorder = False
-        ULbl5.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl5.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl5.TabIndex = 1018
         ' 
         ' FRMpostEditor

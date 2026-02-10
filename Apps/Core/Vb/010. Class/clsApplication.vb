@@ -3,14 +3,14 @@ Imports System.Runtime.Versioning
 
 Namespace Application
     Public Class Access
-        ReadOnly V_SQL As New LibSQL.Application.Access
+        ReadOnly varSQL As New LibSQL.Application.Access
 
         <SupportedOSPlatform("windows")>
         Public Function User(databasename As String, tcode As String, uid As String, typeofaccess As LibSQL.Application.Access.TypeOfAccess, Optional status As stt = Nothing) As Boolean
             Dim varAccessValue As Boolean
 
             Try
-                varAccessValue = CType(V_SQL.User(databasename, tcode, uid, typeofaccess), Boolean)
+                varAccessValue = CType(varSQL.User(databasename, tcode, uid, typeofaccess), Boolean)
 
                 If Not varAccessValue Then
                     SystemSounds.Exclamation.Play()

@@ -49,10 +49,10 @@ Public Class FRMapplauncher
     End Sub
 
     Private Sub Frmmainframe6_IngridFrameClose() Handles Frm_mainframe6.EventMainframeClose
-        Me.Close()
+        Close()
     End Sub
 
-    Private Sub tmrCountdown_Tick(sender As Object, e As EventArgs) Handles tmrCountdown.Tick
+    Private Sub TmrCountdown_Tick(sender As Object, e As EventArgs) Handles tmrCountdown.Tick
         varSecond -= 1
 
         If (varSecond = 0) Then
@@ -85,20 +85,20 @@ Public Class FRMapplauncher
 
     Private Sub Frmconn_ConnectFrameClose() Handles Frm_conn.ConnectFrameClose
         Frm_conn.Dispose()
-        Me.Show()
+        Show()
         LblCountdown.Text = "by clicking Launch button"
         BtnClose.Visible = True
     End Sub
 
     Private Sub Frmmainframe6_IngridFrameOpen() Handles Frm_mainframe6.EventMainframeOpen
-        Me.Close()
+        Close()
     End Sub
 
     Private Sub Frmconn_ConnectFrameOpen() Handles Frm_conn.ConnectFrameOpen
-        Me.Hide()
+        Hide()
     End Sub
 
     Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
-        Me.Close()
+        Close()
     End Sub
 End Class

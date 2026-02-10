@@ -964,7 +964,7 @@ Partial Class FRMdarEditor
         ULbl1.SLFText = "Activity Start"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
-        ULbl1.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl1.TabIndex = 1003
         ' 
         ' ULbl2
@@ -977,7 +977,7 @@ Partial Class FRMdarEditor
         ULbl2.SLFText = "To"
         ULbl2.SLFTextAdjuster = False
         ULbl2.SLFTextBorder = False
-        ULbl2.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl2.TabIndex = 1004
         ' 
         ' ULbl3
@@ -990,7 +990,7 @@ Partial Class FRMdarEditor
         ULbl3.SLFText = "Area Affected"
         ULbl3.SLFTextAdjuster = False
         ULbl3.SLFTextBorder = False
-        ULbl3.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl3.TabIndex = 1005
         ' 
         ' ULbl4
@@ -1003,7 +1003,7 @@ Partial Class FRMdarEditor
         ULbl4.SLFText = "Activity Template"
         ULbl4.SLFTextAdjuster = False
         ULbl4.SLFTextBorder = False
-        ULbl4.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl4.TabIndex = 1006
         ' 
         ' ULbl5
@@ -1016,7 +1016,7 @@ Partial Class FRMdarEditor
         ULbl5.SLFText = "Description"
         ULbl5.SLFTextAdjuster = False
         ULbl5.SLFTextBorder = False
-        ULbl5.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl5.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl5.TabIndex = 1007
         ' 
         ' ULbl6
@@ -1029,7 +1029,7 @@ Partial Class FRMdarEditor
         ULbl6.SLFText = "Feedback" & vbCrLf & "(Supv. Only)"
         ULbl6.SLFTextAdjuster = False
         ULbl6.SLFTextBorder = False
-        ULbl6.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl6.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl6.TabIndex = 1008
         ' 
         ' ULbl7
@@ -1042,7 +1042,7 @@ Partial Class FRMdarEditor
         ULbl7.SLFText = "Attachment(s)"
         ULbl7.SLFTextAdjuster = False
         ULbl7.SLFTextBorder = False
-        ULbl7.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl7.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl7.TabIndex = 1009
         ' 
         ' FRMdarEditor

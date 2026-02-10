@@ -35,8 +35,8 @@ Partial Class UPwdStrength
         pgb_PwdStrengthIndicator.Location = New System.Drawing.Point(0, 0)
         pgb_PwdStrengthIndicator.Name = "pgb_PwdStrengthIndicator"
         pgb_PwdStrengthIndicator.Size = New System.Drawing.Size(225, 23)
-        pgb_PwdStrengthIndicator.XOArahGradien = ControlCodeBase.enuArahGradien.Horizontal
-        pgb_PwdStrengthIndicator.XOWarnaProgressBar = ControlCodeBase.enuJenisWarna.Solid
+        pgb_PwdStrengthIndicator.XOArahGradien = ControlCodeBase.ArahGradien.Horizontal
+        pgb_PwdStrengthIndicator.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Solid
         pgb_PwdStrengthIndicator.TabIndex = 0
         ' 
         ' LblPwdStrength_Text

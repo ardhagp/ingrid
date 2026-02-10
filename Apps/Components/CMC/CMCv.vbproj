@@ -90,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Update="2001 - Service\97 - Dialog Box\frmDialogBox.Designer.vb">
-      <DependentUpon>frmDialogBox.vb</DependentUpon>
+      <DependentUpon>FRMdialogbox.vb</DependentUpon>
     </Compile>
     <Compile Update="2099 - Interface\1st Party\ULbl.Designer.vb">
       <DependentUpon>ULbl.vb</DependentUpon>
@@ -108,9 +108,9 @@
       <DependentUpon>FRMphtrz.vb</DependentUpon>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Button\btn.Designer.vb">
-      <DependentUpon>btn.vb</DependentUpon>
+      <DependentUpon>Btn.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Button\btn.vb">
+    <Compile Update="2099 - Interface\Controls\Button\Btn.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\CheckBox\chk.Designer.vb">

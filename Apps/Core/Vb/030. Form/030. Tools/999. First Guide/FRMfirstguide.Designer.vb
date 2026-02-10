@@ -152,7 +152,7 @@ Partial Class FRMfirstguide
         ULbl5.SLFText = "Your Employee ID#"
         ULbl5.SLFTextAdjuster = False
         ULbl5.SLFTextBorder = False
-        ULbl5.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl5.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl5.TabIndex = 1007
         ' 
         ' Txt_EmployeeID
@@ -195,7 +195,7 @@ Partial Class FRMfirstguide
         ULbl4.SLFText = "Your Name"
         ULbl4.SLFTextAdjuster = False
         ULbl4.SLFTextBorder = False
-        ULbl4.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl4.TabIndex = 1005
         ' 
         ' ULbl3
@@ -208,7 +208,7 @@ Partial Class FRMfirstguide
         ULbl3.SLFText = "Position"
         ULbl3.SLFTextAdjuster = False
         ULbl3.SLFTextBorder = False
-        ULbl3.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl3.TabIndex = 1004
         ' 
         ' ULbl2
@@ -221,7 +221,7 @@ Partial Class FRMfirstguide
         ULbl2.SLFText = "Department"
         ULbl2.SLFTextAdjuster = False
         ULbl2.SLFTextBorder = False
-        ULbl2.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl2.TabIndex = 1003
         ' 
         ' ULbl1
@@ -234,7 +234,7 @@ Partial Class FRMfirstguide
         ULbl1.SLFText = "Company"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
-        ULbl1.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl1.TabIndex = 1002
         ' 
         ' Txt_EmployeeName
@@ -438,7 +438,7 @@ Partial Class FRMfirstguide
         ULbl7.SLFText = "Password"
         ULbl7.SLFTextAdjuster = False
         ULbl7.SLFTextBorder = False
-        ULbl7.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Red
+        ULbl7.SLFWarnaLabel = ControlCodeBase.JenisLabel.Red
         ULbl7.TabIndex = 9
         ' 
         ' ULbl6
@@ -451,7 +451,7 @@ Partial Class FRMfirstguide
         ULbl6.SLFText = "Username"
         ULbl6.SLFTextAdjuster = False
         ULbl6.SLFTextBorder = False
-        ULbl6.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Red
+        ULbl6.SLFWarnaLabel = ControlCodeBase.JenisLabel.Red
         ULbl6.TabIndex = 8
         ' 
         ' Txt_Password

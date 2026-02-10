@@ -2,37 +2,39 @@ Imports Amazon.S3.Model
 Imports Amazon.Runtime
 Imports Amazon.S3
 
-Namespace API
+Namespace Api
     Public Class BackblazeB2
-        Private varAccessKey As String
-        Private varSecretKey As String
-        Private varServiceURL As String
-        Private AWSCredentials As BasicAWSCredentials
-        Private AWSClient As IAmazonS3
+        Private ReadOnly varAccessKey As String
+        Private ReadOnly varSecretKey As String
+        Private ReadOnly varServiceURL As String
+        Private ReadOnly AWSCredentials As BasicAWSCredentials
+        Private ReadOnly AWSClient As IAmazonS3
 
-        Private Sub New(ByVal AccessKey As String, ByVal SecretKey As String, ByVal ServiceURL As String)
-            varAccessKey = AccessKey
-            varSecretKey = SecretKey
-            varServiceURL = ServiceURL
+        Private Sub New(accessKey As String, secretkey As String, serviceurl As String)
+            varAccessKey = accessKey
+            varSecretKey = secretkey
+            varServiceURL = serviceurl
 
-            Dim AWSConfig As New AmazonS3Config With {
-                .ServiceURL = ServiceURL,
+            Dim varAwsConfig As New AmazonS3Config With {
+                .ServiceURL = serviceurl,
                 .ForcePathStyle = True
             }
 
-            AWSCredentials = New BasicAWSCredentials(AccessKey, SecretKey)
-            AWSClient = New AmazonS3Client(AWSCredentials, AWSConfig)
+            AWSCredentials = New BasicAWSCredentials(accessKey, secretkey)
+            AWSClient = New AmazonS3Client(AWSCredentials, varAwsConfig)
         End Sub
 
-        Private Async Function Upload(ByVal BucketName As String, ByVal Key As String, ByVal FilePath As String) As Task
-            Dim AWSRequest As New PutObjectRequest With {
-                .BucketName = BucketName,
-                .Key = Key,
-                .FilePath = FilePath
+        Private Async Function Upload(bucketname As String, key As String, filepath As String) As Task
+            Dim varAwsRequest As New PutObjectRequest With {
+                .BucketName = bucketname,
+                .Key = key,
+                .FilePath = filepath
                 }
 
-            Dim AWSResponse As PutObjectResponse = Await AWSClient.PutObjectAsync(AWSRequest)
+            Dim varAwsResponse As PutObjectResponse
+            varAwsResponse = Await AWSClient.PutObjectAsync(varAwsRequest)
             'Console.WriteLine("Upload completed with status: " & AWSResponse.HttpStatusCode.ToString())
+
         End Function
 
     End Class

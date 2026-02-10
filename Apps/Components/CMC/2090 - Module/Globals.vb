@@ -20,7 +20,7 @@ Module Globals
     Public V_BRIDGE_LOG As Bridge.Security.Writelog
 
     <SupportedOSPlatform("windows")>
-    Public V_SALT As String = Bridge.Security.Getkey.Salt()
+    Public varSalt As String = Bridge.Security.Getkey.Salt()
 
     <SupportedOSPlatform("windows")>
     Public V_SyncfusionKey As String = Bridge.Security.Getkey.Syncfusion
@@ -49,7 +49,7 @@ Module Globals
 #End Region
 
 #Region "Variabel Global"
-    Public V_RandomColor As New Random
+    Public varRandomColor As New Random
     Public V_AutoTrim As Boolean
     Public V_HarusDiisi As Boolean
 

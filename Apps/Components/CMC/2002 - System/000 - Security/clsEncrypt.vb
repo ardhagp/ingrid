@@ -17,23 +17,23 @@ Namespace Security
             Return sb.ToString()
         End Function
 
-        Public Shared Function MD5(Optional ByVal Message As String = "") As String
-            Dim _EMessage As String
-            Dim _GUID As String
+        Public Shared Function MD5(Optional message As String = "") As String
+            Dim varEMessage As String
+            Dim varGuid As String
 
-            If Message = String.Empty Then
-                _GUID = System.Guid.NewGuid.ToString
-                _EMessage = EncryptProvider.Md5(CStr(Now) & RandomString() & _GUID)
+            If message = String.Empty Then
+                varGuid = System.Guid.NewGuid.ToString
+                varEMessage = EncryptProvider.Md5(CStr(Now) & RandomString() & varGuid)
             Else
-                _EMessage = EncryptProvider.Md5(Message)
+                varEMessage = EncryptProvider.Md5(message)
             End If
 
-            Return _EMessage
+            Return varEMessage
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function AES(message As String) As String
-            Dim varMessage As String = EncryptProvider.AESEncrypt(message, V_SALT)
+        Public Shared Function Aes(message As String) As String
+            Dim varMessage As String = EncryptProvider.AESEncrypt(message, varSalt)
             Try
                 Return varMessage
             Catch ex As Exception
@@ -62,7 +62,7 @@ Namespace Security
         'Public Function Rijndael(ByVal Message As String) As String
         '    Security.Engine.EncryptionAlgorithm = Engine.Algorithm.Rijndael
         '    Security.Engine.Encoding = Engine.EncodingType.HEX
-        '    Security.Engine.Key = V_SALT
+        '    Security.Engine.Key = varSalt
 
         '    If Security.Engine.EncryptString(Message) Then
         '        Return Security.Engine.Content
@@ -105,7 +105,7 @@ Namespace Security
                 Return String.Empty
             End Try
         End Function
-        Private Shared Function ComputeCRC(message As String) As UInteger
+        Private Shared Function ComputeCrc(message As String) As UInteger
             Dim bytes = Encoding.UTF8.GetBytes(message)
             Dim crc As UInteger = &HFFFFFFFFUI
 
@@ -139,9 +139,9 @@ Namespace Security
 
     Public Class Decrypt
         <SupportedOSPlatform("windows")>
-        Public Shared Function AES(message As String) As String
+        Public Shared Function Aes(message As String) As String
             Try
-                Dim varMessage As String = EncryptProvider.AESDecrypt(message, V_SALT)
+                Dim varMessage As String = EncryptProvider.AESDecrypt(message, varSalt)
                 Return varMessage
             Catch ex As Exception
                 With proLog
@@ -169,7 +169,7 @@ Namespace Security
         <SupportedOSPlatform("windows")>
         Public Shared Function GetSalt() As String
             Try
-                Dim varMessage As String = V_SALT
+                Dim varMessage As String = varSalt
                 Return varMessage
             Catch ex As Exception
                 With proLog
@@ -197,7 +197,7 @@ Namespace Security
         'Public Function Rijndael(ByVal Message As String) As String
         '    Security.Engine.EncryptionAlgorithm = Engine.Algorithm.Rijndael
         '    Security.Engine.Encoding = Engine.EncodingType.HEX
-        '    Security.Engine.Key = V_SALT
+        '    Security.Engine.Key = varSalt
         '    Security.Engine.Content = Message
 
         '    If Security.Engine.DecryptString Then

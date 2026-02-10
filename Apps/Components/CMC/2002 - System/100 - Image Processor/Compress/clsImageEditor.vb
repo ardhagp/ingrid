@@ -6,11 +6,11 @@ Imports System.Runtime.Versioning
 Namespace ImageEditor.Proccessor
     Public Class Compress
         <SupportedOSPlatform("windows")>
-        Public Shared Function OutputAsFile(ByVal File As String, ByVal SaveAs As String) As Boolean
+        Public Shared Function OutputAsFile(file As String, saveas As String) As Boolean
             ' Get a bitmap.
             Dim varSuccess As Boolean
             Try
-                Dim varPhoto As New Bitmap(File)
+                Dim varPhoto As New Bitmap(file)
                 Dim varTmpPhoto As New Bitmap(varPhoto)
                 Dim jpgEncoder As ImageCodecInfo = GetEncoder(ImageFormat.Jpeg)
 
@@ -35,7 +35,7 @@ Namespace ImageEditor.Proccessor
                 Dim varNewPhoto As New Bitmap(System.Drawing.Image.FromStream(varMemoryStream))
 
                 '_NewPhoto = System.Drawing.Image.FromStream(_MemoryStream)
-                varNewPhoto.Save(SaveAs, jpgEncoder, varEncoderParameters)
+                varNewPhoto.Save(saveas, jpgEncoder, varEncoderParameters)
                 varNewPhoto.Dispose()
                 varMemoryStream.Dispose()
                 varTmpPhoto.Dispose()
@@ -56,10 +56,10 @@ Namespace ImageEditor.Proccessor
         ''' <param name="File"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function OutputAsImage(ByVal File As String) As System.Drawing.Image
+        Public Shared Function OutputAsImage(file As String) As System.Drawing.Image
             ' Get a bitmap.
             Try
-                Dim varPhoto As New Bitmap(File)
+                Dim varPhoto As New Bitmap(file)
                 Dim jpgEncoder As ImageCodecInfo = GetEncoder(ImageFormat.Jpeg)
 
                 ' Create an Encoder object based on the GUID
@@ -116,17 +116,17 @@ Namespace ImageEditor.Proccessor
         ''' <param name="File"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function OutputAsImage(ByVal File As FileStream) As System.Drawing.Image
+        Public Shared Function OutputAsImage(file As FileStream) As System.Drawing.Image
             ' Get a bitmap.
             Try
                 Dim varNewImage As System.Drawing.Image = Nothing
                 Dim varMemoryStream = New MemoryStream()
 
-                varMemoryStream.SetLength(File.Length)
-                File.Read(varMemoryStream.GetBuffer, 0, CType(File.Length, Integer))
+                varMemoryStream.SetLength(file.Length)
+                file.Read(varMemoryStream.GetBuffer, 0, CType(file.Length, Integer))
 
                 varMemoryStream.Flush()
-                File.Close()
+                file.Close()
                 varMemoryStream.Close()
 
                 varNewImage = System.Drawing.Image.FromStream(varMemoryStream)
@@ -163,13 +163,13 @@ Namespace ImageEditor.Proccessor
         ''' <param name="File"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function OutputAsImage(ByVal File() As Byte) As System.Drawing.Image
+        Public Shared Function OutputAsImage(file() As Byte) As System.Drawing.Image
             ' Get a bitmap.
             Try
                 Dim varNewImage As System.Drawing.Image = Nothing
                 Dim varMemoryStream = New MemoryStream()
 
-                varMemoryStream.Write(File, 0, File.Length)
+                varMemoryStream.Write(file, 0, file.Length)
                 varMemoryStream.Seek(0, SeekOrigin.Begin)
 
                 varNewImage = System.Drawing.Image.FromStream(varMemoryStream)
@@ -201,7 +201,7 @@ Namespace ImageEditor.Proccessor
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function OutputAsByte(ByVal file As String) As Byte()
+        Public Shared Function OutputAsByte(file As String) As Byte()
             ' Get a bitmap.
             Dim varPhoto As New Bitmap(file)
 
@@ -230,7 +230,7 @@ Namespace ImageEditor.Proccessor
         End Function
 
         <SupportedOSPlatform("windows")>
-        Private Shared Function GetEncoder(ByVal format As ImageFormat) As ImageCodecInfo
+        Private Shared Function GetEncoder(format As ImageFormat) As ImageCodecInfo
             Dim varCodecs As ImageCodecInfo() = ImageCodecInfo.GetImageDecoders()
 
             Dim varCodec As ImageCodecInfo
@@ -245,12 +245,12 @@ Namespace ImageEditor.Proccessor
 
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Function WaterMarker(ByVal picture As System.Drawing.Image, ByVal watermarktext As String) As System.Drawing.Image
+        Public Shared Function WaterMarker(picture As System.Drawing.Image, watermarktext As String) As System.Drawing.Image
             Try
                 Dim varBitmap As New Bitmap(picture)
                 Dim varWaterText As String = watermarktext
                 Dim varCanvas As Graphics = Graphics.FromImage(varBitmap)
-                Dim varStringSizeF As SizeF,
+                Dim varStringSizef As SizeF,
     varDesiredWidth As Double,
     varDesiredWidth2 As Double,
     varDesireHeight As Double,

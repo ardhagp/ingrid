@@ -115,7 +115,7 @@ Partial Class FRMccinEditor
         ' 
         ' TxtSearchTerm1
         ' 
-        TxtSearchTerm1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtSearchTerm1.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtSearchTerm1.Location = New Point(280, 153)
         TxtSearchTerm1.Margin = New Padding(6, 5, 6, 5)
         TxtSearchTerm1.MaxLength = 255
@@ -145,7 +145,7 @@ Partial Class FRMccinEditor
         ' 
         ' TxtSearchTerm2
         ' 
-        TxtSearchTerm2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtSearchTerm2.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtSearchTerm2.Location = New Point(280, 222)
         TxtSearchTerm2.Margin = New Padding(6, 5, 6, 5)
         TxtSearchTerm2.MaxLength = 255
@@ -175,7 +175,7 @@ Partial Class FRMccinEditor
         ' 
         ' TxtDescription
         ' 
-        TxtDescription.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtDescription.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtDescription.Location = New Point(280, 288)
         TxtDescription.Margin = New Padding(6, 5, 6, 5)
         TxtDescription.MaxLength = 255
@@ -213,7 +213,7 @@ Partial Class FRMccinEditor
         BtnSave.FlatAppearance.BorderSize = 2
         BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
         BtnSave.FlatStyle = FlatStyle.Flat
-        BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnSave.ForeColor = Color.White
         BtnSave.Location = New Point(535, 13)
         BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -236,7 +236,7 @@ Partial Class FRMccinEditor
         BtnCancel.FlatAppearance.BorderSize = 2
         BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnCancel.FlatStyle = FlatStyle.Flat
-        BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         BtnCancel.ForeColor = Color.White
         BtnCancel.Location = New Point(712, 13)
         BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -252,7 +252,7 @@ Partial Class FRMccinEditor
         ' 
         ' TxtName
         ' 
-        TxtName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtName.Location = New Point(280, 87)
         TxtName.Margin = New Padding(6, 5, 6, 5)
         TxtName.MaxLength = 255
@@ -306,7 +306,7 @@ Partial Class FRMccinEditor
         ULbl1.SLFText = "Company Code"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
-        ULbl1.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl1.TabIndex = 1006
         ' 
         ' ULbl2
@@ -319,7 +319,7 @@ Partial Class FRMccinEditor
         ULbl2.SLFText = "Company Name"
         ULbl2.SLFTextAdjuster = False
         ULbl2.SLFTextBorder = False
-        ULbl2.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl2.TabIndex = 1007
         ' 
         ' ULbl3
@@ -332,7 +332,7 @@ Partial Class FRMccinEditor
         ULbl3.SLFText = "Search Term 1"
         ULbl3.SLFTextAdjuster = False
         ULbl3.SLFTextBorder = False
-        ULbl3.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl3.TabIndex = 1008
         ' 
         ' ULbl4
@@ -345,7 +345,7 @@ Partial Class FRMccinEditor
         ULbl4.SLFText = "Search Term 2"
         ULbl4.SLFTextAdjuster = False
         ULbl4.SLFTextBorder = False
-        ULbl4.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl4.TabIndex = 1009
         ' 
         ' ULbl5
@@ -358,7 +358,7 @@ Partial Class FRMccinEditor
         ULbl5.SLFText = "Description"
         ULbl5.SLFTextAdjuster = False
         ULbl5.SLFTextBorder = False
-        ULbl5.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl5.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl5.TabIndex = 1010
         ' 
         ' FRMccinEditor

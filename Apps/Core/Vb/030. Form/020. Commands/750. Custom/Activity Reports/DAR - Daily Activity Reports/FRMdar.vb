@@ -214,7 +214,7 @@ Public Class FRMdar
     <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
         If Not (varUserAccess.User(varDatabaseName, "DAR", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
-            Decision("You are not authorized to : Add new record", varMessageNotAuthorized, CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("You are not authorized to : Add new record", varMessageNotAuthorized, CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
         varFormProperties.IsNew = True
@@ -230,7 +230,7 @@ Public Class FRMdar
     <SupportedOSPlatform("windows")>
     Public Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
         If Not (varUserAccess.User(varDatabaseName, "DAR", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
-            Decision("You are not authorized to : Modify existing record", varMessageNotAuthorized, CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("You are not authorized to : Modify existing record", varMessageNotAuthorized, CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
@@ -238,7 +238,7 @@ Public Class FRMdar
         varFormProperties.IsNew = False
 
         If Convert.ToString(varFormProperties.RowID) Is "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             Frm_dar_Editor = New FRMdarEditor
             Display(Frm_dar_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "update activity", True)
@@ -252,15 +252,15 @@ Public Class FRMdar
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
         If Not (varUserAccess.User(varDatabaseName, "DAR", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
-            Decision("You are not authorized to : Delete record", varMessageNotAuthorized, CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("You are not authorized to : Delete record", varMessageNotAuthorized, CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
         Call GetRowID()
         If Convert.ToString(varFormProperties.RowID) Is "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             varFormProperties.IsNew = False
-            If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+            If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If (CMDdar.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID).ToString)) Then
                     Call GetData(True)
                     Call FillEmployee()
@@ -319,7 +319,7 @@ Public Class FRMdar
 #Region "Context Menu Event"
     Private Sub ContextCopy() Handles Com_cs_Menu.ContextCopy
         If DgnDARActivity.RowCount = 0 Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             Clipboard.SetText(DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString)
         End If
@@ -353,7 +353,7 @@ Public Class FRMdar
 
 #Region "Main Form Events"
     <SupportedOSPlatform("windows")>
-    Private Sub frmDailyActivityReports_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FRMdar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Memuat Menu
         Call LoadMenu()
 
@@ -495,10 +495,10 @@ Public Class FRMdar
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnCopyPhoto_Click(sender As Object, e As EventArgs) Handles BtnCopyPhoto.Click
-        Dim varCopyPicture As Image
+        Dim varCopyPicture As Image = Nothing
 
         If PctbxActivityPhoto.Image Is Nothing Then
-            Decision("No photo selected.", "Alert", CMCv.frmDialogBox.MessageIcon.Alert, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No photo selected.", "Alert", CMCv.FRMdialogbox.MessageIcon.Alert, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             If varTextmark = String.Empty Then
                 varCopyPicture = PctbxActivityPhoto.Image
@@ -507,16 +507,16 @@ Public Class FRMdar
             End If
             Clipboard.SetImage(varCopyPicture)
         End If
-        varCopyPicture = Nothing
+        varCopyPicture.Dispose()
         'CopyPicture.Dispose()
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-        Dim varSavePicture As Image
+        Dim varSavePicture As Image = Nothing
 
         If PctbxActivityPhoto.Image Is Nothing Then
-            Decision("No photo selected.", "Alert", CMCv.frmDialogBox.MessageIcon.Alert, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No photo selected.", "Alert", CMCv.FRMdialogbox.MessageIcon.Alert, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             SfdPhoto.Title = "Ingrid Photo - Save As..."
             SfdPhoto.FileName = DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString & ".jpg"
@@ -531,14 +531,14 @@ Public Class FRMdar
                 varSavePicture.Save(SfdPhoto.FileName, System.Drawing.Imaging.ImageFormat.Jpeg)
             End If
         End If
-        varSavePicture = Nothing
+        varSavePicture.Dispose()
         'SavePicture.Dispose()
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnLike_Click(sender As Object, e As EventArgs) Handles BtnLike.Click
         If PctbxActivityPhoto.Image Is Nothing Then
-            Decision("No photo selected.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision("No photo selected.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
         Else
             If Not (CMDdar.View.IsLike(varDatabaseName, varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varProperties.EmployeeID)) Then
                 If (CMDdar.View.LikePhoto(varDatabaseName, varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varProperties.EmployeeID, DgnDARActivity.CurrentRow.Cells("employee_id").Value.ToString)) Then
@@ -565,7 +565,7 @@ Public Class FRMdar
     <SupportedOSPlatform("windows")>
     Private Sub CommmsMenu_EventReportShow() Handles Com_mms_Menu.EventReportShow
         If Not (varUserAccess.User(varDatabaseName, "DAR", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Report)) Then
-            Decision("You are not authorized to : Generate Report", varMessageNotAuthorized, CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("You are not authorized to : Generate Report", varMessageNotAuthorized, CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
         Frm_dar_Reports = New DAR_RPTFilter

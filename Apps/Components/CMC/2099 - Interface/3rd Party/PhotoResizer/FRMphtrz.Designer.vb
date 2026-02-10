@@ -110,7 +110,7 @@ Partial Class FRMphtrz
         BtnSave.FlatAppearance.BorderSize = 2
         BtnSave.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(70), CByte(225), CByte(70))
         BtnSave.FlatStyle = Windows.Forms.FlatStyle.Flat
-        BtnSave.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+        BtnSave.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
         BtnSave.ForeColor = Drawing.Color.White
         BtnSave.Location = New System.Drawing.Point(732, 12)
         BtnSave.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -130,7 +130,7 @@ Partial Class FRMphtrz
         ChkAddNew.AutoSize = True
         ChkAddNew.BackColor = Drawing.Color.Transparent
         ChkAddNew.FlatStyle = Windows.Forms.FlatStyle.Flat
-        ChkAddNew.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        ChkAddNew.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         ChkAddNew.ForeColor = Drawing.Color.OrangeRed
         ChkAddNew.Location = New System.Drawing.Point(460, 27)
         ChkAddNew.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -143,7 +143,7 @@ Partial Class FRMphtrz
         ' TlpMain
         ' 
         TlpMain.ColumnCount = 1
-        TlpMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(Windows.Forms.SizeType.Percent, 100F))
+        TlpMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(Windows.Forms.SizeType.Percent, 100.0F))
         TlpMain.Controls.Add(PnlLoad, 0, 0)
         TlpMain.Controls.Add(PnlSave, 0, 2)
         TlpMain.Controls.Add(PctbxPhoto, 0, 1)
@@ -152,9 +152,9 @@ Partial Class FRMphtrz
         TlpMain.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         TlpMain.Name = "TlpMain"
         TlpMain.RowCount = 3
-        TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Absolute, 108F))
-        TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Percent, 100F))
-        TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Absolute, 108F))
+        TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Absolute, 108.0F))
+        TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Percent, 100.0F))
+        TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Absolute, 108.0F))
         TlpMain.Size = New System.Drawing.Size(1095, 618)
         TlpMain.TabIndex = 996
         ' 
@@ -173,7 +173,7 @@ Partial Class FRMphtrz
         ' Lbl1
         ' 
         Lbl1.AutoSize = True
-        Lbl1.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        Lbl1.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         Lbl1.Location = New System.Drawing.Point(15, 29)
         Lbl1.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Lbl1.Name = "Lbl1"
@@ -185,7 +185,7 @@ Partial Class FRMphtrz
         ' TxtLoad
         ' 
         TxtLoad.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
-        TxtLoad.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        TxtLoad.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         TxtLoad.Location = New System.Drawing.Point(222, 23)
         TxtLoad.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         TxtLoad.MaxLength = 255
@@ -223,7 +223,7 @@ Partial Class FRMphtrz
         BtnLoad.FlatAppearance.BorderSize = 2
         BtnLoad.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(85), CByte(125), CByte(245))
         BtnLoad.FlatStyle = Windows.Forms.FlatStyle.Flat
-        BtnLoad.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+        BtnLoad.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
         BtnLoad.ForeColor = Drawing.Color.White
         BtnLoad.Location = New System.Drawing.Point(904, 10)
         BtnLoad.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -256,7 +256,7 @@ Partial Class FRMphtrz
         ChkSaveAsACopy.BackColor = Drawing.Color.Transparent
         ChkSaveAsACopy.Enabled = False
         ChkSaveAsACopy.FlatStyle = Windows.Forms.FlatStyle.Flat
-        ChkSaveAsACopy.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        ChkSaveAsACopy.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         ChkSaveAsACopy.Location = New System.Drawing.Point(920, 25)
         ChkSaveAsACopy.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         ChkSaveAsACopy.Name = "ChkSaveAsACopy"
@@ -269,7 +269,7 @@ Partial Class FRMphtrz
         ' TxtSave
         ' 
         TxtSave.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
-        TxtSave.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        TxtSave.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         TxtSave.Location = New System.Drawing.Point(220, 23)
         TxtSave.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         TxtSave.MaxLength = 255

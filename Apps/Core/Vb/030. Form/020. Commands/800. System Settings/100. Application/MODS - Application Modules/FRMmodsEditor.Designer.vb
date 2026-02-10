@@ -189,7 +189,7 @@ Partial Class FRMmodsEditor
         ULbl5.SLFText = "Description"
         ULbl5.SLFTextAdjuster = False
         ULbl5.SLFTextBorder = False
-        ULbl5.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl5.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl5.TabIndex = 1021
         ' 
         ' ULbl4
@@ -202,7 +202,7 @@ Partial Class FRMmodsEditor
         ULbl4.SLFText = "Module Name"
         ULbl4.SLFTextAdjuster = False
         ULbl4.SLFTextBorder = False
-        ULbl4.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl4.TabIndex = 1020
         ' 
         ' ULbl3
@@ -215,7 +215,7 @@ Partial Class FRMmodsEditor
         ULbl3.SLFText = "Code"
         ULbl3.SLFTextAdjuster = False
         ULbl3.SLFTextBorder = False
-        ULbl3.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl3.TabIndex = 1019
         ' 
         ' ULbl2
@@ -228,7 +228,7 @@ Partial Class FRMmodsEditor
         ULbl2.SLFText = "Group"
         ULbl2.SLFTextAdjuster = False
         ULbl2.SLFTextBorder = False
-        ULbl2.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl2.TabIndex = 1018
         ' 
         ' ULbl1
@@ -241,7 +241,7 @@ Partial Class FRMmodsEditor
         ULbl1.SLFText = "Module ID"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
-        ULbl1.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl1.TabIndex = 1017
         ' 
         ' ChkSystem

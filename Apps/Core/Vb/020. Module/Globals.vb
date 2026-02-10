@@ -17,13 +17,13 @@ Module Globals
     Public varFormimage(4) As System.Drawing.Image
     Public varWorkspace As New WorkspaceClass
     Public varFileinfo As New CMCv.OperatingSystem.File.Info
-    Public FolderHandler As New CMCv.OperatingSystem.Folder
+    Public varFolderHandler As New CMCv.OperatingSystem.Folder
     'Public SecurityEngine As New Security.Engine
     Public varDatabaseEngine As String
     Public varDatabaseEngineE As LibApp.Ingrid.Global.DatabaseEngine
     Public varDatabaseName As String
-    Public V_IMG_COMPRESS As New CMCv.ImageEditor.Proccessor.Compress
-    Public V_IMG_EDITOR As New CMCv.ImageEditor.Proccessor.Editor
+    Public varImageCompress As New CMCv.ImageEditor.Proccessor.Compress
+    Public varImageEditor As New CMCv.ImageEditor.Proccessor.Editor
     Public varUserAccess As New Application.Access
     'Public V_SYSAPP As New Application.Modules
     Public varLogUser As New LibSQL.SystemLog.Activity.User
@@ -36,7 +36,7 @@ Module Globals
 
     'Public clsDBsqlite As Database.Engine.LocalDB
     'Public WithEvents TED As New frmTextEditor
-    Public WithEvents frmMSG As New frmDialogBox
+    Public WithEvents frmMSG As New FRMdialogbox
 
     Public varVersionapplication As String
     Public varVersionnetworkapplication As Version
@@ -290,8 +290,8 @@ Module Globals
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
-    Public Function Decision(ByVal message As String, ByVal title As String, ByVal messageicon As CMCv.frmDialogBox.MessageIcon, ByVal buttontype As CMCv.frmDialogBox.MessageTypes) As DialogResult
-        frmMSG = New CMCv.frmDialogBox(message, title, messageicon, buttontype)
+    Public Function Decision(ByVal message As String, ByVal title As String, ByVal messageicon As CMCv.FRMdialogbox.MessageIcon, ByVal buttontype As CMCv.FRMdialogbox.MessageTypes) As DialogResult
+        frmMSG = New CMCv.FRMdialogbox(message, title, messageicon, buttontype)
         Return frmMSG.ShowDialog()
         frmMSG.Dispose()
     End Function

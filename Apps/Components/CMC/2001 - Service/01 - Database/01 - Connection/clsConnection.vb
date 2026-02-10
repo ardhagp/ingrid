@@ -121,8 +121,8 @@ Namespace Database.Connect
         ''' <returns>String</returns>
         ''' <remarks></remarks>
         Public Function Microsoftodbcstandard(databasepath As String, username As String, password As String) As String Implements IMsaccess2003connections.Microsoftodbcstandard
-            V_Result = "Driver={Microsoft Access Driver (*.mdb)};Dbq=" & databasepath & ";Uid=" & username & ";Pwd=" & password & ";"
-            Return V_Result
+            varResult = "Driver={Microsoft Access Driver (*.mdb)};Dbq=" & databasepath & ";Uid=" & username & ";Pwd=" & password & ";"
+            Return varResult
         End Function
 
         ''' <summary>
@@ -134,8 +134,8 @@ Namespace Database.Connect
         ''' <returns></returns>
         ''' <remarks></remarks>
         Public Function Microsoftoledbstandard(databasepath As String, username As String, password As String) As String Implements IMsaccess2003connections.Microsoftoledbstandard
-            V_Result = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & databasepath & ";User Id=" & username & ";password=" & password & ";"
-            Return V_Result
+            varResult = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & databasepath & ";User Id=" & username & ";password=" & password & ";"
+            Return varResult
         End Function
     End Class
 
@@ -153,8 +153,8 @@ Namespace Database.Connect
         ''' <returns></returns>
         ''' <remarks></remarks>
         Public Function Mssql2008standard(serveraddress As String, ByVal serverport As Integer, ByVal databasename As String, username As String, password As String) As String Implements IMssqlserver2008connections.Mssql2008standard
-            V_Result = String.Format(CultureInfo.CurrentCulture, "Server = {0},{1}; Database = {2}; User Id = {3}; password = {4};", serveraddress.Trim, serverport, databasename, username.Trim, password)
-            Return V_Result
+            varResult = String.Format(CultureInfo.CurrentCulture, "Server = {0},{1}; Database = {2}; User Id = {3}; password = {4};", serveraddress.Trim, serverport, databasename, username.Trim, password)
+            Return varResult
         End Function
 
         ''' <summary>
@@ -165,8 +165,8 @@ Namespace Database.Connect
         ''' <returns></returns>
         ''' <remarks></remarks>
         Public Function Mssql2008trustedconnection(serveraddress As String, databasename As String) As String Implements IMssqlserver2008connections.Mssql2008trustedconnection
-            V_Result = "Server = " & serveraddress.Trim & "; Database = " & databasename & "; Trusted_Connection = True;"
-            Return V_Result
+            varResult = "Server = " & serveraddress.Trim & "; Database = " & databasename & "; Trusted_Connection = True;"
+            Return varResult
         End Function
     End Class
 
@@ -174,8 +174,8 @@ Namespace Database.Connect
         Implements IMysqlconnections
 
         Public Function Mysqlforcessl(serveraddress As String, serverport As Integer, databasename As String, username As String, password As String) As String Implements IMysqlconnections.Mysqlforcessl
-            V_Result = String.Format(CultureInfo.CurrentCulture, "Server={0};Database={1};Port={2};Uid={3};Pwd={4};SslMode=Required;", serveraddress, databasename, serverport, username, password)
-            Return V_Result
+            varResult = String.Format(CultureInfo.CurrentCulture, "Server={0};Database={1};Port={2};Uid={3};Pwd={4};SslMode=Required;", serveraddress, databasename, serverport, username, password)
+            Return varResult
         End Function
     End Class
 
@@ -183,23 +183,23 @@ Namespace Database.Connect
         Implements ILocaldbconnections
 
         Public Function LocalDBAttachDB(dbfilename As String) As String Implements ILocaldbconnections.LocalDBAttachDB
-            V_Result = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=" & dbfilename & ";"
-            Return V_Result
+            varResult = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=" & dbfilename & ";"
+            Return varResult
         End Function
 
         Public Function LocalDBAutomaticInstance() As String Implements ILocaldbconnections.LocalDBAutomaticInstance
-            V_Result = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;"
-            Return V_Result
+            varResult = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;"
+            Return varResult
         End Function
 
         Public Function LocalDBSpecifiedInstance(instancename As String) As String Implements ILocaldbconnections.LocalDBSpecifiedInstance
-            V_Result = "Server=(localdb)\" & instancename & ";Integrated Security=true;"
-            Return V_Result
+            varResult = "Server=(localdb)\" & instancename & ";Integrated Security=true;"
+            Return varResult
         End Function
 
         Public Function LocalDBInitialCatalog(dbfilename As String) As String Implements ILocaldbconnections.LocalDBInitialCatalog
-            V_Result = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=" & dbfilename & ";Encrypt=False; TrustServerCertificate=False;"
-            Return V_Result
+            varResult = "Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=" & dbfilename & ";Encrypt=False; TrustServerCertificate=False;"
+            Return varResult
         End Function
     End Class
 
@@ -208,13 +208,13 @@ Namespace Database.Connect
 
         Public Function SQLiteBasic(dbfile As String) As String Implements ISqlite.SQLiteBasic
             'V_result = "Data Source=" & dbfile & ";Version=3;Mode=ReadWrite;Journal Mode=Off;"
-            V_Result = "Data Source=" & dbfile & ";Version=3;Journal Mode=Persist;Synchronous=Full;Max Page Count=5000;"
-            Return V_Result
+            varResult = "Data Source=" & dbfile & ";Version=3;Journal Mode=Persist;Synchronous=Full;Max Page Count=5000;"
+            Return varResult
         End Function
 
         Public Function SQLiteOpenWithPassword(dbfile As String, password As String) As String Implements ISqlite.SQLiteOpenWithPassword
-            V_Result = "Data Source=" & dbfile & ";password=" & password & ";"
-            Return V_result
+            varResult = "Data Source=" & dbfile & ";password=" & password & ";"
+            Return varResult
         End Function
     End Class
 End Namespace

@@ -95,7 +95,7 @@ Public Class FRMacgr
         Call GetRowID()
         varFormProperties.IsNew = False
         If Convert.ToString(Convert.ToString(varFormProperties.RowID)) = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             Frm_acgr_Editor = New FRMacgrEditor
             Display(Frm_acgr_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your account data", True)
@@ -106,10 +106,10 @@ Public Class FRMacgr
     Private Sub CommmmsMenu_EventDataDelete() Handles Com_mms_Menu.EventDataDelete
         Call GetRowID()
         If Convert.ToString(Convert.ToString(varFormProperties.RowID)) = "-1" Then
-            Decision("No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             varFormProperties.IsNew = False
-            If Decision("Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+            If Decision("Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If (CMDacgr.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(Convert.ToString(varFormProperties.RowID)))) Then
                     Call GetDataGrid(True)
                     FRMmainframe6.Ts_status.Text = "Success"

@@ -454,7 +454,7 @@ Partial Class FRMeplsEditor
         ULbl7.SLFText = "Login"
         ULbl7.SLFTextAdjuster = True
         ULbl7.SLFTextBorder = False
-        ULbl7.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl7.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl7.TabIndex = 301
         ' 
         ' TxtLogin
@@ -529,7 +529,7 @@ Partial Class FRMeplsEditor
         ULbl14.SLFText = "Initial"
         ULbl14.SLFTextAdjuster = True
         ULbl14.SLFTextBorder = False
-        ULbl14.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl14.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl14.TabIndex = 1061
         ' 
         ' ULbl13
@@ -542,7 +542,7 @@ Partial Class FRMeplsEditor
         ULbl13.SLFText = "Contract Type"
         ULbl13.SLFTextAdjuster = True
         ULbl13.SLFTextBorder = False
-        ULbl13.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl13.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl13.TabIndex = 1060
         ' 
         ' ULbl12
@@ -555,7 +555,7 @@ Partial Class FRMeplsEditor
         ULbl12.SLFText = "Emp. Number"
         ULbl12.SLFTextAdjuster = True
         ULbl12.SLFTextBorder = False
-        ULbl12.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl12.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl12.TabIndex = 1059
         ' 
         ' ULbl11
@@ -568,7 +568,7 @@ Partial Class FRMeplsEditor
         ULbl11.SLFText = "Grade"
         ULbl11.SLFTextAdjuster = True
         ULbl11.SLFTextBorder = False
-        ULbl11.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl11.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl11.TabIndex = 1058
         ' 
         ' ULbl10
@@ -581,7 +581,7 @@ Partial Class FRMeplsEditor
         ULbl10.SLFText = "Position"
         ULbl10.SLFTextAdjuster = True
         ULbl10.SLFTextBorder = False
-        ULbl10.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl10.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl10.TabIndex = 1057
         ' 
         ' ULbl9
@@ -594,7 +594,7 @@ Partial Class FRMeplsEditor
         ULbl9.SLFText = "Department"
         ULbl9.SLFTextAdjuster = True
         ULbl9.SLFTextBorder = False
-        ULbl9.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl9.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl9.TabIndex = 1056
         ' 
         ' ULbl6
@@ -607,7 +607,7 @@ Partial Class FRMeplsEditor
         ULbl6.SLFText = "Company"
         ULbl6.SLFTextAdjuster = True
         ULbl6.SLFTextBorder = False
-        ULbl6.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl6.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl6.TabIndex = 1055
         ' 
         ' ChkActiveEmployee
@@ -1000,7 +1000,7 @@ Partial Class FRMeplsEditor
         ULbl1.SLFText = "Personal ID"
         ULbl1.SLFTextAdjuster = True
         ULbl1.SLFTextBorder = False
-        ULbl1.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl1.TabIndex = 1056
         ' 
         ' ULbl5
@@ -1013,7 +1013,7 @@ Partial Class FRMeplsEditor
         ULbl5.SLFText = "Address"
         ULbl5.SLFTextAdjuster = True
         ULbl5.SLFTextBorder = False
-        ULbl5.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl5.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl5.TabIndex = 1055
         ' 
         ' ULbl4
@@ -1026,7 +1026,7 @@ Partial Class FRMeplsEditor
         ULbl4.SLFText = "Gender"
         ULbl4.SLFTextAdjuster = True
         ULbl4.SLFTextBorder = False
-        ULbl4.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl4.TabIndex = 1054
         ' 
         ' ULbl3
@@ -1039,7 +1039,7 @@ Partial Class FRMeplsEditor
         ULbl3.SLFText = "Birth Place"
         ULbl3.SLFTextAdjuster = True
         ULbl3.SLFTextBorder = False
-        ULbl3.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl3.TabIndex = 1053
         ' 
         ' ULbl16
@@ -1052,7 +1052,7 @@ Partial Class FRMeplsEditor
         ULbl16.SLFText = "Date of Birth"
         ULbl16.SLFTextAdjuster = True
         ULbl16.SLFTextBorder = False
-        ULbl16.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl16.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl16.TabIndex = 1052
         ' 
         ' ULbl2
@@ -1065,7 +1065,7 @@ Partial Class FRMeplsEditor
         ULbl2.SLFText = "Full Name"
         ULbl2.SLFTextAdjuster = True
         ULbl2.SLFTextBorder = False
-        ULbl2.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl2.TabIndex = 1051
         ' 
         ' TxtAddress
@@ -1244,7 +1244,7 @@ Partial Class FRMeplsEditor
         ULbl8.SLFText = "Photo"
         ULbl8.SLFTextAdjuster = False
         ULbl8.SLFTextBorder = False
-        ULbl8.SLFWarnaLabel = ControlCodeBase.enuJenisLabel.Yellow
+        ULbl8.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
         ULbl8.TabIndex = 1041
         ' 
         ' FRMeplsEditor

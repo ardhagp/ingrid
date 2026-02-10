@@ -144,7 +144,7 @@ Partial Class FRMlogin
         ' TxtPassword
         ' 
         TxtPassword.AcceptsReturn = True
-        TxtPassword.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPassword.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TxtPassword.Location = New Point(181, 128)
         TxtPassword.Margin = New Padding(6, 5, 6, 5)
         TxtPassword.MaxLength = 255

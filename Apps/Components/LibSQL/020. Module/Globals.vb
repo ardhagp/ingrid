@@ -7,21 +7,21 @@
 
     Public varDatabaseRequestMssql2008(1) As CMCv.Database.Adapter.MSSQL2008.Display.Request
     Public varDatabaseRequestMysql(1) As CMCv.Database.Adapter.MySQL.Display.Request
-    Public _DBP_MSSQL2008 As New CMCv.Database.Adapter.MSSQL2008.Execute
+    Public varDatabaseDisplayMssql2008 As New CMCv.Database.Adapter.MSSQL2008.Execute
 
-    Public V_SECEncrypt As New CMCv.Security.Encrypt
+    Public varSecurityEncrypt As New CMCv.Security.Encrypt
 
-    Public V_SEC_AES As Security.Cryptography.Aes
-    Public V_SEC_MD5 As Security.Cryptography.MD5
-    Public V_SEC_CRC32 As New System.IO.Hashing.Crc32
+    Public varSecurityAes As Security.Cryptography.Aes
+    Public varSecurityMd5 As Security.Cryptography.MD5
+    Public varSecurityCrc32 As New System.IO.Hashing.Crc32
 
-    Public V_Major As Integer = My.Application.Info.Version.Major
-    Public V_Minor As Integer = My.Application.Info.Version.Minor
-    Public V_Build As Integer = My.Application.Info.Version.Build
-    Public V_Revision As Integer = My.Application.Info.Version.Revision
-    Public _APPVer As String = V_Major & "." & V_Minor & "." & V_Build & "." & V_Revision
+    Public varMajor As Integer = My.Application.Info.Version.Major
+    Public varMinor As Integer = My.Application.Info.Version.Minor
+    Public varBuild As Integer = My.Application.Info.Version.Build
+    Public varRevision As Integer = My.Application.Info.Version.Revision
+    Public varAppVer As String = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
 
-    Public WithEvents MSG As New CMCv.frmDialogBox
+    Public WithEvents MSG As New CMCv.FRMdialogbox
 
 #Region "Custom Message Box"
     ''' <summary>
@@ -33,8 +33,8 @@
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
-    Public Function Decision(message As String, title As String, messageicon As CMCv.frmDialogBox.MessageIcon, ByVal buttontype As CMCv.frmDialogBox.MessageTypes) As System.Windows.Forms.DialogResult
-        MSG = New CMCv.frmDialogBox(message, title, messageicon, buttontype)
+    Public Function Decision(message As String, title As String, messageicon As CMCv.FRMdialogbox.MessageIcon, ByVal buttontype As CMCv.FRMdialogbox.MessageTypes) As System.Windows.Forms.DialogResult
+        MSG = New CMCv.FRMdialogbox(message, title, messageicon, buttontype)
         Return MSG.ShowDialog()
         MSG.Dispose()
     End Function
