@@ -1,5 +1,4 @@
-﻿Imports System
-Imports System.Runtime.Versioning
+﻿Imports System.Runtime.Versioning
 Imports CMCv
 
 Namespace CMDdraa

@@ -1,10 +1,9 @@
-﻿Imports System
-Imports System.Runtime.Versioning
+﻿Imports System.Runtime.Versioning
 Imports CMCv
 
 Namespace CMDacgr
     Public Class View
-#Region "Variables"
+#Region "Declaration"
         'ReadOnly varDBreader_mssql2008(3) As Database.Adapter.MSSQL2008.Display.Request
 #End Region
 
@@ -14,12 +13,12 @@ Namespace CMDacgr
         ''' <param name="Company">ComboBox Company</param>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillCompany(databasename As String, dbengine As String, company As cbo)
-            If dbengine = "MSSQL" Then
+        Public Shared Sub FillCompany(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, company As cbo)
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select cm.company_id, (cm.company_code + ' - ' + cm.company_name) as [company_name] from dbo.man_company cm order by cm.company_code")
                 varDatabaseRequestMssql2008(1).Dropdown = company
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TCompany")
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select cm.company_id, (cm.company_code + ' - ' + cm.company_name) as `company_name` from man_company cm order by cm.company_code")
                 varDatabaseRequestMysql(1).Dropdown = company
                 varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(1), "TCompany")
@@ -35,19 +34,19 @@ Namespace CMDacgr
         ''' <param name="AccountingBook">ComboBox yang akan diisi</param>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillAccountingBook(databasename As String, dbengine As String, accountingbook As cbo, company As cbo)
+        Public Shared Sub FillAccountingBook(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, accountingbook As cbo, company As cbo)
             Dim varCompanyID As String = String.Empty
 
             If company.Items.Count <> 0 Then
                 varCompanyID = company.SelectedValue.ToString
             End If
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ab.book_id, (ab.book_code + ' - ' + ab.book_bookname) as [book_bookname] from dbo.ac_book ab inner join dbo.man_company cm on ab.book_company = cm.company_id " &
                                                     "where ab.book_company = '{0}'", varCompanyID)
                 varDatabaseRequestMssql2008(1).Dropdown = accountingbook
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TAccountingBook")
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select ab.book_id, (ab.book_code + ' - ' + ab.book_bookname) as `book_bookname` from ac_book ab inner join man_company cm on ab.book_company = cm.company_id " &
                                                     "where ab.book_company = '{0}'", varCompanyID)
                 varDatabaseRequestMysql(1).Dropdown = accountingbook
@@ -71,12 +70,12 @@ Namespace CMDacgr
         ''' <param name="ForceRefresh">True / False</param>
         ''' <remarks>ForceRefresh = True akan menampilkan semua data tanpa filter</remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetAccountList(databasename As String, dbengine As String, assets As dgn, liability As dgn, equity As dgn, revenue As dgn, expense As dgn, accountingbook As cbo, find As txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub GetAccountList(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, assets As dgn, liability As dgn, equity As dgn, revenue As dgn, expense As dgn, accountingbook As cbo, find As txt, Optional forcerefresh As Boolean = False)
             Dim varCboIndex As String
             'Isikan index combobox dengan data dari mainframe
             varCboIndex = accountingbook.SelectedValue.ToString
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 'Tampilkan data awal / tanpa filter / ForceRefresh=True
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
@@ -129,7 +128,7 @@ Namespace CMDacgr
                     varDatabaseRequestMssql2008(0).DataGrid = expense
                     varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TExpense")
                 End If
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 'Tampilkan data awal / tanpa filter / ForceRefresh=True
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMysql(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
@@ -186,23 +185,21 @@ Namespace CMDacgr
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DeleteData(databasename As String, dbengine As String, rowid As String) As Boolean
+        Public Shared Function DeleteData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As Boolean
             Dim varSuccess As Boolean
 
             Try
-                If dbengine = "MSSQL" Then
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(1).Query = String.Format("delete from dbo.ac_account where account_id = '{0}'", rowid)
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
-                ElseIf dbengine = "MYSQL" Then
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = String.Format("delete from ac_account where account_id = '{0}'", rowid)
                     varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
                 End If
-
                 varSuccess = True
             Catch ex As Exception
                 varSuccess = False
             End Try
-
             Return varSuccess
         End Function
 
@@ -219,17 +216,16 @@ Namespace CMDacgr
         ''' <param name="Company">ComboBox Company</param>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillCompany(databasename As String, dbengine As String, company As cbo)
-            If dbengine = "MSSQL" Then
+        Public Shared Sub FillCompany(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, company As cbo)
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select cm.company_id, (cm.company_code + ' - ' + cm.company_name) as [company_name] from dbo.man_company cm order by cm.company_code")
                 varDatabaseRequestMssql2008(1).Dropdown = company
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TCompany")
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select cm.company_id, (cm.company_code + ' - ' + cm.company_name) as `company_name` from man_company cm order by cm.company_code")
                 varDatabaseRequestMysql(1).Dropdown = company
                 varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(1), "TCompany")
             End If
-
             company.DisplayMember = "company_name"
             company.ValueMember = "company_id"
         End Sub
@@ -240,19 +236,19 @@ Namespace CMDacgr
         ''' <param name="AccountingBook">ComboBox yang akan diisi</param>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillAccountingBook(databasename As String, dbengine As String, accountingbook As cbo, company As cbo)
+        Public Shared Sub FillAccountingBook(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, accountingbook As cbo, company As cbo)
             Dim varCompanyID As String = String.Empty
 
             If company.Items.Count <> 0 Then
                 varCompanyID = company.SelectedValue.ToString
             End If
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ab.book_id, (ab.book_code + ' - ' + ab.book_bookname) as [book_bookname] from dbo.ac_book ab inner join dbo.man_company cm on ab.book_company = cm.company_id " &
                                                     "where ab.book_company = '{0}'", varCompanyID)
                 varDatabaseRequestMssql2008(1).Dropdown = accountingbook
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TAccountingBook")
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select ab.book_id, (ab.book_code + ' - ' + ab.book_bookname) as `book_bookname` from ac_book ab inner join man_company cm on ab.book_company = cm.company_id " &
                                                     "where ab.book_company = '{0}'", varCompanyID)
                 varDatabaseRequestMysql(1).Dropdown = accountingbook
@@ -269,17 +265,16 @@ Namespace CMDacgr
         ''' <param name="AccountGroup"></param>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillAccountGroup(databasename As String, dbengine As String, accountgroup As cbo)
-            If dbengine = "MSSQL" Then
+        Public Shared Sub FillAccountGroup(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, accountgroup As cbo)
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = "select ag.group_id, ag.group_name + ' (' + ag.group_inline + ')' as group_name from dbo.[[ac]]group] ag order by ag.group_order"
                 varDatabaseRequestMssql2008(1).Dropdown = accountgroup
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TAccountingBook")
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = "select ag.group_id, ag.group_name + ' (' + ag.group_inline + ')' as group_name from ac_group ag order by ag.group_order"
                 varDatabaseRequestMysql(1).Dropdown = accountgroup
                 varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(1), "TAccountingBook")
             End If
-
             accountgroup.DisplayMember = "group_name"
             accountgroup.ValueMember = "group_id"
         End Sub
@@ -291,17 +286,16 @@ Namespace CMDacgr
         ''' <returns></returns>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetCompanyID(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetCompanyID(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
             Dim varCompanyID As String = String.Empty
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ab.book_company from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
                 varCompanyID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select ab.book_company from ac_account ac inner join ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
                 varCompanyID = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
             End If
-
             Return varCompanyID
         End Function
 
@@ -312,17 +306,16 @@ Namespace CMDacgr
         ''' <returns></returns>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetAccountBookID(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetAccountBookID(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
             Dim varAccountBookID As String = String.Empty
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ab.book_id from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
                 varAccountBookID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select ab.book_id from ac_account ac inner join ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
                 varAccountBookID = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
             End If
-
             Return varAccountBookID
         End Function
 
@@ -333,17 +326,16 @@ Namespace CMDacgr
         ''' <returns></returns>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetAccountGroupID(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetAccountGroupID(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
             Dim varAccountGroupID As String = String.Empty
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ac.account_group from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
                 varAccountGroupID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select ac.account_group from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
                 varAccountGroupID = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
             End If
-
             Return varAccountGroupID
         End Function
 
@@ -354,17 +346,16 @@ Namespace CMDacgr
         ''' <returns></returns>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetAccountNumber(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetAccountNumber(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
             Dim varAccountNumber As String = String.Empty
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ac.account_num from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
                 varAccountNumber = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select ac.account_num from ac_account ac inner join ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
                 varAccountNumber = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
             End If
-
             Return varAccountNumber
         End Function
 
@@ -375,63 +366,57 @@ Namespace CMDacgr
         ''' <returns></returns>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetAccountName(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetAccountName(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
             Dim varAccountNumber As String = String.Empty
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ac.account_name from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
                 varAccountNumber = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select ac.account_name from ac_account ac inner join ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
                 varAccountNumber = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
             End If
-
             Return varAccountNumber
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetEnableTransaction(databasename As String, dbengine As String, rowid As String) As Boolean
+        Public Shared Function GetEnableTransaction(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As Boolean
             Dim varEnableTransaction As Boolean = False
 
             Try
-                If dbengine = "MSSQL" Then
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(1).Query = String.Format("select ac.account_enable from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
                     varEnableTransaction = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Boolean)
-                ElseIf dbengine = "MYSQL" Then
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = String.Format("select ac.account_enable from dbo.ac_account ac inner join dbo.ac_book ab on ac.account_book = ab.book_id where ac.account_id = '{0}'", rowid)
                     varEnableTransaction = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), Boolean)
                 End If
             Catch ex As Exception
                 varEnableTransaction = False
             End Try
-
             Return varEnableTransaction
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsDuplicate(databasename As String, dbengine As String, accountbookid As String, accountgroupid As String, accountnumber As String, Optional rowid As String = "-1") As Boolean
+        Public Shared Function IsDuplicate(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, accountbookid As String, accountgroupid As String, accountnumber As String, Optional rowid As String = "-1") As Boolean
             Dim varIsDuplicate As Integer = 0
             Dim varWhere As String = "where "
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 If rowid = "-1" Then
                     varWhere &= $"ac.account_book = '{accountbookid}' and ac.account_num = '{accountnumber}'"
                 Else
                     varWhere &= String.Format("ac.account_book = '{0}' and ac.account_num = '{1}' and ac.account_id <> '{2}'", accountbookid, accountnumber, rowid)
                 End If
-
                 varDatabaseRequestMssql2008(1).Query = String.Format("select count(ac.account_id) as [rows] from dbo.ac_account ac {0}", varWhere)
-
                 varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If rowid = "-1" Then
                     varWhere += String.Format("ac.account_book = '{0}' and ac.account_num = '{1}'", accountbookid, accountnumber)
                 Else
                     varWhere += String.Format("ac.account_book = '{0}' and ac.account_num = '{1}' and ac.account_id <> '{2}'", accountbookid, accountnumber, rowid)
                 End If
-
                 varDatabaseRequestMysql(1).Query = String.Format("select count(ac.account_id) as `rows` from ac_account ac {0}", varWhere)
-
                 varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), Integer)
             End If
 

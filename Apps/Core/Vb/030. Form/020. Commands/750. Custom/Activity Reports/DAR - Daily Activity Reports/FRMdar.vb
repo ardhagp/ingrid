@@ -5,7 +5,7 @@ Imports Serilog.Sinks.Http
 ''' Module : DAR View
 ''' </summary>
 Public Class FRMdar
-#Region "Variables"
+#Region "Declaration"
     Private WithEvents Frm_dar_SinglePhotoViewer As DAR_SinglePhotoViewer
     Private WithEvents Frm_dar_SinglePDFViewer As DAR_SinglePDFViewer
     Private WithEvents Frm_dar_Editor As New FRMdarEditor
@@ -32,7 +32,7 @@ Public Class FRMdar
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub FillEmployee()
-        CMDdar.View.FillEmployee(varDatabaseName, varDatabaseEngine, CboBy)
+        CMDdar.View.FillEmployee(varDatabaseName, varDatabaseEngineE, CboBy)
     End Sub
 
     ''' <summary>
@@ -53,7 +53,7 @@ Public Class FRMdar
         varShowAttachment = Com_mms_Menu.Checked(varMessageViewAttachment)
 
         'Mengisi Datagrid dengan data dari database    
-        CMDdar.View.DisplayMainGrid(varDatabaseName, varDatabaseEngine, TxtFind, DgnDARDate, SLFStatus, SttActivity, ChkEnableDateFilter, DtpMonth, ChkEnableByFilter, CboBy, forcerefresh)
+        CMDdar.View.DisplayMainGrid(varDatabaseName, varDatabaseEngineE, TxtFind, DgnDARDate, SLFStatus, SttActivity, ChkEnableDateFilter, DtpMonth, ChkEnableByFilter, CboBy, forcerefresh)
 
         'Mengisi Datagrid Activity dengan data dari database
         Call OnDgnDateChange()
@@ -80,7 +80,7 @@ Public Class FRMdar
         Com_mms_Menu.Visible(varMessageViewAttachment, CType(True, CMCv.UI.View.MenuStrip.ShowItem))
 
         'Mengambil nilai dari database usersettings, jika ya maka tampilkan Menu Show Attachment
-        If (CMDdar.View.CheckSettings(varDatabaseName, varDatabaseEngine, varProperties.UserID, "viewphototab")) Then
+        If (CMDdar.View.CheckSettings(varDatabaseName, varDatabaseEngineE, varProperties.UserID, "viewphototab")) Then
             Com_mms_Menu.Checked(varMessageViewAttachment, CType(True, CMCv.UI.View.MenuStrip.ShowItem))
             SpcContent.Panel2Collapsed = False
             Call LoadAttachment(varShowAttachment)
@@ -115,7 +115,7 @@ Public Class FRMdar
             varCurrentDate = Now.AddYears(2)
             varCurrentDateString = "9999-12-31"
         End If
-        CMDdar.View.DisplaySecondGrid(varDatabaseName, varDatabaseEngine, varCurrentDateString, DgnDARActivity, SttActivity, TxtFind, varShowAttachment, DgnPhoto, DgnFile)
+        CMDdar.View.DisplaySecondGrid(varDatabaseName, varDatabaseEngineE, varCurrentDateString, DgnDARActivity, SttActivity, TxtFind, varShowAttachment, DgnPhoto, DgnFile)
 
         Call PhotoPlugin(varShowAttachment)
     End Sub
@@ -197,12 +197,12 @@ Public Class FRMdar
     Private Sub LoadAttachment(ByVal istabattachmentvisible As Boolean)
         If (istabattachmentvisible) Then
             DblBuffer(DgnPhoto)
-            CMDdar.View.DisplayPhotoGrid(varDatabaseName, varDatabaseEngine, varContentID, DgnPhoto)
+            CMDdar.View.DisplayPhotoGrid(varDatabaseName, varDatabaseEngineE, varContentID, DgnPhoto)
 
             Call PhotoPlugin(varShowAttachment)
 
             DblBuffer(DgnFile)
-            CMDdar.View.DisplayFileGrid(varDatabaseName, varDatabaseEngine, varContentID, DgnFile)
+            CMDdar.View.DisplayFileGrid(varDatabaseName, varDatabaseEngineE, varContentID, DgnFile)
         End If
     End Sub
 #End Region
@@ -261,7 +261,7 @@ Public Class FRMdar
         Else
             varFormProperties.IsNew = False
             If Decision("Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString & vbCrLf & "=======================================================", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (CMDdar.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID).ToString)) Then
+                If (CMDdar.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID).ToString)) Then
                     Call GetData(True)
                     Call FillEmployee()
                     FRMmainframe6.Ts_status.Text = "Success"
@@ -367,9 +367,9 @@ Public Class FRMdar
     <SupportedOSPlatform("windows")>
     Private Sub FRMdar_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If (Com_mms_Menu.Checked(varMessageViewAttachment)) Then
-            CMDdar.View.SaveSettings(varDatabaseName, varDatabaseEngine, varProperties.UserID, "ViewPhotoTab", "True")
+            CMDdar.View.SaveSettings(varDatabaseName, varDatabaseEngineE, varProperties.UserID, "ViewPhotoTab", "True")
         Else
-            CMDdar.View.SaveSettings(varDatabaseName, varDatabaseEngine, varProperties.UserID, "ViewPhotoTab", "False")
+            CMDdar.View.SaveSettings(varDatabaseName, varDatabaseEngineE, varProperties.UserID, "ViewPhotoTab", "False")
         End If
     End Sub
 
@@ -475,7 +475,7 @@ Public Class FRMdar
                 varFullPath = varDirTempLocation & varFileName & ".pdf"
 
                 If (Not System.IO.File.Exists(varFullPath)) Then
-                    varBytes = CType(CMDdar.View.GetPdfFile(varDatabaseName, varDatabaseEngine, varFileName), Byte())
+                    varBytes = CType(CMDdar.View.GetPdfFile(varDatabaseName, varDatabaseEngineE, varFileName), Byte())
                     System.IO.File.WriteAllBytes(varFullPath, varBytes)
                 End If
 
@@ -540,8 +540,8 @@ Public Class FRMdar
         If PctbxActivityPhoto.Image Is Nothing Then
             Decision("No photo selected.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
         Else
-            If Not (CMDdar.View.IsLike(varDatabaseName, varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varProperties.EmployeeID)) Then
-                If (CMDdar.View.LikePhoto(varDatabaseName, varDatabaseEngine, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varProperties.EmployeeID, DgnDARActivity.CurrentRow.Cells("employee_id").Value.ToString)) Then
+            If Not (CMDdar.View.IsLike(varDatabaseName, varDatabaseEngineE, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varProperties.EmployeeID)) Then
+                If (CMDdar.View.LikePhoto(varDatabaseName, varDatabaseEngineE, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varProperties.EmployeeID, DgnDARActivity.CurrentRow.Cells("employee_id").Value.ToString)) Then
                     FRMmainframe6.Ts_status.Text = DgnPhoto.CurrentRow.Cells("photo_employee_fullname").Value.ToString & " would like to say thank you for your appreciation."
                 Else
                     SLFStatus.Items(0).Text = ""

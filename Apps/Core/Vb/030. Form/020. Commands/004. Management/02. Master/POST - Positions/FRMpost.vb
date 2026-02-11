@@ -12,7 +12,7 @@ Public Class FRMpost
 #Region "Subs Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional forcerefresh As Boolean = False)
-        CMDpost.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnPOST, SLFStatus, TxtFind, forcerefresh)
+        CMDpost.View.DisplayData(varDatabaseName, varDatabaseEngineE, DgnPOST, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     Private Sub GetRowID()
@@ -54,7 +54,7 @@ Public Class FRMpost
         Else
             varFormProperties.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (CMDpost.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
+                If (CMDpost.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
                     FRMmainframe6.Ts_status.Text = "Success"
                 Else
@@ -252,7 +252,7 @@ Public Class FRMpost
                     Decision(varMessageNoRecordSelected, varMessageError, CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Else
                     If Decision("Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                        If CMDpost.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID)) Then
+                        If CMDpost.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID)) Then
                             Call GetData(True)
                             FRMmainframe6.Ts_status.Text = "Success"
                         Else

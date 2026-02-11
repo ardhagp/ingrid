@@ -20,11 +20,11 @@ Namespace CMDuac
         ''' <returns></returns>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetUserID(databasename As String, dbengine As String, username As String, password As String, Optional additionalfield As Object = Nothing) As String
+        Public Shared Function GetUserID(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, username As String, password As String, Optional additionalfield As Object = Nothing) As String
             Dim varUserID As String = String.Empty
             Dim varExist As Integer
             Try
-                If dbengine = "MSSQL" Then 'Run if MSSQL
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                     varDatabaseRequestMssql2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.sys_user usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", username, CMCv.Security.Encrypt.MD5(password))
                     varExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
 
@@ -37,7 +37,7 @@ Namespace CMDuac
                         varDatabaseRequestMssql2008(1).Query = String.Format("update dbo.sys_user set user_lastlogin = getdate() where user_id = '{0}'", varUserID)
                         varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                     End If
-                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                     varDatabaseRequestMysql(1).Query = String.Format("select count(usr.user_id) as user_id from sys_user usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", username, CMCv.Security.Encrypt.MD5(password))
                     varExist = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), Integer)
 
@@ -63,61 +63,58 @@ Namespace CMDuac
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetEmployeeID(databasename As String, dbengine As String, uid As String) As String
+        Public Shared Function GetEmployeeID(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, uid As String) As String
             Dim varEmployeeID As String
 
             Try
                 varEmployeeID = String.Empty
 
-                If dbengine = "MSSQL" Then 'Run if MSSQL
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                     varDatabaseRequestMssql2008(1).Query = String.Format("select usr.user_employee from dbo.sys_user usr where usr.user_id = '{0}';", uid)
                     varEmployeeID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                     varDatabaseRequestMysql(1).Query = String.Format("select usr.user_employee from sys_user usr where usr.user_id = '{0}';", uid)
                     varEmployeeID = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
                 End If
             Catch ex As Exception
                 varEmployeeID = String.Empty
             End Try
-
             Return varEmployeeID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetFirstName(databasename As String, dbengine As String, uid As String) As String
+        Public Shared Function GetFirstName(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, uid As String) As String
             Dim varFullName As String = String.Empty
 
             Try
-                If dbengine = "MSSQL" Then 'Run if MSSQL
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                     varDatabaseRequestMssql2008(1).Query = String.Format("select emp.employee_fullname from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
                     varFullName = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                     varDatabaseRequestMysql(1).Query = String.Format("select emp.employee_fullname from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{0}')", uid)
                     varFullName = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
                 End If
             Catch ex As Exception
                 varFullName = String.Empty
             End Try
-
             Return varFullName
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetLastName(databasename As String, dbengine As String, uid As String) As String
+        Public Shared Function GetLastName(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, uid As String) As String
             Dim varFullName As String = String.Empty
 
             Try
-                If dbengine = "MSSQL" Then 'Run if MSSQL
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                     varDatabaseRequestMssql2008(1).Query = String.Format("select emp.employee_fullname from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
                     varFullName = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                     varDatabaseRequestMysql(1).Query = String.Format("select emp.employee_fullname from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{0}')", uid)
                     varFullName = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
                 End If
             Catch ex As Exception
                 varFullName = String.Empty
             End Try
-
             Return varFullName
         End Function
 
@@ -127,21 +124,20 @@ Namespace CMDuac
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetEmployeeNumber(databasename As String, dbengine As String, uid As String) As String
+        Public Shared Function GetEmployeeNumber(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, uid As String) As String
             Dim varEmployeeNumber As String = String.Empty
 
             Try
-                If dbengine = "MSSQL" Then 'Run if MSSQL
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                     varDatabaseRequestMssql2008(1).Query = String.Format("select emp.employee_number from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
                     varEmployeeNumber = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                     varDatabaseRequestMysql(1).Query = String.Format("select emp.employee_number from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
                     varEmployeeNumber = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
                 End If
             Catch ex As Exception
                 varEmployeeNumber = String.Empty
             End Try
-
             Return varEmployeeNumber
         End Function
 
@@ -151,21 +147,20 @@ Namespace CMDuac
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetGender(databasename As String, dbengine As String, uid As String) As String
+        Public Shared Function GetGender(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, uid As String) As String
             Dim varEmployeeNumber As String = String.Empty
 
             Try
-                If dbengine = "MSSQL" Then 'Run if MSSQL
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                     varDatabaseRequestMssql2008(1).Query = String.Format("select emp.employee_gender from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
                     varEmployeeNumber = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                     varDatabaseRequestMysql(1).Query = String.Format("select emp.employee_gender from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{0}')", uid)
                     varEmployeeNumber = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
                 End If
             Catch ex As Exception
                 varEmployeeNumber = "MALE"
             End Try
-
             Return varEmployeeNumber
         End Function
 
@@ -175,15 +170,15 @@ Namespace CMDuac
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetPosition(databasename As String, dbengine As String, uid As String) As String
+        Public Shared Function GetPosition(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, uid As String) As String
             Dim varEmployeeNumber As String = String.Empty
 
             Try
-                If dbengine = "MSSQL" Then 'Run if MSSQL
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                     varDatabaseRequestMssql2008(1).Query = String.Format("select p.position_name from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee " &
                                                         "inner join dbo.man_position p on p.position_id = emp.employee_position where (usr.[user_id] = '{0}')", uid)
                     varEmployeeNumber = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                     varDatabaseRequestMysql(1).Query = String.Format("select p.position_name from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee " &
                                                         "inner join man_position p on p.position_id = emp.employee_position where (usr.user_id = '{0}')", uid)
                     varEmployeeNumber = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
@@ -191,7 +186,6 @@ Namespace CMDuac
             Catch ex As Exception
                 varEmployeeNumber = "#ERROR"
             End Try
-
             Return varEmployeeNumber
         End Function
 
@@ -203,7 +197,7 @@ Namespace CMDuac
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetAccess(databasename As String, dbengine As String, authtype As EnuAuthType, sysmodule As String, uid As Integer) As Boolean
+        Public Shared Function GetAccess(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, authtype As EnuAuthType, sysmodule As String, uid As Integer) As Boolean
             Dim varIsAuth As Integer
 
             If authtype = EnuAuthType.Read Then
@@ -214,10 +208,10 @@ Namespace CMDuac
                 'TODO: Execute method
             End If
 
-            If dbengine = "MSSQL" Then 'Run if MSSQL
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                 varDatabaseRequestMssql2008(0).Query = ""
                 varIsAuth = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
-            ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                 varDatabaseRequestMysql(0).Query = ""
                 varIsAuth = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
             End If
@@ -235,7 +229,7 @@ Namespace CMDuac
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Function GetPhoto(databasename As String, dbengine As String, uid As String) As System.Drawing.Image
+        Public Function GetPhoto(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, uid As String) As System.Drawing.Image
             'TODO: To be moved into cloud storage
 
             Dim varUserID As String = uid
@@ -243,10 +237,10 @@ Namespace CMDuac
             Dim varFileStream As IO.FileStream = Nothing
 
             Try
-                If dbengine = "MSSQL" Then
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("SELECT f.file_content FROM db_universe_erp_file.dbo.sto_file f where f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_parent = '{0}' ;", varUserID)
                     varFileStream = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), FileStream)
-                ElseIf dbengine = "MYSQL" Then
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = String.Format("SELECT f.file_content FROM db_universe_erp_file.dbo.sto_file f where f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_parent = '{0}' ;", varUserID)
                     varFileStream = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), FileStream)
                 End If
@@ -257,7 +251,6 @@ Namespace CMDuac
             Catch ex As Exception
                 varPhoto = Nothing
             End Try
-
             Return varPhoto
         End Function
 
@@ -267,21 +260,20 @@ Namespace CMDuac
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetAdministrator(databasename As String, dbengine As String, uid As String) As Boolean
+        Public Shared Function GetAdministrator(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, uid As String) As Boolean
             Dim varIsAdministrator As Boolean = False
 
             Try
-                If dbengine = "MSSQL" Then 'Run if MSSQL
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                     varDatabaseRequestMssql2008(0).Query = String.Format("select u.user_root from dbo.sys_user u where u.user_id = '{0}'", uid)
                     varIsAdministrator = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Boolean)
-                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                     varDatabaseRequestMysql(0).Query = String.Format("select u.user_root from sys_user u where u.user_id = '{0}'", uid)
                     varIsAdministrator = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Boolean)
                 End If
             Catch ex As Exception
                 varIsAdministrator = False
             End Try
-
             Return varIsAdministrator
         End Function
 
@@ -300,8 +292,8 @@ Namespace CMDuac
         ''' <param name="Find"></param>
         ''' <param name="ForceRefresh"></param>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As String, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
-            If dbengine = "MSSQL" Then 'Run if MSSQL
+        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as [user_root], usr.user_lastlogin, " &
                                                             "usr.user_locked from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee order by em.employee_fullname")
@@ -313,7 +305,7 @@ Namespace CMDuac
                 varDatabaseRequestMssql2008(0).DataGrid = datagrid
                 varDatabaseRequestMssql2008(0).StatusBar = statusbar
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TUAC")
-            ElseIf dbengine = "MYSQL" Then 'Run in MYSQL
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run in MYSQL
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMysql(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as `user_root`, usr.user_lastlogin, " &
                                                             "usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee order by em.employee_fullname")
@@ -334,17 +326,16 @@ Namespace CMDuac
         ''' <param name="RowID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function DeleteData(databasename As String, dbengine As String, rowid As String) As Boolean
+        Public Shared Function DeleteData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As Boolean
             Dim varSuccess As Boolean
             Try
-                If dbengine = "MSSQL" Then 'Run if MSSQL
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                     varDatabaseRequestMssql2008(1).Query = String.Format("delete from dbo.sys_user where (user_id = '{0}')", rowid)
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
-                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                     varDatabaseRequestMysql(1).Query = String.Format("delete from sys_user where (user_id = '{0}')", rowid)
                     varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
                 End If
-
                 varSuccess = True
             Catch ex As Exception
                 varSuccess = False
@@ -358,8 +349,8 @@ Namespace CMDuac
     ''' </summary>
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As String, grid As dgn, Optional rowid As String = "-1")
-            If dbengine = "MSSQL" Then
+        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, grid As dgn, Optional rowid As String = "-1")
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 ReDim varDatabaseRequestMssql2008(2)
 
                 If rowid = "-1" Then
@@ -382,7 +373,7 @@ Namespace CMDuac
 
                 varDatabaseRequestMssql2008(2).DataGrid = grid
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(2), "TUserAccess")
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 ReDim varDatabaseRequestMysql(2)
 
                 If rowid = "-1" Then
@@ -409,16 +400,16 @@ Namespace CMDuac
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetUIDbyEmployeeID(databasename As String, dbengine As String, employeeid As String) As String
+        Public Shared Function GetUIDbyEmployeeID(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, employeeid As String) As String
             Dim varUserID As String = String.Empty
 
             Try
-                If dbengine = "MSSQL" Then
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(1).Query = String.Format("select usr.user_id from dbo.sys_user usr where usr.user_employee = '{0}';", employeeid)
 
                     varUserID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
                     IIf(IsDBNull(varUserID), "", varUserID)
-                ElseIf dbengine = "MYSQL" Then
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = String.Format("select usr.user_id from sys_user usr where usr.user_employee = '{0}';", employeeid)
 
                     varUserID = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
@@ -427,36 +418,34 @@ Namespace CMDuac
             Catch ex As Exception
                 varUserID = Nothing
             End Try
-
             Return varUserID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetEmployeeNumber(databasename As String, dbengine As String, userid As String) As String
+        Public Shared Function GetEmployeeNumber(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, userid As String) As String
             Dim varEmployeeNumber As String = String.Empty
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_number from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
                 varEmployeeNumber = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select em.employee_number from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
                 varEmployeeNumber = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
             End If
-
             Return varEmployeeNumber
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetEmployeeFullName(databasename As String, dbengine As String, userid As String) As String
+        Public Shared Function GetEmployeeFullName(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, userid As String) As String
             Dim varEmployeeFullName As String = String.Empty
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_fullname from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
                 varEmployeeFullName = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select em.employee_fullname from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
                 varEmployeeFullName = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
@@ -466,14 +455,14 @@ Namespace CMDuac
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetUsernameByUserID(databasename As String, dbengine As String, ByVal userid As String) As String
+        Public Shared Function GetUsernameByUserID(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, ByVal userid As String) As String
             Dim varUsername As String = String.Empty
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select usr.user_username from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
                 varUsername = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select usr.user_username from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
                 varUsername = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
@@ -483,14 +472,14 @@ Namespace CMDuac
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetUsernameByEmployeeID(databasename As String, dbengine As String, employeeid As String) As String
+        Public Shared Function GetUsernameByEmployeeID(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, employeeid As String) As String
             Dim varUsername As String = String.Empty
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select usr.user_username from dbo.sys_user usr where usr.user_employee = '{0}'", employeeid)
 
                 varUsername = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select usr.user_username from sys_user usr where usr.user_employee = '{0}'", employeeid)
 
                 varUsername = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
@@ -500,14 +489,14 @@ Namespace CMDuac
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetPassword(databasename As String, dbengine As String, userid As String) As String
+        Public Shared Function GetPassword(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, userid As String) As String
             Dim varPassword As String = String.Empty
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select usr.user_password from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
                 varPassword = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select usr.user_password from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
                 varPassword = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
@@ -517,14 +506,14 @@ Namespace CMDuac
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetLocked(databasename As String, dbengine As String, userid As String) As Boolean
+        Public Shared Function GetLocked(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, userid As String) As Boolean
             Dim varLocked As Boolean = True
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select usr.user_locked from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
                 varLocked = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Boolean)
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
                 varLocked = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), Boolean)
@@ -534,14 +523,14 @@ Namespace CMDuac
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetAdministrator(databasename As String, dbengine As String, userid As String) As Boolean
+        Public Shared Function GetAdministrator(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, userid As String) As Boolean
             Dim varRoot As Boolean = False
 
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select usr.user_root from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
                 varRoot = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Boolean)
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select usr.user_root from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
                 varRoot = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), Boolean)
@@ -551,15 +540,20 @@ Namespace CMDuac
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsDuplicate(databasename As String, dbengine As String, username As String, Optional rowid As String = "-1") As Boolean
-            Dim varIsDuplicate As Integer = 0
+        Public Shared Function IsDuplicate(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, username As String, Optional rowid As String = "-1") As Boolean
+            Dim varIsDuplicate As Integer
 
-            If rowid = "-1" Then
+            If rowid = "-1" AndAlso dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.sys_user usr where (usr.user_username = '{0}')", username)
-            Else
+            ElseIf rowid <> "-1" AndAlso dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.sys_user usr where (usr.user_username = '{0}') and (usr.user_id <> '{1}')", username, rowid)
             End If
-            varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
+
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                'TODO: MYSQL version
+            End If
 
             If varIsDuplicate = 0 Then
                 Return False
@@ -569,13 +563,13 @@ Namespace CMDuac
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushData(databasename As String, dbengine As String, employeeid As String, username As String, password As String, locked As Boolean, administrator As Boolean, uac As dgn, Optional rowid As String = "-1", Optional hash As String = "", Optional ispasswordchange As Boolean = False) As Boolean
+        Public Shared Function PushData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, employeeid As String, username As String, password As String, locked As Boolean, administrator As Boolean, uac As dgn, Optional rowid As String = "-1", Optional hash As String = "", Optional ispasswordchange As Boolean = False) As Boolean
             Dim varSuccess As Boolean = False
 
             Try
                 Dim varExtendedQuery As String = String.Empty
 
-                If dbengine = "MSSQL" Then 'Run if MSSQL
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                     ReDim varDatabaseRequestMssql2008(4)
 
                     If rowid = "-1" Then
@@ -617,7 +611,7 @@ Namespace CMDuac
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                     varSuccess = True
 
-                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                     ReDim varDatabaseRequestMysql(4)
 
                     If rowid = "-1" Then
@@ -662,7 +656,6 @@ Namespace CMDuac
             Catch ex As Exception
                 varSuccess = False
             End Try
-
             Return varSuccess
         End Function
     End Class

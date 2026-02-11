@@ -9,7 +9,7 @@ Public Class FRMmmty
 
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional forcerefresh As Boolean = False)
-        Commands.MMTY.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnMMTY, SLFStatus, TxtFind, forcerefresh)
+        CMDmmty.View.DisplayData(varDatabaseName, varDatabaseEngineE, DgnMMTY, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     <SupportedOSPlatform("windows")>

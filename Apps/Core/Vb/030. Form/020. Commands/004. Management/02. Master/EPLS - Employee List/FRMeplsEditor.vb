@@ -54,9 +54,9 @@ Public Class FRMeplsEditor
             varHavePhoto = CMDepls.Editor.GetIsHavePhoto(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
 
             'Permissions
-            TxtLogin.Text = CMDuac.Editor.GetUsernameByEmployeeID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            varFormProperties.Field01 = CMDuac.Editor.GetUIDbyEmployeeID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            CMDuac.Editor.DisplayData(varDatabaseName, varDatabaseEngine, DgnModulesRoles, varFormProperties.Field01.ToString)
+            TxtLogin.Text = CMDuac.Editor.GetUsernameByEmployeeID(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
+            varFormProperties.Field01 = CMDuac.Editor.GetUIDbyEmployeeID(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
+            CMDuac.Editor.DisplayData(varDatabaseName, varDatabaseEngineE, DgnModulesRoles, varFormProperties.Field01.ToString)
 
             TxtPersonalID.Focus()
 

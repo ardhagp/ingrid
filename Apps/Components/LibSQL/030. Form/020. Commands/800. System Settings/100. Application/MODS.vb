@@ -4,7 +4,7 @@ Imports CMCv
 Namespace CMDmods
     Public Class View
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As String, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
             If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                 varDatabaseRequestMssql2008(0).Query = String.Format("select modg.modulegroup_name, mods.module_code, mods.module_name, mods.module_description, mods.module_issystem, mods.module_ismaintenance, mods.module_id from dbo.sys_module mods inner join dbo.[[sys]]modulegroup] modg on modg.modulegroup_id = mods.module_modulegroup order by modg.modulegroup_order, mods.module_code")
             Else
@@ -17,8 +17,8 @@ Namespace CMDmods
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DeleteData(databasename As String, dbengine As String, rowid As String) As Boolean
-            Dim varSuccess As Boolean = False
+        Public Shared Function DeleteData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As Boolean
+            Dim varSuccess As Boolean
             Try
                 varDatabaseRequestMssql2008(1).Query = String.Format("delete from dbo.sys_module where module_id = '{0}'", rowid)
                 varDatabaseEngineMssql2008.PushData(varDatabaseRequestMssql2008(1).Query, "db_universe_erp")
@@ -33,8 +33,8 @@ Namespace CMDmods
 
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsDuplicate(databasename As String, dbengine As String, code As String, Optional rowid As String = "") As Boolean
-            Dim varIsDuplicate As Boolean = False
+        Public Shared Function IsDuplicate(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, code As String, Optional rowid As String = "") As Boolean
+            Dim varIsDuplicate As Boolean
 
             Try
                 If rowid = String.Empty Then
@@ -52,7 +52,7 @@ Namespace CMDmods
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillModuleGroup(databasename As String, dbengine As String, modulegroup As cbo)
+        Public Shared Sub FillModuleGroup(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, modulegroup As cbo)
             varDatabaseRequestMssql2008(1).Query = "select modg.modulegroup_id, modg.modulegroup_name from dbo.[[sys]]modulegroup] modg order by modg.modulegroup_order"
             varDatabaseRequestMssql2008(1).Dropdown = modulegroup
             varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TModuleGroup")
@@ -61,7 +61,7 @@ Namespace CMDmods
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetMODcode(databasename As String, dbengine As String, ByVal rowid As String) As String
+        Public Shared Function GetMODcode(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, ByVal rowid As String) As String
             Dim varCode As String
 
             varDatabaseRequestMssql2008(0).Query = String.Format("select mods.module_code from dbo.sys_module mods where mods.module_id = '{0}'", rowid)
@@ -71,7 +71,7 @@ Namespace CMDmods
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetMODname(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetMODname(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
             Dim varName As String
 
             varDatabaseRequestMssql2008(0).Query = String.Format("select mods.module_name from dbo.sys_module mods where mods.module_id = '{0}'", rowid)
@@ -81,7 +81,7 @@ Namespace CMDmods
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetMODgroupid(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetMODgroupid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
             Dim varGroupID As String
 
             varDatabaseRequestMssql2008(0).Query = String.Format("select mods.module_modulegroup from dbo.sys_module mods where mods.module_id = '{0}'", rowid)
@@ -91,7 +91,7 @@ Namespace CMDmods
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetMODdescription(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetMODdescription(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
             Dim varDescription As String
 
             varDatabaseRequestMssql2008(0).Query = String.Format("select mods.module_description from dbo.sys_module mods where mods.module_id = '{0}'", rowid)
@@ -101,7 +101,7 @@ Namespace CMDmods
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetMODsystem(databasename As String, dbengine As String, rowid As String) As Boolean
+        Public Shared Function GetMODsystem(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As Boolean
             Dim varIsSystem As Boolean
 
             Try
@@ -115,7 +115,7 @@ Namespace CMDmods
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetMODlocked(databasename As String, ByVal dbengine As String, rowid As String) As Boolean
+        Public Shared Function GetMODlocked(databasename As String, ByVal dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As Boolean
             Dim varIsLocked As Boolean
 
             Try
@@ -129,8 +129,8 @@ Namespace CMDmods
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushData(databasename As String, dbengine As String, id As String, groupid As String, code As String, name As String, description As String, issystem As Boolean, islocked As Boolean, Optional rowid As String = "") As Boolean
-            Dim varSuccess As Boolean = False
+        Public Shared Function PushData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, id As String, groupid As String, code As String, name As String, description As String, issystem As Boolean, islocked As Boolean, Optional rowid As String = "") As Boolean
+            Dim varSuccess As Boolean
 
             Try
                 If rowid = "-1" Then

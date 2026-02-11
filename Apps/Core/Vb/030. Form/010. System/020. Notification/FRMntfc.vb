@@ -10,7 +10,7 @@ Public Class FRMntfc
     <SupportedOSPlatform("windows")>
     Private Sub GetData()
         DblBuffer(DgnNotification)
-        CMDntfc.View.Display(varDatabaseName, varDatabaseEngine, DgnNotification, varProperties.EmployeeID)
+        CMDntfc.View.Display(varDatabaseName, varDatabaseEngineE, DgnNotification, varProperties.EmployeeID)
         FRMmainframe6.USERMENU.Text = varProperties.FirstName
         FRMmainframe6.NotificationToolStripMenuItem.Text = "0 Notification(s)"
     End Sub

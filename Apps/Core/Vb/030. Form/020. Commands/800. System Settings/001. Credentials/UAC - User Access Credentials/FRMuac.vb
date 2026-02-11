@@ -11,7 +11,7 @@ Public Class FRMuac
 
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional forcerefresh As Boolean = False)
-        CMDuac.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnUAC, SLFStatus, TxtFind, forcerefresh)
+        CMDuac.View.DisplayData(varDatabaseName, varDatabaseEngineE, DgnUAC, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     Private Sub GetRowID()
@@ -75,7 +75,7 @@ Public Class FRMuac
             Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (CMDuac.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
+                If (CMDuac.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
                     FRMmainframe6.Ts_status.Text = "Success"
                 Else

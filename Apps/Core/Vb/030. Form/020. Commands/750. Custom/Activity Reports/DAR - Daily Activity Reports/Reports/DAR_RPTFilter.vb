@@ -9,17 +9,17 @@ Public Class DAR_RPTFilter
 
     <SupportedOSPlatform("windows")>
     Private Sub FillEmployee()
-        CMDdar.View.FillEmployee(varDatabaseName, varDatabaseEngine, CboBy)
+        CMDdar.View.FillEmployee(varDatabaseName, varDatabaseEngineE, CboBy)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub GETAffectedArea()
-        CMDdar.Editor.GetAffectedArea(varDatabaseName, varDatabaseEngine, CboArea)
+        CMDdar.Editor.GetAffectedArea(varDatabaseName, varDatabaseEngineE, CboArea)
     End Sub
 
     <SupportedOSPlatform("windows")>
     Private Sub GETActivity()
-        CMDdar.Editor.GetTemplateTitle(varDatabaseName, varDatabaseEngine, CboActivity)
+        CMDdar.Editor.GetTemplateTitle(varDatabaseName, varDatabaseEngineE, CboActivity)
     End Sub
 
     Private Sub ChkFrom_CheckedChanged(sender As Object, e As EventArgs) Handles ChkFrom.CheckedChanged
@@ -100,7 +100,7 @@ Public Class DAR_RPTFilter
     <SupportedOSPlatform("windows")>
     Private Sub BtnShow_Click(sender As Object, e As EventArgs) Handles BtnShow.Click
         _DS = New DAR_RDS
-        CMDdar.Reports.Display(varDatabaseName, varDatabaseEngine, ChkFrom, ChkTo, ChkArea, ChkActivity, ChkBy, DtpFrom, DtpTo, CboArea, CboActivity, CboBy, TxtDescription, _DS)
+        CMDdar.Reports.Display(varDatabaseName, varDatabaseEngineE, ChkFrom, ChkTo, ChkArea, ChkActivity, ChkBy, DtpFrom, DtpTo, CboArea, CboActivity, CboBy, TxtDescription, _DS)
 
         Dim _Color As Boolean
 

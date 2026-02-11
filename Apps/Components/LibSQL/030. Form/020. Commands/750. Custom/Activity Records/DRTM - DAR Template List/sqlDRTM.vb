@@ -1,20 +1,19 @@
-﻿Imports System
-Imports System.Runtime.Versioning
+﻿Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.DRTM
+Namespace CMDdrtm
     Public Class View
         Public varIsEmpFilter As Boolean
         Public varEID As String
         Public varContentID As String
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayGrid(databasename As String, dbengine As String, find As txt, dategrid As dgn, contentstatusbar As stt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, find As txt, dategrid As dgn, contentstatusbar As stt, Optional forcerefresh As Boolean = False)
             Try
                 Dim varWhere As String = String.Format("where ")
 
-                If dbengine = "MSSQL" Then
-                    If (find.XOSQLText = String.Empty) AndAlso (forcerefresh = True) Then
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
                         varWhere += "tpl.template_module = (select mdl.module_id from dbo.sys_module mdl where mdl.module_code = 'DAR') "
                     Else
                         varWhere += "tpl.template_module = (select mdl.module_id from dbo.sys_module mdl where mdl.module_code = 'DAR') and "
@@ -43,7 +42,7 @@ Namespace Commands.DRTM
                     varDatabaseRequestMssql2008(0).DataGrid = dategrid
                     varDatabaseRequestMssql2008(0).StatusBar = contentstatusbar
                     varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TDARTemplate")
-                ElseIf dbengine = "MYSQL" Then
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
                         varWhere += "tpl.template_module = (select mdl.module_id from sys_module mdl where mdl.module_code = 'DAR') "
                     Else
@@ -67,9 +66,7 @@ Namespace Commands.DRTM
 
                         varWhere.Append(CChar(")"))
                     End If
-
                     varDatabaseRequestMysql(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from doc_template tpl {0} order by tpl.template_title", varWhere)
-
                     varDatabaseRequestMysql(0).DataGrid = dategrid
                     varDatabaseRequestMysql(0).StatusBar = contentstatusbar
                     varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "TDARTemplate")

@@ -15,13 +15,11 @@ Namespace CMDrems
                 End If
 
                 varDatabaseRequestMssql2008(0).Query = String.Format("select td.todos_id, td.todos_name, td.todos_datestart, td.todos_dateend, td.todos_dayleft, td.todos_priority, td.todos_totalvalue, td.todos_currentvalue, td.todos_percentage, td.todos_instruction, td.todos_createdby, td.todos_datecreated, td.todos_iscomplete, td.todos_completedby, td.todos_verifiedby, td.todos_ispublic from db_universe_erp.dbo.[[cus]]todos] td {0} order by td.todos_priority, td.todos_datestart asc", varWhere)
-
                 varDatabaseRequestMssql2008(0).DataGrid = progressgrid
                 varDatabaseRequestMssql2008(0).StatusBar = todostatusbar
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TToDosProgress")
-
             Catch ex As Exception
-
+                'TODO: Log error
             End Try
         End Sub
     End Class

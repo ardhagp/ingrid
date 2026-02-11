@@ -9,7 +9,7 @@ Public Class FRMplnt
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional forcerefresh As Boolean = False)
         DblBuffer(DgnPLNT)
-        CMDplnt.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnPLNT, SLFStatus, TxtFind, forcerefresh)
+        CMDplnt.View.DisplayData(varDatabaseName, varDatabaseEngineE, DgnPLNT, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     ''' <summary>
@@ -78,7 +78,7 @@ Public Class FRMplnt
         Else
             varFormProperties.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If CMDplnt.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID)) Then
+                If CMDplnt.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID)) Then
                     Call GetData(True)
                     FRMmainframe6.Ts_status.Text = "Success"
                 Else

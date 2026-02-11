@@ -13,7 +13,7 @@ Public Class FRMmods
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional ByVal forcerefresh As Boolean = False)
         DblBuffer(DgnMODS)
-        CMDmods.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnMODS, SLFStatus, TxtFind, forcerefresh)
+        CMDmods.View.DisplayData(varDatabaseName, varDatabaseEngineE, DgnMODS, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     Private Sub GetRowID()
@@ -73,7 +73,7 @@ Public Class FRMmods
             Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
             If Decision("Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (CMDdar.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
+                If (CMDdar.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
                     RaiseEvent EventDataChanged()
                     FRMmainframe6.Ts_status.Text = "Success"

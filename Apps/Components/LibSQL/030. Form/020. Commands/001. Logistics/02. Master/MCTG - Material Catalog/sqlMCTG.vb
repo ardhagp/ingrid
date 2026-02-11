@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.MCTG
+Namespace CMDmctg
     ''' <summary>
     ''' 
     ''' </summary>
@@ -16,8 +16,8 @@ Namespace Commands.MCTG
         ''' <param name="find"></param>
         ''' <param name="forcerefresh"></param>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As String, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
-            If dbengine = "MSSQL" Then
+        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMssql2008(0).Query = "Select m.material_id, m.material_number, m.material_name, m.material_longtext, mg.materialgroup_code, mt.materialtype_code, m.material_isidentifier, m.material_iscarrier from " &
                     "dbo.log_material m inner join dbo.log_materialgroup mg On m.material_materialgroup = mg.materialgroup_id inner join dbo.log_materialtype mt On m.material_materialtype = mt.materialtype_id " &
@@ -31,7 +31,7 @@ Namespace Commands.MCTG
                 varDatabaseRequestMssql2008(0).DataGrid = datagrid
                 varDatabaseRequestMssql2008(0).StatusBar = statusbar
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TMaterialCatalog")
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMysql(0).Query = "Select m.material_id, m.material_number, m.material_name, m.material_longtext, mg.materialgroup_code, mt.materialtype_code, m.material_isidentifier, m.material_iscarrier from " &
                     "log_material m inner join log_materialgroup mg On m.material_materialgroup = mg.materialgroup_id inner join log_materialtype mt On m.material_materialtype = mt.materialtype_id " &

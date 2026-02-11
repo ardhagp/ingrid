@@ -16,7 +16,7 @@ Public Class FRMmctg
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional forcerefresh As Boolean = False)
         DblBuffer(DgnMCTG)
-        Commands.MCTG.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnMCTG, SLFStatus, TxtFind, forcerefresh)
+        CMDmctg.View.DisplayData(varDatabaseName, varDatabaseEngineE, DgnMCTG, SLFStatus, TxtFind, forcerefresh)
     End Sub
 #End Region
 
