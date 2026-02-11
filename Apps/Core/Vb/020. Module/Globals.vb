@@ -28,6 +28,7 @@ Module Globals
     'Public V_SYSAPP As New Application.Modules
     Public varLogUser As New LibSQL.SystemLog.Activity.User
     Public varLogApplication As New LibSQL.SystemLog.Activity.Application
+    Public varCompany As New LibSQL.CMDccin.View
     Public varForceRefreshMainframeData As Boolean
     'Public clsBridgelog As New Bridge.Security.WRITELOG
 
@@ -48,12 +49,12 @@ Module Globals
 
     <SupportedOSPlatform("windows")>
     Public Sub FirstLoad()
-        Call GETAPPVERSION()
-        Call CHECKREQUIREDFOLDER()
+        Call GetAppVersion()
+        Call CheckRequiredFolder()
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Public Sub DblBuffer(ByVal gridview As DataGridView)
+    Public Sub DblBuffer(gridview As DataGridView)
         Try
             Dim systemType As Type = gridview.GetType()
             Dim propertyInfo As PropertyInfo = systemType.GetProperty("DoubleBuffered", bindingAttr:=BindingFlags.Instance Or BindingFlags.NonPublic)
@@ -128,7 +129,7 @@ Module Globals
     ''' <summary>
     ''' Check and Create Required Folder
     ''' </summary>
-    Public Function CheckRequiredFolder(ByVal Optional getdirname As DirName = Nothing) As String
+    Public Function CheckRequiredFolder(Optional getdirname As DirName = Nothing) As String
         If Not Directory.Exists("Commands") Then
             Directory.CreateDirectory("Commands")
         End If
@@ -172,11 +173,11 @@ Module Globals
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Sub Display(ByVal formName As CMCv.frmStandard, Optional formimage As System.Drawing.Image = Nothing,
+    Public Sub Display(formname As CMCv.frmStandard, Optional formimage As System.Drawing.Image = Nothing,
                        Optional formtitle As String = "", Optional formsubtitle As String = "",
                        Optional isdialog As Boolean = False, Optional parentframe As Windows.Forms.Form = Nothing)
         Try
-            formName.SLFNamaForm.Text = formtitle
+            formname.SLFNamaForm.Text = formtitle
             'If formimage IsNot Nothing Then
             '    formName.SLFLogo.Image = formimage
             'End If
@@ -203,7 +204,7 @@ Module Globals
 
         Catch ex As Exception
             With proLog
-                .AppVersion = GETAPPVERSION()
+                .AppVersion = GetAppVersion()
                 .FromSender = "[Open] $\Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
@@ -233,8 +234,9 @@ Module Globals
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Sub Display(ByVal formname As CMCv.Std_Fo, Optional ByVal formimage As System.Drawing.Image = Nothing, Optional ByVal formtitle As String = "", Optional ByVal formsubtitle As String = "", Optional ByVal isdialog As Boolean = False, Optional ByVal parentframe As Windows.Forms.Form = Nothing)
+    Public Sub Display(formname As CMCv.Std_Fo, Optional formimage As System.Drawing.Image = Nothing, Optional windowname As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "", Optional isdialog As Boolean = False, Optional parentframe As Windows.Forms.Form = Nothing)
         Try
+            formname.Text = windowname
             formname.SLFNamaForm.Text = formtitle
             If formimage IsNot Nothing Then
                 formname.SLFLogo.Image = formimage
@@ -260,7 +262,7 @@ Module Globals
             End If
         Catch ex As Exception
             With proLog
-                .AppVersion = GETAPPVERSION()
+                .AppVersion = GetAppVersion()
                 .FromSender = "[Open] $\Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
@@ -290,8 +292,8 @@ Module Globals
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
-    Public Function Decision(ByVal message As String, ByVal title As String, ByVal messageicon As CMCv.FRMdialogbox.MessageIcon, ByVal buttontype As CMCv.FRMdialogbox.MessageTypes) As DialogResult
-        frmMSG = New CMCv.FRMdialogbox(message, title, messageicon, buttontype)
+    Public Function Decision(windowtitle As String, message As String, title As String, messageicon As CMCv.frmDialogBox.MessageIcon, buttontype As CMCv.frmDialogBox.MessageTypes) As DialogResult
+        frmMSG = New CMCv.frmDialogBox(windowtitle, message, title, messageicon, buttontype)
         Return frmMSG.ShowDialog()
         frmMSG.Dispose()
     End Function

@@ -38,11 +38,11 @@ Module Globals
     ''' <param name="messageicon"></param>
     ''' <param name="buttontype"></param>
     ''' <returns></returns>
-    Public Function Decision(message As String, title As String,
-                             messageicon As CMCv.FRMdialogbox.MessageIcon,
-                             buttontype As CMCv.FRMdialogbox.MessageTypes) As _
+    Public Function Decision(windowtitle As String, message As String, title As String,
+                             messageicon As CMCv.frmDialogBox.MessageIcon,
+                             buttontype As CMCv.frmDialogBox.MessageTypes) As _
                              System.Windows.Forms.DialogResult
-        MSG = New CMCv.FRMdialogbox(message, title, messageicon, buttontype)
+        MSG = New CMCv.frmDialogBox(windowtitle, message, title, messageicon, buttontype)
         Return MSG.ShowDialog()
         MSG.Dispose()
     End Function
@@ -90,10 +90,11 @@ Module Globals
     ''' <param name="isdialog"></param>
     ''' <param name="parentframe"></param>
     Public Sub Display(formname As CMCv.Std_Fo, Optional formimage As System.Drawing.Image = Nothing,
-                       Optional formtitle As String = "", Optional formsubtitle As String = "",
+                       Optional windowtitle As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "",
                        Optional isdialog As Boolean = False,
                        Optional parentframe As Windows.Forms.Form = Nothing)
         Try
+            formname.Text = windowtitle
             formname.SLFNamaForm.Text = formtitle
 
             If formimage IsNot Nothing Then

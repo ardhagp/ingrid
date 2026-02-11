@@ -1,13 +1,14 @@
-﻿Public Class FRMfirstguide
-    Private Field_Record As New LibApp.Ingrid.Global.Properties
-    Private _Step As Integer
+﻿Imports System.Runtime.Versioning
 
-    Private Sub Btn_Process_Click(sender As Object, e As EventArgs) Handles Btn_Process.Click
-        If _Step = 1 Then
+Public Class FRMfirstguide
+    Private FirstRecord, EmploymentType1, EmploymentType2, EmploymentType3, EmploymentType4 As New LibApp.Ingrid.Global.Properties
+    Private varStep As Integer
 
-            If (Txt_Company.XOIsBlank) OrElse (Txt_Department.XOIsBlank) OrElse (Txt_Position.XOIsBlank) OrElse (Txt_EmployeeName.XOIsBlank) OrElse (Txt_EmployeeID.XOIsBlank) Then
-                MsgBox("Field(s) cannot be emptied", MsgBoxStyle.Critical, "Ingrid")
-
+    <SupportedOSPlatform("windows")>
+    Private Sub BtnProcess_Click(sender As Object, e As EventArgs) Handles Btn_Process.Click
+        If varStep = 1 Then
+            If Txt_Company.XOIsBlank OrElse Txt_Department.XOIsBlank OrElse Txt_Position.XOIsBlank OrElse Txt_EmployeeName.XOIsBlank OrElse Txt_EmployeeID.XOIsBlank Then
+                Decision(My.Application.Info.AssemblyName, "Field(s) cannot be empty", My.Application.Info.AssemblyName, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
                 If (Txt_Company.XOIsBlank) Then
                     Txt_Company.Focus()
                 ElseIf (Txt_Department.XOIsBlank) Then
@@ -19,90 +20,110 @@
                 Else
                     Txt_EmployeeID.Focus()
                 End If
-
                 Return
             End If
+            'FirstRecord.CompanyID = CMCv.Security.Encrypt.MD5(Txt_Company.Text.ToUpper)
+            'FirstRecord.CompanyName = Txt_Company.Text.ToUpper
+            'FirstRecord.CompanyCode = CMCv.Security.Encrypt.CRC32(Txt_Company.Text.ToUpper)
 
-            Field_Record.Field01 = CMCv.Security.Encrypt.MD5(Txt_Company.Text.ToUpper)
-            Field_Record.Field02 = CMCv.Security.Encrypt.MD5(Txt_Department.Text.ToUpper)
-            Field_Record.Field03 = CMCv.Security.Encrypt.MD5(Txt_Position.Text.ToUpper)
-            Field_Record.Field04 = CMCv.Security.Encrypt.MD5(Txt_EmployeeID.Text.ToUpper)
-
+            'Field_Record.Field02 = CMCv.Security.Encrypt.MD5(Txt_Department.Text.ToUpper)
+            'Field_Record.Field03 = CMCv.Security.Encrypt.MD5(Txt_Position.Text.ToUpper)
+            'Field_Record.Field04 = CMCv.Security.Encrypt.MD5(Txt_EmployeeID.Text.ToUpper)
             Gbx_Company.Visible = False
             Gbx_Login.Visible = True
-
-            _Step += 1
-            Lbl_Step.Text = $"Step {_Step} :"
-
+            varStep += 1
+            Lbl_Step.Text = $"Step {varStep} :"
             Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
             Btn_Close.Text = "&Prev"
-
-        ElseIf _Step = 2 Then
+        ElseIf varStep = 2 Then
             If (Txt_Username.XOIsBlank) OrElse (Txt_Password.XOIsBlank) Then
-                MsgBox("Field(s) cannot be emptied", MsgBoxStyle.Critical, "Ingrid")
-
+                Decision(My.Application.Info.AssemblyName, "Field(s) cannot be empty", My.Application.Info.AssemblyName, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
                 If (Txt_Username.XOIsBlank) Then
                     Txt_Username.Focus()
                 Else
                     Txt_Password.Focus()
                 End If
-
                 Return
             End If
-
             If Txt_Password.XOPwdStrengthScore < 70 Then
                 MsgBox("Your password is not strong enough!", MsgBoxStyle.Exclamation, "Ingrid")
                 Txt_Password.Focus()
                 Return
             End If
-
             Gbx_Company.Visible = False
             Gbx_Login.Visible = False
             Gbx_Modules.Visible = True
-
-            _Step += 1
-            Lbl_Step.Text = $"Step {_Step} :"
-
-        ElseIf _Step = 3 Then
+            varStep += 1
+            Lbl_Step.Text = $"Step {varStep} :"
+        ElseIf varStep = 3 Then
             'TODO: Continue next step, open SQLite Database for App_Settings.db
             'ERL.
 
-            _Step += 1
-            Lbl_Step.Text = $"Step {_Step} :"
-
+            varStep += 1
+            Lbl_Step.Text = $"Step {varStep} :"
         End If
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub frmFistGuide_Load(sender As Object, e As EventArgs) Handles Me.Load
-        _Step = 1
+
+        varStep = 1
         Gbx_Company.Visible = True
         Gbx_Login.Visible = False
+
+        EmploymentType1.EmploymentTypeID = CMCv.Security.Encrypt.MD5("PERMANENT")
+        EmploymentType1.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("PERMANENT")
+        EmploymentType1.EmploymentTypeName = "PERMANENT"
+        EmploymentType1.EmploymentTypeDescription = "Permanent Employment Type"
+
+        EmploymentType2.EmploymentTypeID = CMCv.Security.Encrypt.MD5("SERVICE CONTRACT")
+        EmploymentType2.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("SERVICE CONTRACT")
+        EmploymentType2.EmploymentTypeName = "SERVICE CONTRACT"
+        EmploymentType2.EmploymentTypeDescription = "Service Contract Employment Type"
+
+        EmploymentType3.EmploymentTypeID = CMCv.Security.Encrypt.MD5("TPC")
+        EmploymentType3.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("TPC")
+        EmploymentType3.EmploymentTypeName = "TPC"
+        EmploymentType3.EmploymentTypeDescription = "Third Party Contract Employment Type"
+
+        EmploymentType4.EmploymentTypeID = CMCv.Security.Encrypt.MD5("INTERN")
+        EmploymentType4.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("INTERN")
+        EmploymentType4.EmploymentTypeName = "INTERN"
+        EmploymentType4.EmploymentTypeDescription = "Intern Employment Type"
     End Sub
 
-    Private Sub Btn_Close_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
-        If _Step = 1 Then
-            Me.Close()
-        ElseIf _Step = 2 Then
+    Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
+        If varStep = 1 Then
+            If Decision(My.Application.Info.AssemblyName, "Are you sure want to exit the First Guide?", "Ingrid", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = MsgBoxResult.Yes Then
+                Environment.Exit(0)
+            End If
+        ElseIf varStep = 2 Then
             Gbx_Company.Visible = True
             Gbx_Login.Visible = False
-
-            _Step -= 1
-            Lbl_Step.Text = String.Format("Step {0} :", _Step)
-
+            varStep -= 1
+            Lbl_Step.Text = $"Step {varStep} :"
             Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
             Btn_Close.Text = "&Close"
-        ElseIf _Step = 3 Then
+        ElseIf varStep = 3 Then
             Gbx_Login.Visible = True
             Gbx_Modules.Visible = False
-
-            _Step -= 1
-            Lbl_Step.Text = String.Format("Step {0} :", _Step)
+            varStep -= 1
+            Lbl_Step.Text = $"Step {varStep} :"
         End If
     End Sub
 
-    Private Sub Btn_Check_Click(sender As Object, e As EventArgs) Handles Btn_Check.Click
+    Private Sub BtnCheck_Click(sender As Object, e As EventArgs) Handles Btn_Check.Click
         'TODO: Value not refreshing in realtime
+        Call CheckPasswordStrength()
+    End Sub
+
+    Private Sub CheckPasswordStrength()
         UPwdStrength1.SLFPasswordStrengthScore = Txt_Password.XOPwdStrengthScore
         UPwdStrength1.SLFPasswordStrengthText = Txt_Password.XOPwdStrengthText
     End Sub
+
+    Private Sub Txt_Password_KeyUp(sender As Object, e As KeyEventArgs) Handles Txt_Password.KeyUp
+        Call CheckPasswordStrength()
+    End Sub
 End Class
+

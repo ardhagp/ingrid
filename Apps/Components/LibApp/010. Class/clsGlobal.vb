@@ -9,13 +9,29 @@
     ''' 
     ''' </summary>
     Public Class Properties
+        Property CompanyID As String
+        Property CompanyCode As String
+        Property CompanyName As String
+        Property CompanySearchTerm1 As String
+        Property CompanySearchTerm2 As String
+        Property CompanyDescription As String
         Property ConnectionName As String
         Property DatabaseEngine As String
         Property DatabaseEngineE As Ingrid.Global.DatabaseEngine
         Property DatabaseName As String
+        Property DepartmentID As String
+        Property DepartmentName As String
+        Property DepartmentCode As String
+        Property DepartmentDescription As String
         Property EmployeeID As String
         Property EmployeeNumber As String
         Property EmployeePosition As String
+        Property EmployeeName As String
+        Property EmployeeGradeID As String
+        Property EmploymentTypeID As String
+        Property EmploymentTypeCode As String
+        Property EmploymentTypeName As String
+        Property EmploymentTypeDescription As String
         Property FileStorage As String
         Property FirstName As String
         Property Gender As String

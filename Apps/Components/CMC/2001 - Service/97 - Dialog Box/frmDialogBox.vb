@@ -22,54 +22,48 @@
     ''' <param name="MessageIcon">Jenis icon yang akan digunakan</param>
     ''' <param name="ButtonType">Tipe tombol yang akan digunakan</param>
     ''' <remarks></remarks>
-    Public Sub New(ByVal Message As String, ByVal Caption As String, ByVal MessageIcon As MessageIcon, ByVal ButtonType As MessageTypes)
+    Public Sub New(windowtitle As String, message As String, caption As String, messageicon As MessageIcon, buttontype As MessageTypes)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Event triggered by Message Icon.
-        Select Case MessageIcon
+        Select Case messageicon
             Case frmDialogBox.MessageIcon.Alert
                 Me.SLFLogo.Image = My.Resources.ALERT_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.Orange
-                If Caption = String.Empty Then
-                    Me.Text = "Alert"
+                If caption = String.Empty Then
                     SLFNamaForm.Text = "Alert"
                 End If
             Case frmDialogBox.MessageIcon.Error
                 Me.SLFLogo.Image = My.Resources.ERROR_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.Red
-                If Caption = String.Empty Then
-                    Me.Text = "Error"
+                If caption = String.Empty Then
                     SLFNamaForm.Text = "Error"
                 End If
             Case frmDialogBox.MessageIcon.Information
                 Me.SLFLogo.Image = My.Resources.INFORMATION_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.SteelBlue
-                If Caption = String.Empty Then
-                    Me.Text = "Information"
+                If caption = String.Empty Then
                     SLFNamaForm.Text = "Information"
                 End If
             Case frmDialogBox.MessageIcon.Question
                 Me.SLFLogo.Image = My.Resources.QUESTION_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.DodgerBlue
-                If Caption = String.Empty Then
-                    Me.Text = "Question"
+                If caption = String.Empty Then
                     SLFNamaForm.Text = "Question"
                 End If
-
         End Select
 
         ' Event triggered by Caption
-        If Caption <> String.Empty Then
-            Me.Text = Caption.Trim
-            SLFNamaForm.Text = Caption.Trim
+        If caption <> String.Empty Then
+            SLFNamaForm.Text = caption.Trim
         End If
 
         SLFSubNamaForm.Text = String.Empty
 
         ' Event triggered by Button type.
-        Select Case ButtonType
+        Select Case buttontype
             Case CType(1, MessageTypes)
                 PnlBottomButton.Visible = False
                 PnlBottomButtonYesNo.Visible = True
@@ -84,8 +78,8 @@
                 PnlBottomButtonOkOnly.Visible = True
         End Select
 
-        TxtMessage.Text = Message
-
+        TxtMessage.Text = message
+        Me.Text = windowtitle
     End Sub
 #End Region
 

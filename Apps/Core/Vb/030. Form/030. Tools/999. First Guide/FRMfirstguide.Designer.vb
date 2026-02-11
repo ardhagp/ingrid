@@ -20,9 +20,9 @@ Partial Class FRMfirstguide
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Btn_Process = New btn(components)
         Lbl_Step = New lbl(components)
         Gbx_Company = New gbx(components)
@@ -148,7 +148,7 @@ Partial Class FRMfirstguide
         ULbl5.Location = New Point(10, 307)
         ULbl5.Margin = New Padding(6, 5, 6, 5)
         ULbl5.Name = "ULbl5"
-        ULbl5.Size = New Size(250, 55)
+        ULbl5.Size = New Size(250, 39)
         ULbl5.SLFText = "Your Employee ID#"
         ULbl5.SLFTextAdjuster = False
         ULbl5.SLFTextBorder = False
@@ -191,7 +191,7 @@ Partial Class FRMfirstguide
         ULbl4.Location = New Point(10, 242)
         ULbl4.Margin = New Padding(6, 5, 6, 5)
         ULbl4.Name = "ULbl4"
-        ULbl4.Size = New Size(250, 55)
+        ULbl4.Size = New Size(250, 39)
         ULbl4.SLFText = "Your Name"
         ULbl4.SLFTextAdjuster = False
         ULbl4.SLFTextBorder = False
@@ -204,7 +204,7 @@ Partial Class FRMfirstguide
         ULbl3.Location = New Point(10, 177)
         ULbl3.Margin = New Padding(6, 5, 6, 5)
         ULbl3.Name = "ULbl3"
-        ULbl3.Size = New Size(250, 55)
+        ULbl3.Size = New Size(250, 39)
         ULbl3.SLFText = "Position"
         ULbl3.SLFTextAdjuster = False
         ULbl3.SLFTextBorder = False
@@ -217,7 +217,7 @@ Partial Class FRMfirstguide
         ULbl2.Location = New Point(10, 112)
         ULbl2.Margin = New Padding(6, 5, 6, 5)
         ULbl2.Name = "ULbl2"
-        ULbl2.Size = New Size(250, 55)
+        ULbl2.Size = New Size(250, 39)
         ULbl2.SLFText = "Department"
         ULbl2.SLFTextAdjuster = False
         ULbl2.SLFTextBorder = False
@@ -230,7 +230,7 @@ Partial Class FRMfirstguide
         ULbl1.Location = New Point(10, 47)
         ULbl1.Margin = New Padding(6, 5, 6, 5)
         ULbl1.Name = "ULbl1"
-        ULbl1.Size = New Size(250, 55)
+        ULbl1.Size = New Size(250, 39)
         ULbl1.SLFText = "Company"
         ULbl1.SLFTextAdjuster = False
         ULbl1.SLFTextBorder = False
@@ -434,7 +434,7 @@ Partial Class FRMfirstguide
         ULbl7.Location = New Point(10, 112)
         ULbl7.Margin = New Padding(6, 5, 6, 5)
         ULbl7.Name = "ULbl7"
-        ULbl7.Size = New Size(250, 55)
+        ULbl7.Size = New Size(250, 39)
         ULbl7.SLFText = "Password"
         ULbl7.SLFTextAdjuster = False
         ULbl7.SLFTextBorder = False
@@ -447,7 +447,7 @@ Partial Class FRMfirstguide
         ULbl6.Location = New Point(10, 47)
         ULbl6.Margin = New Padding(6, 5, 6, 5)
         ULbl6.Name = "ULbl6"
-        ULbl6.Size = New Size(250, 55)
+        ULbl6.Size = New Size(250, 39)
         ULbl6.SLFText = "Username"
         ULbl6.SLFTextAdjuster = False
         ULbl6.SLFTextBorder = False
@@ -548,20 +548,20 @@ Partial Class FRMfirstguide
         ' 
         Dgn1.AllowUserToAddRows = False
         Dgn1.AllowUserToDeleteRows = False
-        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(195), CByte(249), CByte(183))
-        Dgn1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(199), CByte(210), CByte(138))
+        Dgn1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Dgn1.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         Dgn1.BorderStyle = BorderStyle.None
         Dgn1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         Dgn1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = Color.YellowGreen
-        DataGridViewCellStyle5.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
-        DataGridViewCellStyle5.SelectionForeColor = Color.Black
-        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
-        Dgn1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.YellowGreen
+        DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
+        DataGridViewCellStyle2.SelectionForeColor = Color.Black
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        Dgn1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Dgn1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Dgn1.EnableHeadersVisualStyles = False
         Dgn1.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
@@ -570,14 +570,14 @@ Partial Class FRMfirstguide
         Dgn1.Name = "Dgn1"
         Dgn1.ReadOnly = True
         Dgn1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = Color.YellowGreen
-        DataGridViewCellStyle6.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
-        DataGridViewCellStyle6.SelectionForeColor = Color.Black
-        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-        Dgn1.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.YellowGreen
+        DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle3.SelectionForeColor = Color.Black
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        Dgn1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Dgn1.RowHeadersWidth = 62
         Dgn1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Dgn1.RowTemplate.Height = 25

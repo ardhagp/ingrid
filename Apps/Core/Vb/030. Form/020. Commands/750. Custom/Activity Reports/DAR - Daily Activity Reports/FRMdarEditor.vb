@@ -144,7 +144,7 @@ Public Class FRMdarEditor
     <SupportedOSPlatform("windows")>
     Private Sub BtnGetContent_Click(sender As Object, e As EventArgs) Handles BtnGETContent.Click
         If Not (varFormProperties.IsNew) Then
-            If Decision("Do you want to replace Description with template content?", varMessageQuestion, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName, "Do you want to replace Description with template content?", varMessageQuestion, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngineE, CboTemplate)
             End If
         Else
@@ -171,7 +171,7 @@ Public Class FRMdarEditor
         Call CheckAllInput()
 
         If (TxtContent.Text = String.Empty) OrElse (CboArea.Items.Count = 0) OrElse (CboTemplate.Items.Count = 0) OrElse (MebStart.Text = String.Empty) OrElse (MebEnd.Text = String.Empty) Then
-            Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Start Time, End Time, Area Affected, Activity Template selected and Description are properly filled.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "Cannot save your record." & Environment.NewLine & "Make sure you have Start Time, End Time, Area Affected, Activity Template selected and Description are properly filled.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
@@ -181,7 +181,7 @@ Public Class FRMdarEditor
         varActivityEndDate = CDate(varActivityEndString)
 
         If (varActivityStartDate > varActivityEndDate) Then
-            Decision("Cannot save your record." & Environment.NewLine & "Start Time should be less than End Time.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "Cannot save your record." & Environment.NewLine & "Start Time should be less than End Time.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
@@ -252,7 +252,7 @@ Public Class FRMdarEditor
     Private Sub CboTemplate_KeyDown(sender As Object, e As KeyEventArgs) Handles CboTemplate.KeyDown
         If e.KeyCode = Keys.Enter Then
             If Not (varFormProperties.IsNew) Then
-                If Decision("Do you want to replace Description with template content?", varMessageQuestion, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName, "Do you want to replace Description with template content?", varMessageQuestion, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                     TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngineE, CboTemplate)
                 End If
             Else
@@ -273,10 +273,10 @@ Public Class FRMdarEditor
     Private Sub BtnAddPhoto_Click(sender As Object, e As EventArgs) Handles BtnAddPhoto.Click
         Try
             If TxtPhotoPath.Text.Trim = String.Empty Then
-                Decision("Plase pick your photo first.", varMessageNoFileSelected, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName, "Plase pick your photo first.", varMessageNoFileSelected, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf Not CMCv.OperatingSystem.File.Info.IsExists(TxtPhotoPath.Text) Then
-                Decision("Your photo cannot be found.", varMessageFileNotFound, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName, "Your photo cannot be found.", varMessageFileNotFound, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf Not (CMCv.OperatingSystem.File.Upload.IsAllowedSize(TxtPhotoPath.Text, varMaxUploadSizePhoto, True)) Then
                 Return
@@ -311,10 +311,10 @@ Public Class FRMdarEditor
     <SupportedOSPlatform("windows")>
     Private Sub BtnPeekPhoto_Click(sender As Object, e As EventArgs) Handles BtnPeekPhoto.Click
         If TxtPhotoPath.Text.Trim = String.Empty Then
-            Decision("Plase pick your photo first.", varMessageNoFileSelected, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "Plase pick your photo first.", varMessageNoFileSelected, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf Not CMCv.OperatingSystem.File.Info.IsExists(TxtPhotoPath.Text) Then
-            Decision("Your photo cannot be found.", varMessageFileNotFound, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "Your photo cannot be found.", varMessageFileNotFound, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
@@ -327,7 +327,7 @@ Public Class FRMdarEditor
         Dim varSendergrid = DirectCast(sender, dgn)
 
         If TypeOf varSendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
-            If Decision("Do you want to remove selected photo?", varMessageQuestion, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName, "Do you want to remove selected photo?", varMessageQuestion, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 If DgnPictureList.CurrentRow.Cells("photo_status").Value IsNot "Add" Then
                     varExtendedQuery += String.Format("delete from db_universe_erp_file.dbo.sto_file where [file_id] = '{0}';", DgnPictureList.CurrentRow.Cells("photo_id").Value)
                 End If
@@ -372,10 +372,10 @@ Public Class FRMdarEditor
     <SupportedOSPlatform("windows")>
     Private Sub BtnPeekFile_Click(sender As Object, e As EventArgs) Handles BtnPeekFile.Click
         If TxtFilePath.Text.Trim = String.Empty Then
-            Decision("Plase pick your file first.", varMessageNoFileSelected, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "Plase pick your file first.", varMessageNoFileSelected, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtFilePath.Text)) Then
-            Decision("Your file cannot be found.", varMessageFileNotFound, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "Your file cannot be found.", varMessageFileNotFound, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
@@ -386,10 +386,10 @@ Public Class FRMdarEditor
     Private Sub BtnAddFile_Click(sender As Object, e As EventArgs) Handles BtnAddFile.Click
         Try
             If TxtFilePath.Text.Trim = String.Empty Then
-                Decision("Plase pick your PDF file first.", varMessageNoFileSelected, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName, "Plase pick your PDF file first.", varMessageNoFileSelected, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtFilePath.Text)) Then
-                Decision("Your file cannot be found.", varMessageFileNotFound, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName, "Your file cannot be found.", varMessageFileNotFound, FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf Not (CMCv.OperatingSystem.File.Upload.IsAllowedSize(TxtFilePath.Text, varMaxUploadSizePDF, True)) Then
                 Return
@@ -416,7 +416,7 @@ Public Class FRMdarEditor
         Dim varSendergrid = DirectCast(sender, dgn)
 
         If TypeOf varSendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
-            If Decision("Do you want to remove selected file?", varMessageQuestion, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName, "Do you want to remove selected file?", varMessageQuestion, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 If DgnFileList.CurrentRow.Cells("file_status").Value IsNot "Add" Then
                     varExtendedQuery += String.Format("delete from db_universe_erp_file.dbo.sto_file where [file_id] = '{0}';", DgnFileList.CurrentRow.Cells("file_id").Value)
                 End If
@@ -437,7 +437,7 @@ Public Class FRMdarEditor
 
     <SupportedOSPlatform("windows")>
     Private Sub CommmsMenu_EventFileUndoAll() Handles Com_mms_Menu.EventFileUndoAll
-        If Decision("Do you want to undo all changes?", varMessageQuestion, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+        If Decision(My.Application.Info.AssemblyName, "Do you want to undo all changes?", varMessageQuestion, FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
             If (varFormProperties.IsNew) Then
                 DtpStart.Value = Now.Date
                 DtpEnd.Value = Now.Date

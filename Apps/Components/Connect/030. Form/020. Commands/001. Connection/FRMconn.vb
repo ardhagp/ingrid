@@ -98,7 +98,7 @@ Public Class FRMconn
         varProperties.IsNew = True
         varProperties.RowID = "-1"
         FRMconn_editor = New FRMconnEditor
-        Display(FRMconn_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new connection", True)
+        Display(FRMconn_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName, "Add New Record", "Add new connection", True)
         SLFStatus.Text = String.Empty
     End Sub
 
@@ -111,10 +111,10 @@ Public Class FRMconn
         varProperties.IsNew = False
 
         If varProperties.RowID Is "-1" Then
-            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             FRMconn_editor = New FRMconnEditor
-            Display(FRMconn_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update connection", True)
+            Display(FRMconn_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName, "Update Record", "Update connection", True)
         End If
 
         SLFStatus.Text = String.Empty
@@ -127,7 +127,7 @@ Public Class FRMconn
     Private Sub EventDataDelete() Handles COMmainframemenu.EventDataDelete
         Call GetRowID()
         If varProperties.RowID Is "-1" Then
-            Decision("No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             varProperties.IsNew = False
 
@@ -146,7 +146,7 @@ Public Class FRMconn
 
                 varMessage.AppendLine(varLine)
 
-                If Decision(Convert.ToString(varMessage), "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName, Convert.ToString(varMessage), "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                     If (CMDconn.View.DeleteData(Convert.ToString(varProperties.RowID))) Then
                         Call GetData(True)
                         SLFStatus.Text = "Success"
