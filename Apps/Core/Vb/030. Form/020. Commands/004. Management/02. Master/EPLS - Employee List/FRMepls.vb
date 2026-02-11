@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
 Public Class FRMepls
-#Region "Variables"
+#Region "Declaration"
     Private WithEvents Frm_epls_Editor As New FRMeplsEditor
     Private WithEvents Com_mms_Menu As New UI.View.MenuStrip
 #End Region
@@ -26,7 +26,7 @@ Public Class FRMepls
     <SupportedOSPlatform("windows")>
     Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
         If Not (varUserAccess.User(varDatabaseName, "EPLS", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
-            Decision(My.Application.Info.AssemblyName, "You are not authorized to : Add new record", "Not Authorized", "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
@@ -40,14 +40,14 @@ Public Class FRMepls
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
         If Not (varUserAccess.User(varDatabaseName, "EPLS", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
-            Decision(My.Application.Info.AssemblyName, "You are not authorized to : Modify existing record", "Not Authorized", "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
         Call GetRowID()
         varFormProperties.IsNew = False
         If Convert.ToString(varFormProperties.RowID) = "-1" Then
-            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             varFormProperties.IsNew = False
             Frm_epls_Editor = New FRMeplsEditor
@@ -58,15 +58,15 @@ Public Class FRMepls
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
         If Not (varUserAccess.User(varDatabaseName, "EPLS", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
-            Decision(My.Application.Info.AssemblyName, "You are not authorized to : Delete record", "Not Authorized", "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
         Call GetRowID()
         If Convert.ToString(varFormProperties.RowID) = "-1" Then
-            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            If Decision(My.Application.Info.AssemblyName, "Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnEPLS.CurrentRow.Cells("employee_fullname").Value.ToString & vbCrLf & "=======================================================", "Delete", "", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName, "Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnEPLS.CurrentRow.Cells("employee_fullname").Value.ToString & vbCrLf & "=======================================================", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If (CMDepls.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
                     FRMmainframe6.Ts_status.Text = "Success"

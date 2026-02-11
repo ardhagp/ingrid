@@ -5,6 +5,23 @@
         [PGSQL]
     End Enum
 
+    Public Enum PopupType
+        [Alert]
+        [Error]
+        [Information]
+        [WrongInstructionSet]
+        [ConfirmationBeforeReset]
+        [Confirmation]
+        [Delete]
+        [Question]
+        [NotAuthorized]
+        [LimitExceeded]
+        [ModuleUnderMaintenance]
+        [Logout]
+        [NoFileSelected]
+        [FileNotFound]
+    End Enum
+
     ''' <summary>
     ''' 
     ''' </summary>

@@ -95,7 +95,7 @@ Public Class FRMacgr
         Call GetRowID()
         varFormProperties.IsNew = False
         If Convert.ToString(Convert.ToString(varFormProperties.RowID)) = "-1" Then
-            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             Frm_acgr_Editor = New FRMacgrEditor
             Display(Frm_acgr_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your account data", True)
@@ -106,10 +106,10 @@ Public Class FRMacgr
     Private Sub CommmmsMenu_EventDataDelete() Handles Com_mms_Menu.EventDataDelete
         Call GetRowID()
         If Convert.ToString(Convert.ToString(varFormProperties.RowID)) = "-1" Then
-            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             varFormProperties.IsNew = False
-            If Decision(My.Application.Info.AssemblyName, "Do you want to delete this record?", "Delete", "", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If (CMDacgr.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(Convert.ToString(varFormProperties.RowID)))) Then
                     Call GetDataGrid(True)
                     FRMmainframe6.Ts_status.Text = "Success"

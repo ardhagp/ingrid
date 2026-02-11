@@ -38,7 +38,7 @@ Module Globals
     ''' <param name="messageicon"></param>
     ''' <param name="buttontype"></param>
     ''' <returns></returns>
-    Public Function Decision(windowtitle As String, message As String, title As String,
+    Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType,
                              subtitle As String, messageicon As CMCv.frmDialogBox.MessageIcon,
                              buttontype As CMCv.frmDialogBox.MessageTypes) As _
                              System.Windows.Forms.DialogResult

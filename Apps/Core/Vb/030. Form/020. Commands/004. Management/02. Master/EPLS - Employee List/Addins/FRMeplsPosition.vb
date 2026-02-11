@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
 Public Class FRMeplsPosition
-#Region "Variables"
+#Region "Declaration"
     Public Event EventRecordSelected()
 #End Region
 
@@ -21,7 +21,7 @@ Public Class FRMeplsPosition
 
     Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
         If DgnAddinPosition.RowCount = 0 Then
-            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             With DgnAddinPosition.CurrentRow
                 varFormProperties.Field01 = .Cells("company_name").Value
