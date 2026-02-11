@@ -58,13 +58,13 @@ Public Class FRMpostEditor
     <SupportedOSPlatform("windows")>
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         If (CboDepartement.Items.Count = 0) OrElse (TxtPositionCode.XOSQLText = String.Empty) OrElse (TxtPositionName.XOSQLText = String.Empty) Then
-            Decision(My.Application.Info.AssemblyName, "Cannot save your record." & Environment.NewLine & "Make sure you have Departement selected, Postition Code and Position Description are properly filled.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "Cannot save your record." & Environment.NewLine & "Make sure you have Departement selected, Postition Code and Position Description are properly filled.", "Alert", "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf ((varFormProperties.IsNew) AndAlso (CMDpost.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
-            Decision(My.Application.Info.AssemblyName, "Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf (Not (varFormProperties.IsNew) AndAlso (CMDpost.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
-            Decision(My.Application.Info.AssemblyName, "Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", "Alert", "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 

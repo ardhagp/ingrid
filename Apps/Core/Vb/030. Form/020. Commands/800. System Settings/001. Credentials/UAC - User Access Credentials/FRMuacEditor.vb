@@ -103,19 +103,19 @@ Public Class FRMuacEditor
         Call CheckAllInput()
 
         If ((varFormProperties.IsNew) AndAlso (varFormProperties.Field01.ToString Is String.Empty)) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure you have Employee data selected.", varMessageAlert, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure you have Employee data selected.", varMessageAlert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf (TxtUsername.XOSQLText = String.Empty) OrElse (TxtPassword.XOSQLText = String.Empty) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure you have Username and Password properly filled.", varMessageAlert, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure you have Username and Password properly filled.", varMessageAlert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf ((varIsPWDChange) AndAlso (TxtPassword.TextLength < varMinPasswordLength)) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure your Password meets the minimum criteria.", varMessageAlert, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure your Password meets the minimum criteria.", varMessageAlert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf ((varFormProperties.IsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtUsername.XOSQLText))) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Username already registered.", varMessageAlert, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Username already registered.", varMessageAlert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf (Not (varFormProperties.IsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtUsername.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Username already used by another employee.", varMessageAlert, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Username already used by another employee.", varMessageAlert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 

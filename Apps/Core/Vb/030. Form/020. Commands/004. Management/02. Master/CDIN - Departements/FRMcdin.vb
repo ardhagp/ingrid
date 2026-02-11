@@ -36,7 +36,7 @@ Public Class FRMcdin
     Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
         Call GetRowID()
         If Convert.ToString(varFormProperties.RowID) = "-1" Then
-            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             varFormProperties.IsNew = False
             Frm_cdin_Editor = New FRMcdinEditor
@@ -48,9 +48,9 @@ Public Class FRMcdin
     Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
         Call GetRowID()
         If Convert.ToString(varFormProperties.RowID) = "-1" Then
-            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
-            If Decision(My.Application.Info.AssemblyName, "Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName, "Do you want to delete this record?", "Delete", "", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If (LibSQL.CMDcdin.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
                     FRMmainframe6.Ts_status.Text = "Success"

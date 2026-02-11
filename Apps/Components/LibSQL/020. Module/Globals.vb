@@ -33,8 +33,8 @@
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
-    Public Function Decision(windowtitle As String, message As String, title As String, messageicon As CMCv.frmDialogBox.MessageIcon, ByVal buttontype As CMCv.frmDialogBox.MessageTypes) As System.Windows.Forms.DialogResult
-        MSG = New CMCv.frmDialogBox(windowtitle, message, title, messageicon, buttontype)
+    Public Function Decision(windowtitle As String, message As String, title As String, subtitle As String, messageicon As CMCv.frmDialogBox.MessageIcon, ByVal buttontype As CMCv.frmDialogBox.MessageTypes) As System.Windows.Forms.DialogResult
+        MSG = New CMCv.frmDialogBox(windowtitle, message, title, subtitle, messageicon, buttontype)
         Return MSG.ShowDialog()
         MSG.Dispose()
     End Function

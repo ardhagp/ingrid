@@ -22,7 +22,7 @@
     ''' <param name="MessageIcon">Jenis icon yang akan digunakan</param>
     ''' <param name="ButtonType">Tipe tombol yang akan digunakan</param>
     ''' <remarks></remarks>
-    Public Sub New(windowtitle As String, message As String, caption As String, messageicon As MessageIcon, buttontype As MessageTypes)
+    Public Sub New(windowtitle As String, message As String, title As String, subtitle As String, messageicon As MessageIcon, buttontype As MessageTypes)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -32,35 +32,35 @@
             Case frmDialogBox.MessageIcon.Alert
                 Me.SLFLogo.Image = My.Resources.ALERT_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.Orange
-                If caption = String.Empty Then
+                If title = String.Empty Then
                     SLFNamaForm.Text = "Alert"
                 End If
             Case frmDialogBox.MessageIcon.Error
                 Me.SLFLogo.Image = My.Resources.ERROR_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.Red
-                If caption = String.Empty Then
+                If title = String.Empty Then
                     SLFNamaForm.Text = "Error"
                 End If
             Case frmDialogBox.MessageIcon.Information
                 Me.SLFLogo.Image = My.Resources.INFORMATION_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.SteelBlue
-                If caption = String.Empty Then
+                If title = String.Empty Then
                     SLFNamaForm.Text = "Information"
                 End If
             Case frmDialogBox.MessageIcon.Question
                 Me.SLFLogo.Image = My.Resources.QUESTION_001_256_ICON
                 Me.SLFLogo.BackColor = System.Drawing.Color.DodgerBlue
-                If caption = String.Empty Then
+                If title = String.Empty Then
                     SLFNamaForm.Text = "Question"
                 End If
         End Select
 
         ' Event triggered by Caption
-        If caption <> String.Empty Then
-            SLFNamaForm.Text = caption.Trim
+        If title <> String.Empty Then
+            SLFNamaForm.Text = title.Trim
         End If
 
-        SLFSubNamaForm.Text = String.Empty
+        SLFSubNamaForm.Text = subtitle
 
         ' Event triggered by Button type.
         Select Case buttontype
@@ -123,6 +123,5 @@
         Me.DialogResult = Windows.Forms.DialogResult.OK
         Me.Close()
     End Sub
-
 #End Region
 End Class

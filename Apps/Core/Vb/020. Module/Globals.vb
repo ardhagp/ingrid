@@ -13,7 +13,7 @@ Module Globals
     End Sub
 #End Region
 
-#Region "Variables"
+#Region "Declaration"
     Public varFormimage(4) As System.Drawing.Image
     Public varWorkspace As New WorkspaceClass
     Public varFileinfo As New CMCv.OperatingSystem.File.Info
@@ -292,8 +292,8 @@ Module Globals
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
-    Public Function Decision(windowtitle As String, message As String, title As String, messageicon As CMCv.frmDialogBox.MessageIcon, buttontype As CMCv.frmDialogBox.MessageTypes) As DialogResult
-        frmMSG = New CMCv.frmDialogBox(windowtitle, message, title, messageicon, buttontype)
+    Public Function Decision(windowtitle As String, message As String, title As String, subtitle As String, messageicon As CMCv.frmDialogBox.MessageIcon, buttontype As CMCv.frmDialogBox.MessageTypes) As DialogResult
+        frmMSG = New CMCv.frmDialogBox(windowtitle, message, title, subtitle, messageicon, buttontype)
         Return frmMSG.ShowDialog()
         frmMSG.Dispose()
     End Function

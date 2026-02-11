@@ -114,7 +114,7 @@ Public Class FRMconnEditor
         End If
 
         If (TxtConnectionName.Text = String.Empty) OrElse (TxtAddress.Text = String.Empty) OrElse (TxtPort.Text = String.Empty) OrElse (TxtUsername.Text = String.Empty) OrElse (TxtPassword.Text = String.Empty) OrElse (TxtDatabaseName.Text = String.Empty) Then
-            Decision(My.Application.Info.AssemblyName, "Cannot save your record." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "Cannot save your record." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", "Alert", "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
@@ -229,7 +229,7 @@ Public Class FRMconnEditor
 
     <SupportedOSPlatform("windows")>
     Private Sub ComponentMainframeMenu_EventFileUndoAll() Handles ComponentMainframeMenu.EventFileUndoAll
-        If Decision(My.Application.Info.AssemblyName, "Do you want to undo all changes?", "Question", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
+        If Decision(My.Application.Info.AssemblyName, "Do you want to undo all changes?", "Question", "", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
             If (varProperties.IsNew) Then
                 TxtConnectionName.Clear()
                 TxtAddress.Clear()
