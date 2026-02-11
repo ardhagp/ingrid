@@ -72,11 +72,11 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="030. Form\020. Commands\001. Connection\CONN_Editor.Designer.vb">
-      <DependentUpon>CONN_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Connection\FRMconnEditor.Designer.vb">
+      <DependentUpon>FRMconnEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Connection\CONN.Designer.vb">
-      <DependentUpon>CONN.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Connection\FRMconn.Designer.vb">
+      <DependentUpon>FRMconn.vb</DependentUpon>
     </Compile>
     <Compile Update="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
