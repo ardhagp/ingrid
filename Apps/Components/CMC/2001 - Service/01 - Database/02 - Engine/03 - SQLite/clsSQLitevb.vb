@@ -388,7 +388,7 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub PushData(query As String)
             Try
-                Dim varTX As SQLite.SQLiteTransaction
+                Dim varTX As SQLite.SQLiteTransaction = Nothing
 
                 If (varIsProductionMode) AndAlso (varTX Is Nothing) Then
                     varTX = varConnection(1).BeginTransaction

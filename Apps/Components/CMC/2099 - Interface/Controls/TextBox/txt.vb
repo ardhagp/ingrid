@@ -399,35 +399,44 @@ Public Class txt
 #End Region
 
     Private Sub Txt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
-        Select Case Me.XORestriction
+        ' Fast path: always allow control characters (backspace, enter, etc.)
+        Dim ch As Char = e.KeyChar
+        If Char.IsControl(ch) Then
+            Return
+        End If
+
+        ' Cache property to avoid repeated property access overhead
+        Dim restriction = Me.XORestriction
+
+        Select Case restriction
             Case ControlCodeBase.enuRestriction.None
-            ' Allow all input
+                ' Allow all input
 
             Case ControlCodeBase.enuRestriction.OnlyNumber
-                If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+                If Not Char.IsDigit(ch) Then
                     e.Handled = True
                 End If
 
             Case ControlCodeBase.enuRestriction.OnlyText
-                If Not Char.IsLetter(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+                If Not Char.IsLetter(ch) Then
                     e.Handled = True
                 End If
 
             Case ControlCodeBase.enuRestriction.TextAndNumber
-                If Not (Char.IsLetterOrDigit(e.KeyChar)) AndAlso Not Char.IsControl(e.KeyChar) Then
+                If Not Char.IsLetterOrDigit(ch) Then
                     e.Handled = True
                 End If
 
             Case ControlCodeBase.enuRestriction.TextAndSymbol
-                ' Allow letters, digits, punctuation, symbols, and control chars
-                If Not (Char.IsLetterOrDigit(e.KeyChar) OrElse Char.IsPunctuation(e.KeyChar) OrElse Char.IsSymbol(e.KeyChar)) AndAlso Not Char.IsControl(e.KeyChar) Then
+                ' Allow letters, digits, punctuation, symbols
+                If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch)) Then
                     e.Handled = True
                 End If
 
             Case ControlCodeBase.enuRestriction.Email
-                ' Allow letters, digits, and common email symbols
-                Dim allowedChars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._-"
-                If Not allowedChars.Contains(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+                ' Use a single static string for allowed characters to avoid reallocating on each keypress
+                Static allowedChars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._-"
+                If Not allowedChars.Contains(ch, StringComparison.Ordinal) Then
                     e.Handled = True
                 End If
         End Select
