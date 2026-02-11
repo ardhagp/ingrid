@@ -7,7 +7,6 @@ Public Class frmStandard
         Try
             Call ActivateLicenses()
             GC.Collect()
-            Me.Text = SLFNamaForm.Text
             Me.KeyPreview = True
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -41,15 +40,15 @@ Public Class frmStandard
     ''' </summary>
     ''' <returns></returns>
     Public Function CheckTextInputs() As Integer
-        Dim _Violation As Integer = 0
-        Dim AllTxt As New List(Of Windows.Forms.Control)
-        For Each _Txt As CMCv.txt In FindControlRecursive(AllTxt, Me, GetType(CMCv.txt))
+        Dim varViolation As Integer = 0
+        Dim varAllTxt As New List(Of Windows.Forms.Control)
+        For Each _Txt As CMCv.txt In FindControlRecursive(varAllTxt, Me, GetType(CMCv.txt))
             If (_Txt.XOHarusDiisi) AndAlso _Txt.XOSQLText = String.Empty Then
-                _Violation += 1
+                varViolation += 1
             End If
         Next
 
-        Return _Violation
+        Return varViolation
     End Function
 
     ''' <summary>
@@ -59,7 +58,7 @@ Public Class frmStandard
     ''' <param name="Parent"></param>
     ''' <param name="CtrlType"></param>
     ''' <returns></returns>
-    Private Shared Function FindControlRecursive(ByVal list As List(Of Windows.Forms.Control), ByVal Parent As Windows.Forms.Control, ByVal CtrlType As System.Type) As List(Of Windows.Forms.Control)
+    Private Shared Function FindControlRecursive(list As List(Of Windows.Forms.Control), ByVal Parent As Windows.Forms.Control, ByVal CtrlType As System.Type) As List(Of Windows.Forms.Control)
         If Parent Is Nothing Then Return list
         If Parent.GetType Is CtrlType Then
             list.Add(Parent)
@@ -73,11 +72,11 @@ Public Class frmStandard
     End Function
 
     Public Sub CheckAllControls()
-        Dim _AllControls As Windows.Forms.Control = Me.GetNextControl(Me, True)
+        Dim varAllControls As Windows.Forms.Control = Me.GetNextControl(Me, True)
 
-        Do Until _AllControls Is Nothing
-            _AllControls.Focus()
-            _AllControls = Me.GetNextControl(_AllControls, True)
+        Do Until varAllControls Is Nothing
+            varAllControls.Focus()
+            varAllControls = Me.GetNextControl(varAllControls, True)
         Loop
     End Sub
 End Class

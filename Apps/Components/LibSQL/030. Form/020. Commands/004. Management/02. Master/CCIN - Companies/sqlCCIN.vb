@@ -3,7 +3,7 @@ Imports CMCv
 
 Namespace CMDccin
     Public Class View
-        ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
@@ -42,6 +42,18 @@ Namespace CMDccin
             End Try
             Return varSuccess
         End Function
+
+        <SupportedOSPlatform("windows")>
+        Public Function CountRecords(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine) As Integer
+            Dim varCount As Integer = 0
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                varDatabaseRequestMssql2008(0).Query = String.Format("")
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseRequestMysql(0).Query = String.Format("SELECT count(com.company_id) as `count` FROM man_company as com")
+                varCount = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
+            End If
+            Return varCount
+        End Function
     End Class
 
     Public Class Editor
@@ -53,7 +65,7 @@ Namespace CMDccin
             If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 If rowid = "-1" Then
                     varWhere += String.Format(" c.company_code = '{0}'", code)
-                Else
+            Else
                     varWhere += String.Format(" c.company_code = '{0}' and c.company_id <> '{1}'", code, rowid)
                 End If
                 varDatabaseRequestMssql2008(1).Query = String.Format("select count(c.company_id) as [isduplicate] from dbo.man_company c {0}", varWhere)

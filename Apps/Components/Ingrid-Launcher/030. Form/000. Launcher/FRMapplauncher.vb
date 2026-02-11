@@ -3,7 +3,7 @@ Imports Connect
 
 Public Class FRMapplauncher
     Private WithEvents Frm_mainframe6 As FRMmainframe6
-    Private WithEvents Frm_conn As FRMconn
+    Private WithEvents Frm_conn As New FRMconn
 
     Private varSecond As Integer
     Private varVersion As String
@@ -57,7 +57,6 @@ Public Class FRMapplauncher
 
         If (varSecond = 0) Then
             Call OpenApp(CboApplication.SelectedIndex)
-            tmrCountdown.Enabled = False
         ElseIf (varSecond > 1) Then
             LblCountdown.Text = String.Format("app in {0} seconds...", varSecond)
         Else
@@ -67,17 +66,19 @@ Public Class FRMapplauncher
 
     Private Sub OpenApp(appnameindex As Integer)
         Try
+            tmrCountdown.Enabled = False
             My.Settings.DefaultApp = appnameindex
             My.Settings.Save()
 
             If appnameindex = 0 Then
-                Frm_conn = New FRMconn
-                Frm_conn.Show()
+                'Display(Frm_conn, IMAGEDB.Main.ImageLibrary.CONNECT_ICON, My.Application.Info.AssemblyName, "Connection Settings", "Manage your database connection settings", False)
+                Display(Frm_conn, , My.Application.Info.AssemblyName, "Connection Settings", "Manage your database connection settings", False)
+                'Frm_conn = New FRMconn()
+                'Frm_conn.Show()
             ElseIf appnameindex = 1 Then
                 Frm_mainframe6 = New FRMmainframe6
                 Frm_mainframe6.Show()
             End If
-
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try

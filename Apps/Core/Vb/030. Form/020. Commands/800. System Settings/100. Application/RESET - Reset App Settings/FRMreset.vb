@@ -10,13 +10,13 @@ Public Class FRMreset
     Private Sub BtnRun_Click(sender As Object, e As EventArgs) Handles BtnRun.Click
         If Txt_Confirmation.Text.Trim = "Confirm" Then
             'reset db settings
-            If (Decision("Last Warning, do you want to reset application settings?", "Confirmation Before Resetting App Settings", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes) AndAlso (CMDreset.Editor.PushData(varDatabaseName, varDatabaseEngineE)) Then
-                Decision("You have successfully resetting application settings", "Information", frmDialogBox.MessageIcon.Information, frmDialogBox.MessageTypes.OkOnly)
+            If (Decision(My.Application.Info.AssemblyName, "Last Warning, do you want to reset application settings?", "Confirmation Before Resetting App Settings", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes) AndAlso (CMDreset.Editor.PushData(varDatabaseName, varDatabaseEngineE)) Then
+                Decision(My.Application.Info.AssemblyName, "You have successfully resetting application settings", "Information", frmDialogBox.MessageIcon.Information, frmDialogBox.MessageTypes.OkOnly)
                 Me.Close()
             End If
         Else
             'display warning
-            Decision("Confirmation text is different from instruction.", "Wrong Instrution Set", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "Confirmation text is different from instruction.", "Wrong Instrution Set", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
         End If
     End Sub
 

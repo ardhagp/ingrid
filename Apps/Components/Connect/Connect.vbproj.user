@@ -12,15 +12,15 @@
     <_LastSelectedProfileId>C:\Users\ardhagp\source\repos\Connect\Apps\Core\Vb\My Project\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="030. Form\020. Commands\001. Connection\CONN.vb">
+    <Compile Update="030. Form\020. Commands\001. Connection\FRMconn.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Connection\CONN_Editor.vb">
+    <Compile Update="030. Form\020. Commands\001. Connection\FRMconnEditor.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="030. Form\020. Commands\001. Connection\CONN.resx">
+    <EmbeddedResource Update="030. Form\020. Commands\001. Connection\FRMconn.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="My Project\Resources.resx">

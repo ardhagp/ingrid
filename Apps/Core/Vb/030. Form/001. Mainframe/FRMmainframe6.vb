@@ -27,10 +27,6 @@ Public Class FRMmainframe6
     Public Event EventMainframeOpen()
     Public Event EventMainframeClose()
 
-    'Private WithEvents _CSETTINGS As New Connect.CONN
-
-    'Private Frm_syss As New SYSS
-
     Private varSql As New LibSQL.Mainframe.Database
     Private varSqlDBcheck As New LibSQL.CMDdbic.Applications
     Private varSqlNotification As New LibSQL.Application.Notification
@@ -175,7 +171,7 @@ Public Class FRMmainframe6
         ElseIf (Application.Modules.IsModuleLocked(varDatabaseName, varDatabaseEngineE, commandcode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
             Bridge.Security.Writelog.Sendlog("""message"" : """ & varProperties.FirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
-            Decision("[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.frmDialogBox.MessageIcon.Information, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.frmDialogBox.MessageIcon.Information, CMCv.frmDialogBox.MessageTypes.OkOnly)
 
             System.Media.SystemSounds.Beep.Play()
 
@@ -228,7 +224,7 @@ Public Class FRMmainframe6
 
     <SupportedOSPlatform("windows")>
     Private Sub LogoutClicked()
-        If Decision("Are you sure want to logout from system?", "Logout", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+        If Decision(My.Application.Info.AssemblyName, "Are you sure want to logout from system?", "Logout", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
             Bridge.Security.Writelog.Sendlog("""message"" : " & varProperties.FirstName & " is logout."",", "Information")
             Call SystemLogout()
             varLogUser.Logout(varDatabaseName, varDatabaseEngineE, varProperties.EmployeeID)
@@ -342,9 +338,12 @@ Public Class FRMmainframe6
             If Mainframe.Database.Connect(varProductionMode) Then
                 Ts_connection.Text = "Connected"
                 varLogApplication.Run(varDatabaseName, varDatabaseEngineE)
+                If varCompany.CountRecords(varDatabaseName, varDatabaseEngineE) = 0 Then
+                    Display(FRMfirstguide,, My.Application.Info.AssemblyName, "First Guide", "Initial setup and essential information", True, Me)
+                End If
             Else
-                Ts_connection.Text = "Disconnected"
-                Decision("Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                    Ts_connection.Text = "Disconnected"
+                Decision(My.Application.Info.AssemblyName, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                 Return
             End If
 
