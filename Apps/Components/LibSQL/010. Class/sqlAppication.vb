@@ -62,14 +62,14 @@ Namespace Application
         Private varDataSet As DataSet
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function Exist(databasename As String, dbengine As String, tcode As String) As Boolean
+        Public Shared Function Exist(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String) As Boolean
             Dim varIsExist As Boolean
 
             Try
-                If dbengine = "MSSQL" Then
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(1).Query = String.Format("select count(mo.module_id) from dbo.sys_module mo where mo.module_code = '{0}'", tcode)
                     varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Boolean)
-                ElseIf dbengine = "MYSQL" Then
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     'execute mysql query here
                 End If
 
@@ -80,15 +80,15 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function Locked(databasename As String, dbengine As String, tcode As String) As Boolean
+        Public Shared Function Locked(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String) As Boolean
             Dim varIsLocked As Boolean
 
             Try
-                If dbengine = "MSSQL" Then
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(1).Query = String.Format("select count(mo.module_id) from dbo.sys_module mo where mo.module_code = '{0}' and mo.module_ismaintenance = 'true'", tcode)
                     varIsLocked = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Boolean)
-                ElseIf dbengine = "MYSQL" Then
-
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    'execute mysql query here
                 End If
                 Return varIsLocked
             Catch ex As Exception
@@ -227,16 +227,16 @@ Namespace Application
     Public Class StorageSense
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function Show(databasename As String, Optional IsAdmininstrator As Boolean = False) As Boolean
+        Public Shared Function Show(databasename As String, Optional isadmininstrator As Boolean = False) As Boolean
             Dim varValue As Integer
 
             Try
                 varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_showstorage from dbo.sys_settings s")
                 varValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
 
-                If varValue = 1 AndAlso (IsAdmininstrator) Then
+                If varValue = 1 AndAlso (isadmininstrator) Then
                     Return True
-                ElseIf varValue = 2 AndAlso (Not (IsAdmininstrator)) Then
+                ElseIf varValue = 2 AndAlso (Not (isadmininstrator)) Then
                     Return True
                 ElseIf varValue = 3 Then
                     Return True

@@ -53,8 +53,8 @@ Public Class WorkspaceClass
         Try
             varCommandCode = commandcode.ToString.Split("-".ToCharArray, StringSplitOptions.RemoveEmptyEntries)
 
-            varModuleCode = LibSQL.Workspace.GetModuleName(varDatabaseName, varDatabaseEngine, commandcode)
-            varModuleCaption = LibSQL.Workspace.GetModuleDescription(varDatabaseName, varDatabaseEngine, commandcode)
+            varModuleCode = LibSQL.Workspace.GetModuleName(varDatabaseName, varDatabaseEngineE, commandcode)
+            varModuleCaption = LibSQL.Workspace.GetModuleDescription(varDatabaseName, varDatabaseEngineE, commandcode)
 
             Dim titleBase As String = "[" & commandcode.ToUpper & "] "
 

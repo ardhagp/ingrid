@@ -2,7 +2,7 @@
 
 Public Class FRMccinEditor
 
-#Region "Variables"
+#Region "Declaration"
     Public Event EventRecordSaved()
 #End Region
 
@@ -26,11 +26,11 @@ Public Class FRMccinEditor
             ChkAddNew.Visible = True
             ChkAddNew.Checked = False
         Else
-            TxtCode.Text = CMDccin.Editor.GetCompanyCode(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            TxtName.Text = CMDccin.Editor.GetCompanyName(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            TxtSearchTerm1.Text = CMDccin.Editor.GetSearchTerm1(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            TxtSearchTerm2.Text = CMDccin.Editor.GetSearchTerm2(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            TxtDescription.Text = CMDccin.Editor.GetDescription(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            TxtCode.Text = CMDccin.Editor.GetCompanyCode(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
+            TxtName.Text = CMDccin.Editor.GetCompanyName(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
+            TxtSearchTerm1.Text = CMDccin.Editor.GetSearchTerm1(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
+            TxtSearchTerm2.Text = CMDccin.Editor.GetSearchTerm2(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
+            TxtDescription.Text = CMDccin.Editor.GetDescription(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
             ChkAddNew.Visible = False
             ChkAddNew.Checked = False
         End If
@@ -47,15 +47,15 @@ Public Class FRMccinEditor
         If (TxtCode.XOSQLText = String.Empty) OrElse (TxtName.XOSQLText = String.Empty) Then
             Decision("Cannot save your record." & Environment.NewLine & "Company Code & Company Name properly filled.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
-        ElseIf ((varFormProperties.IsNew) AndAlso (CMDccin.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, TxtCode.XOSQLText))) Then
+        ElseIf ((varFormProperties.IsNew) AndAlso (CMDccin.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtCode.XOSQLText))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Company Code already registered.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
-        ElseIf (Not (varFormProperties.IsNew) AndAlso (CMDccin.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, TxtCode.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
+        ElseIf (Not (varFormProperties.IsNew) AndAlso (CMDccin.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtCode.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Company Code already used by another company.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
-        If (CMDccin.Editor.PushData(varDatabaseName, varDatabaseEngine, TxtCode.XOSQLText, TxtName.XOSQLText, TxtSearchTerm1.XOSQLText, TxtSearchTerm2.XOSQLText, TxtDescription.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
+        If (CMDccin.Editor.PushData(varDatabaseName, varDatabaseEngineE, TxtCode.XOSQLText, TxtName.XOSQLText, TxtSearchTerm1.XOSQLText, TxtSearchTerm2.XOSQLText, TxtDescription.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
             FRMmainframe6.Ts_status.Text = "Success"
             RaiseEvent EventRecordSaved()
         Else

@@ -215,7 +215,6 @@ Partial Class FRMconnEditor
         CboDBEngine.FlatStyle = FlatStyle.Flat
         CboDBEngine.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         CboDBEngine.FormattingEnabled = True
-        CboDBEngine.Items.AddRange(New Object() {"MYSQL", "SQL SERVER"})
         CboDBEngine.Location = New Point(306, 108)
         CboDBEngine.Margin = New Padding(4, 5, 4, 5)
         CboDBEngine.Name = "CboDBEngine"
@@ -251,7 +250,7 @@ Partial Class FRMconnEditor
         ' TxtDatabaseName
         ' 
         TxtDatabaseName.BackColor = Color.White
-        TxtDatabaseName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtDatabaseName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TxtDatabaseName.Location = New Point(306, 448)
         TxtDatabaseName.Margin = New Padding(6, 5, 6, 5)
         TxtDatabaseName.MaxLength = 255
@@ -284,7 +283,7 @@ Partial Class FRMconnEditor
         ChkDefault.AutoSize = True
         ChkDefault.BackColor = Color.Transparent
         ChkDefault.FlatStyle = FlatStyle.Flat
-        ChkDefault.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        ChkDefault.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         ChkDefault.Location = New Point(306, 512)
         ChkDefault.Margin = New Padding(6, 5, 6, 5)
         ChkDefault.Name = "ChkDefault"
@@ -296,7 +295,7 @@ Partial Class FRMconnEditor
         ' TxtPassword
         ' 
         TxtPassword.BackColor = Color.White
-        TxtPassword.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPassword.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TxtPassword.Location = New Point(306, 382)
         TxtPassword.Margin = New Padding(6, 5, 6, 5)
         TxtPassword.MaxLength = 255
@@ -328,7 +327,7 @@ Partial Class FRMconnEditor
         ' TxtUsername
         ' 
         TxtUsername.BackColor = Color.White
-        TxtUsername.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtUsername.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TxtUsername.Location = New Point(306, 313)
         TxtUsername.Margin = New Padding(6, 5, 6, 5)
         TxtUsername.MaxLength = 255
@@ -398,7 +397,7 @@ Partial Class FRMconnEditor
         ' TxtPort
         ' 
         TxtPort.BackColor = Color.White
-        TxtPort.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPort.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TxtPort.Location = New Point(306, 247)
         TxtPort.Margin = New Padding(6, 5, 6, 5)
         TxtPort.MaxLength = 255
@@ -456,7 +455,7 @@ Partial Class FRMconnEditor
         ' TxtConnectionName
         ' 
         TxtConnectionName.BackColor = Color.White
-        TxtConnectionName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtConnectionName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TxtConnectionName.Location = New Point(306, 38)
         TxtConnectionName.Margin = New Padding(6, 5, 6, 5)
         TxtConnectionName.MaxLength = 255
@@ -487,7 +486,7 @@ Partial Class FRMconnEditor
         ' TxtAddress
         ' 
         TxtAddress.BackColor = Color.White
-        TxtAddress.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtAddress.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TxtAddress.Location = New Point(306, 178)
         TxtAddress.Margin = New Padding(6, 5, 6, 5)
         TxtAddress.MaxLength = 255
@@ -538,7 +537,7 @@ Partial Class FRMconnEditor
         btnImport.FlatAppearance.BorderSize = 2
         btnImport.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
         btnImport.FlatStyle = FlatStyle.Flat
-        btnImport.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        btnImport.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         btnImport.ForeColor = Color.White
         btnImport.Location = New Point(6, 467)
         btnImport.Name = "btnImport"
@@ -558,7 +557,7 @@ Partial Class FRMconnEditor
         btnSaveAs.FlatAppearance.BorderSize = 2
         btnSaveAs.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
         btnSaveAs.FlatStyle = FlatStyle.Flat
-        btnSaveAs.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        btnSaveAs.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         btnSaveAs.ForeColor = Color.White
         btnSaveAs.Location = New Point(603, 467)
         btnSaveAs.Name = "btnSaveAs"
@@ -582,7 +581,7 @@ Partial Class FRMconnEditor
         ' txtImportContent
         ' 
         txtImportContent.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        txtImportContent.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        txtImportContent.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         txtImportContent.Location = New Point(3, 15)
         txtImportContent.MaxLength = 0
         txtImportContent.Multiline = True
@@ -617,7 +616,7 @@ Partial Class FRMconnEditor
         btnGet.FlatAppearance.BorderSize = 2
         btnGet.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
         btnGet.FlatStyle = FlatStyle.Flat
-        btnGet.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        btnGet.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         btnGet.ForeColor = Color.White
         btnGet.Location = New Point(603, 6)
         btnGet.Name = "btnGet"
@@ -645,7 +644,7 @@ Partial Class FRMconnEditor
         ' 
         ' txtImportCode
         ' 
-        txtImportCode.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        txtImportCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         txtImportCode.Location = New Point(249, 17)
         txtImportCode.MaxLength = 255
         txtImportCode.Name = "txtImportCode"

@@ -30,7 +30,7 @@ Namespace Application
         'ReadOnly _SQL As New LibSQL.Application.Modules
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsModuleReady(databasename As String, dbengine As String, tcode As String) As Boolean
+        Public Shared Function IsModuleReady(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String) As Boolean
             Dim varIsModuleReady As Boolean
 
             Try
@@ -43,7 +43,7 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsModuleLocked(databasename As String, dbengine As String, tcode As String) As Boolean
+        Public Shared Function IsModuleLocked(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String) As Boolean
             Dim varIsModuleLocked As Boolean
 
             Try

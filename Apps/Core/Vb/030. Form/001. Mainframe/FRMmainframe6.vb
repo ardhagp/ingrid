@@ -32,7 +32,7 @@ Public Class FRMmainframe6
     'Private Frm_syss As New SYSS
 
     Private varSql As New LibSQL.Mainframe.Database
-    Private varSqlDBcheck As New LibSQL.Commands.DBIC.Applications
+    Private varSqlDBcheck As New LibSQL.CMDdbic.Applications
     Private varSqlNotification As New LibSQL.Application.Notification
     Private varSqlRunningText As New LibSQL.Application.RunningText
     Private varSqlModules As New LibSQL.Application.Modules
@@ -169,13 +169,13 @@ Public Class FRMmainframe6
             Call LoginClicked() ' Ensure User Logged In
         End If
         ' Check Module Availability
-        If Not (Application.Modules.IsModuleReady(varDatabaseName, varDatabaseEngine, commandcode.ToUpper.Trim)) Then
+        If Not (Application.Modules.IsModuleReady(varDatabaseName, varDatabaseEngineE, commandcode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "Module " & commandcode.ToUpper.Trim & " not found."
             Return
-        ElseIf (Application.Modules.IsModuleLocked(varDatabaseName, varDatabaseEngine, commandcode.ToUpper.Trim)) Then
+        ElseIf (Application.Modules.IsModuleLocked(varDatabaseName, varDatabaseEngineE, commandcode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
             Bridge.Security.Writelog.Sendlog("""message"" : """ & varProperties.FirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
-            Decision("[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.FRMdialogbox.MessageIcon.Information, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            Decision("[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", "Module Under Maintenance", CMCv.frmDialogBox.MessageIcon.Information, CMCv.frmDialogBox.MessageTypes.OkOnly)
 
             System.Media.SystemSounds.Beep.Play()
 
@@ -231,7 +231,7 @@ Public Class FRMmainframe6
         If Decision("Are you sure want to logout from system?", "Logout", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
             Bridge.Security.Writelog.Sendlog("""message"" : " & varProperties.FirstName & " is logout."",", "Information")
             Call SystemLogout()
-            varLogUser.Logout(varDatabaseName, varDatabaseEngine, varProperties.EmployeeID)
+            varLogUser.Logout(varDatabaseName, varDatabaseEngineE, varProperties.EmployeeID)
             Call ClearLoginData()
         End If
     End Sub
@@ -300,11 +300,12 @@ Public Class FRMmainframe6
     <SupportedOSPlatform("windows")>
     Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            TmrNotif.Enabled = True
             RaiseEvent EventMainframeOpen()
+            TmrNotif.Enabled = True
 
             Dim clsLog As New Ladybug.Log.Events
 
+            ''' Log Application Start
             With proLog
                 .Message = "Ingrid Main App is opened."
                 .FromSender = "FRMmainframe6 Load Event"
@@ -321,12 +322,10 @@ Public Class FRMmainframe6
             clsLog.ShowData(proLog)
             clsLog = Nothing
             Call ActivateLicenses()
-            'tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererIE7)
             Tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererVS2010)
             varGetNotifCounter = 58
             varForceRefreshMainframeData = False
             TmrStatus.Interval = varStatusTimeWait * 1000
-            'splash.Show()
             Call SystemLogout()
             Call FirstLoad()
             varProperties.UserID = String.Empty
@@ -339,17 +338,18 @@ Public Class FRMmainframe6
             ElseIf varDatabaseEngine = "MYSQL" Then
                 varDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL
             End If
+
             If Mainframe.Database.Connect(varProductionMode) Then
                 Ts_connection.Text = "Connected"
-                varLogApplication.Run(varDatabaseName, varDatabaseEngine)
+                varLogApplication.Run(varDatabaseName, varDatabaseEngineE)
             Else
                 Ts_connection.Text = "Disconnected"
                 Decision("Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
-            'splash.Close()
+
             Call CommandAutoComplete()
-            If Not (LibSQL.Commands.DBIC.Applications.IsCompanyExist(varDatabaseName, varDatabaseEngine) OrElse Not LibSQL.Commands.DBIC.Applications.IsDepartmentExist(varDatabaseName, varDatabaseEngine)) Then
+            If Not (LibSQL.CMDdbic.Applications.IsCompanyExist(varDatabaseName, varDatabaseEngineE) OrElse Not LibSQL.CMDdbic.Applications.IsDepartmentExist(varDatabaseName, varDatabaseEngineE)) Then
                 Display(FRMfirstguide,, "First Guide", "", True, Me)
             End If
         Catch ex As Exception
@@ -700,7 +700,7 @@ Public Class FRMmainframe6
     Private Sub MsstartExit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
         If (varSession) Then
             Call SystemLogout() ''' Logout Process
-            varLogUser.Logout(varDatabaseName, varDatabaseEngine, varProperties.EmployeeID)
+            varLogUser.Logout(varDatabaseName, varDatabaseEngineE, varProperties.EmployeeID)
             Call ClearLoginData() ''' Clear Login Data
         End If
         Me.Close()

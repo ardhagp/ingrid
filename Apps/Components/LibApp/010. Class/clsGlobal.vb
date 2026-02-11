@@ -2,6 +2,7 @@
     Public Enum DatabaseEngine
         [MSSQL]
         [MYSQL]
+        [PGSQL]
     End Enum
 
     ''' <summary>

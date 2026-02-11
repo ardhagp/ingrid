@@ -4,7 +4,7 @@ Public Class FRMmmgr
 
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional forcerefresh As Boolean = False)
-        CMDmmgr.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnMMGR, SLFStatus, TxtFind, forcerefresh)
+        CMDmmgr.View.DisplayData(varDatabaseName, varDatabaseEngineE, DgnMMGR, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     <SupportedOSPlatform("windows")>

@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
 Public Class FRMccin
-#Region "Variables"
+#Region "Declaration"
     Private WithEvents Frm_ccin_Editor As New FRMccinEditor
     Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 #End Region
@@ -19,7 +19,7 @@ Public Class FRMccin
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
     Private Sub GetData(Optional forcerefresh As Boolean = False)
-        CMDccin.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnCCIN, SLFStatus, TxtFind, forcerefresh)
+        CMDccin.View.DisplayData(varDatabaseName, varDatabaseEngineE, DgnCCIN, SLFStatus, TxtFind, forcerefresh)
     End Sub
 
     Private Sub GetRowID()
@@ -63,7 +63,7 @@ Public Class FRMccin
         Else
             varFormProperties.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (CMDccin.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
+                If (CMDccin.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
                     FRMmainframe6.Ts_status.Text = "Success"
                 Else

@@ -9,7 +9,7 @@ Public Class FRMplntEditor
 #Region "Sub Collections"
     <SupportedOSPlatform("windows")>
     Private Sub GetCompany()
-        Call CMDplnt.Editor.GetCompany(varDatabaseName, varDatabaseEngine, CboCompany)
+        Call CMDplnt.Editor.GetCompany(varDatabaseName, varDatabaseEngineE, CboCompany)
     End Sub
 
     Private Sub CheckAllInput()

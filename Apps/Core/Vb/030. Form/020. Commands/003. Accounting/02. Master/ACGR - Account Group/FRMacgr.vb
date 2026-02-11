@@ -2,7 +2,7 @@
 
 Public Class FRMacgr
 
-#Region "Variables"
+#Region "Declaration"
     Private WithEvents Frm_acgr_Editor As New FRMacgrEditor
     Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
@@ -20,8 +20,8 @@ Public Class FRMacgr
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
     Private Sub GetData()
-        CMDacgr.View.FillCompany(varDatabaseName, varDatabaseEngine, CboCompany)
-        CMDacgr.View.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
+        CMDacgr.View.FillCompany(varDatabaseName, varDatabaseEngineE, CboCompany)
+        CMDacgr.View.FillAccountingBook(varDatabaseName, varDatabaseEngineE, CboAccountingBook, CboCompany)
     End Sub
 
     ''' <summary>
@@ -31,7 +31,7 @@ Public Class FRMacgr
     ''' <remarks>True akan memaksa data untuk direfresh tanpa filter apapun</remarks>
     <SupportedOSPlatform("windows")>
     Private Sub GetDataGrid(Optional forcerefresh As Boolean = False)
-        CMDacgr.View.GetAccountList(varDatabaseName, varDatabaseEngine, DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, forcerefresh)
+        CMDacgr.View.GetAccountList(varDatabaseName, varDatabaseEngineE, DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, forcerefresh)
     End Sub
 
     'Private _RowID As Integer
@@ -110,7 +110,7 @@ Public Class FRMacgr
         Else
             varFormProperties.IsNew = False
             If Decision("Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                If (CMDacgr.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(Convert.ToString(varFormProperties.RowID)))) Then
+                If (CMDacgr.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(Convert.ToString(varFormProperties.RowID)))) Then
                     Call GetDataGrid(True)
                     FRMmainframe6.Ts_status.Text = "Success"
                 Else
@@ -180,7 +180,7 @@ Public Class FRMacgr
     <SupportedOSPlatform("windows")>
     Private Sub CboPlant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
         If Not (varIsFirstLoad) Then
-            CMDacgr.View.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
+            CMDacgr.View.FillAccountingBook(varDatabaseName, varDatabaseEngineE, CboAccountingBook, CboCompany)
             Call GetDataGrid(True)
         End If
     End Sub

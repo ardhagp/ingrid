@@ -10,8 +10,8 @@ Public Class FRMreset
     Private Sub BtnRun_Click(sender As Object, e As EventArgs) Handles BtnRun.Click
         If Txt_Confirmation.Text.Trim = "Confirm" Then
             'reset db settings
-            If (Decision("Last Warning, do you want to reset application settings?", "Confirmation Before Resetting App Settings", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes) AndAlso (CMDreset.Editor.PushData(varDatabaseName, varDatabaseEngine)) Then
-                Decision("You have successfully resetting application settings", "Information", FRMdialogbox.MessageIcon.Information, FRMdialogbox.MessageTypes.OkOnly)
+            If (Decision("Last Warning, do you want to reset application settings?", "Confirmation Before Resetting App Settings", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes) AndAlso (CMDreset.Editor.PushData(varDatabaseName, varDatabaseEngineE)) Then
+                Decision("You have successfully resetting application settings", "Information", frmDialogBox.MessageIcon.Information, frmDialogBox.MessageTypes.OkOnly)
                 Me.Close()
             End If
         Else

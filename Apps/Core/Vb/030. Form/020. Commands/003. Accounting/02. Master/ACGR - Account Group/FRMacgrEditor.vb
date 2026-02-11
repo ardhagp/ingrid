@@ -2,7 +2,7 @@
 
 Public Class FRMacgrEditor
 
-#Region "Variables"
+#Region "Declaration"
     Public Event EventRecordSaved()
 
     Private varSize As New Size(566, 445)
@@ -27,26 +27,26 @@ Public Class FRMacgrEditor
 
         varIsFirstLoad = True
         'Fill cbo Plant
-        CMDacgr.Editor.FillCompany(varDatabaseName, varDatabaseEngine, CboCompany)
+        CMDacgr.Editor.FillCompany(varDatabaseName, varDatabaseEngineE, CboCompany)
 
         'Fill Cbo Accounting Book
-        CMDacgr.Editor.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
+        CMDacgr.Editor.FillAccountingBook(varDatabaseName, varDatabaseEngineE, CboAccountingBook, CboCompany)
 
         'Fill Account Group
-        CMDacgr.Editor.FillAccountGroup(varDatabaseName, varDatabaseEngine, CboAccountGroup)
+        CMDacgr.Editor.FillAccountGroup(varDatabaseName, varDatabaseEngineE, CboAccountGroup)
 
         If (varFormProperties.IsNew) Then
             ChkEnable.Checked = True
             ChkAddNew.Visible = True
         Else
             ChkAddNew.Visible = False
-            CboCompany.SelectedValue = CMDacgr.Editor.GetCompanyID(varDatabaseName, varDatabaseEngine, Convert.ToString(Convert.ToString(varFormProperties.RowID)))
-            CMDacgr.Editor.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
-            CboAccountingBook.SelectedValue = CMDacgr.Editor.GetAccountBookID(varDatabaseName, varDatabaseEngine, Convert.ToString(Convert.ToString(varFormProperties.RowID)))
-            CboAccountGroup.SelectedValue = CMDacgr.Editor.GetAccountGroupID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            TxtAccountNumber.Text = CMDacgr.Editor.GetAccountNumber(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            TxtAccountName.Text = CMDacgr.Editor.GetAccountName(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-            ChkEnable.Checked = CMDacgr.Editor.GetEnableTransaction(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
+            CboCompany.SelectedValue = CMDacgr.Editor.GetCompanyID(varDatabaseName, varDatabaseEngineE, Convert.ToString(Convert.ToString(varFormProperties.RowID)))
+            CMDacgr.Editor.FillAccountingBook(varDatabaseName, varDatabaseEngineE, CboAccountingBook, CboCompany)
+            CboAccountingBook.SelectedValue = CMDacgr.Editor.GetAccountBookID(varDatabaseName, varDatabaseEngineE, Convert.ToString(Convert.ToString(varFormProperties.RowID)))
+            CboAccountGroup.SelectedValue = CMDacgr.Editor.GetAccountGroupID(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
+            TxtAccountNumber.Text = CMDacgr.Editor.GetAccountNumber(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
+            TxtAccountName.Text = CMDacgr.Editor.GetAccountName(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
+            ChkEnable.Checked = CMDacgr.Editor.GetEnableTransaction(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
 
             'Disable all combobox
             CboCompany.Enabled = False
@@ -62,7 +62,7 @@ Public Class FRMacgrEditor
     <SupportedOSPlatform("windows")>
     Private Sub CboPlant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
         If Not (varIsFirstLoad) Then
-            CMDacgr.Editor.FillAccountingBook(varDatabaseName, varDatabaseEngine, CboAccountingBook, CboCompany)
+            CMDacgr.Editor.FillAccountingBook(varDatabaseName, varDatabaseEngineE, CboAccountingBook, CboCompany)
         End If
     End Sub
 
@@ -73,10 +73,10 @@ Public Class FRMacgrEditor
         If (TxtAccountName.Text = String.Empty) OrElse (TxtAccountNumber.Text = String.Empty) OrElse (CboAccountingBook.Items.Count = 0) Then
             Decision("Cannot save your record." & Environment.NewLine & "Make sure you have Account Book selected, Account Number & Account Name properly filled.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
-        ElseIf (varFormProperties.IsNew) AndAlso (CMDacgr.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSQLText)) Then
+        ElseIf (varFormProperties.IsNew) AndAlso (CMDacgr.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSQLText)) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Account Number already registered.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
-        ElseIf Not (varFormProperties.IsNew) AndAlso (CMDacgr.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
+        ElseIf Not (varFormProperties.IsNew) AndAlso (CMDacgr.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
             Decision("Cannot save your record." & Environment.NewLine & "This Account Number already registered.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If

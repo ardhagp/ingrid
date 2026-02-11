@@ -1,10 +1,11 @@
 ﻿Imports System.IO
 Imports System.Net.Http
 Imports System.Runtime.Versioning
+Imports LibApp.Ingrid.Global
 
 Public Class FRMconnEditor
 
-#Region "Declarations"
+#Region "Declaration"
     Private WithEvents ComponentMainframeMenu As New CMCv.UI.View.MenuStrip
 
     Public Event EventRecordSaved()
@@ -113,7 +114,7 @@ Public Class FRMconnEditor
         End If
 
         If (TxtConnectionName.Text = String.Empty) OrElse (TxtAddress.Text = String.Empty) OrElse (TxtPort.Text = String.Empty) OrElse (TxtUsername.Text = String.Empty) OrElse (TxtPassword.Text = String.Empty) OrElse (TxtDatabaseName.Text = String.Empty) Then
-            Decision("Cannot save your record." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", "Alert", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision("Cannot save your record." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", "Alert", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
@@ -189,6 +190,8 @@ Public Class FRMconnEditor
         ComponentMainframeMenu.LoadIn(Me, True)
         ComponentMainframeMenu.ShowMenuFile(CMCv.UI.View.MenuStrip.ShowItem.Yes)
         varIsPasswordChange = False
+
+        CboDBEngine.DataSource = [Enum].GetValues(GetType(DatabaseEngine))
 
         If (varProperties.IsNew) Then
             varProperties.RowID = CMCv.Security.Encrypt.MD5()

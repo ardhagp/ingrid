@@ -1,7 +1,7 @@
 ﻿
 Imports System.Runtime.Versioning
 
-Namespace Commands.DBIC
+Namespace CMDdbic
     Public Structure Modules
 
     End Structure
@@ -19,19 +19,19 @@ Namespace Commands.DBIC
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsCompanyExist(databasename As String, databaseengine As String) As Boolean
-            Dim V_IsExist As Integer
+        Public Shared Function IsCompanyExist(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine) As Boolean
+            Dim varIsExist As Integer
 
-            If databaseengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(0).Query = String.Format("select count(c.company_id) as [company_count] from dbo.man_company as c")
-                V_IsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
-            Else
+                varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(0).Query = String.Format("select count(c.company_id) as `company_count` from man_company as c")
-                V_IsExist = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
+                varIsExist = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
             End If
 
 
-            If V_IsExist > 0 Then
+            If varIsExist > 0 Then
                 Return True
             Else
                 Return False
@@ -39,20 +39,18 @@ Namespace Commands.DBIC
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsDepartmentExist(databasename As String, dbengine As String) As Boolean
-            Dim V_IsExist As Integer
+        Public Shared Function IsDepartmentExist(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine) As Boolean
+            Dim varIsExist As Integer
 
-            'TODO: Create MYSQL version
-            If dbengine = "MSSQL" Then
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(0).Query = String.Format("select count(d.department_id) as [department_count] from dbo.man_department as d")
-                V_IsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
-            ElseIf dbengine = "MYSQL" Then
+                varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(0).Query = String.Format("select count(d.department_id) as `department_count` from man_department as d")
-                V_IsExist = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
+                varIsExist = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
             End If
 
-
-            If V_IsExist > 0 Then
+            If varIsExist > 0 Then
                 Return True
             Else
                 Return False

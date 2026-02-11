@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 Imports CMCv
 
-Namespace Commands.MMVT
+Namespace CMDmmvt
     ''' <summary>
     ''' 
     ''' </summary>
@@ -18,8 +18,8 @@ Namespace Commands.MMVT
         ''' <param name="find"></param>
         ''' <param name="forcerefresh"></param>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As String, datagrid As dgn, statusbar As stt, ByVal find As txt, Optional forcerefresh As Boolean = False)
-            If dbengine = "MSSQL" Then
+        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As dgn, statusbar As stt, ByVal find As txt, Optional forcerefresh As Boolean = False)
+            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 If (find.Text = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMssql2008(0).Query = "select sval.stockvaluation_id, sval.stockvaluation_code, sval.stockvaluation_description from dbo.log_stockvaluation sval;"
                 Else
@@ -28,7 +28,7 @@ Namespace Commands.MMVT
                 varDatabaseRequestMssql2008(0).DataGrid = datagrid
                 varDatabaseRequestMssql2008(0).StatusBar = statusbar
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TMaterialValuation")
-            ElseIf dbengine = "MYSQL" Then
+            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If (find.Text = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMysql(0).Query = "select sval.stockvaluation_id, sval.stockvaluation_code, sval.stockvaluation_description from dbo.log_stockvaluation  sval;"
                 Else

@@ -37,13 +37,13 @@ Public Class FRMlogin
             Return
         End If
 
-        varProperties.UserID = CMDuac.Login.GetUserID(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText, TxtPassword.XOSQLText, varProperties.FirstName)
+        varProperties.UserID = CMDuac.Login.GetUserID(varDatabaseName, varDatabaseEngineE, TxtUsername.XOSQLText, TxtPassword.XOSQLText, varProperties.FirstName)
 
         If varProperties.UserID = String.Empty Then
             RaiseEvent EventLoginFailed()
             varWrongLogin += 1
             SLFStatus.Items(0).Text = "Login Failed"
-            varLogUser.LoginFailed(varDatabaseName, varDatabaseEngine, TxtUsername.XOSQLText)
+            varLogUser.LoginFailed(varDatabaseName, varDatabaseEngineE, TxtUsername.XOSQLText)
 
             Dim clsLog As New Ladybug.Log.Events
             With proLog
@@ -68,12 +68,12 @@ Public Class FRMlogin
             End If
         Else
             With varProperties
-                .EmployeeID = CMDuac.Login.GetEmployeeID(varDatabaseName, varDatabaseEngine, varProperties.UserID)
-                .FirstName = CMDuac.Login.GetFirstName(varDatabaseName, varDatabaseEngine, varProperties.UserID)
-                .EmployeeNumber = CMDuac.Login.GetEmployeeNumber(varDatabaseName, varDatabaseEngine, varProperties.UserID)
-                .Gender = CMDuac.Login.GetGender(varDatabaseName, varDatabaseEngine, varProperties.UserID)
-                .EmployeePosition = CMDuac.Login.GetPosition(varDatabaseName, varDatabaseEngine, varProperties.UserID)
-                .IsAdministrator = CMDuac.Login.GetAdministrator(varDatabaseName, varDatabaseEngine, varProperties.UserID)
+                .EmployeeID = CMDuac.Login.GetEmployeeID(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
+                .FirstName = CMDuac.Login.GetFirstName(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
+                .EmployeeNumber = CMDuac.Login.GetEmployeeNumber(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
+                .Gender = CMDuac.Login.GetGender(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
+                .EmployeePosition = CMDuac.Login.GetPosition(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
+                .IsAdministrator = CMDuac.Login.GetAdministrator(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
             End With
 
             varLogUser.LoginSuccess(varDatabaseName, varDatabaseEngine, varProperties.EmployeeID)
