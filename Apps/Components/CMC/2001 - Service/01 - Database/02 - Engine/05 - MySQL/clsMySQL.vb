@@ -61,6 +61,9 @@ Namespace Database.Engine
             Dim varSuccess As Boolean
             Try
                 varConnection(1) = New MySqlClient.MySqlConnection(varMySQL.Mysqlforcessl(databaseproperties.ServerAddress, databaseproperties.ServerPort, databaseproperties.DatabaseName, databaseproperties.Username, databaseproperties.Password))
+                If Not varConnection(1).Ping Then
+                    varConnection(1).Close()
+                End If
                 varConnection(1).Open()
                 varSuccess = True
             Catch ex As MySqlClient.MySqlException
@@ -107,6 +110,11 @@ Namespace Database.Engine
             Dim varDataReader(1) As MySqlClient.MySqlDataReader
 
             Try
+                If Not varConnection(1).Ping Then
+                    varConnection(1).Close()
+                    varConnection(1).Open()
+                End If
+
                 Dim varCommand0 As New MySqlClient.MySqlCommand
 
                 query = "USE " & databasename & "; " & query
@@ -178,8 +186,13 @@ Namespace Database.Engine
         ''' </returns>
         <SupportedOSPlatform("windows")>
         Public Function GetValue(databasename As String, query As String) As Object
+            Dim varRowValue As Object
+
             Try
-                Dim varRowValue As Object
+                If Not varConnection(1).Ping Then
+                    varConnection(1).Close()
+                    varConnection(1).Open()
+                End If
 
                 varCommand(1) = New MySqlClient.MySqlCommand With {
                 .Connection = varConnection(1),
@@ -236,6 +249,11 @@ Namespace Database.Engine
             Dim varDataAdapter(1) As MySqlClient.MySqlDataAdapter
 
             Try
+                If Not varConnection(1).Ping Then
+                    varConnection(1).Close()
+                    varConnection(1).Open()
+                End If
+
                 GC.Collect()
 
                 Dim varDataset As New DataSet
@@ -301,10 +319,14 @@ Namespace Database.Engine
         ''' </param>
         <SupportedOSPlatform("windows")>
         Public Sub GetDataTable(databasename As String, dbr As Adapter.MySQL.Display.Request, tablename As String)
-
             Dim varDataAdapterPrivate(1) As MySqlClient.MySqlDataAdapter
 
             Try
+                If Not varConnection(1).Ping Then
+                    varConnection(1).Close()
+                    varConnection(1).Open()
+                End If
+
                 GC.Collect()
 
                 Dim varDataset As New DataSet
@@ -397,6 +419,11 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub PushData(databasename As String, ByVal query As String)
             Try
+                If Not varConnection(1).Ping Then
+                    varConnection(1).Close()
+                    varConnection(1).Open()
+                End If
+
                 varCommand(1) = New MySqlClient.MySqlCommand With {
                 .Connection = varConnection(1),
                 .CommandType = CommandType.Text}
@@ -443,6 +470,11 @@ Namespace Database.Engine
             Dim varSuccess As Boolean
 
             Try
+                If Not varConnection(1).Ping Then
+                    varConnection(1).Close()
+                    varConnection(1).Open()
+                End If
+
                 varCommand(1) = New MySqlClient.MySqlCommand
 
                 If cmd IsNot Nothing Then
@@ -501,6 +533,11 @@ Namespace Database.Engine
             GC.Collect()
 
             Try
+                If Not varConnection(1).Ping Then
+                    varConnection(1).Close()
+                    varConnection(1).Open()
+                End If
+
                 varCommand(1) = New MySqlClient.MySqlCommand With {
                 .Connection = varConnection(1),
                 .CommandType = CommandType.Text}
@@ -540,7 +577,6 @@ Namespace Database.Engine
             varConnection(1).Close()
             varConnection(1).Dispose()
         End Sub
-
 
         Public Sub Dispose() Implements IDisposable.Dispose
             ' Do not change this code. Put cleanup code in 'Dispose(disposing As Boolean)' method

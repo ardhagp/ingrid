@@ -24,7 +24,7 @@ Module Globals
     Public varApplicationVersion As String = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
 
     Public WithEvents MSG As New FRMdialogbox
-    Public WithEvents ERC As New frmErrorReporting
+    Public WithEvents ERC As New FRMerrorreporting
     Public ErrorCatcher As New Ladybug.Log.Fields
 
     Public varProperties As New LibApp.Ingrid.Global.Properties
@@ -39,10 +39,10 @@ Module Globals
     ''' <param name="buttontype"></param>
     ''' <returns></returns>
     Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType,
-                             subtitle As String, messageicon As CMCv.frmDialogBox.MessageIcon,
-                             buttontype As CMCv.frmDialogBox.MessageTypes) As _
+                             subtitle As String, messageicon As CMCv.FRMdialogbox.MessageIcon,
+                             buttontype As CMCv.FRMdialogbox.MessageTypes) As _
                              System.Windows.Forms.DialogResult
-        MSG = New CMCv.frmDialogBox(windowtitle, message, title, subtitle, messageicon, buttontype)
+        MSG = New CMCv.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
         Return MSG.ShowDialog()
         MSG.Dispose()
     End Function

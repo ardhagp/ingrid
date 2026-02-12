@@ -34,18 +34,41 @@ Partial Class Rpt_Bsc
         ' PnlBottomButton
         ' 
         PnlBottomButton.Controls.Add(BtnClose)
-        PnlBottomButton.Location = New Drawing.Point(0, 0)
-        PnlBottomButton.Size = New Drawing.Size(0, 58)
+        PnlBottomButton.Location = New System.Drawing.Point(0, 0)
+        PnlBottomButton.Margin = New System.Windows.Forms.Padding(7, 10, 7, 10)
+        PnlBottomButton.Size = New System.Drawing.Size(0, 97)
         PnlBottomButton.Controls.SetChildIndex(BtnClose, 0)
+        ' 
+        ' SLFLogo
+        ' 
+        SLFLogo.Margin = New System.Windows.Forms.Padding(11, 20, 11, 20)
+        ' 
+        ' SLFSubNamaForm
+        ' 
+        SLFSubNamaForm.Margin = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        ' 
+        ' SLFNamaForm
+        ' 
+        SLFNamaForm.Margin = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        ' 
+        ' pnl_
+        ' 
+        pnl_.Margin = New System.Windows.Forms.Padding(11, 20, 11, 20)
+        pnl_.Size = New System.Drawing.Size(1307, 118)
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(Rv_)
         SLFPanel.Dock = Windows.Forms.DockStyle.None
-        SLFPanel.Location = New Drawing.Point(0, 62)
-        SLFPanel.Size = New Drawing.Size(0, 58)
+        SLFPanel.Location = New System.Drawing.Point(0, 103)
+        SLFPanel.Margin = New System.Windows.Forms.Padding(11, 20, 11, 20)
+        SLFPanel.Size = New System.Drawing.Size(0, 97)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(Rv_, 0)
+        ' 
+        ' SLFBackground
+        ' 
+        SLFBackground.Margin = New System.Windows.Forms.Padding(11, 20, 11, 20)
         ' 
         ' BtnClose
         ' 
@@ -56,37 +79,36 @@ Partial Class Rpt_Bsc
         BtnClose.FlatAppearance.BorderSize = 2
         BtnClose.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(85), CByte(125), CByte(245))
         BtnClose.FlatStyle = Windows.Forms.FlatStyle.Flat
-        BtnClose.Font = New Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+        BtnClose.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
         BtnClose.ForeColor = Drawing.Color.White
-        BtnClose.Location = New Drawing.Point(-131, 7)
-        BtnClose.Margin = New Windows.Forms.Padding(4, 3, 4, 3)
+        BtnClose.Location = New System.Drawing.Point(-187, 12)
+        BtnClose.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         BtnClose.Name = "BtnClose"
-        BtnClose.Size = New Drawing.Size(117, 46)
+        BtnClose.Size = New System.Drawing.Size(167, 77)
+        BtnClose.TabIndex = 1
+        BtnClose.Text = "&Close"
+        BtnClose.UseVisualStyleBackColor = False
         BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
         BtnClose.XOTampilkanFocusBorder = False
         BtnClose.XOValidasiSemuaInput = False
         BtnClose.XOValidasiSemuaInputTag = Nothing
-        BtnClose.TabIndex = 1
-        BtnClose.Text = "&Close"
-        BtnClose.UseVisualStyleBackColor = False
         ' 
         ' Rv_
         ' 
         Rv_.Dock = Windows.Forms.DockStyle.Fill
         Rv_.DocumentMapWidth = 1
-        Rv_.Location = New Drawing.Point(0, 0)
-        Rv_.Margin = New Windows.Forms.Padding(4, 3, 4, 3)
+        Rv_.Location = New System.Drawing.Point(0, 0)
+        Rv_.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Rv_.Name = "Rv_"
         Rv_.ServerReport.BearerToken = Nothing
-        Rv_.Size = New Drawing.Size(0, 0)
+        Rv_.Size = New System.Drawing.Size(0, 0)
         Rv_.TabIndex = 996
         ' 
         ' Rpt_Bsc
         ' 
-        AutoScaleDimensions = New Drawing.SizeF(7.0F, 15.0F)
-        ClientSize = New Drawing.Size(915, 647)
-        KeyPreview = True
-        Margin = New Windows.Forms.Padding(7, 3, 7, 3)
+        AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+        ClientSize = New System.Drawing.Size(1307, 1078)
+        Margin = New System.Windows.Forms.Padding(10, 5, 10, 5)
         Name = "Rpt_Bsc"
         PnlBottomButton.ResumeLayout(False)
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

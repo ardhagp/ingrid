@@ -34,7 +34,7 @@ Public Class FRMmctg
 
     <SupportedOSPlatform("windows")>
     Private Sub EventToolsImport() Handles Com_mms_Menu.EventToolsImport
-        Display(New FRMimports(Import.Data.DataType.TypeofImports.MaterialMasterCatalog), IMAGEDB.Main.ImageLibrary.IMPORTS_ICON, "Catalog Imports", "Imports your catalog data from other database", True)
+        Display(New FRMimports(Import.Data.DataType.TypeofImports.MaterialMasterCatalog), IMAGEDB.Main.ImageLibrary.IMPORTS_ICON, My.Application.Info.AssemblyName.ToUpper, "Catalog Imports", "Imports your catalog data from other database", True)
     End Sub
 
     Private Sub EventToolsFind() Handles Com_mms_Menu.EventToolsFind

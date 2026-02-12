@@ -1,7 +1,7 @@
 ﻿Imports Org.BouncyCastle.Cmp
 Imports Org.BouncyCastle.Tls
 
-Public Class frmDialogBox
+Public Class FRMdialogbox
 
 #Region "Initialize"
     ''' <summary>
@@ -30,102 +30,94 @@ Public Class frmDialogBox
         ' This call is required by the designer.
         InitializeComponent()
 
-        ' Event triggered by Message Icon.
+        ' --- Message icon (choose image + backcolor once) ---
+        Dim logoImg = CType(Nothing, System.Drawing.Image)
+        Dim logoColor = System.Drawing.Color.Transparent
+
         Select Case messageicon
-            Case frmDialogBox.MessageIcon.Alert
-                Me.SLFLogo.Image = My.Resources.ALERT_001_256_ICON
-                Me.SLFLogo.BackColor = System.Drawing.Color.Orange
-            Case frmDialogBox.MessageIcon.Error
-                Me.SLFLogo.Image = My.Resources.ERROR_001_256_ICON
-                Me.SLFLogo.BackColor = System.Drawing.Color.Red
-            Case frmDialogBox.MessageIcon.Information
-                Me.SLFLogo.Image = My.Resources.INFORMATION_001_256_ICON
-                Me.SLFLogo.BackColor = System.Drawing.Color.SteelBlue
-            Case frmDialogBox.MessageIcon.Question
-                Me.SLFLogo.Image = My.Resources.QUESTION_001_256_ICON
-                Me.SLFLogo.BackColor = System.Drawing.Color.DodgerBlue
+            Case MessageIcon.Alert
+                logoImg = My.Resources.ALERT_001_256_ICON
+                logoColor = System.Drawing.Color.Orange
+            Case MessageIcon.Error
+                logoImg = My.Resources.ERROR_001_256_ICON
+                logoColor = System.Drawing.Color.Red
+            Case MessageIcon.Information
+                logoImg = My.Resources.INFORMATION_001_256_ICON
+                logoColor = System.Drawing.Color.SteelBlue
+            Case MessageIcon.Question
+                logoImg = My.Resources.QUESTION_001_256_ICON
+                logoColor = System.Drawing.Color.DodgerBlue
         End Select
 
-        subtitle = subtitle.Trim
-        SLFSubNamaForm.Text = subtitle
+        Me.SLFLogo.Image = logoImg
+        Me.SLFLogo.BackColor = logoColor
+
+        ' --- Title and subtitle (compute once, avoid repeated trims and checks) ---
+        Dim trimmedSubtitle = If(subtitle, String.Empty).Trim()
+        Dim headerText As String = String.Empty
+        Dim defaultSubtitle As String = String.Empty
 
         Select Case title
             Case LibApp.Ingrid.Global.PopupType.Alert
-                SLFNamaForm.Text = "Alert"
-                If subtitle = String.Empty Then
-                    SLFSubNamaForm.Text = "Please double check given parameters"
-                End If
+                headerText = "Alert"
+                defaultSubtitle = "Please verify the parameters provided."
             Case LibApp.Ingrid.Global.PopupType.Confirmation
-                SLFNamaForm.Text = "Confirmation"
-                If subtitle = String.Empty Then
-                    SLFSubNamaForm.Text = "Consider your decision"
-                End If
+                headerText = "Confirmation"
+                defaultSubtitle = "Please ensure your decision has been thoroughly reviewed."
             Case LibApp.Ingrid.Global.PopupType.ConfirmationBeforeReset
-                SLFNamaForm.Text = "Confirmation Before Resetting App Settings"
-                If subtitle = String.Empty Then
-                    SLFSubNamaForm.Text = "Everything will be rolled back to factory settings."
-                End If
+                headerText = "Confirmation Before Resetting App Settings"
+                defaultSubtitle = "Every setting will be returned to its original configuration."
             Case LibApp.Ingrid.Global.PopupType.Delete
-                SLFNamaForm.Text = "Delete"
-                If subtitle = String.Empty Then
-                    SLFSubNamaForm.Text = "Please double check before you delete"
-                End If
+                headerText = "Delete"
+                defaultSubtitle = "Please ensure your choice is correct before proceeding with deletion."
             Case LibApp.Ingrid.Global.PopupType.Error
-                SLFNamaForm.Text = "Error"
-                If subtitle = String.Empty Then
-                    SLFSubNamaForm.Text = "Something has occured that prevent progress to continue"
-                End If
+                headerText = "Error"
+                defaultSubtitle = "An unexpected error has occurred, preventing the process from continuing."
             Case LibApp.Ingrid.Global.PopupType.FileNotFound
-                SLFNamaForm.Text = "File Not Found"
-                If subtitle = String.Empty Then
-                    SLFSubNamaForm.Text = "Your file cannot be found"
-                End If
+                headerText = "File Not Found"
+                defaultSubtitle = "The file you are trying to access cannot be found."
             Case LibApp.Ingrid.Global.PopupType.LimitExceeded
-                SLFNamaForm.Text = "Limit Exceeded"
-                If subtitle = String.Empty Then
-                    SLFSubNamaForm.Text = "Please check file size"
-                End If
+                headerText = "Limit Exceeded"
+                defaultSubtitle = "Please ensure the file size is correct."
             Case LibApp.Ingrid.Global.PopupType.Logout
-                SLFNamaForm.Text = "Logout"
-                If subtitle = String.Empty Then
-                    SLFSubNamaForm.Text = "Please confirm"
-                End If
+                headerText = "Logout"
+                defaultSubtitle = "Please confirm"
             Case LibApp.Ingrid.Global.PopupType.ModuleUnderMaintenance
-                SLFNamaForm.Text = "Module Under Maintenance"
-                If subtitle = String.Empty Then
-                    SLFSubNamaForm.Text = "Please contact your administrator"
-                End If
+                headerText = "Module Under Maintenance"
+                defaultSubtitle = "Access is unavailable due to maintenance. Please consult your administrator."
             Case LibApp.Ingrid.Global.PopupType.NoFileSelected
-                SLFNamaForm.Text = "No File Selected"
-                If subtitle = String.Empty Then
-                    SLFSubNamaForm.Text = "Please select one file"
-                End If
+                headerText = "No File Selected"
+                defaultSubtitle = "Please select one file"
             Case LibApp.Ingrid.Global.PopupType.NotAuthorized
-                SLFNamaForm.Text = "Not Authorized"
-                If subtitle = String.Empty Then
-                    SLFSubNamaForm.Text = "You have limited access for this action"
-                End If
+                headerText = "Not Authorized"
+                defaultSubtitle = "Access denied. Your current permissions do not allow this operation."
             Case LibApp.Ingrid.Global.PopupType.WrongInstructionSet
-                SLFNamaForm.Text = "Wrong Instruction Set"
-                If subtitle = String.Empty Then
-                    SLFSubNamaForm.Text = "Please follow the instruction"
-                End If
+                headerText = "Wrong Instruction Set"
+                defaultSubtitle = "Invalid instruction set detected. Please follow the designated instructions."
+            Case Else
+                headerText = String.Empty
+                defaultSubtitle = String.Empty
         End Select
 
-        ' Event triggered by Button type.
+        SLFNamaForm.Text = headerText
+        SLFSubNamaForm.Text = If(String.IsNullOrEmpty(trimmedSubtitle), defaultSubtitle, trimmedSubtitle)
+
+        ' --- Button layout (use enum values directly) ---
         Select Case buttontype
-            Case CType(1, MessageTypes)
+            Case MessageTypes.YesNo
                 PnlBottomButton.Visible = False
                 PnlBottomButtonYesNo.Visible = True
                 PnlBottomButtonOkOnly.Visible = False
-            Case CType(2, MessageTypes)
+            Case MessageTypes.OkCancel
                 PnlBottomButton.Visible = True
                 PnlBottomButtonYesNo.Visible = False
                 PnlBottomButtonOkOnly.Visible = False
-            Case CType(3, MessageTypes)
+            Case MessageTypes.OkOnly
                 PnlBottomButton.Visible = False
                 PnlBottomButtonYesNo.Visible = False
                 PnlBottomButtonOkOnly.Visible = True
+            Case Else
+                ' Keep default designer visibility if unknown
         End Select
 
         TxtMessage.Text = message
@@ -133,7 +125,7 @@ Public Class frmDialogBox
     End Sub
 #End Region
 
-#Region "Variables"
+#Region "Declaration"
     Public Enum MessageTypes
         YesNo = 1
         OkCancel = 2

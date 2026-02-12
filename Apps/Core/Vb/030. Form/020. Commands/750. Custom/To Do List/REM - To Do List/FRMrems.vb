@@ -29,7 +29,7 @@ Public Class FRMrems
     <SupportedOSPlatform("windows")>
     Private Sub CommmsMenu_EventDataEdit() Handles Com_mms_Menu.EventDataEdit
         Frm_rems_Switch = New FRMremsEditorSwitch
-        Display(Frm_rems_Switch, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Please Select",, True,)
+        Display(Frm_rems_Switch, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Please Select",, True,)
     End Sub
 #End Region
 

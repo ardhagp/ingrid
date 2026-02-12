@@ -17,7 +17,7 @@ Namespace SystemLog.Activity
                     varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(0))
                 End If
             Catch ex As Exception
-                Decision(My.Application.Info.AssemblyName, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             End Try
         End Sub
 
@@ -32,7 +32,7 @@ Namespace SystemLog.Activity
                     varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(0))
                 End If
             Catch ex As Exception
-                Decision(My.Application.Info.AssemblyName, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             End Try
         End Sub
 
@@ -47,7 +47,7 @@ Namespace SystemLog.Activity
                     varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(0))
                 End If
             Catch ex As Exception
-                Decision(My.Application.Info.AssemblyName, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             End Try
         End Sub
     End Class
@@ -66,7 +66,7 @@ Namespace SystemLog.Activity
                     varDatabaseEngineMysql.PushData(databasename, varDatabaseReader(0))
                 End If
             Catch ex As Exception
-                Decision(My.Application.Info.AssemblyName, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             End Try
         End Sub
     End Class

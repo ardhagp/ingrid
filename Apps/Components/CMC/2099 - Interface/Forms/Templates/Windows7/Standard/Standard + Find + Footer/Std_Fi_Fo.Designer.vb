@@ -19,64 +19,98 @@ Partial Class Std_Fi_Fo
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Me.PnlBottomButton = New CMCv.pnl(Me.components)
-        Me.imgLine = New System.Windows.Forms.PictureBox()
-        Me.PnlFind.SuspendLayout()
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnl_.SuspendLayout()
-        Me.SLFPanel.SuspendLayout()
-        Me.PnlBottomButton.SuspendLayout()
-        CType(Me.imgLine, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'BtnClear
-        '
-        Me.BtnClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(195, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BtnClear.FlatAppearance.BorderSize = 2
-        Me.BtnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(20, Byte), Integer))
-        '
-        'SLFPanel
-        '
-        Me.SLFPanel.Controls.Add(Me.PnlBottomButton)
-        Me.SLFPanel.Controls.SetChildIndex(Me.PnlFind, 0)
-        Me.SLFPanel.Controls.SetChildIndex(Me.PnlBottomButton, 0)
-        '
-        'PnlBottomButton
-        '
-        Me.PnlBottomButton.BackColor = System.Drawing.Color.DarkSlateGray
-        Me.PnlBottomButton.Controls.Add(Me.imgLine)
-        Me.PnlBottomButton.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PnlBottomButton.Location = New System.Drawing.Point(0, 435)
-        Me.PnlBottomButton.Name = "PnlBottomButton"
-        Me.PnlBottomButton.Size = New System.Drawing.Size(784, 50)
-        Me.PnlBottomButton.TabIndex = 996
-        '
-        'imgLine
-        '
-        Me.imgLine.BackColor = System.Drawing.Color.Orange
-        Me.imgLine.Dock = System.Windows.Forms.DockStyle.Top
-        Me.imgLine.Location = New System.Drawing.Point(0, 0)
-        Me.imgLine.Name = "imgLine"
-        Me.imgLine.Size = New System.Drawing.Size(784, 4)
-        Me.imgLine.TabIndex = 0
-        Me.imgLine.TabStop = False
-        '
-        'frmStandard_FFC
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(784, 561)
-        Me.Name = "frmStandard_FFC"
-        Me.PnlFind.ResumeLayout(False)
-        Me.PnlFind.PerformLayout()
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnl_.ResumeLayout(False)
-        Me.pnl_.PerformLayout()
-        Me.SLFPanel.ResumeLayout(False)
-        Me.PnlBottomButton.ResumeLayout(False)
-        CType(Me.imgLine, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        components = New ComponentModel.Container()
+        PnlBottomButton = New pnl(components)
+        imgLine = New Windows.Forms.PictureBox()
+        PnlFind.SuspendLayout()
+        CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
+        pnl_.SuspendLayout()
+        SLFPanel.SuspendLayout()
+        CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+        PnlBottomButton.SuspendLayout()
+        CType(imgLine, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' BtnClear
+        ' 
+        BtnClear.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(0), CByte(0))
+        BtnClear.FlatAppearance.BorderSize = 2
+        BtnClear.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
+        ' 
+        ' TxtFind
+        ' 
+        TxtFind.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
+        ' 
+        ' SLFLogo
+        ' 
+        SLFLogo.Location = New System.Drawing.Point(7, 10)
+        SLFLogo.Size = New System.Drawing.Size(73, 85)
+        ' 
+        ' SLFSubNamaForm
+        ' 
+        SLFSubNamaForm.Location = New System.Drawing.Point(117, 58)
+        ' 
+        ' SLFNamaForm
+        ' 
+        SLFNamaForm.Location = New System.Drawing.Point(88, 7)
+        ' 
+        ' pnl_
+        ' 
+        pnl_.Size = New System.Drawing.Size(1307, 110)
+        ' 
+        ' SLFPanel
+        ' 
+        SLFPanel.Controls.Add(PnlBottomButton)
+        SLFPanel.Location = New System.Drawing.Point(0, 110)
+        SLFPanel.Size = New System.Drawing.Size(1307, 947)
+        SLFPanel.Controls.SetChildIndex(PnlFind, 0)
+        SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+        ' 
+        ' SLFBackground
+        ' 
+        SLFBackground.Location = New System.Drawing.Point(3, 6)
+        SLFBackground.Size = New System.Drawing.Size(80, 92)
+        ' 
+        ' PnlBottomButton
+        ' 
+        PnlBottomButton.BackColor = Drawing.Color.DarkSlateGray
+        PnlBottomButton.Controls.Add(imgLine)
+        PnlBottomButton.Dock = Windows.Forms.DockStyle.Bottom
+        PnlBottomButton.Location = New System.Drawing.Point(0, 851)
+        PnlBottomButton.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        PnlBottomButton.Name = "PnlBottomButton"
+        PnlBottomButton.Size = New System.Drawing.Size(1307, 96)
+        PnlBottomButton.TabIndex = 996
+        ' 
+        ' imgLine
+        ' 
+        imgLine.BackColor = Drawing.Color.Orange
+        imgLine.Dock = Windows.Forms.DockStyle.Top
+        imgLine.Location = New System.Drawing.Point(0, 0)
+        imgLine.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        imgLine.Name = "imgLine"
+        imgLine.Size = New System.Drawing.Size(1307, 8)
+        imgLine.TabIndex = 0
+        imgLine.TabStop = False
+        ' 
+        ' Std_Fi_Fo
+        ' 
+        AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+        ClientSize = New System.Drawing.Size(1307, 1079)
+        KeyPreview = True
+        Margin = New System.Windows.Forms.Padding(22, 44, 22, 44)
+        Name = "Std_Fi_Fo"
+        PnlFind.ResumeLayout(False)
+        PnlFind.PerformLayout()
+        CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
+        pnl_.ResumeLayout(False)
+        pnl_.PerformLayout()
+        SLFPanel.ResumeLayout(False)
+        CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+        PnlBottomButton.ResumeLayout(False)
+        CType(imgLine, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
+        PerformLayout()
 
     End Sub
 
