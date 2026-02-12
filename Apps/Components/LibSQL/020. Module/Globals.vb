@@ -35,8 +35,9 @@
     ''' <remarks></remarks>
     Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType, subtitle As String, messageicon As CMCv.FRMdialogbox.MessageIcon, ByVal buttontype As CMCv.FRMdialogbox.MessageTypes) As System.Windows.Forms.DialogResult
         MSG = New CMCv.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
-        Return MSG.ShowDialog()
+        Dim result As System.Windows.Forms.DialogResult = MSG.ShowDialog()
         MSG.Dispose()
+        Return result
     End Function
 #End Region
 End Module

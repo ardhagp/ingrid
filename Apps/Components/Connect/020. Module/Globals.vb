@@ -43,8 +43,9 @@ Module Globals
                              buttontype As CMCv.FRMdialogbox.MessageTypes) As _
                              System.Windows.Forms.DialogResult
         MSG = New CMCv.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
-        Return MSG.ShowDialog()
+        Dim result As System.Windows.Forms.DialogResult = MSG.ShowDialog()
         MSG.Dispose()
+        Return result
     End Function
 #End Region
 

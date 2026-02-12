@@ -61,9 +61,6 @@ Namespace Database.Engine
             Dim varSuccess As Boolean
             Try
                 varConnection(1) = New MySqlClient.MySqlConnection(varMySQL.Mysqlforcessl(databaseproperties.ServerAddress, databaseproperties.ServerPort, databaseproperties.DatabaseName, databaseproperties.Username, databaseproperties.Password))
-                If Not varConnection(1).Ping Then
-                    varConnection(1).Close()
-                End If
                 varConnection(1).Open()
                 varSuccess = True
             Catch ex As MySqlClient.MySqlException

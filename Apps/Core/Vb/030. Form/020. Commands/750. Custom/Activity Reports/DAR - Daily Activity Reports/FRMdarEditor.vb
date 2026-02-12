@@ -323,7 +323,7 @@ Public Class FRMdarEditor
     Private Sub DgnPictureList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnPictureList.CellContentClick
         Dim varSendergrid = DirectCast(sender, dgn)
 
-        If TypeOf varSendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso Decision(My.Application.Info.AssemblyName, "Do you want to remove selected photo?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+        If TypeOf varSendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso Decision(My.Application.Info.AssemblyName, "Do you want to remove selected photo?", LibApp.Ingrid.Global.PopupType.Delete, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
             If DgnPictureList.CurrentRow.Cells("photo_status").Value IsNot "Add" Then
                 varExtendedQuery += String.Format("delete from db_universe_erp_file.dbo.sto_file where [file_id] = '{0}';", DgnPictureList.CurrentRow.Cells("photo_id").Value)
             End If
