@@ -47,7 +47,7 @@ Public Class FRMccin
     Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
         Call GetRowID()
         If Convert.ToString(varFormProperties.RowID) = "-1" Then
-            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             varFormProperties.IsNew = False
             Frm_ccin_Editor = New FRMccinEditor
@@ -59,10 +59,10 @@ Public Class FRMccin
     Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
         Call GetRowID()
         If Convert.ToString(varFormProperties.RowID) = "-1" Then
-            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             varFormProperties.IsNew = False
-            If Decision(My.Application.Info.AssemblyName, "Do you want to delete this record?", "Delete", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If (CMDccin.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
                     FRMmainframe6.Ts_status.Text = "Success"

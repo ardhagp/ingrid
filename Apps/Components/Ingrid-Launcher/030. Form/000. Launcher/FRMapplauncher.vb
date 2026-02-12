@@ -72,7 +72,7 @@ Public Class FRMapplauncher
 
             If appnameindex = 0 Then
                 'Display(Frm_conn, IMAGEDB.Main.ImageLibrary.CONNECT_ICON, My.Application.Info.AssemblyName, "Connection Settings", "Manage your database connection settings", False)
-                Display(Frm_conn, , My.Application.Info.AssemblyName, "Connection Settings", "Manage your database connection settings", False)
+                Display(Frm_conn, , My.Application.Info.Title, "Connection Settings", "Manage your database connection settings", False)
                 'Frm_conn = New FRMconn()
                 'Frm_conn.Show()
             ElseIf appnameindex = 1 Then

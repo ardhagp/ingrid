@@ -8,7 +8,7 @@ Public Class FRMfirstguide
     Private Sub BtnProcess_Click(sender As Object, e As EventArgs) Handles Btn_Process.Click
         If varStep = 1 Then
             If Txt_Company.XOIsBlank OrElse Txt_Department.XOIsBlank OrElse Txt_Position.XOIsBlank OrElse Txt_EmployeeName.XOIsBlank OrElse Txt_EmployeeID.XOIsBlank Then
-                Decision(My.Application.Info.AssemblyName, "Field(s) cannot be empty", My.Application.Info.AssemblyName, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName, "Field(s) cannot be empty", LibApp.Ingrid.Global.PopupType.Alert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
                 If (Txt_Company.XOIsBlank) Then
                     Txt_Company.Focus()
                 ElseIf (Txt_Department.XOIsBlank) Then
@@ -37,7 +37,7 @@ Public Class FRMfirstguide
             Btn_Close.Text = "&Prev"
         ElseIf varStep = 2 Then
             If (Txt_Username.XOIsBlank) OrElse (Txt_Password.XOIsBlank) Then
-                Decision(My.Application.Info.AssemblyName, "Field(s) cannot be empty", My.Application.Info.AssemblyName, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName, "Field(s) cannot be empty", LibApp.Ingrid.Global.PopupType.Alert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
                 If (Txt_Username.XOIsBlank) Then
                     Txt_Username.Focus()
                 Else
@@ -94,7 +94,7 @@ Public Class FRMfirstguide
 
     Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
         If varStep = 1 Then
-            If Decision(My.Application.Info.AssemblyName, "Are you sure want to exit the First Guide?", "Ingrid", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = MsgBoxResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName, "Are you sure want to exit the First Guide?", LibApp.Ingrid.Global.PopupType.Confirmation, "By closing this first guide you will also close the application", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = MsgBoxResult.Yes Then
                 Environment.Exit(0)
             End If
         ElseIf varStep = 2 Then

@@ -111,12 +111,11 @@ Public Class FRMconn
         varProperties.IsNew = False
 
         If varProperties.RowID Is "-1" Then
-            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             FRMconn_editor = New FRMconnEditor
             Display(FRMconn_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName, "Update Record", "Update connection", True)
         End If
-
         SLFStatus.Text = String.Empty
     End Sub
 
@@ -127,7 +126,7 @@ Public Class FRMconn
     Private Sub EventDataDelete() Handles COMmainframemenu.EventDataDelete
         Call GetRowID()
         If varProperties.RowID Is "-1" Then
-            Decision(My.Application.Info.AssemblyName, "No record selected", "Error", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             varProperties.IsNew = False
 
@@ -146,7 +145,7 @@ Public Class FRMconn
 
                 varMessage.AppendLine(varLine)
 
-                If Decision(My.Application.Info.AssemblyName, Convert.ToString(varMessage), "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                     If (CMDconn.View.DeleteData(Convert.ToString(varProperties.RowID))) Then
                         Call GetData(True)
                         SLFStatus.Text = "Success"

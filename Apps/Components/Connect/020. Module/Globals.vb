@@ -38,11 +38,11 @@ Module Globals
     ''' <param name="messageicon"></param>
     ''' <param name="buttontype"></param>
     ''' <returns></returns>
-    Public Function Decision(windowtitle As String, message As String, title As String,
-                             messageicon As CMCv.frmDialogBox.MessageIcon,
+    Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType,
+                             subtitle As String, messageicon As CMCv.frmDialogBox.MessageIcon,
                              buttontype As CMCv.frmDialogBox.MessageTypes) As _
                              System.Windows.Forms.DialogResult
-        MSG = New CMCv.frmDialogBox(windowtitle, message, title, messageicon, buttontype)
+        MSG = New CMCv.frmDialogBox(windowtitle, message, title, subtitle, messageicon, buttontype)
         Return MSG.ShowDialog()
         MSG.Dispose()
     End Function

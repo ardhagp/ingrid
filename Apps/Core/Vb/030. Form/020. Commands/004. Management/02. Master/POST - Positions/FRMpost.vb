@@ -1,12 +1,9 @@
 ﻿Imports System.Runtime.Versioning
 
 Public Class FRMpost
-#Region "Variables"
+#Region "Declaration"
     Private WithEvents Frm_post_Editor As New FRMpostEditor
     Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
-
-    Const varMessageNoRecordSelected As String = "No record selected"
-    Const varMessageError As String = "Error"
 #End Region
 
 #Region "Subs Collections"
@@ -39,7 +36,7 @@ Public Class FRMpost
         varFormProperties.IsNew = False
         Frm_post_Editor = New FRMpostEditor
         If Convert.ToString(varFormProperties.RowID) = "-1" Then
-            Decision(My.Application.Info.AssemblyName, varMessageNoRecordSelected, varMessageError, CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No Record Selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             Display(Frm_post_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Update Record", "Update your position data", True)
         End If
@@ -50,10 +47,10 @@ Public Class FRMpost
         Call GetRowID()
 
         If Convert.ToString(varFormProperties.RowID) = "-1" Then
-            Decision(My.Application.Info.AssemblyName, varMessageNoRecordSelected, varMessageError, CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "No Record Selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
         Else
             varFormProperties.IsNew = False
-            If Decision(My.Application.Info.AssemblyName, "Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If (CMDpost.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
                     FRMmainframe6.Ts_status.Text = "Success"
@@ -197,7 +194,7 @@ Public Class FRMpost
         If item IsNot Nothing Then
             Try
                 If Not (varUserAccess.User(varDatabaseName, "POST", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
-                    Decision(My.Application.Info.AssemblyName, "You are not authorized to : Add new record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                     Return
                 End If
 
@@ -218,14 +215,14 @@ Public Class FRMpost
         If item IsNot Nothing Then
             Try
                 If Not (varUserAccess.User(varDatabaseName, "POST", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
-                    Decision(My.Application.Info.AssemblyName, "You are not authorized to : Modify existing record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                     Return
                 End If
 
                 Call GetRowID()
                 varFormProperties.IsNew = False
                 If Convert.ToString(varFormProperties.RowID) = "-1" Then
-                    Decision(My.Application.Info.AssemblyName, varMessageNoRecordSelected, varMessageError, CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName, "No File Selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                 Else
                     varFormProperties.IsNew = False
                     Frm_post_Editor = New FRMpostEditor
@@ -243,15 +240,15 @@ Public Class FRMpost
         If item IsNot Nothing Then
             Try
                 If Not (varUserAccess.User(varDatabaseName, "POST", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
-                    Decision(My.Application.Info.AssemblyName, "You are not authorized to : Delete record", "Not Authorized", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                     Return
                 End If
 
                 Call GetRowID()
                 If Convert.ToString(varFormProperties.RowID) = "-1" Then
-                    Decision(My.Application.Info.AssemblyName, varMessageNoRecordSelected, varMessageError, CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName, "No File Selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
                 Else
-                    If Decision(My.Application.Info.AssemblyName, "Do you want to delete this record?", "Delete", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                    If Decision(My.Application.Info.AssemblyName, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.frmDialogBox.MessageIcon.Question, CMCv.frmDialogBox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                         If CMDpost.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID)) Then
                             Call GetData(True)
                             FRMmainframe6.Ts_status.Text = "Success"

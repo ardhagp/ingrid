@@ -1,13 +1,11 @@
 ﻿Imports System.Runtime.Versioning
-Imports CMCv
 
 Public Class FRMeplsEditor
-#Region "Variables"
+#Region "Declaration"
     'Private _SQL_User As New CMDuac.Editor
     Public Event EventRecordSaved()
 
     Const varMessageCannotSave As String = "Cannot save your record."
-    Const varMessageAlert As String = "Alert"
 #End Region
 
 #Region "Subs Collections"
@@ -91,23 +89,23 @@ Public Class FRMeplsEditor
         Call CheckAllInputs()
 
         If (CMDepls.Editor.IsPersonalIDExist(varDatabaseName, varDatabaseEngine, varFormProperties.IsNew, TxtPersonalID.Text, Convert.ToString(varFormProperties.RowID))) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Duplicate Personal ID", varMessageAlert, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Duplicate Personal ID", LibApp.Ingrid.Global.PopupType.Alert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf (TxtPersonalID.XOSQLText = String.Empty) OrElse (varPositionID = String.Empty) OrElse (TxtEmployeeNumber.XOSQLText = String.Empty) OrElse (TxtFullName.XOSQLText = String.Empty) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure you have Personal ID, Company, Department, Postition, Employee Number and Full Name are properly filled.", varMessageAlert, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure you have Personal ID, Company, Department, Postition, Employee Number and Full Name are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf Not (CMDepls.Editor.IsPositionExist(varDatabaseName, varDatabaseEngine, varPositionID)) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Position not found.", varMessageAlert, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Position not found.", LibApp.Ingrid.Global.PopupType.Alert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             SLFStatus.Items(0).Text = "Position not found"
             Return
         ElseIf (varFormProperties.IsNew) AndAlso (CMDepls.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, varPositionID, TxtEmployeeNumber.XOSQLText)) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Employee Number already used.", varMessageAlert, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Employee Number already used.", LibApp.Ingrid.Global.PopupType.Alert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf Not (varFormProperties.IsNew) AndAlso (CMDepls.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, varPositionID, TxtEmployeeNumber.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Employee Number already used by another employee.", varMessageAlert, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Employee Number already used by another employee.", LibApp.Ingrid.Global.PopupType.Alert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         ElseIf varHavePhoto = 0 Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Please pick employee photo.", varMessageAlert, frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Please pick employee photo.", LibApp.Ingrid.Global.PopupType.Alert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
             Return
         End If
 
@@ -152,7 +150,7 @@ Public Class FRMeplsEditor
         OfdPhoto.Filter = "Photo File|*.Jpg;*.Jpeg"
 
         If OfdPhoto.ShowDialog = DialogResult.OK Then
-            If (OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, varMaxUploadSizePhoto, True)) Then
+            If (CMCv.OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, varMaxUploadSizePhoto, True)) Then
                 varPhoto = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(OfdPhoto.FileName)
                 pctbxPhoto.Image = varPhoto
                 varChangePhoto = True
