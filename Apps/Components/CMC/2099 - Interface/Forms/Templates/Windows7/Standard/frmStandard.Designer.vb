@@ -19,140 +19,151 @@ Partial Class frmStandard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
+        components = New ComponentModel.Container()
+        Dim MySettings1 As CMCv.My.MySettings = New My.MySettings()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStandard))
-        Me.pnl_ = New CMCv.pnl(Me.components)
-        Me.SLFLogo = New CMCv.pctbx(Me.components)
-        Me.SLFBackground = New CMCv.pctbx(Me.components)
-        Me.SLFNamaForm = New CMCv.lbl(Me.components)
-        Me.SLFSubNamaForm = New CMCv.lbl(Me.components)
-        Me.SLFStatus = New CMCv.stt(Me.components)
-        Me.SLFStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.SLFPanel = New CMCv.pnl(Me.components)
-        Me.pnl_.SuspendLayout()
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SLFBackground, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SLFStatus.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'pnl_
-        '
-        Me.pnl_.AutoSize = True
-        Me.pnl_.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.pnl_.BackColor = System.Drawing.Color.Black
-        Me.pnl_.Controls.Add(Me.SLFLogo)
-        Me.pnl_.Controls.Add(Me.SLFBackground)
-        Me.pnl_.Controls.Add(Me.SLFNamaForm)
-        Me.pnl_.Controls.Add(Me.SLFSubNamaForm)
-        Me.pnl_.Dock = System.Windows.Forms.DockStyle.Top
-        Me.pnl_.Location = New System.Drawing.Point(0, 0)
-        Me.pnl_.Name = "pnl_"
-        Me.pnl_.Size = New System.Drawing.Size(784, 54)
-        Me.pnl_.TabIndex = 999
-        '
-        'SLFLogo
-        '
-        Me.SLFLogo.BackColor = Global.CMCv.My.MySettings.Default.SLFBackground
-        Me.SLFLogo.DataBindings.Add(New System.Windows.Forms.Binding("BackColor", Global.CMCv.My.MySettings.Default, "SLFBackground", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.SLFLogo.ErrorImage = CType(resources.GetObject("SLFLogo.ErrorImage"), System.Drawing.Image)
-        Me.SLFLogo.InitialImage = CType(resources.GetObject("SLFLogo.InitialImage"), System.Drawing.Image)
-        Me.SLFLogo.Location = New System.Drawing.Point(4, 5)
-        Me.SLFLogo.Name = "SLFLogo"
-        Me.SLFLogo.Size = New System.Drawing.Size(44, 44)
-        Me.SLFLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.SLFLogo.XOTampilkanBorder = False
-        Me.SLFLogo.XOWarnaBorder = System.Drawing.Color.DodgerBlue
-        Me.SLFLogo.TabIndex = 0
-        Me.SLFLogo.TabStop = False
-        '
-        'SLFBackground
-        '
-        Me.SLFBackground.BackColor = Global.CMCv.My.MySettings.Default.SLFBackground
-        Me.SLFBackground.DataBindings.Add(New System.Windows.Forms.Binding("BackColor", Global.CMCv.My.MySettings.Default, "SLFBackground", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.SLFBackground.ErrorImage = CType(resources.GetObject("SLFBackground.ErrorImage"), System.Drawing.Image)
-        Me.SLFBackground.InitialImage = CType(resources.GetObject("SLFBackground.InitialImage"), System.Drawing.Image)
-        Me.SLFBackground.Location = New System.Drawing.Point(2, 3)
-        Me.SLFBackground.Name = "SLFBackground"
-        Me.SLFBackground.Size = New System.Drawing.Size(48, 48)
-        Me.SLFBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.SLFBackground.XOTampilkanBorder = False
-        Me.SLFBackground.XOWarnaBorder = System.Drawing.Color.DodgerBlue
-        Me.SLFBackground.TabIndex = 998
-        Me.SLFBackground.TabStop = False
-        '
-        'SLFNamaForm
-        '
-        Me.SLFNamaForm.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SLFNamaForm.AutoSize = True
-        Me.SLFNamaForm.BackColor = System.Drawing.Color.Transparent
-        Me.SLFNamaForm.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.SLFNamaForm.ForeColor = System.Drawing.Color.White
-        Me.SLFNamaForm.Location = New System.Drawing.Point(50, -1)
-        Me.SLFNamaForm.Name = "SLFNamaForm"
-        Me.SLFNamaForm.Size = New System.Drawing.Size(147, 32)
-        Me.SLFNamaForm.XOCustomElipsis = False
-        Me.SLFNamaForm.TabIndex = 997
-        Me.SLFNamaForm.Text = "Nama Form"
-        Me.SLFNamaForm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'SLFSubNamaForm
-        '
-        Me.SLFSubNamaForm.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SLFSubNamaForm.AutoSize = True
-        Me.SLFSubNamaForm.BackColor = System.Drawing.Color.Transparent
-        Me.SLFSubNamaForm.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SLFSubNamaForm.ForeColor = System.Drawing.Color.White
-        Me.SLFSubNamaForm.Location = New System.Drawing.Point(70, 30)
-        Me.SLFSubNamaForm.Name = "SLFSubNamaForm"
-        Me.SLFSubNamaForm.Size = New System.Drawing.Size(108, 15)
-        Me.SLFSubNamaForm.XOCustomElipsis = False
-        Me.SLFSubNamaForm.TabIndex = 996
-        Me.SLFSubNamaForm.Text = "Sub Deskripsi Form"
-        '
-        'SLFStatus
-        '
-        Me.SLFStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SLFStatusLabel})
-        Me.SLFStatus.Location = New System.Drawing.Point(0, 539)
-        Me.SLFStatus.Name = "SLFStatus"
-        Me.SLFStatus.Size = New System.Drawing.Size(784, 22)
-        Me.SLFStatus.TabIndex = 994
-        Me.SLFStatus.Text = "Stt1"
-        '
-        'SLFStatusLabel
-        '
-        Me.SLFStatusLabel.Name = "SLFStatusLabel"
-        Me.SLFStatusLabel.Size = New System.Drawing.Size(0, 17)
-        '
-        'SLFPanel
-        '
-        Me.SLFPanel.AutoScroll = True
-        Me.SLFPanel.AutoSize = True
-        Me.SLFPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.SLFPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SLFPanel.Location = New System.Drawing.Point(0, 54)
-        Me.SLFPanel.Name = "SLFPanel"
-        Me.SLFPanel.Size = New System.Drawing.Size(784, 485)
-        Me.SLFPanel.TabIndex = 7
-        '
-        'frmStandard
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(784, 561)
-        Me.Controls.Add(Me.SLFPanel)
-        Me.Controls.Add(Me.SLFStatus)
-        Me.Controls.Add(Me.pnl_)
-        Me.Name = "frmStandard"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.pnl_.ResumeLayout(False)
-        Me.pnl_.PerformLayout()
-        CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SLFBackground, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SLFStatus.ResumeLayout(False)
-        Me.SLFStatus.PerformLayout()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        pnl_ = New pnl(components)
+        SLFLogo = New pctbx(components)
+        SLFBackground = New pctbx(components)
+        SLFNamaForm = New lbl(components)
+        SLFSubNamaForm = New lbl(components)
+        SLFStatus = New stt(components)
+        SLFStatusLabel = New Windows.Forms.ToolStripStatusLabel()
+        SLFPanel = New pnl(components)
+        pnl_.SuspendLayout()
+        CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
+        CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+        SLFStatus.SuspendLayout()
+        SuspendLayout()
+        ' 
+        ' pnl_
+        ' 
+        pnl_.AutoSize = True
+        pnl_.AutoSizeMode = Windows.Forms.AutoSizeMode.GrowAndShrink
+        pnl_.BackColor = Drawing.Color.Black
+        pnl_.Controls.Add(SLFLogo)
+        pnl_.Controls.Add(SLFBackground)
+        pnl_.Controls.Add(SLFNamaForm)
+        pnl_.Controls.Add(SLFSubNamaForm)
+        pnl_.Dock = Windows.Forms.DockStyle.Top
+        pnl_.Location = New System.Drawing.Point(0, 0)
+        pnl_.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        pnl_.Name = "pnl_"
+        pnl_.Size = New System.Drawing.Size(1307, 104)
+        pnl_.TabIndex = 999
+        ' 
+        ' SLFLogo
+        ' 
+        SLFLogo.BackColor = Drawing.Color.Black
+        MySettings1.MRUFiles = CType(resources.GetObject("MySettings1.MRUFiles"), Specialized.StringCollection)
+        MySettings1.SettingsKey = ""
+        MySettings1.SLFBackground = Drawing.Color.Black
+        SLFLogo.DataBindings.Add(New System.Windows.Forms.Binding("BackColor", MySettings1, "SLFBackground", True, Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        SLFLogo.ErrorImage = CType(resources.GetObject("SLFLogo.ErrorImage"), Drawing.Image)
+        SLFLogo.InitialImage = CType(resources.GetObject("SLFLogo.InitialImage"), Drawing.Image)
+        SLFLogo.Location = New System.Drawing.Point(7, 10)
+        SLFLogo.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        SLFLogo.Name = "SLFLogo"
+        SLFLogo.Size = New System.Drawing.Size(73, 85)
+        SLFLogo.SizeMode = Windows.Forms.PictureBoxSizeMode.Zoom
+        SLFLogo.TabIndex = 0
+        SLFLogo.TabStop = False
+        SLFLogo.XOTampilkanBorder = False
+        SLFLogo.XOWarnaBorder = Drawing.Color.DodgerBlue
+        ' 
+        ' SLFBackground
+        ' 
+        SLFBackground.BackColor = Drawing.Color.Black
+        SLFBackground.DataBindings.Add(New System.Windows.Forms.Binding("BackColor", MySettings1, "SLFBackground", True, Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        SLFBackground.ErrorImage = CType(resources.GetObject("SLFBackground.ErrorImage"), Drawing.Image)
+        SLFBackground.InitialImage = CType(resources.GetObject("SLFBackground.InitialImage"), Drawing.Image)
+        SLFBackground.Location = New System.Drawing.Point(3, 6)
+        SLFBackground.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        SLFBackground.Name = "SLFBackground"
+        SLFBackground.Size = New System.Drawing.Size(80, 92)
+        SLFBackground.SizeMode = Windows.Forms.PictureBoxSizeMode.Zoom
+        SLFBackground.TabIndex = 998
+        SLFBackground.TabStop = False
+        SLFBackground.XOTampilkanBorder = False
+        SLFBackground.XOWarnaBorder = Drawing.Color.DodgerBlue
+        ' 
+        ' SLFNamaForm
+        ' 
+        SLFNamaForm.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
+        SLFNamaForm.AutoSize = True
+        SLFNamaForm.BackColor = Drawing.Color.Transparent
+        SLFNamaForm.Font = New System.Drawing.Font("Segoe UI", 18F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+        SLFNamaForm.ForeColor = Drawing.Color.White
+        SLFNamaForm.Location = New System.Drawing.Point(88, 7)
+        SLFNamaForm.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        SLFNamaForm.Name = "SLFNamaForm"
+        SLFNamaForm.Size = New System.Drawing.Size(217, 48)
+        SLFNamaForm.TabIndex = 997
+        SLFNamaForm.Text = "Nama Form"
+        SLFNamaForm.TextAlign = Drawing.ContentAlignment.MiddleLeft
+        SLFNamaForm.XOCustomElipsis = False
+        ' 
+        ' SLFSubNamaForm
+        ' 
+        SLFSubNamaForm.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
+        SLFSubNamaForm.AutoSize = True
+        SLFSubNamaForm.BackColor = Drawing.Color.Transparent
+        SLFSubNamaForm.Font = New System.Drawing.Font("Segoe UI", 9F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        SLFSubNamaForm.ForeColor = Drawing.Color.White
+        SLFSubNamaForm.Location = New System.Drawing.Point(117, 58)
+        SLFSubNamaForm.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        SLFSubNamaForm.Name = "SLFSubNamaForm"
+        SLFSubNamaForm.Size = New System.Drawing.Size(167, 25)
+        SLFSubNamaForm.TabIndex = 996
+        SLFSubNamaForm.Text = "Sub Deskripsi Form"
+        SLFSubNamaForm.XOCustomElipsis = False
+        ' 
+        ' SLFStatus
+        ' 
+        SLFStatus.ImageScalingSize = New System.Drawing.Size(24, 24)
+        SLFStatus.Items.AddRange(New Windows.Forms.ToolStripItem() {SLFStatusLabel})
+        SLFStatus.Location = New System.Drawing.Point(0, 1057)
+        SLFStatus.Name = "SLFStatus"
+        SLFStatus.Padding = New System.Windows.Forms.Padding(2, 0, 23, 0)
+        SLFStatus.Size = New System.Drawing.Size(1307, 22)
+        SLFStatus.TabIndex = 994
+        SLFStatus.Text = "Stt1"
+        ' 
+        ' SLFStatusLabel
+        ' 
+        SLFStatusLabel.Name = "SLFStatusLabel"
+        SLFStatusLabel.Size = New System.Drawing.Size(0, 15)
+        ' 
+        ' SLFPanel
+        ' 
+        SLFPanel.AutoScroll = True
+        SLFPanel.AutoSize = True
+        SLFPanel.AutoSizeMode = Windows.Forms.AutoSizeMode.GrowAndShrink
+        SLFPanel.Dock = Windows.Forms.DockStyle.Fill
+        SLFPanel.Location = New System.Drawing.Point(0, 104)
+        SLFPanel.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        SLFPanel.Name = "SLFPanel"
+        SLFPanel.Size = New System.Drawing.Size(1307, 953)
+        SLFPanel.TabIndex = 7
+        ' 
+        ' frmStandard
+        ' 
+        AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+        ClientSize = New System.Drawing.Size(1307, 1079)
+        Controls.Add(SLFPanel)
+        Controls.Add(SLFStatus)
+        Controls.Add(pnl_)
+        Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
+        Name = "frmStandard"
+        StartPosition = Windows.Forms.FormStartPosition.CenterParent
+        pnl_.ResumeLayout(False)
+        pnl_.PerformLayout()
+        CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
+        CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+        SLFStatus.ResumeLayout(False)
+        SLFStatus.PerformLayout()
+        ResumeLayout(False)
+        PerformLayout()
 
     End Sub
     Public WithEvents SLFLogo As CMCv.pctbx
