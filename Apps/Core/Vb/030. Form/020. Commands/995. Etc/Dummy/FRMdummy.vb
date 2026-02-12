@@ -2,13 +2,13 @@
 
 Public Class FRMdummy
     Public Event Done()
-    Private WithEvents V_Dummy_Editor As New FRMdummyEditor
+    Private WithEvents Frm_dummy_Editor As New FRMdummyEditor
     'Private _MMSmenu As VisualInheritanceFixer.MergeableMenuStrip
 
     <SupportedOSPlatform("Windows")>
     Private Sub AddNewToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        V_Dummy_Editor = New FRMdummyEditor
-        DISPLAY(V_Dummy_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Add New Record", "Add new activity", True)
+        Frm_dummy_Editor = New FRMdummyEditor
+        Display(Frm_dummy_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new activity", True, Me)
     End Sub
 
     Private Sub Dummy_Load(sender As Object, e As EventArgs) Handles MyBase.Load

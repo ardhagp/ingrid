@@ -3,7 +3,7 @@ Imports CMCv
 
 Public Class FRMuacEditor
 
-#Region "Variables"
+#Region "Declaration"
     Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
     Private WithEvents Frm_employee_Addin As New FRMuacEmployee
 
@@ -38,7 +38,7 @@ Public Class FRMuacEditor
     <SupportedOSPlatform("windows")>
     Private Sub BtnBrowseEmployee_Click(sender As Object, e As EventArgs) Handles BtnBrowseEmployee.Click
         Frm_employee_Addin = New FRMuacEmployee
-        Display(Frm_employee_Addin, IMAGEDB.Main.ImageLibrary.SEARCH_ICON, "Find Employee", "Browse for employee data", True)
+        Display(Frm_employee_Addin, IMAGEDB.Main.ImageLibrary.SEARCH_ICON, My.Application.Info.AssemblyName.ToUpper, "Find Employee", "Browse for employee data", True)
     End Sub
 
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
@@ -102,19 +102,19 @@ Public Class FRMuacEditor
         Call CheckAllInput()
 
         If ((varFormProperties.IsNew) AndAlso (varFormProperties.Field01.ToString Is String.Empty)) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure you have Employee data selected.", LibApp.Ingrid.Global.PopupType.Alert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure you have Employee data selected.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf (TxtUsername.XOSQLText = String.Empty) OrElse (TxtPassword.XOSQLText = String.Empty) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure you have Username and Password properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure you have Username and Password properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf ((varIsPWDChange) AndAlso (TxtPassword.TextLength < varMinPasswordLength)) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure your Password meets the minimum criteria.", LibApp.Ingrid.Global.PopupType.Alert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure your Password meets the minimum criteria.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf ((varFormProperties.IsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtUsername.XOSQLText))) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Username already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Username already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf (Not (varFormProperties.IsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtUsername.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Username already used by another employee.", LibApp.Ingrid.Global.PopupType.Alert, "", frmDialogBox.MessageIcon.Alert, frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Username already used by another employee.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 

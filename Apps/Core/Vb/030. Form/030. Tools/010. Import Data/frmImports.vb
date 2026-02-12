@@ -4,7 +4,7 @@ Imports System.Runtime.Versioning
 Public Class FRMimports
     Private varSource As Import.Data.DataType.TypeofImports
     Private varOriginalSourceFile As String
-    Private _SQL_Catalog As New LibSQL.Tools.Import.MaterialMaster.Catalog
+    Private varSqlCatalog As New LibSQL.Tools.Import.MaterialMaster.Catalog
 
     Public Sub New()
 
@@ -39,10 +39,10 @@ Public Class FRMimports
 font As Drawing.Font,
 formatflags As Windows.Forms.TextFormatFlags) As String
 
-        Dim varResult As String = String.Copy(mystring)
+        Dim varResult = New String(mystring.ToCharArray())
 
         TextRenderer.MeasureText(varResult, font, New Drawing.Size(width, 0),
-            formatflags Or TextFormatFlags.ModifyString)
+            formatflags Or TextFormatFlags.WordBreak)
 
         Return varResult
     End Function
@@ -54,7 +54,7 @@ formatflags As Windows.Forms.TextFormatFlags) As String
             If File.Exists(varOriginalSourceFile) Then
                 Select Case varSource
                     Case Import.Data.DataType.TypeofImports.MaterialMasterCatalog
-                        _SQL_Catalog.Execute(varDatabaseName, TxtProgress, varOriginalSourceFile)
+                        varSqlCatalog.Execute(varDatabaseName, TxtProgress, varOriginalSourceFile)
                     Case Import.Data.DataType.TypeofImports.MaterialMasterPlant
                         'nothing
                 End Select

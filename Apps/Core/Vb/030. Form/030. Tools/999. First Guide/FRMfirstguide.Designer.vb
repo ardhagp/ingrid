@@ -62,7 +62,7 @@ Partial Class FRMfirstguide
         ' 
         PnlBottomButton.Controls.Add(Btn_Close)
         PnlBottomButton.Controls.Add(Btn_Process)
-        PnlBottomButton.Location = New Point(0, 674)
+        PnlBottomButton.Location = New Point(0, 668)
         PnlBottomButton.Margin = New Padding(7, 10, 7, 10)
         PnlBottomButton.Size = New Size(684, 97)
         PnlBottomButton.Controls.SetChildIndex(Btn_Process, 0)
@@ -71,7 +71,7 @@ Partial Class FRMfirstguide
         ' pnl_
         ' 
         pnl_.Margin = New Padding(7, 10, 7, 10)
-        pnl_.Size = New Size(684, 104)
+        pnl_.Size = New Size(684, 110)
         ' 
         ' SLFPanel
         ' 
@@ -80,7 +80,7 @@ Partial Class FRMfirstguide
         SLFPanel.Controls.Add(Gbx_Login)
         SLFPanel.Controls.Add(Gbx_Company)
         SLFPanel.Margin = New Padding(7, 10, 7, 10)
-        SLFPanel.Size = New Size(684, 771)
+        SLFPanel.Size = New Size(684, 765)
         SLFPanel.Controls.SetChildIndex(Gbx_Company, 0)
         SLFPanel.Controls.SetChildIndex(Gbx_Login, 0)
         SLFPanel.Controls.SetChildIndex(Gbx_Modules, 0)
@@ -548,7 +548,7 @@ Partial Class FRMfirstguide
         ' 
         Dgn1.AllowUserToAddRows = False
         Dgn1.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(199), CByte(210), CByte(138))
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(220), CByte(216), CByte(113))
         Dgn1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Dgn1.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         Dgn1.BorderStyle = BorderStyle.None
@@ -593,7 +593,6 @@ Partial Class FRMfirstguide
         ClientSize = New Size(684, 897)
         ControlBox = False
         FormBorderStyle = FormBorderStyle.FixedToolWindow
-        KeyPreview = True
         Margin = New Padding(10, 5, 10, 5)
         Name = "FRMfirstguide"
         ShowIcon = False

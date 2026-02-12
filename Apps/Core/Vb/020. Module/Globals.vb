@@ -174,34 +174,34 @@ Module Globals
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
     Public Sub Display(formname As CMCv.frmStandard, Optional formimage As System.Drawing.Image = Nothing,
-                       Optional formtitle As String = "", Optional formsubtitle As String = "",
-                       Optional isdialog As Boolean = False, Optional parentframe As Windows.Forms.Form = Nothing)
+                       Optional windowname As String = "", Optional formtitle As String = "",
+                       Optional formsubtitle As String = "", Optional isdialog As Boolean = False,
+                       Optional parentframe As Windows.Forms.Form = Nothing)
         Try
-            formname.SLFNamaForm.Text = formtitle
-            'If formimage IsNot Nothing Then
-            '    formName.SLFLogo.Image = formimage
-            'End If
-            'formName.SLFSubNamaForm.Text = formsubtitle
-            'If Not (isdialog) Then
-            '    If (formName.IsHandleCreated) Then
-            '        formName.Focus()
-            '    Else
-            '        If parentframe IsNot Nothing Then
-            '            formName.Visible = False
-            '            formName.MdiParent = parentframe
-            '            'formName.WindowState = FormWindowState.Maximized
-            '            formName.Show()
-            '            formName.Visible = True
-            '        Else
-            '            formName.Show()
-            '        End If
-            '    End If
-            'Else
-            '    formName.ShowDialog()
-            '    formName.Dispose()
-            'End If
-
-
+            formname.Text = windowname.Trim
+            formname.SLFNamaForm.Text = formtitle.Trim
+            If formimage IsNot Nothing Then
+                formname.SLFLogo.Image = formimage
+            End If
+            formname.SLFSubNamaForm.Text = formsubtitle.Trim
+            If Not (isdialog) Then
+                If (formname.IsHandleCreated) Then
+                    formname.Focus()
+                Else
+                    If parentframe IsNot Nothing Then
+                        formname.Visible = False
+                        formname.MdiParent = parentframe
+                        formname.WindowState = FormWindowState.Maximized
+                        formname.Show()
+                        formname.Visible = True
+                    Else
+                        formname.Show()
+                    End If
+                End If
+            Else
+                formname.ShowDialog()
+                formname.Dispose()
+            End If
         Catch ex As Exception
             With proLog
                 .AppVersion = GetAppVersion()
@@ -292,8 +292,8 @@ Module Globals
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
-    Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType, subtitle As String, messageicon As CMCv.frmDialogBox.MessageIcon, buttontype As CMCv.frmDialogBox.MessageTypes) As DialogResult
-        frmMSG = New CMCv.frmDialogBox(windowtitle, message, title, subtitle, messageicon, buttontype)
+    Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType, subtitle As String, messageicon As CMCv.FRMdialogbox.MessageIcon, buttontype As CMCv.FRMdialogbox.MessageTypes) As DialogResult
+        frmMSG = New CMCv.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
         Return frmMSG.ShowDialog()
         frmMSG.Dispose()
     End Function

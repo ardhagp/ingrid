@@ -55,7 +55,7 @@ Module Globals
 
     'Public SEC As New Security.Engine
 
-    Public ERC As New frmErrorReporting
+    Public ERC As New FRMerrorreporting
     Public ERL As New Database.Engine.LocalDB
     Public proLog As Ladybug.Log.Fields
 

@@ -1,11 +1,11 @@
 ﻿Imports System.Runtime.Versioning
 
 Public Class DAR_RPTFilter
-    Private _SQLview As New CMDdar.View
-    Private _SQLeditor As New CMDdar.Editor
-    Private _SQL As New CMDdar.Reports
-    Private _DS As DAR_RDS
-    Private WithEvents _DAR_RPTContainer As DAR_RPTContainer
+    'Private varSqlView As New CMDdar.View
+    'Private varSqlEditor As New CMDdar.Editor
+    'Private varSql As New CMDdar.Reports
+    Private varDataSet As DAR_RDS
+    Private WithEvents FRMdar_RPTContainer As DAR_RPTContainer
 
     <SupportedOSPlatform("windows")>
     Private Sub FillEmployee()
@@ -13,12 +13,12 @@ Public Class DAR_RPTFilter
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub GETAffectedArea()
+    Private Sub GetAffectedArea()
         CMDdar.Editor.GetAffectedArea(varDatabaseName, varDatabaseEngineE, CboArea)
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub GETActivity()
+    Private Sub GetActivity()
         CMDdar.Editor.GetTemplateTitle(varDatabaseName, varDatabaseEngineE, CboActivity)
     End Sub
 
@@ -70,7 +70,7 @@ Public Class DAR_RPTFilter
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub DAR_RPTFilter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FRMdarRptFilter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call ResetComponents()
         Call GETAffectedArea()
         Call GETActivity()
@@ -99,23 +99,23 @@ Public Class DAR_RPTFilter
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnShow_Click(sender As Object, e As EventArgs) Handles BtnShow.Click
-        _DS = New DAR_RDS
-        CMDdar.Reports.Display(varDatabaseName, varDatabaseEngineE, ChkFrom, ChkTo, ChkArea, ChkActivity, ChkBy, DtpFrom, DtpTo, CboArea, CboActivity, CboBy, TxtDescription, _DS)
+        varDataSet = New DAR_RDS
+        CMDdar.Reports.Display(varDatabaseName, varDatabaseEngineE, ChkFrom, ChkTo, ChkArea, ChkActivity, ChkBy, DtpFrom, DtpTo, CboArea, CboActivity, CboBy, TxtDescription, varDataSet)
 
-        Dim _Color As Boolean
+        Dim varColor As Boolean
 
         If (RdoColor.Checked) Then
-            _Color = True
+            varColor = True
         Else
-            _Color = False
+            varColor = False
         End If
 
-        _DAR_RPTContainer = New DAR_RPTContainer(_DS, varProperties.FirstName, _Color, GETAPPVERSION)
-        DISPLAY(_DAR_RPTContainer, IMAGEDB.Main.ImageLibrary.PRINTER_ICON, "Print - Daily Activity Report", "Generated Daily Activity Report", True,)
+        FRMdar_RPTContainer = New DAR_RPTContainer(varDataSet, varProperties.FirstName, varColor, GetAppVersion)
+        Display(FRMdar_RPTContainer, IMAGEDB.Main.ImageLibrary.PRINTER_ICON, My.Application.Info.AssemblyName.ToUpper, "Print - Daily Activity Report", "Generated Daily Activity Report", True,)
     End Sub
 
-    Private Sub _DAR_RPTContainer_ReportClosed() Handles _DAR_RPTContainer.ReportClosed
-        _DS = Nothing
+    Private Sub FRMdarRptContainer_ReportClosed() Handles FRMdar_RPTContainer.ReportClosed
+        varDataSet = Nothing
     End Sub
 
     Private Sub DtpFrom_ValueChanged(sender As Object, e As EventArgs) Handles DtpFrom.ValueChanged

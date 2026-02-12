@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frmDialogBox
+Partial Class FRMdialogbox
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
@@ -45,7 +45,7 @@ Partial Class frmDialogBox
         ' 
         PnlBottomButton.Controls.Add(BtnOk)
         PnlBottomButton.Controls.Add(BtnCancel)
-        PnlBottomButton.Location = New System.Drawing.Point(0, 290)
+        PnlBottomButton.Location = New System.Drawing.Point(0, 284)
         PnlBottomButton.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
         PnlBottomButton.Size = New System.Drawing.Size(1115, 96)
         PnlBottomButton.Visible = False
@@ -54,16 +54,14 @@ Partial Class frmDialogBox
         ' 
         ' pnl_
         ' 
-        pnl_.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
-        pnl_.Size = New System.Drawing.Size(1115, 104)
+        pnl_.Size = New System.Drawing.Size(1115, 110)
         ' 
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(TxtMessage)
         SLFPanel.Controls.Add(PnlBottomButtonOkOnly)
         SLFPanel.Controls.Add(PnlBottomButtonYesNo)
-        SLFPanel.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
-        SLFPanel.Size = New System.Drawing.Size(1115, 482)
+        SLFPanel.Size = New System.Drawing.Size(1115, 476)
         SLFPanel.Controls.SetChildIndex(PnlBottomButtonYesNo, 0)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(PnlBottomButtonOkOnly, 0)
@@ -76,7 +74,7 @@ Partial Class frmDialogBox
         PnlBottomButtonYesNo.Controls.Add(BtnYes)
         PnlBottomButtonYesNo.Controls.Add(BtnNo)
         PnlBottomButtonYesNo.Dock = Windows.Forms.DockStyle.Bottom
-        PnlBottomButtonYesNo.Location = New System.Drawing.Point(0, 386)
+        PnlBottomButtonYesNo.Location = New System.Drawing.Point(0, 380)
         PnlBottomButtonYesNo.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         PnlBottomButtonYesNo.Name = "PnlBottomButtonYesNo"
         PnlBottomButtonYesNo.Size = New System.Drawing.Size(1115, 96)
@@ -102,7 +100,7 @@ Partial Class frmDialogBox
         BtnYes.FlatAppearance.BorderSize = 2
         BtnYes.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(70), CByte(225), CByte(70))
         BtnYes.FlatStyle = Windows.Forms.FlatStyle.Flat
-        BtnYes.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+        BtnYes.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
         BtnYes.ForeColor = Drawing.Color.White
         BtnYes.Location = New System.Drawing.Point(752, 13)
         BtnYes.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -125,7 +123,7 @@ Partial Class frmDialogBox
         BtnNo.FlatAppearance.BorderSize = 2
         BtnNo.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnNo.FlatStyle = Windows.Forms.FlatStyle.Flat
-        BtnNo.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+        BtnNo.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
         BtnNo.ForeColor = Drawing.Color.White
         BtnNo.Location = New System.Drawing.Point(929, 13)
         BtnNo.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -148,7 +146,7 @@ Partial Class frmDialogBox
         BtnCancel.FlatAppearance.BorderSize = 2
         BtnCancel.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
         BtnCancel.FlatStyle = Windows.Forms.FlatStyle.Flat
-        BtnCancel.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+        BtnCancel.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
         BtnCancel.ForeColor = Drawing.Color.White
         BtnCancel.Location = New System.Drawing.Point(929, 13)
         BtnCancel.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -171,7 +169,7 @@ Partial Class frmDialogBox
         BtnOk.FlatAppearance.BorderSize = 2
         BtnOk.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(70), CByte(225), CByte(70))
         BtnOk.FlatStyle = Windows.Forms.FlatStyle.Flat
-        BtnOk.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+        BtnOk.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
         BtnOk.ForeColor = Drawing.Color.White
         BtnOk.Location = New System.Drawing.Point(752, 13)
         BtnOk.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -191,7 +189,7 @@ Partial Class frmDialogBox
         PnlBottomButtonOkOnly.Controls.Add(PictureBox2)
         PnlBottomButtonOkOnly.Controls.Add(BtnOkOnly)
         PnlBottomButtonOkOnly.Dock = Windows.Forms.DockStyle.Bottom
-        PnlBottomButtonOkOnly.Location = New System.Drawing.Point(0, 194)
+        PnlBottomButtonOkOnly.Location = New System.Drawing.Point(0, 188)
         PnlBottomButtonOkOnly.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         PnlBottomButtonOkOnly.Name = "PnlBottomButtonOkOnly"
         PnlBottomButtonOkOnly.Size = New System.Drawing.Size(1115, 96)
@@ -217,7 +215,7 @@ Partial Class frmDialogBox
         BtnOkOnly.FlatAppearance.BorderSize = 2
         BtnOkOnly.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(85), CByte(125), CByte(245))
         BtnOkOnly.FlatStyle = Windows.Forms.FlatStyle.Flat
-        BtnOkOnly.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+        BtnOkOnly.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
         BtnOkOnly.ForeColor = Drawing.Color.White
         BtnOkOnly.Location = New System.Drawing.Point(929, 15)
         BtnOkOnly.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -236,7 +234,7 @@ Partial Class frmDialogBox
         TxtMessage.AcceptsReturn = True
         TxtMessage.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Bottom Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
         TxtMessage.BackColor = Drawing.SystemColors.Window
-        TxtMessage.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        TxtMessage.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         TxtMessage.Location = New System.Drawing.Point(20, 29)
         TxtMessage.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         TxtMessage.MaxLength = 255
@@ -245,7 +243,7 @@ Partial Class frmDialogBox
         TxtMessage.ReadOnly = True
         TxtMessage.ScrollBars = Windows.Forms.ScrollBars.Vertical
         TxtMessage.ShortcutsEnabled = False
-        TxtMessage.Size = New System.Drawing.Size(1073, 336)
+        TxtMessage.Size = New System.Drawing.Size(1073, 330)
         TxtMessage.TabIndex = 5
         TxtMessage.TabStop = False
         TxtMessage.Tag = "txt"
@@ -269,17 +267,16 @@ Partial Class frmDialogBox
         TxtMessage.XOTanpaSpasi = False
         TxtMessage.XOValidasiField = Nothing
         ' 
-        ' frmDialogBox
+        ' FRMdialogbox
         ' 
-        AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+        AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
         ClientSize = New System.Drawing.Size(1115, 608)
         ControlBox = False
         FormBorderStyle = Windows.Forms.FormBorderStyle.FixedDialog
-        KeyPreview = True
         Margin = New System.Windows.Forms.Padding(22, 44, 22, 44)
         MaximizeBox = False
         MinimizeBox = False
-        Name = "frmDialogBox"
+        Name = "FRMdialogbox"
         PnlBottomButton.ResumeLayout(False)
         CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
         pnl_.ResumeLayout(False)

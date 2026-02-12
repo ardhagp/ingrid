@@ -58,7 +58,7 @@ Namespace Ladybug.Log
                 Return
             End If
 
-            FRMerc = New CMCv.FrmErrorReporting(proLog, clsDBsqlite)
+            FRMerc = New CMCv.FRMerrorreporting(proLog, clsDBsqlite)
             FRMerc.ShowDialog()
 
             FRMerc.Dispose()

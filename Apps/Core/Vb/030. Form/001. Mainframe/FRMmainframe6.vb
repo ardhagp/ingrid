@@ -171,7 +171,7 @@ Public Class FRMmainframe6
         ElseIf (Application.Modules.IsModuleLocked(varDatabaseName, varDatabaseEngineE, commandcode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
             Bridge.Security.Writelog.Sendlog("""message"" : """ & varProperties.FirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
-            Decision(My.Application.Info.AssemblyName, "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", LibApp.Ingrid.Global.PopupType.ModuleUnderMaintenance, "", CMCv.frmDialogBox.MessageIcon.Information, CMCv.frmDialogBox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName, "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", LibApp.Ingrid.Global.PopupType.ModuleUnderMaintenance, "", CMCv.FRMdialogbox.MessageIcon.Information, CMCv.FRMdialogbox.MessageTypes.OkOnly)
 
             System.Media.SystemSounds.Beep.Play()
 
@@ -205,7 +205,7 @@ Public Class FRMmainframe6
     Private Function LoginClicked() As Boolean
         If varProperties.UserID = String.Empty Then
             Frm_login = New FRMlogin
-            Display(Frm_login, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, "Sign In", "Please enter your credentials to continue", True)
+            Display(Frm_login, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, My.Application.Info.AssemblyName.ToUpper, "Sign In", "Please enter your credentials to continue", True)
         End If
         If varProperties.UserID = String.Empty Then
             varSession = False
@@ -224,7 +224,7 @@ Public Class FRMmainframe6
 
     <SupportedOSPlatform("windows")>
     Private Sub LogoutClicked()
-        If Decision(My.Application.Info.AssemblyName, "Are you sure want to logout from system?", LibApp.Ingrid.Global.PopupType.Logout, "", frmDialogBox.MessageIcon.Question, frmDialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
+        If Decision(My.Application.Info.AssemblyName, "Are you sure want to logout from system?", LibApp.Ingrid.Global.PopupType.Logout, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
             Bridge.Security.Writelog.Sendlog("""message"" : " & varProperties.FirstName & " is logout."",", "Information")
             Call SystemLogout()
             varLogUser.Logout(varDatabaseName, varDatabaseEngineE, varProperties.EmployeeID)
@@ -267,7 +267,7 @@ Public Class FRMmainframe6
                 .IsChangePasswordForm = True
             End With
             Frm_uac_Editor = New FRMuacEditor
-            Display(Frm_uac_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, "Change My Account", "Update your account username or password", True)
+            Display(Frm_uac_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Change My Account", "Update your account username or password", True)
         Catch ex As Exception
             With proLog
                 .AppVersion = GetAppVersion()
@@ -343,13 +343,13 @@ Public Class FRMmainframe6
                 End If
             Else
                     Ts_connection.Text = "Disconnected"
-                Decision(My.Application.Info.AssemblyName, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.frmDialogBox.MessageIcon.Error, CMCv.frmDialogBox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call CommandAutoComplete()
             If Not (LibSQL.CMDdbic.Applications.IsCompanyExist(varDatabaseName, varDatabaseEngineE) OrElse Not LibSQL.CMDdbic.Applications.IsDepartmentExist(varDatabaseName, varDatabaseEngineE)) Then
-                Display(FRMfirstguide,, "First Guide", "", True, Me)
+                Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "", True, Me)
             End If
         Catch ex As Exception
             With proLog
@@ -542,7 +542,7 @@ Public Class FRMmainframe6
     <SupportedOSPlatform("windows")>
     Private Sub NotificationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotificationToolStripMenuItem.Click
         Frm_ntfc = New FRMntfc
-        Display(Frm_ntfc, IMAGEDB.Main.ImageLibrary.NOTIF_ICON, "Notification", "Show all notification that addressed to you", True)
+        Display(Frm_ntfc, IMAGEDB.Main.ImageLibrary.NOTIF_ICON, My.Application.Info.AssemblyName.ToUpper, "Notification", "Show all notification that addressed to you", True)
     End Sub
 
     Private Sub Tsstatus_TextChanged(sender As Object, e As EventArgs) Handles Ts_status.TextChanged
@@ -710,7 +710,7 @@ Public Class FRMmainframe6
     <SupportedOSPlatform("windows")>
     Private Sub Msstartconnectionapp_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_app.Click 'uncomment this when add Connect to library
         Frm_conn = New Connect.FRMconn(varProductionMode, True)
-        Display(Frm_conn, IMAGEDB.Main.ImageLibrary.CONN_ICON, "Connection Settings", "Configure Ingrid database connection", True)
+        Display(Frm_conn, IMAGEDB.Main.ImageLibrary.CONN_ICON, My.Application.Info.AssemblyName.ToUpper, "Connection Settings", "Configure Ingrid database connection", True)
     End Sub
 
     Private Sub Msstartconnectionfolder_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_folder.Click
