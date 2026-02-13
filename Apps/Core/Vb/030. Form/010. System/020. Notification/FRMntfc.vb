@@ -1,28 +1,30 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class FRMntfc
+Namespace UI
+    Public Class FRMntfc
 
 #Region "Declarations"
 
 #End Region
 
 #Region "Subs Collections"
-    <SupportedOSPlatform("windows")>
-    Private Sub GetData()
-        DblBuffer(DgnNotification)
-        CMDntfc.View.Display(varDatabaseName, varDatabaseEngineE, DgnNotification, varProperties.EmployeeID)
-        FRMmainframe6.USERMENU.Text = varProperties.FirstName
-        FRMmainframe6.NotificationToolStripMenuItem.Text = "0 Notification(s)"
-    End Sub
+        <SupportedOSPlatform("windows")>
+        Private Sub GetData()
+            DblBuffer(DgnNotification)
+            CMDntfc.View.Display(varDatabaseName, varDatabaseEngineE, DgnNotification, varProperties.EmployeeID)
+            UI.FRMmainframe6.USERMENU.Text = varProperties.FirstName
+            UI.FRMmainframe6.NotificationToolStripMenuItem.Text = "0 Notification(s)"
+        End Sub
 #End Region
 
-    Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
-        Me.Close()
-    End Sub
+        Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
+            Me.Close()
+        End Sub
 
-    <SupportedOSPlatform("windows")>
-    Private Sub FRMntfc_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        DgnNotification.XOGETNewColor()
-        Call GETDATA()
-    End Sub
-End Class
+        <SupportedOSPlatform("windows")>
+        Private Sub FRMntfc_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            DgnNotification.XOGETNewColor()
+            Call GETDATA()
+        End Sub
+    End Class
+End Namespace

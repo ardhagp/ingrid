@@ -1,3 +1,5 @@
-﻿Public Class FRMtxlEditor
+﻿Namespace UI
+    Public Class FRMtxlEditor
 
-End Class
+    End Class
+End Namespace

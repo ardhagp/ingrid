@@ -1,3 +1,5 @@
-﻿Public Class FRMslocEditor
+﻿Namespace UI
+    Public Class FRMslocEditor
 
-End Class
+    End Class
+End Namespace

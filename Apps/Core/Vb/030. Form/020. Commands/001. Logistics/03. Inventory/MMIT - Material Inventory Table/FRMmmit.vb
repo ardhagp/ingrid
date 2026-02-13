@@ -1,3 +1,5 @@
-﻿Public Class FRMmmit
+﻿Namespace UI
+    Public Class FRMmmit
 
-End Class
+    End Class
+End Namespace

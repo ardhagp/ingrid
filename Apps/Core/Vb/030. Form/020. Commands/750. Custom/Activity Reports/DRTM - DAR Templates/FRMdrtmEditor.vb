@@ -1,3 +1,5 @@
-﻿Public Class FRMdrtmEditor
+﻿Namespace UI
+    Public Class FRMdrtmEditor
 
-End Class
+    End Class
+End Namespace

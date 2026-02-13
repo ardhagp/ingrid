@@ -1,3 +1,5 @@
-﻿Public Class FRMmogs
+﻿Namespace UI
+    Public Class FRMmogs
 
-End Class
+    End Class
+End Namespace

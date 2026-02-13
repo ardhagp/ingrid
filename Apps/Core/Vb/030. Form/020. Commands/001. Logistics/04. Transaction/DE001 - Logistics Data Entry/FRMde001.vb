@@ -1,3 +1,5 @@
-﻿Public Class FRMde001
+﻿Namespace UI
+    Public Class FRMde001
 
-End Class
+    End Class
+End Namespace

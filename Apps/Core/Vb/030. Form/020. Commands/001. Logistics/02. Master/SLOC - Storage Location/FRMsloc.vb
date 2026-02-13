@@ -1,3 +1,5 @@
-﻿Public Class FRMsloc
+﻿Namespace UI
+    Public Class FRMsloc
 
-End Class
+    End Class
+End Namespace

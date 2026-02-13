@@ -1,3 +1,5 @@
-﻿Public Class FRMmowEditor
+﻿Namespace UI
+    Public Class FRMmowEditor
 
-End Class
+    End Class
+End Namespace

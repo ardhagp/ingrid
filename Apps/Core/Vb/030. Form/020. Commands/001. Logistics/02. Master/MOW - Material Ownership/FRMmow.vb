@@ -1,3 +1,5 @@
-﻿Public Class FRMmow
+﻿Namespace UI
+    Public Class FRMmow
 
-End Class
+    End Class
+End Namespace

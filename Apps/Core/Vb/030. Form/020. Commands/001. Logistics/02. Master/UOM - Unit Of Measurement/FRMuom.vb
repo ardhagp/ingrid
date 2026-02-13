@@ -1,3 +1,5 @@
-﻿Public Class FRMuom
+﻿Namespace UI
+    Public Class FRMuom
 
-End Class
+    End Class
+End Namespace

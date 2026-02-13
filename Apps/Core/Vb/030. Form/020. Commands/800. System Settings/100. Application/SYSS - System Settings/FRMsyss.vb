@@ -1,105 +1,107 @@
 ﻿Imports System.Runtime.Versioning
 
-Public Class FRMsyss
-    Const varMessageDisabled As String = "Disabled"
-    Const varMessageAdministratorOnly As String = "Administrator Only"
-    Const varUserOnly As String = "User Only"
-    Const varAllUsers As String = "All Users"
+Namespace UI
+    Public Class FRMsyss
+        Const varMessageDisabled As String = "Disabled"
+        Const varMessageAdministratorOnly As String = "Administrator Only"
+        Const varUserOnly As String = "User Only"
+        Const varAllUsers As String = "All Users"
 
-    <SupportedOSPlatform("windows")>
-    Private Sub GetData()
-        'Get Profile
-        With CboProfile.Items
-            .Clear()
-            .Add(varMessageDisabled)
-            .Add(varMessageAdministratorOnly)
-            .Add(varUserOnly)
-            .Add(varAllUsers)
-        End With
-        CboProfile.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_showprofile"), Integer)
-
-        'Get Storage
-        With CboStorage.Items
-            .Clear()
-            .Add(varMessageDisabled)
-            .Add(varMessageAdministratorOnly)
-            .Add(varUserOnly)
-            .Add(varAllUsers)
-        End With
-        CboStorage.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_showstorage"), Integer)
-
-        'Get NewsTicker
-        With CboNewsTicker.Items
-            .Clear()
-            .Add(varMessageDisabled)
-            .Add(varMessageAdministratorOnly)
-            .Add(varUserOnly)
-            .Add(varAllUsers)
-        End With
-        CboNewsTicker.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_showrunningtext"), Integer)
-
-        'Get Minimum Photo Upload
-        nudUploadPhoto.Value = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_uploadphoto"), Decimal)
-
-        'Get Minimum PDF Upload
-        nudUploadPDF.Value = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_uploadpdf"), Decimal)
-
-        'Get Watermark
-        With CboWatermark.Items
-            .Clear()
-            .Add(varMessageDisabled)
-            .Add(varMessageAdministratorOnly)
-            .Add(varUserOnly)
-            .Add(varAllUsers)
-        End With
-        CboWatermark.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_showwatermark"), Integer)
-        TxtWatermark.Text = CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_textmark").ToString
-
-        'Get Minimum Password
-        nudMinPassword.Value = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_minpasswordlength"), Decimal)
-    End Sub
-
-    <SupportedOSPlatform("windows")>
-    Private Sub FRMsyss_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call GetData()
-    End Sub
-
-    Private Sub CboWatermark_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboWatermark.SelectedIndexChanged
-        If CboWatermark.SelectedIndex = 0 Then
-            TxtWatermark.Enabled = False
-        Else
-            TxtWatermark.Enabled = True
-        End If
-    End Sub
-
-    <SupportedOSPlatform("windows")>
-    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-        Try
-            If (CMDsyss.Editor.SaveSettings(varDatabaseName, varDatabaseEngineE, CboProfile.SelectedIndex, CboStorage.SelectedIndex, CboNewsTicker.SelectedIndex, CType(nudUploadPhoto.Value, Integer), CType(nudUploadPDF.Value, Integer), CboWatermark.SelectedIndex, TxtWatermark.XOSQLText, CType(nudMinPassword.Value, Integer))) Then
-                SLFStatus.Items(0).Text = "Saved"
-            End If
-        Catch ex As Exception
-            With proLog
-                .AppVersion = GetAppVersion()
-                .FromSender = "[BtnSave_Click] $\Ingrid\Apps\Core\Vb\030. Form\020. Commands\800. System Settings\100. Application\SYSS - System Settings\SYSS.vb"
-                .InternalStackTrace = ex.StackTrace
-                .Message = ex.Message
-                .Number = ex.HResult
-                .ResumeNext = True
-                .SaveInBetterLog = True
-                .SaveLogInLocal = False
-                .ShowErrorReporting = True
-                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
-                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+        <SupportedOSPlatform("windows")>
+        Private Sub GetData()
+            'Get Profile
+            With CboProfile.Items
+                .Clear()
+                .Add(varMessageDisabled)
+                .Add(varMessageAdministratorOnly)
+                .Add(varUserOnly)
+                .Add(varAllUsers)
             End With
+            CboProfile.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_showprofile"), Integer)
 
-            Dim clsLog As New Ladybug.Log.Events
-            clsLog.ShowData(proLog)
-            clsLog = Nothing
-        End Try
-    End Sub
+            'Get Storage
+            With CboStorage.Items
+                .Clear()
+                .Add(varMessageDisabled)
+                .Add(varMessageAdministratorOnly)
+                .Add(varUserOnly)
+                .Add(varAllUsers)
+            End With
+            CboStorage.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_showstorage"), Integer)
 
-    Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
-        Me.Close()
-    End Sub
-End Class
+            'Get NewsTicker
+            With CboNewsTicker.Items
+                .Clear()
+                .Add(varMessageDisabled)
+                .Add(varMessageAdministratorOnly)
+                .Add(varUserOnly)
+                .Add(varAllUsers)
+            End With
+            CboNewsTicker.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_showrunningtext"), Integer)
+
+            'Get Minimum Photo Upload
+            nudUploadPhoto.Value = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_uploadphoto"), Decimal)
+
+            'Get Minimum PDF Upload
+            nudUploadPDF.Value = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_uploadpdf"), Decimal)
+
+            'Get Watermark
+            With CboWatermark.Items
+                .Clear()
+                .Add(varMessageDisabled)
+                .Add(varMessageAdministratorOnly)
+                .Add(varUserOnly)
+                .Add(varAllUsers)
+            End With
+            CboWatermark.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_showwatermark"), Integer)
+            TxtWatermark.Text = CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_textmark").ToString
+
+            'Get Minimum Password
+            nudMinPassword.Value = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_minpasswordlength"), Decimal)
+        End Sub
+
+        <SupportedOSPlatform("windows")>
+        Private Sub FRMsyss_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            Call GetData()
+        End Sub
+
+        Private Sub CboWatermark_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboWatermark.SelectedIndexChanged
+            If CboWatermark.SelectedIndex = 0 Then
+                TxtWatermark.Enabled = False
+            Else
+                TxtWatermark.Enabled = True
+            End If
+        End Sub
+
+        <SupportedOSPlatform("windows")>
+        Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+            Try
+                If (CMDsyss.Editor.SaveSettings(varDatabaseName, varDatabaseEngineE, CboProfile.SelectedIndex, CboStorage.SelectedIndex, CboNewsTicker.SelectedIndex, CType(nudUploadPhoto.Value, Integer), CType(nudUploadPDF.Value, Integer), CboWatermark.SelectedIndex, TxtWatermark.XOSQLText, CType(nudMinPassword.Value, Integer))) Then
+                    SLFStatus.Items(0).Text = "Saved"
+                End If
+            Catch ex As Exception
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[BtnSave_Click] $\Ingrid\Apps\Core\Vb\030. Form\020. Commands\800. System Settings\100. Application\SYSS - System Settings\SYSS.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+            End Try
+        End Sub
+
+        Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
+            Me.Close()
+        End Sub
+    End Class
+End Namespace
