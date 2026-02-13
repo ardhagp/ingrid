@@ -1,3 +1,5 @@
-﻿Public Class FRMaccountingDashboard
+﻿Namespace UI
+    Public Class FRMaccountingDashboard
 
-End Class
+    End Class
+End Namespace

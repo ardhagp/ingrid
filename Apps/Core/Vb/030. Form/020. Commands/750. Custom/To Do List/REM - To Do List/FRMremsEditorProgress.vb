@@ -1,3 +1,5 @@
-﻿Public Class FRMremsEditorProgress
+﻿Namespace UI
+    Public Class FRMremsEditorProgress
 
-End Class
+    End Class
+End Namespace

@@ -1,7 +1,9 @@
-﻿Public Class FRMdummyEditor
-    Public Event RecordSaved()
+﻿Namespace UI
+    Public Class FRMdummyEditor
+        Public Event RecordSaved()
 
-    Private Sub Btn2_Click(sender As Object, e As EventArgs) Handles Btn2.Click
-        Me.Close()
-    End Sub
-End Class
+        Private Sub Btn2_Click(sender As Object, e As EventArgs) Handles Btn2.Click
+            Me.Close()
+        End Sub
+    End Class
+End Namespace

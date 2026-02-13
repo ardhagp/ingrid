@@ -94,6 +94,7 @@
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <OptionStrict>On</OptionStrict>
     <AssemblyName>Ingrid.Core</AssemblyName>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Import Include="CMCv" />

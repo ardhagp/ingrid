@@ -1,3 +1,5 @@
-﻿Public Class FRMtxl
+﻿Namespace UI
+    Public Class FRMtxl
 
-End Class
+    End Class
+End Namespace

@@ -1,3 +1,5 @@
-﻿Public Class FRMdbcheck
+﻿Namespace UI
+    Public Class FRMdbcheck
 
-End Class
+    End Class
+End Namespace

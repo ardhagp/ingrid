@@ -1,3 +1,5 @@
-﻿Public Class FRMremsEditor
+﻿Namespace UI
+    Public Class FRMremsEditor
 
-End Class
+    End Class
+End Namespace

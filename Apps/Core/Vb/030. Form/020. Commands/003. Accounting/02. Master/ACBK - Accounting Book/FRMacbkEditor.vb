@@ -1,10 +1,12 @@
-﻿Public Class FRMacbkEditor
-    Public Sub New()
+﻿Namespace UI
+    Public Class FRMacbkEditor
+        Public Sub New()
 
-        ' This call is required by the designer.
-        InitializeComponent()
+            ' This call is required by the designer.
+            InitializeComponent()
 
-        ' Add any initialization after the InitializeComponent() call.
+            ' Add any initialization after the InitializeComponent() call.
 
-    End Sub
-End Class
+        End Sub
+    End Class
+End Namespace

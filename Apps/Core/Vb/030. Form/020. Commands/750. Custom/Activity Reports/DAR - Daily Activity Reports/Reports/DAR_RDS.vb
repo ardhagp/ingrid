@@ -1,2 +1,4 @@
-﻿Partial Class DAR_RDS
-End Class
+﻿Namespace UI
+    Partial Class DAR_RDS
+    End Class
+End Namespace

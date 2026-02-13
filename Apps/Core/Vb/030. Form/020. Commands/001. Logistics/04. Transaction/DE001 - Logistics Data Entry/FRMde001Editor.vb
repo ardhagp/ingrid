@@ -1,3 +1,5 @@
-﻿Public Class FRMde001Editor
+﻿Namespace UI
+    Public Class FRMde001Editor
 
-End Class
+    End Class
+End Namespace

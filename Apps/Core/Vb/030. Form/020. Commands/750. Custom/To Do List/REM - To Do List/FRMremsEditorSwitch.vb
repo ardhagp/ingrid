@@ -1,3 +1,5 @@
-﻿Public Class FRMremsEditorSwitch
+﻿Namespace UI
+    Public Class FRMremsEditorSwitch
 
-End Class
+    End Class
+End Namespace

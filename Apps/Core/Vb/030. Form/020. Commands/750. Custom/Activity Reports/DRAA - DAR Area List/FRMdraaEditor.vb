@@ -1,3 +1,5 @@
-﻿Public Class FRMdraaEditor
+﻿Namespace UI
+    Public Class FRMdraaEditor
 
-End Class
+    End Class
+End Namespace

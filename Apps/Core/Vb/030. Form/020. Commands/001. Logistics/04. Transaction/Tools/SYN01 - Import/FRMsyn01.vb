@@ -1,3 +1,5 @@
-﻿Public Class FRMsyn01
+﻿Namespace UI
+    Public Class FRMsyn01
 
-End Class
+    End Class
+End Namespace

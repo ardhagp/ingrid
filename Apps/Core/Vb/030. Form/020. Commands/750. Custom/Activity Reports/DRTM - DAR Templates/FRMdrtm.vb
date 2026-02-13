@@ -1,3 +1,5 @@
-﻿Public Class FRMdrtm
+﻿Namespace UI
+    Public Class FRMdrtm
 
-End Class
+    End Class
+End Namespace
