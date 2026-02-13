@@ -7,7 +7,7 @@ Imports System.Runtime.Versioning
 
 Public Class FRMmainframe6
 
-#Region "Interfaces"
+#Region "Interface"
     Public Interface ICommandFunction
         Function LoadCommand() As CMCv.frmStandard
     End Interface
@@ -51,7 +51,7 @@ Public Class FRMmainframe6
 
             'Txt_shortcut.AutoCompleteSource = Nothing
             Txt_shortcut.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-            varDataset = varSqlModules.DisplayAutoComplete(varDatabaseName) '.DisplayAutoComplete(Convert.ToString(varFormProperties.RowID), DgnPictureList)
+            varDataset = varSqlModules.DisplayAutoComplete(varDatabaseName, varDatabaseEngineE) '.DisplayAutoComplete(Convert.ToString(varFormProperties.RowID), DgnPictureList)
             If varDataset Is Nothing Then
                 Return
             End If
@@ -83,7 +83,7 @@ Public Class FRMmainframe6
 
     <SupportedOSPlatform("windows")>
     Private Sub GetRunningText()
-        TxtRunning.Visible = varSqlRunningText.Show(varDatabaseName, varProperties.IsAdministrator)
+        TxtRunning.Visible = varSqlRunningText.Show(varDatabaseName, varDatabaseEngineE, varProperties.IsAdministrator)
     End Sub
 
     ''' <summary>
@@ -91,7 +91,7 @@ Public Class FRMmainframe6
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Private Sub GetNotification()
-        varTotalNotification = varSqlNotification.Exist(varDatabaseName, varProperties.EmployeeID)
+        varTotalNotification = varSqlNotification.Exist(varDatabaseName, varDatabaseEngineE, varProperties.EmployeeID)
         If varTotalNotification > 0 Then
             USERMENU.Text = varProperties.FirstName & "*"
             USERMENU.BackColor = Global.System.Drawing.Color.LightPink
@@ -120,16 +120,10 @@ Public Class FRMmainframe6
     Private Sub CloseAllWindows(Optional forced As Boolean = False)
         Try
             If Not (forced) AndAlso (Global.System.Windows.Forms.MessageBox.Show("Do you want to close all varWorkspace windows?", "Close All Windows", Global.System.Windows.Forms.MessageBoxButtons.YesNo, Global.System.Windows.Forms.MessageBoxIcon.Question) = Global.System.Windows.Forms.DialogResult.Yes) Then
-
                 For Each openedforms As CMCv.frmStandard In Tmdi_.MdiChildren
                     openedforms.Close()
                     openedforms.Dispose()
                 Next
-                'Else
-                '    For Each openedforms As CMCv.frmStandard In Tmdi_.MdiChildren
-                '    openedforms.Close()
-                '    openedforms.Dispose()
-                '    Next
             End If
         Catch ex As Exception
             With proLog
@@ -171,19 +165,13 @@ Public Class FRMmainframe6
         ElseIf (Application.Modules.IsModuleLocked(varDatabaseName, varDatabaseEngineE, commandcode.ToUpper.Trim)) Then
             St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
             Bridge.Security.Writelog.Sendlog("""message"" : """ & varProperties.FirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
-            Decision(My.Application.Info.AssemblyName, "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", LibApp.Ingrid.Global.PopupType.ModuleUnderMaintenance, "", CMCv.FRMdialogbox.MessageIcon.Information, CMCv.FRMdialogbox.MessageTypes.OkOnly)
-
+            Decision(My.Application.Info.AssemblyName.ToUpper, "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", LibApp.Ingrid.Global.PopupType.ModuleUnderMaintenance, "", CMCv.FRMdialogbox.MessageIcon.Information, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             System.Media.SystemSounds.Beep.Play()
-
             Return
-        ElseIf Not (varUserAccess.User(varDatabaseName, commandcode.ToUpper.Trim, varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.View, St_mainframe)) Then ''' Check User Access
-
+        ElseIf Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, commandcode.ToUpper.Trim, varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.View, St_mainframe)) Then ''' Check User Access
             St_mainframe.Items(0).Text = "You are not authorized to access : " & commandcode.ToUpper.Trim
-
             Bridge.Security.Writelog.Sendlog("""message"" : " & varProperties.FirstName & " trying to open Restricted Module " & commandcode.ToUpper.Trim & """", "Warning")
-
             System.Media.SystemSounds.Beep.Play()
-
             Return
         Else ' Open Module
             Globals.varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
@@ -224,7 +212,7 @@ Public Class FRMmainframe6
 
     <SupportedOSPlatform("windows")>
     Private Sub LogoutClicked()
-        If Decision(My.Application.Info.AssemblyName, "Are you sure want to logout from system?", LibApp.Ingrid.Global.PopupType.Logout, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+        If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure want to logout from system?", LibApp.Ingrid.Global.PopupType.Logout, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
             Bridge.Security.Writelog.Sendlog("""message"" : " & varProperties.FirstName & " is logout."",", "Information")
             Call SystemLogout()
             varLogUser.Logout(varDatabaseName, varDatabaseEngineE, varProperties.EmployeeID)
@@ -297,6 +285,7 @@ Public Class FRMmainframe6
     Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             RaiseEvent EventMainframeOpen()
+            varVersionapplication = GetAppVersion() 'Retrieve app version
             TmrNotif.Enabled = True
 
             Dim clsLog As New Ladybug.Log.Events
@@ -325,7 +314,6 @@ Public Class FRMmainframe6
             Call SystemLogout()
             Call FirstLoad()
             varProperties.UserID = String.Empty
-            varVersionapplication = GetAppVersion() 'Retrieve app version
             Text += " - Ver. " & varVersionapplication
             varDatabaseName = LibSQL.Mainframe.Database.DatabaseName 'Retrieve Database Name
             varDatabaseEngine = LibSQL.Mainframe.Database.DatabaseEngine 'Retrieve Database Engine
@@ -339,11 +327,11 @@ Public Class FRMmainframe6
                 Ts_connection.Text = "Connected"
                 varLogApplication.Run(varDatabaseName, varDatabaseEngineE)
                 If varCompany.CountRecords(varDatabaseName, varDatabaseEngineE) = 0 Then
-                    Display(FRMfirstguide,, My.Application.Info.AssemblyName, "First Guide", "Initial setup and essential information", True, Me)
+                    Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "Initial setup and essential information", True, Me)
                 End If
             Else
-                    Ts_connection.Text = "Disconnected"
-                Decision(My.Application.Info.AssemblyName, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Ts_connection.Text = "Disconnected"
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -496,9 +484,9 @@ Public Class FRMmainframe6
 
     <SupportedOSPlatform("windows")>
     Private Sub GetProfile()
-        PnlProfile.Visible = LibSQL.Application.ProfilePanel.Show(varDatabaseName, varProperties.IsAdministrator)
+        PnlProfile.Visible = LibSQL.Application.ProfilePanel.Show(varDatabaseName, varDatabaseEngineE, varProperties.IsAdministrator)
         If (PnlProfile.Visible) Then
-            LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome(varDatabaseName)
+            LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome(varDatabaseName, varDatabaseEngineE)
             LblEmpNumber.Text = varProperties.EmployeeNumber
 
             Dim varNama = varProperties.FirstName.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
@@ -523,7 +511,7 @@ Public Class FRMmainframe6
         Dim varFilecurrentsize As Integer
         Dim varFreespace As Integer
 
-        PnlStorage.Visible = LibSQL.Application.StorageSense.Show(varDatabaseName, varProperties.IsAdministrator)
+        PnlStorage.Visible = LibSQL.Application.StorageSense.Show(varDatabaseName, varDatabaseEngineE, varProperties.IsAdministrator)
         If (PnlStorage.Visible) Then
             PnlStorage.Height = 158
             varFreespace = CType(LibSQL.Application.StorageSense.MaxSize(varDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace), Integer)
@@ -533,7 +521,7 @@ Public Class FRMmainframe6
             lblDataStorage.Text = String.Format("{0} / {1}", IIf(varDatacurrentsize < 1024, varDatacurrentsize & " MB", Math.Round((varDatacurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
             varFreespace = CType(LibSQL.Application.StorageSense.MaxSize(varDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace), Integer)
             pgFileStorage.Maximum = varFreespace
-            varFilecurrentsize = CType(LibSQL.Application.StorageSense.FileCurrentSize(varDatabaseName), Integer)
+            varFilecurrentsize = CType(LibSQL.Application.StorageSense.FileCurrentSize(varDatabaseName, varDatabaseEngineE), Integer)
             pgFileStorage.Value = varFilecurrentsize
             lblFileStorage.Text = String.Format("{0} / {1}", IIf(varFilecurrentsize < 1024, varFilecurrentsize & " MB", Math.Round((varFilecurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
         End If
@@ -689,10 +677,10 @@ Public Class FRMmainframe6
     ''' </summary>
     <SupportedOSPlatform("windows")>
     Public Shared Sub GetSettings()
-        varMaxUploadSizePDF = LibSQL.Application.Modules.MaxPDFallowed(varDatabaseName)
-        varMaxUploadSizePhoto = LibSQL.Application.Modules.MaxPhotoallowed(varDatabaseName)
-        varMinPasswordLength = LibSQL.Application.Modules.MinPasswordLength(varDatabaseName)
-        varTextmark = LibSQL.Application.Modules.TextMark(varDatabaseName, varProperties.IsAdministrator)
+        varMaxUploadSizePDF = LibSQL.Application.Modules.MaxPDFallowed(varDatabaseName, varDatabaseEngineE)
+        varMaxUploadSizePhoto = LibSQL.Application.Modules.MaxPhotoallowed(varDatabaseName, varDatabaseEngineE)
+        varMinPasswordLength = LibSQL.Application.Modules.MinPasswordLength(varDatabaseName, varDatabaseEngineE)
+        varTextmark = LibSQL.Application.Modules.TextMark(varDatabaseName, varDatabaseEngineE, varProperties.IsAdministrator)
     End Sub
 
     <SupportedOSPlatform("windows")>

@@ -6,16 +6,14 @@ Namespace Application
         ReadOnly varSQL As New LibSQL.Application.Access
 
         <SupportedOSPlatform("windows")>
-        Public Function User(databasename As String, tcode As String, uid As String, typeofaccess As LibSQL.Application.Access.TypeOfAccess, Optional status As stt = Nothing) As Boolean
+        Public Function User(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String, uid As String, typeofaccess As LibSQL.Application.Access.TypeOfAccess, Optional status As stt = Nothing) As Boolean
             Dim varAccessValue As Boolean
 
             Try
-                varAccessValue = CType(varSQL.User(databasename, tcode, uid, typeofaccess), Boolean)
-
+                varAccessValue = CType(varSQL.User(databasename, dbengine, tcode, uid, typeofaccess), Boolean)
                 If Not varAccessValue Then
                     SystemSounds.Exclamation.Play()
                 End If
-
                 Return varAccessValue
             Catch ex As Exception
                 SystemSounds.Exclamation.Play()

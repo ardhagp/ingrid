@@ -89,23 +89,23 @@ Public Class FRMeplsEditor
         Call CheckAllInputs()
 
         If (CMDepls.Editor.IsPersonalIDExist(varDatabaseName, varDatabaseEngine, varFormProperties.IsNew, TxtPersonalID.Text, Convert.ToString(varFormProperties.RowID))) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Duplicate Personal ID", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "Duplicate Personal ID", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf (TxtPersonalID.XOSQLText = String.Empty) OrElse (varPositionID = String.Empty) OrElse (TxtEmployeeNumber.XOSQLText = String.Empty) OrElse (TxtFullName.XOSQLText = String.Empty) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure you have Personal ID, Company, Department, Postition, Employee Number and Full Name are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "Make sure you have Personal ID, Company, Department, Postition, Employee Number and Full Name are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf Not (CMDepls.Editor.IsPositionExist(varDatabaseName, varDatabaseEngine, varPositionID)) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Position not found.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "Position not found.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             SLFStatus.Items(0).Text = "Position not found"
             Return
         ElseIf (varFormProperties.IsNew) AndAlso (CMDepls.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, varPositionID, TxtEmployeeNumber.XOSQLText)) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Employee Number already used.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "This Employee Number already used.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf Not (varFormProperties.IsNew) AndAlso (CMDepls.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, varPositionID, TxtEmployeeNumber.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Employee Number already used by another employee.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "This Employee Number already used by another employee.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf varHavePhoto = 0 Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Please pick employee photo.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "Please pick employee photo.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 

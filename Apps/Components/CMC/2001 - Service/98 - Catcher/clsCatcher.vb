@@ -6,6 +6,7 @@ Namespace Ladybug.Log
         Public Property TypeOfFaulty As TypeOfFaulties
         Public Property Message As String
         Public Property Number As Integer
+        Public Property Query As String
         Public Property AppVersion As String
         Public Property ShowErrorReporting As Boolean
         Public Property SaveLogInLocal As Boolean

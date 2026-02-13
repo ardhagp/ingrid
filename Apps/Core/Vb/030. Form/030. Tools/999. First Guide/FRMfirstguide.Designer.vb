@@ -26,6 +26,8 @@ Partial Class FRMfirstguide
         Btn_Process = New btn(components)
         Lbl_Step = New lbl(components)
         Gbx_Company = New gbx(components)
+        ULblEmploymentType = New ULbl()
+        CboEmploymentType = New cbo(components)
         ULbl5 = New ULbl()
         Txt_EmployeeID = New txt(components)
         ULbl4 = New ULbl()
@@ -76,14 +78,14 @@ Partial Class FRMfirstguide
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(Lbl_Step)
+        SLFPanel.Controls.Add(Gbx_Company)
         SLFPanel.Controls.Add(Gbx_Modules)
         SLFPanel.Controls.Add(Gbx_Login)
-        SLFPanel.Controls.Add(Gbx_Company)
         SLFPanel.Margin = New Padding(7, 10, 7, 10)
         SLFPanel.Size = New Size(684, 765)
-        SLFPanel.Controls.SetChildIndex(Gbx_Company, 0)
         SLFPanel.Controls.SetChildIndex(Gbx_Login, 0)
         SLFPanel.Controls.SetChildIndex(Gbx_Modules, 0)
+        SLFPanel.Controls.SetChildIndex(Gbx_Company, 0)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(Lbl_Step, 0)
         ' 
@@ -122,6 +124,8 @@ Partial Class FRMfirstguide
         ' 
         ' Gbx_Company
         ' 
+        Gbx_Company.Controls.Add(ULblEmploymentType)
+        Gbx_Company.Controls.Add(CboEmploymentType)
         Gbx_Company.Controls.Add(ULbl5)
         Gbx_Company.Controls.Add(Txt_EmployeeID)
         Gbx_Company.Controls.Add(ULbl4)
@@ -141,6 +145,30 @@ Partial Class FRMfirstguide
         Gbx_Company.TabIndex = 998
         Gbx_Company.TabStop = False
         Gbx_Company.Text = "About You && Your Company"
+        ' 
+        ' ULblEmploymentType
+        ' 
+        ULblEmploymentType.BackColor = Color.Moccasin
+        ULblEmploymentType.Location = New Point(9, 372)
+        ULblEmploymentType.Margin = New Padding(5, 6, 5, 6)
+        ULblEmploymentType.Name = "ULblEmploymentType"
+        ULblEmploymentType.Size = New Size(251, 40)
+        ULblEmploymentType.SLFText = "Employment Type"
+        ULblEmploymentType.SLFTextAdjuster = False
+        ULblEmploymentType.SLFTextBorder = False
+        ULblEmploymentType.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+        ULblEmploymentType.TabIndex = 1009
+        ' 
+        ' CboEmploymentType
+        ' 
+        CboEmploymentType.DropDownStyle = ComboBoxStyle.DropDownList
+        CboEmploymentType.FlatStyle = FlatStyle.Flat
+        CboEmploymentType.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        CboEmploymentType.FormattingEnabled = True
+        CboEmploymentType.Location = New Point(271, 372)
+        CboEmploymentType.Name = "CboEmploymentType"
+        CboEmploymentType.Size = New Size(370, 40)
+        CboEmploymentType.TabIndex = 6
         ' 
         ' ULbl5
         ' 
@@ -548,7 +576,7 @@ Partial Class FRMfirstguide
         ' 
         Dgn1.AllowUserToAddRows = False
         Dgn1.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(220), CByte(216), CByte(113))
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(237), CByte(223), CByte(164))
         Dgn1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Dgn1.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         Dgn1.BorderStyle = BorderStyle.None
@@ -638,5 +666,7 @@ Partial Class FRMfirstguide
     Friend WithEvents Gbx_Modules As gbx
     Friend WithEvents Btn_Check As btn
     Friend WithEvents Dgn1 As dgn
+    Friend WithEvents CboEmploymentType As cbo
+    Friend WithEvents ULblEmploymentType As ULbl
 
 End Class

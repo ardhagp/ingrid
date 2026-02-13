@@ -1,14 +1,20 @@
 ﻿Imports System.Runtime.Versioning
 
 Public Class FRMfirstguide
-    Private FirstRecord, EmploymentType1, EmploymentType2, EmploymentType3, EmploymentType4 As New LibApp.Ingrid.Global.Properties
+    Private FirstRecord, EmploymentType1, EmploymentType2, EmploymentType3, EmploymentType4, EmploymentType5 As New LibApp.Ingrid.Global.Properties
     Private varStep As Integer
 
     <SupportedOSPlatform("windows")>
     Private Sub BtnProcess_Click(sender As Object, e As EventArgs) Handles Btn_Process.Click
         If varStep = 1 Then
             If Txt_Company.XOIsBlank OrElse Txt_Department.XOIsBlank OrElse Txt_Position.XOIsBlank OrElse Txt_EmployeeName.XOIsBlank OrElse Txt_EmployeeID.XOIsBlank Then
-                Decision(My.Application.Info.AssemblyName, "Field(s) cannot be empty", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Fields below cannot be empty" & Environment.NewLine &
+                         "☑ Company" & Environment.NewLine &
+                         "☑ Department" & Environment.NewLine &
+                         "☑ Posisiton" & Environment.NewLine &
+                         "☑ Employee Name" & Environment.NewLine &
+                         "☑ Employee ID",
+                LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 If (Txt_Company.XOIsBlank) Then
                     Txt_Company.Focus()
                 ElseIf (Txt_Department.XOIsBlank) Then
@@ -37,7 +43,7 @@ Public Class FRMfirstguide
             Btn_Close.Text = "&Prev"
         ElseIf varStep = 2 Then
             If (Txt_Username.XOIsBlank) OrElse (Txt_Password.XOIsBlank) Then
-                Decision(My.Application.Info.AssemblyName, "Field(s) cannot be empty", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Username cannot be empty", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 If (Txt_Username.XOIsBlank) Then
                     Txt_Username.Focus()
                 Else
@@ -46,7 +52,7 @@ Public Class FRMfirstguide
                 Return
             End If
             If Txt_Password.XOPwdStrengthScore < 70 Then
-                MsgBox("Your password is not strong enough!", MsgBoxStyle.Exclamation, "Ingrid")
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Your password is not strong enough!", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Txt_Password.Focus()
                 Return
             End If
@@ -90,11 +96,41 @@ Public Class FRMfirstguide
         EmploymentType4.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("INTERN")
         EmploymentType4.EmploymentTypeName = "INTERN"
         EmploymentType4.EmploymentTypeDescription = "Intern Employment Type"
+
+        EmploymentType5.EmploymentTypeID = CMCv.Security.Encrypt.MD5("DIRECT CONTRACT")
+        EmploymentType5.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("DIRECT CONTRACT")
+        EmploymentType5.EmploymentTypeName = "DIRECT CONTRACT"
+        EmploymentType5.EmploymentTypeDescription = "Direct Contract Type"
+
+        CboEmploymentType.DisplayMember = "Text"
+        CboEmploymentType.ValueMember = "Value"
+        CboEmploymentType.Items.Add(New With {
+        .Value = EmploymentType1.EmploymentTypeID,
+        .Text = EmploymentType1.EmploymentTypeName
+        })
+        CboEmploymentType.Items.Add(New With {
+        .Value = EmploymentType2.EmploymentTypeID,
+        .Text = EmploymentType2.EmploymentTypeName
+        })
+        CboEmploymentType.Items.Add(New With {
+        .Value = EmploymentType3.EmploymentTypeID,
+        .Text = EmploymentType3.EmploymentTypeName
+        })
+        CboEmploymentType.Items.Add(New With {
+        .Value = EmploymentType4.EmploymentTypeID,
+        .Text = EmploymentType4.EmploymentTypeName
+        })
+        CboEmploymentType.Items.Add(New With {
+        .Value = EmploymentType5.EmploymentTypeID,
+        .Text = EmploymentType5.EmploymentTypeName
+        })
+        CboEmploymentType.SelectedIndex = 0
+        Txt_Company.Focus()
     End Sub
 
     Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
         If varStep = 1 Then
-            If Decision(My.Application.Info.AssemblyName, "Are you sure want to exit the First Guide?", LibApp.Ingrid.Global.PopupType.Confirmation, "By closing this first guide you will also close the application", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = MsgBoxResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure you want to exit the First Guide?", LibApp.Ingrid.Global.PopupType.Confirmation, "Proceeding will close both this guide and the application.", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = MsgBoxResult.Yes Then
                 Environment.Exit(0)
             Else
                 Me.Close()
@@ -124,8 +160,9 @@ Public Class FRMfirstguide
         UPwdStrength1.SLFPasswordStrengthText = Txt_Password.XOPwdStrengthText
     End Sub
 
-    Private Sub Txt_Password_KeyUp(sender As Object, e As KeyEventArgs) Handles Txt_Password.KeyUp
+    Private Sub TxtPassword_KeyUp(sender As Object, e As KeyEventArgs) Handles Txt_Password.KeyUp
         Call CheckPasswordStrength()
     End Sub
+
 End Class
 

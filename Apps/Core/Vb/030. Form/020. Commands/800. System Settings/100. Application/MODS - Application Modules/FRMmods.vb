@@ -29,8 +29,8 @@ Public Class FRMmods
 
     <SupportedOSPlatform("windows")>
     Private Sub CommmsMenu_EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-        If Not (varUserAccess.User(varDatabaseName, "MODS", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
-            Decision(My.Application.Info.AssemblyName, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+        If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "MODS", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+            Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
@@ -43,7 +43,7 @@ Public Class FRMmods
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
-        If Not (varUserAccess.User(varDatabaseName, "UAC", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+        If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "UAC", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
             Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
@@ -62,17 +62,17 @@ Public Class FRMmods
 
     <SupportedOSPlatform("windows")>
     Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
-        If Not (varUserAccess.User(varDatabaseName, "MODS", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
-            Decision(My.Application.Info.AssemblyName, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+        If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "MODS", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+            Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 
         Call GetRowID()
 
         If Convert.ToString(varFormProperties.RowID) = "-1" Then
-            Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         Else
-            If Decision(My.Application.Info.AssemblyName, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
                 If (CMDdar.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))) Then
                     Call GetData(True)
                     RaiseEvent EventDataChanged()

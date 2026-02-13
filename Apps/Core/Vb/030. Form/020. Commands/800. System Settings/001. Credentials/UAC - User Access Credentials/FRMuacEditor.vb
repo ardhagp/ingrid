@@ -102,19 +102,19 @@ Public Class FRMuacEditor
         Call CheckAllInput()
 
         If ((varFormProperties.IsNew) AndAlso (varFormProperties.Field01.ToString Is String.Empty)) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure you have Employee data selected.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "Make sure you have Employee data selected.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf (TxtUsername.XOSQLText = String.Empty) OrElse (TxtPassword.XOSQLText = String.Empty) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure you have Username and Password properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "Make sure you have Username and Password properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf ((varIsPWDChange) AndAlso (TxtPassword.TextLength < varMinPasswordLength)) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "Make sure your Password meets the minimum criteria.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "Make sure your Password meets the minimum criteria.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf ((varFormProperties.IsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtUsername.XOSQLText))) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Username already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "This Username already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         ElseIf (Not (varFormProperties.IsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtUsername.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
-            Decision(My.Application.Info.AssemblyName, varMessageCannotSave & Environment.NewLine & "This Username already used by another employee.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "This Username already used by another employee.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
             Return
         End If
 

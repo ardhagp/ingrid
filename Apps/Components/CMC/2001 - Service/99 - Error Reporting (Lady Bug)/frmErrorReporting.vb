@@ -18,11 +18,14 @@ Public Class FRMerrorreporting
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Public Sub New(ByVal proLog As Ladybug.Log.Fields, Optional dbengine As Database.Engine.SQLiteV3 = Nothing)
+    Public Sub New(proLog As Ladybug.Log.Fields, Optional dbengine As Database.Engine.SQLiteV3 = Nothing)
         InitializeComponent()
 
         TxtErrorType.Text = proLog.TypeOfFaulty.ToString()
         TxtErrorMessage.Text = proLog.Message & System.Environment.NewLine & System.Environment.NewLine & "Sender: " & proLog.FromSender
+        If proLog.Query <> String.Empty AndAlso proLog.AppVersion = "0.0.0.0" Then
+            TxtErrorMessage.AppendText(System.Environment.NewLine & System.Environment.NewLine & "Query: " & proLog.Query)
+        End If
         TxtErrorNumber.Text = CStr(proLog.Number)
         TxtAppBuild.Text = proLog.AppVersion
         ChkErrorReporting.Enabled = proLog.ShowErrorReporting
