@@ -10,7 +10,7 @@ Namespace Database.Engine
         Private ReadOnly varCommand(1) As SqlClient.SqlCommand
         Private varAdapter As SqlClient.SqlDataAdapter
 
-        Private ReadOnly V_MSSQL2008 As New Connect.Mssqlserver2008connection
+        Private ReadOnly varMsSql2008 As New Connect.Mssqlserver2008connection
 
         Public Enum DatabaseID
             DbDefault
@@ -50,7 +50,7 @@ Namespace Database.Engine
 
             Dim varSuccess As Boolean
             Try
-                varConnection(1) = New SqlClient.SqlConnection(V_MSSQL2008.Mssql2008standard(databaseproperties.ServerAddress, databaseproperties.ServerPort, databaseproperties.DatabaseName, databaseproperties.Username, databaseproperties.Password))
+                varConnection(1) = New SqlClient.SqlConnection(varMsSql2008.Mssql2008standard(databaseproperties.ServerAddress, databaseproperties.ServerPort, databaseproperties.DatabaseName, databaseproperties.Username, databaseproperties.Password))
                 varConnection(1).Open()
                 varSuccess = True
             Catch ex As SqlClient.SqlException
@@ -86,7 +86,7 @@ Namespace Database.Engine
         ''' <param name="databasename"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Function GetDataRow(ByVal query As String, ByVal databasename As String) As SqlClient.SqlDataReader ', ByVal MyConnection As SqlClient.SqlConnection, ByVal MyCommand As SqlClient.SqlCommand) As SqlClient.SqlDataReader
+        Public Function GetDataRow(query As String, databasename As String) As SqlClient.SqlDataReader
             Dim varDataReader(1) As SqlClient.SqlDataReader
 
             Try
@@ -108,6 +108,7 @@ Namespace Database.Engine
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -128,6 +129,7 @@ Namespace Database.Engine
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -175,6 +177,7 @@ Namespace Database.Engine
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -233,6 +236,7 @@ Namespace Database.Engine
                     .FromSender = "[GetDataSet] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = dbr.Query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -305,6 +309,7 @@ Namespace Database.Engine
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = dbr.Query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -323,6 +328,7 @@ Namespace Database.Engine
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = dbr.Query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -360,6 +366,7 @@ Namespace Database.Engine
                     .FromSender = "[PushData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -455,6 +462,7 @@ Namespace Database.Engine
                     .FromSender = "[FillDataset] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True

@@ -8,6 +8,7 @@
     Public varDatabaseRequestMssql2008(1) As CMCv.Database.Adapter.MSSQL2008.Display.Request
     Public varDatabaseRequestMysql(1) As CMCv.Database.Adapter.MySQL.Display.Request
     Public varDatabaseDisplayMssql2008 As New CMCv.Database.Adapter.MSSQL2008.Execute
+    Public varDatabaseDisplayMysql As New CMCv.Database.Adapter.MySQL.Execute
 
     Public varSecurityEncrypt As New CMCv.Security.Encrypt
 

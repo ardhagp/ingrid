@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
 Public Class FRMlogin
-#Region "Variables"
+#Region "Declaration"
     Public Event EventLoginSuccess()
     Public Event EventLoginFailed()
 
@@ -76,7 +76,7 @@ Public Class FRMlogin
                 .IsAdministrator = CMDuac.Login.GetAdministrator(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
             End With
 
-            varLogUser.LoginSuccess(varDatabaseName, varDatabaseEngine, varProperties.EmployeeID)
+            varLogUser.LoginSuccess(varDatabaseName, varDatabaseEngineE, varProperties.EmployeeID)
 
             Dim clsLog As New Ladybug.Log.Events
             With proLog

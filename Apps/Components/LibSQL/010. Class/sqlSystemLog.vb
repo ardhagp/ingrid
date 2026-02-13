@@ -13,26 +13,26 @@ Namespace SystemLog.Activity
                     varDatabaseRequestMssql2008(0) = String.Format("insert into dbo.[[sys]]log](log_user, log_date, log_message, log_machine, log_os, log_appver) values('N/A', getdate(), 'Failed login with username : {0}', '{1}', '{2}', '{3}');", username, My.Computer.Name, My.Computer.Info.OSFullName, varAppVer)
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(0))
                 ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(0) = String.Format("insert into sys_log(log_user, log_date, log_message, log_machine, log_os, log_appver) values('N/A', getdate(), 'Failed login with username : {0}', '{1}', '{2}', '{3}');", username, My.Computer.Name, My.Computer.Info.OSFullName, varAppVer)
+                    varDatabaseRequestMysql(0) = $"insert into sys_log(log_user, log_date, log_message, log_machine, log_os, log_appver) values('N/A', now(), 'Failed login with username : {username}', '{My.Computer.Name}', '{My.Computer.Info.OSFullName}', '{varAppVer}');"
                     varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(0))
                 End If
             Catch ex As Exception
-                Decision(My.Application.Info.AssemblyName, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             End Try
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Sub LoginSuccess(databasename As String, dbengine As String, employeeid As String)
+        Public Sub LoginSuccess(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, employeeid As String)
             Try
-                If dbengine = "MSSQL" Then 'Run if MSSQL
+                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                     varDatabaseRequestMssql2008(0) = String.Format("insert into dbo.[[sys]]log](log_user, log_date, log_message, log_machine, log_os, log_appver) values('{0}', getdate(), 'Login Success', '{1}', '{2}', '{3}');", employeeid, My.Computer.Name, My.Computer.Info.OSFullName, varAppVer)
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(0))
-                ElseIf dbengine = "MYSQL" Then 'Run if MYSQL    
-                    varDatabaseRequestMysql(0) = String.Format("insert into sys_log(log_user, log_date, log_message, log_machine, log_os, log_appver) values('{0}', getdate(), 'Login Success', '{1}', '{2}', '{3}');", employeeid, My.Computer.Name, My.Computer.Info.OSFullName, varAppVer)
+                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL    
+                    varDatabaseRequestMysql(0) = $"insert into sys_log(log_user, log_date, log_message, log_machine, log_os, log_appver) values('{employeeid}', now(), 'Login Success', '{My.Computer.Name}', '{My.Computer.Info.OSFullName}', '{varAppVer}');"
                     varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(0))
                 End If
             Catch ex As Exception
-                Decision(My.Application.Info.AssemblyName, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             End Try
         End Sub
 
@@ -43,11 +43,11 @@ Namespace SystemLog.Activity
                     varDatabaseRequestMssql2008(0) = String.Format("insert into dbo.[[sys]]log](log_user, log_date, log_message, log_machine, log_os, log_appver) values('{0}', getdate(), 'Logout', '{1}', '{2}', '{3}');", employeeid, My.Computer.Name, My.Computer.Info.OSFullName, varAppVer)
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(0))
                 ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL    
-                    varDatabaseRequestMysql(0) = String.Format("insert into dbo.[[sys]]log](log_user, log_date, log_message, log_machine, log_os, log_appver) values('{0}', getdate(), 'Logout', '{1}', '{2}', '{3}');", employeeid, My.Computer.Name, My.Computer.Info.OSFullName, varAppVer)
+                    varDatabaseRequestMysql(0) = $"insert into sys_log(log_user, log_date, log_message, log_machine, log_os, log_appver) values('{employeeid}', now(), 'Logout', '{My.Computer.Name}', '{My.Computer.Info.OSFullName}', '{varAppVer}');"
                     varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(0))
                 End If
             Catch ex As Exception
-                Decision(My.Application.Info.AssemblyName, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             End Try
         End Sub
     End Class
@@ -62,11 +62,11 @@ Namespace SystemLog.Activity
                     varDatabaseReader(0) = String.Format("insert into dbo.[[sys]]log](log_user, log_date, log_message, log_machine, log_os, log_appver) values('N/A', getdate(), 'INGRID start running.', '{0}', '{1}', '{2}');", My.Computer.Name, My.Computer.Info.OSFullName, varAppVer)
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseReader(0))
                 ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseReader(0) = String.Format("insert into sys_log(log_user, log_date, log_message, log_machine, log_os, log_appver) values('N/A', now(), 'INGRID start running.', '{0}', '{1}', '{2}');", My.Computer.Name, My.Computer.Info.OSFullName, varAppVer)
+                    varDatabaseReader(0) = $"insert into sys_log(log_user, log_date, log_message, log_machine, log_os, log_appver) values('N/A', now(), 'INGRID start running.', '{My.Computer.Name}', '{My.Computer.Info.OSFullName}', '{varAppVer}');"
                     varDatabaseEngineMysql.PushData(databasename, varDatabaseReader(0))
                 End If
             Catch ex As Exception
-                Decision(My.Application.Info.AssemblyName, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             End Try
         End Sub
     End Class

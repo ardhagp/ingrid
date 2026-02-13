@@ -47,7 +47,7 @@ Namespace CMDuac
                         varDatabaseRequestMysql(1).Query = String.Format("select usr.user_id from sys_user usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", username, CMCv.Security.Encrypt.MD5(password))
                         varUserID = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
 
-                        varDatabaseRequestMysql(1).Query = String.Format("update sys_user set user_lastlogin = getdate() where user_id = '{0}'", varUserID)
+                        varDatabaseRequestMysql(1).Query = String.Format("update sys_user set user_lastlogin = now() where user_id = '{0}'", varUserID)
                         varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
                     End If
                 End If
@@ -73,7 +73,7 @@ Namespace CMDuac
                     varDatabaseRequestMssql2008(1).Query = String.Format("select usr.user_employee from dbo.sys_user usr where usr.user_id = '{0}';", uid)
                     varEmployeeID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
                 ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = String.Format("select usr.user_employee from sys_user usr where usr.user_id = '{0}';", uid)
+                    varDatabaseRequestMysql(1).Query = $"select usr.user_employee from sys_user usr where usr.user_id = '{uid}';"
                     varEmployeeID = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
                 End If
             Catch ex As Exception
@@ -91,7 +91,7 @@ Namespace CMDuac
                     varDatabaseRequestMssql2008(1).Query = String.Format("select emp.employee_fullname from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
                     varFullName = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
                 ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = String.Format("select emp.employee_fullname from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{0}')", uid)
+                    varDatabaseRequestMysql(1).Query = $"select emp.employee_fullname from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{uid}')"
                     varFullName = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
                 End If
             Catch ex As Exception
@@ -109,7 +109,7 @@ Namespace CMDuac
                     varDatabaseRequestMssql2008(1).Query = String.Format("select emp.employee_fullname from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
                     varFullName = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
                 ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = String.Format("select emp.employee_fullname from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{0}')", uid)
+                    varDatabaseRequestMysql(1).Query = $"select emp.employee_fullname from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{uid}')"
                     varFullName = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
                 End If
             Catch ex As Exception
@@ -132,7 +132,7 @@ Namespace CMDuac
                     varDatabaseRequestMssql2008(1).Query = String.Format("select emp.employee_number from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
                     varEmployeeNumber = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
                 ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = String.Format("select emp.employee_number from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
+                    varDatabaseRequestMysql(1).Query = $"select emp.employee_number from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{uid}')"
                     varEmployeeNumber = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
                 End If
             Catch ex As Exception
@@ -155,7 +155,7 @@ Namespace CMDuac
                     varDatabaseRequestMssql2008(1).Query = String.Format("select emp.employee_gender from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
                     varEmployeeNumber = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
                 ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = String.Format("select emp.employee_gender from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{0}')", uid)
+                    varDatabaseRequestMysql(1).Query = $"select emp.employee_gender from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{uid}')"
                     varEmployeeNumber = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
                 End If
             Catch ex As Exception
@@ -179,8 +179,8 @@ Namespace CMDuac
                                                         "inner join dbo.man_position p on p.position_id = emp.employee_position where (usr.[user_id] = '{0}')", uid)
                     varEmployeeNumber = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
                 ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = String.Format("select p.position_name from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee " &
-                                                        "inner join man_position p on p.position_id = emp.employee_position where (usr.user_id = '{0}')", uid)
+                    varDatabaseRequestMysql(1).Query = $"select p.position_name from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee " &
+                                                        $"inner join man_position p on p.position_id = emp.employee_position where (usr.user_id = '{uid}')"
                     varEmployeeNumber = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
                 End If
             Catch ex As Exception
@@ -241,7 +241,7 @@ Namespace CMDuac
                     varDatabaseRequestMssql2008(0).Query = String.Format("SELECT f.file_content FROM db_universe_erp_file.dbo.sto_file f where f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_parent = '{0}' ;", varUserID)
                     varFileStream = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), FileStream)
                 ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(0).Query = String.Format("SELECT f.file_content FROM db_universe_erp_file.dbo.sto_file f where f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_parent = '{0}' ;", varUserID)
+                    varDatabaseRequestMysql(0).Query = $"SELECT f.file_content FROM db_universe_erp_file.dbo.sto_file f where f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_parent = '{varUserID}' ;"
                     varFileStream = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), FileStream)
                 End If
 
@@ -268,7 +268,7 @@ Namespace CMDuac
                     varDatabaseRequestMssql2008(0).Query = String.Format("select u.user_root from dbo.sys_user u where u.user_id = '{0}'", uid)
                     varIsAdministrator = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Boolean)
                 ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(0).Query = String.Format("select u.user_root from sys_user u where u.user_id = '{0}'", uid)
+                    varDatabaseRequestMysql(0).Query = $"select u.user_root from sys_user u where u.user_id = '{uid}'"
                     varIsAdministrator = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Boolean)
                 End If
             Catch ex As Exception
@@ -307,12 +307,12 @@ Namespace CMDuac
                 varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TUAC")
             ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run in MYSQL
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
-                    varDatabaseRequestMysql(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as `user_root`, usr.user_lastlogin, " &
-                                                            "usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee order by em.employee_fullname")
+                    varDatabaseRequestMysql(0).Query = $"select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as `user_root`, usr.user_lastlogin, " &
+                                                       $"usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee order by em.employee_fullname"
                 Else
-                    varDatabaseRequestMysql(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as `user_root`, usr.user_lastlogin, " &
-                                                            "usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where (em.employee_number = '{0}') or " &
-                                                            "(em.employee_fullname like '%{0}%') or (usr.user_username = '{0}') order by em.employee_fullname", find.XOSQLText)
+                    varDatabaseRequestMysql(0).Query = $"select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as `user_root`, usr.user_lastlogin, " &
+                                                       $"usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where (em.employee_number = '{find.XOSQLText}') or " &
+                                                       $"(em.employee_fullname like '%{find.XOSQLText}%') or (usr.user_username = '{find.XOSQLText}') order by em.employee_fullname"
                 End If
                 varDatabaseRequestMysql(0).DataGrid = datagrid
                 varDatabaseRequestMysql(0).StatusBar = statusbar
@@ -333,7 +333,7 @@ Namespace CMDuac
                     varDatabaseRequestMssql2008(1).Query = String.Format("delete from dbo.sys_user where (user_id = '{0}')", rowid)
                     varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = String.Format("delete from sys_user where (user_id = '{0}')", rowid)
+                    varDatabaseRequestMysql(1).Query = $"delete from sys_user where (user_id = '{rowid}')"
                     varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
                 End If
                 varSuccess = True

@@ -39,7 +39,7 @@ Partial Class FRMlogin
         ' 
         PnlBottomButton.Controls.Add(BtnCancel)
         PnlBottomButton.Controls.Add(BtnLogin)
-        PnlBottomButton.Location = New Point(0, 265)
+        PnlBottomButton.Location = New Point(0, 259)
         PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
         PnlBottomButton.Size = New Size(630, 97)
         PnlBottomButton.Controls.SetChildIndex(BtnLogin, 0)
@@ -48,7 +48,7 @@ Partial Class FRMlogin
         ' pnl_
         ' 
         pnl_.Margin = New Padding(7, 5, 7, 5)
-        pnl_.Size = New Size(630, 104)
+        pnl_.Size = New Size(630, 110)
         ' 
         ' SLFPanel
         ' 
@@ -57,7 +57,7 @@ Partial Class FRMlogin
         SLFPanel.Controls.Add(TxtPassword)
         SLFPanel.Controls.Add(TxtUsername)
         SLFPanel.Margin = New Padding(7, 5, 7, 5)
-        SLFPanel.Size = New Size(630, 362)
+        SLFPanel.Size = New Size(630, 356)
         SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
         SLFPanel.Controls.SetChildIndex(TxtUsername, 0)
         SLFPanel.Controls.SetChildIndex(TxtPassword, 0)
@@ -144,7 +144,7 @@ Partial Class FRMlogin
         ' TxtPassword
         ' 
         TxtPassword.AcceptsReturn = True
-        TxtPassword.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPassword.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TxtPassword.Location = New Point(181, 128)
         TxtPassword.Margin = New Padding(6, 5, 6, 5)
         TxtPassword.MaxLength = 255
@@ -211,7 +211,6 @@ Partial Class FRMlogin
         ClientSize = New Size(630, 488)
         ControlBox = False
         FormBorderStyle = FormBorderStyle.FixedDialog
-        KeyPreview = True
         Margin = New Padding(10, 5, 10, 5)
         Name = "FRMlogin"
         PnlBottomButton.ResumeLayout(False)

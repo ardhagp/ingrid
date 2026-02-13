@@ -130,6 +130,7 @@ Namespace Database.Engine
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -150,6 +151,7 @@ Namespace Database.Engine
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -210,6 +212,7 @@ Namespace Database.Engine
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -280,6 +283,7 @@ Namespace Database.Engine
                     .FromSender = "[GetDataSet] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = dbr.Query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -367,6 +371,7 @@ Namespace Database.Engine
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = dbr.Query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -385,6 +390,7 @@ Namespace Database.Engine
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = dbr.Query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -414,7 +420,7 @@ Namespace Database.Engine
         ''' database selection (USE databasename) before running the query.
         ''' </param>
         <SupportedOSPlatform("windows")>
-        Public Sub PushData(databasename As String, ByVal query As String)
+        Public Sub PushData(databasename As String, query As String)
             Try
                 If Not varConnection(1).Ping Then
                     varConnection(1).Close()
@@ -435,6 +441,7 @@ Namespace Database.Engine
                     .FromSender = "[PushData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
@@ -463,7 +470,7 @@ Namespace Database.Engine
         ''' Errors are logged through the Ladybug logging system.
         ''' </returns>
         <SupportedOSPlatform("windows")>
-        Public Function PushImage(ByVal cmd As MySqlClient.MySqlCommand) As Boolean
+        Public Function PushImage(cmd As MySqlClient.MySqlCommand) As Boolean
             Dim varSuccess As Boolean
 
             Try
@@ -553,6 +560,7 @@ Namespace Database.Engine
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
+                    .Query = query
                     .Number = ex.HResult
                     .ResumeNext = True
                     .SaveInBetterLog = True
