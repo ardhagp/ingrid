@@ -5,7 +5,7 @@ Namespace CMDacbk
     Public Class View
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(databasename As String, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             Dim varWhere As String = "where "
 
             If (find.Text = String.Empty) OrElse (forcerefresh) Then

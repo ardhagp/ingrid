@@ -25,16 +25,16 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            ChkAddNew = New chk(components)
-            BtnSave = New btn(components)
-            BtnCancel = New btn(components)
-            pctbxPhoto = New pctbx(components)
-            BtnBrowsePhoto = New btn(components)
+            ChkAddNew = New CMCv.UI.Control.chk(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
+            pctbxPhoto = New CMCv.UI.Control.pctbx(components)
+            BtnBrowsePhoto = New CMCv.UI.Control.btn(components)
             OfdPhoto = New OpenFileDialog()
-            pcbxFrame = New pctbx(components)
+            pcbxFrame = New CMCv.UI.Control.pctbx(components)
             tpPermissions = New TabPage()
-            GbxModulesRoles = New gbx(components)
-            DgnModulesRoles = New dgn(components)
+            GbxModulesRoles = New CMCv.UI.Control.gbx(components)
+            DgnModulesRoles = New CMCv.UI.Control.dgn(components)
             modulegroup_name = New DataGridViewTextBoxColumn()
             module_code = New DataGridViewTextBoxColumn()
             useraccess_view = New DataGridViewCheckBoxColumn()
@@ -44,44 +44,44 @@
             useraccess_reports = New DataGridViewCheckBoxColumn()
             useraccess_id = New DataGridViewTextBoxColumn()
             module_id = New DataGridViewTextBoxColumn()
-            GbxCredetials = New gbx(components)
-            ULbl7 = New ULbl()
-            TxtLogin = New txt(components)
+            GbxCredetials = New CMCv.UI.Control.gbx(components)
+            ULbl7 = New CMCv.UI.Control.ULbl()
+            TxtLogin = New CMCv.UI.Control.txt(components)
             tpWorkIn = New TabPage()
-            ULbl14 = New ULbl()
-            ULbl13 = New ULbl()
-            ULbl12 = New ULbl()
-            ULbl11 = New ULbl()
-            ULbl10 = New ULbl()
-            ULbl9 = New ULbl()
-            ULbl6 = New ULbl()
-            ChkActiveEmployee = New chk(components)
-            TxtEmployeeNickname = New txt(components)
-            TxtContractType = New txt(components)
-            TxtContractTypeID = New txt(components)
-            TxtEmployeeNumber = New txt(components)
-            TxtGrade = New txt(components)
-            TxtPositionID = New txt(components)
-            TxtPosition = New txt(components)
-            TxtGradeID = New txt(components)
-            BtnBrowsePosition = New btn(components)
-            TxTDepartment = New txt(components)
-            TxtCompany = New txt(components)
+            ULbl14 = New CMCv.UI.Control.ULbl()
+            ULbl13 = New CMCv.UI.Control.ULbl()
+            ULbl12 = New CMCv.UI.Control.ULbl()
+            ULbl11 = New CMCv.UI.Control.ULbl()
+            ULbl10 = New CMCv.UI.Control.ULbl()
+            ULbl9 = New CMCv.UI.Control.ULbl()
+            ULbl6 = New CMCv.UI.Control.ULbl()
+            ChkActiveEmployee = New CMCv.UI.Control.chk(components)
+            TxtEmployeeNickname = New CMCv.UI.Control.txt(components)
+            TxtContractType = New CMCv.UI.Control.txt(components)
+            TxtContractTypeID = New CMCv.UI.Control.txt(components)
+            TxtEmployeeNumber = New CMCv.UI.Control.txt(components)
+            TxtGrade = New CMCv.UI.Control.txt(components)
+            TxtPositionID = New CMCv.UI.Control.txt(components)
+            TxtPosition = New CMCv.UI.Control.txt(components)
+            TxtGradeID = New CMCv.UI.Control.txt(components)
+            BtnBrowsePosition = New CMCv.UI.Control.btn(components)
+            TxTDepartment = New CMCv.UI.Control.txt(components)
+            TxtCompany = New CMCv.UI.Control.txt(components)
             tpGeneral = New TabPage()
-            ULbl1 = New ULbl()
-            ULbl5 = New ULbl()
-            ULbl4 = New ULbl()
-            ULbl3 = New ULbl()
-            ULbl16 = New ULbl()
-            ULbl2 = New ULbl()
-            TxtAddress = New txt(components)
-            TxtBirthPlace = New txt(components)
-            DtpBirthDate = New dtp(components)
-            TxtPersonalID = New txt(components)
-            CboGender = New cbo(components)
-            TxtFullName = New txt(components)
-            TbctlEmployee = New tbctl(components)
-            ULbl8 = New ULbl()
+            ULbl1 = New CMCv.UI.Control.ULbl()
+            ULbl5 = New CMCv.UI.Control.ULbl()
+            ULbl4 = New CMCv.UI.Control.ULbl()
+            ULbl3 = New CMCv.UI.Control.ULbl()
+            ULbl16 = New CMCv.UI.Control.ULbl()
+            ULbl2 = New CMCv.UI.Control.ULbl()
+            TxtAddress = New CMCv.UI.Control.txt(components)
+            TxtBirthPlace = New CMCv.UI.Control.txt(components)
+            DtpBirthDate = New CMCv.UI.Control.dtp(components)
+            TxtPersonalID = New CMCv.UI.Control.txt(components)
+            CboGender = New CMCv.UI.Control.cbo(components)
+            TxtFullName = New CMCv.UI.Control.txt(components)
+            TbctlEmployee = New CMCv.UI.Control.tbctl(components)
+            ULbl8 = New CMCv.UI.Control.ULbl()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -1278,39 +1278,39 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnCancel As btn
-        Friend WithEvents BtnSave As btn
-        Friend WithEvents ChkAddNew As chk
-        Friend WithEvents BtnBrowsePhoto As btn
-        Friend WithEvents pctbxPhoto As pctbx
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.btn
+        Friend WithEvents pctbxPhoto As CMCv.UI.Control.pctbx
         Friend WithEvents OfdPhoto As OpenFileDialog
-        Friend WithEvents pcbxFrame As pctbx
-        Friend WithEvents TbctlEmployee As tbctl
+        Friend WithEvents pcbxFrame As CMCv.UI.Control.pctbx
+        Friend WithEvents TbctlEmployee As CMCv.UI.Control.tbctl
         Friend WithEvents tpGeneral As TabPage
-        Friend WithEvents TxtPersonalID As txt
-        Friend WithEvents CboGender As cbo
-        Friend WithEvents TxtFullName As txt
+        Friend WithEvents TxtPersonalID As CMCv.UI.Control.txt
+        Friend WithEvents CboGender As CMCv.UI.Control.cbo
+        Friend WithEvents TxtFullName As CMCv.UI.Control.txt
         Friend WithEvents tpWorkIn As TabPage
-        Friend WithEvents TxtEmployeeNickname As txt
-        Friend WithEvents TxtContractType As txt
-        Friend WithEvents TxtContractTypeID As txt
-        Friend WithEvents TxtEmployeeNumber As txt
-        Friend WithEvents TxtGrade As txt
-        Friend WithEvents TxtPositionID As txt
-        Friend WithEvents TxtPosition As txt
-        Friend WithEvents TxtGradeID As txt
-        Friend WithEvents BtnBrowsePosition As btn
-        Friend WithEvents TxTDepartment As txt
-        Friend WithEvents TxtCompany As txt
+        Friend WithEvents TxtEmployeeNickname As CMCv.UI.Control.txt
+        Friend WithEvents TxtContractType As CMCv.UI.Control.txt
+        Friend WithEvents TxtContractTypeID As CMCv.UI.Control.txt
+        Friend WithEvents TxtEmployeeNumber As CMCv.UI.Control.txt
+        Friend WithEvents TxtGrade As CMCv.UI.Control.txt
+        Friend WithEvents TxtPositionID As CMCv.UI.Control.txt
+        Friend WithEvents TxtPosition As CMCv.UI.Control.txt
+        Friend WithEvents TxtGradeID As CMCv.UI.Control.txt
+        Friend WithEvents BtnBrowsePosition As CMCv.UI.Control.btn
+        Friend WithEvents TxTDepartment As CMCv.UI.Control.txt
+        Friend WithEvents TxtCompany As CMCv.UI.Control.txt
         Friend WithEvents tpPermissions As TabPage
-        Friend WithEvents GbxModulesRoles As gbx
-        Friend WithEvents DgnModulesRoles As dgn
-        Friend WithEvents DtpBirthDate As dtp
-        Friend WithEvents ChkActiveEmployee As chk
-        Friend WithEvents TxtBirthPlace As txt
-        Friend WithEvents TxtAddress As txt
-        Friend WithEvents GbxCredetials As gbx
-        Friend WithEvents TxtLogin As txt
+        Friend WithEvents GbxModulesRoles As CMCv.UI.Control.gbx
+        Friend WithEvents DgnModulesRoles As CMCv.UI.Control.dgn
+        Friend WithEvents DtpBirthDate As CMCv.UI.Control.dtp
+        Friend WithEvents ChkActiveEmployee As CMCv.UI.Control.chk
+        Friend WithEvents TxtBirthPlace As CMCv.UI.Control.txt
+        Friend WithEvents TxtAddress As CMCv.UI.Control.txt
+        Friend WithEvents GbxCredetials As CMCv.UI.Control.gbx
+        Friend WithEvents TxtLogin As CMCv.UI.Control.txt
         Friend WithEvents modulegroup_name As DataGridViewTextBoxColumn
         Friend WithEvents module_code As DataGridViewTextBoxColumn
         Friend WithEvents useraccess_view As DataGridViewCheckBoxColumn
@@ -1320,20 +1320,20 @@
         Friend WithEvents useraccess_reports As DataGridViewCheckBoxColumn
         Friend WithEvents useraccess_id As DataGridViewTextBoxColumn
         Friend WithEvents module_id As DataGridViewTextBoxColumn
-        Friend WithEvents ULbl8 As ULbl
-        Friend WithEvents ULbl5 As ULbl
-        Friend WithEvents ULbl4 As ULbl
-        Friend WithEvents ULbl3 As ULbl
-        Friend WithEvents ULbl16 As ULbl
-        Friend WithEvents ULbl2 As ULbl
-        Friend WithEvents ULbl14 As ULbl
-        Friend WithEvents ULbl13 As ULbl
-        Friend WithEvents ULbl12 As ULbl
-        Friend WithEvents ULbl11 As ULbl
-        Friend WithEvents ULbl10 As ULbl
-        Friend WithEvents ULbl9 As ULbl
-        Friend WithEvents ULbl6 As ULbl
-        Friend WithEvents ULbl7 As ULbl
-        Friend WithEvents ULbl1 As ULbl
+        Friend WithEvents ULbl8 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl16 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl14 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl13 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl12 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl11 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl10 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl9 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl6 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl7 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
     End Class
 End Namespace

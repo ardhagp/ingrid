@@ -21,8 +21,8 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnSave = New btn(components)
-            BtnCancel = New btn(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -102,7 +102,7 @@
 
         End Sub
 
-        Friend WithEvents BtnSave As CMCv.btn
-        Friend WithEvents BtnCancel As CMCv.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
     End Class
 End Namespace

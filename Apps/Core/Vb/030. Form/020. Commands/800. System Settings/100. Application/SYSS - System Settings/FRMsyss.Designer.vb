@@ -23,34 +23,34 @@ Namespace UI
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            TbctlSettings = New tbctl(components)
+            TbctlSettings = New CMCv.UI.Control.tbctl(components)
             tbInterface = New TabPage()
-            GbxPanels = New gbx(components)
-            ULbl3 = New ULbl()
-            ULbl2 = New ULbl()
-            ULbl1 = New ULbl()
-            CboProfile = New cbo(components)
-            CboStorage = New cbo(components)
-            CboNewsTicker = New cbo(components)
+            GbxPanels = New CMCv.UI.Control.gbx(components)
+            ULbl3 = New CMCv.UI.Control.ULbl()
+            ULbl2 = New CMCv.UI.Control.ULbl()
+            ULbl1 = New CMCv.UI.Control.ULbl()
+            CboProfile = New CMCv.UI.Control.cbo(components)
+            CboStorage = New CMCv.UI.Control.cbo(components)
+            CboNewsTicker = New CMCv.UI.Control.cbo(components)
             tbStorage = New TabPage()
-            GbxWatermark = New gbx(components)
-            ULbl7 = New ULbl()
-            ULbl6 = New ULbl()
-            CboWatermark = New cbo(components)
-            TxtWatermark = New txt(components)
-            Gbx1 = New gbx(components)
-            ULbl5 = New ULbl()
-            ULbl4 = New ULbl()
-            Lbl7 = New lbl(components)
+            GbxWatermark = New CMCv.UI.Control.gbx(components)
+            ULbl7 = New CMCv.UI.Control.ULbl()
+            ULbl6 = New CMCv.UI.Control.ULbl()
+            CboWatermark = New CMCv.UI.Control.cbo(components)
+            TxtWatermark = New CMCv.UI.Control.txt(components)
+            Gbx1 = New CMCv.UI.Control.gbx(components)
+            ULbl5 = New CMCv.UI.Control.ULbl()
+            ULbl4 = New CMCv.UI.Control.ULbl()
+            Lbl7 = New CMCv.UI.Control.lbl(components)
             nudUploadPDF = New NumericUpDown()
-            Lbl6 = New lbl(components)
+            Lbl6 = New CMCv.UI.Control.lbl(components)
             nudUploadPhoto = New NumericUpDown()
             tbSecurity = New TabPage()
-            Gbx2 = New gbx(components)
-            ULbl8 = New ULbl()
+            Gbx2 = New CMCv.UI.Control.gbx(components)
+            ULbl8 = New CMCv.UI.Control.ULbl()
             nudMinPassword = New NumericUpDown()
-            BtnClose = New btn(components)
-            BtnSave = New btn(components)
+            BtnClose = New CMCv.UI.Control.btn(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -535,33 +535,33 @@ Namespace UI
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents TbctlSettings As tbctl
+        Friend WithEvents TbctlSettings As CMCv.UI.Control.tbctl
         Friend WithEvents tbInterface As TabPage
-        Friend WithEvents CboProfile As cbo
+        Friend WithEvents CboProfile As CMCv.UI.Control.cbo
         Friend WithEvents tbStorage As TabPage
         Friend WithEvents tbSecurity As TabPage
-        Friend WithEvents CboNewsTicker As cbo
-        Friend WithEvents CboStorage As cbo
-        Friend WithEvents Gbx1 As gbx
-        Friend WithEvents Lbl7 As lbl
+        Friend WithEvents CboNewsTicker As CMCv.UI.Control.cbo
+        Friend WithEvents CboStorage As CMCv.UI.Control.cbo
+        Friend WithEvents Gbx1 As CMCv.UI.Control.gbx
+        Friend WithEvents Lbl7 As CMCv.UI.Control.lbl
         Friend WithEvents nudUploadPDF As NumericUpDown
-        Friend WithEvents Lbl6 As lbl
+        Friend WithEvents Lbl6 As CMCv.UI.Control.lbl
         Friend WithEvents nudUploadPhoto As NumericUpDown
-        Friend WithEvents GbxWatermark As gbx
-        Friend WithEvents TxtWatermark As txt
-        Friend WithEvents GbxPanels As gbx
-        Friend WithEvents Gbx2 As gbx
+        Friend WithEvents GbxWatermark As CMCv.UI.Control.gbx
+        Friend WithEvents TxtWatermark As CMCv.UI.Control.txt
+        Friend WithEvents GbxPanels As CMCv.UI.Control.gbx
+        Friend WithEvents Gbx2 As CMCv.UI.Control.gbx
         Friend WithEvents nudMinPassword As NumericUpDown
-        Friend WithEvents CboWatermark As cbo
-        Friend WithEvents ULbl3 As ULbl
-        Friend WithEvents ULbl2 As ULbl
-        Friend WithEvents ULbl1 As ULbl
-        Friend WithEvents ULbl7 As ULbl
-        Friend WithEvents ULbl6 As ULbl
-        Friend WithEvents ULbl5 As ULbl
-        Friend WithEvents ULbl4 As ULbl
-        Friend WithEvents ULbl8 As ULbl
-        Friend WithEvents BtnClose As btn
-        Friend WithEvents BtnSave As btn
+        Friend WithEvents CboWatermark As CMCv.UI.Control.cbo
+        Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl7 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl6 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl8 As CMCv.UI.Control.ULbl
+        Friend WithEvents BtnClose As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
     End Class
 End Namespace

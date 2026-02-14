@@ -22,7 +22,7 @@ Partial Class Rpt_Bsc
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        BtnClose = New btn(components)
+        BtnClose = New CMCv.UI.Control.btn(components)
         Rv_ = New ReportViewer()
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -119,7 +119,7 @@ Partial Class Rpt_Bsc
         ResumeLayout(False)
         PerformLayout()
     End Sub
-    Friend WithEvents BtnClose As btn
+    Friend WithEvents BtnClose As CMCv.UI.Control.btn
     'TODO: Microsoft.Reporting.WinForms.ReportViewer no longer supported.
     'Microsoft.Reporting.WinForms.ReportViewer
     Public WithEvents Rv_ As ReportViewer

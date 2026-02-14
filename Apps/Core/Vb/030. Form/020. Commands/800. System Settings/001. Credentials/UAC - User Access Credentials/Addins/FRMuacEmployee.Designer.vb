@@ -24,15 +24,15 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnAddinEmployee = New dgn(components)
+            DgnAddinEmployee = New CMCv.UI.Control.dgn(components)
             employee_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
             departement_code = New DataGridViewTextBoxColumn()
             position_code = New DataGridViewTextBoxColumn()
             employee_number = New DataGridViewTextBoxColumn()
             employee_fullname = New DataGridViewTextBoxColumn()
-            BtnOk = New btn(components)
-            BtnCancel = New btn(components)
+            BtnOk = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
             PnlBottomButton.SuspendLayout()
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -255,9 +255,9 @@
             PerformLayout()
 
         End Sub
-        Friend WithEvents BtnCancel As CMCv.btn
-        Friend WithEvents BtnOk As CMCv.btn
-        Friend WithEvents DgnAddinEmployee As CMCv.dgn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnOk As CMCv.UI.Control.btn
+        Friend WithEvents DgnAddinEmployee As CMCv.UI.Control.dgn
         Friend WithEvents employee_id As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
         Friend WithEvents departement_code As DataGridViewTextBoxColumn

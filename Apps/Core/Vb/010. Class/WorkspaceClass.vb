@@ -41,7 +41,7 @@ Public Class WorkspaceClass
 
     'Tools
     Private WithEvents Frm_say As New UI.FRMsay
-    Private WithEvents Frm_phtrz As New FRMphtrz
+    Private WithEvents Frm_phtrz As New CMCv.UI.FRMphtrz
 
     'Others
     Private WithEvents Frm_dummy As New UI.FRMdummy
@@ -49,7 +49,7 @@ Public Class WorkspaceClass
 #End Region
 
     <SupportedOSPlatform("windows")>
-    Public Sub Open(mainframe As Form, commandcode As String, Optional statusbar As CMCv.stt = Nothing)
+    Public Sub Open(mainframe As Form, commandcode As String, Optional statusbar As CMCv.UI.Control.stt = Nothing)
         Try
             varCommandCode = commandcode.ToString.Split("-".ToCharArray, StringSplitOptions.RemoveEmptyEntries)
 
@@ -118,7 +118,7 @@ Public Class WorkspaceClass
                 Case "DUMMY"
                     EnsureOpen(Of UI.FRMdummy)(Frm_dummy, IMAGEDB.Main.ImageLibrary.DUMMY_ICON, "[DUMMY] Dummy Form", "Dummy Form for testing", False, mainframe)
                 Case "PHTRZ"
-                    EnsureOpen(Of FRMphtrz)(Frm_phtrz, IMAGEDB.Main.ImageLibrary.COMPRESS_ICON, varModuleCode, varModuleCaption, True, mainframe)
+                    EnsureOpen(Of CMCv.UI.FRMphtrz)(Frm_phtrz, IMAGEDB.Main.ImageLibrary.COMPRESS_ICON, varModuleCode, varModuleCaption, True, mainframe)
                 Case "RESET"
                     EnsureOpen(Of UI.FRMreset)(Frm_reset, IMAGEDB.Main.ImageLibrary.RESET_ICON, "[RESET] Reset Your Application Settings", "Restore your application to initial configuration", True, mainframe)
             End Select

@@ -24,19 +24,19 @@
             Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            BtnSave = New btn(components)
-            BtnCancel = New btn(components)
-            TxtEmployeeNumber = New txt(components)
-            TxtEmployeeFullName = New txt(components)
-            TxtUsername = New txt(components)
-            TxtPassword = New txt(components)
-            BtnBrowseEmployee = New btn(components)
-            ChkAddNew = New chk(components)
-            LblPwdText = New lbl(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
+            TxtEmployeeNumber = New CMCv.UI.Control.txt(components)
+            TxtEmployeeFullName = New CMCv.UI.Control.txt(components)
+            TxtUsername = New CMCv.UI.Control.txt(components)
+            TxtPassword = New CMCv.UI.Control.txt(components)
+            BtnBrowseEmployee = New CMCv.UI.Control.btn(components)
+            ChkAddNew = New CMCv.UI.Control.chk(components)
+            LblPwdText = New CMCv.UI.Control.lbl(components)
             ProgressBar1 = New ProgressBar()
-            TbctlAccess = New tbctl(components)
+            TbctlAccess = New CMCv.UI.Control.tbctl(components)
             TpPermissions = New TabPage()
-            DgnUACe = New dgn(components)
+            DgnUACe = New CMCv.UI.Control.dgn(components)
             modulegroup_name = New DataGridViewTextBoxColumn()
             module_code = New DataGridViewTextBoxColumn()
             useraccess_view = New DataGridViewCheckBoxColumn()
@@ -47,12 +47,12 @@
             useraccess_id = New DataGridViewTextBoxColumn()
             module_id = New DataGridViewTextBoxColumn()
             TpAccessibility = New TabPage()
-            ChkAdministrator = New chk(components)
-            ChkLocked = New chk(components)
-            ULbl1 = New ULbl()
-            ULbl2 = New ULbl()
-            ULbl3 = New ULbl()
-            ULbl4 = New ULbl()
+            ChkAdministrator = New CMCv.UI.Control.chk(components)
+            ChkLocked = New CMCv.UI.Control.chk(components)
+            ULbl1 = New CMCv.UI.Control.ULbl()
+            ULbl2 = New CMCv.UI.Control.ULbl()
+            ULbl3 = New CMCv.UI.Control.ULbl()
+            ULbl4 = New CMCv.UI.Control.ULbl()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -620,22 +620,22 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnCancel As btn
-        Friend WithEvents BtnSave As btn
-        Friend WithEvents TxtEmployeeNumber As txt
-        Friend WithEvents TxtPassword As txt
-        Friend WithEvents TxtUsername As txt
-        Friend WithEvents TxtEmployeeFullName As txt
-        Friend WithEvents BtnBrowseEmployee As btn
-        Friend WithEvents ChkAddNew As chk
-        Friend WithEvents LblPwdText As lbl
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents TxtEmployeeNumber As CMCv.UI.Control.txt
+        Friend WithEvents TxtPassword As CMCv.UI.Control.txt
+        Friend WithEvents TxtUsername As CMCv.UI.Control.txt
+        Friend WithEvents TxtEmployeeFullName As CMCv.UI.Control.txt
+        Friend WithEvents BtnBrowseEmployee As CMCv.UI.Control.btn
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents LblPwdText As CMCv.UI.Control.lbl
         Friend WithEvents ProgressBar1 As ProgressBar
-        Friend WithEvents TbctlAccess As tbctl
+        Friend WithEvents TbctlAccess As CMCv.UI.Control.tbctl
         Friend WithEvents TpPermissions As TabPage
-        Friend WithEvents DgnUACe As dgn
+        Friend WithEvents DgnUACe As CMCv.UI.Control.dgn
         Friend WithEvents TpAccessibility As TabPage
-        Friend WithEvents ChkAdministrator As chk
-        Friend WithEvents ChkLocked As chk
+        Friend WithEvents ChkAdministrator As CMCv.UI.Control.chk
+        Friend WithEvents ChkLocked As CMCv.UI.Control.chk
         Friend WithEvents modulegroup_name As DataGridViewTextBoxColumn
         Friend WithEvents module_code As DataGridViewTextBoxColumn
         Friend WithEvents useraccess_view As DataGridViewCheckBoxColumn
@@ -645,9 +645,9 @@
         Friend WithEvents useraccess_reports As DataGridViewCheckBoxColumn
         Friend WithEvents useraccess_id As DataGridViewTextBoxColumn
         Friend WithEvents module_id As DataGridViewTextBoxColumn
-        Friend WithEvents ULbl4 As ULbl
-        Friend WithEvents ULbl3 As ULbl
-        Friend WithEvents ULbl2 As ULbl
-        Friend WithEvents ULbl1 As ULbl
+        Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
     End Class
 End Namespace

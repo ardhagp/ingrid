@@ -20,7 +20,7 @@ Partial Class Std_Fi_Fo
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        PnlBottomButton = New pnl(components)
+        PnlBottomButton = New cmcv.ui.control.pnl(components)
         imgLine = New Windows.Forms.PictureBox()
         PnlFind.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -114,6 +114,6 @@ Partial Class Std_Fi_Fo
 
     End Sub
 
-    Public WithEvents PnlBottomButton As pnl
+    Public WithEvents PnlBottomButton As CMCv.ui.control.pnl
     Friend WithEvents imgLine As Windows.Forms.PictureBox
 End Class

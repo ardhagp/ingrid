@@ -22,11 +22,11 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMsplash))
-            Pctbx1 = New pctbx(components)
+            Pctbx1 = New cmcv.ui.control.pctbx(components)
             _ExecuteTime = New Timer(components)
             tlp_ = New TableLayoutPanel()
-            LblTitle = New lbl(components)
-            LblAdditional = New lbl(components)
+            LblTitle = New cmcv.ui.control.lbl(components)
+            LblAdditional = New cmcv.ui.control.lbl(components)
             _LoadingTime = New Timer(components)
             CType(Pctbx1, ComponentModel.ISupportInitialize).BeginInit()
             tlp_.SuspendLayout()
@@ -130,11 +130,11 @@
 
         End Sub
 
-        Friend WithEvents Pctbx1 As CMCv.pctbx
+        Friend WithEvents Pctbx1 As CMCv.ui.control.pctbx
         Friend WithEvents _ExecuteTime As Timer
         Friend WithEvents tlp_ As TableLayoutPanel
         Friend WithEvents _LoadingTime As Timer
-        Friend WithEvents LblTitle As CMCv.lbl
-        Friend WithEvents LblAdditional As CMCv.lbl
+        Friend WithEvents LblTitle As CMCv.ui.control.lbl
+        Friend WithEvents LblAdditional As CMCv.ui.control.lbl
     End Class
 End Namespace

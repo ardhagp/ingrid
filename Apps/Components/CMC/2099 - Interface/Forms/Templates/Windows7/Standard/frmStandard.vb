@@ -42,7 +42,7 @@ Public Class frmStandard
     Public Function CheckTextInputs() As Integer
         Dim varViolation As Integer = 0
         Dim varAllTxt As New List(Of Windows.Forms.Control)
-        For Each _Txt As CMCv.txt In FindControlRecursive(varAllTxt, Me, GetType(CMCv.txt))
+        For Each _Txt As CMCv.UI.Control.txt In FindControlRecursive(varAllTxt, Me, GetType(CMCv.UI.Control.txt))
             If (_Txt.XOHarusDiisi) AndAlso _Txt.XOSQLText = String.Empty Then
                 varViolation += 1
             End If

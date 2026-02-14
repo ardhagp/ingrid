@@ -108,7 +108,7 @@ Namespace UI
 #Region "UNUSED : CreateMenu"
         <SupportedOSPlatform("windows")>
         Private Sub CreateMenu()
-            Dim varCommmsMenu As New CMCv.mnu
+            Dim varCommmsMenu As New CMCv.UI.Control.mnu
             Dim varItem As ToolStripMenuItem()
             Dim varItemSubmenu As ToolStripMenuItem()
             Dim varItemSeparator As ToolStripSeparator()

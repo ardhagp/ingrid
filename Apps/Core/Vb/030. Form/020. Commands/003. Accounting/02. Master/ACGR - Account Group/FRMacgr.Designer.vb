@@ -41,37 +41,37 @@
             Dim DataGridViewCellStyle38 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle40 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle39 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            CboCompany = New cbo(components)
-            Lbl3 = New lbl(components)
-            CboAccountingBook = New cbo(components)
-            Lbl2 = New lbl(components)
-            TbctlAccountGroup = New tbctl(components)
+            CboCompany = New CMCv.UI.Control.cbo(components)
+            Lbl3 = New CMCv.UI.Control.lbl(components)
+            CboAccountingBook = New CMCv.UI.Control.cbo(components)
+            Lbl2 = New CMCv.UI.Control.lbl(components)
+            TbctlAccountGroup = New CMCv.UI.Control.tbctl(components)
             tpAssets = New TabPage()
-            DgnACGRAssets = New dgn(components)
+            DgnACGRAssets = New CMCv.UI.Control.dgn(components)
             account_id_assets = New DataGridViewTextBoxColumn()
             account_num_assets = New DataGridViewTextBoxColumn()
             account_name_assets = New DataGridViewTextBoxColumn()
             account_enable_assets = New DataGridViewTextBoxColumn()
             tpLiabilities = New TabPage()
-            DgnACGRLiabities = New dgn(components)
+            DgnACGRLiabities = New CMCv.UI.Control.dgn(components)
             account_id_liability = New DataGridViewTextBoxColumn()
             account_num_liabilities = New DataGridViewTextBoxColumn()
             account_name_liabilities = New DataGridViewTextBoxColumn()
             account_enable_liabilities = New DataGridViewTextBoxColumn()
             tpEquity = New TabPage()
-            DgnACGREquity = New dgn(components)
+            DgnACGREquity = New CMCv.UI.Control.dgn(components)
             account_id_equity = New DataGridViewTextBoxColumn()
             account_num_equity = New DataGridViewTextBoxColumn()
             account_name_equity = New DataGridViewTextBoxColumn()
             account_enable_equity = New DataGridViewTextBoxColumn()
             tpRevenue = New TabPage()
-            DgnACGRRevenue = New dgn(components)
+            DgnACGRRevenue = New CMCv.UI.Control.dgn(components)
             account_id_revenue = New DataGridViewTextBoxColumn()
             account_num_revenue = New DataGridViewTextBoxColumn()
             account_name_revenue = New DataGridViewTextBoxColumn()
             account_enable_revenue = New DataGridViewTextBoxColumn()
             tpExpense = New TabPage()
-            DgnACGRExpense = New dgn(components)
+            DgnACGRExpense = New CMCv.UI.Control.dgn(components)
             account_id_expense = New DataGridViewTextBoxColumn()
             account_num_expense = New DataGridViewTextBoxColumn()
             account_name_expense = New DataGridViewTextBoxColumn()
@@ -730,21 +730,21 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents TbctlAccountGroup As tbctl
+        Friend WithEvents TbctlAccountGroup As CMCv.UI.Control.tbctl
         Friend WithEvents tpAssets As TabPage
-        Friend WithEvents DgnACGRAssets As dgn
+        Friend WithEvents DgnACGRAssets As CMCv.UI.Control.dgn
         Friend WithEvents tpLiabilities As TabPage
-        Friend WithEvents DgnACGRLiabities As dgn
+        Friend WithEvents DgnACGRLiabities As CMCv.UI.Control.dgn
         Friend WithEvents tpEquity As TabPage
         Friend WithEvents tpRevenue As TabPage
-        Friend WithEvents DgnACGRRevenue As dgn
+        Friend WithEvents DgnACGRRevenue As CMCv.UI.Control.dgn
         Friend WithEvents tpExpense As TabPage
-        Friend WithEvents DgnACGRExpense As dgn
-        Friend WithEvents CboAccountingBook As cbo
-        Friend WithEvents Lbl2 As lbl
-        Friend WithEvents DgnACGREquity As dgn
-        Friend WithEvents CboCompany As cbo
-        Friend WithEvents Lbl3 As lbl
+        Friend WithEvents DgnACGRExpense As CMCv.UI.Control.dgn
+        Friend WithEvents CboAccountingBook As CMCv.UI.Control.cbo
+        Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
+        Friend WithEvents DgnACGREquity As CMCv.UI.Control.dgn
+        Friend WithEvents CboCompany As CMCv.UI.Control.cbo
+        Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
         Friend WithEvents account_id_assets As DataGridViewTextBoxColumn
         Friend WithEvents account_num_assets As DataGridViewTextBoxColumn
         Friend WithEvents account_name_assets As DataGridViewTextBoxColumn

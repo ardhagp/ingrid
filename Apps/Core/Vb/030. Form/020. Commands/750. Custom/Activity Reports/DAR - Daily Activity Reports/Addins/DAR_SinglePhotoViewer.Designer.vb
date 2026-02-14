@@ -22,8 +22,8 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(DAR_SinglePhotoViewer))
-            BtnClose = New CMCv.btn(components)
-            PctbxPhoto = New CMCv.pctbx(components)
+            BtnClose = New CMCv.UI.Control.btn(components)
+            PctbxPhoto = New CMCv.UI.Control.pctbx(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -111,7 +111,7 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents BtnClose As CMCv.btn
-        Friend WithEvents PctbxPhoto As CMCv.pctbx
+        Friend WithEvents BtnClose As CMCv.UI.Control.btn
+        Friend WithEvents PctbxPhoto As CMCv.UI.Control.pctbx
     End Class
 End Namespace

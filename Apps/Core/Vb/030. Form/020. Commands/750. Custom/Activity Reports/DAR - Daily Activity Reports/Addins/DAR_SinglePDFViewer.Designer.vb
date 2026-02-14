@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class DAR_SinglePDFViewer
-        Inherits CMCv.FRMpdfViewer
+        Inherits CMCv.UI.FRMpdfViewer
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>

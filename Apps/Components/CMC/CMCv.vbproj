@@ -95,9 +95,7 @@
     <Compile Update="2099 - Interface\1st Party\ULbl.Designer.vb">
       <DependentUpon>ULbl.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\1st Party\ULbl.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="2099 - Interface\1st Party\ULbl.vb" />
     <Compile Update="2099 - Interface\3rd Party\PDFViewer\PDFVWR.Designer.vb">
       <DependentUpon>PDFVWR.vb</DependentUpon>
     </Compile>
@@ -134,9 +132,7 @@
     <Compile Update="2099 - Interface\Controls\DataGridView\dgn.Designer.vb">
       <DependentUpon>dgn.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\DataGridView\dgn.vb">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Update="2099 - Interface\Controls\DataGridView\dgn.vb" />
     <Compile Update="2099 - Interface\Controls\DateTimePicker\dtp.Designer.vb">
       <DependentUpon>dtp.vb</DependentUpon>
     </Compile>
@@ -146,9 +142,7 @@
     <Compile Update="2099 - Interface\Controls\GroupBox\gbx.Designer.vb">
       <DependentUpon>gbx.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\GroupBox\gbx.vb">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Update="2099 - Interface\Controls\GroupBox\gbx.vb" />
     <Compile Update="2099 - Interface\Controls\Label\lbl.Designer.vb">
       <DependentUpon>lbl.vb</DependentUpon>
     </Compile>
@@ -158,9 +152,7 @@
     <Compile Update="2099 - Interface\Controls\LinkLabel\lnklbl.Designer.vb">
       <DependentUpon>lnklbl.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\LinkLabel\lnklbl.vb">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Update="2099 - Interface\Controls\LinkLabel\lnklbl.vb" />
     <Compile Update="2099 - Interface\Controls\MaskEditBox\meb.Designer.vb">
       <DependentUpon>meb.vb</DependentUpon>
     </Compile>
@@ -230,9 +222,7 @@
     <Compile Update="2099 - Interface\Controls\TreeView\tv.Designer.vb">
       <DependentUpon>tv.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\TreeView\tv.vb">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Update="2099 - Interface\Controls\TreeView\tv.vb" />
     <Compile Update="2099 - Interface\Forms\Templates\Windows7\Blank.Designer.vb">
       <DependentUpon>Blank.vb</DependentUpon>
     </Compile>

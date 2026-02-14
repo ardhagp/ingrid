@@ -4,7 +4,7 @@ Imports CMCv
 Namespace CMDdraa
     Public Class View
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayMainGrid(databasename As String, find As txt, contentgrid As dgn, contentstatusbar As stt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayMainGrid(databasename As String, find As CMCv.UI.Control.txt, contentgrid As CMCv.UI.Control.dgn, contentstatusbar As CMCv.UI.Control.stt, Optional forcerefresh As Boolean = False)
             Try
                 ' Cache search text once and normalize
                 Dim search As String = String.Empty
@@ -55,7 +55,7 @@ Namespace CMDdraa
                 MsgBox(ex.ToString)
             End Try
         End Sub
-        'Public Shared Sub DisplayMainGrid(databasename As String, find As txt, contentgrid As dgn, contentstatusbar As stt, Optional forcerefresh As Boolean = False)
+        'Public Shared Sub DisplayMainGrid(databasename As String, find As txt, contentgrid As cmcv.ui.control.dgn, contentstatusbar As stt, Optional forcerefresh As Boolean = False)
         '    Try
         '        Dim varWhere As String = String.Format("where ")
 

@@ -24,7 +24,7 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnTemplate = New dgn(components)
+            DgnTemplate = New cmcv.ui.control.dgn(components)
             template_id = New DataGridViewTextBoxColumn()
             template_title = New DataGridViewTextBoxColumn()
             template_text1 = New DataGridViewTextBoxColumn()
@@ -143,7 +143,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnTemplate As dgn
+        Friend WithEvents DgnTemplate As cmcv.ui.control.dgn
         Friend WithEvents template_id As DataGridViewTextBoxColumn
         Friend WithEvents template_title As DataGridViewTextBoxColumn
         Friend WithEvents template_text1 As DataGridViewTextBoxColumn

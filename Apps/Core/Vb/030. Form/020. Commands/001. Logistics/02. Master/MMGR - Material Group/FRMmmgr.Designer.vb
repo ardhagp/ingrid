@@ -24,7 +24,7 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnMMGR = New dgn(components)
+            DgnMMGR = New cmcv.ui.control.dgn(components)
             materialgroup_id = New DataGridViewTextBoxColumn()
             materialgroup_description = New DataGridViewTextBoxColumn()
             materialgroup_description2 = New DataGridViewTextBoxColumn()
@@ -160,7 +160,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnMMGR As dgn
+        Friend WithEvents DgnMMGR As cmcv.ui.control.dgn
         Friend WithEvents materialgroup_id As DataGridViewTextBoxColumn
         Friend WithEvents materialgroup_description As DataGridViewTextBoxColumn
         Friend WithEvents materialgroup_description2 As DataGridViewTextBoxColumn

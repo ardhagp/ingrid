@@ -42,7 +42,7 @@ Namespace UI
         ''' </summary>
         ''' <param name="GridTable"></param>
         ''' <remarks></remarks>
-        Private Function GetAccountID(gridtable As CMCv.dgn) As String
+        Private Function GetAccountID(gridtable As CMCv.UI.Control.dgn) As String
             With gridtable
                 If .Rows.Count < 1 Then
                     varFormProperties.RowID = "-1"

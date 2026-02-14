@@ -4,7 +4,7 @@ Imports CMCv
 Namespace CMDmods
     Public Class View
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                 varDatabaseRequestMssql2008(0).Query = String.Format("select modg.modulegroup_name, mods.module_code, mods.module_name, mods.module_description, mods.module_issystem, mods.module_ismaintenance, mods.module_id from dbo.sys_module mods inner join dbo.[[sys]]modulegroup] modg on modg.modulegroup_id = mods.module_modulegroup order by modg.modulegroup_order, mods.module_code")
             Else
@@ -52,7 +52,7 @@ Namespace CMDmods
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillModuleGroup(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, modulegroup As cbo)
+        Public Shared Sub FillModuleGroup(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, modulegroup As CMCv.UI.Control.cbo)
             varDatabaseRequestMssql2008(1).Query = "select modg.modulegroup_id, modg.modulegroup_name from dbo.[[sys]]modulegroup] modg order by modg.modulegroup_order"
             varDatabaseRequestMssql2008(1).Dropdown = modulegroup
             varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TModuleGroup")

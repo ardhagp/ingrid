@@ -38,20 +38,20 @@
             Dim DataGridViewCellStyle30 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle32 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle31 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            SpcContent = New spc(components)
-            DgnDARActivity = New dgn(components)
+            SpcContent = New CMCv.UI.Control.spc(components)
+            DgnDARActivity = New CMCv.UI.Control.dgn(components)
             areaaffected_name = New DataGridViewTextBoxColumn()
             employeeactivity_time = New DataGridViewTextBoxColumn()
             employeeactivity_description = New DataGridViewTextBoxColumn()
             employee_nickname = New DataGridViewTextBoxColumn()
             employee_id = New DataGridViewTextBoxColumn()
             employeeactivity_id = New DataGridViewTextBoxColumn()
-            SttActivity = New stt(components)
+            SttActivity = New CMCv.UI.Control.stt(components)
             ToolStripStatusLabel1 = New ToolStripStatusLabel()
-            TbctlAttachment = New tbctl(components)
+            TbctlAttachment = New CMCv.UI.Control.tbctl(components)
             TPPhotos = New TabPage()
-            SpcPhoto = New spc(components)
-            DgnPhoto = New dgn(components)
+            SpcPhoto = New CMCv.UI.Control.spc(components)
+            DgnPhoto = New CMCv.UI.Control.dgn(components)
             photo_id = New DataGridViewTextBoxColumn()
             photo_content = New DataGridViewImageColumn()
             photo_uploader_nickname = New DataGridViewTextBoxColumn()
@@ -62,13 +62,13 @@
             photo_employee_fullname = New DataGridViewTextBoxColumn()
             photo_view = New DataGridViewButtonColumn()
             TlpPhotoButton = New TableLayoutPanel()
-            PctbxActivityPhoto = New pctbx(components)
+            PctbxActivityPhoto = New CMCv.UI.Control.pctbx(components)
             TlpCopySave = New TableLayoutPanel()
-            BtnCopyPhoto = New btn(components)
-            BtnSave = New btn(components)
-            BtnLike = New btn(components)
+            BtnCopyPhoto = New CMCv.UI.Control.btn(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnLike = New CMCv.UI.Control.btn(components)
             TPFiles = New TabPage()
-            DgnFile = New dgn(components)
+            DgnFile = New CMCv.UI.Control.dgn(components)
             file_id = New DataGridViewTextBoxColumn()
             file_tag = New DataGridViewTextBoxColumn()
             file_content = New DataGridViewTextBoxColumn()
@@ -814,20 +814,20 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents SpcContent As spc
-        Friend WithEvents DgnDARActivity As dgn
+        Friend WithEvents SpcContent As CMCv.UI.Control.spc
+        Friend WithEvents DgnDARActivity As CMCv.UI.Control.dgn
         Friend WithEvents areaaffected_name As DataGridViewTextBoxColumn
         Friend WithEvents employeeactivity_time As DataGridViewTextBoxColumn
         Friend WithEvents employeeactivity_description As DataGridViewTextBoxColumn
         Friend WithEvents employee_nickname As DataGridViewTextBoxColumn
         Friend WithEvents employee_id As DataGridViewTextBoxColumn
         Friend WithEvents employeeactivity_id As DataGridViewTextBoxColumn
-        Friend WithEvents SttActivity As stt
+        Friend WithEvents SttActivity As CMCv.UI.Control.stt
         Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
-        Friend WithEvents TbctlAttachment As tbctl
+        Friend WithEvents TbctlAttachment As CMCv.UI.Control.tbctl
         Friend WithEvents TPPhotos As TabPage
-        Friend WithEvents SpcPhoto As spc
-        Friend WithEvents DgnPhoto As dgn
+        Friend WithEvents SpcPhoto As CMCv.UI.Control.spc
+        Friend WithEvents DgnPhoto As CMCv.UI.Control.dgn
         Friend WithEvents photo_id As DataGridViewTextBoxColumn
         Friend WithEvents photo_content As DataGridViewImageColumn
         Friend WithEvents photo_uploader_nickname As DataGridViewTextBoxColumn
@@ -838,13 +838,13 @@
         Friend WithEvents photo_employee_fullname As DataGridViewTextBoxColumn
         Friend WithEvents photo_view As DataGridViewButtonColumn
         Friend WithEvents TlpPhotoButton As TableLayoutPanel
-        Friend WithEvents PctbxActivityPhoto As pctbx
+        Friend WithEvents PctbxActivityPhoto As CMCv.UI.Control.pctbx
         Friend WithEvents TlpCopySave As TableLayoutPanel
-        Friend WithEvents BtnCopyPhoto As btn
-        Friend WithEvents BtnSave As btn
-        Friend WithEvents BtnLike As btn
+        Friend WithEvents BtnCopyPhoto As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnLike As CMCv.UI.Control.btn
         Friend WithEvents TPFiles As TabPage
-        Friend WithEvents DgnFile As dgn
+        Friend WithEvents DgnFile As CMCv.UI.Control.dgn
         Friend WithEvents file_id As DataGridViewTextBoxColumn
         Friend WithEvents file_tag As DataGridViewTextBoxColumn
         Friend WithEvents file_content As DataGridViewTextBoxColumn

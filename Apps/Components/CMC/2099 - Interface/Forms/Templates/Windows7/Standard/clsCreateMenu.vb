@@ -4,7 +4,7 @@ Imports System.Windows.Forms
 Namespace UI.View
     <SupportedOSPlatform("windows")>
     Public Class MenuStrip
-        Private Com_menu As New CMCv.mnu
+        Private Com_menu As New CMCv.UI.Control.mnu
         Private varItem As ToolStripMenuItem()
         Private varItemSubmenu As ToolStripMenuItem()
 
@@ -391,7 +391,7 @@ Namespace UI.View
         Public Event ContextCopy()
 #End Region
 
-        Public Sub LoadInGrid(grid As dgn)
+        Public Sub LoadInGrid(grid As CMCv.UI.Control.dgn)
 
             'Dim varItemSubmenu() As ToolStripMenuItem
 

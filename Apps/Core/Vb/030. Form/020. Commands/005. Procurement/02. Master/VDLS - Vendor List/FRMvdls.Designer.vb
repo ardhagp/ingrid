@@ -24,7 +24,7 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnVendor = New dgn(components)
+            DgnVendor = New cmcv.ui.control.dgn(components)
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -108,7 +108,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnVendor As dgn
+        Friend WithEvents DgnVendor As cmcv.ui.control.dgn
 
     End Class
 End Namespace

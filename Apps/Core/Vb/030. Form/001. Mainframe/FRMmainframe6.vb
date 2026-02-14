@@ -21,7 +21,7 @@ Namespace UI
 #Region "Declaration"
         Private WithEvents Frm_login As New Ingrid.UI.FRMlogin
         Private WithEvents Frm_conn As Connect.UI.FRMconn
-        Private WithEvents Frm_phtrz As New CMCv.FRMphtrz
+        Private WithEvents Frm_phtrz As New CMCv.UI.FRMphtrz
         Private WithEvents Frm_uac_Editor As FRMuacEditor
         Private WithEvents Frm_ntfc As FRMntfc
 

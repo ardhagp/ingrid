@@ -24,11 +24,11 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Pnl1 = New pnl(components)
-            BtnClear = New btn(components)
-            Lbl1 = New lbl(components)
-            TxtFind = New txt(components)
-            DgnAddinPosition = New dgn(components)
+            Pnl1 = New CMCv.UI.Control.pnl(components)
+            BtnClear = New CMCv.UI.Control.btn(components)
+            Lbl1 = New CMCv.UI.Control.lbl(components)
+            TxtFind = New CMCv.UI.Control.txt(components)
+            DgnAddinPosition = New CMCv.UI.Control.dgn(components)
             position_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
             company_name = New DataGridViewTextBoxColumn()
@@ -36,8 +36,8 @@
             departement_name = New DataGridViewTextBoxColumn()
             position_code = New DataGridViewTextBoxColumn()
             position_name = New DataGridViewTextBoxColumn()
-            BtnOk = New btn(components)
-            BtnCancel = New btn(components)
+            BtnOk = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -335,13 +335,13 @@
             PerformLayout()
 
         End Sub
-        Friend WithEvents Pnl1 As CMCv.pnl
-        Friend WithEvents BtnClear As CMCv.btn
-        Friend WithEvents Lbl1 As CMCv.lbl
-        Friend WithEvents TxtFind As CMCv.txt
-        Friend WithEvents DgnAddinPosition As CMCv.dgn
-        Friend WithEvents BtnCancel As CMCv.btn
-        Friend WithEvents BtnOk As CMCv.btn
+        Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
+        Friend WithEvents BtnClear As CMCv.UI.Control.btn
+        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
+        Friend WithEvents TxtFind As CMCv.UI.Control.txt
+        Friend WithEvents DgnAddinPosition As CMCv.UI.Control.dgn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnOk As CMCv.UI.Control.btn
         Friend WithEvents position_id As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
         Friend WithEvents company_name As DataGridViewTextBoxColumn

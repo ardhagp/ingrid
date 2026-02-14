@@ -24,11 +24,11 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Pnl1 = New pnl(components)
-            BtnClear = New btn(components)
-            Lbl1 = New lbl(components)
-            TxtFind = New txt(components)
-            DgnArea = New dgn(components)
+            Pnl1 = New CMCv.UI.Control.pnl(components)
+            BtnClear = New CMCv.UI.Control.btn(components)
+            Lbl1 = New CMCv.UI.Control.lbl(components)
+            TxtFind = New CMCv.UI.Control.txt(components)
+            DgnArea = New CMCv.UI.Control.dgn(components)
             areaaffected_id = New DataGridViewTextBoxColumn()
             areaaffected_order = New DataGridViewTextBoxColumn()
             areaaffected_name = New DataGridViewTextBoxColumn()
@@ -215,11 +215,11 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents Pnl1 As pnl
-        Friend WithEvents BtnClear As btn
-        Friend WithEvents Lbl1 As lbl
-        Friend WithEvents TxtFind As txt
-        Friend WithEvents DgnArea As dgn
+        Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
+        Friend WithEvents BtnClear As CMCv.UI.Control.btn
+        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
+        Friend WithEvents TxtFind As CMCv.UI.Control.txt
+        Friend WithEvents DgnArea As CMCv.UI.Control.dgn
         Friend WithEvents areaaffected_id As DataGridViewTextBoxColumn
         Friend WithEvents areaaffected_order As DataGridViewTextBoxColumn
         Friend WithEvents areaaffected_name As DataGridViewTextBoxColumn

@@ -25,16 +25,16 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMapplauncher))
-            Lbl1 = New CMCv.lbl(components)
-            LblBuild = New CMCv.lbl(components)
-            BtnLaunch = New CMCv.btn(components)
-            Lbl3 = New CMCv.lbl(components)
-            Lbl4 = New CMCv.lbl(components)
-            CboApplication = New CMCv.cbo(components)
+            Lbl1 = New CMCv.UI.Control.lbl(components)
+            LblBuild = New CMCv.UI.Control.lbl(components)
+            BtnLaunch = New CMCv.UI.Control.btn(components)
+            Lbl3 = New CMCv.UI.Control.lbl(components)
+            Lbl4 = New CMCv.UI.Control.lbl(components)
+            CboApplication = New CMCv.UI.Control.cbo(components)
             tmrCountdown = New Timer(components)
-            Lbl5 = New CMCv.lbl(components)
-            LblCountdown = New CMCv.lbl(components)
-            BtnClose = New CMCv.btn(components)
+            Lbl5 = New CMCv.UI.Control.lbl(components)
+            LblCountdown = New CMCv.UI.Control.lbl(components)
+            BtnClose = New CMCv.UI.Control.btn(components)
             SuspendLayout()
             ' 
             ' Lbl1
@@ -198,15 +198,15 @@
             ResumeLayout(False)
         End Sub
 
-        Friend WithEvents Lbl1 As CMCv.lbl
-        Friend WithEvents LblBuild As CMCv.lbl
-        Friend WithEvents BtnLaunch As CMCv.btn
-        Friend WithEvents Lbl3 As CMCv.lbl
-        Friend WithEvents Lbl4 As CMCv.lbl
-        Friend WithEvents CboApplication As CMCv.cbo
+        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
+        Friend WithEvents LblBuild As CMCv.UI.Control.lbl
+        Friend WithEvents BtnLaunch As CMCv.UI.Control.btn
+        Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
+        Friend WithEvents CboApplication As CMCv.UI.Control.cbo
         Friend WithEvents tmrCountdown As Timer
-        Friend WithEvents Lbl5 As CMCv.lbl
-        Friend WithEvents LblCountdown As CMCv.lbl
-        Friend WithEvents BtnClose As CMCv.btn
+        Friend WithEvents Lbl5 As CMCv.UI.Control.lbl
+        Friend WithEvents LblCountdown As CMCv.UI.Control.lbl
+        Friend WithEvents BtnClose As CMCv.UI.Control.btn
     End Class
 End Namespace

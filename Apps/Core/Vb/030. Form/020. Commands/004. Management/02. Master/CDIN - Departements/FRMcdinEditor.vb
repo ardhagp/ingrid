@@ -9,7 +9,7 @@ Namespace UI
 
 #Region "Subs Collections"
         <SupportedOSPlatform("windows")>
-        Private Sub FillCompany(company As cbo)
+        Private Sub FillCompany(company As CMCv.UI.Control.cbo)
             CMDcdin.Editor.FillCompany(varDatabaseName, varDatabaseEngine, company)
         End Sub
 

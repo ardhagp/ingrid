@@ -20,10 +20,10 @@ Partial Class Std_Fi
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        PnlFind = New pnl(components)
-        BtnClear = New btn(components)
-        LblFind = New lbl(components)
-        TxtFind = New txt(components)
+        PnlFind = New CMCv.UI.Control.pnl(components)
+        BtnClear = New CMCv.UI.Control.btn(components)
+        LblFind = New CMCv.UI.Control.lbl(components)
+        TxtFind = New CMCv.UI.Control.txt(components)
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
         SLFPanel.SuspendLayout()
@@ -155,8 +155,8 @@ Partial Class Std_Fi
 
     End Sub
 
-    Public WithEvents PnlFind As pnl
-    Public WithEvents BtnClear As btn
-    Public WithEvents LblFind As lbl
-    Public WithEvents TxtFind As txt
+    Public WithEvents PnlFind As CMCv.UI.Control.pnl
+    Public WithEvents BtnClear As CMCv.UI.Control.btn
+    Public WithEvents LblFind As CMCv.UI.Control.lbl
+    Public WithEvents TxtFind As CMCv.UI.Control.txt
 End Class

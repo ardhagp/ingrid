@@ -1,38 +1,40 @@
-﻿<System.Drawing.ToolboxBitmap(GetType(CMCv.cbo), "cbo.ico")> _
-Partial Class cbo
-    Inherits System.Windows.Forms.ComboBox
+﻿Namespace UI.Control
+    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.cbo), "cbo.ico")>
+    Partial Class cbo
+        Inherits System.Windows.Forms.ComboBox
 
-    <System.Diagnostics.DebuggerNonUserCode()> _
-    Public Sub New(ByVal container As System.ComponentModel.IContainer)
-        MyClass.New()
+        <System.Diagnostics.DebuggerNonUserCode()>
+        Public Sub New(ByVal container As System.ComponentModel.IContainer)
+            MyClass.New()
 
-        'Required for Windows.Forms Class Composition Designer support
-        If (container IsNot Nothing) Then
-            container.Add(Me)
-        End If
-    End Sub
-
-    'Component overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
-    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        Try
-            If disposing AndAlso components IsNot Nothing Then
-                components.Dispose()
+            'Required for Windows.Forms Class Composition Designer support
+            If (container IsNot Nothing) Then
+                container.Add(Me)
             End If
-        Finally
-            MyBase.Dispose(disposing)
-        End Try
-    End Sub
+        End Sub
 
-    'Required by the Component Designer
-    Private components As System.ComponentModel.IContainer
+        'Component overrides dispose to clean up the component list.
+        <System.Diagnostics.DebuggerNonUserCode()>
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            Try
+                If disposing AndAlso components IsNot Nothing Then
+                    components.Dispose()
+                End If
+            Finally
+                MyBase.Dispose(disposing)
+            End Try
+        End Sub
 
-    'NOTE: The following procedure is required by the Component Designer
-    'It can be modified using the Component Designer.
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
-    Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container()
-    End Sub
+        'Required by the Component Designer
+        Private components As System.ComponentModel.IContainer
 
-End Class
+        'NOTE: The following procedure is required by the Component Designer
+        'It can be modified using the Component Designer.
+        'Do not modify it using the code editor.
+        <System.Diagnostics.DebuggerStepThrough()>
+        Private Sub InitializeComponent()
+            components = New System.ComponentModel.Container()
+        End Sub
+
+    End Class
+End Namespace

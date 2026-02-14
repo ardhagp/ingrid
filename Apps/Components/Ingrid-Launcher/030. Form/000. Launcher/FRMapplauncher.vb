@@ -1,7 +1,7 @@
 ﻿Namespace UI
     Public Class FRMapplauncher
         Private WithEvents Frm_mainframe6 As Ingrid.UI.FRMmainframe6
-        Private WithEvents Frm_conn As New Connect.UI.FRMconn
+        Private WithEvents Frm_conn As Connect.UI.FRMconn
 
         Private varSecond As Integer
         Private varVersion As String
@@ -56,9 +56,9 @@
             If (varSecond = 0) Then
                 Call OpenApp(CboApplication.SelectedIndex)
             ElseIf (varSecond > 1) Then
-                LblCountdown.Text = String.Format("app in {0} seconds...", varSecond)
+                LblCountdown.Text = $"app in {varSecond} seconds..."
             Else
-                LblCountdown.Text = String.Format("app in {0} second...", varSecond)
+                LblCountdown.Text = $"app in {varSecond} second..."
             End If
         End Sub
 
@@ -69,10 +69,8 @@
                 My.Settings.Save()
 
                 If appnameindex = 0 Then
-                    'Display(Frm_conn, IMAGEDB.Main.ImageLibrary.CONNECT_ICON, My.Application.Info.AssemblyName, "Connection Settings", "Manage your database connection settings", False)
+                    Frm_conn = New Connect.UI.FRMconn
                     Display(Frm_conn, , My.Application.Info.Title, "Connection Settings", "Manage your database connection settings", False)
-                    'Frm_conn = New FRMconn()
-                    'Frm_conn.Show()
                 ElseIf appnameindex = 1 Then
                     Frm_mainframe6 = New Ingrid.UI.FRMmainframe6
                     Frm_mainframe6.Show()

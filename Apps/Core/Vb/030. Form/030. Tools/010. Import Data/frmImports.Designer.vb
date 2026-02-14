@@ -21,12 +21,12 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Pnl1 = New pnl(components)
-            LblFileName = New lbl(components)
-            BtnBrowse = New btn(components)
-            TxtProgress = New txt(components)
-            BtnSave = New btn(components)
-            BtnClose = New btn(components)
+            Pnl1 = New CMCv.UI.Control.pnl(components)
+            LblFileName = New CMCv.UI.Control.lbl(components)
+            BtnBrowse = New CMCv.UI.Control.btn(components)
+            TxtProgress = New CMCv.UI.Control.txt(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnClose = New CMCv.UI.Control.btn(components)
             od = New OpenFileDialog()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -208,13 +208,13 @@
             PerformLayout()
 
         End Sub
-        Friend WithEvents Pnl1 As CMCv.pnl
-        Friend WithEvents BtnBrowse As CMCv.btn
-        Friend WithEvents BtnSave As CMCv.btn
-        Friend WithEvents TxtProgress As CMCv.txt
-        Friend WithEvents BtnClose As CMCv.btn
+        Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
+        Friend WithEvents BtnBrowse As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents TxtProgress As CMCv.UI.Control.txt
+        Friend WithEvents BtnClose As CMCv.UI.Control.btn
         Friend WithEvents od As System.Windows.Forms.OpenFileDialog
-        Friend WithEvents LblFileName As CMCv.lbl
+        Friend WithEvents LblFileName As CMCv.UI.Control.lbl
 
     End Class
 End Namespace

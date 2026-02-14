@@ -21,9 +21,9 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnEdit = New btn(components)
-            BtnChangeProgress = New btn(components)
-            BtnMarkAsVerified = New btn(components)
+            BtnEdit = New CMCv.UI.Control.btn(components)
+            BtnChangeProgress = New CMCv.UI.Control.btn(components)
+            BtnMarkAsVerified = New CMCv.UI.Control.btn(components)
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
@@ -132,8 +132,8 @@
 
         End Sub
 
-        Friend WithEvents BtnEdit As CMCv.btn
-        Friend WithEvents BtnMarkAsVerified As CMCv.btn
-        Friend WithEvents BtnChangeProgress As CMCv.btn
+        Friend WithEvents BtnEdit As CMCv.UI.Control.btn
+        Friend WithEvents BtnMarkAsVerified As CMCv.UI.Control.btn
+        Friend WithEvents BtnChangeProgress As CMCv.UI.Control.btn
     End Class
 End Namespace

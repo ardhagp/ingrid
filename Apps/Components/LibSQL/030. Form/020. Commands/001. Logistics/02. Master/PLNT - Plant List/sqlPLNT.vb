@@ -18,7 +18,7 @@ Namespace CMDplnt
         ''' <param name="find"></param>
         ''' <param name="forcerefresh"></param>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             Dim varWhere As String = "where "
 
             If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -123,7 +123,7 @@ Namespace CMDplnt
         ''' <param name="dbengine"></param>
         ''' <param name="listofcompany"></param>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetCompany(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, listofcompany As CMCv.cbo)
+        Public Shared Sub GetCompany(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, listofcompany As CMCv.UI.Control.cbo)
             If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = "select com.company_id, '[' + com.company_code + '] - ' + com.company_name as [company_name] from dbo.man_company com order by com.company_code"
                 varDatabaseRequestMssql2008(1).Dropdown = listofcompany

@@ -8,7 +8,7 @@ Namespace CMDdrtm
         Public varContentID As String
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, find As txt, dategrid As dgn, contentstatusbar As stt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, find As CMCv.UI.Control.txt, dategrid As CMCv.UI.Control.dgn, contentstatusbar As CMCv.UI.Control.stt, Optional forcerefresh As Boolean = False)
             Try
                 ' Normalize input once
                 Dim search As String = If(find IsNot Nothing AndAlso find.XOSQLText IsNot Nothing, find.XOSQLText.Trim(), String.Empty)
@@ -66,7 +66,7 @@ Namespace CMDdrtm
             End Try
         End Sub
 
-        'Public Shared Sub DisplayGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, find As txt, dategrid As dgn, contentstatusbar As stt, Optional forcerefresh As Boolean = False)
+        'Public Shared Sub DisplayGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, find As txt, dategrid As cmcv.ui.control.dgn, contentstatusbar As stt, Optional forcerefresh As Boolean = False)
         '    Try
         '        Dim varWhere As String = String.Format("where ")
 

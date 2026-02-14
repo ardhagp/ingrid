@@ -6,7 +6,7 @@ Namespace Application
         ReadOnly varSQL As New LibSQL.Application.Access
 
         <SupportedOSPlatform("windows")>
-        Public Function User(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String, uid As String, typeofaccess As LibSQL.Application.Access.TypeOfAccess, Optional status As stt = Nothing) As Boolean
+        Public Function User(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String, uid As String, typeofaccess As LibSQL.Application.Access.TypeOfAccess, Optional status As CMCv.UI.Control.stt = Nothing) As Boolean
             Dim varAccessValue As Boolean
 
             Try

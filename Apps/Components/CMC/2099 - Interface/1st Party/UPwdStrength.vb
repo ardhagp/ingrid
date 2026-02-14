@@ -1,3 +1,5 @@
-﻿Public Class UPwdStrength
+﻿Namespace UI.Control
+    Public Class UPwdStrength
 
-End Class
+    End Class
+End Namespace

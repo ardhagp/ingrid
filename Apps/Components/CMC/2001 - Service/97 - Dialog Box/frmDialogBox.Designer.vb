@@ -20,16 +20,16 @@ Partial Class FRMdialogbox
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        PnlBottomButtonYesNo = New pnl(components)
+        PnlBottomButtonYesNo = New CMCv.UI.Control.pnl(components)
         PictureBox1 = New Windows.Forms.PictureBox()
-        BtnYes = New btn(components)
-        BtnNo = New btn(components)
-        BtnCancel = New btn(components)
-        BtnOk = New btn(components)
-        PnlBottomButtonOkOnly = New pnl(components)
+        BtnYes = New CMCv.UI.Control.btn(components)
+        BtnNo = New CMCv.UI.Control.btn(components)
+        BtnCancel = New CMCv.UI.Control.btn(components)
+        BtnOk = New CMCv.UI.Control.btn(components)
+        PnlBottomButtonOkOnly = New CMCv.UI.Control.pnl(components)
         PictureBox2 = New Windows.Forms.PictureBox()
-        BtnOkOnly = New btn(components)
-        TxtMessage = New txt(components)
+        BtnOkOnly = New CMCv.UI.Control.btn(components)
+        TxtMessage = New CMCv.UI.Control.txt(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
@@ -292,15 +292,15 @@ Partial Class FRMdialogbox
         PerformLayout()
 
     End Sub
-    Friend WithEvents PnlBottomButtonYesNo As CMCv.pnl
-    Friend WithEvents BtnOk As CMCv.btn
-    Friend WithEvents BtnCancel As CMCv.btn
-    Friend WithEvents BtnYes As CMCv.btn
-    Friend WithEvents BtnNo As CMCv.btn
-    Friend WithEvents PnlBottomButtonOkOnly As CMCv.pnl
-    Friend WithEvents BtnOkOnly As CMCv.btn
+    Friend WithEvents PnlBottomButtonYesNo As CMCv.UI.Control.pnl
+    Friend WithEvents BtnOk As CMCv.UI.Control.btn
+    Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+    Friend WithEvents BtnYes As CMCv.UI.Control.btn
+    Friend WithEvents BtnNo As CMCv.UI.Control.btn
+    Friend WithEvents PnlBottomButtonOkOnly As CMCv.UI.Control.pnl
+    Friend WithEvents BtnOkOnly As CMCv.UI.Control.btn
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents TxtMessage As CMCv.txt
+    Friend WithEvents TxtMessage As CMCv.UI.Control.txt
 
 End Class

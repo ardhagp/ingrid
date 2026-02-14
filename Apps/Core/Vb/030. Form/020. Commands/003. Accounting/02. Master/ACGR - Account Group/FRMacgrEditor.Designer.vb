@@ -21,20 +21,20 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnSave = New btn(components)
-            BtnCancel = New btn(components)
-            CboCompany = New cbo(components)
-            CboAccountingBook = New cbo(components)
-            Lbl1 = New lbl(components)
-            Lbl2 = New lbl(components)
-            CboAccountGroup = New cbo(components)
-            Lbl3 = New lbl(components)
-            TxtAccountNumber = New txt(components)
-            Lbl4 = New lbl(components)
-            TxtAccountName = New txt(components)
-            Lbl5 = New lbl(components)
-            ChkEnable = New chk(components)
-            ChkAddNew = New chk(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
+            CboCompany = New CMCv.UI.Control.cbo(components)
+            CboAccountingBook = New CMCv.UI.Control.cbo(components)
+            Lbl1 = New CMCv.UI.Control.lbl(components)
+            Lbl2 = New CMCv.UI.Control.lbl(components)
+            CboAccountGroup = New CMCv.UI.Control.cbo(components)
+            Lbl3 = New CMCv.UI.Control.lbl(components)
+            TxtAccountNumber = New CMCv.UI.Control.txt(components)
+            Lbl4 = New CMCv.UI.Control.lbl(components)
+            TxtAccountName = New CMCv.UI.Control.txt(components)
+            Lbl5 = New CMCv.UI.Control.lbl(components)
+            ChkEnable = New CMCv.UI.Control.chk(components)
+            ChkAddNew = New CMCv.UI.Control.chk(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -339,20 +339,20 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnSave As CMCv.btn
-        Friend WithEvents BtnCancel As CMCv.btn
-        Friend WithEvents Lbl5 As CMCv.lbl
-        Friend WithEvents TxtAccountName As CMCv.txt
-        Friend WithEvents Lbl4 As CMCv.lbl
-        Friend WithEvents TxtAccountNumber As CMCv.txt
-        Friend WithEvents Lbl3 As CMCv.lbl
-        Friend WithEvents CboAccountGroup As CMCv.cbo
-        Friend WithEvents Lbl2 As CMCv.lbl
-        Friend WithEvents Lbl1 As CMCv.lbl
-        Friend WithEvents CboAccountingBook As CMCv.cbo
-        Friend WithEvents CboCompany As CMCv.cbo
-        Friend WithEvents ChkAddNew As CMCv.chk
-        Friend WithEvents ChkEnable As CMCv.chk
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents Lbl5 As CMCv.UI.Control.lbl
+        Friend WithEvents TxtAccountName As CMCv.UI.Control.txt
+        Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
+        Friend WithEvents TxtAccountNumber As CMCv.UI.Control.txt
+        Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
+        Friend WithEvents CboAccountGroup As CMCv.UI.Control.cbo
+        Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
+        Friend WithEvents CboAccountingBook As CMCv.UI.Control.cbo
+        Friend WithEvents CboCompany As CMCv.UI.Control.cbo
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents ChkEnable As CMCv.UI.Control.chk
 
     End Class
 End Namespace

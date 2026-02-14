@@ -21,17 +21,17 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Cbo1 = New cbo(components)
-            Txt1 = New txt(components)
-            Txt2 = New txt(components)
-            Txt3 = New txt(components)
-            Lbl1 = New lbl(components)
-            Lbl2 = New lbl(components)
-            Lbl3 = New lbl(components)
-            Lbl4 = New lbl(components)
-            BtnSave = New btn(components)
-            BtnCancel = New btn(components)
-            ChkAddNew = New chk(components)
+            Cbo1 = New CMCv.UI.Control.cbo(components)
+            Txt1 = New CMCv.UI.Control.txt(components)
+            Txt2 = New CMCv.UI.Control.txt(components)
+            Txt3 = New CMCv.UI.Control.txt(components)
+            Lbl1 = New CMCv.UI.Control.lbl(components)
+            Lbl2 = New CMCv.UI.Control.lbl(components)
+            Lbl3 = New CMCv.UI.Control.lbl(components)
+            Lbl4 = New CMCv.UI.Control.lbl(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
+            ChkAddNew = New CMCv.UI.Control.chk(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -311,17 +311,17 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents Cbo1 As CMCv.cbo
-        Friend WithEvents Txt1 As CMCv.txt
-        Friend WithEvents BtnCancel As CMCv.btn
-        Friend WithEvents BtnSave As CMCv.btn
-        Friend WithEvents Lbl4 As CMCv.lbl
-        Friend WithEvents Lbl3 As CMCv.lbl
-        Friend WithEvents Lbl2 As CMCv.lbl
-        Friend WithEvents Lbl1 As CMCv.lbl
-        Friend WithEvents Txt3 As CMCv.txt
-        Friend WithEvents Txt2 As CMCv.txt
-        Friend WithEvents ChkAddNew As CMCv.chk
+        Friend WithEvents Cbo1 As CMCv.UI.Control.cbo
+        Friend WithEvents Txt1 As CMCv.UI.Control.txt
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
+        Friend WithEvents Txt3 As CMCv.UI.Control.txt
+        Friend WithEvents Txt2 As CMCv.UI.Control.txt
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
 
     End Class
 End Namespace

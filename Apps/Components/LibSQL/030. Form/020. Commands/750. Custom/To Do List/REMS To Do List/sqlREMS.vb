@@ -4,7 +4,7 @@ Imports CMCv
 Namespace CMDrems
     Public Class View
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayGrid(databasename As String, progressgrid As dgn, donegrid As dgn, verifiedgrid As dgn, todostatusbar As stt, Optional showall As Boolean = False)
+        Public Shared Sub DisplayGrid(databasename As String, progressgrid As CMCv.UI.Control.dgn, donegrid As CMCv.UI.Control.dgn, verifiedgrid As CMCv.UI.Control.dgn, todostatusbar As CMCv.UI.Control.stt, Optional showall As Boolean = False)
             Try
                 Dim varWhere As String = "where td.todos_iscomplete = 0 "
 

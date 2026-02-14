@@ -21,12 +21,12 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnLogin = New btn(components)
-            BtnCancel = New btn(components)
-            TxtUsername = New txt(components)
-            TxtPassword = New txt(components)
-            Lbl1 = New lbl(components)
-            Lbl2 = New lbl(components)
+            BtnLogin = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
+            TxtUsername = New CMCv.UI.Control.txt(components)
+            TxtPassword = New CMCv.UI.Control.txt(components)
+            Lbl1 = New CMCv.UI.Control.lbl(components)
+            Lbl2 = New CMCv.UI.Control.lbl(components)
             tmr_status = New Timer(components)
             tmr_control = New Timer(components)
             PnlBottomButton.SuspendLayout()
@@ -224,12 +224,12 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnCancel As btn
-        Friend WithEvents BtnLogin As btn
-        Friend WithEvents Lbl2 As lbl
-        Friend WithEvents Lbl1 As lbl
-        Friend WithEvents TxtPassword As txt
-        Friend WithEvents TxtUsername As txt
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnLogin As CMCv.UI.Control.btn
+        Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
+        Friend WithEvents TxtPassword As CMCv.UI.Control.txt
+        Friend WithEvents TxtUsername As CMCv.UI.Control.txt
         Friend WithEvents tmr_status As Timer
         Friend WithEvents tmr_control As Timer
     End Class
