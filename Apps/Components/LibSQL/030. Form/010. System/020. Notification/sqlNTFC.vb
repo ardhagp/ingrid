@@ -13,7 +13,7 @@ Namespace CMDntfc
         ''' <param name="notificationgrid"></param>
         ''' <param name="eid"></param>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub Display(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, notificationgrid As CMCv.dgn, eid As String)
+        Public Shared Sub Display(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, notificationgrid As CMCv.UI.Control.dgn, eid As String)
             If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(0).Query = String.Format("Select top 100 ((Case nt.notification_isread When 0 Then '*NEW* ' else '' end) + convert(varchar(max), " &
                                                     "nt.notification_message)) as [notification_message], nt.notification_datetime " &

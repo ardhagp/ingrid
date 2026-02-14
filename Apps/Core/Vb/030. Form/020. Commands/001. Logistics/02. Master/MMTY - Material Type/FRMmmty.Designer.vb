@@ -25,7 +25,7 @@
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnMMTY = New dgn(components)
+            DgnMMTY = New cmcv.ui.control.dgn(components)
             materialtype_id = New DataGridViewTextBoxColumn()
             materialtype_description = New DataGridViewTextBoxColumn()
             itemcount = New DataGridViewTextBoxColumn()
@@ -151,7 +151,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnMMTY As dgn
+        Friend WithEvents DgnMMTY As cmcv.ui.control.dgn
         Friend WithEvents materialtype_id As DataGridViewTextBoxColumn
         Friend WithEvents materialtype_description As DataGridViewTextBoxColumn
         Friend WithEvents itemcount As DataGridViewTextBoxColumn

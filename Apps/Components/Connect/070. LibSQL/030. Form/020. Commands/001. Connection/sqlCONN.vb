@@ -4,8 +4,8 @@ Namespace CMDconn
     <SupportedOSPlatform("windows")>
     Public Class View
 
-        Public Shared Sub DisplayData(datagrid As CMCv.dgn, statusbar As CMCv.stt,
-                                      find As CMCv.txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt,
+                                      find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             Try
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then 'to display all data
                     varDatabaseRequestSqlite(0).Query = "select serverlist.ID, serverlist.CONNECTIONNAME, " &

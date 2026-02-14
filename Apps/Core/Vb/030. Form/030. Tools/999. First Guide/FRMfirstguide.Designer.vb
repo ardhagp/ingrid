@@ -24,32 +24,32 @@
             Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Btn_Process = New btn(components)
-            Lbl_Step = New lbl(components)
-            Gbx_Company = New gbx(components)
-            ULblEmploymentType = New ULbl()
-            CboEmploymentType = New cbo(components)
-            ULbl5 = New ULbl()
-            Txt_EmployeeID = New txt(components)
-            ULbl4 = New ULbl()
-            ULbl3 = New ULbl()
-            ULbl2 = New ULbl()
-            ULbl1 = New ULbl()
-            Txt_EmployeeName = New txt(components)
-            Txt_Position = New txt(components)
-            Txt_Department = New txt(components)
-            Txt_Company = New txt(components)
-            Btn_Close = New btn(components)
-            Gbx_Login = New gbx(components)
-            Btn_Check = New btn(components)
-            UPwdStrength1 = New UPwdStrength()
-            ULbl7 = New ULbl()
-            ULbl6 = New ULbl()
-            Txt_Password = New txt(components)
-            Txt_Username = New txt(components)
-            object_da28eea8_631c_4534_a532_605841b1d2bd = New lbl(components)
-            Gbx_Modules = New gbx(components)
-            Dgn1 = New dgn(components)
+            Btn_Process = New CMCv.UI.Control.btn(components)
+            Lbl_Step = New CMCv.UI.Control.lbl(components)
+            Gbx_Company = New CMCv.UI.Control.gbx(components)
+            ULblEmploymentType = New CMCv.UI.Control.ULbl()
+            CboEmploymentType = New CMCv.UI.Control.cbo(components)
+            ULbl5 = New CMCv.UI.Control.ULbl()
+            Txt_EmployeeID = New CMCv.UI.Control.txt(components)
+            ULbl4 = New CMCv.UI.Control.ULbl()
+            ULbl3 = New CMCv.UI.Control.ULbl()
+            ULbl2 = New CMCv.UI.Control.ULbl()
+            ULbl1 = New CMCv.UI.Control.ULbl()
+            Txt_EmployeeName = New CMCv.UI.Control.txt(components)
+            Txt_Position = New CMCv.UI.Control.txt(components)
+            Txt_Department = New CMCv.UI.Control.txt(components)
+            Txt_Company = New CMCv.UI.Control.txt(components)
+            Btn_Close = New CMCv.UI.Control.btn(components)
+            Gbx_Login = New CMCv.UI.Control.gbx(components)
+            Btn_Check = New CMCv.UI.Control.btn(components)
+            UPwdStrength1 = New CMCv.UI.Control.UPwdStrength()
+            ULbl7 = New CMCv.UI.Control.ULbl()
+            ULbl6 = New CMCv.UI.Control.ULbl()
+            Txt_Password = New CMCv.UI.Control.txt(components)
+            Txt_Username = New CMCv.UI.Control.txt(components)
+            object_da28eea8_631c_4534_a532_605841b1d2bd = New CMCv.UI.Control.lbl(components)
+            Gbx_Modules = New CMCv.UI.Control.gbx(components)
+            Dgn1 = New CMCv.UI.Control.dgn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -643,32 +643,32 @@
 
         End Sub
 
-        Friend WithEvents Btn_Process As btn
-        Friend WithEvents Lbl_Step As lbl
-        Friend WithEvents Gbx_Company As gbx
-        Friend WithEvents Txt_Company As txt
-        Friend WithEvents Txt_EmployeeName As txt
-        Friend WithEvents Txt_Position As txt
-        Friend WithEvents Txt_Department As txt
-        Friend WithEvents Btn_Close As btn
-        Friend WithEvents ULbl2 As ULbl
-        Friend WithEvents ULbl1 As ULbl
-        Friend WithEvents ULbl4 As ULbl
-        Friend WithEvents ULbl3 As ULbl
-        Friend WithEvents ULbl5 As ULbl
-        Friend WithEvents Txt_EmployeeID As txt
-        Friend WithEvents Gbx_Login As gbx
-        Friend WithEvents ULbl7 As ULbl
-        Friend WithEvents ULbl6 As ULbl
-        Friend WithEvents Txt_Password As txt
-        Friend WithEvents Txt_Username As txt
-        Friend WithEvents object_da28eea8_631c_4534_a532_605841b1d2bd As lbl
-        Friend WithEvents UPwdStrength1 As UPwdStrength
-        Friend WithEvents Gbx_Modules As gbx
-        Friend WithEvents Btn_Check As btn
-        Friend WithEvents Dgn1 As dgn
-        Friend WithEvents CboEmploymentType As cbo
-        Friend WithEvents ULblEmploymentType As ULbl
+        Friend WithEvents Btn_Process As CMCv.UI.Control.btn
+        Friend WithEvents Lbl_Step As CMCv.UI.Control.lbl
+        Friend WithEvents Gbx_Company As CMCv.UI.Control.gbx
+        Friend WithEvents Txt_Company As CMCv.UI.Control.txt
+        Friend WithEvents Txt_EmployeeName As CMCv.UI.Control.txt
+        Friend WithEvents Txt_Position As CMCv.UI.Control.txt
+        Friend WithEvents Txt_Department As CMCv.UI.Control.txt
+        Friend WithEvents Btn_Close As CMCv.UI.Control.btn
+        Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl
+        Friend WithEvents Txt_EmployeeID As CMCv.UI.Control.txt
+        Friend WithEvents Gbx_Login As CMCv.UI.Control.gbx
+        Friend WithEvents ULbl7 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl6 As CMCv.UI.Control.ULbl
+        Friend WithEvents Txt_Password As CMCv.UI.Control.txt
+        Friend WithEvents Txt_Username As CMCv.UI.Control.txt
+        Friend WithEvents object_da28eea8_631c_4534_a532_605841b1d2bd As CMCv.UI.Control.lbl
+        Friend WithEvents UPwdStrength1 As CMCv.UI.Control.UPwdStrength
+        Friend WithEvents Gbx_Modules As CMCv.UI.Control.gbx
+        Friend WithEvents Btn_Check As CMCv.UI.Control.btn
+        Friend WithEvents Dgn1 As CMCv.UI.Control.dgn
+        Friend WithEvents CboEmploymentType As CMCv.UI.Control.cbo
+        Friend WithEvents ULblEmploymentType As CMCv.UI.Control.ULbl
 
     End Class
 End Namespace

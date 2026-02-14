@@ -30,7 +30,7 @@
             Dim DataGridViewCellStyle16 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle17 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle18 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnOnProgress = New dgn(components)
+            DgnOnProgress = New CMCv.UI.Control.dgn(components)
             o_todos_id = New DataGridViewTextBoxColumn()
             o_todos_name = New DataGridViewTextBoxColumn()
             o_todos_datestart = New DataGridViewTextBoxColumn()
@@ -48,10 +48,10 @@
             o_todos_isreminder = New DataGridViewCheckBoxColumn()
             o_todos_iscomplete = New DataGridViewCheckBoxColumn()
             o_todos_ispublic = New DataGridViewCheckBoxColumn()
-            TbctlToDoList = New tbctl(components)
+            TbctlToDoList = New CMCv.UI.Control.tbctl(components)
             tpOnProgress = New TabPage()
             tpFinished = New TabPage()
-            DgnDone = New dgn(components)
+            DgnDone = New CMCv.UI.Control.dgn(components)
             d_todos_id = New DataGridViewTextBoxColumn()
             d_todos_name = New DataGridViewTextBoxColumn()
             d_todos_datestart = New DataGridViewTextBoxColumn()
@@ -70,7 +70,7 @@
             d_todos_iscomplete = New DataGridViewCheckBoxColumn()
             d_todos_ispublic = New DataGridViewCheckBoxColumn()
             tpVerified = New TabPage()
-            DgnVerified = New dgn(components)
+            DgnVerified = New CMCv.UI.Control.dgn(components)
             v_todos_id = New DataGridViewTextBoxColumn()
             v_todos_name = New DataGridViewTextBoxColumn()
             v_todos_datestart = New DataGridViewTextBoxColumn()
@@ -88,8 +88,8 @@
             v_todos_isreminder = New DataGridViewCheckBoxColumn()
             v_todos_iscomplete = New DataGridViewCheckBoxColumn()
             v_todos_ispublic = New DataGridViewCheckBoxColumn()
-            SpcContent = New spc(components)
-            BtnViewAttachment = New btn(components)
+            SpcContent = New CMCv.UI.Control.spc(components)
+            BtnViewAttachment = New CMCv.UI.Control.btn(components)
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -856,15 +856,15 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents DgnOnProgress As dgn
-        Friend WithEvents TbctlToDoList As tbctl
+        Friend WithEvents DgnOnProgress As CMCv.UI.Control.dgn
+        Friend WithEvents TbctlToDoList As CMCv.UI.Control.tbctl
         Friend WithEvents tpOnProgress As TabPage
         Friend WithEvents tpFinished As TabPage
-        Friend WithEvents SpcContent As spc
+        Friend WithEvents SpcContent As CMCv.UI.Control.spc
         Friend WithEvents tpVerified As TabPage
-        Friend WithEvents BtnViewAttachment As btn
-        Friend WithEvents DgnDone As dgn
-        Friend WithEvents DgnVerified As dgn
+        Friend WithEvents BtnViewAttachment As CMCv.UI.Control.btn
+        Friend WithEvents DgnDone As CMCv.UI.Control.dgn
+        Friend WithEvents DgnVerified As CMCv.UI.Control.dgn
         Friend WithEvents o_todos_id As DataGridViewTextBoxColumn
         Friend WithEvents o_todos_name As DataGridViewTextBoxColumn
         Friend WithEvents o_todos_datestart As DataGridViewTextBoxColumn

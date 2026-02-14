@@ -292,7 +292,7 @@ Namespace CMDuac
         ''' <param name="Find"></param>
         ''' <param name="ForceRefresh"></param>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as [user_root], usr.user_lastlogin, " &
@@ -349,7 +349,7 @@ Namespace CMDuac
     ''' </summary>
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, grid As dgn, Optional rowid As String = "-1")
+        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, grid As CMCv.UI.Control.dgn, Optional rowid As String = "-1")
             If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 ReDim varDatabaseRequestMssql2008(2)
 
@@ -578,7 +578,7 @@ Namespace CMDuac
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, employeeid As String, username As String, password As String, locked As Boolean, administrator As Boolean, uac As dgn, Optional rowid As String = "-1", Optional hash As String = "", Optional ispasswordchange As Boolean = False) As Boolean
+        Public Shared Function PushData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, employeeid As String, username As String, password As String, locked As Boolean, administrator As Boolean, uac As CMCv.UI.Control.dgn, Optional rowid As String = "-1", Optional hash As String = "", Optional ispasswordchange As Boolean = False) As Boolean
             Dim varSuccess As Boolean = False
 
             Try
@@ -705,7 +705,7 @@ Namespace CMDuac
         End Function
 
 #Region "Obsolete Function/Routine"
-        'Public Shared Function PushData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, employeeid As String, username As String, password As String, locked As Boolean, administrator As Boolean, uac As dgn, Optional rowid As String = "-1", Optional hash As String = "", Optional ispasswordchange As Boolean = False) As Boolean
+        'Public Shared Function PushData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, employeeid As String, username As String, password As String, locked As Boolean, administrator As Boolean, uac As cmcv.ui.control.dgn, Optional rowid As String = "-1", Optional hash As String = "", Optional ispasswordchange As Boolean = False) As Boolean
         '    Dim varSuccess As Boolean = False
 
         '    Try

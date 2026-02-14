@@ -20,18 +20,18 @@ Partial Class FRMcpdb
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Btn1 = New btn(components)
-        Btn2 = New btn(components)
-        Lbl1 = New lbl(components)
-        Txt1 = New txt(components)
-        Txt2 = New txt(components)
-        Txt3 = New txt(components)
-        Lbl2 = New lbl(components)
-        Lbl3 = New lbl(components)
-        Txt4 = New txt(components)
-        Lbl4 = New lbl(components)
-        Nud1 = New nud(components)
-        Lbl5 = New lbl(components)
+        Btn1 = New CMCv.UI.Control.btn(components)
+        Btn2 = New CMCv.UI.Control.btn(components)
+        Lbl1 = New CMCv.UI.Control.lbl(components)
+        Txt1 = New CMCv.UI.Control.txt(components)
+        Txt2 = New CMCv.UI.Control.txt(components)
+        Txt3 = New CMCv.UI.Control.txt(components)
+        Lbl2 = New CMCv.UI.Control.lbl(components)
+        Lbl3 = New CMCv.UI.Control.lbl(components)
+        Txt4 = New CMCv.UI.Control.txt(components)
+        Lbl4 = New CMCv.UI.Control.lbl(components)
+        Nud1 = New CMCv.UI.Control.nud(components)
+        Lbl5 = New CMCv.UI.Control.lbl(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
@@ -341,16 +341,16 @@ Partial Class FRMcpdb
 
     End Sub
 
-    Friend WithEvents Btn1 As CMCv.btn
-    Friend WithEvents Btn2 As CMCv.btn
-    Friend WithEvents Lbl1 As CMCv.lbl
-    Friend WithEvents Lbl5 As CMCv.lbl
-    Friend WithEvents Nud1 As CMCv.nud
-    Friend WithEvents Lbl4 As CMCv.lbl
-    Friend WithEvents Txt4 As CMCv.txt
-    Friend WithEvents Lbl3 As CMCv.lbl
-    Friend WithEvents Lbl2 As CMCv.lbl
-    Friend WithEvents Txt3 As CMCv.txt
-    Friend WithEvents Txt2 As CMCv.txt
-    Friend WithEvents Txt1 As CMCv.txt
+    Friend WithEvents Btn1 As CMCv.UI.Control.btn
+    Friend WithEvents Btn2 As CMCv.UI.Control.btn
+    Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
+    Friend WithEvents Lbl5 As CMCv.UI.Control.lbl
+    Friend WithEvents Nud1 As CMCv.UI.Control.nud
+    Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
+    Friend WithEvents Txt4 As CMCv.UI.Control.txt
+    Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
+    Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
+    Friend WithEvents Txt3 As CMCv.UI.Control.txt
+    Friend WithEvents Txt2 As CMCv.UI.Control.txt
+    Friend WithEvents Txt1 As CMCv.UI.Control.txt
 End Class

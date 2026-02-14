@@ -21,22 +21,22 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnShow = New btn(components)
-            BtnCancel = New btn(components)
-            ChkFrom = New chk(components)
-            DtpFrom = New dtp(components)
-            ChkTo = New chk(components)
-            DtpTo = New dtp(components)
-            ChkArea = New chk(components)
-            CboArea = New cbo(components)
-            CboActivity = New cbo(components)
-            ChkActivity = New chk(components)
-            CboBy = New cbo(components)
-            ChkBy = New chk(components)
-            TxtDescription = New txt(components)
-            LblNote = New lbl(components)
-            RdoColor = New rdo(components)
-            RdoBlackWhite = New rdo(components)
+            BtnShow = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
+            ChkFrom = New CMCv.UI.Control.chk(components)
+            DtpFrom = New CMCv.UI.Control.dtp(components)
+            ChkTo = New CMCv.UI.Control.chk(components)
+            DtpTo = New CMCv.UI.Control.dtp(components)
+            ChkArea = New CMCv.UI.Control.chk(components)
+            CboArea = New CMCv.UI.Control.cbo(components)
+            CboActivity = New CMCv.UI.Control.cbo(components)
+            ChkActivity = New CMCv.UI.Control.chk(components)
+            CboBy = New CMCv.UI.Control.cbo(components)
+            ChkBy = New CMCv.UI.Control.chk(components)
+            TxtDescription = New CMCv.UI.Control.txt(components)
+            LblNote = New CMCv.UI.Control.lbl(components)
+            RdoColor = New CMCv.UI.Control.rdo(components)
+            RdoBlackWhite = New CMCv.UI.Control.rdo(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -360,21 +360,21 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents BtnShow As CMCv.btn
-        Friend WithEvents BtnCancel As CMCv.btn
-        Friend WithEvents DtpFrom As CMCv.dtp
-        Friend WithEvents ChkFrom As CMCv.chk
-        Friend WithEvents CboActivity As CMCv.cbo
-        Friend WithEvents CboArea As CMCv.cbo
-        Friend WithEvents ChkArea As CMCv.chk
-        Friend WithEvents DtpTo As CMCv.dtp
-        Friend WithEvents ChkTo As CMCv.chk
-        Friend WithEvents ChkBy As CMCv.chk
-        Friend WithEvents CboBy As CMCv.cbo
-        Friend WithEvents ChkActivity As CMCv.chk
-        Friend WithEvents TxtDescription As CMCv.txt
-        Friend WithEvents LblNote As CMCv.lbl
-        Friend WithEvents RdoBlackWhite As CMCv.rdo
-        Friend WithEvents RdoColor As CMCv.rdo
+        Friend WithEvents BtnShow As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents DtpFrom As CMCv.UI.Control.dtp
+        Friend WithEvents ChkFrom As CMCv.UI.Control.chk
+        Friend WithEvents CboActivity As CMCv.UI.Control.cbo
+        Friend WithEvents CboArea As CMCv.UI.Control.cbo
+        Friend WithEvents ChkArea As CMCv.UI.Control.chk
+        Friend WithEvents DtpTo As CMCv.UI.Control.dtp
+        Friend WithEvents ChkTo As CMCv.UI.Control.chk
+        Friend WithEvents ChkBy As CMCv.UI.Control.chk
+        Friend WithEvents CboBy As CMCv.UI.Control.cbo
+        Friend WithEvents ChkActivity As CMCv.UI.Control.chk
+        Friend WithEvents TxtDescription As CMCv.UI.Control.txt
+        Friend WithEvents LblNote As CMCv.UI.Control.lbl
+        Friend WithEvents RdoBlackWhite As CMCv.UI.Control.rdo
+        Friend WithEvents RdoColor As CMCv.UI.Control.rdo
     End Class
 End Namespace

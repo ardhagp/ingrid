@@ -28,25 +28,25 @@
             Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle11 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            BtnSave = New btn(components)
-            BtnCancel = New btn(components)
-            CboTemplate = New cbo(components)
-            DtpStart = New dtp(components)
-            TxtContent = New txt(components)
-            CboArea = New cbo(components)
-            MebStart = New meb(components)
-            BtnGETContent = New btn(components)
-            ChkAddNew = New chk(components)
-            MebEnd = New meb(components)
-            DtpEnd = New dtp(components)
-            TxtFeedback = New txt(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
+            CboTemplate = New CMCv.UI.Control.cbo(components)
+            DtpStart = New CMCv.UI.Control.dtp(components)
+            TxtContent = New CMCv.UI.Control.txt(components)
+            CboArea = New CMCv.UI.Control.cbo(components)
+            MebStart = New CMCv.UI.Control.meb(components)
+            BtnGETContent = New CMCv.UI.Control.btn(components)
+            ChkAddNew = New CMCv.UI.Control.chk(components)
+            MebEnd = New CMCv.UI.Control.meb(components)
+            DtpEnd = New CMCv.UI.Control.dtp(components)
+            TxtFeedback = New CMCv.UI.Control.txt(components)
             OfdPhoto = New OpenFileDialog()
-            TbctlAttachment = New tbctl(components)
+            TbctlAttachment = New CMCv.UI.Control.tbctl(components)
             tpPhotos = New TabPage()
-            PnlPhoto = New pnl(components)
-            BtnBrowsePhoto = New btn(components)
-            PctbxPhoto = New pctbx(components)
-            DgnPictureList = New dgn(components)
+            PnlPhoto = New CMCv.UI.Control.pnl(components)
+            BtnBrowsePhoto = New CMCv.UI.Control.btn(components)
+            PctbxPhoto = New CMCv.UI.Control.pctbx(components)
+            DgnPictureList = New CMCv.UI.Control.dgn(components)
             photo_id = New DataGridViewTextBoxColumn()
             photo_filename = New DataGridViewTextBoxColumn()
             photo_datetime = New DataGridViewTextBoxColumn()
@@ -54,13 +54,13 @@
             photo_status = New DataGridViewTextBoxColumn()
             photo_uploader = New DataGridViewTextBoxColumn()
             photo_delete = New DataGridViewButtonColumn()
-            BtnPeekPhoto = New btn(components)
-            TxtPhotoPath = New txt(components)
-            BtnAddPhoto = New btn(components)
+            BtnPeekPhoto = New CMCv.UI.Control.btn(components)
+            TxtPhotoPath = New CMCv.UI.Control.txt(components)
+            BtnAddPhoto = New CMCv.UI.Control.btn(components)
             tpFiles = New TabPage()
-            PnlFile = New pnl(components)
-            BtnBrowseFile = New btn(components)
-            DgnFileList = New dgn(components)
+            PnlFile = New CMCv.UI.Control.pnl(components)
+            BtnBrowseFile = New CMCv.UI.Control.btn(components)
+            DgnFileList = New CMCv.UI.Control.dgn(components)
             file_id = New DataGridViewTextBoxColumn()
             file_filename = New DataGridViewTextBoxColumn()
             file_tag = New DataGridViewTextBoxColumn()
@@ -69,18 +69,18 @@
             file_status = New DataGridViewTextBoxColumn()
             file_uploader = New DataGridViewTextBoxColumn()
             file_delete = New DataGridViewButtonColumn()
-            CboFileTag = New cbo(components)
-            TxtFilePath = New txt(components)
-            BtnAddFile = New btn(components)
-            BtnPeekFile = New btn(components)
+            CboFileTag = New CMCv.UI.Control.cbo(components)
+            TxtFilePath = New CMCv.UI.Control.txt(components)
+            BtnAddFile = New CMCv.UI.Control.btn(components)
+            BtnPeekFile = New CMCv.UI.Control.btn(components)
             ofdFile = New OpenFileDialog()
-            ULbl1 = New ULbl()
-            ULbl2 = New ULbl()
-            ULbl3 = New ULbl()
-            ULbl4 = New ULbl()
-            ULbl5 = New ULbl()
-            ULbl6 = New ULbl()
-            ULbl7 = New ULbl()
+            ULbl1 = New CMCv.UI.Control.ULbl()
+            ULbl2 = New CMCv.UI.Control.ULbl()
+            ULbl3 = New CMCv.UI.Control.ULbl()
+            ULbl4 = New CMCv.UI.Control.ULbl()
+            ULbl5 = New CMCv.UI.Control.ULbl()
+            ULbl6 = New CMCv.UI.Control.ULbl()
+            ULbl7 = New CMCv.UI.Control.ULbl()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -1074,44 +1074,44 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnSave As btn
-        Friend WithEvents BtnCancel As btn
-        Friend WithEvents DtpStart As dtp
-        Friend WithEvents CboTemplate As cbo
-        Friend WithEvents TxtContent As txt
-        Friend WithEvents CboArea As cbo
-        Friend WithEvents MebStart As meb
-        Friend WithEvents BtnGETContent As btn
-        Friend WithEvents ChkAddNew As chk
-        Friend WithEvents MebEnd As meb
-        Friend WithEvents DtpEnd As dtp
-        Friend WithEvents TxtFeedback As txt
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents DtpStart As CMCv.UI.Control.dtp
+        Friend WithEvents CboTemplate As CMCv.UI.Control.cbo
+        Friend WithEvents TxtContent As CMCv.UI.Control.txt
+        Friend WithEvents CboArea As CMCv.UI.Control.cbo
+        Friend WithEvents MebStart As CMCv.UI.Control.meb
+        Friend WithEvents BtnGETContent As CMCv.UI.Control.btn
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents MebEnd As CMCv.UI.Control.meb
+        Friend WithEvents DtpEnd As CMCv.UI.Control.dtp
+        Friend WithEvents TxtFeedback As CMCv.UI.Control.txt
         Friend WithEvents OfdPhoto As OpenFileDialog
-        Friend WithEvents TbctlAttachment As tbctl
+        Friend WithEvents TbctlAttachment As CMCv.UI.Control.tbctl
         Friend WithEvents tpPhotos As TabPage
-        Friend WithEvents BtnPeekPhoto As btn
-        Friend WithEvents BtnBrowsePhoto As btn
-        Friend WithEvents BtnAddPhoto As btn
-        Friend WithEvents TxtPhotoPath As txt
-        Friend WithEvents DgnPictureList As dgn
-        Friend WithEvents PctbxPhoto As pctbx
+        Friend WithEvents BtnPeekPhoto As CMCv.UI.Control.btn
+        Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.btn
+        Friend WithEvents BtnAddPhoto As CMCv.UI.Control.btn
+        Friend WithEvents TxtPhotoPath As CMCv.UI.Control.txt
+        Friend WithEvents DgnPictureList As CMCv.UI.Control.dgn
+        Friend WithEvents PctbxPhoto As CMCv.UI.Control.pctbx
         Friend WithEvents tpFiles As TabPage
-        Friend WithEvents BtnPeekFile As btn
-        Friend WithEvents BtnBrowseFile As btn
-        Friend WithEvents BtnAddFile As btn
-        Friend WithEvents TxtFilePath As txt
-        Friend WithEvents DgnFileList As dgn
+        Friend WithEvents BtnPeekFile As CMCv.UI.Control.btn
+        Friend WithEvents BtnBrowseFile As CMCv.UI.Control.btn
+        Friend WithEvents BtnAddFile As CMCv.UI.Control.btn
+        Friend WithEvents TxtFilePath As CMCv.UI.Control.txt
+        Friend WithEvents DgnFileList As CMCv.UI.Control.dgn
         Friend WithEvents ofdFile As OpenFileDialog
-        Friend WithEvents CboFileTag As cbo
-        Friend WithEvents PnlPhoto As pnl
-        Friend WithEvents PnlFile As pnl
-        Friend WithEvents ULbl7 As ULbl
-        Friend WithEvents ULbl6 As ULbl
-        Friend WithEvents ULbl5 As ULbl
-        Friend WithEvents ULbl4 As ULbl
-        Friend WithEvents ULbl3 As ULbl
-        Friend WithEvents ULbl2 As ULbl
-        Friend WithEvents ULbl1 As ULbl
+        Friend WithEvents CboFileTag As CMCv.UI.Control.cbo
+        Friend WithEvents PnlPhoto As CMCv.UI.Control.pnl
+        Friend WithEvents PnlFile As CMCv.UI.Control.pnl
+        Friend WithEvents ULbl7 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl6 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
         Friend WithEvents photo_id As DataGridViewTextBoxColumn
         Friend WithEvents photo_filename As DataGridViewTextBoxColumn
         Friend WithEvents photo_datetime As DataGridViewTextBoxColumn

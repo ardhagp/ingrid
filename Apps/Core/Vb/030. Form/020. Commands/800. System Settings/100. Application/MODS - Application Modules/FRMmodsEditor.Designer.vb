@@ -24,26 +24,26 @@
             Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            BtnSave = New btn(components)
-            BtnCancel = New btn(components)
-            ChkAddNew = New chk(components)
-            Tbctl1 = New tbctl(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
+            ChkAddNew = New CMCv.UI.Control.chk(components)
+            Tbctl1 = New CMCv.UI.Control.tbctl(components)
             tpGeneral = New TabPage()
-            ULbl5 = New ULbl()
-            ULbl4 = New ULbl()
-            ULbl3 = New ULbl()
-            ULbl2 = New ULbl()
-            ULbl1 = New ULbl()
-            ChkSystem = New chk(components)
-            TxtCode = New txt(components)
-            ChkLocked = New chk(components)
-            CboGroup = New cbo(components)
-            TxtDescription = New txt(components)
-            TxtName = New txt(components)
-            TxtID = New txt(components)
+            ULbl5 = New CMCv.UI.Control.ULbl()
+            ULbl4 = New CMCv.UI.Control.ULbl()
+            ULbl3 = New CMCv.UI.Control.ULbl()
+            ULbl2 = New CMCv.UI.Control.ULbl()
+            ULbl1 = New CMCv.UI.Control.ULbl()
+            ChkSystem = New CMCv.UI.Control.chk(components)
+            TxtCode = New CMCv.UI.Control.txt(components)
+            ChkLocked = New CMCv.UI.Control.chk(components)
+            CboGroup = New CMCv.UI.Control.cbo(components)
+            TxtDescription = New CMCv.UI.Control.txt(components)
+            TxtName = New CMCv.UI.Control.txt(components)
+            TxtID = New CMCv.UI.Control.txt(components)
             tpPermissions = New TabPage()
-            GbxAccessBy = New gbx(components)
-            DgnUserRoles = New dgn(components)
+            GbxAccessBy = New CMCv.UI.Control.gbx(components)
+            DgnUserRoles = New CMCv.UI.Control.dgn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -498,25 +498,25 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents ChkAddNew As CMCv.chk
-        Friend WithEvents BtnCancel As CMCv.btn
-        Friend WithEvents BtnSave As CMCv.btn
-        Friend WithEvents Tbctl1 As CMCv.tbctl
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents Tbctl1 As CMCv.UI.Control.tbctl
         Friend WithEvents tpGeneral As TabPage
-        Friend WithEvents TxtCode As CMCv.txt
-        Friend WithEvents ChkLocked As CMCv.chk
-        Friend WithEvents CboGroup As CMCv.cbo
-        Friend WithEvents TxtDescription As CMCv.txt
-        Friend WithEvents TxtName As CMCv.txt
-        Friend WithEvents TxtID As CMCv.txt
+        Friend WithEvents TxtCode As CMCv.UI.Control.txt
+        Friend WithEvents ChkLocked As CMCv.UI.Control.chk
+        Friend WithEvents CboGroup As CMCv.UI.Control.cbo
+        Friend WithEvents TxtDescription As CMCv.UI.Control.txt
+        Friend WithEvents TxtName As CMCv.UI.Control.txt
+        Friend WithEvents TxtID As CMCv.UI.Control.txt
         Friend WithEvents tpPermissions As TabPage
-        Friend WithEvents GbxAccessBy As CMCv.gbx
-        Friend WithEvents DgnUserRoles As CMCv.dgn
-        Friend WithEvents ChkSystem As CMCv.chk
-        Friend WithEvents ULbl5 As CMCv.ULbl
-        Friend WithEvents ULbl4 As CMCv.ULbl
-        Friend WithEvents ULbl3 As CMCv.ULbl
-        Friend WithEvents ULbl2 As CMCv.ULbl
-        Friend WithEvents ULbl1 As CMCv.ULbl
+        Friend WithEvents GbxAccessBy As CMCv.UI.Control.gbx
+        Friend WithEvents DgnUserRoles As CMCv.UI.Control.dgn
+        Friend WithEvents ChkSystem As CMCv.UI.Control.chk
+        Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
     End Class
 End Namespace

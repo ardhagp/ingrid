@@ -25,7 +25,7 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnConnection = New dgn(components)
+            DgnConnection = New CMCv.UI.Control.dgn(components)
             id = New DataGridViewTextBoxColumn()
             connectionname = New DataGridViewTextBoxColumn()
             databaseengine = New DataGridViewTextBoxColumn()
@@ -33,7 +33,7 @@
             serverport = New DataGridViewTextBoxColumn()
             defaultconnection = New DataGridViewCheckBoxColumn()
             spring = New DataGridViewTextBoxColumn()
-            Btn_Close = New btn(components)
+            Btn_Close = New CMCv.UI.Control.btn(components)
             PnlBottomButton.SuspendLayout()
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -257,8 +257,8 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents DgnConnection As dgn
-        Friend WithEvents Btn_Close As btn
+        Friend WithEvents DgnConnection As CMCv.UI.Control.dgn
+        Friend WithEvents Btn_Close As CMCv.UI.Control.btn
         Friend WithEvents id As DataGridViewTextBoxColumn
         Friend WithEvents connectionname As DataGridViewTextBoxColumn
         Friend WithEvents databaseengine As DataGridViewTextBoxColumn

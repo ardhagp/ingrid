@@ -25,7 +25,7 @@
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnMODS = New dgn(components)
+            DgnMODS = New cmcv.ui.control.dgn(components)
             modulegroup_name = New DataGridViewTextBoxColumn()
             module_code = New DataGridViewTextBoxColumn()
             module_name = New DataGridViewTextBoxColumn()
@@ -199,7 +199,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnMODS As dgn
+        Friend WithEvents DgnMODS As cmcv.ui.control.dgn
         Friend WithEvents modulegroup_name As DataGridViewTextBoxColumn
         Friend WithEvents module_code As DataGridViewTextBoxColumn
         Friend WithEvents module_name As DataGridViewTextBoxColumn

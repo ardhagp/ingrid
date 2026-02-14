@@ -22,14 +22,14 @@ Partial Class frmStandard
         components = New ComponentModel.Container()
         Dim MySettings1 As CMCv.My.MySettings = New My.MySettings()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStandard))
-        pnl_ = New pnl(components)
-        SLFLogo = New pctbx(components)
-        SLFBackground = New pctbx(components)
-        SLFNamaForm = New lbl(components)
-        SLFSubNamaForm = New lbl(components)
-        SLFStatus = New stt(components)
+        pnl_ = New CMCv.UI.Control.pnl(components)
+        SLFLogo = New CMCv.UI.Control.pctbx(components)
+        SLFBackground = New CMCv.UI.Control.pctbx(components)
+        SLFNamaForm = New CMCv.UI.Control.lbl(components)
+        SLFSubNamaForm = New CMCv.UI.Control.lbl(components)
+        SLFStatus = New CMCv.UI.Control.stt(components)
         SLFStatusLabel = New Windows.Forms.ToolStripStatusLabel()
-        SLFPanel = New pnl(components)
+        SLFPanel = New CMCv.UI.Control.pnl(components)
         pnl_.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
@@ -166,12 +166,12 @@ Partial Class frmStandard
         PerformLayout()
 
     End Sub
-    Public WithEvents SLFLogo As CMCv.pctbx
-    Public WithEvents SLFSubNamaForm As CMCv.lbl
-    Public WithEvents SLFNamaForm As CMCv.lbl
-    Public WithEvents SLFStatus As CMCv.stt
-    Public WithEvents pnl_ As CMCv.pnl
+    Public WithEvents SLFLogo As CMCv.UI.Control.pctbx
+    Public WithEvents SLFSubNamaForm As CMCv.UI.Control.lbl
+    Public WithEvents SLFNamaForm As CMCv.UI.Control.lbl
+    Public WithEvents SLFStatus As CMCv.UI.Control.stt
+    Public WithEvents pnl_ As CMCv.UI.Control.pnl
     Friend WithEvents SLFStatusLabel As System.Windows.Forms.ToolStripStatusLabel
-    Public WithEvents SLFPanel As CMCv.pnl
-    Public WithEvents SLFBackground As pctbx
+    Public WithEvents SLFPanel As CMCv.UI.Control.pnl
+    Public WithEvents SLFBackground As CMCv.UI.Control.pctbx
 End Class

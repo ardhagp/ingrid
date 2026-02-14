@@ -24,8 +24,8 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            BtnClose = New btn(components)
-            DgnNotification = New dgn(components)
+            BtnClose = New CMCv.UI.Control.btn(components)
+            DgnNotification = New CMCv.UI.Control.dgn(components)
             notification_message = New DataGridViewTextBoxColumn()
             notification_datetime = New DataGridViewTextBoxColumn()
             PnlBottomButton.SuspendLayout()
@@ -163,8 +163,8 @@
 
         End Sub
 
-        Friend WithEvents BtnClose As CMCv.btn
-        Friend WithEvents DgnNotification As CMCv.dgn
+        Friend WithEvents BtnClose As CMCv.UI.Control.btn
+        Friend WithEvents DgnNotification As CMCv.UI.Control.dgn
         Friend WithEvents notification_message As DataGridViewTextBoxColumn
         Friend WithEvents notification_datetime As DataGridViewTextBoxColumn
     End Class

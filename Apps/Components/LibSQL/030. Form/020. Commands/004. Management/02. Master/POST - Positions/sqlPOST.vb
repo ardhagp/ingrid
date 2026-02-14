@@ -6,7 +6,7 @@ Namespace CMDpost
         'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, grid As dgn, status As stt, find As txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, grid As CMCv.UI.Control.dgn, status As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             'ReDim varDatabaseRequestMssql2008(2)
             Dim varWhere As String = "where "
 
@@ -59,7 +59,7 @@ Namespace CMDpost
         'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillCompany(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, company As cbo)
+        Public Shared Sub FillCompany(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, company As CMCv.UI.Control.cbo)
             If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(0).Query = "select c.company_id, (c.company_code+ ' - ' + c.company_name) as [company_name] from dbo.man_company c order by c.company_code"
                 varDatabaseRequestMssql2008(0).Dropdown = company
@@ -74,7 +74,7 @@ Namespace CMDpost
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillDepartement(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, department As cbo, company As cbo)
+        Public Shared Sub FillDepartement(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, department As CMCv.UI.Control.cbo, company As CMCv.UI.Control.cbo)
             Dim varDepartment As String = String.Empty
 
             If company.Items.Count <> 0 Then

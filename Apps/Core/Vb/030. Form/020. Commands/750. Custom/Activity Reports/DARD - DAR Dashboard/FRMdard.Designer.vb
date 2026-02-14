@@ -31,7 +31,7 @@
             Dim ChartArea6 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New DataVisualization.Charting.ChartArea()
             Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New DataVisualization.Charting.Series()
             Dim Title6 As System.Windows.Forms.DataVisualization.Charting.Title = New DataVisualization.Charting.Title()
-            Tbctl1 = New tbctl(components)
+            Tbctl1 = New CMCv.UI.Control.tbctl(components)
             tp_Dashboard = New TabPage()
             tlpUpper = New TableLayoutPanel()
             chrtDaily = New DataVisualization.Charting.Chart()
@@ -265,7 +265,7 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents Tbctl1 As tbctl
+        Friend WithEvents Tbctl1 As CMCv.UI.Control.tbctl
         Friend WithEvents tp_Dashboard As TabPage
         Friend WithEvents tlpUpper As TableLayoutPanel
         Friend WithEvents tlpMiddle As TableLayoutPanel

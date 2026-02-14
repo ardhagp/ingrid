@@ -21,8 +21,8 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Btn1 = New btn(components)
-            Btn2 = New btn(components)
+            Btn1 = New CMCv.UI.Control.btn(components)
+            Btn2 = New CMCv.UI.Control.btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -110,8 +110,8 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents Btn1 As CMCv.btn
-        Friend WithEvents Btn2 As CMCv.btn
+        Friend WithEvents Btn1 As CMCv.UI.Control.btn
+        Friend WithEvents Btn2 As CMCv.UI.Control.btn
 
     End Class
 End Namespace

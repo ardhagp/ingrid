@@ -21,10 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bridge", "..\..\Components\
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "IngridLauncher", "..\..\Components\Ingrid-Launcher\IngridLauncher.vbproj", "{E7753AB6-5484-4168-9F25-DE61A2A13CC5}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DatabaseSchema_Data", "..\..\..\Database\SQL Server\DatabaseSchema_Data\DatabaseSchema_Data.sqlproj", "{C72592FB-197C-43AA-A792-EBEF65CF994A}"
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DatabaseSchema_File", "..\..\..\Database\SQL Server\DatabaseSchema_File\DatabaseSchema_File.sqlproj", "{87C38661-71CF-4FC5-A4DE-BB0F67CBBA4D}"
-EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LibApp", "..\..\Components\LibApp\LibApp.vbproj", "{621C876F-21DD-45D2-A581-9036F148D771}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LibAPI", "..\..\Components\LibAPI\LibAPI.vbproj", "{0A6A620E-E7A4-4E2D-8B62-08CB95933602}"
@@ -59,16 +55,6 @@ Global
 		{E7753AB6-5484-4168-9F25-DE61A2A13CC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7753AB6-5484-4168-9F25-DE61A2A13CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7753AB6-5484-4168-9F25-DE61A2A13CC5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C72592FB-197C-43AA-A792-EBEF65CF994A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C72592FB-197C-43AA-A792-EBEF65CF994A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C72592FB-197C-43AA-A792-EBEF65CF994A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{C72592FB-197C-43AA-A792-EBEF65CF994A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C72592FB-197C-43AA-A792-EBEF65CF994A}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{87C38661-71CF-4FC5-A4DE-BB0F67CBBA4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87C38661-71CF-4FC5-A4DE-BB0F67CBBA4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87C38661-71CF-4FC5-A4DE-BB0F67CBBA4D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{87C38661-71CF-4FC5-A4DE-BB0F67CBBA4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87C38661-71CF-4FC5-A4DE-BB0F67CBBA4D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{621C876F-21DD-45D2-A581-9036F148D771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{621C876F-21DD-45D2-A581-9036F148D771}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{621C876F-21DD-45D2-A581-9036F148D771}.Release|Any CPU.ActiveCfg = Release|Any CPU

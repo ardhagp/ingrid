@@ -8,7 +8,7 @@ Namespace CMDepls
     Public Class View
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As String, grid As dgn, status As CMCv.stt, find As txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(databasename As String, dbengine As String, grid As CMCv.UI.Control.dgn, status As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             ReDim varDatabaseRequestMssql2008(2)
             Dim varWhere As String = String.Format("where ")
 
@@ -345,7 +345,7 @@ Namespace CMDepls
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushData(databasename As String, dbengine As String, personalid As String, position As String, employeenumber As String, employeefullname As String, employeebirthdate As dtp, employeebirthplace As String, employeeaddress As String, employeenickname As String, activeemployee As Boolean, employeegender As String, employeephoto As System.Drawing.Image, forcechangephoto As Boolean, creatoreditor As String, Optional rowid As String = "-1") As Boolean
+        Public Shared Function PushData(databasename As String, dbengine As String, personalid As String, position As String, employeenumber As String, employeefullname As String, employeebirthdate As CMCv.UI.Control.dtp, employeebirthplace As String, employeeaddress As String, employeenickname As String, activeemployee As Boolean, employeegender As String, employeephoto As System.Drawing.Image, forcechangephoto As Boolean, creatoreditor As String, Optional rowid As String = "-1") As Boolean
             Dim varSuccess As Boolean = False
             Dim varHash As String = CMCv.Security.Encrypt.MD5()
             Dim varEmployeeBirthDate As String = employeebirthdate.Value.Year & "-" & employeebirthdate.Value.Month & "-" & employeebirthdate.Value.Day

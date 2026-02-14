@@ -25,7 +25,7 @@
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnEPLS = New dgn(components)
+            DgnEPLS = New cmcv.ui.control.dgn(components)
             employee_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
             departement_code = New DataGridViewTextBoxColumn()
@@ -247,7 +247,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnEPLS As dgn
+        Friend WithEvents DgnEPLS As cmcv.ui.control.dgn
         Friend WithEvents employee_id As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
         Friend WithEvents departement_code As DataGridViewTextBoxColumn

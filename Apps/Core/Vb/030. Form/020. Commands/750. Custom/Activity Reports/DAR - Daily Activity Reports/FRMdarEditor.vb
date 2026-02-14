@@ -321,7 +321,7 @@ Namespace UI
         End Sub
 
         Private Sub DgnPictureList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnPictureList.CellContentClick
-            Dim varSendergrid = DirectCast(sender, dgn)
+            Dim varSendergrid = DirectCast(sender, CMCv.UI.Control.dgn)
 
             If TypeOf varSendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to remove selected photo?", LibApp.Ingrid.Global.PopupType.Delete, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 If DgnPictureList.CurrentRow.Cells("photo_status").Value IsNot "Add" Then
@@ -408,7 +408,7 @@ Namespace UI
         End Sub
 
         Private Sub DgnFileList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnFileList.CellContentClick
-            Dim varSendergrid = DirectCast(sender, dgn)
+            Dim varSendergrid = DirectCast(sender, CMCv.UI.Control.dgn)
 
             If TypeOf varSendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to remove selected file?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 If DgnFileList.CurrentRow.Cells("file_status").Value IsNot "Add" Then

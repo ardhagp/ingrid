@@ -6,7 +6,7 @@ Namespace CMDccin
         'ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As dgn, statusbar As stt, find As txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             Dim varWhere As String = "where "
 
             If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then

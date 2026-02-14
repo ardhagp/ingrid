@@ -92,7 +92,7 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillEmployee(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, employee As cbo)
+        Public Shared Sub FillEmployee(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, employee As CMCv.UI.Control.cbo)
             If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_id, em.employee_fullname from dbo.man_employee em where em.employee_id in " &
                                                     "(select ea.employeeactivity_employee from dbo.doc_employeeactivity ea group by " &
@@ -112,7 +112,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayMainGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, find As txt, dategrid As dgn, datestatusbar As stt, contentstatusbar As stt, chkdatefilter As chk, dtpdatefilter As dtp, chkbyfilter As chk, cbobyfilter As cbo, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayMainGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, find As CMCv.UI.Control.txt, dategrid As CMCv.UI.Control.dgn, datestatusbar As CMCv.UI.Control.stt, contentstatusbar As CMCv.UI.Control.stt, chkdatefilter As CMCv.UI.Control.chk, dtpdatefilter As CMCv.UI.Control.dtp, chkbyfilter As CMCv.UI.Control.chk, cbobyfilter As CMCv.UI.Control.cbo, Optional forcerefresh As Boolean = False)
             Try
                 Dim varWhere As String = String.Format("where ")
 
@@ -238,7 +238,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplaySecondGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, dategrid As String, contentgrid As dgn, contentstatusbar As stt, find As txt, Optional showattachment As Boolean = False, Optional photogrid As dgn = Nothing, Optional filegrid As dgn = Nothing)
+        Public Shared Sub DisplaySecondGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, dategrid As String, contentgrid As CMCv.UI.Control.dgn, contentstatusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional showattachment As Boolean = False, Optional photogrid As CMCv.UI.Control.dgn = Nothing, Optional filegrid As CMCv.UI.Control.dgn = Nothing)
             Try
                 'Dim _CONTENTDATE As Date
                 Dim varContentDateAsString As String = String.Empty
@@ -452,7 +452,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayPhotoGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, contentid As String, filegrid As dgn, Optional recordyear As String = "")
+        Public Shared Sub DisplayPhotoGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, contentid As String, filegrid As CMCv.UI.Control.dgn, Optional recordyear As String = "")
             ReDim varDatabaseRequestMssql2008(5)
             Dim varContentId As String = contentid
 
@@ -480,7 +480,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayFileGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, contentid As String, filegrid As dgn, Optional recordyear As String = "")
+        Public Shared Sub DisplayFileGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, contentid As String, filegrid As CMCv.UI.Control.dgn, Optional recordyear As String = "")
             ReDim varDatabaseRequestMssql2008(6)
             Dim varContentId As String = contentid
 
@@ -607,7 +607,7 @@ Namespace CMDdar
         Private Shared varDataSet As DataSet
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetAffectedArea(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, listofaffectedarea As CMCv.cbo)
+        Public Shared Sub GetAffectedArea(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, listofaffectedarea As CMCv.UI.Control.cbo)
             If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = "select aa.areaaffected_id, aa.areaaffected_name from dbo.doc_areaaffected aa order by aa.areaaffected_order"
                 varDatabaseRequestMssql2008(1).Dropdown = listofaffectedarea
@@ -622,7 +622,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetTemplateTitle(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, listoftemplate As CMCv.cbo)
+        Public Shared Sub GetTemplateTitle(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, listoftemplate As CMCv.UI.Control.cbo)
             If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = "select tp.template_id, tp.template_title from dbo.doc_template tp inner join dbo.sys_module mo on " &
                 "mo.module_id = tp.template_module where mo.module_code = 'DAR' order by tp.template_title"
@@ -639,7 +639,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetTemplateContent(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, listoftemplate As CMCv.cbo) As String
+        Public Shared Function GetTemplateContent(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, listoftemplate As CMCv.UI.Control.cbo) As String
             Dim varTemplateContent As String = String.Empty
 
             If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -653,7 +653,7 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetRowValue(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String, datepart As CMCv.dtp, timepart As CMCv.meb, datepartend As CMCv.dtp, timepartend As CMCv.meb, listofaffectedarea As cbo, listoftemplate As cbo, templatecontent As CMCv.txt, feedBack As CMCv.txt)
+        Public Shared Sub GetRowValue(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String, datepart As CMCv.UI.Control.dtp, timepart As CMCv.UI.Control.meb, datepartend As CMCv.UI.Control.dtp, timepartend As CMCv.UI.Control.meb, listofaffectedarea As CMCv.UI.Control.cbo, listoftemplate As CMCv.UI.Control.cbo, templatecontent As CMCv.UI.Control.txt, feedBack As CMCv.UI.Control.txt)
             Dim varDatePart(3) As String
             Dim varTimeParts(1) As TimeSpan
             Dim varTimePart(3) As String
@@ -759,7 +759,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DisplayPhotoGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String, filegrid As dgn) As DataSet
+        Public Shared Function DisplayPhotoGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String, filegrid As CMCv.UI.Control.dgn) As DataSet
             varDataSet = New DataSet
             'ReDim varDatabaseRequestMssql2008(3)
 
@@ -780,7 +780,7 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DisplayFileGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String, filegrid As dgn) As DataSet
+        Public Shared Function DisplayFileGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String, filegrid As CMCv.UI.Control.dgn) As DataSet
             varDataSet = New DataSet
             'ReDim varDatabaseRequestMssql2008(3)
 
@@ -866,7 +866,7 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushPhoto(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, filegrid As dgn, rowid As String, isnew As Boolean, parentdate As Date) As Boolean
+        Public Shared Function PushPhoto(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, filegrid As CMCv.UI.Control.dgn, rowid As String, isnew As Boolean, parentdate As Date) As Boolean
             Dim varSuccess As Boolean = False
 
             Try
@@ -960,7 +960,7 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushFile(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, filegrid As dgn, rowid As String, isnew As Boolean, parentdate As Date) As Boolean
+        Public Shared Function PushFile(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, filegrid As CMCv.UI.Control.dgn, rowid As String, isnew As Boolean, parentdate As Date) As Boolean
             Dim varSuccess As Boolean = False
 
             Try
@@ -1061,7 +1061,7 @@ Namespace CMDdar
 
     Public Class Reports
         <SupportedOSPlatform("windows")>
-        Public Shared Sub Display(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, chkfrom As chk, chkto As chk, chkarea As chk, chkactivity As chk, chkby As chk, dtpfrom As dtp, dtpto As dtp, cboarea As cbo, cboactivity As cbo, cboby As cbo, txtdescription As txt, datasetname As DataSet)
+        Public Shared Sub Display(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, chkfrom As CMCv.UI.Control.chk, chkto As CMCv.UI.Control.chk, chkarea As CMCv.UI.Control.chk, chkactivity As CMCv.UI.Control.chk, chkby As CMCv.UI.Control.chk, dtpfrom As CMCv.UI.Control.dtp, dtpto As CMCv.UI.Control.dtp, cboarea As CMCv.UI.Control.cbo, cboactivity As CMCv.UI.Control.cbo, cboby As CMCv.UI.Control.cbo, txtdescription As CMCv.UI.Control.txt, datasetname As DataSet)
 
             Dim varWhere As String
             Dim varDTPfrom As String = dtpfrom.Value.Year & "-" & dtpfrom.Value.Month & "-" & dtpfrom.Value.Day

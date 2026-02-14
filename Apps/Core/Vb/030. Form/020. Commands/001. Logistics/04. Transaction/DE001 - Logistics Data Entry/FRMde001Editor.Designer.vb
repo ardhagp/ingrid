@@ -21,13 +21,13 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnSave = New btn(components)
-            BtnClose = New btn(components)
-            Txt1 = New txt(components)
-            LblNumber = New lbl(components)
-            Cbo1 = New cbo(components)
-            LblGroup = New lbl(components)
-            LblDate = New lbl(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnClose = New CMCv.UI.Control.btn(components)
+            Txt1 = New CMCv.UI.Control.txt(components)
+            LblNumber = New CMCv.UI.Control.lbl(components)
+            Cbo1 = New CMCv.UI.Control.cbo(components)
+            LblGroup = New CMCv.UI.Control.lbl(components)
+            LblDate = New CMCv.UI.Control.lbl(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -200,12 +200,12 @@
 
         End Sub
 
-        Friend WithEvents BtnSave As CMCv.btn
-        Friend WithEvents BtnClose As CMCv.btn
-        Friend WithEvents LblNumber As CMCv.lbl
-        Friend WithEvents Txt1 As CMCv.txt
-        Friend WithEvents LblGroup As CMCv.lbl
-        Friend WithEvents Cbo1 As CMCv.cbo
-        Friend WithEvents LblDate As CMCv.lbl
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnClose As CMCv.UI.Control.btn
+        Friend WithEvents LblNumber As CMCv.UI.Control.lbl
+        Friend WithEvents Txt1 As CMCv.UI.Control.txt
+        Friend WithEvents LblGroup As CMCv.UI.Control.lbl
+        Friend WithEvents Cbo1 As CMCv.UI.Control.cbo
+        Friend WithEvents LblDate As CMCv.UI.Control.lbl
     End Class
 End Namespace

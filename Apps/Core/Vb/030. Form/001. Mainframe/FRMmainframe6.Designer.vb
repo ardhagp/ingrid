@@ -124,28 +124,28 @@
             LoginToolStripMenuItem = New ToolStripMenuItem()
             LogoutToolStripMenuItem = New ToolStripMenuItem()
             SUPPORT = New ToolStripMenuItem()
-            pnl_mainframe_left = New pnl(components)
-            Tv_mainframe = New tv(components)
+            pnl_mainframe_left = New CMCv.UI.Control.pnl(components)
+            Tv_mainframe = New CMCv.UI.Control.tv(components)
             Imglst_mainframe = New ImageList(components)
-            PnlStorage = New pnl(components)
+            PnlStorage = New CMCv.UI.Control.pnl(components)
             pgFileStorage = New Windows.Forms.Tools.ProgressBarAdv()
             pgDataStorage = New Windows.Forms.Tools.ProgressBarAdv()
             lblFile = New Label()
             lblData = New Label()
             lblFileStorage = New Label()
             lblDataStorage = New Label()
-            lblStorage = New lbl(components)
-            Pnl_command_top = New pnl(components)
+            lblStorage = New CMCv.UI.Control.lbl(components)
+            Pnl_command_top = New CMCv.UI.Control.pnl(components)
             BtnExecute = New Windows.Forms.ButtonAdv()
-            Txt_shortcut = New txt(components)
-            PnlProfile = New pnl(components)
-            PctProfile = New pctbx(components)
-            PctbxFrame = New pctbx(components)
-            LblPosition = New lbl(components)
-            LblEmployeeName = New lbl(components)
-            LblEmpNumber = New lbl(components)
-            LblWelcome = New lbl(components)
-            St_mainframe = New stt(components)
+            Txt_shortcut = New CMCv.UI.Control.txt(components)
+            PnlProfile = New CMCv.UI.Control.pnl(components)
+            PctProfile = New CMCv.UI.Control.pctbx(components)
+            PctbxFrame = New CMCv.UI.Control.pctbx(components)
+            LblPosition = New CMCv.UI.Control.lbl(components)
+            LblEmployeeName = New CMCv.UI.Control.lbl(components)
+            LblEmpNumber = New CMCv.UI.Control.lbl(components)
+            LblWelcome = New CMCv.UI.Control.lbl(components)
+            St_mainframe = New CMCv.UI.Control.stt(components)
             Ts_status = New ToolStripStatusLabel()
             Ts_caps = New ToolStripStatusLabel()
             Ts_connection = New ToolStripStatusLabel()
@@ -154,7 +154,7 @@
             Tmr_gc = New Timer(components)
             TmrMOD = New Timer(components)
             Tmr_runningtext = New Timer(components)
-            TxtRunning = New txt(components)
+            TxtRunning = New CMCv.UI.Control.txt(components)
             spl_ = New Splitter()
             Tmdi_ = New Windows.Forms.Tools.TabbedGroupedMDIManager()
             Ms_mainframe.SuspendLayout()
@@ -1251,7 +1251,7 @@
         Friend WithEvents LoginToolStripMenuItem As ToolStripMenuItem
         Friend WithEvents ChangePasswordToolStripMenuItem As ToolStripMenuItem
         Friend WithEvents SUPPORT As ToolStripMenuItem
-        Friend WithEvents TxtRunning As txt
+        Friend WithEvents TxtRunning As CMCv.UI.Control.txt
         Friend WithEvents Imglst_mainframe As ImageList
         Friend WithEvents TmrNotif As Timer
         Friend WithEvents Tmr_gc As Timer
@@ -1261,26 +1261,26 @@
         Friend WithEvents Tmr_runningtext As Timer
         Public WithEvents Ms_mainframe As MenuStrip
         Friend WithEvents Tmdi_ As Syncfusion.Windows.Forms.Tools.TabbedGroupedMDIManager
-        Friend WithEvents pnl_mainframe_left As pnl
+        Friend WithEvents pnl_mainframe_left As CMCv.UI.Control.pnl
         Friend WithEvents spl_ As Splitter
-        Friend WithEvents Tv_mainframe As tv
-        Friend WithEvents Pnl_command_top As pnl
+        Friend WithEvents Tv_mainframe As CMCv.UI.Control.tv
+        Friend WithEvents Pnl_command_top As CMCv.UI.Control.pnl
         Friend WithEvents BtnExecute As Syncfusion.Windows.Forms.ButtonAdv
-        Friend WithEvents Txt_shortcut As txt
-        Friend WithEvents PnlProfile As pnl
-        Friend WithEvents LblWelcome As lbl
-        Friend WithEvents PctProfile As pctbx
-        Friend WithEvents LblEmpNumber As lbl
-        Friend WithEvents LblEmployeeName As lbl
-        Friend WithEvents LblPosition As lbl
-        Friend WithEvents PctbxFrame As pctbx
-        Friend WithEvents PnlStorage As pnl
+        Friend WithEvents Txt_shortcut As CMCv.UI.Control.txt
+        Friend WithEvents PnlProfile As CMCv.UI.Control.pnl
+        Friend WithEvents LblWelcome As CMCv.UI.Control.lbl
+        Friend WithEvents PctProfile As CMCv.UI.Control.pctbx
+        Friend WithEvents LblEmpNumber As CMCv.UI.Control.lbl
+        Friend WithEvents LblEmployeeName As CMCv.UI.Control.lbl
+        Friend WithEvents LblPosition As CMCv.UI.Control.lbl
+        Friend WithEvents PctbxFrame As CMCv.UI.Control.pctbx
+        Friend WithEvents PnlStorage As CMCv.UI.Control.pnl
         Friend WithEvents lblFile As Label
         Friend WithEvents lblData As Label
         Friend WithEvents lblFileStorage As Label
         Friend WithEvents lblDataStorage As Label
-        Friend WithEvents lblStorage As lbl
-        Friend WithEvents St_mainframe As stt
+        Friend WithEvents lblStorage As CMCv.UI.Control.lbl
+        Friend WithEvents St_mainframe As CMCv.UI.Control.stt
         Friend WithEvents Ts_status As ToolStripStatusLabel
         Friend WithEvents Ts_connection As ToolStripStatusLabel
         Friend WithEvents Ts_caps As ToolStripStatusLabel

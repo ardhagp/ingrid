@@ -25,11 +25,11 @@
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Pnl1 = New pnl(components)
-            BtnClear = New btn(components)
-            Lbl1 = New lbl(components)
-            TxtFind = New txt(components)
-            DgnACBK = New dgn(components)
+            Pnl1 = New CMCv.UI.Control.pnl(components)
+            BtnClear = New CMCv.UI.Control.btn(components)
+            Lbl1 = New CMCv.UI.Control.lbl(components)
+            TxtFind = New CMCv.UI.Control.txt(components)
+            DgnACBK = New CMCv.UI.Control.dgn(components)
             book_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
             book_code = New DataGridViewTextBoxColumn()
@@ -244,11 +244,11 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents Pnl1 As pnl
-        Friend WithEvents BtnClear As btn
-        Friend WithEvents Lbl1 As lbl
-        Friend WithEvents TxtFind As txt
-        Friend WithEvents DgnACBK As dgn
+        Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
+        Friend WithEvents BtnClear As CMCv.UI.Control.btn
+        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
+        Friend WithEvents TxtFind As CMCv.UI.Control.txt
+        Friend WithEvents DgnACBK As CMCv.UI.Control.dgn
         Friend WithEvents book_id As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
         Friend WithEvents book_code As DataGridViewTextBoxColumn

@@ -4,7 +4,7 @@ Imports CMCv
 Namespace CMDuac.Addins.Browse
     Public Class Employee
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, grid As dgn, status As CMCv.stt, find As txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(databasename As String, grid As CMCv.UI.Control.dgn, status As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             ReDim varDatabaseRequestMssql2008(2)
 
             If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then

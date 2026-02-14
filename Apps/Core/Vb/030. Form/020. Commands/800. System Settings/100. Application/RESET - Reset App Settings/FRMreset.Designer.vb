@@ -24,10 +24,10 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            LblNotification = New lbl(components)
-            Txt_Confirmation = New txt(components)
-            BtnClose = New btn(components)
-            BtnRun = New btn(components)
+            LblNotification = New CMCv.UI.Control.lbl(components)
+            Txt_Confirmation = New CMCv.UI.Control.txt(components)
+            BtnClose = New CMCv.UI.Control.btn(components)
+            BtnRun = New CMCv.UI.Control.btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -179,9 +179,9 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents LblNotification As lbl
-        Friend WithEvents Txt_Confirmation As txt
-        Friend WithEvents BtnClose As btn
-        Friend WithEvents BtnRun As btn
+        Friend WithEvents LblNotification As CMCv.UI.Control.lbl
+        Friend WithEvents Txt_Confirmation As CMCv.UI.Control.txt
+        Friend WithEvents BtnClose As CMCv.UI.Control.btn
+        Friend WithEvents BtnRun As CMCv.UI.Control.btn
     End Class
 End Namespace

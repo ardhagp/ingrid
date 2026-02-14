@@ -18,7 +18,7 @@ Namespace CMDmmvt
         ''' <param name="find"></param>
         ''' <param name="forcerefresh"></param>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As dgn, statusbar As stt, ByVal find As txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, ByVal find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 If (find.Text = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMssql2008(0).Query = "select sval.stockvaluation_id, sval.stockvaluation_code, sval.stockvaluation_description from dbo.log_stockvaluation sval;"

@@ -21,27 +21,27 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            CboCompany = New cbo(components)
-            Lbl1 = New lbl(components)
-            TxtPlantCode = New txt(components)
-            TxtPlantName1 = New txt(components)
-            TxtSearchTerm1 = New txt(components)
-            TxtPlantName2 = New txt(components)
-            TxtCity = New txt(components)
-            TxtPostalCode = New txt(components)
-            TxtDescription = New txt(components)
-            TxtSearchTerm2 = New txt(components)
-            Lbl2 = New lbl(components)
-            Lbl3 = New lbl(components)
-            Lbl4 = New lbl(components)
-            Lbl5 = New lbl(components)
-            Lbl6 = New lbl(components)
-            Lbl7 = New lbl(components)
-            Lbl8 = New lbl(components)
-            Lbl9 = New lbl(components)
-            BtnSave = New btn(components)
-            BtnCancel = New btn(components)
-            Chk1 = New chk(components)
+            CboCompany = New CMCv.UI.Control.cbo(components)
+            Lbl1 = New CMCv.UI.Control.lbl(components)
+            TxtPlantCode = New CMCv.UI.Control.txt(components)
+            TxtPlantName1 = New CMCv.UI.Control.txt(components)
+            TxtSearchTerm1 = New CMCv.UI.Control.txt(components)
+            TxtPlantName2 = New CMCv.UI.Control.txt(components)
+            TxtCity = New CMCv.UI.Control.txt(components)
+            TxtPostalCode = New CMCv.UI.Control.txt(components)
+            TxtDescription = New CMCv.UI.Control.txt(components)
+            TxtSearchTerm2 = New CMCv.UI.Control.txt(components)
+            Lbl2 = New CMCv.UI.Control.lbl(components)
+            Lbl3 = New CMCv.UI.Control.lbl(components)
+            Lbl4 = New CMCv.UI.Control.lbl(components)
+            Lbl5 = New CMCv.UI.Control.lbl(components)
+            Lbl6 = New CMCv.UI.Control.lbl(components)
+            Lbl7 = New CMCv.UI.Control.lbl(components)
+            Lbl8 = New CMCv.UI.Control.lbl(components)
+            Lbl9 = New CMCv.UI.Control.lbl(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
+            Chk1 = New CMCv.UI.Control.chk(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -552,26 +552,26 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents CboCompany As CMCv.cbo
-        Friend WithEvents Lbl1 As CMCv.lbl
-        Friend WithEvents Lbl9 As CMCv.lbl
-        Friend WithEvents Lbl8 As CMCv.lbl
-        Friend WithEvents Lbl7 As CMCv.lbl
-        Friend WithEvents Lbl6 As CMCv.lbl
-        Friend WithEvents Lbl5 As CMCv.lbl
-        Friend WithEvents Lbl4 As CMCv.lbl
-        Friend WithEvents Lbl3 As CMCv.lbl
-        Friend WithEvents Lbl2 As CMCv.lbl
-        Friend WithEvents TxtSearchTerm2 As CMCv.txt
-        Friend WithEvents TxtDescription As CMCv.txt
-        Friend WithEvents TxtPostalCode As CMCv.txt
-        Friend WithEvents TxtCity As CMCv.txt
-        Friend WithEvents TxtPlantName2 As CMCv.txt
-        Friend WithEvents TxtSearchTerm1 As CMCv.txt
-        Friend WithEvents TxtPlantName1 As CMCv.txt
-        Friend WithEvents TxtPlantCode As CMCv.txt
-        Friend WithEvents Chk1 As CMCv.chk
-        Friend WithEvents BtnCancel As CMCv.btn
-        Friend WithEvents BtnSave As CMCv.btn
+        Friend WithEvents CboCompany As CMCv.UI.Control.cbo
+        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl9 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl8 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl7 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl6 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl5 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
+        Friend WithEvents TxtSearchTerm2 As CMCv.UI.Control.txt
+        Friend WithEvents TxtDescription As CMCv.UI.Control.txt
+        Friend WithEvents TxtPostalCode As CMCv.UI.Control.txt
+        Friend WithEvents TxtCity As CMCv.UI.Control.txt
+        Friend WithEvents TxtPlantName2 As CMCv.UI.Control.txt
+        Friend WithEvents TxtSearchTerm1 As CMCv.UI.Control.txt
+        Friend WithEvents TxtPlantName1 As CMCv.UI.Control.txt
+        Friend WithEvents TxtPlantCode As CMCv.UI.Control.txt
+        Friend WithEvents Chk1 As CMCv.UI.Control.chk
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
     End Class
 End Namespace

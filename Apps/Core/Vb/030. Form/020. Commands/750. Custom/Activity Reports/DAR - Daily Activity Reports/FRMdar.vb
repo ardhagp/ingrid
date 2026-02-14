@@ -4,10 +4,10 @@ Imports Serilog.Sinks.Http
 Namespace UI
     Public Class FRMdar
 #Region "Declaration"
-        Private WithEvents Frm_dar_SinglePhotoViewer As DAR_SinglePhotoViewer
-        Private WithEvents Frm_dar_SinglePDFViewer As DAR_SinglePDFViewer
-        Private WithEvents Frm_dar_Editor As New FRMdarEditor
-        Private WithEvents Frm_dar_Reports As DAR_RPTFilter
+        Private WithEvents Frm_dar_SinglePhotoViewer As UI.DAR_SinglePhotoViewer
+        Private WithEvents Frm_dar_SinglePDFViewer As UI.DAR_SinglePDFViewer
+        Private WithEvents Frm_dar_Editor As New UI.FRMdarEditor
+        Private WithEvents Frm_dar_Reports As UI.DAR_RPTFilter
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
         Private WithEvents Com_cs_Menu As New CMCv.UI.View.ContextMenu
 
@@ -434,7 +434,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub DgnPhoto_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnPhoto.CellContentClick
-            Dim sendergrid = DirectCast(sender, CMCv.dgn)
+            Dim sendergrid = DirectCast(sender, CMCv.UI.Control.dgn)
 
             If TypeOf sendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
                 Frm_dar_SinglePhotoViewer = New DAR_SinglePhotoViewer(PctbxActivityPhoto.Image)
@@ -457,7 +457,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub DgnFile_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnFile.CellContentClick
-            Dim sendergrid = DirectCast(sender, CMCv.dgn)
+            Dim sendergrid = DirectCast(sender, CMCv.UI.Control.dgn)
             Dim varBytes As Byte()
 
             Try
@@ -476,7 +476,7 @@ Namespace UI
                         System.IO.File.WriteAllBytes(varFullPath, varBytes)
                     End If
 
-                    Frm_dar_SinglePDFViewer = New DAR_SinglePDFViewer(varFullPath, varFileName, True)
+                    Frm_dar_SinglePDFViewer = New UI.DAR_SinglePDFViewer(varFullPath, varFileName, True)
                     Display(Frm_dar_SinglePDFViewer, IMAGEDB.Main.ImageLibrary.PDFPRV_ICON, My.Application.Info.AssemblyName.ToUpper, "PDF Viewer", "Preview your file", True)
                     UI.FRMmainframe6.Ts_status.Text = String.Empty
 

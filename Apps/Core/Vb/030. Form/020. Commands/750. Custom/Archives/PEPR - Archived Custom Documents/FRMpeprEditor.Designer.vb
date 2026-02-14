@@ -27,32 +27,32 @@
             Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle11 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            BtnSave = New btn(components)
-            BtnCancel = New btn(components)
-            TxtArchiveCode = New txt(components)
-            TxtTitle = New txt(components)
-            CboCategory = New cbo(components)
-            Txt1 = New txt(components)
-            Txt2 = New txt(components)
-            TbctlAttachment = New tbctl(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
+            TxtArchiveCode = New CMCv.UI.Control.txt(components)
+            TxtTitle = New CMCv.UI.Control.txt(components)
+            CboCategory = New CMCv.UI.Control.cbo(components)
+            Txt1 = New CMCv.UI.Control.txt(components)
+            Txt2 = New CMCv.UI.Control.txt(components)
+            TbctlAttachment = New CMCv.UI.Control.tbctl(components)
             tpPhotos = New TabPage()
-            PnlPhoto = New pnl(components)
-            BtnBrowsePhoto = New btn(components)
-            PctbxPhoto = New pctbx(components)
-            DgnPictureList = New dgn(components)
+            PnlPhoto = New CMCv.UI.Control.pnl(components)
+            BtnBrowsePhoto = New CMCv.UI.Control.btn(components)
+            PctbxPhoto = New CMCv.UI.Control.pctbx(components)
+            DgnPictureList = New CMCv.UI.Control.dgn(components)
             photo_id = New DataGridViewTextBoxColumn()
             photo_datetime = New DataGridViewTextBoxColumn()
             photo_content = New DataGridViewImageColumn()
             photo_status = New DataGridViewTextBoxColumn()
             photo_uploader = New DataGridViewTextBoxColumn()
             photo_delete = New DataGridViewButtonColumn()
-            BtnPeekPhoto = New btn(components)
-            TxtPhotoPath = New txt(components)
-            BtnAddPhoto = New btn(components)
+            BtnPeekPhoto = New CMCv.UI.Control.btn(components)
+            TxtPhotoPath = New CMCv.UI.Control.txt(components)
+            BtnAddPhoto = New CMCv.UI.Control.btn(components)
             tpFiles = New TabPage()
-            PnlFile = New pnl(components)
-            BtnBrowseFile = New btn(components)
-            DgnFileList = New dgn(components)
+            PnlFile = New CMCv.UI.Control.pnl(components)
+            BtnBrowseFile = New CMCv.UI.Control.btn(components)
+            DgnFileList = New CMCv.UI.Control.dgn(components)
             file_id = New DataGridViewTextBoxColumn()
             file_tag = New DataGridViewTextBoxColumn()
             file_datetime = New DataGridViewTextBoxColumn()
@@ -60,16 +60,16 @@
             file_status = New DataGridViewTextBoxColumn()
             file_uploader = New DataGridViewTextBoxColumn()
             file_delete = New DataGridViewButtonColumn()
-            CboFileTag = New cbo(components)
-            TxtFilePath = New txt(components)
-            BtnAddFile = New btn(components)
-            BtnPeekFile = New btn(components)
-            ULbl1 = New ULbl()
-            ULbl2 = New ULbl()
-            ULbl3 = New ULbl()
-            ULbl4 = New ULbl()
-            ULbl5 = New ULbl()
-            ULbl6 = New ULbl()
+            CboFileTag = New CMCv.UI.Control.cbo(components)
+            TxtFilePath = New CMCv.UI.Control.txt(components)
+            BtnAddFile = New CMCv.UI.Control.btn(components)
+            BtnPeekFile = New CMCv.UI.Control.btn(components)
+            ULbl1 = New CMCv.UI.Control.ULbl()
+            ULbl2 = New CMCv.UI.Control.ULbl()
+            ULbl3 = New CMCv.UI.Control.ULbl()
+            ULbl4 = New CMCv.UI.Control.ULbl()
+            ULbl5 = New CMCv.UI.Control.ULbl()
+            ULbl6 = New CMCv.UI.Control.ULbl()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -950,32 +950,32 @@
 
         End Sub
 
-        Friend WithEvents BtnCancel As CMCv.btn
-        Friend WithEvents BtnSave As CMCv.btn
-        Friend WithEvents TxtArchiveCode As CMCv.txt
-        Friend WithEvents Txt1 As CMCv.txt
-        Friend WithEvents CboCategory As CMCv.cbo
-        Friend WithEvents TxtTitle As CMCv.txt
-        Friend WithEvents Txt2 As CMCv.txt
-        Friend WithEvents TbctlAttachment As CMCv.tbctl
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents TxtArchiveCode As CMCv.UI.Control.txt
+        Friend WithEvents Txt1 As CMCv.UI.Control.txt
+        Friend WithEvents CboCategory As CMCv.UI.Control.cbo
+        Friend WithEvents TxtTitle As CMCv.UI.Control.txt
+        Friend WithEvents Txt2 As CMCv.UI.Control.txt
+        Friend WithEvents TbctlAttachment As CMCv.UI.Control.tbctl
         Friend WithEvents tpPhotos As TabPage
-        Friend WithEvents PnlPhoto As CMCv.pnl
-        Friend WithEvents BtnBrowsePhoto As CMCv.btn
-        Friend WithEvents PctbxPhoto As CMCv.pctbx
-        Friend WithEvents DgnPictureList As CMCv.dgn
+        Friend WithEvents PnlPhoto As CMCv.UI.Control.pnl
+        Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.btn
+        Friend WithEvents PctbxPhoto As CMCv.UI.Control.pctbx
+        Friend WithEvents DgnPictureList As CMCv.UI.Control.dgn
         Friend WithEvents photo_id As DataGridViewTextBoxColumn
         Friend WithEvents photo_datetime As DataGridViewTextBoxColumn
         Friend WithEvents photo_content As DataGridViewImageColumn
         Friend WithEvents photo_status As DataGridViewTextBoxColumn
         Friend WithEvents photo_uploader As DataGridViewTextBoxColumn
         Friend WithEvents photo_delete As DataGridViewButtonColumn
-        Friend WithEvents BtnPeekPhoto As CMCv.btn
-        Friend WithEvents TxtPhotoPath As CMCv.txt
-        Friend WithEvents BtnAddPhoto As CMCv.btn
+        Friend WithEvents BtnPeekPhoto As CMCv.UI.Control.btn
+        Friend WithEvents TxtPhotoPath As CMCv.UI.Control.txt
+        Friend WithEvents BtnAddPhoto As CMCv.UI.Control.btn
         Friend WithEvents tpFiles As TabPage
-        Friend WithEvents PnlFile As CMCv.pnl
-        Friend WithEvents BtnBrowseFile As CMCv.btn
-        Friend WithEvents DgnFileList As CMCv.dgn
+        Friend WithEvents PnlFile As CMCv.UI.Control.pnl
+        Friend WithEvents BtnBrowseFile As CMCv.UI.Control.btn
+        Friend WithEvents DgnFileList As CMCv.UI.Control.dgn
         Friend WithEvents file_id As DataGridViewTextBoxColumn
         Friend WithEvents file_tag As DataGridViewTextBoxColumn
         Friend WithEvents file_datetime As DataGridViewTextBoxColumn
@@ -983,15 +983,15 @@
         Friend WithEvents file_status As DataGridViewTextBoxColumn
         Friend WithEvents file_uploader As DataGridViewTextBoxColumn
         Friend WithEvents file_delete As DataGridViewButtonColumn
-        Friend WithEvents CboFileTag As CMCv.cbo
-        Friend WithEvents TxtFilePath As CMCv.txt
-        Friend WithEvents BtnAddFile As CMCv.btn
-        Friend WithEvents BtnPeekFile As CMCv.btn
-        Friend WithEvents ULbl1 As CMCv.ULbl
-        Friend WithEvents ULbl3 As CMCv.ULbl
-        Friend WithEvents ULbl2 As CMCv.ULbl
-        Friend WithEvents ULbl6 As CMCv.ULbl
-        Friend WithEvents ULbl5 As CMCv.ULbl
-        Friend WithEvents ULbl4 As CMCv.ULbl
+        Friend WithEvents CboFileTag As CMCv.UI.Control.cbo
+        Friend WithEvents TxtFilePath As CMCv.UI.Control.txt
+        Friend WithEvents BtnAddFile As CMCv.UI.Control.btn
+        Friend WithEvents BtnPeekFile As CMCv.UI.Control.btn
+        Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl6 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
     End Class
 End Namespace

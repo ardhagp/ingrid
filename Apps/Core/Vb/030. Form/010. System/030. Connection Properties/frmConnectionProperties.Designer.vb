@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FRMconnectionproperties
     Inherits CMCv.Std_Fo
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,12 +17,12 @@ Partial Class FRMconnectionproperties
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Btn1 = New btn(components)
-        Btn2 = New btn(components)
-        Btn3 = New btn(components)
+        Btn1 = New CMCv.UI.Control.btn(components)
+        Btn2 = New CMCv.UI.Control.btn(components)
+        Btn3 = New CMCv.UI.Control.btn(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
@@ -61,7 +61,7 @@ Partial Class FRMconnectionproperties
         Btn1.FlatAppearance.BorderSize = 2
         Btn1.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
         Btn1.FlatStyle = FlatStyle.Flat
-        Btn1.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Btn1.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Btn1.ForeColor = Color.White
         Btn1.Location = New Point(909, 13)
         Btn1.Margin = New Padding(5, 6, 5, 6)
@@ -84,7 +84,7 @@ Partial Class FRMconnectionproperties
         Btn2.FlatAppearance.BorderSize = 2
         Btn2.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(185), CByte(20))
         Btn2.FlatStyle = FlatStyle.Flat
-        Btn2.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Btn2.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Btn2.ForeColor = Color.White
         Btn2.Location = New Point(732, 13)
         Btn2.Margin = New Padding(5, 6, 5, 6)
@@ -106,7 +106,7 @@ Partial Class FRMconnectionproperties
         Btn3.FlatAppearance.BorderSize = 2
         Btn3.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
         Btn3.FlatStyle = FlatStyle.Flat
-        Btn3.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Btn3.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Btn3.ForeColor = Color.White
         Btn3.Location = New Point(20, 13)
         Btn3.Margin = New Padding(5, 6, 5, 6)
@@ -122,7 +122,7 @@ Partial Class FRMconnectionproperties
         ' 
         ' FRMconnectionproperties
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
         ClientSize = New Size(1095, 921)
         KeyPreview = True
         Margin = New Padding(22, 44, 22, 44)
@@ -137,8 +137,8 @@ Partial Class FRMconnectionproperties
         PerformLayout()
 
     End Sub
-    Friend WithEvents Btn1 As CMCv.btn
-    Friend WithEvents Btn3 As CMCv.btn
-    Friend WithEvents Btn2 As CMCv.btn
+    Friend WithEvents Btn1 As CMCv.UI.Control.btn
+    Friend WithEvents Btn3 As CMCv.UI.Control.btn
+    Friend WithEvents Btn2 As CMCv.UI.Control.btn
 
 End Class

@@ -26,7 +26,7 @@
             Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle9 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnUAC = New dgn(components)
+            DgnUAC = New cmcv.ui.control.dgn(components)
             user_id = New DataGridViewTextBoxColumn()
             employee_number = New DataGridViewTextBoxColumn()
             employee_fullname = New DataGridViewTextBoxColumn()
@@ -206,7 +206,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnUAC As dgn
+        Friend WithEvents DgnUAC As cmcv.ui.control.dgn
         Friend WithEvents user_id As DataGridViewTextBoxColumn
         Friend WithEvents employee_number As DataGridViewTextBoxColumn
         Friend WithEvents employee_fullname As DataGridViewTextBoxColumn

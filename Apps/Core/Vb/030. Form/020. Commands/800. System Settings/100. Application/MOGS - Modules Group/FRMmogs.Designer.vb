@@ -24,11 +24,11 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Pnl1 = New pnl(components)
-            BtnClear = New btn(components)
-            Lbl1 = New lbl(components)
-            TxtFind = New txt(components)
-            DgnMOG = New dgn(components)
+            Pnl1 = New CMCv.UI.Control.pnl(components)
+            BtnClear = New CMCv.UI.Control.btn(components)
+            Lbl1 = New CMCv.UI.Control.lbl(components)
+            TxtFind = New CMCv.UI.Control.txt(components)
+            DgnMOG = New CMCv.UI.Control.dgn(components)
             modulegroup_id = New DataGridViewTextBoxColumn()
             modulegroup_name = New DataGridViewTextBoxColumn()
             modulegroup_description = New DataGridViewTextBoxColumn()
@@ -230,11 +230,11 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents Pnl1 As pnl
-        Friend WithEvents BtnClear As btn
-        Friend WithEvents Lbl1 As lbl
-        Friend WithEvents TxtFind As txt
-        Friend WithEvents DgnMOG As dgn
+        Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
+        Friend WithEvents BtnClear As CMCv.UI.Control.btn
+        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
+        Friend WithEvents TxtFind As CMCv.UI.Control.txt
+        Friend WithEvents DgnMOG As CMCv.UI.Control.dgn
         Friend WithEvents modulegroup_id As DataGridViewTextBoxColumn
         Friend WithEvents modulegroup_name As DataGridViewTextBoxColumn
         Friend WithEvents modulegroup_description As DataGridViewTextBoxColumn

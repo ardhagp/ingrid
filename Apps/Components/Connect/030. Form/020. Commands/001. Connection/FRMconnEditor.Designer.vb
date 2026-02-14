@@ -22,36 +22,36 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMconnEditor))
-            BtnSave = New btn(components)
-            BtnCancel = New btn(components)
-            TbctlBasic = New tbctl(components)
+            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnCancel = New CMCv.UI.Control.btn(components)
+            TbctlBasic = New CMCv.UI.Control.tbctl(components)
             tp1_ = New TabPage()
-            ChkIsMasked = New chk(components)
-            btnExport = New btn(components)
-            CboDBEngine = New cbo(components)
-            ULbl1 = New ULbl()
-            ULbl_DatabaseName = New ULbl()
-            TxtDatabaseName = New txt(components)
-            ChkDefault = New chk(components)
-            TxtPassword = New txt(components)
-            TxtUsername = New txt(components)
-            ULbl_Password = New ULbl()
-            ULbl_Username = New ULbl()
-            ULbl_Port = New ULbl()
-            TxtPort = New txt(components)
-            ULbl_Address = New ULbl()
-            ULbl_Name = New ULbl()
-            TxtConnectionName = New txt(components)
-            TxtAddress = New txt(components)
+            ChkIsMasked = New CMCv.UI.Control.chk(components)
+            btnExport = New CMCv.UI.Control.btn(components)
+            CboDBEngine = New CMCv.UI.Control.cbo(components)
+            ULbl1 = New CMCv.UI.Control.ULbl()
+            ULbl_DatabaseName = New CMCv.UI.Control.ULbl()
+            TxtDatabaseName = New CMCv.UI.Control.txt(components)
+            ChkDefault = New CMCv.UI.Control.chk(components)
+            TxtPassword = New CMCv.UI.Control.txt(components)
+            TxtUsername = New CMCv.UI.Control.txt(components)
+            ULbl_Password = New CMCv.UI.Control.ULbl()
+            ULbl_Username = New CMCv.UI.Control.ULbl()
+            ULbl_Port = New CMCv.UI.Control.ULbl()
+            TxtPort = New CMCv.UI.Control.txt(components)
+            ULbl_Address = New CMCv.UI.Control.ULbl()
+            ULbl_Name = New CMCv.UI.Control.ULbl()
+            TxtConnectionName = New CMCv.UI.Control.txt(components)
+            TxtAddress = New CMCv.UI.Control.txt(components)
             tp2_ = New TabPage()
-            btnImport = New btn(components)
-            btnSaveAs = New btn(components)
-            Pnl1 = New pnl(components)
-            txtImportContent = New txt(components)
-            btnGet = New btn(components)
-            ULbl2 = New ULbl()
-            txtImportCode = New txt(components)
-            Btn_Test = New btn(components)
+            btnImport = New CMCv.UI.Control.btn(components)
+            btnSaveAs = New CMCv.UI.Control.btn(components)
+            Pnl1 = New CMCv.UI.Control.pnl(components)
+            txtImportContent = New CMCv.UI.Control.txt(components)
+            btnGet = New CMCv.UI.Control.btn(components)
+            ULbl2 = New CMCv.UI.Control.ULbl()
+            txtImportCode = New CMCv.UI.Control.txt(components)
+            Btn_Test = New CMCv.UI.Control.btn(components)
             TtAllComponents = New ToolTip(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -726,36 +726,36 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents BtnSave As btn
-        Friend WithEvents BtnCancel As btn
-        Friend WithEvents TbctlBasic As tbctl
+        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents TbctlBasic As CMCv.UI.Control.tbctl
         Friend WithEvents tp1_ As TabPage
-        Friend WithEvents TxtAddress As txt
-        Friend WithEvents TxtConnectionName As txt
-        Friend WithEvents TxtPort As txt
-        Friend WithEvents ULbl_Address As ULbl
-        Friend WithEvents ULbl_Name As ULbl
-        Friend WithEvents ULbl_Password As ULbl
-        Friend WithEvents ULbl_Username As ULbl
-        Friend WithEvents ULbl_Port As ULbl
-        Friend WithEvents TxtPassword As txt
-        Friend WithEvents TxtUsername As txt
-        Friend WithEvents Btn_Test As btn
-        Friend WithEvents ChkDefault As chk
-        Friend WithEvents TxtDatabaseName As txt
-        Friend WithEvents ULbl_DatabaseName As ULbl
-        Friend WithEvents ULbl1 As ULbl
-        Friend WithEvents CboDBEngine As cbo
+        Friend WithEvents TxtAddress As CMCv.UI.Control.txt
+        Friend WithEvents TxtConnectionName As CMCv.UI.Control.txt
+        Friend WithEvents TxtPort As CMCv.UI.Control.txt
+        Friend WithEvents ULbl_Address As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl_Name As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl_Password As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl_Username As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl_Port As CMCv.UI.Control.ULbl
+        Friend WithEvents TxtPassword As CMCv.UI.Control.txt
+        Friend WithEvents TxtUsername As CMCv.UI.Control.txt
+        Friend WithEvents Btn_Test As CMCv.UI.Control.btn
+        Friend WithEvents ChkDefault As CMCv.UI.Control.chk
+        Friend WithEvents TxtDatabaseName As CMCv.UI.Control.txt
+        Friend WithEvents ULbl_DatabaseName As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
+        Friend WithEvents CboDBEngine As CMCv.UI.Control.cbo
         Friend WithEvents tp2_ As TabPage
-        Friend WithEvents ULbl2 As ULbl
-        Friend WithEvents txtImportCode As txt
-        Friend WithEvents btnGet As btn
-        Friend WithEvents Pnl1 As pnl
-        Friend WithEvents txtImportContent As txt
-        Friend WithEvents btnExport As btn
-        Friend WithEvents btnImport As btn
-        Friend WithEvents btnSaveAs As btn
-        Friend WithEvents ChkIsMasked As chk
+        Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
+        Friend WithEvents txtImportCode As CMCv.UI.Control.txt
+        Friend WithEvents btnGet As CMCv.UI.Control.btn
+        Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
+        Friend WithEvents txtImportContent As CMCv.UI.Control.txt
+        Friend WithEvents btnExport As CMCv.UI.Control.btn
+        Friend WithEvents btnImport As CMCv.UI.Control.btn
+        Friend WithEvents btnSaveAs As CMCv.UI.Control.btn
+        Friend WithEvents ChkIsMasked As CMCv.UI.Control.chk
         Friend WithEvents TtAllComponents As ToolTip
     End Class
 End Namespace
