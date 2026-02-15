@@ -288,146 +288,44 @@ Namespace CMDdar
         Public Class Reports
             <SupportedOSPlatform("windows")>
             Public Shared Sub Display(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, chkfrom As CMCv.UI.Control.chk, chkto As CMCv.UI.Control.chk, chkarea As CMCv.UI.Control.chk, chkactivity As CMCv.UI.Control.chk, chkby As CMCv.UI.Control.chk, dtpfrom As CMCv.UI.Control.dtp, dtpto As CMCv.UI.Control.dtp, cboarea As CMCv.UI.Control.cbo, cboactivity As CMCv.UI.Control.cbo, cboby As CMCv.UI.Control.cbo, txtdescription As CMCv.UI.Control.txt, datasetname As DataSet)
-                ' Original Reports.Display preserved
-                Dim varWhere As String
                 Dim varDTPfrom As String = dtpfrom.Value.Year & "-" & dtpfrom.Value.Month & "-" & dtpfrom.Value.Day
                 Dim varDTPto As String = dtpto.Value.Year & "-" & dtpto.Value.Month & "-" & dtpto.Value.Day
 
                 Try
-                    varWhere = "Where "
+                    ' Build WHERE parts list to reduce branching and complexity
+                    Dim whereParts As New List(Of String)
 
-                    If (chkfrom.Checked) Then
-                        If (chkto.Checked) Then
-                            varWhere += String.Format("(ea.employeeactivity_datetime >= '{0}' and ea.employeeactivity_datetime <= '{1}')", varDTPfrom, varDTPto)
+                    If chkfrom.Checked Then
+                        If chkto.Checked Then
+                            whereParts.Add(String.Format("(ea.employeeactivity_datetime >= '{0}' and ea.employeeactivity_datetime <= '{1}')", varDTPfrom, varDTPto))
                         Else
-                            varWhere += String.Format("(ea.employeeactivity_datetime = '{0}')", varDTPfrom)
+                            whereParts.Add(String.Format("(ea.employeeactivity_datetime = '{0}')", varDTPfrom))
                         End If
                     End If
 
-                    If (chkarea.Checked) Then
-                        If varWhere = "Where " Then
-                            varWhere += String.Format("(aa.areaaffected_id = '{0}')", cboarea.SelectedValue)
-                        Else
-                            varWhere += String.Format(" and (aa.areaaffected_id = '{0}')", cboarea.SelectedValue)
-                        End If
+                    If chkarea.Checked Then whereParts.Add($"(aa.areaaffected_id = '{EscapeSql(Convert.ToString(cboarea.SelectedValue))}')")
+                    If chkactivity.Checked Then whereParts.Add($"(ea.employeeactivity_template = '{EscapeSql(Convert.ToString(cboactivity.SelectedValue))}')")
+                    If chkby.Checked Then whereParts.Add($"(ea.employeeactivity_employee = '{EscapeSql(Convert.ToString(cboby.SelectedValue))}')")
+
+                    Dim descText = SafeTrim(If(txtdescription?.XOSQLText, String.Empty))
+                    If descText <> String.Empty Then
+                        Dim descCond = BuildLikeCondition("ea.employeeactivity_description", descText)
+                        If descCond <> String.Empty Then whereParts.Add(descCond)
                     End If
 
-                    If (chkactivity.Checked) Then
-                        If varWhere = "Where " Then
-                            varWhere += String.Format("(ea.employeeactivity_template = '{0}')", cboactivity.SelectedValue)
-                        Else
-                            varWhere += String.Format(" and (ea.employeeactivity_template = '{0}')", cboactivity.SelectedValue)
-                        End If
-                    End If
-
-                    If (chkby.Checked) Then
-                        If varWhere = "Where " Then
-                            varWhere += String.Format("(ea.employeeactivity_employee = '{0}')", cboby.SelectedValue)
-                        Else
-                            varWhere += String.Format(" and (ea.employeeactivity_employee = '{0}')", cboby.SelectedValue)
-                        End If
-                    End If
-
-                    If txtdescription.XOSQLText.Trim <> String.Empty Then
-
-                        If varWhere <> "Where " Then
-                            varWhere += String.Format(" and ")
-                        End If
-
-                        'multiple keywords execution
-                        If Not (txtdescription.XOSQLText.Trim.Contains("||")) Then
-                            varWhere += String.Format("(ea.employeeactivity_description like '%{0}%') ", txtdescription.XOSQLText)
-                        Else
-                            Dim varContainText As String() = txtdescription.XOSQLText.Split("||")
-                            Dim varRepeater As Integer = 0
-
-                            varWhere += String.Format("(")
-
-                            For Each eachText As String In varContainText
-                                If eachText <> "" Then
-
-                                    eachText.Trim()
-
-                                    If varRepeater = 0 Then
-                                        varWhere.Append(CChar($"ea.employeeactivity_description like '%{eachText}%'"))
-                                    Else
-                                        varWhere.Append(CChar($" and ea.employeeactivity_description like '%{eachText}%'"))
-                                    End If
-                                End If
-
-                                varRepeater += 1
-                            Next
-
-                            varWhere += String.Format(")")
-                        End If
-                    End If
-
-                    If varWhere = "Where " Then
-                        varWhere = String.Empty
-                    End If
+                    Dim varWhere As String = If(whereParts.Count > 0, "Where " & String.Join(" and ", whereParts), String.Empty)
 
                     datasetname.Clear()
 
-                    Dim varTimeFormat(2) As String
+                    ' Reusable time/description fragments
+                    Dim varTimeFormat2 As String = "(case when ((ea.employeeactivity_datetime_end = ea.employeeactivity_datetime) and (ea.employeeactivity_time_end = ea.employeeactivity_time)) then (cast(ea.employeeactivity_datetime as varchar(10))) + char(13) + char(10) + cast(ea.employeeactivity_time as varchar(8)) when ((ea.employeeactivity_datetime_end = ea.employeeactivity_datetime) and (ea.employeeactivity_time_end > ea.employeeactivity_time)) then (cast(ea.employeeactivity_datetime as varchar(10))) + char(13) + char(10) + (cast(ea.employeeactivity_time as varchar(8)) + ' - ' + cast(ea.employeeactivity_time_end as varchar(8))) when (ea.employeeactivity_datetime_end > ea.employeeactivity_datetime) then (cast(ea.employeeactivity_datetime as varchar(10))) + ' ' + (cast(ea.employeeactivity_time as varchar(8))) + char(13) + char(10) + ' to ' + char(13) + char(10) + (cast(ea.employeeactivity_datetime_end as varchar(10))) + ' ' + cast(ea.employeeactivity_time_end as varchar(8)) end) as [employeeactivity_time]"
+                    Dim varDescription As String = "case when (ea.employeeactivity_feedback is null) or (convert(varchar(max),ea.employeeactivity_feedback) = '') then employeeactivity_description else convert(varchar(max),employeeactivity_description) + char(13) + char(10) + char(13) + char(10) + '--- Feedback Note : ---' + char(13) + char(10) + convert(varchar(max),ea.employeeactivity_feedback) end as [employeeactivity_description]"
 
                     If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                        'same day with different time
-                        varTimeFormat(1) = String.Format("(cast(ea.employeeactivity_time as varchar(8)) + ' - ' + cast(ea.employeeactivity_time_end as varchar(8))) as [employeeactivity_time]")
-
-                        'same day with time range format & different day format
-                        varTimeFormat(2) = String.Format("(case when ((ea.employeeactivity_datetime_end = ea.employeeactivity_datetime) and (ea.employeeactivity_time_end = ea.employeeactivity_time)) then (cast(ea.employeeactivity_datetime as varchar(10))) + char(13) + char(10) + cast(ea.employeeactivity_time as varchar(8)) when ((ea.employeeactivity_datetime_end = ea.employeeactivity_datetime) and (ea.employeeactivity_time_end > ea.employeeactivity_time)) then (cast(ea.employeeactivity_datetime as varchar(10))) + char(13) + char(10) + (cast(ea.employeeactivity_time as varchar(8)) + ' - ' + cast(ea.employeeactivity_time_end as varchar(8))) when (ea.employeeactivity_datetime_end > ea.employeeactivity_datetime) then (cast(ea.employeeactivity_datetime as varchar(10))) + ' ' + (cast(ea.employeeactivity_time as varchar(8))) + char(13) + char(10) + ' to ' + char(13) + char(10) + (cast(ea.employeeactivity_datetime_end as varchar(10))) + ' ' + cast(ea.employeeactivity_time_end as varchar(8)) end) as [employeeactivity_time]")
-
-                        Dim varDescription As String = "case when (ea.employeeactivity_feedback is null) or (convert(varchar(max),ea.employeeactivity_feedback) = '') then employeeactivity_description else convert(varchar(max),employeeactivity_description) + char(13) + char(10) + char(13) + char(10) + '--- Feedback Note : ---' " &
-                        "+ char(13) + char(10) + convert(varchar(max),ea.employeeactivity_feedback) end as [employeeactivity_description]"
-
-                        varDatabaseRequestMssql2008(0).Query = String.Format("select aa.areaaffected_name, {1}, {2}, case when (ea.employeeactivity_lastupdate is not null) " &
-                                                            "and (ea.employeeactivity_employee <> ea.employeeactivity_lastupdate) then " &
-                                                            "(convert(varchar(max),e.employee_nickname) + ' / ' + " &
-                                                            "convert(varchar(max),(select em.employee_nickname from dbo.man_employee em " &
-                                                            "where em.employee_id = ea.employeeactivity_lastupdate))) else " &
-                                                            "e.employee_nickname end as [employee_nickname], aa.areaaffected_order " &
-                                                            "from dbo.doc_employeeactivity ea " &
-                                                            "inner join dbo.doc_areaaffected aa on ea.employeeactivity_areaaffected = aa.areaaffected_id " &
-                                                            "inner join dbo.man_employee e on ea.employeeactivity_employee = e.employee_id {0} " &
-                                                            "order by aa.areaaffected_order", varWhere, varTimeFormat(2), varDescription)
-
+                        varDatabaseRequestMssql2008(0).Query = String.Format("select aa.areaaffected_name, {1}, {2}, case when (ea.employeeactivity_lastupdate is not null) and (ea.employeeactivity_employee <> ea.employeeactivity_lastupdate) then (convert(varchar(max),e.employee_nickname) + ' / ' + convert(varchar(max),(select em.employee_nickname from dbo.man_employee em where em.employee_id = ea.employeeactivity_lastupdate))) else e.employee_nickname end as [employee_nickname], aa.areaaffected_order from dbo.doc_employeeactivity ea inner join dbo.doc_areaaffected aa on ea.employeeactivity_areaaffected = aa.areaaffected_id inner join dbo.man_employee e on ea.employeeactivity_employee = e.employee_id {0} order by aa.areaaffected_order", varWhere, varTimeFormat2, varDescription)
                         datasetname = varDatabaseEngineMssql2008.FillDataset(databasename, varDatabaseRequestMssql2008(0).Query, datasetname, "employeeactivity")
                     ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                        'same day with different time
-                        varTimeFormat(1) = $"(cast(ea.employeeactivity_time as varchar(8)) + ' - ' + " &
-                                           $"cast(ea.employeeactivity_time_end as varchar(8))) as `employeeactivity_time`"
-
-                        'same day with time range format & different day format
-                        varTimeFormat(2) = $"(case when ((ea.employeeactivity_datetime_end = ea.employeeactivity_datetime) and " &
-                                           $"(ea.employeeactivity_time_end = ea.employeeactivity_time)) then " &
-                                           $"(cast(ea.employeeactivity_datetime as varchar(10))) + char(13) + char(10) " &
-                                           $"+ cast(ea.employeeactivity_time as varchar(8)) when " &
-                                           $"((ea.employeeactivity_datetime_end = ea.employeeactivity_datetime) and " &
-                                           $"(ea.employeeactivity_time_end > ea.employeeactivity_time)) then " &
-                                           $"(cast(ea.employeeactivity_datetime as varchar(10))) + char(13) + char(10) + " &
-                                           $"(cast(ea.employeeactivity_time as varchar(8)) + ' - ' + cast(ea.employeeactivity_time_end as varchar(8))) " &
-                                           $"when (ea.employeeactivity_datetime_end > ea.employeeactivity_datetime) then " &
-                                           $"(cast(ea.employeeactivity_datetime as varchar(10))) + ' ' + " &
-                                           $"(cast(ea.employeeactivity_time as varchar(8))) + char(13) + char(10) + ' to ' + char(13) + char(10) + " &
-                                           $"(cast(ea.employeeactivity_datetime_end as varchar(10))) + ' ' + " &
-                                           $"cast(ea.employeeactivity_time_end as varchar(8)) end) as `employeeactivity_time`"
-
-                        Dim varDescription As String = "case when (ea.employeeactivity_feedback is null) or " &
-                        "(convert(varchar(max),ea.employeeactivity_feedback) = '') then employeeactivity_description else " &
-                        "convert(varchar(max),employeeactivity_description) + char(13) + char(10) + char(13) + char(10) + '--- Feedback Note : ---' " &
-                        "+ char(13) + char(10) + convert(varchar(max),ea.employeeactivity_feedback) end as [employeeactivity_description]"
-
-                        varDatabaseRequestMysql(0).Query = $"select aa.areaaffected_name, {varTimeFormat(2)}, {varDescription}, case when (ea.employeeactivity_lastupdate is not null) " &
-                                                           $"and (ea.employeeactivity_employee <> ea.employeeactivity_lastupdate) then " &
-                                                           $"(convert(varchar(max),e.employee_nickname) + ' / ' + " &
-                                                           $"convert(varchar(max),(select em.employee_nickname from dbo.man_employee em " &
-                                                           $"where em.employee_id = ea.employeeactivity_lastupdate))) else " &
-                                                           $"e.employee_nickname end as [employee_nickname], aa.areaaffected_order " &
-                                                           $"from doc_employeeactivity ea " &
-                                                           $"inner join doc_areaaffected aa on ea.employeeactivity_areaaffected = aa.areaaffected_id " &
-                                                           $"inner join man_employee e on ea.employeeactivity_employee = e.employee_id {varWhere} " &
-                                                           $"order by aa.areaaffected_order"
-
+                        varDatabaseRequestMysql(0).Query = $"select aa.areaaffected_name, {varTimeFormat2}, {varDescription}, case when (ea.employeeactivity_lastupdate is not null) and (ea.employeeactivity_employee <> ea.employeeactivity_lastupdate) then (convert(varchar(max),e.employee_nickname) + ' / ' + convert(varchar(max),(select em.employee_nickname from dbo.man_employee em where em.employee_id = ea.employeeactivity_lastupdate))) else e.employee_nickname end as `employee_nickname`, aa.areaaffected_order from doc_employeeactivity ea inner join doc_areaaffected aa on ea.employeeactivity_areaaffected = aa.areaaffected_id inner join man_employee e on ea.employeeactivity_employee = e.employee_id {varWhere} order by aa.areaaffected_order"
                         datasetname = varDatabaseEngineMysql.FillDataSet(databasename, varDatabaseRequestMysql(0).Query, datasetname, "employeeactivity")
                     End If
                 Catch ex As Exception
