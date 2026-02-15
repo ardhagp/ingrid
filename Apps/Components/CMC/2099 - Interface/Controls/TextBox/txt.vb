@@ -311,16 +311,16 @@ Namespace UI.Control
         Private varScore As Integer
         Private varResult As String
         Private varBonus As New Bonus
-        Private varNum As New Num
+        Private varSecurityScore As New SecurityScore
 
         Private Sub InitPasswordStrength(userinput As String)
             varPassword = userinput
             varChrPassword = varPassword.ToCharArray()
 
-            varNum.Excess = 0
-            varNum.Upper = 0
-            varNum.Numbers = 0
-            varNum.Symbols = 0
+            varSecurityScore.Excess = 0
+            varSecurityScore.Upper = 0
+            varSecurityScore.Numbers = 0
+            varSecurityScore.Symbols = 0
             varBonus.Combo = 0
             varBonus.FlatLower = 0
             varBonus.FlatNumber = 0
@@ -329,47 +329,47 @@ Namespace UI.Control
         End Sub
 
         Private Sub AnalyzePassword()
+            ' Character scoring
+            For i = 0 To varPassword.Length - 1
+                Dim ch As Char = varPassword(i)
 
-            For i = 0 To (varPassword.Length - 1)
-                If Regex.IsMatch(varChrPassword(i), "[0-9]") Then
-                    varNum.Upper += 1
-                ElseIf Regex.IsMatch(varChrPassword(i), "[A-Z]") Then
-                    varNum.Numbers += 2
-                ElseIf Regex.IsMatch(varChrPassword(i), "\W") Then
-                    varNum.Symbols += 3
+                If Char.IsDigit(ch) Then
+                    varSecurityScore.Numbers += 2
+
+                ElseIf Char.IsUpper(ch) Then
+                    varSecurityScore.Upper += 1
+
+                ElseIf Not Char.IsLetterOrDigit(ch) Then
+                    varSecurityScore.Symbols += 3
                 End If
             Next
 
-            'If _Match1.Success Then
-            '        varNum.Upper += 1
-            '    ElseIf _Match2.Success Then
-            '    varNum.Numbers += 1
-            'ElseIf _Match3.Success Then
-            '    varNum.Symbols += 1
-            'End If
-            '    i += 1
-            'Next
+            ' Excess length bonus
+            varSecurityScore.Excess = varPassword.Length - varMinPasswordLength
 
-            varNum.Excess = varPassword.Length - varMinPasswordLength
-
-            If (varNum.Upper > 0 AndAlso varNum.Numbers > 0 AndAlso varNum.Symbols > 0) Then
+            ' Combo bonus
+            If (varSecurityScore.Upper > 0 AndAlso varSecurityScore.Numbers > 0 AndAlso varSecurityScore.Symbols > 0) Then
                 varBonus.Combo = 25
-            ElseIf (varNum.Upper > 0 AndAlso varNum.Numbers > 0) OrElse (varNum.Upper > 0 AndAlso varNum.Symbols > 0) OrElse (varNum.Numbers > 0 AndAlso varNum.Symbols > 0) Then
+
+            ElseIf (varSecurityScore.Upper > 0 AndAlso varSecurityScore.Numbers > 0) _
+    OrElse (varSecurityScore.Upper > 0 AndAlso varSecurityScore.Symbols > 0) _
+    OrElse (varSecurityScore.Numbers > 0 AndAlso varSecurityScore.Symbols > 0) Then
+
                 varBonus.Combo = 15
             End If
 
-            If Regex.IsMatch(varPassword, "^[\sa-z]+$") Then
+            ' Flat penalties (LINQ versions)
+            If varPassword.All(Function(ch) Char.IsLower(ch) Or Char.IsWhiteSpace(ch)) Then
                 varBonus.FlatLower = -15
             End If
 
-            If Regex.IsMatch(varPassword, "^[\s0-9]+$") Then
+            If varPassword.All(Function(ch) Char.IsDigit(ch) Or Char.IsWhiteSpace(ch)) Then
                 varBonus.FlatLower = -35
             End If
-
         End Sub
 
         Private Function OutputResultScore() As Integer
-            varScore = varBaseScore + (varNum.Excess * varBonus.Excess) + (varNum.Upper * varBonus.Upper) + (varNum.Numbers * varBonus.Numbers) + (varNum.Symbols * varBonus.Symbols) + varBonus.Combo + varBonus.FlatLower + varBonus.FlatNumber
+            varScore = varBaseScore + (varSecurityScore.Excess * varBonus.Excess) + (varSecurityScore.Upper * varBonus.Upper) + (varSecurityScore.Numbers * varBonus.Numbers) + (varSecurityScore.Symbols * varBonus.Symbols) + varBonus.Combo + varBonus.FlatLower + varBonus.FlatNumber
 
             If varScore < 0 Then
                 varScore = 0
@@ -583,7 +583,7 @@ Namespace UI.Control
     ''' <summary>
     ''' 
     ''' </summary>
-    Public Class Num
+    Public Class SecurityScore
         Property Excess As Integer
         Property Upper As Integer
         Property Numbers As Integer
