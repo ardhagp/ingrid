@@ -47,6 +47,9 @@ jobs:
       with:
         nuget-version: latest
 
+    - name: Load environment variable
+      run: echo VAR_G_BUILDCONFIGURATION=${{ vars.VAR_G_BUILDCONFIGURATION }} >> $GITHUB_ENV
+
     - name: Pre-Build File List
       shell: cmd
       run: |
