@@ -48,12 +48,12 @@ jobs:
         nuget-version: latest
 
     - name: Pre-Build File List
+      shell: cmd
       run: |
-        echo "$VAR_G_BUILDCONFIGURATION"
-        echo "File List - ${{ github.workspace }}"
-        cd "${{ github.workspace }}"
+        echo %$VAR_G_BUILDCONFIGURATION%
+        echo File List - %GITHUB_WORKSPACE%
+        cd %GITHUB_WORKSPACE%
         dir /b /s /A-D /o:gn
-        shell: cmd
 
     - name: NuGet Restore
       run: nuget restore "${{ env.Solution_Name }}" -ConfigFile "./Apps/Core/Vb/NuGet.config"
