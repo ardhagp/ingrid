@@ -50,7 +50,7 @@ jobs:
     - name: Pre-Build File List
       shell: cmd
       run: |
-        echo %$VAR_G_BUILDCONFIGURATION%
+        echo %VAR_G_BUILDCONFIGURATION%
         echo File List - %GITHUB_WORKSPACE%
         cd %GITHUB_WORKSPACE%
         dir /b /s /A-D /o:gn
