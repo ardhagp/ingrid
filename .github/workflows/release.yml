@@ -49,7 +49,7 @@ jobs:
 
     - name: Pre-Build File List
       run: |
-        echo $VAR_G_BUILDCONFIGURATION
+        echo "$VAR_G_BUILDCONFIGURATION"
         echo "File List - ${{ github.workspace }}"
         cd "${{ github.workspace }}"
         dir /b /s /A-D /o:gn
