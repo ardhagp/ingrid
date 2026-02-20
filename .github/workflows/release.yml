@@ -58,7 +58,7 @@ jobs:
     - name: Checking Variables
       shell: cmd
       run: |
-        echo "=============================================================
+        echo "============================================================="
         echo "|              Name            |             Value"
         echo "============================================================="
         echo "| VAR_G_BUILDCONFIGURATION     | %VAR_G_BUILDCONFIGURATION%"
