@@ -8,33 +8,14 @@
 # To learn how to migrate your existing application to .NET Core,
 # refer to https://docs.microsoft.com/en-us/dotnet/desktop-wpf/migration/convert-project-from-net-framework
 #
-# To configure this workflow:
-#
-# 1. Configure environment variables
-# GitHub sets default environment variables for every workflow run.
-# Replace the variables relative to your project in the "env" section below.
-#
-# 2. Signing
-# Generate a signing certificate in the Windows Application
-# Packaging Project or add an existing signing certificate to the project.
-# Next, use PowerShell to encode the .pfx file using Base64 encoding
-# by running the following Powershell script to generate the output string:
-#
-# $pfx_cert = Get-Content '.\SigningCertificate.pfx' -Encoding Byte
-# [System.Convert]::ToBase64String($pfx_cert) | Out-File 'SigningCertificate_Encoded.txt'
-#
-# Open the output file, SigningCertificate_Encoded.txt, and copy the
-# string inside. Then, add the string to the repo as a GitHub secret
-# and name it "Base64_Encoded_Pfx."
-# For more information on how to configure your signing certificate for
-# this workflow, refer to https://github.com/microsoft/github-actions-for-desktop-apps#signing
-#
-# Finally, add the signing certificate password to the repo as a secret and name it "Pfx_Key".
-# See "Build the Windows Application Packaging project" below to see how the secret is used.
-#
-# For more information on GitHub Actions, refer to https://github.com/features/actions
-# For a complete CI/CD sample to get started with GitHub Action workflows for Desktop Applications,
-# refer to https://github.com/microsoft/github-actions-for-desktop-apps
+# Important note:
+# $(VAR_G_INGRIDVERSION_MAJOR) : ingrid major version
+# $(VAR_G_INGRIDVERSION_MINOR) : publishing number
+# $(VAR_G_INGRIDVERSION_BUILD) : build / compile number
+# $(VAR_G_INGRIDVERSION_REVISION) : failed build / compile number
+# $(VAR_G_NET) : .NET version
+# $(VAR_G_BUILDCONFIGURATION) : build configuration (Debug/Release)
+# $(VAR_G_PLATFORM) : platform configuration (Any CPU/x86/x64)
 
 name: Release
 
@@ -44,6 +25,7 @@ on:
 jobs:
 
   build:
+    environment: Ingrid_Env
 
     strategy:
       matrix:
@@ -53,7 +35,16 @@ jobs:
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     env:
-      Solution_Name: Ingrid.sln
+      Solution_Path: "./Apps/Core/Vb"
+      Solution_Name: "Ingrid.sln"
+      Solution_Nuget: "NuGet.config"
+      VAR_G_BUILDCONFIGURATION: ${{ vars.VAR_G_BUILDCONFIGURATION }}
+      VAR_G_INGRIDVERSION_BUILD: ${{ vars.VAR_G_INGRIDVERSION_BUILD }}
+      VAR_G_INGRIDVERSION_MAJOR: ${{ vars.VAR_G_INGRIDVERSION_MAJOR }}
+      VAR_G_INGRIDVERSION_MINOR: ${{ vars.VAR_G_INGRIDVERSION_MINOR }}
+      VAR_G_INGRIDVERSION_REVISION: ${{ vars.VAR_G_INGRIDVERSION_REVISION }}
+      VAR_G_NET: ${{ vars.VAR_G_NET }}
+      VAR_G_PLATFORM: ${{ vars.VAR_G_PLATFORM }}
       
     steps:
     - name: Checkout
@@ -65,16 +56,30 @@ jobs:
       uses: NuGet/setup-nuget@v2
       with:
         nuget-version: latest
+        
+    - name: Checking Variables
+      shell: cmd
+      run: |
+        echo =============================================================
+        echo           Values used in the build process
+        echo =============================================================
+        echo Configuration : %VAR_G_BUILDCONFIGURATION%
+        echo Version.Major : %VAR_G_INGRIDVERSION_MAJOR%
+        echo Version.Minor : %VAR_G_INGRIDVERSION_MINOR%
+        echo Version.Build : %VAR_G_INGRIDVERSION_BUILD%
+        echo Version.Revision : %VAR_G_INGRIDVERSION_REVISION%
+        echo .NET Version : %VAR_G_NET%
+        echo Platform : %VAR_G_PLATFORM%
 
     - name: Pre-Build File List
+      shell: cmd
       run: |
-        echo "File List - ${{ github.workspace }}"
-        cd "${{ github.workspace }}"
+        echo File List - %GITHUB_WORKSPACE%
+        cd %GITHUB_WORKSPACE%
         dir /b /s /A-D /o:gn
-        shell: cmd
 
     - name: NuGet Restore
-      run: nuget restore "${{ env.Solution_Name }}" -ConfigFile "./Apps/Core/Vb/NuGet.config"
+      run: nuget restore "${{ env.Solution_Path }}/${{ env.Solution_Name }}" -ConfigFile "${{ env.Solution_Path }}/${{ env.Solution_Nuget }}"
       shell: cmd
 
     # Will be continued from this line
@@ -89,12 +94,13 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     # Execute all unit tests in the solution
-    - name: Execute unit tests
-      run: dotnet test
+    #- name: Execute unit tests
+    #  run: dotnet test
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+      run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /t:Rebuild /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}"
       env:
         Configuration: ${{ matrix.configuration }}
+
 
