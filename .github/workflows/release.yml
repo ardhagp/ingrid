@@ -36,6 +36,7 @@ jobs:
 
     env:
       Solution_Name: Ingrid.sln
+      VAR_G_BUILDCONFIGURATION: ${{ vars.VAR_G_BUILDCONFIGURATION }}
       
     steps:
     - name: Checkout
