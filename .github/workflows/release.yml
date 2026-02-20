@@ -59,7 +59,7 @@ jobs:
       shell: cmd
       run: |
         echo =============================================================
-        echo |        Variables Check       |             Value
+        echo |              Name            |             Value
         echo =============================================================
         echo | VAR_G_BUILDCONFIGURATION     | %VAR_G_BUILDCONFIGURATION%
         echo | VAR_G_INGRIDVERSION_MAJOR    | %VAR_G_INGRIDVERSION_MAJOR%
