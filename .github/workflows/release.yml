@@ -37,6 +37,12 @@ jobs:
     env:
       Solution_Name: Ingrid.sln
       VAR_G_BUILDCONFIGURATION: ${{ vars.VAR_G_BUILDCONFIGURATION }}
+      VAR_G_INGRIDVERSION_BUILD: ${{ vars.VAR_G_INGRIDVERSION_BUILD }}
+      VAR_G_INGRIDVERSION_MAJOR: ${{ vars.VAR_G_INGRIDVERSION_MAJOR }}
+      VAR_G_INGRIDVERSION_MINOR: ${{ vars.VAR_G_INGRIDVERSION_MINOR }}
+      VAR_G_INGRIDVERSION_REVISION: ${{ vars.VAR_G_INGRIDVERSION_REVISION }}
+      VAR_G_NET: ${{ vars.VAR_G_NET }}
+      VAR_G_PLATFORM: ${{ vars.VAR_G_PLATFORM }}
       
     steps:
     - name: Checkout
@@ -49,16 +55,23 @@ jobs:
       with:
         nuget-version: latest
         
-    - name: Export env var for CMD and debug
+    - name: Checking Variables
+      shell: cmd
       run: |
-        echo "Loaded vars: ${{ toJson(vars) }}"
-        echo "config: ${{vars.VAR_G_BUILDCONFIGURATION }}"
-        
+        echo =============================================================
+        echo |        Variables Check       |             Value
+        echo =============================================================
+        echo | VAR_G_BUILDCONFIGURATION     | %VAR_G_BUILDCONFIGURATION%
+        echo | VAR_G_INGRIDVERSION_MAJOR    | %VAR_G_INGRIDVERSION_MAJOR%
+        echo | VAR_G_INGRIDVERSION_MINOR    | %VAR_G_INGRIDVERSION_MINOR%
+        echo | VAR_G_INGRIDVERSION_BUILD    | %VAR_G_INGRIDVERSION_BUILD%
+        echo | VAR_G_INGRIDVERSION_REVISION | %VAR_G_INGRIDVERSION_MINOR%
+        echo | VAR_G_NET                    | %VAR_G_NET%
+        echo | VAR_G_PLATFORM               | %VAR_G_PLATFORM%
+
     - name: Pre-Build File List
       shell: cmd
       run: |
-        echo VAR_G_BUILDCONFIGURATION=R>>%GITHUB_ENV%
-        echo %VAR_G_BUILDCONFIGURATION%
         echo File List - %GITHUB_WORKSPACE%
         cd %GITHUB_WORKSPACE%
         dir /b /s /A-D /o:gn
