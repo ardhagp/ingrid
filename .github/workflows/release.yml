@@ -99,21 +99,21 @@ jobs:
       with:
         files: '**/*.cs'
         search-text: 'config.GetSection("KEYS")["SALT"]'
-        replacement-text: '${{ secrets.VAR_G_SALT }}'
+        replacement-text: '"${{ secrets.VAR_G_SALT }}"'
 
     - name: Replacing BRIDGEKEY.SYNCFUSION
       uses: richardrigutins/replace-in-files@v2.1.14
       with:
         files: '**/*.cs'
         search-text: 'config.GetSection("KEYS")["SYNCFUSION"]'
-        replacement-text: '${{ secrets.VAR_G_SYNCFUSIONKEY }}'
+        replacement-text: '"${{ secrets.VAR_G_SYNCFUSIONKEY }}"'
 
     - name: Replacing BRIDGEKEY.BETTERSTACK_LOG
       uses: richardrigutins/replace-in-files@v2.1.14
       with:
         files: '**/*.cs'
         search-text: 'config.GetSection("KEYS")["BETTERSTACK_LOG"]'
-        replacement-text: '${{ secrets.VAR_G_BETTERSTACK_LOG }}'
+        replacement-text: '$"{{ secrets.VAR_G_BETTERSTACK_LOG }}"'
 
     - name: Replacing Version.Major
       uses: richardrigutins/replace-in-files@v2.1.14
@@ -148,7 +148,7 @@ jobs:
       with:
         files: '**/*.vb'
         search-text: 'My.Settings.ConnectionURL'
-        replacement-text: '${{ env.VAR_G_DOWNLOADCENTER_URL }}'
+        replacement-text: '"${{ env.VAR_G_DOWNLOADCENTER_URL }}"'
 
     # Execute all unit tests in the solution
     #- name: Execute unit tests
