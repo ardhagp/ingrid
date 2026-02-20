@@ -58,16 +58,16 @@ jobs:
     - name: Checking Variables
       shell: cmd
       run: |
-        echo "============================================================="
-        echo "|              Name            |             Value"
-        echo "============================================================="
-        echo "| VAR_G_BUILDCONFIGURATION     | %VAR_G_BUILDCONFIGURATION%"
-        echo "| VAR_G_INGRIDVERSION_MAJOR    | %VAR_G_INGRIDVERSION_MAJOR%"
-        echo "| VAR_G_INGRIDVERSION_MINOR    | %VAR_G_INGRIDVERSION_MINOR%"
-        echo "| VAR_G_INGRIDVERSION_BUILD    | %VAR_G_INGRIDVERSION_BUILD%"
-        echo "| VAR_G_NET                    | %VAR_G_NET%"
-        echo "| VAR_G_PLATFORM               | %VAR_G_PLATFORM%"
-        echo "| VAR_G_INGRIDVERSION_REVISION | %VAR_G_INGRIDVERSION_MINOR%"
+        echo =============================================================
+        echo           Values used in the build process
+        echo =============================================================
+        echo | Configuration | %VAR_G_BUILDCONFIGURATION%
+        echo | Major         | %VAR_G_INGRIDVERSION_MAJOR%
+        echo | Minor         | %VAR_G_INGRIDVERSION_MINOR%
+        echo | Build         | %VAR_G_INGRIDVERSION_BUILD%
+        echo | Revision      | %VAR_G_INGRIDVERSION_MINOR%
+        echo | .NET Version  | %VAR_G_NET%
+        echo | Platform      | %VAR_G_PLATFORM%
 
     - name: Pre-Build File List
       shell: cmd
