@@ -46,6 +46,9 @@ jobs:
       uses: NuGet/setup-nuget@v2
       with:
         nuget-version: latest
+
+    - name: Export env var for CMD
+      run: echo VAR_G_BUILDCONFIGURATION=${{ vars.VAR_G_BUILDCONFIGURATION }} >> $GITHUB_ENV
         
     - name: Pre-Build File List
       shell: cmd
