@@ -25,6 +25,7 @@ on:
 jobs:
 
   build:
+    environment: Ingrid_Env
 
     strategy:
       matrix:
