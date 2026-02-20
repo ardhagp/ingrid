@@ -61,7 +61,7 @@ jobs:
         echo =============================================================
         echo           Values used in the build process
         echo =============================================================
-        echo "VAR_G_BUILDCONFIGURATION :" %VAR_G_BUILDCONFIGURATION%
+        echo VAR_G_BUILDCONFIGURATION : %VAR_G_BUILDCONFIGURATION%
         echo "VAR_G_INGRIDVERSION_MAJOR :" %VAR_G_INGRIDVERSION_MAJOR%
         echo "VAR_G_INGRIDVERSION_MINOR :" %VAR_G_INGRIDVERSION_MINOR%
         echo "VAR_G_INGRIDVERSION_BUILD :" %VAR_G_INGRIDVERSION_BUILD%
