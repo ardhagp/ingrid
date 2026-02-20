@@ -51,12 +51,12 @@ jobs:
     - name: Export env var for CMD and debug
       run: |
         echo "Loaded vars: ${{ toJson(vars) }}"
-        echo VAR_G_BUILDCONFIGURATION=${{ vars.VAR_G_BUILDCONFIGURATION }} >> $GITHUB_ENV
+        echo VAR_G_BUILDCONFIGURATION=${{ vars.VAR_G_BUILDCONFIGURATION }}>>%GITHUB_ENV%
         
     - name: Pre-Build File List
       shell: cmd
       run: |
-        echo VAR_G_BUILDCONFIGURATION=${{ vars.VAR_G_BUILDCONFIGURATION }} >> $GITHUB_ENV
+        echo VAR_G_BUILDCONFIGURATION=${{ vars.VAR_G_BUILDCONFIGURATION }}>>%GITHUB_ENV%
         echo %VAR_G_BUILDCONFIGURATION%
         echo File List - %GITHUB_WORKSPACE%
         cd %GITHUB_WORKSPACE%
