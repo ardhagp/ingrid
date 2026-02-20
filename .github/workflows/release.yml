@@ -45,6 +45,7 @@ jobs:
       VAR_G_INGRIDVERSION_REVISION: ${{ vars.VAR_G_INGRIDVERSION_REVISION }}
       VAR_G_NET: ${{ vars.VAR_G_NET }}
       VAR_G_PLATFORM: ${{ vars.VAR_G_PLATFORM }}
+      VAR_G_DOWNLOADCENTER_URL: ${{ vars.VAR_G_DOWNLOADCENTER_URL }}
       
     steps:
     - name: Checkout
@@ -93,13 +94,70 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
 
+    - name: Replacing BRIDGEKEY.SALT
+      uses: richardrigutins/replace-in-files@v2.1.14
+      with:
+        files: '**/*.cs'
+        search-text: 'config.GetSection("KEYS")["SALT"]'
+        replacement-text: '${{ secrets.VAR_G_SALT }}'
+
+    - name: Replacing BRIDGEKEY.SYNCFUSION
+      uses: richardrigutins/replace-in-files@v2.1.14
+      with:
+        files: '**/*.cs'
+        search-text: 'config.GetSection("KEYS")["SYNCFUSION"]'
+        replacement-text: '${{ secrets.VAR_G_SYNCFUSIONKEY }}'
+
+    - name: Replacing BRIDGEKEY.BETTERSTACK_LOG
+      uses: richardrigutins/replace-in-files@v2.1.14
+      with:
+        files: '**/*.cs'
+        search-text: 'config.GetSection("KEYS")["BETTERSTACK_LOG"]'
+        replacement-text: '${{ secrets.VAR_G_BETTERSTACK_LOG }}'
+
+    - name: Replacing Version.Major
+      uses: richardrigutins/replace-in-files@v2.1.14
+      with:
+        files: '**/*.vb'
+        search-text: 'My.Application.Info.Version.Major'
+        replacement-text: '${{ env.VAR_G_INGRIDVERSION_MAJOR }}'
+
+    - name: Replacing Version.Minor
+      uses: richardrigutins/replace-in-files@v2.1.14
+      with:
+        files: '**/*.vb'
+        search-text: 'My.Application.Info.Version.Minor'
+        replacement-text: '${{ env.VAR_G_INGRIDVERSION_MINOR }}'
+
+    - name: Replacing Version.Build
+      uses: richardrigutins/replace-in-files@v2.1.14
+      with:
+        files: '**/*.vb'
+        search-text: 'My.Application.Info.Version.Build'
+        replacement-text: '${{ env.VAR_G_INGRIDVERSION_BUILD }}'
+
+    - name: Replacing Version.Revision
+      uses: richardrigutins/replace-in-files@v2.1.14
+      with:
+        files: '**/*.vb'
+        search-text: 'My.Application.Info.Version.Revision'
+        replacement-text: '${{ env.VAR_G_INGRIDVERSION_REVISION }}'
+
+    - name: Replacing Download Center URL
+      uses: richardrigutins/replace-in-files@v2.1.14
+      with:
+        files: '**/*.vb'
+        search-text: 'My.Settings.ConnectionURL'
+        replacement-text: '${{ env.VAR_G_DOWNLOADCENTER_URL }}'
+
     # Execute all unit tests in the solution
     #- name: Execute unit tests
     #  run: dotnet test
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
-      run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /t:Rebuild /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}"
+      run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}" /t:Rebuild
+      #run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}" /t:Rebuild
       env:
         Configuration: ${{ matrix.configuration }}
 
