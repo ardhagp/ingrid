@@ -35,7 +35,7 @@ jobs:
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     env:
-      Solution_Path: "./Apps/Core/Vb/"
+      Solution_Path: "./Apps/Core/Vb"
       Solution_Name: "Ingrid.sln"
       Solution_Nuget: "NuGet.config"
       VAR_G_BUILDCONFIGURATION: ${{ vars.VAR_G_BUILDCONFIGURATION }}
@@ -99,7 +99,8 @@ jobs:
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Rebuild /p:Configuration=$env:Configuration
+      run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /t:Rebuild /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}"
       env:
         Configuration: ${{ matrix.configuration }}
+
 
