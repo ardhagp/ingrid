@@ -35,6 +35,9 @@ jobs:
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     env:
+      Solution_Path: "./Apps/Core/Vb/"
+      Solution_Name: "Ingrid.sln"
+      Solution_Nuget: "NuGet.config"
       VAR_G_BUILDCONFIGURATION: ${{ vars.VAR_G_BUILDCONFIGURATION }}
       VAR_G_INGRIDVERSION_BUILD: ${{ vars.VAR_G_INGRIDVERSION_BUILD }}
       VAR_G_INGRIDVERSION_MAJOR: ${{ vars.VAR_G_INGRIDVERSION_MAJOR }}
@@ -76,7 +79,7 @@ jobs:
         dir /b /s /A-D /o:gn
 
     - name: NuGet Restore
-      run: nuget restore "%GITHUB_WORKSPACE%\Apps\Core\Vb\Ingrid.sln" -ConfigFile "./Apps/Core/Vb/NuGet.config"
+      run: nuget restore "${{ env.Solution_Path }}/${{ env.Solution_Name }}" -ConfigFile "${{ env.Solution_Path }}/${{ env.Solution_Nuget }}"
       shell: cmd
 
     # Will be continued from this line
