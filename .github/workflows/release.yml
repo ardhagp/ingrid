@@ -175,7 +175,6 @@ jobs:
     - name: Increase Build Number
       if: always()
       uses: action-pack/increment@v2
-      id: increment
       with:
         name: 'VAR_G_INGRIDVERSION_BUILD'
         token: ${{ secrets.GITHUB_VARIABLE_ACCESS_TOKEN }}
@@ -184,7 +183,6 @@ jobs:
     - name: Increase Revision Number on Failure
       if: failure()
       uses: action-pack/increment@v2
-      id: increment
       with:
         name: 'VAR_G_INGRIDVERSION_MINOR'
         token: ${{ secrets.GITHUB_VARIABLE_ACCESS_TOKEN }}
