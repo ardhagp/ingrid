@@ -85,10 +85,11 @@ jobs:
 
     # Will be continued from this line
     # Install the .NET Core workload
-    - name: Install .NET Core
+    - name: Install .NET Core (Version ${{ env.VAR_G_NET }})
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 7.0.x
+        dotnet-version: ${{ env.VAR_G_NET }}.x
+        cache: false
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
@@ -157,10 +158,8 @@ jobs:
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
       #this is for standard build
-      #run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}" /t:Rebuild 
+      #run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}" /p:Platform=${{ env.VAR_G_PLATFORM }} /t:Rebuild 
 
       #this is for clickonce publish
-      run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}" /t:Publish  /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:BootstrapperComponents="Microsoft.NetCore.DesktopRuntime.7.x86" /p:InstallUrl="https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/" /p:PublishProfile="${{ github.workspace }}\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="${{ github.workspace }}\Ingrid\Apps\Components\Ingrid-Launcher\bin\${{ env.VAR_G_BUILDCONFIGURATION }}\net7.0-windows\package\" /p:PublishDir="${{ github.workspace }}\Ingrid\Apps\Components\Ingrid-Launcher\bin\${{ env.VAR_G_BUILDCONFIGURATION }}\net7.0-windows\publish\" /p:ApplicationVersion="${{ env.VAR_G_INGRIDVERSION_MAJOR }}.${{ env.VAR_G_INGRIDVERSION_MINOR }}.${{ env.VAR_G_INGRIDVERSION_BUILD }}.${{ env.VAR_G_INGRIDVERSION_REVISION }}"
+      run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}" /p:Platform=${{ env.VAR_G_PLATFORM }} /t:Publish  /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:BootstrapperComponents="Microsoft.NetCore.DesktopRuntime.7.x86" /p:InstallUrl="https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/" /p:PublishProfile="${{ github.workspace }}\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="${{ github.workspace }}\Ingrid\Apps\Components\Ingrid-Launcher\bin\${{ env.VAR_G_BUILDCONFIGURATION }}\net7.0-windows\package\" /p:PublishDir="${{ github.workspace }}\Ingrid\Apps\Components\Ingrid-Launcher\bin\${{ env.VAR_G_BUILDCONFIGURATION }}\net7.0-windows\publish\" /p:ApplicationVersion="${{ env.VAR_G_INGRIDVERSION_MAJOR }}.${{ env.VAR_G_INGRIDVERSION_MINOR }}.${{ env.VAR_G_INGRIDVERSION_BUILD }}.${{ env.VAR_G_INGRIDVERSION_REVISION }}"
       
-
-
