@@ -52,9 +52,9 @@ jobs:
       uses: tsickert/discord-webhook@v7.0.0
       with:
         webhook-url: ${{ secrets.VAR_G_DISCORD_URL }}
-        embed-title: "[${{ github.repository }}:${{ github.ref_name }}] • Start compiling Ingrid App"
+        #embed-title: "[${{ github.repository }}:${{ github.ref_name }}] • Start compiling Ingrid App"
         content: "Ingrid ver. ${{ env.VAR_G_INGRIDVERSION_MAJOR }}.${{ env.VAR_G_INGRIDVERSION_MINOR }}.${{ env.VAR_G_INGRIDVERSION_BUILD }}.${{ env.VAR_G_INGRIDVERSION_REVISION }} for ${{ env.VAR_G_PLATFORM }} platform."
-        embed-color: 0xffde59
+        #embed-color: 0xffde59
 
     - name: Checkout
       uses: actions/checkout@v4
