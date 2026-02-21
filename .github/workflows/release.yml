@@ -48,6 +48,12 @@ jobs:
       VAR_G_DOWNLOADCENTER_URL: ${{ vars.VAR_G_DOWNLOADCENTER_URL }}
       
     steps:
+    - name: Discord Webhook Action
+      uses: tsickert/discord-webhook@v7.0.0
+      with:
+        webhook-url: ${{ secrets.VAR_G_DISCORD_URL }}
+        content: "Test"
+
     - name: Checkout
       uses: actions/checkout@v4
       with:
@@ -187,18 +193,3 @@ jobs:
         name: 'VAR_G_INGRIDVERSION_MINOR'
         token: ${{ secrets.GH_VARIABLE_ACCESS_TOKEN }}
         amount: 1
-
-    - name: Send message to Discord
-      uses: sarisia/actions-status-discord@v1
-      if: always()
-      with:
-        webhook: ${{ secrets.VAR_G_DISCORD_WEBHOOKKEY }}
-        status: ${{ job.status }}
-        content: "This job has been finished"
-        title: "Deployment Message From Github"
-        description: "This is message as deployemnt progress"
-        #image: ${{ secrets.EMBED_IMAGE }}
-        color: 0xffde59
-        url: "https://ardhagp.github.io/ardhagp"
-        #username: GitHub Actions
-        #avatar_url: ${{ secrets.AVATAR_URL }}
