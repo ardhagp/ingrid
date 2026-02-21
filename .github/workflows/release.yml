@@ -39,9 +39,9 @@ jobs:
       Solution_Name: "Ingrid.sln"
       Solution_Nuget: "NuGet.config"
       VAR_G_BUILDCONFIGURATION: ${{ vars.VAR_G_BUILDCONFIGURATION }}
-      VAR_G_INGRIDVERSION_BUILD: ${{ vars.VAR_G_INGRIDVERSION_BUILD }}
       VAR_G_INGRIDVERSION_MAJOR: ${{ vars.VAR_G_INGRIDVERSION_MAJOR }}
       VAR_G_INGRIDVERSION_MINOR: ${{ vars.VAR_G_INGRIDVERSION_MINOR }}
+      VAR_G_INGRIDVERSION_BUILD: ${{ vars.VAR_G_INGRIDVERSION_BUILD }}
       VAR_G_INGRIDVERSION_REVISION: ${{ vars.VAR_G_INGRIDVERSION_REVISION }}
       VAR_G_NET: ${{ vars.VAR_G_NET }}
       VAR_G_PLATFORM: ${{ vars.VAR_G_PLATFORM }}
@@ -156,9 +156,11 @@ jobs:
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
-      run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}" /t:Rebuild
-      #run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}" /t:Rebuild
-      env:
-        Configuration: ${{ matrix.configuration }}
+      #this is for standard build
+      #run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}" /t:Rebuild 
+
+      #this is for clickonce publish
+      run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}" /t:Publish  /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:BootstrapperComponents="Microsoft.NetCore.DesktopRuntime.7.x86" /p:InstallUrl="https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/" /p:PublishProfile="${{ github.workspace }}\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="${{ github.workspace }}\Ingrid\Apps\Components\Ingrid-Launcher\bin\${{ env.VAR_G_BUILDCONFIGURATION }}\net7.0-windows\package\" /p:PublishDir="${{ github.workspace }}\Ingrid\Apps\Components\Ingrid-Launcher\bin\${{ env.VAR_G_BUILDCONFIGURATION }}\net7.0-windows\publish\" /p:ApplicationVersion="${{ env.VAR_G_INGRIDVERSION_MAJOR }}.${{ env.VAR_G_INGRIDVERSION_MINOR }}.${{ env.VAR_G_INGRIDVERSION_BUILD }}.${{ env.VAR_G_INGRIDVERSION_REVISION }}"
+      
 
 
