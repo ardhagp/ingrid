@@ -53,7 +53,7 @@ jobs:
       with:
         webhook-url: ${{ secrets.VAR_G_DISCORD_URL }}
         embed-title: "[${{ github.repository }}:${{ github.ref_name }}] • Start compiling Ingrid App"
-        content: "Ingrid ver. ${{ env.VAR_G_INGRIDVERSION_MAJOR }}.${{ env.VAR_G_INGRIDVERSION_MINOR }}.${{ env.VAR_G_INGRIDVERSION_BUILD }}.${{ env.VAR_G_INGRIDVERSION_REVISION }} for ${{ env.VAR_G_PLATFORM }} platform."
+        embed-description: "Ingrid ver. ${{ env.VAR_G_INGRIDVERSION_MAJOR }}.${{ env.VAR_G_INGRIDVERSION_MINOR }}.${{ env.VAR_G_INGRIDVERSION_BUILD }}.${{ env.VAR_G_INGRIDVERSION_REVISION }} for ${{ env.VAR_G_PLATFORM }} platform."
         embed-color: 16768601
 
     - name: Checkout
