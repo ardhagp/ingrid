@@ -169,7 +169,7 @@ jobs:
       id: increment
       with:
         name: 'VAR_G_INGRIDVERSION_MINOR'
-        token: ${{ secrets.GITHUB-TOKEN-CLASSIC }}
+        token: ${{ secrets.GH_VARIABLE_ACCESS_TOKEN }}
         amount: 1
 
     - name: Increase Build Number
@@ -177,7 +177,7 @@ jobs:
       uses: action-pack/increment@v2
       with:
         name: 'VAR_G_INGRIDVERSION_BUILD'
-        token: ${{ secrets.GITHUB-TOKEN-CLASSIC }}
+        token: ${{ secrets.GH_VARIABLE_ACCESS_TOKEN }}
         amount: 1
 
     - name: Increase Revision Number on Failure
@@ -185,7 +185,7 @@ jobs:
       uses: action-pack/increment@v2
       with:
         name: 'VAR_G_INGRIDVERSION_MINOR'
-        token: ${{ secrets.GITHUB-TOKEN-CLASSIC }}
+        token: ${{ secrets.GH_VARIABLE_ACCESS_TOKEN }}
         amount: 1
 
     - name: Send message to Discord
