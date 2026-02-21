@@ -163,3 +163,35 @@ jobs:
       #this is for clickonce publish
       run: msbuild "${{ env.Solution_Path }}/${{ env.Solution_Name }}" /p:Configuration="${{ env.VAR_G_BUILDCONFIGURATION }}" /p:Platform="${{ env.VAR_G_PLATFORM }}" /t:Publish  /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:BootstrapperComponents="Microsoft.NetCore.DesktopRuntime.${{ env.VAR_G_NET }}.x86" /p:InstallUrl="https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/" /p:PublishProfile="${{ github.workspace }}\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="${{ github.workspace }}\Ingrid\Apps\Components\Ingrid-Launcher\bin\${{ env.VAR_G_BUILDCONFIGURATION }}\net${{ env.VAR_G_NET }}.0-windows\package\" /p:PublishDir="${{ github.workspace }}\Ingrid\Apps\Components\Ingrid-Launcher\bin\${{ env.VAR_G_BUILDCONFIGURATION }}\net${{ env.VAR_G_NET }}.0-windows\publish\" /p:ApplicationVersion="${{ env.VAR_G_INGRIDVERSION_MAJOR }}.${{ env.VAR_G_INGRIDVERSION_MINOR }}.${{ env.VAR_G_INGRIDVERSION_BUILD }}.${{ env.VAR_G_INGRIDVERSION_REVISION }}"
       
+    - name: Increase Build Number
+      if: success()
+      uses: action-pack/increment@v2
+      id: increment
+      with:
+        name: 'VAR_G_INGRIDVERSION_MINOR'
+        token: ${{ secrets.GITHUB_VARIABLE_ACCESS_TOKEN }}
+        amount: 1
+
+    - name: Increase Revision Number
+      if: failure()
+      uses: action-pack/increment@v2
+      id: increment
+      with:
+        name: 'VAR_G_INGRIDVERSION_MINOR'
+        token: ${{ secrets.GITHUB_VARIABLE_ACCESS_TOKEN }}
+        amount: 1
+
+    - name: Send message to Discord
+      uses: sarisia/actions-status-discord@v1
+      if: always()
+      with:
+        webhook: ${{ secrets.VAR_G_DISCORD_WEBHOOKKEY }}
+        status: ${{ job.status }}
+        content: "This job has been finished"
+        title: "Deployment Message From Github"
+        description: "This is message as deployemnt progress"
+        #image: ${{ secrets.EMBED_IMAGE }}
+        color: 0xffde59
+        #url: "https://github.com/sarisia/actions-status-discord"
+        #username: GitHub Actions
+        #avatar_url: ${{ secrets.AVATAR_URL }}
