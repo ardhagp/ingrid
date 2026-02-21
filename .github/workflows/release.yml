@@ -199,6 +199,6 @@ jobs:
         description: "This is message as deployemnt progress"
         #image: ${{ secrets.EMBED_IMAGE }}
         color: 0xffde59
-        #url: "https://github.com/sarisia/actions-status-discord"
+        url: "https://ardhagp.github.io/ardhagp"
         #username: GitHub Actions
         #avatar_url: ${{ secrets.AVATAR_URL }}
