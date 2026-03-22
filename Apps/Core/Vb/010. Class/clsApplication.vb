@@ -13,6 +13,7 @@ Namespace Application
                 varAccessValue = CType(varSQL.User(databasename, dbengine, tcode, uid, typeofaccess), Boolean)
                 If Not varAccessValue Then
                     SystemSounds.Exclamation.Play()
+                    Decision(My.Application.Info.AssemblyName.ToUpper, $"You are not authorized to : {typeofaccess.ToString} record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 End If
                 Return varAccessValue
             Catch ex As Exception
@@ -25,7 +26,6 @@ End Namespace
 
 Namespace Application
     Public Class Modules
-        'ReadOnly _SQL As New LibSQL.Application.Modules
 
         <SupportedOSPlatform("windows")>
         Public Shared Function IsModuleReady(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String) As Boolean

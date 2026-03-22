@@ -30,7 +30,7 @@ Namespace UI
                 CMDconn.Editor.GetRowValue(varProperties)
 
                 With varProperties
-                    If (.IsMasked) Then
+                    If (.ConnectionIsMasked) Then
                         TxtAddress.UseSystemPasswordChar = True
                         TxtPort.UseSystemPasswordChar = True
                         TxtUsername.UseSystemPasswordChar = True
@@ -38,15 +38,15 @@ Namespace UI
                     End If
 
                     TxtConnectionName.Text = .ConnectionName
-                    CboDBEngine.Text = .DatabaseEngine
-                    TxtAddress.Text = .ServerAddress
-                    TxtPort.Text = Convert.ToString(.ServerPort)
+                    CboDBEngine.Text = .ConnectionDatabaseEngine
+                    TxtAddress.Text = .ConnectionServerAddress
+                    TxtPort.Text = Convert.ToString(.ConnectionServerPort)
                     TxtUsername.Text = .Username
-                    TxtPassword.Text = .Password
-                    varOldPassword = .PasswordOld
-                    TxtDatabaseName.Text = .DatabaseName
-                    ChkDefault.Checked = .IsDefault
-                    ChkIsMasked.Checked = .IsMasked
+                    TxtPassword.Text = .ConnectionPassword
+                    varOldPassword = .ConnectionPasswordOld
+                    TxtDatabaseName.Text = .ConnectionDatabaseName
+                    ChkDefault.Checked = .ConnectionIsDefault
+                    ChkIsMasked.Checked = .ConnectionIsMasked
                 End With
             Catch ex As Exception
                 Dim clsLog As New Ladybug.Log.Events
@@ -120,17 +120,17 @@ Namespace UI
 
             With varProperties
                 .ConnectionName = TxtConnectionName.Text
-                .DatabaseEngine = CboDBEngine.Text
-                .ServerAddress = TxtAddress.Text
-                .ServerPort = Convert.ToInt32(TxtPort.Text)
-                .Username = TxtUsername.Text
-                .Password = TxtPassword.Text
-                .DatabaseName = TxtDatabaseName.Text
-                .IsDefault = ChkDefault.Checked
-                .IsMasked = ChkIsMasked.Checked
-                .IsNew = varProperties.IsNew
-                .IsPasswordChanged = varIsPasswordChange
-                .RowID = Convert.ToString(varProperties.RowID)
+                .ConnectionDatabaseEngine = CboDBEngine.Text
+                .ConnectionServerAddress = TxtAddress.Text
+                .ConnectionServerPort = Convert.ToInt32(TxtPort.Text)
+                .ConnectionUsername = TxtUsername.Text
+                .ConnectionPassword = TxtPassword.Text
+                .ConnectionDatabaseName = TxtDatabaseName.Text
+                .ConnectionIsDefault = ChkDefault.Checked
+                .ConnectionIsMasked = ChkIsMasked.Checked
+                .ConnectionIsNew = varProperties.ConnectionIsNew
+                .ConnectionIsPasswordChanged = varIsPasswordChange
+                .ConnectionId = Convert.ToString(varProperties.ConnectionId)
             End With
 
             If (CMDconn.Editor.PushData(varProperties)) Then
@@ -193,8 +193,8 @@ Namespace UI
 
             CboDBEngine.DataSource = [Enum].GetValues(GetType(LibApp.Ingrid.Global.DatabaseEngine))
 
-            If (varProperties.IsNew) Then
-                varProperties.RowID = CMCv.Security.Encrypt.MD5()
+            If (varProperties.ConnectionIsNew) Then
+                varProperties.ConnectionId = CMCv.Security.Encrypt.MD5()
                 ChkIsMasked.Visible = True
             Else
                 ChkIsMasked.Visible = False
@@ -230,7 +230,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub ComponentMainframeMenu_EventFileUndoAll() Handles ComponentMainframeMenu.EventFileUndoAll
             If Decision(My.Application.Info.AssemblyName, "Do you want to undo all changes?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
-                If (varProperties.IsNew) Then
+                If (varProperties.ConnectionIsNew) Then
                     TxtConnectionName.Clear()
                     TxtAddress.Clear()
                     TxtPort.Clear()

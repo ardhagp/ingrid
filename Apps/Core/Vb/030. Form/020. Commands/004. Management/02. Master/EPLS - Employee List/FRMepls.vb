@@ -15,10 +15,10 @@ Namespace UI
         End Sub
 
         Private Sub GetRowID()
-            varFormProperties.RowID = "-1"
+            varDataProperties.EmployeeId = "-1"
 
             If DgnEPLS.RowCount > 0 Then
-                varFormProperties.RowID = DgnEPLS.CurrentRow.Cells("employee_id").Value.ToString
+                varDataProperties.EmployeeId = DgnEPLS.CurrentRow.Cells("employee_id").Value.ToString
             End If
         End Sub
 #End Region
@@ -26,13 +26,13 @@ Namespace UI
 #Region "Menu Strip Functions"
         <SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "EPLS", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "EPLS", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
-            varFormProperties.IsNew = True
-            varFormProperties.RowID = "-1"
+            varDataProperties.EmployeeIsNew = True
+            varDataProperties.EmployeeId = "-1"
 
             Frm_epls_Editor = New FRMeplsEditor
             Display(Frm_epls_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new employee data", True)
@@ -40,17 +40,17 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "EPLS", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "EPLS", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
-            varFormProperties.IsNew = False
-            If Convert.ToString(varFormProperties.RowID) = "-1" Then
+            varDataProperties.EmployeeIsNew = False
+            If Convert.ToString(varDataProperties.EmployeeId) = "-1" Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                varFormProperties.IsNew = False
+                varDataProperties.EmployeeIsNew = False
                 Frm_epls_Editor = New FRMeplsEditor
                 Display(Frm_epls_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your employee data", True)
             End If
@@ -58,17 +58,17 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "EPLS", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "EPLS", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
-            If Convert.ToString(varFormProperties.RowID) = "-1" Then
+            If Convert.ToString(varDataProperties.EmployeeId) = "-1" Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnEPLS.CurrentRow.Cells("employee_fullname").Value.ToString & vbCrLf & "=======================================================", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    If (CMDepls.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
+                    If (CMDepls.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varDataProperties.EmployeeId))) Then
                         Call GetData(True)
                         UI.FRMmainframe6.Ts_status.Text = "Success"
                     Else

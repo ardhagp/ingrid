@@ -121,12 +121,12 @@ Namespace Database.Engine
                 varDatareader(0) = GetDataRow("SELECT LIST.SERVERADDRESS, LIST.USERNAME, LIST.PASSWORD, LIST.ACCEPTEDLINECONNECTION FROM LIST WHERE LIST.ID =1;", varConnection(0), varCommand(0))
 
                 With varDatareader(0)
-                    globalproperties.ServerAddress = .GetString(0)
-                    globalproperties.Username = .GetString(1)
-                    globalproperties.Password = CMCv.Security.Decrypt.AES(.GetString(2))
-                    globalproperties.ServerPort = CType(.GetValue(3), Integer)
-                    globalproperties.DatabaseName = .GetString(4)
-                    globalproperties.FileStorage = .GetString(5)
+                    globalproperties.ConnectionServerAddress = .GetString(0)
+                    globalproperties.ConnectionUsername = .GetString(1)
+                    globalproperties.ConnectionPassword = CMCv.Security.Decrypt.Aes(.GetString(2))
+                    globalproperties.ConnectionServerPort = CType(.GetValue(3), Integer)
+                    globalproperties.ConnectionDatabaseName = .GetString(4)
+                    globalproperties.ConnectionFileStorage = .GetString(5)
                 End With
 
                 Return globalproperties

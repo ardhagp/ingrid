@@ -50,7 +50,7 @@ Namespace Database.Engine
 
             Dim varSuccess As Boolean
             Try
-                varConnection(1) = New SqlClient.SqlConnection(varMsSql2008.Mssql2008standard(databaseproperties.ServerAddress, databaseproperties.ServerPort, databaseproperties.DatabaseName, databaseproperties.Username, databaseproperties.Password))
+                varConnection(1) = New SqlClient.SqlConnection(varMsSql2008.Mssql2008standard(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, databaseproperties.ConnectionPassword))
                 varConnection(1).Open()
                 varSuccess = True
             Catch ex As SqlClient.SqlException

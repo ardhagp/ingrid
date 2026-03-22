@@ -15,10 +15,10 @@ Namespace UI
         End Sub
 
         Private Sub GetRowID()
-            varFormProperties.RowID = "-1"
+            varDataProperties.UserAccessId = "-1"
 
             If DgnUAC.RowCount > 0 Then
-                varFormProperties.RowID = DgnUAC.CurrentRow.Cells("user_id").Value.ToString
+                varDataProperties.UserAccessId = DgnUAC.CurrentRow.Cells("user_id").Value.ToString
             End If
         End Sub
 #End Region
@@ -27,36 +27,36 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-            varFormProperties.IsChangePasswordForm = False
+            varDataProperties.UserAccessIsChangePasswordForm = False
 
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "UAC", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "UAC", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
-            varFormProperties.IsNew = True
-            varFormProperties.RowID = "-1"
-            varFormProperties.Hash = Security.Encrypt.MD5()
+            varDataProperties.UserAccessIsNew = True
+            varDataProperties.UserAccessId = "-1"
+            varDataProperties.UserAccessHash = Security.Encrypt.MD5()
             Frm_uac_Editor = New FRMuacEditor
             Display(Frm_uac_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new credential data", True)
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
-            varFormProperties.IsChangePasswordForm = False
+            varDataProperties.UserAccessIsChangePasswordForm = False
 
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "UAC", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "UAC", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
-            varFormProperties.IsNew = False
+            varDataProperties.UserAccessIsNew = False
 
-            If Convert.ToString(varFormProperties.RowID) = "-1" Then
+            If Convert.ToString(varDataProperties.UserAccessId) = "-1" Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                varFormProperties.IsNew = False
+                varDataProperties.UserAccessIsNew = False
                 Frm_uac_Editor = New FRMuacEditor
                 Display(Frm_uac_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your employee data", True)
             End If
@@ -64,18 +64,18 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "UAC", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "UAC", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
 
-            If Convert.ToString(varFormProperties.RowID) = "-1" Then
+            If Convert.ToString(varDataProperties.UserAccessId) = "-1" Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    If (CMDuac.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))) Then
+                    If (CMDuac.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.UserAccessId))) Then
                         Call GetData(True)
                         UI.FRMmainframe6.Ts_status.Text = "Success"
                     Else

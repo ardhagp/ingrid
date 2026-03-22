@@ -60,7 +60,7 @@ Namespace Database.Engine
 
             Dim varSuccess As Boolean
             Try
-                varConnection(1) = New MySqlClient.MySqlConnection(varMySQL.Mysqlforcessl(databaseproperties.ServerAddress, databaseproperties.ServerPort, databaseproperties.DatabaseName, databaseproperties.Username, databaseproperties.Password))
+                varConnection(1) = New MySqlClient.MySqlConnection(varMySQL.Mysqlforcessl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, databaseproperties.ConnectionPassword))
                 varConnection(1).Open()
                 varSuccess = True
             Catch ex As MySqlClient.MySqlException
@@ -548,9 +548,10 @@ Namespace Database.Engine
 
                 query = "USE " & databasename & "; " & query
 
-                varCommand(1).CommandText = String.Format(CultureInfo.CurrentCulture, "RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH", query)
+                varCommand(1).CommandText = query
 
                 Using varDataAdapter = New MySqlClient.MySqlDataAdapter(varCommand(1))
+                    datasetname.Tables(tablename).Clear()
                     varDataAdapter.Fill(datasetname, tablename)
                 End Using
             Catch ex As Exception

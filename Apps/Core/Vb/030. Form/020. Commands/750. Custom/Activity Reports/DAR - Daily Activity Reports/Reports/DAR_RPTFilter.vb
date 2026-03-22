@@ -111,7 +111,7 @@ Namespace UI
                 varColor = False
             End If
 
-            FRMdar_RPTContainer = New DAR_RPTContainer(varDataSet, varProperties.FirstName, varColor, GetAppVersion)
+            FRMdar_RPTContainer = New DAR_RPTContainer(varDataSet, varDataProperties.EmployeeFirstName, varColor, GetAppVersion)
             Display(FRMdar_RPTContainer, IMAGEDB.Main.ImageLibrary.PRINTER_ICON, My.Application.Info.AssemblyName.ToUpper, "Print - Daily Activity Report", "Generated Daily Activity Report", True,)
         End Sub
 

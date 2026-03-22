@@ -433,22 +433,22 @@ Namespace CMDacgr
             Try
                 Dim varHash As String = CMCv.Security.Encrypt.MD5()
 
-                If globalproperties.DatabaseEngine = "MSSQL" Then
-                    If Convert.ToString(globalproperties.RowID) = "-1" Then
+                If globalproperties.ConnectionDatabaseEngine = "MSSQL" Then
+                    If Convert.ToString(globalproperties.AccountingGroupId) = "-1" Then
                         varDatabaseRequestMssql2008(0).Query = $"insert into dbo.ac_account(account_id, account_book, account_group, account_num, account_name, account_enable) " &
                                                    $"values('{varHash}', '{accountingproperties.AccountBookID}','{accountingproperties.AccountGroupID}','{accountingproperties.AccountNumber}','{accountingproperties.AccountName}','{accountingproperties.AccountEnabled}')"
                     Else
-                        varDatabaseRequestMssql2008(0).Query = $"update dbo.ac_account set account_num = '{accountingproperties.AccountNumber}', account_name = '{accountingproperties.AccountName}', account_enable = '{accountingproperties.AccountEnabled}' where account_id = '{globalproperties.RowID}'"
+                        varDatabaseRequestMssql2008(0).Query = $"update dbo.ac_account set account_num = '{accountingproperties.AccountNumber}', account_name = '{accountingproperties.AccountName}', account_enable = '{accountingproperties.AccountEnabled}' where account_id = '{globalproperties.AccountingGroupId}'"
                     End If
-                    varDatabaseEngineMssql2008.PushData(globalproperties.DatabaseName, varDatabaseRequestMssql2008(0).Query)
-                ElseIf globalproperties.DatabaseEngine = "MYSQL" Then
-                    If Convert.ToString(globalproperties.RowID) = "-1" Then
+                    varDatabaseEngineMssql2008.PushData(globalproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query)
+                ElseIf globalproperties.ConnectionDatabaseEngine = "MYSQL" Then
+                    If Convert.ToString(globalproperties.AccountingGroupId) = "-1" Then
                         varDatabaseRequestMysql(0).Query = $"insert into ac_account(account_id, account_book, account_group, account_num, account_name, account_enable) " &
                                                $"values('{varHash}', '{accountingproperties.AccountBookID}','{accountingproperties.AccountGroupID}','{accountingproperties.AccountNumber}','{accountingproperties.AccountName}','{accountingproperties.AccountEnabled}')"
                     Else
-                        varDatabaseRequestMysql(0).Query = $"update ac_account set account_num = '{accountingproperties.AccountNumber}', account_name = '{accountingproperties.AccountName}', account_enable = '{accountingproperties.AccountEnabled}' where account_id = '{globalproperties.RowID}'"
+                        varDatabaseRequestMysql(0).Query = $"update ac_account set account_num = '{accountingproperties.AccountNumber}', account_name = '{accountingproperties.AccountName}', account_enable = '{accountingproperties.AccountEnabled}' where account_id = '{globalproperties.AccountingGroupId}'"
                     End If
-                    varDatabaseEngineMysql.PushData(globalproperties.DatabaseName, varDatabaseRequestMysql(0).Query)
+                    varDatabaseEngineMysql.PushData(globalproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query)
                 End If
                 varSuccess = True
             Catch ex As Exception

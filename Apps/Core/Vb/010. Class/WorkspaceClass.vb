@@ -155,7 +155,7 @@ Public Class WorkspaceClass
     Private Sub EnsureOpen(Of F As {CMCv.frmStandard, New})(ByRef formcode As F, icon As Object, title As String, caption As String, Optional isModal As Boolean = False, Optional parent As Form = Nothing)
         If formcode Is Nothing OrElse Not formcode.IsHandleCreated Then
             formcode = New F()
-            Display(formcode, CType(icon, Image), My.Application.Info.AssemblyName.ToUpper, title, caption, isModal, parent)
+            Display(formcode, CType(icon, Image), varCommandCode(0).ToString.ToUpper, title, caption, isModal, parent)
         Else
             formcode.Focus()
         End If

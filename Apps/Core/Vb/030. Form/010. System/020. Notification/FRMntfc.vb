@@ -11,8 +11,8 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub GetData()
             DblBuffer(DgnNotification)
-            CMDntfc.View.Display(varDatabaseName, varDatabaseEngineE, DgnNotification, varProperties.EmployeeID)
-            UI.FRMmainframe6.USERMENU.Text = varProperties.FirstName
+            CMDntfc.View.Display(varDatabaseName, varDatabaseEngineE, DgnNotification, varDataProperties.EmployeeID)
+            UI.FRMmainframe6.USERMENU.Text = varDataProperties.EmployeeFirstName
             UI.FRMmainframe6.NotificationToolStripMenuItem.Text = "0 Notification(s)"
         End Sub
 #End Region

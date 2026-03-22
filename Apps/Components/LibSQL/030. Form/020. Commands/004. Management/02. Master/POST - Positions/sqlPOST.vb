@@ -3,49 +3,77 @@ Imports CMCv
 
 Namespace CMDpost
     Public Class View
-        'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
+        Private Shared varQuery As String = String.Empty
+        Private Shared consTableName As String = "CheckRelation"
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, grid As CMCv.UI.Control.dgn, status As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, grid As CMCv.UI.Control.dgn, status As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt)
             'ReDim varDatabaseRequestMssql2008(2)
             Dim varWhere As String = "where "
 
-            If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
-                varWhere = String.Format("")
+            If (find.XOSQLText = String.Empty) AndAlso (dataproperties.EmployeePositionIsForceRefresh) Then
+                varWhere = $""
             Else
-                varWhere += String.Format("(c.company_code Like '%{0}%') or (d.department_code like '%{0}%') or (ps.position_code like '%{0}%') or (ps.position_name like '%{0}%')", find.XOSQLText)
+                varWhere += $"(c.company_code Like '%{find.XOSQLText}%') or (d.department_code like '%{find.XOSQLText}%') or (ps.position_code like '%{find.XOSQLText}%') or (ps.position_name like '%{find.XOSQLText}%')"
             End If
 
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(0).Query = String.Format("select c.company_code, d.department_code, ps.position_id, ps.position_code,ps.position_name, ps.position_description from dbo.man_position ps " &
-                                                    "inner join dbo.man_department d on d.department_id = ps.position_departement inner join dbo.man_company c on c.company_id = d.department_company {0} " &
+                                                    "inner join dbo.man_department d on d.department_id = ps.position_department inner join dbo.man_company c on c.company_id = d.department_company {0} " &
                                                     "order by c.company_code, d.department_code, ps.position_code", varWhere)
 
                 varDatabaseRequestMssql2008(0).DataGrid = grid
                 varDatabaseRequestMssql2008(0).StatusBar = status
-                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TPositions")
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMssql2008(0).Query = String.Format("select c.company_code, d.department_code, ps.position_id, ps.position_code,ps.position_name, ps.position_description from man_position ps " &
-                                                    "inner join man_department d on d.department_id = ps.position_departement inner join man_company c on c.company_id = d.department_company {0} " &
-                                                    "order by c.company_code, d.department_code, ps.position_code", varWhere)
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TPositions")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseRequestMysql(0).Query = $"select c.company_code, d.department_code, ps.position_id, ps.position_code,ps.position_name, ps.position_description from man_position ps " &
+                                                       $"inner join man_department d on d.department_id = ps.position_department inner join man_company c on c.company_id = d.department_company {varWhere} " &
+                                                       $"order by c.company_code, d.department_code, ps.position_code"
 
                 varDatabaseRequestMysql(0).DataGrid = grid
                 varDatabaseRequestMysql(0).StatusBar = status
-                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "TPositions")
+                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TPositions")
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DeleteData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As Boolean
+        Public Shared Function CheckGranularity(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet) As Boolean
+            Dim varHasChild As Boolean = True
+            Try
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varQuery = $"SELECT now() as `timestamp`, (select count(*) from v_post_granularity_epls where employee_position = '{dataproperties.EmployeePositionId}' limit 0,1) as `relation1`;"
+                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName)
+                End If
+
+                If datasetname.Tables(consTableName).Rows.Count > 0 Then
+                    If Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation1")) > 0 Then
+                        Decision(My.Application.Info.AssemblyName.ToUpper, $"The position has {Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation1"))} related record(s) in [EPLS] Employee module.", LibApp.Ingrid.Global.PopupType.Error, "", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                        varHasChild = True
+                    Else
+                        varHasChild = False
+                    End If
+                End If
+                Return varHasChild
+            Catch ex As Exception
+                Return True
+            End Try
+        End Function
+
+        <SupportedOSPlatform("windows")>
+        Public Shared Function DeleteData(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet) As Boolean
             Dim varSuccess As Boolean = False
 
+            If CheckGranularity(dataproperties, datasetname) Then
+                Return False
+            End If
+
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(1).Query = String.Format("delete from dbo.man_position where (position_id = '{0}')", rowid)
-                    varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(1).Query = String.Format("delete from man_position where (position_id = '{0}')", rowid)
-                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    varDatabaseRequestMssql2008(1).Query = $"delete from dbo.man_position where (position_id = '{dataproperties.EmployeePositionId}')"
+                    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varDatabaseRequestMysql(1).Query = $"delete from man_position where (position_id = '{dataproperties.EmployeePositionId}')"
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
                 End If
                 varSuccess = True
             Catch ex As Exception
@@ -56,135 +84,79 @@ Namespace CMDpost
     End Class
 
     Public Class Editor
-        'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
+        Private Shared consTableName As String = "man_position"
+        Private Shared varQuery As String = String.Empty
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillCompany(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, company As CMCv.UI.Control.cbo)
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                varDatabaseRequestMssql2008(0).Query = "select c.company_id, (c.company_code+ ' - ' + c.company_name) as [company_name] from dbo.man_company c order by c.company_code"
-                varDatabaseRequestMssql2008(0).Dropdown = company
-                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TCompany")
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = "select c.company_id, (c.company_code+ ' - ' + c.company_name) as `company_name` from man_company c order by c.company_code"
-                varDatabaseRequestMysql(0).Dropdown = company
-                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "TCompany")
+        Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, company As CMCv.UI.Control.cbo)
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                varDatabaseRequestMssql2008(1).Query = "select c.company_id, (c.company_code+ ' - ' + c.company_name) as [company_name] from dbo.man_company c order by c.company_code"
+                varDatabaseRequestMssql2008(1).Dropdown = company
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1), "TCompany")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseRequestMysql(1).Query = "select c.company_id, concat(c.company_code, ' - ', c.company_name) as `company_name` from man_company c order by c.company_code"
+                varDatabaseRequestMysql(1).Dropdown = company
+                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TCompany")
             End If
             company.ValueMember = "company_id"
             company.DisplayMember = "company_name"
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillDepartement(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, department As CMCv.UI.Control.cbo, company As CMCv.UI.Control.cbo)
+        Public Shared Sub FillDepartement(dataproperties As LibApp.Ingrid.Global.Properties, department As CMCv.UI.Control.cbo, company As CMCv.UI.Control.cbo)
             Dim varDepartment As String = String.Empty
 
             If company.Items.Count <> 0 Then
                 varDepartment = company.SelectedValue.ToString
             End If
 
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                varDatabaseRequestMssql2008(0).Query = String.Format("select d.department_id, (d.department_code + ' - ' + d.department_name) as [departement_code] from dbo.man_department d where d.department_company = '{0}' " &
-                                                    "order by d.department_code", varDepartment)
-                varDatabaseRequestMssql2008(0).Dropdown = department
-                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "Departement")
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = String.Format("select d.department_id, (d.department_code + ' - ' + d.department_name) as `departement_code` from man_department d where d.department_company = '{0}' " &
-                                                    "order by d.department_code", varDepartment)
-                varDatabaseRequestMysql(0).Dropdown = department
-                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "Departement")
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                varDatabaseRequestMssql2008(1).Query = $"select d.department_id, (d.department_code + ' - ' + d.department_name) as [departement_code] from dbo.man_department d where d.department_company = '{varDepartment}' " &
+                                                       $"order by d.department_code"
+                varDatabaseRequestMssql2008(1).Dropdown = department
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1), "Departement")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseRequestMysql(1).Query = $"select d.department_id, concat(d.department_code, ' - ', d.department_name) as `departement_code` from man_department d where d.department_company = '{varDepartment}' " &
+                                                   $"order by d.department_code"
+                varDatabaseRequestMysql(1).Dropdown = department
+                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "Departement")
             End If
             department.ValueMember = "department_id"
             department.DisplayMember = "departement_code"
         End Sub
 
         <SupportedOSPlatform("Windows")>
-        Public Shared Function GetCompanyID(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
-            Dim varCompanyID As String = String.Empty
-
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                varDatabaseRequestMssql2008(0).Query = String.Format("select d.department_company from dbo.man_position ps inner join dbo.man_department d on d.department_id = ps.position_departement " &
-                                                    "where ps.position_id = '{0}'", rowid)
-                varCompanyID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = String.Format("select d.department_company from man_position ps inner join man_department d on d.department_id = ps.position_departement " &
-                                                    "where ps.position_id = '{0}'", rowid)
-                varCompanyID = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query).ToString
+        Public Shared Sub GetPositionProperties(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet)
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                varQuery = $"SELECT ps.position_id, d.department_company, ps.position_department, ps.position_code, ps.position_name, ps.position_description, ps.position_parent " &
+                           $"FROM dbo.man_position ps inner join dbo.man_department d on d.department_id = ps.position_department " &
+                           $"WHERE ps.position_id = '{dataproperties.EmployeePositionId}';"
+                datasetname = varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_position")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varQuery = $"SELECT ps.position_id, d.department_company, ps.position_department, ps.position_code, ps.position_name, ps.position_description, ps.position_parent " &
+                           $"FROM man_position ps inner join man_department d on d.department_id = ps.position_department " &
+                           $"WHERE ps.position_id = '{dataproperties.EmployeePositionId}';"
+                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_position")
             End If
-            Return varCompanyID
-        End Function
+        End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetDepartmentID(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
-            Dim varDepartementID As String = String.Empty
-
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                varDatabaseRequestMssql2008(0).Query = String.Format("select ps.position_departement from dbo.man_position ps where ps.position_id = '{0}'", rowid)
-                varDepartementID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = String.Format("select ps.position_departement from man_position ps where ps.position_id = '{0}'", rowid)
-                varDepartementID = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query).ToString
-            End If
-            Return varDepartementID
-        End Function
-
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GetPositionCode(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
-            Dim varPostitionCode As String = String.Empty
-
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                varDatabaseRequestMssql2008(0).Query = String.Format("select ps.position_code from dbo.man_position ps where ps.position_id = '{0}'", rowid)
-                varPostitionCode = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = String.Format("select ps.position_code from man_position ps where ps.position_id = '{0}'", rowid)
-                varPostitionCode = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query).ToString
-            End If
-            Return varPostitionCode
-        End Function
-
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GetPositionName(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
-            Dim varPostitionName As String = String.Empty
-
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                varDatabaseRequestMssql2008(0).Query = String.Format("select ps.position_name from dbo.man_position ps where ps.position_id = '{0}'", rowid)
-                varPostitionName = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = String.Format("select ps.position_name from man_position ps where ps.position_id = '{0}'", rowid)
-                varPostitionName = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query).ToString
-            End If
-            Return varPostitionName
-        End Function
-
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GetPositionDescription(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
-            Dim varPostitionDescription As String = String.Empty
-
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                varDatabaseRequestMssql2008(0).Query = String.Format("select ps.position_description from dbo.man_position ps where ps.position_id = '{0}'", rowid)
-                varPostitionDescription = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = String.Format("select ps.position_description from man_position ps where ps.position_id = '{0}'", rowid)
-                varPostitionDescription = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query).ToString
-            End If
-            Return varPostitionDescription
-        End Function
-
-        <SupportedOSPlatform("windows")>
-        Public Shared Function IsDuplicate(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, departement As String, positioncode As String, Optional rowid As String = "-1") As Boolean
+        Public Shared Function IsDuplicate(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varIsDuplicate As Integer = 0
-            Dim varWhere As String = "where "
+            Dim varWhere As String = "WHERE "
 
-            If rowid = "-1" Then
-                varWhere += String.Format("(ps.position_departement = '{0}') and (ps.position_code = '{1}')", departement, positioncode)
+            If dataproperties.EmployeePositionIsNew Then
+                varWhere += $"(ps.position_department = '{dataproperties.DepartmentId}') and (ps.position_code = '{dataproperties.EmployeePositionId}')"
             Else
-                varWhere += String.Format("(ps.position_departement = '{0}') and (ps.position_code = '{1}' and ps.position_id <> '{2}')", departement, positioncode, rowid)
+                varWhere += $"(ps.position_department = '{dataproperties.DepartmentId}') and (ps.position_code = '{dataproperties.EmployeePositionId}' and ps.position_id <> '{dataproperties.EmployeePositionId}')"
             End If
 
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                varDatabaseRequestMssql2008(0).Query = String.Format("select (ps.position_id) as [rows] from dbo.man_position ps {0}", varWhere)
-                varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = String.Format("select (ps.position_id) as [rows] from man_position ps {0}", varWhere)
-                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                varDatabaseRequestMssql2008(1).Query = $"select (ps.position_id) as [rows] from dbo.man_position ps {varWhere}"
+                varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Integer)
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseRequestMysql(1).Query = $"select (ps.position_id) as `rows` from man_position ps {varWhere}"
+                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Integer)
             End If
 
             If varIsDuplicate = 0 Then
@@ -195,29 +167,29 @@ Namespace CMDpost
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, department As String, code As String, name As String, description As String, Optional ByVal rowid As String = "-1") As Boolean
+        Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varSuccess As Boolean = False
             Dim varHash As String = CMCv.Security.Encrypt.MD5()
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    If rowid = "-1" Then
-                        varDatabaseRequestMssql2008(1).Query = String.Format("insert into dbo.man_position(position_id, position_departement, position_code, position_name, position_description) " &
-                                                            "values ('{0}', '{1}', '{2}', '{3}', '{4}')", varHash, department, code, name, description)
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    If dataproperties.EmployeePositionId = "-1" Then
+                        varDatabaseRequestMssql2008(1).Query = $"insert into dbo.man_position(position_id, position_department, position_code, position_name, position_description) " &
+                                                               $"values ('{varHash}', '{dataproperties.DepartmentId}', '{dataproperties.EmployeePositionCode}', '{dataproperties.EmployeePositionName}', '{dataproperties.EmployeePositionDescription}')"
                     Else
-                        varDatabaseRequestMssql2008(1).Query = String.Format("update dbo.man_position set position_departement = '{0}', position_code = '{1}', position_name = '{2}', position_description = '{3}' " &
-                                                            "where position_id = '{4}'", department, code, name, description, rowid)
+                        varDatabaseRequestMssql2008(1).Query = $"update dbo.man_position set position_department = '{dataproperties.DepartmentId}', position_code = '{dataproperties.EmployeePositionCode}', position_name = '{dataproperties.EmployeePositionName}', position_description = '{dataproperties.EmployeePositionDescription}' " &
+                                                               $"where position_id = '{dataproperties.EmployeePositionId}'"
                     End If
-                    varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    If rowid = "-1" Then
-                        varDatabaseRequestMysql(1).Query = String.Format("insert into man_position(position_id, position_departement, position_code, position_name, position_description) " &
-                                                            "values ('{0}', '{1}', '{2}', '{3}', '{4}')", varHash, department, code, name, description)
+                    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    If dataproperties.EmployeePositionId = "-1" Then
+                        varDatabaseRequestMysql(1).Query = $"insert into man_position(position_id, position_department, position_code, position_name, position_description) " &
+                                                           $"values ('{varHash}', '{dataproperties.DepartmentId}', '{dataproperties.EmployeePositionCode}', '{dataproperties.EmployeePositionName}', '{dataproperties.EmployeePositionDescription}')"
                     Else
-                        varDatabaseRequestMysql(1).Query = String.Format("update man_position set position_departement = '{0}', position_code = '{1}', position_name = '{2}', position_description = '{3}' " &
-                                                            "where position_id = '{4}'", department, code, name, description, rowid)
+                        varDatabaseRequestMysql(1).Query = $"update man_position set position_department = '{dataproperties.DepartmentId}', position_code = '{dataproperties.EmployeePositionCode}', position_name = '{dataproperties.EmployeePositionName}', position_description = '{dataproperties.EmployeePositionDescription}' " &
+                                                           $"where position_id = '{dataproperties.EmployeePositionId}'"
                     End If
-                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
                 End If
                 varSuccess = True
             Catch ex As Exception

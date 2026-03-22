@@ -57,10 +57,10 @@ Namespace UI
         ''' Get row ID on record clicked
         ''' </summary>
         Private Sub GetRowID()
-            varFormProperties.RowID = "-1"
+            varDataProperties.CustomDailyActivityAreaId = "-1"
 
             If DgnArea.RowCount > 0 Then
-                varFormProperties.RowID = DgnArea.CurrentRow.Cells("affectedarea_id").Value.ToString
+                varDataProperties.CustomDailyActivityAreaId = DgnArea.CurrentRow.Cells("affectedarea_id").Value.ToString
             End If
         End Sub
 

@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Reflection
 Imports System.Runtime.Versioning
+Imports Ingrid.UI
 
 Module Globals
 #Region "Activate Licenses"
@@ -42,9 +43,11 @@ Module Globals
     Public varVersionapplication As String
     Public varVersionnetworkapplication As Version
 
-    Public varFormProperties As New LibApp.Ingrid.Global.Properties
-    Public varProperties As New LibApp.Ingrid.Global.Properties
+    'Public varDataProperties As New LibApp.Ingrid.Global.Properties
+    Public varDataProperties As New LibApp.Ingrid.Global.Properties
     Public varAccountingProperties As New LibApp.Ingrid.Accounting.Properties
+
+    Public varDatasetIngrid As New UI.ADSglobal
 #End Region
 
     <SupportedOSPlatform("windows")>

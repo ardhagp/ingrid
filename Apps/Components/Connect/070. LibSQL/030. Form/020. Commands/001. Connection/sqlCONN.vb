@@ -57,33 +57,33 @@ Namespace CMDconn
         Public Shared Sub GetRowValue(globalproperties As LibApp.Ingrid.Global.Properties)
 
             With varDatabaseRequestSqlite(1)
-                .Query = $"select serverlist.CONNECTIONNAME from serverlist where serverlist.ID ='{globalproperties.RowID}'"
+                .Query = $"select serverlist.CONNECTIONNAME from serverlist where serverlist.ID ='{globalproperties.ConnectionId}'"
                 globalproperties.ConnectionName = varDatabaseEngineSqlite.GetValue(.Query).ToString
 
-                .Query = $"select serverlist.DATABASEENGINE from serverlist where serverlist.ID ='{globalproperties.RowID}'"
-                globalproperties.DatabaseEngine = varDatabaseEngineSqlite.GetValue(.Query).ToString
+                .Query = $"select serverlist.DATABASEENGINE from serverlist where serverlist.ID ='{globalproperties.ConnectionId}'"
+                globalproperties.ConnectionDatabaseEngine = varDatabaseEngineSqlite.GetValue(.Query).ToString
 
-                .Query = $"select serverlist.SERVERADDRESS from serverlist where serverlist.ID ='{globalproperties.RowID}'"
-                globalproperties.ServerAddress = varDatabaseEngineSqlite.GetValue(.Query).ToString
+                .Query = $"select serverlist.SERVERADDRESS from serverlist where serverlist.ID ='{globalproperties.ConnectionId}'"
+                globalproperties.ConnectionServerAddress = varDatabaseEngineSqlite.GetValue(.Query).ToString
 
-                .Query = $"select serverlist.SERVERPORT from serverlist where serverlist.ID ='{globalproperties.RowID}'"
-                globalproperties.ServerPort = Convert.ToInt32(varDatabaseEngineSqlite.GetValue(.Query))
+                .Query = $"select serverlist.SERVERPORT from serverlist where serverlist.ID ='{globalproperties.ConnectionId}'"
+                globalproperties.ConnectionServerPort = Convert.ToInt32(varDatabaseEngineSqlite.GetValue(.Query))
 
-                .Query = $"select serverlist.USERNAME from serverlist where serverlist.ID ='{globalproperties.RowID}'"
+                .Query = $"select serverlist.USERNAME from serverlist where serverlist.ID ='{globalproperties.ConnectionId}'"
                 globalproperties.Username = varDatabaseEngineSqlite.GetValue(.Query).ToString
 
-                .Query = $"select serverlist.PASSWORD from serverlist where serverlist.ID ='{globalproperties.RowID}'"
-                globalproperties.Password = CMCv.Security.Decrypt.AES(varDatabaseEngineSqlite.GetValue(.Query).ToString)
-                globalproperties.PasswordOld = globalproperties.Password
+                .Query = $"select serverlist.PASSWORD from serverlist where serverlist.ID ='{globalproperties.ConnectionId}'"
+                globalproperties.ConnectionPassword = CMCv.Security.Decrypt.Aes(varDatabaseEngineSqlite.GetValue(.Query).ToString)
+                globalproperties.ConnectionPasswordOld = globalproperties.ConnectionPassword
 
-                .Query = $"select serverlist.DBFORDATA from serverlist where serverlist.ID ='{globalproperties.RowID}'"
-                globalproperties.DatabaseName = varDatabaseEngineSqlite.GetValue(.Query).ToString
+                .Query = $"select serverlist.DBFORDATA from serverlist where serverlist.ID ='{globalproperties.ConnectionId}'"
+                globalproperties.ConnectionDatabaseName = varDatabaseEngineSqlite.GetValue(.Query).ToString
 
-                .Query = $"select serverlist.DEFAULTCONNECTION from serverlist where serverlist.ID ='{globalproperties.RowID}'"
-                globalproperties.IsDefault = Convert.ToBoolean(varDatabaseEngineSqlite.GetValue(.Query))
+                .Query = $"select serverlist.DEFAULTCONNECTION from serverlist where serverlist.ID ='{globalproperties.ConnectionId}'"
+                globalproperties.ConnectionIsDefault = Convert.ToBoolean(varDatabaseEngineSqlite.GetValue(.Query))
 
-                .Query = $"select serverlist.ISMASKED from serverlist where serverlist.ID ='{globalproperties.RowID}'"
-                globalproperties.IsMasked = Convert.ToBoolean(varDatabaseEngineSqlite.GetValue(.Query))
+                .Query = $"select serverlist.ISMASKED from serverlist where serverlist.ID ='{globalproperties.ConnectionId}'"
+                globalproperties.ConnectionIsMasked = Convert.ToBoolean(varDatabaseEngineSqlite.GetValue(.Query))
 
             End With
         End Sub
@@ -94,18 +94,18 @@ Namespace CMDconn
             Dim varIsDefaultActivate As String = ""
 
             Try
-                If (globalproperties.IsDefault) Then 'to check if isdefault is set
+                If (globalproperties.ConnectionIsDefault) Then 'to check if isdefault is set
                     varIsDefaultActivate = "update serverlist set DEFAULTCONNECTION=0;"
                 End If
 
                 With varDatabaseRequestSqlite(1)
-                    If (globalproperties.IsNew) Then
-                        .Query = varIsDefaultActivate & $"insert into serverlist(ID, CONNECTIONNAME, DATABASEENGINE, SERVERADDRESS, SERVERPORT, USERNAME, PASSWORD, DBFORDATA, DBFORFILE, DEFAULTCONNECTION, ISMASKED) values ('{globalproperties.RowID}','{globalproperties.ConnectionName}','{globalproperties.DatabaseEngine}','{globalproperties.ServerAddress}',{globalproperties.ServerPort},'{globalproperties.Username}','{Security.Encrypt.AES(globalproperties.Password)}','{globalproperties.DatabaseName}','',{globalproperties.IsDefault},{globalproperties.IsMasked})"
+                    If (globalproperties.ConnectionIsNew) Then
+                        .Query = varIsDefaultActivate & $"insert into serverlist(ID, CONNECTIONNAME, DATABASEENGINE, SERVERADDRESS, SERVERPORT, USERNAME, PASSWORD, DBFORDATA, DBFORFILE, DEFAULTCONNECTION, ISMASKED) values ('{globalproperties.ConnectionId}','{globalproperties.ConnectionName}','{globalproperties.ConnectionDatabaseEngine}','{globalproperties.ConnectionServerAddress}',{globalproperties.ConnectionServerPort},'{globalproperties.Username}','{Security.Encrypt.Aes(globalproperties.ConnectionPassword)}','{globalproperties.ConnectionDatabaseName}','',{globalproperties.ConnectionIsDefault},{globalproperties.ConnectionIsMasked})"
                     Else
-                        If Not (globalproperties.IsPasswordChanged) Then
-                            .Query = varIsDefaultActivate & $"update serverlist set CONNECTIONNAME='{globalproperties.ConnectionName}', DATABASEENGINE='{globalproperties.DatabaseEngine}', SERVERADDRESS='{globalproperties.ServerAddress}', SERVERPORT={globalproperties.ServerPort}, USERNAME='{globalproperties.Username}', DBFORDATA='{globalproperties.DatabaseName}', DEFAULTCONNECTION={globalproperties.IsDefault} where ID='{globalproperties.RowID}'"
+                        If Not (globalproperties.ConnectionIsPasswordChanged) Then
+                            .Query = varIsDefaultActivate & $"update serverlist set CONNECTIONNAME='{globalproperties.ConnectionName}', DATABASEENGINE='{globalproperties.ConnectionDatabaseEngine}', SERVERADDRESS='{globalproperties.ConnectionServerAddress}', SERVERPORT={globalproperties.ConnectionServerPort}, USERNAME='{globalproperties.Username}', DBFORDATA='{globalproperties.ConnectionDatabaseName}', DEFAULTCONNECTION={globalproperties.ConnectionIsDefault} where ID='{globalproperties.ConnectionId}'"
                         Else
-                            .Query = varIsDefaultActivate & $"update serverlist set CONNECTIONNAME='{globalproperties.ConnectionName}', DATABASEENGINE='{globalproperties.DatabaseEngine}', SERVERADDRESS='{globalproperties.ServerAddress}', SERVERPORT={globalproperties.ServerPort}, USERNAME='{globalproperties.Username}', PASSWORD='{Security.Encrypt.AES(globalproperties.Password)}', DBFORDATA='{globalproperties.DatabaseName}', DEFAULTCONNECTION={globalproperties.IsDefault} where ID='{globalproperties.RowID}'"
+                            .Query = varIsDefaultActivate & $"update serverlist set CONNECTIONNAME='{globalproperties.ConnectionName}', DATABASEENGINE='{globalproperties.ConnectionDatabaseEngine}', SERVERADDRESS='{globalproperties.ConnectionServerAddress}', SERVERPORT={globalproperties.ConnectionServerPort}, USERNAME='{globalproperties.Username}', PASSWORD='{Security.Encrypt.Aes(globalproperties.ConnectionPassword)}', DBFORDATA='{globalproperties.ConnectionDatabaseName}', DEFAULTCONNECTION={globalproperties.ConnectionIsDefault} where ID='{globalproperties.ConnectionId}'"
                         End If
                     End If
                 End With

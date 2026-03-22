@@ -45,11 +45,11 @@ Namespace UI
         Private Function GetAccountID(gridtable As CMCv.UI.Control.dgn) As String
             With gridtable
                 If .Rows.Count < 1 Then
-                    varFormProperties.RowID = "-1"
+                    varDataProperties.AccountingGroupId = "-1"
                 Else
-                    varFormProperties.RowID = .CurrentRow.Cells(0).Value.ToString
+                    varDataProperties.AccountingGroupId = .CurrentRow.Cells(0).Value.ToString
                 End If
-                Return Convert.ToString(Convert.ToString(varFormProperties.RowID))
+                Return Convert.ToString(Convert.ToString(varDataProperties.AccountingGroupId))
             End With
         End Function
 
@@ -82,9 +82,9 @@ Namespace UI
 #Region "Menu Strip Function"
         <SupportedOSPlatform("windows")>
         Private Sub CommmmsMenu_EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-            With varFormProperties
-                .RowID = "-1"
-                .IsNew = True
+            With varDataProperties
+                .AccountingGroupId = "-1"
+                .AccountingGroupIsNew = True
             End With
             Frm_acgr_Editor = New FRMacgrEditor
             Display(Frm_acgr_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new account for each accounting book and accounting group", True)
@@ -94,9 +94,9 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub CommmmsMenu_EventDataEdit() Handles Com_mms_Menu.EventDataEdit
             Call GetRowID()
-            varFormProperties.IsNew = False
-            If Convert.ToString(Convert.ToString(varFormProperties.RowID)) = "-1" Then
-                Decision(My.Application.Info.AssemblyName.toupper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            varDataProperties.AccountingGroupIsNew = False
+            If Convert.ToString(Convert.ToString(varDataProperties.AccountingGroupId)) = "-1" Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 Frm_acgr_Editor = New FRMacgrEditor
                 Display(Frm_acgr_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your account data", True)
@@ -106,12 +106,12 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub CommmmsMenu_EventDataDelete() Handles Com_mms_Menu.EventDataDelete
             Call GetRowID()
-            If Convert.ToString(Convert.ToString(varFormProperties.RowID)) = "-1" Then
-                Decision(My.Application.Info.AssemblyName.toupper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            If Convert.ToString(Convert.ToString(varDataProperties.AccountingGroupId)) = "-1" Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                varFormProperties.IsNew = False
+                varDataProperties.AccountingGroupIsNew = False
                 If Decision(My.Application.Info.AssemblyName.toupper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    If (CMDacgr.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(Convert.ToString(varFormProperties.RowID)))) Then
+                    If (CMDacgr.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(Convert.ToString(varDataProperties.AccountingGroupId)))) Then
                         Call GetDataGrid(True)
                         UI.FRMmainframe6.Ts_status.Text = "Success"
                     Else

@@ -21,10 +21,10 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnCCIN = New cmcv.ui.control.dgn(components)
+            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            DgnCCIN = New CMCv.UI.Control.dgn(components)
             company_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
             company_name = New DataGridViewTextBoxColumn()
@@ -52,7 +52,7 @@
             ' SLFPanel
             ' 
             SLFPanel.Controls.Add(DgnCCIN)
-            SLFPanel.Size = New Size(1307, 952)
+            SLFPanel.Size = New Size(1307, 946)
             SLFPanel.Controls.SetChildIndex(PnlFind, 0)
             SLFPanel.Controls.SetChildIndex(DgnCCIN, 0)
             ' 
@@ -60,43 +60,43 @@
             ' 
             DgnCCIN.AllowUserToAddRows = False
             DgnCCIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(206), CByte(219), CByte(145))
-            DgnCCIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(226), CByte(235), CByte(171))
+            DgnCCIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnCCIN.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnCCIN.BorderStyle = BorderStyle.None
             DgnCCIN.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnCCIN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle5.BackColor = Color.YellowGreen
-            DataGridViewCellStyle5.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
-            DataGridViewCellStyle5.SelectionForeColor = Color.Black
-            DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
-            DgnCCIN.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.YellowGreen
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
+            DataGridViewCellStyle2.SelectionForeColor = Color.Black
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            DgnCCIN.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             DgnCCIN.ColumnHeadersHeight = 43
             DgnCCIN.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             DgnCCIN.Columns.AddRange(New DataGridViewColumn() {company_id, company_code, company_name, company_searchterm1, company_searchterm2, company_description})
             DgnCCIN.Dock = DockStyle.Fill
             DgnCCIN.EnableHeadersVisualStyles = False
-            DgnCCIN.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+            DgnCCIN.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
             DgnCCIN.Location = New Point(0, 88)
             DgnCCIN.Margin = New Padding(6, 5, 6, 5)
             DgnCCIN.MultiSelect = False
             DgnCCIN.Name = "DgnCCIN"
             DgnCCIN.ReadOnly = True
             DgnCCIN.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle6.BackColor = Color.YellowGreen
-            DataGridViewCellStyle6.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
-            DataGridViewCellStyle6.SelectionForeColor = Color.Black
-            DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-            DgnCCIN.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle3.BackColor = Color.YellowGreen
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
+            DataGridViewCellStyle3.SelectionForeColor = Color.Black
+            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+            DgnCCIN.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
             DgnCCIN.RowHeadersWidth = 62
             DgnCCIN.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-            DgnCCIN.Size = New Size(1307, 864)
+            DgnCCIN.Size = New Size(1307, 858)
             DgnCCIN.StandardTab = True
             DgnCCIN.TabIndex = 0
             DgnCCIN.XOGroupFirstRows = False
@@ -105,7 +105,7 @@
             ' company_id
             ' 
             company_id.DataPropertyName = "company_id"
-            company_id.HeaderText = "Company ID"
+            company_id.HeaderText = "COMPANY ID"
             company_id.MinimumWidth = 8
             company_id.Name = "company_id"
             company_id.ReadOnly = True
@@ -115,53 +115,53 @@
             ' 
             ' company_code
             ' 
-            company_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+            company_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             company_code.DataPropertyName = "company_code"
-            company_code.HeaderText = "Company Code"
+            company_code.HeaderText = "COMPANY CODE"
             company_code.MinimumWidth = 8
             company_code.Name = "company_code"
             company_code.ReadOnly = True
             company_code.SortMode = DataGridViewColumnSortMode.Programmatic
-            company_code.Width = 8
+            company_code.Width = 160
             ' 
             ' company_name
             ' 
             company_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             company_name.DataPropertyName = "company_name"
-            company_name.HeaderText = "Company Name"
+            company_name.HeaderText = "COMPANY NAME"
             company_name.MinimumWidth = 8
             company_name.Name = "company_name"
             company_name.ReadOnly = True
             company_name.SortMode = DataGridViewColumnSortMode.Programmatic
-            company_name.Width = 156
+            company_name.Width = 160
             ' 
             ' company_searchterm1
             ' 
-            company_searchterm1.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader
+            company_searchterm1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             company_searchterm1.DataPropertyName = "company_searchterm1"
-            company_searchterm1.HeaderText = "Company Search Term 1"
+            company_searchterm1.HeaderText = "SEARCH TERM 1"
             company_searchterm1.MinimumWidth = 8
             company_searchterm1.Name = "company_searchterm1"
             company_searchterm1.ReadOnly = True
             company_searchterm1.SortMode = DataGridViewColumnSortMode.Programmatic
-            company_searchterm1.Width = 8
+            company_searchterm1.Width = 144
             ' 
             ' company_searchterm2
             ' 
-            company_searchterm2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+            company_searchterm2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             company_searchterm2.DataPropertyName = "company_searchterm2"
-            company_searchterm2.HeaderText = "Company Search Term 2"
+            company_searchterm2.HeaderText = "SEARCH TERM 2"
             company_searchterm2.MinimumWidth = 8
             company_searchterm2.Name = "company_searchterm2"
             company_searchterm2.ReadOnly = True
             company_searchterm2.SortMode = DataGridViewColumnSortMode.Programmatic
-            company_searchterm2.Width = 8
+            company_searchterm2.Width = 144
             ' 
             ' company_description
             ' 
             company_description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             company_description.DataPropertyName = "company_description"
-            company_description.HeaderText = "Description"
+            company_description.HeaderText = "DESCRIPTION"
             company_description.MinimumWidth = 8
             company_description.Name = "company_description"
             company_description.ReadOnly = True
@@ -169,11 +169,16 @@
             ' 
             ' FRMccin
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1307, 1078)
-            KeyPreview = True
+            ControlBox = False
             Margin = New Padding(10, 5, 10, 5)
+            MaximizeBox = False
+            MinimizeBox = False
             Name = "FRMccin"
+            ShowIcon = False
+            ShowInTaskbar = False
+            WindowState = FormWindowState.Maximized
             PnlFind.ResumeLayout(False)
             PnlFind.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

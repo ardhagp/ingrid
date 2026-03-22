@@ -8,9 +8,9 @@ Namespace UI
 
 #Region "Subs Collections"
         Private Sub GetRowID()
-            varFormProperties.RowID = "-1"
+            varDataProperties.EmployeeId = "-1"
             If DgnAddinEmployee.RowCount > 0 Then
-                varFormProperties.RowID = DgnAddinEmployee.CurrentRow.Cells("employee_id").Value.ToString
+                varDataProperties.EmployeeId = DgnAddinEmployee.CurrentRow.Cells("employee_id").Value.ToString
             End If
         End Sub
 
@@ -31,9 +31,9 @@ Namespace UI
                 Decision(My.Application.Info.AssemblyName.toupper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 With DgnAddinEmployee.CurrentRow
-                    varFormProperties.Field01 = .Cells("employee_id").Value
-                    varFormProperties.Field02 = .Cells("employee_number").Value
-                    varFormProperties.Field03 = .Cells("employee_fullname").Value
+                    varDataProperties.Field01 = .Cells("employee_id").Value
+                    varDataProperties.Field02 = .Cells("employee_number").Value
+                    varDataProperties.Field03 = .Cells("employee_fullname").Value
                 End With
                 RaiseEvent EventRecordSelected()
                 Me.Close()

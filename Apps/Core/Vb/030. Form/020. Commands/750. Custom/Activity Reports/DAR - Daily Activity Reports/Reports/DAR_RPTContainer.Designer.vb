@@ -23,7 +23,7 @@
             components = New ComponentModel.Container()
             Rv_ = New Microsoft.Reporting.WinForms.ReportViewer()
             EmployeeactivityBindingSource = New BindingSource(components)
-            DAR_RDS = New UI.DAR_RDS()
+            DAR_RDS = New DAR_RDS()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
@@ -35,21 +35,53 @@
             ' Rv_
             ' 
             Rv_.Dock = DockStyle.Fill
+            Rv_.DocumentMapWidth = 1
             Rv_.Location = New Point(0, 0)
-            Rv_.Margin = New Padding(4, 3, 4, 3)
+            Rv_.Margin = New Padding(9, 8, 9, 8)
             Rv_.Name = "Rv_"
             Rv_.ServerReport.BearerToken = Nothing
-            Rv_.Size = New Size(915, 506)
+            Rv_.Size = New Size(0, 0)
             Rv_.TabIndex = 996
             ' 
             ' PnlBottomButton
             ' 
-            PnlBottomButton.Location = New Point(0, 506)
+            PnlBottomButton.Margin = New Padding(10, 17, 10, 17)
+            PnlBottomButton.Size = New Size(0, 162)
+            ' 
+            ' SLFLogo
+            ' 
+            SLFLogo.Location = New Point(10, 17)
+            SLFLogo.Margin = New Padding(16, 33, 16, 33)
+            SLFLogo.Size = New Size(104, 142)
+            ' 
+            ' SLFSubNamaForm
+            ' 
+            SLFSubNamaForm.Location = New Point(167, 97)
+            SLFSubNamaForm.Margin = New Padding(16, 0, 16, 0)
+            ' 
+            ' SLFNamaForm
+            ' 
+            SLFNamaForm.Location = New Point(126, 12)
+            SLFNamaForm.Margin = New Padding(16, 0, 16, 0)
+            ' 
+            ' pnl_
+            ' 
+            pnl_.Margin = New Padding(16, 33, 16, 33)
+            pnl_.Size = New Size(1307, 196)
             ' 
             ' SLFPanel
             ' 
+            SLFPanel.Location = New Point(0, 172)
+            SLFPanel.Margin = New Padding(16, 33, 16, 33)
+            SLFPanel.Size = New Size(0, 162)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(Rv_, 0)
+            ' 
+            ' SLFBackground
+            ' 
+            SLFBackground.Location = New Point(4, 10)
+            SLFBackground.Margin = New Padding(16, 33, 16, 33)
+            SLFBackground.Size = New Size(114, 153)
             ' 
             ' EmployeeactivityBindingSource
             ' 
@@ -64,9 +96,9 @@
             ' 
             ' DAR_RPTContainer
             ' 
-            AutoScaleDimensions = New SizeF(7.0F, 15.0F)
-            ClientSize = New Size(915, 647)
-            Margin = New Padding(8, 3, 8, 3)
+            AutoScaleDimensions = New SizeF(10F, 25F)
+            ClientSize = New Size(1307, 1078)
+            Margin = New Padding(11, 5, 11, 5)
             Name = "DAR_RPTContainer"
             WindowState = FormWindowState.Maximized
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
@@ -82,5 +114,6 @@
 
         Friend WithEvents EmployeeactivityBindingSource As BindingSource
         Friend WithEvents DAR_RDS As UI.DAR_RDS
+        Friend WithEvents Rv_ As Microsoft.Reporting.WinForms.ReportViewer
     End Class
 End Namespace
