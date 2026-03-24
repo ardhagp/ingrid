@@ -18,7 +18,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub GetData()
-            CMDuac.Editor.DisplayData(varDatabaseName, varDatabaseEngineE, DgnUACe, Convert.ToString(varFormProperties.RowID))
+            CMDuac.Editor.DisplayData(varDatabaseName, varDatabaseEngineE, DgnUACe, Convert.ToString(varDataProperties.UserAccessId))
         End Sub
 
         Private Sub CheckAllInput()
@@ -31,8 +31,8 @@ Namespace UI
 #End Region
 
         Private Sub FRMemployeeAddin_RecordSelected() Handles Frm_employee_Addin.EventRecordSelected
-            TxtEmployeeNumber.Text = IIf(IsDBNull(varFormProperties.Field02), "", varFormProperties.Field02).ToString
-            TxtEmployeeFullName.Text = varFormProperties.Field03.ToString
+            TxtEmployeeNumber.Text = IIf(IsDBNull(varDataProperties.Field02), "", varDataProperties.Field02).ToString
+            TxtEmployeeFullName.Text = varDataProperties.Field03.ToString
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -42,7 +42,7 @@ Namespace UI
         End Sub
 
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
-            varFormProperties.IsChangePasswordForm = False
+            varDataProperties.UserAccessIsChangePasswordForm = False
             Me.Close()
         End Sub
 
@@ -62,7 +62,7 @@ Namespace UI
 
             DgnUACe.XOGETNewColor()
 
-            If (varFormProperties.IsChangePasswordForm) Then
+            If (varDataProperties.UserAccessIsChangePasswordForm) Then
                 TbctlAccess.Visible = False
                 ProgressBar1.Visible = False
                 TxtEmployeeNumber.Width = 274
@@ -71,27 +71,27 @@ Namespace UI
                 Me.Width = 451
             End If
 
-            If (varFormProperties.IsNew) Then
+            If (varDataProperties.UserAccessIsNew) Then
                 ChkAddNew.Enabled = True
                 ChkAddNew.Visible = True
             Else
                 ChkAddNew.Enabled = False
                 ChkAddNew.Visible = False
                 BtnBrowseEmployee.Visible = False
-                TxtEmployeeNumber.Text = CMDuac.Editor.GetEmployeeNumber(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                TxtEmployeeFullName.Text = CMDuac.Editor.GetEmployeeFullName(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                TxtUsername.Text = CMDuac.Editor.GetUsernameByUserID(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                TxtUsername.Text = CMDuac.Editor.GetUsernameByUserID(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                varFormProperties.Password = CMDuac.Editor.GetPassword(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                ChkLocked.Checked = CMDuac.Editor.GetLocked(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                varIsAdminstrator = CMDuac.Editor.GetAdministrator(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
-                ChkAdministrator.Checked = CMDuac.Editor.GetAdministrator(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                If (varIsAdminstrator) AndAlso Not (varFormProperties.IsChangePasswordForm) Then
+                TxtEmployeeNumber.Text = CMDuac.Editor.GetEmployeeNumber(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.UserAccessId))
+                TxtEmployeeFullName.Text = CMDuac.Editor.GetEmployeeFullName(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.UserAccessId))
+                TxtUsername.Text = CMDuac.Editor.GetUsernameByUserID(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.UserAccessId))
+                TxtUsername.Text = CMDuac.Editor.GetUsernameByUserID(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.UserAccessId))
+                varDataProperties.UserAccessPassword = CMDuac.Editor.GetPassword(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.UserAccessId))
+                ChkLocked.Checked = CMDuac.Editor.GetLocked(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.UserAccessId))
+                varIsAdminstrator = CMDuac.Editor.GetAdministrator(varDatabaseName, varDatabaseEngineE, varDataProperties.UserAccessId)
+                ChkAdministrator.Checked = CMDuac.Editor.GetAdministrator(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.UserAccessId))
+                If (varIsAdminstrator) AndAlso Not (varDataProperties.UserAccessIsChangePasswordForm) Then
                     ChkAdministrator.Visible = True
                 Else
                     ChkAdministrator.Visible = False
                 End If
-                TxtPassword.Text = varFormProperties.Password
+                TxtPassword.Text = varDataProperties.UserAccessPassword
             End If
             TxtPassword.XOPwdLengthMin = varMinPasswordLength
             Call GetData()
@@ -101,26 +101,26 @@ Namespace UI
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Call CheckAllInput()
 
-            If ((varFormProperties.IsNew) AndAlso (varFormProperties.Field01.ToString Is String.Empty)) Then
-                Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "Make sure you have Employee data selected.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            If ((varDataProperties.UserAccessIsNew) AndAlso (varDataProperties.Field01.ToString Is String.Empty)) Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Make sure you have Employee data selected.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf (TxtUsername.XOSQLText = String.Empty) OrElse (TxtPassword.XOSQLText = String.Empty) Then
-                Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "Make sure you have Username and Password properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Make sure you have Username and Password properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf ((varIsPWDChange) AndAlso (TxtPassword.TextLength < varMinPasswordLength)) Then
-                Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "Make sure your Password meets the minimum criteria.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Make sure your Password meets the minimum criteria.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf ((varFormProperties.IsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtUsername.XOSQLText))) Then
-                Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "This Username already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            ElseIf ((varDataProperties.UserAccessIsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDatabaseName, varDatabaseEngineE, TxtUsername.XOSQLText))) Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "This Username already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf (Not (varFormProperties.IsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtUsername.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
+            ElseIf (Not (varDataProperties.UserAccessIsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDatabaseName, varDatabaseEngineE, TxtUsername.XOSQLText, Convert.ToString(varDataProperties.UserAccessID)))) Then
                 Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "This Username already used by another employee.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call CheckPasswordChange()
 
-            If (CMDuac.Editor.PushData(varDatabaseName, varDatabaseEngineE, varFormProperties.Field01.ToString, TxtUsername.XOSQLText, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, Convert.ToString(varFormProperties.RowID), varFormProperties.Hash, varIsPWDChange)) Then
+            If (CMDuac.Editor.PushData(varDatabaseName, varDatabaseEngineE, varDataProperties.Field01.ToString, TxtUsername.XOSQLText, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, Convert.ToString(varDataProperties.UserAccessId), varDataProperties.UserAccessHash, varIsPWDChange)) Then
                 RaiseEvent EventRecordSaved()
                 UI.FRMmainframe6.Ts_status.Text = "Success"
             Else
@@ -129,7 +129,7 @@ Namespace UI
             End If
 
             If (ChkAddNew.Checked) Then
-                varFormProperties.Hash = CMCv.Security.Encrypt.MD5()
+                varDataProperties.UserAccessHash = CMCv.Security.Encrypt.MD5()
                 TxtEmployeeNumber.Clear()
                 TxtEmployeeFullName.Clear()
                 TxtUsername.Clear()
@@ -140,7 +140,7 @@ Namespace UI
         End Sub
 
         Private Sub CheckPasswordChange()
-            If TxtPassword.XOSQLText = varFormProperties.Password Then
+            If TxtPassword.XOSQLText = varDataProperties.UserAccessPassword Then
                 varIsPWDChange = False
             Else
                 varIsPWDChange = True

@@ -6,6 +6,7 @@ Namespace UI
         Public Event EventRecordSaved()
 
         Public varIsFirstLoad As Boolean
+        Private Shared consTableName As String = "man_position"
 #End Region
 
 #Region "Subs Collections"
@@ -25,21 +26,24 @@ Namespace UI
         Private Sub FRMpostEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             '#Disable Warning BC42025 ' Access of shared member, constant member, enum member or nested type through an instance
             varIsFirstLoad = True
-            CMDpost.Editor.FillCompany(varDatabaseName, varDatabaseEngineE, CboCompany)
-            CMDpost.Editor.FillDepartement(varDatabaseName, varDatabaseEngineE, CboDepartement, CboCompany)
-
-            If (varFormProperties.IsNew) Then
+            If (varDataProperties.EmployeePositionIsNew) Then
                 ChkAddNew.Visible = True
+                CMDpost.Editor.FillCompany(varDataProperties, CboCompany)
+                CMDpost.Editor.FillDepartement(varDataProperties, CboDepartement, CboCompany)
             Else
                 ChkAddNew.Visible = False
-                CboCompany.SelectedValue = CMDpost.Editor.GetCompanyID(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                CMDpost.Editor.FillDepartement(varDatabaseName, varDatabaseEngineE, CboDepartement, CboCompany)
-                CboDepartement.SelectedValue = CMDpost.Editor.GetDepartmentID(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                TxtPositionCode.Text = CMDpost.Editor.GetPositionCode(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                TxtPositionName.Text = CMDpost.Editor.GetPositionName(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                TxtPositionDescription.Text = CMDpost.Editor.GetPositionDescription(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
+                CMDpost.Editor.GetPositionProperties(varDataProperties, varDatasetIngrid)
+                If varDatasetIngrid.Tables(consTableName).Rows.Count > 0 Then
+                    With varDatasetIngrid.Tables(consTableName).Rows(0)
+                        CboCompany.SelectedValue = .Item("department_company").ToString
+                        CMDpost.Editor.FillDepartement(varDataProperties, CboDepartement, CboCompany)
+                        CboDepartement.SelectedValue = .Item("position_department").ToString
+                        TxtPositionCode.Text = .Item("position_code").ToString
+                        TxtPositionName.Text = .Item("position_name").ToString
+                        TxtPositionDescription.Text = .Item("position_description").ToString
+                    End With
+                End If
             End If
-
             varIsFirstLoad = False
             '#Enable Warning BC42025 ' Access of shared member, constant member, enum member or nested type through an instance
         End Sub
@@ -51,24 +55,30 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub CboCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
             If Not (varIsFirstLoad) Then
-                CMDpost.Editor.FillDepartement(varDatabaseName, varDatabaseEngineE, CboDepartement, CboCompany)
+                CMDpost.Editor.FillDepartement(varDataProperties, CboDepartement, CboCompany)
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-            If (CboDepartement.Items.Count = 0) OrElse (TxtPositionCode.XOSQLText = String.Empty) OrElse (TxtPositionName.XOSQLText = String.Empty) Then
-                Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "Make sure you have Departement selected, Postition Code and Position Description are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            varDataProperties.CompanyId = CboCompany.SelectedValue.ToString
+            varDataProperties.DepartmentId = CboDepartement.SelectedValue.ToString
+            varDataProperties.EmployeePositionCode = TxtPositionCode.XOSQLText
+            varDataProperties.EmployeePositionName = TxtPositionName.XOSQLText
+            varDataProperties.EmployeePositionDescription = TxtPositionDescription.XOSQLText
+
+            If (CboDepartement.Items.Count = 0) OrElse (varDataProperties.EmployeePositionCode = String.Empty) OrElse (varDataProperties.EmployeePositionName = String.Empty) Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Make sure you have Department selected, Postition Code and Position Description are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf ((varFormProperties.IsNew) AndAlso (CMDpost.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
-                Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            ElseIf ((varDataProperties.EmployeePositionIsNew) AndAlso (CMDpost.Editor.IsDuplicate(varDataProperties))) Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf (Not (varFormProperties.IsNew) AndAlso (CMDpost.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
+            ElseIf (Not (varDataProperties.EmployeePositionIsNew) AndAlso (CMDpost.Editor.IsDuplicate(varDataProperties))) Then
                 Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
-            If (CMDpost.Editor.PushData(varDatabaseName, varDatabaseEngineE, CboDepartement.SelectedValue.ToString, TxtPositionCode.XOSQLText, TxtPositionName.XOSQLText, TxtPositionDescription.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
+            If (CMDpost.Editor.PushData(varDataProperties)) Then
                 UI.FRMmainframe6.Ts_status.Text = "Success"
                 RaiseEvent EventRecordSaved()
             Else

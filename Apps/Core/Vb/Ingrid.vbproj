@@ -359,6 +359,11 @@
     <Compile Update="030. Form\030. Tools\999. First Guide\FRMfirstguide.Designer.vb">
       <DependentUpon>FRMfirstguide.vb</DependentUpon>
     </Compile>
+    <Compile Update="901. Resource\Dataset\ADSglobal.Designer.vb">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ADSglobal.xsd</DependentUpon>
+    </Compile>
     <Compile Update="902. Settings\General.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -395,6 +400,10 @@
     </None>
     <None Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.xss">
       <DependentUpon>DAR_RDS.xsd</DependentUpon>
+    </None>
+    <None Update="901. Resource\Dataset\ADSglobal.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ADSglobal.Designer.vb</LastGenOutput>
     </None>
     <None Update="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

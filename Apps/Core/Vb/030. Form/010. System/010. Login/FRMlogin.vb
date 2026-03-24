@@ -38,9 +38,9 @@ Namespace UI
                 Return
             End If
 
-            varProperties.UserID = CMDuac.Login.GetUserID(varDatabaseName, varDatabaseEngineE, TxtUsername.XOSQLText, TxtPassword.XOSQLText, varProperties.FirstName)
+            varDataProperties.UserID = CMDuac.Login.GetUserID(varDatabaseName, varDatabaseEngineE, TxtUsername.XOSQLText, TxtPassword.XOSQLText, varDataProperties.EmployeeFirstName)
 
-            If varProperties.UserID = String.Empty Then
+            If varDataProperties.UserID = String.Empty Then
                 RaiseEvent EventLoginFailed()
                 varWrongLogin += 1
                 SLFStatus.Items(0).Text = "Login Failed"
@@ -68,20 +68,20 @@ Namespace UI
                     tmr_control.Enabled = True
                 End If
             Else
-                With varProperties
-                    .EmployeeID = CMDuac.Login.GetEmployeeID(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
-                    .FirstName = CMDuac.Login.GetFirstName(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
-                    .EmployeeNumber = CMDuac.Login.GetEmployeeNumber(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
-                    .Gender = CMDuac.Login.GetGender(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
-                    .EmployeePosition = CMDuac.Login.GetPosition(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
-                    .IsAdministrator = CMDuac.Login.GetAdministrator(varDatabaseName, varDatabaseEngineE, varProperties.UserID)
+                With varDataProperties
+                    .EmployeeID = CMDuac.Login.GetEmployeeID(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID)
+                    .EmployeeFirstName = CMDuac.Login.GetFirstName(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID)
+                    .EmployeeNumber = CMDuac.Login.GetEmployeeNumber(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID)
+                    .EmployeeGender = CMDuac.Login.GetGender(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID)
+                    .EmployeePositionName = CMDuac.Login.GetPosition(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID)
+                    .IsAdministrator = CMDuac.Login.GetAdministrator(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID)
                 End With
 
-                varLogUser.LoginSuccess(varDatabaseName, varDatabaseEngineE, varProperties.EmployeeID)
+                varLogUser.LoginSuccess(varDatabaseName, varDatabaseEngineE, varDataProperties.EmployeeID)
 
                 Dim clsLog As New Ladybug.Log.Events
                 With proLog
-                    .Message = varProperties.FirstName & " is login."
+                    .Message = varDataProperties.EmployeeFirstName & " is login."
                     .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Information
                     .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
                     .ResumeNext = True

@@ -1,6 +1,8 @@
-﻿Imports System.Windows.Forms
-Imports System.Data
+﻿Imports System.Data
+Imports System.Globalization
 Imports System.Runtime.Versioning
+Imports System.Windows.Forms
+Imports MySql.Data
 
 Namespace Database.Engine
     Public Class SQLiteV3
@@ -154,21 +156,21 @@ Namespace Database.Engine
 
                 With varDataReader(1)
                     If .HasRows Then
-                        databaseproperties.ServerAddress = .GetString(0)
-                        databaseproperties.Username = .GetString(1)
-                        databaseproperties.Password = CMCv.Security.Decrypt.AES(.GetString(2))
-                        databaseproperties.ServerPort = CType(.GetValue(3), Integer)
-                        databaseproperties.DatabaseName = .GetString(4)
-                        databaseproperties.FileStorage = .GetString(5)
-                        databaseproperties.DatabaseEngine = .GetString(6)
+                        databaseproperties.ConnectionServerAddress = .GetString(0)
+                        databaseproperties.ConnectionUsername = .GetString(1)
+                        databaseproperties.ConnectionPassword = CMCv.Security.Decrypt.Aes(.GetString(2))
+                        databaseproperties.ConnectionServerPort = CType(.GetValue(3), Integer)
+                        databaseproperties.ConnectionDatabaseName = .GetString(4)
+                        databaseproperties.ConnectionFileStorage = .GetString(5)
+                        databaseproperties.ConnectionDatabaseEngine = .GetString(6)
                     Else
-                        databaseproperties.ServerAddress = String.Empty
-                        databaseproperties.Username = String.Empty
-                        databaseproperties.Password = String.Empty
-                        databaseproperties.ServerPort = 0
-                        databaseproperties.DatabaseName = String.Empty
-                        databaseproperties.FileStorage = String.Empty
-                        databaseproperties.DatabaseEngine = String.Empty
+                        databaseproperties.ConnectionServerAddress = String.Empty
+                        databaseproperties.ConnectionUsername = String.Empty
+                        databaseproperties.ConnectionPassword = String.Empty
+                        databaseproperties.ConnectionServerPort = 0
+                        databaseproperties.ConnectionDatabaseName = String.Empty
+                        databaseproperties.ConnectionFileStorage = String.Empty
+                        databaseproperties.ConnectionDatabaseEngine = String.Empty
                     End If
                 End With
 
@@ -384,6 +386,48 @@ Namespace Database.Engine
                 clsLog = Nothing
             End Try
         End Sub
+
+        <SupportedOSPlatform("windows")>
+        Public Function FillDataSet(query As String, datasetname As DataSet, tablename As String) As DataSet
+            GC.Collect()
+
+            Try
+                'If Not varConnection(1).Ping Then
+                '    varConnection(1).Close()
+                '    varConnection(1).Open()
+                'End If
+
+                varCommand(1) = New SQLite.SQLiteCommand With {
+                .Connection = varConnection(1),
+                .CommandType = CommandType.Text}
+
+                varCommand(1).CommandText = String.Format(CultureInfo.CurrentCulture, query)
+
+                Using varDataAdapter = New SQLite.SQLiteDataAdapter(varCommand(1))
+                    varDataAdapter.Fill(datasetname, tablename)
+                End Using
+            Catch ex As Exception
+                datasetname = Nothing
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLite.vb"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Query = query
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+            End Try
+        End Function
 
         <SupportedOSPlatform("windows")>
         Public Sub PushData(query As String)

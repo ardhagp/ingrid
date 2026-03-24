@@ -10,17 +10,18 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnPLNT)
-            CMDplnt.View.DisplayData(varDatabaseName, varDatabaseEngineE, DgnPLNT, SLFStatus, TxtFind, forcerefresh)
+            varDataProperties.PlantIsForceRefresh = forcerefresh
+            CMDplnt.View.DisplayData(varDataProperties, DgnPLNT, SLFStatus, TxtFind)
         End Sub
 
         ''' <summary>
         ''' Get row ID on record clicked
         ''' </summary>
         Private Sub GetRowID()
-            varFormProperties.RowID = "-1"
-
-            If DgnPLNT.RowCount > 0 Then
-                varFormProperties.RowID = DgnPLNT.CurrentRow.Cells("plant_id").Value.ToString
+            If DgnPLNT.RowCount = 0 Then
+                varDataProperties.PlantId = "-1"
+            Else
+                varDataProperties.PlantId = DgnPLNT.CurrentRow.Cells("plant_id").Value.ToString
             End If
         End Sub
 
@@ -32,13 +33,13 @@ Namespace UI
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub CommmsMenu_EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-            If Not varUserAccess.User(varDatabaseName, varDatabaseEngineE, "PLNT", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add) Then
+            If Not varUserAccess.User(varDatabaseName, varDatabaseEngineE, "PLNT", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
-            varFormProperties.IsNew = True
-            varFormProperties.RowID = "-1"
+            varDataProperties.PlantIsNew = True
+            varDataProperties.PlantId = "-1"
             Frm_plnt_Editor = New FRMplntEditor
             Display(Frm_plnt_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new plant", True)
             UI.FRMmainframe6.Ts_status.Text = String.Empty
@@ -46,40 +47,34 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub CommmsMenu_EventDataEdit() Handles Com_mms_Menu.EventDataEdit
-            If Not varUserAccess.User(varDatabaseName, varDatabaseEngineE, "PLNT", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit) Then
+            If Not varUserAccess.User(varDatabaseName, varDatabaseEngineE, "PLNT", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
-
             Call GetRowID()
-
-            varFormProperties.IsNew = False
-
-            If Convert.ToString(varFormProperties.RowID) = "-1" Then
+            If varDataProperties.PlantId = "-1" Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 Frm_plnt_Editor = New FRMplntEditor
                 Display(Frm_plnt_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update plant data", True)
             End If
-
             UI.FRMmainframe6.Ts_status.Text = String.Empty
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub CommmsMenu_EventDataDelete() Handles Com_mms_Menu.EventDataDelete
-            If Not varUserAccess.User(varDatabaseName, varDatabaseEngineE, "PLNT", varProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            If Not varUserAccess.User(varDatabaseName, varDatabaseEngineE, "PLNT", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete) Then
                 Return
             End If
 
             Call GetRowID()
 
-            If Convert.ToString(varFormProperties.RowID) = "-1" Then
+            If varDataProperties.PlantId = "-1" Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                varFormProperties.IsNew = False
+                varDataProperties.PlantIsNew = False
                 If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    If CMDplnt.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID)) Then
+                    If CMDplnt.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.PlantId)) Then
                         Call GetData(True)
                         UI.FRMmainframe6.Ts_status.Text = "Success"
                     Else

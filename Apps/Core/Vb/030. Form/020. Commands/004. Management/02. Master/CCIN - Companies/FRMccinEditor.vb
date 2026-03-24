@@ -1,10 +1,12 @@
 ﻿Imports System.Runtime.Versioning
+Imports Syncfusion.Windows.Forms
 
 Namespace UI
     Public Class FRMccinEditor
 
 #Region "Declaration"
         Public Event EventRecordSaved()
+        Const consCompany As String = "man_company"
 #End Region
 
 #Region "Subs Collections"
@@ -23,17 +25,23 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub FRMccinEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            If (varFormProperties.IsNew) Then
+            If (varDataProperties.CompanyIsNew) Then
+                varDataProperties.CompanyId = "-1"
                 ChkAddNew.Visible = True
                 ChkAddNew.Checked = False
             Else
-                TxtCode.Text = CMDccin.Editor.GetCompanyCode(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                TxtName.Text = CMDccin.Editor.GetCompanyName(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                TxtSearchTerm1.Text = CMDccin.Editor.GetSearchTerm1(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                TxtSearchTerm2.Text = CMDccin.Editor.GetSearchTerm2(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                TxtDescription.Text = CMDccin.Editor.GetDescription(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
                 ChkAddNew.Visible = False
                 ChkAddNew.Checked = False
+                CMDccin.Editor.GetCompanyProperties(varDataProperties, varDatasetIngrid)
+                If varDatasetIngrid.Tables(consCompany).Rows.Count > 0 Then
+                    With varDatasetIngrid.Tables(consCompany).Rows(0)
+                        TxtCode.Text = .Item("company_code").ToString
+                        TxtName.Text = .Item("company_name").ToString
+                        TxtSearchTerm1.Text = .Item("company_searchterm1").ToString
+                        TxtSearchTerm2.Text = .Item("company_searchterm2").ToString
+                        TxtDescription.Text = .Item("company_description").ToString
+                    End With
+                End If
             End If
         End Sub
 #End Region
@@ -45,18 +53,27 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-            If (TxtCode.XOSQLText = String.Empty) OrElse (TxtName.XOSQLText = String.Empty) Then
-                Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "Company Code & Company Name properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            Call CheckAllInput()
+            With varDataProperties
+                .CompanyCode = TxtCode.XOSQLText
+                .CompanyName = TxtName.XOSQLText
+                .CompanySearchTerm1 = TxtSearchTerm1.XOSQLText
+                .CompanySearchTerm2 = TxtSearchTerm2.XOSQLText
+                .CompanyDescription = TxtDescription.XOSQLText
+            End With
+
+            If (varDataProperties.CompanyCode = String.Empty) OrElse (varDataProperties.CompanyName = String.Empty) Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Ensure that the Company Code and Company Name fields are properly filled in.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf ((varFormProperties.IsNew) AndAlso (CMDccin.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtCode.XOSQLText))) Then
-                Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "This Company Code already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            ElseIf ((varDataProperties.CompanyIsNew) AndAlso (CMDccin.Editor.IsDuplicate(varDataProperties))) Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Company Code is already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf (Not (varFormProperties.IsNew) AndAlso (CMDccin.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtCode.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
-                Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "This Company Code already used by another company.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            ElseIf (Not (varDataProperties.CompanyIsNew) AndAlso (CMDccin.Editor.IsDuplicate(varDataProperties))) Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "The Company Code cannot be used because it is already assigned to another company.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
-            If (CMDccin.Editor.PushData(varDatabaseName, varDatabaseEngineE, TxtCode.XOSQLText, TxtName.XOSQLText, TxtSearchTerm1.XOSQLText, TxtSearchTerm2.XOSQLText, TxtDescription.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
+            If (CMDccin.Editor.PushData(varDataProperties)) Then
                 UI.FRMmainframe6.Ts_status.Text = "Success"
                 RaiseEvent EventRecordSaved()
             Else
@@ -64,13 +81,14 @@ Namespace UI
                 Return
             End If
 
-            TxtCode.Text = String.Empty
-            TxtName.Text = String.Empty
-            TxtSearchTerm1.Text = String.Empty
-            TxtSearchTerm2.Text = String.Empty
-            TxtDescription.Text = String.Empty
-
-            If Not (ChkAddNew.Checked) Then
+            If ChkAddNew.Checked Then
+                TxtCode.Clear()
+                TxtName.Clear()
+                TxtSearchTerm1.Clear()
+                TxtSearchTerm2.Clear()
+                TxtDescription.Clear()
+                TxtCode.Focus()
+            Else
                 Me.Close()
             End If
         End Sub

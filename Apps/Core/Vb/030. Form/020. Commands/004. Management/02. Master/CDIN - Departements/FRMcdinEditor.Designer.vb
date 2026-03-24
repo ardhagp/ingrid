@@ -44,7 +44,7 @@
             PnlBottomButton.Controls.Add(ChkAddNew)
             PnlBottomButton.Controls.Add(BtnSave)
             PnlBottomButton.Controls.Add(BtnCancel)
-            PnlBottomButton.Location = New Point(0, 457)
+            PnlBottomButton.Location = New Point(0, 451)
             PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
             PnlBottomButton.Size = New Size(873, 97)
             PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
@@ -54,7 +54,7 @@
             ' pnl_
             ' 
             pnl_.Margin = New Padding(7, 5, 7, 5)
-            pnl_.Size = New Size(873, 104)
+            pnl_.Size = New Size(873, 110)
             ' 
             ' SLFPanel
             ' 
@@ -67,7 +67,7 @@
             SLFPanel.Controls.Add(CboCompany)
             SLFPanel.Controls.Add(TxtDeptCode)
             SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(873, 554)
+            SLFPanel.Size = New Size(873, 548)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(TxtDeptCode, 0)
             SLFPanel.Controls.SetChildIndex(CboCompany, 0)
@@ -87,7 +87,7 @@
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(509, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -110,7 +110,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(686, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -126,7 +126,7 @@
             ' 
             ' TxtDeptCode
             ' 
-            TxtDeptCode.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtDeptCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtDeptCode.Location = New Point(280, 87)
             TxtDeptCode.Margin = New Padding(6, 5, 6, 5)
             TxtDeptCode.MaxLength = 255
@@ -159,7 +159,7 @@
             CboCompany.DropDownStyle = ComboBoxStyle.DropDownList
             CboCompany.DropDownWidth = 350
             CboCompany.FlatStyle = FlatStyle.Flat
-            CboCompany.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            CboCompany.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             CboCompany.FormattingEnabled = True
             CboCompany.Location = New Point(280, 20)
             CboCompany.Margin = New Padding(6, 5, 6, 5)
@@ -169,7 +169,7 @@
             ' 
             ' TxtDeptName
             ' 
-            TxtDeptName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtDeptName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtDeptName.Location = New Point(280, 153)
             TxtDeptName.Margin = New Padding(6, 5, 6, 5)
             TxtDeptName.MaxLength = 255
@@ -199,7 +199,7 @@
             ' 
             ' TxtDescription
             ' 
-            TxtDescription.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtDescription.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtDescription.Location = New Point(280, 222)
             TxtDescription.Margin = New Padding(6, 5, 6, 5)
             TxtDescription.MaxLength = 255
@@ -234,7 +234,7 @@
             ChkAddNew.AutoSize = True
             ChkAddNew.BackColor = Color.Transparent
             ChkAddNew.FlatStyle = FlatStyle.Flat
-            ChkAddNew.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            ChkAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             ChkAddNew.ForeColor = Color.Tomato
             ChkAddNew.Location = New Point(278, 28)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
@@ -250,7 +250,7 @@
             ULbl1.Location = New Point(20, 20)
             ULbl1.Margin = New Padding(7, 5, 7, 5)
             ULbl1.Name = "ULbl1"
-            ULbl1.Size = New Size(250, 55)
+            ULbl1.Size = New Size(250, 39)
             ULbl1.SLFText = "Company"
             ULbl1.SLFTextAdjuster = False
             ULbl1.SLFTextBorder = False
@@ -263,7 +263,7 @@
             ULbl2.Location = New Point(20, 87)
             ULbl2.Margin = New Padding(7, 5, 7, 5)
             ULbl2.Name = "ULbl2"
-            ULbl2.Size = New Size(250, 55)
+            ULbl2.Size = New Size(250, 39)
             ULbl2.SLFText = "Dept. Code"
             ULbl2.SLFTextAdjuster = False
             ULbl2.SLFTextBorder = False
@@ -276,7 +276,7 @@
             ULbl3.Location = New Point(20, 153)
             ULbl3.Margin = New Padding(7, 5, 7, 5)
             ULbl3.Name = "ULbl3"
-            ULbl3.Size = New Size(250, 55)
+            ULbl3.Size = New Size(250, 39)
             ULbl3.SLFText = "Dept. Name"
             ULbl3.SLFTextAdjuster = False
             ULbl3.SLFTextBorder = False
@@ -289,7 +289,7 @@
             ULbl4.Location = New Point(20, 222)
             ULbl4.Margin = New Padding(7, 5, 7, 5)
             ULbl4.Name = "ULbl4"
-            ULbl4.Size = New Size(250, 188)
+            ULbl4.Size = New Size(250, 184)
             ULbl4.SLFText = "Description"
             ULbl4.SLFTextAdjuster = False
             ULbl4.SLFTextBorder = False
@@ -298,9 +298,8 @@
             ' 
             ' FRMcdinEditor
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(873, 680)
-            KeyPreview = True
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMcdinEditor"
             PnlBottomButton.ResumeLayout(False)

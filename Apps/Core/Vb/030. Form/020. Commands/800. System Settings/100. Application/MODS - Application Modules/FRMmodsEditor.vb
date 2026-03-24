@@ -26,20 +26,20 @@ Namespace UI
             DgnUserRoles.XOGETNewColor()
 
             Call FillGroup(CboGroup)
-            If (varFormProperties.IsNew) Then
+            If (varDataProperties.SystemModuleIsNew) Then
                 ChkAddNew.Enabled = True
                 ChkAddNew.Visible = True
                 CboGroup.Focus()
             Else
                 ChkAddNew.Enabled = False
                 ChkAddNew.Visible = False
-                TxtID.Text = Convert.ToString(varFormProperties.RowID)
-                CboGroup.SelectedValue = CMDmods.Editor.GetMODgroupid(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                TxtCode.Text = CMDmods.Editor.GetMODcode(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                TxtName.Text = CMDmods.Editor.GetMODname(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                TxtDescription.Text = CMDmods.Editor.GetMODdescription(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                ChkSystem.Checked = CMDmods.Editor.GetMODsystem(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
-                ChkLocked.Checked = CMDmods.Editor.GetMODlocked(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))
+                TxtID.Text = Convert.ToString(varDataProperties.SystemModuleId)
+                CboGroup.SelectedValue = CMDmods.Editor.GetMODgroupid(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.SystemModuleId))
+                TxtCode.Text = CMDmods.Editor.GetMODcode(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.SystemModuleId))
+                TxtName.Text = CMDmods.Editor.GetMODname(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.SystemModuleId))
+                TxtDescription.Text = CMDmods.Editor.GetMODdescription(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.SystemModuleId))
+                ChkSystem.Checked = CMDmods.Editor.GetMODsystem(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.SystemModuleId))
+                ChkLocked.Checked = CMDmods.Editor.GetMODlocked(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.SystemModuleId))
 
                 TxtCode.ReadOnly = True
             End If
@@ -53,15 +53,15 @@ Namespace UI
             If (CboGroup.Items.Count = 0) OrElse (TxtCode.XOSQLText = String.Empty) OrElse (TxtName.XOSQLText = String.Empty) Then
                 Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "Make sure you have Module Group selected, Module Code and Module Name are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf (varFormProperties.IsNew) AndAlso (CMDmods.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtCode.XOSQLText)) Then
+            ElseIf (varDataProperties.SystemModuleIsNew) AndAlso (CMDmods.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtCode.XOSQLText)) Then
                 Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "This Departement Code already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf Not (varFormProperties.IsNew) AndAlso (CMDmods.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtCode.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
+            ElseIf Not (varDataProperties.SystemModuleIsNew) AndAlso (CMDmods.Editor.IsDuplicate(varDatabaseName, varDatabaseEnginee, TxtCode.XOSQLText, Convert.ToString(varDataProperties.SystemModuleId))) Then
                 Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "This Departement Code already used by another departement.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
-            If (CMDmods.Editor.PushData(varDatabaseName, varDatabaseEngineE, TxtID.XOSQLText, CboGroup.SelectedValue.ToString, TxtCode.XOSQLText, TxtName.XOSQLText, TxtDescription.XOSQLText, ChkSystem.Checked, ChkLocked.Checked, Convert.ToString(varFormProperties.RowID))) Then
+            If (CMDmods.Editor.PushData(varDatabaseName, varDatabaseEngineE, TxtID.XOSQLText, CboGroup.SelectedValue.ToString, TxtCode.XOSQLText, TxtName.XOSQLText, TxtDescription.XOSQLText, ChkSystem.Checked, ChkLocked.Checked, Convert.ToString(varDataProperties.SystemModuleId))) Then
                 RaiseEvent EventRecordSaved()
                 UI.FRMmainframe6.Ts_status.Text = "Success"
             Else
@@ -89,7 +89,7 @@ Namespace UI
         End Sub
 
         Private Sub TxtCode_TextChanged(sender As Object, e As EventArgs) Handles TxtCode.TextChanged
-            If (varFormProperties.IsNew) Then
+            If (varDataProperties.SystemModuleIsNew) Then
                 TxtID.Text = CMCv.Security.Encrypt.MD5(TxtCode.XOSQLText.ToUpper)
             End If
         End Sub

@@ -5,12 +5,13 @@ Namespace UI
 
 #Region "Declaration"
         Public Event EventRecordSaved()
+        Private Shared consTableName As String = "man_department"
 #End Region
 
 #Region "Subs Collections"
         <SupportedOSPlatform("windows")>
         Private Sub FillCompany(company As CMCv.UI.Control.cbo)
-            CMDcdin.Editor.FillCompany(varDatabaseName, varDatabaseEngine, company)
+            CMDcdin.Editor.FillCompany(varDataProperties, company)
         End Sub
 
         Private Sub CheckAllInput()
@@ -24,35 +25,47 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub FRMcdinEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            If Convert.ToString(varFormProperties.RowID) = "-1" Then
+            Call FillCompany(CboCompany)
+            If varDataProperties.DepartmentId = "-1" Then
                 ChkAddNew.Visible = True
                 ChkAddNew.Checked = False
             Else
                 ChkAddNew.Visible = False
                 ChkAddNew.Checked = False
-                CboCompany.SelectedValue = CMDcdin.Editor.GetCompanyID(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))
-                TxtDeptCode.Text = CMDcdin.Editor.GetDeptCode(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID)).ToString
-                TxtDeptName.Text = CMDcdin.Editor.GETDeptName(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID)).ToString
-                TxtDescription.Text = CMDcdin.Editor.GetDescription(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID)).ToString
+                CMDcdin.Editor.GetDepartmentProperties(varDataProperties, varDatasetIngrid)
+                If varDatasetIngrid.Tables(consTableName).Rows.Count > 0 Then
+                    With varDatasetIngrid.Tables(consTableName).Rows(0)
+                        CboCompany.SelectedValue = .Item("department_company").ToString
+                        TxtDeptCode.Text = .Item("department_code").ToString
+                        TxtDeptName.Text = .Item("department_name").ToString
+                        TxtDescription.Text = .Item("department_description").ToString
+                    End With
+                End If
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Call CheckAllInput()
+            With varDataProperties
+                .CompanyId = CboCompany.SelectedValue.ToString
+                .DepartmentCode = TxtDeptCode.XOSQLText
+                .DepartmentName = TxtDeptName.XOSQLText
+                .DepartmentDescription = TxtDescription.XOSQLText
+            End With
 
-            If Convert.ToString(varFormProperties.RowID) = "-1" Then
-                Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "Make sure you have Company Code selected, Departement Code and Departement Name are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            If (CboCompany.Items.Count = 0) AndAlso (varDataProperties.DepartmentCode = String.Empty) AndAlso (varDataProperties.DepartmentName = String.Empty) Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Ensure that the Company Code is selected and that both the Department Code and Department Name are properly filled in.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf ((varFormProperties.IsNew) AndAlso (CMDcdin.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, CboCompany.SelectedValue.ToString, TxtDeptCode.XOSQLText))) Then
-                Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "This Departement Code already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            ElseIf (varDataProperties.DepartmentIsNew) AndAlso (CMDcdin.Editor.IsDuplicate(varDataProperties)) Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Department Code is already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf (Not (varFormProperties.IsNew) AndAlso (CMDcdin.Editor.IsDuplicate(varDatabaseName, varDatabaseEngine, CboCompany.SelectedValue.ToString, TxtDeptCode.XOSQLText, Convert.ToString(varFormProperties.RowID)))) Then
-                Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "This Departement Code already used by another departement.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+            ElseIf (Not (varDataProperties.DepartmentIsNew) AndAlso (CMDcdin.Editor.IsDuplicate(varDataProperties))) Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Department Code cannot be used because it is already assigned to another company.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
-            If (CMDcdin.Editor.PushData(varDatabaseName, varDatabaseEngine, CboCompany.SelectedValue.ToString, TxtDeptCode.XOSQLText, TxtDeptName.XOSQLText, TxtDescription.XOSQLText, Convert.ToString(varFormProperties.RowID))) Then
+            If (CMDcdin.Editor.PushData(varDataProperties)) Then
                 RaiseEvent EventRecordSaved()
                 UI.FRMmainframe6.Ts_status.Text = "Success"
             Else
@@ -60,10 +73,12 @@ Namespace UI
                 Return
             End If
 
-            If (ChkAddNew.Checked) Then
+            If ChkAddNew.Checked Then
+                CboCompany.SelectedIndex = 0
                 TxtDeptCode.Clear()
                 TxtDeptName.Clear()
                 TxtDescription.Clear()
+                CboCompany.Focus()
             Else
                 Me.Close()
             End If

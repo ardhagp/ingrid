@@ -21,15 +21,15 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnCDIN = New cmcv.ui.control.dgn(components)
+            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            DgnCDIN = New CMCv.UI.Control.dgn(components)
             department_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
-            departement_code = New DataGridViewTextBoxColumn()
-            departement_name = New DataGridViewTextBoxColumn()
-            departement_description = New DataGridViewTextBoxColumn()
+            department_code = New DataGridViewTextBoxColumn()
+            department_name = New DataGridViewTextBoxColumn()
+            department_description = New DataGridViewTextBoxColumn()
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -51,7 +51,7 @@
             ' SLFPanel
             ' 
             SLFPanel.Controls.Add(DgnCDIN)
-            SLFPanel.Size = New Size(1307, 952)
+            SLFPanel.Size = New Size(1307, 946)
             SLFPanel.Controls.SetChildIndex(PnlFind, 0)
             SLFPanel.Controls.SetChildIndex(DgnCDIN, 0)
             ' 
@@ -59,42 +59,42 @@
             ' 
             DgnCDIN.AllowUserToAddRows = False
             DgnCDIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(199), CByte(223), CByte(174))
-            DgnCDIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(235), CByte(210), CByte(159))
+            DgnCDIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnCDIN.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnCDIN.BorderStyle = BorderStyle.None
             DgnCDIN.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnCDIN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle5.BackColor = Color.YellowGreen
-            DataGridViewCellStyle5.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
-            DataGridViewCellStyle5.SelectionForeColor = Color.Black
-            DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
-            DgnCDIN.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.YellowGreen
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
+            DataGridViewCellStyle2.SelectionForeColor = Color.Black
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            DgnCDIN.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             DgnCDIN.ColumnHeadersHeight = 43
             DgnCDIN.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-            DgnCDIN.Columns.AddRange(New DataGridViewColumn() {department_id, company_code, departement_code, departement_name, departement_description})
+            DgnCDIN.Columns.AddRange(New DataGridViewColumn() {department_id, company_code, department_code, department_name, department_description})
             DgnCDIN.Dock = DockStyle.Fill
             DgnCDIN.EnableHeadersVisualStyles = False
-            DgnCDIN.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+            DgnCDIN.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
             DgnCDIN.Location = New Point(0, 88)
             DgnCDIN.Margin = New Padding(6, 5, 6, 5)
             DgnCDIN.Name = "DgnCDIN"
             DgnCDIN.ReadOnly = True
             DgnCDIN.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle6.BackColor = Color.YellowGreen
-            DataGridViewCellStyle6.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
-            DataGridViewCellStyle6.SelectionForeColor = Color.Black
-            DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-            DgnCDIN.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle3.BackColor = Color.YellowGreen
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
+            DataGridViewCellStyle3.SelectionForeColor = Color.Black
+            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+            DgnCDIN.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
             DgnCDIN.RowHeadersWidth = 62
             DgnCDIN.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-            DgnCDIN.Size = New Size(1307, 864)
+            DgnCDIN.Size = New Size(1307, 858)
             DgnCDIN.StandardTab = True
             DgnCDIN.TabIndex = 0
             DgnCDIN.XOGroupFirstRows = False
@@ -115,52 +115,57 @@
             ' 
             company_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             company_code.DataPropertyName = "company_code"
-            company_code.HeaderText = "Company Code"
+            company_code.HeaderText = "COMPANY CODE"
             company_code.MinimumWidth = 8
             company_code.Name = "company_code"
             company_code.ReadOnly = True
             company_code.SortMode = DataGridViewColumnSortMode.Programmatic
-            company_code.Width = 151
+            company_code.Width = 160
             ' 
-            ' departement_code
+            ' department_code
             ' 
-            departement_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            departement_code.DataPropertyName = "departement_code"
-            departement_code.HeaderText = "Departement Code"
-            departement_code.MinimumWidth = 8
-            departement_code.Name = "departement_code"
-            departement_code.ReadOnly = True
-            departement_code.SortMode = DataGridViewColumnSortMode.Programmatic
-            departement_code.Width = 179
+            department_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            department_code.DataPropertyName = "department_code"
+            department_code.HeaderText = "DEPT. CODE"
+            department_code.MinimumWidth = 8
+            department_code.Name = "department_code"
+            department_code.ReadOnly = True
+            department_code.SortMode = DataGridViewColumnSortMode.Programmatic
+            department_code.Width = 88
             ' 
-            ' departement_name
+            ' department_name
             ' 
-            departement_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            departement_name.DataPropertyName = "departement_name"
-            departement_name.HeaderText = "Departement Name"
-            departement_name.MinimumWidth = 8
-            departement_name.Name = "departement_name"
-            departement_name.ReadOnly = True
-            departement_name.SortMode = DataGridViewColumnSortMode.Programmatic
-            departement_name.Width = 185
+            department_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            department_name.DataPropertyName = "department_name"
+            department_name.HeaderText = "DEPT. NAME"
+            department_name.MinimumWidth = 8
+            department_name.Name = "department_name"
+            department_name.ReadOnly = True
+            department_name.SortMode = DataGridViewColumnSortMode.Programmatic
+            department_name.Width = 88
             ' 
-            ' departement_description
+            ' department_description
             ' 
-            departement_description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            departement_description.DataPropertyName = "departement_description"
-            departement_description.HeaderText = "Description"
-            departement_description.MinimumWidth = 8
-            departement_description.Name = "departement_description"
-            departement_description.ReadOnly = True
-            departement_description.SortMode = DataGridViewColumnSortMode.Programmatic
+            department_description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            department_description.DataPropertyName = "department_description"
+            department_description.HeaderText = "DESCRIPTION"
+            department_description.MinimumWidth = 8
+            department_description.Name = "department_description"
+            department_description.ReadOnly = True
+            department_description.SortMode = DataGridViewColumnSortMode.Programmatic
             ' 
             ' FRMcdin
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1307, 1078)
-            KeyPreview = True
+            ControlBox = False
             Margin = New Padding(10, 5, 10, 5)
+            MaximizeBox = False
+            MinimizeBox = False
             Name = "FRMcdin"
+            ShowIcon = False
+            ShowInTaskbar = False
+            WindowState = FormWindowState.Maximized
             PnlFind.ResumeLayout(False)
             PnlFind.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
@@ -175,9 +180,9 @@
         Friend WithEvents DgnCDIN As cmcv.ui.control.dgn
         Friend WithEvents department_id As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
-        Friend WithEvents departement_code As DataGridViewTextBoxColumn
-        Friend WithEvents departement_name As DataGridViewTextBoxColumn
-        Friend WithEvents departement_description As DataGridViewTextBoxColumn
+        Friend WithEvents department_code As DataGridViewTextBoxColumn
+        Friend WithEvents department_name As DataGridViewTextBoxColumn
+        Friend WithEvents department_description As DataGridViewTextBoxColumn
 
     End Class
 End Namespace

@@ -46,7 +46,7 @@
             PnlBottomButton.Controls.Add(ChkAddNew)
             PnlBottomButton.Controls.Add(BtnCancel)
             PnlBottomButton.Controls.Add(BtnSave)
-            PnlBottomButton.Location = New Point(0, 675)
+            PnlBottomButton.Location = New Point(0, 669)
             PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
             PnlBottomButton.Size = New Size(899, 97)
             PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
@@ -56,7 +56,7 @@
             ' pnl_
             ' 
             pnl_.Margin = New Padding(7, 5, 7, 5)
-            pnl_.Size = New Size(899, 104)
+            pnl_.Size = New Size(899, 110)
             ' 
             ' SLFPanel
             ' 
@@ -71,7 +71,7 @@
             SLFPanel.Controls.Add(TxtSearchTerm1)
             SLFPanel.Controls.Add(TxtCode)
             SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(899, 772)
+            SLFPanel.Size = New Size(899, 766)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(TxtCode, 0)
             SLFPanel.Controls.SetChildIndex(TxtSearchTerm1, 0)
@@ -86,7 +86,7 @@
             ' 
             ' TxtCode
             ' 
-            TxtCode.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtCode.Location = New Point(281, 20)
             TxtCode.Margin = New Padding(6, 5, 6, 5)
             TxtCode.MaxLength = 255
@@ -108,7 +108,7 @@
             TxtCode.XOPwdStrengthCalculate = False
             TxtCode.XOPwdStrengthScore = 0
             TxtCode.XOPwdStrengthText = Nothing
-            TxtCode.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtCode.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
             TxtCode.XOSearchBoxText = "Type then press Enter"
             TxtCode.XOSQLText = ""
             TxtCode.XOTanpaSpasi = False
@@ -116,7 +116,7 @@
             ' 
             ' TxtSearchTerm1
             ' 
-            TxtSearchTerm1.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtSearchTerm1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtSearchTerm1.Location = New Point(280, 153)
             TxtSearchTerm1.Margin = New Padding(6, 5, 6, 5)
             TxtSearchTerm1.MaxLength = 255
@@ -146,7 +146,7 @@
             ' 
             ' TxtSearchTerm2
             ' 
-            TxtSearchTerm2.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtSearchTerm2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtSearchTerm2.Location = New Point(280, 222)
             TxtSearchTerm2.Margin = New Padding(6, 5, 6, 5)
             TxtSearchTerm2.MaxLength = 255
@@ -176,7 +176,7 @@
             ' 
             ' TxtDescription
             ' 
-            TxtDescription.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtDescription.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtDescription.Location = New Point(280, 288)
             TxtDescription.Margin = New Padding(6, 5, 6, 5)
             TxtDescription.MaxLength = 255
@@ -214,7 +214,7 @@
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(535, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -237,7 +237,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(712, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -253,7 +253,7 @@
             ' 
             ' TxtName
             ' 
-            TxtName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtName.Location = New Point(280, 87)
             TxtName.Margin = New Padding(6, 5, 6, 5)
             TxtName.MaxLength = 255
@@ -287,7 +287,7 @@
             ChkAddNew.AutoSize = True
             ChkAddNew.BackColor = Color.Transparent
             ChkAddNew.FlatStyle = FlatStyle.Flat
-            ChkAddNew.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            ChkAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             ChkAddNew.ForeColor = Color.Tomato
             ChkAddNew.Location = New Point(304, 28)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
@@ -303,7 +303,7 @@
             ULbl1.Location = New Point(20, 20)
             ULbl1.Margin = New Padding(7, 5, 7, 5)
             ULbl1.Name = "ULbl1"
-            ULbl1.Size = New Size(250, 55)
+            ULbl1.Size = New Size(250, 39)
             ULbl1.SLFText = "Company Code"
             ULbl1.SLFTextAdjuster = False
             ULbl1.SLFTextBorder = False
@@ -316,7 +316,7 @@
             ULbl2.Location = New Point(20, 87)
             ULbl2.Margin = New Padding(7, 5, 7, 5)
             ULbl2.Name = "ULbl2"
-            ULbl2.Size = New Size(250, 55)
+            ULbl2.Size = New Size(250, 39)
             ULbl2.SLFText = "Company Name"
             ULbl2.SLFTextAdjuster = False
             ULbl2.SLFTextBorder = False
@@ -329,7 +329,7 @@
             ULbl3.Location = New Point(20, 153)
             ULbl3.Margin = New Padding(7, 5, 7, 5)
             ULbl3.Name = "ULbl3"
-            ULbl3.Size = New Size(250, 55)
+            ULbl3.Size = New Size(250, 39)
             ULbl3.SLFText = "Search Term 1"
             ULbl3.SLFTextAdjuster = False
             ULbl3.SLFTextBorder = False
@@ -342,7 +342,7 @@
             ULbl4.Location = New Point(20, 222)
             ULbl4.Margin = New Padding(7, 5, 7, 5)
             ULbl4.Name = "ULbl4"
-            ULbl4.Size = New Size(250, 55)
+            ULbl4.Size = New Size(250, 39)
             ULbl4.SLFText = "Search Term 2"
             ULbl4.SLFTextAdjuster = False
             ULbl4.SLFTextBorder = False
@@ -355,7 +355,7 @@
             ULbl5.Location = New Point(20, 288)
             ULbl5.Margin = New Padding(7, 5, 7, 5)
             ULbl5.Name = "ULbl5"
-            ULbl5.Size = New Size(250, 225)
+            ULbl5.Size = New Size(250, 221)
             ULbl5.SLFText = "Description"
             ULbl5.SLFTextAdjuster = False
             ULbl5.SLFTextBorder = False
@@ -364,9 +364,8 @@
             ' 
             ' FRMccinEditor
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(899, 898)
-            KeyPreview = True
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMccinEditor"
             PnlBottomButton.ResumeLayout(False)

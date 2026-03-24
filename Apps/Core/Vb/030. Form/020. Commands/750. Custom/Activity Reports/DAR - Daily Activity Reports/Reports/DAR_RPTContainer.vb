@@ -71,5 +71,9 @@ Namespace UI
             End Try
 
         End Sub
+
+        Private Sub EmployeeactivityBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles EmployeeactivityBindingSource.CurrentChanged
+
+        End Sub
     End Class
 End Namespace

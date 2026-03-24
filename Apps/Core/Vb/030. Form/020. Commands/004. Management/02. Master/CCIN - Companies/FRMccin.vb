@@ -20,14 +20,15 @@ Namespace UI
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
-            CMDccin.View.DisplayData(varDatabaseName, varDatabaseEngineE, DgnCCIN, SLFStatus, TxtFind, forcerefresh)
+            varDataProperties.CompanyIsForceRefresh = forcerefresh
+            CMDccin.View.DisplayData(varDataProperties, DgnCCIN, SLFStatus, TxtFind)
         End Sub
 
         Private Sub GetRowID()
             If DgnCCIN.RowCount = 0 Then
-                varFormProperties.RowID = "-1"
+                varDataProperties.CompanyID = "-1"
             Else
-                varFormProperties.RowID = DgnCCIN.CurrentRow.Cells("company_id").Value.ToString
+                varDataProperties.CompanyID = DgnCCIN.CurrentRow.Cells("company_id").Value.ToString
             End If
         End Sub
 #End Region
@@ -35,11 +36,10 @@ Namespace UI
 #Region "Menu Strip Function"
         <SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-            With varFormProperties
-                .IsNew = True
-                .RowID = "-1"
+            With varDataProperties
+                .CompanyIsNew = True
+                .CompanyID = "-1"
             End With
-
             Frm_ccin_Editor = New FRMccinEditor
             Display(Frm_ccin_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new company data", True)
         End Sub
@@ -47,29 +47,26 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
             Call GetRowID()
-            If Convert.ToString(varFormProperties.RowID) = "-1" Then
-                Decision(My.Application.Info.AssemblyName.toupper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            If varDataProperties.CompanyId = "-1" Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                varFormProperties.IsNew = False
                 Frm_ccin_Editor = New FRMccinEditor
                 Display(Frm_ccin_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your company data", True)
             End If
+            UI.FRMmainframe6.Ts_status.Text = String.Empty
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
             Call GetRowID()
-            If Convert.ToString(varFormProperties.RowID) = "-1" Then
-                Decision(My.Application.Info.AssemblyName.toupper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            If varDataProperties.CompanyId = "-1" Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                varFormProperties.IsNew = False
-                If Decision(My.Application.Info.AssemblyName.toupper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    If (CMDccin.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varFormProperties.RowID))) Then
-                        Call GetData(True)
-                        UI.FRMmainframe6.Ts_status.Text = "Success"
-                    Else
-                        UI.FRMmainframe6.Ts_status.Text = "Delete failed"
-                    End If
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes AndAlso LibSQL.CMDccin.View.DeleteData(varDataProperties, varDatasetIngrid) Then
+                    Call GetData(True)
+                    UI.FRMmainframe6.Ts_status.Text = "Success"
+                Else
+                    UI.FRMmainframe6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End Sub
@@ -118,6 +115,5 @@ Namespace UI
         Private Sub FRMccinEditor_RecordSaved() Handles Frm_ccin_Editor.EventRecordSaved
             Call GetData(True)
         End Sub
-
     End Class
 End Namespace

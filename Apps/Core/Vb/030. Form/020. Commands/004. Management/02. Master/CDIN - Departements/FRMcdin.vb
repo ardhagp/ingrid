@@ -10,15 +10,16 @@ Namespace UI
 
 #Region "Subs Collections"
         <SupportedOSPlatform("windows")>
-        Private Sub GetData(Optional ByVal forcerefresh As Boolean = False)
-            LibSQL.CMDcdin.View.DisplayData(varDatabaseName, varDatabaseEngine, DgnCDIN, SLFStatus, TxtFind, forcerefresh)
+        Private Sub GetData(Optional forcerefresh As Boolean = False)
+            varDataProperties.DepartmentIsForceRefresh = forcerefresh
+            LibSQL.CMDcdin.View.DisplayData(varDataProperties, DgnCDIN, SLFStatus, TxtFind)
         End Sub
 
         Private Sub GetRowID()
             If DgnCDIN.RowCount = 0 Then
-                varFormProperties.RowID = "-1"
+                varDataProperties.DepartmentId = "-1"
             Else
-                varFormProperties.RowID = DgnCDIN.CurrentRow.Cells("department_id").Value.ToString
+                varDataProperties.DepartmentId = DgnCDIN.CurrentRow.Cells("department_id").Value.ToString
             End If
         End Sub
 
@@ -27,8 +28,8 @@ Namespace UI
 #Region "Menu Strip Function"
         <SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-            varFormProperties.IsNew = True
-            varFormProperties.RowID = "-1"
+            varDataProperties.DepartmentIsNew = True
+            varDataProperties.DepartmentId = "-1"
             Frm_cdin_Editor = New FRMcdinEditor
             Display(Frm_cdin_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new departement data", True)
         End Sub
@@ -36,28 +37,27 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
             Call GetRowID()
-            If Convert.ToString(varFormProperties.RowID) = "-1" Then
+            If varDataProperties.DepartmentId = "-1" Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                varFormProperties.IsNew = False
+                varDataProperties.DepartmentIsNew = False
                 Frm_cdin_Editor = New FRMcdinEditor
                 Display(Frm_cdin_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your departement data", True)
             End If
+            UI.FRMmainframe6.Ts_status.Text = String.Empty
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
             Call GetRowID()
-            If Convert.ToString(varFormProperties.RowID) = "-1" Then
+            If varDataProperties.DepartmentId = "-1" Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    If (LibSQL.CMDcdin.View.DeleteData(varDatabaseName, varDatabaseEngine, Convert.ToString(varFormProperties.RowID))) Then
-                        Call GetData(True)
-                        UI.FRMmainframe6.Ts_status.Text = "Success"
-                    Else
-                        UI.FRMmainframe6.Ts_status.Text = "Delete failed"
-                    End If
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDcdin.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
+                    Call GetData(True)
+                    UI.FRMmainframe6.Ts_status.Text = "Success"
+                Else
+                    UI.FRMmainframe6.Ts_status.Text = "Delete failed"
                 End If
             End If
         End Sub
@@ -82,7 +82,7 @@ Namespace UI
         Private Sub FRMcdin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Com_mms_Menu.LoadIn(Me)
             Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
-            Call GetData()
+            Call GetData(True)
             TxtFind.ClearSearch()
         End Sub
 #End Region

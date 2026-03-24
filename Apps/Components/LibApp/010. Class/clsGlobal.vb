@@ -26,47 +26,89 @@
     ''' 
     ''' </summary>
     Public Class Properties
-        Property CompanyID As String
+        Property AccountingGroupId As String
+        Property AccountingGroupIsNew As Boolean
+        Property ConnectionDatabaseEngine As String
+        Property ConnectionDatabaseEngineE As Ingrid.Global.DatabaseEngine
+        Property ConnectionDatabaseName As String
+        Property ConnectionFileStorage As String
+        Property ConnectionId As String
+        Property ConnectionIsDefault As Boolean
+        Property ConnectionIsMasked As Boolean
+        Property ConnectionIsNew As Boolean
+        Property ConnectionIsPasswordChanged As Boolean
+        Property ConnectionName As String
+        Property ConnectionServerAddress As String
+        Property ConnectionServerPort As Integer
+        Property ConnectionPassword As String
+        Property ConnectionPasswordOld As String
+        Property ConnectionUsername As String
+        Property CompanyIsNew As Boolean
+        Property CompanyIsCommitSuccess As Boolean
+        Property CompanyIsForceRefresh As Boolean
+        Property CompanyId As String
         Property CompanyCode As String
         Property CompanyName As String
         Property CompanySearchTerm1 As String
         Property CompanySearchTerm2 As String
         Property CompanyDescription As String
-        Property ConnectionName As String
-        Property DatabaseEngine As String
-        Property DatabaseEngineE As Ingrid.Global.DatabaseEngine
-        Property DatabaseName As String
-        Property DepartmentID As String
-        Property DepartmentName As String
+        Property CustomDailyActivityId As String
+        Property CustomDailyActivityIsNew As Boolean
+        Property CustomDailyActivityAreaId As String
+        Property CustomDailyActivityAreaIsNew As Boolean
+        Property DepartmentId As String
         Property DepartmentCode As String
         Property DepartmentDescription As String
-        Property EmployeeID As String
+        Property DepartmentIsNew As Boolean
+        Property DepartmentIsForceRefresh As Boolean
+        Property DepartmentName As String
+        Property EmployeeId As String
+        Property EmployeeIsCommitSuccess As Boolean
+        Property EmployeeIsForceRefresh As Boolean
+        Property EmployeeIsNew As Boolean
+        Property EmployeeFirstName As String
+        Property EmployeeLastName As String
         Property EmployeeNumber As String
-        Property EmployeePosition As String
+        Property EmployeeGender As String
+        Property EmployeeGradeId As String
         Property EmployeeName As String
-        Property EmployeeGradeID As String
-        Property EmploymentTypeID As String
+        Property EmploymentTypeId As String
+        Property EmploymentTypeIsForceRefresh As Boolean
+        Property EmploymentTypeIsNew As Boolean
         Property EmploymentTypeCode As String
         Property EmploymentTypeName As String
         Property EmploymentTypeDescription As String
-        Property FileStorage As String
-        Property FirstName As String
-        Property Gender As String
-        Property Hash As String
+        Property EmployeePositionId As String
+        Property EmployeePositionIsNew As Boolean
+        Property EmployeePositionIsForceRefresh As Boolean
+        Property EmployeePositionCode As String
+        Property EmployeePositionParent As String
+        Property EmployeePositionName As String
+        Property EmployeePositionDescription As String
+        Property PlantId As String
+        Property PlantIsForceRefresh As Boolean
+        Property PlantIsNew As Boolean
+        Property PlantCode As String
+        Property PlantName As String
+        Property PlantSearchTerm1 As String
+        Property PlantSearchTerm2 As String
+        Property PlantDescription As String
+        Property PlantAddress As String
+        Property PlantPostalCode As String
         Property IsAdministrator As Boolean
         Property IsConnected As Boolean
-        Property IsChangePasswordForm As Boolean
-        Property IsDefault As Boolean
-        Property IsMasked As Boolean
-        Property IsNew As Boolean
-        Property IsPasswordChanged As Boolean
-        Property LastName As String
-        Property Password As String
-        Property PasswordOld As String
-        Property RowID As Object
-        Property ServerAddress As String
-        Property ServerPort As Integer
         Property Username As String
+        Property UserIsNew As Boolean
+        Property UserIsCommitSuccess As Boolean
+        Property UserIsForceRefresh As Boolean
+        Property UserAccessId As String
+        Property UserAccessIsChangePasswordForm As Boolean
+        Property UserAccessIsNew As Boolean
+        Property UserAccessHash As String
+        Property UserAccessPassword As String
+        Property SystemModuleId As String
+        Property SystemModuleIsNew As Boolean
+        Property SystemModuleHash As String
         Property UserID As String
         Property Field01 As Object
         Property Field02 As Object
@@ -80,9 +122,9 @@ Namespace Ingrid.Accounting
     ''' 
     ''' </summary>
     Public Class Properties
-        Property AccountBookID As String
+        Property AccountBookId As String
         Property AccountEnabled As Boolean
-        Property AccountGroupID As String
+        Property AccountGroupId As String
         Property AccountName As String
         Property AccountNumber As String
 
