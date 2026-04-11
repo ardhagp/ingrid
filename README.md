@@ -27,13 +27,13 @@ id1(📦 master) --> id6(☁️ publish)
 
 
 ## Current Status
-[![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/)
+![GitHub License](https://img.shields.io/github/license/ardhagp/ingrid?label=License&color=blue) ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ardhagp/ingrid?label=Issues&color=ff0000) ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-closed/ardhagp/ingrid?label=Issues&color=green)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=bugs)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) 
 
-[![dev Build](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml/badge.svg?branch=dev)](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml) [![Release](https://github.com/ardhagp/ingrid/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/ardhagp/ingrid/actions/workflows/release.yml) 
+[![dev Build](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml/badge.svg?branch=dev)](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml) [![Release](https://github.com/ardhagp/ingrid/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/ardhagp/ingrid/actions/workflows/release.yml) [![Static Badge](https://img.shields.io/badge/Download-ingrid--offline.zip-gold)](https://ardhagp.github.io/ingrid/ingrid-offline.zip)
 
-[![Better Stack Badge](https://uptime.betterstack.com/status-badges/v3/monitor/182mi.svg)](https://ingrid.betteruptime.com/) [![Static Badge](https://img.shields.io/badge/Download-ingrid--offline.zip-gold)](https://ardhagp.github.io/ingrid/ingrid-offline.zip)
+![Uptime Robot status](https://img.shields.io/uptimerobot/status/m795460257-c182ecdc7b4ee9aea83252bf?label=Ingrid%20Web) ![Discord](https://img.shields.io/discord/1402488110800961648?logo=discord&label=Discord%20Chat)
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 #   <span style="color:darkorange">**Tools You Need**</span>

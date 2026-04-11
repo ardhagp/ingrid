@@ -14,14 +14,68 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
     - uses: microsoft/setup-msbuild@v2
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 7.0.x
+
+    - name: Read current version
+      id: read_version
+      run: |
+        VERSION=$(cat version.txt)
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+
     - name: Restore dependencies
       run: dotnet restore ./Apps/Components/Ingrid-Launcher/IngridLauncher.vbproj
+
     - name: Build
       run: msbuild ./Apps/Components/Ingrid-Launcher/IngridLauncher.vbproj -t:rebuild -verbosity:diag -property:Configuration=Release
+    
     - name: Test
       run: dotnet test ./Apps/Components/Ingrid-Launcher/IngridLauncher.vbproj --no-build --verbosity normal
+
+    - name: Determine build result
+      id: result
+      run: |
+        if [ "${{ steps.build_step.outcome }}" = "success" ] && [ "${{ steps.test_step.outcome }}" = "success" ]; then
+          echo "status=success" >> $GITHUB_OUTPUT
+        else
+          echo "status=failure" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Bump version
+      id: bump
+      run: |
+        IFS='.' read -r MAJOR MINOR BUILD REVISION <<< "${{ steps.read_version.outputs.version }}"
+
+        if [ "${{ steps.result.outputs.status }}" = "success" ]; then
+          # Successful build
+          if [[ "${{ github.ref }}" == "refs/heads/master" ]]; then
+            MINOR=$((MINOR+1))
+            BUILD=0
+            REVISION=0
+          else
+            BUILD=$((BUILD+1))
+          fi
+        else
+          # Failed build
+          REVISION=$((REVISION+1))
+        fi
+
+        NEW_VERSION="$MAJOR.$MINOR.$BUILD.$REVISION"
+        echo $NEW_VERSION > version.txt
+        echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+    - name: Commit version bump
+      if: always()
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git add version.txt
+        git commit -m "Bump version to ${{ steps.bump.outputs.new_version }}" || echo "No changes to commit"
+        git push || echo "No push on PR builds"

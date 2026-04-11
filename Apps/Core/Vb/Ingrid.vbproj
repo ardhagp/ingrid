@@ -432,8 +432,8 @@
     <None Update="Resources\dev_catalog_log.ldf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\errlog.db">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    <None Update="Resources\errorlog.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Resources\ERRLOG.mdf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

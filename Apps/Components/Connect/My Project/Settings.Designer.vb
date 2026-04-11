@@ -56,7 +56,7 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("https://ardhagp.github.io/ingrid")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com")>  _
         Public ReadOnly Property ConnectionURL() As String
             Get
                 Return CType(Me("ConnectionURL"),String)

@@ -4,7 +4,6 @@ Imports System.IO
 Imports System.Data
 Imports System.ComponentModel
 Imports System.Runtime.Versioning
-Imports Ingrid.Ingrid
 
 Namespace UI
     Public Class FRMmainframe6
