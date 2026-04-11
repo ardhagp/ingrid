@@ -69,7 +69,7 @@
             PnlBottomButton.Controls.Add(Btn_Test)
             PnlBottomButton.Controls.Add(BtnCancel)
             PnlBottomButton.Controls.Add(BtnSave)
-            PnlBottomButton.Location = New Point(0, 637)
+            PnlBottomButton.Location = New Point(0, 631)
             PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
             PnlBottomButton.Size = New Size(807, 97)
             PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
@@ -79,13 +79,13 @@
             ' pnl_
             ' 
             pnl_.Margin = New Padding(7, 5, 7, 5)
-            pnl_.Size = New Size(807, 104)
+            pnl_.Size = New Size(807, 110)
             ' 
             ' SLFPanel
             ' 
             SLFPanel.Controls.Add(TbctlBasic)
             SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(807, 734)
+            SLFPanel.Size = New Size(807, 728)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(TbctlBasic, 0)
             ' 
@@ -98,7 +98,7 @@
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(444, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -121,7 +121,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(621, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -140,12 +140,12 @@
             TbctlBasic.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
             TbctlBasic.Controls.Add(tp1_)
             TbctlBasic.Controls.Add(tp2_)
-            TbctlBasic.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TbctlBasic.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TbctlBasic.Location = New Point(20, 12)
             TbctlBasic.Margin = New Padding(6, 5, 6, 5)
             TbctlBasic.Name = "TbctlBasic"
             TbctlBasic.SelectedIndex = 0
-            TbctlBasic.Size = New Size(767, 614)
+            TbctlBasic.Size = New Size(767, 608)
             TbctlBasic.TabIndex = 997
             ' 
             ' tp1_
@@ -172,7 +172,7 @@
             tp1_.Margin = New Padding(6, 5, 6, 5)
             tp1_.Name = "tp1_"
             tp1_.Padding = New Padding(6, 5, 6, 5)
-            tp1_.Size = New Size(759, 569)
+            tp1_.Size = New Size(759, 563)
             tp1_.TabIndex = 0
             tp1_.Text = "CONFIG"
             tp1_.UseVisualStyleBackColor = True
@@ -182,7 +182,7 @@
             ChkIsMasked.AutoSize = True
             ChkIsMasked.BackColor = Color.Transparent
             ChkIsMasked.FlatStyle = FlatStyle.Flat
-            ChkIsMasked.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            ChkIsMasked.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             ChkIsMasked.Location = New Point(306, 556)
             ChkIsMasked.Name = "ChkIsMasked"
             ChkIsMasked.Size = New Size(288, 36)
@@ -197,7 +197,7 @@
             btnExport.FlatAppearance.BorderSize = 2
             btnExport.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             btnExport.FlatStyle = FlatStyle.Flat
-            btnExport.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            btnExport.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             btnExport.ForeColor = Color.White
             btnExport.Location = New Point(569, 615)
             btnExport.Name = "btnExport"
@@ -214,7 +214,7 @@
             ' 
             CboDBEngine.DropDownStyle = ComboBoxStyle.DropDownList
             CboDBEngine.FlatStyle = FlatStyle.Flat
-            CboDBEngine.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            CboDBEngine.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             CboDBEngine.FormattingEnabled = True
             CboDBEngine.Location = New Point(306, 108)
             CboDBEngine.Margin = New Padding(4, 5, 4, 5)
@@ -251,7 +251,7 @@
             ' TxtDatabaseName
             ' 
             TxtDatabaseName.BackColor = Color.White
-            TxtDatabaseName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtDatabaseName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtDatabaseName.Location = New Point(306, 448)
             TxtDatabaseName.Margin = New Padding(6, 5, 6, 5)
             TxtDatabaseName.MaxLength = 255
@@ -284,7 +284,7 @@
             ChkDefault.AutoSize = True
             ChkDefault.BackColor = Color.Transparent
             ChkDefault.FlatStyle = FlatStyle.Flat
-            ChkDefault.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            ChkDefault.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             ChkDefault.Location = New Point(306, 512)
             ChkDefault.Margin = New Padding(6, 5, 6, 5)
             ChkDefault.Name = "ChkDefault"
@@ -296,7 +296,7 @@
             ' TxtPassword
             ' 
             TxtPassword.BackColor = Color.White
-            TxtPassword.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtPassword.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtPassword.Location = New Point(306, 382)
             TxtPassword.Margin = New Padding(6, 5, 6, 5)
             TxtPassword.MaxLength = 255
@@ -328,7 +328,7 @@
             ' TxtUsername
             ' 
             TxtUsername.BackColor = Color.White
-            TxtUsername.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtUsername.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtUsername.Location = New Point(306, 313)
             TxtUsername.Margin = New Padding(6, 5, 6, 5)
             TxtUsername.MaxLength = 255
@@ -398,7 +398,7 @@
             ' TxtPort
             ' 
             TxtPort.BackColor = Color.White
-            TxtPort.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtPort.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtPort.Location = New Point(306, 247)
             TxtPort.Margin = New Padding(6, 5, 6, 5)
             TxtPort.MaxLength = 255
@@ -456,7 +456,7 @@
             ' TxtConnectionName
             ' 
             TxtConnectionName.BackColor = Color.White
-            TxtConnectionName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtConnectionName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtConnectionName.Location = New Point(306, 38)
             TxtConnectionName.Margin = New Padding(6, 5, 6, 5)
             TxtConnectionName.MaxLength = 255
@@ -487,7 +487,7 @@
             ' TxtAddress
             ' 
             TxtAddress.BackColor = Color.White
-            TxtAddress.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtAddress.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtAddress.Location = New Point(306, 178)
             TxtAddress.Margin = New Padding(6, 5, 6, 5)
             TxtAddress.MaxLength = 255
@@ -517,6 +517,7 @@
             ' 
             ' tp2_
             ' 
+            tp2_.AutoScroll = True
             tp2_.Controls.Add(btnImport)
             tp2_.Controls.Add(btnSaveAs)
             tp2_.Controls.Add(Pnl1)
@@ -526,7 +527,7 @@
             tp2_.Location = New Point(4, 41)
             tp2_.Name = "tp2_"
             tp2_.Padding = New Padding(3)
-            tp2_.Size = New Size(759, 569)
+            tp2_.Size = New Size(759, 563)
             tp2_.TabIndex = 1
             tp2_.Text = "IMPORT / EXPORT"
             tp2_.UseVisualStyleBackColor = True
@@ -538,7 +539,7 @@
             btnImport.FlatAppearance.BorderSize = 2
             btnImport.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             btnImport.FlatStyle = FlatStyle.Flat
-            btnImport.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            btnImport.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             btnImport.ForeColor = Color.White
             btnImport.Location = New Point(6, 467)
             btnImport.Name = "btnImport"
@@ -558,9 +559,9 @@
             btnSaveAs.FlatAppearance.BorderSize = 2
             btnSaveAs.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             btnSaveAs.FlatStyle = FlatStyle.Flat
-            btnSaveAs.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            btnSaveAs.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             btnSaveAs.ForeColor = Color.White
-            btnSaveAs.Location = New Point(603, 467)
+            btnSaveAs.Location = New Point(581, 467)
             btnSaveAs.Name = "btnSaveAs"
             btnSaveAs.Size = New Size(150, 60)
             btnSaveAs.TabIndex = 5
@@ -576,18 +577,18 @@
             Pnl1.Controls.Add(txtImportContent)
             Pnl1.Location = New Point(6, 72)
             Pnl1.Name = "Pnl1"
-            Pnl1.Size = New Size(747, 389)
+            Pnl1.Size = New Size(725, 389)
             Pnl1.TabIndex = 4
             ' 
             ' txtImportContent
             ' 
             txtImportContent.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-            txtImportContent.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            txtImportContent.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             txtImportContent.Location = New Point(3, 15)
             txtImportContent.MaxLength = 0
             txtImportContent.Multiline = True
             txtImportContent.Name = "txtImportContent"
-            txtImportContent.Size = New Size(741, 371)
+            txtImportContent.Size = New Size(719, 371)
             txtImportContent.TabIndex = 3
             txtImportContent.Tag = "txt"
             txtImportContent.XOAutoTrim = False
@@ -617,9 +618,9 @@
             btnGet.FlatAppearance.BorderSize = 2
             btnGet.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             btnGet.FlatStyle = FlatStyle.Flat
-            btnGet.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            btnGet.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             btnGet.ForeColor = Color.White
-            btnGet.Location = New Point(603, 6)
+            btnGet.Location = New Point(581, 6)
             btnGet.Name = "btnGet"
             btnGet.Size = New Size(150, 60)
             btnGet.TabIndex = 2
@@ -645,11 +646,11 @@
             ' 
             ' txtImportCode
             ' 
-            txtImportCode.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            txtImportCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             txtImportCode.Location = New Point(249, 17)
             txtImportCode.MaxLength = 255
             txtImportCode.Name = "txtImportCode"
-            txtImportCode.Size = New Size(348, 39)
+            txtImportCode.Size = New Size(326, 39)
             txtImportCode.TabIndex = 0
             txtImportCode.Tag = "txt"
             txtImportCode.XOAutoTrim = False
@@ -666,7 +667,7 @@
             txtImportCode.XOPwdStrengthCalculate = False
             txtImportCode.XOPwdStrengthScore = 0
             txtImportCode.XOPwdStrengthText = Nothing
-            txtImportCode.XORestriction = ControlCodeBase.enuRestriction.None
+            txtImportCode.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
             txtImportCode.XOSearchBoxText = "Type then press Enter"
             txtImportCode.XOSQLText = ""
             txtImportCode.XOTanpaSpasi = False
@@ -680,7 +681,7 @@
             Btn_Test.FlatAppearance.BorderSize = 2
             Btn_Test.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(255), CByte(20))
             Btn_Test.FlatStyle = FlatStyle.Flat
-            Btn_Test.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            Btn_Test.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             Btn_Test.ForeColor = Color.Black
             Btn_Test.Location = New Point(20, 13)
             Btn_Test.Margin = New Padding(6, 5, 6, 5)
@@ -701,12 +702,11 @@
             ' 
             ' FRMconnEditor
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(807, 860)
             ControlBox = False
             FormBorderStyle = FormBorderStyle.FixedSingle
             Icon = CType(resources.GetObject("$this.Icon"), Icon)
-            KeyPreview = True
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMconnEditor"
             PnlBottomButton.ResumeLayout(False)
