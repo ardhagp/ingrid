@@ -6,6 +6,9 @@ Namespace UI
         Private WithEvents Frm_plnt_Editor As New FRMplntEditor
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
+        Private Const pCommand As String = "@Command"
+        Private Const pPlantId As String = "@PlantId"
+
 #Region "Sub Collections"
         <SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
@@ -19,9 +22,11 @@ Namespace UI
         ''' </summary>
         Private Sub GetRowID()
             If DgnPLNT.RowCount = 0 Then
-                varDataProperties.PlantId = "-1"
+                varDataProperties.PlantIsNew = True
             Else
-                varDataProperties.PlantId = DgnPLNT.CurrentRow.Cells("plant_id").Value.ToString
+                varDataProperties.PlantIsNew = False
+                varDataProperties.AllParameters.Remove(pPlantId)
+                varDataProperties.AllParameters.Add(pPlantId, CLng(DgnPLNT.CurrentRow.Cells("plant_id").Value))
             End If
         End Sub
 
@@ -33,13 +38,15 @@ Namespace UI
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub CommmsMenu_EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-            If Not varUserAccess.User(varDatabaseName, varDatabaseEngineE, "PLNT", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add) Then
+            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Add
+            varDataProperties.AllParameters.Remove(pCommand)
+            varDataProperties.AllParameters.Add(pCommand, "PLNT")
+            If Not varUserAccess.User(varDataProperties) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             varDataProperties.PlantIsNew = True
-            varDataProperties.PlantId = "-1"
             Frm_plnt_Editor = New FRMplntEditor
             Display(Frm_plnt_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new plant", True)
             UI.FRMmainframe6.Ts_status.Text = String.Empty
@@ -47,12 +54,17 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub CommmsMenu_EventDataEdit() Handles Com_mms_Menu.EventDataEdit
-            If Not varUserAccess.User(varDatabaseName, varDatabaseEngineE, "PLNT", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit) Then
+            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Edit
+            varDataProperties.AllParameters.Remove(pCommand)
+            varDataProperties.AllParameters.Add(pCommand, "PLNT")
+            If Not varUserAccess.User(varDataProperties) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
+
             Call GetRowID()
-            If varDataProperties.PlantId = "-1" Then
+
+            If varDataProperties.PlantIsNew Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 Frm_plnt_Editor = New FRMplntEditor
@@ -63,18 +75,21 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub CommmsMenu_EventDataDelete() Handles Com_mms_Menu.EventDataDelete
-            If Not varUserAccess.User(varDatabaseName, varDatabaseEngineE, "PLNT", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete) Then
+            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Delete
+            varDataProperties.AllParameters.Remove(pCommand)
+            varDataProperties.AllParameters.Add(pCommand, "PLNT")
+            If Not (varUserAccess.User(varDataProperties)) Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
 
-            If varDataProperties.PlantId = "-1" Then
+            If varDataProperties.PlantIsNew Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                varDataProperties.PlantIsNew = False
                 If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    If CMDplnt.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.PlantId)) Then
+                    If CMDplnt.View.DeleteData(varDataProperties) Then
                         Call GetData(True)
                         UI.FRMmainframe6.Ts_status.Text = "Success"
                     Else
@@ -103,24 +118,21 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub FRMplnt_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Com_mms_Menu.LoadIn(Me)
+            Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
             DgnPLNT.XOGETNewColor()
-            Call SavedOrRefresh()
+            Call GetData(True)
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
-            Call SavedOrRefresh()
+            'Call SavedOrRefresh()'
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub FRMplntEditor_RecordSaved() Handles Frm_plnt_Editor.EventRecordSaved
-            Call SavedOrRefresh()
+            'Call SavedOrRefresh()'
         End Sub
 
-        <SupportedOSPlatform("windows")>
-        Private Sub SavedOrRefresh()
-            Call GetData(True)
-        End Sub
 #End Region
     End Class
 End Namespace

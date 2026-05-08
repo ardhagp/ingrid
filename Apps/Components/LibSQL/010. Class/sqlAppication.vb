@@ -1,67 +1,62 @@
 ﻿Imports System.Data
+Imports System.Media
 Imports System.Runtime.Versioning
 Imports CMCv
-Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Namespace Application
 
     Public Class Access
-        Public Enum TypeOfAccess
-            View = 1
-            Add = 2
-            Edit = 3
-            Delete = 4
-            Report = 5
-        End Enum
 
         Private ReadOnly varDatabaseRequestMssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
         Private ReadOnly varDatabaseRequestMysql(2) As Database.Adapter.MySQL.Display.Request
 
         <SupportedOSPlatform("windows")>
-        Public Function User(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String, uid As String, typeofaccess As TypeOfAccess) As Boolean
+        Public Function User(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varView As Integer
             Dim varTypeOfAccess As String = String.Empty
 
-            Select Case typeofaccess
-                Case Access.TypeOfAccess.View
+            Select Case dataproperties.SystemTypeOfAccess
+                Case LibApp.Ingrid.Global.TypeOfAccess.View
                     varTypeOfAccess = "uac.useraccess_view"
-                Case Access.TypeOfAccess.Add
+                Case LibApp.Ingrid.Global.TypeOfAccess.Add
                     varTypeOfAccess = "uac.useraccess_add"
-                Case Access.TypeOfAccess.Edit
+                Case LibApp.Ingrid.Global.TypeOfAccess.Edit
                     varTypeOfAccess = "uac.useraccess_edit"
-                Case Access.TypeOfAccess.Delete
+                Case LibApp.Ingrid.Global.TypeOfAccess.Delete
                     varTypeOfAccess = "uac.useraccess_delete"
-                Case Access.TypeOfAccess.Report
+                Case LibApp.Ingrid.Global.TypeOfAccess.Report
                     varTypeOfAccess = "uac.useraccess_reports"
             End Select
 
             Try
-                Dim varIsRoot As Integer = 0
+                Dim varIsAdmin As Boolean = False
 
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(1).Query = String.Format("select count(usr.user_id) from dbo.sys_user usr where (usr.user_id = '{0}') and (usr.user_root = 1)", uid)
-                    varIsRoot = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(1).Query = $"select count(usr.user_id) from sys_user usr where (usr.user_id = '{uid}') and (usr.user_root = 1)"
-                    varIsRoot = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), Integer)
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    varDatabaseRequestMssql2008(1).Query = String.Format("select count(usr.user_id) from dbo.sys_user usr where (usr.user_id = '{0}') and (usr.user_root = 1)", dataproperties.AllParameters("@UserId"))
+                    varIsAdmin = CBool(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query))
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varDatabaseRequestMysql(1).Query = $"select count(usr.user_id) from sys_user usr where (usr.user_id = @UserId) and (usr.user_root = 1)"
+                    varIsAdmin = CBool(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters))
                 End If
 
-                If varIsRoot = 1 Then
+                If varIsAdmin Then
                     Return True
                 Else
-                    If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                         varDatabaseRequestMssql2008(1).Query = String.Format("select count(uac.useraccess_id) as [useraccess_id] from dbo.[[sys]]useraccess] uac " &
                                                                          "inner join dbo.sys_module mo on mo.module_id = uac.useraccess_module " &
-                                                                         "where (mo.module_code = '{0}') and (uac.useraccess_user = '{1}') and ({2} = 1)", tcode, uid, varTypeOfAccess)
-                        varView = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
-                    ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                                                                         "where (mo.module_code = '{0}') and (uac.useraccess_user = '{1}') and ({2} = 1)", Command, dataproperties.AllParameters("@UserId"), varTypeOfAccess)
+                        varView = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Integer)
+                    ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                         varDatabaseRequestMysql(1).Query = $"select count(uac.useraccess_id) as `useraccess_id` from sys_useraccess uac " &
-                                                           $"inner join dbo.sys_module mo on mo.module_id = uac.useraccess_module " &
-                                                           $"where (mo.module_code = '{tcode}') and (uac.useraccess_user = '{uid}') and ({varTypeOfAccess} = 1)"
-                        varView = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), Integer)
+                                                           $"inner join sys_module mo on mo.module_id = uac.useraccess_module " &
+                                                           $"where (mo.module_code = @Command) and (uac.useraccess_user = @UserId) and ({varTypeOfAccess} = 1)"
+                        varView = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters))
                     End If
 
                     If varView = 0 Then
+                        SystemSounds.Exclamation.Play()
+                        Decision(My.Application.Info.AssemblyName.ToUpper, $"You are not authorized to : " & IIf(dataproperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Report, "View ", "").ToString & "{typeofaccess}" & IIf(dataproperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Report, "", " record(s)").ToString, LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                         Return False
                     Else
                         Return True
@@ -78,16 +73,16 @@ Namespace Application
         Private varDataSet As DataSet
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function Exist(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String) As Boolean
+        Public Shared Function Exist(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varIsExist As Boolean
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(1).Query = String.Format("select count(mo.module_id) from dbo.sys_module mo where mo.module_code = '{0}'", tcode)
-                    varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Boolean)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(1).Query = $"select count(mo.module_id) from sys_module mo where mo.module_code = '{tcode}'"
-                    varIsExist = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), Boolean)
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    varDatabaseRequestMssql2008(1).Query = $"select count(mo.module_id) from dbo.sys_module mo where mo.module_code = '{dataproperties.AllParameters("@Command")}'"
+                    varIsExist = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Boolean)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varDatabaseRequestMysql(1).Query = $"select count(mo.module_id) from sys_module mo where mo.module_code = @Command"
+                    varIsExist = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters), Boolean)
                 End If
                 Return varIsExist
             Catch ex As Exception
@@ -96,16 +91,16 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function Locked(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String) As Boolean
+        Public Shared Function Locked(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varIsLocked As Boolean
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(1).Query = String.Format("select count(mo.module_id) from dbo.sys_module mo where mo.module_code = '{0}' and mo.module_ismaintenance = 'true'", tcode)
-                    varIsLocked = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Boolean)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(1).Query = $"select count(mo.module_id) from sys_module mo where mo.module_code = '{tcode}' and mo.module_ismaintenance = 1"
-                    varIsLocked = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), Boolean)
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    varDatabaseRequestMssql2008(1).Query = $"select count(mo.module_id) from dbo.sys_module mo where mo.module_code = '{dataproperties.AllParameters("@Command")}' and mo.module_ismaintenance = 'true'"
+                    varIsLocked = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Boolean)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varDatabaseRequestMysql(1).Query = $"select count(mo.module_id) from sys_module mo where mo.module_code = @Command and mo.module_ismaintenance = 1"
+                    varIsLocked = CBool(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters))
                 End If
                 Return varIsLocked
             Catch ex As Exception
@@ -114,16 +109,16 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function DisplayAutoComplete(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine) As DataSet
+        Public Function DisplayAutoComplete(dataproperties As LibApp.Ingrid.Global.Properties) As DataSet
             Try
                 varDataSet = New DataSet
 
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(2).Query = "select mods.module_code from dbo.sys_module mods where mods.module_issystem = 0 order by mods.module_code"
-                    varDataSet = varDatabaseEngineMssql2008.GetDataSet(databasename, varDatabaseRequestMssql2008(2), "TCMD")
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(2).Query = "select mods.module_code from dbo.sys_module mods where mods.module_issystem = 0 order by mods.module_code"
-                    varDataSet = varDatabaseEngineMysql.GetDataSet(databasename, varDatabaseRequestMysql(2), "TCMD")
+                    varDataSet = varDatabaseEngineMssql2008.GetDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(2), "TCMD")
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varDatabaseRequestMysql(2).Query = $"select mods.module_code from sys_module mods where mods.module_issystem = 0 order by mods.module_code"
+                    varDataSet = varDatabaseEngineMysql.GetDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TCMD")
                 End If
                 Return varDataSet
             Catch ex As Exception
@@ -132,16 +127,16 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function MaxPDFallowed(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine) As Double
+        Public Shared Function MaxPDFallowed(dataproperties As LibApp.Ingrid.Global.Properties) As Double
             Dim varSettingValue As Double
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_uploadpdf from dbo.sys_settings s")
-                    varSettingValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Double)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varSettingValue = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Double)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"select s.settings_uploadpdf from sys_settings s limit 0,1"
-                    varSettingValue = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Double)
+                    varSettingValue = CDbl(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
                 End If
             Catch ex As Exception
                 varSettingValue = 0.9
@@ -151,16 +146,16 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function MaxPhotoallowed(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine) As Double
+        Public Shared Function MaxPhotoallowed(dataproperties As LibApp.Ingrid.Global.Properties) As Double
             Dim varSettingValue As Double
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_uploadphoto from dbo.sys_settings s")
-                    varSettingValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Double)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varSettingValue = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Double)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"select s.settings_uploadphoto from sys_settings s limit 0,1"
-                    varSettingValue = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Double)
+                    varSettingValue = CDbl(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
                 End If
             Catch ex As Exception
                 varSettingValue = 0.9
@@ -170,16 +165,16 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function MinPasswordLength(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine) As Integer
+        Public Shared Function MinPasswordLength(dataproperties As LibApp.Ingrid.Global.Properties) As Integer
             Dim varMinPasswordLength As Integer
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_minpasswordlength from dbo.sys_settings s")
-                    varMinPasswordLength = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varMinPasswordLength = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Integer)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"select s.settings_minpasswordlength from sys_settings s limit 0,1"
-                    varMinPasswordLength = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
+                    varMinPasswordLength = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), Integer)
                 End If
             Catch ex As Exception
                 varMinPasswordLength = 8
@@ -188,26 +183,26 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function TextMark(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, isadministrator As Boolean) As String
+        Public Shared Function TextMark(dataproperties As LibApp.Ingrid.Global.Properties) As String
             Dim varValue As Integer
             Dim varSettingValue As String = String.Empty
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("select s.settings_showwatermark from dbo.sys_settings s where s.settings_id = 1")
-                    varValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
+                    varValue = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Integer)
                     varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_textmark from db_universe_erp.dbo.sys_settings s")
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"select s.settings_showwatermark from sys_settings s where s.settings_id = 1"
-                    varValue = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
+                    varValue = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), Integer)
                     varDatabaseRequestMysql(0).Query = $"select s.settings_textmark from sys_settings s limit 0,1"
                 End If
 
-                If (varValue = 1 AndAlso (isadministrator)) OrElse (varValue = 2 AndAlso Not (isadministrator)) OrElse (varValue = 3) Then
-                    If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                        varSettingValue = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
-                    ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                        varSettingValue = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query).ToString
+                If (varValue = 1 AndAlso (dataproperties.IsAdministrator)) OrElse (varValue = 2 AndAlso Not (dataproperties.IsAdministrator)) OrElse (varValue = 3) Then
+                    If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                        varSettingValue = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query).ToString
+                    ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                        varSettingValue = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query).ToString
                     End If
                 Else
                     varSettingValue = String.Empty
@@ -224,16 +219,16 @@ Namespace Application
         Private ReadOnly varDatabaseRequestMysql(1) As Database.Adapter.MySQL.Display.Request
 
         <SupportedOSPlatform("windows")>
-        Public Function Exist(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, employeeid As String) As Integer
+        Public Function Exist(dataproperties As LibApp.Ingrid.Global.Properties) As Integer
             Dim varIsExist As Integer
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(0).Query = String.Format("select count(nt.notification_id) as [new_notification] from dbo.[[sys]]notification] nt where (nt.notification_employee = '{0}') and (nt.notification_isread = 0)", employeeid)
-                    varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(0).Query = $"select count(nt.notification_id) as `new_notification` from sys_notification nt where (nt.notification_employee = '{employeeid}') and (nt.notification_isread = 0)"
-                    varIsExist = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select count(nt.notification_id) as [new_notification] from dbo.[[sys]]notification] nt where (nt.notification_employee = '{0}') and (nt.notification_isread = 0)", dataproperties.EmployeeId)
+                    varIsExist = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Integer)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varDatabaseRequestMysql(0).Query = $"select count(nt.notification_id) as `new_notification` from sys_notification nt where (nt.notification_employee = @EmployeeId) and (nt.notification_isread = 0)"
+                    varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
                 End If
                 Return varIsExist
             Catch ex As Exception
@@ -247,27 +242,27 @@ Namespace Application
         Private ReadOnly varDatabaseRequestMysql(1) As Database.Adapter.MySQL.Display.Request
 
         <SupportedOSPlatform("windows")>
-        Public Function Show(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, Optional isadministrator As Boolean = False) As Boolean
+        Public Function Show(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varValue As Integer
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("select s.settings_showrunningtext from dbo.sys_settings s where s.settings_id = 1")
-                    varValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varValue = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"select s.settings_showrunningtext from sys_settings s where s.settings_id = 1"
-                    varValue = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
+                    varValue = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
                 End If
 
-                If varValue = 1 AndAlso (isadministrator) Then
-                        Return True
-                    ElseIf varValue = 2 AndAlso (Not (isadministrator)) Then
-                        Return True
-                    ElseIf varValue = 3 Then
-                        Return True
-                    Else
-                        Return False
-                    End If
+                If varValue = 1 AndAlso (dataproperties.IsAdministrator) Then
+                    Return True
+                ElseIf varValue = 2 AndAlso (Not (dataproperties.IsAdministrator)) Then
+                    Return True
+                ElseIf varValue = 3 Then
+                    Return True
+                Else
+                    Return False
+                End If
             Catch ex As Exception
                 Return False
             End Try

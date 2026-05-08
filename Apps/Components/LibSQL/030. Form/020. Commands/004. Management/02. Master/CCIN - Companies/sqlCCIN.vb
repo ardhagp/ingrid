@@ -3,7 +3,7 @@ Imports CMCv
 
 Namespace CMDccin
     Public Class View
-        Private Shared consTableName As String = "CheckRelation"
+        Private Shared ReadOnly consTableName As String = "CheckRelation"
         Private Shared varQuery As String
 
         <SupportedOSPlatform("windows")>
@@ -42,8 +42,8 @@ Namespace CMDccin
             Dim varHasChild As Boolean = True
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varQuery = $"SELECT now() as `timestamp`, (select count(*) from v_ccin_granularity_cdin where department_company = '{dataproperties.CompanyId}' limit 0,1) as `relation1`, (select count(*) from v_ccin_granularity_plnt where plant_company = '{dataproperties.CompanyId}' limit 0,1) as `relation2`;"
-                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName)
+                    varQuery = $"SELECT now() as `timestamp`, (select count(*) from v_ccin_granularity_cdin where department_company = @CompanyID limit 0,1) as `relation1`, (select count(*) from v_ccin_granularity_plnt where plant_company = @CompanyID limit 0,1) as `relation2`;"
+                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName, dataproperties.AllParameters)
                 End If
 
                 If datasetname.Tables(consTableName).Rows.Count > 0 Then
@@ -72,11 +72,11 @@ Namespace CMDccin
                 End If
 
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(0).Query = $"delete from dbo.man_company where company_id='{dataproperties.CompanyId}'"
+                    varDatabaseRequestMssql2008(0).Query = $"delete from dbo.man_company where company_id=@CompanyId"
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(0).Query = $"delete from man_company where company_id='{dataproperties.CompanyId}'"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query)
+                    varDatabaseRequestMysql(0).Query = $"delete from man_company where company_id=@CompanyId"
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters)
                 End If
                 varSuccess = True
             Catch ex As Exception
@@ -101,27 +101,28 @@ Namespace CMDccin
 
     Public Class Editor
         Private Shared varQuery As String
+
         <SupportedOSPlatform("windows")>
         Public Shared Function IsDuplicate(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varIsDuplicate As Integer
             Dim varWhere As String = "where "
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                If dataproperties.CompanyId = "-1" Then
-                    varWhere += $" c.company_code = '{dataproperties.CompanyCode}'"
+                If dataproperties.CompanyIsNew Then
+                    varWhere += $" c.company_code = @CompanyCode"
                 Else
-                    varWhere += $" c.company_code = '{dataproperties.CompanyCode}' and c.company_id <> '{dataproperties.CompanyID}'"
+                    varWhere += $" c.company_code = @CompanyCode and c.company_id <> @CompanyId"
                 End If
                 varDatabaseRequestMssql2008(1).Query = $"select count(c.company_id) as [isduplicate] from dbo.man_company c {varWhere}"
                 varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Integer)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                If dataproperties.CompanyId = "-1" Then
-                    varWhere += $" c.company_code = '{dataproperties.CompanyCode}'"
+                If dataproperties.CompanyIsNew Then
+                    varWhere += $" c.company_code = @CompanyCode"
                 Else
-                    varWhere += $" c.company_code = '{dataproperties.CompanyCode}' and c.company_id <> '{dataproperties.CompanyID}'"
+                    varWhere += $" c.company_code = @CompanyCode and c.company_id <> @CompanyId"
                 End If
                 varDatabaseRequestMysql(1).Query = $"select count(c.company_id) as `isduplicate` from man_company c {varWhere}"
-                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Integer)
+                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters), Integer)
             End If
             If varIsDuplicate = 0 Then
                 Return False
@@ -133,27 +134,27 @@ Namespace CMDccin
         <SupportedOSPlatform("windows")>
         Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean ', databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, companycode As String, companyname As String, searchterm1 As String, searchterm2 As String, description As String, Optional rowid As String = "-1") As Boolean
             Try
-                If dataproperties.CompanyID = "-1" AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    Dim varHash As String = CMCv.Security.Encrypt.MD5()
-                    varDatabaseRequestMssql2008(1).Query = $"insert into dbo.man_company(company_id,company_code,company_name,company_searchterm1,company_searchterm2,company_description) " &
-                                                           $"values('{varHash}', '{dataproperties.CompanyCode}','{dataproperties.CompanyName}','{dataproperties.CompanySearchTerm1}','{dataproperties.CompanySearchTerm2}','{dataproperties.CompanyDescription}')"
-                ElseIf dataproperties.CompanyID <> "-1" AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(1).Query = $"update dbo.man_company set company_code='{dataproperties.CompanyCode}',company_name='{dataproperties.CompanyName}',company_searchterm1='{dataproperties.CompanySearchTerm1}',company_searchterm2='{dataproperties.CompanySearchTerm2}',company_description='{dataproperties.CompanyDescription}' " &
-                                                           $"where company_id='{dataproperties.CompanyID}'"
-                ElseIf dataproperties.CompanyID = "-1" AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    Dim varHash As String = CMCv.Security.Encrypt.MD5()
-                    varDatabaseRequestMysql(1).Query = $"insert into man_company(company_id,company_code,company_name,company_searchterm1,company_searchterm2,company_description) " &
-                                                       $"values('{varHash}', '{dataproperties.CompanyCode}','{dataproperties.CompanyName}','{dataproperties.CompanySearchTerm1}','{dataproperties.CompanySearchTerm2}','{dataproperties.CompanyDescription}')"
-                ElseIf dataproperties.CompanyID <> "-1" AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(1).Query = $"update man_company set company_code='{dataproperties.CompanyCode}',company_name='{dataproperties.CompanyName}',company_searchterm1='{dataproperties.CompanySearchTerm1}',company_searchterm2='{dataproperties.CompanySearchTerm2}',company_description='{dataproperties.CompanyDescription}' " &
-                                                           $"where company_id='{dataproperties.CompanyID}'"
+                If dataproperties.CompanyIsNew AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    dataproperties.AllParameters.Add("@CompanyToken", CMCv.Security.Encrypt.MD5())
+                    varDatabaseRequestMssql2008(1).Query = $"insert into dbo.man_company(company_code,company_name,company_searchterm1,company_searchterm2,company_description) " &
+                                                           $"values(@CompanyCode, @CompanyName, @CompanySearchTerm1, @CompanySearchTerm2, @CompanyDescription)"
+                ElseIf Not (dataproperties.CompanyIsNew) AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    varDatabaseRequestMssql2008(1).Query = $"update dbo.man_company set company_code = @CompanyCode ,company_name = @CompanyName, company_searchterm1 = @CompanySearchTerm1, company_searchterm2 = @CompanySearchTerm2, company_description = @CompanyDescription, company_datelastmodified = now() " &
+                                                           $"where company_id = @CompanyId"
+                ElseIf (dataproperties.CompanyIsNew) AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    dataproperties.AllParameters.Add("@CompanyToken", CMCv.Security.Encrypt.MD5())
+                    varDatabaseRequestMysql(1).Query = $"insert into man_company(company_code,company_name,company_searchterm1,company_searchterm2,company_description) " &
+                                                       $"values(@CompanyCode, @CompanyName, @CompanySearchTerm1, @CompanySearchTerm2, @CompanyDescription)"
+                ElseIf Not (dataproperties.CompanyIsNew) AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varDatabaseRequestMysql(1).Query = $"update man_company set company_code = @CompanyCode, company_name = @CompanyName, company_searchterm1 = @CompanySearchTerm1, company_searchterm2 = @CompanySearchTerm2, company_description = @CompanyDescription, company_datelastmodified = now() " &
+                                                       $"where company_id = @CompanyId"
                 End If
 
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                     dataproperties.CompanyIsCommitSuccess = True
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                     dataproperties.CompanyIsCommitSuccess = True
                 End If
                 Return dataproperties.CompanyIsCommitSuccess
@@ -167,13 +168,13 @@ Namespace CMDccin
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varQuery = $"SELECT c.company_code, c.company_name, c.company_searchterm1, c.company_searchterm2, c.company_description " &
                            $"FROM dbo.man_company c " &
-                           $"WHERE c.company_id = '{dataproperties.CompanyId}'"
+                           $"WHERE c.company_id = @CompanyId"
                 datasetname = varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_company")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varQuery = $"SELECT c.company_code, c.company_name, c.company_searchterm1, c.company_searchterm2, c.company_description " &
                            $"FROM man_company c " &
-                           $"WHERE c.company_id = '{dataproperties.CompanyId}'"
-                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_company")
+                           $"WHERE c.company_id = @CompanyId"
+                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_company", dataproperties.AllParameters)
             End If
         End Sub
     End Class

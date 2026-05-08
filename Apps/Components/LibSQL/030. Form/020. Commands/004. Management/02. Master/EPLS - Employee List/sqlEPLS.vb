@@ -1,5 +1,4 @@
-﻿Imports System.Data
-Imports System.Drawing
+﻿Imports System.Drawing
 Imports System.IO
 Imports System.Runtime.Versioning
 Imports CMCv
@@ -8,37 +7,68 @@ Namespace CMDepls
     Public Class View
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As String, grid As CMCv.UI.Control.dgn, status As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, grid As CMCv.UI.Control.dgn, status As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt)
             ReDim varDatabaseRequestMssql2008(2)
-            Dim varWhere As String = String.Format("where ")
+            Dim varWhere As String = $"where "
 
-            If (find.Text = String.Empty) AndAlso (forcerefresh) Then
-                varWhere = String.Format("")
-            Else
-                varWhere += String.Format("cm.company_code like '%{0}%' or dp.departement_code like '%{0}%' or ps.position_code like '%{0}%' or em.employee_number = '{0}' or em.employee_fullname like '%{0}%' or " &
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If (find.Text = String.Empty) AndAlso (dataproperties.EmployeeIsForceRefresh) Then
+                    varWhere = $""
+                Else
+                    varWhere += String.Format("cm.company_code like '%{0}%' or dp.departement_code like '%{0}%' or ps.position_code like '%{0}%' or em.employee_number = '{0}' or em.employee_fullname like '%{0}%' or " &
                                         "em.employee_nickname like '%{0}%'", find.XOSQLText)
-            End If
+                End If
 
-            varDatabaseRequestMssql2008(0).Query = String.Format("select em.employee_id, cm.company_code, dp.departement_code, ps.position_code, (select gd.employeegrade_code from dbo.man_employeegrade gd " &
+                varDatabaseRequestMssql2008(0).Query = String.Format("select em.employee_id, cm.company_code, dp.departement_code, ps.position_code, (select gd.employeegrade_code from dbo.man_employeegrade gd " &
                                                     "where gd.employeegrade_id = em.employee_grade) as [employee_grade], em.employee_number, em.employee_fullname, em.employee_nickname, (select ct.contracttype_code " &
                                                     "from dbo.[[man]]contracttype] ct where ct.contracttype_id = em.employee_contracttype) as [employee_contracttype], employee_gender, (case em.employee_active when 0 then 'No' " &
                                                     "when 1 then 'Yes' end) as [employee_active] from dbo.man_employee em inner join dbo.man_position ps on ps.position_id = em.employee_position " &
                                                     "inner join dbo.man_department dp on dp.department_id = ps.position_departement inner join dbo.man_company cm on cm.company_id = dp.departement_company {0} " &
                                                     "order by cm.company_code, dp.departement_code, ps.position_code, em.employee_fullname", varWhere)
 
-            varDatabaseRequestMssql2008(0).DataGrid = grid
-            varDatabaseRequestMssql2008(0).StatusBar = status
-            varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TEmployee")
+                varDatabaseRequestMssql2008(0).DataGrid = grid
+                varDatabaseRequestMssql2008(0).StatusBar = status
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TEmployee")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                If (find.Text = String.Empty) AndAlso (dataproperties.EmployeeIsForceRefresh) Then
+                    varWhere = $""
+                Else
+                    varWhere += $"cm.company_code like '%{find.XOSQLText}%' or dp.department_code like '%{find.XOSQLText}%' or ps.position_code like '%{find.XOSQLText}%' or em.employee_number = '{find.XOSQLText}' or em.employee_fullname like '%{find.XOSQLText}%' or " &
+                                $"em.employee_nickname like '%{find.XOSQLText}%'"
+                End If
+                varDatabaseRequestMysql(0).Query = $"select em.employee_id, cm.company_code, cm.company_name, " &
+                                                   $"dp.department_code, dp.department_name, ps.position_code, ps.position_name, " &
+                                                   $"(select et.employmenttype_name from man_employmenttype et where et.employmenttype_id = em.employee_employmenttype) as `employmenttype_name`, " &
+                                                   $"em.employee_number, " &
+                                                   $"em.employee_fullname, " &
+                                                   $"em.employee_nickname, " &
+                                                   $"em.employee_gender, " &
+                                                   $"(case em.employee_isactive when 0 then 'No' when 1 then 'Yes' end) as `employee_isactive` " &
+                                                   $"From man_employee em " &
+                                                   $"inner Join man_position ps on ps.position_id = em.employee_position " &
+                                                   $"inner Join man_department dp on dp.department_id = ps.position_department " &
+                                                   $"inner Join man_company cm On cm.company_id = dp.department_company {varWhere} " &
+                                                   $"order by cm.company_code, dp.department_code, ps.position_code, em.employee_fullname"
+
+                varDatabaseRequestMysql(0).DataGrid = grid
+                varDatabaseRequestMysql(0).StatusBar = status
+                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TEmployee")
+            End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DeleteData(databasename As String, dbengine As String, rowid As String) As Boolean
-            Dim varSuccess As Boolean = False
+        Public Shared Function DeleteData(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet) As Boolean
+            Dim varSuccess As Boolean
             Try
-                varDatabaseRequestMssql2008(1).Query = String.Format("delete from dbo.man_employee where (employee_id = '{0}')", rowid)
-                varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
-
-                varSuccess = True
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    varDatabaseRequestMssql2008(1).Query = $"delete from dbo.man_employee where (employee_id = @EmployeeId)"
+                    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
+                    varSuccess = True
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varDatabaseRequestMysql(1).Query = $"delete from man_employee where (employee_id = @EmployeeId)"
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
+                    varSuccess = True
+                End If
             Catch ex As Exception
                 varSuccess = False
             End Try
@@ -48,6 +78,53 @@ Namespace CMDepls
 
     Public Class Editor
         ReadOnly varImage As New CMCv.ImageEditor.Proccessor.Compress
+
+        Private Const pEmployeeToken As String = "@EmployeeToken"
+
+        <SupportedOSPlatform("windows")>
+        Public Shared Sub GetEmployeeProperties(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet)
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                varDatabaseRequestMssql2008(0).Query = $"select em.employee_id, cm.company_id, cm.company_code, cm.company_name, " &
+                                                   $"dp.department_id, dp.department_code, dp.department_name, " &
+                                                   $"ps.position_id, ps.position_code, ps.position_name, " &
+                                                   $"(select et.employmenttype_name from man_employmenttype et where et.employmenttype_id = em.employee_employmenttype) as `employmenttype_name`, " &
+                                                   $"em.employee_personalidnumber, " &
+                                                   $"em.employee_number, " &
+                                                   $"em.employee_fullname, " &
+                                                   $"em.employee_nickname, " &
+                                                   $"em.employee_gender, " &
+                                                   $"(case em.employee_active when 0 then 'No' when 1 then 'Yes' end) as `employee_active` " &
+                                                   $"from man_employee em " &
+                                                   $"inner join man_position ps on ps.position_id = em.employee_position " &
+                                                   $"inner join man_department dp on dp.department_id = ps.position_department " &
+                                                   $"inner join man_company cm on cm.company_id = dp.department_company " &
+                                                   $"where em.employee_id = @EmployeeId " &
+                                                   $"order by em.employee_id"
+                varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query, datasetname, "EPLS_Editor")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseRequestMysql(0).Query = $"select em.employee_id, cm.company_id, cm.company_code, cm.company_name, " &
+                                                   $"dp.department_id, dp.department_code, dp.department_name, " &
+                                                   $"ps.position_id, ps.position_code, ps.position_name, " &
+                                                   $"(select et.employmenttype_name from man_employmenttype et where et.employmenttype_id = em.employee_employmenttype) as `employmenttype_name`, " &
+                                                   $"em.employee_personalidnumber, " &
+                                                   $"em.employee_number, " &
+                                                   $"em.employee_fullname, " &
+                                                   $"em.employee_nickname, " &
+                                                   $"em.employee_gender, " &
+                                                   $"em.employee_birthdate, " &
+                                                   $"em.employee_birthplace, " &
+                                                   $"em.employee_address, " &
+                                                   $"em.employee_employmenttype, " &
+                                                   $"em.employee_isactive " &
+                                                   $"from man_employee em " &
+                                                   $"inner join man_position ps on ps.position_id = em.employee_position " &
+                                                   $"inner join man_department dp on dp.department_id = ps.position_department " &
+                                                   $"inner join man_company cm on cm.company_id = dp.department_company " &
+                                                   $"where em.employee_id = @EmployeeId " &
+                                                   $"order by em.employee_id"
+                varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "EPLS_Editor", dataproperties.AllParameters)
+            End If
+        End Sub
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GetCompany(databasename As String, dbengine As String, rowid As String, Optional positionid As String = "-1") As String
@@ -259,7 +336,7 @@ Namespace CMDepls
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GetIsHavePhoto(databasename As String, dbengine As String, rowid As String) As Integer
-            Dim varIsHavePhoto As Integer = 0
+            Dim varIsHavePhoto As Integer
 
             varDatabaseRequestMssql2008(0).Query = String.Format("select count(f.file_id) as total from db_universe_erp_file.dbo.sto_file f where (f.file_parent = '{0}') and (f.file_tag = 'EMPLOYEE-PROFILE-PHOTO');", rowid)
             varIsHavePhoto = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
@@ -273,7 +350,7 @@ Namespace CMDepls
             Dim varBytes As Byte()
 
             Try
-                varDatabaseRequestMssql2008(0).Query = String.Format("select f.file_content from db_universe_erp_file.dbo.sto_file f where f.file_parent = '{0}' and f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_filetype = 'jpg'", rowid)
+                varDatabaseRequestMssql2008(0).Query = $"select f.file_content from db_universe_erp_file.dbo.sto_file f where f.file_parent = '{rowid}' and f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_filetype = 'jpg'"
                 varBytes = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Byte())
 
                 If Not IsNothing(varBytes) Then
@@ -287,15 +364,24 @@ Namespace CMDepls
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsPersonalIDExist(databasename As String, dbengine As String, isnew As Boolean, personalid As String, Optional employeeid As String = "") As Boolean
-            Dim varIsExist As Integer = 0
+        Public Shared Function IsPersonalIdExist(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
+            Dim varIsExist As Integer
 
-            If isnew Then
-                varDatabaseRequestMssql2008(1).Query = String.Format("select count(em.employee_personalid) from dbo.man_employee em where em.employee_personalid = '{0}'", personalid)
-            Else
-                varDatabaseRequestMssql2008(1).Query = String.Format("select count(em.employee_personalid) from dbo.man_employee em where (em.employee_personalid = '{0}' and em.employee_id <> '{1}')", personalid, employeeid)
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.EmployeeIsNew Then
+                    varDatabaseRequestMssql2008(0).Query = "select count(em.employee_personalid) from dbo.man_employee em where em.employee_personalid = @EmployeePersonalId"
+                Else
+                    varDatabaseRequestMssql2008(0).Query = $"select count(em.employee_personalid) from man_employee em where (em.employee_personalid = @EmployeePersonalId and em.employee_id <> @EmployeeId)"
+                End If
+                varIsExist = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query, dataproperties.AllParameters), Integer)
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                If dataproperties.EmployeeIsNew Then
+                    varDatabaseRequestMysql(0).Query = $"select count(em.employee_personalid) from dbo.man_employee em where em.employee_personalid = @EmployeePersonalId"
+                Else
+                    varDatabaseRequestMysql(0).Query = $"select count(em.employee_personalid) from man_employee em where (em.employee_personalid = @EmployeePersonalId and em.employee_id <> @EmployeeId)"
+                End If
+                varIsExist = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query, dataproperties.AllParameters), Integer)
             End If
-            varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
 
             If varIsExist = 0 Then
                 Return False
@@ -306,9 +392,9 @@ Namespace CMDepls
 
         <SupportedOSPlatform("windows")>
         Public Shared Function IsPositionExist(databasename As String, dbengine As String, positionid As String) As Boolean
-            Dim varIsExist As Integer = 0
+            Dim varIsExist As Integer
 
-            varDatabaseRequestMssql2008(1).Query = String.Format("select count(ps.position_id) as [rows] from dbo.man_position ps where (ps.position_id = '{0}')", positionid)
+            varDatabaseRequestMssql2008(1).Query = $"select count(ps.position_id) as [rows] from dbo.man_position ps where (ps.position_id = '{positionid}')"
             varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
 
             If varIsExist = 0 Then
@@ -316,26 +402,36 @@ Namespace CMDepls
             Else
                 Return True
             End If
-
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsDuplicate(databasename As String, dbengine As String, positionid As String, employeenumber As String, Optional rowid As String = "-1") As Boolean
+        Public Shared Function IsEmployeeNumberDuplicate(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varIsDuplicate As Integer = 0
             Dim varWhere As String = "where "
 
-            If rowid = "-1" Then
-                varWhere += String.Format(" (em.employee_number = '{0}') and dp.departement_company = (select dp1.departement_company from dbo.man_position ps1 " &
-                                        "inner join dbo.man_department dp1 on dp1.department_id = ps1.position_departement where ps1.position_id = '{1}')", employeenumber, positionid)
-            Else
-                varWhere += String.Format(" (em.employee_number = '{0}') and dp.departement_company = (select dp1.departement_company from dbo.man_position ps1 " &
-                                        "inner join dbo.man_department dp1 on dp1.department_id = ps1.position_departement where ps1.position_id = '{1}') and (em.employee_id <> '{2}')", employeenumber, positionid, rowid)
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.EmployeeIsNew Then
+                    varWhere += $" (em.employee_number = @EmployeeNumber) and dp.departement_company = (select dp1.departement_company from dbo.man_position ps1 " &
+                                $"inner join dbo.man_department dp1 on dp1.department_id = ps1.position_departement where ps1.position_id = @PositionId)"
+                Else
+                    varWhere += $" (em.employee_number = @EmployeeNumber) and dp.departement_company = (select dp1.departement_company from dbo.man_position ps1 " &
+                                $"inner join dbo.man_department dp1 on dp1.department_id = ps1.position_departement where ps1.position_id = @PositionId) and (em.employee_id <> @EmployeeId)"
+                End If
+
+                varDatabaseRequestMssql2008(0).Query = $"select count(em.employee_id) as [rows] from dbo.man_employee em inner join dbo.man_position ps on ps.position_id = em.employee_position " &
+                                                   $"inner join dbo.man_department dp on dp.department_id = ps.position_departement {varWhere}"
+
+                varIsDuplicate = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                If dataproperties.EmployeeIsNew Then
+                    varWhere += $" em.employee_number = @EmployeeNumber"
+                Else
+                    varWhere += $" em.employee_number = @EmployeeNumber and em.employee_employeeid <> @EmployeeId"
+                End If
+
+                varDatabaseRequestMysql(0).Query = $"select count (em.employee_id) as `rows` from man_employee em {varWhere}"
+                varIsDuplicate = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
             End If
-
-            varDatabaseRequestMssql2008(1).Query = String.Format("select count(em.employee_id) as [rows] from dbo.man_employee em inner join dbo.man_position ps on ps.position_id = em.employee_position " &
-                                                    "inner join dbo.man_department dp on dp.department_id = ps.position_departement {0}", varWhere)
-
-            varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
 
             If varIsDuplicate = 0 Then
                 Return False
@@ -345,66 +441,108 @@ Namespace CMDepls
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushData(databasename As String, dbengine As String, personalid As String, position As String, employeenumber As String, employeefullname As String, employeebirthdate As CMCv.UI.Control.dtp, employeebirthplace As String, employeeaddress As String, employeenickname As String, activeemployee As Boolean, employeegender As String, employeephoto As System.Drawing.Image, forcechangephoto As Boolean, creatoreditor As String, Optional rowid As String = "-1") As Boolean
+        Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varSuccess As Boolean = False
-            Dim varHash As String = CMCv.Security.Encrypt.MD5()
-            Dim varEmployeeBirthDate As String = employeebirthdate.Value.Year & "-" & employeebirthdate.Value.Month & "-" & employeebirthdate.Value.Day
-
             Try
-                If rowid = "-1" Then
-                    varDatabaseRequestMssql2008(1).Query = String.Format("insert into dbo.man_employee(employee_id, employee_personalid, employee_position, employee_number, employee_fullname, employee_birthdate, employee_birthplace, " &
-                                                            "employee_address, employee_nickname, employee_active, employee_gender) " &
-                                                            "values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}');", varHash, personalid, position, employeenumber, employeefullname, varEmployeeBirthDate, employeebirthplace, employeeaddress, employeenickname, activeemployee, employeegender)
-                Else
-                    varHash = rowid
-                    varDatabaseRequestMssql2008(1).Query = String.Format("update dbo.man_employee set employee_position = '{0}', employee_number = '{1}', employee_fullname = '{2}', employee_birthdate = '{3}', employee_birthplace = '{4}', " &
-                                                            "employee_address = '{5}', employee_nickname = '{6}', employee_active = '{7}', employee_gender = '{8}', employee_personalid = '{9}' " &
-                                                            "where employee_id = '{10}';", position, employeenumber, employeefullname, varEmployeeBirthDate, employeebirthplace, employeeaddress, employeenickname, activeemployee, employeegender, personalid, rowid)
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    If dataproperties.EmployeeIsNew Then
+                        dataproperties.AllParameters.Remove(pEmployeeToken)
+                        dataproperties.AllParameters.Add(pEmployeeToken, CMCv.Security.Encrypt.MD5())
+                        varDatabaseRequestMssql2008(1).Query = $"insert into dbo.man_employee(employee_id, employee_personalid, employee_position, employee_number, employee_fullname, employee_birthdate, employee_birthplace, " &
+                                                               $"employee_address, employee_nickname, employee_active, employee_gender) " &
+                                                               $"values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}');"
+                    Else
+                        varDatabaseRequestMssql2008(1).Query = $"update dbo.man_employee set employee_position = '{0}', employee_number = '{1}', employee_fullname = '{2}', employee_birthdate = '{3}', employee_birthplace = '{4}', " &
+                                                               $"employee_address = '{5}', employee_nickname = '{6}', employee_active = '{7}', employee_gender = '{8}', employee_personalid = '{9}' " &
+                                                               $"where employee_id = '{10}';"
+                    End If
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    If dataproperties.EmployeeIsNew Then
+                        dataproperties.AllParameters.Remove(pEmployeeToken)
+                        dataproperties.AllParameters.Add(pEmployeeToken, CMCv.Security.Encrypt.MD5())
+                        varDatabaseRequestMysql(1).Query = $"insert into man_employee(employee_token, " &
+                                                           $"employee_personalid, " &
+                                                           $"employee_position, " &
+                                                           $"employee_number, " &
+                                                           $"employee_fullname, " &
+                                                           $"employee_birthdate, " &
+                                                           $"employee_birthplace, " &
+                                                           $"employee_address, " &
+                                                           $"employee_nickname, " &
+                                                           $"employee_active, " &
+                                                           $"employee_gender) " &
+                                                           $"values (@EmployeeToken, " &
+                                                           $"@EmployeePersonalId, " &
+                                                           $"@PositionId, " &
+                                                           $"@EmployeeNumber, " &
+                                                           $"@EmployeeFullName, " &
+                                                           $"@EmployeeBirthDate, " &
+                                                           $"@EmployeeBirthPlace, " &
+                                                           $"@EmployeeAddress, " &
+                                                           $"@EmployeeNickname, " &
+                                                           $"@EmployeeIsActive, " &
+                                                           $"@EmployeeGender);"
+
+
+
+                    Else
+                        varDatabaseRequestMysql(1).Query = $"update man_employee set employee_position = @PositionId, " &
+                                                           $"employee_number = @EmployeeNumber, " &
+                                                           $"employee_fullname = @EmployeeFullName, " &
+                                                           $"employee_birthdate = @EmployeeBirthDate, " &
+                                                           $"employee_birthplace = @EmployeeBirthPlace, " &
+                                                           $"employee_address = @EmployeeAddress, " &
+                                                           $"employee_nickname = @EmployeeNickname, " &
+                                                           $"employee_isactive = @EmployeeIsActive, " &
+                                                           $"employee_gender = @EmployeeGender, " &
+                                                           $"employee_personalid = @EmployeePersonalId " &
+                                                           $"where employee_id = @EmployeeId;"
+                    End If
                 End If
 
                 'varDatabaseEngineMssql2008.PUSHDATA(varDatabaseRequestMssql2008(1).Query)
-                Dim varQuery As String = String.Empty
-                Dim varCommand As SqlClient.SqlCommand = Nothing
-                varCommand = New SqlClient.SqlCommand
+                'Dim varQuery As String = String.Empty
+                'Dim varCommand As System.Data.SqlClient.SqlCommand = Nothing
+                'varCommand = New System.Data.SqlClient.SqlCommand
 
-                If forcechangephoto Then
-                    Dim varIsHavePhoto As Integer = GetIsHavePhoto(databasename, dbengine, varHash)
-                    Dim varPhotoHash As String = CMCv.Security.Encrypt.MD5()
+                'If dataproperties.EmployeeIsForceChangePhoto Then
+                '    Dim varIsHavePhoto As Integer = GetIsHavePhoto(databasename, dbengine, varHash)
+                '    Dim varPhotoHash As String = CMCv.Security.Encrypt.MD5()
 
-                    If varIsHavePhoto = 0 Then
-                        varQuery = "insert into db_universe_erp_file.dbo.sto_file([file_id], file_parent, file_filetype, file_content, file_tag, file_datetime, file_attribute, file_uploader, file_parentdate) " &
-                            "values(@ID, @ParentID, 'jpg', @FileContent, 'EMPLOYEE-PROFILE-PHOTO', @DateNow, 'module=EPLS;', @Uploader,@ParentDate);"
-                    Else
-                        varCommand = New SqlClient.SqlCommand
-                        varQuery = String.Format("update db_universe_erp_file.dbo.sto_file set file_content = @FileContent, file_datetime = GETDATE(), file_parentdate = GETDATE() where file_parent = '{0}' and " &
-                                              "file_tag = 'EMPLOYEE-PROFILE-PHOTO';", varHash)
-                    End If
+                '    If varIsHavePhoto = 0 Then
+                '        varQuery = "insert into db_universe_erp_file.dbo.sto_file([file_id], file_parent, file_filetype, file_content, file_tag, file_datetime, file_attribute, file_uploader, file_parentdate) " &
+                '            "values(@ID, @ParentID, 'jpg', @FileContent, 'EMPLOYEE-PROFILE-PHOTO', @DateNow, 'module=EPLS;', @Uploader,@ParentDate);"
+                '    Else
+                '        varCommand = New System.Data.SqlClient.SqlCommand
+                '        varQuery = String.Format("update db_universe_erp_file.dbo.sto_file set file_content = @FileContent, file_datetime = GETDATE(), file_parentdate = GETDATE() where file_parent = '{0}' and " &
+                '                              "file_tag = 'EMPLOYEE-PROFILE-PHOTO';", varHash)
+                '    End If
 
-                    varDatabaseRequestMssql2008(1).Query += varQuery
+                '    varDatabaseRequestMssql2008(1).Query += varQuery
 
-                    varCommand.Parameters.AddWithValue("@ID", varPhotoHash)
-                    varCommand.Parameters.AddWithValue("@ParentID", varHash)
-                    varCommand.Parameters.AddWithValue("@Uploader", creatoreditor)
-                    varCommand.Parameters.AddWithValue("@ParentDate", Now.Date)
+                '    varCommand.Parameters.AddWithValue("@ID", varPhotoHash)
+                '    varCommand.Parameters.AddWithValue("@ParentID", varHash)
+                '    varCommand.Parameters.AddWithValue("@Uploader", creatoreditor)
+                '    varCommand.Parameters.AddWithValue("@ParentDate", Now.Date)
 
-                    Dim varMemorystream = New MemoryStream()
-                    Dim varImage As Image = employeephoto
-                    Dim varPhotobyte As Byte() = Nothing
+                '    Dim varMemorystream = New MemoryStream()
+                '    Dim varImage As Image = employeephoto
+                '    Dim varPhotobyte As Byte() = Nothing
 
-                    varImage.Save(varMemorystream, Imaging.ImageFormat.Jpeg) ', Row.Cells("file_content").Value)
-                    varPhotobyte = varMemorystream.ToArray
+                '    varImage.Save(varMemorystream, Imaging.ImageFormat.Jpeg) ', Row.Cells("file_content").Value)
+                '    varPhotobyte = varMemorystream.ToArray
 
-                    Dim varImageparameter As New SqlClient.SqlParameter("@FileContent", SqlDbType.Image) With {
-                    .Value = varPhotobyte
-                    }
-                    varCommand.Parameters.Add(varImageparameter)
-                    varCommand.Parameters.AddWithValue("@DateNow", Now.Date)
-                End If
+                '    Dim varImageparameter As New System.Data.SqlClient.SqlParameter("@FileContent", System.Data.SqlDbType.Image) With {
+                '    .Value = varPhotobyte
+                '    }
+                '    varCommand.Parameters.Add(varImageparameter)
+                '    varCommand.Parameters.AddWithValue("@DateNow", Now.Date)
+                'End If
 
-                varCommand.CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' " &
-                                                 "GOTO RETRY END END CATCH", varDatabaseRequestMssql2008(1).Query)
+                'varCommand.CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' " &
+                '                                 "GOTO RETRY END END CATCH", varDatabaseRequestMssql2008(1).Query)
 
-                varSuccess = varDatabaseEngineMssql2008.PushImage(varCommand)
+                'varSuccess = varDatabaseEngineMssql2008.PushImage(varCommand)
 
             Catch ex As Exception
                 varSuccess = False

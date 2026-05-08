@@ -334,6 +334,11 @@ Namespace UI
             ChkDefault.Checked = Convert.ToBoolean(varConnproperties(7))
             ChkIsMasked.Checked = Convert.ToBoolean(varConnproperties(8))
             Call ChangeIsMaskedState()
+            If ChkIsMasked.Checked Then
+                ChkIsMasked.Visible = False
+            Else
+                ChkIsMasked.Visible = True
+            End If
             MessageBox.Show("Connection imported successfully.")
         End Sub
 

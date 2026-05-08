@@ -27,7 +27,7 @@ Namespace UI
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Call CheckAllInput()
             With varDataProperties
-                .CompanyId = CboCompany.SelectedValue.ToString
+                .AllParameters("@CompanyId") = CLng(CboCompany.SelectedValue)
                 .PlantCode = TxtPlantCode.XOSQLText
                 .PlantName = TxtPlantName.XOSQLText
                 .PlantSearchTerm1 = TxtSearchTerm1.XOSQLText

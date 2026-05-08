@@ -6,15 +6,11 @@ Namespace Application
         ReadOnly varSQL As New LibSQL.Application.Access
 
         <SupportedOSPlatform("windows")>
-        Public Function User(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String, uid As String, typeofaccess As LibSQL.Application.Access.TypeOfAccess, Optional status As CMCv.UI.Control.stt = Nothing) As Boolean
+        Public Function User(varDataProperties As LibApp.Ingrid.Global.Properties, Optional status As CMCv.UI.Control.stt = Nothing) As Boolean
             Dim varAccessValue As Boolean
 
             Try
-                varAccessValue = CType(varSQL.User(databasename, dbengine, tcode, uid, typeofaccess), Boolean)
-                If Not varAccessValue Then
-                    SystemSounds.Exclamation.Play()
-                    Decision(My.Application.Info.AssemblyName.ToUpper, $"You are not authorized to : {typeofaccess.ToString} record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
-                End If
+                varAccessValue = varSQL.User(varDataProperties)
                 Return varAccessValue
             Catch ex As Exception
                 SystemSounds.Exclamation.Play()
@@ -28,11 +24,11 @@ Namespace Application
     Public Class Modules
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsModuleReady(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String) As Boolean
+        Public Shared Function IsModuleReady(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varIsModuleReady As Boolean
 
             Try
-                varIsModuleReady = CType(LibSQL.Application.Modules.Exist(databasename, dbengine, tcode), Boolean)
+                varIsModuleReady = LibSQL.Application.Modules.Exist(dataproperties)
 
                 Return varIsModuleReady
             Catch ex As Exception
@@ -41,12 +37,12 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsModuleLocked(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String) As Boolean
+        Public Shared Function IsModuleLocked(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varIsModuleLocked As Boolean
 
             Try
 
-                varIsModuleLocked = CType(LibSQL.Application.Modules.Locked(databasename, dbengine, tcode), Boolean)
+                varIsModuleLocked = LibSQL.Application.Modules.Locked(dataproperties)
 
                 Return varIsModuleLocked
             Catch ex As Exception

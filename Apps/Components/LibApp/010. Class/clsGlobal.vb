@@ -1,4 +1,12 @@
 ﻿Namespace Ingrid.Global
+    Public Enum TypeOfAccess
+        [View]
+        [Add]
+        [Edit]
+        [Delete]
+        [Report]
+    End Enum
+
     Public Enum DatabaseEngine
         [MSSQL]
         [MYSQL]
@@ -26,6 +34,7 @@
     ''' 
     ''' </summary>
     Public Class Properties
+        Property AllParameters As New Dictionary(Of String, Object)
         Property AccountingGroupId As String
         Property AccountingGroupIsNew As Boolean
         Property ConnectionDatabaseEngine As String
@@ -46,25 +55,17 @@
         Property CompanyIsNew As Boolean
         Property CompanyIsCommitSuccess As Boolean
         Property CompanyIsForceRefresh As Boolean
-        Property CompanyId As String
-        Property CompanyCode As String
-        Property CompanyName As String
-        Property CompanySearchTerm1 As String
-        Property CompanySearchTerm2 As String
-        Property CompanyDescription As String
         Property CustomDailyActivityId As String
         Property CustomDailyActivityIsNew As Boolean
         Property CustomDailyActivityAreaId As String
         Property CustomDailyActivityAreaIsNew As Boolean
-        Property DepartmentId As String
-        Property DepartmentCode As String
-        Property DepartmentDescription As String
         Property DepartmentIsNew As Boolean
         Property DepartmentIsForceRefresh As Boolean
-        Property DepartmentName As String
+        Property DepartmentParameters As New Dictionary(Of String, Object)
         Property EmployeeId As String
         Property EmployeeIsCommitSuccess As Boolean
         Property EmployeeIsForceRefresh As Boolean
+        Property EmployeeIsForceChangePhoto As Boolean
         Property EmployeeIsNew As Boolean
         Property EmployeeFirstName As String
         Property EmployeeLastName As String
@@ -98,6 +99,7 @@
         Property IsAdministrator As Boolean
         Property IsConnected As Boolean
         Property Username As String
+        Property UserId As Long
         Property UserIsNew As Boolean
         Property UserIsCommitSuccess As Boolean
         Property UserIsForceRefresh As Boolean
@@ -109,7 +111,7 @@
         Property SystemModuleId As String
         Property SystemModuleIsNew As Boolean
         Property SystemModuleHash As String
-        Property UserID As String
+        Property SystemTypeOfAccess As TypeOfAccess
         Property Field01 As Object
         Property Field02 As Object
         Property Field03 As Object

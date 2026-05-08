@@ -5,8 +5,8 @@ Namespace CMDplnt
     ''' 
     ''' </summary>
     Public Class View
-        Private Shared varQuery As String = String.Empty
-        Private Shared consTableName As String = "CheckRelation"
+        Private Shared ReadOnly varQuery As String = String.Empty
+        Private Shared ReadOnly consTableName As String = "CheckRelation"
         ''' <summary>
         ''' 
         ''' </summary>
@@ -55,17 +55,17 @@ Namespace CMDplnt
         ''' <param name="rowid"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function DeleteData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As Boolean
+        Public Shared Function DeleteData(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varSuccess As Boolean = False
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(1).Query = $""
-                    varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
+                    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                     varSuccess = True
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $""
-                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                     varSuccess = True
                 End If
             Catch ex As Exception
@@ -97,9 +97,9 @@ Namespace CMDplnt
 
             Try
                 If dataproperties.PlantIsNew Then
-                    varWhere += $"p.plant_company='{dataproperties.CompanyId}' and p.plant_code = '{dataproperties.PlantCode}'"
+                    varWhere += $"p.plant_company='{dataproperties.AllParameters("@CompanyId")}' and p.plant_code = '{dataproperties.PlantCode}'"
                 Else
-                    varWhere += $"p.plant_company='{dataproperties.CompanyId}' and p.plant_code = '{dataproperties.PlantCode}' and p.plant_id <> '{dataproperties.PlantId}'"
+                    varWhere += $"p.plant_company='{dataproperties.AllParameters("@CompanyId")}' and p.plant_code = '{dataproperties.PlantCode}' and p.plant_id <> '{dataproperties.PlantId}'"
                 End If
 
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then

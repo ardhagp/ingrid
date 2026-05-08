@@ -96,8 +96,8 @@ Namespace Database.Engine
                     Return
                 End If
 
-                varFilePath(0) = varLocation & "\Resources\catalog.db"
-                varFilePath(1) = varLocation & "\Resources\errlog.db"
+                varFilePath(0) = varLocation & "\Resources\CATALOG.db"
+                varFilePath(1) = varLocation & "\Resources\ERRORLOG.db"
 
                 If (isproductionmode) AndAlso OperatingSystem.File.Info.IsExists(varFilePath(0)) Then
                     varFilePath(0) = Replace(varFilePath(0), "\", "\\")
@@ -203,7 +203,7 @@ Namespace Database.Engine
             Try
                 Dim varDateTime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
                 Dim varQuery As String
-                varQuery = $"insert into ERRORLOG(ERRORDATETIME,ERRORTYPE,ERRORNUMBER,ERRORDESCRIPTION,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDONEREPORTED) values " &
+                varQuery = $"insert into errlog(ERRORDATETIME,ERRORTYPE,ERRORNUMBER,ERRORDESCRIPTION,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDONEREPORTED) values " &
                            $"('{varDateTime}','{proLog.TypeOfFaulty.ToString()}','{proLog.Number}','{proLog.Message}','{proLog.InternalStackTrace}','{proLog.ShowErrorReporting}','1')"
                 Call PushData(varQuery)
             Catch ex As Exception

@@ -1,7 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.Globalization
 Imports System.Runtime.Versioning
-Imports System.Text.RegularExpressions
 Imports System.Windows.Forms
 
 Namespace UI.Control
@@ -282,6 +281,7 @@ Namespace UI.Control
             ElseIf XOJenisKapital = ControlCodeBase.enuJenisKapital.kecilsemua Then
                 varSqlSafeText = varSqlSafeText.ToLower(CultureInfo.CurrentCulture)
             End If
+
             Return varSqlSafeText
         End Function
 
@@ -359,11 +359,11 @@ Namespace UI.Control
             End If
 
             ' Flat penalties (LINQ versions)
-            If varPassword.All(Function(ch) Char.IsLower(ch) Or Char.IsWhiteSpace(ch)) Then
+            If varPassword.All(Function(ch) Char.IsLower(ch) OrElse Char.IsWhiteSpace(ch)) Then
                 varBonus.FlatLower = -15
             End If
 
-            If varPassword.All(Function(ch) Char.IsDigit(ch) Or Char.IsWhiteSpace(ch)) Then
+            If varPassword.All(Function(ch) Char.IsDigit(ch) OrElse Char.IsWhiteSpace(ch)) Then
                 varBonus.FlatLower = -35
             End If
         End Sub

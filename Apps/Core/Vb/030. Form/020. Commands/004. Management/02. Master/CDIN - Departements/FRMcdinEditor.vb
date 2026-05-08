@@ -6,6 +6,13 @@ Namespace UI
 #Region "Declaration"
         Public Event EventRecordSaved()
         Private Shared consTableName As String = "man_department"
+
+        'Parameters
+        Private Const pCompanyId As String = "@CompanyId"
+        Private Const pDepartmentCode As String = "@DepartmentCode"
+        Private Const pDepartmentName As String = "@DepartmentName"
+        Private Const pDepartmentDescription As String = "@DepartmentDescription"
+
 #End Region
 
 #Region "Subs Collections"
@@ -26,7 +33,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub FRMcdinEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Call FillCompany(CboCompany)
-            If varDataProperties.DepartmentId = "-1" Then
+            If varDataProperties.DepartmentIsNew Then
                 ChkAddNew.Visible = True
                 ChkAddNew.Checked = False
             Else
@@ -46,15 +53,20 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-            Call CheckAllInput()
+            CheckAllInput()
+
             With varDataProperties
-                .CompanyId = CboCompany.SelectedValue.ToString
-                .DepartmentCode = TxtDeptCode.XOSQLText
-                .DepartmentName = TxtDeptName.XOSQLText
-                .DepartmentDescription = TxtDescription.XOSQLText
+                .AllParameters.Remove(pCompanyId)
+                .AllParameters.Add(pCompanyId, CLng(CboCompany.SelectedValue))
+                .AllParameters.Remove(pDepartmentCode)
+                .AllParameters.Add(pDepartmentCode, IIf(TxtDeptCode.XOSQLText = String.Empty OrElse TxtDeptCode.XOSQLText = "", DBNull.Value, TxtDeptCode.XOSQLText))
+                .AllParameters.Remove(pDepartmentName)
+                .AllParameters.Add(pDepartmentName, IIf(TxtDeptName.XOSQLText = String.Empty OrElse TxtDeptName.XOSQLText = "", DBNull.Value, TxtDeptName.XOSQLText))
+                .AllParameters.Remove(pDepartmentDescription)
+                .AllParameters.Add(pDepartmentDescription, IIf(TxtDescription.XOSQLText = String.Empty OrElse TxtDescription.XOSQLText = "", DBNull.Value, TxtDescription.XOSQLText))
             End With
 
-            If (CboCompany.Items.Count = 0) AndAlso (varDataProperties.DepartmentCode = String.Empty) AndAlso (varDataProperties.DepartmentName = String.Empty) Then
+            If (CboCompany.Items.Count = 0) AndAlso (varDataProperties.AllParameters("@DepartmentCode").ToString = String.Empty) OrElse (varDataProperties.AllParameters("@DepartmentName").ToString = String.Empty) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Ensure that the Company Code is selected and that both the Department Code and Department Name are properly filled in.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf (varDataProperties.DepartmentIsNew) AndAlso (CMDcdin.Editor.IsDuplicate(varDataProperties)) Then

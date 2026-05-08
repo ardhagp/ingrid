@@ -97,6 +97,11 @@
     <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="UI\Database\**" />
+    <EmbeddedResource Remove="UI\Database\**" />
+    <None Remove="UI\Database\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Import Include="CMCv" />
     <Import Include="Connect" />
     <Import Include="LibSQL" />
@@ -359,7 +364,7 @@
     <Compile Update="030. Form\030. Tools\999. First Guide\FRMfirstguide.Designer.vb">
       <DependentUpon>FRMfirstguide.vb</DependentUpon>
     </Compile>
-    <Compile Update="901. Resource\Dataset\ADSglobal.Designer.vb">
+    <Compile Update="UI\Dataset\ADSglobal.Designer.vb">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ADSglobal.xsd</DependentUpon>
@@ -401,7 +406,7 @@
     <None Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.xss">
       <DependentUpon>DAR_RDS.xsd</DependentUpon>
     </None>
-    <None Update="901. Resource\Dataset\ADSglobal.xsd">
+    <None Update="UI\Dataset\ADSglobal.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ADSglobal.Designer.vb</LastGenOutput>
     </None>
@@ -468,8 +473,6 @@
     <Folder Include="030. Form\020. Commands\990. Tools\" />
     <Folder Include="030. Form\030. Tools\000. Console\" />
     <Folder Include="090. Services\" />
-    <Folder Include="901. Resource\Database\" />
-    <Folder Include="901. Resource\Images\" />
     <Folder Include="x64\" />
     <Folder Include="x86\" />
   </ItemGroup>
@@ -646,6 +649,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\app_settings.db" />
+    <None Remove="Resources\CATALOG.mdb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="My Project\Resources.resx">
