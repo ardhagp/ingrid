@@ -42,6 +42,10 @@ Namespace UI
         Private varRunningTextActive As Integer
         Private varMyMarquee As New Application.Marquee
         Private consDatabaseProperties As String = "DatabaseProperties"
+
+        Private Const tUserData As String = "UserData"
+        Private Const pCommand As String = "@Command"
+        Private Const pEmployeeId As String = "@EmployeeId"
 #End Region
 
 #Region "Subs Collection"
@@ -53,7 +57,7 @@ Namespace UI
 
                 'Txt_shortcut.AutoCompleteSource = Nothing
                 Txt_shortcut.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-                varDataset = varSqlModules.DisplayAutoComplete(varDatabaseName, varDatabaseEngineE) '.DisplayAutoComplete(Convert.ToString(varDataProperties.RowID), DgnPictureList)
+                varDataset = varSqlModules.DisplayAutoComplete(varDataProperties) '.DisplayAutoComplete(Convert.ToString(varDataProperties.RowID), DgnPictureList)
                 If varDataset Is Nothing Then
                     Return
                 End If
@@ -85,7 +89,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub GetRunningText()
-            TxtRunning.Visible = varSqlRunningText.Show(varDatabaseName, varDatabaseEngineE, varDataProperties.IsAdministrator)
+            TxtRunning.Visible = varSqlRunningText.Show(varDataProperties)
         End Sub
 
         ''' <summary>
@@ -93,13 +97,15 @@ Namespace UI
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub GetNotification()
-            varTotalNotification = varSqlNotification.Exist(varDatabaseName, varDatabaseEngineE, varDataProperties.EmployeeID)
+            varDataProperties.AllParameters.Remove("@EmployeeId")
+            varDataProperties.AllParameters.Add("@EmployeeId", CLng(varDatasetIngrid.Tables("UserData").Rows(0).Item("employee_id")))
+            varTotalNotification = varSqlNotification.Exist(varDataProperties)
             If varTotalNotification > 0 Then
-                USERMENU.Text = varDataProperties.EmployeeFirstName & "*"
+                USERMENU.Text = varDatasetIngrid.Tables("UserData").Rows(0).Item("employee_fullname").ToString & "*"
                 USERMENU.BackColor = Global.System.Drawing.Color.LightPink
                 USERMENU.ForeColor = Global.System.Drawing.Color.Black
             Else
-                USERMENU.Text = varDataProperties.EmployeeFirstName
+                USERMENU.Text = varDatasetIngrid.Tables("UserData").Rows(0).Item("employee_fullname").ToString
                 USERMENU.BackColor = Global.System.Drawing.Color.Yellow
                 USERMENU.ForeColor = Global.System.Drawing.Color.Black
             End If
@@ -153,9 +159,11 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub EnterCommand(commandcode As String)
+            varDataProperties.AllParameters.Remove("@Command")
+            varDataProperties.AllParameters.Add("@Command", commandcode.ToUpper.Trim)
 
             'For Modules That Not Required Login
-            If (commandcode.ToUpper.Trim = "RESET") OrElse (commandcode.ToUpper.Trim = "PHTRZ") Then
+            If commandcode.ToUpper.Trim = "RESET" OrElse commandcode.ToUpper.Trim = "PHTRZ" Then
                 Globals.varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
                 Txt_shortcut.Clear()
                 Return
@@ -163,16 +171,16 @@ Namespace UI
                 Call LoginClicked() ' Ensure User Logged In
             End If
             ' Check Module Availability
-            If Not (Application.Modules.IsModuleReady(varDatabaseName, varDatabaseEngineE, commandcode.ToUpper.Trim)) Then
+            If Not (Application.Modules.IsModuleReady(varDataProperties)) Then
                 St_mainframe.Items(0).Text = "Module " & commandcode.ToUpper.Trim & " not found."
                 Return
-            ElseIf (Application.Modules.IsModuleLocked(varDatabaseName, varDatabaseEngineE, commandcode.ToUpper.Trim)) Then
+            ElseIf (Application.Modules.IsModuleLocked(varDataProperties)) Then
                 St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
                 Bridge.Security.Writelog.Sendlog("""message"" : """ & varDataProperties.EmployeeFirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
                 Decision(My.Application.Info.AssemblyName.ToUpper, "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", LibApp.Ingrid.Global.PopupType.ModuleUnderMaintenance, "", CMCv.FRMdialogbox.MessageIcon.Information, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 System.Media.SystemSounds.Beep.Play()
                 Return
-            ElseIf Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, commandcode.ToUpper.Trim, varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.View, St_mainframe)) Then ''' Check User Access
+            ElseIf Not (varUserAccess.User(varDataProperties, St_mainframe)) Then ''' Check User Access
                 St_mainframe.Items(0).Text = "You are not authorized to access : " & commandcode.ToUpper.Trim
                 Bridge.Security.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " trying to open Restricted Module " & commandcode.ToUpper.Trim & """", "Warning")
                 System.Media.SystemSounds.Beep.Play()
@@ -195,11 +203,11 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Function LoginClicked() As Boolean
-            If varDataProperties.UserID = String.Empty Then
+            If varDatasetIngrid.Tables("UserData").Rows.Count = 0 Then
                 Frm_login = New UI.FRMlogin
                 Display(Frm_login, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, My.Application.Info.AssemblyName.ToUpper, "Sign In", "Please enter your credentials to continue", True)
             End If
-            If varDataProperties.UserID = String.Empty Then
+            If varDatasetIngrid.Tables("UserData").Rows.Count = 0 Then
                 varSession = False
                 Call SystemLogout(True)
             Else
@@ -219,7 +227,7 @@ Namespace UI
             If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure want to logout from system?", LibApp.Ingrid.Global.PopupType.Logout, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 Bridge.Security.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " is logout."",", "Information")
                 Call SystemLogout()
-                varLogUser.Logout(varDatabaseName, varDatabaseEngineE, varDataProperties.EmployeeID)
+                varLogUser.Logout(varDataProperties)
                 Call ClearLoginData()
             End If
         End Sub
@@ -316,7 +324,7 @@ Namespace UI
                 TmrStatus.Interval = varStatusTimeWait * 1000
                 Call SystemLogout()
                 Call FirstLoad()
-                varDataProperties.UserID = String.Empty
+                varDataProperties.UserId = 0
                 Text += " - Ver. " & varVersionapplication
                 LibSQL.Mainframe.Database.GetDatabaseProperties(varDatasetIngrid)
                 If varDatasetIngrid.Tables(consDatabaseProperties).Rows.Count > 0 Then
@@ -336,7 +344,7 @@ Namespace UI
 
                 If Mainframe.Database.Connect(varProductionMode) Then
                     Ts_connection.Text = "Connected"
-                    varLogApplication.Run(varDatabaseName, varDatabaseEngineE)
+                    varLogApplication.Run(varDataProperties)
                     If varCompany.CountRecords(varDataProperties) = 0 Then
                         Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "Initial setup and essential information", True, Me)
                     End If
@@ -424,7 +432,7 @@ Namespace UI
                 Call GetStorage() ''' Get Storage Info
                 Call GetSettings() ''' Get Settings Info
             Else ''' Logout Process
-                varDataProperties.UserID = String.Empty
+                Call ClearLoginData()
                 Ms_start_Login.Visible = True
                 Ms_start_Login.Enabled = True
                 Ms_start_Logout.Visible = False
@@ -673,14 +681,7 @@ Namespace UI
         ''' </summary>
         Private Sub ClearLoginData()
             varSession = False
-            varDataProperties.EmployeeID = String.Empty
-            varDataProperties.EmployeeNumber = String.Empty
-            varDataProperties.EmployeeFirstName = String.Empty
-            varDataProperties.EmployeeGender = String.Empty
-            varDataProperties.EmployeeLastName = String.Empty
-            varDataProperties.EmployeePositionName = String.Empty
-            varDataProperties.UserID = String.Empty
-            varDataProperties.IsAdministrator = False
+            varDatasetIngrid.Tables("UserData").Rows.Clear()
         End Sub
 
         ''' <summary>
@@ -688,17 +689,17 @@ Namespace UI
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetSettings()
-            varMaxUploadSizePDF = LibSQL.Application.Modules.MaxPDFallowed(varDatabaseName, varDatabaseEngineE)
-            varMaxUploadSizePhoto = LibSQL.Application.Modules.MaxPhotoallowed(varDatabaseName, varDatabaseEngineE)
-            varMinPasswordLength = LibSQL.Application.Modules.MinPasswordLength(varDatabaseName, varDatabaseEngineE)
-            varTextmark = LibSQL.Application.Modules.TextMark(varDatabaseName, varDatabaseEngineE, varDataProperties.IsAdministrator)
+            varMaxUploadSizePDF = LibSQL.Application.Modules.MaxPDFallowed(varDataProperties)
+            varMaxUploadSizePhoto = LibSQL.Application.Modules.MaxPhotoallowed(varDataProperties)
+            varMinPasswordLength = LibSQL.Application.Modules.MinPasswordLength(varDataProperties)
+            varTextmark = LibSQL.Application.Modules.TextMark(varDataProperties)
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub MsstartExit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
             If (varSession) Then
                 Call SystemLogout() ''' Logout Process
-                varLogUser.Logout(varDatabaseName, varDatabaseEngineE, varDataProperties.EmployeeID)
+                varLogUser.Logout(varDataProperties)
                 Call ClearLoginData() ''' Clear Login Data
             End If
             Me.Close()

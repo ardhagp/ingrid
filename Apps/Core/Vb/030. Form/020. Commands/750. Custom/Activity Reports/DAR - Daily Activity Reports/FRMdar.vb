@@ -20,7 +20,10 @@ Namespace UI
         Private varCurrentDate As Date
         Private varCurrentDateString As String
 
-        Const varMessageViewAttachment As String = "EventToolsViewAttachment"
+        Private Const varMessageViewAttachment As String = "EventToolsViewAttachment"
+
+        Private Const pCommand As String = "@Command"
+        Private Const pCustomActivityId As String = "@pCustomActivityId"
 #End Region
 
 #Region "Sub Collections"
@@ -77,7 +80,7 @@ Namespace UI
             Com_mms_Menu.Visible(varMessageViewAttachment, CType(True, CMCv.UI.View.MenuStrip.ShowItem))
 
             'Mengambil nilai dari database usersettings, jika ya maka tampilkan Menu Show Attachment
-            If (CMDdar.View.CheckSettings(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID, "viewphototab")) Then
+            If (CMDdar.View.CheckSettings(varDataProperties, "viewphototab")) Then
                 Com_mms_Menu.Checked(varMessageViewAttachment, CType(True, CMCv.UI.View.MenuStrip.ShowItem))
                 SpcContent.Panel2Collapsed = False
                 Call LoadAttachment(varShowAttachment)
@@ -164,10 +167,12 @@ Namespace UI
         ''' Get row ID on record clicked
         ''' </summary>
         Private Sub GetRowID()
-            varDataProperties.CustomDailyActivityId = "-1"
-
-            If DgnDARActivity.RowCount > 0 Then
-                varDataProperties.CustomDailyActivityId = DgnDARActivity.CurrentRow.Cells("employeeactivity_id").Value.ToString
+            If DgnDARActivity.RowCount = 0 Then
+                varDataProperties.CustomDailyActivityIsNew = True
+            Else
+                varDataProperties.CustomDailyActivityIsNew = False
+                varDataProperties.AllParameters.Remove(pCustomActivityId)
+                varDataProperties.AllParameters.Add(pCustomActivityId, CLng(DgnDARActivity.CurrentRow.Cells("employeeactivity_id").Value))
             End If
         End Sub
 
@@ -210,12 +215,15 @@ Namespace UI
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "DAR", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Add
+            varDataProperties.AllParameters.Remove(pCommand)
+            varDataProperties.AllParameters.Add(pCommand, "DAR")
+            If Not (varUserAccess.User(varDataProperties)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
+
             varDataProperties.CustomDailyActivityIsNew = True
-            varDataProperties.CustomDailyActivityId = "-1"
             Frm_dar_Editor = New FRMdarEditor
             Display(Frm_dar_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new activity", True)
             UI.FRMmainframe6.Ts_status.Text = String.Empty
@@ -226,15 +234,19 @@ Namespace UI
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Public Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "DAR", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Edit
+            varDataProperties.AllParameters.Remove(pCommand)
+            varDataProperties.AllParameters.Add(pCommand, "DAR")
+            If Not (varUserAccess.User(varDataProperties)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
+
             varDataProperties.CustomDailyActivityIsNew = False
 
-            If Convert.ToString(varDataProperties.CustomDailyActivityId) Is "-1" Then
+            If varDataProperties.CustomDailyActivityIsNew Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 Frm_dar_Editor = New FRMdarEditor
@@ -248,11 +260,16 @@ Namespace UI
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "DAR", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Delete
+            varDataProperties.AllParameters.Remove(pCommand)
+            varDataProperties.AllParameters.Add(pCommand, "DAR")
+            If Not (varUserAccess.User(varDataProperties)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
+
             Call GetRowID()
+
             If Convert.ToString(varDataProperties.CustomDailyActivityId) Is "-1" Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
@@ -364,9 +381,9 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub FRMdar_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
             If (Com_mms_Menu.Checked(varMessageViewAttachment)) Then
-                CMDdar.View.SaveSettings(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID, "ViewPhotoTab", "True")
+                CMDdar.View.SaveSettings(varDataProperties, "ViewPhotoTab", "True")
             Else
-                CMDdar.View.SaveSettings(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID, "ViewPhotoTab", "False")
+                CMDdar.View.SaveSettings(varDataProperties, "ViewPhotoTab", "False")
             End If
         End Sub
 
@@ -561,10 +578,15 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub CommmsMenu_EventReportShow() Handles Com_mms_Menu.EventReportShow
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "DAR", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Report)) Then
+            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Delete
+            varDataProperties.AllParameters.Remove(pCommand)
+            varDataProperties.AllParameters.Add(pCommand, "DAR")
+
+            If Not (varUserAccess.User(varDataProperties)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Generate Report", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
+
             Frm_dar_Reports = New DAR_RPTFilter
             Display(Frm_dar_Reports, IMAGEDB.Main.ImageLibrary.SEARCH_ICON, My.Application.Info.AssemblyName.ToUpper, "Report Filter", "", True,)
         End Sub

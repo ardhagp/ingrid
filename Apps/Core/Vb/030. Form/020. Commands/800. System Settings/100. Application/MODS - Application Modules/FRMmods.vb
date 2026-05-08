@@ -6,6 +6,9 @@ Namespace UI
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
         Private WithEvents Frm_mods_Editor As New FRMmodsEditor
 
+        Private Const pCommand As String = "@Command"
+        Private Const pSystemModuleId As String = "@pSystemModuleId"
+
         Public Event EventDataChanged()
 #End Region
 
@@ -18,10 +21,12 @@ Namespace UI
         End Sub
 
         Private Sub GetRowID()
-            varDataProperties.SystemModuleId = "-1"
-
-            If DgnMODS.RowCount > 0 Then
-                varDataProperties.SystemModuleId = DgnMODS.CurrentRow.Cells("module_id").Value.ToString
+            varDataProperties.AllParameters.Remove(pSystemModuleId)
+            If DgnMODS.RowCount = 0 Then
+                varDataProperties.SystemModuleIsNew = True
+            Else
+                varDataProperties.SystemModuleIsNew = False
+                varDataProperties.AllParameters.Add(pSystemModuleId, CLng(DgnMODS.CurrentRow.Cells("module_id").Value))
             End If
         End Sub
 #End Region
@@ -30,32 +35,34 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub CommmsMenu_EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "MODS", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Add
+            varDataProperties.AllParameters.Remove(pCommand)
+            varDataProperties.AllParameters.Add(pCommand, "MODS")
+            If Not (varUserAccess.User(varDataProperties)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             varDataProperties.SystemModuleIsNew = True
-            varDataProperties.SystemModuleId = "-1"
-            varDataProperties.SystemModuleHash = CMCv.Security.Encrypt.MD5()
             Frm_mods_Editor = New FRMmodsEditor
             Display(Frm_mods_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new module", True)
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "UAC", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Edit
+            varDataProperties.AllParameters.Remove(pCommand)
+            varDataProperties.AllParameters.Add(pCommand, "MODS")
+            If Not (varUserAccess.User(varDataProperties)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
-            varDataProperties.SystemModuleIsNew = False
 
-            If Convert.ToString(varDataProperties.SystemModuleId) = "-1" Then
+            If varDataProperties.SystemModuleIsNew Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                varDataProperties.SystemModuleIsNew = False
                 Frm_mods_Editor = New FRMmodsEditor
                 Display(Frm_mods_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your employee data", True)
             End If
@@ -63,14 +70,17 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "MODS", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Delete
+            varDataProperties.AllParameters.Remove(pCommand)
+            varDataProperties.AllParameters.Add(pCommand, "MODS")
+            If Not (varUserAccess.User(varDataProperties)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
 
-            If Convert.ToString(varDataProperties.SystemModuleId) = "-1" Then
+            If varDataProperties.SystemModuleIsNew Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then

@@ -20,42 +20,51 @@ Namespace CMDuac
         ''' <returns></returns>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetUserID(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, username As String, password As String, Optional additionalfield As Object = Nothing) As String
-            Dim varUserID As String = String.Empty
-            Dim varExist As Integer
+        Public Shared Sub GetUserProperties(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet)
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
-                    varDatabaseRequestMssql2008(1).Query = String.Format("select count(usr.user_id) as [user_id] from dbo.sys_user usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", username, CMCv.Security.Encrypt.MD5(password))
-                    varExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
+                    'varDatabaseRequestMssql2008(1).Query = $"select count(usr.user_id) as [user_id] from dbo.sys_user usr where (usr.user_username = @Username and usr.user_password = @UserPassword)"
+                    'varExist = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Integer)
 
-                    If varExist = 0 Then
-                        varUserID = String.Empty
-                    Else
-                        varDatabaseRequestMssql2008(1).Query = String.Format("select usr.user_id from dbo.sys_user usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", username, CMCv.Security.Encrypt.MD5(password))
-                        varUserID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+                    'If varExist > 0 Then
+                    '    varDatabaseRequestMssql2008(1).Query = $"select usr.user_id from dbo.sys_user usr where (usr.user_username = @Username and usr.user_password = @UserPassword)"
+                    '    dataproperties.UserId = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
-                        varDatabaseRequestMssql2008(1).Query = String.Format("update dbo.sys_user set user_lastlogin = getdate() where user_id = '{0}'", varUserID)
-                        varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
-                    End If
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = String.Format("select count(usr.user_id) as user_id from sys_user usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", username, CMCv.Security.Encrypt.MD5(password))
-                    varExist = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), Integer)
+                    '    varDatabaseRequestMssql2008(1).Query = String.Format("update dbo.sys_user set user_lastlogin = getdate() where user_id = '{0}'", varUserId)
+                    '    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
+                    'End If
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
+                    varDatabaseRequestMysql(1).Query = $"select usr.user_id, " &
+                                                       $"usr.user_root, " &
+                                                       $"em.employee_id, " &
+                                                       $"em.employee_number, " &
+                                                       $"em.employee_fullname, " &
+                                                       $"em.employee_nickname, " &
+                                                       $"em.employee_personalidnumber, " &
+                                                       $"em.employee_gender, " &
+                                                       $"pos.position_code, " &
+                                                       $"pos.position_name " &
+                                                       $"From sys_user usr " &
+                                                       $"inner join man_employee em On em.employee_id = usr.user_employee " &
+                                                       $"inner join man_position pos On pos.position_id = em.employee_position " &
+                                                       $"where (usr.user_username = @Username and usr.user_password = @UserPassword)"
+                    varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, datasetname, "UserData", dataproperties.AllParameters)
 
-                    If varExist = 0 Then
-                        varUserID = String.Empty
-                    Else
-                        varDatabaseRequestMysql(1).Query = String.Format("select usr.user_id from sys_user usr where (usr.user_username = '{0}') and (usr.user_password = '{1}')", username, CMCv.Security.Encrypt.MD5(password))
-                        varUserID = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
+                    With datasetname
+                        If .Tables("UserData").Rows.Count > 0 Then
 
-                        varDatabaseRequestMysql(1).Query = String.Format("update sys_user set user_lastlogin = now() where user_id = '{0}'", varUserID)
-                        varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
-                    End If
+                            dataproperties.AllParameters.Remove("@UserId")
+                            dataproperties.AllParameters.Add("@UserId", CLng(.Tables("UserData").Rows(0).Item("user_id")))
+
+                            varDatabaseRequestMysql(1).Query = $"update sys_user set user_lastlogin = now() where user_id = @UserId"
+                            varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
+                        End If
+                    End With
                 End If
             Catch ex As Exception
-                varUserID = String.Empty
+                dataproperties.UserId = Nothing
             End Try
-            Return varUserID
-        End Function
+        End Sub
 
         ''' <summary>
         ''' Get Employee ID
@@ -63,21 +72,21 @@ Namespace CMDuac
         ''' <param name="UID"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetEmployeeID(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, uid As String) As String
-            Dim varEmployeeID As String
+        Public Shared Function GetEmployeeID(dataproperties As LibApp.Ingrid.Global.Properties) As Long
+            Dim varEmployeeID As Long
 
             Try
-                varEmployeeID = String.Empty
+                varEmployeeID = 0
 
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
-                    varDatabaseRequestMssql2008(1).Query = String.Format("select usr.user_employee from dbo.sys_user usr where usr.user_id = '{0}';", uid)
-                    varEmployeeID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = $"select usr.user_employee from sys_user usr where usr.user_id = '{uid}';"
-                    varEmployeeID = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
+                    varDatabaseRequestMssql2008(1).Query = String.Format("select usr.user_employee from dbo.sys_user usr where usr.user_id = '{0}';")
+                    varEmployeeID = CLng(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query))
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
+                    varDatabaseRequestMysql(1).Query = $"select usr.user_employee from sys_user usr where usr.user_id = @UserId;"
+                    varEmployeeID = CLng(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters))
                 End If
             Catch ex As Exception
-                varEmployeeID = String.Empty
+                varEmployeeID = 0
             End Try
             Return varEmployeeID
         End Function

@@ -5,6 +5,9 @@ Namespace UI
 #Region "Declaration"
         Private WithEvents Frm_uac_Editor As FRMuacEditor
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
+
+        Private Const pCommand As String = "@Command"
+        Private Const pUserId As String = "@UserId"
 #End Region
 
 #Region "Subs Collections"
@@ -15,10 +18,12 @@ Namespace UI
         End Sub
 
         Private Sub GetRowID()
-            varDataProperties.UserAccessId = "-1"
-
-            If DgnUAC.RowCount > 0 Then
-                varDataProperties.UserAccessId = DgnUAC.CurrentRow.Cells("user_id").Value.ToString
+            If DgnUAC.RowCount = 0 Then
+                varDataProperties.UserAccessIsNew = True
+            Else
+                varDataProperties.UserAccessIsNew = False
+                varDataProperties.AllParameters.Remove(pUserId)
+                varDataProperties.AllParameters.Add(pUserId, CLng(DgnUAC.CurrentRow.Cells("user_id").Value))
             End If
         End Sub
 #End Region
@@ -27,36 +32,38 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-            varDataProperties.UserAccessIsChangePasswordForm = False
-
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "UAC", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Add
+            varDataProperties.AllParameters.Remove(pCommand)
+            varDataProperties.AllParameters.Add(pCommand, "UAC")
+            If Not (varUserAccess.User(varDataProperties)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
+            varDataProperties.UserAccessIsChangePasswordForm = False
+
             varDataProperties.UserAccessIsNew = True
-            varDataProperties.UserAccessId = "-1"
-            varDataProperties.UserAccessHash = Security.Encrypt.MD5()
             Frm_uac_Editor = New FRMuacEditor
             Display(Frm_uac_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new credential data", True)
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
-            varDataProperties.UserAccessIsChangePasswordForm = False
-
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "UAC", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Edit
+            varDataProperties.AllParameters.Remove(pCommand)
+            varDataProperties.AllParameters.Add(pCommand, "UAC")
+            If Not (varUserAccess.User(varDataProperties)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
-            varDataProperties.UserAccessIsNew = False
 
-            If Convert.ToString(varDataProperties.UserAccessId) = "-1" Then
+            varDataProperties.UserAccessIsChangePasswordForm = False
+
+            If varDataProperties.UserAccessIsNew Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                varDataProperties.UserAccessIsNew = False
                 Frm_uac_Editor = New FRMuacEditor
                 Display(Frm_uac_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your employee data", True)
             End If
@@ -64,14 +71,17 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
-            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "UAC", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete)) Then
+            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Delete
+            varDataProperties.AllParameters.Remove(pCommand)
+            varDataProperties.AllParameters.Add(pCommand, "UAC")
+            If Not (varUserAccess.User(varDataProperties)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
 
-            If Convert.ToString(varDataProperties.UserAccessId) = "-1" Then
+            If varDataProperties.UserAccessIsNew Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then

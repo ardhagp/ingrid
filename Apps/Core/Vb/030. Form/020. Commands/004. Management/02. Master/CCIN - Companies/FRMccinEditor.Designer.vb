@@ -275,7 +275,7 @@
             TxtName.XOPwdStrengthCalculate = False
             TxtName.XOPwdStrengthScore = 0
             TxtName.XOPwdStrengthText = Nothing
-            TxtName.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtName.XORestriction = ControlCodeBase.enuRestriction.OnlyNumber
             TxtName.XOSearchBoxText = "Type then press Enter"
             TxtName.XOSQLText = ""
             TxtName.XOTanpaSpasi = False

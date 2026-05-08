@@ -9,6 +9,19 @@ Namespace UI
         Private varWrongLogin As Integer
         Private varHoldLogin As Integer
         Private varStatusTimer As Integer
+
+        Private Const tUserData As String = "UserData"
+        Private Const pUserId As String = "@UserId"
+        Private Const pUsername As String = "@Username"
+        Private Const pUserPassword As String = "@UserPassword"
+        Private Const pUserIsAdmin As String = "@UserIsAdmin"
+        Private Const pUserAccessId As String = "@UserAccessId"
+        Private Const pEmployeeId As String = "@EmployeeId"
+        Private Const pEmployeeFullName As String = "@EmployeeFullName"
+        Private Const pEmployeeNumber As String = "@EmployeeNumber"
+        Private Const pEmployeeGender As String = "@EmployeeGender"
+        Private Const pEmployeePositionName As String = "@EmployeePositionName"
+
 #End Region
 
 #Region "Subs Collection"
@@ -35,16 +48,22 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub ExecLogin()
             If (TxtUsername.XOSQLText = String.Empty) OrElse (TxtPassword.XOSQLText = String.Empty) Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Please fill in all fields.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
+            Else
+                varDataProperties.AllParameters.Remove(pUsername)
+                varDataProperties.AllParameters.Add(pUsername, TxtUsername.XOSQLText)
+                varDataProperties.AllParameters.Remove(pUserPassword)
+                varDataProperties.AllParameters.Add(pUserPassword, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText))
             End If
 
-            varDataProperties.UserID = CMDuac.Login.GetUserID(varDatabaseName, varDatabaseEngineE, TxtUsername.XOSQLText, TxtPassword.XOSQLText, varDataProperties.EmployeeFirstName)
+            CMDuac.Login.GetUserProperties(varDataProperties, varDatasetIngrid)
 
-            If varDataProperties.UserID = String.Empty Then
+            If varDatasetIngrid.Tables(tUserData).Rows.Count = 0 Then
                 RaiseEvent EventLoginFailed()
                 varWrongLogin += 1
                 SLFStatus.Items(0).Text = "Login Failed"
-                varLogUser.LoginFailed(varDatabaseName, varDatabaseEngineE, TxtUsername.XOSQLText)
+                varLogUser.LoginFailed(varDataProperties)
 
                 Dim clsLog As New Ladybug.Log.Events
                 With proLog
@@ -69,15 +88,23 @@ Namespace UI
                 End If
             Else
                 With varDataProperties
-                    .EmployeeID = CMDuac.Login.GetEmployeeID(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID)
-                    .EmployeeFirstName = CMDuac.Login.GetFirstName(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID)
-                    .EmployeeNumber = CMDuac.Login.GetEmployeeNumber(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID)
-                    .EmployeeGender = CMDuac.Login.GetGender(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID)
-                    .EmployeePositionName = CMDuac.Login.GetPosition(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID)
-                    .IsAdministrator = CMDuac.Login.GetAdministrator(varDatabaseName, varDatabaseEngineE, varDataProperties.UserID)
+                    .AllParameters.Remove(pUserId)
+                    .AllParameters.Add(pUserId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item("user_id")))
+                    .AllParameters.Remove(pEmployeeId)
+                    .AllParameters.Add(pEmployeeId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_id")))
+                    .AllParameters.Remove(pEmployeeFullName)
+                    .AllParameters.Add(pEmployeeFullName, varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_fullname"))
+                    .AllParameters.Remove(pEmployeeNumber)
+                    .AllParameters.Add(pEmployeeNumber, varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_number"))
+                    .AllParameters.Remove(pEmployeeGender)
+                    .AllParameters.Add(pEmployeeGender, varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_gender"))
+                    .AllParameters.Remove(pEmployeePositionName)
+                    .AllParameters.Add(pEmployeePositionName, varDatasetIngrid.Tables(tUserData).Rows(0).Item("position_name"))
+                    .AllParameters.Remove(pUserIsAdmin)
+                    .AllParameters.Add(pUserIsAdmin, CBool(varDatasetIngrid.Tables(tUserData).Rows(0).Item("user_root")))
                 End With
 
-                varLogUser.LoginSuccess(varDatabaseName, varDatabaseEngineE, varDataProperties.EmployeeID)
+                varLogUser.LoginSuccess(varDataProperties)
 
                 Dim clsLog As New Ladybug.Log.Events
                 With proLog

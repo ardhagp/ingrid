@@ -7,6 +7,13 @@ Namespace UI
 
         Public varIsFirstLoad As Boolean
         Private Shared consTableName As String = "man_position"
+
+        'Parameters
+        Private Const pCompanyId As String = "@CompanyId"
+        Private Const pDepartmentId As String = "@DepartmentId"
+        Private Const pPositionCode As String = "@PositionCode"
+        Private Const pPositionName As String = "@PositionName"
+        Private Const pPositionDescription As String = "@PositionDescription"
 #End Region
 
 #Region "Subs Collections"
@@ -24,7 +31,6 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub FRMpostEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            '#Disable Warning BC42025 ' Access of shared member, constant member, enum member or nested type through an instance
             varIsFirstLoad = True
             If (varDataProperties.EmployeePositionIsNew) Then
                 ChkAddNew.Visible = True
@@ -32,6 +38,7 @@ Namespace UI
                 CMDpost.Editor.FillDepartement(varDataProperties, CboDepartement, CboCompany)
             Else
                 ChkAddNew.Visible = False
+                CMDpost.Editor.FillCompany(varDataProperties, CboCompany)
                 CMDpost.Editor.GetPositionProperties(varDataProperties, varDatasetIngrid)
                 If varDatasetIngrid.Tables(consTableName).Rows.Count > 0 Then
                     With varDatasetIngrid.Tables(consTableName).Rows(0)
@@ -45,7 +52,6 @@ Namespace UI
                 End If
             End If
             varIsFirstLoad = False
-            '#Enable Warning BC42025 ' Access of shared member, constant member, enum member or nested type through an instance
         End Sub
 
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
@@ -61,13 +67,20 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-            varDataProperties.CompanyId = CboCompany.SelectedValue.ToString
-            varDataProperties.DepartmentId = CboDepartement.SelectedValue.ToString
-            varDataProperties.EmployeePositionCode = TxtPositionCode.XOSQLText
-            varDataProperties.EmployeePositionName = TxtPositionName.XOSQLText
-            varDataProperties.EmployeePositionDescription = TxtPositionDescription.XOSQLText
+            With varDataProperties.AllParameters
+                .Remove(pCompanyId)
+                .Add(pCompanyId, CLng(CboCompany.SelectedValue))
+                .Remove(pDepartmentId)
+                .Add(pDepartmentId, CLng(CboDepartement.SelectedValue))
+                .Remove(pPositionCode)
+                .Add(pPositionCode, TxtPositionCode.XOSQLText)
+                .Remove(pPositionName)
+                .Add(pPositionName, TxtPositionName.XOSQLText)
+                .Remove(pPositionDescription)
+                .Add(pPositionDescription, IIf(TxtPositionDescription.XOSQLText = String.Empty OrElse TxtPositionDescription.XOSQLText = "", DBNull.Value, TxtPositionDescription.XOSQLText))
+            End With
 
-            If (CboDepartement.Items.Count = 0) OrElse (varDataProperties.EmployeePositionCode = String.Empty) OrElse (varDataProperties.EmployeePositionName = String.Empty) Then
+            If (CboDepartement.Items.Count = 0) OrElse (varDataProperties.AllParameters(pPositionCode).ToString = String.Empty) OrElse (varDataProperties.AllParameters(pPositionName).ToString = String.Empty) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Make sure you have Department selected, Postition Code and Position Description are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf ((varDataProperties.EmployeePositionIsNew) AndAlso (CMDpost.Editor.IsDuplicate(varDataProperties))) Then

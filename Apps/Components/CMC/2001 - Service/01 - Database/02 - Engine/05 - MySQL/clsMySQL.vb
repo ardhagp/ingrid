@@ -103,7 +103,7 @@ Namespace Database.Engine
         ''' Returns Nothing if an exception occurs.
         ''' </returns>
         <SupportedOSPlatform("windows")>
-        Public Function GetDataRow(databasename As String, query As String) As MySqlClient.MySqlDataReader
+        Public Function GetDataRow(databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As MySqlClient.MySqlDataReader
             Dim varDataReader(1) As MySqlClient.MySqlDataReader
 
             Try
@@ -115,6 +115,11 @@ Namespace Database.Engine
                 Dim varCommand0 As New MySqlClient.MySqlCommand
 
                 query = "USE " & databasename & "; " & query
+                If parameters IsNot Nothing Then
+                    For Each param In parameters
+                        varCommand0.Parameters.AddWithValue(param.Key, param.Value)
+                    Next
+                End If
 
                 varCommand0 = New MySqlClient.MySqlCommand(query, varConnection(1))
                 varDataReader(1) = varCommand0.ExecuteReader(CommandBehavior.CloseConnection)
@@ -184,7 +189,7 @@ Namespace Database.Engine
         ''' Returns Nothing if an exception occurs.
         ''' </returns>
         <SupportedOSPlatform("windows")>
-        Public Function GetValue(databasename As String, query As String) As Object
+        Public Function GetValue(databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As Object
             Dim varRowValue As Object
 
             Try
@@ -201,6 +206,11 @@ Namespace Database.Engine
                 query = "USE " & databasename & "; " & query
 
                 varCommand(1).CommandText = query
+                If parameters IsNot Nothing Then
+                    For Each param In parameters
+                        varCommand(1).Parameters.AddWithValue(param.Key, param.Value)
+                    Next
+                End If
 
                 varRowValue = varCommand(1).ExecuteScalar
 
@@ -245,7 +255,7 @@ Namespace Database.Engine
         ''' will be stored.
         ''' </param>
         <SupportedOSPlatform("windows")>
-        Public Function GetDataSet(databasename As String, dbr As Adapter.MySQL.Display.Request, tablename As String) As DataSet
+        Public Function GetDataSet(databasename As String, dbr As Adapter.MySQL.Display.Request, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As DataSet
             Dim varDataAdapter(1) As MySqlClient.MySqlDataAdapter
 
             Try
@@ -270,6 +280,11 @@ Namespace Database.Engine
                 dbr.Query = "USE " & databasename & "; " & dbr.Query
 
                 varCommand(1).CommandText = dbr.Query
+                If parameters IsNot Nothing Then
+                    For Each param In parameters
+                        varCommand(1).Parameters.AddWithValue(param.Key, param.Value)
+                    Next
+                End If
 
                 varDataAdapter(1) = New MySqlClient.MySqlDataAdapter(varCommand(1))
                 varDataAdapter(1).Fill(varDataset, tablename)
@@ -319,7 +334,7 @@ Namespace Database.Engine
         ''' will be stored and used as the binding source.
         ''' </param>
         <SupportedOSPlatform("windows")>
-        Public Sub GetDataTable(databasename As String, dbr As Adapter.MySQL.Display.Request, tablename As String)
+        Public Sub GetDataTable(databasename As String, dbr As Adapter.MySQL.Display.Request, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing)
             Dim varDataAdapterPrivate(1) As MySqlClient.MySqlDataAdapter
 
             Try
@@ -344,6 +359,11 @@ Namespace Database.Engine
                 dbr.Query = "USE " & databasename & "; " & dbr.Query
 
                 varCommand(1).CommandText = dbr.Query
+                If parameters IsNot Nothing Then
+                    For Each param In parameters
+                        varCommand(1).Parameters.AddWithValue(param.Key, param.Value)
+                    Next
+                End If
 
                 varDataAdapterPrivate(1) = New MySqlClient.MySqlDataAdapter(varCommand(1))
                 varDataAdapterPrivate(1).Fill(varDataset, tablename)
@@ -420,7 +440,7 @@ Namespace Database.Engine
         ''' database selection (USE databasename) before running the query.
         ''' </param>
         <SupportedOSPlatform("windows")>
-        Public Sub PushData(databasename As String, query As String)
+        Public Sub PushData(databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing)
             Try
                 If Not varConnection(1).Ping Then
                     varConnection(1).Close()
@@ -434,6 +454,11 @@ Namespace Database.Engine
                 query = "USE " & databasename & "; " & query
 
                 varCommand(1).CommandText = query
+                If parameters IsNot Nothing Then
+                    For Each param In parameters
+                        varCommand(1).Parameters.AddWithValue(param.Key, If(param.Value, DBNull.Value))
+                    Next
+                End If
                 varCommand(1).ExecuteNonQuery()
             Catch ex As Exception
                 With proLog
@@ -533,7 +558,7 @@ Namespace Database.Engine
         ''' The filled DataSet. Returns Nothing if an exception occurs.
         ''' </returns>
         <SupportedOSPlatform("windows")>
-        Public Function FillDataSet(databasename As String, query As String, datasetname As DataSet, tablename As String) As DataSet
+        Public Function FillDataSet(databasename As String, query As String, datasetname As DataSet, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As DataSet
             GC.Collect()
 
             Try
@@ -549,6 +574,11 @@ Namespace Database.Engine
                 query = "USE " & databasename & "; " & query
 
                 varCommand(1).CommandText = query
+                If parameters IsNot Nothing Then
+                    For Each param In parameters
+                        varCommand(1).Parameters.AddWithValue(param.Key, param.Value)
+                    Next
+                End If
 
                 Using varDataAdapter = New MySqlClient.MySqlDataAdapter(varCommand(1))
                     datasetname.Tables(tablename).Clear()

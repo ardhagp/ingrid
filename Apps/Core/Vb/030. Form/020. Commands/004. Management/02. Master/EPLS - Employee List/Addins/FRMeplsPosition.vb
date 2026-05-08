@@ -4,6 +4,10 @@ Namespace UI
     Public Class FRMeplsPosition
 #Region "Declaration"
         Public Event EventRecordSelected()
+
+        'Parameters
+        Private Const pCompanyName As String = "@CompanyName"
+        Private Const pDepartmentName As String = "@DepartmentName"
 #End Region
 
 #Region "Subs Collections"
@@ -25,8 +29,10 @@ Namespace UI
                 Decision(My.Application.Info.AssemblyName.toupper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 With DgnAddinPosition.CurrentRow
-                    varDataProperties.CompanyName = .Cells("company_name").Value.ToString
-                    varDataProperties.DepartmentName = .Cells("departement_name").Value.ToString
+                    varDataProperties.AllParameters.Remove(pCompanyName)
+                    varDataProperties.AllParameters.Add(pCompanyName, .Cells("company_name").Value.ToString)
+                    varDataProperties.AllParameters.Remove(pDepartmentName)
+                    varDataProperties.AllParameters.Add(pDepartmentName, .Cells("departement_name").Value.ToString)
                     varDataProperties.Field03 = .Cells("position_id").Value
                     varDataProperties.Field04 = .Cells("position_name").Value
                 End With

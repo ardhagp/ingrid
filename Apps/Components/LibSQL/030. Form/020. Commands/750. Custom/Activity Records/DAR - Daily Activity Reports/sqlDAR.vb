@@ -2,6 +2,7 @@
 Imports System.Drawing
 Imports System.IO
 Imports System.Runtime.Versioning
+Imports System.Security.Permissions
 Imports System.Windows.Forms
 Imports CMCv
 
@@ -14,75 +15,75 @@ Namespace CMDdar
         Private Shared ReadOnly varContentYear As String
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function CheckSettings(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, uid As String, attribute As String) As Boolean
+        Public Shared Function CheckSettings(dataproperties As LibApp.Ingrid.Global.Properties, attribute As String) As Boolean
             Dim varIsExist As Integer = 0
             Dim varAttribute(1) As String
 
             varAttribute(0) = "ViewPhotoTab"
 
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 For varRow = 0 To 0
-                    varDatabaseRequestMssql2008(0).Query = String.Format("select count(mods.modulesettings_id) from dbo.[[sys]]modulesettings] mods inner join " &
-                                                        "dbo.sys_module mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') " &
-                                                        "and (mods.modulesettings_user = '{0}') and (mods.modulesettings_attribute = '{1}')", uid, varAttribute(varRow))
-                    varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
+                    varDatabaseRequestMssql2008(0).Query = $"select count(mods.modulesettings_id) from dbo.[[sys]]modulesettings] mods inner join " &
+                                                           $"dbo.sys_module mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') " &
+                                                           $"and (mods.modulesettings_user = @UserId) and (mods.modulesettings_attribute = '{varAttribute(varRow)}')"
+                    varIsExist = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Integer)
 
                     If varIsExist = 0 Then
-                        varDatabaseRequestMssql2008(1).Query = String.Format("insert into dbo.[[sys]]modulesettings](modulesettings_id, modulesettings_module," &
-                                                            "modulesettings_user, modulesettings_attribute, modulesettings_value) values('{0}', " &
-                                                            "(select mo.module_id from dbo.sys_module mo where mo.module_code = 'DAR'),'{1}','{2}'," &
-                                                            "'False')", CMCv.Security.Encrypt.MD5(), uid, varAttribute(varRow))
-                        varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
+                        varDatabaseRequestMssql2008(1).Query = $"insert into dbo.[[sys]]modulesettings](modulesettings_id, modulesettings_module," &
+                                                               $"modulesettings_user, modulesettings_attribute, modulesettings_value) values('{CMCv.Security.Encrypt.MD5()}', " &
+                                                               $"(select mo.module_id from dbo.sys_module mo where mo.module_code = 'DAR'),@UserId,'{varAttribute(varRow)}'," &
+                                                               $"'False')"
+                        varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                     End If
                 Next
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 For varRow = 0 To 0
-                    varDatabaseRequestMysql(0).Query = String.Format("select count(mods.modulesettings_id) from sys_modulesettings mods inner join " &
-                                                        "sys_module mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') " &
-                                                        "and (mods.modulesettings_user = '{0}') and (mods.modulesettings_attribute = '{1}')", uid, varAttribute(varRow))
-                    varIsExist = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
+                    varDatabaseRequestMysql(0).Query = $"select count(mods.modulesettings_id) from sys_modulesettings mods inner join " &
+                                                       $"sys_module mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') " &
+                                                       $"and (mods.modulesettings_user = @UserId) and (mods.modulesettings_attribute = '{varAttribute(varRow)}')"
+                    varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
 
                     If varIsExist = 0 Then
-                        varDatabaseRequestMysql(1).Query = $"insert into sys_modulesettings(modulesettings_id, modulesettings_module," &
-                                                           $"modulesettings_user, modulesettings_attribute, modulesettings_value) values('{CMCv.Security.Encrypt.MD5()}', " &
-                                                           $"(select mo.module_id from sys_module mo where mo.module_code = 'DAR'),'{uid}','{varAttribute(varRow)}'," &
+                        varDatabaseRequestMysql(1).Query = $"insert into sys_modulesettings(modulesettings_module," &
+                                                           $"modulesettings_user, modulesettings_attribute, modulesettings_value) values(" &
+                                                           $"(select mo.module_id from sys_module mo where mo.module_code = 'DAR'), @UserId, '{varAttribute(varRow)}'," &
                                                            $"'False')"
-                        varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
+                        varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                     End If
                 Next
             End If
 
             Dim varValue As Boolean = False
 
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(0).Query = String.Format("select mods.modulesettings_value from dbo.[[sys]]modulesettings] mods inner join dbo.sys_module " &
                                                     "mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') and " &
-                                                    "(mods.modulesettings_user = '{0}') and (mods.modulesettings_attribute = '{1}')", uid, "ViewPhotoTab")
-                varValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Boolean)
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                                                    "(mods.modulesettings_user = @UserId) and (mods.modulesettings_attribute = 'ViewPhotoTab')")
+                varValue = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Boolean)
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(0).Query = $"select mods.modulesettings_value from sys_modulesettings mods inner join sys_module " &
                                                    $"mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') and " &
-                                                   $"(mods.modulesettings_user = '{uid}') and (mods.modulesettings_attribute = 'ViewPhotoTab')"
-                varValue = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Boolean)
+                                                   $"(mods.modulesettings_user = @UserId) and (mods.modulesettings_attribute = 'ViewPhotoTab')"
+                varValue = CBool(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
             End If
             Return varValue
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function SaveSettings(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, uid As String, attribute As String, values As String) As Boolean
-            Dim varIsSuccess As Boolean = False
+        Public Shared Function SaveSettings(dataproperties As LibApp.Ingrid.Global.Properties, attribute As String, values As String) As Boolean
+            Dim varIsSuccess As Boolean
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(1).Query = String.Format("update dbo.[[sys]]modulesettings] set modulesettings_value = '{0}' where (modulesettings_module = " &
-                                                        "(select mo.module_id from dbo.sys_module mo where mo.module_code = 'DAR')) and " &
-                                                        "(modulesettings_user = '{1}') and (modulesettings_attribute = '{2}')", values, uid, attribute)
-                    varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    varDatabaseRequestMssql2008(1).Query = $"update dbo.[[sys]]modulesettings] set modulesettings_value = '{values}' where (modulesettings_module = " &
+                                                           $"(select mo.module_id from dbo.sys_module mo where mo.module_code = 'DAR')) and " &
+                                                           $"(modulesettings_user = @UserId) and (modulesettings_attribute = '{attribute}')"
+                    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $"update sys_modulesettings set modulesettings_value = '{values}' where (modulesettings_module = " &
-                                                           $"(select mo.module_id from sys_module mo where mo.module_code = 'DAR')) and " &
-                                                           $"(modulesettings_user = '{uid}') and (modulesettings_attribute = '{attribute}')"
-                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
+                                                       $"(select mo.module_id from sys_module mo where mo.module_code = 'DAR')) and " &
+                                                       $"(modulesettings_user = @UserId) and (modulesettings_attribute = '{attribute}')"
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                 End If
                 varIsSuccess = True
             Catch ex As Exception
@@ -799,64 +800,65 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, areaaffected As String, activitytemplate As String, datepart As String, timepart As String, datepartend As String, timepartend As String, content As String, feedback As String, userid As String, rowid As String, isnew As Boolean, Optional extendedquery As String = "") As Boolean
-            Dim varSuccess As Boolean = False
+        Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties, Optional extendedquery As String = "") As Boolean
+            Dim varSuccess As Boolean
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    If (isnew) Then
-                        varDatabaseRequestMssql2008(1).Query = String.Format("insert into dbo.doc_employeeactivity(employeeactivity_id, employeeactivity_areaaffected, " &
-                                                            "employeeactivity_template, employeeactivity_datetime, employeeactivity_time, " &
-                                                            "employeeactivity_datetime_end, employeeactivity_time_end, employeeactivity_description, " &
-                                                            "employeeactivity_employee,employeeactivity_feedback,employeeactivity_createon) values " &
-                                                            "('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',(select usr.user_employee " &
-                                                            "from dbo.sys_user usr where usr.user_id = '{8}'),'{9}', " &
-                                                            "(select getdate()));", rowid, areaaffected, activitytemplate, datepart, timepart, datepartend, timepartend, content, userid, feedback)
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    If dataproperties.CustomDailyActivityIsNew Then
+                        'varDatabaseRequestMssql2008(1).Query = String.Format("insert into dbo.doc_employeeactivity(employeeactivity_id, employeeactivity_areaaffected, " &
+                        '                                    "employeeactivity_template, employeeactivity_datetime, employeeactivity_time, " &
+                        '                                    "employeeactivity_datetime_end, employeeactivity_time_end, employeeactivity_description, " &
+                        '                                    "employeeactivity_employee,employeeactivity_feedback,employeeactivity_createon) values " &
+                        '                                    "('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',(select usr.user_employee " &
+                        '                                    "from dbo.sys_user usr where usr.user_id = '{8}'),'{9}', " &
+                        '                                    "(select getdate()));", rowid, areaaffected, activitytemplate, DatePart, timepart, datepartend, timepartend, content, userid, feedback)
                     Else
-                        varDatabaseRequestMssql2008(1).Query = String.Format("update dbo.doc_employeeactivity set employeeactivity_datetime = '{0}', " &
-                                                            "employeeactivity_time = '{1}', employeeactivity_datetime_end = '{2}', " &
-                                                            "employeeactivity_time_end = '{3}', employeeactivity_areaaffected = '{4}', " &
-                                                            "employeeactivity_template = '{5}', employeeactivity_description = '{6}', " &
-                                                            "employeeactivity_lastupdate = (select usr.user_employee from dbo.sys_user usr " &
-                                                            "where usr.user_id = '{7}'), employeeactivity_feedback = '{9}', " &
-                                                            "employeeactivity_updateon = (select getdate()) where employeeactivity_id = '{8}';", datepart, timepart, datepartend, timepartend, areaaffected, activitytemplate, content, userid, rowid, feedback)
+                        'varDatabaseRequestMssql2008(1).Query = String.Format("update dbo.doc_employeeactivity set employeeactivity_datetime = '{0}', " &
+                        '                                    "employeeactivity_time = '{1}', employeeactivity_datetime_end = '{2}', " &
+                        '                                    "employeeactivity_time_end = '{3}', employeeactivity_areaaffected = '{4}', " &
+                        '                                    "employeeactivity_template = '{5}', employeeactivity_description = '{6}', " &
+                        '                                    "employeeactivity_lastupdate = (select usr.user_employee from dbo.sys_user usr " &
+                        '                                    "where usr.user_id = '{7}'), employeeactivity_feedback = '{9}', " &
+                        '                                    "employeeactivity_updateon = (select getdate()) where employeeactivity_id = '{8}';", DatePart, timepart, datepartend, timepartend, areaaffected, activitytemplate, content, userid, rowid, feedback)
 
-                        varDatabaseRequestMssql2008(1).Query += String.Format("update db_universe_erp_file.dbo.sto_file set file_parentdate = '{0}' " &
-                                                             "where file_parent = '{1}';", datepart, rowid)
+                        'varDatabaseRequestMssql2008(1).Query += String.Format("update db_universe_erp_file.dbo.sto_file set file_parentdate = '{0}' " &
+                        '                                     "where file_parent = '{1}';", DatePart, rowid)
                     End If
 
                     If extendedquery IsNot String.Empty Then
                         varDatabaseRequestMssql2008(1).Query += extendedquery
                     End If
 
-                    varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    If (isnew) Then
-                        varDatabaseRequestMysql(1).Query = $"insert into doc_employeeactivity(employeeactivity_id, employeeactivity_areaaffected, " &
+                    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    If dataproperties.CustomDailyActivityIsNew Then
+                        varDatabaseRequestMysql(1).Query = $"insert into doc_employeeactivity(employeeactivity_areaaffected, " &
                                                            $"employeeactivity_template, employeeactivity_datetime, employeeactivity_time, " &
                                                            $"employeeactivity_datetime_end, employeeactivity_time_end, employeeactivity_description, " &
                                                            $"employeeactivity_employee,employeeactivity_feedback,employeeactivity_createon) values " &
-                                                           $"('{rowid}','{areaaffected}','{activitytemplate}','{datepart}','{timepart}','{datepartend}','{timepartend}','{content}',(select usr.user_employee " &
-                                                           $"from sys_user usr where usr.user_id = '{userid}'),'{feedback}', " &
+                                                           $"(@CustomAreaAffectedId, @CustomTemplateId, @CustomActivityDateStart, @CustomActivityTimeStart, " &
+                                                           $"@CustomActivityDateEnd, @CustomActivityTimeEnd, @CustomActivityContent, (select usr.user_employee " &
+                                                           $"from sys_user usr where usr.user_id = @UserId),@CustomActivityFeedback, " &
                                                            $"(select curdate()));"
                     Else
-                        varDatabaseRequestMysql(1).Query = $"update doc_employeeactivity set employeeactivity_datetime = '{datepart}', " &
-                                                           $"employeeactivity_time = '{timepart}', employeeactivity_datetime_end = '{datepartend}', " &
-                                                           $"employeeactivity_time_end = '{timepartend}', employeeactivity_areaaffected = '{areaaffected}', " &
-                                                           $"employeeactivity_template = '{activitytemplate}', employeeactivity_description = '{content}', " &
+                        varDatabaseRequestMysql(1).Query = $"update doc_employeeactivity set employeeactivity_datetime = @CustomActivityDateStart, " &
+                                                           $"employeeactivity_time = @CustomActivityTimeStart, employeeactivity_datetime_end = @CustomActivityDateEnd, " &
+                                                           $"employeeactivity_time_end = @CustomActivityDateStart, employeeactivity_areaaffected = @CustomAffectedAreaId, " &
+                                                           $"employeeactivity_template = @CustomTemplateId, employeeactivity_description = @CustomActivityContent, " &
                                                            $"employeeactivity_lastupdate = (select usr.user_employee from sys_user usr " &
-                                                           $"where usr.user_id = '{userid}'), employeeactivity_feedback = '{feedback}', " &
-                                                           $"employeeactivity_updateon = (select curdate()) where employeeactivity_id = '{rowid}';"
+                                                           $"where usr.user_id = @UserId), employeeactivity_feedback = @CustomActivityFeedback, " &
+                                                           $"employeeactivity_updateon = (select curdate()) where employeeactivity_id = @CustomActivityId;"
 
-                        varDatabaseRequestMysql(1).Query += $"update sto_file set file_parentdate = '{datepart}' " &
-                                                             "where file_parent = '{rowid}';"
+                        'varDatabaseRequestMysql(1).Query += $"update sto_file set file_parentdate = '{DatePart()}' " &
+                        '                                     "where file_parent = '{rowid}';"
                     End If
 
                     If extendedquery IsNot String.Empty Then
                         varDatabaseRequestMysql(1).Query += extendedquery
                     End If
 
-                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                 End If
                 varSuccess = True
             Catch ex As Exception

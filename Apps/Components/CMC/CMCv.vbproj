@@ -74,12 +74,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="000. Programmer%27s Guide\**" />
+    <Compile Remove="0010 - Embeded Files\080. Database\v11.0\**" />
     <Compile Remove="x64\**" />
     <Compile Remove="x86\**" />
     <EmbeddedResource Remove="000. Programmer%27s Guide\**" />
+    <EmbeddedResource Remove="0010 - Embeded Files\080. Database\v11.0\**" />
     <EmbeddedResource Remove="x64\**" />
     <EmbeddedResource Remove="x86\**" />
     <None Remove="000. Programmer%27s Guide\**" />
+    <None Remove="0010 - Embeded Files\080. Database\v11.0\**" />
     <None Remove="x64\**" />
     <None Remove="x86\**" />
   </ItemGroup>
@@ -258,17 +261,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="0010 - Embeded Files\080. Database\v11.0\CATALOG.mdf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="0010 - Embeded Files\080. Database\v11.0\DEV_CATALOG.mdf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="0010 - Embeded Files\080. Database\v11.0\ERRLOG.mdf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="2080 - Library\001. Logo\Departement.metrop" />
     <EmbeddedResource Include="2080 - Library\001. Logo\Employee.metrop" />
     <EmbeddedResource Include="2080 - Library\001. Logo\Error.metrop" />
@@ -290,6 +282,7 @@
     <EmbeddedResource Include="2001 - Service\01 - Database\01 - Connection\Manual+Source\MSSQL2008 Manual.pdf" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="0010 - Embeded Files\080. Database\Classic\" />
     <Folder Include="2001 - Service\02 - SOAP\" />
     <Folder Include="2001 - Service\03 - Web\" />
     <Folder Include="2001 - Service\04 - Map\Bing\" />
@@ -542,6 +535,11 @@
     <Compile Remove="2099 - Interface\Controls\Timer\tmr.vb" />
     <Compile Remove="2099 - Interface\Controls\Tool Strip\too.Designer.vb" />
     <Compile Remove="2099 - Interface\Controls\Tool Strip\too.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="0010 - Embeded Files\080. Database\Classic\CATALOG.mdb" />
+    <None Remove="0010 - Embeded Files\080. Database\Classic\DEV_CATALOG.mdb" />
+    <None Remove="0010 - Embeded Files\080. Database\Classic\ERRLOG.mdb" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Syncfusion" />

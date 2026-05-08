@@ -16,8 +16,17 @@ Namespace UI
         Private varExtendedQuery As String
         Private varHour, varMinute As String
 
-        Const varMessageTablesPhotoFileEditor As String = "TPhotoFileEditor"
-        Const varMessageTableFileEditor As String = "TFileEditor"
+        Private Const varMessageTablesPhotoFileEditor As String = "TPhotoFileEditor"
+        Private Const varMessageTableFileEditor As String = "TFileEditor"
+
+        Private Const pCustomAffectedAreaId As String = "@CustomAffectedAreaId"
+        Private Const pCustomTemplateId As String = "@CustomTemplateId"
+        Private Const pCustomActivityDateStart As String = "@CustomActivityDateStart"
+        Private Const pCustomActivityDateEnd As String = "@CustomActivityDateEnd"
+        Private Const pCustomActivityTimeStart As String = "@CustomActivityTimeStart"
+        Private Const pCustomActivityTimeEnd As String = "@CustomActivityTimeEnd"
+        Private Const pCustomActivityContent As String = "@CustomActivityContent"
+        Private Const pCustomActivityFeedback As String = "@CustomActivityFeedback"
 #End Region
 
 #Region "Sub Collections"
@@ -173,8 +182,8 @@ Namespace UI
                 Return
             End If
 
-            varActivityStartString = DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day & " " & MebStart.Text
-            varActivityEndString = DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day & " " & MebEnd.Text
+            varActivityStartString = Format(DtpStart.Value, "yyyy-mm-dd") & " " & MebStart.Text.Replace(".", ":")
+            varActivityEndString = Format(DtpEnd.Value, "yyyy-mm-dd") & " " & MebEnd.Text.Replace(".", ":")
             varActivityStartDate = CDate(varActivityStartString)
             varActivityEndDate = CDate(varActivityEndString)
 
@@ -183,7 +192,24 @@ Namespace UI
                 Return
             End If
 
-            If (CMDdar.Editor.PushData(varDatabaseName, varDatabaseEngineE, CboArea.SelectedValue.ToString, CboTemplate.SelectedValue.ToString, CType(DtpStart.Value.Year & "-" & DtpStart.Value.Month & "-" & DtpStart.Value.Day, String), CType(MebStart.Text.Replace(".", ":"), String), CType(DtpEnd.Value.Year & "-" & DtpEnd.Value.Month & "-" & DtpEnd.Value.Day, String), CType(MebEnd.Text.Replace(".", ":"), String), TxtContent.XOSQLText, TxtFeedback.XOSQLText, varDataProperties.UserID, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString, varDataProperties.CustomDailyActivityIsNew, varExtendedQuery)) Then
+            With varDataProperties
+                .AllParameters.Remove(pCustomAffectedAreaId)
+                .AllParameters.Add(pCustomAffectedAreaId, CboArea.SelectedValue)
+                .AllParameters.Remove(pCustomTemplateId)
+                .AllParameters.Add(pCustomTemplateId, CboTemplate.SelectedValue)
+                .AllParameters.Remove(pCustomActivityDateStart)
+                .AllParameters.Add(pCustomActivityDateStart, Format(DtpStart.Value, "yyyy-mm-dd"))
+                .AllParameters.Remove(pCustomActivityTimeStart)
+                .AllParameters.Add(pCustomActivityTimeStart, MebStart.Text.Replace(".", ":"))
+                .AllParameters.Remove(pCustomActivityTimeEnd)
+                .AllParameters.Add(pCustomActivityTimeEnd, MebEnd.Text.Replace(".", ":"))
+                .AllParameters.Remove(pCustomActivityContent)
+                .AllParameters.Add(pCustomActivityContent, TxtContent.XOSQLText)
+                .AllParameters.Remove(pCustomActivityFeedback)
+                .AllParameters.Add(pCustomActivityFeedback, TxtFeedback.XOSQLText)
+            End With
+
+            If (CMDdar.Editor.PushData(varDataProperties, varExtendedQuery)) Then
                 varExtendedQuery = String.Empty
                 UI.FRMmainframe6.Ts_status.Text = "Success"
 

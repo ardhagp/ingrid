@@ -22,9 +22,9 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMeplsEditor))
-            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
             ChkAddNew = New CMCv.UI.Control.chk(components)
             BtnSave = New CMCv.UI.Control.btn(components)
             BtnCancel = New CMCv.UI.Control.btn(components)
@@ -47,9 +47,9 @@
             GbxCredetials = New CMCv.UI.Control.gbx(components)
             ULbl7 = New CMCv.UI.Control.ULbl()
             TxtLogin = New CMCv.UI.Control.txt(components)
-            tpWorkIn = New TabPage()
+            tpEmployment = New TabPage()
+            BtnBrowseEmploymentType = New CMCv.UI.Control.btn(components)
             ULbl14 = New CMCv.UI.Control.ULbl()
-            ULbl13 = New CMCv.UI.Control.ULbl()
             ULbl12 = New CMCv.UI.Control.ULbl()
             ULbl11 = New CMCv.UI.Control.ULbl()
             ULbl10 = New CMCv.UI.Control.ULbl()
@@ -57,13 +57,9 @@
             ULbl6 = New CMCv.UI.Control.ULbl()
             ChkActiveEmployee = New CMCv.UI.Control.chk(components)
             TxtEmployeeNickname = New CMCv.UI.Control.txt(components)
-            TxtContractType = New CMCv.UI.Control.txt(components)
-            TxtContractTypeID = New CMCv.UI.Control.txt(components)
             TxtEmployeeNumber = New CMCv.UI.Control.txt(components)
-            TxtGrade = New CMCv.UI.Control.txt(components)
-            TxtPositionID = New CMCv.UI.Control.txt(components)
+            TxtEmploymentType = New CMCv.UI.Control.txt(components)
             TxtPosition = New CMCv.UI.Control.txt(components)
-            TxtGradeID = New CMCv.UI.Control.txt(components)
             BtnBrowsePosition = New CMCv.UI.Control.btn(components)
             TxTDepartment = New CMCv.UI.Control.txt(components)
             TxtCompany = New CMCv.UI.Control.txt(components)
@@ -93,7 +89,7 @@
             GbxModulesRoles.SuspendLayout()
             CType(DgnModulesRoles, ComponentModel.ISupportInitialize).BeginInit()
             GbxCredetials.SuspendLayout()
-            tpWorkIn.SuspendLayout()
+            tpEmployment.SuspendLayout()
             tpGeneral.SuspendLayout()
             TbctlEmployee.SuspendLayout()
             SuspendLayout()
@@ -103,7 +99,7 @@
             PnlBottomButton.Controls.Add(BtnCancel)
             PnlBottomButton.Controls.Add(BtnSave)
             PnlBottomButton.Controls.Add(ChkAddNew)
-            PnlBottomButton.Location = New Point(0, 742)
+            PnlBottomButton.Location = New Point(0, 736)
             PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
             PnlBottomButton.Size = New Size(1181, 97)
             PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
@@ -113,7 +109,7 @@
             ' pnl_
             ' 
             pnl_.Margin = New Padding(7, 5, 7, 5)
-            pnl_.Size = New Size(1181, 104)
+            pnl_.Size = New Size(1181, 110)
             ' 
             ' SLFPanel
             ' 
@@ -123,7 +119,7 @@
             SLFPanel.Controls.Add(pctbxPhoto)
             SLFPanel.Controls.Add(pcbxFrame)
             SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(1181, 839)
+            SLFPanel.Size = New Size(1181, 833)
             SLFPanel.Controls.SetChildIndex(pcbxFrame, 0)
             SLFPanel.Controls.SetChildIndex(pctbxPhoto, 0)
             SLFPanel.Controls.SetChildIndex(BtnBrowsePhoto, 0)
@@ -137,7 +133,7 @@
             ChkAddNew.AutoSize = True
             ChkAddNew.BackColor = Color.Transparent
             ChkAddNew.FlatStyle = FlatStyle.Flat
-            ChkAddNew.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            ChkAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             ChkAddNew.ForeColor = Color.Tomato
             ChkAddNew.Location = New Point(586, 28)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
@@ -156,7 +152,7 @@
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(817, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -179,7 +175,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(994, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -220,7 +216,7 @@
             BtnBrowsePhoto.FlatAppearance.BorderSize = 2
             BtnBrowsePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnBrowsePhoto.FlatStyle = FlatStyle.Flat
-            BtnBrowsePhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnBrowsePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             BtnBrowsePhoto.ForeColor = Color.White
             BtnBrowsePhoto.Location = New Point(933, 428)
             BtnBrowsePhoto.Margin = New Padding(6, 5, 6, 5)
@@ -263,7 +259,7 @@
             tpPermissions.Margin = New Padding(6, 5, 6, 5)
             tpPermissions.Name = "tpPermissions"
             tpPermissions.Padding = New Padding(6, 5, 6, 5)
-            tpPermissions.Size = New Size(1508, 1410)
+            tpPermissions.Size = New Size(822, 655)
             tpPermissions.TabIndex = 1
             tpPermissions.Text = "PERMISSIONS"
             tpPermissions.UseVisualStyleBackColor = True
@@ -273,12 +269,12 @@
             GbxModulesRoles.AutoSize = True
             GbxModulesRoles.Controls.Add(DgnModulesRoles)
             GbxModulesRoles.Dock = DockStyle.Fill
-            GbxModulesRoles.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-            GbxModulesRoles.Location = New Point(6, 185)
+            GbxModulesRoles.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            GbxModulesRoles.Location = New Point(6, 128)
             GbxModulesRoles.Margin = New Padding(6, 5, 6, 5)
             GbxModulesRoles.Name = "GbxModulesRoles"
             GbxModulesRoles.Padding = New Padding(6, 5, 6, 5)
-            GbxModulesRoles.Size = New Size(1496, 1220)
+            GbxModulesRoles.Size = New Size(810, 522)
             GbxModulesRoles.TabIndex = 0
             GbxModulesRoles.TabStop = False
             GbxModulesRoles.Text = "Modules or roles"
@@ -287,42 +283,42 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(192), CByte(208), CByte(115))
-            DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(190), CByte(219), CByte(101))
+            DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnModulesRoles.BorderStyle = BorderStyle.None
             DgnModulesRoles.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnModulesRoles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle5.BackColor = Color.YellowGreen
-            DataGridViewCellStyle5.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
-            DataGridViewCellStyle5.SelectionForeColor = Color.Black
-            DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
-            DgnModulesRoles.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.YellowGreen
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
+            DataGridViewCellStyle2.SelectionForeColor = Color.Black
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            DgnModulesRoles.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             DgnModulesRoles.ColumnHeadersHeight = 43
             DgnModulesRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             DgnModulesRoles.Columns.AddRange(New DataGridViewColumn() {modulegroup_name, module_code, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports, useraccess_id, module_id})
             DgnModulesRoles.Dock = DockStyle.Fill
             DgnModulesRoles.EnableHeadersVisualStyles = False
-            DgnModulesRoles.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+            DgnModulesRoles.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
             DgnModulesRoles.Location = New Point(6, 37)
             DgnModulesRoles.Margin = New Padding(6, 5, 6, 5)
             DgnModulesRoles.Name = "DgnModulesRoles"
             DgnModulesRoles.ReadOnly = True
             DgnModulesRoles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle6.BackColor = Color.YellowGreen
-            DataGridViewCellStyle6.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
-            DataGridViewCellStyle6.SelectionForeColor = Color.Black
-            DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-            DgnModulesRoles.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle3.BackColor = Color.YellowGreen
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
+            DataGridViewCellStyle3.SelectionForeColor = Color.Black
+            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+            DgnModulesRoles.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
             DgnModulesRoles.RowHeadersWidth = 62
             DgnModulesRoles.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-            DgnModulesRoles.Size = New Size(1484, 1178)
+            DgnModulesRoles.Size = New Size(798, 480)
             DgnModulesRoles.StandardTab = True
             DgnModulesRoles.TabIndex = 0
             DgnModulesRoles.XOGroupFirstRows = True
@@ -435,12 +431,12 @@
             GbxCredetials.Controls.Add(ULbl7)
             GbxCredetials.Controls.Add(TxtLogin)
             GbxCredetials.Dock = DockStyle.Top
-            GbxCredetials.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            GbxCredetials.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             GbxCredetials.Location = New Point(6, 5)
             GbxCredetials.Margin = New Padding(6, 5, 6, 5)
             GbxCredetials.Name = "GbxCredetials"
             GbxCredetials.Padding = New Padding(6, 5, 6, 5)
-            GbxCredetials.Size = New Size(1496, 180)
+            GbxCredetials.Size = New Size(810, 123)
             GbxCredetials.TabIndex = 3
             GbxCredetials.TabStop = False
             GbxCredetials.Text = "Credentials"
@@ -448,10 +444,10 @@
             ' ULbl7
             ' 
             ULbl7.BackColor = Color.Moccasin
-            ULbl7.Location = New Point(11, 77)
+            ULbl7.Location = New Point(11, 54)
             ULbl7.Margin = New Padding(7, 10, 7, 10)
             ULbl7.Name = "ULbl7"
-            ULbl7.Size = New Size(250, 55)
+            ULbl7.Size = New Size(250, 39)
             ULbl7.SLFText = "Login"
             ULbl7.SLFTextAdjuster = True
             ULbl7.SLFTextBorder = False
@@ -461,8 +457,8 @@
             ' TxtLogin
             ' 
             TxtLogin.BackColor = Color.White
-            TxtLogin.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-            TxtLogin.Location = New Point(273, 77)
+            TxtLogin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtLogin.Location = New Point(273, 54)
             TxtLogin.Margin = New Padding(6, 5, 6, 5)
             TxtLogin.MaxLength = 255
             TxtLogin.Name = "TxtLogin"
@@ -491,107 +487,111 @@
             TxtLogin.XOTanpaSpasi = False
             TxtLogin.XOValidasiField = Nothing
             ' 
-            ' tpWorkIn
+            ' tpEmployment
             ' 
-            tpWorkIn.Controls.Add(ULbl14)
-            tpWorkIn.Controls.Add(ULbl13)
-            tpWorkIn.Controls.Add(ULbl12)
-            tpWorkIn.Controls.Add(ULbl11)
-            tpWorkIn.Controls.Add(ULbl10)
-            tpWorkIn.Controls.Add(ULbl9)
-            tpWorkIn.Controls.Add(ULbl6)
-            tpWorkIn.Controls.Add(ChkActiveEmployee)
-            tpWorkIn.Controls.Add(TxtEmployeeNickname)
-            tpWorkIn.Controls.Add(TxtContractType)
-            tpWorkIn.Controls.Add(TxtContractTypeID)
-            tpWorkIn.Controls.Add(TxtEmployeeNumber)
-            tpWorkIn.Controls.Add(TxtGrade)
-            tpWorkIn.Controls.Add(TxtPositionID)
-            tpWorkIn.Controls.Add(TxtPosition)
-            tpWorkIn.Controls.Add(TxtGradeID)
-            tpWorkIn.Controls.Add(BtnBrowsePosition)
-            tpWorkIn.Controls.Add(TxTDepartment)
-            tpWorkIn.Controls.Add(TxtCompany)
-            tpWorkIn.Location = New Point(4, 41)
-            tpWorkIn.Margin = New Padding(6, 5, 6, 5)
-            tpWorkIn.Name = "tpWorkIn"
-            tpWorkIn.Size = New Size(1508, 1410)
-            tpWorkIn.TabIndex = 2
-            tpWorkIn.Text = "WORK IN"
-            tpWorkIn.UseVisualStyleBackColor = True
+            tpEmployment.Controls.Add(BtnBrowseEmploymentType)
+            tpEmployment.Controls.Add(ULbl14)
+            tpEmployment.Controls.Add(ULbl12)
+            tpEmployment.Controls.Add(ULbl11)
+            tpEmployment.Controls.Add(ULbl10)
+            tpEmployment.Controls.Add(ULbl9)
+            tpEmployment.Controls.Add(ULbl6)
+            tpEmployment.Controls.Add(ChkActiveEmployee)
+            tpEmployment.Controls.Add(TxtEmployeeNickname)
+            tpEmployment.Controls.Add(TxtEmployeeNumber)
+            tpEmployment.Controls.Add(TxtEmploymentType)
+            tpEmployment.Controls.Add(TxtPosition)
+            tpEmployment.Controls.Add(BtnBrowsePosition)
+            tpEmployment.Controls.Add(TxTDepartment)
+            tpEmployment.Controls.Add(TxtCompany)
+            tpEmployment.Location = New Point(4, 41)
+            tpEmployment.Margin = New Padding(6, 5, 6, 5)
+            tpEmployment.Name = "tpEmployment"
+            tpEmployment.Size = New Size(822, 655)
+            tpEmployment.TabIndex = 2
+            tpEmployment.Text = "EMPLOYMENT"
+            tpEmployment.UseVisualStyleBackColor = True
+            ' 
+            ' BtnBrowseEmploymentType
+            ' 
+            BtnBrowseEmploymentType.BackColor = Color.Gray
+            BtnBrowseEmploymentType.Enabled = False
+            BtnBrowseEmploymentType.FlatAppearance.BorderColor = Color.FromArgb(CByte(68), CByte(68), CByte(68))
+            BtnBrowseEmploymentType.FlatAppearance.BorderSize = 2
+            BtnBrowseEmploymentType.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(148), CByte(148), CByte(148))
+            BtnBrowseEmploymentType.FlatStyle = FlatStyle.Flat
+            BtnBrowseEmploymentType.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnBrowseEmploymentType.ForeColor = Color.DarkGray
+            BtnBrowseEmploymentType.Location = New Point(740, 217)
+            BtnBrowseEmploymentType.Name = "BtnBrowseEmploymentType"
+            BtnBrowseEmploymentType.Size = New Size(66, 39)
+            BtnBrowseEmploymentType.TabIndex = 1062
+            BtnBrowseEmploymentType.Text = "..."
+            BtnBrowseEmploymentType.UseVisualStyleBackColor = False
+            BtnBrowseEmploymentType.XOJenisTombol = ControlCodeBase.enuJenisTombol.Disabled
+            BtnBrowseEmploymentType.XOTampilkanFocusBorder = False
+            BtnBrowseEmploymentType.XOValidasiSemuaInput = False
+            BtnBrowseEmploymentType.XOValidasiSemuaInputTag = Nothing
             ' 
             ' ULbl14
             ' 
             ULbl14.BackColor = Color.Moccasin
-            ULbl14.Location = New Point(11, 420)
-            ULbl14.Margin = New Padding(7, 10, 7, 10)
+            ULbl14.Location = New Point(14, 353)
+            ULbl14.Margin = New Padding(12, 17, 12, 17)
             ULbl14.Name = "ULbl14"
-            ULbl14.Size = New Size(250, 55)
+            ULbl14.Size = New Size(250, 39)
             ULbl14.SLFText = "Initial"
             ULbl14.SLFTextAdjuster = True
             ULbl14.SLFTextBorder = False
             ULbl14.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
             ULbl14.TabIndex = 1061
             ' 
-            ' ULbl13
-            ' 
-            ULbl13.BackColor = Color.Moccasin
-            ULbl13.Location = New Point(11, 352)
-            ULbl13.Margin = New Padding(7, 10, 7, 10)
-            ULbl13.Name = "ULbl13"
-            ULbl13.Size = New Size(250, 55)
-            ULbl13.SLFText = "Contract Type"
-            ULbl13.SLFTextAdjuster = True
-            ULbl13.SLFTextBorder = False
-            ULbl13.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
-            ULbl13.TabIndex = 1060
-            ' 
             ' ULbl12
             ' 
-            ULbl12.BackColor = Color.Moccasin
-            ULbl12.Location = New Point(11, 285)
-            ULbl12.Margin = New Padding(7, 10, 7, 10)
+            ULbl12.BackColor = Color.MistyRose
+            ULbl12.Location = New Point(14, 285)
+            ULbl12.Margin = New Padding(12, 17, 12, 17)
             ULbl12.Name = "ULbl12"
-            ULbl12.Size = New Size(250, 55)
+            ULbl12.Size = New Size(250, 39)
             ULbl12.SLFText = "Emp. Number"
             ULbl12.SLFTextAdjuster = True
             ULbl12.SLFTextBorder = False
-            ULbl12.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl12.SLFWarnaLabel = ControlCodeBase.JenisLabel.Red
             ULbl12.TabIndex = 1059
             ' 
             ' ULbl11
             ' 
-            ULbl11.BackColor = Color.Moccasin
-            ULbl11.Location = New Point(11, 217)
-            ULbl11.Margin = New Padding(7, 10, 7, 10)
+            ULbl11.BackColor = Color.WhiteSmoke
+            ULbl11.Location = New Point(14, 217)
+            ULbl11.Margin = New Padding(12, 17, 12, 17)
             ULbl11.Name = "ULbl11"
-            ULbl11.Size = New Size(250, 55)
-            ULbl11.SLFText = "Grade"
+            ULbl11.Size = New Size(250, 39)
+            ULbl11.SLFText = "Emp. Type"
             ULbl11.SLFTextAdjuster = True
             ULbl11.SLFTextBorder = False
-            ULbl11.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl11.SLFWarnaLabel = ControlCodeBase.JenisLabel.Grey
             ULbl11.TabIndex = 1058
             ' 
             ' ULbl10
             ' 
-            ULbl10.BackColor = Color.Moccasin
-            ULbl10.Location = New Point(11, 150)
-            ULbl10.Margin = New Padding(7, 10, 7, 10)
+            ULbl10.BackColor = Color.MistyRose
+            ULbl10.Location = New Point(14, 150)
+            ULbl10.Margin = New Padding(12, 17, 12, 17)
             ULbl10.Name = "ULbl10"
-            ULbl10.Size = New Size(250, 55)
+            ULbl10.Size = New Size(250, 39)
             ULbl10.SLFText = "Position"
             ULbl10.SLFTextAdjuster = True
             ULbl10.SLFTextBorder = False
-            ULbl10.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl10.SLFWarnaLabel = ControlCodeBase.JenisLabel.Red
             ULbl10.TabIndex = 1057
             ' 
             ' ULbl9
             ' 
             ULbl9.BackColor = Color.Moccasin
-            ULbl9.Location = New Point(11, 83)
-            ULbl9.Margin = New Padding(7, 10, 7, 10)
+            ULbl9.Location = New Point(14, 83)
+            ULbl9.Margin = New Padding(12, 17, 12, 17)
             ULbl9.Name = "ULbl9"
-            ULbl9.Size = New Size(250, 55)
+            ULbl9.Size = New Size(250, 39)
             ULbl9.SLFText = "Department"
             ULbl9.SLFTextAdjuster = True
             ULbl9.SLFTextBorder = False
@@ -601,10 +601,10 @@
             ' ULbl6
             ' 
             ULbl6.BackColor = Color.Moccasin
-            ULbl6.Location = New Point(11, 15)
-            ULbl6.Margin = New Padding(7, 10, 7, 10)
+            ULbl6.Location = New Point(14, 15)
+            ULbl6.Margin = New Padding(12, 17, 12, 17)
             ULbl6.Name = "ULbl6"
-            ULbl6.Size = New Size(250, 55)
+            ULbl6.Size = New Size(250, 39)
             ULbl6.SLFText = "Company"
             ULbl6.SLFTextAdjuster = True
             ULbl6.SLFTextBorder = False
@@ -616,8 +616,8 @@
             ChkActiveEmployee.AutoSize = True
             ChkActiveEmployee.BackColor = Color.Transparent
             ChkActiveEmployee.FlatStyle = FlatStyle.Flat
-            ChkActiveEmployee.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-            ChkActiveEmployee.Location = New Point(273, 487)
+            ChkActiveEmployee.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            ChkActiveEmployee.Location = New Point(273, 421)
             ChkActiveEmployee.Margin = New Padding(6, 5, 6, 5)
             ChkActiveEmployee.Name = "ChkActiveEmployee"
             ChkActiveEmployee.Size = New Size(213, 36)
@@ -627,8 +627,8 @@
             ' 
             ' TxtEmployeeNickname
             ' 
-            TxtEmployeeNickname.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-            TxtEmployeeNickname.Location = New Point(273, 420)
+            TxtEmployeeNickname.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtEmployeeNickname.Location = New Point(273, 353)
             TxtEmployeeNickname.Margin = New Padding(6, 5, 6, 5)
             TxtEmployeeNickname.MaxLength = 255
             TxtEmployeeNickname.Name = "TxtEmployeeNickname"
@@ -656,74 +656,9 @@
             TxtEmployeeNickname.XOTanpaSpasi = False
             TxtEmployeeNickname.XOValidasiField = Nothing
             ' 
-            ' TxtContractType
-            ' 
-            TxtContractType.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-            TxtContractType.Location = New Point(387, 352)
-            TxtContractType.Margin = New Padding(6, 5, 6, 5)
-            TxtContractType.MaxLength = 255
-            TxtContractType.Name = "TxtContractType"
-            TxtContractType.ReadOnly = True
-            TxtContractType.Size = New Size(341, 39)
-            TxtContractType.TabIndex = 209
-            TxtContractType.TabStop = False
-            TxtContractType.Tag = "txt"
-            TxtContractType.XOAutoTrim = False
-            TxtContractType.XOHarusDiisi = False
-            TxtContractType.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtContractType.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtContractType.XOHightlightSaatFokus = False
-            TxtContractType.XOHightlightSaatFokusWarna = Color.LightYellow
-            TxtContractType.XOIsBlank = True
-            TxtContractType.XOIsSearchBox = False
-            TxtContractType.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtContractType.XOPilihSemuaSaatFokus = False
-            TxtContractType.XOPwdLengthMin = 8
-            TxtContractType.XOPwdStrengthCalculate = False
-            TxtContractType.XOPwdStrengthScore = 0
-            TxtContractType.XOPwdStrengthText = Nothing
-            TxtContractType.XORestriction = ControlCodeBase.enuRestriction.None
-            TxtContractType.XOSearchBoxText = "Type then press Enter"
-            TxtContractType.XOSQLText = ""
-            TxtContractType.XOTanpaSpasi = False
-            TxtContractType.XOValidasiField = Nothing
-            ' 
-            ' TxtContractTypeID
-            ' 
-            TxtContractTypeID.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-            TxtContractTypeID.Location = New Point(273, 352)
-            TxtContractTypeID.Margin = New Padding(6, 5, 6, 5)
-            TxtContractTypeID.MaxLength = 255
-            TxtContractTypeID.Name = "TxtContractTypeID"
-            TxtContractTypeID.ReadOnly = True
-            TxtContractTypeID.Size = New Size(101, 39)
-            TxtContractTypeID.TabIndex = 208
-            TxtContractTypeID.TabStop = False
-            TxtContractTypeID.Tag = "txt"
-            TxtContractTypeID.TextAlign = HorizontalAlignment.Center
-            TxtContractTypeID.XOAutoTrim = False
-            TxtContractTypeID.XOHarusDiisi = False
-            TxtContractTypeID.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtContractTypeID.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtContractTypeID.XOHightlightSaatFokus = False
-            TxtContractTypeID.XOHightlightSaatFokusWarna = Color.LightYellow
-            TxtContractTypeID.XOIsBlank = True
-            TxtContractTypeID.XOIsSearchBox = False
-            TxtContractTypeID.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtContractTypeID.XOPilihSemuaSaatFokus = False
-            TxtContractTypeID.XOPwdLengthMin = 8
-            TxtContractTypeID.XOPwdStrengthCalculate = False
-            TxtContractTypeID.XOPwdStrengthScore = 0
-            TxtContractTypeID.XOPwdStrengthText = Nothing
-            TxtContractTypeID.XORestriction = ControlCodeBase.enuRestriction.None
-            TxtContractTypeID.XOSearchBoxText = "Type then press Enter"
-            TxtContractTypeID.XOSQLText = ""
-            TxtContractTypeID.XOTanpaSpasi = False
-            TxtContractTypeID.XOValidasiField = Nothing
-            ' 
             ' TxtEmployeeNumber
             ' 
-            TxtEmployeeNumber.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtEmployeeNumber.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtEmployeeNumber.Location = New Point(273, 285)
             TxtEmployeeNumber.Margin = New Padding(6, 5, 6, 5)
             TxtEmployeeNumber.MaxLength = 255
@@ -746,85 +681,53 @@
             TxtEmployeeNumber.XOPwdStrengthCalculate = False
             TxtEmployeeNumber.XOPwdStrengthScore = 0
             TxtEmployeeNumber.XOPwdStrengthText = Nothing
-            TxtEmployeeNumber.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtEmployeeNumber.XORestriction = ControlCodeBase.enuRestriction.OnlyNumber
             TxtEmployeeNumber.XOSearchBoxText = "Type then press Enter"
             TxtEmployeeNumber.XOSQLText = ""
             TxtEmployeeNumber.XOTanpaSpasi = False
             TxtEmployeeNumber.XOValidasiField = Nothing
             ' 
-            ' TxtGrade
+            ' TxtEmploymentType
             ' 
-            TxtGrade.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-            TxtGrade.Location = New Point(387, 217)
-            TxtGrade.Margin = New Padding(6, 5, 6, 5)
-            TxtGrade.MaxLength = 255
-            TxtGrade.Name = "TxtGrade"
-            TxtGrade.ReadOnly = True
-            TxtGrade.Size = New Size(341, 39)
-            TxtGrade.TabIndex = 206
-            TxtGrade.TabStop = False
-            TxtGrade.Tag = "txt"
-            TxtGrade.XOAutoTrim = False
-            TxtGrade.XOHarusDiisi = False
-            TxtGrade.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtGrade.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtGrade.XOHightlightSaatFokus = False
-            TxtGrade.XOHightlightSaatFokusWarna = Color.LightYellow
-            TxtGrade.XOIsBlank = True
-            TxtGrade.XOIsSearchBox = False
-            TxtGrade.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtGrade.XOPilihSemuaSaatFokus = False
-            TxtGrade.XOPwdLengthMin = 8
-            TxtGrade.XOPwdStrengthCalculate = False
-            TxtGrade.XOPwdStrengthScore = 0
-            TxtGrade.XOPwdStrengthText = Nothing
-            TxtGrade.XORestriction = ControlCodeBase.enuRestriction.None
-            TxtGrade.XOSearchBoxText = "Type then press Enter"
-            TxtGrade.XOSQLText = ""
-            TxtGrade.XOTanpaSpasi = False
-            TxtGrade.XOValidasiField = Nothing
-            ' 
-            ' TxtPositionID
-            ' 
-            TxtPositionID.BackColor = Color.LightPink
-            TxtPositionID.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-            TxtPositionID.Location = New Point(273, 150)
-            TxtPositionID.Margin = New Padding(6, 5, 6, 5)
-            TxtPositionID.MaxLength = 255
-            TxtPositionID.Name = "TxtPositionID"
-            TxtPositionID.Size = New Size(101, 39)
-            TxtPositionID.TabIndex = 202
-            TxtPositionID.Tag = "txt"
-            TxtPositionID.TextAlign = HorizontalAlignment.Center
-            TxtPositionID.XOAutoTrim = True
-            TxtPositionID.XOHarusDiisi = True
-            TxtPositionID.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtPositionID.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtPositionID.XOHightlightSaatFokus = True
-            TxtPositionID.XOHightlightSaatFokusWarna = Color.LightYellow
-            TxtPositionID.XOIsBlank = True
-            TxtPositionID.XOIsSearchBox = False
-            TxtPositionID.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-            TxtPositionID.XOPilihSemuaSaatFokus = True
-            TxtPositionID.XOPwdLengthMin = 8
-            TxtPositionID.XOPwdStrengthCalculate = False
-            TxtPositionID.XOPwdStrengthScore = 0
-            TxtPositionID.XOPwdStrengthText = Nothing
-            TxtPositionID.XORestriction = ControlCodeBase.enuRestriction.None
-            TxtPositionID.XOSearchBoxText = "Type then press Enter"
-            TxtPositionID.XOSQLText = ""
-            TxtPositionID.XOTanpaSpasi = True
-            TxtPositionID.XOValidasiField = Nothing
+            TxtEmploymentType.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtEmploymentType.Location = New Point(273, 217)
+            TxtEmploymentType.Margin = New Padding(6, 5, 6, 5)
+            TxtEmploymentType.MaxLength = 255
+            TxtEmploymentType.Name = "TxtEmploymentType"
+            TxtEmploymentType.ReadOnly = True
+            TxtEmploymentType.Size = New Size(455, 39)
+            TxtEmploymentType.TabIndex = 206
+            TxtEmploymentType.TabStop = False
+            TxtEmploymentType.Tag = "txt"
+            TxtEmploymentType.XOAutoTrim = False
+            TxtEmploymentType.XOHarusDiisi = False
+            TxtEmploymentType.XOHarusDiisiWarnaLatar = Color.LightPink
+            TxtEmploymentType.XOHarusDiisiWarnaLatarDefault = Color.White
+            TxtEmploymentType.XOHightlightSaatFokus = False
+            TxtEmploymentType.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtEmploymentType.XOIsBlank = True
+            TxtEmploymentType.XOIsSearchBox = False
+            TxtEmploymentType.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+            TxtEmploymentType.XOPilihSemuaSaatFokus = False
+            TxtEmploymentType.XOPwdLengthMin = 8
+            TxtEmploymentType.XOPwdStrengthCalculate = False
+            TxtEmploymentType.XOPwdStrengthScore = 0
+            TxtEmploymentType.XOPwdStrengthText = Nothing
+            TxtEmploymentType.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtEmploymentType.XOSearchBoxText = "Type then press Enter"
+            TxtEmploymentType.XOSQLText = ""
+            TxtEmploymentType.XOTanpaSpasi = False
+            TxtEmploymentType.XOValidasiField = Nothing
             ' 
             ' TxtPosition
             ' 
-            TxtPosition.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-            TxtPosition.Location = New Point(387, 150)
+            TxtPosition.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtPosition.Location = New Point(273, 150)
             TxtPosition.Margin = New Padding(6, 5, 6, 5)
             TxtPosition.MaxLength = 255
             TxtPosition.Name = "TxtPosition"
             TxtPosition.ReadOnly = True
-            TxtPosition.Size = New Size(341, 39)
+            TxtPosition.Size = New Size(455, 39)
             TxtPosition.TabIndex = 203
             TxtPosition.TabStop = False
             TxtPosition.Tag = "txt"
@@ -848,39 +751,6 @@
             TxtPosition.XOTanpaSpasi = False
             TxtPosition.XOValidasiField = Nothing
             ' 
-            ' TxtGradeID
-            ' 
-            TxtGradeID.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
-            TxtGradeID.Location = New Point(273, 217)
-            TxtGradeID.Margin = New Padding(6, 5, 6, 5)
-            TxtGradeID.MaxLength = 255
-            TxtGradeID.Name = "TxtGradeID"
-            TxtGradeID.ReadOnly = True
-            TxtGradeID.Size = New Size(101, 39)
-            TxtGradeID.TabIndex = 205
-            TxtGradeID.TabStop = False
-            TxtGradeID.Tag = "txt"
-            TxtGradeID.TextAlign = HorizontalAlignment.Center
-            TxtGradeID.XOAutoTrim = False
-            TxtGradeID.XOHarusDiisi = False
-            TxtGradeID.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtGradeID.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtGradeID.XOHightlightSaatFokus = False
-            TxtGradeID.XOHightlightSaatFokusWarna = Color.LightYellow
-            TxtGradeID.XOIsBlank = True
-            TxtGradeID.XOIsSearchBox = False
-            TxtGradeID.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtGradeID.XOPilihSemuaSaatFokus = False
-            TxtGradeID.XOPwdLengthMin = 8
-            TxtGradeID.XOPwdStrengthCalculate = False
-            TxtGradeID.XOPwdStrengthScore = 0
-            TxtGradeID.XOPwdStrengthText = Nothing
-            TxtGradeID.XORestriction = ControlCodeBase.enuRestriction.None
-            TxtGradeID.XOSearchBoxText = "Type then press Enter"
-            TxtGradeID.XOSQLText = ""
-            TxtGradeID.XOTanpaSpasi = False
-            TxtGradeID.XOValidasiField = Nothing
-            ' 
             ' BtnBrowsePosition
             ' 
             BtnBrowsePosition.BackColor = Color.RoyalBlue
@@ -889,12 +759,12 @@
             BtnBrowsePosition.FlatAppearance.BorderSize = 2
             BtnBrowsePosition.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnBrowsePosition.FlatStyle = FlatStyle.Flat
-            BtnBrowsePosition.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnBrowsePosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
             BtnBrowsePosition.ForeColor = Color.White
             BtnBrowsePosition.Location = New Point(740, 150)
             BtnBrowsePosition.Margin = New Padding(6, 5, 6, 5)
             BtnBrowsePosition.Name = "BtnBrowsePosition"
-            BtnBrowsePosition.Size = New Size(66, 55)
+            BtnBrowsePosition.Size = New Size(66, 39)
             BtnBrowsePosition.TabIndex = 204
             BtnBrowsePosition.Text = "..."
             BtnBrowsePosition.UseVisualStyleBackColor = False
@@ -905,7 +775,7 @@
             ' 
             ' TxTDepartment
             ' 
-            TxTDepartment.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxTDepartment.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxTDepartment.Location = New Point(273, 83)
             TxTDepartment.Margin = New Padding(6, 5, 6, 5)
             TxTDepartment.MaxLength = 255
@@ -937,7 +807,7 @@
             ' 
             ' TxtCompany
             ' 
-            TxtCompany.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtCompany.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtCompany.Location = New Point(273, 15)
             TxtCompany.Margin = New Padding(6, 5, 6, 5)
             TxtCompany.MaxLength = 255
@@ -986,31 +856,31 @@
             tpGeneral.Margin = New Padding(6, 5, 6, 5)
             tpGeneral.Name = "tpGeneral"
             tpGeneral.Padding = New Padding(6, 5, 6, 5)
-            tpGeneral.Size = New Size(822, 661)
+            tpGeneral.Size = New Size(822, 655)
             tpGeneral.TabIndex = 0
             tpGeneral.Text = "PERSONAL"
             tpGeneral.UseVisualStyleBackColor = True
             ' 
             ' ULbl1
             ' 
-            ULbl1.BackColor = Color.Moccasin
-            ULbl1.Location = New Point(11, 15)
-            ULbl1.Margin = New Padding(7, 10, 7, 10)
+            ULbl1.BackColor = Color.MistyRose
+            ULbl1.Location = New Point(14, 15)
+            ULbl1.Margin = New Padding(9, 13, 9, 13)
             ULbl1.Name = "ULbl1"
-            ULbl1.Size = New Size(250, 55)
+            ULbl1.Size = New Size(250, 39)
             ULbl1.SLFText = "Personal ID"
             ULbl1.SLFTextAdjuster = True
             ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Red
             ULbl1.TabIndex = 1056
             ' 
             ' ULbl5
             ' 
             ULbl5.BackColor = Color.Moccasin
-            ULbl5.Location = New Point(11, 352)
-            ULbl5.Margin = New Padding(7, 10, 7, 10)
+            ULbl5.Location = New Point(14, 352)
+            ULbl5.Margin = New Padding(9, 13, 9, 13)
             ULbl5.Name = "ULbl5"
-            ULbl5.Size = New Size(250, 258)
+            ULbl5.Size = New Size(250, 254)
             ULbl5.SLFText = "Address"
             ULbl5.SLFTextAdjuster = True
             ULbl5.SLFTextBorder = False
@@ -1020,10 +890,10 @@
             ' ULbl4
             ' 
             ULbl4.BackColor = Color.Moccasin
-            ULbl4.Location = New Point(11, 285)
-            ULbl4.Margin = New Padding(7, 10, 7, 10)
+            ULbl4.Location = New Point(14, 285)
+            ULbl4.Margin = New Padding(9, 13, 9, 13)
             ULbl4.Name = "ULbl4"
-            ULbl4.Size = New Size(250, 55)
+            ULbl4.Size = New Size(250, 39)
             ULbl4.SLFText = "Gender"
             ULbl4.SLFTextAdjuster = True
             ULbl4.SLFTextBorder = False
@@ -1033,10 +903,10 @@
             ' ULbl3
             ' 
             ULbl3.BackColor = Color.Moccasin
-            ULbl3.Location = New Point(11, 217)
-            ULbl3.Margin = New Padding(7, 10, 7, 10)
+            ULbl3.Location = New Point(14, 217)
+            ULbl3.Margin = New Padding(9, 13, 9, 13)
             ULbl3.Name = "ULbl3"
-            ULbl3.Size = New Size(250, 55)
+            ULbl3.Size = New Size(250, 39)
             ULbl3.SLFText = "Birth Place"
             ULbl3.SLFTextAdjuster = True
             ULbl3.SLFTextBorder = False
@@ -1046,10 +916,10 @@
             ' ULbl16
             ' 
             ULbl16.BackColor = Color.Moccasin
-            ULbl16.Location = New Point(11, 150)
-            ULbl16.Margin = New Padding(7, 10, 7, 10)
+            ULbl16.Location = New Point(14, 150)
+            ULbl16.Margin = New Padding(9, 13, 9, 13)
             ULbl16.Name = "ULbl16"
-            ULbl16.Size = New Size(250, 55)
+            ULbl16.Size = New Size(250, 39)
             ULbl16.SLFText = "Date of Birth"
             ULbl16.SLFTextAdjuster = True
             ULbl16.SLFTextBorder = False
@@ -1058,21 +928,21 @@
             ' 
             ' ULbl2
             ' 
-            ULbl2.BackColor = Color.Moccasin
-            ULbl2.Location = New Point(11, 83)
-            ULbl2.Margin = New Padding(7, 10, 7, 10)
+            ULbl2.BackColor = Color.MistyRose
+            ULbl2.Location = New Point(14, 83)
+            ULbl2.Margin = New Padding(9, 13, 9, 13)
             ULbl2.Name = "ULbl2"
-            ULbl2.Size = New Size(250, 55)
+            ULbl2.Size = New Size(250, 39)
             ULbl2.SLFText = "Full Name"
             ULbl2.SLFTextAdjuster = True
             ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Red
             ULbl2.TabIndex = 1051
             ' 
             ' TxtAddress
             ' 
             TxtAddress.BackColor = Color.White
-            TxtAddress.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtAddress.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtAddress.Location = New Point(273, 352)
             TxtAddress.Margin = New Padding(6, 5, 6, 5)
             TxtAddress.MaxLength = 1024
@@ -1105,7 +975,7 @@
             ' TxtBirthPlace
             ' 
             TxtBirthPlace.BackColor = Color.White
-            TxtBirthPlace.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtBirthPlace.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtBirthPlace.Location = New Point(273, 217)
             TxtBirthPlace.Margin = New Padding(6, 5, 6, 5)
             TxtBirthPlace.MaxLength = 255
@@ -1135,7 +1005,7 @@
             ' 
             ' DtpBirthDate
             ' 
-            DtpBirthDate.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            DtpBirthDate.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             DtpBirthDate.Location = New Point(273, 150)
             DtpBirthDate.Margin = New Padding(6, 5, 6, 5)
             DtpBirthDate.MaxDate = New Date(2029, 4, 3, 0, 0, 0, 0)
@@ -1148,7 +1018,7 @@
             ' TxtPersonalID
             ' 
             TxtPersonalID.BackColor = Color.LightPink
-            TxtPersonalID.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtPersonalID.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtPersonalID.Location = New Point(273, 15)
             TxtPersonalID.Margin = New Padding(6, 5, 6, 5)
             TxtPersonalID.MaxLength = 16
@@ -1180,7 +1050,7 @@
             ' 
             CboGender.DropDownStyle = ComboBoxStyle.DropDownList
             CboGender.FlatStyle = FlatStyle.Flat
-            CboGender.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            CboGender.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             CboGender.FormattingEnabled = True
             CboGender.Items.AddRange(New Object() {"FEMALE", "MALE"})
             CboGender.Location = New Point(273, 285)
@@ -1192,7 +1062,7 @@
             ' TxtFullName
             ' 
             TxtFullName.BackColor = Color.LightPink
-            TxtFullName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtFullName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TxtFullName.Location = New Point(273, 83)
             TxtFullName.Margin = New Padding(6, 5, 6, 5)
             TxtFullName.MaxLength = 255
@@ -1224,14 +1094,14 @@
             ' 
             TbctlEmployee.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
             TbctlEmployee.Controls.Add(tpGeneral)
-            TbctlEmployee.Controls.Add(tpWorkIn)
+            TbctlEmployee.Controls.Add(tpEmployment)
             TbctlEmployee.Controls.Add(tpPermissions)
-            TbctlEmployee.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TbctlEmployee.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
             TbctlEmployee.Location = New Point(20, 25)
             TbctlEmployee.Margin = New Padding(6, 5, 6, 5)
             TbctlEmployee.Name = "TbctlEmployee"
             TbctlEmployee.SelectedIndex = 0
-            TbctlEmployee.Size = New Size(830, 706)
+            TbctlEmployee.Size = New Size(830, 700)
             TbctlEmployee.TabIndex = 1039
             ' 
             ' ULbl8
@@ -1241,7 +1111,7 @@
             ULbl8.Location = New Point(887, 83)
             ULbl8.Margin = New Padding(7, 5, 7, 5)
             ULbl8.Name = "ULbl8"
-            ULbl8.Size = New Size(250, 55)
+            ULbl8.Size = New Size(250, 39)
             ULbl8.SLFText = "Photo"
             ULbl8.SLFTextAdjuster = False
             ULbl8.SLFTextBorder = False
@@ -1250,9 +1120,8 @@
             ' 
             ' FRMeplsEditor
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1181, 965)
-            KeyPreview = True
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMeplsEditor"
             PnlBottomButton.ResumeLayout(False)
@@ -1270,8 +1139,8 @@
             CType(DgnModulesRoles, ComponentModel.ISupportInitialize).EndInit()
             GbxCredetials.ResumeLayout(False)
             GbxCredetials.PerformLayout()
-            tpWorkIn.ResumeLayout(False)
-            tpWorkIn.PerformLayout()
+            tpEmployment.ResumeLayout(False)
+            tpEmployment.PerformLayout()
             tpGeneral.ResumeLayout(False)
             tpGeneral.PerformLayout()
             TbctlEmployee.ResumeLayout(False)
@@ -1290,15 +1159,11 @@
         Friend WithEvents TxtPersonalID As CMCv.UI.Control.txt
         Friend WithEvents CboGender As CMCv.UI.Control.cbo
         Friend WithEvents TxtFullName As CMCv.UI.Control.txt
-        Friend WithEvents tpWorkIn As TabPage
+        Friend WithEvents tpEmployment As TabPage
         Friend WithEvents TxtEmployeeNickname As CMCv.UI.Control.txt
-        Friend WithEvents TxtContractType As CMCv.UI.Control.txt
-        Friend WithEvents TxtContractTypeID As CMCv.UI.Control.txt
         Friend WithEvents TxtEmployeeNumber As CMCv.UI.Control.txt
-        Friend WithEvents TxtGrade As CMCv.UI.Control.txt
-        Friend WithEvents TxtPositionID As CMCv.UI.Control.txt
+        Friend WithEvents TxtEmploymentType As CMCv.UI.Control.txt
         Friend WithEvents TxtPosition As CMCv.UI.Control.txt
-        Friend WithEvents TxtGradeID As CMCv.UI.Control.txt
         Friend WithEvents BtnBrowsePosition As CMCv.UI.Control.btn
         Friend WithEvents TxTDepartment As CMCv.UI.Control.txt
         Friend WithEvents TxtCompany As CMCv.UI.Control.txt
@@ -1327,7 +1192,6 @@
         Friend WithEvents ULbl16 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl14 As CMCv.UI.Control.ULbl
-        Friend WithEvents ULbl13 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl12 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl11 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl10 As CMCv.UI.Control.ULbl
@@ -1335,5 +1199,6 @@
         Friend WithEvents ULbl6 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl7 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
+        Friend WithEvents BtnBrowseEmploymentType As CMCv.UI.Control.btn
     End Class
 End Namespace

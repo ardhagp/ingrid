@@ -6,6 +6,8 @@ Namespace CMDcdin
         Private Shared varQuery As String
         Private Shared consTableName As String = "CheckRelation"
 
+        Private Const pDepartmentId As String = "@DepartmentId"
+
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt)
             Dim varWhere As String = "where "
@@ -45,8 +47,8 @@ Namespace CMDcdin
             Dim varHasChild As Boolean = True
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varQuery = $"SELECT now() as `timestamp`, (select count(*) from v_cdin_granularity_post where position_department = '{dataproperties.DepartmentId}' limit 0,1) as `relation1`;"
-                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName)
+                    varQuery = $"SELECT now() as `timestamp`, (select count(*) from v_cdin_granularity_post where position_department = @DepartmentId limit 0,1) as `relation1`;"
+                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName, dataproperties.AllParameters)
                 End If
 
                 If datasetname.Tables(consTableName).Rows.Count > 0 Then
@@ -72,12 +74,12 @@ Namespace CMDcdin
                 End If
 
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(1).Query = $"delete from dbo.man_department where (department_id = '{dataproperties.DepartmentId}')"
+                    varDatabaseRequestMssql2008(1).Query = $"delete from dbo.man_department where (department_id = @DepartmentId)"
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                     varSuccess = True
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(1).Query = $"delete from man_department where (department_id = '{dataproperties.DepartmentId}')"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                    varDatabaseRequestMysql(1).Query = $"delete from man_department where (department_id = @DepartmentId)"
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                     varSuccess = True
                 End If
             Catch ex As Exception
@@ -90,7 +92,7 @@ Namespace CMDcdin
     Public Class Editor
         'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
         Private Shared varQuery As String
-        Private Shared consTableName As String = "man_department"
+        Private Shared ReadOnly consTableName As String = "man_department"
 
         <SupportedOSPlatform("windows")>
         Public Shared Function IsDuplicate(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
@@ -98,25 +100,25 @@ Namespace CMDcdin
             Dim varWhere As String = "where "
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                If dataproperties.DepartmentId = "-1" Then
-                    varWhere += $"(d.department_company = '{dataproperties.CompanyId}') and (d.department_code = '{dataproperties.DepartmentCode}')"
+                If dataproperties.DepartmentIsNew Then
+                    varWhere += $"(d.department_company = @CompanyId) and (d.department_code = @DepartmentCode)"
                 Else
-                    varWhere += $"(d.department_company = '{dataproperties.CompanyId}') and (d.department_code = '{dataproperties.DepartmentCode}') and (d.department_id <> '{dataproperties.DepartmentId}')"
+                    varWhere += $"(d.department_company = @CompanyId) and (d.department_code = @DepartmentCode) and (d.department_id <> @DepartmentId)"
                 End If
 
                 varDatabaseRequestMssql2008(1).Query = $"select count(d.department_id) as [rows] from dbo.man_department d {varWhere}"
 
                 varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Integer)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                If dataproperties.DepartmentId = "-1" Then
-                    varWhere += $"(d.department_company = '{dataproperties.CompanyId}') and (d.department_code = '{dataproperties.DepartmentCode}')"
+                If dataproperties.DepartmentIsNew Then
+                    varWhere += $"(d.department_company = @CompanyId) and (d.department_code = @DepartmentCode)"
                 Else
-                    varWhere += $"(d.department_company = '{dataproperties.CompanyId}') and (d.department_code = '{dataproperties.DepartmentCode}') and (d.department_id <> '{dataproperties.DepartmentId}')"
+                    varWhere += $"(d.department_company = @CompanyId) and (d.department_code = @DepartmentCode) and (d.department_id <> @DepartmentId)"
                 End If
 
                 varDatabaseRequestMysql(1).Query = $"select count(d.department_id) as `rows` from man_department d {varWhere}"
 
-                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Integer)
+                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters), Integer)
             End If
 
             If varIsDuplicate = 0 Then
@@ -144,37 +146,37 @@ Namespace CMDcdin
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetDepartmentProperties(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                varQuery = $"select d.department_id, d.department_company, d.department_code, d.department_name, d.department_description from dbo.man_department d where d.department_id = '{dataproperties.DepartmentId}'"
+                varQuery = $"select d.department_id, d.department_company, d.department_code, d.department_name, d.department_description from dbo.man_department d where d.department_id = @DepartmentId"
                 datasetname = varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varQuery = $"select d.department_id, d.department_company, d.department_code, d.department_name, d.department_description from man_department d where d.department_id = '{dataproperties.DepartmentId}'"
-                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName)
+                varQuery = $"select d.department_id, d.department_company, d.department_code, d.department_name, d.department_description from man_department d where d.department_id = @DepartmentId"
+                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName, dataproperties.AllParameters)
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
         Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varSuccess As Boolean
-            Dim varHash As String = CMCv.Security.Encrypt.MD5()
+
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     If dataproperties.DepartmentIsNew Then
-                        varDatabaseRequestMssql2008(1).Query = $"insert into dbo.man_department(department_id, department_company, department_code, department_name, department_description) " &
-                                                               $"values('{varHash}', '{dataproperties.CompanyId}', '{dataproperties.DepartmentCode}', '{dataproperties.DepartmentName}', '{dataproperties.DepartmentDescription}')"
+                        varDatabaseRequestMssql2008(1).Query = $"insert into dbo.man_department(department_company, department_code, department_name, department_description) " &
+                                                               $"values(@CompanyId, @DepartmentCode, @DepartmentName, @DepartmentDescription)"
                     Else
-                        varDatabaseRequestMssql2008(1).Query = $"update dbo.man_department set department_company = '{dataproperties.CompanyId}', department_code = '{dataproperties.DepartmentCode}', department_name = '{dataproperties.DepartmentName}', department_description = '{dataproperties.DepartmentDescription}' " &
-                                                               $"where department_id = '{dataproperties.DepartmentId}'"
+                        varDatabaseRequestMssql2008(1).Query = $"update dbo.man_department set department_company = @CompanyId, department_code = @DepartmentCode, department_name = @DepartmentName, department_description = @DepartmentDescription, department_datelastmodified = now() " &
+                                                               $"where department_id = @DepartmentId"
                     End If
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    If dataproperties.DepartmentId = "-1" Then
-                        varDatabaseRequestMysql(1).Query = $"insert into man_department(department_id, department_company, department_code, department_name, department_description) " &
-                                                           $"values('{varHash}', '{dataproperties.CompanyId}', '{dataproperties.DepartmentCode}', '{dataproperties.DepartmentName}', '{dataproperties.DepartmentDescription}')"
+                    If dataproperties.DepartmentIsNew Then
+                        varDatabaseRequestMysql(1).Query = $"insert into man_department(department_company, department_code, department_name, department_description) " &
+                                                           $"values(@CompanyId, @DepartmentCode, @DepartmentName, @DepartmentDescription)"
                     Else
-                        varDatabaseRequestMysql(1).Query = $"update man_department set department_company = '{dataproperties.CompanyId}', department_code = '{dataproperties.DepartmentCode}', department_name = '{dataproperties.DepartmentName}', department_description = '{dataproperties.DepartmentDescription}' " &
-                                                           $"where department_id = '{dataproperties.DepartmentId}'"
+                        varDatabaseRequestMysql(1).Query = $"update man_department set department_company = @CompanyId, department_code = @DepartmentCode, department_name = @DepartmentName, department_description = @DepartmentDescription, department_datelastmodified = now() " &
+                                                           $"where department_id = @DepartmentId"
                     End If
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                 End If
                 varSuccess = True
             Catch ex As Exception

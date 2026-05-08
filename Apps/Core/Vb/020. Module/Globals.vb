@@ -2,6 +2,7 @@
 Imports System.Reflection
 Imports System.Runtime.Versioning
 Imports Ingrid.UI
+Imports Syncfusion.Office
 
 Module Globals
 #Region "Activate Licenses"
@@ -47,11 +48,25 @@ Module Globals
     Public varDataProperties As New LibApp.Ingrid.Global.Properties
     Public varAccountingProperties As New LibApp.Ingrid.Accounting.Properties
 
-    Public varDatasetIngrid As New UI.ADSglobal
+    Public varDatasetIngrid As New Ingrid.UI.Dataset.ADSglobal
+
+    Private Const pClientComputerName As String = "@ClientComputerName"
+    Private Const pClientOSFullName As String = "@ClientOSFullName"
+    Private Const pClientAppVersion As String = "@ClientAppVersion"
+
 #End Region
 
     <SupportedOSPlatform("windows")>
     Public Sub FirstLoad()
+        With varDataProperties.AllParameters
+            .Remove(pClientComputerName)
+            .Add(pClientComputerName, My.Computer.Name.ToString)
+            .Remove(pClientOSFullName)
+            .Add(pClientOSFullName, My.Computer.Info.OSFullName.ToString)
+            .Remove(pClientAppVersion)
+            .Add(pClientAppVersion, GetAppVersion)
+        End With
+
         Call GetAppVersion()
         Call CheckRequiredFolder()
     End Sub
@@ -81,6 +96,14 @@ Module Globals
             clsLog.ShowData(proLog)
             clsLog = Nothing
         End Try
+    End Sub
+
+    Public Sub ClearMainFrameFooterText()
+        UI.FRMmainframe6.Ts_status.Text = String.Empty
+    End Sub
+
+    Public Sub SetMainframeFooterText(text As String)
+        UI.FRMmainframe6.Ts_status.Text = text
     End Sub
 
 #Region "Get App Version"

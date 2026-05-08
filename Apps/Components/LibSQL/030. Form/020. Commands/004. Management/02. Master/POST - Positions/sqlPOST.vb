@@ -41,7 +41,7 @@ Namespace CMDpost
             Dim varHasChild As Boolean = True
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varQuery = $"SELECT now() as `timestamp`, (select count(*) from v_post_granularity_epls where employee_position = '{dataproperties.EmployeePositionId}' limit 0,1) as `relation1`;"
+                    varQuery = $"SELECT now() as `timestamp`, (select count(*) from v_post_granularity_epls where employee_position = @PositionId limit 0,1) as `relation1`;"
                     datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName)
                 End If
 
@@ -69,11 +69,11 @@ Namespace CMDpost
 
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(1).Query = $"delete from dbo.man_position where (position_id = '{dataproperties.EmployeePositionId}')"
+                    varDatabaseRequestMssql2008(1).Query = $"delete from dbo.man_position where position_id = @PositionId"
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(1).Query = $"delete from man_position where (position_id = '{dataproperties.EmployeePositionId}')"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                    varDatabaseRequestMysql(1).Query = $"delete from man_position where position_id = @PositionId"
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                 End If
                 varSuccess = True
             Catch ex As Exception
@@ -130,13 +130,13 @@ Namespace CMDpost
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varQuery = $"SELECT ps.position_id, d.department_company, ps.position_department, ps.position_code, ps.position_name, ps.position_description, ps.position_parent " &
                            $"FROM dbo.man_position ps inner join dbo.man_department d on d.department_id = ps.position_department " &
-                           $"WHERE ps.position_id = '{dataproperties.EmployeePositionId}';"
+                           $"WHERE ps.position_id = @PositionId;"
                 datasetname = varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_position")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varQuery = $"SELECT ps.position_id, d.department_company, ps.position_department, ps.position_code, ps.position_name, ps.position_description, ps.position_parent " &
                            $"FROM man_position ps inner join man_department d on d.department_id = ps.position_department " &
-                           $"WHERE ps.position_id = '{dataproperties.EmployeePositionId}';"
-                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_position")
+                           $"WHERE ps.position_id = @PositionId;"
+                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_position", dataproperties.AllParameters)
             End If
         End Sub
 
@@ -146,9 +146,9 @@ Namespace CMDpost
             Dim varWhere As String = "WHERE "
 
             If dataproperties.EmployeePositionIsNew Then
-                varWhere += $"(ps.position_department = '{dataproperties.DepartmentId}') and (ps.position_code = '{dataproperties.EmployeePositionId}')"
+                varWhere += $"(ps.position_department = @DepartmentId) and (ps.position_code = @PositionCode)"
             Else
-                varWhere += $"(ps.position_department = '{dataproperties.DepartmentId}') and (ps.position_code = '{dataproperties.EmployeePositionId}' and ps.position_id <> '{dataproperties.EmployeePositionId}')"
+                varWhere += $"(ps.position_department = @DepartmentId) and (ps.position_code = @PositionCode and ps.position_id <> @PositionId)"
             End If
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -156,7 +156,7 @@ Namespace CMDpost
                 varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Integer)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = $"select (ps.position_id) as `rows` from man_position ps {varWhere}"
-                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Integer)
+                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters), Integer)
             End If
 
             If varIsDuplicate = 0 Then
@@ -169,27 +169,26 @@ Namespace CMDpost
         <SupportedOSPlatform("windows")>
         Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varSuccess As Boolean = False
-            Dim varHash As String = CMCv.Security.Encrypt.MD5()
 
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    If dataproperties.EmployeePositionId = "-1" Then
-                        varDatabaseRequestMssql2008(1).Query = $"insert into dbo.man_position(position_id, position_department, position_code, position_name, position_description) " &
-                                                               $"values ('{varHash}', '{dataproperties.DepartmentId}', '{dataproperties.EmployeePositionCode}', '{dataproperties.EmployeePositionName}', '{dataproperties.EmployeePositionDescription}')"
+                    If dataproperties.EmployeePositionIsNew Then
+                        varDatabaseRequestMssql2008(1).Query = $"insert into dbo.man_position(position_department, position_code, position_name, position_description) " &
+                                                               $"values (@DepartmentId, @PositionCode, @PositionName, @PositionDescription)"
                     Else
-                        varDatabaseRequestMssql2008(1).Query = $"update dbo.man_position set position_department = '{dataproperties.DepartmentId}', position_code = '{dataproperties.EmployeePositionCode}', position_name = '{dataproperties.EmployeePositionName}', position_description = '{dataproperties.EmployeePositionDescription}' " &
-                                                               $"where position_id = '{dataproperties.EmployeePositionId}'"
+                        varDatabaseRequestMssql2008(1).Query = $"update dbo.man_position set position_department = @DepartmentId, position_code = @PositionCode, position_name = @PositionName, position_description = @PositionDescription " &
+                                                               $"where position_id = @PositionId"
                     End If
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    If dataproperties.EmployeePositionId = "-1" Then
-                        varDatabaseRequestMysql(1).Query = $"insert into man_position(position_id, position_department, position_code, position_name, position_description) " &
-                                                           $"values ('{varHash}', '{dataproperties.DepartmentId}', '{dataproperties.EmployeePositionCode}', '{dataproperties.EmployeePositionName}', '{dataproperties.EmployeePositionDescription}')"
+                    If dataproperties.EmployeePositionIsNew Then
+                        varDatabaseRequestMysql(1).Query = $"insert into man_position(position_department, position_code, position_name, position_description) " &
+                                                           $"values (@DepartmentId, @PositionCode, @PositionName, @PositionDescription)"
                     Else
-                        varDatabaseRequestMysql(1).Query = $"update man_position set position_department = '{dataproperties.DepartmentId}', position_code = '{dataproperties.EmployeePositionCode}', position_name = '{dataproperties.EmployeePositionName}', position_description = '{dataproperties.EmployeePositionDescription}' " &
-                                                           $"where position_id = '{dataproperties.EmployeePositionId}'"
+                        varDatabaseRequestMysql(1).Query = $"update man_position set position_department = @DepartmentId, position_code = @PositionCode, position_name = @PositionName, position_description = @PositionDescription, position_datelastmodified = now() " &
+                                                           $"where position_id = @PositionId"
                     End If
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                 End If
                 varSuccess = True
             Catch ex As Exception

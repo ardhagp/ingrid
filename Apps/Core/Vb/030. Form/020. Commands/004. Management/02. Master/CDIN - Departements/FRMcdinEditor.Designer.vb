@@ -148,7 +148,7 @@
             TxtDeptCode.XOPwdStrengthCalculate = False
             TxtDeptCode.XOPwdStrengthScore = 0
             TxtDeptCode.XOPwdStrengthText = Nothing
-            TxtDeptCode.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtDeptCode.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
             TxtDeptCode.XOSearchBoxText = "Type then press Enter"
             TxtDeptCode.XOSQLText = ""
             TxtDeptCode.XOTanpaSpasi = False
@@ -185,13 +185,13 @@
             TxtDeptName.XOHightlightSaatFokusWarna = Color.LightYellow
             TxtDeptName.XOIsBlank = True
             TxtDeptName.XOIsSearchBox = False
-            TxtDeptName.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+            TxtDeptName.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
             TxtDeptName.XOPilihSemuaSaatFokus = False
             TxtDeptName.XOPwdLengthMin = 8
             TxtDeptName.XOPwdStrengthCalculate = False
             TxtDeptName.XOPwdStrengthScore = 0
             TxtDeptName.XOPwdStrengthText = Nothing
-            TxtDeptName.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtDeptName.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
             TxtDeptName.XOSearchBoxText = "Type then press Enter"
             TxtDeptName.XOSQLText = ""
             TxtDeptName.XOTanpaSpasi = False
@@ -216,7 +216,7 @@
             TxtDescription.XOHightlightSaatFokusWarna = Color.LightYellow
             TxtDescription.XOIsBlank = True
             TxtDescription.XOIsSearchBox = False
-            TxtDescription.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+            TxtDescription.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
             TxtDescription.XOPilihSemuaSaatFokus = False
             TxtDescription.XOPwdLengthMin = 8
             TxtDescription.XOPwdStrengthCalculate = False
