@@ -3,6 +3,7 @@
   <PropertyGroup>
     <RootNamespace>LibApp</RootNamespace>
     <TargetFramework>net7.0</TargetFramework>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
 
   <ItemGroup>
