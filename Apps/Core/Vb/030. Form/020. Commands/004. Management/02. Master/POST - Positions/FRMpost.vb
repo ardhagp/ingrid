@@ -241,7 +241,7 @@ Namespace UI
         '    Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         '    If item IsNot Nothing Then
         '        Try
-        '            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "POST", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
+        '            If Not (varUserAccess.User(varDataProperties, "POST", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Add)) Then
         '                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         '                Return
         '            End If
@@ -262,7 +262,7 @@ Namespace UI
         '    Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         '    If item IsNot Nothing Then
         '        Try
-        '            If Not (varUserAccess.User(varDatabaseName, varDatabaseEngineE, "POST", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
+        '            If Not (varUserAccess.User(varDataProperties, "POST", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Edit)) Then
         '                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         '                Return
         '            End If
@@ -289,7 +289,7 @@ Namespace UI
 
         '    Try
         '        ' Authorization check early-return
-        '        If Not varUserAccess.User(varDatabaseName, varDatabaseEngineE, "POST", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete) Then
+        '        If Not varUserAccess.User(varDataProperties, "POST", varDataProperties.UserID, LibSQL.Application.Access.TypeOfAccess.Delete) Then
         '            Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         '            Return
         '        End If
@@ -327,7 +327,7 @@ Namespace UI
         '        '        Decision(My.Application.Info.AssemblyName.toupper, "No File Selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         '        '    Else
         '        '        If Decision(My.Application.Info.AssemblyName.toupper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-        '        '            If CMDpost.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.RowID)) Then
+        '        '            If CMDpost.View.DeleteData(varDataProperties, Convert.ToString(varDataProperties.RowID)) Then
         '        '                Call GetData(True)
         '        '                FRMmainframe6.Ts_status.Text = "Success"
         '        '            Else

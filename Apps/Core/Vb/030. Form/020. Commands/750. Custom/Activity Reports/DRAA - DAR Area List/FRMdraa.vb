@@ -20,7 +20,7 @@ Namespace UI
             DblBuffer(DgnArea)
 
             'Mengisi Datagrid dengan data dari database    
-            CMDdraa.View.DisplayMainGrid(varDatabaseName, TxtFind, DgnArea, SLFStatus, forcerefresh)
+            CMDdraa.View.DisplayMainGrid(varDataProperties, TxtFind, DgnArea, SLFStatus, forcerefresh)
         End Sub
 
         ''' <summary>

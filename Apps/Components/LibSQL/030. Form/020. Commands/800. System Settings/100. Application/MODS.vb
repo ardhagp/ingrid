@@ -4,7 +4,7 @@ Imports CMCv
 Namespace CMDmods
     Public Class View
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                 varDatabaseRequestMssql2008(0).Query = String.Format("select modg.modulegroup_name, mods.module_code, mods.module_name, mods.module_description, mods.module_issystem, mods.module_ismaintenance, mods.module_id from dbo.sys_module mods inner join dbo.[[sys]]modulegroup] modg on modg.modulegroup_id = mods.module_modulegroup order by modg.modulegroup_order, mods.module_code")
             Else
@@ -13,11 +13,11 @@ Namespace CMDmods
 
             varDatabaseRequestMssql2008(0).DataGrid = datagrid
             varDatabaseRequestMssql2008(0).StatusBar = statusbar
-            varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TMODS")
+            varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TMODS")
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DeleteData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As Boolean
+        Public Shared Function DeleteData(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Boolean
             Dim varSuccess As Boolean
             Try
                 varDatabaseRequestMssql2008(1).Query = String.Format("delete from dbo.sys_module where module_id = '{0}'", rowid)
@@ -33,7 +33,7 @@ Namespace CMDmods
 
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsDuplicate(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, code As String, Optional rowid As String = "") As Boolean
+        Public Shared Function IsDuplicate(dataproperties As LibApp.Ingrid.Global.Properties, code As String, Optional rowid As String = "") As Boolean
             Dim varIsDuplicate As Boolean
 
             Try
@@ -43,7 +43,7 @@ Namespace CMDmods
                     varDatabaseRequestMssql2008(0).Query = String.Format("select count(mods.module_id) as module_found from dbo.sys_module mods where mods.module_code = '{0}' and mods.module_id <> '{1}'", code.ToUpper, rowid.ToUpper)
                 End If
 
-                varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Boolean)
+                varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Boolean)
 
                 Return varIsDuplicate
             Catch ex As Exception
@@ -52,61 +52,61 @@ Namespace CMDmods
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillModuleGroup(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, modulegroup As CMCv.UI.Control.cbo)
+        Public Shared Sub FillModuleGroup(dataproperties As LibApp.Ingrid.Global.Properties, modulegroup As CMCv.UI.Control.cbo)
             varDatabaseRequestMssql2008(1).Query = "select modg.modulegroup_id, modg.modulegroup_name from dbo.[[sys]]modulegroup] modg order by modg.modulegroup_order"
             varDatabaseRequestMssql2008(1).Dropdown = modulegroup
-            varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TModuleGroup")
+            varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1), "TModuleGroup")
             modulegroup.ValueMember = "modulegroup_id"
             modulegroup.DisplayMember = "modulegroup_name"
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetMODcode(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, ByVal rowid As String) As String
+        Public Shared Function GetMODcode(dataproperties As LibApp.Ingrid.Global.Properties, ByVal rowid As String) As String
             Dim varCode As String
 
             varDatabaseRequestMssql2008(0).Query = String.Format("select mods.module_code from dbo.sys_module mods where mods.module_id = '{0}'", rowid)
-            varCode = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
+            varCode = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query).ToString
 
             Return varCode
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetMODname(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
+        Public Shared Function GetMODname(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varName As String
 
             varDatabaseRequestMssql2008(0).Query = String.Format("select mods.module_name from dbo.sys_module mods where mods.module_id = '{0}'", rowid)
-            varName = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
+            varName = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query).ToString
 
             Return varName
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetMODgroupid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
+        Public Shared Function GetMODgroupid(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varGroupID As String
 
             varDatabaseRequestMssql2008(0).Query = String.Format("select mods.module_modulegroup from dbo.sys_module mods where mods.module_id = '{0}'", rowid)
-            varGroupID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
+            varGroupID = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query).ToString
 
             Return varGroupID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetMODdescription(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As String
+        Public Shared Function GetMODdescription(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varDescription As String
 
             varDatabaseRequestMssql2008(0).Query = String.Format("select mods.module_description from dbo.sys_module mods where mods.module_id = '{0}'", rowid)
-            varDescription = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
+            varDescription = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query).ToString
 
             Return varDescription
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetMODsystem(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As Boolean
+        Public Shared Function GetMODsystem(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Boolean
             Dim varIsSystem As Boolean
 
             Try
                 varDatabaseRequestMssql2008(0).Query = String.Format("select mods.module_issystem from dbo.sys_module mods where mods.module_id = '{0}'", rowid)
-                varIsSystem = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Boolean)
+                varIsSystem = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Boolean)
 
                 Return varIsSystem
             Catch ex As Exception
@@ -115,12 +115,12 @@ Namespace CMDmods
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetMODlocked(databasename As String, ByVal dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As Boolean
+        Public Shared Function GetMODlocked(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Boolean
             Dim varIsLocked As Boolean
 
             Try
                 varDatabaseRequestMssql2008(0).Query = String.Format("select mods.module_ismaintenance from dbo.sys_module mods where mods.module_id = '{0}'", rowid)
-                varIsLocked = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Boolean)
+                varIsLocked = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Boolean)
 
                 Return varIsLocked
             Catch ex As Exception
@@ -129,7 +129,7 @@ Namespace CMDmods
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, id As String, groupid As String, code As String, name As String, description As String, issystem As Boolean, islocked As Boolean, Optional rowid As String = "") As Boolean
+        Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties, id As String, groupid As String, code As String, name As String, description As String, issystem As Boolean, islocked As Boolean, Optional rowid As String = "") As Boolean
             Dim varSuccess As Boolean
 
             Try
@@ -141,7 +141,7 @@ Namespace CMDmods
                                                             "where module_id = '{5}'", groupid, name, description, issystem, islocked, rowid)
                 End If
 
-                varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
+                varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
 
                 varSuccess = True
                 Return varSuccess

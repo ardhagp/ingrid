@@ -17,7 +17,7 @@ Namespace UI
                 .Add(varUserOnly)
                 .Add(varAllUsers)
             End With
-            CboProfile.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_showprofile"), Integer)
+            CboProfile.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_showprofile"), Integer)
 
             'Get Storage
             With CboStorage.Items
@@ -27,7 +27,7 @@ Namespace UI
                 .Add(varUserOnly)
                 .Add(varAllUsers)
             End With
-            CboStorage.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_showstorage"), Integer)
+            CboStorage.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_showstorage"), Integer)
 
             'Get NewsTicker
             With CboNewsTicker.Items
@@ -37,13 +37,13 @@ Namespace UI
                 .Add(varUserOnly)
                 .Add(varAllUsers)
             End With
-            CboNewsTicker.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_showrunningtext"), Integer)
+            CboNewsTicker.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_showrunningtext"), Integer)
 
             'Get Minimum Photo Upload
-            nudUploadPhoto.Value = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_uploadphoto"), Decimal)
+            nudUploadPhoto.Value = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_uploadphoto"), Decimal)
 
             'Get Minimum PDF Upload
-            nudUploadPDF.Value = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_uploadpdf"), Decimal)
+            nudUploadPDF.Value = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_uploadpdf"), Decimal)
 
             'Get Watermark
             With CboWatermark.Items
@@ -53,11 +53,11 @@ Namespace UI
                 .Add(varUserOnly)
                 .Add(varAllUsers)
             End With
-            CboWatermark.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_showwatermark"), Integer)
-            TxtWatermark.Text = CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_textmark").ToString
+            CboWatermark.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_showwatermark"), Integer)
+            TxtWatermark.Text = CMDsyss.View.GetSettingValue(varDataProperties, "settings_textmark").ToString
 
             'Get Minimum Password
-            nudMinPassword.Value = CType(CMDsyss.View.GetSettingValue(varDatabaseName, varDatabaseEngineE, "settings_minpasswordlength"), Decimal)
+            nudMinPassword.Value = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_minpasswordlength"), Decimal)
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -76,7 +76,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Try
-                If (CMDsyss.Editor.SaveSettings(varDatabaseName, varDatabaseEngineE, CboProfile.SelectedIndex, CboStorage.SelectedIndex, CboNewsTicker.SelectedIndex, CType(nudUploadPhoto.Value, Integer), CType(nudUploadPDF.Value, Integer), CboWatermark.SelectedIndex, TxtWatermark.XOSQLText, CType(nudMinPassword.Value, Integer))) Then
+                If (CMDsyss.Editor.SaveSettings(varDataProperties, CboProfile.SelectedIndex, CboStorage.SelectedIndex, CboNewsTicker.SelectedIndex, CType(nudUploadPhoto.Value, Integer), CType(nudUploadPDF.Value, Integer), CboWatermark.SelectedIndex, TxtWatermark.XOSQLText, CType(nudMinPassword.Value, Integer))) Then
                     SLFStatus.Items(0).Text = "Saved"
                 End If
             Catch ex As Exception

@@ -93,19 +93,19 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillEmployee(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, employee As CMCv.UI.Control.cbo)
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+        Public Shared Sub FillEmployee(dataproperties As LibApp.Ingrid.Global.Properties, employee As CMCv.UI.Control.cbo)
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_id, em.employee_fullname from dbo.man_employee em where em.employee_id in " &
                                                     "(select ea.employeeactivity_employee from dbo.doc_employeeactivity ea group by " &
                                                     "ea.employeeactivity_employee) order by em.employee_fullname;")
                 varDatabaseRequestMssql2008(1).Dropdown = employee
-                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TEmployee")
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1), "TEmployee")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select em.employee_id, em.employee_fullname from man_employee em where em.employee_id in " &
                                                     "(select ea.employeeactivity_employee from dbo.doc_employeeactivity ea group by " &
                                                     "ea.employeeactivity_employee) order by em.employee_fullname;")
                 varDatabaseRequestMysql(1).Dropdown = employee
-                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(1), "TEmployee")
+                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TEmployee")
             End If
 
             employee.DisplayMember = "employee_fullname"
@@ -113,7 +113,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayMainGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, find As CMCv.UI.Control.txt, dategrid As CMCv.UI.Control.dgn, datestatusbar As CMCv.UI.Control.stt, contentstatusbar As CMCv.UI.Control.stt, chkdatefilter As CMCv.UI.Control.chk, dtpdatefilter As CMCv.UI.Control.dtp, chkbyfilter As CMCv.UI.Control.chk, cbobyfilter As CMCv.UI.Control.cbo, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayMainGrid(dataproperties As LibApp.Ingrid.Global.Properties, find As CMCv.UI.Control.txt, dategrid As CMCv.UI.Control.dgn, datestatusbar As CMCv.UI.Control.stt, contentstatusbar As CMCv.UI.Control.stt, chkdatefilter As CMCv.UI.Control.chk, dtpdatefilter As CMCv.UI.Control.dtp, chkbyfilter As CMCv.UI.Control.chk, cbobyfilter As CMCv.UI.Control.cbo, Optional forcerefresh As Boolean = False)
             Try
                 Dim varWhere As String = String.Format("where ")
 
@@ -123,7 +123,7 @@ Namespace CMDdar
                     varEmployeeID = cbobyfilter.SelectedValue().ToString
                 End If
 
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
                         If Not (chkdatefilter.Checked) Then
                             varWhere += String.Format("(year(ea.employeeactivity_datetime) = year(getdate())) And (month(ea.employeeactivity_datetime) = " &
@@ -175,10 +175,10 @@ Namespace CMDdar
 
                     varDatabaseRequestMssql2008(0).DataGrid = dategrid
                     varDatabaseRequestMssql2008(0).StatusBar = datestatusbar
-                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TDailyReportsDate")
+                    varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TDailyReportsDate")
 
                     varIsEmpFilter = chkbyfilter.Checked
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
                         If Not (chkdatefilter.Checked) Then
                             varWhere += $"(year(ea.employeeactivity_datetime) = year(now())) And (month(ea.employeeactivity_datetime) = " &
@@ -229,7 +229,7 @@ Namespace CMDdar
 
                     varDatabaseRequestMysql(0).DataGrid = dategrid
                     varDatabaseRequestMysql(0).StatusBar = datestatusbar
-                    varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "TDailyReportsDate")
+                    varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TDailyReportsDate")
 
                     varIsEmpFilter = chkbyfilter.Checked
                 End If
@@ -239,7 +239,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplaySecondGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, dategrid As String, contentgrid As CMCv.UI.Control.dgn, contentstatusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional showattachment As Boolean = False, Optional photogrid As CMCv.UI.Control.dgn = Nothing, Optional filegrid As CMCv.UI.Control.dgn = Nothing)
+        Public Shared Sub DisplaySecondGrid(dataproperties As LibApp.Ingrid.Global.Properties, dategrid As String, contentgrid As CMCv.UI.Control.dgn, contentstatusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional showattachment As Boolean = False, Optional photogrid As CMCv.UI.Control.dgn = Nothing, Optional filegrid As CMCv.UI.Control.dgn = Nothing)
             Try
                 'Dim _CONTENTDATE As Date
                 Dim varContentDateAsString As String = String.Empty
@@ -258,7 +258,7 @@ Namespace CMDdar
                 'add date query-cut
                 varWhere += String.Format(" (ea.employeeactivity_datetime = '{0}')", varContentDateAsString)
 
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     ReDim varDatabaseRequestMssql2008(3)
 
                     'add text query-cut
@@ -333,7 +333,7 @@ Namespace CMDdar
 
                     varDatabaseRequestMssql2008(2).DataGrid = contentgrid
                     varDatabaseRequestMssql2008(2).StatusBar = contentstatusbar
-                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(2), "TDailyActivity")
+                    varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(2), "TDailyActivity")
 
                     If varDatabaseRequestMssql2008(2).DataGrid Is Nothing Then
                         varDatabaseRequestMssql2008(2).DataGrid = contentgrid
@@ -350,10 +350,10 @@ Namespace CMDdar
                         Else
                             varContentID = varDatabaseRequestMssql2008(2).DataGrid.CurrentRow.Cells("employeeactivity_id").Value.ToString
                         End If
-                        Call DisplayPhotoGrid(databasename, dbengine, varContentID, photogrid)
-                        Call DisplayFileGrid(databasename, dbengine, varContentID, filegrid)
+                        Call DisplayPhotoGrid(dataproperties, varContentID, photogrid)
+                        Call DisplayFileGrid(dataproperties, varContentID, filegrid)
                     End If
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     ReDim varDatabaseRequestMysql(3)
 
                     'add text query-cut
@@ -426,7 +426,7 @@ Namespace CMDdar
 
                     varDatabaseRequestMysql(2).DataGrid = contentgrid
                     varDatabaseRequestMysql(2).StatusBar = contentstatusbar
-                    varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(2), "TDailyActivity")
+                    varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TDailyActivity")
 
                     If varDatabaseRequestMysql(2).DataGrid Is Nothing Then
                         varDatabaseRequestMysql(2).DataGrid = contentgrid
@@ -443,8 +443,8 @@ Namespace CMDdar
                         Else
                             varContentID = varDatabaseRequestMysql(2).DataGrid.CurrentRow.Cells("employeeactivity_id").Value.ToString
                         End If
-                        Call DisplayPhotoGrid(databasename, dbengine, varContentID, photogrid)
-                        Call DisplayFileGrid(databasename, dbengine, varContentID, filegrid)
+                        Call DisplayPhotoGrid(dataproperties, varContentID, photogrid)
+                        Call DisplayFileGrid(dataproperties, varContentID, filegrid)
                     End If
                 End If
             Catch ex As Exception
@@ -453,11 +453,11 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayPhotoGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, contentid As String, filegrid As CMCv.UI.Control.dgn, Optional recordyear As String = "")
+        Public Shared Sub DisplayPhotoGrid(dataproperties As LibApp.Ingrid.Global.Properties, contentid As String, filegrid As CMCv.UI.Control.dgn, Optional recordyear As String = "")
             ReDim varDatabaseRequestMssql2008(5)
             Dim varContentId As String = contentid
 
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(4).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, (convert(varchar(25),fi.file_content_size) + ' KB') " &
                                                     "as [file_content_size], (convert(varchar(3),fi.file_score) + ' like(s)') as [file_score], " &
                                                     "fi.file_datetime, fi.file_uploader, (select em.employee_fullname from dbo.man_employee em where " &
@@ -466,8 +466,8 @@ Namespace CMDdar
                                                     "'' as [file_view] from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' " &
                                                     "and fi.file_filetype = 'jpg') order by fi.file_score desc, fi.file_datetime;", varContentId)
                 varDatabaseRequestMssql2008(4).DataGrid = filegrid
-                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(4), "TPhotoFile")
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(4), "TPhotoFile")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(4).Query = $"select fi.file_id, fi.file_filename, fi.file_content, (convert(varchar(25),fi.file_content_size) + ' KB') " &
                                                    $"as `file_content_size`, (convert(varchar(3),fi.file_score) + ' like(s)') as `file_score`, " &
                                                    $"fi.file_datetime, fi.file_uploader, (select em.employee_fullname from dbo.man_employee em where " &
@@ -476,16 +476,16 @@ Namespace CMDdar
                                                    $"'' as `file_view` from sto_file fi where (fi.file_parent = '{varContentId}' " &
                                                    $"and fi.file_filetype = 'jpg') order by fi.file_score desc, fi.file_datetime"
                 varDatabaseRequestMysql(4).DataGrid = filegrid
-                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(4), "TPhotoFile")
+                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(4), "TPhotoFile")
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayFileGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, contentid As String, filegrid As CMCv.UI.Control.dgn, Optional recordyear As String = "")
+        Public Shared Sub DisplayFileGrid(dataproperties As LibApp.Ingrid.Global.Properties, contentid As String, filegrid As CMCv.UI.Control.dgn, Optional recordyear As String = "")
             ReDim varDatabaseRequestMssql2008(6)
             Dim varContentId As String = contentid
 
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(5).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, '' as [file_content], " &
                                                     "(convert(varchar(25),fi.file_content_size) + ' KB') as [file_content_size], " &
                                                     "(convert(varchar(3),fi.file_score) + ' like(s)') as [file_score], fi.file_datetime, " &
@@ -495,8 +495,8 @@ Namespace CMDdar
                                                     "'' as [file_view] from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'pdf') order by fi.file_datetime;", varContentId)
                 varDatabaseRequestMssql2008(5).DataGrid = filegrid
-                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(5), "TFile")
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(5), "TFile")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(5).Query = $"select fi.file_id, fi.file_filename, fi.file_tag, '' as `file_content`, " &
                                                    $"(convert(varchar(25),fi.file_content_size) + ' KB') as `file_content_size`, " &
                                                    $"(convert(varchar(3),fi.file_score) + ' like(s)') as [file_score], fi.file_datetime, " &
@@ -506,36 +506,36 @@ Namespace CMDdar
                                                    $"'' as `file_view` from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{varContentId}' and " &
                                                    $"fi.file_filetype = 'pdf') order by fi.file_datetime;"
                 varDatabaseRequestMysql(5).DataGrid = filegrid
-                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(5), "TFile")
+                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(5), "TFile")
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetPdfFile(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String, Optional recordyear As String = "") As Object
+        Public Shared Function GetPdfFile(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, Optional recordyear As String = "") As Object
             Dim varFile As Object = Nothing
 
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select fi.file_content from db_universe_erp_file.dbo.sto_file fi where fi.file_id = '{0}'", rowid)
-                varFile = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query)
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varFile = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = $"select fi.file_content from sto_file fi where fi.file_id = '{rowid}'"
-                varFile = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query)
+                varFile = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
             End If
             Return varFile
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DeleteData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String) As Boolean
+        Public Shared Function DeleteData(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Boolean
             Dim varSuccess As Boolean
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(1).Query = String.Format("delete from dbo.doc_employeeactivity where employeeactivity_id = '{0}';delete " &
                                                         "from db_universe_erp_file.dbo.sto_file where file_parent = '{0}';", rowid)
-                    varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $"delete from doc_employeeactivity where employeeactivity_id = '{rowid}';delete " &
                                                        $"from sto_file where file_parent = '{rowid}';"
-                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
                 End If
                 varSuccess = True
             Catch ex As Exception
@@ -545,17 +545,17 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsLike(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, fileid As String, eid As String) As Boolean
+        Public Shared Function IsLike(dataproperties As LibApp.Ingrid.Global.Properties, fileid As String, eid As String) As Boolean
             Dim varResult As Integer = 0
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(1).Query = String.Format("select count(ff.filefeedback_id) as [islike] from db_universe_erp_file.dbo.sto_filefeedback ff " &
                                                         "where ff.filefeedback_file = '{0}' and ff.filefeedback_employee = '{1}';", fileid, eid)
-                    varResult = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varResult = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Integer)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $"select count(ff.filefeedback_id) as `islike` from sto_filefeedback ff " &
                                                        $"where ff.filefeedback_file = '{fileid}' and ff.filefeedback_employee = '{eid}';"
-                    varResult = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), Integer)
+                    varResult = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Integer)
                 End If
             Catch ex As Exception
                 varResult = 0
@@ -569,11 +569,11 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function LikePhoto(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, fileid As String, eid As String, fileowner As String) As Boolean
+        Public Shared Function LikePhoto(dataproperties As LibApp.Ingrid.Global.Properties, fileid As String, eid As String, fileowner As String) As Boolean
             Dim varSuccess As Boolean
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(1).Query = String.Format("insert into db_universe_erp_file.dbo.sto_filefeedback(filefeedback_datetime, filefeedback_file, " &
                                                         "filefeedback_employee, filefeedback_type, filefeedback_value, filefeedback_text) values(GETDATE(), " &
                                                         "'{0}', '{1}', 'Like', 1, 'N/A'); insert into dbo.[[sys]]notification](notification_datetime, " &
@@ -583,8 +583,8 @@ Namespace CMDdar
                                                         "set file_score = (select count(ff.filefeedback_value) " &
                                                         "from db_universe_erp_file.dbo.sto_filefeedback ff where (ff.filefeedback_file = '{0}') and " &
                                                         "(ff.filefeedback_type = 'Like')) where (file_id = '{0}');", fileid, eid, fileowner)
-                    varDatabaseEngineMssql2008.PushData(databasename, varDatabaseRequestMssql2008(1).Query)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $"insert into db_universe_erp_file.dbo.sto_filefeedback(filefeedback_datetime, filefeedback_file, " &
                                                        $"filefeedback_employee, filefeedback_type, filefeedback_value, filefeedback_text) values(GETDATE(), " &
                                                        $"'{fileid}', '{eid}', 'Like', 1, 'N/A'); insert into dbo.[[sys]]notification](notification_datetime, " &
@@ -594,7 +594,7 @@ Namespace CMDdar
                                                        $"set file_score = (select count(ff.filefeedback_value) " &
                                                        $"from db_universe_erp_file.dbo.sto_filefeedback ff where (ff.filefeedback_file = '{fileid}') and " &
                                                        $"(ff.filefeedback_type = 'Like')) where (file_id = '{fileid}');"
-                    varDatabaseEngineMysql.PushData(databasename, varDatabaseRequestMysql(1).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
                 End If
                 varSuccess = True
             Catch ex As Exception
@@ -608,65 +608,65 @@ Namespace CMDdar
         Private Shared varDataSet As DataSet
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetAffectedArea(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, listofaffectedarea As CMCv.UI.Control.cbo)
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+        Public Shared Sub GetAffectedArea(dataproperties As LibApp.Ingrid.Global.Properties, listofaffectedarea As CMCv.UI.Control.cbo)
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = "select aa.areaaffected_id, aa.areaaffected_name from dbo.doc_areaaffected aa order by aa.areaaffected_order"
                 varDatabaseRequestMssql2008(1).Dropdown = listofaffectedarea
-                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TAffectedArea")
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1), "TAffectedArea")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = "select aa.areaaffected_id, aa.areaaffected_name from doc_areaaffected aa order by aa.areaaffected_order"
                 varDatabaseRequestMysql(1).Dropdown = listofaffectedarea
-                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(1), "TAffectedArea")
+                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TAffectedArea")
             End If
             listofaffectedarea.DisplayMember = "areaaffected_name"
             listofaffectedarea.ValueMember = "areaaffected_id"
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetTemplateTitle(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, listoftemplate As CMCv.UI.Control.cbo)
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+        Public Shared Sub GetTemplateTitle(dataproperties As LibApp.Ingrid.Global.Properties, listoftemplate As CMCv.UI.Control.cbo)
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = "select tp.template_id, tp.template_title from dbo.doc_template tp inner join dbo.sys_module mo on " &
                 "mo.module_id = tp.template_module where mo.module_code = 'DAR' order by tp.template_title"
                 varDatabaseRequestMssql2008(1).Dropdown = listoftemplate
-                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(1), "TTemplate")
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1), "TTemplate")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = "select tp.template_id, tp.template_title from doc_template tp inner join sys_module mo on " &
                 "mo.module_id = tp.template_module where mo.module_code = 'DAR' order by tp.template_title"
                 varDatabaseRequestMysql(1).Dropdown = listoftemplate
-                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(1), "TTemplate")
+                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TTemplate")
             End If
             listoftemplate.DisplayMember = "template_title"
             listoftemplate.ValueMember = "template_id"
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetTemplateContent(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, listoftemplate As CMCv.UI.Control.cbo) As String
+        Public Shared Function GetTemplateContent(dataproperties As LibApp.Ingrid.Global.Properties, listoftemplate As CMCv.UI.Control.cbo) As String
             Dim varTemplateContent As String = String.Empty
 
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select tp.template_text1 from dbo.doc_template tp where tp.template_id = '{0}'", listoftemplate.SelectedValue)
-                varTemplateContent = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varTemplateContent = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = $"select tp.template_text1 from doc_template tp where tp.template_id = '{listoftemplate.SelectedValue}'"
-                varTemplateContent = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
+                varTemplateContent = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
             End If
             Return varTemplateContent
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetRowValue(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String, datepart As CMCv.UI.Control.dtp, timepart As CMCv.UI.Control.meb, datepartend As CMCv.UI.Control.dtp, timepartend As CMCv.UI.Control.meb, listofaffectedarea As CMCv.UI.Control.cbo, listoftemplate As CMCv.UI.Control.cbo, templatecontent As CMCv.UI.Control.txt, feedBack As CMCv.UI.Control.txt)
+        Public Shared Sub GetRowValue(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, datepart As CMCv.UI.Control.dtp, timepart As CMCv.UI.Control.meb, datepartend As CMCv.UI.Control.dtp, timepartend As CMCv.UI.Control.meb, listofaffectedarea As CMCv.UI.Control.cbo, listoftemplate As CMCv.UI.Control.cbo, templatecontent As CMCv.UI.Control.txt, feedBack As CMCv.UI.Control.txt)
             Dim varDatePart(3) As String
             Dim varTimeParts(1) As TimeSpan
             Dim varTimePart(3) As String
 
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_datetime from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varDatePart(0) = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+                varDatePart(0) = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_time from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varTimeParts(0) = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), TimeSpan)
+                varTimeParts(0) = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), TimeSpan)
 
                 varDatePart(2) = Convert.ToString(varTimeParts(0))
                 varTimePart = varDatePart(2).Split(":")
@@ -677,11 +677,11 @@ Namespace CMDdar
 
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_datetime_end from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varDatePart(0) = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+                varDatePart(0) = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_time_end from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varTimeParts(0) = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), TimeSpan)
+                varTimeParts(0) = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), TimeSpan)
 
                 varDatePart(2) = Convert.ToString(varTimeParts(0))
                 varTimePart = varDatePart(2).Split(":")
@@ -692,29 +692,29 @@ Namespace CMDdar
 
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_areaaffected from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                listofaffectedarea.SelectedValue = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query)
+                listofaffectedarea.SelectedValue = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
 
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_template from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                listoftemplate.SelectedValue = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query)
+                listoftemplate.SelectedValue = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
 
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_description from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                templatecontent.Text = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+                templatecontent.Text = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
                 Dim varFeedback As Object
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_feedback from dbo.doc_employeeactivity ea " &
                                                     "where ea.employeeactivity_id = '{0}'", rowid)
-                varFeedback = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query)
+                varFeedback = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                 feedBack.Text = IIf(IsDBNull(varFeedback), "", varFeedback).ToString
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_datetime from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                varDatePart(0) = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
+                varDatePart(0) = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
 
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_time from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), TimeSpan)
+                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), TimeSpan)
 
                 varDatePart(2) = Convert.ToString(varTimeParts(0))
                 varTimePart = varDatePart(2).Split(":")
@@ -725,11 +725,11 @@ Namespace CMDdar
 
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_datetime_end from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                varDatePart(0) = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
+                varDatePart(0) = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
 
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_time_end from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query), TimeSpan)
+                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), TimeSpan)
 
                 varDatePart(2) = Convert.ToString(varTimeParts(0))
                 varTimePart = varDatePart(2).Split(":")
@@ -740,61 +740,61 @@ Namespace CMDdar
 
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_areaaffected from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                listofaffectedarea.SelectedValue = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query)
+                listofaffectedarea.SelectedValue = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
 
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_template from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                listoftemplate.SelectedValue = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query)
+                listoftemplate.SelectedValue = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
 
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_description from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                templatecontent.Text = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
+                templatecontent.Text = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
 
                 Dim varFeedback As Object
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_feedback from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                varFeedback = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query)
+                varFeedback = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
 
                 feedBack.Text = IIf(IsDBNull(varFeedback), "", varFeedback).ToString
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DisplayPhotoGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String, filegrid As CMCv.UI.Control.dgn) As DataSet
+        Public Shared Function DisplayPhotoGrid(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, filegrid As CMCv.UI.Control.dgn) As DataSet
             varDataSet = New DataSet
             'ReDim varDatabaseRequestMssql2008(3)
 
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_content, fi.file_datetime, fi.file_uploader " &
                                                     "from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'jpg') order by fi.file_datetime;", rowid)
 
-                varDataSet = varDatabaseEngineMssql2008.GetDataSet(databasename, varDatabaseRequestMssql2008(2), "TPhotoFileEditor")
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDataSet = varDatabaseEngineMssql2008.GetDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(2), "TPhotoFileEditor")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(2).Query = $"select fi.file_id, fi.file_filename, fi.file_content, fi.file_datetime, fi.file_uploader " &
                                                    $"from sto_file fi where (fi.file_parent = '{rowid}' and " &
                                                    $"fi.file_filetype = 'jpg') order by fi.file_datetime;"
 
-                varDataSet = varDatabaseEngineMysql.GetDataSet(databasename, varDatabaseRequestMysql(2), "TPhotoFileEditor")
+                varDataSet = varDatabaseEngineMysql.GetDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TPhotoFileEditor")
             End If
             Return varDataSet
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DisplayFileGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, rowid As String, filegrid As CMCv.UI.Control.dgn) As DataSet
+        Public Shared Function DisplayFileGrid(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, filegrid As CMCv.UI.Control.dgn) As DataSet
             varDataSet = New DataSet
             'ReDim varDatabaseRequestMssql2008(3)
 
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(2).Query = String.Format("select fi.file_id, fi.file_filename, fi.file_tag, fi.file_content, fi.file_datetime, fi.file_uploader " &
                                                     "from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{0}' and " &
                                                     "fi.file_filetype = 'pdf') order by fi.file_datetime;", rowid)
-                varDataSet = varDatabaseEngineMssql2008.GetDataSet(databasename, varDatabaseRequestMssql2008(2), "TFileEditor")
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDataSet = varDatabaseEngineMssql2008.GetDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(2), "TFileEditor")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(2).Query = $"select fi.file_id, fi.file_filename, fi.file_tag, fi.file_content, fi.file_datetime, fi.file_uploader " &
                                                    $"from sto_file fi where (fi.file_parent = '{rowid}' and " &
                                                    $"fi.file_filetype = 'pdf') order by fi.file_datetime;"
-                varDataSet = varDatabaseEngineMysql.GetDataSet(databasename, varDatabaseRequestMysql(2), "TFileEditor")
+                varDataSet = varDatabaseEngineMysql.GetDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TFileEditor")
             End If
             Return varDataSet
         End Function
@@ -868,11 +868,11 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushPhoto(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, filegrid As CMCv.UI.Control.dgn, rowid As String, isnew As Boolean, parentdate As Date) As Boolean
+        Public Shared Function PushPhoto(dataproperties As LibApp.Ingrid.Global.Properties, filegrid As CMCv.UI.Control.dgn, rowid As String, isnew As Boolean, parentdate As Date) As Boolean
             Dim varSuccess As Boolean = False
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     Dim varCommand As SqlClient.SqlCommand
                     For Each eachRow As DataGridViewRow In filegrid.Rows
                         If eachRow.Cells("photo_status").Value Is "Add" Then
@@ -912,7 +912,7 @@ Namespace CMDdar
                             varSuccess = varDatabaseEngineMssql2008.PushImage(varCommand)
                         End If
                     Next
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     Dim varCommand As MySql.Data.MySqlClient.MySqlCommand
                     For Each eachRow As DataGridViewRow In filegrid.Rows
                         If eachRow.Cells("photo_status").Value Is "Add" Then
@@ -962,11 +962,11 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushFile(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, filegrid As CMCv.UI.Control.dgn, rowid As String, isnew As Boolean, parentdate As Date) As Boolean
+        Public Shared Function PushFile(dataproperties As LibApp.Ingrid.Global.Properties, filegrid As CMCv.UI.Control.dgn, rowid As String, isnew As Boolean, parentdate As Date) As Boolean
             Dim varSuccess As Boolean = False
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     Dim varCommand As SqlClient.SqlCommand
 
                     For Each eachRow As DataGridViewRow In filegrid.Rows
@@ -1009,7 +1009,7 @@ Namespace CMDdar
                             varSuccess = varDatabaseEngineMssql2008.PushImage(varCommand)
                         End If
                     Next
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     Dim varCommand As MySql.Data.MySqlClient.MySqlCommand
 
                     For Each eachRow As DataGridViewRow In filegrid.Rows
@@ -1063,7 +1063,7 @@ Namespace CMDdar
 
     Public Class Reports
         <SupportedOSPlatform("windows")>
-        Public Shared Sub Display(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, chkfrom As CMCv.UI.Control.chk, chkto As CMCv.UI.Control.chk, chkarea As CMCv.UI.Control.chk, chkactivity As CMCv.UI.Control.chk, chkby As CMCv.UI.Control.chk, dtpfrom As CMCv.UI.Control.dtp, dtpto As CMCv.UI.Control.dtp, cboarea As CMCv.UI.Control.cbo, cboactivity As CMCv.UI.Control.cbo, cboby As CMCv.UI.Control.cbo, txtdescription As CMCv.UI.Control.txt, datasetname As DataSet)
+        Public Shared Sub Display(dataproperties As LibApp.Ingrid.Global.Properties, chkfrom As CMCv.UI.Control.chk, chkto As CMCv.UI.Control.chk, chkarea As CMCv.UI.Control.chk, chkactivity As CMCv.UI.Control.chk, chkby As CMCv.UI.Control.chk, dtpfrom As CMCv.UI.Control.dtp, dtpto As CMCv.UI.Control.dtp, cboarea As CMCv.UI.Control.cbo, cboactivity As CMCv.UI.Control.cbo, cboby As CMCv.UI.Control.cbo, txtdescription As CMCv.UI.Control.txt, datasetname As DataSet)
 
             Dim varWhere As String
             Dim varDTPfrom As String = dtpfrom.Value.Year & "-" & dtpfrom.Value.Month & "-" & dtpfrom.Value.Day
@@ -1146,7 +1146,7 @@ Namespace CMDdar
 
                 Dim varTimeFormat(2) As String
 
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     'same day with different time
                     varTimeFormat(1) = String.Format("(cast(ea.employeeactivity_time as varchar(8)) + ' - ' + " &
                                            "cast(ea.employeeactivity_time_end as varchar(8))) as [employeeactivity_time]")
@@ -1182,8 +1182,8 @@ Namespace CMDdar
                                                     "inner join dbo.man_employee e on ea.employeeactivity_employee = e.employee_id {0} " &
                                                     "order by aa.areaaffected_order", varWhere, varTimeFormat(2), varDescription)
 
-                    datasetname = varDatabaseEngineMssql2008.FillDataset(databasename, varDatabaseRequestMssql2008(0).Query, datasetname, "employeeactivity")
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    datasetname = varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query, datasetname, "employeeactivity")
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     'same day with different time
                     varTimeFormat(1) = $"(cast(ea.employeeactivity_time as varchar(8)) + ' - ' + " &
                                    $"cast(ea.employeeactivity_time_end as varchar(8))) as `employeeactivity_time`"
@@ -1219,7 +1219,7 @@ Namespace CMDdar
                                                    $"inner join man_employee e on ea.employeeactivity_employee = e.employee_id {varWhere} " &
                                                    $"order by aa.areaaffected_order"
 
-                    datasetname = varDatabaseEngineMysql.FillDataSet(databasename, varDatabaseRequestMysql(0).Query, datasetname, "employeeactivity")
+                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "employeeactivity")
                 End If
             Catch ex As Exception
                 datasetname = Nothing

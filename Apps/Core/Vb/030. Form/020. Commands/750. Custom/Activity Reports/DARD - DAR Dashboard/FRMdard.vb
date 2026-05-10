@@ -14,7 +14,7 @@ Namespace UI
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub GetChart()
-            CMDdard.View.GetDailyStatistic(varDatabaseName, chrtDaily)
+            CMDdard.View.GetDailyStatistic(varDataProperties, chrtDaily)
             chrtDaily.Series(varMessageSeries1).ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
             chrtDaily.Series(varMessageSeries1).IsValueShownAsLabel = True
             chrtDaily.BorderlineWidth = 2
@@ -23,13 +23,13 @@ Namespace UI
             chrtDaily.Series(varMessageSeries1).BorderColor = Color.Red
             chrtDaily.Series(varMessageSeries1).BorderWidth = 5
 
-            CMDdard.View.GetYearlyStatistic(varDatabaseName, chrtYearly)
+            CMDdard.View.GetYearlyStatistic(varDataProperties, chrtYearly)
             chrtYearly.Series(varMessageSeries1).ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column
             chrtYearly.Series(varMessageSeries1).IsValueShownAsLabel = True
             chrtYearly.BorderColor = Color.MidnightBlue
             chrtYearly.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.All
 
-            CMDdard.View.GetMonthlyStatistic(varDatabaseName, chrtMonthly)
+            CMDdard.View.GetMonthlyStatistic(varDataProperties, chrtMonthly)
             chrtMonthly.Series(varMessageSeries1).ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column
             chrtMonthly.Series(varMessageSeries1).IsValueShownAsLabel = True
             chrtMonthly.BorderColor = Color.MidnightBlue

@@ -21,8 +21,8 @@ Namespace UI
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
         Private Sub GetData()
-            CMDacgr.View.FillCompany(varDatabaseName, varDatabaseEngineE, CboCompany)
-            CMDacgr.View.FillAccountingBook(varDatabaseName, varDatabaseEngineE, CboAccountingBook, CboCompany)
+            CMDacgr.View.FillCompany(varDataProperties, CboCompany)
+            CMDacgr.View.FillAccountingBook(varDataProperties, CboAccountingBook, CboCompany)
         End Sub
 
         ''' <summary>
@@ -32,7 +32,7 @@ Namespace UI
         ''' <remarks>True akan memaksa data untuk direfresh tanpa filter apapun</remarks>
         <SupportedOSPlatform("windows")>
         Private Sub GetDataGrid(Optional forcerefresh As Boolean = False)
-            CMDacgr.View.GetAccountList(varDatabaseName, varDatabaseEngineE, DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, forcerefresh)
+            CMDacgr.View.GetAccountList(varDataProperties, DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, forcerefresh)
         End Sub
 
         'Private _RowID As Integer
@@ -110,8 +110,8 @@ Namespace UI
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 varDataProperties.AccountingGroupIsNew = False
-                If Decision(My.Application.Info.AssemblyName.toupper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    If (CMDacgr.View.DeleteData(varDatabaseName, varDatabaseEngineE, Convert.ToString(Convert.ToString(varDataProperties.AccountingGroupId)))) Then
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                    If (CMDacgr.View.DeleteData(varDataProperties, Convert.ToString(Convert.ToString(varDataProperties.AccountingGroupId)))) Then
                         Call GetDataGrid(True)
                         UI.FRMmainframe6.Ts_status.Text = "Success"
                     Else
@@ -181,7 +181,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub CboPlant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
             If Not (varIsFirstLoad) Then
-                CMDacgr.View.FillAccountingBook(varDatabaseName, varDatabaseEngineE, CboAccountingBook, CboCompany)
+                CMDacgr.View.FillAccountingBook(varDataProperties, CboAccountingBook, CboCompany)
                 Call GetDataGrid(True)
             End If
         End Sub

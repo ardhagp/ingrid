@@ -84,8 +84,7 @@ Namespace CMDpost
     End Class
 
     Public Class Editor
-        Private Shared consTableName As String = "man_position"
-        Private Shared varQuery As String = String.Empty
+        Private Shared ReadOnly tManPosition As String = "man_position"
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, company As CMCv.UI.Control.cbo)
@@ -128,15 +127,15 @@ Namespace CMDpost
         <SupportedOSPlatform("Windows")>
         Public Shared Sub GetPositionProperties(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                varQuery = $"SELECT ps.position_id, d.department_company, ps.position_department, ps.position_code, ps.position_name, ps.position_description, ps.position_parent " &
+                varDatabaseRequestMssql2008(0).Query = $"SELECT ps.position_id, d.department_company, ps.position_department, ps.position_code, ps.position_name, ps.position_description, ps.position_parent " &
                            $"FROM dbo.man_position ps inner join dbo.man_department d on d.department_id = ps.position_department " &
                            $"WHERE ps.position_id = @PositionId;"
-                datasetname = varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_position")
+                datasetname = varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query, datasetname, "man_position")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varQuery = $"SELECT ps.position_id, d.department_company, ps.position_department, ps.position_code, ps.position_name, ps.position_description, ps.position_parent " &
+                varDatabaseRequestMysql(0).Query = $"SELECT ps.position_id, d.department_company, ps.position_department, ps.position_code, ps.position_name, ps.position_description, ps.position_parent " &
                            $"FROM man_position ps inner join man_department d on d.department_id = ps.position_department " &
                            $"WHERE ps.position_id = @PositionId;"
-                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_position", dataproperties.AllParameters)
+                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tManPosition, dataproperties.AllParameters)
             End If
         End Sub
 

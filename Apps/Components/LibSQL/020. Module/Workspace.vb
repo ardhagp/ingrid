@@ -1,17 +1,41 @@
 ﻿Imports System.Runtime.Versioning
 
 Public Class Workspace
+    Private Shared ReadOnly tSysModule As String = "SysModule"
+
     <SupportedOSPlatform("windows")>
-    Public Shared Function GetModuleName(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String) As String
+    Public Shared Sub GetModuleProperties(dataproperties As LibApp.Ingrid.Global.Properties, commandcode As String, datasetname As System.Data.DataSet)
+        Try
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseRequestMysql(0).Query = $"select smod.module_code, " &
+                                                   $"smod.module_name, " &
+                                                   $"smod.module_description, " &
+                                                   $"smod.module_appminimumver, " &
+                                                   $"smod.module_ismaintenance, " &
+                                                   $"smod.module_issystem " &
+                                                   $"from sys_module smod " &
+                                                   $"where smod.module_code = @CommandCode " &
+                                                   $"limit 0,1;"
+                varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tSysModule, dataproperties.AllParameters)
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    <SupportedOSPlatform("windows")>
+    Public Shared Function GetModuleName(dataproperties As LibApp.Ingrid.Global.Properties, commandcode As String) As String
         Dim varValue As String = String.Empty
 
         Try
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                varDatabaseRequestMssql2008(1).Query = String.Format("select mods.module_name from dbo.sys_module mods where mods.module_code = '{0}'", tcode)
-                varValue = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(1).Query = $"select mods.module_name from sys_module mods where mods.module_code = '{tcode}'"
-                varValue = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                varDatabaseRequestMssql2008(1).Query = $"select mods.module_name from dbo.sys_module mods where mods.module_code = '{commandcode}'"
+                varValue = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseRequestMysql(1).Query = $"select mods.module_name from sys_module mods where mods.module_code = '{commandcode}'"
+                varValue = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
             End If
         Catch ex As Exception
             varValue = String.Empty
@@ -20,16 +44,16 @@ Public Class Workspace
     End Function
 
     <SupportedOSPlatform("windows")>
-    Public Shared Function GetModuleDescription(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, tcode As String) As String
+    Public Shared Function GetModuleDescription(dataproperties As LibApp.Ingrid.Global.Properties, commandcode As String) As String
         Dim varValue As String = String.Empty
 
         Try
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                varDatabaseRequestMssql2008(1).Query = String.Format("select mods.module_description from sys_module mods where mods.module_code = '{0}'", tcode)
-                varValue = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(1).Query = $"select mods.module_description from sys_module mods where mods.module_code = '{tcode}'"
-                varValue = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(1).Query).ToString
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                varDatabaseRequestMssql2008(1).Query = String.Format("select mods.module_description from sys_module mods where mods.module_code = '{0}'", commandcode)
+                varValue = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseRequestMysql(1).Query = $"select mods.module_description from sys_module mods where mods.module_code = '{commandcode}'"
+                varValue = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
             End If
         Catch ex As Exception
             varValue = String.Empty

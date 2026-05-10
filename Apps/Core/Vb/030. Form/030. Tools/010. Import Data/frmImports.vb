@@ -55,7 +55,7 @@ formatflags As Windows.Forms.TextFormatFlags) As String
                 If File.Exists(varOriginalSourceFile) Then
                     Select Case varSource
                         Case Import.Data.DataType.TypeofImports.MaterialMasterCatalog
-                            varSqlCatalog.Execute(varDatabaseName, TxtProgress, varOriginalSourceFile)
+                            varSqlCatalog.Execute(varDataProperties, TxtProgress, varOriginalSourceFile)
                         Case Import.Data.DataType.TypeofImports.MaterialMasterPlant
                             'nothing
                     End Select

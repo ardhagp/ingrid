@@ -4,7 +4,7 @@ Imports System.Windows.Forms.DataVisualization.Charting
 Namespace CMDdard
     Public Class View
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetDailyStatistic(databasename As String, chrt As Chart)
+        Public Shared Sub GetDailyStatistic(dataproperties As LibApp.Ingrid.Global.Properties, chrt As Chart)
             Try
                 'ReDim varDatabaseRequestMssql2008(4)
                 varDatabaseRequestMssql2008(0).Query = "select top 30 ea.employeeactivity_datetime, (select count(eac.employeeactivity_id) from dbo.doc_employeeactivity eac " &
@@ -13,7 +13,7 @@ Namespace CMDdard
                 varDatabaseRequestMssql2008(0).StatusBar = Nothing
                 varDatabaseRequestMssql2008(0).DataGrid = Nothing
                 varDatabaseRequestMssql2008(0).Chart = chrt
-                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TDailyChart")
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TDailyChart")
 
                 chrt.Series("Series1").XValueMember = "employeeactivity_datetime"
                 chrt.Series("Series1").YValueMembers = "qty_activity"
@@ -24,7 +24,7 @@ Namespace CMDdard
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetYearlyStatistic(databasename As String, chrt As Chart)
+        Public Shared Sub GetYearlyStatistic(dataproperties As LibApp.Ingrid.Global.Properties, chrt As Chart)
             Try
                 'ReDim varDatabaseRequestMssql2008(4)
                 varDatabaseRequestMssql2008(0).Query = "select top 5 year(employeeactivity_datetime) as [employeeactivity_datetime], count(ea.employeeactivity_id) as [qty_activity] from dbo.doc_employeeactivity ea " &
@@ -33,7 +33,7 @@ Namespace CMDdard
                 varDatabaseRequestMssql2008(0).DataGrid = Nothing
                 varDatabaseRequestMssql2008(0).StatusBar = Nothing
                 varDatabaseRequestMssql2008(0).Chart = chrt
-                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TYearlyChart")
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TYearlyChart")
 
                 chrt.Series("Series1").XValueMember = "employeeactivity_datetime"
                 chrt.Series("Series1").YValueMembers = "qty_activity"
@@ -44,7 +44,7 @@ Namespace CMDdard
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetMonthlyStatistic(databasename As String, chrt As Chart)
+        Public Shared Sub GetMonthlyStatistic(dataproperties As LibApp.Ingrid.Global.Properties, chrt As Chart)
             Try
                 'ReDim varDatabaseRequestMssql2008(4)
                 varDatabaseRequestMssql2008(0).Query = "select sq.employeeactivity_datetime, sq.qty_activity from (select top 12 (cast(month(ea.employeeactivity_datetime) as varchar(2)) + '-' + " &
@@ -56,7 +56,7 @@ Namespace CMDdard
                 varDatabaseRequestMssql2008(0).DataGrid = Nothing
                 varDatabaseRequestMssql2008(0).StatusBar = Nothing
                 varDatabaseRequestMssql2008(0).Chart = chrt
-                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TMonthlyChart")
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TMonthlyChart")
 
                 chrt.Series("Series1").XValueMember = "employeeactivity_datetime"
                 chrt.Series("Series1").YValueMembers = "qty_activity"
