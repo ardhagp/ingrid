@@ -21,9 +21,9 @@ Module Globals
     Public varFileinfo As New CMCv.OperatingSystem.File.Info
     Public varFolderHandler As New CMCv.OperatingSystem.Folder
     'Public SecurityEngine As New Security.Engine
-    Public varDatabaseEngine As String
-    Public varDatabaseEngineE As LibApp.Ingrid.Global.DatabaseEngine
-    Public varDatabaseName As String
+    'Public varDatabaseEngine As String
+    'Public varDatabaseEngineE As LibApp.Ingrid.Global.DatabaseEngine
+    'Public varDatabaseName As String
     Public varImageCompress As New CMCv.ImageEditor.Proccessor.Compress
     Public varImageEditor As New CMCv.ImageEditor.Proccessor.Editor
     Public varUserAccess As New Application.Access

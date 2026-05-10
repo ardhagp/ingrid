@@ -5,7 +5,7 @@ Namespace CMDacbk
     Public Class View
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             Dim varWhere As String = "where "
 
             If (find.Text = String.Empty) OrElse (forcerefresh) Then
@@ -19,7 +19,7 @@ Namespace CMDacbk
 
             varDatabaseRequestMssql2008(0).DataGrid = datagrid
             varDatabaseRequestMssql2008(0).StatusBar = statusbar
-            varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TAccountingBook")
+            varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TAccountingBook")
         End Sub
     End Class
 End Namespace

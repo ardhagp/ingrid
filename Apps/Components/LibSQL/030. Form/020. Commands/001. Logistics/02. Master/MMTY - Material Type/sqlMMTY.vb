@@ -17,8 +17,8 @@ Namespace CMDmmty
         ''' <param name="forcerefresh"></param>
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
-            If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMssql2008(0).Query = "select mt.materialtype_id, mt.materialtype_description,(convert(varchar(255),(select count(m.material_id) from dbo.log_material m where " &
                     "m.material_materialtype = mt.materialtype_id)) + '  item(s)') as itemcount from dbo.log_materialtype mt"
@@ -29,8 +29,8 @@ Namespace CMDmmty
                 End If
                 varDatabaseRequestMssql2008(0).DataGrid = datagrid
                 varDatabaseRequestMssql2008(0).StatusBar = statusbar
-                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TMaterialType")
-            ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TMaterialType")
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMysql(0).Query = "select mt.materialtype_id, mt.materialtype_description,(convert(varchar(255),(select count(m.material_id) from log_material m where " &
                     "m.material_materialtype = mt.materialtype_id)) + '  item(s)') as itemcount from log_materialtype mt"
@@ -41,7 +41,7 @@ Namespace CMDmmty
                 End If
                 varDatabaseRequestMysql(0).DataGrid = datagrid
                 varDatabaseRequestMysql(0).StatusBar = statusbar
-                varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "TMaterialType")
+                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TMaterialType")
             End If
         End Sub
     End Class

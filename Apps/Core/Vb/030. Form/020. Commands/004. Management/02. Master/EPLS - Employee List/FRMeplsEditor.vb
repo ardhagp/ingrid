@@ -68,19 +68,19 @@ Namespace UI
                     TxtEmployeeNumber.Text = .Item("employee_number").ToString
                     TxtEmployeeNickname.Text = .Item("employee_nickname").ToString
                     ChkActiveEmployee.Checked = CBool(.Item("employee_isactive"))
-                    'varHavePhoto = CMDepls.Editor.GetIsHavePhoto(varDatabaseName, varDatabaseEngine, Convert.ToString(varDataProperties.EmployeeId))
+                    'varHavePhoto = CMDepls.Editor.GetIsHavePhoto(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
                 End With
 
 
                 'Permissions
-                'TxtLogin.Text = CMDuac.Editor.GetUsernameByEmployeeID(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.EmployeeId))
-                'varDataProperties.Field01 = CMDuac.Editor.GetUIDbyEmployeeID(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.EmployeeId))
-                'CMDuac.Editor.DisplayData(varDatabaseName, varDatabaseEngineE, DgnModulesRoles, varDataProperties.Field01.ToString)
+                'TxtLogin.Text = CMDuac.Editor.GetUsernameByEmployeeID(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
+                'varDataProperties.Field01 = CMDuac.Editor.GetUIDbyEmployeeID(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
+                'CMDuac.Editor.DisplayData(varDataProperties, DgnModulesRoles, varDataProperties.Field01.ToString)
 
                 TxtPersonalID.Focus()
 
                 If varHavePhoto > 0 Then
-                    pctbxPhoto.Image = CMDepls.Editor.GetPhoto(varDatabaseName, varDatabaseEngine, Convert.ToString(varDataProperties.EmployeeId))
+                    pctbxPhoto.Image = CMDepls.Editor.GetPhoto(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
                 End If
             End If
 
@@ -163,7 +163,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Function CheckEmployeePersonalID() As Boolean
-            If CMDepls.Editor.IsPersonalIDExist(varDataProperties) Then
+            If CMDepls.Editor.IsPersonalIdExist(varDataProperties) Then
                 Return False
             End If
             Return True

@@ -32,12 +32,12 @@ Namespace UI
 #Region "Sub Collections"
         <SupportedOSPlatform("windows")>
         Private Sub GetAffectedArea()
-            CMDdar.Editor.GetAffectedArea(varDatabaseName, varDatabaseEngineE, CboArea)
+            CMDdar.Editor.GetAffectedArea(varDataProperties, CboArea)
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub GetTemplateTitle()
-            CMDdar.Editor.GetTemplateTitle(varDatabaseName, varDatabaseEngineE, CboTemplate)
+            CMDdar.Editor.GetTemplateTitle(varDataProperties, CboTemplate)
         End Sub
 
         Public Sub CheckAllInput()
@@ -59,7 +59,7 @@ Namespace UI
             DgnPictureList.Rows.Clear()
             TxtPhotoPath.Clear()
 
-            varDataSet(0) = CMDdar.Editor.DisplayPhotoGrid(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString, DgnPictureList)
+            varDataSet(0) = CMDdar.Editor.DisplayPhotoGrid(varDataProperties, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString, DgnPictureList)
 
             For i As Integer = 0 To varDataSet(0).Tables(varMessageTablesPhotoFileEditor).Rows.Count - 1
                 DgnPictureList.Rows.Add(varDataSet(0).Tables(varMessageTablesPhotoFileEditor).Rows(i).Item("file_id"), varDataSet(0).Tables(varMessageTablesPhotoFileEditor).Rows(i).Item("file_filename"), varDataSet(0).Tables(varMessageTablesPhotoFileEditor).Rows(i).Item("file_datetime"), varDataSet(0).Tables(varMessageTablesPhotoFileEditor).Rows(i).Item("file_content"), "", varDataSet(0).Tables(varMessageTablesPhotoFileEditor).Rows(i).Item("file_uploader"))
@@ -75,7 +75,7 @@ Namespace UI
             varDataSet(1) = New DataSet
 
             DblBuffer(DgnFileList)
-            varDataSet(1) = CMDdar.Editor.DisplayFileGrid(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString, DgnFileList)
+            varDataSet(1) = CMDdar.Editor.DisplayFileGrid(varDataProperties, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString, DgnFileList)
 
             For i As Integer = 0 To varDataSet(1).Tables(varMessageTableFileEditor).Rows.Count - 1
                 DgnFileList.Rows.Add(varDataSet(1).Tables(varMessageTableFileEditor).Rows(i).Item("file_id"), varDataSet(1).Tables(varMessageTableFileEditor).Rows(i).Item("file_filename"), varDataSet(1).Tables(varMessageTableFileEditor).Rows(i).Item("file_tag"), varDataSet(1).Tables(varMessageTableFileEditor).Rows(i).Item("file_datetime"), varDataSet(1).Tables(varMessageTableFileEditor).Rows(i).Item("file_content"), "", varDataSet(1).Tables(varMessageTableFileEditor).Rows(i).Item("file_uploader"))
@@ -152,10 +152,10 @@ Namespace UI
         Private Sub BtnGetContent_Click(sender As Object, e As EventArgs) Handles BtnGETContent.Click
             If Not (varDataProperties.CustomDailyActivityIsNew) Then
                 If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngineE, CboTemplate)
+                    TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDataProperties, CboTemplate)
                 End If
             Else
-                TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngineE, CboTemplate)
+                TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDataProperties, CboTemplate)
             End If
         End Sub
 
@@ -221,7 +221,7 @@ Namespace UI
                 Next
 
                 If varNewPhotoAdded > 0 Then
-                    If (CMDdar.Editor.PushPhoto(varDatabaseName, varDatabaseEngineE, DgnPictureList, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString, varDataProperties.CustomDailyActivityIsNew, DtpStart.Value)) Then
+                    If (CMDdar.Editor.PushPhoto(varDataProperties, DgnPictureList, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString, varDataProperties.CustomDailyActivityIsNew, DtpStart.Value)) Then
                         UI.FRMmainframe6.Ts_status.Text = "Success + All pictures has been added"
                     Else
                         UI.FRMmainframe6.Ts_status.Text = "Success + With errors while adding pictures"
@@ -240,7 +240,7 @@ Namespace UI
                 Next
 
                 If varNewFileAdded > 0 Then
-                    If (CMDdar.Editor.PushFile(varDatabaseName, varDatabaseEngineE, DgnFileList, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString, varDataProperties.CustomDailyActivityIsNew, DtpStart.Value)) Then
+                    If (CMDdar.Editor.PushFile(varDataProperties, DgnFileList, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString, varDataProperties.CustomDailyActivityIsNew, DtpStart.Value)) Then
                         UI.FRMmainframe6.Ts_status.Text = "Success + All file has been added"
                     Else
                         UI.FRMmainframe6.Ts_status.Text = "Success + With errors while adding files"
@@ -266,7 +266,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub LoadData()
-            CMDdar.Editor.GetRowValue(varDatabaseName, varDatabaseEngineE, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
+            CMDdar.Editor.GetRowValue(varDataProperties, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString, DtpStart, MebStart, DtpEnd, MebEnd, CboArea, CboTemplate, TxtContent, TxtFeedback)
             Call LoadAttachment()
         End Sub
 #End Region
@@ -276,10 +276,10 @@ Namespace UI
             If e.KeyCode = Keys.Enter Then
                 If Not (varDataProperties.CustomDailyActivityIsNew) Then
                     If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                        TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngineE, CboTemplate)
+                        TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDataProperties, CboTemplate)
                     End If
                 Else
-                    TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDatabaseName, varDatabaseEngineE, CboTemplate)
+                    TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDataProperties, CboTemplate)
                 End If
             End If
         End Sub

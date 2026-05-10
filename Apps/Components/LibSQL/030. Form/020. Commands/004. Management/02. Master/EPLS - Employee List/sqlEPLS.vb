@@ -127,7 +127,7 @@ Namespace CMDepls
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetCompany(databasename As String, dbengine As String, rowid As String, Optional positionid As String = "-1") As String
+        Public Shared Function GetCompany(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, Optional positionid As String = "-1") As String
             Dim varCompany As String
 
             If positionid = "-1" Then
@@ -139,13 +139,13 @@ Namespace CMDepls
                                                         "inner join dbo.man_company cm on cm.company_id = dp.departement_company where (ps.position_id = '{0}')", positionid)
             End If
 
-            varCompany = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varCompany = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varCompany
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetDepartment(databasename As String, dbengine As String, rowid As String, Optional positionid As String = "-1") As String
+        Public Shared Function GetDepartment(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, Optional positionid As String = "-1") As String
             Dim varDepartment As String = String.Empty
 
             If positionid = "-1" Then
@@ -156,24 +156,24 @@ Namespace CMDepls
                                                         "where (ps.position_id = '{0}')", positionid)
             End If
 
-            varDepartment = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varDepartment = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varDepartment
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETPositionID(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GETPositionID(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varPositionID As String = String.Empty
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_position from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varPositionID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varPositionID = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varPositionID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETPosition(databasename As String, dbengine As String, rowid As String, Optional positionid As String = "-1") As String
+        Public Shared Function GETPosition(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, Optional positionid As String = "-1") As String
             Dim varPosition As String = String.Empty
 
             If positionid = "-1" Then
@@ -182,151 +182,151 @@ Namespace CMDepls
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ps.position_name from dbo.man_position ps where (ps.position_id = '{0}')", positionid)
             End If
 
-            varPosition = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varPosition = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varPosition
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetGradeID(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetGradeID(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varGradeID As String
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_grade from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varGradeID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varGradeID = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varGradeID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetGrade(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetGrade(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varGrade As String
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select gd.employeegrade_name from dbo.man_employee em inner join dbo.man_employeegrade gd on gd.employeegrade_id = em.employee_grade where (em.employee_id = '{0}')", rowid)
 
-            varGrade = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varGrade = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varGrade
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetPersonalID(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetPersonalID(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varPersonalID As String
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select e.employee_personalid from dbo.man_employee e where e.employee_id = '{0}'", rowid)
 
-            varPersonalID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varPersonalID = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varPersonalID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetBirthDate(databasename As String, dbengine As String, rowid As String) As Date
+        Public Shared Function GetBirthDate(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Date
             Dim varBirthDate As Date
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select e.employee_birthdate from dbo.man_employee e where e.employee_id = '{0}'", rowid)
 
-            varBirthDate = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Date)
+            varBirthDate = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Date)
 
             Return varBirthDate
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetBirthPlace(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetBirthPlace(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varBirthPlace As String
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select e.employee_birthplace from dbo.man_employee e where e.employee_id = '{0}'", rowid)
 
-            varBirthPlace = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varBirthPlace = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varBirthPlace
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetAddress(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetAddress(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varBirthPlace As String
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select e.employee_address from dbo.man_employee e where e.employee_id = '{0}'", rowid)
 
-            varBirthPlace = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varBirthPlace = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varBirthPlace
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GETEmployeeNumber(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GETEmployeeNumber(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varEmployeeNumber As String
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_number from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varEmployeeNumber = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varEmployeeNumber = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varEmployeeNumber
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetEmployeeFullName(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetEmployeeFullName(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varEmployeeName As String
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_fullname from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varEmployeeName = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varEmployeeName = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varEmployeeName
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetEmployeeNickname(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetEmployeeNickname(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varNickname As String
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_nickname from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varNickname = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varNickname = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varNickname
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetContractTypeID(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetContractTypeID(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varContractTypeID As String
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_contracttype from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varContractTypeID = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varContractTypeID = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varContractTypeID
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetContractType(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetContractType(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varContractType As String
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select cp.contracttype_name from dbo.man_employee em inner join dbo.[[man]]contracttype] cp on cp.contracttype_id = em.employee_contracttype " &
                                                     "where (em.employee_id = '{0}')", rowid)
 
-            varContractType = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+            varContractType = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
 
             Return varContractType
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetActiveEmployee(databasename As String, dbengine As String, rowid As String) As Boolean
+        Public Shared Function GetActiveEmployee(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Boolean
             Dim varActiveEmployee As Boolean = False
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_active from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
 
-            varActiveEmployee = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Boolean)
+            varActiveEmployee = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Boolean)
 
             Return varActiveEmployee
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetGender(databasename As String, dbengine As String, rowid As String) As String
+        Public Shared Function GetGender(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varGender As String
 
             Try
                 varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_gender from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
-                varGender = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query).ToString
+                varGender = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
             Catch ex As Exception
                 varGender = "MALE"
             End Try
@@ -335,23 +335,23 @@ Namespace CMDepls
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetIsHavePhoto(databasename As String, dbengine As String, rowid As String) As Integer
+        Public Shared Function GetIsHavePhoto(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Integer
             Dim varIsHavePhoto As Integer
 
             varDatabaseRequestMssql2008(0).Query = String.Format("select count(f.file_id) as total from db_universe_erp_file.dbo.sto_file f where (f.file_parent = '{0}') and (f.file_tag = 'EMPLOYEE-PROFILE-PHOTO');", rowid)
-            varIsHavePhoto = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
+            varIsHavePhoto = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Integer)
 
             Return varIsHavePhoto
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetPhoto(databasename As String, dbengine As String, rowid As String) As Image
+        Public Shared Function GetPhoto(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Image
             Dim varPhoto As System.Drawing.Image = Nothing
             Dim varBytes As Byte()
 
             Try
                 varDatabaseRequestMssql2008(0).Query = $"select f.file_content from db_universe_erp_file.dbo.sto_file f where f.file_parent = '{rowid}' and f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_filetype = 'jpg'"
-                varBytes = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Byte())
+                varBytes = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Byte())
 
                 If Not IsNothing(varBytes) Then
                     varPhoto = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(varBytes)
@@ -391,11 +391,11 @@ Namespace CMDepls
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsPositionExist(databasename As String, dbengine As String, positionid As String) As Boolean
+        Public Shared Function IsPositionExist(dataproperties As LibApp.Ingrid.Global.Properties, positionid As String) As Boolean
             Dim varIsExist As Integer
 
             varDatabaseRequestMssql2008(1).Query = $"select count(ps.position_id) as [rows] from dbo.man_position ps where (ps.position_id = '{positionid}')"
-            varIsExist = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(1).Query), Integer)
+            varIsExist = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Integer)
 
             If varIsExist = 0 Then
                 Return False
@@ -506,7 +506,7 @@ Namespace CMDepls
                 'varCommand = New System.Data.SqlClient.SqlCommand
 
                 'If dataproperties.EmployeeIsForceChangePhoto Then
-                '    Dim varIsHavePhoto As Integer = GetIsHavePhoto(databasename, dbengine, varHash)
+                '    Dim varIsHavePhoto As Integer = GetIsHavePhoto(varDataProperties, varHash)
                 '    Dim varPhotoHash As String = CMCv.Security.Encrypt.MD5()
 
                 '    If varIsHavePhoto = 0 Then

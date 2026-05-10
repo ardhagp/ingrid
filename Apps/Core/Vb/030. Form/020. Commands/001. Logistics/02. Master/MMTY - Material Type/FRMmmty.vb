@@ -10,7 +10,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
-            CMDmmty.View.DisplayData(varDatabaseName, varDatabaseEngineE, DgnMMTY, SLFStatus, TxtFind, forcerefresh)
+            CMDmmty.View.DisplayData(varDataProperties, DgnMMTY, SLFStatus, TxtFind, forcerefresh)
         End Sub
 
         <SupportedOSPlatform("windows")>

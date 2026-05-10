@@ -272,21 +272,21 @@ Namespace Application
     Public Class StorageSense
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function Show(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, Optional isadmininstrator As Boolean = False) As Boolean
+        Public Shared Function Show(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varValue As Integer
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_showstorage from dbo.sys_settings s")
-                    varValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varValue = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Integer)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"select s.settings_showstorage from sys_settings s limit 0,1"
-                    varValue = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
+                    varValue = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), Integer)
                 End If
 
-                If varValue = 1 AndAlso (isadmininstrator) Then
+                If varValue = 1 AndAlso (dataproperties.IsAdministrator) Then
                     Return True
-                ElseIf varValue = 2 AndAlso (Not (isadmininstrator)) Then
+                ElseIf varValue = 2 AndAlso (Not (dataproperties.IsAdministrator)) Then
                     Return True
                 ElseIf varValue = 3 Then
                     Return True
@@ -313,16 +313,16 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function FileCurrentSize(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine) As Double
+        Public Shared Function FileCurrentSize(dataproperties As LibApp.Ingrid.Global.Properties) As Double
             Dim varSize As Double
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(0).Query = String.Format("SELECT (size*8)/1024 AS SizeMB FROM sys.database_files where name='db_universe_erp_file'")
-                    varSize = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Double)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    varDatabaseRequestMssql2008(0).Query = $"SELECT (size*8)/1024 AS SizeMB FROM sys.database_files where name='db_universe_erp_file'"
+                    varSize = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Double)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"SELECT (size*8)/1024 AS SizeMB FROM sys.database_files where name='db_universe_erp_file'"
-                    varSize = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Double)
+                    varSize = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), Double)
                 End If
 
                 Return varSize
@@ -390,21 +390,21 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function Show(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, Optional isadministrator As Boolean = False) As Boolean
+        Public Shared Function Show(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varValue As Integer
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 s.settings_showprofile from dbo.sys_settings s")
-                    varValue = CType(varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query), Integer)
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    varDatabaseRequestMssql2008(0).Query = $"select top 1 s.settings_showprofile from dbo.sys_settings s"
+                    varValue = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"select s.settings_showprofile from sys_settings s limit 0,1"
-                    varValue = CType(varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query), Integer)
+                    varValue = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
                 End If
 
-                If varValue = 1 AndAlso (isadministrator) Then
+                If varValue = 1 AndAlso (dataproperties.IsAdministrator) Then
                     Return True
-                ElseIf varValue = 2 AndAlso (Not (isadministrator)) Then
+                ElseIf varValue = 2 AndAlso (Not (dataproperties.IsAdministrator)) Then
                     Return True
                 ElseIf varValue = 3 Then
                     Return True
@@ -417,16 +417,16 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function Welcome(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine) As String
-            Dim varWelcome As String
+        Public Shared Function Welcome(dataproperties As LibApp.Ingrid.Global.Properties) As String
+            Dim varWelcome As String = String.Empty
 
             Try
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(0).Query = String.Format("select top 1 t.template_text1 from dbo.doc_template t where t.template_module = 'F2887E94E365C068D1CCB3FF03DB7969' and t.template_title = 'PROFILE' order by newid()")
-                    varWelcome = varDatabaseEngineMssql2008.GetValue(databasename, varDatabaseRequestMssql2008(0).Query).ToString
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    varDatabaseRequestMssql2008(0).Query = $"select top 1 t.template_text1 from dbo.doc_template t where t.template_module = 'F2887E94E365C068D1CCB3FF03DB7969' and t.template_title = 'PROFILE' order by newid()"
+                    varWelcome = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query).ToString
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"select t.template_text1 from cus_template t where t.template_module = 'F2887E94E365C068D1CCB3FF03DB7969' and t.template_title = 'PROFILE' order by newid()"
-                    varWelcome = varDatabaseEngineMysql.GetValue(databasename, varDatabaseRequestMysql(0).Query).ToString
+                    varWelcome = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query).ToString
                 End If
                 Return varWelcome
             Catch ex As Exception

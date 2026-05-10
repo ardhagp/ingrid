@@ -7,8 +7,8 @@ Namespace Tools.Import.SharedFunction
         Private varRowCount As Integer
 
         <SupportedOSPlatform("windows")>
-        Public Function TotalRows(databasename As String, query As String, keyword As String) As Integer
-            varRowCount = CType(varDatabaseEngineMssql2008.GetValue(databasename, query.Replace("%n", keyword)), Integer)
+        Public Function TotalRows(dataproperties As LibApp.Ingrid.Global.Properties, query As String, keyword As String) As Integer
+            varRowCount = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, query.Replace("%n", keyword)), Integer)
             Return varRowCount
         End Function
     End Class
@@ -19,7 +19,7 @@ Namespace Tools.Import.MaterialMaster
         ReadOnly _CAL As New Tools.Import.SharedFunction.Calculate
 
         <SupportedOSPlatform("windows")>
-        Public Function Execute(databasename As String, displaylogs As CMCv.UI.Control.txt, filelocation As String, Optional headerexist As Boolean = True) As Boolean
+        Public Function Execute(dataproperties As LibApp.Ingrid.Global.Properties, displaylogs As CMCv.UI.Control.txt, filelocation As String, Optional headerexist As Boolean = True) As Boolean
             Dim varIsSuccess As Boolean = True
             Dim varCsvValue As String()
             Dim varCsvRow As Integer
@@ -46,7 +46,7 @@ Namespace Tools.Import.MaterialMaster
                             'first row
                             displaylogs.AppendText("Processing Line : " & varCsvRow & ". ")
                             If varCsvRow = 2 Then
-                                If _CAL.TotalRows(databasename, varSearch, varCsvValue(1)) = 0 Then
+                                If _CAL.TotalRows(dataproperties, varSearch, varCsvValue(1)) = 0 Then
                                     varDatabaseDisplayMssql2008.Query += "INSERT INTO dbo.log_material(material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
                                         "VALUES ('" & varCsvValue(1) & "','" & varCsvValue(0) & "','" & varCsvValue(2).Replace("'", "''") & "','" & varCsvValue(3).Replace("'", "''") & "','" & varCsvValue(4) & "');"
                                     displaylogs.AppendText("NEW." & Environment.NewLine)
@@ -56,7 +56,7 @@ Namespace Tools.Import.MaterialMaster
                                     displaylogs.AppendText("UPDATE." & Environment.NewLine)
                                 End If
                             Else
-                                If _CAL.TotalRows(databasename, varSearch, varCsvValue(1)) = 0 Then
+                                If _CAL.TotalRows(dataproperties, varSearch, varCsvValue(1)) = 0 Then
                                     varDatabaseDisplayMssql2008.Query += vbCrLf & "INSERT INTO dbo.log_material(material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
                                         "VALUES ('" & varCsvValue(1) & "','" & varCsvValue(0) & "','" & varCsvValue(2).Replace("'", "''") & "','" & varCsvValue(3).Replace("'", "''") & "','" & varCsvValue(4) & "');"
                                     displaylogs.AppendText("NEW." & Environment.NewLine)
@@ -69,7 +69,7 @@ Namespace Tools.Import.MaterialMaster
                         End If
                     Else
                         If varCsvRow = 1 Then
-                            If _CAL.TotalRows(databasename, varSearch, varCsvValue(1)) = 0 Then
+                            If _CAL.TotalRows(dataproperties, varSearch, varCsvValue(1)) = 0 Then
                                 varDatabaseDisplayMssql2008.Query += "INSERT INTO dbo.log_material(material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
                                     "VALUES ('" & varCsvValue(1) & "','" & varCsvValue(0) & "','" & varCsvValue(2).Replace("'", "''") & "','" & varCsvValue(3).Replace("'", "''") & "','" & varCsvValue(4) & "');"
                                 displaylogs.AppendText("NEW." & Environment.NewLine)
@@ -79,7 +79,7 @@ Namespace Tools.Import.MaterialMaster
                                 displaylogs.AppendText("UPDATE." & Environment.NewLine)
                             End If
                         Else
-                            If _CAL.TotalRows(databasename, varSearch, varCsvValue(1)) = 0 Then
+                            If _CAL.TotalRows(dataproperties, varSearch, varCsvValue(1)) = 0 Then
                                 varDatabaseDisplayMssql2008.Query += vbCrLf & "INSERT INTO dbo.log_material(material_id,material_materialtype,material_description,material_potext,material_materialgroup) " &
                                     "VALUES ('" & varCsvValue(1) & "','" & varCsvValue(0) & "','" & varCsvValue(2).Replace("'", "''") & "','" & varCsvValue(3).Replace("'", "''") & "','" & varCsvValue(4) & "');"
                                 displaylogs.AppendText("NEW." & Environment.NewLine)
@@ -93,7 +93,7 @@ Namespace Tools.Import.MaterialMaster
                     varCsvRow += 1
                 End While
                 Try
-                    varDatabaseEngineMssql2008.PushData(databasename, varDatabaseDisplayMssql2008.Query)
+                    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseDisplayMssql2008.Query)
                 Catch ex As Exception
                     varIsSuccess = False
                 End Try

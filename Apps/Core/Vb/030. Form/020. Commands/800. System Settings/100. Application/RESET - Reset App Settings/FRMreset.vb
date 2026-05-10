@@ -11,8 +11,8 @@ Namespace UI
         Private Sub BtnRun_Click(sender As Object, e As EventArgs) Handles BtnRun.Click
             If Txt_Confirmation.Text.Trim = "Confirm" Then
                 'reset db settings
-                If (Decision(My.Application.Info.AssemblyName.toupper, "Last Warning, do you want to reset application settings?", LibApp.Ingrid.Global.PopupType.ConfirmationBeforeReset, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes) AndAlso (CMDreset.Editor.PushData(varDatabaseName, varDatabaseEngineE)) Then
-                    Decision(My.Application.Info.AssemblyName.toupper, "You have successfully resetting application settings", LibApp.Ingrid.Global.PopupType.Information, "", FRMdialogbox.MessageIcon.Information, FRMdialogbox.MessageTypes.OkOnly)
+                If (Decision(My.Application.Info.AssemblyName.ToUpper, "Last Warning, do you want to reset application settings?", LibApp.Ingrid.Global.PopupType.ConfirmationBeforeReset, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes) AndAlso (CMDreset.Editor.PushData(varDataProperties)) Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "You have successfully resetting application settings", LibApp.Ingrid.Global.PopupType.Information, "", FRMdialogbox.MessageIcon.Information, FRMdialogbox.MessageTypes.OkOnly)
                     Me.Close()
                 End If
             Else

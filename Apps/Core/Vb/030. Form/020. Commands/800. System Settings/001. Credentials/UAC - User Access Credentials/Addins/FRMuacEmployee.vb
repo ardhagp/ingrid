@@ -16,7 +16,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
-            cmduac.Addins.Browse.Employee.DisplayData(varDatabaseName, DgnAddinEmployee, SLFStatus, TxtFind, forcerefresh)
+            CMDuac.Addins.Browse.Employee.DisplayData(varDataProperties, DgnAddinEmployee, SLFStatus, TxtFind, forcerefresh)
         End Sub
 
 #End Region

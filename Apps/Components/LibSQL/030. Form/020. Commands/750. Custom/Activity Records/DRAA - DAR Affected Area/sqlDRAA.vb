@@ -4,7 +4,7 @@ Imports CMCv
 Namespace CMDdraa
     Public Class View
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayMainGrid(databasename As String, find As CMCv.UI.Control.txt, contentgrid As CMCv.UI.Control.dgn, contentstatusbar As CMCv.UI.Control.stt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayMainGrid(dataproperties As LibApp.Ingrid.Global.Properties, find As CMCv.UI.Control.txt, contentgrid As CMCv.UI.Control.dgn, contentstatusbar As CMCv.UI.Control.stt, Optional forcerefresh As Boolean = False)
             Try
                 ' Cache search text once and normalize
                 Dim search As String = String.Empty
@@ -49,7 +49,7 @@ Namespace CMDdraa
 
                 varDatabaseRequestMssql2008(0).DataGrid = contentgrid
                 varDatabaseRequestMssql2008(0).StatusBar = contentstatusbar
-                varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TAreaAffected")
+                varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TAreaAffected")
 
             Catch ex As Exception
                 MsgBox(ex.ToString)
@@ -93,7 +93,7 @@ Namespace CMDdraa
 
         '        varDatabaseRequestMssql2008(0).DataGrid = contentgrid
         '        varDatabaseRequestMssql2008(0).StatusBar = contentstatusbar
-        '        varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TAreaAffected")
+        '        varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TAreaAffected")
 
         '    Catch ex As Exception
         '        MsgBox(ex.ToString)

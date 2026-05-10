@@ -10,17 +10,17 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub FillEmployee()
-            CMDdar.View.FillEmployee(varDatabaseName, varDatabaseEngineE, CboBy)
+            CMDdar.View.FillEmployee(varDataProperties, CboBy)
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub GetAffectedArea()
-            CMDdar.Editor.GetAffectedArea(varDatabaseName, varDatabaseEngineE, CboArea)
+            CMDdar.Editor.GetAffectedArea(varDataProperties, CboArea)
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub GetActivity()
-            CMDdar.Editor.GetTemplateTitle(varDatabaseName, varDatabaseEngineE, CboActivity)
+            CMDdar.Editor.GetTemplateTitle(varDataProperties, CboActivity)
         End Sub
 
         Private Sub ChkFrom_CheckedChanged(sender As Object, e As EventArgs) Handles ChkFrom.CheckedChanged
@@ -101,7 +101,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnShow_Click(sender As Object, e As EventArgs) Handles BtnShow.Click
             varDataSet = New UI.DAR_RDS
-            CMDdar.Reports.Display(varDatabaseName, varDatabaseEngineE, ChkFrom, ChkTo, ChkArea, ChkActivity, ChkBy, DtpFrom, DtpTo, CboArea, CboActivity, CboBy, TxtDescription, varDataSet)
+            CMDdar.Reports.Display(varDataProperties, ChkFrom, ChkTo, ChkArea, ChkActivity, ChkBy, DtpFrom, DtpTo, CboArea, CboActivity, CboBy, TxtDescription, varDataSet)
 
             Dim varColor As Boolean
 

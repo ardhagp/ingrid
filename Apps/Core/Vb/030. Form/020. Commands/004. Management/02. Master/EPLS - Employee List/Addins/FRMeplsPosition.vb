@@ -20,7 +20,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
-            CMDepls.Addins.Browse.Position.DisplayData(varDatabaseName, DgnAddinPosition, SLFStatus, TxtFind, forcerefresh)
+            CMDepls.Addins.Browse.Position.DisplayData(varDataProperties, DgnAddinPosition, SLFStatus, TxtFind, forcerefresh)
         End Sub
 #End Region
 

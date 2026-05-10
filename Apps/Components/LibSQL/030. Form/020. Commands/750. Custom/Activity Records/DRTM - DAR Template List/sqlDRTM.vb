@@ -8,7 +8,7 @@ Namespace CMDdrtm
         Public varContentID As String
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, find As CMCv.UI.Control.txt, dategrid As CMCv.UI.Control.dgn, contentstatusbar As CMCv.UI.Control.stt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayGrid(dataproperties As LibApp.Ingrid.Global.Properties, find As CMCv.UI.Control.txt, dategrid As CMCv.UI.Control.dgn, contentstatusbar As CMCv.UI.Control.stt, Optional forcerefresh As Boolean = False)
             Try
                 ' Normalize input once
                 Dim search As String = If(find IsNot Nothing AndAlso find.XOSQLText IsNot Nothing, find.XOSQLText.Trim(), String.Empty)
@@ -17,7 +17,7 @@ Namespace CMDdrtm
                 Dim whereParts As New List(Of String)
 
                 ' Module subquery differs slightly between engines (dbo qualifier)
-                Dim moduleSubquery As String = If(dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL,
+                Dim moduleSubquery As String = If(dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL,
                                                  "(select mdl.module_id from dbo.sys_module mdl where mdl.module_code = 'DAR')",
                                                  "(select mdl.module_id from sys_module mdl where mdl.module_code = 'DAR')")
 
@@ -50,27 +50,27 @@ Namespace CMDdrtm
 
                 Dim varWhere As String = If(whereParts.Count > 0, "WHERE " & String.Join(" AND ", whereParts), String.Empty)
 
-                If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from dbo.doc_template tpl {0} order by tpl.template_title", varWhere)
                     varDatabaseRequestMssql2008(0).DataGrid = dategrid
                     varDatabaseRequestMssql2008(0).StatusBar = contentstatusbar
-                    varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TDARTemplate")
-                ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TDARTemplate")
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"select tpl.template_id, tpl.template_title, tpl.template_text1 from doc_template tpl {varWhere} order by tpl.template_title"
                     varDatabaseRequestMysql(0).DataGrid = dategrid
                     varDatabaseRequestMysql(0).StatusBar = contentstatusbar
-                    varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "TDARTemplate")
+                    varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TDARTemplate")
                 End If
             Catch ex As Exception
                 MsgBox(ex.ToString)
             End Try
         End Sub
 
-        'Public Shared Sub DisplayGrid(databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, find As txt, dategrid As cmcv.ui.control.dgn, contentstatusbar As stt, Optional forcerefresh As Boolean = False)
+        'Public Shared Sub DisplayGrid(dataproperties As LibApp.Ingrid.Global.Properties, find As txt, dategrid As cmcv.ui.control.dgn, contentstatusbar As stt, Optional forcerefresh As Boolean = False)
         '    Try
         '        Dim varWhere As String = String.Format("where ")
 
-        '        If dbengine = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+        '        If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
         '            If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
         '                varWhere += "tpl.template_module = (select mdl.module_id from dbo.sys_module mdl where mdl.module_code = 'DAR') "
         '            Else
@@ -99,8 +99,8 @@ Namespace CMDdrtm
 
         '            varDatabaseRequestMssql2008(0).DataGrid = dategrid
         '            varDatabaseRequestMssql2008(0).StatusBar = contentstatusbar
-        '            varDatabaseEngineMssql2008.GetDataTable(databasename, varDatabaseRequestMssql2008(0), "TDARTemplate")
-        '        ElseIf dbengine = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+        '            varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TDARTemplate")
+        '        ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
         '            If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
         '                varWhere += "tpl.template_module = (select mdl.module_id from sys_module mdl where mdl.module_code = 'DAR') "
         '            Else
@@ -127,7 +127,7 @@ Namespace CMDdrtm
         '            varDatabaseRequestMysql(0).Query = String.Format("select tpl.template_id, tpl.template_title, tpl.template_text1 from doc_template tpl {0} order by tpl.template_title", varWhere)
         '            varDatabaseRequestMysql(0).DataGrid = dategrid
         '            varDatabaseRequestMysql(0).StatusBar = contentstatusbar
-        '            varDatabaseEngineMysql.GetDataTable(databasename, varDatabaseRequestMysql(0), "TDARTemplate")
+        '            varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TDARTemplate")
         '        End If
         '    Catch ex As Exception
         '        MsgBox(ex.ToString)

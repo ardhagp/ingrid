@@ -159,8 +159,8 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub EnterCommand(commandcode As String)
-            varDataProperties.AllParameters.Remove("@Command")
-            varDataProperties.AllParameters.Add("@Command", commandcode.ToUpper.Trim)
+            varDataProperties.AllParameters.Remove("@CommandCode")
+            varDataProperties.AllParameters.Add("@CommandCode", commandcode.ToUpper.Trim)
 
             'For Modules That Not Required Login
             If commandcode.ToUpper.Trim = "RESET" OrElse commandcode.ToUpper.Trim = "PHTRZ" Then
@@ -170,26 +170,30 @@ Namespace UI
             Else
                 Call LoginClicked() ' Ensure User Logged In
             End If
-            ' Check Module Availability
-            If Not (Application.Modules.IsModuleReady(varDataProperties)) Then
-                St_mainframe.Items(0).Text = "Module " & commandcode.ToUpper.Trim & " not found."
-                Return
-            ElseIf (Application.Modules.IsModuleLocked(varDataProperties)) Then
-                St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
-                Bridge.Security.Writelog.Sendlog("""message"" : """ & varDataProperties.EmployeeFirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
-                Decision(My.Application.Info.AssemblyName.ToUpper, "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", LibApp.Ingrid.Global.PopupType.ModuleUnderMaintenance, "", CMCv.FRMdialogbox.MessageIcon.Information, CMCv.FRMdialogbox.MessageTypes.OkOnly)
-                System.Media.SystemSounds.Beep.Play()
-                Return
-            ElseIf Not (varUserAccess.User(varDataProperties, St_mainframe)) Then ''' Check User Access
-                St_mainframe.Items(0).Text = "You are not authorized to access : " & commandcode.ToUpper.Trim
-                Bridge.Security.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " trying to open Restricted Module " & commandcode.ToUpper.Trim & """", "Warning")
-                System.Media.SystemSounds.Beep.Play()
-                Return
-            Else ' Open Module
-                Globals.varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
-                Bridge.Security.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " opening Module " & commandcode.ToUpper.Trim & """,", "Information")
-                Txt_shortcut.Clear()
-            End If
+
+            LibSQL.Workspace.GetModuleProperties(varDataProperties, commandcode, varDatasetIngrid)
+
+            With varDatasetIngrid.Tables("SysModule")
+                If .Rows.Count = 0 Then
+                    St_mainframe.Items(0).Text = "Module " & commandcode.ToUpper.Trim & " not found."
+                    Return
+                ElseIf CBool(.Rows(0).Item("module_ismaintenance")) Then
+                    St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
+                    Bridge.Security.Writelog.Sendlog("""message"" : """ & varDataProperties.EmployeeFirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", LibApp.Ingrid.Global.PopupType.ModuleUnderMaintenance, "", CMCv.FRMdialogbox.MessageIcon.Information, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                    System.Media.SystemSounds.Beep.Play()
+                    Return
+                ElseIf Not (varUserAccess.User(varDataProperties, St_mainframe)) Then ''' Check User Access
+                    St_mainframe.Items(0).Text = "You are not authorized to access : " & commandcode.ToUpper.Trim
+                    Bridge.Security.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " trying to open Restricted Module " & commandcode.ToUpper.Trim & """", "Warning")
+                    System.Media.SystemSounds.Beep.Play()
+                    Return
+                Else
+                    Globals.varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
+                    Bridge.Security.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " opening Module " & commandcode.ToUpper.Trim & """,", "Information")
+                    Txt_shortcut.Clear()
+                End If
+            End With
         End Sub
 
 #End Region
@@ -328,15 +332,10 @@ Namespace UI
                 Text += " - Ver. " & varVersionapplication
                 LibSQL.Mainframe.Database.GetDatabaseProperties(varDatasetIngrid)
                 If varDatasetIngrid.Tables(consDatabaseProperties).Rows.Count > 0 Then
-                    If varDatasetIngrid.Tables(consDatabaseProperties).Rows(0).Item("DatabaseEngine").ToString = "MSSQL" Then
-                        varDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL
-                        varDataProperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL
-                    ElseIf varDatasetIngrid.Tables(consDatabaseProperties).Rows(0).Item("DatabaseEngine").ToString = "MYSQL" Then
-                        varDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL
-                        varDataProperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL
-                    End If
-                    varDatabaseName = varDatasetIngrid.Tables(consDatabaseProperties).Rows(0).Item("DBForData").ToString
-                    varDataProperties.ConnectionDatabaseName = varDatabaseName
+                    With varDatasetIngrid.Tables(consDatabaseProperties).Rows(0)
+                        varDataProperties.ConnectionDatabaseEngineE = CType([Enum].Parse(GetType(LibApp.Ingrid.Global.DatabaseEngine), .Item("DatabaseEngine").ToString), LibApp.Ingrid.Global.DatabaseEngine)
+                        varDataProperties.ConnectionDatabaseName = .Item("DBForData").ToString
+                    End With
                 Else
                     Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties could not be found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                     Return
@@ -355,7 +354,7 @@ Namespace UI
                 End If
 
                 Call CommandAutoComplete()
-                If Not (LibSQL.CMDdbic.Applications.IsCompanyExist(varDatabaseName, varDatabaseEngineE) OrElse Not LibSQL.CMDdbic.Applications.IsDepartmentExist(varDatabaseName, varDatabaseEngineE)) Then
+                If Not (LibSQL.CMDdbic.Applications.IsCompanyExist(varDataProperties) OrElse Not LibSQL.CMDdbic.Applications.IsDepartmentExist(varDataProperties)) Then
                     Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "", True, Me)
                 End If
             Catch ex As Exception
@@ -503,9 +502,9 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub GetProfile()
-            PnlProfile.Visible = LibSQL.Application.ProfilePanel.Show(varDatabaseName, varDatabaseEngineE, varDataProperties.IsAdministrator)
+            PnlProfile.Visible = LibSQL.Application.ProfilePanel.Show(varDataProperties)
             If (PnlProfile.Visible) Then
-                LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome(varDatabaseName, varDatabaseEngineE)
+                LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome(varDataProperties)
                 LblEmpNumber.Text = varDataProperties.EmployeeNumber
 
                 Dim varNama = varDataProperties.EmployeeFirstName.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
@@ -530,17 +529,17 @@ Namespace UI
             Dim varFilecurrentsize As Integer
             Dim varFreespace As Integer
 
-            PnlStorage.Visible = LibSQL.Application.StorageSense.Show(varDatabaseName, varDatabaseEngineE, varDataProperties.IsAdministrator)
+            PnlStorage.Visible = LibSQL.Application.StorageSense.Show(varDataProperties)
             If (PnlStorage.Visible) Then
                 PnlStorage.Height = 158
-                varFreespace = CType(LibSQL.Application.StorageSense.MaxSize(varDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace), Integer)
+                varFreespace = CInt(LibSQL.Application.StorageSense.MaxSize(varDataProperties.ConnectionDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace))
                 pgDataStorage.Maximum = varFreespace
-                varDatacurrentsize = CType(LibSQL.Application.StorageSense.DataCurrentSize(varDatabaseName), Integer)
+                varDatacurrentsize = CInt(LibSQL.Application.StorageSense.DataCurrentSize(varDataProperties.ConnectionDatabaseName))
                 pgDataStorage.Value = varDatacurrentsize
                 lblDataStorage.Text = String.Format("{0} / {1}", IIf(varDatacurrentsize < 1024, varDatacurrentsize & " MB", Math.Round((varDatacurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
-                varFreespace = CType(LibSQL.Application.StorageSense.MaxSize(varDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace), Integer)
+                varFreespace = CInt(LibSQL.Application.StorageSense.MaxSize(varDataProperties.ConnectionDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace))
                 pgFileStorage.Maximum = varFreespace
-                varFilecurrentsize = CType(LibSQL.Application.StorageSense.FileCurrentSize(varDatabaseName, varDatabaseEngineE), Integer)
+                varFilecurrentsize = CInt(LibSQL.Application.StorageSense.FileCurrentSize(varDataProperties))
                 pgFileStorage.Value = varFilecurrentsize
                 lblFileStorage.Text = String.Format("{0} / {1}", IIf(varFilecurrentsize < 1024, varFilecurrentsize & " MB", Math.Round((varFilecurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
             End If
