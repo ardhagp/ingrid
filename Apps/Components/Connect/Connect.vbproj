@@ -105,7 +105,6 @@
     </PackageReference>
     <PackageReference Include="ReportGenerator" Version="5.5.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="System.Management" Version="10.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Connected.ico" />

@@ -1,8 +1,6 @@
 ﻿Imports System.IO
 Imports System.Reflection
 Imports System.Runtime.Versioning
-Imports Ingrid.UI
-Imports Syncfusion.Office
 
 Module Globals
 #Region "Activate Licenses"
@@ -46,7 +44,6 @@ Module Globals
 
     'Public varDataProperties As New LibApp.Ingrid.Global.Properties
     Public varDataProperties As New LibApp.Ingrid.Global.Properties
-    Public varAccountingProperties As New LibApp.Ingrid.Accounting.Properties
 
     Public varDatasetIngrid As New Ingrid.UI.Dataset.ADSglobal
 

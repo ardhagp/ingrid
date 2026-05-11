@@ -45,11 +45,11 @@ Namespace UI
         Private Function GetAccountID(gridtable As CMCv.UI.Control.dgn) As String
             With gridtable
                 If .Rows.Count < 1 Then
-                    varDataProperties.AccountingGroupId = "-1"
+                    varDataProperties.AccountGroupId = "-1"
                 Else
-                    varDataProperties.AccountingGroupId = .CurrentRow.Cells(0).Value.ToString
+                    varDataProperties.AccountGroupId = .CurrentRow.Cells(0).Value.ToString
                 End If
-                Return Convert.ToString(Convert.ToString(varDataProperties.AccountingGroupId))
+                Return Convert.ToString(Convert.ToString(varDataProperties.AccountGroupId))
             End With
         End Function
 
@@ -83,8 +83,8 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub CommmmsMenu_EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
             With varDataProperties
-                .AccountingGroupId = "-1"
-                .AccountingGroupIsNew = True
+                .AccountGroupId = "-1"
+                .AccountGroupIsNew = True
             End With
             Frm_acgr_Editor = New FRMacgrEditor
             Display(Frm_acgr_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new account for each accounting book and accounting group", True)
@@ -94,8 +94,8 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub CommmmsMenu_EventDataEdit() Handles Com_mms_Menu.EventDataEdit
             Call GetRowID()
-            varDataProperties.AccountingGroupIsNew = False
-            If Convert.ToString(Convert.ToString(varDataProperties.AccountingGroupId)) = "-1" Then
+            varDataProperties.AccountGroupIsNew = False
+            If Convert.ToString(Convert.ToString(varDataProperties.AccountGroupId)) = "-1" Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 Frm_acgr_Editor = New FRMacgrEditor
@@ -106,12 +106,12 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub CommmmsMenu_EventDataDelete() Handles Com_mms_Menu.EventDataDelete
             Call GetRowID()
-            If Convert.ToString(Convert.ToString(varDataProperties.AccountingGroupId)) = "-1" Then
+            If Convert.ToString(Convert.ToString(varDataProperties.AccountGroupId)) = "-1" Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                varDataProperties.AccountingGroupIsNew = False
+                varDataProperties.AccountGroupIsNew = False
                 If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
-                    If (CMDacgr.View.DeleteData(varDataProperties, Convert.ToString(Convert.ToString(varDataProperties.AccountingGroupId)))) Then
+                    If (CMDacgr.View.DeleteData(varDataProperties, Convert.ToString(Convert.ToString(varDataProperties.AccountGroupId)))) Then
                         Call GetDataGrid(True)
                         UI.FRMmainframe6.Ts_status.Text = "Success"
                     Else

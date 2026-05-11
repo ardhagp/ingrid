@@ -35,8 +35,14 @@
     ''' </summary>
     Public Class Properties
         Property AllParameters As New Dictionary(Of String, Object)
-        Property AccountingGroupId As String
-        Property AccountingGroupIsNew As Boolean
+        Property AccountBookId As Long
+        Property AccountBookIsNew As Boolean
+        Property AccountBookIsEnabled As Boolean
+        Property AccountBookIsForceRefresh As Boolean
+        Property AccountBookNumber As Integer
+        Property AccountBookName As String
+        Property AccountGroupId As String
+        Property AccountGroupIsNew As Boolean
         Property ConnectionDatabaseEngine As String
         Property ConnectionDatabaseEngineE As Ingrid.Global.DatabaseEngine
         Property ConnectionDatabaseName As String
@@ -116,19 +122,5 @@
         Property Field02 As Object
         Property Field03 As Object
         Property Field04 As Object
-    End Class
-End Namespace
-
-Namespace Ingrid.Accounting
-    ''' <summary>
-    ''' 
-    ''' </summary>
-    Public Class Properties
-        Property AccountBookId As String
-        Property AccountEnabled As Boolean
-        Property AccountGroupId As String
-        Property AccountName As String
-        Property AccountNumber As String
-
     End Class
 End Namespace

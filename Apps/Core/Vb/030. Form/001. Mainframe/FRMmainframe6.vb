@@ -98,14 +98,14 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub GetNotification()
             varDataProperties.AllParameters.Remove("@EmployeeId")
-            varDataProperties.AllParameters.Add("@EmployeeId", CLng(varDatasetIngrid.Tables("UserData").Rows(0).Item("employee_id")))
+            varDataProperties.AllParameters.Add("@EmployeeId", CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_id")))
             varTotalNotification = varSqlNotification.Exist(varDataProperties)
             If varTotalNotification > 0 Then
-                USERMENU.Text = varDatasetIngrid.Tables("UserData").Rows(0).Item("employee_fullname").ToString & "*"
+                USERMENU.Text = varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_fullname").ToString & "*"
                 USERMENU.BackColor = Global.System.Drawing.Color.LightPink
                 USERMENU.ForeColor = Global.System.Drawing.Color.Black
             Else
-                USERMENU.Text = varDatasetIngrid.Tables("UserData").Rows(0).Item("employee_fullname").ToString
+                USERMENU.Text = varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_fullname").ToString
                 USERMENU.BackColor = Global.System.Drawing.Color.Yellow
                 USERMENU.ForeColor = Global.System.Drawing.Color.Black
             End If
@@ -207,11 +207,11 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Function LoginClicked() As Boolean
-            If varDatasetIngrid.Tables("UserData").Rows.Count = 0 Then
+            If varDatasetIngrid.Tables(tUserData).Rows.Count = 0 Then
                 Frm_login = New UI.FRMlogin
                 Display(Frm_login, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, My.Application.Info.AssemblyName.ToUpper, "Sign In", "Please enter your credentials to continue", True)
             End If
-            If varDatasetIngrid.Tables("UserData").Rows.Count = 0 Then
+            If varDatasetIngrid.Tables(tUserData).Rows.Count = 0 Then
                 varSession = False
                 Call SystemLogout(True)
             Else
@@ -680,7 +680,7 @@ Namespace UI
         ''' </summary>
         Private Sub ClearLoginData()
             varSession = False
-            varDatasetIngrid.Tables("UserData").Rows.Clear()
+            varDatasetIngrid.Tables(tUserData).Rows.Clear()
         End Sub
 
         ''' <summary>

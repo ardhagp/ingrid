@@ -119,10 +119,7 @@
     </PackageReference>
     <PackageReference Include="ReportGenerator" Version="5.5.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-    <PackageReference Include="System.ComponentModel.Composition" Version="10.0.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="System.IO.Hashing" Version="10.0.0" />
-    <PackageReference Include="System.Management" Version="10.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="030. Form\020. Commands\00. Globals\sqlAuth.vb" />
