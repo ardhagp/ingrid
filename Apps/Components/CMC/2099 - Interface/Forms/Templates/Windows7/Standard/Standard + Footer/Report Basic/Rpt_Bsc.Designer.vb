@@ -59,7 +59,7 @@ Partial Class Rpt_Bsc
         ' SLFPanel
         ' 
         SLFPanel.Controls.Add(Rv_)
-        SLFPanel.Dock = Windows.Forms.DockStyle.None
+        SLFPanel.Dock = system.Windows.Forms.DockStyle.None
         SLFPanel.Location = New System.Drawing.Point(0, 103)
         SLFPanel.Margin = New System.Windows.Forms.Padding(11, 20, 11, 20)
         SLFPanel.Size = New System.Drawing.Size(0, 97)
@@ -72,13 +72,13 @@ Partial Class Rpt_Bsc
         ' 
         ' BtnClose
         ' 
-        BtnClose.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Right
+        BtnClose.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Right
         BtnClose.BackColor = Drawing.Color.RoyalBlue
-        BtnClose.Cursor = Windows.Forms.Cursors.Hand
+        BtnClose.Cursor = system.Windows.Forms.Cursors.Hand
         BtnClose.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(5), CByte(45), CByte(165))
         BtnClose.FlatAppearance.BorderSize = 2
         BtnClose.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(85), CByte(125), CByte(245))
-        BtnClose.FlatStyle = Windows.Forms.FlatStyle.Flat
+        BtnClose.FlatStyle = system.Windows.Forms.FlatStyle.Flat
         BtnClose.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
         BtnClose.ForeColor = Drawing.Color.White
         BtnClose.Location = New System.Drawing.Point(-187, 12)
@@ -95,7 +95,7 @@ Partial Class Rpt_Bsc
         ' 
         ' Rv_
         ' 
-        Rv_.Dock = Windows.Forms.DockStyle.Fill
+        Rv_.Dock = system.Windows.Forms.DockStyle.Fill
         Rv_.DocumentMapWidth = 1
         Rv_.Location = New System.Drawing.Point(0, 0)
         Rv_.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)

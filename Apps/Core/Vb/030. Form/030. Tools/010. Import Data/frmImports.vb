@@ -38,7 +38,7 @@ Namespace UI
 
         Private Function CompactString(mystring As String, width As Integer,
 font As Drawing.Font,
-formatflags As Windows.Forms.TextFormatFlags) As String
+formatflags As System.Windows.Forms.TextFormatFlags) As String
 
             Dim varResult = New String(mystring.ToCharArray())
 

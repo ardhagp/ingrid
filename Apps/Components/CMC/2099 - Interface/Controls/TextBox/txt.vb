@@ -450,7 +450,7 @@ Namespace UI.Control
         Private Sub txt_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
             Call FontSearchBox(True)
 
-            If Me.XOPilihSemuaSaatFokus AndAlso (MouseButtons = Windows.Forms.MouseButtons.None) Then
+            If Me.XOPilihSemuaSaatFokus AndAlso (MouseButtons = system.Windows.Forms.MouseButtons.None) Then
                 Me.SelectAll()
                 varFlagAutoSelect = True
             End If
@@ -473,7 +473,7 @@ Namespace UI.Control
         End Sub
 
         Private Sub txt_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
-            If (e.Control AndAlso e.KeyCode = Windows.Forms.Keys.A) Then
+            If (e.Control AndAlso e.KeyCode = system.Windows.Forms.Keys.A) Then
                 Me.SelectAll()
             End If
         End Sub

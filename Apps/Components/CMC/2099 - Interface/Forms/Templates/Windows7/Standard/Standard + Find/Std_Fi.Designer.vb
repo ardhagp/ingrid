@@ -64,7 +64,7 @@ Partial Class Std_Fi
         PnlFind.Controls.Add(BtnClear)
         PnlFind.Controls.Add(LblFind)
         PnlFind.Controls.Add(TxtFind)
-        PnlFind.Dock = Windows.Forms.DockStyle.Top
+        PnlFind.Dock = system.Windows.Forms.DockStyle.Top
         PnlFind.Location = New System.Drawing.Point(0, 0)
         PnlFind.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         PnlFind.Name = "PnlFind"
@@ -74,11 +74,11 @@ Partial Class Std_Fi
         ' BtnClear
         ' 
         BtnClear.BackColor = Drawing.Color.Red
-        BtnClear.Cursor = Windows.Forms.Cursors.Hand
+        BtnClear.Cursor = system.Windows.Forms.Cursors.Hand
         BtnClear.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(0), CByte(0))
         BtnClear.FlatAppearance.BorderSize = 2
         BtnClear.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
-        BtnClear.FlatStyle = Windows.Forms.FlatStyle.Flat
+        BtnClear.FlatStyle = system.Windows.Forms.FlatStyle.Flat
         BtnClear.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
         BtnClear.ForeColor = Drawing.Color.White
         BtnClear.Location = New System.Drawing.Point(437, 6)

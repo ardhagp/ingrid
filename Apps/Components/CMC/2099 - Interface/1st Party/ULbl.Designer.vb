@@ -34,14 +34,14 @@
             ' UHead
             ' 
             UHead.BackColor = Drawing.Color.DarkGray
-            UHead.Dock = Windows.Forms.DockStyle.Left
+            UHead.Dock = System.Windows.Forms.DockStyle.Left
             UHead.ErrorImage = CType(resources.GetObject("UHead.ErrorImage"), Drawing.Image)
             UHead.InitialImage = CType(resources.GetObject("UHead.InitialImage"), Drawing.Image)
             UHead.Location = New System.Drawing.Point(0, 0)
             UHead.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             UHead.Name = "UHead"
             UHead.Size = New System.Drawing.Size(17, 56)
-            UHead.SizeMode = Windows.Forms.PictureBoxSizeMode.Zoom
+            UHead.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             UHead.TabIndex = 0
             UHead.TabStop = False
             UHead.XOTampilkanBorder = False
@@ -49,7 +49,7 @@
             ' 
             ' UText
             ' 
-            UText.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Bottom Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
+            UText.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             UText.BackColor = Drawing.Color.Transparent
             UText.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
             UText.Location = New System.Drawing.Point(17, 0)
@@ -67,7 +67,7 @@
             ' ULbl
             ' 
             AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
-            AutoScaleMode = Windows.Forms.AutoScaleMode.Font
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
             BackColor = Drawing.Color.WhiteSmoke
             Controls.Add(UHead)
             Controls.Add(UText)
@@ -81,6 +81,6 @@
 
         Friend WithEvents UHead As CMCv.UI.Control.pctbx
         Friend WithEvents UText As CMCv.UI.Control.lbl
-        Friend WithEvents tmr_ As Windows.Forms.Timer
+        Friend WithEvents tmr_ As System.Windows.Forms.Timer
     End Class
 End Namespace

@@ -98,7 +98,7 @@ Namespace UI
                             "Position : " & .Cells("position_name").Value.ToString & Environment.NewLine)
 
                     varMessage.AppendLine(varLine)
-                    If Decision(My.Application.Info.AssemblyName.ToUpper, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDepls.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
+                    If Decision(My.Application.Info.AssemblyName.ToUpper, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDepls.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
                         Call GetData(True)
                         UI.FRMmainframe6.Ts_status.Text = "Success"
                     Else

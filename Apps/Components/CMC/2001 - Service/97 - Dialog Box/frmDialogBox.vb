@@ -142,27 +142,27 @@ Public Class FRMdialogbox
 
 #Region "Component Events"
     Private Sub BtnYes_Click(sender As Object, e As EventArgs) Handles BtnYes.Click
-        Me.DialogResult = Windows.Forms.DialogResult.Yes
+        Me.DialogResult = system.Windows.Forms.DialogResult.Yes
         Me.Close()
     End Sub
 
     Private Sub BtnNo_Click(sender As Object, e As EventArgs) Handles BtnNo.Click
-        Me.DialogResult = Windows.Forms.DialogResult.No
+        Me.DialogResult = system.Windows.Forms.DialogResult.No
         Me.Close()
     End Sub
 
     Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
-        Me.DialogResult = Windows.Forms.DialogResult.OK
+        Me.DialogResult = system.Windows.Forms.DialogResult.OK
         Me.Close()
     End Sub
 
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
-        Me.DialogResult = Windows.Forms.DialogResult.Cancel
+        Me.DialogResult = system.Windows.Forms.DialogResult.Cancel
         Me.Close()
     End Sub
 
     Private Sub BtnOkOnly_Click(sender As Object, e As EventArgs) Handles BtnOkOnly.Click
-        Me.DialogResult = Windows.Forms.DialogResult.OK
+        Me.DialogResult = system.Windows.Forms.DialogResult.OK
         Me.Close()
     End Sub
 #End Region

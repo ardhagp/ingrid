@@ -93,7 +93,7 @@ Module Globals
     Public Sub Display(formname As CMCv.Std_Fo, Optional formimage As System.Drawing.Image = Nothing,
                        Optional windowtitle As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "",
                        Optional isdialog As Boolean = False,
-                       Optional parentframe As Windows.Forms.Form = Nothing)
+                       Optional parentframe As system.Windows.Forms.Form = Nothing)
         Try
             formname.Text = windowtitle
             formname.SLFNamaForm.Text = formtitle

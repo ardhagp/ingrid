@@ -56,7 +56,7 @@ Namespace UI
             OfdLoad.FileName = ""
             OfdLoad.Filter = "Photo File|*.Jpg;*.Jpeg"
 
-            If OfdLoad.ShowDialog = Windows.Forms.DialogResult.OK Then
+            If OfdLoad.ShowDialog = system.Windows.Forms.DialogResult.OK Then
                 TxtLoad.Text = OfdLoad.FileName
                 PctbxPhoto.ImageLocation = OfdLoad.FileName
 

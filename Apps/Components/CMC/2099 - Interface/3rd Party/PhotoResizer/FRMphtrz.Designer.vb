@@ -25,7 +25,7 @@
             BtnClose = New CMCv.UI.Control.btn(components)
             BtnSave = New CMCv.UI.Control.btn(components)
             ChkAddNew = New CMCv.UI.Control.chk(components)
-            TlpMain = New Windows.Forms.TableLayoutPanel()
+            TlpMain = New System.Windows.Forms.TableLayoutPanel()
             PnlLoad = New CMCv.UI.Control.pnl(components)
             Lbl1 = New CMCv.UI.Control.lbl(components)
             TxtLoad = New CMCv.UI.Control.txt(components)
@@ -35,7 +35,7 @@
             TxtSave = New CMCv.UI.Control.txt(components)
             Lbl2 = New CMCv.UI.Control.lbl(components)
             PctbxPhoto = New CMCv.UI.Control.pctbx(components)
-            OfdLoad = New Windows.Forms.OpenFileDialog()
+            OfdLoad = New System.Windows.Forms.OpenFileDialog()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -81,13 +81,13 @@
             ' 
             ' BtnClose
             ' 
-            BtnClose.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Right
+            BtnClose.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right
             BtnClose.BackColor = Drawing.Color.Red
-            BtnClose.Cursor = Windows.Forms.Cursors.Hand
+            BtnClose.Cursor = System.Windows.Forms.Cursors.Hand
             BtnClose.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(0), CByte(0))
             BtnClose.FlatAppearance.BorderSize = 2
             BtnClose.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
-            BtnClose.FlatStyle = Windows.Forms.FlatStyle.Flat
+            BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             BtnClose.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
             BtnClose.ForeColor = Drawing.Color.White
             BtnClose.Location = New System.Drawing.Point(909, 12)
@@ -104,13 +104,13 @@
             ' 
             ' BtnSave
             ' 
-            BtnSave.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Right
+            BtnSave.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right
             BtnSave.BackColor = Drawing.Color.LimeGreen
-            BtnSave.Cursor = Windows.Forms.Cursors.Hand
+            BtnSave.Cursor = System.Windows.Forms.Cursors.Hand
             BtnSave.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(50), CByte(145), CByte(50))
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(70), CByte(225), CByte(70))
-            BtnSave.FlatStyle = Windows.Forms.FlatStyle.Flat
+            BtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             BtnSave.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
             BtnSave.ForeColor = Drawing.Color.White
             BtnSave.Location = New System.Drawing.Point(732, 12)
@@ -127,10 +127,10 @@
             ' 
             ' ChkAddNew
             ' 
-            ChkAddNew.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Right
+            ChkAddNew.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right
             ChkAddNew.AutoSize = True
             ChkAddNew.BackColor = Drawing.Color.Transparent
-            ChkAddNew.FlatStyle = Windows.Forms.FlatStyle.Flat
+            ChkAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             ChkAddNew.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
             ChkAddNew.ForeColor = Drawing.Color.OrangeRed
             ChkAddNew.Location = New System.Drawing.Point(460, 27)
@@ -144,18 +144,18 @@
             ' TlpMain
             ' 
             TlpMain.ColumnCount = 1
-            TlpMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(Windows.Forms.SizeType.Percent, 100.0F))
+            TlpMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
             TlpMain.Controls.Add(PnlLoad, 0, 0)
             TlpMain.Controls.Add(PnlSave, 0, 2)
             TlpMain.Controls.Add(PctbxPhoto, 0, 1)
-            TlpMain.Dock = Windows.Forms.DockStyle.Fill
+            TlpMain.Dock = System.Windows.Forms.DockStyle.Fill
             TlpMain.Location = New System.Drawing.Point(0, 0)
             TlpMain.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             TlpMain.Name = "TlpMain"
             TlpMain.RowCount = 3
-            TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Absolute, 108.0F))
-            TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Percent, 100.0F))
-            TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Absolute, 108.0F))
+            TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 108.0F))
+            TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0F))
+            TlpMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 108.0F))
             TlpMain.Size = New System.Drawing.Size(1095, 618)
             TlpMain.TabIndex = 996
             ' 
@@ -164,7 +164,7 @@
             PnlLoad.Controls.Add(Lbl1)
             PnlLoad.Controls.Add(TxtLoad)
             PnlLoad.Controls.Add(BtnLoad)
-            PnlLoad.Dock = Windows.Forms.DockStyle.Fill
+            PnlLoad.Dock = System.Windows.Forms.DockStyle.Fill
             PnlLoad.Location = New System.Drawing.Point(5, 6)
             PnlLoad.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             PnlLoad.Name = "PnlLoad"
@@ -185,7 +185,7 @@
             ' 
             ' TxtLoad
             ' 
-            TxtLoad.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
+            TxtLoad.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             TxtLoad.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
             TxtLoad.Location = New System.Drawing.Point(222, 23)
             TxtLoad.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -217,13 +217,13 @@
             ' 
             ' BtnLoad
             ' 
-            BtnLoad.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Right
+            BtnLoad.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right
             BtnLoad.BackColor = Drawing.Color.RoyalBlue
-            BtnLoad.Cursor = Windows.Forms.Cursors.Hand
+            BtnLoad.Cursor = System.Windows.Forms.Cursors.Hand
             BtnLoad.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(5), CByte(45), CByte(165))
             BtnLoad.FlatAppearance.BorderSize = 2
             BtnLoad.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(85), CByte(125), CByte(245))
-            BtnLoad.FlatStyle = Windows.Forms.FlatStyle.Flat
+            BtnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             BtnLoad.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
             BtnLoad.ForeColor = Drawing.Color.White
             BtnLoad.Location = New System.Drawing.Point(904, 10)
@@ -243,7 +243,7 @@
             PnlSave.Controls.Add(ChkSaveAsACopy)
             PnlSave.Controls.Add(TxtSave)
             PnlSave.Controls.Add(Lbl2)
-            PnlSave.Dock = Windows.Forms.DockStyle.Fill
+            PnlSave.Dock = System.Windows.Forms.DockStyle.Fill
             PnlSave.Location = New System.Drawing.Point(5, 516)
             PnlSave.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             PnlSave.Name = "PnlSave"
@@ -252,11 +252,11 @@
             ' 
             ' ChkSaveAsACopy
             ' 
-            ChkSaveAsACopy.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Right
+            ChkSaveAsACopy.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right
             ChkSaveAsACopy.AutoSize = True
             ChkSaveAsACopy.BackColor = Drawing.Color.Transparent
             ChkSaveAsACopy.Enabled = False
-            ChkSaveAsACopy.FlatStyle = Windows.Forms.FlatStyle.Flat
+            ChkSaveAsACopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             ChkSaveAsACopy.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
             ChkSaveAsACopy.Location = New System.Drawing.Point(920, 25)
             ChkSaveAsACopy.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -269,7 +269,7 @@
             ' 
             ' TxtSave
             ' 
-            TxtSave.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
+            TxtSave.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             TxtSave.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
             TxtSave.Location = New System.Drawing.Point(220, 23)
             TxtSave.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -314,15 +314,15 @@
             ' 
             PctbxPhoto.BackColor = Drawing.Color.Transparent
             PctbxPhoto.BackgroundImage = CType(resources.GetObject("PctbxPhoto.BackgroundImage"), Drawing.Image)
-            PctbxPhoto.BackgroundImageLayout = Windows.Forms.ImageLayout.Zoom
-            PctbxPhoto.Dock = Windows.Forms.DockStyle.Fill
+            PctbxPhoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+            PctbxPhoto.Dock = System.Windows.Forms.DockStyle.Fill
             PctbxPhoto.ErrorImage = CType(resources.GetObject("PctbxPhoto.ErrorImage"), Drawing.Image)
             PctbxPhoto.InitialImage = CType(resources.GetObject("PctbxPhoto.InitialImage"), Drawing.Image)
             PctbxPhoto.Location = New System.Drawing.Point(5, 114)
             PctbxPhoto.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             PctbxPhoto.Name = "PctbxPhoto"
             PctbxPhoto.Size = New System.Drawing.Size(1085, 390)
-            PctbxPhoto.SizeMode = Windows.Forms.PictureBoxSizeMode.Zoom
+            PctbxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             PctbxPhoto.TabIndex = 2
             PctbxPhoto.TabStop = False
             PctbxPhoto.XOTampilkanBorder = False
@@ -339,7 +339,7 @@
             KeyPreview = True
             Margin = New System.Windows.Forms.Padding(22, 44, 22, 44)
             Name = "FRMphtrz"
-            WindowState = Windows.Forms.FormWindowState.Maximized
+            WindowState = System.Windows.Forms.FormWindowState.Maximized
             PnlBottomButton.ResumeLayout(False)
             PnlBottomButton.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
@@ -361,7 +361,7 @@
         Friend WithEvents BtnClose As CMCv.UI.Control.btn
         Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
         Friend WithEvents BtnSave As CMCv.UI.Control.btn
-        Friend WithEvents TlpMain As Windows.Forms.TableLayoutPanel
+        Friend WithEvents TlpMain As System.Windows.Forms.TableLayoutPanel
         Friend WithEvents PnlLoad As CMCv.UI.Control.pnl
         Friend WithEvents PnlSave As CMCv.UI.Control.pnl
         Friend WithEvents PctbxPhoto As CMCv.UI.Control.pctbx
@@ -370,7 +370,7 @@
         Friend WithEvents TxtLoad As CMCv.UI.Control.txt
         Friend WithEvents TxtSave As CMCv.UI.Control.txt
         Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
-        Friend WithEvents OfdLoad As Windows.Forms.OpenFileDialog
+        Friend WithEvents OfdLoad As System.Windows.Forms.OpenFileDialog
         Friend WithEvents ChkSaveAsACopy As CMCv.UI.Control.chk
     End Class
 End Namespace

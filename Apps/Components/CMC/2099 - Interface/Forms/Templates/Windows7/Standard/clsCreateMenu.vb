@@ -49,19 +49,19 @@ Namespace UI.View
 
 
             'Add menu RECORD
-            varItem(0) = New ToolStripMenuItem() With {.Name = "RECORD", .Text = "RECORD", .MergeAction = Windows.Forms.MergeAction.Insert, .MergeIndex = 1}
+            varItem(0) = New ToolStripMenuItem() With {.Name = "RECORD", .Text = "RECORD", .MergeAction = system.Windows.Forms.MergeAction.Insert, .MergeIndex = 1}
             Com_menu.Items.Add(varItem(0))
 
             'Add menu TOOLS
-            varItem(1) = New ToolStripMenuItem() With {.Name = "TOOLS", .Text = "TOOLS", .MergeAction = Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
+            varItem(1) = New ToolStripMenuItem() With {.Name = "TOOLS", .Text = "TOOLS", .MergeAction = system.Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
             Com_menu.Items.Add(varItem(1))
 
             'Add menu TOOLS
-            varItem(2) = New ToolStripMenuItem() With {.Name = "REPORTS", .Text = "REPORTS", .MergeAction = Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
+            varItem(2) = New ToolStripMenuItem() With {.Name = "REPORTS", .Text = "REPORTS", .MergeAction = system.Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
             Com_menu.Items.Add(varItem(2))
 
             'Add menu FILE
-            varItem(3) = New ToolStripMenuItem() With {.Name = "FILE", .Text = "FILE", .MergeAction = Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
+            varItem(3) = New ToolStripMenuItem() With {.Name = "FILE", .Text = "FILE", .MergeAction = system.Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
             Com_menu.Items.Add(varItem(3))
 
             For Each varItem As ToolStripMenuItem In Com_menu.Items

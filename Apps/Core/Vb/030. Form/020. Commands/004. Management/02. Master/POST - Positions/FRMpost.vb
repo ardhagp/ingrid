@@ -98,7 +98,7 @@ Namespace UI
                             "Grade : " & .Cells("grade_code").Value.ToString)
 
                     varMessage.AppendLine(varLine)
-                    If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDpost.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
+                    If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDpost.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
                         Call GetData(True)
                         UI.FRMmainframe6.Ts_status.Text = "Success"
                     Else
@@ -326,7 +326,7 @@ Namespace UI
         '        '    If Convert.ToString(varDataProperties.RowID) = "-1" Then
         '        '        Decision(My.Application.Info.AssemblyName.toupper, "No File Selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         '        '    Else
-        '        '        If Decision(My.Application.Info.AssemblyName.toupper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+        '        '        If Decision(My.Application.Info.AssemblyName.toupper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = system.Windows.Forms.DialogResult.Yes Then
         '        '            If CMDpost.View.DeleteData(varDataProperties, Convert.ToString(varDataProperties.RowID)) Then
         '        '                Call GetData(True)
         '        '                FRMmainframe6.Ts_status.Text = "Success"

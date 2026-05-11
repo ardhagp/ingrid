@@ -151,7 +151,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnGetContent_Click(sender As Object, e As EventArgs) Handles BtnGETContent.Click
             If Not (varDataProperties.CustomDailyActivityIsNew) Then
-                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                     TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDataProperties, CboTemplate)
                 End If
             Else
@@ -275,7 +275,7 @@ Namespace UI
         Private Sub CboTemplate_KeyDown(sender As Object, e As KeyEventArgs) Handles CboTemplate.KeyDown
             If e.KeyCode = Keys.Enter Then
                 If Not (varDataProperties.CustomDailyActivityIsNew) Then
-                    If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                    If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                         TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDataProperties, CboTemplate)
                     End If
                 Else

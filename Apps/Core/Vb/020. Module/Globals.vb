@@ -199,7 +199,7 @@ Module Globals
     Public Sub Display(formname As CMCv.frmStandard, Optional formimage As System.Drawing.Image = Nothing,
                        Optional windowname As String = "", Optional formtitle As String = "",
                        Optional formsubtitle As String = "", Optional isdialog As Boolean = False,
-                       Optional parentframe As Windows.Forms.Form = Nothing)
+                       Optional parentframe As System.Windows.Forms.Form = Nothing)
         Try
             formname.Text = windowname.Trim
             formname.SLFNamaForm.Text = formtitle.Trim
@@ -257,7 +257,7 @@ Module Globals
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Sub Display(formname As CMCv.Std_Fo, Optional formimage As System.Drawing.Image = Nothing, Optional windowname As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "", Optional isdialog As Boolean = False, Optional parentframe As Windows.Forms.Form = Nothing)
+    Public Sub Display(formname As CMCv.Std_Fo, Optional formimage As System.Drawing.Image = Nothing, Optional windowname As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "", Optional isdialog As Boolean = False, Optional parentframe As System.Windows.Forms.Form = Nothing)
         Try
             formname.Text = windowname
             formname.SLFNamaForm.Text = formtitle

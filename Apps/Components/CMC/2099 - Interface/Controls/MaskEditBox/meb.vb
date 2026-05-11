@@ -94,7 +94,7 @@ Namespace UI.Control
 
         Private _varFlagAutoSelect As Boolean
         Private Sub txt_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
-            If Me.XOPilihSemuaSaatFokus AndAlso (MouseButtons = Windows.Forms.MouseButtons.None) Then
+            If Me.XOPilihSemuaSaatFokus AndAlso (MouseButtons = system.Windows.Forms.MouseButtons.None) Then
                 Me.SelectAll()
                 _varFlagAutoSelect = True
             End If
