@@ -1,8 +1,6 @@
 ﻿Imports System.IO
 Imports System.Reflection
 Imports System.Runtime.Versioning
-Imports Ingrid.UI
-Imports Syncfusion.Office
 
 Module Globals
 #Region "Activate Licenses"
@@ -46,7 +44,6 @@ Module Globals
 
     'Public varDataProperties As New LibApp.Ingrid.Global.Properties
     Public varDataProperties As New LibApp.Ingrid.Global.Properties
-    Public varAccountingProperties As New LibApp.Ingrid.Accounting.Properties
 
     Public varDatasetIngrid As New Ingrid.UI.Dataset.ADSglobal
 
@@ -98,10 +95,12 @@ Module Globals
         End Try
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Public Sub ClearMainFrameFooterText()
         UI.FRMmainframe6.Ts_status.Text = String.Empty
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Public Sub SetMainframeFooterText(text As String)
         UI.FRMmainframe6.Ts_status.Text = text
     End Sub
@@ -202,7 +201,7 @@ Module Globals
     Public Sub Display(formname As CMCv.frmStandard, Optional formimage As System.Drawing.Image = Nothing,
                        Optional windowname As String = "", Optional formtitle As String = "",
                        Optional formsubtitle As String = "", Optional isdialog As Boolean = False,
-                       Optional parentframe As Windows.Forms.Form = Nothing)
+                       Optional parentframe As System.Windows.Forms.Form = Nothing)
         Try
             formname.Text = windowname.Trim
             formname.SLFNamaForm.Text = formtitle.Trim
@@ -260,7 +259,7 @@ Module Globals
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Sub Display(formname As CMCv.Std_Fo, Optional formimage As System.Drawing.Image = Nothing, Optional windowname As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "", Optional isdialog As Boolean = False, Optional parentframe As Windows.Forms.Form = Nothing)
+    Public Sub Display(formname As CMCv.Std_Fo, Optional formimage As System.Drawing.Image = Nothing, Optional windowname As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "", Optional isdialog As Boolean = False, Optional parentframe As System.Windows.Forms.Form = Nothing)
         Try
             formname.Text = windowname
             formname.SLFNamaForm.Text = formtitle
@@ -318,6 +317,7 @@ Module Globals
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
+    <SupportedOSPlatform("windows")>
     Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType, subtitle As String, messageicon As CMCv.FRMdialogbox.MessageIcon, buttontype As CMCv.FRMdialogbox.MessageTypes) As DialogResult
         frmMSG = New CMCv.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
         Dim result As System.Windows.Forms.DialogResult = frmMSG.ShowDialog()

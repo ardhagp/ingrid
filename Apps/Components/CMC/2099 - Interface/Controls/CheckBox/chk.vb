@@ -15,7 +15,7 @@ Namespace UI.Control
             Call ActivateLicenses()
             MyBase.Font = globalFontLbl
             MyBase.BackColor = Drawing.Color.Transparent
-            MyBase.FlatStyle = Windows.Forms.FlatStyle.Flat
+            MyBase.FlatStyle = system.Windows.Forms.FlatStyle.Flat
             MyBase.DoubleBuffered = True
         End Sub
 

@@ -428,27 +428,27 @@ Namespace CMDacgr
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushData(globalproperties As LibApp.Ingrid.Global.Properties, accountingproperties As LibApp.Ingrid.Accounting.Properties) As Boolean
+        Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varSuccess As Boolean
             Try
                 Dim varHash As String = CMCv.Security.Encrypt.MD5()
 
-                If globalproperties.ConnectionDatabaseEngine = "MSSQL" Then
-                    If Convert.ToString(globalproperties.AccountingGroupId) = "-1" Then
+                If dataproperties.ConnectionDatabaseEngine = "MSSQL" Then
+                    If Convert.ToString(dataproperties.AccountGroupId) = "-1" Then
                         varDatabaseRequestMssql2008(0).Query = $"insert into dbo.ac_account(account_id, account_book, account_group, account_num, account_name, account_enable) " &
-                                                   $"values('{varHash}', '{accountingproperties.AccountBookID}','{accountingproperties.AccountGroupID}','{accountingproperties.AccountNumber}','{accountingproperties.AccountName}','{accountingproperties.AccountEnabled}')"
+                                                   $"values('{varHash}', '{dataproperties.AccountBookId}','{dataproperties.AccountGroupId}','{dataproperties.AccountBookNumber}','{dataproperties.AccountBookName}','{dataproperties.AccountBookIsEnabled}')"
                     Else
-                        varDatabaseRequestMssql2008(0).Query = $"update dbo.ac_account set account_num = '{accountingproperties.AccountNumber}', account_name = '{accountingproperties.AccountName}', account_enable = '{accountingproperties.AccountEnabled}' where account_id = '{globalproperties.AccountingGroupId}'"
+                        varDatabaseRequestMssql2008(0).Query = $"update dbo.ac_account set account_num = '{dataproperties.AccountBookNumber}', account_name = '{dataproperties.AccountBookName}', account_enable = '{dataproperties.AccountBookIsEnabled}' where account_id = '{dataproperties.AccountGroupId}'"
                     End If
-                    varDatabaseEngineMssql2008.PushData(globalproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query)
-                ElseIf globalproperties.ConnectionDatabaseEngine = "MYSQL" Then
-                    If Convert.ToString(globalproperties.AccountingGroupId) = "-1" Then
+                    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query)
+                ElseIf dataproperties.ConnectionDatabaseEngine = "MYSQL" Then
+                    If Convert.ToString(dataproperties.AccountGroupId) = "-1" Then
                         varDatabaseRequestMysql(0).Query = $"insert into ac_account(account_id, account_book, account_group, account_num, account_name, account_enable) " &
-                                               $"values('{varHash}', '{accountingproperties.AccountBookID}','{accountingproperties.AccountGroupID}','{accountingproperties.AccountNumber}','{accountingproperties.AccountName}','{accountingproperties.AccountEnabled}')"
+                                               $"values('{varHash}', '{dataproperties.AccountBookId}','{dataproperties.AccountGroupId}','{dataproperties.AccountBookNumber}','{dataproperties.AccountBookName}','{dataproperties.AccountBookIsEnabled}')"
                     Else
-                        varDatabaseRequestMysql(0).Query = $"update ac_account set account_num = '{accountingproperties.AccountNumber}', account_name = '{accountingproperties.AccountName}', account_enable = '{accountingproperties.AccountEnabled}' where account_id = '{globalproperties.AccountingGroupId}'"
+                        varDatabaseRequestMysql(0).Query = $"update ac_account set account_num = '{dataproperties.AccountBookNumber}', account_name = '{dataproperties.AccountBookName}', account_enable = '{dataproperties.AccountBookIsEnabled}' where account_id = '{dataproperties.AccountGroupId}'"
                     End If
-                    varDatabaseEngineMysql.PushData(globalproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query)
                 End If
                 varSuccess = True
             Catch ex As Exception

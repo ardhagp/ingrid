@@ -23,7 +23,7 @@ Partial Class FRMerrorreporting
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMerrorreporting))
         BtnClose = New CMCv.UI.Control.btn(components)
         Tbctl1 = New CMCv.UI.Control.tbctl(components)
-        tp_ApplicationFault = New Windows.Forms.TabPage()
+        tp_ApplicationFault = New System.Windows.Forms.TabPage()
         Lbl4 = New CMCv.UI.Control.lbl(components)
         TxtAppBuild = New CMCv.UI.Control.txt(components)
         TxtErrorNumber = New CMCv.UI.Control.txt(components)
@@ -32,7 +32,7 @@ Partial Class FRMerrorreporting
         Lbl2 = New CMCv.UI.Control.lbl(components)
         TxtErrorType = New CMCv.UI.Control.txt(components)
         Lbl1 = New CMCv.UI.Control.lbl(components)
-        tp_SystemInformation = New Windows.Forms.TabPage()
+        tp_SystemInformation = New System.Windows.Forms.TabPage()
         ChkErrorReporting = New CMCv.UI.Control.chk(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -87,13 +87,13 @@ Partial Class FRMerrorreporting
         ' 
         ' BtnClose
         ' 
-        BtnClose.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Right
+        BtnClose.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Right
         BtnClose.BackColor = Drawing.Color.Red
-        BtnClose.Cursor = Windows.Forms.Cursors.Hand
+        BtnClose.Cursor = system.Windows.Forms.Cursors.Hand
         BtnClose.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(0), CByte(0))
         BtnClose.FlatAppearance.BorderSize = 2
         BtnClose.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
-        BtnClose.FlatStyle = Windows.Forms.FlatStyle.Flat
+        BtnClose.FlatStyle = system.Windows.Forms.FlatStyle.Flat
         BtnClose.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
         BtnClose.ForeColor = Drawing.Color.White
         BtnClose.Location = New System.Drawing.Point(899, 14)
@@ -110,7 +110,7 @@ Partial Class FRMerrorreporting
         ' 
         ' Tbctl1
         ' 
-        Tbctl1.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Bottom Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
+        Tbctl1.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Bottom Or system.Windows.Forms.AnchorStyles.Left Or system.Windows.Forms.AnchorStyles.Right
         Tbctl1.Controls.Add(tp_ApplicationFault)
         Tbctl1.Controls.Add(tp_SystemInformation)
         Tbctl1.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
@@ -142,7 +142,7 @@ Partial Class FRMerrorreporting
         ' 
         ' Lbl4
         ' 
-        Lbl4.Anchor = Windows.Forms.AnchorStyles.Bottom Or Windows.Forms.AnchorStyles.Left
+        Lbl4.Anchor = system.Windows.Forms.AnchorStyles.Bottom Or system.Windows.Forms.AnchorStyles.Left
         Lbl4.AutoSize = True
         Lbl4.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         Lbl4.Location = New System.Drawing.Point(423, 552)
@@ -155,7 +155,7 @@ Partial Class FRMerrorreporting
         ' 
         ' TxtAppBuild
         ' 
-        TxtAppBuild.Anchor = Windows.Forms.AnchorStyles.Bottom Or Windows.Forms.AnchorStyles.Left
+        TxtAppBuild.Anchor = system.Windows.Forms.AnchorStyles.Bottom Or system.Windows.Forms.AnchorStyles.Left
         TxtAppBuild.BackColor = Drawing.Color.White
         TxtAppBuild.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         TxtAppBuild.Location = New System.Drawing.Point(423, 597)
@@ -188,7 +188,7 @@ Partial Class FRMerrorreporting
         ' 
         ' TxtErrorNumber
         ' 
-        TxtErrorNumber.Anchor = Windows.Forms.AnchorStyles.Bottom Or Windows.Forms.AnchorStyles.Left
+        TxtErrorNumber.Anchor = system.Windows.Forms.AnchorStyles.Bottom Or system.Windows.Forms.AnchorStyles.Left
         TxtErrorNumber.BackColor = Drawing.Color.White
         TxtErrorNumber.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         TxtErrorNumber.Location = New System.Drawing.Point(10, 597)
@@ -221,7 +221,7 @@ Partial Class FRMerrorreporting
         ' 
         ' Lbl3
         ' 
-        Lbl3.Anchor = Windows.Forms.AnchorStyles.Bottom Or Windows.Forms.AnchorStyles.Left
+        Lbl3.Anchor = system.Windows.Forms.AnchorStyles.Bottom Or system.Windows.Forms.AnchorStyles.Left
         Lbl3.AutoSize = True
         Lbl3.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         Lbl3.Location = New System.Drawing.Point(10, 552)
@@ -234,14 +234,14 @@ Partial Class FRMerrorreporting
         ' 
         ' TxtErrorMessage
         ' 
-        TxtErrorMessage.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Bottom Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
+        TxtErrorMessage.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Bottom Or system.Windows.Forms.AnchorStyles.Left Or system.Windows.Forms.AnchorStyles.Right
         TxtErrorMessage.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         TxtErrorMessage.Location = New System.Drawing.Point(10, 160)
         TxtErrorMessage.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         TxtErrorMessage.MaxLength = 255
         TxtErrorMessage.Multiline = True
         TxtErrorMessage.Name = "TxtErrorMessage"
-        TxtErrorMessage.ScrollBars = Windows.Forms.ScrollBars.Vertical
+        TxtErrorMessage.ScrollBars = system.Windows.Forms.ScrollBars.Vertical
         TxtErrorMessage.Size = New System.Drawing.Size(1009, 383)
         TxtErrorMessage.TabIndex = 3
         TxtErrorMessage.Tag = "txt"
@@ -336,7 +336,7 @@ Partial Class FRMerrorreporting
         ' 
         ChkErrorReporting.AutoSize = True
         ChkErrorReporting.BackColor = Drawing.Color.Transparent
-        ChkErrorReporting.FlatStyle = Windows.Forms.FlatStyle.Flat
+        ChkErrorReporting.FlatStyle = system.Windows.Forms.FlatStyle.Flat
         ChkErrorReporting.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         ChkErrorReporting.Location = New System.Drawing.Point(497, 28)
         ChkErrorReporting.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
@@ -352,7 +352,7 @@ Partial Class FRMerrorreporting
         ' 
         AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
         ClientSize = New System.Drawing.Size(1086, 1000)
-        FormBorderStyle = Windows.Forms.FormBorderStyle.FixedSingle
+        FormBorderStyle = system.Windows.Forms.FormBorderStyle.FixedSingle
         Margin = New System.Windows.Forms.Padding(10, 5, 10, 5)
         MaximizeBox = False
         MaximumSize = New System.Drawing.Size(1108, 1056)

@@ -65,6 +65,7 @@ Namespace UI
             Call GetData()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub CboWatermark_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboWatermark.SelectedIndexChanged
             If CboWatermark.SelectedIndex = 0 Then
                 TxtWatermark.Enabled = False
@@ -100,6 +101,7 @@ Namespace UI
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
             Me.Close()
         End Sub

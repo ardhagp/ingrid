@@ -18,21 +18,21 @@ Namespace UI.Control
             'MyBase.AlternatingRowsDefaultCellStyle.BackColor = CBS.WarnaAcakBaru(190, 190, 190, 255, 255, 255)
             MyBase.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
             MyBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-            MyBase.ColumnHeadersHeightSizeMode = Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+            MyBase.ColumnHeadersHeightSizeMode = system.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             MyBase.ColumnHeadersHeight = 43
             MyBase.Font = globalFontDgn
             MyBase.EnableHeadersVisualStyles = False
-            MyBase.ColumnHeadersBorderStyle = Windows.Forms.DataGridViewHeaderBorderStyle.None
+            MyBase.ColumnHeadersBorderStyle = system.Windows.Forms.DataGridViewHeaderBorderStyle.None
             MyBase.ColumnHeadersDefaultCellStyle.BackColor = Drawing.Color.YellowGreen
             MyBase.ColumnHeadersDefaultCellStyle.SelectionBackColor = Drawing.Color.YellowGreen
             MyBase.ColumnHeadersDefaultCellStyle.SelectionForeColor = Drawing.Color.Black
-            MyBase.RowHeadersBorderStyle = Windows.Forms.DataGridViewHeaderBorderStyle.None
+            MyBase.RowHeadersBorderStyle = system.Windows.Forms.DataGridViewHeaderBorderStyle.None
             MyBase.RowHeadersDefaultCellStyle.BackColor = Drawing.Color.YellowGreen
             MyBase.RowHeadersDefaultCellStyle.SelectionBackColor = Drawing.Color.Yellow
             MyBase.RowHeadersDefaultCellStyle.SelectionForeColor = Drawing.Color.Black
-            MyBase.CellBorderStyle = Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+            MyBase.CellBorderStyle = system.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
             MyBase.StandardTab = True
-            MyBase.BorderStyle = Windows.Forms.BorderStyle.None
+            MyBase.BorderStyle = system.Windows.Forms.BorderStyle.None
             MyBase.DoubleBuffered = True
         End Sub
 
@@ -61,12 +61,13 @@ Namespace UI.Control
             Throw New NotImplementedException
         End Function
 
-        Private Sub dgn_CellFormatting(sender As Object, e As Windows.Forms.DataGridViewCellFormattingEventArgs) Handles Me.CellFormatting
-            If XOGroupFirstRows = True Then
+        <SupportedOSPlatform("windows")>
+        Private Sub dgn_CellFormatting(sender As Object, e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles Me.CellFormatting
+            If XOGroupFirstRows Then
                 If e.RowIndex > 0 And e.ColumnIndex = 0 Then
                     If MyBase.Item(0, e.RowIndex - 1).Value Is e.Value Then
                         e.Value = String.Empty
-                        'MyBase.AdvancedCellBorderStyle.Top = Windows.Forms.DataGridViewAdvancedCellBorderStyle.None
+                        'MyBase.AdvancedCellBorderStyle.Top = system.Windows.Forms.DataGridViewAdvancedCellBorderStyle.None
                         'MyBase.Rows(e.RowIndex).DefaultCellStyle.BackColor = System.Drawing.Color.White
                     ElseIf e.RowIndex < MyBase.Rows.Count - 1 Then
 
@@ -76,8 +77,9 @@ Namespace UI.Control
             End If
         End Sub
 
-        Private Sub dgn_CellMouseDown(sender As Object, e As Windows.Forms.DataGridViewCellMouseEventArgs) Handles Me.CellMouseDown
-            If (e.Button = Windows.Forms.MouseButtons.Right) Or (e.Button = Windows.Forms.MouseButtons.Left) Then
+        <SupportedOSPlatform("windows")>
+        Private Sub dgn_CellMouseDown(sender As Object, e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles Me.CellMouseDown
+            If (e.Button = System.Windows.Forms.MouseButtons.Right) Or (e.Button = System.Windows.Forms.MouseButtons.Left) Then
                 Try
                     MyBase.CurrentCell = Me(e.ColumnIndex, e.RowIndex)
                     RaiseEvent XOSelected()
@@ -92,10 +94,12 @@ Namespace UI.Control
             No
         End Enum
 
+        <SupportedOSPlatform("windows")>
         Public Sub XOGETNewColor()
             Call GENERATENewColor()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub dgn_HandleCreated(sender As Object, e As EventArgs) Handles Me.HandleCreated
             Call GENERATENewColor()
         End Sub
@@ -104,6 +108,7 @@ Namespace UI.Control
             RaiseEvent XOSelected()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub GENERATENewColor()
             MyBase.AlternatingRowsDefaultCellStyle.BackColor = ControlCodeBase.WarnaAcakBaru(190, 255, 190, 255, 90, 190)
         End Sub

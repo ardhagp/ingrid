@@ -62,6 +62,7 @@ Module Globals
     Public varApplicationVersion As String
 #End Region
 
+    <SupportedOSPlatform("windows")>
     Public Function GetAppVersion() As String
         Dim varMajor, varMinor, varBuild, varRevision As Integer
         varMajor = My.Application.Info.Version.Major

@@ -21,12 +21,12 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Dim MessageBoxSettings2 As Syncfusion.Windows.Forms.PdfViewer.MessageBoxSettings = New Windows.Forms.PdfViewer.MessageBoxSettings()
-            Dim PdfViewerPrinterSettings2 As Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings = New Windows.PdfViewer.PdfViewerPrinterSettings()
+            Dim MessageBoxSettings2 As Syncfusion.Windows.Forms.PdfViewer.MessageBoxSettings = New Syncfusion.Windows.Forms.PdfViewer.MessageBoxSettings()
+            Dim PdfViewerPrinterSettings2 As Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings = New Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMpdfViewer))
-            Dim TextSearchSettings2 As Syncfusion.Windows.Forms.PdfViewer.TextSearchSettings = New Windows.Forms.PdfViewer.TextSearchSettings()
+            Dim TextSearchSettings2 As Syncfusion.Windows.Forms.PdfViewer.TextSearchSettings = New Syncfusion.Windows.Forms.PdfViewer.TextSearchSettings()
             BtnClose = New CMCv.UI.Control.btn(components)
-            PDFContent = New Windows.Forms.PdfViewer.PdfViewerControl()
+            PDFContent = New Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -57,13 +57,13 @@
             ' 
             ' BtnClose
             ' 
-            BtnClose.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Right
+            BtnClose.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Right
             BtnClose.BackColor = Drawing.Color.Red
-            BtnClose.Cursor = Windows.Forms.Cursors.Hand
+            BtnClose.Cursor = system.Windows.Forms.Cursors.Hand
             BtnClose.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(0), CByte(0))
             BtnClose.FlatAppearance.BorderSize = 2
             BtnClose.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
-            BtnClose.FlatStyle = Windows.Forms.FlatStyle.Flat
+            BtnClose.FlatStyle = system.Windows.Forms.FlatStyle.Flat
             BtnClose.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
             BtnClose.ForeColor = Drawing.Color.White
             BtnClose.Location = New System.Drawing.Point(907, 13)
@@ -81,9 +81,9 @@
             ' PDFContent
             ' 
             PDFContent.BackColor = Drawing.Color.Gainsboro
-            PDFContent.BackgroundImageLayout = Windows.Forms.ImageLayout.None
-            PDFContent.CursorMode = Windows.Forms.PdfViewer.PdfViewerCursorMode.SelectTool
-            PDFContent.Dock = Windows.Forms.DockStyle.Fill
+            PDFContent.BackgroundImageLayout = system.Windows.Forms.ImageLayout.None
+            PDFContent.CursorMode = Syncfusion.Windows.Forms.PdfViewer.PdfViewerCursorMode.SelectTool
+            PDFContent.Dock = system.Windows.Forms.DockStyle.Fill
             PDFContent.EnableContextMenu = True
             PDFContent.EnableNotificationBar = True
             PDFContent.HorizontalScrollOffset = 0
@@ -98,8 +98,8 @@
             PDFContent.Name = "PDFContent"
             PDFContent.PageBorderThickness = 1
             PdfViewerPrinterSettings2.Copies = 1
-            PdfViewerPrinterSettings2.PageOrientation = Windows.PdfViewer.PdfViewerPrintOrientation.Auto
-            PdfViewerPrinterSettings2.PageSize = Windows.PdfViewer.PdfViewerPrintSize.ActualSize
+            PdfViewerPrinterSettings2.PageOrientation = Syncfusion.Windows.PdfViewer.PdfViewerPrintOrientation.Auto
+            PdfViewerPrinterSettings2.PageSize = Syncfusion.Windows.PdfViewer.PdfViewerPrintSize.ActualSize
             PdfViewerPrinterSettings2.PrintLocation = CType(resources.GetObject("PdfViewerPrinterSettings2.PrintLocation"), Drawing.PointF)
             PdfViewerPrinterSettings2.ShowPrintStatusDialog = True
             PDFContent.PrinterSettings = PdfViewerPrinterSettings2
@@ -118,8 +118,8 @@
             PDFContent.TextSearchSettings = TextSearchSettings2
             PDFContent.ThemeName = "Office2016Colorful"
             PDFContent.VerticalScrollOffset = 0
-            PDFContent.VisualStyle = Windows.Forms.PdfViewer.VisualStyle.Office2016Colorful
-            PDFContent.ZoomMode = Windows.Forms.PdfViewer.ZoomMode.FitPage
+            PDFContent.VisualStyle = Syncfusion.Windows.Forms.PdfViewer.VisualStyle.Office2016Colorful
+            PDFContent.ZoomMode = Syncfusion.Windows.Forms.PdfViewer.ZoomMode.FitPage
             ' 
             ' FRMpdfViewer
             ' 

@@ -41,6 +41,7 @@ Namespace UI.Control
             End Set
         End Property
 
+        <SupportedOSPlatform("windows")>
         Protected Overrides Sub OnPaint(ByVal pe As System.Windows.Forms.PaintEventArgs)
             If Me.XOTampilkanBorder = True Then
                 ControlPaint.DrawBorder(pe.Graphics, pe.ClipRectangle, Me.XOWarnaBorder, ButtonBorderStyle.Outset)

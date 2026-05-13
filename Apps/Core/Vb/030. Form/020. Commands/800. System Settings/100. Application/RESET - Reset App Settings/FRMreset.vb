@@ -21,6 +21,7 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
             Me.Close()
         End Sub

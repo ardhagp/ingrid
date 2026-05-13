@@ -92,6 +92,7 @@ Namespace UI
         ''' <summary>
         ''' Memuat setting datagrid
         ''' </summary>
+        <SupportedOSPlatform("windows")>
         Private Sub LoadDgn()
             'Memuat warna acak
             DgnDARDate.XOGETNewColor()
@@ -157,6 +158,7 @@ Namespace UI
         ''' Get photo by option
         ''' </summary>
         ''' <param name="IsTabOpen"></param>
+        <SupportedOSPlatform("windows")>
         Public Sub GetPhotos(Optional istabopen As Boolean = False)
             If (istabopen) AndAlso (DgnDARActivity.RowCount <> 0) Then
                 'waiting some code
@@ -166,6 +168,7 @@ Namespace UI
         ''' <summary>
         ''' Get row ID on record clicked
         ''' </summary>
+        <SupportedOSPlatform("windows")>
         Private Sub GetRowID()
             If DgnDARActivity.RowCount = 0 Then
                 varDataProperties.CustomDailyActivityIsNew = True
@@ -274,7 +277,7 @@ Namespace UI
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 varDataProperties.CustomDailyActivityIsNew = False
-                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString & vbCrLf & "=======================================================", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString & vbCrLf & "=======================================================", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                     If (CMDdar.View.DeleteData(varDataProperties, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString)) Then
                         Call GetData(True)
                         Call FillEmployee()
@@ -299,6 +302,7 @@ Namespace UI
         ''' <summary>
         ''' Close form
         ''' </summary>
+        <SupportedOSPlatform("windows")>
         Private Sub EventDataClose() Handles Com_mms_Menu.EventDataClose
             Me.Close()
         End Sub
@@ -306,6 +310,7 @@ Namespace UI
         ''' <summary>
         ''' Search mode
         ''' </summary>
+        <SupportedOSPlatform("windows")>
         Private Sub EventToolsFind() Handles Com_mms_Menu.EventToolsFind
             TxtFind.Focus()
         End Sub
@@ -331,6 +336,7 @@ Namespace UI
 #End Region
 
 #Region "Context Menu Event"
+        <SupportedOSPlatform("windows")>
         Private Sub ContextCopy() Handles Com_cs_Menu.ContextCopy
             If DgnDARActivity.RowCount = 0 Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
@@ -360,6 +366,7 @@ Namespace UI
             Call ClearFind()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ChkEnableDateFilter_CheckedChanged(sender As Object, e As EventArgs) Handles ChkEnableDateFilter.CheckedChanged
             DtpMonth.Enabled = ChkEnableDateFilter.Checked
         End Sub
@@ -572,6 +579,7 @@ Namespace UI
             Call FillEmployee()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub FRMdarEditor_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Frm_dar_Editor.FormClosed
             Me.Focus()
         End Sub

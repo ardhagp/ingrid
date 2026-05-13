@@ -14,6 +14,7 @@ Namespace UI.Control
             MyBase.MinDate = DateAdd(DateInterval.Year, -100, Now.Date)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub dtp_EnabledChanged(sender As Object, e As EventArgs) Handles Me.EnabledChanged
             If (XOResetOnDisabled) AndAlso Not (Me.Enabled) Then
                 MyBase.MaxDate = DateAdd(DateInterval.Year, 10, Now.Date)

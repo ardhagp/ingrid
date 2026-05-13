@@ -48,6 +48,7 @@ Namespace UI
         ''' <summary>
         ''' Memuat setting datagrid
         ''' </summary>
+        <SupportedOSPlatform("windows")>
         Private Sub LoadDgn()
             'Memuat warna acak
             DgnArea.XOGETNewColor()
@@ -56,6 +57,7 @@ Namespace UI
         ''' <summary>
         ''' Get row ID on record clicked
         ''' </summary>
+        <SupportedOSPlatform("windows")>
         Private Sub GetRowID()
             varDataProperties.CustomDailyActivityAreaId = "-1"
 

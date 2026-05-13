@@ -268,6 +268,7 @@ Namespace UI.Control
 #End Region
 
 #Region "Function"
+        <SupportedOSPlatform("windows")>
         Private Function SqlSafeText(txtControl As txt) As String
             Dim varSqlSafeText As String = txtControl.Text
 
@@ -399,6 +400,7 @@ Namespace UI.Control
         End Function
 #End Region
 
+        <SupportedOSPlatform("windows")>
         Private Sub Txt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
             ' Fast path: always allow control characters (backspace, enter, etc.)
             Dim ch As Char = e.KeyChar
@@ -450,7 +452,7 @@ Namespace UI.Control
         Private Sub txt_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
             Call FontSearchBox(True)
 
-            If Me.XOPilihSemuaSaatFokus AndAlso (MouseButtons = Windows.Forms.MouseButtons.None) Then
+            If Me.XOPilihSemuaSaatFokus AndAlso (MouseButtons = system.Windows.Forms.MouseButtons.None) Then
                 Me.SelectAll()
                 varFlagAutoSelect = True
             End If
@@ -472,8 +474,9 @@ Namespace UI.Control
             'End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub txt_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
-            If (e.Control AndAlso e.KeyCode = Windows.Forms.Keys.A) Then
+            If (e.Control AndAlso e.KeyCode = system.Windows.Forms.Keys.A) Then
                 Me.SelectAll()
             End If
         End Sub
@@ -506,18 +509,21 @@ Namespace UI.Control
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub txt_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
             If Me.XOHightlightSaatFokus AndAlso Not (Me.ReadOnly) Then
                 MyBase.BackColor = Me.XOHightlightSaatFokusWarna
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub txt_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
             If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Not (Me.ReadOnly) Then
                 MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub txt_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseUp
             If Me.XOPilihSemuaSaatFokus AndAlso (Not varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
                 varFlagAutoSelect = True
@@ -525,6 +531,7 @@ Namespace UI.Control
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub txt_TextChanged(sender As Object, e As System.EventArgs) Handles Me.TextChanged
             XOSQLText = SQLSafeText(Me)
 
@@ -558,6 +565,7 @@ Namespace UI.Control
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub txt_Validating(sender As Object, e As CancelEventArgs) Handles Me.Validating
             If (Me.XOHarusDiisi) AndAlso Me.Text.Trim = String.Empty Then
                 Me.XOIsBlank = True

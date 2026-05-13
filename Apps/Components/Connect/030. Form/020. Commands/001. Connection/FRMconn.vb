@@ -146,7 +146,7 @@ Namespace UI
 
                     varMessage.AppendLine(varLine)
 
-                    If Decision(My.Application.Info.AssemblyName, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                    If Decision(My.Application.Info.AssemblyName, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = system.Windows.Forms.DialogResult.Yes Then
                         If (CMDconn.View.DeleteData(Convert.ToString(varProperties.ConnectionId))) Then
                             Call GetData(True)
                             SLFStatus.Text = "Success"

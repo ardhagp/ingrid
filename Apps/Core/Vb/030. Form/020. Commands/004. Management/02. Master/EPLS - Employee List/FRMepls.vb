@@ -20,6 +20,7 @@ Namespace UI
             CMDepls.View.DisplayData(varDataProperties, DgnEPLS, SLFStatus, TxtFind)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub GetRowID()
             varDataProperties.AllParameters.Remove(pEmployeeId)
             If DgnEPLS.RowCount = 0 Then
@@ -98,7 +99,7 @@ Namespace UI
                             "Position : " & .Cells("position_name").Value.ToString & Environment.NewLine)
 
                     varMessage.AppendLine(varLine)
-                    If Decision(My.Application.Info.AssemblyName.ToUpper, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDepls.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
+                    If Decision(My.Application.Info.AssemblyName.ToUpper, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDepls.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
                         Call GetData(True)
                         UI.FRMmainframe6.Ts_status.Text = "Success"
                     Else
@@ -114,10 +115,12 @@ Namespace UI
             Call GetData(True)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub EventDataClose() Handles Com_mms_Menu.EventDataClose
             Me.Close()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub EventToolsFind() Handles Com_mms_Menu.EventToolsFind
             TxtFind.Focus()
         End Sub

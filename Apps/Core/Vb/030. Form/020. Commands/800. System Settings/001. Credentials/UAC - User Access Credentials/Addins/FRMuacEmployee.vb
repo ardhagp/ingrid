@@ -4,9 +4,14 @@ Namespace UI
     Public Class FRMuacEmployee
 #Region "Declaration"
         Public Event EventRecordSelected()
+
+        Private Const pEmployeeId As String = "@EmployeeId"
+        Private Const pEmployeeNumber As String = "@EmployeeNumber"
+        Private Const pEmployeeFullName As String = "@EmployeeFullName"
 #End Region
 
 #Region "Subs Collections"
+        <SupportedOSPlatform("windows")>
         Private Sub GetRowID()
             varDataProperties.EmployeeId = "-1"
             If DgnAddinEmployee.RowCount > 0 Then
@@ -26,20 +31,25 @@ Namespace UI
             Call GetData()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
             If DgnAddinEmployee.RowCount = 0 Then
                 Decision(My.Application.Info.AssemblyName.toupper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 With DgnAddinEmployee.CurrentRow
-                    varDataProperties.Field01 = .Cells("employee_id").Value
-                    varDataProperties.Field02 = .Cells("employee_number").Value
-                    varDataProperties.Field03 = .Cells("employee_fullname").Value
+                    varDataProperties.AllParameters.Remove(pEmployeeId)
+                    varDataProperties.AllParameters.Add(pEmployeeId, CLng(.Cells("employee_id").Value))
+                    varDataProperties.AllParameters.Remove(pEmployeeNumber)
+                    varDataProperties.AllParameters.Add(pEmployeeNumber, .Cells("employee_number").Value)
+                    varDataProperties.AllParameters.Remove(pEmployeeFullName)
+                    varDataProperties.AllParameters.Add(pEmployeeFullName, .Cells("employee_fullname").Value)
                 End With
                 RaiseEvent EventRecordSelected()
                 Me.Close()
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
         End Sub

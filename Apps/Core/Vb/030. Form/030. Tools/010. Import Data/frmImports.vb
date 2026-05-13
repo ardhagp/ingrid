@@ -22,6 +22,7 @@ Namespace UI
             varOriginalSourceFile = String.Empty
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnBrowse_Click(sender As Object, e As EventArgs) Handles BtnBrowse.Click
             Dim varFileLoaded As Integer
 
@@ -36,9 +37,10 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Function CompactString(mystring As String, width As Integer,
 font As Drawing.Font,
-formatflags As Windows.Forms.TextFormatFlags) As String
+formatflags As System.Windows.Forms.TextFormatFlags) As String
 
             Dim varResult = New String(mystring.ToCharArray())
 
@@ -65,6 +67,7 @@ formatflags As Windows.Forms.TextFormatFlags) As String
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
             Me.Close()
         End Sub

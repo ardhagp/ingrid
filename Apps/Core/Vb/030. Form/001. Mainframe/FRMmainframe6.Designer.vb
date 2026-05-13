@@ -128,15 +128,15 @@
             Tv_mainframe = New CMCv.UI.Control.tv(components)
             Imglst_mainframe = New ImageList(components)
             PnlStorage = New CMCv.UI.Control.pnl(components)
-            pgFileStorage = New Windows.Forms.Tools.ProgressBarAdv()
-            pgDataStorage = New Windows.Forms.Tools.ProgressBarAdv()
+            pgFileStorage = New Syncfusion.Windows.Forms.Tools.ProgressBarAdv()
+            pgDataStorage = New Syncfusion.Windows.Forms.Tools.ProgressBarAdv()
             lblFile = New Label()
             lblData = New Label()
             lblFileStorage = New Label()
             lblDataStorage = New Label()
             lblStorage = New CMCv.UI.Control.lbl(components)
             Pnl_command_top = New CMCv.UI.Control.pnl(components)
-            BtnExecute = New Windows.Forms.ButtonAdv()
+            BtnExecute = New Syncfusion.Windows.Forms.ButtonAdv()
             Txt_shortcut = New CMCv.UI.Control.txt(components)
             PnlProfile = New CMCv.UI.Control.pnl(components)
             PctProfile = New CMCv.UI.Control.pctbx(components)
@@ -156,7 +156,7 @@
             Tmr_runningtext = New Timer(components)
             TxtRunning = New CMCv.UI.Control.txt(components)
             spl_ = New Splitter()
-            Tmdi_ = New Windows.Forms.Tools.TabbedGroupedMDIManager()
+            Tmdi_ = New Syncfusion.Windows.Forms.Tools.TabbedGroupedMDIManager()
             Ms_mainframe.SuspendLayout()
             pnl_mainframe_left.SuspendLayout()
             PnlStorage.SuspendLayout()
@@ -780,7 +780,7 @@
             ' pgFileStorage
             ' 
             pgFileStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-            pgFileStorage.BackgroundStyle = Windows.Forms.Tools.ProgressBarBackgroundStyles.Gradient
+            pgFileStorage.BackgroundStyle = Syncfusion.Windows.Forms.Tools.ProgressBarBackgroundStyles.Gradient
             pgFileStorage.BackMultipleColors = New Color() {Color.Empty}
             pgFileStorage.BackSegments = False
             pgFileStorage.BorderColor = Color.FromArgb(CByte(147), CByte(149), CByte(152))
@@ -795,8 +795,8 @@
             pgFileStorage.Margin = New Padding(4, 5, 4, 5)
             pgFileStorage.MultipleColors = New Color() {Color.Empty}
             pgFileStorage.Name = "pgFileStorage"
-            pgFileStorage.ProgressFallbackStyle = Windows.Forms.Tools.ProgressBarStyles.Metro
-            pgFileStorage.ProgressStyle = Windows.Forms.Tools.ProgressBarStyles.Metro
+            pgFileStorage.ProgressFallbackStyle = Syncfusion.Windows.Forms.Tools.ProgressBarStyles.Metro
+            pgFileStorage.ProgressStyle = Syncfusion.Windows.Forms.Tools.ProgressBarStyles.Metro
             pgFileStorage.SegmentWidth = 12
             pgFileStorage.Size = New Size(410, 38)
             pgFileStorage.Step = 1
@@ -808,7 +808,7 @@
             ' pgDataStorage
             ' 
             pgDataStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-            pgDataStorage.BackgroundStyle = Windows.Forms.Tools.ProgressBarBackgroundStyles.Gradient
+            pgDataStorage.BackgroundStyle = Syncfusion.Windows.Forms.Tools.ProgressBarBackgroundStyles.Gradient
             pgDataStorage.BackMultipleColors = New Color() {Color.Empty}
             pgDataStorage.BackSegments = False
             pgDataStorage.BorderColor = Color.FromArgb(CByte(147), CByte(149), CByte(152))
@@ -823,8 +823,8 @@
             pgDataStorage.Margin = New Padding(4, 5, 4, 5)
             pgDataStorage.MultipleColors = New Color() {Color.Empty}
             pgDataStorage.Name = "pgDataStorage"
-            pgDataStorage.ProgressFallbackStyle = Windows.Forms.Tools.ProgressBarStyles.Metro
-            pgDataStorage.ProgressStyle = Windows.Forms.Tools.ProgressBarStyles.Metro
+            pgDataStorage.ProgressFallbackStyle = Syncfusion.Windows.Forms.Tools.ProgressBarStyles.Metro
+            pgDataStorage.ProgressStyle = Syncfusion.Windows.Forms.Tools.ProgressBarStyles.Metro
             pgDataStorage.SegmentWidth = 12
             pgDataStorage.Size = New Size(410, 38)
             pgDataStorage.Step = 1
@@ -912,7 +912,7 @@
             ' BtnExecute
             ' 
             BtnExecute.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            BtnExecute.Appearance = Windows.Forms.ButtonAppearance.Office2016Colorful
+            BtnExecute.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Office2016Colorful
             BtnExecute.BackColor = SystemColors.Control
             BtnExecute.BackgroundImage = My.Resources.Resources.for_treeview_playbutton_512
             BtnExecute.BackgroundImageLayout = ImageLayout.Stretch
@@ -1175,7 +1175,7 @@
             Tmdi_.ShowCloseButton = True
             Tmdi_.ShowCloseButtonBackColor = True
             Tmdi_.TabFont = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-            Tmdi_.TabStyle = GetType(Windows.Forms.Tools.TabRendererIE7)
+            Tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererIE7)
             Tmdi_.ThemeName = "TabRendererIE7"
             Tmdi_.ThemesEnabled = True
             Tmdi_.UseIconsInTabs = False

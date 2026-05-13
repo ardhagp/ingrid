@@ -1,6 +1,9 @@
-﻿Namespace UI
+﻿Imports System.Runtime.Versioning
+
+Namespace UI
     Public Class FRMdummyMainframe
 
+        <SupportedOSPlatform("windows")>
         Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles NewToolStripMenuItem.Click, NewWindowToolStripMenuItem.Click
             ' Create a new instance of the child form.
             Dim ChildForm As New System.Windows.Forms.Form
@@ -13,6 +16,7 @@
             ChildForm.Show()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub OpenFile(ByVal sender As Object, ByVal e As EventArgs) Handles OpenToolStripMenuItem.Click
             Dim OpenFileDialog As New OpenFileDialog
             OpenFileDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments
@@ -23,6 +27,7 @@
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub SaveAsToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles SaveAsToolStripMenuItem.Click
             Dim SaveFileDialog As New SaveFileDialog
             SaveFileDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments
@@ -34,7 +39,7 @@
             End If
         End Sub
 
-
+        <SupportedOSPlatform("windows")>
         Private Sub ExitToolsStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ExitToolStripMenuItem.Click
             Me.Close()
         End Sub
@@ -47,34 +52,41 @@
             ' Use My.Computer.Clipboard to insert the selected text or images into the clipboard
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub PasteToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles PasteToolStripMenuItem.Click
             'Use My.Computer.Clipboard.GetText() or My.Computer.Clipboard.GetData to retrieve information from the clipboard.
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub StatusBarToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles StatusBarToolStripMenuItem.Click
             Me.StatusStrip.Visible = Me.StatusBarToolStripMenuItem.Checked
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub CascadeToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles CascadeToolStripMenuItem.Click
             Me.LayoutMdi(MdiLayout.Cascade)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub TileVerticalToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles TileVerticalToolStripMenuItem.Click
             Me.LayoutMdi(MdiLayout.TileVertical)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub TileHorizontalToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles TileHorizontalToolStripMenuItem.Click
             Me.LayoutMdi(MdiLayout.TileHorizontal)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ArrangeIconsToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ArrangeIconsToolStripMenuItem.Click
             Me.LayoutMdi(MdiLayout.ArrangeIcons)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub CloseAllToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles CloseAllToolStripMenuItem.Click
             ' Close all child forms of the parent.
-            For Each ChildForm As Form In Me.MdiChildren
-                ChildForm.Close()
+            For Each varEachForm As Form In Me.MdiChildren
+                varEachForm.Close()
             Next
         End Sub
 

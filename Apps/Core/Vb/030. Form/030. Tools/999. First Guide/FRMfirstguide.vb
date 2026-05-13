@@ -129,6 +129,7 @@ Namespace UI
             Txt_Company.Focus()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
             If varStep = 1 Then
                 If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure you want to exit the First Guide?", LibApp.Ingrid.Global.PopupType.Confirmation, "Proceeding will close both this guide and the application.", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = MsgBoxResult.Yes Then

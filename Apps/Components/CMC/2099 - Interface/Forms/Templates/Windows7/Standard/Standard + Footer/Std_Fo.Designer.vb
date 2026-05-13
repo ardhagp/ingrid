@@ -21,7 +21,7 @@ Partial Class Std_Fo
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         PnlBottomButton = New cmcv.ui.control.pnl(components)
-        imgLine = New Windows.Forms.PictureBox()
+        imgLine = New System.Windows.Forms.PictureBox()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
         SLFPanel.SuspendLayout()
@@ -63,7 +63,7 @@ Partial Class Std_Fo
         ' 
         PnlBottomButton.BackColor = Drawing.Color.DarkSlateGray
         PnlBottomButton.Controls.Add(imgLine)
-        PnlBottomButton.Dock = Windows.Forms.DockStyle.Bottom
+        PnlBottomButton.Dock = system.Windows.Forms.DockStyle.Bottom
         PnlBottomButton.Location = New System.Drawing.Point(0, 851)
         PnlBottomButton.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         PnlBottomButton.Name = "PnlBottomButton"
@@ -73,7 +73,7 @@ Partial Class Std_Fo
         ' imgLine
         ' 
         imgLine.BackColor = Drawing.Color.Orange
-        imgLine.Dock = Windows.Forms.DockStyle.Top
+        imgLine.Dock = system.Windows.Forms.DockStyle.Top
         imgLine.Location = New System.Drawing.Point(0, 0)
         imgLine.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         imgLine.Name = "imgLine"

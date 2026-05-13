@@ -40,6 +40,7 @@ Namespace UI
             CMDdar.Editor.GetTemplateTitle(varDataProperties, CboTemplate)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Sub CheckAllInput()
             DtpStart.Focus()
             MebStart.Focus()
@@ -151,7 +152,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnGetContent_Click(sender As Object, e As EventArgs) Handles BtnGETContent.Click
             If Not (varDataProperties.CustomDailyActivityIsNew) Then
-                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                     TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDataProperties, CboTemplate)
                 End If
             Else
@@ -164,6 +165,7 @@ Namespace UI
             Call Save()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
         End Sub
@@ -275,7 +277,7 @@ Namespace UI
         Private Sub CboTemplate_KeyDown(sender As Object, e As KeyEventArgs) Handles CboTemplate.KeyDown
             If e.KeyCode = Keys.Enter Then
                 If Not (varDataProperties.CustomDailyActivityIsNew) Then
-                    If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                    If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                         TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDataProperties, CboTemplate)
                     End If
                 Else
@@ -284,10 +286,12 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub DtpStart_ValueChanged(sender As Object, e As EventArgs) Handles DtpStart.ValueChanged
             DtpEnd.MinDate = DtpStart.Value
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub DtpEnd_ValueChanged(sender As Object, e As EventArgs) Handles DtpEnd.ValueChanged
             DtpStart.MaxDate = DtpEnd.Value
         End Sub
@@ -321,6 +325,7 @@ Namespace UI
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnBrowsePhoto_Click(sender As Object, e As EventArgs) Handles BtnBrowsePhoto.Click
             OfdPhoto.Title = "Ingrid Photo Picker"
             OfdPhoto.FileName = ""
@@ -346,6 +351,7 @@ Namespace UI
 
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub DgnPictureList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnPictureList.CellContentClick
             Dim varSendergrid = DirectCast(sender, CMCv.UI.Control.dgn)
 
@@ -380,6 +386,7 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnBrowseFile_Click(sender As Object, e As EventArgs) Handles BtnBrowseFile.Click
             ofdFile.Title = "Ingrid File Picker"
             ofdFile.FileName = ""
@@ -404,6 +411,7 @@ Namespace UI
             Display(Frm_dar_SinglePDFViewer, IMAGEDB.Main.ImageLibrary.PDFPRV_ICON, My.Application.Info.AssemblyName.ToUpper, "PDF Viewer", "Preview your file", True)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnAddFile_Click(sender As Object, e As EventArgs) Handles BtnAddFile.Click
             Try
                 If TxtFilePath.Text.Trim = String.Empty Then
@@ -433,6 +441,7 @@ Namespace UI
 
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub DgnFileList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnFileList.CellContentClick
             Dim varSendergrid = DirectCast(sender, CMCv.UI.Control.dgn)
 
@@ -450,6 +459,7 @@ Namespace UI
             Call Save()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub CommmsMenu_EventFileCancel() Handles Com_mms_Menu.EventFileCancel
             Me.Close()
         End Sub

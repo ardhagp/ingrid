@@ -13,6 +13,12 @@
         [PGSQL]
     End Enum
 
+    Public Enum StorageType
+        [BackBlazeB2]
+        [Cloudinary]
+        [Database]
+    End Enum
+
     Public Enum PopupType
         [Alert]
         [Error]
@@ -35,8 +41,14 @@
     ''' </summary>
     Public Class Properties
         Property AllParameters As New Dictionary(Of String, Object)
-        Property AccountingGroupId As String
-        Property AccountingGroupIsNew As Boolean
+        Property AccountBookId As Long
+        Property AccountBookIsNew As Boolean
+        Property AccountBookIsEnabled As Boolean
+        Property AccountBookIsForceRefresh As Boolean
+        Property AccountBookNumber As Integer
+        Property AccountBookName As String
+        Property AccountGroupId As String
+        Property AccountGroupIsNew As Boolean
         Property ConnectionDatabaseEngine As String
         Property ConnectionDatabaseEngineE As Ingrid.Global.DatabaseEngine
         Property ConnectionDatabaseName As String
@@ -106,29 +118,13 @@
         Property UserAccessId As String
         Property UserAccessIsChangePasswordForm As Boolean
         Property UserAccessIsNew As Boolean
+        Property UserAccessIsPasswordChanged As Boolean
         Property UserAccessHash As String
         Property UserAccessPassword As String
         Property SystemModuleId As String
         Property SystemModuleIsNew As Boolean
         Property SystemModuleHash As String
         Property SystemTypeOfAccess As TypeOfAccess
-        Property Field01 As Object
-        Property Field02 As Object
-        Property Field03 As Object
-        Property Field04 As Object
-    End Class
-End Namespace
-
-Namespace Ingrid.Accounting
-    ''' <summary>
-    ''' 
-    ''' </summary>
-    Public Class Properties
-        Property AccountBookId As String
-        Property AccountEnabled As Boolean
-        Property AccountGroupId As String
-        Property AccountName As String
-        Property AccountNumber As String
-
+        Property SystemStorageType As StorageType
     End Class
 End Namespace

@@ -8,9 +8,12 @@ Namespace UI
         'Parameters
         Private Const pCompanyName As String = "@CompanyName"
         Private Const pDepartmentName As String = "@DepartmentName"
+        Private Const pPositionId As String = "@PositionId"
+        Private Const pPositionName As String = "@PositionName"
 #End Region
 
 #Region "Subs Collections"
+        <SupportedOSPlatform("windows")>
         Private Sub GetRowID()
             varDataProperties.EmployeeId = "-1"
             If DgnAddinPosition.RowCount > 0 Then
@@ -24,6 +27,7 @@ Namespace UI
         End Sub
 #End Region
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
             If DgnAddinPosition.RowCount = 0 Then
                 Decision(My.Application.Info.AssemblyName.toupper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
@@ -33,8 +37,10 @@ Namespace UI
                     varDataProperties.AllParameters.Add(pCompanyName, .Cells("company_name").Value.ToString)
                     varDataProperties.AllParameters.Remove(pDepartmentName)
                     varDataProperties.AllParameters.Add(pDepartmentName, .Cells("departement_name").Value.ToString)
-                    varDataProperties.Field03 = .Cells("position_id").Value
-                    varDataProperties.Field04 = .Cells("position_name").Value
+                    varDataProperties.AllParameters.Remove(pPositionId)
+                    varDataProperties.AllParameters.Add(pPositionId, CLng(.Cells("position_id").Value))
+                    varDataProperties.AllParameters.Remove(pPositionName)
+                    varDataProperties.AllParameters.Add(pPositionName, .Cells("position_name").Value.ToString)
                 End With
                 RaiseEvent EventRecordSelected()
                 Me.Close()
@@ -46,6 +52,7 @@ Namespace UI
             Call GetData()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
         End Sub

@@ -9,6 +9,10 @@ Namespace UI
 
         Public Event EventRecordSaved()
 
+        Private Const pEmployeeId As String = "@EmployeeId"
+        Private Const pEmployeeNumber As String = "@EmployeeNumber"
+        Private Const pEmployeeFullName As String = "@EmployeeFullName"
+
         Private varIsAdminstrator As Boolean
         Private varIsPWDChange As Boolean = False
         Private varMessageCannotSave As String = "Cannot save your record."
@@ -21,6 +25,7 @@ Namespace UI
             CMDuac.Editor.DisplayData(varDataProperties, DgnUACe, Convert.ToString(varDataProperties.UserAccessId))
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub CheckAllInput()
             TxtEmployeeNumber.Focus()
             TxtEmployeeFullName.Focus()
@@ -30,9 +35,10 @@ Namespace UI
         End Sub
 #End Region
 
+        <SupportedOSPlatform("windows")>
         Private Sub FRMemployeeAddin_RecordSelected() Handles Frm_employee_Addin.EventRecordSelected
-            TxtEmployeeNumber.Text = IIf(IsDBNull(varDataProperties.Field02), "", varDataProperties.Field02).ToString
-            TxtEmployeeFullName.Text = varDataProperties.Field03.ToString
+            TxtEmployeeNumber.Text = IIf(IsDBNull(varDataProperties.AllParameters(pEmployeeNumber)), "", varDataProperties.AllParameters(pEmployeeNumber)).ToString
+            TxtEmployeeFullName.Text = varDataProperties.AllParameters(pEmployeeFullName).ToString
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -41,6 +47,7 @@ Namespace UI
             Display(Frm_employee_Addin, IMAGEDB.Main.ImageLibrary.SEARCH_ICON, My.Application.Info.AssemblyName.ToUpper, "Find Employee", "Browse for employee data", True)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             varDataProperties.UserAccessIsChangePasswordForm = False
             Me.Close()
@@ -62,7 +69,7 @@ Namespace UI
 
             DgnUACe.XOGETNewColor()
 
-            If (varDataProperties.UserAccessIsChangePasswordForm) Then
+            If varDataProperties.UserAccessIsChangePasswordForm Then
                 TbctlAccess.Visible = False
                 ProgressBar1.Visible = False
                 TxtEmployeeNumber.Width = 274
@@ -71,7 +78,7 @@ Namespace UI
                 Me.Width = 451
             End If
 
-            If (varDataProperties.UserAccessIsNew) Then
+            If varDataProperties.UserAccessIsNew Then
                 ChkAddNew.Enabled = True
                 ChkAddNew.Visible = True
             Else
@@ -101,7 +108,7 @@ Namespace UI
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Call CheckAllInput()
 
-            If ((varDataProperties.UserAccessIsNew) AndAlso (varDataProperties.Field01.ToString Is String.Empty)) Then
+            If ((varDataProperties.UserAccessIsNew) AndAlso (varDataProperties.AllParameters(pEmployeeId).ToString Is String.Empty)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Make sure you have Employee data selected.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf (TxtUsername.XOSQLText = String.Empty) OrElse (TxtPassword.XOSQLText = String.Empty) Then
@@ -113,14 +120,14 @@ Namespace UI
             ElseIf ((varDataProperties.UserAccessIsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDataProperties, TxtUsername.XOSQLText))) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "This Username already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf (Not (varDataProperties.UserAccessIsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDataProperties, TxtUsername.XOSQLText, Convert.ToString(varDataProperties.UserAccessID)))) Then
+            ElseIf (Not (varDataProperties.UserAccessIsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDataProperties, TxtUsername.XOSQLText, Convert.ToString(varDataProperties.UserAccessId)))) Then
                 Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "This Username already used by another employee.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call CheckPasswordChange()
 
-            If (CMDuac.Editor.PushData(varDataProperties, varDataProperties.Field01.ToString, TxtUsername.XOSQLText, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText), ChkLocked.Checked, ChkAdministrator.Checked, DgnUACe, Convert.ToString(varDataProperties.UserAccessId), varDataProperties.UserAccessHash, varIsPWDChange)) Then
+            If CMDuac.Editor.PushData(varDataProperties, DgnUACe) Then
                 RaiseEvent EventRecordSaved()
                 UI.FRMmainframe6.Ts_status.Text = "Success"
             Else
@@ -147,6 +154,7 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub TxtPassword_LostFocus(sender As Object, e As EventArgs) Handles TxtPassword.LostFocus
             Call CheckPasswordChange()
 

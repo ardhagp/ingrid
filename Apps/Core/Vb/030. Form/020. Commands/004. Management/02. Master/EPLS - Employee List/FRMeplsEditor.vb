@@ -11,6 +11,8 @@ Namespace UI
         Private varChangePhoto As Boolean
         Private varPhoto As System.Drawing.Image
 
+        Private Const pCompanyName As String = "@CompanyName"
+        Private Const pDepartmentName As String = "@DepartmentName"
         Private Const pEmployeePersonalIdNumber As String = "@pEmployeePersonalIdNumber"
         Private Const pEmployeeFullName As String = "@pEmployeeFullName"
         Private Const pEmployeeBirthPlace As String = "@pEmployeeBirthPlace"
@@ -18,8 +20,11 @@ Namespace UI
         Private Const pEmployeeAddress As String = "@pEmployeeAddress"
         Private Const pEmployeeNumber As String = "@EmployeeNumber"
         Private Const pEmployeeNickname As String = "@EmployeeNickname"
-        Private Const pPositionId As String = "@PositionId"
         Private Const pEmploymentTypeId As String = "@EmploymentTypeId"
+        Private Const pPositionId As String = "@PositionId"
+        Private Const pPositionName As String = "@PositionName"
+
+        Private Const cEmployeeEmploymentType As String = "employee_employmenttype"
 
         Private Const varMessageCannotSave As String = "Cannot save your record."
 #End Region
@@ -64,7 +69,7 @@ Namespace UI
                     varDataProperties.AllParameters.Add(pPositionId, CLng(.Item("position_id")))
                     TxtPosition.Text = .Item("position_name").ToString
                     varDataProperties.AllParameters.Remove(pEmploymentTypeId)
-                    varDataProperties.AllParameters.Add(pEmploymentTypeId, IIf(.Item("employee_employmenttype") Is Nothing OrElse .Item("employee_employmenttype").ToString = String.Empty OrElse .Item("employee_employmenttype").ToString = "", DBNull.Value, .Item("employee_employmenttype")))
+                    varDataProperties.AllParameters.Add(pEmploymentTypeId, IIf(.Item(cEmployeeEmploymentType) Is Nothing OrElse .Item("employee_employmenttype").ToString = String.Empty OrElse .Item("employee_employmenttype").ToString = "", DBNull.Value, .Item("employee_employmenttype")))
                     TxtEmployeeNumber.Text = .Item("employee_number").ToString
                     TxtEmployeeNickname.Text = .Item("employee_nickname").ToString
                     ChkActiveEmployee.Checked = CBool(.Item("employee_isactive"))
@@ -92,10 +97,12 @@ Namespace UI
             Display(Frm_epls_AddinPosition, IMAGEDB.Main.ImageLibrary.SEARCH_ICON, My.Application.Info.AssemblyName.ToUpper, "Find Position", "Browse for position data", True)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Public Sub CheckAllInputs()
             'TxtPersonalID.Focus()
             TxtEmployeeNumber.Focus()
@@ -187,6 +194,7 @@ Namespace UI
             Return True
         End Function
 
+        <SupportedOSPlatform("windows")>
         Private Function CheckEmployeePhoto() As Boolean
             If varHavePhoto = 0 Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Please pick employee photo.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
@@ -198,9 +206,9 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub FRMeplsAddinPosition_RecordSelected() Handles Frm_epls_AddinPosition.EventRecordSelected
             With varDataProperties
-                TxtCompany.Text = .Field01.ToString
-                TxTDepartment.Text = .Field02.ToString
-                TxtPosition.Text = .Field04.ToString
+                TxtCompany.Text = .AllParameters(pCompanyName).ToString
+                TxTDepartment.Text = .AllParameters(pDepartmentName).ToString
+                TxtPosition.Text = .AllParameters(pPositionName).ToString
             End With
         End Sub
 
@@ -221,9 +229,9 @@ Namespace UI
                 varHavePhoto = 1
                 Return
             End If
-
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub CboGender_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboGender.SelectedIndexChanged
             If varHavePhoto = 0 Then
                 If CboGender.Text = "MALE" Then
@@ -233,7 +241,5 @@ Namespace UI
                 End If
             End If
         End Sub
-
-
     End Class
 End Namespace

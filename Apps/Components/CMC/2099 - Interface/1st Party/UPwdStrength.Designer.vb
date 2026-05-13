@@ -32,7 +32,7 @@ Namespace UI.Control
             ' 
             ' pgb_PwdStrengthIndicator
             ' 
-            pgb_PwdStrengthIndicator.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
+            pgb_PwdStrengthIndicator.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Left Or system.Windows.Forms.AnchorStyles.Right
             pgb_PwdStrengthIndicator.ForeColor = Drawing.Color.DodgerBlue
             pgb_PwdStrengthIndicator.Location = New System.Drawing.Point(0, 0)
             pgb_PwdStrengthIndicator.Name = "pgb_PwdStrengthIndicator"
@@ -43,7 +43,7 @@ Namespace UI.Control
             ' 
             ' LblPwdStrength_Text
             ' 
-            LblPwdStrength_Text.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Left Or Windows.Forms.AnchorStyles.Right
+            LblPwdStrength_Text.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Left Or system.Windows.Forms.AnchorStyles.Right
             LblPwdStrength_Text.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
             LblPwdStrength_Text.Location = New System.Drawing.Point(3, 26)
             LblPwdStrength_Text.Name = "LblPwdStrength_Text"
@@ -55,7 +55,7 @@ Namespace UI.Control
             ' UPwdStrength
             ' 
             AutoScaleDimensions = New System.Drawing.SizeF(7.0F, 15.0F)
-            AutoScaleMode = Windows.Forms.AutoScaleMode.Font
+            AutoScaleMode = system.Windows.Forms.AutoScaleMode.Font
             BackColor = Drawing.Color.Transparent
             Controls.Add(LblPwdStrength_Text)
             Controls.Add(pgb_PwdStrengthIndicator)

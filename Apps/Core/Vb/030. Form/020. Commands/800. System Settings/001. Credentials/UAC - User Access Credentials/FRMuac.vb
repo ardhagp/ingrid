@@ -17,6 +17,7 @@ Namespace UI
             CMDuac.View.DisplayData(varDataProperties, DgnUAC, SLFStatus, TxtFind, forcerefresh)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub GetRowID()
             If DgnUAC.RowCount = 0 Then
                 varDataProperties.UserAccessIsNew = True
@@ -84,7 +85,7 @@ Namespace UI
             If varDataProperties.UserAccessIsNew Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = system.Windows.Forms.DialogResult.Yes Then
                     If (CMDuac.View.DeleteData(varDataProperties, Convert.ToString(varDataProperties.UserAccessId))) Then
                         Call GetData(True)
                         UI.FRMmainframe6.Ts_status.Text = "Success"
@@ -101,10 +102,12 @@ Namespace UI
             Call GetData(True)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub EventDataClose() Handles Com_mms_Menu.EventDataClose
             Me.Close()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub EventToolsFind() Handles Com_mms_Menu.EventToolsFind
             TxtFind.Focus()
         End Sub

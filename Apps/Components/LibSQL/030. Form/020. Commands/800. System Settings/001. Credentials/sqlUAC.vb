@@ -34,29 +34,31 @@ Namespace CMDuac
                     '    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                     'End If
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = $"select usr.user_id, " &
-                                                       $"usr.user_root, " &
-                                                       $"em.employee_id, " &
-                                                       $"em.employee_number, " &
-                                                       $"em.employee_fullname, " &
-                                                       $"em.employee_nickname, " &
-                                                       $"em.employee_personalidnumber, " &
-                                                       $"em.employee_gender, " &
-                                                       $"pos.position_code, " &
-                                                       $"pos.position_name " &
-                                                       $"From sys_user usr " &
-                                                       $"inner join man_employee em On em.employee_id = usr.user_employee " &
-                                                       $"inner join man_position pos On pos.position_id = em.employee_position " &
-                                                       $"where (usr.user_username = @Username and usr.user_password = @UserPassword)"
+                    varDatabaseRequestMysql(1).Query = $"select usr.{tUser.C_UserId}, " &
+                                                       $"usr.{tUser.C_UserIsRoot}, " &
+                                                       $"em.{tEmployee.C_EmployeeId}, " &
+                                                       $"em.{tEmployee.C_EmployeeNumber}, " &
+                                                       $"em.{tEmployee.C_EmployeeFullName}, " &
+                                                       $"em.{tEmployee.C_EmployeeNickname}, " &
+                                                       $"em.{tEmployee.C_EmployeePersonalIdNumber}, " &
+                                                       $"em.{tEmployee.C_EmployeeGender}, " &
+                                                       $"pos.{tPosition.C_PositionCode}, " &
+                                                       $"pos.{tPosition.C_PositionName} " &
+                                                       $"From {tUser.TableName} usr " &
+                                                       $"inner join {tEmployee.TableName} em On em.{tEmployee.C_EmployeeId} = usr.{tUser.C_UserEmployee} " &
+                                                       $"inner join {tPosition.TableName} pos On pos.{tPosition.C_PositionId} = em.{tEmployee.C_EmployeePosition} " &
+                                                       $"where (usr.{tUser.C_UserUsername} = {tUser.P_Username} and usr.{tUser.C_UserPassword} = {tUser.P_UserPassword})"
                     varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, datasetname, "UserData", dataproperties.AllParameters)
 
                     With datasetname
                         If .Tables("UserData").Rows.Count > 0 Then
 
-                            dataproperties.AllParameters.Remove("@UserId")
-                            dataproperties.AllParameters.Add("@UserId", CLng(.Tables("UserData").Rows(0).Item("user_id")))
+                            dataproperties.AllParameters.Remove(tUser.P_UserId)
+                            dataproperties.AllParameters.Add(tUser.P_UserId, CLng(.Tables("UserData").Rows(0).Item(tUser.C_UserId)))
 
-                            varDatabaseRequestMysql(1).Query = $"update sys_user set user_lastlogin = now() where user_id = @UserId"
+                            varDatabaseRequestMysql(1).Query = $"update {tUser.TableName} " &
+                                                               $"set {tUser.C_UserLastLogin} = now() " &
+                                                               $"where {tUser.C_UserId} = {tUser.P_UserId}"
                             varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                         End If
                     End With
@@ -65,138 +67,6 @@ Namespace CMDuac
                 dataproperties.UserId = Nothing
             End Try
         End Sub
-
-        ''' <summary>
-        ''' Get Employee ID
-        ''' </summary>
-        ''' <param name="UID"></param>
-        ''' <returns></returns>
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GetEmployeeID(dataproperties As LibApp.Ingrid.Global.Properties) As Long
-            Dim varEmployeeID As Long
-
-            Try
-                varEmployeeID = 0
-
-                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
-                    varDatabaseRequestMssql2008(1).Query = String.Format("select usr.user_employee from dbo.sys_user usr where usr.user_id = '{0}';")
-                    varEmployeeID = CLng(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query))
-                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = $"select usr.user_employee from sys_user usr where usr.user_id = @UserId;"
-                    varEmployeeID = CLng(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters))
-                End If
-            Catch ex As Exception
-                varEmployeeID = 0
-            End Try
-            Return varEmployeeID
-        End Function
-
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GetFirstName(dataproperties As LibApp.Ingrid.Global.Properties, uid As String) As String
-            Dim varFullName As String = String.Empty
-
-            Try
-                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
-                    varDatabaseRequestMssql2008(1).Query = String.Format("select emp.employee_fullname from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
-                    varFullName = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
-                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = $"select emp.employee_fullname from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{uid}')"
-                    varFullName = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
-                End If
-            Catch ex As Exception
-                varFullName = String.Empty
-            End Try
-            Return varFullName
-        End Function
-
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GetLastName(dataproperties As LibApp.Ingrid.Global.Properties, uid As String) As String
-            Dim varFullName As String = String.Empty
-
-            Try
-                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
-                    varDatabaseRequestMssql2008(1).Query = String.Format("select emp.employee_fullname from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
-                    varFullName = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
-                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = $"select emp.employee_fullname from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{uid}')"
-                    varFullName = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
-                End If
-            Catch ex As Exception
-                varFullName = String.Empty
-            End Try
-            Return varFullName
-        End Function
-
-        ''' <summary>
-        ''' Get Company Employee Number ID
-        ''' </summary>
-        ''' <param name="UID"></param>
-        ''' <returns></returns>
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GetEmployeeNumber(dataproperties As LibApp.Ingrid.Global.Properties, uid As String) As String
-            Dim varEmployeeNumber As String = String.Empty
-
-            Try
-                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
-                    varDatabaseRequestMssql2008(1).Query = String.Format("select emp.employee_number from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
-                    varEmployeeNumber = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
-                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = $"select emp.employee_number from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{uid}')"
-                    varEmployeeNumber = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
-                End If
-            Catch ex As Exception
-                varEmployeeNumber = String.Empty
-            End Try
-            Return varEmployeeNumber
-        End Function
-
-        ''' <summary>
-        ''' Get Employee Gender
-        ''' </summary>
-        ''' <param name="UID"></param>
-        ''' <returns></returns>
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GetGender(dataproperties As LibApp.Ingrid.Global.Properties, uid As String) As String
-            Dim varEmployeeNumber As String = String.Empty
-
-            Try
-                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
-                    varDatabaseRequestMssql2008(1).Query = String.Format("select emp.employee_gender from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee where (usr.[user_id] = '{0}')", uid)
-                    varEmployeeNumber = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
-                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = $"select emp.employee_gender from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee where (usr.user_id = '{uid}')"
-                    varEmployeeNumber = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
-                End If
-            Catch ex As Exception
-                varEmployeeNumber = "MALE"
-            End Try
-            Return varEmployeeNumber
-        End Function
-
-        ''' <summary>
-        ''' Get Employee Position
-        ''' </summary>
-        ''' <param name="UID"></param>
-        ''' <returns></returns>
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GetPosition(dataproperties As LibApp.Ingrid.Global.Properties, uid As String) As String
-            Dim varEmployeeNumber As String = String.Empty
-
-            Try
-                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
-                    varDatabaseRequestMssql2008(1).Query = String.Format("select p.position_name from dbo.sys_user usr inner join dbo.man_employee emp on emp.employee_id = usr.user_employee " &
-                                                        "inner join dbo.man_position p on p.position_id = emp.employee_position where (usr.[user_id] = '{0}')", uid)
-                    varEmployeeNumber = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
-                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = $"select p.position_name from sys_user usr inner join man_employee emp on emp.employee_id = usr.user_employee " &
-                                                       $"inner join man_position p on p.position_id = emp.employee_position where (usr.user_id = '{uid}')"
-                    varEmployeeNumber = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
-                End If
-            Catch ex As Exception
-                varEmployeeNumber = "#ERROR"
-            End Try
-            Return varEmployeeNumber
-        End Function
 
         ''' <summary>
         ''' Get Employee Authorization
@@ -342,7 +212,8 @@ Namespace CMDuac
                     varDatabaseRequestMssql2008(1).Query = String.Format("delete from dbo.sys_user where (user_id = '{0}')", rowid)
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = $"delete from sys_user where (user_id = '{rowid}')"
+                    varDatabaseRequestMysql(1).Query = $"delete from {tUser.TableName} " &
+                                                       $"where ({tUser.C_UserId} = {tUser.P_UserId})"
                     varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
                 End If
                 varSuccess = True
@@ -429,6 +300,21 @@ Namespace CMDuac
             End Try
             Return varUserID
         End Function
+
+        <SupportedOSPlatform("windows")>
+        Public Shared Sub GetEmployeeProperties(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet)
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                varDatabaseRequestMssql2008(1).Query = $""
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseRequestMysql(0).Query = $"select emp.{tEmployee.C_EmployeeNumber}, " &
+                                                   $"emp.{tEmployee.C_EmployeeFullName}, " &
+                                                   $"usr.{tUser.C_UserIsRoot}, " &
+                                                   $"usr.{tUser.C_UserIsLocked}, " &
+                                                   $"from {tUser.TableName} usr inner join {tEmployee.TableName} emp " &
+                                                   $"on emp.{tEmployee.C_EmployeeId} = usr.{tUser.C_UserEmployee} " &
+                                                   $"where usr.{tUser.C_UserId} = {tUser.P_UserId}"
+            End If
+        End Sub
 
         <SupportedOSPlatform("windows")>
         Public Shared Function GetEmployeeNumber(dataproperties As LibApp.Ingrid.Global.Properties, userid As String) As String
@@ -587,7 +473,8 @@ Namespace CMDuac
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties, employeeid As String, username As String, password As String, locked As Boolean, administrator As Boolean, uac As CMCv.UI.Control.dgn, Optional rowid As String = "-1", Optional hash As String = "", Optional ispasswordchange As Boolean = False) As Boolean
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "S2068:Hardcoded credentials")>
+        Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties, uac As CMCv.UI.Control.dgn) As Boolean
             Dim varSuccess As Boolean = False
 
             Try
@@ -596,52 +483,128 @@ Namespace CMDuac
 
                     Dim sb As New Text.StringBuilder()
 
-                    If rowid = "-1" Then
+                    If dataproperties.UserAccessIsNew Then
                         ' Insert new user
-                        sb.AppendFormat("insert into dbo.sys_user(user_id, user_employee, user_username, user_password, user_locked, user_root, user_datecreated) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', (select getdate()));", Safe(hash), Safe(employeeid), Safe(username), Safe(password), Safe(locked), Safe(administrator))
+                        sb.AppendFormat($"insert into dbo.{tUser.TableName}(" &
+                                        tUser.C_UserEmployee & ", " &
+                                        tUser.C_UserUsername & ", " &
+                                        tUser.C_UserPassword & ", " &
+                                        tUser.C_UserIsLocked & ", " &
+                                        tUser.C_UserIsRoot & ", " &
+                                        tUser.C_UserDateCreated & " " &
+                                        ") values (" &
+                                        tEmployee.P_EmployeeId & ", " &
+                                        tUser.P_Username & ", " &
+                                        tUser.P_UserPassword & ", " &
+                                        tUser.P_UserIsLocked & ", " &
+                                        tUser.P_UserIsRoot & ", " &
+                                        "(select getdate()));")
 
                         If uac IsNot Nothing Then
                             For Each varEachRow As DataGridViewRow In uac.Rows
-                                Dim moduleCode = Safe(varEachRow.Cells("module_code").Value)
-                                Dim viewVal = Safe(varEachRow.Cells("useraccess_view").Value)
-                                Dim addVal = Safe(varEachRow.Cells("useraccess_add").Value)
-                                Dim editVal = Safe(varEachRow.Cells("useraccess_edit").Value)
-                                Dim deleteVal = Safe(varEachRow.Cells("useraccess_delete").Value)
-                                Dim reportsVal = Safe(varEachRow.Cells("useraccess_reports").Value)
+                                With dataproperties.AllParameters
+                                    .Remove(tModule.P_ModuleCode)
+                                    .Add(tModule.P_ModuleCode, Safe(varEachRow.Cells(tModule.C_ModuleCode).Value))
+                                    .Remove(tUserAccess.P_UserAccessView)
+                                    .Add(tUserAccess.P_UserAccessView, Safe(varEachRow.Cells(tUserAccess.C_UserAccessView).Value))
+                                    .Remove(tUserAccess.P_UserAccessAdd)
+                                    .Add(tUserAccess.P_UserAccessAdd, Safe(varEachRow.Cells(tUserAccess.C_UserAccessAdd).Value))
+                                    .Remove(tUserAccess.P_UserAccessEdit)
+                                    .Add(tUserAccess.P_UserAccessEdit, Safe(varEachRow.Cells(tUserAccess.C_UserAccessEdit).Value))
+                                    .Remove(tUserAccess.P_UserAccessDelete)
+                                    .Add(tUserAccess.P_UserAccessDelete, Safe(varEachRow.Cells(tUserAccess.C_UserAccessDelete).Value))
+                                    .Remove(tUserAccess.P_UserAccessReports)
+                                    .Add(tUserAccess.P_UserAccessReports, Safe(varEachRow.Cells(tUserAccess.C_UserAccessReports).Value))
+                                End With
 
-                                ' generate one id per access row
-                                Dim accessId = Safe(CMCv.Security.Encrypt.MD5())
-                                sb.AppendFormat("insert into dbo.[[sys]]useraccess](useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) values('{0}', '{1}', (select mo.module_id from dbo.sys_module mo where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", accessId, Safe(hash), moduleCode, viewVal, addVal, editVal, deleteVal, reportsVal)
+                                sb.AppendFormat($"insert into dbo.{tUserAccess.TableName}( " &
+                                                tUserAccess.C_UserAccessUser & ", " &
+                                                tUserAccess.C_UserAccessModule & ", " &
+                                                tUserAccess.C_UserAccessView & ", " &
+                                                tUserAccess.C_UserAccessAdd & ", " &
+                                                tUserAccess.C_UserAccessEdit & ", " &
+                                                tUserAccess.C_UserAccessDelete & ", " &
+                                                tUserAccess.C_UserAccessReports & " " &
+                                                ") values (" &
+                                                tUser.P_UserId & ", " &
+                                                $"(select mo.{tModule.C_ModuleId} from dbo.{tModule.TableName} mo where mo.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}), " &
+                                                tUserAccess.P_UserAccessView & ", " &
+                                                tUserAccess.P_UserAccessAdd & ", " &
+                                                tUserAccess.P_UserAccessEdit & ", " &
+                                                tUserAccess.P_UserAccessDelete & ", " &
+                                                tUserAccess.P_UserAccessReports & ");")
                             Next
                         End If
-
                     Else
                         ' Update existing user
-                        If ispasswordchange Then
-                            sb.AppendFormat("update dbo.sys_user set user_username = '{0}', user_password = '{1}', user_locked = '{2}', user_root = '{3}' where user_id = '{4}';", Safe(username), Safe(password), Safe(locked), Safe(administrator), Safe(rowid))
+                        If dataproperties.UserAccessIsPasswordChanged Then
+                            sb.AppendFormat($"update dbo.{tUser.TableName} set " &
+                                            $"{tUser.C_UserUsername} =  {tUser.P_Username}, " &
+                                            $"{tUser.C_UserPassword} =  {tUser.P_UserPassword}, " &
+                                            $"{tUser.C_UserIsLocked} =  {tUser.P_UserIsLocked}, " &
+                                            $"{tUser.C_UserIsRoot} =  {tUser.P_UserIsRoot} " &
+                                            $"where {tUser.C_UserId} = {tUser.P_UserId} ;")
                         Else
-                            sb.AppendFormat("update dbo.sys_user set user_username = '{0}', user_locked = '{1}', user_root = '{2}' where user_id = '{3}';", Safe(username), Safe(locked), Safe(administrator), Safe(rowid))
+                            sb.AppendFormat($"update dbo.{tUser.TableName} set " &
+                                            $"{tUser.C_UserUsername} = {tUser.P_Username}, " &
+                                            $"{tUser.C_UserIsLocked} = {tUser.P_UserIsLocked}, " &
+                                            $"{tUser.C_UserIsRoot} = {tUser.P_UserIsRoot} " &
+                                            $"where {tUser.C_UserId} = {tUser.P_UserId};")
                         End If
 
                         If uac IsNot Nothing Then
                             For Each varEachRow As DataGridViewRow In uac.Rows
-                                Dim moduleCode = Safe(varEachRow.Cells("module_code").Value)
-                                Dim viewVal = Safe(varEachRow.Cells("useraccess_view").Value)
-                                Dim addVal = Safe(varEachRow.Cells("useraccess_add").Value)
-                                Dim editVal = Safe(varEachRow.Cells("useraccess_edit").Value)
-                                Dim deleteVal = Safe(varEachRow.Cells("useraccess_delete").Value)
-                                Dim reportsVal = Safe(varEachRow.Cells("useraccess_reports").Value)
-                                Dim accessIdCell = Safe(varEachRow.Cells("useraccess_id").Value)
+                                With dataproperties.AllParameters
+                                    .Remove(tModule.P_ModuleCode)
+                                    .Add(tModule.P_ModuleCode, Safe(varEachRow.Cells(tModule.C_ModuleCode).Value))
+                                    .Remove(tUserAccess.P_UserAccessView)
+                                    .Add(tUserAccess.P_UserAccessView, Safe(varEachRow.Cells(tUserAccess.C_UserAccessView).Value))
+                                    .Remove(tUserAccess.P_UserAccessAdd)
+                                    .Add(tUserAccess.P_UserAccessAdd, Safe(varEachRow.Cells(tUserAccess.C_UserAccessAdd).Value))
+                                    .Remove(tUserAccess.P_UserAccessEdit)
+                                    .Add(tUserAccess.P_UserAccessEdit, Safe(varEachRow.Cells(tUserAccess.C_UserAccessEdit).Value))
+                                    .Remove(tUserAccess.P_UserAccessDelete)
+                                    .Add(tUserAccess.P_UserAccessDelete, Safe(varEachRow.Cells(tUserAccess.C_UserAccessDelete).Value))
+                                    .Remove(tUserAccess.P_UserAccessReports)
+                                    .Add(tUserAccess.P_UserAccessReports, Safe(varEachRow.Cells(tUserAccess.C_UserAccessReports).Value))
+                                    .Remove(tUserAccess.P_UserAccessId)
+                                    .Add(tUserAccess.P_UserAccessId, Safe(varEachRow.Cells(tUserAccess.C_UserAccessId).Value))
+                                End With
 
                                 ' Check existence (original behaviour)
-                                varDatabaseRequestMssql2008(3).Query = String.Format("select count(uac.useraccess_id) as [useraccess_id] from dbo.[[sys]]useraccess] uac inner join dbo.sys_module mo on mo.module_id = uac.useraccess_module where uac.useraccess_user = '{0}' and mo.module_code = '{1}'", Safe(rowid), moduleCode)
-                                Dim varIsExist = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(3).Query), Integer)
+                                varDatabaseRequestMssql2008(3).Query = $"select count(uac.{tUserAccess.C_UserAccessId}) as [useraccess_id] " &
+                                                                       $"from dbo.{tUserAccess.TableName} uac " &
+                                                                       $"inner join dbo.{tModule.TableName} mo " &
+                                                                       $"on mo.{tModule.C_ModuleId} = uac.{tUserAccess.C_UserAccessModule} " &
+                                                                       $"where uac.{tUserAccess.C_UserAccessUser} = {tUser.P_UserId} And " &
+                                                                       $"mo.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}"
+                                Dim varIsExist = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(3).Query))
 
                                 If varIsExist = 0 Then
-                                    Dim newId = Safe(CMCv.Security.Encrypt.MD5())
-                                    sb.AppendFormat("insert into dbo.[[sys]]useraccess](useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) values('{0}', '{1}', (select mo.module_id from dbo.sys_module mo where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}');", newId, Safe(rowid), moduleCode, viewVal, addVal, editVal, deleteVal, reportsVal)
+                                    sb.AppendFormat($"insert into dbo.{tUserAccess.TableName}( " &
+                                                    $"{tUserAccess.C_UserAccessUser}, " &
+                                                    $"{tUserAccess.C_UserAccessModule}, " &
+                                                    $"{tUserAccess.C_UserAccessView}, " &
+                                                    $"{tUserAccess.C_UserAccessAdd}, " &
+                                                    $"{tUserAccess.C_UserAccessEdit}, " &
+                                                    $"{tUserAccess.C_UserAccessDelete}, " &
+                                                    $"{tUserAccess.C_UserAccessReports} " &
+                                                    ") values ( " &
+                                                    $"{tUser.P_UserId}, " &
+                                                    $"(select mo.{tModule.C_ModuleId} from dbo.sys_module mo where mo.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}), " &
+                                                    $"{tUserAccess.P_UserAccessView}, " &
+                                                    $"{tUserAccess.P_UserAccessAdd}, " &
+                                                    $"{tUserAccess.P_UserAccessEdit}, " &
+                                                    $"{tUserAccess.P_UserAccessDelete}, " &
+                                                    $"{tUserAccess.P_UserAccessReports});")
                                 Else
-                                    sb.AppendFormat("update dbo.[[sys]]useraccess] set useraccess_view = '{0}', useraccess_add = '{1}', useraccess_edit = '{2}', useraccess_delete = '{3}', useraccess_reports = '{4}' where useraccess_id = '{5}';", viewVal, addVal, editVal, deleteVal, reportsVal, accessIdCell)
+                                    sb.AppendFormat($"update dbo.{tUserAccess.TableName} set " &
+                                                    $"{tUserAccess.C_UserAccessView} = {tUserAccess.P_UserAccessView}, " &
+                                                    $"{tUserAccess.C_UserAccessAdd} = {tUserAccess.P_UserAccessAdd}, " &
+                                                    $"{tUserAccess.C_UserAccessEdit} = {tUserAccess.P_UserAccessEdit}, " &
+                                                    $"{tUserAccess.C_UserAccessDelete} = {tUserAccess.P_UserAccessDelete}, " &
+                                                    $"{tUserAccess.C_UserAccessReports} = {tUserAccess.P_UserAccessReports} " &
+                                                    $"where {tUserAccess.C_UserAccessId} = {tUserAccess.P_UserAccessId};")
                                 End If
                             Next
                         End If
@@ -656,55 +619,132 @@ Namespace CMDuac
 
                     Dim sb As New Text.StringBuilder()
 
-                    If rowid = "-1" Then
-                        sb.AppendFormat("insert into sys_user(user_id, user_employee, user_username, user_password, user_locked, user_root, user_datecreated) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', (select now()))", Safe(hash), Safe(employeeid), Safe(username), Safe(password), Safe(locked), Safe(administrator))
+                    If dataproperties.UserAccessIsNew Then
+                        sb.AppendFormat($"insert into {tUser.TableName}(" &
+                                        $"{tUser.C_UserEmployee}, " &
+                                        $"{tUser.C_UserUsername}, " &
+                                        $"{tUser.C_UserPassword}, " &
+                                        $"{tUser.C_UserIsLocked}, " &
+                                        $"{tUser.C_UserIsRoot}, " &
+                                        $"{tUser.C_UserDateCreated} " &
+                                        ") values (" &
+                                        $"{tEmployee.P_EmployeeId}, " &
+                                        $"{tUser.P_Username}, " &
+                                        $"{tUser.P_UserPassword}, " &
+                                        $"{tUser.P_UserIsLocked}, " &
+                                        $"{tUser.P_UserIsRoot}, " &
+                                        "(select now()))")
 
                         If uac IsNot Nothing Then
-                            For Each eachRow As DataGridViewRow In uac.Rows
-                                Dim moduleCode = Safe(eachRow.Cells("module_code").Value)
-                                Dim viewVal = Safe(eachRow.Cells("useraccess_view").Value)
-                                Dim addVal = Safe(eachRow.Cells("useraccess_add").Value)
-                                Dim editVal = Safe(eachRow.Cells("useraccess_edit").Value)
-                                Dim deleteVal = Safe(eachRow.Cells("useraccess_delete").Value)
-                                Dim reportsVal = Safe(eachRow.Cells("useraccess_reports").Value)
+                            For Each varEachRow As DataGridViewRow In uac.Rows
+                                With dataproperties.AllParameters
+                                    .Remove(tModule.P_ModuleCode)
+                                    .Add(tModule.P_ModuleCode, Safe(varEachRow.Cells(tModule.C_ModuleCode).Value))
+                                    .Remove(tUserAccess.P_UserAccessView)
+                                    .Add(tUserAccess.P_UserAccessView, Safe(varEachRow.Cells(tUserAccess.C_UserAccessView).Value))
+                                    .Remove(tUserAccess.P_UserAccessAdd)
+                                    .Add(tUserAccess.P_UserAccessAdd, Safe(varEachRow.Cells(tUserAccess.C_UserAccessAdd).Value))
+                                    .Remove(tUserAccess.P_UserAccessEdit)
+                                    .Add(tUserAccess.P_UserAccessEdit, Safe(varEachRow.Cells(tUserAccess.C_UserAccessEdit).Value))
+                                    .Remove(tUserAccess.P_UserAccessDelete)
+                                    .Add(tUserAccess.P_UserAccessDelete, Safe(varEachRow.Cells(tUserAccess.C_UserAccessDelete).Value))
+                                    .Remove(tUserAccess.P_UserAccessReports)
+                                    .Add(tUserAccess.P_UserAccessReports, Safe(varEachRow.Cells(tUserAccess.C_UserAccessReports).Value))
+                                End With
 
-                                Dim accessId = Safe(CMCv.Security.Encrypt.MD5())
-                                sb.AppendFormat("insert into sys_useraccess(useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) values('{0}', '{1}', (select mo.module_id from sys_module mo where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}')", accessId, Safe(hash), moduleCode, viewVal, addVal, editVal, deleteVal, reportsVal)
+                                sb.AppendFormat($"insert into {tUserAccess.TableName}(" &
+                                                $"{tUserAccess.C_UserAccessUser}, " &
+                                                $"{tUserAccess.C_UserAccessModule}, " &
+                                                $"{tUserAccess.C_UserAccessView}, " &
+                                                $"{tUserAccess.C_UserAccessAdd}, " &
+                                                $"{tUserAccess.C_UserAccessEdit}, " &
+                                                $"{tUserAccess.C_UserAccessDelete}, " &
+                                                $"{tUserAccess.C_UserAccessReports} " &
+                                                $") values (" &
+                                                $"{tUser.P_UserId}, " &
+                                                $"(select mo.{tModule.C_ModuleId} from {tModule.TableName} mo where mo.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}), " &
+                                                $"{tUserAccess.P_UserAccessView}, " &
+                                                $"{tUserAccess.P_UserAccessAdd}, " &
+                                                $"{tUserAccess.P_UserAccessEdit}, " &
+                                                $"{tUserAccess.P_UserAccessDelete}, " &
+                                                $"{tUserAccess.P_UserAccessReports})")
                             Next
                         End If
-
                     Else
-                        If ispasswordchange Then
-                            sb.AppendFormat("update sys_user set user_username = '{0}', user_password = '{1}', user_locked = '{2}', user_root = '{3}' where user_id = '{4}'", Safe(username), Safe(password), Safe(locked), Safe(administrator), Safe(rowid))
+                        If dataproperties.UserAccessIsPasswordChanged Then
+                            sb.AppendFormat($"update {tUser.TableName} set " &
+                                            $"{tUser.C_UserUsername} = {tUser.P_Username}, " &
+                                            $"{tUser.C_UserPassword} = {tUser.P_UserPassword}, " &
+                                            $"{tUser.C_UserIsLocked} = {tUser.P_UserIsLocked}, " &
+                                            $"{tUser.C_UserIsRoot} = {tUser.P_UserIsRoot} " &
+                                            $"where {tUser.C_UserId} = {tUser.P_UserId}")
                         Else
-                            sb.AppendFormat("update sys_user set user_username = '{0}', user_locked = '{1}', user_root = '{2}' where user_id = '{3}'", Safe(username), Safe(locked), Safe(administrator), Safe(rowid))
+                            sb.AppendFormat($"update {tUser.TableName} set " &
+                                            $"{tUser.C_UserUsername} = {tUser.P_Username}, " &
+                                            $"{tUser.C_UserIsLocked} = {tUser.P_UserIsLocked}, " &
+                                            $"{tUser.C_UserIsRoot} = {tUser.P_UserIsRoot} " &
+                                            $"where {tUser.C_UserId} = {tUser.P_UserId}")
                         End If
 
                         If uac IsNot Nothing Then
-                            For Each eachRow As DataGridViewRow In uac.Rows
-                                Dim moduleCode = Safe(eachRow.Cells("module_code").Value)
-                                Dim viewVal = Safe(eachRow.Cells("useraccess_view").Value)
-                                Dim addVal = Safe(eachRow.Cells("useraccess_add").Value)
-                                Dim editVal = Safe(eachRow.Cells("useraccess_edit").Value)
-                                Dim deleteVal = Safe(eachRow.Cells("useraccess_delete").Value)
-                                Dim reportsVal = Safe(eachRow.Cells("useraccess_reports").Value)
-                                Dim accessIdCell = Safe(eachRow.Cells("useraccess_id").Value)
+                            For Each varEachRow As DataGridViewRow In uac.Rows
+                                With dataproperties.AllParameters
+                                    .Remove(tModule.P_ModuleCode)
+                                    .Add(tModule.P_ModuleCode, Safe(varEachRow.Cells(tModule.C_ModuleCode).Value))
+                                    .Remove(tUserAccess.P_UserAccessView)
+                                    .Add(tUserAccess.P_UserAccessView, Safe(varEachRow.Cells(tUserAccess.C_UserAccessView).Value))
+                                    .Remove(tUserAccess.P_UserAccessAdd)
+                                    .Add(tUserAccess.P_UserAccessAdd, Safe(varEachRow.Cells(tUserAccess.C_UserAccessAdd).Value))
+                                    .Remove(tUserAccess.P_UserAccessEdit)
+                                    .Add(tUserAccess.P_UserAccessEdit, Safe(varEachRow.Cells(tUserAccess.C_UserAccessEdit).Value))
+                                    .Remove(tUserAccess.P_UserAccessDelete)
+                                    .Add(tUserAccess.P_UserAccessDelete, Safe(varEachRow.Cells(tUserAccess.C_UserAccessDelete).Value))
+                                    .Remove(tUserAccess.P_UserAccessReports)
+                                    .Add(tUserAccess.P_UserAccessReports, Safe(varEachRow.Cells(tUserAccess.C_UserAccessReports).Value))
+                                    .Remove(tUserAccess.P_UserAccessId)
+                                    .Add(tUserAccess.P_UserAccessId, Safe(varEachRow.Cells(tUserAccess.C_UserAccessId).Value))
+                                End With
 
-                                varDatabaseRequestMysql(3).Query = $"select count(uac.useraccess_id) as `useraccess_id` from sys_useraccess uac inner join sys_module mo on mo.module_id = uac.useraccess_module where uac.useraccess_user = '{Safe(rowid)}' and mo.module_code = '{moduleCode}'"
-                                Dim varIsExist = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(3).Query), Integer)
+                                varDatabaseRequestMysql(3).Query = $"select count(uac.{tUserAccess.C_UserAccessId}) as `useraccess_id` " &
+                                                                   $"from {tUserAccess.TableName} uac " &
+                                                                   $"inner join {tModule.TableName} mo " &
+                                                                   $"on mo.{tModule.C_ModuleId} = uac.{tUserAccess.C_UserAccessModule} " &
+                                                                   $"where uac.{tUserAccess.C_UserAccessUser} = {tUser.P_UserId} and " &
+                                                                   $"mo.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}"
+                                Dim varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(3).Query))
 
                                 If varIsExist = 0 Then
-                                    Dim newId = Safe(CMCv.Security.Encrypt.MD5())
-                                    sb.AppendFormat("insert into sys_useraccess(useraccess_id, useraccess_user, useraccess_module, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports) values('{0}', '{1}', (select mo.module_id from sys_module mo where mo.module_code = '{2}'), '{3}', '{4}', '{5}', '{6}', '{7}')", newId, Safe(rowid), moduleCode, viewVal, addVal, editVal, deleteVal, reportsVal)
+                                    sb.AppendFormat($"insert into {tUserAccess.TableName}(" &
+                                                    $"{tUserAccess.C_UserAccessUser}, " &
+                                                    $"{tUserAccess.C_UserAccessModule}, " &
+                                                    $"{tUserAccess.C_UserAccessView}, " &
+                                                    $"{tUserAccess.C_UserAccessAdd}, " &
+                                                    $"{tUserAccess.C_UserAccessEdit}, " &
+                                                    $"{tUserAccess.C_UserAccessDelete}, " &
+                                                    $"{tUserAccess.C_UserAccessReports}" &
+                                                    $") values (" &
+                                                    $"{tUser.P_UserId}, " &
+                                                    $"(select mo.{tModule.C_ModuleId} from {tModule.TableName} mo where mo.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}), " &
+                                                    $"{tUserAccess.P_UserAccessView}, " &
+                                                    $"{tUserAccess.P_UserAccessAdd}, " &
+                                                    $"{tUserAccess.P_UserAccessEdit}, " &
+                                                    $"{tUserAccess.P_UserAccessDelete}, " &
+                                                    $"{tUserAccess.P_UserAccessReports})")
                                 Else
-                                    sb.AppendFormat("update sys_useraccess set useraccess_view = '{0}', useraccess_add = '{1}', useraccess_edit = '{2}', useraccess_delete = '{3}', useraccess_reports = '{4}' where useraccess_id = '{5}'", viewVal, addVal, editVal, deleteVal, reportsVal, accessIdCell)
+                                    sb.AppendFormat($"update {tUserAccess.TableName} set " &
+                                                    $"{tUserAccess.C_UserAccessView} = {tUserAccess.P_UserAccessView}, " &
+                                                    $"{tUserAccess.C_UserAccessAdd} = {tUserAccess.P_UserAccessAdd}, " &
+                                                    $"{tUserAccess.C_UserAccessEdit} = {tUserAccess.P_UserAccessEdit}, " &
+                                                    $"{tUserAccess.C_UserAccessDelete} = {tUserAccess.P_UserAccessDelete}, " &
+                                                    $"{tUserAccess.C_UserAccessReports} = {tUserAccess.P_UserAccessReports} " &
+                                                    $"where {tUserAccess.C_UserAccessId} = {tUserAccess.P_UserAccessId}")
                                 End If
                             Next
                         End If
                     End If
 
                     varDatabaseRequestMysql(1).Query = sb.ToString()
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                     varSuccess = True
                 End If
             Catch ex As Exception

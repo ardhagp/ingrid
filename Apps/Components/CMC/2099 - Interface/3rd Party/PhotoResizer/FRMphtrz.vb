@@ -10,6 +10,7 @@ Namespace UI
         Const varMesageJpg As String = ".jpg"
         Const varMessageJpeg As String = ".jpeg"
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
             Close()
             RaiseEvent EventDone()
@@ -49,6 +50,7 @@ Namespace UI
 
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnLoad_Click(sender As Object, e As EventArgs) Handles BtnLoad.Click
             SLFStatusLabel.Text = ""
 
@@ -56,7 +58,7 @@ Namespace UI
             OfdLoad.FileName = ""
             OfdLoad.Filter = "Photo File|*.Jpg;*.Jpeg"
 
-            If OfdLoad.ShowDialog = Windows.Forms.DialogResult.OK Then
+            If OfdLoad.ShowDialog = system.Windows.Forms.DialogResult.OK Then
                 TxtLoad.Text = OfdLoad.FileName
                 PctbxPhoto.ImageLocation = OfdLoad.FileName
 
@@ -71,6 +73,7 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub TxtLoad_TextChanged(sender As Object, e As EventArgs) Handles TxtLoad.TextChanged
             If TxtLoad.Text IsNot String.Empty Then
                 If (TxtLoad.Text.Contains(varMesageJpg)) AndAlso (ChkSaveAsACopy.Checked) Then
@@ -89,6 +92,7 @@ Namespace UI
             ChkSaveAsACopy.Checked = True
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ChkSaveAsACopy_CheckedChanged(sender As Object, e As EventArgs) Handles ChkSaveAsACopy.CheckedChanged
             If TxtLoad.Text IsNot String.Empty Then
                 If (TxtLoad.Text.Contains(varMesageJpg)) AndAlso (ChkSaveAsACopy.Checked) Then

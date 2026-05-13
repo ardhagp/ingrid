@@ -21,7 +21,7 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Imgs_ = New Windows.Forms.Tools.ImageStreamer()
+            Imgs_ = New Syncfusion.Windows.Forms.Tools.ImageStreamer()
             BtnClose = New CMCv.UI.Control.btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -45,24 +45,24 @@
             ' Imgs_
             ' 
             Imgs_.AllowDragging = True
-            Imgs_.Dock = Windows.Forms.DockStyle.Fill
+            Imgs_.Dock = system.Windows.Forms.DockStyle.Fill
             Imgs_.InternalBackColor = Drawing.Color.Transparent
             Imgs_.Location = New System.Drawing.Point(0, 0)
             Imgs_.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             Imgs_.Name = "Imgs_"
             Imgs_.Size = New System.Drawing.Size(1307, 857)
             Imgs_.TabIndex = 1
-            Imgs_.TextAnimationDirection = Windows.Forms.Tools.ImageStreamer.TextStreamDirection.RightToLeft
+            Imgs_.TextAnimationDirection = Syncfusion.Windows.Forms.Tools.ImageStreamer.TextStreamDirection.RightToLeft
             ' 
             ' BtnClose
             ' 
-            BtnClose.Anchor = Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Right
+            BtnClose.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Right
             BtnClose.BackColor = Drawing.Color.Red
-            BtnClose.Cursor = Windows.Forms.Cursors.Hand
+            BtnClose.Cursor = system.Windows.Forms.Cursors.Hand
             BtnClose.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(0), CByte(0))
             BtnClose.FlatAppearance.BorderSize = 2
             BtnClose.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
-            BtnClose.FlatStyle = Windows.Forms.FlatStyle.Flat
+            BtnClose.FlatStyle = system.Windows.Forms.FlatStyle.Flat
             BtnClose.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
             BtnClose.ForeColor = Drawing.Color.White
             BtnClose.Location = New System.Drawing.Point(1120, 13)

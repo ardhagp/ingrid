@@ -10,16 +10,12 @@ Namespace UI
         Private varHoldLogin As Integer
         Private varStatusTimer As Integer
 
+        Private tPosition As New LibApp.Table.Man.Position
+        Private tEmployee As New LibApp.Table.Man.Employee
+        Private tUser As New LibApp.Table.Sys.User
+
         Private Const tUserData As String = "UserData"
-        Private Const pUserId As String = "@UserId"
-        Private Const pUsername As String = "@Username"
-        Private Const pUserPassword As String = "@UserPassword"
-        Private Const pUserIsAdmin As String = "@UserIsAdmin"
-        Private Const pUserAccessId As String = "@UserAccessId"
-        Private Const pEmployeeId As String = "@EmployeeId"
-        Private Const pEmployeeFullName As String = "@EmployeeFullName"
-        Private Const pEmployeeNumber As String = "@EmployeeNumber"
-        Private Const pEmployeeGender As String = "@EmployeeGender"
+
         Private Const pEmployeePositionName As String = "@EmployeePositionName"
 
 #End Region
@@ -28,6 +24,7 @@ Namespace UI
         ''' <summary>
         ''' CheckAllInput ensures all input fields are focused to trigger validation.
         ''' </summary>
+        <SupportedOSPlatform("windows")>
         Private Sub CheckAllInput()
             TxtUsername.Focus()
             TxtPassword.Focus()
@@ -35,6 +32,7 @@ Namespace UI
         End Sub
 #End Region
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             RaiseEvent EventLoginFailed()
             Me.Close()
@@ -51,10 +49,10 @@ Namespace UI
                 Decision(My.Application.Info.AssemblyName.ToUpper, "Please fill in all fields.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             Else
-                varDataProperties.AllParameters.Remove(pUsername)
-                varDataProperties.AllParameters.Add(pUsername, TxtUsername.XOSQLText)
-                varDataProperties.AllParameters.Remove(pUserPassword)
-                varDataProperties.AllParameters.Add(pUserPassword, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText))
+                varDataProperties.AllParameters.Remove(tUser.P_Username)
+                varDataProperties.AllParameters.Add(tUser.P_Username, TxtUsername.XOSQLText)
+                varDataProperties.AllParameters.Remove(tUser.P_UserPassword)
+                varDataProperties.AllParameters.Add(tUser.P_UserPassword, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText))
             End If
 
             CMDuac.Login.GetUserProperties(varDataProperties, varDatasetIngrid)
@@ -88,20 +86,20 @@ Namespace UI
                 End If
             Else
                 With varDataProperties
-                    .AllParameters.Remove(pUserId)
-                    .AllParameters.Add(pUserId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item("user_id")))
-                    .AllParameters.Remove(pEmployeeId)
-                    .AllParameters.Add(pEmployeeId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_id")))
-                    .AllParameters.Remove(pEmployeeFullName)
-                    .AllParameters.Add(pEmployeeFullName, varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_fullname"))
-                    .AllParameters.Remove(pEmployeeNumber)
-                    .AllParameters.Add(pEmployeeNumber, varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_number"))
-                    .AllParameters.Remove(pEmployeeGender)
-                    .AllParameters.Add(pEmployeeGender, varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_gender"))
-                    .AllParameters.Remove(pEmployeePositionName)
-                    .AllParameters.Add(pEmployeePositionName, varDatasetIngrid.Tables(tUserData).Rows(0).Item("position_name"))
-                    .AllParameters.Remove(pUserIsAdmin)
-                    .AllParameters.Add(pUserIsAdmin, CBool(varDatasetIngrid.Tables(tUserData).Rows(0).Item("user_root")))
+                    .AllParameters.Remove(tUser.P_UserId)
+                    .AllParameters.Add(tUser.P_UserId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item(tUser.C_UserId)))
+                    .AllParameters.Remove(tEmployee.P_EmployeeId)
+                    .AllParameters.Add(tEmployee.P_EmployeeId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeeId)))
+                    .AllParameters.Remove(tEmployee.P_EmployeeFullName)
+                    .AllParameters.Add(tEmployee.P_EmployeeFullName, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeeFullName))
+                    .AllParameters.Remove(tEmployee.P_EmployeeNumber)
+                    .AllParameters.Add(tEmployee.P_EmployeeNumber, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeeNumber))
+                    .AllParameters.Remove(tEmployee.P_EmployeeGender)
+                    .AllParameters.Add(tEmployee.P_EmployeeGender, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeeGender))
+                    .AllParameters.Remove(tPosition.P_PositionName)
+                    .AllParameters.Add(tPosition.P_PositionName, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tPosition.C_PositionName))
+                    .AllParameters.Remove(tUser.P_UserIsRoot)
+                    .AllParameters.Add(tUser.P_UserIsRoot, CBool(varDatasetIngrid.Tables(tUserData).Rows(0).Item(tUser.C_UserIsRoot)))
                 End With
 
                 varLogUser.LoginSuccess(varDataProperties)
@@ -128,6 +126,7 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub FRMlogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             varWrongLogin = 0
             varHoldLogin = 15
@@ -144,6 +143,7 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub Tmrstatus_Tick(sender As Object, e As EventArgs) Handles tmr_status.Tick
             If varStatusTimer = 5 Then
                 SLFStatus.Items(0).Text = ""
@@ -154,6 +154,7 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub Tmrcontrol_Tick(sender As Object, e As EventArgs) Handles tmr_control.Tick
             If varHoldLogin = 30 Then '''allow login again
                 tmr_control.Enabled = False
