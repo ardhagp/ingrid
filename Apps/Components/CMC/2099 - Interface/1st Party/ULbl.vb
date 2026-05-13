@@ -21,6 +21,7 @@ Namespace UI.Control
         End Sub
 
         Private _varText As String
+        <SupportedOSPlatform("windows")>
         <System.ComponentModel.Description("This text will show on label
 "), System.ComponentModel.Editor(GetType(System.ComponentModel.Design.MultilineStringEditor), GetType(System.Drawing.Design.UITypeEditor))>
         Public Property SLFText As String
@@ -33,11 +34,13 @@ Namespace UI.Control
             End Set
         End Property
 
+        <SupportedOSPlatform("windows")>
         Private Sub GantiText(ByVal _value As String)
             UText.Text = _value
         End Sub
 
         Private _varTextBorder As Boolean
+        <SupportedOSPlatform("windows")>
         <System.ComponentModel.Description("This show text border
 ")>
         Public Property SLFTextBorder As Boolean
@@ -50,6 +53,7 @@ Namespace UI.Control
             End Set
         End Property
 
+        <SupportedOSPlatform("windows")>
         Private Sub GantiTextBorder(ByVal _value As Boolean)
             If _value = True Then
                 UText.BorderStyle = BorderStyle.FixedSingle
@@ -59,6 +63,7 @@ Namespace UI.Control
         End Sub
 
         Private varReadjustText As Boolean
+        <SupportedOSPlatform("windows")>
         <System.ComponentModel.Description("Enable this to readjust text
 ")>
         Public Property SLFTextAdjuster As Boolean
@@ -71,6 +76,7 @@ Namespace UI.Control
             End Set
         End Property
 
+        <SupportedOSPlatform("windows")>
         Private Sub ReadjustText(value As Boolean)
             If value Then
                 tmr_.Enabled = True
@@ -80,6 +86,7 @@ Namespace UI.Control
         End Sub
 
         Private varWarnaLabel As ControlCodeBase.JenisLabel
+        <SupportedOSPlatform("windows")>
         <System.ComponentModel.Description("Color options")>
         Public Property SLFWarnaLabel() As ControlCodeBase.JenisLabel
             Get
@@ -91,6 +98,7 @@ Namespace UI.Control
             End Set
         End Property
 
+        <SupportedOSPlatform("windows")>
         Private Sub GantiWarnaLabel(valEnuJenisTombol As ControlCodeBase.JenisLabel)
             Select Case valEnuJenisTombol
                 Case ControlCodeBase.JenisLabel.Green
@@ -126,10 +134,12 @@ Namespace UI.Control
             End Select
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ULbl_Resize(sender As Object, e As EventArgs) Handles Me.Resize
             UText.Height = Me.Height
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub tmr__Tick(sender As Object, e As EventArgs) Handles tmr_.Tick
             If iLoop < 10 Then
                 UText.Height = Me.Height
@@ -145,10 +155,12 @@ Namespace UI.Control
             '
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ULbl_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
             UText.Height = Me.Height
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ULbl_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
             UText.Height = Me.Height
         End Sub

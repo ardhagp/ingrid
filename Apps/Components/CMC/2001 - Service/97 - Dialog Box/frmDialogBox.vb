@@ -1,4 +1,5 @@
-﻿Imports Org.BouncyCastle.Cmp
+﻿Imports System.Runtime.Versioning
+Imports Org.BouncyCastle.Cmp
 Imports Org.BouncyCastle.Tls
 
 Public Class FRMdialogbox
@@ -25,6 +26,7 @@ Public Class FRMdialogbox
     ''' <param name="MessageIcon">Jenis icon yang akan digunakan</param>
     ''' <param name="ButtonType">Tipe tombol yang akan digunakan</param>
     ''' <remarks></remarks>
+    <SupportedOSPlatform("windows")>
     Public Sub New(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType, subtitle As String, messageicon As MessageIcon, buttontype As MessageTypes)
 
         ' This call is required by the designer.
@@ -141,26 +143,31 @@ Public Class FRMdialogbox
 #End Region
 
 #Region "Component Events"
+    <SupportedOSPlatform("windows")>
     Private Sub BtnYes_Click(sender As Object, e As EventArgs) Handles BtnYes.Click
         Me.DialogResult = system.Windows.Forms.DialogResult.Yes
         Me.Close()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnNo_Click(sender As Object, e As EventArgs) Handles BtnNo.Click
         Me.DialogResult = system.Windows.Forms.DialogResult.No
         Me.Close()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
         Me.DialogResult = system.Windows.Forms.DialogResult.OK
         Me.Close()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
         Me.DialogResult = system.Windows.Forms.DialogResult.Cancel
         Me.Close()
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Private Sub BtnOkOnly_Click(sender As Object, e As EventArgs) Handles BtnOkOnly.Click
         Me.DialogResult = system.Windows.Forms.DialogResult.OK
         Me.Close()

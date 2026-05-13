@@ -93,6 +93,7 @@ Namespace UI.Control
 #End Region
 
         Private _varFlagAutoSelect As Boolean
+        <SupportedOSPlatform("windows")>
         Private Sub txt_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
             If Me.XOPilihSemuaSaatFokus AndAlso (MouseButtons = system.Windows.Forms.MouseButtons.None) Then
                 Me.SelectAll()
@@ -106,6 +107,7 @@ Namespace UI.Control
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub txt_LostFocus(sender As Object, e As System.EventArgs) Handles Me.LostFocus
             'If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Not Me.SLFHarusDiisi Then
             '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
@@ -118,18 +120,21 @@ Namespace UI.Control
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub txt_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
             If Me.XOHightlightSaatFokus Then
                 MyBase.BackColor = Me.XOHightlightSaatFokusWarna
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub txt_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
             If Me.XOHightlightSaatFokus AndAlso Not Me.Focused Then
                 MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub txt_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseUp
             If Me.XOPilihSemuaSaatFokus AndAlso (Not _varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
                 _varFlagAutoSelect = True

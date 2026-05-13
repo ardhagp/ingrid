@@ -383,6 +383,7 @@ Namespace UI.View
 
     End Class
 
+    <SupportedOSPlatform("windows")>
     Public Class ContextMenu
         Private varContextMenu As New ContextMenuStrip
         Private varItem As ToolStripMenuItem()
@@ -390,7 +391,7 @@ Namespace UI.View
 #Region "Public Events"
         Public Event ContextCopy()
 #End Region
-
+        <SupportedOSPlatform("windows")>
         Public Sub LoadInGrid(grid As CMCv.UI.Control.dgn)
 
             'Dim varItemSubmenu() As ToolStripMenuItem

@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Runtime.Versioning
 
 Namespace UI
     Public Class DAR_SinglePDFViewer
@@ -44,6 +45,7 @@ Namespace UI
 
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnClose_Click(sender As Object, e As EventArgs)
             Me.Close()
         End Sub

@@ -12,6 +12,7 @@ Namespace UI
             CMDmods.Editor.FillModuleGroup(varDataProperties, modulegroup)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub CheckAllInput()
             TxtID.Focus()
             TxtCode.Focus()
@@ -84,10 +85,12 @@ Namespace UI
             RaiseEvent EventRecordSaved()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub TxtCode_TextChanged(sender As Object, e As EventArgs) Handles TxtCode.TextChanged
             If (varDataProperties.SystemModuleIsNew) Then
                 TxtID.Text = CMCv.Security.Encrypt.MD5(TxtCode.XOSQLText.ToUpper)

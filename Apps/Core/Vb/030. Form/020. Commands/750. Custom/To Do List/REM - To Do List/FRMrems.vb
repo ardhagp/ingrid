@@ -52,6 +52,7 @@ Namespace UI
             End Select
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub TbctlToDoList_Selected(sender As Object, e As TabControlEventArgs) Handles TbctlToDoList.Selected
             If Not varIsClosing Then
                 varSelectedGroup = TbctlToDoList.SelectedTab.Name

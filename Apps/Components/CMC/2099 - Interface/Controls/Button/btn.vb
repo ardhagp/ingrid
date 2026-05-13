@@ -33,6 +33,7 @@ Namespace UI.Control
         End Sub
 
         Private _varJenisTombol As ControlCodeBase.enuJenisTombol
+        <SupportedOSPlatform("windows")>
         <Category("Text"),
     Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
         Public Property XOJenisTombol() As ControlCodeBase.enuJenisTombol
@@ -97,6 +98,7 @@ Namespace UI.Control
         ''' Ganti warna tombol.
         ''' </summary>
         ''' <param name="_valEnuJenisTombol">Enumerasi jenis tombol.</param>
+        <SupportedOSPlatform("windows")>
         Private Sub GantiWarnaTombol(ByVal _valEnuJenisTombol As ControlCodeBase.enuJenisTombol)
             Select Case _valEnuJenisTombol
                 Case ControlCodeBase.enuJenisTombol.Yes

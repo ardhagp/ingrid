@@ -14,6 +14,7 @@ Namespace UI
             Call CMDplnt.Editor.FillCompany(varDataProperties, company)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub CheckAllInput()
             TxtPlantName.Focus()
             TxtDescription.Focus()
@@ -24,6 +25,8 @@ Namespace UI
             BtnSave.Focus()
         End Sub
 #End Region
+
+        <SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Call CheckAllInput()
             With varDataProperties
@@ -97,6 +100,7 @@ Namespace UI
 
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
         End Sub

@@ -21,6 +21,7 @@ Namespace UI
             CMDcdin.Editor.FillCompany(varDataProperties, company)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub CheckAllInput()
             CboCompany.Focus()
             TxtDeptCode.Focus()
@@ -96,6 +97,7 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
         End Sub

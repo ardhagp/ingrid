@@ -42,6 +42,7 @@ Namespace UI
         ''' </summary>
         ''' <param name="GridTable"></param>
         ''' <remarks></remarks>
+        <SupportedOSPlatform("windows")>
         Private Function GetAccountID(gridtable As CMCv.UI.Control.dgn) As String
             With gridtable
                 If .Rows.Count < 1 Then
@@ -57,6 +58,7 @@ Namespace UI
         ''' Prosedur untuk mendapatkan Tabel ID
         ''' </summary>
         ''' <remarks></remarks>
+        <SupportedOSPlatform("windows")>
         Private Sub GetRowID()
             Select Case varSelectedGroup
                 Case "tpAssets"
@@ -122,6 +124,7 @@ Namespace UI
             Call GetRowID()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub CommmmsMenu_EventToolsFind() Handles Com_mms_Menu.EventToolsFind
             TxtFind.Focus()
         End Sub
@@ -163,6 +166,7 @@ Namespace UI
 #End Region
 
 #Region "Component Events"
+        <SupportedOSPlatform("windows")>
         Private Sub TbctlAccountGroup_Selected(sender As Object, e As TabControlEventArgs) Handles TbctlAccountGroup.Selected
             If Not (varIsClosing) Then
                 varSelectedGroup = TbctlAccountGroup.SelectedTab.Name

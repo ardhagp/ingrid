@@ -2,9 +2,7 @@
 Imports System.Drawing
 Imports System.IO
 Imports System.Runtime.Versioning
-Imports System.Security.Permissions
 Imports System.Windows.Forms
-Imports CMCv
 
 Namespace CMDdar
     Public Class View

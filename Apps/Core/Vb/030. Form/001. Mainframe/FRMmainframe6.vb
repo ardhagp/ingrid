@@ -115,6 +115,7 @@ Namespace UI
         ''' <summary>
         ''' Clear Status Bar 
         ''' </summary>
+        <SupportedOSPlatform("windows")>
         Private Sub ClearStatus()
             Ts_status.Text = String.Empty
             varClearStatus = 0
@@ -237,14 +238,17 @@ Namespace UI
         End Sub
 
         'varWorkspace Menu
+        <SupportedOSPlatform("windows")>
         Private Sub MsworkspaceCascade_Click(sender As Object, e As EventArgs) Handles Ms_workspace_Cascade.Click
             Me.LayoutMdi(MdiLayout.Cascade)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub MsworkspaceTileVertical_Click(sender As Object, e As EventArgs) Handles Ms_workspace_TileVertical.Click
             Me.LayoutMdi(MdiLayout.TileVertical)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub MsworkspaceTileHorizontal_Click(sender As Object, e As EventArgs) Handles Ms_workspace_TileHorizontal.Click
             Me.LayoutMdi(MdiLayout.TileHorizontal)
         End Sub
@@ -254,10 +258,12 @@ Namespace UI
             Call CloseAllWindows()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub MsworkspaceInputCommand_Click(sender As Object, e As EventArgs) Handles Ms_workspace_InputCommand.Click
             Txt_shortcut.Focus()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub MsworkspaceMaximize_Click(sender As Object, e As EventArgs) Handles Ms_workspace_Maximize.Click
             Me.WindowState = FormWindowState.Maximized
         End Sub
@@ -551,6 +557,7 @@ Namespace UI
             Display(Frm_ntfc, IMAGEDB.Main.ImageLibrary.NOTIF_ICON, My.Application.Info.AssemblyName.ToUpper, "Notification", "Show all notification that addressed to you", True)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub Tsstatus_TextChanged(sender As Object, e As EventArgs) Handles Ts_status.TextChanged
             varClearStatus = 0
             If Ts_status.Text = String.Empty Then
@@ -560,6 +567,7 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub TmrStatus_Tick(sender As Object, e As EventArgs) Handles TmrStatus.Tick
             varClearStatus += 1
             If varClearStatus = varStatusTimeWait Then
@@ -650,6 +658,7 @@ Namespace UI
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub Tmrrunningtext_Tick(sender As Object, e As EventArgs) Handles Tmr_runningtext.Tick
             varMyMarquee.Tick()
             TxtRunning.Text = varMyMarquee.MarqueeText
@@ -712,6 +721,7 @@ Namespace UI
             Display(Frm_conn, IMAGEDB.Main.ImageLibrary.CONN_ICON, My.Application.Info.AssemblyName.ToUpper, "Connection Settings", "Configure Ingrid database connection", True)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub Msstartconnectionfolder_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_folder.Click
             Try
                 ''' Open Resources Folder

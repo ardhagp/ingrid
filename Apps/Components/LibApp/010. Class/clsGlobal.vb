@@ -13,6 +13,12 @@
         [PGSQL]
     End Enum
 
+    Public Enum StorageType
+        [BackBlazeB2]
+        [Cloudinary]
+        [Database]
+    End Enum
+
     Public Enum PopupType
         [Alert]
         [Error]
@@ -112,15 +118,13 @@
         Property UserAccessId As String
         Property UserAccessIsChangePasswordForm As Boolean
         Property UserAccessIsNew As Boolean
+        Property UserAccessIsPasswordChanged As Boolean
         Property UserAccessHash As String
         Property UserAccessPassword As String
         Property SystemModuleId As String
         Property SystemModuleIsNew As Boolean
         Property SystemModuleHash As String
         Property SystemTypeOfAccess As TypeOfAccess
-        Property Field01 As Object
-        Property Field02 As Object
-        Property Field03 As Object
-        Property Field04 As Object
+        Property SystemStorageType As StorageType
     End Class
 End Namespace

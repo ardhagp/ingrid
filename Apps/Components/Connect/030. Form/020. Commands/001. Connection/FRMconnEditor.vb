@@ -68,6 +68,7 @@ Namespace UI
             End Try
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Function CheckAllInput() As Boolean
             Dim varValidScore As Integer = 0
 
@@ -205,6 +206,7 @@ Namespace UI
 #End Region
 
 #Region "Control Events"
+        <SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
         End Sub
@@ -223,6 +225,7 @@ Namespace UI
             Call Save()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ComponentMainframeMenu_EventFileCancel() Handles ComponentMainframeMenu.EventFileCancel
             Me.Close()
         End Sub
@@ -342,6 +345,7 @@ Namespace UI
             MessageBox.Show("Connection imported successfully.")
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ChangeIsMaskedState()
             If (ChkIsMasked.Checked) Then
                 TxtAddress.UseSystemPasswordChar = True

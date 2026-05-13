@@ -20,6 +20,7 @@ Namespace UI
         ''' <summary>
         ''' Get row ID on record clicked
         ''' </summary>
+        <SupportedOSPlatform("windows")>
         Private Sub GetRowID()
             If DgnPLNT.RowCount = 0 Then
                 varDataProperties.PlantIsNew = True
@@ -105,6 +106,7 @@ Namespace UI
             Call GetData(True)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub CommmsMenu_EventDataClose() Handles Com_mms_Menu.EventDataClose
             Me.Close()
         End Sub

@@ -19,6 +19,7 @@ Namespace UI
             LibSQL.CMDcdin.View.DisplayData(varDataProperties, DgnCDIN, SLFStatus, TxtFind)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub GetRowID()
             varDataProperties.AllParameters.Remove(pDepartmentId)
             If DgnCDIN.RowCount = 0 Then
@@ -87,10 +88,12 @@ Namespace UI
             Call GetData(True)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub EventDataClose() Handles Com_mms_Menu.EventDataClose
             Me.Close()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub EventToolsFind() Handles Com_mms_Menu.EventToolsFind
             TxtFind.Focus()
         End Sub

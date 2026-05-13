@@ -17,6 +17,7 @@ Namespace UI
 #End Region
 
 #Region "Subs Collections"
+        <SupportedOSPlatform("windows")>
         Private Sub CheckAllInput()
             'Call CheckAllControls()
             TxtCode.Focus()
@@ -53,6 +54,7 @@ Namespace UI
 #End Region
 
 #Region "Component Events"
+        <SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
         End Sub

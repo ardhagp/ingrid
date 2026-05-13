@@ -23,6 +23,7 @@ Namespace UI
             CMDdar.Editor.GetTemplateTitle(varDataProperties, CboActivity)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ChkFrom_CheckedChanged(sender As Object, e As EventArgs) Handles ChkFrom.CheckedChanged
             If (ChkFrom.Checked) Then
                 ChkTo.Enabled = True
@@ -35,6 +36,7 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ChkTo_CheckedChanged(sender As Object, e As EventArgs) Handles ChkTo.CheckedChanged
             If (ChkTo.Checked) Then
                 ChkFrom.Text = "From"
@@ -46,6 +48,7 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ChkArea_CheckedChanged(sender As Object, e As EventArgs) Handles ChkArea.CheckedChanged
             If (ChkArea.Checked) Then
                 CboArea.Enabled = True
@@ -54,6 +57,7 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ChkActivity_CheckedChanged(sender As Object, e As EventArgs) Handles ChkActivity.CheckedChanged
             If (ChkActivity.Checked) Then
                 CboActivity.Enabled = True
@@ -62,6 +66,7 @@ Namespace UI
             End If
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ChkBy_CheckedChanged(sender As Object, e As EventArgs) Handles ChkBy.CheckedChanged
             If (ChkBy.Checked) Then
                 CboBy.Enabled = True
@@ -80,6 +85,7 @@ Namespace UI
             DtpTo.MinDate = DtpFrom.Value
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub ResetComponents()
             ChkFrom.Checked = False
             DtpFrom.Enabled = False
@@ -94,6 +100,7 @@ Namespace UI
             CboBy.Enabled = False
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Close()
         End Sub
@@ -119,10 +126,12 @@ Namespace UI
             varDataSet = Nothing
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub DtpFrom_ValueChanged(sender As Object, e As EventArgs) Handles DtpFrom.ValueChanged
             DtpTo.MinDate = DtpFrom.Value
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub DtpTo_ValueChanged(sender As Object, e As EventArgs) Handles DtpTo.ValueChanged
             DtpFrom.MaxDate = DtpTo.Value
         End Sub

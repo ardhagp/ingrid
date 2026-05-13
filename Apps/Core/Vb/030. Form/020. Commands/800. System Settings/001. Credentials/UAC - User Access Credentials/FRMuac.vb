@@ -17,6 +17,7 @@ Namespace UI
             CMDuac.View.DisplayData(varDataProperties, DgnUAC, SLFStatus, TxtFind, forcerefresh)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub GetRowID()
             If DgnUAC.RowCount = 0 Then
                 varDataProperties.UserAccessIsNew = True
@@ -101,10 +102,12 @@ Namespace UI
             Call GetData(True)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub EventDataClose() Handles Com_mms_Menu.EventDataClose
             Me.Close()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub EventToolsFind() Handles Com_mms_Menu.EventToolsFind
             TxtFind.Focus()
         End Sub

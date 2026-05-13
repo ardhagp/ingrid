@@ -7,7 +7,7 @@ Public Class Workspace
     Public Shared Sub GetModuleProperties(dataproperties As LibApp.Ingrid.Global.Properties, commandcode As String, datasetname As System.Data.DataSet)
         Try
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-
+                varDatabaseRequestMssql2008(0).Query = ""
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(0).Query = $"select smod.module_code, " &
                                                    $"smod.module_name, " &
@@ -21,14 +21,13 @@ Public Class Workspace
                 varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tSysModule, dataproperties.AllParameters)
             End If
         Catch ex As Exception
-
+            Decision("Error", $"Failed to retrieve module properties.{Environment.NewLine}Error Message: {ex.Message}", LibApp.Ingrid.Global.PopupType.Error, "GetModuleProperties", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
         End Try
     End Sub
 
     <SupportedOSPlatform("windows")>
     Public Shared Function GetModuleName(dataproperties As LibApp.Ingrid.Global.Properties, commandcode As String) As String
         Dim varValue As String = String.Empty
-
         Try
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = $"select mods.module_name from dbo.sys_module mods where mods.module_code = '{commandcode}'"

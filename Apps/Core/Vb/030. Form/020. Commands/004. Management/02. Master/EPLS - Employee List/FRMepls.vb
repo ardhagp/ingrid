@@ -20,6 +20,7 @@ Namespace UI
             CMDepls.View.DisplayData(varDataProperties, DgnEPLS, SLFStatus, TxtFind)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub GetRowID()
             varDataProperties.AllParameters.Remove(pEmployeeId)
             If DgnEPLS.RowCount = 0 Then
@@ -114,10 +115,12 @@ Namespace UI
             Call GetData(True)
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub EventDataClose() Handles Com_mms_Menu.EventDataClose
             Me.Close()
         End Sub
 
+        <SupportedOSPlatform("windows")>
         Private Sub EventToolsFind() Handles Com_mms_Menu.EventToolsFind
             TxtFind.Focus()
         End Sub

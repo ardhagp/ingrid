@@ -95,10 +95,12 @@ Module Globals
         End Try
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Public Sub ClearMainFrameFooterText()
         UI.FRMmainframe6.Ts_status.Text = String.Empty
     End Sub
 
+    <SupportedOSPlatform("windows")>
     Public Sub SetMainframeFooterText(text As String)
         UI.FRMmainframe6.Ts_status.Text = text
     End Sub
@@ -315,6 +317,7 @@ Module Globals
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
+    <SupportedOSPlatform("windows")>
     Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType, subtitle As String, messageicon As CMCv.FRMdialogbox.MessageIcon, buttontype As CMCv.FRMdialogbox.MessageTypes) As DialogResult
         frmMSG = New CMCv.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
         Dim result As System.Windows.Forms.DialogResult = frmMSG.ShowDialog()

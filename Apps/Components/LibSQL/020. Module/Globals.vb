@@ -1,4 +1,6 @@
-﻿Module Globals
+﻿Imports System.Runtime.Versioning
+
+Module Globals
     Public varDatabaseEngineMssql2008 As New CMCv.Database.Engine.Mssql2008
     Public varDatabaseEngineMysql As New CMCv.Database.Engine.Mysql
     Public varDatabaseEngineLocaldb As New CMCv.Database.Engine.LocalDB
@@ -16,13 +18,25 @@
     Public varSecurityMd5 As Security.Cryptography.MD5
     Public varSecurityCrc32 As New System.IO.Hashing.Crc32
 
+    <SupportedOSPlatform("windows")>
     Public varMajor As Integer = My.Application.Info.Version.Major
+    <SupportedOSPlatform("windows")>
     Public varMinor As Integer = My.Application.Info.Version.Minor
+    <SupportedOSPlatform("windows")>
     Public varBuild As Integer = My.Application.Info.Version.Build
+    <SupportedOSPlatform("windows")>
     Public varRevision As Integer = My.Application.Info.Version.Revision
+    <SupportedOSPlatform("windows")>
     Public varAppVer As String = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
 
     Public WithEvents MSG As New CMCv.FRMdialogbox
+
+    Public tPosition As New LibApp.Table.Man.Position
+    Public tEmployee As New LibApp.Table.Man.Employee
+    Public tUser As New LibApp.Table.Sys.User
+    Public tModule As New LibApp.Table.Sys.Module
+    Public tUserAccess As New LibApp.Table.Sys.UserAccess
+
 
 #Region "Custom Message Box"
     ''' <summary>
@@ -34,6 +48,7 @@
     ''' <param name="ButtonType">Jenis Tombol</param>
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
+    <SupportedOSPlatform("windows")>
     Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType, subtitle As String, messageicon As CMCv.FRMdialogbox.MessageIcon, ByVal buttontype As CMCv.FRMdialogbox.MessageTypes) As System.Windows.Forms.DialogResult
         MSG = New CMCv.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
         Dim result As System.Windows.Forms.DialogResult = MSG.ShowDialog()

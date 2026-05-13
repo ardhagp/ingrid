@@ -1,4 +1,6 @@
-﻿Namespace OperatingSystem.File
+﻿Imports System.Runtime.Versioning
+
+Namespace OperatingSystem.File
     Public Class Info
         ''' <summary>
         ''' Fungsi untuk memastikan bahwa file ada.
@@ -21,6 +23,7 @@
         End Function
     End Class
 
+    <SupportedOSPlatform("windows")>
     Public Class Upload
         ''' <summary>
         ''' Fungsi untuk memeriksa ukuran maksimum file yang dapat diunggah.
