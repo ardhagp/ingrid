@@ -1,5 +1,4 @@
 ﻿Imports System.Runtime.Versioning
-Imports CMCv
 
 Namespace CMDuac.Addins.Browse
     Public Class Employee

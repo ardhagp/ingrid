@@ -1,6 +1,7 @@
 ﻿Namespace Table.Sys
     Public Class [User]
         ReadOnly Property TableName As String = "sys_user"
+        ReadOnly Property S As String = "usr"
         ReadOnly Property C_UserId As String = "user_id"
         ReadOnly Property C_UserEmployee As String = "user_employee"
         ReadOnly Property C_UserUsername As String = "user_username"

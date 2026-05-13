@@ -36,6 +36,7 @@ Module Globals
     Public tUser As New LibApp.Table.Sys.User
     Public tModule As New LibApp.Table.Sys.Module
     Public tUserAccess As New LibApp.Table.Sys.UserAccess
+    Public tLog As New LibApp.Table.Sys.Log
 
 
 #Region "Custom Message Box"
