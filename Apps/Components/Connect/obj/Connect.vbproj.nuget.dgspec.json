@@ -162,6 +162,10 @@
               "target": "Package",
               "version": "[4.7.0, )"
             },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[9.7.0, )"

@@ -1,4 +1,4 @@
-﻿Imports System.Data
+﻿'Imports System.Data
 Imports System.Drawing
 Imports System.IO
 Imports System.Runtime.Versioning
@@ -603,7 +603,7 @@ Namespace CMDdar
     End Class
 
     Public Class Editor
-        Private Shared varDataSet As DataSet
+        Private Shared varDataSet As System.Data.DataSet
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetAffectedArea(dataproperties As LibApp.Ingrid.Global.Properties, listofaffectedarea As CMCv.UI.Control.cbo)
@@ -758,8 +758,8 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DisplayPhotoGrid(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, filegrid As CMCv.UI.Control.dgn) As DataSet
-            varDataSet = New DataSet
+        Public Shared Function DisplayPhotoGrid(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, filegrid As CMCv.UI.Control.dgn) As System.Data.DataSet
+            varDataSet = New System.Data.DataSet
             'ReDim varDatabaseRequestMssql2008(3)
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -779,8 +779,8 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DisplayFileGrid(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, filegrid As CMCv.UI.Control.dgn) As DataSet
-            varDataSet = New DataSet
+        Public Shared Function DisplayFileGrid(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, filegrid As CMCv.UI.Control.dgn) As System.Data.DataSet
+            varDataSet = New System.Data.DataSet
             'ReDim varDatabaseRequestMssql2008(3)
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -871,13 +871,13 @@ Namespace CMDdar
 
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    Dim varCommand As SqlClient.SqlCommand
+                    Dim varCommand As Microsoft.Data.SqlClient.SqlCommand
                     For Each eachRow As DataGridViewRow In filegrid.Rows
                         If eachRow.Cells("photo_status").Value Is "Add" Then
 
                             Dim varQuery As String = String.Empty
 
-                            varCommand = New SqlClient.SqlCommand
+                            varCommand = New Microsoft.Data.SqlClient.SqlCommand
                             varQuery = "insert into db_universe_erp_file.dbo.sto_file([file_id], file_parent, file_filename, file_filetype, file_content, file_tag, " &
                             "file_datetime, file_attribute, file_uploader, file_parentdate) values(@ID, @ParentID, @FileName, 'jpg', @FileContent, '', @DateNow, " &
                             "'module=DAR;', @Uploader,@ParentDate);"
@@ -901,7 +901,7 @@ Namespace CMDdar
                             varImage.Save(varMemoryStream, Imaging.ImageFormat.Jpeg) ', Row.Cells("file_content").Value)
                             varPhotoByte = varMemoryStream.ToArray
 
-                            Dim varImageParam As New SqlClient.SqlParameter("@FileContent", SqlDbType.Image)
+                            Dim varImageParam As New Microsoft.Data.SqlClient.SqlParameter("@FileContent", System.Data.SqlDbType.Image)
                             varImageParam.Value = varPhotoByte
                             varCommand.Parameters.Add(varImageParam)
 
@@ -941,7 +941,7 @@ Namespace CMDdar
                             varImage.Save(varMemoryStream, Imaging.ImageFormat.Jpeg) ', Row.Cells("file_content").Value)
                             varPhotoByte = varMemoryStream.ToArray
 
-                            Dim varImageParam As New SqlClient.SqlParameter("@FileContent", SqlDbType.Image)
+                            Dim varImageParam As New Microsoft.Data.SqlClient.SqlParameter("@FileContent", System.Data.SqlDbType.Image)
                             varImageParam.Value = varPhotoByte
                             varCommand.Parameters.Add(varImageParam)
 
@@ -965,14 +965,14 @@ Namespace CMDdar
 
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    Dim varCommand As SqlClient.SqlCommand
+                    Dim varCommand As Microsoft.Data.SqlClient.SqlCommand
 
                     For Each eachRow As DataGridViewRow In filegrid.Rows
                         If eachRow.Cells("file_status").Value Is "Add" Then
 
                             Dim varQuery As String = String.Empty
 
-                            varCommand = New SqlClient.SqlCommand
+                            varCommand = New Microsoft.Data.SqlClient.SqlCommand
                             varQuery = "insert into db_universe_erp_file.dbo.sto_file([file_id], file_parent, file_filename, file_filetype, file_content, file_tag, " &
                             "file_datetime, file_attribute, file_uploader,file_parentdate) values(@ID, @ParentID, @FileName, 'pdf', @FileContent, @Tag, @DateNow, " &
                             "'module=DAR;', @Uploader, @ParentDate);"
@@ -998,7 +998,7 @@ Namespace CMDdar
                             Dim varFileByte As Byte() = Nothing
                             varFileByte = varMemoryStream.ToArray
 
-                            Dim varFileParam As New SqlClient.SqlParameter("@FileContent", SqlDbType.Image)
+                            Dim varFileParam As New Microsoft.Data.SqlClient.SqlParameter("@FileContent", System.Data.SqlDbType.Image)
                             varFileParam.Value = varFileByte
                             varCommand.Parameters.Add(varFileParam)
 
@@ -1041,7 +1041,7 @@ Namespace CMDdar
                             Dim varFileByte As Byte() = Nothing
                             varFileByte = varMemoryStream.ToArray
 
-                            Dim varFileParam As New SqlClient.SqlParameter("@FileContent", SqlDbType.Image)
+                            Dim varFileParam As New Microsoft.Data.SqlClient.SqlParameter("@FileContent", System.Data.SqlDbType.Image)
                             varFileParam.Value = varFileByte
                             varCommand.Parameters.Add(varFileParam)
 
@@ -1061,7 +1061,7 @@ Namespace CMDdar
 
     Public Class Reports
         <SupportedOSPlatform("windows")>
-        Public Shared Sub Display(dataproperties As LibApp.Ingrid.Global.Properties, chkfrom As CMCv.UI.Control.chk, chkto As CMCv.UI.Control.chk, chkarea As CMCv.UI.Control.chk, chkactivity As CMCv.UI.Control.chk, chkby As CMCv.UI.Control.chk, dtpfrom As CMCv.UI.Control.dtp, dtpto As CMCv.UI.Control.dtp, cboarea As CMCv.UI.Control.cbo, cboactivity As CMCv.UI.Control.cbo, cboby As CMCv.UI.Control.cbo, txtdescription As CMCv.UI.Control.txt, datasetname As DataSet)
+        Public Shared Sub Display(dataproperties As LibApp.Ingrid.Global.Properties, chkfrom As CMCv.UI.Control.chk, chkto As CMCv.UI.Control.chk, chkarea As CMCv.UI.Control.chk, chkactivity As CMCv.UI.Control.chk, chkby As CMCv.UI.Control.chk, dtpfrom As CMCv.UI.Control.dtp, dtpto As CMCv.UI.Control.dtp, cboarea As CMCv.UI.Control.cbo, cboactivity As CMCv.UI.Control.cbo, cboby As CMCv.UI.Control.cbo, txtdescription As CMCv.UI.Control.txt, datasetname As System.Data.DataSet)
 
             Dim varWhere As String
             Dim varDTPfrom As String = dtpfrom.Value.Year & "-" & dtpfrom.Value.Month & "-" & dtpfrom.Value.Day
