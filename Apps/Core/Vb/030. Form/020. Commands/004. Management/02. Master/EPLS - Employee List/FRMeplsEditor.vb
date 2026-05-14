@@ -1,5 +1,4 @@
 ﻿Imports System.Runtime.Versioning
-Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Namespace UI
     Public Class FRMeplsEditor
@@ -219,14 +218,20 @@ Namespace UI
             OfdPhoto.Filter = "Photo File|*.Jpg;*.Jpeg"
 
             If OfdPhoto.ShowDialog = DialogResult.OK Then
-                If (CMCv.OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, varMaxUploadSizePhoto, True)) Then
-                    varPhoto = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(OfdPhoto.FileName)
-                    pctbxPhoto.Image = varPhoto
-                    varChangePhoto = True
-                    varHavePhoto = 1
+                Dim result = LibAPI.Api.Magika.Validate(OfdPhoto.FileName, {"jpg", "jpeg"})
+                If Not result.IsValid Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, result.Reason & Environment.NewLine & "Please select a JPG or JPEG file.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.FRMdialogbox.MessageIcon.Alert, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                    Return
                 End If
-            Else
-                varHavePhoto = 1
+
+                If (CMCv.OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, varMaxUploadSizePhoto, True)) Then
+                        varPhoto = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(OfdPhoto.FileName)
+                        pctbxPhoto.Image = varPhoto
+                        varChangePhoto = True
+                        varHavePhoto = 1
+                    End If
+                Else
+                    varHavePhoto = 1
                 Return
             End If
         End Sub

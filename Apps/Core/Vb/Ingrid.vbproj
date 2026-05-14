@@ -589,6 +589,7 @@
     <ProjectReference Include="..\..\Components\Bridge\Bridge.csproj" />
     <ProjectReference Include="..\..\Components\CMC\CMCv.vbproj" />
     <ProjectReference Include="..\..\Components\Connect\Connect.vbproj" />
+    <ProjectReference Include="..\..\Components\LibAPI\LibAPI.vbproj" />
     <ProjectReference Include="..\..\Components\LibSQL\LibSQL.vbproj" />
   </ItemGroup>
   <ItemGroup>

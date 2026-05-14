@@ -8,7 +8,7 @@ Namespace Api
         Private ReadOnly varSecretKey As String
         Private ReadOnly varServiceURL As String
         Private ReadOnly AWSCredentials As BasicAWSCredentials
-        Private ReadOnly AWSClient As IAmazonS3
+        Private ReadOnly AWSClient As Amazon.S3.IAmazonS3
 
         Private Sub New(accessKey As String, secretkey As String, serviceurl As String)
             varAccessKey = accessKey
