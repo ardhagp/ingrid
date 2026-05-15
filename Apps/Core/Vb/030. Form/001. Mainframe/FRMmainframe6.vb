@@ -416,9 +416,13 @@ Namespace UI
         End Sub
 #End Region
 
+        ''' <summary>
+        ''' SystemLogout handles the UI changes and data clearing when a user logs in or out. It updates the visibility and enabled state of menu items, resets notification counters, and clears profile and storage information on logout.
+        ''' </summary>
+        ''' <param name="islogout"></param>
         <SupportedOSPlatform("windows")>
-        Private Sub SystemLogout(Optional ByVal islogout As Boolean = True)
-            If Not (islogout) Then ''' Login Process
+        Private Sub SystemLogout(Optional islogout As Boolean = True)
+            If Not (islogout) Then
                 Ms_start_Login.Visible = False
                 Ms_start_Login.Enabled = False
                 Ms_start_Logout.Visible = True
@@ -430,13 +434,13 @@ Namespace UI
                 LogoutToolStripMenuItem.Visible = True
                 LogoutToolStripMenuItem.Enabled = True
                 varGetNotifCounter = 58
-                Call GetNotification() ''' First Get Notification
+                Call GetNotification()
                 TmrNotif.Enabled = True
                 NotificationToolStripMenuItem.Enabled = True
+                Call GetSettings()
                 Call GetProfile() ''' Get Profile Info
                 Call GetStorage() ''' Get Storage Info
-                Call GetSettings() ''' Get Settings Info
-            Else ''' Logout Process
+            Else
                 Call ClearLoginData()
                 Ms_start_Login.Visible = True
                 Ms_start_Login.Enabled = True
@@ -498,35 +502,40 @@ Namespace UI
             varGetNotifCounter += 1
             If varGetNotifCounter = 60 Then
                 Call GetNotification()
-                Call GetRunningText()
-                Call GetProfile()
-                Call GetStorage()
-                Call GetSettings()
+                'Call GetRunningText()
+                'Call GetProfile()
+                'Call GetStorage()
+                'Call GetSettings()
                 varGetNotifCounter = 0
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub GetProfile()
-            PnlProfile.Visible = LibSQL.Application.ProfilePanel.Show(varDataProperties)
-            If (PnlProfile.Visible) Then
-                LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome(varDataProperties)
-                LblEmpNumber.Text = varDataProperties.EmployeeNumber
+            With varDatasetIngrid.Tables(tSettings.TableName)
+                If .Rows.Count > 0 Then
+                    PnlProfile.Visible = CBool(.Rows(0).Item(tSettings.C_SettingsShowProfile))
+                End If
 
-                Dim varNama = varDataProperties.EmployeeFirstName.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+                If (PnlProfile.Visible) Then
+                    LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome(varDataProperties)
+                    LblEmpNumber.Text = varDataProperties.UserParameters(tEmployee.P_EmployeeNumber).ToString
 
-                LblEmployeeName.Text = String.Join(" ", varNama.Take(2))
-                LblPosition.Text = varDataProperties.EmployeePositionName
-                PctProfile.Image = varSqlProfiles.GetPhoto(varDataProperties.ConnectionDatabaseName, varDataProperties.EmployeeId, varDataProperties.EmployeeGender)
-                PnlProfile.Height = 191
-            Else
-                LblWelcome.Text = String.Empty
-                LblEmpNumber.Text = String.Empty
-                LblEmployeeName.Text = String.Empty
-                LblPosition.Text = String.Empty
-                PctProfile.Image = Nothing
-                PnlProfile.Height = 0
-            End If
+                    Dim varNama = varDataProperties.UserParameters(tEmployee.P_EmployeeFullName).ToString.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+
+                    LblEmployeeName.Text = String.Join(" ", varNama.Take(2))
+                    LblPosition.Text = varDataProperties.UserParameters(tPosition.P_PositionName).ToString
+                    'PctProfile.Image = varSqlProfiles.GetPhoto(varDataProperties.ConnectionDatabaseName, varDataProperties.EmployeeId, varDataProperties.EmployeeGender)
+                    PnlProfile.Height = 320
+                Else
+                    LblWelcome.Text = String.Empty
+                    LblEmpNumber.Text = String.Empty
+                    LblEmployeeName.Text = String.Empty
+                    LblPosition.Text = String.Empty
+                    PctProfile.Image = Nothing
+                    PnlProfile.Height = 0
+                End If
+            End With
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -697,10 +706,11 @@ Namespace UI
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetSettings()
-            varMaxUploadSizePDF = LibSQL.Application.Modules.MaxPDFallowed(varDataProperties)
-            varMaxUploadSizePhoto = LibSQL.Application.Modules.MaxPhotoallowed(varDataProperties)
-            varMinPasswordLength = LibSQL.Application.Modules.MinPasswordLength(varDataProperties)
-            varTextmark = LibSQL.Application.Modules.TextMark(varDataProperties)
+            LibSQL.Application.Modules.GetSettingsProperties(varDataProperties, varDatasetIngrid)
+            'varMaxUploadSizePDF = LibSQL.Application.Modules.MaxPDFallowed(varDataProperties)
+            'varMaxUploadSizePhoto = LibSQL.Application.Modules.MaxPhotoallowed(varDataProperties)
+            'varMinPasswordLength = LibSQL.Application.Modules.MinPasswordLength(varDataProperties)
+            'varTextmark = LibSQL.Application.Modules.TextMark(varDataProperties)
         End Sub
 
         <SupportedOSPlatform("windows")>

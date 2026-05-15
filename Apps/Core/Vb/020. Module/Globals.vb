@@ -47,6 +47,10 @@ Module Globals
 
     Public varDatasetIngrid As New Ingrid.UI.Dataset.ADSglobal
 
+    Public tPosition As New LibApp.Table.Man.Position
+    Public tEmployee As New LibApp.Table.Man.Employee
+    Public tSettings As New LibApp.Table.Sys.Settings
+
     Private Const pClientComputerName As String = "@ClientComputerName"
     Private Const pClientOSFullName As String = "@ClientOSFullName"
     Private Const pClientAppVersion As String = "@ClientAppVersion"

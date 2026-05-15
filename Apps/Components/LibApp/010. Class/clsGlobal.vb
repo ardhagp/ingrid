@@ -41,6 +41,7 @@
     ''' </summary>
     Public Class Properties
         Property AllParameters As New Dictionary(Of String, Object)
+        Property UserParameters As New Dictionary(Of String, Object)
         Property AccountBookId As Long
         Property AccountBookIsNew As Boolean
         Property AccountBookIsEnabled As Boolean

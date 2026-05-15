@@ -34,20 +34,23 @@ Namespace CMDuac
                     '    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                     'End If
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = $"select usr.{tUser.C_UserId}, " &
-                                                       $"usr.{tUser.C_UserIsRoot}, " &
-                                                       $"em.{tEmployee.C_EmployeeId}, " &
-                                                       $"em.{tEmployee.C_EmployeeNumber}, " &
-                                                       $"em.{tEmployee.C_EmployeeFullName}, " &
-                                                       $"em.{tEmployee.C_EmployeeNickname}, " &
-                                                       $"em.{tEmployee.C_EmployeePersonalIdNumber}, " &
-                                                       $"em.{tEmployee.C_EmployeeGender}, " &
-                                                       $"pos.{tPosition.C_PositionCode}, " &
-                                                       $"pos.{tPosition.C_PositionName} " &
-                                                       $"From {tUser.TableName} usr " &
-                                                       $"inner join {tEmployee.TableName} em On em.{tEmployee.C_EmployeeId} = usr.{tUser.C_UserEmployee} " &
-                                                       $"inner join {tPosition.TableName} pos On pos.{tPosition.C_PositionId} = em.{tEmployee.C_EmployeePosition} " &
-                                                       $"where (usr.{tUser.C_UserUsername} = {tUser.P_Username} and usr.{tUser.C_UserPassword} = {tUser.P_UserPassword})"
+                    varDatabaseRequestMysql(1).Query = $"select {tUser.S}.{tUser.C_UserId}, " &
+                                                       $"{tUser.S}.{tUser.C_UserIsRoot}, " &
+                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeId}, " &
+                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeNumber}, " &
+                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeFullName}, " &
+                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeNickname}, " &
+                                                       $"{tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}, " &
+                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeGender}, " &
+                                                       $"{tPosition.S}.{tPosition.C_PositionCode}, " &
+                                                       $"{tPosition.S}.{tPosition.C_PositionName} " &
+                                                       $"From {tUser.TableName} {tUser.S} " &
+                                                       $"inner join {tEmployee.TableName} {tEmployee.S} " &
+                                                       $"On {tEmployee.S}.{tEmployee.C_EmployeeId} = {tUser.S}.{tUser.C_UserEmployee} " &
+                                                       $"inner join {tPosition.TableName} {tPosition.S} " &
+                                                       $"On {tPosition.S}.{tPosition.C_PositionId} = {tEmployee.S}.{tEmployee.C_EmployeePosition} " &
+                                                       $"where ({tUser.S}.{tUser.C_UserUsername} = {tUser.P_Username} " &
+                                                       $"And {tUser.S}.{tUser.C_UserPassword} = {tUser.P_UserPassword})"
                     varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, datasetname, "UserData", dataproperties.AllParameters)
 
                     With datasetname

@@ -1,6 +1,7 @@
 ﻿Namespace Table.Man
     Public Class [Employee]
         ReadOnly Property TableName As String = "man_employee"
+        ReadOnly Property S As String = "emp"
         ReadOnly Property C_EmployeeId As String = "employee_id"
         ReadOnly Property C_EmployeePosition As String = "employee_position"
         ReadOnly Property C_EmployeeNumber As String = "employee_number"
