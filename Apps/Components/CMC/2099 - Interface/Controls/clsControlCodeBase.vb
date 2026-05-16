@@ -5,7 +5,7 @@ Public Class ControlCodeBase
     ''' Enumerasi jenis tombol
     ''' </summary>
     ''' <remarks></remarks>
-    Public Enum enuJenisTombol
+    Public Enum ButtonType
         Yes = 1
         No = 2
         [Default] = 3

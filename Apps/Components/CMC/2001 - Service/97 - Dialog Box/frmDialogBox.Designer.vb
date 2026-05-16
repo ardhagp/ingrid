@@ -22,13 +22,13 @@ Partial Class FRMdialogbox
         components = New ComponentModel.Container()
         PnlBottomButtonYesNo = New CMCv.UI.Control.pnl(components)
         PictureBox1 = New System.Windows.Forms.PictureBox()
-        BtnYes = New CMCv.UI.Control.btn(components)
-        BtnNo = New CMCv.UI.Control.btn(components)
-        BtnCancel = New CMCv.UI.Control.btn(components)
-        BtnOk = New CMCv.UI.Control.btn(components)
+        BtnYes = New CMCv.UI.Control.Btn(components)
+        BtnNo = New CMCv.UI.Control.Btn(components)
+        BtnCancel = New CMCv.UI.Control.Btn(components)
+        BtnOk = New CMCv.UI.Control.Btn(components)
         PnlBottomButtonOkOnly = New CMCv.UI.Control.pnl(components)
         PictureBox2 = New System.Windows.Forms.PictureBox()
-        BtnOkOnly = New CMCv.UI.Control.btn(components)
+        BtnOkOnly = New CMCv.UI.Control.Btn(components)
         TxtMessage = New CMCv.UI.Control.txt(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -109,10 +109,10 @@ Partial Class FRMdialogbox
         BtnYes.TabIndex = 0
         BtnYes.Text = "&Yes"
         BtnYes.UseVisualStyleBackColor = False
-        BtnYes.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-        BtnYes.XOTampilkanFocusBorder = False
-        BtnYes.XOValidasiSemuaInput = False
-        BtnYes.XOValidasiSemuaInputTag = Nothing
+        BtnYes.XOButtonType = ControlCodeBase.buttonType.Yes
+        BtnYes.XOShowBorderOnFocus = False
+        BtnYes.XOValidateAllInput = False
+        BtnYes.XOValidateAllInputTag = Nothing
         ' 
         ' BtnNo
         ' 
@@ -132,10 +132,10 @@ Partial Class FRMdialogbox
         BtnNo.TabIndex = 0
         BtnNo.Text = "&No"
         BtnNo.UseVisualStyleBackColor = False
-        BtnNo.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-        BtnNo.XOTampilkanFocusBorder = False
-        BtnNo.XOValidasiSemuaInput = False
-        BtnNo.XOValidasiSemuaInputTag = Nothing
+        BtnNo.XOButtonType = ControlCodeBase.buttonType.No
+        BtnNo.XOShowBorderOnFocus = False
+        BtnNo.XOValidateAllInput = False
+        BtnNo.XOValidateAllInputTag = Nothing
         ' 
         ' BtnCancel
         ' 
@@ -155,10 +155,10 @@ Partial Class FRMdialogbox
         BtnCancel.TabIndex = 0
         BtnCancel.Text = "&Cancel"
         BtnCancel.UseVisualStyleBackColor = False
-        BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-        BtnCancel.XOTampilkanFocusBorder = False
-        BtnCancel.XOValidasiSemuaInput = False
-        BtnCancel.XOValidasiSemuaInputTag = Nothing
+        BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+        BtnCancel.XOShowBorderOnFocus = False
+        BtnCancel.XOValidateAllInput = False
+        BtnCancel.XOValidateAllInputTag = Nothing
         ' 
         ' BtnOk
         ' 
@@ -178,10 +178,10 @@ Partial Class FRMdialogbox
         BtnOk.TabIndex = 0
         BtnOk.Text = "&Ok"
         BtnOk.UseVisualStyleBackColor = False
-        BtnOk.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-        BtnOk.XOTampilkanFocusBorder = False
-        BtnOk.XOValidasiSemuaInput = False
-        BtnOk.XOValidasiSemuaInputTag = Nothing
+        BtnOk.XOButtonType = ControlCodeBase.buttonType.Yes
+        BtnOk.XOShowBorderOnFocus = False
+        BtnOk.XOValidateAllInput = False
+        BtnOk.XOValidateAllInputTag = Nothing
         ' 
         ' PnlBottomButtonOkOnly
         ' 
@@ -224,10 +224,10 @@ Partial Class FRMdialogbox
         BtnOkOnly.TabIndex = 0
         BtnOkOnly.Text = "&Ok"
         BtnOkOnly.UseVisualStyleBackColor = False
-        BtnOkOnly.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        BtnOkOnly.XOTampilkanFocusBorder = False
-        BtnOkOnly.XOValidasiSemuaInput = False
-        BtnOkOnly.XOValidasiSemuaInputTag = Nothing
+        BtnOkOnly.XOButtonType = ControlCodeBase.buttonType.Default
+        BtnOkOnly.XOShowBorderOnFocus = False
+        BtnOkOnly.XOValidateAllInput = False
+        BtnOkOnly.XOValidateAllInputTag = Nothing
         ' 
         ' TxtMessage
         ' 
@@ -293,12 +293,12 @@ Partial Class FRMdialogbox
 
     End Sub
     Friend WithEvents PnlBottomButtonYesNo As CMCv.UI.Control.pnl
-    Friend WithEvents BtnOk As CMCv.UI.Control.btn
-    Friend WithEvents BtnCancel As CMCv.UI.Control.btn
-    Friend WithEvents BtnYes As CMCv.UI.Control.btn
-    Friend WithEvents BtnNo As CMCv.UI.Control.btn
+    Friend WithEvents BtnOk As CMCv.UI.Control.Btn
+    Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
+    Friend WithEvents BtnYes As CMCv.UI.Control.Btn
+    Friend WithEvents BtnNo As CMCv.UI.Control.Btn
     Friend WithEvents PnlBottomButtonOkOnly As CMCv.UI.Control.pnl
-    Friend WithEvents BtnOkOnly As CMCv.UI.Control.btn
+    Friend WithEvents BtnOkOnly As CMCv.UI.Control.Btn
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents TxtMessage As CMCv.UI.Control.txt

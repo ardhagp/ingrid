@@ -25,7 +25,7 @@
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Pnl1 = New CMCv.UI.Control.pnl(components)
-            BtnClear = New CMCv.UI.Control.btn(components)
+            BtnClear = New CMCv.UI.Control.Btn(components)
             Lbl1 = New CMCv.UI.Control.lbl(components)
             TxtFind = New CMCv.UI.Control.txt(components)
             DgnMOG = New CMCv.UI.Control.dgn(components)
@@ -76,10 +76,10 @@
             BtnClear.TabIndex = 801
             BtnClear.Text = "Clear"
             BtnClear.UseVisualStyleBackColor = False
-            BtnClear.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnClear.XOTampilkanFocusBorder = False
-            BtnClear.XOValidasiSemuaInput = False
-            BtnClear.XOValidasiSemuaInputTag = Nothing
+            BtnClear.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClear.XOShowBorderOnFocus = False
+            BtnClear.XOValidateAllInput = False
+            BtnClear.XOValidateAllInputTag = Nothing
             ' 
             ' Lbl1
             ' 
@@ -231,7 +231,7 @@
         End Sub
 
         Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
-        Friend WithEvents BtnClear As CMCv.UI.Control.btn
+        Friend WithEvents BtnClear As CMCv.UI.Control.Btn
         Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
         Friend WithEvents TxtFind As CMCv.UI.Control.txt
         Friend WithEvents DgnMOG As CMCv.UI.Control.dgn

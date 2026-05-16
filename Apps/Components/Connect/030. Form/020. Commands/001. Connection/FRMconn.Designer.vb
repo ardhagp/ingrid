@@ -33,7 +33,7 @@
             serverport = New DataGridViewTextBoxColumn()
             defaultconnection = New DataGridViewCheckBoxColumn()
             spring = New DataGridViewTextBoxColumn()
-            Btn_Close = New CMCv.UI.Control.btn(components)
+            Btn_Close = New CMCv.UI.Control.Btn(components)
             PnlBottomButton.SuspendLayout()
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -228,10 +228,10 @@
             Btn_Close.TabIndex = 1
             Btn_Close.Text = "&Close"
             Btn_Close.UseVisualStyleBackColor = False
-            Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            Btn_Close.XOTampilkanFocusBorder = False
-            Btn_Close.XOValidasiSemuaInput = False
-            Btn_Close.XOValidasiSemuaInputTag = Nothing
+            Btn_Close.XOButtonType = ControlCodeBase.buttonType.No
+            Btn_Close.XOShowBorderOnFocus = False
+            Btn_Close.XOValidateAllInput = False
+            Btn_Close.XOValidateAllInputTag = Nothing
             ' 
             ' FRMconn
             ' 
@@ -258,7 +258,7 @@
         End Sub
 
         Friend WithEvents DgnConnection As CMCv.UI.Control.dgn
-        Friend WithEvents Btn_Close As CMCv.UI.Control.btn
+        Friend WithEvents Btn_Close As CMCv.UI.Control.Btn
         Friend WithEvents id As DataGridViewTextBoxColumn
         Friend WithEvents connectionname As DataGridViewTextBoxColumn
         Friend WithEvents databaseengine As DataGridViewTextBoxColumn

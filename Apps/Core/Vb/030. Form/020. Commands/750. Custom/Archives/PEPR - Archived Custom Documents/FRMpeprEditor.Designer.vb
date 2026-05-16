@@ -27,8 +27,8 @@
             Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle11 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             TxtArchiveCode = New CMCv.UI.Control.txt(components)
             TxtTitle = New CMCv.UI.Control.txt(components)
             CboCategory = New CMCv.UI.Control.cbo(components)
@@ -37,7 +37,7 @@
             TbctlAttachment = New CMCv.UI.Control.tbctl(components)
             tpPhotos = New TabPage()
             PnlPhoto = New CMCv.UI.Control.pnl(components)
-            BtnBrowsePhoto = New CMCv.UI.Control.btn(components)
+            BtnBrowsePhoto = New CMCv.UI.Control.Btn(components)
             PctbxPhoto = New CMCv.UI.Control.pctbx(components)
             DgnPictureList = New CMCv.UI.Control.dgn(components)
             photo_id = New DataGridViewTextBoxColumn()
@@ -46,12 +46,12 @@
             photo_status = New DataGridViewTextBoxColumn()
             photo_uploader = New DataGridViewTextBoxColumn()
             photo_delete = New DataGridViewButtonColumn()
-            BtnPeekPhoto = New CMCv.UI.Control.btn(components)
+            BtnPeekPhoto = New CMCv.UI.Control.Btn(components)
             TxtPhotoPath = New CMCv.UI.Control.txt(components)
-            BtnAddPhoto = New CMCv.UI.Control.btn(components)
+            BtnAddPhoto = New CMCv.UI.Control.Btn(components)
             tpFiles = New TabPage()
             PnlFile = New CMCv.UI.Control.pnl(components)
-            BtnBrowseFile = New CMCv.UI.Control.btn(components)
+            BtnBrowseFile = New CMCv.UI.Control.Btn(components)
             DgnFileList = New CMCv.UI.Control.dgn(components)
             file_id = New DataGridViewTextBoxColumn()
             file_tag = New DataGridViewTextBoxColumn()
@@ -62,8 +62,8 @@
             file_delete = New DataGridViewButtonColumn()
             CboFileTag = New CMCv.UI.Control.cbo(components)
             TxtFilePath = New CMCv.UI.Control.txt(components)
-            BtnAddFile = New CMCv.UI.Control.btn(components)
-            BtnPeekFile = New CMCv.UI.Control.btn(components)
+            BtnAddFile = New CMCv.UI.Control.Btn(components)
+            BtnPeekFile = New CMCv.UI.Control.Btn(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
             ULbl2 = New CMCv.UI.Control.ULbl()
             ULbl3 = New CMCv.UI.Control.ULbl()
@@ -148,10 +148,10 @@
             BtnSave.TabIndex = 1
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -171,10 +171,10 @@
             BtnCancel.TabIndex = 2
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' TxtArchiveCode
             ' 
@@ -368,10 +368,10 @@
             BtnBrowsePhoto.Size = New Size(55, 56)
             BtnBrowsePhoto.TabIndex = 5
             BtnBrowsePhoto.UseVisualStyleBackColor = False
-            BtnBrowsePhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            BtnBrowsePhoto.XOTampilkanFocusBorder = False
-            BtnBrowsePhoto.XOValidasiSemuaInput = False
-            BtnBrowsePhoto.XOValidasiSemuaInputTag = Nothing
+            BtnBrowsePhoto.XOButtonType = ControlCodeBase.buttonType.Default
+            BtnBrowsePhoto.XOShowBorderOnFocus = False
+            BtnBrowsePhoto.XOValidateAllInput = False
+            BtnBrowsePhoto.XOValidateAllInputTag = Nothing
             ' 
             ' PctbxPhoto
             ' 
@@ -522,10 +522,10 @@
             BtnPeekPhoto.Size = New Size(55, 56)
             BtnPeekPhoto.TabIndex = 8
             BtnPeekPhoto.UseVisualStyleBackColor = False
-            BtnPeekPhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnPeekPhoto.XOTampilkanFocusBorder = False
-            BtnPeekPhoto.XOValidasiSemuaInput = False
-            BtnPeekPhoto.XOValidasiSemuaInputTag = Nothing
+            BtnPeekPhoto.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnPeekPhoto.XOShowBorderOnFocus = False
+            BtnPeekPhoto.XOValidateAllInput = False
+            BtnPeekPhoto.XOValidateAllInputTag = Nothing
             ' 
             ' TxtPhotoPath
             ' 
@@ -575,10 +575,10 @@
             BtnAddPhoto.Size = New Size(55, 56)
             BtnAddPhoto.TabIndex = 9
             BtnAddPhoto.UseVisualStyleBackColor = False
-            BtnAddPhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnAddPhoto.XOTampilkanFocusBorder = False
-            BtnAddPhoto.XOValidasiSemuaInput = False
-            BtnAddPhoto.XOValidasiSemuaInputTag = Nothing
+            BtnAddPhoto.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnAddPhoto.XOShowBorderOnFocus = False
+            BtnAddPhoto.XOValidateAllInput = False
+            BtnAddPhoto.XOValidateAllInputTag = Nothing
             ' 
             ' tpFiles
             ' 
@@ -624,10 +624,10 @@
             BtnBrowseFile.Size = New Size(55, 56)
             BtnBrowseFile.TabIndex = 10
             BtnBrowseFile.UseVisualStyleBackColor = False
-            BtnBrowseFile.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            BtnBrowseFile.XOTampilkanFocusBorder = False
-            BtnBrowseFile.XOValidasiSemuaInput = False
-            BtnBrowseFile.XOValidasiSemuaInputTag = Nothing
+            BtnBrowseFile.XOButtonType = ControlCodeBase.buttonType.Default
+            BtnBrowseFile.XOShowBorderOnFocus = False
+            BtnBrowseFile.XOValidateAllInput = False
+            BtnBrowseFile.XOValidateAllInputTag = Nothing
             ' 
             ' DgnFileList
             ' 
@@ -815,10 +815,10 @@
             BtnAddFile.Size = New Size(55, 56)
             BtnAddFile.TabIndex = 13
             BtnAddFile.UseVisualStyleBackColor = False
-            BtnAddFile.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnAddFile.XOTampilkanFocusBorder = False
-            BtnAddFile.XOValidasiSemuaInput = False
-            BtnAddFile.XOValidasiSemuaInputTag = Nothing
+            BtnAddFile.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnAddFile.XOShowBorderOnFocus = False
+            BtnAddFile.XOValidateAllInput = False
+            BtnAddFile.XOValidateAllInputTag = Nothing
             ' 
             ' BtnPeekFile
             ' 
@@ -837,10 +837,10 @@
             BtnPeekFile.Size = New Size(55, 56)
             BtnPeekFile.TabIndex = 12
             BtnPeekFile.UseVisualStyleBackColor = False
-            BtnPeekFile.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnPeekFile.XOTampilkanFocusBorder = False
-            BtnPeekFile.XOValidasiSemuaInput = False
-            BtnPeekFile.XOValidasiSemuaInputTag = Nothing
+            BtnPeekFile.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnPeekFile.XOShowBorderOnFocus = False
+            BtnPeekFile.XOValidateAllInput = False
+            BtnPeekFile.XOValidateAllInputTag = Nothing
             ' 
             ' ULbl1
             ' 
@@ -950,8 +950,8 @@
 
         End Sub
 
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents TxtArchiveCode As CMCv.UI.Control.txt
         Friend WithEvents Txt1 As CMCv.UI.Control.txt
         Friend WithEvents CboCategory As CMCv.UI.Control.cbo
@@ -960,7 +960,7 @@
         Friend WithEvents TbctlAttachment As CMCv.UI.Control.tbctl
         Friend WithEvents tpPhotos As TabPage
         Friend WithEvents PnlPhoto As CMCv.UI.Control.pnl
-        Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.btn
+        Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.Btn
         Friend WithEvents PctbxPhoto As CMCv.UI.Control.pctbx
         Friend WithEvents DgnPictureList As CMCv.UI.Control.dgn
         Friend WithEvents photo_id As DataGridViewTextBoxColumn
@@ -969,12 +969,12 @@
         Friend WithEvents photo_status As DataGridViewTextBoxColumn
         Friend WithEvents photo_uploader As DataGridViewTextBoxColumn
         Friend WithEvents photo_delete As DataGridViewButtonColumn
-        Friend WithEvents BtnPeekPhoto As CMCv.UI.Control.btn
+        Friend WithEvents BtnPeekPhoto As CMCv.UI.Control.Btn
         Friend WithEvents TxtPhotoPath As CMCv.UI.Control.txt
-        Friend WithEvents BtnAddPhoto As CMCv.UI.Control.btn
+        Friend WithEvents BtnAddPhoto As CMCv.UI.Control.Btn
         Friend WithEvents tpFiles As TabPage
         Friend WithEvents PnlFile As CMCv.UI.Control.pnl
-        Friend WithEvents BtnBrowseFile As CMCv.UI.Control.btn
+        Friend WithEvents BtnBrowseFile As CMCv.UI.Control.Btn
         Friend WithEvents DgnFileList As CMCv.UI.Control.dgn
         Friend WithEvents file_id As DataGridViewTextBoxColumn
         Friend WithEvents file_tag As DataGridViewTextBoxColumn
@@ -985,8 +985,8 @@
         Friend WithEvents file_delete As DataGridViewButtonColumn
         Friend WithEvents CboFileTag As CMCv.UI.Control.cbo
         Friend WithEvents TxtFilePath As CMCv.UI.Control.txt
-        Friend WithEvents BtnAddFile As CMCv.UI.Control.btn
-        Friend WithEvents BtnPeekFile As CMCv.UI.Control.btn
+        Friend WithEvents BtnAddFile As CMCv.UI.Control.Btn
+        Friend WithEvents BtnPeekFile As CMCv.UI.Control.Btn
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl

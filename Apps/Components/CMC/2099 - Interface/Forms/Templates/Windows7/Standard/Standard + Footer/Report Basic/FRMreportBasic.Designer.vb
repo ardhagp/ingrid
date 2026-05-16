@@ -22,7 +22,7 @@ Partial Class FRMreportBasic
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        BtnClose = New CMCv.UI.Control.btn(components)
+        BtnClose = New CMCv.UI.Control.Btn(components)
         Rv_ = New ReportViewer()
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -88,10 +88,10 @@ Partial Class FRMreportBasic
         BtnClose.TabIndex = 1
         BtnClose.Text = "&Close"
         BtnClose.UseVisualStyleBackColor = False
-        BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-        BtnClose.XOTampilkanFocusBorder = False
-        BtnClose.XOValidasiSemuaInput = False
-        BtnClose.XOValidasiSemuaInputTag = Nothing
+        BtnClose.XOButtonType = ControlCodeBase.buttonType.Default
+        BtnClose.XOShowBorderOnFocus = False
+        BtnClose.XOValidateAllInput = False
+        BtnClose.XOValidateAllInputTag = Nothing
         ' 
         ' Rv_
         ' 
@@ -119,7 +119,7 @@ Partial Class FRMreportBasic
         ResumeLayout(False)
         PerformLayout()
     End Sub
-    Friend WithEvents BtnClose As CMCv.UI.Control.btn
+    Friend WithEvents BtnClose As CMCv.UI.Control.Btn
     'TODO: Microsoft.Reporting.WinForms.ReportViewer no longer supported.
     'Microsoft.Reporting.WinForms.ReportViewer
     Public WithEvents Rv_ As ReportViewer

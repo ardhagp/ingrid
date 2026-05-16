@@ -20,8 +20,8 @@ Partial Class FRMcpdb
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Btn1 = New CMCv.UI.Control.btn(components)
-        Btn2 = New CMCv.UI.Control.btn(components)
+        Btn1 = New CMCv.UI.Control.Btn(components)
+        Btn2 = New CMCv.UI.Control.Btn(components)
         Lbl1 = New CMCv.UI.Control.lbl(components)
         Txt1 = New CMCv.UI.Control.txt(components)
         Txt2 = New CMCv.UI.Control.txt(components)
@@ -99,10 +99,10 @@ Partial Class FRMcpdb
         Btn1.TabIndex = 1
         Btn1.Text = "&Save"
         Btn1.UseVisualStyleBackColor = False
-        Btn1.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-        Btn1.XOTampilkanFocusBorder = False
-        Btn1.XOValidasiSemuaInput = False
-        Btn1.XOValidasiSemuaInputTag = Nothing
+        Btn1.XOButtonType = ControlCodeBase.buttonType.Yes
+        Btn1.XOShowBorderOnFocus = False
+        Btn1.XOValidateAllInput = False
+        Btn1.XOValidateAllInputTag = Nothing
         ' 
         ' Btn2
         ' 
@@ -122,10 +122,10 @@ Partial Class FRMcpdb
         Btn2.TabIndex = 2
         Btn2.Text = "&Cancel"
         Btn2.UseVisualStyleBackColor = False
-        Btn2.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-        Btn2.XOTampilkanFocusBorder = False
-        Btn2.XOValidasiSemuaInput = False
-        Btn2.XOValidasiSemuaInputTag = Nothing
+        Btn2.XOButtonType = ControlCodeBase.buttonType.No
+        Btn2.XOShowBorderOnFocus = False
+        Btn2.XOValidateAllInput = False
+        Btn2.XOValidateAllInputTag = Nothing
         ' 
         ' Lbl1
         ' 
@@ -341,8 +341,8 @@ Partial Class FRMcpdb
 
     End Sub
 
-    Friend WithEvents Btn1 As CMCv.UI.Control.btn
-    Friend WithEvents Btn2 As CMCv.UI.Control.btn
+    Friend WithEvents Btn1 As CMCv.UI.Control.Btn
+    Friend WithEvents Btn2 As CMCv.UI.Control.Btn
     Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
     Friend WithEvents Lbl5 As CMCv.UI.Control.lbl
     Friend WithEvents Nud1 As CMCv.UI.Control.nud

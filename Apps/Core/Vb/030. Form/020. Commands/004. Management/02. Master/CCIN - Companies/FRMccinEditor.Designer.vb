@@ -25,8 +25,8 @@
             TxtSearchTerm1 = New CMCv.UI.Control.txt(components)
             TxtSearchTerm2 = New CMCv.UI.Control.txt(components)
             TxtDescription = New CMCv.UI.Control.txt(components)
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             TxtName = New CMCv.UI.Control.txt(components)
             ChkAddNew = New CMCv.UI.Control.chk(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
@@ -223,10 +223,10 @@
             BtnSave.TabIndex = 5
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -246,10 +246,10 @@
             BtnCancel.TabIndex = 7
             BtnCancel.Text = "&Close"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' TxtName
             ' 
@@ -386,8 +386,8 @@
         Friend WithEvents TxtDescription As CMCv.UI.Control.txt
         Friend WithEvents TxtSearchTerm2 As CMCv.UI.Control.txt
         Friend WithEvents TxtSearchTerm1 As CMCv.UI.Control.txt
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents TxtName As CMCv.UI.Control.txt
         Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl

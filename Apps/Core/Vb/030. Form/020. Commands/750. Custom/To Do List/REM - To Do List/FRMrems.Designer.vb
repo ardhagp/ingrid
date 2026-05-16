@@ -89,7 +89,7 @@
             v_todos_iscomplete = New DataGridViewCheckBoxColumn()
             v_todos_ispublic = New DataGridViewCheckBoxColumn()
             SpcContent = New CMCv.UI.Control.spc(components)
-            BtnViewAttachment = New CMCv.UI.Control.btn(components)
+            BtnViewAttachment = New CMCv.UI.Control.Btn(components)
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -822,10 +822,10 @@
             BtnViewAttachment.TabIndex = 0
             BtnViewAttachment.Text = "View Attachment"
             BtnViewAttachment.UseVisualStyleBackColor = False
-            BtnViewAttachment.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnViewAttachment.XOTampilkanFocusBorder = False
-            BtnViewAttachment.XOValidasiSemuaInput = False
-            BtnViewAttachment.XOValidasiSemuaInputTag = Nothing
+            BtnViewAttachment.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnViewAttachment.XOShowBorderOnFocus = False
+            BtnViewAttachment.XOValidateAllInput = False
+            BtnViewAttachment.XOValidateAllInputTag = Nothing
             ' 
             ' FRMrems
             ' 
@@ -862,7 +862,7 @@
         Friend WithEvents tpFinished As TabPage
         Friend WithEvents SpcContent As CMCv.UI.Control.spc
         Friend WithEvents tpVerified As TabPage
-        Friend WithEvents BtnViewAttachment As CMCv.UI.Control.btn
+        Friend WithEvents BtnViewAttachment As CMCv.UI.Control.Btn
         Friend WithEvents DgnDone As CMCv.UI.Control.dgn
         Friend WithEvents DgnVerified As CMCv.UI.Control.dgn
         Friend WithEvents o_todos_id As DataGridViewTextBoxColumn

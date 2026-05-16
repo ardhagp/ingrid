@@ -22,14 +22,14 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMphtrz))
-            BtnClose = New CMCv.UI.Control.btn(components)
-            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnClose = New CMCv.UI.Control.Btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
             ChkAddNew = New CMCv.UI.Control.chk(components)
             TlpMain = New System.Windows.Forms.TableLayoutPanel()
             PnlLoad = New CMCv.UI.Control.pnl(components)
             Lbl1 = New CMCv.UI.Control.lbl(components)
             TxtLoad = New CMCv.UI.Control.txt(components)
-            BtnLoad = New CMCv.UI.Control.btn(components)
+            BtnLoad = New CMCv.UI.Control.Btn(components)
             PnlSave = New CMCv.UI.Control.pnl(components)
             ChkSaveAsACopy = New CMCv.UI.Control.chk(components)
             TxtSave = New CMCv.UI.Control.txt(components)
@@ -97,10 +97,10 @@
             BtnClose.TabIndex = 7
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnClose.XOTampilkanFocusBorder = False
-            BtnClose.XOValidasiSemuaInput = False
-            BtnClose.XOValidasiSemuaInputTag = Nothing
+            BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClose.XOShowBorderOnFocus = False
+            BtnClose.XOValidateAllInput = False
+            BtnClose.XOValidateAllInputTag = Nothing
             ' 
             ' BtnSave
             ' 
@@ -120,10 +120,10 @@
             BtnSave.TabIndex = 5
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' ChkAddNew
             ' 
@@ -233,10 +233,10 @@
             BtnLoad.TabIndex = 0
             BtnLoad.Text = "&Load"
             BtnLoad.UseVisualStyleBackColor = False
-            BtnLoad.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            BtnLoad.XOTampilkanFocusBorder = False
-            BtnLoad.XOValidasiSemuaInput = False
-            BtnLoad.XOValidasiSemuaInputTag = Nothing
+            BtnLoad.XOButtonType = ControlCodeBase.buttonType.Default
+            BtnLoad.XOShowBorderOnFocus = False
+            BtnLoad.XOValidateAllInput = False
+            BtnLoad.XOValidateAllInputTag = Nothing
             ' 
             ' PnlSave
             ' 
@@ -358,14 +358,14 @@
 
         End Sub
 
-        Friend WithEvents BtnClose As CMCv.UI.Control.btn
+        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
         Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents TlpMain As System.Windows.Forms.TableLayoutPanel
         Friend WithEvents PnlLoad As CMCv.UI.Control.pnl
         Friend WithEvents PnlSave As CMCv.UI.Control.pnl
         Friend WithEvents PctbxPhoto As CMCv.UI.Control.pctbx
-        Friend WithEvents BtnLoad As CMCv.UI.Control.btn
+        Friend WithEvents BtnLoad As CMCv.UI.Control.Btn
         Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
         Friend WithEvents TxtLoad As CMCv.UI.Control.txt
         Friend WithEvents TxtSave As CMCv.UI.Control.txt

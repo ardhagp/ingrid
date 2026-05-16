@@ -24,7 +24,7 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            BtnClose = New CMCv.UI.Control.btn(components)
+            BtnClose = New CMCv.UI.Control.Btn(components)
             DgnNotification = New CMCv.UI.Control.dgn(components)
             notification_message = New DataGridViewTextBoxColumn()
             notification_datetime = New DataGridViewTextBoxColumn()
@@ -75,10 +75,10 @@
             BtnClose.TabIndex = 1
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnClose.XOTampilkanFocusBorder = False
-            BtnClose.XOValidasiSemuaInput = False
-            BtnClose.XOValidasiSemuaInputTag = Nothing
+            BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClose.XOShowBorderOnFocus = False
+            BtnClose.XOValidateAllInput = False
+            BtnClose.XOValidateAllInputTag = Nothing
             ' 
             ' DgnNotification
             ' 
@@ -163,7 +163,7 @@
 
         End Sub
 
-        Friend WithEvents BtnClose As CMCv.UI.Control.btn
+        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
         Friend WithEvents DgnNotification As CMCv.UI.Control.dgn
         Friend WithEvents notification_message As DataGridViewTextBoxColumn
         Friend WithEvents notification_datetime As DataGridViewTextBoxColumn

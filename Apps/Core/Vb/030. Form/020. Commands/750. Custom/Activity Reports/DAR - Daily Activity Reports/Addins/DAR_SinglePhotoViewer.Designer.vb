@@ -22,7 +22,7 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(DAR_SinglePhotoViewer))
-            BtnClose = New CMCv.UI.Control.btn(components)
+            BtnClose = New CMCv.UI.Control.Btn(components)
             PctbxPhoto = New CMCv.UI.Control.pctbx(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -68,10 +68,10 @@
             BtnClose.Margin = New Padding(4, 3, 4, 3)
             BtnClose.Name = "BtnClose"
             BtnClose.Size = New Size(117, 46)
-            BtnClose.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-            BtnClose.XOTampilkanFocusBorder = False
-            BtnClose.XOValidasiSemuaInput = False
-            BtnClose.XOValidasiSemuaInputTag = Nothing
+            BtnClose.XOButtonType = CMCv.ControlCodeBase.buttonType.No
+            BtnClose.XOShowBorderOnFocus = False
+            BtnClose.XOValidateAllInput = False
+            BtnClose.XOValidateAllInputTag = Nothing
             BtnClose.TabIndex = 0
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
@@ -111,7 +111,7 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents BtnClose As CMCv.UI.Control.btn
+        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
         Friend WithEvents PctbxPhoto As CMCv.UI.Control.pctbx
     End Class
 End Namespace

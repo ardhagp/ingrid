@@ -108,7 +108,7 @@
     <Compile Update="2099 - Interface\3rd Party\PhotoResizer\FRMphtrz.Designer.vb">
       <DependentUpon>FRMphtrz.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Button\btn.Designer.vb">
+    <Compile Update="2099 - Interface\Controls\Button\Btn.Designer.vb">
       <DependentUpon>Btn.vb</DependentUpon>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Button\Btn.vb">
@@ -297,7 +297,7 @@
     <Folder Include="SqlServerTypes\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\Button\btn.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\Button\Btn.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="2099 - Interface\Controls\DateTimePicker\dtp.ico" />

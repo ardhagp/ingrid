@@ -21,7 +21,7 @@ Partial Class FRMerrorreporting
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMerrorreporting))
-        BtnClose = New CMCv.UI.Control.btn(components)
+        BtnClose = New CMCv.UI.Control.Btn(components)
         Tbctl1 = New CMCv.UI.Control.tbctl(components)
         tp_ApplicationFault = New System.Windows.Forms.TabPage()
         Lbl4 = New CMCv.UI.Control.lbl(components)
@@ -103,10 +103,10 @@ Partial Class FRMerrorreporting
         BtnClose.TabIndex = 0
         BtnClose.Text = "Close"
         BtnClose.UseVisualStyleBackColor = False
-        BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-        BtnClose.XOTampilkanFocusBorder = False
-        BtnClose.XOValidasiSemuaInput = False
-        BtnClose.XOValidasiSemuaInputTag = Nothing
+        BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+        BtnClose.XOShowBorderOnFocus = False
+        BtnClose.XOValidateAllInput = False
+        BtnClose.XOValidateAllInputTag = Nothing
         ' 
         ' Tbctl1
         ' 
@@ -373,7 +373,7 @@ Partial Class FRMerrorreporting
         ResumeLayout(False)
         PerformLayout()
     End Sub
-    Friend WithEvents BtnClose As CMCv.UI.Control.btn
+    Friend WithEvents BtnClose As CMCv.UI.Control.Btn
     Friend WithEvents Tbctl1 As CMCv.UI.Control.tbctl
     Friend WithEvents tp_ApplicationFault As System.Windows.Forms.TabPage
     Friend WithEvents tp_SystemInformation As System.Windows.Forms.TabPage

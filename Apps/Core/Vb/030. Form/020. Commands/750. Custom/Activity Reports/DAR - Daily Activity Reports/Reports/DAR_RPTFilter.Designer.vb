@@ -21,8 +21,8 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnShow = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
+            BtnShow = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             ChkFrom = New CMCv.UI.Control.chk(components)
             DtpFrom = New CMCv.UI.Control.dtp(components)
             ChkTo = New CMCv.UI.Control.chk(components)
@@ -111,10 +111,10 @@
             BtnShow.TabIndex = 99
             BtnShow.Text = "&Show"
             BtnShow.UseVisualStyleBackColor = False
-            BtnShow.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnShow.XOTampilkanFocusBorder = False
-            BtnShow.XOValidasiSemuaInput = False
-            BtnShow.XOValidasiSemuaInputTag = Nothing
+            BtnShow.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnShow.XOShowBorderOnFocus = False
+            BtnShow.XOValidateAllInput = False
+            BtnShow.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -134,10 +134,10 @@
             BtnCancel.TabIndex = 98
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' ChkFrom
             ' 
@@ -360,8 +360,8 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents BtnShow As CMCv.UI.Control.btn
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnShow As CMCv.UI.Control.Btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents DtpFrom As CMCv.UI.Control.dtp
         Friend WithEvents ChkFrom As CMCv.UI.Control.chk
         Friend WithEvents CboActivity As CMCv.UI.Control.cbo

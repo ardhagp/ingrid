@@ -79,9 +79,9 @@
             TlpPhotoButton = New TableLayoutPanel()
             PctbxActivityPhoto = New CMCv.UI.Control.pctbx(components)
             TlpCopySave = New TableLayoutPanel()
-            BtnCopyPhoto = New CMCv.UI.Control.btn(components)
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnLike = New CMCv.UI.Control.btn(components)
+            BtnCopyPhoto = New CMCv.UI.Control.Btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnLike = New CMCv.UI.Control.Btn(components)
             TPFiles = New TabPage()
             DgnFile = New CMCv.UI.Control.dgn(components)
             file_id = New DataGridViewTextBoxColumn()
@@ -770,10 +770,10 @@
             BtnCopyPhoto.Size = New Size(282, 50)
             BtnCopyPhoto.TabIndex = 3
             BtnCopyPhoto.UseVisualStyleBackColor = False
-            BtnCopyPhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnCopyPhoto.XOTampilkanFocusBorder = False
-            BtnCopyPhoto.XOValidasiSemuaInput = False
-            BtnCopyPhoto.XOValidasiSemuaInputTag = Nothing
+            BtnCopyPhoto.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnCopyPhoto.XOShowBorderOnFocus = False
+            BtnCopyPhoto.XOValidateAllInput = False
+            BtnCopyPhoto.XOValidateAllInputTag = Nothing
             ' 
             ' BtnSave
             ' 
@@ -794,10 +794,10 @@
             BtnSave.Size = New Size(283, 50)
             BtnSave.TabIndex = 4
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnLike
             ' 
@@ -817,10 +817,10 @@
             BtnLike.Size = New Size(45, 50)
             BtnLike.TabIndex = 6
             BtnLike.UseVisualStyleBackColor = False
-            BtnLike.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnLike.XOTampilkanFocusBorder = False
-            BtnLike.XOValidasiSemuaInput = False
-            BtnLike.XOValidasiSemuaInputTag = Nothing
+            BtnLike.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnLike.XOShowBorderOnFocus = False
+            BtnLike.XOValidateAllInput = False
+            BtnLike.XOValidateAllInputTag = Nothing
             ' 
             ' TPFiles
             ' 
@@ -1126,10 +1126,10 @@
         Friend WithEvents TlpPhotoButton As TableLayoutPanel
         Friend WithEvents PctbxActivityPhoto As CMCv.UI.Control.pctbx
         Friend WithEvents TlpCopySave As TableLayoutPanel
-        Friend WithEvents BtnCopyPhoto As CMCv.UI.Control.btn
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnCopyPhoto As CMCv.UI.Control.Btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents SfdPhoto As SaveFileDialog
-        Friend WithEvents BtnLike As CMCv.UI.Control.btn
+        Friend WithEvents BtnLike As CMCv.UI.Control.Btn
         Friend WithEvents employeeactivity_datetime As DataGridViewTextBoxColumn
         Friend WithEvents employeeactivity_longdate As DataGridViewTextBoxColumn
         Friend WithEvents CboBy As CMCv.UI.Control.cbo

@@ -26,8 +26,8 @@
             components = New ComponentModel.Container()
             LblNotification = New CMCv.UI.Control.lbl(components)
             Txt_Confirmation = New CMCv.UI.Control.txt(components)
-            BtnClose = New CMCv.UI.Control.btn(components)
-            BtnRun = New CMCv.UI.Control.btn(components)
+            BtnClose = New CMCv.UI.Control.Btn(components)
+            BtnRun = New CMCv.UI.Control.Btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -127,10 +127,10 @@
             BtnClose.TabIndex = 2
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnClose.XOTampilkanFocusBorder = False
-            BtnClose.XOValidasiSemuaInput = False
-            BtnClose.XOValidasiSemuaInputTag = Nothing
+            BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClose.XOShowBorderOnFocus = False
+            BtnClose.XOValidateAllInput = False
+            BtnClose.XOValidateAllInputTag = Nothing
             ' 
             ' BtnRun
             ' 
@@ -150,10 +150,10 @@
             BtnRun.TabIndex = 1
             BtnRun.Text = "&Run"
             BtnRun.UseVisualStyleBackColor = False
-            BtnRun.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnRun.XOTampilkanFocusBorder = False
-            BtnRun.XOValidasiSemuaInput = False
-            BtnRun.XOValidasiSemuaInputTag = Nothing
+            BtnRun.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnRun.XOShowBorderOnFocus = False
+            BtnRun.XOValidateAllInput = False
+            BtnRun.XOValidateAllInputTag = Nothing
             ' 
             ' FRMreset
             ' 
@@ -181,7 +181,7 @@
 
         Friend WithEvents LblNotification As CMCv.UI.Control.lbl
         Friend WithEvents Txt_Confirmation As CMCv.UI.Control.txt
-        Friend WithEvents BtnClose As CMCv.UI.Control.btn
-        Friend WithEvents BtnRun As CMCv.UI.Control.btn
+        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
+        Friend WithEvents BtnRun As CMCv.UI.Control.Btn
     End Class
 End Namespace

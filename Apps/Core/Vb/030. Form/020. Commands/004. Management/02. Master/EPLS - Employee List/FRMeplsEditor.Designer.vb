@@ -26,10 +26,10 @@
             Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
             ChkAddNew = New CMCv.UI.Control.chk(components)
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             pctbxPhoto = New CMCv.UI.Control.pctbx(components)
-            BtnBrowsePhoto = New CMCv.UI.Control.btn(components)
+            BtnBrowsePhoto = New CMCv.UI.Control.Btn(components)
             OfdPhoto = New OpenFileDialog()
             pcbxFrame = New CMCv.UI.Control.pctbx(components)
             tpPermissions = New TabPage()
@@ -48,7 +48,7 @@
             ULbl7 = New CMCv.UI.Control.ULbl()
             TxtLogin = New CMCv.UI.Control.txt(components)
             tpEmployment = New TabPage()
-            BtnBrowseEmploymentType = New CMCv.UI.Control.btn(components)
+            BtnBrowseEmploymentType = New CMCv.UI.Control.Btn(components)
             ULbl14 = New CMCv.UI.Control.ULbl()
             ULbl12 = New CMCv.UI.Control.ULbl()
             ULbl11 = New CMCv.UI.Control.ULbl()
@@ -60,7 +60,7 @@
             TxtEmployeeNumber = New CMCv.UI.Control.txt(components)
             TxtEmploymentType = New CMCv.UI.Control.txt(components)
             TxtPosition = New CMCv.UI.Control.txt(components)
-            BtnBrowsePosition = New CMCv.UI.Control.btn(components)
+            BtnBrowsePosition = New CMCv.UI.Control.Btn(components)
             TxTDepartment = New CMCv.UI.Control.txt(components)
             TxtCompany = New CMCv.UI.Control.txt(components)
             tpGeneral = New TabPage()
@@ -161,10 +161,10 @@
             BtnSave.TabIndex = 801
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -184,10 +184,10 @@
             BtnCancel.TabIndex = 802
             BtnCancel.Text = "&Close"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' pctbxPhoto
             ' 
@@ -225,10 +225,10 @@
             BtnBrowsePhoto.TabIndex = 800
             BtnBrowsePhoto.Text = "Browse"
             BtnBrowsePhoto.UseVisualStyleBackColor = False
-            BtnBrowsePhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            BtnBrowsePhoto.XOTampilkanFocusBorder = False
-            BtnBrowsePhoto.XOValidasiSemuaInput = False
-            BtnBrowsePhoto.XOValidasiSemuaInputTag = Nothing
+            BtnBrowsePhoto.XOButtonType = ControlCodeBase.buttonType.Default
+            BtnBrowsePhoto.XOShowBorderOnFocus = False
+            BtnBrowsePhoto.XOValidateAllInput = False
+            BtnBrowsePhoto.XOValidateAllInputTag = Nothing
             ' 
             ' OfdPhoto
             ' 
@@ -528,10 +528,10 @@
             BtnBrowseEmploymentType.TabIndex = 1062
             BtnBrowseEmploymentType.Text = "..."
             BtnBrowseEmploymentType.UseVisualStyleBackColor = False
-            BtnBrowseEmploymentType.XOJenisTombol = ControlCodeBase.enuJenisTombol.Disabled
-            BtnBrowseEmploymentType.XOTampilkanFocusBorder = False
-            BtnBrowseEmploymentType.XOValidasiSemuaInput = False
-            BtnBrowseEmploymentType.XOValidasiSemuaInputTag = Nothing
+            BtnBrowseEmploymentType.XOButtonType = ControlCodeBase.buttonType.Disabled
+            BtnBrowseEmploymentType.XOShowBorderOnFocus = False
+            BtnBrowseEmploymentType.XOValidateAllInput = False
+            BtnBrowseEmploymentType.XOValidateAllInputTag = Nothing
             ' 
             ' ULbl14
             ' 
@@ -768,10 +768,10 @@
             BtnBrowsePosition.TabIndex = 204
             BtnBrowsePosition.Text = "..."
             BtnBrowsePosition.UseVisualStyleBackColor = False
-            BtnBrowsePosition.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            BtnBrowsePosition.XOTampilkanFocusBorder = False
-            BtnBrowsePosition.XOValidasiSemuaInput = False
-            BtnBrowsePosition.XOValidasiSemuaInputTag = Nothing
+            BtnBrowsePosition.XOButtonType = ControlCodeBase.buttonType.Default
+            BtnBrowsePosition.XOShowBorderOnFocus = False
+            BtnBrowsePosition.XOValidateAllInput = False
+            BtnBrowsePosition.XOValidateAllInputTag = Nothing
             ' 
             ' TxTDepartment
             ' 
@@ -1147,10 +1147,10 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
-        Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.btn
+        Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.Btn
         Friend WithEvents pctbxPhoto As CMCv.UI.Control.pctbx
         Friend WithEvents OfdPhoto As OpenFileDialog
         Friend WithEvents pcbxFrame As CMCv.UI.Control.pctbx
@@ -1164,7 +1164,7 @@
         Friend WithEvents TxtEmployeeNumber As CMCv.UI.Control.txt
         Friend WithEvents TxtEmploymentType As CMCv.UI.Control.txt
         Friend WithEvents TxtPosition As CMCv.UI.Control.txt
-        Friend WithEvents BtnBrowsePosition As CMCv.UI.Control.btn
+        Friend WithEvents BtnBrowsePosition As CMCv.UI.Control.Btn
         Friend WithEvents TxTDepartment As CMCv.UI.Control.txt
         Friend WithEvents TxtCompany As CMCv.UI.Control.txt
         Friend WithEvents tpPermissions As TabPage
@@ -1199,6 +1199,6 @@
         Friend WithEvents ULbl6 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl7 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
-        Friend WithEvents BtnBrowseEmploymentType As CMCv.UI.Control.btn
+        Friend WithEvents BtnBrowseEmploymentType As CMCv.UI.Control.Btn
     End Class
 End Namespace

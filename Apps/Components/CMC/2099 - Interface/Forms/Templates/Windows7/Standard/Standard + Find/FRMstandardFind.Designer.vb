@@ -21,7 +21,7 @@ Partial Class FRMstandardFind
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         PnlFind = New CMCv.UI.Control.pnl(components)
-        BtnClear = New CMCv.UI.Control.btn(components)
+        BtnClear = New CMCv.UI.Control.Btn(components)
         LblFind = New CMCv.UI.Control.lbl(components)
         TxtFind = New CMCv.UI.Control.txt(components)
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -88,10 +88,10 @@ Partial Class FRMstandardFind
         BtnClear.TabIndex = 801
         BtnClear.Text = "Clear"
         BtnClear.UseVisualStyleBackColor = False
-        BtnClear.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-        BtnClear.XOTampilkanFocusBorder = False
-        BtnClear.XOValidasiSemuaInput = False
-        BtnClear.XOValidasiSemuaInputTag = Nothing
+        BtnClear.XOButtonType = ControlCodeBase.buttonType.No
+        BtnClear.XOShowBorderOnFocus = False
+        BtnClear.XOValidateAllInput = False
+        BtnClear.XOValidateAllInputTag = Nothing
         ' 
         ' LblFind
         ' 
@@ -156,7 +156,7 @@ Partial Class FRMstandardFind
     End Sub
 
     Public WithEvents PnlFind As CMCv.UI.Control.pnl
-    Public WithEvents BtnClear As CMCv.UI.Control.btn
+    Public WithEvents BtnClear As CMCv.UI.Control.Btn
     Public WithEvents LblFind As CMCv.UI.Control.lbl
     Public WithEvents TxtFind As CMCv.UI.Control.txt
 End Class

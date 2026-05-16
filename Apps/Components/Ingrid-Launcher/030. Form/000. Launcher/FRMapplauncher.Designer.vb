@@ -27,14 +27,14 @@
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMapplauncher))
             Lbl1 = New CMCv.UI.Control.lbl(components)
             LblBuild = New CMCv.UI.Control.lbl(components)
-            BtnLaunch = New CMCv.UI.Control.btn(components)
+            BtnLaunch = New CMCv.UI.Control.Btn(components)
             Lbl3 = New CMCv.UI.Control.lbl(components)
             Lbl4 = New CMCv.UI.Control.lbl(components)
             CboApplication = New CMCv.UI.Control.cbo(components)
             tmrCountdown = New Timer(components)
             Lbl5 = New CMCv.UI.Control.lbl(components)
             LblCountdown = New CMCv.UI.Control.lbl(components)
-            BtnClose = New CMCv.UI.Control.btn(components)
+            BtnClose = New CMCv.UI.Control.Btn(components)
             SuspendLayout()
             ' 
             ' Lbl1
@@ -81,10 +81,10 @@
             BtnLaunch.TabIndex = 1
             BtnLaunch.Text = "&Launch"
             BtnLaunch.UseVisualStyleBackColor = False
-            BtnLaunch.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.Yes
-            BtnLaunch.XOTampilkanFocusBorder = False
-            BtnLaunch.XOValidasiSemuaInput = False
-            BtnLaunch.XOValidasiSemuaInputTag = Nothing
+            BtnLaunch.XOButtonType = CMCv.ControlCodeBase.buttonType.Yes
+            BtnLaunch.XOShowBorderOnFocus = False
+            BtnLaunch.XOValidateAllInput = False
+            BtnLaunch.XOValidateAllInputTag = Nothing
             ' 
             ' Lbl3
             ' 
@@ -169,10 +169,10 @@
             BtnClose.Text = "X"
             BtnClose.UseVisualStyleBackColor = False
             BtnClose.Visible = False
-            BtnClose.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-            BtnClose.XOTampilkanFocusBorder = False
-            BtnClose.XOValidasiSemuaInput = False
-            BtnClose.XOValidasiSemuaInputTag = Nothing
+            BtnClose.XOButtonType = CMCv.ControlCodeBase.buttonType.No
+            BtnClose.XOShowBorderOnFocus = False
+            BtnClose.XOValidateAllInput = False
+            BtnClose.XOValidateAllInputTag = Nothing
             ' 
             ' FRMapplauncher
             ' 
@@ -200,13 +200,13 @@
 
         Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
         Friend WithEvents LblBuild As CMCv.UI.Control.lbl
-        Friend WithEvents BtnLaunch As CMCv.UI.Control.btn
+        Friend WithEvents BtnLaunch As CMCv.UI.Control.Btn
         Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
         Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
         Friend WithEvents CboApplication As CMCv.UI.Control.cbo
         Friend WithEvents tmrCountdown As Timer
         Friend WithEvents Lbl5 As CMCv.UI.Control.lbl
         Friend WithEvents LblCountdown As CMCv.UI.Control.lbl
-        Friend WithEvents BtnClose As CMCv.UI.Control.btn
+        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
     End Class
 End Namespace

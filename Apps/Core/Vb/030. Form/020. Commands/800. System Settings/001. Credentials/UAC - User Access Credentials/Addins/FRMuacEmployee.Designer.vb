@@ -31,8 +31,8 @@
             position_code = New DataGridViewTextBoxColumn()
             employee_number = New DataGridViewTextBoxColumn()
             employee_fullname = New DataGridViewTextBoxColumn()
-            BtnOk = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
+            BtnOk = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             PnlBottomButton.SuspendLayout()
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -208,10 +208,10 @@
             BtnOk.TabIndex = 1
             BtnOk.Text = "&Ok"
             BtnOk.UseVisualStyleBackColor = False
-            BtnOk.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnOk.XOTampilkanFocusBorder = False
-            BtnOk.XOValidasiSemuaInput = False
-            BtnOk.XOValidasiSemuaInputTag = Nothing
+            BtnOk.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnOk.XOShowBorderOnFocus = False
+            BtnOk.XOValidateAllInput = False
+            BtnOk.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -230,10 +230,10 @@
             BtnCancel.TabIndex = 2
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' FRMuacEmployee
             ' 
@@ -255,8 +255,8 @@
             PerformLayout()
 
         End Sub
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
-        Friend WithEvents BtnOk As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
+        Friend WithEvents BtnOk As CMCv.UI.Control.Btn
         Friend WithEvents DgnAddinEmployee As CMCv.UI.Control.dgn
         Friend WithEvents employee_id As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn

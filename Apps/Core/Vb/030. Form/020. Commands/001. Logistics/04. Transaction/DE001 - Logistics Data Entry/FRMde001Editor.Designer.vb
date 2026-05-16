@@ -21,8 +21,8 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnClose = New CMCv.UI.Control.btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnClose = New CMCv.UI.Control.Btn(components)
             Txt1 = New CMCv.UI.Control.txt(components)
             LblNumber = New CMCv.UI.Control.lbl(components)
             Cbo1 = New CMCv.UI.Control.cbo(components)
@@ -75,10 +75,10 @@
             BtnSave.TabIndex = 1
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnClose
             ' 
@@ -98,10 +98,10 @@
             BtnClose.TabIndex = 2
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnClose.XOTampilkanFocusBorder = False
-            BtnClose.XOValidasiSemuaInput = False
-            BtnClose.XOValidasiSemuaInputTag = Nothing
+            BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClose.XOShowBorderOnFocus = False
+            BtnClose.XOValidateAllInput = False
+            BtnClose.XOValidateAllInputTag = Nothing
             ' 
             ' Txt1
             ' 
@@ -200,8 +200,8 @@
 
         End Sub
 
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
-        Friend WithEvents BtnClose As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
+        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
         Friend WithEvents LblNumber As CMCv.UI.Control.lbl
         Friend WithEvents Txt1 As CMCv.UI.Control.txt
         Friend WithEvents LblGroup As CMCv.UI.Control.lbl

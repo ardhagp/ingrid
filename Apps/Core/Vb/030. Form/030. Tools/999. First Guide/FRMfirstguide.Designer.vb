@@ -24,7 +24,7 @@
             Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Btn_Process = New CMCv.UI.Control.btn(components)
+            Btn_Process = New CMCv.UI.Control.Btn(components)
             Lbl_Step = New CMCv.UI.Control.lbl(components)
             Gbx_Company = New CMCv.UI.Control.gbx(components)
             ULblEmploymentType = New CMCv.UI.Control.ULbl()
@@ -39,9 +39,9 @@
             Txt_Position = New CMCv.UI.Control.txt(components)
             Txt_Department = New CMCv.UI.Control.txt(components)
             Txt_Company = New CMCv.UI.Control.txt(components)
-            Btn_Close = New CMCv.UI.Control.btn(components)
+            Btn_Close = New CMCv.UI.Control.Btn(components)
             Gbx_Login = New CMCv.UI.Control.gbx(components)
-            Btn_Check = New CMCv.UI.Control.btn(components)
+            Btn_Check = New CMCv.UI.Control.Btn(components)
             UPwdStrength1 = New CMCv.UI.Control.UPwdStrength()
             ULbl7 = New CMCv.UI.Control.ULbl()
             ULbl6 = New CMCv.UI.Control.ULbl()
@@ -106,10 +106,10 @@
             Btn_Process.TabIndex = 1
             Btn_Process.Text = "&Next"
             Btn_Process.UseVisualStyleBackColor = False
-            Btn_Process.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            Btn_Process.XOTampilkanFocusBorder = False
-            Btn_Process.XOValidasiSemuaInput = False
-            Btn_Process.XOValidasiSemuaInputTag = Nothing
+            Btn_Process.XOButtonType = ControlCodeBase.buttonType.Default
+            Btn_Process.XOShowBorderOnFocus = False
+            Btn_Process.XOValidateAllInput = False
+            Btn_Process.XOValidateAllInputTag = Nothing
             ' 
             ' Lbl_Step
             ' 
@@ -402,10 +402,10 @@
             Btn_Close.TabIndex = 2
             Btn_Close.Text = "&Close"
             Btn_Close.UseVisualStyleBackColor = False
-            Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            Btn_Close.XOTampilkanFocusBorder = False
-            Btn_Close.XOValidasiSemuaInput = False
-            Btn_Close.XOValidasiSemuaInputTag = Nothing
+            Btn_Close.XOButtonType = ControlCodeBase.buttonType.No
+            Btn_Close.XOShowBorderOnFocus = False
+            Btn_Close.XOValidateAllInput = False
+            Btn_Close.XOValidateAllInputTag = Nothing
             ' 
             ' Gbx_Login
             ' 
@@ -441,10 +441,10 @@
             Btn_Check.TabIndex = 11
             Btn_Check.Text = "&Check"
             Btn_Check.UseVisualStyleBackColor = False
-            Btn_Check.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            Btn_Check.XOTampilkanFocusBorder = False
-            Btn_Check.XOValidasiSemuaInput = False
-            Btn_Check.XOValidasiSemuaInputTag = Nothing
+            Btn_Check.XOButtonType = ControlCodeBase.buttonType.Default
+            Btn_Check.XOShowBorderOnFocus = False
+            Btn_Check.XOValidateAllInput = False
+            Btn_Check.XOValidateAllInputTag = Nothing
             ' 
             ' UPwdStrength1
             ' 
@@ -643,14 +643,14 @@
 
         End Sub
 
-        Friend WithEvents Btn_Process As CMCv.UI.Control.btn
+        Friend WithEvents Btn_Process As CMCv.UI.Control.Btn
         Friend WithEvents Lbl_Step As CMCv.UI.Control.lbl
         Friend WithEvents Gbx_Company As CMCv.UI.Control.gbx
         Friend WithEvents Txt_Company As CMCv.UI.Control.txt
         Friend WithEvents Txt_EmployeeName As CMCv.UI.Control.txt
         Friend WithEvents Txt_Position As CMCv.UI.Control.txt
         Friend WithEvents Txt_Department As CMCv.UI.Control.txt
-        Friend WithEvents Btn_Close As CMCv.UI.Control.btn
+        Friend WithEvents Btn_Close As CMCv.UI.Control.Btn
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
@@ -665,7 +665,7 @@
         Friend WithEvents object_da28eea8_631c_4534_a532_605841b1d2bd As CMCv.UI.Control.lbl
         Friend WithEvents UPwdStrength1 As CMCv.UI.Control.UPwdStrength
         Friend WithEvents Gbx_Modules As CMCv.UI.Control.gbx
-        Friend WithEvents Btn_Check As CMCv.UI.Control.btn
+        Friend WithEvents Btn_Check As CMCv.UI.Control.Btn
         Friend WithEvents Dgn1 As CMCv.UI.Control.dgn
         Friend WithEvents CboEmploymentType As CMCv.UI.Control.cbo
         Friend WithEvents ULblEmploymentType As CMCv.UI.Control.ULbl

@@ -24,13 +24,13 @@
             Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             TxtEmployeeNumber = New CMCv.UI.Control.txt(components)
             TxtEmployeeFullName = New CMCv.UI.Control.txt(components)
             TxtUsername = New CMCv.UI.Control.txt(components)
             TxtPassword = New CMCv.UI.Control.txt(components)
-            BtnBrowseEmployee = New CMCv.UI.Control.btn(components)
+            BtnBrowseEmployee = New CMCv.UI.Control.Btn(components)
             ChkAddNew = New CMCv.UI.Control.chk(components)
             LblPwdText = New CMCv.UI.Control.lbl(components)
             ProgressBar1 = New ProgressBar()
@@ -129,10 +129,10 @@
             BtnSave.TabIndex = 7
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -152,10 +152,10 @@
             BtnCancel.TabIndex = 8
             BtnCancel.Text = "&Close"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' TxtEmployeeNumber
             ' 
@@ -300,10 +300,10 @@
             BtnBrowseEmployee.TabIndex = 2
             BtnBrowseEmployee.Text = "..."
             BtnBrowseEmployee.UseVisualStyleBackColor = False
-            BtnBrowseEmployee.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            BtnBrowseEmployee.XOTampilkanFocusBorder = False
-            BtnBrowseEmployee.XOValidasiSemuaInput = False
-            BtnBrowseEmployee.XOValidasiSemuaInputTag = Nothing
+            BtnBrowseEmployee.XOButtonType = ControlCodeBase.buttonType.Default
+            BtnBrowseEmployee.XOShowBorderOnFocus = False
+            BtnBrowseEmployee.XOValidateAllInput = False
+            BtnBrowseEmployee.XOValidateAllInputTag = Nothing
             ' 
             ' ChkAddNew
             ' 
@@ -620,13 +620,13 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents TxtEmployeeNumber As CMCv.UI.Control.txt
         Friend WithEvents TxtPassword As CMCv.UI.Control.txt
         Friend WithEvents TxtUsername As CMCv.UI.Control.txt
         Friend WithEvents TxtEmployeeFullName As CMCv.UI.Control.txt
-        Friend WithEvents BtnBrowseEmployee As CMCv.UI.Control.btn
+        Friend WithEvents BtnBrowseEmployee As CMCv.UI.Control.Btn
         Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
         Friend WithEvents LblPwdText As CMCv.UI.Control.lbl
         Friend WithEvents ProgressBar1 As ProgressBar

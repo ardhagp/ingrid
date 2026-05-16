@@ -21,8 +21,8 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             CboCompany = New CMCv.UI.Control.cbo(components)
             CboAccountingBook = New CMCv.UI.Control.cbo(components)
             Lbl1 = New CMCv.UI.Control.lbl(components)
@@ -105,10 +105,10 @@
             BtnSave.TabIndex = 6
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -128,10 +128,10 @@
             BtnCancel.TabIndex = 7
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' CboCompany
             ' 
@@ -339,8 +339,8 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents Lbl5 As CMCv.UI.Control.lbl
         Friend WithEvents TxtAccountName As CMCv.UI.Control.txt
         Friend WithEvents Lbl4 As CMCv.UI.Control.lbl

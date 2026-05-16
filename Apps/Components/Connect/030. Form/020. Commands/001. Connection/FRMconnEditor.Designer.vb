@@ -22,12 +22,12 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMconnEditor))
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             TbctlBasic = New CMCv.UI.Control.tbctl(components)
             tp1_ = New TabPage()
             ChkIsMasked = New CMCv.UI.Control.chk(components)
-            btnExport = New CMCv.UI.Control.btn(components)
+            btnExport = New CMCv.UI.Control.Btn(components)
             CboDBEngine = New CMCv.UI.Control.cbo(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
             ULbl_DatabaseName = New CMCv.UI.Control.ULbl()
@@ -44,14 +44,14 @@
             TxtConnectionName = New CMCv.UI.Control.txt(components)
             TxtAddress = New CMCv.UI.Control.txt(components)
             tp2_ = New TabPage()
-            btnImport = New CMCv.UI.Control.btn(components)
-            btnSaveAs = New CMCv.UI.Control.btn(components)
+            btnImport = New CMCv.UI.Control.Btn(components)
+            btnSaveAs = New CMCv.UI.Control.Btn(components)
             Pnl1 = New CMCv.UI.Control.pnl(components)
             txtImportContent = New CMCv.UI.Control.txt(components)
-            btnGet = New CMCv.UI.Control.btn(components)
+            btnGet = New CMCv.UI.Control.Btn(components)
             ULbl2 = New CMCv.UI.Control.ULbl()
             txtImportCode = New CMCv.UI.Control.txt(components)
-            Btn_Test = New CMCv.UI.Control.btn(components)
+            Btn_Test = New CMCv.UI.Control.Btn(components)
             TtAllComponents = New ToolTip(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -107,10 +107,10 @@
             BtnSave.TabIndex = 10
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -130,10 +130,10 @@
             BtnCancel.TabIndex = 11
             BtnCancel.Text = "&Close"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' TbctlBasic
             ' 
@@ -205,10 +205,10 @@
             btnExport.TabIndex = 11
             btnExport.Text = "Export"
             btnExport.UseVisualStyleBackColor = False
-            btnExport.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            btnExport.XOTampilkanFocusBorder = False
-            btnExport.XOValidasiSemuaInput = False
-            btnExport.XOValidasiSemuaInputTag = Nothing
+            btnExport.XOButtonType = ControlCodeBase.buttonType.Default
+            btnExport.XOShowBorderOnFocus = False
+            btnExport.XOValidateAllInput = False
+            btnExport.XOValidateAllInputTag = Nothing
             ' 
             ' CboDBEngine
             ' 
@@ -547,10 +547,10 @@
             btnImport.TabIndex = 6
             btnImport.Text = "Import"
             btnImport.UseVisualStyleBackColor = False
-            btnImport.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            btnImport.XOTampilkanFocusBorder = False
-            btnImport.XOValidasiSemuaInput = False
-            btnImport.XOValidasiSemuaInputTag = Nothing
+            btnImport.XOButtonType = ControlCodeBase.buttonType.Default
+            btnImport.XOShowBorderOnFocus = False
+            btnImport.XOValidateAllInput = False
+            btnImport.XOValidateAllInputTag = Nothing
             ' 
             ' btnSaveAs
             ' 
@@ -567,10 +567,10 @@
             btnSaveAs.TabIndex = 5
             btnSaveAs.Text = "Save As"
             btnSaveAs.UseVisualStyleBackColor = False
-            btnSaveAs.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            btnSaveAs.XOTampilkanFocusBorder = False
-            btnSaveAs.XOValidasiSemuaInput = False
-            btnSaveAs.XOValidasiSemuaInputTag = Nothing
+            btnSaveAs.XOButtonType = ControlCodeBase.buttonType.Default
+            btnSaveAs.XOShowBorderOnFocus = False
+            btnSaveAs.XOValidateAllInput = False
+            btnSaveAs.XOValidateAllInputTag = Nothing
             ' 
             ' Pnl1
             ' 
@@ -626,10 +626,10 @@
             btnGet.TabIndex = 2
             btnGet.Text = "Get"
             btnGet.UseVisualStyleBackColor = False
-            btnGet.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            btnGet.XOTampilkanFocusBorder = False
-            btnGet.XOValidasiSemuaInput = False
-            btnGet.XOValidasiSemuaInputTag = Nothing
+            btnGet.XOButtonType = ControlCodeBase.buttonType.Default
+            btnGet.XOShowBorderOnFocus = False
+            btnGet.XOValidateAllInput = False
+            btnGet.XOValidateAllInputTag = Nothing
             ' 
             ' ULbl2
             ' 
@@ -690,10 +690,10 @@
             Btn_Test.TabIndex = 12
             Btn_Test.Text = "Test"
             Btn_Test.UseVisualStyleBackColor = False
-            Btn_Test.XOJenisTombol = ControlCodeBase.enuJenisTombol.Warning
-            Btn_Test.XOTampilkanFocusBorder = False
-            Btn_Test.XOValidasiSemuaInput = False
-            Btn_Test.XOValidasiSemuaInputTag = Nothing
+            Btn_Test.XOButtonType = ControlCodeBase.buttonType.Warning
+            Btn_Test.XOShowBorderOnFocus = False
+            Btn_Test.XOValidateAllInput = False
+            Btn_Test.XOValidateAllInputTag = Nothing
             ' 
             ' TtAllComponents
             ' 
@@ -726,8 +726,8 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents TbctlBasic As CMCv.UI.Control.tbctl
         Friend WithEvents tp1_ As TabPage
         Friend WithEvents TxtAddress As CMCv.UI.Control.txt
@@ -740,7 +740,7 @@
         Friend WithEvents ULbl_Port As CMCv.UI.Control.ULbl
         Friend WithEvents TxtPassword As CMCv.UI.Control.txt
         Friend WithEvents TxtUsername As CMCv.UI.Control.txt
-        Friend WithEvents Btn_Test As CMCv.UI.Control.btn
+        Friend WithEvents Btn_Test As CMCv.UI.Control.Btn
         Friend WithEvents ChkDefault As CMCv.UI.Control.chk
         Friend WithEvents TxtDatabaseName As CMCv.UI.Control.txt
         Friend WithEvents ULbl_DatabaseName As CMCv.UI.Control.ULbl
@@ -749,12 +749,12 @@
         Friend WithEvents tp2_ As TabPage
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
         Friend WithEvents txtImportCode As CMCv.UI.Control.txt
-        Friend WithEvents btnGet As CMCv.UI.Control.btn
+        Friend WithEvents btnGet As CMCv.UI.Control.Btn
         Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
         Friend WithEvents txtImportContent As CMCv.UI.Control.txt
-        Friend WithEvents btnExport As CMCv.UI.Control.btn
-        Friend WithEvents btnImport As CMCv.UI.Control.btn
-        Friend WithEvents btnSaveAs As CMCv.UI.Control.btn
+        Friend WithEvents btnExport As CMCv.UI.Control.Btn
+        Friend WithEvents btnImport As CMCv.UI.Control.Btn
+        Friend WithEvents btnSaveAs As CMCv.UI.Control.Btn
         Friend WithEvents ChkIsMasked As CMCv.UI.Control.chk
         Friend WithEvents TtAllComponents As ToolTip
     End Class

@@ -24,8 +24,8 @@
             Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             ChkAddNew = New CMCv.UI.Control.chk(components)
             Tbctl1 = New CMCv.UI.Control.tbctl(components)
             tpGeneral = New TabPage()
@@ -99,10 +99,10 @@
             BtnSave.TabIndex = 6
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -122,10 +122,10 @@
             BtnCancel.TabIndex = 8
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' ChkAddNew
             ' 
@@ -499,8 +499,8 @@
             PerformLayout()
         End Sub
         Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents Tbctl1 As CMCv.UI.Control.tbctl
         Friend WithEvents tpGeneral As TabPage
         Friend WithEvents TxtCode As CMCv.UI.Control.txt
