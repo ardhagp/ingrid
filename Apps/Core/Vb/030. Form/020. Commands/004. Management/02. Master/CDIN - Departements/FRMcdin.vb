@@ -131,5 +131,9 @@ Namespace UI
             Call GetData()
         End Sub
 
+        <SupportedOSPlatform("windows")>
+        Private Sub FRMcdin_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus
+            Me.WindowState = FormWindowState.Maximized
+        End Sub
     End Class
 End Namespace

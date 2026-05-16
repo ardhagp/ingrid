@@ -286,7 +286,7 @@ Namespace Application
                                                        $"from sys_notification nt " &
                                                        $"where (nt.notification_employee = @EmployeeId) " &
                                                        $"And (nt.notification_isread = 0)"
-                    varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
+                    varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.UserParameters))
                 End If
                 Return varIsExist
             Catch ex As Exception

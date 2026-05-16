@@ -20,10 +20,10 @@
     <Import Project="$(NuGetPackageRoot)coverlet.msbuild\6.0.4\build\coverlet.msbuild.props" Condition="Exists('$(NuGetPackageRoot)coverlet.msbuild\6.0.4\build\coverlet.msbuild.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgSyncfusion_Shared_Base Condition=" '$(PkgSyncfusion_Shared_Base)' == '' ">C:\Users\titoa\.nuget\packages\syncfusion.shared.base\23.1.41</PkgSyncfusion_Shared_Base>
-    <PkgSyncfusion_Grid_Windows Condition=" '$(PkgSyncfusion_Grid_Windows)' == '' ">C:\Users\titoa\.nuget\packages\syncfusion.grid.windows\23.1.41</PkgSyncfusion_Grid_Windows>
-    <PkgSyncfusion_Tools_Windows Condition=" '$(PkgSyncfusion_Tools_Windows)' == '' ">C:\Users\titoa\.nuget\packages\syncfusion.tools.windows\23.1.41</PkgSyncfusion_Tools_Windows>
-    <PkgSyncfusion_PdfViewer_Windows Condition=" '$(PkgSyncfusion_PdfViewer_Windows)' == '' ">C:\Users\titoa\.nuget\packages\syncfusion.pdfviewer.windows\23.1.41</PkgSyncfusion_PdfViewer_Windows>
+    <PkgSyncfusion_Shared_Base Condition=" '$(PkgSyncfusion_Shared_Base)' == '' ">C:\Users\titoa\.nuget\packages\syncfusion.shared.base\33.2.6</PkgSyncfusion_Shared_Base>
+    <PkgSyncfusion_Grid_Windows Condition=" '$(PkgSyncfusion_Grid_Windows)' == '' ">C:\Users\titoa\.nuget\packages\syncfusion.grid.windows\33.2.6</PkgSyncfusion_Grid_Windows>
+    <PkgSyncfusion_Tools_Windows Condition=" '$(PkgSyncfusion_Tools_Windows)' == '' ">C:\Users\titoa\.nuget\packages\syncfusion.tools.windows\33.2.6</PkgSyncfusion_Tools_Windows>
+    <PkgSyncfusion_PdfViewer_Windows Condition=" '$(PkgSyncfusion_PdfViewer_Windows)' == '' ">C:\Users\titoa\.nuget\packages\syncfusion.pdfviewer.windows\33.2.6</PkgSyncfusion_PdfViewer_Windows>
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\titoa\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.4</PkgMicrosoft_CodeAnalysis_Analyzers>
     <PkgReportGenerator Condition=" '$(PkgReportGenerator)' == '' ">C:\Users\titoa\.nuget\packages\reportgenerator\5.5.0</PkgReportGenerator>
   </PropertyGroup>

@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMccinEditor
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -366,8 +366,11 @@
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(899, 898)
+            ControlBox = False
             Margin = New Padding(10, 5, 10, 5)
+            MinimizeBox = False
             Name = "FRMccinEditor"
+            ShowIcon = False
             PnlBottomButton.ResumeLayout(False)
             PnlBottomButton.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

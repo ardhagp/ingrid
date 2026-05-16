@@ -20,10 +20,9 @@ Namespace UI.Control
             Me.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
         End Sub
 
+        '<System.ComponentModel.Description("This text will show on label"), System.ComponentModel.Editor(GetType(Design.MultilineStringEditor), GetType(System.Drawing.Design.UITypeEditor))>
         Private _varText As String
         <SupportedOSPlatform("windows")>
-        <System.ComponentModel.Description("This text will show on label
-"), System.ComponentModel.Editor(GetType(System.ComponentModel.Design.MultilineStringEditor), GetType(System.Drawing.Design.UITypeEditor))>
         Public Property SLFText As String
             Get
                 Return _varText
@@ -41,8 +40,7 @@ Namespace UI.Control
 
         Private _varTextBorder As Boolean
         <SupportedOSPlatform("windows")>
-        <System.ComponentModel.Description("This show text border
-")>
+        <System.ComponentModel.Description("This show text border")>
         Public Property SLFTextBorder As Boolean
             Get
                 Return _varTextBorder
@@ -64,8 +62,7 @@ Namespace UI.Control
 
         Private varReadjustText As Boolean
         <SupportedOSPlatform("windows")>
-        <System.ComponentModel.Description("Enable this to readjust text
-")>
+        <System.ComponentModel.Description("Enable this to readjust text")>
         Public Property SLFTextAdjuster As Boolean
             Get
                 Return varReadjustText

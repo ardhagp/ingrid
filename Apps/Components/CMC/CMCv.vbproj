@@ -229,20 +229,20 @@
     <Compile Update="2099 - Interface\Forms\Templates\Windows7\Blank.Designer.vb">
       <DependentUpon>Blank.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\frmStandard.Designer.vb">
-      <DependentUpon>frmStandard.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\fRMstandard.Designer.vb">
+      <DependentUpon>FRMstandard.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Find + Footer\Std_Fi_Fo.Designer.vb">
-      <DependentUpon>Std_Fi_Fo.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Find + Footer\FRMstandardFindFooter.Designer.vb">
+      <DependentUpon>FRMstandardFindFooter.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Find\Std_Fi.Designer.vb">
-      <DependentUpon>Std_Fi.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Find\FRMstandardFind.Designer.vb">
+      <DependentUpon>FRMstandardFind.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Footer\Report Basic\Rpt_Bsc.Designer.vb">
-      <DependentUpon>Rpt_Bsc.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Footer\Report Basic\FRMreportBasic.Designer.vb">
+      <DependentUpon>FRMreportBasic.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Footer\Std_Fo.Designer.vb">
-      <DependentUpon>Std_Fo.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Footer\FRMstandardFooter.Designer.vb">
+      <DependentUpon>FRMstandardFooter.vb</DependentUpon>
     </Compile>
     <Compile Update="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -510,11 +510,11 @@
     <PackageReference Include="MySql.Data" Version="9.7.0" />
     <PackageReference Include="NETCore.Encrypt" Version="2.1.1" />
     <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.24" />
-    <PackageReference Include="Syncfusion.Grid.Windows" Version="23.1.41" />
-    <PackageReference Include="Syncfusion.Licensing" Version="23.1.41" />
-    <PackageReference Include="Syncfusion.PdfViewer.Windows" Version="23.1.41" />
-    <PackageReference Include="Syncfusion.Shared.Base" Version="23.1.41" />
-    <PackageReference Include="Syncfusion.Tools.Windows" Version="23.1.41" />
+    <PackageReference Include="Syncfusion.Grid.Windows" Version="33.2.6" />
+    <PackageReference Include="Syncfusion.Licensing" Version="33.2.6" />
+    <PackageReference Include="Syncfusion.PdfViewer.Windows" Version="33.2.6" />
+    <PackageReference Include="Syncfusion.Shared.Base" Version="33.2.6" />
+    <PackageReference Include="Syncfusion.Tools.Windows" Version="33.2.6" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.1" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />

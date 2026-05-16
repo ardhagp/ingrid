@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMcdin
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -59,7 +59,7 @@
             ' 
             DgnCDIN.AllowUserToAddRows = False
             DgnCDIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(235), CByte(210), CByte(159))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(198), CByte(223), CByte(169))
             DgnCDIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnCDIN.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnCDIN.BorderStyle = BorderStyle.None
@@ -67,7 +67,7 @@
             DgnCDIN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
             DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
             DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -78,7 +78,7 @@
             DgnCDIN.Columns.AddRange(New DataGridViewColumn() {department_id, company_code, department_code, department_name, department_description})
             DgnCDIN.Dock = DockStyle.Fill
             DgnCDIN.EnableHeadersVisualStyles = False
-            DgnCDIN.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DgnCDIN.Font = New Font("Verdana", 8F)
             DgnCDIN.Location = New Point(0, 88)
             DgnCDIN.Margin = New Padding(6, 5, 6, 5)
             DgnCDIN.Name = "DgnCDIN"
@@ -86,7 +86,7 @@
             DgnCDIN.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle3.BackColor = Color.YellowGreen
-            DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
             DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
             DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -159,13 +159,16 @@
             AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1307, 1078)
             ControlBox = False
+            FormBorderStyle = FormBorderStyle.SizableToolWindow
             Margin = New Padding(10, 5, 10, 5)
             MaximizeBox = False
+            MdiChildrenMinimizedAnchorBottom = False
             MinimizeBox = False
             Name = "FRMcdin"
             ShowIcon = False
             ShowInTaskbar = False
             WindowState = FormWindowState.Maximized
+            XOWindowAlwaysMaximized = True
             PnlFind.ResumeLayout(False)
             PnlFind.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

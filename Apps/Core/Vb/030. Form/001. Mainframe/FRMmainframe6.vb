@@ -10,7 +10,7 @@ Namespace UI
 
 #Region "Interface"
         Public Interface ICommandFunction
-            Function LoadCommand() As CMCv.frmStandard
+            Function LoadCommand() As CMCv.FRMstandard
         End Interface
 
         Public Interface ICommandName
@@ -44,8 +44,8 @@ Namespace UI
         Private consDatabaseProperties As String = "DatabaseProperties"
 
         Private Const tUserData As String = "UserData"
-        Private Const pCommand As String = "@Command"
-        Private Const pEmployeeId As String = "@EmployeeId"
+        'Private Const pCommand As String = "@Command"
+        'Private Const pEmployeeId As String = "@EmployeeId"
 #End Region
 
 #Region "Subs Collection"
@@ -97,8 +97,8 @@ Namespace UI
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub GetNotification()
-            varDataProperties.AllParameters.Remove("@EmployeeId")
-            varDataProperties.AllParameters.Add("@EmployeeId", CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_id")))
+            'varDataProperties.UserParameters.Remove(tEmployee.P_EmployeeId)
+            'varDataProperties.UserParameters.Add(tEmployee.P_EmployeeId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_id")))
             varTotalNotification = varSqlNotification.Exist(varDataProperties)
             If varTotalNotification > 0 Then
                 USERMENU.Text = varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_fullname").ToString & "*"
@@ -131,7 +131,7 @@ Namespace UI
                 If Not (isforced) AndAlso (Global.System.Windows.Forms.MessageBox.Show("Do you want to close all Workspace windows?", "Close All Windows", Global.System.Windows.Forms.MessageBoxButtons.YesNo, Global.System.Windows.Forms.MessageBoxIcon.Question) = Global.System.Windows.Forms.DialogResult.No) Then
                     Return
                 Else
-                    For Each openedforms As CMCv.frmStandard In Tmdi_.MdiChildren
+                    For Each openedforms As CMCv.FRMstandard In Me.MdiChildren
                         openedforms.Close()
                         openedforms.Dispose()
                     Next
@@ -328,7 +328,7 @@ Namespace UI
                 clsLog.ShowData(proLog)
                 clsLog = Nothing
                 Call ActivateLicenses()
-                Tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererVS2010)
+                'Tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererVS2010)
                 varGetNotifCounter = 58
                 varForceRefreshMainframeData = False
                 TmrStatus.Interval = varStatusTimeWait * 1000
@@ -471,10 +471,6 @@ Namespace UI
             End If
         End Sub
 
-        Private Sub UpdateToolStripMenuItem_Click(sender As Object, e As EventArgs)
-            'TODO: Update method
-        End Sub
-
         <SupportedOSPlatform("windows")>
         Private Sub PhotoResizerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PhotoResizerToolStripMenuItem.Click
             Call EnterCommand("PHTRZ")
@@ -490,7 +486,7 @@ Namespace UI
 
         Private Sub ContentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentsToolStripMenuItem.Click
             Try
-                ''' Open Wiki URL
+                'Open Wiki URL in default browser
                 Process.Start(New ProcessStartInfo(My.Settings.URL_Wiki) With {.UseShellExecute = True})
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
@@ -502,10 +498,6 @@ Namespace UI
             varGetNotifCounter += 1
             If varGetNotifCounter = 60 Then
                 Call GetNotification()
-                'Call GetRunningText()
-                'Call GetProfile()
-                'Call GetStorage()
-                'Call GetSettings()
                 varGetNotifCounter = 0
             End If
         End Sub
@@ -604,7 +596,7 @@ Namespace UI
 
         Private Sub Support_Click(sender As Object, e As EventArgs) Handles SUPPORT.Click
             Try
-                ''' Open Wiki URL
+                'Open Wiki URL in default browser
                 Process.Start(New ProcessStartInfo(My.Settings.URL_Wiki) With {.UseShellExecute = True})
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
@@ -675,7 +667,7 @@ Namespace UI
 
         Private Sub BuymeacoffeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BuymeacoffeToolStripMenuItem.Click
             Try
-                ''' Open Saweria URL
+                'Open Saweria URL
                 Process.Start(New ProcessStartInfo(My.Settings.URL_Saweria) With {.UseShellExecute = True})
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)

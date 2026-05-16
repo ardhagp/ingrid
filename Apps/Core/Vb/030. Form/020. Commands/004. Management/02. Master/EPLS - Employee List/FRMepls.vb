@@ -154,5 +154,9 @@ Namespace UI
             TxtFind.ClearSearch()
         End Sub
 
+        <SupportedOSPlatform("windows")>
+        Private Sub FRMepls_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus
+            Me.WindowState = FormWindowState.Maximized
+        End Sub
     End Class
 End Namespace

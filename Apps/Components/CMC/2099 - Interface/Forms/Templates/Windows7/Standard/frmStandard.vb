@@ -1,9 +1,10 @@
-﻿Imports System.Runtime.Versioning
+﻿Imports System.ComponentModel
+Imports System.Runtime.Versioning
 
-Public Class frmStandard
+Public Class FRMstandard
 
     <SupportedOSPlatform("windows")>
-    Private Sub frmStandard_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub FRMstandard_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             Call ActivateLicenses()
             GC.Collect()
@@ -16,24 +17,24 @@ Public Class frmStandard
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub frmStandard_FormClosed(sender As Object, e As system.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
+    Private Sub FRMstandard_FormClosed(sender As Object, e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
         If Not SLFStatusLabel.IsDisposed Then
             SLFStatusLabel.Text = ""
         End If
     End Sub
 
-    Private Sub frmStandard_FormClosing(sender As Object, e As system.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub FRMstandard_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         GC.Collect()
         GC.Collect(GC.MaxGeneration)
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Private Sub frmStandard_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
+    Private Sub FRMstandard_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
         SLFNamaForm.Width = pnl_.Width - 111
         SLFSubNamaForm.Width = pnl_.Width - 134
     End Sub
 
-    Private Sub frmStandard_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+    Private Sub FRMstandard_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Me.Dispose()
     End Sub
 
@@ -68,8 +69,8 @@ Public Class frmStandard
             list.Add(Parent)
         End If
 
-        For Each child As System.Windows.Forms.Control In Parent.Controls
-            FindControlRecursive(list, child, CtrlType)
+        For Each varEachChild As System.Windows.Forms.Control In Parent.Controls
+            FindControlRecursive(list, varEachChild, CtrlType)
         Next
 
         Return list
@@ -84,4 +85,18 @@ Public Class frmStandard
             varAllControls = Me.GetNextControl(varAllControls, True)
         Loop
     End Sub
+
+    <SupportedOSPlatform("windows")>
+    Private Sub FRMstandard_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        If Me.IsMdiChild AndAlso XOWindowAlwaysMaximized Then
+            Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        End If
+    End Sub
+
+    <Browsable(True)>
+    <Category("Window Behaviour")>
+    <Description("Window always maximize behaviour settings")>
+    <DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)>
+    Public Property XOWindowAlwaysMaximized As Boolean = False
+
 End Class

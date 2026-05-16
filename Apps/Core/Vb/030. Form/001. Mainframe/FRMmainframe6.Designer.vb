@@ -156,7 +156,6 @@
             Tmr_runningtext = New Timer(components)
             TxtRunning = New CMCv.UI.Control.txt(components)
             spl_ = New Splitter()
-            Tmdi_ = New Syncfusion.Windows.Forms.Tools.TabbedGroupedMDIManager()
             Ms_mainframe.SuspendLayout()
             pnl_mainframe_left.SuspendLayout()
             PnlStorage.SuspendLayout()
@@ -932,7 +931,7 @@
             Txt_shortcut.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
             Txt_shortcut.AutoCompleteMode = AutoCompleteMode.Suggest
             Txt_shortcut.AutoCompleteSource = AutoCompleteSource.CustomSource
-            Txt_shortcut.Font = New Font("Segoe UI", 12.0F)
+            Txt_shortcut.Font = New Font("Segoe UI", 12F)
             Txt_shortcut.Location = New Point(4, 17)
             Txt_shortcut.Margin = New Padding(4, 5, 4, 5)
             Txt_shortcut.MaxLength = 255
@@ -1013,7 +1012,7 @@
             ' LblPosition
             ' 
             LblPosition.AutoSize = True
-            LblPosition.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            LblPosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             LblPosition.ForeColor = Color.Yellow
             LblPosition.Location = New Point(187, 157)
             LblPosition.Margin = New Padding(4, 0, 4, 0)
@@ -1119,7 +1118,7 @@
             TxtRunning.BackColor = Color.White
             TxtRunning.BorderStyle = BorderStyle.FixedSingle
             TxtRunning.Dock = DockStyle.Top
-            TxtRunning.Font = New Font("Segoe UI", 12.0F)
+            TxtRunning.Font = New Font("Segoe UI", 12F)
             TxtRunning.Location = New Point(0, 42)
             TxtRunning.Margin = New Padding(4, 5, 4, 5)
             TxtRunning.MaxLength = 255
@@ -1161,27 +1160,9 @@
             spl_.TabIndex = 9999
             spl_.TabStop = False
             ' 
-            ' Tmdi_
-            ' 
-            Tmdi_.ActiveTabFont = New Font("Segoe UI", 12.0F, FontStyle.Bold)
-            Tmdi_.AttachedTo = Me
-            Tmdi_.CloseButtonBackColor = Color.Red
-            Tmdi_.CloseButtonColor = Color.White
-            Tmdi_.CloseButtonToolTip = ""
-            Tmdi_.CloseButtonVisible = False
-            Tmdi_.DropDownButtonToolTip = ""
-            Tmdi_.ImageSize = New Size(16, 16)
-            Tmdi_.ShowCloseButton = True
-            Tmdi_.ShowCloseButtonBackColor = True
-            Tmdi_.TabFont = New Font("Segoe UI", 12.0F)
-            Tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererIE7)
-            Tmdi_.ThemeName = "TabRendererIE7"
-            Tmdi_.ThemesEnabled = True
-            Tmdi_.UseIconsInTabs = False
-            ' 
             ' FRMmainframe6
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             AutoScaleMode = AutoScaleMode.Font
             ClientSize = New Size(1120, 935)
             Controls.Add(spl_)
@@ -1259,7 +1240,6 @@
         Friend WithEvents TmrStatus As Timer
         Friend WithEvents Tmr_runningtext As Timer
         Public WithEvents Ms_mainframe As MenuStrip
-        Friend WithEvents Tmdi_ As Syncfusion.Windows.Forms.Tools.TabbedGroupedMDIManager
         Friend WithEvents pnl_mainframe_left As CMCv.UI.Control.pnl
         Friend WithEvents spl_ As Splitter
         Friend WithEvents Tv_mainframe As CMCv.UI.Control.tv
