@@ -36,7 +36,7 @@
             CboArea = New CMCv.UI.Control.cbo(components)
             MebStart = New CMCv.UI.Control.meb(components)
             BtnGETContent = New CMCv.UI.Control.Btn(components)
-            ChkAddNew = New CMCv.UI.Control.chk(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             MebEnd = New CMCv.UI.Control.meb(components)
             DtpEnd = New CMCv.UI.Control.dtp(components)
             TxtFeedback = New CMCv.UI.Control.txt(components)
@@ -1082,7 +1082,7 @@
         Friend WithEvents CboArea As CMCv.UI.Control.cbo
         Friend WithEvents MebStart As CMCv.UI.Control.meb
         Friend WithEvents BtnGETContent As CMCv.UI.Control.Btn
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents MebEnd As CMCv.UI.Control.meb
         Friend WithEvents DtpEnd As CMCv.UI.Control.dtp
         Friend WithEvents TxtFeedback As CMCv.UI.Control.txt

@@ -31,7 +31,7 @@
             TxtUsername = New CMCv.UI.Control.txt(components)
             TxtPassword = New CMCv.UI.Control.txt(components)
             BtnBrowseEmployee = New CMCv.UI.Control.Btn(components)
-            ChkAddNew = New CMCv.UI.Control.chk(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             LblPwdText = New CMCv.UI.Control.lbl(components)
             ProgressBar1 = New ProgressBar()
             TbctlAccess = New CMCv.UI.Control.tbctl(components)
@@ -47,8 +47,8 @@
             useraccess_id = New DataGridViewTextBoxColumn()
             module_id = New DataGridViewTextBoxColumn()
             TpAccessibility = New TabPage()
-            ChkAdministrator = New CMCv.UI.Control.chk(components)
-            ChkLocked = New CMCv.UI.Control.chk(components)
+            ChkAdministrator = New CMCv.UI.Control.Chk(components)
+            ChkLocked = New CMCv.UI.Control.Chk(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
             ULbl2 = New CMCv.UI.Control.ULbl()
             ULbl3 = New CMCv.UI.Control.ULbl()
@@ -627,15 +627,15 @@
         Friend WithEvents TxtUsername As CMCv.UI.Control.txt
         Friend WithEvents TxtEmployeeFullName As CMCv.UI.Control.txt
         Friend WithEvents BtnBrowseEmployee As CMCv.UI.Control.Btn
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents LblPwdText As CMCv.UI.Control.lbl
         Friend WithEvents ProgressBar1 As ProgressBar
         Friend WithEvents TbctlAccess As CMCv.UI.Control.tbctl
         Friend WithEvents TpPermissions As TabPage
         Friend WithEvents DgnUACe As CMCv.UI.Control.dgn
         Friend WithEvents TpAccessibility As TabPage
-        Friend WithEvents ChkAdministrator As CMCv.UI.Control.chk
-        Friend WithEvents ChkLocked As CMCv.UI.Control.chk
+        Friend WithEvents ChkAdministrator As CMCv.UI.Control.Chk
+        Friend WithEvents ChkLocked As CMCv.UI.Control.Chk
         Friend WithEvents modulegroup_name As DataGridViewTextBoxColumn
         Friend WithEvents module_code As DataGridViewTextBoxColumn
         Friend WithEvents useraccess_view As DataGridViewCheckBoxColumn

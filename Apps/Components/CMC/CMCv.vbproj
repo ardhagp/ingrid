@@ -115,9 +115,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\CheckBox\chk.Designer.vb">
-      <DependentUpon>chk.vb</DependentUpon>
+      <DependentUpon>Chk.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\CheckBox\chk.vb">
+    <Compile Update="2099 - Interface\Controls\CheckBox\Chk.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\ComboBox\cbo.Designer.vb">
@@ -320,7 +320,7 @@
     <EmbeddedResource Include="2099 - Interface\Controls\MaskEditBox\meb.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\CheckBox\chk.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\CheckBox\Chk.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="2099 - Interface\Controls\RadioButton\rdo.ico" />

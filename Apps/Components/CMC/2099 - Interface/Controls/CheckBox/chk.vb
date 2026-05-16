@@ -6,7 +6,7 @@ Namespace UI.Control
     ''' <summary>
     ''' Custom checkbox
     ''' </summary>
-    Public Class chk
+    Public Class Chk
         Inherits System.Windows.Forms.CheckBox
 
         <SupportedOSPlatform("windows")>
@@ -15,7 +15,7 @@ Namespace UI.Control
             Call ActivateLicenses()
             MyBase.Font = globalFontLbl
             MyBase.BackColor = Drawing.Color.Transparent
-            MyBase.FlatStyle = system.Windows.Forms.FlatStyle.Flat
+            MyBase.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             MyBase.DoubleBuffered = True
         End Sub
 

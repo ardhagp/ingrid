@@ -25,7 +25,7 @@
             Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            ChkAddNew = New CMCv.UI.Control.chk(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
             pctbxPhoto = New CMCv.UI.Control.pctbx(components)
@@ -55,7 +55,7 @@
             ULbl10 = New CMCv.UI.Control.ULbl()
             ULbl9 = New CMCv.UI.Control.ULbl()
             ULbl6 = New CMCv.UI.Control.ULbl()
-            ChkActiveEmployee = New CMCv.UI.Control.chk(components)
+            ChkActiveEmployee = New CMCv.UI.Control.Chk(components)
             TxtEmployeeNickname = New CMCv.UI.Control.txt(components)
             TxtEmployeeNumber = New CMCv.UI.Control.txt(components)
             TxtEmploymentType = New CMCv.UI.Control.txt(components)
@@ -1149,7 +1149,7 @@
         End Sub
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.Btn
         Friend WithEvents pctbxPhoto As CMCv.UI.Control.pctbx
         Friend WithEvents OfdPhoto As OpenFileDialog
@@ -1171,7 +1171,7 @@
         Friend WithEvents GbxModulesRoles As CMCv.UI.Control.gbx
         Friend WithEvents DgnModulesRoles As CMCv.UI.Control.dgn
         Friend WithEvents DtpBirthDate As CMCv.UI.Control.dtp
-        Friend WithEvents ChkActiveEmployee As CMCv.UI.Control.chk
+        Friend WithEvents ChkActiveEmployee As CMCv.UI.Control.Chk
         Friend WithEvents TxtBirthPlace As CMCv.UI.Control.txt
         Friend WithEvents TxtAddress As CMCv.UI.Control.txt
         Friend WithEvents GbxCredetials As CMCv.UI.Control.gbx

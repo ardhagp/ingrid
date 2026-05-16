@@ -27,7 +27,7 @@
             CboCompany = New CMCv.UI.Control.cbo(components)
             TxtDeptName = New CMCv.UI.Control.txt(components)
             TxtDescription = New CMCv.UI.Control.txt(components)
-            ChkAddNew = New CMCv.UI.Control.chk(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
             ULbl2 = New CMCv.UI.Control.ULbl()
             ULbl3 = New CMCv.UI.Control.ULbl()
@@ -319,7 +319,7 @@
         Friend WithEvents CboCompany As CMCv.UI.Control.cbo
         Friend WithEvents TxtDeptCode As CMCv.UI.Control.txt
         Friend WithEvents TxtDescription As CMCv.UI.Control.txt
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl

@@ -31,7 +31,7 @@
             TxtSearchTerm2 = New CMCv.UI.Control.txt(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
-            ChkAddNew = New CMCv.UI.Control.chk(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
             ULbl2 = New CMCv.UI.Control.ULbl()
             ULbl3 = New CMCv.UI.Control.ULbl()
@@ -523,7 +523,7 @@
         Friend WithEvents TxtSearchTerm1 As CMCv.UI.Control.txt
         Friend WithEvents TxtPlantName As CMCv.UI.Control.txt
         Friend WithEvents TxtPlantCode As CMCv.UI.Control.txt
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl

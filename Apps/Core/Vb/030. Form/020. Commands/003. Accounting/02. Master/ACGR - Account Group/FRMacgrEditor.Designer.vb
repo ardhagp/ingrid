@@ -33,8 +33,8 @@
             Lbl4 = New CMCv.UI.Control.lbl(components)
             TxtAccountName = New CMCv.UI.Control.txt(components)
             Lbl5 = New CMCv.UI.Control.lbl(components)
-            ChkEnable = New CMCv.UI.Control.chk(components)
-            ChkAddNew = New CMCv.UI.Control.chk(components)
+            ChkEnable = New CMCv.UI.Control.Chk(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -351,8 +351,8 @@
         Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
         Friend WithEvents CboAccountingBook As CMCv.UI.Control.cbo
         Friend WithEvents CboCompany As CMCv.UI.Control.cbo
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
-        Friend WithEvents ChkEnable As CMCv.UI.Control.chk
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
+        Friend WithEvents ChkEnable As CMCv.UI.Control.Chk
 
     End Class
 End Namespace

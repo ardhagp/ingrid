@@ -26,13 +26,13 @@
             BtnCancel = New CMCv.UI.Control.Btn(components)
             TbctlBasic = New CMCv.UI.Control.tbctl(components)
             tp1_ = New TabPage()
-            ChkIsMasked = New CMCv.UI.Control.chk(components)
+            ChkIsMasked = New CMCv.UI.Control.Chk(components)
             btnExport = New CMCv.UI.Control.Btn(components)
             CboDBEngine = New CMCv.UI.Control.cbo(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
             ULbl_DatabaseName = New CMCv.UI.Control.ULbl()
             TxtDatabaseName = New CMCv.UI.Control.txt(components)
-            ChkDefault = New CMCv.UI.Control.chk(components)
+            ChkDefault = New CMCv.UI.Control.Chk(components)
             TxtPassword = New CMCv.UI.Control.txt(components)
             TxtUsername = New CMCv.UI.Control.txt(components)
             ULbl_Password = New CMCv.UI.Control.ULbl()
@@ -741,7 +741,7 @@
         Friend WithEvents TxtPassword As CMCv.UI.Control.txt
         Friend WithEvents TxtUsername As CMCv.UI.Control.txt
         Friend WithEvents Btn_Test As CMCv.UI.Control.Btn
-        Friend WithEvents ChkDefault As CMCv.UI.Control.chk
+        Friend WithEvents ChkDefault As CMCv.UI.Control.Chk
         Friend WithEvents TxtDatabaseName As CMCv.UI.Control.txt
         Friend WithEvents ULbl_DatabaseName As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
@@ -755,7 +755,7 @@
         Friend WithEvents btnExport As CMCv.UI.Control.Btn
         Friend WithEvents btnImport As CMCv.UI.Control.Btn
         Friend WithEvents btnSaveAs As CMCv.UI.Control.Btn
-        Friend WithEvents ChkIsMasked As CMCv.UI.Control.chk
+        Friend WithEvents ChkIsMasked As CMCv.UI.Control.Chk
         Friend WithEvents TtAllComponents As ToolTip
     End Class
 End Namespace

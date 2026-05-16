@@ -33,7 +33,7 @@ Partial Class FRMerrorreporting
         TxtErrorType = New CMCv.UI.Control.txt(components)
         Lbl1 = New CMCv.UI.Control.lbl(components)
         tp_SystemInformation = New System.Windows.Forms.TabPage()
-        ChkErrorReporting = New CMCv.UI.Control.chk(components)
+        ChkErrorReporting = New CMCv.UI.Control.Chk(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
@@ -385,6 +385,6 @@ Partial Class FRMerrorreporting
     Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
     Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
     Friend WithEvents TxtAppBuild As CMCv.UI.Control.txt
-    Friend WithEvents ChkErrorReporting As CMCv.UI.Control.chk
+    Friend WithEvents ChkErrorReporting As CMCv.UI.Control.Chk
 
 End Class

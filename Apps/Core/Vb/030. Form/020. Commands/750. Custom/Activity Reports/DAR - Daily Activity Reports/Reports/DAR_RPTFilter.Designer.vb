@@ -23,16 +23,16 @@
             components = New ComponentModel.Container()
             BtnShow = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
-            ChkFrom = New CMCv.UI.Control.chk(components)
+            ChkFrom = New CMCv.UI.Control.Chk(components)
             DtpFrom = New CMCv.UI.Control.dtp(components)
-            ChkTo = New CMCv.UI.Control.chk(components)
+            ChkTo = New CMCv.UI.Control.Chk(components)
             DtpTo = New CMCv.UI.Control.dtp(components)
-            ChkArea = New CMCv.UI.Control.chk(components)
+            ChkArea = New CMCv.UI.Control.Chk(components)
             CboArea = New CMCv.UI.Control.cbo(components)
             CboActivity = New CMCv.UI.Control.cbo(components)
-            ChkActivity = New CMCv.UI.Control.chk(components)
+            ChkActivity = New CMCv.UI.Control.Chk(components)
             CboBy = New CMCv.UI.Control.cbo(components)
-            ChkBy = New CMCv.UI.Control.chk(components)
+            ChkBy = New CMCv.UI.Control.Chk(components)
             TxtDescription = New CMCv.UI.Control.txt(components)
             LblNote = New CMCv.UI.Control.lbl(components)
             RdoColor = New CMCv.UI.Control.rdo(components)
@@ -363,15 +363,15 @@
         Friend WithEvents BtnShow As CMCv.UI.Control.Btn
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents DtpFrom As CMCv.UI.Control.dtp
-        Friend WithEvents ChkFrom As CMCv.UI.Control.chk
+        Friend WithEvents ChkFrom As CMCv.UI.Control.Chk
         Friend WithEvents CboActivity As CMCv.UI.Control.cbo
         Friend WithEvents CboArea As CMCv.UI.Control.cbo
-        Friend WithEvents ChkArea As CMCv.UI.Control.chk
+        Friend WithEvents ChkArea As CMCv.UI.Control.Chk
         Friend WithEvents DtpTo As CMCv.UI.Control.dtp
-        Friend WithEvents ChkTo As CMCv.UI.Control.chk
-        Friend WithEvents ChkBy As CMCv.UI.Control.chk
+        Friend WithEvents ChkTo As CMCv.UI.Control.Chk
+        Friend WithEvents ChkBy As CMCv.UI.Control.Chk
         Friend WithEvents CboBy As CMCv.UI.Control.cbo
-        Friend WithEvents ChkActivity As CMCv.UI.Control.chk
+        Friend WithEvents ChkActivity As CMCv.UI.Control.Chk
         Friend WithEvents TxtDescription As CMCv.UI.Control.txt
         Friend WithEvents LblNote As CMCv.UI.Control.lbl
         Friend WithEvents RdoBlackWhite As CMCv.UI.Control.rdo

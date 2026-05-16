@@ -31,7 +31,7 @@
             Lbl4 = New CMCv.UI.Control.lbl(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
-            ChkAddNew = New CMCv.UI.Control.chk(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -321,7 +321,7 @@
         Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
         Friend WithEvents Txt3 As CMCv.UI.Control.txt
         Friend WithEvents Txt2 As CMCv.UI.Control.txt
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
 
     End Class
 End Namespace

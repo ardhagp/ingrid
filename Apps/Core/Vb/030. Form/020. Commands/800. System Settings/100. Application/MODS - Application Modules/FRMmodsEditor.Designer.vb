@@ -26,7 +26,7 @@
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
-            ChkAddNew = New CMCv.UI.Control.chk(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             Tbctl1 = New CMCv.UI.Control.tbctl(components)
             tpGeneral = New TabPage()
             ULbl5 = New CMCv.UI.Control.ULbl()
@@ -34,9 +34,9 @@
             ULbl3 = New CMCv.UI.Control.ULbl()
             ULbl2 = New CMCv.UI.Control.ULbl()
             ULbl1 = New CMCv.UI.Control.ULbl()
-            ChkSystem = New CMCv.UI.Control.chk(components)
+            ChkSystem = New CMCv.UI.Control.Chk(components)
             TxtCode = New CMCv.UI.Control.txt(components)
-            ChkLocked = New CMCv.UI.Control.chk(components)
+            ChkLocked = New CMCv.UI.Control.Chk(components)
             CboGroup = New CMCv.UI.Control.cbo(components)
             TxtDescription = New CMCv.UI.Control.txt(components)
             TxtName = New CMCv.UI.Control.txt(components)
@@ -498,13 +498,13 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents Tbctl1 As CMCv.UI.Control.tbctl
         Friend WithEvents tpGeneral As TabPage
         Friend WithEvents TxtCode As CMCv.UI.Control.txt
-        Friend WithEvents ChkLocked As CMCv.UI.Control.chk
+        Friend WithEvents ChkLocked As CMCv.UI.Control.Chk
         Friend WithEvents CboGroup As CMCv.UI.Control.cbo
         Friend WithEvents TxtDescription As CMCv.UI.Control.txt
         Friend WithEvents TxtName As CMCv.UI.Control.txt
@@ -512,7 +512,7 @@
         Friend WithEvents tpPermissions As TabPage
         Friend WithEvents GbxAccessBy As CMCv.UI.Control.gbx
         Friend WithEvents DgnUserRoles As CMCv.UI.Control.dgn
-        Friend WithEvents ChkSystem As CMCv.UI.Control.chk
+        Friend WithEvents ChkSystem As CMCv.UI.Control.Chk
         Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl

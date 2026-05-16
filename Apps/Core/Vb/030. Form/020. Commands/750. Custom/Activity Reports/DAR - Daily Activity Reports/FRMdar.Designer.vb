@@ -95,8 +95,8 @@
             file_employee_fullname = New DataGridViewTextBoxColumn()
             file_view = New DataGridViewButtonColumn()
             CboBy = New CMCv.UI.Control.cbo(components)
-            ChkEnableDateFilter = New CMCv.UI.Control.chk(components)
-            ChkEnableByFilter = New CMCv.UI.Control.chk(components)
+            ChkEnableDateFilter = New CMCv.UI.Control.Chk(components)
+            ChkEnableByFilter = New CMCv.UI.Control.Chk(components)
             DtpMonth = New CMCv.UI.Control.dtp(components)
             miniToolStrip = New CMCv.UI.Control.stt(components)
             SfdPhoto = New SaveFileDialog()
@@ -1107,7 +1107,7 @@
         End Sub
         Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
         Friend WithEvents DtpMonth As CMCv.UI.Control.dtp
-        Friend WithEvents ChkEnableDateFilter As CMCv.UI.Control.chk
+        Friend WithEvents ChkEnableDateFilter As CMCv.UI.Control.Chk
         Friend WithEvents SpcDate As SplitContainer
         Friend WithEvents Pnl3 As CMCv.UI.Control.pnl
         Friend WithEvents DgnDARDate As CMCv.UI.Control.dgn
@@ -1133,7 +1133,7 @@
         Friend WithEvents employeeactivity_datetime As DataGridViewTextBoxColumn
         Friend WithEvents employeeactivity_longdate As DataGridViewTextBoxColumn
         Friend WithEvents CboBy As CMCv.UI.Control.cbo
-        Friend WithEvents ChkEnableByFilter As CMCv.UI.Control.chk
+        Friend WithEvents ChkEnableByFilter As CMCv.UI.Control.Chk
         Friend WithEvents TPFiles As TabPage
         Friend WithEvents DgnFile As CMCv.UI.Control.dgn
         Friend WithEvents ToolTip1 As ToolTip

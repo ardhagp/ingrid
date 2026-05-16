@@ -28,7 +28,7 @@
             TxtPositionCode = New CMCv.UI.Control.txt(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
-            ChkAddNew = New CMCv.UI.Control.chk(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
             ULbl2 = New CMCv.UI.Control.ULbl()
             ULbl3 = New CMCv.UI.Control.ULbl()
@@ -351,7 +351,7 @@
         Friend WithEvents CboDepartement As CMCv.UI.Control.cbo
         Friend WithEvents CboCompany As CMCv.UI.Control.cbo
         Friend WithEvents TxtPositionCode As CMCv.UI.Control.txt
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl

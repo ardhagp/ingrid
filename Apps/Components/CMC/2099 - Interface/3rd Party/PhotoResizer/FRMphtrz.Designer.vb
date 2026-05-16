@@ -24,14 +24,14 @@
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMphtrz))
             BtnClose = New CMCv.UI.Control.Btn(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
-            ChkAddNew = New CMCv.UI.Control.chk(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             TlpMain = New System.Windows.Forms.TableLayoutPanel()
             PnlLoad = New CMCv.UI.Control.pnl(components)
             Lbl1 = New CMCv.UI.Control.lbl(components)
             TxtLoad = New CMCv.UI.Control.txt(components)
             BtnLoad = New CMCv.UI.Control.Btn(components)
             PnlSave = New CMCv.UI.Control.pnl(components)
-            ChkSaveAsACopy = New CMCv.UI.Control.chk(components)
+            ChkSaveAsACopy = New CMCv.UI.Control.Chk(components)
             TxtSave = New CMCv.UI.Control.txt(components)
             Lbl2 = New CMCv.UI.Control.lbl(components)
             PctbxPhoto = New CMCv.UI.Control.pctbx(components)
@@ -359,7 +359,7 @@
         End Sub
 
         Friend WithEvents BtnClose As CMCv.UI.Control.Btn
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents TlpMain As System.Windows.Forms.TableLayoutPanel
         Friend WithEvents PnlLoad As CMCv.UI.Control.pnl
@@ -371,6 +371,6 @@
         Friend WithEvents TxtSave As CMCv.UI.Control.txt
         Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
         Friend WithEvents OfdLoad As System.Windows.Forms.OpenFileDialog
-        Friend WithEvents ChkSaveAsACopy As CMCv.UI.Control.chk
+        Friend WithEvents ChkSaveAsACopy As CMCv.UI.Control.Chk
     End Class
 End Namespace
