@@ -121,9 +121,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\ComboBox\cbo.Designer.vb">
-      <DependentUpon>cbo.vb</DependentUpon>
+      <DependentUpon>Cbo.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\ComboBox\cbo.vb">
+    <Compile Update="2099 - Interface\Controls\ComboBox\Cbo.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Context Menu\csmnu.Designer.vb">
@@ -314,7 +314,7 @@
     <EmbeddedResource Include="2099 - Interface\Controls\LinkLabel\lnklbl.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\ComboBox\cbo.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\ComboBox\Cbo.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="2099 - Interface\Controls\MaskEditBox\meb.ico" />

@@ -17,7 +17,7 @@ Namespace UI
 
 #Region "Subs Collections"
         <SupportedOSPlatform("windows")>
-        Private Sub FillCompany(company As CMCv.UI.Control.cbo)
+        Private Sub FillCompany(company As CMCv.UI.Control.Cbo)
             CMDcdin.Editor.FillCompany(varDataProperties, company)
         End Sub
 

@@ -41,9 +41,9 @@
             Dim DataGridViewCellStyle38 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle40 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle39 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            CboCompany = New CMCv.UI.Control.cbo(components)
+            CboCompany = New CMCv.UI.Control.Cbo(components)
             Lbl3 = New CMCv.UI.Control.lbl(components)
-            CboAccountingBook = New CMCv.UI.Control.cbo(components)
+            CboAccountingBook = New CMCv.UI.Control.Cbo(components)
             Lbl2 = New CMCv.UI.Control.lbl(components)
             TbctlAccountGroup = New CMCv.UI.Control.tbctl(components)
             tpAssets = New TabPage()
@@ -740,10 +740,10 @@
         Friend WithEvents DgnACGRRevenue As CMCv.UI.Control.dgn
         Friend WithEvents tpExpense As TabPage
         Friend WithEvents DgnACGRExpense As CMCv.UI.Control.dgn
-        Friend WithEvents CboAccountingBook As CMCv.UI.Control.cbo
+        Friend WithEvents CboAccountingBook As CMCv.UI.Control.Cbo
         Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
         Friend WithEvents DgnACGREquity As CMCv.UI.Control.dgn
-        Friend WithEvents CboCompany As CMCv.UI.Control.cbo
+        Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
         Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
         Friend WithEvents account_id_assets As DataGridViewTextBoxColumn
         Friend WithEvents account_num_assets As DataGridViewTextBoxColumn

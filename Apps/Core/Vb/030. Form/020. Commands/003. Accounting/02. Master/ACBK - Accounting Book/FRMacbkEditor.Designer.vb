@@ -21,7 +21,7 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Cbo1 = New CMCv.UI.Control.cbo(components)
+            Cbo1 = New CMCv.UI.Control.Cbo(components)
             Txt1 = New CMCv.UI.Control.txt(components)
             Txt2 = New CMCv.UI.Control.txt(components)
             Txt3 = New CMCv.UI.Control.txt(components)
@@ -311,7 +311,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents Cbo1 As CMCv.UI.Control.cbo
+        Friend WithEvents Cbo1 As CMCv.UI.Control.Cbo
         Friend WithEvents Txt1 As CMCv.UI.Control.txt
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn

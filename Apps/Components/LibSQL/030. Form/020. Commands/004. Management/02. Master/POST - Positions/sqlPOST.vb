@@ -87,7 +87,7 @@ Namespace CMDpost
         Private Shared ReadOnly tManPosition As String = "man_position"
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, company As CMCv.UI.Control.cbo)
+        Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, company As CMCv.UI.Control.Cbo)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = "select c.company_id, (c.company_code+ ' - ' + c.company_name) as [company_name] from dbo.man_company c order by c.company_code"
                 varDatabaseRequestMssql2008(1).Dropdown = company
@@ -102,7 +102,7 @@ Namespace CMDpost
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillDepartement(dataproperties As LibApp.Ingrid.Global.Properties, department As CMCv.UI.Control.cbo, company As CMCv.UI.Control.cbo)
+        Public Shared Sub FillDepartement(dataproperties As LibApp.Ingrid.Global.Properties, department As CMCv.UI.Control.Cbo, company As CMCv.UI.Control.Cbo)
             Dim varDepartment As String = String.Empty
 
             If company.Items.Count <> 0 Then

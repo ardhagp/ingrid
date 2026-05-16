@@ -1,5 +1,5 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.cbo), "cbo.ico")>
+    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Cbo), "cbo.ico")>
     Partial Class cbo
         Inherits System.Windows.Forms.ComboBox
 

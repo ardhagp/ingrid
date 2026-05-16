@@ -24,10 +24,10 @@
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
             TxtDeptCode = New CMCv.UI.Control.txt(components)
-            CboCompany = New CMCv.UI.Control.cbo(components)
+            CboCompany = New CMCv.UI.Control.Cbo(components)
             TxtDeptName = New CMCv.UI.Control.txt(components)
             TxtDescription = New CMCv.UI.Control.txt(components)
-            ChkAddNew = New CMCv.UI.Control.Chk(components)
+            ChkAddNew = New CMCv.UI.Control.chk(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
             ULbl2 = New CMCv.UI.Control.ULbl()
             ULbl3 = New CMCv.UI.Control.ULbl()
@@ -87,7 +87,7 @@
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(509, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -96,7 +96,7 @@
             BtnSave.TabIndex = 4
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOButtonType = ControlCodeBase.ButtonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -110,7 +110,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(686, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -119,14 +119,14 @@
             BtnCancel.TabIndex = 6
             BtnCancel.Text = "&Close"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOButtonType = ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' TxtDeptCode
             ' 
-            TxtDeptCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtDeptCode.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             TxtDeptCode.Location = New Point(280, 87)
             TxtDeptCode.Margin = New Padding(6, 5, 6, 5)
             TxtDeptCode.MaxLength = 255
@@ -159,7 +159,7 @@
             CboCompany.DropDownStyle = ComboBoxStyle.DropDownList
             CboCompany.DropDownWidth = 350
             CboCompany.FlatStyle = FlatStyle.Flat
-            CboCompany.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            CboCompany.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             CboCompany.FormattingEnabled = True
             CboCompany.Location = New Point(280, 20)
             CboCompany.Margin = New Padding(6, 5, 6, 5)
@@ -169,7 +169,7 @@
             ' 
             ' TxtDeptName
             ' 
-            TxtDeptName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtDeptName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             TxtDeptName.Location = New Point(280, 153)
             TxtDeptName.Margin = New Padding(6, 5, 6, 5)
             TxtDeptName.MaxLength = 255
@@ -199,7 +199,7 @@
             ' 
             ' TxtDescription
             ' 
-            TxtDescription.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtDescription.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             TxtDescription.Location = New Point(280, 222)
             TxtDescription.Margin = New Padding(6, 5, 6, 5)
             TxtDescription.MaxLength = 255
@@ -234,7 +234,7 @@
             ChkAddNew.AutoSize = True
             ChkAddNew.BackColor = Color.Transparent
             ChkAddNew.FlatStyle = FlatStyle.Flat
-            ChkAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            ChkAddNew.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             ChkAddNew.ForeColor = Color.Tomato
             ChkAddNew.Location = New Point(278, 28)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
@@ -298,7 +298,7 @@
             ' 
             ' FRMcdinEditor
             ' 
-            AutoScaleDimensions = New SizeF(10F, 25F)
+            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
             ClientSize = New Size(873, 680)
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMcdinEditor"
@@ -316,7 +316,7 @@
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents TxtDeptName As CMCv.UI.Control.txt
-        Friend WithEvents CboCompany As CMCv.UI.Control.cbo
+        Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
         Friend WithEvents TxtDeptCode As CMCv.UI.Control.txt
         Friend WithEvents TxtDescription As CMCv.UI.Control.txt
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk

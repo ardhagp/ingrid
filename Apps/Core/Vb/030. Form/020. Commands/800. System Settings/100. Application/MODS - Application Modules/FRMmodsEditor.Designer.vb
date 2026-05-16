@@ -37,7 +37,7 @@
             ChkSystem = New CMCv.UI.Control.Chk(components)
             TxtCode = New CMCv.UI.Control.txt(components)
             ChkLocked = New CMCv.UI.Control.Chk(components)
-            CboGroup = New CMCv.UI.Control.cbo(components)
+            CboGroup = New CMCv.UI.Control.Cbo(components)
             TxtDescription = New CMCv.UI.Control.txt(components)
             TxtName = New CMCv.UI.Control.txt(components)
             TxtID = New CMCv.UI.Control.txt(components)
@@ -505,7 +505,7 @@
         Friend WithEvents tpGeneral As TabPage
         Friend WithEvents TxtCode As CMCv.UI.Control.txt
         Friend WithEvents ChkLocked As CMCv.UI.Control.Chk
-        Friend WithEvents CboGroup As CMCv.UI.Control.cbo
+        Friend WithEvents CboGroup As CMCv.UI.Control.Cbo
         Friend WithEvents TxtDescription As CMCv.UI.Control.txt
         Friend WithEvents TxtName As CMCv.UI.Control.txt
         Friend WithEvents TxtID As CMCv.UI.Control.txt

@@ -91,7 +91,7 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillEmployee(dataproperties As LibApp.Ingrid.Global.Properties, employee As CMCv.UI.Control.cbo)
+        Public Shared Sub FillEmployee(dataproperties As LibApp.Ingrid.Global.Properties, employee As CMCv.UI.Control.Cbo)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_id, em.employee_fullname from dbo.man_employee em where em.employee_id in " &
                                                     "(select ea.employeeactivity_employee from dbo.doc_employeeactivity ea group by " &
@@ -111,7 +111,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayMainGrid(dataproperties As LibApp.Ingrid.Global.Properties, find As CMCv.UI.Control.txt, dategrid As CMCv.UI.Control.dgn, datestatusbar As CMCv.UI.Control.stt, contentstatusbar As CMCv.UI.Control.stt, chkdatefilter As CMCv.UI.Control.Chk, dtpdatefilter As CMCv.UI.Control.dtp, chkbyfilter As CMCv.UI.Control.Chk, cbobyfilter As CMCv.UI.Control.cbo, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayMainGrid(dataproperties As LibApp.Ingrid.Global.Properties, find As CMCv.UI.Control.txt, dategrid As CMCv.UI.Control.dgn, datestatusbar As CMCv.UI.Control.stt, contentstatusbar As CMCv.UI.Control.stt, chkdatefilter As CMCv.UI.Control.Chk, dtpdatefilter As CMCv.UI.Control.dtp, chkbyfilter As CMCv.UI.Control.Chk, cbobyfilter As CMCv.UI.Control.Cbo, Optional forcerefresh As Boolean = False)
             Try
                 Dim varWhere As String = String.Format("where ")
 
@@ -606,7 +606,7 @@ Namespace CMDdar
         Private Shared varDataSet As System.Data.DataSet
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetAffectedArea(dataproperties As LibApp.Ingrid.Global.Properties, listofaffectedarea As CMCv.UI.Control.cbo)
+        Public Shared Sub GetAffectedArea(dataproperties As LibApp.Ingrid.Global.Properties, listofaffectedarea As CMCv.UI.Control.Cbo)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = "select aa.areaaffected_id, aa.areaaffected_name from dbo.doc_areaaffected aa order by aa.areaaffected_order"
                 varDatabaseRequestMssql2008(1).Dropdown = listofaffectedarea
@@ -621,7 +621,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetTemplateTitle(dataproperties As LibApp.Ingrid.Global.Properties, listoftemplate As CMCv.UI.Control.cbo)
+        Public Shared Sub GetTemplateTitle(dataproperties As LibApp.Ingrid.Global.Properties, listoftemplate As CMCv.UI.Control.Cbo)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = "select tp.template_id, tp.template_title from dbo.doc_template tp inner join dbo.sys_module mo on " &
                 "mo.module_id = tp.template_module where mo.module_code = 'DAR' order by tp.template_title"
@@ -638,7 +638,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetTemplateContent(dataproperties As LibApp.Ingrid.Global.Properties, listoftemplate As CMCv.UI.Control.cbo) As String
+        Public Shared Function GetTemplateContent(dataproperties As LibApp.Ingrid.Global.Properties, listoftemplate As CMCv.UI.Control.Cbo) As String
             Dim varTemplateContent As String = String.Empty
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -652,7 +652,7 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetRowValue(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, datepart As CMCv.UI.Control.dtp, timepart As CMCv.UI.Control.meb, datepartend As CMCv.UI.Control.dtp, timepartend As CMCv.UI.Control.meb, listofaffectedarea As CMCv.UI.Control.cbo, listoftemplate As CMCv.UI.Control.cbo, templatecontent As CMCv.UI.Control.txt, feedBack As CMCv.UI.Control.txt)
+        Public Shared Sub GetRowValue(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, datepart As CMCv.UI.Control.dtp, timepart As CMCv.UI.Control.meb, datepartend As CMCv.UI.Control.dtp, timepartend As CMCv.UI.Control.meb, listofaffectedarea As CMCv.UI.Control.Cbo, listoftemplate As CMCv.UI.Control.Cbo, templatecontent As CMCv.UI.Control.txt, feedBack As CMCv.UI.Control.txt)
             Dim varDatePart(3) As String
             Dim varTimeParts(1) As TimeSpan
             Dim varTimePart(3) As String
@@ -1061,7 +1061,7 @@ Namespace CMDdar
 
     Public Class Reports
         <SupportedOSPlatform("windows")>
-        Public Shared Sub Display(dataproperties As LibApp.Ingrid.Global.Properties, chkfrom As CMCv.UI.Control.Chk, chkto As CMCv.UI.Control.Chk, chkarea As CMCv.UI.Control.Chk, chkactivity As CMCv.UI.Control.Chk, chkby As CMCv.UI.Control.Chk, dtpfrom As CMCv.UI.Control.dtp, dtpto As CMCv.UI.Control.dtp, cboarea As CMCv.UI.Control.cbo, cboactivity As CMCv.UI.Control.cbo, cboby As CMCv.UI.Control.cbo, txtdescription As CMCv.UI.Control.txt, datasetname As System.Data.DataSet)
+        Public Shared Sub Display(dataproperties As LibApp.Ingrid.Global.Properties, chkfrom As CMCv.UI.Control.Chk, chkto As CMCv.UI.Control.Chk, chkarea As CMCv.UI.Control.Chk, chkactivity As CMCv.UI.Control.Chk, chkby As CMCv.UI.Control.Chk, dtpfrom As CMCv.UI.Control.dtp, dtpto As CMCv.UI.Control.dtp, cboarea As CMCv.UI.Control.Cbo, cboactivity As CMCv.UI.Control.Cbo, cboby As CMCv.UI.Control.Cbo, txtdescription As CMCv.UI.Control.txt, datasetname As System.Data.DataSet)
 
             Dim varWhere As String
             Dim varDTPfrom As String = dtpfrom.Value.Year & "-" & dtpfrom.Value.Month & "-" & dtpfrom.Value.Day

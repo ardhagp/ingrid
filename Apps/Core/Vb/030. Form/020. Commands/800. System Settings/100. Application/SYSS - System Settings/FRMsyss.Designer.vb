@@ -29,14 +29,14 @@ Namespace UI
             ULbl3 = New CMCv.UI.Control.ULbl()
             ULbl2 = New CMCv.UI.Control.ULbl()
             ULbl1 = New CMCv.UI.Control.ULbl()
-            CboProfile = New CMCv.UI.Control.cbo(components)
-            CboStorage = New CMCv.UI.Control.cbo(components)
-            CboNewsTicker = New CMCv.UI.Control.cbo(components)
+            CboProfile = New CMCv.UI.Control.Cbo(components)
+            CboStorage = New CMCv.UI.Control.Cbo(components)
+            CboNewsTicker = New CMCv.UI.Control.Cbo(components)
             tbStorage = New TabPage()
             GbxWatermark = New CMCv.UI.Control.gbx(components)
             ULbl7 = New CMCv.UI.Control.ULbl()
             ULbl6 = New CMCv.UI.Control.ULbl()
-            CboWatermark = New CMCv.UI.Control.cbo(components)
+            CboWatermark = New CMCv.UI.Control.Cbo(components)
             TxtWatermark = New CMCv.UI.Control.txt(components)
             Gbx1 = New CMCv.UI.Control.gbx(components)
             ULbl5 = New CMCv.UI.Control.ULbl()
@@ -537,11 +537,11 @@ Namespace UI
         End Sub
         Friend WithEvents TbctlSettings As CMCv.UI.Control.tbctl
         Friend WithEvents tbInterface As TabPage
-        Friend WithEvents CboProfile As CMCv.UI.Control.cbo
+        Friend WithEvents CboProfile As CMCv.UI.Control.Cbo
         Friend WithEvents tbStorage As TabPage
         Friend WithEvents tbSecurity As TabPage
-        Friend WithEvents CboNewsTicker As CMCv.UI.Control.cbo
-        Friend WithEvents CboStorage As CMCv.UI.Control.cbo
+        Friend WithEvents CboNewsTicker As CMCv.UI.Control.Cbo
+        Friend WithEvents CboStorage As CMCv.UI.Control.Cbo
         Friend WithEvents Gbx1 As CMCv.UI.Control.gbx
         Friend WithEvents Lbl7 As CMCv.UI.Control.lbl
         Friend WithEvents nudUploadPDF As NumericUpDown
@@ -552,7 +552,7 @@ Namespace UI
         Friend WithEvents GbxPanels As CMCv.UI.Control.gbx
         Friend WithEvents Gbx2 As CMCv.UI.Control.gbx
         Friend WithEvents nudMinPassword As NumericUpDown
-        Friend WithEvents CboWatermark As CMCv.UI.Control.cbo
+        Friend WithEvents CboWatermark As CMCv.UI.Control.Cbo
         Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl

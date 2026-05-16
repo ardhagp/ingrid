@@ -23,11 +23,11 @@
             components = New ComponentModel.Container()
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
-            CboCompany = New CMCv.UI.Control.cbo(components)
-            CboAccountingBook = New CMCv.UI.Control.cbo(components)
+            CboCompany = New CMCv.UI.Control.Cbo(components)
+            CboAccountingBook = New CMCv.UI.Control.Cbo(components)
             Lbl1 = New CMCv.UI.Control.lbl(components)
             Lbl2 = New CMCv.UI.Control.lbl(components)
-            CboAccountGroup = New CMCv.UI.Control.cbo(components)
+            CboAccountGroup = New CMCv.UI.Control.Cbo(components)
             Lbl3 = New CMCv.UI.Control.lbl(components)
             TxtAccountNumber = New CMCv.UI.Control.txt(components)
             Lbl4 = New CMCv.UI.Control.lbl(components)
@@ -346,11 +346,11 @@
         Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
         Friend WithEvents TxtAccountNumber As CMCv.UI.Control.txt
         Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
-        Friend WithEvents CboAccountGroup As CMCv.UI.Control.cbo
+        Friend WithEvents CboAccountGroup As CMCv.UI.Control.Cbo
         Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
         Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
-        Friend WithEvents CboAccountingBook As CMCv.UI.Control.cbo
-        Friend WithEvents CboCompany As CMCv.UI.Control.cbo
+        Friend WithEvents CboAccountingBook As CMCv.UI.Control.Cbo
+        Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents ChkEnable As CMCv.UI.Control.Chk
 

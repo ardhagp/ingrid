@@ -13,7 +13,7 @@ Namespace CMDacgr
         ''' <param name="Company">ComboBox Company</param>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, company As CMCv.UI.Control.cbo)
+        Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, company As CMCv.UI.Control.Cbo)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select cm.company_id, (cm.company_code + ' - ' + cm.company_name) as [company_name] from dbo.man_company cm order by cm.company_code")
                 varDatabaseRequestMssql2008(1).Dropdown = company
@@ -34,7 +34,7 @@ Namespace CMDacgr
         ''' <param name="AccountingBook">ComboBox yang akan diisi</param>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillAccountingBook(dataproperties As LibApp.Ingrid.Global.Properties, accountingbook As CMCv.UI.Control.cbo, company As CMCv.UI.Control.cbo)
+        Public Shared Sub FillAccountingBook(dataproperties As LibApp.Ingrid.Global.Properties, accountingbook As CMCv.UI.Control.Cbo, company As CMCv.UI.Control.Cbo)
             Dim varCompanyID As String = String.Empty
 
             If company.Items.Count <> 0 Then
@@ -70,7 +70,7 @@ Namespace CMDacgr
         ''' <param name="ForceRefresh">True / False</param>
         ''' <remarks>ForceRefresh = True akan menampilkan semua data tanpa filter</remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetAccountList(dataproperties As LibApp.Ingrid.Global.Properties, assets As CMCv.UI.Control.dgn, liability As CMCv.UI.Control.dgn, equity As CMCv.UI.Control.dgn, revenue As CMCv.UI.Control.dgn, expense As CMCv.UI.Control.dgn, accountingbook As CMCv.UI.Control.cbo, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub GetAccountList(dataproperties As LibApp.Ingrid.Global.Properties, assets As CMCv.UI.Control.dgn, liability As CMCv.UI.Control.dgn, equity As CMCv.UI.Control.dgn, revenue As CMCv.UI.Control.dgn, expense As CMCv.UI.Control.dgn, accountingbook As CMCv.UI.Control.Cbo, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             Dim varCboIndex As String
             'Isikan index combobox dengan data dari mainframe
             varCboIndex = accountingbook.SelectedValue.ToString
@@ -216,7 +216,7 @@ Namespace CMDacgr
         ''' <param name="Company">ComboBox Company</param>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, company As CMCv.UI.Control.cbo)
+        Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, company As CMCv.UI.Control.Cbo)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select cm.company_id, (cm.company_code + ' - ' + cm.company_name) as [company_name] from dbo.man_company cm order by cm.company_code")
                 varDatabaseRequestMssql2008(1).Dropdown = company
@@ -236,7 +236,7 @@ Namespace CMDacgr
         ''' <param name="AccountingBook">ComboBox yang akan diisi</param>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillAccountingBook(dataproperties As LibApp.Ingrid.Global.Properties, accountingbook As CMCv.UI.Control.cbo, company As CMCv.UI.Control.cbo)
+        Public Shared Sub FillAccountingBook(dataproperties As LibApp.Ingrid.Global.Properties, accountingbook As CMCv.UI.Control.Cbo, company As CMCv.UI.Control.Cbo)
             Dim varCompanyID As String = String.Empty
 
             If company.Items.Count <> 0 Then
@@ -265,7 +265,7 @@ Namespace CMDacgr
         ''' <param name="AccountGroup"></param>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillAccountGroup(dataproperties As LibApp.Ingrid.Global.Properties, accountgroup As CMCv.UI.Control.cbo)
+        Public Shared Sub FillAccountGroup(dataproperties As LibApp.Ingrid.Global.Properties, accountgroup As CMCv.UI.Control.Cbo)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = "select ag.group_id, ag.group_name + ' (' + ag.group_inline + ')' as group_name from dbo.[[ac]]group] ag order by ag.group_order"
                 varDatabaseRequestMssql2008(1).Dropdown = accountgroup

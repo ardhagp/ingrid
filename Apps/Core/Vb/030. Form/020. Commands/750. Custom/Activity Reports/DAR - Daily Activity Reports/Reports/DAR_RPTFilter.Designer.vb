@@ -28,10 +28,10 @@
             ChkTo = New CMCv.UI.Control.Chk(components)
             DtpTo = New CMCv.UI.Control.dtp(components)
             ChkArea = New CMCv.UI.Control.Chk(components)
-            CboArea = New CMCv.UI.Control.cbo(components)
-            CboActivity = New CMCv.UI.Control.cbo(components)
+            CboArea = New CMCv.UI.Control.Cbo(components)
+            CboActivity = New CMCv.UI.Control.Cbo(components)
             ChkActivity = New CMCv.UI.Control.Chk(components)
-            CboBy = New CMCv.UI.Control.cbo(components)
+            CboBy = New CMCv.UI.Control.Cbo(components)
             ChkBy = New CMCv.UI.Control.Chk(components)
             TxtDescription = New CMCv.UI.Control.txt(components)
             LblNote = New CMCv.UI.Control.lbl(components)
@@ -364,13 +364,13 @@
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents DtpFrom As CMCv.UI.Control.dtp
         Friend WithEvents ChkFrom As CMCv.UI.Control.Chk
-        Friend WithEvents CboActivity As CMCv.UI.Control.cbo
-        Friend WithEvents CboArea As CMCv.UI.Control.cbo
+        Friend WithEvents CboActivity As CMCv.UI.Control.Cbo
+        Friend WithEvents CboArea As CMCv.UI.Control.Cbo
         Friend WithEvents ChkArea As CMCv.UI.Control.Chk
         Friend WithEvents DtpTo As CMCv.UI.Control.dtp
         Friend WithEvents ChkTo As CMCv.UI.Control.Chk
         Friend WithEvents ChkBy As CMCv.UI.Control.Chk
-        Friend WithEvents CboBy As CMCv.UI.Control.cbo
+        Friend WithEvents CboBy As CMCv.UI.Control.Cbo
         Friend WithEvents ChkActivity As CMCv.UI.Control.Chk
         Friend WithEvents TxtDescription As CMCv.UI.Control.txt
         Friend WithEvents LblNote As CMCv.UI.Control.lbl

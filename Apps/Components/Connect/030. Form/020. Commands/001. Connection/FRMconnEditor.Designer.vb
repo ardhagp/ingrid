@@ -28,7 +28,7 @@
             tp1_ = New TabPage()
             ChkIsMasked = New CMCv.UI.Control.Chk(components)
             btnExport = New CMCv.UI.Control.Btn(components)
-            CboDBEngine = New CMCv.UI.Control.cbo(components)
+            CboDBEngine = New CMCv.UI.Control.Cbo(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
             ULbl_DatabaseName = New CMCv.UI.Control.ULbl()
             TxtDatabaseName = New CMCv.UI.Control.txt(components)
@@ -745,7 +745,7 @@
         Friend WithEvents TxtDatabaseName As CMCv.UI.Control.txt
         Friend WithEvents ULbl_DatabaseName As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
-        Friend WithEvents CboDBEngine As CMCv.UI.Control.cbo
+        Friend WithEvents CboDBEngine As CMCv.UI.Control.Cbo
         Friend WithEvents tp2_ As TabPage
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
         Friend WithEvents txtImportCode As CMCv.UI.Control.txt

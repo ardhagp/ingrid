@@ -8,7 +8,7 @@ Namespace UI
 
 #Region "Subs Collection"
         <SupportedOSPlatform("windows")>
-        Private Sub FillGroup(modulegroup As CMCv.UI.Control.cbo)
+        Private Sub FillGroup(modulegroup As CMCv.UI.Control.Cbo)
             CMDmods.Editor.FillModuleGroup(varDataProperties, modulegroup)
         End Sub
 

@@ -21,7 +21,7 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            CboCompany = New CMCv.UI.Control.cbo(components)
+            CboCompany = New CMCv.UI.Control.Cbo(components)
             TxtPlantCode = New CMCv.UI.Control.txt(components)
             TxtPlantName = New CMCv.UI.Control.txt(components)
             TxtSearchTerm1 = New CMCv.UI.Control.txt(components)
@@ -512,7 +512,7 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents CboCompany As CMCv.UI.Control.cbo
+        Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
         Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
         Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
         Friend WithEvents TxtSearchTerm2 As CMCv.UI.Control.txt

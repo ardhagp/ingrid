@@ -30,10 +30,10 @@
             Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
-            CboTemplate = New CMCv.UI.Control.cbo(components)
+            CboTemplate = New CMCv.UI.Control.Cbo(components)
             DtpStart = New CMCv.UI.Control.dtp(components)
             TxtContent = New CMCv.UI.Control.txt(components)
-            CboArea = New CMCv.UI.Control.cbo(components)
+            CboArea = New CMCv.UI.Control.Cbo(components)
             MebStart = New CMCv.UI.Control.meb(components)
             BtnGETContent = New CMCv.UI.Control.Btn(components)
             ChkAddNew = New CMCv.UI.Control.Chk(components)
@@ -69,7 +69,7 @@
             file_status = New DataGridViewTextBoxColumn()
             file_uploader = New DataGridViewTextBoxColumn()
             file_delete = New DataGridViewButtonColumn()
-            CboFileTag = New CMCv.UI.Control.cbo(components)
+            CboFileTag = New CMCv.UI.Control.Cbo(components)
             TxtFilePath = New CMCv.UI.Control.txt(components)
             BtnAddFile = New CMCv.UI.Control.Btn(components)
             BtnPeekFile = New CMCv.UI.Control.Btn(components)
@@ -1077,9 +1077,9 @@
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents DtpStart As CMCv.UI.Control.dtp
-        Friend WithEvents CboTemplate As CMCv.UI.Control.cbo
+        Friend WithEvents CboTemplate As CMCv.UI.Control.Cbo
         Friend WithEvents TxtContent As CMCv.UI.Control.txt
-        Friend WithEvents CboArea As CMCv.UI.Control.cbo
+        Friend WithEvents CboArea As CMCv.UI.Control.Cbo
         Friend WithEvents MebStart As CMCv.UI.Control.meb
         Friend WithEvents BtnGETContent As CMCv.UI.Control.Btn
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
@@ -1102,7 +1102,7 @@
         Friend WithEvents TxtFilePath As CMCv.UI.Control.txt
         Friend WithEvents DgnFileList As CMCv.UI.Control.dgn
         Friend WithEvents ofdFile As OpenFileDialog
-        Friend WithEvents CboFileTag As CMCv.UI.Control.cbo
+        Friend WithEvents CboFileTag As CMCv.UI.Control.Cbo
         Friend WithEvents PnlPhoto As CMCv.UI.Control.pnl
         Friend WithEvents PnlFile As CMCv.UI.Control.pnl
         Friend WithEvents ULbl7 As CMCv.UI.Control.ULbl

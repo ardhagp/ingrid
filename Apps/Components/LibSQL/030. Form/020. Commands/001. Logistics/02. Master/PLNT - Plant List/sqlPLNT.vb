@@ -127,7 +127,7 @@ Namespace CMDplnt
         ''' <param name="dbengine"></param>
         ''' <param name="listofcompany"></param>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, listofcompany As CMCv.UI.Control.cbo)
+        Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, listofcompany As CMCv.UI.Control.Cbo)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = $"select c.company_id, (c.company_code + ' - ' + c.company_name) as [company_name] from dbo.man_company c order by c.company_code"
                 varDatabaseRequestMssql2008(1).Dropdown = listofcompany

@@ -31,7 +31,7 @@
             BtnCancel = New CMCv.UI.Control.Btn(components)
             TxtArchiveCode = New CMCv.UI.Control.txt(components)
             TxtTitle = New CMCv.UI.Control.txt(components)
-            CboCategory = New CMCv.UI.Control.cbo(components)
+            CboCategory = New CMCv.UI.Control.Cbo(components)
             Txt1 = New CMCv.UI.Control.txt(components)
             Txt2 = New CMCv.UI.Control.txt(components)
             TbctlAttachment = New CMCv.UI.Control.tbctl(components)
@@ -60,7 +60,7 @@
             file_status = New DataGridViewTextBoxColumn()
             file_uploader = New DataGridViewTextBoxColumn()
             file_delete = New DataGridViewButtonColumn()
-            CboFileTag = New CMCv.UI.Control.cbo(components)
+            CboFileTag = New CMCv.UI.Control.Cbo(components)
             TxtFilePath = New CMCv.UI.Control.txt(components)
             BtnAddFile = New CMCv.UI.Control.Btn(components)
             BtnPeekFile = New CMCv.UI.Control.Btn(components)
@@ -954,7 +954,7 @@
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents TxtArchiveCode As CMCv.UI.Control.txt
         Friend WithEvents Txt1 As CMCv.UI.Control.txt
-        Friend WithEvents CboCategory As CMCv.UI.Control.cbo
+        Friend WithEvents CboCategory As CMCv.UI.Control.Cbo
         Friend WithEvents TxtTitle As CMCv.UI.Control.txt
         Friend WithEvents Txt2 As CMCv.UI.Control.txt
         Friend WithEvents TbctlAttachment As CMCv.UI.Control.tbctl
@@ -983,7 +983,7 @@
         Friend WithEvents file_status As DataGridViewTextBoxColumn
         Friend WithEvents file_uploader As DataGridViewTextBoxColumn
         Friend WithEvents file_delete As DataGridViewButtonColumn
-        Friend WithEvents CboFileTag As CMCv.UI.Control.cbo
+        Friend WithEvents CboFileTag As CMCv.UI.Control.Cbo
         Friend WithEvents TxtFilePath As CMCv.UI.Control.txt
         Friend WithEvents BtnAddFile As CMCv.UI.Control.Btn
         Friend WithEvents BtnPeekFile As CMCv.UI.Control.Btn

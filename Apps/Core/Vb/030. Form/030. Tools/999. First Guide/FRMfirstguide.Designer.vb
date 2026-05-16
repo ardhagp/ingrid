@@ -28,7 +28,7 @@
             Lbl_Step = New CMCv.UI.Control.lbl(components)
             Gbx_Company = New CMCv.UI.Control.gbx(components)
             ULblEmploymentType = New CMCv.UI.Control.ULbl()
-            CboEmploymentType = New CMCv.UI.Control.cbo(components)
+            CboEmploymentType = New CMCv.UI.Control.Cbo(components)
             ULbl5 = New CMCv.UI.Control.ULbl()
             Txt_EmployeeID = New CMCv.UI.Control.txt(components)
             ULbl4 = New CMCv.UI.Control.ULbl()
@@ -667,7 +667,7 @@
         Friend WithEvents Gbx_Modules As CMCv.UI.Control.gbx
         Friend WithEvents Btn_Check As CMCv.UI.Control.Btn
         Friend WithEvents Dgn1 As CMCv.UI.Control.dgn
-        Friend WithEvents CboEmploymentType As CMCv.UI.Control.cbo
+        Friend WithEvents CboEmploymentType As CMCv.UI.Control.Cbo
         Friend WithEvents ULblEmploymentType As CMCv.UI.Control.ULbl
 
     End Class

@@ -23,8 +23,8 @@
             components = New ComponentModel.Container()
             TxtPositionDescription = New CMCv.UI.Control.txt(components)
             TxtPositionName = New CMCv.UI.Control.txt(components)
-            CboDepartement = New CMCv.UI.Control.cbo(components)
-            CboCompany = New CMCv.UI.Control.cbo(components)
+            CboDepartement = New CMCv.UI.Control.Cbo(components)
+            CboCompany = New CMCv.UI.Control.Cbo(components)
             TxtPositionCode = New CMCv.UI.Control.txt(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
@@ -348,8 +348,8 @@
         End Sub
         Friend WithEvents TxtPositionDescription As CMCv.UI.Control.txt
         Friend WithEvents TxtPositionName As CMCv.UI.Control.txt
-        Friend WithEvents CboDepartement As CMCv.UI.Control.cbo
-        Friend WithEvents CboCompany As CMCv.UI.Control.cbo
+        Friend WithEvents CboDepartement As CMCv.UI.Control.Cbo
+        Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
         Friend WithEvents TxtPositionCode As CMCv.UI.Control.txt
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn

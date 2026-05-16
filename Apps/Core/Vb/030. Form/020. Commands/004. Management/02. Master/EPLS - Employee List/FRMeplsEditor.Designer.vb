@@ -74,7 +74,7 @@
             TxtBirthPlace = New CMCv.UI.Control.txt(components)
             DtpBirthDate = New CMCv.UI.Control.dtp(components)
             TxtPersonalID = New CMCv.UI.Control.txt(components)
-            CboGender = New CMCv.UI.Control.cbo(components)
+            CboGender = New CMCv.UI.Control.Cbo(components)
             TxtFullName = New CMCv.UI.Control.txt(components)
             TbctlEmployee = New CMCv.UI.Control.tbctl(components)
             ULbl8 = New CMCv.UI.Control.ULbl()
@@ -1157,7 +1157,7 @@
         Friend WithEvents TbctlEmployee As CMCv.UI.Control.tbctl
         Friend WithEvents tpGeneral As TabPage
         Friend WithEvents TxtPersonalID As CMCv.UI.Control.txt
-        Friend WithEvents CboGender As CMCv.UI.Control.cbo
+        Friend WithEvents CboGender As CMCv.UI.Control.Cbo
         Friend WithEvents TxtFullName As CMCv.UI.Control.txt
         Friend WithEvents tpEmployment As TabPage
         Friend WithEvents TxtEmployeeNickname As CMCv.UI.Control.txt

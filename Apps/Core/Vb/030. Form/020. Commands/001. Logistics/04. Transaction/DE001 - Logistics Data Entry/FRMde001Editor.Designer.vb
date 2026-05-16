@@ -25,7 +25,7 @@
             BtnClose = New CMCv.UI.Control.Btn(components)
             Txt1 = New CMCv.UI.Control.txt(components)
             LblNumber = New CMCv.UI.Control.lbl(components)
-            Cbo1 = New CMCv.UI.Control.cbo(components)
+            Cbo1 = New CMCv.UI.Control.Cbo(components)
             LblGroup = New CMCv.UI.Control.lbl(components)
             LblDate = New CMCv.UI.Control.lbl(components)
             PnlBottomButton.SuspendLayout()
@@ -205,7 +205,7 @@
         Friend WithEvents LblNumber As CMCv.UI.Control.lbl
         Friend WithEvents Txt1 As CMCv.UI.Control.txt
         Friend WithEvents LblGroup As CMCv.UI.Control.lbl
-        Friend WithEvents Cbo1 As CMCv.UI.Control.cbo
+        Friend WithEvents Cbo1 As CMCv.UI.Control.Cbo
         Friend WithEvents LblDate As CMCv.UI.Control.lbl
     End Class
 End Namespace

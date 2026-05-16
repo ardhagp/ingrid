@@ -94,7 +94,7 @@
             file_uploader = New DataGridViewTextBoxColumn()
             file_employee_fullname = New DataGridViewTextBoxColumn()
             file_view = New DataGridViewButtonColumn()
-            CboBy = New CMCv.UI.Control.cbo(components)
+            CboBy = New CMCv.UI.Control.Cbo(components)
             ChkEnableDateFilter = New CMCv.UI.Control.Chk(components)
             ChkEnableByFilter = New CMCv.UI.Control.Chk(components)
             DtpMonth = New CMCv.UI.Control.dtp(components)
@@ -1132,7 +1132,7 @@
         Friend WithEvents BtnLike As CMCv.UI.Control.Btn
         Friend WithEvents employeeactivity_datetime As DataGridViewTextBoxColumn
         Friend WithEvents employeeactivity_longdate As DataGridViewTextBoxColumn
-        Friend WithEvents CboBy As CMCv.UI.Control.cbo
+        Friend WithEvents CboBy As CMCv.UI.Control.Cbo
         Friend WithEvents ChkEnableByFilter As CMCv.UI.Control.Chk
         Friend WithEvents TPFiles As TabPage
         Friend WithEvents DgnFile As CMCv.UI.Control.dgn

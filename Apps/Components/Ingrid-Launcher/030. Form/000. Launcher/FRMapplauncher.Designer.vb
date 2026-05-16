@@ -30,7 +30,7 @@
             BtnLaunch = New CMCv.UI.Control.Btn(components)
             Lbl3 = New CMCv.UI.Control.lbl(components)
             Lbl4 = New CMCv.UI.Control.lbl(components)
-            CboApplication = New CMCv.UI.Control.cbo(components)
+            CboApplication = New CMCv.UI.Control.Cbo(components)
             tmrCountdown = New Timer(components)
             Lbl5 = New CMCv.UI.Control.lbl(components)
             LblCountdown = New CMCv.UI.Control.lbl(components)
@@ -203,7 +203,7 @@
         Friend WithEvents BtnLaunch As CMCv.UI.Control.Btn
         Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
         Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
-        Friend WithEvents CboApplication As CMCv.UI.Control.cbo
+        Friend WithEvents CboApplication As CMCv.UI.Control.Cbo
         Friend WithEvents tmrCountdown As Timer
         Friend WithEvents Lbl5 As CMCv.UI.Control.lbl
         Friend WithEvents LblCountdown As CMCv.UI.Control.lbl

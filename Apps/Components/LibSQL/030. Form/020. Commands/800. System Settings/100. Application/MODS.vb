@@ -52,7 +52,7 @@ Namespace CMDmods
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillModuleGroup(dataproperties As LibApp.Ingrid.Global.Properties, modulegroup As CMCv.UI.Control.cbo)
+        Public Shared Sub FillModuleGroup(dataproperties As LibApp.Ingrid.Global.Properties, modulegroup As CMCv.UI.Control.Cbo)
             varDatabaseRequestMssql2008(1).Query = "select modg.modulegroup_id, modg.modulegroup_name from dbo.[[sys]]modulegroup] modg order by modg.modulegroup_order"
             varDatabaseRequestMssql2008(1).Dropdown = modulegroup
             varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1), "TModuleGroup")
