@@ -76,7 +76,7 @@
             TxtPersonalID = New CMCv.UI.Control.txt(components)
             CboGender = New CMCv.UI.Control.Cbo(components)
             TxtFullName = New CMCv.UI.Control.txt(components)
-            TbctlEmployee = New CMCv.UI.Control.tbctl(components)
+            TbctlEmployee = New CMCv.UI.Control.Tbx(components)
             ULbl8 = New CMCv.UI.Control.ULbl()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -1154,7 +1154,7 @@
         Friend WithEvents pctbxPhoto As CMCv.UI.Control.pctbx
         Friend WithEvents OfdPhoto As OpenFileDialog
         Friend WithEvents pcbxFrame As CMCv.UI.Control.pctbx
-        Friend WithEvents TbctlEmployee As CMCv.UI.Control.tbctl
+        Friend WithEvents TbctlEmployee As CMCv.UI.Control.Tbx
         Friend WithEvents tpGeneral As TabPage
         Friend WithEvents TxtPersonalID As CMCv.UI.Control.txt
         Friend WithEvents CboGender As CMCv.UI.Control.Cbo

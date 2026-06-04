@@ -34,7 +34,7 @@
             CboCategory = New CMCv.UI.Control.Cbo(components)
             Txt1 = New CMCv.UI.Control.txt(components)
             Txt2 = New CMCv.UI.Control.txt(components)
-            TbctlAttachment = New CMCv.UI.Control.tbctl(components)
+            TbctlAttachment = New CMCv.UI.Control.Tbx(components)
             tpPhotos = New TabPage()
             PnlPhoto = New CMCv.UI.Control.pnl(components)
             BtnBrowsePhoto = New CMCv.UI.Control.Btn(components)
@@ -957,7 +957,7 @@
         Friend WithEvents CboCategory As CMCv.UI.Control.Cbo
         Friend WithEvents TxtTitle As CMCv.UI.Control.txt
         Friend WithEvents Txt2 As CMCv.UI.Control.txt
-        Friend WithEvents TbctlAttachment As CMCv.UI.Control.tbctl
+        Friend WithEvents TbctlAttachment As CMCv.UI.Control.Tbx
         Friend WithEvents tpPhotos As TabPage
         Friend WithEvents PnlPhoto As CMCv.UI.Control.pnl
         Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.Btn

@@ -27,7 +27,7 @@
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
             ChkAddNew = New CMCv.UI.Control.Chk(components)
-            Tbctl1 = New CMCv.UI.Control.tbctl(components)
+            Tbctl1 = New CMCv.UI.Control.Tbx(components)
             tpGeneral = New TabPage()
             ULbl5 = New CMCv.UI.Control.ULbl()
             ULbl4 = New CMCv.UI.Control.ULbl()
@@ -501,7 +501,7 @@
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
-        Friend WithEvents Tbctl1 As CMCv.UI.Control.tbctl
+        Friend WithEvents Tbctl1 As CMCv.UI.Control.Tbx
         Friend WithEvents tpGeneral As TabPage
         Friend WithEvents TxtCode As CMCv.UI.Control.txt
         Friend WithEvents ChkLocked As CMCv.UI.Control.Chk

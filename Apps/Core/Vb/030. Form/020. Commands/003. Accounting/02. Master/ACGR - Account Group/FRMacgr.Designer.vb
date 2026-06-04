@@ -45,7 +45,7 @@
             Lbl3 = New CMCv.UI.Control.lbl(components)
             CboAccountingBook = New CMCv.UI.Control.Cbo(components)
             Lbl2 = New CMCv.UI.Control.lbl(components)
-            TbctlAccountGroup = New CMCv.UI.Control.tbctl(components)
+            TbctlAccountGroup = New CMCv.UI.Control.Tbx(components)
             tpAssets = New TabPage()
             DgnACGRAssets = New CMCv.UI.Control.dgn(components)
             account_id_assets = New DataGridViewTextBoxColumn()
@@ -730,7 +730,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents TbctlAccountGroup As CMCv.UI.Control.tbctl
+        Friend WithEvents TbctlAccountGroup As CMCv.UI.Control.Tbx
         Friend WithEvents tpAssets As TabPage
         Friend WithEvents DgnACGRAssets As CMCv.UI.Control.dgn
         Friend WithEvents tpLiabilities As TabPage

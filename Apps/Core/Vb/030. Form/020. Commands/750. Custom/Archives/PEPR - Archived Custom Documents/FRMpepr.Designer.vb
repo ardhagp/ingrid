@@ -48,7 +48,7 @@
             employeeactivity_id = New DataGridViewTextBoxColumn()
             SttActivity = New CMCv.UI.Control.stt(components)
             ToolStripStatusLabel1 = New ToolStripStatusLabel()
-            TbctlAttachment = New CMCv.UI.Control.tbctl(components)
+            TbctlAttachment = New CMCv.UI.Control.Tbx(components)
             TPPhotos = New TabPage()
             SpcPhoto = New CMCv.UI.Control.spc(components)
             DgnPhoto = New CMCv.UI.Control.dgn(components)
@@ -824,7 +824,7 @@
         Friend WithEvents employeeactivity_id As DataGridViewTextBoxColumn
         Friend WithEvents SttActivity As CMCv.UI.Control.stt
         Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
-        Friend WithEvents TbctlAttachment As CMCv.UI.Control.tbctl
+        Friend WithEvents TbctlAttachment As CMCv.UI.Control.Tbx
         Friend WithEvents TPPhotos As TabPage
         Friend WithEvents SpcPhoto As CMCv.UI.Control.spc
         Friend WithEvents DgnPhoto As CMCv.UI.Control.dgn

@@ -23,7 +23,7 @@ Namespace UI
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            TbctlSettings = New CMCv.UI.Control.tbctl(components)
+            TbctlSettings = New CMCv.UI.Control.Tbx(components)
             tbInterface = New TabPage()
             GbxPanels = New CMCv.UI.Control.gbx(components)
             ULbl3 = New CMCv.UI.Control.ULbl()
@@ -535,7 +535,7 @@ Namespace UI
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents TbctlSettings As CMCv.UI.Control.tbctl
+        Friend WithEvents TbctlSettings As CMCv.UI.Control.Tbx
         Friend WithEvents tbInterface As TabPage
         Friend WithEvents CboProfile As CMCv.UI.Control.Cbo
         Friend WithEvents tbStorage As TabPage

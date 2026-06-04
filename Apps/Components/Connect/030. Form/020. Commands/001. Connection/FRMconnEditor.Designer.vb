@@ -24,7 +24,7 @@
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMconnEditor))
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
-            TbctlBasic = New CMCv.UI.Control.tbctl(components)
+            TbctlBasic = New CMCv.UI.Control.Tbx(components)
             tp1_ = New TabPage()
             ChkIsMasked = New CMCv.UI.Control.Chk(components)
             btnExport = New CMCv.UI.Control.Btn(components)
@@ -728,7 +728,7 @@
 
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
-        Friend WithEvents TbctlBasic As CMCv.UI.Control.tbctl
+        Friend WithEvents TbctlBasic As CMCv.UI.Control.Tbx
         Friend WithEvents tp1_ As TabPage
         Friend WithEvents TxtAddress As CMCv.UI.Control.txt
         Friend WithEvents TxtConnectionName As CMCv.UI.Control.txt

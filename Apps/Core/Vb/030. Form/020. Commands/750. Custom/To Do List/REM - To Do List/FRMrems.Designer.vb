@@ -48,7 +48,7 @@
             o_todos_isreminder = New DataGridViewCheckBoxColumn()
             o_todos_iscomplete = New DataGridViewCheckBoxColumn()
             o_todos_ispublic = New DataGridViewCheckBoxColumn()
-            TbctlToDoList = New CMCv.UI.Control.tbctl(components)
+            TbctlToDoList = New CMCv.UI.Control.Tbx(components)
             tpOnProgress = New TabPage()
             tpFinished = New TabPage()
             DgnDone = New CMCv.UI.Control.dgn(components)
@@ -857,7 +857,7 @@
         End Sub
 
         Friend WithEvents DgnOnProgress As CMCv.UI.Control.dgn
-        Friend WithEvents TbctlToDoList As CMCv.UI.Control.tbctl
+        Friend WithEvents TbctlToDoList As CMCv.UI.Control.Tbx
         Friend WithEvents tpOnProgress As TabPage
         Friend WithEvents tpFinished As TabPage
         Friend WithEvents SpcContent As CMCv.UI.Control.spc

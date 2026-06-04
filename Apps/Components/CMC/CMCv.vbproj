@@ -210,10 +210,10 @@
     <Compile Update="2099 - Interface\Controls\Status Strip\stt.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\TabControl\tbctl.Designer.vb">
-      <DependentUpon>Tbctl.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Controls\TabControl\Tbx.Designer.vb">
+      <DependentUpon>Tbx.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\TabControl\Tbctl.vb">
+    <Compile Update="2099 - Interface\Controls\TabControl\Tbx.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\TextBox\txt.Designer.vb">

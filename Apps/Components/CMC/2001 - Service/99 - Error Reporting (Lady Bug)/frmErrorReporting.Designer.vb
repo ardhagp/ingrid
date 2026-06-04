@@ -22,7 +22,7 @@ Partial Class FRMerrorreporting
         components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMerrorreporting))
         BtnClose = New CMCv.UI.Control.Btn(components)
-        Tbctl1 = New CMCv.UI.Control.tbctl(components)
+        Tbctl1 = New CMCv.UI.Control.Tbx(components)
         tp_ApplicationFault = New System.Windows.Forms.TabPage()
         Lbl4 = New CMCv.UI.Control.lbl(components)
         TxtAppBuild = New CMCv.UI.Control.txt(components)
@@ -374,7 +374,7 @@ Partial Class FRMerrorreporting
         PerformLayout()
     End Sub
     Friend WithEvents BtnClose As CMCv.UI.Control.Btn
-    Friend WithEvents Tbctl1 As CMCv.UI.Control.tbctl
+    Friend WithEvents Tbctl1 As CMCv.UI.Control.Tbx
     Friend WithEvents tp_ApplicationFault As System.Windows.Forms.TabPage
     Friend WithEvents tp_SystemInformation As System.Windows.Forms.TabPage
     Friend WithEvents TxtErrorNumber As CMCv.UI.Control.txt

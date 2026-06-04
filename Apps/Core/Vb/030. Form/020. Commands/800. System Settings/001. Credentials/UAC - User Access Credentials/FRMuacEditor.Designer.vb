@@ -34,7 +34,7 @@
             ChkAddNew = New CMCv.UI.Control.Chk(components)
             LblPwdText = New CMCv.UI.Control.lbl(components)
             ProgressBar1 = New ProgressBar()
-            TbctlAccess = New CMCv.UI.Control.tbctl(components)
+            TbctlAccess = New CMCv.UI.Control.Tbx(components)
             TpPermissions = New TabPage()
             DgnUACe = New CMCv.UI.Control.dgn(components)
             modulegroup_name = New DataGridViewTextBoxColumn()
@@ -630,7 +630,7 @@
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents LblPwdText As CMCv.UI.Control.lbl
         Friend WithEvents ProgressBar1 As ProgressBar
-        Friend WithEvents TbctlAccess As CMCv.UI.Control.tbctl
+        Friend WithEvents TbctlAccess As CMCv.UI.Control.Tbx
         Friend WithEvents TpPermissions As TabPage
         Friend WithEvents DgnUACe As CMCv.UI.Control.dgn
         Friend WithEvents TpAccessibility As TabPage
