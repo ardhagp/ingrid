@@ -22,7 +22,7 @@ Namespace UI.Control
             MyBase.Size = New System.Drawing.Size(100, 40)
             MyBase.Cursor = System.Windows.Forms.Cursors.Hand
             MyBase.Font = globalFontBtn
-            'Me.XOTampilkanBorder = False
+            'Me.XOShowBorder = False
             Me.XOShowBorderOnFocus = False
             Me.XOButtonType = ControlCodeBase.buttonType.Default
             MyBase.DoubleBuffered = True

@@ -180,10 +180,10 @@
     <Compile Update="2099 - Interface\Controls\Panel\pnl.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\PictureBox\pctbx.Designer.vb">
-      <DependentUpon>pctbx.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Controls\PictureBox\Pbx.Designer.vb">
+      <DependentUpon>Pbx.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\PictureBox\pctbx.vb">
+    <Compile Update="2099 - Interface\Controls\PictureBox\Pbx.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\ProgressBar\pgb.Designer.vb">
@@ -333,7 +333,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="2099 - Interface\Controls\NumericUpDown\nud.ico" />
-    <Content Include="2099 - Interface\Controls\PictureBox\pctbx.ico" />
+    <Content Include="2099 - Interface\Controls\PictureBox\Pbx.ico" />
     <EmbeddedResource Include="Resources\EDIT_002_512_icon .png" />
     <EmbeddedResource Include="Resources\Save_001_24_FFFFFFFF_FF5423C3.png" />
     <EmbeddedResource Include="Resources\OpenFile_001_24_FFFFFFFF_FF5423C3.png" />

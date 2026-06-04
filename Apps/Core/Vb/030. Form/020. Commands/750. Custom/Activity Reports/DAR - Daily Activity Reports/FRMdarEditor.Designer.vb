@@ -45,7 +45,7 @@
             tpPhotos = New TabPage()
             PnlPhoto = New CMCv.UI.Control.pnl(components)
             BtnBrowsePhoto = New CMCv.UI.Control.Btn(components)
-            PctbxPhoto = New CMCv.UI.Control.pctbx(components)
+            PctbxPhoto = New CMCv.UI.Control.Pbx(components)
             DgnPictureList = New CMCv.UI.Control.dgn(components)
             photo_id = New DataGridViewTextBoxColumn()
             photo_filename = New DataGridViewTextBoxColumn()
@@ -477,8 +477,8 @@
             PctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
             PctbxPhoto.TabIndex = 6
             PctbxPhoto.TabStop = False
-            PctbxPhoto.XOTampilkanBorder = False
-            PctbxPhoto.XOWarnaBorder = Color.DodgerBlue
+            PctbxPhoto.XOShowBorder = False
+            PctbxPhoto.XOBorderColor = Color.DodgerBlue
             ' 
             ' DgnPictureList
             ' 
@@ -1094,7 +1094,7 @@
         Friend WithEvents BtnAddPhoto As CMCv.UI.Control.Btn
         Friend WithEvents TxtPhotoPath As CMCv.UI.Control.txt
         Friend WithEvents DgnPictureList As CMCv.UI.Control.dgn
-        Friend WithEvents PctbxPhoto As CMCv.UI.Control.pctbx
+        Friend WithEvents PctbxPhoto As CMCv.UI.Control.Pbx
         Friend WithEvents tpFiles As TabPage
         Friend WithEvents BtnPeekFile As CMCv.UI.Control.Btn
         Friend WithEvents BtnBrowseFile As CMCv.UI.Control.Btn

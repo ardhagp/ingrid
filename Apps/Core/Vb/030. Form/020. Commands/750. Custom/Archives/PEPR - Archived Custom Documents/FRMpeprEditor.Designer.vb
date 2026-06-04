@@ -38,7 +38,7 @@
             tpPhotos = New TabPage()
             PnlPhoto = New CMCv.UI.Control.pnl(components)
             BtnBrowsePhoto = New CMCv.UI.Control.Btn(components)
-            PctbxPhoto = New CMCv.UI.Control.pctbx(components)
+            PctbxPhoto = New CMCv.UI.Control.Pbx(components)
             DgnPictureList = New CMCv.UI.Control.dgn(components)
             photo_id = New DataGridViewTextBoxColumn()
             photo_datetime = New DataGridViewTextBoxColumn()
@@ -388,8 +388,8 @@
             PctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
             PctbxPhoto.TabIndex = 6
             PctbxPhoto.TabStop = False
-            PctbxPhoto.XOTampilkanBorder = False
-            PctbxPhoto.XOWarnaBorder = Color.DodgerBlue
+            PctbxPhoto.XOShowBorder = False
+            PctbxPhoto.XOBorderColor = Color.DodgerBlue
             ' 
             ' DgnPictureList
             ' 
@@ -961,7 +961,7 @@
         Friend WithEvents tpPhotos As TabPage
         Friend WithEvents PnlPhoto As CMCv.UI.Control.pnl
         Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.Btn
-        Friend WithEvents PctbxPhoto As CMCv.UI.Control.pctbx
+        Friend WithEvents PctbxPhoto As CMCv.UI.Control.Pbx
         Friend WithEvents DgnPictureList As CMCv.UI.Control.dgn
         Friend WithEvents photo_id As DataGridViewTextBoxColumn
         Friend WithEvents photo_datetime As DataGridViewTextBoxColumn

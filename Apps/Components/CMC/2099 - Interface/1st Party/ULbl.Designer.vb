@@ -25,7 +25,7 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ULbl))
-            UHead = New CMCv.UI.Control.pctbx(components)
+            UHead = New CMCv.UI.Control.Pbx(components)
             UText = New CMCv.UI.Control.lbl(components)
             tmr_ = New System.Windows.Forms.Timer(components)
             CType(UHead, ComponentModel.ISupportInitialize).BeginInit()
@@ -44,8 +44,8 @@
             UHead.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             UHead.TabIndex = 0
             UHead.TabStop = False
-            UHead.XOTampilkanBorder = False
-            UHead.XOWarnaBorder = Drawing.Color.DodgerBlue
+            UHead.XOShowBorder = False
+            UHead.XOBorderColor = Drawing.Color.DodgerBlue
             ' 
             ' UText
             ' 
@@ -79,7 +79,7 @@
 
         End Sub
 
-        Friend WithEvents UHead As CMCv.UI.Control.pctbx
+        Friend WithEvents UHead As CMCv.UI.Control.Pbx
         Friend WithEvents UText As CMCv.UI.Control.lbl
         Friend WithEvents tmr_ As System.Windows.Forms.Timer
     End Class

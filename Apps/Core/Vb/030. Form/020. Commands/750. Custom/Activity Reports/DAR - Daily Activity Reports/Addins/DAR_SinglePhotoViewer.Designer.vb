@@ -23,7 +23,7 @@
             components = New ComponentModel.Container()
             Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(DAR_SinglePhotoViewer))
             BtnClose = New CMCv.UI.Control.Btn(components)
-            PctbxPhoto = New CMCv.UI.Control.pctbx(components)
+            PctbxPhoto = New CMCv.UI.Control.Pbx(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -87,8 +87,8 @@
             PctbxPhoto.Name = "PctbxPhoto"
             PctbxPhoto.Size = New Size(766, 412)
             PctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
-            PctbxPhoto.XOTampilkanBorder = False
-            PctbxPhoto.XOWarnaBorder = Color.DodgerBlue
+            PctbxPhoto.XOShowBorder = False
+            PctbxPhoto.XOBorderColor = Color.DodgerBlue
             PctbxPhoto.TabIndex = 996
             PctbxPhoto.TabStop = False
             ' 
@@ -112,6 +112,6 @@
         End Sub
 
         Friend WithEvents BtnClose As CMCv.UI.Control.Btn
-        Friend WithEvents PctbxPhoto As CMCv.UI.Control.pctbx
+        Friend WithEvents PctbxPhoto As CMCv.UI.Control.Pbx
     End Class
 End Namespace

@@ -62,7 +62,7 @@
             photo_employee_fullname = New DataGridViewTextBoxColumn()
             photo_view = New DataGridViewButtonColumn()
             TlpPhotoButton = New TableLayoutPanel()
-            PctbxActivityPhoto = New CMCv.UI.Control.pctbx(components)
+            PctbxActivityPhoto = New CMCv.UI.Control.Pbx(components)
             TlpCopySave = New TableLayoutPanel()
             BtnCopyPhoto = New CMCv.UI.Control.Btn(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
@@ -513,8 +513,8 @@
             PctbxActivityPhoto.SizeMode = PictureBoxSizeMode.Zoom
             PctbxActivityPhoto.TabIndex = 105
             PctbxActivityPhoto.TabStop = False
-            PctbxActivityPhoto.XOTampilkanBorder = False
-            PctbxActivityPhoto.XOWarnaBorder = Color.DarkSlateBlue
+            PctbxActivityPhoto.XOShowBorder = False
+            PctbxActivityPhoto.XOBorderColor = Color.DarkSlateBlue
             ' 
             ' TlpCopySave
             ' 
@@ -838,7 +838,7 @@
         Friend WithEvents photo_employee_fullname As DataGridViewTextBoxColumn
         Friend WithEvents photo_view As DataGridViewButtonColumn
         Friend WithEvents TlpPhotoButton As TableLayoutPanel
-        Friend WithEvents PctbxActivityPhoto As CMCv.UI.Control.pctbx
+        Friend WithEvents PctbxActivityPhoto As CMCv.UI.Control.Pbx
         Friend WithEvents TlpCopySave As TableLayoutPanel
         Friend WithEvents BtnCopyPhoto As CMCv.UI.Control.Btn
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn

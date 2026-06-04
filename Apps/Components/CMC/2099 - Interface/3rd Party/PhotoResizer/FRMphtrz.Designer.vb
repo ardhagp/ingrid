@@ -34,7 +34,7 @@
             ChkSaveAsACopy = New CMCv.UI.Control.Chk(components)
             TxtSave = New CMCv.UI.Control.txt(components)
             Lbl2 = New CMCv.UI.Control.lbl(components)
-            PctbxPhoto = New CMCv.UI.Control.pctbx(components)
+            PctbxPhoto = New CMCv.UI.Control.Pbx(components)
             OfdLoad = New System.Windows.Forms.OpenFileDialog()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -325,8 +325,8 @@
             PctbxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             PctbxPhoto.TabIndex = 2
             PctbxPhoto.TabStop = False
-            PctbxPhoto.XOTampilkanBorder = False
-            PctbxPhoto.XOWarnaBorder = Drawing.Color.DodgerBlue
+            PctbxPhoto.XOShowBorder = False
+            PctbxPhoto.XOBorderColor = Drawing.Color.DodgerBlue
             ' 
             ' OfdLoad
             ' 
@@ -364,7 +364,7 @@
         Friend WithEvents TlpMain As System.Windows.Forms.TableLayoutPanel
         Friend WithEvents PnlLoad As CMCv.UI.Control.pnl
         Friend WithEvents PnlSave As CMCv.UI.Control.pnl
-        Friend WithEvents PctbxPhoto As CMCv.UI.Control.pctbx
+        Friend WithEvents PctbxPhoto As CMCv.UI.Control.Pbx
         Friend WithEvents BtnLoad As CMCv.UI.Control.Btn
         Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
         Friend WithEvents TxtLoad As CMCv.UI.Control.txt

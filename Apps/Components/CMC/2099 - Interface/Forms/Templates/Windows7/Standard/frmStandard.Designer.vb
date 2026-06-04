@@ -23,8 +23,8 @@ Partial Class FRMstandard
         Dim MySettings2 As CMCv.My.MySettings = New My.MySettings()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMstandard))
         pnl_ = New CMCv.UI.Control.pnl(components)
-        SLFLogo = New CMCv.UI.Control.pctbx(components)
-        SLFBackground = New CMCv.UI.Control.pctbx(components)
+        SLFLogo = New CMCv.UI.Control.Pbx(components)
+        SLFBackground = New CMCv.UI.Control.Pbx(components)
         SLFNamaForm = New CMCv.UI.Control.lbl(components)
         SLFSubNamaForm = New CMCv.UI.Control.lbl(components)
         SLFStatus = New CMCv.UI.Control.stt(components)
@@ -68,8 +68,8 @@ Partial Class FRMstandard
         SLFLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         SLFLogo.TabIndex = 0
         SLFLogo.TabStop = False
-        SLFLogo.XOTampilkanBorder = False
-        SLFLogo.XOWarnaBorder = Drawing.Color.DodgerBlue
+        SLFLogo.XOShowBorder = False
+        SLFLogo.XOBorderColor = Drawing.Color.DodgerBlue
         ' 
         ' SLFBackground
         ' 
@@ -84,8 +84,8 @@ Partial Class FRMstandard
         SLFBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         SLFBackground.TabIndex = 998
         SLFBackground.TabStop = False
-        SLFBackground.XOTampilkanBorder = False
-        SLFBackground.XOWarnaBorder = Drawing.Color.DodgerBlue
+        SLFBackground.XOShowBorder = False
+        SLFBackground.XOBorderColor = Drawing.Color.DodgerBlue
         ' 
         ' SLFNamaForm
         ' 
@@ -166,12 +166,12 @@ Partial Class FRMstandard
         PerformLayout()
 
     End Sub
-    Public WithEvents SLFLogo As CMCv.UI.Control.pctbx
+    Public WithEvents SLFLogo As CMCv.UI.Control.Pbx
     Public WithEvents SLFSubNamaForm As CMCv.UI.Control.lbl
     Public WithEvents SLFNamaForm As CMCv.UI.Control.lbl
     Public WithEvents SLFStatus As CMCv.UI.Control.stt
     Public WithEvents pnl_ As CMCv.UI.Control.pnl
     Friend WithEvents SLFStatusLabel As System.Windows.Forms.ToolStripStatusLabel
     Public WithEvents SLFPanel As CMCv.UI.Control.pnl
-    Public WithEvents SLFBackground As CMCv.UI.Control.pctbx
+    Public WithEvents SLFBackground As CMCv.UI.Control.Pbx
 End Class

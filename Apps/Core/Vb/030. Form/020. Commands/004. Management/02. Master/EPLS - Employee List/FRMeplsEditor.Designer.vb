@@ -28,10 +28,10 @@
             ChkAddNew = New CMCv.UI.Control.Chk(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
-            pctbxPhoto = New CMCv.UI.Control.pctbx(components)
+            pctbxPhoto = New CMCv.UI.Control.Pbx(components)
             BtnBrowsePhoto = New CMCv.UI.Control.Btn(components)
             OfdPhoto = New OpenFileDialog()
-            pcbxFrame = New CMCv.UI.Control.pctbx(components)
+            pcbxFrame = New CMCv.UI.Control.Pbx(components)
             tpPermissions = New TabPage()
             GbxModulesRoles = New CMCv.UI.Control.gbx(components)
             DgnModulesRoles = New CMCv.UI.Control.dgn(components)
@@ -204,8 +204,8 @@
             pctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
             pctbxPhoto.TabIndex = 1038
             pctbxPhoto.TabStop = False
-            pctbxPhoto.XOTampilkanBorder = False
-            pctbxPhoto.XOWarnaBorder = Color.Transparent
+            pctbxPhoto.XOShowBorder = False
+            pctbxPhoto.XOBorderColor = Color.Transparent
             ' 
             ' BtnBrowsePhoto
             ' 
@@ -248,8 +248,8 @@
             pcbxFrame.SizeMode = PictureBoxSizeMode.Zoom
             pcbxFrame.TabIndex = 1040
             pcbxFrame.TabStop = False
-            pcbxFrame.XOTampilkanBorder = False
-            pcbxFrame.XOWarnaBorder = Color.DodgerBlue
+            pcbxFrame.XOShowBorder = False
+            pcbxFrame.XOBorderColor = Color.DodgerBlue
             ' 
             ' tpPermissions
             ' 
@@ -1151,9 +1151,9 @@
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.Btn
-        Friend WithEvents pctbxPhoto As CMCv.UI.Control.pctbx
+        Friend WithEvents pctbxPhoto As CMCv.UI.Control.Pbx
         Friend WithEvents OfdPhoto As OpenFileDialog
-        Friend WithEvents pcbxFrame As CMCv.UI.Control.pctbx
+        Friend WithEvents pcbxFrame As CMCv.UI.Control.Pbx
         Friend WithEvents TbctlEmployee As CMCv.UI.Control.Tbx
         Friend WithEvents tpGeneral As TabPage
         Friend WithEvents TxtPersonalID As CMCv.UI.Control.txt
