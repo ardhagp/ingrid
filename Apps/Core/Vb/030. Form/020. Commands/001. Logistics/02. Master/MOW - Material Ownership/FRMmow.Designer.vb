@@ -90,8 +90,8 @@
             DgnMOW.Size = New Size(1307, 864)
             DgnMOW.StandardTab = True
             DgnMOW.TabIndex = 802
-            DgnMOW.XOGroupFirstRows = False
-            DgnMOW.XOGunakanNomorBaris = False
+            DgnMOW.XOGroupFirstRow = False
+            DgnMOW.XOShowRowNumber = False
             ' 
             ' FRMmow
             ' 

@@ -136,8 +136,8 @@
             DgnConnection.Size = New Size(1307, 759)
             DgnConnection.StandardTab = True
             DgnConnection.TabIndex = 997
-            DgnConnection.XOGroupFirstRows = False
-            DgnConnection.XOGunakanNomorBaris = True
+            DgnConnection.XOGroupFirstRow = False
+            DgnConnection.XOShowRowNumber = True
             ' 
             ' id
             ' 

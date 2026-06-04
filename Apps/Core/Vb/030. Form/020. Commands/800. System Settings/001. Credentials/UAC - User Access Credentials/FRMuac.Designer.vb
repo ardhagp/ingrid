@@ -101,8 +101,8 @@
             DgnUAC.Size = New Size(1307, 864)
             DgnUAC.StandardTab = True
             DgnUAC.TabIndex = 0
-            DgnUAC.XOGroupFirstRows = False
-            DgnUAC.XOGunakanNomorBaris = True
+            DgnUAC.XOGroupFirstRow = False
+            DgnUAC.XOShowRowNumber = True
             ' 
             ' user_id
             ' 

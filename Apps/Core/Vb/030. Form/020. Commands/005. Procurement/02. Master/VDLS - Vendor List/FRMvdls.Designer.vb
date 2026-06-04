@@ -87,8 +87,8 @@
             DgnVendor.Size = New Size(1307, 864)
             DgnVendor.StandardTab = True
             DgnVendor.TabIndex = 1
-            DgnVendor.XOGroupFirstRows = False
-            DgnVendor.XOGunakanNomorBaris = True
+            DgnVendor.XOGroupFirstRow = False
+            DgnVendor.XOShowRowNumber = True
             ' 
             ' FRMvdls
             ' 

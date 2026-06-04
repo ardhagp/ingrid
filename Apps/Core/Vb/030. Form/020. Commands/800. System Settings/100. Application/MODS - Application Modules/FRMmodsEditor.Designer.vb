@@ -472,8 +472,8 @@
             DgnUserRoles.Size = New Size(875, 465)
             DgnUserRoles.StandardTab = True
             DgnUserRoles.TabIndex = 0
-            DgnUserRoles.XOGroupFirstRows = False
-            DgnUserRoles.XOGunakanNomorBaris = False
+            DgnUserRoles.XOGroupFirstRow = False
+            DgnUserRoles.XOShowRowNumber = False
             ' 
             ' FRMmodsEditor
             ' 

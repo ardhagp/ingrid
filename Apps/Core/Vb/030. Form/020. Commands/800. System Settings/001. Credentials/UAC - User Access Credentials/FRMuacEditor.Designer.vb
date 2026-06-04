@@ -410,8 +410,8 @@
             DgnUACe.Size = New Size(800, 544)
             DgnUACe.StandardTab = True
             DgnUACe.TabIndex = 7
-            DgnUACe.XOGroupFirstRows = True
-            DgnUACe.XOGunakanNomorBaris = True
+            DgnUACe.XOGroupFirstRow = True
+            DgnUACe.XOShowRowNumber = True
             ' 
             ' modulegroup_name
             ' 

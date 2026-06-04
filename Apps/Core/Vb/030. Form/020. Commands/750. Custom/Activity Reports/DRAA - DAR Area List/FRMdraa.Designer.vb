@@ -164,8 +164,8 @@
             DgnArea.Size = New Size(1307, 864)
             DgnArea.StandardTab = True
             DgnArea.TabIndex = 803
-            DgnArea.XOGroupFirstRows = False
-            DgnArea.XOGunakanNomorBaris = True
+            DgnArea.XOGroupFirstRow = False
+            DgnArea.XOShowRowNumber = True
             ' 
             ' areaaffected_id
             ' 

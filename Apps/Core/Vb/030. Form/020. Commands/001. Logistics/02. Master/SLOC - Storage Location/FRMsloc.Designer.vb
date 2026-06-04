@@ -90,8 +90,8 @@
             DgnSLOC.Size = New Size(1307, 864)
             DgnSLOC.StandardTab = True
             DgnSLOC.TabIndex = 1
-            DgnSLOC.XOGroupFirstRows = False
-            DgnSLOC.XOGunakanNomorBaris = False
+            DgnSLOC.XOGroupFirstRow = False
+            DgnSLOC.XOShowRowNumber = False
             ' 
             ' FRMsloc
             ' 

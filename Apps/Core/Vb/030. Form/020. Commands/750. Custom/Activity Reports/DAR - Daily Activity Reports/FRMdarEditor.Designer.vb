@@ -525,8 +525,8 @@
             DgnPictureList.Size = New Size(602, 262)
             DgnPictureList.StandardTab = True
             DgnPictureList.TabIndex = 10
-            DgnPictureList.XOGroupFirstRows = False
-            DgnPictureList.XOGunakanNomorBaris = True
+            DgnPictureList.XOGroupFirstRow = False
+            DgnPictureList.XOShowRowNumber = True
             ' 
             ' photo_id
             ' 
@@ -773,8 +773,8 @@
             DgnFileList.Size = New Size(880, 262)
             DgnFileList.StandardTab = True
             DgnFileList.TabIndex = 14
-            DgnFileList.XOGroupFirstRows = False
-            DgnFileList.XOGunakanNomorBaris = True
+            DgnFileList.XOGroupFirstRow = False
+            DgnFileList.XOShowRowNumber = True
             ' 
             ' file_id
             ' 

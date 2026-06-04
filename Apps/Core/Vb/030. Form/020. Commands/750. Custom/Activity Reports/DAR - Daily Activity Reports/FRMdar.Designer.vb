@@ -259,8 +259,8 @@
             DgnDARDate.Size = New Size(464, 956)
             DgnDARDate.StandardTab = True
             DgnDARDate.TabIndex = 0
-            DgnDARDate.XOGroupFirstRows = False
-            DgnDARDate.XOGunakanNomorBaris = True
+            DgnDARDate.XOGroupFirstRow = False
+            DgnDARDate.XOShowRowNumber = True
             ' 
             ' employeeactivity_datetime
             ' 
@@ -401,8 +401,8 @@
             DgnDARActivity.Size = New Size(1156, 384)
             DgnDARActivity.StandardTab = True
             DgnDARActivity.TabIndex = 102
-            DgnDARActivity.XOGroupFirstRows = True
-            DgnDARActivity.XOGunakanNomorBaris = True
+            DgnDARActivity.XOGroupFirstRow = True
+            DgnDARActivity.XOShowRowNumber = True
             ' 
             ' areaaffected_name
             ' 
@@ -580,8 +580,8 @@
             DgnPhoto.Size = New Size(468, 432)
             DgnPhoto.StandardTab = True
             DgnPhoto.TabIndex = 2
-            DgnPhoto.XOGroupFirstRows = False
-            DgnPhoto.XOGunakanNomorBaris = True
+            DgnPhoto.XOGroupFirstRow = False
+            DgnPhoto.XOShowRowNumber = True
             ' 
             ' photo_id
             ' 
@@ -877,8 +877,8 @@
             DgnFile.Size = New Size(1136, 432)
             DgnFile.StandardTab = True
             DgnFile.TabIndex = 3
-            DgnFile.XOGroupFirstRows = False
-            DgnFile.XOGunakanNomorBaris = True
+            DgnFile.XOGroupFirstRow = False
+            DgnFile.XOShowRowNumber = True
             ' 
             ' file_id
             ' 

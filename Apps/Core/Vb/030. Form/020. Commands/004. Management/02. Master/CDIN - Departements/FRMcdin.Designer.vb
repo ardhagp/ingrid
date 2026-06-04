@@ -59,7 +59,7 @@
             ' 
             DgnCDIN.AllowUserToAddRows = False
             DgnCDIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(198), CByte(223), CByte(169))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(197), CByte(225), CByte(139))
             DgnCDIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnCDIN.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnCDIN.BorderStyle = BorderStyle.None
@@ -97,8 +97,8 @@
             DgnCDIN.Size = New Size(1307, 858)
             DgnCDIN.StandardTab = True
             DgnCDIN.TabIndex = 0
-            DgnCDIN.XOGroupFirstRows = False
-            DgnCDIN.XOGunakanNomorBaris = True
+            DgnCDIN.XOGroupFirstRow = False
+            DgnCDIN.XOShowRowNumber = True
             ' 
             ' department_id
             ' 

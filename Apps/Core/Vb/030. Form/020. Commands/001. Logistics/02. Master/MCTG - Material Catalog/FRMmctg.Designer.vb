@@ -100,8 +100,8 @@
             DgnMCTG.Size = New Size(1307, 864)
             DgnMCTG.StandardTab = True
             DgnMCTG.TabIndex = 0
-            DgnMCTG.XOGroupFirstRows = False
-            DgnMCTG.XOGunakanNomorBaris = True
+            DgnMCTG.XOGroupFirstRow = False
+            DgnMCTG.XOShowRowNumber = True
             ' 
             ' material_id
             ' 

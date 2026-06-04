@@ -321,8 +321,8 @@
             DgnModulesRoles.Size = New Size(798, 480)
             DgnModulesRoles.StandardTab = True
             DgnModulesRoles.TabIndex = 0
-            DgnModulesRoles.XOGroupFirstRows = True
-            DgnModulesRoles.XOGunakanNomorBaris = True
+            DgnModulesRoles.XOGroupFirstRow = True
+            DgnModulesRoles.XOShowRowNumber = True
             ' 
             ' modulegroup_name
             ' 

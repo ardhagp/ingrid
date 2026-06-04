@@ -90,8 +90,8 @@
             DgnMVTP.Size = New Size(1307, 864)
             DgnMVTP.StandardTab = True
             DgnMVTP.TabIndex = 802
-            DgnMVTP.XOGroupFirstRows = False
-            DgnMVTP.XOGunakanNomorBaris = False
+            DgnMVTP.XOGroupFirstRow = False
+            DgnMVTP.XOShowRowNumber = False
             ' 
             ' FRMmvtp
             ' 

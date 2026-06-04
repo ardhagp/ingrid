@@ -165,8 +165,8 @@
             DgnMOG.Size = New Size(1307, 864)
             DgnMOG.StandardTab = True
             DgnMOG.TabIndex = 803
-            DgnMOG.XOGroupFirstRows = False
-            DgnMOG.XOGunakanNomorBaris = True
+            DgnMOG.XOGroupFirstRow = False
+            DgnMOG.XOShowRowNumber = True
             ' 
             ' modulegroup_id
             ' 

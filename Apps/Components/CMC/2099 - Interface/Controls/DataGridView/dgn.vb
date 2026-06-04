@@ -7,9 +7,8 @@ Namespace UI.Control
     ''' Datagridview dengan warna random dan nomor urut baris.
     ''' </summary>
     ''' <remarks></remarks>
-    Public Class dgn
+    Public Class Dgn
         Public Event XOSelected()
-        'Public Event SLF_NewGridColor()
 
         <SupportedOSPlatform("windows")>
         Public Sub New()
@@ -37,23 +36,23 @@ Namespace UI.Control
         End Sub
 
 
-        Private _varGunakanNomorBaris As Boolean
-        Public Property XOGunakanNomorBaris() As Boolean
+        Private varShowRowNumber As Boolean
+        Public Property XOShowRowNumber() As Boolean
             Get
-                Return _varGunakanNomorBaris
+                Return varShowRowNumber
             End Get
-            Set(ByVal value As Boolean)
-                _varGunakanNomorBaris = value
+            Set(value As Boolean)
+                varShowRowNumber = value
             End Set
         End Property
 
-        Private _varGroupFirstRows As Boolean
-        Public Property XOGroupFirstRows As Boolean
+        Private varGroupFirstRow As Boolean
+        Public Property XOGroupFirstRow As Boolean
             Get
-                Return _varGroupFirstRows
+                Return varGroupFirstRow
             End Get
             Set(value As Boolean)
-                _varGroupFirstRows = value
+                varGroupFirstRow = value
             End Set
         End Property
 
@@ -62,23 +61,20 @@ Namespace UI.Control
         End Function
 
         <SupportedOSPlatform("windows")>
-        Private Sub dgn_CellFormatting(sender As Object, e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles Me.CellFormatting
-            If XOGroupFirstRows Then
+        Private Sub Dgn_CellFormatting(sender As Object, e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles Me.CellFormatting
+            If XOGroupFirstRow Then
                 If e.RowIndex > 0 And e.ColumnIndex = 0 Then
                     If MyBase.Item(0, e.RowIndex - 1).Value Is e.Value Then
                         e.Value = String.Empty
                         'MyBase.AdvancedCellBorderStyle.Top = system.Windows.Forms.DataGridViewAdvancedCellBorderStyle.None
                         'MyBase.Rows(e.RowIndex).DefaultCellStyle.BackColor = System.Drawing.Color.White
-                    ElseIf e.RowIndex < MyBase.Rows.Count - 1 Then
-
                     End If
                 End If
-
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub dgn_CellMouseDown(sender As Object, e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles Me.CellMouseDown
+        Private Sub Dgn_CellMouseDown(sender As Object, e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles Me.CellMouseDown
             If (e.Button = System.Windows.Forms.MouseButtons.Right) Or (e.Button = System.Windows.Forms.MouseButtons.Left) Then
                 Try
                     MyBase.CurrentCell = Me(e.ColumnIndex, e.RowIndex)
@@ -89,27 +85,22 @@ Namespace UI.Control
             End If
         End Sub
 
-        Public Enum eGETNewColor
-            Yes
-            No
-        End Enum
-
         <SupportedOSPlatform("windows")>
-        Public Sub XOGETNewColor()
-            Call GENERATENewColor()
+        Public Sub XOGetNewColor()
+            Call GenerateNewColor()
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub dgn_HandleCreated(sender As Object, e As EventArgs) Handles Me.HandleCreated
-            Call GENERATENewColor()
+        Private Sub Dgn_HandleCreated(sender As Object, e As EventArgs) Handles Me.HandleCreated
+            Call GenerateNewColor()
         End Sub
 
-        Private Sub dgn_SelectionChanged(sender As Object, e As EventArgs) Handles Me.SelectionChanged
+        Private Sub Dgn_SelectionChanged(sender As Object, e As EventArgs) Handles Me.SelectionChanged
             RaiseEvent XOSelected()
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub GENERATENewColor()
+        Private Sub GenerateNewColor()
             MyBase.AlternatingRowsDefaultCellStyle.BackColor = ControlCodeBase.WarnaAcakBaru(190, 255, 190, 255, 90, 190)
         End Sub
     End Class

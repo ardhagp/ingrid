@@ -189,8 +189,8 @@
             DgnAddinPosition.Size = New Size(1095, 611)
             DgnAddinPosition.StandardTab = True
             DgnAddinPosition.TabIndex = 1005
-            DgnAddinPosition.XOGroupFirstRows = False
-            DgnAddinPosition.XOGunakanNomorBaris = True
+            DgnAddinPosition.XOGroupFirstRow = False
+            DgnAddinPosition.XOShowRowNumber = True
             ' 
             ' position_id
             ' 

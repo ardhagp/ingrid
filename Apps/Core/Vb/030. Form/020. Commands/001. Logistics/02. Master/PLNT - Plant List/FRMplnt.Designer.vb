@@ -101,8 +101,8 @@
             DgnPLNT.Size = New Size(1307, 858)
             DgnPLNT.StandardTab = True
             DgnPLNT.TabIndex = 1
-            DgnPLNT.XOGroupFirstRows = False
-            DgnPLNT.XOGunakanNomorBaris = True
+            DgnPLNT.XOGroupFirstRow = False
+            DgnPLNT.XOShowRowNumber = True
             ' 
             ' plant_id
             ' 

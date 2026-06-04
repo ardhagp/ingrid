@@ -99,8 +99,8 @@
             DgnCCIN.Size = New Size(1307, 858)
             DgnCCIN.StandardTab = True
             DgnCCIN.TabIndex = 0
-            DgnCCIN.XOGroupFirstRows = False
-            DgnCCIN.XOGunakanNomorBaris = True
+            DgnCCIN.XOGroupFirstRow = False
+            DgnCCIN.XOShowRowNumber = True
             ' 
             ' company_id
             ' 
