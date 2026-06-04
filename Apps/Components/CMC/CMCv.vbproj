@@ -147,9 +147,9 @@
     </Compile>
     <Compile Update="2099 - Interface\Controls\GroupBox\gbx.vb" />
     <Compile Update="2099 - Interface\Controls\Label\lbl.Designer.vb">
-      <DependentUpon>lbl.vb</DependentUpon>
+      <DependentUpon>Lbl.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Label\lbl.vb">
+    <Compile Update="2099 - Interface\Controls\Label\Lbl.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\LinkLabel\lnklbl.Designer.vb">
@@ -301,7 +301,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="2099 - Interface\Controls\DateTimePicker\dtp.ico" />
-    <EmbeddedResource Include="2099 - Interface\Controls\Label\lbl.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\Label\Lbl.ico" />
     <EmbeddedResource Include="2099 - Interface\Controls\TextBox\txt.ico" />
   </ItemGroup>
   <ItemGroup>
