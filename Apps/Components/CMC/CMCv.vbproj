@@ -127,9 +127,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Context Menu\csmnu.Designer.vb">
-      <DependentUpon>csmnu.vb</DependentUpon>
+      <DependentUpon>Csmnu.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Context Menu\csmnu.vb">
+    <Compile Update="2099 - Interface\Controls\Context Menu\Csmnu.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\DataGridView\dgn.Designer.vb">

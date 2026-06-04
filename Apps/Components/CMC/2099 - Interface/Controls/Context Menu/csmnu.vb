@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
 Namespace UI.Control
-    Public Class csmnu
+    Public Class Csmnu
         Inherits System.Windows.Forms.ContextMenuStrip
 
         <SupportedOSPlatform("windows")>
