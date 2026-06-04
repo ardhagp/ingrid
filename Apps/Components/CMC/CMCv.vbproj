@@ -211,9 +211,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\TabControl\tbctl.Designer.vb">
-      <DependentUpon>tbctl.vb</DependentUpon>
+      <DependentUpon>Tbctl.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\TabControl\tbctl.vb">
+    <Compile Update="2099 - Interface\Controls\TabControl\Tbctl.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\TextBox\txt.Designer.vb">

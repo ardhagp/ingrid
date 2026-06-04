@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
 Namespace UI.Control
-    Public Class tbctl
+    Public Class Tbctl
         Inherits System.Windows.Forms.TabControl
 
         <SupportedOSPlatform("windows")>
