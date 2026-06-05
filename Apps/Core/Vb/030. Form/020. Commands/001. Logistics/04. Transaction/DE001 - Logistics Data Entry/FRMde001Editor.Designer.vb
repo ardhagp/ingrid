@@ -121,13 +121,13 @@
             Txt1.XOHighlightColor = Color.LightYellow
             Txt1.XOIsBlank = True
             Txt1.XOIsSearchBox = False
-            Txt1.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            Txt1.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             Txt1.XOSelectOnFocus = False
             Txt1.XOPasswordLengthMin = 8
             Txt1.XOPasswordStrengthCalc = False
             Txt1.XOPasswordStrengthScore = 0
             Txt1.XOPasswordStrengthText = Nothing
-            Txt1.XORestriction = ControlCodeBase.enuRestriction.None
+            Txt1.XORestriction = ControlCodeBase.enumRestriction.None
             Txt1.XOSearchBoxText = "Type then press Enter"
             Txt1.XOSqlText = ""
             Txt1.XOIsReplaceEmptyString = False

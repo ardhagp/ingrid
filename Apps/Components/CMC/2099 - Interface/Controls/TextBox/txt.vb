@@ -22,9 +22,9 @@ Namespace UI.Control
             Me.XOHighlightOnFocus = False
             Me.XOHighlightColor = Drawing.Color.LightYellow
             Me.XOSelectOnFocus = False
-            Me.XORestriction = ControlCodeBase.enuRestriction.None
+            Me.XORestriction = ControlCodeBase.enumRestriction.None
             Me.XOIsBlank = True
-            Me.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            Me.XOLetterCase = ControlCodeBase.EnumLetterCase.Normal
             Me.XOIsSearchBox = False
             Me.XOSearchBoxText = "Type then press Enter"
             Me.XOPasswordLengthMin = 8
@@ -213,26 +213,26 @@ Namespace UI.Control
             End Set
         End Property
 
-        Private varLetterCase As ControlCodeBase.enuJenisKapital
+        Private varLetterCase As ControlCodeBase.EnumLetterCase
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies how the component transforms its text value by applying the selected letter‑case rule")>
-        Public Property XOLetterCase As ControlCodeBase.enuJenisKapital
+        Public Property XOLetterCase As ControlCodeBase.EnumLetterCase
             Get
                 Return varLetterCase
             End Get
-            Set(value As ControlCodeBase.enuJenisKapital)
+            Set(value As ControlCodeBase.EnumLetterCase)
                 varLetterCase = value
             End Set
         End Property
 
-        Private varRestriction As ControlCodeBase.enuRestriction
+        Private varRestriction As ControlCodeBase.enumRestriction
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Defines the input restriction rule that limits which characters or patterns are allowed in the component")>
-        Public Property XORestriction As ControlCodeBase.enuRestriction
+        Public Property XORestriction As ControlCodeBase.enumRestriction
             Get
                 Return varRestriction
             End Get
-            Set(value As ControlCodeBase.enuRestriction)
+            Set(value As ControlCodeBase.enumRestriction)
                 varRestriction = value
             End Set
         End Property
@@ -272,28 +272,28 @@ Namespace UI.Control
             End If
 
             varSqlSafeText = varSqlSafeText.Replace("select ", "").Replace("'", "").Replace(";", "").Replace("--", "").Replace("drop table ", "").Replace("update ", "").Replace("insert into ", "").Replace("--", "").Replace("xp_", "").Trim
-            If XOLetterCase = ControlCodeBase.enuJenisKapital.KAPITALSEMUA Then
+            If XOLetterCase = ControlCodeBase.EnumLetterCase.UPPERCASE Then
                 varSqlSafeText = varSqlSafeText.ToUpper(CultureInfo.CurrentCulture)
-            ElseIf XOLetterCase = ControlCodeBase.enuJenisKapital.kecilsemua Then
+            ElseIf XOLetterCase = ControlCodeBase.EnumLetterCase.lowercase Then
                 varSqlSafeText = varSqlSafeText.ToLower(CultureInfo.CurrentCulture)
             End If
 
             Return varSqlSafeText
         End Function
 
-        Private Sub CheckRestriction(valenurestriction As ControlCodeBase.enuRestriction)
+        Private Sub CheckRestriction(valenurestriction As ControlCodeBase.enumRestriction)
             Select Case valenurestriction
-                Case ControlCodeBase.enuRestriction.None
+                Case ControlCodeBase.enumRestriction.None
                 'Do nothing
-                Case ControlCodeBase.enuRestriction.OnlyNumber
+                Case ControlCodeBase.enumRestriction.OnlyNumber
                 'Do Only Number
-                Case ControlCodeBase.enuRestriction.OnlyText
+                Case ControlCodeBase.enumRestriction.OnlyText
                 'Do Only Text
-                Case ControlCodeBase.enuRestriction.TextAndNumber
+                Case ControlCodeBase.enumRestriction.TextAndNumber
                 'Do Text and Number
-                Case ControlCodeBase.enuRestriction.TextAndSymbol
+                Case ControlCodeBase.enumRestriction.TextAndSymbol
                 'Do Text and Symbol
-                Case ControlCodeBase.enuRestriction.Email
+                Case ControlCodeBase.enumRestriction.Email
                     'Do Email
             End Select
         End Sub
@@ -407,31 +407,31 @@ Namespace UI.Control
             Dim restriction = Me.XORestriction
 
             Select Case restriction
-                Case ControlCodeBase.enuRestriction.None
+                Case ControlCodeBase.enumRestriction.None
                 ' Allow all input
 
-                Case ControlCodeBase.enuRestriction.OnlyNumber
+                Case ControlCodeBase.enumRestriction.OnlyNumber
                     If Not Char.IsDigit(ch) Then
                         e.Handled = True
                     End If
 
-                Case ControlCodeBase.enuRestriction.OnlyText
+                Case ControlCodeBase.enumRestriction.OnlyText
                     If Not Char.IsLetter(ch) Then
                         e.Handled = True
                     End If
 
-                Case ControlCodeBase.enuRestriction.TextAndNumber
+                Case ControlCodeBase.enumRestriction.TextAndNumber
                     If Not Char.IsLetterOrDigit(ch) Then
                         e.Handled = True
                     End If
 
-                Case ControlCodeBase.enuRestriction.TextAndSymbol
+                Case ControlCodeBase.enumRestriction.TextAndSymbol
                     ' Allow letters, digits, punctuation, symbols
                     If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch)) Then
                         e.Handled = True
                     End If
 
-                Case ControlCodeBase.enuRestriction.Email
+                Case ControlCodeBase.enumRestriction.Email
                     ' Use a single static string for allowed characters to avoid reallocating on each keypress
                     Static allowedChars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._-"
                     If Not allowedChars.Contains(ch, StringComparison.Ordinal) Then

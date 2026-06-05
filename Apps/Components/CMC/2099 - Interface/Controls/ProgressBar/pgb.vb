@@ -13,8 +13,8 @@ Namespace UI.Control
             InitializeComponent()
             Call ActivateLicenses()
             MyBase.ForeColor = Color.DodgerBlue
-            Me.XOArahGradien = ControlCodeBase.ArahGradien.Horizontal
-            Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Solid
+            Me.XOArahGradien = ControlCodeBase.EnumGradientType.Horizontal
+            Me.XOWarnaProgressBar = ControlCodeBase.EnumColorFill.Solid
             Me.SetStyle(ControlStyles.UserPaint, True)
         End Sub
 
@@ -36,13 +36,13 @@ Namespace UI.Control
             rec.Width = CInt(Math.Truncate((rec.Width * scalefactor) - 4))
             rec.Height -= 4
 
-            If Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Gradien AndAlso Me.XOArahGradien = ControlCodeBase.ArahGradien.Vertikal Then
+            If Me.XOWarnaProgressBar = ControlCodeBase.EnumColorFill.Gradien AndAlso Me.XOArahGradien = ControlCodeBase.EnumGradientType.Vertikal Then
                 brush = New LinearGradientBrush(rec, Me.ForeColor, Me.BackColor, LinearGradientMode.Vertical)
-            ElseIf Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Solid AndAlso Me.XOArahGradien = ControlCodeBase.ArahGradien.Vertikal Then
+            ElseIf Me.XOWarnaProgressBar = ControlCodeBase.EnumColorFill.Solid AndAlso Me.XOArahGradien = ControlCodeBase.EnumGradientType.Vertikal Then
                 brush = New LinearGradientBrush(rec, Me.ForeColor, Me.ForeColor, LinearGradientMode.Vertical)
-            ElseIf Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Gradien AndAlso Me.XOArahGradien = ControlCodeBase.ArahGradien.Horizontal Then
+            ElseIf Me.XOWarnaProgressBar = ControlCodeBase.EnumColorFill.Gradien AndAlso Me.XOArahGradien = ControlCodeBase.EnumGradientType.Horizontal Then
                 brush = New LinearGradientBrush(rec, Me.ForeColor, Me.BackColor, LinearGradientMode.Horizontal)
-            ElseIf Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Solid AndAlso Me.XOArahGradien = ControlCodeBase.ArahGradien.Horizontal Then
+            ElseIf Me.XOWarnaProgressBar = ControlCodeBase.EnumColorFill.Solid AndAlso Me.XOArahGradien = ControlCodeBase.EnumGradientType.Horizontal Then
                 brush = New LinearGradientBrush(rec, Me.ForeColor, Me.ForeColor, LinearGradientMode.Horizontal)
             End If
             brush2 = New LinearGradientBrush(rec, Me.BackColor, Me.BackColor, LinearGradientMode.Vertical)
@@ -52,26 +52,26 @@ Namespace UI.Control
             e.Graphics.FillRectangle(brush, 2, 2, rec.Width, rec.Height)
         End Sub
 
-        Private varWarnaProgressBar As ControlCodeBase.JenisWarna
+        Private varWarnaProgressBar As ControlCodeBase.EnumColorFill
         <Category("Appearance"),
     Description("Warna progressbar")>
-        Public Property XOWarnaProgressBar As ControlCodeBase.JenisWarna
+        Public Property XOWarnaProgressBar As ControlCodeBase.EnumColorFill
             Get
                 Return varWarnaProgressBar
             End Get
-            Set(value As ControlCodeBase.JenisWarna)
+            Set(value As ControlCodeBase.EnumColorFill)
                 varWarnaProgressBar = value
             End Set
         End Property
 
-        Private varArahGradien As ControlCodeBase.ArahGradien
+        Private varArahGradien As ControlCodeBase.EnumGradientType
         <Category("Appearance"),
     Description("Arah gradien")>
-        Public Property XOArahGradien As ControlCodeBase.ArahGradien
+        Public Property XOArahGradien As ControlCodeBase.EnumGradientType
             Get
                 Return varArahGradien
             End Get
-            Set(value As ControlCodeBase.ArahGradien)
+            Set(value As ControlCodeBase.EnumGradientType)
                 varArahGradien = value
             End Set
         End Property

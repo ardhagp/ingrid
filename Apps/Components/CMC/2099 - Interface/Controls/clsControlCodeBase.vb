@@ -18,7 +18,7 @@ Public Class ControlCodeBase
     ''' Enumerasi jenis warna label
     ''' </summary>
     ''' <remarks></remarks>
-    Public Enum JenisLabel
+    Public Enum EnumColorSelect
         [Default] = 1
         Green = 2
         Red = 3
@@ -31,7 +31,7 @@ Public Class ControlCodeBase
     ''' Enumerasi jenis warna
     ''' </summary>
     ''' <remarks></remarks>
-    Public Enum JenisWarna
+    Public Enum EnumColorFill
         Solid = 1
         Gradien = 2
     End Enum
@@ -40,28 +40,18 @@ Public Class ControlCodeBase
     ''' Enumerasi arah gradien
     ''' </summary>
     ''' <remarks></remarks>
-    Public Enum ArahGradien
+    Public Enum EnumGradientType
         Vertikal = 1
         Horizontal = 2
-    End Enum
-
-    ''' <summary>
-    ''' Enumerasi jenis validasi
-    ''' </summary>
-    ''' <remarks></remarks>
-    Public Enum JenisValidasi
-        Email = 1
-        HanyaAngka = 2
-        TanpaValidasi = 99
     End Enum
 
     ''' <summary>
     ''' Enumerasi jenis kapital
     ''' </summary>
     ''' <remarks></remarks>
-    Public Enum enuJenisKapital
-        KAPITALSEMUA = 1
-        kecilsemua = 2
+    Public Enum EnumLetterCase
+        UPPERCASE = 1
+        lowercase = 2
         Normal = 99
     End Enum
 
@@ -69,12 +59,12 @@ Public Class ControlCodeBase
     ''' Enumerasi warna
     ''' </summary>
     ''' <remarks></remarks>
-    Public Enum enuOpasitasWarna
+    Public Enum EnumColorRange
         Darker = 1
         Lighter = 2
     End Enum
 
-    Public Enum enuRestriction
+    Public Enum EnumRestriction
         None = 0
         OnlyText = 1
         OnlyNumber = 2
@@ -94,7 +84,7 @@ Public Class ControlCodeBase
     ''' <param name="GMax">Nilai maksimum warna hijau</param>
     ''' <param name="BMin">Nilai minimum warna biru</param>
     ''' <param name="BMax">Nilai maksimum warna biru</param>
-    Public Shared Function WarnaAcakBaru(rmin As Integer, rmax As Integer, gmin As Integer, gmax As Integer, bmin As Integer, bmax As Integer) As System.Drawing.Color
+    Public Shared Function NewRandomColor(rmin As Integer, rmax As Integer, gmin As Integer, gmax As Integer, bmin As Integer, bmax As Integer) As System.Drawing.Color
         Return System.Drawing.Color.FromArgb(varRandomColor.Next(rmin, rmax), varRandomColor.Next(gmin, gmax), varRandomColor.Next(bmin, bmax))
     End Function
 
@@ -106,13 +96,13 @@ Public Class ControlCodeBase
     ''' <param name="ValIntensitasPerubahan">Intensitas perubahan.</param>
     ''' <returns>Wara RGB</returns>
     <SupportedOSPlatform("windows")>
-    Public Shared Function AmbilWarna(valwarnaObjek As System.Drawing.Color, valopasitaswarna As enuOpasitasWarna, valintensitasperubahan As Integer) As System.Drawing.Color
+    Public Shared Function GetColor(valwarnaObjek As System.Drawing.Color, valopasitaswarna As EnumColorRange, valintensitasperubahan As Integer) As System.Drawing.Color
         Dim re As Integer = valwarnaObjek.R
         Dim gr As Integer = valwarnaObjek.G
         Dim bl As Integer = valwarnaObjek.B
 
         Select Case valopasitaswarna
-            Case enuOpasitasWarna.Darker
+            Case EnumColorRange.Darker
                 If (re >= (0 + valintensitasperubahan)) Then
                     re -= valintensitasperubahan
                 End If
@@ -122,7 +112,7 @@ Public Class ControlCodeBase
                 If (bl >= (0 + valintensitasperubahan)) Then
                     bl -= valintensitasperubahan
                 End If
-            Case enuOpasitasWarna.Lighter
+            Case EnumColorRange.Lighter
                 If (re <= (255 - valintensitasperubahan)) Then
                     re += valintensitasperubahan
                 End If
@@ -137,14 +127,14 @@ Public Class ControlCodeBase
         Return System.Drawing.Color.FromArgb(re, gr, bl)
     End Function
 
-    'Public Function GantiJenisKapital(ByVal _valJenisKapital As enuJenisKapital) As System.Windows.Forms.CharacterCasing
+    'Public Function GantiJenisKapital(ByVal _valJenisKapital As enumLetterCase) As System.Windows.Forms.CharacterCasing
     '    Dim _varKapital As System.Windows.Forms.CharacterCasing
     '    Select Case _valJenisKapital
-    '        Case enuJenisKapital.KAPITALSEMUA
+    '        Case enumLetterCase.UPPERCASE
     '            _varKapital = System.Windows.Forms.CharacterCasing.Upper
-    '        Case enuJenisKapital.kecilsemua
+    '        Case enumLetterCase.lowercase
     '            _varKapital = System.Windows.Forms.CharacterCasing.Lower
-    '        Case enuJenisKapital.Normal
+    '        Case enumLetterCase.Normal
     '            _varKapital = System.Windows.Forms.CharacterCasing.Normal
     '    End Select
 

@@ -14,7 +14,7 @@ Namespace UI.Control
         Public Sub New()
             InitializeComponent()
             Call ActivateLicenses()
-            'MyBase.AlternatingRowsDefaultCellStyle.BackColor = CBS.WarnaAcakBaru(190, 190, 190, 255, 255, 255)
+            'MyBase.AlternatingRowsDefaultCellStyle.BackColor = CBS.NewRandomColor(190, 190, 190, 255, 255, 255)
             MyBase.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
             MyBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             MyBase.ColumnHeadersHeightSizeMode = system.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
@@ -101,7 +101,7 @@ Namespace UI.Control
 
         <SupportedOSPlatform("windows")>
         Private Sub GenerateNewColor()
-            MyBase.AlternatingRowsDefaultCellStyle.BackColor = ControlCodeBase.WarnaAcakBaru(190, 255, 190, 255, 90, 190)
+            MyBase.AlternatingRowsDefaultCellStyle.BackColor = ControlCodeBase.NewRandomColor(190, 255, 190, 255, 90, 190)
         End Sub
     End Class
 End Namespace

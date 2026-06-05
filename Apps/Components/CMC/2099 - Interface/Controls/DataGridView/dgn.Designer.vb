@@ -95,7 +95,7 @@
 
             MyBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             'MyBase.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(192, 192, 255)
-            'MyBase.AlternatingRowsDefaultCellStyle.BackColor = CBS.WarnaAcakBaru(190, 255, 190, 255, 255, 255)
+            'MyBase.AlternatingRowsDefaultCellStyle.BackColor = CBS.NewRandomColor(190, 255, 190, 255, 255, 255)
             MyBase.AllowUserToResizeRows = False
             MyBase.MultiSelect = False
             MyBase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect

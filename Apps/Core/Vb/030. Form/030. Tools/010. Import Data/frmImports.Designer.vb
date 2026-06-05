@@ -125,13 +125,13 @@
             TxtProgress.XOHighlightColor = Color.LightYellow
             TxtProgress.XOIsBlank = True
             TxtProgress.XOIsSearchBox = False
-            TxtProgress.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtProgress.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtProgress.XOSelectOnFocus = False
             TxtProgress.XOPasswordLengthMin = 8
             TxtProgress.XOPasswordStrengthCalc = False
             TxtProgress.XOPasswordStrengthScore = 0
             TxtProgress.XOPasswordStrengthText = Nothing
-            TxtProgress.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtProgress.XORestriction = ControlCodeBase.enumRestriction.None
             TxtProgress.XOSearchBoxText = "Type then press Enter"
             TxtProgress.XOSqlText = Nothing
             TxtProgress.XOIsReplaceEmptyString = False

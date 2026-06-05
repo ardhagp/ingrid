@@ -248,13 +248,13 @@
             TxtContent.XOHighlightColor = Color.LightYellow
             TxtContent.XOIsBlank = True
             TxtContent.XOIsSearchBox = False
-            TxtContent.XOLetterCase = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+            TxtContent.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
             TxtContent.XOSelectOnFocus = False
             TxtContent.XOPasswordLengthMin = 8
             TxtContent.XOPasswordStrengthCalc = False
             TxtContent.XOPasswordStrengthScore = 0
             TxtContent.XOPasswordStrengthText = Nothing
-            TxtContent.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtContent.XORestriction = ControlCodeBase.enumRestriction.None
             TxtContent.XOSearchBoxText = "Type then press Enter"
             TxtContent.XOSqlText = Nothing
             TxtContent.XOIsReplaceEmptyString = False
@@ -383,13 +383,13 @@
             TxtFeedback.XOHighlightColor = Color.LightYellow
             TxtFeedback.XOIsBlank = True
             TxtFeedback.XOIsSearchBox = False
-            TxtFeedback.XOLetterCase = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+            TxtFeedback.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
             TxtFeedback.XOSelectOnFocus = False
             TxtFeedback.XOPasswordLengthMin = 8
             TxtFeedback.XOPasswordStrengthCalc = False
             TxtFeedback.XOPasswordStrengthScore = 0
             TxtFeedback.XOPasswordStrengthText = Nothing
-            TxtFeedback.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtFeedback.XORestriction = ControlCodeBase.enumRestriction.None
             TxtFeedback.XOSearchBoxText = "Type then press Enter"
             TxtFeedback.XOSqlText = ""
             TxtFeedback.XOIsReplaceEmptyString = False
@@ -645,13 +645,13 @@
             TxtPhotoPath.XOHighlightColor = Color.LightYellow
             TxtPhotoPath.XOIsBlank = True
             TxtPhotoPath.XOIsSearchBox = False
-            TxtPhotoPath.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtPhotoPath.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtPhotoPath.XOSelectOnFocus = False
             TxtPhotoPath.XOPasswordLengthMin = 8
             TxtPhotoPath.XOPasswordStrengthCalc = False
             TxtPhotoPath.XOPasswordStrengthScore = 0
             TxtPhotoPath.XOPasswordStrengthText = Nothing
-            TxtPhotoPath.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtPhotoPath.XORestriction = ControlCodeBase.enumRestriction.None
             TxtPhotoPath.XOSearchBoxText = "Type then press Enter"
             TxtPhotoPath.XOSqlText = ""
             TxtPhotoPath.XOIsReplaceEmptyString = False
@@ -895,13 +895,13 @@
             TxtFilePath.XOHighlightColor = Color.LightYellow
             TxtFilePath.XOIsBlank = True
             TxtFilePath.XOIsSearchBox = False
-            TxtFilePath.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtFilePath.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtFilePath.XOSelectOnFocus = False
             TxtFilePath.XOPasswordLengthMin = 8
             TxtFilePath.XOPasswordStrengthCalc = False
             TxtFilePath.XOPasswordStrengthScore = 0
             TxtFilePath.XOPasswordStrengthText = Nothing
-            TxtFilePath.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtFilePath.XORestriction = ControlCodeBase.enumRestriction.None
             TxtFilePath.XOSearchBoxText = "Type then press Enter"
             TxtFilePath.XOSqlText = ""
             TxtFilePath.XOIsReplaceEmptyString = False
@@ -965,7 +965,7 @@
             ULbl1.SLFText = "Activity Start"
             ULbl1.SLFTextAdjuster = False
             ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl1.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.TabIndex = 1003
             ' 
             ' ULbl2
@@ -978,7 +978,7 @@
             ULbl2.SLFText = "To"
             ULbl2.SLFTextAdjuster = False
             ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl2.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1004
             ' 
             ' ULbl3
@@ -991,7 +991,7 @@
             ULbl3.SLFText = "Area Affected"
             ULbl3.SLFTextAdjuster = False
             ULbl3.SLFTextBorder = False
-            ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl3.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 1005
             ' 
             ' ULbl4
@@ -1004,7 +1004,7 @@
             ULbl4.SLFText = "Activity Template"
             ULbl4.SLFTextAdjuster = False
             ULbl4.SLFTextBorder = False
-            ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl4.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 1006
             ' 
             ' ULbl5
@@ -1017,7 +1017,7 @@
             ULbl5.SLFText = "Description"
             ULbl5.SLFTextAdjuster = False
             ULbl5.SLFTextBorder = False
-            ULbl5.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl5.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.TabIndex = 1007
             ' 
             ' ULbl6
@@ -1030,7 +1030,7 @@
             ULbl6.SLFText = "Feedback" & vbCrLf & "(Supv. Only)"
             ULbl6.SLFTextAdjuster = False
             ULbl6.SLFTextBorder = False
-            ULbl6.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl6.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl6.TabIndex = 1008
             ' 
             ' ULbl7
@@ -1043,7 +1043,7 @@
             ULbl7.SLFText = "Attachment(s)"
             ULbl7.SLFTextAdjuster = False
             ULbl7.SLFTextBorder = False
-            ULbl7.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl7.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl7.TabIndex = 1009
             ' 
             ' FRMdarEditor

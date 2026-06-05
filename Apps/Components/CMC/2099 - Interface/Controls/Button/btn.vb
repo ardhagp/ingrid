@@ -129,8 +129,8 @@ Namespace UI.Control
         <SupportedOSPlatform("windows")>
         Private Sub Btn_BackColorChanged(sender As Object, e As System.EventArgs) Handles Me.BackColorChanged
             If Me.FlatStyle = System.Windows.Forms.FlatStyle.Flat Then
-                MyBase.FlatAppearance.BorderColor = ControlCodeBase.AmbilWarna(MyBase.BackColor, ControlCodeBase.enuOpasitasWarna.Darker, 60)
-                MyBase.FlatAppearance.MouseOverBackColor = ControlCodeBase.AmbilWarna(MyBase.BackColor, ControlCodeBase.enuOpasitasWarna.Lighter, 20)
+                MyBase.FlatAppearance.BorderColor = ControlCodeBase.GetColor(MyBase.BackColor, ControlCodeBase.EnumColorRange.Darker, 60)
+                MyBase.FlatAppearance.MouseOverBackColor = ControlCodeBase.GetColor(MyBase.BackColor, ControlCodeBase.EnumColorRange.Lighter, 20)
             End If
         End Sub
 

@@ -232,7 +232,7 @@
             ULbl1.SLFText = "DB Engine"
             ULbl1.SLFTextAdjuster = False
             ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            ULbl1.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Default
             ULbl1.TabIndex = 1010
             ' 
             ' ULbl_DatabaseName
@@ -245,7 +245,7 @@
             ULbl_DatabaseName.SLFText = "Database Name"
             ULbl_DatabaseName.SLFTextAdjuster = False
             ULbl_DatabaseName.SLFTextBorder = False
-            ULbl_DatabaseName.SLFWarnaLabel = ControlCodeBase.JenisLabel.Red
+            ULbl_DatabaseName.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Red
             ULbl_DatabaseName.TabIndex = 1008
             ' 
             ' TxtDatabaseName
@@ -267,13 +267,13 @@
             TxtDatabaseName.XOHighlightColor = Color.LightYellow
             TxtDatabaseName.XOIsBlank = True
             TxtDatabaseName.XOIsSearchBox = False
-            TxtDatabaseName.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtDatabaseName.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtDatabaseName.XOSelectOnFocus = False
             TxtDatabaseName.XOPasswordLengthMin = 8
             TxtDatabaseName.XOPasswordStrengthCalc = False
             TxtDatabaseName.XOPasswordStrengthScore = 0
             TxtDatabaseName.XOPasswordStrengthText = Nothing
-            TxtDatabaseName.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
+            TxtDatabaseName.XORestriction = ControlCodeBase.enumRestriction.TextAndNumber
             TxtDatabaseName.XOSearchBoxText = "Type then press Enter"
             TxtDatabaseName.XOSqlText = ""
             TxtDatabaseName.XOIsReplaceEmptyString = False
@@ -313,13 +313,13 @@
             TxtPassword.XOHighlightColor = Color.LightYellow
             TxtPassword.XOIsBlank = True
             TxtPassword.XOIsSearchBox = False
-            TxtPassword.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtPassword.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtPassword.XOSelectOnFocus = False
             TxtPassword.XOPasswordLengthMin = 8
             TxtPassword.XOPasswordStrengthCalc = False
             TxtPassword.XOPasswordStrengthScore = 0
             TxtPassword.XOPasswordStrengthText = Nothing
-            TxtPassword.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtPassword.XORestriction = ControlCodeBase.enumRestriction.None
             TxtPassword.XOSearchBoxText = "Type then press Enter"
             TxtPassword.XOSqlText = ""
             TxtPassword.XOIsReplaceEmptyString = False
@@ -344,13 +344,13 @@
             TxtUsername.XOHighlightColor = Color.LightYellow
             TxtUsername.XOIsBlank = True
             TxtUsername.XOIsSearchBox = False
-            TxtUsername.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtUsername.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtUsername.XOSelectOnFocus = False
             TxtUsername.XOPasswordLengthMin = 8
             TxtUsername.XOPasswordStrengthCalc = False
             TxtUsername.XOPasswordStrengthScore = 0
             TxtUsername.XOPasswordStrengthText = Nothing
-            TxtUsername.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
+            TxtUsername.XORestriction = ControlCodeBase.enumRestriction.TextAndNumber
             TxtUsername.XOSearchBoxText = "Type then press Enter"
             TxtUsername.XOSqlText = ""
             TxtUsername.XOIsReplaceEmptyString = False
@@ -366,7 +366,7 @@
             ULbl_Password.SLFText = "Password"
             ULbl_Password.SLFTextAdjuster = False
             ULbl_Password.SLFTextBorder = False
-            ULbl_Password.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            ULbl_Password.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Default
             ULbl_Password.TabIndex = 1005
             ' 
             ' ULbl_Username
@@ -379,7 +379,7 @@
             ULbl_Username.SLFText = "Username"
             ULbl_Username.SLFTextAdjuster = False
             ULbl_Username.SLFTextBorder = False
-            ULbl_Username.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            ULbl_Username.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Default
             ULbl_Username.TabIndex = 1004
             ' 
             ' ULbl_Port
@@ -392,7 +392,7 @@
             ULbl_Port.SLFText = "Port"
             ULbl_Port.SLFTextAdjuster = False
             ULbl_Port.SLFTextBorder = False
-            ULbl_Port.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            ULbl_Port.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Default
             ULbl_Port.TabIndex = 1003
             ' 
             ' TxtPort
@@ -415,13 +415,13 @@
             TxtPort.XOHighlightColor = Color.LightYellow
             TxtPort.XOIsBlank = True
             TxtPort.XOIsSearchBox = False
-            TxtPort.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtPort.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtPort.XOSelectOnFocus = False
             TxtPort.XOPasswordLengthMin = 8
             TxtPort.XOPasswordStrengthCalc = False
             TxtPort.XOPasswordStrengthScore = 0
             TxtPort.XOPasswordStrengthText = Nothing
-            TxtPort.XORestriction = ControlCodeBase.enuRestriction.OnlyNumber
+            TxtPort.XORestriction = ControlCodeBase.enumRestriction.OnlyNumber
             TxtPort.XOSearchBoxText = "Type then press Enter"
             TxtPort.XOSqlText = ""
             TxtPort.XOIsReplaceEmptyString = False
@@ -437,7 +437,7 @@
             ULbl_Address.SLFText = "Address"
             ULbl_Address.SLFTextAdjuster = False
             ULbl_Address.SLFTextBorder = False
-            ULbl_Address.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            ULbl_Address.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Default
             ULbl_Address.TabIndex = 1001
             ' 
             ' ULbl_Name
@@ -450,7 +450,7 @@
             ULbl_Name.SLFText = "Connection Name"
             ULbl_Name.SLFTextAdjuster = False
             ULbl_Name.SLFTextBorder = False
-            ULbl_Name.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            ULbl_Name.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Default
             ULbl_Name.TabIndex = 1000
             ' 
             ' TxtConnectionName
@@ -472,13 +472,13 @@
             TxtConnectionName.XOHighlightColor = Color.LightYellow
             TxtConnectionName.XOIsBlank = True
             TxtConnectionName.XOIsSearchBox = False
-            TxtConnectionName.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtConnectionName.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtConnectionName.XOSelectOnFocus = False
             TxtConnectionName.XOPasswordLengthMin = 8
             TxtConnectionName.XOPasswordStrengthCalc = False
             TxtConnectionName.XOPasswordStrengthScore = 0
             TxtConnectionName.XOPasswordStrengthText = Nothing
-            TxtConnectionName.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtConnectionName.XORestriction = ControlCodeBase.enumRestriction.None
             TxtConnectionName.XOSearchBoxText = "Type then press Enter"
             TxtConnectionName.XOSqlText = ""
             TxtConnectionName.XOIsReplaceEmptyString = False
@@ -503,13 +503,13 @@
             TxtAddress.XOHighlightColor = Color.LightYellow
             TxtAddress.XOIsBlank = True
             TxtAddress.XOIsSearchBox = False
-            TxtAddress.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtAddress.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtAddress.XOSelectOnFocus = False
             TxtAddress.XOPasswordLengthMin = 8
             TxtAddress.XOPasswordStrengthCalc = False
             TxtAddress.XOPasswordStrengthScore = 0
             TxtAddress.XOPasswordStrengthText = Nothing
-            TxtAddress.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtAddress.XORestriction = ControlCodeBase.enumRestriction.None
             TxtAddress.XOSearchBoxText = "Type then press Enter"
             TxtAddress.XOSqlText = ""
             TxtAddress.XOIsReplaceEmptyString = False
@@ -599,13 +599,13 @@
             txtImportContent.XOHighlightColor = Color.LightYellow
             txtImportContent.XOIsBlank = True
             txtImportContent.XOIsSearchBox = False
-            txtImportContent.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            txtImportContent.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             txtImportContent.XOSelectOnFocus = False
             txtImportContent.XOPasswordLengthMin = 8
             txtImportContent.XOPasswordStrengthCalc = False
             txtImportContent.XOPasswordStrengthScore = 0
             txtImportContent.XOPasswordStrengthText = Nothing
-            txtImportContent.XORestriction = ControlCodeBase.enuRestriction.None
+            txtImportContent.XORestriction = ControlCodeBase.enumRestriction.None
             txtImportContent.XOSearchBoxText = "Type then press Enter"
             txtImportContent.XOSqlText = ""
             txtImportContent.XOIsReplaceEmptyString = False
@@ -641,7 +641,7 @@
             ULbl2.SLFText = "Connection Code"
             ULbl2.SLFTextAdjuster = False
             ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl2.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1
             ' 
             ' txtImportCode
@@ -661,13 +661,13 @@
             txtImportCode.XOHighlightColor = Color.LightYellow
             txtImportCode.XOIsBlank = False
             txtImportCode.XOIsSearchBox = False
-            txtImportCode.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            txtImportCode.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             txtImportCode.XOSelectOnFocus = False
             txtImportCode.XOPasswordLengthMin = 8
             txtImportCode.XOPasswordStrengthCalc = False
             txtImportCode.XOPasswordStrengthScore = 0
             txtImportCode.XOPasswordStrengthText = Nothing
-            txtImportCode.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
+            txtImportCode.XORestriction = ControlCodeBase.enumRestriction.TextAndNumber
             txtImportCode.XOSearchBoxText = "Type then press Enter"
             txtImportCode.XOSqlText = ""
             txtImportCode.XOIsReplaceEmptyString = False

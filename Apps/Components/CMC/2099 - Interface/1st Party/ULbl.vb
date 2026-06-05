@@ -17,7 +17,7 @@ Namespace UI.Control
             Me.SLFTextAdjuster = False
             Me.SLFText = "Text"
             Me.SLFTextBorder = False
-            Me.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            Me.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Default
         End Sub
 
         '<System.ComponentModel.Description("This text will show on label"), System.ComponentModel.Editor(GetType(Design.MultilineStringEditor), GetType(System.Drawing.Design.UITypeEditor))>
@@ -82,48 +82,48 @@ Namespace UI.Control
             End If
         End Sub
 
-        Private varWarnaLabel As ControlCodeBase.JenisLabel
+        Private varWarnaLabel As ControlCodeBase.EnumColorSelect
         <SupportedOSPlatform("windows")>
         <System.ComponentModel.Description("Color options")>
-        Public Property SLFWarnaLabel() As ControlCodeBase.JenisLabel
+        Public Property SLFWarnaLabel() As ControlCodeBase.EnumColorSelect
             Get
                 Return varWarnaLabel
             End Get
-            Set(value As ControlCodeBase.JenisLabel)
+            Set(value As ControlCodeBase.EnumColorSelect)
                 varWarnaLabel = value
                 GantiWarnaLabel(value)
             End Set
         End Property
 
         <SupportedOSPlatform("windows")>
-        Private Sub GantiWarnaLabel(valEnuJenisTombol As ControlCodeBase.JenisLabel)
+        Private Sub GantiWarnaLabel(valEnuJenisTombol As ControlCodeBase.EnumColorSelect)
             Select Case valEnuJenisTombol
-                Case ControlCodeBase.JenisLabel.Green
+                Case ControlCodeBase.EnumColorSelect.Green
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.LimeGreen
                     MyBase.BackColor = Drawing.Color.MintCream
-                Case ControlCodeBase.JenisLabel.Red
+                Case ControlCodeBase.EnumColorSelect.Red
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.Red
                     MyBase.BackColor = Drawing.Color.MistyRose
-                Case ControlCodeBase.JenisLabel.Default
+                Case ControlCodeBase.EnumColorSelect.Default
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.RoyalBlue
                     MyBase.BackColor = Drawing.Color.AliceBlue
-                Case ControlCodeBase.JenisLabel.Yellow
+                Case ControlCodeBase.EnumColorSelect.Yellow
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.DarkOrange
                     MyBase.BackColor = Drawing.Color.Moccasin
-                Case ControlCodeBase.JenisLabel.Grey
+                Case ControlCodeBase.EnumColorSelect.Grey
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.DarkGray
                     MyBase.BackColor = Drawing.Color.WhiteSmoke
-                Case ControlCodeBase.JenisLabel.Custom
+                Case ControlCodeBase.EnumColorSelect.Custom
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     'UHead.BackColor = System.Drawing.Color.Orange

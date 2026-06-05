@@ -142,13 +142,13 @@
             TxtDeptCode.XOHighlightColor = Color.LightYellow
             TxtDeptCode.XOIsBlank = True
             TxtDeptCode.XOIsSearchBox = False
-            TxtDeptCode.XOLetterCase = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+            TxtDeptCode.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
             TxtDeptCode.XOSelectOnFocus = True
             TxtDeptCode.XOPasswordLengthMin = 8
             TxtDeptCode.XOPasswordStrengthCalc = False
             TxtDeptCode.XOPasswordStrengthScore = 0
             TxtDeptCode.XOPasswordStrengthText = Nothing
-            TxtDeptCode.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
+            TxtDeptCode.XORestriction = ControlCodeBase.enumRestriction.TextAndNumber
             TxtDeptCode.XOSearchBoxText = "Type then press Enter"
             TxtDeptCode.XOSqlText = ""
             TxtDeptCode.XOIsReplaceEmptyString = False
@@ -185,13 +185,13 @@
             TxtDeptName.XOHighlightColor = Color.LightYellow
             TxtDeptName.XOIsBlank = True
             TxtDeptName.XOIsSearchBox = False
-            TxtDeptName.XOLetterCase = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+            TxtDeptName.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
             TxtDeptName.XOSelectOnFocus = False
             TxtDeptName.XOPasswordLengthMin = 8
             TxtDeptName.XOPasswordStrengthCalc = False
             TxtDeptName.XOPasswordStrengthScore = 0
             TxtDeptName.XOPasswordStrengthText = Nothing
-            TxtDeptName.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
+            TxtDeptName.XORestriction = ControlCodeBase.enumRestriction.TextAndNumber
             TxtDeptName.XOSearchBoxText = "Type then press Enter"
             TxtDeptName.XOSqlText = ""
             TxtDeptName.XOIsReplaceEmptyString = False
@@ -216,13 +216,13 @@
             TxtDescription.XOHighlightColor = Color.LightYellow
             TxtDescription.XOIsBlank = True
             TxtDescription.XOIsSearchBox = False
-            TxtDescription.XOLetterCase = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+            TxtDescription.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
             TxtDescription.XOSelectOnFocus = False
             TxtDescription.XOPasswordLengthMin = 8
             TxtDescription.XOPasswordStrengthCalc = False
             TxtDescription.XOPasswordStrengthScore = 0
             TxtDescription.XOPasswordStrengthText = Nothing
-            TxtDescription.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtDescription.XORestriction = ControlCodeBase.enumRestriction.None
             TxtDescription.XOSearchBoxText = "Type then press Enter"
             TxtDescription.XOSqlText = ""
             TxtDescription.XOIsReplaceEmptyString = False
@@ -254,7 +254,7 @@
             ULbl1.SLFText = "Company"
             ULbl1.SLFTextAdjuster = False
             ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl1.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.TabIndex = 1004
             ' 
             ' ULbl2
@@ -267,7 +267,7 @@
             ULbl2.SLFText = "Dept. Code"
             ULbl2.SLFTextAdjuster = False
             ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl2.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1005
             ' 
             ' ULbl3
@@ -280,7 +280,7 @@
             ULbl3.SLFText = "Dept. Name"
             ULbl3.SLFTextAdjuster = False
             ULbl3.SLFTextBorder = False
-            ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl3.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 1006
             ' 
             ' ULbl4
@@ -293,7 +293,7 @@
             ULbl4.SLFText = "Description"
             ULbl4.SLFTextAdjuster = False
             ULbl4.SLFTextBorder = False
-            ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl4.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 1007
             ' 
             ' FRMcdinEditor

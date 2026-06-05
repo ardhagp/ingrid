@@ -103,13 +103,13 @@
             TxtPositionDescription.XOHighlightColor = Color.LightYellow
             TxtPositionDescription.XOIsBlank = True
             TxtPositionDescription.XOIsSearchBox = False
-            TxtPositionDescription.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtPositionDescription.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtPositionDescription.XOSelectOnFocus = False
             TxtPositionDescription.XOPasswordLengthMin = 8
             TxtPositionDescription.XOPasswordStrengthCalc = False
             TxtPositionDescription.XOPasswordStrengthScore = 0
             TxtPositionDescription.XOPasswordStrengthText = Nothing
-            TxtPositionDescription.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtPositionDescription.XORestriction = ControlCodeBase.enumRestriction.None
             TxtPositionDescription.XOSearchBoxText = "Type then press Enter"
             TxtPositionDescription.XOSqlText = ""
             TxtPositionDescription.XOIsReplaceEmptyString = False
@@ -133,13 +133,13 @@
             TxtPositionName.XOHighlightColor = Color.LightYellow
             TxtPositionName.XOIsBlank = True
             TxtPositionName.XOIsSearchBox = False
-            TxtPositionName.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtPositionName.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtPositionName.XOSelectOnFocus = False
             TxtPositionName.XOPasswordLengthMin = 8
             TxtPositionName.XOPasswordStrengthCalc = False
             TxtPositionName.XOPasswordStrengthScore = 0
             TxtPositionName.XOPasswordStrengthText = Nothing
-            TxtPositionName.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtPositionName.XORestriction = ControlCodeBase.enumRestriction.None
             TxtPositionName.XOSearchBoxText = "Type then press Enter"
             TxtPositionName.XOSqlText = ""
             TxtPositionName.XOIsReplaceEmptyString = False
@@ -189,13 +189,13 @@
             TxtPositionCode.XOHighlightColor = Color.LightYellow
             TxtPositionCode.XOIsBlank = True
             TxtPositionCode.XOIsSearchBox = False
-            TxtPositionCode.XOLetterCase = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+            TxtPositionCode.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
             TxtPositionCode.XOSelectOnFocus = True
             TxtPositionCode.XOPasswordLengthMin = 8
             TxtPositionCode.XOPasswordStrengthCalc = False
             TxtPositionCode.XOPasswordStrengthScore = 0
             TxtPositionCode.XOPasswordStrengthText = Nothing
-            TxtPositionCode.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtPositionCode.XORestriction = ControlCodeBase.enumRestriction.None
             TxtPositionCode.XOSearchBoxText = "Type then press Enter"
             TxtPositionCode.XOSqlText = ""
             TxtPositionCode.XOIsReplaceEmptyString = False
@@ -273,7 +273,7 @@
             ULbl1.SLFText = "Company"
             ULbl1.SLFTextAdjuster = False
             ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl1.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.TabIndex = 1014
             ' 
             ' ULbl2
@@ -286,7 +286,7 @@
             ULbl2.SLFText = "Department"
             ULbl2.SLFTextAdjuster = False
             ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl2.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1015
             ' 
             ' ULbl3
@@ -299,7 +299,7 @@
             ULbl3.SLFText = "Position Code"
             ULbl3.SLFTextAdjuster = False
             ULbl3.SLFTextBorder = False
-            ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl3.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 1016
             ' 
             ' ULbl4
@@ -312,7 +312,7 @@
             ULbl4.SLFText = "Position Name"
             ULbl4.SLFTextAdjuster = False
             ULbl4.SLFTextBorder = False
-            ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl4.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 1017
             ' 
             ' ULbl5
@@ -325,7 +325,7 @@
             ULbl5.SLFText = "Description"
             ULbl5.SLFTextAdjuster = False
             ULbl5.SLFTextBorder = False
-            ULbl5.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl5.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.TabIndex = 1018
             ' 
             ' FRMpostEditor

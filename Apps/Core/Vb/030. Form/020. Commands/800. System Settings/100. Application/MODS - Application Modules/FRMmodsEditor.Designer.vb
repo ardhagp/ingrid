@@ -190,7 +190,7 @@
             ULbl5.SLFText = "Description"
             ULbl5.SLFTextAdjuster = False
             ULbl5.SLFTextBorder = False
-            ULbl5.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl5.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.TabIndex = 1021
             ' 
             ' ULbl4
@@ -203,7 +203,7 @@
             ULbl4.SLFText = "Module Name"
             ULbl4.SLFTextAdjuster = False
             ULbl4.SLFTextBorder = False
-            ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl4.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 1020
             ' 
             ' ULbl3
@@ -216,7 +216,7 @@
             ULbl3.SLFText = "Code"
             ULbl3.SLFTextAdjuster = False
             ULbl3.SLFTextBorder = False
-            ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl3.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 1019
             ' 
             ' ULbl2
@@ -229,7 +229,7 @@
             ULbl2.SLFText = "Group"
             ULbl2.SLFTextAdjuster = False
             ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl2.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1018
             ' 
             ' ULbl1
@@ -242,7 +242,7 @@
             ULbl1.SLFText = "Module ID"
             ULbl1.SLFTextAdjuster = False
             ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl1.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.TabIndex = 1017
             ' 
             ' ChkSystem
@@ -277,13 +277,13 @@
             TxtCode.XOHighlightColor = Color.LightYellow
             TxtCode.XOIsBlank = True
             TxtCode.XOIsSearchBox = False
-            TxtCode.XOLetterCase = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+            TxtCode.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
             TxtCode.XOSelectOnFocus = True
             TxtCode.XOPasswordLengthMin = 8
             TxtCode.XOPasswordStrengthCalc = False
             TxtCode.XOPasswordStrengthScore = 0
             TxtCode.XOPasswordStrengthText = Nothing
-            TxtCode.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtCode.XORestriction = ControlCodeBase.enumRestriction.None
             TxtCode.XOSearchBoxText = "Type then press Enter"
             TxtCode.XOSqlText = ""
             TxtCode.XOIsReplaceEmptyString = True
@@ -333,13 +333,13 @@
             TxtDescription.XOHighlightColor = Color.LightYellow
             TxtDescription.XOIsBlank = True
             TxtDescription.XOIsSearchBox = False
-            TxtDescription.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtDescription.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtDescription.XOSelectOnFocus = False
             TxtDescription.XOPasswordLengthMin = 8
             TxtDescription.XOPasswordStrengthCalc = False
             TxtDescription.XOPasswordStrengthScore = 0
             TxtDescription.XOPasswordStrengthText = Nothing
-            TxtDescription.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtDescription.XORestriction = ControlCodeBase.enumRestriction.None
             TxtDescription.XOSearchBoxText = "Type then press Enter"
             TxtDescription.XOSqlText = ""
             TxtDescription.XOIsReplaceEmptyString = False
@@ -363,13 +363,13 @@
             TxtName.XOHighlightColor = Color.LightYellow
             TxtName.XOIsBlank = True
             TxtName.XOIsSearchBox = False
-            TxtName.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtName.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtName.XOSelectOnFocus = True
             TxtName.XOPasswordLengthMin = 8
             TxtName.XOPasswordStrengthCalc = False
             TxtName.XOPasswordStrengthScore = 0
             TxtName.XOPasswordStrengthText = Nothing
-            TxtName.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtName.XORestriction = ControlCodeBase.enumRestriction.None
             TxtName.XOSearchBoxText = "Type then press Enter"
             TxtName.XOSqlText = ""
             TxtName.XOIsReplaceEmptyString = False
@@ -394,13 +394,13 @@
             TxtID.XOHighlightColor = Color.LightYellow
             TxtID.XOIsBlank = True
             TxtID.XOIsSearchBox = False
-            TxtID.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtID.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtID.XOSelectOnFocus = False
             TxtID.XOPasswordLengthMin = 8
             TxtID.XOPasswordStrengthCalc = False
             TxtID.XOPasswordStrengthScore = 0
             TxtID.XOPasswordStrengthText = Nothing
-            TxtID.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtID.XORestriction = ControlCodeBase.enumRestriction.None
             TxtID.XOSearchBoxText = "Type then press Enter"
             TxtID.XOSqlText = ""
             TxtID.XOIsReplaceEmptyString = False

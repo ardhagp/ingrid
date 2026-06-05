@@ -113,13 +113,13 @@
             TxtFind.XOHighlightColor = Color.LightYellow
             TxtFind.XOIsBlank = True
             TxtFind.XOIsSearchBox = False
-            TxtFind.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtFind.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtFind.XOSelectOnFocus = False
             TxtFind.XOPasswordLengthMin = 8
             TxtFind.XOPasswordStrengthCalc = False
             TxtFind.XOPasswordStrengthScore = 0
             TxtFind.XOPasswordStrengthText = Nothing
-            TxtFind.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtFind.XORestriction = ControlCodeBase.enumRestriction.None
             TxtFind.XOSearchBoxText = "Type then press Enter"
             TxtFind.XOSqlText = Nothing
             TxtFind.XOIsReplaceEmptyString = False
