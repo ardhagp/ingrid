@@ -1,7 +1,10 @@
 ﻿Imports System.Runtime.Versioning
 
 Namespace UI.Control
-    Public Class tv
+    Public Class Tv
+        ''' <summary>
+        ''' Custom treeview
+        ''' </summary>
         Inherits System.Windows.Forms.TreeView
 
         <SupportedOSPlatform("windows")>

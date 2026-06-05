@@ -223,9 +223,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\TreeView\tv.Designer.vb">
-      <DependentUpon>tv.vb</DependentUpon>
+      <DependentUpon>Tv.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\TreeView\tv.vb" />
+    <Compile Update="2099 - Interface\Controls\TreeView\Tv.vb" />
     <Compile Update="2099 - Interface\Forms\Templates\Windows7\Blank.Designer.vb">
       <DependentUpon>Blank.vb</DependentUpon>
     </Compile>
