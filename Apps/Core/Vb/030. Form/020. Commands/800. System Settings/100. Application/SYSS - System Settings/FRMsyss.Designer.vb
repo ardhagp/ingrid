@@ -153,10 +153,10 @@ Namespace UI
             ULbl3.Margin = New Padding(7, 10, 7, 10)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(267, 55)
-            ULbl3.SLFText = "Show News Ticker"
-            ULbl3.SLFTextAdjuster = False
-            ULbl3.SLFTextBorder = False
-            ULbl3.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOText = "Show News Ticker"
+            ULbl3.XOTextAdjuster = False
+            ULbl3.XOTextBorder = False
+            ULbl3.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 9
             ' 
             ' ULbl2
@@ -166,10 +166,10 @@ Namespace UI
             ULbl2.Margin = New Padding(7, 10, 7, 10)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(267, 55)
-            ULbl2.SLFText = "Show Storage"
-            ULbl2.SLFTextAdjuster = False
-            ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl2.XOText = "Show Storage"
+            ULbl2.XOTextAdjuster = False
+            ULbl2.XOTextBorder = False
+            ULbl2.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 8
             ' 
             ' ULbl1
@@ -179,10 +179,10 @@ Namespace UI
             ULbl1.Margin = New Padding(7, 10, 7, 10)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(267, 55)
-            ULbl1.SLFText = "Show Profile"
-            ULbl1.SLFTextAdjuster = False
-            ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl1.XOText = "Show Profile"
+            ULbl1.XOTextAdjuster = False
+            ULbl1.XOTextBorder = False
+            ULbl1.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.TabIndex = 7
             ' 
             ' CboProfile
@@ -257,10 +257,10 @@ Namespace UI
             ULbl7.Margin = New Padding(7, 10, 7, 10)
             ULbl7.Name = "ULbl7"
             ULbl7.Size = New Size(250, 55)
-            ULbl7.SLFText = "Text"
-            ULbl7.SLFTextAdjuster = False
-            ULbl7.SLFTextBorder = False
-            ULbl7.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl7.XOText = "Text"
+            ULbl7.XOTextAdjuster = False
+            ULbl7.XOTextBorder = False
+            ULbl7.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl7.TabIndex = 15
             ' 
             ' ULbl6
@@ -270,10 +270,10 @@ Namespace UI
             ULbl6.Margin = New Padding(7, 10, 7, 10)
             ULbl6.Name = "ULbl6"
             ULbl6.Size = New Size(250, 55)
-            ULbl6.SLFText = "Show To"
-            ULbl6.SLFTextAdjuster = False
-            ULbl6.SLFTextBorder = False
-            ULbl6.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl6.XOText = "Show To"
+            ULbl6.XOTextAdjuster = False
+            ULbl6.XOTextBorder = False
+            ULbl6.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl6.TabIndex = 14
             ' 
             ' CboWatermark
@@ -343,10 +343,10 @@ Namespace UI
             ULbl5.Margin = New Padding(7, 10, 7, 10)
             ULbl5.Name = "ULbl5"
             ULbl5.Size = New Size(250, 55)
-            ULbl5.SLFText = "PDF"
-            ULbl5.SLFTextAdjuster = False
-            ULbl5.SLFTextBorder = False
-            ULbl5.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl5.XOText = "PDF"
+            ULbl5.XOTextAdjuster = False
+            ULbl5.XOTextBorder = False
+            ULbl5.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.TabIndex = 17
             ' 
             ' ULbl4
@@ -356,10 +356,10 @@ Namespace UI
             ULbl4.Margin = New Padding(7, 10, 7, 10)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 55)
-            ULbl4.SLFText = "Photo"
-            ULbl4.SLFTextAdjuster = False
-            ULbl4.SLFTextBorder = False
-            ULbl4.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOText = "Photo"
+            ULbl4.XOTextAdjuster = False
+            ULbl4.XOTextBorder = False
+            ULbl4.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 16
             ' 
             ' Lbl7
@@ -442,10 +442,10 @@ Namespace UI
             ULbl8.Margin = New Padding(7, 10, 7, 10)
             ULbl8.Name = "ULbl8"
             ULbl8.Size = New Size(250, 55)
-            ULbl8.SLFText = "Minimum Length"
-            ULbl8.SLFTextAdjuster = False
-            ULbl8.SLFTextBorder = False
-            ULbl8.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl8.XOText = "Minimum Length"
+            ULbl8.XOTextAdjuster = False
+            ULbl8.XOTextBorder = False
+            ULbl8.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl8.TabIndex = 2
             ' 
             ' nudMinPassword

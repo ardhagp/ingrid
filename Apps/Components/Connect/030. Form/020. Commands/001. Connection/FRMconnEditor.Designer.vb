@@ -229,10 +229,10 @@
             ULbl1.Margin = New Padding(10, 8, 10, 8)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(272, 40)
-            ULbl1.SLFText = "DB Engine"
-            ULbl1.SLFTextAdjuster = False
-            ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Default
+            ULbl1.XOText = "DB Engine"
+            ULbl1.XOTextAdjuster = False
+            ULbl1.XOTextBorder = False
+            ULbl1.XOLabelColor = ControlCodeBase.EnumColorSelect.Default
             ULbl1.TabIndex = 1010
             ' 
             ' ULbl_DatabaseName
@@ -242,10 +242,10 @@
             ULbl_DatabaseName.Margin = New Padding(12, 17, 12, 17)
             ULbl_DatabaseName.Name = "ULbl_DatabaseName"
             ULbl_DatabaseName.Size = New Size(272, 39)
-            ULbl_DatabaseName.SLFText = "Database Name"
-            ULbl_DatabaseName.SLFTextAdjuster = False
-            ULbl_DatabaseName.SLFTextBorder = False
-            ULbl_DatabaseName.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Red
+            ULbl_DatabaseName.XOText = "Database Name"
+            ULbl_DatabaseName.XOTextAdjuster = False
+            ULbl_DatabaseName.XOTextBorder = False
+            ULbl_DatabaseName.XOLabelColor = ControlCodeBase.EnumColorSelect.Red
             ULbl_DatabaseName.TabIndex = 1008
             ' 
             ' TxtDatabaseName
@@ -363,10 +363,10 @@
             ULbl_Password.Margin = New Padding(12, 17, 12, 17)
             ULbl_Password.Name = "ULbl_Password"
             ULbl_Password.Size = New Size(272, 35)
-            ULbl_Password.SLFText = "Password"
-            ULbl_Password.SLFTextAdjuster = False
-            ULbl_Password.SLFTextBorder = False
-            ULbl_Password.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Default
+            ULbl_Password.XOText = "Password"
+            ULbl_Password.XOTextAdjuster = False
+            ULbl_Password.XOTextBorder = False
+            ULbl_Password.XOLabelColor = ControlCodeBase.EnumColorSelect.Default
             ULbl_Password.TabIndex = 1005
             ' 
             ' ULbl_Username
@@ -376,10 +376,10 @@
             ULbl_Username.Margin = New Padding(12, 17, 12, 17)
             ULbl_Username.Name = "ULbl_Username"
             ULbl_Username.Size = New Size(272, 39)
-            ULbl_Username.SLFText = "Username"
-            ULbl_Username.SLFTextAdjuster = False
-            ULbl_Username.SLFTextBorder = False
-            ULbl_Username.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Default
+            ULbl_Username.XOText = "Username"
+            ULbl_Username.XOTextAdjuster = False
+            ULbl_Username.XOTextBorder = False
+            ULbl_Username.XOLabelColor = ControlCodeBase.EnumColorSelect.Default
             ULbl_Username.TabIndex = 1004
             ' 
             ' ULbl_Port
@@ -389,10 +389,10 @@
             ULbl_Port.Margin = New Padding(12, 17, 12, 17)
             ULbl_Port.Name = "ULbl_Port"
             ULbl_Port.Size = New Size(272, 39)
-            ULbl_Port.SLFText = "Port"
-            ULbl_Port.SLFTextAdjuster = False
-            ULbl_Port.SLFTextBorder = False
-            ULbl_Port.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Default
+            ULbl_Port.XOText = "Port"
+            ULbl_Port.XOTextAdjuster = False
+            ULbl_Port.XOTextBorder = False
+            ULbl_Port.XOLabelColor = ControlCodeBase.EnumColorSelect.Default
             ULbl_Port.TabIndex = 1003
             ' 
             ' TxtPort
@@ -434,10 +434,10 @@
             ULbl_Address.Margin = New Padding(12, 17, 12, 17)
             ULbl_Address.Name = "ULbl_Address"
             ULbl_Address.Size = New Size(272, 39)
-            ULbl_Address.SLFText = "Address"
-            ULbl_Address.SLFTextAdjuster = False
-            ULbl_Address.SLFTextBorder = False
-            ULbl_Address.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Default
+            ULbl_Address.XOText = "Address"
+            ULbl_Address.XOTextAdjuster = False
+            ULbl_Address.XOTextBorder = False
+            ULbl_Address.XOLabelColor = ControlCodeBase.EnumColorSelect.Default
             ULbl_Address.TabIndex = 1001
             ' 
             ' ULbl_Name
@@ -447,10 +447,10 @@
             ULbl_Name.Margin = New Padding(12, 17, 12, 17)
             ULbl_Name.Name = "ULbl_Name"
             ULbl_Name.Size = New Size(272, 39)
-            ULbl_Name.SLFText = "Connection Name"
-            ULbl_Name.SLFTextAdjuster = False
-            ULbl_Name.SLFTextBorder = False
-            ULbl_Name.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Default
+            ULbl_Name.XOText = "Connection Name"
+            ULbl_Name.XOTextAdjuster = False
+            ULbl_Name.XOTextBorder = False
+            ULbl_Name.XOLabelColor = ControlCodeBase.EnumColorSelect.Default
             ULbl_Name.TabIndex = 1000
             ' 
             ' TxtConnectionName
@@ -638,10 +638,10 @@
             ULbl2.Margin = New Padding(6, 8, 6, 8)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(231, 39)
-            ULbl2.SLFText = "Connection Code"
-            ULbl2.SLFTextAdjuster = False
-            ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl2.XOText = "Connection Code"
+            ULbl2.XOTextAdjuster = False
+            ULbl2.XOTextBorder = False
+            ULbl2.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1
             ' 
             ' txtImportCode

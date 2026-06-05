@@ -850,10 +850,10 @@
             ULbl1.Margin = New Padding(8, 12, 8, 12)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(250, 56)
-            ULbl1.SLFText = "Archive Code"
-            ULbl1.SLFTextAdjuster = False
-            ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl1.XOText = "Archive Code"
+            ULbl1.XOTextAdjuster = False
+            ULbl1.XOTextBorder = False
+            ULbl1.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.TabIndex = 1009
             ' 
             ' ULbl2
@@ -863,10 +863,10 @@
             ULbl2.Margin = New Padding(8, 12, 8, 12)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(250, 56)
-            ULbl2.SLFText = "Name / Title"
-            ULbl2.SLFTextAdjuster = False
-            ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl2.XOText = "Name / Title"
+            ULbl2.XOTextAdjuster = False
+            ULbl2.XOTextBorder = False
+            ULbl2.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1010
             ' 
             ' ULbl3
@@ -876,10 +876,10 @@
             ULbl3.Margin = New Padding(8, 12, 8, 12)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 56)
-            ULbl3.SLFText = "Category"
-            ULbl3.SLFTextAdjuster = False
-            ULbl3.SLFTextBorder = False
-            ULbl3.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOText = "Category"
+            ULbl3.XOTextAdjuster = False
+            ULbl3.XOTextBorder = False
+            ULbl3.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 1011
             ' 
             ' ULbl4
@@ -889,10 +889,10 @@
             ULbl4.Margin = New Padding(8, 12, 8, 12)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 381)
-            ULbl4.SLFText = "Short Desc."
-            ULbl4.SLFTextAdjuster = False
-            ULbl4.SLFTextBorder = False
-            ULbl4.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOText = "Short Desc."
+            ULbl4.XOTextAdjuster = False
+            ULbl4.XOTextBorder = False
+            ULbl4.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 1012
             ' 
             ' ULbl5
@@ -902,10 +902,10 @@
             ULbl5.Margin = New Padding(8, 12, 8, 12)
             ULbl5.Name = "ULbl5"
             ULbl5.Size = New Size(250, 56)
-            ULbl5.SLFText = "Keywords"
-            ULbl5.SLFTextAdjuster = False
-            ULbl5.SLFTextBorder = False
-            ULbl5.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl5.XOText = "Keywords"
+            ULbl5.XOTextAdjuster = False
+            ULbl5.XOTextBorder = False
+            ULbl5.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.TabIndex = 1013
             ' 
             ' ULbl6
@@ -915,10 +915,10 @@
             ULbl6.Margin = New Padding(8, 12, 8, 12)
             ULbl6.Name = "ULbl6"
             ULbl6.Size = New Size(250, 394)
-            ULbl6.SLFText = "Attachment(s)"
-            ULbl6.SLFTextAdjuster = False
-            ULbl6.SLFTextBorder = False
-            ULbl6.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl6.XOText = "Attachment(s)"
+            ULbl6.XOTextAdjuster = False
+            ULbl6.XOTextBorder = False
+            ULbl6.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl6.TabIndex = 1014
             ' 
             ' FRMpeprEditor

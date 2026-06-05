@@ -448,10 +448,10 @@
             ULbl7.Margin = New Padding(7, 10, 7, 10)
             ULbl7.Name = "ULbl7"
             ULbl7.Size = New Size(250, 39)
-            ULbl7.SLFText = "Login"
-            ULbl7.SLFTextAdjuster = True
-            ULbl7.SLFTextBorder = False
-            ULbl7.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl7.XOText = "Login"
+            ULbl7.XOTextAdjuster = True
+            ULbl7.XOTextBorder = False
+            ULbl7.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl7.TabIndex = 301
             ' 
             ' TxtLogin
@@ -540,10 +540,10 @@
             ULbl14.Margin = New Padding(12, 17, 12, 17)
             ULbl14.Name = "ULbl14"
             ULbl14.Size = New Size(250, 39)
-            ULbl14.SLFText = "Initial"
-            ULbl14.SLFTextAdjuster = True
-            ULbl14.SLFTextBorder = False
-            ULbl14.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl14.XOText = "Initial"
+            ULbl14.XOTextAdjuster = True
+            ULbl14.XOTextBorder = False
+            ULbl14.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl14.TabIndex = 1061
             ' 
             ' ULbl12
@@ -553,10 +553,10 @@
             ULbl12.Margin = New Padding(12, 17, 12, 17)
             ULbl12.Name = "ULbl12"
             ULbl12.Size = New Size(250, 39)
-            ULbl12.SLFText = "Emp. Number"
-            ULbl12.SLFTextAdjuster = True
-            ULbl12.SLFTextBorder = False
-            ULbl12.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Red
+            ULbl12.XOText = "Emp. Number"
+            ULbl12.XOTextAdjuster = True
+            ULbl12.XOTextBorder = False
+            ULbl12.XOLabelColor = ControlCodeBase.EnumColorSelect.Red
             ULbl12.TabIndex = 1059
             ' 
             ' ULbl11
@@ -566,10 +566,10 @@
             ULbl11.Margin = New Padding(12, 17, 12, 17)
             ULbl11.Name = "ULbl11"
             ULbl11.Size = New Size(250, 39)
-            ULbl11.SLFText = "Emp. Type"
-            ULbl11.SLFTextAdjuster = True
-            ULbl11.SLFTextBorder = False
-            ULbl11.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Grey
+            ULbl11.XOText = "Emp. Type"
+            ULbl11.XOTextAdjuster = True
+            ULbl11.XOTextBorder = False
+            ULbl11.XOLabelColor = ControlCodeBase.EnumColorSelect.Grey
             ULbl11.TabIndex = 1058
             ' 
             ' ULbl10
@@ -579,10 +579,10 @@
             ULbl10.Margin = New Padding(12, 17, 12, 17)
             ULbl10.Name = "ULbl10"
             ULbl10.Size = New Size(250, 39)
-            ULbl10.SLFText = "Position"
-            ULbl10.SLFTextAdjuster = True
-            ULbl10.SLFTextBorder = False
-            ULbl10.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Red
+            ULbl10.XOText = "Position"
+            ULbl10.XOTextAdjuster = True
+            ULbl10.XOTextBorder = False
+            ULbl10.XOLabelColor = ControlCodeBase.EnumColorSelect.Red
             ULbl10.TabIndex = 1057
             ' 
             ' ULbl9
@@ -592,10 +592,10 @@
             ULbl9.Margin = New Padding(12, 17, 12, 17)
             ULbl9.Name = "ULbl9"
             ULbl9.Size = New Size(250, 39)
-            ULbl9.SLFText = "Department"
-            ULbl9.SLFTextAdjuster = True
-            ULbl9.SLFTextBorder = False
-            ULbl9.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl9.XOText = "Department"
+            ULbl9.XOTextAdjuster = True
+            ULbl9.XOTextBorder = False
+            ULbl9.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl9.TabIndex = 1056
             ' 
             ' ULbl6
@@ -605,10 +605,10 @@
             ULbl6.Margin = New Padding(12, 17, 12, 17)
             ULbl6.Name = "ULbl6"
             ULbl6.Size = New Size(250, 39)
-            ULbl6.SLFText = "Company"
-            ULbl6.SLFTextAdjuster = True
-            ULbl6.SLFTextBorder = False
-            ULbl6.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl6.XOText = "Company"
+            ULbl6.XOTextAdjuster = True
+            ULbl6.XOTextBorder = False
+            ULbl6.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl6.TabIndex = 1055
             ' 
             ' ChkActiveEmployee
@@ -868,10 +868,10 @@
             ULbl1.Margin = New Padding(9, 13, 9, 13)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(250, 39)
-            ULbl1.SLFText = "Personal ID"
-            ULbl1.SLFTextAdjuster = True
-            ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Red
+            ULbl1.XOText = "Personal ID"
+            ULbl1.XOTextAdjuster = True
+            ULbl1.XOTextBorder = False
+            ULbl1.XOLabelColor = ControlCodeBase.EnumColorSelect.Red
             ULbl1.TabIndex = 1056
             ' 
             ' ULbl5
@@ -881,10 +881,10 @@
             ULbl5.Margin = New Padding(9, 13, 9, 13)
             ULbl5.Name = "ULbl5"
             ULbl5.Size = New Size(250, 254)
-            ULbl5.SLFText = "Address"
-            ULbl5.SLFTextAdjuster = True
-            ULbl5.SLFTextBorder = False
-            ULbl5.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl5.XOText = "Address"
+            ULbl5.XOTextAdjuster = True
+            ULbl5.XOTextBorder = False
+            ULbl5.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.TabIndex = 1055
             ' 
             ' ULbl4
@@ -894,10 +894,10 @@
             ULbl4.Margin = New Padding(9, 13, 9, 13)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 39)
-            ULbl4.SLFText = "Gender"
-            ULbl4.SLFTextAdjuster = True
-            ULbl4.SLFTextBorder = False
-            ULbl4.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOText = "Gender"
+            ULbl4.XOTextAdjuster = True
+            ULbl4.XOTextBorder = False
+            ULbl4.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 1054
             ' 
             ' ULbl3
@@ -907,10 +907,10 @@
             ULbl3.Margin = New Padding(9, 13, 9, 13)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 39)
-            ULbl3.SLFText = "Birth Place"
-            ULbl3.SLFTextAdjuster = True
-            ULbl3.SLFTextBorder = False
-            ULbl3.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOText = "Birth Place"
+            ULbl3.XOTextAdjuster = True
+            ULbl3.XOTextBorder = False
+            ULbl3.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 1053
             ' 
             ' ULbl16
@@ -920,10 +920,10 @@
             ULbl16.Margin = New Padding(9, 13, 9, 13)
             ULbl16.Name = "ULbl16"
             ULbl16.Size = New Size(250, 39)
-            ULbl16.SLFText = "Date of Birth"
-            ULbl16.SLFTextAdjuster = True
-            ULbl16.SLFTextBorder = False
-            ULbl16.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl16.XOText = "Date of Birth"
+            ULbl16.XOTextAdjuster = True
+            ULbl16.XOTextBorder = False
+            ULbl16.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl16.TabIndex = 1052
             ' 
             ' ULbl2
@@ -933,10 +933,10 @@
             ULbl2.Margin = New Padding(9, 13, 9, 13)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(250, 39)
-            ULbl2.SLFText = "Full Name"
-            ULbl2.SLFTextAdjuster = True
-            ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Red
+            ULbl2.XOText = "Full Name"
+            ULbl2.XOTextAdjuster = True
+            ULbl2.XOTextBorder = False
+            ULbl2.XOLabelColor = ControlCodeBase.EnumColorSelect.Red
             ULbl2.TabIndex = 1051
             ' 
             ' TxtAddress
@@ -1112,10 +1112,10 @@
             ULbl8.Margin = New Padding(7, 5, 7, 5)
             ULbl8.Name = "ULbl8"
             ULbl8.Size = New Size(250, 39)
-            ULbl8.SLFText = "Photo"
-            ULbl8.SLFTextAdjuster = False
-            ULbl8.SLFTextBorder = False
-            ULbl8.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl8.XOText = "Photo"
+            ULbl8.XOTextAdjuster = False
+            ULbl8.XOTextBorder = False
+            ULbl8.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl8.TabIndex = 1041
             ' 
             ' FRMeplsEditor

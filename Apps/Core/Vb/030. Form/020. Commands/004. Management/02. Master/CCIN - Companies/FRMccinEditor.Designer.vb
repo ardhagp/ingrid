@@ -304,10 +304,10 @@
             ULbl1.Margin = New Padding(7, 5, 7, 5)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(250, 39)
-            ULbl1.SLFText = "Company Code"
-            ULbl1.SLFTextAdjuster = False
-            ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl1.XOText = "Company Code"
+            ULbl1.XOTextAdjuster = False
+            ULbl1.XOTextBorder = False
+            ULbl1.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.TabIndex = 1006
             ' 
             ' ULbl2
@@ -317,10 +317,10 @@
             ULbl2.Margin = New Padding(7, 5, 7, 5)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(250, 39)
-            ULbl2.SLFText = "Company Name"
-            ULbl2.SLFTextAdjuster = False
-            ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl2.XOText = "Company Name"
+            ULbl2.XOTextAdjuster = False
+            ULbl2.XOTextBorder = False
+            ULbl2.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1007
             ' 
             ' ULbl3
@@ -330,10 +330,10 @@
             ULbl3.Margin = New Padding(7, 5, 7, 5)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 39)
-            ULbl3.SLFText = "Search Term 1"
-            ULbl3.SLFTextAdjuster = False
-            ULbl3.SLFTextBorder = False
-            ULbl3.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOText = "Search Term 1"
+            ULbl3.XOTextAdjuster = False
+            ULbl3.XOTextBorder = False
+            ULbl3.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 1008
             ' 
             ' ULbl4
@@ -343,10 +343,10 @@
             ULbl4.Margin = New Padding(7, 5, 7, 5)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 39)
-            ULbl4.SLFText = "Search Term 2"
-            ULbl4.SLFTextAdjuster = False
-            ULbl4.SLFTextBorder = False
-            ULbl4.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOText = "Search Term 2"
+            ULbl4.XOTextAdjuster = False
+            ULbl4.XOTextBorder = False
+            ULbl4.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 1009
             ' 
             ' ULbl5
@@ -356,10 +356,10 @@
             ULbl5.Margin = New Padding(7, 5, 7, 5)
             ULbl5.Name = "ULbl5"
             ULbl5.Size = New Size(250, 221)
-            ULbl5.SLFText = "Description"
-            ULbl5.SLFTextAdjuster = False
-            ULbl5.SLFTextBorder = False
-            ULbl5.SLFWarnaLabel = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl5.XOText = "Description"
+            ULbl5.XOTextAdjuster = False
+            ULbl5.XOTextBorder = False
+            ULbl5.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.TabIndex = 1010
             ' 
             ' FRMccinEditor
