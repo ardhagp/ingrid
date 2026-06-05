@@ -5,6 +5,9 @@ Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
 Namespace UI.Control
+    ''' <summary>
+    ''' Custom progressbar
+    ''' </summary>
     Public Class Pgb
         Inherits System.Windows.Forms.ProgressBar
 
@@ -18,7 +21,7 @@ Namespace UI.Control
             Me.SetStyle(ControlStyles.UserPaint, True)
         End Sub
 
-#Region "Properti"
+#Region "Properties"
 
         <SupportedOSPlatform("windows")>
         Protected Overrides Sub OnPaint(e As System.Windows.Forms.PaintEventArgs)

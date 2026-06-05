@@ -1,6 +1,9 @@
 ﻿Imports System.Runtime.Versioning
 
 Namespace UI.Control
+    ''' <summary>
+    ''' Custom radiobutton
+    ''' </summary>
     Public Class Rdo
         Inherits System.Windows.Forms.RadioButton
 
