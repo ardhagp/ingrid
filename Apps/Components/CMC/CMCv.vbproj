@@ -175,9 +175,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Panel\pnl.Designer.vb">
-      <DependentUpon>pnl.vb</DependentUpon>
+      <DependentUpon>Pnl.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Panel\pnl.vb">
+    <Compile Update="2099 - Interface\Controls\Panel\Pnl.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\PictureBox\Pbx.Designer.vb">
@@ -329,7 +329,7 @@
     <EmbeddedResource Include="2099 - Interface\Controls\ProgressBar\Pgb.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\Panel\pnl.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\Panel\Pnl.ico" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="2099 - Interface\Controls\NumericUpDown\nud.ico" />
