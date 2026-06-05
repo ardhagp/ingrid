@@ -299,24 +299,24 @@ Namespace UI
             TxtWatermark.TabIndex = 3
             TxtWatermark.Tag = "txt"
             TxtWatermark.XOAutoTrim = False
-            TxtWatermark.XOHarusDiisi = False
-            TxtWatermark.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtWatermark.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtWatermark.XOHightlightSaatFokus = False
-            TxtWatermark.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtWatermark.XOIsMandatory = False
+            TxtWatermark.XOMandatoryBgColor = Color.LightPink
+            TxtWatermark.XOMandatoryBgColorDefault = Color.White
+            TxtWatermark.XOHighlightOnFocus = False
+            TxtWatermark.XOHighlightColor = Color.LightYellow
             TxtWatermark.XOIsBlank = True
             TxtWatermark.XOIsSearchBox = False
-            TxtWatermark.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtWatermark.XOPilihSemuaSaatFokus = False
-            TxtWatermark.XOPwdLengthMin = 8
-            TxtWatermark.XOPwdStrengthCalculate = False
-            TxtWatermark.XOPwdStrengthScore = 0
-            TxtWatermark.XOPwdStrengthText = Nothing
+            TxtWatermark.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtWatermark.XOSelectOnFocus = False
+            TxtWatermark.XOPasswordLengthMin = 8
+            TxtWatermark.XOPasswordStrengthCalc = False
+            TxtWatermark.XOPasswordStrengthScore = 0
+            TxtWatermark.XOPasswordStrengthText = Nothing
             TxtWatermark.XORestriction = ControlCodeBase.enuRestriction.None
             TxtWatermark.XOSearchBoxText = "Watermark Text"
-            TxtWatermark.XOSQLText = ""
-            TxtWatermark.XOTanpaSpasi = False
-            TxtWatermark.XOValidasiField = Nothing
+            TxtWatermark.XOSqlText = ""
+            TxtWatermark.XOIsReplaceEmptyString = False
+            TxtWatermark.XOMandatoryMessage = Nothing
             ' 
             ' Gbx1
             ' 

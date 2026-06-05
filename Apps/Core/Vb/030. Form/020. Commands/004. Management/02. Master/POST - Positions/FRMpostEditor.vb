@@ -75,11 +75,11 @@ Namespace UI
                 .Remove(pDepartmentId)
                 .Add(pDepartmentId, CLng(CboDepartement.SelectedValue))
                 .Remove(pPositionCode)
-                .Add(pPositionCode, TxtPositionCode.XOSQLText)
+                .Add(pPositionCode, TxtPositionCode.XOSqlText)
                 .Remove(pPositionName)
-                .Add(pPositionName, TxtPositionName.XOSQLText)
+                .Add(pPositionName, TxtPositionName.XOSqlText)
                 .Remove(pPositionDescription)
-                .Add(pPositionDescription, IIf(TxtPositionDescription.XOSQLText = String.Empty OrElse TxtPositionDescription.XOSQLText = "", DBNull.Value, TxtPositionDescription.XOSQLText))
+                .Add(pPositionDescription, IIf(TxtPositionDescription.XOSqlText = String.Empty OrElse TxtPositionDescription.XOSqlText = "", DBNull.Value, TxtPositionDescription.XOSqlText))
             End With
 
             If (CboDepartement.Items.Count = 0) OrElse (varDataProperties.AllParameters(pPositionCode).ToString = String.Empty) OrElse (varDataProperties.AllParameters(pPositionName).ToString = String.Empty) Then

@@ -280,24 +280,24 @@
             TxtDescription.TabIndex = 10
             TxtDescription.Tag = "txt"
             TxtDescription.XOAutoTrim = False
-            TxtDescription.XOHarusDiisi = False
-            TxtDescription.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtDescription.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtDescription.XOHightlightSaatFokus = False
-            TxtDescription.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtDescription.XOIsMandatory = False
+            TxtDescription.XOMandatoryBgColor = Color.LightPink
+            TxtDescription.XOMandatoryBgColorDefault = Color.White
+            TxtDescription.XOHighlightOnFocus = False
+            TxtDescription.XOHighlightColor = Color.LightYellow
             TxtDescription.XOIsBlank = True
             TxtDescription.XOIsSearchBox = False
-            TxtDescription.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtDescription.XOPilihSemuaSaatFokus = False
-            TxtDescription.XOPwdLengthMin = 8
-            TxtDescription.XOPwdStrengthCalculate = False
-            TxtDescription.XOPwdStrengthScore = 0
-            TxtDescription.XOPwdStrengthText = Nothing
+            TxtDescription.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtDescription.XOSelectOnFocus = False
+            TxtDescription.XOPasswordLengthMin = 8
+            TxtDescription.XOPasswordStrengthCalc = False
+            TxtDescription.XOPasswordStrengthScore = 0
+            TxtDescription.XOPasswordStrengthText = Nothing
             TxtDescription.XORestriction = ControlCodeBase.enuRestriction.None
             TxtDescription.XOSearchBoxText = "Type then press Enter"
-            TxtDescription.XOSQLText = ""
-            TxtDescription.XOTanpaSpasi = False
-            TxtDescription.XOValidasiField = Nothing
+            TxtDescription.XOSqlText = ""
+            TxtDescription.XOIsReplaceEmptyString = False
+            TxtDescription.XOMandatoryMessage = Nothing
             ' 
             ' LblNote
             ' 

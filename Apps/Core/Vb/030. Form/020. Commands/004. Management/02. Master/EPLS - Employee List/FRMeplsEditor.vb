@@ -133,17 +133,17 @@ Namespace UI
 
             With varDataProperties
                 .AllParameters.Remove(pEmployeePersonalIdNumber)
-                .AllParameters.Add(pEmployeePersonalIdNumber, IIf(TxtPersonalID.XOSQLText = String.Empty OrElse TxtPersonalID.XOSQLText = "", DBNull.Value, TxtPersonalID.XOSQLText))
+                .AllParameters.Add(pEmployeePersonalIdNumber, IIf(TxtPersonalID.XOSqlText = String.Empty OrElse TxtPersonalID.XOSqlText = "", DBNull.Value, TxtPersonalID.XOSqlText))
                 .AllParameters.Remove(pEmployeeFullName)
-                .AllParameters.Add(pEmployeeFullName, IIf(TxtFullName.XOSQLText = String.Empty OrElse TxtFullName.XOSQLText = "", DBNull.Value, TxtFullName.XOSQLText))
+                .AllParameters.Add(pEmployeeFullName, IIf(TxtFullName.XOSqlText = String.Empty OrElse TxtFullName.XOSqlText = "", DBNull.Value, TxtFullName.XOSqlText))
                 .AllParameters.Remove(pEmployeeBirthPlace)
-                .AllParameters.Add(pEmployeeBirthPlace, IIf(TxtBirthPlace.XOSQLText = String.Empty OrElse TxtBirthPlace.XOSQLText = "", DBNull.Value, TxtBirthPlace.XOSQLText))
+                .AllParameters.Add(pEmployeeBirthPlace, IIf(TxtBirthPlace.XOSqlText = String.Empty OrElse TxtBirthPlace.XOSqlText = "", DBNull.Value, TxtBirthPlace.XOSqlText))
                 .AllParameters.Remove(pEmployeeGender)
                 .AllParameters.Add(pEmployeeGender, IIf(CboGender.SelectedItem Is Nothing OrElse CboGender.SelectedItem.ToString = String.Empty, DBNull.Value, CboGender.SelectedItem.ToString))
                 .AllParameters.Remove(pEmployeeAddress)
-                .AllParameters.Add(pEmployeeAddress, IIf(TxtAddress.XOSQLText = String.Empty OrElse TxtAddress.XOSQLText = "", DBNull.Value, TxtAddress.XOSQLText))
+                .AllParameters.Add(pEmployeeAddress, IIf(TxtAddress.XOSqlText = String.Empty OrElse TxtAddress.XOSqlText = "", DBNull.Value, TxtAddress.XOSqlText))
                 .AllParameters.Remove(pEmployeeNickname)
-                .AllParameters.Add(pEmployeeNickname, IIf(TxtEmployeeNickname.XOSQLText = String.Empty OrElse TxtEmployeeNickname.XOSQLText = "", DBNull.Value, TxtEmployeeNickname.XOSQLText))
+                .AllParameters.Add(pEmployeeNickname, IIf(TxtEmployeeNickname.XOSqlText = String.Empty OrElse TxtEmployeeNickname.XOSqlText = "", DBNull.Value, TxtEmployeeNickname.XOSqlText))
             End With
 
             If CMDepls.Editor.PushData(varDataProperties) Then
@@ -177,7 +177,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Function CheckEmployeeMandatoryFields() As Boolean
-            If (TxtPersonalID.XOSQLText = String.Empty OrElse IsDBNull(varDataProperties.AllParameters(pPositionId)) OrElse varDataProperties.AllParameters(pPositionId) Is Nothing OrElse (TxtEmployeeNumber.XOSQLText = String.Empty) OrElse (TxtFullName.XOSQLText = String.Empty)) Then
+            If (TxtPersonalID.XOSqlText = String.Empty OrElse IsDBNull(varDataProperties.AllParameters(pPositionId)) OrElse varDataProperties.AllParameters(pPositionId) Is Nothing OrElse (TxtEmployeeNumber.XOSqlText = String.Empty) OrElse (TxtFullName.XOSqlText = String.Empty)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Ensure that the Personal ID, Full Name, Company, Department, Position and Employee Number fields are correctly completed.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return False
             End If

@@ -150,24 +150,24 @@ Partial Class FRMcpdb
         Txt1.TabIndex = 997
         Txt1.Tag = "txt"
         Txt1.XOAutoTrim = False
-        Txt1.XOHarusDiisi = False
-        Txt1.XOHarusDiisiWarnaLatar = Color.LightPink
-        Txt1.XOHarusDiisiWarnaLatarDefault = Color.White
-        Txt1.XOHightlightSaatFokus = False
-        Txt1.XOHightlightSaatFokusWarna = Color.LightYellow
+        Txt1.XOIsMandatory = False
+        Txt1.XOMandatoryBgColor = Color.LightPink
+        Txt1.XOMandatoryBgColorDefault = Color.White
+        Txt1.XOHighlightOnFocus = False
+        Txt1.XOHighlightColor = Color.LightYellow
         Txt1.XOIsBlank = True
         Txt1.XOIsSearchBox = False
-        Txt1.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt1.XOPilihSemuaSaatFokus = False
-        Txt1.XOPwdLengthMin = 8
-        Txt1.XOPwdStrengthCalculate = False
-        Txt1.XOPwdStrengthScore = 0
-        Txt1.XOPwdStrengthText = Nothing
+        Txt1.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+        Txt1.XOSelectOnFocus = False
+        Txt1.XOPasswordLengthMin = 8
+        Txt1.XOPasswordStrengthCalc = False
+        Txt1.XOPasswordStrengthScore = 0
+        Txt1.XOPasswordStrengthText = Nothing
         Txt1.XORestriction = ControlCodeBase.enuRestriction.None
         Txt1.XOSearchBoxText = "Type then press Enter"
-        Txt1.XOSQLText = ""
-        Txt1.XOTanpaSpasi = False
-        Txt1.XOValidasiField = Nothing
+        Txt1.XOSqlText = ""
+        Txt1.XOIsReplaceEmptyString = False
+        Txt1.XOMandatoryMessage = Nothing
         ' 
         ' Txt2
         ' 
@@ -180,24 +180,24 @@ Partial Class FRMcpdb
         Txt2.TabIndex = 998
         Txt2.Tag = "txt"
         Txt2.XOAutoTrim = False
-        Txt2.XOHarusDiisi = False
-        Txt2.XOHarusDiisiWarnaLatar = Color.LightPink
-        Txt2.XOHarusDiisiWarnaLatarDefault = Color.White
-        Txt2.XOHightlightSaatFokus = False
-        Txt2.XOHightlightSaatFokusWarna = Color.LightYellow
+        Txt2.XOIsMandatory = False
+        Txt2.XOMandatoryBgColor = Color.LightPink
+        Txt2.XOMandatoryBgColorDefault = Color.White
+        Txt2.XOHighlightOnFocus = False
+        Txt2.XOHighlightColor = Color.LightYellow
         Txt2.XOIsBlank = True
         Txt2.XOIsSearchBox = False
-        Txt2.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt2.XOPilihSemuaSaatFokus = False
-        Txt2.XOPwdLengthMin = 8
-        Txt2.XOPwdStrengthCalculate = False
-        Txt2.XOPwdStrengthScore = 0
-        Txt2.XOPwdStrengthText = Nothing
+        Txt2.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+        Txt2.XOSelectOnFocus = False
+        Txt2.XOPasswordLengthMin = 8
+        Txt2.XOPasswordStrengthCalc = False
+        Txt2.XOPasswordStrengthScore = 0
+        Txt2.XOPasswordStrengthText = Nothing
         Txt2.XORestriction = ControlCodeBase.enuRestriction.None
         Txt2.XOSearchBoxText = "Type then press Enter"
-        Txt2.XOSQLText = ""
-        Txt2.XOTanpaSpasi = False
-        Txt2.XOValidasiField = Nothing
+        Txt2.XOSqlText = ""
+        Txt2.XOIsReplaceEmptyString = False
+        Txt2.XOMandatoryMessage = Nothing
         ' 
         ' Txt3
         ' 
@@ -210,24 +210,24 @@ Partial Class FRMcpdb
         Txt3.TabIndex = 999
         Txt3.Tag = "txt"
         Txt3.XOAutoTrim = False
-        Txt3.XOHarusDiisi = False
-        Txt3.XOHarusDiisiWarnaLatar = Color.LightPink
-        Txt3.XOHarusDiisiWarnaLatarDefault = Color.White
-        Txt3.XOHightlightSaatFokus = False
-        Txt3.XOHightlightSaatFokusWarna = Color.LightYellow
+        Txt3.XOIsMandatory = False
+        Txt3.XOMandatoryBgColor = Color.LightPink
+        Txt3.XOMandatoryBgColorDefault = Color.White
+        Txt3.XOHighlightOnFocus = False
+        Txt3.XOHighlightColor = Color.LightYellow
         Txt3.XOIsBlank = True
         Txt3.XOIsSearchBox = False
-        Txt3.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt3.XOPilihSemuaSaatFokus = False
-        Txt3.XOPwdLengthMin = 8
-        Txt3.XOPwdStrengthCalculate = False
-        Txt3.XOPwdStrengthScore = 0
-        Txt3.XOPwdStrengthText = Nothing
+        Txt3.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+        Txt3.XOSelectOnFocus = False
+        Txt3.XOPasswordLengthMin = 8
+        Txt3.XOPasswordStrengthCalc = False
+        Txt3.XOPasswordStrengthScore = 0
+        Txt3.XOPasswordStrengthText = Nothing
         Txt3.XORestriction = ControlCodeBase.enuRestriction.None
         Txt3.XOSearchBoxText = "Type then press Enter"
-        Txt3.XOSQLText = ""
-        Txt3.XOTanpaSpasi = False
-        Txt3.XOValidasiField = Nothing
+        Txt3.XOSqlText = ""
+        Txt3.XOIsReplaceEmptyString = False
+        Txt3.XOMandatoryMessage = Nothing
         ' 
         ' Lbl2
         ' 
@@ -264,24 +264,24 @@ Partial Class FRMcpdb
         Txt4.TabIndex = 1002
         Txt4.Tag = "txt"
         Txt4.XOAutoTrim = False
-        Txt4.XOHarusDiisi = False
-        Txt4.XOHarusDiisiWarnaLatar = Color.LightPink
-        Txt4.XOHarusDiisiWarnaLatarDefault = Color.White
-        Txt4.XOHightlightSaatFokus = False
-        Txt4.XOHightlightSaatFokusWarna = Color.LightYellow
+        Txt4.XOIsMandatory = False
+        Txt4.XOMandatoryBgColor = Color.LightPink
+        Txt4.XOMandatoryBgColorDefault = Color.White
+        Txt4.XOHighlightOnFocus = False
+        Txt4.XOHighlightColor = Color.LightYellow
         Txt4.XOIsBlank = True
         Txt4.XOIsSearchBox = False
-        Txt4.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        Txt4.XOPilihSemuaSaatFokus = False
-        Txt4.XOPwdLengthMin = 8
-        Txt4.XOPwdStrengthCalculate = False
-        Txt4.XOPwdStrengthScore = 0
-        Txt4.XOPwdStrengthText = Nothing
+        Txt4.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+        Txt4.XOSelectOnFocus = False
+        Txt4.XOPasswordLengthMin = 8
+        Txt4.XOPasswordStrengthCalc = False
+        Txt4.XOPasswordStrengthScore = 0
+        Txt4.XOPasswordStrengthText = Nothing
         Txt4.XORestriction = ControlCodeBase.enuRestriction.None
         Txt4.XOSearchBoxText = "Type then press Enter"
-        Txt4.XOSQLText = ""
-        Txt4.XOTanpaSpasi = False
-        Txt4.XOValidasiField = Nothing
+        Txt4.XOSqlText = ""
+        Txt4.XOIsReplaceEmptyString = False
+        Txt4.XOMandatoryMessage = Nothing
         ' 
         ' Lbl4
         ' 
@@ -304,10 +304,10 @@ Partial Class FRMcpdb
         Nud1.Size = New Size(172, 39)
         Nud1.TabIndex = 1004
         Nud1.XOAutoTrim = False
-        Nud1.XOHarusDiisi = False
-        Nud1.XOHightlightSaatFokus = False
-        Nud1.XOHightlightSaatFokusWarna = Color.LightYellow
-        Nud1.XOPilihSemuaSaatFokus = False
+        Nud1.XOIsMandatory = False
+        Nud1.XOHighlightOnFocus = False
+        Nud1.XOHighlightColor = Color.LightYellow
+        Nud1.XOSelectOnFocus = False
         ' 
         ' Lbl5
         ' 

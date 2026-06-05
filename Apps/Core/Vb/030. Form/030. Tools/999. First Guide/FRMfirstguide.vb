@@ -52,7 +52,7 @@ Namespace UI
                     End If
                     Return
                 End If
-                If Txt_Password.XOPwdStrengthScore < 70 Then
+                If Txt_Password.XOPasswordStrengthScore < 70 Then
                     Decision(My.Application.Info.AssemblyName.ToUpper, "Your password is not strong enough!", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                     Txt_Password.Focus()
                     Return
@@ -158,8 +158,8 @@ Namespace UI
         End Sub
 
         Private Sub CheckPasswordStrength()
-            UPwdStrength1.SLFPasswordStrengthScore = Txt_Password.XOPwdStrengthScore
-            UPwdStrength1.SLFPasswordStrengthText = Txt_Password.XOPwdStrengthText
+            UPwdStrength1.SLFPasswordStrengthScore = Txt_Password.XOPasswordStrengthScore
+            UPwdStrength1.SLFPasswordStrengthText = Txt_Password.XOPasswordStrengthText
         End Sub
 
         Private Sub TxtPassword_KeyUp(sender As Object, e As KeyEventArgs) Handles Txt_Password.KeyUp

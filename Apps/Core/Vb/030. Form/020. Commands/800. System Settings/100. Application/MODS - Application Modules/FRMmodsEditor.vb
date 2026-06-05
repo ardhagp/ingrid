@@ -51,18 +51,18 @@ Namespace UI
 
             Call CheckAllInput()
 
-            If (CboGroup.Items.Count = 0) OrElse (TxtCode.XOSQLText = String.Empty) OrElse (TxtName.XOSQLText = String.Empty) Then
+            If (CboGroup.Items.Count = 0) OrElse (TxtCode.XOSqlText = String.Empty) OrElse (TxtName.XOSqlText = String.Empty) Then
                 Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "Make sure you have Module Group selected, Module Code and Module Name are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf (varDataProperties.SystemModuleIsNew) AndAlso (CMDmods.Editor.IsDuplicate(varDataProperties, TxtCode.XOSQLText)) Then
+            ElseIf (varDataProperties.SystemModuleIsNew) AndAlso (CMDmods.Editor.IsDuplicate(varDataProperties, TxtCode.XOSqlText)) Then
                 Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "This Departement Code already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf Not (varDataProperties.SystemModuleIsNew) AndAlso (CMDmods.Editor.IsDuplicate(varDataProperties, TxtCode.XOSQLText, Convert.ToString(varDataProperties.SystemModuleId))) Then
+            ElseIf Not (varDataProperties.SystemModuleIsNew) AndAlso (CMDmods.Editor.IsDuplicate(varDataProperties, TxtCode.XOSqlText, Convert.ToString(varDataProperties.SystemModuleId))) Then
                 Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "This Departement Code already used by another departement.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
-            If (CMDmods.Editor.PushData(varDataProperties, TxtID.XOSQLText, CboGroup.SelectedValue.ToString, TxtCode.XOSQLText, TxtName.XOSQLText, TxtDescription.XOSQLText, ChkSystem.Checked, ChkLocked.Checked, Convert.ToString(varDataProperties.SystemModuleId))) Then
+            If (CMDmods.Editor.PushData(varDataProperties, TxtID.XOSqlText, CboGroup.SelectedValue.ToString, TxtCode.XOSqlText, TxtName.XOSqlText, TxtDescription.XOSqlText, ChkSystem.Checked, ChkLocked.Checked, Convert.ToString(varDataProperties.SystemModuleId))) Then
                 RaiseEvent EventRecordSaved()
                 UI.FRMmainframe6.Ts_status.Text = "Success"
             Else
@@ -93,7 +93,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub TxtCode_TextChanged(sender As Object, e As EventArgs) Handles TxtCode.TextChanged
             If (varDataProperties.SystemModuleIsNew) Then
-                TxtID.Text = CMCv.Security.Encrypt.MD5(TxtCode.XOSQLText.ToUpper)
+                TxtID.Text = CMCv.Security.Encrypt.MD5(TxtCode.XOSqlText.ToUpper)
             End If
         End Sub
     End Class

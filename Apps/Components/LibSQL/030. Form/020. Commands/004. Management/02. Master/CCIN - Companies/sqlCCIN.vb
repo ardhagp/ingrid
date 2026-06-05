@@ -11,11 +11,11 @@ Namespace CMDccin
             Dim varWhere As String = "where "
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                If (find.XOSQLText = String.Empty) OrElse (dataproperties.CompanyIsForceRefresh) Then
+                If (find.XOSqlText = String.Empty) OrElse (dataproperties.CompanyIsForceRefresh) Then
                     varWhere = $""
                 Else
-                    varWhere += $" (c.company_code ='{find.XOSQLText}') or (c.company_name like '%{find.XOSQLText}%') or (c.company_searchterm2 like '%{find.XOSQLText}%') or (c.company_searchterm1 like '%{find.XOSQLText}%') or (c.company_description " &
-                                $"like '%{find.XOSQLText}%')"
+                    varWhere += $" (c.company_code ='{find.XOSqlText}') or (c.company_name like '%{find.XOSqlText}%') or (c.company_searchterm2 like '%{find.XOSqlText}%') or (c.company_searchterm1 like '%{find.XOSqlText}%') or (c.company_description " &
+                                $"like '%{find.XOSqlText}%')"
                 End If
                 varDatabaseRequestMssql2008(0).Query = $"SELECT c.company_id, c.company_code, c.company_name, c.company_searchterm2, c.company_searchterm1, c.company_description FROM dbo.man_company c {varWhere} " &
                                                        $"ORDER BY c.company_code"
@@ -23,11 +23,11 @@ Namespace CMDccin
                 varDatabaseRequestMssql2008(0).StatusBar = statusbar
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TCompany")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                If (find.XOSQLText = String.Empty) OrElse (dataproperties.CompanyIsForceRefresh) Then
+                If (find.XOSqlText = String.Empty) OrElse (dataproperties.CompanyIsForceRefresh) Then
                     varWhere = $""
                 Else
-                    varWhere += $" (c.company_code ='{find.XOSQLText}') or (c.company_name like '%{find.XOSQLText}%') or (c.company_searchterm2 like '%{find.XOSQLText}%') or (c.company_searchterm1 like '%{find.XOSQLText}%') or (c.company_description " &
-                                $"like '%{find.XOSQLText}%')"
+                    varWhere += $" (c.company_code ='{find.XOSqlText}') or (c.company_name like '%{find.XOSqlText}%') or (c.company_searchterm2 like '%{find.XOSqlText}%') or (c.company_searchterm1 like '%{find.XOSqlText}%') or (c.company_description " &
+                                $"like '%{find.XOSqlText}%')"
                 End If
                 varDatabaseRequestMysql(0).Query = $"SELECT c.company_id, c.company_code, c.company_name, c.company_searchterm2, c.company_searchterm1, c.company_description FROM man_company c {varWhere} " &
                                                    $"ORDER BY c.company_code"

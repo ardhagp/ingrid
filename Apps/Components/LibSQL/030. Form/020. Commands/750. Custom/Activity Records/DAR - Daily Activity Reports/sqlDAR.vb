@@ -122,7 +122,7 @@ Namespace CMDdar
                 End If
 
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
+                    If (find.XOSqlText = String.Empty) AndAlso (forcerefresh) Then
                         If Not (chkdatefilter.Checked) Then
                             varWhere += String.Format("(year(ea.employeeactivity_datetime) = year(getdate())) And (month(ea.employeeactivity_datetime) = " &
                                                 "month(getdate()))")
@@ -134,10 +134,10 @@ Namespace CMDdar
                             varWhere += String.Format(" And (ea.employeeactivity_employee = '{0}')", varEmployeeID)
                         End If
                     Else
-                        If Not (find.XOSQLText.Trim.Contains("||")) Then
-                            varWhere += String.Format("(ea.employeeactivity_description like '%{0}%')", find.XOSQLText)
+                        If Not (find.XOSqlText.Trim.Contains("||")) Then
+                            varWhere += String.Format("(ea.employeeactivity_description like '%{0}%')", find.XOSqlText)
                         Else
-                            Dim varContainText As String() = find.XOSQLText.Split("||")
+                            Dim varContainText As String() = find.XOSqlText.Split("||")
                             Dim varRepeater As Integer = 0
 
                             varWhere += String.Format("(")
@@ -177,7 +177,7 @@ Namespace CMDdar
 
                     varIsEmpFilter = chkbyfilter.Checked
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
+                    If (find.XOSqlText = String.Empty) AndAlso (forcerefresh) Then
                         If Not (chkdatefilter.Checked) Then
                             varWhere += $"(year(ea.employeeactivity_datetime) = year(now())) And (month(ea.employeeactivity_datetime) = " &
                                         $"month(now()))"
@@ -189,10 +189,10 @@ Namespace CMDdar
                             varWhere += $" And (ea.employeeactivity_employee = '{varEmployeeID}')"
                         End If
                     Else
-                        If Not (find.XOSQLText.Trim.Contains("||")) Then
-                            varWhere += $"(ea.employeeactivity_description like '%{find.XOSQLText}%')"
+                        If Not (find.XOSqlText.Trim.Contains("||")) Then
+                            varWhere += $"(ea.employeeactivity_description like '%{find.XOSqlText}%')"
                         Else
-                            Dim varContainText As String() = find.XOSQLText.Split("||")
+                            Dim varContainText As String() = find.XOSqlText.Split("||")
                             Dim varRepeater As Integer = 0
 
                             varWhere += $"("
@@ -260,14 +260,14 @@ Namespace CMDdar
                     ReDim varDatabaseRequestMssql2008(3)
 
                     'add text query-cut
-                    If (find.XOSQLText <> String.Empty) Then
+                    If (find.XOSqlText <> String.Empty) Then
                         varWhere += String.Format(" and ")
 
                         'multiple keywords execution
-                        If Not (find.XOSQLText.Trim.Contains("||")) Then
-                            varWhere += String.Format("(ea.employeeactivity_description like '%{0}%') ", find.XOSQLText)
+                        If Not (find.XOSqlText.Trim.Contains("||")) Then
+                            varWhere += String.Format("(ea.employeeactivity_description like '%{0}%') ", find.XOSqlText)
                         Else
-                            Dim varContainText As String() = find.XOSQLText.Split("||")
+                            Dim varContainText As String() = find.XOSqlText.Split("||")
                             Dim varRepeater As Integer = 0
 
                             varWhere += String.Format("(")
@@ -355,14 +355,14 @@ Namespace CMDdar
                     ReDim varDatabaseRequestMysql(3)
 
                     'add text query-cut
-                    If (find.XOSQLText <> String.Empty) Then
+                    If (find.XOSqlText <> String.Empty) Then
                         varWhere += String.Format(" and ")
 
                         'multiple keywords execution
-                        If Not (find.XOSQLText.Trim.Contains("||")) Then
-                            varWhere += $"(ea.employeeactivity_description like '%{find.XOSQLText}%') "
+                        If Not (find.XOSqlText.Trim.Contains("||")) Then
+                            varWhere += $"(ea.employeeactivity_description like '%{find.XOSqlText}%') "
                         Else
-                            Dim varContainText As String() = find.XOSQLText.Split("||")
+                            Dim varContainText As String() = find.XOSqlText.Split("||")
                             Dim varRepeater As Integer = 0
 
                             varWhere += $"("
@@ -1102,17 +1102,17 @@ Namespace CMDdar
                     End If
                 End If
 
-                If txtdescription.XOSQLText.Trim <> String.Empty Then
+                If txtdescription.XOSqlText.Trim <> String.Empty Then
 
                     If varWhere <> "Where " Then
                         varWhere += String.Format(" and ")
                     End If
 
                     'multiple keywords execution
-                    If Not (txtdescription.XOSQLText.Trim.Contains("||")) Then
-                        varWhere += String.Format("(ea.employeeactivity_description like '%{0}%') ", txtdescription.XOSQLText)
+                    If Not (txtdescription.XOSqlText.Trim.Contains("||")) Then
+                        varWhere += String.Format("(ea.employeeactivity_description like '%{0}%') ", txtdescription.XOSqlText)
                     Else
-                        Dim varContainText As String() = txtdescription.XOSQLText.Split("||")
+                        Dim varContainText As String() = txtdescription.XOSqlText.Split("||")
                         Dim varRepeater As Integer = 0
 
                         varWhere += String.Format("(")

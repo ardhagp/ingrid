@@ -100,7 +100,7 @@ Namespace UI
                 End If
                 TxtPassword.Text = varDataProperties.UserAccessPassword
             End If
-            TxtPassword.XOPwdLengthMin = varMinPasswordLength
+            TxtPassword.XOPasswordLengthMin = varMinPasswordLength
             Call GetData()
         End Sub
 
@@ -111,16 +111,16 @@ Namespace UI
             If ((varDataProperties.UserAccessIsNew) AndAlso (varDataProperties.AllParameters(pEmployeeId).ToString Is String.Empty)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Make sure you have Employee data selected.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf (TxtUsername.XOSQLText = String.Empty) OrElse (TxtPassword.XOSQLText = String.Empty) Then
+            ElseIf (TxtUsername.XOSqlText = String.Empty) OrElse (TxtPassword.XOSqlText = String.Empty) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Make sure you have Username and Password properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf ((varIsPWDChange) AndAlso (TxtPassword.TextLength < varMinPasswordLength)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Make sure your Password meets the minimum criteria.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf ((varDataProperties.UserAccessIsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDataProperties, TxtUsername.XOSQLText))) Then
+            ElseIf ((varDataProperties.UserAccessIsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDataProperties, TxtUsername.XOSqlText))) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "This Username already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf (Not (varDataProperties.UserAccessIsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDataProperties, TxtUsername.XOSQLText, Convert.ToString(varDataProperties.UserAccessId)))) Then
+            ElseIf (Not (varDataProperties.UserAccessIsNew) AndAlso (CMDuac.Editor.IsDuplicate(varDataProperties, TxtUsername.XOSqlText, Convert.ToString(varDataProperties.UserAccessId)))) Then
                 Decision(My.Application.Info.AssemblyName.toupper, varMessageCannotSave & Environment.NewLine & "This Username already used by another employee.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
@@ -147,7 +147,7 @@ Namespace UI
         End Sub
 
         Private Sub CheckPasswordChange()
-            If TxtPassword.XOSQLText = varDataProperties.UserAccessPassword Then
+            If TxtPassword.XOSqlText = varDataProperties.UserAccessPassword Then
                 varIsPWDChange = False
             Else
                 varIsPWDChange = True
@@ -159,8 +159,8 @@ Namespace UI
             Call CheckPasswordChange()
 
             If (varIsPWDChange) Then
-                LblPwdText.Text = TxtPassword.XOPwdStrengthText
-                ProgressBar1.Value = TxtPassword.XOPwdStrengthScore
+                LblPwdText.Text = TxtPassword.XOPasswordStrengthText
+                ProgressBar1.Value = TxtPassword.XOPasswordStrengthScore
             End If
         End Sub
     End Class

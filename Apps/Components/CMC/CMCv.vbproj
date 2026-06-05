@@ -217,9 +217,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\TextBox\txt.Designer.vb">
-      <DependentUpon>txt.vb</DependentUpon>
+      <DependentUpon>Txt.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\TextBox\txt.vb">
+    <Compile Update="2099 - Interface\Controls\TextBox\Txt.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\TreeView\tv.Designer.vb">
@@ -302,7 +302,7 @@
   <ItemGroup>
     <EmbeddedResource Include="2099 - Interface\Controls\DateTimePicker\dtp.ico" />
     <EmbeddedResource Include="2099 - Interface\Controls\Label\Lbl.ico" />
-    <EmbeddedResource Include="2099 - Interface\Controls\TextBox\txt.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\TextBox\Txt.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="2099 - Interface\Controls\DataGridView\dgn.ico" />

@@ -65,15 +65,15 @@ Namespace UI
 
             With varDataProperties
                 .AllParameters.Remove(pCompanyCode)
-                .AllParameters.Add(pCompanyCode, TxtCode.XOSQLText)
+                .AllParameters.Add(pCompanyCode, TxtCode.XOSqlText)
                 .AllParameters.Remove(pCompanyName)
-                .AllParameters.Add(pCompanyName, TxtName.XOSQLText)
+                .AllParameters.Add(pCompanyName, TxtName.XOSqlText)
                 .AllParameters.Remove(pCompanySearchTerm1)
-                .AllParameters.Add(pCompanySearchTerm1, IIf(TxtSearchTerm1.XOSQLText = String.Empty OrElse TxtSearchTerm1.XOSQLText = "", DBNull.Value, TxtSearchTerm1.XOSQLText))
+                .AllParameters.Add(pCompanySearchTerm1, IIf(TxtSearchTerm1.XOSqlText = String.Empty OrElse TxtSearchTerm1.XOSqlText = "", DBNull.Value, TxtSearchTerm1.XOSqlText))
                 .AllParameters.Remove(pCompanySearchTerm2)
-                .AllParameters.Add(pCompanySearchTerm2, IIf(TxtSearchTerm2.XOSQLText = String.Empty OrElse TxtSearchTerm2.XOSQLText = "", DBNull.Value, TxtSearchTerm2.XOSQLText))
+                .AllParameters.Add(pCompanySearchTerm2, IIf(TxtSearchTerm2.XOSqlText = String.Empty OrElse TxtSearchTerm2.XOSqlText = "", DBNull.Value, TxtSearchTerm2.XOSqlText))
                 .AllParameters.Remove(pCompanyDescription)
-                .AllParameters.Add(pCompanyDescription, IIf(TxtDescription.XOSQLText = String.Empty OrElse TxtDescription.XOSQLText = "", DBNull.Value, TxtDescription.XOSQLText))
+                .AllParameters.Add(pCompanyDescription, IIf(TxtDescription.XOSqlText = String.Empty OrElse TxtDescription.XOSqlText = "", DBNull.Value, TxtDescription.XOSqlText))
             End With
 
             If (varDataProperties.AllParameters(pCompanyCode).ToString = String.Empty) OrElse (varDataProperties.AllParameters(pCompanyName).ToString = String.Empty) Then

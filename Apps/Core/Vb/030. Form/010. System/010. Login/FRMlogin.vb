@@ -45,14 +45,14 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub ExecLogin()
-            If (TxtUsername.XOSQLText = String.Empty) OrElse (TxtPassword.XOSQLText = String.Empty) Then
+            If (TxtUsername.XOSqlText = String.Empty) OrElse (TxtPassword.XOSqlText = String.Empty) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "Please fill in all fields.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             Else
                 varDataProperties.AllParameters.Remove(tUser.P_Username)
-                varDataProperties.AllParameters.Add(tUser.P_Username, TxtUsername.XOSQLText)
+                varDataProperties.AllParameters.Add(tUser.P_Username, TxtUsername.XOSqlText)
                 varDataProperties.AllParameters.Remove(tUser.P_UserPassword)
-                varDataProperties.AllParameters.Add(tUser.P_UserPassword, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText))
+                varDataProperties.AllParameters.Add(tUser.P_UserPassword, CMCv.Security.Encrypt.MD5(TxtPassword.XOSqlText))
             End If
 
             CMDuac.Login.GetUserProperties(varDataProperties, varDatasetIngrid)
@@ -65,7 +65,7 @@ Namespace UI
 
                 Dim clsLog As New Ladybug.Log.Events
                 With proLog
-                    .Message = TxtUsername.XOSQLText & " failed to login."
+                    .Message = TxtUsername.XOSqlText & " failed to login."
                     .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Warning
                     .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
                     .ResumeNext = True

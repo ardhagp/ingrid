@@ -248,24 +248,24 @@ Partial Class FRMdialogbox
         TxtMessage.TabStop = False
         TxtMessage.Tag = "txt"
         TxtMessage.XOAutoTrim = False
-        TxtMessage.XOHarusDiisi = False
-        TxtMessage.XOHarusDiisiWarnaLatar = Drawing.Color.LightPink
-        TxtMessage.XOHarusDiisiWarnaLatarDefault = Drawing.Color.White
-        TxtMessage.XOHightlightSaatFokus = False
-        TxtMessage.XOHightlightSaatFokusWarna = Drawing.Color.LightYellow
+        TxtMessage.XOIsMandatory = False
+        TxtMessage.XOMandatoryBgColor = Drawing.Color.LightPink
+        TxtMessage.XOMandatoryBgColorDefault = Drawing.Color.White
+        TxtMessage.XOHighlightOnFocus = False
+        TxtMessage.XOHighlightColor = Drawing.Color.LightYellow
         TxtMessage.XOIsBlank = True
         TxtMessage.XOIsSearchBox = False
-        TxtMessage.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-        TxtMessage.XOPilihSemuaSaatFokus = False
-        TxtMessage.XOPwdLengthMin = 8
-        TxtMessage.XOPwdStrengthCalculate = False
-        TxtMessage.XOPwdStrengthScore = 0
-        TxtMessage.XOPwdStrengthText = Nothing
+        TxtMessage.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+        TxtMessage.XOSelectOnFocus = False
+        TxtMessage.XOPasswordLengthMin = 8
+        TxtMessage.XOPasswordStrengthCalc = False
+        TxtMessage.XOPasswordStrengthScore = 0
+        TxtMessage.XOPasswordStrengthText = Nothing
         TxtMessage.XORestriction = ControlCodeBase.enuRestriction.None
         TxtMessage.XOSearchBoxText = "Type then press Enter"
-        TxtMessage.XOSQLText = ""
-        TxtMessage.XOTanpaSpasi = False
-        TxtMessage.XOValidasiField = Nothing
+        TxtMessage.XOSqlText = ""
+        TxtMessage.XOIsReplaceEmptyString = False
+        TxtMessage.XOMandatoryMessage = Nothing
         ' 
         ' FRMdialogbox
         ' 

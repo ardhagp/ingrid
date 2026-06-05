@@ -77,7 +77,7 @@ Namespace CMDacgr
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 'Tampilkan data awal / tanpa filter / ForceRefresh=True
-                If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
+                If (find.XOSqlText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
                                                         "where acc.account_book = '{0}' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", varCboIndex)
                     varDatabaseRequestMssql2008(0).DataGrid = assets
@@ -104,33 +104,33 @@ Namespace CMDacgr
                     varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TExpense")
                 Else 'Tampilkan data berdasarkan filter
                     varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", varCboIndex, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", varCboIndex, find.XOSqlText)
                     varDatabaseRequestMssql2008(0).DataGrid = assets
                     varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TAssets")
 
                     varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '9350CB36E672BD4333FF51590CC06B7A' order by acc.account_num", varCboIndex, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '9350CB36E672BD4333FF51590CC06B7A' order by acc.account_num", varCboIndex, find.XOSqlText)
                     varDatabaseRequestMssql2008(0).DataGrid = liability
                     varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TLiability")
 
                     varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'C5A59ADFD8978BE3B64F37B47ECDE743' order by acc.account_num", varCboIndex, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'C5A59ADFD8978BE3B64F37B47ECDE743' order by acc.account_num", varCboIndex, find.XOSqlText)
                     varDatabaseRequestMssql2008(0).DataGrid = equity
                     varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TEquity")
 
                     varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'F7E86014BCE4308D75F212605D711332' order by acc.account_num", varCboIndex, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'F7E86014BCE4308D75F212605D711332' order by acc.account_num", varCboIndex, find.XOSqlText)
                     varDatabaseRequestMssql2008(0).DataGrid = revenue
                     varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TRevenue")
 
                     varDatabaseRequestMssql2008(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as [account_enable] from dbo.ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '49A2747735077FAB5B2B0B96E67AC297' order by acc.account_num", varCboIndex, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '49A2747735077FAB5B2B0B96E67AC297' order by acc.account_num", varCboIndex, find.XOSqlText)
                     varDatabaseRequestMssql2008(0).DataGrid = expense
                     varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TExpense")
                 End If
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 'Tampilkan data awal / tanpa filter / ForceRefresh=True
-                If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
+                If (find.XOSqlText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMysql(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
                                                         "where acc.account_book = '{0}' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", varCboIndex)
                     varDatabaseRequestMysql(0).DataGrid = assets
@@ -157,27 +157,27 @@ Namespace CMDacgr
                     varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TExpense")
                 Else 'Tampilkan data berdasarkan filter
                     varDatabaseRequestMysql(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", varCboIndex, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '5417BC6652ACDD9848361A86AC910529' order by acc.account_num", varCboIndex, find.XOSqlText)
                     varDatabaseRequestMysql(0).DataGrid = assets
                     varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TAssets")
 
                     varDatabaseRequestMysql(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '9350CB36E672BD4333FF51590CC06B7A' order by acc.account_num", varCboIndex, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '9350CB36E672BD4333FF51590CC06B7A' order by acc.account_num", varCboIndex, find.XOSqlText)
                     varDatabaseRequestMysql(0).DataGrid = liability
                     varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TLiability")
 
                     varDatabaseRequestMysql(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'C5A59ADFD8978BE3B64F37B47ECDE743' order by acc.account_num", varCboIndex, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'C5A59ADFD8978BE3B64F37B47ECDE743' order by acc.account_num", varCboIndex, find.XOSqlText)
                     varDatabaseRequestMysql(0).DataGrid = equity
                     varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TEquity")
 
                     varDatabaseRequestMysql(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'F7E86014BCE4308D75F212605D711332' order by acc.account_num", varCboIndex, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = 'F7E86014BCE4308D75F212605D711332' order by acc.account_num", varCboIndex, find.XOSqlText)
                     varDatabaseRequestMysql(0).DataGrid = revenue
                     varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TRevenue")
 
                     varDatabaseRequestMysql(0).Query = String.Format("select acc.account_id,acc.account_num,acc.account_name, (case acc.account_enable when 0 then 'No' when 1 then 'Yes' end) as `account_enable` from ac_account acc " &
-                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '49A2747735077FAB5B2B0B96E67AC297' order by acc.account_num", varCboIndex, find.XOSQLText)
+                                                        "where acc.account_book = '{0}' and acc.account_name like '%{1}%' and acc.account_group = '49A2747735077FAB5B2B0B96E67AC297' order by acc.account_num", varCboIndex, find.XOSqlText)
                     varDatabaseRequestMysql(0).DataGrid = expense
                     varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TExpense")
                 End If

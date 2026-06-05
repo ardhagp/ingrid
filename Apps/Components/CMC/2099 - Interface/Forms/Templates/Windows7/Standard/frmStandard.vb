@@ -47,7 +47,7 @@ Public Class FRMstandard
         Dim varViolation As Integer = 0
         Dim varAllTxt As New List(Of System.Windows.Forms.Control)
         For Each _Txt As CMCv.UI.Control.txt In FindControlRecursive(varAllTxt, Me, GetType(CMCv.UI.Control.txt))
-            If (_Txt.XOHarusDiisi) AndAlso _Txt.XOSQLText = String.Empty Then
+            If (_Txt.XOIsMandatory) AndAlso _Txt.XOSqlText = String.Empty Then
                 varViolation += 1
             End If
         Next

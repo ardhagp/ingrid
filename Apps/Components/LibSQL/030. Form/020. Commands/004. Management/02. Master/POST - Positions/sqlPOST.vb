@@ -11,10 +11,10 @@ Namespace CMDpost
             'ReDim varDatabaseRequestMssql2008(2)
             Dim varWhere As String = "where "
 
-            If (find.XOSQLText = String.Empty) AndAlso (dataproperties.EmployeePositionIsForceRefresh) Then
+            If (find.XOSqlText = String.Empty) AndAlso (dataproperties.EmployeePositionIsForceRefresh) Then
                 varWhere = $""
             Else
-                varWhere += $"(c.company_code Like '%{find.XOSQLText}%') or (d.department_code like '%{find.XOSQLText}%') or (ps.position_code like '%{find.XOSQLText}%') or (ps.position_name like '%{find.XOSQLText}%')"
+                varWhere += $"(c.company_code Like '%{find.XOSqlText}%') or (d.department_code like '%{find.XOSqlText}%') or (ps.position_code like '%{find.XOSqlText}%') or (ps.position_name like '%{find.XOSqlText}%')"
             End If
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then

@@ -114,24 +114,24 @@
             Txt1.TabIndex = 996
             Txt1.Tag = "txt"
             Txt1.XOAutoTrim = False
-            Txt1.XOHarusDiisi = False
-            Txt1.XOHarusDiisiWarnaLatar = Color.LightPink
-            Txt1.XOHarusDiisiWarnaLatarDefault = Color.White
-            Txt1.XOHightlightSaatFokus = False
-            Txt1.XOHightlightSaatFokusWarna = Color.LightYellow
+            Txt1.XOIsMandatory = False
+            Txt1.XOMandatoryBgColor = Color.LightPink
+            Txt1.XOMandatoryBgColorDefault = Color.White
+            Txt1.XOHighlightOnFocus = False
+            Txt1.XOHighlightColor = Color.LightYellow
             Txt1.XOIsBlank = True
             Txt1.XOIsSearchBox = False
-            Txt1.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            Txt1.XOPilihSemuaSaatFokus = False
-            Txt1.XOPwdLengthMin = 8
-            Txt1.XOPwdStrengthCalculate = False
-            Txt1.XOPwdStrengthScore = 0
-            Txt1.XOPwdStrengthText = Nothing
+            Txt1.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            Txt1.XOSelectOnFocus = False
+            Txt1.XOPasswordLengthMin = 8
+            Txt1.XOPasswordStrengthCalc = False
+            Txt1.XOPasswordStrengthScore = 0
+            Txt1.XOPasswordStrengthText = Nothing
             Txt1.XORestriction = ControlCodeBase.enuRestriction.None
             Txt1.XOSearchBoxText = "Type then press Enter"
-            Txt1.XOSQLText = ""
-            Txt1.XOTanpaSpasi = False
-            Txt1.XOValidasiField = Nothing
+            Txt1.XOSqlText = ""
+            Txt1.XOIsReplaceEmptyString = False
+            Txt1.XOMandatoryMessage = Nothing
             ' 
             ' LblNumber
             ' 

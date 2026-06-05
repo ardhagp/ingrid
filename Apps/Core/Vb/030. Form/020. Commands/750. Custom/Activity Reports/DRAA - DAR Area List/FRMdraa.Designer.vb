@@ -103,24 +103,24 @@
             TxtFind.TabIndex = 800
             TxtFind.Tag = "txt"
             TxtFind.XOAutoTrim = False
-            TxtFind.XOHarusDiisi = False
-            TxtFind.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtFind.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtFind.XOHightlightSaatFokus = False
-            TxtFind.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtFind.XOIsMandatory = False
+            TxtFind.XOMandatoryBgColor = Color.LightPink
+            TxtFind.XOMandatoryBgColorDefault = Color.White
+            TxtFind.XOHighlightOnFocus = False
+            TxtFind.XOHighlightColor = Color.LightYellow
             TxtFind.XOIsBlank = True
             TxtFind.XOIsSearchBox = True
-            TxtFind.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtFind.XOPilihSemuaSaatFokus = False
-            TxtFind.XOPwdLengthMin = 8
-            TxtFind.XOPwdStrengthCalculate = False
-            TxtFind.XOPwdStrengthScore = 0
-            TxtFind.XOPwdStrengthText = Nothing
+            TxtFind.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtFind.XOSelectOnFocus = False
+            TxtFind.XOPasswordLengthMin = 8
+            TxtFind.XOPasswordStrengthCalc = False
+            TxtFind.XOPasswordStrengthScore = 0
+            TxtFind.XOPasswordStrengthText = Nothing
             TxtFind.XORestriction = ControlCodeBase.enuRestriction.None
             TxtFind.XOSearchBoxText = "Type then press Enter"
-            TxtFind.XOSQLText = Nothing
-            TxtFind.XOTanpaSpasi = False
-            TxtFind.XOValidasiField = Nothing
+            TxtFind.XOSqlText = Nothing
+            TxtFind.XOIsReplaceEmptyString = False
+            TxtFind.XOMandatoryMessage = Nothing
             ' 
             ' DgnArea
             ' 

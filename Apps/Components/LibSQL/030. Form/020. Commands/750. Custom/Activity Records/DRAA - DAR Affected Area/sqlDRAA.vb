@@ -8,8 +8,8 @@ Namespace CMDdraa
             Try
                 ' Cache search text once and normalize
                 Dim search As String = String.Empty
-                If find IsNot Nothing AndAlso find.XOSQLText IsNot Nothing Then
-                    search = find.XOSQLText.Trim()
+                If find IsNot Nothing AndAlso find.XOSqlText IsNot Nothing Then
+                    search = find.XOSqlText.Trim()
                 End If
 
                 ' Build WHERE clause using a list then join — avoids malformed "where " and is faster than repeated string concatenation
@@ -59,15 +59,15 @@ Namespace CMDdraa
         '    Try
         '        Dim varWhere As String = String.Format("where ")
 
-        '        If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
-        '            varWhere += String.Format("(aa.areaaffected_name like '%{0}%')", find.XOSQLText)
+        '        If (find.XOSqlText = String.Empty) AndAlso (forcerefresh) Then
+        '            varWhere += String.Format("(aa.areaaffected_name like '%{0}%')", find.XOSqlText)
         '        Else
-        '            If find.XOSQLText = String.Empty Then
+        '            If find.XOSqlText = String.Empty Then
 
-        '            ElseIf find.XOSQLText.Trim.Contains("||") = False Then
-        '                varWhere += String.Format("(aa.areaaffected_name like '%{0}%')", find.XOSQLText)
+        '            ElseIf find.XOSqlText.Trim.Contains("||") = False Then
+        '                varWhere += String.Format("(aa.areaaffected_name like '%{0}%')", find.XOSqlText)
         '            Else
-        '                Dim varContainText() As String = find.XOSQLText.Split("||")
+        '                Dim varContainText() As String = find.XOSqlText.Split("||")
         '                Dim varRepeater As Integer = 0
 
         '                varWhere += String.Format("(")

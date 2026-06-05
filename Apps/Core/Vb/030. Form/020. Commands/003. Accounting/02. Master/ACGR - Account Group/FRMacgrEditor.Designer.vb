@@ -218,24 +218,24 @@
             TxtAccountNumber.TabIndex = 3
             TxtAccountNumber.Tag = "txt"
             TxtAccountNumber.XOAutoTrim = True
-            TxtAccountNumber.XOHarusDiisi = True
-            TxtAccountNumber.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtAccountNumber.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtAccountNumber.XOHightlightSaatFokus = True
-            TxtAccountNumber.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtAccountNumber.XOIsMandatory = True
+            TxtAccountNumber.XOMandatoryBgColor = Color.LightPink
+            TxtAccountNumber.XOMandatoryBgColorDefault = Color.White
+            TxtAccountNumber.XOHighlightOnFocus = True
+            TxtAccountNumber.XOHighlightColor = Color.LightYellow
             TxtAccountNumber.XOIsBlank = True
             TxtAccountNumber.XOIsSearchBox = False
-            TxtAccountNumber.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-            TxtAccountNumber.XOPilihSemuaSaatFokus = True
-            TxtAccountNumber.XOPwdLengthMin = 8
-            TxtAccountNumber.XOPwdStrengthCalculate = False
-            TxtAccountNumber.XOPwdStrengthScore = 0
-            TxtAccountNumber.XOPwdStrengthText = Nothing
+            TxtAccountNumber.XOLetterCase = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+            TxtAccountNumber.XOSelectOnFocus = True
+            TxtAccountNumber.XOPasswordLengthMin = 8
+            TxtAccountNumber.XOPasswordStrengthCalc = False
+            TxtAccountNumber.XOPasswordStrengthScore = 0
+            TxtAccountNumber.XOPasswordStrengthText = Nothing
             TxtAccountNumber.XORestriction = ControlCodeBase.enuRestriction.None
             TxtAccountNumber.XOSearchBoxText = "Type then press Enter"
-            TxtAccountNumber.XOSQLText = ""
-            TxtAccountNumber.XOTanpaSpasi = False
-            TxtAccountNumber.XOValidasiField = Nothing
+            TxtAccountNumber.XOSqlText = ""
+            TxtAccountNumber.XOIsReplaceEmptyString = False
+            TxtAccountNumber.XOMandatoryMessage = Nothing
             ' 
             ' Lbl4
             ' 
@@ -260,24 +260,24 @@
             TxtAccountName.TabIndex = 4
             TxtAccountName.Tag = "txt"
             TxtAccountName.XOAutoTrim = True
-            TxtAccountName.XOHarusDiisi = True
-            TxtAccountName.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtAccountName.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtAccountName.XOHightlightSaatFokus = True
-            TxtAccountName.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtAccountName.XOIsMandatory = True
+            TxtAccountName.XOMandatoryBgColor = Color.LightPink
+            TxtAccountName.XOMandatoryBgColorDefault = Color.White
+            TxtAccountName.XOHighlightOnFocus = True
+            TxtAccountName.XOHighlightColor = Color.LightYellow
             TxtAccountName.XOIsBlank = True
             TxtAccountName.XOIsSearchBox = False
-            TxtAccountName.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-            TxtAccountName.XOPilihSemuaSaatFokus = True
-            TxtAccountName.XOPwdLengthMin = 8
-            TxtAccountName.XOPwdStrengthCalculate = False
-            TxtAccountName.XOPwdStrengthScore = 0
-            TxtAccountName.XOPwdStrengthText = Nothing
+            TxtAccountName.XOLetterCase = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
+            TxtAccountName.XOSelectOnFocus = True
+            TxtAccountName.XOPasswordLengthMin = 8
+            TxtAccountName.XOPasswordStrengthCalc = False
+            TxtAccountName.XOPasswordStrengthScore = 0
+            TxtAccountName.XOPasswordStrengthText = Nothing
             TxtAccountName.XORestriction = ControlCodeBase.enuRestriction.None
             TxtAccountName.XOSearchBoxText = "Type then press Enter"
-            TxtAccountName.XOSQLText = ""
-            TxtAccountName.XOTanpaSpasi = False
-            TxtAccountName.XOValidasiField = Nothing
+            TxtAccountName.XOSqlText = ""
+            TxtAccountName.XOIsReplaceEmptyString = False
+            TxtAccountName.XOMandatoryMessage = Nothing
             ' 
             ' Lbl5
             ' 

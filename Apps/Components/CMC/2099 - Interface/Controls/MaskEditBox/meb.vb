@@ -10,19 +10,19 @@ Namespace UI.Control
             Call ActivateLicenses()
             MyBase.Font = globalFontTxt
             MyBase.Width = 206
-            Me.XOHarusDiisi = False
-            Me.XOHarusDiisiWarnaLatar = Drawing.Color.LightPink
-            Me.XOHarusDiisiWarnaLatarDefault = Drawing.Color.White
-            Me.XOHightlightSaatFokus = False
-            Me.XOHightlightSaatFokusWarna = Drawing.Color.LightYellow
-            Me.XOPilihSemuaSaatFokus = False
+            Me.XOIsMandatory = False
+            Me.XOMandatoryBgColor = Drawing.Color.LightPink
+            Me.XOMandatoryBgColorDefault = Drawing.Color.White
+            Me.XOHighlightOnFocus = False
+            Me.XOHighlightColor = Drawing.Color.LightYellow
+            Me.XOSelectOnFocus = False
         End Sub
 
 #Region "Properti"
         Private _varHarusDiisi As Boolean
         <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Maskeditbox harus diisi")>
-        Public Property XOHarusDiisi As Boolean
+        Public Property XOIsMandatory As Boolean
             Get
                 Return _varHarusDiisi
             End Get
@@ -35,7 +35,7 @@ Namespace UI.Control
         Private _varHarusDiisiWarnaLatar As System.Drawing.Color
         <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Warna saat teksboks tidak diisi")>
-        Public Property XOHarusDiisiWarnaLatar As System.Drawing.Color
+        Public Property XOMandatoryBgColor As System.Drawing.Color
             Get
                 Return _varHarusDiisiWarnaLatar
             End Get
@@ -46,7 +46,7 @@ Namespace UI.Control
 
         <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Warna saat teksboks tidak diisi jika bernilai False")>
-        Public Property XOHarusDiisiWarnaLatarDefault As System.Drawing.Color
+        Public Property XOMandatoryBgColorDefault As System.Drawing.Color
             Get
                 Return _varHarusDiisiWarnaLatarDefault
             End Get
@@ -58,7 +58,7 @@ Namespace UI.Control
         Private _varHightlightSaatFokus As Boolean
         <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
-        Public Property XOHightlightSaatFokus() As Boolean
+        Public Property XOHighlightOnFocus() As Boolean
             Get
                 Return _varHightlightSaatFokus
             End Get
@@ -70,7 +70,7 @@ Namespace UI.Control
         Private _varHighlightSaatFokusWarna As System.Drawing.Color
         <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Warna highlight")>
-        Public Property XOHightlightSaatFokusWarna() As System.Drawing.Color
+        Public Property XOHighlightColor() As System.Drawing.Color
             Get
                 Return _varHighlightSaatFokusWarna
             End Get
@@ -82,7 +82,7 @@ Namespace UI.Control
         Private _varPilihSemuaSaatFokus As Boolean
         <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Memilih semua teks saat fokus")>
-        Public Property XOPilihSemuaSaatFokus() As Boolean
+        Public Property XOSelectOnFocus() As Boolean
             Get
                 Return _varPilihSemuaSaatFokus
             End Get
@@ -95,48 +95,48 @@ Namespace UI.Control
         Private _varFlagAutoSelect As Boolean
         <SupportedOSPlatform("windows")>
         Private Sub txt_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
-            If Me.XOPilihSemuaSaatFokus AndAlso (MouseButtons = system.Windows.Forms.MouseButtons.None) Then
+            If Me.XOSelectOnFocus AndAlso (MouseButtons = system.Windows.Forms.MouseButtons.None) Then
                 Me.SelectAll()
                 _varFlagAutoSelect = True
             End If
-            If Me.XOHightlightSaatFokus Then
-                MyBase.BackColor = Me.XOHightlightSaatFokusWarna
+            If Me.XOHighlightOnFocus Then
+                MyBase.BackColor = Me.XOHighlightColor
             End If
-            If Me.XOPilihSemuaSaatFokus Then
+            If Me.XOSelectOnFocus Then
                 Me.Select(0, Me.Text.Length)
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub txt_LostFocus(sender As Object, e As System.EventArgs) Handles Me.LostFocus
-            'If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Not Me.SLFHarusDiisi Then
+            'If Me.XOHighlightOnFocus AndAlso Not Me.Focused AndAlso Not Me.SLFHarusDiisi Then
             '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
-            'ElseIf Me.XOHightlightSaatFokus AndAlso Not Me.Focused Then
+            'ElseIf Me.XOHighlightOnFocus AndAlso Not Me.Focused Then
             '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
-            If XOHarusDiisi Then 'AndAlso Me.Text.Trim = "" Then
-                MyBase.BackColor = Me.XOHarusDiisiWarnaLatar
+            If XOIsMandatory Then 'AndAlso Me.Text.Trim = "" Then
+                MyBase.BackColor = Me.XOMandatoryBgColor
             Else
-                MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
+                MyBase.BackColor = Me.XOMandatoryBgColorDefault
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub txt_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
-            If Me.XOHightlightSaatFokus Then
-                MyBase.BackColor = Me.XOHightlightSaatFokusWarna
+            If Me.XOHighlightOnFocus Then
+                MyBase.BackColor = Me.XOHighlightColor
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub txt_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
-            If Me.XOHightlightSaatFokus AndAlso Not Me.Focused Then
-                MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
+            If Me.XOHighlightOnFocus AndAlso Not Me.Focused Then
+                MyBase.BackColor = Me.XOMandatoryBgColorDefault
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub txt_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseUp
-            If Me.XOPilihSemuaSaatFokus AndAlso (Not _varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
+            If Me.XOSelectOnFocus AndAlso (Not _varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
                 _varFlagAutoSelect = True
                 Me.SelectAll()
             End If

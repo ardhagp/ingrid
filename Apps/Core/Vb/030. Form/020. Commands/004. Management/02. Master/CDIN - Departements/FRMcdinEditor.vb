@@ -60,11 +60,11 @@ Namespace UI
                 .AllParameters.Remove(pCompanyId)
                 .AllParameters.Add(pCompanyId, CLng(CboCompany.SelectedValue))
                 .AllParameters.Remove(pDepartmentCode)
-                .AllParameters.Add(pDepartmentCode, IIf(TxtDeptCode.XOSQLText = String.Empty OrElse TxtDeptCode.XOSQLText = "", DBNull.Value, TxtDeptCode.XOSQLText))
+                .AllParameters.Add(pDepartmentCode, IIf(TxtDeptCode.XOSqlText = String.Empty OrElse TxtDeptCode.XOSqlText = "", DBNull.Value, TxtDeptCode.XOSqlText))
                 .AllParameters.Remove(pDepartmentName)
-                .AllParameters.Add(pDepartmentName, IIf(TxtDeptName.XOSQLText = String.Empty OrElse TxtDeptName.XOSQLText = "", DBNull.Value, TxtDeptName.XOSQLText))
+                .AllParameters.Add(pDepartmentName, IIf(TxtDeptName.XOSqlText = String.Empty OrElse TxtDeptName.XOSqlText = "", DBNull.Value, TxtDeptName.XOSqlText))
                 .AllParameters.Remove(pDepartmentDescription)
-                .AllParameters.Add(pDepartmentDescription, IIf(TxtDescription.XOSQLText = String.Empty OrElse TxtDescription.XOSQLText = "", DBNull.Value, TxtDescription.XOSQLText))
+                .AllParameters.Add(pDepartmentDescription, IIf(TxtDescription.XOSqlText = String.Empty OrElse TxtDescription.XOSqlText = "", DBNull.Value, TxtDescription.XOSqlText))
             End With
 
             If (CboCompany.Items.Count = 0) AndAlso (varDataProperties.AllParameters("@DepartmentCode").ToString = String.Empty) OrElse (varDataProperties.AllParameters("@DepartmentName").ToString = String.Empty) Then

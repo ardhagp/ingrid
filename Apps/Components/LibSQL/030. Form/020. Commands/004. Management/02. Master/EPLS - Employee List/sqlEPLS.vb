@@ -16,7 +16,7 @@ Namespace CMDepls
                     varWhere = $""
                 Else
                     varWhere += String.Format("cm.company_code like '%{0}%' or dp.departement_code like '%{0}%' or ps.position_code like '%{0}%' or em.employee_number = '{0}' or em.employee_fullname like '%{0}%' or " &
-                                        "em.employee_nickname like '%{0}%'", find.XOSQLText)
+                                        "em.employee_nickname like '%{0}%'", find.XOSqlText)
                 End If
 
                 varDatabaseRequestMssql2008(0).Query = String.Format("select em.employee_id, cm.company_code, dp.departement_code, ps.position_code, (select gd.employeegrade_code from dbo.man_employeegrade gd " &
@@ -33,8 +33,8 @@ Namespace CMDepls
                 If (find.Text = String.Empty) AndAlso (dataproperties.EmployeeIsForceRefresh) Then
                     varWhere = $""
                 Else
-                    varWhere += $"cm.company_code like '%{find.XOSQLText}%' or dp.department_code like '%{find.XOSQLText}%' or ps.position_code like '%{find.XOSQLText}%' or em.employee_number = '{find.XOSQLText}' or em.employee_fullname like '%{find.XOSQLText}%' or " &
-                                $"em.employee_nickname like '%{find.XOSQLText}%'"
+                    varWhere += $"cm.company_code like '%{find.XOSqlText}%' or dp.department_code like '%{find.XOSqlText}%' or ps.position_code like '%{find.XOSqlText}%' or em.employee_number = '{find.XOSqlText}' or em.employee_fullname like '%{find.XOSqlText}%' or " &
+                                $"em.employee_nickname like '%{find.XOSqlText}%'"
                 End If
                 varDatabaseRequestMysql(0).Query = $"select em.employee_id, cm.company_code, cm.company_name, " &
                                                    $"dp.department_code, dp.department_name, ps.position_code, ps.position_name, " &

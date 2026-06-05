@@ -12,9 +12,9 @@ Namespace UI.Control
             MyBase.Height = 23
             MyBase.Width = 206
             MyBase.Font = globalFontTxt
-            Me.XOHightlightSaatFokus = False
-            Me.XOHightlightSaatFokusWarna = Drawing.Color.LightYellow
-            Me.XOPilihSemuaSaatFokus = False
+            Me.XOHighlightOnFocus = False
+            Me.XOHighlightColor = Drawing.Color.LightYellow
+            Me.XOSelectOnFocus = False
             MyBase.DoubleBuffered = True
         End Sub
 
@@ -32,7 +32,7 @@ Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
 
         <Category("Text"),
     Description("Teksboks harus diisi")>
-        Public Property XOHarusDiisi As Boolean
+        Public Property XOIsMandatory As Boolean
             Get
                 Return V_HarusDiisi
             End Get
@@ -44,7 +44,7 @@ Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
         Private _varHightlightSaatFokus As Boolean
         <Category("Text"),
     Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
-        Public Property XOHightlightSaatFokus() As Boolean
+        Public Property XOHighlightOnFocus() As Boolean
             Get
                 Return _varHightlightSaatFokus
             End Get
@@ -56,7 +56,7 @@ Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
         Private _varHighlightSaatFokusWarna As System.Drawing.Color
         <Category("Text"),
     Description("Warna highlight")>
-        Public Property XOHightlightSaatFokusWarna() As System.Drawing.Color
+        Public Property XOHighlightColor() As System.Drawing.Color
             Get
                 Return _varHighlightSaatFokusWarna
             End Get
@@ -68,7 +68,7 @@ Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
         Private _varPilihSemuaSaatFokus As Boolean
         <System.ComponentModel.Category("Text"),
     System.ComponentModel.Description("Memilih semua teks saat fokus")>
-        Public Property XOPilihSemuaSaatFokus() As Boolean
+        Public Property XOSelectOnFocus() As Boolean
             Get
                 Return _varPilihSemuaSaatFokus
             End Get

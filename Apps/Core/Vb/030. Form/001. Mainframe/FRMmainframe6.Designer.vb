@@ -940,24 +940,24 @@
             Txt_shortcut.TabIndex = 0
             Txt_shortcut.Tag = "txt"
             Txt_shortcut.XOAutoTrim = False
-            Txt_shortcut.XOHarusDiisi = False
-            Txt_shortcut.XOHarusDiisiWarnaLatar = Color.LightPink
-            Txt_shortcut.XOHarusDiisiWarnaLatarDefault = Color.White
-            Txt_shortcut.XOHightlightSaatFokus = False
-            Txt_shortcut.XOHightlightSaatFokusWarna = Color.LightYellow
+            Txt_shortcut.XOIsMandatory = False
+            Txt_shortcut.XOMandatoryBgColor = Color.LightPink
+            Txt_shortcut.XOMandatoryBgColorDefault = Color.White
+            Txt_shortcut.XOHighlightOnFocus = False
+            Txt_shortcut.XOHighlightColor = Color.LightYellow
             Txt_shortcut.XOIsBlank = True
             Txt_shortcut.XOIsSearchBox = False
-            Txt_shortcut.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            Txt_shortcut.XOPilihSemuaSaatFokus = False
-            Txt_shortcut.XOPwdLengthMin = 8
-            Txt_shortcut.XOPwdStrengthCalculate = False
-            Txt_shortcut.XOPwdStrengthScore = 0
-            Txt_shortcut.XOPwdStrengthText = Nothing
+            Txt_shortcut.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            Txt_shortcut.XOSelectOnFocus = False
+            Txt_shortcut.XOPasswordLengthMin = 8
+            Txt_shortcut.XOPasswordStrengthCalc = False
+            Txt_shortcut.XOPasswordStrengthScore = 0
+            Txt_shortcut.XOPasswordStrengthText = Nothing
             Txt_shortcut.XORestriction = ControlCodeBase.enuRestriction.None
             Txt_shortcut.XOSearchBoxText = "Command Module"
-            Txt_shortcut.XOSQLText = Nothing
-            Txt_shortcut.XOTanpaSpasi = False
-            Txt_shortcut.XOValidasiField = Nothing
+            Txt_shortcut.XOSqlText = Nothing
+            Txt_shortcut.XOIsReplaceEmptyString = False
+            Txt_shortcut.XOMandatoryMessage = Nothing
             ' 
             ' PnlProfile
             ' 
@@ -1130,24 +1130,24 @@
             TxtRunning.Tag = "txt"
             TxtRunning.Visible = False
             TxtRunning.XOAutoTrim = False
-            TxtRunning.XOHarusDiisi = False
-            TxtRunning.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtRunning.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtRunning.XOHightlightSaatFokus = False
-            TxtRunning.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtRunning.XOIsMandatory = False
+            TxtRunning.XOMandatoryBgColor = Color.LightPink
+            TxtRunning.XOMandatoryBgColorDefault = Color.White
+            TxtRunning.XOHighlightOnFocus = False
+            TxtRunning.XOHighlightColor = Color.LightYellow
             TxtRunning.XOIsBlank = True
             TxtRunning.XOIsSearchBox = False
-            TxtRunning.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtRunning.XOPilihSemuaSaatFokus = False
-            TxtRunning.XOPwdLengthMin = 8
-            TxtRunning.XOPwdStrengthCalculate = False
-            TxtRunning.XOPwdStrengthScore = 0
-            TxtRunning.XOPwdStrengthText = Nothing
+            TxtRunning.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtRunning.XOSelectOnFocus = False
+            TxtRunning.XOPasswordLengthMin = 8
+            TxtRunning.XOPasswordStrengthCalc = False
+            TxtRunning.XOPasswordStrengthScore = 0
+            TxtRunning.XOPasswordStrengthText = Nothing
             TxtRunning.XORestriction = ControlCodeBase.enuRestriction.None
             TxtRunning.XOSearchBoxText = "Type then press Enter"
-            TxtRunning.XOSQLText = ""
-            TxtRunning.XOTanpaSpasi = False
-            TxtRunning.XOValidasiField = Nothing
+            TxtRunning.XOSqlText = ""
+            TxtRunning.XOIsReplaceEmptyString = False
+            TxtRunning.XOMandatoryMessage = Nothing
             ' 
             ' spl_
             ' 

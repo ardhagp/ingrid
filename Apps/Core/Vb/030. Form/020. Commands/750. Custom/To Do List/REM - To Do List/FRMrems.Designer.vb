@@ -122,7 +122,7 @@
             TxtFind.Margin = New Padding(7, 5, 7, 5)
             TxtFind.Text = "Type then press Enter"
             TxtFind.XOIsBlank = False
-            TxtFind.XOSQLText = ""
+            TxtFind.XOSqlText = ""
             ' 
             ' SLFPanel
             ' 

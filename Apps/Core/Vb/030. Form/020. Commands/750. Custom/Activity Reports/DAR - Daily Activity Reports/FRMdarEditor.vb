@@ -206,9 +206,9 @@ Namespace UI
                 .AllParameters.Remove(pCustomActivityTimeEnd)
                 .AllParameters.Add(pCustomActivityTimeEnd, MebEnd.Text.Replace(".", ":"))
                 .AllParameters.Remove(pCustomActivityContent)
-                .AllParameters.Add(pCustomActivityContent, TxtContent.XOSQLText)
+                .AllParameters.Add(pCustomActivityContent, TxtContent.XOSqlText)
                 .AllParameters.Remove(pCustomActivityFeedback)
-                .AllParameters.Add(pCustomActivityFeedback, TxtFeedback.XOSQLText)
+                .AllParameters.Add(pCustomActivityFeedback, TxtFeedback.XOSqlText)
             End With
 
             If (CMDdar.Editor.PushData(varDataProperties, varExtendedQuery)) Then

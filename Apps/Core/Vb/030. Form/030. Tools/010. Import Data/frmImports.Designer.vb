@@ -118,24 +118,24 @@
             TxtProgress.Tag = "txt"
             TxtProgress.WordWrap = False
             TxtProgress.XOAutoTrim = False
-            TxtProgress.XOHarusDiisi = False
-            TxtProgress.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtProgress.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtProgress.XOHightlightSaatFokus = False
-            TxtProgress.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtProgress.XOIsMandatory = False
+            TxtProgress.XOMandatoryBgColor = Color.LightPink
+            TxtProgress.XOMandatoryBgColorDefault = Color.White
+            TxtProgress.XOHighlightOnFocus = False
+            TxtProgress.XOHighlightColor = Color.LightYellow
             TxtProgress.XOIsBlank = True
             TxtProgress.XOIsSearchBox = False
-            TxtProgress.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtProgress.XOPilihSemuaSaatFokus = False
-            TxtProgress.XOPwdLengthMin = 8
-            TxtProgress.XOPwdStrengthCalculate = False
-            TxtProgress.XOPwdStrengthScore = 0
-            TxtProgress.XOPwdStrengthText = Nothing
+            TxtProgress.XOLetterCase = ControlCodeBase.enuJenisKapital.Normal
+            TxtProgress.XOSelectOnFocus = False
+            TxtProgress.XOPasswordLengthMin = 8
+            TxtProgress.XOPasswordStrengthCalc = False
+            TxtProgress.XOPasswordStrengthScore = 0
+            TxtProgress.XOPasswordStrengthText = Nothing
             TxtProgress.XORestriction = ControlCodeBase.enuRestriction.None
             TxtProgress.XOSearchBoxText = "Type then press Enter"
-            TxtProgress.XOSQLText = Nothing
-            TxtProgress.XOTanpaSpasi = False
-            TxtProgress.XOValidasiField = Nothing
+            TxtProgress.XOSqlText = Nothing
+            TxtProgress.XOIsReplaceEmptyString = False
+            TxtProgress.XOMandatoryMessage = Nothing
             ' 
             ' BtnSave
             ' 

@@ -77,7 +77,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Try
-                If (CMDsyss.Editor.SaveSettings(varDataProperties, CboProfile.SelectedIndex, CboStorage.SelectedIndex, CboNewsTicker.SelectedIndex, CType(nudUploadPhoto.Value, Integer), CType(nudUploadPDF.Value, Integer), CboWatermark.SelectedIndex, TxtWatermark.XOSQLText, CType(nudMinPassword.Value, Integer))) Then
+                If (CMDsyss.Editor.SaveSettings(varDataProperties, CboProfile.SelectedIndex, CboStorage.SelectedIndex, CboNewsTicker.SelectedIndex, CType(nudUploadPhoto.Value, Integer), CType(nudUploadPDF.Value, Integer), CboWatermark.SelectedIndex, TxtWatermark.XOSqlText, CType(nudMinPassword.Value, Integer))) Then
                     SLFStatus.Items(0).Text = "Saved"
                 End If
             Catch ex As Exception

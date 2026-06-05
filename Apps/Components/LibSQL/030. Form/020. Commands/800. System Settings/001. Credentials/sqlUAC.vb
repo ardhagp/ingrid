@@ -176,25 +176,25 @@ Namespace CMDuac
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
-                If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
+                If (find.XOSqlText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as [user_root], usr.user_lastlogin, " &
                                                             "usr.user_locked from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee order by em.employee_fullname")
                 Else
                     varDatabaseRequestMssql2008(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as [user_root], usr.user_lastlogin, " &
                                                             "usr.user_locked from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where (em.employee_number = '{0}') or " &
-                                                            "(em.employee_fullname like '%{0}%') or (usr.user_username = '{0}') order by em.employee_fullname", find.XOSQLText)
+                                                            "(em.employee_fullname like '%{0}%') or (usr.user_username = '{0}') order by em.employee_fullname", find.XOSqlText)
                 End If
                 varDatabaseRequestMssql2008(0).DataGrid = datagrid
                 varDatabaseRequestMssql2008(0).StatusBar = statusbar
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TUAC")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run in MYSQL
-                If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
+                If (find.XOSqlText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMysql(0).Query = $"select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as `user_root`, usr.user_lastlogin, " &
                                                        $"usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee order by em.employee_fullname"
                 Else
                     varDatabaseRequestMysql(0).Query = $"select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as `user_root`, usr.user_lastlogin, " &
-                                                       $"usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where (em.employee_number = '{find.XOSQLText}') or " &
-                                                       $"(em.employee_fullname like '%{find.XOSQLText}%') or (usr.user_username = '{find.XOSQLText}') order by em.employee_fullname"
+                                                       $"usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where (em.employee_number = '{find.XOSqlText}') or " &
+                                                       $"(em.employee_fullname like '%{find.XOSqlText}%') or (usr.user_username = '{find.XOSqlText}') order by em.employee_fullname"
                 End If
                 varDatabaseRequestMysql(0).DataGrid = datagrid
                 varDatabaseRequestMysql(0).StatusBar = statusbar
