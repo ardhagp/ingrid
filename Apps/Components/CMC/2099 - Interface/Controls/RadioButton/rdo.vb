@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
 Namespace UI.Control
-    Public Class rdo
+    Public Class Rdo
         Inherits System.Windows.Forms.RadioButton
 
         <SupportedOSPlatform("windows")>
@@ -9,7 +9,7 @@ Namespace UI.Control
             InitializeComponent()
             Call ActivateLicenses()
             MyBase.Font = globalFontLbl
-            MyBase.FlatStyle = system.Windows.Forms.FlatStyle.Flat
+            MyBase.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             MyBase.DoubleBuffered = True
         End Sub
     End Class

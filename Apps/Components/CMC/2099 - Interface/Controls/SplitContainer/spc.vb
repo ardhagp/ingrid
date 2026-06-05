@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
 Namespace UI.Control
-    Public Class spc
+    Public Class Spc
         Inherits System.Windows.Forms.SplitContainer
 
         <SupportedOSPlatform("windows")>

@@ -152,10 +152,10 @@
     <Compile Update="2099 - Interface\Controls\Label\Lbl.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\LinkLabel\lnklbl.Designer.vb">
-      <DependentUpon>lnklbl.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Controls\LinkLabel\Lnk.Designer.vb">
+      <DependentUpon>Lnk.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\LinkLabel\lnklbl.vb" />
+    <Compile Update="2099 - Interface\Controls\LinkLabel\Lnk.vb" />
     <Compile Update="2099 - Interface\Controls\MaskEditBox\meb.Designer.vb">
       <DependentUpon>meb.vb</DependentUpon>
     </Compile>
@@ -187,27 +187,27 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\ProgressBar\pgb.Designer.vb">
-      <DependentUpon>pgb.vb</DependentUpon>
+      <DependentUpon>Pgb.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\ProgressBar\pgb.vb">
+    <Compile Update="2099 - Interface\Controls\ProgressBar\Pgb.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\RadioButton\rdo.Designer.vb">
-      <DependentUpon>rdo.vb</DependentUpon>
+      <DependentUpon>Rdo.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\RadioButton\rdo.vb">
+    <Compile Update="2099 - Interface\Controls\RadioButton\Rdo.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\SplitContainer\spc.Designer.vb">
-      <DependentUpon>spc.vb</DependentUpon>
+      <DependentUpon>Spc.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\SplitContainer\spc.vb">
+    <Compile Update="2099 - Interface\Controls\SplitContainer\Spc.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Status Strip\stt.Designer.vb">
-      <DependentUpon>stt.vb</DependentUpon>
+      <DependentUpon>Stt.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Status Strip\stt.vb">
+    <Compile Update="2099 - Interface\Controls\Status Strip\Stt.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\TabControl\Tbx.Designer.vb">
@@ -311,7 +311,7 @@
     <EmbeddedResource Include="2099 - Interface\Controls\GroupBox\gbx.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\LinkLabel\lnklbl.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\LinkLabel\Lnk.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="2099 - Interface\Controls\ComboBox\Cbo.ico" />
@@ -323,10 +323,10 @@
     <EmbeddedResource Include="2099 - Interface\Controls\CheckBox\Chk.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\RadioButton\rdo.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\RadioButton\Rdo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\ProgressBar\pgb.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\ProgressBar\Pgb.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="2099 - Interface\Controls\Panel\pnl.ico" />
