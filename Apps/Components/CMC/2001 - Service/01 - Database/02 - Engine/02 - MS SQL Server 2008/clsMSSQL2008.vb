@@ -1,4 +1,4 @@
-﻿Imports System.Data
+﻿'Imports System.Data
 Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
@@ -6,9 +6,9 @@ Namespace Database.Engine
     Public Class Mssql2008
         Implements IDisposable
 
-        Private ReadOnly varConnection(1) As SqlClient.SqlConnection
-        Private ReadOnly varCommand(1) As SqlClient.SqlCommand
-        Private varAdapter As SqlClient.SqlDataAdapter
+        Private ReadOnly varConnection(1) As Microsoft.Data.SqlClient.SqlConnection
+        Private ReadOnly varCommand(1) As Microsoft.Data.SqlClient.SqlCommand
+        Private varAdapter As Microsoft.Data.SqlClient.SqlDataAdapter
 
         Private ReadOnly varMsSql2008 As New Connect.Mssqlserver2008connection
 
@@ -50,10 +50,10 @@ Namespace Database.Engine
 
             Dim varSuccess As Boolean
             Try
-                varConnection(1) = New SqlClient.SqlConnection(varMsSql2008.Mssql2008standard(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, databaseproperties.ConnectionPassword))
+                varConnection(1) = New Microsoft.Data.SqlClient.SqlConnection(varMsSql2008.Mssql2008standard(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, databaseproperties.ConnectionPassword))
                 varConnection(1).Open()
                 varSuccess = True
-            Catch ex As SqlClient.SqlException
+            Catch ex As Microsoft.Data.SqlClient.SqlException
                 splash?.Close()
                 varSuccess = False
 
@@ -86,23 +86,23 @@ Namespace Database.Engine
         ''' <param name="databasename"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Function GetDataRow(query As String, databasename As String) As SqlClient.SqlDataReader
-            Dim varDataReader(1) As SqlClient.SqlDataReader
+        Public Function GetDataRow(query As String, databasename As String) As Microsoft.Data.SqlClient.SqlDataReader
+            Dim varDataReader(1) As Microsoft.Data.SqlClient.SqlDataReader
 
             Try
-                Dim varCommand0 As New SqlClient.SqlCommand
+                Dim varCommand0 As New Microsoft.Data.SqlClient.SqlCommand
 
                 query = "USE " & databasename & "; " & query
 
-                varCommand0 = New SqlClient.SqlCommand(query, varConnection(1))
-                varDataReader(1) = varCommand0.ExecuteReader(CommandBehavior.CloseConnection)
+                varCommand0 = New Microsoft.Data.SqlClient.SqlCommand(query, varConnection(1))
+                varDataReader(1) = varCommand0.ExecuteReader(Data.CommandBehavior.CloseConnection)
 
                 If varDataReader(1).HasRows Then
                     varDataReader(1).Read()
                 End If
 
                 Return varDataReader(1)
-            Catch ex As SqlClient.SqlException
+            Catch ex As Microsoft.Data.SqlClient.SqlException
                 With proLog
                     .AppVersion = GetAppVersion()
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
@@ -158,10 +158,11 @@ Namespace Database.Engine
             Try
                 Dim varRowValue As Object
 
-                varCommand(1) = New SqlClient.SqlCommand With {
+                varCommand(1) = New Microsoft.Data.SqlClient.SqlCommand With {
                 .Connection = varConnection(1),
-                .CommandType = CommandType.Text,
-                .CommandTimeout = 30}
+                .CommandType = Data.CommandType.Text,
+                .CommandTimeout = 30
+                }
 
                 query = "USE " & databasename & "; " & query
 
@@ -203,28 +204,28 @@ Namespace Database.Engine
         ''' <param name="tablename"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Function GetDataSet(databasename As String, dbr As Adapter.MSSQL2008.Display.Request, tablename As String) As DataSet
-            Dim varDataAdapter(1) As SqlClient.SqlDataAdapter
+        Public Function GetDataSet(databasename As String, dbr As Adapter.MSSQL2008.Display.Request, tablename As String) As System.Data.DataSet
+            Dim varDataAdapter(1) As Microsoft.Data.SqlClient.SqlDataAdapter
 
             Try
                 GC.Collect()
 
-                Dim varDataset As New DataSet
+                Dim varDataset As New System.Data.DataSet
                 Dim varBindingSource As New BindingSource
 
                 If IsNothing(varCommand(1)) Then
-                    varCommand(1) = New SqlClient.SqlCommand
+                    varCommand(1) = New Microsoft.Data.SqlClient.SqlCommand
                 End If
 
                 varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = CommandType.Text
+                varCommand(1).CommandType = Data.CommandType.Text
                 varCommand(1).CommandTimeout = 30
 
                 dbr.Query = "USE " & databasename & "; " & dbr.Query
 
                 varCommand(1).CommandText = dbr.Query
 
-                varDataAdapter(1) = New SqlClient.SqlDataAdapter(varCommand(1))
+                varDataAdapter(1) = New Microsoft.Data.SqlClient.SqlDataAdapter(varCommand(1))
                 varDataAdapter(1).Fill(varDataset, tablename)
 
                 varBindingSource = New BindingSource(varDataset, tablename)
@@ -263,27 +264,27 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub GetDataTable(databasename As String, dbr As Adapter.MSSQL2008.Display.Request, ByVal tablename As String)
 
-            Dim varDataAdapter(1) As SqlClient.SqlDataAdapter
+            Dim varDataAdapter(1) As Microsoft.Data.SqlClient.SqlDataAdapter
 
             Try
                 GC.Collect()
 
-                Dim varDataset As New DataSet
+                Dim varDataset As New System.Data.DataSet
                 Dim varBindingSource As New BindingSource
 
                 If (varCommand(1) Is Nothing) Then
-                    varCommand(1) = New SqlClient.SqlCommand
+                    varCommand(1) = New Microsoft.Data.SqlClient.SqlCommand
                 End If
 
                 varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = CommandType.Text
+                varCommand(1).CommandType = Data.CommandType.Text
                 varCommand(1).CommandTimeout = 30
 
                 dbr.Query = "USE " & databasename & "; " & dbr.Query
 
                 varCommand(1).CommandText = dbr.Query
 
-                varDataAdapter(1) = New SqlClient.SqlDataAdapter(varCommand(1))
+                varDataAdapter(1) = New Microsoft.Data.SqlClient.SqlDataAdapter(varCommand(1))
                 varDataAdapter(1).Fill(varDataset, tablename)
                 varBindingSource = New BindingSource(varDataset, tablename)
 
@@ -303,7 +304,7 @@ Namespace Database.Engine
                     dbr.Chart.DataSource = varBindingSource
                 End If
 
-            Catch ex As SqlClient.SqlException
+            Catch ex As Microsoft.Data.SqlClient.SqlException
                 With proLog
                     .AppVersion = GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
@@ -352,9 +353,10 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub PushData(databasename As String, query As String)
             Try
-                varCommand(1) = New SqlClient.SqlCommand With {
+                varCommand(1) = New Microsoft.Data.SqlClient.SqlCommand With {
                 .Connection = varConnection(1),
-                .CommandType = CommandType.Text}
+                .CommandType = Data.CommandType.Text
+                }
 
                 query = "USE " & databasename & "; " & query
 
@@ -388,18 +390,18 @@ Namespace Database.Engine
         ''' <param name="cmd"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Function PushImage(ByVal cmd As SqlClient.SqlCommand) As Boolean
+        Public Function PushImage(ByVal cmd As Microsoft.Data.SqlClient.SqlCommand) As Boolean
             Dim varSuccess As Boolean
 
             Try
-                varCommand(1) = New SqlClient.SqlCommand
+                varCommand(1) = New Microsoft.Data.SqlClient.SqlCommand
 
                 If cmd IsNot Nothing Then
                     varCommand(1) = cmd
                 End If
 
                 varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = CommandType.Text
+                varCommand(1).CommandType = Data.CommandType.Text
                 varCommand(1).ExecuteNonQuery()
                 varSuccess = True
             Catch ex As Exception
@@ -436,19 +438,20 @@ Namespace Database.Engine
         ''' <param name="tablename"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Function FillDataset(databasename As String, query As String, datasetname As DataSet, tablename As String) As DataSet
+        Public Function FillDataset(databasename As String, query As String, datasetname As System.Data.DataSet, tablename As String) As System.Data.DataSet
             GC.Collect()
 
             Try
-                varCommand(1) = New SqlClient.SqlCommand With {
+                varCommand(1) = New Microsoft.Data.SqlClient.SqlCommand With {
                 .Connection = varConnection(1),
-                .CommandType = CommandType.Text}
+                .CommandType = Data.CommandType.Text
+                }
 
                 query = "USE " & databasename & "; " & query
 
                 varCommand(1).CommandText = String.Format(Globalization.CultureInfo.InvariantCulture, "RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH", query)
 
-                Using varAdapter = New SqlClient.SqlDataAdapter(varCommand(1))
+                Using varAdapter = New Microsoft.Data.SqlClient.SqlDataAdapter(varCommand(1))
                     varAdapter.Fill(datasetname, tablename)
                 End Using
 

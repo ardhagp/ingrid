@@ -10,7 +10,7 @@ Namespace UI
 
 #Region "Interface"
         Public Interface ICommandFunction
-            Function LoadCommand() As CMCv.frmStandard
+            Function LoadCommand() As CMCv.FRMstandard
         End Interface
 
         Public Interface ICommandName
@@ -44,8 +44,8 @@ Namespace UI
         Private consDatabaseProperties As String = "DatabaseProperties"
 
         Private Const tUserData As String = "UserData"
-        Private Const pCommand As String = "@Command"
-        Private Const pEmployeeId As String = "@EmployeeId"
+        'Private Const pCommand As String = "@Command"
+        'Private Const pEmployeeId As String = "@EmployeeId"
 #End Region
 
 #Region "Subs Collection"
@@ -97,8 +97,8 @@ Namespace UI
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub GetNotification()
-            varDataProperties.AllParameters.Remove("@EmployeeId")
-            varDataProperties.AllParameters.Add("@EmployeeId", CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_id")))
+            'varDataProperties.UserParameters.Remove(tEmployee.P_EmployeeId)
+            'varDataProperties.UserParameters.Add(tEmployee.P_EmployeeId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_id")))
             varTotalNotification = varSqlNotification.Exist(varDataProperties)
             If varTotalNotification > 0 Then
                 USERMENU.Text = varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_fullname").ToString & "*"
@@ -131,7 +131,7 @@ Namespace UI
                 If Not (isforced) AndAlso (Global.System.Windows.Forms.MessageBox.Show("Do you want to close all Workspace windows?", "Close All Windows", Global.System.Windows.Forms.MessageBoxButtons.YesNo, Global.System.Windows.Forms.MessageBoxIcon.Question) = Global.System.Windows.Forms.DialogResult.No) Then
                     Return
                 Else
-                    For Each openedforms As CMCv.frmStandard In Tmdi_.MdiChildren
+                    For Each openedforms As CMCv.FRMstandard In Me.MdiChildren
                         openedforms.Close()
                         openedforms.Dispose()
                     Next
@@ -328,7 +328,7 @@ Namespace UI
                 clsLog.ShowData(proLog)
                 clsLog = Nothing
                 Call ActivateLicenses()
-                Tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererVS2010)
+                'Tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererVS2010)
                 varGetNotifCounter = 58
                 varForceRefreshMainframeData = False
                 TmrStatus.Interval = varStatusTimeWait * 1000
@@ -416,9 +416,13 @@ Namespace UI
         End Sub
 #End Region
 
+        ''' <summary>
+        ''' SystemLogout handles the UI changes and data clearing when a user logs in or out. It updates the visibility and enabled state of menu items, resets notification counters, and clears profile and storage information on logout.
+        ''' </summary>
+        ''' <param name="islogout"></param>
         <SupportedOSPlatform("windows")>
-        Private Sub SystemLogout(Optional ByVal islogout As Boolean = True)
-            If Not (islogout) Then ''' Login Process
+        Private Sub SystemLogout(Optional islogout As Boolean = True)
+            If Not (islogout) Then
                 Ms_start_Login.Visible = False
                 Ms_start_Login.Enabled = False
                 Ms_start_Logout.Visible = True
@@ -430,13 +434,13 @@ Namespace UI
                 LogoutToolStripMenuItem.Visible = True
                 LogoutToolStripMenuItem.Enabled = True
                 varGetNotifCounter = 58
-                Call GetNotification() ''' First Get Notification
+                Call GetNotification()
                 TmrNotif.Enabled = True
                 NotificationToolStripMenuItem.Enabled = True
+                Call GetSettings()
                 Call GetProfile() ''' Get Profile Info
                 Call GetStorage() ''' Get Storage Info
-                Call GetSettings() ''' Get Settings Info
-            Else ''' Logout Process
+            Else
                 Call ClearLoginData()
                 Ms_start_Login.Visible = True
                 Ms_start_Login.Enabled = True
@@ -467,10 +471,6 @@ Namespace UI
             End If
         End Sub
 
-        Private Sub UpdateToolStripMenuItem_Click(sender As Object, e As EventArgs)
-            'TODO: Update method
-        End Sub
-
         <SupportedOSPlatform("windows")>
         Private Sub PhotoResizerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PhotoResizerToolStripMenuItem.Click
             Call EnterCommand("PHTRZ")
@@ -486,7 +486,7 @@ Namespace UI
 
         Private Sub ContentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentsToolStripMenuItem.Click
             Try
-                ''' Open Wiki URL
+                'Open Wiki URL in default browser
                 Process.Start(New ProcessStartInfo(My.Settings.URL_Wiki) With {.UseShellExecute = True})
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
@@ -498,35 +498,36 @@ Namespace UI
             varGetNotifCounter += 1
             If varGetNotifCounter = 60 Then
                 Call GetNotification()
-                Call GetRunningText()
-                Call GetProfile()
-                Call GetStorage()
-                Call GetSettings()
                 varGetNotifCounter = 0
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub GetProfile()
-            PnlProfile.Visible = LibSQL.Application.ProfilePanel.Show(varDataProperties)
-            If (PnlProfile.Visible) Then
-                LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome(varDataProperties)
-                LblEmpNumber.Text = varDataProperties.EmployeeNumber
+            With varDatasetIngrid.Tables(tSettings.TableName)
+                If .Rows.Count > 0 Then
+                    PnlProfile.Visible = CBool(.Rows(0).Item(tSettings.C_SettingsShowProfile))
+                End If
 
-                Dim varNama = varDataProperties.EmployeeFirstName.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+                If (PnlProfile.Visible) Then
+                    LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome(varDataProperties)
+                    LblEmpNumber.Text = varDataProperties.UserParameters(tEmployee.P_EmployeeNumber).ToString
 
-                LblEmployeeName.Text = String.Join(" ", varNama.Take(2))
-                LblPosition.Text = varDataProperties.EmployeePositionName
-                PctProfile.Image = varSqlProfiles.GetPhoto(varDataProperties.ConnectionDatabaseName, varDataProperties.EmployeeId, varDataProperties.EmployeeGender)
-                PnlProfile.Height = 191
-            Else
-                LblWelcome.Text = String.Empty
-                LblEmpNumber.Text = String.Empty
-                LblEmployeeName.Text = String.Empty
-                LblPosition.Text = String.Empty
-                PctProfile.Image = Nothing
-                PnlProfile.Height = 0
-            End If
+                    Dim varNama = varDataProperties.UserParameters(tEmployee.P_EmployeeFullName).ToString.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+
+                    LblEmployeeName.Text = String.Join(" ", varNama.Take(2))
+                    LblPosition.Text = varDataProperties.UserParameters(tPosition.P_PositionName).ToString
+                    'PctProfile.Image = varSqlProfiles.GetPhoto(varDataProperties.ConnectionDatabaseName, varDataProperties.EmployeeId, varDataProperties.EmployeeGender)
+                    PnlProfile.Height = 320
+                Else
+                    LblWelcome.Text = String.Empty
+                    LblEmpNumber.Text = String.Empty
+                    LblEmployeeName.Text = String.Empty
+                    LblPosition.Text = String.Empty
+                    PctProfile.Image = Nothing
+                    PnlProfile.Height = 0
+                End If
+            End With
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -595,7 +596,7 @@ Namespace UI
 
         Private Sub Support_Click(sender As Object, e As EventArgs) Handles SUPPORT.Click
             Try
-                ''' Open Wiki URL
+                'Open Wiki URL in default browser
                 Process.Start(New ProcessStartInfo(My.Settings.URL_Wiki) With {.UseShellExecute = True})
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
@@ -666,7 +667,7 @@ Namespace UI
 
         Private Sub BuymeacoffeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BuymeacoffeToolStripMenuItem.Click
             Try
-                ''' Open Saweria URL
+                'Open Saweria URL
                 Process.Start(New ProcessStartInfo(My.Settings.URL_Saweria) With {.UseShellExecute = True})
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
@@ -697,10 +698,11 @@ Namespace UI
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetSettings()
-            varMaxUploadSizePDF = LibSQL.Application.Modules.MaxPDFallowed(varDataProperties)
-            varMaxUploadSizePhoto = LibSQL.Application.Modules.MaxPhotoallowed(varDataProperties)
-            varMinPasswordLength = LibSQL.Application.Modules.MinPasswordLength(varDataProperties)
-            varTextmark = LibSQL.Application.Modules.TextMark(varDataProperties)
+            LibSQL.Application.Modules.GetSettingsProperties(varDataProperties, varDatasetIngrid)
+            'varMaxUploadSizePDF = LibSQL.Application.Modules.MaxPDFallowed(varDataProperties)
+            'varMaxUploadSizePhoto = LibSQL.Application.Modules.MaxPhotoallowed(varDataProperties)
+            'varMinPasswordLength = LibSQL.Application.Modules.MinPasswordLength(varDataProperties)
+            'varTextmark = LibSQL.Application.Modules.TextMark(varDataProperties)
         End Sub
 
         <SupportedOSPlatform("windows")>

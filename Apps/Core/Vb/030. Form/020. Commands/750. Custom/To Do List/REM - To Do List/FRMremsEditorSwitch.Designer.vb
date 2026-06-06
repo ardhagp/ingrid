@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMremsEditorSwitch
-        Inherits CMCv.frmStandard
+        Inherits CMCv.FRMstandard
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,9 +21,9 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnEdit = New CMCv.UI.Control.btn(components)
-            BtnChangeProgress = New CMCv.UI.Control.btn(components)
-            BtnMarkAsVerified = New CMCv.UI.Control.btn(components)
+            BtnEdit = New CMCv.UI.Control.Btn(components)
+            BtnChangeProgress = New CMCv.UI.Control.Btn(components)
+            BtnMarkAsVerified = New CMCv.UI.Control.Btn(components)
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
@@ -61,10 +61,10 @@
             BtnEdit.TabIndex = 0
             BtnEdit.Text = "Edit"
             BtnEdit.UseVisualStyleBackColor = False
-            BtnEdit.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            BtnEdit.XOTampilkanFocusBorder = False
-            BtnEdit.XOValidasiSemuaInput = False
-            BtnEdit.XOValidasiSemuaInputTag = Nothing
+            BtnEdit.XOButtonType = ControlCodeBase.buttonType.Default
+            BtnEdit.XOShowBorderOnFocus = False
+            BtnEdit.XOValidateAllInput = False
+            BtnEdit.XOValidateAllInputTag = Nothing
             ' 
             ' BtnChangeProgress
             ' 
@@ -84,10 +84,10 @@
             BtnChangeProgress.TabIndex = 1
             BtnChangeProgress.Text = "Change Progress"
             BtnChangeProgress.UseVisualStyleBackColor = False
-            BtnChangeProgress.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            BtnChangeProgress.XOTampilkanFocusBorder = False
-            BtnChangeProgress.XOValidasiSemuaInput = False
-            BtnChangeProgress.XOValidasiSemuaInputTag = Nothing
+            BtnChangeProgress.XOButtonType = ControlCodeBase.buttonType.Default
+            BtnChangeProgress.XOShowBorderOnFocus = False
+            BtnChangeProgress.XOValidateAllInput = False
+            BtnChangeProgress.XOValidateAllInputTag = Nothing
             ' 
             ' BtnMarkAsVerified
             ' 
@@ -107,10 +107,10 @@
             BtnMarkAsVerified.TabIndex = 2
             BtnMarkAsVerified.Text = "Mark As Verified"
             BtnMarkAsVerified.UseVisualStyleBackColor = False
-            BtnMarkAsVerified.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            BtnMarkAsVerified.XOTampilkanFocusBorder = False
-            BtnMarkAsVerified.XOValidasiSemuaInput = False
-            BtnMarkAsVerified.XOValidasiSemuaInputTag = Nothing
+            BtnMarkAsVerified.XOButtonType = ControlCodeBase.buttonType.Default
+            BtnMarkAsVerified.XOShowBorderOnFocus = False
+            BtnMarkAsVerified.XOValidateAllInput = False
+            BtnMarkAsVerified.XOValidateAllInputTag = Nothing
             ' 
             ' FRMremsEditorSwitch
             ' 
@@ -132,8 +132,8 @@
 
         End Sub
 
-        Friend WithEvents BtnEdit As CMCv.UI.Control.btn
-        Friend WithEvents BtnMarkAsVerified As CMCv.UI.Control.btn
-        Friend WithEvents BtnChangeProgress As CMCv.UI.Control.btn
+        Friend WithEvents BtnEdit As CMCv.UI.Control.Btn
+        Friend WithEvents BtnMarkAsVerified As CMCv.UI.Control.Btn
+        Friend WithEvents BtnChangeProgress As CMCv.UI.Control.Btn
     End Class
 End Namespace

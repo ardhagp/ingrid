@@ -6,7 +6,7 @@ Namespace UI.Control
     ''' <summary>
     ''' Custom combobox
     ''' </summary>
-    Public Class cbo
+    Public Class Cbo
         Inherits System.Windows.Forms.ComboBox
 
         <SupportedOSPlatform("windows")>
@@ -15,7 +15,7 @@ Namespace UI.Control
             Call ActivateLicenses()
             MyBase.Font = globalFontLbl
             MyBase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            MyBase.FlatStyle = system.Windows.Forms.FlatStyle.Flat
+            MyBase.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             MyBase.DoubleBuffered = True
         End Sub
     End Class

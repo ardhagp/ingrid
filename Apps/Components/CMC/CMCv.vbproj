@@ -108,58 +108,58 @@
     <Compile Update="2099 - Interface\3rd Party\PhotoResizer\FRMphtrz.Designer.vb">
       <DependentUpon>FRMphtrz.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Button\btn.Designer.vb">
+    <Compile Update="2099 - Interface\Controls\Button\Btn.Designer.vb">
       <DependentUpon>Btn.vb</DependentUpon>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Button\Btn.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\CheckBox\chk.Designer.vb">
-      <DependentUpon>chk.vb</DependentUpon>
+      <DependentUpon>Chk.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\CheckBox\chk.vb">
+    <Compile Update="2099 - Interface\Controls\CheckBox\Chk.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\ComboBox\cbo.Designer.vb">
-      <DependentUpon>cbo.vb</DependentUpon>
+      <DependentUpon>Cbo.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\ComboBox\cbo.vb">
+    <Compile Update="2099 - Interface\Controls\ComboBox\Cbo.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Context Menu\csmnu.Designer.vb">
-      <DependentUpon>csmnu.vb</DependentUpon>
+      <DependentUpon>Csmnu.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Context Menu\csmnu.vb">
+    <Compile Update="2099 - Interface\Controls\Context Menu\Csmnu.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\DataGridView\dgn.Designer.vb">
-      <DependentUpon>dgn.vb</DependentUpon>
+      <DependentUpon>Dgn.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\DataGridView\dgn.vb" />
+    <Compile Update="2099 - Interface\Controls\DataGridView\Dgn.vb" />
     <Compile Update="2099 - Interface\Controls\DateTimePicker\dtp.Designer.vb">
-      <DependentUpon>dtp.vb</DependentUpon>
+      <DependentUpon>Dtp.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\DateTimePicker\dtp.vb">
+    <Compile Update="2099 - Interface\Controls\DateTimePicker\Dtp.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\GroupBox\gbx.Designer.vb">
-      <DependentUpon>gbx.vb</DependentUpon>
+      <DependentUpon>Gbx.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\GroupBox\gbx.vb" />
+    <Compile Update="2099 - Interface\Controls\GroupBox\Gbx.vb" />
     <Compile Update="2099 - Interface\Controls\Label\lbl.Designer.vb">
-      <DependentUpon>lbl.vb</DependentUpon>
+      <DependentUpon>Lbl.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Label\lbl.vb">
+    <Compile Update="2099 - Interface\Controls\Label\Lbl.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\LinkLabel\lnklbl.Designer.vb">
-      <DependentUpon>lnklbl.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Controls\LinkLabel\Lnk.Designer.vb">
+      <DependentUpon>Lnk.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\LinkLabel\lnklbl.vb" />
+    <Compile Update="2099 - Interface\Controls\LinkLabel\Lnk.vb" />
     <Compile Update="2099 - Interface\Controls\MaskEditBox\meb.Designer.vb">
-      <DependentUpon>meb.vb</DependentUpon>
+      <DependentUpon>Meb.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\MaskEditBox\meb.vb">
+    <Compile Update="2099 - Interface\Controls\MaskEditBox\Meb.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Menu Strip\mnu.Designer.vb">
@@ -169,80 +169,80 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\NumericUpDown\nud.Designer.vb">
-      <DependentUpon>nud.vb</DependentUpon>
+      <DependentUpon>Nud.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\NumericUpDown\nud.vb">
+    <Compile Update="2099 - Interface\Controls\NumericUpDown\Nud.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Panel\pnl.Designer.vb">
-      <DependentUpon>pnl.vb</DependentUpon>
+      <DependentUpon>Pnl.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Panel\pnl.vb">
+    <Compile Update="2099 - Interface\Controls\Panel\Pnl.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\PictureBox\pctbx.Designer.vb">
-      <DependentUpon>pctbx.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Controls\PictureBox\Pbx.Designer.vb">
+      <DependentUpon>Pbx.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\PictureBox\pctbx.vb">
+    <Compile Update="2099 - Interface\Controls\PictureBox\Pbx.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\ProgressBar\pgb.Designer.vb">
-      <DependentUpon>pgb.vb</DependentUpon>
+      <DependentUpon>Pgb.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\ProgressBar\pgb.vb">
+    <Compile Update="2099 - Interface\Controls\ProgressBar\Pgb.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\RadioButton\rdo.Designer.vb">
-      <DependentUpon>rdo.vb</DependentUpon>
+      <DependentUpon>Rdo.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\RadioButton\rdo.vb">
+    <Compile Update="2099 - Interface\Controls\RadioButton\Rdo.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\SplitContainer\spc.Designer.vb">
-      <DependentUpon>spc.vb</DependentUpon>
+      <DependentUpon>Spc.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\SplitContainer\spc.vb">
+    <Compile Update="2099 - Interface\Controls\SplitContainer\Spc.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Status Strip\stt.Designer.vb">
-      <DependentUpon>stt.vb</DependentUpon>
+      <DependentUpon>Stt.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Status Strip\stt.vb">
+    <Compile Update="2099 - Interface\Controls\Status Strip\Stt.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\TabControl\tbctl.Designer.vb">
-      <DependentUpon>tbctl.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Controls\TabControl\Tbx.Designer.vb">
+      <DependentUpon>Tbx.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\TabControl\tbctl.vb">
+    <Compile Update="2099 - Interface\Controls\TabControl\Tbx.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\TextBox\txt.Designer.vb">
-      <DependentUpon>txt.vb</DependentUpon>
+      <DependentUpon>Txt.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\TextBox\txt.vb">
+    <Compile Update="2099 - Interface\Controls\TextBox\Txt.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\TreeView\tv.Designer.vb">
-      <DependentUpon>tv.vb</DependentUpon>
+      <DependentUpon>Tv.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\TreeView\tv.vb" />
+    <Compile Update="2099 - Interface\Controls\TreeView\Tv.vb" />
     <Compile Update="2099 - Interface\Forms\Templates\Windows7\Blank.Designer.vb">
       <DependentUpon>Blank.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\frmStandard.Designer.vb">
-      <DependentUpon>frmStandard.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\fRMstandard.Designer.vb">
+      <DependentUpon>FRMstandard.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Find + Footer\Std_Fi_Fo.Designer.vb">
-      <DependentUpon>Std_Fi_Fo.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Find + Footer\FRMstandardFindFooter.Designer.vb">
+      <DependentUpon>FRMstandardFindFooter.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Find\Std_Fi.Designer.vb">
-      <DependentUpon>Std_Fi.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Find\FRMstandardFind.Designer.vb">
+      <DependentUpon>FRMstandardFind.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Footer\Report Basic\Rpt_Bsc.Designer.vb">
-      <DependentUpon>Rpt_Bsc.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Footer\Report Basic\FRMreportBasic.Designer.vb">
+      <DependentUpon>FRMreportBasic.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Footer\Std_Fo.Designer.vb">
-      <DependentUpon>Std_Fo.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\Standard + Footer\FRMstandardFooter.Designer.vb">
+      <DependentUpon>FRMstandardFooter.vb</DependentUpon>
     </Compile>
     <Compile Update="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -297,43 +297,43 @@
     <Folder Include="SqlServerTypes\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\Button\btn.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\Button\Btn.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\DateTimePicker\dtp.ico" />
-    <EmbeddedResource Include="2099 - Interface\Controls\Label\lbl.ico" />
-    <EmbeddedResource Include="2099 - Interface\Controls\TextBox\txt.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\DateTimePicker\Dtp.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\Label\Lbl.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\TextBox\Txt.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\DataGridView\dgn.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\DataGridView\Dgn.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\GroupBox\gbx.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\GroupBox\Gbx.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\LinkLabel\lnklbl.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\LinkLabel\Lnk.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\ComboBox\cbo.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\ComboBox\Cbo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\MaskEditBox\meb.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\MaskEditBox\Meb.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\CheckBox\chk.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\CheckBox\Chk.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\RadioButton\rdo.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\RadioButton\Rdo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\ProgressBar\pgb.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\ProgressBar\Pgb.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\Panel\pnl.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\Panel\Pnl.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="2099 - Interface\Controls\NumericUpDown\nud.ico" />
-    <Content Include="2099 - Interface\Controls\PictureBox\pctbx.ico" />
+    <Content Include="2099 - Interface\Controls\NumericUpDown\Nud.ico" />
+    <Content Include="2099 - Interface\Controls\PictureBox\Pbx.ico" />
     <EmbeddedResource Include="Resources\EDIT_002_512_icon .png" />
     <EmbeddedResource Include="Resources\Save_001_24_FFFFFFFF_FF5423C3.png" />
     <EmbeddedResource Include="Resources\OpenFile_001_24_FFFFFFFF_FF5423C3.png" />
@@ -506,14 +506,15 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.1" />
     <PackageReference Include="MySql.Data" Version="9.7.0" />
     <PackageReference Include="NETCore.Encrypt" Version="2.1.1" />
     <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.24" />
-    <PackageReference Include="Syncfusion.Grid.Windows" Version="23.1.41" />
-    <PackageReference Include="Syncfusion.Licensing" Version="23.1.41" />
-    <PackageReference Include="Syncfusion.PdfViewer.Windows" Version="23.1.41" />
-    <PackageReference Include="Syncfusion.Shared.Base" Version="23.1.41" />
-    <PackageReference Include="Syncfusion.Tools.Windows" Version="23.1.41" />
+    <PackageReference Include="Syncfusion.Grid.Windows" Version="33.2.6" />
+    <PackageReference Include="Syncfusion.Licensing" Version="33.2.6" />
+    <PackageReference Include="Syncfusion.PdfViewer.Windows" Version="33.2.6" />
+    <PackageReference Include="Syncfusion.Shared.Base" Version="33.2.6" />
+    <PackageReference Include="Syncfusion.Tools.Windows" Version="33.2.6" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.1" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />

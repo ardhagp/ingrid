@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMlogin
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,8 +21,8 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnLogin = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
+            BtnLogin = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             TxtUsername = New CMCv.UI.Control.txt(components)
             TxtPassword = New CMCv.UI.Control.txt(components)
             Lbl1 = New CMCv.UI.Control.lbl(components)
@@ -83,10 +83,10 @@
             BtnLogin.TabIndex = 2
             BtnLogin.Text = "&Login"
             BtnLogin.UseVisualStyleBackColor = False
-            BtnLogin.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnLogin.XOTampilkanFocusBorder = False
-            BtnLogin.XOValidasiSemuaInput = False
-            BtnLogin.XOValidasiSemuaInputTag = Nothing
+            BtnLogin.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnLogin.XOShowBorderOnFocus = False
+            BtnLogin.XOValidateAllInput = False
+            BtnLogin.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -106,10 +106,10 @@
             BtnCancel.TabIndex = 3
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' TxtUsername
             ' 
@@ -123,24 +123,24 @@
             TxtUsername.TabIndex = 0
             TxtUsername.Tag = "txt"
             TxtUsername.XOAutoTrim = True
-            TxtUsername.XOHarusDiisi = True
-            TxtUsername.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtUsername.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtUsername.XOHightlightSaatFokus = True
-            TxtUsername.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtUsername.XOIsMandatory = True
+            TxtUsername.XOMandatoryBgColor = Color.LightPink
+            TxtUsername.XOMandatoryBgColorDefault = Color.White
+            TxtUsername.XOHighlightOnFocus = True
+            TxtUsername.XOHighlightColor = Color.LightYellow
             TxtUsername.XOIsBlank = True
             TxtUsername.XOIsSearchBox = False
-            TxtUsername.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtUsername.XOPilihSemuaSaatFokus = False
-            TxtUsername.XOPwdLengthMin = 8
-            TxtUsername.XOPwdStrengthCalculate = False
-            TxtUsername.XOPwdStrengthScore = 0
-            TxtUsername.XOPwdStrengthText = Nothing
-            TxtUsername.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
+            TxtUsername.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtUsername.XOSelectOnFocus = False
+            TxtUsername.XOPasswordLengthMin = 8
+            TxtUsername.XOPasswordStrengthCalc = False
+            TxtUsername.XOPasswordStrengthScore = 0
+            TxtUsername.XOPasswordStrengthText = Nothing
+            TxtUsername.XORestriction = ControlCodeBase.enumRestriction.TextAndNumber
             TxtUsername.XOSearchBoxText = "Type then press Enter"
-            TxtUsername.XOSQLText = ""
-            TxtUsername.XOTanpaSpasi = False
-            TxtUsername.XOValidasiField = Nothing
+            TxtUsername.XOSqlText = ""
+            TxtUsername.XOIsReplaceEmptyString = False
+            TxtUsername.XOMandatoryMessage = Nothing
             ' 
             ' TxtPassword
             ' 
@@ -155,24 +155,24 @@
             TxtPassword.TabIndex = 1
             TxtPassword.Tag = "txt"
             TxtPassword.XOAutoTrim = False
-            TxtPassword.XOHarusDiisi = True
-            TxtPassword.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtPassword.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtPassword.XOHightlightSaatFokus = True
-            TxtPassword.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtPassword.XOIsMandatory = True
+            TxtPassword.XOMandatoryBgColor = Color.LightPink
+            TxtPassword.XOMandatoryBgColorDefault = Color.White
+            TxtPassword.XOHighlightOnFocus = True
+            TxtPassword.XOHighlightColor = Color.LightYellow
             TxtPassword.XOIsBlank = True
             TxtPassword.XOIsSearchBox = False
-            TxtPassword.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtPassword.XOPilihSemuaSaatFokus = False
-            TxtPassword.XOPwdLengthMin = 8
-            TxtPassword.XOPwdStrengthCalculate = False
-            TxtPassword.XOPwdStrengthScore = 0
-            TxtPassword.XOPwdStrengthText = Nothing
-            TxtPassword.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtPassword.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtPassword.XOSelectOnFocus = False
+            TxtPassword.XOPasswordLengthMin = 8
+            TxtPassword.XOPasswordStrengthCalc = False
+            TxtPassword.XOPasswordStrengthScore = 0
+            TxtPassword.XOPasswordStrengthText = Nothing
+            TxtPassword.XORestriction = ControlCodeBase.enumRestriction.None
             TxtPassword.XOSearchBoxText = "Type then press Enter"
-            TxtPassword.XOSQLText = ""
-            TxtPassword.XOTanpaSpasi = False
-            TxtPassword.XOValidasiField = Nothing
+            TxtPassword.XOSqlText = ""
+            TxtPassword.XOIsReplaceEmptyString = False
+            TxtPassword.XOMandatoryMessage = Nothing
             ' 
             ' Lbl1
             ' 
@@ -224,8 +224,8 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
-        Friend WithEvents BtnLogin As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
+        Friend WithEvents BtnLogin As CMCv.UI.Control.Btn
         Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
         Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
         Friend WithEvents TxtPassword As CMCv.UI.Control.txt

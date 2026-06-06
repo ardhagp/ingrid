@@ -1,16 +1,9 @@
-﻿Imports System.ComponentModel
-Imports System.Globalization
+﻿Imports System.Globalization
 Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
 Namespace UI.Control
-    ''' <project>Mainframe : txt (Textbox Custom Component)</project>
-    ''' <author>Ardha Gp</author>
-    ''' <summary>
-    ''' Custom komponen textbox. Dilengkapi dengan sekuensial validasi pada button clicked.
-    ''' </summary>
-    ''' <remarks></remarks>
-    Public Class txt
+    Public Class Txt
         Inherits System.Windows.Forms.TextBox
 
         <SupportedOSPlatform("windows")>
@@ -21,27 +14,27 @@ Namespace UI.Control
             MyBase.MaxLength = 255
             MyBase.Height = 23
             MyBase.Width = 206
-            Me.XOHarusDiisi = False
-            Me.XOHarusDiisiWarnaLatar = Drawing.Color.LightPink
-            Me.XOHarusDiisiWarnaLatarDefault = Drawing.Color.White
-            Me.XOTanpaSpasi = False
+            Me.XOIsMandatory = False
+            Me.XOMandatoryBgColor = Drawing.Color.LightPink
+            Me.XOMandatoryBgColorDefault = Drawing.Color.White
+            Me.XOIsReplaceEmptyString = False
             Me.XOAutoTrim = False
-            Me.XOHightlightSaatFokus = False
-            Me.XOHightlightSaatFokusWarna = Drawing.Color.LightYellow
-            Me.XOPilihSemuaSaatFokus = False
-            Me.XORestriction = ControlCodeBase.enuRestriction.None
+            Me.XOHighlightOnFocus = False
+            Me.XOHighlightColor = Drawing.Color.LightYellow
+            Me.XOSelectOnFocus = False
+            Me.XORestriction = ControlCodeBase.enumRestriction.None
             Me.XOIsBlank = True
-            Me.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
+            Me.XOLetterCase = ControlCodeBase.EnumLetterCase.Normal
             Me.XOIsSearchBox = False
             Me.XOSearchBoxText = "Type then press Enter"
-            Me.XOPwdLengthMin = 8
-            Me.XOPwdStrengthCalculate = False
+            Me.XOPasswordLengthMin = 8
+            Me.XOPasswordStrengthCalc = False
             Call FontSearchBox(True)
         End Sub
 
 #Region "Properties"
-        <Category("Text"),
-    Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Automatically trims leading and trailing spaces from the component’s text value at runtime")>
         Private varAutoTrim As Boolean
         Public Property XOAutoTrim() As Boolean
             Get
@@ -52,169 +45,165 @@ Namespace UI.Control
             End Set
         End Property
 
-        <Category("Text"),
-    Description("Teksboks harus diisi")>
-        Private varHarusDiisi As Boolean
-        Public Property XOHarusDiisi As Boolean
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Indicates whether this component requires a value and must not be left empty during user input")>
+        Private varIsMandatory As Boolean
+        Public Property XOIsMandatory As Boolean
             Get
-                Return varHarusDiisi
+                Return varIsMandatory
             End Get
             Set(value As Boolean)
-                varHarusDiisi = value
+                varIsMandatory = value
             End Set
         End Property
 
-        Private varHightlightSaatFokus As Boolean
-        <Category("Text"),
-    Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
-        Public Property XOHightlightSaatFokus() As Boolean
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Highlights the component visually when it receives focus to guide user attention during data entry")>
+        Private varHighlightOnFocus As Boolean
+        Public Property XOHighlightOnFocus() As Boolean
             Get
-                Return varHightlightSaatFokus
+                Return varHighlightOnFocus
             End Get
             Set(value As Boolean)
-                varHightlightSaatFokus = value
+                varHighlightOnFocus = value
             End Set
         End Property
 
-        Private varHighlightSaatFokusWarna As System.Drawing.Color
-        <Category("Text"),
-    Description("Warna highlight")>
-        Public Property XOHightlightSaatFokusWarna() As System.Drawing.Color
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the highlight color applied to the component when it receives focus")>
+        Private varHighlightColor As System.Drawing.Color
+        Public Property XOHighlightColor() As System.Drawing.Color
             Get
-                Return varHighlightSaatFokusWarna
+                Return varHighlightColor
             End Get
             Set(value As System.Drawing.Color)
-                varHighlightSaatFokusWarna = value
+                varHighlightColor = value
             End Set
         End Property
 
-        <Category("Text"),
-   Description("Panjang password minimum")>
-        Private varPwdLengthMin As Integer
-        Public Property XOPwdLengthMin As Integer
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Defines the minimum number of characters required for a valid password input")>
+        Private varPasswordLengthMin As Integer
+        Public Property XOPasswordLengthMin As Integer
             Get
-                Return varPwdLengthMin
+                Return varPasswordLengthMin
             End Get
             Set(value As Integer)
-                varPwdLengthMin = value
+                varPasswordLengthMin = value
             End Set
         End Property
 
-        <Category("Text"),
-   Description("Aktifkan penghitung kekuatan password")>
-        Private varPwdStrengthCalculate As Boolean
-        Public Property XOPwdStrengthCalculate As Boolean
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Determines whether the component evaluates and displays the strength level of the entered password")>
+        Private varPasswordStrengthCalc As Boolean
+        Public Property XOPasswordStrengthCalc As Boolean
             Get
-                Return varPwdStrengthCalculate
+                Return varPasswordStrengthCalc
             End Get
             Set(value As Boolean)
-                varPwdStrengthCalculate = value
+                varPasswordStrengthCalc = value
             End Set
         End Property
 
-        <Category("Text"),
-   Description("Indikator kekuatan password (skor)")>
-        Private varPwdStrengthScore As Integer
-        Public Property XOPwdStrengthScore As Integer
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Represents the calculated numeric score used to determine the strength level of the entered password")>
+        Private varPasswordStrengthScore As Integer
+        Public Property XOPasswordStrengthScore As Integer
             Get
-                Return varPwdStrengthScore
+                Return varPasswordStrengthScore
             End Get
             Set(value As Integer)
-                varPwdStrengthScore = value
+                varPasswordStrengthScore = value
             End Set
         End Property
 
-        <Category("Text"),
-   Description("Indikator kekuatan password (teks)")>
-        Private varPwdStrengthText As String
-        Public Property XOPwdStrengthText As String
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Displays the descriptive strength label derived from the calculated password score")>
+        Private varPasswordStrengthText As String
+        Public Property XOPasswordStrengthText As String
             Get
-                Return varPwdStrengthText
+                Return varPasswordStrengthText
             End Get
             Set(value As String)
-                varPwdStrengthText = value
+                varPasswordStrengthText = value
             End Set
         End Property
 
-        <Category("Text"),
-   Description("Mengisi teksboks kosong dengan tanda (-)")>
-        Private varTanpaSpasi As Boolean
-        Public Property XOTanpaSpasi As Boolean
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies whether empty or whitespace-only input should be automatically replaced with a predefined fallback value")>
+        Private varReplaceEmptyString As Boolean
+        Public Property XOIsReplaceEmptyString As Boolean
             Get
-                Return varTanpaSpasi
+                Return varReplaceEmptyString
             End Get
             Set(value As Boolean)
-                varTanpaSpasi = value
+                varReplaceEmptyString = value
             End Set
         End Property
 
-        <Category("Text"),
-   Description("Teks yang dikonversi untuk sql")>
-        Private varSQLText As String
-        Public Property XOSQLText As String
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Contains the SQL command or query text associated with this component for data retrieval or processing")>
+        Private varSqlText As String
+        Public Property XOSqlText As String
             Get
-                Return varSQLText
+                Return varSqlText
             End Get
             Set(value As String)
-                varSQLText = value
+                varSqlText = value
             End Set
         End Property
 
-        Private varHarusDiisiWarnaLatar As System.Drawing.Color
-        <Category("Text"),
-    Description("Warna saat teksboks tidak diisi")>
-        Public Property XOHarusDiisiWarnaLatar As System.Drawing.Color
+        Private varMandatoryBgColor As System.Drawing.Color
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the background color applied to the component when it is marked as mandatory")>
+        Public Property XOMandatoryBgColor As System.Drawing.Color
             Get
-                Return varHarusDiisiWarnaLatar
+                Return varMandatoryBgColor
             End Get
             Set(value As System.Drawing.Color)
-                varHarusDiisiWarnaLatar = value
+                varMandatoryBgColor = value
             End Set
         End Property
 
-        Private varHarusDiisiWarnaLatarDefault As System.Drawing.Color
-        <Category("Text"),
-    Description("Warna saat teksboks tidak diisi jika bernilai False")>
-        Public Property XOHarusDiisiWarnaLatarDefault As System.Drawing.Color
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the default background color restored when the component is no longer marked as mandatory")>
+        Private varMandatoryBgColorDefault As System.Drawing.Color
+        Public Property XOMandatoryBgColorDefault As System.Drawing.Color
             Get
-                Return varHarusDiisiWarnaLatarDefault
+                Return varMandatoryBgColorDefault
             End Get
             Set(value As System.Drawing.Color)
-                varHarusDiisiWarnaLatarDefault = value
+                varMandatoryBgColorDefault = value
             End Set
         End Property
 
-        Private varValidasiField As String
-        <Category("Text"),
-    Description("Field yang ditampilkan saat validasi tidak diisi")>
-        Public Property XOValidasiField As String
+        Private varMandatoryMessage As String
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the validation message displayed when the component is mandatory but left empty by the user")>
+        Public Property XOMandatoryMessage As String
             Get
-                Return varValidasiField
+                Return varMandatoryMessage
             End Get
             Set(value As String)
-                varValidasiField = value
+                varMandatoryMessage = value
             End Set
         End Property
 
-        Private varPilihSemuaSaatFokus As Boolean
-        <System.ComponentModel.Category("Text"),
-    System.ComponentModel.Description("Memilih semua teks saat fokus")>
-        Public Property XOPilihSemuaSaatFokus() As Boolean
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Automatically selects all text within the component when it receives focus to simplify user editing")>
+        Private varSelectOnFocus As Boolean
+        Public Property XOSelectOnFocus() As Boolean
             Get
-                Return varPilihSemuaSaatFokus
+                Return varSelectOnFocus
             End Get
             Set(value As Boolean)
-                varPilihSemuaSaatFokus = value
+                varSelectOnFocus = value
             End Set
         End Property
 
         Private varIsBlank As Boolean
-        ''' <summary>
-        ''' Nilai ini terisi secara otomatis
-        ''' </summary>
-        ''' <value>True/False</value>
-        ''' <returns>True/False</returns>
-        ''' <remarks></remarks>
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Indicates whether the component’s current value is considered blank after applying trimming and normalization rules")>
         Public Property XOIsBlank() As Boolean
             Get
                 Return varIsBlank
@@ -224,28 +213,32 @@ Namespace UI.Control
             End Set
         End Property
 
-        Private varJenisKapital As ControlCodeBase.enuJenisKapital
-        <Category("Text"),
-    Description("Isi akan diubah menjadi kapital semua")>
-        Public Property XOJenisKapital As ControlCodeBase.enuJenisKapital
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies how the component transforms its text value by applying the selected letter‑case rule")>
+        Private varLetterCase As ControlCodeBase.EnumLetterCase
+        Public Property XOLetterCase As ControlCodeBase.EnumLetterCase
             Get
-                Return varJenisKapital
+                Return varLetterCase
             End Get
-            Set(value As ControlCodeBase.enuJenisKapital)
-                varJenisKapital = value
+            Set(value As ControlCodeBase.EnumLetterCase)
+                varLetterCase = value
             End Set
         End Property
 
-        Private varRestriction As ControlCodeBase.enuRestriction
-        Public Property XORestriction As ControlCodeBase.enuRestriction
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Defines the input restriction rule that limits which characters or patterns are allowed in the component")>
+        Private varRestriction As ControlCodeBase.EnumRestriction
+        Public Property XORestriction As ControlCodeBase.EnumRestriction
             Get
                 Return varRestriction
             End Get
-            Set(value As ControlCodeBase.enuRestriction)
+            Set(value As ControlCodeBase.EnumRestriction)
                 varRestriction = value
             End Set
         End Property
 
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Indicates whether the component behaves as a search box, enabling instant filtering or lookup as the user types")>
         Private varIsSearchBox As Boolean
         Public Property XOIsSearchBox As Boolean
             Get
@@ -256,6 +249,8 @@ Namespace UI.Control
             End Set
         End Property
 
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the placeholder or prompt text displayed when the search box is empty")>
         Private varSearchBoxText As String
         Public Property XOSearchBoxText As String
             Get
@@ -277,28 +272,28 @@ Namespace UI.Control
             End If
 
             varSqlSafeText = varSqlSafeText.Replace("select ", "").Replace("'", "").Replace(";", "").Replace("--", "").Replace("drop table ", "").Replace("update ", "").Replace("insert into ", "").Replace("--", "").Replace("xp_", "").Trim
-            If XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA Then
+            If XOLetterCase = ControlCodeBase.EnumLetterCase.UPPERCASE Then
                 varSqlSafeText = varSqlSafeText.ToUpper(CultureInfo.CurrentCulture)
-            ElseIf XOJenisKapital = ControlCodeBase.enuJenisKapital.kecilsemua Then
+            ElseIf XOLetterCase = ControlCodeBase.EnumLetterCase.lowercase Then
                 varSqlSafeText = varSqlSafeText.ToLower(CultureInfo.CurrentCulture)
             End If
 
             Return varSqlSafeText
         End Function
 
-        Private Sub CheckRestriction(valenurestriction As ControlCodeBase.enuRestriction)
+        Private Sub CheckRestriction(valenurestriction As ControlCodeBase.enumRestriction)
             Select Case valenurestriction
-                Case ControlCodeBase.enuRestriction.None
+                Case ControlCodeBase.enumRestriction.None
                 'Do nothing
-                Case ControlCodeBase.enuRestriction.OnlyNumber
+                Case ControlCodeBase.enumRestriction.OnlyNumber
                 'Do Only Number
-                Case ControlCodeBase.enuRestriction.OnlyText
+                Case ControlCodeBase.enumRestriction.OnlyText
                 'Do Only Text
-                Case ControlCodeBase.enuRestriction.TextAndNumber
+                Case ControlCodeBase.enumRestriction.TextAndNumber
                 'Do Text and Number
-                Case ControlCodeBase.enuRestriction.TextAndSymbol
+                Case ControlCodeBase.enumRestriction.TextAndSymbol
                 'Do Text and Symbol
-                Case ControlCodeBase.enuRestriction.Email
+                Case ControlCodeBase.enumRestriction.Email
                     'Do Email
             End Select
         End Sub
@@ -412,31 +407,31 @@ Namespace UI.Control
             Dim restriction = Me.XORestriction
 
             Select Case restriction
-                Case ControlCodeBase.enuRestriction.None
+                Case ControlCodeBase.enumRestriction.None
                 ' Allow all input
 
-                Case ControlCodeBase.enuRestriction.OnlyNumber
+                Case ControlCodeBase.enumRestriction.OnlyNumber
                     If Not Char.IsDigit(ch) Then
                         e.Handled = True
                     End If
 
-                Case ControlCodeBase.enuRestriction.OnlyText
+                Case ControlCodeBase.enumRestriction.OnlyText
                     If Not Char.IsLetter(ch) Then
                         e.Handled = True
                     End If
 
-                Case ControlCodeBase.enuRestriction.TextAndNumber
+                Case ControlCodeBase.enumRestriction.TextAndNumber
                     If Not Char.IsLetterOrDigit(ch) Then
                         e.Handled = True
                     End If
 
-                Case ControlCodeBase.enuRestriction.TextAndSymbol
+                Case ControlCodeBase.enumRestriction.TextAndSymbol
                     ' Allow letters, digits, punctuation, symbols
                     If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch)) Then
                         e.Handled = True
                     End If
 
-                Case ControlCodeBase.enuRestriction.Email
+                Case ControlCodeBase.enumRestriction.Email
                     ' Use a single static string for allowed characters to avoid reallocating on each keypress
                     Static allowedChars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._-"
                     If Not allowedChars.Contains(ch, StringComparison.Ordinal) Then
@@ -445,21 +440,20 @@ Namespace UI.Control
             End Select
         End Sub
 
-
         Private varFlagAutoSelect As Boolean
 
         <SupportedOSPlatform("windows")>
-        Private Sub txt_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
+        Private Sub Txt_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
             Call FontSearchBox(True)
 
-            If Me.XOPilihSemuaSaatFokus AndAlso (MouseButtons = system.Windows.Forms.MouseButtons.None) Then
+            If Me.XOSelectOnFocus AndAlso (MouseButtons = System.Windows.Forms.MouseButtons.None) Then
                 Me.SelectAll()
                 varFlagAutoSelect = True
             End If
-            If Me.XOHightlightSaatFokus Then
-                MyBase.BackColor = Me.XOHightlightSaatFokusWarna
+            If Me.XOHighlightOnFocus Then
+                MyBase.BackColor = Me.XOHighlightColor
             End If
-            If Me.XOPilihSemuaSaatFokus Then
+            If Me.XOSelectOnFocus Then
                 Me.Select(0, Me.Text.Length)
             End If
             'If Not HasKeyboard() Then
@@ -475,68 +469,68 @@ Namespace UI.Control
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub txt_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
-            If (e.Control AndAlso e.KeyCode = system.Windows.Forms.Keys.A) Then
+        Private Sub Txt_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+            If (e.Control AndAlso e.KeyCode = System.Windows.Forms.Keys.A) Then
                 Me.SelectAll()
             End If
         End Sub
 
-        Private Sub txt_Leave(sender As Object, e As System.EventArgs) Handles Me.Leave
+        Private Sub Txt_Leave(sender As Object, e As System.EventArgs) Handles Me.Leave
             varFlagAutoSelect = False
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub txt_LostFocus(sender As Object, e As System.EventArgs) Handles Me.LostFocus
+        Private Sub Txt_LostFocus(sender As Object, e As System.EventArgs) Handles Me.LostFocus
             If Me.XOAutoTrim Then
                 Me.Text = Me.Text.Trim()
             End If
 
             If Not (Me.ReadOnly) Then
-                If (Me.XOHarusDiisi) AndAlso Me.Text.Trim = String.Empty Then
-                    MyBase.BackColor = Me.XOHarusDiisiWarnaLatar
+                If (Me.XOIsMandatory) AndAlso Me.Text.Trim = String.Empty Then
+                    MyBase.BackColor = Me.XOMandatoryBgColor
                 Else
-                    MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
+                    MyBase.BackColor = Me.XOMandatoryBgColorDefault
                 End If
             End If
 
             Call FontSearchBox(False)
 
-            If (Me.XOPwdStrengthCalculate) Then
+            If (Me.XOPasswordStrengthCalc) Then
                 Call InitPasswordStrength(MyBase.Text)
                 Call AnalyzePassword()
-                Me.XOPwdStrengthScore = OutputResultScore()
-                Me.XOPwdStrengthText = OutputResultText()
+                Me.XOPasswordStrengthScore = OutputResultScore()
+                Me.XOPasswordStrengthText = OutputResultText()
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub txt_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
-            If Me.XOHightlightSaatFokus AndAlso Not (Me.ReadOnly) Then
-                MyBase.BackColor = Me.XOHightlightSaatFokusWarna
+        Private Sub Txt_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
+            If Me.XOHighlightOnFocus AndAlso Not (Me.ReadOnly) Then
+                MyBase.BackColor = Me.XOHighlightColor
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub txt_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
-            If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Not (Me.ReadOnly) Then
-                MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
+        Private Sub Txt_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
+            If Me.XOHighlightOnFocus AndAlso Not Me.Focused AndAlso Not (Me.ReadOnly) Then
+                MyBase.BackColor = Me.XOMandatoryBgColorDefault
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub txt_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseUp
-            If Me.XOPilihSemuaSaatFokus AndAlso (Not varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
+        Private Sub Txt_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseUp
+            If Me.XOSelectOnFocus AndAlso (Not varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
                 varFlagAutoSelect = True
                 Me.SelectAll()
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub txt_TextChanged(sender As Object, e As System.EventArgs) Handles Me.TextChanged
-            XOSQLText = SQLSafeText(Me)
+        Private Sub Txt_TextChanged(sender As Object, e As System.EventArgs) Handles Me.TextChanged
+            XOSqlText = SqlSafeText(Me)
 
             If Me.Text = String.Empty Then
-                XOSQLText = String.Empty
+                XOSqlText = String.Empty
                 XOIsBlank = True
             Else
                 XOIsBlank = False
@@ -566,8 +560,8 @@ Namespace UI.Control
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub txt_Validating(sender As Object, e As CancelEventArgs) Handles Me.Validating
-            If (Me.XOHarusDiisi) AndAlso Me.Text.Trim = String.Empty Then
+        Private Sub Txt_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.Validating
+            If (Me.XOIsMandatory) AndAlso Me.Text.Trim = String.Empty Then
                 Me.XOIsBlank = True
             Else
                 Me.XOIsBlank = False

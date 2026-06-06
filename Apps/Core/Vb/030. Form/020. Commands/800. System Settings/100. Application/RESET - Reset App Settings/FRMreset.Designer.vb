@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMreset
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -26,8 +26,8 @@
             components = New ComponentModel.Container()
             LblNotification = New CMCv.UI.Control.lbl(components)
             Txt_Confirmation = New CMCv.UI.Control.txt(components)
-            BtnClose = New CMCv.UI.Control.btn(components)
-            BtnRun = New CMCv.UI.Control.btn(components)
+            BtnClose = New CMCv.UI.Control.Btn(components)
+            BtnRun = New CMCv.UI.Control.Btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -90,24 +90,24 @@
             Txt_Confirmation.Tag = "txt"
             Txt_Confirmation.TextAlign = HorizontalAlignment.Center
             Txt_Confirmation.XOAutoTrim = False
-            Txt_Confirmation.XOHarusDiisi = True
-            Txt_Confirmation.XOHarusDiisiWarnaLatar = Color.LightPink
-            Txt_Confirmation.XOHarusDiisiWarnaLatarDefault = Color.White
-            Txt_Confirmation.XOHightlightSaatFokus = True
-            Txt_Confirmation.XOHightlightSaatFokusWarna = Color.LightYellow
+            Txt_Confirmation.XOIsMandatory = True
+            Txt_Confirmation.XOMandatoryBgColor = Color.LightPink
+            Txt_Confirmation.XOMandatoryBgColorDefault = Color.White
+            Txt_Confirmation.XOHighlightOnFocus = True
+            Txt_Confirmation.XOHighlightColor = Color.LightYellow
             Txt_Confirmation.XOIsBlank = False
             Txt_Confirmation.XOIsSearchBox = False
-            Txt_Confirmation.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            Txt_Confirmation.XOPilihSemuaSaatFokus = False
-            Txt_Confirmation.XOPwdLengthMin = 8
-            Txt_Confirmation.XOPwdStrengthCalculate = False
-            Txt_Confirmation.XOPwdStrengthScore = 0
-            Txt_Confirmation.XOPwdStrengthText = Nothing
-            Txt_Confirmation.XORestriction = ControlCodeBase.enuRestriction.None
+            Txt_Confirmation.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            Txt_Confirmation.XOSelectOnFocus = False
+            Txt_Confirmation.XOPasswordLengthMin = 8
+            Txt_Confirmation.XOPasswordStrengthCalc = False
+            Txt_Confirmation.XOPasswordStrengthScore = 0
+            Txt_Confirmation.XOPasswordStrengthText = Nothing
+            Txt_Confirmation.XORestriction = ControlCodeBase.enumRestriction.None
             Txt_Confirmation.XOSearchBoxText = ""
-            Txt_Confirmation.XOSQLText = ""
-            Txt_Confirmation.XOTanpaSpasi = False
-            Txt_Confirmation.XOValidasiField = Nothing
+            Txt_Confirmation.XOSqlText = ""
+            Txt_Confirmation.XOIsReplaceEmptyString = False
+            Txt_Confirmation.XOMandatoryMessage = Nothing
             ' 
             ' BtnClose
             ' 
@@ -127,10 +127,10 @@
             BtnClose.TabIndex = 2
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnClose.XOTampilkanFocusBorder = False
-            BtnClose.XOValidasiSemuaInput = False
-            BtnClose.XOValidasiSemuaInputTag = Nothing
+            BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClose.XOShowBorderOnFocus = False
+            BtnClose.XOValidateAllInput = False
+            BtnClose.XOValidateAllInputTag = Nothing
             ' 
             ' BtnRun
             ' 
@@ -150,10 +150,10 @@
             BtnRun.TabIndex = 1
             BtnRun.Text = "&Run"
             BtnRun.UseVisualStyleBackColor = False
-            BtnRun.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnRun.XOTampilkanFocusBorder = False
-            BtnRun.XOValidasiSemuaInput = False
-            BtnRun.XOValidasiSemuaInputTag = Nothing
+            BtnRun.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnRun.XOShowBorderOnFocus = False
+            BtnRun.XOValidateAllInput = False
+            BtnRun.XOValidateAllInputTag = Nothing
             ' 
             ' FRMreset
             ' 
@@ -181,7 +181,7 @@
 
         Friend WithEvents LblNotification As CMCv.UI.Control.lbl
         Friend WithEvents Txt_Confirmation As CMCv.UI.Control.txt
-        Friend WithEvents BtnClose As CMCv.UI.Control.btn
-        Friend WithEvents BtnRun As CMCv.UI.Control.btn
+        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
+        Friend WithEvents BtnRun As CMCv.UI.Control.Btn
     End Class
 End Namespace

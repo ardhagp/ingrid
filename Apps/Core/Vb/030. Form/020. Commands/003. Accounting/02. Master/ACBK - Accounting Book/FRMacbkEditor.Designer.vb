@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMacbkEditor
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,7 +21,7 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Cbo1 = New CMCv.UI.Control.cbo(components)
+            Cbo1 = New CMCv.UI.Control.Cbo(components)
             Txt1 = New CMCv.UI.Control.txt(components)
             Txt2 = New CMCv.UI.Control.txt(components)
             Txt3 = New CMCv.UI.Control.txt(components)
@@ -29,9 +29,9 @@
             Lbl2 = New CMCv.UI.Control.lbl(components)
             Lbl3 = New CMCv.UI.Control.lbl(components)
             Lbl4 = New CMCv.UI.Control.lbl(components)
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
-            ChkAddNew = New CMCv.UI.Control.chk(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -103,24 +103,24 @@
             Txt1.Tag = "txt"
             Txt1.TextAlign = HorizontalAlignment.Center
             Txt1.XOAutoTrim = True
-            Txt1.XOHarusDiisi = True
-            Txt1.XOHarusDiisiWarnaLatar = Color.LightPink
-            Txt1.XOHarusDiisiWarnaLatarDefault = Color.White
-            Txt1.XOHightlightSaatFokus = True
-            Txt1.XOHightlightSaatFokusWarna = Color.LightYellow
+            Txt1.XOIsMandatory = True
+            Txt1.XOMandatoryBgColor = Color.LightPink
+            Txt1.XOMandatoryBgColorDefault = Color.White
+            Txt1.XOHighlightOnFocus = True
+            Txt1.XOHighlightColor = Color.LightYellow
             Txt1.XOIsBlank = True
             Txt1.XOIsSearchBox = False
-            Txt1.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-            Txt1.XOPilihSemuaSaatFokus = False
-            Txt1.XOPwdLengthMin = 8
-            Txt1.XOPwdStrengthCalculate = False
-            Txt1.XOPwdStrengthScore = 0
-            Txt1.XOPwdStrengthText = Nothing
-            Txt1.XORestriction = ControlCodeBase.enuRestriction.None
+            Txt1.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
+            Txt1.XOSelectOnFocus = False
+            Txt1.XOPasswordLengthMin = 8
+            Txt1.XOPasswordStrengthCalc = False
+            Txt1.XOPasswordStrengthScore = 0
+            Txt1.XOPasswordStrengthText = Nothing
+            Txt1.XORestriction = ControlCodeBase.enumRestriction.None
             Txt1.XOSearchBoxText = "Type then press Enter"
-            Txt1.XOSQLText = ""
-            Txt1.XOTanpaSpasi = False
-            Txt1.XOValidasiField = Nothing
+            Txt1.XOSqlText = ""
+            Txt1.XOIsReplaceEmptyString = False
+            Txt1.XOMandatoryMessage = Nothing
             ' 
             ' Txt2
             ' 
@@ -133,24 +133,24 @@
             Txt2.TabIndex = 2
             Txt2.Tag = "txt"
             Txt2.XOAutoTrim = True
-            Txt2.XOHarusDiisi = True
-            Txt2.XOHarusDiisiWarnaLatar = Color.LightPink
-            Txt2.XOHarusDiisiWarnaLatarDefault = Color.White
-            Txt2.XOHightlightSaatFokus = True
-            Txt2.XOHightlightSaatFokusWarna = Color.LightYellow
+            Txt2.XOIsMandatory = True
+            Txt2.XOMandatoryBgColor = Color.LightPink
+            Txt2.XOMandatoryBgColorDefault = Color.White
+            Txt2.XOHighlightOnFocus = True
+            Txt2.XOHighlightColor = Color.LightYellow
             Txt2.XOIsBlank = True
             Txt2.XOIsSearchBox = False
-            Txt2.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-            Txt2.XOPilihSemuaSaatFokus = False
-            Txt2.XOPwdLengthMin = 8
-            Txt2.XOPwdStrengthCalculate = False
-            Txt2.XOPwdStrengthScore = 0
-            Txt2.XOPwdStrengthText = Nothing
-            Txt2.XORestriction = ControlCodeBase.enuRestriction.None
+            Txt2.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
+            Txt2.XOSelectOnFocus = False
+            Txt2.XOPasswordLengthMin = 8
+            Txt2.XOPasswordStrengthCalc = False
+            Txt2.XOPasswordStrengthScore = 0
+            Txt2.XOPasswordStrengthText = Nothing
+            Txt2.XORestriction = ControlCodeBase.enumRestriction.None
             Txt2.XOSearchBoxText = "Type then press Enter"
-            Txt2.XOSQLText = ""
-            Txt2.XOTanpaSpasi = False
-            Txt2.XOValidasiField = Nothing
+            Txt2.XOSqlText = ""
+            Txt2.XOIsReplaceEmptyString = False
+            Txt2.XOMandatoryMessage = Nothing
             ' 
             ' Txt3
             ' 
@@ -164,24 +164,24 @@
             Txt3.TabIndex = 3
             Txt3.Tag = "txt"
             Txt3.XOAutoTrim = True
-            Txt3.XOHarusDiisi = False
-            Txt3.XOHarusDiisiWarnaLatar = Color.LightPink
-            Txt3.XOHarusDiisiWarnaLatarDefault = Color.White
-            Txt3.XOHightlightSaatFokus = True
-            Txt3.XOHightlightSaatFokusWarna = Color.LightYellow
+            Txt3.XOIsMandatory = False
+            Txt3.XOMandatoryBgColor = Color.LightPink
+            Txt3.XOMandatoryBgColorDefault = Color.White
+            Txt3.XOHighlightOnFocus = True
+            Txt3.XOHighlightColor = Color.LightYellow
             Txt3.XOIsBlank = True
             Txt3.XOIsSearchBox = False
-            Txt3.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            Txt3.XOPilihSemuaSaatFokus = False
-            Txt3.XOPwdLengthMin = 8
-            Txt3.XOPwdStrengthCalculate = False
-            Txt3.XOPwdStrengthScore = 0
-            Txt3.XOPwdStrengthText = Nothing
-            Txt3.XORestriction = ControlCodeBase.enuRestriction.None
+            Txt3.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            Txt3.XOSelectOnFocus = False
+            Txt3.XOPasswordLengthMin = 8
+            Txt3.XOPasswordStrengthCalc = False
+            Txt3.XOPasswordStrengthScore = 0
+            Txt3.XOPasswordStrengthText = Nothing
+            Txt3.XORestriction = ControlCodeBase.enumRestriction.None
             Txt3.XOSearchBoxText = "Type then press Enter"
-            Txt3.XOSQLText = ""
-            Txt3.XOTanpaSpasi = False
-            Txt3.XOValidasiField = Nothing
+            Txt3.XOSqlText = ""
+            Txt3.XOIsReplaceEmptyString = False
+            Txt3.XOMandatoryMessage = Nothing
             ' 
             ' Lbl1
             ' 
@@ -249,10 +249,10 @@
             BtnSave.TabIndex = 4
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -272,10 +272,10 @@
             BtnCancel.TabIndex = 5
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' ChkAddNew
             ' 
@@ -311,17 +311,17 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents Cbo1 As CMCv.UI.Control.cbo
+        Friend WithEvents Cbo1 As CMCv.UI.Control.Cbo
         Friend WithEvents Txt1 As CMCv.UI.Control.txt
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
         Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
         Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
         Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
         Friend WithEvents Txt3 As CMCv.UI.Control.txt
         Friend WithEvents Txt2 As CMCv.UI.Control.txt
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
 
     End Class
 End Namespace

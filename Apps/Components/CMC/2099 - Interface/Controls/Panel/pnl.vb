@@ -1,7 +1,10 @@
 ﻿Imports System.Runtime.Versioning
 
 Namespace UI.Control
-    Public Class pnl
+    ''' <summary>
+    ''' Custom panel
+    ''' </summary>
+    Public Class Pnl
         Inherits System.Windows.Forms.Panel
 
         <SupportedOSPlatform("windows")>

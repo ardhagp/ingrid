@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMeplsPosition
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -25,7 +25,7 @@
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Pnl1 = New CMCv.UI.Control.pnl(components)
-            BtnClear = New CMCv.UI.Control.btn(components)
+            BtnClear = New CMCv.UI.Control.Btn(components)
             Lbl1 = New CMCv.UI.Control.lbl(components)
             TxtFind = New CMCv.UI.Control.txt(components)
             DgnAddinPosition = New CMCv.UI.Control.dgn(components)
@@ -36,8 +36,8 @@
             departement_name = New DataGridViewTextBoxColumn()
             position_code = New DataGridViewTextBoxColumn()
             position_name = New DataGridViewTextBoxColumn()
-            BtnOk = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
+            BtnOk = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -101,10 +101,10 @@
             BtnClear.TabIndex = 6
             BtnClear.Text = "Clear"
             BtnClear.UseVisualStyleBackColor = False
-            BtnClear.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnClear.XOTampilkanFocusBorder = False
-            BtnClear.XOValidasiSemuaInput = False
-            BtnClear.XOValidasiSemuaInputTag = Nothing
+            BtnClear.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClear.XOShowBorderOnFocus = False
+            BtnClear.XOValidateAllInput = False
+            BtnClear.XOValidateAllInputTag = Nothing
             ' 
             ' Lbl1
             ' 
@@ -129,24 +129,24 @@
             TxtFind.TabIndex = 4
             TxtFind.Tag = "txt"
             TxtFind.XOAutoTrim = False
-            TxtFind.XOHarusDiisi = False
-            TxtFind.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtFind.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtFind.XOHightlightSaatFokus = False
-            TxtFind.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtFind.XOIsMandatory = False
+            TxtFind.XOMandatoryBgColor = Color.LightPink
+            TxtFind.XOMandatoryBgColorDefault = Color.White
+            TxtFind.XOHighlightOnFocus = False
+            TxtFind.XOHighlightColor = Color.LightYellow
             TxtFind.XOIsBlank = True
             TxtFind.XOIsSearchBox = False
-            TxtFind.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtFind.XOPilihSemuaSaatFokus = False
-            TxtFind.XOPwdLengthMin = 8
-            TxtFind.XOPwdStrengthCalculate = False
-            TxtFind.XOPwdStrengthScore = 0
-            TxtFind.XOPwdStrengthText = Nothing
-            TxtFind.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtFind.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtFind.XOSelectOnFocus = False
+            TxtFind.XOPasswordLengthMin = 8
+            TxtFind.XOPasswordStrengthCalc = False
+            TxtFind.XOPasswordStrengthScore = 0
+            TxtFind.XOPasswordStrengthText = Nothing
+            TxtFind.XORestriction = ControlCodeBase.enumRestriction.None
             TxtFind.XOSearchBoxText = "Type then press Enter"
-            TxtFind.XOSQLText = Nothing
-            TxtFind.XOTanpaSpasi = False
-            TxtFind.XOValidasiField = Nothing
+            TxtFind.XOSqlText = Nothing
+            TxtFind.XOIsReplaceEmptyString = False
+            TxtFind.XOMandatoryMessage = Nothing
             ' 
             ' DgnAddinPosition
             ' 
@@ -189,8 +189,8 @@
             DgnAddinPosition.Size = New Size(1095, 611)
             DgnAddinPosition.StandardTab = True
             DgnAddinPosition.TabIndex = 1005
-            DgnAddinPosition.XOGroupFirstRows = False
-            DgnAddinPosition.XOGunakanNomorBaris = True
+            DgnAddinPosition.XOIsGroupFirstRow = False
+            DgnAddinPosition.XOIsShowRowNumber = True
             ' 
             ' position_id
             ' 
@@ -287,10 +287,10 @@
             BtnOk.TabIndex = 1
             BtnOk.Text = "&Ok"
             BtnOk.UseVisualStyleBackColor = False
-            BtnOk.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnOk.XOTampilkanFocusBorder = False
-            BtnOk.XOValidasiSemuaInput = False
-            BtnOk.XOValidasiSemuaInputTag = Nothing
+            BtnOk.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnOk.XOShowBorderOnFocus = False
+            BtnOk.XOValidateAllInput = False
+            BtnOk.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -310,10 +310,10 @@
             BtnCancel.TabIndex = 2
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' FRMeplsPosition
             ' 
@@ -336,12 +336,12 @@
 
         End Sub
         Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
-        Friend WithEvents BtnClear As CMCv.UI.Control.btn
+        Friend WithEvents BtnClear As CMCv.UI.Control.Btn
         Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
         Friend WithEvents TxtFind As CMCv.UI.Control.txt
         Friend WithEvents DgnAddinPosition As CMCv.UI.Control.dgn
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
-        Friend WithEvents BtnOk As CMCv.UI.Control.btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
+        Friend WithEvents BtnOk As CMCv.UI.Control.Btn
         Friend WithEvents position_id As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
         Friend WithEvents company_name As DataGridViewTextBoxColumn

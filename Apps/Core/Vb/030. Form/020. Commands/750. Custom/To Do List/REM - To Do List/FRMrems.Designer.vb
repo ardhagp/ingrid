@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMrems
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -48,7 +48,7 @@
             o_todos_isreminder = New DataGridViewCheckBoxColumn()
             o_todos_iscomplete = New DataGridViewCheckBoxColumn()
             o_todos_ispublic = New DataGridViewCheckBoxColumn()
-            TbctlToDoList = New CMCv.UI.Control.tbctl(components)
+            TbctlToDoList = New CMCv.UI.Control.Tbx(components)
             tpOnProgress = New TabPage()
             tpFinished = New TabPage()
             DgnDone = New CMCv.UI.Control.dgn(components)
@@ -89,7 +89,7 @@
             v_todos_iscomplete = New DataGridViewCheckBoxColumn()
             v_todos_ispublic = New DataGridViewCheckBoxColumn()
             SpcContent = New CMCv.UI.Control.spc(components)
-            BtnViewAttachment = New CMCv.UI.Control.btn(components)
+            BtnViewAttachment = New CMCv.UI.Control.Btn(components)
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -122,7 +122,7 @@
             TxtFind.Margin = New Padding(7, 5, 7, 5)
             TxtFind.Text = "Type then press Enter"
             TxtFind.XOIsBlank = False
-            TxtFind.XOSQLText = ""
+            TxtFind.XOSqlText = ""
             ' 
             ' SLFPanel
             ' 
@@ -173,8 +173,8 @@
             DgnOnProgress.Size = New Size(1287, 707)
             DgnOnProgress.StandardTab = True
             DgnOnProgress.TabIndex = 802
-            DgnOnProgress.XOGroupFirstRows = False
-            DgnOnProgress.XOGunakanNomorBaris = False
+            DgnOnProgress.XOIsGroupFirstRow = False
+            DgnOnProgress.XOIsShowRowNumber = False
             ' 
             ' o_todos_id
             ' 
@@ -412,8 +412,8 @@
             DgnDone.Size = New Size(1847, 1217)
             DgnDone.StandardTab = True
             DgnDone.TabIndex = 803
-            DgnDone.XOGroupFirstRows = False
-            DgnDone.XOGunakanNomorBaris = False
+            DgnDone.XOIsGroupFirstRow = False
+            DgnDone.XOIsShowRowNumber = False
             ' 
             ' d_todos_id
             ' 
@@ -625,8 +625,8 @@
             DgnVerified.Size = New Size(1847, 1217)
             DgnVerified.StandardTab = True
             DgnVerified.TabIndex = 803
-            DgnVerified.XOGroupFirstRows = False
-            DgnVerified.XOGunakanNomorBaris = False
+            DgnVerified.XOIsGroupFirstRow = False
+            DgnVerified.XOIsShowRowNumber = False
             ' 
             ' v_todos_id
             ' 
@@ -822,10 +822,10 @@
             BtnViewAttachment.TabIndex = 0
             BtnViewAttachment.Text = "View Attachment"
             BtnViewAttachment.UseVisualStyleBackColor = False
-            BtnViewAttachment.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnViewAttachment.XOTampilkanFocusBorder = False
-            BtnViewAttachment.XOValidasiSemuaInput = False
-            BtnViewAttachment.XOValidasiSemuaInputTag = Nothing
+            BtnViewAttachment.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnViewAttachment.XOShowBorderOnFocus = False
+            BtnViewAttachment.XOValidateAllInput = False
+            BtnViewAttachment.XOValidateAllInputTag = Nothing
             ' 
             ' FRMrems
             ' 
@@ -857,12 +857,12 @@
         End Sub
 
         Friend WithEvents DgnOnProgress As CMCv.UI.Control.dgn
-        Friend WithEvents TbctlToDoList As CMCv.UI.Control.tbctl
+        Friend WithEvents TbctlToDoList As CMCv.UI.Control.Tbx
         Friend WithEvents tpOnProgress As TabPage
         Friend WithEvents tpFinished As TabPage
         Friend WithEvents SpcContent As CMCv.UI.Control.spc
         Friend WithEvents tpVerified As TabPage
-        Friend WithEvents BtnViewAttachment As CMCv.UI.Control.btn
+        Friend WithEvents BtnViewAttachment As CMCv.UI.Control.Btn
         Friend WithEvents DgnDone As CMCv.UI.Control.dgn
         Friend WithEvents DgnVerified As CMCv.UI.Control.dgn
         Friend WithEvents o_todos_id As DataGridViewTextBoxColumn

@@ -25,9 +25,9 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ULbl))
-            UHead = New CMCv.UI.Control.pctbx(components)
-            UText = New CMCv.UI.Control.lbl(components)
-            tmr_ = New System.Windows.Forms.Timer(components)
+            UHead = New Pbx(components)
+            UText = New lbl(components)
+            Tmr_ = New System.Windows.Forms.Timer(components)
             CType(UHead, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
@@ -40,47 +40,47 @@
             UHead.Location = New System.Drawing.Point(0, 0)
             UHead.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             UHead.Name = "UHead"
-            UHead.Size = New System.Drawing.Size(17, 56)
+            UHead.Size = New System.Drawing.Size(17, 39)
             UHead.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             UHead.TabIndex = 0
             UHead.TabStop = False
-            UHead.XOTampilkanBorder = False
-            UHead.XOWarnaBorder = Drawing.Color.DodgerBlue
+            UHead.XOBorderColor = Drawing.Color.DodgerBlue
+            UHead.XOShowBorder = False
             ' 
             ' UText
             ' 
             UText.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             UText.BackColor = Drawing.Color.Transparent
-            UText.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+            UText.Font = New System.Drawing.Font("Segoe UI", 12F)
             UText.Location = New System.Drawing.Point(17, 0)
             UText.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
             UText.Name = "UText"
-            UText.Size = New System.Drawing.Size(228, 56)
+            UText.Size = New System.Drawing.Size(228, 39)
             UText.TabIndex = 1
             UText.Text = "Text"
             UText.TextAlign = Drawing.ContentAlignment.MiddleLeft
             UText.XOCustomElipsis = False
             ' 
-            ' tmr_
+            ' Tmr_
             ' 
             ' 
             ' ULbl
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
             BackColor = Drawing.Color.WhiteSmoke
             Controls.Add(UHead)
             Controls.Add(UText)
             Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             Name = "ULbl"
-            Size = New System.Drawing.Size(250, 56)
+            Size = New System.Drawing.Size(250, 39)
             CType(UHead, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
 
         End Sub
 
-        Friend WithEvents UHead As CMCv.UI.Control.pctbx
+        Friend WithEvents UHead As CMCv.UI.Control.Pbx
         Friend WithEvents UText As CMCv.UI.Control.lbl
-        Friend WithEvents tmr_ As System.Windows.Forms.Timer
+        Friend WithEvents Tmr_ As System.Windows.Forms.Timer
     End Class
 End Namespace

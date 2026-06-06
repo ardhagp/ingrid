@@ -4,7 +4,10 @@ Imports System.Windows.Forms
 Namespace UI.View
     <SupportedOSPlatform("windows")>
     Public Class MenuStrip
-        Private Com_menu As New CMCv.UI.Control.mnu
+        Implements IDisposable
+        Private disposedValue As Boolean
+
+        Private ReadOnly Com_menu As New CMCv.UI.Control.mnu
         Private varItem As ToolStripMenuItem()
         Private varItemSubmenu As ToolStripMenuItem()
 
@@ -157,7 +160,7 @@ Namespace UI.View
                         'Insert "Report"
                         varItemSubmenu(12) = New ToolStripMenuItem() With {.Name = "EventReportsShow", .Text = "Generate...", .ShortcutKeys = CType(Keys.Control + Keys.L, Keys), .ShortcutKeyDisplayString = "Ctrl+L"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(12))
-                        AddHandler varItemSubmenu(12).Click, AddressOf EventReportsView_Clicked
+                        AddHandler varItemSubmenu(12).Click, AddressOf EventReportsViewClicked
                 End Select
             Next
         End Sub
@@ -257,7 +260,7 @@ Namespace UI.View
             End If
         End Sub
 
-        Public Sub EventReportsView_Clicked(sender As Object, e As EventArgs)
+        Public Sub EventReportsViewClicked(sender As Object, e As EventArgs)
             Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
             If item IsNot Nothing Then
                 RaiseEvent EventReportShow()
@@ -378,13 +381,52 @@ Namespace UI.View
         Public Sub ShowMenuFile(Optional value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
             varItem(3).Visible = CType(value, Boolean)
         End Sub
-#End Region
 
+#End Region
+        Protected Overridable Sub Dispose(disposing As Boolean)
+            If Not disposedValue Then
+                If disposing Then
+                    ' dispose managed state (managed objects)
+                    Try
+                        Com_menu?.Dispose()
+                    Catch
+                    End Try
+
+                    If varItemSubmenu IsNot Nothing Then
+                        For Each it In varItemSubmenu
+                            Try
+                                CType(it, ToolStripMenuItem)?.Dispose()
+                            Catch
+                            End Try
+                        Next
+                    End If
+
+                    If varItem IsNot Nothing Then
+                        For Each it In varItem
+                            Try
+                                CType(it, ToolStripMenuItem)?.Dispose()
+                            Catch
+                            End Try
+                        Next
+                    End If
+                End If
+
+                disposedValue = True
+            End If
+        End Sub
+
+        Public Sub Dispose() Implements IDisposable.Dispose
+            Dispose(True)
+            GC.SuppressFinalize(Me)
+        End Sub
 
     End Class
 
     <SupportedOSPlatform("windows")>
     Public Class ContextMenu
+        Implements IDisposable
+        Private disposedValue As Boolean
+
         Private varContextMenu As New ContextMenuStrip
         Private varItem As ToolStripMenuItem()
 
@@ -393,9 +435,6 @@ Namespace UI.View
 #End Region
         <SupportedOSPlatform("windows")>
         Public Sub LoadInGrid(grid As CMCv.UI.Control.dgn)
-
-            'Dim varItemSubmenu() As ToolStripMenuItem
-
             varContextMenu = New ContextMenuStrip
             ReDim varItem(1)
 
@@ -405,8 +444,6 @@ Namespace UI.View
             varContextMenu.Items.Add(varItem(0))
             AddHandler varItem(0).Click, AddressOf ContextCopy_Clicked
             grid.ContextMenuStrip = varContextMenu
-
-
         End Sub
 
 #Region "Context Menu Events"
@@ -419,5 +456,30 @@ Namespace UI.View
         End Sub
 #End Region
 
+        Protected Overridable Sub Dispose(disposing As Boolean)
+            If Not disposedValue Then
+                If disposing Then
+                    Try
+                        If varItem IsNot Nothing Then
+                            For Each it In varItem
+                                Try
+                                    CType(it, ToolStripMenuItem)?.Dispose()
+                                Catch
+                                End Try
+                            Next
+                        End If
+                        varContextMenu?.Dispose()
+                    Catch
+                    End Try
+                End If
+
+                disposedValue = True
+            End If
+        End Sub
+
+        Public Sub Dispose() Implements IDisposable.Dispose
+            Dispose(True)
+            GC.SuppressFinalize(Me)
+        End Sub
     End Class
 End Namespace

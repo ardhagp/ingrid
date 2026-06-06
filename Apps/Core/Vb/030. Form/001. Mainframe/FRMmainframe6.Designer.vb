@@ -139,8 +139,8 @@
             BtnExecute = New Syncfusion.Windows.Forms.ButtonAdv()
             Txt_shortcut = New CMCv.UI.Control.txt(components)
             PnlProfile = New CMCv.UI.Control.pnl(components)
-            PctProfile = New CMCv.UI.Control.pctbx(components)
-            PctbxFrame = New CMCv.UI.Control.pctbx(components)
+            PctProfile = New CMCv.UI.Control.Pbx(components)
+            PctbxFrame = New CMCv.UI.Control.Pbx(components)
             LblPosition = New CMCv.UI.Control.lbl(components)
             LblEmployeeName = New CMCv.UI.Control.lbl(components)
             LblEmpNumber = New CMCv.UI.Control.lbl(components)
@@ -156,7 +156,6 @@
             Tmr_runningtext = New Timer(components)
             TxtRunning = New CMCv.UI.Control.txt(components)
             spl_ = New Splitter()
-            Tmdi_ = New Syncfusion.Windows.Forms.Tools.TabbedGroupedMDIManager()
             Ms_mainframe.SuspendLayout()
             pnl_mainframe_left.SuspendLayout()
             PnlStorage.SuspendLayout()
@@ -172,7 +171,7 @@
             ' Ms_mainframe
             ' 
             Ms_mainframe.BackColor = Color.White
-            Ms_mainframe.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            Ms_mainframe.Font = New Font("Segoe UI", 12F)
             Ms_mainframe.ImageScalingSize = New Size(24, 24)
             Ms_mainframe.Items.AddRange(New ToolStripItem() {APPSYSTEM, WORKSPACE, HELP, USERMENU, SUPPORT})
             Ms_mainframe.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow
@@ -349,7 +348,7 @@
             ' 
             ' BuymeacoffeToolStripMenuItem
             ' 
-            BuymeacoffeToolStripMenuItem.Font = New Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point)
+            BuymeacoffeToolStripMenuItem.Font = New Font("Segoe UI", 12F, FontStyle.Underline)
             BuymeacoffeToolStripMenuItem.ForeColor = Color.Blue
             BuymeacoffeToolStripMenuItem.Name = "BuymeacoffeToolStripMenuItem"
             BuymeacoffeToolStripMenuItem.Size = New Size(306, 40)
@@ -414,7 +413,7 @@
             ' 
             SUPPORT.Alignment = ToolStripItemAlignment.Right
             SUPPORT.DisplayStyle = ToolStripItemDisplayStyle.Text
-            SUPPORT.Font = New Font("Segoe UI", 9.75F, FontStyle.Underline, GraphicsUnit.Point)
+            SUPPORT.Font = New Font("Segoe UI", 9.75F, FontStyle.Underline)
             SUPPORT.ForeColor = Color.Blue
             SUPPORT.Name = "SUPPORT"
             SUPPORT.Overflow = ToolStripItemOverflow.AsNeeded
@@ -439,7 +438,7 @@
             ' 
             Tv_mainframe.BackColor = Color.LightYellow
             Tv_mainframe.Dock = DockStyle.Fill
-            Tv_mainframe.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+            Tv_mainframe.Font = New Font("Segoe UI", 11.25F)
             Tv_mainframe.HideSelection = False
             Tv_mainframe.ImageIndex = 0
             Tv_mainframe.ImageList = Imglst_mainframe
@@ -835,7 +834,7 @@
             ' 
             ' lblFile
             ' 
-            lblFile.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            lblFile.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
             lblFile.ForeColor = Color.White
             lblFile.Location = New Point(4, 163)
             lblFile.Margin = New Padding(4, 0, 4, 0)
@@ -847,7 +846,7 @@
             ' 
             ' lblData
             ' 
-            lblData.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            lblData.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
             lblData.ForeColor = Color.White
             lblData.Location = New Point(4, 70)
             lblData.Margin = New Padding(4, 0, 4, 0)
@@ -860,7 +859,7 @@
             ' lblFileStorage
             ' 
             lblFileStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            lblFileStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            lblFileStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
             lblFileStorage.ForeColor = Color.White
             lblFileStorage.Location = New Point(99, 163)
             lblFileStorage.Margin = New Padding(4, 0, 4, 0)
@@ -873,7 +872,7 @@
             ' lblDataStorage
             ' 
             lblDataStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            lblDataStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            lblDataStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
             lblDataStorage.ForeColor = Color.White
             lblDataStorage.Location = New Point(101, 70)
             lblDataStorage.Margin = New Padding(4, 0, 4, 0)
@@ -887,7 +886,7 @@
             ' 
             lblStorage.BackColor = Color.GreenYellow
             lblStorage.Dock = DockStyle.Top
-            lblStorage.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point)
+            lblStorage.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold)
             lblStorage.Location = New Point(0, 0)
             lblStorage.Margin = New Padding(4, 0, 4, 0)
             lblStorage.Name = "lblStorage"
@@ -932,7 +931,7 @@
             Txt_shortcut.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
             Txt_shortcut.AutoCompleteMode = AutoCompleteMode.Suggest
             Txt_shortcut.AutoCompleteSource = AutoCompleteSource.CustomSource
-            Txt_shortcut.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            Txt_shortcut.Font = New Font("Segoe UI", 12F)
             Txt_shortcut.Location = New Point(4, 17)
             Txt_shortcut.Margin = New Padding(4, 5, 4, 5)
             Txt_shortcut.MaxLength = 255
@@ -941,24 +940,24 @@
             Txt_shortcut.TabIndex = 0
             Txt_shortcut.Tag = "txt"
             Txt_shortcut.XOAutoTrim = False
-            Txt_shortcut.XOHarusDiisi = False
-            Txt_shortcut.XOHarusDiisiWarnaLatar = Color.LightPink
-            Txt_shortcut.XOHarusDiisiWarnaLatarDefault = Color.White
-            Txt_shortcut.XOHightlightSaatFokus = False
-            Txt_shortcut.XOHightlightSaatFokusWarna = Color.LightYellow
+            Txt_shortcut.XOIsMandatory = False
+            Txt_shortcut.XOMandatoryBgColor = Color.LightPink
+            Txt_shortcut.XOMandatoryBgColorDefault = Color.White
+            Txt_shortcut.XOHighlightOnFocus = False
+            Txt_shortcut.XOHighlightColor = Color.LightYellow
             Txt_shortcut.XOIsBlank = True
             Txt_shortcut.XOIsSearchBox = False
-            Txt_shortcut.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            Txt_shortcut.XOPilihSemuaSaatFokus = False
-            Txt_shortcut.XOPwdLengthMin = 8
-            Txt_shortcut.XOPwdStrengthCalculate = False
-            Txt_shortcut.XOPwdStrengthScore = 0
-            Txt_shortcut.XOPwdStrengthText = Nothing
-            Txt_shortcut.XORestriction = ControlCodeBase.enuRestriction.None
+            Txt_shortcut.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            Txt_shortcut.XOSelectOnFocus = False
+            Txt_shortcut.XOPasswordLengthMin = 8
+            Txt_shortcut.XOPasswordStrengthCalc = False
+            Txt_shortcut.XOPasswordStrengthScore = 0
+            Txt_shortcut.XOPasswordStrengthText = Nothing
+            Txt_shortcut.XORestriction = ControlCodeBase.enumRestriction.None
             Txt_shortcut.XOSearchBoxText = "Command Module"
-            Txt_shortcut.XOSQLText = Nothing
-            Txt_shortcut.XOTanpaSpasi = False
-            Txt_shortcut.XOValidasiField = Nothing
+            Txt_shortcut.XOSqlText = Nothing
+            Txt_shortcut.XOIsReplaceEmptyString = False
+            Txt_shortcut.XOMandatoryMessage = Nothing
             ' 
             ' PnlProfile
             ' 
@@ -991,8 +990,8 @@
             PctProfile.SizeMode = PictureBoxSizeMode.StretchImage
             PctProfile.TabIndex = 0
             PctProfile.TabStop = False
-            PctProfile.XOTampilkanBorder = False
-            PctProfile.XOWarnaBorder = Color.DodgerBlue
+            PctProfile.XOShowBorder = False
+            PctProfile.XOBorderColor = Color.DodgerBlue
             ' 
             ' PctbxFrame
             ' 
@@ -1007,13 +1006,13 @@
             PctbxFrame.SizeMode = PictureBoxSizeMode.Zoom
             PctbxFrame.TabIndex = 5
             PctbxFrame.TabStop = False
-            PctbxFrame.XOTampilkanBorder = False
-            PctbxFrame.XOWarnaBorder = Color.Black
+            PctbxFrame.XOShowBorder = False
+            PctbxFrame.XOBorderColor = Color.Black
             ' 
             ' LblPosition
             ' 
             LblPosition.AutoSize = True
-            LblPosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            LblPosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             LblPosition.ForeColor = Color.Yellow
             LblPosition.Location = New Point(187, 157)
             LblPosition.Margin = New Padding(4, 0, 4, 0)
@@ -1026,7 +1025,7 @@
             ' LblEmployeeName
             ' 
             LblEmployeeName.AutoSize = True
-            LblEmployeeName.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
+            LblEmployeeName.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold)
             LblEmployeeName.ForeColor = Color.White
             LblEmployeeName.Location = New Point(186, 115)
             LblEmployeeName.Margin = New Padding(4, 0, 4, 0)
@@ -1039,7 +1038,7 @@
             ' LblEmpNumber
             ' 
             LblEmpNumber.AutoSize = True
-            LblEmpNumber.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
+            LblEmpNumber.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold)
             LblEmpNumber.ForeColor = Color.White
             LblEmpNumber.Location = New Point(186, 73)
             LblEmpNumber.Margin = New Padding(4, 0, 4, 0)
@@ -1053,7 +1052,7 @@
             ' 
             LblWelcome.BackColor = Color.GreenYellow
             LblWelcome.Dock = DockStyle.Top
-            LblWelcome.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point)
+            LblWelcome.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold)
             LblWelcome.ForeColor = Color.Black
             LblWelcome.Location = New Point(0, 0)
             LblWelcome.Margin = New Padding(4, 0, 4, 0)
@@ -1119,7 +1118,7 @@
             TxtRunning.BackColor = Color.White
             TxtRunning.BorderStyle = BorderStyle.FixedSingle
             TxtRunning.Dock = DockStyle.Top
-            TxtRunning.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtRunning.Font = New Font("Segoe UI", 12F)
             TxtRunning.Location = New Point(0, 42)
             TxtRunning.Margin = New Padding(4, 5, 4, 5)
             TxtRunning.MaxLength = 255
@@ -1131,24 +1130,24 @@
             TxtRunning.Tag = "txt"
             TxtRunning.Visible = False
             TxtRunning.XOAutoTrim = False
-            TxtRunning.XOHarusDiisi = False
-            TxtRunning.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtRunning.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtRunning.XOHightlightSaatFokus = False
-            TxtRunning.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtRunning.XOIsMandatory = False
+            TxtRunning.XOMandatoryBgColor = Color.LightPink
+            TxtRunning.XOMandatoryBgColorDefault = Color.White
+            TxtRunning.XOHighlightOnFocus = False
+            TxtRunning.XOHighlightColor = Color.LightYellow
             TxtRunning.XOIsBlank = True
             TxtRunning.XOIsSearchBox = False
-            TxtRunning.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtRunning.XOPilihSemuaSaatFokus = False
-            TxtRunning.XOPwdLengthMin = 8
-            TxtRunning.XOPwdStrengthCalculate = False
-            TxtRunning.XOPwdStrengthScore = 0
-            TxtRunning.XOPwdStrengthText = Nothing
-            TxtRunning.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtRunning.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtRunning.XOSelectOnFocus = False
+            TxtRunning.XOPasswordLengthMin = 8
+            TxtRunning.XOPasswordStrengthCalc = False
+            TxtRunning.XOPasswordStrengthScore = 0
+            TxtRunning.XOPasswordStrengthText = Nothing
+            TxtRunning.XORestriction = ControlCodeBase.enumRestriction.None
             TxtRunning.XOSearchBoxText = "Type then press Enter"
-            TxtRunning.XOSQLText = ""
-            TxtRunning.XOTanpaSpasi = False
-            TxtRunning.XOValidasiField = Nothing
+            TxtRunning.XOSqlText = ""
+            TxtRunning.XOIsReplaceEmptyString = False
+            TxtRunning.XOMandatoryMessage = Nothing
             ' 
             ' spl_
             ' 
@@ -1160,26 +1159,6 @@
             spl_.Size = New Size(5, 822)
             spl_.TabIndex = 9999
             spl_.TabStop = False
-            ' 
-            ' Tmdi_
-            ' 
-            Tmdi_.ActiveTabFont = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-            Tmdi_.AttachedTo = Me
-            Tmdi_.CloseButtonBackColor = Color.Red
-            Tmdi_.CloseButtonColor = Color.White
-            Tmdi_.CloseButtonToolTip = ""
-            Tmdi_.CloseButtonVisible = False
-            Tmdi_.DropDownButtonToolTip = ""
-            Tmdi_.ImageSize = New Size(16, 16)
-            Tmdi_.NeedUpdateHostedForm = False
-            Tmdi_.ShowCloseButton = True
-            Tmdi_.ShowCloseButtonBackColor = True
-            Tmdi_.TabFont = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-            Tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererIE7)
-            Tmdi_.ThemeName = "TabRendererIE7"
-            Tmdi_.ThemesEnabled = True
-            Tmdi_.UseIconsInTabs = False
-            Tmdi_.Visible = False
             ' 
             ' FRMmainframe6
             ' 
@@ -1261,7 +1240,6 @@
         Friend WithEvents TmrStatus As Timer
         Friend WithEvents Tmr_runningtext As Timer
         Public WithEvents Ms_mainframe As MenuStrip
-        Friend WithEvents Tmdi_ As Syncfusion.Windows.Forms.Tools.TabbedGroupedMDIManager
         Friend WithEvents pnl_mainframe_left As CMCv.UI.Control.pnl
         Friend WithEvents spl_ As Splitter
         Friend WithEvents Tv_mainframe As CMCv.UI.Control.tv
@@ -1270,11 +1248,11 @@
         Friend WithEvents Txt_shortcut As CMCv.UI.Control.txt
         Friend WithEvents PnlProfile As CMCv.UI.Control.pnl
         Friend WithEvents LblWelcome As CMCv.UI.Control.lbl
-        Friend WithEvents PctProfile As CMCv.UI.Control.pctbx
+        Friend WithEvents PctProfile As CMCv.UI.Control.Pbx
         Friend WithEvents LblEmpNumber As CMCv.UI.Control.lbl
         Friend WithEvents LblEmployeeName As CMCv.UI.Control.lbl
         Friend WithEvents LblPosition As CMCv.UI.Control.lbl
-        Friend WithEvents PctbxFrame As CMCv.UI.Control.pctbx
+        Friend WithEvents PctbxFrame As CMCv.UI.Control.Pbx
         Friend WithEvents PnlStorage As CMCv.UI.Control.pnl
         Friend WithEvents lblFile As Label
         Friend WithEvents lblData As Label

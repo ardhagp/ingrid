@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
 Namespace UI.Control
-    Public Class gbx
+    Public Class Gbx
         Inherits System.Windows.Forms.GroupBox
 
         <SupportedOSPlatform("windows")>

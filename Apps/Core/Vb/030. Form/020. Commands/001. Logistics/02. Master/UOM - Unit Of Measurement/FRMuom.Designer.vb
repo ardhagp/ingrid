@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMuom
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -90,8 +90,8 @@
             DgnUOM.Size = New Size(1307, 864)
             DgnUOM.StandardTab = True
             DgnUOM.TabIndex = 802
-            DgnUOM.XOGroupFirstRows = False
-            DgnUOM.XOGunakanNomorBaris = False
+            DgnUOM.XOIsGroupFirstRow = False
+            DgnUOM.XOIsShowRowNumber = False
             ' 
             ' FRMuom
             ' 

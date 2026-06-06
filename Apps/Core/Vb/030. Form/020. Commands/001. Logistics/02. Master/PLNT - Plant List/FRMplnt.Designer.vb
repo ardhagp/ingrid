@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMplnt
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -101,8 +101,8 @@
             DgnPLNT.Size = New Size(1307, 858)
             DgnPLNT.StandardTab = True
             DgnPLNT.TabIndex = 1
-            DgnPLNT.XOGroupFirstRows = False
-            DgnPLNT.XOGunakanNomorBaris = True
+            DgnPLNT.XOIsGroupFirstRow = False
+            DgnPLNT.XOIsShowRowNumber = True
             ' 
             ' plant_id
             ' 

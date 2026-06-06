@@ -1,6 +1,6 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.btn), "btn.ico")>
-    Partial Class btn
+    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Btn), "Btn.ico")>
+    Partial Class Btn
         Inherits System.Windows.Forms.Button
 
         <System.Diagnostics.DebuggerNonUserCode()>

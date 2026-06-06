@@ -47,6 +47,10 @@ Module Globals
 
     Public varDatasetIngrid As New Ingrid.UI.Dataset.ADSglobal
 
+    Public tPosition As New LibApp.Table.Man.Position
+    Public tEmployee As New LibApp.Table.Man.Employee
+    Public tSettings As New LibApp.Table.Sys.Settings
+
     Private Const pClientComputerName As String = "@ClientComputerName"
     Private Const pClientOSFullName As String = "@ClientOSFullName"
     Private Const pClientAppVersion As String = "@ClientAppVersion"
@@ -170,7 +174,7 @@ Module Globals
                 Return Directory.GetCurrentDirectory & "\Commands\" 'Folder for detachable modules
             Case DirName.PDF
                 Return Directory.GetCurrentDirectory & "\Files.PDF\"
-            Case DirName.PDF
+            Case DirName.Photo
                 Return Directory.GetCurrentDirectory & "\Files.Photo\"
             Case Else
                 Return ""
@@ -198,7 +202,7 @@ Module Globals
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Sub Display(formname As CMCv.frmStandard, Optional formimage As System.Drawing.Image = Nothing,
+    Public Sub Display(formname As CMCv.FRMstandard, Optional formimage As System.Drawing.Image = Nothing,
                        Optional windowname As String = "", Optional formtitle As String = "",
                        Optional formsubtitle As String = "", Optional isdialog As Boolean = False,
                        Optional parentframe As System.Windows.Forms.Form = Nothing)
@@ -209,16 +213,16 @@ Module Globals
                 formname.SLFLogo.Image = formimage
             End If
             formname.SLFSubNamaForm.Text = formsubtitle.Trim
-            If Not (isdialog) Then
-                If (formname.IsHandleCreated) Then
+            If Not isdialog Then
+                If formname.IsHandleCreated Then
                     formname.Focus()
                 Else
                     If parentframe IsNot Nothing Then
+                        formname.WindowState = FormWindowState.Maximized
                         formname.Visible = False
                         formname.MdiParent = parentframe
-                        formname.WindowState = FormWindowState.Maximized
-                        formname.Show()
                         formname.Visible = True
+                        formname.Show()
                     Else
                         formname.Show()
                     End If
@@ -259,7 +263,7 @@ Module Globals
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Sub Display(formname As CMCv.Std_Fo, Optional formimage As System.Drawing.Image = Nothing, Optional windowname As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "", Optional isdialog As Boolean = False, Optional parentframe As System.Windows.Forms.Form = Nothing)
+    Public Sub Display(formname As CMCv.FRMstandardFooter, Optional formimage As System.Drawing.Image = Nothing, Optional windowname As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "", Optional isdialog As Boolean = False, Optional parentframe As System.Windows.Forms.Form = Nothing)
         Try
             formname.Text = windowname
             formname.SLFNamaForm.Text = formtitle

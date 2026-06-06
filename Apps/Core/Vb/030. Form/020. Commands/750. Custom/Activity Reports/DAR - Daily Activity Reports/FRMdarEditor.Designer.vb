@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMdarEditor
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -28,24 +28,24 @@
             Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle11 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
-            CboTemplate = New CMCv.UI.Control.cbo(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
+            CboTemplate = New CMCv.UI.Control.Cbo(components)
             DtpStart = New CMCv.UI.Control.dtp(components)
             TxtContent = New CMCv.UI.Control.txt(components)
-            CboArea = New CMCv.UI.Control.cbo(components)
+            CboArea = New CMCv.UI.Control.Cbo(components)
             MebStart = New CMCv.UI.Control.meb(components)
-            BtnGETContent = New CMCv.UI.Control.btn(components)
-            ChkAddNew = New CMCv.UI.Control.chk(components)
+            BtnGETContent = New CMCv.UI.Control.Btn(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             MebEnd = New CMCv.UI.Control.meb(components)
             DtpEnd = New CMCv.UI.Control.dtp(components)
             TxtFeedback = New CMCv.UI.Control.txt(components)
             OfdPhoto = New OpenFileDialog()
-            TbctlAttachment = New CMCv.UI.Control.tbctl(components)
+            TbctlAttachment = New CMCv.UI.Control.Tbx(components)
             tpPhotos = New TabPage()
             PnlPhoto = New CMCv.UI.Control.pnl(components)
-            BtnBrowsePhoto = New CMCv.UI.Control.btn(components)
-            PctbxPhoto = New CMCv.UI.Control.pctbx(components)
+            BtnBrowsePhoto = New CMCv.UI.Control.Btn(components)
+            PctbxPhoto = New CMCv.UI.Control.Pbx(components)
             DgnPictureList = New CMCv.UI.Control.dgn(components)
             photo_id = New DataGridViewTextBoxColumn()
             photo_filename = New DataGridViewTextBoxColumn()
@@ -54,12 +54,12 @@
             photo_status = New DataGridViewTextBoxColumn()
             photo_uploader = New DataGridViewTextBoxColumn()
             photo_delete = New DataGridViewButtonColumn()
-            BtnPeekPhoto = New CMCv.UI.Control.btn(components)
+            BtnPeekPhoto = New CMCv.UI.Control.Btn(components)
             TxtPhotoPath = New CMCv.UI.Control.txt(components)
-            BtnAddPhoto = New CMCv.UI.Control.btn(components)
+            BtnAddPhoto = New CMCv.UI.Control.Btn(components)
             tpFiles = New TabPage()
             PnlFile = New CMCv.UI.Control.pnl(components)
-            BtnBrowseFile = New CMCv.UI.Control.btn(components)
+            BtnBrowseFile = New CMCv.UI.Control.Btn(components)
             DgnFileList = New CMCv.UI.Control.dgn(components)
             file_id = New DataGridViewTextBoxColumn()
             file_filename = New DataGridViewTextBoxColumn()
@@ -69,10 +69,10 @@
             file_status = New DataGridViewTextBoxColumn()
             file_uploader = New DataGridViewTextBoxColumn()
             file_delete = New DataGridViewButtonColumn()
-            CboFileTag = New CMCv.UI.Control.cbo(components)
+            CboFileTag = New CMCv.UI.Control.Cbo(components)
             TxtFilePath = New CMCv.UI.Control.txt(components)
-            BtnAddFile = New CMCv.UI.Control.btn(components)
-            BtnPeekFile = New CMCv.UI.Control.btn(components)
+            BtnAddFile = New CMCv.UI.Control.Btn(components)
+            BtnPeekFile = New CMCv.UI.Control.Btn(components)
             ofdFile = New OpenFileDialog()
             ULbl1 = New CMCv.UI.Control.ULbl()
             ULbl2 = New CMCv.UI.Control.ULbl()
@@ -173,10 +173,10 @@
             BtnSave.TabIndex = 600
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -196,10 +196,10 @@
             BtnCancel.TabIndex = 602
             BtnCancel.Text = "&Close"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' CboTemplate
             ' 
@@ -241,24 +241,24 @@
             TxtContent.TabIndex = 7
             TxtContent.Tag = "txt"
             TxtContent.XOAutoTrim = True
-            TxtContent.XOHarusDiisi = True
-            TxtContent.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtContent.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtContent.XOHightlightSaatFokus = True
-            TxtContent.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtContent.XOIsMandatory = True
+            TxtContent.XOMandatoryBgColor = Color.LightPink
+            TxtContent.XOMandatoryBgColorDefault = Color.White
+            TxtContent.XOHighlightOnFocus = True
+            TxtContent.XOHighlightColor = Color.LightYellow
             TxtContent.XOIsBlank = True
             TxtContent.XOIsSearchBox = False
-            TxtContent.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-            TxtContent.XOPilihSemuaSaatFokus = False
-            TxtContent.XOPwdLengthMin = 8
-            TxtContent.XOPwdStrengthCalculate = False
-            TxtContent.XOPwdStrengthScore = 0
-            TxtContent.XOPwdStrengthText = Nothing
-            TxtContent.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtContent.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtContent.XOSelectOnFocus = False
+            TxtContent.XOPasswordLengthMin = 8
+            TxtContent.XOPasswordStrengthCalc = False
+            TxtContent.XOPasswordStrengthScore = 0
+            TxtContent.XOPasswordStrengthText = Nothing
+            TxtContent.XORestriction = ControlCodeBase.enumRestriction.None
             TxtContent.XOSearchBoxText = "Type then press Enter"
-            TxtContent.XOSQLText = Nothing
-            TxtContent.XOTanpaSpasi = False
-            TxtContent.XOValidasiField = Nothing
+            TxtContent.XOSqlText = Nothing
+            TxtContent.XOIsReplaceEmptyString = False
+            TxtContent.XOMandatoryMessage = Nothing
             ' 
             ' CboArea
             ' 
@@ -285,12 +285,12 @@
             MebStart.TabIndex = 1
             MebStart.TextAlign = HorizontalAlignment.Center
             MebStart.ValidatingType = GetType(Date)
-            MebStart.XOHarusDiisi = True
-            MebStart.XOHarusDiisiWarnaLatar = Color.LightPink
-            MebStart.XOHarusDiisiWarnaLatarDefault = Color.White
-            MebStart.XOHightlightSaatFokus = True
-            MebStart.XOHightlightSaatFokusWarna = Color.LightYellow
-            MebStart.XOPilihSemuaSaatFokus = True
+            MebStart.XOIsMandatory = True
+            MebStart.XOMandatoryBgColor = Color.LightPink
+            MebStart.XOMandatoryBgColorDefault = Color.White
+            MebStart.XOHighlightOnFocus = True
+            MebStart.XOHighlightColor = Color.LightYellow
+            MebStart.XOSelectOnFocus = True
             ' 
             ' BtnGETContent
             ' 
@@ -309,10 +309,10 @@
             BtnGETContent.TabIndex = 6
             BtnGETContent.Text = "Apply"
             BtnGETContent.UseVisualStyleBackColor = False
-            BtnGETContent.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            BtnGETContent.XOTampilkanFocusBorder = False
-            BtnGETContent.XOValidasiSemuaInput = False
-            BtnGETContent.XOValidasiSemuaInputTag = Nothing
+            BtnGETContent.XOButtonType = ControlCodeBase.buttonType.Default
+            BtnGETContent.XOShowBorderOnFocus = False
+            BtnGETContent.XOValidateAllInput = False
+            BtnGETContent.XOValidateAllInputTag = Nothing
             ' 
             ' ChkAddNew
             ' 
@@ -342,12 +342,12 @@
             MebEnd.TabIndex = 3
             MebEnd.TextAlign = HorizontalAlignment.Center
             MebEnd.ValidatingType = GetType(Date)
-            MebEnd.XOHarusDiisi = True
-            MebEnd.XOHarusDiisiWarnaLatar = Color.LightPink
-            MebEnd.XOHarusDiisiWarnaLatarDefault = Color.White
-            MebEnd.XOHightlightSaatFokus = True
-            MebEnd.XOHightlightSaatFokusWarna = Color.LightYellow
-            MebEnd.XOPilihSemuaSaatFokus = True
+            MebEnd.XOIsMandatory = True
+            MebEnd.XOMandatoryBgColor = Color.LightPink
+            MebEnd.XOMandatoryBgColorDefault = Color.White
+            MebEnd.XOHighlightOnFocus = True
+            MebEnd.XOHighlightColor = Color.LightYellow
+            MebEnd.XOSelectOnFocus = True
             ' 
             ' DtpEnd
             ' 
@@ -376,24 +376,24 @@
             TxtFeedback.TabIndex = 8
             TxtFeedback.Tag = "txt"
             TxtFeedback.XOAutoTrim = True
-            TxtFeedback.XOHarusDiisi = False
-            TxtFeedback.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtFeedback.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtFeedback.XOHightlightSaatFokus = True
-            TxtFeedback.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtFeedback.XOIsMandatory = False
+            TxtFeedback.XOMandatoryBgColor = Color.LightPink
+            TxtFeedback.XOMandatoryBgColorDefault = Color.White
+            TxtFeedback.XOHighlightOnFocus = True
+            TxtFeedback.XOHighlightColor = Color.LightYellow
             TxtFeedback.XOIsBlank = True
             TxtFeedback.XOIsSearchBox = False
-            TxtFeedback.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-            TxtFeedback.XOPilihSemuaSaatFokus = False
-            TxtFeedback.XOPwdLengthMin = 8
-            TxtFeedback.XOPwdStrengthCalculate = False
-            TxtFeedback.XOPwdStrengthScore = 0
-            TxtFeedback.XOPwdStrengthText = Nothing
-            TxtFeedback.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtFeedback.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtFeedback.XOSelectOnFocus = False
+            TxtFeedback.XOPasswordLengthMin = 8
+            TxtFeedback.XOPasswordStrengthCalc = False
+            TxtFeedback.XOPasswordStrengthScore = 0
+            TxtFeedback.XOPasswordStrengthText = Nothing
+            TxtFeedback.XORestriction = ControlCodeBase.enumRestriction.None
             TxtFeedback.XOSearchBoxText = "Type then press Enter"
-            TxtFeedback.XOSQLText = ""
-            TxtFeedback.XOTanpaSpasi = False
-            TxtFeedback.XOValidasiField = Nothing
+            TxtFeedback.XOSqlText = ""
+            TxtFeedback.XOIsReplaceEmptyString = False
+            TxtFeedback.XOMandatoryMessage = Nothing
             ' 
             ' OfdPhoto
             ' 
@@ -457,10 +457,10 @@
             BtnBrowsePhoto.Size = New Size(54, 55)
             BtnBrowsePhoto.TabIndex = 5
             BtnBrowsePhoto.UseVisualStyleBackColor = False
-            BtnBrowsePhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnBrowsePhoto.XOTampilkanFocusBorder = False
-            BtnBrowsePhoto.XOValidasiSemuaInput = False
-            BtnBrowsePhoto.XOValidasiSemuaInputTag = Nothing
+            BtnBrowsePhoto.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnBrowsePhoto.XOShowBorderOnFocus = False
+            BtnBrowsePhoto.XOValidateAllInput = False
+            BtnBrowsePhoto.XOValidateAllInputTag = Nothing
             ' 
             ' PctbxPhoto
             ' 
@@ -477,8 +477,8 @@
             PctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
             PctbxPhoto.TabIndex = 6
             PctbxPhoto.TabStop = False
-            PctbxPhoto.XOTampilkanBorder = False
-            PctbxPhoto.XOWarnaBorder = Color.DodgerBlue
+            PctbxPhoto.XOShowBorder = False
+            PctbxPhoto.XOBorderColor = Color.DodgerBlue
             ' 
             ' DgnPictureList
             ' 
@@ -525,8 +525,8 @@
             DgnPictureList.Size = New Size(602, 262)
             DgnPictureList.StandardTab = True
             DgnPictureList.TabIndex = 10
-            DgnPictureList.XOGroupFirstRows = False
-            DgnPictureList.XOGunakanNomorBaris = True
+            DgnPictureList.XOIsGroupFirstRow = False
+            DgnPictureList.XOIsShowRowNumber = True
             ' 
             ' photo_id
             ' 
@@ -621,10 +621,10 @@
             BtnPeekPhoto.Size = New Size(54, 55)
             BtnPeekPhoto.TabIndex = 8
             BtnPeekPhoto.UseVisualStyleBackColor = False
-            BtnPeekPhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnPeekPhoto.XOTampilkanFocusBorder = False
-            BtnPeekPhoto.XOValidasiSemuaInput = False
-            BtnPeekPhoto.XOValidasiSemuaInputTag = Nothing
+            BtnPeekPhoto.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnPeekPhoto.XOShowBorderOnFocus = False
+            BtnPeekPhoto.XOValidateAllInput = False
+            BtnPeekPhoto.XOValidateAllInputTag = Nothing
             ' 
             ' TxtPhotoPath
             ' 
@@ -638,24 +638,24 @@
             TxtPhotoPath.TabIndex = 7
             TxtPhotoPath.Tag = "txt"
             TxtPhotoPath.XOAutoTrim = False
-            TxtPhotoPath.XOHarusDiisi = False
-            TxtPhotoPath.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtPhotoPath.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtPhotoPath.XOHightlightSaatFokus = False
-            TxtPhotoPath.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtPhotoPath.XOIsMandatory = False
+            TxtPhotoPath.XOMandatoryBgColor = Color.LightPink
+            TxtPhotoPath.XOMandatoryBgColorDefault = Color.White
+            TxtPhotoPath.XOHighlightOnFocus = False
+            TxtPhotoPath.XOHighlightColor = Color.LightYellow
             TxtPhotoPath.XOIsBlank = True
             TxtPhotoPath.XOIsSearchBox = False
-            TxtPhotoPath.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtPhotoPath.XOPilihSemuaSaatFokus = False
-            TxtPhotoPath.XOPwdLengthMin = 8
-            TxtPhotoPath.XOPwdStrengthCalculate = False
-            TxtPhotoPath.XOPwdStrengthScore = 0
-            TxtPhotoPath.XOPwdStrengthText = Nothing
-            TxtPhotoPath.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtPhotoPath.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtPhotoPath.XOSelectOnFocus = False
+            TxtPhotoPath.XOPasswordLengthMin = 8
+            TxtPhotoPath.XOPasswordStrengthCalc = False
+            TxtPhotoPath.XOPasswordStrengthScore = 0
+            TxtPhotoPath.XOPasswordStrengthText = Nothing
+            TxtPhotoPath.XORestriction = ControlCodeBase.enumRestriction.None
             TxtPhotoPath.XOSearchBoxText = "Type then press Enter"
-            TxtPhotoPath.XOSQLText = ""
-            TxtPhotoPath.XOTanpaSpasi = False
-            TxtPhotoPath.XOValidasiField = Nothing
+            TxtPhotoPath.XOSqlText = ""
+            TxtPhotoPath.XOIsReplaceEmptyString = False
+            TxtPhotoPath.XOMandatoryMessage = Nothing
             ' 
             ' BtnAddPhoto
             ' 
@@ -674,10 +674,10 @@
             BtnAddPhoto.Size = New Size(54, 55)
             BtnAddPhoto.TabIndex = 9
             BtnAddPhoto.UseVisualStyleBackColor = False
-            BtnAddPhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnAddPhoto.XOTampilkanFocusBorder = False
-            BtnAddPhoto.XOValidasiSemuaInput = False
-            BtnAddPhoto.XOValidasiSemuaInputTag = Nothing
+            BtnAddPhoto.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnAddPhoto.XOShowBorderOnFocus = False
+            BtnAddPhoto.XOValidateAllInput = False
+            BtnAddPhoto.XOValidateAllInputTag = Nothing
             ' 
             ' tpFiles
             ' 
@@ -723,10 +723,10 @@
             BtnBrowseFile.Size = New Size(54, 55)
             BtnBrowseFile.TabIndex = 10
             BtnBrowseFile.UseVisualStyleBackColor = False
-            BtnBrowseFile.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnBrowseFile.XOTampilkanFocusBorder = False
-            BtnBrowseFile.XOValidasiSemuaInput = False
-            BtnBrowseFile.XOValidasiSemuaInputTag = Nothing
+            BtnBrowseFile.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnBrowseFile.XOShowBorderOnFocus = False
+            BtnBrowseFile.XOValidateAllInput = False
+            BtnBrowseFile.XOValidateAllInputTag = Nothing
             ' 
             ' DgnFileList
             ' 
@@ -773,8 +773,8 @@
             DgnFileList.Size = New Size(880, 262)
             DgnFileList.StandardTab = True
             DgnFileList.TabIndex = 14
-            DgnFileList.XOGroupFirstRows = False
-            DgnFileList.XOGunakanNomorBaris = True
+            DgnFileList.XOIsGroupFirstRow = False
+            DgnFileList.XOIsShowRowNumber = True
             ' 
             ' file_id
             ' 
@@ -888,24 +888,24 @@
             TxtFilePath.TabIndex = 11
             TxtFilePath.Tag = "txt"
             TxtFilePath.XOAutoTrim = False
-            TxtFilePath.XOHarusDiisi = False
-            TxtFilePath.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtFilePath.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtFilePath.XOHightlightSaatFokus = False
-            TxtFilePath.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtFilePath.XOIsMandatory = False
+            TxtFilePath.XOMandatoryBgColor = Color.LightPink
+            TxtFilePath.XOMandatoryBgColorDefault = Color.White
+            TxtFilePath.XOHighlightOnFocus = False
+            TxtFilePath.XOHighlightColor = Color.LightYellow
             TxtFilePath.XOIsBlank = True
             TxtFilePath.XOIsSearchBox = False
-            TxtFilePath.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtFilePath.XOPilihSemuaSaatFokus = False
-            TxtFilePath.XOPwdLengthMin = 8
-            TxtFilePath.XOPwdStrengthCalculate = False
-            TxtFilePath.XOPwdStrengthScore = 0
-            TxtFilePath.XOPwdStrengthText = Nothing
-            TxtFilePath.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtFilePath.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtFilePath.XOSelectOnFocus = False
+            TxtFilePath.XOPasswordLengthMin = 8
+            TxtFilePath.XOPasswordStrengthCalc = False
+            TxtFilePath.XOPasswordStrengthScore = 0
+            TxtFilePath.XOPasswordStrengthText = Nothing
+            TxtFilePath.XORestriction = ControlCodeBase.enumRestriction.None
             TxtFilePath.XOSearchBoxText = "Type then press Enter"
-            TxtFilePath.XOSQLText = ""
-            TxtFilePath.XOTanpaSpasi = False
-            TxtFilePath.XOValidasiField = Nothing
+            TxtFilePath.XOSqlText = ""
+            TxtFilePath.XOIsReplaceEmptyString = False
+            TxtFilePath.XOMandatoryMessage = Nothing
             ' 
             ' BtnAddFile
             ' 
@@ -924,10 +924,10 @@
             BtnAddFile.Size = New Size(54, 55)
             BtnAddFile.TabIndex = 13
             BtnAddFile.UseVisualStyleBackColor = False
-            BtnAddFile.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnAddFile.XOTampilkanFocusBorder = False
-            BtnAddFile.XOValidasiSemuaInput = False
-            BtnAddFile.XOValidasiSemuaInputTag = Nothing
+            BtnAddFile.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnAddFile.XOShowBorderOnFocus = False
+            BtnAddFile.XOValidateAllInput = False
+            BtnAddFile.XOValidateAllInputTag = Nothing
             ' 
             ' BtnPeekFile
             ' 
@@ -946,10 +946,10 @@
             BtnPeekFile.Size = New Size(54, 55)
             BtnPeekFile.TabIndex = 12
             BtnPeekFile.UseVisualStyleBackColor = False
-            BtnPeekFile.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnPeekFile.XOTampilkanFocusBorder = False
-            BtnPeekFile.XOValidasiSemuaInput = False
-            BtnPeekFile.XOValidasiSemuaInputTag = Nothing
+            BtnPeekFile.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnPeekFile.XOShowBorderOnFocus = False
+            BtnPeekFile.XOValidateAllInput = False
+            BtnPeekFile.XOValidateAllInputTag = Nothing
             ' 
             ' ofdFile
             ' 
@@ -962,10 +962,10 @@
             ULbl1.Margin = New Padding(7, 5, 7, 5)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(250, 55)
-            ULbl1.SLFText = "Activity Start"
-            ULbl1.SLFTextAdjuster = False
-            ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl1.XOText = "Activity Start"
+            ULbl1.XOTextAdjuster = False
+            ULbl1.XOTextBorder = False
+            ULbl1.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.TabIndex = 1003
             ' 
             ' ULbl2
@@ -975,10 +975,10 @@
             ULbl2.Margin = New Padding(7, 5, 7, 5)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(250, 55)
-            ULbl2.SLFText = "To"
-            ULbl2.SLFTextAdjuster = False
-            ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl2.XOText = "To"
+            ULbl2.XOTextAdjuster = False
+            ULbl2.XOTextBorder = False
+            ULbl2.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1004
             ' 
             ' ULbl3
@@ -988,10 +988,10 @@
             ULbl3.Margin = New Padding(7, 5, 7, 5)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 55)
-            ULbl3.SLFText = "Area Affected"
-            ULbl3.SLFTextAdjuster = False
-            ULbl3.SLFTextBorder = False
-            ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl3.XOText = "Area Affected"
+            ULbl3.XOTextAdjuster = False
+            ULbl3.XOTextBorder = False
+            ULbl3.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 1005
             ' 
             ' ULbl4
@@ -1001,10 +1001,10 @@
             ULbl4.Margin = New Padding(7, 5, 7, 5)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 55)
-            ULbl4.SLFText = "Activity Template"
-            ULbl4.SLFTextAdjuster = False
-            ULbl4.SLFTextBorder = False
-            ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl4.XOText = "Activity Template"
+            ULbl4.XOTextAdjuster = False
+            ULbl4.XOTextBorder = False
+            ULbl4.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 1006
             ' 
             ' ULbl5
@@ -1014,10 +1014,10 @@
             ULbl5.Margin = New Padding(7, 5, 7, 5)
             ULbl5.Name = "ULbl5"
             ULbl5.Size = New Size(250, 230)
-            ULbl5.SLFText = "Description"
-            ULbl5.SLFTextAdjuster = False
-            ULbl5.SLFTextBorder = False
-            ULbl5.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl5.XOText = "Description"
+            ULbl5.XOTextAdjuster = False
+            ULbl5.XOTextBorder = False
+            ULbl5.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.TabIndex = 1007
             ' 
             ' ULbl6
@@ -1027,10 +1027,10 @@
             ULbl6.Margin = New Padding(7, 5, 7, 5)
             ULbl6.Name = "ULbl6"
             ULbl6.Size = New Size(250, 120)
-            ULbl6.SLFText = "Feedback" & vbCrLf & "(Supv. Only)"
-            ULbl6.SLFTextAdjuster = False
-            ULbl6.SLFTextBorder = False
-            ULbl6.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl6.XOText = "Feedback" & vbCrLf & "(Supv. Only)"
+            ULbl6.XOTextAdjuster = False
+            ULbl6.XOTextBorder = False
+            ULbl6.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl6.TabIndex = 1008
             ' 
             ' ULbl7
@@ -1040,10 +1040,10 @@
             ULbl7.Margin = New Padding(7, 5, 7, 5)
             ULbl7.Name = "ULbl7"
             ULbl7.Size = New Size(250, 395)
-            ULbl7.SLFText = "Attachment(s)"
-            ULbl7.SLFTextAdjuster = False
-            ULbl7.SLFTextBorder = False
-            ULbl7.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl7.XOText = "Attachment(s)"
+            ULbl7.XOTextAdjuster = False
+            ULbl7.XOTextBorder = False
+            ULbl7.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl7.TabIndex = 1009
             ' 
             ' FRMdarEditor
@@ -1074,35 +1074,35 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents DtpStart As CMCv.UI.Control.dtp
-        Friend WithEvents CboTemplate As CMCv.UI.Control.cbo
+        Friend WithEvents CboTemplate As CMCv.UI.Control.Cbo
         Friend WithEvents TxtContent As CMCv.UI.Control.txt
-        Friend WithEvents CboArea As CMCv.UI.Control.cbo
+        Friend WithEvents CboArea As CMCv.UI.Control.Cbo
         Friend WithEvents MebStart As CMCv.UI.Control.meb
-        Friend WithEvents BtnGETContent As CMCv.UI.Control.btn
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents BtnGETContent As CMCv.UI.Control.Btn
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents MebEnd As CMCv.UI.Control.meb
         Friend WithEvents DtpEnd As CMCv.UI.Control.dtp
         Friend WithEvents TxtFeedback As CMCv.UI.Control.txt
         Friend WithEvents OfdPhoto As OpenFileDialog
-        Friend WithEvents TbctlAttachment As CMCv.UI.Control.tbctl
+        Friend WithEvents TbctlAttachment As CMCv.UI.Control.Tbx
         Friend WithEvents tpPhotos As TabPage
-        Friend WithEvents BtnPeekPhoto As CMCv.UI.Control.btn
-        Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.btn
-        Friend WithEvents BtnAddPhoto As CMCv.UI.Control.btn
+        Friend WithEvents BtnPeekPhoto As CMCv.UI.Control.Btn
+        Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.Btn
+        Friend WithEvents BtnAddPhoto As CMCv.UI.Control.Btn
         Friend WithEvents TxtPhotoPath As CMCv.UI.Control.txt
         Friend WithEvents DgnPictureList As CMCv.UI.Control.dgn
-        Friend WithEvents PctbxPhoto As CMCv.UI.Control.pctbx
+        Friend WithEvents PctbxPhoto As CMCv.UI.Control.Pbx
         Friend WithEvents tpFiles As TabPage
-        Friend WithEvents BtnPeekFile As CMCv.UI.Control.btn
-        Friend WithEvents BtnBrowseFile As CMCv.UI.Control.btn
-        Friend WithEvents BtnAddFile As CMCv.UI.Control.btn
+        Friend WithEvents BtnPeekFile As CMCv.UI.Control.Btn
+        Friend WithEvents BtnBrowseFile As CMCv.UI.Control.Btn
+        Friend WithEvents BtnAddFile As CMCv.UI.Control.Btn
         Friend WithEvents TxtFilePath As CMCv.UI.Control.txt
         Friend WithEvents DgnFileList As CMCv.UI.Control.dgn
         Friend WithEvents ofdFile As OpenFileDialog
-        Friend WithEvents CboFileTag As CMCv.UI.Control.cbo
+        Friend WithEvents CboFileTag As CMCv.UI.Control.Cbo
         Friend WithEvents PnlPhoto As CMCv.UI.Control.pnl
         Friend WithEvents PnlFile As CMCv.UI.Control.pnl
         Friend WithEvents ULbl7 As CMCv.UI.Control.ULbl

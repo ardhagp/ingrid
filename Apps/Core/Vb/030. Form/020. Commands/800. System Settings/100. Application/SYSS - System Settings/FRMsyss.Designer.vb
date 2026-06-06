@@ -3,7 +3,7 @@
 Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMsyss
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -23,20 +23,20 @@ Namespace UI
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            TbctlSettings = New CMCv.UI.Control.tbctl(components)
+            TbctlSettings = New CMCv.UI.Control.Tbx(components)
             tbInterface = New TabPage()
             GbxPanels = New CMCv.UI.Control.gbx(components)
             ULbl3 = New CMCv.UI.Control.ULbl()
             ULbl2 = New CMCv.UI.Control.ULbl()
             ULbl1 = New CMCv.UI.Control.ULbl()
-            CboProfile = New CMCv.UI.Control.cbo(components)
-            CboStorage = New CMCv.UI.Control.cbo(components)
-            CboNewsTicker = New CMCv.UI.Control.cbo(components)
+            CboProfile = New CMCv.UI.Control.Cbo(components)
+            CboStorage = New CMCv.UI.Control.Cbo(components)
+            CboNewsTicker = New CMCv.UI.Control.Cbo(components)
             tbStorage = New TabPage()
             GbxWatermark = New CMCv.UI.Control.gbx(components)
             ULbl7 = New CMCv.UI.Control.ULbl()
             ULbl6 = New CMCv.UI.Control.ULbl()
-            CboWatermark = New CMCv.UI.Control.cbo(components)
+            CboWatermark = New CMCv.UI.Control.Cbo(components)
             TxtWatermark = New CMCv.UI.Control.txt(components)
             Gbx1 = New CMCv.UI.Control.gbx(components)
             ULbl5 = New CMCv.UI.Control.ULbl()
@@ -49,8 +49,8 @@ Namespace UI
             Gbx2 = New CMCv.UI.Control.gbx(components)
             ULbl8 = New CMCv.UI.Control.ULbl()
             nudMinPassword = New NumericUpDown()
-            BtnClose = New CMCv.UI.Control.btn(components)
-            BtnSave = New CMCv.UI.Control.btn(components)
+            BtnClose = New CMCv.UI.Control.Btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -153,10 +153,10 @@ Namespace UI
             ULbl3.Margin = New Padding(7, 10, 7, 10)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(267, 55)
-            ULbl3.SLFText = "Show News Ticker"
-            ULbl3.SLFTextAdjuster = False
-            ULbl3.SLFTextBorder = False
-            ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl3.XOText = "Show News Ticker"
+            ULbl3.XOTextAdjuster = False
+            ULbl3.XOTextBorder = False
+            ULbl3.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 9
             ' 
             ' ULbl2
@@ -166,10 +166,10 @@ Namespace UI
             ULbl2.Margin = New Padding(7, 10, 7, 10)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(267, 55)
-            ULbl2.SLFText = "Show Storage"
-            ULbl2.SLFTextAdjuster = False
-            ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl2.XOText = "Show Storage"
+            ULbl2.XOTextAdjuster = False
+            ULbl2.XOTextBorder = False
+            ULbl2.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 8
             ' 
             ' ULbl1
@@ -179,10 +179,10 @@ Namespace UI
             ULbl1.Margin = New Padding(7, 10, 7, 10)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(267, 55)
-            ULbl1.SLFText = "Show Profile"
-            ULbl1.SLFTextAdjuster = False
-            ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl1.XOText = "Show Profile"
+            ULbl1.XOTextAdjuster = False
+            ULbl1.XOTextBorder = False
+            ULbl1.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.TabIndex = 7
             ' 
             ' CboProfile
@@ -257,10 +257,10 @@ Namespace UI
             ULbl7.Margin = New Padding(7, 10, 7, 10)
             ULbl7.Name = "ULbl7"
             ULbl7.Size = New Size(250, 55)
-            ULbl7.SLFText = "Text"
-            ULbl7.SLFTextAdjuster = False
-            ULbl7.SLFTextBorder = False
-            ULbl7.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl7.XOText = "Text"
+            ULbl7.XOTextAdjuster = False
+            ULbl7.XOTextBorder = False
+            ULbl7.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl7.TabIndex = 15
             ' 
             ' ULbl6
@@ -270,10 +270,10 @@ Namespace UI
             ULbl6.Margin = New Padding(7, 10, 7, 10)
             ULbl6.Name = "ULbl6"
             ULbl6.Size = New Size(250, 55)
-            ULbl6.SLFText = "Show To"
-            ULbl6.SLFTextAdjuster = False
-            ULbl6.SLFTextBorder = False
-            ULbl6.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl6.XOText = "Show To"
+            ULbl6.XOTextAdjuster = False
+            ULbl6.XOTextBorder = False
+            ULbl6.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl6.TabIndex = 14
             ' 
             ' CboWatermark
@@ -299,24 +299,24 @@ Namespace UI
             TxtWatermark.TabIndex = 3
             TxtWatermark.Tag = "txt"
             TxtWatermark.XOAutoTrim = False
-            TxtWatermark.XOHarusDiisi = False
-            TxtWatermark.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtWatermark.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtWatermark.XOHightlightSaatFokus = False
-            TxtWatermark.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtWatermark.XOIsMandatory = False
+            TxtWatermark.XOMandatoryBgColor = Color.LightPink
+            TxtWatermark.XOMandatoryBgColorDefault = Color.White
+            TxtWatermark.XOHighlightOnFocus = False
+            TxtWatermark.XOHighlightColor = Color.LightYellow
             TxtWatermark.XOIsBlank = True
             TxtWatermark.XOIsSearchBox = False
-            TxtWatermark.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtWatermark.XOPilihSemuaSaatFokus = False
-            TxtWatermark.XOPwdLengthMin = 8
-            TxtWatermark.XOPwdStrengthCalculate = False
-            TxtWatermark.XOPwdStrengthScore = 0
-            TxtWatermark.XOPwdStrengthText = Nothing
-            TxtWatermark.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtWatermark.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtWatermark.XOSelectOnFocus = False
+            TxtWatermark.XOPasswordLengthMin = 8
+            TxtWatermark.XOPasswordStrengthCalc = False
+            TxtWatermark.XOPasswordStrengthScore = 0
+            TxtWatermark.XOPasswordStrengthText = Nothing
+            TxtWatermark.XORestriction = ControlCodeBase.enumRestriction.None
             TxtWatermark.XOSearchBoxText = "Watermark Text"
-            TxtWatermark.XOSQLText = ""
-            TxtWatermark.XOTanpaSpasi = False
-            TxtWatermark.XOValidasiField = Nothing
+            TxtWatermark.XOSqlText = ""
+            TxtWatermark.XOIsReplaceEmptyString = False
+            TxtWatermark.XOMandatoryMessage = Nothing
             ' 
             ' Gbx1
             ' 
@@ -343,10 +343,10 @@ Namespace UI
             ULbl5.Margin = New Padding(7, 10, 7, 10)
             ULbl5.Name = "ULbl5"
             ULbl5.Size = New Size(250, 55)
-            ULbl5.SLFText = "PDF"
-            ULbl5.SLFTextAdjuster = False
-            ULbl5.SLFTextBorder = False
-            ULbl5.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl5.XOText = "PDF"
+            ULbl5.XOTextAdjuster = False
+            ULbl5.XOTextBorder = False
+            ULbl5.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.TabIndex = 17
             ' 
             ' ULbl4
@@ -356,10 +356,10 @@ Namespace UI
             ULbl4.Margin = New Padding(7, 10, 7, 10)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 55)
-            ULbl4.SLFText = "Photo"
-            ULbl4.SLFTextAdjuster = False
-            ULbl4.SLFTextBorder = False
-            ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl4.XOText = "Photo"
+            ULbl4.XOTextAdjuster = False
+            ULbl4.XOTextBorder = False
+            ULbl4.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 16
             ' 
             ' Lbl7
@@ -442,10 +442,10 @@ Namespace UI
             ULbl8.Margin = New Padding(7, 10, 7, 10)
             ULbl8.Name = "ULbl8"
             ULbl8.Size = New Size(250, 55)
-            ULbl8.SLFText = "Minimum Length"
-            ULbl8.SLFTextAdjuster = False
-            ULbl8.SLFTextBorder = False
-            ULbl8.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl8.XOText = "Minimum Length"
+            ULbl8.XOTextAdjuster = False
+            ULbl8.XOTextBorder = False
+            ULbl8.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl8.TabIndex = 2
             ' 
             ' nudMinPassword
@@ -477,10 +477,10 @@ Namespace UI
             BtnClose.TabIndex = 805
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnClose.XOTampilkanFocusBorder = False
-            BtnClose.XOValidasiSemuaInput = False
-            BtnClose.XOValidasiSemuaInputTag = Nothing
+            BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClose.XOShowBorderOnFocus = False
+            BtnClose.XOValidateAllInput = False
+            BtnClose.XOValidateAllInputTag = Nothing
             ' 
             ' BtnSave
             ' 
@@ -500,10 +500,10 @@ Namespace UI
             BtnSave.TabIndex = 804
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' FRMsyss
             ' 
@@ -535,13 +535,13 @@ Namespace UI
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents TbctlSettings As CMCv.UI.Control.tbctl
+        Friend WithEvents TbctlSettings As CMCv.UI.Control.Tbx
         Friend WithEvents tbInterface As TabPage
-        Friend WithEvents CboProfile As CMCv.UI.Control.cbo
+        Friend WithEvents CboProfile As CMCv.UI.Control.Cbo
         Friend WithEvents tbStorage As TabPage
         Friend WithEvents tbSecurity As TabPage
-        Friend WithEvents CboNewsTicker As CMCv.UI.Control.cbo
-        Friend WithEvents CboStorage As CMCv.UI.Control.cbo
+        Friend WithEvents CboNewsTicker As CMCv.UI.Control.Cbo
+        Friend WithEvents CboStorage As CMCv.UI.Control.Cbo
         Friend WithEvents Gbx1 As CMCv.UI.Control.gbx
         Friend WithEvents Lbl7 As CMCv.UI.Control.lbl
         Friend WithEvents nudUploadPDF As NumericUpDown
@@ -552,7 +552,7 @@ Namespace UI
         Friend WithEvents GbxPanels As CMCv.UI.Control.gbx
         Friend WithEvents Gbx2 As CMCv.UI.Control.gbx
         Friend WithEvents nudMinPassword As NumericUpDown
-        Friend WithEvents CboWatermark As CMCv.UI.Control.cbo
+        Friend WithEvents CboWatermark As CMCv.UI.Control.Cbo
         Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
@@ -561,7 +561,7 @@ Namespace UI
         Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl8 As CMCv.UI.Control.ULbl
-        Friend WithEvents BtnClose As CMCv.UI.Control.btn
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
     End Class
 End Namespace

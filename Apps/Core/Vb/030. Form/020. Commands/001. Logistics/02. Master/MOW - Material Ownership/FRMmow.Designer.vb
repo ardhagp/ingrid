@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMmow
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -90,8 +90,8 @@
             DgnMOW.Size = New Size(1307, 864)
             DgnMOW.StandardTab = True
             DgnMOW.TabIndex = 802
-            DgnMOW.XOGroupFirstRows = False
-            DgnMOW.XOGunakanNomorBaris = False
+            DgnMOW.XOIsGroupFirstRow = False
+            DgnMOW.XOIsShowRowNumber = False
             ' 
             ' FRMmow
             ' 

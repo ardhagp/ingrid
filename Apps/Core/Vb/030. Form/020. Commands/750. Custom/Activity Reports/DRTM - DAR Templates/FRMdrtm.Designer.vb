@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMdrtm
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -95,8 +95,8 @@
             DgnTemplate.Size = New Size(1307, 864)
             DgnTemplate.StandardTab = True
             DgnTemplate.TabIndex = 802
-            DgnTemplate.XOGroupFirstRows = False
-            DgnTemplate.XOGunakanNomorBaris = False
+            DgnTemplate.XOIsGroupFirstRow = False
+            DgnTemplate.XOIsShowRowNumber = False
             ' 
             ' template_id
             ' 

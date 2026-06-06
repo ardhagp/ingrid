@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMmmvt
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -90,8 +90,8 @@
             DgnMMVT.Size = New Size(1307, 864)
             DgnMMVT.StandardTab = True
             DgnMMVT.TabIndex = 802
-            DgnMMVT.XOGroupFirstRows = False
-            DgnMMVT.XOGunakanNomorBaris = False
+            DgnMMVT.XOIsGroupFirstRow = False
+            DgnMMVT.XOIsShowRowNumber = False
             ' 
             ' FRMmmvt
             ' 

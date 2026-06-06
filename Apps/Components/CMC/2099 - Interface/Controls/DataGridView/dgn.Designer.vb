@@ -63,7 +63,7 @@
 
         Private Sub dgn_RowPostPaint(sender As Object, e As System.Windows.Forms.DataGridViewRowPostPaintEventArgs) Handles Me.RowPostPaint
             'If _varGunakanNomorBaris Then
-            If Me.XOGunakanNomorBaris Then
+            If Me.XOIsShowRowNumber Then
                 ' get the row number in leading zero format, 
                 '  where the width of the number = the width of the maximum number
                 Dim RowNumWidth As Integer = Me.RowCount.ToString().Length
@@ -95,7 +95,7 @@
 
             MyBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             'MyBase.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(192, 192, 255)
-            'MyBase.AlternatingRowsDefaultCellStyle.BackColor = CBS.WarnaAcakBaru(190, 255, 190, 255, 255, 255)
+            'MyBase.AlternatingRowsDefaultCellStyle.BackColor = CBS.NewRandomColor(190, 255, 190, 255, 255, 255)
             MyBase.AllowUserToResizeRows = False
             MyBase.MultiSelect = False
             MyBase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect

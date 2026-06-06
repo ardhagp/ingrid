@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMacgrEditor
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,20 +21,20 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
-            CboCompany = New CMCv.UI.Control.cbo(components)
-            CboAccountingBook = New CMCv.UI.Control.cbo(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
+            CboCompany = New CMCv.UI.Control.Cbo(components)
+            CboAccountingBook = New CMCv.UI.Control.Cbo(components)
             Lbl1 = New CMCv.UI.Control.lbl(components)
             Lbl2 = New CMCv.UI.Control.lbl(components)
-            CboAccountGroup = New CMCv.UI.Control.cbo(components)
+            CboAccountGroup = New CMCv.UI.Control.Cbo(components)
             Lbl3 = New CMCv.UI.Control.lbl(components)
             TxtAccountNumber = New CMCv.UI.Control.txt(components)
             Lbl4 = New CMCv.UI.Control.lbl(components)
             TxtAccountName = New CMCv.UI.Control.txt(components)
             Lbl5 = New CMCv.UI.Control.lbl(components)
-            ChkEnable = New CMCv.UI.Control.chk(components)
-            ChkAddNew = New CMCv.UI.Control.chk(components)
+            ChkEnable = New CMCv.UI.Control.Chk(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -105,10 +105,10 @@
             BtnSave.TabIndex = 6
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -128,10 +128,10 @@
             BtnCancel.TabIndex = 7
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' CboCompany
             ' 
@@ -218,24 +218,24 @@
             TxtAccountNumber.TabIndex = 3
             TxtAccountNumber.Tag = "txt"
             TxtAccountNumber.XOAutoTrim = True
-            TxtAccountNumber.XOHarusDiisi = True
-            TxtAccountNumber.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtAccountNumber.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtAccountNumber.XOHightlightSaatFokus = True
-            TxtAccountNumber.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtAccountNumber.XOIsMandatory = True
+            TxtAccountNumber.XOMandatoryBgColor = Color.LightPink
+            TxtAccountNumber.XOMandatoryBgColorDefault = Color.White
+            TxtAccountNumber.XOHighlightOnFocus = True
+            TxtAccountNumber.XOHighlightColor = Color.LightYellow
             TxtAccountNumber.XOIsBlank = True
             TxtAccountNumber.XOIsSearchBox = False
-            TxtAccountNumber.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-            TxtAccountNumber.XOPilihSemuaSaatFokus = True
-            TxtAccountNumber.XOPwdLengthMin = 8
-            TxtAccountNumber.XOPwdStrengthCalculate = False
-            TxtAccountNumber.XOPwdStrengthScore = 0
-            TxtAccountNumber.XOPwdStrengthText = Nothing
-            TxtAccountNumber.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtAccountNumber.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtAccountNumber.XOSelectOnFocus = True
+            TxtAccountNumber.XOPasswordLengthMin = 8
+            TxtAccountNumber.XOPasswordStrengthCalc = False
+            TxtAccountNumber.XOPasswordStrengthScore = 0
+            TxtAccountNumber.XOPasswordStrengthText = Nothing
+            TxtAccountNumber.XORestriction = ControlCodeBase.enumRestriction.None
             TxtAccountNumber.XOSearchBoxText = "Type then press Enter"
-            TxtAccountNumber.XOSQLText = ""
-            TxtAccountNumber.XOTanpaSpasi = False
-            TxtAccountNumber.XOValidasiField = Nothing
+            TxtAccountNumber.XOSqlText = ""
+            TxtAccountNumber.XOIsReplaceEmptyString = False
+            TxtAccountNumber.XOMandatoryMessage = Nothing
             ' 
             ' Lbl4
             ' 
@@ -260,24 +260,24 @@
             TxtAccountName.TabIndex = 4
             TxtAccountName.Tag = "txt"
             TxtAccountName.XOAutoTrim = True
-            TxtAccountName.XOHarusDiisi = True
-            TxtAccountName.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtAccountName.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtAccountName.XOHightlightSaatFokus = True
-            TxtAccountName.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtAccountName.XOIsMandatory = True
+            TxtAccountName.XOMandatoryBgColor = Color.LightPink
+            TxtAccountName.XOMandatoryBgColorDefault = Color.White
+            TxtAccountName.XOHighlightOnFocus = True
+            TxtAccountName.XOHighlightColor = Color.LightYellow
             TxtAccountName.XOIsBlank = True
             TxtAccountName.XOIsSearchBox = False
-            TxtAccountName.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-            TxtAccountName.XOPilihSemuaSaatFokus = True
-            TxtAccountName.XOPwdLengthMin = 8
-            TxtAccountName.XOPwdStrengthCalculate = False
-            TxtAccountName.XOPwdStrengthScore = 0
-            TxtAccountName.XOPwdStrengthText = Nothing
-            TxtAccountName.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtAccountName.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtAccountName.XOSelectOnFocus = True
+            TxtAccountName.XOPasswordLengthMin = 8
+            TxtAccountName.XOPasswordStrengthCalc = False
+            TxtAccountName.XOPasswordStrengthScore = 0
+            TxtAccountName.XOPasswordStrengthText = Nothing
+            TxtAccountName.XORestriction = ControlCodeBase.enumRestriction.None
             TxtAccountName.XOSearchBoxText = "Type then press Enter"
-            TxtAccountName.XOSQLText = ""
-            TxtAccountName.XOTanpaSpasi = False
-            TxtAccountName.XOValidasiField = Nothing
+            TxtAccountName.XOSqlText = ""
+            TxtAccountName.XOIsReplaceEmptyString = False
+            TxtAccountName.XOMandatoryMessage = Nothing
             ' 
             ' Lbl5
             ' 
@@ -339,20 +339,20 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents Lbl5 As CMCv.UI.Control.lbl
         Friend WithEvents TxtAccountName As CMCv.UI.Control.txt
         Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
         Friend WithEvents TxtAccountNumber As CMCv.UI.Control.txt
         Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
-        Friend WithEvents CboAccountGroup As CMCv.UI.Control.cbo
+        Friend WithEvents CboAccountGroup As CMCv.UI.Control.Cbo
         Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
         Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
-        Friend WithEvents CboAccountingBook As CMCv.UI.Control.cbo
-        Friend WithEvents CboCompany As CMCv.UI.Control.cbo
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
-        Friend WithEvents ChkEnable As CMCv.UI.Control.chk
+        Friend WithEvents CboAccountingBook As CMCv.UI.Control.Cbo
+        Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
+        Friend WithEvents ChkEnable As CMCv.UI.Control.Chk
 
     End Class
 End Namespace

@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
 Namespace UI.Control
-    Public Class lbl
+    Public Class Lbl
         Inherits System.Windows.Forms.Label
 
         <SupportedOSPlatform("windows")>
@@ -14,13 +14,15 @@ Namespace UI.Control
             MyBase.DoubleBuffered = True
         End Sub
 
-        Private _varCustomElipsis As Boolean
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the custom ellipsis text displayed when the progress message exceeds the available space")>
+        Private varCustomElipsis As Boolean
         Public Property XOCustomElipsis As Boolean
             Get
-                Return _varCustomElipsis
+                Return varCustomElipsis
             End Get
             Set(value As Boolean)
-                _varCustomElipsis = value
+                varCustomElipsis = value
             End Set
         End Property
     End Class

@@ -34,20 +34,23 @@ Namespace CMDuac
                     '    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                     'End If
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = $"select usr.{tUser.C_UserId}, " &
-                                                       $"usr.{tUser.C_UserIsRoot}, " &
-                                                       $"em.{tEmployee.C_EmployeeId}, " &
-                                                       $"em.{tEmployee.C_EmployeeNumber}, " &
-                                                       $"em.{tEmployee.C_EmployeeFullName}, " &
-                                                       $"em.{tEmployee.C_EmployeeNickname}, " &
-                                                       $"em.{tEmployee.C_EmployeePersonalIdNumber}, " &
-                                                       $"em.{tEmployee.C_EmployeeGender}, " &
-                                                       $"pos.{tPosition.C_PositionCode}, " &
-                                                       $"pos.{tPosition.C_PositionName} " &
-                                                       $"From {tUser.TableName} usr " &
-                                                       $"inner join {tEmployee.TableName} em On em.{tEmployee.C_EmployeeId} = usr.{tUser.C_UserEmployee} " &
-                                                       $"inner join {tPosition.TableName} pos On pos.{tPosition.C_PositionId} = em.{tEmployee.C_EmployeePosition} " &
-                                                       $"where (usr.{tUser.C_UserUsername} = {tUser.P_Username} and usr.{tUser.C_UserPassword} = {tUser.P_UserPassword})"
+                    varDatabaseRequestMysql(1).Query = $"select {tUser.S}.{tUser.C_UserId}, " &
+                                                       $"{tUser.S}.{tUser.C_UserIsRoot}, " &
+                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeId}, " &
+                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeNumber}, " &
+                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeFullName}, " &
+                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeNickname}, " &
+                                                       $"{tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}, " &
+                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeGender}, " &
+                                                       $"{tPosition.S}.{tPosition.C_PositionCode}, " &
+                                                       $"{tPosition.S}.{tPosition.C_PositionName} " &
+                                                       $"From {tUser.TableName} {tUser.S} " &
+                                                       $"inner join {tEmployee.TableName} {tEmployee.S} " &
+                                                       $"On {tEmployee.S}.{tEmployee.C_EmployeeId} = {tUser.S}.{tUser.C_UserEmployee} " &
+                                                       $"inner join {tPosition.TableName} {tPosition.S} " &
+                                                       $"On {tPosition.S}.{tPosition.C_PositionId} = {tEmployee.S}.{tEmployee.C_EmployeePosition} " &
+                                                       $"where ({tUser.S}.{tUser.C_UserUsername} = {tUser.P_Username} " &
+                                                       $"And {tUser.S}.{tUser.C_UserPassword} = {tUser.P_UserPassword})"
                     varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, datasetname, "UserData", dataproperties.AllParameters)
 
                     With datasetname
@@ -173,25 +176,25 @@ Namespace CMDuac
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then 'Run if MSSQL
-                If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
+                If (find.XOSqlText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMssql2008(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as [user_root], usr.user_lastlogin, " &
                                                             "usr.user_locked from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee order by em.employee_fullname")
                 Else
                     varDatabaseRequestMssql2008(0).Query = String.Format("select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as [user_root], usr.user_lastlogin, " &
                                                             "usr.user_locked from dbo.sys_user usr inner join dbo.man_employee em on em.employee_id = usr.user_employee where (em.employee_number = '{0}') or " &
-                                                            "(em.employee_fullname like '%{0}%') or (usr.user_username = '{0}') order by em.employee_fullname", find.XOSQLText)
+                                                            "(em.employee_fullname like '%{0}%') or (usr.user_username = '{0}') order by em.employee_fullname", find.XOSqlText)
                 End If
                 varDatabaseRequestMssql2008(0).DataGrid = datagrid
                 varDatabaseRequestMssql2008(0).StatusBar = statusbar
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TUAC")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run in MYSQL
-                If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then
+                If (find.XOSqlText = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMysql(0).Query = $"select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as `user_root`, usr.user_lastlogin, " &
                                                        $"usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee order by em.employee_fullname"
                 Else
                     varDatabaseRequestMysql(0).Query = $"select usr.user_id, em.employee_number, em.employee_fullname, usr.user_username, iif(usr.user_root=1,'Administrator','') as `user_root`, usr.user_lastlogin, " &
-                                                       $"usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where (em.employee_number = '{find.XOSQLText}') or " &
-                                                       $"(em.employee_fullname like '%{find.XOSQLText}%') or (usr.user_username = '{find.XOSQLText}') order by em.employee_fullname"
+                                                       $"usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where (em.employee_number = '{find.XOSqlText}') or " &
+                                                       $"(em.employee_fullname like '%{find.XOSqlText}%') or (usr.user_username = '{find.XOSqlText}') order by em.employee_fullname"
                 End If
                 varDatabaseRequestMysql(0).DataGrid = datagrid
                 varDatabaseRequestMysql(0).StatusBar = statusbar

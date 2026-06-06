@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMmmty
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -96,8 +96,8 @@
             DgnMMTY.Size = New Size(1307, 864)
             DgnMMTY.StandardTab = True
             DgnMMTY.TabIndex = 0
-            DgnMMTY.XOGroupFirstRows = False
-            DgnMMTY.XOGunakanNomorBaris = True
+            DgnMMTY.XOIsGroupFirstRow = False
+            DgnMMTY.XOIsShowRowNumber = True
             ' 
             ' materialtype_id
             ' 

@@ -1,4 +1,4 @@
-﻿Imports System.Data
+﻿'Imports System.Data
 Imports System.Drawing
 Imports System.IO
 Imports System.Runtime.Versioning
@@ -91,7 +91,7 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillEmployee(dataproperties As LibApp.Ingrid.Global.Properties, employee As CMCv.UI.Control.cbo)
+        Public Shared Sub FillEmployee(dataproperties As LibApp.Ingrid.Global.Properties, employee As CMCv.UI.Control.Cbo)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_id, em.employee_fullname from dbo.man_employee em where em.employee_id in " &
                                                     "(select ea.employeeactivity_employee from dbo.doc_employeeactivity ea group by " &
@@ -111,7 +111,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayMainGrid(dataproperties As LibApp.Ingrid.Global.Properties, find As CMCv.UI.Control.txt, dategrid As CMCv.UI.Control.dgn, datestatusbar As CMCv.UI.Control.stt, contentstatusbar As CMCv.UI.Control.stt, chkdatefilter As CMCv.UI.Control.chk, dtpdatefilter As CMCv.UI.Control.dtp, chkbyfilter As CMCv.UI.Control.chk, cbobyfilter As CMCv.UI.Control.cbo, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayMainGrid(dataproperties As LibApp.Ingrid.Global.Properties, find As CMCv.UI.Control.txt, dategrid As CMCv.UI.Control.dgn, datestatusbar As CMCv.UI.Control.stt, contentstatusbar As CMCv.UI.Control.stt, chkdatefilter As CMCv.UI.Control.Chk, dtpdatefilter As CMCv.UI.Control.dtp, chkbyfilter As CMCv.UI.Control.Chk, cbobyfilter As CMCv.UI.Control.Cbo, Optional forcerefresh As Boolean = False)
             Try
                 Dim varWhere As String = String.Format("where ")
 
@@ -122,7 +122,7 @@ Namespace CMDdar
                 End If
 
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
+                    If (find.XOSqlText = String.Empty) AndAlso (forcerefresh) Then
                         If Not (chkdatefilter.Checked) Then
                             varWhere += String.Format("(year(ea.employeeactivity_datetime) = year(getdate())) And (month(ea.employeeactivity_datetime) = " &
                                                 "month(getdate()))")
@@ -134,10 +134,10 @@ Namespace CMDdar
                             varWhere += String.Format(" And (ea.employeeactivity_employee = '{0}')", varEmployeeID)
                         End If
                     Else
-                        If Not (find.XOSQLText.Trim.Contains("||")) Then
-                            varWhere += String.Format("(ea.employeeactivity_description like '%{0}%')", find.XOSQLText)
+                        If Not (find.XOSqlText.Trim.Contains("||")) Then
+                            varWhere += String.Format("(ea.employeeactivity_description like '%{0}%')", find.XOSqlText)
                         Else
-                            Dim varContainText As String() = find.XOSQLText.Split("||")
+                            Dim varContainText As String() = find.XOSqlText.Split("||")
                             Dim varRepeater As Integer = 0
 
                             varWhere += String.Format("(")
@@ -177,7 +177,7 @@ Namespace CMDdar
 
                     varIsEmpFilter = chkbyfilter.Checked
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
+                    If (find.XOSqlText = String.Empty) AndAlso (forcerefresh) Then
                         If Not (chkdatefilter.Checked) Then
                             varWhere += $"(year(ea.employeeactivity_datetime) = year(now())) And (month(ea.employeeactivity_datetime) = " &
                                         $"month(now()))"
@@ -189,10 +189,10 @@ Namespace CMDdar
                             varWhere += $" And (ea.employeeactivity_employee = '{varEmployeeID}')"
                         End If
                     Else
-                        If Not (find.XOSQLText.Trim.Contains("||")) Then
-                            varWhere += $"(ea.employeeactivity_description like '%{find.XOSQLText}%')"
+                        If Not (find.XOSqlText.Trim.Contains("||")) Then
+                            varWhere += $"(ea.employeeactivity_description like '%{find.XOSqlText}%')"
                         Else
-                            Dim varContainText As String() = find.XOSQLText.Split("||")
+                            Dim varContainText As String() = find.XOSqlText.Split("||")
                             Dim varRepeater As Integer = 0
 
                             varWhere += $"("
@@ -260,14 +260,14 @@ Namespace CMDdar
                     ReDim varDatabaseRequestMssql2008(3)
 
                     'add text query-cut
-                    If (find.XOSQLText <> String.Empty) Then
+                    If (find.XOSqlText <> String.Empty) Then
                         varWhere += String.Format(" and ")
 
                         'multiple keywords execution
-                        If Not (find.XOSQLText.Trim.Contains("||")) Then
-                            varWhere += String.Format("(ea.employeeactivity_description like '%{0}%') ", find.XOSQLText)
+                        If Not (find.XOSqlText.Trim.Contains("||")) Then
+                            varWhere += String.Format("(ea.employeeactivity_description like '%{0}%') ", find.XOSqlText)
                         Else
-                            Dim varContainText As String() = find.XOSQLText.Split("||")
+                            Dim varContainText As String() = find.XOSqlText.Split("||")
                             Dim varRepeater As Integer = 0
 
                             varWhere += String.Format("(")
@@ -355,14 +355,14 @@ Namespace CMDdar
                     ReDim varDatabaseRequestMysql(3)
 
                     'add text query-cut
-                    If (find.XOSQLText <> String.Empty) Then
+                    If (find.XOSqlText <> String.Empty) Then
                         varWhere += String.Format(" and ")
 
                         'multiple keywords execution
-                        If Not (find.XOSQLText.Trim.Contains("||")) Then
-                            varWhere += $"(ea.employeeactivity_description like '%{find.XOSQLText}%') "
+                        If Not (find.XOSqlText.Trim.Contains("||")) Then
+                            varWhere += $"(ea.employeeactivity_description like '%{find.XOSqlText}%') "
                         Else
-                            Dim varContainText As String() = find.XOSQLText.Split("||")
+                            Dim varContainText As String() = find.XOSqlText.Split("||")
                             Dim varRepeater As Integer = 0
 
                             varWhere += $"("
@@ -603,10 +603,10 @@ Namespace CMDdar
     End Class
 
     Public Class Editor
-        Private Shared varDataSet As DataSet
+        Private Shared varDataSet As System.Data.DataSet
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetAffectedArea(dataproperties As LibApp.Ingrid.Global.Properties, listofaffectedarea As CMCv.UI.Control.cbo)
+        Public Shared Sub GetAffectedArea(dataproperties As LibApp.Ingrid.Global.Properties, listofaffectedarea As CMCv.UI.Control.Cbo)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = "select aa.areaaffected_id, aa.areaaffected_name from dbo.doc_areaaffected aa order by aa.areaaffected_order"
                 varDatabaseRequestMssql2008(1).Dropdown = listofaffectedarea
@@ -621,7 +621,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetTemplateTitle(dataproperties As LibApp.Ingrid.Global.Properties, listoftemplate As CMCv.UI.Control.cbo)
+        Public Shared Sub GetTemplateTitle(dataproperties As LibApp.Ingrid.Global.Properties, listoftemplate As CMCv.UI.Control.Cbo)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = "select tp.template_id, tp.template_title from dbo.doc_template tp inner join dbo.sys_module mo on " &
                 "mo.module_id = tp.template_module where mo.module_code = 'DAR' order by tp.template_title"
@@ -638,7 +638,7 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetTemplateContent(dataproperties As LibApp.Ingrid.Global.Properties, listoftemplate As CMCv.UI.Control.cbo) As String
+        Public Shared Function GetTemplateContent(dataproperties As LibApp.Ingrid.Global.Properties, listoftemplate As CMCv.UI.Control.Cbo) As String
             Dim varTemplateContent As String = String.Empty
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -652,7 +652,7 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetRowValue(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, datepart As CMCv.UI.Control.dtp, timepart As CMCv.UI.Control.meb, datepartend As CMCv.UI.Control.dtp, timepartend As CMCv.UI.Control.meb, listofaffectedarea As CMCv.UI.Control.cbo, listoftemplate As CMCv.UI.Control.cbo, templatecontent As CMCv.UI.Control.txt, feedBack As CMCv.UI.Control.txt)
+        Public Shared Sub GetRowValue(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, datepart As CMCv.UI.Control.dtp, timepart As CMCv.UI.Control.meb, datepartend As CMCv.UI.Control.dtp, timepartend As CMCv.UI.Control.meb, listofaffectedarea As CMCv.UI.Control.Cbo, listoftemplate As CMCv.UI.Control.Cbo, templatecontent As CMCv.UI.Control.txt, feedBack As CMCv.UI.Control.txt)
             Dim varDatePart(3) As String
             Dim varTimeParts(1) As TimeSpan
             Dim varTimePart(3) As String
@@ -758,8 +758,8 @@ Namespace CMDdar
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DisplayPhotoGrid(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, filegrid As CMCv.UI.Control.dgn) As DataSet
-            varDataSet = New DataSet
+        Public Shared Function DisplayPhotoGrid(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, filegrid As CMCv.UI.Control.dgn) As System.Data.DataSet
+            varDataSet = New System.Data.DataSet
             'ReDim varDatabaseRequestMssql2008(3)
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -779,8 +779,8 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function DisplayFileGrid(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, filegrid As CMCv.UI.Control.dgn) As DataSet
-            varDataSet = New DataSet
+        Public Shared Function DisplayFileGrid(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, filegrid As CMCv.UI.Control.dgn) As System.Data.DataSet
+            varDataSet = New System.Data.DataSet
             'ReDim varDatabaseRequestMssql2008(3)
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -871,13 +871,13 @@ Namespace CMDdar
 
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    Dim varCommand As SqlClient.SqlCommand
+                    Dim varCommand As Microsoft.Data.SqlClient.SqlCommand
                     For Each eachRow As DataGridViewRow In filegrid.Rows
                         If eachRow.Cells("photo_status").Value Is "Add" Then
 
                             Dim varQuery As String = String.Empty
 
-                            varCommand = New SqlClient.SqlCommand
+                            varCommand = New Microsoft.Data.SqlClient.SqlCommand
                             varQuery = "insert into db_universe_erp_file.dbo.sto_file([file_id], file_parent, file_filename, file_filetype, file_content, file_tag, " &
                             "file_datetime, file_attribute, file_uploader, file_parentdate) values(@ID, @ParentID, @FileName, 'jpg', @FileContent, '', @DateNow, " &
                             "'module=DAR;', @Uploader,@ParentDate);"
@@ -901,7 +901,7 @@ Namespace CMDdar
                             varImage.Save(varMemoryStream, Imaging.ImageFormat.Jpeg) ', Row.Cells("file_content").Value)
                             varPhotoByte = varMemoryStream.ToArray
 
-                            Dim varImageParam As New SqlClient.SqlParameter("@FileContent", SqlDbType.Image)
+                            Dim varImageParam As New Microsoft.Data.SqlClient.SqlParameter("@FileContent", System.Data.SqlDbType.Image)
                             varImageParam.Value = varPhotoByte
                             varCommand.Parameters.Add(varImageParam)
 
@@ -941,7 +941,7 @@ Namespace CMDdar
                             varImage.Save(varMemoryStream, Imaging.ImageFormat.Jpeg) ', Row.Cells("file_content").Value)
                             varPhotoByte = varMemoryStream.ToArray
 
-                            Dim varImageParam As New SqlClient.SqlParameter("@FileContent", SqlDbType.Image)
+                            Dim varImageParam As New Microsoft.Data.SqlClient.SqlParameter("@FileContent", System.Data.SqlDbType.Image)
                             varImageParam.Value = varPhotoByte
                             varCommand.Parameters.Add(varImageParam)
 
@@ -965,14 +965,14 @@ Namespace CMDdar
 
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    Dim varCommand As SqlClient.SqlCommand
+                    Dim varCommand As Microsoft.Data.SqlClient.SqlCommand
 
                     For Each eachRow As DataGridViewRow In filegrid.Rows
                         If eachRow.Cells("file_status").Value Is "Add" Then
 
                             Dim varQuery As String = String.Empty
 
-                            varCommand = New SqlClient.SqlCommand
+                            varCommand = New Microsoft.Data.SqlClient.SqlCommand
                             varQuery = "insert into db_universe_erp_file.dbo.sto_file([file_id], file_parent, file_filename, file_filetype, file_content, file_tag, " &
                             "file_datetime, file_attribute, file_uploader,file_parentdate) values(@ID, @ParentID, @FileName, 'pdf', @FileContent, @Tag, @DateNow, " &
                             "'module=DAR;', @Uploader, @ParentDate);"
@@ -998,7 +998,7 @@ Namespace CMDdar
                             Dim varFileByte As Byte() = Nothing
                             varFileByte = varMemoryStream.ToArray
 
-                            Dim varFileParam As New SqlClient.SqlParameter("@FileContent", SqlDbType.Image)
+                            Dim varFileParam As New Microsoft.Data.SqlClient.SqlParameter("@FileContent", System.Data.SqlDbType.Image)
                             varFileParam.Value = varFileByte
                             varCommand.Parameters.Add(varFileParam)
 
@@ -1041,7 +1041,7 @@ Namespace CMDdar
                             Dim varFileByte As Byte() = Nothing
                             varFileByte = varMemoryStream.ToArray
 
-                            Dim varFileParam As New SqlClient.SqlParameter("@FileContent", SqlDbType.Image)
+                            Dim varFileParam As New Microsoft.Data.SqlClient.SqlParameter("@FileContent", System.Data.SqlDbType.Image)
                             varFileParam.Value = varFileByte
                             varCommand.Parameters.Add(varFileParam)
 
@@ -1061,7 +1061,7 @@ Namespace CMDdar
 
     Public Class Reports
         <SupportedOSPlatform("windows")>
-        Public Shared Sub Display(dataproperties As LibApp.Ingrid.Global.Properties, chkfrom As CMCv.UI.Control.chk, chkto As CMCv.UI.Control.chk, chkarea As CMCv.UI.Control.chk, chkactivity As CMCv.UI.Control.chk, chkby As CMCv.UI.Control.chk, dtpfrom As CMCv.UI.Control.dtp, dtpto As CMCv.UI.Control.dtp, cboarea As CMCv.UI.Control.cbo, cboactivity As CMCv.UI.Control.cbo, cboby As CMCv.UI.Control.cbo, txtdescription As CMCv.UI.Control.txt, datasetname As DataSet)
+        Public Shared Sub Display(dataproperties As LibApp.Ingrid.Global.Properties, chkfrom As CMCv.UI.Control.Chk, chkto As CMCv.UI.Control.Chk, chkarea As CMCv.UI.Control.Chk, chkactivity As CMCv.UI.Control.Chk, chkby As CMCv.UI.Control.Chk, dtpfrom As CMCv.UI.Control.dtp, dtpto As CMCv.UI.Control.dtp, cboarea As CMCv.UI.Control.Cbo, cboactivity As CMCv.UI.Control.Cbo, cboby As CMCv.UI.Control.Cbo, txtdescription As CMCv.UI.Control.txt, datasetname As System.Data.DataSet)
 
             Dim varWhere As String
             Dim varDTPfrom As String = dtpfrom.Value.Year & "-" & dtpfrom.Value.Month & "-" & dtpfrom.Value.Day
@@ -1102,17 +1102,17 @@ Namespace CMDdar
                     End If
                 End If
 
-                If txtdescription.XOSQLText.Trim <> String.Empty Then
+                If txtdescription.XOSqlText.Trim <> String.Empty Then
 
                     If varWhere <> "Where " Then
                         varWhere += String.Format(" and ")
                     End If
 
                     'multiple keywords execution
-                    If Not (txtdescription.XOSQLText.Trim.Contains("||")) Then
-                        varWhere += String.Format("(ea.employeeactivity_description like '%{0}%') ", txtdescription.XOSQLText)
+                    If Not (txtdescription.XOSqlText.Trim.Contains("||")) Then
+                        varWhere += String.Format("(ea.employeeactivity_description like '%{0}%') ", txtdescription.XOSqlText)
                     Else
-                        Dim varContainText As String() = txtdescription.XOSQLText.Split("||")
+                        Dim varContainText As String() = txtdescription.XOSqlText.Split("||")
                         Dim varRepeater As Integer = 0
 
                         varWhere += String.Format("(")

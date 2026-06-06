@@ -75,10 +75,10 @@ Namespace UI
             If (TxtAccountName.Text = String.Empty) OrElse (TxtAccountNumber.Text = String.Empty) OrElse (CboAccountingBook.Items.Count = 0) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Make sure you have Account Book selected, Account Number & Account Name properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf (varDataProperties.AccountGroupIsNew) AndAlso (CMDacgr.Editor.IsDuplicate(varDataProperties, CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSQLText)) Then
+            ElseIf (varDataProperties.AccountGroupIsNew) AndAlso (CMDacgr.Editor.IsDuplicate(varDataProperties, CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSqlText)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Account Number already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
-            ElseIf Not (varDataProperties.AccountGroupIsNew) AndAlso (CMDacgr.Editor.IsDuplicate(varDataProperties, CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSQLText, Convert.ToString(varDataProperties.AccountGroupId))) Then
+            ElseIf Not (varDataProperties.AccountGroupIsNew) AndAlso (CMDacgr.Editor.IsDuplicate(varDataProperties, CboAccountingBook.SelectedValue.ToString, CboAccountGroup.SelectedValue.ToString, TxtAccountNumber.XOSqlText, Convert.ToString(varDataProperties.AccountGroupId))) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Account Number already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
@@ -90,8 +90,8 @@ Namespace UI
             With varDataProperties
                 .AccountBookId = CLng(CboAccountingBook.SelectedValue)
                 .AccountGroupId = CboAccountGroup.SelectedValue.ToString
-                .AccountBookNumber = CInt(TxtAccountNumber.XOSQLText)
-                .AccountBookName = TxtAccountName.XOSQLText
+                .AccountBookNumber = CInt(TxtAccountNumber.XOSqlText)
+                .AccountBookName = TxtAccountName.XOSqlText
                 .AccountBookIsEnabled = ChkEnable.Checked
             End With
 

@@ -1,4 +1,5 @@
-﻿Imports System.Data.Common
+﻿Imports System.ComponentModel
+Imports System.Data.Common
 Imports System.Runtime.Versioning
 Imports System.Text
 
@@ -165,5 +166,16 @@ Namespace UI
         Private Sub FRMccinEditor_RecordSaved() Handles Frm_ccin_Editor.EventRecordSaved
             Call GetData(True)
         End Sub
+
+        <SupportedOSPlatform("windows")>
+        Private Sub FRMccin_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+            Com_mms_Menu.Dispose()
+        End Sub
+
+        <SupportedOSPlatform("windows")>
+        Private Sub FRMccin_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus
+            Me.WindowState = FormWindowState.Maximized
+        End Sub
+
     End Class
 End Namespace

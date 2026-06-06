@@ -1,5 +1,5 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.chk), "chk.ico")>
+    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Chk), "chk.ico")>
     Partial Class chk
         Inherits System.Windows.Forms.CheckBox
 

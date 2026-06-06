@@ -44,6 +44,8 @@ Namespace Ingrid.UI.Dataset
         
         Private tableSysModule As SysModuleDataTable
         
+        Private tablesys_settings As sys_settingsDataTable
+        
         Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -59,7 +61,9 @@ Namespace Ingrid.UI.Dataset
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called"& _ 
+            " or extended by application code.", DiagnosticId:="SYSLIB0051")>  _
         Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
             MyBase.New(info, context, false)
             If (Me.IsBinarySerialized(info, context) = true) Then
@@ -99,6 +103,9 @@ Namespace Ingrid.UI.Dataset
                 End If
                 If (Not (ds.Tables("SysModule")) Is Nothing) Then
                     MyBase.Tables.Add(New SysModuleDataTable(ds.Tables("SysModule")))
+                End If
+                If (Not (ds.Tables("sys_settings")) Is Nothing) Then
+                    MyBase.Tables.Add(New sys_settingsDataTable(ds.Tables("sys_settings")))
                 End If
                 Me.DataSetName = ds.DataSetName
                 Me.Prefix = ds.Prefix
@@ -209,6 +216,16 @@ Namespace Ingrid.UI.Dataset
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false),  _
+         Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+        Public ReadOnly Property sys_settings() As sys_settingsDataTable
+            Get
+                Return Me.tablesys_settings
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.BrowsableAttribute(true),  _
          Global.System.ComponentModel.DesignerSerializationVisibilityAttribute(Global.System.ComponentModel.DesignerSerializationVisibility.Visible)>  _
         Public Overrides Property SchemaSerializationMode() As Global.System.Data.SchemaSerializationMode
@@ -301,6 +318,9 @@ Namespace Ingrid.UI.Dataset
                 If (Not (ds.Tables("SysModule")) Is Nothing) Then
                     MyBase.Tables.Add(New SysModuleDataTable(ds.Tables("SysModule")))
                 End If
+                If (Not (ds.Tables("sys_settings")) Is Nothing) Then
+                    MyBase.Tables.Add(New sys_settingsDataTable(ds.Tables("sys_settings")))
+                End If
                 Me.DataSetName = ds.DataSetName
                 Me.Prefix = ds.Prefix
                 Me.Namespace = ds.Namespace
@@ -387,6 +407,12 @@ Namespace Ingrid.UI.Dataset
                     Me.tableSysModule.InitVars
                 End If
             End If
+            Me.tablesys_settings = CType(MyBase.Tables("sys_settings"),sys_settingsDataTable)
+            If (initTable = true) Then
+                If (Not (Me.tablesys_settings) Is Nothing) Then
+                    Me.tablesys_settings.InitVars
+                End If
+            End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -415,6 +441,8 @@ Namespace Ingrid.UI.Dataset
             MyBase.Tables.Add(Me.tableEPLS_Editor)
             Me.tableSysModule = New SysModuleDataTable()
             MyBase.Tables.Add(Me.tableSysModule)
+            Me.tablesys_settings = New sys_settingsDataTable()
+            MyBase.Tables.Add(Me.tablesys_settings)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -468,6 +496,12 @@ Namespace Ingrid.UI.Dataset
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Function ShouldSerializeSysModule() As Boolean
+            Return false
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Private Function ShouldSerializesys_settings() As Boolean
             Return false
         End Function
         
@@ -556,6 +590,9 @@ Namespace Ingrid.UI.Dataset
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Delegate Sub SysModuleRowChangeEventHandler(ByVal sender As Object, ByVal e As SysModuleRowChangeEvent)
         
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Delegate Sub sys_settingsRowChangeEventHandler(ByVal sender As Object, ByVal e As sys_settingsRowChangeEvent)
+        
         '''<summary>
         '''Represents the strongly named DataTable class.
         '''</summary>
@@ -597,7 +634,9 @@ Namespace Ingrid.UI.Dataset
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+             System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called"& _ 
+                " or extended by application code.", DiagnosticId:="SYSLIB0051")>  _
             Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
                 MyBase.New(info, context)
                 Me.InitVars
@@ -870,7 +909,9 @@ Namespace Ingrid.UI.Dataset
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+             System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called"& _ 
+                " or extended by application code.", DiagnosticId:="SYSLIB0051")>  _
             Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
                 MyBase.New(info, context)
                 Me.InitVars
@@ -1195,7 +1236,9 @@ Namespace Ingrid.UI.Dataset
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+             System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called"& _ 
+                " or extended by application code.", DiagnosticId:="SYSLIB0051")>  _
             Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
                 MyBase.New(info, context)
                 Me.InitVars
@@ -1554,7 +1597,9 @@ Namespace Ingrid.UI.Dataset
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+             System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called"& _ 
+                " or extended by application code.", DiagnosticId:="SYSLIB0051")>  _
             Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
                 MyBase.New(info, context)
                 Me.InitVars
@@ -1863,7 +1908,9 @@ Namespace Ingrid.UI.Dataset
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+             System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called"& _ 
+                " or extended by application code.", DiagnosticId:="SYSLIB0051")>  _
             Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
                 MyBase.New(info, context)
                 Me.InitVars
@@ -2199,7 +2246,9 @@ Namespace Ingrid.UI.Dataset
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+             System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called"& _ 
+                " or extended by application code.", DiagnosticId:="SYSLIB0051")>  _
             Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
                 MyBase.New(info, context)
                 Me.InitVars
@@ -2568,7 +2617,9 @@ Namespace Ingrid.UI.Dataset
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+             System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called"& _ 
+                " or extended by application code.", DiagnosticId:="SYSLIB0051")>  _
             Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
                 MyBase.New(info, context)
                 Me.InitVars
@@ -2959,7 +3010,9 @@ Namespace Ingrid.UI.Dataset
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+             System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called"& _ 
+                " or extended by application code.", DiagnosticId:="SYSLIB0051")>  _
             Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
                 MyBase.New(info, context)
                 Me.InitVars
@@ -3462,7 +3515,9 @@ Namespace Ingrid.UI.Dataset
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+             System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called"& _ 
+                " or extended by application code.", DiagnosticId:="SYSLIB0051")>  _
             Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
                 MyBase.New(info, context)
                 Me.InitVars
@@ -3687,6 +3742,442 @@ Namespace Ingrid.UI.Dataset
                 Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
                 attribute2.Name = "tableTypeName"
                 attribute2.FixedValue = "SysModuleDataTable"
+                type.Attributes.Add(attribute2)
+                type.Particle = sequence
+                Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+                If xs.Contains(dsSchema.TargetNamespace) Then
+                    Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                    Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                    Try 
+                        Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                        dsSchema.Write(s1)
+                        Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                        Do While schemas.MoveNext
+                            schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                            s2.SetLength(0)
+                            schema.Write(s2)
+                            If (s1.Length = s2.Length) Then
+                                s1.Position = 0
+                                s2.Position = 0
+                                
+                                Do While ((s1.Position <> s1.Length)  _
+                                            AndAlso (s1.ReadByte = s2.ReadByte))
+                                    
+                                    
+                                Loop
+                                If (s1.Position = s1.Length) Then
+                                    Return type
+                                End If
+                            End If
+                            
+                        Loop
+                    Finally
+                        If (Not (s1) Is Nothing) Then
+                            s1.Close
+                        End If
+                        If (Not (s2) Is Nothing) Then
+                            s2.Close
+                        End If
+                    End Try
+                End If
+                xs.Add(dsSchema)
+                Return type
+            End Function
+        End Class
+        
+        '''<summary>
+        '''Represents the strongly named DataTable class.
+        '''</summary>
+        <Global.System.Serializable(),  _
+         Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+        Partial Public Class sys_settingsDataTable
+            Inherits Global.System.Data.TypedTableBase(Of sys_settingsRow)
+            
+            Private columnsettings_id As Global.System.Data.DataColumn
+            
+            Private columnsettings_showprofile As Global.System.Data.DataColumn
+            
+            Private columnsettings_showstorage As Global.System.Data.DataColumn
+            
+            Private columnsettings_showwatermark As Global.System.Data.DataColumn
+            
+            Private columnsettings_textmark As Global.System.Data.DataColumn
+            
+            Private columnsettings_textmarklength As Global.System.Data.DataColumn
+            
+            Private columnsettings_showrunningtext As Global.System.Data.DataColumn
+            
+            Private columnsettings_uploadphoto As Global.System.Data.DataColumn
+            
+            Private columnsettings_uploadpdf As Global.System.Data.DataColumn
+            
+            Private columnsettings_storageprovider As Global.System.Data.DataColumn
+            
+            Private columnsettings_apikey As Global.System.Data.DataColumn
+            
+            Private columnsettings_apisecret As Global.System.Data.DataColumn
+            
+            Private columnsettings_apiserviceurl As Global.System.Data.DataColumn
+            
+            Private columnsettings_storagedb As Global.System.Data.DataColumn
+            
+            Private columnsettings_client As Global.System.Data.DataColumn
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub New()
+                MyBase.New
+                Me.TableName = "sys_settings"
+                Me.BeginInit
+                Me.InitClass
+                Me.EndInit
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Friend Sub New(ByVal table As Global.System.Data.DataTable)
+                MyBase.New
+                Me.TableName = table.TableName
+                If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                    Me.CaseSensitive = table.CaseSensitive
+                End If
+                If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                    Me.Locale = table.Locale
+                End If
+                If (table.Namespace <> table.DataSet.Namespace) Then
+                    Me.Namespace = table.Namespace
+                End If
+                Me.Prefix = table.Prefix
+                Me.MinimumCapacity = table.MinimumCapacity
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+             System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called"& _ 
+                " or extended by application code.", DiagnosticId:="SYSLIB0051")>  _
+            Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+                MyBase.New(info, context)
+                Me.InitVars
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_idColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_id
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_showprofileColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_showprofile
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_showstorageColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_showstorage
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_showwatermarkColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_showwatermark
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_textmarkColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_textmark
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_textmarklengthColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_textmarklength
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_showrunningtextColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_showrunningtext
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_uploadphotoColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_uploadphoto
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_uploadpdfColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_uploadpdf
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_storageproviderColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_storageprovider
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_apikeyColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_apikey
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_apisecretColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_apisecret
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_apiserviceurlColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_apiserviceurl
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_storagedbColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_storagedb
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_clientColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_client
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+             Global.System.ComponentModel.Browsable(false)>  _
+            Public ReadOnly Property Count() As Integer
+                Get
+                    Return Me.Rows.Count
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Default ReadOnly Property Item(ByVal index As Integer) As sys_settingsRow
+                Get
+                    Return CType(Me.Rows(index),sys_settingsRow)
+                End Get
+            End Property
+            
+            <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Event sys_settingsRowChanging As sys_settingsRowChangeEventHandler
+            
+            <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Event sys_settingsRowChanged As sys_settingsRowChangeEventHandler
+            
+            <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Event sys_settingsRowDeleting As sys_settingsRowChangeEventHandler
+            
+            <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Event sys_settingsRowDeleted As sys_settingsRowChangeEventHandler
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Overloads Sub Addsys_settingsRow(ByVal row As sys_settingsRow)
+                Me.Rows.Add(row)
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Overloads Function Addsys_settingsRow(ByVal settings_id As Decimal, ByVal settings_showprofile As Boolean, ByVal settings_showstorage As Boolean, ByVal settings_showwatermark As Boolean, ByVal settings_textmark As String, ByVal settings_textmarklength As String, ByVal settings_showrunningtext As Boolean, ByVal settings_uploadphoto As Short, ByVal settings_uploadpdf As Short, ByVal settings_storageprovider As String, ByVal settings_apikey As String, ByVal settings_apisecret As String, ByVal settings_apiserviceurl As String, ByVal settings_storagedb As String, ByVal settings_client As String) As sys_settingsRow
+                Dim rowsys_settingsRow As sys_settingsRow = CType(Me.NewRow,sys_settingsRow)
+                Dim columnValuesArray() As Object = New Object() {settings_id, settings_showprofile, settings_showstorage, settings_showwatermark, settings_textmark, settings_textmarklength, settings_showrunningtext, settings_uploadphoto, settings_uploadpdf, settings_storageprovider, settings_apikey, settings_apisecret, settings_apiserviceurl, settings_storagedb, settings_client}
+                rowsys_settingsRow.ItemArray = columnValuesArray
+                Me.Rows.Add(rowsys_settingsRow)
+                Return rowsys_settingsRow
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Overrides Function Clone() As Global.System.Data.DataTable
+                Dim cln As sys_settingsDataTable = CType(MyBase.Clone,sys_settingsDataTable)
+                cln.InitVars
+                Return cln
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+                Return New sys_settingsDataTable()
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Friend Sub InitVars()
+                Me.columnsettings_id = MyBase.Columns("settings_id")
+                Me.columnsettings_showprofile = MyBase.Columns("settings_showprofile")
+                Me.columnsettings_showstorage = MyBase.Columns("settings_showstorage")
+                Me.columnsettings_showwatermark = MyBase.Columns("settings_showwatermark")
+                Me.columnsettings_textmark = MyBase.Columns("settings_textmark")
+                Me.columnsettings_textmarklength = MyBase.Columns("settings_textmarklength")
+                Me.columnsettings_showrunningtext = MyBase.Columns("settings_showrunningtext")
+                Me.columnsettings_uploadphoto = MyBase.Columns("settings_uploadphoto")
+                Me.columnsettings_uploadpdf = MyBase.Columns("settings_uploadpdf")
+                Me.columnsettings_storageprovider = MyBase.Columns("settings_storageprovider")
+                Me.columnsettings_apikey = MyBase.Columns("settings_apikey")
+                Me.columnsettings_apisecret = MyBase.Columns("settings_apisecret")
+                Me.columnsettings_apiserviceurl = MyBase.Columns("settings_apiserviceurl")
+                Me.columnsettings_storagedb = MyBase.Columns("settings_storagedb")
+                Me.columnsettings_client = MyBase.Columns("settings_client")
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Private Sub InitClass()
+                Me.columnsettings_id = New Global.System.Data.DataColumn("settings_id", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_id)
+                Me.columnsettings_showprofile = New Global.System.Data.DataColumn("settings_showprofile", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_showprofile)
+                Me.columnsettings_showstorage = New Global.System.Data.DataColumn("settings_showstorage", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_showstorage)
+                Me.columnsettings_showwatermark = New Global.System.Data.DataColumn("settings_showwatermark", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_showwatermark)
+                Me.columnsettings_textmark = New Global.System.Data.DataColumn("settings_textmark", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_textmark)
+                Me.columnsettings_textmarklength = New Global.System.Data.DataColumn("settings_textmarklength", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_textmarklength)
+                Me.columnsettings_showrunningtext = New Global.System.Data.DataColumn("settings_showrunningtext", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_showrunningtext)
+                Me.columnsettings_uploadphoto = New Global.System.Data.DataColumn("settings_uploadphoto", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_uploadphoto)
+                Me.columnsettings_uploadpdf = New Global.System.Data.DataColumn("settings_uploadpdf", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_uploadpdf)
+                Me.columnsettings_storageprovider = New Global.System.Data.DataColumn("settings_storageprovider", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_storageprovider)
+                Me.columnsettings_apikey = New Global.System.Data.DataColumn("settings_apikey", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_apikey)
+                Me.columnsettings_apisecret = New Global.System.Data.DataColumn("settings_apisecret", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_apisecret)
+                Me.columnsettings_apiserviceurl = New Global.System.Data.DataColumn("settings_apiserviceurl", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_apiserviceurl)
+                Me.columnsettings_storagedb = New Global.System.Data.DataColumn("settings_storagedb", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_storagedb)
+                Me.columnsettings_client = New Global.System.Data.DataColumn("settings_client", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_client)
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Newsys_settingsRow() As sys_settingsRow
+                Return CType(Me.NewRow,sys_settingsRow)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+                Return New sys_settingsRow(builder)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Protected Overrides Function GetRowType() As Global.System.Type
+                Return GetType(sys_settingsRow)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+                MyBase.OnRowChanged(e)
+                If (Not (Me.sys_settingsRowChangedEvent) Is Nothing) Then
+                    RaiseEvent sys_settingsRowChanged(Me, New sys_settingsRowChangeEvent(CType(e.Row,sys_settingsRow), e.Action))
+                End If
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+                MyBase.OnRowChanging(e)
+                If (Not (Me.sys_settingsRowChangingEvent) Is Nothing) Then
+                    RaiseEvent sys_settingsRowChanging(Me, New sys_settingsRowChangeEvent(CType(e.Row,sys_settingsRow), e.Action))
+                End If
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+                MyBase.OnRowDeleted(e)
+                If (Not (Me.sys_settingsRowDeletedEvent) Is Nothing) Then
+                    RaiseEvent sys_settingsRowDeleted(Me, New sys_settingsRowChangeEvent(CType(e.Row,sys_settingsRow), e.Action))
+                End If
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+                MyBase.OnRowDeleting(e)
+                If (Not (Me.sys_settingsRowDeletingEvent) Is Nothing) Then
+                    RaiseEvent sys_settingsRowDeleting(Me, New sys_settingsRowChangeEvent(CType(e.Row,sys_settingsRow), e.Action))
+                End If
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Removesys_settingsRow(ByVal row As sys_settingsRow)
+                Me.Rows.Remove(row)
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+                Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+                Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+                Dim ds As ADSglobal = New ADSglobal()
+                Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+                any1.MinOccurs = New Decimal(0)
+                any1.MaxOccurs = Decimal.MaxValue
+                any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+                sequence.Items.Add(any1)
+                Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+                any2.MinOccurs = New Decimal(1)
+                any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+                sequence.Items.Add(any2)
+                Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+                attribute1.Name = "namespace"
+                attribute1.FixedValue = ds.Namespace
+                type.Attributes.Add(attribute1)
+                Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+                attribute2.Name = "tableTypeName"
+                attribute2.FixedValue = "sys_settingsDataTable"
                 type.Attributes.Add(attribute2)
                 type.Particle = sequence
                 Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -5956,6 +6447,430 @@ Namespace Ingrid.UI.Dataset
         End Class
         
         '''<summary>
+        '''Represents strongly named DataRow class.
+        '''</summary>
+        Partial Public Class sys_settingsRow
+            Inherits Global.System.Data.DataRow
+            
+            Private tablesys_settings As sys_settingsDataTable
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+                MyBase.New(rb)
+                Me.tablesys_settings = CType(Me.Table,sys_settingsDataTable)
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_id() As Decimal
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_idColumn),Decimal)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_id' in table 'sys_settings' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_idColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_showprofile() As Boolean
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_showprofileColumn),Boolean)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_showprofile' in table 'sys_settings' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_showprofileColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_showstorage() As Boolean
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_showstorageColumn),Boolean)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_showstorage' in table 'sys_settings' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_showstorageColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_showwatermark() As Boolean
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_showwatermarkColumn),Boolean)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_showwatermark' in table 'sys_settings' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_showwatermarkColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_textmark() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_textmarkColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_textmark' in table 'sys_settings' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_textmarkColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_textmarklength() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_textmarklengthColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_textmarklength' in table 'sys_settings' is DBNull."& _ 
+                                "", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_textmarklengthColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_showrunningtext() As Boolean
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_showrunningtextColumn),Boolean)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_showrunningtext' in table 'sys_settings' is DBNull"& _ 
+                                ".", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_showrunningtextColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_uploadphoto() As Short
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_uploadphotoColumn),Short)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_uploadphoto' in table 'sys_settings' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_uploadphotoColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_uploadpdf() As Short
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_uploadpdfColumn),Short)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_uploadpdf' in table 'sys_settings' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_uploadpdfColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_storageprovider() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_storageproviderColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_storageprovider' in table 'sys_settings' is DBNull"& _ 
+                                ".", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_storageproviderColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_apikey() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_apikeyColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_apikey' in table 'sys_settings' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_apikeyColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_apisecret() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_apisecretColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_apisecret' in table 'sys_settings' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_apisecretColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_apiserviceurl() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_apiserviceurlColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_apiserviceurl' in table 'sys_settings' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_apiserviceurlColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_storagedb() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_storagedbColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_storagedb' in table 'sys_settings' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_storagedbColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_client() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tablesys_settings.settings_clientColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_client' in table 'sys_settings' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tablesys_settings.settings_clientColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_idNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_idColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_idNull()
+                Me(Me.tablesys_settings.settings_idColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_showprofileNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_showprofileColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_showprofileNull()
+                Me(Me.tablesys_settings.settings_showprofileColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_showstorageNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_showstorageColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_showstorageNull()
+                Me(Me.tablesys_settings.settings_showstorageColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_showwatermarkNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_showwatermarkColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_showwatermarkNull()
+                Me(Me.tablesys_settings.settings_showwatermarkColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_textmarkNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_textmarkColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_textmarkNull()
+                Me(Me.tablesys_settings.settings_textmarkColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_textmarklengthNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_textmarklengthColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_textmarklengthNull()
+                Me(Me.tablesys_settings.settings_textmarklengthColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_showrunningtextNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_showrunningtextColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_showrunningtextNull()
+                Me(Me.tablesys_settings.settings_showrunningtextColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_uploadphotoNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_uploadphotoColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_uploadphotoNull()
+                Me(Me.tablesys_settings.settings_uploadphotoColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_uploadpdfNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_uploadpdfColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_uploadpdfNull()
+                Me(Me.tablesys_settings.settings_uploadpdfColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_storageproviderNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_storageproviderColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_storageproviderNull()
+                Me(Me.tablesys_settings.settings_storageproviderColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_apikeyNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_apikeyColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_apikeyNull()
+                Me(Me.tablesys_settings.settings_apikeyColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_apisecretNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_apisecretColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_apisecretNull()
+                Me(Me.tablesys_settings.settings_apisecretColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_apiserviceurlNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_apiserviceurlColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_apiserviceurlNull()
+                Me(Me.tablesys_settings.settings_apiserviceurlColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_storagedbNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_storagedbColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_storagedbNull()
+                Me(Me.tablesys_settings.settings_storagedbColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_clientNull() As Boolean
+                Return Me.IsNull(Me.tablesys_settings.settings_clientColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_clientNull()
+                Me(Me.tablesys_settings.settings_clientColumn) = Global.System.Convert.DBNull
+            End Sub
+        End Class
+        
+        '''<summary>
         '''Row event argument class
         '''</summary>
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -6265,6 +7180,42 @@ Namespace Ingrid.UI.Dataset
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public ReadOnly Property Row() As SysModuleRow
+                Get
+                    Return Me.eventRow
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+                Get
+                    Return Me.eventAction
+                End Get
+            End Property
+        End Class
+        
+        '''<summary>
+        '''Row event argument class
+        '''</summary>
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Class sys_settingsRowChangeEvent
+            Inherits Global.System.EventArgs
+            
+            Private eventRow As sys_settingsRow
+            
+            Private eventAction As Global.System.Data.DataRowAction
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub New(ByVal row As sys_settingsRow, ByVal action As Global.System.Data.DataRowAction)
+                MyBase.New
+                Me.eventRow = row
+                Me.eventAction = action
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property Row() As sys_settingsRow
                 Get
                     Return Me.eventRow
                 End Get

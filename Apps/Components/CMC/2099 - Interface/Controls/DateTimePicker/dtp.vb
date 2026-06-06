@@ -1,8 +1,7 @@
-﻿Imports System.ComponentModel
-Imports System.Runtime.Versioning
+﻿Imports System.Runtime.Versioning
 
 Namespace UI.Control
-    Public Class dtp
+    Public Class Dtp
         Inherits System.Windows.Forms.DateTimePicker
 
         <SupportedOSPlatform("windows")>
@@ -15,7 +14,7 @@ Namespace UI.Control
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub dtp_EnabledChanged(sender As Object, e As EventArgs) Handles Me.EnabledChanged
+        Private Sub Dtp_EnabledChanged(sender As Object, e As EventArgs) Handles Me.EnabledChanged
             If (XOResetOnDisabled) AndAlso Not (Me.Enabled) Then
                 MyBase.MaxDate = DateAdd(DateInterval.Year, 10, Now.Date)
                 MyBase.MinDate = DateAdd(DateInterval.Year, -100, Now.Date)
@@ -23,15 +22,15 @@ Namespace UI.Control
             End If
         End Sub
 
-        <Category("Datetimepicker"),
-    Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
-        Private _ResetOnDisabled As Boolean
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Resets the component’s date value to its default state whenever the control becomes disabled")>
+        Private varResetOnDisabled As Boolean
         Public Property XOResetOnDisabled As Boolean
             Get
-                Return _ResetOnDisabled
+                Return varResetOnDisabled
             End Get
             Set(value As Boolean)
-                _ResetOnDisabled = value
+                varResetOnDisabled = value
             End Set
         End Property
     End Class

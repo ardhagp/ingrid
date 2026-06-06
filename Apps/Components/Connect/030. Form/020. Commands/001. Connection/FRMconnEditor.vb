@@ -98,7 +98,7 @@ Namespace UI
         End Function
 
         Private Sub CheckPasswordChange()
-            If TxtPassword.XOSQLText = varOldPassword Then
+            If TxtPassword.XOSqlText = varOldPassword Then
                 varIsPasswordChange = False
             Else
                 varIsPasswordChange = True

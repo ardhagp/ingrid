@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMpepr
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -48,7 +48,7 @@
             employeeactivity_id = New DataGridViewTextBoxColumn()
             SttActivity = New CMCv.UI.Control.stt(components)
             ToolStripStatusLabel1 = New ToolStripStatusLabel()
-            TbctlAttachment = New CMCv.UI.Control.tbctl(components)
+            TbctlAttachment = New CMCv.UI.Control.Tbx(components)
             TPPhotos = New TabPage()
             SpcPhoto = New CMCv.UI.Control.spc(components)
             DgnPhoto = New CMCv.UI.Control.dgn(components)
@@ -62,11 +62,11 @@
             photo_employee_fullname = New DataGridViewTextBoxColumn()
             photo_view = New DataGridViewButtonColumn()
             TlpPhotoButton = New TableLayoutPanel()
-            PctbxActivityPhoto = New CMCv.UI.Control.pctbx(components)
+            PctbxActivityPhoto = New CMCv.UI.Control.Pbx(components)
             TlpCopySave = New TableLayoutPanel()
-            BtnCopyPhoto = New CMCv.UI.Control.btn(components)
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnLike = New CMCv.UI.Control.btn(components)
+            BtnCopyPhoto = New CMCv.UI.Control.Btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnLike = New CMCv.UI.Control.Btn(components)
             TPFiles = New TabPage()
             DgnFile = New CMCv.UI.Control.dgn(components)
             file_id = New DataGridViewTextBoxColumn()
@@ -196,8 +196,8 @@
             DgnDARActivity.Size = New Size(1307, 370)
             DgnDARActivity.StandardTab = True
             DgnDARActivity.TabIndex = 102
-            DgnDARActivity.XOGroupFirstRows = True
-            DgnDARActivity.XOGunakanNomorBaris = True
+            DgnDARActivity.XOIsGroupFirstRow = True
+            DgnDARActivity.XOIsShowRowNumber = True
             ' 
             ' areaaffected_name
             ' 
@@ -375,8 +375,8 @@
             DgnPhoto.Size = New Size(531, 409)
             DgnPhoto.StandardTab = True
             DgnPhoto.TabIndex = 2
-            DgnPhoto.XOGroupFirstRows = False
-            DgnPhoto.XOGunakanNomorBaris = True
+            DgnPhoto.XOIsGroupFirstRow = False
+            DgnPhoto.XOIsShowRowNumber = True
             ' 
             ' photo_id
             ' 
@@ -513,8 +513,8 @@
             PctbxActivityPhoto.SizeMode = PictureBoxSizeMode.Zoom
             PctbxActivityPhoto.TabIndex = 105
             PctbxActivityPhoto.TabStop = False
-            PctbxActivityPhoto.XOTampilkanBorder = False
-            PctbxActivityPhoto.XOWarnaBorder = Color.DarkSlateBlue
+            PctbxActivityPhoto.XOShowBorder = False
+            PctbxActivityPhoto.XOBorderColor = Color.DarkSlateBlue
             ' 
             ' TlpCopySave
             ' 
@@ -554,10 +554,10 @@
             BtnCopyPhoto.Size = New Size(326, 50)
             BtnCopyPhoto.TabIndex = 3
             BtnCopyPhoto.UseVisualStyleBackColor = False
-            BtnCopyPhoto.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnCopyPhoto.XOTampilkanFocusBorder = False
-            BtnCopyPhoto.XOValidasiSemuaInput = False
-            BtnCopyPhoto.XOValidasiSemuaInputTag = Nothing
+            BtnCopyPhoto.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnCopyPhoto.XOShowBorderOnFocus = False
+            BtnCopyPhoto.XOValidateAllInput = False
+            BtnCopyPhoto.XOValidateAllInputTag = Nothing
             ' 
             ' BtnSave
             ' 
@@ -577,10 +577,10 @@
             BtnSave.Size = New Size(327, 50)
             BtnSave.TabIndex = 4
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnLike
             ' 
@@ -600,10 +600,10 @@
             BtnLike.Size = New Size(45, 50)
             BtnLike.TabIndex = 6
             BtnLike.UseVisualStyleBackColor = False
-            BtnLike.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnLike.XOTampilkanFocusBorder = False
-            BtnLike.XOValidasiSemuaInput = False
-            BtnLike.XOValidasiSemuaInputTag = Nothing
+            BtnLike.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnLike.XOShowBorderOnFocus = False
+            BtnLike.XOValidateAllInput = False
+            BtnLike.XOValidateAllInputTag = Nothing
             ' 
             ' TPFiles
             ' 
@@ -660,8 +660,8 @@
             DgnFile.Size = New Size(1847, 725)
             DgnFile.StandardTab = True
             DgnFile.TabIndex = 3
-            DgnFile.XOGroupFirstRows = False
-            DgnFile.XOGunakanNomorBaris = True
+            DgnFile.XOIsGroupFirstRow = False
+            DgnFile.XOIsShowRowNumber = True
             ' 
             ' file_id
             ' 
@@ -824,7 +824,7 @@
         Friend WithEvents employeeactivity_id As DataGridViewTextBoxColumn
         Friend WithEvents SttActivity As CMCv.UI.Control.stt
         Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
-        Friend WithEvents TbctlAttachment As CMCv.UI.Control.tbctl
+        Friend WithEvents TbctlAttachment As CMCv.UI.Control.Tbx
         Friend WithEvents TPPhotos As TabPage
         Friend WithEvents SpcPhoto As CMCv.UI.Control.spc
         Friend WithEvents DgnPhoto As CMCv.UI.Control.dgn
@@ -838,11 +838,11 @@
         Friend WithEvents photo_employee_fullname As DataGridViewTextBoxColumn
         Friend WithEvents photo_view As DataGridViewButtonColumn
         Friend WithEvents TlpPhotoButton As TableLayoutPanel
-        Friend WithEvents PctbxActivityPhoto As CMCv.UI.Control.pctbx
+        Friend WithEvents PctbxActivityPhoto As CMCv.UI.Control.Pbx
         Friend WithEvents TlpCopySave As TableLayoutPanel
-        Friend WithEvents BtnCopyPhoto As CMCv.UI.Control.btn
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
-        Friend WithEvents BtnLike As CMCv.UI.Control.btn
+        Friend WithEvents BtnCopyPhoto As CMCv.UI.Control.Btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
+        Friend WithEvents BtnLike As CMCv.UI.Control.Btn
         Friend WithEvents TPFiles As TabPage
         Friend WithEvents DgnFile As CMCv.UI.Control.dgn
         Friend WithEvents file_id As DataGridViewTextBoxColumn

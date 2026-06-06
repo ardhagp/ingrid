@@ -13,10 +13,10 @@ Namespace CMDcdin
             Dim varWhere As String = "where "
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                If (find.XOSQLText = String.Empty) OrElse (dataproperties.DepartmentIsForceRefresh) Then
+                If (find.XOSqlText = String.Empty) OrElse (dataproperties.DepartmentIsForceRefresh) Then
                     varWhere = $""
                 Else
-                    varWhere += $" (c.company_code like '%{find.XOSQLText}%') or (d.department_code like '%{find.XOSQLText}%') or (d.department_name like '%{find.XOSQLText}%') or (d.department_description like '%{find.XOSQLText}%')"
+                    varWhere += $" (c.company_code like '%{find.XOSqlText}%') or (d.department_code like '%{find.XOSqlText}%') or (d.department_name like '%{find.XOSqlText}%') or (d.department_description like '%{find.XOSqlText}%')"
                 End If
 
                 varDatabaseRequestMssql2008(0).Query = $"select d.department_id, c.company_code, d.department_code, d.department_name, d.department_description from dbo.man_department d inner join dbo.man_company c " &
@@ -27,10 +27,10 @@ Namespace CMDcdin
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TDepartment")
 
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                If (find.XOSQLText = String.Empty) OrElse (dataproperties.DepartmentIsForceRefresh) Then
+                If (find.XOSqlText = String.Empty) OrElse (dataproperties.DepartmentIsForceRefresh) Then
                     varWhere = $""
                 Else
-                    varWhere += $" (c.company_code like '%{find.XOSQLText}%') or (d.department_code like '%{find.XOSQLText}%') or (d.department_name like '%{find.XOSQLText}%') or (d.department_description like '%{find.XOSQLText}%')"
+                    varWhere += $" (c.company_code like '%{find.XOSqlText}%') or (d.department_code like '%{find.XOSqlText}%') or (d.department_name like '%{find.XOSqlText}%') or (d.department_description like '%{find.XOSqlText}%')"
                 End If
 
                 varDatabaseRequestMysql(0).Query = $"select d.department_id, c.company_code, d.department_code, d.department_name, d.department_description from man_department d inner join man_company c " &
@@ -129,7 +129,7 @@ Namespace CMDcdin
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, company As CMCv.UI.Control.cbo)
+        Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, company As CMCv.UI.Control.Cbo)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = "select c.company_id, (c.company_code + ' - ' + c.company_name) as [company_code] from dbo.man_company c order by c.company_code"
                 varDatabaseRequestMssql2008(1).Dropdown = company

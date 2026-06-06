@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FRMconnectionproperties
-    Inherits CMCv.Std_Fo
+    Inherits CMCv.FRMstandardFooter
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -20,9 +20,9 @@ Partial Class FRMconnectionproperties
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Btn1 = New CMCv.UI.Control.btn(components)
-        Btn2 = New CMCv.UI.Control.btn(components)
-        Btn3 = New CMCv.UI.Control.btn(components)
+        Btn1 = New CMCv.UI.Control.Btn(components)
+        Btn2 = New CMCv.UI.Control.Btn(components)
+        Btn3 = New CMCv.UI.Control.Btn(components)
         PnlBottomButton.SuspendLayout()
         CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_.SuspendLayout()
@@ -70,10 +70,10 @@ Partial Class FRMconnectionproperties
         Btn1.TabIndex = 0
         Btn1.Text = "Btn1"
         Btn1.UseVisualStyleBackColor = False
-        Btn1.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-        Btn1.XOTampilkanFocusBorder = False
-        Btn1.XOValidasiSemuaInput = False
-        Btn1.XOValidasiSemuaInputTag = Nothing
+        Btn1.XOButtonType = ControlCodeBase.buttonType.Yes
+        Btn1.XOShowBorderOnFocus = False
+        Btn1.XOValidateAllInput = False
+        Btn1.XOValidateAllInputTag = Nothing
         ' 
         ' Btn2
         ' 
@@ -93,10 +93,10 @@ Partial Class FRMconnectionproperties
         Btn2.TabIndex = 1
         Btn2.Text = "Btn2"
         Btn2.UseVisualStyleBackColor = False
-        Btn2.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-        Btn2.XOTampilkanFocusBorder = False
-        Btn2.XOValidasiSemuaInput = False
-        Btn2.XOValidasiSemuaInputTag = Nothing
+        Btn2.XOButtonType = ControlCodeBase.buttonType.Custom
+        Btn2.XOShowBorderOnFocus = False
+        Btn2.XOValidateAllInput = False
+        Btn2.XOValidateAllInputTag = Nothing
         ' 
         ' Btn3
         ' 
@@ -115,10 +115,10 @@ Partial Class FRMconnectionproperties
         Btn3.TabIndex = 2
         Btn3.Text = "Btn3"
         Btn3.UseVisualStyleBackColor = False
-        Btn3.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-        Btn3.XOTampilkanFocusBorder = False
-        Btn3.XOValidasiSemuaInput = False
-        Btn3.XOValidasiSemuaInputTag = Nothing
+        Btn3.XOButtonType = ControlCodeBase.buttonType.No
+        Btn3.XOShowBorderOnFocus = False
+        Btn3.XOValidateAllInput = False
+        Btn3.XOValidateAllInputTag = Nothing
         ' 
         ' FRMconnectionproperties
         ' 
@@ -137,8 +137,8 @@ Partial Class FRMconnectionproperties
         PerformLayout()
 
     End Sub
-    Friend WithEvents Btn1 As CMCv.UI.Control.btn
-    Friend WithEvents Btn3 As CMCv.UI.Control.btn
-    Friend WithEvents Btn2 As CMCv.UI.Control.btn
+    Friend WithEvents Btn1 As CMCv.UI.Control.Btn
+    Friend WithEvents Btn3 As CMCv.UI.Control.Btn
+    Friend WithEvents Btn2 As CMCv.UI.Control.Btn
 
 End Class

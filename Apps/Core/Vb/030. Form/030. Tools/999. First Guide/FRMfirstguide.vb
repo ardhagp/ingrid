@@ -40,7 +40,7 @@ Namespace UI
                 Gbx_Login.Visible = True
                 varStep += 1
                 Lbl_Step.Text = $"Step {varStep} :"
-                Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
+                Btn_Close.XOButtonType = ControlCodeBase.buttonType.Default
                 Btn_Close.Text = "&Prev"
             ElseIf varStep = 2 Then
                 If (Txt_Username.XOIsBlank) OrElse (Txt_Password.XOIsBlank) Then
@@ -52,7 +52,7 @@ Namespace UI
                     End If
                     Return
                 End If
-                If Txt_Password.XOPwdStrengthScore < 70 Then
+                If Txt_Password.XOPasswordStrengthScore < 70 Then
                     Decision(My.Application.Info.AssemblyName.ToUpper, "Your password is not strong enough!", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
                     Txt_Password.Focus()
                     Return
@@ -142,7 +142,7 @@ Namespace UI
                 Gbx_Login.Visible = False
                 varStep -= 1
                 Lbl_Step.Text = $"Step {varStep} :"
-                Btn_Close.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
+                Btn_Close.XOButtonType = ControlCodeBase.buttonType.No
                 Btn_Close.Text = "&Close"
             ElseIf varStep = 3 Then
                 Gbx_Login.Visible = True
@@ -158,8 +158,8 @@ Namespace UI
         End Sub
 
         Private Sub CheckPasswordStrength()
-            UPwdStrength1.SLFPasswordStrengthScore = Txt_Password.XOPwdStrengthScore
-            UPwdStrength1.SLFPasswordStrengthText = Txt_Password.XOPwdStrengthText
+            UPwdStrength1.SLFPasswordStrengthScore = Txt_Password.XOPasswordStrengthScore
+            UPwdStrength1.SLFPasswordStrengthText = Txt_Password.XOPasswordStrengthText
         End Sub
 
         Private Sub TxtPassword_KeyUp(sender As Object, e As KeyEventArgs) Handles Txt_Password.KeyUp

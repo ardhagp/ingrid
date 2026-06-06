@@ -406,6 +406,8 @@ Namespace Database.Engine
                 Using varDataAdapter = New SQLite.SQLiteDataAdapter(varCommand(1))
                     varDataAdapter.Fill(datasetname, tablename)
                 End Using
+
+                Return datasetname
             Catch ex As Exception
                 datasetname = Nothing
                 With proLog
@@ -426,6 +428,7 @@ Namespace Database.Engine
                 Dim clsLog As New Ladybug.Log.Events
                 clsLog.ShowData(proLog)
                 clsLog = Nothing
+                Return Nothing
             End Try
         End Function
 

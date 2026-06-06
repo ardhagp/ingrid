@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMacgr
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -41,11 +41,11 @@
             Dim DataGridViewCellStyle38 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle40 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle39 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            CboCompany = New CMCv.UI.Control.cbo(components)
+            CboCompany = New CMCv.UI.Control.Cbo(components)
             Lbl3 = New CMCv.UI.Control.lbl(components)
-            CboAccountingBook = New CMCv.UI.Control.cbo(components)
+            CboAccountingBook = New CMCv.UI.Control.Cbo(components)
             Lbl2 = New CMCv.UI.Control.lbl(components)
-            TbctlAccountGroup = New CMCv.UI.Control.tbctl(components)
+            TbctlAccountGroup = New CMCv.UI.Control.Tbx(components)
             tpAssets = New TabPage()
             DgnACGRAssets = New CMCv.UI.Control.dgn(components)
             account_id_assets = New DataGridViewTextBoxColumn()
@@ -246,8 +246,8 @@
             DgnACGRAssets.Size = New Size(1287, 809)
             DgnACGRAssets.StandardTab = True
             DgnACGRAssets.TabIndex = 0
-            DgnACGRAssets.XOGroupFirstRows = False
-            DgnACGRAssets.XOGunakanNomorBaris = True
+            DgnACGRAssets.XOIsGroupFirstRow = False
+            DgnACGRAssets.XOIsShowRowNumber = True
             ' 
             ' account_id_assets
             ' 
@@ -347,8 +347,8 @@
             DgnACGRLiabities.Size = New Size(1847, 1387)
             DgnACGRLiabities.StandardTab = True
             DgnACGRLiabities.TabIndex = 0
-            DgnACGRLiabities.XOGroupFirstRows = False
-            DgnACGRLiabities.XOGunakanNomorBaris = True
+            DgnACGRLiabities.XOIsGroupFirstRow = False
+            DgnACGRLiabities.XOIsShowRowNumber = True
             ' 
             ' account_id_liability
             ' 
@@ -449,8 +449,8 @@
             DgnACGREquity.Size = New Size(1847, 1387)
             DgnACGREquity.StandardTab = True
             DgnACGREquity.TabIndex = 0
-            DgnACGREquity.XOGroupFirstRows = False
-            DgnACGREquity.XOGunakanNomorBaris = True
+            DgnACGREquity.XOIsGroupFirstRow = False
+            DgnACGREquity.XOIsShowRowNumber = True
             ' 
             ' account_id_equity
             ' 
@@ -551,8 +551,8 @@
             DgnACGRRevenue.Size = New Size(1847, 1387)
             DgnACGRRevenue.StandardTab = True
             DgnACGRRevenue.TabIndex = 0
-            DgnACGRRevenue.XOGroupFirstRows = False
-            DgnACGRRevenue.XOGunakanNomorBaris = True
+            DgnACGRRevenue.XOIsGroupFirstRow = False
+            DgnACGRRevenue.XOIsShowRowNumber = True
             ' 
             ' account_id_revenue
             ' 
@@ -653,8 +653,8 @@
             DgnACGRExpense.Size = New Size(1847, 1387)
             DgnACGRExpense.StandardTab = True
             DgnACGRExpense.TabIndex = 0
-            DgnACGRExpense.XOGroupFirstRows = False
-            DgnACGRExpense.XOGunakanNomorBaris = True
+            DgnACGRExpense.XOIsGroupFirstRow = False
+            DgnACGRExpense.XOIsShowRowNumber = True
             ' 
             ' account_id_expense
             ' 
@@ -730,7 +730,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents TbctlAccountGroup As CMCv.UI.Control.tbctl
+        Friend WithEvents TbctlAccountGroup As CMCv.UI.Control.Tbx
         Friend WithEvents tpAssets As TabPage
         Friend WithEvents DgnACGRAssets As CMCv.UI.Control.dgn
         Friend WithEvents tpLiabilities As TabPage
@@ -740,10 +740,10 @@
         Friend WithEvents DgnACGRRevenue As CMCv.UI.Control.dgn
         Friend WithEvents tpExpense As TabPage
         Friend WithEvents DgnACGRExpense As CMCv.UI.Control.dgn
-        Friend WithEvents CboAccountingBook As CMCv.UI.Control.cbo
+        Friend WithEvents CboAccountingBook As CMCv.UI.Control.Cbo
         Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
         Friend WithEvents DgnACGREquity As CMCv.UI.Control.dgn
-        Friend WithEvents CboCompany As CMCv.UI.Control.cbo
+        Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
         Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
         Friend WithEvents account_id_assets As DataGridViewTextBoxColumn
         Friend WithEvents account_num_assets As DataGridViewTextBoxColumn

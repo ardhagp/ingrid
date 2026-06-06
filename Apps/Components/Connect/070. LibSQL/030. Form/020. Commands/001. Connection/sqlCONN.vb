@@ -7,7 +7,7 @@ Namespace CMDconn
         Public Shared Sub DisplayData(datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt,
                                       find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
             Try
-                If (find.XOSQLText = String.Empty) OrElse (forcerefresh) Then 'to display all data
+                If (find.XOSqlText = String.Empty) OrElse (forcerefresh) Then 'to display all data
                     varDatabaseRequestSqlite(0).Query = "select serverlist.ID, serverlist.CONNECTIONNAME, " &
                         "serverlist.DATABASEENGINE, IIF( serverlist.ISMASKED = 1, substr(printf('%.' || length(serverlist.SERVERADDRESS) || 'c', '*'), 1), serverlist.SERVERADDRESS) as 'SERVERADDRESS', IIF( serverlist.ISMASKED = 1, substr(printf('%.' || length(serverlist.SERVERPORT) || 'c', '*'), 1), serverlist.SERVERPORT) as 'SERVERPORT', " &
                         "serverlist.DEFAULTCONNECTION from serverlist ORDER BY serverlist.CONNECTIONNAME;"
@@ -16,7 +16,7 @@ Namespace CMDconn
                                                           "serverlist.DATABASEENGINE, IIF( serverlist.ISMASKED = 1, substr(printf('%.' || length(serverlist.SERVERADDRESS) || 'c', '*'), 1), serverlist.SERVERADDRESS) as 'SERVERADDRESS', " &
                                                           "IIF( serverlist.ISMASKED = 1, substr(printf('%.' || length(serverlist.SERVERPORT) || 'c', '*'), 1), serverlist.SERVERPORT) as 'SERVERPORT', serverlist.DEFAULTCONNECTION from " &
                                                           "serverlist where (serverlist.CONNECTIONNAME Like '%{0}%')" &
-                                                          "ORDER BY serverlist.CONNECTIONNAME;", find.XOSQLText)
+                                                          "ORDER BY serverlist.CONNECTIONNAME;", find.XOSqlText)
                 End If
                 varDatabaseRequestSqlite(0).DataGrid = datagrid
                 varDatabaseRequestSqlite(0).StatusBar = statusbar

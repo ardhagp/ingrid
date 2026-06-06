@@ -22,7 +22,7 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMsplash))
-            Pctbx1 = New cmcv.ui.control.pctbx(components)
+            Pctbx1 = New cmcv.ui.control.Pbx(components)
             _ExecuteTime = New Timer(components)
             tlp_ = New TableLayoutPanel()
             LblTitle = New cmcv.ui.control.lbl(components)
@@ -46,8 +46,8 @@
             Pctbx1.SizeMode = PictureBoxSizeMode.StretchImage
             Pctbx1.TabIndex = 0
             Pctbx1.TabStop = False
-            Pctbx1.XOTampilkanBorder = False
-            Pctbx1.XOWarnaBorder = Color.DodgerBlue
+            Pctbx1.XOShowBorder = False
+            Pctbx1.XOBorderColor = Color.DodgerBlue
             ' 
             ' _ExecuteTime
             ' 
@@ -130,7 +130,7 @@
 
         End Sub
 
-        Friend WithEvents Pctbx1 As CMCv.ui.control.pctbx
+        Friend WithEvents Pctbx1 As CMCv.ui.control.Pbx
         Friend WithEvents _ExecuteTime As Timer
         Friend WithEvents tlp_ As TableLayoutPanel
         Friend WithEvents _LoadingTime As Timer

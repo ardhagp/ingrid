@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class DAR_SinglePhotoViewer
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -22,8 +22,8 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(DAR_SinglePhotoViewer))
-            BtnClose = New CMCv.UI.Control.btn(components)
-            PctbxPhoto = New CMCv.UI.Control.pctbx(components)
+            BtnClose = New CMCv.UI.Control.Btn(components)
+            PctbxPhoto = New CMCv.UI.Control.Pbx(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -68,10 +68,10 @@
             BtnClose.Margin = New Padding(4, 3, 4, 3)
             BtnClose.Name = "BtnClose"
             BtnClose.Size = New Size(117, 46)
-            BtnClose.XOJenisTombol = CMCv.ControlCodeBase.enuJenisTombol.No
-            BtnClose.XOTampilkanFocusBorder = False
-            BtnClose.XOValidasiSemuaInput = False
-            BtnClose.XOValidasiSemuaInputTag = Nothing
+            BtnClose.XOButtonType = CMCv.ControlCodeBase.buttonType.No
+            BtnClose.XOShowBorderOnFocus = False
+            BtnClose.XOValidateAllInput = False
+            BtnClose.XOValidateAllInputTag = Nothing
             BtnClose.TabIndex = 0
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
@@ -87,8 +87,8 @@
             PctbxPhoto.Name = "PctbxPhoto"
             PctbxPhoto.Size = New Size(766, 412)
             PctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
-            PctbxPhoto.XOTampilkanBorder = False
-            PctbxPhoto.XOWarnaBorder = Color.DodgerBlue
+            PctbxPhoto.XOShowBorder = False
+            PctbxPhoto.XOBorderColor = Color.DodgerBlue
             PctbxPhoto.TabIndex = 996
             PctbxPhoto.TabStop = False
             ' 
@@ -111,7 +111,7 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents BtnClose As CMCv.UI.Control.btn
-        Friend WithEvents PctbxPhoto As CMCv.UI.Control.pctbx
+        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
+        Friend WithEvents PctbxPhoto As CMCv.UI.Control.Pbx
     End Class
 End Namespace

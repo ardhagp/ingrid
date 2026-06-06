@@ -11,7 +11,7 @@ Namespace CMDdrtm
         Public Shared Sub DisplayGrid(dataproperties As LibApp.Ingrid.Global.Properties, find As CMCv.UI.Control.txt, dategrid As CMCv.UI.Control.dgn, contentstatusbar As CMCv.UI.Control.stt, Optional forcerefresh As Boolean = False)
             Try
                 ' Normalize input once
-                Dim search As String = If(find IsNot Nothing AndAlso find.XOSQLText IsNot Nothing, find.XOSQLText.Trim(), String.Empty)
+                Dim search As String = If(find IsNot Nothing AndAlso find.XOSqlText IsNot Nothing, find.XOSqlText.Trim(), String.Empty)
 
                 ' Build WHERE parts in a list for clarity and performance
                 Dim whereParts As New List(Of String)
@@ -71,12 +71,12 @@ Namespace CMDdrtm
         '        Dim varWhere As String = String.Format("where ")
 
         '        If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-        '            If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
+        '            If (find.XOSqlText = String.Empty) AndAlso (forcerefresh) Then
         '                varWhere += "tpl.template_module = (select mdl.module_id from dbo.sys_module mdl where mdl.module_code = 'DAR') "
         '            Else
         '                varWhere += "tpl.template_module = (select mdl.module_id from dbo.sys_module mdl where mdl.module_code = 'DAR') and "
 
-        '                Dim varContainText() As String = find.XOSQLText.Split("||")
+        '                Dim varContainText() As String = find.XOSqlText.Split("||")
         '                Dim varRepeater As Integer = 0
 
         '                varWhere += String.Format("(")
@@ -101,12 +101,12 @@ Namespace CMDdrtm
         '            varDatabaseRequestMssql2008(0).StatusBar = contentstatusbar
         '            varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TDARTemplate")
         '        ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-        '            If (find.XOSQLText = String.Empty) AndAlso (forcerefresh) Then
+        '            If (find.XOSqlText = String.Empty) AndAlso (forcerefresh) Then
         '                varWhere += "tpl.template_module = (select mdl.module_id from sys_module mdl where mdl.module_code = 'DAR') "
         '            Else
         '                varWhere += "tpl.template_module = (select mdl.module_id from sys_module mdl where mdl.module_code = 'DAR') and "
 
-        '                Dim varContainText() As String = find.XOSQLText.Split("||")
+        '                Dim varContainText() As String = find.XOSqlText.Split("||")
         '                Dim varRepeater As Integer = 0
 
         '                varWhere.Append(CChar("("))

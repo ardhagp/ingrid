@@ -16,7 +16,7 @@ Module Globals
     Private varVersionapplication As String
 
     <SupportedOSPlatform("windows")>
-    Public Sub Display(formname As CMCv.Std_Fo, Optional formimage As System.Drawing.Image = Nothing,
+    Public Sub Display(formname As CMCv.FRMstandardFooter, Optional formimage As System.Drawing.Image = Nothing,
                        Optional windowtitle As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "",
                        Optional isdialog As Boolean = False,
                        Optional parentframe As system.Windows.Forms.Form = Nothing)
@@ -72,7 +72,7 @@ Module Globals
     End Sub
 
     <SupportedOSPlatform("windows")>
-    Public Sub Display(formname As CMCv.Std_Fi_Fo, Optional formimage As System.Drawing.Image = Nothing,
+    Public Sub Display(formname As CMCv.FRMstandardFindFooter, Optional formimage As System.Drawing.Image = Nothing,
                        Optional windowtitle As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "",
                        Optional isdialog As Boolean = False,
                        Optional parentframe As system.Windows.Forms.Form = Nothing)

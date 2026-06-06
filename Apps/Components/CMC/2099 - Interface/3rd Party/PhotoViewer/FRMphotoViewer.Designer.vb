@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMphotoViewer
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -22,7 +22,7 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Imgs_ = New Syncfusion.Windows.Forms.Tools.ImageStreamer()
-            BtnClose = New CMCv.UI.Control.btn(components)
+            BtnClose = New CMCv.UI.Control.Btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -72,10 +72,10 @@
             BtnClose.TabIndex = 0
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnClose.XOTampilkanFocusBorder = False
-            BtnClose.XOValidasiSemuaInput = False
-            BtnClose.XOValidasiSemuaInputTag = Nothing
+            BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClose.XOShowBorderOnFocus = False
+            BtnClose.XOValidateAllInput = False
+            BtnClose.XOValidateAllInputTag = Nothing
             ' 
             ' FRMphotoViewer
             ' 
@@ -96,6 +96,6 @@
         End Sub
 
         Public WithEvents Imgs_ As Syncfusion.Windows.Forms.Tools.ImageStreamer
-        Public WithEvents BtnClose As CMCv.UI.Control.btn
+        Public WithEvents BtnClose As CMCv.UI.Control.Btn
     End Class
 End Namespace

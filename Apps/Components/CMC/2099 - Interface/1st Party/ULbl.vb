@@ -14,119 +14,120 @@ Namespace UI.Control
             ' Add any initialization after the InitializeComponent() call.
             MyBase.DoubleBuffered = True
             Me.UText.Height = Me.Height
-            Me.SLFTextAdjuster = False
-            Me.SLFText = "Text"
-            Me.SLFTextBorder = False
-            Me.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            Me.XOTextAdjuster = False
+            Me.XOText = "Text"
+            Me.XOTextBorder = False
+            Me.XOLabelColor = ControlCodeBase.EnumColorSelect.Default
         End Sub
 
-        Private _varText As String
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the text value displayed by the component and used as its primary content")>
+        Private varText As String
         <SupportedOSPlatform("windows")>
-        <System.ComponentModel.Description("This text will show on label
-"), System.ComponentModel.Editor(GetType(System.ComponentModel.Design.MultilineStringEditor), GetType(System.Drawing.Design.UITypeEditor))>
-        Public Property SLFText As String
+        Public Property XOText As String
             Get
-                Return _varText
+                Return varText
             End Get
             Set(value As String)
-                _varText = value
-                Call GantiText(value)
+                varText = value
+                Call ChangeText(value)
             End Set
         End Property
 
         <SupportedOSPlatform("windows")>
-        Private Sub GantiText(ByVal _value As String)
-            UText.Text = _value
+        Private Sub ChangeText(newtext As String)
+            UText.Text = newtext
         End Sub
 
-        Private _varTextBorder As Boolean
+        Private varTextBorder As Boolean
         <SupportedOSPlatform("windows")>
-        <System.ComponentModel.Description("This show text border
-")>
-        Public Property SLFTextBorder As Boolean
+        <System.ComponentModel.Category("XO.Format"),
+        System.ComponentModel.Description("Specifies the border style applied to the component's text area, controlling how its outline is rendered")>
+        Public Property XOTextBorder As Boolean
             Get
-                Return _varTextBorder
+                Return varTextBorder
             End Get
             Set(value As Boolean)
-                _varTextBorder = value
-                Call GantiTextBorder(value)
+                varTextBorder = value
+                Call ChangeTextBorder(value)
             End Set
         End Property
 
         <SupportedOSPlatform("windows")>
-        Private Sub GantiTextBorder(ByVal _value As Boolean)
-            If _value = True Then
+        Private Sub ChangeTextBorder(value As Boolean)
+            If value Then
                 UText.BorderStyle = BorderStyle.FixedSingle
             Else
                 UText.BorderStyle = BorderStyle.None
             End If
         End Sub
 
-        Private varReadjustText As Boolean
+        Private varTextAdjuster As Boolean
         <SupportedOSPlatform("windows")>
-        <System.ComponentModel.Description("Enable this to readjust text
-")>
-        Public Property SLFTextAdjuster As Boolean
+        <System.ComponentModel.Category("XO.Format"),
+        System.ComponentModel.Description("Applies automatic text adjustments to the component’s value")>
+        Public Property XOTextAdjuster As Boolean
             Get
-                Return varReadjustText
+                Return varTextAdjuster
             End Get
             Set(value As Boolean)
-                varReadjustText = value
-                Call ReadjustText(value)
+                varTextAdjuster = value
+                Call ReadjustmentText(value)
             End Set
         End Property
 
         <SupportedOSPlatform("windows")>
-        Private Sub ReadjustText(value As Boolean)
+        Private Sub ReadjustmentText(value As Boolean)
             If value Then
-                tmr_.Enabled = True
+                Tmr_.Enabled = True
             Else
-                tmr_.Enabled = False
+                Tmr_.Enabled = False
             End If
         End Sub
 
-        Private varWarnaLabel As ControlCodeBase.JenisLabel
+        Private varLabelColor As ControlCodeBase.EnumColorSelect
         <SupportedOSPlatform("windows")>
-        <System.ComponentModel.Description("Color options")>
-        Public Property SLFWarnaLabel() As ControlCodeBase.JenisLabel
+        <System.ComponentModel.Category("XO.Format"),
+        System.ComponentModel.Description("Specifies the color used to render the component’s label")>
+        Public Property XOLabelColor() As ControlCodeBase.EnumColorSelect
             Get
-                Return varWarnaLabel
+                Return varLabelColor
             End Get
-            Set(value As ControlCodeBase.JenisLabel)
-                varWarnaLabel = value
-                GantiWarnaLabel(value)
+            Set(value As ControlCodeBase.EnumColorSelect)
+                varLabelColor = value
+                ChangeLabelColor(value)
             End Set
         End Property
 
         <SupportedOSPlatform("windows")>
-        Private Sub GantiWarnaLabel(valEnuJenisTombol As ControlCodeBase.JenisLabel)
+        Private Sub ChangeLabelColor(valEnuJenisTombol As ControlCodeBase.EnumColorSelect)
             Select Case valEnuJenisTombol
-                Case ControlCodeBase.JenisLabel.Green
+                Case ControlCodeBase.EnumColorSelect.Green
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.LimeGreen
                     MyBase.BackColor = Drawing.Color.MintCream
-                Case ControlCodeBase.JenisLabel.Red
+                Case ControlCodeBase.EnumColorSelect.Red
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.Red
                     MyBase.BackColor = Drawing.Color.MistyRose
-                Case ControlCodeBase.JenisLabel.Default
+                Case ControlCodeBase.EnumColorSelect.Default
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.RoyalBlue
                     MyBase.BackColor = Drawing.Color.AliceBlue
-                Case ControlCodeBase.JenisLabel.Yellow
+                Case ControlCodeBase.EnumColorSelect.Yellow
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.DarkOrange
                     MyBase.BackColor = Drawing.Color.Moccasin
-                Case ControlCodeBase.JenisLabel.Grey
+                Case ControlCodeBase.EnumColorSelect.Grey
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.DarkGray
                     MyBase.BackColor = Drawing.Color.WhiteSmoke
-                Case ControlCodeBase.JenisLabel.Custom
+                Case ControlCodeBase.EnumColorSelect.Custom
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     'UHead.BackColor = System.Drawing.Color.Orange
@@ -140,19 +141,15 @@ Namespace UI.Control
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub tmr__Tick(sender As Object, e As EventArgs) Handles tmr_.Tick
+        Private Sub Tmr_Tick(sender As Object, e As EventArgs) Handles Tmr_.Tick
             If iLoop < 10 Then
                 UText.Height = Me.Height
-                tmr_.Enabled = False
+                Tmr_.Enabled = False
                 iLoop = 0
             Else
-                tmr_.Enabled = False
+                Tmr_.Enabled = False
                 iLoop = 0
             End If
-        End Sub
-
-        Private Sub ULbl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            '
         End Sub
 
         <SupportedOSPlatform("windows")>

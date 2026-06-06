@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMuac
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -101,8 +101,8 @@
             DgnUAC.Size = New Size(1307, 864)
             DgnUAC.StandardTab = True
             DgnUAC.TabIndex = 0
-            DgnUAC.XOGroupFirstRows = False
-            DgnUAC.XOGunakanNomorBaris = True
+            DgnUAC.XOIsGroupFirstRow = False
+            DgnUAC.XOIsShowRowNumber = True
             ' 
             ' user_id
             ' 

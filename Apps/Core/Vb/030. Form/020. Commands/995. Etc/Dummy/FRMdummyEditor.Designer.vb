@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMdummyEditor
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,8 +21,8 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Btn1 = New CMCv.UI.Control.btn(components)
-            Btn2 = New CMCv.UI.Control.btn(components)
+            Btn1 = New CMCv.UI.Control.Btn(components)
+            Btn2 = New CMCv.UI.Control.Btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -67,10 +67,10 @@
             Btn1.TabIndex = 1
             Btn1.Text = "Btn1"
             Btn1.UseVisualStyleBackColor = False
-            Btn1.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            Btn1.XOTampilkanFocusBorder = False
-            Btn1.XOValidasiSemuaInput = False
-            Btn1.XOValidasiSemuaInputTag = Nothing
+            Btn1.XOButtonType = ControlCodeBase.buttonType.Default
+            Btn1.XOShowBorderOnFocus = False
+            Btn1.XOValidateAllInput = False
+            Btn1.XOValidateAllInputTag = Nothing
             ' 
             ' Btn2
             ' 
@@ -89,10 +89,10 @@
             Btn2.TabIndex = 2
             Btn2.Text = "Btn2"
             Btn2.UseVisualStyleBackColor = False
-            Btn2.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            Btn2.XOTampilkanFocusBorder = False
-            Btn2.XOValidasiSemuaInput = False
-            Btn2.XOValidasiSemuaInputTag = Nothing
+            Btn2.XOButtonType = ControlCodeBase.buttonType.Default
+            Btn2.XOShowBorderOnFocus = False
+            Btn2.XOValidateAllInput = False
+            Btn2.XOValidateAllInputTag = Nothing
             ' 
             ' FRMdummyEditor
             ' 
@@ -110,8 +110,8 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents Btn1 As CMCv.UI.Control.btn
-        Friend WithEvents Btn2 As CMCv.UI.Control.btn
+        Friend WithEvents Btn1 As CMCv.UI.Control.Btn
+        Friend WithEvents Btn2 As CMCv.UI.Control.Btn
 
     End Class
 End Namespace

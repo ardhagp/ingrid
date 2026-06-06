@@ -23,7 +23,7 @@ Namespace CMDmmvt
                 If (find.Text = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMssql2008(0).Query = "select sval.stockvaluation_id, sval.stockvaluation_code, sval.stockvaluation_description from dbo.log_stockvaluation sval;"
                 Else
-                    varDatabaseRequestMssql2008(0).Query = String.Format("select sval.stockvaluation_id, sval.stockvaluation_code, sval.stockvaluation_description from dbo.log_stockvaluation  sval;", find.XOSQLText)
+                    varDatabaseRequestMssql2008(0).Query = String.Format("select sval.stockvaluation_id, sval.stockvaluation_code, sval.stockvaluation_description from dbo.log_stockvaluation  sval;", find.XOSqlText)
                 End If
                 varDatabaseRequestMssql2008(0).DataGrid = datagrid
                 varDatabaseRequestMssql2008(0).StatusBar = statusbar
@@ -32,7 +32,7 @@ Namespace CMDmmvt
                 If (find.Text = String.Empty) OrElse (forcerefresh) Then
                     varDatabaseRequestMysql(0).Query = "select sval.stockvaluation_id, sval.stockvaluation_code, sval.stockvaluation_description from dbo.log_stockvaluation  sval;"
                 Else
-                    varDatabaseRequestMysql(0).Query = String.Format("select sval.stockvaluation_id, sval.stockvaluation_code, sval.stockvaluation_description from dbo.log_stockvaluation  sval;", find.XOSQLText)
+                    varDatabaseRequestMysql(0).Query = String.Format("select sval.stockvaluation_id, sval.stockvaluation_code, sval.stockvaluation_description from dbo.log_stockvaluation  sval;", find.XOSqlText)
                 End If
                 varDatabaseRequestMysql(0).DataGrid = datagrid
                 varDatabaseRequestMysql(0).StatusBar = statusbar

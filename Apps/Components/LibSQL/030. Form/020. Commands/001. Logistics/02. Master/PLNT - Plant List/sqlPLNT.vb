@@ -21,10 +21,10 @@ Namespace CMDplnt
             Dim varWhere As String = "where "
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                If (find.XOSQLText = String.Empty) OrElse (dataproperties.PlantIsForceRefresh) Then
+                If (find.XOSqlText = String.Empty) OrElse (dataproperties.PlantIsForceRefresh) Then
                     varWhere = $""
                 Else
-                    varWhere += $"(p.plant_code like '%{find.XOSQLText}%') or (p.plant_name like '%{find.XOSQLText}%') or (p.plant_name2 like '%{find.XOSQLText}%') or (p.plant_postalcode like '%{find.XOSQLText}%')"
+                    varWhere += $"(p.plant_code like '%{find.XOSqlText}%') or (p.plant_name like '%{find.XOSqlText}%') or (p.plant_name2 like '%{find.XOSqlText}%') or (p.plant_postalcode like '%{find.XOSqlText}%')"
                 End If
                 varDatabaseRequestMssql2008(0).Query = $"select p.plant_id, p.plant_code, p.plant_name, p.plant_searchterm1, p.plant_searchterm2, p.plant_description, p.plant_postalcode, p.plant_address from " &
                                                        $"dbo.man_company c inner join dbo.[[log]]plant] p on p.plant_company = c.company_id {varWhere} order by c.company_code, p.plant_code;"
@@ -33,10 +33,10 @@ Namespace CMDplnt
                 varDatabaseRequestMssql2008(0).StatusBar = statusbar
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TPlant")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                If (find.XOSQLText = String.Empty) OrElse (dataproperties.PlantIsForceRefresh) Then
+                If (find.XOSqlText = String.Empty) OrElse (dataproperties.PlantIsForceRefresh) Then
                     varWhere = $""
                 Else
-                    varWhere += $"(p.plant_code like '%{find.XOSQLText}%') or (p.plant_name like '%{find.XOSQLText}%') or (p.plant_name2 like '%{find.XOSQLText}%') or (p.plant_postalcode like '%{find.XOSQLText}%')"
+                    varWhere += $"(p.plant_code like '%{find.XOSqlText}%') or (p.plant_name like '%{find.XOSqlText}%') or (p.plant_name2 like '%{find.XOSqlText}%') or (p.plant_postalcode like '%{find.XOSqlText}%')"
                 End If
                 varDatabaseRequestMysql(0).Query = $"select p.plant_id, p.plant_code, p.plant_name, p.plant_searchterm1, p.plant_searchterm2, p.plant_description, p.plant_postalcode, p.plant_address from " &
                                                    $"man_company c inner join mat_plant p on p.plant_company = c.company_id {varWhere} order by c.company_code, p.plant_code;"
@@ -127,7 +127,7 @@ Namespace CMDplnt
         ''' <param name="dbengine"></param>
         ''' <param name="listofcompany"></param>
         <SupportedOSPlatform("windows")>
-        Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, listofcompany As CMCv.UI.Control.cbo)
+        Public Shared Sub FillCompany(dataproperties As LibApp.Ingrid.Global.Properties, listofcompany As CMCv.UI.Control.Cbo)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(1).Query = $"select c.company_id, (c.company_code + ' - ' + c.company_name) as [company_name] from dbo.man_company c order by c.company_code"
                 varDatabaseRequestMssql2008(1).Dropdown = listofcompany

@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMepls
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,10 +21,10 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Dim DataGridViewCellStyle9 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle11 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
             DgnEPLS = New CMCv.UI.Control.dgn(components)
             employee_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
@@ -68,46 +68,46 @@
             ' 
             DgnEPLS.AllowUserToAddRows = False
             DgnEPLS.AllowUserToDeleteRows = False
-            DataGridViewCellStyle9.BackColor = Color.FromArgb(CByte(205), CByte(221), CByte(131))
-            DgnEPLS.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(252), CByte(217), CByte(126))
+            DgnEPLS.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnEPLS.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnEPLS.BorderStyle = BorderStyle.None
             DgnEPLS.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnEPLS.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle10.BackColor = Color.YellowGreen
-            DataGridViewCellStyle10.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle10.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle10.SelectionBackColor = Color.YellowGreen
-            DataGridViewCellStyle10.SelectionForeColor = Color.Black
-            DataGridViewCellStyle10.WrapMode = DataGridViewTriState.True
-            DgnEPLS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.YellowGreen
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
+            DataGridViewCellStyle2.SelectionForeColor = Color.Black
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            DgnEPLS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             DgnEPLS.ColumnHeadersHeight = 43
             DgnEPLS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             DgnEPLS.Columns.AddRange(New DataGridViewColumn() {employee_id, company_code, company_name, department_code, department_name, position_code, position_name, employee_number, employee_fullname, employee_nickname, employmenttype_name, employee_gender, employee_isactive})
             DgnEPLS.Dock = DockStyle.Fill
             DgnEPLS.EnableHeadersVisualStyles = False
-            DgnEPLS.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DgnEPLS.Font = New Font("Verdana", 8F)
             DgnEPLS.Location = New Point(0, 88)
             DgnEPLS.Margin = New Padding(6, 5, 6, 5)
             DgnEPLS.Name = "DgnEPLS"
             DgnEPLS.ReadOnly = True
             DgnEPLS.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle12.BackColor = Color.YellowGreen
-            DataGridViewCellStyle12.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle12.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle12.SelectionBackColor = Color.Yellow
-            DataGridViewCellStyle12.SelectionForeColor = Color.Black
-            DataGridViewCellStyle12.WrapMode = DataGridViewTriState.True
-            DgnEPLS.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
+            DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle4.BackColor = Color.YellowGreen
+            DataGridViewCellStyle4.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle4.SelectionBackColor = Color.Yellow
+            DataGridViewCellStyle4.SelectionForeColor = Color.Black
+            DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
+            DgnEPLS.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
             DgnEPLS.RowHeadersWidth = 62
             DgnEPLS.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
             DgnEPLS.Size = New Size(1307, 858)
             DgnEPLS.StandardTab = True
             DgnEPLS.TabIndex = 0
-            DgnEPLS.XOGroupFirstRows = False
-            DgnEPLS.XOGunakanNomorBaris = True
+            DgnEPLS.XOIsGroupFirstRow = False
+            DgnEPLS.XOIsShowRowNumber = True
             ' 
             ' employee_id
             ' 
@@ -242,8 +242,8 @@
             ' 
             employee_isactive.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             employee_isactive.DataPropertyName = "employee_isactive"
-            DataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft
-            employee_isactive.DefaultCellStyle = DataGridViewCellStyle11
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            employee_isactive.DefaultCellStyle = DataGridViewCellStyle3
             employee_isactive.HeaderText = "IS ACTIVE"
             employee_isactive.MinimumWidth = 8
             employee_isactive.Name = "employee_isactive"
@@ -256,12 +256,16 @@
             AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1307, 1078)
             ControlBox = False
+            FormBorderStyle = FormBorderStyle.SizableToolWindow
             Margin = New Padding(10, 5, 10, 5)
             MaximizeBox = False
+            MdiChildrenMinimizedAnchorBottom = False
             MinimizeBox = False
             Name = "FRMepls"
             ShowIcon = False
             ShowInTaskbar = False
+            WindowState = FormWindowState.Maximized
+            XOWindowAlwaysMaximized = True
             PnlFind.ResumeLayout(False)
             PnlFind.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

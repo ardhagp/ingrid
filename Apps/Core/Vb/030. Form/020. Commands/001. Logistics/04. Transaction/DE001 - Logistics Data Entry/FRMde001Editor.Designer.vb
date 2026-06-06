@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMde001Editor
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,11 +21,11 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnClose = New CMCv.UI.Control.btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnClose = New CMCv.UI.Control.Btn(components)
             Txt1 = New CMCv.UI.Control.txt(components)
             LblNumber = New CMCv.UI.Control.lbl(components)
-            Cbo1 = New CMCv.UI.Control.cbo(components)
+            Cbo1 = New CMCv.UI.Control.Cbo(components)
             LblGroup = New CMCv.UI.Control.lbl(components)
             LblDate = New CMCv.UI.Control.lbl(components)
             PnlBottomButton.SuspendLayout()
@@ -75,10 +75,10 @@
             BtnSave.TabIndex = 1
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnClose
             ' 
@@ -98,10 +98,10 @@
             BtnClose.TabIndex = 2
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnClose.XOTampilkanFocusBorder = False
-            BtnClose.XOValidasiSemuaInput = False
-            BtnClose.XOValidasiSemuaInputTag = Nothing
+            BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClose.XOShowBorderOnFocus = False
+            BtnClose.XOValidateAllInput = False
+            BtnClose.XOValidateAllInputTag = Nothing
             ' 
             ' Txt1
             ' 
@@ -114,24 +114,24 @@
             Txt1.TabIndex = 996
             Txt1.Tag = "txt"
             Txt1.XOAutoTrim = False
-            Txt1.XOHarusDiisi = False
-            Txt1.XOHarusDiisiWarnaLatar = Color.LightPink
-            Txt1.XOHarusDiisiWarnaLatarDefault = Color.White
-            Txt1.XOHightlightSaatFokus = False
-            Txt1.XOHightlightSaatFokusWarna = Color.LightYellow
+            Txt1.XOIsMandatory = False
+            Txt1.XOMandatoryBgColor = Color.LightPink
+            Txt1.XOMandatoryBgColorDefault = Color.White
+            Txt1.XOHighlightOnFocus = False
+            Txt1.XOHighlightColor = Color.LightYellow
             Txt1.XOIsBlank = True
             Txt1.XOIsSearchBox = False
-            Txt1.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            Txt1.XOPilihSemuaSaatFokus = False
-            Txt1.XOPwdLengthMin = 8
-            Txt1.XOPwdStrengthCalculate = False
-            Txt1.XOPwdStrengthScore = 0
-            Txt1.XOPwdStrengthText = Nothing
-            Txt1.XORestriction = ControlCodeBase.enuRestriction.None
+            Txt1.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            Txt1.XOSelectOnFocus = False
+            Txt1.XOPasswordLengthMin = 8
+            Txt1.XOPasswordStrengthCalc = False
+            Txt1.XOPasswordStrengthScore = 0
+            Txt1.XOPasswordStrengthText = Nothing
+            Txt1.XORestriction = ControlCodeBase.enumRestriction.None
             Txt1.XOSearchBoxText = "Type then press Enter"
-            Txt1.XOSQLText = ""
-            Txt1.XOTanpaSpasi = False
-            Txt1.XOValidasiField = Nothing
+            Txt1.XOSqlText = ""
+            Txt1.XOIsReplaceEmptyString = False
+            Txt1.XOMandatoryMessage = Nothing
             ' 
             ' LblNumber
             ' 
@@ -200,12 +200,12 @@
 
         End Sub
 
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
-        Friend WithEvents BtnClose As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
+        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
         Friend WithEvents LblNumber As CMCv.UI.Control.lbl
         Friend WithEvents Txt1 As CMCv.UI.Control.txt
         Friend WithEvents LblGroup As CMCv.UI.Control.lbl
-        Friend WithEvents Cbo1 As CMCv.UI.Control.cbo
+        Friend WithEvents Cbo1 As CMCv.UI.Control.Cbo
         Friend WithEvents LblDate As CMCv.UI.Control.lbl
     End Class
 End Namespace

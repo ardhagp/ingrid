@@ -10,7 +10,7 @@ Namespace UI
 
 #Region "Sub Collections"
         <SupportedOSPlatform("windows")>
-        Private Sub FillCompany(company As CMCv.UI.Control.cbo)
+        Private Sub FillCompany(company As CMCv.UI.Control.Cbo)
             Call CMDplnt.Editor.FillCompany(varDataProperties, company)
         End Sub
 
@@ -31,13 +31,13 @@ Namespace UI
             Call CheckAllInput()
             With varDataProperties
                 .AllParameters("@CompanyId") = CLng(CboCompany.SelectedValue)
-                .PlantCode = TxtPlantCode.XOSQLText
-                .PlantName = TxtPlantName.XOSQLText
-                .PlantSearchTerm1 = TxtSearchTerm1.XOSQLText
-                .PlantSearchTerm2 = TxtSearchTerm2.XOSQLText
-                .PlantDescription = TxtDescription.XOSQLText
-                .PlantAddress = TxtAddress.XOSQLText
-                .PlantPostalCode = TxtPostalCode.XOSQLText
+                .PlantCode = TxtPlantCode.XOSqlText
+                .PlantName = TxtPlantName.XOSqlText
+                .PlantSearchTerm1 = TxtSearchTerm1.XOSqlText
+                .PlantSearchTerm2 = TxtSearchTerm2.XOSqlText
+                .PlantDescription = TxtDescription.XOSqlText
+                .PlantAddress = TxtAddress.XOSqlText
+                .PlantPostalCode = TxtPostalCode.XOSqlText
             End With
 
             If (CboCompany.Items.Count = 0) AndAlso (varDataProperties.PlantCode = String.Empty) AndAlso (varDataProperties.PlantName = String.Empty) Then

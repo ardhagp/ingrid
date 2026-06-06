@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMsloc
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -90,8 +90,8 @@
             DgnSLOC.Size = New Size(1307, 864)
             DgnSLOC.StandardTab = True
             DgnSLOC.TabIndex = 1
-            DgnSLOC.XOGroupFirstRows = False
-            DgnSLOC.XOGunakanNomorBaris = False
+            DgnSLOC.XOIsGroupFirstRow = False
+            DgnSLOC.XOIsShowRowNumber = False
             ' 
             ' FRMsloc
             ' 

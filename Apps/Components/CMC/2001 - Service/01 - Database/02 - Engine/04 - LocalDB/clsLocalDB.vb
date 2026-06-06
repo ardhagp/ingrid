@@ -1,5 +1,4 @@
-﻿Imports System.Data
-Imports System.Runtime.Versioning
+﻿Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
 Namespace Database.Engine
@@ -7,9 +6,9 @@ Namespace Database.Engine
         Private ReadOnly varConnectionString(2) As String
         Private ReadOnly varFilePath(2) As String
 
-        Private ReadOnly varConnection(2) As SqlClient.SqlConnection
-        Private ReadOnly varCommand(2) As SqlClient.SqlCommand
-        Private ReadOnly varDataReader(2) As SqlClient.SqlDataReader
+        Private ReadOnly varConnection(2) As Microsoft.Data.SqlClient.SqlConnection
+        Private ReadOnly varCommand(2) As Microsoft.Data.SqlClient.SqlCommand
+        Private ReadOnly varDataReader(2) As Microsoft.Data.SqlClient.SqlDataReader
 
         Private ReadOnly varLocalDB As New Connect.LocalDBConnection
 
@@ -101,7 +100,7 @@ Namespace Database.Engine
                 If OperatingSystem.File.Info.IsExists(varFilePath(0)) Then
                     varConnectionString(0) = varLocalDB.LocalDBInitialCatalog(varFilePath(0))
 
-                    varConnection(1) = New SqlClient.SqlConnection(varConnectionString(0)) 'OleDb.OleDbConnection(_CS(0))
+                    varConnection(1) = New Microsoft.Data.SqlClient.SqlConnection(varConnectionString(0)) 'OleDb.OleDbConnection(_CS(0))
                     varConnection(1).Open()
                     'Else
                     '    GoTo FileNotFound
@@ -112,7 +111,7 @@ Namespace Database.Engine
                 If OperatingSystem.File.Info.IsExists(varFilePath(1)) Then
                     varConnectionString(1) = varLocalDB.LocalDBInitialCatalog(varFilePath(1))
 
-                    varConnection(2) = New SqlClient.SqlConnection(varConnectionString(1))
+                    varConnection(2) = New Microsoft.Data.SqlClient.SqlConnection(varConnectionString(1))
                     varConnection(2).Open()
                     'Else
                     '    GoTo FileNotFound
@@ -180,7 +179,7 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub SaveErrorData(ByVal proLog As Ladybug.Log.Fields)
+        Public Sub SaveErrorData(proLog As Ladybug.Log.Fields)
             Try
                 Dim varNowdatetime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
                 Call PushData("insert into ERRORLOG(ERRORTYPE,ERRORDESCRIPTION,ERRORNUMBER,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDATETIME) values ('" & proLog.TypeOfFaulty & "','" & proLog.Message & "'," & proLog.Number & ",'" & proLog.InternalStackTrace & "'," & proLog.ShowErrorReporting & ",'" & varNowdatetime & "');")
@@ -206,11 +205,11 @@ Namespace Database.Engine
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Function GetDataRow(ByVal query As String) As SqlClient.SqlDataReader
+        Private Function GetDataRow(query As String) As Microsoft.Data.SqlClient.SqlDataReader
             Try
-                varCommand(1) = New SqlClient.SqlCommand With {
+                varCommand(1) = New Microsoft.Data.SqlClient.SqlCommand With {
                             .Connection = varConnection(1),
-                            .CommandType = CommandType.Text,
+                            .CommandType = Data.CommandType.Text,
                             .CommandText = query
                 }
 
@@ -221,7 +220,7 @@ Namespace Database.Engine
                 End If
 
                 Return varDataReader(0)
-            Catch ex As SqlClient.SqlException
+            Catch ex As Microsoft.Data.SqlClient.SqlException
                 With proLog
                     .AppVersion = GetAppVersion()
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb"
@@ -245,13 +244,13 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Function GetValue(ByVal query As String) As Object
+        Public Function GetValue(query As String) As Object
             Try
                 Dim varRowValue As Object
 
-                varCommand(1) = New SqlClient.SqlCommand With {
+                varCommand(1) = New Microsoft.Data.SqlClient.SqlCommand With {
                             .Connection = varConnection(1),
-                            .CommandType = CommandType.Text,
+                            .CommandType = Data.CommandType.Text,
                             .CommandTimeout = 30,
                             .CommandText = query
                 }
@@ -283,9 +282,9 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub GetDataTable(ByVal dbr As Adapter.LocalDB.Display.Request, ByVal tablename As String)
+        Public Sub GetDataTable(dbr As Adapter.LocalDB.Display.Request, ByVal tablename As String)
 
-            Dim varDataAdapter(1) As SqlClient.SqlDataAdapter
+            Dim varDataAdapter(1) As Microsoft.Data.SqlClient.SqlDataAdapter
 
             Try
                 'If _DR(1) IsNot Nothing Then
@@ -294,22 +293,22 @@ Namespace Database.Engine
 
                 GC.Collect()
 
-                Dim varDataset As New DataSet
+                Dim varDataset As New System.Data.DataSet
                 Dim varBindingSource As New BindingSource
 
                 If (varCommand(1) Is Nothing) Then 'Or (_CMD = Nothing) Then
-                    varCommand(1) = New SqlClient.SqlCommand
+                    varCommand(1) = New Microsoft.Data.SqlClient.SqlCommand
                 End If
 
                 varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = CommandType.Text
+                varCommand(1).CommandType = Data.CommandType.Text
                 varCommand(1).CommandTimeout = 30
 
                 'DBR.Query = "USE " & _FilePath(0) & " " & DBR.Query
 
                 varCommand(1).CommandText = dbr.Query
 
-                varDataAdapter(1) = New SqlClient.SqlDataAdapter(varCommand(1))
+                varDataAdapter(1) = New Microsoft.Data.SqlClient.SqlDataAdapter(varCommand(1))
                 varDataAdapter(1).Fill(varDataset, tablename)
 
                 varBindingSource = New BindingSource(varDataset, tablename)
@@ -330,7 +329,7 @@ Namespace Database.Engine
                     dbr.Chart.DataSource = varBindingSource
                 End If
 
-            Catch ex As SqlClient.SqlException
+            Catch ex As Microsoft.Data.SqlClient.SqlException
                 With proLog
                     .AppVersion = GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb"
@@ -370,16 +369,16 @@ Namespace Database.Engine
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Public Sub PushData(ByVal query As String)
+        Public Sub PushData(query As String)
             Try
-                varCommand(1) = New SqlClient.SqlCommand With {
+                varCommand(1) = New Microsoft.Data.SqlClient.SqlCommand With {
                                 .Connection = varConnection(1),
-                                .CommandType = CommandType.Text,
+                                .CommandType = Data.CommandType.Text,
                                 .CommandText = query
                                 }
 
                 varCommand(1).ExecuteNonQuery()
-            Catch ex As SqlClient.SqlException
+            Catch ex As Microsoft.Data.SqlClient.SqlException
                 With proLog
                     .AppVersion = GetAppVersion()
                     .FromSender = "[PushData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\04 - LocalDB\clsLocalDB.vb"

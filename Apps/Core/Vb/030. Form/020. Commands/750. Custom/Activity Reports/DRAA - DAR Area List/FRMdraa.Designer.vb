@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMdraa
-        Inherits CMCv.frmStandard
+        Inherits CMCv.FRMstandard
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -25,7 +25,7 @@
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Pnl1 = New CMCv.UI.Control.pnl(components)
-            BtnClear = New CMCv.UI.Control.btn(components)
+            BtnClear = New CMCv.UI.Control.Btn(components)
             Lbl1 = New CMCv.UI.Control.lbl(components)
             TxtFind = New CMCv.UI.Control.txt(components)
             DgnArea = New CMCv.UI.Control.dgn(components)
@@ -75,10 +75,10 @@
             BtnClear.TabIndex = 801
             BtnClear.Text = "Clear"
             BtnClear.UseVisualStyleBackColor = False
-            BtnClear.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnClear.XOTampilkanFocusBorder = False
-            BtnClear.XOValidasiSemuaInput = False
-            BtnClear.XOValidasiSemuaInputTag = Nothing
+            BtnClear.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClear.XOShowBorderOnFocus = False
+            BtnClear.XOValidateAllInput = False
+            BtnClear.XOValidateAllInputTag = Nothing
             ' 
             ' Lbl1
             ' 
@@ -103,24 +103,24 @@
             TxtFind.TabIndex = 800
             TxtFind.Tag = "txt"
             TxtFind.XOAutoTrim = False
-            TxtFind.XOHarusDiisi = False
-            TxtFind.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtFind.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtFind.XOHightlightSaatFokus = False
-            TxtFind.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtFind.XOIsMandatory = False
+            TxtFind.XOMandatoryBgColor = Color.LightPink
+            TxtFind.XOMandatoryBgColorDefault = Color.White
+            TxtFind.XOHighlightOnFocus = False
+            TxtFind.XOHighlightColor = Color.LightYellow
             TxtFind.XOIsBlank = True
             TxtFind.XOIsSearchBox = True
-            TxtFind.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtFind.XOPilihSemuaSaatFokus = False
-            TxtFind.XOPwdLengthMin = 8
-            TxtFind.XOPwdStrengthCalculate = False
-            TxtFind.XOPwdStrengthScore = 0
-            TxtFind.XOPwdStrengthText = Nothing
-            TxtFind.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtFind.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtFind.XOSelectOnFocus = False
+            TxtFind.XOPasswordLengthMin = 8
+            TxtFind.XOPasswordStrengthCalc = False
+            TxtFind.XOPasswordStrengthScore = 0
+            TxtFind.XOPasswordStrengthText = Nothing
+            TxtFind.XORestriction = ControlCodeBase.enumRestriction.None
             TxtFind.XOSearchBoxText = "Type then press Enter"
-            TxtFind.XOSQLText = Nothing
-            TxtFind.XOTanpaSpasi = False
-            TxtFind.XOValidasiField = Nothing
+            TxtFind.XOSqlText = Nothing
+            TxtFind.XOIsReplaceEmptyString = False
+            TxtFind.XOMandatoryMessage = Nothing
             ' 
             ' DgnArea
             ' 
@@ -164,8 +164,8 @@
             DgnArea.Size = New Size(1307, 864)
             DgnArea.StandardTab = True
             DgnArea.TabIndex = 803
-            DgnArea.XOGroupFirstRows = False
-            DgnArea.XOGunakanNomorBaris = True
+            DgnArea.XOIsGroupFirstRow = False
+            DgnArea.XOIsShowRowNumber = True
             ' 
             ' areaaffected_id
             ' 
@@ -216,7 +216,7 @@
             PerformLayout()
         End Sub
         Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
-        Friend WithEvents BtnClear As CMCv.UI.Control.btn
+        Friend WithEvents BtnClear As CMCv.UI.Control.Btn
         Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
         Friend WithEvents TxtFind As CMCv.UI.Control.txt
         Friend WithEvents DgnArea As CMCv.UI.Control.dgn

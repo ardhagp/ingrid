@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMimports
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -23,10 +23,10 @@
             components = New ComponentModel.Container()
             Pnl1 = New CMCv.UI.Control.pnl(components)
             LblFileName = New CMCv.UI.Control.lbl(components)
-            BtnBrowse = New CMCv.UI.Control.btn(components)
+            BtnBrowse = New CMCv.UI.Control.Btn(components)
             TxtProgress = New CMCv.UI.Control.txt(components)
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnClose = New CMCv.UI.Control.btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnClose = New CMCv.UI.Control.Btn(components)
             od = New OpenFileDialog()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -97,10 +97,10 @@
             BtnBrowse.TabIndex = 0
             BtnBrowse.Text = "Browse..."
             BtnBrowse.UseVisualStyleBackColor = False
-            BtnBrowse.XOJenisTombol = ControlCodeBase.enuJenisTombol.Custom
-            BtnBrowse.XOTampilkanFocusBorder = False
-            BtnBrowse.XOValidasiSemuaInput = False
-            BtnBrowse.XOValidasiSemuaInputTag = Nothing
+            BtnBrowse.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnBrowse.XOShowBorderOnFocus = False
+            BtnBrowse.XOValidateAllInput = False
+            BtnBrowse.XOValidateAllInputTag = Nothing
             ' 
             ' TxtProgress
             ' 
@@ -118,24 +118,24 @@
             TxtProgress.Tag = "txt"
             TxtProgress.WordWrap = False
             TxtProgress.XOAutoTrim = False
-            TxtProgress.XOHarusDiisi = False
-            TxtProgress.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtProgress.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtProgress.XOHightlightSaatFokus = False
-            TxtProgress.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtProgress.XOIsMandatory = False
+            TxtProgress.XOMandatoryBgColor = Color.LightPink
+            TxtProgress.XOMandatoryBgColorDefault = Color.White
+            TxtProgress.XOHighlightOnFocus = False
+            TxtProgress.XOHighlightColor = Color.LightYellow
             TxtProgress.XOIsBlank = True
             TxtProgress.XOIsSearchBox = False
-            TxtProgress.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtProgress.XOPilihSemuaSaatFokus = False
-            TxtProgress.XOPwdLengthMin = 8
-            TxtProgress.XOPwdStrengthCalculate = False
-            TxtProgress.XOPwdStrengthScore = 0
-            TxtProgress.XOPwdStrengthText = Nothing
-            TxtProgress.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtProgress.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtProgress.XOSelectOnFocus = False
+            TxtProgress.XOPasswordLengthMin = 8
+            TxtProgress.XOPasswordStrengthCalc = False
+            TxtProgress.XOPasswordStrengthScore = 0
+            TxtProgress.XOPasswordStrengthText = Nothing
+            TxtProgress.XORestriction = ControlCodeBase.enumRestriction.None
             TxtProgress.XOSearchBoxText = "Type then press Enter"
-            TxtProgress.XOSQLText = Nothing
-            TxtProgress.XOTanpaSpasi = False
-            TxtProgress.XOValidasiField = Nothing
+            TxtProgress.XOSqlText = Nothing
+            TxtProgress.XOIsReplaceEmptyString = False
+            TxtProgress.XOMandatoryMessage = Nothing
             ' 
             ' BtnSave
             ' 
@@ -155,10 +155,10 @@
             BtnSave.TabIndex = 0
             BtnSave.Text = "Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnClose
             ' 
@@ -178,10 +178,10 @@
             BtnClose.TabIndex = 1
             BtnClose.Text = "Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnClose.XOTampilkanFocusBorder = False
-            BtnClose.XOValidasiSemuaInput = False
-            BtnClose.XOValidasiSemuaInputTag = Nothing
+            BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClose.XOShowBorderOnFocus = False
+            BtnClose.XOValidateAllInput = False
+            BtnClose.XOValidateAllInputTag = Nothing
             ' 
             ' od
             ' 
@@ -209,10 +209,10 @@
 
         End Sub
         Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
-        Friend WithEvents BtnBrowse As CMCv.UI.Control.btn
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
+        Friend WithEvents BtnBrowse As CMCv.UI.Control.Btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents TxtProgress As CMCv.UI.Control.txt
-        Friend WithEvents BtnClose As CMCv.UI.Control.btn
+        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
         Friend WithEvents od As System.Windows.Forms.OpenFileDialog
         Friend WithEvents LblFileName As CMCv.UI.Control.lbl
 

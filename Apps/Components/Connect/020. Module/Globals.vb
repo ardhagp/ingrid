@@ -90,7 +90,7 @@ Module Globals
     ''' <param name="formsubtitle"></param>
     ''' <param name="isdialog"></param>
     ''' <param name="parentframe"></param>
-    Public Sub Display(formname As CMCv.Std_Fo, Optional formimage As System.Drawing.Image = Nothing,
+    Public Sub Display(formname As CMCv.FRMstandardFooter, Optional formimage As System.Drawing.Image = Nothing,
                        Optional windowtitle As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "",
                        Optional isdialog As Boolean = False,
                        Optional parentframe As system.Windows.Forms.Form = Nothing)

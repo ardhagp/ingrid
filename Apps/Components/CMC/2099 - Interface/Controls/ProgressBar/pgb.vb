@@ -1,10 +1,12 @@
-﻿Imports System.ComponentModel
-Imports System.Drawing
+﻿Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Runtime.Versioning
 Imports System.Windows.Forms
 
 Namespace UI.Control
+    ''' <summary>
+    ''' Custom progressbar
+    ''' </summary>
     Public Class Pgb
         Inherits System.Windows.Forms.ProgressBar
 
@@ -13,12 +15,12 @@ Namespace UI.Control
             InitializeComponent()
             Call ActivateLicenses()
             MyBase.ForeColor = Color.DodgerBlue
-            Me.XOArahGradien = ControlCodeBase.ArahGradien.Horizontal
-            Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Solid
+            Me.XOGradientDirection = ControlCodeBase.EnumGradientType.Horizontal
+            Me.XOProgressBarColor = ControlCodeBase.EnumColorFill.Solid
             Me.SetStyle(ControlStyles.UserPaint, True)
         End Sub
 
-#Region "Properti"
+#Region "Properties"
 
         <SupportedOSPlatform("windows")>
         Protected Overrides Sub OnPaint(e As System.Windows.Forms.PaintEventArgs)
@@ -36,13 +38,13 @@ Namespace UI.Control
             rec.Width = CInt(Math.Truncate((rec.Width * scalefactor) - 4))
             rec.Height -= 4
 
-            If Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Gradien AndAlso Me.XOArahGradien = ControlCodeBase.ArahGradien.Vertikal Then
+            If Me.XOProgressBarColor = ControlCodeBase.EnumColorFill.Gradien AndAlso Me.XOGradientDirection = ControlCodeBase.EnumGradientType.Vertikal Then
                 brush = New LinearGradientBrush(rec, Me.ForeColor, Me.BackColor, LinearGradientMode.Vertical)
-            ElseIf Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Solid AndAlso Me.XOArahGradien = ControlCodeBase.ArahGradien.Vertikal Then
+            ElseIf Me.XOProgressBarColor = ControlCodeBase.EnumColorFill.Solid AndAlso Me.XOGradientDirection = ControlCodeBase.EnumGradientType.Vertikal Then
                 brush = New LinearGradientBrush(rec, Me.ForeColor, Me.ForeColor, LinearGradientMode.Vertical)
-            ElseIf Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Gradien AndAlso Me.XOArahGradien = ControlCodeBase.ArahGradien.Horizontal Then
+            ElseIf Me.XOProgressBarColor = ControlCodeBase.EnumColorFill.Gradien AndAlso Me.XOGradientDirection = ControlCodeBase.EnumGradientType.Horizontal Then
                 brush = New LinearGradientBrush(rec, Me.ForeColor, Me.BackColor, LinearGradientMode.Horizontal)
-            ElseIf Me.XOWarnaProgressBar = ControlCodeBase.JenisWarna.Solid AndAlso Me.XOArahGradien = ControlCodeBase.ArahGradien.Horizontal Then
+            ElseIf Me.XOProgressBarColor = ControlCodeBase.EnumColorFill.Solid AndAlso Me.XOGradientDirection = ControlCodeBase.EnumGradientType.Horizontal Then
                 brush = New LinearGradientBrush(rec, Me.ForeColor, Me.ForeColor, LinearGradientMode.Horizontal)
             End If
             brush2 = New LinearGradientBrush(rec, Me.BackColor, Me.BackColor, LinearGradientMode.Vertical)
@@ -52,31 +54,29 @@ Namespace UI.Control
             e.Graphics.FillRectangle(brush, 2, 2, rec.Width, rec.Height)
         End Sub
 
-        Private varWarnaProgressBar As ControlCodeBase.JenisWarna
-        <Category("Appearance"),
-    Description("Warna progressbar")>
-        Public Property XOWarnaProgressBar As ControlCodeBase.JenisWarna
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the color used to render the filled portion of the progress bar")>
+        Private varProgressBarColor As ControlCodeBase.EnumColorFill
+        Public Property XOProgressBarColor As ControlCodeBase.EnumColorFill
             Get
-                Return varWarnaProgressBar
+                Return varProgressBarColor
             End Get
-            Set(value As ControlCodeBase.JenisWarna)
-                varWarnaProgressBar = value
+            Set(value As ControlCodeBase.EnumColorFill)
+                varProgressBarColor = value
             End Set
         End Property
 
-        Private varArahGradien As ControlCodeBase.ArahGradien
-        <Category("Appearance"),
-    Description("Arah gradien")>
-        Public Property XOArahGradien As ControlCodeBase.ArahGradien
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the direction in which the gradient fill is applied to the progress bar")>
+        Private varGradientDirection As ControlCodeBase.EnumGradientType
+        Public Property XOGradientDirection As ControlCodeBase.EnumGradientType
             Get
-                Return varArahGradien
+                Return varGradientDirection
             End Get
-            Set(value As ControlCodeBase.ArahGradien)
-                varArahGradien = value
+            Set(value As ControlCodeBase.EnumGradientType)
+                varGradientDirection = value
             End Set
         End Property
 #End Region
-
-
     End Class
 End Namespace

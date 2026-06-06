@@ -589,6 +589,7 @@
     <ProjectReference Include="..\..\Components\Bridge\Bridge.csproj" />
     <ProjectReference Include="..\..\Components\CMC\CMCv.vbproj" />
     <ProjectReference Include="..\..\Components\Connect\Connect.vbproj" />
+    <ProjectReference Include="..\..\Components\LibAPI\LibAPI.vbproj" />
     <ProjectReference Include="..\..\Components\LibSQL\LibSQL.vbproj" />
   </ItemGroup>
   <ItemGroup>
@@ -603,9 +604,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="ReportGenerator" Version="5.5.0" />
-    <PackageReference Include="Syncfusion.Grid.Windows" Version="23.1.41" />
-    <PackageReference Include="Syncfusion.Shared.Base" Version="23.1.41" />
-    <PackageReference Include="Syncfusion.Tools.Windows" Version="23.1.41" />
+    <PackageReference Include="Syncfusion.Grid.Windows" Version="33.2.6" />
+    <PackageReference Include="Syncfusion.Shared.Base" Version="33.2.6" />
+    <PackageReference Include="Syncfusion.Tools.Windows" Version="33.2.6" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.ComponentModel.Composition" Version="10.0.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />

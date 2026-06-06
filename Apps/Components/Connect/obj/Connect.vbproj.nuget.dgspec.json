@@ -162,6 +162,10 @@
               "target": "Package",
               "version": "[4.7.0, )"
             },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[9.7.0, )"
@@ -176,23 +180,23 @@
             },
             "Syncfusion.Grid.Windows": {
               "target": "Package",
-              "version": "[23.1.41, )"
+              "version": "[33.2.6, )"
             },
             "Syncfusion.Licensing": {
               "target": "Package",
-              "version": "[23.1.41, )"
+              "version": "[33.2.6, )"
             },
             "Syncfusion.PdfViewer.Windows": {
               "target": "Package",
-              "version": "[23.1.41, )"
+              "version": "[33.2.6, )"
             },
             "Syncfusion.Shared.Base": {
               "target": "Package",
-              "version": "[23.1.41, )"
+              "version": "[33.2.6, )"
             },
             "Syncfusion.Tools.Windows": {
               "target": "Package",
-              "version": "[23.1.41, )"
+              "version": "[33.2.6, )"
             },
             "System.ComponentModel.Composition": {
               "target": "Package",

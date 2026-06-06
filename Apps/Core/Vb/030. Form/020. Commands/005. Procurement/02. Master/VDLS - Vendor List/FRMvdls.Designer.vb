@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMvdls
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -87,8 +87,8 @@
             DgnVendor.Size = New Size(1307, 864)
             DgnVendor.StandardTab = True
             DgnVendor.TabIndex = 1
-            DgnVendor.XOGroupFirstRows = False
-            DgnVendor.XOGunakanNomorBaris = True
+            DgnVendor.XOIsGroupFirstRow = False
+            DgnVendor.XOIsShowRowNumber = True
             ' 
             ' FRMvdls
             ' 

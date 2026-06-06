@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class DAR_RPTFilter
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,18 +21,18 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnShow = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
-            ChkFrom = New CMCv.UI.Control.chk(components)
+            BtnShow = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
+            ChkFrom = New CMCv.UI.Control.Chk(components)
             DtpFrom = New CMCv.UI.Control.dtp(components)
-            ChkTo = New CMCv.UI.Control.chk(components)
+            ChkTo = New CMCv.UI.Control.Chk(components)
             DtpTo = New CMCv.UI.Control.dtp(components)
-            ChkArea = New CMCv.UI.Control.chk(components)
-            CboArea = New CMCv.UI.Control.cbo(components)
-            CboActivity = New CMCv.UI.Control.cbo(components)
-            ChkActivity = New CMCv.UI.Control.chk(components)
-            CboBy = New CMCv.UI.Control.cbo(components)
-            ChkBy = New CMCv.UI.Control.chk(components)
+            ChkArea = New CMCv.UI.Control.Chk(components)
+            CboArea = New CMCv.UI.Control.Cbo(components)
+            CboActivity = New CMCv.UI.Control.Cbo(components)
+            ChkActivity = New CMCv.UI.Control.Chk(components)
+            CboBy = New CMCv.UI.Control.Cbo(components)
+            ChkBy = New CMCv.UI.Control.Chk(components)
             TxtDescription = New CMCv.UI.Control.txt(components)
             LblNote = New CMCv.UI.Control.lbl(components)
             RdoColor = New CMCv.UI.Control.rdo(components)
@@ -111,10 +111,10 @@
             BtnShow.TabIndex = 99
             BtnShow.Text = "&Show"
             BtnShow.UseVisualStyleBackColor = False
-            BtnShow.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnShow.XOTampilkanFocusBorder = False
-            BtnShow.XOValidasiSemuaInput = False
-            BtnShow.XOValidasiSemuaInputTag = Nothing
+            BtnShow.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnShow.XOShowBorderOnFocus = False
+            BtnShow.XOValidateAllInput = False
+            BtnShow.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -134,10 +134,10 @@
             BtnCancel.TabIndex = 98
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' ChkFrom
             ' 
@@ -280,24 +280,24 @@
             TxtDescription.TabIndex = 10
             TxtDescription.Tag = "txt"
             TxtDescription.XOAutoTrim = False
-            TxtDescription.XOHarusDiisi = False
-            TxtDescription.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtDescription.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtDescription.XOHightlightSaatFokus = False
-            TxtDescription.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtDescription.XOIsMandatory = False
+            TxtDescription.XOMandatoryBgColor = Color.LightPink
+            TxtDescription.XOMandatoryBgColorDefault = Color.White
+            TxtDescription.XOHighlightOnFocus = False
+            TxtDescription.XOHighlightColor = Color.LightYellow
             TxtDescription.XOIsBlank = True
             TxtDescription.XOIsSearchBox = False
-            TxtDescription.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtDescription.XOPilihSemuaSaatFokus = False
-            TxtDescription.XOPwdLengthMin = 8
-            TxtDescription.XOPwdStrengthCalculate = False
-            TxtDescription.XOPwdStrengthScore = 0
-            TxtDescription.XOPwdStrengthText = Nothing
-            TxtDescription.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtDescription.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtDescription.XOSelectOnFocus = False
+            TxtDescription.XOPasswordLengthMin = 8
+            TxtDescription.XOPasswordStrengthCalc = False
+            TxtDescription.XOPasswordStrengthScore = 0
+            TxtDescription.XOPasswordStrengthText = Nothing
+            TxtDescription.XORestriction = ControlCodeBase.enumRestriction.None
             TxtDescription.XOSearchBoxText = "Type then press Enter"
-            TxtDescription.XOSQLText = ""
-            TxtDescription.XOTanpaSpasi = False
-            TxtDescription.XOValidasiField = Nothing
+            TxtDescription.XOSqlText = ""
+            TxtDescription.XOIsReplaceEmptyString = False
+            TxtDescription.XOMandatoryMessage = Nothing
             ' 
             ' LblNote
             ' 
@@ -360,18 +360,18 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents BtnShow As CMCv.UI.Control.btn
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnShow As CMCv.UI.Control.Btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents DtpFrom As CMCv.UI.Control.dtp
-        Friend WithEvents ChkFrom As CMCv.UI.Control.chk
-        Friend WithEvents CboActivity As CMCv.UI.Control.cbo
-        Friend WithEvents CboArea As CMCv.UI.Control.cbo
-        Friend WithEvents ChkArea As CMCv.UI.Control.chk
+        Friend WithEvents ChkFrom As CMCv.UI.Control.Chk
+        Friend WithEvents CboActivity As CMCv.UI.Control.Cbo
+        Friend WithEvents CboArea As CMCv.UI.Control.Cbo
+        Friend WithEvents ChkArea As CMCv.UI.Control.Chk
         Friend WithEvents DtpTo As CMCv.UI.Control.dtp
-        Friend WithEvents ChkTo As CMCv.UI.Control.chk
-        Friend WithEvents ChkBy As CMCv.UI.Control.chk
-        Friend WithEvents CboBy As CMCv.UI.Control.cbo
-        Friend WithEvents ChkActivity As CMCv.UI.Control.chk
+        Friend WithEvents ChkTo As CMCv.UI.Control.Chk
+        Friend WithEvents ChkBy As CMCv.UI.Control.Chk
+        Friend WithEvents CboBy As CMCv.UI.Control.Cbo
+        Friend WithEvents ChkActivity As CMCv.UI.Control.Chk
         Friend WithEvents TxtDescription As CMCv.UI.Control.txt
         Friend WithEvents LblNote As CMCv.UI.Control.lbl
         Friend WithEvents RdoBlackWhite As CMCv.UI.Control.rdo

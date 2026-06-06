@@ -45,14 +45,14 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub ExecLogin()
-            If (TxtUsername.XOSQLText = String.Empty) OrElse (TxtPassword.XOSQLText = String.Empty) Then
+            If (TxtUsername.XOSqlText = String.Empty) OrElse (TxtPassword.XOSqlText = String.Empty) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "Please fill in all fields.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             Else
                 varDataProperties.AllParameters.Remove(tUser.P_Username)
-                varDataProperties.AllParameters.Add(tUser.P_Username, TxtUsername.XOSQLText)
+                varDataProperties.AllParameters.Add(tUser.P_Username, TxtUsername.XOSqlText)
                 varDataProperties.AllParameters.Remove(tUser.P_UserPassword)
-                varDataProperties.AllParameters.Add(tUser.P_UserPassword, CMCv.Security.Encrypt.MD5(TxtPassword.XOSQLText))
+                varDataProperties.AllParameters.Add(tUser.P_UserPassword, CMCv.Security.Encrypt.MD5(TxtPassword.XOSqlText))
             End If
 
             CMDuac.Login.GetUserProperties(varDataProperties, varDatasetIngrid)
@@ -65,7 +65,7 @@ Namespace UI
 
                 Dim clsLog As New Ladybug.Log.Events
                 With proLog
-                    .Message = TxtUsername.XOSQLText & " failed to login."
+                    .Message = TxtUsername.XOSqlText & " failed to login."
                     .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Warning
                     .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
                     .ResumeNext = True
@@ -86,20 +86,26 @@ Namespace UI
                 End If
             Else
                 With varDataProperties
-                    .AllParameters.Remove(tUser.P_UserId)
-                    .AllParameters.Add(tUser.P_UserId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item(tUser.C_UserId)))
-                    .AllParameters.Remove(tEmployee.P_EmployeeId)
-                    .AllParameters.Add(tEmployee.P_EmployeeId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeeId)))
-                    .AllParameters.Remove(tEmployee.P_EmployeeFullName)
-                    .AllParameters.Add(tEmployee.P_EmployeeFullName, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeeFullName))
-                    .AllParameters.Remove(tEmployee.P_EmployeeNumber)
-                    .AllParameters.Add(tEmployee.P_EmployeeNumber, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeeNumber))
-                    .AllParameters.Remove(tEmployee.P_EmployeeGender)
-                    .AllParameters.Add(tEmployee.P_EmployeeGender, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeeGender))
-                    .AllParameters.Remove(tPosition.P_PositionName)
-                    .AllParameters.Add(tPosition.P_PositionName, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tPosition.C_PositionName))
-                    .AllParameters.Remove(tUser.P_UserIsRoot)
-                    .AllParameters.Add(tUser.P_UserIsRoot, CBool(varDatasetIngrid.Tables(tUserData).Rows(0).Item(tUser.C_UserIsRoot)))
+                    .UserParameters.Remove(tUser.P_UserId)
+                    .UserParameters.Add(tUser.P_UserId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item(tUser.C_UserId)))
+                    .UserParameters.Remove(tUser.P_UserIsRoot)
+                    .UserParameters.Add(tUser.P_UserIsRoot, CBool(varDatasetIngrid.Tables(tUserData).Rows(0).Item(tUser.C_UserIsRoot)))
+                    .UserParameters.Remove(tEmployee.P_EmployeeId)
+                    .UserParameters.Add(tEmployee.P_EmployeeId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeeId)))
+                    .UserParameters.Remove(tEmployee.P_EmployeeNumber)
+                    .UserParameters.Add(tEmployee.P_EmployeeNumber, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeeNumber))
+                    .UserParameters.Remove(tEmployee.P_EmployeeFullName)
+                    .UserParameters.Add(tEmployee.P_EmployeeFullName, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeeFullName))
+                    .UserParameters.Remove(tEmployee.P_EmployeeNickname)
+                    .UserParameters.Add(tEmployee.P_EmployeeNickname, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeeNickname))
+                    .UserParameters.Remove(tEmployee.P_EmployeePersonalIdNumber)
+                    .UserParameters.Add(tEmployee.P_EmployeePersonalIdNumber, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeePersonalIdNumber))
+                    .UserParameters.Remove(tEmployee.P_EmployeeGender)
+                    .UserParameters.Add(tEmployee.P_EmployeeGender, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tEmployee.C_EmployeeGender))
+                    .UserParameters.Remove(tPosition.P_PositionCode)
+                    .UserParameters.Add(tPosition.P_PositionCode, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tPosition.C_PositionCode))
+                    .UserParameters.Remove(tPosition.P_PositionName)
+                    .UserParameters.Add(tPosition.P_PositionName, varDatasetIngrid.Tables(tUserData).Rows(0).Item(tPosition.C_PositionName))
                 End With
 
                 varLogUser.LoginSuccess(varDataProperties)

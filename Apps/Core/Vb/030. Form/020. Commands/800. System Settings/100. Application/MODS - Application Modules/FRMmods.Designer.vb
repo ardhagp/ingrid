@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMmods
-        Inherits CMCv.Std_Fi
+        Inherits CMCv.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -100,8 +100,8 @@
             DgnMODS.Size = New Size(1307, 864)
             DgnMODS.StandardTab = True
             DgnMODS.TabIndex = 802
-            DgnMODS.XOGroupFirstRows = True
-            DgnMODS.XOGunakanNomorBaris = True
+            DgnMODS.XOIsGroupFirstRow = True
+            DgnMODS.XOIsShowRowNumber = True
             ' 
             ' modulegroup_name
             ' 

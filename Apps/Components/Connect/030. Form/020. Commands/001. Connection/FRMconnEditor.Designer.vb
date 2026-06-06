@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMconnEditor
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -22,17 +22,17 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMconnEditor))
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
-            TbctlBasic = New CMCv.UI.Control.tbctl(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
+            TbctlBasic = New CMCv.UI.Control.Tbx(components)
             tp1_ = New TabPage()
-            ChkIsMasked = New CMCv.UI.Control.chk(components)
-            btnExport = New CMCv.UI.Control.btn(components)
-            CboDBEngine = New CMCv.UI.Control.cbo(components)
+            ChkIsMasked = New CMCv.UI.Control.Chk(components)
+            btnExport = New CMCv.UI.Control.Btn(components)
+            CboDBEngine = New CMCv.UI.Control.Cbo(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
             ULbl_DatabaseName = New CMCv.UI.Control.ULbl()
             TxtDatabaseName = New CMCv.UI.Control.txt(components)
-            ChkDefault = New CMCv.UI.Control.chk(components)
+            ChkDefault = New CMCv.UI.Control.Chk(components)
             TxtPassword = New CMCv.UI.Control.txt(components)
             TxtUsername = New CMCv.UI.Control.txt(components)
             ULbl_Password = New CMCv.UI.Control.ULbl()
@@ -44,14 +44,14 @@
             TxtConnectionName = New CMCv.UI.Control.txt(components)
             TxtAddress = New CMCv.UI.Control.txt(components)
             tp2_ = New TabPage()
-            btnImport = New CMCv.UI.Control.btn(components)
-            btnSaveAs = New CMCv.UI.Control.btn(components)
+            btnImport = New CMCv.UI.Control.Btn(components)
+            btnSaveAs = New CMCv.UI.Control.Btn(components)
             Pnl1 = New CMCv.UI.Control.pnl(components)
             txtImportContent = New CMCv.UI.Control.txt(components)
-            btnGet = New CMCv.UI.Control.btn(components)
+            btnGet = New CMCv.UI.Control.Btn(components)
             ULbl2 = New CMCv.UI.Control.ULbl()
             txtImportCode = New CMCv.UI.Control.txt(components)
-            Btn_Test = New CMCv.UI.Control.btn(components)
+            Btn_Test = New CMCv.UI.Control.Btn(components)
             TtAllComponents = New ToolTip(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -107,10 +107,10 @@
             BtnSave.TabIndex = 10
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -130,10 +130,10 @@
             BtnCancel.TabIndex = 11
             BtnCancel.Text = "&Close"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' TbctlBasic
             ' 
@@ -205,10 +205,10 @@
             btnExport.TabIndex = 11
             btnExport.Text = "Export"
             btnExport.UseVisualStyleBackColor = False
-            btnExport.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            btnExport.XOTampilkanFocusBorder = False
-            btnExport.XOValidasiSemuaInput = False
-            btnExport.XOValidasiSemuaInputTag = Nothing
+            btnExport.XOButtonType = ControlCodeBase.buttonType.Default
+            btnExport.XOShowBorderOnFocus = False
+            btnExport.XOValidateAllInput = False
+            btnExport.XOValidateAllInputTag = Nothing
             ' 
             ' CboDBEngine
             ' 
@@ -229,10 +229,10 @@
             ULbl1.Margin = New Padding(10, 8, 10, 8)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(272, 40)
-            ULbl1.SLFText = "DB Engine"
-            ULbl1.SLFTextAdjuster = False
-            ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            ULbl1.XOText = "DB Engine"
+            ULbl1.XOTextAdjuster = False
+            ULbl1.XOTextBorder = False
+            ULbl1.XOLabelColor = ControlCodeBase.EnumColorSelect.Default
             ULbl1.TabIndex = 1010
             ' 
             ' ULbl_DatabaseName
@@ -242,10 +242,10 @@
             ULbl_DatabaseName.Margin = New Padding(12, 17, 12, 17)
             ULbl_DatabaseName.Name = "ULbl_DatabaseName"
             ULbl_DatabaseName.Size = New Size(272, 39)
-            ULbl_DatabaseName.SLFText = "Database Name"
-            ULbl_DatabaseName.SLFTextAdjuster = False
-            ULbl_DatabaseName.SLFTextBorder = False
-            ULbl_DatabaseName.SLFWarnaLabel = ControlCodeBase.JenisLabel.Red
+            ULbl_DatabaseName.XOText = "Database Name"
+            ULbl_DatabaseName.XOTextAdjuster = False
+            ULbl_DatabaseName.XOTextBorder = False
+            ULbl_DatabaseName.XOLabelColor = ControlCodeBase.EnumColorSelect.Red
             ULbl_DatabaseName.TabIndex = 1008
             ' 
             ' TxtDatabaseName
@@ -260,24 +260,24 @@
             TxtDatabaseName.TabIndex = 7
             TxtDatabaseName.Tag = "txt"
             TxtDatabaseName.XOAutoTrim = True
-            TxtDatabaseName.XOHarusDiisi = True
-            TxtDatabaseName.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtDatabaseName.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtDatabaseName.XOHightlightSaatFokus = True
-            TxtDatabaseName.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtDatabaseName.XOIsMandatory = True
+            TxtDatabaseName.XOMandatoryBgColor = Color.LightPink
+            TxtDatabaseName.XOMandatoryBgColorDefault = Color.White
+            TxtDatabaseName.XOHighlightOnFocus = True
+            TxtDatabaseName.XOHighlightColor = Color.LightYellow
             TxtDatabaseName.XOIsBlank = True
             TxtDatabaseName.XOIsSearchBox = False
-            TxtDatabaseName.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtDatabaseName.XOPilihSemuaSaatFokus = False
-            TxtDatabaseName.XOPwdLengthMin = 8
-            TxtDatabaseName.XOPwdStrengthCalculate = False
-            TxtDatabaseName.XOPwdStrengthScore = 0
-            TxtDatabaseName.XOPwdStrengthText = Nothing
-            TxtDatabaseName.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
+            TxtDatabaseName.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtDatabaseName.XOSelectOnFocus = False
+            TxtDatabaseName.XOPasswordLengthMin = 8
+            TxtDatabaseName.XOPasswordStrengthCalc = False
+            TxtDatabaseName.XOPasswordStrengthScore = 0
+            TxtDatabaseName.XOPasswordStrengthText = Nothing
+            TxtDatabaseName.XORestriction = ControlCodeBase.enumRestriction.TextAndNumber
             TxtDatabaseName.XOSearchBoxText = "Type then press Enter"
-            TxtDatabaseName.XOSQLText = ""
-            TxtDatabaseName.XOTanpaSpasi = False
-            TxtDatabaseName.XOValidasiField = Nothing
+            TxtDatabaseName.XOSqlText = ""
+            TxtDatabaseName.XOIsReplaceEmptyString = False
+            TxtDatabaseName.XOMandatoryMessage = Nothing
             ' 
             ' ChkDefault
             ' 
@@ -306,24 +306,24 @@
             TxtPassword.TabIndex = 6
             TxtPassword.Tag = "txt"
             TxtPassword.XOAutoTrim = False
-            TxtPassword.XOHarusDiisi = True
-            TxtPassword.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtPassword.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtPassword.XOHightlightSaatFokus = True
-            TxtPassword.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtPassword.XOIsMandatory = True
+            TxtPassword.XOMandatoryBgColor = Color.LightPink
+            TxtPassword.XOMandatoryBgColorDefault = Color.White
+            TxtPassword.XOHighlightOnFocus = True
+            TxtPassword.XOHighlightColor = Color.LightYellow
             TxtPassword.XOIsBlank = True
             TxtPassword.XOIsSearchBox = False
-            TxtPassword.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtPassword.XOPilihSemuaSaatFokus = False
-            TxtPassword.XOPwdLengthMin = 8
-            TxtPassword.XOPwdStrengthCalculate = False
-            TxtPassword.XOPwdStrengthScore = 0
-            TxtPassword.XOPwdStrengthText = Nothing
-            TxtPassword.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtPassword.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtPassword.XOSelectOnFocus = False
+            TxtPassword.XOPasswordLengthMin = 8
+            TxtPassword.XOPasswordStrengthCalc = False
+            TxtPassword.XOPasswordStrengthScore = 0
+            TxtPassword.XOPasswordStrengthText = Nothing
+            TxtPassword.XORestriction = ControlCodeBase.enumRestriction.None
             TxtPassword.XOSearchBoxText = "Type then press Enter"
-            TxtPassword.XOSQLText = ""
-            TxtPassword.XOTanpaSpasi = False
-            TxtPassword.XOValidasiField = Nothing
+            TxtPassword.XOSqlText = ""
+            TxtPassword.XOIsReplaceEmptyString = False
+            TxtPassword.XOMandatoryMessage = Nothing
             ' 
             ' TxtUsername
             ' 
@@ -337,24 +337,24 @@
             TxtUsername.TabIndex = 5
             TxtUsername.Tag = "txt"
             TxtUsername.XOAutoTrim = True
-            TxtUsername.XOHarusDiisi = True
-            TxtUsername.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtUsername.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtUsername.XOHightlightSaatFokus = True
-            TxtUsername.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtUsername.XOIsMandatory = True
+            TxtUsername.XOMandatoryBgColor = Color.LightPink
+            TxtUsername.XOMandatoryBgColorDefault = Color.White
+            TxtUsername.XOHighlightOnFocus = True
+            TxtUsername.XOHighlightColor = Color.LightYellow
             TxtUsername.XOIsBlank = True
             TxtUsername.XOIsSearchBox = False
-            TxtUsername.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtUsername.XOPilihSemuaSaatFokus = False
-            TxtUsername.XOPwdLengthMin = 8
-            TxtUsername.XOPwdStrengthCalculate = False
-            TxtUsername.XOPwdStrengthScore = 0
-            TxtUsername.XOPwdStrengthText = Nothing
-            TxtUsername.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
+            TxtUsername.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtUsername.XOSelectOnFocus = False
+            TxtUsername.XOPasswordLengthMin = 8
+            TxtUsername.XOPasswordStrengthCalc = False
+            TxtUsername.XOPasswordStrengthScore = 0
+            TxtUsername.XOPasswordStrengthText = Nothing
+            TxtUsername.XORestriction = ControlCodeBase.enumRestriction.TextAndNumber
             TxtUsername.XOSearchBoxText = "Type then press Enter"
-            TxtUsername.XOSQLText = ""
-            TxtUsername.XOTanpaSpasi = False
-            TxtUsername.XOValidasiField = Nothing
+            TxtUsername.XOSqlText = ""
+            TxtUsername.XOIsReplaceEmptyString = False
+            TxtUsername.XOMandatoryMessage = Nothing
             ' 
             ' ULbl_Password
             ' 
@@ -363,10 +363,10 @@
             ULbl_Password.Margin = New Padding(12, 17, 12, 17)
             ULbl_Password.Name = "ULbl_Password"
             ULbl_Password.Size = New Size(272, 35)
-            ULbl_Password.SLFText = "Password"
-            ULbl_Password.SLFTextAdjuster = False
-            ULbl_Password.SLFTextBorder = False
-            ULbl_Password.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            ULbl_Password.XOText = "Password"
+            ULbl_Password.XOTextAdjuster = False
+            ULbl_Password.XOTextBorder = False
+            ULbl_Password.XOLabelColor = ControlCodeBase.EnumColorSelect.Default
             ULbl_Password.TabIndex = 1005
             ' 
             ' ULbl_Username
@@ -376,10 +376,10 @@
             ULbl_Username.Margin = New Padding(12, 17, 12, 17)
             ULbl_Username.Name = "ULbl_Username"
             ULbl_Username.Size = New Size(272, 39)
-            ULbl_Username.SLFText = "Username"
-            ULbl_Username.SLFTextAdjuster = False
-            ULbl_Username.SLFTextBorder = False
-            ULbl_Username.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            ULbl_Username.XOText = "Username"
+            ULbl_Username.XOTextAdjuster = False
+            ULbl_Username.XOTextBorder = False
+            ULbl_Username.XOLabelColor = ControlCodeBase.EnumColorSelect.Default
             ULbl_Username.TabIndex = 1004
             ' 
             ' ULbl_Port
@@ -389,10 +389,10 @@
             ULbl_Port.Margin = New Padding(12, 17, 12, 17)
             ULbl_Port.Name = "ULbl_Port"
             ULbl_Port.Size = New Size(272, 39)
-            ULbl_Port.SLFText = "Port"
-            ULbl_Port.SLFTextAdjuster = False
-            ULbl_Port.SLFTextBorder = False
-            ULbl_Port.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            ULbl_Port.XOText = "Port"
+            ULbl_Port.XOTextAdjuster = False
+            ULbl_Port.XOTextBorder = False
+            ULbl_Port.XOLabelColor = ControlCodeBase.EnumColorSelect.Default
             ULbl_Port.TabIndex = 1003
             ' 
             ' TxtPort
@@ -408,24 +408,24 @@
             TxtPort.Tag = "txt"
             TxtPort.TextAlign = HorizontalAlignment.Center
             TxtPort.XOAutoTrim = True
-            TxtPort.XOHarusDiisi = True
-            TxtPort.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtPort.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtPort.XOHightlightSaatFokus = True
-            TxtPort.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtPort.XOIsMandatory = True
+            TxtPort.XOMandatoryBgColor = Color.LightPink
+            TxtPort.XOMandatoryBgColorDefault = Color.White
+            TxtPort.XOHighlightOnFocus = True
+            TxtPort.XOHighlightColor = Color.LightYellow
             TxtPort.XOIsBlank = True
             TxtPort.XOIsSearchBox = False
-            TxtPort.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtPort.XOPilihSemuaSaatFokus = False
-            TxtPort.XOPwdLengthMin = 8
-            TxtPort.XOPwdStrengthCalculate = False
-            TxtPort.XOPwdStrengthScore = 0
-            TxtPort.XOPwdStrengthText = Nothing
-            TxtPort.XORestriction = ControlCodeBase.enuRestriction.OnlyNumber
+            TxtPort.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtPort.XOSelectOnFocus = False
+            TxtPort.XOPasswordLengthMin = 8
+            TxtPort.XOPasswordStrengthCalc = False
+            TxtPort.XOPasswordStrengthScore = 0
+            TxtPort.XOPasswordStrengthText = Nothing
+            TxtPort.XORestriction = ControlCodeBase.enumRestriction.OnlyNumber
             TxtPort.XOSearchBoxText = "Type then press Enter"
-            TxtPort.XOSQLText = ""
-            TxtPort.XOTanpaSpasi = False
-            TxtPort.XOValidasiField = Nothing
+            TxtPort.XOSqlText = ""
+            TxtPort.XOIsReplaceEmptyString = False
+            TxtPort.XOMandatoryMessage = Nothing
             ' 
             ' ULbl_Address
             ' 
@@ -434,10 +434,10 @@
             ULbl_Address.Margin = New Padding(12, 17, 12, 17)
             ULbl_Address.Name = "ULbl_Address"
             ULbl_Address.Size = New Size(272, 39)
-            ULbl_Address.SLFText = "Address"
-            ULbl_Address.SLFTextAdjuster = False
-            ULbl_Address.SLFTextBorder = False
-            ULbl_Address.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            ULbl_Address.XOText = "Address"
+            ULbl_Address.XOTextAdjuster = False
+            ULbl_Address.XOTextBorder = False
+            ULbl_Address.XOLabelColor = ControlCodeBase.EnumColorSelect.Default
             ULbl_Address.TabIndex = 1001
             ' 
             ' ULbl_Name
@@ -447,10 +447,10 @@
             ULbl_Name.Margin = New Padding(12, 17, 12, 17)
             ULbl_Name.Name = "ULbl_Name"
             ULbl_Name.Size = New Size(272, 39)
-            ULbl_Name.SLFText = "Connection Name"
-            ULbl_Name.SLFTextAdjuster = False
-            ULbl_Name.SLFTextBorder = False
-            ULbl_Name.SLFWarnaLabel = ControlCodeBase.JenisLabel.Default
+            ULbl_Name.XOText = "Connection Name"
+            ULbl_Name.XOTextAdjuster = False
+            ULbl_Name.XOTextBorder = False
+            ULbl_Name.XOLabelColor = ControlCodeBase.EnumColorSelect.Default
             ULbl_Name.TabIndex = 1000
             ' 
             ' TxtConnectionName
@@ -465,24 +465,24 @@
             TxtConnectionName.TabIndex = 0
             TxtConnectionName.Tag = "txt"
             TxtConnectionName.XOAutoTrim = True
-            TxtConnectionName.XOHarusDiisi = True
-            TxtConnectionName.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtConnectionName.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtConnectionName.XOHightlightSaatFokus = True
-            TxtConnectionName.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtConnectionName.XOIsMandatory = True
+            TxtConnectionName.XOMandatoryBgColor = Color.LightPink
+            TxtConnectionName.XOMandatoryBgColorDefault = Color.White
+            TxtConnectionName.XOHighlightOnFocus = True
+            TxtConnectionName.XOHighlightColor = Color.LightYellow
             TxtConnectionName.XOIsBlank = True
             TxtConnectionName.XOIsSearchBox = False
-            TxtConnectionName.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtConnectionName.XOPilihSemuaSaatFokus = False
-            TxtConnectionName.XOPwdLengthMin = 8
-            TxtConnectionName.XOPwdStrengthCalculate = False
-            TxtConnectionName.XOPwdStrengthScore = 0
-            TxtConnectionName.XOPwdStrengthText = Nothing
-            TxtConnectionName.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtConnectionName.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtConnectionName.XOSelectOnFocus = False
+            TxtConnectionName.XOPasswordLengthMin = 8
+            TxtConnectionName.XOPasswordStrengthCalc = False
+            TxtConnectionName.XOPasswordStrengthScore = 0
+            TxtConnectionName.XOPasswordStrengthText = Nothing
+            TxtConnectionName.XORestriction = ControlCodeBase.enumRestriction.None
             TxtConnectionName.XOSearchBoxText = "Type then press Enter"
-            TxtConnectionName.XOSQLText = ""
-            TxtConnectionName.XOTanpaSpasi = False
-            TxtConnectionName.XOValidasiField = Nothing
+            TxtConnectionName.XOSqlText = ""
+            TxtConnectionName.XOIsReplaceEmptyString = False
+            TxtConnectionName.XOMandatoryMessage = Nothing
             ' 
             ' TxtAddress
             ' 
@@ -496,24 +496,24 @@
             TxtAddress.TabIndex = 3
             TxtAddress.Tag = "txt"
             TxtAddress.XOAutoTrim = True
-            TxtAddress.XOHarusDiisi = True
-            TxtAddress.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtAddress.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtAddress.XOHightlightSaatFokus = True
-            TxtAddress.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtAddress.XOIsMandatory = True
+            TxtAddress.XOMandatoryBgColor = Color.LightPink
+            TxtAddress.XOMandatoryBgColorDefault = Color.White
+            TxtAddress.XOHighlightOnFocus = True
+            TxtAddress.XOHighlightColor = Color.LightYellow
             TxtAddress.XOIsBlank = True
             TxtAddress.XOIsSearchBox = False
-            TxtAddress.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            TxtAddress.XOPilihSemuaSaatFokus = False
-            TxtAddress.XOPwdLengthMin = 8
-            TxtAddress.XOPwdStrengthCalculate = False
-            TxtAddress.XOPwdStrengthScore = 0
-            TxtAddress.XOPwdStrengthText = Nothing
-            TxtAddress.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtAddress.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtAddress.XOSelectOnFocus = False
+            TxtAddress.XOPasswordLengthMin = 8
+            TxtAddress.XOPasswordStrengthCalc = False
+            TxtAddress.XOPasswordStrengthScore = 0
+            TxtAddress.XOPasswordStrengthText = Nothing
+            TxtAddress.XORestriction = ControlCodeBase.enumRestriction.None
             TxtAddress.XOSearchBoxText = "Type then press Enter"
-            TxtAddress.XOSQLText = ""
-            TxtAddress.XOTanpaSpasi = False
-            TxtAddress.XOValidasiField = Nothing
+            TxtAddress.XOSqlText = ""
+            TxtAddress.XOIsReplaceEmptyString = False
+            TxtAddress.XOMandatoryMessage = Nothing
             ' 
             ' tp2_
             ' 
@@ -547,10 +547,10 @@
             btnImport.TabIndex = 6
             btnImport.Text = "Import"
             btnImport.UseVisualStyleBackColor = False
-            btnImport.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            btnImport.XOTampilkanFocusBorder = False
-            btnImport.XOValidasiSemuaInput = False
-            btnImport.XOValidasiSemuaInputTag = Nothing
+            btnImport.XOButtonType = ControlCodeBase.buttonType.Default
+            btnImport.XOShowBorderOnFocus = False
+            btnImport.XOValidateAllInput = False
+            btnImport.XOValidateAllInputTag = Nothing
             ' 
             ' btnSaveAs
             ' 
@@ -567,10 +567,10 @@
             btnSaveAs.TabIndex = 5
             btnSaveAs.Text = "Save As"
             btnSaveAs.UseVisualStyleBackColor = False
-            btnSaveAs.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            btnSaveAs.XOTampilkanFocusBorder = False
-            btnSaveAs.XOValidasiSemuaInput = False
-            btnSaveAs.XOValidasiSemuaInputTag = Nothing
+            btnSaveAs.XOButtonType = ControlCodeBase.buttonType.Default
+            btnSaveAs.XOShowBorderOnFocus = False
+            btnSaveAs.XOValidateAllInput = False
+            btnSaveAs.XOValidateAllInputTag = Nothing
             ' 
             ' Pnl1
             ' 
@@ -592,24 +592,24 @@
             txtImportContent.TabIndex = 3
             txtImportContent.Tag = "txt"
             txtImportContent.XOAutoTrim = False
-            txtImportContent.XOHarusDiisi = False
-            txtImportContent.XOHarusDiisiWarnaLatar = Color.LightPink
-            txtImportContent.XOHarusDiisiWarnaLatarDefault = Color.White
-            txtImportContent.XOHightlightSaatFokus = True
-            txtImportContent.XOHightlightSaatFokusWarna = Color.LightYellow
+            txtImportContent.XOIsMandatory = False
+            txtImportContent.XOMandatoryBgColor = Color.LightPink
+            txtImportContent.XOMandatoryBgColorDefault = Color.White
+            txtImportContent.XOHighlightOnFocus = True
+            txtImportContent.XOHighlightColor = Color.LightYellow
             txtImportContent.XOIsBlank = True
             txtImportContent.XOIsSearchBox = False
-            txtImportContent.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            txtImportContent.XOPilihSemuaSaatFokus = False
-            txtImportContent.XOPwdLengthMin = 8
-            txtImportContent.XOPwdStrengthCalculate = False
-            txtImportContent.XOPwdStrengthScore = 0
-            txtImportContent.XOPwdStrengthText = Nothing
-            txtImportContent.XORestriction = ControlCodeBase.enuRestriction.None
+            txtImportContent.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            txtImportContent.XOSelectOnFocus = False
+            txtImportContent.XOPasswordLengthMin = 8
+            txtImportContent.XOPasswordStrengthCalc = False
+            txtImportContent.XOPasswordStrengthScore = 0
+            txtImportContent.XOPasswordStrengthText = Nothing
+            txtImportContent.XORestriction = ControlCodeBase.enumRestriction.None
             txtImportContent.XOSearchBoxText = "Type then press Enter"
-            txtImportContent.XOSQLText = ""
-            txtImportContent.XOTanpaSpasi = False
-            txtImportContent.XOValidasiField = Nothing
+            txtImportContent.XOSqlText = ""
+            txtImportContent.XOIsReplaceEmptyString = False
+            txtImportContent.XOMandatoryMessage = Nothing
             ' 
             ' btnGet
             ' 
@@ -626,10 +626,10 @@
             btnGet.TabIndex = 2
             btnGet.Text = "Get"
             btnGet.UseVisualStyleBackColor = False
-            btnGet.XOJenisTombol = ControlCodeBase.enuJenisTombol.Default
-            btnGet.XOTampilkanFocusBorder = False
-            btnGet.XOValidasiSemuaInput = False
-            btnGet.XOValidasiSemuaInputTag = Nothing
+            btnGet.XOButtonType = ControlCodeBase.buttonType.Default
+            btnGet.XOShowBorderOnFocus = False
+            btnGet.XOValidateAllInput = False
+            btnGet.XOValidateAllInputTag = Nothing
             ' 
             ' ULbl2
             ' 
@@ -638,10 +638,10 @@
             ULbl2.Margin = New Padding(6, 8, 6, 8)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(231, 39)
-            ULbl2.SLFText = "Connection Code"
-            ULbl2.SLFTextAdjuster = False
-            ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
+            ULbl2.XOText = "Connection Code"
+            ULbl2.XOTextAdjuster = False
+            ULbl2.XOTextBorder = False
+            ULbl2.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1
             ' 
             ' txtImportCode
@@ -654,24 +654,24 @@
             txtImportCode.TabIndex = 0
             txtImportCode.Tag = "txt"
             txtImportCode.XOAutoTrim = False
-            txtImportCode.XOHarusDiisi = False
-            txtImportCode.XOHarusDiisiWarnaLatar = Color.LightPink
-            txtImportCode.XOHarusDiisiWarnaLatarDefault = Color.White
-            txtImportCode.XOHightlightSaatFokus = True
-            txtImportCode.XOHightlightSaatFokusWarna = Color.LightYellow
+            txtImportCode.XOIsMandatory = False
+            txtImportCode.XOMandatoryBgColor = Color.LightPink
+            txtImportCode.XOMandatoryBgColorDefault = Color.White
+            txtImportCode.XOHighlightOnFocus = True
+            txtImportCode.XOHighlightColor = Color.LightYellow
             txtImportCode.XOIsBlank = False
             txtImportCode.XOIsSearchBox = False
-            txtImportCode.XOJenisKapital = ControlCodeBase.enuJenisKapital.Normal
-            txtImportCode.XOPilihSemuaSaatFokus = False
-            txtImportCode.XOPwdLengthMin = 8
-            txtImportCode.XOPwdStrengthCalculate = False
-            txtImportCode.XOPwdStrengthScore = 0
-            txtImportCode.XOPwdStrengthText = Nothing
-            txtImportCode.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
+            txtImportCode.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            txtImportCode.XOSelectOnFocus = False
+            txtImportCode.XOPasswordLengthMin = 8
+            txtImportCode.XOPasswordStrengthCalc = False
+            txtImportCode.XOPasswordStrengthScore = 0
+            txtImportCode.XOPasswordStrengthText = Nothing
+            txtImportCode.XORestriction = ControlCodeBase.enumRestriction.TextAndNumber
             txtImportCode.XOSearchBoxText = "Type then press Enter"
-            txtImportCode.XOSQLText = ""
-            txtImportCode.XOTanpaSpasi = False
-            txtImportCode.XOValidasiField = Nothing
+            txtImportCode.XOSqlText = ""
+            txtImportCode.XOIsReplaceEmptyString = False
+            txtImportCode.XOMandatoryMessage = Nothing
             ' 
             ' Btn_Test
             ' 
@@ -690,10 +690,10 @@
             Btn_Test.TabIndex = 12
             Btn_Test.Text = "Test"
             Btn_Test.UseVisualStyleBackColor = False
-            Btn_Test.XOJenisTombol = ControlCodeBase.enuJenisTombol.Warning
-            Btn_Test.XOTampilkanFocusBorder = False
-            Btn_Test.XOValidasiSemuaInput = False
-            Btn_Test.XOValidasiSemuaInputTag = Nothing
+            Btn_Test.XOButtonType = ControlCodeBase.buttonType.Warning
+            Btn_Test.XOShowBorderOnFocus = False
+            Btn_Test.XOValidateAllInput = False
+            Btn_Test.XOValidateAllInputTag = Nothing
             ' 
             ' TtAllComponents
             ' 
@@ -726,9 +726,9 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
-        Friend WithEvents TbctlBasic As CMCv.UI.Control.tbctl
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
+        Friend WithEvents TbctlBasic As CMCv.UI.Control.Tbx
         Friend WithEvents tp1_ As TabPage
         Friend WithEvents TxtAddress As CMCv.UI.Control.txt
         Friend WithEvents TxtConnectionName As CMCv.UI.Control.txt
@@ -740,22 +740,22 @@
         Friend WithEvents ULbl_Port As CMCv.UI.Control.ULbl
         Friend WithEvents TxtPassword As CMCv.UI.Control.txt
         Friend WithEvents TxtUsername As CMCv.UI.Control.txt
-        Friend WithEvents Btn_Test As CMCv.UI.Control.btn
-        Friend WithEvents ChkDefault As CMCv.UI.Control.chk
+        Friend WithEvents Btn_Test As CMCv.UI.Control.Btn
+        Friend WithEvents ChkDefault As CMCv.UI.Control.Chk
         Friend WithEvents TxtDatabaseName As CMCv.UI.Control.txt
         Friend WithEvents ULbl_DatabaseName As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
-        Friend WithEvents CboDBEngine As CMCv.UI.Control.cbo
+        Friend WithEvents CboDBEngine As CMCv.UI.Control.Cbo
         Friend WithEvents tp2_ As TabPage
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
         Friend WithEvents txtImportCode As CMCv.UI.Control.txt
-        Friend WithEvents btnGet As CMCv.UI.Control.btn
+        Friend WithEvents btnGet As CMCv.UI.Control.Btn
         Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
         Friend WithEvents txtImportContent As CMCv.UI.Control.txt
-        Friend WithEvents btnExport As CMCv.UI.Control.btn
-        Friend WithEvents btnImport As CMCv.UI.Control.btn
-        Friend WithEvents btnSaveAs As CMCv.UI.Control.btn
-        Friend WithEvents ChkIsMasked As CMCv.UI.Control.chk
+        Friend WithEvents btnExport As CMCv.UI.Control.Btn
+        Friend WithEvents btnImport As CMCv.UI.Control.Btn
+        Friend WithEvents btnSaveAs As CMCv.UI.Control.Btn
+        Friend WithEvents ChkIsMasked As CMCv.UI.Control.Chk
         Friend WithEvents TtAllComponents As ToolTip
     End Class
 End Namespace

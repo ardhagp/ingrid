@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMcdinEditor
-        Inherits CMCv.Std_Fo
+        Inherits CMCv.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,13 +21,12 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnSave = New CMCv.UI.Control.btn(components)
-            BtnCancel = New CMCv.UI.Control.btn(components)
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             TxtDeptCode = New CMCv.UI.Control.txt(components)
             CboCompany = New CMCv.UI.Control.cbo(components)
             TxtDeptName = New CMCv.UI.Control.txt(components)
             TxtDescription = New CMCv.UI.Control.txt(components)
-            ChkAddNew = New CMCv.UI.Control.chk(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
             ULbl2 = New CMCv.UI.Control.ULbl()
             ULbl3 = New CMCv.UI.Control.ULbl()
@@ -41,7 +40,6 @@
             ' 
             ' PnlBottomButton
             ' 
-            PnlBottomButton.Controls.Add(ChkAddNew)
             PnlBottomButton.Controls.Add(BtnSave)
             PnlBottomButton.Controls.Add(BtnCancel)
             PnlBottomButton.Location = New Point(0, 451)
@@ -49,7 +47,6 @@
             PnlBottomButton.Size = New Size(873, 97)
             PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
             PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
-            PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
             ' 
             ' pnl_
             ' 
@@ -87,7 +84,7 @@
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(509, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -96,10 +93,10 @@
             BtnSave.TabIndex = 4
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOJenisTombol = ControlCodeBase.enuJenisTombol.Yes
-            BtnSave.XOTampilkanFocusBorder = False
-            BtnSave.XOValidasiSemuaInput = False
-            BtnSave.XOValidasiSemuaInputTag = Nothing
+            BtnSave.XOButtonType = ControlCodeBase.ButtonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
@@ -110,7 +107,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(686, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -119,14 +116,14 @@
             BtnCancel.TabIndex = 6
             BtnCancel.Text = "&Close"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOJenisTombol = ControlCodeBase.enuJenisTombol.No
-            BtnCancel.XOTampilkanFocusBorder = False
-            BtnCancel.XOValidasiSemuaInput = False
-            BtnCancel.XOValidasiSemuaInputTag = Nothing
+            BtnCancel.XOButtonType = ControlCodeBase.ButtonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' TxtDeptCode
             ' 
-            TxtDeptCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtDeptCode.Font = New Font("Segoe UI", 12F)
             TxtDeptCode.Location = New Point(280, 87)
             TxtDeptCode.Margin = New Padding(6, 5, 6, 5)
             TxtDeptCode.MaxLength = 255
@@ -135,31 +132,31 @@
             TxtDeptCode.TabIndex = 1
             TxtDeptCode.Tag = "txt"
             TxtDeptCode.XOAutoTrim = True
-            TxtDeptCode.XOHarusDiisi = True
-            TxtDeptCode.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtDeptCode.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtDeptCode.XOHightlightSaatFokus = True
-            TxtDeptCode.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtDeptCode.XOHighlightColor = Color.LightYellow
+            TxtDeptCode.XOHighlightOnFocus = True
             TxtDeptCode.XOIsBlank = True
+            TxtDeptCode.XOIsMandatory = True
+            TxtDeptCode.XOIsReplaceEmptyString = False
             TxtDeptCode.XOIsSearchBox = False
-            TxtDeptCode.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-            TxtDeptCode.XOPilihSemuaSaatFokus = True
-            TxtDeptCode.XOPwdLengthMin = 8
-            TxtDeptCode.XOPwdStrengthCalculate = False
-            TxtDeptCode.XOPwdStrengthScore = 0
-            TxtDeptCode.XOPwdStrengthText = Nothing
-            TxtDeptCode.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
+            TxtDeptCode.XOLetterCase = ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtDeptCode.XOMandatoryBgColor = Color.LightPink
+            TxtDeptCode.XOMandatoryBgColorDefault = Color.White
+            TxtDeptCode.XOMandatoryMessage = Nothing
+            TxtDeptCode.XOPasswordLengthMin = 8
+            TxtDeptCode.XOPasswordStrengthCalc = False
+            TxtDeptCode.XOPasswordStrengthScore = 0
+            TxtDeptCode.XOPasswordStrengthText = Nothing
+            TxtDeptCode.XORestriction = ControlCodeBase.EnumRestriction.TextAndNumber
             TxtDeptCode.XOSearchBoxText = "Type then press Enter"
-            TxtDeptCode.XOSQLText = ""
-            TxtDeptCode.XOTanpaSpasi = False
-            TxtDeptCode.XOValidasiField = Nothing
+            TxtDeptCode.XOSelectOnFocus = True
+            TxtDeptCode.XOSqlText = ""
             ' 
             ' CboCompany
             ' 
             CboCompany.DropDownStyle = ComboBoxStyle.DropDownList
             CboCompany.DropDownWidth = 350
             CboCompany.FlatStyle = FlatStyle.Flat
-            CboCompany.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            CboCompany.Font = New Font("Segoe UI", 12F)
             CboCompany.FormattingEnabled = True
             CboCompany.Location = New Point(280, 20)
             CboCompany.Margin = New Padding(6, 5, 6, 5)
@@ -169,7 +166,7 @@
             ' 
             ' TxtDeptName
             ' 
-            TxtDeptName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtDeptName.Font = New Font("Segoe UI", 12F)
             TxtDeptName.Location = New Point(280, 153)
             TxtDeptName.Margin = New Padding(6, 5, 6, 5)
             TxtDeptName.MaxLength = 255
@@ -178,28 +175,28 @@
             TxtDeptName.TabIndex = 2
             TxtDeptName.Tag = "txt"
             TxtDeptName.XOAutoTrim = True
-            TxtDeptName.XOHarusDiisi = True
-            TxtDeptName.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtDeptName.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtDeptName.XOHightlightSaatFokus = True
-            TxtDeptName.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtDeptName.XOHighlightColor = Color.LightYellow
+            TxtDeptName.XOHighlightOnFocus = True
             TxtDeptName.XOIsBlank = True
+            TxtDeptName.XOIsMandatory = True
+            TxtDeptName.XOIsReplaceEmptyString = False
             TxtDeptName.XOIsSearchBox = False
-            TxtDeptName.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-            TxtDeptName.XOPilihSemuaSaatFokus = False
-            TxtDeptName.XOPwdLengthMin = 8
-            TxtDeptName.XOPwdStrengthCalculate = False
-            TxtDeptName.XOPwdStrengthScore = 0
-            TxtDeptName.XOPwdStrengthText = Nothing
-            TxtDeptName.XORestriction = ControlCodeBase.enuRestriction.TextAndNumber
+            TxtDeptName.XOLetterCase = ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtDeptName.XOMandatoryBgColor = Color.LightPink
+            TxtDeptName.XOMandatoryBgColorDefault = Color.White
+            TxtDeptName.XOMandatoryMessage = Nothing
+            TxtDeptName.XOPasswordLengthMin = 8
+            TxtDeptName.XOPasswordStrengthCalc = False
+            TxtDeptName.XOPasswordStrengthScore = 0
+            TxtDeptName.XOPasswordStrengthText = Nothing
+            TxtDeptName.XORestriction = ControlCodeBase.EnumRestriction.TextAndNumber
             TxtDeptName.XOSearchBoxText = "Type then press Enter"
-            TxtDeptName.XOSQLText = ""
-            TxtDeptName.XOTanpaSpasi = False
-            TxtDeptName.XOValidasiField = Nothing
+            TxtDeptName.XOSelectOnFocus = False
+            TxtDeptName.XOSqlText = ""
             ' 
             ' TxtDescription
             ' 
-            TxtDescription.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtDescription.Font = New Font("Segoe UI", 12F)
             TxtDescription.Location = New Point(280, 222)
             TxtDescription.Margin = New Padding(6, 5, 6, 5)
             TxtDescription.MaxLength = 255
@@ -209,40 +206,24 @@
             TxtDescription.TabIndex = 3
             TxtDescription.Tag = "txt"
             TxtDescription.XOAutoTrim = False
-            TxtDescription.XOHarusDiisi = False
-            TxtDescription.XOHarusDiisiWarnaLatar = Color.LightPink
-            TxtDescription.XOHarusDiisiWarnaLatarDefault = Color.White
-            TxtDescription.XOHightlightSaatFokus = True
-            TxtDescription.XOHightlightSaatFokusWarna = Color.LightYellow
+            TxtDescription.XOHighlightColor = Color.LightYellow
+            TxtDescription.XOHighlightOnFocus = True
             TxtDescription.XOIsBlank = True
+            TxtDescription.XOIsMandatory = False
+            TxtDescription.XOIsReplaceEmptyString = False
             TxtDescription.XOIsSearchBox = False
-            TxtDescription.XOJenisKapital = ControlCodeBase.enuJenisKapital.KAPITALSEMUA
-            TxtDescription.XOPilihSemuaSaatFokus = False
-            TxtDescription.XOPwdLengthMin = 8
-            TxtDescription.XOPwdStrengthCalculate = False
-            TxtDescription.XOPwdStrengthScore = 0
-            TxtDescription.XOPwdStrengthText = Nothing
-            TxtDescription.XORestriction = ControlCodeBase.enuRestriction.None
+            TxtDescription.XOLetterCase = ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtDescription.XOMandatoryBgColor = Color.LightPink
+            TxtDescription.XOMandatoryBgColorDefault = Color.White
+            TxtDescription.XOMandatoryMessage = Nothing
+            TxtDescription.XOPasswordLengthMin = 8
+            TxtDescription.XOPasswordStrengthCalc = False
+            TxtDescription.XOPasswordStrengthScore = 0
+            TxtDescription.XOPasswordStrengthText = Nothing
+            TxtDescription.XORestriction = ControlCodeBase.EnumRestriction.None
             TxtDescription.XOSearchBoxText = "Type then press Enter"
-            TxtDescription.XOSQLText = ""
-            TxtDescription.XOTanpaSpasi = False
-            TxtDescription.XOValidasiField = Nothing
-            ' 
-            ' ChkAddNew
-            ' 
-            ChkAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            ChkAddNew.AutoSize = True
-            ChkAddNew.BackColor = Color.Transparent
-            ChkAddNew.FlatStyle = FlatStyle.Flat
-            ChkAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
-            ChkAddNew.ForeColor = Color.Tomato
-            ChkAddNew.Location = New Point(278, 28)
-            ChkAddNew.Margin = New Padding(6, 5, 6, 5)
-            ChkAddNew.Name = "ChkAddNew"
-            ChkAddNew.Size = New Size(221, 36)
-            ChkAddNew.TabIndex = 5
-            ChkAddNew.Text = "Add new on Save"
-            ChkAddNew.UseVisualStyleBackColor = False
+            TxtDescription.XOSelectOnFocus = False
+            TxtDescription.XOSqlText = ""
             ' 
             ' ULbl1
             ' 
@@ -251,11 +232,11 @@
             ULbl1.Margin = New Padding(7, 5, 7, 5)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(250, 39)
-            ULbl1.SLFText = "Company"
-            ULbl1.SLFTextAdjuster = False
-            ULbl1.SLFTextBorder = False
-            ULbl1.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
             ULbl1.TabIndex = 1004
+            ULbl1.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl1.XOText = "Company"
+            ULbl1.XOTextAdjuster = False
+            ULbl1.XOTextBorder = False
             ' 
             ' ULbl2
             ' 
@@ -264,11 +245,11 @@
             ULbl2.Margin = New Padding(7, 5, 7, 5)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(250, 39)
-            ULbl2.SLFText = "Dept. Code"
-            ULbl2.SLFTextAdjuster = False
-            ULbl2.SLFTextBorder = False
-            ULbl2.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
             ULbl2.TabIndex = 1005
+            ULbl2.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl2.XOText = "Dept. Code"
+            ULbl2.XOTextAdjuster = False
+            ULbl2.XOTextBorder = False
             ' 
             ' ULbl3
             ' 
@@ -277,11 +258,11 @@
             ULbl3.Margin = New Padding(7, 5, 7, 5)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 39)
-            ULbl3.SLFText = "Dept. Name"
-            ULbl3.SLFTextAdjuster = False
-            ULbl3.SLFTextBorder = False
-            ULbl3.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
             ULbl3.TabIndex = 1006
+            ULbl3.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOText = "Dept. Name"
+            ULbl3.XOTextAdjuster = False
+            ULbl3.XOTextBorder = False
             ' 
             ' ULbl4
             ' 
@@ -290,11 +271,11 @@
             ULbl4.Margin = New Padding(7, 5, 7, 5)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 184)
-            ULbl4.SLFText = "Description"
-            ULbl4.SLFTextAdjuster = False
-            ULbl4.SLFTextBorder = False
-            ULbl4.SLFWarnaLabel = ControlCodeBase.JenisLabel.Yellow
             ULbl4.TabIndex = 1007
+            ULbl4.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOText = "Description"
+            ULbl4.XOTextAdjuster = False
+            ULbl4.XOTextBorder = False
             ' 
             ' FRMcdinEditor
             ' 
@@ -303,7 +284,6 @@
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMcdinEditor"
             PnlBottomButton.ResumeLayout(False)
-            PnlBottomButton.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
@@ -313,13 +293,13 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnSave As CMCv.UI.Control.btn
-        Friend WithEvents BtnCancel As CMCv.UI.Control.btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents TxtDeptName As CMCv.UI.Control.txt
-        Friend WithEvents CboCompany As CMCv.UI.Control.cbo
+        Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
         Friend WithEvents TxtDeptCode As CMCv.UI.Control.txt
         Friend WithEvents TxtDescription As CMCv.UI.Control.txt
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.chk
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl

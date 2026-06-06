@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
 Namespace UI.Control
-    Public Class meb
+    Public Class Meb
         Inherits System.Windows.Forms.MaskedTextBox
 
         <SupportedOSPlatform("windows")>
@@ -10,134 +10,134 @@ Namespace UI.Control
             Call ActivateLicenses()
             MyBase.Font = globalFontTxt
             MyBase.Width = 206
-            Me.XOHarusDiisi = False
-            Me.XOHarusDiisiWarnaLatar = Drawing.Color.LightPink
-            Me.XOHarusDiisiWarnaLatarDefault = Drawing.Color.White
-            Me.XOHightlightSaatFokus = False
-            Me.XOHightlightSaatFokusWarna = Drawing.Color.LightYellow
-            Me.XOPilihSemuaSaatFokus = False
+            Me.XOIsMandatory = False
+            Me.XOMandatoryBgColor = Drawing.Color.LightPink
+            Me.XOMandatoryBgColorDefault = Drawing.Color.White
+            Me.XOHighlightOnFocus = False
+            Me.XOHighlightColor = Drawing.Color.LightYellow
+            Me.XOSelectOnFocus = False
         End Sub
 
-#Region "Properti"
-        Private _varHarusDiisi As Boolean
-        <System.ComponentModel.Category("Text"),
-    System.ComponentModel.Description("Maskeditbox harus diisi")>
-        Public Property XOHarusDiisi As Boolean
+#Region "Properties"
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Indicates whether this component requires a value and must not be left empty during user input")>
+        Private varIsMandatory As Boolean
+        Public Property XOIsMandatory As Boolean
             Get
-                Return _varHarusDiisi
+                Return varIsMandatory
             End Get
             Set(value As Boolean)
-                _varHarusDiisi = value
+                varIsMandatory = value
             End Set
         End Property
 
-        Private _varHarusDiisiWarnaLatarDefault As System.Drawing.Color
-        Private _varHarusDiisiWarnaLatar As System.Drawing.Color
-        <System.ComponentModel.Category("Text"),
-    System.ComponentModel.Description("Warna saat teksboks tidak diisi")>
-        Public Property XOHarusDiisiWarnaLatar As System.Drawing.Color
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the background color applied to the component when it is marked as mandatory")>
+        Private varMandatoryBgColor As System.Drawing.Color
+        Public Property XOMandatoryBgColor As System.Drawing.Color
             Get
-                Return _varHarusDiisiWarnaLatar
+                Return varMandatoryBgColor
             End Get
             Set(value As System.Drawing.Color)
-                _varHarusDiisiWarnaLatar = value
+                varMandatoryBgColor = value
             End Set
         End Property
 
-        <System.ComponentModel.Category("Text"),
-    System.ComponentModel.Description("Warna saat teksboks tidak diisi jika bernilai False")>
-        Public Property XOHarusDiisiWarnaLatarDefault As System.Drawing.Color
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the default background color restored when the component is no longer marked as mandatory")>
+        Private varMandatoryBgColorDefault As System.Drawing.Color
+        Public Property XOMandatoryBgColorDefault As System.Drawing.Color
             Get
-                Return _varHarusDiisiWarnaLatarDefault
+                Return varMandatoryBgColorDefault
             End Get
             Set(value As System.Drawing.Color)
-                _varHarusDiisiWarnaLatarDefault = value
+                varMandatoryBgColorDefault = value
             End Set
         End Property
 
-        Private _varHightlightSaatFokus As Boolean
-        <System.ComponentModel.Category("Text"),
-    System.ComponentModel.Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
-        Public Property XOHightlightSaatFokus() As Boolean
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Highlights the component visually when it receives focus to guide user attention during data entry")>
+        Private varHighlightOnFocus As Boolean
+        Public Property XOHighlightOnFocus() As Boolean
             Get
-                Return _varHightlightSaatFokus
+                Return varHighlightOnFocus
             End Get
             Set(value As Boolean)
-                _varHightlightSaatFokus = value
+                varHighlightOnFocus = value
             End Set
         End Property
 
-        Private _varHighlightSaatFokusWarna As System.Drawing.Color
-        <System.ComponentModel.Category("Text"),
-    System.ComponentModel.Description("Warna highlight")>
-        Public Property XOHightlightSaatFokusWarna() As System.Drawing.Color
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the highlight color applied to the component when it receives focus")>
+        Private varHighlightColor As System.Drawing.Color
+        Public Property XOHighlightColor() As System.Drawing.Color
             Get
-                Return _varHighlightSaatFokusWarna
+                Return varHighlightColor
             End Get
             Set(value As System.Drawing.Color)
-                _varHighlightSaatFokusWarna = value
+                varHighlightColor = value
             End Set
         End Property
 
-        Private _varPilihSemuaSaatFokus As Boolean
-        <System.ComponentModel.Category("Text"),
-    System.ComponentModel.Description("Memilih semua teks saat fokus")>
-        Public Property XOPilihSemuaSaatFokus() As Boolean
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Automatically selects all text within the component when it receives focus to simplify user editing")>
+        Private varSelectOnFocus As Boolean
+        Public Property XOSelectOnFocus() As Boolean
             Get
-                Return _varPilihSemuaSaatFokus
+                Return varSelectOnFocus
             End Get
             Set(value As Boolean)
-                _varPilihSemuaSaatFokus = value
+                varSelectOnFocus = value
             End Set
         End Property
 #End Region
 
-        Private _varFlagAutoSelect As Boolean
+        Private varFlagAutoSelect As Boolean
         <SupportedOSPlatform("windows")>
-        Private Sub txt_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
-            If Me.XOPilihSemuaSaatFokus AndAlso (MouseButtons = system.Windows.Forms.MouseButtons.None) Then
+        Private Sub Meb_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
+            If Me.XOSelectOnFocus AndAlso (MouseButtons = System.Windows.Forms.MouseButtons.None) Then
                 Me.SelectAll()
-                _varFlagAutoSelect = True
+                varFlagAutoSelect = True
             End If
-            If Me.XOHightlightSaatFokus Then
-                MyBase.BackColor = Me.XOHightlightSaatFokusWarna
+            If Me.XOHighlightOnFocus Then
+                MyBase.BackColor = Me.XOHighlightColor
             End If
-            If Me.XOPilihSemuaSaatFokus Then
+            If Me.XOSelectOnFocus Then
                 Me.Select(0, Me.Text.Length)
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub txt_LostFocus(sender As Object, e As System.EventArgs) Handles Me.LostFocus
-            'If Me.XOHightlightSaatFokus AndAlso Not Me.Focused AndAlso Not Me.SLFHarusDiisi Then
+        Private Sub Meb_LostFocus(sender As Object, e As System.EventArgs) Handles Me.LostFocus
+            'If Me.XOHighlightOnFocus AndAlso Not Me.Focused AndAlso Not Me.SLFHarusDiisi Then
             '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
-            'ElseIf Me.XOHightlightSaatFokus AndAlso Not Me.Focused Then
+            'ElseIf Me.XOHighlightOnFocus AndAlso Not Me.Focused Then
             '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
-            If XOHarusDiisi Then 'AndAlso Me.Text.Trim = "" Then
-                MyBase.BackColor = Me.XOHarusDiisiWarnaLatar
+            If XOIsMandatory Then 'AndAlso Me.Text.Trim = "" Then
+                MyBase.BackColor = Me.XOMandatoryBgColor
             Else
-                MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
+                MyBase.BackColor = Me.XOMandatoryBgColorDefault
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub txt_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
-            If Me.XOHightlightSaatFokus Then
-                MyBase.BackColor = Me.XOHightlightSaatFokusWarna
+        Private Sub Meb_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
+            If Me.XOHighlightOnFocus Then
+                MyBase.BackColor = Me.XOHighlightColor
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub txt_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
-            If Me.XOHightlightSaatFokus AndAlso Not Me.Focused Then
-                MyBase.BackColor = Me.XOHarusDiisiWarnaLatarDefault
+        Private Sub Meb_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
+            If Me.XOHighlightOnFocus AndAlso Not Me.Focused Then
+                MyBase.BackColor = Me.XOMandatoryBgColorDefault
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub txt_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseUp
-            If Me.XOPilihSemuaSaatFokus AndAlso (Not _varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
-                _varFlagAutoSelect = True
+        Private Sub Meb_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseUp
+            If Me.XOSelectOnFocus AndAlso (Not varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
+                varFlagAutoSelect = True
                 Me.SelectAll()
             End If
         End Sub
