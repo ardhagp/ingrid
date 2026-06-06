@@ -1,5 +1,5 @@
 ﻿Namespace UI.Control
-    Partial Class spc
+    Partial Class Spc
         Inherits System.Windows.Forms.SplitContainer
 
         <System.Diagnostics.DebuggerNonUserCode()>

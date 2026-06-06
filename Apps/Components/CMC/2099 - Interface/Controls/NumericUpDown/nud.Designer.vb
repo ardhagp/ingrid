@@ -1,6 +1,6 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.nud), "nud.ico")>
-    Partial Class nud
+    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Nud), "Nud.ico")>
+    Partial Class Nud
         Inherits System.Windows.Forms.NumericUpDown
 
         <System.Diagnostics.DebuggerNonUserCode()>

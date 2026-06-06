@@ -1,6 +1,6 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.meb), "meb.ico")>
-    Partial Class meb
+    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Meb), "Meb.ico")>
+    Partial Class Meb
         Inherits System.Windows.Forms.MaskedTextBox
 
         <System.Diagnostics.DebuggerNonUserCode()>

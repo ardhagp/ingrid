@@ -1,6 +1,6 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Pgb), "pgb.ico")>
-    Partial Class pgb
+    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Pgb), "Pgb.ico")>
+    Partial Class Pgb
         Inherits System.Windows.Forms.ProgressBar
 
         <System.Diagnostics.DebuggerNonUserCode()>

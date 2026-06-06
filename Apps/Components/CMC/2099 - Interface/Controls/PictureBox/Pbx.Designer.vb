@@ -1,5 +1,5 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Pbx), "pctbx.ico")>
+    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Pbx), "Pbx.ico")>
     Partial Class Pbx
         Inherits System.Windows.Forms.PictureBox
 

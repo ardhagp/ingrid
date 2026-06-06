@@ -227,7 +227,7 @@ steps:
   displayName: 'VSBuild - Midnight Build'
   inputs:
     solution: '**\*.sln'
-    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:BootstrapperComponents="Microsoft.NetCore.DesktopRuntime.7.x86" /p:InstallUrl="https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
+    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:BootstrapperComponents="Microsoft.NetCore.DesktopRuntime.$(var_NET).x86" /p:InstallUrl="https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
     platform: '$(var_Platform)'
     configuration: '$(var_BuildConfiguration)'
     clean: true
@@ -242,7 +242,7 @@ steps:
       echo "---------------------------"
       echo "Print File List - Post Build"
       echo "---------------------------"
-      cd $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\
+      cd $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\
       dir /b /s /A-D /o:gn
       echo "---------------------------"
       echo "Reading Artifact Directory"
@@ -252,13 +252,13 @@ steps:
       echo "---------------------------"
       echo "Reading Ingrid.Application"
       echo "---------------------------"
-      more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net7.0-windows\Ingrid.application
+      more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\Release\net$(var_NET).0-windows\Ingrid.application
 
 #Packing deployment to Artifact Directory
 - task: CopyFiles@2
   displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory)'
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
+    SourceFolder: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\'
     Contents: '**'
     TargetFolder: '$(build.ArtifactStagingDirectory)'
 
@@ -298,7 +298,7 @@ steps:
 - task: ArchiveFiles@2
   displayName: 'Compressing Files to.. $(build.ArtifactStagingDirectory)'
   inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net7.0-windows\publish\'
+    rootFolderOrFile: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\'
     includeRootFolder: true
     archiveType: 'zip'
     archiveFile: '$(build.ArtifactStagingDirectory)/ingrid-offline.zip'
