@@ -14,6 +14,8 @@ Namespace UI.Control
             MyBase.DoubleBuffered = True
         End Sub
 
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the custom ellipsis text displayed when the progress message exceeds the available space")>
         Private varCustomElipsis As Boolean
         Public Property XOCustomElipsis As Boolean
             Get

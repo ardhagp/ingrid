@@ -106,8 +106,8 @@
             DgnEPLS.Size = New Size(1307, 858)
             DgnEPLS.StandardTab = True
             DgnEPLS.TabIndex = 0
-            DgnEPLS.XOGroupFirstRow = False
-            DgnEPLS.XOShowRowNumber = True
+            DgnEPLS.XOIsGroupFirstRow = False
+            DgnEPLS.XOIsShowRowNumber = True
             ' 
             ' employee_id
             ' 

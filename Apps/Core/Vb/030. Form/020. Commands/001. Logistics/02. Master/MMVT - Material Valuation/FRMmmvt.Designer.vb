@@ -90,8 +90,8 @@
             DgnMMVT.Size = New Size(1307, 864)
             DgnMMVT.StandardTab = True
             DgnMMVT.TabIndex = 802
-            DgnMMVT.XOGroupFirstRow = False
-            DgnMMVT.XOShowRowNumber = False
+            DgnMMVT.XOIsGroupFirstRow = False
+            DgnMMVT.XOIsShowRowNumber = False
             ' 
             ' FRMmmvt
             ' 

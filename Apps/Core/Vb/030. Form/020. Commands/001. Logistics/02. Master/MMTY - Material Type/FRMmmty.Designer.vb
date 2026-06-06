@@ -96,8 +96,8 @@
             DgnMMTY.Size = New Size(1307, 864)
             DgnMMTY.StandardTab = True
             DgnMMTY.TabIndex = 0
-            DgnMMTY.XOGroupFirstRow = False
-            DgnMMTY.XOShowRowNumber = True
+            DgnMMTY.XOIsGroupFirstRow = False
+            DgnMMTY.XOIsShowRowNumber = True
             ' 
             ' materialtype_id
             ' 

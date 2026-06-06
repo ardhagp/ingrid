@@ -95,8 +95,8 @@
             DgnTemplate.Size = New Size(1307, 864)
             DgnTemplate.StandardTab = True
             DgnTemplate.TabIndex = 802
-            DgnTemplate.XOGroupFirstRow = False
-            DgnTemplate.XOShowRowNumber = False
+            DgnTemplate.XOIsGroupFirstRow = False
+            DgnTemplate.XOIsShowRowNumber = False
             ' 
             ' template_id
             ' 

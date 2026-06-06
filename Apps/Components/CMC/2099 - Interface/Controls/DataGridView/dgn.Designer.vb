@@ -63,7 +63,7 @@
 
         Private Sub dgn_RowPostPaint(sender As Object, e As System.Windows.Forms.DataGridViewRowPostPaintEventArgs) Handles Me.RowPostPaint
             'If _varGunakanNomorBaris Then
-            If Me.XOShowRowNumber Then
+            If Me.XOIsShowRowNumber Then
                 ' get the row number in leading zero format, 
                 '  where the width of the number = the width of the maximum number
                 Dim RowNumWidth As Integer = Me.RowCount.ToString().Length

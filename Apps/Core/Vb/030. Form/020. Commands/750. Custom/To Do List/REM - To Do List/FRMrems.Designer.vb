@@ -173,8 +173,8 @@
             DgnOnProgress.Size = New Size(1287, 707)
             DgnOnProgress.StandardTab = True
             DgnOnProgress.TabIndex = 802
-            DgnOnProgress.XOGroupFirstRow = False
-            DgnOnProgress.XOShowRowNumber = False
+            DgnOnProgress.XOIsGroupFirstRow = False
+            DgnOnProgress.XOIsShowRowNumber = False
             ' 
             ' o_todos_id
             ' 
@@ -412,8 +412,8 @@
             DgnDone.Size = New Size(1847, 1217)
             DgnDone.StandardTab = True
             DgnDone.TabIndex = 803
-            DgnDone.XOGroupFirstRow = False
-            DgnDone.XOShowRowNumber = False
+            DgnDone.XOIsGroupFirstRow = False
+            DgnDone.XOIsShowRowNumber = False
             ' 
             ' d_todos_id
             ' 
@@ -625,8 +625,8 @@
             DgnVerified.Size = New Size(1847, 1217)
             DgnVerified.StandardTab = True
             DgnVerified.TabIndex = 803
-            DgnVerified.XOGroupFirstRow = False
-            DgnVerified.XOShowRowNumber = False
+            DgnVerified.XOIsGroupFirstRow = False
+            DgnVerified.XOIsShowRowNumber = False
             ' 
             ' v_todos_id
             ' 

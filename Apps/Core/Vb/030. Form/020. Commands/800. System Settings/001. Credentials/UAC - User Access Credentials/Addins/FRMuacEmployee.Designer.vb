@@ -123,8 +123,8 @@
             DgnAddinEmployee.Size = New Size(1095, 611)
             DgnAddinEmployee.StandardTab = True
             DgnAddinEmployee.TabIndex = 1006
-            DgnAddinEmployee.XOGroupFirstRow = False
-            DgnAddinEmployee.XOShowRowNumber = True
+            DgnAddinEmployee.XOIsGroupFirstRow = False
+            DgnAddinEmployee.XOIsShowRowNumber = True
             ' 
             ' employee_id
             ' 

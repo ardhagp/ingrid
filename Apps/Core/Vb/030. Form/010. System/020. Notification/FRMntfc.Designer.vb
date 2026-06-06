@@ -122,8 +122,8 @@
             DgnNotification.Size = New Size(1095, 699)
             DgnNotification.StandardTab = True
             DgnNotification.TabIndex = 996
-            DgnNotification.XOGroupFirstRow = False
-            DgnNotification.XOShowRowNumber = True
+            DgnNotification.XOIsGroupFirstRow = False
+            DgnNotification.XOIsShowRowNumber = True
             ' 
             ' notification_message
             ' 

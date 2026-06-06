@@ -167,8 +167,8 @@
             DgnACBK.Size = New Size(1307, 864)
             DgnACBK.StandardTab = True
             DgnACBK.TabIndex = 0
-            DgnACBK.XOGroupFirstRow = False
-            DgnACBK.XOShowRowNumber = True
+            DgnACBK.XOIsGroupFirstRow = False
+            DgnACBK.XOIsShowRowNumber = True
             ' 
             ' book_id
             ' 

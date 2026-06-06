@@ -196,8 +196,8 @@
             DgnDARActivity.Size = New Size(1307, 370)
             DgnDARActivity.StandardTab = True
             DgnDARActivity.TabIndex = 102
-            DgnDARActivity.XOGroupFirstRow = True
-            DgnDARActivity.XOShowRowNumber = True
+            DgnDARActivity.XOIsGroupFirstRow = True
+            DgnDARActivity.XOIsShowRowNumber = True
             ' 
             ' areaaffected_name
             ' 
@@ -375,8 +375,8 @@
             DgnPhoto.Size = New Size(531, 409)
             DgnPhoto.StandardTab = True
             DgnPhoto.TabIndex = 2
-            DgnPhoto.XOGroupFirstRow = False
-            DgnPhoto.XOShowRowNumber = True
+            DgnPhoto.XOIsGroupFirstRow = False
+            DgnPhoto.XOIsShowRowNumber = True
             ' 
             ' photo_id
             ' 
@@ -660,8 +660,8 @@
             DgnFile.Size = New Size(1847, 725)
             DgnFile.StandardTab = True
             DgnFile.TabIndex = 3
-            DgnFile.XOGroupFirstRow = False
-            DgnFile.XOShowRowNumber = True
+            DgnFile.XOIsGroupFirstRow = False
+            DgnFile.XOIsShowRowNumber = True
             ' 
             ' file_id
             ' 

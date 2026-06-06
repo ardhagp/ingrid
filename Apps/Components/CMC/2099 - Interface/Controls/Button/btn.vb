@@ -145,6 +145,8 @@ Namespace UI.Control
         ''' Show border when button is focused
         ''' </summary>
         ''' <returns>True if the border is shown when focused, otherwise False</returns>
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Indicates whether the button displays a visual border highlight when it receives focus")>
         Public Property XOShowBorderOnFocus() As Boolean
             Get
                 Return varShowBorderOnFocus

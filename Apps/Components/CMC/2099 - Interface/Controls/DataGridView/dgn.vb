@@ -35,19 +35,22 @@ Namespace UI.Control
             MyBase.DoubleBuffered = True
         End Sub
 
-
-        Private varShowRowNumber As Boolean
-        Public Property XOShowRowNumber() As Boolean
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Indicates whether the DataGridView displays row numbers in the row header area")>
+        Private varIsShowRowNumber As Boolean
+        Public Property XOIsShowRowNumber() As Boolean
             Get
-                Return varShowRowNumber
+                Return varIsShowRowNumber
             End Get
             Set(value As Boolean)
-                varShowRowNumber = value
+                varIsShowRowNumber = value
             End Set
         End Property
 
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Indicates whether the first row of the DataGridView should be treated as a group header for the rows that follow")>
         Private varGroupFirstRow As Boolean
-        Public Property XOGroupFirstRow As Boolean
+        Public Property XOIsGroupFirstRow As Boolean
             Get
                 Return varGroupFirstRow
             End Get
@@ -56,26 +59,22 @@ Namespace UI.Control
             End Set
         End Property
 
-        Private Shared Function RGB(p1 As Integer) As System.Drawing.Color
+        Private Shared Function Rgb(p1 As Integer) As System.Drawing.Color
             Throw New NotImplementedException
         End Function
 
         <SupportedOSPlatform("windows")>
         Private Sub Dgn_CellFormatting(sender As Object, e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles Me.CellFormatting
-            If XOGroupFirstRow Then
-                If e.RowIndex > 0 And e.ColumnIndex = 0 Then
-                    If MyBase.Item(0, e.RowIndex - 1).Value Is e.Value Then
-                        e.Value = String.Empty
-                        'MyBase.AdvancedCellBorderStyle.Top = system.Windows.Forms.DataGridViewAdvancedCellBorderStyle.None
-                        'MyBase.Rows(e.RowIndex).DefaultCellStyle.BackColor = System.Drawing.Color.White
-                    End If
-                End If
+            If XOIsGroupFirstRow AndAlso e.RowIndex > 0 AndAlso e.ColumnIndex = 0 AndAlso MyBase.Item(0, e.RowIndex - 1).Value Is e.Value Then
+                e.Value = String.Empty
+                'MyBase.AdvancedCellBorderStyle.Top = system.Windows.Forms.DataGridViewAdvancedCellBorderStyle.None
+                'MyBase.Rows(e.RowIndex).DefaultCellStyle.BackColor = System.Drawing.Color.White
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub Dgn_CellMouseDown(sender As Object, e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles Me.CellMouseDown
-            If (e.Button = System.Windows.Forms.MouseButtons.Right) Or (e.Button = System.Windows.Forms.MouseButtons.Left) Then
+            If (e.Button = System.Windows.Forms.MouseButtons.Right) OrElse (e.Button = System.Windows.Forms.MouseButtons.Left) Then
                 Try
                     MyBase.CurrentCell = Me(e.ColumnIndex, e.RowIndex)
                     RaiseEvent XOSelected()

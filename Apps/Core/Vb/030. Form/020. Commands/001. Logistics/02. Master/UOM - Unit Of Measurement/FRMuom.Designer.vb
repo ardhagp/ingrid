@@ -90,8 +90,8 @@
             DgnUOM.Size = New Size(1307, 864)
             DgnUOM.StandardTab = True
             DgnUOM.TabIndex = 802
-            DgnUOM.XOGroupFirstRow = False
-            DgnUOM.XOShowRowNumber = False
+            DgnUOM.XOIsGroupFirstRow = False
+            DgnUOM.XOIsShowRowNumber = False
             ' 
             ' FRMuom
             ' 

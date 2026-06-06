@@ -96,8 +96,8 @@
             DgnMMGR.Size = New Size(1307, 864)
             DgnMMGR.StandardTab = True
             DgnMMGR.TabIndex = 0
-            DgnMMGR.XOGroupFirstRow = False
-            DgnMMGR.XOShowRowNumber = True
+            DgnMMGR.XOIsGroupFirstRow = False
+            DgnMMGR.XOIsShowRowNumber = True
             ' 
             ' materialgroup_id
             ' 

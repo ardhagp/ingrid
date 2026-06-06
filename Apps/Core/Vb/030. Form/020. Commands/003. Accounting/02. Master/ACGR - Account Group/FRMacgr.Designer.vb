@@ -246,8 +246,8 @@
             DgnACGRAssets.Size = New Size(1287, 809)
             DgnACGRAssets.StandardTab = True
             DgnACGRAssets.TabIndex = 0
-            DgnACGRAssets.XOGroupFirstRow = False
-            DgnACGRAssets.XOShowRowNumber = True
+            DgnACGRAssets.XOIsGroupFirstRow = False
+            DgnACGRAssets.XOIsShowRowNumber = True
             ' 
             ' account_id_assets
             ' 
@@ -347,8 +347,8 @@
             DgnACGRLiabities.Size = New Size(1847, 1387)
             DgnACGRLiabities.StandardTab = True
             DgnACGRLiabities.TabIndex = 0
-            DgnACGRLiabities.XOGroupFirstRow = False
-            DgnACGRLiabities.XOShowRowNumber = True
+            DgnACGRLiabities.XOIsGroupFirstRow = False
+            DgnACGRLiabities.XOIsShowRowNumber = True
             ' 
             ' account_id_liability
             ' 
@@ -449,8 +449,8 @@
             DgnACGREquity.Size = New Size(1847, 1387)
             DgnACGREquity.StandardTab = True
             DgnACGREquity.TabIndex = 0
-            DgnACGREquity.XOGroupFirstRow = False
-            DgnACGREquity.XOShowRowNumber = True
+            DgnACGREquity.XOIsGroupFirstRow = False
+            DgnACGREquity.XOIsShowRowNumber = True
             ' 
             ' account_id_equity
             ' 
@@ -551,8 +551,8 @@
             DgnACGRRevenue.Size = New Size(1847, 1387)
             DgnACGRRevenue.StandardTab = True
             DgnACGRRevenue.TabIndex = 0
-            DgnACGRRevenue.XOGroupFirstRow = False
-            DgnACGRRevenue.XOShowRowNumber = True
+            DgnACGRRevenue.XOIsGroupFirstRow = False
+            DgnACGRRevenue.XOIsShowRowNumber = True
             ' 
             ' account_id_revenue
             ' 
@@ -653,8 +653,8 @@
             DgnACGRExpense.Size = New Size(1847, 1387)
             DgnACGRExpense.StandardTab = True
             DgnACGRExpense.TabIndex = 0
-            DgnACGRExpense.XOGroupFirstRow = False
-            DgnACGRExpense.XOShowRowNumber = True
+            DgnACGRExpense.XOIsGroupFirstRow = False
+            DgnACGRExpense.XOIsShowRowNumber = True
             ' 
             ' account_id_expense
             ' 

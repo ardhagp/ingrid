@@ -57,9 +57,9 @@ Namespace UI.Control
             End Set
         End Property
 
-        Private varHighlightOnFocus As Boolean
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Highlights the component visually when it receives focus to guide user attention during data entry")>
+        Private varHighlightOnFocus As Boolean
         Public Property XOHighlightOnFocus() As Boolean
             Get
                 Return varHighlightOnFocus
@@ -69,9 +69,9 @@ Namespace UI.Control
             End Set
         End Property
 
-        Private varHighlightColor As System.Drawing.Color
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies the highlight color applied to the component when it receives focus")>
+        Private varHighlightColor As System.Drawing.Color
         Public Property XOHighlightColor() As System.Drawing.Color
             Get
                 Return varHighlightColor
@@ -165,9 +165,9 @@ Namespace UI.Control
             End Set
         End Property
 
-        Private varMandatoryBgColorDefault As System.Drawing.Color
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies the default background color restored when the component is no longer marked as mandatory")>
+        Private varMandatoryBgColorDefault As System.Drawing.Color
         Public Property XOMandatoryBgColorDefault As System.Drawing.Color
             Get
                 Return varMandatoryBgColorDefault
@@ -189,9 +189,9 @@ Namespace UI.Control
             End Set
         End Property
 
-        Private varSelectOnFocus As Boolean
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Automatically selects all text within the component when it receives focus to simplify user editing")>
+        Private varSelectOnFocus As Boolean
         Public Property XOSelectOnFocus() As Boolean
             Get
                 Return varSelectOnFocus
@@ -213,9 +213,9 @@ Namespace UI.Control
             End Set
         End Property
 
-        Private varLetterCase As ControlCodeBase.EnumLetterCase
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies how the component transforms its text value by applying the selected letter‑case rule")>
+        Private varLetterCase As ControlCodeBase.EnumLetterCase
         Public Property XOLetterCase As ControlCodeBase.EnumLetterCase
             Get
                 Return varLetterCase
@@ -225,21 +225,21 @@ Namespace UI.Control
             End Set
         End Property
 
-        Private varRestriction As ControlCodeBase.enumRestriction
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Defines the input restriction rule that limits which characters or patterns are allowed in the component")>
-        Public Property XORestriction As ControlCodeBase.enumRestriction
+        Private varRestriction As ControlCodeBase.EnumRestriction
+        Public Property XORestriction As ControlCodeBase.EnumRestriction
             Get
                 Return varRestriction
             End Get
-            Set(value As ControlCodeBase.enumRestriction)
+            Set(value As ControlCodeBase.EnumRestriction)
                 varRestriction = value
             End Set
         End Property
 
-        Private varIsSearchBox As Boolean
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Indicates whether the component behaves as a search box, enabling instant filtering or lookup as the user types")>
+        Private varIsSearchBox As Boolean
         Public Property XOIsSearchBox As Boolean
             Get
                 Return varIsSearchBox
@@ -249,9 +249,9 @@ Namespace UI.Control
             End Set
         End Property
 
-        Private varSearchBoxText As String
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies the placeholder or prompt text displayed when the search box is empty")>
+        Private varSearchBoxText As String
         Public Property XOSearchBoxText As String
             Get
                 Return varSearchBoxText

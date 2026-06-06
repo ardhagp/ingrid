@@ -98,8 +98,8 @@
             DgnPOST.Size = New Size(1307, 858)
             DgnPOST.StandardTab = True
             DgnPOST.TabIndex = 0
-            DgnPOST.XOGroupFirstRow = False
-            DgnPOST.XOShowRowNumber = True
+            DgnPOST.XOIsGroupFirstRow = False
+            DgnPOST.XOIsShowRowNumber = True
             ' 
             ' company_code
             ' 

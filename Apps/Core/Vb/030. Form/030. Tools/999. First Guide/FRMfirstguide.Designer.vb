@@ -613,8 +613,8 @@
             Dgn1.Size = New Size(633, 467)
             Dgn1.StandardTab = True
             Dgn1.TabIndex = 0
-            Dgn1.XOGroupFirstRow = False
-            Dgn1.XOShowRowNumber = False
+            Dgn1.XOIsGroupFirstRow = False
+            Dgn1.XOIsShowRowNumber = False
             ' 
             ' FRMfirstguide
             ' 

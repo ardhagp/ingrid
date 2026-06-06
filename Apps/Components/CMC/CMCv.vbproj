@@ -137,15 +137,15 @@
     </Compile>
     <Compile Update="2099 - Interface\Controls\DataGridView\Dgn.vb" />
     <Compile Update="2099 - Interface\Controls\DateTimePicker\dtp.Designer.vb">
-      <DependentUpon>dtp.vb</DependentUpon>
+      <DependentUpon>Dtp.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\DateTimePicker\dtp.vb">
+    <Compile Update="2099 - Interface\Controls\DateTimePicker\Dtp.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\GroupBox\gbx.Designer.vb">
-      <DependentUpon>gbx.vb</DependentUpon>
+      <DependentUpon>Gbx.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\GroupBox\gbx.vb" />
+    <Compile Update="2099 - Interface\Controls\GroupBox\Gbx.vb" />
     <Compile Update="2099 - Interface\Controls\Label\lbl.Designer.vb">
       <DependentUpon>Lbl.vb</DependentUpon>
     </Compile>
@@ -157,9 +157,9 @@
     </Compile>
     <Compile Update="2099 - Interface\Controls\LinkLabel\Lnk.vb" />
     <Compile Update="2099 - Interface\Controls\MaskEditBox\meb.Designer.vb">
-      <DependentUpon>meb.vb</DependentUpon>
+      <DependentUpon>Meb.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\MaskEditBox\meb.vb">
+    <Compile Update="2099 - Interface\Controls\MaskEditBox\Meb.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Menu Strip\mnu.Designer.vb">
@@ -169,9 +169,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\NumericUpDown\nud.Designer.vb">
-      <DependentUpon>nud.vb</DependentUpon>
+      <DependentUpon>Nud.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\NumericUpDown\nud.vb">
+    <Compile Update="2099 - Interface\Controls\NumericUpDown\Nud.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Panel\pnl.Designer.vb">
@@ -300,15 +300,15 @@
     <EmbeddedResource Include="2099 - Interface\Controls\Button\Btn.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\DateTimePicker\dtp.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\DateTimePicker\Dtp.ico" />
     <EmbeddedResource Include="2099 - Interface\Controls\Label\Lbl.ico" />
     <EmbeddedResource Include="2099 - Interface\Controls\TextBox\Txt.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\DataGridView\dgn.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\DataGridView\Dgn.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\GroupBox\gbx.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\GroupBox\Gbx.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="2099 - Interface\Controls\LinkLabel\Lnk.ico" />
@@ -317,7 +317,7 @@
     <EmbeddedResource Include="2099 - Interface\Controls\ComboBox\Cbo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2099 - Interface\Controls\MaskEditBox\meb.ico" />
+    <EmbeddedResource Include="2099 - Interface\Controls\MaskEditBox\Meb.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="2099 - Interface\Controls\CheckBox\Chk.ico" />
@@ -332,7 +332,7 @@
     <EmbeddedResource Include="2099 - Interface\Controls\Panel\Pnl.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="2099 - Interface\Controls\NumericUpDown\nud.ico" />
+    <Content Include="2099 - Interface\Controls\NumericUpDown\Nud.ico" />
     <Content Include="2099 - Interface\Controls\PictureBox\Pbx.ico" />
     <EmbeddedResource Include="Resources\EDIT_002_512_icon .png" />
     <EmbeddedResource Include="Resources\Save_001_24_FFFFFFFF_FF5423C3.png" />

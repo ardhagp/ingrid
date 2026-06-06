@@ -18,62 +18,65 @@ Namespace UI.Control
             MyBase.DoubleBuffered = True
         End Sub
 
-#Region "Properti"
-        <Category("Text"),
-Description("Potong spasi kiri-kanan secara otomatis saat lost focus")>
+
+#Region "Properties"
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Automatically trims leading and trailing spaces from the component’s text value at runtime")>
+        Private varAutoTrim As Boolean
         Public Property XOAutoTrim() As Boolean
             Get
-                Return V_AutoTrim
+                Return varAutoTrim
             End Get
             Set(value As Boolean)
-                V_AutoTrim = value
+                varAutoTrim = value
             End Set
         End Property
 
-        <Category("Text"),
-    Description("Teksboks harus diisi")>
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Indicates whether this component requires a value and must not be left empty during user input")>
+        Private varIsMandatory As Boolean
         Public Property XOIsMandatory As Boolean
             Get
-                Return V_HarusDiisi
+                Return varIsMandatory
             End Get
             Set(value As Boolean)
-                V_HarusDiisi = value
+                varIsMandatory = value
             End Set
         End Property
 
-        Private _varHightlightSaatFokus As Boolean
-        <Category("Text"),
-    Description("Jenis tombol akan mempengaruhi (warna latar, jenis font) tombol")>
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Highlights the component visually when it receives focus to guide user attention during data entry")>
+        Private varHighlightOnFocus As Boolean
         Public Property XOHighlightOnFocus() As Boolean
             Get
-                Return _varHightlightSaatFokus
+                Return varHighlightOnFocus
             End Get
             Set(value As Boolean)
-                _varHightlightSaatFokus = value
+                varHighlightOnFocus = value
             End Set
         End Property
 
-        Private _varHighlightSaatFokusWarna As System.Drawing.Color
-        <Category("Text"),
-    Description("Warna highlight")>
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Highlights the component visually when it receives focus to guide user attention during data entry")>
+        Private varHighlightColor As System.Drawing.Color
         Public Property XOHighlightColor() As System.Drawing.Color
             Get
-                Return _varHighlightSaatFokusWarna
+                Return varHighlightColor
             End Get
             Set(value As System.Drawing.Color)
-                _varHighlightSaatFokusWarna = value
+                varHighlightColor = value
             End Set
         End Property
 
-        Private _varPilihSemuaSaatFokus As Boolean
-        <System.ComponentModel.Category("Text"),
-    System.ComponentModel.Description("Memilih semua teks saat fokus")>
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Automatically selects all text within the component when it receives focus to simplify user editing")>
+        Private varSelectOnFocus As Boolean
         Public Property XOSelectOnFocus() As Boolean
             Get
-                Return _varPilihSemuaSaatFokus
+                Return varSelectOnFocus
             End Get
             Set(value As Boolean)
-                _varPilihSemuaSaatFokus = value
+                varSelectOnFocus = value
             End Set
         End Property
 

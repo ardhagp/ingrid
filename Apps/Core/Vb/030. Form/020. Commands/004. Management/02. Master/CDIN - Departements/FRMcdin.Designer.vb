@@ -97,8 +97,8 @@
             DgnCDIN.Size = New Size(1307, 858)
             DgnCDIN.StandardTab = True
             DgnCDIN.TabIndex = 0
-            DgnCDIN.XOGroupFirstRow = False
-            DgnCDIN.XOShowRowNumber = True
+            DgnCDIN.XOIsGroupFirstRow = False
+            DgnCDIN.XOIsShowRowNumber = True
             ' 
             ' department_id
             ' 

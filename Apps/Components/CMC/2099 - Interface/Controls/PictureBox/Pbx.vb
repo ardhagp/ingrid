@@ -21,6 +21,8 @@ Namespace UI.Control
             MyBase.DoubleBuffered = True
         End Sub
 
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Indicates whether the picture box displays a visible border around its outer frame")>
         Private varShowBorder As Boolean
         Public Property XOShowBorder As Boolean
             Get
@@ -31,6 +33,8 @@ Namespace UI.Control
             End Set
         End Property
 
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the color used to render the border around the picture box")>
         Private varBorderColor As Color
         Public Property XOBorderColor As Color
             Get
