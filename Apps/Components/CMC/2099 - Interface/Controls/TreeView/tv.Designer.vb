@@ -1,5 +1,5 @@
 ﻿Namespace UI.Control
-    Partial Class tv
+    Partial Class Tv
         Inherits System.Windows.Forms.TreeView
 
         <System.Diagnostics.DebuggerNonUserCode()>

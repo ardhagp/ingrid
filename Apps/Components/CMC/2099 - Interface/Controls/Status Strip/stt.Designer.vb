@@ -1,6 +1,6 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.stt), "stt.ico")>
-    Partial Class stt
+    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Stt), "Stt.ico")>
+    Partial Class Stt
         Inherits System.Windows.Forms.StatusStrip
 
         <System.Diagnostics.DebuggerNonUserCode()>

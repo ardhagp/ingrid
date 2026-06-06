@@ -1,6 +1,6 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.mnu), "mnu.ico")>
-    Partial Class mnu
+    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Mnu), "Mnu.ico")>
+    Partial Class Mnu
         Inherits System.Windows.Forms.MenuStrip
 
         <System.Diagnostics.DebuggerNonUserCode()>

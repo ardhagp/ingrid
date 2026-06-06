@@ -1,6 +1,6 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.rdo), "rdo.ico")>
-    Partial Class rdo
+    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Rdo), "Rdo.ico")>
+    Partial Class Rdo
         Inherits System.Windows.Forms.RadioButton
 
         <System.Diagnostics.DebuggerNonUserCode()>

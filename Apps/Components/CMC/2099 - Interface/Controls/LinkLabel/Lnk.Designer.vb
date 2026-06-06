@@ -1,5 +1,5 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Lnk), "lnklbl.ico")>
+    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Lnk), "Lnk.ico")>
     Partial Class Lnk
         Inherits System.Windows.Forms.LinkLabel
 
