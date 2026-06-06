@@ -234,6 +234,14 @@ steps:
     maximumCpuCount: true
     createLogFile: true
 
+#Packing deployment to Artifact Directory
+- task: CopyFiles@2
+  displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\'
+    Contents: '**'
+    TargetFolder: '$(build.ArtifactStagingDirectory)'
+
 #List of File in $(Build.SourcesDirectory)
 - task: CmdLine@2
   displayName: 'File List - Post Build $(Build.SourcesDirectory)'
@@ -253,14 +261,6 @@ steps:
       echo "Reading Ingrid.Application"
       echo "---------------------------"
       more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\Ingrid.application
-
-#Packing deployment to Artifact Directory
-- task: CopyFiles@2
-  displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory)'
-  inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\'
-    Contents: '**'
-    TargetFolder: '$(build.ArtifactStagingDirectory)'
 
 - task: ado-discord-webhook@2
   displayName: 'Transfering application to Backblaze'
