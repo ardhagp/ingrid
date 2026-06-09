@@ -286,7 +286,7 @@
             TxtDescription.XOHighlightOnFocus = False
             TxtDescription.XOHighlightColor = Color.LightYellow
             TxtDescription.XOIsBlank = True
-            TxtDescription.XOIsSearchBox = False
+            TxtDescription.XOIsPlaceholder = False
             TxtDescription.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtDescription.XOSelectOnFocus = False
             TxtDescription.XOPasswordLengthMin = 8
@@ -294,7 +294,7 @@
             TxtDescription.XOPasswordStrengthScore = 0
             TxtDescription.XOPasswordStrengthText = Nothing
             TxtDescription.XORestriction = ControlCodeBase.enumRestriction.None
-            TxtDescription.XOSearchBoxText = "Type then press Enter"
+            TxtDescription.XOPlaceholderText = "Type then press Enter"
             TxtDescription.XOSqlText = ""
             TxtDescription.XOIsReplaceEmptyString = False
             TxtDescription.XOMandatoryMessage = Nothing

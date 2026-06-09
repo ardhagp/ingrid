@@ -41,9 +41,11 @@ Namespace UI
         Private varTotalNotification As Integer
         Private varRunningTextActive As Integer
         Private varMyMarquee As New Application.Marquee
-        Private consDatabaseProperties As String = "DatabaseProperties"
 
-        Private Const tUserData As String = "UserData"
+        Private Const dtDatabaseProperties As String = "DatabaseProperties"
+        Private Const dtUserData As String = "UserData"
+        Private Const dtSettings As String = "SYSS_Editor"
+
         'Private Const pCommand As String = "@Command"
         'Private Const pEmployeeId As String = "@EmployeeId"
 #End Region
@@ -101,11 +103,11 @@ Namespace UI
             'varDataProperties.UserParameters.Add(tEmployee.P_EmployeeId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_id")))
             varTotalNotification = varSqlNotification.Exist(varDataProperties)
             If varTotalNotification > 0 Then
-                USERMENU.Text = varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_fullname").ToString & "*"
+                USERMENU.Text = varDatasetIngrid.Tables(dtUserData).Rows(0).Item("employee_fullname").ToString & "*"
                 USERMENU.BackColor = Global.System.Drawing.Color.LightPink
                 USERMENU.ForeColor = Global.System.Drawing.Color.Black
             Else
-                USERMENU.Text = varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_fullname").ToString
+                USERMENU.Text = varDatasetIngrid.Tables(dtUserData).Rows(0).Item("employee_fullname").ToString
                 USERMENU.BackColor = Global.System.Drawing.Color.Yellow
                 USERMENU.ForeColor = Global.System.Drawing.Color.Black
             End If
@@ -208,11 +210,11 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Function LoginClicked() As Boolean
-            If varDatasetIngrid.Tables(tUserData).Rows.Count = 0 Then
+            If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
                 Frm_login = New UI.FRMlogin
                 Display(Frm_login, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, My.Application.Info.AssemblyName.ToUpper, "Sign In", "Please enter your credentials to continue", True)
             End If
-            If varDatasetIngrid.Tables(tUserData).Rows.Count = 0 Then
+            If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
                 varSession = False
                 Call SystemLogout(True)
             Else
@@ -337,10 +339,12 @@ Namespace UI
                 varDataProperties.UserId = 0
                 Text += " - Ver. " & varVersionapplication
                 LibSQL.Mainframe.Database.GetDatabaseProperties(varDatasetIngrid)
-                If varDatasetIngrid.Tables(consDatabaseProperties).Rows.Count > 0 Then
-                    With varDatasetIngrid.Tables(consDatabaseProperties).Rows(0)
-                        varDataProperties.ConnectionDatabaseEngineE = CType([Enum].Parse(GetType(LibApp.Ingrid.Global.DatabaseEngine), .Item("DatabaseEngine").ToString), LibApp.Ingrid.Global.DatabaseEngine)
-                        varDataProperties.ConnectionDatabaseName = .Item("DBForData").ToString
+                If varDatasetIngrid.Tables(dtDatabaseProperties).Rows.Count > 0 Then
+                    With varDatasetIngrid.Tables(dtDatabaseProperties).Rows(0)
+                        varDataProperties.ConnectionDatabaseEngineE = CType([Enum].Parse(GetType(LibApp.Ingrid.Global.DatabaseEngine), .Item("DATABASEENGINE").ToString), LibApp.Ingrid.Global.DatabaseEngine)
+                        varDataProperties.ConnectionDatabaseName = .Item("DBFORDATA").ToString
+                        varDataProperties.AllParameters.Remove(tClient.P_ClientCode)
+                        varDataProperties.AllParameters.Add(tClient.P_ClientCode, .Item("CLIENT").ToString)
                     End With
                 Else
                     Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties could not be found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
@@ -504,7 +508,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub GetProfile()
-            With varDatasetIngrid.Tables(tSettings.TableName)
+            With varDatasetIngrid.Tables(dtSettings)
                 If .Rows.Count > 0 Then
                     PnlProfile.Visible = CBool(.Rows(0).Item(tSettings.C_SettingsShowProfile))
                 End If
@@ -690,7 +694,7 @@ Namespace UI
         ''' </summary>
         Private Sub ClearLoginData()
             varSession = False
-            varDatasetIngrid.Tables(tUserData).Rows.Clear()
+            varDatasetIngrid.Tables(dtUserData).Rows.Clear()
         End Sub
 
         ''' <summary>
@@ -698,7 +702,7 @@ Namespace UI
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetSettings()
-            LibSQL.Application.Modules.GetSettingsProperties(varDataProperties, varDatasetIngrid)
+            LibSQL.CMDsyss.View.GetSettingsProperties(varDataProperties, varDatasetIngrid)
             'varMaxUploadSizePDF = LibSQL.Application.Modules.MaxPDFallowed(varDataProperties)
             'varMaxUploadSizePhoto = LibSQL.Application.Modules.MaxPhotoallowed(varDataProperties)
             'varMinPasswordLength = LibSQL.Application.Modules.MinPasswordLength(varDataProperties)

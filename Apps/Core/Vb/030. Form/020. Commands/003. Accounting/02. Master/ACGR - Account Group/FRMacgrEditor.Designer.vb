@@ -224,7 +224,7 @@
             TxtAccountNumber.XOHighlightOnFocus = True
             TxtAccountNumber.XOHighlightColor = Color.LightYellow
             TxtAccountNumber.XOIsBlank = True
-            TxtAccountNumber.XOIsSearchBox = False
+            TxtAccountNumber.XOIsPlaceholder = False
             TxtAccountNumber.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
             TxtAccountNumber.XOSelectOnFocus = True
             TxtAccountNumber.XOPasswordLengthMin = 8
@@ -232,7 +232,7 @@
             TxtAccountNumber.XOPasswordStrengthScore = 0
             TxtAccountNumber.XOPasswordStrengthText = Nothing
             TxtAccountNumber.XORestriction = ControlCodeBase.enumRestriction.None
-            TxtAccountNumber.XOSearchBoxText = "Type then press Enter"
+            TxtAccountNumber.XOPlaceholderText = "Type then press Enter"
             TxtAccountNumber.XOSqlText = ""
             TxtAccountNumber.XOIsReplaceEmptyString = False
             TxtAccountNumber.XOMandatoryMessage = Nothing
@@ -266,7 +266,7 @@
             TxtAccountName.XOHighlightOnFocus = True
             TxtAccountName.XOHighlightColor = Color.LightYellow
             TxtAccountName.XOIsBlank = True
-            TxtAccountName.XOIsSearchBox = False
+            TxtAccountName.XOIsPlaceholder = False
             TxtAccountName.XOLetterCase = ControlCodeBase.enumLetterCase.UPPERCASE
             TxtAccountName.XOSelectOnFocus = True
             TxtAccountName.XOPasswordLengthMin = 8
@@ -274,7 +274,7 @@
             TxtAccountName.XOPasswordStrengthScore = 0
             TxtAccountName.XOPasswordStrengthText = Nothing
             TxtAccountName.XORestriction = ControlCodeBase.enumRestriction.None
-            TxtAccountName.XOSearchBoxText = "Type then press Enter"
+            TxtAccountName.XOPlaceholderText = "Type then press Enter"
             TxtAccountName.XOSqlText = ""
             TxtAccountName.XOIsReplaceEmptyString = False
             TxtAccountName.XOMandatoryMessage = Nothing

@@ -137,7 +137,7 @@
             TxtDeptCode.XOIsBlank = True
             TxtDeptCode.XOIsMandatory = True
             TxtDeptCode.XOIsReplaceEmptyString = False
-            TxtDeptCode.XOIsSearchBox = False
+            TxtDeptCode.XOIsPlaceholder = False
             TxtDeptCode.XOLetterCase = ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtDeptCode.XOMandatoryBgColor = Color.LightPink
             TxtDeptCode.XOMandatoryBgColorDefault = Color.White
@@ -147,7 +147,7 @@
             TxtDeptCode.XOPasswordStrengthScore = 0
             TxtDeptCode.XOPasswordStrengthText = Nothing
             TxtDeptCode.XORestriction = ControlCodeBase.EnumRestriction.TextAndNumber
-            TxtDeptCode.XOSearchBoxText = "Type then press Enter"
+            TxtDeptCode.XOPlaceholderText = "Type then press Enter"
             TxtDeptCode.XOSelectOnFocus = True
             TxtDeptCode.XOSqlText = ""
             ' 
@@ -180,7 +180,7 @@
             TxtDeptName.XOIsBlank = True
             TxtDeptName.XOIsMandatory = True
             TxtDeptName.XOIsReplaceEmptyString = False
-            TxtDeptName.XOIsSearchBox = False
+            TxtDeptName.XOIsPlaceholder = False
             TxtDeptName.XOLetterCase = ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtDeptName.XOMandatoryBgColor = Color.LightPink
             TxtDeptName.XOMandatoryBgColorDefault = Color.White
@@ -190,7 +190,7 @@
             TxtDeptName.XOPasswordStrengthScore = 0
             TxtDeptName.XOPasswordStrengthText = Nothing
             TxtDeptName.XORestriction = ControlCodeBase.EnumRestriction.TextAndNumber
-            TxtDeptName.XOSearchBoxText = "Type then press Enter"
+            TxtDeptName.XOPlaceholderText = "Type then press Enter"
             TxtDeptName.XOSelectOnFocus = False
             TxtDeptName.XOSqlText = ""
             ' 
@@ -211,7 +211,7 @@
             TxtDescription.XOIsBlank = True
             TxtDescription.XOIsMandatory = False
             TxtDescription.XOIsReplaceEmptyString = False
-            TxtDescription.XOIsSearchBox = False
+            TxtDescription.XOIsPlaceholder = False
             TxtDescription.XOLetterCase = ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtDescription.XOMandatoryBgColor = Color.LightPink
             TxtDescription.XOMandatoryBgColorDefault = Color.White
@@ -221,7 +221,7 @@
             TxtDescription.XOPasswordStrengthScore = 0
             TxtDescription.XOPasswordStrengthText = Nothing
             TxtDescription.XORestriction = ControlCodeBase.EnumRestriction.None
-            TxtDescription.XOSearchBoxText = "Type then press Enter"
+            TxtDescription.XOPlaceholderText = "Type then press Enter"
             TxtDescription.XOSelectOnFocus = False
             TxtDescription.XOSqlText = ""
             ' 

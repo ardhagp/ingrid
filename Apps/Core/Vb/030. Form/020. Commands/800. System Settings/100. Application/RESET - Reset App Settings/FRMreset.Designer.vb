@@ -96,7 +96,7 @@
             Txt_Confirmation.XOHighlightOnFocus = True
             Txt_Confirmation.XOHighlightColor = Color.LightYellow
             Txt_Confirmation.XOIsBlank = False
-            Txt_Confirmation.XOIsSearchBox = False
+            Txt_Confirmation.XOIsPlaceholder = False
             Txt_Confirmation.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             Txt_Confirmation.XOSelectOnFocus = False
             Txt_Confirmation.XOPasswordLengthMin = 8
@@ -104,7 +104,7 @@
             Txt_Confirmation.XOPasswordStrengthScore = 0
             Txt_Confirmation.XOPasswordStrengthText = Nothing
             Txt_Confirmation.XORestriction = ControlCodeBase.enumRestriction.None
-            Txt_Confirmation.XOSearchBoxText = ""
+            Txt_Confirmation.XOPlaceholderText = ""
             Txt_Confirmation.XOSqlText = ""
             Txt_Confirmation.XOIsReplaceEmptyString = False
             Txt_Confirmation.XOMandatoryMessage = Nothing

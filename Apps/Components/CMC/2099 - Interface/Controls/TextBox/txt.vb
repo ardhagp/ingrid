@@ -25,17 +25,17 @@ Namespace UI.Control
             Me.XORestriction = ControlCodeBase.enumRestriction.None
             Me.XOIsBlank = True
             Me.XOLetterCase = ControlCodeBase.EnumLetterCase.Normal
-            Me.XOIsSearchBox = False
-            Me.XOSearchBoxText = "Type then press Enter"
+            Me.XOIsPlaceholder = False
+            Me.XOPlaceholderText = "Type then press Enter"
             Me.XOPasswordLengthMin = 8
             Me.XOPasswordStrengthCalc = False
             Call FontSearchBox(True)
         End Sub
 
 #Region "Properties"
+        Private varAutoTrim As Boolean
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Automatically trims leading and trailing spaces from the component’s text value at runtime")>
-        Private varAutoTrim As Boolean
         Public Property XOAutoTrim() As Boolean
             Get
                 Return varAutoTrim
@@ -45,9 +45,9 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varIsMandatory As Boolean
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Indicates whether this component requires a value and must not be left empty during user input")>
-        Private varIsMandatory As Boolean
         Public Property XOIsMandatory As Boolean
             Get
                 Return varIsMandatory
@@ -57,9 +57,9 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varHighlightOnFocus As Boolean
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Highlights the component visually when it receives focus to guide user attention during data entry")>
-        Private varHighlightOnFocus As Boolean
         Public Property XOHighlightOnFocus() As Boolean
             Get
                 Return varHighlightOnFocus
@@ -69,9 +69,9 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varHighlightColor As System.Drawing.Color
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies the highlight color applied to the component when it receives focus")>
-        Private varHighlightColor As System.Drawing.Color
         Public Property XOHighlightColor() As System.Drawing.Color
             Get
                 Return varHighlightColor
@@ -81,9 +81,9 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varPasswordLengthMin As Integer
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Defines the minimum number of characters required for a valid password input")>
-        Private varPasswordLengthMin As Integer
         Public Property XOPasswordLengthMin As Integer
             Get
                 Return varPasswordLengthMin
@@ -93,9 +93,9 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varPasswordStrengthCalc As Boolean
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Determines whether the component evaluates and displays the strength level of the entered password")>
-        Private varPasswordStrengthCalc As Boolean
         Public Property XOPasswordStrengthCalc As Boolean
             Get
                 Return varPasswordStrengthCalc
@@ -105,9 +105,9 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varPasswordStrengthScore As Integer
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Represents the calculated numeric score used to determine the strength level of the entered password")>
-        Private varPasswordStrengthScore As Integer
         Public Property XOPasswordStrengthScore As Integer
             Get
                 Return varPasswordStrengthScore
@@ -117,9 +117,9 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varPasswordStrengthText As String
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Displays the descriptive strength label derived from the calculated password score")>
-        Private varPasswordStrengthText As String
         Public Property XOPasswordStrengthText As String
             Get
                 Return varPasswordStrengthText
@@ -129,9 +129,9 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varReplaceEmptyString As Boolean
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies whether empty or whitespace-only input should be automatically replaced with a predefined fallback value")>
-        Private varReplaceEmptyString As Boolean
         Public Property XOIsReplaceEmptyString As Boolean
             Get
                 Return varReplaceEmptyString
@@ -141,9 +141,9 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varSqlText As String
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Contains the SQL command or query text associated with this component for data retrieval or processing")>
-        Private varSqlText As String
         Public Property XOSqlText As String
             Get
                 Return varSqlText
@@ -165,9 +165,9 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varMandatoryBgColorDefault As System.Drawing.Color
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies the default background color restored when the component is no longer marked as mandatory")>
-        Private varMandatoryBgColorDefault As System.Drawing.Color
         Public Property XOMandatoryBgColorDefault As System.Drawing.Color
             Get
                 Return varMandatoryBgColorDefault
@@ -189,9 +189,9 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varSelectOnFocus As Boolean
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Automatically selects all text within the component when it receives focus to simplify user editing")>
-        Private varSelectOnFocus As Boolean
         Public Property XOSelectOnFocus() As Boolean
             Get
                 Return varSelectOnFocus
@@ -213,9 +213,9 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varLetterCase As ControlCodeBase.EnumLetterCase
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies how the component transforms its text value by applying the selected letter‑case rule")>
-        Private varLetterCase As ControlCodeBase.EnumLetterCase
         Public Property XOLetterCase As ControlCodeBase.EnumLetterCase
             Get
                 Return varLetterCase
@@ -225,9 +225,9 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varRestriction As ControlCodeBase.EnumRestriction
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Defines the input restriction rule that limits which characters or patterns are allowed in the component")>
-        Private varRestriction As ControlCodeBase.EnumRestriction
         Public Property XORestriction As ControlCodeBase.EnumRestriction
             Get
                 Return varRestriction
@@ -237,37 +237,37 @@ Namespace UI.Control
             End Set
         End Property
 
+        Private varIsPlaceholder As Boolean
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Indicates whether the component behaves as a search box, enabling instant filtering or lookup as the user types")>
-        Private varIsSearchBox As Boolean
-        Public Property XOIsSearchBox As Boolean
+        Public Property XOIsPlaceholder As Boolean
             Get
-                Return varIsSearchBox
+                Return varIsPlaceholder
             End Get
             Set(value As Boolean)
-                varIsSearchBox = value
+                varIsPlaceholder = value
             End Set
         End Property
 
+        Private varPlaceholderText As String
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies the placeholder or prompt text displayed when the search box is empty")>
-        Private varSearchBoxText As String
-        Public Property XOSearchBoxText As String
+        Public Property XOPlaceholderText As String
             Get
-                Return varSearchBoxText
+                Return varPlaceholderText
             End Get
             Set(value As String)
-                varSearchBoxText = value
+                varPlaceholderText = value
             End Set
         End Property
 #End Region
 
 #Region "Function"
         <SupportedOSPlatform("windows")>
-        Private Function SqlSafeText(txtControl As txt) As String
+        Private Function SqlSafeText(txtControl As Txt) As String
             Dim varSqlSafeText As String = txtControl.Text
 
-            If (txtControl.XOIsSearchBox) AndAlso (txtControl.Text = txtControl.XOSearchBoxText) Then
+            If (txtControl.XOIsPlaceholder) AndAlso (txtControl.Text = txtControl.XOPlaceholderText) Then
                 varSqlSafeText = String.Empty
             End If
 
@@ -540,8 +540,8 @@ Namespace UI.Control
         <SupportedOSPlatform("windows")>
         Public Sub FontSearchBox(onfocus As Boolean)
             Try
-                If (Me.XOIsSearchBox) Then
-                    If (onfocus) AndAlso Me.Text = Me.XOSearchBoxText Then
+                If (Me.XOIsPlaceholder) Then
+                    If (onfocus) AndAlso Me.Text = Me.XOPlaceholderText Then
                         Me.Text = String.Empty
                         Me.Font = New System.Drawing.Font(Me.Font, System.Drawing.FontStyle.Regular)
                         Me.ForeColor = System.Drawing.SystemColors.WindowText
@@ -549,7 +549,7 @@ Namespace UI.Control
                     ElseIf Not (onfocus) AndAlso Me.Text = String.Empty Then
                         Me.Font = New System.Drawing.Font(Me.Font, System.Drawing.FontStyle.Italic)
                         Me.ForeColor = System.Drawing.Color.LightGray
-                        Me.Text = Me.XOSearchBoxText
+                        Me.Text = Me.XOPlaceholderText
                     End If
                 Else
                     MyBase.Font = New System.Drawing.Font(MyBase.Font, System.Drawing.FontStyle.Regular)

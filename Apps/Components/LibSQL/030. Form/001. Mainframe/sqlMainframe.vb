@@ -57,7 +57,7 @@ Namespace Mainframe
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetDatabaseProperties(datasetname As DataSet)
-            varQuery = "SELECT [DATABASEENGINE],[DBFORDATA] FROM [serverlist] WHERE [DEFAULTCONNECTION] = 1"
+            varQuery = "SELECT [DATABASEENGINE],[DBFORDATA],[CLIENT] FROM [serverlist] WHERE [DEFAULTCONNECTION] = 1"
 
             varDatabaseEngineSqlite.Open(True)
             datasetname = varDatabaseEngineSqlite.FillDataSet(varQuery, datasetname, "DatabaseProperties")
