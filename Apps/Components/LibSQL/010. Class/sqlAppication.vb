@@ -120,37 +120,6 @@ Namespace Application
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetSettingsProperties(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet)
-            Try
-                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    varDatabaseRequestMssql2008(0).Query = ""
-                    datasetname = varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query, datasetname, "")
-                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(0).Query = $"select {tSettings.S}.{tSettings.C_SettingsId}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsShowProfile}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsShowStorage}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsShowWatermark}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsTextMark}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsTextMarkLength}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsShowRunningText}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsUploadPhoto}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsUploadPdf}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsStorageProvider}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsApiKey}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsApiSecret}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsApiServiceUrl}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsStorageDb}, " &
-                                                        $"{tSettings.S}.{tSettings.C_SettingsClient} " &
-                                                        $"from {tSettings.TableName} {tSettings.S} " &
-                                                        $"limit 0,1;"
-                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tSettings.TableName, dataproperties.AllParameters)
-                End If
-            Catch ex As Exception
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Failed to load module settings properties.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
-            End Try
-        End Sub
-
-        <SupportedOSPlatform("windows")>
         Public Function DisplayAutoComplete(dataproperties As LibApp.Ingrid.Global.Properties) As System.Data.DataSet
             Try
                 varDataSet = New System.Data.DataSet

@@ -45,6 +45,7 @@ Namespace UI
                     TxtPassword.Text = .ConnectionPassword
                     varOldPassword = .ConnectionPasswordOld
                     TxtDatabaseName.Text = .ConnectionDatabaseName
+                    TxtClient.Text = .ConnectionClientCode
                     ChkDefault.Checked = .ConnectionIsDefault
                     ChkIsMasked.Checked = .ConnectionIsMasked
                 End With
@@ -120,17 +121,18 @@ Namespace UI
             End If
 
             With varProperties
-                .ConnectionName = TxtConnectionName.Text
+                .ConnectionName = TxtConnectionName.Text.Trim
                 .ConnectionDatabaseEngine = CboDBEngine.Text
-                .ConnectionServerAddress = TxtAddress.Text
-                .ConnectionServerPort = Convert.ToInt32(TxtPort.Text)
-                .ConnectionUsername = TxtUsername.Text
+                .ConnectionServerAddress = TxtAddress.Text.Trim
+                .ConnectionServerPort = Convert.ToInt32(TxtPort.Text.Trim)
+                .ConnectionUsername = TxtUsername.Text.Trim
                 .ConnectionPassword = TxtPassword.Text
-                .ConnectionDatabaseName = TxtDatabaseName.Text
+                .ConnectionDatabaseName = TxtDatabaseName.Text.Trim
                 .ConnectionIsDefault = ChkDefault.Checked
                 .ConnectionIsMasked = ChkIsMasked.Checked
                 .ConnectionIsNew = varProperties.ConnectionIsNew
                 .ConnectionIsPasswordChanged = varIsPasswordChange
+                .ConnectionClientCode = TxtClient.Text.Trim
                 .ConnectionId = Convert.ToString(varProperties.ConnectionId)
             End With
 
@@ -268,7 +270,7 @@ Namespace UI
             End If
 
             Dim exportConn As String
-            exportConn = $"{TxtConnectionName.Text.Trim}||{CboDBEngine.Text.Trim}||{CMCv.Security.Encrypt.AES(TxtAddress.Text.Trim)}||{CMCv.Security.Encrypt.AES(TxtPort.Text)}||{CMCv.Security.Encrypt.AES(TxtUsername.Text.Trim)}||{CMCv.Security.Encrypt.AES(TxtPassword.Text)}||{CMCv.Security.Encrypt.AES(TxtDatabaseName.Text.Trim)}||{Convert.ToString(ChkDefault.Checked)}||{Convert.ToString(ChkIsMasked.Checked)}"
+            exportConn = $"{TxtConnectionName.Text.Trim}||{CboDBEngine.Text.Trim}||{CMCv.Security.Encrypt.Aes(TxtAddress.Text.Trim)}||{CMCv.Security.Encrypt.Aes(TxtPort.Text)}||{CMCv.Security.Encrypt.Aes(TxtUsername.Text.Trim)}||{CMCv.Security.Encrypt.Aes(TxtPassword.Text)}||{CMCv.Security.Encrypt.Aes(TxtDatabaseName.Text.Trim)}||{Convert.ToString(ChkDefault.Checked)}||{Convert.ToString(ChkIsMasked.Checked)}||{TxtClient.Text.Trim}"
 
             txtImportContent.Text = CMCv.Security.Encrypt.AES(exportConn)
             varConnectionName = CMCv.Security.Encrypt.CRC32(TxtConnectionName.Text.Trim)
@@ -279,7 +281,6 @@ Namespace UI
             Dim varDialog As New FolderBrowserDialog With {
         .Description = "Select a folder to save the connection config"
         }
-
 
             If varConnectionName = String.Empty Then
                 MessageBox.Show("Please export the connection first to generate the connection code.")
@@ -322,7 +323,7 @@ Namespace UI
 
             Dim varConnproperties() As String = decryptedConn.Split({"||"}, StringSplitOptions.None)
 
-            If varConnproperties.Length <> 9 Then
+            If varConnproperties.Length <> 10 Then
                 MessageBox.Show("The connection content is invalid.")
                 Return
             End If
@@ -336,6 +337,7 @@ Namespace UI
             TxtDatabaseName.Text = CMCv.Security.Decrypt.AES(varConnproperties(6))
             ChkDefault.Checked = Convert.ToBoolean(varConnproperties(7))
             ChkIsMasked.Checked = Convert.ToBoolean(varConnproperties(8))
+            TxtClient.Text = varConnproperties(9)
             Call ChangeIsMaskedState()
             If ChkIsMasked.Checked Then
                 ChkIsMasked.Visible = False

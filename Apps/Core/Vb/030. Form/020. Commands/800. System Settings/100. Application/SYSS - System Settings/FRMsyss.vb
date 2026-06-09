@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.Versioning
+Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Namespace UI
     Public Class FRMsyss
@@ -6,9 +7,12 @@ Namespace UI
         Const varMessageAdministratorOnly As String = "Administrator Only"
         Const varUserOnly As String = "User Only"
         Const varAllUsers As String = "All Users"
+        Const dtSettings As String = "SYSS_Editor"
 
         <SupportedOSPlatform("windows")>
         Private Sub GetData()
+            CMDsyss.View.GetSettingsProperties(varDataProperties, varDatasetIngrid)
+
             'Get Profile
             With CboProfile.Items
                 .Clear()
@@ -17,7 +21,6 @@ Namespace UI
                 .Add(varUserOnly)
                 .Add(varAllUsers)
             End With
-            CboProfile.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_showprofile"), Integer)
 
             'Get Storage
             With CboStorage.Items
@@ -27,7 +30,6 @@ Namespace UI
                 .Add(varUserOnly)
                 .Add(varAllUsers)
             End With
-            CboStorage.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_showstorage"), Integer)
 
             'Get NewsTicker
             With CboNewsTicker.Items
@@ -37,13 +39,6 @@ Namespace UI
                 .Add(varUserOnly)
                 .Add(varAllUsers)
             End With
-            CboNewsTicker.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_showrunningtext"), Integer)
-
-            'Get Minimum Photo Upload
-            nudUploadPhoto.Value = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_uploadphoto"), Decimal)
-
-            'Get Minimum PDF Upload
-            nudUploadPDF.Value = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_uploadpdf"), Decimal)
 
             'Get Watermark
             With CboWatermark.Items
@@ -53,11 +48,36 @@ Namespace UI
                 .Add(varUserOnly)
                 .Add(varAllUsers)
             End With
-            CboWatermark.SelectedIndex = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_showwatermark"), Integer)
-            TxtWatermark.Text = CMDsyss.View.GetSettingValue(varDataProperties, "settings_textmark").ToString
 
-            'Get Minimum Password
-            nudMinPassword.Value = CType(CMDsyss.View.GetSettingValue(varDataProperties, "settings_minpasswordlength"), Decimal)
+            'Get Storage Provider
+            With CboStorageProvider.Items
+                .Clear()
+                .Add("None")
+                .Add("BackBlaze B2")
+                .Add("Cloudinary")
+                .Add("Database")
+            End With
+
+            If varDatasetIngrid.Tables(dtSettings).Rows.Count > 0 Then
+                With varDatasetIngrid.Tables(dtSettings).Rows(0)
+                    varDataProperties.SystemSettingsId = CInt(.Item(tSettings.C_SettingsId))
+                    CboProfile.SelectedIndex = CInt(.Item(tSettings.C_SettingsShowProfile))
+                    CboStorage.SelectedIndex = CInt(.Item(tSettings.C_SettingsShowStorage))
+                    CboNewsTicker.SelectedIndex = CInt(.Item(tSettings.C_SettingsShowRunningText))
+                    nudUploadPhoto.Value = CInt(.Item(tSettings.C_SettingsUploadPhoto))
+                    nudUploadPDF.Value = CInt(.Item(tSettings.C_SettingsUploadPdf))
+                    CboWatermark.SelectedIndex = CInt(.Item(tSettings.C_SettingsShowWatermark))
+                    TxtWatermark.Text = .Item(tSettings.C_SettingsTextMark).ToString
+                    CboStorageProvider.Text = .Item(tSettings.C_SettingsStorageProvider).ToString
+                    TxtApiKey.Text = .Item(tSettings.C_SettingsApiKey).ToString
+                    TxtApiSecret.Text = CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiSecret).ToString)
+                    TxtApiServiceUrl.Text = .Item(tSettings.C_SettingsApiServiceUrl).ToString
+                    TxtFileDb.Text = .Item(tSettings.C_SettingsStorageDb).ToString
+                    nudMinPassword.Value = CInt(.Item(tSettings.C_SettingsMinPasswordLength))
+                    TxtClientCode.Text = .Item(tClient.C_ClientCode).ToString
+                    TxtClientName.Text = .Item(tClient.C_ClientName).ToString
+                End With
+            End If
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -77,7 +97,38 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Try
-                If (CMDsyss.Editor.SaveSettings(varDataProperties, CboProfile.SelectedIndex, CboStorage.SelectedIndex, CboNewsTicker.SelectedIndex, CType(nudUploadPhoto.Value, Integer), CType(nudUploadPDF.Value, Integer), CboWatermark.SelectedIndex, TxtWatermark.XOSqlText, CType(nudMinPassword.Value, Integer))) Then
+                With varDataProperties.AllParameters
+                    .Remove(tSettings.P_SettingsId)
+                    .Add(tSettings.P_SettingsId, varDataProperties.SystemSettingsId)
+                    .Remove(tSettings.P_SettingsShowProfile)
+                    .Add(tSettings.P_SettingsShowProfile, CboProfile.SelectedIndex)
+                    .Remove(tSettings.P_SettingsShowStorage)
+                    .Add(tSettings.P_SettingsShowStorage, CboStorage.SelectedIndex)
+                    .Remove(tSettings.P_SettingsShowRunningText)
+                    .Remove(tSettings.P_SettingsTextMark)
+                    .Add(tSettings.P_SettingsTextMark, TxtWatermark.Text.Trim)
+                    .Add(tSettings.P_SettingsShowRunningText, CboNewsTicker.SelectedIndex)
+                    .Remove(tSettings.P_SettingsShowWatermark)
+                    .Add(tSettings.P_SettingsShowWatermark, CboWatermark.SelectedIndex)
+                    .Remove(tSettings.P_SettingsUploadPhoto)
+                    .Add(tSettings.P_SettingsUploadPhoto, CInt(nudUploadPhoto.Value))
+                    .Remove(tSettings.P_SettingsUploadPdf)
+                    .Add(tSettings.P_SettingsUploadPdf, CInt(nudUploadPDF.Value))
+                    .Remove(tSettings.P_SettingsStorageProvider)
+                    .Add(tSettings.P_SettingsStorageProvider, CboStorageProvider.Text)
+                    .Remove(tSettings.P_SettingsApiKey)
+                    .Add(tSettings.P_SettingsApiKey, TxtApiKey.Text.Trim)
+                    .Remove(tSettings.P_SettingsApiSecret)
+                    .Add(tSettings.P_SettingsApiSecret, CMCv.Security.Encrypt.Aes(TxtApiSecret.Text.Trim))
+                    .Remove(tSettings.P_SettingsApiServiceUrl)
+                    .Add(tSettings.P_SettingsApiServiceUrl, TxtApiServiceUrl.Text.Trim)
+                    .Remove(tSettings.P_SettingsStorageDb)
+                    .Add(tSettings.P_SettingsStorageDb, TxtFileDb.Text.Trim)
+                    .Remove(tSettings.P_SettingsMinPasswordLength)
+                    .Add(tSettings.P_SettingsMinPasswordLength, CInt(nudMinPassword.Value))
+                End With
+
+                If CMDsyss.Editor.SaveSettings(varDataProperties) Then
                     SLFStatus.Items(0).Text = "Saved"
                 End If
             Catch ex As Exception
@@ -104,6 +155,49 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
             Me.Close()
+        End Sub
+
+        <SupportedOSPlatform("windows")>
+        Private Sub CboStorageProvider_TextChanged(sender As Object, e As EventArgs) Handles CboStorageProvider.TextChanged
+            With CboStorageProvider
+                If .Text = "None" Then
+                    TxtApiKey.Enabled = False
+                    TxtApiSecret.Enabled = False
+                    TxtFileDb.Enabled = False
+                    TxtApiServiceUrl.Enabled = False
+                ElseIf .Text = "Database" Then
+                    ULblApiKey.XOText = "File Database"
+                    TxtApiKey.Enabled = False
+                    TxtApiKey.Visible = False
+                    ULblApiSecret.Visible = False
+                    TxtApiSecret.Enabled = False
+                    TxtApiSecret.Visible = False
+                    ULblApiServiceUrl.Visible = False
+                    TxtApiServiceUrl.Enabled = False
+                    TxtApiServiceUrl.Visible = False
+                    TxtFileDb.Visible = True
+                    TxtFileDb.Enabled = True
+                Else
+                    ULblApiKey.Visible = True
+                    ULblApiKey.XOText = "API Key"
+                    ULblApiSecret.Visible = True
+                    ULblApiSecret.XOText = "API Secret"
+                    TxtApiKey.Visible = True
+                    TxtApiKey.Enabled = True
+                    TxtApiSecret.Visible = True
+                    TxtApiSecret.Enabled = True
+                    ULblApiServiceUrl.Visible = True
+                    If .Text = "BackBlaze B2" Then
+                        ULblApiServiceUrl.XOText = "API Service URL"
+                    ElseIf .Text = "Cloudinary" Then
+                        ULblApiServiceUrl.XOText = "Cloud Name"
+                    End If
+                    TxtApiServiceUrl.Enabled = True
+                    TxtApiServiceUrl.Visible = True
+                    TxtFileDb.Enabled = False
+                    TxtFileDb.Visible = False
+                End If
+            End With
         End Sub
     End Class
 End Namespace

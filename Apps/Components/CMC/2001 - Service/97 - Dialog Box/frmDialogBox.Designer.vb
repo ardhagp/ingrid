@@ -254,7 +254,7 @@ Partial Class FRMdialogbox
         TxtMessage.XOHighlightOnFocus = False
         TxtMessage.XOHighlightColor = Drawing.Color.LightYellow
         TxtMessage.XOIsBlank = True
-        TxtMessage.XOIsSearchBox = False
+        TxtMessage.XOIsPlaceholder = False
         TxtMessage.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
         TxtMessage.XOSelectOnFocus = False
         TxtMessage.XOPasswordLengthMin = 8
@@ -262,7 +262,7 @@ Partial Class FRMdialogbox
         TxtMessage.XOPasswordStrengthScore = 0
         TxtMessage.XOPasswordStrengthText = Nothing
         TxtMessage.XORestriction = ControlCodeBase.enumRestriction.None
-        TxtMessage.XOSearchBoxText = "Type then press Enter"
+        TxtMessage.XOPlaceholderText = "Type then press Enter"
         TxtMessage.XOSqlText = ""
         TxtMessage.XOIsReplaceEmptyString = False
         TxtMessage.XOMandatoryMessage = Nothing

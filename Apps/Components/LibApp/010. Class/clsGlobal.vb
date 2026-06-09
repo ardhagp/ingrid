@@ -50,6 +50,8 @@
         Property AccountBookName As String
         Property AccountGroupId As String
         Property AccountGroupIsNew As Boolean
+        Property ConnectionClientId As Long
+        Property ConnectionClientCode As String
         Property ConnectionDatabaseEngine As String
         Property ConnectionDatabaseEngineE As Ingrid.Global.DatabaseEngine
         Property ConnectionDatabaseName As String
@@ -122,6 +124,7 @@
         Property UserAccessIsPasswordChanged As Boolean
         Property UserAccessHash As String
         Property UserAccessPassword As String
+        Property SystemSettingsId As Long
         Property SystemModuleId As String
         Property SystemModuleIsNew As Boolean
         Property SystemModuleHash As String

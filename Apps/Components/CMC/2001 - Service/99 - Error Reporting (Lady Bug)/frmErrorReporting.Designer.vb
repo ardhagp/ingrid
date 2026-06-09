@@ -173,7 +173,7 @@ Partial Class FRMerrorreporting
         TxtAppBuild.XOHighlightOnFocus = False
         TxtAppBuild.XOHighlightColor = Drawing.Color.LightYellow
         TxtAppBuild.XOIsBlank = True
-        TxtAppBuild.XOIsSearchBox = False
+        TxtAppBuild.XOIsPlaceholder = False
         TxtAppBuild.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
         TxtAppBuild.XOSelectOnFocus = False
         TxtAppBuild.XOPasswordLengthMin = 8
@@ -181,7 +181,7 @@ Partial Class FRMerrorreporting
         TxtAppBuild.XOPasswordStrengthScore = 0
         TxtAppBuild.XOPasswordStrengthText = Nothing
         TxtAppBuild.XORestriction = ControlCodeBase.enumRestriction.None
-        TxtAppBuild.XOSearchBoxText = "Type then press Enter"
+        TxtAppBuild.XOPlaceholderText = "Type then press Enter"
         TxtAppBuild.XOSqlText = Nothing
         TxtAppBuild.XOIsReplaceEmptyString = False
         TxtAppBuild.XOMandatoryMessage = Nothing
@@ -206,7 +206,7 @@ Partial Class FRMerrorreporting
         TxtErrorNumber.XOHighlightOnFocus = False
         TxtErrorNumber.XOHighlightColor = Drawing.Color.LightYellow
         TxtErrorNumber.XOIsBlank = True
-        TxtErrorNumber.XOIsSearchBox = False
+        TxtErrorNumber.XOIsPlaceholder = False
         TxtErrorNumber.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
         TxtErrorNumber.XOSelectOnFocus = False
         TxtErrorNumber.XOPasswordLengthMin = 8
@@ -214,7 +214,7 @@ Partial Class FRMerrorreporting
         TxtErrorNumber.XOPasswordStrengthScore = 0
         TxtErrorNumber.XOPasswordStrengthText = Nothing
         TxtErrorNumber.XORestriction = ControlCodeBase.enumRestriction.None
-        TxtErrorNumber.XOSearchBoxText = "Type then press Enter"
+        TxtErrorNumber.XOPlaceholderText = "Type then press Enter"
         TxtErrorNumber.XOSqlText = Nothing
         TxtErrorNumber.XOIsReplaceEmptyString = False
         TxtErrorNumber.XOMandatoryMessage = Nothing
@@ -252,7 +252,7 @@ Partial Class FRMerrorreporting
         TxtErrorMessage.XOHighlightOnFocus = False
         TxtErrorMessage.XOHighlightColor = Drawing.Color.LightYellow
         TxtErrorMessage.XOIsBlank = True
-        TxtErrorMessage.XOIsSearchBox = False
+        TxtErrorMessage.XOIsPlaceholder = False
         TxtErrorMessage.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
         TxtErrorMessage.XOSelectOnFocus = False
         TxtErrorMessage.XOPasswordLengthMin = 8
@@ -260,7 +260,7 @@ Partial Class FRMerrorreporting
         TxtErrorMessage.XOPasswordStrengthScore = 0
         TxtErrorMessage.XOPasswordStrengthText = Nothing
         TxtErrorMessage.XORestriction = ControlCodeBase.enumRestriction.None
-        TxtErrorMessage.XOSearchBoxText = "Type then press Enter"
+        TxtErrorMessage.XOPlaceholderText = "Type then press Enter"
         TxtErrorMessage.XOSqlText = Nothing
         TxtErrorMessage.XOIsReplaceEmptyString = False
         TxtErrorMessage.XOMandatoryMessage = Nothing
@@ -296,7 +296,7 @@ Partial Class FRMerrorreporting
         TxtErrorType.XOHighlightOnFocus = False
         TxtErrorType.XOHighlightColor = Drawing.Color.LightYellow
         TxtErrorType.XOIsBlank = True
-        TxtErrorType.XOIsSearchBox = False
+        TxtErrorType.XOIsPlaceholder = False
         TxtErrorType.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
         TxtErrorType.XOSelectOnFocus = False
         TxtErrorType.XOPasswordLengthMin = 8
@@ -304,7 +304,7 @@ Partial Class FRMerrorreporting
         TxtErrorType.XOPasswordStrengthScore = 0
         TxtErrorType.XOPasswordStrengthText = Nothing
         TxtErrorType.XORestriction = ControlCodeBase.enumRestriction.None
-        TxtErrorType.XOSearchBoxText = "Type then press Enter"
+        TxtErrorType.XOPlaceholderText = "Type then press Enter"
         TxtErrorType.XOSqlText = Nothing
         TxtErrorType.XOIsReplaceEmptyString = False
         TxtErrorType.XOMandatoryMessage = Nothing

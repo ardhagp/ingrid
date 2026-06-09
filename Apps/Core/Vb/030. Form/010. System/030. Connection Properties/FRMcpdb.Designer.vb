@@ -156,7 +156,7 @@ Partial Class FRMcpdb
         Txt1.XOHighlightOnFocus = False
         Txt1.XOHighlightColor = Color.LightYellow
         Txt1.XOIsBlank = True
-        Txt1.XOIsSearchBox = False
+        Txt1.XOIsPlaceholder = False
         Txt1.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
         Txt1.XOSelectOnFocus = False
         Txt1.XOPasswordLengthMin = 8
@@ -164,7 +164,7 @@ Partial Class FRMcpdb
         Txt1.XOPasswordStrengthScore = 0
         Txt1.XOPasswordStrengthText = Nothing
         Txt1.XORestriction = ControlCodeBase.enumRestriction.None
-        Txt1.XOSearchBoxText = "Type then press Enter"
+        Txt1.XOPlaceholderText = "Type then press Enter"
         Txt1.XOSqlText = ""
         Txt1.XOIsReplaceEmptyString = False
         Txt1.XOMandatoryMessage = Nothing
@@ -186,7 +186,7 @@ Partial Class FRMcpdb
         Txt2.XOHighlightOnFocus = False
         Txt2.XOHighlightColor = Color.LightYellow
         Txt2.XOIsBlank = True
-        Txt2.XOIsSearchBox = False
+        Txt2.XOIsPlaceholder = False
         Txt2.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
         Txt2.XOSelectOnFocus = False
         Txt2.XOPasswordLengthMin = 8
@@ -194,7 +194,7 @@ Partial Class FRMcpdb
         Txt2.XOPasswordStrengthScore = 0
         Txt2.XOPasswordStrengthText = Nothing
         Txt2.XORestriction = ControlCodeBase.enumRestriction.None
-        Txt2.XOSearchBoxText = "Type then press Enter"
+        Txt2.XOPlaceholderText = "Type then press Enter"
         Txt2.XOSqlText = ""
         Txt2.XOIsReplaceEmptyString = False
         Txt2.XOMandatoryMessage = Nothing
@@ -216,7 +216,7 @@ Partial Class FRMcpdb
         Txt3.XOHighlightOnFocus = False
         Txt3.XOHighlightColor = Color.LightYellow
         Txt3.XOIsBlank = True
-        Txt3.XOIsSearchBox = False
+        Txt3.XOIsPlaceholder = False
         Txt3.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
         Txt3.XOSelectOnFocus = False
         Txt3.XOPasswordLengthMin = 8
@@ -224,7 +224,7 @@ Partial Class FRMcpdb
         Txt3.XOPasswordStrengthScore = 0
         Txt3.XOPasswordStrengthText = Nothing
         Txt3.XORestriction = ControlCodeBase.enumRestriction.None
-        Txt3.XOSearchBoxText = "Type then press Enter"
+        Txt3.XOPlaceholderText = "Type then press Enter"
         Txt3.XOSqlText = ""
         Txt3.XOIsReplaceEmptyString = False
         Txt3.XOMandatoryMessage = Nothing
@@ -270,7 +270,7 @@ Partial Class FRMcpdb
         Txt4.XOHighlightOnFocus = False
         Txt4.XOHighlightColor = Color.LightYellow
         Txt4.XOIsBlank = True
-        Txt4.XOIsSearchBox = False
+        Txt4.XOIsPlaceholder = False
         Txt4.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
         Txt4.XOSelectOnFocus = False
         Txt4.XOPasswordLengthMin = 8
@@ -278,7 +278,7 @@ Partial Class FRMcpdb
         Txt4.XOPasswordStrengthScore = 0
         Txt4.XOPasswordStrengthText = Nothing
         Txt4.XORestriction = ControlCodeBase.enumRestriction.None
-        Txt4.XOSearchBoxText = "Type then press Enter"
+        Txt4.XOPlaceholderText = "Type then press Enter"
         Txt4.XOSqlText = ""
         Txt4.XOIsReplaceEmptyString = False
         Txt4.XOMandatoryMessage = Nothing

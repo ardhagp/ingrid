@@ -946,7 +946,7 @@
             Txt_shortcut.XOHighlightOnFocus = False
             Txt_shortcut.XOHighlightColor = Color.LightYellow
             Txt_shortcut.XOIsBlank = True
-            Txt_shortcut.XOIsSearchBox = False
+            Txt_shortcut.XOIsPlaceholder = False
             Txt_shortcut.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             Txt_shortcut.XOSelectOnFocus = False
             Txt_shortcut.XOPasswordLengthMin = 8
@@ -954,7 +954,7 @@
             Txt_shortcut.XOPasswordStrengthScore = 0
             Txt_shortcut.XOPasswordStrengthText = Nothing
             Txt_shortcut.XORestriction = ControlCodeBase.enumRestriction.None
-            Txt_shortcut.XOSearchBoxText = "Command Module"
+            Txt_shortcut.XOPlaceholderText = "Command Module"
             Txt_shortcut.XOSqlText = Nothing
             Txt_shortcut.XOIsReplaceEmptyString = False
             Txt_shortcut.XOMandatoryMessage = Nothing
@@ -1136,7 +1136,7 @@
             TxtRunning.XOHighlightOnFocus = False
             TxtRunning.XOHighlightColor = Color.LightYellow
             TxtRunning.XOIsBlank = True
-            TxtRunning.XOIsSearchBox = False
+            TxtRunning.XOIsPlaceholder = False
             TxtRunning.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
             TxtRunning.XOSelectOnFocus = False
             TxtRunning.XOPasswordLengthMin = 8
@@ -1144,7 +1144,7 @@
             TxtRunning.XOPasswordStrengthScore = 0
             TxtRunning.XOPasswordStrengthText = Nothing
             TxtRunning.XORestriction = ControlCodeBase.enumRestriction.None
-            TxtRunning.XOSearchBoxText = "Type then press Enter"
+            TxtRunning.XOPlaceholderText = "Type then press Enter"
             TxtRunning.XOSqlText = ""
             TxtRunning.XOIsReplaceEmptyString = False
             TxtRunning.XOMandatoryMessage = Nothing

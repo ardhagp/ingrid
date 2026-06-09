@@ -50,6 +50,7 @@ Module Globals
     Public tPosition As New LibApp.Table.Man.Position
     Public tEmployee As New LibApp.Table.Man.Employee
     Public tSettings As New LibApp.Table.Sys.Settings
+    Public tClient As New LibApp.Table.Sys.Client
 
     Private Const pClientComputerName As String = "@ClientComputerName"
     Private Const pClientOSFullName As String = "@ClientOSFullName"
