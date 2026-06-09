@@ -243,14 +243,14 @@ steps:
       echo "Print File List - Post Build"
       echo "---------------------------"
       #cd $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\
-      cd $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\
+      cd $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\
       dir /b /s /A-D /o:gn
 
 #Packing deployment to Artifact Directory
 - task: CopyFiles@2
   displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory)'
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\'
+    SourceFolder: '$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\'
     Contents: '**'
     TargetFolder: '$(build.ArtifactStagingDirectory)'
 
@@ -260,11 +260,6 @@ steps:
   inputs:
     script: |
       echo "---------------------------"
-      echo "Print File List - Post Build"
-      echo "---------------------------"
-      cd $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\
-      dir /b /s /A-D /o:gn
-      echo "---------------------------"
       echo "Reading Artifact Directory"
       echo "---------------------------"
       cd $(build.ArtifactStagingDirectory)
@@ -272,7 +267,7 @@ steps:
       echo "---------------------------"
       echo "Reading Ingrid.Application"
       echo "---------------------------"
-      more $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\Ingrid.application
+      more $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\Ingrid.application
 
 - task: ado-discord-webhook@2
   displayName: 'Transfering application to Backblaze'
