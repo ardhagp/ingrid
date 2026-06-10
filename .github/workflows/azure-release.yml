@@ -228,7 +228,7 @@ steps:
   inputs:
     solution: '**\*.sln'
     #msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:BootstrapperComponents="Microsoft.NetCore.DesktopRuntime.$(var_NET).x86" /p:InstallUrl="https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
-    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:BootstrapperComponents="Microsoft.NetCore.DesktopRuntime.$(var_NET).x86" /p:InstallUrl="https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\package\" /p:PublishDir="$(Build.ArtifactStagingDirectory)\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
+    msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:BootstrapperComponents="Microsoft.NetCore.DesktopRuntime.$(var_NET).x86" /p:InstallUrl="https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\publish\installer\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
     #$(Build.ArtifactStagingDirectory)
     platform: '$(var_Platform)'
     configuration: '$(var_BuildConfiguration)'
@@ -245,7 +245,7 @@ steps:
       echo "Print File List - Post Build"
       echo "---------------------------"
       #cd $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\
-      cd $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\
+      cd $(Build.SourcesDirectory)\publish\installer\
       dir /b /s /A-D /o:gn
 
 #Packing deployment to Artifact Directory
@@ -264,13 +264,13 @@ steps:
       echo "---------------------------"
       echo "Reading Artifact Directory"
       echo "---------------------------"
-      cd $(build.ArtifactStagingDirectory)
+      cd $(Build.SourcesDirectory)\publish\installer\
       dir /b /s /A-D /o:gn
       echo "---------------------------"
       echo "Reading Ingrid.Application"
       echo "---------------------------"
       #more $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\Ingrid.application
-      more $(build.ArtifactStagingDirectory)\Ingrid.application
+      more $(Build.SourcesDirectory)\publish\installer\Ingrid.application
 
 - task: ado-discord-webhook@2
   displayName: 'Transfering application to Backblaze'
@@ -308,10 +308,10 @@ steps:
 - task: ArchiveFiles@2
   displayName: 'Compressing Files to.. $(build.ArtifactStagingDirectory)'
   inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\publish\'
+    rootFolderOrFile: '$(Build.SourcesDirectory)\publish\installer\'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(build.ArtifactStagingDirectory)/ingrid-offline.zip'
+    archiveFile: '$(build.ArtifactStagingDirectory)/publish/zip/ingrid-offline.zip'
     replaceExistingArchive: true
 
 #Publish Artifact for Relase via FTP
@@ -345,7 +345,7 @@ steps:
 - task: GitHubPagesPublish@1
   displayName: 'Publishing App To Github Pages'
   inputs:
-    docPath: '$(build.ArtifactStagingDirectory)\ingrid-offline.zip'
+    docPath: '$(build.ArtifactStagingDirectory)\publish\zip\ingrid-offline.zip'
     githubusername: 'ardhagp'
     githubemail: '$(var_g_Email)'
     githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
