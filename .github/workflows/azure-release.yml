@@ -249,7 +249,7 @@ steps:
       dir /b /s /A-D /o:gn
 
 #Packing deployment to Artifact Directory
-- #task: CopyFiles@2
+#- task: CopyFiles@2
   #displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory)'
   #inputs:
     #SourceFolder: '$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\'
