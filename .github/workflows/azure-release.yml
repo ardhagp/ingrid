@@ -269,7 +269,7 @@ steps:
       echo "---------------------------"
       echo "Reading Ingrid.Application"
       echo "---------------------------"
-      more $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\Ingrid.application
+      type $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\Ingrid.application
       #more $(Build.SourcesDirectory)\publish\installer\Ingrid.application
 
 - task: ado-discord-webhook@2
@@ -300,7 +300,7 @@ steps:
      pip install awscli
      aws s3 rm "s3://ingrid-blob/files/" --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
      #aws s3 cp "$(Build.ArtifactStagingDirectory)" s3://ingrid-blob/files/ --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
-     aws s3 cp "$(Build.SourcesDirectory)\publish\installer\" s3://ingrid-blob/files/ --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
+     aws s3 cp "$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\" s3://ingrid-blob/files/ --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
      env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
@@ -309,10 +309,10 @@ steps:
 - task: ArchiveFiles@2
   displayName: 'Compressing Files to.. $(build.ArtifactStagingDirectory)'
   inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)\publish\installer\'
+    rootFolderOrFile: '$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(build.ArtifactStagingDirectory)/publish/zip/ingrid-offline.zip'
+    archiveFile: '$(Build.SourcesDirectory)/publish/zip/ingrid-offline.zip'
     replaceExistingArchive: true
 
 #Publish Artifact for Relase via FTP
@@ -346,7 +346,7 @@ steps:
 - task: GitHubPagesPublish@1
   displayName: 'Publishing App To Github Pages'
   inputs:
-    docPath: '$(build.ArtifactStagingDirectory)\publish\zip\ingrid-offline.zip'
+    docPath: '$(Build.SourcesDirectory)\publish\zip\ingrid-offline.zip'
     githubusername: 'ardhagp'
     githubemail: '$(var_g_Email)'
     githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
