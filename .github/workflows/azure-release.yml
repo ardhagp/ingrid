@@ -244,7 +244,6 @@ steps:
       echo "---------------------------"
       echo "Print File List - Post Build"
       echo "---------------------------"
-      #cd $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\
       cd $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\
       dir /b /s /A-D /o:gn
 
@@ -264,12 +263,13 @@ steps:
       echo "---------------------------"
       echo "Reading Artifact Directory"
       echo "---------------------------"
-      cd $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\
+      cd $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish
       dir /b /s /A-D /o:gn
       echo "---------------------------"
       echo "Reading Ingrid.Application"
       echo "---------------------------"
-      more "$(Build.SourcesDirectory)\publish\installer\Ingrid.application"
+      cd $(Build.SourcesDirectory)
+      more ".\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\Ingrid.application"
 
 - task: ado-discord-webhook@2
   displayName: 'Transfering application to Backblaze'
