@@ -266,10 +266,10 @@ steps:
       echo "---------------------------"
       cd $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\
       dir /b /s /A-D /o:gn
-      echo "---------------------------"
-      echo "Reading Ingrid.Application"
-      echo "---------------------------"
-      type $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\Ingrid.application
+      #echo "---------------------------"
+      #echo "Reading Ingrid.Application"
+      #echo "---------------------------"
+      #type $(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\Ingrid.application
       #more $(Build.SourcesDirectory)\publish\installer\Ingrid.application
 
 - task: ado-discord-webhook@2
@@ -307,7 +307,7 @@ steps:
 
 # Compressing Artifact to Zip
 - task: ArchiveFiles@2
-  displayName: 'Compressing Files to.. $(build.ArtifactStagingDirectory)'
+  displayName: 'Compressing Files'
   inputs:
     rootFolderOrFile: '$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\'
     includeRootFolder: true
