@@ -35,7 +35,7 @@ Namespace Ladybug.Log
 
     Public Class Events
 
-        Public WithEvents FRMerc As New FRMerrorreporting
+        Public WithEvents FRMerc As New CMCv.UI.Canvas.FRMerrorreporting
         Private ReadOnly clsDBsqlite As Database.Engine.SQLiteV3
 
         ''' <summary>
@@ -59,7 +59,7 @@ Namespace Ladybug.Log
                 Return
             End If
 
-            FRMerc = New CMCv.FRMerrorreporting(proLog, clsDBsqlite)
+            FRMerc = New CMCv.UI.Canvas.FRMerrorreporting(proLog, clsDBsqlite)
             FRMerc.ShowDialog()
 
             FRMerc.Dispose()

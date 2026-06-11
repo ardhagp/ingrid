@@ -61,7 +61,7 @@ Namespace OperatingSystem.File
             End While
 
             If varOriginalPhotoLength > varMaximumPhotoLength Then
-                Dim varErrorBox As New CMCv.FRMdialogbox(My.Application.Info.AssemblyName, "Your file size is : " & String.Format(Globalization.CultureInfo.InvariantCulture, "{0:0.##} {1}", varPhotoLength, size(varOrder)) & ", above the size that we can tolerate." & vbCrLf & "Please pick your file size under " & String.Format(Globalization.CultureInfo.InvariantCulture, "{0:0.##} {1}", varMaximumPhotoLengthDisplay, size(varMaximumOrder)) & " and then try again.", LibApp.Ingrid.Global.PopupType.LimitExceeded, "", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                Dim varErrorBox As New CMCv.UI.Canvas.FRMdialogbox(My.Application.Info.AssemblyName, "Your file size is : " & String.Format(Globalization.CultureInfo.InvariantCulture, "{0:0.##} {1}", varPhotoLength, size(varOrder)) & ", above the size that we can tolerate." & vbCrLf & "Please pick your file size under " & String.Format(Globalization.CultureInfo.InvariantCulture, "{0:0.##} {1}", varMaximumPhotoLengthDisplay, size(varMaximumOrder)) & " and then try again.", LibApp.Ingrid.Global.PopupType.LimitExceeded, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 If (shownativedialog) Then
                     varErrorBox.ShowDialog()
                     varErrorBox.Dispose()

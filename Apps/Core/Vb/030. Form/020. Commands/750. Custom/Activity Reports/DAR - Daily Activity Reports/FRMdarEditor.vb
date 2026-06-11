@@ -152,7 +152,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnGetContent_Click(sender As Object, e As EventArgs) Handles BtnGETContent.Click
             If Not (varDataProperties.CustomDailyActivityIsNew) Then
-                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Question, cmcv.ui.canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                     TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDataProperties, CboTemplate)
                 End If
             Else
@@ -180,7 +180,7 @@ Namespace UI
             Call CheckAllInput()
 
             If (TxtContent.Text = String.Empty) OrElse (CboArea.Items.Count = 0) OrElse (CboTemplate.Items.Count = 0) OrElse (MebStart.Text = String.Empty) OrElse (MebEnd.Text = String.Empty) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Make sure you have Start Time, End Time, Area Affected, Activity Template selected and Description are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Make sure you have Start Time, End Time, Area Affected, Activity Template selected and Description are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -190,7 +190,7 @@ Namespace UI
             varActivityEndDate = CDate(varActivityEndString)
 
             If (varActivityStartDate > varActivityEndDate) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Start Time should be less than End Time.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Start Time should be less than End Time.", LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -277,7 +277,7 @@ Namespace UI
         Private Sub CboTemplate_KeyDown(sender As Object, e As KeyEventArgs) Handles CboTemplate.KeyDown
             If e.KeyCode = Keys.Enter Then
                 If Not (varDataProperties.CustomDailyActivityIsNew) Then
-                    If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+                    If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to replace Description with template content?", LibApp.Ingrid.Global.PopupType.Question, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Question, cmcv.ui.canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                         TxtContent.Text = CMDdar.Editor.GetTemplateContent(varDataProperties, CboTemplate)
                     End If
                 Else
@@ -300,10 +300,10 @@ Namespace UI
         Private Sub BtnAddPhoto_Click(sender As Object, e As EventArgs) Handles BtnAddPhoto.Click
             Try
                 If TxtPhotoPath.Text.Trim = String.Empty Then
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Plase pick your photo first.", LibApp.Ingrid.Global.PopupType.NoFileSelected, "", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Plase pick your photo first.", LibApp.Ingrid.Global.PopupType.NoFileSelected, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Error, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                     Return
                 ElseIf Not CMCv.OperatingSystem.File.Info.IsExists(TxtPhotoPath.Text) Then
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Your photo cannot be found.", LibApp.Ingrid.Global.PopupType.FileNotFound, "", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Your photo cannot be found.", LibApp.Ingrid.Global.PopupType.FileNotFound, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Error, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                     Return
                 ElseIf Not (CMCv.OperatingSystem.File.Upload.IsAllowedSize(TxtPhotoPath.Text, varMaxUploadSizePhoto, True)) Then
                     Return
@@ -339,10 +339,10 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnPeekPhoto_Click(sender As Object, e As EventArgs) Handles BtnPeekPhoto.Click
             If TxtPhotoPath.Text.Trim = String.Empty Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Plase pick your photo first.", LibApp.Ingrid.Global.PopupType.NoFileSelected, "", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Plase pick your photo first.", LibApp.Ingrid.Global.PopupType.NoFileSelected, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Error, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf Not CMCv.OperatingSystem.File.Info.IsExists(TxtPhotoPath.Text) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Your photo cannot be found.", LibApp.Ingrid.Global.PopupType.FileNotFound, "", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Your photo cannot be found.", LibApp.Ingrid.Global.PopupType.FileNotFound, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Error, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -355,7 +355,7 @@ Namespace UI
         Private Sub DgnPictureList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnPictureList.CellContentClick
             Dim varSendergrid = DirectCast(sender, CMCv.UI.Control.dgn)
 
-            If TypeOf varSendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to remove selected photo?", LibApp.Ingrid.Global.PopupType.Delete, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+            If TypeOf varSendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to remove selected photo?", LibApp.Ingrid.Global.PopupType.Delete, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Question, cmcv.ui.canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 If DgnPictureList.CurrentRow.Cells("photo_status").Value IsNot "Add" Then
                     varExtendedQuery += String.Format("delete from db_universe_erp_file.dbo.sto_file where [file_id] = '{0}';", DgnPictureList.CurrentRow.Cells("photo_id").Value)
                 End If
@@ -400,10 +400,10 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnPeekFile_Click(sender As Object, e As EventArgs) Handles BtnPeekFile.Click
             If TxtFilePath.Text.Trim = String.Empty Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Plase pick your file first.", LibApp.Ingrid.Global.PopupType.NoFileSelected, "", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Plase pick your file first.", LibApp.Ingrid.Global.PopupType.NoFileSelected, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Error, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtFilePath.Text)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Your file cannot be found.", LibApp.Ingrid.Global.PopupType.FileNotFound, "", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Your file cannot be found.", LibApp.Ingrid.Global.PopupType.FileNotFound, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Error, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -415,10 +415,10 @@ Namespace UI
         Private Sub BtnAddFile_Click(sender As Object, e As EventArgs) Handles BtnAddFile.Click
             Try
                 If TxtFilePath.Text.Trim = String.Empty Then
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Plase pick your PDF file first.", LibApp.Ingrid.Global.PopupType.NoFileSelected, "", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Plase pick your PDF file first.", LibApp.Ingrid.Global.PopupType.NoFileSelected, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Error, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                     Return
                 ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtFilePath.Text)) Then
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Your file cannot be found.", LibApp.Ingrid.Global.PopupType.FileNotFound, "", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Your file cannot be found.", LibApp.Ingrid.Global.PopupType.FileNotFound, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Error, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                     Return
                 ElseIf Not (CMCv.OperatingSystem.File.Upload.IsAllowedSize(TxtFilePath.Text, varMaxUploadSizePDF, True)) Then
                     Return
@@ -445,7 +445,7 @@ Namespace UI
         Private Sub DgnFileList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnFileList.CellContentClick
             Dim varSendergrid = DirectCast(sender, CMCv.UI.Control.dgn)
 
-            If TypeOf varSendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to remove selected file?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+            If TypeOf varSendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 AndAlso Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to remove selected file?", LibApp.Ingrid.Global.PopupType.Question, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Question, cmcv.ui.canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 If DgnFileList.CurrentRow.Cells("file_status").Value IsNot "Add" Then
                     varExtendedQuery += String.Format("delete from db_universe_erp_file.dbo.sto_file where [file_id] = '{0}';", DgnFileList.CurrentRow.Cells("file_id").Value)
                 End If
@@ -466,7 +466,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub CommmsMenu_EventFileUndoAll() Handles Com_mms_Menu.EventFileUndoAll
-            If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to undo all changes?", LibApp.Ingrid.Global.PopupType.Question, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to undo all changes?", LibApp.Ingrid.Global.PopupType.Question, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Question, cmcv.ui.canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 If (varDataProperties.CustomDailyActivityIsNew) Then
                     DtpStart.Value = Now.Date
                     DtpEnd.Value = Now.Date

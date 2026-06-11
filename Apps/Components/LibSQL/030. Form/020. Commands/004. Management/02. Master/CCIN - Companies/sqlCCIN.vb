@@ -48,10 +48,10 @@ Namespace CMDccin
 
                 If datasetname.Tables(consTableName).Rows.Count > 0 Then
                     If Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation1")) > 0 Then
-                        Decision(My.Application.Info.AssemblyName.ToUpper, $"The company has {Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation1"))} related record(s) in [CDIN] Department module.", LibApp.Ingrid.Global.PopupType.Error, "", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                        Decision(My.Application.Info.AssemblyName.ToUpper, $"The company has {Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation1"))} related record(s) in [CDIN] Department module.", LibApp.Ingrid.Global.PopupType.Error, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Error, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                         varHasChild = True
                     ElseIf Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation2")) > 0 Then
-                        Decision(My.Application.Info.AssemblyName.ToUpper, $"The company has {Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation2"))} related record(s) in [PLNT] Plant module.", LibApp.Ingrid.Global.PopupType.Error, "", FRMdialogbox.MessageIcon.Error, FRMdialogbox.MessageTypes.OkOnly)
+                        Decision(My.Application.Info.AssemblyName.ToUpper, $"The company has {Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation2"))} related record(s) in [PLNT] Plant module.", LibApp.Ingrid.Global.PopupType.Error, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Error, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                         varHasChild = True
                     Else
                         varHasChild = False

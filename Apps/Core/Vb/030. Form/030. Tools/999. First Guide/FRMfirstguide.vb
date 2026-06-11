@@ -15,7 +15,7 @@ Namespace UI
                          "☑ Posisiton" & Environment.NewLine &
                          "☑ Employee Name" & Environment.NewLine &
                          "☑ Employee ID",
-                LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+                LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                     If (Txt_Company.XOIsBlank) Then
                         Txt_Company.Focus()
                     ElseIf (Txt_Department.XOIsBlank) Then
@@ -44,7 +44,7 @@ Namespace UI
                 Btn_Close.Text = "&Prev"
             ElseIf varStep = 2 Then
                 If (Txt_Username.XOIsBlank) OrElse (Txt_Password.XOIsBlank) Then
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Username cannot be empty", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Username cannot be empty", LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                     If (Txt_Username.XOIsBlank) Then
                         Txt_Username.Focus()
                     Else
@@ -53,7 +53,7 @@ Namespace UI
                     Return
                 End If
                 If Txt_Password.XOPasswordStrengthScore < 70 Then
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Your password is not strong enough!", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Your password is not strong enough!", LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                     Txt_Password.Focus()
                     Return
                 End If
@@ -132,7 +132,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
             If varStep = 1 Then
-                If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure you want to exit the First Guide?", LibApp.Ingrid.Global.PopupType.Confirmation, "Proceeding will close both this guide and the application.", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = MsgBoxResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure you want to exit the First Guide?", LibApp.Ingrid.Global.PopupType.Confirmation, "Proceeding will close both this guide and the application.", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Question, cmcv.ui.canvas.FRMdialogbox.MessageTypes.YesNo) = MsgBoxResult.Yes Then
                     Environment.Exit(0)
                 Else
                     Me.Close()

@@ -226,8 +226,8 @@
       <DependentUpon>Tv.vb</DependentUpon>
     </Compile>
     <Compile Update="2099 - Interface\Controls\TreeView\Tv.vb" />
-    <Compile Update="2099 - Interface\Forms\Templates\Windows7\Blank.Designer.vb">
-      <DependentUpon>Blank.vb</DependentUpon>
+    <Compile Update="2099 - Interface\Forms\Templates\Windows7\FRMblank.Designer.vb">
+      <DependentUpon>FRMblank.vb</DependentUpon>
     </Compile>
     <Compile Update="2099 - Interface\Forms\Templates\Windows7\Standard\fRMstandard.Designer.vb">
       <DependentUpon>FRMstandard.vb</DependentUpon>

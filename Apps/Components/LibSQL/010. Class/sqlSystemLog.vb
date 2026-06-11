@@ -34,7 +34,7 @@ Namespace SystemLog.Activity
                     varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), dataproperties.AllParameters)
                 End If
             Catch ex As Exception
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
             End Try
         End Sub
 
@@ -62,7 +62,7 @@ Namespace SystemLog.Activity
                     varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), dataproperties.AllParameters)
                 End If
             Catch ex As Exception
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
             End Try
         End Sub
 
@@ -90,7 +90,7 @@ Namespace SystemLog.Activity
                     varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), dataproperties.AllParameters)
                 End If
             Catch ex As Exception
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
             End Try
         End Sub
     End Class
@@ -123,7 +123,7 @@ Namespace SystemLog.Activity
                     varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseReader(0), dataproperties.AllParameters)
                 End If
             Catch ex As Exception
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
             End Try
         End Sub
     End Class

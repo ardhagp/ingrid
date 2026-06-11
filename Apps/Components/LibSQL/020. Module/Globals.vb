@@ -29,7 +29,7 @@ Module Globals
     <SupportedOSPlatform("windows")>
     Public varAppVer As String = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
 
-    Public WithEvents MSG As New CMCv.FRMdialogbox
+    Public WithEvents MSG As New CMCv.ui.canvas.FRMdialogbox
 
     Public tPosition As New LibApp.Table.Man.Position
     Public tEmployee As New LibApp.Table.Man.Employee
@@ -53,8 +53,8 @@ Module Globals
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType, subtitle As String, messageicon As CMCv.FRMdialogbox.MessageIcon, ByVal buttontype As CMCv.FRMdialogbox.MessageTypes) As System.Windows.Forms.DialogResult
-        MSG = New CMCv.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
+    Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType, subtitle As String, messageicon As CMCv.ui.canvas.FRMdialogbox.MessageIcon, ByVal buttontype As CMCv.ui.canvas.FRMdialogbox.MessageTypes) As System.Windows.Forms.DialogResult
+        MSG = New CMCv.ui.canvas.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
         Dim result As System.Windows.Forms.DialogResult = MSG.ShowDialog()
         MSG.Dispose()
         Return result
