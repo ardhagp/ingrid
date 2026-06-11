@@ -1,162 +1,164 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class FRMstandardFind
-    Inherits CMCv.FRMstandard
+﻿Namespace UI.Canvas
+    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+    Partial Class FRMstandardFind
+        Inherits CMCv.UI.Canvas.FRMstandard
 
-    'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
-    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        If disposing AndAlso components IsNot Nothing Then
-            components.Dispose()
-        End If
-        MyBase.Dispose(disposing)
-    End Sub
+        'Form overrides dispose to clean up the component list.
+        <System.Diagnostics.DebuggerNonUserCode()>
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+            MyBase.Dispose(disposing)
+        End Sub
 
-    'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+        'Required by the Windows Form Designer
+        Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
-    Private Sub InitializeComponent()
-        components = New ComponentModel.Container()
-        PnlFind = New CMCv.UI.Control.pnl(components)
-        BtnClear = New CMCv.UI.Control.Btn(components)
-        LblFind = New CMCv.UI.Control.lbl(components)
-        TxtFind = New CMCv.UI.Control.txt(components)
-        CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
-        pnl_.SuspendLayout()
-        SLFPanel.SuspendLayout()
-        CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
-        PnlFind.SuspendLayout()
-        SuspendLayout()
-        ' 
-        ' SLFLogo
-        ' 
-        SLFLogo.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
-        ' 
-        ' SLFSubNamaForm
-        ' 
-        SLFSubNamaForm.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
-        ' 
-        ' SLFNamaForm
-        ' 
-        SLFNamaForm.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
-        ' 
-        ' pnl_
-        ' 
-        pnl_.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
-        pnl_.Size = New System.Drawing.Size(1307, 110)
-        ' 
-        ' SLFPanel
-        ' 
-        SLFPanel.Controls.Add(PnlFind)
-        SLFPanel.Location = New System.Drawing.Point(0, 110)
-        SLFPanel.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
-        SLFPanel.Size = New System.Drawing.Size(1307, 947)
-        ' 
-        ' SLFBackground
-        ' 
-        SLFBackground.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
-        ' 
-        ' PnlFind
-        ' 
-        PnlFind.Controls.Add(BtnClear)
-        PnlFind.Controls.Add(LblFind)
-        PnlFind.Controls.Add(TxtFind)
-        PnlFind.Dock = System.Windows.Forms.DockStyle.Top
-        PnlFind.Location = New System.Drawing.Point(0, 0)
-        PnlFind.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        PnlFind.Name = "PnlFind"
-        PnlFind.Size = New System.Drawing.Size(1307, 88)
-        PnlFind.TabIndex = 801
-        ' 
-        ' BtnClear
-        ' 
-        BtnClear.BackColor = Drawing.Color.Red
-        BtnClear.Cursor = System.Windows.Forms.Cursors.Hand
-        BtnClear.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(0), CByte(0))
-        BtnClear.FlatAppearance.BorderSize = 2
-        BtnClear.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
-        BtnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        BtnClear.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
-        BtnClear.ForeColor = Drawing.Color.White
-        BtnClear.Location = New System.Drawing.Point(437, 6)
-        BtnClear.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        BtnClear.Name = "BtnClear"
-        BtnClear.Size = New System.Drawing.Size(167, 77)
-        BtnClear.TabIndex = 801
-        BtnClear.Text = "Clear"
-        BtnClear.UseVisualStyleBackColor = False
-        BtnClear.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
-        BtnClear.XOShowBorderOnFocus = False
-        BtnClear.XOValidateAllInput = False
-        BtnClear.XOValidateAllInputTag = Nothing
-        ' 
-        ' LblFind
-        ' 
-        LblFind.AutoSize = True
-        LblFind.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
-        LblFind.Location = New System.Drawing.Point(20, 25)
-        LblFind.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        LblFind.Name = "LblFind"
-        LblFind.Size = New System.Drawing.Size(60, 32)
-        LblFind.TabIndex = 5
-        LblFind.Text = "Find"
-        LblFind.XOCustomElipsis = False
-        ' 
-        ' TxtFind
-        ' 
-        TxtFind.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
-        TxtFind.Location = New System.Drawing.Point(105, 19)
-        TxtFind.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        TxtFind.MaxLength = 255
-        TxtFind.Name = "TxtFind"
-        TxtFind.Size = New System.Drawing.Size(319, 39)
-        TxtFind.TabIndex = 800
-        TxtFind.Tag = "txt"
-        TxtFind.XOAutoTrim = False
-        TxtFind.XOIsMandatory = False
-        TxtFind.XOMandatoryBgColor = Drawing.Color.LightPink
-        TxtFind.XOMandatoryBgColorDefault = Drawing.Color.White
-        TxtFind.XOHighlightOnFocus = False
-        TxtFind.XOHighlightColor = Drawing.Color.LightYellow
-        TxtFind.XOIsBlank = True
-        TxtFind.XOIsPlaceholder = True
-        TxtFind.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
-        TxtFind.XOSelectOnFocus = False
-        TxtFind.XOPasswordLengthMin = 8
-        TxtFind.XOPasswordStrengthCalc = False
-        TxtFind.XOPasswordStrengthScore = 0
-        TxtFind.XOPasswordStrengthText = Nothing
-        TxtFind.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
-        TxtFind.XOPlaceholderText = "Type then press Enter"
-        TxtFind.XOSqlText = Nothing
-        TxtFind.XOIsReplaceEmptyString = False
-        TxtFind.XOMandatoryMessage = Nothing
-        ' 
-        ' FRMstandardFind
-        ' 
-        AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
-        ClientSize = New System.Drawing.Size(1307, 1079)
-        KeyPreview = True
-        Margin = New System.Windows.Forms.Padding(13, 23, 13, 23)
-        Name = "FRMstandardFind"
-        Text = "Nama Form"
-        CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
-        pnl_.ResumeLayout(False)
-        pnl_.PerformLayout()
-        SLFPanel.ResumeLayout(False)
-        CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
-        PnlFind.ResumeLayout(False)
-        PnlFind.PerformLayout()
-        ResumeLayout(False)
-        PerformLayout()
+        'NOTE: The following procedure is required by the Windows Form Designer
+        'It can be modified using the Windows Form Designer.  
+        'Do not modify it using the code editor.
+        <System.Diagnostics.DebuggerStepThrough()>
+        Private Sub InitializeComponent()
+            components = New ComponentModel.Container()
+            PnlFind = New CMCv.UI.Control.pnl(components)
+            BtnClear = New CMCv.UI.Control.Btn(components)
+            LblFind = New CMCv.UI.Control.lbl(components)
+            TxtFind = New CMCv.UI.Control.txt(components)
+            CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
+            pnl_.SuspendLayout()
+            SLFPanel.SuspendLayout()
+            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            PnlFind.SuspendLayout()
+            SuspendLayout()
+            ' 
+            ' SLFLogo
+            ' 
+            SLFLogo.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
+            ' 
+            ' SLFSubNamaForm
+            ' 
+            SLFSubNamaForm.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
+            ' 
+            ' SLFNamaForm
+            ' 
+            SLFNamaForm.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
+            ' 
+            ' pnl_
+            ' 
+            pnl_.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
+            pnl_.Size = New System.Drawing.Size(1307, 110)
+            ' 
+            ' SLFPanel
+            ' 
+            SLFPanel.Controls.Add(PnlFind)
+            SLFPanel.Location = New System.Drawing.Point(0, 110)
+            SLFPanel.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
+            SLFPanel.Size = New System.Drawing.Size(1307, 947)
+            ' 
+            ' SLFBackground
+            ' 
+            SLFBackground.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
+            ' 
+            ' PnlFind
+            ' 
+            PnlFind.Controls.Add(BtnClear)
+            PnlFind.Controls.Add(LblFind)
+            PnlFind.Controls.Add(TxtFind)
+            PnlFind.Dock = System.Windows.Forms.DockStyle.Top
+            PnlFind.Location = New System.Drawing.Point(0, 0)
+            PnlFind.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+            PnlFind.Name = "PnlFind"
+            PnlFind.Size = New System.Drawing.Size(1307, 88)
+            PnlFind.TabIndex = 801
+            ' 
+            ' BtnClear
+            ' 
+            BtnClear.BackColor = Drawing.Color.Red
+            BtnClear.Cursor = System.Windows.Forms.Cursors.Hand
+            BtnClear.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(0), CByte(0))
+            BtnClear.FlatAppearance.BorderSize = 2
+            BtnClear.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
+            BtnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            BtnClear.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+            BtnClear.ForeColor = Drawing.Color.White
+            BtnClear.Location = New System.Drawing.Point(437, 6)
+            BtnClear.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+            BtnClear.Name = "BtnClear"
+            BtnClear.Size = New System.Drawing.Size(167, 77)
+            BtnClear.TabIndex = 801
+            BtnClear.Text = "Clear"
+            BtnClear.UseVisualStyleBackColor = False
+            BtnClear.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnClear.XOShowBorderOnFocus = False
+            BtnClear.XOValidateAllInput = False
+            BtnClear.XOValidateAllInputTag = Nothing
+            ' 
+            ' LblFind
+            ' 
+            LblFind.AutoSize = True
+            LblFind.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+            LblFind.Location = New System.Drawing.Point(20, 25)
+            LblFind.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+            LblFind.Name = "LblFind"
+            LblFind.Size = New System.Drawing.Size(60, 32)
+            LblFind.TabIndex = 5
+            LblFind.Text = "Find"
+            LblFind.XOCustomElipsis = False
+            ' 
+            ' TxtFind
+            ' 
+            TxtFind.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+            TxtFind.Location = New System.Drawing.Point(105, 19)
+            TxtFind.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+            TxtFind.MaxLength = 255
+            TxtFind.Name = "TxtFind"
+            TxtFind.Size = New System.Drawing.Size(319, 39)
+            TxtFind.TabIndex = 800
+            TxtFind.Tag = "txt"
+            TxtFind.XOAutoTrim = False
+            TxtFind.XOIsMandatory = False
+            TxtFind.XOMandatoryBgColor = Drawing.Color.LightPink
+            TxtFind.XOMandatoryBgColorDefault = Drawing.Color.White
+            TxtFind.XOHighlightOnFocus = False
+            TxtFind.XOHighlightColor = Drawing.Color.LightYellow
+            TxtFind.XOIsBlank = True
+            TxtFind.XOIsPlaceholder = True
+            TxtFind.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtFind.XOSelectOnFocus = False
+            TxtFind.XOPasswordLengthMin = 8
+            TxtFind.XOPasswordStrengthCalc = False
+            TxtFind.XOPasswordStrengthScore = 0
+            TxtFind.XOPasswordStrengthText = Nothing
+            TxtFind.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtFind.XOPlaceholderText = "Type then press Enter"
+            TxtFind.XOSqlText = Nothing
+            TxtFind.XOIsReplaceEmptyString = False
+            TxtFind.XOMandatoryMessage = Nothing
+            ' 
+            ' FRMstandardFind
+            ' 
+            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
+            ClientSize = New System.Drawing.Size(1307, 1079)
+            KeyPreview = True
+            Margin = New System.Windows.Forms.Padding(13, 23, 13, 23)
+            Name = "FRMstandardFind"
+            Text = "Nama Form"
+            CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
+            pnl_.ResumeLayout(False)
+            pnl_.PerformLayout()
+            SLFPanel.ResumeLayout(False)
+            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            PnlFind.ResumeLayout(False)
+            PnlFind.PerformLayout()
+            ResumeLayout(False)
+            PerformLayout()
 
-    End Sub
+        End Sub
 
-    Public WithEvents PnlFind As CMCv.UI.Control.pnl
-    Public WithEvents BtnClear As CMCv.UI.Control.Btn
-    Public WithEvents LblFind As CMCv.UI.Control.lbl
-    Public WithEvents TxtFind As CMCv.UI.Control.txt
-End Class
+        Public WithEvents PnlFind As CMCv.UI.Control.pnl
+        Public WithEvents BtnClear As CMCv.UI.Control.Btn
+        Public WithEvents LblFind As CMCv.UI.Control.lbl
+        Public WithEvents TxtFind As CMCv.UI.Control.txt
+    End Class
+End Namespace

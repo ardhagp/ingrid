@@ -12,7 +12,7 @@ Namespace UI
 
 #Region "Interface"
         Public Interface ICommandFunction
-            Function LoadCommand() As CMCv.FRMstandard
+            Function LoadCommand() As CMCv.ui.canvas.FRMstandard
         End Interface
 
         Public Interface ICommandName
@@ -135,7 +135,7 @@ Namespace UI
                 If Not (isforced) AndAlso (Global.System.Windows.Forms.MessageBox.Show("Do you want to close all Workspace windows?", "Close All Windows", Global.System.Windows.Forms.MessageBoxButtons.YesNo, Global.System.Windows.Forms.MessageBoxIcon.Question) = Global.System.Windows.Forms.DialogResult.No) Then
                     Return
                 Else
-                    For Each openedforms As CMCv.FRMstandard In Me.MdiChildren
+                    For Each openedforms As CMCv.ui.canvas.FRMstandard In Me.MdiChildren
                         openedforms.Close()
                         openedforms.Dispose()
                     Next
@@ -185,7 +185,7 @@ Namespace UI
                 ElseIf CBool(.Rows(0).Item("module_ismaintenance")) Then
                     St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
                     Bridge.Security.Writelog.Sendlog("""message"" : """ & varDataProperties.EmployeeFirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", LibApp.Ingrid.Global.PopupType.ModuleUnderMaintenance, "", CMCv.FRMdialogbox.MessageIcon.Information, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", LibApp.Ingrid.Global.PopupType.ModuleUnderMaintenance, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Information, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                     System.Media.SystemSounds.Beep.Play()
                     Return
                 ElseIf Not (varUserAccess.User(varDataProperties, St_mainframe)) Then ''' Check User Access
@@ -233,7 +233,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub LogoutClicked()
-            If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure want to logout from system?", LibApp.Ingrid.Global.PopupType.Logout, "", FRMdialogbox.MessageIcon.Question, FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure want to logout from system?", LibApp.Ingrid.Global.PopupType.Logout, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Question, cmcv.ui.canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 Bridge.Security.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " is logout."",", "Information")
                 Call SystemLogout()
                 varLogUser.Logout(varDataProperties)
@@ -349,7 +349,7 @@ Namespace UI
                         varDataProperties.AllParameters.Add(tClient.P_ClientCode, .Item("CLIENT").ToString)
                     End With
                 Else
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties could not be found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties could not be found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                     Return
                 End If
 
@@ -361,7 +361,7 @@ Namespace UI
                     End If
                 Else
                     Ts_connection.Text = "Disconnected"
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                     Return
                 End If
 

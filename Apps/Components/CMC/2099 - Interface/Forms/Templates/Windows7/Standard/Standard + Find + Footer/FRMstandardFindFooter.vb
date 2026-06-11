@@ -1,3 +1,5 @@
-﻿Public Class FRMstandardFindFooter
+﻿Namespace UI.Canvas
+    Public Class FRMstandardFindFooter
 
-End Class
+    End Class
+End Namespace

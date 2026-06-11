@@ -222,7 +222,7 @@ Namespace UI
             varDataProperties.AllParameters.Remove(pCommand)
             varDataProperties.AllParameters.Add(pCommand, "DAR")
             If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -241,7 +241,7 @@ Namespace UI
             varDataProperties.AllParameters.Remove(pCommand)
             varDataProperties.AllParameters.Add(pCommand, "DAR")
             If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -250,7 +250,7 @@ Namespace UI
             varDataProperties.CustomDailyActivityIsNew = False
 
             If varDataProperties.CustomDailyActivityIsNew Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 Frm_dar_Editor = New FRMdarEditor
                 Display(Frm_dar_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "update activity", True)
@@ -267,17 +267,17 @@ Namespace UI
             varDataProperties.AllParameters.Remove(pCommand)
             varDataProperties.AllParameters.Add(pCommand, "DAR")
             If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
 
             If Convert.ToString(varDataProperties.CustomDailyActivityId) Is "-1" Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 varDataProperties.CustomDailyActivityIsNew = False
-                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString & vbCrLf & "=======================================================", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString & vbCrLf & "=======================================================", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Question, CMCv.ui.canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                     If (CMDdar.View.DeleteData(varDataProperties, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString)) Then
                         Call GetData(True)
                         Call FillEmployee()
@@ -339,7 +339,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub ContextCopy() Handles Com_cs_Menu.ContextCopy
             If DgnDARActivity.RowCount = 0 Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 Clipboard.SetText(DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString)
             End If
@@ -519,7 +519,7 @@ Namespace UI
             Dim varCopyPicture As Image = Nothing
 
             If PctbxActivityPhoto.Image Is Nothing Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No photo selected.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.FRMdialogbox.MessageIcon.Alert, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No photo selected.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Alert, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 If varTextmark = String.Empty Then
                     varCopyPicture = PctbxActivityPhoto.Image
@@ -537,7 +537,7 @@ Namespace UI
             Dim varSavePicture As Image = Nothing
 
             If PctbxActivityPhoto.Image Is Nothing Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No photo selected.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.FRMdialogbox.MessageIcon.Alert, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No photo selected.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Alert, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 SfdPhoto.Title = "Ingrid Photo - Save As..."
                 SfdPhoto.FileName = DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString & ".jpg"
@@ -559,7 +559,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnLike_Click(sender As Object, e As EventArgs) Handles BtnLike.Click
             If PctbxActivityPhoto.Image Is Nothing Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No photo selected.", LibApp.Ingrid.Global.PopupType.Alert, "", FRMdialogbox.MessageIcon.Alert, FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No photo selected.", LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 If Not (CMDdar.View.IsLike(varDataProperties, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varDataProperties.EmployeeID)) Then
                     If (CMDdar.View.LikePhoto(varDataProperties, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varDataProperties.EmployeeID, DgnDARActivity.CurrentRow.Cells("employee_id").Value.ToString)) Then
@@ -591,7 +591,7 @@ Namespace UI
             varDataProperties.AllParameters.Add(pCommand, "DAR")
 
             If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Generate Report", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Generate Report", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 

@@ -112,7 +112,7 @@ Namespace UI
             varProperties.ConnectionIsNew = False
 
             If varProperties.ConnectionId Is "-1" Then
-                Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 FRMconn_editor = New FRMconnEditor
                 Display(FRMconn_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName, "Update Record", "Update connection", True)
@@ -127,7 +127,7 @@ Namespace UI
         Private Sub EventDataDelete() Handles COMmainframemenu.EventDataDelete
             Call GetRowID()
             If varProperties.ConnectionId Is "-1" Then
-                Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 varProperties.ConnectionIsNew = False
 
@@ -146,7 +146,7 @@ Namespace UI
 
                     varMessage.AppendLine(varLine)
 
-                    If Decision(My.Application.Info.AssemblyName, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.FRMdialogbox.MessageIcon.Question, CMCv.FRMdialogbox.MessageTypes.YesNo) = system.Windows.Forms.DialogResult.Yes Then
+                    If Decision(My.Application.Info.AssemblyName, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                         If (CMDconn.View.DeleteData(Convert.ToString(varProperties.ConnectionId))) Then
                             Call GetData(True)
                             SLFStatus.Text = "Success"

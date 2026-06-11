@@ -37,7 +37,7 @@ Module Globals
 
     'Public clsDBsqlite As Database.Engine.LocalDB
     'Public WithEvents TED As New frmTextEditor
-    Public WithEvents frmMSG As New FRMdialogbox
+    Public WithEvents FRMmsg As New CMCv.UI.Canvas.FRMdialogbox
 
     Public varVersionapplication As String
     Public varVersionnetworkapplication As Version
@@ -209,7 +209,7 @@ Module Globals
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Sub Display(formname As CMCv.FRMstandard, Optional formimage As System.Drawing.Image = Nothing,
+    Public Sub Display(formname As CMCv.UI.Canvas.FRMstandard, Optional formimage As System.Drawing.Image = Nothing,
                        Optional windowname As String = "", Optional formtitle As String = "",
                        Optional formsubtitle As String = "", Optional isdialog As Boolean = False,
                        Optional parentframe As System.Windows.Forms.Form = Nothing)
@@ -270,7 +270,7 @@ Module Globals
     ''' <param name="ParentFrame">MDI</param>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Sub Display(formname As CMCv.FRMstandardFooter, Optional formimage As System.Drawing.Image = Nothing, Optional windowname As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "", Optional isdialog As Boolean = False, Optional parentframe As System.Windows.Forms.Form = Nothing)
+    Public Sub Display(formname As CMCv.UI.Canvas.FRMstandardFooter, Optional formimage As System.Drawing.Image = Nothing, Optional windowname As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "", Optional isdialog As Boolean = False, Optional parentframe As System.Windows.Forms.Form = Nothing)
         Try
             formname.Text = windowname
             formname.SLFNamaForm.Text = formtitle
@@ -329,8 +329,8 @@ Module Globals
     ''' <returns>DialogResult</returns>
     ''' <remarks></remarks>
     <SupportedOSPlatform("windows")>
-    Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType, subtitle As String, messageicon As CMCv.FRMdialogbox.MessageIcon, buttontype As CMCv.FRMdialogbox.MessageTypes) As DialogResult
-        frmMSG = New CMCv.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
+    Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType, subtitle As String, messageicon As CMCv.ui.canvas.FRMdialogbox.MessageIcon, buttontype As CMCv.ui.canvas.FRMdialogbox.MessageTypes) As DialogResult
+        frmMSG = New CMCv.ui.canvas.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
         Dim result As System.Windows.Forms.DialogResult = frmMSG.ShowDialog()
         frmMSG.Dispose()
         Return result

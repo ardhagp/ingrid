@@ -30,7 +30,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
             If DgnAddinPosition.RowCount = 0 Then
-                Decision(My.Application.Info.AssemblyName.toupper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.toupper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 With DgnAddinPosition.CurrentRow
                     varDataProperties.AllParameters.Remove(pCompanyName)

@@ -62,7 +62,7 @@ Namespace Application
 
                     If varView = 0 Then
                         SystemSounds.Exclamation.Play()
-                        Decision(My.Application.Info.AssemblyName.ToUpper, $"You are Not authorized to : " & IIf(dataproperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Report, "View ", "").ToString & "{typeofaccess}" & IIf(dataproperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Report, "", " record(s)").ToString, LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+                        Decision(My.Application.Info.AssemblyName.ToUpper, $"You are Not authorized to : " & IIf(dataproperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Report, "View ", "").ToString & "{typeofaccess}" & IIf(dataproperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Report, "", " record(s)").ToString, LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
                         Return False
                     Else
                         Return True

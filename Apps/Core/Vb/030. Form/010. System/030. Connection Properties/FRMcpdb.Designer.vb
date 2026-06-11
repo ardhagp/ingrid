@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class FRMcpdb
-    Inherits CMCv.FRMstandardFooter
+    Inherits CMCv.ui.canvas.FRMstandardFooter
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _

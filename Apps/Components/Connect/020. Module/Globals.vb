@@ -23,8 +23,8 @@ Module Globals
     Public varRevision As Integer = My.Application.Info.Version.Revision
     Public varApplicationVersion As String = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
 
-    Public WithEvents MSG As New FRMdialogbox
-    Public WithEvents ERC As New FRMerrorreporting
+    Public WithEvents MSG As New CMCv.UI.Canvas.FRMdialogbox
+    Public WithEvents ERC As New CMCv.UI.Canvas.FRMerrorreporting
     Public ErrorCatcher As New Ladybug.Log.Fields
 
     Public varProperties As New LibApp.Ingrid.Global.Properties
@@ -39,10 +39,10 @@ Module Globals
     ''' <param name="buttontype"></param>
     ''' <returns></returns>
     Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType,
-                             subtitle As String, messageicon As CMCv.FRMdialogbox.MessageIcon,
-                             buttontype As CMCv.FRMdialogbox.MessageTypes) As _
+                             subtitle As String, messageicon As CMCv.UI.Canvas.FRMdialogbox.MessageIcon,
+                             buttontype As CMCv.UI.Canvas.FRMdialogbox.MessageTypes) As _
                              System.Windows.Forms.DialogResult
-        MSG = New CMCv.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
+        MSG = New CMCv.UI.Canvas.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
         Dim result As System.Windows.Forms.DialogResult = MSG.ShowDialog()
         MSG.Dispose()
         Return result
@@ -90,10 +90,10 @@ Module Globals
     ''' <param name="formsubtitle"></param>
     ''' <param name="isdialog"></param>
     ''' <param name="parentframe"></param>
-    Public Sub Display(formname As CMCv.FRMstandardFooter, Optional formimage As System.Drawing.Image = Nothing,
+    Public Sub Display(formname As CMCv.UI.Canvas.FRMstandardFooter, Optional formimage As System.Drawing.Image = Nothing,
                        Optional windowtitle As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "",
                        Optional isdialog As Boolean = False,
-                       Optional parentframe As system.Windows.Forms.Form = Nothing)
+                       Optional parentframe As System.Windows.Forms.Form = Nothing)
         Try
             formname.Text = windowtitle
             formname.SLFNamaForm.Text = formtitle

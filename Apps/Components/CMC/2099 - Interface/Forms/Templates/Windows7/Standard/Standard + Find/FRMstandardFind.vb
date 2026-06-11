@@ -1,3 +1,5 @@
-﻿Public Class FRMstandardFind
+﻿Namespace UI.Canvas
+    Public Class FRMstandardFind
 
-End Class
+    End Class
+End Namespace

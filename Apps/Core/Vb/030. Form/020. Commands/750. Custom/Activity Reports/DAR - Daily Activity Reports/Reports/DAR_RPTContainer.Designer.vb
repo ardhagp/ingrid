@@ -1,7 +1,7 @@
 ﻿Namespace UI
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class DAR_RPTContainer
-        Inherits CMCv.FRMreportBasic
+        Inherits CMCv.UI.Canvas.FRMreportBasic
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>

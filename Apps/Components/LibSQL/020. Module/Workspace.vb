@@ -21,7 +21,7 @@ Public Class Workspace
                 varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tSysModule, dataproperties.AllParameters)
             End If
         Catch ex As Exception
-            Decision("Error", $"Failed to retrieve module properties.{Environment.NewLine}Error Message: {ex.Message}", LibApp.Ingrid.Global.PopupType.Error, "GetModuleProperties", CMCv.FRMdialogbox.MessageIcon.Error, CMCv.FRMdialogbox.MessageTypes.OkOnly)
+            Decision("Error", $"Failed to retrieve module properties.{Environment.NewLine}Error Message: {ex.Message}", LibApp.Ingrid.Global.PopupType.Error, "GetModuleProperties", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
         End Try
     End Sub
 
