@@ -68,7 +68,7 @@
             BtnClose.Margin = New Padding(4, 3, 4, 3)
             BtnClose.Name = "BtnClose"
             BtnClose.Size = New Size(117, 46)
-            BtnClose.XOButtonType = CMCv.ControlCodeBase.buttonType.No
+            BtnClose.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnClose.XOShowBorderOnFocus = False
             BtnClose.XOValidateAllInput = False
             BtnClose.XOValidateAllInputTag = Nothing

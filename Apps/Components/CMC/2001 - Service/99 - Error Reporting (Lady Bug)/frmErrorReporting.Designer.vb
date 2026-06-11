@@ -103,17 +103,17 @@ Partial Class FRMerrorreporting
         BtnClose.TabIndex = 0
         BtnClose.Text = "Close"
         BtnClose.UseVisualStyleBackColor = False
-        BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+        BtnClose.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
         BtnClose.XOShowBorderOnFocus = False
         BtnClose.XOValidateAllInput = False
         BtnClose.XOValidateAllInputTag = Nothing
         ' 
         ' Tbctl1
         ' 
-        Tbctl1.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Bottom Or system.Windows.Forms.AnchorStyles.Left Or system.Windows.Forms.AnchorStyles.Right
+        Tbctl1.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
         Tbctl1.Controls.Add(tp_ApplicationFault)
         Tbctl1.Controls.Add(tp_SystemInformation)
-        Tbctl1.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        Tbctl1.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         Tbctl1.Location = New System.Drawing.Point(20, 12)
         Tbctl1.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Tbctl1.Name = "Tbctl1"
@@ -142,9 +142,9 @@ Partial Class FRMerrorreporting
         ' 
         ' Lbl4
         ' 
-        Lbl4.Anchor = system.Windows.Forms.AnchorStyles.Bottom Or system.Windows.Forms.AnchorStyles.Left
+        Lbl4.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left
         Lbl4.AutoSize = True
-        Lbl4.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        Lbl4.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         Lbl4.Location = New System.Drawing.Point(423, 552)
         Lbl4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Lbl4.Name = "Lbl4"
@@ -155,9 +155,9 @@ Partial Class FRMerrorreporting
         ' 
         ' TxtAppBuild
         ' 
-        TxtAppBuild.Anchor = system.Windows.Forms.AnchorStyles.Bottom Or system.Windows.Forms.AnchorStyles.Left
+        TxtAppBuild.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left
         TxtAppBuild.BackColor = Drawing.Color.White
-        TxtAppBuild.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        TxtAppBuild.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         TxtAppBuild.Location = New System.Drawing.Point(423, 597)
         TxtAppBuild.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         TxtAppBuild.MaxLength = 255
@@ -174,13 +174,13 @@ Partial Class FRMerrorreporting
         TxtAppBuild.XOHighlightColor = Drawing.Color.LightYellow
         TxtAppBuild.XOIsBlank = True
         TxtAppBuild.XOIsPlaceholder = False
-        TxtAppBuild.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+        TxtAppBuild.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
         TxtAppBuild.XOSelectOnFocus = False
         TxtAppBuild.XOPasswordLengthMin = 8
         TxtAppBuild.XOPasswordStrengthCalc = False
         TxtAppBuild.XOPasswordStrengthScore = 0
         TxtAppBuild.XOPasswordStrengthText = Nothing
-        TxtAppBuild.XORestriction = ControlCodeBase.enumRestriction.None
+        TxtAppBuild.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
         TxtAppBuild.XOPlaceholderText = "Type then press Enter"
         TxtAppBuild.XOSqlText = Nothing
         TxtAppBuild.XOIsReplaceEmptyString = False
@@ -188,9 +188,9 @@ Partial Class FRMerrorreporting
         ' 
         ' TxtErrorNumber
         ' 
-        TxtErrorNumber.Anchor = system.Windows.Forms.AnchorStyles.Bottom Or system.Windows.Forms.AnchorStyles.Left
+        TxtErrorNumber.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left
         TxtErrorNumber.BackColor = Drawing.Color.White
-        TxtErrorNumber.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        TxtErrorNumber.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         TxtErrorNumber.Location = New System.Drawing.Point(10, 597)
         TxtErrorNumber.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         TxtErrorNumber.MaxLength = 255
@@ -207,13 +207,13 @@ Partial Class FRMerrorreporting
         TxtErrorNumber.XOHighlightColor = Drawing.Color.LightYellow
         TxtErrorNumber.XOIsBlank = True
         TxtErrorNumber.XOIsPlaceholder = False
-        TxtErrorNumber.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+        TxtErrorNumber.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
         TxtErrorNumber.XOSelectOnFocus = False
         TxtErrorNumber.XOPasswordLengthMin = 8
         TxtErrorNumber.XOPasswordStrengthCalc = False
         TxtErrorNumber.XOPasswordStrengthScore = 0
         TxtErrorNumber.XOPasswordStrengthText = Nothing
-        TxtErrorNumber.XORestriction = ControlCodeBase.enumRestriction.None
+        TxtErrorNumber.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
         TxtErrorNumber.XOPlaceholderText = "Type then press Enter"
         TxtErrorNumber.XOSqlText = Nothing
         TxtErrorNumber.XOIsReplaceEmptyString = False
@@ -221,9 +221,9 @@ Partial Class FRMerrorreporting
         ' 
         ' Lbl3
         ' 
-        Lbl3.Anchor = system.Windows.Forms.AnchorStyles.Bottom Or system.Windows.Forms.AnchorStyles.Left
+        Lbl3.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left
         Lbl3.AutoSize = True
-        Lbl3.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        Lbl3.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         Lbl3.Location = New System.Drawing.Point(10, 552)
         Lbl3.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Lbl3.Name = "Lbl3"
@@ -234,14 +234,14 @@ Partial Class FRMerrorreporting
         ' 
         ' TxtErrorMessage
         ' 
-        TxtErrorMessage.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Bottom Or system.Windows.Forms.AnchorStyles.Left Or system.Windows.Forms.AnchorStyles.Right
-        TxtErrorMessage.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        TxtErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        TxtErrorMessage.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         TxtErrorMessage.Location = New System.Drawing.Point(10, 160)
         TxtErrorMessage.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         TxtErrorMessage.MaxLength = 255
         TxtErrorMessage.Multiline = True
         TxtErrorMessage.Name = "TxtErrorMessage"
-        TxtErrorMessage.ScrollBars = system.Windows.Forms.ScrollBars.Vertical
+        TxtErrorMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         TxtErrorMessage.Size = New System.Drawing.Size(1009, 383)
         TxtErrorMessage.TabIndex = 3
         TxtErrorMessage.Tag = "txt"
@@ -253,13 +253,13 @@ Partial Class FRMerrorreporting
         TxtErrorMessage.XOHighlightColor = Drawing.Color.LightYellow
         TxtErrorMessage.XOIsBlank = True
         TxtErrorMessage.XOIsPlaceholder = False
-        TxtErrorMessage.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+        TxtErrorMessage.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
         TxtErrorMessage.XOSelectOnFocus = False
         TxtErrorMessage.XOPasswordLengthMin = 8
         TxtErrorMessage.XOPasswordStrengthCalc = False
         TxtErrorMessage.XOPasswordStrengthScore = 0
         TxtErrorMessage.XOPasswordStrengthText = Nothing
-        TxtErrorMessage.XORestriction = ControlCodeBase.enumRestriction.None
+        TxtErrorMessage.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
         TxtErrorMessage.XOPlaceholderText = "Type then press Enter"
         TxtErrorMessage.XOSqlText = Nothing
         TxtErrorMessage.XOIsReplaceEmptyString = False
@@ -268,7 +268,7 @@ Partial Class FRMerrorreporting
         ' Lbl2
         ' 
         Lbl2.AutoSize = True
-        Lbl2.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        Lbl2.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         Lbl2.Location = New System.Drawing.Point(10, 113)
         Lbl2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Lbl2.Name = "Lbl2"
@@ -280,7 +280,7 @@ Partial Class FRMerrorreporting
         ' TxtErrorType
         ' 
         TxtErrorType.BackColor = Drawing.Color.White
-        TxtErrorType.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        TxtErrorType.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         TxtErrorType.Location = New System.Drawing.Point(10, 52)
         TxtErrorType.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         TxtErrorType.MaxLength = 255
@@ -297,13 +297,13 @@ Partial Class FRMerrorreporting
         TxtErrorType.XOHighlightColor = Drawing.Color.LightYellow
         TxtErrorType.XOIsBlank = True
         TxtErrorType.XOIsPlaceholder = False
-        TxtErrorType.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+        TxtErrorType.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
         TxtErrorType.XOSelectOnFocus = False
         TxtErrorType.XOPasswordLengthMin = 8
         TxtErrorType.XOPasswordStrengthCalc = False
         TxtErrorType.XOPasswordStrengthScore = 0
         TxtErrorType.XOPasswordStrengthText = Nothing
-        TxtErrorType.XORestriction = ControlCodeBase.enumRestriction.None
+        TxtErrorType.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
         TxtErrorType.XOPlaceholderText = "Type then press Enter"
         TxtErrorType.XOSqlText = Nothing
         TxtErrorType.XOIsReplaceEmptyString = False

@@ -24,19 +24,19 @@ Namespace UI.Control
             MyBase.Font = globalFontBtn
             'Me.XOShowBorder = False
             Me.XOShowBorderOnFocus = False
-            Me.XOButtonType = ControlCodeBase.buttonType.Default
+            Me.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
             MyBase.DoubleBuffered = True
         End Sub
 
-        Private varButtonType As ControlCodeBase.buttonType
+        Private varButtonType As CMCV.UI.Control.ControlCodeBase.buttonType
         <SupportedOSPlatform("windows")>
         <Category("Button"),
     Description("Button type will affect (background color, font type) of the button")>
-        Public Property XOButtonType() As ControlCodeBase.ButtonType
+        Public Property XOButtonType() As CMCV.UI.Control.ControlCodeBase.ButtonType
             Get
                 Return varButtonType
             End Get
-            Set(value As ControlCodeBase.ButtonType)
+            Set(value As CMCV.UI.Control.ControlCodeBase.ButtonType)
                 varButtonType = value
                 ChangeButtonColor(value)
             End Set
@@ -103,24 +103,24 @@ Namespace UI.Control
         ''' </summary>
         ''' <param name="enubuttontype">Button type</param>
         <SupportedOSPlatform("windows")>
-        Private Sub ChangeButtonColor(enubuttontype As ControlCodeBase.buttonType)
+        Private Sub ChangeButtonColor(enubuttontype As CMCV.UI.Control.ControlCodeBase.buttonType)
             Select Case enubuttontype
-                Case ControlCodeBase.buttonType.Yes
+                Case CMCV.UI.Control.ControlCodeBase.buttonType.Yes
                     MyBase.BackColor = Drawing.Color.LimeGreen
                     MyBase.ForeColor = Drawing.Color.White
-                Case ControlCodeBase.buttonType.No
+                Case CMCV.UI.Control.ControlCodeBase.buttonType.No
                     MyBase.BackColor = Drawing.Color.Red
                     MyBase.ForeColor = Drawing.Color.White
-                Case ControlCodeBase.buttonType.Default
+                Case CMCV.UI.Control.ControlCodeBase.buttonType.Default
                     MyBase.BackColor = Drawing.Color.RoyalBlue
                     MyBase.ForeColor = Drawing.Color.White
-                Case ControlCodeBase.buttonType.Warning
+                Case CMCV.UI.Control.ControlCodeBase.buttonType.Warning
                     MyBase.BackColor = Drawing.Color.Yellow
                     MyBase.ForeColor = Drawing.Color.Black
-                Case ControlCodeBase.buttonType.Disabled
+                Case CMCV.UI.Control.ControlCodeBase.buttonType.Disabled
                     MyBase.BackColor = Drawing.Color.Gray
                     MyBase.ForeColor = Drawing.Color.DarkGray
-                Case ControlCodeBase.buttonType.Custom
+                Case CMCV.UI.Control.ControlCodeBase.buttonType.Custom
                     'MyBase.BackColor = System.Drawing.Color.Orange
                     'MyBase.ForeColor = Drawing.Color.Black
             End Select
@@ -129,8 +129,8 @@ Namespace UI.Control
         <SupportedOSPlatform("windows")>
         Private Sub Btn_BackColorChanged(sender As Object, e As System.EventArgs) Handles Me.BackColorChanged
             If Me.FlatStyle = System.Windows.Forms.FlatStyle.Flat Then
-                MyBase.FlatAppearance.BorderColor = ControlCodeBase.GetColor(MyBase.BackColor, ControlCodeBase.EnumColorRange.Darker, 60)
-                MyBase.FlatAppearance.MouseOverBackColor = ControlCodeBase.GetColor(MyBase.BackColor, ControlCodeBase.EnumColorRange.Lighter, 20)
+                MyBase.FlatAppearance.BorderColor = CMCV.UI.Control.ControlCodeBase.GetColor(MyBase.BackColor, CMCV.UI.Control.ControlCodeBase.EnumColorRange.Darker, 60)
+                MyBase.FlatAppearance.MouseOverBackColor = CMCV.UI.Control.ControlCodeBase.GetColor(MyBase.BackColor, CMCV.UI.Control.ControlCodeBase.EnumColorRange.Lighter, 20)
             End If
         End Sub
 

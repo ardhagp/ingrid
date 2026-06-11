@@ -111,7 +111,7 @@
             BtnShow.TabIndex = 99
             BtnShow.Text = "&Show"
             BtnShow.UseVisualStyleBackColor = False
-            BtnShow.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnShow.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
             BtnShow.XOShowBorderOnFocus = False
             BtnShow.XOValidateAllInput = False
             BtnShow.XOValidateAllInputTag = Nothing
@@ -134,7 +134,7 @@
             BtnCancel.TabIndex = 98
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
@@ -287,13 +287,13 @@
             TxtDescription.XOHighlightColor = Color.LightYellow
             TxtDescription.XOIsBlank = True
             TxtDescription.XOIsPlaceholder = False
-            TxtDescription.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtDescription.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
             TxtDescription.XOSelectOnFocus = False
             TxtDescription.XOPasswordLengthMin = 8
             TxtDescription.XOPasswordStrengthCalc = False
             TxtDescription.XOPasswordStrengthScore = 0
             TxtDescription.XOPasswordStrengthText = Nothing
-            TxtDescription.XORestriction = ControlCodeBase.enumRestriction.None
+            TxtDescription.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
             TxtDescription.XOPlaceholderText = "Type then press Enter"
             TxtDescription.XOSqlText = ""
             TxtDescription.XOIsReplaceEmptyString = False

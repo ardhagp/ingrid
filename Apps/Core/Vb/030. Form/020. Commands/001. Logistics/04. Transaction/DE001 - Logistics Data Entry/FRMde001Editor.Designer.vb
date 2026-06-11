@@ -75,7 +75,7 @@
             BtnSave.TabIndex = 1
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -98,7 +98,7 @@
             BtnClose.TabIndex = 2
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClose.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
             BtnClose.XOShowBorderOnFocus = False
             BtnClose.XOValidateAllInput = False
             BtnClose.XOValidateAllInputTag = Nothing
@@ -121,13 +121,13 @@
             Txt1.XOHighlightColor = Color.LightYellow
             Txt1.XOIsBlank = True
             Txt1.XOIsPlaceholder = False
-            Txt1.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            Txt1.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
             Txt1.XOSelectOnFocus = False
             Txt1.XOPasswordLengthMin = 8
             Txt1.XOPasswordStrengthCalc = False
             Txt1.XOPasswordStrengthScore = 0
             Txt1.XOPasswordStrengthText = Nothing
-            Txt1.XORestriction = ControlCodeBase.enumRestriction.None
+            Txt1.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
             Txt1.XOPlaceholderText = "Type then press Enter"
             Txt1.XOSqlText = ""
             Txt1.XOIsReplaceEmptyString = False

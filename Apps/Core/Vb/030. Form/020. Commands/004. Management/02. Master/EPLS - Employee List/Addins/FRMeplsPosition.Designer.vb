@@ -101,7 +101,7 @@
             BtnClear.TabIndex = 6
             BtnClear.Text = "Clear"
             BtnClear.UseVisualStyleBackColor = False
-            BtnClear.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClear.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
             BtnClear.XOShowBorderOnFocus = False
             BtnClear.XOValidateAllInput = False
             BtnClear.XOValidateAllInputTag = Nothing
@@ -136,13 +136,13 @@
             TxtFind.XOHighlightColor = Color.LightYellow
             TxtFind.XOIsBlank = True
             TxtFind.XOIsPlaceholder = False
-            TxtFind.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtFind.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
             TxtFind.XOSelectOnFocus = False
             TxtFind.XOPasswordLengthMin = 8
             TxtFind.XOPasswordStrengthCalc = False
             TxtFind.XOPasswordStrengthScore = 0
             TxtFind.XOPasswordStrengthText = Nothing
-            TxtFind.XORestriction = ControlCodeBase.enumRestriction.None
+            TxtFind.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
             TxtFind.XOPlaceholderText = "Type then press Enter"
             TxtFind.XOSqlText = Nothing
             TxtFind.XOIsReplaceEmptyString = False
@@ -287,7 +287,7 @@
             BtnOk.TabIndex = 1
             BtnOk.Text = "&Ok"
             BtnOk.UseVisualStyleBackColor = False
-            BtnOk.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnOk.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
             BtnOk.XOShowBorderOnFocus = False
             BtnOk.XOValidateAllInput = False
             BtnOk.XOValidateAllInputTag = Nothing
@@ -310,7 +310,7 @@
             BtnCancel.TabIndex = 2
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing

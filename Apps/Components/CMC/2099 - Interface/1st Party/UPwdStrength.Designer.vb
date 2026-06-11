@@ -37,8 +37,8 @@ Namespace UI.Control
             pgb_PwdStrengthIndicator.Location = New System.Drawing.Point(0, 0)
             pgb_PwdStrengthIndicator.Name = "pgb_PwdStrengthIndicator"
             pgb_PwdStrengthIndicator.Size = New System.Drawing.Size(225, 23)
-            pgb_PwdStrengthIndicator.XOGradientDirection = ControlCodeBase.EnumGradientType.Horizontal
-            pgb_PwdStrengthIndicator.XOProgressBarColor = ControlCodeBase.EnumColorFill.Solid
+            pgb_PwdStrengthIndicator.XOGradientDirection = CMCV.UI.Control.ControlCodeBase.EnumGradientType.Horizontal
+            pgb_PwdStrengthIndicator.XOProgressBarColor = CMCV.UI.Control.ControlCodeBase.EnumColorFill.Solid
             pgb_PwdStrengthIndicator.TabIndex = 0
             ' 
             ' LblPwdStrength_Text

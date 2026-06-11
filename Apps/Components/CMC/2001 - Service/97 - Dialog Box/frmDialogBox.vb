@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
-Imports Org.BouncyCastle.Cmp
-Imports Org.BouncyCastle.Tls
+'Imports Org.BouncyCastle.Cmp
+'Imports Org.BouncyCastle.Tls
 
 Public Class FRMdialogbox
 

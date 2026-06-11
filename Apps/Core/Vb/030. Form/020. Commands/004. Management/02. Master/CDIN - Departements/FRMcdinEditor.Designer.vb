@@ -93,7 +93,7 @@
             BtnSave.TabIndex = 4
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = ControlCodeBase.ButtonType.Yes
+            BtnSave.XOButtonType = CMCV.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -116,7 +116,7 @@
             BtnCancel.TabIndex = 6
             BtnCancel.Text = "&Close"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = ControlCodeBase.ButtonType.No
+            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
@@ -138,7 +138,7 @@
             TxtDeptCode.XOIsMandatory = True
             TxtDeptCode.XOIsReplaceEmptyString = False
             TxtDeptCode.XOIsPlaceholder = False
-            TxtDeptCode.XOLetterCase = ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtDeptCode.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtDeptCode.XOMandatoryBgColor = Color.LightPink
             TxtDeptCode.XOMandatoryBgColorDefault = Color.White
             TxtDeptCode.XOMandatoryMessage = Nothing
@@ -146,7 +146,7 @@
             TxtDeptCode.XOPasswordStrengthCalc = False
             TxtDeptCode.XOPasswordStrengthScore = 0
             TxtDeptCode.XOPasswordStrengthText = Nothing
-            TxtDeptCode.XORestriction = ControlCodeBase.EnumRestriction.TextAndNumber
+            TxtDeptCode.XORestriction = CMCV.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
             TxtDeptCode.XOPlaceholderText = "Type then press Enter"
             TxtDeptCode.XOSelectOnFocus = True
             TxtDeptCode.XOSqlText = ""
@@ -181,7 +181,7 @@
             TxtDeptName.XOIsMandatory = True
             TxtDeptName.XOIsReplaceEmptyString = False
             TxtDeptName.XOIsPlaceholder = False
-            TxtDeptName.XOLetterCase = ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtDeptName.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtDeptName.XOMandatoryBgColor = Color.LightPink
             TxtDeptName.XOMandatoryBgColorDefault = Color.White
             TxtDeptName.XOMandatoryMessage = Nothing
@@ -189,7 +189,7 @@
             TxtDeptName.XOPasswordStrengthCalc = False
             TxtDeptName.XOPasswordStrengthScore = 0
             TxtDeptName.XOPasswordStrengthText = Nothing
-            TxtDeptName.XORestriction = ControlCodeBase.EnumRestriction.TextAndNumber
+            TxtDeptName.XORestriction = CMCV.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
             TxtDeptName.XOPlaceholderText = "Type then press Enter"
             TxtDeptName.XOSelectOnFocus = False
             TxtDeptName.XOSqlText = ""
@@ -212,7 +212,7 @@
             TxtDescription.XOIsMandatory = False
             TxtDescription.XOIsReplaceEmptyString = False
             TxtDescription.XOIsPlaceholder = False
-            TxtDescription.XOLetterCase = ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtDescription.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtDescription.XOMandatoryBgColor = Color.LightPink
             TxtDescription.XOMandatoryBgColorDefault = Color.White
             TxtDescription.XOMandatoryMessage = Nothing
@@ -220,7 +220,7 @@
             TxtDescription.XOPasswordStrengthCalc = False
             TxtDescription.XOPasswordStrengthScore = 0
             TxtDescription.XOPasswordStrengthText = Nothing
-            TxtDescription.XORestriction = ControlCodeBase.EnumRestriction.None
+            TxtDescription.XORestriction = CMCV.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtDescription.XOPlaceholderText = "Type then press Enter"
             TxtDescription.XOSelectOnFocus = False
             TxtDescription.XOSqlText = ""
@@ -233,7 +233,7 @@
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(250, 39)
             ULbl1.TabIndex = 1004
-            ULbl1.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl1.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.XOText = "Company"
             ULbl1.XOTextAdjuster = False
             ULbl1.XOTextBorder = False
@@ -246,7 +246,7 @@
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(250, 39)
             ULbl2.TabIndex = 1005
-            ULbl2.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl2.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.XOText = "Dept. Code"
             ULbl2.XOTextAdjuster = False
             ULbl2.XOTextBorder = False
@@ -259,7 +259,7 @@
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 39)
             ULbl3.TabIndex = 1006
-            ULbl3.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.XOText = "Dept. Name"
             ULbl3.XOTextAdjuster = False
             ULbl3.XOTextBorder = False
@@ -272,7 +272,7 @@
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 184)
             ULbl4.TabIndex = 1007
-            ULbl4.XOLabelColor = ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.XOText = "Description"
             ULbl4.XOTextAdjuster = False
             ULbl4.XOTextBorder = False

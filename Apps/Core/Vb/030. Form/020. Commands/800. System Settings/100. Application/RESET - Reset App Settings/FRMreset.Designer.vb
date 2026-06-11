@@ -97,13 +97,13 @@
             Txt_Confirmation.XOHighlightColor = Color.LightYellow
             Txt_Confirmation.XOIsBlank = False
             Txt_Confirmation.XOIsPlaceholder = False
-            Txt_Confirmation.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            Txt_Confirmation.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
             Txt_Confirmation.XOSelectOnFocus = False
             Txt_Confirmation.XOPasswordLengthMin = 8
             Txt_Confirmation.XOPasswordStrengthCalc = False
             Txt_Confirmation.XOPasswordStrengthScore = 0
             Txt_Confirmation.XOPasswordStrengthText = Nothing
-            Txt_Confirmation.XORestriction = ControlCodeBase.enumRestriction.None
+            Txt_Confirmation.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
             Txt_Confirmation.XOPlaceholderText = ""
             Txt_Confirmation.XOSqlText = ""
             Txt_Confirmation.XOIsReplaceEmptyString = False
@@ -127,7 +127,7 @@
             BtnClose.TabIndex = 2
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClose.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
             BtnClose.XOShowBorderOnFocus = False
             BtnClose.XOValidateAllInput = False
             BtnClose.XOValidateAllInputTag = Nothing
@@ -150,7 +150,7 @@
             BtnRun.TabIndex = 1
             BtnRun.Text = "&Run"
             BtnRun.UseVisualStyleBackColor = False
-            BtnRun.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnRun.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
             BtnRun.XOShowBorderOnFocus = False
             BtnRun.XOValidateAllInput = False
             BtnRun.XOValidateAllInputTag = Nothing

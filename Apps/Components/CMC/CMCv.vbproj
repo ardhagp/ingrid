@@ -524,7 +524,6 @@
     <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="2099 - Interface\Controls\Timer\tmr.vb" />
     <Compile Remove="2099 - Interface\Controls\Tool Strip\too.Designer.vb" />
     <Compile Remove="2099 - Interface\Controls\Tool Strip\too.vb" />
   </ItemGroup>

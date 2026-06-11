@@ -554,7 +554,7 @@
             BtnCopyPhoto.Size = New Size(326, 50)
             BtnCopyPhoto.TabIndex = 3
             BtnCopyPhoto.UseVisualStyleBackColor = False
-            BtnCopyPhoto.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnCopyPhoto.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Custom
             BtnCopyPhoto.XOShowBorderOnFocus = False
             BtnCopyPhoto.XOValidateAllInput = False
             BtnCopyPhoto.XOValidateAllInputTag = Nothing
@@ -577,7 +577,7 @@
             BtnSave.Size = New Size(327, 50)
             BtnSave.TabIndex = 4
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnSave.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Custom
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -600,7 +600,7 @@
             BtnLike.Size = New Size(45, 50)
             BtnLike.TabIndex = 6
             BtnLike.UseVisualStyleBackColor = False
-            BtnLike.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnLike.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Custom
             BtnLike.XOShowBorderOnFocus = False
             BtnLike.XOValidateAllInput = False
             BtnLike.XOValidateAllInputTag = Nothing

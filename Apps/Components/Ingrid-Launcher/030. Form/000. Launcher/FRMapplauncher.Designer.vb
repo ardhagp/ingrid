@@ -81,7 +81,7 @@
             BtnLaunch.TabIndex = 1
             BtnLaunch.Text = "&Launch"
             BtnLaunch.UseVisualStyleBackColor = False
-            BtnLaunch.XOButtonType = CMCv.ControlCodeBase.buttonType.Yes
+            BtnLaunch.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnLaunch.XOShowBorderOnFocus = False
             BtnLaunch.XOValidateAllInput = False
             BtnLaunch.XOValidateAllInputTag = Nothing
@@ -169,7 +169,7 @@
             BtnClose.Text = "X"
             BtnClose.UseVisualStyleBackColor = False
             BtnClose.Visible = False
-            BtnClose.XOButtonType = CMCv.ControlCodeBase.buttonType.No
+            BtnClose.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnClose.XOShowBorderOnFocus = False
             BtnClose.XOValidateAllInput = False
             BtnClose.XOValidateAllInputTag = Nothing

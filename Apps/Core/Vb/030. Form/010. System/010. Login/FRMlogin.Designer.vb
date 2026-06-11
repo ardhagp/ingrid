@@ -83,7 +83,7 @@
             BtnLogin.TabIndex = 2
             BtnLogin.Text = "&Login"
             BtnLogin.UseVisualStyleBackColor = False
-            BtnLogin.XOButtonType = ControlCodeBase.ButtonType.Yes
+            BtnLogin.XOButtonType = CMCV.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnLogin.XOShowBorderOnFocus = False
             BtnLogin.XOValidateAllInput = False
             BtnLogin.XOValidateAllInputTag = Nothing
@@ -106,7 +106,7 @@
             BtnCancel.TabIndex = 3
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = ControlCodeBase.ButtonType.No
+            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
@@ -129,7 +129,7 @@
             TxtUsername.XOIsMandatory = True
             TxtUsername.XOIsPlaceholder = False
             TxtUsername.XOIsReplaceEmptyString = False
-            TxtUsername.XOLetterCase = ControlCodeBase.EnumLetterCase.Normal
+            TxtUsername.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtUsername.XOMandatoryBgColor = Color.LightPink
             TxtUsername.XOMandatoryBgColorDefault = Color.White
             TxtUsername.XOMandatoryMessage = Nothing
@@ -138,7 +138,7 @@
             TxtUsername.XOPasswordStrengthScore = 0
             TxtUsername.XOPasswordStrengthText = Nothing
             TxtUsername.XOPlaceholderText = "Type then press Enter"
-            TxtUsername.XORestriction = ControlCodeBase.EnumRestriction.TextAndNumber
+            TxtUsername.XORestriction = CMCV.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
             TxtUsername.XOSelectOnFocus = False
             TxtUsername.XOSqlText = ""
             ' 
@@ -161,7 +161,7 @@
             TxtPassword.XOIsMandatory = True
             TxtPassword.XOIsPlaceholder = False
             TxtPassword.XOIsReplaceEmptyString = False
-            TxtPassword.XOLetterCase = ControlCodeBase.EnumLetterCase.Normal
+            TxtPassword.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtPassword.XOMandatoryBgColor = Color.LightPink
             TxtPassword.XOMandatoryBgColorDefault = Color.White
             TxtPassword.XOMandatoryMessage = Nothing
@@ -170,7 +170,7 @@
             TxtPassword.XOPasswordStrengthScore = 0
             TxtPassword.XOPasswordStrengthText = Nothing
             TxtPassword.XOPlaceholderText = "Type then press Enter"
-            TxtPassword.XORestriction = ControlCodeBase.EnumRestriction.None
+            TxtPassword.XORestriction = CMCV.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtPassword.XOSelectOnFocus = False
             TxtPassword.XOSqlText = ""
             ' 
