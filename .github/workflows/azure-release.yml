@@ -289,21 +289,6 @@ steps:
         }
       ]
 
-# Sent Artifact to Backblaze
-#- task: PowerShell@2
-#  displayName: 'Copy Files to BackBlaze'
-#  inputs: 
-#    targetType: 'inline'
-#    script: |
-#     python -m pip install --upgrade pip
-#     pip install awscli
-#     aws s3 rm "s3://ingrid-blob/files/" --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
-#     aws s3 cp "$(Build.ArtifactStagingDirectory)" s3://ingrid-blob/files/ --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
-#     aws s3 cp "$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\" s3://ingrid-blob/files/ --recursive --endpoint-url https://s3.us-west-004.backblazeb2.com
-#     env:
-#       AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
-#       AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
-
 - task: PowerShell@2
   displayName: 'Copy Files to BackBlaze'
   inputs:

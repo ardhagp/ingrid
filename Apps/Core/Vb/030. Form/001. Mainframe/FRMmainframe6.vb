@@ -4,6 +4,8 @@ Imports System.IO
 Imports System.Data
 Imports System.ComponentModel
 Imports System.Runtime.Versioning
+Imports Microsoft.Reporting.WinForms.Internal.Soap.ReportingServices2005.Execution
+Imports System.ComponentModel.Composition
 
 Namespace UI
     Public Class FRMmainframe6
@@ -176,7 +178,7 @@ Namespace UI
 
             LibSQL.Workspace.GetModuleProperties(varDataProperties, commandcode, varDatasetIngrid)
 
-            With varDatasetIngrid.Tables("SysModule")
+            With varDatasetIngrid.Tables(dtModule)
                 If .Rows.Count = 0 Then
                     St_mainframe.Items(0).Text = "Module " & commandcode.ToUpper.Trim & " not found."
                     Return
@@ -507,11 +509,35 @@ Namespace UI
         End Sub
 
         <SupportedOSPlatform("windows")>
+        Private Function IsProfileVisible(panelsettings As Integer, isadmin As Boolean) As Boolean
+            Return IsPanelVisible(panelsettings, isadmin)
+        End Function
+
+        <SupportedOSPlatform("windows")>
+        Private Function IsStorageVisible(panelsettings As Integer, isadmin As Boolean) As Boolean
+            Return IsPanelVisible(panelsettings, isadmin)
+        End Function
+
+        <SupportedOSPlatform("windows")>
+        Private Function IsNewsTickerVisible(panelsettings As Integer, isadmin As Boolean) As Boolean
+            Return IsPanelVisible(panelsettings, isadmin)
+        End Function
+
+        <SupportedOSPlatform("windows")>
+        Private Function IsPanelVisible(profilesettings As Integer, isadmin As Boolean) As Boolean
+            Return (profilesettings = 3) _
+                    OrElse (isadmin AndAlso profilesettings = 1) _
+                    OrElse (Not isadmin AndAlso profilesettings = 2)
+        End Function
+
+        <SupportedOSPlatform("windows")>
         Private Sub GetProfile()
             With varDatasetIngrid.Tables(dtSettings)
-                If .Rows.Count > 0 Then
-                    PnlProfile.Visible = CBool(.Rows(0).Item(tSettings.C_SettingsShowProfile))
+                If .Rows.Count = 0 Then
+                    Return
                 End If
+
+                PnlProfile.Visible = IsProfileVisible(CInt(.Rows(0).Item(tSettings.C_SettingsShowProfile)), CBool(varDataProperties.UserParameters(tUser.P_UserIsRoot)))
 
                 If (PnlProfile.Visible) Then
                     LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome(varDataProperties)
@@ -540,20 +566,27 @@ Namespace UI
             Dim varFilecurrentsize As Integer
             Dim varFreespace As Integer
 
-            PnlStorage.Visible = LibSQL.Application.StorageSense.Show(varDataProperties)
-            If (PnlStorage.Visible) Then
-                PnlStorage.Height = 158
-                varFreespace = CInt(LibSQL.Application.StorageSense.MaxSize(varDataProperties.ConnectionDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace))
-                pgDataStorage.Maximum = varFreespace
-                varDatacurrentsize = CInt(LibSQL.Application.StorageSense.DataCurrentSize(varDataProperties.ConnectionDatabaseName))
-                pgDataStorage.Value = varDatacurrentsize
-                lblDataStorage.Text = String.Format("{0} / {1}", IIf(varDatacurrentsize < 1024, varDatacurrentsize & " MB", Math.Round((varDatacurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
-                varFreespace = CInt(LibSQL.Application.StorageSense.MaxSize(varDataProperties.ConnectionDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace))
-                pgFileStorage.Maximum = varFreespace
-                varFilecurrentsize = CInt(LibSQL.Application.StorageSense.FileCurrentSize(varDataProperties))
-                pgFileStorage.Value = varFilecurrentsize
-                lblFileStorage.Text = String.Format("{0} / {1}", IIf(varFilecurrentsize < 1024, varFilecurrentsize & " MB", Math.Round((varFilecurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
-            End If
+            With varDatasetIngrid.Tables(dtSettings)
+                If .Rows.Count = 0 Then
+                    Return
+                End If
+
+                PnlStorage.Visible = IsPanelVisible(CInt(.Rows(0).Item(tSettings.C_SettingsShowStorage)), CBool(varDataProperties.UserParameters(tUser.P_UserIsRoot)))
+
+                If (PnlStorage.Visible) Then
+                    PnlStorage.Height = 158
+                    varFreespace = CInt(LibSQL.Application.StorageSense.MaxSize(varDataProperties.ConnectionDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace))
+                    pgDataStorage.Maximum = varFreespace
+                    varDatacurrentsize = CInt(LibSQL.Application.StorageSense.DataCurrentSize(varDataProperties.ConnectionDatabaseName))
+                    pgDataStorage.Value = varDatacurrentsize
+                    lblDataStorage.Text = String.Format("{0} / {1}", IIf(varDatacurrentsize < 1024, varDatacurrentsize & " MB", Math.Round((varDatacurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
+                    varFreespace = CInt(LibSQL.Application.StorageSense.MaxSize(varDataProperties.ConnectionDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace))
+                    pgFileStorage.Maximum = varFreespace
+                    varFilecurrentsize = CInt(LibSQL.Application.StorageSense.FileCurrentSize(varDataProperties))
+                    pgFileStorage.Value = varFilecurrentsize
+                    lblFileStorage.Text = String.Format("{0} / {1}", IIf(varFilecurrentsize < 1024, varFilecurrentsize & " MB", Math.Round((varFilecurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
+                End If
+            End With
         End Sub
 
         <SupportedOSPlatform("windows")>
