@@ -97,7 +97,7 @@
             BtnBrowse.TabIndex = 0
             BtnBrowse.Text = "Browse..."
             BtnBrowse.UseVisualStyleBackColor = False
-            BtnBrowse.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnBrowse.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Custom
             BtnBrowse.XOShowBorderOnFocus = False
             BtnBrowse.XOValidateAllInput = False
             BtnBrowse.XOValidateAllInputTag = Nothing
@@ -125,13 +125,13 @@
             TxtProgress.XOHighlightColor = Color.LightYellow
             TxtProgress.XOIsBlank = True
             TxtProgress.XOIsPlaceholder = False
-            TxtProgress.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+            TxtProgress.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
             TxtProgress.XOSelectOnFocus = False
             TxtProgress.XOPasswordLengthMin = 8
             TxtProgress.XOPasswordStrengthCalc = False
             TxtProgress.XOPasswordStrengthScore = 0
             TxtProgress.XOPasswordStrengthText = Nothing
-            TxtProgress.XORestriction = ControlCodeBase.enumRestriction.None
+            TxtProgress.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
             TxtProgress.XOPlaceholderText = "Type then press Enter"
             TxtProgress.XOSqlText = Nothing
             TxtProgress.XOIsReplaceEmptyString = False
@@ -155,7 +155,7 @@
             BtnSave.TabIndex = 0
             BtnSave.Text = "Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnSave.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -178,7 +178,7 @@
             BtnClose.TabIndex = 1
             BtnClose.Text = "Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOButtonType = ControlCodeBase.buttonType.No
+            BtnClose.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
             BtnClose.XOShowBorderOnFocus = False
             BtnClose.XOValidateAllInput = False
             BtnClose.XOValidateAllInputTag = Nothing

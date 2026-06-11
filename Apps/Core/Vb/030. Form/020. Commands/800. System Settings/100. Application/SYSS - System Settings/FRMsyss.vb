@@ -7,7 +7,6 @@ Namespace UI
         Const varMessageAdministratorOnly As String = "Administrator Only"
         Const varUserOnly As String = "User Only"
         Const varAllUsers As String = "All Users"
-        Const dtSettings As String = "SYSS_Editor"
 
         <SupportedOSPlatform("windows")>
         Private Sub GetData()
@@ -83,6 +82,9 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub FRMsyss_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Call GetData()
+            If CboStorageProvider.Text = "None" Then
+                TxtFileDb.Visible = False
+            End If
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -158,7 +160,7 @@ Namespace UI
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Sub CboStorageProvider_TextChanged(sender As Object, e As EventArgs) Handles CboStorageProvider.TextChanged
+        Private Sub OnCboProviderTextChanged()
             With CboStorageProvider
                 If .Text = "None" Then
                     TxtApiKey.Enabled = False
@@ -198,6 +200,11 @@ Namespace UI
                     TxtFileDb.Visible = False
                 End If
             End With
+        End Sub
+
+        <SupportedOSPlatform("windows")>
+        Private Sub CboStorageProvider_TextChanged(sender As Object, e As EventArgs) Handles CboStorageProvider.TextChanged
+            Call OnCboProviderTextChanged()
         End Sub
     End Class
 End Namespace

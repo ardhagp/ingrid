@@ -109,7 +109,7 @@ Partial Class FRMdialogbox
         BtnYes.TabIndex = 0
         BtnYes.Text = "&Yes"
         BtnYes.UseVisualStyleBackColor = False
-        BtnYes.XOButtonType = ControlCodeBase.buttonType.Yes
+        BtnYes.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
         BtnYes.XOShowBorderOnFocus = False
         BtnYes.XOValidateAllInput = False
         BtnYes.XOValidateAllInputTag = Nothing
@@ -132,7 +132,7 @@ Partial Class FRMdialogbox
         BtnNo.TabIndex = 0
         BtnNo.Text = "&No"
         BtnNo.UseVisualStyleBackColor = False
-        BtnNo.XOButtonType = ControlCodeBase.buttonType.No
+        BtnNo.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
         BtnNo.XOShowBorderOnFocus = False
         BtnNo.XOValidateAllInput = False
         BtnNo.XOValidateAllInputTag = Nothing
@@ -155,7 +155,7 @@ Partial Class FRMdialogbox
         BtnCancel.TabIndex = 0
         BtnCancel.Text = "&Cancel"
         BtnCancel.UseVisualStyleBackColor = False
-        BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+        BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
         BtnCancel.XOShowBorderOnFocus = False
         BtnCancel.XOValidateAllInput = False
         BtnCancel.XOValidateAllInputTag = Nothing
@@ -178,7 +178,7 @@ Partial Class FRMdialogbox
         BtnOk.TabIndex = 0
         BtnOk.Text = "&Ok"
         BtnOk.UseVisualStyleBackColor = False
-        BtnOk.XOButtonType = ControlCodeBase.buttonType.Yes
+        BtnOk.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
         BtnOk.XOShowBorderOnFocus = False
         BtnOk.XOValidateAllInput = False
         BtnOk.XOValidateAllInputTag = Nothing
@@ -224,7 +224,7 @@ Partial Class FRMdialogbox
         BtnOkOnly.TabIndex = 0
         BtnOkOnly.Text = "&Ok"
         BtnOkOnly.UseVisualStyleBackColor = False
-        BtnOkOnly.XOButtonType = ControlCodeBase.buttonType.Default
+        BtnOkOnly.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
         BtnOkOnly.XOShowBorderOnFocus = False
         BtnOkOnly.XOValidateAllInput = False
         BtnOkOnly.XOValidateAllInputTag = Nothing
@@ -255,13 +255,13 @@ Partial Class FRMdialogbox
         TxtMessage.XOHighlightColor = Drawing.Color.LightYellow
         TxtMessage.XOIsBlank = True
         TxtMessage.XOIsPlaceholder = False
-        TxtMessage.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
+        TxtMessage.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
         TxtMessage.XOSelectOnFocus = False
         TxtMessage.XOPasswordLengthMin = 8
         TxtMessage.XOPasswordStrengthCalc = False
         TxtMessage.XOPasswordStrengthScore = 0
         TxtMessage.XOPasswordStrengthText = Nothing
-        TxtMessage.XORestriction = ControlCodeBase.enumRestriction.None
+        TxtMessage.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
         TxtMessage.XOPlaceholderText = "Type then press Enter"
         TxtMessage.XOSqlText = ""
         TxtMessage.XOIsReplaceEmptyString = False

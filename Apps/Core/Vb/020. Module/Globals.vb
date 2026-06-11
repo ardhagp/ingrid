@@ -45,12 +45,18 @@ Module Globals
     'Public varDataProperties As New LibApp.Ingrid.Global.Properties
     Public varDataProperties As New LibApp.Ingrid.Global.Properties
 
+    'Dataset Tables
     Public varDatasetIngrid As New Ingrid.UI.Dataset.ADSglobal
+    Public Const dtSettings As String = "SYSS_Editor"
+    Public Const dtModule As String = "SysModule"
+    Public Const dtUserData As String = "UserData"
 
+    'Database Tables
     Public tPosition As New LibApp.Table.Man.Position
     Public tEmployee As New LibApp.Table.Man.Employee
     Public tSettings As New LibApp.Table.Sys.Settings
     Public tClient As New LibApp.Table.Sys.Client
+    Public tUser As New LibApp.Table.Sys.User
 
     Private Const pClientComputerName As String = "@ClientComputerName"
     Private Const pClientOSFullName As String = "@ClientOSFullName"

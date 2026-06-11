@@ -228,7 +228,7 @@
             Btn_Close.TabIndex = 1
             Btn_Close.Text = "&Close"
             Btn_Close.UseVisualStyleBackColor = False
-            Btn_Close.XOButtonType = ControlCodeBase.buttonType.No
+            Btn_Close.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
             Btn_Close.XOShowBorderOnFocus = False
             Btn_Close.XOValidateAllInput = False
             Btn_Close.XOValidateAllInputTag = Nothing

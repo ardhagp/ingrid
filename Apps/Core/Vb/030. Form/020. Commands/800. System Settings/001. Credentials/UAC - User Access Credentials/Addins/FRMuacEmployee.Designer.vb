@@ -208,7 +208,7 @@
             BtnOk.TabIndex = 1
             BtnOk.Text = "&Ok"
             BtnOk.UseVisualStyleBackColor = False
-            BtnOk.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnOk.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
             BtnOk.XOShowBorderOnFocus = False
             BtnOk.XOValidateAllInput = False
             BtnOk.XOValidateAllInputTag = Nothing
@@ -230,7 +230,7 @@
             BtnCancel.TabIndex = 2
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing

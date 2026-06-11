@@ -88,7 +88,7 @@ Partial Class FRMreportBasic
         BtnClose.TabIndex = 1
         BtnClose.Text = "&Close"
         BtnClose.UseVisualStyleBackColor = False
-        BtnClose.XOButtonType = ControlCodeBase.buttonType.Default
+        BtnClose.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
         BtnClose.XOShowBorderOnFocus = False
         BtnClose.XOValidateAllInput = False
         BtnClose.XOValidateAllInputTag = Nothing

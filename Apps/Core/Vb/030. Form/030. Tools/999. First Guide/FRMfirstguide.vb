@@ -40,7 +40,7 @@ Namespace UI
                 Gbx_Login.Visible = True
                 varStep += 1
                 Lbl_Step.Text = $"Step {varStep} :"
-                Btn_Close.XOButtonType = ControlCodeBase.buttonType.Default
+                Btn_Close.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
                 Btn_Close.Text = "&Prev"
             ElseIf varStep = 2 Then
                 If (Txt_Username.XOIsBlank) OrElse (Txt_Password.XOIsBlank) Then
@@ -142,7 +142,7 @@ Namespace UI
                 Gbx_Login.Visible = False
                 varStep -= 1
                 Lbl_Step.Text = $"Step {varStep} :"
-                Btn_Close.XOButtonType = ControlCodeBase.buttonType.No
+                Btn_Close.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
                 Btn_Close.Text = "&Close"
             ElseIf varStep = 3 Then
                 Gbx_Login.Visible = True

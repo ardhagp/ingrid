@@ -61,7 +61,7 @@
             BtnEdit.TabIndex = 0
             BtnEdit.Text = "Edit"
             BtnEdit.UseVisualStyleBackColor = False
-            BtnEdit.XOButtonType = ControlCodeBase.buttonType.Default
+            BtnEdit.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
             BtnEdit.XOShowBorderOnFocus = False
             BtnEdit.XOValidateAllInput = False
             BtnEdit.XOValidateAllInputTag = Nothing
@@ -84,7 +84,7 @@
             BtnChangeProgress.TabIndex = 1
             BtnChangeProgress.Text = "Change Progress"
             BtnChangeProgress.UseVisualStyleBackColor = False
-            BtnChangeProgress.XOButtonType = ControlCodeBase.buttonType.Default
+            BtnChangeProgress.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
             BtnChangeProgress.XOShowBorderOnFocus = False
             BtnChangeProgress.XOValidateAllInput = False
             BtnChangeProgress.XOValidateAllInputTag = Nothing
@@ -107,7 +107,7 @@
             BtnMarkAsVerified.TabIndex = 2
             BtnMarkAsVerified.Text = "Mark As Verified"
             BtnMarkAsVerified.UseVisualStyleBackColor = False
-            BtnMarkAsVerified.XOButtonType = ControlCodeBase.buttonType.Default
+            BtnMarkAsVerified.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
             BtnMarkAsVerified.XOShowBorderOnFocus = False
             BtnMarkAsVerified.XOValidateAllInput = False
             BtnMarkAsVerified.XOValidateAllInputTag = Nothing

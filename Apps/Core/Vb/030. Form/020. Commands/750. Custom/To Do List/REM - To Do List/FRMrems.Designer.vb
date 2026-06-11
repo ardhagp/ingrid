@@ -822,7 +822,7 @@
             BtnViewAttachment.TabIndex = 0
             BtnViewAttachment.Text = "View Attachment"
             BtnViewAttachment.UseVisualStyleBackColor = False
-            BtnViewAttachment.XOButtonType = ControlCodeBase.buttonType.Custom
+            BtnViewAttachment.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Custom
             BtnViewAttachment.XOShowBorderOnFocus = False
             BtnViewAttachment.XOValidateAllInput = False
             BtnViewAttachment.XOValidateAllInputTag = Nothing

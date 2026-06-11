@@ -23,10 +23,10 @@
             components = New ComponentModel.Container()
             BtnLogin = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
-            TxtUsername = New CMCv.UI.Control.txt(components)
-            TxtPassword = New CMCv.UI.Control.txt(components)
-            Lbl1 = New CMCv.UI.Control.lbl(components)
-            Lbl2 = New CMCv.UI.Control.lbl(components)
+            TxtUsername = New CMCv.UI.Control.Txt(components)
+            TxtPassword = New CMCv.UI.Control.Txt(components)
+            Lbl1 = New CMCv.UI.Control.Lbl(components)
+            Lbl2 = New CMCv.UI.Control.Lbl(components)
             tmr_status = New Timer(components)
             tmr_control = New Timer(components)
             PnlBottomButton.SuspendLayout()
@@ -74,7 +74,7 @@
             BtnLogin.FlatAppearance.BorderSize = 2
             BtnLogin.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnLogin.FlatStyle = FlatStyle.Flat
-            BtnLogin.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnLogin.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnLogin.ForeColor = Color.White
             BtnLogin.Location = New Point(266, 13)
             BtnLogin.Margin = New Padding(6, 5, 6, 5)
@@ -83,7 +83,7 @@
             BtnLogin.TabIndex = 2
             BtnLogin.Text = "&Login"
             BtnLogin.UseVisualStyleBackColor = False
-            BtnLogin.XOButtonType = ControlCodeBase.buttonType.Yes
+            BtnLogin.XOButtonType = CMCV.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnLogin.XOShowBorderOnFocus = False
             BtnLogin.XOValidateAllInput = False
             BtnLogin.XOValidateAllInputTag = Nothing
@@ -97,7 +97,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(443, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -106,7 +106,7 @@
             BtnCancel.TabIndex = 3
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = ControlCodeBase.buttonType.No
+            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
@@ -114,7 +114,7 @@
             ' TxtUsername
             ' 
             TxtUsername.AcceptsReturn = True
-            TxtUsername.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtUsername.Font = New Font("Segoe UI", 12F)
             TxtUsername.Location = New Point(181, 62)
             TxtUsername.Margin = New Padding(6, 5, 6, 5)
             TxtUsername.MaxLength = 255
@@ -123,29 +123,29 @@
             TxtUsername.TabIndex = 0
             TxtUsername.Tag = "txt"
             TxtUsername.XOAutoTrim = True
+            TxtUsername.XOHighlightColor = Color.LightYellow
+            TxtUsername.XOHighlightOnFocus = True
+            TxtUsername.XOIsBlank = True
             TxtUsername.XOIsMandatory = True
+            TxtUsername.XOIsPlaceholder = False
+            TxtUsername.XOIsReplaceEmptyString = False
+            TxtUsername.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtUsername.XOMandatoryBgColor = Color.LightPink
             TxtUsername.XOMandatoryBgColorDefault = Color.White
-            TxtUsername.XOHighlightOnFocus = True
-            TxtUsername.XOHighlightColor = Color.LightYellow
-            TxtUsername.XOIsBlank = True
-            TxtUsername.XOIsPlaceholder = False
-            TxtUsername.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
-            TxtUsername.XOSelectOnFocus = False
+            TxtUsername.XOMandatoryMessage = Nothing
             TxtUsername.XOPasswordLengthMin = 8
             TxtUsername.XOPasswordStrengthCalc = False
             TxtUsername.XOPasswordStrengthScore = 0
             TxtUsername.XOPasswordStrengthText = Nothing
-            TxtUsername.XORestriction = ControlCodeBase.enumRestriction.TextAndNumber
             TxtUsername.XOPlaceholderText = "Type then press Enter"
+            TxtUsername.XORestriction = CMCV.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
+            TxtUsername.XOSelectOnFocus = False
             TxtUsername.XOSqlText = ""
-            TxtUsername.XOIsReplaceEmptyString = False
-            TxtUsername.XOMandatoryMessage = Nothing
             ' 
             ' TxtPassword
             ' 
             TxtPassword.AcceptsReturn = True
-            TxtPassword.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtPassword.Font = New Font("Segoe UI", 12F)
             TxtPassword.Location = New Point(181, 128)
             TxtPassword.Margin = New Padding(6, 5, 6, 5)
             TxtPassword.MaxLength = 255
@@ -155,29 +155,29 @@
             TxtPassword.TabIndex = 1
             TxtPassword.Tag = "txt"
             TxtPassword.XOAutoTrim = False
+            TxtPassword.XOHighlightColor = Color.LightYellow
+            TxtPassword.XOHighlightOnFocus = True
+            TxtPassword.XOIsBlank = True
             TxtPassword.XOIsMandatory = True
+            TxtPassword.XOIsPlaceholder = False
+            TxtPassword.XOIsReplaceEmptyString = False
+            TxtPassword.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtPassword.XOMandatoryBgColor = Color.LightPink
             TxtPassword.XOMandatoryBgColorDefault = Color.White
-            TxtPassword.XOHighlightOnFocus = True
-            TxtPassword.XOHighlightColor = Color.LightYellow
-            TxtPassword.XOIsBlank = True
-            TxtPassword.XOIsPlaceholder = False
-            TxtPassword.XOLetterCase = ControlCodeBase.enumLetterCase.Normal
-            TxtPassword.XOSelectOnFocus = False
+            TxtPassword.XOMandatoryMessage = Nothing
             TxtPassword.XOPasswordLengthMin = 8
             TxtPassword.XOPasswordStrengthCalc = False
             TxtPassword.XOPasswordStrengthScore = 0
             TxtPassword.XOPasswordStrengthText = Nothing
-            TxtPassword.XORestriction = ControlCodeBase.enumRestriction.None
             TxtPassword.XOPlaceholderText = "Type then press Enter"
+            TxtPassword.XORestriction = CMCV.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtPassword.XOSelectOnFocus = False
             TxtPassword.XOSqlText = ""
-            TxtPassword.XOIsReplaceEmptyString = False
-            TxtPassword.XOMandatoryMessage = Nothing
             ' 
             ' Lbl1
             ' 
             Lbl1.AutoSize = True
-            Lbl1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            Lbl1.Font = New Font("Segoe UI", 12F)
             Lbl1.Location = New Point(37, 67)
             Lbl1.Margin = New Padding(6, 0, 6, 0)
             Lbl1.Name = "Lbl1"
@@ -189,7 +189,7 @@
             ' Lbl2
             ' 
             Lbl2.AutoSize = True
-            Lbl2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            Lbl2.Font = New Font("Segoe UI", 12F)
             Lbl2.Location = New Point(44, 135)
             Lbl2.Margin = New Padding(6, 0, 6, 0)
             Lbl2.Name = "Lbl2"

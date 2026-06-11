@@ -290,7 +290,6 @@
     <Folder Include="2002 - System\110 - File Processor\Limiter\" />
     <Folder Include="2002 - System\900 - Application\" />
     <Folder Include="2091 - Class\01 - Database\02 - SQL Server 2008\" />
-    <Folder Include="2099 - Interface\3rd Party\MergerToolStrips\" />
     <Folder Include="2099 - Interface\Controls\MergerToolStrips\" />
     <Folder Include="2099 - Interface\Controls\TextEditor\" />
     <Folder Include="2099 - Interface\Forms\Templates\Windows10\" />
@@ -525,15 +524,6 @@
     <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\MergeableMenuStrip.Designer.vb" />
-    <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\MergeableMenuStrip.vb" />
-    <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\MergeableStatusStrip.Designer.vb" />
-    <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\MergeableStatusStrip.vb" />
-    <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\MergeableToolStrip.Designer.vb" />
-    <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\MergeableToolStrip.vb" />
-    <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\ToolStripVisualInheritanceFixer.Designer.vb" />
-    <Compile Remove="2099 - Interface\3rd Party\MergerToolStrips\ToolStripVisualInheritanceFixer.vb" />
-    <Compile Remove="2099 - Interface\Controls\Timer\tmr.vb" />
     <Compile Remove="2099 - Interface\Controls\Tool Strip\too.Designer.vb" />
     <Compile Remove="2099 - Interface\Controls\Tool Strip\too.vb" />
   </ItemGroup>

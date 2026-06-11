@@ -100,7 +100,7 @@ Namespace UI.Control
 
         <SupportedOSPlatform("windows")>
         Private Sub GenerateNewColor()
-            MyBase.AlternatingRowsDefaultCellStyle.BackColor = ControlCodeBase.NewRandomColor(190, 255, 190, 255, 90, 190)
+            MyBase.AlternatingRowsDefaultCellStyle.BackColor = CMCV.UI.Control.ControlCodeBase.NewRandomColor(190, 255, 190, 255, 90, 190)
         End Sub
     End Class
 End Namespace

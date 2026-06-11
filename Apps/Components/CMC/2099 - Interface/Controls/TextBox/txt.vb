@@ -22,9 +22,9 @@ Namespace UI.Control
             Me.XOHighlightOnFocus = False
             Me.XOHighlightColor = Drawing.Color.LightYellow
             Me.XOSelectOnFocus = False
-            Me.XORestriction = ControlCodeBase.enumRestriction.None
+            Me.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
             Me.XOIsBlank = True
-            Me.XOLetterCase = ControlCodeBase.EnumLetterCase.Normal
+            Me.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             Me.XOIsPlaceholder = False
             Me.XOPlaceholderText = "Type then press Enter"
             Me.XOPasswordLengthMin = 8
@@ -213,26 +213,26 @@ Namespace UI.Control
             End Set
         End Property
 
-        Private varLetterCase As ControlCodeBase.EnumLetterCase
+        Private varLetterCase As CMCV.UI.Control.ControlCodeBase.EnumLetterCase
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies how the component transforms its text value by applying the selected letter‑case rule")>
-        Public Property XOLetterCase As ControlCodeBase.EnumLetterCase
+        Public Property XOLetterCase As CMCV.UI.Control.ControlCodeBase.EnumLetterCase
             Get
                 Return varLetterCase
             End Get
-            Set(value As ControlCodeBase.EnumLetterCase)
+            Set(value As CMCV.UI.Control.ControlCodeBase.EnumLetterCase)
                 varLetterCase = value
             End Set
         End Property
 
-        Private varRestriction As ControlCodeBase.EnumRestriction
+        Private varRestriction As CMCV.UI.Control.ControlCodeBase.EnumRestriction
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Defines the input restriction rule that limits which characters or patterns are allowed in the component")>
-        Public Property XORestriction As ControlCodeBase.EnumRestriction
+        Public Property XORestriction As CMCV.UI.Control.ControlCodeBase.EnumRestriction
             Get
                 Return varRestriction
             End Get
-            Set(value As ControlCodeBase.EnumRestriction)
+            Set(value As CMCV.UI.Control.ControlCodeBase.EnumRestriction)
                 varRestriction = value
             End Set
         End Property
@@ -272,28 +272,28 @@ Namespace UI.Control
             End If
 
             varSqlSafeText = varSqlSafeText.Replace("select ", "").Replace("'", "").Replace(";", "").Replace("--", "").Replace("drop table ", "").Replace("update ", "").Replace("insert into ", "").Replace("--", "").Replace("xp_", "").Trim
-            If XOLetterCase = ControlCodeBase.EnumLetterCase.UPPERCASE Then
+            If XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE Then
                 varSqlSafeText = varSqlSafeText.ToUpper(CultureInfo.CurrentCulture)
-            ElseIf XOLetterCase = ControlCodeBase.EnumLetterCase.lowercase Then
+            ElseIf XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.lowercase Then
                 varSqlSafeText = varSqlSafeText.ToLower(CultureInfo.CurrentCulture)
             End If
 
             Return varSqlSafeText
         End Function
 
-        Private Sub CheckRestriction(valenurestriction As ControlCodeBase.enumRestriction)
+        Private Sub CheckRestriction(valenurestriction As CMCV.UI.Control.ControlCodeBase.enumRestriction)
             Select Case valenurestriction
-                Case ControlCodeBase.enumRestriction.None
+                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.None
                 'Do nothing
-                Case ControlCodeBase.enumRestriction.OnlyNumber
+                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.OnlyNumber
                 'Do Only Number
-                Case ControlCodeBase.enumRestriction.OnlyText
+                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.OnlyText
                 'Do Only Text
-                Case ControlCodeBase.enumRestriction.TextAndNumber
+                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.TextAndNumber
                 'Do Text and Number
-                Case ControlCodeBase.enumRestriction.TextAndSymbol
+                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.TextAndSymbol
                 'Do Text and Symbol
-                Case ControlCodeBase.enumRestriction.Email
+                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.Email
                     'Do Email
             End Select
         End Sub
@@ -407,31 +407,31 @@ Namespace UI.Control
             Dim restriction = Me.XORestriction
 
             Select Case restriction
-                Case ControlCodeBase.enumRestriction.None
+                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.None
                 ' Allow all input
 
-                Case ControlCodeBase.enumRestriction.OnlyNumber
+                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.OnlyNumber
                     If Not Char.IsDigit(ch) Then
                         e.Handled = True
                     End If
 
-                Case ControlCodeBase.enumRestriction.OnlyText
+                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.OnlyText
                     If Not Char.IsLetter(ch) Then
                         e.Handled = True
                     End If
 
-                Case ControlCodeBase.enumRestriction.TextAndNumber
+                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.TextAndNumber
                     If Not Char.IsLetterOrDigit(ch) Then
                         e.Handled = True
                     End If
 
-                Case ControlCodeBase.enumRestriction.TextAndSymbol
+                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.TextAndSymbol
                     ' Allow letters, digits, punctuation, symbols
                     If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch)) Then
                         e.Handled = True
                     End If
 
-                Case ControlCodeBase.enumRestriction.Email
+                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.Email
                     ' Use a single static string for allowed characters to avoid reallocating on each keypress
                     Static allowedChars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._-"
                     If Not allowedChars.Contains(ch, StringComparison.Ordinal) Then

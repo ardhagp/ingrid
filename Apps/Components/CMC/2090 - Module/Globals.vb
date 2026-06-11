@@ -43,7 +43,7 @@ Module Globals
 #End Region
 
 #Region "Class Globals"
-    Public CBS As New ControlCodeBase
+    Public varCodebase As New UI.Control.ControlCodeBase
     Public V_CFILEInfo As New OperatingSystem.File.Info
 
 #End Region

@@ -15,8 +15,8 @@ Namespace UI.Control
             InitializeComponent()
             Call ActivateLicenses()
             MyBase.ForeColor = Color.DodgerBlue
-            Me.XOGradientDirection = ControlCodeBase.EnumGradientType.Horizontal
-            Me.XOProgressBarColor = ControlCodeBase.EnumColorFill.Solid
+            Me.XOGradientDirection = CMCV.UI.Control.ControlCodeBase.EnumGradientType.Horizontal
+            Me.XOProgressBarColor = CMCV.UI.Control.ControlCodeBase.EnumColorFill.Solid
             Me.SetStyle(ControlStyles.UserPaint, True)
         End Sub
 
@@ -38,13 +38,13 @@ Namespace UI.Control
             rec.Width = CInt(Math.Truncate((rec.Width * scalefactor) - 4))
             rec.Height -= 4
 
-            If Me.XOProgressBarColor = ControlCodeBase.EnumColorFill.Gradien AndAlso Me.XOGradientDirection = ControlCodeBase.EnumGradientType.Vertikal Then
+            If Me.XOProgressBarColor = CMCV.UI.Control.ControlCodeBase.EnumColorFill.Gradien AndAlso Me.XOGradientDirection = CMCV.UI.Control.ControlCodeBase.EnumGradientType.Vertikal Then
                 brush = New LinearGradientBrush(rec, Me.ForeColor, Me.BackColor, LinearGradientMode.Vertical)
-            ElseIf Me.XOProgressBarColor = ControlCodeBase.EnumColorFill.Solid AndAlso Me.XOGradientDirection = ControlCodeBase.EnumGradientType.Vertikal Then
+            ElseIf Me.XOProgressBarColor = CMCV.UI.Control.ControlCodeBase.EnumColorFill.Solid AndAlso Me.XOGradientDirection = CMCV.UI.Control.ControlCodeBase.EnumGradientType.Vertikal Then
                 brush = New LinearGradientBrush(rec, Me.ForeColor, Me.ForeColor, LinearGradientMode.Vertical)
-            ElseIf Me.XOProgressBarColor = ControlCodeBase.EnumColorFill.Gradien AndAlso Me.XOGradientDirection = ControlCodeBase.EnumGradientType.Horizontal Then
+            ElseIf Me.XOProgressBarColor = CMCV.UI.Control.ControlCodeBase.EnumColorFill.Gradien AndAlso Me.XOGradientDirection = CMCV.UI.Control.ControlCodeBase.EnumGradientType.Horizontal Then
                 brush = New LinearGradientBrush(rec, Me.ForeColor, Me.BackColor, LinearGradientMode.Horizontal)
-            ElseIf Me.XOProgressBarColor = ControlCodeBase.EnumColorFill.Solid AndAlso Me.XOGradientDirection = ControlCodeBase.EnumGradientType.Horizontal Then
+            ElseIf Me.XOProgressBarColor = CMCV.UI.Control.ControlCodeBase.EnumColorFill.Solid AndAlso Me.XOGradientDirection = CMCV.UI.Control.ControlCodeBase.EnumGradientType.Horizontal Then
                 brush = New LinearGradientBrush(rec, Me.ForeColor, Me.ForeColor, LinearGradientMode.Horizontal)
             End If
             brush2 = New LinearGradientBrush(rec, Me.BackColor, Me.BackColor, LinearGradientMode.Vertical)
@@ -56,24 +56,24 @@ Namespace UI.Control
 
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies the color used to render the filled portion of the progress bar")>
-        Private varProgressBarColor As ControlCodeBase.EnumColorFill
-        Public Property XOProgressBarColor As ControlCodeBase.EnumColorFill
+        Private varProgressBarColor As CMCV.UI.Control.ControlCodeBase.EnumColorFill
+        Public Property XOProgressBarColor As CMCV.UI.Control.ControlCodeBase.EnumColorFill
             Get
                 Return varProgressBarColor
             End Get
-            Set(value As ControlCodeBase.EnumColorFill)
+            Set(value As CMCV.UI.Control.ControlCodeBase.EnumColorFill)
                 varProgressBarColor = value
             End Set
         End Property
 
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies the direction in which the gradient fill is applied to the progress bar")>
-        Private varGradientDirection As ControlCodeBase.EnumGradientType
-        Public Property XOGradientDirection As ControlCodeBase.EnumGradientType
+        Private varGradientDirection As CMCV.UI.Control.ControlCodeBase.EnumGradientType
+        Public Property XOGradientDirection As CMCV.UI.Control.ControlCodeBase.EnumGradientType
             Get
                 Return varGradientDirection
             End Get
-            Set(value As ControlCodeBase.EnumGradientType)
+            Set(value As CMCV.UI.Control.ControlCodeBase.EnumGradientType)
                 varGradientDirection = value
             End Set
         End Property
