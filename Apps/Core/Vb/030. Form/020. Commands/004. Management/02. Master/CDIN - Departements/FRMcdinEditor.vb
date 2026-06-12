@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMcdinEditor
 
 #Region "Declaration"
@@ -68,21 +68,21 @@ Namespace UI
             End With
 
             If (CboCompany.Items.Count = 0) AndAlso (varDataProperties.AllParameters("@DepartmentCode").ToString = String.Empty) OrElse (varDataProperties.AllParameters("@DepartmentName").ToString = String.Empty) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Ensure that the Company Code is selected and that both the Department Code and Department Name are properly filled in.", LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Ensure that the Company Code is selected and that both the Department Code and Department Name are properly filled in.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf (varDataProperties.DepartmentIsNew) AndAlso (CMDcdin.Editor.IsDuplicate(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Department Code is already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Department Code is already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf (Not (varDataProperties.DepartmentIsNew) AndAlso (CMDcdin.Editor.IsDuplicate(varDataProperties))) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Department Code cannot be used because it is already assigned to another company.", LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Department Code cannot be used because it is already assigned to another company.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             If (CMDcdin.Editor.PushData(varDataProperties)) Then
                 RaiseEvent EventRecordSaved()
-                UI.FRMmainframe6.Ts_status.Text = "Success"
+                UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
             Else
-                UI.FRMmainframe6.Ts_status.Text = "Failed to save"
+                UI.Canvas.FRMmainframe6.Ts_status.Text = "Failed to save"
                 Return
             End If
 

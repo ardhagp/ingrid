@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMpost
-        Inherits CMCv.ui.canvas.FRMstandardFind
+        Inherits CMCv.UI.Canvas.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -24,7 +24,7 @@
             Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnPOST = New CMCv.UI.Control.dgn(components)
+            DgnPOST = New CMCv.UI.Control.Dgn(components)
             company_code = New DataGridViewTextBoxColumn()
             department_code = New DataGridViewTextBoxColumn()
             position_id = New DataGridViewTextBoxColumn()
@@ -68,7 +68,7 @@
             DgnPOST.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
             DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
             DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -79,7 +79,7 @@
             DgnPOST.Columns.AddRange(New DataGridViewColumn() {company_code, department_code, position_id, position_code, position_name, position_description})
             DgnPOST.Dock = DockStyle.Fill
             DgnPOST.EnableHeadersVisualStyles = False
-            DgnPOST.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DgnPOST.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
             DgnPOST.Location = New Point(0, 88)
             DgnPOST.Margin = New Padding(6, 5, 6, 5)
             DgnPOST.Name = "DgnPOST"
@@ -87,7 +87,7 @@
             DgnPOST.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle3.BackColor = Color.YellowGreen
-            DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
             DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
             DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -168,7 +168,7 @@
             ' 
             ' FRMpost
             ' 
-            AutoScaleDimensions = New SizeF(10F, 25F)
+            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
             ClientSize = New Size(1307, 1078)
             ControlBox = False
             Margin = New Padding(10, 5, 10, 5)
@@ -189,7 +189,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnPOST As cmcv.ui.control.dgn
+        Friend WithEvents DgnPOST As CMCv.UI.Control.Dgn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
         Friend WithEvents department_code As DataGridViewTextBoxColumn
         Friend WithEvents position_id As DataGridViewTextBoxColumn

@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMdummy
         Public Event Done()
         Private WithEvents Frm_dummy_Editor As New FRMdummyEditor

@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMntfc
 
 #Region "Declarations"
@@ -12,8 +12,8 @@ Namespace UI
         Private Sub GetData()
             DblBuffer(DgnNotification)
             CMDntfc.View.Display(varDataProperties, DgnNotification, varDataProperties.EmployeeId)
-            UI.FRMmainframe6.USERMENU.Text = varDataProperties.EmployeeFirstName
-            UI.FRMmainframe6.NotificationToolStripMenuItem.Text = "0 Notification(s)"
+            UI.Canvas.FRMmainframe6.USERMENU.Text = varDataProperties.EmployeeFirstName
+            UI.Canvas.FRMmainframe6.NotificationToolStripMenuItem.Text = "0 Notification(s)"
         End Sub
 #End Region
 
@@ -25,7 +25,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub FRMntfc_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             DgnNotification.XOGETNewColor()
-            Call GETDATA()
+            Call GetData()
         End Sub
     End Class
 End Namespace

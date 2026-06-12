@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMaccountingDashboard
-        Inherits CMCv.ui.canvas.FRMstandard
+        Inherits CMCv.UI.Canvas.FRMstandard
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>

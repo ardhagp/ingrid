@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMplnt
         'Private V_SQL As New CMDplnt.View
         Private WithEvents Frm_plnt_Editor As New FRMplntEditor
@@ -43,14 +43,14 @@ Namespace UI
             varDataProperties.AllParameters.Remove(pCommand)
             varDataProperties.AllParameters.Add(pCommand, "PLNT")
             If Not varUserAccess.User(varDataProperties) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             varDataProperties.PlantIsNew = True
             Frm_plnt_Editor = New FRMplntEditor
             Display(Frm_plnt_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new plant", True)
-            UI.FRMmainframe6.Ts_status.Text = String.Empty
+            UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -59,19 +59,19 @@ Namespace UI
             varDataProperties.AllParameters.Remove(pCommand)
             varDataProperties.AllParameters.Add(pCommand, "PLNT")
             If Not varUserAccess.User(varDataProperties) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
 
             If varDataProperties.PlantIsNew Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 Frm_plnt_Editor = New FRMplntEditor
                 Display(Frm_plnt_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update plant data", True)
             End If
-            UI.FRMmainframe6.Ts_status.Text = String.Empty
+            UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -80,21 +80,21 @@ Namespace UI
             varDataProperties.AllParameters.Remove(pCommand)
             varDataProperties.AllParameters.Add(pCommand, "PLNT")
             If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
 
             If varDataProperties.PlantIsNew Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Question, CMCv.ui.canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                     If CMDplnt.View.DeleteData(varDataProperties) Then
                         Call GetData(True)
-                        UI.FRMmainframe6.Ts_status.Text = "Success"
+                        UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
                     Else
-                        UI.FRMmainframe6.Ts_status.Text = "Delete failed"
+                        UI.Canvas.FRMmainframe6.Ts_status.Text = "Delete failed"
                     End If
                 End If
             End If

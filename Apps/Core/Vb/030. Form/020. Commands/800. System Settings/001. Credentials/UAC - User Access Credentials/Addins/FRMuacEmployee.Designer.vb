@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMuacEmployee
-        Inherits CMCv.ui.canvas.FRMstandardFindFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFindFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -24,7 +24,7 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnAddinEmployee = New CMCv.UI.Control.dgn(components)
+            DgnAddinEmployee = New CMCv.UI.Control.Dgn(components)
             employee_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
             departement_code = New DataGridViewTextBoxColumn()
@@ -208,7 +208,7 @@
             BtnOk.TabIndex = 1
             BtnOk.Text = "&Ok"
             BtnOk.UseVisualStyleBackColor = False
-            BtnOk.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+            BtnOk.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnOk.XOShowBorderOnFocus = False
             BtnOk.XOValidateAllInput = False
             BtnOk.XOValidateAllInputTag = Nothing
@@ -230,7 +230,7 @@
             BtnCancel.TabIndex = 2
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnCancel.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
@@ -257,7 +257,7 @@
         End Sub
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnOk As CMCv.UI.Control.Btn
-        Friend WithEvents DgnAddinEmployee As CMCv.UI.Control.dgn
+        Friend WithEvents DgnAddinEmployee As CMCv.UI.Control.Dgn
         Friend WithEvents employee_id As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
         Friend WithEvents departement_code As DataGridViewTextBoxColumn

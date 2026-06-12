@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMntfc
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -25,7 +25,7 @@
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
             BtnClose = New CMCv.UI.Control.Btn(components)
-            DgnNotification = New CMCv.UI.Control.dgn(components)
+            DgnNotification = New CMCv.UI.Control.Dgn(components)
             notification_message = New DataGridViewTextBoxColumn()
             notification_datetime = New DataGridViewTextBoxColumn()
             PnlBottomButton.SuspendLayout()
@@ -75,7 +75,7 @@
             BtnClose.TabIndex = 1
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnClose.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnClose.XOShowBorderOnFocus = False
             BtnClose.XOValidateAllInput = False
             BtnClose.XOValidateAllInputTag = Nothing
@@ -164,7 +164,7 @@
         End Sub
 
         Friend WithEvents BtnClose As CMCv.UI.Control.Btn
-        Friend WithEvents DgnNotification As CMCv.UI.Control.dgn
+        Friend WithEvents DgnNotification As CMCv.UI.Control.Dgn
         Friend WithEvents notification_message As DataGridViewTextBoxColumn
         Friend WithEvents notification_datetime As DataGridViewTextBoxColumn
     End Class

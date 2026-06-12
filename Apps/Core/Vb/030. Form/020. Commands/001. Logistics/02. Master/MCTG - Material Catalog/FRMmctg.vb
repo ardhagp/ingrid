@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMmctg
 
 #Region "Declarations"
@@ -66,7 +66,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub FRMmctg_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Call LoadMenu()
-            Call LoadDGN()
+            Call LoadDgn()
             Call ClearFind()
         End Sub
 #End Region
@@ -102,7 +102,7 @@ Namespace UI
         Private Sub ClearFind()
             TxtFind.Clear()
             TxtFind.ClearSearch()
-            Call GETDATA(True)
+            Call GetData(True)
         End Sub
 
 #End Region

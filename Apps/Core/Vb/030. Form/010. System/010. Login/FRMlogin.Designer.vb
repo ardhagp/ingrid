@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMlogin
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -74,7 +74,7 @@
             BtnLogin.FlatAppearance.BorderSize = 2
             BtnLogin.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnLogin.FlatStyle = FlatStyle.Flat
-            BtnLogin.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            BtnLogin.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnLogin.ForeColor = Color.White
             BtnLogin.Location = New Point(266, 13)
             BtnLogin.Margin = New Padding(6, 5, 6, 5)
@@ -83,7 +83,7 @@
             BtnLogin.TabIndex = 2
             BtnLogin.Text = "&Login"
             BtnLogin.UseVisualStyleBackColor = False
-            BtnLogin.XOButtonType = CMCV.UI.Control.ControlCodeBase.ButtonType.Yes
+            BtnLogin.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnLogin.XOShowBorderOnFocus = False
             BtnLogin.XOValidateAllInput = False
             BtnLogin.XOValidateAllInputTag = Nothing
@@ -97,7 +97,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(443, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -106,7 +106,7 @@
             BtnCancel.TabIndex = 3
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.ButtonType.No
+            BtnCancel.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
@@ -114,7 +114,7 @@
             ' TxtUsername
             ' 
             TxtUsername.AcceptsReturn = True
-            TxtUsername.Font = New Font("Segoe UI", 12F)
+            TxtUsername.Font = New Font("Segoe UI", 12.0F)
             TxtUsername.Location = New Point(181, 62)
             TxtUsername.Margin = New Padding(6, 5, 6, 5)
             TxtUsername.MaxLength = 255
@@ -129,7 +129,7 @@
             TxtUsername.XOIsMandatory = True
             TxtUsername.XOIsPlaceholder = False
             TxtUsername.XOIsReplaceEmptyString = False
-            TxtUsername.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtUsername.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtUsername.XOMandatoryBgColor = Color.LightPink
             TxtUsername.XOMandatoryBgColorDefault = Color.White
             TxtUsername.XOMandatoryMessage = Nothing
@@ -138,14 +138,14 @@
             TxtUsername.XOPasswordStrengthScore = 0
             TxtUsername.XOPasswordStrengthText = Nothing
             TxtUsername.XOPlaceholderText = "Type then press Enter"
-            TxtUsername.XORestriction = CMCV.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
+            TxtUsername.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
             TxtUsername.XOSelectOnFocus = False
             TxtUsername.XOSqlText = ""
             ' 
             ' TxtPassword
             ' 
             TxtPassword.AcceptsReturn = True
-            TxtPassword.Font = New Font("Segoe UI", 12F)
+            TxtPassword.Font = New Font("Segoe UI", 12.0F)
             TxtPassword.Location = New Point(181, 128)
             TxtPassword.Margin = New Padding(6, 5, 6, 5)
             TxtPassword.MaxLength = 255
@@ -161,7 +161,7 @@
             TxtPassword.XOIsMandatory = True
             TxtPassword.XOIsPlaceholder = False
             TxtPassword.XOIsReplaceEmptyString = False
-            TxtPassword.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtPassword.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtPassword.XOMandatoryBgColor = Color.LightPink
             TxtPassword.XOMandatoryBgColorDefault = Color.White
             TxtPassword.XOMandatoryMessage = Nothing
@@ -170,14 +170,14 @@
             TxtPassword.XOPasswordStrengthScore = 0
             TxtPassword.XOPasswordStrengthText = Nothing
             TxtPassword.XOPlaceholderText = "Type then press Enter"
-            TxtPassword.XORestriction = CMCV.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtPassword.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtPassword.XOSelectOnFocus = False
             TxtPassword.XOSqlText = ""
             ' 
             ' Lbl1
             ' 
             Lbl1.AutoSize = True
-            Lbl1.Font = New Font("Segoe UI", 12F)
+            Lbl1.Font = New Font("Segoe UI", 12.0F)
             Lbl1.Location = New Point(37, 67)
             Lbl1.Margin = New Padding(6, 0, 6, 0)
             Lbl1.Name = "Lbl1"
@@ -189,7 +189,7 @@
             ' Lbl2
             ' 
             Lbl2.AutoSize = True
-            Lbl2.Font = New Font("Segoe UI", 12F)
+            Lbl2.Font = New Font("Segoe UI", 12.0F)
             Lbl2.Location = New Point(44, 135)
             Lbl2.Margin = New Padding(6, 0, 6, 0)
             Lbl2.Name = "Lbl2"
@@ -208,7 +208,7 @@
             ' 
             ' FRMlogin
             ' 
-            AutoScaleDimensions = New SizeF(10F, 25F)
+            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
             ClientSize = New Size(630, 488)
             ControlBox = False
             FormBorderStyle = FormBorderStyle.FixedDialog
@@ -226,10 +226,10 @@
         End Sub
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnLogin As CMCv.UI.Control.Btn
-        Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
-        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
-        Friend WithEvents TxtPassword As CMCv.UI.Control.txt
-        Friend WithEvents TxtUsername As CMCv.UI.Control.txt
+        Friend WithEvents Lbl2 As CMCv.UI.Control.Lbl
+        Friend WithEvents Lbl1 As CMCv.UI.Control.Lbl
+        Friend WithEvents TxtPassword As CMCv.UI.Control.Txt
+        Friend WithEvents TxtUsername As CMCv.UI.Control.Txt
         Friend WithEvents tmr_status As Timer
         Friend WithEvents tmr_control As Timer
     End Class

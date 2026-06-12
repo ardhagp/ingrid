@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMconnEditor
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -100,7 +100,7 @@
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(444, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -749,7 +749,7 @@
             ' 
             ' FRMconnEditor
             ' 
-            AutoScaleDimensions = New SizeF(10F, 25F)
+            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
             ClientSize = New Size(807, 860)
             ControlBox = False
             FormBorderStyle = FormBorderStyle.FixedSingle
@@ -777,28 +777,28 @@
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents TbctlBasic As CMCv.UI.Control.Tbx
         Friend WithEvents tp1_ As TabPage
-        Friend WithEvents TxtAddress As CMCv.UI.Control.txt
-        Friend WithEvents TxtConnectionName As CMCv.UI.Control.txt
-        Friend WithEvents TxtPort As CMCv.UI.Control.txt
+        Friend WithEvents TxtAddress As CMCv.UI.Control.Txt
+        Friend WithEvents TxtConnectionName As CMCv.UI.Control.Txt
+        Friend WithEvents TxtPort As CMCv.UI.Control.Txt
         Friend WithEvents ULbl_Address As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl_Name As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl_Password As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl_Username As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl_Port As CMCv.UI.Control.ULbl
-        Friend WithEvents TxtPassword As CMCv.UI.Control.txt
-        Friend WithEvents TxtUsername As CMCv.UI.Control.txt
+        Friend WithEvents TxtPassword As CMCv.UI.Control.Txt
+        Friend WithEvents TxtUsername As CMCv.UI.Control.Txt
         Friend WithEvents Btn_Test As CMCv.UI.Control.Btn
         Friend WithEvents ChkDefault As CMCv.UI.Control.Chk
-        Friend WithEvents TxtDatabaseName As CMCv.UI.Control.txt
+        Friend WithEvents TxtDatabaseName As CMCv.UI.Control.Txt
         Friend WithEvents ULbl_DatabaseName As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
         Friend WithEvents CboDBEngine As CMCv.UI.Control.Cbo
         Friend WithEvents tp2_ As TabPage
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
-        Friend WithEvents txtImportCode As CMCv.UI.Control.txt
+        Friend WithEvents txtImportCode As CMCv.UI.Control.Txt
         Friend WithEvents btnGet As CMCv.UI.Control.Btn
-        Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
-        Friend WithEvents txtImportContent As CMCv.UI.Control.txt
+        Friend WithEvents Pnl1 As CMCv.UI.Control.Pnl
+        Friend WithEvents txtImportContent As CMCv.UI.Control.Txt
         Friend WithEvents btnExport As CMCv.UI.Control.Btn
         Friend WithEvents btnImport As CMCv.UI.Control.Btn
         Friend WithEvents btnSaveAs As CMCv.UI.Control.Btn

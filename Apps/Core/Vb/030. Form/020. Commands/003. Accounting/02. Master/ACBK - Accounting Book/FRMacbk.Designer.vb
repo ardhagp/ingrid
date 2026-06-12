@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMacbk
-        Inherits CMCv.ui.canvas.FRMstandard
+        Inherits CMCv.UI.Canvas.FRMstandard
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -25,11 +25,11 @@
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Pnl1 = New CMCv.UI.Control.pnl(components)
+            Pnl1 = New CMCv.UI.Control.Pnl(components)
             BtnClear = New CMCv.UI.Control.Btn(components)
-            Lbl1 = New CMCv.UI.Control.lbl(components)
-            TxtFind = New CMCv.UI.Control.txt(components)
-            DgnACBK = New CMCv.UI.Control.dgn(components)
+            Lbl1 = New CMCv.UI.Control.Lbl(components)
+            TxtFind = New CMCv.UI.Control.Txt(components)
+            DgnACBK = New CMCv.UI.Control.Dgn(components)
             book_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
             book_code = New DataGridViewTextBoxColumn()
@@ -78,7 +78,7 @@
             BtnClear.TabIndex = 801
             BtnClear.Text = "Clear"
             BtnClear.UseVisualStyleBackColor = False
-            BtnClear.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnClear.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnClear.XOShowBorderOnFocus = False
             BtnClear.XOValidateAllInput = False
             BtnClear.XOValidateAllInputTag = Nothing
@@ -113,13 +113,13 @@
             TxtFind.XOHighlightColor = Color.LightYellow
             TxtFind.XOIsBlank = True
             TxtFind.XOIsPlaceholder = False
-            TxtFind.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtFind.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtFind.XOSelectOnFocus = False
             TxtFind.XOPasswordLengthMin = 8
             TxtFind.XOPasswordStrengthCalc = False
             TxtFind.XOPasswordStrengthScore = 0
             TxtFind.XOPasswordStrengthText = Nothing
-            TxtFind.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtFind.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtFind.XOPlaceholderText = "Type then press Enter"
             TxtFind.XOSqlText = Nothing
             TxtFind.XOIsReplaceEmptyString = False
@@ -244,11 +244,11 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
+        Friend WithEvents Pnl1 As CMCv.UI.Control.Pnl
         Friend WithEvents BtnClear As CMCv.UI.Control.Btn
-        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
-        Friend WithEvents TxtFind As CMCv.UI.Control.txt
-        Friend WithEvents DgnACBK As CMCv.UI.Control.dgn
+        Friend WithEvents Lbl1 As CMCv.UI.Control.Lbl
+        Friend WithEvents TxtFind As CMCv.UI.Control.Txt
+        Friend WithEvents DgnACBK As CMCv.UI.Control.Dgn
         Friend WithEvents book_id As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
         Friend WithEvents book_code As DataGridViewTextBoxColumn

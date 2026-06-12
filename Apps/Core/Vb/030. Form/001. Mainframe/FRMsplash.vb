@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMsplash
         <SupportedOSPlatform("windows")>
         Private Sub splash_Load(sender As Object, e As EventArgs) Handles Me.Load

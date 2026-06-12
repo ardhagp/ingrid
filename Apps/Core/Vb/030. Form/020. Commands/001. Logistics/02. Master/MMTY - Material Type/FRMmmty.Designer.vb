@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMmmty
-        Inherits CMCv.ui.canvas.FRMstandardFind
+        Inherits CMCv.UI.Canvas.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -25,7 +25,7 @@
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnMMTY = New cmcv.ui.control.dgn(components)
+            DgnMMTY = New CMCv.UI.Control.Dgn(components)
             materialtype_id = New DataGridViewTextBoxColumn()
             materialtype_description = New DataGridViewTextBoxColumn()
             itemcount = New DataGridViewTextBoxColumn()
@@ -151,7 +151,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnMMTY As cmcv.ui.control.dgn
+        Friend WithEvents DgnMMTY As CMCv.UI.Control.Dgn
         Friend WithEvents materialtype_id As DataGridViewTextBoxColumn
         Friend WithEvents materialtype_description As DataGridViewTextBoxColumn
         Friend WithEvents itemcount As DataGridViewTextBoxColumn

@@ -4,7 +4,7 @@ Namespace UI
     Public Class FRMmods
 #Region "Declaration"
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
-        Private WithEvents Frm_mods_Editor As New FRMmodsEditor
+        Private WithEvents Frm_mods_Editor As New UI.Canvas.FRMmodsEditor
 
         Private Const pCommand As String = "@Command"
         Private Const pSystemModuleId As String = "@pSystemModuleId"
@@ -45,7 +45,7 @@ Namespace UI
             End If
 
             varDataProperties.SystemModuleIsNew = True
-            Frm_mods_Editor = New FRMmodsEditor
+            Frm_mods_Editor = New UI.Canvas.FRMmodsEditor
             Display(Frm_mods_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new module", True)
         End Sub
 
@@ -64,7 +64,7 @@ Namespace UI
             If varDataProperties.SystemModuleIsNew Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                Frm_mods_Editor = New FRMmodsEditor
+                Frm_mods_Editor = New UI.Canvas.FRMmodsEditor
                 Display(Frm_mods_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your employee data", True)
             End If
         End Sub
@@ -88,9 +88,9 @@ Namespace UI
                     If (CMDdar.View.DeleteData(varDataProperties, Convert.ToString(varDataProperties.SystemModuleId))) Then
                         Call GetData(True)
                         RaiseEvent EventDataChanged()
-                        UI.FRMmainframe6.Ts_status.Text = "Success"
+                        UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
                     Else
-                        UI.FRMmainframe6.Ts_status.Text = "Delete failed"
+                        UI.Canvas.FRMmainframe6.Ts_status.Text = "Delete failed"
                     End If
                 End If
             End If

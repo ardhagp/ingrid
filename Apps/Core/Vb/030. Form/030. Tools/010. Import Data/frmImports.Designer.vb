@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMimports
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,10 +21,10 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Pnl1 = New CMCv.UI.Control.pnl(components)
-            LblFileName = New CMCv.UI.Control.lbl(components)
+            Pnl1 = New CMCv.UI.Control.Pnl(components)
+            LblFileName = New CMCv.UI.Control.Lbl(components)
             BtnBrowse = New CMCv.UI.Control.Btn(components)
-            TxtProgress = New CMCv.UI.Control.txt(components)
+            TxtProgress = New CMCv.UI.Control.Txt(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnClose = New CMCv.UI.Control.Btn(components)
             od = New OpenFileDialog()
@@ -97,7 +97,7 @@
             BtnBrowse.TabIndex = 0
             BtnBrowse.Text = "Browse..."
             BtnBrowse.UseVisualStyleBackColor = False
-            BtnBrowse.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Custom
+            BtnBrowse.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Custom
             BtnBrowse.XOShowBorderOnFocus = False
             BtnBrowse.XOValidateAllInput = False
             BtnBrowse.XOValidateAllInputTag = Nothing
@@ -125,13 +125,13 @@
             TxtProgress.XOHighlightColor = Color.LightYellow
             TxtProgress.XOIsBlank = True
             TxtProgress.XOIsPlaceholder = False
-            TxtProgress.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtProgress.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtProgress.XOSelectOnFocus = False
             TxtProgress.XOPasswordLengthMin = 8
             TxtProgress.XOPasswordStrengthCalc = False
             TxtProgress.XOPasswordStrengthScore = 0
             TxtProgress.XOPasswordStrengthText = Nothing
-            TxtProgress.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtProgress.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtProgress.XOPlaceholderText = "Type then press Enter"
             TxtProgress.XOSqlText = Nothing
             TxtProgress.XOIsReplaceEmptyString = False
@@ -155,7 +155,7 @@
             BtnSave.TabIndex = 0
             BtnSave.Text = "Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+            BtnSave.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -178,7 +178,7 @@
             BtnClose.TabIndex = 1
             BtnClose.Text = "Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnClose.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnClose.XOShowBorderOnFocus = False
             BtnClose.XOValidateAllInput = False
             BtnClose.XOValidateAllInputTag = Nothing
@@ -208,13 +208,13 @@
             PerformLayout()
 
         End Sub
-        Friend WithEvents Pnl1 As CMCv.UI.Control.pnl
+        Friend WithEvents Pnl1 As CMCv.UI.Control.Pnl
         Friend WithEvents BtnBrowse As CMCv.UI.Control.Btn
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
-        Friend WithEvents TxtProgress As CMCv.UI.Control.txt
+        Friend WithEvents TxtProgress As CMCv.UI.Control.Txt
         Friend WithEvents BtnClose As CMCv.UI.Control.Btn
         Friend WithEvents od As System.Windows.Forms.OpenFileDialog
-        Friend WithEvents LblFileName As CMCv.UI.Control.lbl
+        Friend WithEvents LblFileName As CMCv.UI.Control.Lbl
 
     End Class
 End Namespace

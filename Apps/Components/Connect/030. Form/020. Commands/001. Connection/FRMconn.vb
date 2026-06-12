@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 Imports System.Text
 
-Namespace UI
+Namespace UI.Canvas
     <SupportedOSPlatform("windows")>
     Public Class FRMconn
         Private WithEvents FRMconn_editor As FRMconnEditor

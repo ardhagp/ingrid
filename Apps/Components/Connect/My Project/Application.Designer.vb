@@ -33,7 +33,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Connect.UI.FRMconn
+            Me.MainForm = Connect.UI.Canvas.FRMconn
         End Sub
     End Class
 End Namespace

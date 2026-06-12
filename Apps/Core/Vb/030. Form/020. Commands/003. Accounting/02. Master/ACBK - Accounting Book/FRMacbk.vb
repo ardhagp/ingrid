@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMacbk
 #Region "Declaration"
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip

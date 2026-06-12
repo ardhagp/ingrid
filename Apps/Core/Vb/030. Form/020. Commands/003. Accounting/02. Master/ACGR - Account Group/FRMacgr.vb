@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMacgr
 
 #Region "Declaration"
@@ -43,7 +43,7 @@ Namespace UI
         ''' <param name="GridTable"></param>
         ''' <remarks></remarks>
         <SupportedOSPlatform("windows")>
-        Private Function GetAccountID(gridtable As CMCv.UI.Control.dgn) As String
+        Private Function GetAccountID(gridtable As CMCv.UI.Control.Dgn) As String
             With gridtable
                 If .Rows.Count < 1 Then
                     varDataProperties.AccountGroupId = "-1"
@@ -98,7 +98,7 @@ Namespace UI
             Call GetRowID()
             varDataProperties.AccountGroupIsNew = False
             If Convert.ToString(Convert.ToString(varDataProperties.AccountGroupId)) = "-1" Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 Frm_acgr_Editor = New FRMacgrEditor
                 Display(Frm_acgr_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your account data", True)
@@ -109,15 +109,15 @@ Namespace UI
         Private Sub CommmmsMenu_EventDataDelete() Handles Com_mms_Menu.EventDataDelete
             Call GetRowID()
             If Convert.ToString(Convert.ToString(varDataProperties.AccountGroupId)) = "-1" Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 varDataProperties.AccountGroupIsNew = False
-                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Question, CMCv.ui.canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                     If (CMDacgr.View.DeleteData(varDataProperties, Convert.ToString(Convert.ToString(varDataProperties.AccountGroupId)))) Then
                         Call GetDataGrid(True)
-                        UI.FRMmainframe6.Ts_status.Text = "Success"
+                        UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
                     Else
-                        UI.FRMmainframe6.Ts_status.Text = "Delete failed"
+                        UI.Canvas.FRMmainframe6.Ts_status.Text = "Delete failed"
                     End If
                 End If
             End If

@@ -2,7 +2,7 @@
 Imports System.Net.Sockets
 Imports System.Threading
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMsay
         Private varServer As TcpListener = Nothing
         Private varServerThread As Thread = Nothing

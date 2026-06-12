@@ -1,0 +1,119 @@
+﻿Namespace UI.Canvas
+    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+    Partial Class FRMreportsDARcontainer
+        Inherits CMCv.UI.Canvas.FRMreportBasic
+
+        'Form overrides dispose to clean up the component list.
+        <System.Diagnostics.DebuggerNonUserCode()>
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+            MyBase.Dispose(disposing)
+        End Sub
+
+        'Required by the Windows Form Designer
+        Private components As System.ComponentModel.IContainer
+
+        'NOTE: The following procedure is required by the Windows Form Designer
+        'It can be modified using the Windows Form Designer.  
+        'Do not modify it using the code editor.
+        <System.Diagnostics.DebuggerStepThrough()>
+        Private Sub InitializeComponent()
+            components = New ComponentModel.Container()
+            Rv_ = New Microsoft.Reporting.WinForms.ReportViewer()
+            EmployeeactivityBindingSource = New BindingSource(components)
+            DAR_RDS = New DAR_RDS()
+            CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
+            pnl_.SuspendLayout()
+            SLFPanel.SuspendLayout()
+            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(EmployeeactivityBindingSource, ComponentModel.ISupportInitialize).BeginInit()
+            CType(DAR_RDS, ComponentModel.ISupportInitialize).BeginInit()
+            SuspendLayout()
+            ' 
+            ' Rv_
+            ' 
+            Rv_.Dock = DockStyle.Fill
+            Rv_.DocumentMapWidth = 1
+            Rv_.Location = New Point(0, 0)
+            Rv_.Margin = New Padding(9, 8, 9, 8)
+            Rv_.Name = "Rv_"
+            Rv_.ServerReport.BearerToken = Nothing
+            Rv_.Size = New Size(0, 0)
+            Rv_.TabIndex = 996
+            ' 
+            ' PnlBottomButton
+            ' 
+            PnlBottomButton.Margin = New Padding(10, 17, 10, 17)
+            PnlBottomButton.Size = New Size(0, 162)
+            ' 
+            ' SLFLogo
+            ' 
+            SLFLogo.Location = New Point(10, 17)
+            SLFLogo.Margin = New Padding(16, 33, 16, 33)
+            SLFLogo.Size = New Size(104, 142)
+            ' 
+            ' SLFSubNamaForm
+            ' 
+            SLFSubNamaForm.Location = New Point(167, 97)
+            SLFSubNamaForm.Margin = New Padding(16, 0, 16, 0)
+            ' 
+            ' SLFNamaForm
+            ' 
+            SLFNamaForm.Location = New Point(126, 12)
+            SLFNamaForm.Margin = New Padding(16, 0, 16, 0)
+            ' 
+            ' pnl_
+            ' 
+            pnl_.Margin = New Padding(16, 33, 16, 33)
+            pnl_.Size = New Size(1307, 196)
+            ' 
+            ' SLFPanel
+            ' 
+            SLFPanel.Location = New Point(0, 172)
+            SLFPanel.Margin = New Padding(16, 33, 16, 33)
+            SLFPanel.Size = New Size(0, 162)
+            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            SLFPanel.Controls.SetChildIndex(Rv_, 0)
+            ' 
+            ' SLFBackground
+            ' 
+            SLFBackground.Location = New Point(4, 10)
+            SLFBackground.Margin = New Padding(16, 33, 16, 33)
+            SLFBackground.Size = New Size(114, 153)
+            ' 
+            ' EmployeeactivityBindingSource
+            ' 
+            EmployeeactivityBindingSource.DataMember = "employeeactivity"
+            EmployeeactivityBindingSource.DataSource = DAR_RDS
+            ' 
+            ' DAR_RDS
+            ' 
+            DAR_RDS.DataSetName = "DAR_RDS"
+            DAR_RDS.Namespace = "http://tempuri.org/DAR_RDS.xsd"
+            DAR_RDS.SchemaSerializationMode = Data.SchemaSerializationMode.IncludeSchema
+            ' 
+            ' DAR_RPTContainer
+            ' 
+            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            ClientSize = New Size(1307, 1078)
+            Margin = New Padding(11, 5, 11, 5)
+            Name = "DAR_RPTContainer"
+            WindowState = FormWindowState.Maximized
+            CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
+            pnl_.ResumeLayout(False)
+            pnl_.PerformLayout()
+            SLFPanel.ResumeLayout(False)
+            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(EmployeeactivityBindingSource, ComponentModel.ISupportInitialize).EndInit()
+            CType(DAR_RDS, ComponentModel.ISupportInitialize).EndInit()
+            ResumeLayout(False)
+            PerformLayout()
+        End Sub
+
+        Friend WithEvents EmployeeactivityBindingSource As BindingSource
+        Friend WithEvents DAR_RDS As UI.DAR_RDS
+        Friend WithEvents Rv_ As Microsoft.Reporting.WinForms.ReportViewer
+    End Class
+End Namespace

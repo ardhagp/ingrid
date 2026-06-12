@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMpdfViewer
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -57,13 +57,13 @@
             ' 
             ' BtnClose
             ' 
-            BtnClose.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Right
+            BtnClose.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right
             BtnClose.BackColor = Drawing.Color.Red
-            BtnClose.Cursor = system.Windows.Forms.Cursors.Hand
+            BtnClose.Cursor = System.Windows.Forms.Cursors.Hand
             BtnClose.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(0), CByte(0))
             BtnClose.FlatAppearance.BorderSize = 2
             BtnClose.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
-            BtnClose.FlatStyle = system.Windows.Forms.FlatStyle.Flat
+            BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             BtnClose.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
             BtnClose.ForeColor = Drawing.Color.White
             BtnClose.Location = New System.Drawing.Point(907, 13)
@@ -81,9 +81,9 @@
             ' PDFContent
             ' 
             PDFContent.BackColor = Drawing.Color.Gainsboro
-            PDFContent.BackgroundImageLayout = system.Windows.Forms.ImageLayout.None
+            PDFContent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
             PDFContent.CursorMode = Syncfusion.Windows.Forms.PdfViewer.PdfViewerCursorMode.SelectTool
-            PDFContent.Dock = system.Windows.Forms.DockStyle.Fill
+            PDFContent.Dock = System.Windows.Forms.DockStyle.Fill
             PDFContent.EnableContextMenu = True
             PDFContent.EnableNotificationBar = True
             PDFContent.HorizontalScrollOffset = 0

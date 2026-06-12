@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMcdinEditor
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -23,10 +23,10 @@
             components = New ComponentModel.Container()
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
-            TxtDeptCode = New CMCv.UI.Control.txt(components)
-            CboCompany = New CMCv.UI.Control.cbo(components)
-            TxtDeptName = New CMCv.UI.Control.txt(components)
-            TxtDescription = New CMCv.UI.Control.txt(components)
+            TxtDeptCode = New CMCv.UI.Control.Txt(components)
+            CboCompany = New CMCv.UI.Control.Cbo(components)
+            TxtDeptName = New CMCv.UI.Control.Txt(components)
+            TxtDescription = New CMCv.UI.Control.Txt(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
             ULbl2 = New CMCv.UI.Control.ULbl()
             ULbl3 = New CMCv.UI.Control.ULbl()
@@ -84,7 +84,7 @@
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(509, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -93,7 +93,7 @@
             BtnSave.TabIndex = 4
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = CMCV.UI.Control.ControlCodeBase.ButtonType.Yes
+            BtnSave.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -107,7 +107,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(686, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -116,14 +116,14 @@
             BtnCancel.TabIndex = 6
             BtnCancel.Text = "&Close"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.ButtonType.No
+            BtnCancel.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' TxtDeptCode
             ' 
-            TxtDeptCode.Font = New Font("Segoe UI", 12F)
+            TxtDeptCode.Font = New Font("Segoe UI", 12.0F)
             TxtDeptCode.Location = New Point(280, 87)
             TxtDeptCode.Margin = New Padding(6, 5, 6, 5)
             TxtDeptCode.MaxLength = 255
@@ -138,7 +138,7 @@
             TxtDeptCode.XOIsMandatory = True
             TxtDeptCode.XOIsReplaceEmptyString = False
             TxtDeptCode.XOIsPlaceholder = False
-            TxtDeptCode.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtDeptCode.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtDeptCode.XOMandatoryBgColor = Color.LightPink
             TxtDeptCode.XOMandatoryBgColorDefault = Color.White
             TxtDeptCode.XOMandatoryMessage = Nothing
@@ -146,7 +146,7 @@
             TxtDeptCode.XOPasswordStrengthCalc = False
             TxtDeptCode.XOPasswordStrengthScore = 0
             TxtDeptCode.XOPasswordStrengthText = Nothing
-            TxtDeptCode.XORestriction = CMCV.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
+            TxtDeptCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
             TxtDeptCode.XOPlaceholderText = "Type then press Enter"
             TxtDeptCode.XOSelectOnFocus = True
             TxtDeptCode.XOSqlText = ""
@@ -156,7 +156,7 @@
             CboCompany.DropDownStyle = ComboBoxStyle.DropDownList
             CboCompany.DropDownWidth = 350
             CboCompany.FlatStyle = FlatStyle.Flat
-            CboCompany.Font = New Font("Segoe UI", 12F)
+            CboCompany.Font = New Font("Segoe UI", 12.0F)
             CboCompany.FormattingEnabled = True
             CboCompany.Location = New Point(280, 20)
             CboCompany.Margin = New Padding(6, 5, 6, 5)
@@ -166,7 +166,7 @@
             ' 
             ' TxtDeptName
             ' 
-            TxtDeptName.Font = New Font("Segoe UI", 12F)
+            TxtDeptName.Font = New Font("Segoe UI", 12.0F)
             TxtDeptName.Location = New Point(280, 153)
             TxtDeptName.Margin = New Padding(6, 5, 6, 5)
             TxtDeptName.MaxLength = 255
@@ -181,7 +181,7 @@
             TxtDeptName.XOIsMandatory = True
             TxtDeptName.XOIsReplaceEmptyString = False
             TxtDeptName.XOIsPlaceholder = False
-            TxtDeptName.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtDeptName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtDeptName.XOMandatoryBgColor = Color.LightPink
             TxtDeptName.XOMandatoryBgColorDefault = Color.White
             TxtDeptName.XOMandatoryMessage = Nothing
@@ -189,14 +189,14 @@
             TxtDeptName.XOPasswordStrengthCalc = False
             TxtDeptName.XOPasswordStrengthScore = 0
             TxtDeptName.XOPasswordStrengthText = Nothing
-            TxtDeptName.XORestriction = CMCV.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
+            TxtDeptName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
             TxtDeptName.XOPlaceholderText = "Type then press Enter"
             TxtDeptName.XOSelectOnFocus = False
             TxtDeptName.XOSqlText = ""
             ' 
             ' TxtDescription
             ' 
-            TxtDescription.Font = New Font("Segoe UI", 12F)
+            TxtDescription.Font = New Font("Segoe UI", 12.0F)
             TxtDescription.Location = New Point(280, 222)
             TxtDescription.Margin = New Padding(6, 5, 6, 5)
             TxtDescription.MaxLength = 255
@@ -212,7 +212,7 @@
             TxtDescription.XOIsMandatory = False
             TxtDescription.XOIsReplaceEmptyString = False
             TxtDescription.XOIsPlaceholder = False
-            TxtDescription.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtDescription.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtDescription.XOMandatoryBgColor = Color.LightPink
             TxtDescription.XOMandatoryBgColorDefault = Color.White
             TxtDescription.XOMandatoryMessage = Nothing
@@ -220,7 +220,7 @@
             TxtDescription.XOPasswordStrengthCalc = False
             TxtDescription.XOPasswordStrengthScore = 0
             TxtDescription.XOPasswordStrengthText = Nothing
-            TxtDescription.XORestriction = CMCV.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtDescription.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtDescription.XOPlaceholderText = "Type then press Enter"
             TxtDescription.XOSelectOnFocus = False
             TxtDescription.XOSqlText = ""
@@ -233,7 +233,7 @@
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(250, 39)
             ULbl1.TabIndex = 1004
-            ULbl1.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.XOText = "Company"
             ULbl1.XOTextAdjuster = False
             ULbl1.XOTextBorder = False
@@ -246,7 +246,7 @@
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(250, 39)
             ULbl2.TabIndex = 1005
-            ULbl2.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.XOText = "Dept. Code"
             ULbl2.XOTextAdjuster = False
             ULbl2.XOTextBorder = False
@@ -259,7 +259,7 @@
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 39)
             ULbl3.TabIndex = 1006
-            ULbl3.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.XOText = "Dept. Name"
             ULbl3.XOTextAdjuster = False
             ULbl3.XOTextBorder = False
@@ -272,14 +272,14 @@
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 184)
             ULbl4.TabIndex = 1007
-            ULbl4.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.XOText = "Description"
             ULbl4.XOTextAdjuster = False
             ULbl4.XOTextBorder = False
             ' 
             ' FRMcdinEditor
             ' 
-            AutoScaleDimensions = New SizeF(10F, 25F)
+            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
             ClientSize = New Size(873, 680)
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMcdinEditor"
@@ -295,10 +295,10 @@
         End Sub
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
-        Friend WithEvents TxtDeptName As CMCv.UI.Control.txt
+        Friend WithEvents TxtDeptName As CMCv.UI.Control.Txt
         Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
-        Friend WithEvents TxtDeptCode As CMCv.UI.Control.txt
-        Friend WithEvents TxtDescription As CMCv.UI.Control.txt
+        Friend WithEvents TxtDeptCode As CMCv.UI.Control.Txt
+        Friend WithEvents TxtDescription As CMCv.UI.Control.Txt
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl

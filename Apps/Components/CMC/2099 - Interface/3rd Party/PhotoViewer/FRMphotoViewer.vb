@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMphotoViewer
         <SupportedOSPlatform("windows")>
         Private Sub PhotoViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load

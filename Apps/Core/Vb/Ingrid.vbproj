@@ -122,8 +122,8 @@
     <Compile Update="030. Form\010. System\030. Connection Properties\FRMcpdb.Designer.vb">
       <DependentUpon>FRMcpdb.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\010. System\030. Connection Properties\frmConnectionProperties.Designer.vb">
-      <DependentUpon>FRMconnectionproperties.vb</DependentUpon>
+    <Compile Update="030. Form\010. System\030. Connection Properties\FRMconn.Designer.vb">
+      <DependentUpon>FRMconn.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\MCTG - Material Catalog\FRMmctgEditor.Designer.vb">
       <DependentUpon>FRMmctgEditor.vb</DependentUpon>
@@ -161,8 +161,8 @@
     <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\PLNT - Plant List\FRMplntEditor.Designer.vb">
       <DependentUpon>FRMplntEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\SLOC - Storage Location\SLOC_Editor.Designer.vb">
-      <DependentUpon>SLOC_Editor.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\SLOC - Storage Location\FRMslocEditor.Designer.vb">
+      <DependentUpon>FRMslocEditor.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\001. Logistics\02. Master\UOM - Unit Of Measurement\FRMuom.Designer.vb">
       <DependentUpon>FRMuom.vb</DependentUpon>
@@ -239,11 +239,11 @@
     <Compile Update="030. Form\020. Commands\004. Management\02. Master\POST - Positions\FRMpostEditor.Designer.vb">
       <DependentUpon>FRMpostEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Addins\DAR_SinglePDFViewer.Designer.vb">
-      <DependentUpon>DAR_SinglePDFViewer.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Addins\FRMaddinsDARsinglePDFViewer.Designer.vb">
+      <DependentUpon>FRMaddinsDARsinglePdfViewer.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Addins\DAR_SinglePhotoViewer.Designer.vb">
-      <DependentUpon>DAR_SinglePhotoViewer.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Addins\FRMaddinsDARsinglePhotoViewer.Designer.vb">
+      <DependentUpon>FRMaddinsDARsinglePhotoViewer.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\004. Management\02. Master\CCIN - Companies\FRMccin.Designer.vb">
       <DependentUpon>FRMccin.vb</DependentUpon>
@@ -263,11 +263,11 @@
     <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\FRMdarEditor.Designer.vb">
       <DependentUpon>FRMdarEditor.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RPTFilter.Designer.vb">
-      <DependentUpon>DAR_RPTFilter.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\FRMreportsDARfilter.Designer.vb">
+      <DependentUpon>FRMreportsDARfilter.vb</DependentUpon>
     </Compile>
-    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RPTContainer.Designer.vb">
-      <DependentUpon>DAR_RPTContainer.vb</DependentUpon>
+    <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\FRMreportsDARcontainer.Designer.vb">
+      <DependentUpon>FRMreportsDARcontainer.vb</DependentUpon>
     </Compile>
     <Compile Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.Designer.vb">
       <AutoGen>True</AutoGen>

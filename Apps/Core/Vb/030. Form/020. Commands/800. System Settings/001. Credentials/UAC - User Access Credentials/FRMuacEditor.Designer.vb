@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMuacEditor
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -26,17 +26,17 @@
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
-            TxtEmployeeNumber = New CMCv.UI.Control.txt(components)
-            TxtEmployeeFullName = New CMCv.UI.Control.txt(components)
-            TxtUsername = New CMCv.UI.Control.txt(components)
-            TxtPassword = New CMCv.UI.Control.txt(components)
+            TxtEmployeeNumber = New CMCv.UI.Control.Txt(components)
+            TxtEmployeeFullName = New CMCv.UI.Control.Txt(components)
+            TxtUsername = New CMCv.UI.Control.Txt(components)
+            TxtPassword = New CMCv.UI.Control.Txt(components)
             BtnBrowseEmployee = New CMCv.UI.Control.Btn(components)
             ChkAddNew = New CMCv.UI.Control.Chk(components)
-            LblPwdText = New CMCv.UI.Control.lbl(components)
+            LblPwdText = New CMCv.UI.Control.Lbl(components)
             ProgressBar1 = New ProgressBar()
             TbctlAccess = New CMCv.UI.Control.Tbx(components)
             TpPermissions = New TabPage()
-            DgnUACe = New CMCv.UI.Control.dgn(components)
+            DgnUACe = New CMCv.UI.Control.Dgn(components)
             modulegroup_name = New DataGridViewTextBoxColumn()
             module_code = New DataGridViewTextBoxColumn()
             useraccess_view = New DataGridViewCheckBoxColumn()
@@ -129,7 +129,7 @@
             BtnSave.TabIndex = 7
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+            BtnSave.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -152,7 +152,7 @@
             BtnCancel.TabIndex = 8
             BtnCancel.Text = "&Close"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnCancel.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
@@ -177,13 +177,13 @@
             TxtEmployeeNumber.XOHighlightColor = Color.LightYellow
             TxtEmployeeNumber.XOIsBlank = False
             TxtEmployeeNumber.XOIsPlaceholder = False
-            TxtEmployeeNumber.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtEmployeeNumber.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtEmployeeNumber.XOSelectOnFocus = False
             TxtEmployeeNumber.XOPasswordLengthMin = 8
             TxtEmployeeNumber.XOPasswordStrengthCalc = False
             TxtEmployeeNumber.XOPasswordStrengthScore = 0
             TxtEmployeeNumber.XOPasswordStrengthText = Nothing
-            TxtEmployeeNumber.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtEmployeeNumber.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtEmployeeNumber.XOPlaceholderText = "Type then press Enter"
             TxtEmployeeNumber.XOSqlText = ""
             TxtEmployeeNumber.XOIsReplaceEmptyString = False
@@ -210,13 +210,13 @@
             TxtEmployeeFullName.XOHighlightColor = Color.LightYellow
             TxtEmployeeFullName.XOIsBlank = True
             TxtEmployeeFullName.XOIsPlaceholder = False
-            TxtEmployeeFullName.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtEmployeeFullName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtEmployeeFullName.XOSelectOnFocus = False
             TxtEmployeeFullName.XOPasswordLengthMin = 8
             TxtEmployeeFullName.XOPasswordStrengthCalc = False
             TxtEmployeeFullName.XOPasswordStrengthScore = 0
             TxtEmployeeFullName.XOPasswordStrengthText = Nothing
-            TxtEmployeeFullName.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtEmployeeFullName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtEmployeeFullName.XOPlaceholderText = "Type then press Enter"
             TxtEmployeeFullName.XOSqlText = ""
             TxtEmployeeFullName.XOIsReplaceEmptyString = False
@@ -240,13 +240,13 @@
             TxtUsername.XOHighlightColor = Color.LightYellow
             TxtUsername.XOIsBlank = True
             TxtUsername.XOIsPlaceholder = False
-            TxtUsername.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtUsername.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtUsername.XOSelectOnFocus = True
             TxtUsername.XOPasswordLengthMin = 8
             TxtUsername.XOPasswordStrengthCalc = False
             TxtUsername.XOPasswordStrengthScore = 0
             TxtUsername.XOPasswordStrengthText = Nothing
-            TxtUsername.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtUsername.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtUsername.XOPlaceholderText = "Type then press Enter"
             TxtUsername.XOSqlText = ""
             TxtUsername.XOIsReplaceEmptyString = True
@@ -271,13 +271,13 @@
             TxtPassword.XOHighlightColor = Color.LightYellow
             TxtPassword.XOIsBlank = True
             TxtPassword.XOIsPlaceholder = False
-            TxtPassword.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtPassword.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtPassword.XOSelectOnFocus = True
             TxtPassword.XOPasswordLengthMin = 8
             TxtPassword.XOPasswordStrengthCalc = True
             TxtPassword.XOPasswordStrengthScore = 0
             TxtPassword.XOPasswordStrengthText = Nothing
-            TxtPassword.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtPassword.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtPassword.XOPlaceholderText = "Type then press Enter"
             TxtPassword.XOSqlText = ""
             TxtPassword.XOIsReplaceEmptyString = False
@@ -300,7 +300,7 @@
             BtnBrowseEmployee.TabIndex = 2
             BtnBrowseEmployee.Text = "..."
             BtnBrowseEmployee.UseVisualStyleBackColor = False
-            BtnBrowseEmployee.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
+            BtnBrowseEmployee.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
             BtnBrowseEmployee.XOShowBorderOnFocus = False
             BtnBrowseEmployee.XOValidateAllInput = False
             BtnBrowseEmployee.XOValidateAllInputTag = Nothing
@@ -555,7 +555,7 @@
             ULbl1.XOText = "Employee ID"
             ULbl1.XOTextAdjuster = False
             ULbl1.XOTextBorder = False
-            ULbl1.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.TabIndex = 1010
             ' 
             ' ULbl2
@@ -568,7 +568,7 @@
             ULbl2.XOText = "Employee Name"
             ULbl2.XOTextAdjuster = False
             ULbl2.XOTextBorder = False
-            ULbl2.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1011
             ' 
             ' ULbl3
@@ -581,7 +581,7 @@
             ULbl3.XOText = "Username"
             ULbl3.XOTextAdjuster = False
             ULbl3.XOTextBorder = False
-            ULbl3.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 1012
             ' 
             ' ULbl4
@@ -594,7 +594,7 @@
             ULbl4.XOText = "Password"
             ULbl4.XOTextAdjuster = False
             ULbl4.XOTextBorder = False
-            ULbl4.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 1013
             ' 
             ' FRMuacEditor
@@ -622,17 +622,17 @@
         End Sub
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
-        Friend WithEvents TxtEmployeeNumber As CMCv.UI.Control.txt
-        Friend WithEvents TxtPassword As CMCv.UI.Control.txt
-        Friend WithEvents TxtUsername As CMCv.UI.Control.txt
-        Friend WithEvents TxtEmployeeFullName As CMCv.UI.Control.txt
+        Friend WithEvents TxtEmployeeNumber As CMCv.UI.Control.Txt
+        Friend WithEvents TxtPassword As CMCv.UI.Control.Txt
+        Friend WithEvents TxtUsername As CMCv.UI.Control.Txt
+        Friend WithEvents TxtEmployeeFullName As CMCv.UI.Control.Txt
         Friend WithEvents BtnBrowseEmployee As CMCv.UI.Control.Btn
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
-        Friend WithEvents LblPwdText As CMCv.UI.Control.lbl
+        Friend WithEvents LblPwdText As CMCv.UI.Control.Lbl
         Friend WithEvents ProgressBar1 As ProgressBar
         Friend WithEvents TbctlAccess As CMCv.UI.Control.Tbx
         Friend WithEvents TpPermissions As TabPage
-        Friend WithEvents DgnUACe As CMCv.UI.Control.dgn
+        Friend WithEvents DgnUACe As CMCv.UI.Control.Dgn
         Friend WithEvents TpAccessibility As TabPage
         Friend WithEvents ChkAdministrator As CMCv.UI.Control.Chk
         Friend WithEvents ChkLocked As CMCv.UI.Control.Chk

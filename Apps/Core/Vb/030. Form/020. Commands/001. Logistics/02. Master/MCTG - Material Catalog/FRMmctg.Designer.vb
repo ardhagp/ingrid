@@ -1,4 +1,4 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMmctg
         Inherits CMCv.UI.Canvas.FRMstandardFind
@@ -24,7 +24,7 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnMCTG = New cmcv.ui.control.dgn(components)
+            DgnMCTG = New CMCv.UI.Control.Dgn(components)
             material_id = New DataGridViewTextBoxColumn()
             material_number = New DataGridViewTextBoxColumn()
             material_name = New DataGridViewTextBoxColumn()
@@ -209,7 +209,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnMCTG As cmcv.ui.control.dgn
+        Friend WithEvents DgnMCTG As CMCv.UI.Control.Dgn
         Friend WithEvents material_id As DataGridViewTextBoxColumn
         Friend WithEvents material_number As DataGridViewTextBoxColumn
         Friend WithEvents material_name As DataGridViewTextBoxColumn
