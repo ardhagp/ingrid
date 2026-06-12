@@ -1,8 +1,7 @@
-﻿Imports System.Data
-Imports System.Globalization
+﻿Imports CMCv.UI
+Imports System.Data
 Imports System.Runtime.Versioning
 Imports System.Windows.Forms
-Imports CMCv.Database.Adapter
 Imports MySql.Data
 
 Namespace Database.Engine
