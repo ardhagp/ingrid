@@ -335,13 +335,17 @@ Namespace CMDepls
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetIsHavePhoto(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Integer
+        Public Shared Function GetIsHavePhoto(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Boolean
             Dim varIsHavePhoto As Integer
 
             varDatabaseRequestMssql2008(0).Query = String.Format("select count(f.file_id) as total from db_universe_erp_file.dbo.sto_file f where (f.file_parent = '{0}') and (f.file_tag = 'EMPLOYEE-PROFILE-PHOTO');", rowid)
-            varIsHavePhoto = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Integer)
+            varIsHavePhoto = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
 
-            Return varIsHavePhoto
+            If varIsHavePhoto = 0 Then
+                Return False
+            Else
+                Return True
+            End If
         End Function
 
         <SupportedOSPlatform("windows")>
