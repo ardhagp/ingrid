@@ -4,7 +4,7 @@ Imports CMCv
 Namespace CMDacgr
     Public Class View
 #Region "Declaration"
-        'ReadOnly varDBreader_mssql2008(3) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly varDBreader_mssql2008(3) As Database.Adapter.MsSql.Display.Request
 #End Region
 
         ''' <summary>
@@ -207,7 +207,7 @@ Namespace CMDacgr
 
     Public Class Editor
 #Region "Variables"
-        'ReadOnly varDBreader_mssql2008(3) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly varDBreader_mssql2008(3) As Database.Adapter.MsSql.Display.Request
 #End Region
 
         ''' <summary>

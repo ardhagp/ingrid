@@ -90,7 +90,7 @@ Namespace CMDcdin
     End Class
 
     Public Class Editor
-        'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MsSql.Display.Request
         Private Shared varQuery As String
         Private Shared ReadOnly consTableName As String = "man_department"
 
