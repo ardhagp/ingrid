@@ -38,7 +38,7 @@ id1(📦 master) --> id6(☁️ publish)
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 #   <span style="color:darkorange">**Tools You Need**</span>
 <span style="color:orange">1.</span>	Visual Studio Community Edition ([Download](https://visualstudio.microsoft.com/downloads/)) <br/>
-<span style="color:orange">2.</span>	.NET 7 ([Download](https://dotnet.microsoft.com/en-us/download/dotnet/7.0))<br/>
+<span style="color:orange">2.</span>	.NET 8 ([Download](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.422-windows-x86-installer))<br/>
 <span style="color:orange">3.</span>  SQL Server 2022 Express / Developer Edition ([Download](https://www.microsoft.com/en-us/sql-server/sql-server-downloads))<br/>
 | <span style="color:darkorange">_Instruction For Database_</span> |
 | -- |
