@@ -4,12 +4,18 @@ Imports Amazon.S3
 
 Namespace Api
     Public Class BackblazeB2
+        Implements IDisposable
 
-        Private ReadOnly varAccessKey As String
-        Private ReadOnly varSecretKey As String
+        Private varAccessKey As String
+        Private varSecretKey As String
         Private ReadOnly varServiceURL As String
         Private ReadOnly AWSCredentials As BasicAWSCredentials
         Private ReadOnly AWSClient As Amazon.S3.AmazonS3Client
+        Private disposedValue As Boolean
+
+        Public Shared Function Create(accessKey As String, secretKey As String, serviceUrl As String) As BackblazeB2
+            Return New BackblazeB2(accessKey, secretKey, serviceUrl)
+        End Function
 
         Private Sub New(accessKey As String, secretkey As String, serviceurl As String)
             varAccessKey = accessKey
@@ -25,7 +31,7 @@ Namespace Api
             AWSClient = New AmazonS3Client(AWSCredentials, varAwsConfig)
         End Sub
 
-        Private Async Function Upload(bucketname As String, key As String, filepath As String) As Task
+        Public Async Function Upload(bucketname As String, key As String, filepath As String) As Task
             Dim varAwsRequest As New PutObjectRequest With {
                 .BucketName = bucketname,
                 .Key = key,
@@ -34,8 +40,23 @@ Namespace Api
 
             Dim varAwsResponse As PutObjectResponse
             varAwsResponse = Await AWSClient.PutObjectAsync(varAwsRequest)
-            'Console.WriteLine("Upload completed with status: " & AWSResponse.HttpStatusCode.ToString())
-
+            'Console.WriteLine("Upload completed with status: " & varAwsResponse.HttpStatusCode.ToString())
         End Function
+
+        Protected Overridable Sub Dispose(disposing As Boolean)
+            If Not disposedValue Then
+                If disposing Then
+                    AWSClient?.Dispose()
+                    varAccessKey = Nothing
+                    varSecretKey = Nothing
+                End If
+                disposedValue = True
+            End If
+        End Sub
+
+        Public Sub Dispose() Implements IDisposable.Dispose
+            Dispose(True)
+            GC.SuppressFinalize(Me)
+        End Sub
     End Class
 End Namespace
