@@ -1,4 +1,5 @@
-﻿Imports System.Drawing
+﻿Imports CMCv.UI
+Imports System.Drawing
 Imports System.Drawing.Imaging
 Imports System.IO
 Imports System.Runtime.Versioning
