@@ -176,7 +176,7 @@ Namespace UI.Canvas
                 Call LoginClicked() ' Ensure User Logged In
             End If
 
-            LibSQL.Workspace.GetModuleProperties(varDataProperties, commandcode, varDatasetIngrid)
+            LibSQL.UI.Workspace.GetModuleProperties(varDataProperties, commandcode, varDatasetIngrid)
 
             With varDatasetIngrid.Tables(dtModule)
                 If .Rows.Count = 0 Then
