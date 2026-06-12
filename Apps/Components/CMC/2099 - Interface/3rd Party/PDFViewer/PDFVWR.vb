@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMpdfViewer
 
         Private varLocalFs As FileStream

@@ -5,8 +5,8 @@ Namespace UI
 #Region "Variables"
 
         'Variabel -> Class
-        Private WithEvents Frm_draa_Editor As New FRMdraaEditor
-        Private WithEvents Frm_draa_Reports As DAR_RPTFilter
+        Private WithEvents Frm_draa_Editor As New UI.Canvas.FRMdraaEditor
+        Private WithEvents Frm_draa_Reports As UI.Canvas.FRMreportsDARfilter
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 #End Region
 

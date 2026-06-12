@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMpostEditor
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,11 +21,11 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            TxtPositionDescription = New CMCv.UI.Control.txt(components)
-            TxtPositionName = New CMCv.UI.Control.txt(components)
+            TxtPositionDescription = New CMCv.UI.Control.Txt(components)
+            TxtPositionName = New CMCv.UI.Control.Txt(components)
             CboDepartement = New CMCv.UI.Control.Cbo(components)
             CboCompany = New CMCv.UI.Control.Cbo(components)
-            TxtPositionCode = New CMCv.UI.Control.txt(components)
+            TxtPositionCode = New CMCv.UI.Control.Txt(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
             ChkAddNew = New CMCv.UI.Control.Chk(components)
@@ -103,13 +103,13 @@
             TxtPositionDescription.XOHighlightColor = Color.LightYellow
             TxtPositionDescription.XOIsBlank = True
             TxtPositionDescription.XOIsPlaceholder = False
-            TxtPositionDescription.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtPositionDescription.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtPositionDescription.XOSelectOnFocus = False
             TxtPositionDescription.XOPasswordLengthMin = 8
             TxtPositionDescription.XOPasswordStrengthCalc = False
             TxtPositionDescription.XOPasswordStrengthScore = 0
             TxtPositionDescription.XOPasswordStrengthText = Nothing
-            TxtPositionDescription.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtPositionDescription.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtPositionDescription.XOPlaceholderText = "Type then press Enter"
             TxtPositionDescription.XOSqlText = ""
             TxtPositionDescription.XOIsReplaceEmptyString = False
@@ -133,13 +133,13 @@
             TxtPositionName.XOHighlightColor = Color.LightYellow
             TxtPositionName.XOIsBlank = True
             TxtPositionName.XOIsPlaceholder = False
-            TxtPositionName.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtPositionName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtPositionName.XOSelectOnFocus = False
             TxtPositionName.XOPasswordLengthMin = 8
             TxtPositionName.XOPasswordStrengthCalc = False
             TxtPositionName.XOPasswordStrengthScore = 0
             TxtPositionName.XOPasswordStrengthText = Nothing
-            TxtPositionName.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtPositionName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtPositionName.XOPlaceholderText = "Type then press Enter"
             TxtPositionName.XOSqlText = ""
             TxtPositionName.XOIsReplaceEmptyString = False
@@ -189,13 +189,13 @@
             TxtPositionCode.XOHighlightColor = Color.LightYellow
             TxtPositionCode.XOIsBlank = True
             TxtPositionCode.XOIsPlaceholder = False
-            TxtPositionCode.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtPositionCode.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtPositionCode.XOSelectOnFocus = True
             TxtPositionCode.XOPasswordLengthMin = 8
             TxtPositionCode.XOPasswordStrengthCalc = False
             TxtPositionCode.XOPasswordStrengthScore = 0
             TxtPositionCode.XOPasswordStrengthText = Nothing
-            TxtPositionCode.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtPositionCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtPositionCode.XOPlaceholderText = "Type then press Enter"
             TxtPositionCode.XOSqlText = ""
             TxtPositionCode.XOIsReplaceEmptyString = False
@@ -219,7 +219,7 @@
             BtnSave.TabIndex = 801
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+            BtnSave.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -242,7 +242,7 @@
             BtnCancel.TabIndex = 802
             BtnCancel.Text = "&Close"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnCancel.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
@@ -273,7 +273,7 @@
             ULbl1.XOText = "Company"
             ULbl1.XOTextAdjuster = False
             ULbl1.XOTextBorder = False
-            ULbl1.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.TabIndex = 1014
             ' 
             ' ULbl2
@@ -286,7 +286,7 @@
             ULbl2.XOText = "Department"
             ULbl2.XOTextAdjuster = False
             ULbl2.XOTextBorder = False
-            ULbl2.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1015
             ' 
             ' ULbl3
@@ -299,7 +299,7 @@
             ULbl3.XOText = "Position Code"
             ULbl3.XOTextAdjuster = False
             ULbl3.XOTextBorder = False
-            ULbl3.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 1016
             ' 
             ' ULbl4
@@ -312,7 +312,7 @@
             ULbl4.XOText = "Position Name"
             ULbl4.XOTextAdjuster = False
             ULbl4.XOTextBorder = False
-            ULbl4.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 1017
             ' 
             ' ULbl5
@@ -325,7 +325,7 @@
             ULbl5.XOText = "Description"
             ULbl5.XOTextAdjuster = False
             ULbl5.XOTextBorder = False
-            ULbl5.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl5.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.TabIndex = 1018
             ' 
             ' FRMpostEditor
@@ -346,11 +346,11 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents TxtPositionDescription As CMCv.UI.Control.txt
-        Friend WithEvents TxtPositionName As CMCv.UI.Control.txt
+        Friend WithEvents TxtPositionDescription As CMCv.UI.Control.Txt
+        Friend WithEvents TxtPositionName As CMCv.UI.Control.Txt
         Friend WithEvents CboDepartement As CMCv.UI.Control.Cbo
         Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
-        Friend WithEvents TxtPositionCode As CMCv.UI.Control.txt
+        Friend WithEvents TxtPositionCode As CMCv.UI.Control.Txt
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn

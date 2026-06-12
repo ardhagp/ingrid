@@ -2,7 +2,7 @@
 Imports System.Net.Http
 Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMconnEditor
 
 #Region "Declaration"
@@ -272,7 +272,7 @@ Namespace UI
             Dim exportConn As String
             exportConn = $"{TxtConnectionName.Text.Trim}||{CboDBEngine.Text.Trim}||{CMCv.Security.Encrypt.Aes(TxtAddress.Text.Trim)}||{CMCv.Security.Encrypt.Aes(TxtPort.Text)}||{CMCv.Security.Encrypt.Aes(TxtUsername.Text.Trim)}||{CMCv.Security.Encrypt.Aes(TxtPassword.Text)}||{CMCv.Security.Encrypt.Aes(TxtDatabaseName.Text.Trim)}||{Convert.ToString(ChkDefault.Checked)}||{Convert.ToString(ChkIsMasked.Checked)}||{TxtClient.Text.Trim}"
 
-            txtImportContent.Text = CMCv.Security.Encrypt.AES(exportConn)
+            txtImportContent.Text = CMCv.Security.Encrypt.Aes(exportConn)
             varConnectionName = CMCv.Security.Encrypt.CRC32(TxtConnectionName.Text.Trim)
         End Sub
 
@@ -319,7 +319,7 @@ Namespace UI
             End If
 
             Dim decryptedConn As String
-            decryptedConn = CMCv.Security.Decrypt.AES(txtImportContent.Text.Trim)
+            decryptedConn = CMCv.Security.Decrypt.Aes(txtImportContent.Text.Trim)
 
             Dim varConnproperties() As String = decryptedConn.Split({"||"}, StringSplitOptions.None)
 
@@ -330,11 +330,11 @@ Namespace UI
 
             TxtConnectionName.Text = varConnproperties(0)
             CboDBEngine.Text = varConnproperties(1)
-            TxtAddress.Text = CMCv.Security.Decrypt.AES(varConnproperties(2))
-            TxtPort.Text = CMCv.Security.Decrypt.AES(varConnproperties(3))
-            TxtUsername.Text = CMCv.Security.Decrypt.AES(varConnproperties(4))
-            TxtPassword.Text = CMCv.Security.Decrypt.AES(varConnproperties(5))
-            TxtDatabaseName.Text = CMCv.Security.Decrypt.AES(varConnproperties(6))
+            TxtAddress.Text = CMCv.Security.Decrypt.Aes(varConnproperties(2))
+            TxtPort.Text = CMCv.Security.Decrypt.Aes(varConnproperties(3))
+            TxtUsername.Text = CMCv.Security.Decrypt.Aes(varConnproperties(4))
+            TxtPassword.Text = CMCv.Security.Decrypt.Aes(varConnproperties(5))
+            TxtDatabaseName.Text = CMCv.Security.Decrypt.Aes(varConnproperties(6))
             ChkDefault.Checked = Convert.ToBoolean(varConnproperties(7))
             ChkIsMasked.Checked = Convert.ToBoolean(varConnproperties(8))
             TxtClient.Text = varConnproperties(9)

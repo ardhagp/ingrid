@@ -1,13 +1,13 @@
 ﻿Namespace UI
     Public Class FRMapplauncher
-        Private WithEvents Frm_mainframe6 As Ingrid.UI.FRMmainframe6
-        Private WithEvents Frm_conn As Connect.UI.FRMconn
+        Private WithEvents Frm_mainframe6 As Ingrid.UI.Canvas.FRMmainframe6
+        Private WithEvents Frm_conn As Connect.UI.Canvas.FRMconn
 
         Private varSecond As Integer
         Private varVersion As String
 
         Private Sub Frmapplauncher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            varVersion = String.Format("{0}.{1}.{2}.{3}", My.Application.Info.Version.Major, My.Application.Info.Version.Minor, My.Application.Info.Version.Build, My.Application.Info.Version.Revision)
+            varVersion = $"{My.Application.Info.Version.Major}.{My.Application.Info.Version.Minor}.{My.Application.Info.Version.Build}.{My.Application.Info.Version.Revision}"
 
             With proLog
                 .AppVersion = varVersion
@@ -29,9 +29,9 @@
 
             Call ActivateLicenses()
 
-            LblBuild.Text = String.Format("Build {0}" & Environment.NewLine & "Rev. {1}", My.Application.Info.Version.Build, My.Application.Info.Version.Revision)
+            LblBuild.Text = $"Build {My.Application.Info.Version.Build}" & Environment.NewLine & $"Rev. {My.Application.Info.Version.Revision}"
             varSecond = 4
-            LblCountdown.Text = String.Format("app in {0} seconds...", varSecond)
+            LblCountdown.Text = $"app in {varSecond} seconds..."
 
             With CboApplication.Items
                 .Add("Connect")
@@ -69,10 +69,10 @@
                 My.Settings.Save()
 
                 If appnameindex = 0 Then
-                    Frm_conn = New Connect.UI.FRMconn
+                    Frm_conn = New Connect.UI.Canvas.FRMconn
                     Display(Frm_conn, , My.Application.Info.Title, "Connection Settings", "Manage your database connection settings", False)
                 ElseIf appnameindex = 1 Then
-                    Frm_mainframe6 = New Ingrid.UI.FRMmainframe6
+                    Frm_mainframe6 = New Ingrid.UI.Canvas.FRMmainframe6
                     Frm_mainframe6.Show()
                 End If
             Catch ex As Exception

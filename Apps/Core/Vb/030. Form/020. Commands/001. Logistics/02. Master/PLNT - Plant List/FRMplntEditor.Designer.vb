@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMplntEditor
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -22,13 +22,13 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             CboCompany = New CMCv.UI.Control.Cbo(components)
-            TxtPlantCode = New CMCv.UI.Control.txt(components)
-            TxtPlantName = New CMCv.UI.Control.txt(components)
-            TxtSearchTerm1 = New CMCv.UI.Control.txt(components)
-            TxtAddress = New CMCv.UI.Control.txt(components)
-            TxtPostalCode = New CMCv.UI.Control.txt(components)
-            TxtDescription = New CMCv.UI.Control.txt(components)
-            TxtSearchTerm2 = New CMCv.UI.Control.txt(components)
+            TxtPlantCode = New CMCv.UI.Control.Txt(components)
+            TxtPlantName = New CMCv.UI.Control.Txt(components)
+            TxtSearchTerm1 = New CMCv.UI.Control.Txt(components)
+            TxtAddress = New CMCv.UI.Control.Txt(components)
+            TxtPostalCode = New CMCv.UI.Control.Txt(components)
+            TxtDescription = New CMCv.UI.Control.Txt(components)
+            TxtSearchTerm2 = New CMCv.UI.Control.Txt(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
             ChkAddNew = New CMCv.UI.Control.Chk(components)
@@ -107,7 +107,7 @@
             ' 
             CboCompany.DropDownStyle = ComboBoxStyle.DropDownList
             CboCompany.FlatStyle = FlatStyle.Flat
-            CboCompany.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            CboCompany.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             CboCompany.FormattingEnabled = True
             CboCompany.Location = New Point(234, 20)
             CboCompany.Margin = New Padding(6, 5, 6, 5)
@@ -117,7 +117,7 @@
             ' 
             ' TxtPlantCode
             ' 
-            TxtPlantCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtPlantCode.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             TxtPlantCode.Location = New Point(234, 87)
             TxtPlantCode.Margin = New Padding(6, 5, 6, 5)
             TxtPlantCode.MaxLength = 10
@@ -134,13 +134,13 @@
             TxtPlantCode.XOHighlightColor = Color.LightYellow
             TxtPlantCode.XOIsBlank = True
             TxtPlantCode.XOIsPlaceholder = False
-            TxtPlantCode.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtPlantCode.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtPlantCode.XOSelectOnFocus = True
             TxtPlantCode.XOPasswordLengthMin = 8
             TxtPlantCode.XOPasswordStrengthCalc = False
             TxtPlantCode.XOPasswordStrengthScore = 0
             TxtPlantCode.XOPasswordStrengthText = Nothing
-            TxtPlantCode.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtPlantCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtPlantCode.XOPlaceholderText = "Type then press Enter"
             TxtPlantCode.XOSqlText = ""
             TxtPlantCode.XOIsReplaceEmptyString = False
@@ -148,7 +148,7 @@
             ' 
             ' TxtPlantName
             ' 
-            TxtPlantName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtPlantName.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             TxtPlantName.Location = New Point(234, 153)
             TxtPlantName.Margin = New Padding(6, 5, 6, 5)
             TxtPlantName.MaxLength = 255
@@ -164,13 +164,13 @@
             TxtPlantName.XOHighlightColor = Color.LightYellow
             TxtPlantName.XOIsBlank = True
             TxtPlantName.XOIsPlaceholder = False
-            TxtPlantName.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtPlantName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtPlantName.XOSelectOnFocus = True
             TxtPlantName.XOPasswordLengthMin = 8
             TxtPlantName.XOPasswordStrengthCalc = False
             TxtPlantName.XOPasswordStrengthScore = 0
             TxtPlantName.XOPasswordStrengthText = Nothing
-            TxtPlantName.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtPlantName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtPlantName.XOPlaceholderText = "Type then press Enter"
             TxtPlantName.XOSqlText = ""
             TxtPlantName.XOIsReplaceEmptyString = False
@@ -178,7 +178,7 @@
             ' 
             ' TxtSearchTerm1
             ' 
-            TxtSearchTerm1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtSearchTerm1.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             TxtSearchTerm1.Location = New Point(234, 219)
             TxtSearchTerm1.Margin = New Padding(6, 5, 6, 5)
             TxtSearchTerm1.MaxLength = 255
@@ -194,13 +194,13 @@
             TxtSearchTerm1.XOHighlightColor = Color.LightYellow
             TxtSearchTerm1.XOIsBlank = True
             TxtSearchTerm1.XOIsPlaceholder = False
-            TxtSearchTerm1.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtSearchTerm1.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtSearchTerm1.XOSelectOnFocus = False
             TxtSearchTerm1.XOPasswordLengthMin = 8
             TxtSearchTerm1.XOPasswordStrengthCalc = False
             TxtSearchTerm1.XOPasswordStrengthScore = 0
             TxtSearchTerm1.XOPasswordStrengthText = Nothing
-            TxtSearchTerm1.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtSearchTerm1.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtSearchTerm1.XOPlaceholderText = "Type then press Enter"
             TxtSearchTerm1.XOSqlText = ""
             TxtSearchTerm1.XOIsReplaceEmptyString = False
@@ -208,7 +208,7 @@
             ' 
             ' TxtAddress
             ' 
-            TxtAddress.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtAddress.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             TxtAddress.Location = New Point(234, 416)
             TxtAddress.Margin = New Padding(6, 5, 6, 5)
             TxtAddress.MaxLength = 255
@@ -225,13 +225,13 @@
             TxtAddress.XOHighlightColor = Color.LightYellow
             TxtAddress.XOIsBlank = True
             TxtAddress.XOIsPlaceholder = False
-            TxtAddress.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtAddress.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtAddress.XOSelectOnFocus = True
             TxtAddress.XOPasswordLengthMin = 8
             TxtAddress.XOPasswordStrengthCalc = False
             TxtAddress.XOPasswordStrengthScore = 0
             TxtAddress.XOPasswordStrengthText = Nothing
-            TxtAddress.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtAddress.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtAddress.XOPlaceholderText = "Type then press Enter"
             TxtAddress.XOSqlText = ""
             TxtAddress.XOIsReplaceEmptyString = False
@@ -239,7 +239,7 @@
             ' 
             ' TxtPostalCode
             ' 
-            TxtPostalCode.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtPostalCode.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             TxtPostalCode.Location = New Point(234, 586)
             TxtPostalCode.Margin = New Padding(6, 5, 6, 5)
             TxtPostalCode.MaxLength = 6
@@ -256,13 +256,13 @@
             TxtPostalCode.XOHighlightColor = Color.LightYellow
             TxtPostalCode.XOIsBlank = True
             TxtPostalCode.XOIsPlaceholder = False
-            TxtPostalCode.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtPostalCode.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtPostalCode.XOSelectOnFocus = True
             TxtPostalCode.XOPasswordLengthMin = 8
             TxtPostalCode.XOPasswordStrengthCalc = False
             TxtPostalCode.XOPasswordStrengthScore = 0
             TxtPostalCode.XOPasswordStrengthText = Nothing
-            TxtPostalCode.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtPostalCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtPostalCode.XOPlaceholderText = "Type then press Enter"
             TxtPostalCode.XOSqlText = ""
             TxtPostalCode.XOIsReplaceEmptyString = False
@@ -270,7 +270,7 @@
             ' 
             ' TxtDescription
             ' 
-            TxtDescription.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtDescription.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             TxtDescription.Location = New Point(234, 351)
             TxtDescription.Margin = New Padding(6, 5, 6, 5)
             TxtDescription.MaxLength = 255
@@ -286,13 +286,13 @@
             TxtDescription.XOHighlightColor = Color.LightYellow
             TxtDescription.XOIsBlank = True
             TxtDescription.XOIsPlaceholder = False
-            TxtDescription.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtDescription.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtDescription.XOSelectOnFocus = False
             TxtDescription.XOPasswordLengthMin = 8
             TxtDescription.XOPasswordStrengthCalc = False
             TxtDescription.XOPasswordStrengthScore = 0
             TxtDescription.XOPasswordStrengthText = Nothing
-            TxtDescription.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtDescription.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtDescription.XOPlaceholderText = "Type then press Enter"
             TxtDescription.XOSqlText = ""
             TxtDescription.XOIsReplaceEmptyString = False
@@ -300,7 +300,7 @@
             ' 
             ' TxtSearchTerm2
             ' 
-            TxtSearchTerm2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtSearchTerm2.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             TxtSearchTerm2.Location = New Point(234, 285)
             TxtSearchTerm2.Margin = New Padding(6, 5, 6, 5)
             TxtSearchTerm2.MaxLength = 255
@@ -316,13 +316,13 @@
             TxtSearchTerm2.XOHighlightColor = Color.LightYellow
             TxtSearchTerm2.XOIsBlank = True
             TxtSearchTerm2.XOIsPlaceholder = False
-            TxtSearchTerm2.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtSearchTerm2.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtSearchTerm2.XOSelectOnFocus = False
             TxtSearchTerm2.XOPasswordLengthMin = 8
             TxtSearchTerm2.XOPasswordStrengthCalc = False
             TxtSearchTerm2.XOPasswordStrengthScore = 0
             TxtSearchTerm2.XOPasswordStrengthText = Nothing
-            TxtSearchTerm2.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtSearchTerm2.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtSearchTerm2.XOPlaceholderText = "Type then press Enter"
             TxtSearchTerm2.XOSqlText = ""
             TxtSearchTerm2.XOIsReplaceEmptyString = False
@@ -337,7 +337,7 @@
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(287, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -346,7 +346,7 @@
             BtnSave.TabIndex = 600
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+            BtnSave.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -360,7 +360,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(464, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -369,7 +369,7 @@
             BtnCancel.TabIndex = 602
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnCancel.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
@@ -380,7 +380,7 @@
             ChkAddNew.AutoSize = True
             ChkAddNew.BackColor = Color.Transparent
             ChkAddNew.FlatStyle = FlatStyle.Flat
-            ChkAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+            ChkAddNew.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
             ChkAddNew.ForeColor = Color.Tomato
             ChkAddNew.Location = New Point(56, 28)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
@@ -400,7 +400,7 @@
             ULbl1.XOText = "Company"
             ULbl1.XOTextAdjuster = True
             ULbl1.XOTextBorder = False
-            ULbl1.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.TabIndex = 1014
             ' 
             ' ULbl2
@@ -413,7 +413,7 @@
             ULbl2.XOText = "Plant Code"
             ULbl2.XOTextAdjuster = True
             ULbl2.XOTextBorder = False
-            ULbl2.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1015
             ' 
             ' ULbl3
@@ -426,7 +426,7 @@
             ULbl3.XOText = "Plant Name"
             ULbl3.XOTextAdjuster = False
             ULbl3.XOTextBorder = False
-            ULbl3.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 1016
             ' 
             ' ULbl4
@@ -439,7 +439,7 @@
             ULbl4.XOText = "Search Term 1"
             ULbl4.XOTextAdjuster = False
             ULbl4.XOTextBorder = False
-            ULbl4.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 1017
             ' 
             ' ULbl5
@@ -452,7 +452,7 @@
             ULbl5.XOText = "Search Term 2"
             ULbl5.XOTextAdjuster = True
             ULbl5.XOTextBorder = False
-            ULbl5.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl5.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.TabIndex = 1018
             ' 
             ' ULbl6
@@ -465,7 +465,7 @@
             ULbl6.XOText = "Description"
             ULbl6.XOTextAdjuster = True
             ULbl6.XOTextBorder = False
-            ULbl6.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl6.TabIndex = 1019
             ' 
             ' ULbl7
@@ -478,7 +478,7 @@
             ULbl7.XOText = "Address"
             ULbl7.XOTextAdjuster = True
             ULbl7.XOTextBorder = False
-            ULbl7.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl7.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl7.TabIndex = 1020
             ' 
             ' ULbl8
@@ -491,12 +491,12 @@
             ULbl8.XOText = "Postal Code"
             ULbl8.XOTextAdjuster = True
             ULbl8.XOTextBorder = False
-            ULbl8.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl8.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl8.TabIndex = 1021
             ' 
             ' FRMplntEditor
             ' 
-            AutoScaleDimensions = New SizeF(10F, 25F)
+            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
             ClientSize = New Size(651, 958)
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMplntEditor"
@@ -513,16 +513,16 @@
         End Sub
 
         Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
-        Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
-        Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
-        Friend WithEvents TxtSearchTerm2 As CMCv.UI.Control.txt
-        Friend WithEvents TxtDescription As CMCv.UI.Control.txt
-        Friend WithEvents TxtPostalCode As CMCv.UI.Control.txt
-        Friend WithEvents TxtAddress As CMCv.UI.Control.txt
-        Friend WithEvents TxtPlantName2 As CMCv.UI.Control.txt
-        Friend WithEvents TxtSearchTerm1 As CMCv.UI.Control.txt
-        Friend WithEvents TxtPlantName As CMCv.UI.Control.txt
-        Friend WithEvents TxtPlantCode As CMCv.UI.Control.txt
+        Friend WithEvents Lbl4 As CMCv.UI.Control.Lbl
+        Friend WithEvents Lbl3 As CMCv.UI.Control.Lbl
+        Friend WithEvents TxtSearchTerm2 As CMCv.UI.Control.Txt
+        Friend WithEvents TxtDescription As CMCv.UI.Control.Txt
+        Friend WithEvents TxtPostalCode As CMCv.UI.Control.Txt
+        Friend WithEvents TxtAddress As CMCv.UI.Control.Txt
+        Friend WithEvents TxtPlantName2 As CMCv.UI.Control.Txt
+        Friend WithEvents TxtSearchTerm1 As CMCv.UI.Control.Txt
+        Friend WithEvents TxtPlantName As CMCv.UI.Control.Txt
+        Friend WithEvents TxtPlantCode As CMCv.UI.Control.Txt
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn

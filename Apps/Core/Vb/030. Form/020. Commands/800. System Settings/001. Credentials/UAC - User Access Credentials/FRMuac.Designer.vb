@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMuac
-        Inherits CMCv.ui.canvas.FRMstandardFind
+        Inherits CMCv.UI.Canvas.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -26,7 +26,7 @@
             Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle9 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnUAC = New cmcv.ui.control.dgn(components)
+            DgnUAC = New CMCv.UI.Control.Dgn(components)
             user_id = New DataGridViewTextBoxColumn()
             employee_number = New DataGridViewTextBoxColumn()
             employee_fullname = New DataGridViewTextBoxColumn()
@@ -206,7 +206,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnUAC As cmcv.ui.control.dgn
+        Friend WithEvents DgnUAC As CMCv.UI.Control.Dgn
         Friend WithEvents user_id As DataGridViewTextBoxColumn
         Friend WithEvents employee_number As DataGridViewTextBoxColumn
         Friend WithEvents employee_fullname As DataGridViewTextBoxColumn

@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMde001Editor
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -23,11 +23,11 @@
             components = New ComponentModel.Container()
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnClose = New CMCv.UI.Control.Btn(components)
-            Txt1 = New CMCv.UI.Control.txt(components)
-            LblNumber = New CMCv.UI.Control.lbl(components)
+            Txt1 = New CMCv.UI.Control.Txt(components)
+            LblNumber = New CMCv.UI.Control.Lbl(components)
             Cbo1 = New CMCv.UI.Control.Cbo(components)
-            LblGroup = New CMCv.UI.Control.lbl(components)
-            LblDate = New CMCv.UI.Control.lbl(components)
+            LblGroup = New CMCv.UI.Control.Lbl(components)
+            LblDate = New CMCv.UI.Control.Lbl(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -75,7 +75,7 @@
             BtnSave.TabIndex = 1
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+            BtnSave.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -98,7 +98,7 @@
             BtnClose.TabIndex = 2
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnClose.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnClose.XOShowBorderOnFocus = False
             BtnClose.XOValidateAllInput = False
             BtnClose.XOValidateAllInputTag = Nothing
@@ -121,13 +121,13 @@
             Txt1.XOHighlightColor = Color.LightYellow
             Txt1.XOIsBlank = True
             Txt1.XOIsPlaceholder = False
-            Txt1.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            Txt1.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             Txt1.XOSelectOnFocus = False
             Txt1.XOPasswordLengthMin = 8
             Txt1.XOPasswordStrengthCalc = False
             Txt1.XOPasswordStrengthScore = 0
             Txt1.XOPasswordStrengthText = Nothing
-            Txt1.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            Txt1.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             Txt1.XOPlaceholderText = "Type then press Enter"
             Txt1.XOSqlText = ""
             Txt1.XOIsReplaceEmptyString = False
@@ -202,10 +202,10 @@
 
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents BtnClose As CMCv.UI.Control.Btn
-        Friend WithEvents LblNumber As CMCv.UI.Control.lbl
-        Friend WithEvents Txt1 As CMCv.UI.Control.txt
-        Friend WithEvents LblGroup As CMCv.UI.Control.lbl
+        Friend WithEvents LblNumber As CMCv.UI.Control.Lbl
+        Friend WithEvents Txt1 As CMCv.UI.Control.Txt
+        Friend WithEvents LblGroup As CMCv.UI.Control.Lbl
         Friend WithEvents Cbo1 As CMCv.UI.Control.Cbo
-        Friend WithEvents LblDate As CMCv.UI.Control.lbl
+        Friend WithEvents LblDate As CMCv.UI.Control.Lbl
     End Class
 End Namespace

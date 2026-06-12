@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMremsEditorSwitch
-        Inherits CMCv.ui.canvas.FRMstandard
+        Inherits CMCv.UI.Canvas.FRMstandard
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -61,7 +61,7 @@
             BtnEdit.TabIndex = 0
             BtnEdit.Text = "Edit"
             BtnEdit.UseVisualStyleBackColor = False
-            BtnEdit.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
+            BtnEdit.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
             BtnEdit.XOShowBorderOnFocus = False
             BtnEdit.XOValidateAllInput = False
             BtnEdit.XOValidateAllInputTag = Nothing
@@ -84,7 +84,7 @@
             BtnChangeProgress.TabIndex = 1
             BtnChangeProgress.Text = "Change Progress"
             BtnChangeProgress.UseVisualStyleBackColor = False
-            BtnChangeProgress.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
+            BtnChangeProgress.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
             BtnChangeProgress.XOShowBorderOnFocus = False
             BtnChangeProgress.XOValidateAllInput = False
             BtnChangeProgress.XOValidateAllInputTag = Nothing
@@ -107,7 +107,7 @@
             BtnMarkAsVerified.TabIndex = 2
             BtnMarkAsVerified.Text = "Mark As Verified"
             BtnMarkAsVerified.UseVisualStyleBackColor = False
-            BtnMarkAsVerified.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
+            BtnMarkAsVerified.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
             BtnMarkAsVerified.XOShowBorderOnFocus = False
             BtnMarkAsVerified.XOValidateAllInput = False
             BtnMarkAsVerified.XOValidateAllInputTag = Nothing

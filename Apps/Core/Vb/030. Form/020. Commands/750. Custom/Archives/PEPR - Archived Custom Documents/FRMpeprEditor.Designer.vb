@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMpeprEditor
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -29,17 +29,17 @@
             Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
-            TxtArchiveCode = New CMCv.UI.Control.txt(components)
-            TxtTitle = New CMCv.UI.Control.txt(components)
+            TxtArchiveCode = New CMCv.UI.Control.Txt(components)
+            TxtTitle = New CMCv.UI.Control.Txt(components)
             CboCategory = New CMCv.UI.Control.Cbo(components)
-            Txt1 = New CMCv.UI.Control.txt(components)
-            Txt2 = New CMCv.UI.Control.txt(components)
+            Txt1 = New CMCv.UI.Control.Txt(components)
+            Txt2 = New CMCv.UI.Control.Txt(components)
             TbctlAttachment = New CMCv.UI.Control.Tbx(components)
             tpPhotos = New TabPage()
-            PnlPhoto = New CMCv.UI.Control.pnl(components)
+            PnlPhoto = New CMCv.UI.Control.Pnl(components)
             BtnBrowsePhoto = New CMCv.UI.Control.Btn(components)
             PctbxPhoto = New CMCv.UI.Control.Pbx(components)
-            DgnPictureList = New CMCv.UI.Control.dgn(components)
+            DgnPictureList = New CMCv.UI.Control.Dgn(components)
             photo_id = New DataGridViewTextBoxColumn()
             photo_datetime = New DataGridViewTextBoxColumn()
             photo_content = New DataGridViewImageColumn()
@@ -47,12 +47,12 @@
             photo_uploader = New DataGridViewTextBoxColumn()
             photo_delete = New DataGridViewButtonColumn()
             BtnPeekPhoto = New CMCv.UI.Control.Btn(components)
-            TxtPhotoPath = New CMCv.UI.Control.txt(components)
+            TxtPhotoPath = New CMCv.UI.Control.Txt(components)
             BtnAddPhoto = New CMCv.UI.Control.Btn(components)
             tpFiles = New TabPage()
-            PnlFile = New CMCv.UI.Control.pnl(components)
+            PnlFile = New CMCv.UI.Control.Pnl(components)
             BtnBrowseFile = New CMCv.UI.Control.Btn(components)
-            DgnFileList = New CMCv.UI.Control.dgn(components)
+            DgnFileList = New CMCv.UI.Control.Dgn(components)
             file_id = New DataGridViewTextBoxColumn()
             file_tag = New DataGridViewTextBoxColumn()
             file_datetime = New DataGridViewTextBoxColumn()
@@ -61,7 +61,7 @@
             file_uploader = New DataGridViewTextBoxColumn()
             file_delete = New DataGridViewButtonColumn()
             CboFileTag = New CMCv.UI.Control.Cbo(components)
-            TxtFilePath = New CMCv.UI.Control.txt(components)
+            TxtFilePath = New CMCv.UI.Control.Txt(components)
             BtnAddFile = New CMCv.UI.Control.Btn(components)
             BtnPeekFile = New CMCv.UI.Control.Btn(components)
             ULbl1 = New CMCv.UI.Control.ULbl()
@@ -148,7 +148,7 @@
             BtnSave.TabIndex = 1
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+            BtnSave.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -171,7 +171,7 @@
             BtnCancel.TabIndex = 2
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnCancel.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
@@ -194,13 +194,13 @@
             TxtArchiveCode.XOHighlightColor = Color.LightYellow
             TxtArchiveCode.XOIsBlank = True
             TxtArchiveCode.XOIsPlaceholder = False
-            TxtArchiveCode.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtArchiveCode.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtArchiveCode.XOSelectOnFocus = False
             TxtArchiveCode.XOPasswordLengthMin = 8
             TxtArchiveCode.XOPasswordStrengthCalc = False
             TxtArchiveCode.XOPasswordStrengthScore = 0
             TxtArchiveCode.XOPasswordStrengthText = Nothing
-            TxtArchiveCode.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtArchiveCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtArchiveCode.XOPlaceholderText = "Type then press Enter"
             TxtArchiveCode.XOSqlText = ""
             TxtArchiveCode.XOIsReplaceEmptyString = False
@@ -224,13 +224,13 @@
             TxtTitle.XOHighlightColor = Color.LightYellow
             TxtTitle.XOIsBlank = True
             TxtTitle.XOIsPlaceholder = False
-            TxtTitle.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtTitle.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtTitle.XOSelectOnFocus = False
             TxtTitle.XOPasswordLengthMin = 8
             TxtTitle.XOPasswordStrengthCalc = False
             TxtTitle.XOPasswordStrengthScore = 0
             TxtTitle.XOPasswordStrengthText = Nothing
-            TxtTitle.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtTitle.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtTitle.XOPlaceholderText = "Type then press Enter"
             TxtTitle.XOSqlText = ""
             TxtTitle.XOIsReplaceEmptyString = False
@@ -267,13 +267,13 @@
             Txt1.XOHighlightColor = Color.LightYellow
             Txt1.XOIsBlank = True
             Txt1.XOIsPlaceholder = False
-            Txt1.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            Txt1.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             Txt1.XOSelectOnFocus = False
             Txt1.XOPasswordLengthMin = 8
             Txt1.XOPasswordStrengthCalc = False
             Txt1.XOPasswordStrengthScore = 0
             Txt1.XOPasswordStrengthText = Nothing
-            Txt1.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            Txt1.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             Txt1.XOPlaceholderText = "Type then press Enter"
             Txt1.XOSqlText = ""
             Txt1.XOIsReplaceEmptyString = False
@@ -297,13 +297,13 @@
             Txt2.XOHighlightColor = Color.LightYellow
             Txt2.XOIsBlank = True
             Txt2.XOIsPlaceholder = False
-            Txt2.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            Txt2.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             Txt2.XOSelectOnFocus = False
             Txt2.XOPasswordLengthMin = 8
             Txt2.XOPasswordStrengthCalc = False
             Txt2.XOPasswordStrengthScore = 0
             Txt2.XOPasswordStrengthText = Nothing
-            Txt2.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            Txt2.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             Txt2.XOPlaceholderText = "Type then press Enter"
             Txt2.XOSqlText = ""
             Txt2.XOIsReplaceEmptyString = False
@@ -368,7 +368,7 @@
             BtnBrowsePhoto.Size = New Size(55, 56)
             BtnBrowsePhoto.TabIndex = 5
             BtnBrowsePhoto.UseVisualStyleBackColor = False
-            BtnBrowsePhoto.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
+            BtnBrowsePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
             BtnBrowsePhoto.XOShowBorderOnFocus = False
             BtnBrowsePhoto.XOValidateAllInput = False
             BtnBrowsePhoto.XOValidateAllInputTag = Nothing
@@ -522,7 +522,7 @@
             BtnPeekPhoto.Size = New Size(55, 56)
             BtnPeekPhoto.TabIndex = 8
             BtnPeekPhoto.UseVisualStyleBackColor = False
-            BtnPeekPhoto.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Custom
+            BtnPeekPhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Custom
             BtnPeekPhoto.XOShowBorderOnFocus = False
             BtnPeekPhoto.XOValidateAllInput = False
             BtnPeekPhoto.XOValidateAllInputTag = Nothing
@@ -546,13 +546,13 @@
             TxtPhotoPath.XOHighlightColor = Color.LightYellow
             TxtPhotoPath.XOIsBlank = True
             TxtPhotoPath.XOIsPlaceholder = False
-            TxtPhotoPath.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtPhotoPath.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtPhotoPath.XOSelectOnFocus = False
             TxtPhotoPath.XOPasswordLengthMin = 8
             TxtPhotoPath.XOPasswordStrengthCalc = False
             TxtPhotoPath.XOPasswordStrengthScore = 0
             TxtPhotoPath.XOPasswordStrengthText = Nothing
-            TxtPhotoPath.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtPhotoPath.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtPhotoPath.XOPlaceholderText = "Type then press Enter"
             TxtPhotoPath.XOSqlText = ""
             TxtPhotoPath.XOIsReplaceEmptyString = False
@@ -575,7 +575,7 @@
             BtnAddPhoto.Size = New Size(55, 56)
             BtnAddPhoto.TabIndex = 9
             BtnAddPhoto.UseVisualStyleBackColor = False
-            BtnAddPhoto.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+            BtnAddPhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnAddPhoto.XOShowBorderOnFocus = False
             BtnAddPhoto.XOValidateAllInput = False
             BtnAddPhoto.XOValidateAllInputTag = Nothing
@@ -624,7 +624,7 @@
             BtnBrowseFile.Size = New Size(55, 56)
             BtnBrowseFile.TabIndex = 10
             BtnBrowseFile.UseVisualStyleBackColor = False
-            BtnBrowseFile.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
+            BtnBrowseFile.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
             BtnBrowseFile.XOShowBorderOnFocus = False
             BtnBrowseFile.XOValidateAllInput = False
             BtnBrowseFile.XOValidateAllInputTag = Nothing
@@ -786,13 +786,13 @@
             TxtFilePath.XOHighlightColor = Color.LightYellow
             TxtFilePath.XOIsBlank = True
             TxtFilePath.XOIsPlaceholder = False
-            TxtFilePath.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtFilePath.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtFilePath.XOSelectOnFocus = False
             TxtFilePath.XOPasswordLengthMin = 8
             TxtFilePath.XOPasswordStrengthCalc = False
             TxtFilePath.XOPasswordStrengthScore = 0
             TxtFilePath.XOPasswordStrengthText = Nothing
-            TxtFilePath.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtFilePath.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtFilePath.XOPlaceholderText = "Type then press Enter"
             TxtFilePath.XOSqlText = ""
             TxtFilePath.XOIsReplaceEmptyString = False
@@ -815,7 +815,7 @@
             BtnAddFile.Size = New Size(55, 56)
             BtnAddFile.TabIndex = 13
             BtnAddFile.UseVisualStyleBackColor = False
-            BtnAddFile.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+            BtnAddFile.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnAddFile.XOShowBorderOnFocus = False
             BtnAddFile.XOValidateAllInput = False
             BtnAddFile.XOValidateAllInputTag = Nothing
@@ -837,7 +837,7 @@
             BtnPeekFile.Size = New Size(55, 56)
             BtnPeekFile.TabIndex = 12
             BtnPeekFile.UseVisualStyleBackColor = False
-            BtnPeekFile.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Custom
+            BtnPeekFile.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Custom
             BtnPeekFile.XOShowBorderOnFocus = False
             BtnPeekFile.XOValidateAllInput = False
             BtnPeekFile.XOValidateAllInputTag = Nothing
@@ -853,7 +853,7 @@
             ULbl1.XOText = "Archive Code"
             ULbl1.XOTextAdjuster = False
             ULbl1.XOTextBorder = False
-            ULbl1.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.TabIndex = 1009
             ' 
             ' ULbl2
@@ -866,7 +866,7 @@
             ULbl2.XOText = "Name / Title"
             ULbl2.XOTextAdjuster = False
             ULbl2.XOTextBorder = False
-            ULbl2.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.TabIndex = 1010
             ' 
             ' ULbl3
@@ -879,7 +879,7 @@
             ULbl3.XOText = "Category"
             ULbl3.XOTextAdjuster = False
             ULbl3.XOTextBorder = False
-            ULbl3.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.TabIndex = 1011
             ' 
             ' ULbl4
@@ -892,7 +892,7 @@
             ULbl4.XOText = "Short Desc."
             ULbl4.XOTextAdjuster = False
             ULbl4.XOTextBorder = False
-            ULbl4.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.TabIndex = 1012
             ' 
             ' ULbl5
@@ -905,7 +905,7 @@
             ULbl5.XOText = "Keywords"
             ULbl5.XOTextAdjuster = False
             ULbl5.XOTextBorder = False
-            ULbl5.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl5.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.TabIndex = 1013
             ' 
             ' ULbl6
@@ -918,7 +918,7 @@
             ULbl6.XOText = "Attachment(s)"
             ULbl6.XOTextAdjuster = False
             ULbl6.XOTextBorder = False
-            ULbl6.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl6.TabIndex = 1014
             ' 
             ' FRMpeprEditor
@@ -952,17 +952,17 @@
 
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
-        Friend WithEvents TxtArchiveCode As CMCv.UI.Control.txt
-        Friend WithEvents Txt1 As CMCv.UI.Control.txt
+        Friend WithEvents TxtArchiveCode As CMCv.UI.Control.Txt
+        Friend WithEvents Txt1 As CMCv.UI.Control.Txt
         Friend WithEvents CboCategory As CMCv.UI.Control.Cbo
-        Friend WithEvents TxtTitle As CMCv.UI.Control.txt
-        Friend WithEvents Txt2 As CMCv.UI.Control.txt
+        Friend WithEvents TxtTitle As CMCv.UI.Control.Txt
+        Friend WithEvents Txt2 As CMCv.UI.Control.Txt
         Friend WithEvents TbctlAttachment As CMCv.UI.Control.Tbx
         Friend WithEvents tpPhotos As TabPage
-        Friend WithEvents PnlPhoto As CMCv.UI.Control.pnl
+        Friend WithEvents PnlPhoto As CMCv.UI.Control.Pnl
         Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.Btn
         Friend WithEvents PctbxPhoto As CMCv.UI.Control.Pbx
-        Friend WithEvents DgnPictureList As CMCv.UI.Control.dgn
+        Friend WithEvents DgnPictureList As CMCv.UI.Control.Dgn
         Friend WithEvents photo_id As DataGridViewTextBoxColumn
         Friend WithEvents photo_datetime As DataGridViewTextBoxColumn
         Friend WithEvents photo_content As DataGridViewImageColumn
@@ -970,12 +970,12 @@
         Friend WithEvents photo_uploader As DataGridViewTextBoxColumn
         Friend WithEvents photo_delete As DataGridViewButtonColumn
         Friend WithEvents BtnPeekPhoto As CMCv.UI.Control.Btn
-        Friend WithEvents TxtPhotoPath As CMCv.UI.Control.txt
+        Friend WithEvents TxtPhotoPath As CMCv.UI.Control.Txt
         Friend WithEvents BtnAddPhoto As CMCv.UI.Control.Btn
         Friend WithEvents tpFiles As TabPage
-        Friend WithEvents PnlFile As CMCv.UI.Control.pnl
+        Friend WithEvents PnlFile As CMCv.UI.Control.Pnl
         Friend WithEvents BtnBrowseFile As CMCv.UI.Control.Btn
-        Friend WithEvents DgnFileList As CMCv.UI.Control.dgn
+        Friend WithEvents DgnFileList As CMCv.UI.Control.Dgn
         Friend WithEvents file_id As DataGridViewTextBoxColumn
         Friend WithEvents file_tag As DataGridViewTextBoxColumn
         Friend WithEvents file_datetime As DataGridViewTextBoxColumn
@@ -984,7 +984,7 @@
         Friend WithEvents file_uploader As DataGridViewTextBoxColumn
         Friend WithEvents file_delete As DataGridViewButtonColumn
         Friend WithEvents CboFileTag As CMCv.UI.Control.Cbo
-        Friend WithEvents TxtFilePath As CMCv.UI.Control.txt
+        Friend WithEvents TxtFilePath As CMCv.UI.Control.Txt
         Friend WithEvents BtnAddFile As CMCv.UI.Control.Btn
         Friend WithEvents BtnPeekFile As CMCv.UI.Control.Btn
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl

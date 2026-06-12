@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMphotoViewer
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -45,7 +45,7 @@
             ' Imgs_
             ' 
             Imgs_.AllowDragging = True
-            Imgs_.Dock = system.Windows.Forms.DockStyle.Fill
+            Imgs_.Dock = System.Windows.Forms.DockStyle.Fill
             Imgs_.InternalBackColor = Drawing.Color.Transparent
             Imgs_.Location = New System.Drawing.Point(0, 0)
             Imgs_.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -56,13 +56,13 @@
             ' 
             ' BtnClose
             ' 
-            BtnClose.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Right
+            BtnClose.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right
             BtnClose.BackColor = Drawing.Color.Red
-            BtnClose.Cursor = system.Windows.Forms.Cursors.Hand
+            BtnClose.Cursor = System.Windows.Forms.Cursors.Hand
             BtnClose.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(0), CByte(0))
             BtnClose.FlatAppearance.BorderSize = 2
             BtnClose.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
-            BtnClose.FlatStyle = system.Windows.Forms.FlatStyle.Flat
+            BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             BtnClose.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
             BtnClose.ForeColor = Drawing.Color.White
             BtnClose.Location = New System.Drawing.Point(1120, 13)
@@ -72,7 +72,7 @@
             BtnClose.TabIndex = 0
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnClose.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnClose.XOShowBorderOnFocus = False
             BtnClose.XOValidateAllInput = False
             BtnClose.XOValidateAllInputTag = Nothing

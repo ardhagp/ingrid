@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMccin
-        Inherits CMCv.ui.canvas.FRMstandardFind
+        Inherits CMCv.UI.Canvas.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -24,7 +24,7 @@
             Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnCCIN = New CMCv.UI.Control.dgn(components)
+            DgnCCIN = New CMCv.UI.Control.Dgn(components)
             company_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
             company_name = New DataGridViewTextBoxColumn()
@@ -68,7 +68,7 @@
             DgnCCIN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F)
             DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
             DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -79,7 +79,7 @@
             DgnCCIN.Columns.AddRange(New DataGridViewColumn() {company_id, company_code, company_name, company_searchterm1, company_searchterm2, company_description})
             DgnCCIN.Dock = DockStyle.Fill
             DgnCCIN.EnableHeadersVisualStyles = False
-            DgnCCIN.Font = New Font("Verdana", 8F)
+            DgnCCIN.Font = New Font("Verdana", 8.0F)
             DgnCCIN.Location = New Point(0, 88)
             DgnCCIN.Margin = New Padding(6, 5, 6, 5)
             DgnCCIN.MultiSelect = False
@@ -88,7 +88,7 @@
             DgnCCIN.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle3.BackColor = Color.YellowGreen
-            DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F)
             DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
             DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -169,7 +169,7 @@
             ' 
             ' FRMccin
             ' 
-            AutoScaleDimensions = New SizeF(10F, 25F)
+            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
             ClientSize = New Size(1307, 1078)
             ControlBox = False
             FormBorderStyle = FormBorderStyle.SizableToolWindow
@@ -192,7 +192,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnCCIN As cmcv.ui.control.dgn
+        Friend WithEvents DgnCCIN As CMCv.UI.Control.Dgn
         Friend WithEvents company_id As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
         Friend WithEvents company_name As DataGridViewTextBoxColumn

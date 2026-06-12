@@ -1,4 +1,4 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMmainframe6
         Inherits System.Windows.Forms.Form
@@ -124,28 +124,28 @@
             LoginToolStripMenuItem = New ToolStripMenuItem()
             LogoutToolStripMenuItem = New ToolStripMenuItem()
             SUPPORT = New ToolStripMenuItem()
-            pnl_mainframe_left = New CMCv.UI.Control.pnl(components)
-            Tv_mainframe = New CMCv.UI.Control.tv(components)
+            pnl_mainframe_left = New CMCv.UI.Control.Pnl(components)
+            Tv_mainframe = New CMCv.UI.Control.Tv(components)
             Imglst_mainframe = New ImageList(components)
-            PnlStorage = New CMCv.UI.Control.pnl(components)
+            PnlStorage = New CMCv.UI.Control.Pnl(components)
             pgFileStorage = New Syncfusion.Windows.Forms.Tools.ProgressBarAdv()
             pgDataStorage = New Syncfusion.Windows.Forms.Tools.ProgressBarAdv()
             lblFile = New Label()
             lblData = New Label()
             lblFileStorage = New Label()
             lblDataStorage = New Label()
-            lblStorage = New CMCv.UI.Control.lbl(components)
-            Pnl_command_top = New CMCv.UI.Control.pnl(components)
+            lblStorage = New CMCv.UI.Control.Lbl(components)
+            Pnl_command_top = New CMCv.UI.Control.Pnl(components)
             BtnExecute = New Syncfusion.Windows.Forms.ButtonAdv()
-            Txt_shortcut = New CMCv.UI.Control.txt(components)
-            PnlProfile = New CMCv.UI.Control.pnl(components)
+            Txt_shortcut = New CMCv.UI.Control.Txt(components)
+            PnlProfile = New CMCv.UI.Control.Pnl(components)
             PctProfile = New CMCv.UI.Control.Pbx(components)
             PctbxFrame = New CMCv.UI.Control.Pbx(components)
-            LblPosition = New CMCv.UI.Control.lbl(components)
-            LblEmployeeName = New CMCv.UI.Control.lbl(components)
-            LblEmpNumber = New CMCv.UI.Control.lbl(components)
-            LblWelcome = New CMCv.UI.Control.lbl(components)
-            St_mainframe = New CMCv.UI.Control.stt(components)
+            LblPosition = New CMCv.UI.Control.Lbl(components)
+            LblEmployeeName = New CMCv.UI.Control.Lbl(components)
+            LblEmpNumber = New CMCv.UI.Control.Lbl(components)
+            LblWelcome = New CMCv.UI.Control.Lbl(components)
+            St_mainframe = New CMCv.UI.Control.Stt(components)
             Ts_status = New ToolStripStatusLabel()
             Ts_caps = New ToolStripStatusLabel()
             Ts_connection = New ToolStripStatusLabel()
@@ -154,7 +154,7 @@
             Tmr_gc = New Timer(components)
             TmrMOD = New Timer(components)
             Tmr_runningtext = New Timer(components)
-            TxtRunning = New CMCv.UI.Control.txt(components)
+            TxtRunning = New CMCv.UI.Control.Txt(components)
             spl_ = New Splitter()
             Ms_mainframe.SuspendLayout()
             pnl_mainframe_left.SuspendLayout()
@@ -171,7 +171,7 @@
             ' Ms_mainframe
             ' 
             Ms_mainframe.BackColor = Color.White
-            Ms_mainframe.Font = New Font("Segoe UI", 12F)
+            Ms_mainframe.Font = New Font("Segoe UI", 12.0F)
             Ms_mainframe.ImageScalingSize = New Size(24, 24)
             Ms_mainframe.Items.AddRange(New ToolStripItem() {APPSYSTEM, WORKSPACE, HELP, USERMENU, SUPPORT})
             Ms_mainframe.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow
@@ -348,7 +348,7 @@
             ' 
             ' BuymeacoffeToolStripMenuItem
             ' 
-            BuymeacoffeToolStripMenuItem.Font = New Font("Segoe UI", 12F, FontStyle.Underline)
+            BuymeacoffeToolStripMenuItem.Font = New Font("Segoe UI", 12.0F, FontStyle.Underline)
             BuymeacoffeToolStripMenuItem.ForeColor = Color.Blue
             BuymeacoffeToolStripMenuItem.Name = "BuymeacoffeToolStripMenuItem"
             BuymeacoffeToolStripMenuItem.Size = New Size(306, 40)
@@ -834,7 +834,7 @@
             ' 
             ' lblFile
             ' 
-            lblFile.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
+            lblFile.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold)
             lblFile.ForeColor = Color.White
             lblFile.Location = New Point(4, 163)
             lblFile.Margin = New Padding(4, 0, 4, 0)
@@ -846,7 +846,7 @@
             ' 
             ' lblData
             ' 
-            lblData.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
+            lblData.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold)
             lblData.ForeColor = Color.White
             lblData.Location = New Point(4, 70)
             lblData.Margin = New Padding(4, 0, 4, 0)
@@ -859,7 +859,7 @@
             ' lblFileStorage
             ' 
             lblFileStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            lblFileStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
+            lblFileStorage.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold)
             lblFileStorage.ForeColor = Color.White
             lblFileStorage.Location = New Point(99, 163)
             lblFileStorage.Margin = New Padding(4, 0, 4, 0)
@@ -872,7 +872,7 @@
             ' lblDataStorage
             ' 
             lblDataStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            lblDataStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
+            lblDataStorage.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold)
             lblDataStorage.ForeColor = Color.White
             lblDataStorage.Location = New Point(101, 70)
             lblDataStorage.Margin = New Padding(4, 0, 4, 0)
@@ -931,7 +931,7 @@
             Txt_shortcut.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
             Txt_shortcut.AutoCompleteMode = AutoCompleteMode.Suggest
             Txt_shortcut.AutoCompleteSource = AutoCompleteSource.CustomSource
-            Txt_shortcut.Font = New Font("Segoe UI", 12F)
+            Txt_shortcut.Font = New Font("Segoe UI", 12.0F)
             Txt_shortcut.Location = New Point(4, 17)
             Txt_shortcut.Margin = New Padding(4, 5, 4, 5)
             Txt_shortcut.MaxLength = 255
@@ -947,13 +947,13 @@
             Txt_shortcut.XOHighlightColor = Color.LightYellow
             Txt_shortcut.XOIsBlank = True
             Txt_shortcut.XOIsPlaceholder = False
-            Txt_shortcut.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            Txt_shortcut.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             Txt_shortcut.XOSelectOnFocus = False
             Txt_shortcut.XOPasswordLengthMin = 8
             Txt_shortcut.XOPasswordStrengthCalc = False
             Txt_shortcut.XOPasswordStrengthScore = 0
             Txt_shortcut.XOPasswordStrengthText = Nothing
-            Txt_shortcut.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            Txt_shortcut.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             Txt_shortcut.XOPlaceholderText = "Command Module"
             Txt_shortcut.XOSqlText = Nothing
             Txt_shortcut.XOIsReplaceEmptyString = False
@@ -1012,7 +1012,7 @@
             ' LblPosition
             ' 
             LblPosition.AutoSize = True
-            LblPosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            LblPosition.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             LblPosition.ForeColor = Color.Yellow
             LblPosition.Location = New Point(187, 157)
             LblPosition.Margin = New Padding(4, 0, 4, 0)
@@ -1118,7 +1118,7 @@
             TxtRunning.BackColor = Color.White
             TxtRunning.BorderStyle = BorderStyle.FixedSingle
             TxtRunning.Dock = DockStyle.Top
-            TxtRunning.Font = New Font("Segoe UI", 12F)
+            TxtRunning.Font = New Font("Segoe UI", 12.0F)
             TxtRunning.Location = New Point(0, 42)
             TxtRunning.Margin = New Padding(4, 5, 4, 5)
             TxtRunning.MaxLength = 255
@@ -1137,13 +1137,13 @@
             TxtRunning.XOHighlightColor = Color.LightYellow
             TxtRunning.XOIsBlank = True
             TxtRunning.XOIsPlaceholder = False
-            TxtRunning.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtRunning.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtRunning.XOSelectOnFocus = False
             TxtRunning.XOPasswordLengthMin = 8
             TxtRunning.XOPasswordStrengthCalc = False
             TxtRunning.XOPasswordStrengthScore = 0
             TxtRunning.XOPasswordStrengthText = Nothing
-            TxtRunning.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtRunning.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtRunning.XOPlaceholderText = "Type then press Enter"
             TxtRunning.XOSqlText = ""
             TxtRunning.XOIsReplaceEmptyString = False
@@ -1162,7 +1162,7 @@
             ' 
             ' FRMmainframe6
             ' 
-            AutoScaleDimensions = New SizeF(10F, 25F)
+            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
             AutoScaleMode = AutoScaleMode.Font
             ClientSize = New Size(1120, 935)
             Controls.Add(spl_)
@@ -1231,7 +1231,7 @@
         Friend WithEvents LoginToolStripMenuItem As ToolStripMenuItem
         Friend WithEvents ChangePasswordToolStripMenuItem As ToolStripMenuItem
         Friend WithEvents SUPPORT As ToolStripMenuItem
-        Friend WithEvents TxtRunning As CMCv.UI.Control.txt
+        Friend WithEvents TxtRunning As CMCv.UI.Control.Txt
         Friend WithEvents Imglst_mainframe As ImageList
         Friend WithEvents TmrNotif As Timer
         Friend WithEvents Tmr_gc As Timer
@@ -1240,26 +1240,26 @@
         Friend WithEvents TmrStatus As Timer
         Friend WithEvents Tmr_runningtext As Timer
         Public WithEvents Ms_mainframe As MenuStrip
-        Friend WithEvents pnl_mainframe_left As CMCv.UI.Control.pnl
+        Friend WithEvents pnl_mainframe_left As CMCv.UI.Control.Pnl
         Friend WithEvents spl_ As Splitter
-        Friend WithEvents Tv_mainframe As CMCv.UI.Control.tv
-        Friend WithEvents Pnl_command_top As CMCv.UI.Control.pnl
+        Friend WithEvents Tv_mainframe As CMCv.UI.Control.Tv
+        Friend WithEvents Pnl_command_top As CMCv.UI.Control.Pnl
         Friend WithEvents BtnExecute As Syncfusion.Windows.Forms.ButtonAdv
-        Friend WithEvents Txt_shortcut As CMCv.UI.Control.txt
-        Friend WithEvents PnlProfile As CMCv.UI.Control.pnl
-        Friend WithEvents LblWelcome As CMCv.UI.Control.lbl
+        Friend WithEvents Txt_shortcut As CMCv.UI.Control.Txt
+        Friend WithEvents PnlProfile As CMCv.UI.Control.Pnl
+        Friend WithEvents LblWelcome As CMCv.UI.Control.Lbl
         Friend WithEvents PctProfile As CMCv.UI.Control.Pbx
-        Friend WithEvents LblEmpNumber As CMCv.UI.Control.lbl
-        Friend WithEvents LblEmployeeName As CMCv.UI.Control.lbl
-        Friend WithEvents LblPosition As CMCv.UI.Control.lbl
+        Friend WithEvents LblEmpNumber As CMCv.UI.Control.Lbl
+        Friend WithEvents LblEmployeeName As CMCv.UI.Control.Lbl
+        Friend WithEvents LblPosition As CMCv.UI.Control.Lbl
         Friend WithEvents PctbxFrame As CMCv.UI.Control.Pbx
-        Friend WithEvents PnlStorage As CMCv.UI.Control.pnl
+        Friend WithEvents PnlStorage As CMCv.UI.Control.Pnl
         Friend WithEvents lblFile As Label
         Friend WithEvents lblData As Label
         Friend WithEvents lblFileStorage As Label
         Friend WithEvents lblDataStorage As Label
-        Friend WithEvents lblStorage As CMCv.UI.Control.lbl
-        Friend WithEvents St_mainframe As CMCv.UI.Control.stt
+        Friend WithEvents lblStorage As CMCv.UI.Control.Lbl
+        Friend WithEvents St_mainframe As CMCv.UI.Control.Stt
         Friend WithEvents Ts_status As ToolStripStatusLabel
         Friend WithEvents Ts_connection As ToolStripStatusLabel
         Friend WithEvents Ts_caps As ToolStripStatusLabel

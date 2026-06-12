@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 Imports System.Text
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMpost
 #Region "Declaration"
         Private WithEvents Frm_post_Editor As New FRMpostEditor
@@ -39,7 +39,7 @@ Namespace UI
             varDataProperties.AllParameters.Remove(pCommand)
             varDataProperties.AllParameters.Add(pCommand, "POST")
             If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -54,19 +54,19 @@ Namespace UI
             varDataProperties.AllParameters.Remove(pCommand)
             varDataProperties.AllParameters.Add(pCommand, "POST")
             If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
 
             If varDataProperties.EmployeePositionIsNew Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No Record Selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No Record Selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 Frm_post_Editor = New FRMpostEditor
                 Display(Frm_post_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your position data", True)
             End If
-            UI.FRMmainframe6.Ts_status.Text = String.Empty
+            UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -75,14 +75,14 @@ Namespace UI
             varDataProperties.AllParameters.Remove(pCommand)
             varDataProperties.AllParameters.Add(pCommand, "POST")
             If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             Call GetRowID()
 
             If varDataProperties.EmployeePositionIsNew Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No Record Selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No Record Selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 With DgnPOST.CurrentRow
                     Dim varMessage As New StringBuilder()
@@ -99,11 +99,11 @@ Namespace UI
                             "Grade : " & .Cells("grade_code").Value.ToString)
 
                     varMessage.AppendLine(varLine)
-                    If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Question, CMCv.ui.canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDpost.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
+                    If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDpost.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
                         Call GetData(True)
-                        UI.FRMmainframe6.Ts_status.Text = "Success"
+                        UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
                     Else
-                        UI.FRMmainframe6.Ts_status.Text = "Delete failed"
+                        UI.Canvas.FRMmainframe6.Ts_status.Text = "Delete failed"
                     End If
                 End With
             End If
@@ -131,7 +131,7 @@ Namespace UI
         Private Sub FRMpost_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Com_mms_Menu.LoadIn(Me)
             Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
-            DgnPOST.XOGETNewColor()
+            DgnPOST.XOGetNewColor()
             Call GetData(True)
             TxtFind.ClearSearch()
         End Sub
@@ -313,9 +313,9 @@ Namespace UI
         '        'Dim deleted As Boolean = CMDpost.View.DeleteData(varDataProperties, varDatasetIngrid)
         '        'If deleted Then
         '        '    Call GetData(True)
-        '        '    UI.FRMmainframe6.Ts_status.Text = "Success"
+        '        '    UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
         '        'Else
-        '        '    UI.FRMmainframe6.Ts_status.Text = "Delete failed"
+        '        '    UI.Canvas.FRMmainframe6.Ts_status.Text = "Delete failed"
         '        'End If
 
         '        'Obsolete

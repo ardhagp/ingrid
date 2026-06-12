@@ -1,4 +1,4 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMconn
         Inherits CMCv.UI.Canvas.FRMstandardFindFooter
@@ -25,7 +25,7 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnConnection = New CMCv.UI.Control.dgn(components)
+            DgnConnection = New CMCv.UI.Control.Dgn(components)
             id = New DataGridViewTextBoxColumn()
             connectionname = New DataGridViewTextBoxColumn()
             databaseengine = New DataGridViewTextBoxColumn()
@@ -228,7 +228,7 @@
             Btn_Close.TabIndex = 1
             Btn_Close.Text = "&Close"
             Btn_Close.UseVisualStyleBackColor = False
-            Btn_Close.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            Btn_Close.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             Btn_Close.XOShowBorderOnFocus = False
             Btn_Close.XOValidateAllInput = False
             Btn_Close.XOValidateAllInputTag = Nothing
@@ -257,7 +257,7 @@
             PerformLayout()
         End Sub
 
-        Friend WithEvents DgnConnection As CMCv.UI.Control.dgn
+        Friend WithEvents DgnConnection As CMCv.UI.Control.Dgn
         Friend WithEvents Btn_Close As CMCv.UI.Control.Btn
         Friend WithEvents id As DataGridViewTextBoxColumn
         Friend WithEvents connectionname As DataGridViewTextBoxColumn

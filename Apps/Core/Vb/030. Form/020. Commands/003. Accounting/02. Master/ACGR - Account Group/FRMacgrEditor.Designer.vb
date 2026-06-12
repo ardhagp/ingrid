@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMacgrEditor
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -25,14 +25,14 @@
             BtnCancel = New CMCv.UI.Control.Btn(components)
             CboCompany = New CMCv.UI.Control.Cbo(components)
             CboAccountingBook = New CMCv.UI.Control.Cbo(components)
-            Lbl1 = New CMCv.UI.Control.lbl(components)
-            Lbl2 = New CMCv.UI.Control.lbl(components)
+            Lbl1 = New CMCv.UI.Control.Lbl(components)
+            Lbl2 = New CMCv.UI.Control.Lbl(components)
             CboAccountGroup = New CMCv.UI.Control.Cbo(components)
-            Lbl3 = New CMCv.UI.Control.lbl(components)
-            TxtAccountNumber = New CMCv.UI.Control.txt(components)
-            Lbl4 = New CMCv.UI.Control.lbl(components)
-            TxtAccountName = New CMCv.UI.Control.txt(components)
-            Lbl5 = New CMCv.UI.Control.lbl(components)
+            Lbl3 = New CMCv.UI.Control.Lbl(components)
+            TxtAccountNumber = New CMCv.UI.Control.Txt(components)
+            Lbl4 = New CMCv.UI.Control.Lbl(components)
+            TxtAccountName = New CMCv.UI.Control.Txt(components)
+            Lbl5 = New CMCv.UI.Control.Lbl(components)
             ChkEnable = New CMCv.UI.Control.Chk(components)
             ChkAddNew = New CMCv.UI.Control.Chk(components)
             PnlBottomButton.SuspendLayout()
@@ -105,7 +105,7 @@
             BtnSave.TabIndex = 6
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+            BtnSave.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -128,7 +128,7 @@
             BtnCancel.TabIndex = 7
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnCancel.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
@@ -225,13 +225,13 @@
             TxtAccountNumber.XOHighlightColor = Color.LightYellow
             TxtAccountNumber.XOIsBlank = True
             TxtAccountNumber.XOIsPlaceholder = False
-            TxtAccountNumber.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtAccountNumber.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtAccountNumber.XOSelectOnFocus = True
             TxtAccountNumber.XOPasswordLengthMin = 8
             TxtAccountNumber.XOPasswordStrengthCalc = False
             TxtAccountNumber.XOPasswordStrengthScore = 0
             TxtAccountNumber.XOPasswordStrengthText = Nothing
-            TxtAccountNumber.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtAccountNumber.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtAccountNumber.XOPlaceholderText = "Type then press Enter"
             TxtAccountNumber.XOSqlText = ""
             TxtAccountNumber.XOIsReplaceEmptyString = False
@@ -267,13 +267,13 @@
             TxtAccountName.XOHighlightColor = Color.LightYellow
             TxtAccountName.XOIsBlank = True
             TxtAccountName.XOIsPlaceholder = False
-            TxtAccountName.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.UPPERCASE
+            TxtAccountName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtAccountName.XOSelectOnFocus = True
             TxtAccountName.XOPasswordLengthMin = 8
             TxtAccountName.XOPasswordStrengthCalc = False
             TxtAccountName.XOPasswordStrengthScore = 0
             TxtAccountName.XOPasswordStrengthText = Nothing
-            TxtAccountName.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtAccountName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtAccountName.XOPlaceholderText = "Type then press Enter"
             TxtAccountName.XOSqlText = ""
             TxtAccountName.XOIsReplaceEmptyString = False
@@ -341,14 +341,14 @@
         End Sub
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
-        Friend WithEvents Lbl5 As CMCv.UI.Control.lbl
-        Friend WithEvents TxtAccountName As CMCv.UI.Control.txt
-        Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
-        Friend WithEvents TxtAccountNumber As CMCv.UI.Control.txt
-        Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl5 As CMCv.UI.Control.Lbl
+        Friend WithEvents TxtAccountName As CMCv.UI.Control.Txt
+        Friend WithEvents Lbl4 As CMCv.UI.Control.Lbl
+        Friend WithEvents TxtAccountNumber As CMCv.UI.Control.Txt
+        Friend WithEvents Lbl3 As CMCv.UI.Control.Lbl
         Friend WithEvents CboAccountGroup As CMCv.UI.Control.Cbo
-        Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
-        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
+        Friend WithEvents Lbl2 As CMCv.UI.Control.Lbl
+        Friend WithEvents Lbl1 As CMCv.UI.Control.Lbl
         Friend WithEvents CboAccountingBook As CMCv.UI.Control.Cbo
         Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk

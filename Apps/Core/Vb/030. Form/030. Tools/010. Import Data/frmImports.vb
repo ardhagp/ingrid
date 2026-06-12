@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMimports
         Private varSource As Import.Data.DataType.TypeofImports
         Private varOriginalSourceFile As String

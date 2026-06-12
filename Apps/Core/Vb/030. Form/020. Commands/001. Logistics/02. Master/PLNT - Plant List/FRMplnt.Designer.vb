@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMplnt
-        Inherits CMCv.ui.canvas.FRMstandardFind
+        Inherits CMCv.UI.Canvas.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -24,7 +24,7 @@
             Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnPLNT = New CMCv.UI.Control.dgn(components)
+            DgnPLNT = New CMCv.UI.Control.Dgn(components)
             plant_id = New DataGridViewTextBoxColumn()
             plant_code = New DataGridViewTextBoxColumn()
             plant_name = New DataGridViewTextBoxColumn()
@@ -71,7 +71,7 @@
             DgnPLNT.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
             DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
             DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -82,7 +82,7 @@
             DgnPLNT.Columns.AddRange(New DataGridViewColumn() {plant_id, plant_code, plant_name, plant_name2, plant_searchterm1, plant_searchterm2, plant_description, plant_postalcode, plant_address})
             DgnPLNT.Dock = DockStyle.Fill
             DgnPLNT.EnableHeadersVisualStyles = False
-            DgnPLNT.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DgnPLNT.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
             DgnPLNT.Location = New Point(0, 88)
             DgnPLNT.Margin = New Padding(6, 5, 6, 5)
             DgnPLNT.Name = "DgnPLNT"
@@ -90,7 +90,7 @@
             DgnPLNT.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle3.BackColor = Color.YellowGreen
-            DataGridViewCellStyle3.Font = New Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
             DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
             DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -204,7 +204,7 @@
             ' 
             ' FRMplnt
             ' 
-            AutoScaleDimensions = New SizeF(10F, 25F)
+            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
             ClientSize = New Size(1307, 1078)
             ControlBox = False
             Margin = New Padding(10, 5, 10, 5)
@@ -224,7 +224,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnPLNT As cmcv.ui.control.dgn
+        Friend WithEvents DgnPLNT As CMCv.UI.Control.Dgn
         Friend WithEvents plant_id As DataGridViewTextBoxColumn
         Friend WithEvents plant_code As DataGridViewTextBoxColumn
         Friend WithEvents plant_name As DataGridViewTextBoxColumn

@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMphtrz
         Private varImageCompressor As New CMCv.ImageEditor.Proccessor.Compress
         Private varFileHandler As New CMCv.OperatingSystem.File.Info
@@ -58,7 +58,7 @@ Namespace UI
             OfdLoad.FileName = ""
             OfdLoad.Filter = "Photo File|*.Jpg;*.Jpeg"
 
-            If OfdLoad.ShowDialog = system.Windows.Forms.DialogResult.OK Then
+            If OfdLoad.ShowDialog = System.Windows.Forms.DialogResult.OK Then
                 TxtLoad.Text = OfdLoad.FileName
                 PctbxPhoto.ImageLocation = OfdLoad.FileName
 

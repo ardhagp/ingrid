@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMsplash
-        Inherits CMCv.ui.canvas.FRMblank
+        Inherits CMCv.UI.Canvas.FRMblank
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -22,11 +22,11 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMsplash))
-            Pctbx1 = New cmcv.ui.control.Pbx(components)
+            Pctbx1 = New CMCv.UI.Control.Pbx(components)
             _ExecuteTime = New Timer(components)
             tlp_ = New TableLayoutPanel()
-            LblTitle = New cmcv.ui.control.lbl(components)
-            LblAdditional = New cmcv.ui.control.lbl(components)
+            LblTitle = New CMCv.UI.Control.Lbl(components)
+            LblAdditional = New CMCv.UI.Control.Lbl(components)
             _LoadingTime = New Timer(components)
             CType(Pctbx1, ComponentModel.ISupportInitialize).BeginInit()
             tlp_.SuspendLayout()
@@ -130,11 +130,11 @@
 
         End Sub
 
-        Friend WithEvents Pctbx1 As CMCv.ui.control.Pbx
+        Friend WithEvents Pctbx1 As CMCv.UI.Control.Pbx
         Friend WithEvents _ExecuteTime As Timer
         Friend WithEvents tlp_ As TableLayoutPanel
         Friend WithEvents _LoadingTime As Timer
-        Friend WithEvents LblTitle As CMCv.ui.control.lbl
-        Friend WithEvents LblAdditional As CMCv.ui.control.lbl
+        Friend WithEvents LblTitle As CMCv.UI.Control.Lbl
+        Friend WithEvents LblAdditional As CMCv.UI.Control.Lbl
     End Class
 End Namespace

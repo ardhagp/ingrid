@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMfirstguide
         Private FirstRecord, EmploymentType1, EmploymentType2, EmploymentType3, EmploymentType4, EmploymentType5 As New LibApp.Ingrid.Global.Properties
         Private varStep As Integer
@@ -15,7 +15,7 @@ Namespace UI
                          "☑ Posisiton" & Environment.NewLine &
                          "☑ Employee Name" & Environment.NewLine &
                          "☑ Employee ID",
-                LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                     If (Txt_Company.XOIsBlank) Then
                         Txt_Company.Focus()
                     ElseIf (Txt_Department.XOIsBlank) Then
@@ -40,11 +40,11 @@ Namespace UI
                 Gbx_Login.Visible = True
                 varStep += 1
                 Lbl_Step.Text = $"Step {varStep} :"
-                Btn_Close.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
+                Btn_Close.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
                 Btn_Close.Text = "&Prev"
             ElseIf varStep = 2 Then
                 If (Txt_Username.XOIsBlank) OrElse (Txt_Password.XOIsBlank) Then
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Username cannot be empty", LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Username cannot be empty", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                     If (Txt_Username.XOIsBlank) Then
                         Txt_Username.Focus()
                     Else
@@ -53,7 +53,7 @@ Namespace UI
                     Return
                 End If
                 If Txt_Password.XOPasswordStrengthScore < 70 Then
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Your password is not strong enough!", LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Your password is not strong enough!", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                     Txt_Password.Focus()
                     Return
                 End If
@@ -78,27 +78,27 @@ Namespace UI
             Gbx_Company.Visible = True
             Gbx_Login.Visible = False
 
-            EmploymentType1.EmploymentTypeID = CMCv.Security.Encrypt.MD5("PERMANENT")
+            EmploymentType1.EmploymentTypeId = CMCv.Security.Encrypt.MD5("PERMANENT")
             EmploymentType1.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("PERMANENT")
             EmploymentType1.EmploymentTypeName = "PERMANENT"
             EmploymentType1.EmploymentTypeDescription = "Permanent Employment Type"
 
-            EmploymentType2.EmploymentTypeID = CMCv.Security.Encrypt.MD5("SERVICE CONTRACT")
+            EmploymentType2.EmploymentTypeId = CMCv.Security.Encrypt.MD5("SERVICE CONTRACT")
             EmploymentType2.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("SERVICE CONTRACT")
             EmploymentType2.EmploymentTypeName = "SERVICE CONTRACT"
             EmploymentType2.EmploymentTypeDescription = "Service Contract Employment Type"
 
-            EmploymentType3.EmploymentTypeID = CMCv.Security.Encrypt.MD5("TPC")
+            EmploymentType3.EmploymentTypeId = CMCv.Security.Encrypt.MD5("TPC")
             EmploymentType3.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("TPC")
             EmploymentType3.EmploymentTypeName = "TPC"
             EmploymentType3.EmploymentTypeDescription = "Third Party Contract Employment Type"
 
-            EmploymentType4.EmploymentTypeID = CMCv.Security.Encrypt.MD5("INTERN")
+            EmploymentType4.EmploymentTypeId = CMCv.Security.Encrypt.MD5("INTERN")
             EmploymentType4.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("INTERN")
             EmploymentType4.EmploymentTypeName = "INTERN"
             EmploymentType4.EmploymentTypeDescription = "Intern Employment Type"
 
-            EmploymentType5.EmploymentTypeID = CMCv.Security.Encrypt.MD5("DIRECT CONTRACT")
+            EmploymentType5.EmploymentTypeId = CMCv.Security.Encrypt.MD5("DIRECT CONTRACT")
             EmploymentType5.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("DIRECT CONTRACT")
             EmploymentType5.EmploymentTypeName = "DIRECT CONTRACT"
             EmploymentType5.EmploymentTypeDescription = "Direct Contract Type"
@@ -106,23 +106,23 @@ Namespace UI
             CboEmploymentType.DisplayMember = "Text"
             CboEmploymentType.ValueMember = "Value"
             CboEmploymentType.Items.Add(New With {
-        .Value = EmploymentType1.EmploymentTypeID,
+        .Value = EmploymentType1.EmploymentTypeId,
         .Text = EmploymentType1.EmploymentTypeName
         })
             CboEmploymentType.Items.Add(New With {
-        .Value = EmploymentType2.EmploymentTypeID,
+        .Value = EmploymentType2.EmploymentTypeId,
         .Text = EmploymentType2.EmploymentTypeName
         })
             CboEmploymentType.Items.Add(New With {
-        .Value = EmploymentType3.EmploymentTypeID,
+        .Value = EmploymentType3.EmploymentTypeId,
         .Text = EmploymentType3.EmploymentTypeName
         })
             CboEmploymentType.Items.Add(New With {
-        .Value = EmploymentType4.EmploymentTypeID,
+        .Value = EmploymentType4.EmploymentTypeId,
         .Text = EmploymentType4.EmploymentTypeName
         })
             CboEmploymentType.Items.Add(New With {
-        .Value = EmploymentType5.EmploymentTypeID,
+        .Value = EmploymentType5.EmploymentTypeId,
         .Text = EmploymentType5.EmploymentTypeName
         })
             CboEmploymentType.SelectedIndex = 0
@@ -132,7 +132,7 @@ Namespace UI
         <SupportedOSPlatform("windows")>
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
             If varStep = 1 Then
-                If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure you want to exit the First Guide?", LibApp.Ingrid.Global.PopupType.Confirmation, "Proceeding will close both this guide and the application.", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Question, cmcv.ui.canvas.FRMdialogbox.MessageTypes.YesNo) = MsgBoxResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure you want to exit the First Guide?", LibApp.Ingrid.Global.PopupType.Confirmation, "Proceeding will close both this guide and the application.", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = MsgBoxResult.Yes Then
                     Environment.Exit(0)
                 Else
                     Me.Close()
@@ -142,7 +142,7 @@ Namespace UI
                 Gbx_Login.Visible = False
                 varStep -= 1
                 Lbl_Step.Text = $"Step {varStep} :"
-                Btn_Close.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+                Btn_Close.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
                 Btn_Close.Text = "&Close"
             ElseIf varStep = 3 Then
                 Gbx_Login.Visible = True

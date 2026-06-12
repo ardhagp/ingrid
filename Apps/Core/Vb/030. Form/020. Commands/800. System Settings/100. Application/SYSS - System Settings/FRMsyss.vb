@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMsyss
         Const varMessageDisabled As String = "Disabled"
         Const varMessageAdministratorOnly As String = "Administrator Only"

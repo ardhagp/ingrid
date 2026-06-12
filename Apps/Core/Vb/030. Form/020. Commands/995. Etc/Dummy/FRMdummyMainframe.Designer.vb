@@ -1,4 +1,4 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMdummyMainframe
         Inherits System.Windows.Forms.Form

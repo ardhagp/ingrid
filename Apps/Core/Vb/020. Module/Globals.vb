@@ -108,12 +108,12 @@ Module Globals
 
     <SupportedOSPlatform("windows")>
     Public Sub ClearMainFrameFooterText()
-        UI.FRMmainframe6.Ts_status.Text = String.Empty
+        UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
     End Sub
 
     <SupportedOSPlatform("windows")>
     Public Sub SetMainframeFooterText(text As String)
-        UI.FRMmainframe6.Ts_status.Text = text
+        UI.Canvas.FRMmainframe6.Ts_status.Text = text
     End Sub
 
 #Region "Get App Version"

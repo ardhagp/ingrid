@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 
-Namespace UI
+Namespace UI.Canvas
     Public Class FRMmodsEditor
 #Region "Declaration"
         Public Event EventRecordSaved()
@@ -24,7 +24,7 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Private Sub FRMmodsEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            DgnUserRoles.XOGETNewColor()
+            DgnUserRoles.XOGetNewColor()
 
             Call FillGroup(CboGroup)
             If (varDataProperties.SystemModuleIsNew) Then
@@ -52,21 +52,21 @@ Namespace UI
             Call CheckAllInput()
 
             If (CboGroup.Items.Count = 0) OrElse (TxtCode.XOSqlText = String.Empty) OrElse (TxtName.XOSqlText = String.Empty) Then
-                Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "Make sure you have Module Group selected, Module Code and Module Name are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Make sure you have Module Group selected, Module Code and Module Name are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf (varDataProperties.SystemModuleIsNew) AndAlso (CMDmods.Editor.IsDuplicate(varDataProperties, TxtCode.XOSqlText)) Then
-                Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "This Departement Code already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Departement Code already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf Not (varDataProperties.SystemModuleIsNew) AndAlso (CMDmods.Editor.IsDuplicate(varDataProperties, TxtCode.XOSqlText, Convert.ToString(varDataProperties.SystemModuleId))) Then
-                Decision(My.Application.Info.AssemblyName.toupper, "Cannot save your record." & Environment.NewLine & "This Departement Code already used by another departement.", LibApp.Ingrid.Global.PopupType.Alert, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Alert, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Departement Code already used by another departement.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
             If (CMDmods.Editor.PushData(varDataProperties, TxtID.XOSqlText, CboGroup.SelectedValue.ToString, TxtCode.XOSqlText, TxtName.XOSqlText, TxtDescription.XOSqlText, ChkSystem.Checked, ChkLocked.Checked, Convert.ToString(varDataProperties.SystemModuleId))) Then
                 RaiseEvent EventRecordSaved()
-                UI.FRMmainframe6.Ts_status.Text = "Success"
+                UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
             Else
-                UI.FRMmainframe6.Ts_status.Text = "Failed to save"
+                UI.Canvas.FRMmainframe6.Ts_status.Text = "Failed to save"
                 Return
             End If
 

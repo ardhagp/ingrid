@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMdummyEditor
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -67,7 +67,7 @@
             Btn1.TabIndex = 1
             Btn1.Text = "Btn1"
             Btn1.UseVisualStyleBackColor = False
-            Btn1.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
+            Btn1.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
             Btn1.XOShowBorderOnFocus = False
             Btn1.XOValidateAllInput = False
             Btn1.XOValidateAllInputTag = Nothing
@@ -89,7 +89,7 @@
             Btn2.TabIndex = 2
             Btn2.Text = "Btn2"
             Btn2.UseVisualStyleBackColor = False
-            Btn2.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
+            Btn2.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
             Btn2.XOShowBorderOnFocus = False
             Btn2.XOValidateAllInput = False
             Btn2.XOValidateAllInputTag = Nothing

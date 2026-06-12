@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMacbkEditor
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -22,13 +22,13 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Cbo1 = New CMCv.UI.Control.Cbo(components)
-            Txt1 = New CMCv.UI.Control.txt(components)
-            Txt2 = New CMCv.UI.Control.txt(components)
-            Txt3 = New CMCv.UI.Control.txt(components)
-            Lbl1 = New CMCv.UI.Control.lbl(components)
-            Lbl2 = New CMCv.UI.Control.lbl(components)
-            Lbl3 = New CMCv.UI.Control.lbl(components)
-            Lbl4 = New CMCv.UI.Control.lbl(components)
+            Txt1 = New CMCv.UI.Control.Txt(components)
+            Txt2 = New CMCv.UI.Control.Txt(components)
+            Txt3 = New CMCv.UI.Control.Txt(components)
+            Lbl1 = New CMCv.UI.Control.Lbl(components)
+            Lbl2 = New CMCv.UI.Control.Lbl(components)
+            Lbl3 = New CMCv.UI.Control.Lbl(components)
+            Lbl4 = New CMCv.UI.Control.Lbl(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
             ChkAddNew = New CMCv.UI.Control.Chk(components)
@@ -110,13 +110,13 @@
             Txt1.XOHighlightColor = Color.LightYellow
             Txt1.XOIsBlank = True
             Txt1.XOIsPlaceholder = False
-            Txt1.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.UPPERCASE
+            Txt1.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             Txt1.XOSelectOnFocus = False
             Txt1.XOPasswordLengthMin = 8
             Txt1.XOPasswordStrengthCalc = False
             Txt1.XOPasswordStrengthScore = 0
             Txt1.XOPasswordStrengthText = Nothing
-            Txt1.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            Txt1.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             Txt1.XOPlaceholderText = "Type then press Enter"
             Txt1.XOSqlText = ""
             Txt1.XOIsReplaceEmptyString = False
@@ -140,13 +140,13 @@
             Txt2.XOHighlightColor = Color.LightYellow
             Txt2.XOIsBlank = True
             Txt2.XOIsPlaceholder = False
-            Txt2.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.UPPERCASE
+            Txt2.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             Txt2.XOSelectOnFocus = False
             Txt2.XOPasswordLengthMin = 8
             Txt2.XOPasswordStrengthCalc = False
             Txt2.XOPasswordStrengthScore = 0
             Txt2.XOPasswordStrengthText = Nothing
-            Txt2.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            Txt2.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             Txt2.XOPlaceholderText = "Type then press Enter"
             Txt2.XOSqlText = ""
             Txt2.XOIsReplaceEmptyString = False
@@ -171,13 +171,13 @@
             Txt3.XOHighlightColor = Color.LightYellow
             Txt3.XOIsBlank = True
             Txt3.XOIsPlaceholder = False
-            Txt3.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            Txt3.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             Txt3.XOSelectOnFocus = False
             Txt3.XOPasswordLengthMin = 8
             Txt3.XOPasswordStrengthCalc = False
             Txt3.XOPasswordStrengthScore = 0
             Txt3.XOPasswordStrengthText = Nothing
-            Txt3.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            Txt3.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             Txt3.XOPlaceholderText = "Type then press Enter"
             Txt3.XOSqlText = ""
             Txt3.XOIsReplaceEmptyString = False
@@ -249,7 +249,7 @@
             BtnSave.TabIndex = 4
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+            BtnSave.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -272,7 +272,7 @@
             BtnCancel.TabIndex = 5
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnCancel.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
@@ -312,15 +312,15 @@
             PerformLayout()
         End Sub
         Friend WithEvents Cbo1 As CMCv.UI.Control.Cbo
-        Friend WithEvents Txt1 As CMCv.UI.Control.txt
+        Friend WithEvents Txt1 As CMCv.UI.Control.Txt
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
-        Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
-        Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
-        Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
-        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
-        Friend WithEvents Txt3 As CMCv.UI.Control.txt
-        Friend WithEvents Txt2 As CMCv.UI.Control.txt
+        Friend WithEvents Lbl4 As CMCv.UI.Control.Lbl
+        Friend WithEvents Lbl3 As CMCv.UI.Control.Lbl
+        Friend WithEvents Lbl2 As CMCv.UI.Control.Lbl
+        Friend WithEvents Lbl1 As CMCv.UI.Control.Lbl
+        Friend WithEvents Txt3 As CMCv.UI.Control.Txt
+        Friend WithEvents Txt2 As CMCv.UI.Control.Txt
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
 
     End Class

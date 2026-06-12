@@ -1,7 +1,7 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMepls
-        Inherits CMCv.ui.canvas.FRMstandardFind
+        Inherits CMCv.UI.Canvas.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -25,7 +25,7 @@
             Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            DgnEPLS = New CMCv.UI.Control.dgn(components)
+            DgnEPLS = New CMCv.UI.Control.Dgn(components)
             employee_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
             company_name = New DataGridViewTextBoxColumn()
@@ -76,7 +76,7 @@
             DgnEPLS.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F)
             DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
             DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -87,7 +87,7 @@
             DgnEPLS.Columns.AddRange(New DataGridViewColumn() {employee_id, company_code, company_name, department_code, department_name, position_code, position_name, employee_number, employee_fullname, employee_nickname, employmenttype_name, employee_gender, employee_isactive})
             DgnEPLS.Dock = DockStyle.Fill
             DgnEPLS.EnableHeadersVisualStyles = False
-            DgnEPLS.Font = New Font("Verdana", 8F)
+            DgnEPLS.Font = New Font("Verdana", 8.0F)
             DgnEPLS.Location = New Point(0, 88)
             DgnEPLS.Margin = New Padding(6, 5, 6, 5)
             DgnEPLS.Name = "DgnEPLS"
@@ -95,7 +95,7 @@
             DgnEPLS.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle4.BackColor = Color.YellowGreen
-            DataGridViewCellStyle4.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle4.Font = New Font("Verdana", 8.0F)
             DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle4.SelectionBackColor = Color.Yellow
             DataGridViewCellStyle4.SelectionForeColor = Color.Black
@@ -253,7 +253,7 @@
             ' 
             ' FRMepls
             ' 
-            AutoScaleDimensions = New SizeF(10F, 25F)
+            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
             ClientSize = New Size(1307, 1078)
             ControlBox = False
             FormBorderStyle = FormBorderStyle.SizableToolWindow
@@ -277,7 +277,7 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents DgnEPLS As cmcv.ui.control.dgn
+        Friend WithEvents DgnEPLS As CMCv.UI.Control.Dgn
         Friend WithEvents employee_id As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
         Friend WithEvents company_name As DataGridViewTextBoxColumn

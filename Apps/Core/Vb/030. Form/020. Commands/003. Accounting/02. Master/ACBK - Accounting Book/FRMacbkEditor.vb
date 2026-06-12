@@ -1,4 +1,4 @@
-﻿Namespace UI
+﻿Namespace UI.Canvas
     Public Class FRMacbkEditor
         Public Sub New()
 
