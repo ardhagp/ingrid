@@ -176,6 +176,10 @@ Namespace UI.Canvas
                 Call LoginClicked() ' Ensure User Logged In
             End If
 
+            If Not varSession Then
+                Return
+            End If
+
             LibSQL.UI.Workspace.GetModuleProperties(varDataProperties, commandcode, varDatasetIngrid)
 
             With varDatasetIngrid.Tables(dtModule)
@@ -736,10 +740,6 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetSettings()
             LibSQL.CMDsyss.View.GetSettingsProperties(varDataProperties, varDatasetIngrid)
-            'varMaxUploadSizePDF = LibSQL.Application.Modules.MaxPDFallowed(varDataProperties)
-            'varMaxUploadSizePhoto = LibSQL.Application.Modules.MaxPhotoallowed(varDataProperties)
-            'varMinPasswordLength = LibSQL.Application.Modules.MinPasswordLength(varDataProperties)
-            'varTextmark = LibSQL.Application.Modules.TextMark(varDataProperties)
         End Sub
 
         <SupportedOSPlatform("windows")>
