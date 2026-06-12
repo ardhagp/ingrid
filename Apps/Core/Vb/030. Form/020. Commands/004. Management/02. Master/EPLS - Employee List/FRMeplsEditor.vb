@@ -85,9 +85,10 @@ Namespace UI.Canvas
 
                 If varHavePhoto > 0 Then
                     pctbxPhoto.Image = CMDepls.Editor.GetPhoto(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
+                Else
+                    Return
                 End If
             End If
-
         End Sub
 
         <SupportedOSPlatform("windows")>
