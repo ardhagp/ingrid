@@ -11,6 +11,10 @@
     <StartupObject>IngridLauncher.My.MyApplication</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
+    <LangVersion>latest</LangVersion>
+    <VBOptionStrict>On</VBOptionStrict>
+    <VBOptionExplicit>On</VBOptionExplicit>
+    <VBOptionInfer>Off</VBOptionInfer>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>

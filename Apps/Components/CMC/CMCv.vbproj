@@ -5,6 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <MyType>WindowsForms</MyType>
+    <LangVersion>latest</LangVersion>
+    <VBOptionStrict>On</VBOptionStrict>
+    <VBOptionExplicit>On</VBOptionExplicit>
+    <VBOptionInfer>Off</VBOptionInfer>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
