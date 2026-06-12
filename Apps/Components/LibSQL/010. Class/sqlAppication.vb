@@ -6,7 +6,7 @@ Namespace Application
 
     Public Class Access
 
-        Private ReadOnly varDatabaseRequestMssql2008(2) As Database.Adapter.MSSQL2008.Display.Request
+        Private ReadOnly varDatabaseRequestMssql2008(2) As Database.Adapter.MsSql.Display.Request
         Private ReadOnly varDatabaseRequestMysql(2) As Database.Adapter.MySQL.Display.Request
 
         <SupportedOSPlatform("windows")>
@@ -62,7 +62,7 @@ Namespace Application
 
                     If varView = 0 Then
                         SystemSounds.Exclamation.Play()
-                        Decision(My.Application.Info.AssemblyName.ToUpper, $"You are Not authorized to : " & IIf(dataproperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Report, "View ", "").ToString & "{typeofaccess}" & IIf(dataproperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Report, "", " record(s)").ToString, LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                        Decision(My.Application.Info.AssemblyName.ToUpper, $"You are Not authorized to : " & IIf(dataproperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Report, "View ", "").ToString & "{typeofaccess}" & IIf(dataproperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Report, "", " record(s)").ToString, LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                         Return False
                     Else
                         Return True
@@ -239,7 +239,7 @@ Namespace Application
     End Class
 
     Public Class Notification
-        Private ReadOnly varDatabaseRequestMssql2008(1) As Database.Adapter.MSSQL2008.Display.Request
+        Private ReadOnly varDatabaseRequestMssql2008(1) As Database.Adapter.MsSql.Display.Request
         Private ReadOnly varDatabaseRequestMysql(1) As Database.Adapter.MySQL.Display.Request
 
         <SupportedOSPlatform("windows")>
@@ -265,7 +265,7 @@ Namespace Application
     End Class
 
     Public Class RunningText
-        Private ReadOnly varDatabaseRequestMssql2008(1) As Database.Adapter.MSSQL2008.Display.Request
+        Private ReadOnly varDatabaseRequestMssql2008(1) As Database.Adapter.MsSql.Display.Request
         Private ReadOnly varDatabaseRequestMysql(1) As Database.Adapter.MySQL.Display.Request
 
         <SupportedOSPlatform("windows")>
@@ -393,7 +393,7 @@ Namespace Application
     End Class
 
     Public Class ProfilePanel
-        'ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
+        'ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MsSql.Display.Request
         'ReadOnly _IMG As New CMCv.ImageEditor.Proccessor.Compress
 
         <SupportedOSPlatform("windows")>

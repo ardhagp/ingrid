@@ -6,7 +6,7 @@ Namespace CMDmmvt
     ''' 
     ''' </summary>
     Public Class View
-        ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MSSQL2008.Display.Request
+        ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MsSql.Display.Request
 
         ''' <summary>
         ''' 

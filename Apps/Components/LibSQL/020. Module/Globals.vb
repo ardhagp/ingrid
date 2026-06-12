@@ -7,9 +7,9 @@ Module Globals
     Public varDatabaseEngineSqlite As New CMCv.Database.Engine.SQLiteV3
     Public databaseproperties(1) As LibApp.Ingrid.Global.Properties
 
-    Public varDatabaseRequestMssql2008(1) As CMCv.Database.Adapter.MSSQL2008.Display.Request
+    Public varDatabaseRequestMssql2008(1) As CMCv.Database.Adapter.MsSql.Display.Request
     Public varDatabaseRequestMysql(1) As CMCv.Database.Adapter.MySQL.Display.Request
-    Public varDatabaseDisplayMssql2008 As New CMCv.Database.Adapter.MSSQL2008.Execute
+    Public varDatabaseDisplayMssql2008 As New CMCv.Database.Adapter.MsSql.Execute
     Public varDatabaseDisplayMysql As New CMCv.Database.Adapter.MySQL.Execute
 
     Public varSecurityEncrypt As New CMCv.Security.Encrypt

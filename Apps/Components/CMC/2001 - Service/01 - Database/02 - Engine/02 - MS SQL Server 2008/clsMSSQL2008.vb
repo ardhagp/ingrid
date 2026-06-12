@@ -204,7 +204,7 @@ Namespace Database.Engine
         ''' <param name="tablename"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Public Function GetDataSet(databasename As String, dbr As Adapter.MSSQL2008.Display.Request, tablename As String) As System.Data.DataSet
+        Public Function GetDataSet(databasename As String, dbr As Database.Adapter.MsSql.Display.Request, tablename As String) As System.Data.DataSet
             Dim varDataAdapter(1) As Microsoft.Data.SqlClient.SqlDataAdapter
 
             Try
@@ -262,7 +262,7 @@ Namespace Database.Engine
         ''' <param name="dbr"></param>
         ''' <param name="tablename"></param>
         <SupportedOSPlatform("windows")>
-        Public Sub GetDataTable(databasename As String, dbr As Adapter.MSSQL2008.Display.Request, ByVal tablename As String)
+        Public Sub GetDataTable(databasename As String, dbr As Database.Adapter.MsSql.Display.Request, tablename As String)
 
             Dim varDataAdapter(1) As Microsoft.Data.SqlClient.SqlDataAdapter
 
