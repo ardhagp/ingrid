@@ -5,6 +5,10 @@
     <OutputType>Library</OutputType>
     <StartupObject>Ingrid.My.MyApplication</StartupObject>
     <MyType>WindowsForms</MyType>
+    <LangVersion>latest</LangVersion>
+    <VBOptionStrict>On</VBOptionStrict>
+    <VBOptionExplicit>On</VBOptionExplicit>
+    <VBOptionInfer>Off</VBOptionInfer>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
@@ -84,7 +88,7 @@
     <Description>INGRID adalah sebuah aplikasi dengan berbagai macam fungsi, semacam ERP dengan flow yang disederhanakan.</Description>
     <Company>ArdhaGp</Company>
     <Product>Ingrid</Product>
-    <Copyright>ArdhaGp©2023</Copyright>
+    <Copyright>ArdhaGp©2026</Copyright>
     <FileVersion>2.10.20167.1127</FileVersion>
     <ImportedNamespaces>CMCv=False,Connect=False,LibSQL=False,Syncfusion=False,System.Drawing=False,System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,Ingrid=True</ImportedNamespaces>
     <RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>

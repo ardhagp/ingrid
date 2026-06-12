@@ -3,6 +3,10 @@
   <PropertyGroup>
     <RootNamespace>LibAPI</RootNamespace>
     <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <VBOptionStrict>On</VBOptionStrict>
+    <VBOptionExplicit>On</VBOptionExplicit>
+    <VBOptionInfer>Off</VBOptionInfer>
     <OptionStrict>On</OptionStrict>
   </PropertyGroup>
 
