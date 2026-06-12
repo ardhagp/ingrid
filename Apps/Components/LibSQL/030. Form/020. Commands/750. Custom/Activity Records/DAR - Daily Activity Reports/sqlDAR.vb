@@ -688,8 +688,8 @@ Namespace CMDdar
                 datepartend.Value = CType(varDatePart(0), Date)
                 timepartend.Text = varDatePart(1)
 
-                varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_areaaffected from dbo.doc_employeeactivity ea " &
-                                                    "where ea.employeeactivity_id = '{0}'", rowid)
+                varDatabaseRequestMssql2008(1).Query = $"select ea.employeeactivity_areaaffected from dbo.doc_employeeactivity ea " &
+                                                    "where ea.employeeactivity_id = '{rowid}'"
                 listofaffectedarea.SelectedValue = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
 
                 varDatabaseRequestMssql2008(1).Query = String.Format("select ea.employeeactivity_template from dbo.doc_employeeactivity ea " &
@@ -804,24 +804,24 @@ Namespace CMDdar
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     If dataproperties.CustomDailyActivityIsNew Then
-                        'varDatabaseRequestMssql2008(1).Query = String.Format("insert into dbo.doc_employeeactivity(employeeactivity_id, employeeactivity_areaaffected, " &
-                        '                                    "employeeactivity_template, employeeactivity_datetime, employeeactivity_time, " &
-                        '                                    "employeeactivity_datetime_end, employeeactivity_time_end, employeeactivity_description, " &
-                        '                                    "employeeactivity_employee,employeeactivity_feedback,employeeactivity_createon) values " &
-                        '                                    "('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',(select usr.user_employee " &
-                        '                                    "from dbo.sys_user usr where usr.user_id = '{8}'),'{9}', " &
-                        '                                    "(select getdate()));", rowid, areaaffected, activitytemplate, DatePart, timepart, datepartend, timepartend, content, userid, feedback)
+                        varDatabaseRequestMssql2008(1).Query = $"insert into dbo.doc_employeeactivity(employeeactivity_id, employeeactivity_areaaffected, " &
+                                                            "employeeactivity_template, employeeactivity_datetime, employeeactivity_time, " &
+                                                            "employeeactivity_datetime_end, employeeactivity_time_end, employeeactivity_description, " &
+                                                            "employeeactivity_employee,employeeactivity_feedback,employeeactivity_createon) values " &
+                                                            "('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',(select usr.user_employee " &
+                                                            "from dbo.sys_user usr where usr.user_id = '{8}'),'{9}', " &
+                                                            "(select getdate()));" ', rowid, areaaffected, activitytemplate, DatePart, timepart, datepartend, timepartend, content, userid, feedback)
                     Else
-                        'varDatabaseRequestMssql2008(1).Query = String.Format("update dbo.doc_employeeactivity set employeeactivity_datetime = '{0}', " &
-                        '                                    "employeeactivity_time = '{1}', employeeactivity_datetime_end = '{2}', " &
-                        '                                    "employeeactivity_time_end = '{3}', employeeactivity_areaaffected = '{4}', " &
-                        '                                    "employeeactivity_template = '{5}', employeeactivity_description = '{6}', " &
-                        '                                    "employeeactivity_lastupdate = (select usr.user_employee from dbo.sys_user usr " &
-                        '                                    "where usr.user_id = '{7}'), employeeactivity_feedback = '{9}', " &
-                        '                                    "employeeactivity_updateon = (select getdate()) where employeeactivity_id = '{8}';", DatePart, timepart, datepartend, timepartend, areaaffected, activitytemplate, content, userid, rowid, feedback)
+                        varDatabaseRequestMssql2008(1).Query = $"update dbo.doc_employeeactivity set employeeactivity_datetime = '{0}', " &
+                                                            "employeeactivity_time = '{1}', employeeactivity_datetime_end = '{2}', " &
+                                                            "employeeactivity_time_end = '{3}', employeeactivity_areaaffected = '{4}', " &
+                                                            "employeeactivity_template = '{5}', employeeactivity_description = '{6}', " &
+                                                            "employeeactivity_lastupdate = (select usr.user_employee from dbo.sys_user usr " &
+                                                            "where usr.user_id = '{7}'), employeeactivity_feedback = '{9}', " &
+                                                            "employeeactivity_updateon = (select getdate()) where employeeactivity_id = '{8}';" ', DatePart, timepart, datepartend, timepartend, areaaffected, activitytemplate, content, userid, rowid, feedback)
 
-                        'varDatabaseRequestMssql2008(1).Query += String.Format("update db_universe_erp_file.dbo.sto_file set file_parentdate = '{0}' " &
-                        '                                     "where file_parent = '{1}';", DatePart, rowid)
+                        varDatabaseRequestMssql2008(1).Query += $"update db_universe_erp_file.dbo.sto_file set file_parentdate = '{0}' " &
+                                                             "where file_parent = '{1}';" ', DatePart, rowid)
                     End If
 
                     If extendedquery IsNot String.Empty Then
