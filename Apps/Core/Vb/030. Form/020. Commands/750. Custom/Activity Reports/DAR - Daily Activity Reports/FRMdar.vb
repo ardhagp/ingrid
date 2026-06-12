@@ -520,6 +520,7 @@ Namespace UI.Canvas
 
             If PctbxActivityPhoto.Image Is Nothing Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No photo selected.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Return
             Else
                 If varTextmark = String.Empty Then
                     varCopyPicture = PctbxActivityPhoto.Image
@@ -527,9 +528,8 @@ Namespace UI.Canvas
                     varCopyPicture = CMCv.ImageEditor.Proccessor.Editor.WaterMarker(PctbxActivityPhoto.Image, varTextmark)
                 End If
                 Clipboard.SetImage(varCopyPicture)
+                varCopyPicture.Dispose()
             End If
-            varCopyPicture.Dispose()
-            'CopyPicture.Dispose()
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -550,10 +550,11 @@ Namespace UI.Canvas
                         varSavePicture = CMCv.ImageEditor.Proccessor.Editor.WaterMarker(PctbxActivityPhoto.Image, varTextmark)
                     End If
                     varSavePicture.Save(SfdPhoto.FileName, System.Drawing.Imaging.ImageFormat.Jpeg)
+                    varSavePicture.Dispose()
+                Else
+                    Return
                 End If
             End If
-            varSavePicture.Dispose()
-            'SavePicture.Dispose()
         End Sub
 
         <SupportedOSPlatform("windows")>

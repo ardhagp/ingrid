@@ -6,7 +6,7 @@ Namespace UI.Canvas
         Public Event EventRecordSaved()
 
         Private WithEvents Frm_epls_AddinPosition As New FRMeplsPosition
-        Private varHavePhoto As Integer
+        Private varHavePhoto As Boolean
         Private varChangePhoto As Boolean
         Private varPhoto As System.Drawing.Image
 
@@ -34,7 +34,7 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub FRMeplsEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            varHavePhoto = 0
+            varHavePhoto = False
             varChangePhoto = False
             If varDataProperties.EmployeeIsNew Then
                 ChkAddNew.Visible = True
@@ -72,7 +72,7 @@ Namespace UI.Canvas
                     TxtEmployeeNumber.Text = .Item("employee_number").ToString
                     TxtEmployeeNickname.Text = .Item("employee_nickname").ToString
                     ChkActiveEmployee.Checked = CBool(.Item("employee_isactive"))
-                    'varHavePhoto = CMDepls.Editor.GetIsHavePhoto(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
+                    varHavePhoto = CMDepls.Editor.GetIsHavePhoto(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
                 End With
 
 
@@ -83,7 +83,7 @@ Namespace UI.Canvas
 
                 TxtPersonalID.Focus()
 
-                If varHavePhoto > 0 Then
+                If varHavePhoto Then
                     pctbxPhoto.Image = CMDepls.Editor.GetPhoto(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
                 Else
                     Return
@@ -172,8 +172,9 @@ Namespace UI.Canvas
         Private Function CheckEmployeePersonalID() As Boolean
             If CMDepls.Editor.IsPersonalIdExist(varDataProperties) Then
                 Return False
+            Else
+                Return True
             End If
-            Return True
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -181,8 +182,9 @@ Namespace UI.Canvas
             If (TxtPersonalID.XOSqlText = String.Empty OrElse IsDBNull(varDataProperties.AllParameters(pPositionId)) OrElse varDataProperties.AllParameters(pPositionId) Is Nothing OrElse (TxtEmployeeNumber.XOSqlText = String.Empty) OrElse (TxtFullName.XOSqlText = String.Empty)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Ensure that the Personal ID, Full Name, Company, Department, Position and Employee Number fields are correctly completed.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return False
+            Else
+                Return True
             End If
-            Return True
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -190,17 +192,19 @@ Namespace UI.Canvas
             If varDataProperties.EmployeeIsNew AndAlso CMDepls.Editor.IsEmployeeNumberDuplicate(varDataProperties) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "This Employee Number is already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return False
+            Else
+                Return True
             End If
-            Return True
         End Function
 
         <SupportedOSPlatform("windows")>
         Private Function CheckEmployeePhoto() As Boolean
-            If varHavePhoto = 0 Then
+            If Not varHavePhoto Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Please pick employee photo.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return False
+            Else
+                Return True
             End If
-            Return True
         End Function
 
         <SupportedOSPlatform("windows")>
@@ -229,17 +233,17 @@ Namespace UI.Canvas
                     varPhoto = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(OfdPhoto.FileName)
                     pctbxPhoto.Image = varPhoto
                     varChangePhoto = True
-                    varHavePhoto = 1
+                    varHavePhoto = True
                 End If
             Else
-                varHavePhoto = 1
+                varHavePhoto = False
                 Return
             End If
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub CboGender_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboGender.SelectedIndexChanged
-            If varHavePhoto = 0 Then
+            If Not varHavePhoto Then
                 If CboGender.Text = "MALE" Then
                     pctbxPhoto.Image = My.Resources.MALE_001_512_icon
                 Else

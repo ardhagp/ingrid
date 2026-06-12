@@ -4,6 +4,7 @@ Imports Amazon.S3
 
 Namespace Api
     Public Class BackblazeB2
+
         Private ReadOnly varAccessKey As String
         Private ReadOnly varSecretKey As String
         Private ReadOnly varServiceURL As String
@@ -36,6 +37,5 @@ Namespace Api
             'Console.WriteLine("Upload completed with status: " & AWSResponse.HttpStatusCode.ToString())
 
         End Function
-
     End Class
 End Namespace
