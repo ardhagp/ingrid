@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Versioning
 
 Namespace UI.Control
-    Public Class mnu
+    Public Class Mnu
         Inherits System.Windows.Forms.MenuStrip
 
         <SupportedOSPlatform("windows")>

@@ -2,7 +2,7 @@
 Imports System.Runtime.Versioning
 
 Namespace UI.Control
-    Public Class nud
+    Public Class Nud
         Inherits System.Windows.Forms.NumericUpDown
 
         <SupportedOSPlatform("windows")>

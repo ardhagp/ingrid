@@ -99,7 +99,7 @@ Namespace UI.Canvas
             varProperties.ConnectionIsNew = True
             varProperties.ConnectionId = "-1"
             FRMconn_editor = New FRMconnEditor
-            Display(FRMconn_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName, "Add New Record", "Add new connection", True)
+            Display(FRMconn_editor, UI.Resource.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName, "Add New Record", "Add new connection", True)
             SLFStatus.Text = String.Empty
         End Sub
 
@@ -115,7 +115,7 @@ Namespace UI.Canvas
                 Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 FRMconn_editor = New FRMconnEditor
-                Display(FRMconn_editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName, "Update Record", "Update connection", True)
+                Display(FRMconn_editor, UI.Resource.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName, "Update Record", "Update connection", True)
             End If
             SLFStatus.Text = String.Empty
         End Sub
