@@ -753,7 +753,7 @@
             ClientSize = New Size(807, 860)
             ControlBox = False
             FormBorderStyle = FormBorderStyle.FixedSingle
-            Icon = CType(resources.GetObject("$this.Icon"), Icon)
+            Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMconnEditor"
             PnlBottomButton.ResumeLayout(False)

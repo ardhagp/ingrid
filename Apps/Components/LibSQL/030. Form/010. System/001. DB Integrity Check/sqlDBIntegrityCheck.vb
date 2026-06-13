@@ -66,7 +66,7 @@ Namespace CMDdbic
     ''' <summary>
     ''' DB Integrity Check for EPLS
     ''' </summary>
-    Public Class EPLS
+    Public Class FRMepls
         Public Shared Sub Options()
             'put your code here
         End Sub

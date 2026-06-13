@@ -1,4 +1,4 @@
-﻿Namespace IMAGEDB.Main
+﻿Namespace UI.Resource
     ''' <summary>
     ''' Image library (set of icon for form image)
     ''' </summary>

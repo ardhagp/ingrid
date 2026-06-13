@@ -167,9 +167,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\Menu Strip\mnu.Designer.vb">
-      <DependentUpon>mnu.vb</DependentUpon>
+      <DependentUpon>Mnu.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\Menu Strip\mnu.vb">
+    <Compile Update="2099 - Interface\Controls\Menu Strip\Mnu.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="2099 - Interface\Controls\NumericUpDown\nud.Designer.vb">

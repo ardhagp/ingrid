@@ -47,12 +47,11 @@ Namespace UI.Canvas
         Public Function CheckTextInputs() As Integer
             Dim varViolation As Integer = 0
             Dim varAllTxt As New List(Of System.Windows.Forms.Control)
-            For Each _Txt As CMCv.UI.Control.txt In FindControlRecursive(varAllTxt, Me, GetType(CMCv.UI.Control.txt))
-                If (_Txt.XOIsMandatory) AndAlso _Txt.XOSqlText = String.Empty Then
+            For Each eachText As CMCv.UI.Control.Txt In FindControlRecursive(varAllTxt, Me, GetType(CMCv.UI.Control.Txt))
+                If (eachText.XOIsMandatory) AndAlso eachText.XOSqlText = String.Empty Then
                     varViolation += 1
                 End If
             Next
-
             Return varViolation
         End Function
 
@@ -64,16 +63,15 @@ Namespace UI.Canvas
         ''' <param name="CtrlType"></param>
         ''' <returns></returns>
         <SupportedOSPlatform("windows")>
-        Private Shared Function FindControlRecursive(list As List(Of System.Windows.Forms.Control), ByVal Parent As System.Windows.Forms.Control, ByVal CtrlType As System.Type) As List(Of System.Windows.Forms.Control)
-            If Parent Is Nothing Then Return list
-            If Parent.GetType Is CtrlType Then
-                list.Add(Parent)
+        Private Shared Function FindControlRecursive(list As List(Of System.Windows.Forms.Control), parent As System.Windows.Forms.Control, ctrltype As System.Type) As List(Of System.Windows.Forms.Control)
+            If parent Is Nothing Then Return list
+            If parent.GetType Is ctrltype Then
+                list.Add(parent)
             End If
 
-            For Each varEachChild As System.Windows.Forms.Control In Parent.Controls
-                FindControlRecursive(list, varEachChild, CtrlType)
+            For Each eachChild As System.Windows.Forms.Control In parent.Controls
+                FindControlRecursive(list, eachChild, ctrltype)
             Next
-
             Return list
         End Function
 

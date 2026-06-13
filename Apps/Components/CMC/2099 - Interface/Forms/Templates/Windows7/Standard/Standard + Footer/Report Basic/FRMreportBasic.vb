@@ -3,7 +3,7 @@
 Namespace UI.Canvas
     Public Class FRMreportBasic
         <SupportedOSPlatform("windows")>
-        Private Sub Rpt_Bsc_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Private Sub FRMreportBasic_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Me.Rv_.RefreshReport()
         End Sub
 

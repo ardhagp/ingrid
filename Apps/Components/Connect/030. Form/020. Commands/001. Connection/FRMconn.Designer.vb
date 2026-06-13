@@ -239,7 +239,7 @@
             ClientSize = New Size(1307, 1078)
             ControlBox = False
             FormBorderStyle = FormBorderStyle.FixedSingle
-            Icon = CType(resources.GetObject("$this.Icon"), Icon)
+            Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
             KeyPreview = True
             Margin = New Padding(11, 5, 11, 5)
             Name = "FRMconn"
