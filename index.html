@@ -4,6 +4,19 @@
   <head>
     <script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="173097" async="async" type="text/javascript"></script>
     
+    <!-- Pulsetic Heartbeats -->
+    <script>
+function sendHeartbeat() {
+  fetch("https://api.pulsetic.com/heartbeats/request/0a2d4d1b-4adf-4215-8416-a7610db8eb9d").catch(()=>{});
+}
+
+// send immediately
+sendHeartbeat();
+
+// send every 5 minutes
+setInterval(sendHeartbeat, 5 * 60 * 1000);
+</script>
+
     <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
