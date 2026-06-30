@@ -41,7 +41,7 @@ Namespace UI.Canvas
                     CboDBEngine.Text = .ConnectionDatabaseEngine
                     TxtAddress.Text = .ConnectionServerAddress
                     TxtPort.Text = Convert.ToString(.ConnectionServerPort)
-                    TxtUsername.Text = .Username
+                    TxtUsername.Text = .ConnectionUsername
                     TxtPassword.Text = .ConnectionPassword
                     varOldPassword = .ConnectionPasswordOld
                     TxtDatabaseName.Text = .ConnectionDatabaseName

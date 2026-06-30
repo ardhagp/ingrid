@@ -152,8 +152,8 @@ Namespace Database.Connect
         ''' <param name="password"></param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Public Function Mssql2008standard(serveraddress As String, ByVal serverport As Integer, ByVal databasename As String, username As String, password As String) As String Implements IMssqlserver2008connections.Mssql2008standard
-            varResult = String.Format(CultureInfo.CurrentCulture, "Server = {0},{1}; Database = {2}; User Id = {3}; password = {4};", serveraddress.Trim, serverport, databasename, username.Trim, password)
+        Public Function Mssql2008standard(serveraddress As String, serverport As Integer, databasename As String, username As String, password As String) As String Implements IMssqlserver2008connections.Mssql2008standard
+            varResult = String.Format(CultureInfo.CurrentCulture, "Server = {0},{1}; Database = {2}; User Id = {3}; password = {4}; Encrypt=True; TrustServerCertificate=True;", serveraddress.Trim, serverport, databasename, username.Trim, password)
             Return varResult
         End Function
 

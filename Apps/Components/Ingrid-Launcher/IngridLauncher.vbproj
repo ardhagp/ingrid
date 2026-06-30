@@ -24,6 +24,7 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <OptionStrict>On</OptionStrict>
     <AssemblyName>Ingrid</AssemblyName>
+    <UserSecretsId>b286ff11-5119-4718-8b6d-f6fc6eb0a39a</UserSecretsId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineDebug>True</DefineDebug>
