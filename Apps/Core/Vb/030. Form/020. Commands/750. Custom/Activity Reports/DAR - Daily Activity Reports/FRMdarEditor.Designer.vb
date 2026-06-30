@@ -22,12 +22,12 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMdarEditor))
-            Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle9 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle11 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
             CboTemplate = New CMCv.UI.Control.Cbo(components)
@@ -111,7 +111,7 @@
             ' pnl_
             ' 
             pnl_.Margin = New Padding(7, 5, 7, 5)
-            pnl_.Size = New Size(1203, 104)
+            pnl_.Size = New Size(1203, 110)
             ' 
             ' SLFPanel
             ' 
@@ -135,7 +135,7 @@
             SLFPanel.Controls.Add(DtpStart)
             SLFPanel.Controls.Add(CboTemplate)
             SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(1203, 1044)
+            SLFPanel.Size = New Size(1203, 1038)
             SLFPanel.Controls.SetChildIndex(CboTemplate, 0)
             SLFPanel.Controls.SetChildIndex(DtpStart, 0)
             SLFPanel.Controls.SetChildIndex(TxtContent, 0)
@@ -164,7 +164,7 @@
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(826, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -187,7 +187,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(1003, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -206,7 +206,7 @@
             CboTemplate.DropDownStyle = ComboBoxStyle.DropDownList
             CboTemplate.DropDownWidth = 350
             CboTemplate.FlatStyle = FlatStyle.Flat
-            CboTemplate.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            CboTemplate.Font = New Font("Segoe UI", 12.0F)
             CboTemplate.FormattingEnabled = True
             CboTemplate.Location = New Point(280, 222)
             CboTemplate.Margin = New Padding(6, 5, 6, 5)
@@ -217,7 +217,7 @@
             ' DtpStart
             ' 
             DtpStart.CustomFormat = "dd MMMM yyyy"
-            DtpStart.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            DtpStart.Font = New Font("Segoe UI", 12.0F)
             DtpStart.Format = DateTimePickerFormat.Custom
             DtpStart.Location = New Point(280, 20)
             DtpStart.Margin = New Padding(6, 5, 6, 5)
@@ -226,11 +226,12 @@
             DtpStart.Name = "DtpStart"
             DtpStart.Size = New Size(291, 39)
             DtpStart.TabIndex = 0
+            DtpStart.Value = New Date(2026, 6, 13, 0, 0, 0, 0)
             DtpStart.XOResetOnDisabled = False
             ' 
             ' TxtContent
             ' 
-            TxtContent.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtContent.Font = New Font("Segoe UI", 12.0F)
             TxtContent.Location = New Point(280, 288)
             TxtContent.Margin = New Padding(6, 5, 6, 5)
             TxtContent.MaxLength = 99999999
@@ -241,31 +242,31 @@
             TxtContent.TabIndex = 7
             TxtContent.Tag = "txt"
             TxtContent.XOAutoTrim = True
+            TxtContent.XOHighlightColor = Color.LightYellow
+            TxtContent.XOHighlightOnFocus = True
+            TxtContent.XOIsBlank = True
             TxtContent.XOIsMandatory = True
+            TxtContent.XOIsPlaceholder = False
+            TxtContent.XOIsReplaceEmptyString = False
+            TxtContent.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtContent.XOMandatoryBgColor = Color.LightPink
             TxtContent.XOMandatoryBgColorDefault = Color.White
-            TxtContent.XOHighlightOnFocus = True
-            TxtContent.XOHighlightColor = Color.LightYellow
-            TxtContent.XOIsBlank = True
-            TxtContent.XOIsPlaceholder = False
-            TxtContent.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
-            TxtContent.XOSelectOnFocus = False
+            TxtContent.XOMandatoryMessage = Nothing
             TxtContent.XOPasswordLengthMin = 8
             TxtContent.XOPasswordStrengthCalc = False
             TxtContent.XOPasswordStrengthScore = 0
             TxtContent.XOPasswordStrengthText = Nothing
-            TxtContent.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtContent.XOPlaceholderText = "Type then press Enter"
+            TxtContent.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtContent.XOSelectOnFocus = False
             TxtContent.XOSqlText = Nothing
-            TxtContent.XOIsReplaceEmptyString = False
-            TxtContent.XOMandatoryMessage = Nothing
             ' 
             ' CboArea
             ' 
             CboArea.DropDownStyle = ComboBoxStyle.DropDownList
             CboArea.DropDownWidth = 350
             CboArea.FlatStyle = FlatStyle.Flat
-            CboArea.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            CboArea.Font = New Font("Segoe UI", 12.0F)
             CboArea.FormattingEnabled = True
             CboArea.Location = New Point(280, 153)
             CboArea.Margin = New Padding(6, 5, 6, 5)
@@ -276,7 +277,7 @@
             ' MebStart
             ' 
             MebStart.AsciiOnly = True
-            MebStart.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            MebStart.Font = New Font("Segoe UI", 12.0F)
             MebStart.Location = New Point(583, 20)
             MebStart.Margin = New Padding(6, 5, 6, 5)
             MebStart.Mask = "00:00"
@@ -285,11 +286,11 @@
             MebStart.TabIndex = 1
             MebStart.TextAlign = HorizontalAlignment.Center
             MebStart.ValidatingType = GetType(Date)
+            MebStart.XOHighlightColor = Color.LightYellow
+            MebStart.XOHighlightOnFocus = True
             MebStart.XOIsMandatory = True
             MebStart.XOMandatoryBgColor = Color.LightPink
             MebStart.XOMandatoryBgColorDefault = Color.White
-            MebStart.XOHighlightOnFocus = True
-            MebStart.XOHighlightColor = Color.LightYellow
             MebStart.XOSelectOnFocus = True
             ' 
             ' BtnGETContent
@@ -300,7 +301,7 @@
             BtnGETContent.FlatAppearance.BorderSize = 2
             BtnGETContent.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnGETContent.FlatStyle = FlatStyle.Flat
-            BtnGETContent.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnGETContent.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnGETContent.ForeColor = Color.White
             BtnGETContent.Location = New Point(674, 208)
             BtnGETContent.Margin = New Padding(6, 5, 6, 5)
@@ -320,7 +321,7 @@
             ChkAddNew.AutoSize = True
             ChkAddNew.BackColor = Color.Transparent
             ChkAddNew.FlatStyle = FlatStyle.Flat
-            ChkAddNew.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            ChkAddNew.Font = New Font("Segoe UI", 12.0F)
             ChkAddNew.ForeColor = Color.Tomato
             ChkAddNew.Location = New Point(595, 28)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
@@ -333,7 +334,7 @@
             ' MebEnd
             ' 
             MebEnd.AsciiOnly = True
-            MebEnd.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            MebEnd.Font = New Font("Segoe UI", 12.0F)
             MebEnd.Location = New Point(583, 87)
             MebEnd.Margin = New Padding(6, 5, 6, 5)
             MebEnd.Mask = "00:00"
@@ -342,17 +343,17 @@
             MebEnd.TabIndex = 3
             MebEnd.TextAlign = HorizontalAlignment.Center
             MebEnd.ValidatingType = GetType(Date)
+            MebEnd.XOHighlightColor = Color.LightYellow
+            MebEnd.XOHighlightOnFocus = True
             MebEnd.XOIsMandatory = True
             MebEnd.XOMandatoryBgColor = Color.LightPink
             MebEnd.XOMandatoryBgColorDefault = Color.White
-            MebEnd.XOHighlightOnFocus = True
-            MebEnd.XOHighlightColor = Color.LightYellow
             MebEnd.XOSelectOnFocus = True
             ' 
             ' DtpEnd
             ' 
             DtpEnd.CustomFormat = "dd MMMM yyyy"
-            DtpEnd.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            DtpEnd.Font = New Font("Segoe UI", 12.0F)
             DtpEnd.Format = DateTimePickerFormat.Custom
             DtpEnd.Location = New Point(280, 87)
             DtpEnd.Margin = New Padding(6, 5, 6, 5)
@@ -361,11 +362,12 @@
             DtpEnd.Name = "DtpEnd"
             DtpEnd.Size = New Size(291, 39)
             DtpEnd.TabIndex = 2
+            DtpEnd.Value = New Date(2026, 6, 13, 0, 0, 0, 0)
             DtpEnd.XOResetOnDisabled = False
             ' 
             ' TxtFeedback
             ' 
-            TxtFeedback.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtFeedback.Font = New Font("Segoe UI", 12.0F)
             TxtFeedback.Location = New Point(280, 530)
             TxtFeedback.Margin = New Padding(6, 5, 6, 5)
             TxtFeedback.MaxLength = 255
@@ -376,24 +378,24 @@
             TxtFeedback.TabIndex = 8
             TxtFeedback.Tag = "txt"
             TxtFeedback.XOAutoTrim = True
+            TxtFeedback.XOHighlightColor = Color.LightYellow
+            TxtFeedback.XOHighlightOnFocus = True
+            TxtFeedback.XOIsBlank = True
             TxtFeedback.XOIsMandatory = False
+            TxtFeedback.XOIsPlaceholder = False
+            TxtFeedback.XOIsReplaceEmptyString = False
+            TxtFeedback.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtFeedback.XOMandatoryBgColor = Color.LightPink
             TxtFeedback.XOMandatoryBgColorDefault = Color.White
-            TxtFeedback.XOHighlightOnFocus = True
-            TxtFeedback.XOHighlightColor = Color.LightYellow
-            TxtFeedback.XOIsBlank = True
-            TxtFeedback.XOIsPlaceholder = False
-            TxtFeedback.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
-            TxtFeedback.XOSelectOnFocus = False
+            TxtFeedback.XOMandatoryMessage = Nothing
             TxtFeedback.XOPasswordLengthMin = 8
             TxtFeedback.XOPasswordStrengthCalc = False
             TxtFeedback.XOPasswordStrengthScore = 0
             TxtFeedback.XOPasswordStrengthText = Nothing
-            TxtFeedback.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtFeedback.XOPlaceholderText = "Type then press Enter"
+            TxtFeedback.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtFeedback.XOSelectOnFocus = False
             TxtFeedback.XOSqlText = ""
-            TxtFeedback.XOIsReplaceEmptyString = False
-            TxtFeedback.XOMandatoryMessage = Nothing
             ' 
             ' OfdPhoto
             ' 
@@ -403,7 +405,7 @@
             ' 
             TbctlAttachment.Controls.Add(tpPhotos)
             TbctlAttachment.Controls.Add(tpFiles)
-            TbctlAttachment.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TbctlAttachment.Font = New Font("Segoe UI", 12.0F)
             TbctlAttachment.Location = New Point(280, 662)
             TbctlAttachment.Margin = New Padding(6, 5, 6, 5)
             TbctlAttachment.Name = "TbctlAttachment"
@@ -448,7 +450,7 @@
             BtnBrowsePhoto.FlatAppearance.BorderSize = 2
             BtnBrowsePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
             BtnBrowsePhoto.FlatStyle = FlatStyle.Flat
-            BtnBrowsePhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnBrowsePhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnBrowsePhoto.ForeColor = Color.White
             BtnBrowsePhoto.Image = My.Resources.Resources.FOLDER_001_16_ICON
             BtnBrowsePhoto.Location = New Point(6, 5)
@@ -477,48 +479,48 @@
             PctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
             PctbxPhoto.TabIndex = 6
             PctbxPhoto.TabStop = False
-            PctbxPhoto.XOShowBorder = False
             PctbxPhoto.XOBorderColor = Color.DodgerBlue
+            PctbxPhoto.XOShowBorder = False
             ' 
             ' DgnPictureList
             ' 
             DgnPictureList.AllowUserToAddRows = False
             DgnPictureList.AllowUserToDeleteRows = False
             DgnPictureList.AllowUserToResizeRows = False
-            DataGridViewCellStyle7.BackColor = Color.FromArgb(CByte(203), CByte(199), CByte(173))
-            DgnPictureList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(225), CByte(193), CByte(94))
+            DgnPictureList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnPictureList.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
             DgnPictureList.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnPictureList.BorderStyle = BorderStyle.None
             DgnPictureList.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnPictureList.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle8.BackColor = Color.YellowGreen
-            DataGridViewCellStyle8.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle8.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle8.SelectionBackColor = Color.YellowGreen
-            DataGridViewCellStyle8.SelectionForeColor = Color.Black
-            DataGridViewCellStyle8.WrapMode = DataGridViewTriState.True
-            DgnPictureList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.YellowGreen
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
+            DataGridViewCellStyle2.SelectionForeColor = Color.Black
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            DgnPictureList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             DgnPictureList.ColumnHeadersHeight = 43
             DgnPictureList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             DgnPictureList.Columns.AddRange(New DataGridViewColumn() {photo_id, photo_filename, photo_datetime, photo_content, photo_status, photo_uploader, photo_delete})
             DgnPictureList.EnableHeadersVisualStyles = False
-            DgnPictureList.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+            DgnPictureList.Font = New Font("Verdana", 8.0F)
             DgnPictureList.Location = New Point(6, 73)
             DgnPictureList.Margin = New Padding(6, 5, 6, 5)
             DgnPictureList.MultiSelect = False
             DgnPictureList.Name = "DgnPictureList"
             DgnPictureList.ReadOnly = True
             DgnPictureList.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle9.BackColor = Color.YellowGreen
-            DataGridViewCellStyle9.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle9.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle9.SelectionBackColor = Color.Yellow
-            DataGridViewCellStyle9.SelectionForeColor = Color.Black
-            DataGridViewCellStyle9.WrapMode = DataGridViewTriState.True
-            DgnPictureList.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle3.BackColor = Color.YellowGreen
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F)
+            DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
+            DataGridViewCellStyle3.SelectionForeColor = Color.Black
+            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+            DgnPictureList.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
             DgnPictureList.RowHeadersWidth = 62
             DgnPictureList.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
             DgnPictureList.SelectionMode = DataGridViewSelectionMode.FullRowSelect
@@ -612,7 +614,7 @@
             BtnPeekPhoto.FlatAppearance.BorderSize = 2
             BtnPeekPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
             BtnPeekPhoto.FlatStyle = FlatStyle.Flat
-            BtnPeekPhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnPeekPhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnPeekPhoto.ForeColor = Color.White
             BtnPeekPhoto.Image = My.Resources.Resources.ZOOMNORMAL_001_16_ICON
             BtnPeekPhoto.Location = New Point(483, 5)
@@ -628,7 +630,7 @@
             ' 
             ' TxtPhotoPath
             ' 
-            TxtPhotoPath.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtPhotoPath.Font = New Font("Segoe UI", 12.0F)
             TxtPhotoPath.Location = New Point(70, 5)
             TxtPhotoPath.Margin = New Padding(6, 5, 6, 5)
             TxtPhotoPath.MaxLength = 255
@@ -638,24 +640,24 @@
             TxtPhotoPath.TabIndex = 7
             TxtPhotoPath.Tag = "txt"
             TxtPhotoPath.XOAutoTrim = False
+            TxtPhotoPath.XOHighlightColor = Color.LightYellow
+            TxtPhotoPath.XOHighlightOnFocus = False
+            TxtPhotoPath.XOIsBlank = True
             TxtPhotoPath.XOIsMandatory = False
+            TxtPhotoPath.XOIsPlaceholder = False
+            TxtPhotoPath.XOIsReplaceEmptyString = False
+            TxtPhotoPath.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtPhotoPath.XOMandatoryBgColor = Color.LightPink
             TxtPhotoPath.XOMandatoryBgColorDefault = Color.White
-            TxtPhotoPath.XOHighlightOnFocus = False
-            TxtPhotoPath.XOHighlightColor = Color.LightYellow
-            TxtPhotoPath.XOIsBlank = True
-            TxtPhotoPath.XOIsPlaceholder = False
-            TxtPhotoPath.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
-            TxtPhotoPath.XOSelectOnFocus = False
+            TxtPhotoPath.XOMandatoryMessage = Nothing
             TxtPhotoPath.XOPasswordLengthMin = 8
             TxtPhotoPath.XOPasswordStrengthCalc = False
             TxtPhotoPath.XOPasswordStrengthScore = 0
             TxtPhotoPath.XOPasswordStrengthText = Nothing
-            TxtPhotoPath.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtPhotoPath.XOPlaceholderText = "Type then press Enter"
+            TxtPhotoPath.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtPhotoPath.XOSelectOnFocus = False
             TxtPhotoPath.XOSqlText = ""
-            TxtPhotoPath.XOIsReplaceEmptyString = False
-            TxtPhotoPath.XOMandatoryMessage = Nothing
             ' 
             ' BtnAddPhoto
             ' 
@@ -665,7 +667,7 @@
             BtnAddPhoto.FlatAppearance.BorderSize = 2
             BtnAddPhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
             BtnAddPhoto.FlatStyle = FlatStyle.Flat
-            BtnAddPhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnAddPhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnAddPhoto.ForeColor = Color.White
             BtnAddPhoto.Image = My.Resources.Resources.ADD_001_16_ICON
             BtnAddPhoto.Location = New Point(549, 5)
@@ -714,7 +716,7 @@
             BtnBrowseFile.FlatAppearance.BorderSize = 2
             BtnBrowseFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
             BtnBrowseFile.FlatStyle = FlatStyle.Flat
-            BtnBrowseFile.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnBrowseFile.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnBrowseFile.ForeColor = Color.White
             BtnBrowseFile.Image = My.Resources.Resources.FOLDER_001_16_ICON
             BtnBrowseFile.Location = New Point(6, 5)
@@ -733,40 +735,40 @@
             DgnFileList.AllowUserToAddRows = False
             DgnFileList.AllowUserToDeleteRows = False
             DgnFileList.AllowUserToResizeRows = False
-            DataGridViewCellStyle10.BackColor = Color.FromArgb(CByte(234), CByte(253), CByte(168))
-            DgnFileList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
+            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(219), CByte(243), CByte(104))
+            DgnFileList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
             DgnFileList.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
             DgnFileList.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnFileList.BorderStyle = BorderStyle.None
             DgnFileList.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnFileList.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle11.BackColor = Color.YellowGreen
-            DataGridViewCellStyle11.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle11.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle11.SelectionBackColor = Color.YellowGreen
-            DataGridViewCellStyle11.SelectionForeColor = Color.Black
-            DataGridViewCellStyle11.WrapMode = DataGridViewTriState.True
-            DgnFileList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+            DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle5.BackColor = Color.YellowGreen
+            DataGridViewCellStyle5.Font = New Font("Verdana", 8.0F)
+            DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
+            DataGridViewCellStyle5.SelectionForeColor = Color.Black
+            DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
+            DgnFileList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
             DgnFileList.ColumnHeadersHeight = 43
             DgnFileList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             DgnFileList.Columns.AddRange(New DataGridViewColumn() {file_id, file_filename, file_tag, file_datetime, file_content, file_status, file_uploader, file_delete})
             DgnFileList.EnableHeadersVisualStyles = False
-            DgnFileList.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+            DgnFileList.Font = New Font("Verdana", 8.0F)
             DgnFileList.Location = New Point(6, 73)
             DgnFileList.Margin = New Padding(6, 5, 6, 5)
             DgnFileList.MultiSelect = False
             DgnFileList.Name = "DgnFileList"
             DgnFileList.ReadOnly = True
             DgnFileList.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle12.BackColor = Color.YellowGreen
-            DataGridViewCellStyle12.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle12.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle12.SelectionBackColor = Color.Yellow
-            DataGridViewCellStyle12.SelectionForeColor = Color.Black
-            DataGridViewCellStyle12.WrapMode = DataGridViewTriState.True
-            DgnFileList.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
+            DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle6.BackColor = Color.YellowGreen
+            DataGridViewCellStyle6.Font = New Font("Verdana", 8.0F)
+            DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
+            DataGridViewCellStyle6.SelectionForeColor = Color.Black
+            DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+            DgnFileList.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
             DgnFileList.RowHeadersWidth = 62
             DgnFileList.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
             DgnFileList.SelectionMode = DataGridViewSelectionMode.FullRowSelect
@@ -868,7 +870,7 @@
             ' 
             CboFileTag.DropDownStyle = ComboBoxStyle.DropDownList
             CboFileTag.FlatStyle = FlatStyle.Flat
-            CboFileTag.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            CboFileTag.Font = New Font("Segoe UI", 12.0F)
             CboFileTag.FormattingEnabled = True
             CboFileTag.Location = New Point(440, 5)
             CboFileTag.Margin = New Padding(6, 5, 6, 5)
@@ -878,7 +880,7 @@
             ' 
             ' TxtFilePath
             ' 
-            TxtFilePath.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtFilePath.Font = New Font("Segoe UI", 12.0F)
             TxtFilePath.Location = New Point(70, 5)
             TxtFilePath.Margin = New Padding(6, 5, 6, 5)
             TxtFilePath.MaxLength = 255
@@ -888,24 +890,24 @@
             TxtFilePath.TabIndex = 11
             TxtFilePath.Tag = "txt"
             TxtFilePath.XOAutoTrim = False
+            TxtFilePath.XOHighlightColor = Color.LightYellow
+            TxtFilePath.XOHighlightOnFocus = False
+            TxtFilePath.XOIsBlank = True
             TxtFilePath.XOIsMandatory = False
+            TxtFilePath.XOIsPlaceholder = False
+            TxtFilePath.XOIsReplaceEmptyString = False
+            TxtFilePath.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtFilePath.XOMandatoryBgColor = Color.LightPink
             TxtFilePath.XOMandatoryBgColorDefault = Color.White
-            TxtFilePath.XOHighlightOnFocus = False
-            TxtFilePath.XOHighlightColor = Color.LightYellow
-            TxtFilePath.XOIsBlank = True
-            TxtFilePath.XOIsPlaceholder = False
-            TxtFilePath.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
-            TxtFilePath.XOSelectOnFocus = False
+            TxtFilePath.XOMandatoryMessage = Nothing
             TxtFilePath.XOPasswordLengthMin = 8
             TxtFilePath.XOPasswordStrengthCalc = False
             TxtFilePath.XOPasswordStrengthScore = 0
             TxtFilePath.XOPasswordStrengthText = Nothing
-            TxtFilePath.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtFilePath.XOPlaceholderText = "Type then press Enter"
+            TxtFilePath.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtFilePath.XOSelectOnFocus = False
             TxtFilePath.XOSqlText = ""
-            TxtFilePath.XOIsReplaceEmptyString = False
-            TxtFilePath.XOMandatoryMessage = Nothing
             ' 
             ' BtnAddFile
             ' 
@@ -915,7 +917,7 @@
             BtnAddFile.FlatAppearance.BorderSize = 2
             BtnAddFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
             BtnAddFile.FlatStyle = FlatStyle.Flat
-            BtnAddFile.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnAddFile.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnAddFile.ForeColor = Color.White
             BtnAddFile.Image = My.Resources.Resources.ADD_001_16_ICON
             BtnAddFile.Location = New Point(827, 5)
@@ -937,7 +939,7 @@
             BtnPeekFile.FlatAppearance.BorderSize = 2
             BtnPeekFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
             BtnPeekFile.FlatStyle = FlatStyle.Flat
-            BtnPeekFile.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnPeekFile.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnPeekFile.ForeColor = Color.White
             BtnPeekFile.Image = My.Resources.Resources.ZOOMNORMAL_001_16_ICON
             BtnPeekFile.Location = New Point(761, 5)
@@ -962,11 +964,11 @@
             ULbl1.Margin = New Padding(7, 5, 7, 5)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(250, 55)
+            ULbl1.TabIndex = 1003
+            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.XOText = "Activity Start"
             ULbl1.XOTextAdjuster = False
             ULbl1.XOTextBorder = False
-            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl1.TabIndex = 1003
             ' 
             ' ULbl2
             ' 
@@ -975,11 +977,11 @@
             ULbl2.Margin = New Padding(7, 5, 7, 5)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(250, 55)
+            ULbl2.TabIndex = 1004
+            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.XOText = "To"
             ULbl2.XOTextAdjuster = False
             ULbl2.XOTextBorder = False
-            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl2.TabIndex = 1004
             ' 
             ' ULbl3
             ' 
@@ -988,11 +990,11 @@
             ULbl3.Margin = New Padding(7, 5, 7, 5)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 55)
+            ULbl3.TabIndex = 1005
+            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.XOText = "Area Affected"
             ULbl3.XOTextAdjuster = False
             ULbl3.XOTextBorder = False
-            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl3.TabIndex = 1005
             ' 
             ' ULbl4
             ' 
@@ -1001,11 +1003,11 @@
             ULbl4.Margin = New Padding(7, 5, 7, 5)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 55)
+            ULbl4.TabIndex = 1006
+            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.XOText = "Activity Template"
             ULbl4.XOTextAdjuster = False
             ULbl4.XOTextBorder = False
-            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl4.TabIndex = 1006
             ' 
             ' ULbl5
             ' 
@@ -1014,11 +1016,11 @@
             ULbl5.Margin = New Padding(7, 5, 7, 5)
             ULbl5.Name = "ULbl5"
             ULbl5.Size = New Size(250, 230)
+            ULbl5.TabIndex = 1007
+            ULbl5.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.XOText = "Description"
             ULbl5.XOTextAdjuster = False
             ULbl5.XOTextBorder = False
-            ULbl5.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl5.TabIndex = 1007
             ' 
             ' ULbl6
             ' 
@@ -1027,11 +1029,11 @@
             ULbl6.Margin = New Padding(7, 5, 7, 5)
             ULbl6.Name = "ULbl6"
             ULbl6.Size = New Size(250, 120)
+            ULbl6.TabIndex = 1008
+            ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl6.XOText = "Feedback" & vbCrLf & "(Supv. Only)"
             ULbl6.XOTextAdjuster = False
             ULbl6.XOTextBorder = False
-            ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl6.TabIndex = 1008
             ' 
             ' ULbl7
             ' 
@@ -1040,17 +1042,16 @@
             ULbl7.Margin = New Padding(7, 5, 7, 5)
             ULbl7.Name = "ULbl7"
             ULbl7.Size = New Size(250, 395)
+            ULbl7.TabIndex = 1009
+            ULbl7.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl7.XOText = "Attachment(s)"
             ULbl7.XOTextAdjuster = False
             ULbl7.XOTextBorder = False
-            ULbl7.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl7.TabIndex = 1009
             ' 
             ' FRMdarEditor
             ' 
             AutoScaleDimensions = New SizeF(10.0F, 25.0F)
             ClientSize = New Size(1203, 1170)
-            KeyPreview = True
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMdarEditor"
             PnlBottomButton.ResumeLayout(False)
