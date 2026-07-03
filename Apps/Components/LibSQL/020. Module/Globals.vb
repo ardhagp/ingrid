@@ -3,7 +3,6 @@
 Module Globals
     Public varDatabaseEngineMssql2008 As New CMCv.Database.Engine.Mssql2008
     Public varDatabaseEngineMysql As New CMCv.Database.Engine.Mysql
-    Public varDatabaseEngineLocaldb As New CMCv.Database.Engine.LocalDB
     Public varDatabaseEngineSqlite As New CMCv.Database.Engine.SQLiteV3
     Public databaseproperties(1) As LibApp.Ingrid.Global.Properties
 

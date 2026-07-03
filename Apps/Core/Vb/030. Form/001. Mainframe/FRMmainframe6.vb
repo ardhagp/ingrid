@@ -357,7 +357,7 @@ Namespace UI.Canvas
                     Return
                 End If
 
-                If Mainframe.Database.Connect(varProductionMode) Then
+                If Mainframe.Database.Connect() Then
                     Ts_connection.Text = "Connected"
                     varLogApplication.Run(varDataProperties)
                     If varCompany.CountRecords(varDataProperties) = 0 Then

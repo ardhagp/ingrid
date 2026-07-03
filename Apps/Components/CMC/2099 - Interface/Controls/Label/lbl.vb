@@ -7,11 +7,16 @@ Namespace UI.Control
         <SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
-            Call ActivateLicenses()
-            MyBase.Font = globalFontTxt
-            Me.XOCustomElipsis = False
-            'Me.SLFTypeOfElipsis = TextFormatFlags.Default
-            MyBase.DoubleBuffered = True
+
+            Try
+                Call ActivateLicenses()
+                MyBase.Font = globalFontTxt
+                Me.XOCustomElipsis = False
+                'Me.SLFTypeOfElipsis = TextFormatFlags.Default
+                MyBase.DoubleBuffered = True
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
         End Sub
 
         <System.ComponentModel.Category("XO.Format"),
