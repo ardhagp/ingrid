@@ -49,7 +49,7 @@ Namespace Mainframe
         Public Shared Function DatabaseName() As String
             Dim varDBname As String
 
-            varDatabaseEngineSqlite.Open("catalog.db")
+            varDatabaseEngineSqlite.Open(conCatalog)
             databaseproperties(1) = varDatabaseEngineSqlite.GetDatabaseProperties(databaseproperties(1))
             varDBname = databaseproperties(1).ConnectionDatabaseName
             varDatabaseEngineSqlite.Close()
@@ -61,7 +61,8 @@ Namespace Mainframe
             varQuery = "SELECT [DATABASEENGINE],[DBFORDATA],[CLIENT] FROM [serverlist] WHERE [DEFAULTCONNECTION] = 1"
 
             varDatabaseEngineSqlite.Open(conCatalog)
-            datasetname = varDatabaseEngineSqlite.FillDataSet(varQuery, datasetname, "DatabaseProperties")
+            varDatabaseEngineSqlite.FillDataSet(varQuery, datasetname, "DatabaseProperties")
+            varDatabaseEngineSqlite.Close()
         End Sub
     End Class
 End Namespace

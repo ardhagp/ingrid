@@ -1,6 +1,5 @@
 ﻿Imports System.Runtime.Versioning
 Imports System.Text
-Imports Connect.Connect.UI
 
 Namespace UI.Canvas
     <SupportedOSPlatform("windows")>
@@ -11,7 +10,7 @@ Namespace UI.Canvas
         Public Event ConnectFrameOpen()
         Public Event ConnectFrameClose()
 
-        Private varDataset As New ADSglobal
+        Private varDataset As New Connect.UI.ADSglobal
         Private varIsProduction As Boolean = True
         Private varIsExtension As Boolean = False
 

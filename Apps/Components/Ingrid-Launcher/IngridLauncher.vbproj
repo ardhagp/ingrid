@@ -33,20 +33,6 @@
     <DefineDebug>False</DefineDebug>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Resources\catalog.db" />
-    <None Remove="Resources\dev_catalog.db" />
-    <None Remove="Resources\errlog.db" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\catalog.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\dev_catalog.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\errlog.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\ingrid_icon_2.ico" />
   </ItemGroup>
   <ItemGroup>

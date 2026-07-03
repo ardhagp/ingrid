@@ -14,10 +14,11 @@ Namespace UI.Canvas
             InitializeComponent()
 
             ' Add any initialization after the InitializeComponent() call.
-            varServer = New TcpListener(IPAddress.Any, 8786)
-            varServerThread = New Thread(AddressOf ConnectionListener)
-            varServerThread.IsBackground = True
-            varServerThread.Start()
+            'varServer = New TcpListener(IPAddress.Any, 8786)
+            'varServerThread = New Thread(AddressOf ConnectionListener) With {
+            '    .IsBackground = True
+            '}
+            'varServerThread.Start()
         End Sub
 
         Private Sub ConnectionListener()

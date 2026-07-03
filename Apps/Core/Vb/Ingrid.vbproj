@@ -423,33 +423,6 @@
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Update="Resources\catalog.db">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\CATALOG.mdf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\catalog_log.ldf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\dev_catalog.db">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\DEV_CATALOG.mdf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\dev_catalog_log.ldf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\errorlog.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\ERRLOG.mdf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\errlog_log.ldf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\mainframe_ms_start_Login.png" />
@@ -544,6 +517,9 @@
     <EmbeddedResource Include="Resources\CALENDAR_001_512_icon.png" />
     <Content Include="Resources\app_settings.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\catalog.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ingrid_icon_2.ico" />
     <EmbeddedResource Include="Resources\COMPRESS_001_512_icon_.png" />
@@ -654,6 +630,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\app_settings.db" />
+    <None Remove="Resources\catalog.db" />
     <None Remove="Resources\CATALOG.mdb" />
   </ItemGroup>
   <ItemGroup>
