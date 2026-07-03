@@ -1,5 +1,6 @@
 ﻿Imports System.Runtime.Versioning
 Imports System.Text
+Imports Connect.Connect.UI
 
 Namespace UI.Canvas
     <SupportedOSPlatform("windows")>
@@ -10,6 +11,7 @@ Namespace UI.Canvas
         Public Event ConnectFrameOpen()
         Public Event ConnectFrameClose()
 
+        Private varDataset As New ADSglobal
         Private varIsProduction As Boolean = True
         Private varIsExtension As Boolean = False
 
@@ -40,7 +42,7 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnConnection) ''' Enable double buffering to reduce flickering
-            CMDconn.View.DisplayData(DgnConnection, SLFStatus, TxtFind, forcerefresh)
+            CMDconn.View.DisplayData(DgnConnection, SLFStatus, TxtFind, varDataset, forcerefresh)
         End Sub
 
         ''' <summary>
@@ -62,7 +64,7 @@ Namespace UI.Canvas
 
             Bridge.Security.Writelog.Sendlog("""message"" : ""Connection Settings is opened."",", "Information") ''' Log the event
 
-            varDatabaseEngineSqlite.Open(varIsProduction) ''' Open database connection
+            varDatabaseEngineSqlite.Open("catalog.db") ''' Open database connection
 
             Call LoadMenu() ''' Load mainframe menu
 

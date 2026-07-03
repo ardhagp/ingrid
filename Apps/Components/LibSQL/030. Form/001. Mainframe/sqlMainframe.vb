@@ -5,12 +5,13 @@ Imports System.Windows.Forms
 Namespace Mainframe
     Public Class Database
         Private Shared varQuery As String
+        Private Const conCatalog As String = "catalog.db"
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function Connect(Optional isproduction As Boolean = False, Optional splashscreen As Form = Nothing) As Boolean
+        Public Shared Function Connect(Optional splashscreen As Form = Nothing) As Boolean
             Dim varSuccess As Boolean
             Try
-                varDatabaseEngineSqlite.Open(isproduction)
+                varDatabaseEngineSqlite.Open(conCatalog)
                 databaseproperties(1) = varDatabaseEngineSqlite.GetDatabaseProperties(databaseproperties(1))
 
                 If databaseproperties(1).ConnectionDatabaseEngine = "MSSQL" AndAlso (varDatabaseEngineMssql2008.Open(databaseproperties(1), splashscreen)) Then
@@ -37,7 +38,7 @@ Namespace Mainframe
         Public Shared Function DatabaseEngine() As String
             Dim varDBengine As String
 
-            varDatabaseEngineSqlite.Open(True)
+            varDatabaseEngineSqlite.Open(conCatalog)
             databaseproperties(1) = varDatabaseEngineSqlite.GetDatabaseProperties(databaseproperties(1))
             varDBengine = databaseproperties(1).ConnectionDatabaseEngine
             varDatabaseEngineSqlite.Close()
@@ -48,7 +49,7 @@ Namespace Mainframe
         Public Shared Function DatabaseName() As String
             Dim varDBname As String
 
-            varDatabaseEngineSqlite.Open(True)
+            varDatabaseEngineSqlite.Open("catalog.db")
             databaseproperties(1) = varDatabaseEngineSqlite.GetDatabaseProperties(databaseproperties(1))
             varDBname = databaseproperties(1).ConnectionDatabaseName
             varDatabaseEngineSqlite.Close()
@@ -59,7 +60,7 @@ Namespace Mainframe
         Public Shared Sub GetDatabaseProperties(datasetname As DataSet)
             varQuery = "SELECT [DATABASEENGINE],[DBFORDATA],[CLIENT] FROM [serverlist] WHERE [DEFAULTCONNECTION] = 1"
 
-            varDatabaseEngineSqlite.Open(True)
+            varDatabaseEngineSqlite.Open(conCatalog)
             datasetname = varDatabaseEngineSqlite.FillDataSet(varQuery, datasetname, "DatabaseProperties")
         End Sub
     End Class

@@ -57,31 +57,27 @@
             },
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[10.0.9, )"
             },
             "Microsoft.Extensions.Configuration.UserSecrets": {
               "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[10.0.9, )"
             },
             "ReportGenerator": {
               "target": "Package",
-              "version": "[5.5.0, )"
-            },
-            "Serilog.Extensions.Logging": {
-              "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[5.5.10, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.4, )"
+              "version": "[10.0.1, )"
             },
             "coverlet.msbuild": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.4, )"
+              "version": "[10.0.1, )"
             }
           },
           "imports": [
@@ -164,7 +160,7 @@
             },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
-              "version": "[7.0.1, )"
+              "version": "[7.0.2, )"
             },
             "MySql.Data": {
               "target": "Package",
@@ -176,67 +172,59 @@
             },
             "ReportViewerCore.WinForms": {
               "target": "Package",
-              "version": "[15.1.24, )"
+              "version": "[15.1.33, )"
             },
             "Syncfusion.Grid.Windows": {
               "target": "Package",
-              "version": "[33.2.6, )"
+              "version": "[33.2.15, )"
             },
             "Syncfusion.Licensing": {
               "target": "Package",
-              "version": "[33.2.6, )"
+              "version": "[33.2.15, )"
             },
             "Syncfusion.PdfViewer.Windows": {
               "target": "Package",
-              "version": "[33.2.6, )"
+              "version": "[33.2.15, )"
             },
             "Syncfusion.Shared.Base": {
               "target": "Package",
-              "version": "[33.2.6, )"
+              "version": "[33.2.15, )"
             },
             "Syncfusion.Tools.Windows": {
               "target": "Package",
-              "version": "[33.2.6, )"
+              "version": "[33.2.15, )"
             },
             "System.ComponentModel.Composition": {
               "target": "Package",
-              "version": "[10.0.0, )"
-            },
-            "System.Data.OleDb": {
-              "target": "Package",
-              "version": "[10.0.7, )"
+              "version": "[10.0.9, )"
             },
             "System.Data.SQLite.Core": {
               "target": "Package",
               "version": "[1.0.119, )"
             },
-            "System.Data.SqlClient": {
-              "target": "Package",
-              "version": "[4.9.1, )"
-            },
             "System.IO.Hashing": {
               "target": "Package",
-              "version": "[10.0.7, )"
+              "version": "[10.0.9, )"
             },
             "System.Management": {
               "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[10.0.9, )"
             },
             "WinForms.DataVisualization": {
               "target": "Package",
-              "version": "[1.10.0, )"
+              "version": "[1.10.2, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.4, )"
+              "version": "[10.0.1, )"
             },
             "coverlet.msbuild": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.4, )"
+              "version": "[10.0.1, )"
             }
           },
           "imports": [
@@ -318,23 +306,19 @@
           "dependencies": {
             "ReportGenerator": {
               "target": "Package",
-              "version": "[5.5.0, )"
-            },
-            "System.Data.DataSetExtensions": {
-              "target": "Package",
-              "version": "[4.5.0, )"
+              "version": "[5.5.10, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.4, )"
+              "version": "[10.0.1, )"
             },
             "coverlet.msbuild": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.4, )"
+              "version": "[10.0.1, )"
             }
           },
           "imports": [
@@ -409,19 +393,19 @@
           "dependencies": {
             "ReportGenerator": {
               "target": "Package",
-              "version": "[5.5.0, )"
+              "version": "[5.5.10, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.4, )"
+              "version": "[10.0.1, )"
             },
             "coverlet.msbuild": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.4, )"
+              "version": "[10.0.1, )"
             }
           },
           "imports": [

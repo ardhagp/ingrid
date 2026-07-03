@@ -24,7 +24,7 @@ Namespace UI
         Public varSalt As String = Bridge.Security.Getkey.Salt()
 
         <SupportedOSPlatform("windows")>
-        Public V_SyncfusionKey As String = Bridge.Security.Getkey.Syncfusion
+        Public varSyncfusionKey As String = Bridge.Security.Getkey.Syncfusion
 
         ''' <summary>
         ''' This security will be retired
@@ -57,7 +57,6 @@ Namespace UI
         'Public SEC As New Security.Engine
 
         Public ERC As New CMCv.UI.Canvas.FRMerrorreporting
-        Public ERL As New Database.Engine.LocalDB
         Public proLog As Ladybug.Log.Fields
 
         Public varApplicationVersion As String
@@ -76,10 +75,13 @@ Namespace UI
 
         <SupportedOSPlatform("windows")>
         Public Sub ActivateLicenses()
-            'License for Syncfusion
-
-            'nuget version : 21.2.9
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(V_SyncfusionKey)
+            Try
+                ' License for Syncfusion
+                ' Nuget version : 33.2.15
+                Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(varSyncfusionKey)
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
         End Sub
 
     End Module

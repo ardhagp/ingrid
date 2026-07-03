@@ -1,13 +1,9 @@
 ﻿Imports System.Runtime.Versioning
-'Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Namespace UI.Canvas
     Public Class FRMerrorreporting
-        'Private Catcher As New Ladybug.Log.Fields
+        ' Private Catcher As New Ladybug.Log.Fields
         Private ResumeNext As Boolean
-
-        'Private ERL As New Database.Engine.LocalDB
-        Private ERL As New Database.Engine.SQLiteV3
 
         Public Sub New()
 
@@ -21,6 +17,9 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Public Sub New(proLog As Ladybug.Log.Fields, Optional dbengine As Database.Engine.SQLiteV3 = Nothing)
             InitializeComponent()
+            Me.Text = "INGRID - Error Reporting"
+            SLFNamaForm.Text = "Error Reporting"
+            SLFSubNamaForm.Text = "A simple diagnostic tool for logging exceptions"
 
             TxtErrorType.Text = proLog.TypeOfFaulty.ToString()
             TxtErrorMessage.Text = proLog.Message & System.Environment.NewLine & System.Environment.NewLine & "Sender: " & proLog.FromSender
@@ -34,21 +33,11 @@ Namespace UI.Canvas
 
             Dim varMessage As String
 
-            'Send Error to Ingrid Log Center
+            ' Send Error to Ingrid Log Center
             If (proLog.SaveInBetterLog) Then
                 varMessage = """message"" : """ & proLog.Message & """," & Environment.NewLine & """sender"" : """ & proLog.FromSender & """," & Environment.NewLine & """error_number"" : " & proLog.Number & "," & Environment.NewLine & """error_type"" : """ & proLog.TypeOfFaulty.ToString() & """," & Environment.NewLine & """log_type"" : """ & proLog.TypeOfLog.ToString() & """," & Environment.NewLine & """version"" : """ & proLog.AppVersion & ""","
                 Bridge.Security.Writelog.Sendlog(varMessage, proLog.TypeOfLog.ToString())
             End If
-
-            'Record Error into local database
-            If (proLog.SaveLogInLocal) Then
-                ERL = dbengine
-                ERL.Open()
-                ERL.SaveErrorData(proLog)
-            End If
-
-            'Tbctl1.TabPages.RemoveByKey("tp_SystemInformation")
-
         End Sub
 
         <SupportedOSPlatform("windows")>

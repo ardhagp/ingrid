@@ -207,8 +207,12 @@ Namespace Database.Connect
         Implements ISqlite
 
         Public Function SQLiteBasic(dbfile As String) As String Implements ISqlite.SQLiteBasic
-            'V_result = "Data Source=" & dbfile & ";Version=3;Mode=ReadWrite;Journal Mode=Off;"
-            varResult = "Data Source=" & dbfile & ";Version=3;Journal Mode=Persist;Synchronous=Full;Max Page Count=5000;"
+            'Applied on System.Data.SQLite (No longer used)
+            'varResult = "Data Source=" & dbfile & ";Version=3;Mode=ReadWrite;Journal Mode=Off;"
+            'varResult = "Data Source=" & dbfile & ";Version=3;Journal Mode=Persist;Synchronous=Full;Max Page Count=5000;"
+
+            'Applied on Microsoft.Data.Sqlite (Current)
+            varResult = "Data Source=" & dbfile & ";"
             Return varResult
         End Function
 

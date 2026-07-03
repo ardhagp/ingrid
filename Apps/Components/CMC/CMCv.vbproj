@@ -79,14 +79,20 @@
   <ItemGroup>
     <Compile Remove="000. Programmer%27s Guide\**" />
     <Compile Remove="0010 - Embeded Files\080. Database\v11.0\**" />
+    <Compile Remove="2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\**" />
+    <Compile Remove="2001 - Service\01 - Database\02 - Engine\04 - LocalDB\**" />
     <Compile Remove="x64\**" />
     <Compile Remove="x86\**" />
     <EmbeddedResource Remove="000. Programmer%27s Guide\**" />
     <EmbeddedResource Remove="0010 - Embeded Files\080. Database\v11.0\**" />
+    <EmbeddedResource Remove="2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\**" />
+    <EmbeddedResource Remove="2001 - Service\01 - Database\02 - Engine\04 - LocalDB\**" />
     <EmbeddedResource Remove="x64\**" />
     <EmbeddedResource Remove="x86\**" />
     <None Remove="000. Programmer%27s Guide\**" />
     <None Remove="0010 - Embeded Files\080. Database\v11.0\**" />
+    <None Remove="2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\**" />
+    <None Remove="2001 - Service\01 - Database\02 - Engine\04 - LocalDB\**" />
     <None Remove="x64\**" />
     <None Remove="x86\**" />
   </ItemGroup>
@@ -501,31 +507,29 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="6.0.4">
+    <PackageReference Include="coverlet.collector" Version="10.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="coverlet.msbuild" Version="6.0.4">
+    <PackageReference Include="coverlet.msbuild" Version="10.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.2" />
     <PackageReference Include="MySql.Data" Version="9.7.0" />
     <PackageReference Include="NETCore.Encrypt" Version="2.1.1" />
-    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.24" />
-    <PackageReference Include="Syncfusion.Grid.Windows" Version="33.2.6" />
-    <PackageReference Include="Syncfusion.Licensing" Version="33.2.6" />
-    <PackageReference Include="Syncfusion.PdfViewer.Windows" Version="33.2.6" />
-    <PackageReference Include="Syncfusion.Shared.Base" Version="33.2.6" />
-    <PackageReference Include="Syncfusion.Tools.Windows" Version="33.2.6" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.9.1" />
-    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.33" />
+    <PackageReference Include="Syncfusion.Grid.Windows" Version="33.2.15" />
+    <PackageReference Include="Syncfusion.Licensing" Version="33.2.15" />
+    <PackageReference Include="Syncfusion.PdfViewer.Windows" Version="33.2.15" />
+    <PackageReference Include="Syncfusion.Shared.Base" Version="33.2.15" />
+    <PackageReference Include="Syncfusion.Tools.Windows" Version="33.2.15" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="System.ComponentModel.Composition" Version="10.0.0" />
-    <PackageReference Include="System.Data.OleDb" Version="10.0.7" />
-    <PackageReference Include="System.IO.Hashing" Version="10.0.7" />
-    <PackageReference Include="System.Management" Version="10.0.0" />
-    <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="10.0.9" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
+    <PackageReference Include="System.IO.Hashing" Version="10.0.9" />
+    <PackageReference Include="System.Management" Version="10.0.9" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.10.2" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="2099 - Interface\Controls\Tool Strip\too.Designer.vb" />

@@ -1,24 +1,31 @@
-﻿Imports CMCv.UI
-Imports System.Data
+﻿Imports System.Data
 Imports System.Globalization
 Imports System.Runtime.Versioning
 Imports System.Windows.Forms
+Imports CMCv.UI
 
 Namespace Database.Engine
     Public Class SQLiteV3
-        Private ReadOnly varConnectionString(2) As String
+        Implements IDisposable
+
+        Private varConnectionString As String
         Private ReadOnly varFilePath(2) As String
 
-        Private ReadOnly varConnection(2) As SQLite.SQLiteConnection
-        Private ReadOnly varCommand(2) As SQLite.SQLiteCommand
-        Private ReadOnly varDataReader(2) As SQLite.SQLiteDataReader
+        ' Activate this when using Microsoft.Data.Sqlite
+        'Private varConnection As Microsoft.Data.Sqlite.SqliteConnection
+        'Private varCommand As Microsoft.Data.Sqlite.SqliteCommand
+        'Private varDataReader As Microsoft.Data.Sqlite.SqliteDataReader
+
+        ' Activate this when using System.Data.SQLite.Core
+        Private varConnection As System.Data.SQLite.SQLiteConnection
+        Private varCommand As System.Data.SQLite.SQLiteCommand
+        Private varDataReader As System.Data.SQLite.SQLiteDataReader
 
         Private ReadOnly varSqlite As New Connect.SQLiteConnection
         'Private varTX As SQLite.SQLiteTransaction
-        Private varIsProductionMode As Boolean
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function CheckDBCatalog() As Boolean
+        Public Shared Function CheckDBCatalog(localsqlitedb As String) As Boolean
             Try
                 Dim baseFolder = IO.Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
@@ -28,11 +35,9 @@ Namespace Database.Engine
                 Dim resourcesFolder = IO.Path.Combine(baseFolder, "Resources")
                 IO.Directory.CreateDirectory(resourcesFolder)
 
-                Dim prodOk = EnsureDbExists("Resources\catalog.db", baseFolder)
-                Dim devOk = EnsureDbExists("Resources\dev_catalog.db", baseFolder)
-                Dim logOk = EnsureDbExists("Resources\errlog.db", baseFolder)
+                Dim prodOk = EnsureDbExists($"Resources\{localsqlitedb}", baseFolder)
 
-                Return (prodOk AndAlso logOk) OrElse (devOk AndAlso logOk)
+                Return (prodOk)
 
             Catch ex As Exception
                 With proLog
@@ -70,12 +75,11 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub Open(Optional isproductionmode As Boolean = True)
+        Public Sub Open(localsqlitedb As String)
             Try
-                varIsProductionMode = isproductionmode
                 Dim varLocation As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\ardhagp\Ingrid .NET"
 
-                If Not (CheckDBCatalog()) Then
+                If Not (CheckDBCatalog(localsqlitedb)) Then
                     With proLog
                         .AppVersion = GetAppVersion()
                         .FromSender = "[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
@@ -96,23 +100,19 @@ Namespace Database.Engine
                     Return
                 End If
 
-                varFilePath(0) = varLocation & "\Resources\CATALOG.db"
-                varFilePath(1) = varLocation & "\Resources\ERRORLOG.db"
+                varFilePath(0) = varLocation & $"\Resources\{localsqlitedb}"
 
-                If (isproductionmode) AndAlso OperatingSystem.File.Info.IsExists(varFilePath(0)) Then
+                If OperatingSystem.File.Info.IsExists(varFilePath(0)) Then
                     varFilePath(0) = Replace(varFilePath(0), "\", "\\")
 
-                    varConnectionString(0) = varSqlite.SQLiteBasic(varFilePath(0))
+                    varConnectionString = varSqlite.SQLiteBasic(varFilePath(0))
 
-                    varConnection(1) = New SQLite.SQLiteConnection(varConnectionString(0)) 'OleDb.OleDbConnection(_CS(0))
-                    varConnection(1).Open()
-                ElseIf Not (isproductionmode) AndAlso (OperatingSystem.File.Info.IsExists(varFilePath(1))) Then
-                    varFilePath(1) = Replace(varFilePath(1), "\", "\\")
+                    ' Activate this when using Microsoft.Data.Sqlite
+                    'varConnection = New Microsoft.Data.Sqlite.SqliteConnection(varConnectionString) 'OleDb.OleDbConnection(_CS(0))
 
-                    varConnectionString(1) = varSqlite.SQLiteBasic(varFilePath(1))
-
-                    varConnection(2) = New SQLite.SQLiteConnection(varConnectionString(1))
-                    varConnection(2).Open()
+                    ' Activate this when using System.Data.SQLite.Core
+                    varConnection = New System.Data.SQLite.SQLiteConnection(varConnectionString) 'OleDb.OleDbConnection(_CS(0))
+                    varConnection.Open()
                 End If
             Catch ex As Exception
                 With proLog
@@ -152,9 +152,9 @@ Namespace Database.Engine
                     databaseproperties = New LibApp.Ingrid.Global.Properties
                 End If
 
-                varDataReader(1) = GetDataRow("Select SERVERADDRESS, USERNAME, PASSWORD, SERVERPORT, DBFORDATA, DBFORFILE, DATABASEENGINE FROM serverlist WHERE DEFAULTCONNECTION =1;")
+                varDataReader = GetDataRow("Select SERVERADDRESS, USERNAME, PASSWORD, SERVERPORT, DBFORDATA, DBFORFILE, DATABASEENGINE FROM serverlist WHERE DEFAULTCONNECTION =1;")
 
-                With varDataReader(1)
+                With varDataReader
                     If .HasRows Then
                         databaseproperties.ConnectionServerAddress = .GetString(0)
                         databaseproperties.ConnectionUsername = .GetString(1)
@@ -198,52 +198,31 @@ Namespace Database.Engine
             End Try
         End Function
 
+        'Private Function GetDataRow(query As String) As Microsoft.Data.Sqlite.SqliteDataReader
         <SupportedOSPlatform("windows")>
-        Public Sub SaveErrorData(proLog As Ladybug.Log.Fields)
+        Private Function GetDataRow(query As String) As System.Data.SQLite.SQLiteDataReader ' Activate this when using System.Data.Sqlite.Core
             Try
-                Dim varDateTime As String = Now.Year & "-" & Now.Month & "-" & Now.Day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second
-                Dim varQuery As String
-                varQuery = $"insert into errlog(ERRORDATETIME,ERRORTYPE,ERRORNUMBER,ERRORDESCRIPTION,ERRORINTERNALSTACKTRACE,ERRORREPORTING,ERRORDONEREPORTED) values " &
-                           $"('{varDateTime}','{proLog.TypeOfFaulty.ToString()}','{proLog.Number}','{proLog.Message}','{proLog.InternalStackTrace}','{proLog.ShowErrorReporting}','1')"
-                Call PushData(varQuery)
-            Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
-                    .FromSender = "[SaveErrorData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
-                    .InternalStackTrace = ex.StackTrace
-                    .Message = ex.Message
-                    .Number = ex.HResult
-                    .ResumeNext = False
-                    .SaveInBetterLog = True
-                    .SaveLogInLocal = False
-                    .ShowErrorReporting = True
-                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine
-                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
-                End With
+                ' Activate this when using Microsoft.Data.Sqlite
+                'varCommand = New Microsoft.Data.Sqlite.SqliteCommand With {
+                '                .Connection = varConnection,
+                '                .CommandType = CommandType.Text,
+                '                .CommandText = query}
 
-                Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
-                clsLog = Nothing
-            End Try
-        End Sub
-
-        <SupportedOSPlatform("windows")>
-        Private Function GetDataRow(query As String) As SQLite.SQLiteDataReader
-            Try
-                varCommand(1) = New SQLite.SQLiteCommand With {
-                                .Connection = varConnection(1),
+                ' Activate this when using System.Data.SQLite.Core
+                varCommand = New System.Data.SQLite.SQLiteCommand With {
+                                .Connection = varConnection,
                                 .CommandType = CommandType.Text,
                                 .CommandText = query
-                                                    }
+                                }
+                varDataReader = varCommand.ExecuteReader
 
-                varDataReader(0) = varCommand(1).ExecuteReader
-
-                If varDataReader(0).HasRows Then
-                    varDataReader(0).Read()
+                If varDataReader.HasRows Then
+                    varDataReader.Read()
                 End If
 
-                Return varDataReader(0)
-            Catch ex As SQLite.SQLiteException
+                Return varDataReader
+            Catch ex As system.Data.Sqlite.SQLiteException
+                'Catch ex As Microsoft.Data.Sqlite.SqliteException
                 With proLog
                     .AppVersion = GetAppVersion()
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
@@ -271,17 +250,25 @@ Namespace Database.Engine
             Try
                 Dim varRowValue As Object
 
-                If (varConnection(1) Is Nothing) Then
-                    varConnection(1).Open()
+                If (varConnection Is Nothing) Then
+                    varConnection.Open()
                 End If
 
-                varCommand(1) = New SQLite.SQLiteCommand With {
-                                .Connection = varConnection(1),
+                ' Activate this when using Microsoft.Data.Sqlite
+                'varCommand = New Microsoft.Data.Sqlite.SqliteCommand With {
+                '                .Connection = varConnection,
+                '                .CommandTimeout = 30,
+                '                .CommandText = query
+                '    }
+
+                ' Activate this when using System.Data.SQLite.Core
+                varCommand = New System.Data.SQLite.SQLiteCommand With {
+                                .Connection = varConnection,
                                 .CommandTimeout = 30,
                                 .CommandText = query
                     }
 
-                varRowValue = varCommand(1).ExecuteScalar
+                varRowValue = varCommand.ExecuteScalar
 
                 Return varRowValue
             Catch ex As Exception
@@ -308,29 +295,49 @@ Namespace Database.Engine
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Sub GetDataTable(dbr As Adapter.SQLite.Display.Request, tablename As String)
-
-            Dim varDataAdapterPrivate(1) As SQLite.SQLiteDataAdapter
+        Public Sub GetDataTable(dbr As Adapter.Sqlite.Display.Request, datasetname As System.Data.DataSet, tablename As String)
 
             Try
                 GC.Collect()
 
-                Dim varDataSet As New DataSet
                 Dim varBindingSource As New BindingSource
 
-                If (varCommand(1) Is Nothing) Then
-                    varCommand(1) = New SQLite.SQLiteCommand
+                If (varCommand Is Nothing) Then
+                    ' Activate this when using Microsoft.Data.Sqlite
+                    'varCommand = New Microsoft.Data.Sqlite.SqliteCommand
+
+                    ' Activate this when using System.Data.Sqlite.Core
+                    varCommand = New System.Data.SQLite.SQLiteCommand
                 End If
 
-                varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandTimeout = 30
+                varCommand.Connection = varConnection
+                varCommand.CommandTimeout = 30
 
-                varCommand(1).CommandText = dbr.Query
+                varCommand.CommandText = dbr.Query
 
-                varDataAdapterPrivate(1) = New SQLite.SQLiteDataAdapter(varCommand(1))
-                varDataAdapterPrivate(1).Fill(varDataSet, tablename)
+                ' Activate this when using Microsoft.Data.Sqlite
+                'Dim dt As New DataTable()
 
-                varBindingSource = New BindingSource(varDataSet, tablename)
+                'Using cmd As New SqliteCommand(varCommand.CommandText, varCommand.Connection)
+                '    Using reader = cmd.ExecuteReader()
+                '        dt.Load(reader)
+                '    End Using
+                'End Using
+
+                'For Each row As DataRow In dt.Rows
+                '    row("SERVERPORT") = CStr(row("SERVERPORT"))
+                '    row("DEFAULTCONNECTION") = CLng(row("DEFAULTCONNECTION"))
+                'Next
+
+                'datasetname.Tables(tablename).Clear()
+                'datasetname.Tables(tablename).Merge(dt)
+
+                ' Activate this when using System.Data.Sqlite.Core
+                Dim varDataAdapterPrivate As SQLite.SQLiteDataAdapter
+                varDataAdapterPrivate = New SQLite.SQLiteDataAdapter(varCommand)
+                varDataAdapterPrivate.Fill(datasetname, tablename)
+
+                varBindingSource = New BindingSource(datasetname, tablename)
 
                 If Not (dbr.DataGrid Is Nothing) Then
                     dbr.DataGrid.DataSource = varBindingSource
@@ -348,7 +355,8 @@ Namespace Database.Engine
                     dbr.Chart.DataSource = varBindingSource
                 End If
 
-            Catch ex As SQLite.SQLiteException
+            Catch ex As system.Data.Sqlite.SqliteException
+                'Catch ex As Microsoft.Data.Sqlite.SqliteException
                 With proLog
                     .AppVersion = GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
@@ -392,20 +400,27 @@ Namespace Database.Engine
             GC.Collect()
 
             Try
-                'If Not varConnection(1).Ping Then
-                '    varConnection(1).Close()
-                '    varConnection(1).Open()
-                'End If
+                ' Activate this when using Microsoft.Data.Sqlite
+                'varCommand = New Microsoft.Data.Sqlite.SqliteCommand With {
 
-                varCommand(1) = New SQLite.SQLiteCommand With {
-                .Connection = varConnection(1),
-                .CommandType = CommandType.Text}
+                ' Activate this when using System.Data.SQLite.Core
+                varCommand = New System.Data.SQLite.SQLiteCommand With {
+                .Connection = varConnection,
+                .CommandType = CommandType.Text,
+                .CommandText = String.Format(CultureInfo.CurrentCulture, query)
+                }
 
-                varCommand(1).CommandText = String.Format(CultureInfo.CurrentCulture, query)
 
-                Using varDataAdapter = New SQLite.SQLiteDataAdapter(varCommand(1))
-                    varDataAdapter.Fill(datasetname, tablename)
+                ' Prepare a DataTable to load results
+                Dim dt As New DataTable()
+
+                Using reader = varCommand.ExecuteReader()
+                    dt.Load(reader)
                 End Using
+
+                ' Replace the target table inside the DataSet
+                datasetname.Tables(tablename).Clear()
+                datasetname.Tables(tablename).Merge(dt)
 
                 Return datasetname
             Catch ex As Exception
@@ -435,26 +450,23 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub PushData(query As String)
             Try
-                Dim varTX As SQLite.SQLiteTransaction = Nothing
+                ' Activate this when using Microsoft.Data.Sqlite
+                'Dim varTX As Microsoft.Data.Sqlite.SqliteTransaction = Nothing
 
-                If (varIsProductionMode) AndAlso (varTX Is Nothing) Then
-                    varTX = varConnection(1).BeginTransaction
-                ElseIf Not (varIsProductionMode) AndAlso (varTX Is Nothing) Then
-                    varTX = varConnection(2).BeginTransaction
+                ' Activate this when using System.Data.SQLite.Core
+                Dim varTX As System.Data.SQLite.SQLiteTransaction = Nothing
+
+                If (varTX Is Nothing) Then
+                    varTX = varConnection.BeginTransaction
                 End If
 
-                If varIsProductionMode Then
-                    Dim varCommand = varConnection(1).CreateCommand
-                    varCommand.CommandText = query
-                    varCommand.ExecuteNonQuery()
-                Else
-                    Dim varCommand = varConnection(2).CreateCommand
-                    varCommand.CommandText = query
-                    varCommand.ExecuteNonQuery()
-                End If
+                Dim varCommand = varConnection.CreateCommand
+                varCommand.CommandText = query
+                varCommand.ExecuteNonQuery()
 
                 varTX.Commit()
-            Catch ex As SQLite.SQLiteException
+            Catch ex As system.Data.Sqlite.SQLiteException
+                'Catch ex As Microsoft.Data.Sqlite.SqliteException
                 With proLog
                     .AppVersion = GetAppVersion()
                     .FromSender = "[PushData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
@@ -476,17 +488,16 @@ Namespace Database.Engine
         End Sub
 
         Public Sub Close()
-            If Not (varConnection(1) Is Nothing) Then
-                varConnection(1).Close()
-                varConnection(1).Dispose()
-                varConnection(1) = Nothing
+            If Not (varConnection Is Nothing) Then
+                varConnection.Close()
+                varConnection.Dispose()
+                varConnection = Nothing
             End If
+        End Sub
 
-            If Not (varConnection(2) Is Nothing) Then
-                varConnection(2).Close()
-                varConnection(2).Dispose()
-                varConnection(2) = Nothing
-            End If
+        Public Sub Dispose() Implements IDisposable.Dispose
+            Throw New NotImplementedException()
+            GC.SuppressFinalize(Me)
         End Sub
     End Class
 End Namespace

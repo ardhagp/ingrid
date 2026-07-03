@@ -9,6 +9,5 @@ Namespace UI.Control
             InitializeComponent()
             Call ActivateLicenses()
         End Sub
-
     End Class
 End Namespace

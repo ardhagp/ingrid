@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.Versioning
+﻿Imports System.ComponentModel.Composition.Hosting
+Imports System.Runtime.Versioning
 
 Namespace Ladybug.Log
     Public Structure Fields
@@ -49,20 +50,11 @@ Namespace Ladybug.Log
             If Not (proLog.ShowErrorReporting) Then
                 varMessage = """message"" : """ & proLog.Message & """," & Environment.NewLine & """sender"" : """ & proLog.FromSender & """," & Environment.NewLine & """error_number"" : " & proLog.Number & "," & Environment.NewLine & """error_type"" : """ & proLog.TypeOfFaulty.ToString() & """," & Environment.NewLine & """log_type"" : """ & proLog.TypeOfLog.ToString() & """," & Environment.NewLine & """version"" : """ & proLog.AppVersion & ""","
                 Bridge.Security.Writelog.Sendlog(varMessage, proLog.TypeOfLog.ToString())
+            Else
+                FRMerc = New CMCv.UI.Canvas.FRMerrorreporting(proLog, clsDBsqlite)
+                FRMerc.ShowDialog()
+                FRMerc.Dispose()
             End If
-
-            If (proLog.SaveLogInLocal) AndAlso Not (proLog.ShowErrorReporting) Then
-                Dim varDatabaseEngineLog As New Database.Engine.SQLiteV3
-                varDatabaseEngineLog.Open(False)
-                varDatabaseEngineLog.SaveErrorData(proLog)
-                varDatabaseEngineLog.Close()
-                Return
-            End If
-
-            FRMerc = New CMCv.UI.Canvas.FRMerrorreporting(proLog, clsDBsqlite)
-            FRMerc.ShowDialog()
-
-            FRMerc.Dispose()
 
             If Not (proLog.ResumeNext) Then
                 Process.GetCurrentProcess.Kill()

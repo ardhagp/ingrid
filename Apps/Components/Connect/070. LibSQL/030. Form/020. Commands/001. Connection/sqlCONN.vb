@@ -4,23 +4,26 @@ Namespace CMDconn
     <SupportedOSPlatform("windows")>
     Public Class View
 
-        Public Shared Sub DisplayData(datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt,
-                                      find As CMCv.UI.Control.txt, Optional forcerefresh As Boolean = False)
+        Public Shared Sub DisplayData(datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt,
+                                      find As CMCv.UI.Control.Txt, datasetname As System.Data.DataSet, Optional forcerefresh As Boolean = False)
             Try
                 If (find.XOSqlText = String.Empty) OrElse (forcerefresh) Then 'to display all data
-                    varDatabaseRequestSqlite(0).Query = "select serverlist.ID, serverlist.CONNECTIONNAME, " &
-                        "serverlist.DATABASEENGINE, IIF( serverlist.ISMASKED = 1, substr(printf('%.' || length(serverlist.SERVERADDRESS) || 'c', '*'), 1), serverlist.SERVERADDRESS) as 'SERVERADDRESS', IIF( serverlist.ISMASKED = 1, substr(printf('%.' || length(serverlist.SERVERPORT) || 'c', '*'), 1), serverlist.SERVERPORT) as 'SERVERPORT', " &
-                        "serverlist.DEFAULTCONNECTION from serverlist ORDER BY serverlist.CONNECTIONNAME;"
+                    varDatabaseRequestSqlite(0).Query = $"select serverlist.ID, serverlist.CONNECTIONNAME, " &
+                                                        $"serverlist.DATABASEENGINE, IIF( serverlist.ISMASKED = 1, substr(printf('%.' || length(serverlist.SERVERADDRESS) || 'c', '*'), 1), serverlist.SERVERADDRESS) as 'SERVERADDRESS', " &
+                                                        $"IIF( serverlist.ISMASKED = 1, substr(printf('%.' || length(serverlist.SERVERPORT) || 'c', '*'), 1), serverlist.SERVERPORT) as 'SERVERPORT', " &
+                                                        $"serverlist.DEFAULTCONNECTION from serverlist " &
+                                                        $"ORDER BY serverlist.CONNECTIONNAME;"
                 Else 'to display filtered data
-                    varDatabaseRequestSqlite(0).Query = String.Format("select serverlist.ID, serverlist.CONNECTIONNAME, " &
-                                                          "serverlist.DATABASEENGINE, IIF( serverlist.ISMASKED = 1, substr(printf('%.' || length(serverlist.SERVERADDRESS) || 'c', '*'), 1), serverlist.SERVERADDRESS) as 'SERVERADDRESS', " &
-                                                          "IIF( serverlist.ISMASKED = 1, substr(printf('%.' || length(serverlist.SERVERPORT) || 'c', '*'), 1), serverlist.SERVERPORT) as 'SERVERPORT', serverlist.DEFAULTCONNECTION from " &
-                                                          "serverlist where (serverlist.CONNECTIONNAME Like '%{0}%')" &
-                                                          "ORDER BY serverlist.CONNECTIONNAME;", find.XOSqlText)
+                    varDatabaseRequestSqlite(0).Query = $"select serverlist.ID, serverlist.CONNECTIONNAME, " &
+                                                        $"serverlist.DATABASEENGINE, IIF( serverlist.ISMASKED = 1, substr(printf('%.' || length(serverlist.SERVERADDRESS) || 'c', '*'), 1), serverlist.SERVERADDRESS) as 'SERVERADDRESS', " &
+                                                        $"IIF( serverlist.ISMASKED = 1, substr(printf('%.' || length(serverlist.SERVERPORT) || 'c', '*'), 1), serverlist.SERVERPORT) as 'SERVERPORT', " &
+                                                        $"serverlist.DEFAULTCONNECTION from serverlist " &
+                                                        $"where (serverlist.CONNECTIONNAME Like '%{find.XOSqlText}%')" &
+                                                        $"ORDER BY serverlist.CONNECTIONNAME;"
                 End If
                 varDatabaseRequestSqlite(0).DataGrid = datagrid
                 varDatabaseRequestSqlite(0).StatusBar = statusbar
-                varDatabaseEngineSqlite.GetDataTable(varDatabaseRequestSqlite(0), "TDBList")
+                varDatabaseEngineSqlite.GetDataTable(varDatabaseRequestSqlite(0), datasetname, "serverlist")
             Catch ex As Exception
                 Dim clsLog As New Ladybug.Log.Events
                 With proLog
