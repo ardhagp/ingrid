@@ -26,5 +26,7 @@
     <PkgSyncfusion_PdfViewer_Windows Condition=" '$(PkgSyncfusion_PdfViewer_Windows)' == '' ">C:\Users\titoa\.nuget\packages\syncfusion.pdfviewer.windows\33.2.15</PkgSyncfusion_PdfViewer_Windows>
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\titoa\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.4</PkgMicrosoft_CodeAnalysis_Analyzers>
     <PkgReportGenerator Condition=" '$(PkgReportGenerator)' == '' ">C:\Users\titoa\.nuget\packages\reportgenerator\5.5.10</PkgReportGenerator>
+    <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">C:\Users\titoa\.nuget\packages\awssdk.core\4.0.100.2</PkgAWSSDK_Core>
+    <PkgAWSSDK_S3 Condition=" '$(PkgAWSSDK_S3)' == '' ">C:\Users\titoa\.nuget\packages\awssdk.s3\4.0.100.2</PkgAWSSDK_S3>
   </PropertyGroup>
 </Project>

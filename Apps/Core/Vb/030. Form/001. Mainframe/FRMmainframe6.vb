@@ -4,8 +4,7 @@ Imports System.IO
 Imports System.Data
 Imports System.ComponentModel
 Imports System.Runtime.Versioning
-'Imports Microsoft.Reporting.WinForms.Internal.Soap.ReportingServices2005.Execution
-'Imports System.ComponentModel.Composition
+'Imports Google.Protobuf.WellKnownTypes
 
 Namespace UI.Canvas
     Public Class FRMmainframe6
@@ -188,18 +187,18 @@ Namespace UI.Canvas
                     Return
                 ElseIf CBool(.Rows(0).Item("module_ismaintenance")) Then
                     St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
-                    Bridge.Security.Writelog.Sendlog("""message"" : """ & varDataProperties.EmployeeFirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
+                    Bridge.Writelog.Sendlog("""message"" : """ & varDataProperties.EmployeeFirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
                     Decision(My.Application.Info.AssemblyName.ToUpper, "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", LibApp.Ingrid.Global.PopupType.ModuleUnderMaintenance, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Information, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                     System.Media.SystemSounds.Beep.Play()
                     Return
                 ElseIf Not (varUserAccess.User(varDataProperties, St_mainframe)) Then ''' Check User Access
                     St_mainframe.Items(0).Text = "You are not authorized to access : " & commandcode.ToUpper.Trim
-                    Bridge.Security.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " trying to open Restricted Module " & commandcode.ToUpper.Trim & """", "Warning")
+                    Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " trying to open Restricted Module " & commandcode.ToUpper.Trim & """", "Warning")
                     System.Media.SystemSounds.Beep.Play()
                     Return
                 Else
                     Globals.varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
-                    Bridge.Security.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " opening Module " & commandcode.ToUpper.Trim & """,", "Information")
+                    Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " opening Module " & commandcode.ToUpper.Trim & """,", "Information")
                     Txt_shortcut.Clear()
                 End If
             End With
@@ -238,7 +237,7 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Private Sub LogoutClicked()
             If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure want to logout from system?", LibApp.Ingrid.Global.PopupType.Logout, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
-                Bridge.Security.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " is logout."",", "Information")
+                Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " is logout."",", "Information")
                 Call SystemLogout()
                 varLogUser.Logout(varDataProperties)
                 Call ClearLoginData()
@@ -315,6 +314,7 @@ Namespace UI.Canvas
         Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Try
                 RaiseEvent EventMainframeOpen()
+
                 varVersionapplication = GetAppVersion() 'Retrieve app version
                 TmrNotif.Enabled = True
 

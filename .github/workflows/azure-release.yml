@@ -143,6 +143,15 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.cs'
 
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Replacing: V_BRIDGEKEY.BETTERSTACK_HEARTBEATS'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'config.GetSection("KEYS")["BETTERSTACK_HEARTBEATS"]'
+    parameterReplaceText: '"$(var_g_BetterStack_Heartbeats)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.cs'
+
 #Replacing Version: Major
 - task: ReplaceInFilesTextByText@2
   displayName: 'Replacing: {VERSION_MAJOR}'

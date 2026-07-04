@@ -61,13 +61,13 @@ Namespace UI.Canvas
         Private Sub FRMconn_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             RaiseEvent ConnectFrameOpen() ''' Notify that the connection settings form is opened
 
-            Bridge.Security.Writelog.Sendlog("""message"" : ""Connection Settings is opened."",", "Information") ''' Log the event
+            Bridge.Writelog.Sendlog("""message"" : ""Connection Settings is opened."",", "Information") ''' Log the event
 
             varDatabaseEngineSqlite.Open("catalog.db") ''' Open database connection
 
             Call LoadMenu() ''' Load mainframe menu
 
-            DgnConnection.XOGETNewColor() ''' Apply custom color scheme
+            DgnConnection.XOGetNewColor() ''' Apply custom color scheme
 
             Call GetData(True) ''' Load data into the grid
         End Sub
@@ -83,7 +83,7 @@ Namespace UI.Canvas
                 varDatabaseEngineSqlite.Close()
             End If
 
-            Bridge.Security.Writelog.Sendlog("""Connection Settings is closed."",", "Information")
+            Bridge.Writelog.Sendlog("""Connection Settings is closed."",", "Information")
 
             RaiseEvent ConnectFrameClose()
         End Sub

@@ -250,10 +250,6 @@ Namespace Database.Engine
             Try
                 Dim varRowValue As Object
 
-                If (varConnection Is Nothing) Then
-                    varConnection.Open()
-                End If
-
                 ' Activate this when using Microsoft.Data.Sqlite
                 'varCommand = New Microsoft.Data.Sqlite.SqliteCommand With {
                 '                .Connection = varConnection,

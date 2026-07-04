@@ -51,10 +51,8 @@ Namespace UI.Canvas
             'Get Storage Provider
             With CboStorageProvider.Items
                 .Clear()
-                .Add("None")
+                .Add("Disabled")
                 .Add("BackBlaze B2")
-                .Add("Cloudinary")
-                .Add("Database")
             End With
 
             If varDatasetIngrid.Tables(dtSettings).Rows.Count > 0 Then
@@ -162,7 +160,7 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Private Sub OnCboProviderTextChanged()
             With CboStorageProvider
-                If .Text = "None" Then
+                If .Text = "Disabled" Then
                     TxtApiKey.Enabled = False
                     TxtApiSecret.Enabled = False
                     TxtFileDb.Enabled = False

@@ -7,7 +7,7 @@ Namespace UI
 #Region "Activate Licenses"
         <SupportedOSPlatform("windows")>
         Public Sub ActivateLicenses()
-            Dim varSyncfusionkey As String = Bridge.Security.Getkey.Syncfusion()
+            Dim varSyncfusionkey As String = Bridge.Getkey.Syncfusion()
 
             'License for Syncfusion
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(varSyncfusionkey)
@@ -31,7 +31,8 @@ Namespace UI
         Public varLogApplication As New LibSQL.SystemLog.Activity.Application
         Public varCompany As New LibSQL.CMDccin.View
         Public varForceRefreshMainframeData As Boolean
-        'Public clsBridgelog As New Bridge.Security.WRITELOG
+        'Public clsBridgelog As New Bridge.WRITELOG
+        Public varBetterstack As New LibAPI.Api.Betterstack.Heartbeats
 
         Public proLog As New CMCv.Ladybug.Log.Fields
         Public varSecurityencrypt As New CMCv.Security.Encrypt
