@@ -10,12 +10,14 @@
         ReadOnly Property C_ModuleName As String = "module_name"
         ReadOnly Property C_ModuleDescription As String = "module_description"
         ReadOnly Property C_ModuleIsMaintenance As String = "module_ismaintenance"
+        ReadOnly Property C_ModuleAppMinimumVer As String = "module_appminimumver"
         ReadOnly Property C_ModuleIsSystem As String = "module_issystem"
         ReadOnly Property P_ModuleId As String = "@ModuleId"
         ReadOnly Property P_ModuleCode As String = "@ModuleCode"
         ReadOnly Property P_ModuleName As String = "@ModuleName"
         ReadOnly Property P_ModuleDescription As String = "@ModuleDescription"
         ReadOnly Property P_ModuleIsMaintenance As String = "@ModuleIsMaintenance"
+        ReadOnly Property P_ModuleAppMinimumVer As String = "@ModuleAppMinimumVer"
         ReadOnly Property P_ModuleIsSystem As String = "@ModuleIsSystem"
 
     End Class

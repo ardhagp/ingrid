@@ -5,24 +5,24 @@ Namespace UI
         Private Shared ReadOnly tSysModule As String = "SysModule"
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetModuleProperties(dataproperties As LibApp.Ingrid.Global.Properties, commandcode As String, datasetname As System.Data.DataSet)
+        Public Shared Sub GetModuleProperties(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object), commandcode As String, datasetname As System.Data.DataSet)
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(0).Query = ""
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(0).Query = $"select smod.module_code, " &
-                                                   $"smod.module_name, " &
-                                                   $"smod.module_description, " &
-                                                   $"smod.module_appminimumver, " &
-                                                   $"smod.module_ismaintenance, " &
-                                                   $"smod.module_issystem " &
-                                                   $"from sys_module smod " &
-                                                   $"where smod.module_code = @CommandCode " &
+                    varDatabaseRequestMysql(0).Query = $"select {tModule.S}.{tModule.C_ModuleCode}, " &
+                                                   $"{tModule.S}.{tModule.C_ModuleName}, " &
+                                                   $"{tModule.S}.{tModule.C_ModuleDescription}, " &
+                                                   $"{tModule.S}.{tModule.C_ModuleAppMinimumVer}, " &
+                                                   $"{tModule.S}.{tModule.C_ModuleIsMaintenance}, " &
+                                                   $"{tModule.S}.{tModule.C_ModuleIsSystem} " &
+                                                   $"from {tModule.TableName} {tModule.S} " &
+                                                   $"where {tModule.S}.{tModule.C_ModuleCode} = {tModule.P_ModuleCode} " &
                                                    $"limit 0,1;"
-                    varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tSysModule, dataproperties.AllParameters)
+                    varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tSysModule, parametername)
                 End If
             Catch ex As Exception
-                Decision("Error", $"Failed to retrieve module properties.{Environment.NewLine}Error Message: {ex.Message}", LibApp.Ingrid.Global.PopupType.Error, "GetModuleProperties", CMCv.ui.canvas.FRMdialogbox.MessageIcon.Error, CMCv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision("Error", $"Failed to retrieve module properties.{Environment.NewLine}Error Message: {ex.Message}", LibApp.Ingrid.Global.PopupType.Error, "GetModuleProperties", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             End Try
         End Sub
 

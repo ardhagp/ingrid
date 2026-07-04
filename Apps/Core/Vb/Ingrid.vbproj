@@ -410,6 +410,9 @@
     <None Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.xss">
       <DependentUpon>DAR_RDS.xsd</DependentUpon>
     </None>
+    <None Update="902. Settings\General.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
     <None Update="UI\Dataset\ADSglobal.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ADSglobal.Designer.vb</LastGenOutput>

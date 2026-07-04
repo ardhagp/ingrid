@@ -1,11 +1,7 @@
-﻿Imports System.IO
-Imports System.Reflection
-Imports System.Runtime.Versioning
-
-Namespace UI
+﻿Namespace UI
     Module Globals
 #Region "Activate Licenses"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub ActivateLicenses()
             Dim varSyncfusionkey As String = Bridge.Getkey.Syncfusion()
 
@@ -32,7 +28,7 @@ Namespace UI
         Public varCompany As New LibSQL.CMDccin.View
         Public varForceRefreshMainframeData As Boolean
         'Public clsBridgelog As New Bridge.WRITELOG
-        Public varBetterstack As New LibAPI.Api.Betterstack.Heartbeats
+        Public clsBetterstack As New LibAPI.Api.Betterstack.Heartbeats
 
         Public proLog As New CMCv.Ladybug.Log.Fields
         Public varSecurityencrypt As New CMCv.Security.Encrypt
@@ -54,38 +50,39 @@ Namespace UI
         Public Const dtUserData As String = "UserData"
 
         'Database Tables
+        Public tCompany As New LibApp.Table.Man.Company
+        Public tDepartment As New LibApp.Table.Man.Department
         Public tPosition As New LibApp.Table.Man.Position
         Public tEmployee As New LibApp.Table.Man.Employee
+        Public tEmploymentType As New LibApp.Table.Man.EmploymentType
+        Public tModule As New LibApp.Table.Sys.Module
         Public tSettings As New LibApp.Table.Sys.Settings
         Public tClient As New LibApp.Table.Sys.Client
+        Public tLog As New LibApp.Table.Sys.Log
         Public tUser As New LibApp.Table.Sys.User
-
-        Private Const pClientComputerName As String = "@ClientComputerName"
-        Private Const pClientOSFullName As String = "@ClientOSFullName"
-        Private Const pClientAppVersion As String = "@ClientAppVersion"
+        Public tAttachment As New LibApp.Table.File.Attachment
 
 #End Region
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub FirstLoad()
-            With varDataProperties.AllParameters
-                .Remove(pClientComputerName)
-                .Add(pClientComputerName, My.Computer.Name.ToString)
-                .Remove(pClientOSFullName)
-                .Add(pClientOSFullName, My.Computer.Info.OSFullName.ToString)
-                .Remove(pClientAppVersion)
-                .Add(pClientAppVersion, GetAppVersion)
+            With varDataProperties.UserParameters
+                .Remove(tLog.P_LogMachine)
+                .Add(tLog.P_LogMachine, My.Computer.Name.ToString)
+                .Remove(tLog.P_LogOS)
+                .Add(tLog.P_LogOS, My.Computer.Info.OSFullName.ToString)
+                .Remove(tLog.P_LogAppVer)
+                .Add(tLog.P_LogAppVer, GetAppVersion)
             End With
 
-            Call GetAppVersion()
             Call CheckRequiredFolder()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub DblBuffer(gridview As DataGridView)
             Try
                 Dim systemType As Type = gridview.GetType()
-                Dim propertyInfo As PropertyInfo = systemType.GetProperty("DoubleBuffered", bindingAttr:=BindingFlags.Instance Or BindingFlags.NonPublic)
+                Dim propertyInfo As System.Reflection.PropertyInfo = systemType.GetProperty("DoubleBuffered", bindingAttr:=System.Reflection.BindingFlags.Instance Or System.Reflection.BindingFlags.NonPublic)
                 propertyInfo.SetValue(gridview, True, Nothing)
             Catch ex As Exception
                 With proLog
@@ -108,12 +105,12 @@ Namespace UI
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub ClearMainFrameFooterText()
             UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub SetMainframeFooterText(text As String)
             UI.Canvas.FRMmainframe6.Ts_status.Text = text
         End Sub
@@ -125,18 +122,10 @@ Namespace UI
         ''' </summary>
         ''' <returns>String</returns>
         ''' <remarks></remarks>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Function GetAppVersion() As String
             Try
-                Dim varMajor, varMinor, varBuild, varRevision As Integer
-
-                varMajor = My.Application.Info.Version.Major
-                varMinor = My.Application.Info.Version.Minor
-                varBuild = My.Application.Info.Version.Build
-                varRevision = My.Application.Info.Version.Revision
-
-                varVersionapplication = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
-                Return varVersionapplication
+                Return My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
@@ -156,8 +145,7 @@ Namespace UI
                 clsLog.ShowData(proLog)
                 clsLog = Nothing
 
-                varVersionapplication = " - Failed Getting Version"
-                Return varVersionapplication
+                Return " - Failed Getting Version"
             End Try
         End Function
 #End Region
@@ -168,23 +156,17 @@ Namespace UI
         ''' Check and Create Required Folder
         ''' </summary>
         Public Function CheckRequiredFolder(Optional getdirname As DirName = Nothing) As String
-            If Not Directory.Exists("Commands") Then
-                Directory.CreateDirectory("Commands")
-            End If
-            If Not Directory.Exists("Files.PDF") Then
-                Directory.CreateDirectory("Files.PDF")
-            End If
-            If Not Directory.Exists("Files.Photo") Then
-                Directory.CreateDirectory("Files.Photo")
-            End If
+            System.IO.Directory.CreateDirectory("Commands")
+            System.IO.Directory.CreateDirectory("Files.PDF")
+            System.IO.Directory.CreateDirectory("Files.Photo")
 
             Select Case getdirname
                 Case DirName.Commands
-                    Return Directory.GetCurrentDirectory & "\Commands\" 'Folder for detachable modules
+                    Return System.IO.Directory.GetCurrentDirectory & "\Commands\" 'Folder for detachable modules
                 Case DirName.PDF
-                    Return Directory.GetCurrentDirectory & "\Files.PDF\"
+                    Return System.IO.Directory.GetCurrentDirectory & "\Files.PDF\"
                 Case DirName.Photo
-                    Return Directory.GetCurrentDirectory & "\Files.Photo\"
+                    Return System.IO.Directory.GetCurrentDirectory & "\Files.Photo\"
                 Case Else
                     Return ""
             End Select
@@ -210,7 +192,7 @@ Namespace UI
         ''' <param name="IsDialog">True/False</param>
         ''' <param name="ParentFrame">MDI</param>
         ''' <remarks></remarks>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub Display(formname As CMCv.UI.Canvas.FRMstandard, Optional formimage As System.Drawing.Image = Nothing,
                        Optional windowname As String = "", Optional formtitle As String = "",
                        Optional formsubtitle As String = "", Optional isdialog As Boolean = False,
@@ -271,7 +253,7 @@ Namespace UI
         ''' <param name="IsDialog">True/False</param>
         ''' <param name="ParentFrame">MDI</param>
         ''' <remarks></remarks>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub Display(formname As CMCv.UI.Canvas.FRMstandardFooter, Optional formimage As System.Drawing.Image = Nothing, Optional windowname As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "", Optional isdialog As Boolean = False, Optional parentframe As System.Windows.Forms.Form = Nothing)
             Try
                 formname.Text = windowname
@@ -330,7 +312,7 @@ Namespace UI
         ''' <param name="ButtonType">Jenis Tombol</param>
         ''' <returns>DialogResult</returns>
         ''' <remarks></remarks>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Function Decision(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType, subtitle As String, messageicon As CMCv.UI.Canvas.FRMdialogbox.MessageIcon, buttontype As CMCv.UI.Canvas.FRMdialogbox.MessageTypes) As DialogResult
             FRMmsg = New CMCv.UI.Canvas.FRMdialogbox(windowtitle, message, title, subtitle, messageicon, buttontype)
             Dim result As System.Windows.Forms.DialogResult = FRMmsg.ShowDialog()

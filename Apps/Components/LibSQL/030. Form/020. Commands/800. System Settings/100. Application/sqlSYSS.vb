@@ -1,43 +1,60 @@
 ﻿Imports System.Runtime.Versioning
+Imports CMCv
 
 Namespace CMDsyss
     Public Class View
         <SupportedOSPlatform("windows")>
-        Public Shared Sub GetSettingsProperties(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet)
-            'Try
-            Dim varValue As Object
+        Public Shared Sub GetSettingsProperties(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object), datasetname As System.Data.DataSet)
+            Try
+                Dim varValue As Object
 
-            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                varDatabaseRequestMssql2008(0).Query = String.Format("select {0} from dbo.sys_settings st where st.settings_id = 1")
-                varValue = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query)
-            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = $"select {tSettings.S}.{tSettings.C_SettingsId}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsShowProfile}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsShowStorage}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsShowWatermark}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsTextMark}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsTextMarkLength}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsShowRunningText}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsUploadPhoto}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsUploadPdf}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsStorageProvider}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsApiKey}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsApiSecret}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsApiServiceUrl}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsStorageDb}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsClient}, " &
-                                                   $"{tClient.S}.{tClient.C_ClientName}, " &
-                                                   $"{tClient.S}.{tClient.C_ClientCode}, " &
-                                                   $"{tSettings.S}.{tSettings.C_SettingsMinPasswordLength} " &
-                                                   $"from {tSettings.TableName} {tSettings.S} " &
-                                                   $"inner join {tClient.TableName} {tClient.S} " &
-                                                   $"on {tClient.S}.{tClient.C_ClientId} = {tSettings.S}.{tSettings.C_SettingsClient} " &
-                                                   $"where {tClient.S}.{tClient.C_ClientCode} = {tClient.P_ClientCode}"
-                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "SYSS_Editor", dataproperties.AllParameters)
-            End If
-            'Catch ex As Exception
+                If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                    varDatabaseRequestMssql2008(0).Query = $"select {0} from dbo.sys_settings st where st.settings_id = 1"
+                    varValue = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query)
+                ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                    varDatabaseRequestMysql(0).Query = $"select {tSettings.S}.{tSettings.C_SettingsId}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsShowProfile}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsShowStorage}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsShowWatermark}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsTextMark}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsTextMarkLength}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsShowRunningText}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsUploadPhoto}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsUploadPdf}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsStorageProvider}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsApiKey}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsApiSecret}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsApiServiceUrl}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsStorageDb}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsClient}, " &
+                                                       $"{tClient.S}.{tClient.C_ClientName}, " &
+                                                       $"{tClient.S}.{tClient.C_ClientCode}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsMinPasswordLength} " &
+                                                       $"from {tSettings.TableName} {tSettings.S} " &
+                                                       $"inner join {tClient.TableName} {tClient.S} " &
+                                                       $"on {tClient.S}.{tClient.C_ClientId} = {tSettings.S}.{tSettings.C_SettingsClient} " &
+                                                       $"where {tClient.S}.{tClient.C_ClientCode} = {tClient.P_ClientCode}"
+                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "SYSS_Editor", parametername)
+                End If
+            Catch ex As Exception
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[Closing] Mainframe"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
 
-            'End Try
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+            End Try
         End Sub
     End Class
 

@@ -10,21 +10,8 @@ Namespace UI.Canvas
         Private varChangePhoto As Boolean
         Private varPhoto As System.Drawing.Image
 
-        Private Const pCompanyName As String = "@CompanyName"
-        Private Const pDepartmentName As String = "@DepartmentName"
-        Private Const pEmployeePersonalIdNumber As String = "@pEmployeePersonalIdNumber"
-        Private Const pEmployeeFullName As String = "@pEmployeeFullName"
-        Private Const pEmployeeBirthPlace As String = "@pEmployeeBirthPlace"
-        Private Const pEmployeeGender As String = "@pEmployeeGender"
-        Private Const pEmployeeAddress As String = "@pEmployeeAddress"
-        Private Const pEmployeeNumber As String = "@EmployeeNumber"
-        Private Const pEmployeeNickname As String = "@EmployeeNickname"
-        Private Const pEmploymentTypeId As String = "@EmploymentTypeId"
-        Private Const pPositionId As String = "@PositionId"
-        Private Const pPositionName As String = "@PositionName"
-
-        Private Const cEmployeeEmploymentType As String = "employee_employmenttype"
-
+        Private varThisModuleId As Long = 0
+        Private Const varThisModuleCode As String = "EPLS"
         Private Const varMessageCannotSave As String = "Cannot save your record."
 #End Region
 
@@ -34,6 +21,9 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub FRMeplsEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            varDataProperties.UserParameters.Remove(tModule.P_ModuleCode)
+            varDataProperties.UserParameters.Add(tModule.P_ModuleCode, varThisModuleCode)
+
             varHavePhoto = False
             varChangePhoto = False
             If varDataProperties.EmployeeIsNew Then
@@ -42,8 +32,8 @@ Namespace UI.Canvas
                 CboGender.SelectedIndex = 0
 
                 With varDataProperties.AllParameters
-                    .Remove(pPositionId)
-                    .Add(pPositionId, DBNull.Value)
+                    .Remove(tPosition.P_PositionId)
+                    .Add(tPosition.P_PositionId, DBNull.Value)
 
                 End With
             Else
@@ -54,32 +44,26 @@ Namespace UI.Canvas
 
                 With varDatasetIngrid.Tables("EPLS_Editor").Rows(0)
                     'Displaying Employee Detail
-                    TxtPersonalID.Text = .Item("employee_personalidnumber").ToString
-                    TxtFullName.Text = .Item("employee_fullname").ToString
-                    CboGender.SelectedItem = .Item("employee_gender").ToString
-                    DtpBirthDate.Value = If(IsDBNull(.Item("employee_birthdate")) OrElse .Item("employee_birthdate") Is Nothing, Date.Today, CDate(.Item("employee_birthdate")))
-                    TxtBirthPlace.Text = .Item("employee_birthplace").ToString
-                    TxtAddress.Text = .Item("employee_address").ToString
+                    TxtPersonalID.Text = .Item(tEmployee.C_EmployeePersonalIdNumber).ToString
+                    TxtFullName.Text = .Item(tEmployee.C_EmployeeFullName).ToString
+                    CboGender.SelectedItem = .Item(tEmployee.C_EmployeeGender).ToString
+                    DtpBirthDate.Value = If(IsDBNull(.Item(tEmployee.C_EmployeeBirthDate)) OrElse .Item(tEmployee.C_EmployeeBirthDate) Is Nothing, Date.Today, CDate(.Item(tEmployee.C_EmployeeBirthDate)))
+                    TxtBirthPlace.Text = .Item(tEmployee.C_EmployeeBirthPlace).ToString
+                    TxtAddress.Text = .Item(tEmployee.C_EmployeeAddress).ToString
 
                     'Displaying Employment Detail
-                    TxtCompany.Text = .Item("company_name").ToString
-                    TxTDepartment.Text = .Item("department_name").ToString
-                    varDataProperties.AllParameters.Remove(pPositionId)
-                    varDataProperties.AllParameters.Add(pPositionId, CLng(.Item("position_id")))
-                    TxtPosition.Text = .Item("position_name").ToString
-                    varDataProperties.AllParameters.Remove(pEmploymentTypeId)
-                    varDataProperties.AllParameters.Add(pEmploymentTypeId, IIf(.Item(cEmployeeEmploymentType) Is Nothing OrElse .Item("employee_employmenttype").ToString = String.Empty OrElse .Item("employee_employmenttype").ToString = "", DBNull.Value, .Item("employee_employmenttype")))
-                    TxtEmployeeNumber.Text = .Item("employee_number").ToString
-                    TxtEmployeeNickname.Text = .Item("employee_nickname").ToString
-                    ChkActiveEmployee.Checked = CBool(.Item("employee_isactive"))
-                    varHavePhoto = CMDepls.Editor.GetIsHavePhoto(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
+                    TxtCompany.Text = .Item(tcompany.C_CompanyName).ToString
+                    TxTDepartment.Text = .Item(tDepartment.C_DepartmentName).ToString
+                    varDataProperties.AllParameters.Remove(tPosition.P_PositionId)
+                    varDataProperties.AllParameters.Add(tPosition.P_PositionId, CLng(.Item(tPosition.C_PositionId)))
+                    TxtPosition.Text = .Item(tPosition.C_PositionName).ToString
+                    varDataProperties.AllParameters.Remove(tEmploymentType.P_EmploymentTypeId)
+                    varDataProperties.AllParameters.Add(tEmploymentType.P_EmploymentTypeId, IIf(.Item(tEmployee.C_EmployeeEmploymentType) Is Nothing OrElse .Item(tEmployee.C_EmployeeEmploymentType).ToString = String.Empty OrElse .Item(tEmployee.C_EmployeeEmploymentType).ToString = "", DBNull.Value, .Item(tEmployee.C_EmployeeEmploymentType)))
+                    TxtEmployeeNumber.Text = .Item(tEmployee.C_EmployeeNumber).ToString
+                    TxtEmployeeNickname.Text = .Item(tEmployee.C_EmployeeNickname).ToString
+                    ChkActiveEmployee.Checked = CBool(.Item(tEmployee.C_EmployeeIsActive))
+                    varHavePhoto = CMDepls.Editor.GetIsHavePhoto(varDataProperties, varDataProperties.UserParameters)
                 End With
-
-
-                'Permissions
-                'TxtLogin.Text = CMDuac.Editor.GetUsernameByEmployeeID(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
-                'varDataProperties.Field01 = CMDuac.Editor.GetUIDbyEmployeeID(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
-                'CMDuac.Editor.DisplayData(varDataProperties, DgnModulesRoles, varDataProperties.Field01.ToString)
 
                 TxtPersonalID.Focus()
 
@@ -133,18 +117,18 @@ Namespace UI.Canvas
             End If
 
             With varDataProperties
-                .AllParameters.Remove(pEmployeePersonalIdNumber)
-                .AllParameters.Add(pEmployeePersonalIdNumber, IIf(TxtPersonalID.XOSqlText = String.Empty OrElse TxtPersonalID.XOSqlText = "", DBNull.Value, TxtPersonalID.XOSqlText))
-                .AllParameters.Remove(pEmployeeFullName)
-                .AllParameters.Add(pEmployeeFullName, IIf(TxtFullName.XOSqlText = String.Empty OrElse TxtFullName.XOSqlText = "", DBNull.Value, TxtFullName.XOSqlText))
-                .AllParameters.Remove(pEmployeeBirthPlace)
-                .AllParameters.Add(pEmployeeBirthPlace, IIf(TxtBirthPlace.XOSqlText = String.Empty OrElse TxtBirthPlace.XOSqlText = "", DBNull.Value, TxtBirthPlace.XOSqlText))
-                .AllParameters.Remove(pEmployeeGender)
-                .AllParameters.Add(pEmployeeGender, IIf(CboGender.SelectedItem Is Nothing OrElse CboGender.SelectedItem.ToString = String.Empty, DBNull.Value, CboGender.SelectedItem.ToString))
-                .AllParameters.Remove(pEmployeeAddress)
-                .AllParameters.Add(pEmployeeAddress, IIf(TxtAddress.XOSqlText = String.Empty OrElse TxtAddress.XOSqlText = "", DBNull.Value, TxtAddress.XOSqlText))
-                .AllParameters.Remove(pEmployeeNickname)
-                .AllParameters.Add(pEmployeeNickname, IIf(TxtEmployeeNickname.XOSqlText = String.Empty OrElse TxtEmployeeNickname.XOSqlText = "", DBNull.Value, TxtEmployeeNickname.XOSqlText))
+                .AllParameters.Remove(tEmployee.P_EmployeePersonalIdNumber)
+                .AllParameters.Add(tEmployee.P_EmployeePersonalIdNumber, IIf(TxtPersonalID.XOSqlText = String.Empty OrElse TxtPersonalID.XOSqlText = "", DBNull.Value, TxtPersonalID.XOSqlText))
+                .AllParameters.Remove(tEmployee.P_EmployeeFullName)
+                .AllParameters.Add(tEmployee.P_EmployeeFullName, IIf(TxtFullName.XOSqlText = String.Empty OrElse TxtFullName.XOSqlText = "", DBNull.Value, TxtFullName.XOSqlText))
+                .AllParameters.Remove(tEmployee.P_EmployeeBirthPlace)
+                .AllParameters.Add(tEmployee.P_EmployeeBirthPlace, IIf(TxtBirthPlace.XOSqlText = String.Empty OrElse TxtBirthPlace.XOSqlText = "", DBNull.Value, TxtBirthPlace.XOSqlText))
+                .AllParameters.Remove(tEmployee.P_EmployeeGender)
+                .AllParameters.Add(tEmployee.P_EmployeeGender, IIf(CboGender.SelectedItem Is Nothing OrElse CboGender.SelectedItem.ToString = String.Empty, DBNull.Value, CboGender.SelectedItem.ToString))
+                .AllParameters.Remove(tEmployee.P_EmployeeAddress)
+                .AllParameters.Add(tEmployee.P_EmployeeAddress, IIf(TxtAddress.XOSqlText = String.Empty OrElse TxtAddress.XOSqlText = "", DBNull.Value, TxtAddress.XOSqlText))
+                .AllParameters.Remove(tEmployee.P_EmployeeNickname)
+                .AllParameters.Add(tEmployee.P_EmployeeNickname, IIf(TxtEmployeeNickname.XOSqlText = String.Empty OrElse TxtEmployeeNickname.XOSqlText = "", DBNull.Value, TxtEmployeeNickname.XOSqlText))
             End With
 
             If CMDepls.Editor.PushData(varDataProperties) Then
@@ -179,7 +163,7 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Function CheckEmployeeMandatoryFields() As Boolean
-            If (TxtPersonalID.XOSqlText = String.Empty OrElse IsDBNull(varDataProperties.AllParameters(pPositionId)) OrElse varDataProperties.AllParameters(pPositionId) Is Nothing OrElse (TxtEmployeeNumber.XOSqlText = String.Empty) OrElse (TxtFullName.XOSqlText = String.Empty)) Then
+            If (TxtPersonalID.XOSqlText = String.Empty OrElse IsDBNull(varDataProperties.AllParameters(tPosition.P_PositionId)) OrElse varDataProperties.AllParameters(tPosition.P_PositionId) Is Nothing OrElse (TxtEmployeeNumber.XOSqlText = String.Empty) OrElse (TxtFullName.XOSqlText = String.Empty)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Ensure that the Personal ID, Full Name, Company, Department, Position and Employee Number fields are correctly completed.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return False
             Else
@@ -210,15 +194,15 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Private Sub FRMeplsAddinPosition_RecordSelected() Handles Frm_epls_AddinPosition.EventRecordSelected
             With varDataProperties
-                TxtCompany.Text = .AllParameters(pCompanyName).ToString
-                TxTDepartment.Text = .AllParameters(pDepartmentName).ToString
-                TxtPosition.Text = .AllParameters(pPositionName).ToString
+                TxtCompany.Text = .AllParameters(tCompany.P_CompanyName).ToString
+                TxTDepartment.Text = .AllParameters(tDepartment.P_DepartmentName).ToString
+                TxtPosition.Text = .AllParameters(tPosition.P_PositionName).ToString
             End With
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnBrowsePhoto_Click(sender As Object, e As EventArgs) Handles BtnBrowsePhoto.Click
-            OfdPhoto.Title = "Ingrid Photo Picker"
+            OfdPhoto.Title = "INGRID - Select Photo"
             OfdPhoto.FileName = ""
             OfdPhoto.Filter = "Photo File|*.Jpg;*.Jpeg"
 
@@ -250,6 +234,11 @@ Namespace UI.Canvas
                     pctbxPhoto.Image = My.Resources.FEMALE_001_512_icon
                 End If
             End If
+        End Sub
+
+        Private Sub FRMeplsEditor_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+            varDataProperties.UserParameters.Remove(tModule.P_ModuleId)
+            varDataProperties.UserParameters.Add(tModule.P_ModuleId, varThisModuleId)
         End Sub
     End Class
 End Namespace

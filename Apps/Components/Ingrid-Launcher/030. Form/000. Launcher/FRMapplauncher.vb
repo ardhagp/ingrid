@@ -4,13 +4,11 @@
         Private WithEvents Frm_conn As Connect.UI.Canvas.FRMconn
 
         Private varSecond As Integer
-        Private varVersion As String
 
         Private Sub Frmapplauncher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            varVersion = $"{My.Application.Info.Version.Major}.{My.Application.Info.Version.Minor}.{My.Application.Info.Version.Build}.{My.Application.Info.Version.Revision}"
 
             With proLog
-                .AppVersion = varVersion
+                .AppVersion = $"{My.Application.Info.Version.Major}.{My.Application.Info.Version.Minor}.{My.Application.Info.Version.Build}.{My.Application.Info.Version.Revision}"
                 .FromSender = "$\IngridLauncher\030. FOrm\000. Launcher\App Launcher.vb"
                 .InternalStackTrace = ""
                 .Message = "Ingrid Launcher started."
@@ -28,7 +26,7 @@
             clsLog = Nothing
 
             Call ActivateLicenses()
-
+            LblVersion.Text = $"Ver. {My.Application.Info.Version.Major}.{My.Application.Info.Version.Minor}"
             LblBuild.Text = $"Build {My.Application.Info.Version.Build}" & Environment.NewLine & $"Rev. {My.Application.Info.Version.Revision}"
             varSecond = 4
             LblCountdown.Text = $"app in {varSecond} seconds..."

@@ -4,7 +4,6 @@ Imports System.IO
 Imports System.Data
 Imports System.ComponentModel
 Imports System.Runtime.Versioning
-'Imports Google.Protobuf.WellKnownTypes
 
 Namespace UI.Canvas
     Public Class FRMmainframe6
@@ -163,8 +162,8 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub EnterCommand(commandcode As String)
-            varDataProperties.AllParameters.Remove("@CommandCode")
-            varDataProperties.AllParameters.Add("@CommandCode", commandcode.ToUpper.Trim)
+            varDataProperties.UserParameters.Remove(tModule.P_ModuleCode)
+            varDataProperties.UserParameters.Add(tModule.P_ModuleCode, commandcode.ToUpper.Trim)
 
             'For Modules That Not Required Login
             If commandcode.ToUpper.Trim = "RESET" OrElse commandcode.ToUpper.Trim = "PHTRZ" Then
@@ -179,7 +178,7 @@ Namespace UI.Canvas
                 Return
             End If
 
-            LibSQL.UI.Workspace.GetModuleProperties(varDataProperties, commandcode, varDatasetIngrid)
+            LibSQL.UI.Workspace.GetModuleProperties(varDataProperties, varDataProperties.UserParameters, commandcode, varDatasetIngrid)
 
             With varDatasetIngrid.Tables(dtModule)
                 If .Rows.Count = 0 Then
@@ -239,7 +238,7 @@ Namespace UI.Canvas
             If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure want to logout from system?", LibApp.Ingrid.Global.PopupType.Logout, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " is logout."",", "Information")
                 Call SystemLogout()
-                varLogUser.Logout(varDataProperties)
+                varLogUser.Logout(varDataProperties, varDataProperties.UserParameters)
                 Call ClearLoginData()
             End If
         End Sub
@@ -313,6 +312,7 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Try
+                Call ActivateLicenses()
                 RaiseEvent EventMainframeOpen()
 
                 varVersionapplication = GetAppVersion() 'Retrieve app version
@@ -335,7 +335,7 @@ Namespace UI.Canvas
                 End With
                 clsLog.ShowData(proLog)
                 clsLog = Nothing
-                Call ActivateLicenses()
+
                 'Tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererVS2010)
                 varGetNotifCounter = 58
                 varForceRefreshMainframeData = False
@@ -349,8 +349,8 @@ Namespace UI.Canvas
                     With varDatasetIngrid.Tables(dtDatabaseProperties).Rows(0)
                         varDataProperties.ConnectionDatabaseEngineE = CType([Enum].Parse(GetType(LibApp.Ingrid.Global.DatabaseEngine), .Item("DATABASEENGINE").ToString), LibApp.Ingrid.Global.DatabaseEngine)
                         varDataProperties.ConnectionDatabaseName = .Item("DBFORDATA").ToString
-                        varDataProperties.AllParameters.Remove(tClient.P_ClientCode)
-                        varDataProperties.AllParameters.Add(tClient.P_ClientCode, .Item("CLIENT").ToString)
+                        varDataProperties.UserParameters.Remove(tClient.P_ClientCode)
+                        varDataProperties.UserParameters.Add(tClient.P_ClientCode, .Item("CLIENT").ToString)
                     End With
                 Else
                     Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties could not be found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
@@ -359,7 +359,7 @@ Namespace UI.Canvas
 
                 If Mainframe.Database.Connect() Then
                     Ts_connection.Text = "Connected"
-                    varLogApplication.Run(varDataProperties)
+                    varLogApplication.Run(varDataProperties, varDataProperties.UserParameters)
                     If varCompany.CountRecords(varDataProperties) = 0 Then
                         Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "Initial setup and essential information", True, Me)
                     End If
@@ -681,7 +681,6 @@ Namespace UI.Canvas
                 Next
             Catch ex As Exception
                 With proLog
-                    .AppVersion = GetAppVersion()
                     .FromSender = "[Closing] Mainframe"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -692,6 +691,7 @@ Namespace UI.Canvas
                     .ShowErrorReporting = True
                     .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
                     .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                    .AppVersion = GetAppVersion()
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
@@ -739,14 +739,14 @@ Namespace UI.Canvas
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Public Shared Sub GetSettings()
-            LibSQL.CMDsyss.View.GetSettingsProperties(varDataProperties, varDatasetIngrid)
+            LibSQL.CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.UserParameters, varDatasetIngrid)
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub MsstartExit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
             If (varSession) Then
                 Call SystemLogout() ''' Logout Process
-                varLogUser.Logout(varDataProperties)
+                varLogUser.Logout(varDataProperties, varDataProperties.UserParameters)
                 Call ClearLoginData() ''' Clear Login Data
             End If
             Me.Close()
