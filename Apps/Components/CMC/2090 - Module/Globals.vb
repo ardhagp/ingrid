@@ -46,7 +46,6 @@ Namespace UI
 #Region "Class Globals"
         Public varCodebase As New UI.Control.ControlCodeBase
         Public V_CFILEInfo As New OperatingSystem.File.Info
-
 #End Region
 
 #Region "Variabel Global"

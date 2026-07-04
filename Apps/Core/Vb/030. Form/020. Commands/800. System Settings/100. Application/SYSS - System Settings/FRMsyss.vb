@@ -10,7 +10,7 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub GetData()
-            CMDsyss.View.GetSettingsProperties(varDataProperties, varDatasetIngrid)
+            CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.AllParameters, varDatasetIngrid)
 
             'Get Profile
             With CboProfile.Items

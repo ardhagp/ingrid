@@ -25,22 +25,23 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMapplauncher))
-            Lbl1 = New CMCv.UI.Control.lbl(components)
-            LblBuild = New CMCv.UI.Control.lbl(components)
+            Lbl1 = New CMCv.UI.Control.Lbl(components)
+            LblBuild = New CMCv.UI.Control.Lbl(components)
             BtnLaunch = New CMCv.UI.Control.Btn(components)
-            Lbl3 = New CMCv.UI.Control.lbl(components)
-            Lbl4 = New CMCv.UI.Control.lbl(components)
+            Lbl3 = New CMCv.UI.Control.Lbl(components)
+            Lbl4 = New CMCv.UI.Control.Lbl(components)
             CboApplication = New CMCv.UI.Control.Cbo(components)
             tmrCountdown = New Timer(components)
-            Lbl5 = New CMCv.UI.Control.lbl(components)
-            LblCountdown = New CMCv.UI.Control.lbl(components)
+            Lbl5 = New CMCv.UI.Control.Lbl(components)
+            LblCountdown = New CMCv.UI.Control.Lbl(components)
             BtnClose = New CMCv.UI.Control.Btn(components)
+            LblVersion = New CMCv.UI.Control.Lbl(components)
             SuspendLayout()
             ' 
             ' Lbl1
             ' 
             Lbl1.BackColor = Color.Transparent
-            Lbl1.Font = New Font("Segoe UI", 72.0F, FontStyle.Bold, GraphicsUnit.Point)
+            Lbl1.Font = New Font("Segoe UI", 72F, FontStyle.Bold)
             Lbl1.ForeColor = Color.White
             Lbl1.Location = New Point(13, -8)
             Lbl1.Margin = New Padding(4, 0, 4, 0)
@@ -54,7 +55,7 @@
             ' LblBuild
             ' 
             LblBuild.BackColor = Color.Transparent
-            LblBuild.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            LblBuild.Font = New Font("Segoe UI", 12F)
             LblBuild.ForeColor = Color.White
             LblBuild.Location = New Point(293, 187)
             LblBuild.Margin = New Padding(4, 0, 4, 0)
@@ -72,7 +73,7 @@
             BtnLaunch.FlatAppearance.BorderSize = 2
             BtnLaunch.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnLaunch.FlatStyle = FlatStyle.Flat
-            BtnLaunch.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnLaunch.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnLaunch.ForeColor = Color.White
             BtnLaunch.Location = New Point(197, 635)
             BtnLaunch.Margin = New Padding(4, 5, 4, 5)
@@ -90,7 +91,7 @@
             ' 
             Lbl3.BackColor = Color.White
             Lbl3.BorderStyle = BorderStyle.Fixed3D
-            Lbl3.Font = New Font("Segoe UI", 2.0F, FontStyle.Regular, GraphicsUnit.Point)
+            Lbl3.Font = New Font("Segoe UI", 2F)
             Lbl3.Location = New Point(293, 183)
             Lbl3.Margin = New Padding(4, 0, 4, 0)
             Lbl3.Name = "Lbl3"
@@ -102,7 +103,7 @@
             ' 
             Lbl4.BackColor = Color.White
             Lbl4.BorderStyle = BorderStyle.Fixed3D
-            Lbl4.Font = New Font("Segoe UI", 2.0F, FontStyle.Regular, GraphicsUnit.Point)
+            Lbl4.Font = New Font("Segoe UI", 2F)
             Lbl4.Location = New Point(13, 183)
             Lbl4.Margin = New Padding(4, 0, 4, 0)
             Lbl4.Name = "Lbl4"
@@ -114,7 +115,7 @@
             ' 
             CboApplication.DropDownStyle = ComboBoxStyle.DropDownList
             CboApplication.FlatStyle = FlatStyle.Flat
-            CboApplication.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            CboApplication.Font = New Font("Segoe UI", 12F)
             CboApplication.FormattingEnabled = True
             CboApplication.Location = New Point(155, 503)
             CboApplication.Margin = New Padding(4, 5, 4, 5)
@@ -129,7 +130,7 @@
             ' Lbl5
             ' 
             Lbl5.BackColor = Color.Transparent
-            Lbl5.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            Lbl5.Font = New Font("Segoe UI", 12F)
             Lbl5.ForeColor = Color.White
             Lbl5.Location = New Point(13, 508)
             Lbl5.Margin = New Padding(4, 0, 4, 0)
@@ -143,7 +144,7 @@
             ' LblCountdown
             ' 
             LblCountdown.BackColor = Color.Transparent
-            LblCountdown.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            LblCountdown.Font = New Font("Segoe UI", 12F)
             LblCountdown.ForeColor = Color.White
             LblCountdown.Location = New Point(294, 508)
             LblCountdown.Margin = New Padding(4, 0, 4, 0)
@@ -160,7 +161,7 @@
             BtnClose.FlatAppearance.BorderSize = 2
             BtnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnClose.FlatStyle = FlatStyle.Flat
-            BtnClose.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnClose.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnClose.ForeColor = Color.White
             BtnClose.Location = New Point(476, 12)
             BtnClose.Name = "BtnClose"
@@ -174,9 +175,24 @@
             BtnClose.XOValidateAllInput = False
             BtnClose.XOValidateAllInputTag = Nothing
             ' 
+            ' LblVersion
+            ' 
+            LblVersion.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+            LblVersion.AutoEllipsis = True
+            LblVersion.BackColor = Color.Transparent
+            LblVersion.Font = New Font("Segoe UI", 8F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+            LblVersion.ForeColor = Color.White
+            LblVersion.Location = New Point(13, 720)
+            LblVersion.Name = "LblVersion"
+            LblVersion.Size = New Size(514, 21)
+            LblVersion.TabIndex = 9
+            LblVersion.Text = "ver. 0.0"
+            LblVersion.TextAlign = ContentAlignment.BottomLeft
+            LblVersion.XOCustomElipsis = False
+            ' 
             ' FRMapplauncher
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             AutoScaleMode = AutoScaleMode.Font
             BackColor = Color.Black
             ClientSize = New Size(539, 750)
@@ -190,6 +206,7 @@
             Controls.Add(LblBuild)
             Controls.Add(BtnLaunch)
             Controls.Add(Lbl1)
+            Controls.Add(LblVersion)
             FormBorderStyle = FormBorderStyle.None
             Icon = CType(resources.GetObject("$this.Icon"), Icon)
             Margin = New Padding(4, 5, 4, 5)
@@ -208,5 +225,6 @@
         Friend WithEvents Lbl5 As CMCv.UI.Control.lbl
         Friend WithEvents LblCountdown As CMCv.UI.Control.lbl
         Friend WithEvents BtnClose As CMCv.UI.Control.Btn
+        Friend WithEvents LblVersion As CMCv.UI.Control.Lbl
     End Class
 End Namespace

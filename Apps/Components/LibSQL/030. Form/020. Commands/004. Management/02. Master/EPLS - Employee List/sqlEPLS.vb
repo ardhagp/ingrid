@@ -335,11 +335,20 @@ Namespace CMDepls
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function GetIsHavePhoto(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Boolean
-            Dim varIsHavePhoto As Integer
+        Public Shared Function GetIsHavePhoto(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Boolean
+            Dim varIsHavePhoto As Integer = 0
 
-            varDatabaseRequestMssql2008(0).Query = String.Format("select count(f.file_id) as total from db_universe_erp_file.dbo.sto_file f where (f.file_parent = '{0}') and (f.file_tag = 'EMPLOYEE-PROFILE-PHOTO');", rowid)
-            varIsHavePhoto = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                varDatabaseRequestMssql2008(0).Query = $"select count(f.file_id) as total from db_universe_erp_file.dbo.sto_file f where (f.file_parent = '0') and (f.file_tag = 'EMPLOYEE-PROFILE-PHOTO');"
+                varIsHavePhoto = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseRequestMysql(0).Query = $"select count({tAttachment.S}.{tAttachment.C_AttachmentId}) " &
+                                                   $"from {tAttachment.TableName} {tAttachment.S} " &
+                                                   $"where {tAttachment.S}.{tAttachment.C_AttachmentParentId} = {tEmployee.P_EmployeeId} And " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentModule} = {tModule.P_ModuleId} And " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentTag} = 'EMPLOYEE-PROFILE-PHOTO'"
+                varIsHavePhoto = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, parametername))
+            End If
 
             If varIsHavePhoto = 0 Then
                 Return False
