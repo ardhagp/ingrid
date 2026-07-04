@@ -17,6 +17,7 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Public Sub New(proLog As Ladybug.Log.Fields, Optional dbengine As Database.Engine.SQLiteV3 = Nothing)
             InitializeComponent()
+            varBetterstack.SendFailure(Bridge.Getkey.Betterstack_heartbeats)
             Me.Text = "INGRID - Error Reporting"
             SLFNamaForm.Text = "Error Reporting"
             SLFSubNamaForm.Text = "A simple diagnostic tool for logging exceptions"
@@ -36,7 +37,7 @@ Namespace UI.Canvas
             ' Send Error to Ingrid Log Center
             If (proLog.SaveInBetterLog) Then
                 varMessage = """message"" : """ & proLog.Message & """," & Environment.NewLine & """sender"" : """ & proLog.FromSender & """," & Environment.NewLine & """error_number"" : " & proLog.Number & "," & Environment.NewLine & """error_type"" : """ & proLog.TypeOfFaulty.ToString() & """," & Environment.NewLine & """log_type"" : """ & proLog.TypeOfLog.ToString() & """," & Environment.NewLine & """version"" : """ & proLog.AppVersion & ""","
-                Bridge.Security.Writelog.Sendlog(varMessage, proLog.TypeOfLog.ToString())
+                Bridge.Writelog.Sendlog(varMessage, proLog.TypeOfLog.ToString())
             End If
         End Sub
 

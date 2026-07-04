@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Serilog;
 
-namespace Bridge.Security
+namespace Bridge
 {
     public class Getkey
     {
@@ -69,6 +69,24 @@ namespace Bridge.Security
                 .Build();
 
             var varKEY =  config.GetSection("KEYS")["BETTERSTACK_LOG"];
+
+            if (varKEY != null)
+            {
+                return varKEY;
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public static string Betterstack_heartbeats()
+        {
+            var config = new ConfigurationBuilder()
+                .AddUserSecrets<Getkey>()
+                .Build();
+
+            var varKEY = config.GetSection("KEYS")["BETTERSTACK_HEARTBEATS"];
 
             if (varKEY != null)
             {

@@ -12,6 +12,7 @@ Namespace UI.Canvas
                 GC.Collect()
                 GC.Collect(GC.MaxGeneration)
             Catch ex As Exception
+                varBetterstack.SendFailure(Bridge.Getkey.Betterstack_heartbeats)
                 MsgBox(ex.ToString)
             Finally
                 GC.RemoveMemoryPressure(GC.GetTotalMemory(True))
@@ -23,7 +24,9 @@ Namespace UI.Canvas
             Try
                 Call ActivateLicenses()
                 GC.Collect()
+                varBetterstack.SendSuccess(Bridge.Getkey.Betterstack_heartbeats)
             Catch ex As Exception
+                varBetterstack.SendFailure(Bridge.Getkey.Betterstack_heartbeats)
                 MsgBox(ex.ToString)
             Finally
                 GC.RemoveMemoryPressure(GC.GetTotalMemory(True))

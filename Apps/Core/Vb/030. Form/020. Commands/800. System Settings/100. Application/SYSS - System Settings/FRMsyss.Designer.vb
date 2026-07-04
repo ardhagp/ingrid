@@ -36,13 +36,13 @@ Namespace UI.Canvas
             Gbx3 = New CMCv.UI.Control.Gbx(components)
             TxtApiServiceUrl = New CMCv.UI.Control.Txt(components)
             ULblApiServiceUrl = New CMCv.UI.Control.ULbl()
-            TxtFileDb = New CMCv.UI.Control.Txt(components)
             ULblApiSecret = New CMCv.UI.Control.ULbl()
             TxtApiSecret = New CMCv.UI.Control.Txt(components)
             TxtApiKey = New CMCv.UI.Control.Txt(components)
             CboStorageProvider = New CMCv.UI.Control.Cbo(components)
             ULblApiKey = New CMCv.UI.Control.ULbl()
             ULbl9 = New CMCv.UI.Control.ULbl()
+            TxtFileDb = New CMCv.UI.Control.Txt(components)
             GbxWatermark = New CMCv.UI.Control.Gbx(components)
             ULbl7 = New CMCv.UI.Control.ULbl()
             ULbl6 = New CMCv.UI.Control.ULbl()
@@ -56,16 +56,16 @@ Namespace UI.Canvas
             Lbl6 = New CMCv.UI.Control.Lbl(components)
             nudUploadPhoto = New NumericUpDown()
             tbSecurity = New TabPage()
+            Gbx4 = New CMCv.UI.Control.Gbx(components)
+            TxtClientName = New CMCv.UI.Control.Txt(components)
+            TxtClientCode = New CMCv.UI.Control.Txt(components)
+            ULbl11 = New CMCv.UI.Control.ULbl()
+            ULbl10 = New CMCv.UI.Control.ULbl()
             Gbx2 = New CMCv.UI.Control.Gbx(components)
             ULbl8 = New CMCv.UI.Control.ULbl()
             nudMinPassword = New NumericUpDown()
             BtnClose = New CMCv.UI.Control.Btn(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
-            Gbx4 = New CMCv.UI.Control.Gbx(components)
-            ULbl10 = New CMCv.UI.Control.ULbl()
-            ULbl11 = New CMCv.UI.Control.ULbl()
-            TxtClientCode = New CMCv.UI.Control.Txt(components)
-            TxtClientName = New CMCv.UI.Control.Txt(components)
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -81,9 +81,9 @@ Namespace UI.Canvas
             CType(nudUploadPDF, ComponentModel.ISupportInitialize).BeginInit()
             CType(nudUploadPhoto, ComponentModel.ISupportInitialize).BeginInit()
             tbSecurity.SuspendLayout()
+            Gbx4.SuspendLayout()
             Gbx2.SuspendLayout()
             CType(nudMinPassword, ComponentModel.ISupportInitialize).BeginInit()
-            Gbx4.SuspendLayout()
             SuspendLayout()
             ' 
             ' PnlFind
@@ -125,7 +125,7 @@ Namespace UI.Canvas
             TbctlSettings.Controls.Add(tbStorage)
             TbctlSettings.Controls.Add(tbSecurity)
             TbctlSettings.Dock = DockStyle.Fill
-            TbctlSettings.Font = New Font("Segoe UI", 12.0F)
+            TbctlSettings.Font = New Font("Segoe UI", 12F)
             TbctlSettings.Location = New Point(0, 88)
             TbctlSettings.Margin = New Padding(6, 5, 6, 5)
             TbctlSettings.Name = "TbctlSettings"
@@ -153,7 +153,7 @@ Namespace UI.Canvas
             GbxPanels.Controls.Add(CboProfile)
             GbxPanels.Controls.Add(CboStorage)
             GbxPanels.Controls.Add(CboNewsTicker)
-            GbxPanels.Font = New Font("Segoe UI", 12.0F)
+            GbxPanels.Font = New Font("Segoe UI", 12F)
             GbxPanels.Location = New Point(26, 28)
             GbxPanels.Margin = New Padding(6, 5, 6, 5)
             GbxPanels.Name = "GbxPanels"
@@ -206,7 +206,7 @@ Namespace UI.Canvas
             ' 
             CboProfile.DropDownStyle = ComboBoxStyle.DropDownList
             CboProfile.FlatStyle = FlatStyle.System
-            CboProfile.Font = New Font("Segoe UI", 12.0F)
+            CboProfile.Font = New Font("Segoe UI", 12F)
             CboProfile.FormattingEnabled = True
             CboProfile.Location = New Point(290, 58)
             CboProfile.Margin = New Padding(6, 5, 6, 5)
@@ -218,7 +218,7 @@ Namespace UI.Canvas
             ' 
             CboStorage.DropDownStyle = ComboBoxStyle.DropDownList
             CboStorage.FlatStyle = FlatStyle.System
-            CboStorage.Font = New Font("Segoe UI", 12.0F)
+            CboStorage.Font = New Font("Segoe UI", 12F)
             CboStorage.FormattingEnabled = True
             CboStorage.Location = New Point(290, 125)
             CboStorage.Margin = New Padding(6, 5, 6, 5)
@@ -230,7 +230,7 @@ Namespace UI.Canvas
             ' 
             CboNewsTicker.DropDownStyle = ComboBoxStyle.DropDownList
             CboNewsTicker.FlatStyle = FlatStyle.System
-            CboNewsTicker.Font = New Font("Segoe UI", 12.0F)
+            CboNewsTicker.Font = New Font("Segoe UI", 12F)
             CboNewsTicker.FormattingEnabled = True
             CboNewsTicker.Location = New Point(290, 192)
             CboNewsTicker.Margin = New Padding(6, 5, 6, 5)
@@ -257,24 +257,24 @@ Namespace UI.Canvas
             ' 
             Gbx3.Controls.Add(TxtApiServiceUrl)
             Gbx3.Controls.Add(ULblApiServiceUrl)
-            Gbx3.Controls.Add(TxtFileDb)
             Gbx3.Controls.Add(ULblApiSecret)
             Gbx3.Controls.Add(TxtApiSecret)
             Gbx3.Controls.Add(TxtApiKey)
             Gbx3.Controls.Add(CboStorageProvider)
             Gbx3.Controls.Add(ULblApiKey)
             Gbx3.Controls.Add(ULbl9)
-            Gbx3.Font = New Font("Segoe UI", 12.0F)
+            Gbx3.Controls.Add(TxtFileDb)
+            Gbx3.Font = New Font("Segoe UI", 12F)
             Gbx3.Location = New Point(26, 478)
             Gbx3.Name = "Gbx3"
             Gbx3.Size = New Size(683, 311)
             Gbx3.TabIndex = 13
             Gbx3.TabStop = False
-            Gbx3.Text = "Storage Provider"
+            Gbx3.Text = "Cloud Storage Provider"
             ' 
             ' TxtApiServiceUrl
             ' 
-            TxtApiServiceUrl.Font = New Font("Segoe UI", 12.0F)
+            TxtApiServiceUrl.Font = New Font("Segoe UI", 12F)
             TxtApiServiceUrl.Location = New Point(273, 253)
             TxtApiServiceUrl.MaxLength = 255
             TxtApiServiceUrl.Name = "TxtApiServiceUrl"
@@ -314,35 +314,6 @@ Namespace UI.Canvas
             ULblApiServiceUrl.XOTextAdjuster = False
             ULblApiServiceUrl.XOTextBorder = False
             ' 
-            ' TxtFileDb
-            ' 
-            TxtFileDb.Font = New Font("Segoe UI", 12.0F)
-            TxtFileDb.Location = New Point(273, 128)
-            TxtFileDb.MaxLength = 255
-            TxtFileDb.Name = "TxtFileDb"
-            TxtFileDb.Size = New Size(397, 39)
-            TxtFileDb.TabIndex = 3
-            TxtFileDb.Tag = "txt"
-            TxtFileDb.XOAutoTrim = False
-            TxtFileDb.XOHighlightColor = Color.LightYellow
-            TxtFileDb.XOHighlightOnFocus = True
-            TxtFileDb.XOIsBlank = True
-            TxtFileDb.XOIsMandatory = False
-            TxtFileDb.XOIsPlaceholder = False
-            TxtFileDb.XOIsReplaceEmptyString = False
-            TxtFileDb.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
-            TxtFileDb.XOMandatoryBgColor = Color.LightPink
-            TxtFileDb.XOMandatoryBgColorDefault = Color.White
-            TxtFileDb.XOMandatoryMessage = Nothing
-            TxtFileDb.XOPasswordLengthMin = 8
-            TxtFileDb.XOPasswordStrengthCalc = False
-            TxtFileDb.XOPasswordStrengthScore = 0
-            TxtFileDb.XOPasswordStrengthText = Nothing
-            TxtFileDb.XOPlaceholderText = "Type then press Enter"
-            TxtFileDb.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
-            TxtFileDb.XOSelectOnFocus = False
-            TxtFileDb.XOSqlText = ""
-            ' 
             ' ULblApiSecret
             ' 
             ULblApiSecret.BackColor = Color.Moccasin
@@ -358,7 +329,7 @@ Namespace UI.Canvas
             ' 
             ' TxtApiSecret
             ' 
-            TxtApiSecret.Font = New Font("Segoe UI", 12.0F)
+            TxtApiSecret.Font = New Font("Segoe UI", 12F)
             TxtApiSecret.Location = New Point(273, 190)
             TxtApiSecret.MaxLength = 255
             TxtApiSecret.Name = "TxtApiSecret"
@@ -387,7 +358,7 @@ Namespace UI.Canvas
             ' 
             ' TxtApiKey
             ' 
-            TxtApiKey.Font = New Font("Segoe UI", 12.0F)
+            TxtApiKey.Font = New Font("Segoe UI", 12F)
             TxtApiKey.Location = New Point(273, 128)
             TxtApiKey.MaxLength = 255
             TxtApiKey.Name = "TxtApiKey"
@@ -418,7 +389,7 @@ Namespace UI.Canvas
             ' 
             CboStorageProvider.DropDownStyle = ComboBoxStyle.DropDownList
             CboStorageProvider.FlatStyle = FlatStyle.Flat
-            CboStorageProvider.Font = New Font("Segoe UI", 12.0F)
+            CboStorageProvider.Font = New Font("Segoe UI", 12F)
             CboStorageProvider.FormattingEnabled = True
             CboStorageProvider.Location = New Point(273, 62)
             CboStorageProvider.Name = "CboStorageProvider"
@@ -447,9 +418,38 @@ Namespace UI.Canvas
             ULbl9.Size = New Size(250, 39)
             ULbl9.TabIndex = 0
             ULbl9.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl9.XOText = "Provider"
+            ULbl9.XOText = "Service Provider"
             ULbl9.XOTextAdjuster = False
             ULbl9.XOTextBorder = False
+            ' 
+            ' TxtFileDb
+            ' 
+            TxtFileDb.Font = New Font("Segoe UI", 12F)
+            TxtFileDb.Location = New Point(273, 128)
+            TxtFileDb.MaxLength = 255
+            TxtFileDb.Name = "TxtFileDb"
+            TxtFileDb.Size = New Size(397, 39)
+            TxtFileDb.TabIndex = 3
+            TxtFileDb.Tag = "txt"
+            TxtFileDb.XOAutoTrim = False
+            TxtFileDb.XOHighlightColor = Color.LightYellow
+            TxtFileDb.XOHighlightOnFocus = True
+            TxtFileDb.XOIsBlank = True
+            TxtFileDb.XOIsMandatory = False
+            TxtFileDb.XOIsPlaceholder = False
+            TxtFileDb.XOIsReplaceEmptyString = False
+            TxtFileDb.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtFileDb.XOMandatoryBgColor = Color.LightPink
+            TxtFileDb.XOMandatoryBgColorDefault = Color.White
+            TxtFileDb.XOMandatoryMessage = Nothing
+            TxtFileDb.XOPasswordLengthMin = 8
+            TxtFileDb.XOPasswordStrengthCalc = False
+            TxtFileDb.XOPasswordStrengthScore = 0
+            TxtFileDb.XOPasswordStrengthText = Nothing
+            TxtFileDb.XOPlaceholderText = "Type then press Enter"
+            TxtFileDb.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtFileDb.XOSelectOnFocus = False
+            TxtFileDb.XOSqlText = ""
             ' 
             ' GbxWatermark
             ' 
@@ -457,7 +457,7 @@ Namespace UI.Canvas
             GbxWatermark.Controls.Add(ULbl6)
             GbxWatermark.Controls.Add(CboWatermark)
             GbxWatermark.Controls.Add(TxtWatermark)
-            GbxWatermark.Font = New Font("Segoe UI", 12.0F)
+            GbxWatermark.Font = New Font("Segoe UI", 12F)
             GbxWatermark.Location = New Point(26, 248)
             GbxWatermark.Margin = New Padding(6, 5, 6, 5)
             GbxWatermark.Name = "GbxWatermark"
@@ -497,7 +497,7 @@ Namespace UI.Canvas
             ' 
             CboWatermark.DropDownStyle = ComboBoxStyle.DropDownList
             CboWatermark.FlatStyle = FlatStyle.System
-            CboWatermark.Font = New Font("Segoe UI", 12.0F)
+            CboWatermark.Font = New Font("Segoe UI", 12F)
             CboWatermark.FormattingEnabled = True
             CboWatermark.Location = New Point(273, 58)
             CboWatermark.Margin = New Padding(6, 5, 6, 5)
@@ -507,7 +507,7 @@ Namespace UI.Canvas
             ' 
             ' TxtWatermark
             ' 
-            TxtWatermark.Font = New Font("Segoe UI", 12.0F)
+            TxtWatermark.Font = New Font("Segoe UI", 12F)
             TxtWatermark.Location = New Point(273, 125)
             TxtWatermark.Margin = New Padding(6, 5, 6, 5)
             TxtWatermark.MaxLength = 255
@@ -543,7 +543,7 @@ Namespace UI.Canvas
             Gbx1.Controls.Add(nudUploadPDF)
             Gbx1.Controls.Add(Lbl6)
             Gbx1.Controls.Add(nudUploadPhoto)
-            Gbx1.Font = New Font("Segoe UI", 12.0F)
+            Gbx1.Font = New Font("Segoe UI", 12F)
             Gbx1.Location = New Point(26, 28)
             Gbx1.Margin = New Padding(6, 5, 6, 5)
             Gbx1.Name = "Gbx1"
@@ -582,7 +582,7 @@ Namespace UI.Canvas
             ' Lbl7
             ' 
             Lbl7.AutoSize = True
-            Lbl7.Font = New Font("Segoe UI", 12.0F)
+            Lbl7.Font = New Font("Segoe UI", 12F)
             Lbl7.Location = New Point(483, 128)
             Lbl7.Margin = New Padding(6, 0, 6, 0)
             Lbl7.Name = "Lbl7"
@@ -606,7 +606,7 @@ Namespace UI.Canvas
             ' Lbl6
             ' 
             Lbl6.AutoSize = True
-            Lbl6.Font = New Font("Segoe UI", 12.0F)
+            Lbl6.Font = New Font("Segoe UI", 12F)
             Lbl6.Location = New Point(483, 60)
             Lbl6.Margin = New Padding(6, 0, 6, 0)
             Lbl6.Name = "Lbl6"
@@ -639,11 +639,111 @@ Namespace UI.Canvas
             tbSecurity.Text = "SECURITY"
             tbSecurity.UseVisualStyleBackColor = True
             ' 
+            ' Gbx4
+            ' 
+            Gbx4.Controls.Add(TxtClientName)
+            Gbx4.Controls.Add(TxtClientCode)
+            Gbx4.Controls.Add(ULbl11)
+            Gbx4.Controls.Add(ULbl10)
+            Gbx4.Font = New Font("Segoe UI", 12F)
+            Gbx4.Location = New Point(26, 218)
+            Gbx4.Name = "Gbx4"
+            Gbx4.Size = New Size(683, 187)
+            Gbx4.TabIndex = 1
+            Gbx4.TabStop = False
+            Gbx4.Text = "Client"
+            ' 
+            ' TxtClientName
+            ' 
+            TxtClientName.Enabled = False
+            TxtClientName.Font = New Font("Segoe UI", 12F)
+            TxtClientName.Location = New Point(273, 120)
+            TxtClientName.MaxLength = 255
+            TxtClientName.Name = "TxtClientName"
+            TxtClientName.Size = New Size(392, 39)
+            TxtClientName.TabIndex = 2
+            TxtClientName.Tag = "txt"
+            TxtClientName.XOAutoTrim = False
+            TxtClientName.XOHighlightColor = Color.LightYellow
+            TxtClientName.XOHighlightOnFocus = True
+            TxtClientName.XOIsBlank = True
+            TxtClientName.XOIsMandatory = False
+            TxtClientName.XOIsPlaceholder = False
+            TxtClientName.XOIsReplaceEmptyString = False
+            TxtClientName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtClientName.XOMandatoryBgColor = Color.LightPink
+            TxtClientName.XOMandatoryBgColorDefault = Color.White
+            TxtClientName.XOMandatoryMessage = Nothing
+            TxtClientName.XOPasswordLengthMin = 8
+            TxtClientName.XOPasswordStrengthCalc = False
+            TxtClientName.XOPasswordStrengthScore = 0
+            TxtClientName.XOPasswordStrengthText = Nothing
+            TxtClientName.XOPlaceholderText = "Type then press Enter"
+            TxtClientName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtClientName.XOSelectOnFocus = False
+            TxtClientName.XOSqlText = ""
+            ' 
+            ' TxtClientCode
+            ' 
+            TxtClientCode.Enabled = False
+            TxtClientCode.Font = New Font("Segoe UI", 12F)
+            TxtClientCode.Location = New Point(273, 57)
+            TxtClientCode.MaxLength = 255
+            TxtClientCode.Name = "TxtClientCode"
+            TxtClientCode.Size = New Size(392, 39)
+            TxtClientCode.TabIndex = 1
+            TxtClientCode.Tag = "txt"
+            TxtClientCode.XOAutoTrim = False
+            TxtClientCode.XOHighlightColor = Color.LightYellow
+            TxtClientCode.XOHighlightOnFocus = True
+            TxtClientCode.XOIsBlank = True
+            TxtClientCode.XOIsMandatory = False
+            TxtClientCode.XOIsPlaceholder = False
+            TxtClientCode.XOIsReplaceEmptyString = False
+            TxtClientCode.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtClientCode.XOMandatoryBgColor = Color.LightPink
+            TxtClientCode.XOMandatoryBgColorDefault = Color.White
+            TxtClientCode.XOMandatoryMessage = Nothing
+            TxtClientCode.XOPasswordLengthMin = 8
+            TxtClientCode.XOPasswordStrengthCalc = False
+            TxtClientCode.XOPasswordStrengthScore = 0
+            TxtClientCode.XOPasswordStrengthText = Nothing
+            TxtClientCode.XOPlaceholderText = "Type then press Enter"
+            TxtClientCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtClientCode.XOSelectOnFocus = False
+            TxtClientCode.XOSqlText = ""
+            ' 
+            ' ULbl11
+            ' 
+            ULbl11.BackColor = Color.Moccasin
+            ULbl11.Location = New Point(8, 120)
+            ULbl11.Margin = New Padding(5, 6, 5, 6)
+            ULbl11.Name = "ULbl11"
+            ULbl11.Size = New Size(250, 39)
+            ULbl11.TabIndex = 1
+            ULbl11.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl11.XOText = "Client Name"
+            ULbl11.XOTextAdjuster = False
+            ULbl11.XOTextBorder = False
+            ' 
+            ' ULbl10
+            ' 
+            ULbl10.BackColor = Color.Moccasin
+            ULbl10.Location = New Point(11, 57)
+            ULbl10.Margin = New Padding(5, 6, 5, 6)
+            ULbl10.Name = "ULbl10"
+            ULbl10.Size = New Size(250, 39)
+            ULbl10.TabIndex = 0
+            ULbl10.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl10.XOText = "Client Code"
+            ULbl10.XOTextAdjuster = False
+            ULbl10.XOTextBorder = False
+            ' 
             ' Gbx2
             ' 
             Gbx2.Controls.Add(ULbl8)
             Gbx2.Controls.Add(nudMinPassword)
-            Gbx2.Font = New Font("Segoe UI", 12.0F)
+            Gbx2.Font = New Font("Segoe UI", 12F)
             Gbx2.Location = New Point(26, 28)
             Gbx2.Margin = New Padding(6, 5, 6, 5)
             Gbx2.Name = "Gbx2"
@@ -686,7 +786,7 @@ Namespace UI.Canvas
             BtnClose.FlatAppearance.BorderSize = 2
             BtnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnClose.FlatStyle = FlatStyle.Flat
-            BtnClose.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnClose.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnClose.ForeColor = Color.White
             BtnClose.Location = New Point(1139, 5)
             BtnClose.Margin = New Padding(6, 5, 6, 5)
@@ -709,7 +809,7 @@ Namespace UI.Canvas
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(961, 5)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -723,109 +823,9 @@ Namespace UI.Canvas
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
             ' 
-            ' Gbx4
-            ' 
-            Gbx4.Controls.Add(TxtClientName)
-            Gbx4.Controls.Add(TxtClientCode)
-            Gbx4.Controls.Add(ULbl11)
-            Gbx4.Controls.Add(ULbl10)
-            Gbx4.Font = New Font("Segoe UI", 12.0F)
-            Gbx4.Location = New Point(26, 218)
-            Gbx4.Name = "Gbx4"
-            Gbx4.Size = New Size(683, 187)
-            Gbx4.TabIndex = 1
-            Gbx4.TabStop = False
-            Gbx4.Text = "Client"
-            ' 
-            ' ULbl10
-            ' 
-            ULbl10.BackColor = Color.Moccasin
-            ULbl10.Location = New Point(11, 57)
-            ULbl10.Margin = New Padding(5, 6, 5, 6)
-            ULbl10.Name = "ULbl10"
-            ULbl10.Size = New Size(250, 39)
-            ULbl10.TabIndex = 0
-            ULbl10.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl10.XOText = "Client Code"
-            ULbl10.XOTextAdjuster = False
-            ULbl10.XOTextBorder = False
-            ' 
-            ' ULbl11
-            ' 
-            ULbl11.BackColor = Color.Moccasin
-            ULbl11.Location = New Point(8, 120)
-            ULbl11.Margin = New Padding(5, 6, 5, 6)
-            ULbl11.Name = "ULbl11"
-            ULbl11.Size = New Size(250, 39)
-            ULbl11.TabIndex = 1
-            ULbl11.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl11.XOText = "Client Name"
-            ULbl11.XOTextAdjuster = False
-            ULbl11.XOTextBorder = False
-            ' 
-            ' TxtClientCode
-            ' 
-            TxtClientCode.Enabled = False
-            TxtClientCode.Font = New Font("Segoe UI", 12.0F)
-            TxtClientCode.Location = New Point(273, 57)
-            TxtClientCode.MaxLength = 255
-            TxtClientCode.Name = "TxtClientCode"
-            TxtClientCode.Size = New Size(392, 39)
-            TxtClientCode.TabIndex = 1
-            TxtClientCode.Tag = "txt"
-            TxtClientCode.XOAutoTrim = False
-            TxtClientCode.XOHighlightColor = Color.LightYellow
-            TxtClientCode.XOHighlightOnFocus = True
-            TxtClientCode.XOIsBlank = True
-            TxtClientCode.XOIsMandatory = False
-            TxtClientCode.XOIsPlaceholder = False
-            TxtClientCode.XOIsReplaceEmptyString = False
-            TxtClientCode.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
-            TxtClientCode.XOMandatoryBgColor = Color.LightPink
-            TxtClientCode.XOMandatoryBgColorDefault = Color.White
-            TxtClientCode.XOMandatoryMessage = Nothing
-            TxtClientCode.XOPasswordLengthMin = 8
-            TxtClientCode.XOPasswordStrengthCalc = False
-            TxtClientCode.XOPasswordStrengthScore = 0
-            TxtClientCode.XOPasswordStrengthText = Nothing
-            TxtClientCode.XOPlaceholderText = "Type then press Enter"
-            TxtClientCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
-            TxtClientCode.XOSelectOnFocus = False
-            TxtClientCode.XOSqlText = ""
-            ' 
-            ' TxtClientName
-            ' 
-            TxtClientName.Enabled = False
-            TxtClientName.Font = New Font("Segoe UI", 12.0F)
-            TxtClientName.Location = New Point(273, 120)
-            TxtClientName.MaxLength = 255
-            TxtClientName.Name = "TxtClientName"
-            TxtClientName.Size = New Size(392, 39)
-            TxtClientName.TabIndex = 2
-            TxtClientName.Tag = "txt"
-            TxtClientName.XOAutoTrim = False
-            TxtClientName.XOHighlightColor = Color.LightYellow
-            TxtClientName.XOHighlightOnFocus = True
-            TxtClientName.XOIsBlank = True
-            TxtClientName.XOIsMandatory = False
-            TxtClientName.XOIsPlaceholder = False
-            TxtClientName.XOIsReplaceEmptyString = False
-            TxtClientName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
-            TxtClientName.XOMandatoryBgColor = Color.LightPink
-            TxtClientName.XOMandatoryBgColorDefault = Color.White
-            TxtClientName.XOMandatoryMessage = Nothing
-            TxtClientName.XOPasswordLengthMin = 8
-            TxtClientName.XOPasswordStrengthCalc = False
-            TxtClientName.XOPasswordStrengthScore = 0
-            TxtClientName.XOPasswordStrengthText = Nothing
-            TxtClientName.XOPlaceholderText = "Type then press Enter"
-            TxtClientName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
-            TxtClientName.XOSelectOnFocus = False
-            TxtClientName.XOSqlText = ""
-            ' 
             ' FRMsyss
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1307, 1078)
             ControlBox = False
             Margin = New Padding(10, 5, 10, 5)
@@ -852,10 +852,10 @@ Namespace UI.Canvas
             CType(nudUploadPDF, ComponentModel.ISupportInitialize).EndInit()
             CType(nudUploadPhoto, ComponentModel.ISupportInitialize).EndInit()
             tbSecurity.ResumeLayout(False)
-            Gbx2.ResumeLayout(False)
-            CType(nudMinPassword, ComponentModel.ISupportInitialize).EndInit()
             Gbx4.ResumeLayout(False)
             Gbx4.PerformLayout()
+            Gbx2.ResumeLayout(False)
+            CType(nudMinPassword, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub

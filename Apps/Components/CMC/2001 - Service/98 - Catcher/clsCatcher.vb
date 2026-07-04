@@ -49,7 +49,7 @@ Namespace Ladybug.Log
 
             If Not (proLog.ShowErrorReporting) Then
                 varMessage = """message"" : """ & proLog.Message & """," & Environment.NewLine & """sender"" : """ & proLog.FromSender & """," & Environment.NewLine & """error_number"" : " & proLog.Number & "," & Environment.NewLine & """error_type"" : """ & proLog.TypeOfFaulty.ToString() & """," & Environment.NewLine & """log_type"" : """ & proLog.TypeOfLog.ToString() & """," & Environment.NewLine & """version"" : """ & proLog.AppVersion & ""","
-                Bridge.Security.Writelog.Sendlog(varMessage, proLog.TypeOfLog.ToString())
+                Bridge.Writelog.Sendlog(varMessage, proLog.TypeOfLog.ToString())
             Else
                 FRMerc = New CMCv.UI.Canvas.FRMerrorreporting(proLog, clsDBsqlite)
                 FRMerc.ShowDialog()

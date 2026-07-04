@@ -5,7 +5,7 @@ Module Globals
 #Region "Activate Licenses"
     <SupportedOSPlatform("windows")>
     Public Sub ActivateLicenses()
-        Dim varSyncfusionkey As String = Bridge.Security.Getkey.Syncfusion()
+        Dim varSyncfusionkey As String = Bridge.Getkey.Syncfusion()
 
         'License for Syncfusion
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(varSyncfusionkey)

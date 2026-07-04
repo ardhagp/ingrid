@@ -15,16 +15,16 @@ Namespace UI
 
 #Region "Security Globals"
         <SupportedOSPlatform("windows")>
-        Public V_BRIDGE_KEY As Bridge.Security.Getkey
+        Public V_BRIDGE_KEY As Bridge.Getkey
 
         <SupportedOSPlatform("windows")>
-        Public V_BRIDGE_LOG As Bridge.Security.Writelog
+        Public V_BRIDGE_LOG As Bridge.Writelog
 
         <SupportedOSPlatform("windows")>
-        Public varSalt As String = Bridge.Security.Getkey.Salt()
+        Public varSalt As String = Bridge.Getkey.Salt()
 
         <SupportedOSPlatform("windows")>
-        Public varSyncfusionKey As String = Bridge.Security.Getkey.Syncfusion
+        Public varSyncfusionKey As String = Bridge.Getkey.Syncfusion
 
         ''' <summary>
         ''' This security will be retired
@@ -51,8 +51,6 @@ Namespace UI
 
 #Region "Variabel Global"
         Public varRandomColor As New Random
-        Public V_AutoTrim As Boolean
-        Public V_HarusDiisi As Boolean
 
         'Public SEC As New Security.Engine
 
@@ -60,6 +58,7 @@ Namespace UI
         Public proLog As Ladybug.Log.Fields
 
         Public varApplicationVersion As String
+        Public varBetterstack As New LibAPI.Api.Betterstack.Heartbeats
 #End Region
 
         <SupportedOSPlatform("windows")>
