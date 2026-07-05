@@ -168,6 +168,7 @@ Namespace UI.Canvas
                     TxtApiSecret.Enabled = False
                     TxtFileDb.Enabled = False
                     TxtApiServiceUrl.Enabled = False
+                    TxtApiBucketName.Enabled = False
                 ElseIf .Text = "Database" Then
                     ULblApiKey.XOText = "File Database"
                     TxtApiKey.Enabled = False
@@ -180,6 +181,9 @@ Namespace UI.Canvas
                     TxtApiServiceUrl.Visible = False
                     TxtFileDb.Visible = True
                     TxtFileDb.Enabled = True
+                    TxtApiBucketName.Enabled = False
+                    TxtApiBucketName.Visible = False
+
                 Else
                     ULblApiKey.Visible = True
                     ULblApiKey.XOText = "API Key"
@@ -197,6 +201,8 @@ Namespace UI.Canvas
                     End If
                     TxtApiServiceUrl.Enabled = True
                     TxtApiServiceUrl.Visible = True
+                    TxtApiBucketName.Enabled = True
+                    TxtApiBucketName.Visible = True
                     TxtFileDb.Enabled = False
                     TxtFileDb.Visible = False
                 End If
