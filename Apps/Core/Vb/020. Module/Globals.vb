@@ -120,7 +120,7 @@
                 Return My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision
             Catch ex As Exception
                 With proLog
-                    .AppVersion = GetAppVersion()
+                    .AppVersion = "-1.-1.-1.-1"
                     .FromSender = "[DblBuffer] $\Ingrid\Apps\Core\Vb\020. Module\Globals.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message

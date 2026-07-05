@@ -15,7 +15,7 @@
     <Shape ID="DesignTable:UserData" ZOrder="6" X="111" Y="212" Height="307" Width="293" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="303" />
     <Shape ID="DesignTable:EPLS_Editor" ZOrder="5" X="-184" Y="398" Height="605" Width="267" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="601" />
     <Shape ID="DesignTable:SysModule" ZOrder="4" X="-182" Y="1029" Height="199" Width="262" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="195" />
-    <Shape ID="DesignTable:SYSS_Editor" ZOrder="3" X="114" Y="558" Height="497" Width="264" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="493" />
+    <Shape ID="DesignTable:SYSS_Editor" ZOrder="3" X="114" Y="558" Height="497" Width="289" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="493" />
   </Shapes>
   <Connectors />
 </DiagramLayout>
