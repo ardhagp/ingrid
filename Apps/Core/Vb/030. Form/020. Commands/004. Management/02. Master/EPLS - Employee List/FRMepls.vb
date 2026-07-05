@@ -1,43 +1,38 @@
-﻿Imports System.Runtime.Versioning
-Imports System.Text
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMepls
 #Region "Declaration"
         Private WithEvents Frm_epls_Editor As New FRMeplsEditor
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
-        Private Const pCommand As String = "@Command"
-        Private Const pEmployeeId As String = "@EmployeeId"
+        Private varThisModuleId As Long = 0
+        Private Const varThisModuleCode As String = "EPLS"
 #End Region
 
 #Region "Subs Collections"
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnEPLS)
             varDataProperties.EmployeeIsForceRefresh = forcerefresh
             CMDepls.View.DisplayData(varDataProperties, DgnEPLS, SLFStatus, TxtFind)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetRowID()
-            varDataProperties.AllParameters.Remove(pEmployeeId)
             If DgnEPLS.RowCount = 0 Then
                 varDataProperties.EmployeeIsNew = True
             Else
                 varDataProperties.EmployeeIsNew = False
-                varDataProperties.AllParameters.Add(pEmployeeId, CLng(DgnEPLS.CurrentRow.Cells("employee_id").Value))
+                varDataProperties.AllParameters.Remove(tEmployee.P_EmployeeId)
+                varDataProperties.AllParameters.Add(tEmployee.P_EmployeeId, CLng(DgnEPLS.CurrentRow.Cells("employee_id").Value))
             End If
         End Sub
 #End Region
 
 #Region "Menu Strip Functions"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
             varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Add
-            varDataProperties.AllParameters.Remove(pCommand)
-            varDataProperties.AllParameters.Add(pCommand, "EPLS")
             If Not (varUserAccess.User(varDataProperties)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
@@ -48,11 +43,9 @@ Namespace UI.Canvas
             Display(Frm_epls_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new employee data", True)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
             varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Edit
-            varDataProperties.AllParameters.Remove(pCommand)
-            varDataProperties.AllParameters.Add(pCommand, "EPLS")
             If Not (varUserAccess.User(varDataProperties)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
@@ -70,11 +63,9 @@ Namespace UI.Canvas
             ClearMainFrameFooterText()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
             varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Delete
-            varDataProperties.AllParameters.Remove(pCommand)
-            varDataProperties.AllParameters.Add(pCommand, "EPLS")
             If Not (varUserAccess.User(varDataProperties)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
@@ -86,7 +77,7 @@ Namespace UI.Canvas
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 With DgnEPLS.CurrentRow
-                    Dim varMessage As New StringBuilder()
+                    Dim varMessage As New System.Text.StringBuilder()
                     varMessage.AppendLine("Do you want to delete this record?")
 
                     Dim varLine As New String("─"c, 80)
@@ -109,25 +100,33 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataRefresh() Handles Com_mms_Menu.EventDataRefresh
             TxtFind.Clear()
             Call GetData(True)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataClose() Handles Com_mms_Menu.EventDataClose
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventToolsFind() Handles Com_mms_Menu.EventToolsFind
             TxtFind.Focus()
         End Sub
 #End Region
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMepls_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            ' Set active module to UserParameters
+            varDataProperties.UserParameters.Remove(tModule.P_ModuleCode)
+            varDataProperties.UserParameters.Add(tModule.P_ModuleCode, varThisModuleCode)
+            varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.UserParameters)
+            varDataProperties.UserParameters.Remove(tModule.P_ModuleId)
+            varDataProperties.UserParameters.Add(tModule.P_ModuleId, varThisModuleId)
+
+            ' Continue to Load anything for this module
             Com_mms_Menu.LoadIn(Me)
             Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
             DgnEPLS.XOGetNewColor()
@@ -135,28 +134,35 @@ Namespace UI.Canvas
             TxtFind.ClearSearch()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
             If e.KeyCode = Keys.Enter Then
                 Call GetData()
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMeplsEditor_RecordSaved() Handles Frm_epls_Editor.EventRecordSaved
             Call GetData()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
             TxtFind.Clear()
             Call GetData(True)
             TxtFind.ClearSearch()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMepls_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus
             Me.WindowState = FormWindowState.Maximized
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMepls_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+            ' Set active module to UserParameters
+            varDataProperties.UserParameters.Remove(tModule.P_ModuleCode)
+            varDataProperties.UserParameters.Add(tModule.P_ModuleCode, varThisModuleCode)
         End Sub
     End Class
 End Namespace
