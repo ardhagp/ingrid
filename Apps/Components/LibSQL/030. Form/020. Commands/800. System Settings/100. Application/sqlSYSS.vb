@@ -24,6 +24,7 @@ Namespace CMDsyss
                                                        $"{tSettings.S}.{tSettings.C_SettingsStorageProvider}, " &
                                                        $"{tSettings.S}.{tSettings.C_SettingsApiKey}, " &
                                                        $"{tSettings.S}.{tSettings.C_SettingsApiSecret}, " &
+                                                       $"{tSettings.S}.{tSettings.C_SettingsApiBucketName}, " &
                                                        $"{tSettings.S}.{tSettings.C_SettingsApiServiceUrl}, " &
                                                        $"{tSettings.S}.{tSettings.C_SettingsStorageDb}, " &
                                                        $"{tSettings.S}.{tSettings.C_SettingsClient}, " &
@@ -80,6 +81,7 @@ Namespace CMDsyss
                                                        $"{tSettings.C_SettingsStorageProvider} = {tSettings.P_SettingsStorageProvider}, " &
                                                        $"{tSettings.C_SettingsApiKey} = {tSettings.P_SettingsApiKey}, " &
                                                        $"{tSettings.C_SettingsApiSecret} = {tSettings.P_SettingsApiSecret}, " &
+                                                       $"{tSettings.C_SettingsApiBucketName} = {tSettings.P_SettingsApiBucketName}, " &
                                                        $"{tSettings.C_SettingsApiServiceUrl} = {tSettings.P_SettingsApiServiceUrl}, " &
                                                        $"{tSettings.C_SettingsStorageDb} = {tSettings.P_SettingsStorageDb}, " &
                                                        $"{tSettings.C_SettingsMinPasswordLength} = {tSettings.P_SettingsMinPasswordLength} " &

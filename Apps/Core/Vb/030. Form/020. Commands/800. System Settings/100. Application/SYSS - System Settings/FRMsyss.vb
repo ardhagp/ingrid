@@ -68,6 +68,7 @@ Namespace UI.Canvas
                     CboStorageProvider.Text = .Item(tSettings.C_SettingsStorageProvider).ToString
                     TxtApiKey.Text = .Item(tSettings.C_SettingsApiKey).ToString
                     TxtApiSecret.Text = CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiSecret).ToString)
+                    TxtApiBucketName.Text = .Item(tSettings.C_SettingsApiBucketName).ToString
                     TxtApiServiceUrl.Text = .Item(tSettings.C_SettingsApiServiceUrl).ToString
                     TxtFileDb.Text = .Item(tSettings.C_SettingsStorageDb).ToString
                     nudMinPassword.Value = CInt(.Item(tSettings.C_SettingsMinPasswordLength))
@@ -120,6 +121,8 @@ Namespace UI.Canvas
                     .Add(tSettings.P_SettingsApiKey, TxtApiKey.Text.Trim)
                     .Remove(tSettings.P_SettingsApiSecret)
                     .Add(tSettings.P_SettingsApiSecret, CMCv.Security.Encrypt.Aes(TxtApiSecret.Text.Trim))
+                    .Remove(tSettings.P_SettingsApiBucketName)
+                    .Add(tSettings.P_SettingsApiBucketName, TxtApiBucketName.Text.Trim)
                     .Remove(tSettings.P_SettingsApiServiceUrl)
                     .Add(tSettings.P_SettingsApiServiceUrl, TxtApiServiceUrl.Text.Trim)
                     .Remove(tSettings.P_SettingsStorageDb)

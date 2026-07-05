@@ -34,6 +34,8 @@ Namespace UI.Canvas
             CboNewsTicker = New CMCv.UI.Control.Cbo(components)
             tbStorage = New TabPage()
             Gbx3 = New CMCv.UI.Control.Gbx(components)
+            ULbl12 = New CMCv.UI.Control.ULbl()
+            TxtApiBucketName = New CMCv.UI.Control.Txt(components)
             TxtApiServiceUrl = New CMCv.UI.Control.Txt(components)
             ULblApiServiceUrl = New CMCv.UI.Control.ULbl()
             ULblApiSecret = New CMCv.UI.Control.ULbl()
@@ -255,6 +257,8 @@ Namespace UI.Canvas
             ' 
             ' Gbx3
             ' 
+            Gbx3.Controls.Add(ULbl12)
+            Gbx3.Controls.Add(TxtApiBucketName)
             Gbx3.Controls.Add(TxtApiServiceUrl)
             Gbx3.Controls.Add(ULblApiServiceUrl)
             Gbx3.Controls.Add(ULblApiSecret)
@@ -267,10 +271,52 @@ Namespace UI.Canvas
             Gbx3.Font = New Font("Segoe UI", 12F)
             Gbx3.Location = New Point(26, 478)
             Gbx3.Name = "Gbx3"
-            Gbx3.Size = New Size(683, 311)
+            Gbx3.Size = New Size(683, 377)
             Gbx3.TabIndex = 13
             Gbx3.TabStop = False
             Gbx3.Text = "Cloud Storage Provider"
+            ' 
+            ' ULbl12
+            ' 
+            ULbl12.BackColor = Color.Moccasin
+            ULbl12.Location = New Point(11, 316)
+            ULbl12.Margin = New Padding(5, 6, 5, 6)
+            ULbl12.Name = "ULbl12"
+            ULbl12.Size = New Size(250, 39)
+            ULbl12.TabIndex = 9
+            ULbl12.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl12.XOText = "Bucket Name"
+            ULbl12.XOTextAdjuster = False
+            ULbl12.XOTextBorder = False
+            ' 
+            ' TxtApiBucketName
+            ' 
+            TxtApiBucketName.Font = New Font("Segoe UI", 12F)
+            TxtApiBucketName.Location = New Point(273, 316)
+            TxtApiBucketName.MaxLength = 255
+            TxtApiBucketName.Name = "TxtApiBucketName"
+            TxtApiBucketName.Size = New Size(397, 39)
+            TxtApiBucketName.TabIndex = 6
+            TxtApiBucketName.Tag = "txt"
+            TxtApiBucketName.XOAutoTrim = False
+            TxtApiBucketName.XOHighlightColor = Color.LightYellow
+            TxtApiBucketName.XOHighlightOnFocus = False
+            TxtApiBucketName.XOIsBlank = True
+            TxtApiBucketName.XOIsMandatory = False
+            TxtApiBucketName.XOIsPlaceholder = False
+            TxtApiBucketName.XOIsReplaceEmptyString = False
+            TxtApiBucketName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtApiBucketName.XOMandatoryBgColor = Color.LightPink
+            TxtApiBucketName.XOMandatoryBgColorDefault = Color.White
+            TxtApiBucketName.XOMandatoryMessage = Nothing
+            TxtApiBucketName.XOPasswordLengthMin = 8
+            TxtApiBucketName.XOPasswordStrengthCalc = False
+            TxtApiBucketName.XOPasswordStrengthScore = 0
+            TxtApiBucketName.XOPasswordStrengthText = Nothing
+            TxtApiBucketName.XOPlaceholderText = "Type then press Enter"
+            TxtApiBucketName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtApiBucketName.XOSelectOnFocus = False
+            TxtApiBucketName.XOSqlText = ""
             ' 
             ' TxtApiServiceUrl
             ' 
@@ -310,7 +356,7 @@ Namespace UI.Canvas
             ULblApiServiceUrl.Size = New Size(250, 39)
             ULblApiServiceUrl.TabIndex = 7
             ULblApiServiceUrl.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULblApiServiceUrl.XOText = "API Service URL"
+            ULblApiServiceUrl.XOText = "Service URL"
             ULblApiServiceUrl.XOTextAdjuster = False
             ULblApiServiceUrl.XOTextBorder = False
             ' 
@@ -902,5 +948,7 @@ Namespace UI.Canvas
         Friend WithEvents TxtClientName As CMCv.UI.Control.Txt
         Friend WithEvents TxtClientCode As CMCv.UI.Control.Txt
         Friend WithEvents ULbl11 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl12 As CMCv.UI.Control.ULbl
+        Friend WithEvents TxtApiBucketName As CMCv.UI.Control.Txt
     End Class
 End Namespace

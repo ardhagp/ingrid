@@ -3830,6 +3830,8 @@ Namespace Ingrid.UI.Dataset
             
             Private columnsettings_apisecret As Global.System.Data.DataColumn
             
+            Private columnsettings_apibucketname As Global.System.Data.DataColumn
+            
             Private columnsettings_apiserviceurl As Global.System.Data.DataColumn
             
             Private columnsettings_storagedb As Global.System.Data.DataColumn
@@ -3977,6 +3979,14 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property settings_apibucketnameColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnsettings_apibucketname
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public ReadOnly Property settings_apiserviceurlColumn() As Global.System.Data.DataColumn
                 Get
                     Return Me.columnsettings_apiserviceurl
@@ -4073,6 +4083,7 @@ Namespace Ingrid.UI.Dataset
                         ByVal settings_storageprovider As String,  _
                         ByVal settings_apikey As String,  _
                         ByVal settings_apisecret As String,  _
+                        ByVal settings_apibucketname As String,  _
                         ByVal settings_apiserviceurl As String,  _
                         ByVal settings_storagedb As String,  _
                         ByVal settings_client As Decimal,  _
@@ -4080,7 +4091,7 @@ Namespace Ingrid.UI.Dataset
                         ByVal client_code As String,  _
                         ByVal settings_minpasswordlength As Short) As SYSS_EditorRow
                 Dim rowSYSS_EditorRow As SYSS_EditorRow = CType(Me.NewRow,SYSS_EditorRow)
-                Dim columnValuesArray() As Object = New Object() {settings_id, settings_showprofile, settings_showstorage, settings_showwatermark, settings_textmark, settings_textmarklength, settings_showrunningtext, settings_uploadphoto, settings_uploadpdf, settings_storageprovider, settings_apikey, settings_apisecret, settings_apiserviceurl, settings_storagedb, settings_client, client_name, client_code, settings_minpasswordlength}
+                Dim columnValuesArray() As Object = New Object() {settings_id, settings_showprofile, settings_showstorage, settings_showwatermark, settings_textmark, settings_textmarklength, settings_showrunningtext, settings_uploadphoto, settings_uploadpdf, settings_storageprovider, settings_apikey, settings_apisecret, settings_apibucketname, settings_apiserviceurl, settings_storagedb, settings_client, client_name, client_code, settings_minpasswordlength}
                 rowSYSS_EditorRow.ItemArray = columnValuesArray
                 Me.Rows.Add(rowSYSS_EditorRow)
                 Return rowSYSS_EditorRow
@@ -4115,6 +4126,7 @@ Namespace Ingrid.UI.Dataset
                 Me.columnsettings_storageprovider = MyBase.Columns("settings_storageprovider")
                 Me.columnsettings_apikey = MyBase.Columns("settings_apikey")
                 Me.columnsettings_apisecret = MyBase.Columns("settings_apisecret")
+                Me.columnsettings_apibucketname = MyBase.Columns("settings_apibucketname")
                 Me.columnsettings_apiserviceurl = MyBase.Columns("settings_apiserviceurl")
                 Me.columnsettings_storagedb = MyBase.Columns("settings_storagedb")
                 Me.columnsettings_client = MyBase.Columns("settings_client")
@@ -4150,6 +4162,8 @@ Namespace Ingrid.UI.Dataset
                 MyBase.Columns.Add(Me.columnsettings_apikey)
                 Me.columnsettings_apisecret = New Global.System.Data.DataColumn("settings_apisecret", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnsettings_apisecret)
+                Me.columnsettings_apibucketname = New Global.System.Data.DataColumn("settings_apibucketname", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnsettings_apibucketname)
                 Me.columnsettings_apiserviceurl = New Global.System.Data.DataColumn("settings_apiserviceurl", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnsettings_apiserviceurl)
                 Me.columnsettings_storagedb = New Global.System.Data.DataColumn("settings_storagedb", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -6742,6 +6756,21 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property settings_apibucketname() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableSYSS_Editor.settings_apibucketnameColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'settings_apibucketname' in table 'SYSS_Editor' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableSYSS_Editor.settings_apibucketnameColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Property settings_apiserviceurl() As String
                 Get
                     Try 
@@ -6973,6 +7002,18 @@ Namespace Ingrid.UI.Dataset
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Sub Setsettings_apisecretNull()
                 Me(Me.tableSYSS_Editor.settings_apisecretColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Issettings_apibucketnameNull() As Boolean
+                Return Me.IsNull(Me.tableSYSS_Editor.settings_apibucketnameColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setsettings_apibucketnameNull()
+                Me(Me.tableSYSS_Editor.settings_apibucketnameColumn) = Global.System.Convert.DBNull
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
