@@ -15,14 +15,9 @@
         Public varWorkspace As New Workspace
         Public varFileinfo As New CMCv.OperatingSystem.File.Info
         Public varFolderHandler As New CMCv.OperatingSystem.Folder
-        'Public SecurityEngine As New Security.Engine
-        'Public varDatabaseEngine As String
-        'Public varDatabaseEngineE As LibApp.Ingrid.Global.DatabaseEngine
-        'Public varDatabaseName As String
         Public varImageCompress As New CMCv.ImageEditor.Proccessor.Compress
         Public varImageEditor As New CMCv.ImageEditor.Proccessor.Editor
         Public varUserAccess As New Application.Access
-        'Public V_SYSAPP As New Application.Modules
         Public varLogUser As New LibSQL.SystemLog.Activity.User
         Public varLogApplication As New LibSQL.SystemLog.Activity.Application
         Public varCompany As New LibSQL.CMDccin.View
@@ -33,14 +28,11 @@
         Public proLog As New CMCv.Ladybug.Log.Fields
         Public varSecurityencrypt As New CMCv.Security.Encrypt
 
-        'Public clsDBsqlite As Database.Engine.LocalDB
-        'Public WithEvents TED As New frmTextEditor
         Public WithEvents FRMmsg As New CMCv.UI.Canvas.FRMdialogbox
 
         Public varVersionapplication As String
         Public varVersionnetworkapplication As Version
 
-        'Public varDataProperties As New LibApp.Ingrid.Global.Properties
         Public varDataProperties As New LibApp.Ingrid.Global.Properties
 
         'Dataset Tables

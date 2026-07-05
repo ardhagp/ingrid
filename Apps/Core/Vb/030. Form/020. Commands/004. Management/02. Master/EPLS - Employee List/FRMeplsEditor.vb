@@ -1,6 +1,4 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMeplsEditor
 #Region "Declaration"
         Public Event EventRecordSaved()
@@ -19,11 +17,16 @@ Namespace UI.Canvas
 
 #End Region
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMeplsEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            ' Set active module to UserParameters
             varDataProperties.UserParameters.Remove(tModule.P_ModuleCode)
             varDataProperties.UserParameters.Add(tModule.P_ModuleCode, varThisModuleCode)
+            varThisModuleId = CLng(varDataProperties.UserParameters(tModule.P_ModuleId))
+            varDataProperties.UserParameters.Remove(tModule.P_ModuleId)
+            varDataProperties.UserParameters.Add(tModule.P_ModuleId, varThisModuleId)
 
+            ' Continue to Load anything for this module
             varHavePhoto = False
             varChangePhoto = False
             If varDataProperties.EmployeeIsNew Then
@@ -34,7 +37,6 @@ Namespace UI.Canvas
                 With varDataProperties.AllParameters
                     .Remove(tPosition.P_PositionId)
                     .Add(tPosition.P_PositionId, DBNull.Value)
-
                 End With
             Else
                 ChkAddNew.Visible = False
@@ -52,7 +54,7 @@ Namespace UI.Canvas
                     TxtAddress.Text = .Item(tEmployee.C_EmployeeAddress).ToString
 
                     'Displaying Employment Detail
-                    TxtCompany.Text = .Item(tcompany.C_CompanyName).ToString
+                    TxtCompany.Text = .Item(tCompany.C_CompanyName).ToString
                     TxTDepartment.Text = .Item(tDepartment.C_DepartmentName).ToString
                     varDataProperties.AllParameters.Remove(tPosition.P_PositionId)
                     varDataProperties.AllParameters.Add(tPosition.P_PositionId, CLng(.Item(tPosition.C_PositionId)))
@@ -75,18 +77,18 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnBrowsePosition_Click(sender As Object, e As EventArgs) Handles BtnBrowsePosition.Click
             Frm_epls_AddinPosition = New FRMeplsPosition
             Display(Frm_epls_AddinPosition, IMAGEDB.Main.ImageLibrary.SEARCH_ICON, My.Application.Info.AssemblyName.ToUpper, "Find Position", "Browse for position data", True)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub CheckAllInputs()
             'TxtPersonalID.Focus()
             TxtEmployeeNumber.Focus()
@@ -96,7 +98,7 @@ Namespace UI.Canvas
             BtnSave.Focus()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Call CheckAllInputs()
 
@@ -129,6 +131,10 @@ Namespace UI.Canvas
                 .AllParameters.Add(tEmployee.P_EmployeeAddress, IIf(TxtAddress.XOSqlText = String.Empty OrElse TxtAddress.XOSqlText = "", DBNull.Value, TxtAddress.XOSqlText))
                 .AllParameters.Remove(tEmployee.P_EmployeeNickname)
                 .AllParameters.Add(tEmployee.P_EmployeeNickname, IIf(TxtEmployeeNickname.XOSqlText = String.Empty OrElse TxtEmployeeNickname.XOSqlText = "", DBNull.Value, TxtEmployeeNickname.XOSqlText))
+                .AllParameters.Remove(tEmployee.C_EmployeeEmploymentType)
+
+                ' Please update this method when EmploymentType is ready
+                .AllParameters.Add(tEmployee.C_EmployeeEmploymentType, IIf(TxtEmploymentType.XOSqlText = String.Empty OrElse TxtEmploymentType.XOSqlText = "", DBNull.Value, DBNull.Value))
             End With
 
             If CMDepls.Editor.PushData(varDataProperties) Then
@@ -152,7 +158,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckEmployeePersonalID() As Boolean
             If CMDepls.Editor.IsPersonalIdExist(varDataProperties) Then
                 Return False
@@ -161,7 +167,7 @@ Namespace UI.Canvas
             End If
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckEmployeeMandatoryFields() As Boolean
             If (TxtPersonalID.XOSqlText = String.Empty OrElse IsDBNull(varDataProperties.AllParameters(tPosition.P_PositionId)) OrElse varDataProperties.AllParameters(tPosition.P_PositionId) Is Nothing OrElse (TxtEmployeeNumber.XOSqlText = String.Empty) OrElse (TxtFullName.XOSqlText = String.Empty)) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Ensure that the Personal ID, Full Name, Company, Department, Position and Employee Number fields are correctly completed.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
@@ -171,7 +177,7 @@ Namespace UI.Canvas
             End If
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckDuplicateEmployeeNumber() As Boolean
             If varDataProperties.EmployeeIsNew AndAlso CMDepls.Editor.IsEmployeeNumberDuplicate(varDataProperties) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "This Employee Number is already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
@@ -181,7 +187,7 @@ Namespace UI.Canvas
             End If
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckEmployeePhoto() As Boolean
             If Not varHavePhoto Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Please pick employee photo.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
@@ -191,7 +197,7 @@ Namespace UI.Canvas
             End If
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMeplsAddinPosition_RecordSelected() Handles Frm_epls_AddinPosition.EventRecordSelected
             With varDataProperties
                 TxtCompany.Text = .AllParameters(tCompany.P_CompanyName).ToString
@@ -200,8 +206,13 @@ Namespace UI.Canvas
             End With
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnBrowsePhoto_Click(sender As Object, e As EventArgs) Handles BtnBrowsePhoto.Click
+            If varDatasetIngrid.Tables(dtSettings).Rows(0).Item(tSettings.C_SettingsStorageProvider).ToString = "Disabled" Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Photo upload is disabled. Please contact your system administrator.", LibApp.Ingrid.Global.PopupType.Alert, "Cloud storage is disabled", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Return
+            End If
+
             OfdPhoto.Title = "INGRID - Select Photo"
             OfdPhoto.FileName = ""
             OfdPhoto.Filter = "Photo File|*.Jpg;*.Jpeg"
@@ -209,7 +220,7 @@ Namespace UI.Canvas
             If OfdPhoto.ShowDialog = DialogResult.OK Then
                 Dim result = LibAPI.Api.Magika.Validate(OfdPhoto.FileName, {"jpg", "jpeg"})
                 If Not result.IsValid Then
-                    Decision(My.Application.Info.AssemblyName.ToUpper, result.Reason & Environment.NewLine & "Please select a JPG or JPEG file.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, result.Reason & Environment.NewLine & "Please select a JPG or JPEG file.", LibApp.Ingrid.Global.PopupType.Alert, "Invalid Photo Format", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                     Return
                 End If
 
@@ -225,7 +236,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CboGender_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboGender.SelectedIndexChanged
             If Not varHavePhoto Then
                 If CboGender.Text = "MALE" Then
@@ -236,6 +247,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMeplsEditor_Activated(sender As Object, e As EventArgs) Handles Me.Activated
             varDataProperties.UserParameters.Remove(tModule.P_ModuleId)
             varDataProperties.UserParameters.Add(tModule.P_ModuleId, varThisModuleId)

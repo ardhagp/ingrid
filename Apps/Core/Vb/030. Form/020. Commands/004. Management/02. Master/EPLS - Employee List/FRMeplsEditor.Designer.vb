@@ -133,7 +133,7 @@
             ChkAddNew.AutoSize = True
             ChkAddNew.BackColor = Color.Transparent
             ChkAddNew.FlatStyle = FlatStyle.Flat
-            ChkAddNew.Font = New Font("Segoe UI", 12.0F)
+            ChkAddNew.Font = New Font("Segoe UI", 12F)
             ChkAddNew.ForeColor = Color.Tomato
             ChkAddNew.Location = New Point(586, 28)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
@@ -152,7 +152,7 @@
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(817, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -175,7 +175,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(994, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -204,8 +204,8 @@
             pctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
             pctbxPhoto.TabIndex = 1038
             pctbxPhoto.TabStop = False
-            pctbxPhoto.XOShowBorder = False
             pctbxPhoto.XOBorderColor = Color.Transparent
+            pctbxPhoto.XOShowBorder = False
             ' 
             ' BtnBrowsePhoto
             ' 
@@ -216,7 +216,7 @@
             BtnBrowsePhoto.FlatAppearance.BorderSize = 2
             BtnBrowsePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnBrowsePhoto.FlatStyle = FlatStyle.Flat
-            BtnBrowsePhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnBrowsePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowsePhoto.ForeColor = Color.White
             BtnBrowsePhoto.Location = New Point(933, 428)
             BtnBrowsePhoto.Margin = New Padding(6, 5, 6, 5)
@@ -248,8 +248,8 @@
             pcbxFrame.SizeMode = PictureBoxSizeMode.Zoom
             pcbxFrame.TabIndex = 1040
             pcbxFrame.TabStop = False
-            pcbxFrame.XOShowBorder = False
             pcbxFrame.XOBorderColor = Color.DodgerBlue
+            pcbxFrame.XOShowBorder = False
             ' 
             ' tpPermissions
             ' 
@@ -269,7 +269,7 @@
             GbxModulesRoles.AutoSize = True
             GbxModulesRoles.Controls.Add(DgnModulesRoles)
             GbxModulesRoles.Dock = DockStyle.Fill
-            GbxModulesRoles.Font = New Font("Segoe UI", 12.0F)
+            GbxModulesRoles.Font = New Font("Segoe UI", 12F)
             GbxModulesRoles.Location = New Point(6, 128)
             GbxModulesRoles.Margin = New Padding(6, 5, 6, 5)
             GbxModulesRoles.Name = "GbxModulesRoles"
@@ -283,7 +283,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(196), CByte(203), CByte(130))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(215), CByte(205), CByte(135))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnModulesRoles.BorderStyle = BorderStyle.None
@@ -291,7 +291,7 @@
             DgnModulesRoles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F)
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
             DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
             DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -302,7 +302,7 @@
             DgnModulesRoles.Columns.AddRange(New DataGridViewColumn() {modulegroup_name, module_code, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports, useraccess_id, module_id})
             DgnModulesRoles.Dock = DockStyle.Fill
             DgnModulesRoles.EnableHeadersVisualStyles = False
-            DgnModulesRoles.Font = New Font("Verdana", 8.0F)
+            DgnModulesRoles.Font = New Font("Verdana", 8F)
             DgnModulesRoles.Location = New Point(6, 37)
             DgnModulesRoles.Margin = New Padding(6, 5, 6, 5)
             DgnModulesRoles.Name = "DgnModulesRoles"
@@ -310,7 +310,7 @@
             DgnModulesRoles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle3.BackColor = Color.YellowGreen
-            DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F)
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
             DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
             DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -431,7 +431,7 @@
             GbxCredetials.Controls.Add(ULbl7)
             GbxCredetials.Controls.Add(TxtLogin)
             GbxCredetials.Dock = DockStyle.Top
-            GbxCredetials.Font = New Font("Segoe UI", 12.0F)
+            GbxCredetials.Font = New Font("Segoe UI", 12F)
             GbxCredetials.Location = New Point(6, 5)
             GbxCredetials.Margin = New Padding(6, 5, 6, 5)
             GbxCredetials.Name = "GbxCredetials"
@@ -448,16 +448,16 @@
             ULbl7.Margin = New Padding(7, 10, 7, 10)
             ULbl7.Name = "ULbl7"
             ULbl7.Size = New Size(250, 39)
+            ULbl7.TabIndex = 301
+            ULbl7.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl7.XOText = "Login"
             ULbl7.XOTextAdjuster = True
             ULbl7.XOTextBorder = False
-            ULbl7.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl7.TabIndex = 301
             ' 
             ' TxtLogin
             ' 
             TxtLogin.BackColor = Color.White
-            TxtLogin.Font = New Font("Segoe UI", 12.0F)
+            TxtLogin.Font = New Font("Segoe UI", 12F)
             TxtLogin.Location = New Point(273, 54)
             TxtLogin.Margin = New Padding(6, 5, 6, 5)
             TxtLogin.MaxLength = 255
@@ -468,24 +468,24 @@
             TxtLogin.Tag = "txt"
             TxtLogin.TextAlign = HorizontalAlignment.Center
             TxtLogin.XOAutoTrim = False
+            TxtLogin.XOHighlightColor = Color.LightYellow
+            TxtLogin.XOHighlightOnFocus = False
+            TxtLogin.XOIsBlank = False
             TxtLogin.XOIsMandatory = False
+            TxtLogin.XOIsPlaceholder = False
+            TxtLogin.XOIsReplaceEmptyString = False
+            TxtLogin.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtLogin.XOMandatoryBgColor = Color.LightPink
             TxtLogin.XOMandatoryBgColorDefault = Color.White
-            TxtLogin.XOHighlightOnFocus = False
-            TxtLogin.XOHighlightColor = Color.LightYellow
-            TxtLogin.XOIsBlank = False
-            TxtLogin.XOIsPlaceholder = False
-            TxtLogin.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
-            TxtLogin.XOSelectOnFocus = False
+            TxtLogin.XOMandatoryMessage = Nothing
             TxtLogin.XOPasswordLengthMin = 8
             TxtLogin.XOPasswordStrengthCalc = False
             TxtLogin.XOPasswordStrengthScore = 0
             TxtLogin.XOPasswordStrengthText = Nothing
-            TxtLogin.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtLogin.XOPlaceholderText = "Type then press Enter"
+            TxtLogin.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtLogin.XOSelectOnFocus = False
             TxtLogin.XOSqlText = ""
-            TxtLogin.XOIsReplaceEmptyString = False
-            TxtLogin.XOMandatoryMessage = Nothing
             ' 
             ' tpEmployment
             ' 
@@ -520,7 +520,7 @@
             BtnBrowseEmploymentType.FlatAppearance.BorderSize = 2
             BtnBrowseEmploymentType.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(148), CByte(148), CByte(148))
             BtnBrowseEmploymentType.FlatStyle = FlatStyle.Flat
-            BtnBrowseEmploymentType.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnBrowseEmploymentType.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowseEmploymentType.ForeColor = Color.DarkGray
             BtnBrowseEmploymentType.Location = New Point(740, 217)
             BtnBrowseEmploymentType.Name = "BtnBrowseEmploymentType"
@@ -540,11 +540,11 @@
             ULbl14.Margin = New Padding(12, 17, 12, 17)
             ULbl14.Name = "ULbl14"
             ULbl14.Size = New Size(250, 39)
+            ULbl14.TabIndex = 1061
+            ULbl14.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl14.XOText = "Initial"
             ULbl14.XOTextAdjuster = True
             ULbl14.XOTextBorder = False
-            ULbl14.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl14.TabIndex = 1061
             ' 
             ' ULbl12
             ' 
@@ -553,11 +553,11 @@
             ULbl12.Margin = New Padding(12, 17, 12, 17)
             ULbl12.Name = "ULbl12"
             ULbl12.Size = New Size(250, 39)
+            ULbl12.TabIndex = 1059
+            ULbl12.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl12.XOText = "Emp. Number"
             ULbl12.XOTextAdjuster = True
             ULbl12.XOTextBorder = False
-            ULbl12.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
-            ULbl12.TabIndex = 1059
             ' 
             ' ULbl11
             ' 
@@ -566,11 +566,11 @@
             ULbl11.Margin = New Padding(12, 17, 12, 17)
             ULbl11.Name = "ULbl11"
             ULbl11.Size = New Size(250, 39)
+            ULbl11.TabIndex = 1058
+            ULbl11.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Grey
             ULbl11.XOText = "Emp. Type"
             ULbl11.XOTextAdjuster = True
             ULbl11.XOTextBorder = False
-            ULbl11.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Grey
-            ULbl11.TabIndex = 1058
             ' 
             ' ULbl10
             ' 
@@ -579,11 +579,11 @@
             ULbl10.Margin = New Padding(12, 17, 12, 17)
             ULbl10.Name = "ULbl10"
             ULbl10.Size = New Size(250, 39)
+            ULbl10.TabIndex = 1057
+            ULbl10.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl10.XOText = "Position"
             ULbl10.XOTextAdjuster = True
             ULbl10.XOTextBorder = False
-            ULbl10.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
-            ULbl10.TabIndex = 1057
             ' 
             ' ULbl9
             ' 
@@ -592,11 +592,11 @@
             ULbl9.Margin = New Padding(12, 17, 12, 17)
             ULbl9.Name = "ULbl9"
             ULbl9.Size = New Size(250, 39)
+            ULbl9.TabIndex = 1056
+            ULbl9.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl9.XOText = "Department"
             ULbl9.XOTextAdjuster = True
             ULbl9.XOTextBorder = False
-            ULbl9.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl9.TabIndex = 1056
             ' 
             ' ULbl6
             ' 
@@ -605,18 +605,18 @@
             ULbl6.Margin = New Padding(12, 17, 12, 17)
             ULbl6.Name = "ULbl6"
             ULbl6.Size = New Size(250, 39)
+            ULbl6.TabIndex = 1055
+            ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl6.XOText = "Company"
             ULbl6.XOTextAdjuster = True
             ULbl6.XOTextBorder = False
-            ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl6.TabIndex = 1055
             ' 
             ' ChkActiveEmployee
             ' 
             ChkActiveEmployee.AutoSize = True
             ChkActiveEmployee.BackColor = Color.Transparent
             ChkActiveEmployee.FlatStyle = FlatStyle.Flat
-            ChkActiveEmployee.Font = New Font("Segoe UI", 12.0F)
+            ChkActiveEmployee.Font = New Font("Segoe UI", 12F)
             ChkActiveEmployee.Location = New Point(273, 421)
             ChkActiveEmployee.Margin = New Padding(6, 5, 6, 5)
             ChkActiveEmployee.Name = "ChkActiveEmployee"
@@ -627,7 +627,7 @@
             ' 
             ' TxtEmployeeNickname
             ' 
-            TxtEmployeeNickname.Font = New Font("Segoe UI", 12.0F)
+            TxtEmployeeNickname.Font = New Font("Segoe UI", 12F)
             TxtEmployeeNickname.Location = New Point(273, 353)
             TxtEmployeeNickname.Margin = New Padding(6, 5, 6, 5)
             TxtEmployeeNickname.MaxLength = 255
@@ -637,28 +637,28 @@
             TxtEmployeeNickname.Tag = "txt"
             TxtEmployeeNickname.TextAlign = HorizontalAlignment.Center
             TxtEmployeeNickname.XOAutoTrim = True
+            TxtEmployeeNickname.XOHighlightColor = Color.LightYellow
+            TxtEmployeeNickname.XOHighlightOnFocus = False
+            TxtEmployeeNickname.XOIsBlank = True
             TxtEmployeeNickname.XOIsMandatory = False
+            TxtEmployeeNickname.XOIsPlaceholder = False
+            TxtEmployeeNickname.XOIsReplaceEmptyString = False
+            TxtEmployeeNickname.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtEmployeeNickname.XOMandatoryBgColor = Color.LightPink
             TxtEmployeeNickname.XOMandatoryBgColorDefault = Color.White
-            TxtEmployeeNickname.XOHighlightOnFocus = False
-            TxtEmployeeNickname.XOHighlightColor = Color.LightYellow
-            TxtEmployeeNickname.XOIsBlank = True
-            TxtEmployeeNickname.XOIsPlaceholder = False
-            TxtEmployeeNickname.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
-            TxtEmployeeNickname.XOSelectOnFocus = False
+            TxtEmployeeNickname.XOMandatoryMessage = Nothing
             TxtEmployeeNickname.XOPasswordLengthMin = 8
             TxtEmployeeNickname.XOPasswordStrengthCalc = False
             TxtEmployeeNickname.XOPasswordStrengthScore = 0
             TxtEmployeeNickname.XOPasswordStrengthText = Nothing
-            TxtEmployeeNickname.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtEmployeeNickname.XOPlaceholderText = "Type then press Enter"
+            TxtEmployeeNickname.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtEmployeeNickname.XOSelectOnFocus = False
             TxtEmployeeNickname.XOSqlText = ""
-            TxtEmployeeNickname.XOIsReplaceEmptyString = False
-            TxtEmployeeNickname.XOMandatoryMessage = Nothing
             ' 
             ' TxtEmployeeNumber
             ' 
-            TxtEmployeeNumber.Font = New Font("Segoe UI", 12.0F)
+            TxtEmployeeNumber.Font = New Font("Segoe UI", 12F)
             TxtEmployeeNumber.Location = New Point(273, 285)
             TxtEmployeeNumber.Margin = New Padding(6, 5, 6, 5)
             TxtEmployeeNumber.MaxLength = 255
@@ -668,28 +668,28 @@
             TxtEmployeeNumber.Tag = "txt"
             TxtEmployeeNumber.TextAlign = HorizontalAlignment.Center
             TxtEmployeeNumber.XOAutoTrim = True
+            TxtEmployeeNumber.XOHighlightColor = Color.LightYellow
+            TxtEmployeeNumber.XOHighlightOnFocus = True
+            TxtEmployeeNumber.XOIsBlank = True
             TxtEmployeeNumber.XOIsMandatory = True
+            TxtEmployeeNumber.XOIsPlaceholder = False
+            TxtEmployeeNumber.XOIsReplaceEmptyString = False
+            TxtEmployeeNumber.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtEmployeeNumber.XOMandatoryBgColor = Color.LightPink
             TxtEmployeeNumber.XOMandatoryBgColorDefault = Color.White
-            TxtEmployeeNumber.XOHighlightOnFocus = True
-            TxtEmployeeNumber.XOHighlightColor = Color.LightYellow
-            TxtEmployeeNumber.XOIsBlank = True
-            TxtEmployeeNumber.XOIsPlaceholder = False
-            TxtEmployeeNumber.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
-            TxtEmployeeNumber.XOSelectOnFocus = False
+            TxtEmployeeNumber.XOMandatoryMessage = Nothing
             TxtEmployeeNumber.XOPasswordLengthMin = 8
             TxtEmployeeNumber.XOPasswordStrengthCalc = False
             TxtEmployeeNumber.XOPasswordStrengthScore = 0
             TxtEmployeeNumber.XOPasswordStrengthText = Nothing
-            TxtEmployeeNumber.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumber
             TxtEmployeeNumber.XOPlaceholderText = "Type then press Enter"
+            TxtEmployeeNumber.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumber
+            TxtEmployeeNumber.XOSelectOnFocus = False
             TxtEmployeeNumber.XOSqlText = ""
-            TxtEmployeeNumber.XOIsReplaceEmptyString = False
-            TxtEmployeeNumber.XOMandatoryMessage = Nothing
             ' 
             ' TxtEmploymentType
             ' 
-            TxtEmploymentType.Font = New Font("Segoe UI", 12.0F)
+            TxtEmploymentType.Font = New Font("Segoe UI", 12F)
             TxtEmploymentType.Location = New Point(273, 217)
             TxtEmploymentType.Margin = New Padding(6, 5, 6, 5)
             TxtEmploymentType.MaxLength = 255
@@ -700,28 +700,28 @@
             TxtEmploymentType.TabStop = False
             TxtEmploymentType.Tag = "txt"
             TxtEmploymentType.XOAutoTrim = False
+            TxtEmploymentType.XOHighlightColor = Color.LightYellow
+            TxtEmploymentType.XOHighlightOnFocus = False
+            TxtEmploymentType.XOIsBlank = True
             TxtEmploymentType.XOIsMandatory = False
+            TxtEmploymentType.XOIsPlaceholder = False
+            TxtEmploymentType.XOIsReplaceEmptyString = False
+            TxtEmploymentType.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtEmploymentType.XOMandatoryBgColor = Color.LightPink
             TxtEmploymentType.XOMandatoryBgColorDefault = Color.White
-            TxtEmploymentType.XOHighlightOnFocus = False
-            TxtEmploymentType.XOHighlightColor = Color.LightYellow
-            TxtEmploymentType.XOIsBlank = True
-            TxtEmploymentType.XOIsPlaceholder = False
-            TxtEmploymentType.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
-            TxtEmploymentType.XOSelectOnFocus = False
+            TxtEmploymentType.XOMandatoryMessage = Nothing
             TxtEmploymentType.XOPasswordLengthMin = 8
             TxtEmploymentType.XOPasswordStrengthCalc = False
             TxtEmploymentType.XOPasswordStrengthScore = 0
             TxtEmploymentType.XOPasswordStrengthText = Nothing
-            TxtEmploymentType.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtEmploymentType.XOPlaceholderText = "Type then press Enter"
+            TxtEmploymentType.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtEmploymentType.XOSelectOnFocus = False
             TxtEmploymentType.XOSqlText = ""
-            TxtEmploymentType.XOIsReplaceEmptyString = False
-            TxtEmploymentType.XOMandatoryMessage = Nothing
             ' 
             ' TxtPosition
             ' 
-            TxtPosition.Font = New Font("Segoe UI", 12.0F)
+            TxtPosition.Font = New Font("Segoe UI", 12F)
             TxtPosition.Location = New Point(273, 150)
             TxtPosition.Margin = New Padding(6, 5, 6, 5)
             TxtPosition.MaxLength = 255
@@ -732,24 +732,24 @@
             TxtPosition.TabStop = False
             TxtPosition.Tag = "txt"
             TxtPosition.XOAutoTrim = False
+            TxtPosition.XOHighlightColor = Color.LightYellow
+            TxtPosition.XOHighlightOnFocus = False
+            TxtPosition.XOIsBlank = True
             TxtPosition.XOIsMandatory = False
+            TxtPosition.XOIsPlaceholder = False
+            TxtPosition.XOIsReplaceEmptyString = False
+            TxtPosition.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtPosition.XOMandatoryBgColor = Color.LightPink
             TxtPosition.XOMandatoryBgColorDefault = Color.White
-            TxtPosition.XOHighlightOnFocus = False
-            TxtPosition.XOHighlightColor = Color.LightYellow
-            TxtPosition.XOIsBlank = True
-            TxtPosition.XOIsPlaceholder = False
-            TxtPosition.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
-            TxtPosition.XOSelectOnFocus = False
+            TxtPosition.XOMandatoryMessage = Nothing
             TxtPosition.XOPasswordLengthMin = 8
             TxtPosition.XOPasswordStrengthCalc = False
             TxtPosition.XOPasswordStrengthScore = 0
             TxtPosition.XOPasswordStrengthText = Nothing
-            TxtPosition.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtPosition.XOPlaceholderText = "Type then press Enter"
+            TxtPosition.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtPosition.XOSelectOnFocus = False
             TxtPosition.XOSqlText = ""
-            TxtPosition.XOIsReplaceEmptyString = False
-            TxtPosition.XOMandatoryMessage = Nothing
             ' 
             ' BtnBrowsePosition
             ' 
@@ -759,7 +759,7 @@
             BtnBrowsePosition.FlatAppearance.BorderSize = 2
             BtnBrowsePosition.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnBrowsePosition.FlatStyle = FlatStyle.Flat
-            BtnBrowsePosition.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnBrowsePosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowsePosition.ForeColor = Color.White
             BtnBrowsePosition.Location = New Point(740, 150)
             BtnBrowsePosition.Margin = New Padding(6, 5, 6, 5)
@@ -775,7 +775,7 @@
             ' 
             ' TxTDepartment
             ' 
-            TxTDepartment.Font = New Font("Segoe UI", 12.0F)
+            TxTDepartment.Font = New Font("Segoe UI", 12F)
             TxTDepartment.Location = New Point(273, 83)
             TxTDepartment.Margin = New Padding(6, 5, 6, 5)
             TxTDepartment.MaxLength = 255
@@ -786,28 +786,28 @@
             TxTDepartment.TabStop = False
             TxTDepartment.Tag = "txt"
             TxTDepartment.XOAutoTrim = False
+            TxTDepartment.XOHighlightColor = Color.LightYellow
+            TxTDepartment.XOHighlightOnFocus = False
+            TxTDepartment.XOIsBlank = True
             TxTDepartment.XOIsMandatory = False
+            TxTDepartment.XOIsPlaceholder = False
+            TxTDepartment.XOIsReplaceEmptyString = False
+            TxTDepartment.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxTDepartment.XOMandatoryBgColor = Color.LightPink
             TxTDepartment.XOMandatoryBgColorDefault = Color.White
-            TxTDepartment.XOHighlightOnFocus = False
-            TxTDepartment.XOHighlightColor = Color.LightYellow
-            TxTDepartment.XOIsBlank = True
-            TxTDepartment.XOIsPlaceholder = False
-            TxTDepartment.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
-            TxTDepartment.XOSelectOnFocus = False
+            TxTDepartment.XOMandatoryMessage = Nothing
             TxTDepartment.XOPasswordLengthMin = 8
             TxTDepartment.XOPasswordStrengthCalc = False
             TxTDepartment.XOPasswordStrengthScore = 0
             TxTDepartment.XOPasswordStrengthText = Nothing
-            TxTDepartment.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxTDepartment.XOPlaceholderText = "Type then press Enter"
+            TxTDepartment.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxTDepartment.XOSelectOnFocus = False
             TxTDepartment.XOSqlText = ""
-            TxTDepartment.XOIsReplaceEmptyString = False
-            TxTDepartment.XOMandatoryMessage = Nothing
             ' 
             ' TxtCompany
             ' 
-            TxtCompany.Font = New Font("Segoe UI", 12.0F)
+            TxtCompany.Font = New Font("Segoe UI", 12F)
             TxtCompany.Location = New Point(273, 15)
             TxtCompany.Margin = New Padding(6, 5, 6, 5)
             TxtCompany.MaxLength = 255
@@ -818,24 +818,24 @@
             TxtCompany.TabStop = False
             TxtCompany.Tag = "txt"
             TxtCompany.XOAutoTrim = False
+            TxtCompany.XOHighlightColor = Color.LightYellow
+            TxtCompany.XOHighlightOnFocus = False
+            TxtCompany.XOIsBlank = True
             TxtCompany.XOIsMandatory = False
+            TxtCompany.XOIsPlaceholder = False
+            TxtCompany.XOIsReplaceEmptyString = False
+            TxtCompany.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtCompany.XOMandatoryBgColor = Color.LightPink
             TxtCompany.XOMandatoryBgColorDefault = Color.White
-            TxtCompany.XOHighlightOnFocus = False
-            TxtCompany.XOHighlightColor = Color.LightYellow
-            TxtCompany.XOIsBlank = True
-            TxtCompany.XOIsPlaceholder = False
-            TxtCompany.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
-            TxtCompany.XOSelectOnFocus = False
+            TxtCompany.XOMandatoryMessage = Nothing
             TxtCompany.XOPasswordLengthMin = 8
             TxtCompany.XOPasswordStrengthCalc = False
             TxtCompany.XOPasswordStrengthScore = 0
             TxtCompany.XOPasswordStrengthText = Nothing
-            TxtCompany.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtCompany.XOPlaceholderText = "Type then press Enter"
+            TxtCompany.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtCompany.XOSelectOnFocus = False
             TxtCompany.XOSqlText = ""
-            TxtCompany.XOIsReplaceEmptyString = False
-            TxtCompany.XOMandatoryMessage = Nothing
             ' 
             ' tpGeneral
             ' 
@@ -868,11 +868,11 @@
             ULbl1.Margin = New Padding(9, 13, 9, 13)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(250, 39)
+            ULbl1.TabIndex = 1056
+            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl1.XOText = "Personal ID"
             ULbl1.XOTextAdjuster = True
             ULbl1.XOTextBorder = False
-            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
-            ULbl1.TabIndex = 1056
             ' 
             ' ULbl5
             ' 
@@ -881,11 +881,11 @@
             ULbl5.Margin = New Padding(9, 13, 9, 13)
             ULbl5.Name = "ULbl5"
             ULbl5.Size = New Size(250, 254)
+            ULbl5.TabIndex = 1055
+            ULbl5.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.XOText = "Address"
             ULbl5.XOTextAdjuster = True
             ULbl5.XOTextBorder = False
-            ULbl5.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl5.TabIndex = 1055
             ' 
             ' ULbl4
             ' 
@@ -894,11 +894,11 @@
             ULbl4.Margin = New Padding(9, 13, 9, 13)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 39)
+            ULbl4.TabIndex = 1054
+            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.XOText = "Gender"
             ULbl4.XOTextAdjuster = True
             ULbl4.XOTextBorder = False
-            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl4.TabIndex = 1054
             ' 
             ' ULbl3
             ' 
@@ -907,11 +907,11 @@
             ULbl3.Margin = New Padding(9, 13, 9, 13)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 39)
+            ULbl3.TabIndex = 1053
+            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.XOText = "Birth Place"
             ULbl3.XOTextAdjuster = True
             ULbl3.XOTextBorder = False
-            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl3.TabIndex = 1053
             ' 
             ' ULbl16
             ' 
@@ -920,11 +920,11 @@
             ULbl16.Margin = New Padding(9, 13, 9, 13)
             ULbl16.Name = "ULbl16"
             ULbl16.Size = New Size(250, 39)
+            ULbl16.TabIndex = 1052
+            ULbl16.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl16.XOText = "Date of Birth"
             ULbl16.XOTextAdjuster = True
             ULbl16.XOTextBorder = False
-            ULbl16.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl16.TabIndex = 1052
             ' 
             ' ULbl2
             ' 
@@ -933,16 +933,16 @@
             ULbl2.Margin = New Padding(9, 13, 9, 13)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(250, 39)
+            ULbl2.TabIndex = 1051
+            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl2.XOText = "Full Name"
             ULbl2.XOTextAdjuster = True
             ULbl2.XOTextBorder = False
-            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
-            ULbl2.TabIndex = 1051
             ' 
             ' TxtAddress
             ' 
             TxtAddress.BackColor = Color.White
-            TxtAddress.Font = New Font("Segoe UI", 12.0F)
+            TxtAddress.Font = New Font("Segoe UI", 12F)
             TxtAddress.Location = New Point(273, 352)
             TxtAddress.Margin = New Padding(6, 5, 6, 5)
             TxtAddress.MaxLength = 1024
@@ -953,29 +953,29 @@
             TxtAddress.TabIndex = 105
             TxtAddress.Tag = "txt"
             TxtAddress.XOAutoTrim = True
+            TxtAddress.XOHighlightColor = Color.LightYellow
+            TxtAddress.XOHighlightOnFocus = False
+            TxtAddress.XOIsBlank = False
             TxtAddress.XOIsMandatory = False
+            TxtAddress.XOIsPlaceholder = False
+            TxtAddress.XOIsReplaceEmptyString = False
+            TxtAddress.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtAddress.XOMandatoryBgColor = Color.LightPink
             TxtAddress.XOMandatoryBgColorDefault = Color.White
-            TxtAddress.XOHighlightOnFocus = False
-            TxtAddress.XOHighlightColor = Color.LightYellow
-            TxtAddress.XOIsBlank = False
-            TxtAddress.XOIsPlaceholder = False
-            TxtAddress.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
-            TxtAddress.XOSelectOnFocus = False
+            TxtAddress.XOMandatoryMessage = Nothing
             TxtAddress.XOPasswordLengthMin = 8
             TxtAddress.XOPasswordStrengthCalc = False
             TxtAddress.XOPasswordStrengthScore = 0
             TxtAddress.XOPasswordStrengthText = Nothing
-            TxtAddress.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtAddress.XOPlaceholderText = "Type then press Enter"
+            TxtAddress.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtAddress.XOSelectOnFocus = False
             TxtAddress.XOSqlText = ""
-            TxtAddress.XOIsReplaceEmptyString = False
-            TxtAddress.XOMandatoryMessage = Nothing
             ' 
             ' TxtBirthPlace
             ' 
             TxtBirthPlace.BackColor = Color.White
-            TxtBirthPlace.Font = New Font("Segoe UI", 12.0F)
+            TxtBirthPlace.Font = New Font("Segoe UI", 12F)
             TxtBirthPlace.Location = New Point(273, 217)
             TxtBirthPlace.Margin = New Padding(6, 5, 6, 5)
             TxtBirthPlace.MaxLength = 255
@@ -984,28 +984,28 @@
             TxtBirthPlace.TabIndex = 103
             TxtBirthPlace.Tag = "txt"
             TxtBirthPlace.XOAutoTrim = True
+            TxtBirthPlace.XOHighlightColor = Color.LightYellow
+            TxtBirthPlace.XOHighlightOnFocus = False
+            TxtBirthPlace.XOIsBlank = False
             TxtBirthPlace.XOIsMandatory = False
+            TxtBirthPlace.XOIsPlaceholder = False
+            TxtBirthPlace.XOIsReplaceEmptyString = False
+            TxtBirthPlace.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtBirthPlace.XOMandatoryBgColor = Color.LightPink
             TxtBirthPlace.XOMandatoryBgColorDefault = Color.White
-            TxtBirthPlace.XOHighlightOnFocus = False
-            TxtBirthPlace.XOHighlightColor = Color.LightYellow
-            TxtBirthPlace.XOIsBlank = False
-            TxtBirthPlace.XOIsPlaceholder = False
-            TxtBirthPlace.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
-            TxtBirthPlace.XOSelectOnFocus = False
+            TxtBirthPlace.XOMandatoryMessage = Nothing
             TxtBirthPlace.XOPasswordLengthMin = 8
             TxtBirthPlace.XOPasswordStrengthCalc = False
             TxtBirthPlace.XOPasswordStrengthScore = 0
             TxtBirthPlace.XOPasswordStrengthText = Nothing
-            TxtBirthPlace.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtBirthPlace.XOPlaceholderText = "Type then press Enter"
+            TxtBirthPlace.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtBirthPlace.XOSelectOnFocus = False
             TxtBirthPlace.XOSqlText = ""
-            TxtBirthPlace.XOIsReplaceEmptyString = False
-            TxtBirthPlace.XOMandatoryMessage = Nothing
             ' 
             ' DtpBirthDate
             ' 
-            DtpBirthDate.Font = New Font("Segoe UI", 12.0F)
+            DtpBirthDate.Font = New Font("Segoe UI", 12F)
             DtpBirthDate.Location = New Point(273, 150)
             DtpBirthDate.Margin = New Padding(6, 5, 6, 5)
             DtpBirthDate.MaxDate = New Date(2029, 4, 3, 0, 0, 0, 0)
@@ -1018,7 +1018,7 @@
             ' TxtPersonalID
             ' 
             TxtPersonalID.BackColor = Color.LightPink
-            TxtPersonalID.Font = New Font("Segoe UI", 12.0F)
+            TxtPersonalID.Font = New Font("Segoe UI", 12F)
             TxtPersonalID.Location = New Point(273, 15)
             TxtPersonalID.Margin = New Padding(6, 5, 6, 5)
             TxtPersonalID.MaxLength = 16
@@ -1027,30 +1027,30 @@
             TxtPersonalID.TabIndex = 100
             TxtPersonalID.Tag = "txt"
             TxtPersonalID.XOAutoTrim = True
+            TxtPersonalID.XOHighlightColor = Color.LightYellow
+            TxtPersonalID.XOHighlightOnFocus = True
+            TxtPersonalID.XOIsBlank = True
             TxtPersonalID.XOIsMandatory = True
+            TxtPersonalID.XOIsPlaceholder = False
+            TxtPersonalID.XOIsReplaceEmptyString = False
+            TxtPersonalID.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtPersonalID.XOMandatoryBgColor = Color.LightPink
             TxtPersonalID.XOMandatoryBgColorDefault = Color.White
-            TxtPersonalID.XOHighlightOnFocus = True
-            TxtPersonalID.XOHighlightColor = Color.LightYellow
-            TxtPersonalID.XOIsBlank = True
-            TxtPersonalID.XOIsPlaceholder = False
-            TxtPersonalID.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
-            TxtPersonalID.XOSelectOnFocus = False
+            TxtPersonalID.XOMandatoryMessage = Nothing
             TxtPersonalID.XOPasswordLengthMin = 8
             TxtPersonalID.XOPasswordStrengthCalc = False
             TxtPersonalID.XOPasswordStrengthScore = 0
             TxtPersonalID.XOPasswordStrengthText = Nothing
-            TxtPersonalID.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtPersonalID.XOPlaceholderText = "Type then press Enter"
+            TxtPersonalID.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtPersonalID.XOSelectOnFocus = False
             TxtPersonalID.XOSqlText = ""
-            TxtPersonalID.XOIsReplaceEmptyString = False
-            TxtPersonalID.XOMandatoryMessage = Nothing
             ' 
             ' CboGender
             ' 
             CboGender.DropDownStyle = ComboBoxStyle.DropDownList
             CboGender.FlatStyle = FlatStyle.Flat
-            CboGender.Font = New Font("Segoe UI", 12.0F)
+            CboGender.Font = New Font("Segoe UI", 12F)
             CboGender.FormattingEnabled = True
             CboGender.Items.AddRange(New Object() {"FEMALE", "MALE"})
             CboGender.Location = New Point(273, 285)
@@ -1062,7 +1062,7 @@
             ' TxtFullName
             ' 
             TxtFullName.BackColor = Color.LightPink
-            TxtFullName.Font = New Font("Segoe UI", 12.0F)
+            TxtFullName.Font = New Font("Segoe UI", 12F)
             TxtFullName.Location = New Point(273, 83)
             TxtFullName.Margin = New Padding(6, 5, 6, 5)
             TxtFullName.MaxLength = 255
@@ -1071,24 +1071,24 @@
             TxtFullName.TabIndex = 101
             TxtFullName.Tag = "txt"
             TxtFullName.XOAutoTrim = True
+            TxtFullName.XOHighlightColor = Color.LightYellow
+            TxtFullName.XOHighlightOnFocus = True
+            TxtFullName.XOIsBlank = False
             TxtFullName.XOIsMandatory = True
+            TxtFullName.XOIsPlaceholder = False
+            TxtFullName.XOIsReplaceEmptyString = False
+            TxtFullName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtFullName.XOMandatoryBgColor = Color.LightPink
             TxtFullName.XOMandatoryBgColorDefault = Color.White
-            TxtFullName.XOHighlightOnFocus = True
-            TxtFullName.XOHighlightColor = Color.LightYellow
-            TxtFullName.XOIsBlank = False
-            TxtFullName.XOIsPlaceholder = False
-            TxtFullName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
-            TxtFullName.XOSelectOnFocus = False
+            TxtFullName.XOMandatoryMessage = Nothing
             TxtFullName.XOPasswordLengthMin = 8
             TxtFullName.XOPasswordStrengthCalc = False
             TxtFullName.XOPasswordStrengthScore = 0
             TxtFullName.XOPasswordStrengthText = Nothing
-            TxtFullName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtFullName.XOPlaceholderText = "Type then press Enter"
+            TxtFullName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtFullName.XOSelectOnFocus = False
             TxtFullName.XOSqlText = ""
-            TxtFullName.XOIsReplaceEmptyString = False
-            TxtFullName.XOMandatoryMessage = Nothing
             ' 
             ' TbctlEmployee
             ' 
@@ -1096,7 +1096,7 @@
             TbctlEmployee.Controls.Add(tpGeneral)
             TbctlEmployee.Controls.Add(tpEmployment)
             TbctlEmployee.Controls.Add(tpPermissions)
-            TbctlEmployee.Font = New Font("Segoe UI", 12.0F)
+            TbctlEmployee.Font = New Font("Segoe UI", 12F)
             TbctlEmployee.Location = New Point(20, 25)
             TbctlEmployee.Margin = New Padding(6, 5, 6, 5)
             TbctlEmployee.Name = "TbctlEmployee"
@@ -1112,15 +1112,15 @@
             ULbl8.Margin = New Padding(7, 5, 7, 5)
             ULbl8.Name = "ULbl8"
             ULbl8.Size = New Size(250, 39)
+            ULbl8.TabIndex = 1041
+            ULbl8.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl8.XOText = "Photo"
             ULbl8.XOTextAdjuster = False
             ULbl8.XOTextBorder = False
-            ULbl8.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl8.TabIndex = 1041
             ' 
             ' FRMeplsEditor
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1181, 965)
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMeplsEditor"

@@ -29,6 +29,22 @@ Namespace CMDmods
             Return varSuccess
         End Function
 
+        <SupportedOSPlatform("windows")>
+        Public Shared Function GetModuleIdByCode(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Long
+            Dim varModuleId As Long
+
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                varDatabaseRequestMssql2008(0).Query = String.Format("select mods.module_id from dbo.sys_module mods where mods.module_code = '{0}'", parametername)
+                varModuleId = CLng(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseRequestMysql(0).Query = $"select {tModule.S}.{tModule.C_ModuleId} " &
+                                                   $"from {tModule.TableName} {tModule.S} " &
+                                                   $"where {tModule.S}.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}"
+                varModuleId = CLng(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, parametername))
+            End If
+
+            Return varModuleId
+        End Function
     End Class
 
     Public Class Editor

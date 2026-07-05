@@ -15,7 +15,7 @@
     Public varMaxUploadSizePDF As Double = 1.0
 
     'Default picture watermark
-    Public varTextmark As String = "CagakMelon - INGRID"
+    Public varTextmark As String = "Notification text"
 
     'Default minimum password strenght
     Public varMinPasswordLength As Integer = 8
