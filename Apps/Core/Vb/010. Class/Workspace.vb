@@ -48,7 +48,12 @@ Namespace UI
         Private WithEvents Frm_dummy As New UI.Canvas.FRMdummy
         Private WithEvents Frm_reset As New UI.Canvas.FRMreset
 #End Region
-
+        ''' <summary>
+        ''' Opens a specific module form based on the provided command code. This method checks the command code, retrieves module properties, and ensures that the corresponding form is created and displayed. If the form is already open, it brings it to focus. The method also handles exceptions and logs any errors that occur during the process.
+        ''' </summary>
+        ''' <param name="mainframe">The main application form that serves as the parent for the module forms.</param>
+        ''' <param name="commandcode">The command code that identifies which module form to open.</param>
+        ''' <param name="statusbar">An optional status bar control to update with module status information.</param>
         <SupportedOSPlatform("windows")>
         Public Sub Open(mainframe As Form, commandcode As String, Optional statusbar As CMCv.UI.Control.Stt = Nothing)
             Try

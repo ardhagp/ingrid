@@ -98,7 +98,7 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Try
-                With varDataProperties.AllParameters
+                With varDataProperties.UserParameters
                     .Remove(tSettings.P_SettingsId)
                     .Add(tSettings.P_SettingsId, varDataProperties.SystemSettingsId)
                     .Remove(tSettings.P_SettingsShowProfile)
@@ -131,7 +131,7 @@ Namespace UI.Canvas
                     .Add(tSettings.P_SettingsMinPasswordLength, CInt(nudMinPassword.Value))
                 End With
 
-                If CMDsyss.Editor.SaveSettings(varDataProperties) Then
+                If CMDsyss.Editor.SaveSettings(varDataProperties, varDataProperties.UserParameters) Then
                     SLFStatus.Items(0).Text = "Saved"
                 End If
             Catch ex As Exception
@@ -183,7 +183,6 @@ Namespace UI.Canvas
                     TxtFileDb.Enabled = True
                     TxtApiBucketName.Enabled = False
                     TxtApiBucketName.Visible = False
-
                 Else
                     ULblApiKey.Visible = True
                     ULblApiKey.XOText = "API Key"

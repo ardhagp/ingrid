@@ -17,7 +17,7 @@
             <xs:sequence>
               <xs:element name="DATABASEENGINE" msprop:Generator_ColumnPropNameInTable="DATABASEENGINEColumn" msprop:Generator_ColumnPropNameInRow="DATABASEENGINE" msprop:Generator_UserColumnName="DATABASEENGINE" msprop:Generator_ColumnVarNameInTable="columnDATABASEENGINE" type="xs:string" minOccurs="0" />
               <xs:element name="DBFORDATA" msprop:Generator_ColumnPropNameInTable="DBFORDATAColumn" msprop:Generator_ColumnPropNameInRow="DBFORDATA" msprop:Generator_UserColumnName="DBFORDATA" msprop:Generator_ColumnVarNameInTable="columnDBFORDATA" type="xs:string" minOccurs="0" />
-              <xs:element name="CLIENT" msprop:Generator_UserColumnName="CLIENT" msprop:Generator_ColumnPropNameInTable="CLIENTColumn" msprop:Generator_ColumnPropNameInRow="CLIENT" msprop:Generator_ColumnVarNameInTable="columnCLIENT" type="xs:string" minOccurs="0" />
+              <xs:element name="CLIENT" msprop:Generator_ColumnPropNameInTable="CLIENTColumn" msprop:Generator_ColumnPropNameInRow="CLIENT" msprop:Generator_UserColumnName="CLIENT" msprop:Generator_ColumnVarNameInTable="columnCLIENT" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -170,9 +170,13 @@
               <xs:element name="settings_storagedb" msprop:Generator_ColumnPropNameInTable="settings_storagedbColumn" msprop:Generator_ColumnPropNameInRow="settings_storagedb" msprop:Generator_UserColumnName="settings_storagedb" msprop:Generator_ColumnVarNameInTable="columnsettings_storagedb" type="xs:string" minOccurs="0" />
               <xs:element name="settings_client" msprop:Generator_ColumnPropNameInTable="settings_clientColumn" msprop:Generator_ColumnPropNameInRow="settings_client" msprop:Generator_UserColumnName="settings_client" msprop:Generator_ColumnVarNameInTable="columnsettings_client" type="xs:decimal" minOccurs="0" />
               <xs:element name="client_name" msprop:Generator_ColumnPropNameInTable="client_nameColumn" msprop:Generator_ColumnPropNameInRow="client_name" msprop:Generator_UserColumnName="client_name" msprop:Generator_ColumnVarNameInTable="columnclient_name" type="xs:string" minOccurs="0" />
-              <xs:element name="client_code" msprop:Generator_UserColumnName="client_code" msprop:Generator_ColumnPropNameInTable="client_codeColumn" msprop:Generator_ColumnPropNameInRow="client_code" msprop:Generator_ColumnVarNameInTable="columnclient_code" type="xs:string" minOccurs="0" />
-              <xs:element name="settings_minpasswordlength" msprop:Generator_ColumnPropNameInRow="settings_minpasswordlength" msprop:Generator_ColumnPropNameInTable="settings_minpasswordlengthColumn" msprop:Generator_ColumnVarNameInTable="columnsettings_minpasswordlength" msprop:Generator_UserColumnName="settings_minpasswordlength" type="xs:short" minOccurs="0" />
+              <xs:element name="client_code" msprop:Generator_ColumnPropNameInTable="client_codeColumn" msprop:Generator_ColumnPropNameInRow="client_code" msprop:Generator_UserColumnName="client_code" msprop:Generator_ColumnVarNameInTable="columnclient_code" type="xs:string" minOccurs="0" />
+              <xs:element name="settings_minpasswordlength" msprop:Generator_UserColumnName="settings_minpasswordlength" msprop:Generator_ColumnPropNameInTable="settings_minpasswordlengthColumn" msprop:Generator_ColumnPropNameInRow="settings_minpasswordlength" msprop:Generator_ColumnVarNameInTable="columnsettings_minpasswordlength" type="xs:short" minOccurs="0" />
             </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="file_attachment" msprop:Generator_RowEvHandlerName="file_attachmentRowChangeEventHandler" msprop:Generator_RowDeletedName="file_attachmentRowDeleted" msprop:Generator_RowDeletingName="file_attachmentRowDeleting" msprop:Generator_RowEvArgName="file_attachmentRowChangeEvent" msprop:Generator_TablePropName="file_attachment" msprop:Generator_RowChangedName="file_attachmentRowChanged" msprop:Generator_RowChangingName="file_attachmentRowChanging" msprop:Generator_TableClassName="file_attachmentDataTable" msprop:Generator_RowClassName="file_attachmentRow" msprop:Generator_TableVarName="tablefile_attachment" msprop:Generator_UserTableName="file_attachment">
+          <xs:complexType>
           </xs:complexType>
         </xs:element>
       </xs:choice>

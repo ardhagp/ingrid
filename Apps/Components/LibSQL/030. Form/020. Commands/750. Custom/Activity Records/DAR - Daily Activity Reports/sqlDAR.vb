@@ -543,7 +543,7 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function IsLike(dataproperties As LibApp.Ingrid.Global.Properties, fileid As String, eid As String) As Boolean
+        Public Shared Function IsLike(dataproperties As LibApp.Ingrid.Global.Properties, fileid As String, eid As Long) As Boolean
             Dim varResult As Integer = 0
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -567,7 +567,7 @@ Namespace CMDdar
         End Function
 
         <SupportedOSPlatform("windows")>
-        Public Shared Function LikePhoto(dataproperties As LibApp.Ingrid.Global.Properties, fileid As String, eid As String, fileowner As String) As Boolean
+        Public Shared Function LikePhoto(dataproperties As LibApp.Ingrid.Global.Properties, fileid As String, eid As Long, fileowner As String) As Boolean
             Dim varSuccess As Boolean
 
             Try

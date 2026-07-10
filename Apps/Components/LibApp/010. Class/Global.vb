@@ -1,4 +1,7 @@
 ﻿Namespace Ingrid.Global
+    ''' <summary>
+    ''' Type of access to the application. This enum is used to determine the type of access a user has to the application, such as view, add, edit, delete, or report.
+    ''' </summary>
     Public Enum TypeOfAccess
         [View]
         [Add]
@@ -7,18 +10,25 @@
         [Report]
     End Enum
 
+    ''' <summary>
+    ''' Type of database engine used in the application. This enum is used to determine the type of database engine to be used for connecting to the database, such as Microsoft SQL Server, MySQL, or PostgreSQL.
+    ''' </summary>
     Public Enum DatabaseEngine
         [MSSQL]
         [MYSQL]
         [PGSQL]
     End Enum
 
+    ''' <summary>
+    ''' Type of storage used in the application. This enum is used to determine the type of storage to be used for storing files, such as BackBlaze B2, Cloudinary, or Database.
+    ''' </summary>
     Public Enum StorageType
         [BackBlazeB2]
-        [Cloudinary]
-        [Database]
     End Enum
 
+    ''' <summary>
+    ''' Type of popup message to be displayed in the application. This enum is used to determine the type of message box to show to the user, such as an alert, error, information, confirmation, etc.
+    ''' </summary>
     Public Enum PopupType
         [Alert]
         [Error]
@@ -37,7 +47,7 @@
     End Enum
 
     ''' <summary>
-    ''' 
+    ''' Properties class is used to store various properties related to the application, such as parameters, user information, and other settings.
     ''' </summary>
     Public Class Properties
         Property AllParameters As New Dictionary(Of String, Object)
@@ -76,26 +86,28 @@
         Property CustomDailyActivityAreaIsNew As Boolean
         Property DepartmentIsNew As Boolean
         Property DepartmentIsForceRefresh As Boolean
-        Property DepartmentParameters As New Dictionary(Of String, Object)
-        Property EmployeeId As String
+        Property EmployeeId As Long
         Property EmployeeIsCommitSuccess As Boolean
         Property EmployeeIsForceRefresh As Boolean
         Property EmployeeIsForceChangePhoto As Boolean
+        Property EmployeeIsHavePhoto As Boolean
         Property EmployeeIsNew As Boolean
+        Property EmployeeIsPhotoRemoved As Boolean
         Property EmployeeFirstName As String
         Property EmployeeLastName As String
         Property EmployeeNumber As String
         Property EmployeeGender As String
         Property EmployeeGradeId As String
         Property EmployeeName As String
+        Property EmployeePositionId As String
+        Property EmployeePositionIsNew As Boolean
+        Property EmployeePhoto As System.Drawing.Image
         Property EmploymentTypeId As String
         Property EmploymentTypeIsForceRefresh As Boolean
         Property EmploymentTypeIsNew As Boolean
         Property EmploymentTypeCode As String
         Property EmploymentTypeName As String
         Property EmploymentTypeDescription As String
-        Property EmployeePositionId As String
-        Property EmployeePositionIsNew As Boolean
         Property EmployeePositionIsForceRefresh As Boolean
         Property EmployeePositionCode As String
         Property EmployeePositionParent As String

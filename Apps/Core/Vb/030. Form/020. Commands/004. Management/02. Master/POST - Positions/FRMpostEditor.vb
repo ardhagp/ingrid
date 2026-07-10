@@ -1,24 +1,18 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMpostEditor
 #Region "Declaration"
         Public Event EventRecordSaved()
 
         Public varIsFirstLoad As Boolean
-        Private Shared consTableName As String = "man_position"
 
-        'Parameters
-        Private Const pCompanyId As String = "@CompanyId"
-        Private Const pDepartmentId As String = "@DepartmentId"
-        Private Const pPositionCode As String = "@PositionCode"
-        Private Const pPositionName As String = "@PositionName"
-        Private Const pPositionDescription As String = "@PositionDescription"
+        ' This Module Identifier
+        Private varThisModuleId As Long = 0
+        Private Const varThisModuleCode As String = "POST"
 #End Region
 
 #Region "Subs Collections"
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub CheckAllInput()
             CboCompany.Focus()
             CboDepartement.Focus()
@@ -26,11 +20,9 @@ Namespace UI.Canvas
             TxtPositionName.Focus()
             BtnSave.Focus()
         End Sub
-
-        'Private sub _SQL as libsql.com
 #End Region
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMpostEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             varIsFirstLoad = True
             If (varDataProperties.EmployeePositionIsNew) Then
@@ -41,48 +33,43 @@ Namespace UI.Canvas
                 ChkAddNew.Visible = False
                 CMDpost.Editor.FillCompany(varDataProperties, CboCompany)
                 CMDpost.Editor.GetPositionProperties(varDataProperties, varDatasetIngrid)
-                If varDatasetIngrid.Tables(consTableName).Rows.Count > 0 Then
-                    With varDatasetIngrid.Tables(consTableName).Rows(0)
-                        CboCompany.SelectedValue = .Item("department_company").ToString
+                If varDatasetIngrid.Tables(tPosition.TableName).Rows.Count > 0 Then
+                    With varDatasetIngrid.Tables(tPosition.TableName).Rows(0)
+                        CboCompany.SelectedValue = .Item(tCompany.C_CompanyId).ToString
                         CMDpost.Editor.FillDepartement(varDataProperties, CboDepartement, CboCompany)
-                        CboDepartement.SelectedValue = .Item("position_department").ToString
-                        TxtPositionCode.Text = .Item("position_code").ToString
-                        TxtPositionName.Text = .Item("position_name").ToString
-                        TxtPositionDescription.Text = .Item("position_description").ToString
+                        CboDepartement.SelectedValue = .Item(tDepartment.C_DepartmentId).ToString
+                        TxtPositionCode.Text = .Item(tPosition.C_PositionCode).ToString
+                        TxtPositionName.Text = .Item(tPosition.C_PositionName).ToString
+                        TxtPositionDescription.Text = .Item(tPosition.C_PositionDescription).ToString
                     End With
                 End If
             End If
             varIsFirstLoad = False
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CboCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
             If Not (varIsFirstLoad) Then
                 CMDpost.Editor.FillDepartement(varDataProperties, CboDepartement, CboCompany)
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-            With varDataProperties.AllParameters
-                .Remove(pCompanyId)
-                .Add(pCompanyId, CLng(CboCompany.SelectedValue))
-                .Remove(pDepartmentId)
-                .Add(pDepartmentId, CLng(CboDepartement.SelectedValue))
-                .Remove(pPositionCode)
-                .Add(pPositionCode, TxtPositionCode.XOSqlText)
-                .Remove(pPositionName)
-                .Add(pPositionName, TxtPositionName.XOSqlText)
-                .Remove(pPositionDescription)
-                .Add(pPositionDescription, IIf(TxtPositionDescription.XOSqlText = String.Empty OrElse TxtPositionDescription.XOSqlText = "", DBNull.Value, TxtPositionDescription.XOSqlText))
+            With varDataProperties
+                SetValue(.AllParameters, tCompany.P_CompanyId, CLng(CboCompany.SelectedValue))
+                SetValue(.AllParameters, tDepartment.P_DepartmentId, CLng(CboDepartement.SelectedValue))
+                SetValue(.AllParameters, tPosition.P_PositionCode, TxtPositionCode.XOSqlText)
+                SetValue(.AllParameters, tPosition.P_PositionName, TxtPositionName.XOSqlText)
+                SetValue(.AllParameters, tPosition.P_PositionDescription, IIf(TxtPositionDescription.XOSqlText = String.Empty OrElse TxtPositionDescription.XOSqlText = "", DBNull.Value, TxtPositionDescription.XOSqlText))
             End With
 
-            If (CboDepartement.Items.Count = 0) OrElse (varDataProperties.AllParameters(pPositionCode).ToString = String.Empty) OrElse (varDataProperties.AllParameters(pPositionName).ToString = String.Empty) Then
+            If (CboDepartement.Items.Count = 0) OrElse (varDataProperties.AllParameters(tPosition.P_PositionCode).ToString = String.Empty) OrElse (varDataProperties.AllParameters(tPosition.P_PositionName).ToString = String.Empty) Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Make sure you have Department selected, Postition Code and Position Description are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             ElseIf ((varDataProperties.EmployeePositionIsNew) AndAlso (CMDpost.Editor.IsDuplicate(varDataProperties))) Then
@@ -109,6 +96,12 @@ Namespace UI.Canvas
             Else
                 Me.Close()
             End If
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMpostEditor_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+            ' Set active module to UserParameters
+            SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
         End Sub
     End Class
 End Namespace

@@ -3,9 +3,6 @@
     Public varProductionMode As Boolean = My.Settings.PRODUCTIONMODE
 
     'Still unused
-    'Public Const _LOADINGTIME As Integer = 0 
-
-    'Still unused
     Public Const varStatusTimeWait As Integer = 2
 
     'In megabytes
@@ -19,5 +16,4 @@
 
     'Default minimum password strenght
     Public varMinPasswordLength As Integer = 8
-
 End Module

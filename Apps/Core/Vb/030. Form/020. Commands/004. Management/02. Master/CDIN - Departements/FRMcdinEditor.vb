@@ -1,27 +1,21 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMcdinEditor
 
 #Region "Declaration"
         Public Event EventRecordSaved()
-        Private Shared consTableName As String = "man_department"
 
-        'Parameters
-        Private Const pCompanyId As String = "@CompanyId"
-        Private Const pDepartmentCode As String = "@DepartmentCode"
-        Private Const pDepartmentName As String = "@DepartmentName"
-        Private Const pDepartmentDescription As String = "@DepartmentDescription"
-
+        ' This Module Identifier
+        Private varThisModuleId As Long = 0
+        Private Const varThisModuleCode As String = "CDIN"
 #End Region
 
 #Region "Subs Collections"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FillCompany(company As CMCv.UI.Control.Cbo)
             CMDcdin.Editor.FillCompany(varDataProperties, company)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CheckAllInput()
             CboCompany.Focus()
             TxtDeptCode.Focus()
@@ -31,7 +25,7 @@ Namespace UI.Canvas
         End Sub
 #End Region
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcdinEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Call FillCompany(CboCompany)
             If varDataProperties.DepartmentIsNew Then
@@ -41,30 +35,26 @@ Namespace UI.Canvas
                 ChkAddNew.Visible = False
                 ChkAddNew.Checked = False
                 CMDcdin.Editor.GetDepartmentProperties(varDataProperties, varDatasetIngrid)
-                If varDatasetIngrid.Tables(consTableName).Rows.Count > 0 Then
-                    With varDatasetIngrid.Tables(consTableName).Rows(0)
-                        CboCompany.SelectedValue = .Item("department_company").ToString
-                        TxtDeptCode.Text = .Item("department_code").ToString
-                        TxtDeptName.Text = .Item("department_name").ToString
-                        TxtDescription.Text = .Item("department_description").ToString
+                If varDatasetIngrid.Tables(tDepartment.TableName).Rows.Count > 0 Then
+                    With varDatasetIngrid.Tables(tDepartment.TableName).Rows(0)
+                        CboCompany.SelectedValue = .Item(tDepartment.C_DepartmentCompany).ToString
+                        TxtDeptCode.Text = .Item(tDepartment.C_DepartmentCode).ToString
+                        TxtDeptName.Text = .Item(tDepartment.C_DepartmentName).ToString
+                        TxtDescription.Text = .Item(tDepartment.C_DepartmentDescription).ToString
                     End With
                 End If
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             CheckAllInput()
 
             With varDataProperties
-                .AllParameters.Remove(pCompanyId)
-                .AllParameters.Add(pCompanyId, CLng(CboCompany.SelectedValue))
-                .AllParameters.Remove(pDepartmentCode)
-                .AllParameters.Add(pDepartmentCode, IIf(TxtDeptCode.XOSqlText = String.Empty OrElse TxtDeptCode.XOSqlText = "", DBNull.Value, TxtDeptCode.XOSqlText))
-                .AllParameters.Remove(pDepartmentName)
-                .AllParameters.Add(pDepartmentName, IIf(TxtDeptName.XOSqlText = String.Empty OrElse TxtDeptName.XOSqlText = "", DBNull.Value, TxtDeptName.XOSqlText))
-                .AllParameters.Remove(pDepartmentDescription)
-                .AllParameters.Add(pDepartmentDescription, IIf(TxtDescription.XOSqlText = String.Empty OrElse TxtDescription.XOSqlText = "", DBNull.Value, TxtDescription.XOSqlText))
+                SetValue(.AllParameters, tCompany.P_CompanyId, CLng(CboCompany.SelectedValue))
+                SetValue(.AllParameters, tDepartment.P_DepartmentCode, IIf(TxtDeptCode.XOSqlText = String.Empty OrElse TxtDeptCode.XOSqlText = "", DBNull.Value, TxtDeptCode.XOSqlText))
+                SetValue(.AllParameters, tDepartment.P_DepartmentName, IIf(TxtDeptName.XOSqlText = String.Empty OrElse TxtDeptName.XOSqlText = "", DBNull.Value, TxtDeptName.XOSqlText))
+                SetValue(.AllParameters, tDepartment.P_DepartmentDescription, IIf(TxtDescription.XOSqlText = String.Empty OrElse TxtDescription.XOSqlText = "", DBNull.Value, TxtDescription.XOSqlText))
             End With
 
             If (CboCompany.Items.Count = 0) AndAlso (varDataProperties.AllParameters("@DepartmentCode").ToString = String.Empty) OrElse (varDataProperties.AllParameters("@DepartmentName").ToString = String.Empty) Then
@@ -97,9 +87,15 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMcdinEditor_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+            ' Set active module to UserParameters
+            SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
         End Sub
     End Class
 End Namespace

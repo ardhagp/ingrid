@@ -4,6 +4,7 @@
         Private WithEvents Frm_epls_Editor As New FRMeplsEditor
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
+        ' This Module Identifier
         Private varThisModuleId As Long = 0
         Private Const varThisModuleCode As String = "EPLS"
 #End Region
@@ -19,28 +20,31 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetRowID()
-            If DgnEPLS.RowCount = 0 Then
-                varDataProperties.EmployeeIsNew = True
-            Else
-                varDataProperties.EmployeeIsNew = False
-                varDataProperties.AllParameters.Remove(tEmployee.P_EmployeeId)
-                varDataProperties.AllParameters.Add(tEmployee.P_EmployeeId, CLng(DgnEPLS.CurrentRow.Cells("employee_id").Value))
-            End If
+            With varDataProperties
+                If DgnEPLS.RowCount = 0 Then
+                    .EmployeeIsNew = True
+                Else
+                    .EmployeeIsNew = False
+                    SetValue(.AllParameters, tEmployee.P_EmployeeId, CLng(DgnEPLS.CurrentRow.Cells(tEmployee.C_EmployeeId).Value))
+                End If
+            End With
         End Sub
 #End Region
 
 #Region "Menu Strip Functions"
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Add
-            If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                Return
-            End If
+            With varDataProperties
+                .SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Add
+                If Not (varUserAccess.User(varDataProperties)) Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Return
+                End If
 
-            varDataProperties.EmployeeIsNew = True
-            Frm_epls_Editor = New FRMeplsEditor
-            Display(Frm_epls_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new employee data", True)
+                .EmployeeIsNew = True
+                Frm_epls_Editor = New FRMeplsEditor
+                Display(Frm_epls_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new employee data", True)
+            End With
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
@@ -120,11 +124,11 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMepls_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             ' Set active module to UserParameters
-            varDataProperties.UserParameters.Remove(tModule.P_ModuleCode)
-            varDataProperties.UserParameters.Add(tModule.P_ModuleCode, varThisModuleCode)
-            varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.UserParameters)
-            varDataProperties.UserParameters.Remove(tModule.P_ModuleId)
-            varDataProperties.UserParameters.Add(tModule.P_ModuleId, varThisModuleId)
+            With varDataProperties
+                SetValue(.UserParameters, tModule.P_ModuleCode, varThisModuleCode)
+                varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.UserParameters)
+                SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
+            End With
 
             ' Continue to Load anything for this module
             Com_mms_Menu.LoadIn(Me)
@@ -161,8 +165,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMepls_Activated(sender As Object, e As EventArgs) Handles Me.Activated
             ' Set active module to UserParameters
-            varDataProperties.UserParameters.Remove(tModule.P_ModuleCode)
-            varDataProperties.UserParameters.Add(tModule.P_ModuleCode, varThisModuleCode)
+            SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
         End Sub
     End Class
 End Namespace

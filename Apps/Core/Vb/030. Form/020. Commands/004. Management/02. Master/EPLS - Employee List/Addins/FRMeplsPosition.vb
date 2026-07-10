@@ -1,70 +1,58 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMeplsPosition
 #Region "Declaration"
         Public Event EventRecordSelected()
 
-        'Parameters
-        Private Const pCompanyName As String = "@CompanyName"
-        Private Const pDepartmentName As String = "@DepartmentName"
-        Private Const pPositionId As String = "@PositionId"
-        Private Const pPositionName As String = "@PositionName"
+        ' This Module Identifier
+        Private varThisModuleId As Long = 0
+        Private Const varThisModuleCode As String = "POST"
 #End Region
 
 #Region "Subs Collections"
-        <SupportedOSPlatform("windows")>
-        Private Sub GetRowID()
-            varDataProperties.EmployeeId = "-1"
-            If DgnAddinPosition.RowCount > 0 Then
-                varDataProperties.EmployeeId = DgnAddinPosition.CurrentRow.Cells("employee_id").Value.ToString
-            End If
-        End Sub
-
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="forcerefresh"></param>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             CMDepls.Addins.Browse.Position.DisplayData(varDataProperties, DgnAddinPosition, SLFStatus, TxtFind, forcerefresh)
         End Sub
 #End Region
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
             If DgnAddinPosition.RowCount = 0 Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 With DgnAddinPosition.CurrentRow
-                    varDataProperties.AllParameters.Remove(pCompanyName)
-                    varDataProperties.AllParameters.Add(pCompanyName, .Cells("company_name").Value.ToString)
-                    varDataProperties.AllParameters.Remove(pDepartmentName)
-                    varDataProperties.AllParameters.Add(pDepartmentName, .Cells("departement_name").Value.ToString)
-                    varDataProperties.AllParameters.Remove(pPositionId)
-                    varDataProperties.AllParameters.Add(pPositionId, CLng(.Cells("position_id").Value))
-                    varDataProperties.AllParameters.Remove(pPositionName)
-                    varDataProperties.AllParameters.Add(pPositionName, .Cells("position_name").Value.ToString)
+                    SetValue(varDataProperties.AllParameters, tCompany.P_CompanyName, .Cells(tCompany.C_CompanyName).Value.ToString)
+                    SetValue(varDataProperties.AllParameters, tDepartment.P_DepartmentName, .Cells(tDepartment.C_DepartmentName).Value.ToString)
+                    SetValue(varDataProperties.AllParameters, tPosition.P_PositionId, CLng(.Cells(tPosition.C_PositionId).Value))
+                    SetValue(varDataProperties.AllParameters, tPosition.P_PositionName, .Cells(tPosition.C_PositionName).Value.ToString)
                 End With
                 RaiseEvent EventRecordSelected()
                 Me.Close()
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMeplsPosition_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Call GetData()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
             If e.KeyCode = Keys.Enter Then
                 Call GetData()
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
             TxtFind.Clear()
             Call GetData(True)

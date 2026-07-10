@@ -1,13 +1,17 @@
-﻿Imports System.Drawing
-Imports System.IO
-Imports System.Runtime.Versioning
-Imports CMCv
-
-Namespace CMDepls
+﻿Namespace CMDepls
+    ''' <summary>
+    ''' The View class provides methods for displaying and managing employee data in a user interface. It includes functionality to display employee data in a grid, delete employee records, and retrieve various employee properties from the database. The class supports both MSSQL and MySQL database engines and handles data retrieval and manipulation based on the specified database engine.
+    ''' </summary>
     Public Class View
-
-        <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, grid As CMCv.UI.Control.dgn, status As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt)
+        ''' <summary>
+        ''' Displays employee data in a specified grid control based on the provided data properties, status bar, and search criteria. This function constructs a SQL query to retrieve employee information from the database, applying filters based on the search text. It supports both MSSQL and MySQL database engines and populates the grid with the retrieved data. The function also updates the status bar to reflect the current state of the data display.
+        ''' </summary>
+        ''' <param name="dataproperties">The data properties containing the database connection information.</param>
+        ''' <param name="grid">The grid control where the employee data will be displayed.</param>
+        ''' <param name="status">The status bar control to update with the current state of the data display.</param>
+        ''' <param name="find">The text box control containing the search criteria for filtering employee data.</param>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, grid As CMCv.UI.Control.Dgn, status As CMCv.UI.Control.Stt, find As CMCv.UI.Control.Txt)
             ReDim varDatabaseRequestMssql2008(2)
             Dim varWhere As String = $"where "
 
@@ -56,7 +60,13 @@ Namespace CMDepls
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' Deletes employee data from the database based on the provided data properties and dataset name. This function constructs a SQL query to delete an employee record from the database, using the specified employee ID as a parameter. It supports both MSSQL and MySQL database engines and executes the deletion operation accordingly. The function returns a boolean value indicating whether the deletion was successful or not.
+        ''' </summary>
+        ''' <param name="dataproperties">The data properties containing the database connection information.</param>
+        ''' <param name="datasetname">The dataset name containing the employee data to be deleted.</param>
+        ''' <returns>True if the deletion was successful; otherwise, False.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function DeleteData(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet) As Boolean
             Dim varSuccess As Boolean
             Try
@@ -76,12 +86,20 @@ Namespace CMDepls
         End Function
     End Class
 
+    ''' <summary>
+    ''' The Editor class provides methods for retrieving and managing employee properties from the database. It includes functionality to get various employee attributes such as company, department, position, grade, personal ID, birth date, birth place, address, employee number, full name, nickname, contract type, active status, gender, and
+    ''' </summary>
     Public Class Editor
         ReadOnly varImage As New CMCv.ImageEditor.Proccessor.Compress
 
         Private Const pEmployeeToken As String = "@EmployeeToken"
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' Retrieves employee properties from the database and populates the specified dataset with the retrieved data. This function constructs a SQL query to select various employee attributes based on the provided data properties and employee ID. It supports both MSSQL and MySQL database engines and fills the dataset with the retrieved employee information. The function is intended for use in an editor context where employee details need to be displayed or modified.
+        ''' </summary>
+        ''' <param name="dataproperties">The data properties containing the database connection information.</param>
+        ''' <param name="datasetname">The dataset name to be populated with the retrieved employee data.</param>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Sub GetEmployeeProperties(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(0).Query = $"select em.employee_id, cm.company_id, cm.company_code, cm.company_name, " &
@@ -126,7 +144,14 @@ Namespace CMDepls
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' Retrieves the company name associated with a specific employee or position from the database. This function constructs a SQL query to select the company name based on the provided employee ID or position ID. If the position ID is not provided, it retrieves the company name based on the employee ID. The function supports both MSSQL and MySQL database engines and returns the company name as a string.
+        ''' </summary>
+        ''' <param name="dataproperties">The data properties containing the database connection information.</param>
+        ''' <param name="rowid">The ID of the employee for which to retrieve the company name.</param>
+        ''' <param name="positionid">The optional ID of the position for which to retrieve the company name. If not provided, the employee ID is used.</param>
+        ''' <returns>The name of the company associated with the specified employee or position.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetCompany(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, Optional positionid As String = "-1") As String
             Dim varCompany As String
 
@@ -144,9 +169,16 @@ Namespace CMDepls
             Return varCompany
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' Retrieves the department name associated with a specific employee or position from the database. This function constructs a SQL query to select the department name based on the provided employee ID or position ID. If the position ID is not provided, it retrieves the department name based on the employee ID. The function supports both MSSQL and MySQL database engines and returns the department name as a string.
+        ''' </summary>
+        ''' <param name="dataproperties">The data properties containing the database connection information.</param>
+        ''' <param name="rowid">The ID of the employee for which to retrieve the department name.</param>
+        ''' <param name="positionid">The optional ID of the position for which to retrieve the department name. If not provided, the employee ID is used.</param>
+        ''' <returns>The name of the department associated with the specified employee or position.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetDepartment(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, Optional positionid As String = "-1") As String
-            Dim varDepartment As String = String.Empty
+            Dim varDepartment As String
 
             If positionid = "-1" Then
                 varDatabaseRequestMssql2008(1).Query = String.Format("select dp.departement_name from dbo.man_employee em inner join dbo.man_position ps on ps.position_id = em.employee_position " &
@@ -161,8 +193,14 @@ Namespace CMDepls
             Return varDepartment
         End Function
 
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GETPositionID(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
+        ''' <summary>
+        ''' Retrieves the position ID associated with a specific employee from the database. This function constructs a SQL query to select the position ID based on the provided employee ID. The function supports both MSSQL and MySQL database engines and returns the position ID as a string.
+        ''' </summary>
+        ''' <param name="dataproperties">The data properties containing the database connection information.</param>
+        ''' <param name="rowid">The ID of the employee for which to retrieve the position ID.</param>
+        ''' <returns>The position ID associated with the specified employee.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Function GetPositionID(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varPositionID As String = String.Empty
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_position from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
@@ -172,8 +210,15 @@ Namespace CMDepls
             Return varPositionID
         End Function
 
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GETPosition(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, Optional positionid As String = "-1") As String
+        ''' <summary>
+        ''' Retrieves the position name associated with a specific employee or position from the database. This function constructs a SQL query to select the position name based on the provided employee ID or position ID. If the position ID is not provided, it retrieves the position name based on the employee ID. The function supports both MSSQL and MySQL database engines and returns the position name as a string.
+        ''' </summary>
+        ''' <param name="dataproperties">The data properties containing the database connection information.</param>
+        ''' <param name="rowid">The ID of the employee for which to retrieve the position name.</param>
+        ''' <param name="positionid">The ID of the position for which to retrieve the position name. If not provided, the function retrieves the position name based on the employee ID.</param>
+        ''' <returns>The position name associated with the specified employee or position.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Function GetPosition(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String, Optional positionid As String = "-1") As String
             Dim varPosition As String = String.Empty
 
             If positionid = "-1" Then
@@ -187,7 +232,13 @@ Namespace CMDepls
             Return varPosition
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' Retrieves the grade ID associated with a specific employee from the database. This function constructs a SQL query to select the grade ID based on the provided employee ID. The function supports both MSSQL and MySQL database engines and returns the grade ID as a string.
+        ''' </summary>
+        ''' <param name="dataproperties">The data properties containing the database connection information.</param>
+        ''' <param name="rowid">The ID of the employee for which to retrieve the grade ID.</param>
+        ''' <returns>The grade ID associated with the specified employee.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetGradeID(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varGradeID As String
 
@@ -198,7 +249,13 @@ Namespace CMDepls
             Return varGradeID
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' Retrieves the grade name associated with a specific employee from the database. This function constructs a SQL query to select the grade name based on the provided employee ID. The function supports both MSSQL and MySQL database engines and returns the grade name as a string.
+        ''' </summary>
+        ''' <param name="dataproperties">The data properties containing the database connection information.</param>
+        ''' <param name="rowid">The ID of the employee for which to retrieve the grade name.</param>
+        ''' <returns>The grade name associated with the specified employee.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetGrade(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varGrade As String
 
@@ -209,7 +266,13 @@ Namespace CMDepls
             Return varGrade
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' Retrieves the personal ID associated with a specific employee from the database. This function constructs a SQL query to select the personal ID based on the provided employee ID. The function supports both MSSQL and MySQL database engines and returns the personal ID as a string.
+        ''' </summary>
+        ''' <param name="dataproperties">The data properties containing the database connection information.</param>
+        ''' <param name="rowid">The ID of the employee for which to retrieve the personal ID.</param>
+        ''' <returns>The personal ID associated with the specified employee.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetPersonalID(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varPersonalID As String
 
@@ -220,7 +283,13 @@ Namespace CMDepls
             Return varPersonalID
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' Retrieves the birth date associated with a specific employee from the database. This function constructs a SQL query to select the birth date based on the provided employee ID. The function supports both MSSQL and MySQL database engines and returns the birth date as a Date object.
+        ''' </summary>
+        ''' <param name="dataproperties">The data properties containing the database connection information.</param>
+        ''' <param name="rowid">The ID of the employee for which to retrieve the birth date.</param>
+        ''' <returns>The birth date associated with the specified employee.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetBirthDate(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Date
             Dim varBirthDate As Date
 
@@ -231,7 +300,13 @@ Namespace CMDepls
             Return varBirthDate
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' Retrieves the birth place associated with a specific employee from the database. This function constructs a SQL query to select the birth place based on the provided employee ID. The function supports both MSSQL and MySQL database engines and returns the birth place as a string.
+        ''' </summary>
+        ''' <param name="dataproperties">The data properties containing the database connection information.</param>
+        ''' <param name="rowid">The ID of the employee for which to retrieve the birth place.</param>
+        ''' <returns>The birth place associated with the specified employee.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetBirthPlace(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varBirthPlace As String
 
@@ -242,7 +317,13 @@ Namespace CMDepls
             Return varBirthPlace
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <param name="rowid"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetAddress(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varBirthPlace As String
 
@@ -253,8 +334,14 @@ Namespace CMDepls
             Return varBirthPlace
         End Function
 
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GETEmployeeNumber(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <param name="rowid"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Function GetEmployeeNumber(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varEmployeeNumber As String
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select em.employee_number from dbo.man_employee em where (em.employee_id = '{0}')", rowid)
@@ -264,7 +351,13 @@ Namespace CMDepls
             Return varEmployeeNumber
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <param name="rowid"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetEmployeeFullName(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varEmployeeName As String
 
@@ -275,7 +368,13 @@ Namespace CMDepls
             Return varEmployeeName
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <param name="rowid"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetEmployeeNickname(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varNickname As String
 
@@ -286,7 +385,13 @@ Namespace CMDepls
             Return varNickname
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <param name="rowid"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetContractTypeID(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varContractTypeID As String
 
@@ -297,7 +402,13 @@ Namespace CMDepls
             Return varContractTypeID
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <param name="rowid"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetContractType(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varContractType As String
 
@@ -309,7 +420,13 @@ Namespace CMDepls
             Return varContractType
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <param name="rowid"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetActiveEmployee(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Boolean
             Dim varActiveEmployee As Boolean = False
 
@@ -320,7 +437,13 @@ Namespace CMDepls
             Return varActiveEmployee
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <param name="rowid"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetGender(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varGender As String
 
@@ -334,31 +457,50 @@ Namespace CMDepls
             Return varGender
         End Function
 
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GetIsHavePhoto(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Boolean
-            Dim varIsHavePhoto As Integer = 0
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <param name="datasetname"></param>
+        ''' <param name="parametername"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Function GetIsHavePhoto(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet, parametername As Dictionary(Of String, Object)) As Boolean
+            Dim varIsHavePhoto As Integer
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(0).Query = $"select count(f.file_id) as total from db_universe_erp_file.dbo.sto_file f where (f.file_parent = '0') and (f.file_tag = 'EMPLOYEE-PROFILE-PHOTO');"
                 varIsHavePhoto = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = $"select count({tAttachment.S}.{tAttachment.C_AttachmentId}) " &
+                varDatabaseRequestMysql(0).Query = $"select {tAttachment.S}.{tAttachment.C_AttachmentId}, " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentModule}, " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentFileName}, " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentExtension}, " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentUrl} ," &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentTag} , " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentProvider} " &
                                                    $"from {tAttachment.TableName} {tAttachment.S} " &
                                                    $"where {tAttachment.S}.{tAttachment.C_AttachmentParentId} = {tEmployee.P_EmployeeId} And " &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentModule} = {tModule.P_ModuleId} And " &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentTag} = 'EMPLOYEE-PROFILE-PHOTO'"
-                varIsHavePhoto = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, parametername))
+                varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tAttachment.TableName, parametername)
             End If
 
-            If varIsHavePhoto = 0 Then
+            If datasetname.Tables(tAttachment.TableName).Rows.Count = 0 Then
                 Return False
             Else
                 Return True
             End If
         End Function
 
-        <SupportedOSPlatform("windows")>
-        Public Shared Function GetPhoto(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Image
+        ''' <summary>
+        ''' Gets the photo of an employee based on the provided row ID. This function queries the database for the photo associated with the specified employee and returns it as an Image object. If the photo is not found or an error occurs, it returns Nothing.
+        ''' </summary>
+        ''' <param name="dataproperties">The data properties containing the database connection information.</param>
+        ''' <param name="rowid">The row ID of the employee whose photo is to be retrieved.</param>
+        ''' <returns>An Image object representing the employee's photo, or Nothing if not found or an error occurs.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Function GetPhoto(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As System.Drawing.Image
             Dim varPhoto As System.Drawing.Image = Nothing
             Dim varBytes As Byte()
 
@@ -376,7 +518,12 @@ Namespace CMDepls
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function IsPersonalIdExist(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varIsExist As Integer
 
@@ -403,7 +550,13 @@ Namespace CMDepls
             End If
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <param name="positionid"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function IsPositionExist(dataproperties As LibApp.Ingrid.Global.Properties, positionid As String) As Boolean
             Dim varIsExist As Integer
 
@@ -417,7 +570,12 @@ Namespace CMDepls
             End If
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function IsEmployeeNumberDuplicate(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varIsDuplicate As Integer = 0
             Dim varWhere As String = "where "
@@ -453,8 +611,14 @@ Namespace CMDepls
             End If
         End Function
 
-        <SupportedOSPlatform("windows")>
-        Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <param name="parametername"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Boolean
             Dim varSuccess As Boolean = False
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -473,28 +637,28 @@ Namespace CMDepls
                     If dataproperties.EmployeeIsNew Then
                         dataproperties.AllParameters.Remove(pEmployeeToken)
                         dataproperties.AllParameters.Add(pEmployeeToken, CMCv.Security.Encrypt.MD5())
-                        varDatabaseRequestMysql(1).Query = $"insert into man_employee(employee_token, " &
-                                                           $"employee_personalid, " &
-                                                           $"employee_position, " &
-                                                           $"employee_number, " &
-                                                           $"employee_fullname, " &
-                                                           $"employee_birthdate, " &
-                                                           $"employee_birthplace, " &
-                                                           $"employee_address, " &
-                                                           $"employee_nickname, " &
-                                                           $"employee_active, " &
-                                                           $"employee_gender) " &
-                                                           $"values (@EmployeeToken, " &
-                                                           $"@EmployeePersonalId, " &
-                                                           $"@PositionId, " &
-                                                           $"@EmployeeNumber, " &
-                                                           $"@EmployeeFullName, " &
-                                                           $"@EmployeeBirthDate, " &
-                                                           $"@EmployeeBirthPlace, " &
-                                                           $"@EmployeeAddress, " &
-                                                           $"@EmployeeNickname, " &
-                                                           $"@EmployeeIsActive, " &
-                                                           $"@EmployeeGender);"
+                        varDatabaseRequestMysql(1).Query = $"insert into {tEmployee.TableName}({tEmployee.C_EmployeeToken}, " &
+                                                           $"{tEmployee.C_EmployeePersonalIdNumber}, " &
+                                                           $"{tEmployee.C_EmployeePosition}, " &
+                                                           $"{tEmployee.C_EmployeeNumber}, " &
+                                                           $"{tEmployee.C_EmployeeFullName}, " &
+                                                           $"{tEmployee.C_EmployeeBirthDate}, " &
+                                                           $"{tEmployee.C_EmployeeBirthPlace}, " &
+                                                           $"{tEmployee.C_EmployeeAddress}, " &
+                                                           $"{tEmployee.C_EmployeeNickname}, " &
+                                                           $"{tEmployee.C_EmployeeIsActive}, " &
+                                                           $"{tEmployee.C_EmployeeGender}) " &
+                                                           $"values ({tEmployee.P_EmployeeToken}, " &
+                                                           $"{tEmployee.P_EmployeePersonalIdNumber}, " &
+                                                           $"{tEmployee.P_EmployeePosition}, " &
+                                                           $"{tEmployee.P_EmployeeNumber}, " &
+                                                           $"{tEmployee.P_EmployeeFullName}, " &
+                                                           $"{tEmployee.P_EmployeeBirthDate}, " &
+                                                           $"{tEmployee.P_EmployeeBirthPlace}, " &
+                                                           $"{tEmployee.P_EmployeeAddress}, " &
+                                                           $"{tEmployee.P_EmployeeNickname}, " &
+                                                           $"{tEmployee.P_EmployeeIsActive}, " &
+                                                           $"{tEmployee.P_EmployeeGender});"
 
 
 
