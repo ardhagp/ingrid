@@ -32,8 +32,8 @@
             Lbl4 = New CMCv.UI.Control.Lbl(components)
             CboApplication = New CMCv.UI.Control.Cbo(components)
             tmrCountdown = New Timer(components)
-            Lbl5 = New CMCv.UI.Control.Lbl(components)
-            LblCountdown = New CMCv.UI.Control.Lbl(components)
+            LblLeft = New CMCv.UI.Control.Lbl(components)
+            LblRight = New CMCv.UI.Control.Lbl(components)
             BtnClose = New CMCv.UI.Control.Btn(components)
             LblVersion = New CMCv.UI.Control.Lbl(components)
             SuspendLayout()
@@ -127,32 +127,32 @@
             ' 
             tmrCountdown.Interval = 1000
             ' 
-            ' Lbl5
+            ' LblLeft
             ' 
-            Lbl5.BackColor = Color.Transparent
-            Lbl5.Font = New Font("Segoe UI", 12F)
-            Lbl5.ForeColor = Color.White
-            Lbl5.Location = New Point(13, 508)
-            Lbl5.Margin = New Padding(4, 0, 4, 0)
-            Lbl5.Name = "Lbl5"
-            Lbl5.Size = New Size(134, 35)
-            Lbl5.TabIndex = 6
-            Lbl5.Text = "Opening"
-            Lbl5.TextAlign = ContentAlignment.TopRight
-            Lbl5.XOCustomElipsis = False
+            LblLeft.BackColor = Color.Transparent
+            LblLeft.Font = New Font("Segoe UI", 12F)
+            LblLeft.ForeColor = Color.White
+            LblLeft.Location = New Point(13, 508)
+            LblLeft.Margin = New Padding(4, 0, 4, 0)
+            LblLeft.Name = "LblLeft"
+            LblLeft.Size = New Size(134, 35)
+            LblLeft.TabIndex = 6
+            LblLeft.Text = "Opening"
+            LblLeft.TextAlign = ContentAlignment.TopRight
+            LblLeft.XOCustomElipsis = False
             ' 
-            ' LblCountdown
+            ' LblRight
             ' 
-            LblCountdown.BackColor = Color.Transparent
-            LblCountdown.Font = New Font("Segoe UI", 12F)
-            LblCountdown.ForeColor = Color.White
-            LblCountdown.Location = New Point(294, 508)
-            LblCountdown.Margin = New Padding(4, 0, 4, 0)
-            LblCountdown.Name = "LblCountdown"
-            LblCountdown.Size = New Size(232, 35)
-            LblCountdown.TabIndex = 7
-            LblCountdown.Text = "app in 3 seconds..."
-            LblCountdown.XOCustomElipsis = False
+            LblRight.BackColor = Color.Transparent
+            LblRight.Font = New Font("Segoe UI", 12F)
+            LblRight.ForeColor = Color.White
+            LblRight.Location = New Point(294, 508)
+            LblRight.Margin = New Padding(4, 0, 4, 0)
+            LblRight.Name = "LblRight"
+            LblRight.Size = New Size(232, 35)
+            LblRight.TabIndex = 7
+            LblRight.Text = "app in 3 seconds..."
+            LblRight.XOCustomElipsis = False
             ' 
             ' BtnClose
             ' 
@@ -198,8 +198,8 @@
             ClientSize = New Size(539, 750)
             ControlBox = False
             Controls.Add(BtnClose)
-            Controls.Add(LblCountdown)
-            Controls.Add(Lbl5)
+            Controls.Add(LblRight)
+            Controls.Add(LblLeft)
             Controls.Add(CboApplication)
             Controls.Add(Lbl4)
             Controls.Add(Lbl3)
@@ -222,8 +222,8 @@
         Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
         Friend WithEvents CboApplication As CMCv.UI.Control.Cbo
         Friend WithEvents tmrCountdown As Timer
-        Friend WithEvents Lbl5 As CMCv.UI.Control.lbl
-        Friend WithEvents LblCountdown As CMCv.UI.Control.lbl
+        Friend WithEvents LblLeft As CMCv.UI.Control.lbl
+        Friend WithEvents LblRight As CMCv.UI.Control.lbl
         Friend WithEvents BtnClose As CMCv.UI.Control.Btn
         Friend WithEvents LblVersion As CMCv.UI.Control.Lbl
     End Class

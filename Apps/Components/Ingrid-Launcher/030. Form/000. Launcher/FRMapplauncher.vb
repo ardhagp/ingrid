@@ -4,6 +4,11 @@
         Private WithEvents Frm_conn As Connect.UI.Canvas.FRMconn
 
         Private varSecond As Integer
+        Private varDownloadDB As String = "Update"
+        Private varCaptionDownloadDB As String = "- press Download button"
+        Private varLabelApp As String = "Opening"
+        Private varLabelCountdown As String = $"app in {varSecond} seconds..."
+        Private Const varItemLocalDB As String = "Local DB"
 
         Private Sub Frmapplauncher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -26,10 +31,10 @@
             clsLog = Nothing
 
             Call ActivateLicenses()
-            LblVersion.Text = $"Ver. {My.Application.Info.Version.Major}.{My.Application.Info.Version.Minor}"
-            LblBuild.Text = $"Build {My.Application.Info.Version.Build}" & Environment.NewLine & $"Rev. {My.Application.Info.Version.Revision}"
+            LblBuild.Text = $"Ver. {My.Application.Info.Version.Major}.{My.Application.Info.Version.Minor}" & Environment.NewLine & $"Build {My.Application.Info.Version.Build}"
+            LblVersion.Text = $"Rev. {My.Application.Info.Version.Revision}"
             varSecond = 4
-            LblCountdown.Text = $"app in {varSecond} seconds..."
+            LblRight.Text = varLabelCountdown
 
             With CboApplication.Items
                 .Add("Connect")
@@ -41,7 +46,13 @@
         End Sub
 
         Private Sub BtnLaunch_Click(sender As Object, e As EventArgs) Handles BtnLaunch.Click
-            Call OpenApp(CboApplication.SelectedIndex)
+            If CboApplication.Text = varItemLocalDB Then
+                If Decision("Do you want to download the latest database?", "Download Database", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+                    MsgBox("")
+                End If
+            Else
+                    Call OpenApp(CboApplication.SelectedIndex)
+            End If
         End Sub
 
         Private Sub Frmmainframe6_IngridFrameClose() Handles Frm_mainframe6.EventMainframeClose
@@ -54,10 +65,11 @@
             If (varSecond = 0) Then
                 Call OpenApp(CboApplication.SelectedIndex)
             ElseIf (varSecond > 1) Then
-                LblCountdown.Text = $"app in {varSecond} seconds..."
+                varLabelCountdown = $"app in {varSecond} seconds..."
             Else
-                LblCountdown.Text = $"app in {varSecond} second..."
+                varLabelCountdown = $"app in {varSecond} second..."
             End If
+            LblRight.Text = varLabelCountdown
         End Sub
 
         Private Sub OpenApp(appnameindex As Integer)
@@ -81,7 +93,21 @@
         Private Sub Frmconn_ConnectFrameClose() Handles Frm_conn.ConnectFrameClose
             Frm_conn.Dispose()
             Show()
-            LblCountdown.Text = "by clicking Launch button"
+            Dim i As Integer = 0
+            varLabelCountdown = "- press Launch"
+            varLabelApp = "Open"
+            LblRight.Text = varLabelCountdown
+            LblLeft.Text = varLabelApp
+            For Each item In CboApplication.Items
+                If item.ToString() = varItemLocalDB Then
+                    i += 1
+                End If
+            Next
+            If i = 0 Then
+                With CboApplication.Items
+                    .Add(varItemLocalDB)
+                End With
+            End If
             BtnClose.Visible = True
         End Sub
 
@@ -95,6 +121,20 @@
 
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
             Close()
+        End Sub
+
+        Private Sub CboApplication_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboApplication.SelectedIndexChanged
+            If CboApplication.Text = varItemLocalDB Then
+                LblLeft.Text = varDownloadDB
+                LblRight.Text = varCaptionDownloadDB
+                BtnLaunch.Text = "Download"
+                BtnLaunch.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
+            Else
+                LblLeft.Text = varLabelApp
+                LblRight.Text = varLabelCountdown
+                BtnLaunch.Text = "Launch"
+                BtnLaunch.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
+            End If
         End Sub
     End Class
 End Namespace
