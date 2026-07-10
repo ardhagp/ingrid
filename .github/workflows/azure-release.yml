@@ -223,13 +223,13 @@ steps:
       
       cd $(Build.SourcesDirectory)
       dir /b /s /A-D /o:gn
-      echo "Reading CMC\Globals.vb"
+      echo "Reading CMC\Global.vb"
       echo "---------------------------"
-      more ".\Apps\Components\CMC\2090 - Module\Globals.vb"
+      more ".\Apps\Components\CMC\2090 - Module\Global.vb"
       echo "---------------------------"
-      echo "Reading Apps\Core\Module\Globals.vb"
+      echo "Reading Apps\Core\Module\Global.vb"
       echo "---------------------------"
-      more ".\Apps\Core\Vb\020. Module\Globals.vb"
+      more ".\Apps\Core\Vb\020. Module\Global.vb"
 
 #Build Ingrid App
 - task: VSBuild@1
