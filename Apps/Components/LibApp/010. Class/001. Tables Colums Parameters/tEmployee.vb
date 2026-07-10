@@ -14,7 +14,9 @@
         ReadOnly Property C_EmployeeAddress As String = "employee_address"
         ReadOnly Property C_EmployeeEmploymentType As String = "employee_employmenttype"
         ReadOnly Property C_EmployeeIsActive As String = "employee_isactive"
+        ReadOnly Property C_EmployeeToken As String = "employee_token"
         ReadOnly Property P_EmployeeId As String = "@EmployeeId"
+        ReadOnly Property P_EmployeePosition As String = "@EmployeePosition"
         ReadOnly Property P_EmployeeNumber As String = "@EmployeeNumber"
         ReadOnly Property P_EmployeeFullName As String = "@EmployeeFullName"
         ReadOnly Property P_EmployeeNickname As String = "@EmployeeNickname"
@@ -24,5 +26,7 @@
         ReadOnly Property P_EmployeeBirthPlace As String = "@EmployeeBirthPlace"
         ReadOnly Property P_EmployeeAddress As String = "@EmployeeAddress"
         ReadOnly Property P_EmployeeIsActive As String = "@EmployeeIsActive"
+        ReadOnly Property P_EmployeeToken As String = "@EmployeeToken"
+        ReadOnly Property P_EmployeeEmploymentType As String = "@EmployeeEmploymentType"
     End Class
 End Namespace

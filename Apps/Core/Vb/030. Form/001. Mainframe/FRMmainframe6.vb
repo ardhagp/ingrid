@@ -46,8 +46,6 @@ Namespace UI.Canvas
         Private Const dtUserData As String = "UserData"
         Private Const dtSettings As String = "SYSS_Editor"
 
-        'Private Const pCommand As String = "@Command"
-        'Private Const pEmployeeId As String = "@EmployeeId"
 #End Region
 
 #Region "Subs Collection"
@@ -99,8 +97,6 @@ Namespace UI.Canvas
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub GetNotification()
-            'varDataProperties.UserParameters.Remove(tEmployee.P_EmployeeId)
-            'varDataProperties.UserParameters.Add(tEmployee.P_EmployeeId, CLng(varDatasetIngrid.Tables(tUserData).Rows(0).Item("employee_id")))
             varTotalNotification = varSqlNotification.Exist(varDataProperties)
             If varTotalNotification > 0 Then
                 USERMENU.Text = varDatasetIngrid.Tables(dtUserData).Rows(0).Item("employee_fullname").ToString & "*"
@@ -162,12 +158,11 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub EnterCommand(commandcode As String)
-            varDataProperties.UserParameters.Remove(tModule.P_ModuleCode)
-            varDataProperties.UserParameters.Add(tModule.P_ModuleCode, commandcode.ToUpper.Trim)
+            SetValue(varDataProperties.UserParameters, tModule.P_ModuleCode, commandcode.ToUpper.Trim)
 
             'For Modules That Not Required Login
             If commandcode.ToUpper.Trim = "RESET" OrElse commandcode.ToUpper.Trim = "PHTRZ" Then
-                Globals.varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
+                [Global].varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
                 Txt_shortcut.Clear()
                 Return
             Else
@@ -196,7 +191,7 @@ Namespace UI.Canvas
                     System.Media.SystemSounds.Beep.Play()
                     Return
                 Else
-                    Globals.varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
+                    [Global].varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
                     Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " opening Module " & commandcode.ToUpper.Trim & """,", "Information")
                     Txt_shortcut.Clear()
                 End If
@@ -349,8 +344,7 @@ Namespace UI.Canvas
                     With varDatasetIngrid.Tables(dtDatabaseProperties).Rows(0)
                         varDataProperties.ConnectionDatabaseEngineE = CType([Enum].Parse(GetType(LibApp.Ingrid.Global.DatabaseEngine), .Item("DATABASEENGINE").ToString), LibApp.Ingrid.Global.DatabaseEngine)
                         varDataProperties.ConnectionDatabaseName = .Item("DBFORDATA").ToString
-                        varDataProperties.UserParameters.Remove(tClient.P_ClientCode)
-                        varDataProperties.UserParameters.Add(tClient.P_ClientCode, .Item("CLIENT").ToString)
+                        SetValue(varDataProperties.UserParameters, tClient.P_ClientCode, .Item("CLIENT").ToString)
                     End With
                 Else
                     Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties could not be found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)

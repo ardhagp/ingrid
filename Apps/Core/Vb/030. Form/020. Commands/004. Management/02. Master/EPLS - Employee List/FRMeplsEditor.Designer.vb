@@ -78,6 +78,7 @@
             TxtFullName = New CMCv.UI.Control.Txt(components)
             TbctlEmployee = New CMCv.UI.Control.Tbx(components)
             ULbl8 = New CMCv.UI.Control.ULbl()
+            BtnRemovePhoto = New CMCv.UI.Control.Btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -113,6 +114,7 @@
             ' 
             ' SLFPanel
             ' 
+            SLFPanel.Controls.Add(BtnRemovePhoto)
             SLFPanel.Controls.Add(ULbl8)
             SLFPanel.Controls.Add(TbctlEmployee)
             SLFPanel.Controls.Add(BtnBrowsePhoto)
@@ -126,6 +128,7 @@
             SLFPanel.Controls.SetChildIndex(TbctlEmployee, 0)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(ULbl8, 0)
+            SLFPanel.Controls.SetChildIndex(BtnRemovePhoto, 0)
             ' 
             ' ChkAddNew
             ' 
@@ -283,7 +286,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(215), CByte(205), CByte(135))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(241), CByte(214), CByte(137))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnModulesRoles.BorderStyle = BorderStyle.None
@@ -1118,6 +1121,27 @@
             ULbl8.XOTextAdjuster = False
             ULbl8.XOTextBorder = False
             ' 
+            ' BtnRemovePhoto
+            ' 
+            BtnRemovePhoto.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            BtnRemovePhoto.BackColor = Color.Red
+            BtnRemovePhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
+            BtnRemovePhoto.FlatAppearance.BorderSize = 2
+            BtnRemovePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
+            BtnRemovePhoto.FlatStyle = FlatStyle.Flat
+            BtnRemovePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            BtnRemovePhoto.ForeColor = Color.White
+            BtnRemovePhoto.Location = New Point(933, 516)
+            BtnRemovePhoto.Name = "BtnRemovePhoto"
+            BtnRemovePhoto.Size = New Size(179, 80)
+            BtnRemovePhoto.TabIndex = 1042
+            BtnRemovePhoto.Text = "Remove Photo"
+            BtnRemovePhoto.UseVisualStyleBackColor = False
+            BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
+            BtnRemovePhoto.XOShowBorderOnFocus = False
+            BtnRemovePhoto.XOValidateAllInput = False
+            BtnRemovePhoto.XOValidateAllInputTag = Nothing
+            ' 
             ' FRMeplsEditor
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
@@ -1200,5 +1224,6 @@
         Friend WithEvents ULbl7 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
         Friend WithEvents BtnBrowseEmploymentType As CMCv.UI.Control.Btn
+        Friend WithEvents BtnRemovePhoto As CMCv.UI.Control.Btn
     End Class
 End Namespace

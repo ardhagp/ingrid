@@ -1,46 +1,53 @@
-﻿Imports System.Runtime.Versioning
-Imports System.Text
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMcdin
 
 #Region "Declaration"
         Private WithEvents Frm_cdin_Editor As FRMcdinEditor
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
-        Private Const pDepartmentId As String = "@DepartmentId"
+        ' This Module Identifier
+        Private varThisModuleId As Long = 0
+        Private Const varThisModuleCode As String = "CDIN"
 #End Region
 
 #Region "Subs Collections"
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="forcerefresh"></param>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnCDIN)
             varDataProperties.DepartmentIsForceRefresh = forcerefresh
             LibSQL.CMDcdin.View.DisplayData(varDataProperties, DgnCDIN, SLFStatus, TxtFind)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetRowID()
-            varDataProperties.AllParameters.Remove(pDepartmentId)
-            If DgnCDIN.RowCount = 0 Then
-                varDataProperties.DepartmentIsNew = True
-            Else
-                varDataProperties.DepartmentIsNew = False
-                varDataProperties.AllParameters.Add(pDepartmentId, CLng(DgnCDIN.CurrentRow.Cells("department_id").Value))
-            End If
+            With varDataProperties
+                If DgnCDIN.RowCount = 0 Then
+                    .DepartmentIsNew = True
+                Else
+                    .DepartmentIsNew = False
+                    SetValue(.AllParameters, tDepartment.P_DepartmentId, CLng(DgnCDIN.CurrentRow.Cells(tDepartment.C_DepartmentId).Value))
+                End If
+            End With
         End Sub
 
 #End Region
 
 #Region "Menu Strip Function"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
             varDataProperties.DepartmentIsNew = True
             Frm_cdin_Editor = New FRMcdinEditor
             Display(Frm_cdin_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new departement data", True)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
             Call GetRowID()
             If varDataProperties.DepartmentIsNew Then
@@ -52,14 +59,14 @@ Namespace UI.Canvas
             UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
             Call GetRowID()
             If varDataProperties.DepartmentIsNew Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 With DgnCDIN.CurrentRow
-                    Dim varMessage As New StringBuilder()
+                    Dim varMessage As New System.Text.StringBuilder()
                     varMessage.AppendLine("Do you want to delete this record?")
 
                     Dim varLine As String = New String("─"c, 80)
@@ -82,26 +89,34 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataRefresh() Handles Com_mms_Menu.EventDataRefresh
             TxtFind.Clear()
             Call GetData(True)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataClose() Handles Com_mms_Menu.EventDataClose
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventToolsFind() Handles Com_mms_Menu.EventToolsFind
             TxtFind.Focus()
         End Sub
 #End Region
 
 #Region "Form Events"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcdin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            ' Set active module to UserParameters
+            With varDataProperties
+                SetValue(.UserParameters, tModule.P_ModuleCode, varThisModuleCode)
+                varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.UserParameters)
+                SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
+            End With
+
+            ' Continue to Load anything for this module
             Com_mms_Menu.LoadIn(Me)
             Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
             DgnCDIN.XOGetNewColor()
@@ -111,14 +126,14 @@ Namespace UI.Canvas
 #End Region
 
 #Region "Component Events"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
             If e.KeyCode = Keys.Enter Then
                 Call GetData()
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
             TxtFind.Clear()
             Call GetData(True)
@@ -126,14 +141,20 @@ Namespace UI.Canvas
         End Sub
 #End Region
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcdinEditor_RecordSaved() Handles Frm_cdin_Editor.EventRecordSaved
             Call GetData()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcdin_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus
             Me.WindowState = FormWindowState.Maximized
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMcdin_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+            ' Set active module to UserParameters
+            SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
         End Sub
     End Class
 End Namespace

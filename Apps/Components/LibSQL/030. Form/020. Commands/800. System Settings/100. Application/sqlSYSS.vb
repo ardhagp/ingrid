@@ -61,7 +61,7 @@ Namespace CMDsyss
 
     Public Class Editor
         <SupportedOSPlatform("windows")>
-        Public Shared Function SaveSettings(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
+        Public Shared Function SaveSettings(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Boolean
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(1).Query = $"update dbo.sys_settings set settings_showprofile = {0}, settings_showstorage = {1}, settings_showrunningtext = {2}, settings_uploadphoto = {3}, " &
@@ -87,7 +87,7 @@ Namespace CMDsyss
                                                        $"{tSettings.C_SettingsMinPasswordLength} = {tSettings.P_SettingsMinPasswordLength} " &
                                                        $"where {tSettings.C_SettingsId} = {tSettings.P_SettingsId}"
 
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
+                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername)
                 End If
                 Return True
             Catch ex As Exception

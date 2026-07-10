@@ -44,11 +44,10 @@ Namespace UI.Canvas
                 Return
             End If
 
-            varDataProperties.UserParameters.Remove(tUser.P_Username)
-            varDataProperties.UserParameters.Add(tUser.P_Username, TxtUsername.XOSqlText)
-            varDataProperties.UserParameters.Remove(tUser.P_UserPassword)
-            varDataProperties.UserParameters.Add(tUser.P_UserPassword, CMCv.Security.Encrypt.MD5(TxtPassword.XOSqlText))
-
+            With varDataProperties
+                SetValue(.UserParameters, tUser.P_Username, TxtUsername.XOSqlText)
+                SetValue(.UserParameters, tUser.P_UserPassword, CMCv.Security.Encrypt.MD5(TxtPassword.XOSqlText))
+            End With
             CMDuac.Login.GetUserProperties(varDataProperties, varDataProperties.UserParameters, varDatasetIngrid)
 
             If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
@@ -81,26 +80,16 @@ Namespace UI.Canvas
             End If
 
             With varDataProperties
-                .UserParameters.Remove(tUser.P_UserId)
-                .UserParameters.Add(tUser.P_UserId, CLng(varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tUser.C_UserId)))
-                .UserParameters.Remove(tUser.P_UserIsRoot)
-                .UserParameters.Add(tUser.P_UserIsRoot, CBool(varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tUser.C_UserIsRoot)))
-                .UserParameters.Remove(tEmployee.P_EmployeeId)
-                .UserParameters.Add(tEmployee.P_EmployeeId, CLng(varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeId)))
-                .UserParameters.Remove(tEmployee.P_EmployeeNumber)
-                .UserParameters.Add(tEmployee.P_EmployeeNumber, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeNumber))
-                .UserParameters.Remove(tEmployee.P_EmployeeFullName)
-                .UserParameters.Add(tEmployee.P_EmployeeFullName, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeFullName))
-                .UserParameters.Remove(tEmployee.P_EmployeeNickname)
-                .UserParameters.Add(tEmployee.P_EmployeeNickname, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeNickname))
-                .UserParameters.Remove(tEmployee.P_EmployeePersonalIdNumber)
-                .UserParameters.Add(tEmployee.P_EmployeePersonalIdNumber, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeePersonalIdNumber))
-                .UserParameters.Remove(tEmployee.P_EmployeeGender)
-                .UserParameters.Add(tEmployee.P_EmployeeGender, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeGender))
-                .UserParameters.Remove(tPosition.P_PositionCode)
-                .UserParameters.Add(tPosition.P_PositionCode, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tPosition.C_PositionCode))
-                .UserParameters.Remove(tPosition.P_PositionName)
-                .UserParameters.Add(tPosition.P_PositionName, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tPosition.C_PositionName))
+                SetValue(.UserParameters, tUser.P_UserId, CLng(varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tUser.C_UserId)))
+                SetValue(.UserParameters, tUser.P_UserIsRoot, CBool(varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tUser.C_UserIsRoot)))
+                SetValue(.UserParameters, tEmployee.P_EmployeeId, CLng(varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeId)))
+                SetValue(.UserParameters, tEmployee.P_EmployeeNumber, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeNumber))
+                SetValue(.UserParameters, tEmployee.P_EmployeeFullName, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeFullName))
+                SetValue(.UserParameters, tEmployee.P_EmployeeNickname, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeNickname))
+                SetValue(.UserParameters, tEmployee.P_EmployeePersonalIdNumber, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeePersonalIdNumber))
+                SetValue(.UserParameters, tEmployee.P_EmployeeGender, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeGender))
+                SetValue(.UserParameters, tPosition.P_PositionCode, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tPosition.C_PositionCode))
+                SetValue(.UserParameters, tPosition.P_PositionName, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tPosition.C_PositionName))
             End With
 
             varLogUser.LoginSuccess(varDataProperties, varDataProperties.UserParameters)

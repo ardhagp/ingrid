@@ -1,6 +1,14 @@
 ﻿Namespace Api
+    ''' <summary>
+    ''' The Magika class provides functionality to validate file types using the MagikaNet library. It includes a method to check if a given file path corresponds to an allowed file extension and whether the detected file type matches the file's extension. The class is designed to ensure that files meet specific criteria before further processing or storage.
+    ''' </summary>
     Public Class Magika
-
+        ''' <summary>
+        ''' Validates the file at the specified path against a list of allowed extensions. It uses the MagikaNet library to detect the file type and compares it with the provided allowed extensions. The method returns a tuple indicating whether the file is valid and a reason message if it is not valid.
+        ''' </summary>
+        ''' <param name="path">The file path to validate.</param>
+        ''' <param name="allowedextension">An array of allowed file extensions.</param>
+        ''' <returns>A tuple containing a boolean indicating validity and a reason message.</returns>
         Public Shared Function Validate(path As String, allowedextension As String()) As (IsValid As Boolean, Reason As String)
             Using m As New MagikaNet.MagikaClient
                 Dim info = m.DetectPath(path)
@@ -20,19 +28,9 @@
 
                 If Not isValidMatch Then
                     Return (False, $"The file extension '.{extension}' does not match the detected file type '.{info.Value.Output.Label.ToUpper}'.")
+                Else
+                    Return (True, "File is valid.")
                 End If
-
-                'If extension = "jpg" OrElse extension = "jpeg" Then
-                '    If Not info.Value.Output.Label.ToLower().Equals("jpg") OrElse Not info.Value.Output.Label.ToLower().Equals("jpeg") Then
-                '        Return (False, $"File extension {extension} does not match detected file type {info.Value.Output.Label}.")
-                '    End If
-                'Else
-                '    If Not info.Value.Output.Label.ToLower().Equals(extension) Then
-                '        Return (False, $"File extension {extension} does not match detected file type {info.Value.Output.Label}.")
-                '    End If
-                'End If
-
-                Return (True, "File is valid.")
             End Using
         End Function
     End Class

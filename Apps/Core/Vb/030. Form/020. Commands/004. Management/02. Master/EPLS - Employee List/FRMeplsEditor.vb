@@ -4,9 +4,6 @@
         Public Event EventRecordSaved()
 
         Private WithEvents Frm_epls_AddinPosition As New FRMeplsPosition
-        Private varHavePhoto As Boolean
-        Private varChangePhoto As Boolean
-        Private varPhoto As System.Drawing.Image
 
         Private varThisModuleId As Long = 0
         Private Const varThisModuleCode As String = "EPLS"
@@ -20,24 +17,19 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMeplsEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             ' Set active module to UserParameters
-            varDataProperties.UserParameters.Remove(tModule.P_ModuleCode)
-            varDataProperties.UserParameters.Add(tModule.P_ModuleCode, varThisModuleCode)
-            varThisModuleId = CLng(varDataProperties.UserParameters(tModule.P_ModuleId))
-            varDataProperties.UserParameters.Remove(tModule.P_ModuleId)
-            varDataProperties.UserParameters.Add(tModule.P_ModuleId, varThisModuleId)
+            SetValue(varDataProperties.UserParameters, tModule.P_ModuleCode, varThisModuleCode)
+            varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.UserParameters)
+            SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
 
             ' Continue to Load anything for this module
-            varHavePhoto = False
-            varChangePhoto = False
+            varDataProperties.EmployeeIsHavePhoto = False
+            varDataProperties.EmployeeIsForceChangePhoto = False
             If varDataProperties.EmployeeIsNew Then
                 ChkAddNew.Visible = True
                 ChkAddNew.Enabled = True
                 CboGender.SelectedIndex = 0
 
-                With varDataProperties.AllParameters
-                    .Remove(tPosition.P_PositionId)
-                    .Add(tPosition.P_PositionId, DBNull.Value)
-                End With
+                SetValue(varDataProperties.AllParameters, tPosition.P_PositionId, DBNull.Value)
             Else
                 ChkAddNew.Visible = False
                 ChkAddNew.Checked = False
@@ -56,25 +48,27 @@
                     'Displaying Employment Detail
                     TxtCompany.Text = .Item(tCompany.C_CompanyName).ToString
                     TxTDepartment.Text = .Item(tDepartment.C_DepartmentName).ToString
-                    varDataProperties.AllParameters.Remove(tPosition.P_PositionId)
-                    varDataProperties.AllParameters.Add(tPosition.P_PositionId, CLng(.Item(tPosition.C_PositionId)))
                     TxtPosition.Text = .Item(tPosition.C_PositionName).ToString
-                    varDataProperties.AllParameters.Remove(tEmploymentType.P_EmploymentTypeId)
-                    varDataProperties.AllParameters.Add(tEmploymentType.P_EmploymentTypeId, IIf(.Item(tEmployee.C_EmployeeEmploymentType) Is Nothing OrElse .Item(tEmployee.C_EmployeeEmploymentType).ToString = String.Empty OrElse .Item(tEmployee.C_EmployeeEmploymentType).ToString = "", DBNull.Value, .Item(tEmployee.C_EmployeeEmploymentType)))
+                    SetValue(varDataProperties.AllParameters, tPosition.P_PositionId, CLng(.Item(tPosition.C_PositionId)))
+                    SetValue(varDataProperties.AllParameters, tEmploymentType.P_EmploymentTypeId, IIf(.Item(tEmployee.C_EmployeeEmploymentType) Is Nothing OrElse .Item(tEmployee.C_EmployeeEmploymentType).ToString = String.Empty OrElse .Item(tEmployee.C_EmployeeEmploymentType).ToString = "", DBNull.Value, .Item(tEmployee.C_EmployeeEmploymentType)))
                     TxtEmployeeNumber.Text = .Item(tEmployee.C_EmployeeNumber).ToString
                     TxtEmployeeNickname.Text = .Item(tEmployee.C_EmployeeNickname).ToString
                     ChkActiveEmployee.Checked = CBool(.Item(tEmployee.C_EmployeeIsActive))
-                    varHavePhoto = CMDepls.Editor.GetIsHavePhoto(varDataProperties, varDataProperties.UserParameters)
+                    varDataProperties.EmployeeIsHavePhoto = CMDepls.Editor.GetIsHavePhoto(varDataProperties, varDatasetIngrid, varDataProperties.UserParameters)
                 End With
 
-                TxtPersonalID.Focus()
-
-                If varHavePhoto Then
+                If varDataProperties.EmployeeIsHavePhoto Then
                     pctbxPhoto.Image = CMDepls.Editor.GetPhoto(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
+                    BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
+                    varDataProperties.EmployeeIsHavePhoto = True
+                    BtnRemovePhoto.Enabled = True
                 Else
-                    Return
+                    BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
+                    BtnRemovePhoto.Enabled = False
                 End If
             End If
+            Call ResetPhoto()
+            TxtPersonalID.Focus()
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
@@ -88,6 +82,9 @@
             Me.Close()
         End Sub
 
+        ''' <summary>
+        ''' This subroutine checks all input fields in the form by setting focus to each control sequentially. It ensures that all required fields are validated before proceeding with any save operation.
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub CheckAllInputs()
             'TxtPersonalID.Focus()
@@ -119,25 +116,18 @@
             End If
 
             With varDataProperties
-                .AllParameters.Remove(tEmployee.P_EmployeePersonalIdNumber)
-                .AllParameters.Add(tEmployee.P_EmployeePersonalIdNumber, IIf(TxtPersonalID.XOSqlText = String.Empty OrElse TxtPersonalID.XOSqlText = "", DBNull.Value, TxtPersonalID.XOSqlText))
-                .AllParameters.Remove(tEmployee.P_EmployeeFullName)
-                .AllParameters.Add(tEmployee.P_EmployeeFullName, IIf(TxtFullName.XOSqlText = String.Empty OrElse TxtFullName.XOSqlText = "", DBNull.Value, TxtFullName.XOSqlText))
-                .AllParameters.Remove(tEmployee.P_EmployeeBirthPlace)
-                .AllParameters.Add(tEmployee.P_EmployeeBirthPlace, IIf(TxtBirthPlace.XOSqlText = String.Empty OrElse TxtBirthPlace.XOSqlText = "", DBNull.Value, TxtBirthPlace.XOSqlText))
-                .AllParameters.Remove(tEmployee.P_EmployeeGender)
-                .AllParameters.Add(tEmployee.P_EmployeeGender, IIf(CboGender.SelectedItem Is Nothing OrElse CboGender.SelectedItem.ToString = String.Empty, DBNull.Value, CboGender.SelectedItem.ToString))
-                .AllParameters.Remove(tEmployee.P_EmployeeAddress)
-                .AllParameters.Add(tEmployee.P_EmployeeAddress, IIf(TxtAddress.XOSqlText = String.Empty OrElse TxtAddress.XOSqlText = "", DBNull.Value, TxtAddress.XOSqlText))
-                .AllParameters.Remove(tEmployee.P_EmployeeNickname)
-                .AllParameters.Add(tEmployee.P_EmployeeNickname, IIf(TxtEmployeeNickname.XOSqlText = String.Empty OrElse TxtEmployeeNickname.XOSqlText = "", DBNull.Value, TxtEmployeeNickname.XOSqlText))
-                .AllParameters.Remove(tEmployee.C_EmployeeEmploymentType)
+                SetValue(.AllParameters, tEmployee.P_EmployeePersonalIdNumber, IIf(TxtPersonalID.XOSqlText = String.Empty OrElse TxtPersonalID.XOSqlText = "", DBNull.Value, TxtPersonalID.XOSqlText))
+                SetValue(.AllParameters, tEmployee.P_EmployeeFullName, IIf(TxtFullName.XOSqlText = String.Empty OrElse TxtFullName.XOSqlText = "", DBNull.Value, TxtFullName.XOSqlText))
+                SetValue(.AllParameters, tEmployee.P_EmployeeBirthPlace, IIf(TxtBirthPlace.XOSqlText = String.Empty OrElse TxtBirthPlace.XOSqlText = "", DBNull.Value, TxtBirthPlace.XOSqlText))
+                SetValue(.AllParameters, tEmployee.P_EmployeeGender, IIf(CboGender.SelectedItem Is Nothing OrElse CboGender.SelectedItem.ToString = String.Empty, DBNull.Value, CboGender.SelectedItem.ToString))
+                SetValue(.AllParameters, tEmployee.P_EmployeeAddress, IIf(TxtAddress.XOSqlText = String.Empty OrElse TxtAddress.XOSqlText = "", DBNull.Value, TxtAddress.XOSqlText))
+                SetValue(.AllParameters, tEmployee.P_EmployeeNickname, IIf(TxtEmployeeNickname.XOSqlText = String.Empty OrElse TxtEmployeeNickname.XOSqlText = "", DBNull.Value, TxtEmployeeNickname.XOSqlText))
 
                 ' Please update this method when EmploymentType is ready
-                .AllParameters.Add(tEmployee.C_EmployeeEmploymentType, IIf(TxtEmploymentType.XOSqlText = String.Empty OrElse TxtEmploymentType.XOSqlText = "", DBNull.Value, DBNull.Value))
+                SetValue(.AllParameters, tEmployee.P_EmployeeEmploymentType, IIf(TxtEmploymentType.XOSqlText = String.Empty OrElse TxtEmploymentType.XOSqlText = "", DBNull.Value, DBNull.Value))
             End With
 
-            If CMDepls.Editor.PushData(varDataProperties) Then
+            If CMDepls.Editor.PushData(varDataProperties, varDataProperties.AllParameters) Then
                 UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
                 RaiseEvent EventRecordSaved()
             Else
@@ -158,6 +148,10 @@
             End If
         End Sub
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckEmployeePersonalID() As Boolean
             If CMDepls.Editor.IsPersonalIdExist(varDataProperties) Then
@@ -167,6 +161,10 @@
             End If
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckEmployeeMandatoryFields() As Boolean
             If (TxtPersonalID.XOSqlText = String.Empty OrElse IsDBNull(varDataProperties.AllParameters(tPosition.P_PositionId)) OrElse varDataProperties.AllParameters(tPosition.P_PositionId) Is Nothing OrElse (TxtEmployeeNumber.XOSqlText = String.Empty) OrElse (TxtFullName.XOSqlText = String.Empty)) Then
@@ -177,6 +175,10 @@
             End If
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckDuplicateEmployeeNumber() As Boolean
             If varDataProperties.EmployeeIsNew AndAlso CMDepls.Editor.IsEmployeeNumberDuplicate(varDataProperties) Then
@@ -187,9 +189,13 @@
             End If
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckEmployeePhoto() As Boolean
-            If Not varHavePhoto Then
+            If Not varDataProperties.EmployeeIsHavePhoto Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Please pick employee photo.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return False
             Else
@@ -225,32 +231,48 @@
                 End If
 
                 If (CMCv.OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, varMaxUploadSizePhoto, True)) Then
-                    varPhoto = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(OfdPhoto.FileName)
-                    pctbxPhoto.Image = varPhoto
-                    varChangePhoto = True
-                    varHavePhoto = True
+                    varDataProperties.EmployeePhoto = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(OfdPhoto.FileName)
+                    pctbxPhoto.Image = varDataProperties.EmployeePhoto
+                    varDataProperties.EmployeeIsForceChangePhoto = True
+                    varDataProperties.EmployeeIsHavePhoto = True
+                    BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
+                    BtnRemovePhoto.Enabled = True
                 End If
             Else
-                varHavePhoto = False
+                varDataProperties.EmployeeIsHavePhoto = False
                 Return
             End If
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CboGender_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboGender.SelectedIndexChanged
-            If Not varHavePhoto Then
+            Call ResetPhoto()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMeplsEditor_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+            ' Set active module to UserParameters
+            SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub BtnRemovePhoto_Click(sender As Object, e As EventArgs) Handles BtnRemovePhoto.Click
+            pctbxPhoto.Image = Nothing
+            BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
+            BtnRemovePhoto.Enabled = False
+            varDataProperties.EmployeeIsHavePhoto = False
+            Call ResetPhoto()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub ResetPhoto()
+            If Not varDataProperties.EmployeeIsHavePhoto Then
                 If CboGender.Text = "MALE" Then
                     pctbxPhoto.Image = My.Resources.MALE_001_512_icon
                 Else
                     pctbxPhoto.Image = My.Resources.FEMALE_001_512_icon
                 End If
             End If
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMeplsEditor_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-            varDataProperties.UserParameters.Remove(tModule.P_ModuleId)
-            varDataProperties.UserParameters.Add(tModule.P_ModuleId, varThisModuleId)
         End Sub
     End Class
 End Namespace
