@@ -20,7 +20,7 @@ Module [Global]
     Public WithEvents ERC As New CMCv.UI.Canvas.FRMerrorreporting
     Public ErrorCatcher As New Ladybug.Log.Fields
 
-    Public varProperties As New LibApp.Ingrid.Global.Properties
+    Public varDataProperties As New LibApp.Ingrid.Global.Properties
 
 #Region "Custom Message Box"
     ''' <summary>

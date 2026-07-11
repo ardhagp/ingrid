@@ -27,9 +27,9 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Private Sub LoadData()
             Try
-                CMDconn.Editor.GetRowValue(varProperties)
+                CMDconn.Editor.GetRowValue(varDataProperties)
 
-                With varProperties
+                With varDataProperties
                     If (.ConnectionIsMasked) Then
                         TxtAddress.UseSystemPasswordChar = True
                         TxtPort.UseSystemPasswordChar = True
@@ -120,7 +120,7 @@ Namespace UI.Canvas
                 Return
             End If
 
-            With varProperties
+            With varDataProperties
                 .ConnectionName = TxtConnectionName.Text.Trim
                 .ConnectionDatabaseEngine = CboDBEngine.Text
                 .ConnectionServerAddress = TxtAddress.Text.Trim
@@ -130,13 +130,12 @@ Namespace UI.Canvas
                 .ConnectionDatabaseName = TxtDatabaseName.Text.Trim
                 .ConnectionIsDefault = ChkDefault.Checked
                 .ConnectionIsMasked = ChkIsMasked.Checked
-                .ConnectionIsNew = varProperties.ConnectionIsNew
                 .ConnectionIsPasswordChanged = varIsPasswordChange
                 .ConnectionClientCode = TxtClient.Text.Trim
-                .ConnectionId = Convert.ToString(varProperties.ConnectionId)
+                .ConnectionId = Convert.ToString(varDataProperties.ConnectionId)
             End With
 
-            If (CMDconn.Editor.PushData(varProperties)) Then
+            If (CMDconn.Editor.PushData(varDataProperties)) Then
                 SLFStatus.Text = "Success"
                 RaiseEvent EventRecordSaved()
                 Me.Close()
@@ -196,8 +195,8 @@ Namespace UI.Canvas
 
             CboDBEngine.DataSource = [Enum].GetValues(GetType(LibApp.Ingrid.Global.DatabaseEngine))
 
-            If (varProperties.ConnectionIsNew) Then
-                varProperties.ConnectionId = CMCv.Security.Encrypt.MD5()
+            If (varDataProperties.ConnectionIsNew) Then
+                varDataProperties.ConnectionId = CMCv.Security.Encrypt.MD5()
                 ChkIsMasked.Visible = True
             Else
                 ChkIsMasked.Visible = False
@@ -235,7 +234,7 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Private Sub ComponentMainframeMenu_EventFileUndoAll() Handles ComponentMainframeMenu.EventFileUndoAll
             If Decision(My.Application.Info.AssemblyName, "Do you want to undo all changes?", LibApp.Ingrid.Global.PopupType.Question, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
-                If (varProperties.ConnectionIsNew) Then
+                If (varDataProperties.ConnectionIsNew) Then
                     TxtConnectionName.Clear()
                     TxtAddress.Clear()
                     TxtPort.Clear()
@@ -359,6 +358,23 @@ Namespace UI.Canvas
                 TxtPort.UseSystemPasswordChar = False
                 TxtUsername.UseSystemPasswordChar = False
                 TxtDatabaseName.UseSystemPasswordChar = False
+            End If
+        End Sub
+
+        <SupportedOSPlatform("windows")>
+        Private Sub BtnTest_Click(sender As Object, e As EventArgs) Handles Btn_Test.Click
+            If CboDBEngine.Text = "MYSQL" Then
+                Try
+                    Dim varMysql As New CMCv.Database.Connect.Mysqlconnection
+                    Dim varConnection As MySql.Data.MySqlClient.MySqlConnection
+                    varConnection = New MySql.Data.MySqlClient.MySqlConnection(varMysql.Mysqlforcessl(TxtAddress.XOSqlText, CInt(TxtPort.XOSqlText), TxtDatabaseName.XOSqlText, TxtUsername.XOSqlText, TxtPassword.XOSqlText))
+                    varConnection.Open()
+                    MessageBox.Show("Connection test successful.")
+                    varConnection.Close()
+                    varConnection.Dispose()
+                Catch ex As Exception
+                    MessageBox.Show("Connection test failed: " & ex.Message)
+                End Try
             End If
         End Sub
 #End Region
