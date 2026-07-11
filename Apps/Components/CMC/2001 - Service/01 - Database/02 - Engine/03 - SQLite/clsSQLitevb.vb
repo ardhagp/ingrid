@@ -21,7 +21,7 @@ Namespace Database.Engine
         Private varCommand As System.Data.SQLite.SQLiteCommand
         Private varDataReader As System.Data.SQLite.SQLiteDataReader
 
-        Private ReadOnly varSqlite As New Connect.SQLiteConnection
+        Private varSqlite As Connect.SQLiteConnection
         'Private varTX As SQLite.SQLiteTransaction
 
         <SupportedOSPlatform("windows")>
@@ -77,6 +77,7 @@ Namespace Database.Engine
         <SupportedOSPlatform("windows")>
         Public Sub Open(localsqlitedb As String)
             Try
+                varSqlite = New Connect.SQLiteConnection
                 Dim varLocation As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\ardhagp\Ingrid .NET"
 
                 If Not (CheckDBCatalog(localsqlitedb)) Then
@@ -134,16 +135,6 @@ Namespace Database.Engine
                 clsLog = Nothing
             End Try
         End Sub
-
-        '<SupportedOSPlatform("windows")>
-        'Public Shared Sub OpenAppSettings()
-        '    Try
-
-        '    Catch ex As Exception
-        '        'Call SUBlogdatapush("[OpenAppSettings] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb", Ladybug.Log.Fields.TypeOfFaulties.SupportServiceDatabaseEngine, ex.Message, ex.HResult.ToString, ex.StackTrace, GETAPPVERSION, False, True, False)
-        '        'Call SUBlogdatashow()
-        '    End Try
-        'End Sub
 
         <SupportedOSPlatform("windows")>
         Public Function GetDatabaseProperties(databaseproperties As LibApp.Ingrid.Global.Properties) As LibApp.Ingrid.Global.Properties
@@ -485,8 +476,8 @@ Namespace Database.Engine
 
         Public Sub Close()
             If Not (varConnection Is Nothing) Then
+                varSqlite = Nothing
                 varConnection.Close()
-                varConnection.Dispose()
                 varConnection = Nothing
             End If
         End Sub

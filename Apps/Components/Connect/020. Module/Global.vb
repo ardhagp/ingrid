@@ -5,12 +5,6 @@ Imports System.Runtime.Versioning
 
 <SupportedOSPlatform("windows")>
 Module [Global]
-    'TODO:Remove
-    'Public varDatabaseEngineMssql2008 As New CMCv.Database.Engine.Mssql2008
-    'Public varDatabaseProperties(1) As Fields
-    'Public V_BRIDGE_LOG As Writelog
-    'Public varDatabaseProviderSqlite As New SQLite.Execute
-
     Public varDatabaseEngineSqlite As New SQLiteV3
     Public varDatabaseRequestSqlite(1) As SQLite.Display.Request
 
@@ -21,7 +15,6 @@ Module [Global]
     Public varMinor As Integer = My.Application.Info.Version.Minor
     Public varBuild As Integer = My.Application.Info.Version.Build
     Public varRevision As Integer = My.Application.Info.Version.Revision
-    Public varApplicationVersion As String = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
 
     Public WithEvents MSG As New CMCv.UI.Canvas.FRMdialogbox
     Public WithEvents ERC As New CMCv.UI.Canvas.FRMerrorreporting
@@ -159,11 +152,10 @@ Module [Global]
             varMinor = My.Application.Info.Version.Minor
             varBuild = My.Application.Info.Version.Build
             varRevision = My.Application.Info.Version.Revision
-            varApplicationVersion = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
-            Return varApplicationVersion
+            Return varMajor & "." & varMinor & "." & varBuild & "." & varRevision
         Catch ex As Exception
             With proLog
-                .AppVersion = GetAppVersion()
+                .AppVersion = "-1.-1.-1.-1"
                 .FromSender = "[GetAppVersion] $\Ingrid\Apps\Components\Connect\020. Module\Globals.vb"
                 .InternalStackTrace = ex.StackTrace
                 .Message = ex.Message
@@ -180,8 +172,7 @@ Module [Global]
             clsLog.ShowData(proLog)
             clsLog = Nothing
 
-            varApplicationVersion = "0.0.0"
-            Return varApplicationVersion
+            Return "0.0.0.0"
         End Try
     End Function
 #End Region
