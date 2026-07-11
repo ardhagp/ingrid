@@ -1,12 +1,9 @@
-﻿Imports System.Runtime.Versioning
-Imports CMCv
-
-Module [Global]
+﻿Module [Global]
 #Region "Activate Licenses"
     ''' <summary>
     ''' This method is used to activate the licenses for Syncfusion components. It retrieves the license key from the Bridge.Getkey.Syncfusion() method and registers it using the SyncfusionLicenseProvider.RegisterLicense method. This ensures that the application can use Syncfusion components without any licensing issues.
     ''' </summary>
-    <SupportedOSPlatform("windows")>
+    <System.Runtime.Versioning.SupportedOSPlatform("windows")>
     Public Sub ActivateLicenses()
         Dim varSyncfusionkey As String = Bridge.Getkey.Syncfusion()
 
@@ -19,12 +16,14 @@ Module [Global]
     Private varVersionapplication As String
     Public WithEvents FRMmsg As New CMCv.UI.Canvas.FRMdialogbox
 
+    <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+    Public varCloudstorageUrl As String = Bridge.Getkey.CloudStorageUrl()
 
-    <SupportedOSPlatform("windows")>
-    Public Sub Display(formname As CMCv.ui.canvas.FRMstandardFooter, Optional formimage As System.Drawing.Image = Nothing,
+    <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+    Public Sub Display(formname As CMCv.UI.Canvas.FRMstandardFooter, Optional formimage As System.Drawing.Image = Nothing,
                        Optional windowtitle As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "",
                        Optional isdialog As Boolean = False,
-                       Optional parentframe As system.Windows.Forms.Form = Nothing)
+                       Optional parentframe As System.Windows.Forms.Form = Nothing)
         Try
             formname.Text = windowtitle
             formname.SLFNamaForm.Text = formtitle
@@ -66,11 +65,11 @@ Module [Global]
                 .SaveInBetterLog = True
                 .SaveLogInLocal = False
                 .ShowErrorReporting = True
-                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
-                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                .TypeOfFaulty = CMCv.Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = CMCv.Ladybug.Log.Fields.TypeOfLogs.Error
             End With
 
-            Dim clsLog As New Ladybug.Log.Events
+            Dim clsLog As New CMCv.Ladybug.Log.Events
             clsLog.ShowData(proLog)
             clsLog = Nothing
         End Try
@@ -86,11 +85,11 @@ Module [Global]
     ''' <param name="formsubtitle"></param>
     ''' <param name="isdialog"></param>
     ''' <param name="parentframe"></param>
-    <SupportedOSPlatform("windows")>
-    Public Sub Display(formname As CMCv.ui.canvas.FRMstandardFindFooter, Optional formimage As System.Drawing.Image = Nothing,
+    <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+    Public Sub Display(formname As CMCv.UI.Canvas.FRMstandardFindFooter, Optional formimage As System.Drawing.Image = Nothing,
                        Optional windowtitle As String = "", Optional formtitle As String = "", Optional formsubtitle As String = "",
                        Optional isdialog As Boolean = False,
-                       Optional parentframe As system.Windows.Forms.Form = Nothing)
+                       Optional parentframe As System.Windows.Forms.Form = Nothing)
         Try
             formname.Text = windowtitle
             formname.SLFNamaForm.Text = formtitle
@@ -132,11 +131,11 @@ Module [Global]
                 .SaveInBetterLog = True
                 .SaveLogInLocal = False
                 .ShowErrorReporting = True
-                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
-                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                .TypeOfFaulty = CMCv.Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = CMCv.Ladybug.Log.Fields.TypeOfLogs.Error
             End With
 
-            Dim clsLog As New Ladybug.Log.Events
+            Dim clsLog As New CMCv.Ladybug.Log.Events
             clsLog.ShowData(proLog)
             clsLog = Nothing
         End Try
@@ -146,7 +145,7 @@ Module [Global]
     ''' This function retrieves the version of the application by accessing the My.Application.Info.Version property. It extracts the major, minor, build, and revision numbers and concatenates them into a string format "major.minor.build.revision". If an exception occurs while retrieving the version information, it logs the error details using the proLog object and returns a failure message indicating that the version could not be obtained.
     ''' </summary>
     ''' <returns></returns>
-    <SupportedOSPlatform("windows")>
+    <System.Runtime.Versioning.SupportedOSPlatform("windows")>
     Public Function GetAppVersion() As String
         Try
             Dim varMajor, varMinor, varBuild, varRevision As Integer
@@ -169,11 +168,11 @@ Module [Global]
                 .SaveInBetterLog = True
                 .SaveLogInLocal = False
                 .ShowErrorReporting = True
-                .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
-                .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                .TypeOfFaulty = CMCv.Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                .TypeOfLog = CMCv.Ladybug.Log.Fields.TypeOfLogs.Error
             End With
 
-            Dim clsLog As New Ladybug.Log.Events
+            Dim clsLog As New CMCv.Ladybug.Log.Events
             clsLog.ShowData(proLog)
             clsLog = Nothing
 
@@ -200,5 +199,6 @@ Module [Global]
         FRMmsg.Dispose()
         Return result
     End Function
+
 #End Region
 End Module

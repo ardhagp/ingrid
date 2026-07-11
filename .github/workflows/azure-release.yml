@@ -24,39 +24,53 @@ variables:
 
 - name: var_p_Email
   value: $[variables.var_g_Email]
+
 - name: var_p_DownloadCenter
   value: $[variables.var_g_DownloadCenter]
 
 - name: var_p_Platform
   value: $[variables.var_Platform]
+
 - name: var_p_BuildConfiguration
   value: $[variables.var_BuildConfiguration]
 
 - name: var_p_Ingridversion_major
   value: $[variables.var_g_Ingridversion_major]
+
 - name: var_p_Ingridversion_minor
   value: $[variables.var_g_Ingridversion_minor]
+
 - name: var_p_Ingridversion_build
   value: $[variables.var_g_Ingridversion_build]
+
 - name: var_p_Ingridversion_revision
   value: $[variables.var_g_Ingridversion_revision]
 
 - name: var_p_BetterStack_Log
   value: $[variables.var_g_BetterStack_Log]
+
 - name: var_p_SyncfusionKey
   value: $[variables.var_g_SyncfusionKey]
+  
+- name: var_p_UrlCloudstorage
+  value: $[variables.var_g_UrlCloudstorage]
+    
+- name: var_p_UrlRepoPage
+  value: $[variables.var_g_UrlRepoPage]
+
 - name: var_p_Salt
   value: $[variables.var_g_Salt]
 
 - name: var_p_TOKEN_GITHUB
   value: $[variables.var_g_TOKEN_GITHUB]
+
 - name: var_p_TOKEN_AZURE
   value: $[variables.var_g_TOKEN_AZURE]
 
 steps:
-
+# Sending Discord notification for starting the build and compile process
 - task: ado-discord-webhook@2
-  displayName: 'Start compiling'
+  displayName: 'Step-01: Start compiling'
   condition: always()
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
@@ -85,16 +99,16 @@ steps:
         }
       ]
 
-#Installing Nuget
+# Installing Nuget
 - task: NuGetToolInstaller@1
-  displayName: 'Nuget Install'
+  displayName: 'Step-02: Install Nuget'
   inputs:
     versionSpec: 
     checkLatest: true
 
-#List of Files in $(Build.SourcesDirectory)
+# List of Files in $(Build.SourcesDirectory)
 - task: CmdLine@2
-  displayName: 'Pre-Build File List in $(Build.SourcesDirectory)'
+  displayName: 'Step-03: Pre-Build File List in $(Build.SourcesDirectory)'
   inputs:
     script: |
       echo "File List - $(Build.SourcesDirectory)"
@@ -102,9 +116,9 @@ steps:
       cd $(Build.SourcesDirectory)
       dir /b /s /A-D /o:gn
 
-#Nuget Restore
+# Nuget Restore
 - task: NuGetCommand@2
-  displayName: 'NuGet Restore'
+  displayName: 'Step-04: Restore NuGet'
   inputs:
     command: 'restore'
     restoreSolution: '**/*.sln'
@@ -113,9 +127,9 @@ steps:
     nugetConfigPath: './Apps/Core/Vb/NuGet.config'
     externalFeedCredentials: 'ingrid'
 
-#Replacing SALT Key
+# Replacing SALT Key
 - task: ReplaceInFilesTextByText@2
-  displayName: 'Replacing: V_BRIDGEKEY.SALT'
+  displayName: 'Step-05: Replacing: BridgeKey.Salt'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'config.GetSection("KEYS")["SALT"]'
@@ -123,9 +137,9 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.cs'
 
-#Replacing Syncfusion Key
+# Replacing Syncfusion Key
 - task: ReplaceInFilesTextByText@2
-  displayName: 'Replacing: V_BRIDGEKEY.SYNCFUSION'
+  displayName: 'Step-06: Replacing: BridgeKey.Syncfusion'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'config.GetSection("KEYS")["SYNCFUSION"]'
@@ -133,9 +147,9 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.cs'
 
-#Replacing BetterStack Key
+# Replacing BetterStack Key
 - task: ReplaceInFilesTextByText@2
-  displayName: 'Replacing: V_BRIDGEKEY.BETTERSTACK_LOG'
+  displayName: 'Step-07: Replacing: BridgeKey.BetterStackLog'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'config.GetSection("KEYS")["BETTERSTACK_LOG"]'
@@ -143,8 +157,9 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.cs'
 
+# Replacing BetterStack Heartbeats Key
 - task: ReplaceInFilesTextByText@2
-  displayName: 'Replacing: V_BRIDGEKEY.BETTERSTACK_HEARTBEATS'
+  displayName: 'Step-08: Replacing: BridgeKey.BetterStackHeartbeats'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'config.GetSection("KEYS")["BETTERSTACK_HEARTBEATS"]'
@@ -152,9 +167,29 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.cs'
 
+# Replacing Cloudstorage URL
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Step-08B: Replacing: BridgeKey.CloudstorageUrl'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'config.GetSection("KEYS")["CLOUDSTORAGE"]'
+    parameterReplaceText: '"$(var_g_UrlCloudstorage)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.cs'
+
+# Replacing RepoPage URL
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Step-08C: Replacing: BridgeKey.RepoPageUrl'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'config.GetSection("KEYS")["REPOPAGE"]'
+    parameterReplaceText: '"$(var_g_UrlRepoPage)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.cs'
+
 #Replacing Version: Major
 - task: ReplaceInFilesTextByText@2
-  displayName: 'Replacing: {VERSION_MAJOR}'
+  displayName: 'Step-09: Replacing: {Version.Major}'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'My.Application.Info.Version.Major'
@@ -164,7 +199,7 @@ steps:
 
 #Replacing Version: Minor
 - task: ReplaceInFilesTextByText@2
-  displayName: 'Replacing: {VERSION_MINOR}'
+  displayName: 'Step-10: Replacing: {Version.Minor}'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'My.Application.Info.Version.Minor'
@@ -174,7 +209,7 @@ steps:
 
 #Replacing Version: Build
 - task: ReplaceInFilesTextByText@2
-  displayName: 'Replacing: {VERSION_BUILD}'
+  displayName: 'Step-11: Replacing: {Version.Build}'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'My.Application.Info.Version.Build'
@@ -184,7 +219,7 @@ steps:
 
 #Replacing Version: Revision
 - task: ReplaceInFilesTextByText@2
-  displayName: 'Replacing: {VERSION_REVISION}'
+  displayName: 'Step-12: Replacing: {Version.Revision}'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'My.Application.Info.Version.Revision'
@@ -194,7 +229,7 @@ steps:
 
 #Replacing DownloadCenterURL
 - task: ReplaceInFilesTextByText@2
-  displayName: 'Replacing: {DOWNLOADCENTER_URL}'
+  displayName: 'Step-13: Replacing: {DownloadCenter_Url}'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'My.Settings.ConnectionURL'
@@ -204,7 +239,7 @@ steps:
 
 #Checking new value from variables
 - task: CmdLine@2
-  displayName: 'Check Text Replacement'
+  displayName: 'Step-14: Check Text Replacement'
   inputs:
     script: |
       echo BetterStackLog: $(var_g_BetterStack_Log)
@@ -215,25 +250,25 @@ steps:
       echo DownloadCenter: $(var_g_DownloadCenter)
 
 #Review content of code
-- task: CmdLine@2
-  displayName: 'Reviewing Codes'
-  inputs:
-    script: |
-      echo "File List - Ingrid-CI-Build"
+- #task: CmdLine@2
+  #displayName: 'Reviewing Codes'
+  #inputs:
+    #script: |
+      #echo "File List - Ingrid-CI-Build"
       
-      cd $(Build.SourcesDirectory)
-      dir /b /s /A-D /o:gn
-      echo "Reading CMC\Global.vb"
-      echo "---------------------------"
-      more ".\Apps\Components\CMC\2090 - Module\Global.vb"
-      echo "---------------------------"
-      echo "Reading Apps\Core\Module\Global.vb"
-      echo "---------------------------"
-      more ".\Apps\Core\Vb\020. Module\Global.vb"
+      #cd $(Build.SourcesDirectory)
+      #dir /b /s /A-D /o:gn
+      #echo "Reading CMC\Global.vb"
+      #echo "---------------------------"
+      #more ".\Apps\Components\CMC\2090 - Module\Global.vb"
+      #echo "---------------------------"
+      #echo "Reading Apps\Core\Module\Global.vb"
+      #echo "---------------------------"
+      #more ".\Apps\Core\Vb\020. Module\Global.vb"
 
 #Build Ingrid App
 - task: VSBuild@1
-  displayName: 'VSBuild - Midnight Build'
+  displayName: 'Step-15: Build and Publish'
   inputs:
     solution: '**\*.sln'
     #msbuildArgs: '/t:Publish /p:BootstrapperEnabled=True /p:IsWebBootstrapper=True /p:PublishProtocol=ClickOnce /p:Install=True /p:CreateDesktopShortcut=True /p:InstallFrom=Web /p:GenerateManifests=True /p:BootstrapperComponents="Microsoft.NetCore.DesktopRuntime.$(var_NET).x86" /p:InstallUrl="https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/" /p:PublishProfile="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\My Project\PublishProfiles\ClickOnceProfile.pubxml" /p:PublishUrl="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows\package\" /p:PublishDir="$(Build.SourcesDirectory)\Ingrid\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\" /p:ApplicationVersion="$(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build).$(var_g_Ingridversion_revision)"'
@@ -247,7 +282,7 @@ steps:
 
 #List of File in $(Build.SourcesDirectory)
 - task: CmdLine@2
-  displayName: 'File List - Post Build $(Build.SourcesDirectory)'
+  displayName: 'Step-16: File List - Post Build $(Build.SourcesDirectory)'
   inputs:
     script: |
       echo "---------------------------"
@@ -258,15 +293,26 @@ steps:
 
 #Packing deployment to Artifact Directory
 - task: CopyFiles@2
-  displayName: 'Copy Files to.. $(build.ArtifactStagingDirectory)'
+  displayName: 'Step-17: Copy Files to.. $(build.ArtifactStagingDirectory)'
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\'
     Contents: '**'
     TargetFolder: '$(build.ArtifactStagingDirectory)'
 
+# Compressing Artifact to ingrid-offline.zip
+- task: ArchiveFiles@2
+  displayName: 'Step-17B: Compressing Files'
+  inputs:
+    rootFolderOrFile: '$(build.ArtifactStagingDirectory)\'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(build.ArtifactStagingDirectory)/ingrid-offline.zip'
+    replaceExistingArchive: true
+
+
 #List of File in $(Build.SourcesDirectory)
 - task: CmdLine@2
-  displayName: 'File List - Post Copy $(Build.SourcesDirectory)'
+  displayName: 'Step-18: File List - Post Copy $(Build.SourcesDirectory)'
   inputs:
     script: |
       echo "---------------------------"
@@ -281,7 +327,7 @@ steps:
       more ".\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\Ingrid.application"
 
 - task: ado-discord-webhook@2
-  displayName: 'Transfering application to Backblaze'
+  displayName: 'Step-19: Transfering application to Backblaze'
   condition: succeeded()
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
@@ -299,7 +345,7 @@ steps:
       ]
 
 - task: PowerShell@2
-  displayName: 'Copy Files to BackBlaze'
+  displayName: 'Step-20: Copy Files to BackBlaze'
   inputs:
     targetType: 'inline'
     script: |
@@ -328,27 +374,30 @@ steps:
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
 
 
+# No longer used due to reducing repo size and complexity, but kept for reference.
+# This task is moved to Step-17B above to compress the artifact before publishing to Backblaze and Github Pages.
 # Compressing Artifact to Zip
-- task: ArchiveFiles@2
-  displayName: 'Compressing Files'
-  inputs:
-    rootFolderOrFile: '$(build.ArtifactStagingDirectory)\'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(build.ArtifactStagingDirectory)/publish/zip/ingrid-offline.zip'
-    replaceExistingArchive: true
+- #task: ArchiveFiles@2
+  #displayName: 'Step-21: Compressing Files'
+  #inputs:
+    #rootFolderOrFile: '$(build.ArtifactStagingDirectory)\'
+    #includeRootFolder: true
+    #archiveType: 'zip'
+    #archiveFile: '$(build.ArtifactStagingDirectory)/publish/zip/ingrid-offline.zip'
+    #replaceExistingArchive: true
 
+# Activate this task if you want to publish the artifact to Azure DevOps artifacts for release via FTP or other means. Currently, it's commented out because the pipeline is set up to publish directly to Backblaze and Github Pages.
 #Publish Artifact for Relase via FTP
 # - task: PublishBuildArtifacts@1
-#  displayName: 'Publish Artifact.. ingrid-artifact'
+#  displayName: 'Step-22: Publish Artifact.. ingrid-artifact'
 #  inputs:
 #    PathtoPublish: '$(build.ArtifactStagingDirectory)'
 #    ArtifactName: 'ingrid-artifact'
 #    publishLocation: 'Container'
 
-
+# Send Discord notification for transferring application to Github Pages
 - task: ado-discord-webhook@2
-  displayName: 'Transfering application'
+  displayName: 'Step-23: Sending Discord Notification'
   condition: succeeded()
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
@@ -365,33 +414,22 @@ steps:
         }
       ]
 
-#Direct publish to Github Pages
-- task: GitHubPagesPublish@1
-  displayName: 'Publishing App To Github Pages'
-  inputs:
-    docPath: '$(build.ArtifactStagingDirectory)\publish\zip\ingrid-offline.zip'
-    githubusername: 'ardhagp'
-    githubemail: '$(var_g_Email)'
-    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
-    repositoryname: 'ingrid'
-    branchname: 'publish'
-    commitmessage: 'Release ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build)'
+# This task is disabled and moved to Step-20 above to reduce the number of steps and complexity in the pipeline. The artifact is now compressed before being uploaded to Backblaze.
+# Direct publish ingrid-offline.zip to Github Pages
+- #task: GitHubPagesPublish@1
+  #displayName: 'Step-24: Publishing App To Github Pages'
+  #inputs:
+    #docPath: '$(build.ArtifactStagingDirectory)\publish\zip\ingrid-offline.zip'
+    #githubusername: 'ardhagp'
+    #githubemail: '$(var_g_Email)'
+    #githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
+    #repositoryname: 'ingrid'
+    #branchname: 'publish'
+    #commitmessage: 'Release ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build)'
 
-#Direct publish to Github Release
-#- task: GitHubRelease@1
-#  inputs:
-#    gitHubConnection: 'GitHub'
-#    repositoryName: 'ardhagp/ingrid'
-#    action: 'create'
-#    target: '$(Build.SourceVersion)'
-#    tagSource: 'gitTag'
-#    tagPattern: 'Tag'
-#    title: 'Title'
-#    changeLogCompareToRelease: 'lastFullRelease'
-#    changeLogType: 'commitBased'
-
+# This task is disabled because the pipeline is set up to publish directly to Backblaze and Github Pages. If you want to publish to Azure Static Web Apps, you can uncomment this task and configure it accordingly.
 #- task: AzureStaticWebApp@0
-#  displayName: 'Publishing Static Web App'
+#  displayName: 'Step-25: Publishing Static Web App'
 #  inputs:
 #    workingDirectory: '$(build.ArtifactStagingDirectory)\*'
 #    app_location: '/'
@@ -402,8 +440,9 @@ steps:
 #    azure_static_web_apps_api_token: '$(var_g_TOKEN_SWA)'
 #    production_branch: 'publish'
 
+# Sending Discord notification for successful build and publish
 - task: ado-discord-webhook@2
-  displayName: 'Compile and Publish finished successfuly'
+  displayName: 'Step-26: Sending Discord Notification for Success'
   condition: succeeded()
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
@@ -432,8 +471,9 @@ steps:
         }
       ]
 
+# Sending Discord notification for failed build and publish
 - task: ado-discord-webhook@2
-  displayName: 'Compiling failed'
+  displayName: 'Step-27: Sending Discord Notification for Failure'
   condition: failed()
   inputs:
     webhookId: '$(var_g_Discord_WebhookID)'
@@ -462,10 +502,10 @@ steps:
         }
       ]
 
-#Updating Version for next build
+# Updating {Version.Minor} for next build
 - task: update-variablegroup-variable@0
   condition: succeeded()
-  displayName: 'Prepare Version For Next Build'
+  displayName: 'Step-28: Bump {Version.Minor} For Next Build'
   inputs:
     variableGroupName: 'global_variables'
     variableName: 'var_g_Ingridversion_minor'
@@ -474,9 +514,10 @@ steps:
     usePAT: true
     patValue: '$(var_g_TOKEN_AZURE)'
 
+# Updating {Version.Revision} for next build
 - task: update-variablegroup-variable@0
   condition: failed()
-  displayName: 'Prepare Version For Next Build'
+  displayName: 'Step-29: Bump {Version.Revision} For Next Build'
   inputs:
     variableGroupName: 'global_variables'
     variableName: 'var_g_Ingridversion_revision'

@@ -104,6 +104,50 @@ namespace Bridge
                 return "";
             }
         }
+
+        /// <summary>
+        /// Get Cloud Storage Url from User Secrets
+        /// </summary>
+        /// <returns>The Cloud Storage Url if found; otherwise an empty string.</returns>
+        public static string CloudStorageUrl()
+        {
+            var config = new ConfigurationBuilder()
+                .AddUserSecrets<Getkey>()
+                .Build();
+
+            var varKEY = config.GetSection("KEYS")["CLOUDSTORAGE"];
+
+            if (varKEY != null)
+            {
+                return varKEY;
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// Get Repo Page Url from User Secrets
+        /// </summary>
+        /// <returns>The Repo Page Url if found; otherwise an empty string.</returns>
+        public static string RepoPageUrl()
+        {
+            var config = new ConfigurationBuilder()
+                .AddUserSecrets<Getkey>()
+                .Build();
+
+            var varKEY = config.GetSection("KEYS")["REPOPAGE"];
+
+            if (varKEY != null)
+            {
+                return varKEY;
+            }
+            else
+            {
+                return "";
+            }
+        }
     }
         
     /// <summary>
