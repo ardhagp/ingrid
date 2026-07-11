@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.Versioning
+﻿Imports System.ComponentModel
+Imports System.Runtime.Versioning
 Imports System.Text
 
 Namespace UI.Canvas
@@ -79,10 +80,7 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub FRMconn_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
-            If Not (varIsExtension) Then
-                varDatabaseEngineSqlite.Close()
-            End If
-
+            varDatabaseEngineSqlite.Close()
             Bridge.Writelog.Sendlog("""Connection Settings is closed."",", "Information")
 
             RaiseEvent ConnectFrameClose()
@@ -210,6 +208,10 @@ Namespace UI.Canvas
 
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
             Me.Close()
+        End Sub
+
+        Private Sub FRMconn_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+
         End Sub
     End Class
 End Namespace

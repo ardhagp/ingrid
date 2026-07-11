@@ -6,7 +6,8 @@ Namespace UI
         Private WithEvents Frm_mainframe6 As Ingrid.UI.Canvas.FRMmainframe6
         Private WithEvents Frm_conn As Connect.UI.Canvas.FRMconn
 
-        Private varSecond As Integer
+        Private varIsReturned As Boolean = False
+        Private varSecond As Integer = 5
         Private varDownloadDB As String = "Update"
         Private varCaptionDownloadDB As String = "- press Download button"
         Private varLabelApp As String = "Opening"
@@ -42,16 +43,17 @@ Namespace UI
             With CboApplication.Items
                 .Add("Connect")
                 .Add("Ingrid")
+                .Add(varItemLocalDB)
             End With
             CboApplication.SelectedIndex = My.Settings.DefaultApp
 
             tmrCountdown.Enabled = True
         End Sub
 
-        Private Sub BtnLaunch_Click(sender As Object, e As EventArgs) Handles BtnLaunch.Click
+        Private Async Sub BtnLaunch_Click(sender As Object, e As EventArgs) Handles BtnLaunch.Click
             If CboApplication.Text = varItemLocalDB Then
-                If Decision("Question", "Do you want to download and replace current configuration file with new configuration file format?", LibApp.Ingrid.Global.PopupType.Question, "Update your existing configuration file", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
-                    Call DownloadCatalog()
+                If Decision("Confirmation", $"Do you want to download and replace current configuration file with new configuration file format?", LibApp.Ingrid.Global.PopupType.Confirmation, "Update your existing configuration file format", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+                    Await DownloadCatalogAsync()
                 End If
             Else
                 Call OpenApp(CboApplication.SelectedIndex)
@@ -94,8 +96,10 @@ Namespace UI
         End Sub
 
         Private Sub Frmconn_ConnectFrameClose() Handles Frm_conn.ConnectFrameClose
+            varIsReturned = True
             Frm_conn.Dispose()
-            Show()
+            Frm_conn = Nothing
+            Me.Show()
             Dim i As Integer = 0
             varLabelCountdown = "- press Launch"
             varLabelApp = "Open"
@@ -106,9 +110,9 @@ Namespace UI
                     i += 1
                 End If
             Next
-            If i = 0 Then
+            If i > 0 Then
                 With CboApplication.Items
-                    .Add(varItemLocalDB)
+                    .Remove(varItemLocalDB)
                 End With
             End If
             BtnClose.Visible = True
@@ -132,11 +136,18 @@ Namespace UI
                 LblRight.Text = varCaptionDownloadDB
                 BtnLaunch.Text = "Download"
                 BtnLaunch.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
+                tmrCountdown.Enabled = False
             Else
                 LblLeft.Text = varLabelApp
                 LblRight.Text = varLabelCountdown
                 BtnLaunch.Text = "Launch"
                 BtnLaunch.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
+                If varIsReturned Then
+                    tmrCountdown.Enabled = False
+                Else
+                    tmrCountdown.Enabled = True
+                End If
+
             End If
         End Sub
 
@@ -144,19 +155,18 @@ Namespace UI
         ''' Downloads the catalog.db file from the specified URL and saves it to the user's Documents folder.
         ''' </summary>
         ''' <returns></returns>
-        Public Async Function DownloadCatalog() As Task
-            Try
-                varCloudstorageUrl = My.Settings.CloudstorageUrl
-                Dim url As String = varCloudstorageUrl & "files/catalog.db"
-                Dim savePath As String = IO.Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "ardhagp\Ingrid .NET\Resources",
-                "catalog.db"
-            )
+        Public Async Function DownloadCatalogAsync() As Task
+            Using client As New HttpClient()
+                Try
+                    varCloudstorageUrl = My.Settings.CloudstorageUrl
+                    Dim url As String = varCloudstorageUrl & "files/catalog.db"
+                    Dim savePath As String = IO.Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\ardhagp\Ingrid .NET\Resources",
+                    "catalog.db"
+                )
 
-                Using client As New HttpClient()
                     ' Send HEAD request first to check if file exists
-                    Dim headRequest As New HttpRequestMessage(HttpMethod.Head, url)
-                    Dim headResponse = Await client.SendAsync(headRequest)
+                    Dim headResponse = Await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead) '(headRequest)
 
                     If Not headResponse.IsSuccessStatusCode Then
                         Decision("Error", $"Failed to download catalog.db. The file does not exist at the specified URL: {url}", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
@@ -165,26 +175,26 @@ Namespace UI
 
                     Dim data As Byte() = Await client.GetByteArrayAsync(url)
                     IO.File.WriteAllBytes(savePath, data)
-                End Using
-            Catch ex As Exception
-                With proLog
-                    .AppVersion = $"{My.Application.Info.Version.Major}.{My.Application.Info.Version.Minor}.{My.Application.Info.Version.Build}.{My.Application.Info.Version.Revision}"
-                    .FromSender = "$\IngridLauncher\030. FOrm\000. Launcher\App Launcher.vb"
-                    .InternalStackTrace = ""
-                    .Message = "Download catalog.db failed."
-                    .Number = 0
-                    .ResumeNext = True
-                    .SaveInBetterLog = True
-                    .SaveLogInLocal = True
-                    .ShowErrorReporting = False
-                    .TypeOfFaulty = CMCv.Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
-                    .TypeOfLog = CMCv.Ladybug.Log.Fields.TypeOfLogs.Error
-                End With
+                Catch ex As Exception
+                    With proLog
+                        .AppVersion = $"{My.Application.Info.Version.Major}.{My.Application.Info.Version.Minor}.{My.Application.Info.Version.Build}.{My.Application.Info.Version.Revision}"
+                        .FromSender = "$\IngridLauncher\030. FOrm\000. Launcher\App Launcher.vb"
+                        .InternalStackTrace = ""
+                        .Message = "Download catalog.db failed."
+                        .Number = 0
+                        .ResumeNext = True
+                        .SaveInBetterLog = True
+                        .SaveLogInLocal = True
+                        .ShowErrorReporting = False
+                        .TypeOfFaulty = CMCv.Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                        .TypeOfLog = CMCv.Ladybug.Log.Fields.TypeOfLogs.Error
+                    End With
 
-                Dim clsLog As New CMCv.Ladybug.Log.Events
-                clsLog.ShowData(proLog)
-                clsLog = Nothing
-            End Try
+                    Dim clsLog As New CMCv.Ladybug.Log.Events
+                    clsLog.ShowData(proLog)
+                    clsLog = Nothing
+                End Try
+            End Using
         End Function
     End Class
 End Namespace

@@ -68,6 +68,8 @@
             ' 
             ' BtnLaunch
             ' 
+            BtnLaunch.Anchor = AnchorStyles.Top
+            BtnLaunch.AutoSize = True
             BtnLaunch.BackColor = Color.LimeGreen
             BtnLaunch.FlatAppearance.BorderColor = Color.FromArgb(CByte(50), CByte(145), CByte(50))
             BtnLaunch.FlatAppearance.BorderSize = 2
@@ -75,10 +77,10 @@
             BtnLaunch.FlatStyle = FlatStyle.Flat
             BtnLaunch.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnLaunch.ForeColor = Color.White
-            BtnLaunch.Location = New Point(197, 635)
+            BtnLaunch.Location = New Point(177, 635)
             BtnLaunch.Margin = New Padding(4, 5, 4, 5)
             BtnLaunch.Name = "BtnLaunch"
-            BtnLaunch.Size = New Size(143, 67)
+            BtnLaunch.Size = New Size(187, 67)
             BtnLaunch.TabIndex = 1
             BtnLaunch.Text = "&Launch"
             BtnLaunch.UseVisualStyleBackColor = False
@@ -213,6 +215,7 @@
             Name = "FRMapplauncher"
             StartPosition = FormStartPosition.CenterScreen
             ResumeLayout(False)
+            PerformLayout()
         End Sub
 
         Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
