@@ -29,6 +29,7 @@
         Private Sub FRMcdinEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Call FillCompany(CboCompany)
             If varDataProperties.DepartmentIsNew Then
+
                 ChkAddNew.Visible = True
                 ChkAddNew.Checked = False
             Else

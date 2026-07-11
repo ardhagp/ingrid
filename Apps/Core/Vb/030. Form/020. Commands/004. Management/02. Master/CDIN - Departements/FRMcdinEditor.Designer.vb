@@ -31,6 +31,7 @@
             ULbl2 = New CMCv.UI.Control.ULbl()
             ULbl3 = New CMCv.UI.Control.ULbl()
             ULbl4 = New CMCv.UI.Control.ULbl()
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -40,6 +41,7 @@
             ' 
             ' PnlBottomButton
             ' 
+            PnlBottomButton.Controls.Add(ChkAddNew)
             PnlBottomButton.Controls.Add(BtnSave)
             PnlBottomButton.Controls.Add(BtnCancel)
             PnlBottomButton.Location = New Point(0, 451)
@@ -47,6 +49,7 @@
             PnlBottomButton.Size = New Size(873, 97)
             PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
             PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
+            PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
             ' 
             ' pnl_
             ' 
@@ -136,8 +139,8 @@
             TxtDeptCode.XOHighlightOnFocus = True
             TxtDeptCode.XOIsBlank = True
             TxtDeptCode.XOIsMandatory = True
-            TxtDeptCode.XOIsReplaceEmptyString = False
             TxtDeptCode.XOIsPlaceholder = False
+            TxtDeptCode.XOIsReplaceEmptyString = False
             TxtDeptCode.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtDeptCode.XOMandatoryBgColor = Color.LightPink
             TxtDeptCode.XOMandatoryBgColorDefault = Color.White
@@ -146,8 +149,8 @@
             TxtDeptCode.XOPasswordStrengthCalc = False
             TxtDeptCode.XOPasswordStrengthScore = 0
             TxtDeptCode.XOPasswordStrengthText = Nothing
-            TxtDeptCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
             TxtDeptCode.XOPlaceholderText = "Type then press Enter"
+            TxtDeptCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
             TxtDeptCode.XOSelectOnFocus = True
             TxtDeptCode.XOSqlText = ""
             ' 
@@ -179,8 +182,8 @@
             TxtDeptName.XOHighlightOnFocus = True
             TxtDeptName.XOIsBlank = True
             TxtDeptName.XOIsMandatory = True
-            TxtDeptName.XOIsReplaceEmptyString = False
             TxtDeptName.XOIsPlaceholder = False
+            TxtDeptName.XOIsReplaceEmptyString = False
             TxtDeptName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtDeptName.XOMandatoryBgColor = Color.LightPink
             TxtDeptName.XOMandatoryBgColorDefault = Color.White
@@ -189,8 +192,8 @@
             TxtDeptName.XOPasswordStrengthCalc = False
             TxtDeptName.XOPasswordStrengthScore = 0
             TxtDeptName.XOPasswordStrengthText = Nothing
-            TxtDeptName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
             TxtDeptName.XOPlaceholderText = "Type then press Enter"
+            TxtDeptName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
             TxtDeptName.XOSelectOnFocus = False
             TxtDeptName.XOSqlText = ""
             ' 
@@ -210,8 +213,8 @@
             TxtDescription.XOHighlightOnFocus = True
             TxtDescription.XOIsBlank = True
             TxtDescription.XOIsMandatory = False
-            TxtDescription.XOIsReplaceEmptyString = False
             TxtDescription.XOIsPlaceholder = False
+            TxtDescription.XOIsReplaceEmptyString = False
             TxtDescription.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtDescription.XOMandatoryBgColor = Color.LightPink
             TxtDescription.XOMandatoryBgColorDefault = Color.White
@@ -220,8 +223,8 @@
             TxtDescription.XOPasswordStrengthCalc = False
             TxtDescription.XOPasswordStrengthScore = 0
             TxtDescription.XOPasswordStrengthText = Nothing
-            TxtDescription.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtDescription.XOPlaceholderText = "Type then press Enter"
+            TxtDescription.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtDescription.XOSelectOnFocus = False
             TxtDescription.XOSqlText = ""
             ' 
@@ -277,6 +280,21 @@
             ULbl4.XOTextAdjuster = False
             ULbl4.XOTextBorder = False
             ' 
+            ' ChkAddNew
+            ' 
+            ChkAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            ChkAddNew.AutoSize = True
+            ChkAddNew.BackColor = Color.Transparent
+            ChkAddNew.FlatStyle = FlatStyle.Flat
+            ChkAddNew.Font = New Font("Segoe UI", 12.0F)
+            ChkAddNew.ForeColor = Color.Tomato
+            ChkAddNew.Location = New Point(280, 33)
+            ChkAddNew.Name = "ChkAddNew"
+            ChkAddNew.Size = New Size(221, 36)
+            ChkAddNew.TabIndex = 7
+            ChkAddNew.Text = "Add new on Save"
+            ChkAddNew.UseVisualStyleBackColor = False
+            ' 
             ' FRMcdinEditor
             ' 
             AutoScaleDimensions = New SizeF(10.0F, 25.0F)
@@ -284,6 +302,7 @@
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMcdinEditor"
             PnlBottomButton.ResumeLayout(False)
+            PnlBottomButton.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
@@ -299,10 +318,10 @@
         Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
         Friend WithEvents TxtDeptCode As CMCv.UI.Control.Txt
         Friend WithEvents TxtDescription As CMCv.UI.Control.Txt
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
         Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
     End Class
 End Namespace
