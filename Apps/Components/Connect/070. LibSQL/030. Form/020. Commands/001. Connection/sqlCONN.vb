@@ -24,6 +24,7 @@ Namespace CMDconn
                 varDatabaseRequestSqlite(0).DataGrid = datagrid
                 varDatabaseRequestSqlite(0).StatusBar = statusbar
                 varDatabaseEngineSqlite.GetDataTable(varDatabaseRequestSqlite(0), datasetname, "serverlist")
+                'varDatabaseEngineSqlite.FillDataSet(varDatabaseRequestSqlite(0).Query, datasetname, "serverlist")
             Catch ex As Exception
                 Dim clsLog As New Ladybug.Log.Events
                 With proLog

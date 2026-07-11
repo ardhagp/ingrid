@@ -322,6 +322,7 @@ Namespace Database.Engine
                 ' Activate this when using System.Data.Sqlite.Core
                 Dim varDataAdapterPrivate As SQLite.SQLiteDataAdapter
                 varDataAdapterPrivate = New SQLite.SQLiteDataAdapter(varCommand)
+                datasetname.Tables(tablename).Clear()
                 varDataAdapterPrivate.Fill(datasetname, tablename)
 
                 varBindingSource = New BindingSource(datasetname, tablename)
