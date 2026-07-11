@@ -149,7 +149,7 @@ Namespace UI.Canvas
         Function ReadConnectionString(url As String, connectioncode As String) As String
             Try
                 Dim varFullurl As String
-                varFullurl = url & "/conf/" & connectioncode.Trim & "/host.conn"
+                varFullurl = url & "conf/" & connectioncode.Trim & "/host.conn"
 
                 Using client As New HttpClient()
                     Dim response = client.GetAsync(varFullurl).Result
@@ -256,7 +256,7 @@ Namespace UI.Canvas
                 Return
             End If
 
-            varDownloadCenter = My.Settings.ConnectionURL
+            varDownloadCenter = Bridge.Getkey.CloudStorageUrl
 
             Dim conn As String = ReadConnectionString(varDownloadCenter, txtImportCode.Text)
             txtImportContent.Text = conn
