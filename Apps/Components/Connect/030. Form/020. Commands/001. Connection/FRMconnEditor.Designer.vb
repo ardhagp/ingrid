@@ -588,7 +588,7 @@
             btnImport.FlatStyle = FlatStyle.Flat
             btnImport.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             btnImport.ForeColor = Color.White
-            btnImport.Location = New Point(6, 467)
+            btnImport.Location = New Point(6, 434)
             btnImport.Name = "btnImport"
             btnImport.Size = New Size(150, 60)
             btnImport.TabIndex = 6
@@ -608,7 +608,7 @@
             btnSaveAs.FlatStyle = FlatStyle.Flat
             btnSaveAs.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             btnSaveAs.ForeColor = Color.White
-            btnSaveAs.Location = New Point(581, 467)
+            btnSaveAs.Location = New Point(581, 434)
             btnSaveAs.Name = "btnSaveAs"
             btnSaveAs.Size = New Size(150, 60)
             btnSaveAs.TabIndex = 5
@@ -624,7 +624,7 @@
             Pnl1.Controls.Add(txtImportContent)
             Pnl1.Location = New Point(6, 72)
             Pnl1.Name = "Pnl1"
-            Pnl1.Size = New Size(725, 389)
+            Pnl1.Size = New Size(725, 356)
             Pnl1.TabIndex = 4
             ' 
             ' txtImportContent
@@ -635,7 +635,7 @@
             txtImportContent.MaxLength = 0
             txtImportContent.Multiline = True
             txtImportContent.Name = "txtImportContent"
-            txtImportContent.Size = New Size(719, 371)
+            txtImportContent.Size = New Size(719, 338)
             txtImportContent.TabIndex = 3
             txtImportContent.Tag = "txt"
             txtImportContent.XOAutoTrim = False

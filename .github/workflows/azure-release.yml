@@ -227,15 +227,16 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.vb'
 
+# This task is no longer used because the DownloadCenter URL is now replaced by the Cloudstorage URL in Step-08B above. The DownloadCenter URL is no longer needed in the codebase, but the task is kept for reference in case it needs to be re-enabled in the future.
 # Replacing DownloadCenterURL
-- task: ReplaceInFilesTextByText@2
-  displayName: 'Step-13: Replacing: {DownloadCenter_Url}'
-  inputs:
-    parameterSearchDirectory: '$(Build.SourcesDirectory)'
-    parameterSearchText: 'My.Settings.ConnectionURL'
-    parameterReplaceText: '"$(var_g_DownloadCenter)"'
-    parameterTypeOfSearch: 'filesSearchPattern'
-    parameterFilesPattern: '*.vb'
+#- task: ReplaceInFilesTextByText@2
+#  displayName: 'Step-13: Replacing: {DownloadCenter_Url}'
+#  inputs:
+#    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+#    parameterSearchText: 'My.Settings.ConnectionURL'
+#    parameterReplaceText: '"$(var_g_UrlCloudstorage)"'
+#    parameterTypeOfSearch: 'filesSearchPattern'
+#    parameterFilesPattern: '*.cs'
 
 # Checking new value from variables
 - task: CmdLine@2
