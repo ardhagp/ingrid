@@ -1,4 +1,7 @@
-﻿Namespace UI
+﻿Imports System.Net.Http
+Imports Syncfusion.XPS
+
+Namespace UI
     Public Class FRMapplauncher
         Private WithEvents Frm_mainframe6 As Ingrid.UI.Canvas.FRMmainframe6
         Private WithEvents Frm_conn As Connect.UI.Canvas.FRMconn
@@ -47,11 +50,11 @@
 
         Private Sub BtnLaunch_Click(sender As Object, e As EventArgs) Handles BtnLaunch.Click
             If CboApplication.Text = varItemLocalDB Then
-                If Decision("Do you want to download the latest database?", "Download Database", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
-                    MsgBox("")
+                If Decision("Question", "Do you want to download and replace current configuration file with new configuration file format?", LibApp.Ingrid.Global.PopupType.Question, "Update your existing configuration file", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+                    Call DownloadCatalog()
                 End If
             Else
-                    Call OpenApp(CboApplication.SelectedIndex)
+                Call OpenApp(CboApplication.SelectedIndex)
             End If
         End Sub
 
@@ -136,5 +139,52 @@
                 BtnLaunch.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
             End If
         End Sub
+
+        ''' <summary>
+        ''' Downloads the catalog.db file from the specified URL and saves it to the user's Documents folder.
+        ''' </summary>
+        ''' <returns></returns>
+        Public Async Function DownloadCatalog() As Task
+            Try
+                varCloudstorageUrl = My.Settings.CloudstorageUrl
+                Dim url As String = varCloudstorageUrl & "files/catalog.db"
+                Dim savePath As String = IO.Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "ardhagp\Ingrid .NET\Resources",
+                "catalog.db"
+            )
+
+                Using client As New HttpClient()
+                    ' Send HEAD request first to check if file exists
+                    Dim headRequest As New HttpRequestMessage(HttpMethod.Head, url)
+                    Dim headResponse = Await client.SendAsync(headRequest)
+
+                    If Not headResponse.IsSuccessStatusCode Then
+                        Decision("Error", $"Failed to download catalog.db. The file does not exist at the specified URL: {url}", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                        Return
+                    End If
+
+                    Dim data As Byte() = Await client.GetByteArrayAsync(url)
+                    IO.File.WriteAllBytes(savePath, data)
+                End Using
+            Catch ex As Exception
+                With proLog
+                    .AppVersion = $"{My.Application.Info.Version.Major}.{My.Application.Info.Version.Minor}.{My.Application.Info.Version.Build}.{My.Application.Info.Version.Revision}"
+                    .FromSender = "$\IngridLauncher\030. FOrm\000. Launcher\App Launcher.vb"
+                    .InternalStackTrace = ""
+                    .Message = "Download catalog.db failed."
+                    .Number = 0
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = True
+                    .ShowErrorReporting = False
+                    .TypeOfFaulty = CMCv.Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                    .TypeOfLog = CMCv.Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New CMCv.Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+            End Try
+        End Function
     End Class
 End Namespace

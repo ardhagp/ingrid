@@ -15,48 +15,17 @@ Namespace UI
 
 #Region "Security Globals"
         <SupportedOSPlatform("windows")>
-        Public V_BRIDGE_KEY As Bridge.Getkey
-
-        <SupportedOSPlatform("windows")>
-        Public V_BRIDGE_LOG As Bridge.Writelog
-
-        <SupportedOSPlatform("windows")>
         Public varSalt As String = Bridge.Getkey.Salt()
 
         <SupportedOSPlatform("windows")>
         Public varSyncfusionKey As String = Bridge.Getkey.Syncfusion
-
-        ''' <summary>
-        ''' This security will be retired
-        ''' </summary>
-        Public V_SECEncrypt As New Security.Encrypt
-
-        ''' <summary>
-        ''' This security will be retired
-        ''' </summary>
-        'Public V_SECDecrypt As New Security.Decrypt
-
-        'new security
-        Public V_SEC_AES As System.Security.Cryptography.Aes
-        Public V_SEC_MD5 As System.Security.Cryptography.MD5
-        Public V_SEC_CRC32 As New System.IO.Hashing.Crc32
-
-#End Region
-
-#Region "Class Globals"
-        Public varCodebase As New UI.Control.ControlCodeBase
-        Public V_CFILEInfo As New OperatingSystem.File.Info
 #End Region
 
 #Region "Variabel Global"
         Public varRandomColor As New Random
 
-        'Public SEC As New Security.Engine
-
-        Public ERC As New CMCv.UI.Canvas.FRMerrorreporting
         Public proLog As Ladybug.Log.Fields
 
-        Public varApplicationVersion As String
         Public varBetterstack As New LibAPI.Api.Betterstack.Heartbeats
 #End Region
 
@@ -67,8 +36,7 @@ Namespace UI
             varMinor = My.Application.Info.Version.Minor
             varBuild = My.Application.Info.Version.Build
             varRevision = My.Application.Info.Version.Revision
-            varApplicationVersion = varMajor & "." & varMinor & "." & varBuild & "." & varRevision
-            Return varApplicationVersion
+            Return varMajor & "." & varMinor & "." & varBuild & "." & varRevision
         End Function
 
         <SupportedOSPlatform("windows")>

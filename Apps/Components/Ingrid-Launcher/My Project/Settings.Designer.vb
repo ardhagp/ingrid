@@ -65,6 +65,18 @@ Namespace My
                 Me("DefaultApp") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/")>  _
+        Public Property CloudstorageUrl() As String
+            Get
+                Return CType(Me("CloudstorageUrl"),String)
+            End Get
+            Set
+                Me("CloudstorageUrl") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

@@ -5,5 +5,8 @@
     <Setting Name="DefaultApp" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="CloudstorageUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
