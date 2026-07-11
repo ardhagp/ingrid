@@ -24,37 +24,51 @@ variables:
 
 - name: var_p_Email
   value: $[variables.var_g_Email]
+
 - name: var_p_DownloadCenter
   value: $[variables.var_g_DownloadCenter]
 
 - name: var_p_Platform
   value: $[variables.var_Platform]
+
 - name: var_p_BuildConfiguration
   value: $[variables.var_BuildConfiguration]
 
 - name: var_p_Ingridversion_major
   value: $[variables.var_g_Ingridversion_major]
+
 - name: var_p_Ingridversion_minor
   value: $[variables.var_g_Ingridversion_minor]
+
 - name: var_p_Ingridversion_build
   value: $[variables.var_g_Ingridversion_build]
+
 - name: var_p_Ingridversion_revision
   value: $[variables.var_g_Ingridversion_revision]
 
 - name: var_p_BetterStack_Log
   value: $[variables.var_g_BetterStack_Log]
+
 - name: var_p_SyncfusionKey
   value: $[variables.var_g_SyncfusionKey]
+  
+- name: var_p_UrlCloudstorage
+  value: $[variables.var_g_UrlCloudstorage]
+    
+- name: var_p_UrlRepoPage
+  value: $[variables.var_g_UrlRepoPage]
+
 - name: var_p_Salt
   value: $[variables.var_g_Salt]
 
 - name: var_p_TOKEN_GITHUB
   value: $[variables.var_g_TOKEN_GITHUB]
+
 - name: var_p_TOKEN_AZURE
   value: $[variables.var_g_TOKEN_AZURE]
 
 steps:
-
+# Sending Discord notification for starting the build and compile process
 - task: ado-discord-webhook@2
   displayName: 'Step-01: Start compiling'
   condition: always()
@@ -85,14 +99,14 @@ steps:
         }
       ]
 
-#Installing Nuget
+# Installing Nuget
 - task: NuGetToolInstaller@1
   displayName: 'Step-02: Install Nuget'
   inputs:
     versionSpec: 
     checkLatest: true
 
-#List of Files in $(Build.SourcesDirectory)
+# List of Files in $(Build.SourcesDirectory)
 - task: CmdLine@2
   displayName: 'Step-03: Pre-Build File List in $(Build.SourcesDirectory)'
   inputs:
@@ -102,7 +116,7 @@ steps:
       cd $(Build.SourcesDirectory)
       dir /b /s /A-D /o:gn
 
-#Nuget Restore
+# Nuget Restore
 - task: NuGetCommand@2
   displayName: 'Step-04: Restore NuGet'
   inputs:
@@ -113,7 +127,7 @@ steps:
     nugetConfigPath: './Apps/Core/Vb/NuGet.config'
     externalFeedCredentials: 'ingrid'
 
-#Replacing SALT Key
+# Replacing SALT Key
 - task: ReplaceInFilesTextByText@2
   displayName: 'Step-05: Replacing: BridgeKey.Salt'
   inputs:
@@ -123,7 +137,7 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.cs'
 
-#Replacing Syncfusion Key
+# Replacing Syncfusion Key
 - task: ReplaceInFilesTextByText@2
   displayName: 'Step-06: Replacing: BridgeKey.Syncfusion'
   inputs:
@@ -133,7 +147,7 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.cs'
 
-#Replacing BetterStack Key
+# Replacing BetterStack Key
 - task: ReplaceInFilesTextByText@2
   displayName: 'Step-07: Replacing: BridgeKey.BetterStackLog'
   inputs:
@@ -143,12 +157,33 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.cs'
 
+# Replacing BetterStack Heartbeats Key
 - task: ReplaceInFilesTextByText@2
   displayName: 'Step-08: Replacing: BridgeKey.BetterStackHeartbeats'
   inputs:
     parameterSearchDirectory: '$(Build.SourcesDirectory)'
     parameterSearchText: 'config.GetSection("KEYS")["BETTERSTACK_HEARTBEATS"]'
     parameterReplaceText: '"$(var_g_BetterStack_Heartbeats)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.cs'
+
+# Replacing Cloudstorage URL
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Step-08B: Replacing: BridgeKey.CloudstorageUrl'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'config.GetSection("KEYS")["CLOUDSTORAGE"]'
+    parameterReplaceText: '"$(var_g_UrlCloudstorage)"'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.cs'
+
+# Replacing RepoPage URL
+- task: ReplaceInFilesTextByText@2
+  displayName: 'Step-08C: Replacing: BridgeKey.RepoPageUrl'
+  inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'config.GetSection("KEYS")["REPOPAGE"]'
+    parameterReplaceText: '"$(var_g_UrlRepoPage)"'
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.cs'
 
