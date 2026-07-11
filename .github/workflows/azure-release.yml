@@ -18,7 +18,7 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-#Assigning variables from Environment
+# Assigning variables from Environment
 variables:
 - group: global_variables
 
@@ -187,7 +187,7 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.cs'
 
-#Replacing Version: Major
+# Replacing Version: Major
 - task: ReplaceInFilesTextByText@2
   displayName: 'Step-09: Replacing: {Version.Major}'
   inputs:
@@ -197,7 +197,7 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.vb'
 
-#Replacing Version: Minor
+# Replacing Version: Minor
 - task: ReplaceInFilesTextByText@2
   displayName: 'Step-10: Replacing: {Version.Minor}'
   inputs:
@@ -207,7 +207,7 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.vb'
 
-#Replacing Version: Build
+# Replacing Version: Build
 - task: ReplaceInFilesTextByText@2
   displayName: 'Step-11: Replacing: {Version.Build}'
   inputs:
@@ -217,7 +217,7 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.vb'
 
-#Replacing Version: Revision
+# Replacing Version: Revision
 - task: ReplaceInFilesTextByText@2
   displayName: 'Step-12: Replacing: {Version.Revision}'
   inputs:
@@ -227,7 +227,7 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.vb'
 
-#Replacing DownloadCenterURL
+# Replacing DownloadCenterURL
 - task: ReplaceInFilesTextByText@2
   displayName: 'Step-13: Replacing: {DownloadCenter_Url}'
   inputs:
@@ -237,7 +237,7 @@ steps:
     parameterTypeOfSearch: 'filesSearchPattern'
     parameterFilesPattern: '*.vb'
 
-#Checking new value from variables
+# Checking new value from variables
 - task: CmdLine@2
   displayName: 'Step-14: Check Text Replacement'
   inputs:
@@ -249,24 +249,24 @@ steps:
       echo Revision: $(var_g_Ingridversion_revision)
       echo DownloadCenter: $(var_g_DownloadCenter)
 
-#Review content of code
-- #task: CmdLine@2
-  #displayName: 'Reviewing Codes'
-  #inputs:
-    #script: |
-      #echo "File List - Ingrid-CI-Build"
-      
-      #cd $(Build.SourcesDirectory)
-      #dir /b /s /A-D /o:gn
-      #echo "Reading CMC\Global.vb"
-      #echo "---------------------------"
-      #more ".\Apps\Components\CMC\2090 - Module\Global.vb"
-      #echo "---------------------------"
-      #echo "Reading Apps\Core\Module\Global.vb"
-      #echo "---------------------------"
-      #more ".\Apps\Core\Vb\020. Module\Global.vb"
+# Review content of code
+#- task: CmdLine@2
+#  displayName: 'Reviewing Codes'
+#  inputs:
+#    script: |
+#      echo "File List - Ingrid-CI-Build"
+#      
+#      cd $(Build.SourcesDirectory)
+#      dir /b /s /A-D /o:gn
+#      echo "Reading CMC\Global.vb"
+#      echo "---------------------------"
+#      more ".\Apps\Components\CMC\2090 - Module\Global.vb"
+#      echo "---------------------------"
+#      echo "Reading Apps\Core\Module\Global.vb"
+#      echo "---------------------------"
+#      more ".\Apps\Core\Vb\020. Module\Global.vb"
 
-#Build Ingrid App
+# Build Ingrid App
 - task: VSBuild@1
   displayName: 'Step-15: Build and Publish'
   inputs:
@@ -280,7 +280,7 @@ steps:
     maximumCpuCount: true
     createLogFile: true
 
-#List of File in $(Build.SourcesDirectory)
+# List of File in $(Build.SourcesDirectory)
 - task: CmdLine@2
   displayName: 'Step-16: File List - Post Build $(Build.SourcesDirectory)'
   inputs:
@@ -291,7 +291,7 @@ steps:
       cd $(Build.SourcesDirectory)\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\
       dir /b /s /A-D /o:gn
 
-#Packing deployment to Artifact Directory
+# Packing deployment to Artifact Directory
 - task: CopyFiles@2
   displayName: 'Step-17: Copy Files to.. $(build.ArtifactStagingDirectory)'
   inputs:
@@ -310,7 +310,7 @@ steps:
     replaceExistingArchive: true
 
 
-#List of File in $(Build.SourcesDirectory)
+# List of File in $(Build.SourcesDirectory)
 - task: CmdLine@2
   displayName: 'Step-18: File List - Post Copy $(Build.SourcesDirectory)'
   inputs:
@@ -326,6 +326,7 @@ steps:
       cd $(Build.SourcesDirectory)
       more ".\Apps\Components\Ingrid-Launcher\bin\$(var_BuildConfiguration)\net$(var_NET).0-windows7.0\publish\Ingrid.application"
 
+# Sending Discord notification for transferring application to Backblaze
 - task: ado-discord-webhook@2
   displayName: 'Step-19: Transfering application to Backblaze'
   condition: succeeded()
@@ -344,6 +345,7 @@ steps:
         }
       ]
 
+# Uploading Files to Backblaze B2 Cloud Storage
 - task: PowerShell@2
   displayName: 'Step-20: Copy Files to BackBlaze'
   inputs:
@@ -377,14 +379,14 @@ steps:
 # No longer used due to reducing repo size and complexity, but kept for reference.
 # This task is moved to Step-17B above to compress the artifact before publishing to Backblaze and Github Pages.
 # Compressing Artifact to Zip
-- #task: ArchiveFiles@2
-  #displayName: 'Step-21: Compressing Files'
-  #inputs:
-    #rootFolderOrFile: '$(build.ArtifactStagingDirectory)\'
-    #includeRootFolder: true
-    #archiveType: 'zip'
-    #archiveFile: '$(build.ArtifactStagingDirectory)/publish/zip/ingrid-offline.zip'
-    #replaceExistingArchive: true
+#- task: ArchiveFiles@2
+#  displayName: 'Step-21: Compressing Files'
+#  inputs:
+#    rootFolderOrFile: '$(build.ArtifactStagingDirectory)\'
+#    includeRootFolder: true
+#    archiveType: 'zip'
+#    archiveFile: '$(build.ArtifactStagingDirectory)/publish/zip/ingrid-offline.zip'
+#    replaceExistingArchive: true
 
 # Activate this task if you want to publish the artifact to Azure DevOps artifacts for release via FTP or other means. Currently, it's commented out because the pipeline is set up to publish directly to Backblaze and Github Pages.
 #Publish Artifact for Relase via FTP
@@ -416,16 +418,16 @@ steps:
 
 # This task is disabled and moved to Step-20 above to reduce the number of steps and complexity in the pipeline. The artifact is now compressed before being uploaded to Backblaze.
 # Direct publish ingrid-offline.zip to Github Pages
-- #task: GitHubPagesPublish@1
-  #displayName: 'Step-24: Publishing App To Github Pages'
-  #inputs:
-    #docPath: '$(build.ArtifactStagingDirectory)\publish\zip\ingrid-offline.zip'
-    #githubusername: 'ardhagp'
-    #githubemail: '$(var_g_Email)'
-    #githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
-    #repositoryname: 'ingrid'
-    #branchname: 'publish'
-    #commitmessage: 'Release ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build)'
+#- task: GitHubPagesPublish@1
+#  displayName: 'Step-24: Publishing App To Github Pages'
+#  inputs:
+#    docPath: '$(build.ArtifactStagingDirectory)\publish\zip\ingrid-offline.zip'
+#    githubusername: 'ardhagp'
+#    githubemail: '$(var_g_Email)'
+#    githubaccesstoken: '$(var_g_TOKEN_GITHUB)'
+#    repositoryname: 'ingrid'
+#    branchname: 'publish'
+#    commitmessage: 'Release ver. $(var_g_Ingridversion_major).$(var_g_Ingridversion_minor).$(var_g_Ingridversion_build)'
 
 # This task is disabled because the pipeline is set up to publish directly to Backblaze and Github Pages. If you want to publish to Azure Static Web Apps, you can uncomment this task and configure it accordingly.
 #- task: AzureStaticWebApp@0
