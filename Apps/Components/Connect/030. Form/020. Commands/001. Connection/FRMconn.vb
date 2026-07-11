@@ -50,10 +50,10 @@ Namespace UI.Canvas
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub GetRowID()
-            varProperties.ConnectionId = "-1"
+            varDataProperties.ConnectionId = "-1"
 
             If DgnConnection.RowCount > 0 Then
-                varProperties.ConnectionId = DgnConnection.CurrentRow.Cells("ID").Value.ToString
+                varDataProperties.ConnectionId = DgnConnection.CurrentRow.Cells("ID").Value.ToString
             End If
         End Sub
 #End Region
@@ -95,8 +95,8 @@ Namespace UI.Canvas
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles COMmainframemenu.EventDataAddNew
-            varProperties.ConnectionIsNew = True
-            varProperties.ConnectionId = "-1"
+            varDataProperties.ConnectionIsNew = True
+            varDataProperties.ConnectionId = "-1"
             FRMconn_editor = New FRMconnEditor
             Display(FRMconn_editor, UI.Resource.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName, "Add New Record", "Add new connection", True)
             SLFStatus.Text = String.Empty
@@ -108,9 +108,9 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Public Sub EventDataEdit() Handles COMmainframemenu.EventDataEdit
             Call GetRowID()
-            varProperties.ConnectionIsNew = False
+            varDataProperties.ConnectionIsNew = False
 
-            If varProperties.ConnectionId Is "-1" Then
+            If varDataProperties.ConnectionId Is "-1" Then
                 Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 FRMconn_editor = New FRMconnEditor
@@ -125,10 +125,10 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles COMmainframemenu.EventDataDelete
             Call GetRowID()
-            If varProperties.ConnectionId Is "-1" Then
+            If varDataProperties.ConnectionId Is "-1" Then
                 Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
-                varProperties.ConnectionIsNew = False
+                varDataProperties.ConnectionIsNew = False
 
                 With DgnConnection.CurrentRow
                     Dim varMessage As New StringBuilder()
@@ -146,7 +146,7 @@ Namespace UI.Canvas
                     varMessage.AppendLine(varLine)
 
                     If Decision(My.Application.Info.AssemblyName, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
-                        If (CMDconn.View.DeleteData(Convert.ToString(varProperties.ConnectionId))) Then
+                        If (CMDconn.View.DeleteData(Convert.ToString(varDataProperties.ConnectionId))) Then
                             Call GetData(True)
                             SLFStatus.Text = "Success"
                         Else
@@ -210,8 +210,5 @@ Namespace UI.Canvas
             Me.Close()
         End Sub
 
-        Private Sub FRMconn_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-
-        End Sub
     End Class
 End Namespace

@@ -159,7 +159,7 @@ Namespace UI
             Using client As New HttpClient()
                 Try
                     varCloudstorageUrl = My.Settings.CloudstorageUrl
-                    Dim url As String = varCloudstorageUrl & "files/catalog.db"
+                    Dim url As String = varCloudstorageUrl & "conf/catalog.db"
                     Dim savePath As String = IO.Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\ardhagp\Ingrid .NET\Resources",
                     "catalog.db"
