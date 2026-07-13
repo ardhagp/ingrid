@@ -91,6 +91,7 @@
         Property EmployeeIsForceRefresh As Boolean
         Property EmployeeIsForceChangePhoto As Boolean
         Property EmployeeIsHavePhoto As Boolean
+        Property EmployeeIsNewPhoto As Boolean
         Property EmployeeIsNew As Boolean
         Property EmployeeIsPhotoRemoved As Boolean
         Property EmployeeFirstName As String

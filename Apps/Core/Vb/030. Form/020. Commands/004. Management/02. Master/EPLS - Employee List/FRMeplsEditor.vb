@@ -23,6 +23,7 @@
 
             ' Continue to Load anything for this module
             varDataProperties.EmployeeIsHavePhoto = False
+            varDataProperties.EmployeeIsNewPhoto = True
             varDataProperties.EmployeeIsForceChangePhoto = False
             If varDataProperties.EmployeeIsNew Then
                 ChkAddNew.Visible = True
@@ -61,11 +62,13 @@
                     pctbxPhoto.Image = CMDepls.Editor.GetPhoto(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
                     BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
                     varDataProperties.EmployeeIsHavePhoto = True
+                    varDataProperties.EmployeeIsNewPhoto = False
                     BtnRemovePhoto.Enabled = True
                 Else
                     BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
                     BtnRemovePhoto.Enabled = False
                 End If
+                ' TODO: Save employee data and photo
             End If
             Call ResetPhoto()
             TxtPersonalID.Focus()
