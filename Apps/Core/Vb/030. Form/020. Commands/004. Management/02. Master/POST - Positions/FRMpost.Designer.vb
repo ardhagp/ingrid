@@ -60,7 +60,7 @@
             ' 
             DgnPOST.AllowUserToAddRows = False
             DgnPOST.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(240), CByte(208), CByte(142))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(196), CByte(207), CByte(152))
             DgnPOST.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnPOST.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnPOST.BorderStyle = BorderStyle.None
@@ -68,7 +68,7 @@
             DgnPOST.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
             DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
             DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -79,7 +79,7 @@
             DgnPOST.Columns.AddRange(New DataGridViewColumn() {company_code, department_code, position_id, position_code, position_name, position_description})
             DgnPOST.Dock = DockStyle.Fill
             DgnPOST.EnableHeadersVisualStyles = False
-            DgnPOST.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+            DgnPOST.Font = New Font("Verdana", 8F)
             DgnPOST.Location = New Point(0, 88)
             DgnPOST.Margin = New Padding(6, 5, 6, 5)
             DgnPOST.Name = "DgnPOST"
@@ -87,7 +87,7 @@
             DgnPOST.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle3.BackColor = Color.YellowGreen
-            DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
             DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
             DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -168,16 +168,15 @@
             ' 
             ' FRMpost
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1307, 1078)
-            ControlBox = False
             Margin = New Padding(10, 5, 10, 5)
-            MaximizeBox = False
             MinimizeBox = False
             Name = "FRMpost"
             ShowIcon = False
             ShowInTaskbar = False
             WindowState = FormWindowState.Maximized
+            XOWindowAlwaysMaximized = True
             PnlFind.ResumeLayout(False)
             PnlFind.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
