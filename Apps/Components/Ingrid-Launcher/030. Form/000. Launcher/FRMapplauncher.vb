@@ -1,7 +1,4 @@
-﻿Imports System.Net.Http
-Imports Syncfusion.XPS
-
-Namespace UI
+﻿Namespace UI
     Public Class FRMapplauncher
         Private WithEvents Frm_mainframe6 As Ingrid.UI.Canvas.FRMmainframe6
         Private WithEvents Frm_conn As Connect.UI.Canvas.FRMconn
@@ -14,7 +11,19 @@ Namespace UI
         Private varLabelCountdown As String = $"app in {varSecond} seconds..."
         Private Const varItemLocalDB As String = "Local DB"
 
-        Private Sub Frmapplauncher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Private Async Sub Frmapplauncher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            Dim baseFolder = IO.Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "ardhagp\Ingrid .NET")
+
+            Dim resourcesFolder = IO.Path.Combine(baseFolder, "Resources")
+            IO.Directory.CreateDirectory(resourcesFolder)
+
+            Dim dbok = EnsureDbExists($"Resources\catalog.db", baseFolder)
+
+            If Not dbok Then
+                Await DownloadCatalogAsync()
+            End If
 
             With proLog
                 .AppVersion = $"{My.Application.Info.Version.Major}.{My.Application.Info.Version.Minor}.{My.Application.Info.Version.Build}.{My.Application.Info.Version.Revision}"
@@ -156,7 +165,7 @@ Namespace UI
         ''' </summary>
         ''' <returns></returns>
         Public Async Function DownloadCatalogAsync() As Task
-            Using client As New HttpClient()
+            Using client As New System.Net.Http.HttpClient()
                 Try
                     varCloudstorageUrl = My.Settings.CloudstorageUrl
                     Dim url As String = varCloudstorageUrl & "conf/catalog.db"
@@ -166,7 +175,7 @@ Namespace UI
                 )
 
                     ' Send HEAD request first to check if file exists
-                    Dim headResponse = Await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead) '(headRequest)
+                    Dim headResponse = Await client.GetAsync(url, System.Net.Http.HttpCompletionOption.ResponseHeadersRead) '(headRequest)
 
                     If Not headResponse.IsSuccessStatusCode Then
                         Decision("Error", $"Failed to download catalog.db. The file does not exist at the specified URL: {url}", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
@@ -195,6 +204,18 @@ Namespace UI
                     clsLog = Nothing
                 End Try
             End Using
+        End Function
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Shared Function EnsureDbExists(relativepath As String, basefolder As String) As Boolean
+            Dim targetPath = IO.Path.Combine(basefolder, relativepath)
+            Dim sourcePath = IO.Path.Combine(System.Windows.Forms.Application.StartupPath, relativepath)
+
+            If Not IO.File.Exists(targetPath) Then
+                IO.File.Copy(sourcePath, targetPath, True)
+            End If
+
+            Return IO.File.Exists(targetPath)
         End Function
     End Class
 End Namespace

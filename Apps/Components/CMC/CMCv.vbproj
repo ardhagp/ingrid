@@ -81,18 +81,36 @@
     <Compile Remove="0010 - Embeded Files\080. Database\v11.0\**" />
     <Compile Remove="2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\**" />
     <Compile Remove="2001 - Service\01 - Database\02 - Engine\04 - LocalDB\**" />
+    <Compile Remove="2001 - Service\02 - SOAP\**" />
+    <Compile Remove="2001 - Service\03 - Web\**" />
+    <Compile Remove="2001 - Service\04 - Map\**" />
+    <Compile Remove="2091 - Class\**" />
+    <Compile Remove="2099 - Interface\Forms\Templates\Windows10\**" />
+    <Compile Remove="SqlServerTypes\**" />
     <Compile Remove="x64\**" />
     <Compile Remove="x86\**" />
     <EmbeddedResource Remove="000. Programmer%27s Guide\**" />
     <EmbeddedResource Remove="0010 - Embeded Files\080. Database\v11.0\**" />
     <EmbeddedResource Remove="2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\**" />
     <EmbeddedResource Remove="2001 - Service\01 - Database\02 - Engine\04 - LocalDB\**" />
+    <EmbeddedResource Remove="2001 - Service\02 - SOAP\**" />
+    <EmbeddedResource Remove="2001 - Service\03 - Web\**" />
+    <EmbeddedResource Remove="2001 - Service\04 - Map\**" />
+    <EmbeddedResource Remove="2091 - Class\**" />
+    <EmbeddedResource Remove="2099 - Interface\Forms\Templates\Windows10\**" />
+    <EmbeddedResource Remove="SqlServerTypes\**" />
     <EmbeddedResource Remove="x64\**" />
     <EmbeddedResource Remove="x86\**" />
     <None Remove="000. Programmer%27s Guide\**" />
     <None Remove="0010 - Embeded Files\080. Database\v11.0\**" />
     <None Remove="2001 - Service\01 - Database\02 - Engine\01 - MS Access 2003\**" />
     <None Remove="2001 - Service\01 - Database\02 - Engine\04 - LocalDB\**" />
+    <None Remove="2001 - Service\02 - SOAP\**" />
+    <None Remove="2001 - Service\03 - Web\**" />
+    <None Remove="2001 - Service\04 - Map\**" />
+    <None Remove="2091 - Class\**" />
+    <None Remove="2099 - Interface\Forms\Templates\Windows10\**" />
+    <None Remove="SqlServerTypes\**" />
     <None Remove="x64\**" />
     <None Remove="x86\**" />
   </ItemGroup>
@@ -293,17 +311,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="0010 - Embeded Files\080. Database\Classic\" />
-    <Folder Include="2001 - Service\02 - SOAP\" />
-    <Folder Include="2001 - Service\03 - Web\" />
-    <Folder Include="2001 - Service\04 - Map\Bing\" />
-    <Folder Include="2001 - Service\04 - Map\Google\" />
     <Folder Include="2002 - System\110 - File Processor\Limiter\" />
     <Folder Include="2002 - System\900 - Application\" />
-    <Folder Include="2091 - Class\01 - Database\02 - SQL Server 2008\" />
     <Folder Include="2099 - Interface\Controls\MergerToolStrips\" />
     <Folder Include="2099 - Interface\Controls\TextEditor\" />
-    <Folder Include="2099 - Interface\Forms\Templates\Windows10\" />
-    <Folder Include="SqlServerTypes\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="2099 - Interface\Controls\Button\Btn.ico" />
@@ -534,6 +545,11 @@
   <ItemGroup>
     <Compile Remove="2099 - Interface\Controls\Tool Strip\too.Designer.vb" />
     <Compile Remove="2099 - Interface\Controls\Tool Strip\too.vb" />
+    <Compile Remove="2099 - Interface\Forms\Templates\Windows7\Standard\FRMstandard6.Designer.vb" />
+    <Compile Remove="2099 - Interface\Forms\Templates\Windows7\Standard\FRMstandard6.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="2099 - Interface\Forms\Templates\Windows7\Standard\FRMstandard6.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="0010 - Embeded Files\080. Database\Classic\CATALOG.mdb" />

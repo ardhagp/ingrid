@@ -59,7 +59,7 @@
             ' 
             DgnCDIN.AllowUserToAddRows = False
             DgnCDIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(197), CByte(225), CByte(139))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(233), CByte(218), CByte(108))
             DgnCDIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnCDIN.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnCDIN.BorderStyle = BorderStyle.None
@@ -67,7 +67,7 @@
             DgnCDIN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F)
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
             DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
             DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -78,7 +78,7 @@
             DgnCDIN.Columns.AddRange(New DataGridViewColumn() {department_id, company_code, department_code, department_name, department_description})
             DgnCDIN.Dock = DockStyle.Fill
             DgnCDIN.EnableHeadersVisualStyles = False
-            DgnCDIN.Font = New Font("Verdana", 8.0F)
+            DgnCDIN.Font = New Font("Verdana", 8F)
             DgnCDIN.Location = New Point(0, 88)
             DgnCDIN.Margin = New Padding(6, 5, 6, 5)
             DgnCDIN.Name = "DgnCDIN"
@@ -86,7 +86,7 @@
             DgnCDIN.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle3.BackColor = Color.YellowGreen
-            DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F)
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
             DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
             DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -156,14 +156,10 @@
             ' 
             ' FRMcdin
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1307, 1078)
-            ControlBox = False
-            FormBorderStyle = FormBorderStyle.SizableToolWindow
             Margin = New Padding(10, 5, 10, 5)
-            MaximizeBox = False
             MdiChildrenMinimizedAnchorBottom = False
-            MinimizeBox = False
             Name = "FRMcdin"
             ShowIcon = False
             ShowInTaskbar = False

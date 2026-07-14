@@ -1,9 +1,5 @@
-﻿Imports System.ComponentModel
-Imports System.Runtime.Versioning
-Imports System.Text
-
-Namespace UI.Canvas
-    <SupportedOSPlatform("windows")>
+﻿Namespace UI.Canvas
+    <System.Runtime.Versioning.SupportedOSPlatform("windows")>
     Public Class FRMconn
         Private WithEvents FRMconn_editor As FRMconnEditor
         Private WithEvents COMmainframemenu As New CMCv.UI.View.MenuStrip
@@ -39,16 +35,16 @@ Namespace UI.Canvas
         ''' Get data from database
         ''' </summary>
         ''' <param name="forcerefresh"></param>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
-            DblBuffer(DgnConnection) ''' Enable double buffering to reduce flickering
+            DblBuffer(DgnConnection) ' Enable double buffering to reduce flickering
             CMDconn.View.DisplayData(DgnConnection, SLFStatus, TxtFind, varDataset, forcerefresh)
         End Sub
 
         ''' <summary>
         ''' Get row ID on record clicked
         ''' </summary>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetRowID()
             varDataProperties.ConnectionId = "-1"
 
@@ -58,27 +54,36 @@ Namespace UI.Canvas
         End Sub
 #End Region
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMconn_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            RaiseEvent ConnectFrameOpen() ''' Notify that the connection settings form is opened
+            ' Notify that the connection settings form is opened
+            RaiseEvent ConnectFrameOpen()
 
-            Bridge.Writelog.Sendlog("""message"" : ""Connection Settings is opened."",", "Information") ''' Log the event
+            ' Log the event
+            Bridge.Writelog.Sendlog("""message"" : ""Connection Settings is opened."",", "Information")
 
-            varDatabaseEngineSqlite.Open("catalog.db") ''' Open database connection
+            ' Open database connection
+            varDatabaseEngineSqlite.Open("catalog.db")
 
-            Call LoadMenu() ''' Load mainframe menu
+            ' Load mainframe menu
+            Call LoadMenu()
 
-            DgnConnection.XOGetNewColor() ''' Apply custom color scheme
+            ' Apply custom color scheme
+            DgnConnection.XOGetNewColor()
 
-            Call GetData(True) ''' Load data into the grid
+            ' Load data into the grid
+            Call GetData(True)
         End Sub
 
         Private Sub LoadMenu()
-            COMmainframemenu.LoadIn(Me, True) ''' Load menu into the form
-            COMmainframemenu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes) ''' Show data-related menu items
+            ' Load menu into the form
+            COMmainframemenu.LoadIn(Me, True)
+
+            ' Show data-related menu items
+            COMmainframemenu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMconn_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
             varDatabaseEngineSqlite.Close()
             Bridge.Writelog.Sendlog("""Connection Settings is closed."",", "Information")
@@ -93,7 +98,7 @@ Namespace UI.Canvas
         ''' <summary>
         ''' Add new data
         ''' </summary>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles COMmainframemenu.EventDataAddNew
             varDataProperties.ConnectionIsNew = True
             varDataProperties.ConnectionId = "-1"
@@ -105,7 +110,7 @@ Namespace UI.Canvas
         ''' <summary>
         ''' Edit existing data
         ''' </summary>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub EventDataEdit() Handles COMmainframemenu.EventDataEdit
             Call GetRowID()
             varDataProperties.ConnectionIsNew = False
@@ -122,7 +127,7 @@ Namespace UI.Canvas
         ''' <summary>
         ''' Delete selected data
         ''' </summary>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles COMmainframemenu.EventDataDelete
             Call GetRowID()
             If varDataProperties.ConnectionId Is "-1" Then
@@ -131,10 +136,10 @@ Namespace UI.Canvas
                 varDataProperties.ConnectionIsNew = False
 
                 With DgnConnection.CurrentRow
-                    Dim varMessage As New StringBuilder()
+                    Dim varMessage As New System.Text.StringBuilder()
                     varMessage.AppendLine("Do you want to delete this record?")
 
-                    Dim varLine As String = New String("─"c, 80)
+                    Dim varLine As New String("─"c, 80)
                     varMessage.AppendLine(varLine)
 
                     varMessage.AppendLine("Connection ID : " & .Cells("id").Value.ToString & Environment.NewLine &
@@ -158,12 +163,14 @@ Namespace UI.Canvas
         End Sub
 
         Private Sub FindToolStripMenuItem_Click(sender As Object, e As EventArgs)
-            Call GetData(False) ''' Load data with filter applied
+            ' Load data with filter applied
+            Call GetData(False)
         End Sub
 
         Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
             If e.KeyCode = Keys.Enter Then
-                Call GetData(False) ''' Load data with filter applied
+                ' Load data with filter applied
+                Call GetData(False)
             End If
         End Sub
 
@@ -207,8 +214,8 @@ Namespace UI.Canvas
         End Sub
 
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles Btn_Close.Click
+            varDatabaseEngineSqlite.Close()
             Me.Close()
         End Sub
-
     End Class
 End Namespace
