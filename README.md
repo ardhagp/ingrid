@@ -27,24 +27,28 @@ id1(📦 master) --> id6(☁️ publish)
 
 
 ## Current Status
-![GitHub License](https://img.shields.io/github/license/ardhagp/ingrid?label=License&color=blue) ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ardhagp/ingrid?label=Issues&color=ff0000) ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-closed/ardhagp/ingrid?label=Issues&color=green)
+|Repository Status|
+|:---|
+|![GitHub License](https://img.shields.io/github/license/ardhagp/ingrid?label=License&color=blue) ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ardhagp/ingrid?label=Issues&color=ff0000) ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-closed/ardhagp/ingrid?label=Issues&color=green) ![GitHub repo size](https://img.shields.io/github/repo-size/ardhagp/ingrid?label=Repo%20Size) ![GitHub last commit](https://img.shields.io/github/last-commit/ardhagp/ingrid?label=Last%20Commit) ![GitHub Created At](https://img.shields.io/github/created-at/ardhagp/ingrid?label=Created%20At) |
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=bugs)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=ardhagp_ingrid) 
+|Sonar Status |
+|:---|
+|![Sonar Violations](https://img.shields.io/sonar/blocker_violations/ardhagp_ingrid?server=https%3A%2F%2Fsonarcloud.io&logo=sonar&label=Blocker&labelColor=blue) ![Sonar Violations](https://img.shields.io/sonar/critical_violations/ardhagp_ingrid?server=https%3A%2F%2Fsonarcloud.io&logo=sonar&label=Critical&labelColor=blue) ![Sonar Violations](https://img.shields.io/sonar/major_violations/ardhagp_ingrid?server=https%3A%2F%2Fsonarcloud.io&logo=sonar&label=Major&labelColor=blue) ![Sonar Violations](https://img.shields.io/sonar/major_violations/ardhagp_ingrid?server=https%3A%2F%2Fsonarcloud.io&logo=sonar&label=Minor&labelColor=blue) ![Sonar Violations](https://img.shields.io/sonar/info_violations/ardhagp_ingrid?server=https%3A%2F%2Fsonarcloud.io&logo=sonar&label=Info&labelColor=blue) |
+|![Sonar Tech Debt](https://img.shields.io/sonar/tech_debt/ardhagp_ingrid?server=https%3A%2F%2Fsonarcloud.io&logo=sonar&label=Tech%20Debt) ![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=ardhagp_ingrid&label=Tech%20Debt&metric=duplicated_lines_density) |
 
-[![dev Build](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml/badge.svg?branch=dev)](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml) [![Release](https://github.com/ardhagp/ingrid/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/ardhagp/ingrid/actions/workflows/release.yml) [![Static Badge](https://img.shields.io/badge/Download-ingrid--offline.zip-gold)](https://ardhagp.github.io/ingrid/ingrid-offline.zip)
+|Pipeline Status|
+|:---|
+|[![dev Build](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml/badge.svg?branch=dev)](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml) [![Release](https://github.com/ardhagp/ingrid/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/ardhagp/ingrid/actions/workflows/release.yml) [![Static Badge](https://img.shields.io/badge/Download-ingrid--offline.zip-gold)](https://ardhagp.github.io/ingrid/ingrid-offline.zip)|
 
-![Uptime Robot status](https://img.shields.io/uptimerobot/status/m795460257-c182ecdc7b4ee9aea83252bf?label=Ingrid%20Web) ![Discord](https://img.shields.io/discord/1402488110800961648?logo=discord&label=Discord%20Chat)
+|Web / Chat Status|
+|:---|
+|[![Uptime Robot status](https://img.shields.io/uptimerobot/status/m795460257-c182ecdc7b4ee9aea83252bf?label=Ingrid%20Web)](https://ardhagp.github.io/ingrid/) [![Discord](https://img.shields.io/discord/1402488110800961648?logo=discord&label=Discord%20Chat)](https://discord.gg/S45J3c7Wnr)|
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 #   <span style="color:darkorange">**Tools You Need**</span>
-<span style="color:orange">1.</span>	Visual Studio Community Edition ([Download](https://visualstudio.microsoft.com/downloads/)) <br/>
-<span style="color:orange">2.</span>	.NET 8 ([Download](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.422-windows-x86-installer))<br/>
-<span style="color:orange">3.</span>  SQL Server 2022 Express / Developer Edition ([Download](https://www.microsoft.com/en-us/sql-server/sql-server-downloads))<br/>
-| <span style="color:darkorange">_Instruction For Database_</span> |
-| -- |
-| 1. Download [Data](https://cagakmelon.visualstudio.com/Ingrid/_versionControl?version=T&path=%24/Ingrid/Database/SQL%20Server/DatabaseSchema_Data/File/db_universe_erp.mdf) and [File](https://cagakmelon.visualstudio.com/b18fd3bc-9ceb-49c2-a02c-ceaf5dd627ef/_apis/tfvc/items?path=%24/Ingrid/Database/SQL%20Server/DatabaseSchema_File/File/db_universe_erp_file.mdf&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=5&versionDescriptor%5Bversion%5D=&%24format=octetStream&api-version=5.0&download=true) as your database attachments. <br/>2. Synchronize two database above by using this file inside Ingrid repository : [db_universe_erp.scmp](https://cagakmelon.visualstudio.com/Ingrid/_versionControl?path=%24/Ingrid/Database/SQL%20Server/DatabaseSchema_Data/db_universe_erp.scmp) and [db_universe_erp_file.scmp](https://cagakmelon.visualstudio.com/Ingrid/_versionControl?path=%24/Ingrid/Database/SQL%20Server/DatabaseSchema_File/db_universe_erp_file.scmp) <br/>3. Create user <span style="color:orange">**mvu_admin**</span> with password <span style="color:orange">**admin**</span> <br/>4. Set <span style="color:orange">**db_universe_erp.mdf**</span> and <span style="color:orange">**db_universe_erp_file.mdf**</span> ownership to <span style="color:orange">**mvu_admin**</span> |
-
-<span style="color:orange">4.</span> Open <span style="color:orange">**User Secret**</span> from <span style="color:orange">**Bridge Project**</span>, see below image.
+<span style="color:orange">1.</span>	Visual Studio 2022 Community Edition ([Download](https://visualstudio.microsoft.com/downloads/))<br/>
+<span style="color:orange">2.</span>	.NET 8 ([Download](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.423-windows-x64-installer))<br/>
+<span style="color:orange">3.</span> Open <span style="color:orange">**User Secret**</span> from <span style="color:orange">**Bridge Project**</span>, see below image.
 
 ![Manage User Secret](https://res.cloudinary.com/cagakmelon/image/upload/v1696932706/apps/ingrid-assets/readme.md/manage_user_secret.png)
 
@@ -55,7 +59,10 @@ Then type this json structure.
   "KEYS": {
 	  "SALT": "<input random characters including Upper and Lower Case, Symbols and Space>",
     "SYNCFUSION": "<input your Syncfusion Key>",
-    "BETTERSTACK_LOG": "<input your BetterStack Key>"
+    "BETTERSTACK_LOG": "<input your BetterStack Log Key>"
+    "BETTERSTACK_HEARTBEATS": "<input your BetterStack Heartbeats Key>"
+    "CLOUDSTORAGE": "<input your Cloudstorage Url>"
+    "REPOPAGE": "<input your Repository Page>"
   }
 }
 ```
@@ -81,7 +88,10 @@ then type this command using PowerShell:
 ```cmd
 dotnet user-secrets set KEYS:SALT "<input random characters including Upper and Lower Case, Symbols and Space>"
 dotnet user-secrets set KEYS:SYNCFUSION "<input your Syncfusion Key>"
-dotnet user-secrets set KEYS:BETTERSTACK_LOG "<input your BetterStack Key>"
+dotnet user-secrets set KEYS:BETTERSTACK_LOG "<input your BetterStack Log Key>"
+dotnet user-secrets set KEYS:BETTERSTACK_HEARTBEATS "<input your BetterStack Heartbeats Key>"
+dotnet user-secrets set KEYS:CLOUDSTORAGE "<input your Cloudstorage Url>"
+dotnet user-secrets set KEYS:REPOPAGE "<input your Repository Page>"
 ```
 > [!WARNING]
 > You should use sha256 hash for your _KEYS:SALT_ to prevent error when decrypting stored password.
