@@ -116,7 +116,7 @@ To obtain BetterStack Key, please sign up <span style="color:orange">**BetterSta
 ```mermaid
 flowchart LR
 id1(♾️ Azure Devops) --> id30([📦 ClickOnce]) --> id19(🔥 Backblaze) --> id20([🌐 Github.io])
-id1(♾️ Azure Devops) --> id31([📦 .zip]) --> id20(🌐 Github.io) 
+id1(♾️ Azure Devops) --> id31([📦 .zip]) --> id19(🔥 Backblaze) 
 ```
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
