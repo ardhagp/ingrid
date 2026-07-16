@@ -17,7 +17,7 @@ id1(📦 master) --> id6(☁️ publish)
 ```
 
 | Branch | Description | Merge To |
-| -- | -- | -- |
+| :--- | :--- | :--- |
 | master | For publishing / deployment only | - |
 | dev | Active development | master |
 | fix | Branch to fixing issues | dev |
@@ -38,11 +38,11 @@ id1(📦 master) --> id6(☁️ publish)
 
 |Pipeline Status|
 |:---|
-|[![dev Build](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml/badge.svg?branch=dev)](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml) [![Release](https://github.com/ardhagp/ingrid/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/ardhagp/ingrid/actions/workflows/release.yml) [![Static Badge](https://img.shields.io/badge/Download-ingrid--offline.zip-gold)](https://ardhagp.github.io/ingrid/ingrid-offline.zip)|
+|[![dev Build](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml/badge.svg?branch=dev)](https://github.com/ardhagp/ingrid/actions/workflows/dev-build.yml) [![Release](https://github.com/ardhagp/ingrid/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/ardhagp/ingrid/actions/workflows/release.yml)|
 
-|Web / Chat Status|
+|Uptime Status / Chat / Installer|
 |:---|
-|[![Uptime Robot status](https://img.shields.io/uptimerobot/status/m795460257-c182ecdc7b4ee9aea83252bf?label=Ingrid%20Web)](https://ardhagp.github.io/ingrid/) [![Discord](https://img.shields.io/discord/1402488110800961648?logo=discord&label=Discord%20Chat)](https://discord.gg/S45J3c7Wnr)|
+|![Uptime Robot status](https://img.shields.io/uptimerobot/status/m795460257-c182ecdc7b4ee9aea83252bf?label=Web) [![Discord](https://img.shields.io/discord/1402488110800961648?logo=discord&label=Discord%20Chat)](https://discord.gg/S45J3c7Wnr) [![Static Badge](https://img.shields.io/badge/Online%20%2F%20Offline-brightgreen?label=Download%20Installer)](https://ardhagp.github.io/ingrid/)|
 
 ![Start Line](https://res.cloudinary.com/cagakmelon/image/upload/v1686057819/apps/ingrid-assets/readme.md/readme.md.png)
 #   <span style="color:darkorange">**Tools You Need**</span>
@@ -57,7 +57,7 @@ Then type this json structure.
 ``` json
 {
   "KEYS": {
-	  "SALT": "<input random characters including Upper and Lower Case, Symbols and Space>",
+	"SALT": "<input random characters including Upper and Lower Case, Symbols and Space>",
     "SYNCFUSION": "<input your Syncfusion Key>",
     "BETTERSTACK_LOG": "<input your BetterStack Log Key>"
     "BETTERSTACK_HEARTBEATS": "<input your BetterStack Heartbeats Key>"
@@ -105,7 +105,7 @@ Then follow this steps below :
 
 ![](https://res.cloudinary.com/cagakmelon/image/upload/v1696932718/apps/ingrid-assets/readme.md/get_license_key.png)
 
-## 2. BetterStack
+## 2. BetterStack Log
 To obtain BetterStack Key, please sign up <span style="color:orange">**BetterStack**</span> and open [https://betterstack.com/settings](https://betterstack.com/settings) 
 
 ![](https://res.cloudinary.com/cagakmelon/image/upload/v1712380400/apps/ingrid-assets/readme.md/2024-04-06_120426.jpg)
