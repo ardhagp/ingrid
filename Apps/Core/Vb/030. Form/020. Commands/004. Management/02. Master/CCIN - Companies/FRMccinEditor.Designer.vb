@@ -277,7 +277,7 @@
             TxtName.XOPasswordStrengthScore = 0
             TxtName.XOPasswordStrengthText = Nothing
             TxtName.XOPlaceholderText = "Type then press Enter"
-            TxtName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumber
+            TxtName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndSymbol
             TxtName.XOSelectOnFocus = False
             TxtName.XOSqlText = ""
             ' 

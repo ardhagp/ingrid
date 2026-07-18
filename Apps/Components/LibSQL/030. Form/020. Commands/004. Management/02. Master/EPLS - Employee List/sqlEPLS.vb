@@ -635,8 +635,6 @@
                     End If
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     If dataproperties.EmployeeIsNew Then
-                        dataproperties.AllParameters.Remove(pEmployeeToken)
-                        dataproperties.AllParameters.Add(pEmployeeToken, CMCv.Security.Encrypt.MD5())
                         varDatabaseRequestMysql(1).Query = $"insert into {tEmployee.TableName}({tEmployee.C_EmployeeToken}, " &
                                                            $"{tEmployee.C_EmployeePersonalIdNumber}, " &
                                                            $"{tEmployee.C_EmployeePosition}, " &
@@ -660,10 +658,26 @@
                                                            $"{tEmployee.P_EmployeeIsActive}, " &
                                                            $"{tEmployee.P_EmployeeGender});"
 
+                        If varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters) Then
+                            ' If the insert operation is successful, save photo meta to database
+                            varDatabaseRequestMysql(1).Query = $"insert into {tAttachment.S}.{tAttachment.C_AttachmentParentToken}, " &
+                                                               $"{tAttachment.C_AttachmentModule}, " &
+                                                               $"{tAttachment.C_AttachmentFileName}, " &
+                                                               $"{tAttachment.C_AttachmentExtension}, " &
+                                                               $"{tAttachment.C_AttachmentUrl}, " &
+                                                               $"{tAttachment.C_AttachmentTag}, " &
+                                                               $"{tAttachment.C_AttachmentProvider}) " &
+                                                               $"values ({tEmployee.P_EmployeeToken}, " &
+                                                               $"{tModule.P_ModuleId}, " &
+                                                               $"@FileName, " &
+                                                               $"@FileExtension, " &
+                                                               $"@FileUrl, " &
+                                                               $"'EMPLOYEE-PROFILE-PHOTO', " &
+                                                               $"@Uploader);"
 
-
+                        End If
                     Else
-                        varDatabaseRequestMysql(1).Query = $"update man_employee set employee_position = @PositionId, " &
+                            varDatabaseRequestMysql(1).Query = $"update man_employee set employee_position = @PositionId, " &
                                                            $"employee_number = @EmployeeNumber, " &
                                                            $"employee_fullname = @EmployeeFullName, " &
                                                            $"employee_birthdate = @EmployeeBirthDate, " &

@@ -1,14 +1,7 @@
 ﻿'For clickonce .net 6 prequisites please paste here : C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VisualStudio\BootstrapperPackages
-
-Imports System.IO
-Imports System.Data
-Imports System.ComponentModel
-Imports System.Runtime.Versioning
-
 Namespace UI.Canvas
     Public Class FRMmainframe6
 
-#Region "Interface"
         Public Interface ICommandFunction
             Function LoadCommand() As CMCv.UI.Canvas.FRMstandard
         End Interface
@@ -16,9 +9,7 @@ Namespace UI.Canvas
         Public Interface ICommandName
             ReadOnly Property CommandCode As String
         End Interface
-#End Region
 
-#Region "Declaration"
         Private WithEvents Frm_login As New UI.Canvas.FRMlogin
         Private WithEvents Frm_conn As Connect.UI.Canvas.FRMconn
         Private WithEvents Frm_phtrz As New CMCv.UI.Canvas.FRMphtrz
@@ -28,13 +19,15 @@ Namespace UI.Canvas
         Public Event EventMainframeOpen()
         Public Event EventMainframeClose()
 
+        Private varClientId As Long
         Private varSql As New LibSQL.Mainframe.Database
-        Private varSqlDBcheck As New LibSQL.CMDdbic.Applications
-        Private varSqlNotification As New LibSQL.Application.Notification
-        Private varSqlRunningText As New LibSQL.Application.RunningText
-        Private varSqlModules As New LibSQL.Application.Modules
-        Private varSqlProfiles As New LibSQL.Application.ProfilePanel
-        Private varSqlStorage As New LibSQL.Application.StorageSense
+        Private varAppNotification As New LibSQL.CMDapp.Notification
+        Private varAppRunningText As New LibSQL.CMDapp.RunningText
+        'Private varAppDBcheck As New LibSQL.CMDdbic.Applications
+        'Private varAppProfiles As New LibSQL.CMDapp.ProfilePanel
+        'Private varAppStorage As New LibSQL.CMDapp.StorageSense
+        Private varAppModules As New LibSQL.CMDapp.Modules
+        Private varAppClient As New LibSQL.CMDapp.Client
         Private varGetNotifCounter As Integer
         Private varClearStatus As Integer
         Private varSession As Boolean
@@ -46,18 +39,16 @@ Namespace UI.Canvas
         Private Const dtUserData As String = "UserData"
         Private Const dtSettings As String = "SYSS_Editor"
 
-#End Region
 
-#Region "Subs Collection"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CommandAutoComplete()
             Try
-                Dim varDataset As New DataSet
+                Dim varDataset As New System.Data.DataSet
                 Dim varList As New AutoCompleteStringCollection
 
                 'Txt_shortcut.AutoCompleteSource = Nothing
                 Txt_shortcut.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-                varDataset = varSqlModules.DisplayAutoComplete(varDataProperties) '.DisplayAutoComplete(Convert.ToString(varDataProperties.RowID), DgnPictureList)
+                varDataset = varAppModules.DisplayAutoComplete(varDataProperties) '.DisplayAutoComplete(Convert.ToString(varDataProperties.RowID), DgnPictureList)
                 If varDataset Is Nothing Then
                     Return
                 End If
@@ -87,17 +78,17 @@ Namespace UI.Canvas
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetRunningText()
-            TxtRunning.Visible = varSqlRunningText.Show(varDataProperties)
+            TxtRunning.Visible = varAppRunningText.Show(varDataProperties)
         End Sub
 
         ''' <summary>
         ''' Get Notification Count
         ''' </summary>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetNotification()
-            varTotalNotification = varSqlNotification.Exist(varDataProperties)
+            varTotalNotification = varAppNotification.Exist(varDataProperties)
             If varTotalNotification > 0 Then
                 USERMENU.Text = varDatasetIngrid.Tables(dtUserData).Rows(0).Item("employee_fullname").ToString & "*"
                 USERMENU.BackColor = Global.System.Drawing.Color.LightPink
@@ -113,7 +104,7 @@ Namespace UI.Canvas
         ''' <summary>
         ''' Clear Status Bar 
         ''' </summary>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ClearStatus()
             Ts_status.Text = String.Empty
             varClearStatus = 0
@@ -123,7 +114,7 @@ Namespace UI.Canvas
         ''' Close All varWorkspace Windows
         ''' </summary>
         ''' <param name="forced"></param>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CloseAllWindows(Optional isforced As Boolean = False)
             Try
                 If Not (isforced) AndAlso (Global.System.Windows.Forms.MessageBox.Show("Do you want to close all Workspace windows?", "Close All Windows", Global.System.Windows.Forms.MessageBoxButtons.YesNo, Global.System.Windows.Forms.MessageBoxIcon.Question) = Global.System.Windows.Forms.DialogResult.No) Then
@@ -156,7 +147,7 @@ Namespace UI.Canvas
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EnterCommand(commandcode As String)
             SetValue(varDataProperties.UserParameters, tModule.P_ModuleCode, commandcode.ToUpper.Trim)
 
@@ -198,16 +189,13 @@ Namespace UI.Canvas
             End With
         End Sub
 
-#End Region
-
-#Region "Application Menu"
         'Start Menu
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsstartLogin_Click(sender As Object, e As EventArgs) Handles Ms_start_Login.Click
             Call LoginClicked()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function LoginClicked() As Boolean
             If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
                 Frm_login = New UI.Canvas.FRMlogin
@@ -223,12 +211,12 @@ Namespace UI.Canvas
             Return varSession
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsstartLogout_Click(sender As Object, e As EventArgs) Handles Ms_start_Logout.Click
             Call LogoutClicked()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub LogoutClicked()
             If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure want to logout from system?", LibApp.Ingrid.Global.PopupType.Logout, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " is logout."",", "Information")
@@ -239,37 +227,37 @@ Namespace UI.Canvas
         End Sub
 
         'varWorkspace Menu
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsworkspaceCascade_Click(sender As Object, e As EventArgs) Handles Ms_workspace_Cascade.Click
             Me.LayoutMdi(MdiLayout.Cascade)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsworkspaceTileVertical_Click(sender As Object, e As EventArgs) Handles Ms_workspace_TileVertical.Click
             Me.LayoutMdi(MdiLayout.TileVertical)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsworkspaceTileHorizontal_Click(sender As Object, e As EventArgs) Handles Ms_workspace_TileHorizontal.Click
             Me.LayoutMdi(MdiLayout.TileHorizontal)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsworkspaceCloseAll_Click(sender As Object, e As EventArgs) Handles Ms_workspace_CloseAll.Click
             Call CloseAllWindows()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsworkspaceInputCommand_Click(sender As Object, e As EventArgs) Handles Ms_workspace_InputCommand.Click
             Txt_shortcut.Focus()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsworkspaceMaximize_Click(sender As Object, e As EventArgs) Handles Ms_workspace_Maximize.Click
             Me.WindowState = FormWindowState.Maximized
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ChangePasswordToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangePasswordToolStripMenuItem.Click
             Try
                 With varDataProperties
@@ -301,10 +289,7 @@ Namespace UI.Canvas
             End Try
         End Sub
 
-#End Region
-
-#Region "Form Events"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Try
                 Call ActivateLicenses()
@@ -352,9 +337,11 @@ Namespace UI.Canvas
                 End If
 
                 If Mainframe.Database.Connect() Then
+                    varClientId = varAppClient.GetClientId(varDataProperties)
                     Ts_connection.Text = "Connected"
                     varLogApplication.Run(varDataProperties, varDataProperties.UserParameters)
-                    If varCompany.CountRecords(varDataProperties) = 0 Then
+                    Dim varRecords As Integer = LibSQL.CMDccin.View.CountRecords(varDataProperties)
+                    If varRecords = 0 Then
                         Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "Initial setup and essential information", True, Me)
                     End If
                 Else
@@ -362,6 +349,8 @@ Namespace UI.Canvas
                     Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                     Return
                 End If
+                SetValue(varDataProperties.UserParameters, tClient.P_ClientId, IIf(varClientId = 0, DBNull.Value, varClientId))
+                SetValue(varDataProperties.AllParameters, tClient.P_ClientId, IIf(varClientId = 0, DBNull.Value, varClientId))
 
                 Call CommandAutoComplete()
                 If Not (LibSQL.CMDdbic.Applications.IsCompanyExist(varDataProperties) OrElse Not LibSQL.CMDdbic.Applications.IsDepartmentExist(varDataProperties)) Then
@@ -389,10 +378,7 @@ Namespace UI.Canvas
             End Try
         End Sub
 
-#End Region
-
-#Region "Components Events"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tvmainframe_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles Tv_mainframe.NodeMouseDoubleClick
             Try
                 With Tv_mainframe.SelectedNode
@@ -405,7 +391,7 @@ Namespace UI.Canvas
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TxtShortcut_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_shortcut.KeyDown
             If e.KeyCode = Keys.Enter Then
                 Call EnterCommand(Txt_shortcut.Text.Trim)
@@ -413,18 +399,17 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnExecute_Click(sender As Object, e As EventArgs) Handles BtnExecute.Click
             Call EnterCommand(Txt_shortcut.Text)
             Txt_shortcut.AutoCompleteCustomSource.Add(Txt_shortcut.Text.Trim)
         End Sub
-#End Region
 
         ''' <summary>
         ''' SystemLogout handles the UI changes and data clearing when a user logs in or out. It updates the visibility and enabled state of menu items, resets notification counters, and clears profile and storage information on logout.
         ''' </summary>
         ''' <param name="islogout"></param>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub SystemLogout(Optional islogout As Boolean = True)
             If Not (islogout) Then
                 Ms_start_Login.Visible = False
@@ -475,7 +460,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub PhotoResizerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PhotoResizerToolStripMenuItem.Click
             Call EnterCommand("PHTRZ")
         End Sub
@@ -497,7 +482,7 @@ Namespace UI.Canvas
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TmrNotif_Tick(sender As Object, e As EventArgs) Handles TmrNotif.Tick
             varGetNotifCounter += 1
             If varGetNotifCounter = 60 Then
@@ -506,29 +491,29 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function IsProfileVisible(panelsettings As Integer, isadmin As Boolean) As Boolean
             Return IsPanelVisible(panelsettings, isadmin)
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function IsStorageVisible(panelsettings As Integer, isadmin As Boolean) As Boolean
             Return IsPanelVisible(panelsettings, isadmin)
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function IsNewsTickerVisible(panelsettings As Integer, isadmin As Boolean) As Boolean
             Return IsPanelVisible(panelsettings, isadmin)
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function IsPanelVisible(profilesettings As Integer, isadmin As Boolean) As Boolean
             Return (profilesettings = 3) _
                     OrElse (isadmin AndAlso profilesettings = 1) _
                     OrElse (Not isadmin AndAlso profilesettings = 2)
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetProfile()
             With varDatasetIngrid.Tables(dtSettings)
                 If .Rows.Count = 0 Then
@@ -538,7 +523,7 @@ Namespace UI.Canvas
                 PnlProfile.Visible = IsProfileVisible(CInt(.Rows(0).Item(tSettings.C_SettingsShowProfile)), CBool(varDataProperties.UserParameters(tUser.P_UserIsRoot)))
 
                 If (PnlProfile.Visible) Then
-                    LblWelcome.Text = LibSQL.Application.ProfilePanel.Welcome(varDataProperties)
+                    LblWelcome.Text = LibSQL.CMDapp.ProfilePanel.Welcome(varDataProperties)
                     LblEmpNumber.Text = varDataProperties.UserParameters(tEmployee.P_EmployeeNumber).ToString
 
                     Dim varNama = varDataProperties.UserParameters(tEmployee.P_EmployeeFullName).ToString.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
@@ -558,7 +543,7 @@ Namespace UI.Canvas
             End With
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetStorage()
             Dim varDatacurrentsize As Integer
             Dim varFilecurrentsize As Integer
@@ -573,27 +558,27 @@ Namespace UI.Canvas
 
                 If (PnlStorage.Visible) Then
                     PnlStorage.Height = 158
-                    varFreespace = CInt(LibSQL.Application.StorageSense.MaxSize(varDataProperties.ConnectionDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace))
+                    varFreespace = CInt(LibSQL.CMDapp.StorageSense.MaxSize(varDataProperties.ConnectionDatabaseName, LibSQL.CMDapp.StorageSense.DBSizeType.FreeSpace))
                     pgDataStorage.Maximum = varFreespace
-                    varDatacurrentsize = CInt(LibSQL.Application.StorageSense.DataCurrentSize(varDataProperties.ConnectionDatabaseName))
+                    varDatacurrentsize = CInt(LibSQL.CMDapp.StorageSense.DataCurrentSize(varDataProperties.ConnectionDatabaseName))
                     pgDataStorage.Value = varDatacurrentsize
                     lblDataStorage.Text = String.Format("{0} / {1}", IIf(varDatacurrentsize < 1024, varDatacurrentsize & " MB", Math.Round((varDatacurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
-                    varFreespace = CInt(LibSQL.Application.StorageSense.MaxSize(varDataProperties.ConnectionDatabaseName, LibSQL.Application.StorageSense.DBSizeType.FreeSpace))
+                    varFreespace = CInt(LibSQL.CMDapp.StorageSense.MaxSize(varDataProperties.ConnectionDatabaseName, LibSQL.CMDapp.StorageSense.DBSizeType.FreeSpace))
                     pgFileStorage.Maximum = varFreespace
-                    varFilecurrentsize = CInt(LibSQL.Application.StorageSense.FileCurrentSize(varDataProperties))
+                    varFilecurrentsize = CInt(LibSQL.CMDapp.StorageSense.FileCurrentSize(varDataProperties))
                     pgFileStorage.Value = varFilecurrentsize
                     lblFileStorage.Text = String.Format("{0} / {1}", IIf(varFilecurrentsize < 1024, varFilecurrentsize & " MB", Math.Round((varFilecurrentsize / 1024), 2) & " GB"), Math.Round((varFreespace / 1024), 2) & " GB")
                 End If
             End With
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub NotificationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotificationToolStripMenuItem.Click
             Frm_ntfc = New FRMntfc
             Display(Frm_ntfc, IMAGEDB.Main.ImageLibrary.NOTIF_ICON, My.Application.Info.AssemblyName.ToUpper, "Notification", "Show all notification that addressed to you", True)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tsstatus_TextChanged(sender As Object, e As EventArgs) Handles Ts_status.TextChanged
             varClearStatus = 0
             If Ts_status.Text = String.Empty Then
@@ -603,7 +588,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TmrStatus_Tick(sender As Object, e As EventArgs) Handles TmrStatus.Tick
             varClearStatus += 1
             If varClearStatus = varStatusTimeWait Then
@@ -611,7 +596,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMlogin_LoginSuccess() Handles Frm_login.EventLoginSuccess
             Call GetNotification()
             PnlProfile.Visible = True
@@ -621,7 +606,7 @@ Namespace UI.Canvas
             GC.Collect()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tmrmod_Tick(sender As Object, e As EventArgs) Handles TmrMOD.Tick
             If (varForceRefreshMainframeData) Then
                 Call CommandAutoComplete() ''' Refresh Command Auto Complete
@@ -638,18 +623,18 @@ Namespace UI.Canvas
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
             Call LogoutClicked()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub LoginToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem.Click
             Call LoginClicked()
         End Sub
 
-        <SupportedOSPlatform("windows")>
-        Private Sub FRMmainframe6_Closing(sender As Object, e As CancelEventArgs) Handles MyBase.Closing
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMmainframe6_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
             Dim varRequiredFolder = CheckRequiredFolder(DirName.PDF)
 
             Try
@@ -670,8 +655,8 @@ Namespace UI.Canvas
                 clsLog.ShowData(proLog)
                 clsLog = Nothing
 
-                For Each varDeleteFile In Directory.GetFiles(varRequiredFolder, "*.*", SearchOption.TopDirectoryOnly)
-                    File.Delete(varDeleteFile)
+                For Each varDeleteFile In System.IO.Directory.GetFiles(varRequiredFolder, "*.*", System.IO.SearchOption.TopDirectoryOnly)
+                    System.IO.File.Delete(varDeleteFile)
                 Next
             Catch ex As Exception
                 With proLog
@@ -694,7 +679,7 @@ Namespace UI.Canvas
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tmrrunningtext_Tick(sender As Object, e As EventArgs) Handles Tmr_runningtext.Tick
             varMyMarquee.Tick()
             TxtRunning.Text = varMyMarquee.MarqueeText
@@ -709,12 +694,12 @@ Namespace UI.Canvas
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsstartSettings_Click(sender As Object, e As EventArgs) Handles Ms_start_Settings.Click
             Call EnterCommand("SYSS")
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMlogin_LoginFailed() Handles Frm_login.EventLoginFailed
             Call ClearLoginData()
             Call SystemLogout(True)
@@ -731,12 +716,12 @@ Namespace UI.Canvas
         ''' <summary>
         ''' Gets application settings such as maximum upload sizes, minimum password length, and text mark.
         ''' </summary>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Sub GetSettings()
             LibSQL.CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.UserParameters, varDatasetIngrid)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsstartExit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
             If (varSession) Then
                 Call SystemLogout() ''' Logout Process
@@ -748,13 +733,13 @@ Namespace UI.Canvas
             Return
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Msstartconnectionapp_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_app.Click
             Frm_conn = New Connect.UI.Canvas.FRMconn(varProductionMode, True)
             Display(Frm_conn, IMAGEDB.Main.ImageLibrary.CONN_ICON, My.Application.Info.AssemblyName.ToUpper, "Connection Settings", "Configure Ingrid database connection", True)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Msstartconnectionfolder_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_folder.Click
             Try
                 ''' Open Resources Folder
@@ -764,7 +749,7 @@ Namespace UI.Canvas
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
             RaiseEvent EventMainframeClose()
         End Sub

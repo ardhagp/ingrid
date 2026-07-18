@@ -21,9 +21,9 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
             DgnCCIN = New CMCv.UI.Control.Dgn(components)
             company_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
@@ -60,40 +60,40 @@
             ' 
             DgnCCIN.AllowUserToAddRows = False
             DgnCCIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(204), CByte(214), CByte(111))
-            DgnCCIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(215), CByte(192), CByte(95))
+            DgnCCIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
             DgnCCIN.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnCCIN.BorderStyle = BorderStyle.None
             DgnCCIN.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnCCIN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F)
-            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
-            DataGridViewCellStyle2.SelectionForeColor = Color.Black
-            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-            DgnCCIN.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+            DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle5.BackColor = Color.YellowGreen
+            DataGridViewCellStyle5.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
+            DataGridViewCellStyle5.SelectionForeColor = Color.Black
+            DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
+            DgnCCIN.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
             DgnCCIN.ColumnHeadersHeight = 43
             DgnCCIN.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             DgnCCIN.Columns.AddRange(New DataGridViewColumn() {company_id, company_code, company_name, company_searchterm1, company_searchterm2, company_description})
             DgnCCIN.Dock = DockStyle.Fill
             DgnCCIN.EnableHeadersVisualStyles = False
-            DgnCCIN.Font = New Font("Verdana", 8.0F)
+            DgnCCIN.Font = New Font("Verdana", 8F)
             DgnCCIN.Location = New Point(0, 88)
             DgnCCIN.Margin = New Padding(6, 5, 6, 5)
             DgnCCIN.MultiSelect = False
             DgnCCIN.Name = "DgnCCIN"
             DgnCCIN.ReadOnly = True
             DgnCCIN.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle3.BackColor = Color.YellowGreen
-            DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F)
-            DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
-            DataGridViewCellStyle3.SelectionForeColor = Color.Black
-            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-            DgnCCIN.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+            DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle6.BackColor = Color.YellowGreen
+            DataGridViewCellStyle6.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
+            DataGridViewCellStyle6.SelectionForeColor = Color.Black
+            DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+            DgnCCIN.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
             DgnCCIN.RowHeadersWidth = 62
             DgnCCIN.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
             DgnCCIN.Size = New Size(1307, 858)
@@ -169,12 +169,9 @@
             ' 
             ' FRMccin
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1307, 1078)
-            ControlBox = False
-            FormBorderStyle = FormBorderStyle.SizableToolWindow
             Margin = New Padding(10, 5, 10, 5)
-            MaximizeBox = False
             MinimizeBox = False
             Name = "FRMccin"
             ShowIcon = False

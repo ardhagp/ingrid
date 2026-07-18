@@ -101,9 +101,33 @@
     <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="000. Programmer%27s Guide\**" />
+    <Compile Remove="030. Form\020. Commands\002. Administration\**" />
+    <Compile Remove="030. Form\020. Commands\006. Transportation\**" />
+    <Compile Remove="030. Form\020. Commands\100. Personal Folder\**" />
+    <Compile Remove="030. Form\020. Commands\990. Tools\**" />
+    <Compile Remove="090. Services\**" />
     <Compile Remove="UI\Database\**" />
+    <Compile Remove="x64\**" />
+    <Compile Remove="x86\**" />
+    <EmbeddedResource Remove="000. Programmer%27s Guide\**" />
+    <EmbeddedResource Remove="030. Form\020. Commands\002. Administration\**" />
+    <EmbeddedResource Remove="030. Form\020. Commands\006. Transportation\**" />
+    <EmbeddedResource Remove="030. Form\020. Commands\100. Personal Folder\**" />
+    <EmbeddedResource Remove="030. Form\020. Commands\990. Tools\**" />
+    <EmbeddedResource Remove="090. Services\**" />
     <EmbeddedResource Remove="UI\Database\**" />
+    <EmbeddedResource Remove="x64\**" />
+    <EmbeddedResource Remove="x86\**" />
+    <None Remove="000. Programmer%27s Guide\**" />
+    <None Remove="030. Form\020. Commands\002. Administration\**" />
+    <None Remove="030. Form\020. Commands\006. Transportation\**" />
+    <None Remove="030. Form\020. Commands\100. Personal Folder\**" />
+    <None Remove="030. Form\020. Commands\990. Tools\**" />
+    <None Remove="090. Services\**" />
     <None Remove="UI\Database\**" />
+    <None Remove="x64\**" />
+    <None Remove="x86\**" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="CMCv" />
@@ -398,7 +422,6 @@
     <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RContent.rdlc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="000. Programmer%27s Guide\All-In-One Code Framework Coding Standards.docx" />
     <None Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.xsc">
       <DependentUpon>DAR_RDS.xsd</DependentUpon>
     </None>
@@ -440,21 +463,12 @@
     <Folder Include="030. Form\010. System\090. Password Generator\" />
     <Folder Include="030. Form\020. Commands\001. Logistics\01. Dashboard\" />
     <Folder Include="030. Form\020. Commands\001. Logistics\04. Transaction\DE001 - Logistics Data Entry\Addins\" />
-    <Folder Include="030. Form\020. Commands\002. Administration\01. Documents\" />
     <Folder Include="030. Form\020. Commands\003. Accounting\03. Transaction\ACTP - Transaction Posting\" />
-    <Folder Include="030. Form\020. Commands\006. Transportation\01. Dashboard\" />
-    <Folder Include="030. Form\020. Commands\006. Transportation\02. Master\VHCL - Vehicle List\" />
-    <Folder Include="030. Form\020. Commands\006. Transportation\02. Master\VHCT - Vehicle Type\" />
-    <Folder Include="030. Form\020. Commands\100. Personal Folder\PINF - Personal Information\" />
     <Folder Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\Addins\" />
     <Folder Include="030. Form\020. Commands\750. Custom\To Do List\REMC - To Do List Categories\" />
     <Folder Include="030. Form\020. Commands\800. System Settings\100. Application\MODS - Application Modules\Addins\" />
     <Folder Include="030. Form\020. Commands\800. System Settings\900. Files\" />
-    <Folder Include="030. Form\020. Commands\990. Tools\" />
     <Folder Include="030. Form\030. Tools\000. Console\" />
-    <Folder Include="090. Services\" />
-    <Folder Include="x64\" />
-    <Folder Include="x86\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\mainframe_ms_master_cabinet.png" />

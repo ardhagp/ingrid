@@ -1,16 +1,12 @@
-﻿Imports CMCv.UI
-Imports System.Data
-Imports System.Runtime.Versioning
-Imports System.Windows.Forms
-Imports MySql.Data
+﻿Imports MySql.Data.MySqlClient
 
 Namespace Database.Engine
     Public Class Mysql
         Implements IDisposable
 
-        Private ReadOnly varConnection(1) As MySqlClient.MySqlConnection
-        Private ReadOnly varCommand(1) As MySqlClient.MySqlCommand
-        Private ReadOnly varDataAdapter As MySqlClient.MySqlDataAdapter
+        Private ReadOnly varConnection(1) As MySqlConnection
+        Private ReadOnly varCommand(1) As MySqlCommand
+        Private ReadOnly varDataAdapter As MySqlDataAdapter
 
         Private ReadOnly varMySQL As New Connect.Mysqlconnection
 
@@ -51,23 +47,23 @@ Namespace Database.Engine
         ''' True if the connection is opened successfully; otherwise False. 
         ''' Errors are logged through the Ladybug logging system.
         ''' </returns>
-        <SupportedOSPlatform("windows")>
-        Public Function Open(databaseproperties As LibApp.Ingrid.Global.Properties, Optional splash As Form = Nothing) As Boolean
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Function Open(databaseproperties As LibApp.Ingrid.Global.Properties, Optional splash As System.Windows.Forms.Form = Nothing) As Boolean
             If databaseproperties Is Nothing Then
                 databaseproperties = New LibApp.Ingrid.Global.Properties
             End If
 
             Dim varSuccess As Boolean
             Try
-                varConnection(1) = New MySqlClient.MySqlConnection(varMySQL.Mysqlforcessl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, databaseproperties.ConnectionPassword))
+                varConnection(1) = New MySqlConnection(varMySQL.Mysqlforcessl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, databaseproperties.ConnectionPassword))
                 varConnection(1).Open()
                 varSuccess = True
-            Catch ex As MySqlClient.MySqlException
+            Catch ex As MySqlException
                 splash?.Close()
                 varSuccess = False
 
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -81,7 +77,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
             End Try
             Return varSuccess
@@ -101,9 +97,9 @@ Namespace Database.Engine
         ''' A MySqlDataReader positioned at the first row of the result set. 
         ''' Returns Nothing if an exception occurs.
         ''' </returns>
-        <SupportedOSPlatform("windows")>
-        Public Function GetDataRow(databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As MySqlClient.MySqlDataReader
-            Dim varDataReader(1) As MySqlClient.MySqlDataReader
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Function GetDataRow(databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As MySqlDataReader
+            Dim varDataReader(1) As MySqlDataReader
 
             Try
                 If Not varConnection(1).Ping Then
@@ -111,7 +107,7 @@ Namespace Database.Engine
                     varConnection(1).Open()
                 End If
 
-                Dim varCommand0 As New MySqlClient.MySqlCommand
+                Dim varCommand0 As New MySqlCommand
 
                 query = "USE " & databasename & "; " & query
                 If parameters IsNot Nothing Then
@@ -120,17 +116,17 @@ Namespace Database.Engine
                     Next
                 End If
 
-                varCommand0 = New MySqlClient.MySqlCommand(query, varConnection(1))
-                varDataReader(1) = varCommand0.ExecuteReader(CommandBehavior.CloseConnection)
+                varCommand0 = New MySqlCommand(query, varConnection(1))
+                varDataReader(1) = varCommand0.ExecuteReader(System.Data.CommandBehavior.CloseConnection)
 
                 If varDataReader(1).HasRows Then
                     varDataReader(1).Read()
                 End If
 
                 Return varDataReader(1)
-            Catch ex As MySqlClient.MySqlException
-                With proLog
-                    .AppVersion = GetAppVersion()
+            Catch ex As MySqlException
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -145,13 +141,13 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
 
                 Return Nothing
             Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -166,7 +162,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -187,7 +183,7 @@ Namespace Database.Engine
         ''' The first column of the first row in the result set returned by the query. 
         ''' Returns Nothing if an exception occurs.
         ''' </returns>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Function GetValue(databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As Object
             Dim varRowValue As Object
 
@@ -197,9 +193,9 @@ Namespace Database.Engine
                     varConnection(1).Open()
                 End If
 
-                varCommand(1) = New MySqlClient.MySqlCommand With {
+                varCommand(1) = New MySqlCommand With {
                 .Connection = varConnection(1),
-                .CommandType = CommandType.Text,
+                .CommandType = System.Data.CommandType.Text,
                 .CommandTimeout = 30}
 
                 query = "USE " & databasename & "; " & query
@@ -216,8 +212,8 @@ Namespace Database.Engine
                 Return varRowValue
 
             Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -232,7 +228,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -253,9 +249,9 @@ Namespace Database.Engine
         ''' The name of the DataTable inside the DataSet where the query results 
         ''' will be stored.
         ''' </param>
-        <SupportedOSPlatform("windows")>
-        Public Function GetDataSet(databasename As String, dbr As Adapter.MySQL.Display.Request, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As DataSet
-            Dim varDataAdapter(1) As MySqlClient.MySqlDataAdapter
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Function GetDataSet(databasename As String, dbr As Adapter.Mysql.Display.Request, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As System.Data.DataSet
+            Dim varDataAdapter(1) As MySqlDataAdapter
 
             Try
                 If Not varConnection(1).Ping Then
@@ -265,15 +261,15 @@ Namespace Database.Engine
 
                 GC.Collect()
 
-                Dim varDataset As New DataSet
-                Dim varBindingSource As New BindingSource
+                Dim varDataset As New System.Data.DataSet
+                Dim varBindingSource As New System.Windows.Forms.BindingSource
 
                 If IsNothing(varCommand(1)) Then
-                    varCommand(1) = New MySqlClient.MySqlCommand
+                    varCommand(1) = New MySqlCommand
                 End If
 
                 varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = CommandType.Text
+                varCommand(1).CommandType = System.Data.CommandType.Text
                 varCommand(1).CommandTimeout = 30
 
                 dbr.Query = "USE " & databasename & "; " & dbr.Query
@@ -285,15 +281,15 @@ Namespace Database.Engine
                     Next
                 End If
 
-                varDataAdapter(1) = New MySqlClient.MySqlDataAdapter(varCommand(1))
+                varDataAdapter(1) = New MySqlDataAdapter(varCommand(1))
                 varDataAdapter(1).Fill(varDataset, tablename)
 
-                varBindingSource = New BindingSource(varDataset, tablename)
+                varBindingSource = New System.Windows.Forms.BindingSource(varDataset, tablename)
 
                 Return varDataset
             Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[GetDataSet] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -308,7 +304,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -332,9 +328,9 @@ Namespace Database.Engine
         ''' The name of the DataTable inside the DataSet where the query results 
         ''' will be stored and used as the binding source.
         ''' </param>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub GetDataTable(databasename As String, dbr As Adapter.MySQL.Display.Request, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing)
-            Dim varDataAdapterPrivate(1) As MySqlClient.MySqlDataAdapter
+            Dim varDataAdapterPrivate(1) As MySqlDataAdapter
 
             Try
                 If Not varConnection(1).Ping Then
@@ -344,15 +340,15 @@ Namespace Database.Engine
 
                 GC.Collect()
 
-                Dim varDataset As New DataSet
-                Dim varBindingSource As New BindingSource
+                Dim varDataset As New System.Data.DataSet
+                Dim varBindingSource As New System.Windows.Forms.BindingSource
 
                 If (varCommand(1) Is Nothing) Then
-                    varCommand(1) = New MySqlClient.MySqlCommand
+                    varCommand(1) = New MySqlCommand
                 End If
-
+                varCommand(1).Parameters.Clear()
                 varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = CommandType.Text
+                varCommand(1).CommandType = System.Data.CommandType.Text
                 varCommand(1).CommandTimeout = 30
 
                 dbr.Query = "USE " & databasename & "; " & dbr.Query
@@ -364,9 +360,9 @@ Namespace Database.Engine
                     Next
                 End If
 
-                varDataAdapterPrivate(1) = New MySqlClient.MySqlDataAdapter(varCommand(1))
+                varDataAdapterPrivate(1) = New MySqlDataAdapter(varCommand(1))
                 varDataAdapterPrivate(1).Fill(varDataset, tablename)
-                varBindingSource = New BindingSource(varDataset, tablename)
+                varBindingSource = New System.Windows.Forms.BindingSource(varDataset, tablename)
 
                 If Not (dbr.DataGrid Is Nothing) Then
                     dbr.DataGrid.DataSource = varBindingSource
@@ -384,9 +380,9 @@ Namespace Database.Engine
                     dbr.Chart.DataSource = varBindingSource
                 End If
 
-            Catch ex As MySqlClient.MySqlException
-                With proLog
-                    .AppVersion = GetAppVersion()
+            Catch ex As MySqlException
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -401,11 +397,11 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
             Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -420,7 +416,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
             End Try
         End Sub
@@ -438,17 +434,17 @@ Namespace Database.Engine
         ''' The SQL command to execute. The method automatically prepends the 
         ''' database selection (USE databasename) before running the query.
         ''' </param>
-        <SupportedOSPlatform("windows")>
-        Public Sub PushData(databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing)
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Function PushData(databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As Boolean
             Try
                 If Not varConnection(1).Ping Then
                     varConnection(1).Close()
                     varConnection(1).Open()
                 End If
 
-                varCommand(1) = New MySqlClient.MySqlCommand With {
+                varCommand(1) = New MySqlCommand With {
                 .Connection = varConnection(1),
-                .CommandType = CommandType.Text}
+                .CommandType = System.Data.CommandType.Text}
 
                 query = "USE " & databasename & "; " & query
 
@@ -459,9 +455,10 @@ Namespace Database.Engine
                     Next
                 End If
                 varCommand(1).ExecuteNonQuery()
+                Return True
             Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[PushData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -476,10 +473,11 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
+                Return False
             End Try
-        End Sub
+        End Function
 
         ''' <summary>
         ''' Executes the provided MySqlCommand to push or update image-related data 
@@ -493,8 +491,8 @@ Namespace Database.Engine
         ''' True if the command executes without errors; otherwise False. 
         ''' Errors are logged through the Ladybug logging system.
         ''' </returns>
-        <SupportedOSPlatform("windows")>
-        Public Function PushImage(cmd As MySqlClient.MySqlCommand) As Boolean
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Function PushImage(cmd As MySqlCommand) As Boolean
             Dim varSuccess As Boolean
 
             Try
@@ -503,20 +501,20 @@ Namespace Database.Engine
                     varConnection(1).Open()
                 End If
 
-                varCommand(1) = New MySqlClient.MySqlCommand
+                varCommand(1) = New MySqlCommand
 
                 If cmd IsNot Nothing Then
                     varCommand(1) = cmd
                 End If
 
                 varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = CommandType.Text
+                varCommand(1).CommandType = System.Data.CommandType.Text
                 varCommand(1).ExecuteNonQuery()
                 varSuccess = True
             Catch ex As Exception
                 varSuccess = False
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[PushImage] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -530,7 +528,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
             End Try
 
@@ -556,8 +554,8 @@ Namespace Database.Engine
         ''' <returns>
         ''' The filled DataSet. Returns Nothing if an exception occurs.
         ''' </returns>
-        <SupportedOSPlatform("windows")>
-        Public Function FillDataSet(databasename As String, query As String, datasetname As DataSet, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As DataSet
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Function FillDataSet(databasename As String, query As String, datasetname As System.Data.DataSet, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As System.Data.DataSet
             GC.Collect()
 
             Try
@@ -566,9 +564,9 @@ Namespace Database.Engine
                     varConnection(1).Open()
                 End If
 
-                varCommand(1) = New MySqlClient.MySqlCommand With {
+                varCommand(1) = New MySqlCommand With {
                 .Connection = varConnection(1),
-                .CommandType = CommandType.Text}
+                .CommandType = System.Data.CommandType.Text}
 
                 query = "USE " & databasename & "; " & query
 
@@ -579,14 +577,14 @@ Namespace Database.Engine
                     Next
                 End If
 
-                Using varDataAdapter = New MySqlClient.MySqlDataAdapter(varCommand(1))
+                Using varDataAdapter = New MySqlDataAdapter(varCommand(1))
                     datasetname.Tables(tablename).Clear()
                     varDataAdapter.Fill(datasetname, tablename)
                 End Using
             Catch ex As Exception
                 datasetname = Nothing
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -601,7 +599,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
             End Try
 

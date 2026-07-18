@@ -3,14 +3,14 @@ Imports System.Runtime.Versioning
 
 Namespace Application
     Public Class Access
-        ReadOnly varSQL As New LibSQL.Application.Access
+        ReadOnly varAccess As New LibSQL.CMDapp.Access
 
         <SupportedOSPlatform("windows")>
         Public Function User(varDataProperties As LibApp.Ingrid.Global.Properties, Optional status As CMCv.UI.Control.stt = Nothing) As Boolean
             Dim varAccessValue As Boolean
 
             Try
-                varAccessValue = varSQL.User(varDataProperties, varDataProperties.UserParameters)
+                varAccessValue = varAccess.User(varDataProperties, varDataProperties.UserParameters)
                 Return varAccessValue
             Catch ex As Exception
                 SystemSounds.Exclamation.Play()
@@ -28,7 +28,7 @@ Namespace Application
             Dim varIsModuleReady As Boolean
 
             Try
-                varIsModuleReady = LibSQL.Application.Modules.Exist(dataproperties, dataproperties.UserParameters)
+                varIsModuleReady = LibSQL.CMDapp.Modules.Exist(dataproperties, dataproperties.UserParameters)
 
                 Return varIsModuleReady
             Catch ex As Exception
@@ -42,7 +42,7 @@ Namespace Application
 
             Try
 
-                varIsModuleLocked = LibSQL.Application.Modules.Locked(dataproperties, dataproperties.UserParameters)
+                varIsModuleLocked = LibSQL.CMDapp.Modules.Locked(dataproperties, dataproperties.UserParameters)
 
                 Return varIsModuleLocked
             Catch ex As Exception

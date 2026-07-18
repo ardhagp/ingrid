@@ -21,16 +21,16 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Dim MySettings2 As CMCv.My.MySettings = New My.MySettings()
+            Dim MySettings1 As CMCv.My.MySettings = New My.MySettings()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMstandard))
-            pnl_ = New CMCv.UI.Control.pnl(components)
+            pnl_ = New CMCv.UI.Control.Pnl(components)
             SLFLogo = New CMCv.UI.Control.Pbx(components)
             SLFBackground = New CMCv.UI.Control.Pbx(components)
-            SLFNamaForm = New CMCv.UI.Control.lbl(components)
-            SLFSubNamaForm = New CMCv.UI.Control.lbl(components)
-            SLFStatus = New CMCv.UI.Control.stt(components)
+            SLFNamaForm = New CMCv.UI.Control.Lbl(components)
+            SLFSubNamaForm = New CMCv.UI.Control.Lbl(components)
+            SLFStatus = New CMCv.UI.Control.Stt(components)
             SLFStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
-            SLFPanel = New CMCv.UI.Control.pnl(components)
+            SLFPanel = New CMCv.UI.Control.Pnl(components)
             pnl_.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
@@ -56,10 +56,10 @@
             ' SLFLogo
             ' 
             SLFLogo.BackColor = Drawing.Color.Black
-            MySettings2.MRUFiles = CType(resources.GetObject("MySettings2.MRUFiles"), Specialized.StringCollection)
-            MySettings2.SettingsKey = ""
-            MySettings2.SLFBackground = Drawing.Color.Black
-            SLFLogo.DataBindings.Add(New System.Windows.Forms.Binding("BackColor", MySettings2, "SLFBackground", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+            MySettings1.MRUFiles = CType(resources.GetObject("MySettings1.MRUFiles"), Specialized.StringCollection)
+            MySettings1.SettingsKey = ""
+            MySettings1.SLFBackground = Drawing.Color.Black
+            SLFLogo.DataBindings.Add(New System.Windows.Forms.Binding("BackColor", MySettings1, "SLFBackground", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
             SLFLogo.ErrorImage = CType(resources.GetObject("SLFLogo.ErrorImage"), Drawing.Image)
             SLFLogo.InitialImage = CType(resources.GetObject("SLFLogo.InitialImage"), Drawing.Image)
             SLFLogo.Location = New System.Drawing.Point(7, 10)
@@ -69,13 +69,13 @@
             SLFLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             SLFLogo.TabIndex = 0
             SLFLogo.TabStop = False
-            SLFLogo.XOShowBorder = False
             SLFLogo.XOBorderColor = Drawing.Color.DodgerBlue
+            SLFLogo.XOShowBorder = False
             ' 
             ' SLFBackground
             ' 
             SLFBackground.BackColor = Drawing.Color.Black
-            SLFBackground.DataBindings.Add(New System.Windows.Forms.Binding("BackColor", MySettings2, "SLFBackground", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+            SLFBackground.DataBindings.Add(New System.Windows.Forms.Binding("BackColor", MySettings1, "SLFBackground", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
             SLFBackground.ErrorImage = CType(resources.GetObject("SLFBackground.ErrorImage"), Drawing.Image)
             SLFBackground.InitialImage = CType(resources.GetObject("SLFBackground.InitialImage"), Drawing.Image)
             SLFBackground.Location = New System.Drawing.Point(3, 6)
@@ -85,15 +85,15 @@
             SLFBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             SLFBackground.TabIndex = 998
             SLFBackground.TabStop = False
-            SLFBackground.XOShowBorder = False
             SLFBackground.XOBorderColor = Drawing.Color.DodgerBlue
+            SLFBackground.XOShowBorder = False
             ' 
             ' SLFNamaForm
             ' 
             SLFNamaForm.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             SLFNamaForm.AutoSize = True
             SLFNamaForm.BackColor = Drawing.Color.Transparent
-            SLFNamaForm.Font = New System.Drawing.Font("Segoe UI", 18.0F, Drawing.FontStyle.Bold)
+            SLFNamaForm.Font = New System.Drawing.Font("Segoe UI", 18F, Drawing.FontStyle.Bold)
             SLFNamaForm.ForeColor = Drawing.Color.White
             SLFNamaForm.Location = New System.Drawing.Point(88, 7)
             SLFNamaForm.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
@@ -109,7 +109,7 @@
             SLFSubNamaForm.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             SLFSubNamaForm.AutoSize = True
             SLFSubNamaForm.BackColor = Drawing.Color.Transparent
-            SLFSubNamaForm.Font = New System.Drawing.Font("Segoe UI", 9.0F)
+            SLFSubNamaForm.Font = New System.Drawing.Font("Segoe UI", 9F)
             SLFSubNamaForm.ForeColor = Drawing.Color.White
             SLFSubNamaForm.Location = New System.Drawing.Point(117, 58)
             SLFSubNamaForm.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
@@ -149,11 +149,12 @@
             ' 
             ' FRMstandard
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
             ClientSize = New System.Drawing.Size(1307, 1079)
             Controls.Add(SLFPanel)
             Controls.Add(SLFStatus)
             Controls.Add(pnl_)
+            Icon = CType(resources.GetObject("$this.Icon"), Drawing.Icon)
             Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
             Name = "FRMstandard"
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent

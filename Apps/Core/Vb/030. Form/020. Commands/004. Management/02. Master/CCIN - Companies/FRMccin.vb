@@ -3,16 +3,12 @@ Imports System.Text
 
 Namespace UI.Canvas
     Public Class FRMccin
-#Region "Declaration"
         Private WithEvents Frm_ccin_Editor As New FRMccinEditor
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
         'Parameters
         Private varThisModuleId As Long = 0
         Private Const varThisModuleCode As String = "CCIN"
-#End Region
-
-#Region "Sub Collections"
 
         ''' <summary>
         ''' 
@@ -39,9 +35,7 @@ Namespace UI.Canvas
                 End If
             End With
         End Sub
-#End Region
 
-#Region "Menu Strip Function"
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
             With varDataProperties
@@ -131,11 +125,9 @@ Namespace UI.Canvas
         Private Sub EventToolsFind() Handles Com_mms_Menu.EventToolsFind
             TxtFind.Focus()
         End Sub
-#End Region
 
-#Region "Form Events"
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub frmCompany_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Private Sub FRMcompany_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             ' Set active module to UserParameters
             With varDataProperties
                 SetValue(.UserParameters, tModule.P_ModuleCode, varThisModuleCode)
@@ -149,9 +141,7 @@ Namespace UI.Canvas
             DgnCCIN.XOGetNewColor()
             Call GetData(True)
         End Sub
-#End Region
 
-#Region "Component Events"
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
             If e.KeyCode = Keys.Enter Then
@@ -165,7 +155,6 @@ Namespace UI.Canvas
             Call GetData(True)
             TxtFind.ClearSearch()
         End Sub
-#End Region
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMccinEditor_RecordSaved() Handles Frm_ccin_Editor.EventRecordSaved

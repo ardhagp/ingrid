@@ -1,15 +1,11 @@
-﻿Imports System.Media
-Imports System.Runtime.Versioning
-Imports CMCv
-
-Namespace Application
+﻿Namespace CMDapp
 
     Public Class Access
 
-        Private ReadOnly varDatabaseRequestMssql2008(2) As Database.Adapter.MsSql.Display.Request
-        Private ReadOnly varDatabaseRequestMysql(2) As Database.Adapter.MySQL.Display.Request
+        Private ReadOnly varDatabaseRequestMssql2008(2) As CMCv.Database.Adapter.MsSql.Display.Request
+        Private ReadOnly varDatabaseRequestMysql(2) As CMCv.Database.Adapter.Mysql.Display.Request
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Function User(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Boolean
             Dim varView As Integer
             Dim varTypeOfAccess As String = String.Empty
@@ -61,7 +57,7 @@ Namespace Application
                     End If
 
                     If varView = 0 Then
-                        SystemSounds.Exclamation.Play()
+                        System.Media.SystemSounds.Exclamation.Play()
                         Decision(My.Application.Info.AssemblyName.ToUpper, $"You are Not authorized to : " & IIf(dataproperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Report, "View ", "").ToString & "{typeofaccess}" & IIf(dataproperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Report, "", " record(s)").ToString, LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                         Return False
                     Else
@@ -78,7 +74,7 @@ Namespace Application
     Public Class Modules
         Private varDataSet As System.Data.DataSet
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function Exist(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Boolean
             Dim varIsExist As Boolean
 
@@ -98,7 +94,7 @@ Namespace Application
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function Locked(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Boolean
             Dim varIsLocked As Boolean
 
@@ -119,7 +115,7 @@ Namespace Application
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Function DisplayAutoComplete(dataproperties As LibApp.Ingrid.Global.Properties) As System.Data.DataSet
             Try
                 varDataSet = New System.Data.DataSet
@@ -140,7 +136,7 @@ Namespace Application
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function MaxPDFallowed(dataproperties As LibApp.Ingrid.Global.Properties) As Double
             Dim varSettingValue As Double
 
@@ -161,7 +157,7 @@ Namespace Application
             Return varSettingValue
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function MaxPhotoallowed(dataproperties As LibApp.Ingrid.Global.Properties) As Double
             Dim varSettingValue As Double
 
@@ -182,7 +178,7 @@ Namespace Application
             Return varSettingValue
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function MinPasswordLength(dataproperties As LibApp.Ingrid.Global.Properties) As Integer
             Dim varMinPasswordLength As Integer
 
@@ -202,7 +198,7 @@ Namespace Application
             Return varMinPasswordLength
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function TextMark(dataproperties As LibApp.Ingrid.Global.Properties) As String
             Dim varValue As Integer
             Dim varSettingValue As String = String.Empty
@@ -239,10 +235,10 @@ Namespace Application
     End Class
 
     Public Class Notification
-        Private ReadOnly varDatabaseRequestMssql2008(1) As Database.Adapter.MsSql.Display.Request
-        Private ReadOnly varDatabaseRequestMysql(1) As Database.Adapter.MySQL.Display.Request
+        Private ReadOnly varDatabaseRequestMssql2008(1) As CMCv.Database.Adapter.MsSql.Display.Request
+        Private ReadOnly varDatabaseRequestMysql(1) As CMCv.Database.Adapter.Mysql.Display.Request
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Function Exist(dataproperties As LibApp.Ingrid.Global.Properties) As Integer
             Dim varIsExist As Integer
 
@@ -265,10 +261,10 @@ Namespace Application
     End Class
 
     Public Class RunningText
-        Private ReadOnly varDatabaseRequestMssql2008(1) As Database.Adapter.MsSql.Display.Request
-        Private ReadOnly varDatabaseRequestMysql(1) As Database.Adapter.MySQL.Display.Request
+        Private ReadOnly varDatabaseRequestMssql2008(1) As CMCv.Database.Adapter.MsSql.Display.Request
+        Private ReadOnly varDatabaseRequestMysql(1) As CMCv.Database.Adapter.Mysql.Display.Request
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Function Show(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varValue As Integer
 
@@ -300,7 +296,7 @@ Namespace Application
 
     Public Class StorageSense
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function Show(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varValue As Integer
 
@@ -329,7 +325,7 @@ Namespace Application
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function DataCurrentSize(databasename As String) As Double
             Dim varSize As Double
 
@@ -343,7 +339,7 @@ Namespace Application
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function FileCurrentSize(dataproperties As LibApp.Ingrid.Global.Properties) As Double
             Dim varSize As Double
 
@@ -367,7 +363,7 @@ Namespace Application
             FreeSpace = 2
         End Enum
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function MaxSize(databasename As String, sizetype As DBSizeType) As Double
             Dim varSize As Double
 
@@ -393,10 +389,15 @@ Namespace Application
     End Class
 
     Public Class ProfilePanel
-        'ReadOnly _DBR_MSSQL2008(1) As Database.Adapter.MsSql.Display.Request
-        'ReadOnly _IMG As New CMCv.ImageEditor.Proccessor.Compress
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' Get the employee photo from the database. If the photo is not found, return a default
+        ''' </summary>
+        ''' <param name="databasename">The name of the database to query.</param>
+        ''' <param name="employeeid">The ID of the employee whose photo is being retrieved.</param>
+        ''' <param name="gender">The gender of the employee, used to determine the default photo if none is found.</param>
+        ''' <returns>The employee's photo as a System.Drawing.Image. Returns a default image if no photo is found.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Function GetPhoto(databasename As String, employeeid As String, gender As String) As System.Drawing.Image
             Dim varPhoto As System.Drawing.Image
             Dim varBytes As Byte()
@@ -420,7 +421,7 @@ Namespace Application
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function Show(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varValue As Integer
 
@@ -449,7 +450,7 @@ Namespace Application
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function Welcome(dataproperties As LibApp.Ingrid.Global.Properties) As String
             Dim varWelcome As String = String.Empty
             Try
@@ -468,6 +469,30 @@ Namespace Application
             Catch ex As Exception
                 Return "Welcome,"
             End Try
+        End Function
+    End Class
+
+    ''' <summary>
+    ''' The Client class provides functionality to retrieve the client ID from the database based on the provided client code. It supports both MSSQL and MySQL database engines, executing the appropriate query depending on the specified engine. The GetClientId method takes a Properties object containing database connection details and returns the corresponding client ID as a Long integer.
+    ''' </summary>
+    Public Class Client
+        ''' <summary>
+        ''' Gets the client ID from the database based on the provided client code. The method checks the database engine specified in the Properties object and executes the appropriate query to retrieve the client ID. If the client code is found, it returns the corresponding client ID; otherwise, it returns 0.
+        ''' </summary>
+        ''' <param name="dataproperties">The Properties object containing database connection details.</param>
+        ''' <returns>The client ID as a Long integer.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Function GetClientId(dataproperties As LibApp.Ingrid.Global.Properties) As Long
+            Dim varResult As String = String.Empty
+            If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
+                varDatabaseRequestMssql2008(0).Query = ""
+            ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
+                varDatabaseRequestMysql(0).Query = $"select {tClient.S}.{tClient.C_ClientId} " &
+                                                   $"from {tClient.TableName} {tClient.S} " &
+                                                   $"where {tClient.S}.{tClient.C_ClientCode} = {tClient.P_ClientCode}"
+                varResult = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.UserParameters).ToString
+            End If
+            Return If(String.IsNullOrEmpty(varResult), 0, CLng(varResult))
         End Function
     End Class
 End Namespace

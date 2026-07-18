@@ -1,6 +1,5 @@
 ﻿Namespace UI
     Module [Global]
-#Region "Activate Licenses"
         ''' <summary>
         ''' Activates the licenses for third-party components used in the application. This method retrieves the Syncfusion license key from the Bridge.Getkey.Syncfusion() method and registers it using the SyncfusionLicenseProvider.RegisterLicense() method. It is marked to be supported only on Windows platforms.
         ''' </summary>
@@ -11,9 +10,7 @@
             'License for Syncfusion
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(varSyncfusionkey)
         End Sub
-#End Region
 
-#Region "Declaration"
         Public varFormimage(4) As System.Drawing.Image
         Public varWorkspace As New Workspace
         Public varFileinfo As New CMCv.OperatingSystem.File.Info
@@ -57,7 +54,6 @@
         Public tUser As New LibApp.Table.Sys.User
         Public tAttachment As New LibApp.Table.File.Attachment
 
-#End Region
         ''' <summary>
         ''' Sets a value in the provided dictionary (parametername) for the specified key. If the key already exists, it removes the existing entry before adding the new key-value pair. If the value is Nothing, it adds DBNull.Value instead. This method is marked to be supported only on Windows platforms.
         ''' </summary>
@@ -66,12 +62,11 @@
         ''' <param name="[value]">The value to set for the specified key. If Nothing, DBNull.Value is used.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub SetValue(parametername As Dictionary(Of String, Object), [key] As String, Optional [value] As Object = Nothing)
-            With parametername
-                If .ContainsKey([key]) Then
-                    .Remove([key])
-                End If
-                .Add([key], IIf([value] Is Nothing, DBNull.Value, [value]))
-            End With
+            If parametername.ContainsKey([key]) Then
+                parametername([key]) = IIf([value] Is Nothing, DBNull.Value, [value])
+            Else
+                parametername.Add([key], IIf([value] Is Nothing, DBNull.Value, [value]))
+            End If
         End Sub
 
         ''' <summary>

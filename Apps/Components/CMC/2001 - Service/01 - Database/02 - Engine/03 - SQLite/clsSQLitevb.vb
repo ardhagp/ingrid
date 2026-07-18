@@ -1,10 +1,4 @@
-﻿Imports System.Data
-Imports System.Globalization
-Imports System.Runtime.Versioning
-Imports System.Windows.Forms
-Imports CMCv.UI
-
-Namespace Database.Engine
+﻿Namespace Database.Engine
     Public Class SQLiteV3
         Implements IDisposable
 
@@ -24,7 +18,7 @@ Namespace Database.Engine
         Private varSqlite As Connect.SQLiteConnection
         'Private varTX As SQLite.SQLiteTransaction
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function CheckDBCatalog(localsqlitedb As String) As Boolean
             Try
                 Dim baseFolder = IO.Path.Combine(
@@ -40,8 +34,8 @@ Namespace Database.Engine
                 Return (prodOk)
 
             Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[CheckDBCatalog] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -55,17 +49,17 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
 
                 Return False
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Shared Function EnsureDbExists(relativepath As String, basefolder As String) As Boolean
             Dim targetPath = IO.Path.Combine(basefolder, relativepath)
-            Dim sourcePath = IO.Path.Combine(Application.StartupPath, relativepath)
+            Dim sourcePath = IO.Path.Combine(System.Windows.Forms.Application.StartupPath, relativepath)
 
             If Not IO.File.Exists(targetPath) Then
                 IO.File.Copy(sourcePath, targetPath, True)
@@ -74,15 +68,15 @@ Namespace Database.Engine
             Return IO.File.Exists(targetPath)
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub Open(localsqlitedb As String)
             Try
                 varSqlite = New Connect.SQLiteConnection
                 Dim varLocation As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\ardhagp\Ingrid .NET"
 
                 If Not (CheckDBCatalog(localsqlitedb)) Then
-                    With proLog
-                        .AppVersion = GetAppVersion()
+                    With CMCv.UI.proLog
+                        .AppVersion = CMCv.UI.GetAppVersion()
                         .FromSender = "[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                         .InternalStackTrace = ""
                         .Message = "File configuration Not found"
@@ -96,7 +90,7 @@ Namespace Database.Engine
                     End With
 
                     Dim clsLog As New Ladybug.Log.Events
-                    clsLog.ShowData(proLog)
+                    clsLog.ShowData(CMCv.UI.proLog)
                     clsLog = Nothing
                     Return
                 End If
@@ -116,8 +110,8 @@ Namespace Database.Engine
                     varConnection.Open()
                 End If
             Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -131,12 +125,12 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Function GetDatabaseProperties(databaseproperties As LibApp.Ingrid.Global.Properties) As LibApp.Ingrid.Global.Properties
             Try
                 If databaseproperties Is Nothing Then
@@ -167,8 +161,8 @@ Namespace Database.Engine
 
                 Return databaseproperties
             Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[GetDatabaseProperties] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -182,7 +176,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -190,7 +184,7 @@ Namespace Database.Engine
         End Function
 
         'Private Function GetDataRow(query As String) As Microsoft.Data.Sqlite.SqliteDataReader
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function GetDataRow(query As String) As System.Data.SQLite.SQLiteDataReader ' Activate this when using System.Data.Sqlite.Core
             Try
                 ' Activate this when using Microsoft.Data.Sqlite
@@ -202,7 +196,7 @@ Namespace Database.Engine
                 ' Activate this when using System.Data.SQLite.Core
                 varCommand = New System.Data.SQLite.SQLiteCommand With {
                                 .Connection = varConnection,
-                                .CommandType = CommandType.Text,
+                                .CommandType = System.Data.CommandType.Text,
                                 .CommandText = query
                                 }
                 varDataReader = varCommand.ExecuteReader
@@ -212,10 +206,10 @@ Namespace Database.Engine
                 End If
 
                 Return varDataReader
-            Catch ex As system.Data.Sqlite.SQLiteException
+            Catch ex As System.Data.SQLite.SQLiteException
                 'Catch ex As Microsoft.Data.Sqlite.SqliteException
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -229,14 +223,14 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
 
                 Return Nothing
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Function GetValue(query As String) As Object
             Try
                 Dim varRowValue As Object
@@ -259,8 +253,8 @@ Namespace Database.Engine
 
                 Return varRowValue
             Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -274,20 +268,20 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
 
                 Return Nothing
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub GetDataTable(dbr As Adapter.Sqlite.Display.Request, datasetname As System.Data.DataSet, tablename As String)
 
             Try
                 GC.Collect()
 
-                Dim varBindingSource As New BindingSource
+                Dim varBindingSource As New System.Windows.Forms.BindingSource
 
                 If (varCommand Is Nothing) Then
                     ' Activate this when using Microsoft.Data.Sqlite
@@ -320,12 +314,12 @@ Namespace Database.Engine
                 'datasetname.Tables(tablename).Merge(dt)
 
                 ' Activate this when using System.Data.Sqlite.Core
-                Dim varDataAdapterPrivate As SQLite.SQLiteDataAdapter
-                varDataAdapterPrivate = New SQLite.SQLiteDataAdapter(varCommand)
+                Dim varDataAdapterPrivate As System.Data.SQLite.SQLiteDataAdapter
+                varDataAdapterPrivate = New System.Data.SQLite.SQLiteDataAdapter(varCommand)
                 datasetname.Tables(tablename).Clear()
                 varDataAdapterPrivate.Fill(datasetname, tablename)
 
-                varBindingSource = New BindingSource(datasetname, tablename)
+                varBindingSource = New System.Windows.Forms.BindingSource(datasetname, tablename)
 
                 If Not (dbr.DataGrid Is Nothing) Then
                     dbr.DataGrid.DataSource = varBindingSource
@@ -343,10 +337,10 @@ Namespace Database.Engine
                     dbr.Chart.DataSource = varBindingSource
                 End If
 
-            Catch ex As system.Data.Sqlite.SqliteException
+            Catch ex As System.Data.SQLite.SQLiteException
                 'Catch ex As Microsoft.Data.Sqlite.SqliteException
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -360,11 +354,11 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
             Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -378,13 +372,13 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
-        Public Function FillDataSet(query As String, datasetname As DataSet, tablename As String) As DataSet
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Function FillDataSet(query As String, datasetname As System.Data.DataSet, tablename As String) As System.Data.DataSet
             GC.Collect()
 
             Try
@@ -394,13 +388,13 @@ Namespace Database.Engine
                 ' Activate this when using System.Data.SQLite.Core
                 varCommand = New System.Data.SQLite.SQLiteCommand With {
                 .Connection = varConnection,
-                .CommandType = CommandType.Text,
-                .CommandText = String.Format(CultureInfo.CurrentCulture, query)
+                .CommandType = System.Data.CommandType.Text,
+                .CommandText = String.Format(System.Globalization.CultureInfo.CurrentCulture, query)
                 }
 
 
                 ' Prepare a DataTable to load results
-                Dim dt As New DataTable()
+                Dim dt As New System.Data.DataTable()
 
                 Using reader = varCommand.ExecuteReader()
                     dt.Load(reader)
@@ -413,8 +407,8 @@ Namespace Database.Engine
                 Return datasetname
             Catch ex As Exception
                 datasetname = Nothing
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLite.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -429,13 +423,13 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
                 Return Nothing
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub PushData(query As String)
             Try
                 ' Activate this when using Microsoft.Data.Sqlite
@@ -453,10 +447,10 @@ Namespace Database.Engine
                 varCommand.ExecuteNonQuery()
 
                 varTX.Commit()
-            Catch ex As system.Data.Sqlite.SQLiteException
+            Catch ex As System.Data.SQLite.SQLiteException
                 'Catch ex As Microsoft.Data.Sqlite.SqliteException
-                With proLog
-                    .AppVersion = GetAppVersion()
+                With CMCv.UI.proLog
+                    .AppVersion = CMCv.UI.GetAppVersion()
                     .FromSender = "[PushData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -470,7 +464,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
+                clsLog.ShowData(CMCv.UI.proLog)
                 clsLog = Nothing
             End Try
         End Sub
