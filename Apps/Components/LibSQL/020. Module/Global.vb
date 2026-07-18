@@ -18,6 +18,7 @@
 
     Public WithEvents MSG As New CMCv.UI.Canvas.FRMdialogbox
 
+    Public tCompany As New LibApp.Table.Man.Company
     Public tPosition As New LibApp.Table.Man.Position
     Public tEmployee As New LibApp.Table.Man.Employee
     Public tUser As New LibApp.Table.Sys.User
@@ -29,8 +30,6 @@
     Public tTemplate As New LibApp.Table.Cus.Template
     Public tAttachment As New LibApp.Table.File.Attachment
 
-
-#Region "Custom Message Box"
     ''' <summary>
     ''' Display a custom message box with specified parameters. This function creates an instance of the CMCv.UI.Canvas.FRMdialogbox class, sets its properties based on the provided arguments, and shows the dialog box to the user. The function returns the result of the dialog box interaction, indicating which button was pressed by the user.
     ''' </summary>
@@ -48,7 +47,6 @@
         MSG.Dispose()
         Return result
     End Function
-#End Region
 
     ''' <summary>
     ''' Gets the application version as a string in the format "Major.Minor.Build.Revision". This function retrieves the version information from the application's assembly and formats it into a readable string. If an error occurs while retrieving the version, it logs the error details using the CMCv.Ladybug logging framework and returns a failure message.
@@ -80,4 +78,20 @@
             Return " - Failed Getting Version"
         End Try
     End Function
+
+    ''' <summary>
+    ''' Sets a value in the provided dictionary (parametername) for the specified key. If the key already exists, it removes the existing entry before adding the new key-value pair. If the value is Nothing, it adds DBNull.Value instead. This method is marked to be supported only on Windows platforms.
+    ''' </summary>
+    ''' <param name="parametername">The dictionary in which to set the value.</param>
+    ''' <param name="[key]">The key for which the value should be set.</param>
+    ''' <param name="[value]">The value to set for the specified key. If Nothing, DBNull.Value is used.</param>
+    <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+    Public Sub SetValue(parametername As Dictionary(Of String, Object), [key] As String, Optional [value] As Object = Nothing)
+        With parametername
+            If .ContainsKey([key]) Then
+                .Remove([key])
+            End If
+            .Add([key], IIf([value] Is Nothing, DBNull.Value, [value]))
+        End With
+    End Sub
 End Module

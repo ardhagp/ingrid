@@ -29,7 +29,7 @@
                 ChkAddNew.Visible = True
                 ChkAddNew.Enabled = True
                 CboGender.SelectedIndex = 0
-
+                SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeToken, CMCv.Security.Encrypt.MD5())
                 SetValue(varDataProperties.AllParameters, tPosition.P_PositionId, DBNull.Value)
             Else
                 ChkAddNew.Visible = False
@@ -60,6 +60,7 @@
 
                 If varDataProperties.EmployeeIsHavePhoto Then
                     pctbxPhoto.Image = CMDepls.Editor.GetPhoto(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
+                    varDataProperties.EmployeePhoto = pctbxPhoto.Image
                     BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
                     varDataProperties.EmployeeIsHavePhoto = True
                     varDataProperties.EmployeeIsNewPhoto = False
@@ -68,7 +69,6 @@
                     BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
                     BtnRemovePhoto.Enabled = False
                 End If
-                ' TODO: Save employee data and photo
             End If
             Call ResetPhoto()
             TxtPersonalID.Focus()
@@ -124,7 +124,11 @@
                 SetValue(.AllParameters, tEmployee.P_EmployeeBirthPlace, IIf(TxtBirthPlace.XOSqlText = String.Empty OrElse TxtBirthPlace.XOSqlText = "", DBNull.Value, TxtBirthPlace.XOSqlText))
                 SetValue(.AllParameters, tEmployee.P_EmployeeGender, IIf(CboGender.SelectedItem Is Nothing OrElse CboGender.SelectedItem.ToString = String.Empty, DBNull.Value, CboGender.SelectedItem.ToString))
                 SetValue(.AllParameters, tEmployee.P_EmployeeAddress, IIf(TxtAddress.XOSqlText = String.Empty OrElse TxtAddress.XOSqlText = "", DBNull.Value, TxtAddress.XOSqlText))
+                SetValue(.AllParameters, tEmployee.P_EmployeeBirthDate, IIf(DtpBirthDate.Value = Nothing OrElse DtpBirthDate.Value = Date.MinValue, DBNull.Value, DtpBirthDate.Value))
+                SetValue(.AllParameters, tEmployee.P_EmployeePosition, IIf(TxtPosition.XOSqlText = String.Empty OrElse TxtPosition.XOSqlText = "", DBNull.Value, TxtPosition.XOSqlText))
+                SetValue(.AllParameters, tEmployee.P_EmployeeNumber, IIf(TxtEmployeeNumber.XOSqlText = String.Empty OrElse TxtEmployeeNumber.XOSqlText = "", DBNull.Value, TxtEmployeeNumber.XOSqlText))
                 SetValue(.AllParameters, tEmployee.P_EmployeeNickname, IIf(TxtEmployeeNickname.XOSqlText = String.Empty OrElse TxtEmployeeNickname.XOSqlText = "", DBNull.Value, TxtEmployeeNickname.XOSqlText))
+                SetValue(.AllParameters, tEmployee.P_EmployeeIsActive, ChkActiveEmployee.Checked)
 
                 ' Please update this method when EmploymentType is ready
                 SetValue(.AllParameters, tEmployee.P_EmployeeEmploymentType, IIf(TxtEmploymentType.XOSqlText = String.Empty OrElse TxtEmploymentType.XOSqlText = "", DBNull.Value, DBNull.Value))
@@ -249,6 +253,7 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CboGender_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboGender.SelectedIndexChanged
+            ' Reset to default photo if gender is changed and no
             Call ResetPhoto()
         End Sub
 

@@ -222,7 +222,6 @@
             BtnBrowsePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowsePhoto.ForeColor = Color.White
             BtnBrowsePhoto.Location = New Point(933, 428)
-            BtnBrowsePhoto.Margin = New Padding(6, 5, 6, 5)
             BtnBrowsePhoto.Name = "BtnBrowsePhoto"
             BtnBrowsePhoto.Size = New Size(179, 80)
             BtnBrowsePhoto.TabIndex = 800
@@ -286,7 +285,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(230), CByte(201), CByte(158))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(248), CByte(238), CByte(138))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnModulesRoles.BorderStyle = BorderStyle.None
@@ -765,7 +764,6 @@
             BtnBrowsePosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowsePosition.ForeColor = Color.White
             BtnBrowsePosition.Location = New Point(740, 150)
-            BtnBrowsePosition.Margin = New Padding(6, 5, 6, 5)
             BtnBrowsePosition.Name = "BtnBrowsePosition"
             BtnBrowsePosition.Size = New Size(66, 39)
             BtnBrowsePosition.TabIndex = 204
@@ -1135,7 +1133,7 @@
             BtnRemovePhoto.Name = "BtnRemovePhoto"
             BtnRemovePhoto.Size = New Size(179, 80)
             BtnRemovePhoto.TabIndex = 1042
-            BtnRemovePhoto.Text = "Remove Photo"
+            BtnRemovePhoto.Text = "Remove"
             BtnRemovePhoto.UseVisualStyleBackColor = False
             BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
             BtnRemovePhoto.XOShowBorderOnFocus = False

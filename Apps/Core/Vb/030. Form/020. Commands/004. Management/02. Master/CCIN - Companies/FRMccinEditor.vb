@@ -1,15 +1,14 @@
-﻿Namespace UI.Canvas
+﻿Imports Syncfusion.Office
+
+Namespace UI.Canvas
     Public Class FRMccinEditor
 
-#Region "Declaration"
         Public Event EventRecordSaved()
 
         ' This Module Identifier
         Private varThisModuleId As Long = 0
         Private Const varThisModuleCode As String = "CCIN"
-#End Region
 
-#Region "Subs Collections"
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CheckAllInput()
             TxtCode.Focus()
@@ -19,12 +18,10 @@
             TxtDescription.Focus()
             BtnSave.Focus()
         End Sub
-#End Region
-
-#Region "Form Events"
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMccinEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            SetValue(varDataProperties.AllParameters, tCompany.P_CompanyClient, varDataProperties.UserParameters(tClient.P_ClientId))
             If (varDataProperties.CompanyIsNew) Then
                 ChkAddNew.Visible = True
                 ChkAddNew.Checked = False
@@ -36,16 +33,14 @@
                     With varDatasetIngrid.Tables(tCompany.TableName).Rows(0)
                         TxtCode.Text = .Item(tCompany.C_CompanyCode).ToString
                         TxtName.Text = .Item(tCompany.C_CompanyName).ToString
-                        TxtSearchTerm1.Text = .Item(tCompany.C_SearchTerm1).ToString
-                        TxtSearchTerm2.Text = .Item(tCompany.C_SearchTerm2).ToString
-                        TxtDescription.Text = .Item(tCompany.C_Description).ToString
+                        TxtSearchTerm1.Text = .Item(tCompany.C_CompanySearchTerm1).ToString
+                        TxtSearchTerm2.Text = .Item(tCompany.C_CompanySearchTerm2).ToString
+                        TxtDescription.Text = .Item(tCompany.C_CompanyDescription).ToString
                     End With
                 End If
             End If
         End Sub
-#End Region
 
-#Region "Component Events"
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
@@ -58,9 +53,9 @@
             With varDataProperties
                 SetValue(.AllParameters, tCompany.P_CompanyCode, TxtCode.XOSqlText)
                 SetValue(.AllParameters, tCompany.P_CompanyName, TxtName.XOSqlText)
-                SetValue(.AllParameters, tCompany.P_SearchTerm1, IIf(TxtSearchTerm1.XOSqlText = String.Empty OrElse TxtSearchTerm1.XOSqlText = "", DBNull.Value, TxtSearchTerm1.XOSqlText))
-                SetValue(.AllParameters, tCompany.P_SearchTerm2, IIf(TxtSearchTerm2.XOSqlText = String.Empty OrElse TxtSearchTerm2.XOSqlText = "", DBNull.Value, TxtSearchTerm2.XOSqlText))
-                SetValue(.AllParameters, tCompany.P_Description, IIf(TxtDescription.XOSqlText = String.Empty OrElse TxtDescription.XOSqlText = "", DBNull.Value, TxtDescription.XOSqlText))
+                SetValue(.AllParameters, tCompany.P_CompanySearchTerm1, IIf(TxtSearchTerm1.XOSqlText = String.Empty OrElse TxtSearchTerm1.XOSqlText = "", DBNull.Value, TxtSearchTerm1.XOSqlText))
+                SetValue(.AllParameters, tCompany.P_CompanySearchTerm2, IIf(TxtSearchTerm2.XOSqlText = String.Empty OrElse TxtSearchTerm2.XOSqlText = "", DBNull.Value, TxtSearchTerm2.XOSqlText))
+                SetValue(.AllParameters, tCompany.P_CompanyDescription, IIf(TxtDescription.XOSqlText = String.Empty OrElse TxtDescription.XOSqlText = "", DBNull.Value, TxtDescription.XOSqlText))
             End With
 
             If (varDataProperties.AllParameters(tCompany.P_CompanyCode).ToString = String.Empty) OrElse (varDataProperties.AllParameters(tCompany.P_CompanyName).ToString = String.Empty) Then
@@ -106,9 +101,9 @@
             With varDataProperties
                 .AllParameters.Remove(tCompany.P_CompanyCode)
                 .AllParameters.Remove(tCompany.P_CompanyName)
-                .AllParameters.Remove(tCompany.P_SearchTerm1)
-                .AllParameters.Remove(tCompany.P_SearchTerm2)
-                .AllParameters.Remove(tCompany.P_Description)
+                .AllParameters.Remove(tCompany.P_CompanySearchTerm1)
+                .AllParameters.Remove(tCompany.P_CompanySearchTerm2)
+                .AllParameters.Remove(tCompany.P_CompanyDescription)
             End With
         End Sub
 
@@ -118,7 +113,6 @@
             SetValue(varDataProperties.UserParameters, tModule.P_ModuleId, varThisModuleId)
             SetValue(varDataProperties.UserParameters, tModule.P_ModuleCode, varThisModuleCode)
         End Sub
-#End Region
 
     End Class
 End Namespace

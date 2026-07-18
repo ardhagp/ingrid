@@ -1,13 +1,10 @@
-﻿Imports System.Runtime.Versioning
-Imports CMCv
-
-Namespace CMDccin
+﻿Namespace CMDccin
     Public Class View
         Private Shared ReadOnly consTableName As String = "CheckRelation"
         Private Shared varQuery As String
 
-        <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.dgn, statusbar As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt)
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt, find As CMCv.UI.Control.Txt)
             Dim varWhere As String = "where "
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -24,34 +21,41 @@ Namespace CMDccin
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TCompany")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If (find.XOSqlText = String.Empty) OrElse (dataproperties.CompanyIsForceRefresh) Then
-                    varWhere = $""
+                    varWhere += $"({tCompany.S}.{tCompany.C_CompanyClient} = {tClient.P_ClientId})"
                 Else
-                    varWhere += $" (c.company_code ='{find.XOSqlText}') or (c.company_name like '%{find.XOSqlText}%') or (c.company_searchterm2 like '%{find.XOSqlText}%') or (c.company_searchterm1 like '%{find.XOSqlText}%') or (c.company_description " &
+                    varWhere += $"({tCompany.S}.{tCompany.C_CompanyClient} = {tClient.P_ClientId}) and ({tCompany.S}.{tCompany.C_CompanyCode} ='{find.XOSqlText}') or ({tCompany.S}.{tCompany.C_CompanyName} like '%{find.XOSqlText}%') or ({tCompany.S}.{tCompany.C_CompanySearchTerm1} like '%{find.XOSqlText}%') or ({tCompany.S}.{tCompany.C_CompanySearchTerm2} like '%{find.XOSqlText}%') or ({tCompany.S}.{tCompany.C_CompanyDescription} " &
                                 $"like '%{find.XOSqlText}%')"
                 End If
-                varDatabaseRequestMysql(0).Query = $"SELECT c.company_id, c.company_code, c.company_name, c.company_searchterm2, c.company_searchterm1, c.company_description FROM man_company c {varWhere} " &
-                                                   $"ORDER BY c.company_code"
+                varDatabaseRequestMysql(0).Query = $"select {tCompany.S}.{tCompany.C_CompanyId}, " &
+                                                   $"{tCompany.S}.{tCompany.C_CompanyCode}, " &
+                                                   $"{tCompany.S}.{tCompany.C_CompanyName}, " &
+                                                   $"{tCompany.S}.{tCompany.C_CompanySearchTerm1}, " &
+                                                   $"{tCompany.S}.{tCompany.C_CompanySearchTerm2}, " &
+                                                   $"{tCompany.S}.{tCompany.C_CompanyDescription} " &
+                                                   $"from {tCompany.TableName} {tCompany.S} {varWhere} " &
+                                                   $"order by " &
+                                                   $"{tCompany.S}.{tCompany.C_CompanyCode}"
                 varDatabaseRequestMysql(0).DataGrid = datagrid
                 varDatabaseRequestMysql(0).StatusBar = statusbar
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TCompany")
+                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TCompany", dataproperties.AllParameters)
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function CheckGranularity(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet) As Boolean
             Dim varHasChild As Boolean = True
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varQuery = $"SELECT now() as `timestamp`, (select count(*) from v_ccin_granularity_cdin where department_company = @CompanyID limit 0,1) as `relation1`, (select count(*) from v_ccin_granularity_plnt where plant_company = @CompanyID limit 0,1) as `relation2`;"
+                    varQuery = $"select now() as `timestamp`, (select count(*) from v_ccin_granularity_cdin where department_company = {tCompany.P_CompanyId} limit 0,1) as `relation1`, (select count(*) from v_ccin_granularity_plnt where plant_company = {tCompany.P_CompanyId} limit 0,1) as `relation2`;"
                     datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName, dataproperties.AllParameters)
                 End If
 
                 If datasetname.Tables(consTableName).Rows.Count > 0 Then
                     If Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation1")) > 0 Then
-                        Decision(My.Application.Info.AssemblyName.ToUpper, $"The company has {Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation1"))} related record(s) in [CDIN] Department module.", LibApp.Ingrid.Global.PopupType.Error, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Error, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                        Decision(My.Application.Info.AssemblyName.ToUpper, $"The company has {Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation1"))} related record(s) in [CDIN] Department module.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                         varHasChild = True
                     ElseIf Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation2")) > 0 Then
-                        Decision(My.Application.Info.AssemblyName.ToUpper, $"The company has {Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation2"))} related record(s) in [PLNT] Plant module.", LibApp.Ingrid.Global.PopupType.Error, "", cmcv.ui.canvas.FRMdialogbox.MessageIcon.Error, cmcv.ui.canvas.FRMdialogbox.MessageTypes.OkOnly)
+                        Decision(My.Application.Info.AssemblyName.ToUpper, $"The company has {Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation2"))} related record(s) in [PLNT] Plant module.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                         varHasChild = True
                     Else
                         varHasChild = False
@@ -63,7 +67,7 @@ Namespace CMDccin
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function DeleteData(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet) As Boolean
             Dim varSuccess As Boolean
             Try
@@ -75,7 +79,8 @@ Namespace CMDccin
                     varDatabaseRequestMssql2008(0).Query = $"delete from dbo.man_company where company_id=@CompanyId"
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(0).Query = $"delete from man_company where company_id=@CompanyId"
+                    varDatabaseRequestMysql(0).Query = $"delete from {tCompany.TableName} " &
+                                                       $"where {tCompany.C_CompanyId} = {tCompany.P_CompanyId}"
                     varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters)
                 End If
                 varSuccess = True
@@ -85,15 +90,16 @@ Namespace CMDccin
             Return varSuccess
         End Function
 
-        <SupportedOSPlatform("windows")>
-        Public Function CountRecords(dataproperties As LibApp.Ingrid.Global.Properties) As Integer
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Function CountRecords(dataproperties As LibApp.Ingrid.Global.Properties) As Integer
             Dim varCount As Integer = 0
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varDatabaseRequestMssql2008(0).Query = $""
-                varCount = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Integer)
+                varCount = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = $"SELECT count(com.company_id) as `count` FROM man_company as com"
-                varCount = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), Integer)
+                varDatabaseRequestMysql(0).Query = $"select count({tCompany.S}.{tCompany.C_CompanyId}) as `count` " &
+                                                   $"from {tCompany.TableName} {tCompany.S}"
+                varCount = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
             End If
             Return varCount
         End Function
@@ -102,7 +108,7 @@ Namespace CMDccin
     Public Class Editor
         Private Shared varQuery As String
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function IsDuplicate(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varIsDuplicate As Integer
             Dim varWhere As String = "where "
@@ -117,12 +123,13 @@ Namespace CMDccin
                 varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Integer)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If dataproperties.CompanyIsNew Then
-                    varWhere += $" c.company_code = @CompanyCode"
+                    varWhere += $" {tCompany.S}.{tCompany.C_CompanyCode} = {tCompany.P_CompanyCode}"
                 Else
-                    varWhere += $" c.company_code = @CompanyCode and c.company_id <> @CompanyId"
+                    varWhere += $" {tCompany.S}.{tCompany.C_CompanyCode} = {tCompany.P_CompanyCode} and {tCompany.S}.{tCompany.C_CompanyId} <> {tCompany.P_CompanyId}"
                 End If
-                varDatabaseRequestMysql(1).Query = $"select count(c.company_id) as `isduplicate` from man_company c {varWhere}"
-                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters), Integer)
+                varDatabaseRequestMysql(1).Query = $"select count({tCompany.S}.{tCompany.C_CompanyId}) as `isduplicate` " &
+                                                   $"from {tCompany.TableName} {tCompany.S} {varWhere}"
+                varIsDuplicate = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters))
             End If
             If varIsDuplicate = 0 Then
                 Return False
@@ -131,7 +138,7 @@ Namespace CMDccin
             End If
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean ', databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, companycode As String, companyname As String, searchterm1 As String, searchterm2 As String, description As String, Optional rowid As String = "-1") As Boolean
             Try
                 If dataproperties.CompanyIsNew AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -142,28 +149,46 @@ Namespace CMDccin
                     varDatabaseRequestMssql2008(1).Query = $"update dbo.man_company set company_code = @CompanyCode ,company_name = @CompanyName, company_searchterm1 = @CompanySearchTerm1, company_searchterm2 = @CompanySearchTerm2, company_description = @CompanyDescription, company_datelastmodified = now() " &
                                                            $"where company_id = @CompanyId"
                 ElseIf (dataproperties.CompanyIsNew) AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    dataproperties.AllParameters.Add("@CompanyToken", CMCv.Security.Encrypt.MD5())
-                    varDatabaseRequestMysql(1).Query = $"insert into man_company(company_code,company_name,company_searchterm1,company_searchterm2,company_description) " &
-                                                       $"values(@CompanyCode, @CompanyName, @CompanySearchTerm1, @CompanySearchTerm2, @CompanyDescription)"
+                    SetValue(dataproperties.AllParameters, tCompany.P_CompanyToken, CMCv.Security.Encrypt.MD5())
+                    varDatabaseRequestMysql(1).Query = $"insert into {tCompany.TableName}(" &
+                                                       $"{tCompany.C_CompanyCode}, " &
+                                                       $"{tCompany.C_CompanyName}, " &
+                                                       $"{tCompany.C_CompanySearchTerm1}, " &
+                                                       $"{tCompany.C_CompanySearchTerm2}, " &
+                                                       $"{tCompany.C_CompanyDescription}, " &
+                                                       $"{tCompany.C_CompanyToken}, " &
+                                                       $"{tCompany.C_CompanyClient}) " &
+                                                       $"values ( " &
+                                                       $"{tCompany.P_CompanyCode}, " &
+                                                       $"{tCompany.P_CompanyName}, " &
+                                                       $"{tCompany.P_CompanySearchTerm1}, " &
+                                                       $"{tCompany.P_CompanySearchTerm2}, " &
+                                                       $"{tCompany.P_CompanyDescription}, " &
+                                                       $"{tCompany.P_CompanyToken}, " &
+                                                       $"{tClient.P_ClientId})"
                 ElseIf Not (dataproperties.CompanyIsNew) AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(1).Query = $"update man_company set company_code = @CompanyCode, company_name = @CompanyName, company_searchterm1 = @CompanySearchTerm1, company_searchterm2 = @CompanySearchTerm2, company_description = @CompanyDescription, company_datelastmodified = now() " &
-                                                       $"where company_id = @CompanyId"
+                    varDatabaseRequestMysql(1).Query = $"update {tCompany.TableName} set " &
+                                                       $"{tCompany.C_CompanyCode} = {tCompany.P_CompanyCode}, " &
+                                                       $"{tCompany.C_CompanyName} = {tCompany.P_CompanyName}, " &
+                                                       $"{tCompany.C_CompanySearchTerm1} = {tCompany.P_CompanySearchTerm1}, " &
+                                                       $"{tCompany.C_CompanySearchTerm2} = {tCompany.P_CompanySearchTerm2}, " &
+                                                       $"{tCompany.C_CompanyDescription} = {tCompany.P_CompanyDescription} " &
+                                                       $"where " &
+                                                       $"{tCompany.C_CompanyId} = {tCompany.P_CompanyId}"
                 End If
 
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
-                    dataproperties.CompanyIsCommitSuccess = True
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
-                    dataproperties.CompanyIsCommitSuccess = True
                 End If
-                Return dataproperties.CompanyIsCommitSuccess
+                Return True
             Catch ex As Exception
                 Return False
             End Try
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Sub GetCompanyProperties(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varQuery = $"SELECT c.company_code, c.company_name, c.company_searchterm1, c.company_searchterm2, c.company_description " &
@@ -171,9 +196,13 @@ Namespace CMDccin
                            $"WHERE c.company_id = @CompanyId"
                 datasetname = varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_company")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varQuery = $"SELECT c.company_code, c.company_name, c.company_searchterm1, c.company_searchterm2, c.company_description " &
-                           $"FROM man_company c " &
-                           $"WHERE c.company_id = @CompanyId"
+                varQuery = $"select {tCompany.S}.{tCompany.C_CompanyCode}, " &
+                           $"{tCompany.S}.{tCompany.C_CompanyName}, " &
+                           $"{tCompany.S}.{tCompany.C_CompanySearchTerm1}, " &
+                           $"{tCompany.S}.{tCompany.C_CompanySearchTerm2}, " &
+                           $"{tCompany.S}.{tCompany.C_CompanyDescription} " &
+                           $"from {tCompany.TableName} {tCompany.S} " &
+                           $"where {tCompany.S}.{tCompany.C_CompanyId} = {tCompany.P_CompanyId}"
                 datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_company", dataproperties.AllParameters)
             End If
         End Sub

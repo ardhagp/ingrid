@@ -1,9 +1,6 @@
-﻿Imports System.Runtime.Versioning
-Imports CMCv
-
-Namespace CMDsyss
+﻿Namespace CMDsyss
     Public Class View
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Sub GetSettingsProperties(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object), datasetname As System.Data.DataSet)
             Try
                 Dim varValue As Object
@@ -48,11 +45,11 @@ Namespace CMDsyss
                     .SaveInBetterLog = True
                     .SaveLogInLocal = False
                     .ShowErrorReporting = True
-                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
-                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                    .TypeOfFaulty = CMCv.Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                    .TypeOfLog = CMCv.Ladybug.Log.Fields.TypeOfLogs.Error
                 End With
 
-                Dim clsLog As New Ladybug.Log.Events
+                Dim clsLog As New CMCv.Ladybug.Log.Events
                 clsLog.ShowData(proLog)
                 clsLog = Nothing
             End Try
@@ -60,7 +57,7 @@ Namespace CMDsyss
     End Class
 
     Public Class Editor
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function SaveSettings(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Boolean
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then

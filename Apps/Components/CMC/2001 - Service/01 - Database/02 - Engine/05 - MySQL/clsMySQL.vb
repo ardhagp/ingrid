@@ -350,7 +350,7 @@ Namespace Database.Engine
                 If (varCommand(1) Is Nothing) Then
                     varCommand(1) = New MySqlClient.MySqlCommand
                 End If
-
+                varCommand(1).Parameters.Clear()
                 varCommand(1).Connection = varConnection(1)
                 varCommand(1).CommandType = CommandType.Text
                 varCommand(1).CommandTimeout = 30
@@ -439,7 +439,7 @@ Namespace Database.Engine
         ''' database selection (USE databasename) before running the query.
         ''' </param>
         <SupportedOSPlatform("windows")>
-        Public Sub PushData(databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing)
+        Public Function PushData(databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As Boolean
             Try
                 If Not varConnection(1).Ping Then
                     varConnection(1).Close()
@@ -459,6 +459,7 @@ Namespace Database.Engine
                     Next
                 End If
                 varCommand(1).ExecuteNonQuery()
+                Return True
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
@@ -478,8 +479,9 @@ Namespace Database.Engine
                 Dim clsLog As New Ladybug.Log.Events
                 clsLog.ShowData(proLog)
                 clsLog = Nothing
+                Return False
             End Try
-        End Sub
+        End Function
 
         ''' <summary>
         ''' Executes the provided MySqlCommand to push or update image-related data 

@@ -102,6 +102,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="000. Programmer%27s Guide\**" />
+    <Compile Remove="030. Form\020. Commands\002. Administration\**" />
     <Compile Remove="030. Form\020. Commands\006. Transportation\**" />
     <Compile Remove="030. Form\020. Commands\100. Personal Folder\**" />
     <Compile Remove="030. Form\020. Commands\990. Tools\**" />
@@ -110,6 +111,7 @@
     <Compile Remove="x64\**" />
     <Compile Remove="x86\**" />
     <EmbeddedResource Remove="000. Programmer%27s Guide\**" />
+    <EmbeddedResource Remove="030. Form\020. Commands\002. Administration\**" />
     <EmbeddedResource Remove="030. Form\020. Commands\006. Transportation\**" />
     <EmbeddedResource Remove="030. Form\020. Commands\100. Personal Folder\**" />
     <EmbeddedResource Remove="030. Form\020. Commands\990. Tools\**" />
@@ -118,6 +120,7 @@
     <EmbeddedResource Remove="x64\**" />
     <EmbeddedResource Remove="x86\**" />
     <None Remove="000. Programmer%27s Guide\**" />
+    <None Remove="030. Form\020. Commands\002. Administration\**" />
     <None Remove="030. Form\020. Commands\006. Transportation\**" />
     <None Remove="030. Form\020. Commands\100. Personal Folder\**" />
     <None Remove="030. Form\020. Commands\990. Tools\**" />
@@ -460,7 +463,6 @@
     <Folder Include="030. Form\010. System\090. Password Generator\" />
     <Folder Include="030. Form\020. Commands\001. Logistics\01. Dashboard\" />
     <Folder Include="030. Form\020. Commands\001. Logistics\04. Transaction\DE001 - Logistics Data Entry\Addins\" />
-    <Folder Include="030. Form\020. Commands\002. Administration\01. Documents\" />
     <Folder Include="030. Form\020. Commands\003. Accounting\03. Transaction\ACTP - Transaction Posting\" />
     <Folder Include="030. Form\020. Commands\750. Custom\To Do List\REM - To Do List\Addins\" />
     <Folder Include="030. Form\020. Commands\750. Custom\To Do List\REMC - To Do List Categories\" />
