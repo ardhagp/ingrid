@@ -1,6 +1,4 @@
-﻿Imports Syncfusion.Office
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMccinEditor
 
         Public Event EventRecordSaved()
