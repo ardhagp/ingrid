@@ -1,7 +1,7 @@
 ﻿Module [Global]
-    Public varDatabaseEngineMssql2008 As New CMCv.Database.Engine.Mssql2008
+    Public varDatabaseEngineMssql2008 As New CMCv.Database.Engine.Mssql
     Public varDatabaseEngineMysql As New CMCv.Database.Engine.Mysql
-    Public varDatabaseEngineSqlite As New CMCv.Database.Engine.SQLiteV3
+    Public varDatabaseEngineSqlite As New CMCv.Database.Engine.SqliteV3
     Public databaseproperties(1) As LibApp.Ingrid.Global.Properties
 
     Public varDatabaseRequestMssql2008(1) As CMCv.Database.Adapter.MsSql.Display.Request
