@@ -1,4 +1,6 @@
-﻿Namespace CMDepls
+﻿Imports System.Drawing
+
+Namespace CMDepls
     ''' <summary>
     ''' The View class provides methods for displaying and managing employee data in a user interface. It includes functionality to display employee data in a grid, delete employee records, and retrieve various employee properties from the database. The class supports both MSSQL and MySQL database engines and handles data retrieval and manipulation based on the specified database engine.
     ''' </summary>
@@ -658,36 +660,51 @@
                                                            $"{tEmployee.P_EmployeeIsActive}, " &
                                                            $"{tEmployee.P_EmployeeGender});"
 
-                        If varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters) Then
-                            ' If the insert operation is successful, save photo meta to database
-                            varDatabaseRequestMysql(1).Query = $"insert into {tAttachment.S}.{tAttachment.C_AttachmentParentToken}, " &
-                                                               $"{tAttachment.C_AttachmentModule}, " &
-                                                               $"{tAttachment.C_AttachmentFileName}, " &
-                                                               $"{tAttachment.C_AttachmentExtension}, " &
-                                                               $"{tAttachment.C_AttachmentUrl}, " &
-                                                               $"{tAttachment.C_AttachmentTag}, " &
-                                                               $"{tAttachment.C_AttachmentProvider}) " &
-                                                               $"values ({tEmployee.P_EmployeeToken}, " &
-                                                               $"{tModule.P_ModuleId}, " &
-                                                               $"@FileName, " &
-                                                               $"@FileExtension, " &
-                                                               $"@FileUrl, " &
-                                                               $"'EMPLOYEE-PROFILE-PHOTO', " &
-                                                               $"@Uploader);"
+                        'If varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters) Then
+                        ' If the insert operation is successful, save photo meta to database
+                        Dim baseFolder = IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ardhagp\Ingrid .NET")
 
-                        End If
+                        Dim imageFolder = IO.Path.Combine(baseFolder, "Files.Image")
+                        IO.Directory.CreateDirectory(imageFolder)
+
+                        Dim img As New Bitmap(dataproperties.EmployeePhoto)
+                        img.Save(imageFolder & "\a.jpg", System.Drawing.Imaging.ImageFormat.Jpeg)
+                        varDatabaseRequestMysql(1).Query = $"insert into {tAttachment.S}.{tAttachment.C_AttachmentParentToken}, " &
+                                                           $"{tAttachment.C_AttachmentModule}, " &
+                                                           $"{tAttachment.C_AttachmentFileName}, " &
+                                                           $"{tAttachment.C_AttachmentExtension}, " &
+                                                           $"{tAttachment.C_AttachmentUrl}, " &
+                                                           $"{tAttachment.C_AttachmentTag}, " &
+                                                           $"{tAttachment.C_AttachmentProvider}) " &
+                                                           $"values ({tEmployee.P_EmployeeToken}, " &
+                                                           $"{tModule.P_ModuleId}, " &
+                                                           $"@FileName, " &
+                                                           $"@FileExtension, " &
+                                                           $"@FileUrl, " &
+                                                           $"'EMPLOYEE-PROFILE-PHOTO', " &
+                                                           $"@Uploader);"
+
+                        '    End If
                     Else
-                            varDatabaseRequestMysql(1).Query = $"update man_employee set employee_position = @PositionId, " &
-                                                           $"employee_number = @EmployeeNumber, " &
-                                                           $"employee_fullname = @EmployeeFullName, " &
-                                                           $"employee_birthdate = @EmployeeBirthDate, " &
-                                                           $"employee_birthplace = @EmployeeBirthPlace, " &
-                                                           $"employee_address = @EmployeeAddress, " &
-                                                           $"employee_nickname = @EmployeeNickname, " &
-                                                           $"employee_isactive = @EmployeeIsActive, " &
-                                                           $"employee_gender = @EmployeeGender, " &
-                                                           $"employee_personalid = @EmployeePersonalId " &
-                                                           $"where employee_id = @EmployeeId;"
+                        Dim baseFolder = IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ardhagp\Ingrid .NET")
+
+                        Dim imageFolder = IO.Path.Combine(baseFolder, "Files.Image")
+                        IO.Directory.CreateDirectory(imageFolder)
+
+                        Dim img As New Bitmap(dataproperties.EmployeePhoto)
+                        img.Save(imageFolder & "\a.jpg", System.Drawing.Imaging.ImageFormat.Jpeg)
+
+                        varDatabaseRequestMysql(1).Query = $"update man_employee set employee_position = @PositionId, " &
+                                                       $"employee_number = @EmployeeNumber, " &
+                                                       $"employee_fullname = @EmployeeFullName, " &
+                                                       $"employee_birthdate = @EmployeeBirthDate, " &
+                                                       $"employee_birthplace = @EmployeeBirthPlace, " &
+                                                       $"employee_address = @EmployeeAddress, " &
+                                                       $"employee_nickname = @EmployeeNickname, " &
+                                                       $"employee_isactive = @EmployeeIsActive, " &
+                                                       $"employee_gender = @EmployeeGender, " &
+                                                       $"employee_personalid = @EmployeePersonalId " &
+                                                       $"where employee_id = @EmployeeId;"
                     End If
                 End If
 

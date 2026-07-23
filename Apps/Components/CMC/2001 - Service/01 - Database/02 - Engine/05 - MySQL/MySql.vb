@@ -106,18 +106,22 @@ Namespace Database.Engine
                     varConnection(1).Close()
                     varConnection(1).Open()
                 End If
-
-                Dim varCommand0 As New MySqlCommand
+                If IsNothing(varCommand(1)) Then
+                    varCommand(1) = New MySqlCommand
+                End If
+                varCommand(1).Parameters.Clear()
+                varCommand(1).Connection = varConnection(1)
+                varCommand(1).CommandType = System.Data.CommandType.Text
+                varCommand(1).CommandTimeout = 30
 
                 query = "USE " & databasename & "; " & query
                 If parameters IsNot Nothing Then
                     For Each param In parameters
-                        varCommand0.Parameters.AddWithValue(param.Key, param.Value)
+                        varCommand(1).Parameters.AddWithValue(param.Key, param.Value)
                     Next
                 End If
 
-                varCommand0 = New MySqlCommand(query, varConnection(1))
-                varDataReader(1) = varCommand0.ExecuteReader(System.Data.CommandBehavior.CloseConnection)
+                varDataReader(1) = varCommand(1).ExecuteReader(System.Data.CommandBehavior.CloseConnection)
 
                 If varDataReader(1).HasRows Then
                     varDataReader(1).Read()
@@ -192,11 +196,13 @@ Namespace Database.Engine
                     varConnection(1).Close()
                     varConnection(1).Open()
                 End If
-
-                varCommand(1) = New MySqlCommand With {
-                .Connection = varConnection(1),
-                .CommandType = System.Data.CommandType.Text,
-                .CommandTimeout = 30}
+                If IsNothing(varCommand(1)) Then
+                    varCommand(1) = New MySqlCommand
+                End If
+                varCommand(1).Parameters.Clear()
+                varCommand(1).Connection = varConnection(1)
+                varCommand(1).CommandType = System.Data.CommandType.Text
+                varCommand(1).CommandTimeout = 30
 
                 query = "USE " & databasename & "; " & query
 
@@ -267,7 +273,7 @@ Namespace Database.Engine
                 If IsNothing(varCommand(1)) Then
                     varCommand(1) = New MySqlCommand
                 End If
-
+                varCommand(1).Parameters.Clear()
                 varCommand(1).Connection = varConnection(1)
                 varCommand(1).CommandType = System.Data.CommandType.Text
                 varCommand(1).CommandTimeout = 30
@@ -343,7 +349,7 @@ Namespace Database.Engine
                 Dim varDataset As New System.Data.DataSet
                 Dim varBindingSource As New System.Windows.Forms.BindingSource
 
-                If (varCommand(1) Is Nothing) Then
+                If IsNothing(varCommand(1)) Then
                     varCommand(1) = New MySqlCommand
                 End If
                 varCommand(1).Parameters.Clear()
@@ -442,9 +448,13 @@ Namespace Database.Engine
                     varConnection(1).Open()
                 End If
 
-                varCommand(1) = New MySqlCommand With {
-                .Connection = varConnection(1),
-                .CommandType = System.Data.CommandType.Text}
+                If IsNothing(varCommand(1)) Then
+                    varCommand(1) = New MySqlCommand
+                End If
+                varCommand(1).Parameters.Clear()
+                varCommand(1).Connection = varConnection(1)
+                varCommand(1).CommandType = System.Data.CommandType.Text
+                varCommand(1).CommandTimeout = 30
 
                 query = "USE " & databasename & "; " & query
 
@@ -564,9 +574,13 @@ Namespace Database.Engine
                     varConnection(1).Open()
                 End If
 
-                varCommand(1) = New MySqlCommand With {
-                .Connection = varConnection(1),
-                .CommandType = System.Data.CommandType.Text}
+                If IsNothing(varCommand(1)) Then
+                    varCommand(1) = New MySqlCommand
+                End If
+                varCommand(1).Parameters.Clear()
+                varCommand(1).Connection = varConnection(1)
+                varCommand(1).CommandType = System.Data.CommandType.Text
+                varCommand(1).CommandTimeout = 30
 
                 query = "USE " & databasename & "; " & query
 

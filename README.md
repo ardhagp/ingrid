@@ -59,9 +59,9 @@ Then type this json structure.
   "KEYS": {
 	"SALT": "<input random characters including Upper and Lower Case, Symbols and Space>",
     "SYNCFUSION": "<input your Syncfusion Key>",
-    "BETTERSTACK_LOG": "<input your BetterStack Log Key>"
-    "BETTERSTACK_HEARTBEATS": "<input your BetterStack Heartbeats Key>"
-    "CLOUDSTORAGE": "<input your Cloudstorage Url>"
+    "BETTERSTACK_LOG": "<input your BetterStack Log Key>",
+    "BETTERSTACK_HEARTBEATS": "<input your BetterStack Heartbeats Key>",
+    "CLOUDSTORAGE": "<input your Cloudstorage Url>",
     "REPOPAGE": "<input your Repository Page>"
   }
 }
