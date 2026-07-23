@@ -93,7 +93,7 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Private Sub TxtCode_TextChanged(sender As Object, e As EventArgs) Handles TxtCode.TextChanged
             If (varDataProperties.SystemModuleIsNew) Then
-                TxtID.Text = CMCv.Security.Encrypt.MD5(TxtCode.XOSqlText.ToUpper)
+                TxtID.Text = CMCv.Security.Encryption.MD5(TxtCode.XOSqlText.ToUpper)
             End If
         End Sub
     End Class

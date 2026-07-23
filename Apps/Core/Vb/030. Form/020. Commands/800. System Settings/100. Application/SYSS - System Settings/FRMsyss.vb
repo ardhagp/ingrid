@@ -120,7 +120,7 @@ Namespace UI.Canvas
                     .Remove(tSettings.P_SettingsApiKey)
                     .Add(tSettings.P_SettingsApiKey, TxtApiKey.Text.Trim)
                     .Remove(tSettings.P_SettingsApiSecret)
-                    .Add(tSettings.P_SettingsApiSecret, CMCv.Security.Encrypt.Aes(TxtApiSecret.Text.Trim))
+                    .Add(tSettings.P_SettingsApiSecret, CMCv.Security.Encryption.Aes(TxtApiSecret.Text.Trim))
                     .Remove(tSettings.P_SettingsApiBucketName)
                     .Add(tSettings.P_SettingsApiBucketName, TxtApiBucketName.Text.Trim)
                     .Remove(tSettings.P_SettingsApiServiceUrl)

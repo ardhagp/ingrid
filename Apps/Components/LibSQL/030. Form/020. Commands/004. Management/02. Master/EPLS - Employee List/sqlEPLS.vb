@@ -626,7 +626,7 @@ Namespace CMDepls
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     If dataproperties.EmployeeIsNew Then
                         dataproperties.AllParameters.Remove(pEmployeeToken)
-                        dataproperties.AllParameters.Add(pEmployeeToken, CMCv.Security.Encrypt.MD5())
+                        dataproperties.AllParameters.Add(pEmployeeToken, CMCv.Security.Encryption.MD5())
                         varDatabaseRequestMssql2008(1).Query = $"insert into dbo.man_employee(employee_id, employee_personalid, employee_position, employee_number, employee_fullname, employee_birthdate, employee_birthplace, " &
                                                                $"employee_address, employee_nickname, employee_active, employee_gender) " &
                                                                $"values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}');"

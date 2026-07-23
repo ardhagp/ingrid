@@ -196,7 +196,7 @@ Namespace UI.Canvas
             CboDBEngine.DataSource = [Enum].GetValues(GetType(LibApp.Ingrid.Global.DatabaseEngine))
 
             If (varDataProperties.ConnectionIsNew) Then
-                varDataProperties.ConnectionId = CMCv.Security.Encrypt.MD5()
+                varDataProperties.ConnectionId = CMCv.Security.Encryption.MD5()
                 ChkIsMasked.Visible = True
             Else
                 ChkIsMasked.Visible = False
@@ -269,10 +269,10 @@ Namespace UI.Canvas
             End If
 
             Dim exportConn As String
-            exportConn = $"{TxtConnectionName.Text.Trim}||{CboDBEngine.Text.Trim}||{CMCv.Security.Encrypt.Aes(TxtAddress.Text.Trim)}||{CMCv.Security.Encrypt.Aes(TxtPort.Text)}||{CMCv.Security.Encrypt.Aes(TxtUsername.Text.Trim)}||{CMCv.Security.Encrypt.Aes(TxtPassword.Text)}||{CMCv.Security.Encrypt.Aes(TxtDatabaseName.Text.Trim)}||{Convert.ToString(ChkDefault.Checked)}||{Convert.ToString(ChkIsMasked.Checked)}||{TxtClient.Text.Trim}"
+            exportConn = $"{TxtConnectionName.Text.Trim}||{CboDBEngine.Text.Trim}||{CMCv.Security.Encryption.Aes(TxtAddress.Text.Trim)}||{CMCv.Security.Encryption.Aes(TxtPort.Text)}||{CMCv.Security.Encryption.Aes(TxtUsername.Text.Trim)}||{CMCv.Security.Encryption.Aes(TxtPassword.Text)}||{CMCv.Security.Encryption.Aes(TxtDatabaseName.Text.Trim)}||{Convert.ToString(ChkDefault.Checked)}||{Convert.ToString(ChkIsMasked.Checked)}||{TxtClient.Text.Trim}"
 
-            txtImportContent.Text = CMCv.Security.Encrypt.Aes(exportConn)
-            varConnectionName = CMCv.Security.Encrypt.CRC32(TxtConnectionName.Text.Trim)
+            txtImportContent.Text = CMCv.Security.Encryption.Aes(exportConn)
+            varConnectionName = CMCv.Security.Encryption.CRC32(TxtConnectionName.Text.Trim)
         End Sub
 
         <SupportedOSPlatform("windows")>

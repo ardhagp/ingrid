@@ -142,14 +142,14 @@
         Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean ', databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, companycode As String, companyname As String, searchterm1 As String, searchterm2 As String, description As String, Optional rowid As String = "-1") As Boolean
             Try
                 If dataproperties.CompanyIsNew AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    dataproperties.AllParameters.Add("@CompanyToken", CMCv.Security.Encrypt.MD5())
+                    dataproperties.AllParameters.Add("@CompanyToken", CMCv.Security.Encryption.MD5())
                     varDatabaseRequestMssql2008(1).Query = $"insert into dbo.man_company(company_code,company_name,company_searchterm1,company_searchterm2,company_description) " &
                                                            $"values(@CompanyCode, @CompanyName, @CompanySearchTerm1, @CompanySearchTerm2, @CompanyDescription)"
                 ElseIf Not (dataproperties.CompanyIsNew) AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(1).Query = $"update dbo.man_company set company_code = @CompanyCode ,company_name = @CompanyName, company_searchterm1 = @CompanySearchTerm1, company_searchterm2 = @CompanySearchTerm2, company_description = @CompanyDescription, company_datelastmodified = now() " &
                                                            $"where company_id = @CompanyId"
                 ElseIf (dataproperties.CompanyIsNew) AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    SetValue(dataproperties.AllParameters, tCompany.P_CompanyToken, CMCv.Security.Encrypt.MD5())
+                    SetValue(dataproperties.AllParameters, tCompany.P_CompanyToken, CMCv.Security.Encryption.MD5())
                     varDatabaseRequestMysql(1).Query = $"insert into {tCompany.TableName}(" &
                                                        $"{tCompany.C_CompanyCode}, " &
                                                        $"{tCompany.C_CompanyName}, " &

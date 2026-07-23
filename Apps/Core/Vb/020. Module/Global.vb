@@ -26,7 +26,7 @@
         Public clsBetterstack As New LibAPI.Api.Betterstack.Heartbeats
 
         Public proLog As New CMCv.Ladybug.Log.Fields
-        Public varSecurityencrypt As New CMCv.Security.Encrypt
+        Public varSecurityencrypt As New CMCv.Security.Encryption
 
         Public WithEvents FRMmsg As New CMCv.UI.Canvas.FRMdialogbox
 

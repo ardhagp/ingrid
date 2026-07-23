@@ -21,16 +21,16 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            PnlBottomButtonYesNo = New CMCv.UI.Control.pnl(components)
+            PnlBottomButtonYesNo = New CMCv.UI.Control.Pnl(components)
             PictureBox1 = New System.Windows.Forms.PictureBox()
             BtnYes = New CMCv.UI.Control.Btn(components)
             BtnNo = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
             BtnOk = New CMCv.UI.Control.Btn(components)
-            PnlBottomButtonOkOnly = New CMCv.UI.Control.pnl(components)
+            PnlBottomButtonOkOnly = New CMCv.UI.Control.Pnl(components)
             PictureBox2 = New System.Windows.Forms.PictureBox()
             BtnOkOnly = New CMCv.UI.Control.Btn(components)
-            TxtMessage = New CMCv.UI.Control.txt(components)
+            TxtMessage = New CMCv.UI.Control.Txt(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -74,7 +74,7 @@
             PnlBottomButtonYesNo.Controls.Add(PictureBox1)
             PnlBottomButtonYesNo.Controls.Add(BtnYes)
             PnlBottomButtonYesNo.Controls.Add(BtnNo)
-            PnlBottomButtonYesNo.Dock = system.Windows.Forms.DockStyle.Bottom
+            PnlBottomButtonYesNo.Dock = System.Windows.Forms.DockStyle.Bottom
             PnlBottomButtonYesNo.Location = New System.Drawing.Point(0, 380)
             PnlBottomButtonYesNo.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             PnlBottomButtonYesNo.Name = "PnlBottomButtonYesNo"
@@ -84,7 +84,7 @@
             ' PictureBox1
             ' 
             PictureBox1.BackColor = Drawing.Color.Red
-            PictureBox1.Dock = system.Windows.Forms.DockStyle.Top
+            PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
             PictureBox1.Location = New System.Drawing.Point(0, 0)
             PictureBox1.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             PictureBox1.Name = "PictureBox1"
@@ -94,14 +94,14 @@
             ' 
             ' BtnYes
             ' 
-            BtnYes.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Right
+            BtnYes.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right
             BtnYes.BackColor = Drawing.Color.LimeGreen
-            BtnYes.Cursor = system.Windows.Forms.Cursors.Hand
+            BtnYes.Cursor = System.Windows.Forms.Cursors.Hand
             BtnYes.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(50), CByte(145), CByte(50))
             BtnYes.FlatAppearance.BorderSize = 2
             BtnYes.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(70), CByte(225), CByte(70))
-            BtnYes.FlatStyle = system.Windows.Forms.FlatStyle.Flat
-            BtnYes.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+            BtnYes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            BtnYes.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold)
             BtnYes.ForeColor = Drawing.Color.White
             BtnYes.Location = New System.Drawing.Point(752, 13)
             BtnYes.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -110,21 +110,21 @@
             BtnYes.TabIndex = 0
             BtnYes.Text = "&Yes"
             BtnYes.UseVisualStyleBackColor = False
-            BtnYes.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+            BtnYes.XOButtonType = Control.ControlCodeBase.ButtonType.Yes
             BtnYes.XOShowBorderOnFocus = False
             BtnYes.XOValidateAllInput = False
             BtnYes.XOValidateAllInputTag = Nothing
             ' 
             ' BtnNo
             ' 
-            BtnNo.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Right
+            BtnNo.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right
             BtnNo.BackColor = Drawing.Color.Red
-            BtnNo.Cursor = system.Windows.Forms.Cursors.Hand
+            BtnNo.Cursor = System.Windows.Forms.Cursors.Hand
             BtnNo.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(0), CByte(0))
             BtnNo.FlatAppearance.BorderSize = 2
             BtnNo.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
-            BtnNo.FlatStyle = system.Windows.Forms.FlatStyle.Flat
-            BtnNo.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+            BtnNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            BtnNo.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold)
             BtnNo.ForeColor = Drawing.Color.White
             BtnNo.Location = New System.Drawing.Point(929, 13)
             BtnNo.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -133,21 +133,21 @@
             BtnNo.TabIndex = 0
             BtnNo.Text = "&No"
             BtnNo.UseVisualStyleBackColor = False
-            BtnNo.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnNo.XOButtonType = Control.ControlCodeBase.ButtonType.No
             BtnNo.XOShowBorderOnFocus = False
             BtnNo.XOValidateAllInput = False
             BtnNo.XOValidateAllInputTag = Nothing
             ' 
             ' BtnCancel
             ' 
-            BtnCancel.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Right
+            BtnCancel.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right
             BtnCancel.BackColor = Drawing.Color.Red
-            BtnCancel.Cursor = system.Windows.Forms.Cursors.Hand
+            BtnCancel.Cursor = System.Windows.Forms.Cursors.Hand
             BtnCancel.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(0), CByte(0))
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
-            BtnCancel.FlatStyle = system.Windows.Forms.FlatStyle.Flat
-            BtnCancel.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+            BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            BtnCancel.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold)
             BtnCancel.ForeColor = Drawing.Color.White
             BtnCancel.Location = New System.Drawing.Point(929, 13)
             BtnCancel.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -156,21 +156,21 @@
             BtnCancel.TabIndex = 0
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnCancel.XOButtonType = Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
             ' 
             ' BtnOk
             ' 
-            BtnOk.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Right
+            BtnOk.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right
             BtnOk.BackColor = Drawing.Color.LimeGreen
-            BtnOk.Cursor = system.Windows.Forms.Cursors.Hand
+            BtnOk.Cursor = System.Windows.Forms.Cursors.Hand
             BtnOk.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(50), CByte(145), CByte(50))
             BtnOk.FlatAppearance.BorderSize = 2
             BtnOk.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(70), CByte(225), CByte(70))
-            BtnOk.FlatStyle = system.Windows.Forms.FlatStyle.Flat
-            BtnOk.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+            BtnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            BtnOk.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold)
             BtnOk.ForeColor = Drawing.Color.White
             BtnOk.Location = New System.Drawing.Point(752, 13)
             BtnOk.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -179,7 +179,7 @@
             BtnOk.TabIndex = 0
             BtnOk.Text = "&Ok"
             BtnOk.UseVisualStyleBackColor = False
-            BtnOk.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+            BtnOk.XOButtonType = Control.ControlCodeBase.ButtonType.Yes
             BtnOk.XOShowBorderOnFocus = False
             BtnOk.XOValidateAllInput = False
             BtnOk.XOValidateAllInputTag = Nothing
@@ -189,7 +189,7 @@
             PnlBottomButtonOkOnly.BackColor = Drawing.Color.DarkSlateGray
             PnlBottomButtonOkOnly.Controls.Add(PictureBox2)
             PnlBottomButtonOkOnly.Controls.Add(BtnOkOnly)
-            PnlBottomButtonOkOnly.Dock = system.Windows.Forms.DockStyle.Bottom
+            PnlBottomButtonOkOnly.Dock = System.Windows.Forms.DockStyle.Bottom
             PnlBottomButtonOkOnly.Location = New System.Drawing.Point(0, 188)
             PnlBottomButtonOkOnly.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             PnlBottomButtonOkOnly.Name = "PnlBottomButtonOkOnly"
@@ -199,7 +199,7 @@
             ' PictureBox2
             ' 
             PictureBox2.BackColor = Drawing.Color.Red
-            PictureBox2.Dock = system.Windows.Forms.DockStyle.Top
+            PictureBox2.Dock = System.Windows.Forms.DockStyle.Top
             PictureBox2.Location = New System.Drawing.Point(0, 0)
             PictureBox2.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             PictureBox2.Name = "PictureBox2"
@@ -209,14 +209,14 @@
             ' 
             ' BtnOkOnly
             ' 
-            BtnOkOnly.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Right
+            BtnOkOnly.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right
             BtnOkOnly.BackColor = Drawing.Color.RoyalBlue
-            BtnOkOnly.Cursor = system.Windows.Forms.Cursors.Hand
+            BtnOkOnly.Cursor = System.Windows.Forms.Cursors.Hand
             BtnOkOnly.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(5), CByte(45), CByte(165))
             BtnOkOnly.FlatAppearance.BorderSize = 2
             BtnOkOnly.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(85), CByte(125), CByte(245))
-            BtnOkOnly.FlatStyle = system.Windows.Forms.FlatStyle.Flat
-            BtnOkOnly.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+            BtnOkOnly.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            BtnOkOnly.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold)
             BtnOkOnly.ForeColor = Drawing.Color.White
             BtnOkOnly.Location = New System.Drawing.Point(929, 15)
             BtnOkOnly.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -225,7 +225,7 @@
             BtnOkOnly.TabIndex = 0
             BtnOkOnly.Text = "&Ok"
             BtnOkOnly.UseVisualStyleBackColor = False
-            BtnOkOnly.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
+            BtnOkOnly.XOButtonType = Control.ControlCodeBase.ButtonType.Default
             BtnOkOnly.XOShowBorderOnFocus = False
             BtnOkOnly.XOValidateAllInput = False
             BtnOkOnly.XOValidateAllInputTag = Nothing
@@ -233,47 +233,47 @@
             ' TxtMessage
             ' 
             TxtMessage.AcceptsReturn = True
-            TxtMessage.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Bottom Or system.Windows.Forms.AnchorStyles.Left Or system.Windows.Forms.AnchorStyles.Right
+            TxtMessage.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             TxtMessage.BackColor = Drawing.SystemColors.Window
-            TxtMessage.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+            TxtMessage.Font = New System.Drawing.Font("Segoe UI", 12F)
             TxtMessage.Location = New System.Drawing.Point(20, 29)
             TxtMessage.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             TxtMessage.MaxLength = 255
             TxtMessage.Multiline = True
             TxtMessage.Name = "TxtMessage"
             TxtMessage.ReadOnly = True
-            TxtMessage.ScrollBars = system.Windows.Forms.ScrollBars.Vertical
+            TxtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
             TxtMessage.ShortcutsEnabled = False
             TxtMessage.Size = New System.Drawing.Size(1073, 330)
             TxtMessage.TabIndex = 5
             TxtMessage.TabStop = False
             TxtMessage.Tag = "txt"
             TxtMessage.XOAutoTrim = False
+            TxtMessage.XOHighlightColor = Drawing.Color.LightYellow
+            TxtMessage.XOHighlightOnFocus = False
+            TxtMessage.XOIsBlank = True
             TxtMessage.XOIsMandatory = False
+            TxtMessage.XOIsPlaceholder = False
+            TxtMessage.XOIsReplaceEmptyString = False
+            TxtMessage.XOLetterCase = Control.ControlCodeBase.EnumLetterCase.Normal
             TxtMessage.XOMandatoryBgColor = Drawing.Color.LightPink
             TxtMessage.XOMandatoryBgColorDefault = Drawing.Color.White
-            TxtMessage.XOHighlightOnFocus = False
-            TxtMessage.XOHighlightColor = Drawing.Color.LightYellow
-            TxtMessage.XOIsBlank = True
-            TxtMessage.XOIsPlaceholder = False
-            TxtMessage.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
-            TxtMessage.XOSelectOnFocus = False
+            TxtMessage.XOMandatoryMessage = Nothing
             TxtMessage.XOPasswordLengthMin = 8
             TxtMessage.XOPasswordStrengthCalc = False
             TxtMessage.XOPasswordStrengthScore = 0
             TxtMessage.XOPasswordStrengthText = Nothing
-            TxtMessage.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
             TxtMessage.XOPlaceholderText = "Type then press Enter"
+            TxtMessage.XORestriction = Control.ControlCodeBase.EnumRestriction.None
+            TxtMessage.XOSelectOnFocus = False
             TxtMessage.XOSqlText = ""
-            TxtMessage.XOIsReplaceEmptyString = False
-            TxtMessage.XOMandatoryMessage = Nothing
             ' 
             ' FRMdialogbox
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
             ClientSize = New System.Drawing.Size(1115, 608)
             ControlBox = False
-            FormBorderStyle = system.Windows.Forms.FormBorderStyle.FixedDialog
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
             Margin = New System.Windows.Forms.Padding(22, 44, 22, 44)
             MaximizeBox = False
             MinimizeBox = False

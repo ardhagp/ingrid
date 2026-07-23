@@ -431,7 +431,7 @@ Namespace CMDacgr
         Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varSuccess As Boolean
             Try
-                Dim varHash As String = CMCv.Security.Encrypt.MD5()
+                Dim varHash As String = CMCv.Security.Encryption.MD5()
 
                 If dataproperties.ConnectionDatabaseEngine = "MSSQL" Then
                     If Convert.ToString(dataproperties.AccountGroupId) = "-1" Then

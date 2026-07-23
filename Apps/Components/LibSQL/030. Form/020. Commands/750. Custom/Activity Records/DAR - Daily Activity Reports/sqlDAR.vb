@@ -28,7 +28,7 @@ Namespace CMDdar
 
                     If varIsExist = 0 Then
                         varDatabaseRequestMssql2008(1).Query = $"insert into dbo.[[sys]]modulesettings](modulesettings_id, modulesettings_module," &
-                                                               $"modulesettings_user, modulesettings_attribute, modulesettings_value) values('{CMCv.Security.Encrypt.MD5()}', " &
+                                                               $"modulesettings_user, modulesettings_attribute, modulesettings_value) values('{CMCv.Security.Encryption.MD5()}', " &
                                                                $"(select mo.module_id from dbo.sys_module mo where mo.module_code = 'DAR'),@UserId,'{varAttribute(varRow)}'," &
                                                                $"'False')"
                         varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)

@@ -29,7 +29,7 @@
                 ChkAddNew.Visible = True
                 ChkAddNew.Enabled = True
                 CboGender.SelectedIndex = 0
-                SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeToken, CMCv.Security.Encrypt.MD5())
+                SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeToken, CMCv.Security.Encryption.MD5())
                 SetValue(varDataProperties.AllParameters, tPosition.P_PositionId, DBNull.Value)
             Else
                 ChkAddNew.Visible = False

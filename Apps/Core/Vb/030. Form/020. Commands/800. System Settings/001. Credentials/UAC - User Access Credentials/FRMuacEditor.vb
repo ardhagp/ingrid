@@ -136,7 +136,7 @@ Namespace UI.Canvas
             End If
 
             If (ChkAddNew.Checked) Then
-                varDataProperties.UserAccessHash = CMCv.Security.Encrypt.MD5()
+                varDataProperties.UserAccessHash = CMCv.Security.Encryption.MD5()
                 TxtEmployeeNumber.Clear()
                 TxtEmployeeFullName.Clear()
                 TxtUsername.Clear()

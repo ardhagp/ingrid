@@ -10,7 +10,7 @@
     Public varDatabaseDisplayMysql As New CMCv.Database.Adapter.Mysql.Execute
 
     Public proLog As New CMCv.Ladybug.Log.Fields
-    Public varSecurityEncrypt As New CMCv.Security.Encrypt
+    Public varSecurityEncrypt As New CMCv.Security.Encryption
 
     Public varSecurityAes As System.Security.Cryptography.Aes
     Public varSecurityMd5 As System.Security.Cryptography.MD5

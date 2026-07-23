@@ -46,7 +46,7 @@ Namespace UI.Canvas
 
             With varDataProperties
                 SetValue(.UserParameters, tUser.P_Username, TxtUsername.XOSqlText)
-                SetValue(.UserParameters, tUser.P_UserPassword, CMCv.Security.Encrypt.MD5(TxtPassword.XOSqlText))
+                SetValue(.UserParameters, tUser.P_UserPassword, CMCv.Security.Encryption.MD5(TxtPassword.XOSqlText))
             End With
             CMDuac.Login.GetUserProperties(varDataProperties, varDataProperties.UserParameters, varDatasetIngrid)
 

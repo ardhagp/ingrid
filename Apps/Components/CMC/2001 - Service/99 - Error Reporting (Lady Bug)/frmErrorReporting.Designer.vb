@@ -68,7 +68,7 @@
             ' 
             SLFNamaForm.AutoSize = False
             SLFNamaForm.Margin = New System.Windows.Forms.Padding(11, 0, 11, 0)
-            SLFNamaForm.Size = New System.Drawing.Size(734, 48)
+            SLFNamaForm.Size = New System.Drawing.Size(513, 48)
             ' 
             ' pnl_
             ' 
