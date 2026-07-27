@@ -137,7 +137,7 @@
                     databaseproperties = New LibApp.Ingrid.Global.Properties
                 End If
 
-                varDataReader = GetDataRow("Select SERVERADDRESS, USERNAME, PASSWORD, SERVERPORT, DBFORDATA, DBFORFILE, DATABASEENGINE FROM serverlist WHERE DEFAULTCONNECTION =1;")
+                varDataReader = GetDataRow("Select SERVERADDRESS, USERNAME, PASSWORD, SERVERPORT, DBFORDATA, DBFORFILE, DATABASEENGINE, CLIENT FROM serverlist WHERE DEFAULTCONNECTION =1;")
 
                 With varDataReader
                     If .HasRows Then
@@ -148,6 +148,7 @@
                         databaseproperties.ConnectionDatabaseName = .GetString(4)
                         databaseproperties.ConnectionFileStorage = .GetString(5)
                         databaseproperties.ConnectionDatabaseEngine = .GetString(6)
+                        databaseproperties.ConnectionClientCode = .GetString(7)
                     Else
                         databaseproperties.ConnectionServerAddress = String.Empty
                         databaseproperties.ConnectionUsername = String.Empty
@@ -156,6 +157,7 @@
                         databaseproperties.ConnectionDatabaseName = String.Empty
                         databaseproperties.ConnectionFileStorage = String.Empty
                         databaseproperties.ConnectionDatabaseEngine = String.Empty
+                        databaseproperties.ConnectionClientCode = String.Empty
                     End If
                 End With
 

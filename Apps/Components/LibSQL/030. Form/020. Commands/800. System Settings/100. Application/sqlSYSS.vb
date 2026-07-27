@@ -32,7 +32,7 @@
                                                        $"inner join {tClient.TableName} {tClient.S} " &
                                                        $"on {tClient.S}.{tClient.C_ClientId} = {tSettings.S}.{tSettings.C_SettingsClient} " &
                                                        $"where {tClient.S}.{tClient.C_ClientCode} = {tClient.P_ClientCode}"
-                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "SYSS_Editor", parametername)
+                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "SYSS_Editor", parametername)
                 End If
             Catch ex As Exception
                 With proLog
@@ -84,7 +84,7 @@
                                                        $"{tSettings.C_SettingsMinPasswordLength} = {tSettings.P_SettingsMinPasswordLength} " &
                                                        $"where {tSettings.C_SettingsId} = {tSettings.P_SettingsId}"
 
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername)
                 End If
                 Return True
             Catch ex As Exception

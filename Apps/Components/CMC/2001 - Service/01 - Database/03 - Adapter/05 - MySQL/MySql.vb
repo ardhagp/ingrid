@@ -40,6 +40,12 @@ Namespace Database.Adapter.Mysql.Display
         ''' </summary>
         ''' <returns>The Chart control.</returns>
         Public Property Chart As System.Windows.Forms.DataVisualization.Charting.Chart
+
+        ''' <summary>
+        ''' The BindingSource object that represents the data source for data binding.
+        ''' </summary>
+        ''' <returns>The BindingSource object.</returns>
+        Public Property BindingSource As System.Windows.Forms.BindingSource
     End Structure
 End Namespace
 

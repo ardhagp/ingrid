@@ -24,7 +24,7 @@
                                                  $"{tLog.P_LogMachine}, " &
                                                  $"{tLog.P_LogOS}, " &
                                                  $"{tLog.P_LogAppVer});"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), parametername)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), parametername)
                 End If
             Catch ex As Exception
                 Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
@@ -52,7 +52,7 @@
                                                  $"{tLog.P_LogMachine}, " &
                                                  $"{tLog.P_LogOS}, " &
                                                  $"{tLog.P_LogAppVer});"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), parametername)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), parametername)
                 End If
             Catch ex As Exception
                 Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
@@ -80,7 +80,7 @@
                                                  $"{tLog.P_LogMachine}, " &
                                                  $"{tLog.P_LogOS}, " &
                                                  $"{tLog.P_LogAppVer});"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), parametername)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), parametername)
                 End If
             Catch ex As Exception
                 Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
@@ -113,7 +113,7 @@
                                            $"{tLog.P_LogMachine}, " &
                                            $"{tLog.P_LogOS}, " &
                                            $"{tLog.P_LogAppVer});"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseReader(0), parametername)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseReader(0), parametername)
                 End If
             Catch ex As Exception
                 Decision(My.Application.Info.AssemblyName.ToUpper, "Unable create log", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)

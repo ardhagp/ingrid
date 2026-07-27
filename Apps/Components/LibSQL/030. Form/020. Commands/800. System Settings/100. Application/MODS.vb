@@ -40,7 +40,7 @@ Namespace CMDmods
                 varDatabaseRequestMysql(0).Query = $"select {tModule.S}.{tModule.C_ModuleId} " &
                                                    $"from {tModule.TableName} {tModule.S} " &
                                                    $"where {tModule.S}.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}"
-                varModuleId = CLng(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, parametername))
+                varModuleId = CLng(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, parametername))
             End If
 
             Return varModuleId

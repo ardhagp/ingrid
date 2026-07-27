@@ -151,7 +151,7 @@ Namespace UI.Canvas
         Private Sub EnterCommand(commandcode As String)
             SetValue(varDataProperties.UserParameters, tModule.P_ModuleCode, commandcode.ToUpper.Trim)
 
-            'For Modules That Not Required Login
+            ' Run RESET Command to delete all data
             If commandcode.ToUpper.Trim = "RESET" OrElse commandcode.ToUpper.Trim = "PHTRZ" Then
                 [Global].varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
                 Txt_shortcut.Clear()
@@ -336,7 +336,7 @@ Namespace UI.Canvas
                     Return
                 End If
 
-                If Mainframe.Database.Connect() Then
+                If Mainframe.Database.Connect(varDataProperties) Then
                     varClientId = varAppClient.GetClientId(varDataProperties)
                     Ts_connection.Text = "Connected"
                     varLogApplication.Run(varDataProperties, varDataProperties.UserParameters)

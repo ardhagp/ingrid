@@ -34,7 +34,7 @@
                                                        $"from {tUser.TableName} {tUser.S} " &
                                                        $"where ({tUser.S}.{tUser.C_UserId} = {tUser.P_UserId}) " &
                                                        $"And ({tUser.S}.{tUser.C_UserIsRoot} = 1)"
-                    varIsAdmin = CBool(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername))
+                    varIsAdmin = CBool(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername))
                 End If
 
                 If varIsAdmin Then
@@ -53,7 +53,7 @@
                                                            $"where ({tModule.S}.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}) " &
                                                            $"And ({tUserAccess.S}.{tUserAccess.C_UserAccessUser} = {tUser.P_UserId}) " &
                                                            $"And ({varTypeOfAccess} = 1)"
-                        varView = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername))
+                        varView = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername))
                     End If
 
                     If varView = 0 Then
@@ -86,7 +86,7 @@
                     varDatabaseRequestMysql(1).Query = $"select count({tModule.S}.{tModule.C_ModuleId}) " &
                                                        $"from {tModule.TableName} {tModule.S} " &
                                                        $"where {tModule.S}.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}"
-                    varIsExist = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername), Boolean)
+                    varIsExist = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername), Boolean)
                 End If
                 Return varIsExist
             Catch ex As Exception
@@ -107,7 +107,7 @@
                                                        $"from {tModule.TableName} {tModule.S} " &
                                                        $"where {tModule.S}.{tModule.C_ModuleCode} = {tModule.P_ModuleCode} " &
                                                        $"And {tModule.S}.{tModule.C_ModuleIsMaintenance} = 1"
-                    varIsLocked = CBool(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername))
+                    varIsLocked = CBool(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername))
                 End If
                 Return varIsLocked
             Catch ex As Exception
@@ -128,7 +128,7 @@
                                                        $"from {tModule.TableName} {tModule.S} " &
                                                        $"where {tModule.S}.{tModule.C_ModuleIsSystem} = 0 " &
                                                        $"order by {tModule.S}.{tModule.C_ModuleCode}"
-                    varDataSet = varDatabaseEngineMysql.GetDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TCMD")
+                    varDataSet = varDatabaseEngineMysql.GetDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TCMD")
                 End If
                 Return varDataSet
             Catch ex As Exception
@@ -148,7 +148,7 @@
                     varDatabaseRequestMysql(0).Query = $"select s.settings_uploadpdf " &
                                                        $"from sys_settings s " &
                                                        $"limit 0,1"
-                    varSettingValue = CDbl(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
+                    varSettingValue = CDbl(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
                 End If
             Catch ex As Exception
                 varSettingValue = 0.9
@@ -169,7 +169,7 @@
                     varDatabaseRequestMysql(0).Query = $"select s.settings_uploadphoto " &
                                                        $"from sys_settings s " &
                                                        $"limit 0,1"
-                    varSettingValue = CDbl(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
+                    varSettingValue = CDbl(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
                 End If
             Catch ex As Exception
                 varSettingValue = 0.9
@@ -190,7 +190,7 @@
                     varDatabaseRequestMysql(0).Query = $"select s.settings_minpasswordlength " &
                                                        $"from sys_settings s " &
                                                        $"limit 0,1"
-                    varMinPasswordLength = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), Integer)
+                    varMinPasswordLength = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), Integer)
                 End If
             Catch ex As Exception
                 varMinPasswordLength = 8
@@ -212,7 +212,7 @@
                     varDatabaseRequestMysql(0).Query = $"select s.settings_showwatermark " &
                                                        $"from sys_settings s " &
                                                        $"where s.settings_id = 1"
-                    varValue = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
+                    varValue = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
                     varDatabaseRequestMysql(0).Query = $"select s.settings_textmark " &
                                                        $"from sys_settings s " &
                                                        $"limit 0,1"
@@ -222,7 +222,7 @@
                     If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                         varSettingValue = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query).ToString
                     ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                        varSettingValue = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query).ToString
+                        varSettingValue = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query).ToString
                     End If
                 Else
                     varSettingValue = String.Empty
@@ -251,7 +251,7 @@
                                                        $"from sys_notification nt " &
                                                        $"where (nt.notification_employee = @EmployeeId) " &
                                                        $"And (nt.notification_isread = 0)"
-                    varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.UserParameters))
+                    varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.UserParameters))
                 End If
                 Return varIsExist
             Catch ex As Exception
@@ -276,7 +276,7 @@
                     varDatabaseRequestMysql(0).Query = $"select s.settings_showrunningtext " &
                                                        $"from sys_settings s " &
                                                        $"where s.settings_id = 1"
-                    varValue = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
+                    varValue = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
                 End If
 
                 If varValue = 1 AndAlso (dataproperties.IsAdministrator) Then
@@ -308,7 +308,7 @@
                     varDatabaseRequestMysql(0).Query = $"select s.settings_showstorage " &
                                                        $"from sys_settings s " &
                                                        $"limit 0,1"
-                    varValue = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
+                    varValue = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
                 End If
 
                 If varValue = 1 AndAlso (dataproperties.IsAdministrator) Then
@@ -349,7 +349,7 @@
                     varSize = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Double)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"SELECT (size*8)/1024 AS SizeMB FROM sys.database_files where name='db_universe_erp_file'"
-                    varSize = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), Double)
+                    varSize = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), Double)
                 End If
 
                 Return varSize
@@ -433,7 +433,7 @@
                     varDatabaseRequestMysql(0).Query = $"select s.settings_showprofile " &
                                                        $"from sys_settings s " &
                                                        $"limit 0, 1"
-                    varValue = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
+                    varValue = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
                 End If
 
                 If varValue = 1 AndAlso (dataproperties.IsAdministrator) Then
@@ -463,7 +463,7 @@
                                                        $"where {tTemplate.C_TemplateTitle} = 'PROFILE' " &
                                                        $"order by RAND() " &
                                                        $"limit 1;"
-                    varWelcome = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query).ToString
+                    varWelcome = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query).ToString
                 End If
                 Return varWelcome
             Catch ex As Exception
@@ -490,7 +490,7 @@
                 varDatabaseRequestMysql(0).Query = $"select {tClient.S}.{tClient.C_ClientId} " &
                                                    $"from {tClient.TableName} {tClient.S} " &
                                                    $"where {tClient.S}.{tClient.C_ClientCode} = {tClient.P_ClientCode}"
-                varResult = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.UserParameters).ToString
+                varResult = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.UserParameters).ToString
             End If
             Return If(String.IsNullOrEmpty(varResult), 0, CLng(varResult))
         End Function

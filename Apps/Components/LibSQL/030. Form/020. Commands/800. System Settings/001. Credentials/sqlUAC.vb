@@ -51,7 +51,7 @@ Namespace CMDuac
                                                        $"On {tPosition.S}.{tPosition.C_PositionId} = {tEmployee.S}.{tEmployee.C_EmployeePosition} " &
                                                        $"where ({tUser.S}.{tUser.C_UserUsername} = {tUser.P_Username} " &
                                                        $"And {tUser.S}.{tUser.C_UserPassword} = {tUser.P_UserPassword})"
-                    varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, datasetname, "UserData", parametername)
+                    varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, datasetname, "UserData", parametername)
 
                     With datasetname
                         If .Tables("UserData").Rows.Count > 0 Then
@@ -62,7 +62,7 @@ Namespace CMDuac
                             varDatabaseRequestMysql(1).Query = $"update {tUser.TableName} " &
                                                                $"set {tUser.C_UserLastLogin} = now() " &
                                                                $"where {tUser.C_UserId} = {tUser.P_UserId}"
-                            varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername)
+                            varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername)
                         End If
                     End With
                 End If
@@ -95,7 +95,7 @@ Namespace CMDuac
                 varIsAuth = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Integer)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                 varDatabaseRequestMysql(0).Query = ""
-                varIsAuth = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), Integer)
+                varIsAuth = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), Integer)
             End If
 
             If varIsAuth = 0 Then
@@ -124,7 +124,7 @@ Namespace CMDuac
                     varFileStream = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), FileStream)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"SELECT f.file_content FROM db_universe_erp_file.dbo.sto_file f where f.file_tag = 'EMPLOYEE-PROFILE-PHOTO' and f.file_parent = '{varUserID}' ;"
-                    varFileStream = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), FileStream)
+                    varFileStream = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), FileStream)
                 End If
 
                 If varFileStream IsNot Nothing Then
@@ -151,7 +151,7 @@ Namespace CMDuac
                     varIsAdministrator = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query), Boolean)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                     varDatabaseRequestMysql(0).Query = $"select u.user_root from sys_user u where u.user_id = '{uid}'"
-                    varIsAdministrator = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), Boolean)
+                    varIsAdministrator = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query), Boolean)
                 End If
             Catch ex As Exception
                 varIsAdministrator = False
@@ -198,7 +198,7 @@ Namespace CMDuac
                 End If
                 varDatabaseRequestMysql(0).DataGrid = datagrid
                 varDatabaseRequestMysql(0).StatusBar = statusbar
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TUAC")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TUAC")
             End If
         End Sub
 
@@ -217,7 +217,7 @@ Namespace CMDuac
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
                     varDatabaseRequestMysql(1).Query = $"delete from {tUser.TableName} " &
                                                        $"where ({tUser.C_UserId} = {tUser.P_UserId})"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
                 End If
                 varSuccess = True
             Catch ex As Exception
@@ -278,7 +278,7 @@ Namespace CMDuac
                 End If
 
                 varDatabaseRequestMysql(2).DataGrid = grid
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TUserAccess")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TUserAccess")
             End If
         End Sub
 
@@ -295,7 +295,7 @@ Namespace CMDuac
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = String.Format("select usr.user_id from sys_user usr where usr.user_employee = '{0}';", employeeid)
 
-                    varUserID = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
+                    varUserID = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
                     IIf(IsDBNull(varUserID), "", varUserID)
                 End If
             Catch ex As Exception
@@ -330,7 +330,7 @@ Namespace CMDuac
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select em.employee_number from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                varEmployeeNumber = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
+                varEmployeeNumber = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
             End If
             Return varEmployeeNumber
         End Function
@@ -346,7 +346,7 @@ Namespace CMDuac
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select em.employee_fullname from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                varEmployeeFullName = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
+                varEmployeeFullName = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
             End If
 
             Return varEmployeeFullName
@@ -363,7 +363,7 @@ Namespace CMDuac
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select usr.user_username from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                varUsername = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
+                varUsername = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
             End If
 
             Return varUsername
@@ -380,7 +380,7 @@ Namespace CMDuac
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select usr.user_username from sys_user usr where usr.user_employee = '{0}'", employeeid)
 
-                varUsername = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
+                varUsername = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
             End If
 
             Return varUsername
@@ -397,7 +397,7 @@ Namespace CMDuac
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = String.Format("select usr.user_password from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{0}'", userid)
 
-                varPassword = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
+                varPassword = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
             End If
 
             Return varPassword
@@ -414,7 +414,7 @@ Namespace CMDuac
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = $"select usr.user_locked from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{userid}'"
 
-                varLocked = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Boolean)
+                varLocked = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Boolean)
             End If
 
             Return varLocked
@@ -429,7 +429,7 @@ Namespace CMDuac
                 varRoot = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Boolean)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = $"select usr.user_root from sys_user usr inner join man_employee em on em.employee_id = usr.user_employee where usr.user_id = '{userid}'"
-                varRoot = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Boolean)
+                varRoot = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Boolean)
             End If
 
             Return varRoot
@@ -452,7 +452,7 @@ Namespace CMDuac
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Integer)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Integer)
+                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Integer)
             End If
 
             If varIsDuplicate = 0 Then
@@ -714,7 +714,7 @@ Namespace CMDuac
                                                                    $"on mo.{tModule.C_ModuleId} = uac.{tUserAccess.C_UserAccessModule} " &
                                                                    $"where uac.{tUserAccess.C_UserAccessUser} = {tUser.P_UserId} and " &
                                                                    $"mo.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}"
-                                Dim varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(3).Query))
+                                Dim varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(3).Query))
 
                                 If varIsExist = 0 Then
                                     sb.AppendFormat($"insert into {tUserAccess.TableName}(" &
@@ -747,7 +747,7 @@ Namespace CMDuac
                     End If
 
                     varDatabaseRequestMysql(1).Query = sb.ToString()
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                     varSuccess = True
                 End If
             Catch ex As Exception

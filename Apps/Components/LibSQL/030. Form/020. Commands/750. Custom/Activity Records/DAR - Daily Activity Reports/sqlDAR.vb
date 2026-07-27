@@ -39,14 +39,14 @@ Namespace CMDdar
                     varDatabaseRequestMysql(0).Query = $"select count(mods.modulesettings_id) from sys_modulesettings mods inner join " &
                                                        $"sys_module mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') " &
                                                        $"and (mods.modulesettings_user = @UserId) and (mods.modulesettings_attribute = '{varAttribute(varRow)}')"
-                    varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
+                    varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
 
                     If varIsExist = 0 Then
                         varDatabaseRequestMysql(1).Query = $"insert into sys_modulesettings(modulesettings_module," &
                                                            $"modulesettings_user, modulesettings_attribute, modulesettings_value) values(" &
                                                            $"(select mo.module_id from sys_module mo where mo.module_code = 'DAR'), @UserId, '{varAttribute(varRow)}'," &
                                                            $"'False')"
-                        varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
+                        varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                     End If
                 Next
             End If
@@ -62,7 +62,7 @@ Namespace CMDdar
                 varDatabaseRequestMysql(0).Query = $"select mods.modulesettings_value from sys_modulesettings mods inner join sys_module " &
                                                    $"mo on mo.module_id = mods.modulesettings_module where (mo.module_code = 'DAR') and " &
                                                    $"(mods.modulesettings_user = @UserId) and (mods.modulesettings_attribute = 'ViewPhotoTab')"
-                varValue = CBool(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
+                varValue = CBool(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
             End If
             Return varValue
         End Function
@@ -81,7 +81,7 @@ Namespace CMDdar
                     varDatabaseRequestMysql(1).Query = $"update sys_modulesettings set modulesettings_value = '{values}' where (modulesettings_module = " &
                                                        $"(select mo.module_id from sys_module mo where mo.module_code = 'DAR')) and " &
                                                        $"(modulesettings_user = @UserId) and (modulesettings_attribute = '{attribute}')"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                 End If
                 varIsSuccess = True
             Catch ex As Exception
@@ -103,7 +103,7 @@ Namespace CMDdar
                                                     "(select ea.employeeactivity_employee from dbo.doc_employeeactivity ea group by " &
                                                     "ea.employeeactivity_employee) order by em.employee_fullname;")
                 varDatabaseRequestMysql(1).Dropdown = employee
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TEmployee")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TEmployee")
             End If
 
             employee.DisplayMember = "employee_fullname"
@@ -227,7 +227,7 @@ Namespace CMDdar
 
                     varDatabaseRequestMysql(0).DataGrid = dategrid
                     varDatabaseRequestMysql(0).StatusBar = datestatusbar
-                    varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TDailyReportsDate")
+                    varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TDailyReportsDate")
 
                     varIsEmpFilter = chkbyfilter.Checked
                 End If
@@ -424,7 +424,7 @@ Namespace CMDdar
 
                     varDatabaseRequestMysql(2).DataGrid = contentgrid
                     varDatabaseRequestMysql(2).StatusBar = contentstatusbar
-                    varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TDailyActivity")
+                    varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TDailyActivity")
 
                     If varDatabaseRequestMysql(2).DataGrid Is Nothing Then
                         varDatabaseRequestMysql(2).DataGrid = contentgrid
@@ -474,7 +474,7 @@ Namespace CMDdar
                                                    $"'' as `file_view` from sto_file fi where (fi.file_parent = '{varContentId}' " &
                                                    $"and fi.file_filetype = 'jpg') order by fi.file_score desc, fi.file_datetime"
                 varDatabaseRequestMysql(4).DataGrid = filegrid
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(4), "TPhotoFile")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(4), "TPhotoFile")
             End If
         End Sub
 
@@ -504,7 +504,7 @@ Namespace CMDdar
                                                    $"'' as `file_view` from db_universe_erp_file.dbo.sto_file fi where (fi.file_parent = '{varContentId}' and " &
                                                    $"fi.file_filetype = 'pdf') order by fi.file_datetime;"
                 varDatabaseRequestMysql(5).DataGrid = filegrid
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(5), "TFile")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(5), "TFile")
             End If
         End Sub
 
@@ -517,7 +517,7 @@ Namespace CMDdar
                 varFile = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = $"select fi.file_content from sto_file fi where fi.file_id = '{rowid}'"
-                varFile = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                varFile = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
             End If
             Return varFile
         End Function
@@ -533,7 +533,7 @@ Namespace CMDdar
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $"delete from doc_employeeactivity where employeeactivity_id = '{rowid}';delete " &
                                                        $"from sto_file where file_parent = '{rowid}';"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
                 End If
                 varSuccess = True
             Catch ex As Exception
@@ -553,7 +553,7 @@ Namespace CMDdar
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $"select count(ff.filefeedback_id) as `islike` from sto_filefeedback ff " &
                                                        $"where ff.filefeedback_file = '{fileid}' and ff.filefeedback_employee = '{eid}';"
-                    varResult = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Integer)
+                    varResult = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Integer)
                 End If
             Catch ex As Exception
                 varResult = 0
@@ -592,7 +592,7 @@ Namespace CMDdar
                                                        $"set file_score = (select count(ff.filefeedback_value) " &
                                                        $"from db_universe_erp_file.dbo.sto_filefeedback ff where (ff.filefeedback_file = '{fileid}') and " &
                                                        $"(ff.filefeedback_type = 'Like')) where (file_id = '{fileid}');"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
                 End If
                 varSuccess = True
             Catch ex As Exception
@@ -614,7 +614,7 @@ Namespace CMDdar
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = "select aa.areaaffected_id, aa.areaaffected_name from doc_areaaffected aa order by aa.areaaffected_order"
                 varDatabaseRequestMysql(1).Dropdown = listofaffectedarea
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TAffectedArea")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TAffectedArea")
             End If
             listofaffectedarea.DisplayMember = "areaaffected_name"
             listofaffectedarea.ValueMember = "areaaffected_id"
@@ -631,7 +631,7 @@ Namespace CMDdar
                 varDatabaseRequestMysql(1).Query = "select tp.template_id, tp.template_title from doc_template tp inner join sys_module mo on " &
                 "mo.module_id = tp.template_module where mo.module_code = 'DAR' order by tp.template_title"
                 varDatabaseRequestMysql(1).Dropdown = listoftemplate
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TTemplate")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TTemplate")
             End If
             listoftemplate.DisplayMember = "template_title"
             listoftemplate.ValueMember = "template_id"
@@ -646,7 +646,7 @@ Namespace CMDdar
                 varTemplateContent = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = $"select tp.template_text1 from doc_template tp where tp.template_id = '{listoftemplate.SelectedValue}'"
-                varTemplateContent = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
+                varTemplateContent = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
             End If
             Return varTemplateContent
         End Function
@@ -708,11 +708,11 @@ Namespace CMDdar
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_datetime from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                varDatePart(0) = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
+                varDatePart(0) = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
 
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_time from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), TimeSpan)
+                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), TimeSpan)
 
                 varDatePart(2) = Convert.ToString(varTimeParts(0))
                 varTimePart = varDatePart(2).Split(":")
@@ -723,11 +723,11 @@ Namespace CMDdar
 
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_datetime_end from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                varDatePart(0) = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
+                varDatePart(0) = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
 
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_time_end from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), TimeSpan)
+                varTimeParts(0) = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), TimeSpan)
 
                 varDatePart(2) = Convert.ToString(varTimeParts(0))
                 varTimePart = varDatePart(2).Split(":")
@@ -738,20 +738,19 @@ Namespace CMDdar
 
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_areaaffected from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                listofaffectedarea.SelectedValue = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                listofaffectedarea.SelectedValue = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
 
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_template from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                listoftemplate.SelectedValue = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
-
+                listoftemplate.SelectedValue = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_description from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                templatecontent.Text = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
+                templatecontent.Text = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query).ToString
 
                 Dim varFeedback As Object
                 varDatabaseRequestMysql(1).Query = $"select ea.employeeactivity_feedback from doc_employeeactivity ea " &
                                                    $"where ea.employeeactivity_id = '{rowid}'"
-                varFeedback = varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                varFeedback = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
 
                 feedBack.Text = IIf(IsDBNull(varFeedback), "", varFeedback).ToString
             End If
@@ -773,7 +772,7 @@ Namespace CMDdar
                                                    $"from sto_file fi where (fi.file_parent = '{rowid}' and " &
                                                    $"fi.file_filetype = 'jpg') order by fi.file_datetime;"
 
-                varDataSet = varDatabaseEngineMysql.GetDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TPhotoFileEditor")
+                varDataSet = varDatabaseEngineMysql.GetDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TPhotoFileEditor")
             End If
             Return varDataSet
         End Function
@@ -792,7 +791,7 @@ Namespace CMDdar
                 varDatabaseRequestMysql(2).Query = $"select fi.file_id, fi.file_filename, fi.file_tag, fi.file_content, fi.file_datetime, fi.file_uploader " &
                                                    $"from sto_file fi where (fi.file_parent = '{rowid}' and " &
                                                    $"fi.file_filetype = 'pdf') order by fi.file_datetime;"
-                varDataSet = varDatabaseEngineMysql.GetDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TFileEditor")
+                varDataSet = varDatabaseEngineMysql.GetDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(2), "TFileEditor")
             End If
             Return varDataSet
         End Function
@@ -856,7 +855,7 @@ Namespace CMDdar
                         varDatabaseRequestMysql(1).Query += extendedquery
                     End If
 
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                 End If
                 varSuccess = True
             Catch ex As Exception
@@ -947,7 +946,7 @@ Namespace CMDdar
 
                             varCommand.Parameters.AddWithValue("@DateNow", eachRow.Cells("photo_datetime").Value)
 
-                            varSuccess = varDatabaseEngineMysql.PushImage(varCommand)
+                            varSuccess = varDatabaseEngineMysql.PushImage(dataproperties, varCommand)
                         End If
                     Next
                 End If
@@ -1047,7 +1046,7 @@ Namespace CMDdar
 
                             varCommand.Parameters.AddWithValue("@DateNow", eachRow.Cells("file_datetime").Value)
 
-                            varSuccess = varDatabaseEngineMysql.PushImage(varCommand)
+                            varSuccess = varDatabaseEngineMysql.PushImage(dataproperties, varCommand)
                         End If
                     Next
                 End If
@@ -1217,7 +1216,7 @@ Namespace CMDdar
                                                    $"inner join man_employee e on ea.employeeactivity_employee = e.employee_id {varWhere} " &
                                                    $"order by aa.areaaffected_order"
 
-                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "employeeactivity")
+                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "employeeactivity")
                 End If
             Catch ex As Exception
                 datasetname = Nothing
