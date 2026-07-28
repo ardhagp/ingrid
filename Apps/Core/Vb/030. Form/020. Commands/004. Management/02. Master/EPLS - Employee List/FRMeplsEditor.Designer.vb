@@ -285,7 +285,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(224), CByte(219), CByte(92))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(230), CByte(236), CByte(131))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnModulesRoles.BorderStyle = BorderStyle.None
@@ -1000,7 +1000,7 @@
             TxtBirthPlace.XOPasswordStrengthScore = 0
             TxtBirthPlace.XOPasswordStrengthText = Nothing
             TxtBirthPlace.XOPlaceholderText = "Type then press Enter"
-            TxtBirthPlace.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtBirthPlace.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyTextAndSpace
             TxtBirthPlace.XOSelectOnFocus = False
             TxtBirthPlace.XOSqlText = ""
             ' 
@@ -1043,7 +1043,7 @@
             TxtPersonalID.XOPasswordStrengthScore = 0
             TxtPersonalID.XOPasswordStrengthText = Nothing
             TxtPersonalID.XOPlaceholderText = "Type then press Enter"
-            TxtPersonalID.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtPersonalID.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumberNoSpace
             TxtPersonalID.XOSelectOnFocus = False
             TxtPersonalID.XOSqlText = ""
             ' 
@@ -1087,7 +1087,7 @@
             TxtFullName.XOPasswordStrengthScore = 0
             TxtFullName.XOPasswordStrengthText = Nothing
             TxtFullName.XOPlaceholderText = "Type then press Enter"
-            TxtFullName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtFullName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyTextAndSpace
             TxtFullName.XOSelectOnFocus = False
             TxtFullName.XOSqlText = ""
             ' 

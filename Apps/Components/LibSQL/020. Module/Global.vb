@@ -19,6 +19,7 @@
     Public WithEvents MSG As New CMCv.UI.Canvas.FRMdialogbox
 
     Public tCompany As New LibApp.Table.Man.Company
+    Public tDepartment As New LibApp.Table.Man.Department
     Public tPosition As New LibApp.Table.Man.Position
     Public tEmployee As New LibApp.Table.Man.Employee
     Public tUser As New LibApp.Table.Sys.User

@@ -74,7 +74,7 @@
             BtnLogin.FlatAppearance.BorderSize = 2
             BtnLogin.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnLogin.FlatStyle = FlatStyle.Flat
-            BtnLogin.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnLogin.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnLogin.ForeColor = Color.White
             BtnLogin.Location = New Point(266, 13)
             BtnLogin.Margin = New Padding(6, 5, 6, 5)
@@ -97,7 +97,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(443, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -114,7 +114,7 @@
             ' TxtUsername
             ' 
             TxtUsername.AcceptsReturn = True
-            TxtUsername.Font = New Font("Segoe UI", 12.0F)
+            TxtUsername.Font = New Font("Segoe UI", 12F)
             TxtUsername.Location = New Point(181, 62)
             TxtUsername.Margin = New Padding(6, 5, 6, 5)
             TxtUsername.MaxLength = 255
@@ -138,14 +138,14 @@
             TxtUsername.XOPasswordStrengthScore = 0
             TxtUsername.XOPasswordStrengthText = Nothing
             TxtUsername.XOPlaceholderText = "Type then press Enter"
-            TxtUsername.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
+            TxtUsername.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberNoSpace
             TxtUsername.XOSelectOnFocus = False
             TxtUsername.XOSqlText = ""
             ' 
             ' TxtPassword
             ' 
             TxtPassword.AcceptsReturn = True
-            TxtPassword.Font = New Font("Segoe UI", 12.0F)
+            TxtPassword.Font = New Font("Segoe UI", 12F)
             TxtPassword.Location = New Point(181, 128)
             TxtPassword.Margin = New Padding(6, 5, 6, 5)
             TxtPassword.MaxLength = 255
@@ -177,7 +177,7 @@
             ' Lbl1
             ' 
             Lbl1.AutoSize = True
-            Lbl1.Font = New Font("Segoe UI", 12.0F)
+            Lbl1.Font = New Font("Segoe UI", 12F)
             Lbl1.Location = New Point(37, 67)
             Lbl1.Margin = New Padding(6, 0, 6, 0)
             Lbl1.Name = "Lbl1"
@@ -189,7 +189,7 @@
             ' Lbl2
             ' 
             Lbl2.AutoSize = True
-            Lbl2.Font = New Font("Segoe UI", 12.0F)
+            Lbl2.Font = New Font("Segoe UI", 12F)
             Lbl2.Location = New Point(44, 135)
             Lbl2.Margin = New Padding(6, 0, 6, 0)
             Lbl2.Name = "Lbl2"
@@ -208,7 +208,7 @@
             ' 
             ' FRMlogin
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(630, 488)
             ControlBox = False
             FormBorderStyle = FormBorderStyle.FixedDialog

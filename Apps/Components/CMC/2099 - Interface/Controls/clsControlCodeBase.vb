@@ -68,10 +68,22 @@ Namespace UI.Control
         Public Enum EnumRestriction
             None = 0
             OnlyText = 1
-            OnlyNumber = 2
-            TextAndNumber = 3
-            TextAndSymbol = 4
-            Email = 5
+            OnlyTextAndSpace = 2
+            OnlyTextNoSpace = 3
+            OnlyNumber = 4
+            OnlyNumberAndSpace = 5
+            OnlyNumberNoSpace = 6
+            TextAndNumber = 7
+            TextNumberAndSpace = 8
+            TextNumberNoSpace = 9
+            TextAndSymbol = 10
+            TextSymbolAndSpace = 11
+            TextSymbolNoSpace = 12
+            NumberSymbolAndSpace = 13
+            NumberSymbolNoSpace = 14
+            TextNumberSymbolAndSpace = 15
+            TextNumberSymbolNoSpace = 16
+            Email = 17
         End Enum
 
         ''' <summary>

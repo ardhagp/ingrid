@@ -110,7 +110,7 @@
             TxtCode.XOPasswordStrengthScore = 0
             TxtCode.XOPasswordStrengthText = Nothing
             TxtCode.XOPlaceholderText = "Type then press Enter"
-            TxtCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
+            TxtCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberNoSpace
             TxtCode.XOSelectOnFocus = True
             TxtCode.XOSqlText = ""
             ' 
@@ -140,7 +140,7 @@
             TxtSearchTerm1.XOPasswordStrengthScore = 0
             TxtSearchTerm1.XOPasswordStrengthText = Nothing
             TxtSearchTerm1.XOPlaceholderText = "Type then press Enter"
-            TxtSearchTerm1.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtSearchTerm1.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberAndSpace
             TxtSearchTerm1.XOSelectOnFocus = False
             TxtSearchTerm1.XOSqlText = ""
             ' 
@@ -170,7 +170,7 @@
             TxtSearchTerm2.XOPasswordStrengthScore = 0
             TxtSearchTerm2.XOPasswordStrengthText = Nothing
             TxtSearchTerm2.XOPlaceholderText = "Type then press Enter"
-            TxtSearchTerm2.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtSearchTerm2.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberAndSpace
             TxtSearchTerm2.XOSelectOnFocus = False
             TxtSearchTerm2.XOSqlText = ""
             ' 
@@ -277,7 +277,7 @@
             TxtName.XOPasswordStrengthScore = 0
             TxtName.XOPasswordStrengthText = Nothing
             TxtName.XOPlaceholderText = "Type then press Enter"
-            TxtName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndSymbol
+            TxtName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberAndSpace
             TxtName.XOSelectOnFocus = False
             TxtName.XOSqlText = ""
             ' 

@@ -1,12 +1,8 @@
-﻿Imports System.Globalization
-Imports System.Runtime.Versioning
-Imports System.Windows.Forms
-
-Namespace UI.Control
+﻿Namespace UI.Control
     Public Class Txt
         Inherits System.Windows.Forms.TextBox
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
             Call ActivateLicenses()
@@ -22,9 +18,9 @@ Namespace UI.Control
             Me.XOHighlightOnFocus = False
             Me.XOHighlightColor = Drawing.Color.LightYellow
             Me.XOSelectOnFocus = False
-            Me.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            Me.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             Me.XOIsBlank = True
-            Me.XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            Me.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             Me.XOIsPlaceholder = False
             Me.XOPlaceholderText = "Type then press Enter"
             Me.XOPasswordLengthMin = 8
@@ -32,7 +28,6 @@ Namespace UI.Control
             Call FontSearchBox(True)
         End Sub
 
-#Region "Properties"
         Private varAutoTrim As Boolean
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Automatically trims leading and trailing spaces from the component’s text value at runtime")>
@@ -213,26 +208,26 @@ Namespace UI.Control
             End Set
         End Property
 
-        Private varLetterCase As CMCV.UI.Control.ControlCodeBase.EnumLetterCase
+        Private varLetterCase As CMCv.UI.Control.ControlCodeBase.EnumLetterCase
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies how the component transforms its text value by applying the selected letter‑case rule")>
-        Public Property XOLetterCase As CMCV.UI.Control.ControlCodeBase.EnumLetterCase
+        Public Property XOLetterCase As CMCv.UI.Control.ControlCodeBase.EnumLetterCase
             Get
                 Return varLetterCase
             End Get
-            Set(value As CMCV.UI.Control.ControlCodeBase.EnumLetterCase)
+            Set(value As CMCv.UI.Control.ControlCodeBase.EnumLetterCase)
                 varLetterCase = value
             End Set
         End Property
 
-        Private varRestriction As CMCV.UI.Control.ControlCodeBase.EnumRestriction
+        Private varRestriction As CMCv.UI.Control.ControlCodeBase.EnumRestriction
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Defines the input restriction rule that limits which characters or patterns are allowed in the component")>
-        Public Property XORestriction As CMCV.UI.Control.ControlCodeBase.EnumRestriction
+        Public Property XORestriction As CMCv.UI.Control.ControlCodeBase.EnumRestriction
             Get
                 Return varRestriction
             End Get
-            Set(value As CMCV.UI.Control.ControlCodeBase.EnumRestriction)
+            Set(value As CMCv.UI.Control.ControlCodeBase.EnumRestriction)
                 varRestriction = value
             End Set
         End Property
@@ -260,10 +255,8 @@ Namespace UI.Control
                 varPlaceholderText = value
             End Set
         End Property
-#End Region
 
-#Region "Function"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function SqlSafeText(txtControl As Txt) As String
             Dim varSqlSafeText As String = txtControl.Text
 
@@ -272,34 +265,74 @@ Namespace UI.Control
             End If
 
             varSqlSafeText = varSqlSafeText.Replace("select ", "").Replace("'", "").Replace(";", "").Replace("--", "").Replace("drop table ", "").Replace("update ", "").Replace("insert into ", "").Replace("--", "").Replace("xp_", "").Trim
-            If XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE Then
-                varSqlSafeText = varSqlSafeText.ToUpper(CultureInfo.CurrentCulture)
-            ElseIf XOLetterCase = CMCV.UI.Control.ControlCodeBase.EnumLetterCase.lowercase Then
-                varSqlSafeText = varSqlSafeText.ToLower(CultureInfo.CurrentCulture)
+            If XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE Then
+                varSqlSafeText = varSqlSafeText.ToUpper(System.Globalization.CultureInfo.CurrentCulture)
+            ElseIf XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.lowercase Then
+                varSqlSafeText = varSqlSafeText.ToLower(System.Globalization.CultureInfo.CurrentCulture)
             End If
 
             Return varSqlSafeText
         End Function
 
-        Private Sub CheckRestriction(valenurestriction As CMCV.UI.Control.ControlCodeBase.enumRestriction)
+        Private Sub CheckRestriction(valenurestriction As CMCv.UI.Control.ControlCodeBase.EnumRestriction)
             Select Case valenurestriction
-                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.None
-                'Do nothing
-                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.OnlyNumber
-                'Do Only Number
-                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.OnlyText
-                'Do Only Text
-                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.TextAndNumber
-                'Do Text and Number
-                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.TextAndSymbol
-                'Do Text and Symbol
-                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.Email
-                    'Do Email
+                ' No restriction, allow all input
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+
+                ' Do Only Number
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumber
+
+                ' Do Only Number and Space
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumberAndSpace
+
+                ' Do Only Number No Space
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumberNoSpace
+
+                ' Do Only Text
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyText
+
+                ' Do Only Text and Space
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyTextAndSpace
+
+                ' Do Only Text No Space
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyTextNoSpace
+
+                ' Do Text and Number
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
+
+                ' Do Text Number and Space
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberAndSpace
+
+                ' Do Text Number No Space
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberNoSpace
+
+                ' Do Text and Symbol
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndSymbol
+
+                ' Do Text Symbol and Space
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextSymbolAndSpace
+
+                ' Do Text Symbol No Space
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextSymbolNoSpace
+
+                ' Do Number Symbol and Space
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.NumberSymbolAndSpace
+
+                ' Do Number Symbol No Space
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.NumberSymbolNoSpace
+
+                ' Do Text Number Symbol and Space
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolAndSpace
+
+                ' Do Text Number Symbol No Space
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolNoSpace
+
+                ' Do Email
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.Email
+
             End Select
         End Sub
-#End Region
 
-#Region "Password Strength Indicator"
         Private varPassword As String
         Private varChrPassword() As Char
         Private varMinPasswordLength As Integer = 8
@@ -393,10 +426,9 @@ Namespace UI.Control
             End If
             Return varResult
         End Function
-#End Region
 
-        <SupportedOSPlatform("windows")>
-        Private Sub Txt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Txt_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles Me.KeyPress
             ' Fast path: always allow control characters (backspace, enter, etc.)
             Dim ch As Char = e.KeyChar
             If Char.IsControl(ch) Then
@@ -407,42 +439,115 @@ Namespace UI.Control
             Dim restriction = Me.XORestriction
 
             Select Case restriction
-                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.None
-                ' Allow all input
+                ' ---------------------------------------------------------
+                ' NONE
+                ' ---------------------------------------------------------
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+                ' Allow everything
 
-                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.OnlyNumber
-                    If Not Char.IsDigit(ch) Then
-                        e.Handled = True
-                    End If
 
-                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.OnlyText
-                    If Not Char.IsLetter(ch) Then
-                        e.Handled = True
-                    End If
+                ' ---------------------------------------------------------
+                ' ONLY NUMBER
+                ' ---------------------------------------------------------
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumber
+                    If Not Char.IsDigit(ch) Then e.Handled = True
+                    ' Allow only digits
 
-                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.TextAndNumber
-                    If Not Char.IsLetterOrDigit(ch) Then
-                        e.Handled = True
-                    End If
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumberNoSpace
+                    If Not Char.IsDigit(ch) Then e.Handled = True
+                    ' Allow only digits (no space)
 
-                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.TextAndSymbol
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumberAndSpace
+                    If Not (Char.IsDigit(ch) OrElse ch = " "c) Then e.Handled = True
+                    ' Allow only digits and space
+
+
+                ' ---------------------------------------------------------
+                ' ONLY TEXT
+                ' ---------------------------------------------------------
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyText
+                    If Not Char.IsLetter(ch) Then e.Handled = True
+                    ' Allow only letters
+
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyTextNoSpace
+                    If Not Char.IsLetter(ch) Then e.Handled = True
+                    ' Allow only letters (no space)
+
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyTextAndSpace
+                    If Not (Char.IsLetter(ch) OrElse ch = " "c) Then e.Handled = True
+                    ' Allow only letters and space
+
+
+                ' ---------------------------------------------------------
+                ' TEXT + NUMBER
+                ' ---------------------------------------------------------
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
+                    If Not Char.IsLetterOrDigit(ch) Then e.Handled = True
+                    ' Allow letters and digits
+
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberNoSpace
+                    If Not Char.IsLetterOrDigit(ch) Then e.Handled = True
+                    ' Allow letters and digits (no space)
+
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberAndSpace
+                    If Not (Char.IsLetterOrDigit(ch) OrElse ch = " "c) Then e.Handled = True
+                    ' Allow letters, digits, and space
+
+
+                ' ---------------------------------------------------------
+                ' TEXT + SYMBOL
+                ' ---------------------------------------------------------
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndSymbol
+                    If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch)) Then e.Handled = True
                     ' Allow letters, digits, punctuation, symbols
-                    If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch)) Then
-                        e.Handled = True
-                    End If
 
-                Case CMCV.UI.Control.ControlCodeBase.enumRestriction.Email
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextSymbolNoSpace
+                    If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch)) Then e.Handled = True
+                    ' Allow letters, digits, punctuation, symbols (no space)
+
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextSymbolAndSpace
+                    If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch) OrElse ch = " "c) Then e.Handled = True
+                    ' Allow letters, digits, punctuation, symbols, and space
+
+
+                ' ---------------------------------------------------------
+                ' NUMBER + SYMBOL (NEW)
+                ' ---------------------------------------------------------
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.NumberSymbolAndSpace
+                    If Not (Char.IsDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch) OrElse ch = " "c) Then e.Handled = True
+                    ' Allow digits, punctuation, symbols, and space
+
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.NumberSymbolNoSpace
+                    If Not (Char.IsDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch)) Then e.Handled = True
+                    ' Allow digits, punctuation, and symbols (no space)
+
+
+                ' ---------------------------------------------------------
+                ' TEXT + NUMBER + SYMBOL (NEW)
+                ' ---------------------------------------------------------
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolAndSpace
+                    If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch) OrElse ch = " "c) Then e.Handled = True
+                    ' Allow letters, digits, punctuation, symbols, and space
+
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolNoSpace
+                    If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch)) Then e.Handled = True
+                    ' Allow letters, digits, punctuation, and symbols (no space)
+
+
+                ' ---------------------------------------------------------
+                ' EMAIL
+                ' ---------------------------------------------------------
+                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.Email
                     ' Use a single static string for allowed characters to avoid reallocating on each keypress
                     Static allowedChars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._-"
-                    If Not allowedChars.Contains(ch, StringComparison.Ordinal) Then
-                        e.Handled = True
-                    End If
+                    If Not allowedChars.Contains(ch, StringComparison.Ordinal) Then e.Handled = True
+                    ' Allow only letters, digits, and specific email characters (@, ., _, -)
             End Select
         End Sub
 
         Private varFlagAutoSelect As Boolean
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Txt_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
             Call FontSearchBox(True)
 
@@ -468,7 +573,7 @@ Namespace UI.Control
             'End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Txt_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
             If (e.Control AndAlso e.KeyCode = System.Windows.Forms.Keys.A) Then
                 Me.SelectAll()
@@ -479,7 +584,7 @@ Namespace UI.Control
             varFlagAutoSelect = False
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Txt_LostFocus(sender As Object, e As System.EventArgs) Handles Me.LostFocus
             If Me.XOAutoTrim Then
                 Me.Text = Me.Text.Trim()
@@ -503,21 +608,21 @@ Namespace UI.Control
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Txt_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
             If Me.XOHighlightOnFocus AndAlso Not (Me.ReadOnly) Then
                 MyBase.BackColor = Me.XOHighlightColor
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Txt_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
             If Me.XOHighlightOnFocus AndAlso Not Me.Focused AndAlso Not (Me.ReadOnly) Then
                 MyBase.BackColor = Me.XOMandatoryBgColorDefault
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Txt_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseUp
             If Me.XOSelectOnFocus AndAlso (Not varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
                 varFlagAutoSelect = True
@@ -525,7 +630,7 @@ Namespace UI.Control
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Txt_TextChanged(sender As Object, e As System.EventArgs) Handles Me.TextChanged
             XOSqlText = SqlSafeText(Me)
 
@@ -537,7 +642,7 @@ Namespace UI.Control
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub FontSearchBox(onfocus As Boolean)
             Try
                 If (Me.XOIsPlaceholder) Then
@@ -559,7 +664,7 @@ Namespace UI.Control
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Txt_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.Validating
             If (Me.XOIsMandatory) AndAlso Me.Text.Trim = String.Empty Then
                 Me.XOIsBlank = True
@@ -576,7 +681,7 @@ Namespace UI.Control
         '    Return Not IsNothing(result)
         'End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub ClearSearch()
             Call FontSearchBox(False)
         End Sub

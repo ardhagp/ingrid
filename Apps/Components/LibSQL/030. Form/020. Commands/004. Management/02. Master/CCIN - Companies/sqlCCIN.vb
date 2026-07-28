@@ -46,7 +46,14 @@
             Dim varHasChild As Boolean = True
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varQuery = $"select now() as `timestamp`, (select count(*) from v_ccin_granularity_cdin where department_company = {tCompany.P_CompanyId} limit 0,1) as `relation1`, (select count(*) from v_ccin_granularity_plnt where plant_company = {tCompany.P_CompanyId} limit 0,1) as `relation2`;"
+                    varQuery = $"select now() as `timestamp`, " &
+                               $"(select count(*) from " &
+                               $"v_ccin_granularity_cdin " &
+                               $"where " &
+                               $"department_company = {tCompany.P_CompanyId} limit 0,1) as `relation1`, " &
+                               $"(select count(*) " &
+                               $"from v_ccin_granularity_plnt " &
+                               $"where plant_company = {tCompany.P_CompanyId} limit 0,1) as `relation2`;"
                     datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName, dataproperties.AllParameters)
                 End If
 
