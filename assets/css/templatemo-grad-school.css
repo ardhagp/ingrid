@@ -80,6 +80,14 @@ p {
     outline: none;
 }
 
+.main-button a.btn-web-install {
+    background-color: #32cd32;
+}
+
+.main-button a.btn-update {
+    background-color: #0078d7;
+}
+
 a.menu-link { display: none; }
 
 @media screen and (max-width: 950px) {

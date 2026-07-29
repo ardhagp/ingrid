@@ -111,15 +111,14 @@ https://templatemo.com/tm-557-grad-school
 
           <div class="video-overlay header-text">
               <div class="caption">
-                  <h6>Ingrid .NET — Internal Tools Ecosystem</h6>
+                  <h6>Ingrid .NET — Custom Internal Tools</h6>
                   <h2>Run <em>Your App</em> Now!</h2>
                   <div class="main-button">
                       <div class="">
-                          <a onclick="showDownloadInstallWarning()" href="#" target="_self">Web Install</a> <a onclick="showUpdateWarning()" href="#" target="_self">Update</a>
+                          <a class="btn-web-install" onclick="showDownloadInstallWarning()" href="#" target="_self">Web Install</a> <a class="btn-update" onclick="showUpdateWarning()" href="#" target="_self">Update</a>
                       </div>
                   </div>
               </div>
-          </div>
           </div>
       </section>
       <!-- ***** Main Banner Area End ***** -->
@@ -254,19 +253,19 @@ https://templatemo.com/tm-557-grad-school
 
       <!-- Ingrid.NET Windows 8 Style Modal -->
       <div id="updateModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:1000;">
-          <div style="background:#f2f2f2; color:#333; margin:12% auto; padding:24px; width:400px; border-radius:0; box-shadow:0 4px 12px rgba(0,0,0,0.3); font-family:'Segoe UI', sans-serif; text-align:left;">
+          <div style="background:#001a33; color: #fff; margin: 12% auto; padding: 24px; width: 400px; border-radius: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-family: 'Segoe UI', sans-serif; text-align: left;">
 
               <!-- Title -->
-              <h2 style="margin:0 0 12px 0; font-size:18px; font-weight:600; color:#0078d7;">Ingrid .NET Update Notice</h2>
+              <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600; color:#32cd32;">Ingrid .NET ― Update Notice</h2>
 
               <!-- Message -->
               <p style="font-size:14px; line-height:1.6; margin-bottom:24px;">
-                  Please ensure that you have saved your work and closed the Ingrid application before proceeding with the update.
+                  Your update will begin shortly after you click the Update button. <br /><br /><em>Please ensure that you have saved your work and closed the Ingrid .NET desktop application before proceeding with the update.</em>
               </p>
 
               <!-- Buttons -->
               <div style="text-align:right;">
-                  <button onclick="proceedUpdate()" style="background:#0078d7; color:#fff; border:none; padding:8px 16px; font-size:14px; font-weight:500; cursor:pointer; margin-right:8px;">Update</button>
+                  <button onclick="proceedUpdate()" style="background:#32cd32; color: #fff; border: none; padding: 8px 16px; font-size: 14px; font-weight: 500; cursor: pointer; margin-right: 8px;">Update</button>
                   <button onclick="closeUpdate()" style="background:#e32636; color: #fff; border: none; padding: 8px 16px; font-size: 14px; cursor: pointer;">Cancel</button>
               </div>
           </div>
@@ -274,10 +273,10 @@ https://templatemo.com/tm-557-grad-school
 
       <!-- Ingrid.NET Windows 8 Style Modal -->
       <div id="downloadinstallModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:1000;">
-          <div style="background:#f2f2f2; color:#333; margin:12% auto; padding:24px; width:400px; border-radius:0; box-shadow:0 4px 12px rgba(0,0,0,0.3); font-family:'Segoe UI', sans-serif; text-align:left;">
+          <div style="background:#001a33; color: #fff; margin: 12% auto; padding: 24px; width: 400px; border-radius: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-family: 'Segoe UI', sans-serif; text-align: left;">
 
               <!-- Title -->
-              <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600; color: #32cd32; ">Ingrid .NET Download and Install Notice</h2>
+              <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600; color:#32cd32; ">Ingrid .NET ― Download and Install Notice</h2>
 
               <!-- Message -->
               <p style="font-size:14px; line-height:1.6; margin-bottom:24px;">
@@ -316,13 +315,6 @@ https://templatemo.com/tm-557-grad-school
           function proceedUpdate() {
               window.open('https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/Ingrid.application', '_self');
           }
-
       </script>
   </body>
-
 </html>
-
-
-
-
-

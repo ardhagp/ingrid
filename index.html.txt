@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="173097" async="async" type="text/javascript"></script>
+    
+    <!-- Betterstack Heartbeats -->
+    <script>
+function sendHeartbeat() {
+  fetch("https://uptime.betterstack.com/api/v1/heartbeat/Zn8FkyvvW3ZkdHXJ7oeke239").catch(()=>{});
+}
+
+// send immediately
+sendHeartbeat();
+
+// send every 5 minutes
+setInterval(sendHeartbeat, 5 * 60 * 1000);
+</script>
+
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NW43FNVG');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Clarity tracking code for https://ardhagp.github.io/ingrid/ -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "max83u2s5b");
+</script>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CS50LPD571"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CS50LPD571');
+</script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <title>Ingrid .NET</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <!-- https://favicon.io/favicon-converter/ -->
+    <link rel='icon' type='image/png' sizes="32x32" href='favicon-32x32.png' />
+    
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+<!--
+    
+TemplateMo 557 Grad School
+
+https://templatemo.com/tm-557-grad-school
+
+-->
+<!--
+  Additional custom script
+-->
+<!-- Cronitor RUM -->
+<script async src="https://rum.cronitor.io/script.js"></script>
+<script>
+    window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
+    cronitor('config', { clientKey: '579cad261adcd9e6ce1f19318986b094' });
+</script>    
+  </head>
+
+  <body>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NW43FNVG"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+      <!-- End Google Tag Manager (noscript) -->
+      <!--header-->
+      <header class="main-header clearfix" role="header">
+          <div class="logo">
+              <a href="./" target="_self"><em>Ingrid</em> .NET</a>
+          </div>
+          <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+          <nav id="menu" class="main-nav" role="navigation">
+              <ul class="main-menu">
+                  <li><a href="https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/ingrid-offline.zip" target="_self">Offline Installer</a></li>
+                  <li><a href="https://stats.uptimerobot.com/w2qHYcTmKb" target="_blank">Service Status</a></li>
+              </ul>
+          </nav>
+      </header>
+
+      <!-- ***** Main Banner Area Start ***** -->
+      <section class="section main-banner" id="top" data-section="section1">
+          <video autoplay muted loop id="bg-video">
+              <source src="https://res.cloudinary.com/cagakmelon/video/upload/v1757011773/apps/ingrid-assets/github.io/video-connection.mp4" type="video/mp4" />
+          </video>
+
+          <div class="video-overlay header-text">
+              <div class="caption">
+                  <h6>Ingrid .NET — Internal Tools Ecosystem</h6>
+                  <h2>Run <em>Your App</em> Now!</h2>
+                  <div class="main-button">
+                      <div class="">
+                          <a onclick="showDownloadInstallWarning()" href="#" target="_self">Web Install</a> <a onclick="showUpdateWarning()" href="#" target="_self">Update</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+      </section>
+      <!-- ***** Main Banner Area End ***** -->
+
+
+      <section class="features">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-4 col-12">
+                      <div class="features-post">
+                          <div class="features-content">
+                              <div class="content-show">
+                                  <h4><i class="fa fa-windows"></i>Build Using .NET</h4>
+                              </div>
+                              <div class="content-hide">
+                                  <p>.NET is a free, cross-platform, open-source developer platform for building many different types of applications. <br /><br />Please download and install this framework before running Ingrid.</p>
+                                  <p class="hidden-sm">.NET is a free, cross-platform, open-source developer platform for building many different types of applications.</p>
+                                  <div class=""><a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.28-windows-x64-installer" target="_blank">Download & Install</a></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 col-12">
+                      <div class="features-post second-features">
+                          <div class="features-content">
+                              <div class="content-show">
+                                  <h4><i class="fa fa-github"></i>Open Source</h4>
+                              </div>
+                              <div class="content-hide">
+                                  <p>Ingrid’s source code is available on GitHub. Feel free to contribute, report issues, or suggest new features!</p>
+                                  <p class="hidden-sm">Ingrid’s source code is available on GitHub. Feel free to contribute, report issues, or suggest new features!</p>
+                                  <div class=""><a href="https://github.com/ardhagp/ingrid/" target="_blank">Open Repository</a></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 col-12">
+                      <div class="features-post third-features">
+                          <div class="features-content">
+                              <div class="content-show">
+                                  <h4><i class="fa fa-leanpub"></i>Knowledge Base</h4>
+                              </div>
+                              <div class="content-hide">
+                                  <p>The Knowledge Base and Wiki are here to help you get started with Ingrid. They offer clear, step-by-step guidance to make sure everything runs smoothly.</p>
+                                  <p class="hidden-sm">The Knowledge Base and Wiki are here to help you get started with Ingrid. They offer clear, step-by-step guidance to make sure everything runs smoothly.</p>
+                                  <div class=""><a href="https://github.com/ardhagp/Ingrid/wiki/" target="_blank">Read Wiki</a></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <footer>
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <p>ArdhaGp | <a href="" rel="sponsored" target="_self">Ingrid .NET</a> | 2018 - <span id="current-year"></span> | <a href="https://templatemo.com/tm-557-grad-school" rel="sponsored" target="_blank">TEMPLATEMO</a></p>
+                  </div>
+              </div>
+          </div>
+      </footer>
+
+      <!-- Scripts -->
+      <!-- Bootstrap core JavaScript -->
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+      <script src="assets/js/isotope.min.js"></script>
+      <script src="assets/js/owl-carousel.js"></script>
+      <script src="assets/js/lightbox.js"></script>
+      <script src="assets/js/tabs.js"></script>
+      <script src="assets/js/video.js"></script>
+      <script src="assets/js/slick-slider.js"></script>
+      <script src="assets/js/custom.js"></script>
+      <script>
+          //according to loftblog tut
+          $('.nav li:first').addClass('active');
+
+          var showSection = function showSection(section, isAnimate) {
+              var
+                  direction = section.replace(/#/, ''),
+                  reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+                  reqSectionPos = reqSection.offset().top - 0;
+
+              if (isAnimate) {
+                  $('body, html').animate({
+                      scrollTop: reqSectionPos
+                  },
+                      800);
+              } else {
+                  $('body, html').scrollTop(reqSectionPos);
+              }
+
+          };
+
+          var checkSection = function checkSection() {
+              $('.section').each(function () {
+                  var
+                      $this = $(this),
+                      topEdge = $this.offset().top - 80,
+                      bottomEdge = topEdge + $this.height(),
+                      wScroll = $(window).scrollTop();
+                  if (topEdge < wScroll && bottomEdge > wScroll) {
+                      var
+                          currentId = $this.data('section'),
+                          reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+                      reqLink.closest('li').addClass('active').
+                          siblings().removeClass('active');
+                  }
+              });
+          };
+
+          $('.scroll-to-section').on('click', 'a', function (e) {
+              if ($(e.target).hasClass('external')) {
+                  return;
+              }
+              e.preventDefault();
+              $('#menu').removeClass('active');
+              showSection($(this).attr('href'), true);
+          });
+
+          $(window).scroll(function () {
+              checkSection();
+          });
+      </script>
+
+      <script>
+          document.getElementById("current-year").textContent = new Date().getFullYear();
+      </script>
+
+      <!-- Ingrid.NET Windows 8 Style Modal -->
+      <div id="updateModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:1000;">
+          <div style="background:#f2f2f2; color:#333; margin:12% auto; padding:24px; width:400px; border-radius:0; box-shadow:0 4px 12px rgba(0,0,0,0.3); font-family:'Segoe UI', sans-serif; text-align:left;">
+
+              <!-- Title -->
+              <h2 style="margin:0 0 12px 0; font-size:18px; font-weight:600; color:#0078d7;">Ingrid .NET Update Notice</h2>
+
+              <!-- Message -->
+              <p style="font-size:14px; line-height:1.6; margin-bottom:24px;">
+                  Please ensure that you have saved your work and closed the Ingrid application before proceeding with the update.
+              </p>
+
+              <!-- Buttons -->
+              <div style="text-align:right;">
+                  <button onclick="proceedUpdate()" style="background:#0078d7; color:#fff; border:none; padding:8px 16px; font-size:14px; font-weight:500; cursor:pointer; margin-right:8px;">Update</button>
+                  <button onclick="closeUpdate()" style="background:#e32636; color: #fff; border: none; padding: 8px 16px; font-size: 14px; cursor: pointer;">Cancel</button>
+              </div>
+          </div>
+      </div>
+
+      <!-- Ingrid.NET Windows 8 Style Modal -->
+      <div id="downloadinstallModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:1000;">
+          <div style="background:#f2f2f2; color:#333; margin:12% auto; padding:24px; width:400px; border-radius:0; box-shadow:0 4px 12px rgba(0,0,0,0.3); font-family:'Segoe UI', sans-serif; text-align:left;">
+
+              <!-- Title -->
+              <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600; color: #32cd32; ">Ingrid .NET Download and Install Notice</h2>
+
+              <!-- Message -->
+              <p style="font-size:14px; line-height:1.6; margin-bottom:24px;">
+                  Your download will begin shortly after you click the Download button. <br /><br /><em>If .NET is missing, it will be downloaded and installed automatically. Ensure you have the necessary permissions to install software on this device.</em>
+              </p>
+
+              <!-- Buttons -->
+              <div style="text-align:right;">
+                  <button onclick="proceedDownloadInstall()" style="background:#32cd32; color:#fff; border: none; padding: 8px 16px; font-size: 14px; font-weight: 500; cursor: pointer; margin-right: 8px;">Download</button>
+                  <button onclick="closeDownloadInstall()" style="background:#e32636; color:#fff; border: none; padding: 8px 16px; font-size: 14px; cursor: pointer; ">Cancel</button>
+              </div>
+          </div>
+      </div>
+
+      <script>
+          function showDownloadInstallWarning() {
+              document.getElementById("downloadinstallModal").style.display = "block";
+          }
+
+          function closeDownloadInstall() {
+              document.getElementById("downloadinstallModal").style.display = "none";
+          }
+
+          function proceedDownloadInstall() {
+              window.open('https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/setup.exe', '_self');
+          }
+
+          function showUpdateWarning() {
+              document.getElementById("updateModal").style.display = "block";
+          }
+
+          function closeUpdate() {
+              document.getElementById("updateModal").style.display = "none";
+          }
+
+          function proceedUpdate() {
+              window.open('https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/Ingrid.application', '_self');
+          }
+      </script>
+  </body>
+</html>
