@@ -285,7 +285,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(230), CByte(236), CByte(131))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(230), CByte(206), CByte(99))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnModulesRoles.BorderStyle = BorderStyle.None
@@ -557,7 +557,7 @@
             ULbl12.Size = New Size(250, 39)
             ULbl12.TabIndex = 1059
             ULbl12.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
-            ULbl12.XOText = "Emp. Number"
+            ULbl12.XOText = "Emp. Code"
             ULbl12.XOTextAdjuster = True
             ULbl12.XOTextBorder = False
             ' 

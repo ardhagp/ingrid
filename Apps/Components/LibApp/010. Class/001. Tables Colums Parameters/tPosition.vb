@@ -12,5 +12,6 @@
         ReadOnly Property P_PositionCode As String = "@PositionCode"
         ReadOnly Property P_PositionName As String = "@PositionName"
         ReadOnly Property P_PositionDescription As String = "@PositionDescription"
+        ReadOnly Property P_PositionSearch As String = "@PositionSearch"
     End Class
 End Namespace

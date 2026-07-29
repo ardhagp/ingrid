@@ -1,10 +1,18 @@
 ﻿Namespace CMDapp
-
+    ''' <summary>
+    ''' SQL class for Ingrid Application access to several environment
+    ''' </summary>
     Public Class Access
 
         Private ReadOnly varDatabaseRequestMssql2008(2) As CMCv.Database.Adapter.MsSql.Display.Request
         Private ReadOnly varDatabaseRequestMysql(2) As CMCv.Database.Adapter.Mysql.Display.Request
 
+        ''' <summary>
+        ''' Access to User
+        ''' </summary>
+        ''' <param name="dataproperties">Type of properties</param>
+        ''' <param name="parametername">Type of parameter</param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Function User(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Boolean
             Dim varView As Integer
@@ -71,6 +79,9 @@
         End Function
     End Class
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Public Class Modules
         Private varDataSet As System.Data.DataSet
 
@@ -94,6 +105,12 @@
             End Try
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <param name="parametername"></param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function Locked(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Boolean
             Dim varIsLocked As Boolean
@@ -115,6 +132,11 @@
             End Try
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Function DisplayAutoComplete(dataproperties As LibApp.Ingrid.Global.Properties) As System.Data.DataSet
             Try
@@ -136,6 +158,11 @@
             End Try
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function MaxPDFallowed(dataproperties As LibApp.Ingrid.Global.Properties) As Double
             Dim varSettingValue As Double
@@ -157,6 +184,11 @@
             Return varSettingValue
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function MaxPhotoallowed(dataproperties As LibApp.Ingrid.Global.Properties) As Double
             Dim varSettingValue As Double
@@ -178,6 +210,11 @@
             Return varSettingValue
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function MinPasswordLength(dataproperties As LibApp.Ingrid.Global.Properties) As Integer
             Dim varMinPasswordLength As Integer
@@ -198,6 +235,11 @@
             Return varMinPasswordLength
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function TextMark(dataproperties As LibApp.Ingrid.Global.Properties) As String
             Dim varValue As Integer
@@ -234,10 +276,18 @@
         End Function
     End Class
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Public Class Notification
         Private ReadOnly varDatabaseRequestMssql2008(1) As CMCv.Database.Adapter.MsSql.Display.Request
         Private ReadOnly varDatabaseRequestMysql(1) As CMCv.Database.Adapter.Mysql.Display.Request
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Function Exist(dataproperties As LibApp.Ingrid.Global.Properties) As Integer
             Dim varIsExist As Integer
@@ -260,6 +310,9 @@
         End Function
     End Class
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Public Class RunningText
         Private ReadOnly varDatabaseRequestMssql2008(1) As CMCv.Database.Adapter.MsSql.Display.Request
         Private ReadOnly varDatabaseRequestMysql(1) As CMCv.Database.Adapter.Mysql.Display.Request
@@ -294,8 +347,15 @@
         End Function
     End Class
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Public Class StorageSense
-
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function Show(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varValue As Integer
@@ -325,6 +385,11 @@
             End Try
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="databasename"></param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function DataCurrentSize(databasename As String) As Double
             Dim varSize As Double
@@ -339,6 +404,11 @@
             End Try
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function FileCurrentSize(dataproperties As LibApp.Ingrid.Global.Properties) As Double
             Dim varSize As Double
@@ -363,6 +433,12 @@
             FreeSpace = 2
         End Enum
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="databasename"></param>
+        ''' <param name="sizetype"></param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function MaxSize(databasename As String, sizetype As DBSizeType) As Double
             Dim varSize As Double
@@ -421,6 +497,11 @@
             End Try
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function Show(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varValue As Integer
@@ -450,6 +531,11 @@
             End Try
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="dataproperties"></param>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function Welcome(dataproperties As LibApp.Ingrid.Global.Properties) As String
             Dim varWelcome As String = String.Empty

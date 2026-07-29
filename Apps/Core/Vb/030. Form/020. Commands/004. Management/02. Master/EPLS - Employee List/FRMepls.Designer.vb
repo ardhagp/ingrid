@@ -21,10 +21,10 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
             DgnEPLS = New CMCv.UI.Control.Dgn(components)
             employee_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
@@ -68,20 +68,20 @@
             ' 
             DgnEPLS.AllowUserToAddRows = False
             DgnEPLS.AllowUserToDeleteRows = False
-            DataGridViewCellStyle5.BackColor = Color.FromArgb(CByte(220), CByte(214), CByte(94))
-            DgnEPLS.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(244), CByte(219), CByte(91))
+            DgnEPLS.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnEPLS.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnEPLS.BorderStyle = BorderStyle.None
             DgnEPLS.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnEPLS.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle6.BackColor = Color.YellowGreen
-            DataGridViewCellStyle6.Font = New Font("Verdana", 8F)
-            DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle6.SelectionBackColor = Color.YellowGreen
-            DataGridViewCellStyle6.SelectionForeColor = Color.Black
-            DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-            DgnEPLS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.YellowGreen
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
+            DataGridViewCellStyle2.SelectionForeColor = Color.Black
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            DgnEPLS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             DgnEPLS.ColumnHeadersHeight = 43
             DgnEPLS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             DgnEPLS.Columns.AddRange(New DataGridViewColumn() {employee_id, company_code, company_name, department_code, department_name, position_code, position_name, employee_number, employee_fullname, employee_nickname, employmenttype_name, employee_gender, employee_isactive})
@@ -93,14 +93,14 @@
             DgnEPLS.Name = "DgnEPLS"
             DgnEPLS.ReadOnly = True
             DgnEPLS.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle8.BackColor = Color.YellowGreen
-            DataGridViewCellStyle8.Font = New Font("Verdana", 8F)
-            DataGridViewCellStyle8.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle8.SelectionBackColor = Color.Yellow
-            DataGridViewCellStyle8.SelectionForeColor = Color.Black
-            DataGridViewCellStyle8.WrapMode = DataGridViewTriState.True
-            DgnEPLS.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+            DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle4.BackColor = Color.YellowGreen
+            DataGridViewCellStyle4.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle4.SelectionBackColor = Color.Yellow
+            DataGridViewCellStyle4.SelectionForeColor = Color.Black
+            DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
+            DgnEPLS.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
             DgnEPLS.RowHeadersWidth = 62
             DgnEPLS.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
             DgnEPLS.Size = New Size(1307, 858)
@@ -116,140 +116,133 @@
             employee_id.MinimumWidth = 8
             employee_id.Name = "employee_id"
             employee_id.ReadOnly = True
-            employee_id.SortMode = DataGridViewColumnSortMode.NotSortable
             employee_id.Visible = False
             employee_id.Width = 150
             ' 
             ' company_code
             ' 
-            company_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+            company_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             company_code.DataPropertyName = "company_code"
             company_code.HeaderText = "COMP. CODE"
             company_code.MinimumWidth = 8
             company_code.Name = "company_code"
             company_code.ReadOnly = True
-            company_code.SortMode = DataGridViewColumnSortMode.NotSortable
-            company_code.Width = 8
+            company_code.Width = 133
             ' 
             ' company_name
             ' 
+            company_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             company_name.DataPropertyName = "company_name"
             company_name.HeaderText = "COMP."
             company_name.MinimumWidth = 8
             company_name.Name = "company_name"
             company_name.ReadOnly = True
             company_name.Visible = False
-            company_name.Width = 150
+            company_name.Width = 93
             ' 
             ' department_code
             ' 
-            department_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+            department_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             department_code.DataPropertyName = "department_code"
             department_code.HeaderText = "DEPT. CODE"
             department_code.MinimumWidth = 8
             department_code.Name = "department_code"
             department_code.ReadOnly = True
-            department_code.SortMode = DataGridViewColumnSortMode.NotSortable
-            department_code.Width = 8
+            department_code.Width = 88
             ' 
             ' department_name
             ' 
+            department_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             department_name.DataPropertyName = "department_name"
             department_name.HeaderText = "DEPT."
             department_name.MinimumWidth = 8
             department_name.Name = "department_name"
             department_name.ReadOnly = True
             department_name.Visible = False
-            department_name.Width = 150
+            department_name.Width = 88
             ' 
             ' position_code
             ' 
-            position_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+            position_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             position_code.DataPropertyName = "position_code"
             position_code.HeaderText = "POSITION CODE"
             position_code.MinimumWidth = 8
             position_code.Name = "position_code"
             position_code.ReadOnly = True
-            position_code.SortMode = DataGridViewColumnSortMode.NotSortable
-            position_code.Width = 8
+            position_code.Width = 161
             ' 
             ' position_name
             ' 
+            position_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             position_name.DataPropertyName = "position_name"
             position_name.HeaderText = "POSITION"
             position_name.MinimumWidth = 8
             position_name.Name = "position_name"
             position_name.ReadOnly = True
             position_name.Visible = False
-            position_name.Width = 150
+            position_name.Width = 124
             ' 
             ' employee_number
             ' 
-            employee_number.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+            employee_number.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             employee_number.DataPropertyName = "employee_number"
-            employee_number.HeaderText = "EMPLOYEE NUM"
+            employee_number.HeaderText = "EMPLOYEE CODE"
             employee_number.MinimumWidth = 8
             employee_number.Name = "employee_number"
             employee_number.ReadOnly = True
-            employee_number.SortMode = DataGridViewColumnSortMode.NotSortable
-            employee_number.Width = 8
+            employee_number.Width = 165
             ' 
             ' employee_fullname
             ' 
-            employee_fullname.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            employee_fullname.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             employee_fullname.DataPropertyName = "employee_fullname"
             employee_fullname.HeaderText = "EMPLOYEE FULL NAME"
             employee_fullname.MinimumWidth = 8
             employee_fullname.Name = "employee_fullname"
             employee_fullname.ReadOnly = True
-            employee_fullname.SortMode = DataGridViewColumnSortMode.NotSortable
-            employee_fullname.Width = 134
+            employee_fullname.Width = 164
             ' 
             ' employee_nickname
             ' 
-            employee_nickname.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+            employee_nickname.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             employee_nickname.DataPropertyName = "employee_nickname"
             employee_nickname.HeaderText = "NICKNAME"
             employee_nickname.MinimumWidth = 8
             employee_nickname.Name = "employee_nickname"
             employee_nickname.ReadOnly = True
-            employee_nickname.SortMode = DataGridViewColumnSortMode.NotSortable
-            employee_nickname.Width = 8
+            employee_nickname.Width = 129
             ' 
             ' employmenttype_name
             ' 
-            employmenttype_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            employmenttype_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             employmenttype_name.DataPropertyName = "employmenttype_name"
             employmenttype_name.HeaderText = "EMP. TYPE"
             employmenttype_name.MinimumWidth = 8
             employmenttype_name.Name = "employmenttype_name"
             employmenttype_name.ReadOnly = True
-            employmenttype_name.SortMode = DataGridViewColumnSortMode.NotSortable
-            employmenttype_name.Width = 86
+            employmenttype_name.Width = 116
             ' 
             ' employee_gender
             ' 
-            employee_gender.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
+            employee_gender.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             employee_gender.DataPropertyName = "employee_gender"
             employee_gender.HeaderText = "GENDER"
             employee_gender.MinimumWidth = 8
             employee_gender.Name = "employee_gender"
             employee_gender.ReadOnly = True
-            employee_gender.SortMode = DataGridViewColumnSortMode.Programmatic
             employee_gender.Width = 109
             ' 
             ' employee_isactive
             ' 
             employee_isactive.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             employee_isactive.DataPropertyName = "employee_isactive"
-            DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft
-            employee_isactive.DefaultCellStyle = DataGridViewCellStyle7
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            employee_isactive.DefaultCellStyle = DataGridViewCellStyle3
             employee_isactive.HeaderText = "IS ACTIVE"
             employee_isactive.MinimumWidth = 8
             employee_isactive.Name = "employee_isactive"
             employee_isactive.ReadOnly = True
             employee_isactive.Resizable = DataGridViewTriState.True
-            employee_isactive.SortMode = DataGridViewColumnSortMode.NotSortable
             ' 
             ' FRMepls
             ' 

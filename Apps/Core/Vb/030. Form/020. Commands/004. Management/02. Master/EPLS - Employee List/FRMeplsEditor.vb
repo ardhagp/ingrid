@@ -1,6 +1,5 @@
 ﻿Namespace UI.Canvas
     Public Class FRMeplsEditor
-#Region "Declaration"
         Public Event EventRecordSaved()
 
         Private WithEvents Frm_epls_AddinPosition As New FRMeplsPosition
@@ -8,11 +7,7 @@
         Private varThisModuleId As Long = 0
         Private Const varThisModuleCode As String = "EPLS"
         Private Const varMessageCannotSave As String = "Cannot save your record."
-#End Region
 
-#Region "Subs Collections"
-
-#End Region
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMeplsEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -102,22 +97,6 @@
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Call CheckAllInputs()
 
-            If Not CheckEmployeePersonalID() Then
-                Return
-            End If
-
-            If Not CheckEmployeeMandatoryFields() Then
-                Return
-            End If
-
-            If Not CheckDuplicateEmployeeNumber() Then
-                Return
-            End If
-
-            If Not CheckEmployeePhoto() Then
-                Return
-            End If
-
             With varDataProperties
                 SetValue(.AllParameters, tEmployee.P_EmployeePersonalIdNumber, IIf(TxtPersonalID.XOSqlText = String.Empty OrElse TxtPersonalID.XOSqlText = "", DBNull.Value, TxtPersonalID.XOSqlText))
                 SetValue(.AllParameters, tEmployee.P_EmployeeFullName, IIf(TxtFullName.XOSqlText = String.Empty OrElse TxtFullName.XOSqlText = "", DBNull.Value, TxtFullName.XOSqlText))
@@ -133,6 +112,22 @@
                 ' Please update this method when EmploymentType is ready
                 SetValue(.AllParameters, tEmployee.P_EmployeeEmploymentType, IIf(TxtEmploymentType.XOSqlText = String.Empty OrElse TxtEmploymentType.XOSqlText = "", DBNull.Value, DBNull.Value))
             End With
+
+            If Not CheckEmployeePersonalID() Then
+                Return
+            End If
+
+            If Not CheckEmployeeMandatoryFields() Then
+                Return
+            End If
+
+            If Not CheckDuplicateEmployeeNumber() Then
+                Return
+            End If
+
+            If Not CheckEmployeePhoto() Then
+                Return
+            End If
 
             If CMDepls.Editor.PushData(varDataProperties, varDataProperties.AllParameters) Then
                 UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
@@ -175,7 +170,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckEmployeeMandatoryFields() As Boolean
             If (TxtPersonalID.XOSqlText = String.Empty OrElse IsDBNull(varDataProperties.AllParameters(tPosition.P_PositionId)) OrElse varDataProperties.AllParameters(tPosition.P_PositionId) Is Nothing OrElse (TxtEmployeeNumber.XOSqlText = String.Empty) OrElse (TxtFullName.XOSqlText = String.Empty)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Ensure that the Personal ID, Full Name, Company, Department, Position and Employee Number fields are correctly completed.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Ensure that the Personal ID, Full Name, Company, Department, Position and Employee Code fields are correctly completed.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return False
             Else
                 Return True
@@ -189,7 +184,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckDuplicateEmployeeNumber() As Boolean
             If varDataProperties.EmployeeIsNew AndAlso CMDepls.Editor.IsEmployeeNumberDuplicate(varDataProperties) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "This Employee Number is already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "This Employee Code already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return False
             Else
                 Return True
@@ -203,7 +198,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckEmployeePhoto() As Boolean
             If Not varDataProperties.EmployeeIsHavePhoto Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Please pick employee photo.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Please select employee photo.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return False
             Else
                 Return True

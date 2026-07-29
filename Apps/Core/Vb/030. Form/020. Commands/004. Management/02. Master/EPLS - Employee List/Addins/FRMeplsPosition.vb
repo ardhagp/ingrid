@@ -1,23 +1,26 @@
 ﻿Namespace UI.Canvas
     Public Class FRMeplsPosition
-#Region "Declaration"
         Public Event EventRecordSelected()
 
         ' This Module Identifier
         Private varThisModuleId As Long = 0
         Private Const varThisModuleCode As String = "POST"
-#End Region
 
-#Region "Subs Collections"
         ''' <summary>
         ''' 
         ''' </summary>
         ''' <param name="forcerefresh"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub GetData(Optional forcerefresh As Boolean = False)
-            CMDepls.Addins.Browse.Position.DisplayData(varDataProperties, DgnAddinPosition, SLFStatus, TxtFind, forcerefresh)
+        Private Sub GetData()
+            varDataProperties.EmployeePositionIsForceRefresh = True
+
+            If TxtFind.XOSqlText <> String.Empty Then
+                SetValue(varDataProperties.AllParameters, tPosition.P_PositionSearch, TxtFind.XOSqlText)
+                varDataProperties.EmployeePositionIsForceRefresh = False
+            End If
+
+            CMDepls.Addins.Browse.Position.DisplayData(varDataProperties, DgnAddinPosition, SLFStatus)
         End Sub
-#End Region
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
@@ -37,6 +40,7 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMeplsPosition_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            varDataProperties.EmployeePositionIsForceRefresh = True
             Call GetData()
         End Sub
 
@@ -55,7 +59,8 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
             TxtFind.Clear()
-            Call GetData(True)
+            varDataProperties.EmployeePositionIsForceRefresh = True
+            Call GetData()
         End Sub
     End Class
 End Namespace

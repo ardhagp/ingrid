@@ -1,8 +1,4 @@
-﻿'Imports System.Runtime.Versioning
-Imports System.ComponentModel
-Imports CMCv
-
-Namespace CMDcdin
+﻿Namespace CMDcdin
     Public Class View
         Private Shared varQuery As String
         Private Shared ReadOnly consTableName As String = "CheckRelation"
@@ -60,7 +56,12 @@ Namespace CMDcdin
             Dim varHasChild As Boolean = True
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varQuery = $"select now() as `timestamp`, (select count(*) from v_cdin_granularity_post where position_department = @DepartmentId limit 0,1) as `relation1`;"
+                    varQuery = $"select now() as `timestamp`, " &
+                               $"(select count(*) " &
+                               $"from " &
+                               $"v_cdin_granularity_post " &
+                               $"where " &
+                               $"{tPosition.C_PositionDepartment} = {tDepartment.P_DepartmentId} limit 0,1) as `relation1`;"
                     datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName, dataproperties.AllParameters)
                 End If
 
@@ -91,7 +92,8 @@ Namespace CMDcdin
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                     varSuccess = True
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(1).Query = $"delete from man_department where (department_id = @DepartmentId)"
+                    varDatabaseRequestMysql(1).Query = $"delete from {tDepartment.TableName} " &
+                                                       $"where ({tDepartment.C_DepartmentId} = {tDepartment.P_DepartmentId})"
                     varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                     varSuccess = True
                 End If
@@ -103,9 +105,7 @@ Namespace CMDcdin
     End Class
 
     Public Class Editor
-        'ReadOnly varDBreader_mssql2008(2) As Database.Adapter.MsSql.Display.Request
         Private Shared varQuery As String
-        Private Shared ReadOnly consTableName As String = "man_department"
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function IsDuplicate(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
@@ -165,7 +165,7 @@ Namespace CMDcdin
         Public Shared Sub GetDepartmentProperties(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 varQuery = $"select d.department_id, d.department_company, d.department_code, d.department_name, d.department_description from dbo.man_department d where d.department_id = @DepartmentId"
-                datasetname = varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName)
+                datasetname = varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varQuery, datasetname, tDepartment.TableName)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varQuery = $"select {tDepartment.S}.{tDepartment.C_DepartmentId}, " &
                            $"{tDepartment.S}.{tDepartment.C_DepartmentCompany}, " &
@@ -174,7 +174,7 @@ Namespace CMDcdin
                            $"{tDepartment.S}.{tDepartment.C_DepartmentDescription} " &
                            $"from {tDepartment.TableName} {tDepartment.S} " &
                            $"where {tDepartment.S}.{tDepartment.C_DepartmentId} = {tDepartment.P_DepartmentId}"
-                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName, dataproperties.AllParameters)
+                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varQuery, datasetname, tDepartment.TableName, dataproperties.AllParameters)
             End If
         End Sub
 

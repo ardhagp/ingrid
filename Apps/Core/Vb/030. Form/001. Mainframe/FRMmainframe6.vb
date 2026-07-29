@@ -39,7 +39,9 @@ Namespace UI.Canvas
         Private Const dtUserData As String = "UserData"
         Private Const dtSettings As String = "SYSS_Editor"
 
-
+        ''' <summary>
+        ''' 
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CommandAutoComplete()
             Try
@@ -78,6 +80,9 @@ Namespace UI.Canvas
             End Try
         End Sub
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetRunningText()
             TxtRunning.Visible = varAppRunningText.Show(varDataProperties)
@@ -147,6 +152,10 @@ Namespace UI.Canvas
             End Try
         End Sub
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="commandcode"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EnterCommand(commandcode As String)
             SetValue(varDataProperties.UserParameters, tModule.P_ModuleCode, commandcode.ToUpper.Trim)
@@ -189,12 +198,16 @@ Namespace UI.Canvas
             End With
         End Sub
 
-        'Start Menu
+        ' Start Menu
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsstartLogin_Click(sender As Object, e As EventArgs) Handles Ms_start_Login.Click
             Call LoginClicked()
         End Sub
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function LoginClicked() As Boolean
             If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
@@ -513,6 +526,9 @@ Namespace UI.Canvas
                     OrElse (Not isadmin AndAlso profilesettings = 2)
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetProfile()
             With varDatasetIngrid.Tables(dtSettings)
@@ -543,6 +559,9 @@ Namespace UI.Canvas
             End With
         End Sub
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetStorage()
             Dim varDatacurrentsize As Integer
@@ -616,7 +635,7 @@ Namespace UI.Canvas
 
         Private Sub Support_Click(sender As Object, e As EventArgs) Handles SUPPORT.Click
             Try
-                'Open Wiki URL in default browser
+                ' Open Wiki URL in default browser
                 Process.Start(New ProcessStartInfo(My.Settings.URL_Wiki) With {.UseShellExecute = True})
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
@@ -687,7 +706,7 @@ Namespace UI.Canvas
 
         Private Sub BuymeacoffeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BuymeacoffeToolStripMenuItem.Click
             Try
-                'Open Saweria URL
+                ' Open Saweria URL
                 Process.Start(New ProcessStartInfo(My.Settings.URL_Saweria) With {.UseShellExecute = True})
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
@@ -724,9 +743,9 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsstartExit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
             If (varSession) Then
-                Call SystemLogout() ''' Logout Process
+                Call SystemLogout() ' Logout Process
                 varLogUser.Logout(varDataProperties, varDataProperties.UserParameters)
-                Call ClearLoginData() ''' Clear Login Data
+                Call ClearLoginData() ' Clear Login Data
             End If
             Me.Close()
             System.Windows.Forms.Application.Exit()
@@ -742,7 +761,7 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Msstartconnectionfolder_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_folder.Click
             Try
-                ''' Open Resources Folder
+                ' Open Resources Folder
                 Process.Start(New ProcessStartInfo(My.Application.Info.DirectoryPath & "\Resources\") With {.UseShellExecute = True})
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
@@ -753,13 +772,5 @@ Namespace UI.Canvas
         Private Sub FRMmainframe6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
             RaiseEvent EventMainframeClose()
         End Sub
-
-
-        'TODO: Reactivate when supported by .net 6
-        'Private Sub Application_Idle(ByVal sender As Object, ByVal e As EventArgs)
-        'only supported in .net 4.8, please reactivate this when supported by .net 6
-        'MsgBox("You are idle")
-        'End Sub
-
     End Class
 End Namespace

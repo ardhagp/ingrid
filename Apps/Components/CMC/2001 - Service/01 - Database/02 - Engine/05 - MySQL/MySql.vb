@@ -213,7 +213,7 @@ Namespace Database.Engine
             Catch ex As Exception
                 With CMCv.UI.proLog
                     .AppVersion = CMCv.UI.GetAppVersion()
-                    .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
+                    .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\MySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
                     .Query = query

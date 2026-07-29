@@ -22,6 +22,7 @@
     Public tDepartment As New LibApp.Table.Man.Department
     Public tPosition As New LibApp.Table.Man.Position
     Public tEmployee As New LibApp.Table.Man.Employee
+    Public tEmploymentType As New LibApp.Table.Man.EmploymentType
     Public tUser As New LibApp.Table.Sys.User
     Public tModule As New LibApp.Table.Sys.Module
     Public tUserAccess As New LibApp.Table.Sys.UserAccess
