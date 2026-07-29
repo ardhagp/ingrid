@@ -7,11 +7,13 @@
         ReadOnly Property C_PositionCode As String = "position_code"
         ReadOnly Property C_PositionName As String = "position_name"
         ReadOnly Property C_PositionDescription As String = "position_description"
+        ReadOnly Property C_PositionClient As String = "position_client"
         ReadOnly Property P_PositionId As String = "@PositionId"
         ReadOnly Property P_PositionDepartment As String = "@PositionDepartment"
         ReadOnly Property P_PositionCode As String = "@PositionCode"
         ReadOnly Property P_PositionName As String = "@PositionName"
         ReadOnly Property P_PositionDescription As String = "@PositionDescription"
+        ReadOnly Property P_PositionClient As String = "@PositionClient"
         ReadOnly Property P_PositionSearch As String = "@PositionSearch"
     End Class
 End Namespace

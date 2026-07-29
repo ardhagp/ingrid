@@ -232,6 +232,8 @@
                     Return
                 End If
 
+                Dim ext As String = IO.Path.GetExtension(OfdPhoto.FileName).ToLower()
+
                 If (CMCv.OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, varMaxUploadSizePhoto, True)) Then
                     varDataProperties.EmployeePhoto = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(OfdPhoto.FileName)
                     pctbxPhoto.Image = varDataProperties.EmployeePhoto
@@ -239,6 +241,7 @@
                     varDataProperties.EmployeeIsHavePhoto = True
                     BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
                     BtnRemovePhoto.Enabled = True
+                    SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentExtension, ext)
                 End If
             Else
                 varDataProperties.EmployeeIsHavePhoto = False
@@ -275,7 +278,29 @@
                 Else
                     pctbxPhoto.Image = My.Resources.FEMALE_001_512_icon
                 End If
+                SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentExtension, GetImageExtension(pctbxPhoto.Image))
             End If
         End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Function GetImageExtension(image As Image) As String
+            If image Is Nothing Then
+                Return String.Empty
+            End If
+            Dim format As Imaging.ImageFormat = image.RawFormat
+            If format.Equals(Imaging.ImageFormat.Jpeg) Then
+                Return ".jpg"
+            ElseIf format.Equals(Imaging.ImageFormat.Png) Then
+                Return ".png"
+            ElseIf format.Equals(Imaging.ImageFormat.Gif) Then
+                Return ".gif"
+            ElseIf format.Equals(Imaging.ImageFormat.Bmp) Then
+                Return ".bmp"
+            ElseIf format.Equals(Imaging.ImageFormat.Tiff) Then
+                Return ".tiff"
+            Else
+                Return String.Empty
+            End If
+        End Function
     End Class
 End Namespace

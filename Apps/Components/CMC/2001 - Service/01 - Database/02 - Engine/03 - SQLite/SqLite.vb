@@ -6,17 +6,17 @@
         Private ReadOnly varFilePath(2) As String
 
         ' Activate this when using Microsoft.Data.Sqlite
-        'Private varConnection As Microsoft.Data.Sqlite.SqliteConnection
-        'Private varCommand As Microsoft.Data.Sqlite.SqliteCommand
-        'Private varDataReader As Microsoft.Data.Sqlite.SqliteDataReader
+        ' Private varConnection As Microsoft.Data.Sqlite.SqliteConnection
+        ' Private varCommand As Microsoft.Data.Sqlite.SqliteCommand
+        ' Private varDataReader As Microsoft.Data.Sqlite.SqliteDataReader
 
         ' Activate this when using System.Data.SQLite.Core
         Private varConnection As System.Data.SQLite.SQLiteConnection
         Private varCommand As System.Data.SQLite.SQLiteCommand
         Private varDataReader As System.Data.SQLite.SQLiteDataReader
 
-        Private varSqlite As Connect.SQLiteConnection
-        'Private varTX As SQLite.SQLiteTransaction
+        Private varSqlite As Connect.SqliteConnection
+        ' Private varTX As SQLite.SQLiteTransaction
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function CheckDBCatalog(localsqlitedb As String) As Boolean
@@ -100,7 +100,7 @@
                 If OperatingSystem.File.Info.IsExists(varFilePath(0)) Then
                     varFilePath(0) = Replace(varFilePath(0), "\", "\\")
 
-                    varConnectionString = varSqlite.SQLiteBasic(varFilePath(0))
+                    varConnectionString = varSqlite.SqliteOpenWithPassword(varFilePath(0), Security.Decrypt.Aes(Bridge.Getkey.LocalDbPassword))
 
                     ' Activate this when using Microsoft.Data.Sqlite
                     'varConnection = New Microsoft.Data.Sqlite.SqliteConnection(varConnectionString) 'OleDb.OleDbConnection(_CS(0))

@@ -148,6 +148,26 @@ namespace Bridge
                 return "";
             }
         }
+
+        /// <summary>
+        /// This method retrieves the local database password from user secrets. It looks for the "LOCALDBPASSWORD" key under the "KEYS" section. If the key is found, it returns its value; otherwise, it returns an empty string.
+        /// </summary>
+        /// <returns>The local database password if found; otherwise an empty string.</returns>
+        public static string LocalDbPassword()
+        {
+            var config = new ConfigurationBuilder()
+                .AddUserSecrets<Getkey>()
+                .Build();
+            var varKEY = config.GetSection("KEYS")["LOCALDBPASSWORD"];
+            if (varKEY != null)
+            {
+                return varKEY;
+            }
+            else
+            {
+                return "";
+            }
+        }
     }
         
     /// <summary>

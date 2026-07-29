@@ -1,6 +1,6 @@
 ﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-    Partial Class FRMeplsPosition
+    Partial Class FRMeplsEmploymentType
         Inherits CMCv.UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
@@ -29,8 +29,6 @@
             Lbl1 = New CMCv.UI.Control.Lbl(components)
             TxtFind = New CMCv.UI.Control.Txt(components)
             DgnAddinPosition = New CMCv.UI.Control.Dgn(components)
-            BtnOk = New CMCv.UI.Control.Btn(components)
-            BtnCancel = New CMCv.UI.Control.Btn(components)
             position_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
             company_name = New DataGridViewTextBoxColumn()
@@ -38,6 +36,8 @@
             department_name = New DataGridViewTextBoxColumn()
             position_code = New DataGridViewTextBoxColumn()
             position_name = New DataGridViewTextBoxColumn()
+            BtnOk = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -150,7 +150,7 @@
             ' 
             DgnAddinPosition.AllowUserToAddRows = False
             DgnAddinPosition.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(249), CByte(211), CByte(170))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(226), CByte(219), CByte(155))
             DgnAddinPosition.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnAddinPosition.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnAddinPosition.BorderStyle = BorderStyle.None
@@ -189,6 +189,79 @@
             DgnAddinPosition.TabIndex = 1005
             DgnAddinPosition.XOIsGroupFirstRow = False
             DgnAddinPosition.XOIsShowRowNumber = True
+            ' 
+            ' position_id
+            ' 
+            position_id.DataPropertyName = "position_id"
+            position_id.Frozen = True
+            position_id.HeaderText = "ID"
+            position_id.MinimumWidth = 8
+            position_id.Name = "position_id"
+            position_id.ReadOnly = True
+            position_id.Visible = False
+            position_id.Width = 75
+            ' 
+            ' company_code
+            ' 
+            company_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            company_code.DataPropertyName = "company_code"
+            company_code.HeaderText = "COMP. CODE"
+            company_code.MinimumWidth = 8
+            company_code.Name = "company_code"
+            company_code.ReadOnly = True
+            company_code.SortMode = DataGridViewColumnSortMode.Programmatic
+            company_code.Width = 133
+            ' 
+            ' company_name
+            ' 
+            company_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            company_name.DataPropertyName = "company_name"
+            company_name.HeaderText = "COMP."
+            company_name.MinimumWidth = 8
+            company_name.Name = "company_name"
+            company_name.ReadOnly = True
+            company_name.Visible = False
+            company_name.Width = 150
+            ' 
+            ' department_code
+            ' 
+            department_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            department_code.DataPropertyName = "department_code"
+            department_code.HeaderText = "DEPT. CODE"
+            department_code.MinimumWidth = 8
+            department_code.Name = "department_code"
+            department_code.ReadOnly = True
+            department_code.Width = 88
+            ' 
+            ' department_name
+            ' 
+            department_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            department_name.DataPropertyName = "department_name"
+            department_name.HeaderText = "DEPT."
+            department_name.MinimumWidth = 8
+            department_name.Name = "department_name"
+            department_name.ReadOnly = True
+            department_name.Visible = False
+            department_name.Width = 150
+            ' 
+            ' position_code
+            ' 
+            position_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            position_code.DataPropertyName = "position_code"
+            position_code.HeaderText = "POSITION CODE"
+            position_code.MinimumWidth = 8
+            position_code.Name = "position_code"
+            position_code.ReadOnly = True
+            position_code.Width = 161
+            ' 
+            ' position_name
+            ' 
+            position_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            position_name.DataPropertyName = "position_name"
+            position_name.HeaderText = "POSITION"
+            position_name.MinimumWidth = 8
+            position_name.Name = "position_name"
+            position_name.ReadOnly = True
             ' 
             ' BtnOk
             ' 
@@ -236,85 +309,12 @@
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
             ' 
-            ' position_id
-            ' 
-            position_id.DataPropertyName = "position_id"
-            position_id.Frozen = True
-            position_id.HeaderText = "ID"
-            position_id.MinimumWidth = 8
-            position_id.Name = "position_id"
-            position_id.ReadOnly = True
-            position_id.Visible = False
-            position_id.Width = 75
-            ' 
-            ' company_code
-            ' 
-            company_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            company_code.DataPropertyName = "company_code"
-            company_code.HeaderText = "COMP. CODE"
-            company_code.MinimumWidth = 8
-            company_code.Name = "company_code"
-            company_code.ReadOnly = True
-            company_code.SortMode = DataGridViewColumnSortMode.Programmatic
-            company_code.Width = 133
-            ' 
-            ' company_name
-            ' 
-            company_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            company_name.DataPropertyName = "company_name"
-            company_name.HeaderText = "COMP."
-            company_name.MinimumWidth = 8
-            company_name.Name = "company_name"
-            company_name.ReadOnly = True
-            company_name.Visible = False
-            company_name.Width = 93
-            ' 
-            ' department_code
-            ' 
-            department_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            department_code.DataPropertyName = "department_code"
-            department_code.HeaderText = "DEPT. CODE"
-            department_code.MinimumWidth = 8
-            department_code.Name = "department_code"
-            department_code.ReadOnly = True
-            department_code.Width = 88
-            ' 
-            ' department_name
-            ' 
-            department_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            department_name.DataPropertyName = "department_name"
-            department_name.HeaderText = "DEPT."
-            department_name.MinimumWidth = 8
-            department_name.Name = "department_name"
-            department_name.ReadOnly = True
-            department_name.Visible = False
-            department_name.Width = 88
-            ' 
-            ' position_code
-            ' 
-            position_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            position_code.DataPropertyName = "position_code"
-            position_code.HeaderText = "POSITION CODE"
-            position_code.MinimumWidth = 8
-            position_code.Name = "position_code"
-            position_code.ReadOnly = True
-            position_code.Width = 161
-            ' 
-            ' position_name
-            ' 
-            position_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            position_name.DataPropertyName = "position_name"
-            position_name.HeaderText = "POSITION"
-            position_name.MinimumWidth = 8
-            position_name.Name = "position_name"
-            position_name.ReadOnly = True
-            ' 
-            ' FRMeplsPosition
+            ' FRMeplsEmploymentType
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1095, 921)
             Margin = New Padding(22, 44, 22, 44)
-            Name = "FRMeplsPosition"
+            Name = "FRMeplsEmploymentType"
             PnlBottomButton.ResumeLayout(False)
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
