@@ -49,7 +49,8 @@ Namespace CMDuac
                                                        $"On {tEmployee.S}.{tEmployee.C_EmployeeId} = {tUser.S}.{tUser.C_UserEmployee} " &
                                                        $"inner join {tPosition.TableName} {tPosition.S} " &
                                                        $"On {tPosition.S}.{tPosition.C_PositionId} = {tEmployee.S}.{tEmployee.C_EmployeePosition} " &
-                                                       $"where ({tUser.S}.{tUser.C_UserUsername} = {tUser.P_Username} " &
+                                                       $"where ({tEmployee.S}.{tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and " &
+                                                       $"({tUser.S}.{tUser.C_UserUsername} = {tUser.P_Username} " &
                                                        $"And {tUser.S}.{tUser.C_UserPassword} = {tUser.P_UserPassword})"
                     varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, datasetname, "UserData", parametername)
 

@@ -54,6 +54,9 @@
         Public tUser As New LibApp.Table.Sys.User
         Public tAttachment As New LibApp.Table.File.Attachment
 
+        Public ReadOnly DatagridBehaviour As CMCv.UI.Components.Behavior.Datagrid
+
+
         ''' <summary>
         ''' Sets a value in the provided dictionary (parametername) for the specified key. If the key already exists, it removes the existing entry before adding the new key-value pair. If the value is Nothing, it adds DBNull.Value instead. This method is marked to be supported only on Windows platforms.
         ''' </summary>
@@ -343,19 +346,5 @@
             Return result
         End Function
 
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Sub AdaptiveRowHeight(frm As Form, dgn As DataGridView)
-            Dim g As Graphics = frm.CreateGraphics()
-            Dim varDpiVertical As Single = g.DpiY
-
-            ' Base height 25px at 96 DPI
-            Dim adaptiveHeight As Integer = CInt(25 * (varDpiVertical / 96))
-
-            dgn.RowTemplate.Height = adaptiveHeight
-
-            For Each row As DataGridViewRow In dgn.Rows
-                row.Height = adaptiveHeight
-            Next
-        End Sub
     End Module
 End Namespace

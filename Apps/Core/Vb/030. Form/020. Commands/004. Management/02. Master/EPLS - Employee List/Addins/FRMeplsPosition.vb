@@ -42,6 +42,7 @@
         Private Sub FRMeplsPosition_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             varDataProperties.EmployeePositionIsForceRefresh = True
             Call GetData()
+            DatagridBehaviour.AdaptiveRowHeight(Me, DgnAddinPosition)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>

@@ -86,7 +86,6 @@
     <Compile Remove="2001 - Service\04 - Map\**" />
     <Compile Remove="2002 - System\110 - File Processor\**" />
     <Compile Remove="2002 - System\900 - Application\**" />
-    <Compile Remove="2091 - Class\**" />
     <Compile Remove="2099 - Interface\Forms\Templates\Windows10\**" />
     <Compile Remove="SqlServerTypes\**" />
     <Compile Remove="x64\**" />
@@ -100,7 +99,6 @@
     <EmbeddedResource Remove="2001 - Service\04 - Map\**" />
     <EmbeddedResource Remove="2002 - System\110 - File Processor\**" />
     <EmbeddedResource Remove="2002 - System\900 - Application\**" />
-    <EmbeddedResource Remove="2091 - Class\**" />
     <EmbeddedResource Remove="2099 - Interface\Forms\Templates\Windows10\**" />
     <EmbeddedResource Remove="SqlServerTypes\**" />
     <EmbeddedResource Remove="x64\**" />
@@ -114,7 +112,6 @@
     <None Remove="2001 - Service\04 - Map\**" />
     <None Remove="2002 - System\110 - File Processor\**" />
     <None Remove="2002 - System\900 - Application\**" />
-    <None Remove="2091 - Class\**" />
     <None Remove="2099 - Interface\Forms\Templates\Windows10\**" />
     <None Remove="SqlServerTypes\**" />
     <None Remove="x64\**" />

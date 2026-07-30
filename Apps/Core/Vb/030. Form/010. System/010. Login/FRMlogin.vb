@@ -1,8 +1,5 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMlogin
-#Region "Declaration"
         Public Event EventLoginSuccess()
         Public Event EventLoginFailed()
 
@@ -10,32 +7,32 @@ Namespace UI.Canvas
         Private varCooldownLogin As Integer
         Private varStatusTimer As Integer
 
-#End Region
 
-#Region "Subs Collection"
         ''' <summary>
         ''' CheckAllInput ensures all input fields are focused to trigger validation.
         ''' </summary>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CheckAllInput()
             TxtUsername.Focus()
             TxtPassword.Focus()
             BtnLogin.Focus()
         End Sub
-#End Region
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             RaiseEvent EventLoginFailed()
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles BtnLogin.Click
-            Call ExecLogin() '''login process
+            Call ExecLogin()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' ExecLogin handles the login process by validating user input, checking credentials against the database, and managing login attempts and cooldowns. It raises events for successful or failed logins and logs relevant information.
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ExecLogin()
             Dim clsLog As New Ladybug.Log.Events
 
@@ -114,7 +111,7 @@ Namespace UI.Canvas
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMlogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             varWrongLogin = 0
             varCooldownLogin = 0
@@ -124,14 +121,14 @@ Namespace UI.Canvas
             TxtUsername.Focus()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TxtPassword_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtPassword.KeyDown
             If e.KeyCode = Keys.Enter Then
                 Call ExecLogin() ' login process
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tmrstatus_Tick(sender As Object, e As EventArgs) Handles tmr_status.Tick
             If varStatusTimer = 5 Then
                 SLFStatus.Items(0).Text = ""
@@ -142,7 +139,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tmrcontrol_Tick(sender As Object, e As EventArgs) Handles tmr_control.Tick
             If varCooldownLogin = 30 Then ' allow login again
                 tmr_control.Enabled = False
