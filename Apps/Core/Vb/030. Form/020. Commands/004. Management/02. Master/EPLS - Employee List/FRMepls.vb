@@ -157,6 +157,7 @@
             DgnEPLS.XOGetNewColor()
             Call GetData()
             TxtFind.ClearSearch()
+            AdaptiveRowHeight(Me, DgnEPLS)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
@@ -188,5 +189,6 @@
             ' Set active module to UserParameters
             SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
         End Sub
+
     End Class
 End Namespace

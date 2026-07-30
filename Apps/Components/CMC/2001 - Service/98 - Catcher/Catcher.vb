@@ -103,7 +103,7 @@
     ''' </summary>
     Public Class Events
 
-        Public WithEvents FRMerc As New CMCv.UI.Canvas.FRMerrorreporting
+        Public WithEvents FRMerc As New UI.Canvas.FRMerrorreporting
         Private ReadOnly clsDBsqlite As Database.Engine.SqliteV3
 
         ''' <summary>
@@ -118,7 +118,7 @@
                 varMessage = """message"" : """ & proLog.Message & """," & Environment.NewLine & """sender"" : """ & proLog.FromSender & """," & Environment.NewLine & """error_number"" : " & proLog.Number & "," & Environment.NewLine & """error_type"" : """ & proLog.TypeOfFaulty.ToString() & """," & Environment.NewLine & """log_type"" : """ & proLog.TypeOfLog.ToString() & """," & Environment.NewLine & """version"" : """ & proLog.AppVersion & ""","
                 Bridge.Writelog.Sendlog(varMessage, proLog.TypeOfLog.ToString())
             Else
-                FRMerc = New CMCv.UI.Canvas.FRMerrorreporting(proLog, clsDBsqlite)
+                FRMerc = New UI.Canvas.FRMerrorreporting(proLog, clsDBsqlite)
                 FRMerc.ShowDialog()
                 FRMerc.Dispose()
             End If

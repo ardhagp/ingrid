@@ -1,7 +1,7 @@
 ﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMphtrz
-        Inherits CMCv.UI.Canvas.FRMstandardFooter
+        Inherits UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -22,19 +22,19 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMphtrz))
-            BtnClose = New CMCv.UI.Control.Btn(components)
-            BtnSave = New CMCv.UI.Control.Btn(components)
-            ChkAddNew = New CMCv.UI.Control.Chk(components)
+            BtnClose = New UI.Control.Btn(components)
+            BtnSave = New UI.Control.Btn(components)
+            ChkAddNew = New UI.Control.Chk(components)
             TlpMain = New System.Windows.Forms.TableLayoutPanel()
-            PnlLoad = New CMCv.UI.Control.Pnl(components)
-            Lbl1 = New CMCv.UI.Control.Lbl(components)
-            TxtLoad = New CMCv.UI.Control.Txt(components)
-            BtnLoad = New CMCv.UI.Control.Btn(components)
-            PnlSave = New CMCv.UI.Control.Pnl(components)
-            ChkSaveAsACopy = New CMCv.UI.Control.Chk(components)
-            TxtSave = New CMCv.UI.Control.Txt(components)
-            Lbl2 = New CMCv.UI.Control.Lbl(components)
-            PctbxPhoto = New CMCv.UI.Control.Pbx(components)
+            PnlLoad = New UI.Control.Pnl(components)
+            Lbl1 = New UI.Control.Lbl(components)
+            TxtLoad = New UI.Control.Txt(components)
+            BtnLoad = New UI.Control.Btn(components)
+            PnlSave = New UI.Control.Pnl(components)
+            ChkSaveAsACopy = New UI.Control.Chk(components)
+            TxtSave = New UI.Control.Txt(components)
+            Lbl2 = New UI.Control.Lbl(components)
+            PctbxPhoto = New UI.Control.Pbx(components)
             OfdLoad = New System.Windows.Forms.OpenFileDialog()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -97,7 +97,7 @@
             BtnClose.TabIndex = 7
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
+            BtnClose.XOButtonType = UI.Control.ControlCodeBase.ButtonType.No
             BtnClose.XOShowBorderOnFocus = False
             BtnClose.XOValidateAllInput = False
             BtnClose.XOValidateAllInputTag = Nothing
@@ -120,7 +120,7 @@
             BtnSave.TabIndex = 5
             BtnSave.Text = "&Save"
             BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
+            BtnSave.XOButtonType = UI.Control.ControlCodeBase.ButtonType.Yes
             BtnSave.XOShowBorderOnFocus = False
             BtnSave.XOValidateAllInput = False
             BtnSave.XOValidateAllInputTag = Nothing
@@ -203,13 +203,13 @@
             TxtLoad.XOHighlightColor = Drawing.Color.LightYellow
             TxtLoad.XOIsBlank = True
             TxtLoad.XOIsPlaceholder = False
-            TxtLoad.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtLoad.XOLetterCase = UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtLoad.XOSelectOnFocus = False
             TxtLoad.XOPasswordLengthMin = 8
             TxtLoad.XOPasswordStrengthCalc = False
             TxtLoad.XOPasswordStrengthScore = 0
             TxtLoad.XOPasswordStrengthText = Nothing
-            TxtLoad.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtLoad.XORestriction = UI.Control.ControlCodeBase.EnumRestriction.None
             TxtLoad.XOPlaceholderText = "Type then press Enter"
             TxtLoad.XOSqlText = ""
             TxtLoad.XOIsReplaceEmptyString = False
@@ -233,7 +233,7 @@
             BtnLoad.TabIndex = 0
             BtnLoad.Text = "&Load"
             BtnLoad.UseVisualStyleBackColor = False
-            BtnLoad.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
+            BtnLoad.XOButtonType = UI.Control.ControlCodeBase.ButtonType.Default
             BtnLoad.XOShowBorderOnFocus = False
             BtnLoad.XOValidateAllInput = False
             BtnLoad.XOValidateAllInputTag = Nothing
@@ -286,13 +286,13 @@
             TxtSave.XOHighlightColor = Drawing.Color.LightYellow
             TxtSave.XOIsBlank = True
             TxtSave.XOIsPlaceholder = False
-            TxtSave.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtSave.XOLetterCase = UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtSave.XOSelectOnFocus = False
             TxtSave.XOPasswordLengthMin = 8
             TxtSave.XOPasswordStrengthCalc = False
             TxtSave.XOPasswordStrengthScore = 0
             TxtSave.XOPasswordStrengthText = Nothing
-            TxtSave.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtSave.XORestriction = UI.Control.ControlCodeBase.EnumRestriction.None
             TxtSave.XOPlaceholderText = "Type then press Enter"
             TxtSave.XOSqlText = ""
             TxtSave.XOIsReplaceEmptyString = False
@@ -358,19 +358,19 @@
 
         End Sub
 
-        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
-        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
+        Friend WithEvents BtnClose As UI.Control.Btn
+        Friend WithEvents ChkAddNew As UI.Control.Chk
+        Friend WithEvents BtnSave As UI.Control.Btn
         Friend WithEvents TlpMain As System.Windows.Forms.TableLayoutPanel
-        Friend WithEvents PnlLoad As CMCv.UI.Control.Pnl
-        Friend WithEvents PnlSave As CMCv.UI.Control.Pnl
-        Friend WithEvents PctbxPhoto As CMCv.UI.Control.Pbx
-        Friend WithEvents BtnLoad As CMCv.UI.Control.Btn
-        Friend WithEvents Lbl1 As CMCv.UI.Control.Lbl
-        Friend WithEvents TxtLoad As CMCv.UI.Control.Txt
-        Friend WithEvents TxtSave As CMCv.UI.Control.Txt
-        Friend WithEvents Lbl2 As CMCv.UI.Control.Lbl
+        Friend WithEvents PnlLoad As UI.Control.Pnl
+        Friend WithEvents PnlSave As UI.Control.Pnl
+        Friend WithEvents PctbxPhoto As UI.Control.Pbx
+        Friend WithEvents BtnLoad As UI.Control.Btn
+        Friend WithEvents Lbl1 As UI.Control.Lbl
+        Friend WithEvents TxtLoad As UI.Control.Txt
+        Friend WithEvents TxtSave As UI.Control.Txt
+        Friend WithEvents Lbl2 As UI.Control.Lbl
         Friend WithEvents OfdLoad As System.Windows.Forms.OpenFileDialog
-        Friend WithEvents ChkSaveAsACopy As CMCv.UI.Control.Chk
+        Friend WithEvents ChkSaveAsACopy As UI.Control.Chk
     End Class
 End Namespace

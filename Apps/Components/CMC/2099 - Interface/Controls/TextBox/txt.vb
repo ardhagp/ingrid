@@ -18,9 +18,9 @@
             Me.XOHighlightOnFocus = False
             Me.XOHighlightColor = Drawing.Color.LightYellow
             Me.XOSelectOnFocus = False
-            Me.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            Me.XORestriction = UI.Control.ControlCodeBase.EnumRestriction.None
             Me.XOIsBlank = True
-            Me.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            Me.XOLetterCase = UI.Control.ControlCodeBase.EnumLetterCase.Normal
             Me.XOIsPlaceholder = False
             Me.XOPlaceholderText = "Type then press Enter"
             Me.XOPasswordLengthMin = 8
@@ -208,26 +208,26 @@
             End Set
         End Property
 
-        Private varLetterCase As CMCv.UI.Control.ControlCodeBase.EnumLetterCase
+        Private varLetterCase As UI.Control.ControlCodeBase.EnumLetterCase
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies how the component transforms its text value by applying the selected letter‑case rule")>
-        Public Property XOLetterCase As CMCv.UI.Control.ControlCodeBase.EnumLetterCase
+        Public Property XOLetterCase As UI.Control.ControlCodeBase.EnumLetterCase
             Get
                 Return varLetterCase
             End Get
-            Set(value As CMCv.UI.Control.ControlCodeBase.EnumLetterCase)
+            Set(value As UI.Control.ControlCodeBase.EnumLetterCase)
                 varLetterCase = value
             End Set
         End Property
 
-        Private varRestriction As CMCv.UI.Control.ControlCodeBase.EnumRestriction
+        Private varRestriction As UI.Control.ControlCodeBase.EnumRestriction
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Defines the input restriction rule that limits which characters or patterns are allowed in the component")>
-        Public Property XORestriction As CMCv.UI.Control.ControlCodeBase.EnumRestriction
+        Public Property XORestriction As UI.Control.ControlCodeBase.EnumRestriction
             Get
                 Return varRestriction
             End Get
-            Set(value As CMCv.UI.Control.ControlCodeBase.EnumRestriction)
+            Set(value As UI.Control.ControlCodeBase.EnumRestriction)
                 varRestriction = value
             End Set
         End Property
@@ -265,70 +265,70 @@
             End If
 
             varSqlSafeText = varSqlSafeText.Replace("select ", "").Replace("'", "").Replace(";", "").Replace("--", "").Replace("drop table ", "").Replace("update ", "").Replace("insert into ", "").Replace("--", "").Replace("xp_", "").Trim
-            If XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE Then
+            If XOLetterCase = UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE Then
                 varSqlSafeText = varSqlSafeText.ToUpper(System.Globalization.CultureInfo.CurrentCulture)
-            ElseIf XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.lowercase Then
+            ElseIf XOLetterCase = UI.Control.ControlCodeBase.EnumLetterCase.lowercase Then
                 varSqlSafeText = varSqlSafeText.ToLower(System.Globalization.CultureInfo.CurrentCulture)
             End If
 
             Return varSqlSafeText
         End Function
 
-        Private Sub CheckRestriction(valenurestriction As CMCv.UI.Control.ControlCodeBase.EnumRestriction)
+        Private Sub CheckRestriction(valenurestriction As UI.Control.ControlCodeBase.EnumRestriction)
             Select Case valenurestriction
                 ' No restriction, allow all input
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+                Case UI.Control.ControlCodeBase.EnumRestriction.None
 
                 ' Do Only Number
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumber
+                Case UI.Control.ControlCodeBase.EnumRestriction.OnlyNumber
 
                 ' Do Only Number and Space
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumberAndSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.OnlyNumberAndSpace
 
                 ' Do Only Number No Space
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumberNoSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.OnlyNumberNoSpace
 
                 ' Do Only Text
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyText
+                Case UI.Control.ControlCodeBase.EnumRestriction.OnlyText
 
                 ' Do Only Text and Space
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyTextAndSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.OnlyTextAndSpace
 
                 ' Do Only Text No Space
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyTextNoSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.OnlyTextNoSpace
 
                 ' Do Text and Number
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
 
                 ' Do Text Number and Space
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberAndSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextNumberAndSpace
 
                 ' Do Text Number No Space
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberNoSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextNumberNoSpace
 
                 ' Do Text and Symbol
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndSymbol
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextAndSymbol
 
                 ' Do Text Symbol and Space
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextSymbolAndSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextSymbolAndSpace
 
                 ' Do Text Symbol No Space
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextSymbolNoSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextSymbolNoSpace
 
                 ' Do Number Symbol and Space
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.NumberSymbolAndSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.NumberSymbolAndSpace
 
                 ' Do Number Symbol No Space
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.NumberSymbolNoSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.NumberSymbolNoSpace
 
                 ' Do Text Number Symbol and Space
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolAndSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolAndSpace
 
                 ' Do Text Number Symbol No Space
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolNoSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolNoSpace
 
                 ' Do Email
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.Email
+                Case UI.Control.ControlCodeBase.EnumRestriction.Email
 
             End Select
         End Sub
@@ -442,22 +442,22 @@
                 ' ---------------------------------------------------------
                 ' NONE
                 ' ---------------------------------------------------------
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+                Case UI.Control.ControlCodeBase.EnumRestriction.None
                 ' Allow everything
 
 
                 ' ---------------------------------------------------------
                 ' ONLY NUMBER
                 ' ---------------------------------------------------------
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumber
+                Case UI.Control.ControlCodeBase.EnumRestriction.OnlyNumber
                     If Not Char.IsDigit(ch) Then e.Handled = True
                     ' Allow only digits
 
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumberNoSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.OnlyNumberNoSpace
                     If Not Char.IsDigit(ch) Then e.Handled = True
                     ' Allow only digits (no space)
 
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumberAndSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.OnlyNumberAndSpace
                     If Not (Char.IsDigit(ch) OrElse ch = " "c) Then e.Handled = True
                     ' Allow only digits and space
 
@@ -465,15 +465,15 @@
                 ' ---------------------------------------------------------
                 ' ONLY TEXT
                 ' ---------------------------------------------------------
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyText
+                Case UI.Control.ControlCodeBase.EnumRestriction.OnlyText
                     If Not Char.IsLetter(ch) Then e.Handled = True
                     ' Allow only letters
 
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyTextNoSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.OnlyTextNoSpace
                     If Not Char.IsLetter(ch) Then e.Handled = True
                     ' Allow only letters (no space)
 
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyTextAndSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.OnlyTextAndSpace
                     If Not (Char.IsLetter(ch) OrElse ch = " "c) Then e.Handled = True
                     ' Allow only letters and space
 
@@ -481,15 +481,15 @@
                 ' ---------------------------------------------------------
                 ' TEXT + NUMBER
                 ' ---------------------------------------------------------
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
                     If Not Char.IsLetterOrDigit(ch) Then e.Handled = True
                     ' Allow letters and digits
 
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberNoSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextNumberNoSpace
                     If Not Char.IsLetterOrDigit(ch) Then e.Handled = True
                     ' Allow letters and digits (no space)
 
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberAndSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextNumberAndSpace
                     If Not (Char.IsLetterOrDigit(ch) OrElse ch = " "c) Then e.Handled = True
                     ' Allow letters, digits, and space
 
@@ -497,15 +497,15 @@
                 ' ---------------------------------------------------------
                 ' TEXT + SYMBOL
                 ' ---------------------------------------------------------
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndSymbol
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextAndSymbol
                     If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch)) Then e.Handled = True
                     ' Allow letters, digits, punctuation, symbols
 
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextSymbolNoSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextSymbolNoSpace
                     If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch)) Then e.Handled = True
                     ' Allow letters, digits, punctuation, symbols (no space)
 
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextSymbolAndSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextSymbolAndSpace
                     If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch) OrElse ch = " "c) Then e.Handled = True
                     ' Allow letters, digits, punctuation, symbols, and space
 
@@ -513,11 +513,11 @@
                 ' ---------------------------------------------------------
                 ' NUMBER + SYMBOL (NEW)
                 ' ---------------------------------------------------------
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.NumberSymbolAndSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.NumberSymbolAndSpace
                     If Not (Char.IsDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch) OrElse ch = " "c) Then e.Handled = True
                     ' Allow digits, punctuation, symbols, and space
 
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.NumberSymbolNoSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.NumberSymbolNoSpace
                     If Not (Char.IsDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch)) Then e.Handled = True
                     ' Allow digits, punctuation, and symbols (no space)
 
@@ -525,11 +525,11 @@
                 ' ---------------------------------------------------------
                 ' TEXT + NUMBER + SYMBOL (NEW)
                 ' ---------------------------------------------------------
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolAndSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolAndSpace
                     If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch) OrElse ch = " "c) Then e.Handled = True
                     ' Allow letters, digits, punctuation, symbols, and space
 
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolNoSpace
+                Case UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolNoSpace
                     If Not (Char.IsLetterOrDigit(ch) OrElse Char.IsPunctuation(ch) OrElse Char.IsSymbol(ch)) Then e.Handled = True
                     ' Allow letters, digits, punctuation, and symbols (no space)
 
@@ -537,7 +537,7 @@
                 ' ---------------------------------------------------------
                 ' EMAIL
                 ' ---------------------------------------------------------
-                Case CMCv.UI.Control.ControlCodeBase.EnumRestriction.Email
+                Case UI.Control.ControlCodeBase.EnumRestriction.Email
                     ' Use a single static string for allowed characters to avoid reallocating on each keypress
                     Static allowedChars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._-"
                     If Not allowedChars.Contains(ch, StringComparison.Ordinal) Then e.Handled = True

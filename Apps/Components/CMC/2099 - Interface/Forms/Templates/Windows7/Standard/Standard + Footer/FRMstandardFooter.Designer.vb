@@ -1,7 +1,7 @@
 ﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMstandardFooter
-        Inherits CMCv.UI.Canvas.FRMstandard
+        Inherits UI.Canvas.FRMstandard
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,7 +21,7 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            PnlBottomButton = New CMCv.UI.Control.pnl(components)
+            PnlBottomButton = New UI.Control.Pnl(components)
             imgLine = New System.Windows.Forms.PictureBox()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -102,7 +102,7 @@
             PerformLayout()
 
         End Sub
-        Public WithEvents PnlBottomButton As CMCv.ui.control.pnl
+        Public WithEvents PnlBottomButton As UI.Control.Pnl
         Friend WithEvents imgLine As System.Windows.Forms.PictureBox
 
     End Class

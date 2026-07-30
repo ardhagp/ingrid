@@ -79,8 +79,8 @@
 
         End Sub
 
-        Friend WithEvents UHead As CMCv.UI.Control.Pbx
-        Friend WithEvents UText As CMCv.UI.Control.lbl
+        Friend WithEvents UHead As UI.Control.Pbx
+        Friend WithEvents UText As UI.Control.Lbl
         Friend WithEvents Tmr_ As System.Windows.Forms.Timer
     End Class
 End Namespace

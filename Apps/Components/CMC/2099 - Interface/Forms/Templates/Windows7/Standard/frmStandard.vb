@@ -47,7 +47,7 @@ Namespace UI.Canvas
         Public Function CheckTextInputs() As Integer
             Dim varViolation As Integer = 0
             Dim varAllTxt As New List(Of System.Windows.Forms.Control)
-            For Each eachText As CMCv.UI.Control.Txt In FindControlRecursive(varAllTxt, Me, GetType(CMCv.UI.Control.Txt))
+            For Each eachText As UI.Control.Txt In FindControlRecursive(varAllTxt, Me, GetType(UI.Control.Txt))
                 If (eachText.XOIsMandatory) AndAlso eachText.XOSqlText = String.Empty Then
                     varViolation += 1
                 End If

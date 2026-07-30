@@ -2,8 +2,8 @@
 
 Namespace UI.Canvas
     Public Class FRMphtrz
-        Private varImageCompressor As New CMCv.ImageEditor.Proccessor.Compress
-        Private varFileHandler As New CMCv.OperatingSystem.File.Info
+        Private varImageCompressor As New ImageEditor.Proccessor.Compress
+        Private varFileHandler As New OperatingSystem.File.Info
 
         Public Event EventDone()
 
@@ -23,12 +23,12 @@ Namespace UI.Canvas
                 If TxtLoad.Text = String.Empty Then
                     SLFStatusLabel.Text = "Please pick one of your photo first."
                     Return
-                ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtLoad.Text)) Then
+                ElseIf Not (OperatingSystem.File.Info.IsExists(TxtLoad.Text)) Then
                     SLFStatusLabel.Text = "Your photo does not exist. Please recheck your file."
                     Return
                 End If
 
-                If Not (CMCv.ImageEditor.Proccessor.Compress.OutputAsFile(TxtLoad.Text, TxtSave.Text)) Then
+                If Not (ImageEditor.Proccessor.Compress.OutputAsFile(TxtLoad.Text, TxtSave.Text)) Then
                     SLFStatusLabel.Text = "Error occured while resizing. Compressing failed."
                     Return
                 End If

@@ -1,7 +1,7 @@
 ﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMerrorreporting
-        Inherits CMCv.UI.Canvas.FRMstandardFooter
+        Inherits UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -22,19 +22,19 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMerrorreporting))
-            BtnClose = New CMCv.UI.Control.Btn(components)
-            Tbctl1 = New CMCv.UI.Control.Tbx(components)
+            BtnClose = New UI.Control.Btn(components)
+            Tbctl1 = New UI.Control.Tbx(components)
             tp_ApplicationFault = New System.Windows.Forms.TabPage()
-            Lbl4 = New CMCv.UI.Control.Lbl(components)
-            TxtAppBuild = New CMCv.UI.Control.Txt(components)
-            TxtErrorNumber = New CMCv.UI.Control.Txt(components)
-            Lbl3 = New CMCv.UI.Control.Lbl(components)
-            TxtErrorMessage = New CMCv.UI.Control.Txt(components)
-            Lbl2 = New CMCv.UI.Control.Lbl(components)
-            TxtErrorType = New CMCv.UI.Control.Txt(components)
-            Lbl1 = New CMCv.UI.Control.Lbl(components)
+            Lbl4 = New UI.Control.Lbl(components)
+            TxtAppBuild = New UI.Control.Txt(components)
+            TxtErrorNumber = New UI.Control.Txt(components)
+            Lbl3 = New UI.Control.Lbl(components)
+            TxtErrorMessage = New UI.Control.Txt(components)
+            Lbl2 = New UI.Control.Lbl(components)
+            TxtErrorType = New UI.Control.Txt(components)
+            Lbl1 = New UI.Control.Lbl(components)
             tp_SystemInformation = New System.Windows.Forms.TabPage()
-            ChkErrorReporting = New CMCv.UI.Control.Chk(components)
+            ChkErrorReporting = New UI.Control.Chk(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -97,7 +97,7 @@
             BtnClose.FlatAppearance.BorderSize = 2
             BtnClose.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-            BtnClose.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold)
+            BtnClose.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold)
             BtnClose.ForeColor = Drawing.Color.White
             BtnClose.Location = New System.Drawing.Point(899, 14)
             BtnClose.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
@@ -116,7 +116,7 @@
             Tbctl1.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             Tbctl1.Controls.Add(tp_ApplicationFault)
             Tbctl1.Controls.Add(tp_SystemInformation)
-            Tbctl1.Font = New System.Drawing.Font("Segoe UI", 12F)
+            Tbctl1.Font = New System.Drawing.Font("Segoe UI", 12.0F)
             Tbctl1.Location = New System.Drawing.Point(20, 12)
             Tbctl1.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
             Tbctl1.Name = "Tbctl1"
@@ -147,7 +147,7 @@
             ' 
             Lbl4.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left
             Lbl4.AutoSize = True
-            Lbl4.Font = New System.Drawing.Font("Segoe UI", 12F)
+            Lbl4.Font = New System.Drawing.Font("Segoe UI", 12.0F)
             Lbl4.Location = New System.Drawing.Point(423, 552)
             Lbl4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
             Lbl4.Name = "Lbl4"
@@ -160,7 +160,7 @@
             ' 
             TxtAppBuild.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left
             TxtAppBuild.BackColor = Drawing.Color.White
-            TxtAppBuild.Font = New System.Drawing.Font("Segoe UI", 12F)
+            TxtAppBuild.Font = New System.Drawing.Font("Segoe UI", 12.0F)
             TxtAppBuild.Location = New System.Drawing.Point(423, 597)
             TxtAppBuild.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
             TxtAppBuild.MaxLength = 255
@@ -193,7 +193,7 @@
             ' 
             TxtErrorNumber.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left
             TxtErrorNumber.BackColor = Drawing.Color.White
-            TxtErrorNumber.Font = New System.Drawing.Font("Segoe UI", 12F)
+            TxtErrorNumber.Font = New System.Drawing.Font("Segoe UI", 12.0F)
             TxtErrorNumber.Location = New System.Drawing.Point(10, 597)
             TxtErrorNumber.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
             TxtErrorNumber.MaxLength = 255
@@ -226,7 +226,7 @@
             ' 
             Lbl3.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left
             Lbl3.AutoSize = True
-            Lbl3.Font = New System.Drawing.Font("Segoe UI", 12F)
+            Lbl3.Font = New System.Drawing.Font("Segoe UI", 12.0F)
             Lbl3.Location = New System.Drawing.Point(10, 552)
             Lbl3.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
             Lbl3.Name = "Lbl3"
@@ -238,7 +238,7 @@
             ' TxtErrorMessage
             ' 
             TxtErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-            TxtErrorMessage.Font = New System.Drawing.Font("Segoe UI", 12F)
+            TxtErrorMessage.Font = New System.Drawing.Font("Segoe UI", 12.0F)
             TxtErrorMessage.Location = New System.Drawing.Point(10, 160)
             TxtErrorMessage.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
             TxtErrorMessage.MaxLength = 255
@@ -271,7 +271,7 @@
             ' Lbl2
             ' 
             Lbl2.AutoSize = True
-            Lbl2.Font = New System.Drawing.Font("Segoe UI", 12F)
+            Lbl2.Font = New System.Drawing.Font("Segoe UI", 12.0F)
             Lbl2.Location = New System.Drawing.Point(10, 113)
             Lbl2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
             Lbl2.Name = "Lbl2"
@@ -283,7 +283,7 @@
             ' TxtErrorType
             ' 
             TxtErrorType.BackColor = Drawing.Color.White
-            TxtErrorType.Font = New System.Drawing.Font("Segoe UI", 12F)
+            TxtErrorType.Font = New System.Drawing.Font("Segoe UI", 12.0F)
             TxtErrorType.Location = New System.Drawing.Point(10, 52)
             TxtErrorType.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
             TxtErrorType.MaxLength = 255
@@ -315,7 +315,7 @@
             ' Lbl1
             ' 
             Lbl1.AutoSize = True
-            Lbl1.Font = New System.Drawing.Font("Segoe UI", 12F)
+            Lbl1.Font = New System.Drawing.Font("Segoe UI", 12.0F)
             Lbl1.Location = New System.Drawing.Point(10, 5)
             Lbl1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
             Lbl1.Name = "Lbl1"
@@ -340,7 +340,7 @@
             ChkErrorReporting.AutoSize = True
             ChkErrorReporting.BackColor = Drawing.Color.Transparent
             ChkErrorReporting.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-            ChkErrorReporting.Font = New System.Drawing.Font("Segoe UI", 12F)
+            ChkErrorReporting.Font = New System.Drawing.Font("Segoe UI", 12.0F)
             ChkErrorReporting.Location = New System.Drawing.Point(497, 28)
             ChkErrorReporting.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
             ChkErrorReporting.Name = "ChkErrorReporting"
@@ -353,7 +353,7 @@
             ' 
             ' FRMerrorreporting
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
             ClientSize = New System.Drawing.Size(1086, 1000)
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
             Margin = New System.Windows.Forms.Padding(10, 5, 10, 5)
@@ -376,19 +376,19 @@
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
-        Friend WithEvents Tbctl1 As CMCv.UI.Control.Tbx
+        Friend WithEvents BtnClose As UI.Control.Btn
+        Friend WithEvents Tbctl1 As UI.Control.Tbx
         Friend WithEvents tp_ApplicationFault As System.Windows.Forms.TabPage
         Friend WithEvents tp_SystemInformation As System.Windows.Forms.TabPage
-        Friend WithEvents TxtErrorNumber As CMCv.UI.Control.txt
-        Friend WithEvents Lbl3 As CMCv.UI.Control.lbl
-        Friend WithEvents TxtErrorMessage As CMCv.UI.Control.txt
-        Friend WithEvents Lbl2 As CMCv.UI.Control.lbl
-        Friend WithEvents TxtErrorType As CMCv.UI.Control.txt
-        Friend WithEvents Lbl1 As CMCv.UI.Control.lbl
-        Friend WithEvents Lbl4 As CMCv.UI.Control.lbl
-        Friend WithEvents TxtAppBuild As CMCv.UI.Control.txt
-        Friend WithEvents ChkErrorReporting As CMCv.UI.Control.Chk
+        Friend WithEvents TxtErrorNumber As UI.Control.Txt
+        Friend WithEvents Lbl3 As UI.Control.Lbl
+        Friend WithEvents TxtErrorMessage As UI.Control.Txt
+        Friend WithEvents Lbl2 As UI.Control.Lbl
+        Friend WithEvents TxtErrorType As UI.Control.Txt
+        Friend WithEvents Lbl1 As UI.Control.Lbl
+        Friend WithEvents Lbl4 As UI.Control.Lbl
+        Friend WithEvents TxtAppBuild As UI.Control.Txt
+        Friend WithEvents ChkErrorReporting As UI.Control.Chk
 
     End Class
 End Namespace

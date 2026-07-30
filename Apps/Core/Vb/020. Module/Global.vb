@@ -144,8 +144,6 @@
             UI.Canvas.FRMmainframe6.Ts_status.Text = text
         End Sub
 
-#Region "Get App Version"
-
         ''' <summary>
         ''' Gets the application version as a string in the format "Major.Minor.Build.Revision". This function retrieves the version information from the application's assembly and formats it into a readable string. If an error occurs while retrieving the version, it logs the error details using the Ladybug logging framework and returns a failure message.
         ''' </summary>
@@ -176,9 +174,6 @@
                 Return " - Failed Getting Version"
             End Try
         End Function
-#End Region
-
-#Region "Check Modules Folder"
 
         ''' <summary>
         ''' Checks for the existence of required folders (Commands, Files.PDF, Files.Photo) in the current directory and creates them if they do not exist. It returns the path of the specified folder based on the provided DirName enumeration value. If no specific folder is requested, it returns an empty string.
@@ -210,9 +205,6 @@
             PDF
             Photo
         End Enum
-#End Region
-
-#Region "Display Form"
 
         ''' <summary>
         ''' This method is used to display a standard form with optional parameters for form image, window name, form title, form subtitle, dialog mode, and parent frame. It sets the properties of the form and handles its display based on the provided parameters.
@@ -332,9 +324,7 @@
                 clsLog = Nothing
             End Try
         End Sub
-#End Region
 
-#Region "Custom Message Box"
         ''' <summary>
         ''' This function displays a custom message box with specified parameters such as window title, message, title type, subtitle, message icon, and button type. It creates an instance of the FRMdialogbox form, shows it as a dialog, and returns the user's response as a DialogResult. The function is marked to be supported only on Windows platforms.
         ''' </summary>
@@ -352,6 +342,20 @@
             FRMmsg.Dispose()
             Return result
         End Function
-#End Region
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Sub AdaptiveRowHeight(frm As Form, dgn As DataGridView)
+            Dim g As Graphics = frm.CreateGraphics()
+            Dim varDpiVertical As Single = g.DpiY
+
+            ' Base height 25px at 96 DPI
+            Dim adaptiveHeight As Integer = CInt(25 * (varDpiVertical / 96))
+
+            dgn.RowTemplate.Height = adaptiveHeight
+
+            For Each row As DataGridViewRow In dgn.Rows
+                row.Height = adaptiveHeight
+            Next
+        End Sub
     End Module
 End Namespace

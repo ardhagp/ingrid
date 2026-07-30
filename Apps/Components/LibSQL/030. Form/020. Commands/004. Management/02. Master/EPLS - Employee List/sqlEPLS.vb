@@ -62,7 +62,7 @@
 
                 varDatabaseRequestMysql(0).DataGrid = grid
                 varDatabaseRequestMysql(0).StatusBar = status
-                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TEmployee", varDataProperties.AllParameters)
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TEmployee", dataproperties.AllParameters)
             End If
         End Sub
 

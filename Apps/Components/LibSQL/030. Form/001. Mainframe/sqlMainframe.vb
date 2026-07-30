@@ -14,17 +14,13 @@
         Public Shared Function Connect(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varSuccess As Boolean
             Try
-                varDatabaseEngineSqlite.Open(conCatalog)
-                varDataProperties = varDatabaseEngineSqlite.GetDatabaseProperties(dataproperties)
-                If varDataProperties.ConnectionDatabaseEngine = "MSSQL" AndAlso (varDatabaseEngineMssql2008.Open(varDataProperties)) Then
+                If dataproperties.ConnectionDatabaseEngine = "MSSQL" AndAlso (varDatabaseEngineMssql2008.Open(dataproperties)) Then
                     varSuccess = True
-                ElseIf varDataProperties.ConnectionDatabaseEngine = "MYSQL" AndAlso (varDatabaseEngineMysql.Open(varDataProperties)) Then
+                ElseIf dataproperties.ConnectionDatabaseEngine = "MYSQL" AndAlso (varDatabaseEngineMysql.Open(dataproperties)) Then
                     varSuccess = True
                 Else
                     varSuccess = False
                 End If
-
-                varDatabaseEngineSqlite.Close()
             Catch ex As Exception
                 MsgBox(ex.ToString)
                 varSuccess = False
@@ -68,11 +64,20 @@
         ''' <param name="datasetname">The dataset to fill with the database properties.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Sub GetDatabaseProperties(datasetname As System.Data.DataSet)
-            varQuery = "SELECT [DATABASEENGINE], [DBFORDATA], [CLIENT] FROM [serverlist] WHERE [DEFAULTCONNECTION] = 1"
+            varQuery = $"Select SERVERADDRESS, " &
+                       $"USERNAME, " &
+                       $"PASSWORD, " &
+                       $"SERVERPORT, " &
+                       $"DBFORDATA, " &
+                       $"DBFORFILE, " &
+                       $"DATABASEENGINE, " &
+                       $"CLIENT " &
+                       $"FROM serverlist " &
+                       $"WHERE DEFAULTCONNECTION = 1;"
 
-            varDatabaseEngineSqlite.Open(conCatalog)
-            varDatabaseEngineSqlite.FillDataSet(varQuery, datasetname, "DatabaseProperties")
-            varDatabaseEngineSqlite.Close()
+            'varDatabaseEngineSqlite.Open(conCatalog)
+            varDatabaseEngineSqlite.FillDataSet(varDataProperties, varQuery, datasetname, "DatabaseProperties")
+            'varDatabaseEngineSqlite.Close()
         End Sub
     End Class
 End Namespace

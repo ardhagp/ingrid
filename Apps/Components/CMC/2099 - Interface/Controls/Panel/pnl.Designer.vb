@@ -1,5 +1,5 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Pnl), "Pnl.ico")>
+    <System.Drawing.ToolboxBitmap(GetType(UI.Control.Pnl), "Pnl.ico")>
     Partial Class Pnl
         Inherits System.Windows.Forms.Panel
 

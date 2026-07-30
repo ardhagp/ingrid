@@ -1,7 +1,7 @@
 ﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMstandard
-        Inherits CMCv.UI.Canvas.FRMblank
+        Inherits UI.Canvas.FRMblank
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,16 +21,16 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Dim MySettings1 As CMCv.My.MySettings = New My.MySettings()
+            Dim MySettings1 As My.MySettings = New My.MySettings()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMstandard))
-            pnl_ = New CMCv.UI.Control.Pnl(components)
-            SLFLogo = New CMCv.UI.Control.Pbx(components)
-            SLFBackground = New CMCv.UI.Control.Pbx(components)
-            SLFNamaForm = New CMCv.UI.Control.Lbl(components)
-            SLFSubNamaForm = New CMCv.UI.Control.Lbl(components)
-            SLFStatus = New CMCv.UI.Control.Stt(components)
+            pnl_ = New UI.Control.Pnl(components)
+            SLFLogo = New UI.Control.Pbx(components)
+            SLFBackground = New UI.Control.Pbx(components)
+            SLFNamaForm = New UI.Control.Lbl(components)
+            SLFSubNamaForm = New UI.Control.Lbl(components)
+            SLFStatus = New UI.Control.Stt(components)
             SLFStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
-            SLFPanel = New CMCv.UI.Control.Pnl(components)
+            SLFPanel = New UI.Control.Pnl(components)
             pnl_.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
@@ -93,7 +93,7 @@
             SLFNamaForm.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             SLFNamaForm.AutoSize = True
             SLFNamaForm.BackColor = Drawing.Color.Transparent
-            SLFNamaForm.Font = New System.Drawing.Font("Segoe UI", 18F, Drawing.FontStyle.Bold)
+            SLFNamaForm.Font = New System.Drawing.Font("Segoe UI", 18.0F, Drawing.FontStyle.Bold)
             SLFNamaForm.ForeColor = Drawing.Color.White
             SLFNamaForm.Location = New System.Drawing.Point(88, 7)
             SLFNamaForm.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
@@ -109,7 +109,7 @@
             SLFSubNamaForm.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             SLFSubNamaForm.AutoSize = True
             SLFSubNamaForm.BackColor = Drawing.Color.Transparent
-            SLFSubNamaForm.Font = New System.Drawing.Font("Segoe UI", 9F)
+            SLFSubNamaForm.Font = New System.Drawing.Font("Segoe UI", 9.0F)
             SLFSubNamaForm.ForeColor = Drawing.Color.White
             SLFSubNamaForm.Location = New System.Drawing.Point(117, 58)
             SLFSubNamaForm.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
@@ -149,7 +149,7 @@
             ' 
             ' FRMstandard
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
             ClientSize = New System.Drawing.Size(1307, 1079)
             Controls.Add(SLFPanel)
             Controls.Add(SLFStatus)
@@ -168,13 +168,13 @@
             PerformLayout()
 
         End Sub
-        Public WithEvents SLFLogo As CMCv.UI.Control.Pbx
-        Public WithEvents SLFSubNamaForm As CMCv.UI.Control.lbl
-        Public WithEvents SLFNamaForm As CMCv.UI.Control.lbl
-        Public WithEvents SLFStatus As CMCv.UI.Control.stt
-        Public WithEvents pnl_ As CMCv.UI.Control.pnl
+        Public WithEvents SLFLogo As UI.Control.Pbx
+        Public WithEvents SLFSubNamaForm As UI.Control.Lbl
+        Public WithEvents SLFNamaForm As UI.Control.Lbl
+        Public WithEvents SLFStatus As UI.Control.Stt
+        Public WithEvents pnl_ As UI.Control.Pnl
         Friend WithEvents SLFStatusLabel As System.Windows.Forms.ToolStripStatusLabel
-        Public WithEvents SLFPanel As CMCv.UI.Control.pnl
-        Public WithEvents SLFBackground As CMCv.UI.Control.Pbx
+        Public WithEvents SLFPanel As UI.Control.Pnl
+        Public WithEvents SLFBackground As UI.Control.Pbx
     End Class
 End Namespace

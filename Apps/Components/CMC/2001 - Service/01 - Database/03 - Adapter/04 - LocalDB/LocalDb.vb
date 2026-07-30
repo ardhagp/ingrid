@@ -13,19 +13,19 @@
         ''' The DataGrid control where the data will be displayed.
         ''' </summary>
         ''' <returns>The DataGrid control.</returns>
-        Public Property DataGrid As CMCv.UI.Control.Dgn
+        Public Property DataGrid As UI.Control.Dgn
 
         ''' <summary>
         ''' The StatusBar control where the data will be displayed.
         ''' </summary>
         ''' <returns>The StatusBar control.</returns>
-        Public Property StatusBar As CMCv.UI.Control.Stt
+        Public Property StatusBar As UI.Control.Stt
 
         ''' <summary>
         ''' The Dropdown control where the data will be displayed.
         ''' </summary>
         ''' <returns>The Dropdown control.</returns>
-        Public Property Dropdown As CMCv.UI.Control.Cbo
+        Public Property Dropdown As UI.Control.Cbo
 
         ''' <summary>
         ''' The Chart control where the data will be displayed.

@@ -1,5 +1,5 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Lbl), "Lbl.ico")>
+    <System.Drawing.ToolboxBitmap(GetType(UI.Control.Lbl), "Lbl.ico")>
     Partial Class Lbl
         Inherits System.Windows.Forms.Label
 

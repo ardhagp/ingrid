@@ -26,24 +26,24 @@ Namespace UI.Control
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New Container()
-            pgb_PwdStrengthIndicator = New CMCv.UI.Control.Pgb(components)
-            LblPwdStrength_Text = New CMCv.UI.Control.lbl(components)
+            pgb_PwdStrengthIndicator = New UI.Control.Pgb(components)
+            LblPwdStrength_Text = New UI.Control.Lbl(components)
             SuspendLayout()
             ' 
             ' pgb_PwdStrengthIndicator
             ' 
-            pgb_PwdStrengthIndicator.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Left Or system.Windows.Forms.AnchorStyles.Right
+            pgb_PwdStrengthIndicator.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             pgb_PwdStrengthIndicator.ForeColor = Drawing.Color.DodgerBlue
             pgb_PwdStrengthIndicator.Location = New System.Drawing.Point(0, 0)
             pgb_PwdStrengthIndicator.Name = "pgb_PwdStrengthIndicator"
             pgb_PwdStrengthIndicator.Size = New System.Drawing.Size(225, 23)
-            pgb_PwdStrengthIndicator.XOGradientDirection = CMCV.UI.Control.ControlCodeBase.EnumGradientType.Horizontal
-            pgb_PwdStrengthIndicator.XOProgressBarColor = CMCV.UI.Control.ControlCodeBase.EnumColorFill.Solid
+            pgb_PwdStrengthIndicator.XOGradientDirection = UI.Control.ControlCodeBase.EnumGradientType.Horizontal
+            pgb_PwdStrengthIndicator.XOProgressBarColor = UI.Control.ControlCodeBase.EnumColorFill.Solid
             pgb_PwdStrengthIndicator.TabIndex = 0
             ' 
             ' LblPwdStrength_Text
             ' 
-            LblPwdStrength_Text.Anchor = system.Windows.Forms.AnchorStyles.Top Or system.Windows.Forms.AnchorStyles.Left Or system.Windows.Forms.AnchorStyles.Right
+            LblPwdStrength_Text.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             LblPwdStrength_Text.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
             LblPwdStrength_Text.Location = New System.Drawing.Point(3, 26)
             LblPwdStrength_Text.Name = "LblPwdStrength_Text"
@@ -55,7 +55,7 @@ Namespace UI.Control
             ' UPwdStrength
             ' 
             AutoScaleDimensions = New System.Drawing.SizeF(7.0F, 15.0F)
-            AutoScaleMode = system.Windows.Forms.AutoScaleMode.Font
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
             BackColor = Drawing.Color.Transparent
             Controls.Add(LblPwdStrength_Text)
             Controls.Add(pgb_PwdStrengthIndicator)
@@ -105,8 +105,8 @@ Namespace UI.Control
             LblPwdStrength_Text.Refresh()
         End Sub
 
-        Friend WithEvents pgb_PwdStrengthIndicator As CMCv.UI.Control.Pgb
-        Friend WithEvents LblPwdStrength_Text As CMCv.UI.Control.lbl
+        Friend WithEvents pgb_PwdStrengthIndicator As UI.Control.Pgb
+        Friend WithEvents LblPwdStrength_Text As UI.Control.Lbl
 
 #End Region
 

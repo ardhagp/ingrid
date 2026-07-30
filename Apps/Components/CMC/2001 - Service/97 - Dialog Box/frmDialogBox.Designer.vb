@@ -1,7 +1,7 @@
 ﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMdialogbox
-        Inherits CMCv.UI.Canvas.FRMstandardFooter
+        Inherits UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,16 +21,16 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            PnlBottomButtonYesNo = New CMCv.UI.Control.Pnl(components)
+            PnlBottomButtonYesNo = New UI.Control.Pnl(components)
             PictureBox1 = New System.Windows.Forms.PictureBox()
-            BtnYes = New CMCv.UI.Control.Btn(components)
-            BtnNo = New CMCv.UI.Control.Btn(components)
-            BtnCancel = New CMCv.UI.Control.Btn(components)
-            BtnOk = New CMCv.UI.Control.Btn(components)
-            PnlBottomButtonOkOnly = New CMCv.UI.Control.Pnl(components)
+            BtnYes = New UI.Control.Btn(components)
+            BtnNo = New UI.Control.Btn(components)
+            BtnCancel = New UI.Control.Btn(components)
+            BtnOk = New UI.Control.Btn(components)
+            PnlBottomButtonOkOnly = New UI.Control.Pnl(components)
             PictureBox2 = New System.Windows.Forms.PictureBox()
-            BtnOkOnly = New CMCv.UI.Control.Btn(components)
-            TxtMessage = New CMCv.UI.Control.Txt(components)
+            BtnOkOnly = New UI.Control.Btn(components)
+            TxtMessage = New UI.Control.Txt(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -101,7 +101,7 @@
             BtnYes.FlatAppearance.BorderSize = 2
             BtnYes.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnYes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-            BtnYes.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold)
+            BtnYes.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold)
             BtnYes.ForeColor = Drawing.Color.White
             BtnYes.Location = New System.Drawing.Point(752, 13)
             BtnYes.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -124,7 +124,7 @@
             BtnNo.FlatAppearance.BorderSize = 2
             BtnNo.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-            BtnNo.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold)
+            BtnNo.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold)
             BtnNo.ForeColor = Drawing.Color.White
             BtnNo.Location = New System.Drawing.Point(929, 13)
             BtnNo.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -147,7 +147,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-            BtnCancel.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold)
+            BtnCancel.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold)
             BtnCancel.ForeColor = Drawing.Color.White
             BtnCancel.Location = New System.Drawing.Point(929, 13)
             BtnCancel.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -170,7 +170,7 @@
             BtnOk.FlatAppearance.BorderSize = 2
             BtnOk.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-            BtnOk.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold)
+            BtnOk.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold)
             BtnOk.ForeColor = Drawing.Color.White
             BtnOk.Location = New System.Drawing.Point(752, 13)
             BtnOk.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -216,7 +216,7 @@
             BtnOkOnly.FlatAppearance.BorderSize = 2
             BtnOkOnly.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnOkOnly.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-            BtnOkOnly.Font = New System.Drawing.Font("Segoe UI", 12F, Drawing.FontStyle.Bold)
+            BtnOkOnly.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold)
             BtnOkOnly.ForeColor = Drawing.Color.White
             BtnOkOnly.Location = New System.Drawing.Point(929, 15)
             BtnOkOnly.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -235,7 +235,7 @@
             TxtMessage.AcceptsReturn = True
             TxtMessage.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             TxtMessage.BackColor = Drawing.SystemColors.Window
-            TxtMessage.Font = New System.Drawing.Font("Segoe UI", 12F)
+            TxtMessage.Font = New System.Drawing.Font("Segoe UI", 12.0F)
             TxtMessage.Location = New System.Drawing.Point(20, 29)
             TxtMessage.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             TxtMessage.MaxLength = 255
@@ -270,7 +270,7 @@
             ' 
             ' FRMdialogbox
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
             ClientSize = New System.Drawing.Size(1115, 608)
             ControlBox = False
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -293,16 +293,16 @@
             PerformLayout()
 
         End Sub
-        Friend WithEvents PnlBottomButtonYesNo As CMCv.UI.Control.pnl
-        Friend WithEvents BtnOk As CMCv.UI.Control.Btn
-        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
-        Friend WithEvents BtnYes As CMCv.UI.Control.Btn
-        Friend WithEvents BtnNo As CMCv.UI.Control.Btn
-        Friend WithEvents PnlBottomButtonOkOnly As CMCv.UI.Control.pnl
-        Friend WithEvents BtnOkOnly As CMCv.UI.Control.Btn
+        Friend WithEvents PnlBottomButtonYesNo As UI.Control.Pnl
+        Friend WithEvents BtnOk As UI.Control.Btn
+        Friend WithEvents BtnCancel As UI.Control.Btn
+        Friend WithEvents BtnYes As UI.Control.Btn
+        Friend WithEvents BtnNo As UI.Control.Btn
+        Friend WithEvents PnlBottomButtonOkOnly As UI.Control.Pnl
+        Friend WithEvents BtnOkOnly As UI.Control.Btn
         Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
         Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-        Friend WithEvents TxtMessage As CMCv.UI.Control.txt
+        Friend WithEvents TxtMessage As UI.Control.Txt
 
     End Class
 End Namespace

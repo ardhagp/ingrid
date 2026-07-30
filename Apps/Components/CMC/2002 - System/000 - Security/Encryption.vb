@@ -46,12 +46,12 @@
         ''' <returns>The encrypted message, or an empty string if an error occurs.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function Aes(message As String) As String
-            Dim varMessage As String = NETCore.Encrypt.EncryptProvider.AESEncrypt(message, CMCv.UI.varSalt)
+            Dim varMessage As String = NETCore.Encrypt.EncryptProvider.AESEncrypt(message, UI.varSalt)
             Try
                 Return varMessage
             Catch ex As Exception
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
                     .FromSender = "[AES] $\Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -65,7 +65,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
 
                 Return String.Empty
@@ -90,8 +90,8 @@
                     Return varCRCvalue.ToString(Globalization.CultureInfo.InvariantCulture)
                 End If
             Catch ex As Exception
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
                     .FromSender = "[CRC32] $\Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -105,7 +105,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
 
                 Return String.Empty
@@ -165,11 +165,11 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function Aes(message As String) As String
             Try
-                Dim varMessage As String = NETCore.Encrypt.EncryptProvider.AESDecrypt(message, CMCv.UI.varSalt)
+                Dim varMessage As String = NETCore.Encrypt.EncryptProvider.AESDecrypt(message, UI.varSalt)
                 Return varMessage
             Catch ex As Exception
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
                     .FromSender = "[AES] $\Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -183,7 +183,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
 
                 Return String.Empty
@@ -197,11 +197,11 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetSalt() As String
             Try
-                Dim varMessage As String = CMCv.UI.varSalt
+                Dim varMessage As String = UI.varSalt
                 Return varMessage
             Catch ex As Exception
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
                     .FromSender = "[GetSalt] $\Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -215,7 +215,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
 
                 Return String.Empty

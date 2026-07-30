@@ -340,7 +340,12 @@ Namespace UI.Canvas
                 LibSQL.Mainframe.Database.GetDatabaseProperties(varDatasetIngrid)
                 If varDatasetIngrid.Tables(dtDatabaseProperties).Rows.Count > 0 Then
                     With varDatasetIngrid.Tables(dtDatabaseProperties).Rows(0)
+                        varDataProperties.ConnectionServerAddress = .Item("SERVERADDRESS").ToString
+                        varDataProperties.ConnectionServerPort = CInt(.Item("SERVERPORT").ToString)
+                        varDataProperties.ConnectionUsername = .Item("USERNAME").ToString
+                        varDataProperties.ConnectionPassword = .Item("PASSWORD").ToString
                         varDataProperties.ConnectionDatabaseEngineE = CType([Enum].Parse(GetType(LibApp.Ingrid.Global.DatabaseEngine), .Item("DATABASEENGINE").ToString), LibApp.Ingrid.Global.DatabaseEngine)
+                        varDataProperties.ConnectionDatabaseEngine = .Item("DATABASEENGINE").ToString
                         varDataProperties.ConnectionDatabaseName = .Item("DBFORDATA").ToString
                         SetValue(varDataProperties.UserParameters, tClient.P_ClientCode, .Item("CLIENT").ToString)
                     End With

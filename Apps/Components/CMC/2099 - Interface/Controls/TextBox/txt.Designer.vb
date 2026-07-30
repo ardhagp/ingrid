@@ -1,5 +1,5 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Txt), "Txt.ico")>
+    <System.Drawing.ToolboxBitmap(GetType(UI.Control.Txt), "Txt.ico")>
     Partial Class Txt
         Inherits System.Windows.Forms.TextBox
 
