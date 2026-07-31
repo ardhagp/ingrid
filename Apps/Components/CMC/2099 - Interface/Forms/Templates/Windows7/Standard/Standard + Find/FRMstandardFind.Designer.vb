@@ -1,7 +1,7 @@
 ﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMstandardFind
-        Inherits CMCv.UI.Canvas.FRMstandard
+        Inherits UI.Canvas.FRMstandard
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,10 +21,10 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            PnlFind = New CMCv.UI.Control.pnl(components)
-            BtnClear = New CMCv.UI.Control.Btn(components)
-            LblFind = New CMCv.UI.Control.lbl(components)
-            TxtFind = New CMCv.UI.Control.txt(components)
+            PnlFind = New UI.Control.pnl(components)
+            BtnClear = New UI.Control.Btn(components)
+            LblFind = New UI.Control.lbl(components)
+            TxtFind = New UI.Control.txt(components)
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
@@ -89,7 +89,7 @@
             BtnClear.TabIndex = 801
             BtnClear.Text = "Clear"
             BtnClear.UseVisualStyleBackColor = False
-            BtnClear.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.No
+            BtnClear.XOButtonType = UI.Control.ControlCodeBase.buttonType.No
             BtnClear.XOShowBorderOnFocus = False
             BtnClear.XOValidateAllInput = False
             BtnClear.XOValidateAllInputTag = Nothing
@@ -124,13 +124,13 @@
             TxtFind.XOHighlightColor = Drawing.Color.LightYellow
             TxtFind.XOIsBlank = True
             TxtFind.XOIsPlaceholder = True
-            TxtFind.XOLetterCase = CMCV.UI.Control.ControlCodeBase.enumLetterCase.Normal
+            TxtFind.XOLetterCase = UI.Control.ControlCodeBase.enumLetterCase.Normal
             TxtFind.XOSelectOnFocus = False
             TxtFind.XOPasswordLengthMin = 8
             TxtFind.XOPasswordStrengthCalc = False
             TxtFind.XOPasswordStrengthScore = 0
             TxtFind.XOPasswordStrengthText = Nothing
-            TxtFind.XORestriction = CMCV.UI.Control.ControlCodeBase.enumRestriction.None
+            TxtFind.XORestriction = UI.Control.ControlCodeBase.enumRestriction.None
             TxtFind.XOPlaceholderText = "Type then press Enter"
             TxtFind.XOSqlText = Nothing
             TxtFind.XOIsReplaceEmptyString = False
@@ -156,9 +156,9 @@
 
         End Sub
 
-        Public WithEvents PnlFind As CMCv.UI.Control.pnl
-        Public WithEvents BtnClear As CMCv.UI.Control.Btn
-        Public WithEvents LblFind As CMCv.UI.Control.lbl
-        Public WithEvents TxtFind As CMCv.UI.Control.txt
+        Public WithEvents PnlFind As UI.Control.pnl
+        Public WithEvents BtnClear As UI.Control.Btn
+        Public WithEvents LblFind As UI.Control.lbl
+        Public WithEvents TxtFind As UI.Control.txt
     End Class
 End Namespace

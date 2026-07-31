@@ -1,7 +1,7 @@
 ﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMstandardFindFooter
-        Inherits CMCv.UI.Canvas.FRMstandardFind
+        Inherits UI.Canvas.FRMstandardFind
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -21,7 +21,7 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            PnlBottomButton = New CMCv.UI.Control.pnl(components)
+            PnlBottomButton = New UI.Control.pnl(components)
             imgLine = New System.Windows.Forms.PictureBox()
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -115,7 +115,7 @@
 
         End Sub
 
-        Public WithEvents PnlBottomButton As CMCv.ui.control.pnl
+        Public WithEvents PnlBottomButton As ui.control.pnl
         Friend WithEvents imgLine As system.Windows.Forms.PictureBox
     End Class
 End Namespace

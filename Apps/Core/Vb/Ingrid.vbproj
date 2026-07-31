@@ -255,6 +255,10 @@
     <Compile Update="030. Form\020. Commands\004. Management\02. Master\CDIN - Departements\FRMcdinEditor.Designer.vb">
       <DependentUpon>FRMcdinEditor.vb</DependentUpon>
     </Compile>
+    <Compile Update="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\Addins\FRMeplsPosition - Copy.Designer.vb">
+      <DependentUpon>FRMeplsPosition.vb</DependentUpon>
+    </Compile>
+    <Compile Update="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\Addins\FRMeplsEmploymentType.vb" />
     <Compile Update="030. Form\020. Commands\004. Management\02. Master\EPLS - Employee List\Addins\FRMeplsPosition.Designer.vb">
       <DependentUpon>FRMeplsPosition.vb</DependentUpon>
     </Compile>

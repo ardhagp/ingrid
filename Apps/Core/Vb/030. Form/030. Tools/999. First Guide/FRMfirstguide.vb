@@ -78,28 +78,28 @@ Namespace UI.Canvas
             Gbx_Company.Visible = True
             Gbx_Login.Visible = False
 
-            EmploymentType1.EmploymentTypeId = CMCv.Security.Encrypt.MD5("PERMANENT")
-            EmploymentType1.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("PERMANENT")
+            EmploymentType1.EmploymentTypeId = CMCv.Security.Encryption.MD5("PERMANENT")
+            EmploymentType1.EmploymentTypeCode = CMCv.Security.Encryption.CRC32("PERMANENT")
             EmploymentType1.EmploymentTypeName = "PERMANENT"
             EmploymentType1.EmploymentTypeDescription = "Permanent Employment Type"
 
-            EmploymentType2.EmploymentTypeId = CMCv.Security.Encrypt.MD5("SERVICE CONTRACT")
-            EmploymentType2.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("SERVICE CONTRACT")
+            EmploymentType2.EmploymentTypeId = CMCv.Security.Encryption.MD5("SERVICE CONTRACT")
+            EmploymentType2.EmploymentTypeCode = CMCv.Security.Encryption.CRC32("SERVICE CONTRACT")
             EmploymentType2.EmploymentTypeName = "SERVICE CONTRACT"
             EmploymentType2.EmploymentTypeDescription = "Service Contract Employment Type"
 
-            EmploymentType3.EmploymentTypeId = CMCv.Security.Encrypt.MD5("TPC")
-            EmploymentType3.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("TPC")
+            EmploymentType3.EmploymentTypeId = CMCv.Security.Encryption.MD5("TPC")
+            EmploymentType3.EmploymentTypeCode = CMCv.Security.Encryption.CRC32("TPC")
             EmploymentType3.EmploymentTypeName = "TPC"
             EmploymentType3.EmploymentTypeDescription = "Third Party Contract Employment Type"
 
-            EmploymentType4.EmploymentTypeId = CMCv.Security.Encrypt.MD5("INTERN")
-            EmploymentType4.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("INTERN")
+            EmploymentType4.EmploymentTypeId = CMCv.Security.Encryption.MD5("INTERN")
+            EmploymentType4.EmploymentTypeCode = CMCv.Security.Encryption.CRC32("INTERN")
             EmploymentType4.EmploymentTypeName = "INTERN"
             EmploymentType4.EmploymentTypeDescription = "Intern Employment Type"
 
-            EmploymentType5.EmploymentTypeId = CMCv.Security.Encrypt.MD5("DIRECT CONTRACT")
-            EmploymentType5.EmploymentTypeCode = CMCv.Security.Encrypt.CRC32("DIRECT CONTRACT")
+            EmploymentType5.EmploymentTypeId = CMCv.Security.Encryption.MD5("DIRECT CONTRACT")
+            EmploymentType5.EmploymentTypeCode = CMCv.Security.Encryption.CRC32("DIRECT CONTRACT")
             EmploymentType5.EmploymentTypeName = "DIRECT CONTRACT"
             EmploymentType5.EmploymentTypeDescription = "Direct Contract Type"
 

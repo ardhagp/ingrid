@@ -7,7 +7,7 @@ Namespace UI.View
         Implements IDisposable
         Private disposedValue As Boolean
 
-        Private ReadOnly Com_menu As New CMCv.UI.Control.mnu
+        Private ReadOnly Com_menu As New UI.Control.mnu
         Private varItem As ToolStripMenuItem()
         Private varItemSubmenu As ToolStripMenuItem()
 
@@ -366,19 +366,19 @@ Namespace UI.View
             End Try
         End Sub
 
-        Public Sub ShowMenuData(Optional value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
+        Public Sub ShowMenuData(Optional value As ShowItem = CType(False, UI.View.MenuStrip.ShowItem))
             varItem(0).Visible = CType(value, Boolean)
         End Sub
 
-        Public Sub ShowMenuTools(Optional value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
+        Public Sub ShowMenuTools(Optional value As ShowItem = CType(False, UI.View.MenuStrip.ShowItem))
             varItem(1).Visible = CType(value, Boolean)
         End Sub
 
-        Public Sub ShowMenuReports(Optional value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
+        Public Sub ShowMenuReports(Optional value As ShowItem = CType(False, UI.View.MenuStrip.ShowItem))
             varItem(2).Visible = CType(value, Boolean)
         End Sub
 
-        Public Sub ShowMenuFile(Optional value As ShowItem = CType(False, CMCv.UI.View.MenuStrip.ShowItem))
+        Public Sub ShowMenuFile(Optional value As ShowItem = CType(False, UI.View.MenuStrip.ShowItem))
             varItem(3).Visible = CType(value, Boolean)
         End Sub
 
@@ -434,7 +434,7 @@ Namespace UI.View
         Public Event ContextCopy()
 #End Region
         <SupportedOSPlatform("windows")>
-        Public Sub LoadInGrid(grid As CMCv.UI.Control.dgn)
+        Public Sub LoadInGrid(grid As UI.Control.dgn)
             varContextMenu = New ContextMenuStrip
             ReDim varItem(1)
 

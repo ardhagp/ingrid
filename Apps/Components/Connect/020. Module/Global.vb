@@ -1,14 +1,12 @@
-﻿Imports CMCv.Database.Engine
-Imports CMCv.Database.Adapter
-Imports System.Reflection
-Imports System.Runtime.Versioning
-
-<SupportedOSPlatform("windows")>
+﻿''' <summary>
+''' This module contains global variables, functions, and structures used throughout the application. It includes database engine instances, security encryption, logging, and utility functions for displaying forms and message boxes.
+''' </summary>
+<System.Runtime.Versioning.SupportedOSPlatform("windows")>
 Module [Global]
-    Public varDatabaseEngineSqlite As New SQLiteV3
-    Public varDatabaseRequestSqlite(1) As SQLite.Display.Request
+    Public varDatabaseEngineSqlite As New CMCv.Database.Engine.SqliteV3
+    Public varDatabaseRequestSqlite(1) As CMCv.Database.Adapter.Sqlite.Display.Request
 
-    Public varSecurityEncryption As New Security.Encrypt
+    Public varSecurityEncryption As New Security.Encryption
     Public proLog As New Ladybug.Log.Fields
 
     Public varMajor As Integer = My.Application.Info.Version.Major
@@ -22,7 +20,6 @@ Module [Global]
 
     Public varDataProperties As New LibApp.Ingrid.Global.Properties
 
-#Region "Custom Message Box"
     ''' <summary>
     ''' Display custom message box with specified parameters
     ''' </summary>
@@ -40,7 +37,6 @@ Module [Global]
         MSG.Dispose()
         Return result
     End Function
-#End Region
 
     ''' <summary>
     ''' Enable double buffering on DataGridView to reduce flickering
@@ -49,9 +45,9 @@ Module [Global]
     Public Sub DblBuffer(gridview As DataGridView)
         Try
             Dim varSystemType As Type = gridview.GetType()
-            Dim varPropertyInfo As PropertyInfo = varSystemType.GetProperty("DoubleBuffered",
-                                                                      BindingFlags.Instance Or
-                                                                      BindingFlags.NonPublic)
+            Dim varPropertyInfo As System.Reflection.PropertyInfo = varSystemType.GetProperty("DoubleBuffered",
+                                                                      System.Reflection.BindingFlags.Instance Or
+                                                                      System.Reflection.BindingFlags.NonPublic)
             varPropertyInfo.SetValue(gridview, True, Nothing)
         Catch ex As Exception
             With proLog

@@ -87,7 +87,7 @@
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(509, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -110,7 +110,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(686, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -126,7 +126,7 @@
             ' 
             ' TxtDeptCode
             ' 
-            TxtDeptCode.Font = New Font("Segoe UI", 12.0F)
+            TxtDeptCode.Font = New Font("Segoe UI", 12F)
             TxtDeptCode.Location = New Point(280, 87)
             TxtDeptCode.Margin = New Padding(6, 5, 6, 5)
             TxtDeptCode.MaxLength = 255
@@ -150,7 +150,7 @@
             TxtDeptCode.XOPasswordStrengthScore = 0
             TxtDeptCode.XOPasswordStrengthText = Nothing
             TxtDeptCode.XOPlaceholderText = "Type then press Enter"
-            TxtDeptCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
+            TxtDeptCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberNoSpace
             TxtDeptCode.XOSelectOnFocus = True
             TxtDeptCode.XOSqlText = ""
             ' 
@@ -159,7 +159,7 @@
             CboCompany.DropDownStyle = ComboBoxStyle.DropDownList
             CboCompany.DropDownWidth = 350
             CboCompany.FlatStyle = FlatStyle.Flat
-            CboCompany.Font = New Font("Segoe UI", 12.0F)
+            CboCompany.Font = New Font("Segoe UI", 12F)
             CboCompany.FormattingEnabled = True
             CboCompany.Location = New Point(280, 20)
             CboCompany.Margin = New Padding(6, 5, 6, 5)
@@ -169,7 +169,7 @@
             ' 
             ' TxtDeptName
             ' 
-            TxtDeptName.Font = New Font("Segoe UI", 12.0F)
+            TxtDeptName.Font = New Font("Segoe UI", 12F)
             TxtDeptName.Location = New Point(280, 153)
             TxtDeptName.Margin = New Padding(6, 5, 6, 5)
             TxtDeptName.MaxLength = 255
@@ -193,13 +193,13 @@
             TxtDeptName.XOPasswordStrengthScore = 0
             TxtDeptName.XOPasswordStrengthText = Nothing
             TxtDeptName.XOPlaceholderText = "Type then press Enter"
-            TxtDeptName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextAndNumber
+            TxtDeptName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberAndSpace
             TxtDeptName.XOSelectOnFocus = False
             TxtDeptName.XOSqlText = ""
             ' 
             ' TxtDescription
             ' 
-            TxtDescription.Font = New Font("Segoe UI", 12.0F)
+            TxtDescription.Font = New Font("Segoe UI", 12F)
             TxtDescription.Location = New Point(280, 222)
             TxtDescription.Margin = New Padding(6, 5, 6, 5)
             TxtDescription.MaxLength = 255
@@ -286,7 +286,7 @@
             ChkAddNew.AutoSize = True
             ChkAddNew.BackColor = Color.Transparent
             ChkAddNew.FlatStyle = FlatStyle.Flat
-            ChkAddNew.Font = New Font("Segoe UI", 12.0F)
+            ChkAddNew.Font = New Font("Segoe UI", 12F)
             ChkAddNew.ForeColor = Color.Tomato
             ChkAddNew.Location = New Point(280, 33)
             ChkAddNew.Name = "ChkAddNew"
@@ -297,7 +297,7 @@
             ' 
             ' FRMcdinEditor
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(873, 680)
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMcdinEditor"

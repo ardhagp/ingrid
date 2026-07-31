@@ -1,5 +1,5 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Gbx), "gbx.ico")>
+    <System.Drawing.ToolboxBitmap(GetType(UI.Control.Gbx), "gbx.ico")>
     Partial Class Gbx
         Inherits System.Windows.Forms.GroupBox
 

@@ -5,7 +5,6 @@ Imports System.Runtime.Versioning
 Namespace UI.Canvas
     Public Class FRMconnEditor
 
-#Region "Declaration"
         Private WithEvents ComponentMainframeMenu As New CMCv.UI.View.MenuStrip
 
         Public Event EventRecordSaved()
@@ -13,9 +12,7 @@ Namespace UI.Canvas
         Private varIsPasswordChange As Boolean
         Private varOldPassword As String
         Private varConnectionName As String
-#End Region
 
-#Region "Functions and Subs"
         Public Sub New()
 
             ' This call is required by the designer.
@@ -79,7 +76,7 @@ Namespace UI.Canvas
             If TxtAddress.Text = String.Empty Then
                 varValidScore += 1
             End If
-            If TxtPort.Text = CStr(0) Then
+            If CInt(TxtPort.Text) <= 0 Then
                 varValidScore += 1
             End If
             If TxtUsername.Text = String.Empty Then
@@ -181,9 +178,6 @@ Namespace UI.Canvas
             End Try
         End Function
 
-#End Region
-
-#Region "Form Events"
         ''' <summary>
         ''' Loads existing connection data into the form fields based on the RowID.
         ''' </summary>
@@ -196,7 +190,7 @@ Namespace UI.Canvas
             CboDBEngine.DataSource = [Enum].GetValues(GetType(LibApp.Ingrid.Global.DatabaseEngine))
 
             If (varDataProperties.ConnectionIsNew) Then
-                varDataProperties.ConnectionId = CMCv.Security.Encrypt.MD5()
+                varDataProperties.ConnectionId = CMCv.Security.Encryption.MD5()
                 ChkIsMasked.Visible = True
             Else
                 ChkIsMasked.Visible = False
@@ -204,9 +198,7 @@ Namespace UI.Canvas
             End If
 
         End Sub
-#End Region
 
-#Region "Control Events"
         <SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
@@ -269,10 +261,10 @@ Namespace UI.Canvas
             End If
 
             Dim exportConn As String
-            exportConn = $"{TxtConnectionName.Text.Trim}||{CboDBEngine.Text.Trim}||{CMCv.Security.Encrypt.Aes(TxtAddress.Text.Trim)}||{CMCv.Security.Encrypt.Aes(TxtPort.Text)}||{CMCv.Security.Encrypt.Aes(TxtUsername.Text.Trim)}||{CMCv.Security.Encrypt.Aes(TxtPassword.Text)}||{CMCv.Security.Encrypt.Aes(TxtDatabaseName.Text.Trim)}||{Convert.ToString(ChkDefault.Checked)}||{Convert.ToString(ChkIsMasked.Checked)}||{TxtClient.Text.Trim}"
+            exportConn = $"{TxtConnectionName.Text.Trim}||{CboDBEngine.Text.Trim}||{CMCv.Security.Encryption.Aes(TxtAddress.Text.Trim)}||{CMCv.Security.Encryption.Aes(TxtPort.Text)}||{CMCv.Security.Encryption.Aes(TxtUsername.Text.Trim)}||{CMCv.Security.Encryption.Aes(TxtPassword.Text)}||{CMCv.Security.Encryption.Aes(TxtDatabaseName.Text.Trim)}||{Convert.ToString(ChkDefault.Checked)}||{Convert.ToString(ChkIsMasked.Checked)}||{TxtClient.Text.Trim}"
 
-            txtImportContent.Text = CMCv.Security.Encrypt.Aes(exportConn)
-            varConnectionName = CMCv.Security.Encrypt.CRC32(TxtConnectionName.Text.Trim)
+            txtImportContent.Text = CMCv.Security.Encryption.Aes(exportConn)
+            varConnectionName = CMCv.Security.Encryption.CRC32(TxtConnectionName.Text.Trim)
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -377,7 +369,5 @@ Namespace UI.Canvas
                 End Try
             End If
         End Sub
-#End Region
-
     End Class
 End Namespace

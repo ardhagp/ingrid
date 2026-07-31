@@ -1,6 +1,5 @@
 ﻿Namespace UI.Canvas
     Public Class FRMeplsEditor
-#Region "Declaration"
         Public Event EventRecordSaved()
 
         Private WithEvents Frm_epls_AddinPosition As New FRMeplsPosition
@@ -8,11 +7,7 @@
         Private varThisModuleId As Long = 0
         Private Const varThisModuleCode As String = "EPLS"
         Private Const varMessageCannotSave As String = "Cannot save your record."
-#End Region
 
-#Region "Subs Collections"
-
-#End Region
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMeplsEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -29,7 +24,7 @@
                 ChkAddNew.Visible = True
                 ChkAddNew.Enabled = True
                 CboGender.SelectedIndex = 0
-                SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeToken, CMCv.Security.Encrypt.MD5())
+                SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeToken, CMCv.Security.Encryption.MD5())
                 SetValue(varDataProperties.AllParameters, tPosition.P_PositionId, DBNull.Value)
             Else
                 ChkAddNew.Visible = False
@@ -102,22 +97,6 @@
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Call CheckAllInputs()
 
-            If Not CheckEmployeePersonalID() Then
-                Return
-            End If
-
-            If Not CheckEmployeeMandatoryFields() Then
-                Return
-            End If
-
-            If Not CheckDuplicateEmployeeNumber() Then
-                Return
-            End If
-
-            If Not CheckEmployeePhoto() Then
-                Return
-            End If
-
             With varDataProperties
                 SetValue(.AllParameters, tEmployee.P_EmployeePersonalIdNumber, IIf(TxtPersonalID.XOSqlText = String.Empty OrElse TxtPersonalID.XOSqlText = "", DBNull.Value, TxtPersonalID.XOSqlText))
                 SetValue(.AllParameters, tEmployee.P_EmployeeFullName, IIf(TxtFullName.XOSqlText = String.Empty OrElse TxtFullName.XOSqlText = "", DBNull.Value, TxtFullName.XOSqlText))
@@ -133,6 +112,22 @@
                 ' Please update this method when EmploymentType is ready
                 SetValue(.AllParameters, tEmployee.P_EmployeeEmploymentType, IIf(TxtEmploymentType.XOSqlText = String.Empty OrElse TxtEmploymentType.XOSqlText = "", DBNull.Value, DBNull.Value))
             End With
+
+            If Not CheckEmployeePersonalID() Then
+                Return
+            End If
+
+            If Not CheckEmployeeMandatoryFields() Then
+                Return
+            End If
+
+            If Not CheckDuplicateEmployeeNumber() Then
+                Return
+            End If
+
+            If Not CheckEmployeePhoto() Then
+                Return
+            End If
 
             If CMDepls.Editor.PushData(varDataProperties, varDataProperties.AllParameters) Then
                 UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
@@ -175,7 +170,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckEmployeeMandatoryFields() As Boolean
             If (TxtPersonalID.XOSqlText = String.Empty OrElse IsDBNull(varDataProperties.AllParameters(tPosition.P_PositionId)) OrElse varDataProperties.AllParameters(tPosition.P_PositionId) Is Nothing OrElse (TxtEmployeeNumber.XOSqlText = String.Empty) OrElse (TxtFullName.XOSqlText = String.Empty)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Ensure that the Personal ID, Full Name, Company, Department, Position and Employee Number fields are correctly completed.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Ensure that the Personal ID, Full Name, Company, Department, Position and Employee Code fields are correctly completed.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return False
             Else
                 Return True
@@ -189,7 +184,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckDuplicateEmployeeNumber() As Boolean
             If varDataProperties.EmployeeIsNew AndAlso CMDepls.Editor.IsEmployeeNumberDuplicate(varDataProperties) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "This Employee Number is already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "This Employee Code already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return False
             Else
                 Return True
@@ -203,7 +198,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckEmployeePhoto() As Boolean
             If Not varDataProperties.EmployeeIsHavePhoto Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Please pick employee photo.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, varMessageCannotSave & Environment.NewLine & "Please select employee photo.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return False
             Else
                 Return True
@@ -237,6 +232,8 @@
                     Return
                 End If
 
+                Dim ext As String = IO.Path.GetExtension(OfdPhoto.FileName).ToLower()
+
                 If (CMCv.OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, varMaxUploadSizePhoto, True)) Then
                     varDataProperties.EmployeePhoto = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(OfdPhoto.FileName)
                     pctbxPhoto.Image = varDataProperties.EmployeePhoto
@@ -244,6 +241,7 @@
                     varDataProperties.EmployeeIsHavePhoto = True
                     BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
                     BtnRemovePhoto.Enabled = True
+                    SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentExtension, ext)
                 End If
             Else
                 varDataProperties.EmployeeIsHavePhoto = False
@@ -280,7 +278,29 @@
                 Else
                     pctbxPhoto.Image = My.Resources.FEMALE_001_512_icon
                 End If
+                SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentExtension, GetImageExtension(pctbxPhoto.Image))
             End If
         End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Function GetImageExtension(image As Image) As String
+            If image Is Nothing Then
+                Return String.Empty
+            End If
+            Dim format As Imaging.ImageFormat = image.RawFormat
+            If format.Equals(Imaging.ImageFormat.Jpeg) Then
+                Return ".jpg"
+            ElseIf format.Equals(Imaging.ImageFormat.Png) Then
+                Return ".png"
+            ElseIf format.Equals(Imaging.ImageFormat.Gif) Then
+                Return ".gif"
+            ElseIf format.Equals(Imaging.ImageFormat.Bmp) Then
+                Return ".bmp"
+            ElseIf format.Equals(Imaging.ImageFormat.Tiff) Then
+                Return ".tiff"
+            Else
+                Return String.Empty
+            End If
+        End Function
     End Class
 End Namespace

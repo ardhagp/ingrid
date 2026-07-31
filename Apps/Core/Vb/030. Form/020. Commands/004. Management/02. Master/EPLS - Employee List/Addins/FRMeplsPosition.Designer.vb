@@ -21,23 +21,23 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Pnl1 = New CMCv.UI.Control.Pnl(components)
             BtnClear = New CMCv.UI.Control.Btn(components)
             Lbl1 = New CMCv.UI.Control.Lbl(components)
             TxtFind = New CMCv.UI.Control.Txt(components)
             DgnAddinPosition = New CMCv.UI.Control.Dgn(components)
+            BtnOk = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
             position_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
             company_name = New DataGridViewTextBoxColumn()
-            departement_code = New DataGridViewTextBoxColumn()
-            departement_name = New DataGridViewTextBoxColumn()
+            department_code = New DataGridViewTextBoxColumn()
+            department_name = New DataGridViewTextBoxColumn()
             position_code = New DataGridViewTextBoxColumn()
             position_name = New DataGridViewTextBoxColumn()
-            BtnOk = New CMCv.UI.Control.Btn(components)
-            BtnCancel = New CMCv.UI.Control.Btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -51,7 +51,7 @@
             ' 
             PnlBottomButton.Controls.Add(BtnCancel)
             PnlBottomButton.Controls.Add(BtnOk)
-            PnlBottomButton.Location = New Point(0, 699)
+            PnlBottomButton.Location = New Point(0, 693)
             PnlBottomButton.Margin = New Padding(8, 12, 8, 12)
             PnlBottomButton.Size = New Size(1095, 96)
             PnlBottomButton.Controls.SetChildIndex(BtnOk, 0)
@@ -59,15 +59,13 @@
             ' 
             ' pnl_
             ' 
-            pnl_.Margin = New Padding(8, 12, 8, 12)
-            pnl_.Size = New Size(1095, 104)
+            pnl_.Size = New Size(1095, 110)
             ' 
             ' SLFPanel
             ' 
             SLFPanel.Controls.Add(DgnAddinPosition)
             SLFPanel.Controls.Add(Pnl1)
-            SLFPanel.Margin = New Padding(8, 12, 8, 12)
-            SLFPanel.Size = New Size(1095, 795)
+            SLFPanel.Size = New Size(1095, 789)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(Pnl1, 0)
             SLFPanel.Controls.SetChildIndex(DgnAddinPosition, 0)
@@ -92,7 +90,7 @@
             BtnClear.FlatAppearance.BorderSize = 2
             BtnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnClear.FlatStyle = FlatStyle.Flat
-            BtnClear.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnClear.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnClear.ForeColor = Color.White
             BtnClear.Location = New Point(437, 4)
             BtnClear.Margin = New Padding(5, 6, 5, 6)
@@ -109,7 +107,7 @@
             ' Lbl1
             ' 
             Lbl1.AutoSize = True
-            Lbl1.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            Lbl1.Font = New Font("Segoe UI", 12F)
             Lbl1.Location = New Point(20, 25)
             Lbl1.Margin = New Padding(5, 0, 5, 0)
             Lbl1.Name = "Lbl1"
@@ -120,7 +118,7 @@
             ' 
             ' TxtFind
             ' 
-            TxtFind.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+            TxtFind.Font = New Font("Segoe UI", 12F)
             TxtFind.Location = New Point(105, 19)
             TxtFind.Margin = New Padding(5, 6, 5, 6)
             TxtFind.MaxLength = 255
@@ -129,145 +127,68 @@
             TxtFind.TabIndex = 4
             TxtFind.Tag = "txt"
             TxtFind.XOAutoTrim = False
+            TxtFind.XOHighlightColor = Color.LightYellow
+            TxtFind.XOHighlightOnFocus = False
+            TxtFind.XOIsBlank = True
             TxtFind.XOIsMandatory = False
+            TxtFind.XOIsPlaceholder = False
+            TxtFind.XOIsReplaceEmptyString = False
+            TxtFind.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtFind.XOMandatoryBgColor = Color.LightPink
             TxtFind.XOMandatoryBgColorDefault = Color.White
-            TxtFind.XOHighlightOnFocus = False
-            TxtFind.XOHighlightColor = Color.LightYellow
-            TxtFind.XOIsBlank = True
-            TxtFind.XOIsPlaceholder = False
-            TxtFind.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
-            TxtFind.XOSelectOnFocus = False
+            TxtFind.XOMandatoryMessage = Nothing
             TxtFind.XOPasswordLengthMin = 8
             TxtFind.XOPasswordStrengthCalc = False
             TxtFind.XOPasswordStrengthScore = 0
             TxtFind.XOPasswordStrengthText = Nothing
-            TxtFind.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtFind.XOPlaceholderText = "Type then press Enter"
+            TxtFind.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtFind.XOSelectOnFocus = False
             TxtFind.XOSqlText = Nothing
-            TxtFind.XOIsReplaceEmptyString = False
-            TxtFind.XOMandatoryMessage = Nothing
             ' 
             ' DgnAddinPosition
             ' 
             DgnAddinPosition.AllowUserToAddRows = False
             DgnAddinPosition.AllowUserToDeleteRows = False
-            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(214), CByte(199), CByte(136))
-            DgnAddinPosition.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(249), CByte(211), CByte(170))
+            DgnAddinPosition.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnAddinPosition.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnAddinPosition.BorderStyle = BorderStyle.None
             DgnAddinPosition.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnAddinPosition.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle5.BackColor = Color.YellowGreen
-            DataGridViewCellStyle5.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
-            DataGridViewCellStyle5.SelectionForeColor = Color.Black
-            DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
-            DgnAddinPosition.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.YellowGreen
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
+            DataGridViewCellStyle2.SelectionForeColor = Color.Black
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            DgnAddinPosition.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             DgnAddinPosition.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-            DgnAddinPosition.Columns.AddRange(New DataGridViewColumn() {position_id, company_code, company_name, departement_code, departement_name, position_code, position_name})
+            DgnAddinPosition.Columns.AddRange(New DataGridViewColumn() {position_id, company_code, company_name, department_code, department_name, position_code, position_name})
             DgnAddinPosition.Dock = DockStyle.Fill
             DgnAddinPosition.EnableHeadersVisualStyles = False
-            DgnAddinPosition.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+            DgnAddinPosition.Font = New Font("Verdana", 8F)
             DgnAddinPosition.Location = New Point(0, 88)
             DgnAddinPosition.Margin = New Padding(5, 6, 5, 6)
             DgnAddinPosition.Name = "DgnAddinPosition"
             DgnAddinPosition.ReadOnly = True
             DgnAddinPosition.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle6.BackColor = Color.YellowGreen
-            DataGridViewCellStyle6.Font = New Font("Verdana", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
-            DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
-            DataGridViewCellStyle6.SelectionForeColor = Color.Black
-            DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-            DgnAddinPosition.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle3.BackColor = Color.YellowGreen
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
+            DataGridViewCellStyle3.SelectionForeColor = Color.Black
+            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+            DgnAddinPosition.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
             DgnAddinPosition.RowHeadersWidth = 62
             DgnAddinPosition.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-            DgnAddinPosition.Size = New Size(1095, 611)
+            DgnAddinPosition.Size = New Size(1095, 605)
             DgnAddinPosition.StandardTab = True
             DgnAddinPosition.TabIndex = 1005
             DgnAddinPosition.XOIsGroupFirstRow = False
             DgnAddinPosition.XOIsShowRowNumber = True
-            ' 
-            ' position_id
-            ' 
-            position_id.DataPropertyName = "position_id"
-            position_id.Frozen = True
-            position_id.HeaderText = "ID"
-            position_id.MinimumWidth = 8
-            position_id.Name = "position_id"
-            position_id.ReadOnly = True
-            position_id.SortMode = DataGridViewColumnSortMode.Programmatic
-            position_id.Width = 75
-            ' 
-            ' company_code
-            ' 
-            company_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            company_code.DataPropertyName = "company_code"
-            company_code.HeaderText = "Company Code"
-            company_code.MinimumWidth = 8
-            company_code.Name = "company_code"
-            company_code.ReadOnly = True
-            company_code.SortMode = DataGridViewColumnSortMode.Programmatic
-            company_code.Width = 151
-            ' 
-            ' company_name
-            ' 
-            company_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            company_name.DataPropertyName = "company_name"
-            company_name.HeaderText = "Company Name"
-            company_name.MinimumWidth = 8
-            company_name.Name = "company_name"
-            company_name.ReadOnly = True
-            company_name.SortMode = DataGridViewColumnSortMode.Programmatic
-            company_name.Width = 156
-            ' 
-            ' departement_code
-            ' 
-            departement_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            departement_code.DataPropertyName = "departement_code"
-            departement_code.HeaderText = "Dept. Code"
-            departement_code.MinimumWidth = 8
-            departement_code.Name = "departement_code"
-            departement_code.ReadOnly = True
-            departement_code.SortMode = DataGridViewColumnSortMode.Programmatic
-            departement_code.Width = 87
-            ' 
-            ' departement_name
-            ' 
-            departement_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            departement_name.DataPropertyName = "departement_name"
-            departement_name.HeaderText = "Dept. Name"
-            departement_name.MinimumWidth = 8
-            departement_name.Name = "departement_name"
-            departement_name.ReadOnly = True
-            departement_name.SortMode = DataGridViewColumnSortMode.Programmatic
-            departement_name.Width = 129
-            ' 
-            ' position_code
-            ' 
-            position_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            position_code.DataPropertyName = "position_code"
-            position_code.HeaderText = "Position Code"
-            position_code.MinimumWidth = 8
-            position_code.Name = "position_code"
-            position_code.ReadOnly = True
-            position_code.SortMode = DataGridViewColumnSortMode.Programmatic
-            position_code.Width = 142
-            ' 
-            ' position_name
-            ' 
-            position_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            position_name.DataPropertyName = "position_name"
-            position_name.HeaderText = "Postition Name"
-            position_name.MinimumWidth = 8
-            position_name.Name = "position_name"
-            position_name.ReadOnly = True
-            position_name.SortMode = DataGridViewColumnSortMode.Programmatic
-            position_name.Width = 154
             ' 
             ' BtnOk
             ' 
@@ -278,7 +199,7 @@
             BtnOk.FlatAppearance.BorderSize = 2
             BtnOk.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnOk.FlatStyle = FlatStyle.Flat
-            BtnOk.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnOk.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnOk.ForeColor = Color.White
             BtnOk.Location = New Point(747, 12)
             BtnOk.Margin = New Padding(5, 6, 5, 6)
@@ -301,7 +222,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(924, 12)
             BtnCancel.Margin = New Padding(5, 6, 5, 6)
@@ -315,11 +236,83 @@
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
             ' 
+            ' position_id
+            ' 
+            position_id.DataPropertyName = "position_id"
+            position_id.Frozen = True
+            position_id.HeaderText = "ID"
+            position_id.MinimumWidth = 8
+            position_id.Name = "position_id"
+            position_id.ReadOnly = True
+            position_id.Visible = False
+            position_id.Width = 75
+            ' 
+            ' company_code
+            ' 
+            company_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            company_code.DataPropertyName = "company_code"
+            company_code.HeaderText = "COMP. CODE"
+            company_code.MinimumWidth = 8
+            company_code.Name = "company_code"
+            company_code.ReadOnly = True
+            company_code.SortMode = DataGridViewColumnSortMode.Programmatic
+            company_code.Width = 133
+            ' 
+            ' company_name
+            ' 
+            company_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            company_name.DataPropertyName = "company_name"
+            company_name.HeaderText = "COMP."
+            company_name.MinimumWidth = 8
+            company_name.Name = "company_name"
+            company_name.ReadOnly = True
+            company_name.Visible = False
+            company_name.Width = 93
+            ' 
+            ' department_code
+            ' 
+            department_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            department_code.DataPropertyName = "department_code"
+            department_code.HeaderText = "DEPT. CODE"
+            department_code.MinimumWidth = 8
+            department_code.Name = "department_code"
+            department_code.ReadOnly = True
+            department_code.Width = 88
+            ' 
+            ' department_name
+            ' 
+            department_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            department_name.DataPropertyName = "department_name"
+            department_name.HeaderText = "DEPT."
+            department_name.MinimumWidth = 8
+            department_name.Name = "department_name"
+            department_name.ReadOnly = True
+            department_name.Visible = False
+            department_name.Width = 88
+            ' 
+            ' position_code
+            ' 
+            position_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            position_code.DataPropertyName = "position_code"
+            position_code.HeaderText = "POSITION CODE"
+            position_code.MinimumWidth = 8
+            position_code.Name = "position_code"
+            position_code.ReadOnly = True
+            position_code.Width = 161
+            ' 
+            ' position_name
+            ' 
+            position_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            position_name.DataPropertyName = "position_name"
+            position_name.HeaderText = "POSITION"
+            position_name.MinimumWidth = 8
+            position_name.Name = "position_name"
+            position_name.ReadOnly = True
+            ' 
             ' FRMeplsPosition
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1095, 921)
-            KeyPreview = True
             Margin = New Padding(22, 44, 22, 44)
             Name = "FRMeplsPosition"
             PnlBottomButton.ResumeLayout(False)
@@ -345,8 +338,8 @@
         Friend WithEvents position_id As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
         Friend WithEvents company_name As DataGridViewTextBoxColumn
-        Friend WithEvents departement_code As DataGridViewTextBoxColumn
-        Friend WithEvents departement_name As DataGridViewTextBoxColumn
+        Friend WithEvents department_code As DataGridViewTextBoxColumn
+        Friend WithEvents department_name As DataGridViewTextBoxColumn
         Friend WithEvents position_code As DataGridViewTextBoxColumn
         Friend WithEvents position_name As DataGridViewTextBoxColumn
     End Class

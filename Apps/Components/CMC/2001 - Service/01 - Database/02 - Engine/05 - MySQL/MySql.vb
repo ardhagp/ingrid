@@ -1,14 +1,17 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Namespace Database.Engine
+    ''' <summary>
+    ''' Provides methods to connect to a MySQL database, execute queries, and retrieve results.
+    ''' </summary>
     Public Class Mysql
         Implements IDisposable
 
-        Private ReadOnly varConnection(1) As MySqlConnection
-        Private ReadOnly varCommand(1) As MySqlCommand
+        'Private varConnection As MySqlConnection
+        'Private varCommand As MySqlCommand
         Private ReadOnly varDataAdapter As MySqlDataAdapter
 
-        Private ReadOnly varMySQL As New Connect.Mysqlconnection
+        Private ReadOnly varMySQL As New Connect.MysqlConnection
 
         Private disposedValue As Boolean
 
@@ -48,22 +51,18 @@ Namespace Database.Engine
         ''' Errors are logged through the Ladybug logging system.
         ''' </returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function Open(databaseproperties As LibApp.Ingrid.Global.Properties, Optional splash As System.Windows.Forms.Form = Nothing) As Boolean
-            If databaseproperties Is Nothing Then
-                databaseproperties = New LibApp.Ingrid.Global.Properties
-            End If
-
-            Dim varSuccess As Boolean
+        Public Function Open(databaseproperties As LibApp.Ingrid.Global.Properties) As Boolean
+            Dim varSuccess As Boolean = False
             Try
-                varConnection(1) = New MySqlConnection(varMySQL.Mysqlforcessl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, databaseproperties.ConnectionPassword))
-                varConnection(1).Open()
-                varSuccess = True
+                Using varConnection As New MySqlConnection(varMySQL.MysqlForceSsl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, Security.Decrypt.Aes(databaseproperties.ConnectionPassword)))
+                    varConnection.Open()
+                    varSuccess = True
+                End Using
             Catch ex As MySqlException
-                splash?.Close()
                 varSuccess = False
 
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
                     .FromSender = "[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -77,7 +76,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
             End Try
             Return varSuccess
@@ -98,39 +97,37 @@ Namespace Database.Engine
         ''' Returns Nothing if an exception occurs.
         ''' </returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function GetDataRow(databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As MySqlDataReader
-            Dim varDataReader(1) As MySqlDataReader
+        Public Function GetDataRow(databaseproperties As LibApp.Ingrid.Global.Properties, databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As MySqlDataReader
+            Dim varDataReader As MySqlDataReader
 
             Try
-                If Not varConnection(1).Ping Then
-                    varConnection(1).Close()
-                    varConnection(1).Open()
-                End If
-                If IsNothing(varCommand(1)) Then
-                    varCommand(1) = New MySqlCommand
-                End If
-                varCommand(1).Parameters.Clear()
-                varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = System.Data.CommandType.Text
-                varCommand(1).CommandTimeout = 30
+                Using varConnection As New MySqlConnection(varMySQL.MysqlForceSsl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, Security.Decrypt.Aes(databaseproperties.ConnectionPassword)))
+                    varConnection.Open()
 
-                query = "USE " & databasename & "; " & query
-                If parameters IsNot Nothing Then
-                    For Each param In parameters
-                        varCommand(1).Parameters.AddWithValue(param.Key, param.Value)
-                    Next
-                End If
+                    Using varCommand As New MySqlCommand
+                        varCommand.Parameters.Clear()
+                        varCommand.Connection = varConnection
+                        varCommand.CommandType = System.Data.CommandType.Text
+                        varCommand.CommandTimeout = 30
 
-                varDataReader(1) = varCommand(1).ExecuteReader(System.Data.CommandBehavior.CloseConnection)
+                        query = "USE " & databasename & "; " & query
+                        If parameters IsNot Nothing Then
+                            For Each param In parameters
+                                varCommand.Parameters.AddWithValue(param.Key, param.Value)
+                            Next
+                        End If
 
-                If varDataReader(1).HasRows Then
-                    varDataReader(1).Read()
-                End If
+                        varDataReader = varCommand.ExecuteReader(System.Data.CommandBehavior.CloseConnection)
 
-                Return varDataReader(1)
+                        If varDataReader.HasRows Then
+                            varDataReader.Read()
+                        End If
+                    End Using
+                End Using
+                Return varDataReader
             Catch ex As MySqlException
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -145,13 +142,13 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
 
                 Return Nothing
             Catch ex As Exception
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -166,7 +163,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -188,39 +185,35 @@ Namespace Database.Engine
         ''' Returns Nothing if an exception occurs.
         ''' </returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function GetValue(databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As Object
+        Public Function GetValue(databaseproperties As LibApp.Ingrid.Global.Properties, databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As Object
             Dim varRowValue As Object
 
             Try
-                If Not varConnection(1).Ping Then
-                    varConnection(1).Close()
-                    varConnection(1).Open()
-                End If
-                If IsNothing(varCommand(1)) Then
-                    varCommand(1) = New MySqlCommand
-                End If
-                varCommand(1).Parameters.Clear()
-                varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = System.Data.CommandType.Text
-                varCommand(1).CommandTimeout = 30
+                Using varConnection As New MySqlConnection(varMySQL.MysqlForceSsl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, Security.Decrypt.Aes(databaseproperties.ConnectionPassword)))
+                    varConnection.Open()
 
-                query = "USE " & databasename & "; " & query
+                    Using varcommand As New MySqlCommand
+                        varcommand.Parameters.Clear()
+                        varcommand.Connection = varConnection
+                        varcommand.CommandType = System.Data.CommandType.Text
+                        varcommand.CommandTimeout = 30
 
-                varCommand(1).CommandText = query
-                If parameters IsNot Nothing Then
-                    For Each param In parameters
-                        varCommand(1).Parameters.AddWithValue(param.Key, param.Value)
-                    Next
-                End If
+                        query = "USE " & databasename & "; " & query
 
-                varRowValue = varCommand(1).ExecuteScalar
-
+                        varcommand.CommandText = query
+                        If parameters IsNot Nothing Then
+                            For Each param In parameters
+                                varcommand.Parameters.AddWithValue(param.Key, param.Value)
+                            Next
+                        End If
+                        varRowValue = varcommand.ExecuteScalar
+                    End Using
+                End Using
                 Return varRowValue
-
             Catch ex As Exception
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
-                    .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
+                    .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\MySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
                     .Query = query
@@ -234,7 +227,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -256,46 +249,41 @@ Namespace Database.Engine
         ''' will be stored.
         ''' </param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function GetDataSet(databasename As String, dbr As Adapter.Mysql.Display.Request, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As System.Data.DataSet
-            Dim varDataAdapter(1) As MySqlDataAdapter
+        Public Function GetDataSet(databaseproperties As LibApp.Ingrid.Global.Properties, databasename As String, dbr As Adapter.Mysql.Display.Request, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As System.Data.DataSet
+            Dim varDataAdapter As MySqlDataAdapter
+            Dim varDataset As New System.Data.DataSet
+            Dim varBindingSource As New System.Windows.Forms.BindingSource
 
             Try
-                If Not varConnection(1).Ping Then
-                    varConnection(1).Close()
-                    varConnection(1).Open()
-                End If
+                Using varConnection As New MySqlConnection(varMySQL.MysqlForceSsl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, Security.Decrypt.Aes(databaseproperties.ConnectionPassword)))
+                    varConnection.Open()
+                    GC.Collect()
 
-                GC.Collect()
+                    Using varCommand As New MySqlCommand
+                        varCommand.Parameters.Clear()
+                        varCommand.Connection = varConnection
+                        varCommand.CommandType = System.Data.CommandType.Text
+                        varCommand.CommandTimeout = 30
 
-                Dim varDataset As New System.Data.DataSet
-                Dim varBindingSource As New System.Windows.Forms.BindingSource
+                        dbr.Query = "USE " & databasename & "; " & dbr.Query
 
-                If IsNothing(varCommand(1)) Then
-                    varCommand(1) = New MySqlCommand
-                End If
-                varCommand(1).Parameters.Clear()
-                varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = System.Data.CommandType.Text
-                varCommand(1).CommandTimeout = 30
+                        varCommand.CommandText = dbr.Query
+                        If parameters IsNot Nothing Then
+                            For Each param In parameters
+                                varCommand.Parameters.AddWithValue(param.Key, param.Value)
+                            Next
+                        End If
 
-                dbr.Query = "USE " & databasename & "; " & dbr.Query
+                        varDataAdapter = New MySqlDataAdapter(varCommand)
+                        varDataAdapter.Fill(varDataset, tablename)
 
-                varCommand(1).CommandText = dbr.Query
-                If parameters IsNot Nothing Then
-                    For Each param In parameters
-                        varCommand(1).Parameters.AddWithValue(param.Key, param.Value)
-                    Next
-                End If
-
-                varDataAdapter(1) = New MySqlDataAdapter(varCommand(1))
-                varDataAdapter(1).Fill(varDataset, tablename)
-
-                varBindingSource = New System.Windows.Forms.BindingSource(varDataset, tablename)
-
+                        varBindingSource = New System.Windows.Forms.BindingSource(varDataset, tablename)
+                    End Using
+                End Using
                 Return varDataset
             Catch ex As Exception
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
                     .FromSender = "[GetDataSet] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -310,7 +298,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -335,60 +323,54 @@ Namespace Database.Engine
         ''' will be stored and used as the binding source.
         ''' </param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Sub GetDataTable(databasename As String, dbr As Adapter.MySQL.Display.Request, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing)
-            Dim varDataAdapterPrivate(1) As MySqlDataAdapter
-
+        Public Sub GetDataTable(databaseproperties As LibApp.Ingrid.Global.Properties, databasename As String, dbr As Adapter.Mysql.Display.Request, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing)
             Try
-                If Not varConnection(1).Ping Then
-                    varConnection(1).Close()
-                    varConnection(1).Open()
-                End If
+                Using varConnection As New MySqlConnection(varMySQL.MysqlForceSsl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, Security.Decrypt.Aes(databaseproperties.ConnectionPassword)))
+                    varConnection.Open()
+                    GC.Collect()
 
-                GC.Collect()
+                    Using varCommand As New MySqlCommand
+                        varCommand.Parameters.Clear()
+                        varCommand.Connection = varConnection
+                        varCommand.CommandType = System.Data.CommandType.Text
+                        varCommand.CommandTimeout = 30
 
-                Dim varDataset As New System.Data.DataSet
-                Dim varBindingSource As New System.Windows.Forms.BindingSource
+                        dbr.Query = "USE " & databasename & "; " & dbr.Query
 
-                If IsNothing(varCommand(1)) Then
-                    varCommand(1) = New MySqlCommand
-                End If
-                varCommand(1).Parameters.Clear()
-                varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = System.Data.CommandType.Text
-                varCommand(1).CommandTimeout = 30
+                        varCommand.CommandText = dbr.Query
+                        If parameters IsNot Nothing Then
+                            For Each param In parameters
+                                varCommand.Parameters.AddWithValue(param.Key, param.Value)
+                            Next
+                        End If
 
-                dbr.Query = "USE " & databasename & "; " & dbr.Query
+                        Using varDataAdapterPrivate As New MySqlDataAdapter(varCommand)
+                            Using varDataset As New System.Data.DataSet
+                                varDataAdapterPrivate.Fill(varDataset, tablename)
+                                dbr.BindingSource = New System.Windows.Forms.BindingSource(varDataset, tablename)
+                            End Using
+                        End Using
 
-                varCommand(1).CommandText = dbr.Query
-                If parameters IsNot Nothing Then
-                    For Each param In parameters
-                        varCommand(1).Parameters.AddWithValue(param.Key, param.Value)
-                    Next
-                End If
+                        If Not (dbr.DataGrid Is Nothing) Then
+                            dbr.DataGrid.DataSource = dbr.BindingSource
+                        End If
 
-                varDataAdapterPrivate(1) = New MySqlDataAdapter(varCommand(1))
-                varDataAdapterPrivate(1).Fill(varDataset, tablename)
-                varBindingSource = New System.Windows.Forms.BindingSource(varDataset, tablename)
+                        If Not (dbr.Dropdown Is Nothing) Then
+                            dbr.Dropdown.DataSource = dbr.BindingSource
+                        End If
 
-                If Not (dbr.DataGrid Is Nothing) Then
-                    dbr.DataGrid.DataSource = varBindingSource
-                End If
+                        If Not (dbr.StatusBar Is Nothing) AndAlso (dbr.StatusBar.Items.Count <> 0) Then
+                            dbr.StatusBar.Items(0).Text = dbr.BindingSource.Count & " Row(s)"
+                        End If
 
-                If Not (dbr.Dropdown Is Nothing) Then
-                    dbr.Dropdown.DataSource = varBindingSource
-                End If
-
-                If Not (dbr.StatusBar Is Nothing) AndAlso (dbr.StatusBar.Items.Count <> 0) Then
-                    dbr.StatusBar.Items(0).Text = varBindingSource.Count & " Row(s)"
-                End If
-
-                If Not (dbr.Chart Is Nothing) Then
-                    dbr.Chart.DataSource = varBindingSource
-                End If
-
+                        If Not (dbr.Chart Is Nothing) Then
+                            dbr.Chart.DataSource = dbr.BindingSource
+                        End If
+                    End Using
+                End Using
             Catch ex As MySqlException
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -403,11 +385,11 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
             Catch ex As Exception
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -422,7 +404,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
             End Try
         End Sub
@@ -441,34 +423,33 @@ Namespace Database.Engine
         ''' database selection (USE databasename) before running the query.
         ''' </param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function PushData(databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As Boolean
+        Public Function PushData(databaseproperties As LibApp.Ingrid.Global.Properties, databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As Boolean
             Try
-                If Not varConnection(1).Ping Then
-                    varConnection(1).Close()
-                    varConnection(1).Open()
-                End If
+                Using varConnection As New MySqlConnection(varMySQL.MysqlForceSsl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, Security.Decrypt.Aes(databaseproperties.ConnectionPassword)))
+                    varConnection.Open()
+                    GC.Collect()
 
-                If IsNothing(varCommand(1)) Then
-                    varCommand(1) = New MySqlCommand
-                End If
-                varCommand(1).Parameters.Clear()
-                varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = System.Data.CommandType.Text
-                varCommand(1).CommandTimeout = 30
+                    Using varCommand As New MySqlCommand
+                        varCommand.Parameters.Clear()
+                        varCommand.Connection = varConnection
+                        varCommand.CommandType = System.Data.CommandType.Text
+                        varCommand.CommandTimeout = 30
 
-                query = "USE " & databasename & "; " & query
+                        query = "USE " & databasename & "; " & query
 
-                varCommand(1).CommandText = query
-                If parameters IsNot Nothing Then
-                    For Each param In parameters
-                        varCommand(1).Parameters.AddWithValue(param.Key, If(param.Value, DBNull.Value))
-                    Next
-                End If
-                varCommand(1).ExecuteNonQuery()
+                        varCommand.CommandText = query
+                        If parameters IsNot Nothing Then
+                            For Each param In parameters
+                                varCommand.Parameters.AddWithValue(param.Key, If(param.Value, DBNull.Value))
+                            Next
+                        End If
+                        varCommand.ExecuteNonQuery()
+                    End Using
+                End Using
                 Return True
             Catch ex As Exception
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
                     .FromSender = "[PushData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -483,7 +464,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
                 Return False
             End Try
@@ -502,29 +483,28 @@ Namespace Database.Engine
         ''' Errors are logged through the Ladybug logging system.
         ''' </returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function PushImage(cmd As MySqlCommand) As Boolean
+        Public Function PushImage(databaseproperties As LibApp.Ingrid.Global.Properties, cmd As MySqlCommand) As Boolean
             Dim varSuccess As Boolean
 
             Try
-                If Not varConnection(1).Ping Then
-                    varConnection(1).Close()
-                    varConnection(1).Open()
-                End If
+                Using varConnection As New MySqlConnection(varMySQL.MysqlForceSsl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, Security.Decrypt.Aes(databaseproperties.ConnectionPassword)))
+                    varConnection.Open()
+                    Dim varCommand As New MySqlCommand
+                    If cmd IsNot Nothing Then
+                        varCommand = cmd
+                    End If
 
-                varCommand(1) = New MySqlCommand
-
-                If cmd IsNot Nothing Then
-                    varCommand(1) = cmd
-                End If
-
-                varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = System.Data.CommandType.Text
-                varCommand(1).ExecuteNonQuery()
+                    varCommand.Connection = varConnection
+                    varCommand.CommandType = System.Data.CommandType.Text
+                    varCommand.ExecuteNonQuery()
+                    varCommand.Dispose()
+                    varCommand = Nothing
+                End Using
                 varSuccess = True
             Catch ex As Exception
                 varSuccess = False
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
                     .FromSender = "[PushImage] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -538,7 +518,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
             End Try
 
@@ -565,40 +545,39 @@ Namespace Database.Engine
         ''' The filled DataSet. Returns Nothing if an exception occurs.
         ''' </returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function FillDataSet(databasename As String, query As String, datasetname As System.Data.DataSet, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As System.Data.DataSet
-            GC.Collect()
+        Public Function FillDataSet(databaseproperties As LibApp.Ingrid.Global.Properties, databasename As String, query As String, datasetname As System.Data.DataSet, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As System.Data.DataSet
 
             Try
-                If Not varConnection(1).Ping Then
-                    varConnection(1).Close()
-                    varConnection(1).Open()
-                End If
+                GC.Collect()
 
-                If IsNothing(varCommand(1)) Then
-                    varCommand(1) = New MySqlCommand
-                End If
-                varCommand(1).Parameters.Clear()
-                varCommand(1).Connection = varConnection(1)
-                varCommand(1).CommandType = System.Data.CommandType.Text
-                varCommand(1).CommandTimeout = 30
+                Using varConnection As New MySqlConnection(varMySQL.MysqlForceSsl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, Security.Decrypt.Aes(databaseproperties.ConnectionPassword)))
+                    varConnection.Open()
 
-                query = "USE " & databasename & "; " & query
+                    Using varCommand As New MySqlCommand
+                        varCommand.Parameters.Clear()
+                        varCommand.Connection = varConnection
+                        varCommand.CommandType = System.Data.CommandType.Text
+                        varCommand.CommandTimeout = 30
 
-                varCommand(1).CommandText = query
-                If parameters IsNot Nothing Then
-                    For Each param In parameters
-                        varCommand(1).Parameters.AddWithValue(param.Key, param.Value)
-                    Next
-                End If
+                        query = "USE " & databasename & "; " & query
 
-                Using varDataAdapter = New MySqlDataAdapter(varCommand(1))
-                    datasetname.Tables(tablename).Clear()
-                    varDataAdapter.Fill(datasetname, tablename)
+                        varCommand.CommandText = query
+                        If parameters IsNot Nothing Then
+                            For Each param In parameters
+                                varCommand.Parameters.AddWithValue(param.Key, param.Value)
+                            Next
+                        End If
+
+                        Using varDataAdapter = New MySqlDataAdapter(varCommand)
+                            datasetname.Tables(tablename).Clear()
+                            varDataAdapter.Fill(datasetname, tablename)
+                        End Using
+                    End Using
                 End Using
             Catch ex As Exception
                 datasetname = Nothing
-                With CMCv.UI.proLog
-                    .AppVersion = CMCv.UI.GetAppVersion()
+                With UI.proLog
+                    .AppVersion = UI.GetAppVersion()
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -613,17 +592,12 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(CMCv.UI.proLog)
+                clsLog.ShowData(UI.proLog)
                 clsLog = Nothing
             End Try
 
             Return datasetname
         End Function
-
-        Public Sub Close()
-            varConnection(1).Close()
-            varConnection(1).Dispose()
-        End Sub
 
         Public Sub Dispose() Implements IDisposable.Dispose
             ' Do not change this code. Put cleanup code in 'Dispose(disposing As Boolean)' method

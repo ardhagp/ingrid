@@ -35,12 +35,12 @@ Namespace CMDntfc
 
                 varDatabaseRequestMysql(0).DataGrid = notificationgrid
                 varDatabaseRequestMysql(0).StatusBar = Nothing
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TNotification")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TNotification")
 
                 varDatabaseRequestMysql(1).Query = $"update sys_notification set notification_isread = 1 where notification_datetime <= (select t.notification_datetime from (select " &
                                                    $"nt.notification_datetime from sys_notification nt where (nt.notification_employee = '{eid}') " &
                                                    $"order by nt.notification_datetime desc limit 0,1) as t)"
-                varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
             End If
         End Sub
     End Class

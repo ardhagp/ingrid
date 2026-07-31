@@ -43,7 +43,7 @@ Namespace CMDplnt
 
                 varDatabaseRequestMysql(0).DataGrid = datagrid
                 varDatabaseRequestMysql(0).StatusBar = statusbar
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TPlant")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TPlant")
             End If
         End Sub
 
@@ -65,7 +65,7 @@ Namespace CMDplnt
                     varSuccess = True
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $""
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                     varSuccess = True
                 End If
             Catch ex As Exception
@@ -107,7 +107,7 @@ Namespace CMDplnt
                     varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Integer)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $"SELECT count(p.plant_id) as `rows` FROM mat_plant p {varWhere}"
-                    varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Integer)
+                    varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query), Integer)
                 End If
 
                 If varIsDuplicate = 0 Then
@@ -137,7 +137,7 @@ Namespace CMDplnt
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = $"select c.company_id, concat(c.company_code, ' - ', c.company_name) as `company_name` from man_company c order by c.company_code"
                 varDatabaseRequestMysql(1).Dropdown = listofcompany
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TCompany")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TCompany")
                 listofcompany.DisplayMember = "company_name"
                 listofcompany.ValueMember = "company_id"
             End If
@@ -152,7 +152,7 @@ Namespace CMDplnt
                 varQuery = $"SELECT p.plant_id, p.plant_company, c.company_code, p.plant_code, p.plant_name, p.plant_searchterm1, p.plant_searchterm2, p.plant_description, p.plant_address, p.plant_postalcode " &
                            $"FROM mat_plant p inner join man_company c on c.company_id = p.plant_company " &
                            $"WHERE p.plant_id = '{dataproperties.PlantId}';"
-                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "mat_plant")
+                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varQuery, datasetname, "mat_plant")
             End If
         End Sub
 

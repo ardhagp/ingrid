@@ -121,7 +121,7 @@ Namespace UI.Canvas
             End If
 
             If (varDataProperties.CustomDailyActivityIsNew) Then
-                varDataProperties.CustomDailyActivityId = CMCv.Security.Encrypt.MD5()
+                varDataProperties.CustomDailyActivityId = CMCv.Security.Encryption.MD5()
                 MebStart.Text = varHour & ":" & varMinute
                 MebEnd.Text = varHour & ":" & varMinute
                 TxtContent.Text = String.Empty
@@ -262,7 +262,7 @@ Namespace UI.Canvas
             If Not (ChkAddNew.Checked) Then
                 Me.Close()
             Else
-                varDataProperties.CustomDailyActivityId = CMCv.Security.Encrypt.MD5()
+                varDataProperties.CustomDailyActivityId = CMCv.Security.Encryption.MD5()
             End If
         End Sub
 
@@ -313,7 +313,7 @@ Namespace UI.Canvas
                 Dim varDate As Date = Now
                 Dim varPhoto As System.Drawing.Image = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(TxtPhotoPath.Text) 'System.Drawing.Image.FromFile(TxtPhotoPath.Text)
 
-                varRow = New Object() {CMCv.Security.Encrypt.MD5(), IO.Path.GetFileNameWithoutExtension(TxtPhotoPath.Text), varDate, varPhoto, "Add", varDataProperties.EmployeeId}
+                varRow = New Object() {CMCv.Security.Encryption.MD5(), IO.Path.GetFileNameWithoutExtension(TxtPhotoPath.Text), varDate, varPhoto, "Add", varDataProperties.EmployeeId}
 
                 With DgnPictureList.Rows
                     .Add(varRow)
@@ -428,7 +428,7 @@ Namespace UI.Canvas
                 Dim varDate As Date = Now
                 'Dim _PDFFile As Object = New IO.FileStream(TxtFilePath.Text, FileMode.Open, FileAccess.Read) 'System.Drawing.Image.FromFile(TxtPhotoPath.Text)
 
-                varRow = New Object() {CMCv.Security.Encrypt.MD5(), IO.Path.GetFileNameWithoutExtension(TxtFilePath.Text), CboFileTag.Text, varDate, TxtFilePath.Text, "Add", varDataProperties.EmployeeId}
+                varRow = New Object() {CMCv.Security.Encryption.MD5(), IO.Path.GetFileNameWithoutExtension(TxtFilePath.Text), CboFileTag.Text, varDate, TxtFilePath.Text, "Add", varDataProperties.EmployeeId}
 
                 With DgnFileList.Rows
                     .Add(varRow)

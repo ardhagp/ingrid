@@ -1,68 +1,83 @@
-﻿Imports System.Data
-Imports System.Runtime.Versioning
-Imports System.Windows.Forms
-
-Namespace Mainframe
+﻿Namespace Mainframe
+    ''' <summary>
+    ''' This class is used to connect to the database and get the database properties.
+    ''' </summary>
     Public Class Database
         Private Shared varQuery As String
         Private Const conCatalog As String = "catalog.db"
 
-        <SupportedOSPlatform("windows")>
-        Public Shared Function Connect(Optional splashscreen As Form = Nothing) As Boolean
+        ''' <summary>
+        ''' This function is used to connect to the database. It will first connect to the SQLite database and get the database properties. Then it will connect to the database engine specified in the database properties. If the connection is successful, it will return True, otherwise it will return False.
+        ''' </summary>
+        ''' <returns>True if the connection is successful; otherwise, False.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Function Connect(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
             Dim varSuccess As Boolean
             Try
-                varDatabaseEngineSqlite.Open(conCatalog)
-                databaseproperties(1) = varDatabaseEngineSqlite.GetDatabaseProperties(databaseproperties(1))
-
-                If databaseproperties(1).ConnectionDatabaseEngine = "MSSQL" AndAlso (varDatabaseEngineMssql2008.Open(databaseproperties(1), splashscreen)) Then
+                If dataproperties.ConnectionDatabaseEngine = "MSSQL" AndAlso (varDatabaseEngineMssql2008.Open(dataproperties)) Then
                     varSuccess = True
-                ElseIf databaseproperties(1).ConnectionDatabaseEngine = "MYSQL" AndAlso (varDatabaseEngineMysql.Open(databaseproperties(1), splashscreen)) Then
+                ElseIf dataproperties.ConnectionDatabaseEngine = "MYSQL" AndAlso (varDatabaseEngineMysql.Open(dataproperties)) Then
                     varSuccess = True
                 Else
-                    splashscreen?.Close()
                     varSuccess = False
                 End If
-
-                varDatabaseEngineSqlite.Close()
-
             Catch ex As Exception
                 MsgBox(ex.ToString)
-                splashscreen?.Close()
                 varSuccess = False
             End Try
-
             Return varSuccess
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' This function is used to get the database engine from the database properties. It will first connect to the SQLite database and get the database properties. Then it will return the database engine specified in the database properties.
+        ''' </summary>
+        ''' <returns>The database engine specified in the database properties.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function DatabaseEngine() As String
             Dim varDBengine As String
 
             varDatabaseEngineSqlite.Open(conCatalog)
-            databaseproperties(1) = varDatabaseEngineSqlite.GetDatabaseProperties(databaseproperties(1))
-            varDBengine = databaseproperties(1).ConnectionDatabaseEngine
+            varDataProperties = varDatabaseEngineSqlite.GetDatabaseProperties(varDataProperties)
+            varDBengine = varDataProperties.ConnectionDatabaseEngine
             varDatabaseEngineSqlite.Close()
             Return varDBengine
         End Function
 
-        <SupportedOSPlatform("windows")>
+        ''' <summary>
+        ''' This function is used to get the database name from the database properties. It will first connect to the SQLite database and get the database properties. Then it will return the database name specified in the database properties.
+        ''' </summary>
+        ''' <returns>The database name specified in the database properties.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function DatabaseName() As String
             Dim varDBname As String
 
             varDatabaseEngineSqlite.Open(conCatalog)
-            databaseproperties(1) = varDatabaseEngineSqlite.GetDatabaseProperties(databaseproperties(1))
-            varDBname = databaseproperties(1).ConnectionDatabaseName
+            varDataProperties = varDatabaseEngineSqlite.GetDatabaseProperties(varDataProperties)
+            varDBname = varDataProperties.ConnectionDatabaseName
             varDatabaseEngineSqlite.Close()
             Return varDBname
         End Function
 
-        <SupportedOSPlatform("windows")>
-        Public Shared Sub GetDatabaseProperties(datasetname As DataSet)
-            varQuery = "SELECT [DATABASEENGINE],[DBFORDATA],[CLIENT] FROM [serverlist] WHERE [DEFAULTCONNECTION] = 1"
+        ''' <summary>
+        ''' This function is used to get the database properties from the SQLite database. It will first connect to the SQLite database and get the database properties. Then it will fill the dataset with the database properties.
+        ''' </summary>
+        ''' <param name="datasetname">The dataset to fill with the database properties.</param>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Sub GetDatabaseProperties(datasetname As System.Data.DataSet)
+            varQuery = $"Select SERVERADDRESS, " &
+                       $"USERNAME, " &
+                       $"PASSWORD, " &
+                       $"SERVERPORT, " &
+                       $"DBFORDATA, " &
+                       $"DBFORFILE, " &
+                       $"DATABASEENGINE, " &
+                       $"CLIENT " &
+                       $"FROM serverlist " &
+                       $"WHERE DEFAULTCONNECTION = 1;"
 
-            varDatabaseEngineSqlite.Open(conCatalog)
-            varDatabaseEngineSqlite.FillDataSet(varQuery, datasetname, "DatabaseProperties")
-            varDatabaseEngineSqlite.Close()
+            'varDatabaseEngineSqlite.Open(conCatalog)
+            varDatabaseEngineSqlite.FillDataSet(varDataProperties, varQuery, datasetname, "DatabaseProperties")
+            'varDatabaseEngineSqlite.Close()
         End Sub
     End Class
 End Namespace

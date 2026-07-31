@@ -32,7 +32,7 @@ Namespace CMDpost
 
                 varDatabaseRequestMysql(0).DataGrid = grid
                 varDatabaseRequestMysql(0).StatusBar = status
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TPositions")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TPositions")
             End If
         End Sub
 
@@ -42,7 +42,7 @@ Namespace CMDpost
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varQuery = $"SELECT now() as `timestamp`, (select count(*) from v_post_granularity_epls where employee_position = @PositionId limit 0,1) as `relation1`;"
-                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName)
+                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName)
                 End If
 
                 If datasetname.Tables(consTableName).Rows.Count > 0 Then
@@ -73,7 +73,7 @@ Namespace CMDpost
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $"delete from man_position where position_id = @PositionId"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                 End If
                 varSuccess = True
             Catch ex As Exception
@@ -95,7 +95,7 @@ Namespace CMDpost
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = "select c.company_id, concat(c.company_code, ' - ', c.company_name) as `company_name` from man_company c order by c.company_code"
                 varDatabaseRequestMysql(1).Dropdown = company
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TCompany")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TCompany")
             End If
             company.ValueMember = "company_id"
             company.DisplayMember = "company_name"
@@ -118,7 +118,7 @@ Namespace CMDpost
                 varDatabaseRequestMysql(1).Query = $"select d.department_id, concat(d.department_code, ' - ', d.department_name) as `departement_code` from man_department d where d.department_company = '{varDepartment}' " &
                                                    $"order by d.department_code"
                 varDatabaseRequestMysql(1).Dropdown = department
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "Departement")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "Departement")
             End If
             department.ValueMember = "department_id"
             department.DisplayMember = "departement_code"
@@ -135,7 +135,7 @@ Namespace CMDpost
                 varDatabaseRequestMysql(0).Query = $"SELECT ps.position_id, d.department_company, ps.position_department, ps.position_code, ps.position_name, ps.position_description, ps.position_parent " &
                            $"FROM man_position ps inner join man_department d on d.department_id = ps.position_department " &
                            $"WHERE ps.position_id = @PositionId;"
-                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tManPosition, dataproperties.AllParameters)
+                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tManPosition, dataproperties.AllParameters)
             End If
         End Sub
 
@@ -155,7 +155,7 @@ Namespace CMDpost
                 varIsDuplicate = CType(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query), Integer)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = $"select (ps.position_id) as `rows` from man_position ps {varWhere}"
-                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters), Integer)
+                varIsDuplicate = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters), Integer)
             End If
 
             If varIsDuplicate = 0 Then
@@ -187,7 +187,7 @@ Namespace CMDpost
                         varDatabaseRequestMysql(1).Query = $"update man_position set position_department = @DepartmentId, position_code = @PositionCode, position_name = @PositionName, position_description = @PositionDescription, position_datelastmodified = now() " &
                                                            $"where position_id = @PositionId"
                     End If
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                 End If
                 varSuccess = True
             Catch ex As Exception

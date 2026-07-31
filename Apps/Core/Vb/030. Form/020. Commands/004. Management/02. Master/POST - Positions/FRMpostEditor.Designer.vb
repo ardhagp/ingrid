@@ -141,7 +141,7 @@
             TxtPositionName.XOPasswordStrengthScore = 0
             TxtPositionName.XOPasswordStrengthText = Nothing
             TxtPositionName.XOPlaceholderText = "Type then press Enter"
-            TxtPositionName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtPositionName.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberAndSpace
             TxtPositionName.XOSelectOnFocus = False
             TxtPositionName.XOSqlText = ""
             ' 
@@ -197,7 +197,7 @@
             TxtPositionCode.XOPasswordStrengthScore = 0
             TxtPositionCode.XOPasswordStrengthText = Nothing
             TxtPositionCode.XOPlaceholderText = "Type then press Enter"
-            TxtPositionCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtPositionCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberNoSpace
             TxtPositionCode.XOSelectOnFocus = True
             TxtPositionCode.XOSqlText = ""
             ' 
@@ -269,7 +269,7 @@
             ULbl1.Location = New Point(20, 20)
             ULbl1.Margin = New Padding(7, 5, 7, 5)
             ULbl1.Name = "ULbl1"
-            ULbl1.Size = New Size(250, 55)
+            ULbl1.Size = New Size(250, 39)
             ULbl1.TabIndex = 1014
             ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl1.XOText = "Company"
@@ -282,7 +282,7 @@
             ULbl2.Location = New Point(20, 87)
             ULbl2.Margin = New Padding(7, 5, 7, 5)
             ULbl2.Name = "ULbl2"
-            ULbl2.Size = New Size(250, 55)
+            ULbl2.Size = New Size(250, 39)
             ULbl2.TabIndex = 1015
             ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl2.XOText = "Department"
@@ -295,7 +295,7 @@
             ULbl3.Location = New Point(20, 153)
             ULbl3.Margin = New Padding(7, 5, 7, 5)
             ULbl3.Name = "ULbl3"
-            ULbl3.Size = New Size(250, 55)
+            ULbl3.Size = New Size(250, 39)
             ULbl3.TabIndex = 1016
             ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl3.XOText = "Position Code"
@@ -308,7 +308,7 @@
             ULbl4.Location = New Point(20, 222)
             ULbl4.Margin = New Padding(7, 5, 7, 5)
             ULbl4.Name = "ULbl4"
-            ULbl4.Size = New Size(250, 55)
+            ULbl4.Size = New Size(250, 39)
             ULbl4.TabIndex = 1017
             ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.XOText = "Position Name"

@@ -37,7 +37,7 @@
                                                    $"{tCompany.S}.{tCompany.C_CompanyCode}"
                 varDatabaseRequestMysql(0).DataGrid = datagrid
                 varDatabaseRequestMysql(0).StatusBar = statusbar
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TCompany", dataproperties.AllParameters)
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TCompany", dataproperties.AllParameters)
             End If
         End Sub
 
@@ -46,8 +46,15 @@
             Dim varHasChild As Boolean = True
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varQuery = $"select now() as `timestamp`, (select count(*) from v_ccin_granularity_cdin where department_company = {tCompany.P_CompanyId} limit 0,1) as `relation1`, (select count(*) from v_ccin_granularity_plnt where plant_company = {tCompany.P_CompanyId} limit 0,1) as `relation2`;"
-                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName, dataproperties.AllParameters)
+                    varQuery = $"select now() as `timestamp`, " &
+                               $"(select count(*) from " &
+                               $"v_ccin_granularity_cdin " &
+                               $"where " &
+                               $"department_company = {tCompany.P_CompanyId} limit 0,1) as `relation1`, " &
+                               $"(select count(*) " &
+                               $"from v_ccin_granularity_plnt " &
+                               $"where plant_company = {tCompany.P_CompanyId} limit 0,1) as `relation2`;"
+                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName, dataproperties.AllParameters)
                 End If
 
                 If datasetname.Tables(consTableName).Rows.Count > 0 Then
@@ -81,7 +88,7 @@
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"delete from {tCompany.TableName} " &
                                                        $"where {tCompany.C_CompanyId} = {tCompany.P_CompanyId}"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters)
                 End If
                 varSuccess = True
             Catch ex As Exception
@@ -99,7 +106,7 @@
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(0).Query = $"select count({tCompany.S}.{tCompany.C_CompanyId}) as `count` " &
                                                    $"from {tCompany.TableName} {tCompany.S}"
-                varCount = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
+                varCount = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query))
             End If
             Return varCount
         End Function
@@ -129,7 +136,7 @@
                 End If
                 varDatabaseRequestMysql(1).Query = $"select count({tCompany.S}.{tCompany.C_CompanyId}) as `isduplicate` " &
                                                    $"from {tCompany.TableName} {tCompany.S} {varWhere}"
-                varIsDuplicate = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters))
+                varIsDuplicate = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters))
             End If
             If varIsDuplicate = 0 Then
                 Return False
@@ -142,14 +149,14 @@
         Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean ', databasename As String, dbengine As LibApp.Ingrid.Global.DatabaseEngine, companycode As String, companyname As String, searchterm1 As String, searchterm2 As String, description As String, Optional rowid As String = "-1") As Boolean
             Try
                 If dataproperties.CompanyIsNew AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
-                    dataproperties.AllParameters.Add("@CompanyToken", CMCv.Security.Encrypt.MD5())
+                    dataproperties.AllParameters.Add("@CompanyToken", CMCv.Security.Encryption.MD5())
                     varDatabaseRequestMssql2008(1).Query = $"insert into dbo.man_company(company_code,company_name,company_searchterm1,company_searchterm2,company_description) " &
                                                            $"values(@CompanyCode, @CompanyName, @CompanySearchTerm1, @CompanySearchTerm2, @CompanyDescription)"
                 ElseIf Not (dataproperties.CompanyIsNew) AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseRequestMssql2008(1).Query = $"update dbo.man_company set company_code = @CompanyCode ,company_name = @CompanyName, company_searchterm1 = @CompanySearchTerm1, company_searchterm2 = @CompanySearchTerm2, company_description = @CompanyDescription, company_datelastmodified = now() " &
                                                            $"where company_id = @CompanyId"
                 ElseIf (dataproperties.CompanyIsNew) AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    SetValue(dataproperties.AllParameters, tCompany.P_CompanyToken, CMCv.Security.Encrypt.MD5())
+                    SetValue(dataproperties.AllParameters, tCompany.P_CompanyToken, CMCv.Security.Encryption.MD5())
                     varDatabaseRequestMysql(1).Query = $"insert into {tCompany.TableName}(" &
                                                        $"{tCompany.C_CompanyCode}, " &
                                                        $"{tCompany.C_CompanyName}, " &
@@ -180,7 +187,7 @@
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                 End If
                 Return True
             Catch ex As Exception
@@ -203,7 +210,7 @@
                            $"{tCompany.S}.{tCompany.C_CompanyDescription} " &
                            $"from {tCompany.TableName} {tCompany.S} " &
                            $"where {tCompany.S}.{tCompany.C_CompanyId} = {tCompany.P_CompanyId}"
-                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_company", dataproperties.AllParameters)
+                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varQuery, datasetname, "man_company", dataproperties.AllParameters)
             End If
         End Sub
     End Class

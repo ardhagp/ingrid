@@ -84,7 +84,8 @@
     <Compile Remove="2001 - Service\02 - SOAP\**" />
     <Compile Remove="2001 - Service\03 - Web\**" />
     <Compile Remove="2001 - Service\04 - Map\**" />
-    <Compile Remove="2091 - Class\**" />
+    <Compile Remove="2002 - System\110 - File Processor\**" />
+    <Compile Remove="2002 - System\900 - Application\**" />
     <Compile Remove="2099 - Interface\Forms\Templates\Windows10\**" />
     <Compile Remove="SqlServerTypes\**" />
     <Compile Remove="x64\**" />
@@ -96,7 +97,8 @@
     <EmbeddedResource Remove="2001 - Service\02 - SOAP\**" />
     <EmbeddedResource Remove="2001 - Service\03 - Web\**" />
     <EmbeddedResource Remove="2001 - Service\04 - Map\**" />
-    <EmbeddedResource Remove="2091 - Class\**" />
+    <EmbeddedResource Remove="2002 - System\110 - File Processor\**" />
+    <EmbeddedResource Remove="2002 - System\900 - Application\**" />
     <EmbeddedResource Remove="2099 - Interface\Forms\Templates\Windows10\**" />
     <EmbeddedResource Remove="SqlServerTypes\**" />
     <EmbeddedResource Remove="x64\**" />
@@ -108,7 +110,8 @@
     <None Remove="2001 - Service\02 - SOAP\**" />
     <None Remove="2001 - Service\03 - Web\**" />
     <None Remove="2001 - Service\04 - Map\**" />
-    <None Remove="2091 - Class\**" />
+    <None Remove="2002 - System\110 - File Processor\**" />
+    <None Remove="2002 - System\900 - Application\**" />
     <None Remove="2099 - Interface\Forms\Templates\Windows10\**" />
     <None Remove="SqlServerTypes\**" />
     <None Remove="x64\**" />
@@ -121,7 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Update="2001 - Service\97 - Dialog Box\frmDialogBox.Designer.vb">
-      <DependentUpon>FRMdialogbox.vb</DependentUpon>
+      <DependentUpon>FRMdialogBox.vb</DependentUpon>
     </Compile>
     <Compile Update="2099 - Interface\1st Party\ULbl.Designer.vb">
       <DependentUpon>ULbl.vb</DependentUpon>
@@ -311,8 +314,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="0010 - Embeded Files\080. Database\Classic\" />
-    <Folder Include="2002 - System\110 - File Processor\Limiter\" />
-    <Folder Include="2002 - System\900 - Application\" />
     <Folder Include="2099 - Interface\Controls\MergerToolStrips\" />
     <Folder Include="2099 - Interface\Controls\TextEditor\" />
   </ItemGroup>

@@ -59,7 +59,7 @@ Namespace CMDdrtm
                     varDatabaseRequestMysql(0).Query = $"select tpl.template_id, tpl.template_title, tpl.template_text1 from doc_template tpl {varWhere} order by tpl.template_title"
                     varDatabaseRequestMysql(0).DataGrid = dategrid
                     varDatabaseRequestMysql(0).StatusBar = contentstatusbar
-                    varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TDARTemplate")
+                    varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TDARTemplate")
                 End If
             Catch ex As Exception
                 MsgBox(ex.ToString)

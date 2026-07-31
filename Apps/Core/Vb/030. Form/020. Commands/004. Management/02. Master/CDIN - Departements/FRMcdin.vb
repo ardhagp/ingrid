@@ -1,20 +1,17 @@
 ﻿Namespace UI.Canvas
     Public Class FRMcdin
 
-#Region "Declaration"
         Private WithEvents Frm_cdin_Editor As FRMcdinEditor
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
         ' This Module Identifier
         Private varThisModuleId As Long = 0
         Private Const varThisModuleCode As String = "CDIN"
-#End Region
 
-#Region "Subs Collections"
         ''' <summary>
-        ''' 
+        ''' Retrieves the data for the current department.
         ''' </summary>
-        ''' <param name="forcerefresh"></param>
+        ''' <param name="forcerefresh">Indicates whether to force a refresh of the data.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnCDIN)
@@ -23,7 +20,7 @@
         End Sub
 
         ''' <summary>
-        ''' 
+        ''' Retrieves the ID of the currently selected row in the DgnCDIN DataGridView and updates the varDataProperties accordingly.
         ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetRowID()
@@ -37,16 +34,19 @@
             End With
         End Sub
 
-#End Region
-
-#Region "Menu Strip Function"
+        ''' <summary>
+        ''' Handles the event when a new department record is added. It sets the DepartmentIsNew property to True and opens the FRMcdinEditor form for adding a new record.
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
             varDataProperties.DepartmentIsNew = True
             Frm_cdin_Editor = New FRMcdinEditor
-            Display(Frm_cdin_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new departement data", True)
+            Display(Frm_cdin_Editor, ImageDb.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new departement data", True)
         End Sub
 
+        ''' <summary>
+        ''' Handles the event when an existing department record is edited. It retrieves the ID of the selected row and opens the FRMcdinEditor form for updating the record. If no record is selected, it displays an error message.
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
             Call GetRowID()
@@ -59,6 +59,9 @@
             UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
         End Sub
 
+        ''' <summary>
+        ''' Handles the event when a department record is deleted. It retrieves the ID of the selected row and prompts the user for confirmation before deleting the record. If no record is selected, it displays an error message.
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
             Call GetRowID()
@@ -89,24 +92,36 @@
             End If
         End Sub
 
+        ''' <summary>
+        ''' Handles the event when the data is refreshed. It clears the search textbox and retrieves the latest data for the current department.
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataRefresh() Handles Com_mms_Menu.EventDataRefresh
             TxtFind.Clear()
             Call GetData(True)
         End Sub
 
+        ''' <summary>
+        ''' Handles the event when the data view is closed. It closes the current form.
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataClose() Handles Com_mms_Menu.EventDataClose
             Me.Close()
         End Sub
 
+        ''' <summary>
+        ''' Handles the event when the find tool is activated. It sets the focus to the TxtFind textbox for searching.
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventToolsFind() Handles Com_mms_Menu.EventToolsFind
             TxtFind.Focus()
         End Sub
-#End Region
 
-#Region "Form Events"
+        ''' <summary>
+        ''' Handles the Load event of the FRMcdin form. It sets the active module to UserParameters, retrieves the module ID, and initializes the menu and data grid. It also clears the search textbox and retrieves the initial data for the current department.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcdin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             ' Set active module to UserParameters
@@ -122,10 +137,14 @@
             DgnCDIN.XOGetNewColor()
             Call GetData(True)
             TxtFind.ClearSearch()
+            DatagridBehaviour.AdaptiveRowHeight(Me, DgnCDIN)
         End Sub
-#End Region
 
-#Region "Component Events"
+        ''' <summary>
+        ''' Handles the KeyDown event of the TxtFind textbox. If the Enter key is pressed, it retrieves the data for the current department based on the search criteria entered in the TxtFind textbox.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
             If e.KeyCode = Keys.Enter Then
@@ -133,24 +152,41 @@
             End If
         End Sub
 
+        ''' <summary>
+        ''' Handles the Click event of the BtnClear button. It clears the TxtFind textbox, retrieves the data for the current department, and clears the search criteria in the TxtFind textbox.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
             TxtFind.Clear()
             Call GetData(True)
             TxtFind.ClearSearch()
         End Sub
-#End Region
 
+        ''' <summary>
+        ''' Handles the event when a record is saved in the FRMcdinEditor form. It retrieves the latest data for the current department after a record is saved.
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcdinEditor_RecordSaved() Handles Frm_cdin_Editor.EventRecordSaved
             Call GetData()
         End Sub
 
+        ''' <summary>
+        ''' Handles the GotFocus event of the FRMcdin form. It maximizes the window state of the form when it receives focus.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcdin_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus
             Me.WindowState = FormWindowState.Maximized
         End Sub
 
+        ''' <summary>
+        ''' Handles the Activated event of the FRMcdin form. It sets the active module to UserParameters when the form is activated.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcdin_Activated(sender As Object, e As EventArgs) Handles Me.Activated
             ' Set active module to UserParameters

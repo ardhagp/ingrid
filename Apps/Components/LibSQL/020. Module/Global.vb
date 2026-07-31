@@ -2,7 +2,7 @@
     Public varDatabaseEngineMssql2008 As New CMCv.Database.Engine.Mssql
     Public varDatabaseEngineMysql As New CMCv.Database.Engine.Mysql
     Public varDatabaseEngineSqlite As New CMCv.Database.Engine.SqliteV3
-    Public databaseproperties(1) As LibApp.Ingrid.Global.Properties
+    Public varDataProperties As LibApp.Ingrid.Global.Properties
 
     Public varDatabaseRequestMssql2008(1) As CMCv.Database.Adapter.MsSql.Display.Request
     Public varDatabaseRequestMysql(1) As CMCv.Database.Adapter.Mysql.Display.Request
@@ -10,7 +10,7 @@
     Public varDatabaseDisplayMysql As New CMCv.Database.Adapter.Mysql.Execute
 
     Public proLog As New CMCv.Ladybug.Log.Fields
-    Public varSecurityEncrypt As New CMCv.Security.Encrypt
+    Public varSecurityEncrypt As New CMCv.Security.Encryption
 
     Public varSecurityAes As System.Security.Cryptography.Aes
     Public varSecurityMd5 As System.Security.Cryptography.MD5
@@ -19,8 +19,10 @@
     Public WithEvents MSG As New CMCv.UI.Canvas.FRMdialogbox
 
     Public tCompany As New LibApp.Table.Man.Company
+    Public tDepartment As New LibApp.Table.Man.Department
     Public tPosition As New LibApp.Table.Man.Position
     Public tEmployee As New LibApp.Table.Man.Employee
+    Public tEmploymentType As New LibApp.Table.Man.EmploymentType
     Public tUser As New LibApp.Table.Sys.User
     Public tModule As New LibApp.Table.Sys.Module
     Public tUserAccess As New LibApp.Table.Sys.UserAccess

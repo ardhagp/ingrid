@@ -3,7 +3,7 @@
 Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class FRMreportBasic
-        Inherits CMCv.ui.canvas.FRMstandardFooter
+        Inherits ui.canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
@@ -23,7 +23,7 @@ Namespace UI.Canvas
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            BtnClose = New CMCv.UI.Control.Btn(components)
+            BtnClose = New UI.Control.Btn(components)
             Rv_ = New ReportViewer()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -89,7 +89,7 @@ Namespace UI.Canvas
             BtnClose.TabIndex = 1
             BtnClose.Text = "&Close"
             BtnClose.UseVisualStyleBackColor = False
-            BtnClose.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
+            BtnClose.XOButtonType = UI.Control.ControlCodeBase.buttonType.Default
             BtnClose.XOShowBorderOnFocus = False
             BtnClose.XOValidateAllInput = False
             BtnClose.XOValidateAllInputTag = Nothing
@@ -120,7 +120,7 @@ Namespace UI.Canvas
             ResumeLayout(False)
             PerformLayout()
         End Sub
-        Friend WithEvents BtnClose As CMCv.UI.Control.Btn
+        Friend WithEvents BtnClose As UI.Control.Btn
         'TODO: Microsoft.Reporting.WinForms.ReportViewer no longer supported.
         'Microsoft.Reporting.WinForms.ReportViewer
         Public WithEvents Rv_ As ReportViewer

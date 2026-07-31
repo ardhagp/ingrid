@@ -1,5 +1,5 @@
 ﻿Namespace UI.Control
-    <System.Drawing.ToolboxBitmap(GetType(CMCv.UI.Control.Dtp), "dtp.ico")>
+    <System.Drawing.ToolboxBitmap(GetType(UI.Control.Dtp), "dtp.ico")>
     Partial Class Dtp
         Inherits System.Windows.Forms.DateTimePicker
 

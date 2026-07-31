@@ -26,8 +26,6 @@ Namespace Ingrid.UI.Dataset
     Partial Public Class ADSglobal
         Inherits Global.System.Data.DataSet
         
-        Private tableDatabaseProperties As DatabasePropertiesDataTable
-        
         Private tableman_company As man_companyDataTable
         
         Private tableCheckRelation As CheckRelationDataTable
@@ -47,6 +45,8 @@ Namespace Ingrid.UI.Dataset
         Private tableSYSS_Editor As SYSS_EditorDataTable
         
         Private tablefile_attachment As file_attachmentDataTable
+        
+        Private tableDatabaseProperties As DatabasePropertiesDataTable
         
         Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
         
@@ -79,9 +79,6 @@ Namespace Ingrid.UI.Dataset
             If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
                 Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
                 ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-                If (Not (ds.Tables("DatabaseProperties")) Is Nothing) Then
-                    MyBase.Tables.Add(New DatabasePropertiesDataTable(ds.Tables("DatabaseProperties")))
-                End If
                 If (Not (ds.Tables("man_company")) Is Nothing) Then
                     MyBase.Tables.Add(New man_companyDataTable(ds.Tables("man_company")))
                 End If
@@ -112,6 +109,9 @@ Namespace Ingrid.UI.Dataset
                 If (Not (ds.Tables("file_attachment")) Is Nothing) Then
                     MyBase.Tables.Add(New file_attachmentDataTable(ds.Tables("file_attachment")))
                 End If
+                If (Not (ds.Tables("DatabaseProperties")) Is Nothing) Then
+                    MyBase.Tables.Add(New DatabasePropertiesDataTable(ds.Tables("DatabaseProperties")))
+                End If
                 Me.DataSetName = ds.DataSetName
                 Me.Prefix = ds.Prefix
                 Me.Namespace = ds.Namespace
@@ -128,16 +128,6 @@ Namespace Ingrid.UI.Dataset
             AddHandler MyBase.Tables.CollectionChanged, schemaChangedHandler
             AddHandler Me.Relations.CollectionChanged, schemaChangedHandler
         End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false),  _
-         Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-        Public ReadOnly Property DatabaseProperties() As DatabasePropertiesDataTable
-            Get
-                Return Me.tableDatabaseProperties
-            End Get
-        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
@@ -241,6 +231,16 @@ Namespace Ingrid.UI.Dataset
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false),  _
+         Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+        Public ReadOnly Property DatabaseProperties() As DatabasePropertiesDataTable
+            Get
+                Return Me.tableDatabaseProperties
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.BrowsableAttribute(true),  _
          Global.System.ComponentModel.DesignerSerializationVisibilityAttribute(Global.System.ComponentModel.DesignerSerializationVisibility.Visible)>  _
         Public Overrides Property SchemaSerializationMode() As Global.System.Data.SchemaSerializationMode
@@ -306,9 +306,6 @@ Namespace Ingrid.UI.Dataset
                 Me.Reset
                 Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
                 ds.ReadXml(reader)
-                If (Not (ds.Tables("DatabaseProperties")) Is Nothing) Then
-                    MyBase.Tables.Add(New DatabasePropertiesDataTable(ds.Tables("DatabaseProperties")))
-                End If
                 If (Not (ds.Tables("man_company")) Is Nothing) Then
                     MyBase.Tables.Add(New man_companyDataTable(ds.Tables("man_company")))
                 End If
@@ -338,6 +335,9 @@ Namespace Ingrid.UI.Dataset
                 End If
                 If (Not (ds.Tables("file_attachment")) Is Nothing) Then
                     MyBase.Tables.Add(New file_attachmentDataTable(ds.Tables("file_attachment")))
+                End If
+                If (Not (ds.Tables("DatabaseProperties")) Is Nothing) Then
+                    MyBase.Tables.Add(New DatabasePropertiesDataTable(ds.Tables("DatabaseProperties")))
                 End If
                 Me.DataSetName = ds.DataSetName
                 Me.Prefix = ds.Prefix
@@ -371,12 +371,6 @@ Namespace Ingrid.UI.Dataset
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-            Me.tableDatabaseProperties = CType(MyBase.Tables("DatabaseProperties"),DatabasePropertiesDataTable)
-            If (initTable = true) Then
-                If (Not (Me.tableDatabaseProperties) Is Nothing) Then
-                    Me.tableDatabaseProperties.InitVars
-                End If
-            End If
             Me.tableman_company = CType(MyBase.Tables("man_company"),man_companyDataTable)
             If (initTable = true) Then
                 If (Not (Me.tableman_company) Is Nothing) Then
@@ -437,6 +431,12 @@ Namespace Ingrid.UI.Dataset
                     Me.tablefile_attachment.InitVars
                 End If
             End If
+            Me.tableDatabaseProperties = CType(MyBase.Tables("DatabaseProperties"),DatabasePropertiesDataTable)
+            If (initTable = true) Then
+                If (Not (Me.tableDatabaseProperties) Is Nothing) Then
+                    Me.tableDatabaseProperties.InitVars
+                End If
+            End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -447,8 +447,6 @@ Namespace Ingrid.UI.Dataset
             Me.Namespace = "http://tempuri.org/ADSglobal.xsd"
             Me.EnforceConstraints = true
             Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-            Me.tableDatabaseProperties = New DatabasePropertiesDataTable()
-            MyBase.Tables.Add(Me.tableDatabaseProperties)
             Me.tableman_company = New man_companyDataTable()
             MyBase.Tables.Add(Me.tableman_company)
             Me.tableCheckRelation = New CheckRelationDataTable()
@@ -469,13 +467,9 @@ Namespace Ingrid.UI.Dataset
             MyBase.Tables.Add(Me.tableSYSS_Editor)
             Me.tablefile_attachment = New file_attachmentDataTable()
             MyBase.Tables.Add(Me.tablefile_attachment)
+            Me.tableDatabaseProperties = New DatabasePropertiesDataTable()
+            MyBase.Tables.Add(Me.tableDatabaseProperties)
         End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Private Function ShouldSerializeDatabaseProperties() As Boolean
-            Return false
-        End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -539,6 +533,12 @@ Namespace Ingrid.UI.Dataset
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Private Function ShouldSerializeDatabaseProperties() As Boolean
+            Return false
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub SchemaChanged(ByVal sender As Object, ByVal e As Global.System.ComponentModel.CollectionChangeEventArgs)
             If (e.Action = Global.System.ComponentModel.CollectionChangeAction.Remove) Then
                 Me.InitVars
@@ -596,9 +596,6 @@ Namespace Ingrid.UI.Dataset
         End Function
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Delegate Sub DatabasePropertiesRowChangeEventHandler(ByVal sender As Object, ByVal e As DatabasePropertiesRowChangeEvent)
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Delegate Sub man_companyRowChangeEventHandler(ByVal sender As Object, ByVal e As man_companyRowChangeEvent)
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -628,285 +625,8 @@ Namespace Ingrid.UI.Dataset
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Delegate Sub file_attachmentRowChangeEventHandler(ByVal sender As Object, ByVal e As file_attachmentRowChangeEvent)
         
-        '''<summary>
-        '''Represents the strongly named DataTable class.
-        '''</summary>
-        <Global.System.Serializable(),  _
-         Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-        Partial Public Class DatabasePropertiesDataTable
-            Inherits Global.System.Data.TypedTableBase(Of DatabasePropertiesRow)
-            
-            Private columnDATABASEENGINE As Global.System.Data.DataColumn
-            
-            Private columnDBFORDATA As Global.System.Data.DataColumn
-            
-            Private columnCLIENT As Global.System.Data.DataColumn
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Sub New()
-                MyBase.New
-                Me.TableName = "DatabaseProperties"
-                Me.BeginInit
-                Me.InitClass
-                Me.EndInit
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Friend Sub New(ByVal table As Global.System.Data.DataTable)
-                MyBase.New
-                Me.TableName = table.TableName
-                If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                    Me.CaseSensitive = table.CaseSensitive
-                End If
-                If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                    Me.Locale = table.Locale
-                End If
-                If (table.Namespace <> table.DataSet.Namespace) Then
-                    Me.Namespace = table.Namespace
-                End If
-                Me.Prefix = table.Prefix
-                Me.MinimumCapacity = table.MinimumCapacity
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-             System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called"& _ 
-                " or extended by application code.", DiagnosticId:="SYSLIB0051")>  _
-            Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-                MyBase.New(info, context)
-                Me.InitVars
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public ReadOnly Property DATABASEENGINEColumn() As Global.System.Data.DataColumn
-                Get
-                    Return Me.columnDATABASEENGINE
-                End Get
-            End Property
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public ReadOnly Property DBFORDATAColumn() As Global.System.Data.DataColumn
-                Get
-                    Return Me.columnDBFORDATA
-                End Get
-            End Property
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public ReadOnly Property CLIENTColumn() As Global.System.Data.DataColumn
-                Get
-                    Return Me.columnCLIENT
-                End Get
-            End Property
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-             Global.System.ComponentModel.Browsable(false)>  _
-            Public ReadOnly Property Count() As Integer
-                Get
-                    Return Me.Rows.Count
-                End Get
-            End Property
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Default ReadOnly Property Item(ByVal index As Integer) As DatabasePropertiesRow
-                Get
-                    Return CType(Me.Rows(index),DatabasePropertiesRow)
-                End Get
-            End Property
-            
-            <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Event DatabasePropertiesRowChanging As DatabasePropertiesRowChangeEventHandler
-            
-            <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Event DatabasePropertiesRowChanged As DatabasePropertiesRowChangeEventHandler
-            
-            <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Event DatabasePropertiesRowDeleting As DatabasePropertiesRowChangeEventHandler
-            
-            <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Event DatabasePropertiesRowDeleted As DatabasePropertiesRowChangeEventHandler
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Overloads Sub AddDatabasePropertiesRow(ByVal row As DatabasePropertiesRow)
-                Me.Rows.Add(row)
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Overloads Function AddDatabasePropertiesRow(ByVal DATABASEENGINE As String, ByVal DBFORDATA As String, ByVal CLIENT As String) As DatabasePropertiesRow
-                Dim rowDatabasePropertiesRow As DatabasePropertiesRow = CType(Me.NewRow,DatabasePropertiesRow)
-                Dim columnValuesArray() As Object = New Object() {DATABASEENGINE, DBFORDATA, CLIENT}
-                rowDatabasePropertiesRow.ItemArray = columnValuesArray
-                Me.Rows.Add(rowDatabasePropertiesRow)
-                Return rowDatabasePropertiesRow
-            End Function
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Overrides Function Clone() As Global.System.Data.DataTable
-                Dim cln As DatabasePropertiesDataTable = CType(MyBase.Clone,DatabasePropertiesDataTable)
-                cln.InitVars
-                Return cln
-            End Function
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-                Return New DatabasePropertiesDataTable()
-            End Function
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Friend Sub InitVars()
-                Me.columnDATABASEENGINE = MyBase.Columns("DATABASEENGINE")
-                Me.columnDBFORDATA = MyBase.Columns("DBFORDATA")
-                Me.columnCLIENT = MyBase.Columns("CLIENT")
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Private Sub InitClass()
-                Me.columnDATABASEENGINE = New Global.System.Data.DataColumn("DATABASEENGINE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-                MyBase.Columns.Add(Me.columnDATABASEENGINE)
-                Me.columnDBFORDATA = New Global.System.Data.DataColumn("DBFORDATA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-                MyBase.Columns.Add(Me.columnDBFORDATA)
-                Me.columnCLIENT = New Global.System.Data.DataColumn("CLIENT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-                MyBase.Columns.Add(Me.columnCLIENT)
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Function NewDatabasePropertiesRow() As DatabasePropertiesRow
-                Return CType(Me.NewRow,DatabasePropertiesRow)
-            End Function
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-                Return New DatabasePropertiesRow(builder)
-            End Function
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Protected Overrides Function GetRowType() As Global.System.Type
-                Return GetType(DatabasePropertiesRow)
-            End Function
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-                MyBase.OnRowChanged(e)
-                If (Not (Me.DatabasePropertiesRowChangedEvent) Is Nothing) Then
-                    RaiseEvent DatabasePropertiesRowChanged(Me, New DatabasePropertiesRowChangeEvent(CType(e.Row,DatabasePropertiesRow), e.Action))
-                End If
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-                MyBase.OnRowChanging(e)
-                If (Not (Me.DatabasePropertiesRowChangingEvent) Is Nothing) Then
-                    RaiseEvent DatabasePropertiesRowChanging(Me, New DatabasePropertiesRowChangeEvent(CType(e.Row,DatabasePropertiesRow), e.Action))
-                End If
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-                MyBase.OnRowDeleted(e)
-                If (Not (Me.DatabasePropertiesRowDeletedEvent) Is Nothing) Then
-                    RaiseEvent DatabasePropertiesRowDeleted(Me, New DatabasePropertiesRowChangeEvent(CType(e.Row,DatabasePropertiesRow), e.Action))
-                End If
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-                MyBase.OnRowDeleting(e)
-                If (Not (Me.DatabasePropertiesRowDeletingEvent) Is Nothing) Then
-                    RaiseEvent DatabasePropertiesRowDeleting(Me, New DatabasePropertiesRowChangeEvent(CType(e.Row,DatabasePropertiesRow), e.Action))
-                End If
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Sub RemoveDatabasePropertiesRow(ByVal row As DatabasePropertiesRow)
-                Me.Rows.Remove(row)
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-                Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-                Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-                Dim ds As ADSglobal = New ADSglobal()
-                Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-                any1.MinOccurs = New Decimal(0)
-                any1.MaxOccurs = Decimal.MaxValue
-                any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-                sequence.Items.Add(any1)
-                Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-                any2.MinOccurs = New Decimal(1)
-                any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-                sequence.Items.Add(any2)
-                Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-                attribute1.Name = "namespace"
-                attribute1.FixedValue = ds.Namespace
-                type.Attributes.Add(attribute1)
-                Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-                attribute2.Name = "tableTypeName"
-                attribute2.FixedValue = "DatabasePropertiesDataTable"
-                type.Attributes.Add(attribute2)
-                type.Particle = sequence
-                Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-                If xs.Contains(dsSchema.TargetNamespace) Then
-                    Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                    Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                    Try 
-                        Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                        dsSchema.Write(s1)
-                        Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                        Do While schemas.MoveNext
-                            schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                            s2.SetLength(0)
-                            schema.Write(s2)
-                            If (s1.Length = s2.Length) Then
-                                s1.Position = 0
-                                s2.Position = 0
-                                
-                                Do While ((s1.Position <> s1.Length)  _
-                                            AndAlso (s1.ReadByte = s2.ReadByte))
-                                    
-                                    
-                                Loop
-                                If (s1.Position = s1.Length) Then
-                                    Return type
-                                End If
-                            End If
-                            
-                        Loop
-                    Finally
-                        If (Not (s1) Is Nothing) Then
-                            s1.Close
-                        End If
-                        If (Not (s2) Is Nothing) Then
-                            s2.Close
-                        End If
-                    End Try
-                End If
-                xs.Add(dsSchema)
-                Return type
-            End Function
-        End Class
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Delegate Sub DatabasePropertiesRowChangeEventHandler(ByVal sender As Object, ByVal e As DatabasePropertiesRowChangeEvent)
         
         '''<summary>
         '''Represents the strongly named DataTable class.
@@ -4582,100 +4302,361 @@ Namespace Ingrid.UI.Dataset
         End Class
         
         '''<summary>
-        '''Represents strongly named DataRow class.
+        '''Represents the strongly named DataTable class.
         '''</summary>
-        Partial Public Class DatabasePropertiesRow
-            Inherits Global.System.Data.DataRow
+        <Global.System.Serializable(),  _
+         Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+        Partial Public Class DatabasePropertiesDataTable
+            Inherits Global.System.Data.TypedTableBase(Of DatabasePropertiesRow)
             
-            Private tableDatabaseProperties As DatabasePropertiesDataTable
+            Private columnSERVERADDRESS As Global.System.Data.DataColumn
+            
+            Private columnUSERNAME As Global.System.Data.DataColumn
+            
+            Private columnPASSWORD As Global.System.Data.DataColumn
+            
+            Private columnSERVERPORT As Global.System.Data.DataColumn
+            
+            Private columnDBFORDATA As Global.System.Data.DataColumn
+            
+            Private columnDBFORFILE As Global.System.Data.DataColumn
+            
+            Private columnDATABASEENGINE As Global.System.Data.DataColumn
+            
+            Private columnCLIENT As Global.System.Data.DataColumn
+            
+            Private columnDEFAULTCONNECTION As Global.System.Data.DataColumn
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-                MyBase.New(rb)
-                Me.tableDatabaseProperties = CType(Me.Table,DatabasePropertiesDataTable)
+            Public Sub New()
+                MyBase.New
+                Me.TableName = "DatabaseProperties"
+                Me.BeginInit
+                Me.InitClass
+                Me.EndInit
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property DATABASEENGINE() As String
+            Friend Sub New(ByVal table As Global.System.Data.DataTable)
+                MyBase.New
+                Me.TableName = table.TableName
+                If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                    Me.CaseSensitive = table.CaseSensitive
+                End If
+                If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                    Me.Locale = table.Locale
+                End If
+                If (table.Namespace <> table.DataSet.Namespace) Then
+                    Me.Namespace = table.Namespace
+                End If
+                Me.Prefix = table.Prefix
+                Me.MinimumCapacity = table.MinimumCapacity
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+             System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called"& _ 
+                " or extended by application code.", DiagnosticId:="SYSLIB0051")>  _
+            Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+                MyBase.New(info, context)
+                Me.InitVars
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property SERVERADDRESSColumn() As Global.System.Data.DataColumn
                 Get
-                    Try 
-                        Return CType(Me(Me.tableDatabaseProperties.DATABASEENGINEColumn),String)
-                    Catch e As Global.System.InvalidCastException
-                        Throw New Global.System.Data.StrongTypingException("The value for column 'DATABASEENGINE' in table 'DatabaseProperties' is DBNull.", e)
-                    End Try
+                    Return Me.columnSERVERADDRESS
                 End Get
-                Set
-                    Me(Me.tableDatabaseProperties.DATABASEENGINEColumn) = value
-                End Set
             End Property
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property DBFORDATA() As String
+            Public ReadOnly Property USERNAMEColumn() As Global.System.Data.DataColumn
                 Get
-                    Try 
-                        Return CType(Me(Me.tableDatabaseProperties.DBFORDATAColumn),String)
-                    Catch e As Global.System.InvalidCastException
-                        Throw New Global.System.Data.StrongTypingException("The value for column 'DBFORDATA' in table 'DatabaseProperties' is DBNull.", e)
-                    End Try
+                    Return Me.columnUSERNAME
                 End Get
-                Set
-                    Me(Me.tableDatabaseProperties.DBFORDATAColumn) = value
-                End Set
             End Property
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property CLIENT() As String
+            Public ReadOnly Property PASSWORDColumn() As Global.System.Data.DataColumn
                 Get
-                    Try 
-                        Return CType(Me(Me.tableDatabaseProperties.CLIENTColumn),String)
-                    Catch e As Global.System.InvalidCastException
-                        Throw New Global.System.Data.StrongTypingException("The value for column 'CLIENT' in table 'DatabaseProperties' is DBNull.", e)
-                    End Try
+                    Return Me.columnPASSWORD
                 End Get
-                Set
-                    Me(Me.tableDatabaseProperties.CLIENTColumn) = value
-                End Set
             End Property
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Function IsDATABASEENGINENull() As Boolean
-                Return Me.IsNull(Me.tableDatabaseProperties.DATABASEENGINEColumn)
-            End Function
+            Public ReadOnly Property SERVERPORTColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnSERVERPORT
+                End Get
+            End Property
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Sub SetDATABASEENGINENull()
-                Me(Me.tableDatabaseProperties.DATABASEENGINEColumn) = Global.System.Convert.DBNull
+            Public ReadOnly Property DBFORDATAColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnDBFORDATA
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property DBFORFILEColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnDBFORFILE
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property DATABASEENGINEColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnDATABASEENGINE
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property CLIENTColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnCLIENT
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property DEFAULTCONNECTIONColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnDEFAULTCONNECTION
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+             Global.System.ComponentModel.Browsable(false)>  _
+            Public ReadOnly Property Count() As Integer
+                Get
+                    Return Me.Rows.Count
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Default ReadOnly Property Item(ByVal index As Integer) As DatabasePropertiesRow
+                Get
+                    Return CType(Me.Rows(index),DatabasePropertiesRow)
+                End Get
+            End Property
+            
+            <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Event DatabasePropertiesRowChanging As DatabasePropertiesRowChangeEventHandler
+            
+            <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Event DatabasePropertiesRowChanged As DatabasePropertiesRowChangeEventHandler
+            
+            <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Event DatabasePropertiesRowDeleting As DatabasePropertiesRowChangeEventHandler
+            
+            <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Event DatabasePropertiesRowDeleted As DatabasePropertiesRowChangeEventHandler
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Overloads Sub AddDatabasePropertiesRow(ByVal row As DatabasePropertiesRow)
+                Me.Rows.Add(row)
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Function IsDBFORDATANull() As Boolean
-                Return Me.IsNull(Me.tableDatabaseProperties.DBFORDATAColumn)
+            Public Overloads Function AddDatabasePropertiesRow(ByVal SERVERADDRESS As String, ByVal USERNAME As String, ByVal PASSWORD As String, ByVal SERVERPORT As Integer, ByVal DBFORDATA As String, ByVal DBFORFILE As String, ByVal DATABASEENGINE As String, ByVal CLIENT As String, ByVal DEFAULTCONNECTION As Integer) As DatabasePropertiesRow
+                Dim rowDatabasePropertiesRow As DatabasePropertiesRow = CType(Me.NewRow,DatabasePropertiesRow)
+                Dim columnValuesArray() As Object = New Object() {SERVERADDRESS, USERNAME, PASSWORD, SERVERPORT, DBFORDATA, DBFORFILE, DATABASEENGINE, CLIENT, DEFAULTCONNECTION}
+                rowDatabasePropertiesRow.ItemArray = columnValuesArray
+                Me.Rows.Add(rowDatabasePropertiesRow)
+                Return rowDatabasePropertiesRow
             End Function
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Sub SetDBFORDATANull()
-                Me(Me.tableDatabaseProperties.DBFORDATAColumn) = Global.System.Convert.DBNull
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Function IsCLIENTNull() As Boolean
-                Return Me.IsNull(Me.tableDatabaseProperties.CLIENTColumn)
+            Public Overrides Function Clone() As Global.System.Data.DataTable
+                Dim cln As DatabasePropertiesDataTable = CType(MyBase.Clone,DatabasePropertiesDataTable)
+                cln.InitVars
+                Return cln
             End Function
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Sub SetCLIENTNull()
-                Me(Me.tableDatabaseProperties.CLIENTColumn) = Global.System.Convert.DBNull
+            Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+                Return New DatabasePropertiesDataTable()
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Friend Sub InitVars()
+                Me.columnSERVERADDRESS = MyBase.Columns("SERVERADDRESS")
+                Me.columnUSERNAME = MyBase.Columns("USERNAME")
+                Me.columnPASSWORD = MyBase.Columns("PASSWORD")
+                Me.columnSERVERPORT = MyBase.Columns("SERVERPORT")
+                Me.columnDBFORDATA = MyBase.Columns("DBFORDATA")
+                Me.columnDBFORFILE = MyBase.Columns("DBFORFILE")
+                Me.columnDATABASEENGINE = MyBase.Columns("DATABASEENGINE")
+                Me.columnCLIENT = MyBase.Columns("CLIENT")
+                Me.columnDEFAULTCONNECTION = MyBase.Columns("DEFAULTCONNECTION")
             End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Private Sub InitClass()
+                Me.columnSERVERADDRESS = New Global.System.Data.DataColumn("SERVERADDRESS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnSERVERADDRESS)
+                Me.columnUSERNAME = New Global.System.Data.DataColumn("USERNAME", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnUSERNAME)
+                Me.columnPASSWORD = New Global.System.Data.DataColumn("PASSWORD", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnPASSWORD)
+                Me.columnSERVERPORT = New Global.System.Data.DataColumn("SERVERPORT", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnSERVERPORT)
+                Me.columnDBFORDATA = New Global.System.Data.DataColumn("DBFORDATA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnDBFORDATA)
+                Me.columnDBFORFILE = New Global.System.Data.DataColumn("DBFORFILE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnDBFORFILE)
+                Me.columnDATABASEENGINE = New Global.System.Data.DataColumn("DATABASEENGINE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnDATABASEENGINE)
+                Me.columnCLIENT = New Global.System.Data.DataColumn("CLIENT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnCLIENT)
+                Me.columnDEFAULTCONNECTION = New Global.System.Data.DataColumn("DEFAULTCONNECTION", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnDEFAULTCONNECTION)
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function NewDatabasePropertiesRow() As DatabasePropertiesRow
+                Return CType(Me.NewRow,DatabasePropertiesRow)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+                Return New DatabasePropertiesRow(builder)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Protected Overrides Function GetRowType() As Global.System.Type
+                Return GetType(DatabasePropertiesRow)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+                MyBase.OnRowChanged(e)
+                If (Not (Me.DatabasePropertiesRowChangedEvent) Is Nothing) Then
+                    RaiseEvent DatabasePropertiesRowChanged(Me, New DatabasePropertiesRowChangeEvent(CType(e.Row,DatabasePropertiesRow), e.Action))
+                End If
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+                MyBase.OnRowChanging(e)
+                If (Not (Me.DatabasePropertiesRowChangingEvent) Is Nothing) Then
+                    RaiseEvent DatabasePropertiesRowChanging(Me, New DatabasePropertiesRowChangeEvent(CType(e.Row,DatabasePropertiesRow), e.Action))
+                End If
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+                MyBase.OnRowDeleted(e)
+                If (Not (Me.DatabasePropertiesRowDeletedEvent) Is Nothing) Then
+                    RaiseEvent DatabasePropertiesRowDeleted(Me, New DatabasePropertiesRowChangeEvent(CType(e.Row,DatabasePropertiesRow), e.Action))
+                End If
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+                MyBase.OnRowDeleting(e)
+                If (Not (Me.DatabasePropertiesRowDeletingEvent) Is Nothing) Then
+                    RaiseEvent DatabasePropertiesRowDeleting(Me, New DatabasePropertiesRowChangeEvent(CType(e.Row,DatabasePropertiesRow), e.Action))
+                End If
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub RemoveDatabasePropertiesRow(ByVal row As DatabasePropertiesRow)
+                Me.Rows.Remove(row)
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+                Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+                Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+                Dim ds As ADSglobal = New ADSglobal()
+                Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+                any1.MinOccurs = New Decimal(0)
+                any1.MaxOccurs = Decimal.MaxValue
+                any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+                sequence.Items.Add(any1)
+                Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+                any2.MinOccurs = New Decimal(1)
+                any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+                sequence.Items.Add(any2)
+                Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+                attribute1.Name = "namespace"
+                attribute1.FixedValue = ds.Namespace
+                type.Attributes.Add(attribute1)
+                Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+                attribute2.Name = "tableTypeName"
+                attribute2.FixedValue = "DatabasePropertiesDataTable"
+                type.Attributes.Add(attribute2)
+                type.Particle = sequence
+                Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+                If xs.Contains(dsSchema.TargetNamespace) Then
+                    Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                    Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                    Try 
+                        Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                        dsSchema.Write(s1)
+                        Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                        Do While schemas.MoveNext
+                            schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                            s2.SetLength(0)
+                            schema.Write(s2)
+                            If (s1.Length = s2.Length) Then
+                                s1.Position = 0
+                                s2.Position = 0
+                                
+                                Do While ((s1.Position <> s1.Length)  _
+                                            AndAlso (s1.ReadByte = s2.ReadByte))
+                                    
+                                    
+                                Loop
+                                If (s1.Position = s1.Length) Then
+                                    Return type
+                                End If
+                            End If
+                            
+                        Loop
+                    Finally
+                        If (Not (s1) Is Nothing) Then
+                            s1.Close
+                        End If
+                        If (Not (s2) Is Nothing) Then
+                            s2.Close
+                        End If
+                    End Try
+                End If
+                xs.Add(dsSchema)
+                Return type
+            End Function
         End Class
         
         '''<summary>
@@ -7382,39 +7363,263 @@ Namespace Ingrid.UI.Dataset
         End Class
         
         '''<summary>
-        '''Row event argument class
+        '''Represents strongly named DataRow class.
         '''</summary>
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Class DatabasePropertiesRowChangeEvent
-            Inherits Global.System.EventArgs
+        Partial Public Class DatabasePropertiesRow
+            Inherits Global.System.Data.DataRow
             
-            Private eventRow As DatabasePropertiesRow
-            
-            Private eventAction As Global.System.Data.DataRowAction
+            Private tableDatabaseProperties As DatabasePropertiesDataTable
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Sub New(ByVal row As DatabasePropertiesRow, ByVal action As Global.System.Data.DataRowAction)
-                MyBase.New
-                Me.eventRow = row
-                Me.eventAction = action
+            Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+                MyBase.New(rb)
+                Me.tableDatabaseProperties = CType(Me.Table,DatabasePropertiesDataTable)
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public ReadOnly Property Row() As DatabasePropertiesRow
+            Public Property SERVERADDRESS() As String
                 Get
-                    Return Me.eventRow
+                    Try 
+                        Return CType(Me(Me.tableDatabaseProperties.SERVERADDRESSColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'SERVERADDRESS' in table 'DatabaseProperties' is DBNull.", e)
+                    End Try
                 End Get
+                Set
+                    Me(Me.tableDatabaseProperties.SERVERADDRESSColumn) = value
+                End Set
             End Property
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Public Property USERNAME() As String
                 Get
-                    Return Me.eventAction
+                    Try 
+                        Return CType(Me(Me.tableDatabaseProperties.USERNAMEColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'USERNAME' in table 'DatabaseProperties' is DBNull.", e)
+                    End Try
                 End Get
+                Set
+                    Me(Me.tableDatabaseProperties.USERNAMEColumn) = value
+                End Set
             End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property PASSWORD() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableDatabaseProperties.PASSWORDColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'PASSWORD' in table 'DatabaseProperties' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableDatabaseProperties.PASSWORDColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property SERVERPORT() As Integer
+                Get
+                    Try 
+                        Return CType(Me(Me.tableDatabaseProperties.SERVERPORTColumn),Integer)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'SERVERPORT' in table 'DatabaseProperties' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableDatabaseProperties.SERVERPORTColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property DBFORDATA() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableDatabaseProperties.DBFORDATAColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'DBFORDATA' in table 'DatabaseProperties' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableDatabaseProperties.DBFORDATAColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property DBFORFILE() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableDatabaseProperties.DBFORFILEColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'DBFORFILE' in table 'DatabaseProperties' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableDatabaseProperties.DBFORFILEColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property DATABASEENGINE() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableDatabaseProperties.DATABASEENGINEColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'DATABASEENGINE' in table 'DatabaseProperties' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableDatabaseProperties.DATABASEENGINEColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property CLIENT() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableDatabaseProperties.CLIENTColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'CLIENT' in table 'DatabaseProperties' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableDatabaseProperties.CLIENTColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property DEFAULTCONNECTION() As Integer
+                Get
+                    Try 
+                        Return CType(Me(Me.tableDatabaseProperties.DEFAULTCONNECTIONColumn),Integer)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'DEFAULTCONNECTION' in table 'DatabaseProperties' is DBNull."& _ 
+                                "", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableDatabaseProperties.DEFAULTCONNECTIONColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function IsSERVERADDRESSNull() As Boolean
+                Return Me.IsNull(Me.tableDatabaseProperties.SERVERADDRESSColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub SetSERVERADDRESSNull()
+                Me(Me.tableDatabaseProperties.SERVERADDRESSColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function IsUSERNAMENull() As Boolean
+                Return Me.IsNull(Me.tableDatabaseProperties.USERNAMEColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub SetUSERNAMENull()
+                Me(Me.tableDatabaseProperties.USERNAMEColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function IsPASSWORDNull() As Boolean
+                Return Me.IsNull(Me.tableDatabaseProperties.PASSWORDColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub SetPASSWORDNull()
+                Me(Me.tableDatabaseProperties.PASSWORDColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function IsSERVERPORTNull() As Boolean
+                Return Me.IsNull(Me.tableDatabaseProperties.SERVERPORTColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub SetSERVERPORTNull()
+                Me(Me.tableDatabaseProperties.SERVERPORTColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function IsDBFORDATANull() As Boolean
+                Return Me.IsNull(Me.tableDatabaseProperties.DBFORDATAColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub SetDBFORDATANull()
+                Me(Me.tableDatabaseProperties.DBFORDATAColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function IsDBFORFILENull() As Boolean
+                Return Me.IsNull(Me.tableDatabaseProperties.DBFORFILEColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub SetDBFORFILENull()
+                Me(Me.tableDatabaseProperties.DBFORFILEColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function IsDATABASEENGINENull() As Boolean
+                Return Me.IsNull(Me.tableDatabaseProperties.DATABASEENGINEColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub SetDATABASEENGINENull()
+                Me(Me.tableDatabaseProperties.DATABASEENGINEColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function IsCLIENTNull() As Boolean
+                Return Me.IsNull(Me.tableDatabaseProperties.CLIENTColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub SetCLIENTNull()
+                Me(Me.tableDatabaseProperties.CLIENTColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function IsDEFAULTCONNECTIONNull() As Boolean
+                Return Me.IsNull(Me.tableDatabaseProperties.DEFAULTCONNECTIONColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub SetDEFAULTCONNECTIONNull()
+                Me(Me.tableDatabaseProperties.DEFAULTCONNECTIONColumn) = Global.System.Convert.DBNull
+            End Sub
         End Class
         
         '''<summary>
@@ -7763,6 +7968,42 @@ Namespace Ingrid.UI.Dataset
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public ReadOnly Property Row() As file_attachmentRow
+                Get
+                    Return Me.eventRow
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+                Get
+                    Return Me.eventAction
+                End Get
+            End Property
+        End Class
+        
+        '''<summary>
+        '''Row event argument class
+        '''</summary>
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Class DatabasePropertiesRowChangeEvent
+            Inherits Global.System.EventArgs
+            
+            Private eventRow As DatabasePropertiesRow
+            
+            Private eventAction As Global.System.Data.DataRowAction
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub New(ByVal row As DatabasePropertiesRow, ByVal action As Global.System.Data.DataRowAction)
+                MyBase.New
+                Me.eventRow = row
+                Me.eventAction = action
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property Row() As DatabasePropertiesRow
                 Get
                     Return Me.eventRow
                 End Get

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ADSconnect" targetNamespace="http://tempuri.org/ADSconnect.xsd" xmlns:mstns="http://tempuri.org/ADSconnect.xsd" xmlns="http://tempuri.org/ADSconnect.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ADSconnect" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="ADSconnect" msprop:Generator_DataSetName="ADSconnect">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="serverlist" msprop:Generator_RowEvHandlerName="serverlistRowChangeEventHandler" msprop:Generator_RowDeletedName="serverlistRowDeleted" msprop:Generator_RowDeletingName="serverlistRowDeleting" msprop:Generator_RowEvArgName="serverlistRowChangeEvent" msprop:Generator_TablePropName="serverlist" msprop:Generator_RowChangedName="serverlistRowChanged" msprop:Generator_RowChangingName="serverlistRowChanging" msprop:Generator_TableClassName="serverlistDataTable" msprop:Generator_RowClassName="serverlistRow" msprop:Generator_TableVarName="tableserverlist" msprop:Generator_UserTableName="serverlist">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SERVERADDRESS" msprop:Generator_ColumnPropNameInRow="SERVERADDRESS" msprop:Generator_ColumnPropNameInTable="SERVERADDRESSColumn" msprop:Generator_ColumnVarNameInTable="columnSERVERADDRESS" msprop:Generator_UserColumnName="SERVERADDRESS" type="xs:string" minOccurs="0" />
+              <xs:element name="USERNAME" msprop:Generator_ColumnPropNameInRow="USERNAME" msprop:Generator_ColumnPropNameInTable="USERNAMEColumn" msprop:Generator_ColumnVarNameInTable="columnUSERNAME" msprop:Generator_UserColumnName="USERNAME" type="xs:string" minOccurs="0" />
+              <xs:element name="PASSWORD" msprop:Generator_ColumnPropNameInRow="PASSWORD" msprop:Generator_ColumnPropNameInTable="PASSWORDColumn" msprop:Generator_ColumnVarNameInTable="columnPASSWORD" msprop:Generator_UserColumnName="PASSWORD" type="xs:string" minOccurs="0" />
+              <xs:element name="SERVERPORT" msprop:Generator_ColumnPropNameInRow="SERVERPORT" msprop:Generator_ColumnPropNameInTable="SERVERPORTColumn" msprop:Generator_ColumnVarNameInTable="columnSERVERPORT" msprop:Generator_UserColumnName="SERVERPORT" type="xs:int" minOccurs="0" />
+              <xs:element name="DBFORDATA" msprop:Generator_ColumnPropNameInRow="DBFORDATA" msprop:Generator_ColumnPropNameInTable="DBFORDATAColumn" msprop:Generator_ColumnVarNameInTable="columnDBFORDATA" msprop:Generator_UserColumnName="DBFORDATA" type="xs:string" minOccurs="0" />
+              <xs:element name="DBFORFILE" msprop:Generator_ColumnPropNameInRow="DBFORFILE" msprop:Generator_ColumnPropNameInTable="DBFORFILEColumn" msprop:Generator_ColumnVarNameInTable="columnDBFORFILE" msprop:Generator_UserColumnName="DBFORFILE" type="xs:string" minOccurs="0" />
+              <xs:element name="DATABASEENGINE" msprop:Generator_ColumnPropNameInRow="DATABASEENGINE" msprop:Generator_ColumnPropNameInTable="DATABASEENGINEColumn" msprop:Generator_ColumnVarNameInTable="columnDATABASEENGINE" msprop:Generator_UserColumnName="DATABASEENGINE" type="xs:string" minOccurs="0" />
+              <xs:element name="CLIENT" msprop:Generator_ColumnPropNameInRow="CLIENT" msprop:Generator_ColumnPropNameInTable="CLIENTColumn" msprop:Generator_ColumnVarNameInTable="columnCLIENT" msprop:Generator_UserColumnName="CLIENT" type="xs:string" minOccurs="0" />
+              <xs:element name="DEFAULTCONNECTION" msprop:Generator_ColumnPropNameInRow="DEFAULTCONNECTION" msprop:Generator_ColumnPropNameInTable="DEFAULTCONNECTIONColumn" msprop:Generator_ColumnVarNameInTable="columnDEFAULTCONNECTION" msprop:Generator_UserColumnName="DEFAULTCONNECTION" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

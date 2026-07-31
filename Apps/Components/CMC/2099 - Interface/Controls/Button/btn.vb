@@ -24,19 +24,19 @@ Namespace UI.Control
             MyBase.Font = globalFontBtn
             'Me.XOShowBorder = False
             Me.XOShowBorderOnFocus = False
-            Me.XOButtonType = CMCV.UI.Control.ControlCodeBase.buttonType.Default
+            Me.XOButtonType = UI.Control.ControlCodeBase.ButtonType.Default
             MyBase.DoubleBuffered = True
         End Sub
 
-        Private varButtonType As CMCV.UI.Control.ControlCodeBase.buttonType
+        Private varButtonType As UI.Control.ControlCodeBase.ButtonType
         <SupportedOSPlatform("windows")>
         <Category("Button"),
     Description("Button type will affect (background color, font type) of the button")>
-        Public Property XOButtonType() As CMCV.UI.Control.ControlCodeBase.ButtonType
+        Public Property XOButtonType() As UI.Control.ControlCodeBase.ButtonType
             Get
                 Return varButtonType
             End Get
-            Set(value As CMCV.UI.Control.ControlCodeBase.ButtonType)
+            Set(value As UI.Control.ControlCodeBase.ButtonType)
                 varButtonType = value
                 ChangeButtonColor(value)
             End Set
@@ -103,24 +103,24 @@ Namespace UI.Control
         ''' </summary>
         ''' <param name="enubuttontype">Button type</param>
         <SupportedOSPlatform("windows")>
-        Private Sub ChangeButtonColor(enubuttontype As CMCV.UI.Control.ControlCodeBase.buttonType)
+        Private Sub ChangeButtonColor(enubuttontype As UI.Control.ControlCodeBase.ButtonType)
             Select Case enubuttontype
-                Case CMCV.UI.Control.ControlCodeBase.buttonType.Yes
+                Case UI.Control.ControlCodeBase.ButtonType.Yes
                     MyBase.BackColor = Drawing.Color.LimeGreen
                     MyBase.ForeColor = Drawing.Color.White
-                Case CMCV.UI.Control.ControlCodeBase.buttonType.No
+                Case UI.Control.ControlCodeBase.ButtonType.No
                     MyBase.BackColor = Drawing.Color.Red
                     MyBase.ForeColor = Drawing.Color.White
-                Case CMCV.UI.Control.ControlCodeBase.buttonType.Default
+                Case UI.Control.ControlCodeBase.ButtonType.Default
                     MyBase.BackColor = Drawing.Color.RoyalBlue
                     MyBase.ForeColor = Drawing.Color.White
-                Case CMCV.UI.Control.ControlCodeBase.buttonType.Warning
+                Case UI.Control.ControlCodeBase.ButtonType.Warning
                     MyBase.BackColor = Drawing.Color.Yellow
                     MyBase.ForeColor = Drawing.Color.Black
-                Case CMCV.UI.Control.ControlCodeBase.buttonType.Disabled
+                Case UI.Control.ControlCodeBase.ButtonType.Disabled
                     MyBase.BackColor = Drawing.Color.Gray
                     MyBase.ForeColor = Drawing.Color.DarkGray
-                Case CMCV.UI.Control.ControlCodeBase.buttonType.Custom
+                Case UI.Control.ControlCodeBase.ButtonType.Custom
                     'MyBase.BackColor = System.Drawing.Color.Orange
                     'MyBase.ForeColor = Drawing.Color.Black
             End Select
@@ -129,8 +129,8 @@ Namespace UI.Control
         <SupportedOSPlatform("windows")>
         Private Sub Btn_BackColorChanged(sender As Object, e As System.EventArgs) Handles Me.BackColorChanged
             If Me.FlatStyle = System.Windows.Forms.FlatStyle.Flat Then
-                MyBase.FlatAppearance.BorderColor = CMCV.UI.Control.ControlCodeBase.GetColor(MyBase.BackColor, CMCV.UI.Control.ControlCodeBase.EnumColorRange.Darker, 60)
-                MyBase.FlatAppearance.MouseOverBackColor = CMCV.UI.Control.ControlCodeBase.GetColor(MyBase.BackColor, CMCV.UI.Control.ControlCodeBase.EnumColorRange.Lighter, 20)
+                MyBase.FlatAppearance.BorderColor = UI.Control.ControlCodeBase.GetColor(MyBase.BackColor, UI.Control.ControlCodeBase.EnumColorRange.Darker, 60)
+                MyBase.FlatAppearance.MouseOverBackColor = UI.Control.ControlCodeBase.GetColor(MyBase.BackColor, UI.Control.ControlCodeBase.EnumColorRange.Lighter, 20)
             End If
         End Sub
 

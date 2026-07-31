@@ -19,7 +19,7 @@ Namespace CMDreset
                                                         "settings_showstorage = 0, settings_showwatermark = 0, settings_showrunningtext = 0, " &
                                                         "settings_uploadphoto = 30, settings_uploadpdf = 30, settings_textmark = '', " &
                                                         "settings_minpasswordlength = 3")
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query)
                 End If
 
                 varSuccess = True

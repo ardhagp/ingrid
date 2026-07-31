@@ -17,7 +17,7 @@ Namespace UI.Control
             Me.XOTextAdjuster = False
             Me.XOText = "Text"
             Me.XOTextBorder = False
-            Me.XOLabelColor = CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Default
+            Me.XOLabelColor = UI.Control.ControlCodeBase.EnumColorSelect.Default
         End Sub
 
         <System.ComponentModel.Category("XO.Format"),
@@ -85,49 +85,49 @@ Namespace UI.Control
             End If
         End Sub
 
-        Private varLabelColor As CMCV.UI.Control.ControlCodeBase.EnumColorSelect
+        Private varLabelColor As UI.Control.ControlCodeBase.EnumColorSelect
         <SupportedOSPlatform("windows")>
         <System.ComponentModel.Category("XO.Format"),
         System.ComponentModel.Description("Specifies the color used to render the component’s label")>
-        Public Property XOLabelColor() As CMCV.UI.Control.ControlCodeBase.EnumColorSelect
+        Public Property XOLabelColor() As UI.Control.ControlCodeBase.EnumColorSelect
             Get
                 Return varLabelColor
             End Get
-            Set(value As CMCV.UI.Control.ControlCodeBase.EnumColorSelect)
+            Set(value As UI.Control.ControlCodeBase.EnumColorSelect)
                 varLabelColor = value
                 ChangeLabelColor(value)
             End Set
         End Property
 
         <SupportedOSPlatform("windows")>
-        Private Sub ChangeLabelColor(valEnuJenisTombol As CMCV.UI.Control.ControlCodeBase.EnumColorSelect)
+        Private Sub ChangeLabelColor(valEnuJenisTombol As UI.Control.ControlCodeBase.EnumColorSelect)
             Select Case valEnuJenisTombol
-                Case CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Green
+                Case UI.Control.ControlCodeBase.EnumColorSelect.Green
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.LimeGreen
                     MyBase.BackColor = Drawing.Color.MintCream
-                Case CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Red
+                Case UI.Control.ControlCodeBase.EnumColorSelect.Red
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.Red
                     MyBase.BackColor = Drawing.Color.MistyRose
-                Case CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Default
+                Case UI.Control.ControlCodeBase.EnumColorSelect.Default
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.RoyalBlue
                     MyBase.BackColor = Drawing.Color.AliceBlue
-                Case CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+                Case UI.Control.ControlCodeBase.EnumColorSelect.Yellow
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.DarkOrange
                     MyBase.BackColor = Drawing.Color.Moccasin
-                Case CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Grey
+                Case UI.Control.ControlCodeBase.EnumColorSelect.Grey
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     UHead.BackColor = Drawing.Color.DarkGray
                     MyBase.BackColor = Drawing.Color.WhiteSmoke
-                Case CMCV.UI.Control.ControlCodeBase.EnumColorSelect.Custom
+                Case UI.Control.ControlCodeBase.EnumColorSelect.Custom
                     UText.ForeColor = Drawing.Color.Black
                     UText.BackColor = Drawing.Color.Transparent
                     'UHead.BackColor = System.Drawing.Color.Orange

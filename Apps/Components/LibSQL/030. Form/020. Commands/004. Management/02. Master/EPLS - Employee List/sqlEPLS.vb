@@ -1,6 +1,4 @@
-﻿Imports System.Drawing
-
-Namespace CMDepls
+﻿Namespace CMDepls
     ''' <summary>
     ''' The View class provides methods for displaying and managing employee data in a user interface. It includes functionality to display employee data in a grid, delete employee records, and retrieve various employee properties from the database. The class supports both MSSQL and MySQL database engines and handles data retrieval and manipulation based on the specified database engine.
     ''' </summary>
@@ -37,28 +35,34 @@ Namespace CMDepls
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TEmployee")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If (find.Text = String.Empty) AndAlso (dataproperties.EmployeeIsForceRefresh) Then
-                    varWhere = $""
+                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) "
                 Else
-                    varWhere += $"cm.company_code like '%{find.XOSqlText}%' or dp.department_code like '%{find.XOSqlText}%' or ps.position_code like '%{find.XOSqlText}%' or em.employee_number = '{find.XOSqlText}' or em.employee_fullname like '%{find.XOSqlText}%' or " &
-                                $"em.employee_nickname like '%{find.XOSqlText}%'"
+                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and ({tCompany.S}.{tCompany.C_CompanyCode} like '%{find.XOSqlText}%' or {tDepartment.S}.{tDepartment.C_DepartmentCode} like '%{find.XOSqlText}%' or {tPosition.S}.{tPosition.C_PositionCode} like '%{find.XOSqlText}%' or {tEmployee.S}.{tEmployee.C_EmployeeNumber} = '{find.XOSqlText}' or {tEmployee.S}.{tEmployee.C_EmployeeFullName} like '%{find.XOSqlText}%' or " &
+                                $"{tEmployee.S}.{tEmployee.C_EmployeeNickname} like '%{find.XOSqlText}%')"
                 End If
-                varDatabaseRequestMysql(0).Query = $"select em.employee_id, cm.company_code, cm.company_name, " &
-                                                   $"dp.department_code, dp.department_name, ps.position_code, ps.position_name, " &
-                                                   $"(select et.employmenttype_name from man_employmenttype et where et.employmenttype_id = em.employee_employmenttype) as `employmenttype_name`, " &
-                                                   $"em.employee_number, " &
-                                                   $"em.employee_fullname, " &
-                                                   $"em.employee_nickname, " &
-                                                   $"em.employee_gender, " &
-                                                   $"(case em.employee_isactive when 0 then 'No' when 1 then 'Yes' end) as `employee_isactive` " &
-                                                   $"From man_employee em " &
-                                                   $"inner Join man_position ps on ps.position_id = em.employee_position " &
-                                                   $"inner Join man_department dp on dp.department_id = ps.position_department " &
-                                                   $"inner Join man_company cm On cm.company_id = dp.department_company {varWhere} " &
-                                                   $"order by cm.company_code, dp.department_code, ps.position_code, em.employee_fullname"
+                varDatabaseRequestMysql(0).Query = $"select {tEmployee.S}.{tEmployee.C_EmployeeId}, " &
+                                                   $"{tCompany.S}.{tCompany.C_CompanyCode}, " &
+                                                   $"{tCompany.S}.{tCompany.C_CompanyName}, " &
+                                                   $"{tDepartment.S}.{tDepartment.C_DepartmentCode}, " &
+                                                   $"{tDepartment.S}.{tDepartment.C_DepartmentName}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionCode}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionName}, " &
+                                                   $"(select {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeName} from {tEmploymentType.TableName} {tEmploymentType.S} where {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeId} = {tEmployee.S}.{tEmployee.C_EmployeeEmploymentType}) as `{tEmploymentType.C_EmploymentTypeName}`, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeNumber}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeFullName}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeNickname}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeGender}, " &
+                                                   $"(case {tEmployee.S}.{tEmployee.C_EmployeeIsActive} when 0 then 'No' when 1 then 'Yes' end) as `{tEmployee.C_EmployeeIsActive}` " &
+                                                   $"From {tEmployee.TableName} {tEmployee.S} " &
+                                                   $"inner Join {tPosition.TableName} {tPosition.S} on {tPosition.S}.{tPosition.C_PositionId} = {tEmployee.S}.{tEmployee.C_EmployeePosition} " &
+                                                   $"inner Join {tDepartment.TableName} {tDepartment.S} on {tDepartment.S}.{tDepartment.C_DepartmentId} = {tPosition.S}.{tPosition.C_PositionDepartment} " &
+                                                   $"inner Join {tCompany.TableName} {tCompany.S} On {tCompany.S}.{tCompany.C_CompanyId} = {tDepartment.S}.{tDepartment.C_DepartmentCompany} " &
+                                                   $"{varWhere} " &
+                                                   $"order by {tCompany.S}.{tCompany.C_CompanyCode}, {tDepartment.S}.{tDepartment.C_DepartmentCode}, {tPosition.S}.{tPosition.C_PositionCode}, {tEmployee.S}.{tEmployee.C_EmployeeFullName}"
 
                 varDatabaseRequestMysql(0).DataGrid = grid
                 varDatabaseRequestMysql(0).StatusBar = status
-                varDatabaseEngineMysql.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TEmployee")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TEmployee", dataproperties.AllParameters)
             End If
         End Sub
 
@@ -77,8 +81,8 @@ Namespace CMDepls
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                     varSuccess = True
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(1).Query = $"delete from man_employee where (employee_id = @EmployeeId)"
-                    varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
+                    varDatabaseRequestMysql(1).Query = $"delete from {tEmploymentType.TableName} where ({tEmployee.C_EmployeeId} = {tEmployee.P_EmployeeId})"
+                    varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                     varSuccess = True
                 End If
             Catch ex As Exception
@@ -92,9 +96,9 @@ Namespace CMDepls
     ''' The Editor class provides methods for retrieving and managing employee properties from the database. It includes functionality to get various employee attributes such as company, department, position, grade, personal ID, birth date, birth place, address, employee number, full name, nickname, contract type, active status, gender, and
     ''' </summary>
     Public Class Editor
-        ReadOnly varImage As New CMCv.ImageEditor.Proccessor.Compress
+        'ReadOnly varImage As New CMCv.ImageEditor.Proccessor.Compress
 
-        Private Const pEmployeeToken As String = "@EmployeeToken"
+        'Private Const pEmployeeToken As String = "@EmployeeToken"
 
         ''' <summary>
         ''' Retrieves employee properties from the database and populates the specified dataset with the retrieved data. This function constructs a SQL query to select various employee attributes based on the provided data properties and employee ID. It supports both MSSQL and MySQL database engines and fills the dataset with the retrieved employee information. The function is intended for use in an editor context where employee details need to be displayed or modified.
@@ -122,27 +126,34 @@ Namespace CMDepls
                                                    $"order by em.employee_id"
                 varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query, datasetname, "EPLS_Editor")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = $"select em.employee_id, cm.company_id, cm.company_code, cm.company_name, " &
-                                                   $"dp.department_id, dp.department_code, dp.department_name, " &
-                                                   $"ps.position_id, ps.position_code, ps.position_name, " &
-                                                   $"(select et.employmenttype_name from man_employmenttype et where et.employmenttype_id = em.employee_employmenttype) as `employmenttype_name`, " &
-                                                   $"em.employee_personalidnumber, " &
-                                                   $"em.employee_number, " &
-                                                   $"em.employee_fullname, " &
-                                                   $"em.employee_nickname, " &
-                                                   $"em.employee_gender, " &
-                                                   $"em.employee_birthdate, " &
-                                                   $"em.employee_birthplace, " &
-                                                   $"em.employee_address, " &
-                                                   $"em.employee_employmenttype, " &
-                                                   $"em.employee_isactive " &
-                                                   $"from man_employee em " &
-                                                   $"inner join man_position ps on ps.position_id = em.employee_position " &
-                                                   $"inner join man_department dp on dp.department_id = ps.position_department " &
-                                                   $"inner join man_company cm on cm.company_id = dp.department_company " &
-                                                   $"where em.employee_id = @EmployeeId " &
-                                                   $"order by em.employee_id"
-                varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "EPLS_Editor", dataproperties.AllParameters)
+                varDatabaseRequestMysql(0).Query = $"select {tEmployee.S}.{tEmployee.C_EmployeeId}, " &
+                                                   $"{tCompany.S}.{tCompany.C_CompanyId}, " &
+                                                   $"{tCompany.S}.{tCompany.C_CompanyCode}, " &
+                                                   $"{tCompany.S}.{tCompany.C_CompanyName}, " &
+                                                   $"{tDepartment.S}.{tDepartment.C_DepartmentId}, " &
+                                                   $"{tDepartment.S}.{tDepartment.C_DepartmentCode}, " &
+                                                   $"{tDepartment.S}.{tDepartment.C_DepartmentName}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionId}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionCode}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionName}, " &
+                                                   $"(select {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeName} from {tEmploymentType.TableName} {tEmploymentType.S} where {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeId} = {tEmployee.S}.{tEmployee.C_EmployeeEmploymentType}) as `{tEmploymentType.C_EmploymentTypeName}`, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeNumber}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeFullName}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeNickname}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeGender}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeBirthDate}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeBirthPlace}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeAddress}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeEmploymentType}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeIsActive} " &
+                                                   $"from {tEmployee.TableName} {tEmployee.S} " &
+                                                   $"inner join {tPosition.TableName} {tPosition.S} on {tPosition.S}.{tPosition.C_PositionId} = {tEmployee.S}.{tEmployee.C_EmployeePosition} " &
+                                                   $"inner join {tDepartment.TableName} {tDepartment.S} on {tDepartment.S}.{tDepartment.C_DepartmentId} = {tPosition.S}.{tPosition.C_PositionDepartment} " &
+                                                   $"inner join {tCompany.TableName} {tCompany.S} on {tCompany.S}.{tCompany.C_CompanyId} = {tDepartment.S}.{tDepartment.C_DepartmentCompany} " &
+                                                   $"where {tEmployee.S}.{tEmployee.C_EmployeeId} = {tEmployee.P_EmployeeId} " &
+                                                   $"order by {tEmployee.S}.{tEmployee.C_EmployeeId}"
+                varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "EPLS_Editor", dataproperties.AllParameters)
             End If
         End Sub
 
@@ -485,7 +496,7 @@ Namespace CMDepls
                                                    $"where {tAttachment.S}.{tAttachment.C_AttachmentParentId} = {tEmployee.P_EmployeeId} And " &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentModule} = {tModule.P_ModuleId} And " &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentTag} = 'EMPLOYEE-PROFILE-PHOTO'"
-                varDatabaseEngineMysql.FillDataSet(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tAttachment.TableName, parametername)
+                varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tAttachment.TableName, parametername)
             End If
 
             If datasetname.Tables(tAttachment.TableName).Rows.Count = 0 Then
@@ -535,14 +546,23 @@ Namespace CMDepls
                 Else
                     varDatabaseRequestMssql2008(0).Query = $"select count(em.employee_personalid) from man_employee em where (em.employee_personalid = @EmployeePersonalId and em.employee_id <> @EmployeeId)"
                 End If
-                varIsExist = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query, dataproperties.AllParameters), Integer)
+                varIsExist = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query, dataproperties.AllParameters), Integer)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If dataproperties.EmployeeIsNew Then
-                    varDatabaseRequestMysql(0).Query = $"select count(em.employee_personalid) from dbo.man_employee em where em.employee_personalid = @EmployeePersonalId"
+                    varDatabaseRequestMysql(0).Query = $"select count({tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}) " &
+                                                       $"from {tEmployee.TableName} {tEmployee.S} " &
+                                                       $"where ( " &
+                                                       $"({tEmployee.S}.{tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and " &
+                                                       $"({tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber} = {tEmployee.P_EmployeePersonalIdNumber}))"
                 Else
-                    varDatabaseRequestMysql(0).Query = $"select count(em.employee_personalid) from man_employee em where (em.employee_personalid = @EmployeePersonalId and em.employee_id <> @EmployeeId)"
+                    varDatabaseRequestMysql(0).Query = $"select count({tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}) " &
+                                                       $"from {tEmployee.TableName} {tEmployee.S} " &
+                                                       $"where ( " &
+                                                       $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and " &
+                                                       $"({tEmployee.S}.{tEmployee.P_EmployeePersonalIdNumber} = {tEmployee.P_EmployeePersonalIdNumber} and " &
+                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeId} <> {tEmployee.P_EmployeeId}))"
                 End If
-                varIsExist = CType(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query, dataproperties.AllParameters), Integer)
+                varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
             End If
 
             If varIsExist = 0 Then
@@ -597,13 +617,14 @@ Namespace CMDepls
                 varIsDuplicate = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If dataproperties.EmployeeIsNew Then
-                    varWhere += $" em.employee_number = @EmployeeNumber"
+                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and ({tEmployee.S}.{tEmployee.C_EmployeeNumber} = {tEmployee.P_EmployeeNumber})"
                 Else
-                    varWhere += $" em.employee_number = @EmployeeNumber and em.employee_employeeid <> @EmployeeId"
+                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and ({tEmployee.S}.{tEmployee.C_EmployeeNumber} = {tEmployee.P_EmployeeNumber}) and ({tEmployee.S}.{tEmployee.C_EmployeeId} <> {tEmployee.P_EmployeeId})"
                 End If
 
-                varDatabaseRequestMysql(0).Query = $"select count (em.employee_id) as `rows` from man_employee em {varWhere}"
-                varIsDuplicate = CInt(varDatabaseEngineMysql.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
+                varDatabaseRequestMysql(0).Query = $"select count ({tEmployee.S}.{tEmployee.C_EmployeeId}) as `rows` " &
+                                                   $"from {tEmployee.TableName} {tEmployee.S} {varWhere}"
+                varIsDuplicate = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
             End If
 
             If varIsDuplicate = 0 Then
@@ -614,19 +635,18 @@ Namespace CMDepls
         End Function
 
         ''' <summary>
-        ''' 
+        ''' Inserts or updates employee data in the database based on the provided data properties and parameters. This function constructs SQL queries for inserting or updating employee records, depending on whether the employee is new or existing. It supports both MSSQL and MySQL database engines and returns a boolean indicating the success of the operation.
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <param name="parametername"></param>
-        ''' <returns></returns>
+        ''' <param name="dataproperties">Properties containing employee data and database connection information.</param>
+        ''' <param name="parametername">Dictionary containing parameter names and their corresponding values.</param>
+        ''' <returns>Boolean indicating the success of the operation.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Boolean
             Dim varSuccess As Boolean = False
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                     If dataproperties.EmployeeIsNew Then
-                        dataproperties.AllParameters.Remove(pEmployeeToken)
-                        dataproperties.AllParameters.Add(pEmployeeToken, CMCv.Security.Encrypt.MD5())
+                        SetValue(dataproperties.AllParameters, tEmployee.P_EmployeeToken, CMCv.Security.Encryption.MD5())
                         varDatabaseRequestMssql2008(1).Query = $"insert into dbo.man_employee(employee_id, employee_personalid, employee_position, employee_number, employee_fullname, employee_birthdate, employee_birthplace, " &
                                                                $"employee_address, employee_nickname, employee_active, employee_gender) " &
                                                                $"values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}');"
@@ -637,6 +657,7 @@ Namespace CMDepls
                     End If
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     If dataproperties.EmployeeIsNew Then
+                        SetValue(dataproperties.AllParameters, tEmployee.P_EmployeeToken, CMCv.Security.Encryption.MD5())
                         varDatabaseRequestMysql(1).Query = $"insert into {tEmployee.TableName}({tEmployee.C_EmployeeToken}, " &
                                                            $"{tEmployee.C_EmployeePersonalIdNumber}, " &
                                                            $"{tEmployee.C_EmployeePosition}, " &
@@ -667,8 +688,8 @@ Namespace CMDepls
                         Dim imageFolder = IO.Path.Combine(baseFolder, "Files.Image")
                         IO.Directory.CreateDirectory(imageFolder)
 
-                        Dim img As New Bitmap(dataproperties.EmployeePhoto)
-                        img.Save(imageFolder & "\a.jpg", System.Drawing.Imaging.ImageFormat.Jpeg)
+                        Dim img As New System.Drawing.Bitmap(dataproperties.EmployeePhoto)
+                        img.Save(imageFolder & $"\{dataproperties.AllParameters(tEmployee.P_EmployeeToken)}.jpg", System.Drawing.Imaging.ImageFormat.Jpeg)
                         varDatabaseRequestMysql(1).Query = $"insert into {tAttachment.S}.{tAttachment.C_AttachmentParentToken}, " &
                                                            $"{tAttachment.C_AttachmentModule}, " &
                                                            $"{tAttachment.C_AttachmentFileName}, " &
@@ -691,7 +712,7 @@ Namespace CMDepls
                         Dim imageFolder = IO.Path.Combine(baseFolder, "Files.Image")
                         IO.Directory.CreateDirectory(imageFolder)
 
-                        Dim img As New Bitmap(dataproperties.EmployeePhoto)
+                        Dim img As New System.Drawing.Bitmap(dataproperties.EmployeePhoto)
                         img.Save(imageFolder & "\a.jpg", System.Drawing.Imaging.ImageFormat.Jpeg)
 
                         varDatabaseRequestMysql(1).Query = $"update man_employee set employee_position = @PositionId, " &
