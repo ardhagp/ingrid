@@ -59,7 +59,7 @@
             ' 
             DgnCDIN.AllowUserToAddRows = False
             DgnCDIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(233), CByte(218), CByte(108))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(237), CByte(230), CByte(170))
             DgnCDIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnCDIN.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnCDIN.BorderStyle = BorderStyle.None
@@ -107,7 +107,6 @@
             department_id.MinimumWidth = 8
             department_id.Name = "department_id"
             department_id.ReadOnly = True
-            department_id.SortMode = DataGridViewColumnSortMode.Programmatic
             department_id.Visible = False
             department_id.Width = 150
             ' 
@@ -119,7 +118,6 @@
             company_code.MinimumWidth = 8
             company_code.Name = "company_code"
             company_code.ReadOnly = True
-            company_code.SortMode = DataGridViewColumnSortMode.Programmatic
             company_code.Width = 160
             ' 
             ' department_code
@@ -130,7 +128,6 @@
             department_code.MinimumWidth = 8
             department_code.Name = "department_code"
             department_code.ReadOnly = True
-            department_code.SortMode = DataGridViewColumnSortMode.Programmatic
             department_code.Width = 88
             ' 
             ' department_name
@@ -141,7 +138,6 @@
             department_name.MinimumWidth = 8
             department_name.Name = "department_name"
             department_name.ReadOnly = True
-            department_name.SortMode = DataGridViewColumnSortMode.Programmatic
             department_name.Width = 88
             ' 
             ' department_description

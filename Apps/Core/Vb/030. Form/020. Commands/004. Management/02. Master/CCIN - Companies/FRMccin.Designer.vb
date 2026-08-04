@@ -21,9 +21,9 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
             DgnCCIN = New CMCv.UI.Control.Dgn(components)
             company_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
@@ -60,20 +60,20 @@
             ' 
             DgnCCIN.AllowUserToAddRows = False
             DgnCCIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(215), CByte(192), CByte(95))
-            DgnCCIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(190), CByte(196), CByte(96))
+            DgnCCIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnCCIN.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnCCIN.BorderStyle = BorderStyle.None
             DgnCCIN.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnCCIN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle5.BackColor = Color.YellowGreen
-            DataGridViewCellStyle5.Font = New Font("Verdana", 8F)
-            DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
-            DataGridViewCellStyle5.SelectionForeColor = Color.Black
-            DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
-            DgnCCIN.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.YellowGreen
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
+            DataGridViewCellStyle2.SelectionForeColor = Color.Black
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            DgnCCIN.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             DgnCCIN.ColumnHeadersHeight = 43
             DgnCCIN.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             DgnCCIN.Columns.AddRange(New DataGridViewColumn() {company_id, company_code, company_name, company_searchterm1, company_searchterm2, company_description})
@@ -86,14 +86,14 @@
             DgnCCIN.Name = "DgnCCIN"
             DgnCCIN.ReadOnly = True
             DgnCCIN.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle6.BackColor = Color.YellowGreen
-            DataGridViewCellStyle6.Font = New Font("Verdana", 8F)
-            DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
-            DataGridViewCellStyle6.SelectionForeColor = Color.Black
-            DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-            DgnCCIN.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle3.BackColor = Color.YellowGreen
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
+            DataGridViewCellStyle3.SelectionForeColor = Color.Black
+            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+            DgnCCIN.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
             DgnCCIN.RowHeadersWidth = 62
             DgnCCIN.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
             DgnCCIN.Size = New Size(1307, 858)
@@ -109,7 +109,6 @@
             company_id.MinimumWidth = 8
             company_id.Name = "company_id"
             company_id.ReadOnly = True
-            company_id.SortMode = DataGridViewColumnSortMode.Programmatic
             company_id.Visible = False
             company_id.Width = 150
             ' 
@@ -121,7 +120,6 @@
             company_code.MinimumWidth = 8
             company_code.Name = "company_code"
             company_code.ReadOnly = True
-            company_code.SortMode = DataGridViewColumnSortMode.Programmatic
             company_code.Width = 160
             ' 
             ' company_name
@@ -132,7 +130,6 @@
             company_name.MinimumWidth = 8
             company_name.Name = "company_name"
             company_name.ReadOnly = True
-            company_name.SortMode = DataGridViewColumnSortMode.Programmatic
             company_name.Width = 160
             ' 
             ' company_searchterm1
@@ -143,7 +140,6 @@
             company_searchterm1.MinimumWidth = 8
             company_searchterm1.Name = "company_searchterm1"
             company_searchterm1.ReadOnly = True
-            company_searchterm1.SortMode = DataGridViewColumnSortMode.Programmatic
             company_searchterm1.Width = 144
             ' 
             ' company_searchterm2
@@ -154,7 +150,6 @@
             company_searchterm2.MinimumWidth = 8
             company_searchterm2.Name = "company_searchterm2"
             company_searchterm2.ReadOnly = True
-            company_searchterm2.SortMode = DataGridViewColumnSortMode.Programmatic
             company_searchterm2.Width = 144
             ' 
             ' company_description

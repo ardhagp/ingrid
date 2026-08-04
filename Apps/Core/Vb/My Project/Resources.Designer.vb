@@ -163,6 +163,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Public ReadOnly Property Background() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Background", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Public ReadOnly Property BROWSE_001_16_ICON() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("BROWSE_001_16_ICON", resourceCulture)
@@ -826,6 +836,26 @@ Namespace My.Resources
         Public ReadOnly Property MALE_001_512_icon() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("MALE_001_512_icon", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Public ReadOnly Property MDI_Background() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MDI_Background", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Public ReadOnly Property MDI_Background_03() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MDI_Background_03", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

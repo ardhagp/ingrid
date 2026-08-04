@@ -285,7 +285,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(217), CByte(222), CByte(132))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(198), CByte(250), CByte(181))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnModulesRoles.BorderStyle = BorderStyle.None
@@ -589,26 +589,26 @@
             ' 
             ' ULbl9
             ' 
-            ULbl9.BackColor = Color.Moccasin
+            ULbl9.BackColor = Color.MistyRose
             ULbl9.Location = New Point(14, 83)
             ULbl9.Margin = New Padding(12, 17, 12, 17)
             ULbl9.Name = "ULbl9"
             ULbl9.Size = New Size(250, 39)
             ULbl9.TabIndex = 1056
-            ULbl9.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl9.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl9.XOText = "Department"
             ULbl9.XOTextAdjuster = True
             ULbl9.XOTextBorder = False
             ' 
             ' ULbl6
             ' 
-            ULbl6.BackColor = Color.Moccasin
+            ULbl6.BackColor = Color.MistyRose
             ULbl6.Location = New Point(14, 15)
             ULbl6.Margin = New Padding(12, 17, 12, 17)
             ULbl6.Name = "ULbl6"
             ULbl6.Size = New Size(250, 39)
             ULbl6.TabIndex = 1055
-            ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl6.XOText = "Company"
             ULbl6.XOTextAdjuster = True
             ULbl6.XOTextBorder = False
@@ -890,39 +890,39 @@
             ' 
             ' ULbl4
             ' 
-            ULbl4.BackColor = Color.Moccasin
+            ULbl4.BackColor = Color.MistyRose
             ULbl4.Location = New Point(14, 285)
             ULbl4.Margin = New Padding(9, 13, 9, 13)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 39)
             ULbl4.TabIndex = 1054
-            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl4.XOText = "Gender"
             ULbl4.XOTextAdjuster = True
             ULbl4.XOTextBorder = False
             ' 
             ' ULbl3
             ' 
-            ULbl3.BackColor = Color.Moccasin
+            ULbl3.BackColor = Color.MistyRose
             ULbl3.Location = New Point(14, 217)
             ULbl3.Margin = New Padding(9, 13, 9, 13)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 39)
             ULbl3.TabIndex = 1053
-            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl3.XOText = "Birth Place"
             ULbl3.XOTextAdjuster = True
             ULbl3.XOTextBorder = False
             ' 
             ' ULbl16
             ' 
-            ULbl16.BackColor = Color.Moccasin
+            ULbl16.BackColor = Color.MistyRose
             ULbl16.Location = New Point(14, 150)
             ULbl16.Margin = New Padding(9, 13, 9, 13)
             ULbl16.Name = "ULbl16"
             ULbl16.Size = New Size(250, 39)
             ULbl16.TabIndex = 1052
-            ULbl16.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl16.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl16.XOText = "Date of Birth"
             ULbl16.XOTextAdjuster = True
             ULbl16.XOTextBorder = False
@@ -988,7 +988,7 @@
             TxtBirthPlace.XOHighlightColor = Color.LightYellow
             TxtBirthPlace.XOHighlightOnFocus = False
             TxtBirthPlace.XOIsBlank = False
-            TxtBirthPlace.XOIsMandatory = False
+            TxtBirthPlace.XOIsMandatory = True
             TxtBirthPlace.XOIsPlaceholder = False
             TxtBirthPlace.XOIsReplaceEmptyString = False
             TxtBirthPlace.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE

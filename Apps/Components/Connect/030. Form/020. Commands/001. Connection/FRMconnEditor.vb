@@ -67,31 +67,37 @@ Namespace UI.Canvas
         End Sub
 
         <SupportedOSPlatform("windows")>
-        Private Function CheckAllInput() As Boolean
-            Dim varValidScore As Integer = 0
+        Private Function CheckInvalidInput() As Boolean
+            Dim varInvalidScore As Integer = 0
 
-            If TxtConnectionName.Text = String.Empty Then
-                varValidScore += 1
+            TxtConnectionName.Focus()
+            If TxtConnectionName.XOSqlText = String.Empty Then
+                varInvalidScore += 1
             End If
-            If TxtAddress.Text = String.Empty Then
-                varValidScore += 1
+            TxtAddress.Focus()
+            If TxtAddress.XOSqlText = String.Empty Then
+                varInvalidScore += 1
             End If
-            If CInt(TxtPort.Text) <= 0 Then
-                varValidScore += 1
+            TxtPort.Focus()
+            If TxtPort.XOSqlText = String.Empty OrElse CInt(TxtPort.XOSqlText) <= 0 Then
+                varInvalidScore += 1
             End If
-            If TxtUsername.Text = String.Empty Then
-                varValidScore += 1
+            TxtUsername.Focus()
+            If TxtUsername.XOSqlText = String.Empty Then
+                varInvalidScore += 1
             End If
-            If TxtPassword.Text = String.Empty Then
-                varValidScore += 1
+            TxtPassword.Focus()
+            If TxtPassword.XOSqlText = String.Empty Then
+                varInvalidScore += 1
             End If
-            If TxtDatabaseName.Text = String.Empty Then
-                varValidScore += 1
+            TxtDatabaseName.Focus()
+            If TxtDatabaseName.XOSqlText = String.Empty Then
+                varInvalidScore += 1
             End If
-            If varValidScore = 0 Then
-                Return True
-            Else
+            If varInvalidScore = 0 Then
                 Return False
+            Else
+                Return True
             End If
         End Function
 
@@ -108,12 +114,8 @@ Namespace UI.Canvas
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub Save()
-            If Not CheckAllInput() Then
-                Return
-            End If
-
-            If (TxtConnectionName.Text = String.Empty) OrElse (TxtAddress.Text = String.Empty) OrElse (TxtPort.Text = String.Empty) OrElse (TxtUsername.Text = String.Empty) OrElse (TxtPassword.Text = String.Empty) OrElse (TxtDatabaseName.Text = String.Empty) Then
-                Decision(My.Application.Info.AssemblyName, "Cannot save your record." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+            If CheckInvalidInput() Then
+                Decision("INGRID - CONNECTION SETTINGS", "Unable to save your record." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -256,7 +258,7 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
-            If Not CheckAllInput() Then
+            If Not CheckInvalidInput() Then
                 Return
             End If
 
@@ -355,11 +357,16 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnTest_Click(sender As Object, e As EventArgs) Handles Btn_Test.Click
+            If Not CheckInvalidInput() Then
+                Decision("INGRID - CONNECTION SETTINGS", "Unable to test your connection." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Return
+            End If
+
             If CboDBEngine.Text = "MYSQL" Then
                 Try
-                    Dim varMysql As New CMCv.Database.Connect.Mysqlconnection
+                    Dim varMysql As New CMCv.Database.Connect.MysqlConnection
                     Dim varConnection As MySql.Data.MySqlClient.MySqlConnection
-                    varConnection = New MySql.Data.MySqlClient.MySqlConnection(varMysql.Mysqlforcessl(TxtAddress.XOSqlText, CInt(TxtPort.XOSqlText), TxtDatabaseName.XOSqlText, TxtUsername.XOSqlText, TxtPassword.XOSqlText))
+                    varConnection = New MySql.Data.MySqlClient.MySqlConnection(varMysql.MysqlForceSsl(TxtAddress.XOSqlText, CInt(TxtPort.XOSqlText), TxtDatabaseName.XOSqlText, TxtUsername.XOSqlText, TxtPassword.XOSqlText))
                     varConnection.Open()
                     MessageBox.Show("Connection test successful.")
                     varConnection.Close()

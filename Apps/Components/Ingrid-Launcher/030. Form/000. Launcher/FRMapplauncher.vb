@@ -94,7 +94,7 @@
 
                 If appnameindex = 0 Then
                     Frm_conn = New Connect.UI.Canvas.FRMconn
-                    Display(Frm_conn, , My.Application.Info.Title, "Connection Settings", "Manage your database connection settings", False)
+                    Display(Frm_conn, , "INGRID - CONNECTION SETTINGS", "Connection Settings", "Manage your database connection settings", False)
                 ElseIf appnameindex = 1 Then
                     Frm_mainframe6 = New Ingrid.UI.Canvas.FRMmainframe6
                     Frm_mainframe6.Show()

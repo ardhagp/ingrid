@@ -128,7 +128,7 @@
             TxtSearchTerm1.XOHighlightColor = Color.LightYellow
             TxtSearchTerm1.XOHighlightOnFocus = False
             TxtSearchTerm1.XOIsBlank = True
-            TxtSearchTerm1.XOIsMandatory = False
+            TxtSearchTerm1.XOIsMandatory = True
             TxtSearchTerm1.XOIsPlaceholder = False
             TxtSearchTerm1.XOIsReplaceEmptyString = False
             TxtSearchTerm1.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
@@ -158,7 +158,7 @@
             TxtSearchTerm2.XOHighlightColor = Color.LightYellow
             TxtSearchTerm2.XOHighlightOnFocus = False
             TxtSearchTerm2.XOIsBlank = True
-            TxtSearchTerm2.XOIsMandatory = False
+            TxtSearchTerm2.XOIsMandatory = True
             TxtSearchTerm2.XOIsPlaceholder = False
             TxtSearchTerm2.XOIsReplaceEmptyString = False
             TxtSearchTerm2.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
@@ -299,52 +299,52 @@
             ' 
             ' ULbl1
             ' 
-            ULbl1.BackColor = Color.Moccasin
+            ULbl1.BackColor = Color.MistyRose
             ULbl1.Location = New Point(20, 20)
             ULbl1.Margin = New Padding(7, 5, 7, 5)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(250, 39)
             ULbl1.TabIndex = 1006
-            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl1.XOText = "Company Code"
             ULbl1.XOTextAdjuster = False
             ULbl1.XOTextBorder = False
             ' 
             ' ULbl2
             ' 
-            ULbl2.BackColor = Color.Moccasin
+            ULbl2.BackColor = Color.MistyRose
             ULbl2.Location = New Point(20, 87)
             ULbl2.Margin = New Padding(7, 5, 7, 5)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(250, 39)
             ULbl2.TabIndex = 1007
-            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl2.XOText = "Company Name"
             ULbl2.XOTextAdjuster = False
             ULbl2.XOTextBorder = False
             ' 
             ' ULbl3
             ' 
-            ULbl3.BackColor = Color.Moccasin
+            ULbl3.BackColor = Color.MistyRose
             ULbl3.Location = New Point(20, 153)
             ULbl3.Margin = New Padding(7, 5, 7, 5)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 39)
             ULbl3.TabIndex = 1008
-            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl3.XOText = "Search Term 1"
             ULbl3.XOTextAdjuster = False
             ULbl3.XOTextBorder = False
             ' 
             ' ULbl4
             ' 
-            ULbl4.BackColor = Color.Moccasin
+            ULbl4.BackColor = Color.MistyRose
             ULbl4.Location = New Point(20, 222)
             ULbl4.Margin = New Padding(7, 5, 7, 5)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 39)
             ULbl4.TabIndex = 1009
-            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl4.XOText = "Search Term 2"
             ULbl4.XOTextAdjuster = False
             ULbl4.XOTextBorder = False

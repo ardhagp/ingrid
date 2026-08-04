@@ -84,18 +84,43 @@
         ''' This subroutine checks all input fields in the form by setting focus to each control sequentially. It ensures that all required fields are validated before proceeding with any save operation.
         ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Sub CheckAllInputs()
+        Public Function CheckInvalidInputs() As Boolean
+            Dim varInvalidScore As Integer = 0
+
             'TxtPersonalID.Focus()
             TxtEmployeeNumber.Focus()
+            If TxtEmployeeNumber.XOSqlText = String.Empty Then
+                varInvalidScore += 1
+            End If
+
             TxtFullName.Focus()
-            TxtEmployeeNickname.Focus()
-            ChkActiveEmployee.Focus()
-            BtnSave.Focus()
-        End Sub
+            If TxtFullName.XOSqlText = String.Empty Then
+                varInvalidScore += 1
+            End If
+
+            TxtBirthPlace.Focus()
+            If TxtBirthPlace.XOSqlText = String.Empty Then
+                varInvalidScore += 1
+            End If
+
+            TxtPosition.Focus()
+            If TxtPosition.XOSqlText = String.Empty Then
+                varInvalidScore += 1
+            End If
+
+            If varInvalidScore = 0 Then
+                Return False
+            Else
+                Return True
+            End If
+        End Function
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-            Call CheckAllInputs()
+            If CheckInvalidInputs() Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable to save your record." & Environment.NewLine & "Please verify that the Company Code, Company Name, Search Term1 and Search Term2 fields have been entered correctly.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Return
+            End If
 
             With varDataProperties
                 SetValue(.AllParameters, tEmployee.P_EmployeePersonalIdNumber, IIf(TxtPersonalID.XOSqlText = String.Empty OrElse TxtPersonalID.XOSqlText = "", DBNull.Value, TxtPersonalID.XOSqlText))
@@ -116,15 +141,9 @@
             If Not CheckEmployeePersonalID() Then
                 Return
             End If
-
-            If Not CheckEmployeeMandatoryFields() Then
-                Return
-            End If
-
             If Not CheckDuplicateEmployeeNumber() Then
                 Return
             End If
-
             If Not CheckEmployeePhoto() Then
                 Return
             End If
@@ -302,5 +321,10 @@
                 Return String.Empty
             End If
         End Function
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub TxtFullName_TextChanged(sender As Object, e As EventArgs) Handles TxtFullName.TextChanged
+            TxtEmployeeNickname.Text = String.Concat(TxtFullName.Text.Trim.Split(" "c).Select(Function(w) w(0))).ToUpper()
+        End Sub
     End Class
 End Namespace

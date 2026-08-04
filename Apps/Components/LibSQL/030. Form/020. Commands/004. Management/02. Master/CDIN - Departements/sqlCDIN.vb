@@ -150,7 +150,7 @@
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1), "TCompany")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(1).Query = $"select {tCompany.S}.{tCompany.C_CompanyId}, " &
-                                                   $"concat({tCompany.S}.{tCompany.C_CompanyCode}, ' - ', {tCompany.S}.{tCompany.C_CompanyName}) as company_code " &
+                                                   $"concat({tCompany.S}.{tCompany.C_CompanyCode}, ' - ', {tCompany.S}.{tCompany.C_CompanyName}) as {tCompany.C_CompanyCode} " &
                                                    $"from {tCompany.TableName} {tCompany.S} " &
                                                    $"where {tCompany.S}.{tCompany.C_CompanyClient} = {tClient.P_ClientId} " &
                                                    $"order by {tCompany.S}.{tCompany.C_CompanyCode}"
