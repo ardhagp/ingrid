@@ -28,14 +28,11 @@
             BtnClear = New CMCv.UI.Control.Btn(components)
             Lbl1 = New CMCv.UI.Control.Lbl(components)
             TxtFind = New CMCv.UI.Control.Txt(components)
-            DgnAddinPosition = New CMCv.UI.Control.Dgn(components)
-            position_id = New DataGridViewTextBoxColumn()
-            company_code = New DataGridViewTextBoxColumn()
-            company_name = New DataGridViewTextBoxColumn()
-            department_code = New DataGridViewTextBoxColumn()
-            department_name = New DataGridViewTextBoxColumn()
-            position_code = New DataGridViewTextBoxColumn()
-            position_name = New DataGridViewTextBoxColumn()
+            DgnAddinEmploymentType = New CMCv.UI.Control.Dgn(components)
+            employmenttype_id = New DataGridViewTextBoxColumn()
+            employmenttype_code = New DataGridViewTextBoxColumn()
+            employmenttype_name = New DataGridViewTextBoxColumn()
+            employmenttype_description = New DataGridViewTextBoxColumn()
             BtnOk = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
             PnlBottomButton.SuspendLayout()
@@ -44,7 +41,7 @@
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
             Pnl1.SuspendLayout()
-            CType(DgnAddinPosition, ComponentModel.ISupportInitialize).BeginInit()
+            CType(DgnAddinEmploymentType, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' PnlBottomButton
@@ -63,12 +60,12 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(DgnAddinPosition)
+            SLFPanel.Controls.Add(DgnAddinEmploymentType)
             SLFPanel.Controls.Add(Pnl1)
             SLFPanel.Size = New Size(1095, 789)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(Pnl1, 0)
-            SLFPanel.Controls.SetChildIndex(DgnAddinPosition, 0)
+            SLFPanel.Controls.SetChildIndex(DgnAddinEmploymentType, 0)
             ' 
             ' Pnl1
             ' 
@@ -146,16 +143,16 @@
             TxtFind.XOSelectOnFocus = False
             TxtFind.XOSqlText = Nothing
             ' 
-            ' DgnAddinPosition
+            ' DgnAddinEmploymentType
             ' 
-            DgnAddinPosition.AllowUserToAddRows = False
-            DgnAddinPosition.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(226), CByte(219), CByte(155))
-            DgnAddinPosition.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-            DgnAddinPosition.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
-            DgnAddinPosition.BorderStyle = BorderStyle.None
-            DgnAddinPosition.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
-            DgnAddinPosition.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+            DgnAddinEmploymentType.AllowUserToAddRows = False
+            DgnAddinEmploymentType.AllowUserToDeleteRows = False
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(215), CByte(210), CByte(125))
+            DgnAddinEmploymentType.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+            DgnAddinEmploymentType.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+            DgnAddinEmploymentType.BorderStyle = BorderStyle.None
+            DgnAddinEmploymentType.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+            DgnAddinEmploymentType.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.YellowGreen
             DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
@@ -163,17 +160,17 @@
             DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
             DataGridViewCellStyle2.SelectionForeColor = Color.Black
             DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-            DgnAddinPosition.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-            DgnAddinPosition.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-            DgnAddinPosition.Columns.AddRange(New DataGridViewColumn() {position_id, company_code, company_name, department_code, department_name, position_code, position_name})
-            DgnAddinPosition.Dock = DockStyle.Fill
-            DgnAddinPosition.EnableHeadersVisualStyles = False
-            DgnAddinPosition.Font = New Font("Verdana", 8F)
-            DgnAddinPosition.Location = New Point(0, 88)
-            DgnAddinPosition.Margin = New Padding(5, 6, 5, 6)
-            DgnAddinPosition.Name = "DgnAddinPosition"
-            DgnAddinPosition.ReadOnly = True
-            DgnAddinPosition.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+            DgnAddinEmploymentType.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+            DgnAddinEmploymentType.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+            DgnAddinEmploymentType.Columns.AddRange(New DataGridViewColumn() {employmenttype_id, employmenttype_code, employmenttype_name, employmenttype_description})
+            DgnAddinEmploymentType.Dock = DockStyle.Fill
+            DgnAddinEmploymentType.EnableHeadersVisualStyles = False
+            DgnAddinEmploymentType.Font = New Font("Verdana", 8F)
+            DgnAddinEmploymentType.Location = New Point(0, 88)
+            DgnAddinEmploymentType.Margin = New Padding(5, 6, 5, 6)
+            DgnAddinEmploymentType.Name = "DgnAddinEmploymentType"
+            DgnAddinEmploymentType.ReadOnly = True
+            DgnAddinEmploymentType.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle3.BackColor = Color.YellowGreen
             DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
@@ -181,87 +178,55 @@
             DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
             DataGridViewCellStyle3.SelectionForeColor = Color.Black
             DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-            DgnAddinPosition.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-            DgnAddinPosition.RowHeadersWidth = 62
-            DgnAddinPosition.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-            DgnAddinPosition.Size = New Size(1095, 605)
-            DgnAddinPosition.StandardTab = True
-            DgnAddinPosition.TabIndex = 1005
-            DgnAddinPosition.XOIsGroupFirstRow = False
-            DgnAddinPosition.XOIsShowRowNumber = True
+            DgnAddinEmploymentType.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+            DgnAddinEmploymentType.RowHeadersWidth = 62
+            DgnAddinEmploymentType.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
+            DgnAddinEmploymentType.Size = New Size(1095, 605)
+            DgnAddinEmploymentType.StandardTab = True
+            DgnAddinEmploymentType.TabIndex = 1005
+            DgnAddinEmploymentType.XOIsGroupFirstRow = False
+            DgnAddinEmploymentType.XOIsShowRowNumber = True
             ' 
-            ' position_id
+            ' employmenttype_id
             ' 
-            position_id.DataPropertyName = "position_id"
-            position_id.Frozen = True
-            position_id.HeaderText = "ID"
-            position_id.MinimumWidth = 8
-            position_id.Name = "position_id"
-            position_id.ReadOnly = True
-            position_id.Visible = False
-            position_id.Width = 75
+            employmenttype_id.DataPropertyName = "employmenttype_id"
+            employmenttype_id.Frozen = True
+            employmenttype_id.HeaderText = "ID"
+            employmenttype_id.MinimumWidth = 8
+            employmenttype_id.Name = "employmenttype_id"
+            employmenttype_id.ReadOnly = True
+            employmenttype_id.Visible = False
+            employmenttype_id.Width = 75
             ' 
-            ' company_code
+            ' employmenttype_code
             ' 
-            company_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            company_code.DataPropertyName = "company_code"
-            company_code.HeaderText = "COMP. CODE"
-            company_code.MinimumWidth = 8
-            company_code.Name = "company_code"
-            company_code.ReadOnly = True
-            company_code.SortMode = DataGridViewColumnSortMode.Programmatic
-            company_code.Width = 133
+            employmenttype_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            employmenttype_code.DataPropertyName = "employmenttype_code"
+            employmenttype_code.HeaderText = "EP.TYPE CODE"
+            employmenttype_code.MinimumWidth = 8
+            employmenttype_code.Name = "employmenttype_code"
+            employmenttype_code.ReadOnly = True
+            employmenttype_code.Width = 146
             ' 
-            ' company_name
+            ' employmenttype_name
             ' 
-            company_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            company_name.DataPropertyName = "company_name"
-            company_name.HeaderText = "COMP."
-            company_name.MinimumWidth = 8
-            company_name.Name = "company_name"
-            company_name.ReadOnly = True
-            company_name.Visible = False
-            company_name.Width = 150
+            employmenttype_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            employmenttype_name.DataPropertyName = "employmenttype_name"
+            employmenttype_name.HeaderText = "EP.TYPE NAME"
+            employmenttype_name.MinimumWidth = 8
+            employmenttype_name.Name = "employmenttype_name"
+            employmenttype_name.ReadOnly = True
+            employmenttype_name.Width = 146
             ' 
-            ' department_code
+            ' employmenttype_description
             ' 
-            department_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            department_code.DataPropertyName = "department_code"
-            department_code.HeaderText = "DEPT. CODE"
-            department_code.MinimumWidth = 8
-            department_code.Name = "department_code"
-            department_code.ReadOnly = True
-            department_code.Width = 88
-            ' 
-            ' department_name
-            ' 
-            department_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            department_name.DataPropertyName = "department_name"
-            department_name.HeaderText = "DEPT."
-            department_name.MinimumWidth = 8
-            department_name.Name = "department_name"
-            department_name.ReadOnly = True
-            department_name.Visible = False
-            department_name.Width = 150
-            ' 
-            ' position_code
-            ' 
-            position_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            position_code.DataPropertyName = "position_code"
-            position_code.HeaderText = "POSITION CODE"
-            position_code.MinimumWidth = 8
-            position_code.Name = "position_code"
-            position_code.ReadOnly = True
-            position_code.Width = 161
-            ' 
-            ' position_name
-            ' 
-            position_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            position_name.DataPropertyName = "position_name"
-            position_name.HeaderText = "POSITION"
-            position_name.MinimumWidth = 8
-            position_name.Name = "position_name"
-            position_name.ReadOnly = True
+            employmenttype_description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            employmenttype_description.DataPropertyName = "employmenttype_description"
+            employmenttype_description.HeaderText = "EP.TYPE DESCRIPTION"
+            employmenttype_description.MinimumWidth = 8
+            employmenttype_description.Name = "employmenttype_description"
+            employmenttype_description.ReadOnly = True
+            employmenttype_description.SortMode = DataGridViewColumnSortMode.NotSortable
             ' 
             ' BtnOk
             ' 
@@ -323,7 +288,7 @@
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
             Pnl1.ResumeLayout(False)
             Pnl1.PerformLayout()
-            CType(DgnAddinPosition, ComponentModel.ISupportInitialize).EndInit()
+            CType(DgnAddinEmploymentType, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
 
@@ -332,15 +297,12 @@
         Friend WithEvents BtnClear As CMCv.UI.Control.Btn
         Friend WithEvents Lbl1 As CMCv.UI.Control.Lbl
         Friend WithEvents TxtFind As CMCv.UI.Control.Txt
-        Friend WithEvents DgnAddinPosition As CMCv.UI.Control.Dgn
+        Friend WithEvents DgnAddinEmploymentType As CMCv.UI.Control.Dgn
         Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
         Friend WithEvents BtnOk As CMCv.UI.Control.Btn
-        Friend WithEvents position_id As DataGridViewTextBoxColumn
-        Friend WithEvents company_code As DataGridViewTextBoxColumn
-        Friend WithEvents company_name As DataGridViewTextBoxColumn
-        Friend WithEvents department_code As DataGridViewTextBoxColumn
-        Friend WithEvents department_name As DataGridViewTextBoxColumn
-        Friend WithEvents position_code As DataGridViewTextBoxColumn
-        Friend WithEvents position_name As DataGridViewTextBoxColumn
+        Friend WithEvents employmenttype_id As DataGridViewTextBoxColumn
+        Friend WithEvents employmenttype_code As DataGridViewTextBoxColumn
+        Friend WithEvents employmenttype_name As DataGridViewTextBoxColumn
+        Friend WithEvents employmenttype_description As DataGridViewTextBoxColumn
     End Class
 End Namespace

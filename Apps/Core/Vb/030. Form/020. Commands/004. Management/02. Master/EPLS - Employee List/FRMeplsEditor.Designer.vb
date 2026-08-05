@@ -285,7 +285,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(198), CByte(250), CByte(181))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(198), CByte(226), CByte(108))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnModulesRoles.BorderStyle = BorderStyle.None
@@ -516,21 +516,20 @@
             ' 
             ' BtnBrowseEmploymentType
             ' 
-            BtnBrowseEmploymentType.BackColor = Color.Gray
-            BtnBrowseEmploymentType.Enabled = False
-            BtnBrowseEmploymentType.FlatAppearance.BorderColor = Color.FromArgb(CByte(68), CByte(68), CByte(68))
+            BtnBrowseEmploymentType.BackColor = Color.RoyalBlue
+            BtnBrowseEmploymentType.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
             BtnBrowseEmploymentType.FlatAppearance.BorderSize = 2
-            BtnBrowseEmploymentType.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(148), CByte(148), CByte(148))
+            BtnBrowseEmploymentType.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnBrowseEmploymentType.FlatStyle = FlatStyle.Flat
             BtnBrowseEmploymentType.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
-            BtnBrowseEmploymentType.ForeColor = Color.DarkGray
+            BtnBrowseEmploymentType.ForeColor = Color.White
             BtnBrowseEmploymentType.Location = New Point(740, 217)
             BtnBrowseEmploymentType.Name = "BtnBrowseEmploymentType"
             BtnBrowseEmploymentType.Size = New Size(66, 39)
             BtnBrowseEmploymentType.TabIndex = 1062
             BtnBrowseEmploymentType.Text = "..."
             BtnBrowseEmploymentType.UseVisualStyleBackColor = False
-            BtnBrowseEmploymentType.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
+            BtnBrowseEmploymentType.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
             BtnBrowseEmploymentType.XOShowBorderOnFocus = False
             BtnBrowseEmploymentType.XOValidateAllInput = False
             BtnBrowseEmploymentType.XOValidateAllInputTag = Nothing
@@ -563,13 +562,13 @@
             ' 
             ' ULbl11
             ' 
-            ULbl11.BackColor = Color.WhiteSmoke
+            ULbl11.BackColor = Color.MistyRose
             ULbl11.Location = New Point(14, 217)
             ULbl11.Margin = New Padding(12, 17, 12, 17)
             ULbl11.Name = "ULbl11"
             ULbl11.Size = New Size(250, 39)
             ULbl11.TabIndex = 1058
-            ULbl11.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Grey
+            ULbl11.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl11.XOText = "Emp. Type"
             ULbl11.XOTextAdjuster = True
             ULbl11.XOTextBorder = False
@@ -685,7 +684,7 @@
             TxtEmployeeNumber.XOPasswordStrengthScore = 0
             TxtEmployeeNumber.XOPasswordStrengthText = Nothing
             TxtEmployeeNumber.XOPlaceholderText = "Type then press Enter"
-            TxtEmployeeNumber.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumber
+            TxtEmployeeNumber.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolNoSpace
             TxtEmployeeNumber.XOSelectOnFocus = False
             TxtEmployeeNumber.XOSqlText = ""
             ' 
@@ -871,7 +870,7 @@
             ULbl1.Size = New Size(250, 39)
             ULbl1.TabIndex = 1056
             ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
-            ULbl1.XOText = "Personal ID"
+            ULbl1.XOText = "National ID Card"
             ULbl1.XOTextAdjuster = True
             ULbl1.XOTextBorder = False
             ' 
@@ -986,7 +985,7 @@
             TxtBirthPlace.Tag = "txt"
             TxtBirthPlace.XOAutoTrim = True
             TxtBirthPlace.XOHighlightColor = Color.LightYellow
-            TxtBirthPlace.XOHighlightOnFocus = False
+            TxtBirthPlace.XOHighlightOnFocus = True
             TxtBirthPlace.XOIsBlank = False
             TxtBirthPlace.XOIsMandatory = True
             TxtBirthPlace.XOIsPlaceholder = False

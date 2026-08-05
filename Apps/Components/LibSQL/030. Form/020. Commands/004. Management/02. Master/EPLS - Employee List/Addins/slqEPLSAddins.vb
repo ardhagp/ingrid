@@ -5,11 +5,11 @@ Namespace CMDepls.Addins.Browse
         Shared varWhere As String = ""
 
         ''' <summary>
-        ''' 
+        ''' This method is used to run the SQL query to retrieve position data and display it in the specified datagrid and statusbar. It constructs the SQL query based on whether a force refresh is required or if a search term is provided. The results are then fetched and displayed accordingly.
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <param name="datagrid"></param>
-        ''' <param name="statusbar"></param>
+        ''' <param name="dataproperties">The properties containing the database connection and other settings.</param>
+        ''' <param name="datagrid">The datagrid control where the data will be displayed.</param>
+        ''' <param name="statusbar">The statusbar control to show the status of the operation.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -109,6 +109,12 @@ Namespace CMDepls.Addins.Browse
             End If
         End Sub
 
+        ''' <summary>
+        ''' This method is used to run the MSSQL query to retrieve employment type data and display it in the specified datagrid and statusbar. It constructs the SQL query based on whether a force refresh is required or if a search term is provided. The results are then fetched and displayed accordingly.
+        ''' </summary>
+        ''' <param name="dataproperties">The properties containing the database connection and other settings.</param>
+        ''' <param name="datagrid">The datagrid control where the data will be displayed.</param>
+        ''' <param name="statusbar">The statusbar control to show the status of the operation.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Shared Sub RunMsSql(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt)
             varWhere = "where "
@@ -119,26 +125,32 @@ Namespace CMDepls.Addins.Browse
             End If
         End Sub
 
+        ''' <summary>
+        ''' This method is used to run the MySQL query to retrieve employment type data and display it in the specified datagrid and statusbar. It constructs the SQL query based on whether a force refresh is required or if a search term is provided. The results are then fetched and displayed accordingly.
+        ''' </summary>
+        ''' <param name="dataproperties">The properties containing the database connection and other settings.</param>
+        ''' <param name="datagrid">The datagrid control where the data will be displayed.</param>
+        ''' <param name="statusbar">The statusbar control to show the status of the operation.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Shared Sub RunMySql(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt)
             varWhere = "where "
             If dataproperties.EmploymentTypeIsForceRefresh Then
-                varWhere += $"({tPosition.C_PositionClient} = {tClient.P_ClientId}) "
-                varDatabaseRequestMysql(0).Query = $"select {tPosition.S}.{tPosition.C_PositionId}, " &
-                                                   $"{tCompany.S}.{tCompany.C_CompanyCode}, " &
-                                                   $"{tCompany.S}.{tCompany.C_CompanyName}, " &
-                                                   $"{tDepartment.S}.{tDepartment.C_DepartmentCode}, " &
-                                                   $"{tDepartment.S}.{tDepartment.C_DepartmentName}, " &
-                                                   $"{tPosition.S}.{tPosition.C_PositionCode}, " &
-                                                   $"{tPosition.S}.{tPosition.C_PositionName} " &
-                                                   $"from {tPosition.TableName} {tPosition.S} " &
-                                                   $"inner join {tDepartment.TableName} {tDepartment.S} on {tDepartment.S}.{tDepartment.C_DepartmentId} = {tPosition.S}.{tPosition.C_PositionDepartment} " &
-                                                   $"inner join {tCompany.TableName} {tCompany.S} on {tCompany.S}.{tCompany.C_CompanyId} = {tDepartment.S}.{tDepartment.C_DepartmentCompany} " &
-                                                   $"{varWhere} " &
-                                                   $"order by {tCompany.S}.{tCompany.C_CompanyCode}, {tDepartment.S}.{tDepartment.C_DepartmentCode}, {tPosition.S}.{tPosition.C_PositionCode}"
+                varWhere += $"({tEmploymentType.C_EmploymentTypeClient} = {tClient.P_ClientId}) "
             Else
-
+                varWhere += $"({tEmploymentType.C_EmploymentTypeClient} = {tClient.P_ClientId}) and " &
+                            $"(({tEmploymentType.C_EmploymentTypeCode} like concat('%', {tEmploymentType.P_EmploymentTypeSearch}, '%')) or " &
+                            $"({tEmploymentType.C_EmploymentTypeName} like concat('%', {tEmploymentType.P_EmploymentTypeSearch}, '%')))"
             End If
+            varDatabaseRequestMysql(0).Query = $"select {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeId}, " &
+                                               $"{tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeCode}, " &
+                                               $"{tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeName}, " &
+                                               $"{tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeDescription} " &
+                                               $"from {tEmploymentType.TableName} {tEmploymentType.S} " &
+                                               $"{varWhere} " &
+                                               $"order by {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeCode}, {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeName}"
+            varDatabaseRequestMysql(0).DataGrid = datagrid
+            varDatabaseRequestMysql(0).StatusBar = statusbar
+            varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TBrowseEmploymentType", dataproperties.AllParameters)
         End Sub
     End Class
 End Namespace

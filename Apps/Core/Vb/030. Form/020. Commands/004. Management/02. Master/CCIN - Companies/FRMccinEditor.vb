@@ -113,7 +113,7 @@
         End Sub
 
         ''' <summary>
-        ''' 
+        ''' This subroutine clears the parameters in the varDataProperties.AllParameters collection related to company information. It removes the company code, name, search terms, and description from the collection, effectively resetting these values. This is useful for ensuring that no residual data remains when creating a new company record or when clearing the form after saving.
         ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ClearParameters()
@@ -132,6 +132,5 @@
             SetValue(varDataProperties.UserParameters, tModule.P_ModuleId, varThisModuleId)
             SetValue(varDataProperties.UserParameters, tModule.P_ModuleCode, varThisModuleCode)
         End Sub
-
     End Class
 End Namespace

@@ -537,8 +537,10 @@
         ''' <param name="dataproperties"></param>
         ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Function IsPersonalIdExist(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
+        Public Shared Function IsPersonalIdExist(dataproperties As LibApp.Ingrid.Global.Properties, personalidnumber As String) As Integer
             Dim varIsExist As Integer
+
+            SetValue(dataproperties.AllParameters, tEmployee.P_EmployeePersonalIdNumber, personalidnumber)
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 If dataproperties.EmployeeIsNew Then
@@ -546,7 +548,7 @@
                 Else
                     varDatabaseRequestMssql2008(0).Query = $"select count(em.employee_personalid) from man_employee em where (em.employee_personalid = @EmployeePersonalId and em.employee_id <> @EmployeeId)"
                 End If
-                varIsExist = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query, dataproperties.AllParameters), Integer)
+                varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query, dataproperties.AllParameters))
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If dataproperties.EmployeeIsNew Then
                     varDatabaseRequestMysql(0).Query = $"select count({tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}) " &
@@ -565,10 +567,10 @@
                 varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
             End If
 
-            If varIsExist = 0 Then
-                Return False
+            If varIsExist > 0 Then
+                Return 1
             Else
-                Return True
+                Return 0
             End If
         End Function
 
@@ -598,9 +600,10 @@
         ''' <param name="dataproperties"></param>
         ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Function IsEmployeeNumberDuplicate(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
+        Public Shared Function IsEmployeeNumberDuplicate(dataproperties As LibApp.Ingrid.Global.Properties, employeenumber As String) As Integer
             Dim varIsDuplicate As Integer = 0
             Dim varWhere As String = "where "
+            SetValue(dataproperties.AllParameters, tEmployee.P_EmployeeNumber, employeenumber)
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 If dataproperties.EmployeeIsNew Then
@@ -617,9 +620,12 @@
                 varIsDuplicate = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If dataproperties.EmployeeIsNew Then
-                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and ({tEmployee.S}.{tEmployee.C_EmployeeNumber} = {tEmployee.P_EmployeeNumber})"
+                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and " &
+                                $"({tEmployee.S}.{tEmployee.C_EmployeeNumber} = {tEmployee.P_EmployeeNumber})"
                 Else
-                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and ({tEmployee.S}.{tEmployee.C_EmployeeNumber} = {tEmployee.P_EmployeeNumber}) and ({tEmployee.S}.{tEmployee.C_EmployeeId} <> {tEmployee.P_EmployeeId})"
+                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and " &
+                                $"({tEmployee.S}.{tEmployee.C_EmployeeNumber} = {tEmployee.P_EmployeeNumber}) and " &
+                                $"({tEmployee.S}.{tEmployee.C_EmployeeId} <> {tEmployee.P_EmployeeId})"
                 End If
 
                 varDatabaseRequestMysql(0).Query = $"select count ({tEmployee.S}.{tEmployee.C_EmployeeId}) as `rows` " &
@@ -627,10 +633,10 @@
                 varIsDuplicate = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
             End If
 
-            If varIsDuplicate = 0 Then
-                Return False
+            If varIsDuplicate > 0 Then
+                Return 1
             Else
-                Return True
+                Return 0
             End If
         End Function
 
