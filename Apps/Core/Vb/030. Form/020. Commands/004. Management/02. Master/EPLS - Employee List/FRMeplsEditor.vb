@@ -257,7 +257,7 @@
         ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckEmployeePersonalID() As Integer
-            Dim varInvalidScore As Integer = 0
+            Dim varInvalidScore As Integer
             varInvalidScore = CMDepls.Editor.IsPersonalIdExist(varDataProperties, TxtPersonalID.XOSqlText)
             If varInvalidScore > 0 Then
                 varCannotSaveMessage += "• Personal ID Number already registered" & Environment.NewLine
@@ -285,6 +285,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckDuplicateEmployeeNumber() As Integer
             Dim varInvalidScore As Integer
+            SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeNumber, TxtEmployeeNumber.XOSqlText)
             varInvalidScore = CMDepls.Editor.IsEmployeeNumberDuplicate(varDataProperties, TxtEmployeeNumber.XOSqlText)
             If varInvalidScore > 0 Then
                 varCannotSaveMessage += "• Employee Code already registered" & Environment.NewLine

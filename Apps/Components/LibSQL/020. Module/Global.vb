@@ -93,7 +93,17 @@
             If .ContainsKey([key]) Then
                 .Remove([key])
             End If
-            .Add([key], IIf([value] Is Nothing, DBNull.Value, [value]))
+            If value Is Nothing Then
+                .Add([key], DBNull.Value)
+            ElseIf TypeOf [value] Is String Then
+                If CStr([value]) = String.Empty Then
+                    .Add([key], "")
+                Else
+                    .Add([key], [value].ToString())
+                End If
+            Else
+                .Add([key], [value])
+            End If
         End With
     End Sub
 End Module

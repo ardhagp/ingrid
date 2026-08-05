@@ -561,7 +561,7 @@
                                                        $"from {tEmployee.TableName} {tEmployee.S} " &
                                                        $"where ( " &
                                                        $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and " &
-                                                       $"({tEmployee.S}.{tEmployee.P_EmployeePersonalIdNumber} = {tEmployee.P_EmployeePersonalIdNumber} and " &
+                                                       $"({tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber} = {tEmployee.P_EmployeePersonalIdNumber} and " &
                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeId} <> {tEmployee.P_EmployeeId}))"
                 End If
                 varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))

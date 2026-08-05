@@ -9,6 +9,7 @@
         Private varThisModuleId As Long = 0
         Private Const varThisModuleCode As String = "EPLT"
 
+
         ' ----------------------------------------------------------
         ' Forms Events Handlers
         ' ----------------------------------------------------------
@@ -16,7 +17,9 @@
         Private Sub FRMeplsPosition_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             varDataProperties.EmploymentTypeIsForceRefresh = True
             Call GetData()
+            DatagridBehaviour.AdaptiveRowHeight(Me, DgnAddinEmploymentType)
         End Sub
+
 
         ' ----------------------------------------------------------
         ' Controls Events Handlers
@@ -54,6 +57,7 @@
             varDataProperties.EmploymentTypeIsForceRefresh = True
             Call GetData()
         End Sub
+
 
         ' ----------------------------------------------------------
         ' Functions and Subroutines

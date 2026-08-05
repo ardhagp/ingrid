@@ -147,7 +147,7 @@
             ' 
             DgnAddinEmploymentType.AllowUserToAddRows = False
             DgnAddinEmploymentType.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(215), CByte(210), CByte(125))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(222), CByte(243), CByte(183))
             DgnAddinEmploymentType.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnAddinEmploymentType.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnAddinEmploymentType.BorderStyle = BorderStyle.None
