@@ -228,6 +228,7 @@
             '_Photo.Save(SaveAs, jpgEncoder, myEncoderParameters)
 
             Dim varMemoryStream = New System.IO.MemoryStream()
+            'varPhoto.Save(varMemoryStream, System.Drawing.Imaging.ImageFormat.Jpeg, varEncoderParameters)
             varPhoto.Save(varMemoryStream, System.Drawing.Imaging.ImageFormat.Jpeg)
 
             Dim varByte = varMemoryStream.ToArray
@@ -273,12 +274,12 @@
                 Dim varWaterText As String = watermarktext
                 Dim varCanvas As System.Drawing.Graphics = System.Drawing.Graphics.FromImage(varBitmap)
                 Dim varStringSizef As System.Drawing.SizeF,
-    varDesiredWidth As Double,
-    varDesiredWidth2 As Double,
-    varDesireHeight As Double,
-    varwmFont As System.Drawing.Font,
-    varRequiredFontSize As Double,
-    varRatio As Double
+                    varDesiredWidth As Double,
+                    varDesiredWidth2 As Double,
+                    varDesireHeight As Double,
+                    varwmFont As System.Drawing.Font,
+                    varRequiredFontSize As Double,
+                    varRatio As Double
 
                 varwmFont = New System.Drawing.Font("Verdana", 14, System.Drawing.FontStyle.Bold)
                 varDesiredWidth = varBitmap.Width * 0.5

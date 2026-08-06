@@ -359,7 +359,7 @@ Namespace UI.Canvas
                         SetValue(varDataProperties.UserParameters, tClient.P_ClientCode, .Item("CLIENT").ToString)
                     End With
                 Else
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties could not be found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties not found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                     Return
                 End If
 
@@ -371,6 +371,7 @@ Namespace UI.Canvas
                     If varRecords = 0 Then
                         Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "Initial setup and essential information", True, Me)
                     End If
+                    CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.UserParameters, varDatasetIngrid)
                 Else
                     Ts_connection.Text = "Disconnected"
                     Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)

@@ -2749,6 +2749,12 @@ Namespace Ingrid.UI.Dataset
             
             Private columnemployee_employmenttype As Global.System.Data.DataColumn
             
+            Private columnishavephoto As Global.System.Data.DataColumn
+            
+            Private columnattachment_id As Global.System.Data.DataColumn
+            
+            Private columnattachment_url As Global.System.Data.DataColumn
+            
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Sub New()
@@ -2955,6 +2961,30 @@ Namespace Ingrid.UI.Dataset
             End Property
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property ishavephotoColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnishavephoto
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property attachment_idColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnattachment_id
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property attachment_urlColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnattachment_url
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
              Global.System.ComponentModel.Browsable(false)>  _
             Public ReadOnly Property Count() As Integer
@@ -2992,18 +3022,18 @@ Namespace Ingrid.UI.Dataset
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Overloads Function AddEPLS_EditorRow( _
-                        ByVal employee_id As Decimal,  _
-                        ByVal company_id As Decimal,  _
+                        ByVal employee_id As UShort,  _
+                        ByVal company_id As UShort,  _
                         ByVal company_code As String,  _
                         ByVal company_name As String,  _
-                        ByVal department_id As Decimal,  _
+                        ByVal department_id As UShort,  _
                         ByVal department_code As String,  _
                         ByVal department_name As String,  _
-                        ByVal position_id As Decimal,  _
+                        ByVal position_id As UShort,  _
                         ByVal position_code As String,  _
                         ByVal position_name As String,  _
                         ByVal employmenttype_name As String,  _
-                        ByVal employee_personalidnumber As Short,  _
+                        ByVal employee_personalidnumber As String,  _
                         ByVal employee_number As String,  _
                         ByVal employee_fullname As String,  _
                         ByVal employee_nickname As String,  _
@@ -3012,9 +3042,12 @@ Namespace Ingrid.UI.Dataset
                         ByVal employee_birthdate As Date,  _
                         ByVal employee_birthplace As String,  _
                         ByVal employee_address As String,  _
-                        ByVal employee_employmenttype As String) As EPLS_EditorRow
+                        ByVal employee_employmenttype As String,  _
+                        ByVal ishavephoto As Boolean,  _
+                        ByVal attachment_id As UShort,  _
+                        ByVal attachment_url As String) As EPLS_EditorRow
                 Dim rowEPLS_EditorRow As EPLS_EditorRow = CType(Me.NewRow,EPLS_EditorRow)
-                Dim columnValuesArray() As Object = New Object() {employee_id, company_id, company_code, company_name, department_id, department_code, department_name, position_id, position_code, position_name, employmenttype_name, employee_personalidnumber, employee_number, employee_fullname, employee_nickname, employee_gender, employee_isactive, employee_birthdate, employee_birthplace, employee_address, employee_employmenttype}
+                Dim columnValuesArray() As Object = New Object() {employee_id, company_id, company_code, company_name, department_id, department_code, department_name, position_id, position_code, position_name, employmenttype_name, employee_personalidnumber, employee_number, employee_fullname, employee_nickname, employee_gender, employee_isactive, employee_birthdate, employee_birthplace, employee_address, employee_employmenttype, ishavephoto, attachment_id, attachment_url}
                 rowEPLS_EditorRow.ItemArray = columnValuesArray
                 Me.Rows.Add(rowEPLS_EditorRow)
                 Return rowEPLS_EditorRow
@@ -3058,26 +3091,29 @@ Namespace Ingrid.UI.Dataset
                 Me.columnemployee_birthplace = MyBase.Columns("employee_birthplace")
                 Me.columnemployee_address = MyBase.Columns("employee_address")
                 Me.columnemployee_employmenttype = MyBase.Columns("employee_employmenttype")
+                Me.columnishavephoto = MyBase.Columns("ishavephoto")
+                Me.columnattachment_id = MyBase.Columns("attachment_id")
+                Me.columnattachment_url = MyBase.Columns("attachment_url")
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Private Sub InitClass()
-                Me.columnemployee_id = New Global.System.Data.DataColumn("employee_id", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+                Me.columnemployee_id = New Global.System.Data.DataColumn("employee_id", GetType(UShort), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnemployee_id)
-                Me.columncompany_id = New Global.System.Data.DataColumn("company_id", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+                Me.columncompany_id = New Global.System.Data.DataColumn("company_id", GetType(UShort), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columncompany_id)
                 Me.columncompany_code = New Global.System.Data.DataColumn("company_code", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columncompany_code)
                 Me.columncompany_name = New Global.System.Data.DataColumn("company_name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columncompany_name)
-                Me.columndepartment_id = New Global.System.Data.DataColumn("department_id", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+                Me.columndepartment_id = New Global.System.Data.DataColumn("department_id", GetType(UShort), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columndepartment_id)
                 Me.columndepartment_code = New Global.System.Data.DataColumn("department_code", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columndepartment_code)
                 Me.columndepartment_name = New Global.System.Data.DataColumn("department_name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columndepartment_name)
-                Me.columnposition_id = New Global.System.Data.DataColumn("position_id", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+                Me.columnposition_id = New Global.System.Data.DataColumn("position_id", GetType(UShort), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnposition_id)
                 Me.columnposition_code = New Global.System.Data.DataColumn("position_code", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnposition_code)
@@ -3085,7 +3121,7 @@ Namespace Ingrid.UI.Dataset
                 MyBase.Columns.Add(Me.columnposition_name)
                 Me.columnemploymenttype_name = New Global.System.Data.DataColumn("employmenttype_name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnemploymenttype_name)
-                Me.columnemployee_personalidnumber = New Global.System.Data.DataColumn("employee_personalidnumber", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
+                Me.columnemployee_personalidnumber = New Global.System.Data.DataColumn("employee_personalidnumber", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnemployee_personalidnumber)
                 Me.columnemployee_number = New Global.System.Data.DataColumn("employee_number", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnemployee_number)
@@ -3105,6 +3141,12 @@ Namespace Ingrid.UI.Dataset
                 MyBase.Columns.Add(Me.columnemployee_address)
                 Me.columnemployee_employmenttype = New Global.System.Data.DataColumn("employee_employmenttype", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnemployee_employmenttype)
+                Me.columnishavephoto = New Global.System.Data.DataColumn("ishavephoto", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnishavephoto)
+                Me.columnattachment_id = New Global.System.Data.DataColumn("attachment_id", GetType(UShort), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnattachment_id)
+                Me.columnattachment_url = New Global.System.Data.DataColumn("attachment_url", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnattachment_url)
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6069,10 +6111,10 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property employee_id() As Decimal
+            Public Property employee_id() As UShort
                 Get
                     Try 
-                        Return CType(Me(Me.tableEPLS_Editor.employee_idColumn),Decimal)
+                        Return CType(Me(Me.tableEPLS_Editor.employee_idColumn),UShort)
                     Catch e As Global.System.InvalidCastException
                         Throw New Global.System.Data.StrongTypingException("The value for column 'employee_id' in table 'EPLS_Editor' is DBNull.", e)
                     End Try
@@ -6084,10 +6126,10 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property company_id() As Decimal
+            Public Property company_id() As UShort
                 Get
                     Try 
-                        Return CType(Me(Me.tableEPLS_Editor.company_idColumn),Decimal)
+                        Return CType(Me(Me.tableEPLS_Editor.company_idColumn),UShort)
                     Catch e As Global.System.InvalidCastException
                         Throw New Global.System.Data.StrongTypingException("The value for column 'company_id' in table 'EPLS_Editor' is DBNull.", e)
                     End Try
@@ -6129,10 +6171,10 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property department_id() As Decimal
+            Public Property department_id() As UShort
                 Get
                     Try 
-                        Return CType(Me(Me.tableEPLS_Editor.department_idColumn),Decimal)
+                        Return CType(Me(Me.tableEPLS_Editor.department_idColumn),UShort)
                     Catch e As Global.System.InvalidCastException
                         Throw New Global.System.Data.StrongTypingException("The value for column 'department_id' in table 'EPLS_Editor' is DBNull.", e)
                     End Try
@@ -6174,10 +6216,10 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property position_id() As Decimal
+            Public Property position_id() As UShort
                 Get
                     Try 
-                        Return CType(Me(Me.tableEPLS_Editor.position_idColumn),Decimal)
+                        Return CType(Me(Me.tableEPLS_Editor.position_idColumn),UShort)
                     Catch e As Global.System.InvalidCastException
                         Throw New Global.System.Data.StrongTypingException("The value for column 'position_id' in table 'EPLS_Editor' is DBNull.", e)
                     End Try
@@ -6234,10 +6276,10 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property employee_personalidnumber() As Short
+            Public Property employee_personalidnumber() As String
                 Get
                     Try 
-                        Return CType(Me(Me.tableEPLS_Editor.employee_personalidnumberColumn),Short)
+                        Return CType(Me(Me.tableEPLS_Editor.employee_personalidnumberColumn),String)
                     Catch e As Global.System.InvalidCastException
                         Throw New Global.System.Data.StrongTypingException("The value for column 'employee_personalidnumber' in table 'EPLS_Editor' is DBNull"& _ 
                                 ".", e)
@@ -6380,6 +6422,51 @@ Namespace Ingrid.UI.Dataset
                 End Get
                 Set
                     Me(Me.tableEPLS_Editor.employee_employmenttypeColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property ishavephoto() As Boolean
+                Get
+                    Try 
+                        Return CType(Me(Me.tableEPLS_Editor.ishavephotoColumn),Boolean)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'ishavephoto' in table 'EPLS_Editor' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableEPLS_Editor.ishavephotoColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property attachment_id() As UShort
+                Get
+                    Try 
+                        Return CType(Me(Me.tableEPLS_Editor.attachment_idColumn),UShort)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'attachment_id' in table 'EPLS_Editor' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableEPLS_Editor.attachment_idColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property attachment_url() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableEPLS_Editor.attachment_urlColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'attachment_url' in table 'EPLS_Editor' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableEPLS_Editor.attachment_urlColumn) = value
                 End Set
             End Property
             
@@ -6633,6 +6720,42 @@ Namespace Ingrid.UI.Dataset
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Sub Setemployee_employmenttypeNull()
                 Me(Me.tableEPLS_Editor.employee_employmenttypeColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function IsishavephotoNull() As Boolean
+                Return Me.IsNull(Me.tableEPLS_Editor.ishavephotoColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub SetishavephotoNull()
+                Me(Me.tableEPLS_Editor.ishavephotoColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isattachment_idNull() As Boolean
+                Return Me.IsNull(Me.tableEPLS_Editor.attachment_idColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setattachment_idNull()
+                Me(Me.tableEPLS_Editor.attachment_idColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isattachment_urlNull() As Boolean
+                Return Me.IsNull(Me.tableEPLS_Editor.attachment_urlColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setattachment_urlNull()
+                Me(Me.tableEPLS_Editor.attachment_urlColumn) = Global.System.Convert.DBNull
             End Sub
         End Class
         

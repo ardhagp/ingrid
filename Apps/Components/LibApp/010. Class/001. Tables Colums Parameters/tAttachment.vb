@@ -6,7 +6,8 @@
         Public ReadOnly C_AttachmentParentId As String = "attachment_parentid"
         Public ReadOnly C_AttachmentParentToken As String = "attachment_parenttoken"
         Public ReadOnly C_AttachmentModule As String = "attachment_module"
-        Public ReadOnly C_AttachmentFileName As String = "attachment_filename"
+        Public ReadOnly C_AttachmentFileNameOriginal As String = "attachment_filenameoriginal"
+        Public ReadOnly C_AttachmentFileNameStandard As String = "attachment_filenamestandard"
         Public ReadOnly C_AttachmentExtension As String = "attachment_extension"
         Public ReadOnly C_AttachmentUrl As String = "attachment_url"
         Public ReadOnly C_AttachmentTag As String = "attachment_tag"
@@ -15,10 +16,12 @@
         Public ReadOnly P_AttachmentParentToken As String = "@AttachmentParentToken"
         Public ReadOnly P_AttachmentParentId As String = "@AttachmentParentId"
         Public ReadOnly P_AttachmentModule As String = "@AttachmentModule"
-        Public ReadOnly P_AttachmentFileName As String = "@AttachmentFileName"
+        Public ReadOnly P_AttachmentFileNameOriginal As String = "@AttachmentFileNameOriginal"
+        Public ReadOnly P_AttachmentFileNameStandard As String = "@AttachmentFileNameStandard"
         Public ReadOnly P_AttachmentExtension As String = "@AttachmentExtension"
         Public ReadOnly P_AttachmentUrl As String = "@AttachmentUrl"
         Public ReadOnly P_AttachmentTag As String = "@AttachmentTag"
         Public ReadOnly P_AttachmentProvider As String = "@AttachmentProvider"
+        Public ReadOnly P_AttachmentSearch As String = "@AttachmentSearch"
     End Class
 End Namespace

@@ -1,4 +1,6 @@
-﻿Namespace UI.Canvas
+﻿Imports CMCv.UI.Control
+
+Namespace UI.Canvas
     Public Class FRMeplsEditor
         ' ----------------------------------------------------------
         '  Variables
@@ -20,11 +22,13 @@
         Private Sub FRMeplsEditor_Activated(sender As Object, e As EventArgs) Handles Me.Activated
             ' Set active module to UserParameters
             SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
+            SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMeplsEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             ' Set active module to UserParameters
+            CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnModulesRoles)
             SetValue(varDataProperties.UserParameters, tModule.P_ModuleCode, varThisModuleCode)
             varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.UserParameters)
             SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
@@ -37,6 +41,8 @@
                 ChkAddNew.Visible = True
                 ChkAddNew.Enabled = True
                 CboGender.SelectedIndex = 0
+                BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
+                BtnRemovePhoto.Enabled = False
                 SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeToken, CMCv.Security.Encryption.MD5())
                 SetValue(varDataProperties.AllParameters, tPosition.P_PositionId, DBNull.Value)
             Else
@@ -64,20 +70,18 @@
                     TxtEmployeeNumber.Text = .Item(tEmployee.C_EmployeeNumber).ToString
                     TxtEmployeeNickname.Text = .Item(tEmployee.C_EmployeeNickname).ToString
                     ChkActiveEmployee.Checked = CBool(.Item(tEmployee.C_EmployeeIsActive))
-                    varDataProperties.EmployeeIsHavePhoto = CMDepls.Editor.GetIsHavePhoto(varDataProperties, varDatasetIngrid, varDataProperties.UserParameters)
+                    'varDataProperties.EmployeeIsHavePhoto = CMDepls.Editor.GetIsHavePhoto(varDataProperties, varDatasetIngrid, varDataProperties.UserParameters)
+                    varDataProperties.EmployeeIsHavePhoto = CBool(.Item("ishavephoto"))
+                    If varDataProperties.EmployeeIsHavePhoto Then
+                        SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentId, CLng(.Item(tAttachment.C_AttachmentId)))
+                        CMCv.ImageEditor.File.GetImage.GetImageFromUrl(.Item(tAttachment.C_AttachmentUrl).ToString, pctbxPhoto)
+                        BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
+                        BtnRemovePhoto.Enabled = True
+                    Else
+                        BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
+                        BtnRemovePhoto.Enabled = False
+                    End If
                 End With
-
-                If varDataProperties.EmployeeIsHavePhoto Then
-                    pctbxPhoto.Image = CMDepls.Editor.GetPhoto(varDataProperties, Convert.ToString(varDataProperties.EmployeeId))
-                    varDataProperties.EmployeePhoto = pctbxPhoto.Image
-                    BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
-                    varDataProperties.EmployeeIsHavePhoto = True
-                    varDataProperties.EmployeeIsNewPhoto = False
-                    BtnRemovePhoto.Enabled = True
-                Else
-                    BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
-                    BtnRemovePhoto.Enabled = False
-                End If
             End If
             Call ResetPhoto()
             TxtPersonalID.Focus()
@@ -104,6 +108,7 @@
                     Return
                 End If
 
+                SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentFileNameOriginal, IO.Path.GetFileName(OfdPhoto.FileName))
                 Dim ext As String = IO.Path.GetExtension(OfdPhoto.FileName).ToLower()
 
                 If (CMCv.OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, varMaxUploadSizePhoto, True)) Then
@@ -134,7 +139,7 @@
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+        Private Async Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Dim varInvalidScore As Integer = 0
             varCannotSaveMessage = String.Empty
             varInvalidScore += CheckInvalidInputs()
@@ -163,9 +168,10 @@
                 SetValue(.AllParameters, tEmployee.P_EmployeeEmploymentType, IIf(TxtEmploymentType.XOSqlText = String.Empty OrElse TxtEmploymentType.XOSqlText = "", DBNull.Value, DBNull.Value))
             End With
 
-            If CMDepls.Editor.PushData(varDataProperties, varDataProperties.AllParameters) Then
+            If Await CMDepls.Editor.PushData(varDataProperties, varDataProperties.AllParameters) Then
                 UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
                 RaiseEvent EventRecordSaved()
+
             Else
                 UI.Canvas.FRMmainframe6.Ts_status.Text = "Failed to save"
                 Return
