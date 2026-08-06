@@ -52,6 +52,7 @@
     Public Class Properties
         Property AllParameters As New Dictionary(Of String, Object)
         Property UserParameters As New Dictionary(Of String, Object)
+        Property DatasetCopy As New System.Data.DataSet
         Property AccountBookId As Long
         Property AccountBookIsNew As Boolean
         Property AccountBookIsEnabled As Boolean

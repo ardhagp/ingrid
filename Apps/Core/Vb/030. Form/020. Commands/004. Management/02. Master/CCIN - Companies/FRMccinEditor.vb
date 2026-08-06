@@ -8,14 +8,32 @@
         Private Const varThisModuleCode As String = "CCIN"
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub CheckAllInput()
+        Private Function CheckInvalidInput() As Boolean
+            Dim varInvalidScore As Integer = 0
+
             TxtCode.Focus()
+            If TxtCode.XOSqlText = String.Empty Then
+                varInvalidScore += 1
+            End If
             TxtName.Focus()
+            If TxtName.XOSqlText = String.Empty Then
+                varInvalidScore += 1
+            End If
             TxtSearchTerm1.Focus()
+            If TxtSearchTerm1.XOSqlText = String.Empty Then
+                varInvalidScore += 1
+            End If
             TxtSearchTerm2.Focus()
+            If TxtSearchTerm2.XOSqlText = String.Empty Then
+                varInvalidScore += 1
+            End If
             TxtDescription.Focus()
-            BtnSave.Focus()
-        End Sub
+            If varInvalidScore = 0 Then
+                Return False
+            Else
+                Return True
+            End If
+        End Function
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMccinEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -46,7 +64,10 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-            Call CheckAllInput()
+            If CheckInvalidInput() Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable to save your record." & Environment.NewLine & "Please verify that the Company Code, Company Name, Search Term1 and Search Term2 fields have been entered correctly.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Return
+            End If
 
             With varDataProperties
                 SetValue(.AllParameters, tCompany.P_CompanyCode, TxtCode.XOSqlText)
@@ -92,7 +113,7 @@
         End Sub
 
         ''' <summary>
-        ''' 
+        ''' This subroutine clears the parameters in the varDataProperties.AllParameters collection related to company information. It removes the company code, name, search terms, and description from the collection, effectively resetting these values. This is useful for ensuring that no residual data remains when creating a new company record or when clearing the form after saving.
         ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ClearParameters()
@@ -111,6 +132,5 @@
             SetValue(varDataProperties.UserParameters, tModule.P_ModuleId, varThisModuleId)
             SetValue(varDataProperties.UserParameters, tModule.P_ModuleCode, varThisModuleCode)
         End Sub
-
     End Class
 End Namespace

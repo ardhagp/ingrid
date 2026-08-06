@@ -41,16 +41,20 @@ Namespace Api
         ''' <param name="key">The key (path) under which to store the file in the bucket.</param>
         ''' <param name="filepath">The local file path of the file to upload.</param>
         ''' <returns>A Task representing the asynchronous upload operation.</returns>
-        Public Async Function Upload(bucketname As String, key As String, filepath As String) As Task
-            Dim varAwsRequest As New PutObjectRequest With {
+        Public Async Function Upload(bucketname As String, key As String, filepath As String) As Task(Of Boolean)
+            Try
+                Dim varAwsRequest As New PutObjectRequest With {
                 .BucketName = bucketname,
                 .Key = key,
                 .FilePath = filepath
                 }
 
-            Dim varAwsResponse As PutObjectResponse
-            varAwsResponse = Await AWSClient.PutObjectAsync(varAwsRequest)
-            'Console.WriteLine("Upload completed with status: " & varAwsResponse.HttpStatusCode.ToString())
+                Dim varAwsResponse As PutObjectResponse
+                varAwsResponse = Await AWSClient.PutObjectAsync(varAwsRequest)
+                Return varAwsResponse.HttpStatusCode = System.Net.HttpStatusCode.OK
+            Catch ex As Exception
+                Return False
+            End Try
         End Function
 
         ''' <summary>

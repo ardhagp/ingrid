@@ -96,10 +96,6 @@
     ''' The Editor class provides methods for retrieving and managing employee properties from the database. It includes functionality to get various employee attributes such as company, department, position, grade, personal ID, birth date, birth place, address, employee number, full name, nickname, contract type, active status, gender, and
     ''' </summary>
     Public Class Editor
-        'ReadOnly varImage As New CMCv.ImageEditor.Proccessor.Compress
-
-        'Private Const pEmployeeToken As String = "@EmployeeToken"
-
         ''' <summary>
         ''' Retrieves employee properties from the database and populates the specified dataset with the retrieved data. This function constructs a SQL query to select various employee attributes based on the provided data properties and employee ID. It supports both MSSQL and MySQL database engines and fills the dataset with the retrieved employee information. The function is intended for use in an editor context where employee details need to be displayed or modified.
         ''' </summary>
@@ -136,7 +132,7 @@
                                                    $"{tPosition.S}.{tPosition.C_PositionId}, " &
                                                    $"{tPosition.S}.{tPosition.C_PositionCode}, " &
                                                    $"{tPosition.S}.{tPosition.C_PositionName}, " &
-                                                   $"(select {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeName} from {tEmploymentType.TableName} {tEmploymentType.S} where {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeId} = {tEmployee.S}.{tEmployee.C_EmployeeEmploymentType}) as `{tEmploymentType.C_EmploymentTypeName}`, " &
+                                                   $"{tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeName}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeNumber}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeFullName}, " &
@@ -146,13 +142,24 @@
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeBirthPlace}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeAddress}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeEmploymentType}, " &
-                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeIsActive} " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeIsActive}, " &
+                                                   $"if({tAttachment.S}.{tAttachment.C_AttachmentId} is null, 0, 1) `ishavephoto`, " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentId}, " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentUrl} " &
                                                    $"from {tEmployee.TableName} {tEmployee.S} " &
-                                                   $"inner join {tPosition.TableName} {tPosition.S} on {tPosition.S}.{tPosition.C_PositionId} = {tEmployee.S}.{tEmployee.C_EmployeePosition} " &
-                                                   $"inner join {tDepartment.TableName} {tDepartment.S} on {tDepartment.S}.{tDepartment.C_DepartmentId} = {tPosition.S}.{tPosition.C_PositionDepartment} " &
-                                                   $"inner join {tCompany.TableName} {tCompany.S} on {tCompany.S}.{tCompany.C_CompanyId} = {tDepartment.S}.{tDepartment.C_DepartmentCompany} " &
+                                                   $"left join {tAttachment.TableName} {tAttachment.S} " &
+                                                   $"on {tEmployee.S}.{tEmployee.C_EmployeeId} = {tAttachment.S}.{tAttachment.C_AttachmentParentId} and " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentTag} = 'EMPLOYEE-PROFILE-PHOTO'" &
+                                                   $"left join {tEmploymentType.TableName} {tEmploymentType.S} " &
+                                                   $"on {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeId} = {tEmployee.S}.{tEmployee.C_EmployeeEmploymentType} " &
+                                                   $"inner join {tPosition.TableName} {tPosition.S} " &
+                                                   $"on {tPosition.S}.{tPosition.C_PositionId} = {tEmployee.S}.{tEmployee.C_EmployeePosition} " &
+                                                   $"inner join {tDepartment.TableName} {tDepartment.S} " &
+                                                   $"on {tDepartment.S}.{tDepartment.C_DepartmentId} = {tPosition.S}.{tPosition.C_PositionDepartment} " &
+                                                   $"inner join {tCompany.TableName} {tCompany.S} " &
+                                                   $"on {tCompany.S}.{tCompany.C_CompanyId} = {tDepartment.S}.{tDepartment.C_DepartmentCompany} " &
                                                    $"where {tEmployee.S}.{tEmployee.C_EmployeeId} = {tEmployee.P_EmployeeId} " &
-                                                   $"order by {tEmployee.S}.{tEmployee.C_EmployeeId}"
+                                                   $"order by {tEmployee.S}.{tEmployee.C_EmployeeFullName}"
                 varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "EPLS_Editor", dataproperties.AllParameters)
             End If
         End Sub
@@ -331,28 +338,27 @@
         End Function
 
         ''' <summary>
-        ''' 
+        ''' This function retrieves the address of an employee from the database. It queries the database for the address associated with the specified employee ID and returns it as a string.
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <param name="rowid"></param>
-        ''' <returns></returns>
+        ''' <param name="dataproperties">The properties of the database connection and employee information.</param>
+        ''' <param name="rowid">The ID of the employee whose address is to be retrieved.</param>
+        ''' <returns>The address of the employee as a string.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetAddress(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
-            Dim varBirthPlace As String
+            Dim varAddress As String
 
             varDatabaseRequestMssql2008(1).Query = String.Format("select e.employee_address from dbo.man_employee e where e.employee_id = '{0}'", rowid)
 
-            varBirthPlace = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
-
-            Return varBirthPlace
+            varAddress = varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query).ToString
+            Return varAddress
         End Function
 
         ''' <summary>
-        ''' 
+        ''' This function retrieves the address of an employee from the database. It queries the database for the address associated with the specified employee ID and returns it as a string.
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <param name="rowid"></param>
-        ''' <returns></returns>
+        ''' <param name="dataproperties">The properties of the database connection and employee information.</param>
+        ''' <param name="rowid">The ID of the employee whose address is to be retrieved.</param>
+        ''' <returns>The address of the employee as a string.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetEmployeeNumber(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varEmployeeNumber As String
@@ -365,11 +371,11 @@
         End Function
 
         ''' <summary>
-        ''' 
+        ''' This function retrieves the full name of an employee from the database. It queries the database for the full name associated with the specified employee ID and returns it as a string.
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <param name="rowid"></param>
-        ''' <returns></returns>
+        ''' <param name="dataproperties">The properties of the database connection and employee information.</param>
+        ''' <param name="rowid">The ID of the employee whose full name is to be retrieved.</param>
+        ''' <returns>The full name of the employee as a string.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetEmployeeFullName(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varEmployeeName As String
@@ -382,11 +388,11 @@
         End Function
 
         ''' <summary>
-        ''' 
+        ''' This function retrieves the nickname of an employee from the database. It queries the database for the nickname associated with the specified employee ID and returns it as a string.
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <param name="rowid"></param>
-        ''' <returns></returns>
+        ''' <param name="dataproperties">The properties of the database connection and employee information.</param>
+        ''' <param name="rowid">The ID of the employee whose nickname is to be retrieved.</param>
+        ''' <returns>The nickname of the employee as a string.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetEmployeeNickname(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varNickname As String
@@ -399,11 +405,11 @@
         End Function
 
         ''' <summary>
-        ''' 
+        ''' This function retrieves the contract type ID of an employee from the database. It queries the database for the contract type ID associated with the specified employee ID and returns it as a string.
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <param name="rowid"></param>
-        ''' <returns></returns>
+        ''' <param name="dataproperties">The properties of the database connection and employee information.</param>
+        ''' <param name="rowid">The ID of the employee whose contract type ID is to be retrieved.</param>
+        ''' <returns>The contract type ID of the employee as a string.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetContractTypeID(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varContractTypeID As String
@@ -416,11 +422,11 @@
         End Function
 
         ''' <summary>
-        ''' 
+        ''' This function retrieves the contract type of an employee from the database. It queries the database for the contract type associated with the specified employee ID and returns it as a string.
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <param name="rowid"></param>
-        ''' <returns></returns>
+        ''' <param name="dataproperties">The properties of the database connection and employee information.</param>
+        ''' <param name="rowid">The ID of the employee whose contract type is to be retrieved.</param>
+        ''' <returns>The contract type of the employee as a string.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetContractType(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varContractType As String
@@ -434,11 +440,11 @@
         End Function
 
         ''' <summary>
-        ''' 
+        ''' This function checks if an employee is active. It queries the database for the active status of the specified employee and returns True if the employee is active, or False if the employee is not active.
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <param name="rowid"></param>
-        ''' <returns></returns>
+        ''' <param name="dataproperties">The properties of the database connection and employee information.</param>
+        ''' <param name="rowid">The ID of the employee whose active status is to be retrieved.</param>
+        ''' <returns>True if the employee is active, False otherwise.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetActiveEmployee(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As Boolean
             Dim varActiveEmployee As Boolean = False
@@ -451,11 +457,11 @@
         End Function
 
         ''' <summary>
-        ''' 
+        ''' This function retrieves the gender of an employee from the database. It queries the database for the gender associated with the specified employee ID and returns it as a string. If an error occurs during the query, it defaults to "MALE".
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <param name="rowid"></param>
-        ''' <returns></returns>
+        ''' <param name="dataproperties">The properties of the database connection and employee information.</param>
+        ''' <param name="rowid">The ID of the employee whose gender is to be retrieved.</param>
+        ''' <returns>The gender of the employee as a string.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetGender(dataproperties As LibApp.Ingrid.Global.Properties, rowid As String) As String
             Dim varGender As String
@@ -471,12 +477,12 @@
         End Function
 
         ''' <summary>
-        ''' 
+        ''' This function checks if an employee has a profile photo. It queries the database for the presence of a photo associated with the specified employee and returns True if a photo exists, or False if it does not.
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <param name="datasetname"></param>
-        ''' <param name="parametername"></param>
-        ''' <returns></returns>
+        ''' <param name="dataproperties">The properties of the database connection and employee information.</param>
+        ''' <param name="datasetname">The name of the dataset to fill with the query results.</param>
+        ''' <param name="parametername">A dictionary of parameters for the query.</param>
+        ''' <returns>True if the employee has a profile photo, False otherwise.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetIsHavePhoto(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet, parametername As Dictionary(Of String, Object)) As Boolean
             Dim varIsHavePhoto As Integer
@@ -487,7 +493,8 @@
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(0).Query = $"select {tAttachment.S}.{tAttachment.C_AttachmentId}, " &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentModule}, " &
-                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentFileName}, " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentFileNameOriginal}, " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentFileNameStandard}, " &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentExtension}, " &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentUrl} ," &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentTag} , " &
@@ -532,13 +539,16 @@
         End Function
 
         ''' <summary>
-        ''' 
+        ''' This function checks if a personal ID number exists in the database. It constructs a SQL query to count the number of records with the specified personal ID number, considering whether the employee is new or existing. The function supports both MSSQL and MySQL database engines and returns 1 if the personal ID number exists, or 0 if it does not.
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <returns></returns>
+        ''' <param name="dataproperties">The properties of the database connection and employee information.</param>
+        ''' <param name="personalidnumber">The personal ID number to check for existence.</param>
+        ''' <returns>1 if the personal ID number exists, 0 if it does not.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Function IsPersonalIdExist(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
+        Public Shared Function IsPersonalIdExist(dataproperties As LibApp.Ingrid.Global.Properties, personalidnumber As String) As Integer
             Dim varIsExist As Integer
+
+            SetValue(dataproperties.AllParameters, tEmployee.P_EmployeePersonalIdNumber, personalidnumber)
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 If dataproperties.EmployeeIsNew Then
@@ -546,7 +556,7 @@
                 Else
                     varDatabaseRequestMssql2008(0).Query = $"select count(em.employee_personalid) from man_employee em where (em.employee_personalid = @EmployeePersonalId and em.employee_id <> @EmployeeId)"
                 End If
-                varIsExist = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query, dataproperties.AllParameters), Integer)
+                varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query, dataproperties.AllParameters))
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If dataproperties.EmployeeIsNew Then
                     varDatabaseRequestMysql(0).Query = $"select count({tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}) " &
@@ -559,25 +569,25 @@
                                                        $"from {tEmployee.TableName} {tEmployee.S} " &
                                                        $"where ( " &
                                                        $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and " &
-                                                       $"({tEmployee.S}.{tEmployee.P_EmployeePersonalIdNumber} = {tEmployee.P_EmployeePersonalIdNumber} and " &
+                                                       $"({tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber} = {tEmployee.P_EmployeePersonalIdNumber} and " &
                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeId} <> {tEmployee.P_EmployeeId}))"
                 End If
                 varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
             End If
 
-            If varIsExist = 0 Then
-                Return False
+            If varIsExist > 0 Then
+                Return 1
             Else
-                Return True
+                Return 0
             End If
         End Function
 
         ''' <summary>
-        ''' 
+        ''' This function checks if a position exists in the database. It constructs a SQL query to count the number of records with the specified position ID. The function supports the MSSQL database engine and returns True if the position exists, or False if it does not.
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <param name="positionid"></param>
-        ''' <returns></returns>
+        ''' <param name="dataproperties">The properties of the database connection and employee information.</param>
+        ''' <param name="positionid">The position ID to check for existence.</param>
+        ''' <returns>True if the position exists, False if it does not.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function IsPositionExist(dataproperties As LibApp.Ingrid.Global.Properties, positionid As String) As Boolean
             Dim varIsExist As Integer
@@ -593,14 +603,16 @@
         End Function
 
         ''' <summary>
-        ''' 
+        ''' This function checks if an employee number is a duplicate in the database. It constructs a SQL query to count the number of records with the same employee number, considering whether the employee is new or existing. The function supports both MSSQL and MySQL database engines and returns 1 if a duplicate is found, or 0 if no duplicates exist.
         ''' </summary>
-        ''' <param name="dataproperties"></param>
-        ''' <returns></returns>
+        ''' <param name="dataproperties">The properties of the database connection and employee information.</param>
+        ''' <param name="employeenumber">The employee number to check for duplicates.</param>
+        ''' <returns>1 if a duplicate is found, 0 if no duplicates exist.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Function IsEmployeeNumberDuplicate(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
+        Public Shared Function IsEmployeeNumberDuplicate(dataproperties As LibApp.Ingrid.Global.Properties, employeenumber As String) As Integer
             Dim varIsDuplicate As Integer = 0
             Dim varWhere As String = "where "
+            SetValue(dataproperties.AllParameters, tEmployee.P_EmployeeNumber, employeenumber)
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 If dataproperties.EmployeeIsNew Then
@@ -617,9 +629,12 @@
                 varIsDuplicate = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If dataproperties.EmployeeIsNew Then
-                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and ({tEmployee.S}.{tEmployee.C_EmployeeNumber} = {tEmployee.P_EmployeeNumber})"
+                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and " &
+                                $"({tEmployee.S}.{tEmployee.C_EmployeeNumber} = {tEmployee.P_EmployeeNumber})"
                 Else
-                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and ({tEmployee.S}.{tEmployee.C_EmployeeNumber} = {tEmployee.P_EmployeeNumber}) and ({tEmployee.S}.{tEmployee.C_EmployeeId} <> {tEmployee.P_EmployeeId})"
+                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and " &
+                                $"({tEmployee.S}.{tEmployee.C_EmployeeNumber} = {tEmployee.P_EmployeeNumber}) and " &
+                                $"({tEmployee.S}.{tEmployee.C_EmployeeId} <> {tEmployee.P_EmployeeId})"
                 End If
 
                 varDatabaseRequestMysql(0).Query = $"select count ({tEmployee.S}.{tEmployee.C_EmployeeId}) as `rows` " &
@@ -627,10 +642,10 @@
                 varIsDuplicate = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
             End If
 
-            If varIsDuplicate = 0 Then
-                Return False
+            If varIsDuplicate > 0 Then
+                Return 1
             Else
-                Return True
+                Return 0
             End If
         End Function
 
@@ -641,7 +656,7 @@
         ''' <param name="parametername">Dictionary containing parameter names and their corresponding values.</param>
         ''' <returns>Boolean indicating the success of the operation.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Boolean
+        Public Shared Async Function PushData(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object)) As Task(Of Boolean)
             Dim varSuccess As Boolean = False
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -661,6 +676,7 @@
                         varDatabaseRequestMysql(1).Query = $"insert into {tEmployee.TableName}({tEmployee.C_EmployeeToken}, " &
                                                            $"{tEmployee.C_EmployeePersonalIdNumber}, " &
                                                            $"{tEmployee.C_EmployeePosition}, " &
+                                                           $"{tEmployee.C_EmployeeEmploymentType}, " &
                                                            $"{tEmployee.C_EmployeeNumber}, " &
                                                            $"{tEmployee.C_EmployeeFullName}, " &
                                                            $"{tEmployee.C_EmployeeBirthDate}, " &
@@ -668,10 +684,12 @@
                                                            $"{tEmployee.C_EmployeeAddress}, " &
                                                            $"{tEmployee.C_EmployeeNickname}, " &
                                                            $"{tEmployee.C_EmployeeIsActive}, " &
-                                                           $"{tEmployee.C_EmployeeGender}) " &
+                                                           $"{tEmployee.C_EmployeeGender}, " &
+                                                           $"{tEmployee.C_EmployeeClient}) " &
                                                            $"values ({tEmployee.P_EmployeeToken}, " &
                                                            $"{tEmployee.P_EmployeePersonalIdNumber}, " &
-                                                           $"{tEmployee.P_EmployeePosition}, " &
+                                                           $"{tPosition.P_PositionId}, " &
+                                                           $"{tEmploymentType.P_EmploymentTypeId}, " &
                                                            $"{tEmployee.P_EmployeeNumber}, " &
                                                            $"{tEmployee.P_EmployeeFullName}, " &
                                                            $"{tEmployee.P_EmployeeBirthDate}, " &
@@ -679,101 +697,130 @@
                                                            $"{tEmployee.P_EmployeeAddress}, " &
                                                            $"{tEmployee.P_EmployeeNickname}, " &
                                                            $"{tEmployee.P_EmployeeIsActive}, " &
-                                                           $"{tEmployee.P_EmployeeGender});"
+                                                           $"{tEmployee.P_EmployeeGender}, " &
+                                                           $"{tClient.P_ClientId});"
 
-                        'If varDatabaseEngineMysql.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters) Then
-                        ' If the insert operation is successful, save photo meta to database
-                        Dim baseFolder = IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ardhagp\Ingrid .NET")
+                        If varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters) Then
+                            With dataproperties.DatasetCopy.Tables("SYSS_Editor").Rows(0)
+                                If .Item($"{tSettings.C_SettingsStorageProvider}").ToString = "Disabled" Then
+                                    Return True
+                                End If
+                                ' If the insert operation is successful, save photo meta to database
+                                Dim imageFolder = CMCv.OperatingSystem.Folder.GetPhotoFolder
+                                Dim img As New System.Drawing.Bitmap(dataproperties.EmployeePhoto)
+                                SetValue(dataproperties.AllParameters, tAttachment.P_AttachmentExtension, System.Drawing.Imaging.ImageFormat.Jpeg)
+                                Dim varDestinationPathAndFileName As String = $"client_data/{dataproperties.AllParameters(tClient.P_ClientId)}/EPLS/{dataproperties.AllParameters(tEmployee.P_EmployeeToken)}.{dataproperties.AllParameters(tAttachment.P_AttachmentExtension)}"
+                                Dim url As String = $"{If(.Item(tSettings.C_SettingsApiServiceUrl) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiServiceUrl).ToString))}/{varDestinationPathAndFileName}"
+                                url = url.Replace("https://", $"https://{If(.Item(tSettings.C_SettingsApiBucketName) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiBucketName).ToString))}.")
+                                SetValue(dataproperties.AllParameters, tAttachment.P_AttachmentUrl, url)
+                                SetValue(dataproperties.AllParameters, tSettings.P_SettingsStorageProvider, dataproperties.DatasetCopy.Tables("SYSS_Editor").Rows(0).Item($"{tSettings.C_SettingsStorageProvider}").ToString)
+                                img.Save(imageFolder & $"\{dataproperties.AllParameters(tEmployee.P_EmployeeToken)}.{dataproperties.AllParameters(tAttachment.P_AttachmentExtension)}", System.Drawing.Imaging.ImageFormat.Jpeg)
+                                varDatabaseRequestMysql(1).Query = $"insert into {tAttachment.TableName}( " &
+                                                                   $"{tAttachment.C_AttachmentParentToken}, " &
+                                                                   $"{tAttachment.C_AttachmentModule}, " &
+                                                                   $"{tAttachment.C_AttachmentFileNameOriginal}, " &
+                                                                   $"{tAttachment.C_AttachmentFileNameStandard}, " &
+                                                                   $"{tAttachment.C_AttachmentExtension}, " &
+                                                                   $"{tAttachment.C_AttachmentUrl}, " &
+                                                                   $"{tAttachment.C_AttachmentTag}, " &
+                                                                   $"{tAttachment.C_AttachmentProvider}) " &
+                                                                   $"values (" &
+                                                                   $"{tEmployee.P_EmployeeToken}, " &
+                                                                   $"{tModule.P_ModuleId}, " &
+                                                                   $"{tAttachment.P_AttachmentFileNameOriginal}, " &
+                                                                   $"{tEmployee.P_EmployeeToken}, " &
+                                                                   $"{tAttachment.P_AttachmentExtension}, " &
+                                                                   $"{tAttachment.P_AttachmentUrl}, " &
+                                                                   $"'EMPLOYEE-PROFILE-PHOTO', " &
+                                                                   $"{tSettings.P_SettingsStorageProvider});"
 
-                        Dim imageFolder = IO.Path.Combine(baseFolder, "Files.Image")
-                        IO.Directory.CreateDirectory(imageFolder)
+                                If Not varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters) Then
+                                    Decision(My.Application.Info.AssemblyName.ToUpper, "Employee record are saved but failed to store photo data", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                                    Return True
+                                End If
 
-                        Dim img As New System.Drawing.Bitmap(dataproperties.EmployeePhoto)
-                        img.Save(imageFolder & $"\{dataproperties.AllParameters(tEmployee.P_EmployeeToken)}.jpg", System.Drawing.Imaging.ImageFormat.Jpeg)
-                        varDatabaseRequestMysql(1).Query = $"insert into {tAttachment.S}.{tAttachment.C_AttachmentParentToken}, " &
-                                                           $"{tAttachment.C_AttachmentModule}, " &
-                                                           $"{tAttachment.C_AttachmentFileName}, " &
-                                                           $"{tAttachment.C_AttachmentExtension}, " &
-                                                           $"{tAttachment.C_AttachmentUrl}, " &
-                                                           $"{tAttachment.C_AttachmentTag}, " &
-                                                           $"{tAttachment.C_AttachmentProvider}) " &
-                                                           $"values ({tEmployee.P_EmployeeToken}, " &
-                                                           $"{tModule.P_ModuleId}, " &
-                                                           $"@FileName, " &
-                                                           $"@FileExtension, " &
-                                                           $"@FileUrl, " &
-                                                           $"'EMPLOYEE-PROFILE-PHOTO', " &
-                                                           $"@Uploader);"
+                                Dim backblaze = LibAPI.Api.BackblazeB2.Create(If(.Item(tSettings.C_SettingsApiKey) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiKey).ToString)),
+                                                                              If(.Item(tSettings.C_SettingsApiSecret) Is Nothing, "", CMCv.Security.Decrypt.Aes(CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiSecret).ToString))),
+                                                                              If(.Item(tSettings.C_SettingsApiServiceUrl) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiServiceUrl).ToString)))
+                                Dim result = Await backblaze.Upload(If(.Item(tSettings.C_SettingsApiBucketName) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiBucketName).ToString)),
+                                                           varDestinationPathAndFileName,
+                                                           imageFolder & $"\{dataproperties.AllParameters(tEmployee.P_EmployeeToken)}.{dataproperties.AllParameters(tAttachment.P_AttachmentExtension)}")
+                                If result Then
+                                    Return True
+                                    backblaze.Dispose()
+                                Else
+                                    Decision(My.Application.Info.AssemblyName.ToUpper, "Employee record and photo data are saved but failed to upload photo data", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                                End If
+                            End With
+                        Else
+                            Dim baseFolder = IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ardhagp\Ingrid .NET")
 
-                        '    End If
-                    Else
-                        Dim baseFolder = IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ardhagp\Ingrid .NET")
+                            Dim imageFolder = IO.Path.Combine(baseFolder, "Files.Image")
+                            IO.Directory.CreateDirectory(imageFolder)
 
-                        Dim imageFolder = IO.Path.Combine(baseFolder, "Files.Image")
-                        IO.Directory.CreateDirectory(imageFolder)
+                            Dim img As New System.Drawing.Bitmap(dataproperties.EmployeePhoto)
+                            img.Save(imageFolder & "\a.jpg", System.Drawing.Imaging.ImageFormat.Jpeg)
 
-                        Dim img As New System.Drawing.Bitmap(dataproperties.EmployeePhoto)
-                        img.Save(imageFolder & "\a.jpg", System.Drawing.Imaging.ImageFormat.Jpeg)
-
-                        varDatabaseRequestMysql(1).Query = $"update man_employee set employee_position = @PositionId, " &
-                                                       $"employee_number = @EmployeeNumber, " &
-                                                       $"employee_fullname = @EmployeeFullName, " &
-                                                       $"employee_birthdate = @EmployeeBirthDate, " &
-                                                       $"employee_birthplace = @EmployeeBirthPlace, " &
-                                                       $"employee_address = @EmployeeAddress, " &
-                                                       $"employee_nickname = @EmployeeNickname, " &
-                                                       $"employee_isactive = @EmployeeIsActive, " &
-                                                       $"employee_gender = @EmployeeGender, " &
-                                                       $"employee_personalid = @EmployeePersonalId " &
-                                                       $"where employee_id = @EmployeeId;"
+                            varDatabaseRequestMysql(1).Query = $"update man_employee Set employee_position = @PositionId, " &
+                                                           $"employee_number = @EmployeeNumber, " &
+                                                           $"employee_fullname = @EmployeeFullName, " &
+                                                           $"employee_birthdate = @EmployeeBirthDate, " &
+                                                           $"employee_birthplace = @EmployeeBirthPlace, " &
+                                                           $"employee_address = @EmployeeAddress, " &
+                                                           $"employee_nickname = @EmployeeNickname, " &
+                                                           $"employee_isactive = @EmployeeIsActive, " &
+                                                           $"employee_gender = @EmployeeGender, " &
+                                                           $"employee_personalid = @EmployeePersonalId " &
+                                                           $"where employee_id = @EmployeeId;"
+                        End If
                     End If
+
+                    'varDatabaseEngineMssql2008.PUSHDATA(varDatabaseRequestMssql2008(1).Query)
+                    'Dim varQuery As String = String.Empty
+                    'Dim varCommand As System.Data.SqlClient.SqlCommand = Nothing
+                    'varCommand = New System.Data.SqlClient.SqlCommand
+
+                    'If dataproperties.EmployeeIsForceChangePhoto Then
+                    '    Dim varIsHavePhoto As Integer = GetIsHavePhoto(varDataProperties, varHash)
+                    '    Dim varPhotoHash As String = CMCv.Security.Encrypt.MD5()
+
+                    '    If varIsHavePhoto = 0 Then
+                    '        varQuery = "insert into db_universe_erp_file.dbo.sto_file([file_id], file_parent, file_filetype, file_content, file_tag, file_datetime, file_attribute, file_uploader, file_parentdate) " &
+                    '            "values(@ID, @ParentID, 'jpg', @FileContent, 'EMPLOYEE-PROFILE-PHOTO', @DateNow, 'module=EPLS;', @Uploader,@ParentDate);"
+                    '    Else
+                    '        varCommand = New System.Data.SqlClient.SqlCommand
+                    '        varQuery = String.Format("update db_universe_erp_file.dbo.sto_file set file_content = @FileContent, file_datetime = GETDATE(), file_parentdate = GETDATE() where file_parent = '{0}' and " &
+                    '                              "file_tag = 'EMPLOYEE-PROFILE-PHOTO';", varHash)
+                    '    End If
+
+                    '    varDatabaseRequestMssql2008(1).Query += varQuery
+
+                    '    varCommand.Parameters.AddWithValue("@ID", varPhotoHash)
+                    '    varCommand.Parameters.AddWithValue("@ParentID", varHash)
+                    '    varCommand.Parameters.AddWithValue("@Uploader", creatoreditor)
+                    '    varCommand.Parameters.AddWithValue("@ParentDate", Now.Date)
+
+                    '    Dim varMemorystream = New MemoryStream()
+                    '    Dim varImage As Image = employeephoto
+                    '    Dim varPhotobyte As Byte() = Nothing
+
+                    '    varImage.Save(varMemorystream, Imaging.ImageFormat.Jpeg) ', Row.Cells("file_content").Value)
+                    '    varPhotobyte = varMemorystream.ToArray
+
+                    '    Dim varImageparameter As New System.Data.SqlClient.SqlParameter("@FileContent", System.Data.SqlDbType.Image) With {
+                    '    .Value = varPhotobyte
+                    '    }
+                    '    varCommand.Parameters.Add(varImageparameter)
+                    '    varCommand.Parameters.AddWithValue("@DateNow", Now.Date)
+                    'End If
+
+                    'varCommand.CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' " &
+                    '                                 "GOTO RETRY END END CATCH", varDatabaseRequestMssql2008(1).Query)
+
+                    'varSuccess = varDatabaseEngineMssql2008.PushImage(varCommand)
                 End If
-
-                'varDatabaseEngineMssql2008.PUSHDATA(varDatabaseRequestMssql2008(1).Query)
-                'Dim varQuery As String = String.Empty
-                'Dim varCommand As System.Data.SqlClient.SqlCommand = Nothing
-                'varCommand = New System.Data.SqlClient.SqlCommand
-
-                'If dataproperties.EmployeeIsForceChangePhoto Then
-                '    Dim varIsHavePhoto As Integer = GetIsHavePhoto(varDataProperties, varHash)
-                '    Dim varPhotoHash As String = CMCv.Security.Encrypt.MD5()
-
-                '    If varIsHavePhoto = 0 Then
-                '        varQuery = "insert into db_universe_erp_file.dbo.sto_file([file_id], file_parent, file_filetype, file_content, file_tag, file_datetime, file_attribute, file_uploader, file_parentdate) " &
-                '            "values(@ID, @ParentID, 'jpg', @FileContent, 'EMPLOYEE-PROFILE-PHOTO', @DateNow, 'module=EPLS;', @Uploader,@ParentDate);"
-                '    Else
-                '        varCommand = New System.Data.SqlClient.SqlCommand
-                '        varQuery = String.Format("update db_universe_erp_file.dbo.sto_file set file_content = @FileContent, file_datetime = GETDATE(), file_parentdate = GETDATE() where file_parent = '{0}' and " &
-                '                              "file_tag = 'EMPLOYEE-PROFILE-PHOTO';", varHash)
-                '    End If
-
-                '    varDatabaseRequestMssql2008(1).Query += varQuery
-
-                '    varCommand.Parameters.AddWithValue("@ID", varPhotoHash)
-                '    varCommand.Parameters.AddWithValue("@ParentID", varHash)
-                '    varCommand.Parameters.AddWithValue("@Uploader", creatoreditor)
-                '    varCommand.Parameters.AddWithValue("@ParentDate", Now.Date)
-
-                '    Dim varMemorystream = New MemoryStream()
-                '    Dim varImage As Image = employeephoto
-                '    Dim varPhotobyte As Byte() = Nothing
-
-                '    varImage.Save(varMemorystream, Imaging.ImageFormat.Jpeg) ', Row.Cells("file_content").Value)
-                '    varPhotobyte = varMemorystream.ToArray
-
-                '    Dim varImageparameter As New System.Data.SqlClient.SqlParameter("@FileContent", System.Data.SqlDbType.Image) With {
-                '    .Value = varPhotobyte
-                '    }
-                '    varCommand.Parameters.Add(varImageparameter)
-                '    varCommand.Parameters.AddWithValue("@DateNow", Now.Date)
-                'End If
-
-                'varCommand.CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' " &
-                '                                 "GOTO RETRY END END CATCH", varDatabaseRequestMssql2008(1).Query)
-
-                'varSuccess = varDatabaseEngineMssql2008.PushImage(varCommand)
-
             Catch ex As Exception
+                System.Windows.Forms.MessageBox.Show(ex.ToString)
                 varSuccess = False
             End Try
 

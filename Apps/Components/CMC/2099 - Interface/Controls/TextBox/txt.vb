@@ -618,7 +618,11 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Txt_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
             If Me.XOHighlightOnFocus AndAlso Not Me.Focused AndAlso Not (Me.ReadOnly) Then
-                MyBase.BackColor = Me.XOMandatoryBgColorDefault
+                If Me.XOIsMandatory AndAlso Me.XOSqlText.Trim = String.Empty Then
+                    MyBase.BackColor = Me.XOMandatoryBgColor
+                Else
+                    MyBase.BackColor = Me.XOMandatoryBgColorDefault
+                End If
             End If
         End Sub
 

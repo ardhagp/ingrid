@@ -1,29 +1,35 @@
 ﻿Namespace UI.Canvas
     Public Class FRMcdinEditor
 
-#Region "Declaration"
         Public Event EventRecordSaved()
 
         ' This Module Identifier
         Private varThisModuleId As Long = 0
         Private Const varThisModuleCode As String = "CDIN"
-#End Region
 
-#Region "Subs Collections"
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FillCompany(company As CMCv.UI.Control.Cbo)
             CMDcdin.Editor.FillCompany(varDataProperties, company)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub CheckAllInput()
-            CboCompany.Focus()
+        Private Function CheckInvalidInput() As Boolean
+            Dim varInvalidScore As Integer = 0
+
             TxtDeptCode.Focus()
+            If TxtDeptCode.XOSqlText = String.Empty Then
+                varInvalidScore += 1
+            End If
             TxtDeptName.Focus()
-            TxtDescription.Focus()
-            BtnSave.Focus()
-        End Sub
-#End Region
+            If TxtDeptName.XOSqlText = String.Empty Then
+                varInvalidScore += 1
+            End If
+            If varInvalidScore = 0 Then
+                Return False
+            Else
+                Return True
+            End If
+        End Function
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcdinEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -49,7 +55,10 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-            CheckAllInput()
+            If CheckInvalidInput() Then
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable to save your record." & Environment.NewLine & "Please verify that both the Department Code and Department Name fields have been entered correctly.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Return
+            End If
 
             With varDataProperties
                 SetValue(.AllParameters, tCompany.P_CompanyId, CLng(CboCompany.SelectedValue))

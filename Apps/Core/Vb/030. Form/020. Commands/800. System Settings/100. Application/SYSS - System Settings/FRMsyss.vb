@@ -1,5 +1,4 @@
-﻿Imports System.Runtime.Versioning
-Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
+﻿'Imports System.Runtime.Versioning
 
 Namespace UI.Canvas
     Public Class FRMsyss
@@ -8,7 +7,7 @@ Namespace UI.Canvas
         Const varUserOnly As String = "User Only"
         Const varAllUsers As String = "All Users"
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetData()
             CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.UserParameters, varDatasetIngrid)
 
@@ -66,10 +65,10 @@ Namespace UI.Canvas
                     CboWatermark.SelectedIndex = CInt(.Item(tSettings.C_SettingsShowWatermark))
                     TxtWatermark.Text = .Item(tSettings.C_SettingsTextMark).ToString
                     CboStorageProvider.Text = .Item(tSettings.C_SettingsStorageProvider).ToString
-                    TxtApiKey.Text = .Item(tSettings.C_SettingsApiKey).ToString
-                    TxtApiSecret.Text = CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiSecret).ToString)
-                    TxtApiBucketName.Text = .Item(tSettings.C_SettingsApiBucketName).ToString
-                    TxtApiServiceUrl.Text = .Item(tSettings.C_SettingsApiServiceUrl).ToString
+                    TxtApiKey.Text = If(.Item(tSettings.C_SettingsApiKey) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiKey).ToString))
+                    TxtApiSecret.Text = If(.Item(tSettings.C_SettingsApiSecret) Is Nothing, "", CMCv.Security.Decrypt.Aes(CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiSecret).ToString)))
+                    TxtApiBucketName.Text = If(.Item(tSettings.C_SettingsApiBucketName) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiBucketName).ToString))
+                    TxtApiServiceUrl.Text = If(.Item(tSettings.C_SettingsApiServiceUrl) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiServiceUrl).ToString))
                     TxtFileDb.Text = .Item(tSettings.C_SettingsStorageDb).ToString
                     nudMinPassword.Value = CInt(.Item(tSettings.C_SettingsMinPasswordLength))
                     TxtClientCode.Text = .Item(tClient.C_ClientCode).ToString
@@ -78,7 +77,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMsyss_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Call GetData()
             If CboStorageProvider.Text = "None" Then
@@ -86,7 +85,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CboWatermark_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboWatermark.SelectedIndexChanged
             If CboWatermark.SelectedIndex = 0 Then
                 TxtWatermark.Enabled = False
@@ -95,7 +94,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Try
                 With varDataProperties.UserParameters
@@ -155,12 +154,12 @@ Namespace UI.Canvas
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub OnCboProviderTextChanged()
             With CboStorageProvider
                 If .Text = "Disabled" Then
@@ -208,7 +207,7 @@ Namespace UI.Canvas
             End With
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CboStorageProvider_TextChanged(sender As Object, e As EventArgs) Handles CboStorageProvider.TextChanged
             Call OnCboProviderTextChanged()
         End Sub

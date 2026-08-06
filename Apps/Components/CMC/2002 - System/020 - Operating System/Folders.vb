@@ -12,6 +12,14 @@
             Dim varFileExists As New IO.DirectoryInfo(folderpath)
             Return varFileExists.Exists
         End Function
+
+        Public Shared Function GetPhotoFolder() As String
+            Dim baseFolder = IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ardhagp\Ingrid .NET")
+            Dim imageFolder = IO.Path.Combine(baseFolder, "Files.Image")
+            IO.Directory.Delete(imageFolder, True)
+            IO.Directory.CreateDirectory(imageFolder)
+            Return imageFolder
+        End Function
     End Class
 End Namespace
 

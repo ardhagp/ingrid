@@ -230,39 +230,39 @@
             ' 
             ' ULbl1
             ' 
-            ULbl1.BackColor = Color.Moccasin
+            ULbl1.BackColor = Color.MistyRose
             ULbl1.Location = New Point(20, 20)
             ULbl1.Margin = New Padding(7, 5, 7, 5)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(250, 39)
             ULbl1.TabIndex = 1004
-            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl1.XOText = "Company"
             ULbl1.XOTextAdjuster = False
             ULbl1.XOTextBorder = False
             ' 
             ' ULbl2
             ' 
-            ULbl2.BackColor = Color.Moccasin
+            ULbl2.BackColor = Color.MistyRose
             ULbl2.Location = New Point(20, 87)
             ULbl2.Margin = New Padding(7, 5, 7, 5)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(250, 39)
             ULbl2.TabIndex = 1005
-            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl2.XOText = "Dept. Code"
             ULbl2.XOTextAdjuster = False
             ULbl2.XOTextBorder = False
             ' 
             ' ULbl3
             ' 
-            ULbl3.BackColor = Color.Moccasin
+            ULbl3.BackColor = Color.MistyRose
             ULbl3.Location = New Point(20, 153)
             ULbl3.Margin = New Padding(7, 5, 7, 5)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 39)
             ULbl3.TabIndex = 1006
-            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl3.XOText = "Dept. Name"
             ULbl3.XOTextAdjuster = False
             ULbl3.XOTextBorder = False

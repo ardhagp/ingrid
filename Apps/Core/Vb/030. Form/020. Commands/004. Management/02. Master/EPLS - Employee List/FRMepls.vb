@@ -157,7 +157,7 @@
             DgnEPLS.XOGetNewColor()
             Call GetData()
             TxtFind.ClearSearch()
-            DatagridBehaviour.AdaptiveRowHeight(Me, DgnEPLS)
+            CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnEPLS)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>

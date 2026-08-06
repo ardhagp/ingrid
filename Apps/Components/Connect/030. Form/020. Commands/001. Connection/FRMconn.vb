@@ -103,7 +103,7 @@
             varDataProperties.ConnectionIsNew = True
             varDataProperties.ConnectionId = "-1"
             FRMconn_editor = New FRMconnEditor
-            Display(FRMconn_editor, UI.Resource.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName, "Add New Record", "Add new connection", True)
+            Display(FRMconn_editor, UI.Resource.ImageLibrary.EDIT_ICON, "INGRID - CONNECTION SETTINGS", "Add New Record", "Add new connection", True)
             SLFStatus.Text = String.Empty
         End Sub
 
@@ -119,7 +119,7 @@
                 Decision(My.Application.Info.AssemblyName, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 FRMconn_editor = New FRMconnEditor
-                Display(FRMconn_editor, UI.Resource.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName, "Update Record", "Update connection", True)
+                Display(FRMconn_editor, UI.Resource.ImageLibrary.EDIT_ICON, "INGRID - CONNECTION SETTINGS", "Update Record", "Update connection", True)
             End If
             SLFStatus.Text = String.Empty
         End Sub
@@ -150,7 +150,7 @@
 
                     varMessage.AppendLine(varLine)
 
-                    If Decision(My.Application.Info.AssemblyName, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+                    If Decision("INGRID - CONNECTION SETTINGS", Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                         If (CMDconn.View.DeleteData(Convert.ToString(varDataProperties.ConnectionId))) Then
                             Call GetData(True)
                             SLFStatus.Text = "Success"

@@ -285,7 +285,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(217), CByte(222), CByte(132))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(198), CByte(226), CByte(108))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnModulesRoles.BorderStyle = BorderStyle.None
@@ -516,21 +516,20 @@
             ' 
             ' BtnBrowseEmploymentType
             ' 
-            BtnBrowseEmploymentType.BackColor = Color.Gray
-            BtnBrowseEmploymentType.Enabled = False
-            BtnBrowseEmploymentType.FlatAppearance.BorderColor = Color.FromArgb(CByte(68), CByte(68), CByte(68))
+            BtnBrowseEmploymentType.BackColor = Color.RoyalBlue
+            BtnBrowseEmploymentType.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
             BtnBrowseEmploymentType.FlatAppearance.BorderSize = 2
-            BtnBrowseEmploymentType.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(148), CByte(148), CByte(148))
+            BtnBrowseEmploymentType.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnBrowseEmploymentType.FlatStyle = FlatStyle.Flat
             BtnBrowseEmploymentType.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
-            BtnBrowseEmploymentType.ForeColor = Color.DarkGray
+            BtnBrowseEmploymentType.ForeColor = Color.White
             BtnBrowseEmploymentType.Location = New Point(740, 217)
             BtnBrowseEmploymentType.Name = "BtnBrowseEmploymentType"
             BtnBrowseEmploymentType.Size = New Size(66, 39)
             BtnBrowseEmploymentType.TabIndex = 1062
             BtnBrowseEmploymentType.Text = "..."
             BtnBrowseEmploymentType.UseVisualStyleBackColor = False
-            BtnBrowseEmploymentType.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
+            BtnBrowseEmploymentType.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
             BtnBrowseEmploymentType.XOShowBorderOnFocus = False
             BtnBrowseEmploymentType.XOValidateAllInput = False
             BtnBrowseEmploymentType.XOValidateAllInputTag = Nothing
@@ -563,13 +562,13 @@
             ' 
             ' ULbl11
             ' 
-            ULbl11.BackColor = Color.WhiteSmoke
+            ULbl11.BackColor = Color.MistyRose
             ULbl11.Location = New Point(14, 217)
             ULbl11.Margin = New Padding(12, 17, 12, 17)
             ULbl11.Name = "ULbl11"
             ULbl11.Size = New Size(250, 39)
             ULbl11.TabIndex = 1058
-            ULbl11.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Grey
+            ULbl11.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl11.XOText = "Emp. Type"
             ULbl11.XOTextAdjuster = True
             ULbl11.XOTextBorder = False
@@ -589,26 +588,26 @@
             ' 
             ' ULbl9
             ' 
-            ULbl9.BackColor = Color.Moccasin
+            ULbl9.BackColor = Color.MistyRose
             ULbl9.Location = New Point(14, 83)
             ULbl9.Margin = New Padding(12, 17, 12, 17)
             ULbl9.Name = "ULbl9"
             ULbl9.Size = New Size(250, 39)
             ULbl9.TabIndex = 1056
-            ULbl9.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl9.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl9.XOText = "Department"
             ULbl9.XOTextAdjuster = True
             ULbl9.XOTextBorder = False
             ' 
             ' ULbl6
             ' 
-            ULbl6.BackColor = Color.Moccasin
+            ULbl6.BackColor = Color.MistyRose
             ULbl6.Location = New Point(14, 15)
             ULbl6.Margin = New Padding(12, 17, 12, 17)
             ULbl6.Name = "ULbl6"
             ULbl6.Size = New Size(250, 39)
             ULbl6.TabIndex = 1055
-            ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl6.XOText = "Company"
             ULbl6.XOTextAdjuster = True
             ULbl6.XOTextBorder = False
@@ -685,7 +684,7 @@
             TxtEmployeeNumber.XOPasswordStrengthScore = 0
             TxtEmployeeNumber.XOPasswordStrengthText = Nothing
             TxtEmployeeNumber.XOPlaceholderText = "Type then press Enter"
-            TxtEmployeeNumber.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.OnlyNumber
+            TxtEmployeeNumber.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberSymbolNoSpace
             TxtEmployeeNumber.XOSelectOnFocus = False
             TxtEmployeeNumber.XOSqlText = ""
             ' 
@@ -871,7 +870,7 @@
             ULbl1.Size = New Size(250, 39)
             ULbl1.TabIndex = 1056
             ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
-            ULbl1.XOText = "Personal ID"
+            ULbl1.XOText = "National ID Card"
             ULbl1.XOTextAdjuster = True
             ULbl1.XOTextBorder = False
             ' 
@@ -890,39 +889,39 @@
             ' 
             ' ULbl4
             ' 
-            ULbl4.BackColor = Color.Moccasin
+            ULbl4.BackColor = Color.MistyRose
             ULbl4.Location = New Point(14, 285)
             ULbl4.Margin = New Padding(9, 13, 9, 13)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 39)
             ULbl4.TabIndex = 1054
-            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl4.XOText = "Gender"
             ULbl4.XOTextAdjuster = True
             ULbl4.XOTextBorder = False
             ' 
             ' ULbl3
             ' 
-            ULbl3.BackColor = Color.Moccasin
+            ULbl3.BackColor = Color.MistyRose
             ULbl3.Location = New Point(14, 217)
             ULbl3.Margin = New Padding(9, 13, 9, 13)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 39)
             ULbl3.TabIndex = 1053
-            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl3.XOText = "Birth Place"
             ULbl3.XOTextAdjuster = True
             ULbl3.XOTextBorder = False
             ' 
             ' ULbl16
             ' 
-            ULbl16.BackColor = Color.Moccasin
+            ULbl16.BackColor = Color.MistyRose
             ULbl16.Location = New Point(14, 150)
             ULbl16.Margin = New Padding(9, 13, 9, 13)
             ULbl16.Name = "ULbl16"
             ULbl16.Size = New Size(250, 39)
             ULbl16.TabIndex = 1052
-            ULbl16.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl16.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl16.XOText = "Date of Birth"
             ULbl16.XOTextAdjuster = True
             ULbl16.XOTextBorder = False
@@ -986,9 +985,9 @@
             TxtBirthPlace.Tag = "txt"
             TxtBirthPlace.XOAutoTrim = True
             TxtBirthPlace.XOHighlightColor = Color.LightYellow
-            TxtBirthPlace.XOHighlightOnFocus = False
+            TxtBirthPlace.XOHighlightOnFocus = True
             TxtBirthPlace.XOIsBlank = False
-            TxtBirthPlace.XOIsMandatory = False
+            TxtBirthPlace.XOIsMandatory = True
             TxtBirthPlace.XOIsPlaceholder = False
             TxtBirthPlace.XOIsReplaceEmptyString = False
             TxtBirthPlace.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE

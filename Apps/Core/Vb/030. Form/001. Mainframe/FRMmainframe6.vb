@@ -1,4 +1,6 @@
 ﻿'For clickonce .net 6 prequisites please paste here : C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VisualStudio\BootstrapperPackages
+Imports Ingrid.My.Resources
+
 Namespace UI.Canvas
     Public Class FRMmainframe6
 
@@ -212,7 +214,7 @@ Namespace UI.Canvas
         Private Function LoginClicked() As Boolean
             If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
                 Frm_login = New UI.Canvas.FRMlogin
-                Display(Frm_login, IMAGEDB.Main.ImageLibrary.LOGIN_ICON, My.Application.Info.AssemblyName.ToUpper, "Sign In", "Please enter your credentials to continue", True)
+                Display(Frm_login, ImageDb.Main.ImageLibrary.LOGIN_ICON, My.Application.Info.AssemblyName.ToUpper, "Sign In", "Please enter your credentials to continue", True)
             End If
             If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
                 varSession = False
@@ -279,7 +281,7 @@ Namespace UI.Canvas
                     .UserAccessIsChangePasswordForm = True
                 End With
                 Frm_uac_Editor = New FRMuacEditor
-                Display(Frm_uac_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Change My Account", "Update your account username or password", True)
+                Display(Frm_uac_Editor, ImageDb.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Change My Account", "Update your account username or password", True)
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
@@ -305,6 +307,13 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Try
+                ' Set MDI Client Background Color
+                For Each ctrl As Control In Me.Controls
+                    If TypeOf ctrl Is MdiClient Then
+                        ctrl.BackColor = Color.FromArgb(0, 0, 0)
+                    End If
+                Next
+
                 Call ActivateLicenses()
                 RaiseEvent EventMainframeOpen()
 
@@ -350,7 +359,7 @@ Namespace UI.Canvas
                         SetValue(varDataProperties.UserParameters, tClient.P_ClientCode, .Item("CLIENT").ToString)
                     End With
                 Else
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties could not be found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties not found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                     Return
                 End If
 
@@ -362,6 +371,7 @@ Namespace UI.Canvas
                     If varRecords = 0 Then
                         Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "Initial setup and essential information", True, Me)
                     End If
+                    CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.UserParameters, varDatasetIngrid)
                 Else
                     Ts_connection.Text = "Disconnected"
                     Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)

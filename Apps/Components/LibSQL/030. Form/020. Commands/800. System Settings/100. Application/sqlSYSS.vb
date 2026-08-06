@@ -1,4 +1,6 @@
-﻿Namespace CMDsyss
+﻿Imports System.Data
+
+Namespace CMDsyss
     Public Class View
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Sub GetSettingsProperties(dataproperties As LibApp.Ingrid.Global.Properties, parametername As Dictionary(Of String, Object), datasetname As System.Data.DataSet)
@@ -33,6 +35,15 @@
                                                        $"on {tClient.S}.{tClient.C_ClientId} = {tSettings.S}.{tSettings.C_SettingsClient} " &
                                                        $"where {tClient.S}.{tClient.C_ClientCode} = {tClient.P_ClientCode}"
                     datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "SYSS_Editor", parametername)
+                    Dim varColumnstoEncrypt As String() = {"settings_apikey", "settings_apisecret", "settings_apibucketname", "settings_apiserviceurl"}
+                    For Each row As DataRow In datasetname.Tables("SYSS_Editor").Rows
+                        For Each col In varColumnstoEncrypt
+                            If row(col) IsNot DBNull.Value OrElse String.IsNullOrEmpty(CStr(row(col))) Then
+                                row(col) = CMCv.Security.Encryption.Aes(CStr(row(col)))
+                            End If
+                        Next
+                    Next
+                    dataproperties.DatasetCopy = datasetname.Copy
                 End If
             Catch ex As Exception
                 With proLog
