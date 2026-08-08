@@ -1,6 +1,4 @@
-﻿Imports System.Windows.Forms
-
-Namespace ImageEditor.File
+﻿Namespace ImageEditor.File
     Public Class GetImage
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetImageExtensionFromFile(filePath As String) As String
@@ -40,7 +38,7 @@ Namespace ImageEditor.File
         End Function
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Async Sub GetImageFromUrl(url As String, picturebox As System.Windows.Forms.PictureBox)
+        Public Shared Async Function GetImageFromUrlAsync(url As String, picturebox As System.Windows.Forms.PictureBox, Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing) As Task(Of Boolean)
             Try
                 Dim client As New Net.Http.HttpClient()
 
@@ -49,9 +47,17 @@ Namespace ImageEditor.File
                 Using ms As New IO.MemoryStream(data)
                     picturebox.Image = System.Drawing.Image.FromStream(ms)
                 End Using
+                If dataproperties IsNot Nothing Then
+                    dataproperties.EmployeeIsForceChangePhoto = False
+                End If
+                Return True
             Catch ex As Exception
-                System.Windows.Forms.MessageBox.Show($"Unable to load image with this error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                If dataproperties IsNot Nothing Then
+                    dataproperties.EmployeeIsForceChangePhoto = True
+                End If
+                System.Windows.Forms.MessageBox.Show($"Unable to load image with this error: {ex.Message}", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
+                Return False
             End Try
-        End Sub
+        End Function
     End Class
 End Namespace

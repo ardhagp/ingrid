@@ -74,7 +74,7 @@ Namespace UI.Canvas
                     varDataProperties.EmployeeIsHavePhoto = CBool(.Item("ishavephoto"))
                     If varDataProperties.EmployeeIsHavePhoto Then
                         SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentId, CLng(.Item(tAttachment.C_AttachmentId)))
-                        CMCv.ImageEditor.File.GetImage.GetImageFromUrl(.Item(tAttachment.C_AttachmentUrl).ToString, pctbxPhoto)
+                        CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(.Item(tAttachment.C_AttachmentUrl).ToString, pctbxPhoto)
                         BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
                         BtnRemovePhoto.Enabled = True
                     Else

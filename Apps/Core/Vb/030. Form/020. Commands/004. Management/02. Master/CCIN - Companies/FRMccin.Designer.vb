@@ -60,9 +60,9 @@
             ' 
             DgnCCIN.AllowUserToAddRows = False
             DgnCCIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(190), CByte(196), CByte(96))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(245), CByte(210), CByte(127))
             DgnCCIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-            DgnCCIN.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+            DgnCCIN.BackgroundColor = Color.Black
             DgnCCIN.BorderStyle = BorderStyle.None
             DgnCCIN.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnCCIN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None

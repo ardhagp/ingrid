@@ -436,9 +436,11 @@
             ' 
             ' Tv_mainframe
             ' 
-            Tv_mainframe.BackColor = Color.LightYellow
+            Tv_mainframe.BackColor = Color.Black
+            Tv_mainframe.BorderStyle = BorderStyle.None
             Tv_mainframe.Dock = DockStyle.Fill
             Tv_mainframe.Font = New Font("Segoe UI", 11.25F)
+            Tv_mainframe.ForeColor = Color.White
             Tv_mainframe.HideSelection = False
             Tv_mainframe.ImageIndex = 0
             Tv_mainframe.ImageList = Imglst_mainframe
@@ -760,7 +762,7 @@
             ' 
             ' PnlStorage
             ' 
-            PnlStorage.BackColor = Color.OrangeRed
+            PnlStorage.BackColor = Color.Black
             PnlStorage.Controls.Add(pgFileStorage)
             PnlStorage.Controls.Add(pgDataStorage)
             PnlStorage.Controls.Add(lblFile)
@@ -884,7 +886,7 @@
             ' 
             ' lblStorage
             ' 
-            lblStorage.BackColor = Color.GreenYellow
+            lblStorage.BackColor = Color.OrangeRed
             lblStorage.Dock = DockStyle.Top
             lblStorage.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold)
             lblStorage.Location = New Point(0, 0)
@@ -898,7 +900,7 @@
             ' 
             ' Pnl_command_top
             ' 
-            Pnl_command_top.BackColor = Color.White
+            Pnl_command_top.BackColor = Color.Black
             Pnl_command_top.Controls.Add(BtnExecute)
             Pnl_command_top.Controls.Add(Txt_shortcut)
             Pnl_command_top.Dock = DockStyle.Top
@@ -911,18 +913,18 @@
             ' BtnExecute
             ' 
             BtnExecute.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            BtnExecute.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Office2016Colorful
+            BtnExecute.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Office2016Black
             BtnExecute.BackColor = SystemColors.Control
             BtnExecute.BackgroundImage = My.Resources.Resources.for_treeview_playbutton_512
             BtnExecute.BackgroundImageLayout = ImageLayout.Stretch
-            BtnExecute.BeforeTouchSize = New Size(54, 63)
+            BtnExecute.BeforeTouchSize = New Size(63, 63)
             BtnExecute.KeepFocusRectangle = False
-            BtnExecute.Location = New Point(360, 8)
+            BtnExecute.Location = New Point(351, 8)
             BtnExecute.Margin = New Padding(4, 5, 4, 5)
             BtnExecute.Name = "BtnExecute"
-            BtnExecute.Size = New Size(54, 63)
+            BtnExecute.Size = New Size(63, 63)
             BtnExecute.TabIndex = 2
-            BtnExecute.ThemeName = "Office2016Colorful"
+            BtnExecute.ThemeName = "Office2016Black"
             BtnExecute.UseVisualStyle = True
             ' 
             ' Txt_shortcut
@@ -931,12 +933,12 @@
             Txt_shortcut.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
             Txt_shortcut.AutoCompleteMode = AutoCompleteMode.Suggest
             Txt_shortcut.AutoCompleteSource = AutoCompleteSource.CustomSource
-            Txt_shortcut.Font = New Font("Segoe UI", 12.0F)
+            Txt_shortcut.Font = New Font("Segoe UI", 12F)
             Txt_shortcut.Location = New Point(4, 17)
             Txt_shortcut.Margin = New Padding(4, 5, 4, 5)
             Txt_shortcut.MaxLength = 255
             Txt_shortcut.Name = "Txt_shortcut"
-            Txt_shortcut.Size = New Size(345, 39)
+            Txt_shortcut.Size = New Size(339, 39)
             Txt_shortcut.TabIndex = 0
             Txt_shortcut.Tag = "txt"
             Txt_shortcut.XOAutoTrim = False
@@ -961,7 +963,7 @@
             ' 
             ' PnlProfile
             ' 
-            PnlProfile.BackColor = Color.SteelBlue
+            PnlProfile.BackColor = Color.Black
             PnlProfile.Controls.Add(PctProfile)
             PnlProfile.Controls.Add(PctbxFrame)
             PnlProfile.Controls.Add(LblPosition)
@@ -1012,7 +1014,7 @@
             ' LblPosition
             ' 
             LblPosition.AutoSize = True
-            LblPosition.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            LblPosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             LblPosition.ForeColor = Color.Yellow
             LblPosition.Location = New Point(187, 157)
             LblPosition.Margin = New Padding(4, 0, 4, 0)
@@ -1118,7 +1120,7 @@
             TxtRunning.BackColor = Color.White
             TxtRunning.BorderStyle = BorderStyle.FixedSingle
             TxtRunning.Dock = DockStyle.Top
-            TxtRunning.Font = New Font("Segoe UI", 12.0F)
+            TxtRunning.Font = New Font("Segoe UI", 12F)
             TxtRunning.Location = New Point(0, 42)
             TxtRunning.Margin = New Padding(4, 5, 4, 5)
             TxtRunning.MaxLength = 255
@@ -1162,8 +1164,9 @@
             ' 
             ' FRMmainframe6
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             AutoScaleMode = AutoScaleMode.Font
+            BackColor = Color.Black
             BackgroundImage = My.Resources.Resources.MDI_Background_03
             BackgroundImageLayout = ImageLayout.None
             ClientSize = New Size(1120, 935)
