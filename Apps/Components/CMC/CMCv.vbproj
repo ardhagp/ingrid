@@ -523,6 +523,7 @@
     <PackageReference Include="MySql.Data" Version="9.7.0" />
     <PackageReference Include="NETCore.Encrypt" Version="2.1.1" />
     <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.33" />
+    <PackageReference Include="Svg" Version="3.4.8" />
     <PackageReference Include="Syncfusion.Grid.Windows" Version="33.2.15" />
     <PackageReference Include="Syncfusion.Licensing" Version="33.2.15" />
     <PackageReference Include="Syncfusion.PdfViewer.Windows" Version="33.2.15" />

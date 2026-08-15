@@ -170,8 +170,8 @@
             ' 
             ' Ms_mainframe
             ' 
-            Ms_mainframe.BackColor = Color.White
-            Ms_mainframe.Font = New Font("Segoe UI", 12F)
+            Ms_mainframe.BackColor = Color.FromArgb(CByte(0), CByte(51), CByte(102))
+            Ms_mainframe.Font = New Font("Segoe UI", 12.0F)
             Ms_mainframe.ImageScalingSize = New Size(24, 24)
             Ms_mainframe.Items.AddRange(New ToolStripItem() {APPSYSTEM, WORKSPACE, HELP, USERMENU, SUPPORT})
             Ms_mainframe.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow
@@ -179,13 +179,16 @@
             Ms_mainframe.MdiWindowListItem = WORKSPACE
             Ms_mainframe.Name = "Ms_mainframe"
             Ms_mainframe.Padding = New Padding(9, 3, 0, 3)
+            Ms_mainframe.RenderMode = ToolStripRenderMode.Professional
             Ms_mainframe.Size = New Size(1120, 42)
             Ms_mainframe.TabIndex = 5
             Ms_mainframe.Text = "MenuStrip"
             ' 
             ' APPSYSTEM
             ' 
+            APPSYSTEM.BackColor = SystemColors.Control
             APPSYSTEM.DropDownItems.AddRange(New ToolStripItem() {Ms_start_Login, Ms_start_Logout, Ms_g_line1, Ms_start_Connection, Ms_start_Settings, Ms_g_line2, Ms_start_Exit})
+            APPSYSTEM.ForeColor = SystemColors.ControlText
             APPSYSTEM.ImageTransparentColor = SystemColors.ActiveBorder
             APPSYSTEM.MergeIndex = 0
             APPSYSTEM.Name = "APPSYSTEM"
@@ -249,6 +252,7 @@
             ' 
             ' WORKSPACE
             ' 
+            WORKSPACE.BackColor = SystemColors.Control
             WORKSPACE.DropDownItems.AddRange(New ToolStripItem() {Ms_workspace_Cascade, Ms_workspace_TileVertical, Ms_workspace_TileHorizontal, ToolStripSeparator1, Ms_workspace_InputCommand, Ms_workspace_Maximize, ToolStripMenuItem1, Ms_workspace_CloseAll})
             WORKSPACE.MergeIndex = 800
             WORKSPACE.Name = "WORKSPACE"
@@ -306,6 +310,7 @@
             ' 
             ' HELP
             ' 
+            HELP.BackColor = SystemColors.Control
             HELP.DropDownItems.AddRange(New ToolStripItem() {ContentsToolStripMenuItem, AppsCollectionToolStripMenuItem, ToolStripSeparator8, BuymeacoffeToolStripMenuItem, AboutToolStripMenuItem})
             HELP.MergeIndex = 801
             HELP.Name = "HELP"
@@ -348,7 +353,7 @@
             ' 
             ' BuymeacoffeToolStripMenuItem
             ' 
-            BuymeacoffeToolStripMenuItem.Font = New Font("Segoe UI", 12F, FontStyle.Underline)
+            BuymeacoffeToolStripMenuItem.Font = New Font("Segoe UI", 12.0F, FontStyle.Underline)
             BuymeacoffeToolStripMenuItem.ForeColor = Color.Blue
             BuymeacoffeToolStripMenuItem.Name = "BuymeacoffeToolStripMenuItem"
             BuymeacoffeToolStripMenuItem.Size = New Size(306, 40)
@@ -412,13 +417,14 @@
             ' SUPPORT
             ' 
             SUPPORT.Alignment = ToolStripItemAlignment.Right
+            SUPPORT.BackColor = Color.FromArgb(CByte(179), CByte(215), CByte(242))
             SUPPORT.DisplayStyle = ToolStripItemDisplayStyle.Text
-            SUPPORT.Font = New Font("Segoe UI", 9.75F, FontStyle.Underline)
-            SUPPORT.ForeColor = Color.Blue
+            SUPPORT.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold Or FontStyle.Italic Or FontStyle.Underline)
+            SUPPORT.ForeColor = Color.Red
             SUPPORT.Name = "SUPPORT"
             SUPPORT.Overflow = ToolStripItemOverflow.AsNeeded
-            SUPPORT.Size = New Size(161, 36)
-            SUPPORT.Text = "UPDATE / HELP"
+            SUPPORT.Size = New Size(178, 36)
+            SUPPORT.Text = "CHECK UPDATE"
             ' 
             ' pnl_mainframe_left
             ' 
@@ -436,7 +442,7 @@
             ' 
             ' Tv_mainframe
             ' 
-            Tv_mainframe.BackColor = Color.Black
+            Tv_mainframe.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             Tv_mainframe.BorderStyle = BorderStyle.None
             Tv_mainframe.Dock = DockStyle.Fill
             Tv_mainframe.Font = New Font("Segoe UI", 11.25F)
@@ -762,7 +768,7 @@
             ' 
             ' PnlStorage
             ' 
-            PnlStorage.BackColor = Color.Black
+            PnlStorage.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             PnlStorage.Controls.Add(pgFileStorage)
             PnlStorage.Controls.Add(pgDataStorage)
             PnlStorage.Controls.Add(lblFile)
@@ -836,7 +842,7 @@
             ' 
             ' lblFile
             ' 
-            lblFile.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
+            lblFile.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold)
             lblFile.ForeColor = Color.White
             lblFile.Location = New Point(4, 163)
             lblFile.Margin = New Padding(4, 0, 4, 0)
@@ -848,7 +854,7 @@
             ' 
             ' lblData
             ' 
-            lblData.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
+            lblData.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold)
             lblData.ForeColor = Color.White
             lblData.Location = New Point(4, 70)
             lblData.Margin = New Padding(4, 0, 4, 0)
@@ -861,7 +867,7 @@
             ' lblFileStorage
             ' 
             lblFileStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            lblFileStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
+            lblFileStorage.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold)
             lblFileStorage.ForeColor = Color.White
             lblFileStorage.Location = New Point(99, 163)
             lblFileStorage.Margin = New Padding(4, 0, 4, 0)
@@ -874,7 +880,7 @@
             ' lblDataStorage
             ' 
             lblDataStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            lblDataStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
+            lblDataStorage.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold)
             lblDataStorage.ForeColor = Color.White
             lblDataStorage.Location = New Point(101, 70)
             lblDataStorage.Margin = New Padding(4, 0, 4, 0)
@@ -889,10 +895,11 @@
             lblStorage.BackColor = Color.OrangeRed
             lblStorage.Dock = DockStyle.Top
             lblStorage.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold)
+            lblStorage.ForeColor = Color.White
             lblStorage.Location = New Point(0, 0)
             lblStorage.Margin = New Padding(4, 0, 4, 0)
             lblStorage.Name = "lblStorage"
-            lblStorage.Size = New Size(421, 53)
+            lblStorage.Size = New Size(421, 45)
             lblStorage.TabIndex = 0
             lblStorage.Text = "Storage"
             lblStorage.TextAlign = ContentAlignment.MiddleCenter
@@ -900,7 +907,7 @@
             ' 
             ' Pnl_command_top
             ' 
-            Pnl_command_top.BackColor = Color.Black
+            Pnl_command_top.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             Pnl_command_top.Controls.Add(BtnExecute)
             Pnl_command_top.Controls.Add(Txt_shortcut)
             Pnl_command_top.Dock = DockStyle.Top
@@ -914,8 +921,7 @@
             ' 
             BtnExecute.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             BtnExecute.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Office2016Black
-            BtnExecute.BackColor = SystemColors.Control
-            BtnExecute.BackgroundImage = My.Resources.Resources.for_treeview_playbutton_512
+            BtnExecute.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             BtnExecute.BackgroundImageLayout = ImageLayout.Stretch
             BtnExecute.BeforeTouchSize = New Size(63, 63)
             BtnExecute.KeepFocusRectangle = False
@@ -933,7 +939,7 @@
             Txt_shortcut.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
             Txt_shortcut.AutoCompleteMode = AutoCompleteMode.Suggest
             Txt_shortcut.AutoCompleteSource = AutoCompleteSource.CustomSource
-            Txt_shortcut.Font = New Font("Segoe UI", 12F)
+            Txt_shortcut.Font = New Font("Segoe UI", 12.0F)
             Txt_shortcut.Location = New Point(4, 17)
             Txt_shortcut.Margin = New Padding(4, 5, 4, 5)
             Txt_shortcut.MaxLength = 255
@@ -963,7 +969,7 @@
             ' 
             ' PnlProfile
             ' 
-            PnlProfile.BackColor = Color.Black
+            PnlProfile.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             PnlProfile.Controls.Add(PctProfile)
             PnlProfile.Controls.Add(PctbxFrame)
             PnlProfile.Controls.Add(LblPosition)
@@ -980,16 +986,15 @@
             ' 
             ' PctProfile
             ' 
-            PctProfile.BackColor = Color.White
-            PctProfile.BackgroundImage = My.Resources.Resources.PCTPRV_001_512_icon
+            PctProfile.BackColor = Color.Gainsboro
             PctProfile.BackgroundImageLayout = ImageLayout.Zoom
             PctProfile.ErrorImage = Nothing
             PctProfile.InitialImage = Nothing
-            PctProfile.Location = New Point(14, 82)
+            PctProfile.Location = New Point(14, 81)
             PctProfile.Margin = New Padding(4, 5, 4, 5)
             PctProfile.Name = "PctProfile"
-            PctProfile.Size = New Size(153, 210)
-            PctProfile.SizeMode = PictureBoxSizeMode.StretchImage
+            PctProfile.Size = New Size(152, 210)
+            PctProfile.SizeMode = PictureBoxSizeMode.Zoom
             PctProfile.TabIndex = 0
             PctProfile.TabStop = False
             PctProfile.XOBorderColor = Color.DodgerBlue
@@ -1014,7 +1019,7 @@
             ' LblPosition
             ' 
             LblPosition.AutoSize = True
-            LblPosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            LblPosition.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             LblPosition.ForeColor = Color.Yellow
             LblPosition.Location = New Point(187, 157)
             LblPosition.Margin = New Padding(4, 0, 4, 0)
@@ -1120,7 +1125,7 @@
             TxtRunning.BackColor = Color.White
             TxtRunning.BorderStyle = BorderStyle.FixedSingle
             TxtRunning.Dock = DockStyle.Top
-            TxtRunning.Font = New Font("Segoe UI", 12F)
+            TxtRunning.Font = New Font("Segoe UI", 12.0F)
             TxtRunning.Location = New Point(0, 42)
             TxtRunning.Margin = New Padding(4, 5, 4, 5)
             TxtRunning.MaxLength = 255
@@ -1164,10 +1169,9 @@
             ' 
             ' FRMmainframe6
             ' 
-            AutoScaleDimensions = New SizeF(10F, 25F)
+            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
             AutoScaleMode = AutoScaleMode.Font
-            BackColor = Color.Black
-            BackgroundImage = My.Resources.Resources.MDI_Background_03
+            BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             BackgroundImageLayout = ImageLayout.None
             ClientSize = New Size(1120, 935)
             Controls.Add(spl_)
@@ -1176,6 +1180,7 @@
             Controls.Add(TxtRunning)
             Controls.Add(Ms_mainframe)
             DoubleBuffered = True
+            Font = New Font("Segoe UI", 9.0F)
             Icon = CType(resources.GetObject("$this.Icon"), Icon)
             IsMdiContainer = True
             MainMenuStrip = Ms_mainframe

@@ -58,6 +58,15 @@
           }
         }
       },
+      "ExCSS/4.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/ExCSS.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/ExCSS.dll": {}
+        }
+      },
       "Google.Protobuf/3.32.0": {
         "type": "package",
         "compile": {
@@ -1132,6 +1141,23 @@
           }
         }
       },
+      "Svg/3.4.8": {
+        "type": "package",
+        "dependencies": {
+          "ExCSS": "4.2.3",
+          "System.Drawing.Common": "5.0.3"
+        },
+        "compile": {
+          "lib/net8.0/Svg.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Svg.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Syncfusion.Compression.Base/33.2.15": {
         "type": "package",
         "compile": {
@@ -2006,6 +2032,7 @@
           "MySql.Data": "9.7.0",
           "NETCore.Encrypt": "2.1.1",
           "ReportViewerCore.WinForms": "15.1.33",
+          "Svg": "3.4.8",
           "Syncfusion.Grid.Windows": "33.2.15",
           "Syncfusion.Licensing": "33.2.15",
           "Syncfusion.PdfViewer.Windows": "33.2.15",
@@ -2138,6 +2165,24 @@
         "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
         "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
         "packageIcon.png"
+      ]
+    },
+    "ExCSS/4.2.3": {
+      "sha512": "SyeAfu2wL5247sipJoPUzQfjiwQtfSd8hN4IbgoyVcDx4PP6Dud4znwPRibWQzLtTlUxYYcbf5f4p+EfFC7KtQ==",
+      "type": "package",
+      "path": "excss/4.2.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "excss.4.2.3.nupkg.sha512",
+        "excss.nuspec",
+        "lib/net48/ExCSS.dll",
+        "lib/net6.0/ExCSS.dll",
+        "lib/net7.0/ExCSS.dll",
+        "lib/netcoreapp3.1/ExCSS.dll",
+        "lib/netstandard2.0/ExCSS.dll",
+        "lib/netstandard2.1/ExCSS.dll",
+        "readme.md"
       ]
     },
     "Google.Protobuf/3.32.0": {
@@ -4245,6 +4290,34 @@
         "stub.system.data.sqlite.core.netstandard.nuspec"
       ]
     },
+    "Svg/3.4.8": {
+      "sha512": "KBI/SYpZ0d7YHCoMsviqirp/F9GAWj6VL8gqHwkp9d8TlPECoT9uqvAWP6Dh7V0IGdegfvHPXhZQKNkGpMxhXg==",
+      "type": "package",
+      "path": "svg/3.4.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/Svg.dll",
+        "lib/net462/Svg.xml",
+        "lib/net472/Svg.dll",
+        "lib/net472/Svg.xml",
+        "lib/net481/Svg.dll",
+        "lib/net481/Svg.xml",
+        "lib/net8.0/Svg.dll",
+        "lib/net8.0/Svg.xml",
+        "lib/net9.0/Svg.dll",
+        "lib/net9.0/Svg.xml",
+        "lib/netcoreapp3.1/Svg.dll",
+        "lib/netcoreapp3.1/Svg.xml",
+        "lib/netstandard2.0/Svg.dll",
+        "lib/netstandard2.0/Svg.xml",
+        "lib/netstandard2.1/Svg.dll",
+        "lib/netstandard2.1/Svg.xml",
+        "svg-logo-v.png",
+        "svg.3.4.8.nupkg.sha512",
+        "svg.nuspec"
+      ]
+    },
     "Syncfusion.Compression.Base/33.2.15": {
       "sha512": "CSoyC91mFrfdgxZQ4y485owB1dToPX26QwYmUbdUixxP9aHKQvwEfhIet1dbuN1+dhX+Ug+kc32n9cqOxEgj4w==",
       "type": "package",
@@ -5635,7 +5708,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.316/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.317/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

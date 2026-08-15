@@ -1,5 +1,6 @@
 ﻿'For clickonce .net 6 prequisites please paste here : C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VisualStudio\BootstrapperPackages
-Imports Ingrid.My.Resources
+'Imports Ingrid.My.Resources
+Imports Svg
 
 Namespace UI.Canvas
     Public Class FRMmainframe6
@@ -307,10 +308,24 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Try
+                Dim path As String
+                Dim svgImage As SvgDocument
+                Dim bmp As Bitmap
+
+                path = Environment.CurrentDirectory & "\Resources\svg-play-fill.svg"
+                svgImage = SvgDocument.Open(path)
+                bmp = svgImage.Draw(48, 48)
+                BtnExecute.Image = bmp
+
+                'path = Environment.CurrentDirectory & "\Resources\svg-images.svg"
+                'svgImage = SvgDocument.Open(path)
+                bmp = svgImage.Draw(72, 72)
+                PctProfile.Image = bmp
+
                 ' Set MDI Client Background Color
                 For Each ctrl As Control In Me.Controls
                     If TypeOf ctrl Is MdiClient Then
-                        ctrl.BackColor = Color.FromArgb(0, 0, 0)
+                        ctrl.BackColor = Color.FromArgb(11, 28, 45)
                     End If
                 Next
 
@@ -651,7 +666,7 @@ Namespace UI.Canvas
         Private Sub Support_Click(sender As Object, e As EventArgs) Handles SUPPORT.Click
             Try
                 ' Open Wiki URL in default browser
-                Process.Start(New ProcessStartInfo(My.Settings.URL_Wiki) With {.UseShellExecute = True})
+                Process.Start(New ProcessStartInfo(My.Settings.URL_Home) With {.UseShellExecute = True})
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
             End Try

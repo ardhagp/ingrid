@@ -543,6 +543,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ingrid_icon_2.ico" />
+    <Content Include="Resources\svg-images.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-play-fill.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Resources\COMPRESS_001_512_icon_.png" />
     <EmbeddedResource Include="Resources\Connected.ico" />
     <EmbeddedResource Include="Resources\CONN_.png" />
@@ -596,6 +602,7 @@
   <ItemGroup>
     <PackageReference Include="AWSSDK.S3" Version="4.0.100.2" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Svg" Version="3.4.8" />
     <PackageReference Include="Syncfusion.Grid.Windows" Version="33.2.15" />
     <PackageReference Include="Syncfusion.Shared.Base" Version="33.2.15" />
     <PackageReference Include="Syncfusion.Tools.Windows" Version="33.2.15" />
@@ -644,6 +651,7 @@
     <None Remove="Resources\app_settings.db" />
     <None Remove="Resources\catalog.db" />
     <None Remove="Resources\CATALOG.mdb" />
+    <None Remove="Resources\svg-images.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="My Project\Resources.resx">
