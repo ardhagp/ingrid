@@ -549,6 +549,9 @@
     <Content Include="Resources\svg-play-fill.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\svg-x-circle-fill.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Resources\COMPRESS_001_512_icon_.png" />
     <EmbeddedResource Include="Resources\Connected.ico" />
     <EmbeddedResource Include="Resources\CONN_.png" />
@@ -652,6 +655,7 @@
     <None Remove="Resources\catalog.db" />
     <None Remove="Resources\CATALOG.mdb" />
     <None Remove="Resources\svg-images.svg" />
+    <None Remove="Resources\svg-x-circle-fill.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="My Project\Resources.resx">

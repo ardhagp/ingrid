@@ -308,19 +308,7 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Try
-                Dim path As String
-                Dim svgImage As SvgDocument
-                Dim bmp As Bitmap
-
-                path = Environment.CurrentDirectory & "\Resources\svg-play-fill.svg"
-                svgImage = SvgDocument.Open(path)
-                bmp = svgImage.Draw(48, 48)
-                BtnExecute.Image = bmp
-
-                'path = Environment.CurrentDirectory & "\Resources\svg-images.svg"
-                'svgImage = SvgDocument.Open(path)
-                bmp = svgImage.Draw(72, 72)
-                PctProfile.Image = bmp
+                BtnExecute.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-play-fill.svg", True, 48, 48)
 
                 ' Set MDI Client Background Color
                 For Each ctrl As Control In Me.Controls
@@ -399,6 +387,9 @@ Namespace UI.Canvas
                 If Not (LibSQL.CMDdbic.Applications.IsCompanyExist(varDataProperties) OrElse Not LibSQL.CMDdbic.Applications.IsDepartmentExist(varDataProperties)) Then
                     Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "", True, Me)
                 End If
+
+                PctProfile.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-images.svg", True, 72, 72)
+
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
@@ -801,6 +792,10 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
             RaiseEvent EventMainframeClose()
+        End Sub
+
+        Private Sub Tv_mainframe_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles Tv_mainframe.AfterSelect
+
         End Sub
     End Class
 End Namespace

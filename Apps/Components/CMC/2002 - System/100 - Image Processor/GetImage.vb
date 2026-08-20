@@ -59,5 +59,33 @@
                 Return False
             End Try
         End Function
+
+        ''' <summary>
+        ''' This function
+        ''' </summary>
+        ''' <param name="imagepath"></param>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Function ConvertSvgToBmp(imagepathandfilename As String, Optional isinsidecurrentdirectory As Boolean = False, Optional width As Integer = 24, Optional height As Integer = 24) As System.Drawing.Bitmap
+            Dim path As String
+            Dim svgImage As Svg.SvgDocument
+            Dim bmp As System.Drawing.Bitmap
+
+            Try
+                If isinsidecurrentdirectory Then
+                    path = Environment.CurrentDirectory & $"{imagepathandfilename}"
+                Else
+                    path = imagepathandfilename
+                End If
+
+                svgImage = Svg.SvgDocument.Open(path)
+                bmp = svgImage.Draw(width, height)
+                Return bmp
+            Catch ex As Exception
+                svgImage = Svg.SvgDocument.Open(Environment.CurrentDirectory & $"\Resources\svg-x-circle-fill.svg")
+                bmp = svgImage.Draw(width, height)
+                Return bmp
+            End Try
+        End Function
     End Class
 End Namespace

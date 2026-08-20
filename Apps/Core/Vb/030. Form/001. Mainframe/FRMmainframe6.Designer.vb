@@ -170,7 +170,7 @@
             ' 
             ' Ms_mainframe
             ' 
-            Ms_mainframe.BackColor = Color.FromArgb(CByte(0), CByte(51), CByte(102))
+            Ms_mainframe.BackColor = Color.White
             Ms_mainframe.Font = New Font("Segoe UI", 12.0F)
             Ms_mainframe.ImageScalingSize = New Size(24, 24)
             Ms_mainframe.Items.AddRange(New ToolStripItem() {APPSYSTEM, WORKSPACE, HELP, USERMENU, SUPPORT})
@@ -186,7 +186,6 @@
             ' 
             ' APPSYSTEM
             ' 
-            APPSYSTEM.BackColor = SystemColors.Control
             APPSYSTEM.DropDownItems.AddRange(New ToolStripItem() {Ms_start_Login, Ms_start_Logout, Ms_g_line1, Ms_start_Connection, Ms_start_Settings, Ms_g_line2, Ms_start_Exit})
             APPSYSTEM.ForeColor = SystemColors.ControlText
             APPSYSTEM.ImageTransparentColor = SystemColors.ActiveBorder
@@ -252,7 +251,6 @@
             ' 
             ' WORKSPACE
             ' 
-            WORKSPACE.BackColor = SystemColors.Control
             WORKSPACE.DropDownItems.AddRange(New ToolStripItem() {Ms_workspace_Cascade, Ms_workspace_TileVertical, Ms_workspace_TileHorizontal, ToolStripSeparator1, Ms_workspace_InputCommand, Ms_workspace_Maximize, ToolStripMenuItem1, Ms_workspace_CloseAll})
             WORKSPACE.MergeIndex = 800
             WORKSPACE.Name = "WORKSPACE"
@@ -310,7 +308,6 @@
             ' 
             ' HELP
             ' 
-            HELP.BackColor = SystemColors.Control
             HELP.DropDownItems.AddRange(New ToolStripItem() {ContentsToolStripMenuItem, AppsCollectionToolStripMenuItem, ToolStripSeparator8, BuymeacoffeToolStripMenuItem, AboutToolStripMenuItem})
             HELP.MergeIndex = 801
             HELP.Name = "HELP"
@@ -368,7 +365,6 @@
             ' USERMENU
             ' 
             USERMENU.Alignment = ToolStripItemAlignment.Right
-            USERMENU.BackColor = SystemColors.Control
             USERMENU.DropDownItems.AddRange(New ToolStripItem() {NotificationToolStripMenuItem, MyAccountToolStripMenuItem, ToolStripSeparator2, LoginToolStripMenuItem, LogoutToolStripMenuItem})
             USERMENU.MergeIndex = 999
             USERMENU.Name = "USERMENU"
@@ -417,7 +413,6 @@
             ' SUPPORT
             ' 
             SUPPORT.Alignment = ToolStripItemAlignment.Right
-            SUPPORT.BackColor = Color.FromArgb(CByte(179), CByte(215), CByte(242))
             SUPPORT.DisplayStyle = ToolStripItemDisplayStyle.Text
             SUPPORT.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold Or FontStyle.Italic Or FontStyle.Underline)
             SUPPORT.ForeColor = Color.Red
@@ -445,7 +440,7 @@
             Tv_mainframe.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             Tv_mainframe.BorderStyle = BorderStyle.None
             Tv_mainframe.Dock = DockStyle.Fill
-            Tv_mainframe.Font = New Font("Segoe UI", 11.25F)
+            Tv_mainframe.Font = New Font("Segoe UI", 14.0F)
             Tv_mainframe.ForeColor = Color.White
             Tv_mainframe.HideSelection = False
             Tv_mainframe.ImageIndex = 0
@@ -458,133 +453,133 @@
             TreeNode1.Name = "nd_folder"
             TreeNode1.SelectedImageKey = "for_treeview_performace_16.png"
             TreeNode1.Text = "Dashboard"
-            TreeNode2.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode2.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode2.Name = "nd_file"
-            TreeNode2.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode2.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode2.Tag = "MCTG"
             TreeNode2.Text = "MCTG - Material Catalog"
-            TreeNode3.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode3.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode3.Name = "nd_file"
-            TreeNode3.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode3.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode3.Tag = "MMGR"
             TreeNode3.Text = "MMGR - Material Group"
-            TreeNode4.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode4.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode4.Name = "nd_file"
-            TreeNode4.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode4.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode4.Tag = "MMTY"
             TreeNode4.Text = "MMTY - Material Type"
-            TreeNode5.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode5.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode5.Name = "nd_file"
-            TreeNode5.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode5.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode5.Tag = "MMVT"
             TreeNode5.Text = "MMVT - Material Valuation"
-            TreeNode6.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode6.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode6.Name = "nd_file"
-            TreeNode6.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode6.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode6.Tag = "PLNT"
             TreeNode6.Text = "PLNT - Plant List"
-            TreeNode7.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode7.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode7.Name = "nd_file"
-            TreeNode7.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode7.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode7.Tag = "SLOC"
             TreeNode7.Text = "SLOC - Storage Location"
-            TreeNode8.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode8.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode8.Name = "nd_file"
-            TreeNode8.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode8.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode8.Tag = "MOW"
             TreeNode8.Text = "MOW - Material Ownership"
-            TreeNode9.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode9.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode9.Name = "nd_file"
-            TreeNode9.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode9.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode9.Tag = "UOM"
             TreeNode9.Text = "UOM - Unit Of Measurement"
-            TreeNode10.ImageKey = "for_treeview_folder_16.png"
+            TreeNode10.ImageKey = "for_treeview_folder_512.png"
             TreeNode10.Name = "nd_folder"
-            TreeNode10.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode10.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode10.StateImageKey = "(none)"
             TreeNode10.Text = "Master"
-            TreeNode11.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode11.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode11.Name = "nd_file"
-            TreeNode11.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode11.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode11.Tag = "MMIT"
             TreeNode11.Text = "MMIT - Material Inventory Table"
-            TreeNode12.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode12.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode12.Name = "nd_file"
-            TreeNode12.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode12.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode12.Tag = "MMSI"
             TreeNode12.Text = "MMSI - Material Stock Info"
-            TreeNode13.ImageKey = "for_treeview_folder_16.png"
+            TreeNode13.ImageKey = "for_treeview_folder_512.png"
             TreeNode13.Name = "nd_folder"
-            TreeNode13.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode13.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode13.Text = "Inventory"
-            TreeNode14.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode14.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode14.Name = "nd_file"
-            TreeNode14.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode14.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode14.Tag = "DE001"
             TreeNode14.Text = "DE001 - Logistics Data Entry"
-            TreeNode15.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode15.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode15.Name = "nd_file"
-            TreeNode15.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode15.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode15.Tag = "MVT"
             TreeNode15.Text = "MVT - Movement Type"
-            TreeNode16.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode16.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode16.Name = "nd_file"
-            TreeNode16.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode16.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode16.Tag = "STG"
             TreeNode16.Text = "STG - Direction List"
-            TreeNode17.ImageKey = "for_treeview_folder_16.png"
+            TreeNode17.ImageKey = "for_treeview_folder_512.png"
             TreeNode17.Name = "nd_folder"
-            TreeNode17.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode17.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode17.Text = "Additionals"
-            TreeNode18.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode18.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode18.Name = "nd_file"
-            TreeNode18.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode18.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode18.Tag = "SYN01"
             TreeNode18.Text = "SYN01 - Import"
-            TreeNode19.ImageKey = "for_treeview_folder_16.png"
+            TreeNode19.ImageKey = "for_treeview_folder_512.png"
             TreeNode19.Name = "nd_folder"
-            TreeNode19.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode19.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode19.Text = "Tools"
-            TreeNode20.ImageKey = "for_treeview_folder_16.png"
+            TreeNode20.ImageKey = "for_treeview_folder_512.png"
             TreeNode20.Name = "nd_folder"
-            TreeNode20.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode20.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode20.Text = "Transaction"
-            TreeNode21.ImageKey = "for_treeview_box_16.png"
+            TreeNode21.ImageKey = "for_treeview_box_512.png"
             TreeNode21.Name = "nd_folder"
-            TreeNode21.SelectedImageKey = "for_treeview_box_16.png"
+            TreeNode21.SelectedImageKey = "for_treeview_box_512.png"
             TreeNode21.StateImageKey = "(none)"
             TreeNode21.Text = "Logistics"
-            TreeNode22.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode22.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode22.Name = "nd_file"
-            TreeNode22.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode22.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode22.Tag = "JIDR"
             TreeNode22.Text = "JIDR - Job Instructions"
-            TreeNode23.ImageKey = "for_treeview_folder_16.png"
+            TreeNode23.ImageKey = "for_treeview_folder_512.png"
             TreeNode23.Name = "nd_folder"
-            TreeNode23.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode23.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode23.Text = "Documents"
-            TreeNode24.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode24.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode24.Name = "nd_file"
-            TreeNode24.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode24.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode24.Tag = "SVCC"
             TreeNode24.Text = "SVCC - Service Company"
-            TreeNode25.ImageKey = "for_treeview_folder_16.png"
+            TreeNode25.ImageKey = "for_treeview_folder_512.png"
             TreeNode25.Name = "nd_folder"
-            TreeNode25.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode25.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode25.Text = "Contact Person"
-            TreeNode26.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode26.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode26.Name = "nd_file"
-            TreeNode26.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode26.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode26.Tag = "GRN"
             TreeNode26.Text = "GRN - Goods Received Records"
-            TreeNode27.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode27.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode27.Name = "nd_file"
-            TreeNode27.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode27.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode27.Tag = "TFS"
             TreeNode27.Text = "TFS - Transfer Records"
-            TreeNode28.ImageKey = "for_treeview_folder_16.png"
+            TreeNode28.ImageKey = "for_treeview_folder_512.png"
             TreeNode28.Name = "nd_folder"
-            TreeNode28.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode28.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode28.Text = "Log Book"
             TreeNode29.ImageKey = "for_treeview_documents_16.png"
             TreeNode29.Name = "nd_folder"
@@ -594,153 +589,153 @@
             TreeNode30.Name = "nd_folder"
             TreeNode30.SelectedImageKey = "for_treeview_performace_16.png"
             TreeNode30.Text = "Dashboard"
-            TreeNode31.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode31.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode31.Name = "nd_file"
-            TreeNode31.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode31.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode31.Tag = "ACBK"
             TreeNode31.Text = "ACBK - Accounting Book"
-            TreeNode32.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode32.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode32.Name = "nd_file"
-            TreeNode32.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode32.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode32.Tag = "ACGR"
             TreeNode32.Text = "ACGR - Account Group"
-            TreeNode33.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode33.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode33.Name = "nd_file"
-            TreeNode33.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode33.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode33.Tag = "ACCO"
             TreeNode33.Text = "ACCO - Account List"
-            TreeNode34.ImageKey = "for_treeview_folder_16.png"
+            TreeNode34.ImageKey = "for_treeview_folder_512.png"
             TreeNode34.Name = "nd_folder"
-            TreeNode34.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode34.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode34.Text = "Master"
-            TreeNode35.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode35.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode35.Name = "nd_file"
-            TreeNode35.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode35.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode35.Tag = "ACTP"
             TreeNode35.Text = "ACTP - Transaction Posting"
-            TreeNode36.ImageKey = "for_treeview_folder_16.png"
+            TreeNode36.ImageKey = "for_treeview_folder_512.png"
             TreeNode36.Name = "nd_folder"
-            TreeNode36.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode36.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode36.Text = "Transaction"
             TreeNode37.ImageKey = "for_treeview_dollar_16.png"
             TreeNode37.Name = "nd_folder"
             TreeNode37.SelectedImageKey = "for_treeview_dollar_16.png"
             TreeNode37.Text = "Accounting"
-            TreeNode38.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode38.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode38.Name = "nd_file"
-            TreeNode38.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode38.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode38.Tag = "CCIN"
             TreeNode38.Text = "CCIN - Companies"
-            TreeNode39.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode39.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode39.Name = "nd_file"
-            TreeNode39.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode39.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode39.Tag = "CDIN"
             TreeNode39.Text = "CDIN - Departements"
-            TreeNode40.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode40.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode40.Name = "nd_file"
-            TreeNode40.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode40.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode40.Tag = "POST"
             TreeNode40.Text = "POST - Positions"
-            TreeNode41.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode41.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode41.Name = "nd_file"
-            TreeNode41.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode41.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode41.Tag = "EPLS"
             TreeNode41.Text = "EPLS - Employee List"
-            TreeNode42.ImageKey = "for_treeview_folder_16.png"
+            TreeNode42.ImageKey = "for_treeview_folder_512.png"
             TreeNode42.Name = "nd_folder"
-            TreeNode42.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode42.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode42.Text = "Master"
             TreeNode43.ImageKey = "for_treeview_crisismanagement_16.png"
             TreeNode43.Name = "nd_folder"
             TreeNode43.SelectedImageKey = "for_treeview_crisismanagement_16.png"
             TreeNode43.Text = "Management"
-            TreeNode44.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode44.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode44.Name = "nd_file"
-            TreeNode44.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode44.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode44.Tag = "VDLS"
             TreeNode44.Text = "VDLS - Vendor List"
-            TreeNode45.ImageKey = "for_treeview_folder_16.png"
+            TreeNode45.ImageKey = "for_treeview_folder_512.png"
             TreeNode45.Name = "nd_folder"
-            TreeNode45.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode45.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode45.Text = "Master"
             TreeNode46.ImageKey = "for_treeview_shoppingcart_16.png"
             TreeNode46.Name = "nd_folder"
             TreeNode46.SelectedImageKey = "for_treeview_shoppingcart_16.png"
             TreeNode46.Text = "Procurement"
-            TreeNode47.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode47.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode47.Name = "nd_file"
-            TreeNode47.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode47.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode47.Tag = "VHCL"
             TreeNode47.Text = "VHCL - Vehicle List"
-            TreeNode48.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode48.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode48.Name = "nd_file"
-            TreeNode48.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode48.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode48.Tag = "VHCT"
             TreeNode48.Text = "VHCT - Vehicle Type"
-            TreeNode49.ImageKey = "for_treeview_folder_16.png"
+            TreeNode49.ImageKey = "for_treeview_folder_512.png"
             TreeNode49.Name = "nd_folder"
-            TreeNode49.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode49.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode49.Text = "Master"
             TreeNode50.ImageKey = "for_treeview_deliverytruck_16.png"
             TreeNode50.Name = "nd_folder"
             TreeNode50.SelectedImageKey = "for_treeview_deliverytruck_16.png"
             TreeNode50.Text = "Transportation"
-            TreeNode51.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode51.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode51.Name = "nd_file"
-            TreeNode51.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode51.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode51.Tag = "DAR"
             TreeNode51.Text = "DAR - Daily Activity Reports"
-            TreeNode52.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode52.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode52.Name = "nd_file"
-            TreeNode52.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode52.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode52.Tag = "DRTM"
             TreeNode52.Text = "DRTM - DAR Templates"
-            TreeNode53.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode53.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode53.Name = "nd_file"
-            TreeNode53.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode53.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode53.Tag = "DRAA"
             TreeNode53.Text = "DRAA - DAR Area List"
-            TreeNode54.ImageKey = "for_treeview_folder_16.png"
+            TreeNode54.ImageKey = "for_treeview_folder_512.png"
             TreeNode54.Name = "nd_folder"
-            TreeNode54.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode54.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode54.Text = "Activity Reports"
             TreeNode55.ImageKey = "for_treeview_puzzle_16.png"
             TreeNode55.Name = "nd_folder"
             TreeNode55.SelectedImageKey = "for_treeview_puzzle_16.png"
             TreeNode55.Text = "Custom"
-            TreeNode56.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode56.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode56.Name = "nd_file"
-            TreeNode56.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode56.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode56.Tag = "PINF"
             TreeNode56.Text = "PINF - Personal Information"
-            TreeNode57.ImageKey = "for_treeview_id_16.png"
+            TreeNode57.ImageKey = "for_treeview_idcard_512.png"
             TreeNode57.Name = "nd_folder"
-            TreeNode57.SelectedImageKey = "for_treeview_id_16.png"
+            TreeNode57.SelectedImageKey = "for_treeview_idcard_512.png"
             TreeNode57.Text = "My Folder"
-            TreeNode58.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode58.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode58.Name = "nd_file"
-            TreeNode58.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode58.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode58.Tag = "UAC"
             TreeNode58.Text = "UAC - User Access Credentials"
-            TreeNode59.ImageKey = "for_treeview_folder_16.png"
+            TreeNode59.ImageKey = "for_treeview_folder_512.png"
             TreeNode59.Name = "nd_folder"
-            TreeNode59.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode59.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode59.Text = "Credentials"
-            TreeNode60.ImageKey = "for_treeview_settings2_16.png"
+            TreeNode60.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode60.Name = "nd_file"
-            TreeNode60.SelectedImageKey = "for_treeview_record_16.png"
+            TreeNode60.SelectedImageKey = "for_treeview_record_grayred_512.png"
             TreeNode60.Tag = "MODS"
             TreeNode60.Text = "MODS - Application Modules"
-            TreeNode61.ImageKey = "for_treeview_folder_16.png"
+            TreeNode61.ImageKey = "for_treeview_folder_512.png"
             TreeNode61.Name = "nd_folder"
-            TreeNode61.SelectedImageKey = "for_treeview_folder_16.png"
+            TreeNode61.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode61.Text = "Application"
             TreeNode62.ImageKey = "for_treeview_settings_16.png"
             TreeNode62.Name = "nd_folder"
             TreeNode62.SelectedImageKey = "for_treeview_settings_16.png"
             TreeNode62.Text = "System Settings"
             Tv_mainframe.Nodes.AddRange(New TreeNode() {TreeNode21, TreeNode29, TreeNode37, TreeNode43, TreeNode46, TreeNode50, TreeNode55, TreeNode57, TreeNode62})
-            Tv_mainframe.SelectedImageIndex = 0
+            Tv_mainframe.SelectedImageKey = "for_treeview_folder_16.png"
             Tv_mainframe.Size = New Size(421, 143)
             Tv_mainframe.StateImageList = Imglst_mainframe
             Tv_mainframe.TabIndex = 2
@@ -750,21 +745,55 @@
             Imglst_mainframe.ColorDepth = ColorDepth.Depth32Bit
             Imglst_mainframe.ImageStream = CType(resources.GetObject("Imglst_mainframe.ImageStream"), ImageListStreamer)
             Imglst_mainframe.TransparentColor = Color.Transparent
-            Imglst_mainframe.Images.SetKeyName(0, "for_treeview_box_16.png")
-            Imglst_mainframe.Images.SetKeyName(1, "for_treeview_documents_16.png")
-            Imglst_mainframe.Images.SetKeyName(2, "for_treeview_dollar_16.png")
-            Imglst_mainframe.Images.SetKeyName(3, "for_treeview_crisismanagement_16.png")
-            Imglst_mainframe.Images.SetKeyName(4, "for_treeview_folder_16.png")
-            Imglst_mainframe.Images.SetKeyName(5, "for_treeview_performace_16.png")
-            Imglst_mainframe.Images.SetKeyName(6, "for_treeview_settings_16.png")
-            Imglst_mainframe.Images.SetKeyName(7, "for_treeview_settings2_16.png")
-            Imglst_mainframe.Images.SetKeyName(8, "for_treeview_record_16.png")
-            Imglst_mainframe.Images.SetKeyName(9, "for_treeview_menu_16.png")
-            Imglst_mainframe.Images.SetKeyName(10, "for_treeview_deliverytruck_16.png")
-            Imglst_mainframe.Images.SetKeyName(11, "for_treeview_id_16.png")
-            Imglst_mainframe.Images.SetKeyName(12, "for_treeview_idcard_16.png")
-            Imglst_mainframe.Images.SetKeyName(13, "for_treeview_puzzle_16.png")
-            Imglst_mainframe.Images.SetKeyName(14, "for_treeview_shoppingcart_16.png")
+            Imglst_mainframe.Images.SetKeyName(0, "for_treeview_documents_16.png")
+            Imglst_mainframe.Images.SetKeyName(1, "for_treeview_dollar_16.png")
+            Imglst_mainframe.Images.SetKeyName(2, "for_treeview_crisismanagement_16.png")
+            Imglst_mainframe.Images.SetKeyName(3, "for_treeview_folder_16.png")
+            Imglst_mainframe.Images.SetKeyName(4, "for_treeview_performace_16.png")
+            Imglst_mainframe.Images.SetKeyName(5, "for_treeview_settings_16.png")
+            Imglst_mainframe.Images.SetKeyName(6, "for_treeview_settings2_16.png")
+            Imglst_mainframe.Images.SetKeyName(7, "for_treeview_record_16.png")
+            Imglst_mainframe.Images.SetKeyName(8, "for_treeview_menu_16.png")
+            Imglst_mainframe.Images.SetKeyName(9, "for_treeview_deliverytruck_16.png")
+            Imglst_mainframe.Images.SetKeyName(10, "for_treeview_id_16.png")
+            Imglst_mainframe.Images.SetKeyName(11, "for_treeview_puzzle_16.png")
+            Imglst_mainframe.Images.SetKeyName(12, "for_treeview_shoppingcart_16.png")
+            Imglst_mainframe.Images.SetKeyName(13, "for_treeview_box_16.png")
+            Imglst_mainframe.Images.SetKeyName(14, "for_treeview_box_24.png")
+            Imglst_mainframe.Images.SetKeyName(15, "for_treeview_box_32.png")
+            Imglst_mainframe.Images.SetKeyName(16, "for_treeview_box_64.png")
+            Imglst_mainframe.Images.SetKeyName(17, "for_treeview_box_128.png")
+            Imglst_mainframe.Images.SetKeyName(18, "for_treeview_box_256.png")
+            Imglst_mainframe.Images.SetKeyName(19, "for_treeview_box_512.png")
+            Imglst_mainframe.Images.SetKeyName(20, "for_treeview_folder_16.png")
+            Imglst_mainframe.Images.SetKeyName(21, "for_treeview_folder_24.png")
+            Imglst_mainframe.Images.SetKeyName(22, "for_treeview_folder_32.png")
+            Imglst_mainframe.Images.SetKeyName(23, "for_treeview_folder_64.png")
+            Imglst_mainframe.Images.SetKeyName(24, "for_treeview_folder_128.png")
+            Imglst_mainframe.Images.SetKeyName(25, "for_treeview_folder_256.png")
+            Imglst_mainframe.Images.SetKeyName(26, "for_treeview_folder_512.png")
+            Imglst_mainframe.Images.SetKeyName(27, "for_treeview_idcard_16.png")
+            Imglst_mainframe.Images.SetKeyName(28, "for_treeview_idcard_24.png")
+            Imglst_mainframe.Images.SetKeyName(29, "for_treeview_idcard_32.png")
+            Imglst_mainframe.Images.SetKeyName(30, "for_treeview_idcard_64.png")
+            Imglst_mainframe.Images.SetKeyName(31, "for_treeview_idcard_128.png")
+            Imglst_mainframe.Images.SetKeyName(32, "for_treeview_idcard_256.png")
+            Imglst_mainframe.Images.SetKeyName(33, "for_treeview_idcard_512.png")
+            Imglst_mainframe.Images.SetKeyName(34, "for_treeview_record_16.png")
+            Imglst_mainframe.Images.SetKeyName(35, "for_treeview_record_blue_16.png")
+            Imglst_mainframe.Images.SetKeyName(36, "for_treeview_record_blue_24.png")
+            Imglst_mainframe.Images.SetKeyName(37, "for_treeview_record_blue_32.png")
+            Imglst_mainframe.Images.SetKeyName(38, "for_treeview_record_blue_64.png")
+            Imglst_mainframe.Images.SetKeyName(39, "for_treeview_record_blue_128.png")
+            Imglst_mainframe.Images.SetKeyName(40, "for_treeview_record_blue_256.png")
+            Imglst_mainframe.Images.SetKeyName(41, "for_treeview_record_blue_512.png")
+            Imglst_mainframe.Images.SetKeyName(42, "for_treeview_record_grayred_16.png")
+            Imglst_mainframe.Images.SetKeyName(43, "for_treeview_record_grayred_24.png")
+            Imglst_mainframe.Images.SetKeyName(44, "for_treeview_record_grayred_32.png")
+            Imglst_mainframe.Images.SetKeyName(45, "for_treeview_record_grayred_64.png")
+            Imglst_mainframe.Images.SetKeyName(46, "for_treeview_record_grayred_128.png")
+            Imglst_mainframe.Images.SetKeyName(47, "for_treeview_record_grayred_256.png")
+            Imglst_mainframe.Images.SetKeyName(48, "for_treeview_record_grayred_512.png")
             ' 
             ' PnlStorage
             ' 
@@ -988,7 +1017,7 @@
             ' 
             PctProfile.BackColor = Color.Gainsboro
             PctProfile.BackgroundImageLayout = ImageLayout.Zoom
-            PctProfile.ErrorImage = Nothing
+            PctProfile.ErrorImage = CType(resources.GetObject("PctProfile.ErrorImage"), Image)
             PctProfile.InitialImage = Nothing
             PctProfile.Location = New Point(14, 81)
             PctProfile.Margin = New Padding(4, 5, 4, 5)
@@ -1019,7 +1048,7 @@
             ' LblPosition
             ' 
             LblPosition.AutoSize = True
-            LblPosition.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            LblPosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             LblPosition.ForeColor = Color.Yellow
             LblPosition.Location = New Point(187, 157)
             LblPosition.Margin = New Padding(4, 0, 4, 0)
@@ -1125,7 +1154,7 @@
             TxtRunning.BackColor = Color.White
             TxtRunning.BorderStyle = BorderStyle.FixedSingle
             TxtRunning.Dock = DockStyle.Top
-            TxtRunning.Font = New Font("Segoe UI", 12.0F)
+            TxtRunning.Font = New Font("Segoe UI", 12F)
             TxtRunning.Location = New Point(0, 42)
             TxtRunning.Margin = New Padding(4, 5, 4, 5)
             TxtRunning.MaxLength = 255
@@ -1169,7 +1198,7 @@
             ' 
             ' FRMmainframe6
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             AutoScaleMode = AutoScaleMode.Font
             BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             BackgroundImageLayout = ImageLayout.None
@@ -1180,7 +1209,7 @@
             Controls.Add(TxtRunning)
             Controls.Add(Ms_mainframe)
             DoubleBuffered = True
-            Font = New Font("Segoe UI", 9.0F)
+            Font = New Font("Segoe UI", 9F)
             Icon = CType(resources.GetObject("$this.Icon"), Icon)
             IsMdiContainer = True
             MainMenuStrip = Ms_mainframe
