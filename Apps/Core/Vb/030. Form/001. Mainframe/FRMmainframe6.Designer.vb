@@ -171,7 +171,7 @@
             ' Ms_mainframe
             ' 
             Ms_mainframe.BackColor = Color.White
-            Ms_mainframe.Font = New Font("Segoe UI", 12.0F)
+            Ms_mainframe.Font = New Font("Segoe UI", 12F)
             Ms_mainframe.ImageScalingSize = New Size(24, 24)
             Ms_mainframe.Items.AddRange(New ToolStripItem() {APPSYSTEM, WORKSPACE, HELP, USERMENU, SUPPORT})
             Ms_mainframe.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow
@@ -350,7 +350,7 @@
             ' 
             ' BuymeacoffeToolStripMenuItem
             ' 
-            BuymeacoffeToolStripMenuItem.Font = New Font("Segoe UI", 12.0F, FontStyle.Underline)
+            BuymeacoffeToolStripMenuItem.Font = New Font("Segoe UI", 12F, FontStyle.Underline)
             BuymeacoffeToolStripMenuItem.ForeColor = Color.Blue
             BuymeacoffeToolStripMenuItem.Name = "BuymeacoffeToolStripMenuItem"
             BuymeacoffeToolStripMenuItem.Size = New Size(306, 40)
@@ -414,7 +414,7 @@
             ' 
             SUPPORT.Alignment = ToolStripItemAlignment.Right
             SUPPORT.DisplayStyle = ToolStripItemDisplayStyle.Text
-            SUPPORT.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold Or FontStyle.Italic Or FontStyle.Underline)
+            SUPPORT.Font = New Font("Segoe UI", 10F, FontStyle.Bold Or FontStyle.Italic Or FontStyle.Underline)
             SUPPORT.ForeColor = Color.Red
             SUPPORT.Name = "SUPPORT"
             SUPPORT.Overflow = ToolStripItemOverflow.AsNeeded
@@ -440,7 +440,7 @@
             Tv_mainframe.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             Tv_mainframe.BorderStyle = BorderStyle.None
             Tv_mainframe.Dock = DockStyle.Fill
-            Tv_mainframe.Font = New Font("Segoe UI", 14.0F)
+            Tv_mainframe.Font = New Font("Segoe UI", 14F)
             Tv_mainframe.ForeColor = Color.White
             Tv_mainframe.HideSelection = False
             Tv_mainframe.ImageIndex = 0
@@ -544,9 +544,9 @@
             TreeNode20.Name = "nd_folder"
             TreeNode20.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode20.Text = "Transaction"
-            TreeNode21.ImageKey = "for_treeview_box_512.png"
+            TreeNode21.ImageKey = "for_treeview_box_256.png"
             TreeNode21.Name = "nd_folder"
-            TreeNode21.SelectedImageKey = "for_treeview_box_512.png"
+            TreeNode21.SelectedImageKey = "for_treeview_box_256.png"
             TreeNode21.StateImageKey = "(none)"
             TreeNode21.Text = "Logistics"
             TreeNode22.ImageKey = "for_treeview_record_blue_512.png"
@@ -581,9 +581,9 @@
             TreeNode28.Name = "nd_folder"
             TreeNode28.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode28.Text = "Log Book"
-            TreeNode29.ImageKey = "for_treeview_documents_16.png"
+            TreeNode29.ImageKey = "for_treeview_folder_paper_512.png"
             TreeNode29.Name = "nd_folder"
-            TreeNode29.SelectedImageKey = "for_treeview_documents_16.png"
+            TreeNode29.SelectedImageKey = "for_treeview_folder_paper_512.png"
             TreeNode29.Text = "Administration"
             TreeNode30.ImageKey = "for_treeview_performace_16.png"
             TreeNode30.Name = "nd_folder"
@@ -617,9 +617,9 @@
             TreeNode36.Name = "nd_folder"
             TreeNode36.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode36.Text = "Transaction"
-            TreeNode37.ImageKey = "for_treeview_dollar_16.png"
+            TreeNode37.ImageKey = "for_treeview_coin_512.png"
             TreeNode37.Name = "nd_folder"
-            TreeNode37.SelectedImageKey = "for_treeview_dollar_16.png"
+            TreeNode37.SelectedImageKey = "for_treeview_coin_512.png"
             TreeNode37.Text = "Accounting"
             TreeNode38.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode38.Name = "nd_file"
@@ -645,9 +645,9 @@
             TreeNode42.Name = "nd_folder"
             TreeNode42.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode42.Text = "Master"
-            TreeNode43.ImageKey = "for_treeview_crisismanagement_16.png"
+            TreeNode43.ImageKey = "for_treeview_account-settings_512.png"
             TreeNode43.Name = "nd_folder"
-            TreeNode43.SelectedImageKey = "for_treeview_crisismanagement_16.png"
+            TreeNode43.SelectedImageKey = "for_treeview_account-settings_512.png"
             TreeNode43.Text = "Management"
             TreeNode44.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode44.Name = "nd_file"
@@ -658,9 +658,9 @@
             TreeNode45.Name = "nd_folder"
             TreeNode45.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode45.Text = "Master"
-            TreeNode46.ImageKey = "for_treeview_shoppingcart_16.png"
+            TreeNode46.ImageKey = "for_treeview_online-shop_512.png"
             TreeNode46.Name = "nd_folder"
-            TreeNode46.SelectedImageKey = "for_treeview_shoppingcart_16.png"
+            TreeNode46.SelectedImageKey = "for_treeview_online-shop_512.png"
             TreeNode46.Text = "Procurement"
             TreeNode47.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode47.Name = "nd_file"
@@ -699,9 +699,9 @@
             TreeNode54.Name = "nd_folder"
             TreeNode54.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode54.Text = "Activity Reports"
-            TreeNode55.ImageKey = "for_treeview_puzzle_16.png"
+            TreeNode55.ImageKey = "for_treeview_puzzle_512.png"
             TreeNode55.Name = "nd_folder"
-            TreeNode55.SelectedImageKey = "for_treeview_puzzle_16.png"
+            TreeNode55.SelectedImageKey = "for_treeview_puzzle_512.png"
             TreeNode55.Text = "Custom"
             TreeNode56.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode56.Name = "nd_file"
@@ -735,7 +735,8 @@
             TreeNode62.SelectedImageKey = "for_treeview_settings_16.png"
             TreeNode62.Text = "System Settings"
             Tv_mainframe.Nodes.AddRange(New TreeNode() {TreeNode21, TreeNode29, TreeNode37, TreeNode43, TreeNode46, TreeNode50, TreeNode55, TreeNode57, TreeNode62})
-            Tv_mainframe.SelectedImageKey = "for_treeview_folder_16.png"
+            Tv_mainframe.SelectedImageKey = "for_treeview_record_grayred_512.png"
+            Tv_mainframe.ShowLines = False
             Tv_mainframe.Size = New Size(421, 143)
             Tv_mainframe.StateImageList = Imglst_mainframe
             Tv_mainframe.TabIndex = 2
@@ -794,6 +795,40 @@
             Imglst_mainframe.Images.SetKeyName(46, "for_treeview_record_grayred_128.png")
             Imglst_mainframe.Images.SetKeyName(47, "for_treeview_record_grayred_256.png")
             Imglst_mainframe.Images.SetKeyName(48, "for_treeview_record_grayred_512.png")
+            Imglst_mainframe.Images.SetKeyName(49, "for_treeview_folder_paper_16.png")
+            Imglst_mainframe.Images.SetKeyName(50, "for_treeview_folder_paper_24.png")
+            Imglst_mainframe.Images.SetKeyName(51, "for_treeview_folder_paper_32.png")
+            Imglst_mainframe.Images.SetKeyName(52, "for_treeview_folder_paper_64.png")
+            Imglst_mainframe.Images.SetKeyName(53, "for_treeview_folder_paper_128.png")
+            Imglst_mainframe.Images.SetKeyName(54, "for_treeview_folder_paper_256.png")
+            Imglst_mainframe.Images.SetKeyName(55, "for_treeview_folder_paper_512.png")
+            Imglst_mainframe.Images.SetKeyName(56, "for_treeview_coin_16.png")
+            Imglst_mainframe.Images.SetKeyName(57, "for_treeview_coin_24.png")
+            Imglst_mainframe.Images.SetKeyName(58, "for_treeview_coin_32.png")
+            Imglst_mainframe.Images.SetKeyName(59, "for_treeview_coin_64.png")
+            Imglst_mainframe.Images.SetKeyName(60, "for_treeview_coin_128.png")
+            Imglst_mainframe.Images.SetKeyName(61, "for_treeview_coin_256.png")
+            Imglst_mainframe.Images.SetKeyName(62, "for_treeview_coin_512.png")
+            Imglst_mainframe.Images.SetKeyName(63, "for_treeview_account-settings_24.png")
+            Imglst_mainframe.Images.SetKeyName(64, "for_treeview_account-settings_32.png")
+            Imglst_mainframe.Images.SetKeyName(65, "for_treeview_account-settings_64.png")
+            Imglst_mainframe.Images.SetKeyName(66, "for_treeview_account-settings_128.png")
+            Imglst_mainframe.Images.SetKeyName(67, "for_treeview_account-settings_256.png")
+            Imglst_mainframe.Images.SetKeyName(68, "for_treeview_account-settings_512.png")
+            Imglst_mainframe.Images.SetKeyName(69, "for_treeview_online-shop_16.png")
+            Imglst_mainframe.Images.SetKeyName(70, "for_treeview_online-shop_24.png")
+            Imglst_mainframe.Images.SetKeyName(71, "for_treeview_online-shop_32.png")
+            Imglst_mainframe.Images.SetKeyName(72, "for_treeview_online-shop_64.png")
+            Imglst_mainframe.Images.SetKeyName(73, "for_treeview_online-shop_128.png")
+            Imglst_mainframe.Images.SetKeyName(74, "for_treeview_online-shop_256.png")
+            Imglst_mainframe.Images.SetKeyName(75, "for_treeview_online-shop_512.png")
+            Imglst_mainframe.Images.SetKeyName(76, "for_treeview_puzzle_16.png")
+            Imglst_mainframe.Images.SetKeyName(77, "for_treeview_puzzle_24.png")
+            Imglst_mainframe.Images.SetKeyName(78, "for_treeview_puzzle_32.png")
+            Imglst_mainframe.Images.SetKeyName(79, "for_treeview_puzzle_64.png")
+            Imglst_mainframe.Images.SetKeyName(80, "for_treeview_puzzle_128.png")
+            Imglst_mainframe.Images.SetKeyName(81, "for_treeview_puzzle_256.png")
+            Imglst_mainframe.Images.SetKeyName(82, "for_treeview_puzzle_512.png")
             ' 
             ' PnlStorage
             ' 
@@ -871,7 +906,7 @@
             ' 
             ' lblFile
             ' 
-            lblFile.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold)
+            lblFile.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
             lblFile.ForeColor = Color.White
             lblFile.Location = New Point(4, 163)
             lblFile.Margin = New Padding(4, 0, 4, 0)
@@ -883,7 +918,7 @@
             ' 
             ' lblData
             ' 
-            lblData.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold)
+            lblData.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
             lblData.ForeColor = Color.White
             lblData.Location = New Point(4, 70)
             lblData.Margin = New Padding(4, 0, 4, 0)
@@ -896,7 +931,7 @@
             ' lblFileStorage
             ' 
             lblFileStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            lblFileStorage.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold)
+            lblFileStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
             lblFileStorage.ForeColor = Color.White
             lblFileStorage.Location = New Point(99, 163)
             lblFileStorage.Margin = New Padding(4, 0, 4, 0)
@@ -909,7 +944,7 @@
             ' lblDataStorage
             ' 
             lblDataStorage.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            lblDataStorage.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold)
+            lblDataStorage.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
             lblDataStorage.ForeColor = Color.White
             lblDataStorage.Location = New Point(101, 70)
             lblDataStorage.Margin = New Padding(4, 0, 4, 0)
@@ -968,7 +1003,7 @@
             Txt_shortcut.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
             Txt_shortcut.AutoCompleteMode = AutoCompleteMode.Suggest
             Txt_shortcut.AutoCompleteSource = AutoCompleteSource.CustomSource
-            Txt_shortcut.Font = New Font("Segoe UI", 12.0F)
+            Txt_shortcut.Font = New Font("Segoe UI", 12F)
             Txt_shortcut.Location = New Point(4, 17)
             Txt_shortcut.Margin = New Padding(4, 5, 4, 5)
             Txt_shortcut.MaxLength = 255
@@ -1271,7 +1306,6 @@
         Friend WithEvents ChangePasswordToolStripMenuItem As ToolStripMenuItem
         Friend WithEvents SUPPORT As ToolStripMenuItem
         Friend WithEvents TxtRunning As CMCv.UI.Control.Txt
-        Friend WithEvents Imglst_mainframe As ImageList
         Friend WithEvents TmrNotif As Timer
         Friend WithEvents Tmr_gc As Timer
         Friend WithEvents imglst_36 As ImageList
@@ -1306,5 +1340,6 @@
         Friend WithEvents Ms_start_connection_folder As ToolStripMenuItem
         Friend WithEvents pgDataStorage As Syncfusion.Windows.Forms.Tools.ProgressBarAdv
         Friend WithEvents pgFileStorage As Syncfusion.Windows.Forms.Tools.ProgressBarAdv
+        Public WithEvents Imglst_mainframe As ImageList
     End Class
 End Namespace
