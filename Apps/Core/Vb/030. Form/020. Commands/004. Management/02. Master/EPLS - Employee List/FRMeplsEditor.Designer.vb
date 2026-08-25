@@ -114,6 +114,7 @@
             ' 
             ' SLFPanel
             ' 
+            SLFPanel.AutoScroll = True
             SLFPanel.Controls.Add(BtnRemovePhoto)
             SLFPanel.Controls.Add(ULbl8)
             SLFPanel.Controls.Add(TbctlEmployee)
@@ -285,7 +286,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(244), CByte(190), CByte(100))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(235), CByte(216), CByte(177))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnModulesRoles.BorderStyle = BorderStyle.None
@@ -980,7 +981,7 @@
             TxtBirthPlace.Margin = New Padding(6, 5, 6, 5)
             TxtBirthPlace.MaxLength = 255
             TxtBirthPlace.Name = "TxtBirthPlace"
-            TxtBirthPlace.Size = New Size(341, 39)
+            TxtBirthPlace.Size = New Size(533, 39)
             TxtBirthPlace.TabIndex = 103
             TxtBirthPlace.Tag = "txt"
             TxtBirthPlace.XOAutoTrim = True
@@ -1023,7 +1024,7 @@
             TxtPersonalID.Margin = New Padding(6, 5, 6, 5)
             TxtPersonalID.MaxLength = 16
             TxtPersonalID.Name = "TxtPersonalID"
-            TxtPersonalID.Size = New Size(341, 39)
+            TxtPersonalID.Size = New Size(537, 39)
             TxtPersonalID.TabIndex = 100
             TxtPersonalID.Tag = "txt"
             TxtPersonalID.XOAutoTrim = True
@@ -1056,7 +1057,7 @@
             CboGender.Location = New Point(273, 285)
             CboGender.Margin = New Padding(6, 5, 6, 5)
             CboGender.Name = "CboGender"
-            CboGender.Size = New Size(225, 40)
+            CboGender.Size = New Size(533, 40)
             CboGender.TabIndex = 104
             ' 
             ' TxtFullName
@@ -1067,7 +1068,7 @@
             TxtFullName.Margin = New Padding(6, 5, 6, 5)
             TxtFullName.MaxLength = 255
             TxtFullName.Name = "TxtFullName"
-            TxtFullName.Size = New Size(454, 39)
+            TxtFullName.Size = New Size(533, 39)
             TxtFullName.TabIndex = 101
             TxtFullName.Tag = "txt"
             TxtFullName.XOAutoTrim = True

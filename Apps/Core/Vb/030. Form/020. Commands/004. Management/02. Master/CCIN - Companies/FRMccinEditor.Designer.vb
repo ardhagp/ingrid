@@ -34,11 +34,15 @@
             ULbl3 = New CMCv.UI.Control.ULbl()
             ULbl4 = New CMCv.UI.Control.ULbl()
             ULbl5 = New CMCv.UI.Control.ULbl()
+            Tbx1 = New CMCv.UI.Control.Tbx(components)
+            tpDetail = New TabPage()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            Tbx1.SuspendLayout()
+            tpDetail.SuspendLayout()
             SuspendLayout()
             ' 
             ' PnlBottomButton
@@ -46,9 +50,9 @@
             PnlBottomButton.Controls.Add(ChkAddNew)
             PnlBottomButton.Controls.Add(BtnCancel)
             PnlBottomButton.Controls.Add(BtnSave)
-            PnlBottomButton.Location = New Point(0, 669)
+            PnlBottomButton.Location = New Point(0, 736)
             PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
-            PnlBottomButton.Size = New Size(899, 97)
+            PnlBottomButton.Size = New Size(1181, 97)
             PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
             PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
             PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
@@ -56,42 +60,25 @@
             ' pnl_
             ' 
             pnl_.Margin = New Padding(7, 5, 7, 5)
-            pnl_.Size = New Size(899, 110)
+            pnl_.Size = New Size(1181, 110)
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(ULbl5)
-            SLFPanel.Controls.Add(ULbl4)
-            SLFPanel.Controls.Add(ULbl3)
-            SLFPanel.Controls.Add(ULbl2)
-            SLFPanel.Controls.Add(ULbl1)
-            SLFPanel.Controls.Add(TxtName)
-            SLFPanel.Controls.Add(TxtDescription)
-            SLFPanel.Controls.Add(TxtSearchTerm2)
-            SLFPanel.Controls.Add(TxtSearchTerm1)
-            SLFPanel.Controls.Add(TxtCode)
+            SLFPanel.AutoScroll = True
+            SLFPanel.Controls.Add(Tbx1)
             SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(899, 766)
+            SLFPanel.Size = New Size(1181, 833)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(TxtCode, 0)
-            SLFPanel.Controls.SetChildIndex(TxtSearchTerm1, 0)
-            SLFPanel.Controls.SetChildIndex(TxtSearchTerm2, 0)
-            SLFPanel.Controls.SetChildIndex(TxtDescription, 0)
-            SLFPanel.Controls.SetChildIndex(TxtName, 0)
-            SLFPanel.Controls.SetChildIndex(ULbl1, 0)
-            SLFPanel.Controls.SetChildIndex(ULbl2, 0)
-            SLFPanel.Controls.SetChildIndex(ULbl3, 0)
-            SLFPanel.Controls.SetChildIndex(ULbl4, 0)
-            SLFPanel.Controls.SetChildIndex(ULbl5, 0)
+            SLFPanel.Controls.SetChildIndex(Tbx1, 0)
             ' 
             ' TxtCode
             ' 
             TxtCode.Font = New Font("Segoe UI", 12F)
-            TxtCode.Location = New Point(281, 20)
+            TxtCode.Location = New Point(273, 15)
             TxtCode.Margin = New Padding(6, 5, 6, 5)
             TxtCode.MaxLength = 255
             TxtCode.Name = "TxtCode"
-            TxtCode.Size = New Size(341, 39)
+            TxtCode.Size = New Size(533, 39)
             TxtCode.TabIndex = 0
             TxtCode.Tag = "txt"
             TxtCode.XOAutoTrim = True
@@ -117,11 +104,11 @@
             ' TxtSearchTerm1
             ' 
             TxtSearchTerm1.Font = New Font("Segoe UI", 12F)
-            TxtSearchTerm1.Location = New Point(280, 153)
+            TxtSearchTerm1.Location = New Point(273, 150)
             TxtSearchTerm1.Margin = New Padding(6, 5, 6, 5)
             TxtSearchTerm1.MaxLength = 255
             TxtSearchTerm1.Name = "TxtSearchTerm1"
-            TxtSearchTerm1.Size = New Size(341, 39)
+            TxtSearchTerm1.Size = New Size(533, 39)
             TxtSearchTerm1.TabIndex = 2
             TxtSearchTerm1.Tag = "txt"
             TxtSearchTerm1.XOAutoTrim = True
@@ -147,11 +134,11 @@
             ' TxtSearchTerm2
             ' 
             TxtSearchTerm2.Font = New Font("Segoe UI", 12F)
-            TxtSearchTerm2.Location = New Point(280, 222)
+            TxtSearchTerm2.Location = New Point(273, 217)
             TxtSearchTerm2.Margin = New Padding(6, 5, 6, 5)
             TxtSearchTerm2.MaxLength = 255
             TxtSearchTerm2.Name = "TxtSearchTerm2"
-            TxtSearchTerm2.Size = New Size(591, 39)
+            TxtSearchTerm2.Size = New Size(534, 39)
             TxtSearchTerm2.TabIndex = 3
             TxtSearchTerm2.Tag = "txt"
             TxtSearchTerm2.XOAutoTrim = True
@@ -177,12 +164,12 @@
             ' TxtDescription
             ' 
             TxtDescription.Font = New Font("Segoe UI", 12F)
-            TxtDescription.Location = New Point(280, 288)
+            TxtDescription.Location = New Point(273, 285)
             TxtDescription.Margin = New Padding(6, 5, 6, 5)
             TxtDescription.MaxLength = 255
             TxtDescription.Multiline = True
             TxtDescription.Name = "TxtDescription"
-            TxtDescription.Size = New Size(591, 221)
+            TxtDescription.Size = New Size(533, 254)
             TxtDescription.TabIndex = 4
             TxtDescription.Tag = "txt"
             TxtDescription.XOAutoTrim = True
@@ -216,7 +203,7 @@
             BtnSave.FlatStyle = FlatStyle.Flat
             BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnSave.ForeColor = Color.White
-            BtnSave.Location = New Point(535, 13)
+            BtnSave.Location = New Point(817, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
             BtnSave.Name = "BtnSave"
             BtnSave.Size = New Size(167, 77)
@@ -239,7 +226,7 @@
             BtnCancel.FlatStyle = FlatStyle.Flat
             BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
-            BtnCancel.Location = New Point(712, 13)
+            BtnCancel.Location = New Point(994, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
             BtnCancel.Name = "BtnCancel"
             BtnCancel.Size = New Size(167, 77)
@@ -254,11 +241,11 @@
             ' TxtName
             ' 
             TxtName.Font = New Font("Segoe UI", 12F)
-            TxtName.Location = New Point(280, 87)
+            TxtName.Location = New Point(273, 83)
             TxtName.Margin = New Padding(6, 5, 6, 5)
             TxtName.MaxLength = 255
             TxtName.Name = "TxtName"
-            TxtName.Size = New Size(341, 39)
+            TxtName.Size = New Size(533, 39)
             TxtName.TabIndex = 1
             TxtName.Tag = "txt"
             TxtName.XOAutoTrim = True
@@ -289,7 +276,7 @@
             ChkAddNew.FlatStyle = FlatStyle.Flat
             ChkAddNew.Font = New Font("Segoe UI", 12F)
             ChkAddNew.ForeColor = Color.Tomato
-            ChkAddNew.Location = New Point(304, 28)
+            ChkAddNew.Location = New Point(586, 28)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
             ChkAddNew.Name = "ChkAddNew"
             ChkAddNew.Size = New Size(221, 36)
@@ -300,8 +287,8 @@
             ' ULbl1
             ' 
             ULbl1.BackColor = Color.MistyRose
-            ULbl1.Location = New Point(20, 20)
-            ULbl1.Margin = New Padding(7, 5, 7, 5)
+            ULbl1.Location = New Point(14, 15)
+            ULbl1.Margin = New Padding(12, 8, 12, 8)
             ULbl1.Name = "ULbl1"
             ULbl1.Size = New Size(250, 39)
             ULbl1.TabIndex = 1006
@@ -313,8 +300,8 @@
             ' ULbl2
             ' 
             ULbl2.BackColor = Color.MistyRose
-            ULbl2.Location = New Point(20, 87)
-            ULbl2.Margin = New Padding(7, 5, 7, 5)
+            ULbl2.Location = New Point(14, 83)
+            ULbl2.Margin = New Padding(12, 8, 12, 8)
             ULbl2.Name = "ULbl2"
             ULbl2.Size = New Size(250, 39)
             ULbl2.TabIndex = 1007
@@ -326,8 +313,8 @@
             ' ULbl3
             ' 
             ULbl3.BackColor = Color.MistyRose
-            ULbl3.Location = New Point(20, 153)
-            ULbl3.Margin = New Padding(7, 5, 7, 5)
+            ULbl3.Location = New Point(14, 150)
+            ULbl3.Margin = New Padding(12, 8, 12, 8)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 39)
             ULbl3.TabIndex = 1008
@@ -339,8 +326,8 @@
             ' ULbl4
             ' 
             ULbl4.BackColor = Color.MistyRose
-            ULbl4.Location = New Point(20, 222)
-            ULbl4.Margin = New Padding(7, 5, 7, 5)
+            ULbl4.Location = New Point(15, 217)
+            ULbl4.Margin = New Padding(12, 8, 12, 8)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 39)
             ULbl4.TabIndex = 1009
@@ -352,20 +339,53 @@
             ' ULbl5
             ' 
             ULbl5.BackColor = Color.Moccasin
-            ULbl5.Location = New Point(20, 288)
-            ULbl5.Margin = New Padding(7, 5, 7, 5)
+            ULbl5.Location = New Point(15, 285)
+            ULbl5.Margin = New Padding(12, 8, 12, 8)
             ULbl5.Name = "ULbl5"
-            ULbl5.Size = New Size(250, 221)
+            ULbl5.Size = New Size(250, 254)
             ULbl5.TabIndex = 1010
             ULbl5.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.XOText = "Description"
             ULbl5.XOTextAdjuster = False
             ULbl5.XOTextBorder = False
             ' 
+            ' Tbx1
+            ' 
+            Tbx1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+            Tbx1.Controls.Add(tpDetail)
+            Tbx1.Font = New Font("Segoe UI", 12F)
+            Tbx1.ItemSize = New Size(126, 37)
+            Tbx1.Location = New Point(20, 25)
+            Tbx1.Name = "Tbx1"
+            Tbx1.SelectedIndex = 0
+            Tbx1.Size = New Size(830, 700)
+            Tbx1.TabIndex = 1011
+            ' 
+            ' tpDetail
+            ' 
+            tpDetail.AutoScroll = True
+            tpDetail.Controls.Add(ULbl1)
+            tpDetail.Controls.Add(ULbl5)
+            tpDetail.Controls.Add(TxtCode)
+            tpDetail.Controls.Add(ULbl4)
+            tpDetail.Controls.Add(ULbl2)
+            tpDetail.Controls.Add(ULbl3)
+            tpDetail.Controls.Add(TxtSearchTerm1)
+            tpDetail.Controls.Add(TxtSearchTerm2)
+            tpDetail.Controls.Add(TxtName)
+            tpDetail.Controls.Add(TxtDescription)
+            tpDetail.Location = New Point(4, 41)
+            tpDetail.Name = "tpDetail"
+            tpDetail.Padding = New Padding(3)
+            tpDetail.Size = New Size(822, 655)
+            tpDetail.TabIndex = 0
+            tpDetail.Text = "DETAIL"
+            tpDetail.UseVisualStyleBackColor = True
+            ' 
             ' FRMccinEditor
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
-            ClientSize = New Size(899, 898)
+            ClientSize = New Size(1181, 965)
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMccinEditor"
             ShowIcon = False
@@ -375,8 +395,10 @@
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
-            SLFPanel.PerformLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            Tbx1.ResumeLayout(False)
+            tpDetail.ResumeLayout(False)
+            tpDetail.PerformLayout()
             ResumeLayout(False)
             PerformLayout()
         End Sub
@@ -393,5 +415,7 @@
         Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
+        Friend WithEvents Tbx1 As CMCv.UI.Control.Tbx
+        Friend WithEvents tpDetail As TabPage
     End Class
 End Namespace

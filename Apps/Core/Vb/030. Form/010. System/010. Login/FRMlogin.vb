@@ -113,6 +113,8 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMlogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            SLFLogo.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-LOGIN02.svg", True, 512, 512)
+
             varWrongLogin = 0
             varCooldownLogin = 0
             SLFStatus.Items(0).Text = String.Empty

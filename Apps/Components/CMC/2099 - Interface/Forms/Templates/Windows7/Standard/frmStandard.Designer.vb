@@ -66,7 +66,6 @@
             SLFLogo.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             SLFLogo.Name = "SLFLogo"
             SLFLogo.Size = New System.Drawing.Size(73, 85)
-            SLFLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             SLFLogo.TabIndex = 0
             SLFLogo.TabStop = False
             SLFLogo.XOBorderColor = Drawing.Color.DodgerBlue
@@ -93,7 +92,7 @@
             SLFNamaForm.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             SLFNamaForm.AutoSize = True
             SLFNamaForm.BackColor = Drawing.Color.Transparent
-            SLFNamaForm.Font = New System.Drawing.Font("Segoe UI", 18.0F, Drawing.FontStyle.Bold)
+            SLFNamaForm.Font = New System.Drawing.Font("Segoe UI", 18F, Drawing.FontStyle.Bold)
             SLFNamaForm.ForeColor = Drawing.Color.White
             SLFNamaForm.Location = New System.Drawing.Point(88, 7)
             SLFNamaForm.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
@@ -109,7 +108,7 @@
             SLFSubNamaForm.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             SLFSubNamaForm.AutoSize = True
             SLFSubNamaForm.BackColor = Drawing.Color.Transparent
-            SLFSubNamaForm.Font = New System.Drawing.Font("Segoe UI", 9.0F)
+            SLFSubNamaForm.Font = New System.Drawing.Font("Segoe UI", 9F)
             SLFSubNamaForm.ForeColor = Drawing.Color.White
             SLFSubNamaForm.Location = New System.Drawing.Point(117, 58)
             SLFSubNamaForm.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
@@ -149,7 +148,7 @@
             ' 
             ' FRMstandard
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
             ClientSize = New System.Drawing.Size(1307, 1079)
             Controls.Add(SLFPanel)
             Controls.Add(SLFStatus)
