@@ -42,6 +42,7 @@
         Public Const dtUserData As String = "UserData"
 
         'Database Tables
+        Public tIngrid As New LibApp.Table.Application.Ingrid
         Public tCompany As New LibApp.Table.Man.Company
         Public tDepartment As New LibApp.Table.Man.Department
         Public tPosition As New LibApp.Table.Man.Position
@@ -80,9 +81,9 @@
         ''' <param name="moduleid"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub SetModuleIdentifier(parametername As Dictionary(Of String, Object), modulecode As String, Optional moduleid As Long = Nothing)
-            SetValue(parametername, tModule.P_ModuleCode, modulecode.ToString)
+            SetValue(parametername, tIngrid.P_ModuleCode, modulecode.ToString)
             If moduleid <> Nothing Then
-                SetValue(parametername, tModule.P_ModuleId, CLng(moduleid))
+                SetValue(parametername, tIngrid.P_ModuleId, CLng(moduleid))
             End If
         End Sub
 
@@ -92,9 +93,9 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub FirstLoad()
             With varDataProperties
-                SetValue(.UserParameters, tLog.P_LogMachine, My.Computer.Name.ToString)
-                SetValue(.UserParameters, tLog.P_LogOS, My.Computer.Info.OSVersion.ToString)
-                SetValue(.UserParameters, tLog.P_LogAppVer, GetAppVersion)
+                SetValue(.AllParameters, tLog.P_LogMachine, My.Computer.Name.ToString)
+                SetValue(.AllParameters, tLog.P_LogOS, My.Computer.Info.OSVersion.ToString)
+                SetValue(.AllParameters, tLog.P_LogAppVer, GetAppVersion)
             End With
             Call CheckRequiredFolder()
         End Sub

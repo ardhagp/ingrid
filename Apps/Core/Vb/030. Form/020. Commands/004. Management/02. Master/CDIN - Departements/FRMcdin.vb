@@ -126,9 +126,9 @@
         Private Sub FRMcdin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             ' Set active module to UserParameters
             With varDataProperties
-                SetValue(.UserParameters, tModule.P_ModuleCode, varThisModuleCode)
-                varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.UserParameters)
-                SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
+                SetValue(.AllParameters, tIngrid.P_ModuleCode, varThisModuleCode)
+                varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.AllParameters)
+                SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
             End With
 
             ' Continue to Load anything for this module
@@ -190,7 +190,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcdin_Activated(sender As Object, e As EventArgs) Handles Me.Activated
             ' Set active module to UserParameters
-            SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
+            SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
         End Sub
     End Class
 End Namespace

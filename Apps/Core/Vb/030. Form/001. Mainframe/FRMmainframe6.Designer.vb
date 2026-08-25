@@ -449,9 +449,9 @@
             Tv_mainframe.Location = New Point(0, 80)
             Tv_mainframe.Margin = New Padding(4, 5, 4, 5)
             Tv_mainframe.Name = "Tv_mainframe"
-            TreeNode1.ImageKey = "for_treeview_performace_16.png"
+            TreeNode1.ImageKey = "for_treeview_pie-chart_512.png"
             TreeNode1.Name = "nd_folder"
-            TreeNode1.SelectedImageKey = "for_treeview_performace_16.png"
+            TreeNode1.SelectedImageKey = "for_treeview_pie-chart_512.png"
             TreeNode1.Text = "Dashboard"
             TreeNode2.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode2.Name = "nd_file"
@@ -585,9 +585,9 @@
             TreeNode29.Name = "nd_folder"
             TreeNode29.SelectedImageKey = "for_treeview_folder_paper_512.png"
             TreeNode29.Text = "Administration"
-            TreeNode30.ImageKey = "for_treeview_performace_16.png"
+            TreeNode30.ImageKey = "for_treeview_pie-chart_512.png"
             TreeNode30.Name = "nd_folder"
-            TreeNode30.SelectedImageKey = "for_treeview_performace_16.png"
+            TreeNode30.SelectedImageKey = "for_treeview_pie-chart_512.png"
             TreeNode30.Text = "Dashboard"
             TreeNode31.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode31.Name = "nd_file"
@@ -676,9 +676,9 @@
             TreeNode49.Name = "nd_folder"
             TreeNode49.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode49.Text = "Master"
-            TreeNode50.ImageKey = "for_treeview_deliverytruck_16.png"
+            TreeNode50.ImageKey = "for_treeview_delivery-truck_512.png"
             TreeNode50.Name = "nd_folder"
-            TreeNode50.SelectedImageKey = "for_treeview_deliverytruck_16.png"
+            TreeNode50.SelectedImageKey = "for_treeview_delivery-truck_512.png"
             TreeNode50.Text = "Transportation"
             TreeNode51.ImageKey = "for_treeview_record_blue_512.png"
             TreeNode51.Name = "nd_file"
@@ -730,9 +730,9 @@
             TreeNode61.Name = "nd_folder"
             TreeNode61.SelectedImageKey = "for_treeview_folder_512.png"
             TreeNode61.Text = "Application"
-            TreeNode62.ImageKey = "for_treeview_settings_16.png"
+            TreeNode62.ImageKey = "for_treeview_settings-default_512.png"
             TreeNode62.Name = "nd_folder"
-            TreeNode62.SelectedImageKey = "for_treeview_settings_16.png"
+            TreeNode62.SelectedImageKey = "for_treeview_settings-default_512.png"
             TreeNode62.Text = "System Settings"
             Tv_mainframe.Nodes.AddRange(New TreeNode() {TreeNode21, TreeNode29, TreeNode37, TreeNode43, TreeNode46, TreeNode50, TreeNode55, TreeNode57, TreeNode62})
             Tv_mainframe.SelectedImageKey = "for_treeview_record_grayred_512.png"
@@ -829,6 +829,27 @@
             Imglst_mainframe.Images.SetKeyName(80, "for_treeview_puzzle_128.png")
             Imglst_mainframe.Images.SetKeyName(81, "for_treeview_puzzle_256.png")
             Imglst_mainframe.Images.SetKeyName(82, "for_treeview_puzzle_512.png")
+            Imglst_mainframe.Images.SetKeyName(83, "for_treeview_settings-default_16.png")
+            Imglst_mainframe.Images.SetKeyName(84, "for_treeview_settings-default_24.png")
+            Imglst_mainframe.Images.SetKeyName(85, "for_treeview_settings-default_32.png")
+            Imglst_mainframe.Images.SetKeyName(86, "for_treeview_settings-default_64.png")
+            Imglst_mainframe.Images.SetKeyName(87, "for_treeview_settings-default_128.png")
+            Imglst_mainframe.Images.SetKeyName(88, "for_treeview_settings-default_256.png")
+            Imglst_mainframe.Images.SetKeyName(89, "for_treeview_settings-default_512.png")
+            Imglst_mainframe.Images.SetKeyName(90, "for_treeview_delivery-truck_16.png")
+            Imglst_mainframe.Images.SetKeyName(91, "for_treeview_delivery-truck_24.png")
+            Imglst_mainframe.Images.SetKeyName(92, "for_treeview_delivery-truck_32.png")
+            Imglst_mainframe.Images.SetKeyName(93, "for_treeview_delivery-truck_64.png")
+            Imglst_mainframe.Images.SetKeyName(94, "for_treeview_delivery-truck_128.png")
+            Imglst_mainframe.Images.SetKeyName(95, "for_treeview_delivery-truck_256.png")
+            Imglst_mainframe.Images.SetKeyName(96, "for_treeview_delivery-truck_512.png")
+            Imglst_mainframe.Images.SetKeyName(97, "for_treeview_pie-chart_16.png")
+            Imglst_mainframe.Images.SetKeyName(98, "for_treeview_pie-chart_24.png")
+            Imglst_mainframe.Images.SetKeyName(99, "for_treeview_pie-chart_32.png")
+            Imglst_mainframe.Images.SetKeyName(100, "for_treeview_pie-chart_64.png")
+            Imglst_mainframe.Images.SetKeyName(101, "for_treeview_pie-chart_128.png")
+            Imglst_mainframe.Images.SetKeyName(102, "for_treeview_pie-chart_256.png")
+            Imglst_mainframe.Images.SetKeyName(103, "for_treeview_pie-chart_512.png")
             ' 
             ' PnlStorage
             ' 

@@ -9,9 +9,9 @@
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 If (find.XOSqlText = String.Empty) OrElse (dataproperties.DepartmentIsForceRefresh) Then
-                    varWhere += $"{tDepartment.C_DepartmentClient} = {tDepartment.P_DepartmentClient}"
+                    varWhere += $"{tDepartment.C_DepartmentClient} = {tIngrid.P_ClientId}"
                 Else
-                    varWhere += $"{tDepartment.C_DepartmentClient} = {tDepartment.P_DepartmentClient} and (c.company_code like '%{find.XOSqlText}%') or (d.department_code like '%{find.XOSqlText}%') or (d.department_name like '%{find.XOSqlText}%') or (d.department_description like '%{find.XOSqlText}%')"
+                    varWhere += $"{tDepartment.C_DepartmentClient} = {tIngrid.P_ClientId} and (c.company_code like '%{find.XOSqlText}%') or (d.department_code like '%{find.XOSqlText}%') or (d.department_name like '%{find.XOSqlText}%') or (d.department_description like '%{find.XOSqlText}%')"
                 End If
 
                 varDatabaseRequestMssql2008(0).Query = $"select d.department_id, " &
@@ -29,9 +29,9 @@
 
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If (find.XOSqlText = String.Empty) OrElse (dataproperties.DepartmentIsForceRefresh) Then
-                    varWhere += $"({tDepartment.C_DepartmentClient} = {tClient.P_ClientId})"
+                    varWhere += $"({tDepartment.C_DepartmentClient} = {tIngrid.P_ClientId})"
                 Else
-                    varWhere += $"({tDepartment.C_DepartmentClient} = {tClient.P_ClientId}) and (c.company_code Like '%{find.XOSqlText}%') or (d.department_code like '%{find.XOSqlText}%') or (d.department_name like '%{find.XOSqlText}%') or (d.department_description like '%{find.XOSqlText}%')"
+                    varWhere += $"({tDepartment.C_DepartmentClient} = {tIngrid.P_ClientId}) and (c.company_code Like '%{find.XOSqlText}%') or (d.department_code like '%{find.XOSqlText}%') or (d.department_name like '%{find.XOSqlText}%') or (d.department_description like '%{find.XOSqlText}%')"
                 End If
 
                 varDatabaseRequestMysql(0).Query = $"select {tDepartment.S}.{tDepartment.C_DepartmentId}, " &
@@ -41,7 +41,8 @@
                                                    $"{tDepartment.S}.{tDepartment.C_DepartmentDescription} " &
                                                    $"from {tDepartment.TableName} {tDepartment.S} " &
                                                    $"inner join {tCompany.TableName} {tCompany.S} " &
-                                                   $"on {tDepartment.S}.{tDepartment.C_DepartmentCompany} = {tCompany.S}.{tCompany.C_CompanyId} {varWhere} " &
+                                                   $"on {tDepartment.S}.{tDepartment.C_DepartmentCompany} = {tCompany.S}.{tCompany.C_CompanyId} " &
+                                                   $"{varWhere} " &
                                                    $"order by {tCompany.S}.{tCompany.C_CompanyCode}, " &
                                                    $"{tDepartment.S}.{tDepartment.C_DepartmentCode} "
 
@@ -114,9 +115,9 @@
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 If dataproperties.DepartmentIsNew Then
-                    varWhere += $"(d.department_company = @CompanyId) and (d.department_code = @DepartmentCode)"
+                    varWhere += $"(d.department_company = @CompanyId) And (d.department_code = @DepartmentCode)"
                 Else
-                    varWhere += $"(d.department_company = @CompanyId) and (d.department_code = @DepartmentCode) and (d.department_id <> @DepartmentId)"
+                    varWhere += $"(d.department_company = @CompanyId) And (d.department_code = @DepartmentCode) And (d.department_id <> @DepartmentId)"
                 End If
 
                 varDatabaseRequestMssql2008(1).Query = $"select count(d.department_id) as [rows] from dbo.man_department d {varWhere}"
@@ -124,9 +125,9 @@
                 varIsDuplicate = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If dataproperties.DepartmentIsNew Then
-                    varWhere += $"({tDepartment.S}.{tDepartment.C_DepartmentCompany} = {tCompany.P_CompanyId}) and ({tDepartment.S}.{tDepartment.C_DepartmentCode} = {tDepartment.P_DepartmentCode}) and ({tDepartment.C_DepartmentClient} = {tClient.P_ClientId})"
+                    varWhere += $"({tDepartment.S}.{tDepartment.C_DepartmentCompany} = {tCompany.P_CompanyId}) And ({tDepartment.S}.{tDepartment.C_DepartmentCode} = {tDepartment.P_DepartmentCode}) And ({tDepartment.C_DepartmentClient} = {tIngrid.P_ClientId})"
                 Else
-                    varWhere += $"({tDepartment.S}.{tDepartment.C_DepartmentCompany} = {tCompany.P_CompanyId}) and ({tDepartment.S}.{tDepartment.C_DepartmentCode} = {tDepartment.P_DepartmentCode}) and ({tDepartment.C_DepartmentClient} = {tClient.P_ClientId} and {tDepartment.S}.{tDepartment.C_DepartmentId} <> {tDepartment.P_DepartmentId})"
+                    varWhere += $"({tDepartment.S}.{tDepartment.C_DepartmentCompany} = {tCompany.P_CompanyId}) And ({tDepartment.S}.{tDepartment.C_DepartmentCode} = {tDepartment.P_DepartmentCode}) And ({tDepartment.C_DepartmentClient} = {tIngrid.P_ClientId} And {tDepartment.S}.{tDepartment.C_DepartmentId} <> {tDepartment.P_DepartmentId})"
                 End If
 
                 varDatabaseRequestMysql(1).Query = $"select count({tDepartment.S}.{tDepartment.C_DepartmentId}) as `rows` " &
@@ -152,7 +153,7 @@
                 varDatabaseRequestMysql(1).Query = $"select {tCompany.S}.{tCompany.C_CompanyId}, " &
                                                    $"concat({tCompany.S}.{tCompany.C_CompanyCode}, ' - ', {tCompany.S}.{tCompany.C_CompanyName}) as {tCompany.C_CompanyCode} " &
                                                    $"from {tCompany.TableName} {tCompany.S} " &
-                                                   $"where {tCompany.S}.{tCompany.C_CompanyClient} = {tClient.P_ClientId} " &
+                                                   $"where {tCompany.S}.{tCompany.C_CompanyClient} = {tIngrid.P_ClientId} " &
                                                    $"order by {tCompany.S}.{tCompany.C_CompanyCode}"
                 varDatabaseRequestMysql(1).Dropdown = company
                 varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TCompany", dataproperties.AllParameters)
@@ -205,7 +206,7 @@
                                                            $"{tDepartment.P_DepartmentCode}, " &
                                                            $"{tDepartment.P_DepartmentName}, " &
                                                            $"{tDepartment.P_DepartmentDescription}, " &
-                                                           $"{tClient.P_ClientId})"
+                                                           $"{tIngrid.P_ClientId})"
                     Else
                         varDatabaseRequestMysql(1).Query = $"update {tDepartment.TableName} set " &
                                                            $"{tDepartment.C_DepartmentCompany} = {tCompany.P_CompanyId}, " &

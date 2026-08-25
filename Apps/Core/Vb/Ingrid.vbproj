@@ -424,6 +424,26 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RContent.rdlc" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_64.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_64.png" />
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_64.png" />
   </ItemGroup>
   <ItemGroup>
     <None Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.xsc">
@@ -542,6 +562,7 @@
     <Content Include="Resources\catalog.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_128.png" />
     <EmbeddedResource Include="Resources\for_treeview_account-settings_128.png" />
     <EmbeddedResource Include="Resources\for_treeview_account-settings_16.png" />
     <EmbeddedResource Include="Resources\for_treeview_account-settings_24.png" />
@@ -755,6 +776,13 @@
     <None Remove="Resources\for_treeview_coin_512.png" />
     <None Remove="Resources\for_treeview_coin_64.png" />
     <None Remove="Resources\for_treeview_crisismanagement_16.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_128.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_16.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_24.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_256.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_32.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_512.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_64.png" />
     <None Remove="Resources\for_treeview_deliverytruck_16.png" />
     <None Remove="Resources\for_treeview_documents_16.png" />
     <None Remove="Resources\for_treeview_dollar_16.png" />
@@ -789,6 +817,13 @@
     <None Remove="Resources\for_treeview_online-shop_512.png" />
     <None Remove="Resources\for_treeview_online-shop_64.png" />
     <None Remove="Resources\for_treeview_performace_16.png" />
+    <None Remove="Resources\for_treeview_pie-chart_128.png" />
+    <None Remove="Resources\for_treeview_pie-chart_16.png" />
+    <None Remove="Resources\for_treeview_pie-chart_24.png" />
+    <None Remove="Resources\for_treeview_pie-chart_256.png" />
+    <None Remove="Resources\for_treeview_pie-chart_32.png" />
+    <None Remove="Resources\for_treeview_pie-chart_512.png" />
+    <None Remove="Resources\for_treeview_pie-chart_64.png" />
     <None Remove="Resources\for_treeview_playbutton_512.png" />
     <None Remove="Resources\for_treeview_puzzle_128.png" />
     <None Remove="Resources\for_treeview_puzzle_16.png" />
@@ -812,6 +847,13 @@
     <None Remove="Resources\for_treeview_record_grayred_32.png" />
     <None Remove="Resources\for_treeview_record_grayred_512.png" />
     <None Remove="Resources\for_treeview_record_grayred_64.png" />
+    <None Remove="Resources\for_treeview_settings-default_128.png" />
+    <None Remove="Resources\for_treeview_settings-default_16.png" />
+    <None Remove="Resources\for_treeview_settings-default_24.png" />
+    <None Remove="Resources\for_treeview_settings-default_256.png" />
+    <None Remove="Resources\for_treeview_settings-default_32.png" />
+    <None Remove="Resources\for_treeview_settings-default_512.png" />
+    <None Remove="Resources\for_treeview_settings-default_64.png" />
     <None Remove="Resources\svg-images.svg" />
     <None Remove="Resources\svg-x-circle-fill.svg" />
   </ItemGroup>

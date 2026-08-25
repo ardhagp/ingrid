@@ -101,7 +101,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMpostEditor_Activated(sender As Object, e As EventArgs) Handles Me.Activated
             ' Set active module to UserParameters
-            SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
+            SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
         End Sub
     End Class
 End Namespace

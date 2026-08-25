@@ -40,7 +40,7 @@
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $"select count({tUser.S}.{tUser.C_UserId}) " &
                                                        $"from {tUser.TableName} {tUser.S} " &
-                                                       $"where ({tUser.S}.{tUser.C_UserId} = {tUser.P_UserId}) " &
+                                                       $"where ({tUser.S}.{tUser.C_UserId} = {tIngrid.P_UserId}) " &
                                                        $"And ({tUser.S}.{tUser.C_UserIsRoot} = 1)"
                     varIsAdmin = CBool(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername))
                 End If
@@ -58,8 +58,8 @@
                                                            $"from {tUserAccess.TableName} {tUserAccess.S} " &
                                                            $"inner join {tModule.TableName} {tModule.S} " &
                                                            $"on {tModule.S}.{tModule.C_ModuleId} = {tUserAccess.S}.{tUserAccess.C_UserAccessModule} " &
-                                                           $"where ({tModule.S}.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}) " &
-                                                           $"And ({tUserAccess.S}.{tUserAccess.C_UserAccessUser} = {tUser.P_UserId}) " &
+                                                           $"where ({tModule.S}.{tModule.C_ModuleCode} = {tIngrid.P_ModuleCode}) " &
+                                                           $"And ({tUserAccess.S}.{tUserAccess.C_UserAccessUser} = {tIngrid.P_UserId}) " &
                                                            $"And ({varTypeOfAccess} = 1)"
                         varView = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername))
                     End If
@@ -96,7 +96,7 @@
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $"select count({tModule.S}.{tModule.C_ModuleId}) " &
                                                        $"from {tModule.TableName} {tModule.S} " &
-                                                       $"where {tModule.S}.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}"
+                                                       $"where {tModule.S}.{tModule.C_ModuleCode} = {tIngrid.P_ModuleCode}"
                     varIsExist = CType(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername), Boolean)
                 End If
                 Return varIsExist
@@ -122,7 +122,7 @@
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $"select count({tModule.S}.{tModule.C_ModuleId}) " &
                                                        $"from {tModule.TableName} {tModule.S} " &
-                                                       $"where {tModule.S}.{tModule.C_ModuleCode} = {tModule.P_ModuleCode} " &
+                                                       $"where {tModule.S}.{tModule.C_ModuleCode} = {tIngrid.P_ModuleCode} " &
                                                        $"And {tModule.S}.{tModule.C_ModuleIsMaintenance} = 1"
                     varIsLocked = CBool(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername))
                 End If
@@ -299,9 +299,9 @@
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(0).Query = $"select count(nt.notification_id) as `new_notification` " &
                                                        $"from sys_notification nt " &
-                                                       $"where (nt.notification_employee = @EmployeeId) " &
+                                                       $"where (nt.notification_employee = {tIngrid.P_EmployeeId}) " &
                                                        $"And (nt.notification_isread = 0)"
-                    varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.UserParameters))
+                    varIsExist = CInt(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters))
                 End If
                 Return varIsExist
             Catch ex As Exception
@@ -575,8 +575,8 @@
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(0).Query = $"select {tClient.S}.{tClient.C_ClientId} " &
                                                    $"from {tClient.TableName} {tClient.S} " &
-                                                   $"where {tClient.S}.{tClient.C_ClientCode} = {tClient.P_ClientCode}"
-                varResult = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.UserParameters).ToString
+                                                   $"where {tClient.S}.{tClient.C_ClientCode} = {tIngrid.P_ClientCode}"
+                varResult = varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, dataproperties.AllParameters).ToString
             End If
             Return If(String.IsNullOrEmpty(varResult), 0, CLng(varResult))
         End Function

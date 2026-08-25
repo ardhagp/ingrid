@@ -42,16 +42,16 @@
             End If
 
             With varDataProperties
-                SetValue(.UserParameters, tUser.P_Username, TxtUsername.XOSqlText)
-                SetValue(.UserParameters, tUser.P_UserPassword, CMCv.Security.Encryption.MD5(TxtPassword.XOSqlText))
+                SetValue(.AllParameters, tIngrid.P_Username, TxtUsername.XOSqlText)
+                SetValue(.AllParameters, tIngrid.P_UserPassword, CMCv.Security.Encryption.MD5(TxtPassword.XOSqlText))
             End With
-            CMDuac.Login.GetUserProperties(varDataProperties, varDataProperties.UserParameters, varDatasetIngrid)
+            CMDuac.Login.GetUserProperties(varDataProperties, varDataProperties.AllParameters, varDatasetIngrid)
 
             If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
                 RaiseEvent EventLoginFailed()
                 varWrongLogin += 1
                 SLFStatus.Items(0).Text = "Login Failed"
-                varLogUser.LoginFailed(varDataProperties, varDataProperties.UserParameters)
+                varLogUser.LoginFailed(varDataProperties, varDataProperties.AllParameters)
 
                 With proLog
                     .Message = TxtUsername.XOSqlText & " failed to login."
@@ -77,19 +77,19 @@
             End If
 
             With varDataProperties
-                SetValue(.UserParameters, tUser.P_UserId, CLng(varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tUser.C_UserId)))
-                SetValue(.UserParameters, tUser.P_UserIsRoot, CBool(varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tUser.C_UserIsRoot)))
-                SetValue(.UserParameters, tEmployee.P_EmployeeId, CLng(varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeId)))
-                SetValue(.UserParameters, tEmployee.P_EmployeeNumber, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeNumber))
-                SetValue(.UserParameters, tEmployee.P_EmployeeFullName, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeFullName))
-                SetValue(.UserParameters, tEmployee.P_EmployeeNickname, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeNickname))
-                SetValue(.UserParameters, tEmployee.P_EmployeePersonalIdNumber, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeePersonalIdNumber))
-                SetValue(.UserParameters, tEmployee.P_EmployeeGender, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeGender))
-                SetValue(.UserParameters, tPosition.P_PositionCode, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tPosition.C_PositionCode))
-                SetValue(.UserParameters, tPosition.P_PositionName, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tPosition.C_PositionName))
+                SetValue(.AllParameters, tIngrid.P_UserId, CLng(varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tUser.C_UserId)))
+                SetValue(.AllParameters, tIngrid.P_UserIsRoot, CBool(varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tUser.C_UserIsRoot)))
+                SetValue(.AllParameters, tIngrid.P_EmployeeId, CLng(varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeId)))
+                SetValue(.AllParameters, tIngrid.P_EmployeeNumber, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeNumber))
+                SetValue(.AllParameters, tIngrid.P_EmployeeFullName, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeFullName))
+                SetValue(.AllParameters, tIngrid.P_EmployeeNickname, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeNickname))
+                SetValue(.AllParameters, tIngrid.P_EmployeePersonalIdNumber, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeePersonalIdNumber))
+                SetValue(.AllParameters, tIngrid.P_EmployeeGender, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeGender))
+                SetValue(.AllParameters, tIngrid.P_PositionCode, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tPosition.C_PositionCode))
+                SetValue(.AllParameters, tIngrid.P_PositionName, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tPosition.C_PositionName))
             End With
 
-            varLogUser.LoginSuccess(varDataProperties, varDataProperties.UserParameters)
+            varLogUser.LoginSuccess(varDataProperties, varDataProperties.AllParameters)
 
             With proLog
                 .Message = varDataProperties.EmployeeFirstName & " is login."

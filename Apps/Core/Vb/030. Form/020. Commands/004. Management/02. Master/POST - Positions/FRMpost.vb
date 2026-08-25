@@ -125,9 +125,9 @@ Namespace UI.Canvas
         Private Sub FRMpost_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             ' Set active module to UserParameters
             With varDataProperties
-                SetValue(.UserParameters, tModule.P_ModuleCode, varThisModuleCode)
-                varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.UserParameters)
-                SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
+                SetValue(.AllParameters, tModule.P_ModuleCode, varThisModuleCode)
+                varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.AllParameters)
+                SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
             End With
 
             ' Continue to Load anything for this module
@@ -160,7 +160,7 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMpost_Activated(sender As Object, e As EventArgs) Handles Me.Activated
             ' Set active module to UserParameters
-            SetValue(varDataProperties.UserParameters, tModule.P_ModuleCode, varThisModuleCode)
+            SetValue(varDataProperties.AllParameters, tIngrid.P_ModuleCode, varThisModuleCode)
         End Sub
     End Class
 End Namespace

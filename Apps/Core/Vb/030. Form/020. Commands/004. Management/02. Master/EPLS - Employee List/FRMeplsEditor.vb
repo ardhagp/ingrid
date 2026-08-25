@@ -21,7 +21,6 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMeplsEditor_Activated(sender As Object, e As EventArgs) Handles Me.Activated
             ' Set active module to UserParameters
-            SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
             SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
         End Sub
 
@@ -29,9 +28,9 @@ Namespace UI.Canvas
         Private Sub FRMeplsEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             ' Set active module to UserParameters
             CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnModulesRoles)
-            SetValue(varDataProperties.UserParameters, tModule.P_ModuleCode, varThisModuleCode)
-            varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.UserParameters)
-            SetModuleIdentifier(varDataProperties.UserParameters, varThisModuleCode, varThisModuleId)
+            SetValue(varDataProperties.AllParameters, tModule.P_ModuleCode, varThisModuleCode)
+            varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.AllParameters)
+            SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
 
             ' Continue to Load anything for this module
             varDataProperties.EmployeeIsHavePhoto = False

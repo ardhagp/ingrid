@@ -37,7 +37,7 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMccinEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            SetValue(varDataProperties.AllParameters, tCompany.P_CompanyClient, varDataProperties.UserParameters(tClient.P_ClientId))
+            SetValue(varDataProperties.AllParameters, tCompany.P_CompanyClient, varDataProperties.AllParameters(tIngrid.P_ClientId))
             If (varDataProperties.CompanyIsNew) Then
                 ChkAddNew.Visible = True
                 ChkAddNew.Checked = False
@@ -129,8 +129,8 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMccinEditor_Activated(sender As Object, e As EventArgs) Handles Me.Activated
             ' Set active module to UserParameters
-            SetValue(varDataProperties.UserParameters, tModule.P_ModuleId, varThisModuleId)
-            SetValue(varDataProperties.UserParameters, tModule.P_ModuleCode, varThisModuleCode)
+            SetValue(varDataProperties.AllParameters, tIngrid.P_ModuleId, varThisModuleId)
+            SetValue(varDataProperties.AllParameters, tIngrid.P_ModuleCode, varThisModuleCode)
         End Sub
     End Class
 End Namespace
