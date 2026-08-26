@@ -33,6 +33,8 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcdinEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            SLFLogo.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp($"\Resources\svg-EDIT.svg", True, 512, 512)
+
             Call FillCompany(CboCompany)
             If varDataProperties.DepartmentIsNew Then
 

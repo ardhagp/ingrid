@@ -37,6 +37,8 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMccinEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            SLFLogo.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp($"\Resources\svg-EDIT.svg", True, 512, 512)
+
             SetValue(varDataProperties.AllParameters, tCompany.P_CompanyClient, varDataProperties.AllParameters(tIngrid.P_ClientId))
             If (varDataProperties.CompanyIsNew) Then
                 ChkAddNew.Visible = True
@@ -132,5 +134,6 @@
             SetValue(varDataProperties.AllParameters, tIngrid.P_ModuleId, varThisModuleId)
             SetValue(varDataProperties.AllParameters, tIngrid.P_ModuleCode, varThisModuleCode)
         End Sub
+
     End Class
 End Namespace

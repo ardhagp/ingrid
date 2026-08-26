@@ -26,6 +26,8 @@ Namespace UI.Canvas
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMeplsEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            SLFLogo.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp($"\Resources\svg-EDIT.svg", True, 512, 512)
+
             ' Set active module to UserParameters
             CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnModulesRoles)
             SetValue(varDataProperties.AllParameters, tModule.P_ModuleCode, varThisModuleCode)
