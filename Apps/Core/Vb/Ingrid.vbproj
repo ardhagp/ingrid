@@ -444,9 +444,6 @@
     <EmbeddedResource Include="Resources\for_treeview_settings-default_32.png" />
     <EmbeddedResource Include="Resources\for_treeview_settings-default_512.png" />
     <EmbeddedResource Include="Resources\for_treeview_settings-default_64.png" />
-    <Content Include="Resources\svg-404.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.xsc">
@@ -565,36 +562,6 @@
     <Content Include="Resources\catalog.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\svg-company.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\svg-CCIN.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\svg-department.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\svg-CDIN.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\svg-EDIT.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\svg-key.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\svg-lock.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\svg-EPLS.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\svg-LOGIN.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\svg-LOGIN02.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="Resources\for_treeview_settings-default_128.png" />
     <EmbeddedResource Include="Resources\for_treeview_account-settings_128.png" />
     <EmbeddedResource Include="Resources\for_treeview_account-settings_16.png" />
@@ -676,15 +643,6 @@
     <EmbeddedResource Include="Resources\for_treeview_record_grayred_512.png" />
     <EmbeddedResource Include="Resources\for_treeview_record_grayred_64.png" />
     <Content Include="Resources\ingrid_icon_2.ico" />
-    <Content Include="Resources\svg-images.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\svg-play-fill.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\svg-x-circle-fill.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="Resources\COMPRESS_001_512_icon_.png" />
     <EmbeddedResource Include="Resources\Connected.ico" />
     <EmbeddedResource Include="Resources\CONN_.png" />
@@ -885,16 +843,6 @@
     <None Remove="Resources\for_treeview_settings-default_32.png" />
     <None Remove="Resources\for_treeview_settings-default_512.png" />
     <None Remove="Resources\for_treeview_settings-default_64.png" />
-    <None Remove="Resources\svg-404.svg" />
-    <None Remove="Resources\svg-company.svg" />
-    <None Remove="Resources\svg-department.svg" />
-    <None Remove="Resources\svg-EDIT.svg" />
-    <None Remove="Resources\svg-images.svg" />
-    <None Remove="Resources\svg-key.svg" />
-    <None Remove="Resources\svg-lock.svg" />
-    <None Remove="Resources\svg-LOGIN.svg" />
-    <None Remove="Resources\svg-LOGIN02.svg" />
-    <None Remove="Resources\svg-x-circle-fill.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="My Project\Resources.resx">
