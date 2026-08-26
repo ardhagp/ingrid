@@ -33,7 +33,65 @@
     <DefineDebug>False</DefineDebug>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Resources\svg-404.svg" />
+    <None Remove="Resources\svg-CCIN.svg" />
+    <None Remove="Resources\svg-CDIN.svg" />
+    <None Remove="Resources\svg-company.svg" />
+    <None Remove="Resources\svg-department.svg" />
+    <None Remove="Resources\svg-EDIT.svg" />
+    <None Remove="Resources\svg-EPLS.svg" />
+    <None Remove="Resources\svg-images.svg" />
+    <None Remove="Resources\svg-key.svg" />
+    <None Remove="Resources\svg-lock.svg" />
+    <None Remove="Resources\svg-LOGIN.svg" />
+    <None Remove="Resources\svg-LOGIN02.svg" />
+    <None Remove="Resources\svg-play-fill.svg" />
+    <None Remove="Resources\svg-x-circle-fill.svg" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Resources\ingrid_icon_2.ico" />
+    <Content Include="Resources\svg-404.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-CCIN.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-CDIN.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-company.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-department.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-EDIT.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-EPLS.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-images.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-key.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-lock.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-LOGIN.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-LOGIN02.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-play-fill.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-x-circle-fill.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Import Include="System.Data" />
