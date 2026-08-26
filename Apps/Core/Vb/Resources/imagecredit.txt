@@ -1,0 +1,11 @@
+﻿<a href="https://www.flaticon.com/free-icons/product" title="product icons">Product icons created by Magnific - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/folder" title="folder icons">Folder icons created by kmg design - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/identity" title="identity icons">Identity icons created by Md Tanvirul Haque - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/rec-button" title="rec-button icons">Rec-button icons created by Andrean Prabowo - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/document" title="document icons">Document icons created by Magnific - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/coins" title="coins icons">Coins icons created by Pixel perfect - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/puzzle" title="puzzle icons">Puzzle icons created by Magnific - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/settings" title="settings icons">Settings icons created by logisstudio - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/truck" title="truck icons">Truck icons created by Pixel perfect - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/pie-chart" title="pie chart icons">Pie chart icons created by Magnific - Flaticon</a>

@@ -16,7 +16,7 @@
             Dim varAccessValue As Boolean
 
             Try
-                varAccessValue = varAccess.User(varDataProperties, varDataProperties.UserParameters)
+                varAccessValue = varAccess.User(varDataProperties, varDataProperties.AllParameters)
                 Return varAccessValue
             Catch ex As Exception
                 System.Media.SystemSounds.Exclamation.Play()
@@ -41,7 +41,7 @@ Namespace Application
             Dim varIsModuleReady As Boolean
 
             Try
-                varIsModuleReady = LibSQL.CMDapp.Modules.Exist(dataproperties, dataproperties.UserParameters)
+                varIsModuleReady = LibSQL.CMDapp.Modules.Exist(dataproperties, dataproperties.AllParameters)
 
                 Return varIsModuleReady
             Catch ex As Exception
@@ -59,7 +59,7 @@ Namespace Application
             Dim varIsModuleLocked As Boolean
 
             Try
-                varIsModuleLocked = LibSQL.CMDapp.Modules.Locked(dataproperties, dataproperties.UserParameters)
+                varIsModuleLocked = LibSQL.CMDapp.Modules.Locked(dataproperties, dataproperties.AllParameters)
                 Return varIsModuleLocked
             Catch ex As Exception
                 Return False

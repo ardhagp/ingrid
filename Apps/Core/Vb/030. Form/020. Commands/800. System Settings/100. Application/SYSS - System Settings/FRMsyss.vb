@@ -9,7 +9,7 @@ Namespace UI.Canvas
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetData()
-            CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.UserParameters, varDatasetIngrid)
+            CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.AllParameters, varDatasetIngrid)
 
             'Get Profile
             With CboProfile.Items
@@ -97,40 +97,25 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Try
-                With varDataProperties.UserParameters
-                    .Remove(tSettings.P_SettingsId)
-                    .Add(tSettings.P_SettingsId, varDataProperties.SystemSettingsId)
-                    .Remove(tSettings.P_SettingsShowProfile)
-                    .Add(tSettings.P_SettingsShowProfile, CboProfile.SelectedIndex)
-                    .Remove(tSettings.P_SettingsShowStorage)
-                    .Add(tSettings.P_SettingsShowStorage, CboStorage.SelectedIndex)
-                    .Remove(tSettings.P_SettingsShowRunningText)
-                    .Remove(tSettings.P_SettingsTextMark)
-                    .Add(tSettings.P_SettingsTextMark, TxtWatermark.Text.Trim)
-                    .Add(tSettings.P_SettingsShowRunningText, CboNewsTicker.SelectedIndex)
-                    .Remove(tSettings.P_SettingsShowWatermark)
-                    .Add(tSettings.P_SettingsShowWatermark, CboWatermark.SelectedIndex)
-                    .Remove(tSettings.P_SettingsUploadPhoto)
-                    .Add(tSettings.P_SettingsUploadPhoto, CInt(nudUploadPhoto.Value))
-                    .Remove(tSettings.P_SettingsUploadPdf)
-                    .Add(tSettings.P_SettingsUploadPdf, CInt(nudUploadPDF.Value))
-                    .Remove(tSettings.P_SettingsStorageProvider)
-                    .Add(tSettings.P_SettingsStorageProvider, CboStorageProvider.Text)
-                    .Remove(tSettings.P_SettingsApiKey)
-                    .Add(tSettings.P_SettingsApiKey, TxtApiKey.Text.Trim)
-                    .Remove(tSettings.P_SettingsApiSecret)
-                    .Add(tSettings.P_SettingsApiSecret, CMCv.Security.Encryption.Aes(TxtApiSecret.Text.Trim))
-                    .Remove(tSettings.P_SettingsApiBucketName)
-                    .Add(tSettings.P_SettingsApiBucketName, TxtApiBucketName.Text.Trim)
-                    .Remove(tSettings.P_SettingsApiServiceUrl)
-                    .Add(tSettings.P_SettingsApiServiceUrl, TxtApiServiceUrl.Text.Trim)
-                    .Remove(tSettings.P_SettingsStorageDb)
-                    .Add(tSettings.P_SettingsStorageDb, TxtFileDb.Text.Trim)
-                    .Remove(tSettings.P_SettingsMinPasswordLength)
-                    .Add(tSettings.P_SettingsMinPasswordLength, CInt(nudMinPassword.Value))
+                With varDataProperties
+                    SetValue(.AllParameters, tSettings.P_SettingsId, varDataProperties.SystemSettingsId)
+                    SetValue(.AllParameters, tSettings.P_SettingsShowProfile, CboProfile.SelectedIndex)
+                    SetValue(.AllParameters, tSettings.P_SettingsShowStorage, CboStorage.SelectedIndex)
+                    SetValue(.AllParameters, tSettings.P_SettingsShowRunningText, CboNewsTicker.SelectedIndex)
+                    SetValue(.AllParameters, tSettings.P_SettingsTextMark, TxtWatermark.Text.Trim)
+                    SetValue(.AllParameters, tSettings.P_SettingsShowWatermark, CboWatermark.SelectedIndex)
+                    SetValue(.AllParameters, tSettings.P_SettingsUploadPhoto, CInt(nudUploadPhoto.Value))
+                    SetValue(.AllParameters, tSettings.P_SettingsUploadPdf, CInt(nudUploadPDF.Value))
+                    SetValue(.AllParameters, tSettings.P_SettingsStorageProvider, CboStorageProvider.Text)
+                    SetValue(.AllParameters, tSettings.P_SettingsApiKey, TxtApiKey.Text.Trim)
+                    SetValue(.AllParameters, tSettings.P_SettingsApiSecret, CMCv.Security.Encryption.Aes(TxtApiSecret.Text.Trim))
+                    SetValue(.AllParameters, tSettings.P_SettingsApiBucketName, TxtApiBucketName.Text.Trim)
+                    SetValue(.AllParameters, tSettings.P_SettingsApiServiceUrl, TxtApiServiceUrl.Text.Trim)
+                    SetValue(.AllParameters, tSettings.P_SettingsStorageDb, TxtFileDb.Text.Trim)
+                    SetValue(.AllParameters, tSettings.P_SettingsMinPasswordLength, CInt(nudMinPassword.Value))
                 End With
 
-                If CMDsyss.Editor.SaveSettings(varDataProperties, varDataProperties.UserParameters) Then
+                If CMDsyss.Editor.SaveSettings(varDataProperties, varDataProperties.AllParameters) Then
                     SLFStatus.Items(0).Text = "Saved"
                 End If
             Catch ex As Exception

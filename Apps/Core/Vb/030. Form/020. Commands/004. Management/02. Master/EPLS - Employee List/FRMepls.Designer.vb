@@ -68,9 +68,9 @@
             ' 
             DgnEPLS.AllowUserToAddRows = False
             DgnEPLS.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(244), CByte(219), CByte(91))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(201), CByte(213), CByte(131))
             DgnEPLS.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-            DgnEPLS.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+            DgnEPLS.BackgroundColor = Color.Black
             DgnEPLS.BorderStyle = BorderStyle.None
             DgnEPLS.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnEPLS.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
@@ -138,7 +138,7 @@
             company_name.Name = "company_name"
             company_name.ReadOnly = True
             company_name.Visible = False
-            company_name.Width = 93
+            company_name.Width = 150
             ' 
             ' department_code
             ' 
@@ -159,7 +159,7 @@
             department_name.Name = "department_name"
             department_name.ReadOnly = True
             department_name.Visible = False
-            department_name.Width = 88
+            department_name.Width = 150
             ' 
             ' position_code
             ' 
@@ -180,7 +180,7 @@
             position_name.Name = "position_name"
             position_name.ReadOnly = True
             position_name.Visible = False
-            position_name.Width = 124
+            position_name.Width = 150
             ' 
             ' employee_number
             ' 

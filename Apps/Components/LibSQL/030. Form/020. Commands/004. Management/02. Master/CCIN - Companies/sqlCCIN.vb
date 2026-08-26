@@ -21,9 +21,9 @@
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TCompany")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If (find.XOSqlText = String.Empty) OrElse (dataproperties.CompanyIsForceRefresh) Then
-                    varWhere += $"({tCompany.S}.{tCompany.C_CompanyClient} = {tClient.P_ClientId})"
+                    varWhere += $"({tCompany.S}.{tCompany.C_CompanyClient} = {tIngrid.P_ClientId})"
                 Else
-                    varWhere += $"({tCompany.S}.{tCompany.C_CompanyClient} = {tClient.P_ClientId}) and ({tCompany.S}.{tCompany.C_CompanyCode} ='{find.XOSqlText}') or ({tCompany.S}.{tCompany.C_CompanyName} like '%{find.XOSqlText}%') or ({tCompany.S}.{tCompany.C_CompanySearchTerm1} like '%{find.XOSqlText}%') or ({tCompany.S}.{tCompany.C_CompanySearchTerm2} like '%{find.XOSqlText}%') or ({tCompany.S}.{tCompany.C_CompanyDescription} " &
+                    varWhere += $"({tCompany.S}.{tCompany.C_CompanyClient} = {tIngrid.P_ClientId}) and ({tCompany.S}.{tCompany.C_CompanyCode} ='{find.XOSqlText}') or ({tCompany.S}.{tCompany.C_CompanyName} like '%{find.XOSqlText}%') or ({tCompany.S}.{tCompany.C_CompanySearchTerm1} like '%{find.XOSqlText}%') or ({tCompany.S}.{tCompany.C_CompanySearchTerm2} like '%{find.XOSqlText}%') or ({tCompany.S}.{tCompany.C_CompanyDescription} " &
                                 $"like '%{find.XOSqlText}%')"
                 End If
                 varDatabaseRequestMysql(0).Query = $"select {tCompany.S}.{tCompany.C_CompanyId}, " &

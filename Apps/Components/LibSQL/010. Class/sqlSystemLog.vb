@@ -20,7 +20,7 @@
                                                  $") values (" &
                                                  $"null, " &
                                                  $"now(), " &
-                                                 $"'Failed login with username : {tUser.P_Username}', " &
+                                                 $"'Failed login with username : {tIngrid.P_Username}', " &
                                                  $"{tLog.P_LogMachine}, " &
                                                  $"{tLog.P_LogOS}, " &
                                                  $"{tLog.P_LogAppVer});"
@@ -46,7 +46,7 @@
                                                  $"{tLog.C_LogOS}, " &
                                                  $"{tLog.C_LogAppVer}" &
                                                  $") values (" &
-                                                 $"{tUser.P_UserId}, " &
+                                                 $"{tIngrid.P_UserId}, " &
                                                  $"now(), " &
                                                  $"'Login Success', " &
                                                  $"{tLog.P_LogMachine}, " &
@@ -74,7 +74,7 @@
                                                  $"{tLog.C_LogOS}, " &
                                                  $"{tLog.C_LogAppVer}" &
                                                  $") values (" &
-                                                 $"{tUser.P_UserId}, " &
+                                                 $"{tIngrid.P_UserId}, " &
                                                  $"now(), " &
                                                  $"'Logout', " &
                                                  $"{tLog.P_LogMachine}, " &

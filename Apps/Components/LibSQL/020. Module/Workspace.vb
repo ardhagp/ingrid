@@ -17,7 +17,7 @@ Namespace UI
                                                    $"{tModule.S}.{tModule.C_ModuleIsMaintenance}, " &
                                                    $"{tModule.S}.{tModule.C_ModuleIsSystem} " &
                                                    $"from {tModule.TableName} {tModule.S} " &
-                                                   $"where {tModule.S}.{tModule.C_ModuleCode} = {tModule.P_ModuleCode} " &
+                                                   $"where {tModule.S}.{tModule.C_ModuleCode} = {tIngrid.P_ModuleCode} " &
                                                    $"limit 0,1;"
                     varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tSysModule, parametername)
                 End If

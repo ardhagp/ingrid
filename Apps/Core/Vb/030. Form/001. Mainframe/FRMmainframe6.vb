@@ -1,5 +1,6 @@
 ﻿'For clickonce .net 6 prequisites please paste here : C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VisualStudio\BootstrapperPackages
-Imports Ingrid.My.Resources
+'Imports Ingrid.My.Resources
+Imports Svg
 
 Namespace UI.Canvas
     Public Class FRMmainframe6
@@ -160,7 +161,7 @@ Namespace UI.Canvas
         ''' <param name="commandcode"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EnterCommand(commandcode As String)
-            SetValue(varDataProperties.UserParameters, tModule.P_ModuleCode, commandcode.ToUpper.Trim)
+            SetValue(varDataProperties.AllParameters, tIngrid.P_ModuleCode, commandcode.ToUpper.Trim)
 
             ' Run RESET Command to delete all data
             If commandcode.ToUpper.Trim = "RESET" OrElse commandcode.ToUpper.Trim = "PHTRZ" Then
@@ -175,7 +176,7 @@ Namespace UI.Canvas
                 Return
             End If
 
-            LibSQL.UI.Workspace.GetModuleProperties(varDataProperties, varDataProperties.UserParameters, commandcode, varDatasetIngrid)
+            LibSQL.UI.Workspace.GetModuleProperties(varDataProperties, varDataProperties.AllParameters, commandcode, varDatasetIngrid)
 
             With varDatasetIngrid.Tables(dtModule)
                 If .Rows.Count = 0 Then
@@ -236,7 +237,7 @@ Namespace UI.Canvas
             If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure want to logout from system?", LibApp.Ingrid.Global.PopupType.Logout, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " is logout."",", "Information")
                 Call SystemLogout()
-                varLogUser.Logout(varDataProperties, varDataProperties.UserParameters)
+                varLogUser.Logout(varDataProperties, varDataProperties.AllParameters)
                 Call ClearLoginData()
             End If
         End Sub
@@ -307,10 +308,13 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Try
+                BtnExecute.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-play-fill.svg", True, 48, 48)
+                PctProfile.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-images.svg", True, 72, 72)
+
                 ' Set MDI Client Background Color
                 For Each ctrl As Control In Me.Controls
                     If TypeOf ctrl Is MdiClient Then
-                        ctrl.BackColor = Color.FromArgb(0, 0, 0)
+                        ctrl.BackColor = Color.FromArgb(11, 28, 45)
                     End If
                 Next
 
@@ -344,7 +348,7 @@ Namespace UI.Canvas
                 TmrStatus.Interval = varStatusTimeWait * 1000
                 Call SystemLogout()
                 Call FirstLoad()
-                varDataProperties.UserId = 0
+                SetValue(varDataProperties.AllParameters, tIngrid.P_UserId, 0)
                 Text += " - Ver. " & varVersionapplication
                 LibSQL.Mainframe.Database.GetDatabaseProperties(varDatasetIngrid)
                 If varDatasetIngrid.Tables(dtDatabaseProperties).Rows.Count > 0 Then
@@ -356,7 +360,7 @@ Namespace UI.Canvas
                         varDataProperties.ConnectionDatabaseEngineE = CType([Enum].Parse(GetType(LibApp.Ingrid.Global.DatabaseEngine), .Item("DATABASEENGINE").ToString), LibApp.Ingrid.Global.DatabaseEngine)
                         varDataProperties.ConnectionDatabaseEngine = .Item("DATABASEENGINE").ToString
                         varDataProperties.ConnectionDatabaseName = .Item("DBFORDATA").ToString
-                        SetValue(varDataProperties.UserParameters, tClient.P_ClientCode, .Item("CLIENT").ToString)
+                        SetValue(varDataProperties.AllParameters, tIngrid.P_ClientCode, .Item("CLIENT").ToString)
                     End With
                 Else
                     Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties not found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
@@ -364,21 +368,21 @@ Namespace UI.Canvas
                 End If
 
                 If Mainframe.Database.Connect(varDataProperties) Then
-                    varClientId = varAppClient.GetClientId(varDataProperties)
+                    SetValue(varDataProperties.AllParameters, tIngrid.P_ClientId, varAppClient.GetClientId(varDataProperties))
+                    'varClientId = varAppClient.GetClientId(varDataProperties)
                     Ts_connection.Text = "Connected"
-                    varLogApplication.Run(varDataProperties, varDataProperties.UserParameters)
+                    varLogApplication.Run(varDataProperties, varDataProperties.AllParameters)
                     Dim varRecords As Integer = LibSQL.CMDccin.View.CountRecords(varDataProperties)
                     If varRecords = 0 Then
                         Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "Initial setup and essential information", True, Me)
                     End If
-                    CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.UserParameters, varDatasetIngrid)
+                    CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.AllParameters, varDatasetIngrid)
                 Else
                     Ts_connection.Text = "Disconnected"
                     Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                     Return
                 End If
-                SetValue(varDataProperties.UserParameters, tClient.P_ClientId, IIf(varClientId = 0, DBNull.Value, varClientId))
-                SetValue(varDataProperties.AllParameters, tClient.P_ClientId, IIf(varClientId = 0, DBNull.Value, varClientId))
+                SetValue(varDataProperties.AllParameters, tIngrid.P_ClientId, IIf(CInt(varDataProperties.AllParameters(tIngrid.P_ClientId)) = 0, DBNull.Value, varDataProperties.AllParameters(tIngrid.P_ClientId)))
 
                 Call CommandAutoComplete()
                 If Not (LibSQL.CMDdbic.Applications.IsCompanyExist(varDataProperties) OrElse Not LibSQL.CMDdbic.Applications.IsDepartmentExist(varDataProperties)) Then
@@ -551,16 +555,16 @@ Namespace UI.Canvas
                     Return
                 End If
 
-                PnlProfile.Visible = IsProfileVisible(CInt(.Rows(0).Item(tSettings.C_SettingsShowProfile)), CBool(varDataProperties.UserParameters(tUser.P_UserIsRoot)))
+                PnlProfile.Visible = IsProfileVisible(CInt(.Rows(0).Item(tSettings.C_SettingsShowProfile)), CBool(varDataProperties.AllParameters(tIngrid.P_UserIsRoot)))
 
                 If (PnlProfile.Visible) Then
                     LblWelcome.Text = LibSQL.CMDapp.ProfilePanel.Welcome(varDataProperties)
-                    LblEmpNumber.Text = varDataProperties.UserParameters(tEmployee.P_EmployeeNumber).ToString
+                    LblEmpNumber.Text = varDataProperties.AllParameters(tIngrid.P_EmployeeNumber).ToString
 
-                    Dim varNama = varDataProperties.UserParameters(tEmployee.P_EmployeeFullName).ToString.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+                    Dim varNama = varDataProperties.AllParameters(tIngrid.P_EmployeeFullName).ToString.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
 
                     LblEmployeeName.Text = String.Join(" ", varNama.Take(2))
-                    LblPosition.Text = varDataProperties.UserParameters(tPosition.P_PositionName).ToString
+                    LblPosition.Text = varDataProperties.AllParameters(tIngrid.P_PositionName).ToString
                     'PctProfile.Image = varSqlProfiles.GetPhoto(varDataProperties.ConnectionDatabaseName, varDataProperties.EmployeeId, varDataProperties.EmployeeGender)
                     PnlProfile.Height = 320
                 Else
@@ -588,7 +592,7 @@ Namespace UI.Canvas
                     Return
                 End If
 
-                PnlStorage.Visible = IsPanelVisible(CInt(.Rows(0).Item(tSettings.C_SettingsShowStorage)), CBool(varDataProperties.UserParameters(tUser.P_UserIsRoot)))
+                PnlStorage.Visible = IsPanelVisible(CInt(.Rows(0).Item(tSettings.C_SettingsShowStorage)), CBool(varDataProperties.AllParameters(tIngrid.P_UserIsRoot)))
 
                 If (PnlStorage.Visible) Then
                     PnlStorage.Height = 158
@@ -651,7 +655,7 @@ Namespace UI.Canvas
         Private Sub Support_Click(sender As Object, e As EventArgs) Handles SUPPORT.Click
             Try
                 ' Open Wiki URL in default browser
-                Process.Start(New ProcessStartInfo(My.Settings.URL_Wiki) With {.UseShellExecute = True})
+                Process.Start(New ProcessStartInfo(My.Settings.URL_Home) With {.UseShellExecute = True})
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
             End Try
@@ -752,14 +756,14 @@ Namespace UI.Canvas
         ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Sub GetSettings()
-            LibSQL.CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.UserParameters, varDatasetIngrid)
+            LibSQL.CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.AllParameters, varDatasetIngrid)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsstartExit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
             If (varSession) Then
                 Call SystemLogout() ' Logout Process
-                varLogUser.Logout(varDataProperties, varDataProperties.UserParameters)
+                varLogUser.Logout(varDataProperties, varDataProperties.AllParameters)
                 Call ClearLoginData() ' Clear Login Data
             End If
             Me.Close()
@@ -786,6 +790,10 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
             RaiseEvent EventMainframeClose()
+        End Sub
+
+        Private Sub Tv_mainframe_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles Tv_mainframe.AfterSelect
+
         End Sub
     End Class
 End Namespace

@@ -1,4 +1,4 @@
-﻿Imports System.Runtime.Versioning
+﻿'Imports System.Runtime.Versioning
 
 Namespace UI.Control
     ''' <project>CMCC</project>
@@ -10,7 +10,7 @@ Namespace UI.Control
     Public Class Dgn
         Public Event XOSelected()
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
             Call ActivateLicenses()
@@ -31,7 +31,8 @@ Namespace UI.Control
             MyBase.RowHeadersDefaultCellStyle.SelectionForeColor = Drawing.Color.Black
             MyBase.CellBorderStyle = system.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
             MyBase.StandardTab = True
-            MyBase.BorderStyle = system.Windows.Forms.BorderStyle.None
+            MyBase.BorderStyle = System.Windows.Forms.BorderStyle.None
+            MyBase.BackgroundColor = Drawing.Color.Black
             MyBase.DoubleBuffered = True
         End Sub
 
@@ -63,7 +64,7 @@ Namespace UI.Control
             Throw New NotImplementedException
         End Function
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Dgn_CellFormatting(sender As Object, e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles Me.CellFormatting
             If XOIsGroupFirstRow AndAlso e.RowIndex > 0 AndAlso e.ColumnIndex = 0 AndAlso MyBase.Item(0, e.RowIndex - 1).Value Is e.Value Then
                 e.Value = String.Empty
@@ -72,7 +73,7 @@ Namespace UI.Control
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Dgn_CellMouseDown(sender As Object, e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles Me.CellMouseDown
             If (e.Button = System.Windows.Forms.MouseButtons.Right) OrElse (e.Button = System.Windows.Forms.MouseButtons.Left) Then
                 Try
@@ -84,12 +85,12 @@ Namespace UI.Control
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub XOGetNewColor()
             Call GenerateNewColor()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Dgn_HandleCreated(sender As Object, e As EventArgs) Handles Me.HandleCreated
             Call GenerateNewColor()
         End Sub
@@ -98,7 +99,7 @@ Namespace UI.Control
             RaiseEvent XOSelected()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GenerateNewColor()
             MyBase.AlternatingRowsDefaultCellStyle.BackColor = UI.Control.ControlCodeBase.NewRandomColor(190, 255, 190, 255, 90, 190)
         End Sub

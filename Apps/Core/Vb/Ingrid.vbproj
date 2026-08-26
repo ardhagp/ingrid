@@ -424,6 +424,26 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RContent.rdlc" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_delivery-truck_64.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_pie-chart_64.png" />
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_64.png" />
   </ItemGroup>
   <ItemGroup>
     <None Update="030. Form\020. Commands\750. Custom\Activity Reports\DAR - Daily Activity Reports\Reports\DAR_RDS.xsc">
@@ -542,7 +562,96 @@
     <Content Include="Resources\catalog.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Resources\for_treeview_settings-default_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_account-settings_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_account-settings_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_account-settings_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_account-settings_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_account-settings_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_account-settings_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_account-settings_64.png" />
+    <EmbeddedResource Include="Resources\for_treeview_box_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_box_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_box_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_box_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_box_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_box_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_box_64.png" />
+    <EmbeddedResource Include="Resources\for_treeview_coin_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_coin_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_coin_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_coin_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_coin_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_coin_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_coin_64.png" />
+    <EmbeddedResource Include="Resources\for_treeview_crisismanagement_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_deliverytruck_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_documents_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_dollar_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_64.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_paper_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_paper_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_paper_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_paper_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_paper_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_paper_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_folder_paper_64.png" />
+    <EmbeddedResource Include="Resources\for_treeview_idcard_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_idcard_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_idcard_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_idcard_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_idcard_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_idcard_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_idcard_64.png" />
+    <EmbeddedResource Include="Resources\for_treeview_id_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_menu_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_online-shop_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_online-shop_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_online-shop_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_online-shop_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_online-shop_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_online-shop_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_online-shop_64.png" />
+    <EmbeddedResource Include="Resources\for_treeview_performace_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_playbutton_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_puzzle_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_puzzle_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_puzzle_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_puzzle_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_puzzle_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_puzzle_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_puzzle_64.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_blue_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_blue_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_blue_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_blue_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_blue_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_blue_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_blue_64.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_grayred_128.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_grayred_16.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_grayred_24.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_grayred_256.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_grayred_32.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_grayred_512.png" />
+    <EmbeddedResource Include="Resources\for_treeview_record_grayred_64.png" />
     <Content Include="Resources\ingrid_icon_2.ico" />
+    <Content Include="Resources\svg-images.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-play-fill.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-x-circle-fill.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Resources\COMPRESS_001_512_icon_.png" />
     <EmbeddedResource Include="Resources\Connected.ico" />
     <EmbeddedResource Include="Resources\CONN_.png" />
@@ -596,6 +705,7 @@
   <ItemGroup>
     <PackageReference Include="AWSSDK.S3" Version="4.0.100.2" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Svg" Version="3.4.8" />
     <PackageReference Include="Syncfusion.Grid.Windows" Version="33.2.15" />
     <PackageReference Include="Syncfusion.Shared.Base" Version="33.2.15" />
     <PackageReference Include="Syncfusion.Tools.Windows" Version="33.2.15" />
@@ -644,6 +754,108 @@
     <None Remove="Resources\app_settings.db" />
     <None Remove="Resources\catalog.db" />
     <None Remove="Resources\CATALOG.mdb" />
+    <None Remove="Resources\for_treeview_account-settings_128.png" />
+    <None Remove="Resources\for_treeview_account-settings_16.png" />
+    <None Remove="Resources\for_treeview_account-settings_24.png" />
+    <None Remove="Resources\for_treeview_account-settings_256.png" />
+    <None Remove="Resources\for_treeview_account-settings_32.png" />
+    <None Remove="Resources\for_treeview_account-settings_512.png" />
+    <None Remove="Resources\for_treeview_account-settings_64.png" />
+    <None Remove="Resources\for_treeview_box_128.png" />
+    <None Remove="Resources\for_treeview_box_16.png" />
+    <None Remove="Resources\for_treeview_box_24.png" />
+    <None Remove="Resources\for_treeview_box_256.png" />
+    <None Remove="Resources\for_treeview_box_32.png" />
+    <None Remove="Resources\for_treeview_box_512.png" />
+    <None Remove="Resources\for_treeview_box_64.png" />
+    <None Remove="Resources\for_treeview_coin_128.png" />
+    <None Remove="Resources\for_treeview_coin_16.png" />
+    <None Remove="Resources\for_treeview_coin_24.png" />
+    <None Remove="Resources\for_treeview_coin_256.png" />
+    <None Remove="Resources\for_treeview_coin_32.png" />
+    <None Remove="Resources\for_treeview_coin_512.png" />
+    <None Remove="Resources\for_treeview_coin_64.png" />
+    <None Remove="Resources\for_treeview_crisismanagement_16.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_128.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_16.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_24.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_256.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_32.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_512.png" />
+    <None Remove="Resources\for_treeview_delivery-truck_64.png" />
+    <None Remove="Resources\for_treeview_deliverytruck_16.png" />
+    <None Remove="Resources\for_treeview_documents_16.png" />
+    <None Remove="Resources\for_treeview_dollar_16.png" />
+    <None Remove="Resources\for_treeview_folder_128.png" />
+    <None Remove="Resources\for_treeview_folder_16.png" />
+    <None Remove="Resources\for_treeview_folder_24.png" />
+    <None Remove="Resources\for_treeview_folder_256.png" />
+    <None Remove="Resources\for_treeview_folder_32.png" />
+    <None Remove="Resources\for_treeview_folder_512.png" />
+    <None Remove="Resources\for_treeview_folder_64.png" />
+    <None Remove="Resources\for_treeview_folder_paper_128.png" />
+    <None Remove="Resources\for_treeview_folder_paper_16.png" />
+    <None Remove="Resources\for_treeview_folder_paper_24.png" />
+    <None Remove="Resources\for_treeview_folder_paper_256.png" />
+    <None Remove="Resources\for_treeview_folder_paper_32.png" />
+    <None Remove="Resources\for_treeview_folder_paper_512.png" />
+    <None Remove="Resources\for_treeview_folder_paper_64.png" />
+    <None Remove="Resources\for_treeview_idcard_128.png" />
+    <None Remove="Resources\for_treeview_idcard_16.png" />
+    <None Remove="Resources\for_treeview_idcard_24.png" />
+    <None Remove="Resources\for_treeview_idcard_256.png" />
+    <None Remove="Resources\for_treeview_idcard_32.png" />
+    <None Remove="Resources\for_treeview_idcard_512.png" />
+    <None Remove="Resources\for_treeview_idcard_64.png" />
+    <None Remove="Resources\for_treeview_id_16.png" />
+    <None Remove="Resources\for_treeview_menu_16.png" />
+    <None Remove="Resources\for_treeview_online-shop_128.png" />
+    <None Remove="Resources\for_treeview_online-shop_16.png" />
+    <None Remove="Resources\for_treeview_online-shop_24.png" />
+    <None Remove="Resources\for_treeview_online-shop_256.png" />
+    <None Remove="Resources\for_treeview_online-shop_32.png" />
+    <None Remove="Resources\for_treeview_online-shop_512.png" />
+    <None Remove="Resources\for_treeview_online-shop_64.png" />
+    <None Remove="Resources\for_treeview_performace_16.png" />
+    <None Remove="Resources\for_treeview_pie-chart_128.png" />
+    <None Remove="Resources\for_treeview_pie-chart_16.png" />
+    <None Remove="Resources\for_treeview_pie-chart_24.png" />
+    <None Remove="Resources\for_treeview_pie-chart_256.png" />
+    <None Remove="Resources\for_treeview_pie-chart_32.png" />
+    <None Remove="Resources\for_treeview_pie-chart_512.png" />
+    <None Remove="Resources\for_treeview_pie-chart_64.png" />
+    <None Remove="Resources\for_treeview_playbutton_512.png" />
+    <None Remove="Resources\for_treeview_puzzle_128.png" />
+    <None Remove="Resources\for_treeview_puzzle_16.png" />
+    <None Remove="Resources\for_treeview_puzzle_24.png" />
+    <None Remove="Resources\for_treeview_puzzle_256.png" />
+    <None Remove="Resources\for_treeview_puzzle_32.png" />
+    <None Remove="Resources\for_treeview_puzzle_512.png" />
+    <None Remove="Resources\for_treeview_puzzle_64.png" />
+    <None Remove="Resources\for_treeview_record_16.png" />
+    <None Remove="Resources\for_treeview_record_blue_128.png" />
+    <None Remove="Resources\for_treeview_record_blue_16.png" />
+    <None Remove="Resources\for_treeview_record_blue_24.png" />
+    <None Remove="Resources\for_treeview_record_blue_256.png" />
+    <None Remove="Resources\for_treeview_record_blue_32.png" />
+    <None Remove="Resources\for_treeview_record_blue_512.png" />
+    <None Remove="Resources\for_treeview_record_blue_64.png" />
+    <None Remove="Resources\for_treeview_record_grayred_128.png" />
+    <None Remove="Resources\for_treeview_record_grayred_16.png" />
+    <None Remove="Resources\for_treeview_record_grayred_24.png" />
+    <None Remove="Resources\for_treeview_record_grayred_256.png" />
+    <None Remove="Resources\for_treeview_record_grayred_32.png" />
+    <None Remove="Resources\for_treeview_record_grayred_512.png" />
+    <None Remove="Resources\for_treeview_record_grayred_64.png" />
+    <None Remove="Resources\for_treeview_settings-default_128.png" />
+    <None Remove="Resources\for_treeview_settings-default_16.png" />
+    <None Remove="Resources\for_treeview_settings-default_24.png" />
+    <None Remove="Resources\for_treeview_settings-default_256.png" />
+    <None Remove="Resources\for_treeview_settings-default_32.png" />
+    <None Remove="Resources\for_treeview_settings-default_512.png" />
+    <None Remove="Resources\for_treeview_settings-default_64.png" />
+    <None Remove="Resources\svg-images.svg" />
+    <None Remove="Resources\svg-x-circle-fill.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="My Project\Resources.resx">

@@ -35,9 +35,9 @@
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TEmployee")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If (find.Text = String.Empty) AndAlso (dataproperties.EmployeeIsForceRefresh) Then
-                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) "
+                    varWhere += $"({tEmployee.C_EmployeeClient} = {tIngrid.P_ClientId}) "
                 Else
-                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and ({tCompany.S}.{tCompany.C_CompanyCode} like '%{find.XOSqlText}%' or {tDepartment.S}.{tDepartment.C_DepartmentCode} like '%{find.XOSqlText}%' or {tPosition.S}.{tPosition.C_PositionCode} like '%{find.XOSqlText}%' or {tEmployee.S}.{tEmployee.C_EmployeeNumber} = '{find.XOSqlText}' or {tEmployee.S}.{tEmployee.C_EmployeeFullName} like '%{find.XOSqlText}%' or " &
+                    varWhere += $"({tEmployee.C_EmployeeClient} = {tIngrid.P_ClientId}) and ({tCompany.S}.{tCompany.C_CompanyCode} like '%{find.XOSqlText}%' or {tDepartment.S}.{tDepartment.C_DepartmentCode} like '%{find.XOSqlText}%' or {tPosition.S}.{tPosition.C_PositionCode} like '%{find.XOSqlText}%' or {tEmployee.S}.{tEmployee.C_EmployeeNumber} = '{find.XOSqlText}' or {tEmployee.S}.{tEmployee.C_EmployeeFullName} like '%{find.XOSqlText}%' or " &
                                 $"{tEmployee.S}.{tEmployee.C_EmployeeNickname} like '%{find.XOSqlText}%')"
                 End If
                 varDatabaseRequestMysql(0).Query = $"select {tEmployee.S}.{tEmployee.C_EmployeeId}, " &
@@ -81,7 +81,8 @@
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                     varSuccess = True
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(1).Query = $"delete from {tEmploymentType.TableName} where ({tEmployee.C_EmployeeId} = {tEmployee.P_EmployeeId})"
+                    varDatabaseRequestMysql(1).Query = $"delete from {tEmployee.TableName} " &
+                                                       $"where ({tEmployee.C_EmployeeId} = {tEmployee.P_EmployeeId})"
                     varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                     varSuccess = True
                 End If
@@ -143,12 +144,12 @@
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeAddress}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeEmploymentType}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeIsActive}, " &
-                                                   $"if({tAttachment.S}.{tAttachment.C_AttachmentId} is null, 0, 1) `ishavephoto`, " &
+                                                   $"if({tAttachment.S}.{tAttachment.C_AttachmentId} Is null, 0, 1) `ishavephoto`, " &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentId}, " &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentUrl} " &
                                                    $"from {tEmployee.TableName} {tEmployee.S} " &
                                                    $"left join {tAttachment.TableName} {tAttachment.S} " &
-                                                   $"on {tEmployee.S}.{tEmployee.C_EmployeeId} = {tAttachment.S}.{tAttachment.C_AttachmentParentId} and " &
+                                                   $"on {tEmployee.S}.{tEmployee.C_EmployeeId} = {tAttachment.S}.{tAttachment.C_AttachmentParentId} And " &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentTag} = 'EMPLOYEE-PROFILE-PHOTO'" &
                                                    $"left join {tEmploymentType.TableName} {tEmploymentType.S} " &
                                                    $"on {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeId} = {tEmployee.S}.{tEmployee.C_EmployeeEmploymentType} " &

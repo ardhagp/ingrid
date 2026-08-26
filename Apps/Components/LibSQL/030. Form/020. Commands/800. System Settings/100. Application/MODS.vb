@@ -39,7 +39,7 @@ Namespace CMDmods
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(0).Query = $"select {tModule.S}.{tModule.C_ModuleId} " &
                                                    $"from {tModule.TableName} {tModule.S} " &
-                                                   $"where {tModule.S}.{tModule.C_ModuleCode} = {tModule.P_ModuleCode}"
+                                                   $"where {tModule.S}.{tModule.C_ModuleCode} = {tIngrid.P_ModuleCode}"
                 varModuleId = CLng(varDatabaseEngineMysql.GetValue(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, parametername))
             End If
 

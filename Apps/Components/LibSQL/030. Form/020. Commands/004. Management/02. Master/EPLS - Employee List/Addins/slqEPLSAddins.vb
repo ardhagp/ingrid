@@ -48,7 +48,7 @@ Namespace CMDepls.Addins.Browse
         Private Shared Sub RunMySql(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt)
             varWhere = $"where "
             If (dataproperties.EmployeePositionIsForceRefresh) Then
-                varWhere += $"({tPosition.C_PositionClient} = {tClient.P_ClientId}) "
+                varWhere += $"({tPosition.C_PositionClient} = {tIngrid.P_ClientId}) "
                 varDatabaseRequestMysql(0).Query = $"select {tPosition.S}.{tPosition.C_PositionId}, " &
                                                    $"{tCompany.S}.{tCompany.C_CompanyCode}, " &
                                                    $"{tCompany.S}.{tCompany.C_CompanyName}, " &
@@ -62,7 +62,7 @@ Namespace CMDepls.Addins.Browse
                                                    $"{varWhere} " &
                                                    $"order by {tCompany.S}.{tCompany.C_CompanyCode}, {tDepartment.S}.{tDepartment.C_DepartmentCode}, {tPosition.S}.{tPosition.C_PositionCode}"
             Else
-                varWhere += $"({tPosition.C_PositionClient} = {tClient.P_ClientId}) and " &
+                varWhere += $"({tPosition.C_PositionClient} = {tIngrid.P_ClientId}) and " &
                             $"(({tPosition.S}.{tPosition.C_PositionCode} = {tPosition.P_PositionSearch}) or " &
                             $"({tCompany.S}.{tCompany.C_CompanyCode} like concat('%',{tPosition.P_PositionSearch},'%')) or " &
                             $"({tCompany.S}.{tCompany.C_CompanyName} like concat('%',{tPosition.P_PositionSearch},'%')) or " &
@@ -135,9 +135,9 @@ Namespace CMDepls.Addins.Browse
         Private Shared Sub RunMySql(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt)
             varWhere = "where "
             If dataproperties.EmploymentTypeIsForceRefresh Then
-                varWhere += $"({tEmploymentType.C_EmploymentTypeClient} = {tClient.P_ClientId}) "
+                varWhere += $"({tEmploymentType.C_EmploymentTypeClient} = {tIngrid.P_ClientId}) "
             Else
-                varWhere += $"({tEmploymentType.C_EmploymentTypeClient} = {tClient.P_ClientId}) and " &
+                varWhere += $"({tEmploymentType.C_EmploymentTypeClient} = {tIngrid.P_ClientId}) and " &
                             $"(({tEmploymentType.C_EmploymentTypeCode} like concat('%', {tEmploymentType.P_EmploymentTypeSearch}, '%')) or " &
                             $"({tEmploymentType.C_EmploymentTypeName} like concat('%', {tEmploymentType.P_EmploymentTypeSearch}, '%')))"
             End If

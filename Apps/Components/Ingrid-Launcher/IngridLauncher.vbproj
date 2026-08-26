@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="svg" Version="3.4.8" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Vb\Ingrid.vbproj" />
