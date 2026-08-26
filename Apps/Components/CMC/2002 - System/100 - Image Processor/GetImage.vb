@@ -82,7 +82,7 @@
                 bmp = svgImage.Draw(width, height)
                 Return bmp
             Catch ex As Exception
-                svgImage = Svg.SvgDocument.Open(Environment.CurrentDirectory & $"\Resources\svg-x-circle-fill.svg")
+                svgImage = Svg.SvgDocument.Open(Environment.CurrentDirectory & $"\Resources\svg-404.svg")
                 bmp = svgImage.Draw(width, height)
                 Return bmp
             End Try
