@@ -1,12 +1,7 @@
-﻿'Imports System.Runtime.Versioning
-
-Namespace UI.Control
-    ''' <project>CMCC</project>
-    ''' <author>Ardha Gp</author>
+﻿Namespace UI.Control
     ''' <summary>
-    ''' Datagridview dengan warna random dan nomor urut baris.
+    ''' This control is a custom DataGridView that provides additional features and customization options for displaying tabular data in a Windows Forms application. It includes properties for showing row numbers, grouping rows, and customizing the appearance of the grid. The control also raises events when a cell is selected or when the selection changes, allowing developers to handle user interactions effectively.
     ''' </summary>
-    ''' <remarks></remarks>
     Public Class Dgn
         Public Event XOSelected()
 
@@ -17,22 +12,22 @@ Namespace UI.Control
             'MyBase.AlternatingRowsDefaultCellStyle.BackColor = CBS.NewRandomColor(190, 190, 190, 255, 255, 255)
             MyBase.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
             MyBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-            MyBase.ColumnHeadersHeightSizeMode = system.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+            MyBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             MyBase.ColumnHeadersHeight = 43
             MyBase.Font = globalFontDgn
             MyBase.EnableHeadersVisualStyles = False
-            MyBase.ColumnHeadersBorderStyle = system.Windows.Forms.DataGridViewHeaderBorderStyle.None
+            MyBase.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
             MyBase.ColumnHeadersDefaultCellStyle.BackColor = Drawing.Color.YellowGreen
             MyBase.ColumnHeadersDefaultCellStyle.SelectionBackColor = Drawing.Color.YellowGreen
             MyBase.ColumnHeadersDefaultCellStyle.SelectionForeColor = Drawing.Color.Black
-            MyBase.RowHeadersBorderStyle = system.Windows.Forms.DataGridViewHeaderBorderStyle.None
+            MyBase.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
             MyBase.RowHeadersDefaultCellStyle.BackColor = Drawing.Color.YellowGreen
             MyBase.RowHeadersDefaultCellStyle.SelectionBackColor = Drawing.Color.Yellow
             MyBase.RowHeadersDefaultCellStyle.SelectionForeColor = Drawing.Color.Black
-            MyBase.CellBorderStyle = system.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+            MyBase.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
             MyBase.StandardTab = True
             MyBase.BorderStyle = System.Windows.Forms.BorderStyle.None
-            MyBase.BackgroundColor = Drawing.Color.Black
+            MyBase.BackgroundColor = System.Drawing.Color.FromArgb(11, 28, 45)
             MyBase.DoubleBuffered = True
         End Sub
 

@@ -360,3 +360,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# License key for Visual Studio extensions or Nuget Packages
+*.licx
+*.lic

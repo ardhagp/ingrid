@@ -87,7 +87,7 @@
             BtnClear.FlatAppearance.BorderSize = 2
             BtnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnClear.FlatStyle = FlatStyle.Flat
-            BtnClear.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            BtnClear.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
             BtnClear.ForeColor = Color.White
             BtnClear.Location = New Point(437, 4)
             BtnClear.Margin = New Padding(5, 6, 5, 6)
@@ -104,7 +104,8 @@
             ' Lbl1
             ' 
             Lbl1.AutoSize = True
-            Lbl1.Font = New Font("Segoe UI", 12F)
+            Lbl1.Font = New Font("Segoe UI", 12.0F)
+            Lbl1.ForeColor = Color.White
             Lbl1.Location = New Point(20, 25)
             Lbl1.Margin = New Padding(5, 0, 5, 0)
             Lbl1.Name = "Lbl1"
@@ -115,7 +116,7 @@
             ' 
             ' TxtFind
             ' 
-            TxtFind.Font = New Font("Segoe UI", 12F)
+            TxtFind.Font = New Font("Segoe UI", 12.0F)
             TxtFind.Location = New Point(105, 19)
             TxtFind.Margin = New Padding(5, 6, 5, 6)
             TxtFind.MaxLength = 255
@@ -147,15 +148,15 @@
             ' 
             DgnAddinEmploymentType.AllowUserToAddRows = False
             DgnAddinEmploymentType.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(209), CByte(226), CByte(94))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(223), CByte(246), CByte(180))
             DgnAddinEmploymentType.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-            DgnAddinEmploymentType.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+            DgnAddinEmploymentType.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnAddinEmploymentType.BorderStyle = BorderStyle.None
             DgnAddinEmploymentType.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnAddinEmploymentType.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F)
             DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
             DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -165,7 +166,7 @@
             DgnAddinEmploymentType.Columns.AddRange(New DataGridViewColumn() {employmenttype_id, employmenttype_code, employmenttype_name, employmenttype_description})
             DgnAddinEmploymentType.Dock = DockStyle.Fill
             DgnAddinEmploymentType.EnableHeadersVisualStyles = False
-            DgnAddinEmploymentType.Font = New Font("Verdana", 8F)
+            DgnAddinEmploymentType.Font = New Font("Verdana", 8.0F)
             DgnAddinEmploymentType.Location = New Point(0, 88)
             DgnAddinEmploymentType.Margin = New Padding(5, 6, 5, 6)
             DgnAddinEmploymentType.Name = "DgnAddinEmploymentType"
@@ -173,7 +174,7 @@
             DgnAddinEmploymentType.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle3.BackColor = Color.YellowGreen
-            DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F)
             DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
             DataGridViewCellStyle3.SelectionForeColor = Color.Black

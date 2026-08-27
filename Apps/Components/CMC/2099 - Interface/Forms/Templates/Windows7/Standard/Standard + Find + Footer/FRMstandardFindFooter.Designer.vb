@@ -21,7 +21,7 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            PnlBottomButton = New UI.Control.pnl(components)
+            PnlBottomButton = New UI.Control.Pnl(components)
             imgLine = New System.Windows.Forms.PictureBox()
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -42,39 +42,15 @@
             ' 
             TxtFind.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
             ' 
-            ' SLFLogo
-            ' 
-            SLFLogo.Location = New System.Drawing.Point(7, 10)
-            SLFLogo.Size = New System.Drawing.Size(73, 85)
-            ' 
-            ' SLFSubNamaForm
-            ' 
-            SLFSubNamaForm.Location = New System.Drawing.Point(117, 58)
-            ' 
-            ' SLFNamaForm
-            ' 
-            SLFNamaForm.Location = New System.Drawing.Point(88, 7)
-            ' 
-            ' pnl_
-            ' 
-            pnl_.Size = New System.Drawing.Size(1307, 110)
-            ' 
             ' SLFPanel
             ' 
             SLFPanel.Controls.Add(PnlBottomButton)
-            SLFPanel.Location = New System.Drawing.Point(0, 110)
-            SLFPanel.Size = New System.Drawing.Size(1307, 947)
             SLFPanel.Controls.SetChildIndex(PnlFind, 0)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             ' 
-            ' SLFBackground
-            ' 
-            SLFBackground.Location = New System.Drawing.Point(3, 6)
-            SLFBackground.Size = New System.Drawing.Size(80, 92)
-            ' 
             ' PnlBottomButton
             ' 
-            PnlBottomButton.BackColor = Drawing.Color.DarkSlateGray
+            PnlBottomButton.BackColor = Drawing.Color.FromArgb(CByte(12), CByte(18), CByte(40))
             PnlBottomButton.Controls.Add(imgLine)
             PnlBottomButton.Dock = System.Windows.Forms.DockStyle.Bottom
             PnlBottomButton.Location = New System.Drawing.Point(0, 851)
@@ -96,9 +72,8 @@
             ' 
             ' FRMstandardFindFooter
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
             ClientSize = New System.Drawing.Size(1307, 1079)
-            KeyPreview = True
             Margin = New System.Windows.Forms.Padding(22, 44, 22, 44)
             Name = "FRMstandardFindFooter"
             PnlFind.ResumeLayout(False)

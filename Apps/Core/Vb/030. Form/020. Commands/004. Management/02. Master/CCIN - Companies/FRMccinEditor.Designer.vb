@@ -131,7 +131,7 @@
             TxtSearchTerm1.Tag = "txt"
             TxtSearchTerm1.XOAutoTrim = True
             TxtSearchTerm1.XOHighlightColor = Color.LightYellow
-            TxtSearchTerm1.XOHighlightOnFocus = False
+            TxtSearchTerm1.XOHighlightOnFocus = True
             TxtSearchTerm1.XOIsBlank = True
             TxtSearchTerm1.XOIsMandatory = True
             TxtSearchTerm1.XOIsPlaceholder = False
@@ -161,7 +161,7 @@
             TxtSearchTerm2.Tag = "txt"
             TxtSearchTerm2.XOAutoTrim = True
             TxtSearchTerm2.XOHighlightColor = Color.LightYellow
-            TxtSearchTerm2.XOHighlightOnFocus = False
+            TxtSearchTerm2.XOHighlightOnFocus = True
             TxtSearchTerm2.XOIsBlank = True
             TxtSearchTerm2.XOIsMandatory = True
             TxtSearchTerm2.XOIsPlaceholder = False
@@ -192,7 +192,7 @@
             TxtDescription.Tag = "txt"
             TxtDescription.XOAutoTrim = True
             TxtDescription.XOHighlightColor = Color.LightYellow
-            TxtDescription.XOHighlightOnFocus = False
+            TxtDescription.XOHighlightOnFocus = True
             TxtDescription.XOIsBlank = True
             TxtDescription.XOIsMandatory = False
             TxtDescription.XOIsPlaceholder = False
@@ -382,6 +382,7 @@
             ' tpDetail
             ' 
             tpDetail.AutoScroll = True
+            tpDetail.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             tpDetail.Controls.Add(ULbl1)
             tpDetail.Controls.Add(ULbl5)
             tpDetail.Controls.Add(TxtCode)
@@ -398,7 +399,6 @@
             tpDetail.Size = New Size(822, 655)
             tpDetail.TabIndex = 0
             tpDetail.Text = "DETAIL"
-            tpDetail.UseVisualStyleBackColor = True
             ' 
             ' ULbl6
             ' 
@@ -425,7 +425,7 @@
             BtnRemovePhoto.FlatStyle = FlatStyle.Flat
             BtnRemovePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnRemovePhoto.ForeColor = Color.DarkGray
-            BtnRemovePhoto.Location = New Point(933, 516)
+            BtnRemovePhoto.Location = New Point(923, 449)
             BtnRemovePhoto.Name = "BtnRemovePhoto"
             BtnRemovePhoto.Size = New Size(179, 80)
             BtnRemovePhoto.TabIndex = 1046
@@ -448,7 +448,7 @@
             BtnBrowsePhoto.FlatStyle = FlatStyle.Flat
             BtnBrowsePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowsePhoto.ForeColor = Color.DarkGray
-            BtnBrowsePhoto.Location = New Point(933, 428)
+            BtnBrowsePhoto.Location = New Point(923, 361)
             BtnBrowsePhoto.Name = "BtnBrowsePhoto"
             BtnBrowsePhoto.Size = New Size(179, 80)
             BtnBrowsePhoto.TabIndex = 1043
@@ -466,11 +466,11 @@
             pctbxPhoto.ErrorImage = CType(resources.GetObject("pctbxPhoto.ErrorImage"), Image)
             pctbxPhoto.Image = CType(resources.GetObject("pctbxPhoto.Image"), Image)
             pctbxPhoto.InitialImage = CType(resources.GetObject("pctbxPhoto.InitialImage"), Image)
-            pctbxPhoto.Location = New Point(931, 165)
+            pctbxPhoto.Location = New Point(923, 162)
             pctbxPhoto.Margin = New Padding(6, 5, 6, 5)
             pctbxPhoto.Name = "pctbxPhoto"
             pctbxPhoto.Padding = New Padding(26, 28, 26, 28)
-            pctbxPhoto.Size = New Size(179, 242)
+            pctbxPhoto.Size = New Size(179, 179)
             pctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
             pctbxPhoto.TabIndex = 1044
             pctbxPhoto.TabStop = False
@@ -484,10 +484,10 @@
             pcbxFrame.BorderStyle = BorderStyle.FixedSingle
             pcbxFrame.ErrorImage = CType(resources.GetObject("pcbxFrame.ErrorImage"), Image)
             pcbxFrame.InitialImage = CType(resources.GetObject("pcbxFrame.InitialImage"), Image)
-            pcbxFrame.Location = New Point(924, 155)
+            pcbxFrame.Location = New Point(916, 155)
             pcbxFrame.Margin = New Padding(6, 5, 6, 5)
             pcbxFrame.Name = "pcbxFrame"
-            pcbxFrame.Size = New Size(193, 260)
+            pcbxFrame.Size = New Size(193, 193)
             pcbxFrame.SizeMode = PictureBoxSizeMode.Zoom
             pcbxFrame.TabIndex = 1045
             pcbxFrame.TabStop = False
