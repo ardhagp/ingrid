@@ -162,6 +162,14 @@ Namespace UI.Canvas
             Call LoginClicked()
         End Sub
 
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub MsstartLogout_Click(sender As Object, e As EventArgs) Handles Ms_start_Logout.Click
+            Call LogoutClicked()
+        End Sub
+
+        ' ---------------------------------------------------------
+        ' Functions and Subroutines
+        ' ---------------------------------------------------------
         ''' <summary>
         ''' 
         ''' </summary>
@@ -342,13 +350,8 @@ Namespace UI.Canvas
         End Function
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub MsstartLogout_Click(sender As Object, e As EventArgs) Handles Ms_start_Logout.Click
-            Call LogoutClicked()
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub LogoutClicked()
-            If Decision(My.Application.Info.AssemblyName.ToUpper, "Are you sure want to logout from system?", LibApp.Ingrid.Global.PopupType.Logout, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+            If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to end your session now?", LibApp.Ingrid.Global.PopupType.Logout, "Please confirm your action", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " is logout."",", "Information")
                 Call SystemLogout()
                 varLogUser.Logout(varDataProperties, varDataProperties.AllParameters)
