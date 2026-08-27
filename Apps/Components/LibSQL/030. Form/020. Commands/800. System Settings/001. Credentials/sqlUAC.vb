@@ -34,24 +34,98 @@ Namespace CMDuac
                     '    varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                     'End If
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then 'Run if MYSQL
-                    varDatabaseRequestMysql(1).Query = $"select {tUser.S}.{tUser.C_UserId}, " &
-                                                       $"{tUser.S}.{tUser.C_UserIsRoot}, " &
-                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeId}, " &
-                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeNumber}, " &
-                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeFullName}, " &
-                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeNickname}, " &
-                                                       $"{tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}, " &
-                                                       $"{tEmployee.S}.{tEmployee.C_EmployeeGender}, " &
-                                                       $"{tPosition.S}.{tPosition.C_PositionCode}, " &
-                                                       $"{tPosition.S}.{tPosition.C_PositionName} " &
-                                                       $"From {tUser.TableName} {tUser.S} " &
-                                                       $"inner join {tEmployee.TableName} {tEmployee.S} " &
-                                                       $"On {tEmployee.S}.{tEmployee.C_EmployeeId} = {tUser.S}.{tUser.C_UserEmployee} " &
-                                                       $"inner join {tPosition.TableName} {tPosition.S} " &
-                                                       $"On {tPosition.S}.{tPosition.C_PositionId} = {tEmployee.S}.{tEmployee.C_EmployeePosition} " &
-                                                       $"where ({tEmployee.S}.{tEmployee.C_EmployeeClient} = {tIngrid.P_ClientId}) and " &
-                                                       $"({tUser.S}.{tUser.C_UserUsername} = {tIngrid.P_Username} " &
-                                                       $"And {tUser.S}.{tUser.C_UserPassword} = {tIngrid.P_UserPassword})"
+                    'varDatabaseRequestMysql(1).Query = $"select {tUser.S}.{tUser.C_UserId}, " &
+                    '                                   $"{tUser.S}.{tUser.C_UserIsRoot}, " &
+                    '                                   $"{tEmployee.S}.{tEmployee.C_EmployeeId}, " &
+                    '                                   $"{tEmployee.S}.{tEmployee.C_EmployeeNumber}, " &
+                    '                                   $"{tEmployee.S}.{tEmployee.C_EmployeeFullName}, " &
+                    '                                   $"{tEmployee.S}.{tEmployee.C_EmployeeNickname}, " &
+                    '                                   $"{tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}, " &
+                    '                                   $"{tEmployee.S}.{tEmployee.C_EmployeeGender}, " &
+                    '                                   $"{tPosition.S}.{tPosition.C_PositionCode}, " &
+                    '                                   $"{tPosition.S}.{tPosition.C_PositionName} " &
+                    '                                   $"From {tUser.TableName} {tUser.S} " &
+                    '                                   $"inner join {tEmployee.TableName} {tEmployee.S} " &
+                    '                                   $"On {tEmployee.S}.{tEmployee.C_EmployeeId} = {tUser.S}.{tUser.C_UserEmployee} " &
+                    '                                   $"inner join {tPosition.TableName} {tPosition.S} " &
+                    '                                   $"On {tPosition.S}.{tPosition.C_PositionId} = {tEmployee.S}.{tEmployee.C_EmployeePosition} " &
+                    '                                   $"where ({tEmployee.S}.{tEmployee.C_EmployeeClient} = {tIngrid.P_ClientId}) and " &
+                    '                                   $"({tUser.S}.{tUser.C_UserUsername} = {tIngrid.P_Username} " &
+                    '                                   $"And {tUser.S}.{tUser.C_UserPassword} = {tIngrid.P_UserPassword})"
+                    varDatabaseRequestMysql(1).Query = $"Select {tUser.S}.{tUser.C_UserId}, " &
+                                                        $"{tUser.S}.{tUser.C_UserUsername}, " &
+                                                        $"{tUser.S}.{tUser.C_UserIsRoot}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeId}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeNumber}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeFullName}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeNickname}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeGender}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeBirthDate}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeBirthPlace}, " &
+                                                        $"{tPosition.S}.{tPosition.C_PositionId}, " &
+                                                        $"{tPosition.S}.{tPosition.C_PositionCode}, " &
+                                                        $"{tPosition.S}.{tPosition.C_PositionName}, " &
+                                                        $"{tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeId}, " &
+                                                        $"{tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeCode}, " &
+                                                        $"{tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeName}, " &
+                                                        $"{tAttachment.S}.{tAttachment.C_AttachmentId}, " &
+                                                        $"{tAttachment.S}.{tAttachment.C_AttachmentUrl} " &
+                                                        $"from( " &
+                                                        $"select {tUser.S}.{tUser.C_UserId}, " &
+                                                        $"{tUser.S}.{tUser.C_UserUsername}, " &
+                                                        $"{tUser.S}.{tUser.C_UserIsRoot}, " &
+                                                        $"{tUser.S}.{tUser.C_UserEmployee} " &
+                                                        $"From {tUser.TableName} {tUser.S} " &
+                                                        $"Where {tUser.S}.{tUser.C_UserUsername} = {tIngrid.P_Username} and " &
+                                                        $"{tUser.S}.{tUser.C_UserPassword} = {tIngrid.P_UserPassword} and " &
+                                                        $"{tUser.S}.{tUser.C_UserClient} = {tIngrid.P_ClientId} " &
+                                                        $") {tUser.S} " &
+                                                        $"inner Join( " &
+                                                        $"select " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeId}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeNumber}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeePosition}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeEmploymentType}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeFullName}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeNickname}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeGender}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeBirthDate}, " &
+                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeBirthPlace} " &
+                                                        $"From {tEmployee.TableName} {tEmployee.S} " &
+                                                        $"Where {tEmployee.S}.{tEmployee.C_EmployeeClient} = {tIngrid.P_ClientId} " &
+                                                        $") {tEmployee.S} " &
+                                                        $"On {tUser.S}.{tUser.C_UserEmployee} = {tEmployee.S}.{tEmployee.C_EmployeeId} " &
+                                                        $"inner Join( " &
+                                                        $"select " &
+                                                        $"{tPosition.S}.{tPosition.C_PositionId}, " &
+                                                        $"{tPosition.S}.{tPosition.C_PositionCode}, " &
+                                                        $"{tPosition.S}.{tPosition.C_PositionName} " &
+                                                        $"From {tPosition.TableName} {tPosition.S} " &
+                                                        $"Where {tPosition.S}.{tPosition.C_PositionClient} = {tIngrid.P_ClientId} " &
+                                                        $") {tPosition.S} " &
+                                                        $"On {tEmployee.S}.{tEmployee.C_EmployeePosition} = {tPosition.S}.{tPosition.C_PositionId} " &
+                                                        $"Left Join( " &
+                                                        $"select " &
+                                                        $"{tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeId}, " &
+                                                        $"{tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeCode}, " &
+                                                        $"{tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeName} " &
+                                                        $"From {tEmploymentType.TableName} {tEmploymentType.S} " &
+                                                        $"Where {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeClient} = {tIngrid.P_ClientId} " &
+                                                        $") {tEmploymentType.S} " &
+                                                        $"On {tEmployee.S}.{tEmployee.C_EmployeeEmploymentType} = {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeId} " &
+                                                        $"Left Join( " &
+                                                        $"select " &
+                                                        $"{tAttachment.S}.{tAttachment.C_AttachmentId}, " &
+                                                        $"{tAttachment.S}.{tAttachment.C_AttachmentParentId}, " &
+                                                        $"{tAttachment.S}.{tAttachment.C_AttachmentUrl} " &
+                                                        $"From {tAttachment.TableName} {tAttachment.S} " &
+                                                        $"Where {tAttachment.S}.{tAttachment.C_AttachmentTag} = 'EMPLOYEE-PROFILE-PHOTO' and " &
+                                                        $"{tAttachment.S}.{tAttachment.C_AttachmentClient} = {tIngrid.P_ClientId} " &
+                                                        $"limit 0, 1 " &
+                                                        $") {tAttachment.S} " &
+                                                        $"On {tEmployee.S}.{tEmployee.C_EmployeeId} = {tAttachment.S}.{tAttachment.C_AttachmentParentId} ;"
                     varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, datasetname, "UserData", parametername)
 
                     With datasetname

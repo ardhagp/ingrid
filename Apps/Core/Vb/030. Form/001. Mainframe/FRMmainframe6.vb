@@ -638,6 +638,14 @@ Namespace UI.Canvas
         Private Sub FRMlogin_LoginSuccess() Handles Frm_login.EventLoginSuccess
             Call GetNotification()
             PnlProfile.Visible = True
+            PctProfile.Image = Nothing
+            PctProfile.BackgroundImage = Nothing
+            If varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString = String.Empty Then
+                PctProfile.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-404.svg", True, 512, 512)
+            Else
+                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, PctProfile)
+                'PctProfile.ImageLocation = varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString
+            End If
         End Sub
 
         Private Sub Tmrgc_Tick(sender As Object, e As EventArgs) Handles Tmr_gc.Tick

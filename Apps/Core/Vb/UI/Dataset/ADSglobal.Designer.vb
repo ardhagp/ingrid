@@ -2338,23 +2338,37 @@ Namespace Ingrid.UI.Dataset
             
             Private columnuser_id As Global.System.Data.DataColumn
             
-            Private columnuser_root As Global.System.Data.DataColumn
+            Private columnuser_username As Global.System.Data.DataColumn
+            
+            Private columnuser_isroot As Global.System.Data.DataColumn
             
             Private columnemployee_id As Global.System.Data.DataColumn
             
-            Private columnemployee_number As Global.System.Data.DataColumn
-            
             Private columnemployee_fullname As Global.System.Data.DataColumn
             
-            Private columnemployee_nickname As Global.System.Data.DataColumn
-            
-            Private columnemployee_personalidnumber As Global.System.Data.DataColumn
-            
             Private columnemployee_gender As Global.System.Data.DataColumn
+            
+            Private columnemployee_birthdate As Global.System.Data.DataColumn
+            
+            Private columnemployee_birthplace As Global.System.Data.DataColumn
+            
+            Private columnposition_id As Global.System.Data.DataColumn
             
             Private columnposition_code As Global.System.Data.DataColumn
             
             Private columnposition_name As Global.System.Data.DataColumn
+            
+            Private columnemploymenttype_id As Global.System.Data.DataColumn
+            
+            Private columnemploymenttype_code As Global.System.Data.DataColumn
+            
+            Private columnemploymenttype_name As Global.System.Data.DataColumn
+            
+            Private columnattachment_id As Global.System.Data.DataColumn
+            
+            Private columnattachment_url As Global.System.Data.DataColumn
+            
+            Private columnemployee_number As Global.System.Data.DataColumn
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -2403,9 +2417,17 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public ReadOnly Property user_rootColumn() As Global.System.Data.DataColumn
+            Public ReadOnly Property user_usernameColumn() As Global.System.Data.DataColumn
                 Get
-                    Return Me.columnuser_root
+                    Return Me.columnuser_username
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property user_isrootColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnuser_isroot
                 End Get
             End Property
             
@@ -2419,14 +2441,6 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public ReadOnly Property employee_numberColumn() As Global.System.Data.DataColumn
-                Get
-                    Return Me.columnemployee_number
-                End Get
-            End Property
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public ReadOnly Property employee_fullnameColumn() As Global.System.Data.DataColumn
                 Get
                     Return Me.columnemployee_fullname
@@ -2435,25 +2449,33 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public ReadOnly Property employee_nicknameColumn() As Global.System.Data.DataColumn
-                Get
-                    Return Me.columnemployee_nickname
-                End Get
-            End Property
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public ReadOnly Property employee_personalidnumberColumn() As Global.System.Data.DataColumn
-                Get
-                    Return Me.columnemployee_personalidnumber
-                End Get
-            End Property
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public ReadOnly Property employee_genderColumn() As Global.System.Data.DataColumn
                 Get
                     Return Me.columnemployee_gender
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property employee_birthdateColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnemployee_birthdate
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property employee_birthplaceColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnemployee_birthplace
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property position_idColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnposition_id
                 End Get
             End Property
             
@@ -2470,6 +2492,54 @@ Namespace Ingrid.UI.Dataset
             Public ReadOnly Property position_nameColumn() As Global.System.Data.DataColumn
                 Get
                     Return Me.columnposition_name
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property employmenttype_idColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnemploymenttype_id
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property employmenttype_codeColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnemploymenttype_code
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property employmenttype_nameColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnemploymenttype_name
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property attachment_idColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnattachment_id
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property attachment_urlColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnattachment_url
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property employee_numberColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnemployee_number
                 End Get
             End Property
             
@@ -2510,9 +2580,26 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Overloads Function AddUserDataRow(ByVal user_id As Decimal, ByVal user_root As Boolean, ByVal employee_id As String, ByVal employee_number As String, ByVal employee_fullname As String, ByVal employee_nickname As String, ByVal employee_personalidnumber As String, ByVal employee_gender As String, ByVal position_code As String, ByVal position_name As String) As UserDataRow
+            Public Overloads Function AddUserDataRow( _
+                        ByVal user_id As Decimal,  _
+                        ByVal user_username As String,  _
+                        ByVal user_isroot As Boolean,  _
+                        ByVal employee_id As Decimal,  _
+                        ByVal employee_fullname As String,  _
+                        ByVal employee_gender As String,  _
+                        ByVal employee_birthdate As Date,  _
+                        ByVal employee_birthplace As String,  _
+                        ByVal position_id As Decimal,  _
+                        ByVal position_code As String,  _
+                        ByVal position_name As String,  _
+                        ByVal employmenttype_id As Decimal,  _
+                        ByVal employmenttype_code As String,  _
+                        ByVal employmenttype_name As String,  _
+                        ByVal attachment_id As Decimal,  _
+                        ByVal attachment_url As String,  _
+                        ByVal employee_number As String) As UserDataRow
                 Dim rowUserDataRow As UserDataRow = CType(Me.NewRow,UserDataRow)
-                Dim columnValuesArray() As Object = New Object() {user_id, user_root, employee_id, employee_number, employee_fullname, employee_nickname, employee_personalidnumber, employee_gender, position_code, position_name}
+                Dim columnValuesArray() As Object = New Object() {user_id, user_username, user_isroot, employee_id, employee_fullname, employee_gender, employee_birthdate, employee_birthplace, position_id, position_code, position_name, employmenttype_id, employmenttype_code, employmenttype_name, attachment_id, attachment_url, employee_number}
                 rowUserDataRow.ItemArray = columnValuesArray
                 Me.Rows.Add(rowUserDataRow)
                 Return rowUserDataRow
@@ -2536,15 +2623,22 @@ Namespace Ingrid.UI.Dataset
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Friend Sub InitVars()
                 Me.columnuser_id = MyBase.Columns("user_id")
-                Me.columnuser_root = MyBase.Columns("user_root")
+                Me.columnuser_username = MyBase.Columns("user_username")
+                Me.columnuser_isroot = MyBase.Columns("user_isroot")
                 Me.columnemployee_id = MyBase.Columns("employee_id")
-                Me.columnemployee_number = MyBase.Columns("employee_number")
                 Me.columnemployee_fullname = MyBase.Columns("employee_fullname")
-                Me.columnemployee_nickname = MyBase.Columns("employee_nickname")
-                Me.columnemployee_personalidnumber = MyBase.Columns("employee_personalidnumber")
                 Me.columnemployee_gender = MyBase.Columns("employee_gender")
+                Me.columnemployee_birthdate = MyBase.Columns("employee_birthdate")
+                Me.columnemployee_birthplace = MyBase.Columns("employee_birthplace")
+                Me.columnposition_id = MyBase.Columns("position_id")
                 Me.columnposition_code = MyBase.Columns("position_code")
                 Me.columnposition_name = MyBase.Columns("position_name")
+                Me.columnemploymenttype_id = MyBase.Columns("employmenttype_id")
+                Me.columnemploymenttype_code = MyBase.Columns("employmenttype_code")
+                Me.columnemploymenttype_name = MyBase.Columns("employmenttype_name")
+                Me.columnattachment_id = MyBase.Columns("attachment_id")
+                Me.columnattachment_url = MyBase.Columns("attachment_url")
+                Me.columnemployee_number = MyBase.Columns("employee_number")
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2552,24 +2646,38 @@ Namespace Ingrid.UI.Dataset
             Private Sub InitClass()
                 Me.columnuser_id = New Global.System.Data.DataColumn("user_id", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnuser_id)
-                Me.columnuser_root = New Global.System.Data.DataColumn("user_root", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
-                MyBase.Columns.Add(Me.columnuser_root)
-                Me.columnemployee_id = New Global.System.Data.DataColumn("employee_id", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                Me.columnuser_username = New Global.System.Data.DataColumn("user_username", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnuser_username)
+                Me.columnuser_isroot = New Global.System.Data.DataColumn("user_isroot", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnuser_isroot)
+                Me.columnemployee_id = New Global.System.Data.DataColumn("employee_id", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnemployee_id)
-                Me.columnemployee_number = New Global.System.Data.DataColumn("employee_number", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-                MyBase.Columns.Add(Me.columnemployee_number)
                 Me.columnemployee_fullname = New Global.System.Data.DataColumn("employee_fullname", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnemployee_fullname)
-                Me.columnemployee_nickname = New Global.System.Data.DataColumn("employee_nickname", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-                MyBase.Columns.Add(Me.columnemployee_nickname)
-                Me.columnemployee_personalidnumber = New Global.System.Data.DataColumn("employee_personalidnumber", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-                MyBase.Columns.Add(Me.columnemployee_personalidnumber)
                 Me.columnemployee_gender = New Global.System.Data.DataColumn("employee_gender", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnemployee_gender)
+                Me.columnemployee_birthdate = New Global.System.Data.DataColumn("employee_birthdate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnemployee_birthdate)
+                Me.columnemployee_birthplace = New Global.System.Data.DataColumn("employee_birthplace", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnemployee_birthplace)
+                Me.columnposition_id = New Global.System.Data.DataColumn("position_id", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnposition_id)
                 Me.columnposition_code = New Global.System.Data.DataColumn("position_code", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnposition_code)
                 Me.columnposition_name = New Global.System.Data.DataColumn("position_name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnposition_name)
+                Me.columnemploymenttype_id = New Global.System.Data.DataColumn("employmenttype_id", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnemploymenttype_id)
+                Me.columnemploymenttype_code = New Global.System.Data.DataColumn("employmenttype_code", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnemploymenttype_code)
+                Me.columnemploymenttype_name = New Global.System.Data.DataColumn("employmenttype_name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnemploymenttype_name)
+                Me.columnattachment_id = New Global.System.Data.DataColumn("attachment_id", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnattachment_id)
+                Me.columnattachment_url = New Global.System.Data.DataColumn("attachment_url", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnattachment_url)
+                Me.columnemployee_number = New Global.System.Data.DataColumn("employee_number", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnemployee_number)
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5840,46 +5948,46 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property user_root() As Boolean
+            Public Property user_username() As String
                 Get
                     Try 
-                        Return CType(Me(Me.tableUserData.user_rootColumn),Boolean)
+                        Return CType(Me(Me.tableUserData.user_usernameColumn),String)
                     Catch e As Global.System.InvalidCastException
-                        Throw New Global.System.Data.StrongTypingException("The value for column 'user_root' in table 'UserData' is DBNull.", e)
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'user_username' in table 'UserData' is DBNull.", e)
                     End Try
                 End Get
                 Set
-                    Me(Me.tableUserData.user_rootColumn) = value
+                    Me(Me.tableUserData.user_usernameColumn) = value
                 End Set
             End Property
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property employee_id() As String
+            Public Property user_isroot() As Boolean
                 Get
                     Try 
-                        Return CType(Me(Me.tableUserData.employee_idColumn),String)
+                        Return CType(Me(Me.tableUserData.user_isrootColumn),Boolean)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'user_isroot' in table 'UserData' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableUserData.user_isrootColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property employee_id() As Decimal
+                Get
+                    Try 
+                        Return CType(Me(Me.tableUserData.employee_idColumn),Decimal)
                     Catch e As Global.System.InvalidCastException
                         Throw New Global.System.Data.StrongTypingException("The value for column 'employee_id' in table 'UserData' is DBNull.", e)
                     End Try
                 End Get
                 Set
                     Me(Me.tableUserData.employee_idColumn) = value
-                End Set
-            End Property
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property employee_number() As String
-                Get
-                    Try 
-                        Return CType(Me(Me.tableUserData.employee_numberColumn),String)
-                    Catch e As Global.System.InvalidCastException
-                        Throw New Global.System.Data.StrongTypingException("The value for column 'employee_number' in table 'UserData' is DBNull.", e)
-                    End Try
-                End Get
-                Set
-                    Me(Me.tableUserData.employee_numberColumn) = value
                 End Set
             End Property
             
@@ -5900,36 +6008,6 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property employee_nickname() As String
-                Get
-                    Try 
-                        Return CType(Me(Me.tableUserData.employee_nicknameColumn),String)
-                    Catch e As Global.System.InvalidCastException
-                        Throw New Global.System.Data.StrongTypingException("The value for column 'employee_nickname' in table 'UserData' is DBNull.", e)
-                    End Try
-                End Get
-                Set
-                    Me(Me.tableUserData.employee_nicknameColumn) = value
-                End Set
-            End Property
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property employee_personalidnumber() As String
-                Get
-                    Try 
-                        Return CType(Me(Me.tableUserData.employee_personalidnumberColumn),String)
-                    Catch e As Global.System.InvalidCastException
-                        Throw New Global.System.Data.StrongTypingException("The value for column 'employee_personalidnumber' in table 'UserData' is DBNull.", e)
-                    End Try
-                End Get
-                Set
-                    Me(Me.tableUserData.employee_personalidnumberColumn) = value
-                End Set
-            End Property
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Property employee_gender() As String
                 Get
                     Try 
@@ -5940,6 +6018,51 @@ Namespace Ingrid.UI.Dataset
                 End Get
                 Set
                     Me(Me.tableUserData.employee_genderColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property employee_birthdate() As Date
+                Get
+                    Try 
+                        Return CType(Me(Me.tableUserData.employee_birthdateColumn),Date)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'employee_birthdate' in table 'UserData' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableUserData.employee_birthdateColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property employee_birthplace() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableUserData.employee_birthplaceColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'employee_birthplace' in table 'UserData' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableUserData.employee_birthplaceColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property position_id() As Decimal
+                Get
+                    Try 
+                        Return CType(Me(Me.tableUserData.position_idColumn),Decimal)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'position_id' in table 'UserData' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableUserData.position_idColumn) = value
                 End Set
             End Property
             
@@ -5975,6 +6098,96 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property employmenttype_id() As Decimal
+                Get
+                    Try 
+                        Return CType(Me(Me.tableUserData.employmenttype_idColumn),Decimal)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'employmenttype_id' in table 'UserData' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableUserData.employmenttype_idColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property employmenttype_code() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableUserData.employmenttype_codeColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'employmenttype_code' in table 'UserData' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableUserData.employmenttype_codeColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property employmenttype_name() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableUserData.employmenttype_nameColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'employmenttype_name' in table 'UserData' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableUserData.employmenttype_nameColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property attachment_id() As Decimal
+                Get
+                    Try 
+                        Return CType(Me(Me.tableUserData.attachment_idColumn),Decimal)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'attachment_id' in table 'UserData' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableUserData.attachment_idColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property attachment_url() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableUserData.attachment_urlColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'attachment_url' in table 'UserData' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableUserData.attachment_urlColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property employee_number() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableUserData.employee_numberColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'employee_number' in table 'UserData' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableUserData.employee_numberColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Function Isuser_idNull() As Boolean
                 Return Me.IsNull(Me.tableUserData.user_idColumn)
             End Function
@@ -5987,14 +6200,26 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Function Isuser_rootNull() As Boolean
-                Return Me.IsNull(Me.tableUserData.user_rootColumn)
+            Public Function Isuser_usernameNull() As Boolean
+                Return Me.IsNull(Me.tableUserData.user_usernameColumn)
             End Function
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Sub Setuser_rootNull()
-                Me(Me.tableUserData.user_rootColumn) = Global.System.Convert.DBNull
+            Public Sub Setuser_usernameNull()
+                Me(Me.tableUserData.user_usernameColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isuser_isrootNull() As Boolean
+                Return Me.IsNull(Me.tableUserData.user_isrootColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setuser_isrootNull()
+                Me(Me.tableUserData.user_isrootColumn) = Global.System.Convert.DBNull
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6011,18 +6236,6 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Function Isemployee_numberNull() As Boolean
-                Return Me.IsNull(Me.tableUserData.employee_numberColumn)
-            End Function
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Sub Setemployee_numberNull()
-                Me(Me.tableUserData.employee_numberColumn) = Global.System.Convert.DBNull
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Function Isemployee_fullnameNull() As Boolean
                 Return Me.IsNull(Me.tableUserData.employee_fullnameColumn)
             End Function
@@ -6035,30 +6248,6 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Function Isemployee_nicknameNull() As Boolean
-                Return Me.IsNull(Me.tableUserData.employee_nicknameColumn)
-            End Function
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Sub Setemployee_nicknameNull()
-                Me(Me.tableUserData.employee_nicknameColumn) = Global.System.Convert.DBNull
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Function Isemployee_personalidnumberNull() As Boolean
-                Return Me.IsNull(Me.tableUserData.employee_personalidnumberColumn)
-            End Function
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Sub Setemployee_personalidnumberNull()
-                Me(Me.tableUserData.employee_personalidnumberColumn) = Global.System.Convert.DBNull
-            End Sub
-            
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Function Isemployee_genderNull() As Boolean
                 Return Me.IsNull(Me.tableUserData.employee_genderColumn)
             End Function
@@ -6067,6 +6256,42 @@ Namespace Ingrid.UI.Dataset
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Sub Setemployee_genderNull()
                 Me(Me.tableUserData.employee_genderColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isemployee_birthdateNull() As Boolean
+                Return Me.IsNull(Me.tableUserData.employee_birthdateColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setemployee_birthdateNull()
+                Me(Me.tableUserData.employee_birthdateColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isemployee_birthplaceNull() As Boolean
+                Return Me.IsNull(Me.tableUserData.employee_birthplaceColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setemployee_birthplaceNull()
+                Me(Me.tableUserData.employee_birthplaceColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isposition_idNull() As Boolean
+                Return Me.IsNull(Me.tableUserData.position_idColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setposition_idNull()
+                Me(Me.tableUserData.position_idColumn) = Global.System.Convert.DBNull
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6091,6 +6316,78 @@ Namespace Ingrid.UI.Dataset
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Sub Setposition_nameNull()
                 Me(Me.tableUserData.position_nameColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isemploymenttype_idNull() As Boolean
+                Return Me.IsNull(Me.tableUserData.employmenttype_idColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setemploymenttype_idNull()
+                Me(Me.tableUserData.employmenttype_idColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isemploymenttype_codeNull() As Boolean
+                Return Me.IsNull(Me.tableUserData.employmenttype_codeColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setemploymenttype_codeNull()
+                Me(Me.tableUserData.employmenttype_codeColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isemploymenttype_nameNull() As Boolean
+                Return Me.IsNull(Me.tableUserData.employmenttype_nameColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setemploymenttype_nameNull()
+                Me(Me.tableUserData.employmenttype_nameColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isattachment_idNull() As Boolean
+                Return Me.IsNull(Me.tableUserData.attachment_idColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setattachment_idNull()
+                Me(Me.tableUserData.attachment_idColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isattachment_urlNull() As Boolean
+                Return Me.IsNull(Me.tableUserData.attachment_urlColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setattachment_urlNull()
+                Me(Me.tableUserData.attachment_urlColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isemployee_numberNull() As Boolean
+                Return Me.IsNull(Me.tableUserData.employee_numberColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setemployee_numberNull()
+                Me(Me.tableUserData.employee_numberColumn) = Global.System.Convert.DBNull
             End Sub
         End Class
         

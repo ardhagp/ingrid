@@ -87,6 +87,7 @@
                 SetValue(.AllParameters, tIngrid.P_EmployeeGender, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tEmployee.C_EmployeeGender))
                 SetValue(.AllParameters, tIngrid.P_PositionCode, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tPosition.C_PositionCode))
                 SetValue(.AllParameters, tIngrid.P_PositionName, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tPosition.C_PositionName))
+                SetValue(.AllParameters, tIngrid.P_AttachmentUrl, varDatasetIngrid.Tables(dtUserData).Rows(0).Item(tAttachment.C_AttachmentUrl))
             End With
 
             varLogUser.LoginSuccess(varDataProperties, varDataProperties.AllParameters)

@@ -200,7 +200,7 @@
             pctbxPhoto.ErrorImage = CType(resources.GetObject("pctbxPhoto.ErrorImage"), Image)
             pctbxPhoto.Image = CType(resources.GetObject("pctbxPhoto.Image"), Image)
             pctbxPhoto.InitialImage = CType(resources.GetObject("pctbxPhoto.InitialImage"), Image)
-            pctbxPhoto.Location = New Point(933, 165)
+            pctbxPhoto.Location = New Point(931, 165)
             pctbxPhoto.Margin = New Padding(6, 5, 6, 5)
             pctbxPhoto.Name = "pctbxPhoto"
             pctbxPhoto.Padding = New Padding(26, 28, 26, 28)
@@ -286,7 +286,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(235), CByte(216), CByte(177))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(211), CByte(197), CByte(104))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnModulesRoles.BorderStyle = BorderStyle.None

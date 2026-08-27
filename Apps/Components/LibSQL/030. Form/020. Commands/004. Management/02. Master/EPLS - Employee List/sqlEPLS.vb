@@ -563,13 +563,13 @@
                     varDatabaseRequestMysql(0).Query = $"select count({tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}) " &
                                                        $"from {tEmployee.TableName} {tEmployee.S} " &
                                                        $"where ( " &
-                                                       $"({tEmployee.S}.{tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and " &
+                                                       $"({tEmployee.S}.{tEmployee.C_EmployeeClient} = {tIngrid.P_ClientId}) and " &
                                                        $"({tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber} = {tEmployee.P_EmployeePersonalIdNumber}))"
                 Else
                     varDatabaseRequestMysql(0).Query = $"select count({tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber}) " &
                                                        $"from {tEmployee.TableName} {tEmployee.S} " &
                                                        $"where ( " &
-                                                       $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and " &
+                                                       $"({tEmployee.C_EmployeeClient} = {tIngrid.P_ClientId}) and " &
                                                        $"({tEmployee.S}.{tEmployee.C_EmployeePersonalIdNumber} = {tEmployee.P_EmployeePersonalIdNumber} and " &
                                                        $"{tEmployee.S}.{tEmployee.C_EmployeeId} <> {tEmployee.P_EmployeeId}))"
                 End If
@@ -630,10 +630,10 @@
                 varIsDuplicate = CInt(varDatabaseEngineMssql2008.GetValue(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query))
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 If dataproperties.EmployeeIsNew Then
-                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and " &
+                    varWhere += $"({tEmployee.C_EmployeeClient} = {tIngrid.P_ClientId}) and " &
                                 $"({tEmployee.S}.{tEmployee.C_EmployeeNumber} = {tEmployee.P_EmployeeNumber})"
                 Else
-                    varWhere += $"({tEmployee.C_EmployeeClient} = {tClient.P_ClientId}) and " &
+                    varWhere += $"({tEmployee.C_EmployeeClient} = {tIngrid.P_ClientId}) and " &
                                 $"({tEmployee.S}.{tEmployee.C_EmployeeNumber} = {tEmployee.P_EmployeeNumber}) and " &
                                 $"({tEmployee.S}.{tEmployee.C_EmployeeId} <> {tEmployee.P_EmployeeId})"
                 End If
@@ -699,7 +699,7 @@
                                                            $"{tEmployee.P_EmployeeNickname}, " &
                                                            $"{tEmployee.P_EmployeeIsActive}, " &
                                                            $"{tEmployee.P_EmployeeGender}, " &
-                                                           $"{tClient.P_ClientId});"
+                                                           $"{tIngrid.P_ClientId});"
 
                         If varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters) Then
                             With dataproperties.DatasetCopy.Tables("SYSS_Editor").Rows(0)
@@ -710,7 +710,7 @@
                                 Dim imageFolder = CMCv.OperatingSystem.Folder.GetPhotoFolder
                                 Dim img As New System.Drawing.Bitmap(dataproperties.EmployeePhoto)
                                 SetValue(dataproperties.AllParameters, tAttachment.P_AttachmentExtension, System.Drawing.Imaging.ImageFormat.Jpeg)
-                                Dim varDestinationPathAndFileName As String = $"client_data/{dataproperties.AllParameters(tClient.P_ClientId)}/EPLS/{dataproperties.AllParameters(tEmployee.P_EmployeeToken)}.{dataproperties.AllParameters(tAttachment.P_AttachmentExtension)}"
+                                Dim varDestinationPathAndFileName As String = $"client_data/{dataproperties.AllParameters(tIngrid.P_ClientId)}/EPLS/{dataproperties.AllParameters(tEmployee.P_EmployeeToken)}.{dataproperties.AllParameters(tAttachment.P_AttachmentExtension)}"
                                 Dim url As String = $"{If(.Item(tSettings.C_SettingsApiServiceUrl) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiServiceUrl).ToString))}/{varDestinationPathAndFileName}"
                                 url = url.Replace("https://", $"https://{If(.Item(tSettings.C_SettingsApiBucketName) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiBucketName).ToString))}.")
                                 SetValue(dataproperties.AllParameters, tAttachment.P_AttachmentUrl, url)
@@ -724,16 +724,18 @@
                                                                    $"{tAttachment.C_AttachmentExtension}, " &
                                                                    $"{tAttachment.C_AttachmentUrl}, " &
                                                                    $"{tAttachment.C_AttachmentTag}, " &
-                                                                   $"{tAttachment.C_AttachmentProvider}) " &
+                                                                   $"{tAttachment.C_AttachmentProvider}, " &
+                                                                   $"{tAttachment.C_AttachmentClient}) " &
                                                                    $"values (" &
                                                                    $"{tEmployee.P_EmployeeToken}, " &
-                                                                   $"{tModule.P_ModuleId}, " &
+                                                                   $"{tIngrid.P_ModuleId}, " &
                                                                    $"{tAttachment.P_AttachmentFileNameOriginal}, " &
                                                                    $"{tEmployee.P_EmployeeToken}, " &
                                                                    $"{tAttachment.P_AttachmentExtension}, " &
                                                                    $"{tAttachment.P_AttachmentUrl}, " &
                                                                    $"'EMPLOYEE-PROFILE-PHOTO', " &
-                                                                   $"{tSettings.P_SettingsStorageProvider});"
+                                                                   $"{tSettings.P_SettingsStorageProvider}, " &
+                                                                   $"{tIngrid.P_ClientId});"
 
                                 If Not varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters) Then
                                     Decision(My.Application.Info.AssemblyName.ToUpper, "Employee record are saved but failed to store photo data", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
@@ -750,7 +752,7 @@
                                     Return True
                                     backblaze.Dispose()
                                 Else
-                                    Decision(My.Application.Info.AssemblyName.ToUpper, "Employee record and photo data are saved but failed to upload photo data", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                                    Decision(My.Application.Info.AssemblyName.ToUpper, "Employee record And photo data are saved but failed to upload photo data", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
                                 End If
                             End With
                         Else

@@ -10,6 +10,7 @@
         ReadOnly Property C_UserIsLocked As String = "user_islocked"
         ReadOnly Property C_UserDateCreated As String = "user_datecreated"
         ReadOnly Property C_UserLastLogin As String = "user_lastlogin"
+        ReadOnly Property C_UserClient As String = "user_client"
         ReadOnly Property P_UserId As String = "@UserId"
         ReadOnly Property P_Username As String = "@Username"
         ReadOnly Property P_UserPassword As String = "@UserPassword"

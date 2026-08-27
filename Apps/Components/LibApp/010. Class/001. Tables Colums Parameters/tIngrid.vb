@@ -19,5 +19,6 @@
         Public Property P_EmployeeGender As String = "@IngridEmployeeGender"
         Public Property P_PositionCode As String = "@IngridPositionCode"
         Public Property P_PositionName As String = "@IngridPositionName"
+        Public Property P_AttachmentUrl As String = "@IngridAttachmentUrl"
     End Class
 End Namespace
