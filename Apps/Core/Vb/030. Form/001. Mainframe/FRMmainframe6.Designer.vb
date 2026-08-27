@@ -1258,6 +1258,7 @@
             AutoScaleDimensions = New SizeF(10F, 25F)
             AutoScaleMode = AutoScaleMode.Font
             BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
             BackgroundImageLayout = ImageLayout.None
             ClientSize = New Size(1120, 935)
             Controls.Add(spl_)

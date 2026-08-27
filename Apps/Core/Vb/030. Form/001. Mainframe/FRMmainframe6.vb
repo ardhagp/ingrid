@@ -13,6 +13,9 @@ Namespace UI.Canvas
             ReadOnly Property CommandCode As String
         End Interface
 
+        ' ----------------------------------------------------------
+        ' Variables
+        ' ----------------------------------------------------------
         Private WithEvents Frm_login As New UI.Canvas.FRMlogin
         Private WithEvents Frm_conn As Connect.UI.Canvas.FRMconn
         Private WithEvents Frm_phtrz As New CMCv.UI.Canvas.FRMphtrz
@@ -41,6 +44,123 @@ Namespace UI.Canvas
         Private Const dtDatabaseProperties As String = "DatabaseProperties"
         Private Const dtUserData As String = "UserData"
         Private Const dtSettings As String = "SYSS_Editor"
+
+        ' ----------------------------------------------------------
+        ' Forms Events Handlers
+        ' ----------------------------------------------------------
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            Try
+                BtnExecute.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-play-fill.svg", True, 48, 48)
+                PctProfile.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-images.svg", True, 72, 72)
+
+                ' Set MDI Client Background Color
+                For Each ctrl As Control In Me.Controls
+                    If TypeOf ctrl Is MdiClient Then
+                        ctrl.BackColor = Color.FromArgb(11, 28, 45)
+                    End If
+                Next
+
+                Call ActivateLicenses()
+                RaiseEvent EventMainframeOpen()
+
+                varVersionapplication = GetAppVersion() 'Retrieve app version
+                TmrNotif.Enabled = True
+
+                Dim clsLog As New Ladybug.Log.Events
+
+                With proLog
+                    .Message = "Ingrid Main App is opened."
+                    .FromSender = "FRMmainframe6 Load Event"
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Information
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
+                    .ResumeNext = True
+                    .InternalStackTrace = String.Empty
+                    .ShowErrorReporting = False
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = True
+                    .Number = 0
+                    .AppVersion = GetAppVersion()
+                End With
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
+                ' Tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererVS2010)
+                varGetNotifCounter = 58
+                varForceRefreshMainframeData = False
+                TmrStatus.Interval = varStatusTimeWait * 1000
+                Call SystemLogout()
+                Call FirstLoad()
+                SetValue(varDataProperties.AllParameters, tIngrid.P_UserId, 0)
+                Text += " - Ver. " & varVersionapplication
+                LibSQL.Mainframe.Database.GetDatabaseProperties(varDatasetIngrid)
+                If varDatasetIngrid.Tables(dtDatabaseProperties).Rows.Count > 0 Then
+                    With varDatasetIngrid.Tables(dtDatabaseProperties).Rows(0)
+                        varDataProperties.ConnectionServerAddress = .Item("SERVERADDRESS").ToString
+                        varDataProperties.ConnectionServerPort = CInt(.Item("SERVERPORT").ToString)
+                        varDataProperties.ConnectionUsername = .Item("USERNAME").ToString
+                        varDataProperties.ConnectionPassword = .Item("PASSWORD").ToString
+                        varDataProperties.ConnectionDatabaseEngineE = CType([Enum].Parse(GetType(LibApp.Ingrid.Global.DatabaseEngine), .Item("DATABASEENGINE").ToString), LibApp.Ingrid.Global.DatabaseEngine)
+                        varDataProperties.ConnectionDatabaseEngine = .Item("DATABASEENGINE").ToString
+                        varDataProperties.ConnectionDatabaseName = .Item("DBFORDATA").ToString
+                        SetValue(varDataProperties.AllParameters, tIngrid.P_ClientCode, .Item("CLIENT").ToString)
+                    End With
+                Else
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties not found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Return
+                End If
+
+                If Mainframe.Database.Connect(varDataProperties) Then
+                    SetValue(varDataProperties.AllParameters, tIngrid.P_ClientId, varAppClient.GetClientId(varDataProperties))
+                    'varClientId = varAppClient.GetClientId(varDataProperties)
+                    Ts_connection.Text = "Connected"
+                    varLogApplication.Run(varDataProperties, varDataProperties.AllParameters)
+                    Dim varRecords As Integer = LibSQL.CMDccin.View.CountRecords(varDataProperties)
+                    If varRecords = 0 Then
+                        Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "Initial setup and essential information", True, Me)
+                    End If
+                    CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.AllParameters, varDatasetIngrid)
+                Else
+                    Ts_connection.Text = "Disconnected"
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Return
+                End If
+                SetValue(varDataProperties.AllParameters, tIngrid.P_ClientId, IIf(CInt(varDataProperties.AllParameters(tIngrid.P_ClientId)) = 0, DBNull.Value, varDataProperties.AllParameters(tIngrid.P_ClientId)))
+
+                Call CommandAutoComplete()
+                If Not (LibSQL.CMDdbic.Applications.IsCompanyExist(varDataProperties) OrElse Not LibSQL.CMDdbic.Applications.IsDepartmentExist(varDataProperties)) Then
+                    Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "", True, Me)
+                End If
+            Catch ex As Exception
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[Load] Mainframe"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+            End Try
+        End Sub
+
+        ' ----------------------------------------------------------
+        ' Controls Events Handlers
+        ' ----------------------------------------------------------
+        ' Start Menu
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub MsstartLogin_Click(sender As Object, e As EventArgs) Handles Ms_start_Login.Click
+            Call LoginClicked()
+        End Sub
 
         ''' <summary>
         ''' 
@@ -201,12 +321,6 @@ Namespace UI.Canvas
             End With
         End Sub
 
-        ' Start Menu
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub MsstartLogin_Click(sender As Object, e As EventArgs) Handles Ms_start_Login.Click
-            Call LoginClicked()
-        End Sub
-
         ''' <summary>
         ''' 
         ''' </summary>
@@ -306,111 +420,6 @@ Namespace UI.Canvas
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            Try
-                BtnExecute.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-play-fill.svg", True, 48, 48)
-                PctProfile.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-images.svg", True, 72, 72)
-
-                ' Set MDI Client Background Color
-                For Each ctrl As Control In Me.Controls
-                    If TypeOf ctrl Is MdiClient Then
-                        ctrl.BackColor = Color.FromArgb(11, 28, 45)
-                    End If
-                Next
-
-                Call ActivateLicenses()
-                RaiseEvent EventMainframeOpen()
-
-                varVersionapplication = GetAppVersion() 'Retrieve app version
-                TmrNotif.Enabled = True
-
-                Dim clsLog As New Ladybug.Log.Events
-
-                With proLog
-                    .Message = "Ingrid Main App is opened."
-                    .FromSender = "FRMmainframe6 Load Event"
-                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Information
-                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
-                    .ResumeNext = True
-                    .InternalStackTrace = String.Empty
-                    .ShowErrorReporting = False
-                    .SaveInBetterLog = True
-                    .SaveLogInLocal = True
-                    .Number = 0
-                    .AppVersion = GetAppVersion()
-                End With
-                clsLog.ShowData(proLog)
-                clsLog = Nothing
-
-                'Tmdi_.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererVS2010)
-                varGetNotifCounter = 58
-                varForceRefreshMainframeData = False
-                TmrStatus.Interval = varStatusTimeWait * 1000
-                Call SystemLogout()
-                Call FirstLoad()
-                SetValue(varDataProperties.AllParameters, tIngrid.P_UserId, 0)
-                Text += " - Ver. " & varVersionapplication
-                LibSQL.Mainframe.Database.GetDatabaseProperties(varDatasetIngrid)
-                If varDatasetIngrid.Tables(dtDatabaseProperties).Rows.Count > 0 Then
-                    With varDatasetIngrid.Tables(dtDatabaseProperties).Rows(0)
-                        varDataProperties.ConnectionServerAddress = .Item("SERVERADDRESS").ToString
-                        varDataProperties.ConnectionServerPort = CInt(.Item("SERVERPORT").ToString)
-                        varDataProperties.ConnectionUsername = .Item("USERNAME").ToString
-                        varDataProperties.ConnectionPassword = .Item("PASSWORD").ToString
-                        varDataProperties.ConnectionDatabaseEngineE = CType([Enum].Parse(GetType(LibApp.Ingrid.Global.DatabaseEngine), .Item("DATABASEENGINE").ToString), LibApp.Ingrid.Global.DatabaseEngine)
-                        varDataProperties.ConnectionDatabaseEngine = .Item("DATABASEENGINE").ToString
-                        varDataProperties.ConnectionDatabaseName = .Item("DBFORDATA").ToString
-                        SetValue(varDataProperties.AllParameters, tIngrid.P_ClientCode, .Item("CLIENT").ToString)
-                    End With
-                Else
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties not found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                    Return
-                End If
-
-                If Mainframe.Database.Connect(varDataProperties) Then
-                    SetValue(varDataProperties.AllParameters, tIngrid.P_ClientId, varAppClient.GetClientId(varDataProperties))
-                    'varClientId = varAppClient.GetClientId(varDataProperties)
-                    Ts_connection.Text = "Connected"
-                    varLogApplication.Run(varDataProperties, varDataProperties.AllParameters)
-                    Dim varRecords As Integer = LibSQL.CMDccin.View.CountRecords(varDataProperties)
-                    If varRecords = 0 Then
-                        Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "Initial setup and essential information", True, Me)
-                    End If
-                    CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.AllParameters, varDatasetIngrid)
-                Else
-                    Ts_connection.Text = "Disconnected"
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                    Return
-                End If
-                SetValue(varDataProperties.AllParameters, tIngrid.P_ClientId, IIf(CInt(varDataProperties.AllParameters(tIngrid.P_ClientId)) = 0, DBNull.Value, varDataProperties.AllParameters(tIngrid.P_ClientId)))
-
-                Call CommandAutoComplete()
-                If Not (LibSQL.CMDdbic.Applications.IsCompanyExist(varDataProperties) OrElse Not LibSQL.CMDdbic.Applications.IsDepartmentExist(varDataProperties)) Then
-                    Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "", True, Me)
-                End If
-            Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
-                    .FromSender = "[Load] Mainframe"
-                    .InternalStackTrace = ex.StackTrace
-                    .Message = ex.Message
-                    .Number = ex.HResult
-                    .ResumeNext = True
-                    .SaveInBetterLog = True
-                    .SaveLogInLocal = False
-                    .ShowErrorReporting = True
-                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
-                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
-                End With
-
-                Dim clsLog As New Ladybug.Log.Events
-
-                clsLog.ShowData(proLog)
-                clsLog = Nothing
-            End Try
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tvmainframe_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles Tv_mainframe.NodeMouseDoubleClick
             Try
                 With Tv_mainframe.SelectedNode
@@ -468,6 +477,7 @@ Namespace UI.Canvas
                 Ms_start_Logout.Visible = False
                 Ms_start_Logout.Enabled = False
                 Ms_start_Connection.Enabled = True
+                Ms_mainframe.Items("USERMENU").Image = Nothing
                 MyAccountToolStripMenuItem.Enabled = False
                 LoginToolStripMenuItem.Visible = True
                 LoginToolStripMenuItem.Enabled = True
@@ -487,7 +497,7 @@ Namespace UI.Canvas
                 LblEmpNumber.Text = "Loading..."
                 LblEmployeeName.Text = "Loading..."
                 LblPosition.Text = "Loading..."
-                PctProfile.Image = My.Resources.AccountGroup_001_90_FFFFFFFF_
+                PctProfile.Image = My.Resources.PCTPRV_001_512_icon
                 PnlStorage.Visible = False
             End If
         End Sub
@@ -645,6 +655,7 @@ Namespace UI.Canvas
             Else
                 CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, PctProfile)
                 'PctProfile.ImageLocation = varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString
+                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, Ms_mainframe, "USERMENU")
             End If
         End Sub
 
