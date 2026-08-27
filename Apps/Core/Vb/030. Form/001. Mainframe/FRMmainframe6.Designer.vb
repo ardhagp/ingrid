@@ -1071,7 +1071,7 @@
             ' 
             ' PctProfile
             ' 
-            PctProfile.BackColor = Color.Gainsboro
+            PctProfile.BackColor = Color.White
             PctProfile.BackgroundImage = CType(resources.GetObject("PctProfile.BackgroundImage"), Image)
             PctProfile.BackgroundImageLayout = ImageLayout.Zoom
             PctProfile.ErrorImage = CType(resources.GetObject("PctProfile.ErrorImage"), Image)
