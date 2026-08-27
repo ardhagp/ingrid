@@ -68,9 +68,8 @@
             ' 
             DgnEPLS.AllowUserToAddRows = False
             DgnEPLS.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(208), CByte(211), CByte(130))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(216), CByte(226), CByte(158))
             DgnEPLS.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-            DgnEPLS.BackgroundColor = Color.Black
             DgnEPLS.BorderStyle = BorderStyle.None
             DgnEPLS.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnEPLS.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None

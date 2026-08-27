@@ -21,10 +21,10 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            PnlFind = New UI.Control.pnl(components)
+            PnlFind = New UI.Control.Pnl(components)
             BtnClear = New UI.Control.Btn(components)
-            LblFind = New UI.Control.lbl(components)
-            TxtFind = New UI.Control.txt(components)
+            LblFind = New UI.Control.Lbl(components)
+            TxtFind = New UI.Control.Txt(components)
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
@@ -80,7 +80,7 @@
             BtnClear.FlatAppearance.BorderSize = 2
             BtnClear.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-            BtnClear.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+            BtnClear.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold)
             BtnClear.ForeColor = Drawing.Color.White
             BtnClear.Location = New System.Drawing.Point(437, 6)
             BtnClear.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -89,7 +89,7 @@
             BtnClear.TabIndex = 801
             BtnClear.Text = "Clear"
             BtnClear.UseVisualStyleBackColor = False
-            BtnClear.XOButtonType = UI.Control.ControlCodeBase.buttonType.No
+            BtnClear.XOButtonType = UI.Control.ControlCodeBase.ButtonType.No
             BtnClear.XOShowBorderOnFocus = False
             BtnClear.XOValidateAllInput = False
             BtnClear.XOValidateAllInputTag = Nothing
@@ -97,7 +97,8 @@
             ' LblFind
             ' 
             LblFind.AutoSize = True
-            LblFind.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+            LblFind.Font = New System.Drawing.Font("Segoe UI", 12.0F)
+            LblFind.ForeColor = Drawing.Color.White
             LblFind.Location = New System.Drawing.Point(20, 25)
             LblFind.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
             LblFind.Name = "LblFind"
@@ -108,7 +109,7 @@
             ' 
             ' TxtFind
             ' 
-            TxtFind.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+            TxtFind.Font = New System.Drawing.Font("Segoe UI", 12.0F)
             TxtFind.Location = New System.Drawing.Point(105, 19)
             TxtFind.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             TxtFind.MaxLength = 255
@@ -117,28 +118,28 @@
             TxtFind.TabIndex = 800
             TxtFind.Tag = "txt"
             TxtFind.XOAutoTrim = False
+            TxtFind.XOHighlightColor = Drawing.Color.LightYellow
+            TxtFind.XOHighlightOnFocus = False
+            TxtFind.XOIsBlank = True
             TxtFind.XOIsMandatory = False
+            TxtFind.XOIsPlaceholder = True
+            TxtFind.XOIsReplaceEmptyString = False
+            TxtFind.XOLetterCase = UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtFind.XOMandatoryBgColor = Drawing.Color.LightPink
             TxtFind.XOMandatoryBgColorDefault = Drawing.Color.White
-            TxtFind.XOHighlightOnFocus = False
-            TxtFind.XOHighlightColor = Drawing.Color.LightYellow
-            TxtFind.XOIsBlank = True
-            TxtFind.XOIsPlaceholder = True
-            TxtFind.XOLetterCase = UI.Control.ControlCodeBase.enumLetterCase.Normal
-            TxtFind.XOSelectOnFocus = False
+            TxtFind.XOMandatoryMessage = Nothing
             TxtFind.XOPasswordLengthMin = 8
             TxtFind.XOPasswordStrengthCalc = False
             TxtFind.XOPasswordStrengthScore = 0
             TxtFind.XOPasswordStrengthText = Nothing
-            TxtFind.XORestriction = UI.Control.ControlCodeBase.enumRestriction.None
             TxtFind.XOPlaceholderText = "Type then press Enter"
+            TxtFind.XORestriction = UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtFind.XOSelectOnFocus = False
             TxtFind.XOSqlText = Nothing
-            TxtFind.XOIsReplaceEmptyString = False
-            TxtFind.XOMandatoryMessage = Nothing
             ' 
             ' FRMstandardFind
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
             ClientSize = New System.Drawing.Size(1307, 1079)
             KeyPreview = True
             Margin = New System.Windows.Forms.Padding(13, 23, 13, 23)

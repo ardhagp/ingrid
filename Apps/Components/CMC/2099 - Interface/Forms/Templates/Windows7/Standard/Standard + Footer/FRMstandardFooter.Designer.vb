@@ -62,7 +62,7 @@
             ' 
             ' PnlBottomButton
             ' 
-            PnlBottomButton.BackColor = Drawing.Color.DarkSlateGray
+            PnlBottomButton.BackColor = Drawing.Color.FromArgb(CByte(12), CByte(18), CByte(40))
             PnlBottomButton.Controls.Add(imgLine)
             PnlBottomButton.Dock = System.Windows.Forms.DockStyle.Bottom
             PnlBottomButton.Location = New System.Drawing.Point(0, 851)
@@ -84,7 +84,7 @@
             ' 
             ' FRMstandardFooter
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
             ClientSize = New System.Drawing.Size(1307, 1079)
             KeyPreview = True
             Margin = New System.Windows.Forms.Padding(13, 23, 13, 23)

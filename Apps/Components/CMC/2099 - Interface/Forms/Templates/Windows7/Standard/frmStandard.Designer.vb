@@ -66,6 +66,7 @@
             SLFLogo.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             SLFLogo.Name = "SLFLogo"
             SLFLogo.Size = New System.Drawing.Size(73, 85)
+            SLFLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             SLFLogo.TabIndex = 0
             SLFLogo.TabStop = False
             SLFLogo.XOBorderColor = Drawing.Color.DodgerBlue
@@ -120,19 +121,21 @@
             ' 
             ' SLFStatus
             ' 
+            SLFStatus.BackColor = Drawing.SystemColors.Control
             SLFStatus.ImageScalingSize = New System.Drawing.Size(24, 24)
             SLFStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {SLFStatusLabel})
-            SLFStatus.Location = New System.Drawing.Point(0, 1057)
+            SLFStatus.Location = New System.Drawing.Point(0, 1051)
             SLFStatus.Name = "SLFStatus"
             SLFStatus.Padding = New System.Windows.Forms.Padding(2, 0, 23, 0)
-            SLFStatus.Size = New System.Drawing.Size(1307, 22)
+            SLFStatus.Size = New System.Drawing.Size(1307, 28)
             SLFStatus.TabIndex = 994
             SLFStatus.Text = "Stt1"
             ' 
             ' SLFStatusLabel
             ' 
+            SLFStatusLabel.ForeColor = Drawing.Color.Black
             SLFStatusLabel.Name = "SLFStatusLabel"
-            SLFStatusLabel.Size = New System.Drawing.Size(0, 15)
+            SLFStatusLabel.Size = New System.Drawing.Size(0, 21)
             ' 
             ' SLFPanel
             ' 
@@ -143,12 +146,13 @@
             SLFPanel.Location = New System.Drawing.Point(0, 104)
             SLFPanel.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             SLFPanel.Name = "SLFPanel"
-            SLFPanel.Size = New System.Drawing.Size(1307, 953)
+            SLFPanel.Size = New System.Drawing.Size(1307, 947)
             SLFPanel.TabIndex = 7
             ' 
             ' FRMstandard
             ' 
             AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+            BackColor = Drawing.Color.FromArgb(CByte(11), CByte(28), CByte(45))
             ClientSize = New System.Drawing.Size(1307, 1079)
             Controls.Add(SLFPanel)
             Controls.Add(SLFStatus)

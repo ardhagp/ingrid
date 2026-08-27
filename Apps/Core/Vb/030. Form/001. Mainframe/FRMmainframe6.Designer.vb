@@ -1071,7 +1071,8 @@
             ' 
             ' PctProfile
             ' 
-            PctProfile.BackColor = Color.Gainsboro
+            PctProfile.BackColor = Color.White
+            PctProfile.BackgroundImage = CType(resources.GetObject("PctProfile.BackgroundImage"), Image)
             PctProfile.BackgroundImageLayout = ImageLayout.Zoom
             PctProfile.ErrorImage = CType(resources.GetObject("PctProfile.ErrorImage"), Image)
             PctProfile.InitialImage = Nothing
@@ -1257,6 +1258,7 @@
             AutoScaleDimensions = New SizeF(10F, 25F)
             AutoScaleMode = AutoScaleMode.Font
             BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
             BackgroundImageLayout = ImageLayout.None
             ClientSize = New Size(1120, 935)
             Controls.Add(spl_)

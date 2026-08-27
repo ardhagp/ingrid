@@ -21,6 +21,7 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
+            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMccinEditor))
             TxtCode = New CMCv.UI.Control.Txt(components)
             TxtSearchTerm1 = New CMCv.UI.Control.Txt(components)
             TxtSearchTerm2 = New CMCv.UI.Control.Txt(components)
@@ -36,6 +37,11 @@
             ULbl5 = New CMCv.UI.Control.ULbl()
             Tbx1 = New CMCv.UI.Control.Tbx(components)
             tpDetail = New TabPage()
+            ULbl6 = New CMCv.UI.Control.ULbl()
+            BtnRemovePhoto = New CMCv.UI.Control.Btn(components)
+            BtnBrowsePhoto = New CMCv.UI.Control.Btn(components)
+            pctbxPhoto = New CMCv.UI.Control.Pbx(components)
+            pcbxFrame = New CMCv.UI.Control.Pbx(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -43,6 +49,8 @@
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
             Tbx1.SuspendLayout()
             tpDetail.SuspendLayout()
+            CType(pctbxPhoto, ComponentModel.ISupportInitialize).BeginInit()
+            CType(pcbxFrame, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' PnlBottomButton
@@ -65,11 +73,21 @@
             ' SLFPanel
             ' 
             SLFPanel.AutoScroll = True
+            SLFPanel.Controls.Add(BtnRemovePhoto)
+            SLFPanel.Controls.Add(BtnBrowsePhoto)
+            SLFPanel.Controls.Add(pctbxPhoto)
+            SLFPanel.Controls.Add(pcbxFrame)
+            SLFPanel.Controls.Add(ULbl6)
             SLFPanel.Controls.Add(Tbx1)
             SLFPanel.Margin = New Padding(7, 5, 7, 5)
             SLFPanel.Size = New Size(1181, 833)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(Tbx1, 0)
+            SLFPanel.Controls.SetChildIndex(ULbl6, 0)
+            SLFPanel.Controls.SetChildIndex(pcbxFrame, 0)
+            SLFPanel.Controls.SetChildIndex(pctbxPhoto, 0)
+            SLFPanel.Controls.SetChildIndex(BtnBrowsePhoto, 0)
+            SLFPanel.Controls.SetChildIndex(BtnRemovePhoto, 0)
             ' 
             ' TxtCode
             ' 
@@ -113,7 +131,7 @@
             TxtSearchTerm1.Tag = "txt"
             TxtSearchTerm1.XOAutoTrim = True
             TxtSearchTerm1.XOHighlightColor = Color.LightYellow
-            TxtSearchTerm1.XOHighlightOnFocus = False
+            TxtSearchTerm1.XOHighlightOnFocus = True
             TxtSearchTerm1.XOIsBlank = True
             TxtSearchTerm1.XOIsMandatory = True
             TxtSearchTerm1.XOIsPlaceholder = False
@@ -143,7 +161,7 @@
             TxtSearchTerm2.Tag = "txt"
             TxtSearchTerm2.XOAutoTrim = True
             TxtSearchTerm2.XOHighlightColor = Color.LightYellow
-            TxtSearchTerm2.XOHighlightOnFocus = False
+            TxtSearchTerm2.XOHighlightOnFocus = True
             TxtSearchTerm2.XOIsBlank = True
             TxtSearchTerm2.XOIsMandatory = True
             TxtSearchTerm2.XOIsPlaceholder = False
@@ -174,7 +192,7 @@
             TxtDescription.Tag = "txt"
             TxtDescription.XOAutoTrim = True
             TxtDescription.XOHighlightColor = Color.LightYellow
-            TxtDescription.XOHighlightOnFocus = False
+            TxtDescription.XOHighlightOnFocus = True
             TxtDescription.XOIsBlank = True
             TxtDescription.XOIsMandatory = False
             TxtDescription.XOIsPlaceholder = False
@@ -351,7 +369,7 @@
             ' 
             ' Tbx1
             ' 
-            Tbx1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+            Tbx1.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
             Tbx1.Controls.Add(tpDetail)
             Tbx1.Font = New Font("Segoe UI", 12F)
             Tbx1.ItemSize = New Size(126, 37)
@@ -364,6 +382,7 @@
             ' tpDetail
             ' 
             tpDetail.AutoScroll = True
+            tpDetail.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             tpDetail.Controls.Add(ULbl1)
             tpDetail.Controls.Add(ULbl5)
             tpDetail.Controls.Add(TxtCode)
@@ -380,7 +399,100 @@
             tpDetail.Size = New Size(822, 655)
             tpDetail.TabIndex = 0
             tpDetail.Text = "DETAIL"
-            tpDetail.UseVisualStyleBackColor = True
+            ' 
+            ' ULbl6
+            ' 
+            ULbl6.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            ULbl6.BackColor = Color.Moccasin
+            ULbl6.Location = New Point(887, 83)
+            ULbl6.Margin = New Padding(5, 6, 5, 6)
+            ULbl6.Name = "ULbl6"
+            ULbl6.Size = New Size(250, 39)
+            ULbl6.TabIndex = 1012
+            ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl6.XOText = "Company Logo"
+            ULbl6.XOTextAdjuster = False
+            ULbl6.XOTextBorder = False
+            ' 
+            ' BtnRemovePhoto
+            ' 
+            BtnRemovePhoto.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            BtnRemovePhoto.BackColor = Color.Gray
+            BtnRemovePhoto.Enabled = False
+            BtnRemovePhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(68), CByte(68), CByte(68))
+            BtnRemovePhoto.FlatAppearance.BorderSize = 2
+            BtnRemovePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(148), CByte(148), CByte(148))
+            BtnRemovePhoto.FlatStyle = FlatStyle.Flat
+            BtnRemovePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            BtnRemovePhoto.ForeColor = Color.DarkGray
+            BtnRemovePhoto.Location = New Point(923, 449)
+            BtnRemovePhoto.Name = "BtnRemovePhoto"
+            BtnRemovePhoto.Size = New Size(179, 80)
+            BtnRemovePhoto.TabIndex = 1046
+            BtnRemovePhoto.Text = "Remove"
+            BtnRemovePhoto.UseVisualStyleBackColor = False
+            BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
+            BtnRemovePhoto.XOShowBorderOnFocus = False
+            BtnRemovePhoto.XOValidateAllInput = False
+            BtnRemovePhoto.XOValidateAllInputTag = Nothing
+            ' 
+            ' BtnBrowsePhoto
+            ' 
+            BtnBrowsePhoto.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            BtnBrowsePhoto.BackColor = Color.Gray
+            BtnBrowsePhoto.Cursor = Cursors.Hand
+            BtnBrowsePhoto.Enabled = False
+            BtnBrowsePhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(68), CByte(68), CByte(68))
+            BtnBrowsePhoto.FlatAppearance.BorderSize = 2
+            BtnBrowsePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(148), CByte(148), CByte(148))
+            BtnBrowsePhoto.FlatStyle = FlatStyle.Flat
+            BtnBrowsePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            BtnBrowsePhoto.ForeColor = Color.DarkGray
+            BtnBrowsePhoto.Location = New Point(923, 361)
+            BtnBrowsePhoto.Name = "BtnBrowsePhoto"
+            BtnBrowsePhoto.Size = New Size(179, 80)
+            BtnBrowsePhoto.TabIndex = 1043
+            BtnBrowsePhoto.Text = "Browse"
+            BtnBrowsePhoto.UseVisualStyleBackColor = False
+            BtnBrowsePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
+            BtnBrowsePhoto.XOShowBorderOnFocus = False
+            BtnBrowsePhoto.XOValidateAllInput = False
+            BtnBrowsePhoto.XOValidateAllInputTag = Nothing
+            ' 
+            ' pctbxPhoto
+            ' 
+            pctbxPhoto.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            pctbxPhoto.BackColor = Color.White
+            pctbxPhoto.ErrorImage = CType(resources.GetObject("pctbxPhoto.ErrorImage"), Image)
+            pctbxPhoto.Image = CType(resources.GetObject("pctbxPhoto.Image"), Image)
+            pctbxPhoto.InitialImage = CType(resources.GetObject("pctbxPhoto.InitialImage"), Image)
+            pctbxPhoto.Location = New Point(923, 162)
+            pctbxPhoto.Margin = New Padding(6, 5, 6, 5)
+            pctbxPhoto.Name = "pctbxPhoto"
+            pctbxPhoto.Padding = New Padding(26, 28, 26, 28)
+            pctbxPhoto.Size = New Size(179, 179)
+            pctbxPhoto.SizeMode = PictureBoxSizeMode.Zoom
+            pctbxPhoto.TabIndex = 1044
+            pctbxPhoto.TabStop = False
+            pctbxPhoto.XOBorderColor = Color.Transparent
+            pctbxPhoto.XOShowBorder = False
+            ' 
+            ' pcbxFrame
+            ' 
+            pcbxFrame.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            pcbxFrame.BackColor = Color.White
+            pcbxFrame.BorderStyle = BorderStyle.FixedSingle
+            pcbxFrame.ErrorImage = CType(resources.GetObject("pcbxFrame.ErrorImage"), Image)
+            pcbxFrame.InitialImage = CType(resources.GetObject("pcbxFrame.InitialImage"), Image)
+            pcbxFrame.Location = New Point(916, 155)
+            pcbxFrame.Margin = New Padding(6, 5, 6, 5)
+            pcbxFrame.Name = "pcbxFrame"
+            pcbxFrame.Size = New Size(193, 193)
+            pcbxFrame.SizeMode = PictureBoxSizeMode.Zoom
+            pcbxFrame.TabIndex = 1045
+            pcbxFrame.TabStop = False
+            pcbxFrame.XOBorderColor = Color.DodgerBlue
+            pcbxFrame.XOShowBorder = False
             ' 
             ' FRMccinEditor
             ' 
@@ -399,6 +511,8 @@
             Tbx1.ResumeLayout(False)
             tpDetail.ResumeLayout(False)
             tpDetail.PerformLayout()
+            CType(pctbxPhoto, ComponentModel.ISupportInitialize).EndInit()
+            CType(pcbxFrame, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub
@@ -417,5 +531,10 @@
         Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
         Friend WithEvents Tbx1 As CMCv.UI.Control.Tbx
         Friend WithEvents tpDetail As TabPage
+        Friend WithEvents ULbl6 As CMCv.UI.Control.ULbl
+        Friend WithEvents BtnRemovePhoto As CMCv.UI.Control.Btn
+        Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.Btn
+        Friend WithEvents pctbxPhoto As CMCv.UI.Control.Pbx
+        Friend WithEvents pcbxFrame As CMCv.UI.Control.Pbx
     End Class
 End Namespace

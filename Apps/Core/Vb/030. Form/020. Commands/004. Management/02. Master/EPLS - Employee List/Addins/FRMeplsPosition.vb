@@ -24,6 +24,11 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
+            Call SelectData()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub SelectData()
             If DgnAddinPosition.RowCount = 0 Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
@@ -62,6 +67,11 @@
             TxtFind.Clear()
             varDataProperties.EmployeePositionIsForceRefresh = True
             Call GetData()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub DgnAddinPosition_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnAddinPosition.CellContentDoubleClick
+            Call SelectData()
         End Sub
     End Class
 End Namespace

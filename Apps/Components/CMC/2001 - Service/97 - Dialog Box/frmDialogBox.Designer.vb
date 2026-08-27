@@ -70,7 +70,7 @@
             ' 
             ' PnlBottomButtonYesNo
             ' 
-            PnlBottomButtonYesNo.BackColor = Drawing.Color.DarkSlateGray
+            PnlBottomButtonYesNo.BackColor = Drawing.Color.FromArgb(CByte(12), CByte(18), CByte(40))
             PnlBottomButtonYesNo.Controls.Add(PictureBox1)
             PnlBottomButtonYesNo.Controls.Add(BtnYes)
             PnlBottomButtonYesNo.Controls.Add(BtnNo)
@@ -110,7 +110,7 @@
             BtnYes.TabIndex = 0
             BtnYes.Text = "&Yes"
             BtnYes.UseVisualStyleBackColor = False
-            BtnYes.XOButtonType = Control.ControlCodeBase.ButtonType.Yes
+            BtnYes.XOButtonType = UI.Control.ControlCodeBase.ButtonType.Yes
             BtnYes.XOShowBorderOnFocus = False
             BtnYes.XOValidateAllInput = False
             BtnYes.XOValidateAllInputTag = Nothing
@@ -133,7 +133,7 @@
             BtnNo.TabIndex = 0
             BtnNo.Text = "&No"
             BtnNo.UseVisualStyleBackColor = False
-            BtnNo.XOButtonType = Control.ControlCodeBase.ButtonType.No
+            BtnNo.XOButtonType = UI.Control.ControlCodeBase.ButtonType.No
             BtnNo.XOShowBorderOnFocus = False
             BtnNo.XOValidateAllInput = False
             BtnNo.XOValidateAllInputTag = Nothing
@@ -156,7 +156,7 @@
             BtnCancel.TabIndex = 0
             BtnCancel.Text = "&Cancel"
             BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = Control.ControlCodeBase.ButtonType.No
+            BtnCancel.XOButtonType = UI.Control.ControlCodeBase.ButtonType.No
             BtnCancel.XOShowBorderOnFocus = False
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
@@ -179,14 +179,14 @@
             BtnOk.TabIndex = 0
             BtnOk.Text = "&Ok"
             BtnOk.UseVisualStyleBackColor = False
-            BtnOk.XOButtonType = Control.ControlCodeBase.ButtonType.Yes
+            BtnOk.XOButtonType = UI.Control.ControlCodeBase.ButtonType.Yes
             BtnOk.XOShowBorderOnFocus = False
             BtnOk.XOValidateAllInput = False
             BtnOk.XOValidateAllInputTag = Nothing
             ' 
             ' PnlBottomButtonOkOnly
             ' 
-            PnlBottomButtonOkOnly.BackColor = Drawing.Color.DarkSlateGray
+            PnlBottomButtonOkOnly.BackColor = Drawing.Color.FromArgb(CByte(12), CByte(18), CByte(40))
             PnlBottomButtonOkOnly.Controls.Add(PictureBox2)
             PnlBottomButtonOkOnly.Controls.Add(BtnOkOnly)
             PnlBottomButtonOkOnly.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -225,7 +225,7 @@
             BtnOkOnly.TabIndex = 0
             BtnOkOnly.Text = "&Ok"
             BtnOkOnly.UseVisualStyleBackColor = False
-            BtnOkOnly.XOButtonType = Control.ControlCodeBase.ButtonType.Default
+            BtnOkOnly.XOButtonType = UI.Control.ControlCodeBase.ButtonType.Default
             BtnOkOnly.XOShowBorderOnFocus = False
             BtnOkOnly.XOValidateAllInput = False
             BtnOkOnly.XOValidateAllInputTag = Nothing
@@ -234,8 +234,10 @@
             ' 
             TxtMessage.AcceptsReturn = True
             TxtMessage.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-            TxtMessage.BackColor = Drawing.SystemColors.Window
+            TxtMessage.BackColor = Drawing.Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            TxtMessage.BorderStyle = System.Windows.Forms.BorderStyle.None
             TxtMessage.Font = New System.Drawing.Font("Segoe UI", 12.0F)
+            TxtMessage.ForeColor = Drawing.Color.White
             TxtMessage.Location = New System.Drawing.Point(20, 29)
             TxtMessage.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             TxtMessage.MaxLength = 255
@@ -255,7 +257,7 @@
             TxtMessage.XOIsMandatory = False
             TxtMessage.XOIsPlaceholder = False
             TxtMessage.XOIsReplaceEmptyString = False
-            TxtMessage.XOLetterCase = Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtMessage.XOLetterCase = UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtMessage.XOMandatoryBgColor = Drawing.Color.LightPink
             TxtMessage.XOMandatoryBgColorDefault = Drawing.Color.White
             TxtMessage.XOMandatoryMessage = Nothing
@@ -264,13 +266,13 @@
             TxtMessage.XOPasswordStrengthScore = 0
             TxtMessage.XOPasswordStrengthText = Nothing
             TxtMessage.XOPlaceholderText = "Type then press Enter"
-            TxtMessage.XORestriction = Control.ControlCodeBase.EnumRestriction.None
+            TxtMessage.XORestriction = UI.Control.ControlCodeBase.EnumRestriction.None
             TxtMessage.XOSelectOnFocus = False
             TxtMessage.XOSqlText = ""
             ' 
             ' FRMdialogbox
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
             ClientSize = New System.Drawing.Size(1115, 608)
             ControlBox = False
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog

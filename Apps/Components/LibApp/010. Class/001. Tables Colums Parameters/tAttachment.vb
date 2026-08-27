@@ -12,6 +12,7 @@
         Public ReadOnly C_AttachmentUrl As String = "attachment_url"
         Public ReadOnly C_AttachmentTag As String = "attachment_tag"
         Public ReadOnly C_AttachmentProvider As String = "attachment_provider"
+        Public ReadOnly C_AttachmentClient As String = "attachment_client"
         Public ReadOnly P_AttachmentId As String = "@AttachmentId"
         Public ReadOnly P_AttachmentParentToken As String = "@AttachmentParentToken"
         Public ReadOnly P_AttachmentParentId As String = "@AttachmentParentId"

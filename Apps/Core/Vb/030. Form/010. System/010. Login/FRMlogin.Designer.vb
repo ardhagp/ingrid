@@ -178,6 +178,7 @@
             ' 
             Lbl1.AutoSize = True
             Lbl1.Font = New Font("Segoe UI", 12F)
+            Lbl1.ForeColor = Color.White
             Lbl1.Location = New Point(37, 67)
             Lbl1.Margin = New Padding(6, 0, 6, 0)
             Lbl1.Name = "Lbl1"
@@ -190,6 +191,7 @@
             ' 
             Lbl2.AutoSize = True
             Lbl2.Font = New Font("Segoe UI", 12F)
+            Lbl2.ForeColor = Color.White
             Lbl2.Location = New Point(44, 135)
             Lbl2.Margin = New Padding(6, 0, 6, 0)
             Lbl2.Name = "Lbl2"

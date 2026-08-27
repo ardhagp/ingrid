@@ -26,6 +26,11 @@
         ' ----------------------------------------------------------
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
+            Call SelectData()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub SelectData()
             If DgnAddinEmploymentType.RowCount = 0 Then
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
@@ -76,6 +81,11 @@
             End If
 
             CMDepls.Addins.Browse.EmploymentType.DisplayData(varDataProperties, DgnAddinEmploymentType, SLFStatus)
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub DgnAddinEmploymentType_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnAddinEmploymentType.CellContentDoubleClick
+            Call SelectData()
         End Sub
     End Class
 End Namespace

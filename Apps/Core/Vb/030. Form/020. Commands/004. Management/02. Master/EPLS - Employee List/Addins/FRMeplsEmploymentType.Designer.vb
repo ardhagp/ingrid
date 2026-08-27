@@ -105,6 +105,7 @@
             ' 
             Lbl1.AutoSize = True
             Lbl1.Font = New Font("Segoe UI", 12F)
+            Lbl1.ForeColor = Color.White
             Lbl1.Location = New Point(20, 25)
             Lbl1.Margin = New Padding(5, 0, 5, 0)
             Lbl1.Name = "Lbl1"
@@ -147,9 +148,9 @@
             ' 
             DgnAddinEmploymentType.AllowUserToAddRows = False
             DgnAddinEmploymentType.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(209), CByte(226), CByte(94))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(232), CByte(213), CByte(139))
             DgnAddinEmploymentType.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-            DgnAddinEmploymentType.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+            DgnAddinEmploymentType.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnAddinEmploymentType.BorderStyle = BorderStyle.None
             DgnAddinEmploymentType.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnAddinEmploymentType.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
