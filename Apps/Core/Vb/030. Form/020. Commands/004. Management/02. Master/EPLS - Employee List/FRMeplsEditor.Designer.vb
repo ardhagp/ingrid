@@ -33,6 +33,9 @@
             OfdPhoto = New OpenFileDialog()
             pcbxFrame = New CMCv.UI.Control.Pbx(components)
             tpPermissions = New TabPage()
+            GbxCredetials = New CMCv.UI.Control.Gbx(components)
+            ULbl7 = New CMCv.UI.Control.ULbl()
+            TxtUsername = New CMCv.UI.Control.Txt(components)
             GbxModulesRoles = New CMCv.UI.Control.Gbx(components)
             DgnModulesRoles = New CMCv.UI.Control.Dgn(components)
             modulegroup_name = New DataGridViewTextBoxColumn()
@@ -45,9 +48,6 @@
             empty = New DataGridViewTextBoxColumn()
             useraccess_id = New DataGridViewTextBoxColumn()
             module_id = New DataGridViewTextBoxColumn()
-            GbxCredetials = New CMCv.UI.Control.Gbx(components)
-            ULbl7 = New CMCv.UI.Control.ULbl()
-            TxtLogin = New CMCv.UI.Control.Txt(components)
             tpEmployment = New TabPage()
             BtnBrowseEmploymentType = New CMCv.UI.Control.Btn(components)
             ULbl14 = New CMCv.UI.Control.ULbl()
@@ -88,9 +88,9 @@
             CType(pctbxPhoto, ComponentModel.ISupportInitialize).BeginInit()
             CType(pcbxFrame, ComponentModel.ISupportInitialize).BeginInit()
             tpPermissions.SuspendLayout()
+            GbxCredetials.SuspendLayout()
             GbxModulesRoles.SuspendLayout()
             CType(DgnModulesRoles, ComponentModel.ISupportInitialize).BeginInit()
-            GbxCredetials.SuspendLayout()
             tpEmployment.SuspendLayout()
             tpGeneral.SuspendLayout()
             TbctlEmployee.SuspendLayout()
@@ -136,10 +136,10 @@
             ' 
             ChkAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             ChkAddNew.AutoSize = True
-            ChkAddNew.BackColor = Color.Transparent
+            ChkAddNew.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             ChkAddNew.FlatStyle = FlatStyle.Flat
-            ChkAddNew.Font = New Font("Segoe UI", 12.0F)
-            ChkAddNew.ForeColor = Color.Tomato
+            ChkAddNew.Font = New Font("Segoe UI", 12F)
+            ChkAddNew.ForeColor = Color.Yellow
             ChkAddNew.Location = New Point(586, 28)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
             ChkAddNew.Name = "ChkAddNew"
@@ -147,6 +147,7 @@
             ChkAddNew.TabIndex = 803
             ChkAddNew.Text = "Add new on Save"
             ChkAddNew.UseVisualStyleBackColor = False
+            ChkAddNew.XOCheckColor = Color.Yellow
             ' 
             ' BtnSave
             ' 
@@ -157,7 +158,7 @@
             BtnSave.FlatAppearance.BorderSize = 2
             BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnSave.ForeColor = Color.White
             BtnSave.Location = New Point(817, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
@@ -180,7 +181,7 @@
             BtnCancel.FlatAppearance.BorderSize = 2
             BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
             BtnCancel.Location = New Point(994, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
@@ -221,7 +222,7 @@
             BtnBrowsePhoto.FlatAppearance.BorderSize = 2
             BtnBrowsePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnBrowsePhoto.FlatStyle = FlatStyle.Flat
-            BtnBrowsePhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnBrowsePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowsePhoto.ForeColor = Color.White
             BtnBrowsePhoto.Location = New Point(923, 428)
             BtnBrowsePhoto.Name = "BtnBrowsePhoto"
@@ -258,8 +259,8 @@
             ' tpPermissions
             ' 
             tpPermissions.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
-            tpPermissions.Controls.Add(GbxModulesRoles)
             tpPermissions.Controls.Add(GbxCredetials)
+            tpPermissions.Controls.Add(GbxModulesRoles)
             tpPermissions.Location = New Point(4, 41)
             tpPermissions.Margin = New Padding(6, 5, 6, 5)
             tpPermissions.Name = "tpPermissions"
@@ -267,20 +268,80 @@
             tpPermissions.Size = New Size(822, 655)
             tpPermissions.TabIndex = 1
             tpPermissions.Text = "PERMISSIONS"
-            tpPermissions.UseVisualStyleBackColor = True
+            ' 
+            ' GbxCredetials
+            ' 
+            GbxCredetials.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+            GbxCredetials.Controls.Add(ULbl7)
+            GbxCredetials.Controls.Add(TxtUsername)
+            GbxCredetials.Font = New Font("Segoe UI", 12F)
+            GbxCredetials.ForeColor = Color.White
+            GbxCredetials.Location = New Point(12, 5)
+            GbxCredetials.Margin = New Padding(6, 5, 6, 5)
+            GbxCredetials.Name = "GbxCredetials"
+            GbxCredetials.Padding = New Padding(6, 5, 6, 5)
+            GbxCredetials.Size = New Size(798, 123)
+            GbxCredetials.TabIndex = 3
+            GbxCredetials.TabStop = False
+            GbxCredetials.Text = "Credentials"
+            ' 
+            ' ULbl7
+            ' 
+            ULbl7.BackColor = Color.Moccasin
+            ULbl7.Location = New Point(11, 54)
+            ULbl7.Margin = New Padding(7, 10, 7, 10)
+            ULbl7.Name = "ULbl7"
+            ULbl7.Size = New Size(250, 39)
+            ULbl7.TabIndex = 301
+            ULbl7.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl7.XOText = "Username"
+            ULbl7.XOTextAdjuster = True
+            ULbl7.XOTextBorder = False
+            ' 
+            ' TxtUsername
+            ' 
+            TxtUsername.BackColor = Color.White
+            TxtUsername.Font = New Font("Segoe UI", 12F)
+            TxtUsername.Location = New Point(273, 54)
+            TxtUsername.Margin = New Padding(6, 5, 6, 5)
+            TxtUsername.MaxLength = 255
+            TxtUsername.Name = "TxtUsername"
+            TxtUsername.ReadOnly = True
+            TxtUsername.Size = New Size(341, 39)
+            TxtUsername.TabIndex = 300
+            TxtUsername.Tag = "txt"
+            TxtUsername.TextAlign = HorizontalAlignment.Center
+            TxtUsername.XOAutoTrim = False
+            TxtUsername.XOHighlightColor = Color.LightYellow
+            TxtUsername.XOHighlightOnFocus = False
+            TxtUsername.XOIsBlank = False
+            TxtUsername.XOIsMandatory = False
+            TxtUsername.XOIsPlaceholder = False
+            TxtUsername.XOIsReplaceEmptyString = False
+            TxtUsername.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtUsername.XOMandatoryBgColor = Color.LightPink
+            TxtUsername.XOMandatoryBgColorDefault = Color.White
+            TxtUsername.XOMandatoryMessage = Nothing
+            TxtUsername.XOPasswordLengthMin = 8
+            TxtUsername.XOPasswordStrengthCalc = False
+            TxtUsername.XOPasswordStrengthScore = 0
+            TxtUsername.XOPasswordStrengthText = Nothing
+            TxtUsername.XOPlaceholderText = "Type then press Enter"
+            TxtUsername.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtUsername.XOSelectOnFocus = False
+            TxtUsername.XOSqlText = ""
             ' 
             ' GbxModulesRoles
             ' 
-            GbxModulesRoles.AutoSize = True
+            GbxModulesRoles.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
             GbxModulesRoles.Controls.Add(DgnModulesRoles)
-            GbxModulesRoles.Dock = DockStyle.Fill
-            GbxModulesRoles.Font = New Font("Segoe UI", 12.0F)
+            GbxModulesRoles.Font = New Font("Segoe UI", 12F)
             GbxModulesRoles.ForeColor = Color.White
-            GbxModulesRoles.Location = New Point(6, 128)
+            GbxModulesRoles.Location = New Point(12, 137)
             GbxModulesRoles.Margin = New Padding(6, 5, 6, 5)
             GbxModulesRoles.Name = "GbxModulesRoles"
             GbxModulesRoles.Padding = New Padding(6, 5, 6, 5)
-            GbxModulesRoles.Size = New Size(810, 522)
+            GbxModulesRoles.Size = New Size(798, 508)
             GbxModulesRoles.TabIndex = 0
             GbxModulesRoles.TabStop = False
             GbxModulesRoles.Text = "Modules or roles"
@@ -289,7 +350,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(196), CByte(226), CByte(98))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(246), CByte(203), CByte(164))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnModulesRoles.BorderStyle = BorderStyle.None
@@ -297,7 +358,7 @@
             DgnModulesRoles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F)
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
             DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
             DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -308,7 +369,7 @@
             DgnModulesRoles.Columns.AddRange(New DataGridViewColumn() {modulegroup_name, module_code, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports, empty, useraccess_id, module_id})
             DgnModulesRoles.Dock = DockStyle.Fill
             DgnModulesRoles.EnableHeadersVisualStyles = False
-            DgnModulesRoles.Font = New Font("Verdana", 8.0F)
+            DgnModulesRoles.Font = New Font("Verdana", 8F)
             DgnModulesRoles.Location = New Point(6, 37)
             DgnModulesRoles.Margin = New Padding(6, 5, 6, 5)
             DgnModulesRoles.Name = "DgnModulesRoles"
@@ -316,7 +377,7 @@
             DgnModulesRoles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle3.BackColor = Color.YellowGreen
-            DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F)
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
             DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
             DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -324,7 +385,7 @@
             DgnModulesRoles.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
             DgnModulesRoles.RowHeadersWidth = 62
             DgnModulesRoles.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-            DgnModulesRoles.Size = New Size(798, 480)
+            DgnModulesRoles.Size = New Size(786, 466)
             DgnModulesRoles.StandardTab = True
             DgnModulesRoles.TabIndex = 0
             DgnModulesRoles.XOIsGroupFirstRow = True
@@ -440,68 +501,6 @@
             module_id.Visible = False
             module_id.Width = 150
             ' 
-            ' GbxCredetials
-            ' 
-            GbxCredetials.Controls.Add(ULbl7)
-            GbxCredetials.Controls.Add(TxtLogin)
-            GbxCredetials.Dock = DockStyle.Top
-            GbxCredetials.Font = New Font("Segoe UI", 12.0F)
-            GbxCredetials.ForeColor = Color.White
-            GbxCredetials.Location = New Point(6, 5)
-            GbxCredetials.Margin = New Padding(6, 5, 6, 5)
-            GbxCredetials.Name = "GbxCredetials"
-            GbxCredetials.Padding = New Padding(6, 5, 6, 5)
-            GbxCredetials.Size = New Size(810, 123)
-            GbxCredetials.TabIndex = 3
-            GbxCredetials.TabStop = False
-            GbxCredetials.Text = "Credentials"
-            ' 
-            ' ULbl7
-            ' 
-            ULbl7.BackColor = Color.Moccasin
-            ULbl7.Location = New Point(11, 54)
-            ULbl7.Margin = New Padding(7, 10, 7, 10)
-            ULbl7.Name = "ULbl7"
-            ULbl7.Size = New Size(250, 39)
-            ULbl7.TabIndex = 301
-            ULbl7.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl7.XOText = "Login"
-            ULbl7.XOTextAdjuster = True
-            ULbl7.XOTextBorder = False
-            ' 
-            ' TxtLogin
-            ' 
-            TxtLogin.BackColor = Color.White
-            TxtLogin.Font = New Font("Segoe UI", 12.0F)
-            TxtLogin.Location = New Point(273, 54)
-            TxtLogin.Margin = New Padding(6, 5, 6, 5)
-            TxtLogin.MaxLength = 255
-            TxtLogin.Name = "TxtLogin"
-            TxtLogin.ReadOnly = True
-            TxtLogin.Size = New Size(341, 39)
-            TxtLogin.TabIndex = 300
-            TxtLogin.Tag = "txt"
-            TxtLogin.TextAlign = HorizontalAlignment.Center
-            TxtLogin.XOAutoTrim = False
-            TxtLogin.XOHighlightColor = Color.LightYellow
-            TxtLogin.XOHighlightOnFocus = False
-            TxtLogin.XOIsBlank = False
-            TxtLogin.XOIsMandatory = False
-            TxtLogin.XOIsPlaceholder = False
-            TxtLogin.XOIsReplaceEmptyString = False
-            TxtLogin.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
-            TxtLogin.XOMandatoryBgColor = Color.LightPink
-            TxtLogin.XOMandatoryBgColorDefault = Color.White
-            TxtLogin.XOMandatoryMessage = Nothing
-            TxtLogin.XOPasswordLengthMin = 8
-            TxtLogin.XOPasswordStrengthCalc = False
-            TxtLogin.XOPasswordStrengthScore = 0
-            TxtLogin.XOPasswordStrengthText = Nothing
-            TxtLogin.XOPlaceholderText = "Type then press Enter"
-            TxtLogin.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
-            TxtLogin.XOSelectOnFocus = False
-            TxtLogin.XOSqlText = ""
-            ' 
             ' tpEmployment
             ' 
             tpEmployment.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
@@ -534,7 +533,7 @@
             BtnBrowseEmploymentType.FlatAppearance.BorderSize = 2
             BtnBrowseEmploymentType.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnBrowseEmploymentType.FlatStyle = FlatStyle.Flat
-            BtnBrowseEmploymentType.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnBrowseEmploymentType.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowseEmploymentType.ForeColor = Color.White
             BtnBrowseEmploymentType.Location = New Point(740, 217)
             BtnBrowseEmploymentType.Name = "BtnBrowseEmploymentType"
@@ -628,10 +627,10 @@
             ' ChkActiveEmployee
             ' 
             ChkActiveEmployee.AutoSize = True
-            ChkActiveEmployee.BackColor = Color.Transparent
+            ChkActiveEmployee.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             ChkActiveEmployee.FlatStyle = FlatStyle.Flat
-            ChkActiveEmployee.Font = New Font("Segoe UI", 12.0F)
-            ChkActiveEmployee.ForeColor = Color.White
+            ChkActiveEmployee.Font = New Font("Segoe UI", 12F)
+            ChkActiveEmployee.ForeColor = Color.Yellow
             ChkActiveEmployee.Location = New Point(273, 421)
             ChkActiveEmployee.Margin = New Padding(6, 5, 6, 5)
             ChkActiveEmployee.Name = "ChkActiveEmployee"
@@ -639,10 +638,11 @@
             ChkActiveEmployee.TabIndex = 211
             ChkActiveEmployee.Text = "Active employee"
             ChkActiveEmployee.UseVisualStyleBackColor = False
+            ChkActiveEmployee.XOCheckColor = Color.Yellow
             ' 
             ' TxtEmployeeNickname
             ' 
-            TxtEmployeeNickname.Font = New Font("Segoe UI", 12.0F)
+            TxtEmployeeNickname.Font = New Font("Segoe UI", 12F)
             TxtEmployeeNickname.Location = New Point(273, 353)
             TxtEmployeeNickname.Margin = New Padding(6, 5, 6, 5)
             TxtEmployeeNickname.MaxLength = 255
@@ -673,7 +673,7 @@
             ' 
             ' TxtEmployeeNumber
             ' 
-            TxtEmployeeNumber.Font = New Font("Segoe UI", 12.0F)
+            TxtEmployeeNumber.Font = New Font("Segoe UI", 12F)
             TxtEmployeeNumber.Location = New Point(273, 285)
             TxtEmployeeNumber.Margin = New Padding(6, 5, 6, 5)
             TxtEmployeeNumber.MaxLength = 255
@@ -704,7 +704,7 @@
             ' 
             ' TxtEmploymentType
             ' 
-            TxtEmploymentType.Font = New Font("Segoe UI", 12.0F)
+            TxtEmploymentType.Font = New Font("Segoe UI", 12F)
             TxtEmploymentType.Location = New Point(273, 217)
             TxtEmploymentType.Margin = New Padding(6, 5, 6, 5)
             TxtEmploymentType.MaxLength = 255
@@ -736,7 +736,7 @@
             ' 
             ' TxtPosition
             ' 
-            TxtPosition.Font = New Font("Segoe UI", 12.0F)
+            TxtPosition.Font = New Font("Segoe UI", 12F)
             TxtPosition.Location = New Point(273, 150)
             TxtPosition.Margin = New Padding(6, 5, 6, 5)
             TxtPosition.MaxLength = 255
@@ -774,7 +774,7 @@
             BtnBrowsePosition.FlatAppearance.BorderSize = 2
             BtnBrowsePosition.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnBrowsePosition.FlatStyle = FlatStyle.Flat
-            BtnBrowsePosition.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnBrowsePosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowsePosition.ForeColor = Color.White
             BtnBrowsePosition.Location = New Point(740, 150)
             BtnBrowsePosition.Name = "BtnBrowsePosition"
@@ -789,7 +789,7 @@
             ' 
             ' TxTDepartment
             ' 
-            TxTDepartment.Font = New Font("Segoe UI", 12.0F)
+            TxTDepartment.Font = New Font("Segoe UI", 12F)
             TxTDepartment.Location = New Point(273, 83)
             TxTDepartment.Margin = New Padding(6, 5, 6, 5)
             TxTDepartment.MaxLength = 255
@@ -821,7 +821,7 @@
             ' 
             ' TxtCompany
             ' 
-            TxtCompany.Font = New Font("Segoe UI", 12.0F)
+            TxtCompany.Font = New Font("Segoe UI", 12F)
             TxtCompany.Location = New Point(273, 15)
             TxtCompany.Margin = New Padding(6, 5, 6, 5)
             TxtCompany.MaxLength = 255
@@ -956,7 +956,7 @@
             ' TxtAddress
             ' 
             TxtAddress.BackColor = Color.White
-            TxtAddress.Font = New Font("Segoe UI", 12.0F)
+            TxtAddress.Font = New Font("Segoe UI", 12F)
             TxtAddress.Location = New Point(273, 352)
             TxtAddress.Margin = New Padding(6, 5, 6, 5)
             TxtAddress.MaxLength = 1024
@@ -989,7 +989,7 @@
             ' TxtBirthPlace
             ' 
             TxtBirthPlace.BackColor = Color.White
-            TxtBirthPlace.Font = New Font("Segoe UI", 12.0F)
+            TxtBirthPlace.Font = New Font("Segoe UI", 12F)
             TxtBirthPlace.Location = New Point(273, 217)
             TxtBirthPlace.Margin = New Padding(6, 5, 6, 5)
             TxtBirthPlace.MaxLength = 255
@@ -1019,7 +1019,7 @@
             ' 
             ' DtpBirthDate
             ' 
-            DtpBirthDate.Font = New Font("Segoe UI", 12.0F)
+            DtpBirthDate.Font = New Font("Segoe UI", 12F)
             DtpBirthDate.Location = New Point(273, 150)
             DtpBirthDate.Margin = New Padding(6, 5, 6, 5)
             DtpBirthDate.MaxDate = New Date(2029, 4, 3, 0, 0, 0, 0)
@@ -1032,7 +1032,7 @@
             ' TxtPersonalID
             ' 
             TxtPersonalID.BackColor = Color.LightPink
-            TxtPersonalID.Font = New Font("Segoe UI", 12.0F)
+            TxtPersonalID.Font = New Font("Segoe UI", 12F)
             TxtPersonalID.Location = New Point(273, 15)
             TxtPersonalID.Margin = New Padding(6, 5, 6, 5)
             TxtPersonalID.MaxLength = 16
@@ -1064,7 +1064,7 @@
             ' 
             CboGender.DropDownStyle = ComboBoxStyle.DropDownList
             CboGender.FlatStyle = FlatStyle.Flat
-            CboGender.Font = New Font("Segoe UI", 12.0F)
+            CboGender.Font = New Font("Segoe UI", 12F)
             CboGender.FormattingEnabled = True
             CboGender.Items.AddRange(New Object() {"FEMALE", "MALE"})
             CboGender.Location = New Point(273, 285)
@@ -1076,7 +1076,7 @@
             ' TxtFullName
             ' 
             TxtFullName.BackColor = Color.LightPink
-            TxtFullName.Font = New Font("Segoe UI", 12.0F)
+            TxtFullName.Font = New Font("Segoe UI", 12F)
             TxtFullName.Location = New Point(273, 83)
             TxtFullName.Margin = New Padding(6, 5, 6, 5)
             TxtFullName.MaxLength = 255
@@ -1110,7 +1110,7 @@
             TbctlEmployee.Controls.Add(tpGeneral)
             TbctlEmployee.Controls.Add(tpEmployment)
             TbctlEmployee.Controls.Add(tpPermissions)
-            TbctlEmployee.Font = New Font("Segoe UI", 12.0F)
+            TbctlEmployee.Font = New Font("Segoe UI", 12F)
             TbctlEmployee.Location = New Point(20, 25)
             TbctlEmployee.Margin = New Padding(6, 5, 6, 5)
             TbctlEmployee.Name = "TbctlEmployee"
@@ -1140,7 +1140,7 @@
             BtnRemovePhoto.FlatAppearance.BorderSize = 2
             BtnRemovePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnRemovePhoto.FlatStyle = FlatStyle.Flat
-            BtnRemovePhoto.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+            BtnRemovePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnRemovePhoto.ForeColor = Color.White
             BtnRemovePhoto.Location = New Point(923, 516)
             BtnRemovePhoto.Name = "BtnRemovePhoto"
@@ -1169,11 +1169,10 @@
             CType(pctbxPhoto, ComponentModel.ISupportInitialize).EndInit()
             CType(pcbxFrame, ComponentModel.ISupportInitialize).EndInit()
             tpPermissions.ResumeLayout(False)
-            tpPermissions.PerformLayout()
-            GbxModulesRoles.ResumeLayout(False)
-            CType(DgnModulesRoles, ComponentModel.ISupportInitialize).EndInit()
             GbxCredetials.ResumeLayout(False)
             GbxCredetials.PerformLayout()
+            GbxModulesRoles.ResumeLayout(False)
+            CType(DgnModulesRoles, ComponentModel.ISupportInitialize).EndInit()
             tpEmployment.ResumeLayout(False)
             tpEmployment.PerformLayout()
             tpGeneral.ResumeLayout(False)
@@ -1210,7 +1209,7 @@
         Friend WithEvents TxtBirthPlace As CMCv.UI.Control.Txt
         Friend WithEvents TxtAddress As CMCv.UI.Control.Txt
         Friend WithEvents GbxCredetials As CMCv.UI.Control.Gbx
-        Friend WithEvents TxtLogin As CMCv.UI.Control.Txt
+        Friend WithEvents TxtUsername As CMCv.UI.Control.Txt
         Friend WithEvents ULbl8 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
