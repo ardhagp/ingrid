@@ -153,6 +153,57 @@ Namespace UI.Canvas
             End Try
         End Sub
 
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMmainframe6_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
+            Dim varRequiredFolder = CheckRequiredFolder(DirName.PDF)
+
+            Try
+                Dim clsLog As New Ladybug.Log.Events
+                With proLog
+                    .Message = "Ingrid Main App is closing."
+                    .FromSender = "FRMmainframe6 Closing Event"
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Information
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
+                    .ResumeNext = True
+                    .InternalStackTrace = String.Empty
+                    .Number = 0
+                    .ShowErrorReporting = False
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = True
+                    .AppVersion = GetAppVersion()
+                End With
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+
+                For Each varDeleteFile In System.IO.Directory.GetFiles(varRequiredFolder, "*.*", System.IO.SearchOption.TopDirectoryOnly)
+                    System.IO.File.Delete(varDeleteFile)
+                Next
+            Catch ex As Exception
+                With proLog
+                    .FromSender = "[Closing] Mainframe"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                    .AppVersion = GetAppVersion()
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+            End Try
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMmainframe6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+            RaiseEvent EventMainframeClose()
+        End Sub
+
         ' ----------------------------------------------------------
         ' Controls Events Handlers
         ' ----------------------------------------------------------
@@ -167,199 +218,6 @@ Namespace UI.Canvas
             Call LogoutClicked()
         End Sub
 
-        ' ---------------------------------------------------------
-        ' Functions and Subroutines
-        ' ---------------------------------------------------------
-        ''' <summary>
-        ''' 
-        ''' </summary>
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub CommandAutoComplete()
-            Try
-                Dim varDataset As New System.Data.DataSet
-                Dim varList As New AutoCompleteStringCollection
-
-                'Txt_shortcut.AutoCompleteSource = Nothing
-                Txt_shortcut.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-                varDataset = varAppModules.DisplayAutoComplete(varDataProperties) '.DisplayAutoComplete(Convert.ToString(varDataProperties.RowID), DgnPictureList)
-                If varDataset Is Nothing Then
-                    Return
-                End If
-                For i As Integer = 0 To varDataset.Tables("TCMD").Rows.Count - 1
-                    varList.Add(varDataset.Tables("TCMD").Rows(i).Item("module_code").ToString)
-                Next
-                Txt_shortcut.AutoCompleteCustomSource = varList
-                Txt_shortcut.AutoCompleteSource = AutoCompleteSource.CustomSource
-            Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
-                    .FromSender = "[CommandAutoComplete] Mainframe"
-                    .InternalStackTrace = ex.StackTrace
-                    .Message = ex.Message
-                    .Number = ex.HResult
-                    .ResumeNext = True
-                    .SaveInBetterLog = True
-                    .SaveLogInLocal = False
-                    .ShowErrorReporting = True
-                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
-                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
-                End With
-
-                Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
-                clsLog = Nothing
-            End Try
-        End Sub
-
-        ''' <summary>
-        ''' 
-        ''' </summary>
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub GetRunningText()
-            TxtRunning.Visible = varAppRunningText.Show(varDataProperties)
-        End Sub
-
-        ''' <summary>
-        ''' Get Notification Count
-        ''' </summary>
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub GetNotification()
-            varTotalNotification = varAppNotification.Exist(varDataProperties)
-            If varTotalNotification > 0 Then
-                USERMENU.Text = varDatasetIngrid.Tables(dtUserData).Rows(0).Item("employee_fullname").ToString & "*"
-                USERMENU.BackColor = Global.System.Drawing.Color.LightPink
-                USERMENU.ForeColor = Global.System.Drawing.Color.Black
-            Else
-                USERMENU.Text = varDatasetIngrid.Tables(dtUserData).Rows(0).Item("employee_fullname").ToString
-                USERMENU.BackColor = Global.System.Drawing.Color.Yellow
-                USERMENU.ForeColor = Global.System.Drawing.Color.Black
-            End If
-            NotificationToolStripMenuItem.Text = varTotalNotification & " Notification(s)"
-        End Sub
-
-        ''' <summary>
-        ''' Clear Status Bar 
-        ''' </summary>
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub ClearStatus()
-            Ts_status.Text = String.Empty
-            varClearStatus = 0
-        End Sub
-
-        ''' <summary>
-        ''' Close All varWorkspace Windows
-        ''' </summary>
-        ''' <param name="forced"></param>
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub CloseAllWindows(Optional isforced As Boolean = False)
-            Try
-                If Not (isforced) AndAlso (Global.System.Windows.Forms.MessageBox.Show("Do you want to close all Workspace windows?", "Close All Windows", Global.System.Windows.Forms.MessageBoxButtons.YesNo, Global.System.Windows.Forms.MessageBoxIcon.Question) = Global.System.Windows.Forms.DialogResult.No) Then
-                    Return
-                Else
-                    For Each openedforms As CMCv.UI.Canvas.FRMstandard In Me.MdiChildren
-                        openedforms.Close()
-                        openedforms.Dispose()
-                    Next
-                End If
-            Catch ex As Exception
-                With proLog
-                    .AppVersion = GetAppVersion()
-                    .FromSender = "[CloseAllWindows] Mainframe"
-                    .InternalStackTrace = ex.StackTrace
-                    .Message = ex.Message
-                    .Number = ex.HResult
-                    .ResumeNext = True
-                    .SaveInBetterLog = True
-                    .SaveLogInLocal = False
-                    .ShowErrorReporting = True
-                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
-                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
-                End With
-
-                Dim clsLog As New Ladybug.Log.Events
-
-                clsLog.ShowData(proLog)
-                clsLog = Nothing
-            End Try
-        End Sub
-
-        ''' <summary>
-        ''' 
-        ''' </summary>
-        ''' <param name="commandcode"></param>
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub EnterCommand(commandcode As String)
-            SetValue(varDataProperties.AllParameters, tIngrid.P_ModuleCode, commandcode.ToUpper.Trim)
-
-            ' Run RESET Command to delete all data
-            If commandcode.ToUpper.Trim = "RESET" OrElse commandcode.ToUpper.Trim = "PHTRZ" Then
-                [Global].varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
-                Txt_shortcut.Clear()
-                Return
-            Else
-                Call LoginClicked() ' Ensure User Logged In
-            End If
-
-            If Not varSession Then
-                Return
-            End If
-
-            LibSQL.UI.Workspace.GetModuleProperties(varDataProperties, varDataProperties.AllParameters, commandcode, varDatasetIngrid)
-
-            With varDatasetIngrid.Tables(dtModule)
-                If .Rows.Count = 0 Then
-                    St_mainframe.Items(0).Text = "Module " & commandcode.ToUpper.Trim & " not found."
-                    Return
-                ElseIf CBool(.Rows(0).Item("module_ismaintenance")) Then
-                    St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
-                    Bridge.Writelog.Sendlog("""message"" : """ & varDataProperties.EmployeeFirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", LibApp.Ingrid.Global.PopupType.ModuleUnderMaintenance, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Information, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                    System.Media.SystemSounds.Beep.Play()
-                    Return
-                ElseIf Not (varUserAccess.User(varDataProperties, St_mainframe)) Then ''' Check User Access
-                    St_mainframe.Items(0).Text = "You are not authorized to access : " & commandcode.ToUpper.Trim
-                    Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " trying to open Restricted Module " & commandcode.ToUpper.Trim & """", "Warning")
-                    System.Media.SystemSounds.Beep.Play()
-                    Return
-                Else
-                    [Global].varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
-                    Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " opening Module " & commandcode.ToUpper.Trim & """,", "Information")
-                    Txt_shortcut.Clear()
-                End If
-            End With
-        End Sub
-
-        ''' <summary>
-        ''' 
-        ''' </summary>
-        ''' <returns></returns>
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Function LoginClicked() As Boolean
-            If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
-                Frm_login = New UI.Canvas.FRMlogin
-                Display(Frm_login, ImageDb.Main.ImageLibrary.LOGIN_ICON, My.Application.Info.AssemblyName.ToUpper, "Sign In", "Please enter your credentials to continue", True)
-            End If
-            If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
-                varSession = False
-                Call SystemLogout(True)
-            Else
-                varSession = True
-                Call SystemLogout(False)
-            End If
-            Return varSession
-        End Function
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub LogoutClicked()
-            If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to end your session now?", LibApp.Ingrid.Global.PopupType.Logout, "Please confirm your action", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
-                Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " is logout."",", "Information")
-                Call SystemLogout()
-                varLogUser.Logout(varDataProperties, varDataProperties.AllParameters)
-                Call ClearLoginData()
-            End If
-        End Sub
-
-        'varWorkspace Menu
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsworkspaceCascade_Click(sender As Object, e As EventArgs) Handles Ms_workspace_Cascade.Click
             Me.LayoutMdi(MdiLayout.Cascade)
@@ -449,6 +307,364 @@ Namespace UI.Canvas
             Txt_shortcut.AutoCompleteCustomSource.Add(Txt_shortcut.Text.Trim)
         End Sub
 
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub PhotoResizerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PhotoResizerToolStripMenuItem.Click
+            Call EnterCommand("PHTRZ")
+        End Sub
+
+        Private Sub ContentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentsToolStripMenuItem.Click
+            Try
+                'Open Wiki URL in default browser
+                Process.Start(New ProcessStartInfo(My.Settings.URL_Wiki) With {.UseShellExecute = True})
+            Catch ex As Exception
+                MsgBox(ex.Message.ToString)
+            End Try
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub TmrNotif_Tick(sender As Object, e As EventArgs) Handles TmrNotif.Tick
+            varGetNotifCounter += 1
+            If varGetNotifCounter = 60 Then
+                Call GetNotification()
+                varGetNotifCounter = 0
+            End If
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Tmrmod_Tick(sender As Object, e As EventArgs) Handles TmrMOD.Tick
+            If (varForceRefreshMainframeData) Then
+                Call CommandAutoComplete() ''' Refresh Command Auto Complete
+                varForceRefreshMainframeData = False
+            End If
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub TmrStatus_Tick(sender As Object, e As EventArgs) Handles TmrStatus.Tick
+            varClearStatus += 1
+            If varClearStatus = varStatusTimeWait Then
+                Call ClearStatus()
+            End If
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Tmrgc_Tick(sender As Object, e As EventArgs) Handles Tmr_gc.Tick
+            GC.Collect()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Support_Click(sender As Object, e As EventArgs) Handles SUPPORT.Click
+            Try
+                ' Open Wiki URL in default browser
+                Process.Start(New ProcessStartInfo(My.Settings.URL_Home) With {.UseShellExecute = True})
+            Catch ex As Exception
+                MsgBox(ex.Message.ToString)
+            End Try
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
+            Call LogoutClicked()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub LoginToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem.Click
+            Call LoginClicked()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub NotificationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotificationToolStripMenuItem.Click
+            Frm_ntfc = New FRMntfc
+            Display(Frm_ntfc, ImageDb.Main.ImageLibrary.NOTIF_ICON, My.Application.Info.AssemblyName.ToUpper, "Notification", "Show all notification that addressed to you", True)
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Tsstatus_TextChanged(sender As Object, e As EventArgs) Handles Ts_status.TextChanged
+            varClearStatus = 0
+            If Ts_status.Text = String.Empty Then
+                TmrStatus.Enabled = False
+            Else
+                TmrStatus.Enabled = True
+            End If
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Tmrrunningtext_Tick(sender As Object, e As EventArgs) Handles Tmr_runningtext.Tick
+            varMyMarquee.Tick()
+            TxtRunning.Text = varMyMarquee.MarqueeText
+        End Sub
+
+        Private Sub BuymeacoffeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BuymeacoffeToolStripMenuItem.Click
+            Try
+                ' Open Saweria URL
+                Process.Start(New ProcessStartInfo(My.Settings.URL_Saweria) With {.UseShellExecute = True})
+            Catch ex As Exception
+                MsgBox(ex.Message.ToString)
+            End Try
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub MsstartSettings_Click(sender As Object, e As EventArgs) Handles Ms_start_Settings.Click
+            Call EnterCommand("SYSS")
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Msstartconnectionapp_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_app.Click
+            Frm_conn = New Connect.UI.Canvas.FRMconn(varProductionMode, True)
+            Display(Frm_conn, ImageDb.Main.ImageLibrary.CONN_ICON, My.Application.Info.AssemblyName.ToUpper, "Connection Settings", "Configure Ingrid database connection", True)
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Msstartconnectionfolder_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_folder.Click
+            Try
+                ' Open Resources Folder
+                Process.Start(New ProcessStartInfo(My.Application.Info.DirectoryPath & "\Resources\") With {.UseShellExecute = True})
+            Catch ex As Exception
+                MsgBox(ex.Message.ToString)
+            End Try
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub MsstartExit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
+            If (varSession) Then
+                Call SystemLogout() ' Logout Process
+                varLogUser.Logout(varDataProperties, varDataProperties.AllParameters)
+                Call ClearLoginData() ' Clear Login Data
+            End If
+            Me.Close()
+            System.Windows.Forms.Application.Exit()
+            Return
+        End Sub
+
+
+        ' ---------------------------------------------------------
+        ' External Forms Events Handlers
+        ' ---------------------------------------------------------
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMlogin_LoginSuccess() Handles Frm_login.EventLoginSuccess
+            Call GetNotification()
+            PnlProfile.Visible = True
+            PctProfile.Image = Nothing
+            PctProfile.BackgroundImage = Nothing
+            If varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString = String.Empty Then
+                PctProfile.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-404.svg", True, 512, 512)
+            Else
+                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, PctProfile)
+                'PctProfile.ImageLocation = varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString
+                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, Ms_mainframe, "USERMENU")
+            End If
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMlogin_LoginFailed() Handles Frm_login.EventLoginFailed
+            Call ClearLoginData()
+            Call SystemLogout(True)
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMphtrz_Done() Handles Frm_phtrz.EventDone
+            Frm_phtrz.Dispose()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Frmconn_Done() Handles Frm_conn.ConnectFrameClose 'uncomment this when add Connect to library
+            Frm_conn.Dispose()
+        End Sub
+
+        ' ---------------------------------------------------------
+        ' Functions and Subroutines
+        ' ---------------------------------------------------------
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub CommandAutoComplete()
+            Try
+                Dim varDataset As New System.Data.DataSet
+                Dim varList As New AutoCompleteStringCollection
+
+                'Txt_shortcut.AutoCompleteSource = Nothing
+                Txt_shortcut.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                varDataset = varAppModules.DisplayAutoComplete(varDataProperties) '.DisplayAutoComplete(Convert.ToString(varDataProperties.RowID), DgnPictureList)
+                If varDataset Is Nothing Then
+                    Return
+                End If
+                For i As Integer = 0 To varDataset.Tables("TCMD").Rows.Count - 1
+                    varList.Add(varDataset.Tables("TCMD").Rows(i).Item("module_code").ToString)
+                Next
+                Txt_shortcut.AutoCompleteCustomSource = varList
+                Txt_shortcut.AutoCompleteSource = AutoCompleteSource.CustomSource
+            Catch ex As Exception
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[CommandAutoComplete] Mainframe"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+            End Try
+        End Sub
+
+        ''' <summary>
+        ''' This subroutine retrieves and displays the running text in the TxtRunning control based on the current application settings and data properties. It checks if the running text should be shown and updates the visibility of the TxtRunning control accordingly.
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub GetRunningText()
+            TxtRunning.Visible = varAppRunningText.Show(varDataProperties)
+        End Sub
+
+        ''' <summary>
+        ''' Get Notification Count
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub GetNotification()
+            varTotalNotification = varAppNotification.Exist(varDataProperties)
+            If varTotalNotification > 0 Then
+                USERMENU.Text = varDatasetIngrid.Tables(dtUserData).Rows(0).Item("employee_fullname").ToString & "*"
+                USERMENU.BackColor = Global.System.Drawing.Color.LightPink
+                USERMENU.ForeColor = Global.System.Drawing.Color.Black
+            Else
+                USERMENU.Text = varDatasetIngrid.Tables(dtUserData).Rows(0).Item("employee_fullname").ToString
+                USERMENU.BackColor = Global.System.Drawing.Color.Yellow
+                USERMENU.ForeColor = Global.System.Drawing.Color.Black
+            End If
+            NotificationToolStripMenuItem.Text = varTotalNotification & " Notification(s)"
+        End Sub
+
+        ''' <summary>
+        ''' Clear Status Bar 
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub ClearStatus()
+            Ts_status.Text = String.Empty
+            varClearStatus = 0
+        End Sub
+
+        ''' <summary>
+        ''' Close All varWorkspace Windows
+        ''' </summary>
+        ''' <param name="forced"></param>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub CloseAllWindows(Optional isforced As Boolean = False)
+            Try
+                If Not (isforced) AndAlso (Global.System.Windows.Forms.MessageBox.Show("Do you want to close all Workspace windows?", "Close All Windows", Global.System.Windows.Forms.MessageBoxButtons.YesNo, Global.System.Windows.Forms.MessageBoxIcon.Question) = Global.System.Windows.Forms.DialogResult.No) Then
+                    Return
+                Else
+                    For Each openedforms As CMCv.UI.Canvas.FRMstandard In Me.MdiChildren
+                        openedforms.Close()
+                        openedforms.Dispose()
+                    Next
+                End If
+            Catch ex As Exception
+                With proLog
+                    .AppVersion = GetAppVersion()
+                    .FromSender = "[CloseAllWindows] Mainframe"
+                    .InternalStackTrace = ex.StackTrace
+                    .Message = ex.Message
+                    .Number = ex.HResult
+                    .ResumeNext = True
+                    .SaveInBetterLog = True
+                    .SaveLogInLocal = False
+                    .ShowErrorReporting = True
+                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
+                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
+                End With
+
+                Dim clsLog As New Ladybug.Log.Events
+
+                clsLog.ShowData(proLog)
+                clsLog = Nothing
+            End Try
+        End Sub
+
+        ''' <summary>
+        ''' This subroutine handles the execution of a command based on the provided command code. It checks for special commands like "RESET" or "PHTRZ", ensures the user is logged in, verifies module availability and maintenance status, checks user access permissions, and opens the corresponding module if all conditions are met. It also logs relevant actions and updates the status bar accordingly.
+        ''' </summary>
+        ''' <param name="commandcode"></param>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub EnterCommand(commandcode As String)
+            SetValue(varDataProperties.AllParameters, tIngrid.P_ModuleCode, commandcode.ToUpper.Trim)
+
+            ' Run RESET Command to delete all data
+            If commandcode.ToUpper.Trim = "RESET" OrElse commandcode.ToUpper.Trim = "PHTRZ" Then
+                [Global].varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
+                Txt_shortcut.Clear()
+                Return
+            Else
+                Call LoginClicked() ' Ensure User Logged In
+            End If
+
+            If Not varSession Then
+                Return
+            End If
+
+            LibSQL.UI.Workspace.GetModuleProperties(varDataProperties, varDataProperties.AllParameters, commandcode, varDatasetIngrid)
+
+            With varDatasetIngrid.Tables(dtModule)
+                If .Rows.Count = 0 Then
+                    St_mainframe.Items(0).Text = "Module " & commandcode.ToUpper.Trim & " not found."
+                    Return
+                ElseIf CBool(.Rows(0).Item("module_ismaintenance")) Then
+                    St_mainframe.Items(0).Text = "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator."
+                    Bridge.Writelog.Sendlog("""message"" : """ & varDataProperties.EmployeeFirstName & " trying to open Under Maintenance Module " & commandcode.ToUpper.Trim & """,", "Warning")
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "[" & commandcode.ToUpper.Trim & "] module is under maintenance. Please contact your administrator.", LibApp.Ingrid.Global.PopupType.ModuleUnderMaintenance, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Information, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    System.Media.SystemSounds.Beep.Play()
+                    Return
+                ElseIf Not (varUserAccess.User(varDataProperties, St_mainframe)) Then ''' Check User Access
+                    St_mainframe.Items(0).Text = "You are not authorized to access : " & commandcode.ToUpper.Trim
+                    Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " trying to open Restricted Module " & commandcode.ToUpper.Trim & """", "Warning")
+                    System.Media.SystemSounds.Beep.Play()
+                    Return
+                Else
+                    [Global].varWorkspace.Open(Me, commandcode.ToUpper.Trim, St_mainframe)
+                    Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " opening Module " & commandcode.ToUpper.Trim & """,", "Information")
+                    Txt_shortcut.Clear()
+                End If
+            End With
+        End Sub
+
+        ''' <summary>
+        ''' This function handles the login process when the login button is clicked. It checks if user data is available, displays the login form if necessary, and updates the session state based on the login outcome. It also calls the SystemLogout function to manage UI changes and data clearing based on whether the user is logged in or out. The function returns a Boolean indicating whether the user is successfully logged in (True) or not (False).
+        ''' </summary>
+        ''' <returns></returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Function LoginClicked() As Boolean
+            If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
+                Frm_login = New UI.Canvas.FRMlogin
+                Display(Frm_login, ImageDb.Main.ImageLibrary.LOGIN_ICON, My.Application.Info.AssemblyName.ToUpper, "Sign In", "Please enter your credentials to continue", True)
+            End If
+            If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
+                varSession = False
+                Call SystemLogout(True)
+            Else
+                varSession = True
+                Call SystemLogout(False)
+            End If
+            Return varSession
+        End Function
+
+        ''' <summary>
+        ''' This subroutine handles the logout process when the logout button is clicked. It prompts the user for confirmation to end the session, logs the logout action, calls the SystemLogout function to manage UI changes and data clearing, and clears the login data. If the user confirms the logout action, it effectively ends the user's session and resets the application state accordingly.
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub LogoutClicked()
+            If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to end your session now?", LibApp.Ingrid.Global.PopupType.Logout, "Please confirm your action", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+                Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " is logout."",", "Information")
+                Call SystemLogout()
+                varLogUser.Logout(varDataProperties, varDataProperties.AllParameters)
+                Call ClearLoginData()
+            End If
+        End Sub
+
         ''' <summary>
         ''' SystemLogout handles the UI changes and data clearing when a user logs in or out. It updates the visibility and enabled state of menu items, resets notification counters, and clears profile and storage information on logout.
         ''' </summary>
@@ -505,52 +721,45 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub PhotoResizerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PhotoResizerToolStripMenuItem.Click
-            Call EnterCommand("PHTRZ")
-        End Sub
-
-        Private Sub FRMphtrz_Done() Handles Frm_phtrz.EventDone
-            Frm_phtrz.Dispose()
-        End Sub
-
-        Private Sub Frmconn_Done() Handles Frm_conn.ConnectFrameClose 'uncomment this when add Connect to library
-            Frm_conn.Dispose()
-        End Sub
-
-        Private Sub ContentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentsToolStripMenuItem.Click
-            Try
-                'Open Wiki URL in default browser
-                Process.Start(New ProcessStartInfo(My.Settings.URL_Wiki) With {.UseShellExecute = True})
-            Catch ex As Exception
-                MsgBox(ex.Message.ToString)
-            End Try
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub TmrNotif_Tick(sender As Object, e As EventArgs) Handles TmrNotif.Tick
-            varGetNotifCounter += 1
-            If varGetNotifCounter = 60 Then
-                Call GetNotification()
-                varGetNotifCounter = 0
-            End If
-        End Sub
-
+        ''' <summary>
+        ''' This function checks the visibility of a specific panel based on the provided panel settings and the user's admin status. It returns True if the panel should be visible, and False otherwise. The visibility is determined by the panel settings value, which can indicate whether the panel is always visible, visible only to admins, or visible only to non-admin users.
+        ''' </summary>
+        ''' <param name="panelsettings">Panel settings value indicating visibility rules.</param>
+        ''' <param name="isadmin">Boolean indicating if the user is an admin.</param>
+        ''' <returns>True if the panel should be visible, False otherwise.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function IsProfileVisible(panelsettings As Integer, isadmin As Boolean) As Boolean
             Return IsPanelVisible(panelsettings, isadmin)
         End Function
 
+        ''' <summary>
+        ''' This function checks the visibility of the storage panel based on the provided panel settings and the user's admin status. It returns True if the storage panel should be visible, and False otherwise. The visibility is determined by the panel settings value, which can indicate whether the panel is always visible, visible only to admins, or visible only to non-admin users.
+        ''' </summary>
+        ''' <param name="panelsettings">Panel settings value indicating visibility rules.</param>
+        ''' <param name="isadmin">Boolean indicating if the user is an admin.</param>
+        ''' <returns>True if the storage panel should be visible, False otherwise.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function IsStorageVisible(panelsettings As Integer, isadmin As Boolean) As Boolean
             Return IsPanelVisible(panelsettings, isadmin)
         End Function
 
+        ''' <summary>
+        ''' This function checks the visibility of the news ticker panel based on the provided panel settings and the user's admin status. It returns True if the news ticker panel should be visible, and False otherwise. The visibility is determined by the panel settings value, which can indicate whether the panel is always visible, visible only to admins, or visible only to non-admin users.
+        ''' </summary>
+        ''' <param name="panelsettings">Panel settings value indicating visibility rules.</param>
+        ''' <param name="isadmin">Boolean indicating if the user is an admin.</param>
+        ''' <returns>True if the news ticker panel should be visible, False otherwise.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function IsNewsTickerVisible(panelsettings As Integer, isadmin As Boolean) As Boolean
             Return IsPanelVisible(panelsettings, isadmin)
         End Function
 
+        ''' <summary>
+        ''' This function checks the visibility of a panel based on the provided profile settings and the user's admin status. It returns True if the panel should be visible, and False otherwise. The visibility is determined by the profile settings value, which can indicate whether the panel is always visible, visible only to admins, or visible only to non-admin users.
+        ''' </summary>
+        ''' <param name="profilesettings">Profile settings value indicating visibility rules.</param>
+        ''' <param name="isadmin">Boolean indicating if the user is an admin.</param>
+        ''' <returns>True if the panel should be visible, False otherwise.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function IsPanelVisible(profilesettings As Integer, isadmin As Boolean) As Boolean
             Return (profilesettings = 3) _
@@ -559,7 +768,7 @@ Namespace UI.Canvas
         End Function
 
         ''' <summary>
-        ''' 
+        ''' This subroutine retrieves and displays the user's profile information in the profile panel. It checks if the profile panel should be visible based on the user's settings and admin status, and updates the labels and image accordingly. If the profile panel is not visible, it clears the labels and image to ensure no sensitive information is displayed.
         ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetProfile()
@@ -592,7 +801,7 @@ Namespace UI.Canvas
         End Sub
 
         ''' <summary>
-        ''' 
+        ''' This subroutine retrieves and displays the storage information in the storage panel. It checks if the storage panel should be visible based on the user's settings and admin status, and updates the progress bars and labels to show the current data and file storage sizes along with the maximum free space available. If the storage panel is not visible, it does not perform any updates.
         ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetStorage()
@@ -623,148 +832,6 @@ Namespace UI.Canvas
             End With
         End Sub
 
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub NotificationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotificationToolStripMenuItem.Click
-            Frm_ntfc = New FRMntfc
-            Display(Frm_ntfc, IMAGEDB.Main.ImageLibrary.NOTIF_ICON, My.Application.Info.AssemblyName.ToUpper, "Notification", "Show all notification that addressed to you", True)
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub Tsstatus_TextChanged(sender As Object, e As EventArgs) Handles Ts_status.TextChanged
-            varClearStatus = 0
-            If Ts_status.Text = String.Empty Then
-                TmrStatus.Enabled = False
-            Else
-                TmrStatus.Enabled = True
-            End If
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub TmrStatus_Tick(sender As Object, e As EventArgs) Handles TmrStatus.Tick
-            varClearStatus += 1
-            If varClearStatus = varStatusTimeWait Then
-                Call ClearStatus()
-            End If
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMlogin_LoginSuccess() Handles Frm_login.EventLoginSuccess
-            Call GetNotification()
-            PnlProfile.Visible = True
-            PctProfile.Image = Nothing
-            PctProfile.BackgroundImage = Nothing
-            If varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString = String.Empty Then
-                PctProfile.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-404.svg", True, 512, 512)
-            Else
-                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, PctProfile)
-                'PctProfile.ImageLocation = varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString
-                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, Ms_mainframe, "USERMENU")
-            End If
-        End Sub
-
-        Private Sub Tmrgc_Tick(sender As Object, e As EventArgs) Handles Tmr_gc.Tick
-            GC.Collect()
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub Tmrmod_Tick(sender As Object, e As EventArgs) Handles TmrMOD.Tick
-            If (varForceRefreshMainframeData) Then
-                Call CommandAutoComplete() ''' Refresh Command Auto Complete
-                varForceRefreshMainframeData = False
-            End If
-        End Sub
-
-        Private Sub Support_Click(sender As Object, e As EventArgs) Handles SUPPORT.Click
-            Try
-                ' Open Wiki URL in default browser
-                Process.Start(New ProcessStartInfo(My.Settings.URL_Home) With {.UseShellExecute = True})
-            Catch ex As Exception
-                MsgBox(ex.Message.ToString)
-            End Try
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
-            Call LogoutClicked()
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub LoginToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem.Click
-            Call LoginClicked()
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMmainframe6_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
-            Dim varRequiredFolder = CheckRequiredFolder(DirName.PDF)
-
-            Try
-                Dim clsLog As New Ladybug.Log.Events
-                With proLog
-                    .Message = "Ingrid Main App is closing."
-                    .FromSender = "FRMmainframe6 Closing Event"
-                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Information
-                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.None
-                    .ResumeNext = True
-                    .InternalStackTrace = String.Empty
-                    .Number = 0
-                    .ShowErrorReporting = False
-                    .SaveInBetterLog = True
-                    .SaveLogInLocal = True
-                    .AppVersion = GetAppVersion()
-                End With
-                clsLog.ShowData(proLog)
-                clsLog = Nothing
-
-                For Each varDeleteFile In System.IO.Directory.GetFiles(varRequiredFolder, "*.*", System.IO.SearchOption.TopDirectoryOnly)
-                    System.IO.File.Delete(varDeleteFile)
-                Next
-            Catch ex As Exception
-                With proLog
-                    .FromSender = "[Closing] Mainframe"
-                    .InternalStackTrace = ex.StackTrace
-                    .Message = ex.Message
-                    .Number = ex.HResult
-                    .ResumeNext = True
-                    .SaveInBetterLog = True
-                    .SaveLogInLocal = False
-                    .ShowErrorReporting = True
-                    .TypeOfFaulty = Ladybug.Log.Fields.TypeOfFaulties.ApplicationRunTime
-                    .TypeOfLog = Ladybug.Log.Fields.TypeOfLogs.Error
-                    .AppVersion = GetAppVersion()
-                End With
-
-                Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(proLog)
-                clsLog = Nothing
-            End Try
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub Tmrrunningtext_Tick(sender As Object, e As EventArgs) Handles Tmr_runningtext.Tick
-            varMyMarquee.Tick()
-            TxtRunning.Text = varMyMarquee.MarqueeText
-        End Sub
-
-        Private Sub BuymeacoffeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BuymeacoffeToolStripMenuItem.Click
-            Try
-                ' Open Saweria URL
-                Process.Start(New ProcessStartInfo(My.Settings.URL_Saweria) With {.UseShellExecute = True})
-            Catch ex As Exception
-                MsgBox(ex.Message.ToString)
-            End Try
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub MsstartSettings_Click(sender As Object, e As EventArgs) Handles Ms_start_Settings.Click
-            Call EnterCommand("SYSS")
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMlogin_LoginFailed() Handles Frm_login.EventLoginFailed
-            Call ClearLoginData()
-            Call SystemLogout(True)
-        End Sub
-
         ''' <summary>
         ''' Clears the login data of the current user.
         ''' </summary>
@@ -779,43 +846,6 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Sub GetSettings()
             LibSQL.CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.AllParameters, varDatasetIngrid)
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub MsstartExit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
-            If (varSession) Then
-                Call SystemLogout() ' Logout Process
-                varLogUser.Logout(varDataProperties, varDataProperties.AllParameters)
-                Call ClearLoginData() ' Clear Login Data
-            End If
-            Me.Close()
-            System.Windows.Forms.Application.Exit()
-            Return
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub Msstartconnectionapp_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_app.Click
-            Frm_conn = New Connect.UI.Canvas.FRMconn(varProductionMode, True)
-            Display(Frm_conn, IMAGEDB.Main.ImageLibrary.CONN_ICON, My.Application.Info.AssemblyName.ToUpper, "Connection Settings", "Configure Ingrid database connection", True)
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub Msstartconnectionfolder_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_folder.Click
-            Try
-                ' Open Resources Folder
-                Process.Start(New ProcessStartInfo(My.Application.Info.DirectoryPath & "\Resources\") With {.UseShellExecute = True})
-            Catch ex As Exception
-                MsgBox(ex.Message.ToString)
-            End Try
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMmainframe6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-            RaiseEvent EventMainframeClose()
-        End Sub
-
-        Private Sub Tv_mainframe_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles Tv_mainframe.AfterSelect
-
         End Sub
     End Class
 End Namespace
