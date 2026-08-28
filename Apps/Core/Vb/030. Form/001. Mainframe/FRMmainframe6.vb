@@ -4,7 +4,9 @@ Imports Svg
 
 Namespace UI.Canvas
     Public Class FRMmainframe6
-
+        ' ----------------------------------------------------------
+        ' Interfaces
+        ' ----------------------------------------------------------
         Public Interface ICommandFunction
             Function LoadCommand() As CMCv.UI.Canvas.FRMstandard
         End Interface
@@ -474,7 +476,7 @@ Namespace UI.Canvas
         ' Functions and Subroutines
         ' ---------------------------------------------------------
         ''' <summary>
-        ''' 
+        ''' This subroutine sets up the auto-complete functionality for the Txt_shortcut control. It retrieves a dataset of available commands from the application modules and populates an AutoCompleteStringCollection with the module codes. The Txt_shortcut control is then configured to use this collection for auto-completion, allowing users to easily find and enter commands. If any exceptions occur during this process, they are logged appropriately.
         ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CommandAutoComplete()
