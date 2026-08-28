@@ -35,8 +35,8 @@
             ULbl3 = New CMCv.UI.Control.ULbl()
             ULbl4 = New CMCv.UI.Control.ULbl()
             ULbl5 = New CMCv.UI.Control.ULbl()
-            Tbx1 = New CMCv.UI.Control.Tbx(components)
-            tpDetail = New TabPage()
+            TbxCompany = New CMCv.UI.Control.Tbx(components)
+            TpDetail = New TabPage()
             ULbl6 = New CMCv.UI.Control.ULbl()
             BtnRemovePhoto = New CMCv.UI.Control.Btn(components)
             BtnBrowsePhoto = New CMCv.UI.Control.Btn(components)
@@ -47,8 +47,8 @@
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
-            Tbx1.SuspendLayout()
-            tpDetail.SuspendLayout()
+            TbxCompany.SuspendLayout()
+            TpDetail.SuspendLayout()
             CType(pctbxPhoto, ComponentModel.ISupportInitialize).BeginInit()
             CType(pcbxFrame, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
@@ -78,11 +78,11 @@
             SLFPanel.Controls.Add(pctbxPhoto)
             SLFPanel.Controls.Add(pcbxFrame)
             SLFPanel.Controls.Add(ULbl6)
-            SLFPanel.Controls.Add(Tbx1)
+            SLFPanel.Controls.Add(TbxCompany)
             SLFPanel.Margin = New Padding(7, 5, 7, 5)
             SLFPanel.Size = New Size(1181, 833)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(Tbx1, 0)
+            SLFPanel.Controls.SetChildIndex(TbxCompany, 0)
             SLFPanel.Controls.SetChildIndex(ULbl6, 0)
             SLFPanel.Controls.SetChildIndex(pcbxFrame, 0)
             SLFPanel.Controls.SetChildIndex(pctbxPhoto, 0)
@@ -290,10 +290,10 @@
             ' 
             ChkAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             ChkAddNew.AutoSize = True
-            ChkAddNew.BackColor = Color.Transparent
+            ChkAddNew.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             ChkAddNew.FlatStyle = FlatStyle.Flat
             ChkAddNew.Font = New Font("Segoe UI", 12F)
-            ChkAddNew.ForeColor = Color.Tomato
+            ChkAddNew.ForeColor = Color.Yellow
             ChkAddNew.Location = New Point(586, 28)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
             ChkAddNew.Name = "ChkAddNew"
@@ -301,6 +301,7 @@
             ChkAddNew.TabIndex = 6
             ChkAddNew.Text = "Add new on Save"
             ChkAddNew.UseVisualStyleBackColor = False
+            ChkAddNew.XOCheckColor = Color.Yellow
             ' 
             ' ULbl1
             ' 
@@ -367,38 +368,38 @@
             ULbl5.XOTextAdjuster = False
             ULbl5.XOTextBorder = False
             ' 
-            ' Tbx1
+            ' TbxCompany
             ' 
-            Tbx1.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-            Tbx1.Controls.Add(tpDetail)
-            Tbx1.Font = New Font("Segoe UI", 12F)
-            Tbx1.ItemSize = New Size(126, 37)
-            Tbx1.Location = New Point(20, 25)
-            Tbx1.Name = "Tbx1"
-            Tbx1.SelectedIndex = 0
-            Tbx1.Size = New Size(830, 700)
-            Tbx1.TabIndex = 1011
+            TbxCompany.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+            TbxCompany.Controls.Add(TpDetail)
+            TbxCompany.Font = New Font("Segoe UI", 12F)
+            TbxCompany.ItemSize = New Size(126, 37)
+            TbxCompany.Location = New Point(20, 25)
+            TbxCompany.Name = "TbxCompany"
+            TbxCompany.SelectedIndex = 0
+            TbxCompany.Size = New Size(830, 700)
+            TbxCompany.TabIndex = 1011
             ' 
-            ' tpDetail
+            ' TpDetail
             ' 
-            tpDetail.AutoScroll = True
-            tpDetail.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
-            tpDetail.Controls.Add(ULbl1)
-            tpDetail.Controls.Add(ULbl5)
-            tpDetail.Controls.Add(TxtCode)
-            tpDetail.Controls.Add(ULbl4)
-            tpDetail.Controls.Add(ULbl2)
-            tpDetail.Controls.Add(ULbl3)
-            tpDetail.Controls.Add(TxtSearchTerm1)
-            tpDetail.Controls.Add(TxtSearchTerm2)
-            tpDetail.Controls.Add(TxtName)
-            tpDetail.Controls.Add(TxtDescription)
-            tpDetail.Location = New Point(4, 41)
-            tpDetail.Name = "tpDetail"
-            tpDetail.Padding = New Padding(3)
-            tpDetail.Size = New Size(822, 655)
-            tpDetail.TabIndex = 0
-            tpDetail.Text = "DETAIL"
+            TpDetail.AutoScroll = True
+            TpDetail.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            TpDetail.Controls.Add(ULbl1)
+            TpDetail.Controls.Add(ULbl5)
+            TpDetail.Controls.Add(TxtCode)
+            TpDetail.Controls.Add(ULbl4)
+            TpDetail.Controls.Add(ULbl2)
+            TpDetail.Controls.Add(ULbl3)
+            TpDetail.Controls.Add(TxtSearchTerm1)
+            TpDetail.Controls.Add(TxtSearchTerm2)
+            TpDetail.Controls.Add(TxtName)
+            TpDetail.Controls.Add(TxtDescription)
+            TpDetail.Location = New Point(4, 41)
+            TpDetail.Name = "TpDetail"
+            TpDetail.Padding = New Padding(3)
+            TpDetail.Size = New Size(822, 655)
+            TpDetail.TabIndex = 0
+            TpDetail.Text = "DETAIL"
             ' 
             ' ULbl6
             ' 
@@ -508,9 +509,9 @@
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
-            Tbx1.ResumeLayout(False)
-            tpDetail.ResumeLayout(False)
-            tpDetail.PerformLayout()
+            TbxCompany.ResumeLayout(False)
+            TpDetail.ResumeLayout(False)
+            TpDetail.PerformLayout()
             CType(pctbxPhoto, ComponentModel.ISupportInitialize).EndInit()
             CType(pcbxFrame, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
@@ -529,8 +530,8 @@
         Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
-        Friend WithEvents Tbx1 As CMCv.UI.Control.Tbx
-        Friend WithEvents tpDetail As TabPage
+        Friend WithEvents TbxCompany As CMCv.UI.Control.Tbx
+        Friend WithEvents TpDetail As TabPage
         Friend WithEvents ULbl6 As CMCv.UI.Control.ULbl
         Friend WithEvents BtnRemovePhoto As CMCv.UI.Control.Btn
         Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.Btn

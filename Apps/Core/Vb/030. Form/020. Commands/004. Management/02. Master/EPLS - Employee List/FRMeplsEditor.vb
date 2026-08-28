@@ -1,7 +1,4 @@
-﻿Imports CMCv.UI.Control
-Imports Org.BouncyCastle.Asn1.X509
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMeplsEditor
         ' ----------------------------------------------------------
         '  Variables
@@ -15,6 +12,8 @@ Namespace UI.Canvas
         Private Const varThisModuleCode As String = "EPLS"
         Private Const varCannotSaveMessageTitle As String = "Unable to save your record."
         Private varCannotSaveMessage As String = String.Empty
+        Private varIsTabPermissionFirstLoad As Boolean = True
+
 
         ' ----------------------------------------------------------
         ' Form Events Handlers
@@ -375,8 +374,9 @@ Namespace UI.Canvas
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TbctlEmployee_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TbctlEmployee.SelectedIndexChanged
-            If TbctlEmployee.SelectedTab Is tpPermissions Then
+            If TbctlEmployee.SelectedTab Is tpPermissions AndAlso varIsTabPermissionFirstLoad Then
                 MsgBox("This feature is not available yet. Please contact your system administrator.", MsgBoxStyle.Information, "Feature Unavailable")
+                varIsTabPermissionFirstLoad = False
             End If
         End Sub
     End Class

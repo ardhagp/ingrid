@@ -420,6 +420,7 @@
             SUPPORT.Overflow = ToolStripItemOverflow.AsNeeded
             SUPPORT.Size = New Size(178, 36)
             SUPPORT.Text = "CHECK UPDATE"
+            SUPPORT.ToolTipText = "This will open your default browser to check whether a new update is available."
             ' 
             ' pnl_mainframe_left
             ' 
@@ -1104,39 +1105,39 @@
             ' 
             ' LblPosition
             ' 
-            LblPosition.AutoSize = True
+            LblPosition.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
             LblPosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             LblPosition.ForeColor = Color.Yellow
             LblPosition.Location = New Point(187, 157)
             LblPosition.Margin = New Padding(4, 0, 4, 0)
             LblPosition.Name = "LblPosition"
-            LblPosition.Size = New Size(127, 32)
+            LblPosition.Size = New Size(227, 32)
             LblPosition.TabIndex = 4
             LblPosition.Text = "Loading..."
             LblPosition.XOCustomElipsis = False
             ' 
             ' LblEmployeeName
             ' 
-            LblEmployeeName.AutoSize = True
+            LblEmployeeName.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
             LblEmployeeName.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold)
             LblEmployeeName.ForeColor = Color.White
             LblEmployeeName.Location = New Point(186, 115)
             LblEmployeeName.Margin = New Padding(4, 0, 4, 0)
             LblEmployeeName.Name = "LblEmployeeName"
-            LblEmployeeName.Size = New Size(152, 40)
+            LblEmployeeName.Size = New Size(228, 40)
             LblEmployeeName.TabIndex = 3
             LblEmployeeName.Text = "Loading..."
             LblEmployeeName.XOCustomElipsis = False
             ' 
             ' LblEmpNumber
             ' 
-            LblEmpNumber.AutoSize = True
+            LblEmpNumber.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
             LblEmpNumber.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold)
             LblEmpNumber.ForeColor = Color.White
             LblEmpNumber.Location = New Point(186, 73)
             LblEmpNumber.Margin = New Padding(4, 0, 4, 0)
             LblEmpNumber.Name = "LblEmpNumber"
-            LblEmpNumber.Size = New Size(152, 40)
+            LblEmpNumber.Size = New Size(228, 40)
             LblEmpNumber.TabIndex = 2
             LblEmpNumber.Text = "Loading..."
             LblEmpNumber.XOCustomElipsis = False
@@ -1258,7 +1259,6 @@
             AutoScaleDimensions = New SizeF(10F, 25F)
             AutoScaleMode = AutoScaleMode.Font
             BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
-            BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
             BackgroundImageLayout = ImageLayout.None
             ClientSize = New Size(1120, 935)
             Controls.Add(spl_)
@@ -1286,7 +1286,6 @@
             Pnl_command_top.ResumeLayout(False)
             Pnl_command_top.PerformLayout()
             PnlProfile.ResumeLayout(False)
-            PnlProfile.PerformLayout()
             CType(PctProfile, ComponentModel.ISupportInitialize).EndInit()
             CType(PctbxFrame, ComponentModel.ISupportInitialize).EndInit()
             St_mainframe.ResumeLayout(False)

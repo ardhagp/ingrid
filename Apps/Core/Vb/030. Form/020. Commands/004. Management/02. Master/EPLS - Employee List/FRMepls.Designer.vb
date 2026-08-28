@@ -21,6 +21,7 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
+            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMepls))
             Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
@@ -57,6 +58,10 @@
             ' 
             TxtFind.Margin = New Padding(7, 5, 7, 5)
             ' 
+            ' SLFLogo
+            ' 
+            SLFLogo.Image = CType(resources.GetObject("SLFLogo.Image"), Image)
+            ' 
             ' SLFPanel
             ' 
             SLFPanel.Controls.Add(DgnEPLS)
@@ -68,8 +73,9 @@
             ' 
             DgnEPLS.AllowUserToAddRows = False
             DgnEPLS.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(216), CByte(226), CByte(158))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(213), CByte(247), CByte(98))
             DgnEPLS.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+            DgnEPLS.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnEPLS.BorderStyle = BorderStyle.None
             DgnEPLS.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnEPLS.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None

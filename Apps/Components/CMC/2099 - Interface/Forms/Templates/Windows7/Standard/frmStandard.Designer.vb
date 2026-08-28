@@ -61,6 +61,7 @@
             MySettings1.SLFBackground = Drawing.Color.Black
             SLFLogo.DataBindings.Add(New System.Windows.Forms.Binding("BackColor", MySettings1, "SLFBackground", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
             SLFLogo.ErrorImage = CType(resources.GetObject("SLFLogo.ErrorImage"), Drawing.Image)
+            SLFLogo.Image = CType(resources.GetObject("SLFLogo.Image"), Drawing.Image)
             SLFLogo.InitialImage = CType(resources.GetObject("SLFLogo.InitialImage"), Drawing.Image)
             SLFLogo.Location = New System.Drawing.Point(7, 10)
             SLFLogo.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -124,10 +125,10 @@
             SLFStatus.BackColor = Drawing.SystemColors.Control
             SLFStatus.ImageScalingSize = New System.Drawing.Size(24, 24)
             SLFStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {SLFStatusLabel})
-            SLFStatus.Location = New System.Drawing.Point(0, 1051)
+            SLFStatus.Location = New System.Drawing.Point(0, 1057)
             SLFStatus.Name = "SLFStatus"
             SLFStatus.Padding = New System.Windows.Forms.Padding(2, 0, 23, 0)
-            SLFStatus.Size = New System.Drawing.Size(1307, 28)
+            SLFStatus.Size = New System.Drawing.Size(1307, 22)
             SLFStatus.TabIndex = 994
             SLFStatus.Text = "Stt1"
             ' 
@@ -135,7 +136,7 @@
             ' 
             SLFStatusLabel.ForeColor = Drawing.Color.Black
             SLFStatusLabel.Name = "SLFStatusLabel"
-            SLFStatusLabel.Size = New System.Drawing.Size(0, 21)
+            SLFStatusLabel.Size = New System.Drawing.Size(0, 15)
             ' 
             ' SLFPanel
             ' 
@@ -146,7 +147,7 @@
             SLFPanel.Location = New System.Drawing.Point(0, 104)
             SLFPanel.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             SLFPanel.Name = "SLFPanel"
-            SLFPanel.Size = New System.Drawing.Size(1307, 947)
+            SLFPanel.Size = New System.Drawing.Size(1307, 953)
             SLFPanel.TabIndex = 7
             ' 
             ' FRMstandard

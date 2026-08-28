@@ -114,7 +114,7 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMlogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            SLFLogo.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-LOGIN02.svg", True, 512, 512)
+            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_LOGIN, SLFLogo,, 512, 512)
 
             varWrongLogin = 0
             varCooldownLogin = 0

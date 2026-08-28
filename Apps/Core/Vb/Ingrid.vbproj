@@ -661,7 +661,6 @@
     <EmbeddedResource Include="Resources\GO_001_512_icon.png" />
     <EmbeddedResource Include="Resources\FEMALE_001_512_icon.png" />
     <EmbeddedResource Include="Resources\MALE_001_512_icon.png" />
-    <EmbeddedResource Include="Resources\EPLS_001_512_icon.png" />
     <EmbeddedResource Include="Resources\CCIN_001_512_icon.png" />
     <EmbeddedResource Include="Resources\EDIT_002_512_icon .png" />
     <EmbeddedResource Include="Resources\PCTPRV_001_512_icon.png" />
