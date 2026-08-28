@@ -1,4 +1,5 @@
 ﻿Imports CMCv.UI.Control
+Imports Org.BouncyCastle.Asn1.X509
 
 Namespace UI.Canvas
     Public Class FRMeplsEditor
@@ -71,6 +72,7 @@ Namespace UI.Canvas
                     TxtEmployeeNumber.Text = .Item(tEmployee.C_EmployeeNumber).ToString
                     TxtEmployeeNickname.Text = .Item(tEmployee.C_EmployeeNickname).ToString
                     ChkActiveEmployee.Checked = CBool(.Item(tEmployee.C_EmployeeIsActive))
+                    TxtUsername.Text = .Item(tUser.C_UserUsername).ToString
                     'varDataProperties.EmployeeIsHavePhoto = CMDepls.Editor.GetIsHavePhoto(varDataProperties, varDatasetIngrid, varDataProperties.UserParameters)
                     varDataProperties.EmployeeIsHavePhoto = CBool(.Item("ishavephoto"))
                     If varDataProperties.EmployeeIsHavePhoto Then
@@ -369,6 +371,13 @@ Namespace UI.Canvas
             With varDataProperties
                 TxtEmploymentType.Text = .AllParameters(tEmploymentType.P_EmploymentTypeName).ToString
             End With
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub TbctlEmployee_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TbctlEmployee.SelectedIndexChanged
+            If TbctlEmployee.SelectedTab Is tpPermissions Then
+                MsgBox("This feature is not available yet. Please contact your system administrator.", MsgBoxStyle.Information, "Feature Unavailable")
+            End If
         End Sub
     End Class
 End Namespace

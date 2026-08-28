@@ -15,6 +15,7 @@ Namespace UI.Canvas
             ReadOnly Property CommandCode As String
         End Interface
 
+
         ' ----------------------------------------------------------
         ' Variables
         ' ----------------------------------------------------------
@@ -46,6 +47,7 @@ Namespace UI.Canvas
         Private Const dtDatabaseProperties As String = "DatabaseProperties"
         Private Const dtUserData As String = "UserData"
         Private Const dtSettings As String = "SYSS_Editor"
+
 
         ' ----------------------------------------------------------
         ' Forms Events Handlers

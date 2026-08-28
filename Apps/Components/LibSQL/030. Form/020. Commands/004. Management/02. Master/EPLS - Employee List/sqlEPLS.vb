@@ -144,6 +144,7 @@
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeAddress}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeEmploymentType}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeIsActive}, " &
+                                                   $"{tUser.S}.{tUser.C_UserUsername}, " &
                                                    $"if({tAttachment.S}.{tAttachment.C_AttachmentId} Is null, 0, 1) `ishavephoto`, " &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentId}, " &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentUrl} " &
@@ -159,6 +160,8 @@
                                                    $"on {tDepartment.S}.{tDepartment.C_DepartmentId} = {tPosition.S}.{tPosition.C_PositionDepartment} " &
                                                    $"inner join {tCompany.TableName} {tCompany.S} " &
                                                    $"on {tCompany.S}.{tCompany.C_CompanyId} = {tDepartment.S}.{tDepartment.C_DepartmentCompany} " &
+                                                   $"left join {tUser.TableName} {tUser.S} " &
+                                                   $"on {tUser.S}.{tUser.C_UserEmployee} = {tEmployee.S}.{tEmployee.C_EmployeeId} " &
                                                    $"where {tEmployee.S}.{tEmployee.C_EmployeeId} = {tEmployee.P_EmployeeId} " &
                                                    $"order by {tEmployee.S}.{tEmployee.C_EmployeeFullName}"
                 varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "EPLS_Editor", dataproperties.AllParameters)
