@@ -7,6 +7,7 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Private Sub FRMstandard_Load(sender As Object, e As EventArgs) Handles Me.Load
             Try
+                'SLFLogo.Image = Nothing
                 Call ActivateLicenses()
                 GC.Collect()
                 Me.KeyPreview = True
@@ -36,7 +37,7 @@ Namespace UI.Canvas
         End Sub
 
         Private Sub FRMstandard_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-            Me.Dispose()
+            'Me.Dispose()
         End Sub
 
         ''' <summary>

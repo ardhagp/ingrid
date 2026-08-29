@@ -35,5 +35,11 @@
     <Setting Name="URL_Logo_CDIN" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/media/module-logo-all-platforms/svg-CDIN.svg</Value>
     </Setting>
+    <Setting Name="URL_Menu_UPDATE" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/media/module-logo-all-platforms/svg-UPDATE.svg</Value>
+    </Setting>
+    <Setting Name="URL_Logo_EDIT" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/media/module-logo-all-platforms/svg-EDIT.svg</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

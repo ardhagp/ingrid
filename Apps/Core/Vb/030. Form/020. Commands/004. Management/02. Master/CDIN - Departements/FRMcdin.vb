@@ -124,7 +124,7 @@
         ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcdin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_CDIN, SLFLogo,, 512, 512)
+            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_CDIN, XOLogo,, 512, 512)
 
             ' Set active module to UserParameters
             With varDataProperties

@@ -143,6 +143,7 @@
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeBirthPlace}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeAddress}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeEmploymentType}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeCompanyEmail}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeIsActive}, " &
                                                    $"{tUser.S}.{tUser.C_UserUsername}, " &
                                                    $"if({tAttachment.S}.{tAttachment.C_AttachmentId} Is null, 0, 1) `ishavephoto`, " &

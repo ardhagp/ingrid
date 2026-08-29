@@ -172,6 +172,28 @@ Namespace My
                 Return CType(Me("URL_Logo_CDIN"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/media/module-logo-all-pl"& _ 
+            "atforms/svg-UPDATE.svg")>  _
+        Public ReadOnly Property URL_Menu_UPDATE() As String
+            Get
+                Return CType(Me("URL_Menu_UPDATE"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/media/module-logo-all-pl"& _ 
+            "atforms/svg-EDIT.svg")>  _
+        Public ReadOnly Property URL_Logo_EDIT() As String
+            Get
+                Return CType(Me("URL_Logo_EDIT"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

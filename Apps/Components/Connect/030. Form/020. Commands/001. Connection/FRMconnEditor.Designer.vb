@@ -60,6 +60,7 @@
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             TbctlBasic.SuspendLayout()
             tp1_.SuspendLayout()
             tp2_.SuspendLayout()
@@ -236,6 +237,7 @@
             ChkIsMasked.TabIndex = 10
             ChkIsMasked.Text = "Unreadable after saving"
             ChkIsMasked.UseVisualStyleBackColor = False
+            ChkIsMasked.XOCheckColor = Color.Empty
             ' 
             ' btnExport
             ' 
@@ -339,6 +341,7 @@
             ChkDefault.TabIndex = 9
             ChkDefault.Text = "Set as Default Connection"
             ChkDefault.UseVisualStyleBackColor = False
+            ChkDefault.XOCheckColor = Color.Empty
             ' 
             ' TxtPassword
             ' 
@@ -762,6 +765,7 @@
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             TbctlBasic.ResumeLayout(False)
             tp1_.ResumeLayout(False)
             tp1_.PerformLayout()

@@ -38,7 +38,19 @@
             TxtUsername = New CMCv.UI.Control.Txt(components)
             GbxModulesRoles = New CMCv.UI.Control.Gbx(components)
             DgnModulesRoles = New CMCv.UI.Control.Dgn(components)
+            modulegroup_name = New DataGridViewTextBoxColumn()
+            module_code = New DataGridViewTextBoxColumn()
+            useraccess_view = New DataGridViewCheckBoxColumn()
+            useraccess_add = New DataGridViewCheckBoxColumn()
+            useraccess_edit = New DataGridViewCheckBoxColumn()
+            useraccess_delete = New DataGridViewCheckBoxColumn()
+            useraccess_reports = New DataGridViewCheckBoxColumn()
+            empty = New DataGridViewTextBoxColumn()
+            useraccess_id = New DataGridViewTextBoxColumn()
+            module_id = New DataGridViewTextBoxColumn()
             tpEmployment = New TabPage()
+            ULbl13 = New CMCv.UI.Control.ULbl()
+            TxtCompanyEmail = New CMCv.UI.Control.Txt(components)
             BtnBrowseEmploymentType = New CMCv.UI.Control.Btn(components)
             ULbl14 = New CMCv.UI.Control.ULbl()
             ULbl12 = New CMCv.UI.Control.ULbl()
@@ -70,21 +82,12 @@
             TbctlEmployee = New CMCv.UI.Control.Tbx(components)
             ULbl8 = New CMCv.UI.Control.ULbl()
             BtnRemovePhoto = New CMCv.UI.Control.Btn(components)
-            modulegroup_name = New DataGridViewTextBoxColumn()
-            module_code = New DataGridViewTextBoxColumn()
-            useraccess_view = New DataGridViewCheckBoxColumn()
-            useraccess_add = New DataGridViewCheckBoxColumn()
-            useraccess_edit = New DataGridViewCheckBoxColumn()
-            useraccess_delete = New DataGridViewCheckBoxColumn()
-            useraccess_reports = New DataGridViewCheckBoxColumn()
-            empty = New DataGridViewTextBoxColumn()
-            useraccess_id = New DataGridViewTextBoxColumn()
-            module_id = New DataGridViewTextBoxColumn()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(pctbxPhoto, ComponentModel.ISupportInitialize).BeginInit()
             CType(pcbxFrame, ComponentModel.ISupportInitialize).BeginInit()
             tpPermissions.SuspendLayout()
@@ -136,7 +139,7 @@
             ' 
             ChkAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             ChkAddNew.AutoSize = True
-            ChkAddNew.BackColor = Color.FromArgb(12, 18, 40)
+            ChkAddNew.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             ChkAddNew.FlatStyle = FlatStyle.Flat
             ChkAddNew.Font = New Font("Segoe UI", 12F)
             ChkAddNew.ForeColor = Color.Yellow
@@ -154,9 +157,9 @@
             BtnSave.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             BtnSave.BackColor = Color.LimeGreen
             BtnSave.Cursor = Cursors.Hand
-            BtnSave.FlatAppearance.BorderColor = Color.FromArgb(50, 145, 50)
+            BtnSave.FlatAppearance.BorderColor = Color.FromArgb(CByte(50), CByte(145), CByte(50))
             BtnSave.FlatAppearance.BorderSize = 2
-            BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(70, 225, 70)
+            BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
             BtnSave.FlatStyle = FlatStyle.Flat
             BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnSave.ForeColor = Color.White
@@ -177,9 +180,9 @@
             BtnCancel.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             BtnCancel.BackColor = Color.Red
             BtnCancel.Cursor = Cursors.Hand
-            BtnCancel.FlatAppearance.BorderColor = Color.FromArgb(195, 0, 0)
+            BtnCancel.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
             BtnCancel.FlatAppearance.BorderSize = 2
-            BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 20, 20)
+            BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnCancel.FlatStyle = FlatStyle.Flat
             BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
@@ -218,9 +221,9 @@
             BtnBrowsePhoto.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             BtnBrowsePhoto.BackColor = Color.RoyalBlue
             BtnBrowsePhoto.Cursor = Cursors.Hand
-            BtnBrowsePhoto.FlatAppearance.BorderColor = Color.FromArgb(5, 45, 165)
+            BtnBrowsePhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
             BtnBrowsePhoto.FlatAppearance.BorderSize = 2
-            BtnBrowsePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(85, 125, 245)
+            BtnBrowsePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnBrowsePhoto.FlatStyle = FlatStyle.Flat
             BtnBrowsePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowsePhoto.ForeColor = Color.White
@@ -258,7 +261,7 @@
             ' 
             ' tpPermissions
             ' 
-            tpPermissions.BackColor = Color.FromArgb(11, 28, 45)
+            tpPermissions.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             tpPermissions.Controls.Add(GbxCredetials)
             tpPermissions.Controls.Add(GbxModulesRoles)
             tpPermissions.Location = New Point(4, 41)
@@ -350,9 +353,9 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(248, 206, 175)
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(229), CByte(218), CByte(162))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-            DgnModulesRoles.BackgroundColor = Color.FromArgb(11, 28, 45)
+            DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnModulesRoles.BorderStyle = BorderStyle.None
             DgnModulesRoles.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnModulesRoles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
@@ -391,9 +394,121 @@
             DgnModulesRoles.XOIsGroupFirstRow = True
             DgnModulesRoles.XOIsShowRowNumber = True
             ' 
+            ' modulegroup_name
+            ' 
+            modulegroup_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            modulegroup_name.DataPropertyName = "modulegroup_name"
+            modulegroup_name.HeaderText = "MOD.GROUP"
+            modulegroup_name.MinimumWidth = 8
+            modulegroup_name.Name = "modulegroup_name"
+            modulegroup_name.ReadOnly = True
+            modulegroup_name.Width = 144
+            ' 
+            ' module_code
+            ' 
+            module_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            module_code.DataPropertyName = "module_code"
+            module_code.HeaderText = "CMD"
+            module_code.MinimumWidth = 8
+            module_code.Name = "module_code"
+            module_code.ReadOnly = True
+            module_code.Width = 78
+            ' 
+            ' useraccess_view
+            ' 
+            useraccess_view.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            useraccess_view.DataPropertyName = "useraccess_view"
+            useraccess_view.HeaderText = "VIEW"
+            useraccess_view.MinimumWidth = 8
+            useraccess_view.Name = "useraccess_view"
+            useraccess_view.ReadOnly = True
+            useraccess_view.Resizable = DataGridViewTriState.True
+            useraccess_view.SortMode = DataGridViewColumnSortMode.Automatic
+            useraccess_view.Width = 40
+            ' 
+            ' useraccess_add
+            ' 
+            useraccess_add.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            useraccess_add.DataPropertyName = "useraccess_add"
+            useraccess_add.HeaderText = "ADD"
+            useraccess_add.MinimumWidth = 8
+            useraccess_add.Name = "useraccess_add"
+            useraccess_add.ReadOnly = True
+            useraccess_add.Resizable = DataGridViewTriState.True
+            useraccess_add.SortMode = DataGridViewColumnSortMode.Automatic
+            useraccess_add.Width = 40
+            ' 
+            ' useraccess_edit
+            ' 
+            useraccess_edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            useraccess_edit.DataPropertyName = "useraccess_edit"
+            useraccess_edit.HeaderText = "EDIT"
+            useraccess_edit.MinimumWidth = 8
+            useraccess_edit.Name = "useraccess_edit"
+            useraccess_edit.ReadOnly = True
+            useraccess_edit.Resizable = DataGridViewTriState.True
+            useraccess_edit.SortMode = DataGridViewColumnSortMode.Automatic
+            useraccess_edit.Width = 40
+            ' 
+            ' useraccess_delete
+            ' 
+            useraccess_delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            useraccess_delete.DataPropertyName = "useraccess_delete"
+            useraccess_delete.HeaderText = "DEL"
+            useraccess_delete.MinimumWidth = 8
+            useraccess_delete.Name = "useraccess_delete"
+            useraccess_delete.ReadOnly = True
+            useraccess_delete.Resizable = DataGridViewTriState.True
+            useraccess_delete.SortMode = DataGridViewColumnSortMode.Automatic
+            useraccess_delete.Width = 40
+            ' 
+            ' useraccess_reports
+            ' 
+            useraccess_reports.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            useraccess_reports.DataPropertyName = "useraccess_reports"
+            useraccess_reports.HeaderText = "RPT"
+            useraccess_reports.MinimumWidth = 8
+            useraccess_reports.Name = "useraccess_reports"
+            useraccess_reports.ReadOnly = True
+            useraccess_reports.Resizable = DataGridViewTriState.True
+            useraccess_reports.SortMode = DataGridViewColumnSortMode.Automatic
+            useraccess_reports.Width = 40
+            ' 
+            ' empty
+            ' 
+            empty.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            empty.HeaderText = ""
+            empty.MinimumWidth = 8
+            empty.Name = "empty"
+            empty.ReadOnly = True
+            ' 
+            ' useraccess_id
+            ' 
+            useraccess_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            useraccess_id.DataPropertyName = "useraccess_id"
+            useraccess_id.HeaderText = "UID"
+            useraccess_id.MinimumWidth = 8
+            useraccess_id.Name = "useraccess_id"
+            useraccess_id.ReadOnly = True
+            useraccess_id.Visible = False
+            useraccess_id.Width = 150
+            ' 
+            ' module_id
+            ' 
+            module_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            module_id.DataPropertyName = "module_id"
+            module_id.HeaderText = "MOD. ID"
+            module_id.MinimumWidth = 8
+            module_id.Name = "module_id"
+            module_id.ReadOnly = True
+            module_id.Visible = False
+            module_id.Width = 150
+            ' 
             ' tpEmployment
             ' 
-            tpEmployment.BackColor = Color.FromArgb(11, 28, 45)
+            tpEmployment.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            tpEmployment.Controls.Add(ULbl13)
+            tpEmployment.Controls.Add(TxtCompanyEmail)
             tpEmployment.Controls.Add(BtnBrowseEmploymentType)
             tpEmployment.Controls.Add(ULbl14)
             tpEmployment.Controls.Add(ULbl12)
@@ -416,19 +531,61 @@
             tpEmployment.TabIndex = 2
             tpEmployment.Text = "EMPLOYMENT"
             ' 
+            ' ULbl13
+            ' 
+            ULbl13.BackColor = Color.Moccasin
+            ULbl13.Location = New Point(14, 353)
+            ULbl13.Margin = New Padding(5, 6, 5, 6)
+            ULbl13.Name = "ULbl13"
+            ULbl13.Size = New Size(250, 39)
+            ULbl13.TabIndex = 1062
+            ULbl13.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl13.XOText = "Company Email"
+            ULbl13.XOTextAdjuster = False
+            ULbl13.XOTextBorder = False
+            ' 
+            ' TxtCompanyEmail
+            ' 
+            TxtCompanyEmail.Font = New Font("Segoe UI", 12F)
+            TxtCompanyEmail.Location = New Point(273, 353)
+            TxtCompanyEmail.MaxLength = 255
+            TxtCompanyEmail.Name = "TxtCompanyEmail"
+            TxtCompanyEmail.Size = New Size(455, 39)
+            TxtCompanyEmail.TabIndex = 208
+            TxtCompanyEmail.Tag = "txt"
+            TxtCompanyEmail.XOAutoTrim = False
+            TxtCompanyEmail.XOHighlightColor = Color.LightYellow
+            TxtCompanyEmail.XOHighlightOnFocus = False
+            TxtCompanyEmail.XOIsBlank = True
+            TxtCompanyEmail.XOIsMandatory = False
+            TxtCompanyEmail.XOIsPlaceholder = False
+            TxtCompanyEmail.XOIsReplaceEmptyString = False
+            TxtCompanyEmail.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtCompanyEmail.XOMandatoryBgColor = Color.LightPink
+            TxtCompanyEmail.XOMandatoryBgColorDefault = Color.White
+            TxtCompanyEmail.XOMandatoryMessage = Nothing
+            TxtCompanyEmail.XOPasswordLengthMin = 8
+            TxtCompanyEmail.XOPasswordStrengthCalc = False
+            TxtCompanyEmail.XOPasswordStrengthScore = 0
+            TxtCompanyEmail.XOPasswordStrengthText = Nothing
+            TxtCompanyEmail.XOPlaceholderText = "Type then press Enter"
+            TxtCompanyEmail.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
+            TxtCompanyEmail.XOSelectOnFocus = False
+            TxtCompanyEmail.XOSqlText = ""
+            ' 
             ' BtnBrowseEmploymentType
             ' 
             BtnBrowseEmploymentType.BackColor = Color.RoyalBlue
-            BtnBrowseEmploymentType.FlatAppearance.BorderColor = Color.FromArgb(5, 45, 165)
+            BtnBrowseEmploymentType.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
             BtnBrowseEmploymentType.FlatAppearance.BorderSize = 2
-            BtnBrowseEmploymentType.FlatAppearance.MouseOverBackColor = Color.FromArgb(85, 125, 245)
+            BtnBrowseEmploymentType.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnBrowseEmploymentType.FlatStyle = FlatStyle.Flat
             BtnBrowseEmploymentType.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowseEmploymentType.ForeColor = Color.White
             BtnBrowseEmploymentType.Location = New Point(740, 217)
             BtnBrowseEmploymentType.Name = "BtnBrowseEmploymentType"
             BtnBrowseEmploymentType.Size = New Size(66, 39)
-            BtnBrowseEmploymentType.TabIndex = 1062
+            BtnBrowseEmploymentType.TabIndex = 206
             BtnBrowseEmploymentType.Text = "..."
             BtnBrowseEmploymentType.UseVisualStyleBackColor = False
             BtnBrowseEmploymentType.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
@@ -439,7 +596,7 @@
             ' ULbl14
             ' 
             ULbl14.BackColor = Color.Moccasin
-            ULbl14.Location = New Point(14, 353)
+            ULbl14.Location = New Point(14, 421)
             ULbl14.Margin = New Padding(12, 17, 12, 17)
             ULbl14.Name = "ULbl14"
             ULbl14.Size = New Size(250, 39)
@@ -517,15 +674,15 @@
             ' ChkActiveEmployee
             ' 
             ChkActiveEmployee.AutoSize = True
-            ChkActiveEmployee.BackColor = Color.FromArgb(11, 28, 45)
+            ChkActiveEmployee.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             ChkActiveEmployee.FlatStyle = FlatStyle.Flat
             ChkActiveEmployee.Font = New Font("Segoe UI", 12F)
             ChkActiveEmployee.ForeColor = Color.Yellow
-            ChkActiveEmployee.Location = New Point(273, 421)
+            ChkActiveEmployee.Location = New Point(273, 489)
             ChkActiveEmployee.Margin = New Padding(6, 5, 6, 5)
             ChkActiveEmployee.Name = "ChkActiveEmployee"
             ChkActiveEmployee.Size = New Size(213, 36)
-            ChkActiveEmployee.TabIndex = 211
+            ChkActiveEmployee.TabIndex = 210
             ChkActiveEmployee.Text = "Active employee"
             ChkActiveEmployee.UseVisualStyleBackColor = False
             ChkActiveEmployee.XOCheckColor = Color.Yellow
@@ -533,12 +690,12 @@
             ' TxtEmployeeNickname
             ' 
             TxtEmployeeNickname.Font = New Font("Segoe UI", 12F)
-            TxtEmployeeNickname.Location = New Point(273, 353)
+            TxtEmployeeNickname.Location = New Point(273, 421)
             TxtEmployeeNickname.Margin = New Padding(6, 5, 6, 5)
             TxtEmployeeNickname.MaxLength = 255
             TxtEmployeeNickname.Name = "TxtEmployeeNickname"
             TxtEmployeeNickname.Size = New Size(101, 39)
-            TxtEmployeeNickname.TabIndex = 210
+            TxtEmployeeNickname.TabIndex = 209
             TxtEmployeeNickname.Tag = "txt"
             TxtEmployeeNickname.TextAlign = HorizontalAlignment.Center
             TxtEmployeeNickname.XOAutoTrim = True
@@ -601,7 +758,7 @@
             TxtEmploymentType.Name = "TxtEmploymentType"
             TxtEmploymentType.ReadOnly = True
             TxtEmploymentType.Size = New Size(455, 39)
-            TxtEmploymentType.TabIndex = 206
+            TxtEmploymentType.TabIndex = 205
             TxtEmploymentType.TabStop = False
             TxtEmploymentType.Tag = "txt"
             TxtEmploymentType.XOAutoTrim = False
@@ -660,9 +817,9 @@
             ' 
             BtnBrowsePosition.BackColor = Color.RoyalBlue
             BtnBrowsePosition.Cursor = Cursors.Hand
-            BtnBrowsePosition.FlatAppearance.BorderColor = Color.FromArgb(5, 45, 165)
+            BtnBrowsePosition.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
             BtnBrowsePosition.FlatAppearance.BorderSize = 2
-            BtnBrowsePosition.FlatAppearance.MouseOverBackColor = Color.FromArgb(85, 125, 245)
+            BtnBrowsePosition.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
             BtnBrowsePosition.FlatStyle = FlatStyle.Flat
             BtnBrowsePosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowsePosition.ForeColor = Color.White
@@ -744,7 +901,7 @@
             ' tpGeneral
             ' 
             tpGeneral.AutoScroll = True
-            tpGeneral.BackColor = Color.FromArgb(11, 28, 45)
+            tpGeneral.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             tpGeneral.Controls.Add(ULbl1)
             tpGeneral.Controls.Add(ULbl5)
             tpGeneral.Controls.Add(ULbl4)
@@ -1026,9 +1183,9 @@
             ' 
             BtnRemovePhoto.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             BtnRemovePhoto.BackColor = Color.Red
-            BtnRemovePhoto.FlatAppearance.BorderColor = Color.FromArgb(195, 0, 0)
+            BtnRemovePhoto.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
             BtnRemovePhoto.FlatAppearance.BorderSize = 2
-            BtnRemovePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 20, 20)
+            BtnRemovePhoto.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             BtnRemovePhoto.FlatStyle = FlatStyle.Flat
             BtnRemovePhoto.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnRemovePhoto.ForeColor = Color.White
@@ -1043,116 +1200,6 @@
             BtnRemovePhoto.XOValidateAllInput = False
             BtnRemovePhoto.XOValidateAllInputTag = Nothing
             ' 
-            ' modulegroup_name
-            ' 
-            modulegroup_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            modulegroup_name.DataPropertyName = "modulegroup_name"
-            modulegroup_name.HeaderText = "MOD.GROUP"
-            modulegroup_name.MinimumWidth = 8
-            modulegroup_name.Name = "modulegroup_name"
-            modulegroup_name.ReadOnly = True
-            modulegroup_name.Width = 144
-            ' 
-            ' module_code
-            ' 
-            module_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            module_code.DataPropertyName = "module_code"
-            module_code.HeaderText = "CMD"
-            module_code.MinimumWidth = 8
-            module_code.Name = "module_code"
-            module_code.ReadOnly = True
-            module_code.Width = 78
-            ' 
-            ' useraccess_view
-            ' 
-            useraccess_view.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-            useraccess_view.DataPropertyName = "useraccess_view"
-            useraccess_view.HeaderText = "VIEW"
-            useraccess_view.MinimumWidth = 8
-            useraccess_view.Name = "useraccess_view"
-            useraccess_view.ReadOnly = True
-            useraccess_view.Resizable = DataGridViewTriState.True
-            useraccess_view.SortMode = DataGridViewColumnSortMode.Automatic
-            useraccess_view.Width = 40
-            ' 
-            ' useraccess_add
-            ' 
-            useraccess_add.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-            useraccess_add.DataPropertyName = "useraccess_add"
-            useraccess_add.HeaderText = "ADD"
-            useraccess_add.MinimumWidth = 8
-            useraccess_add.Name = "useraccess_add"
-            useraccess_add.ReadOnly = True
-            useraccess_add.Resizable = DataGridViewTriState.True
-            useraccess_add.SortMode = DataGridViewColumnSortMode.Automatic
-            useraccess_add.Width = 40
-            ' 
-            ' useraccess_edit
-            ' 
-            useraccess_edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-            useraccess_edit.DataPropertyName = "useraccess_edit"
-            useraccess_edit.HeaderText = "EDIT"
-            useraccess_edit.MinimumWidth = 8
-            useraccess_edit.Name = "useraccess_edit"
-            useraccess_edit.ReadOnly = True
-            useraccess_edit.Resizable = DataGridViewTriState.True
-            useraccess_edit.SortMode = DataGridViewColumnSortMode.Automatic
-            useraccess_edit.Width = 40
-            ' 
-            ' useraccess_delete
-            ' 
-            useraccess_delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-            useraccess_delete.DataPropertyName = "useraccess_delete"
-            useraccess_delete.HeaderText = "DEL"
-            useraccess_delete.MinimumWidth = 8
-            useraccess_delete.Name = "useraccess_delete"
-            useraccess_delete.ReadOnly = True
-            useraccess_delete.Resizable = DataGridViewTriState.True
-            useraccess_delete.SortMode = DataGridViewColumnSortMode.Automatic
-            useraccess_delete.Width = 40
-            ' 
-            ' useraccess_reports
-            ' 
-            useraccess_reports.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-            useraccess_reports.DataPropertyName = "useraccess_reports"
-            useraccess_reports.HeaderText = "RPT"
-            useraccess_reports.MinimumWidth = 8
-            useraccess_reports.Name = "useraccess_reports"
-            useraccess_reports.ReadOnly = True
-            useraccess_reports.Resizable = DataGridViewTriState.True
-            useraccess_reports.SortMode = DataGridViewColumnSortMode.Automatic
-            useraccess_reports.Width = 40
-            ' 
-            ' empty
-            ' 
-            empty.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            empty.HeaderText = ""
-            empty.MinimumWidth = 8
-            empty.Name = "empty"
-            empty.ReadOnly = True
-            ' 
-            ' useraccess_id
-            ' 
-            useraccess_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            useraccess_id.DataPropertyName = "useraccess_id"
-            useraccess_id.HeaderText = "UID"
-            useraccess_id.MinimumWidth = 8
-            useraccess_id.Name = "useraccess_id"
-            useraccess_id.ReadOnly = True
-            useraccess_id.Visible = False
-            useraccess_id.Width = 73
-            ' 
-            ' module_id
-            ' 
-            module_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            module_id.DataPropertyName = "module_id"
-            module_id.HeaderText = "MOD. ID"
-            module_id.MinimumWidth = 8
-            module_id.Name = "module_id"
-            module_id.ReadOnly = True
-            module_id.Visible = False
-            module_id.Width = 86
-            ' 
             ' FRMeplsEditor
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
@@ -1166,6 +1213,7 @@
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(pctbxPhoto, ComponentModel.ISupportInitialize).EndInit()
             CType(pcbxFrame, ComponentModel.ISupportInitialize).EndInit()
             tpPermissions.ResumeLayout(False)
@@ -1236,5 +1284,7 @@
         Friend WithEvents empty As DataGridViewTextBoxColumn
         Friend WithEvents useraccess_id As DataGridViewTextBoxColumn
         Friend WithEvents module_id As DataGridViewTextBoxColumn
+        Friend WithEvents TxtCompanyEmail As CMCv.UI.Control.Txt
+        Friend WithEvents ULbl13 As CMCv.UI.Control.ULbl
     End Class
 End Namespace

@@ -57,6 +57,7 @@ Namespace UI.Canvas
             Try
                 BtnExecute.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-play-fill.svg", True, 48, 48)
                 PctProfile.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-images.svg", True, 72, 72)
+                CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Menu_UPDATE, Ms_mainframe, "SUPPORT",, 512, 512)
 
                 CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(My.Settings.URL_MainframeBackground, Me)
 
@@ -710,7 +711,7 @@ Namespace UI.Canvas
                 LogoutToolStripMenuItem.Visible = False
                 LogoutToolStripMenuItem.Enabled = False
                 USERMENU.Text = "NOT LOGGED"
-                USERMENU.BackColor = Global.System.Drawing.SystemColors.Control
+                USERMENU.BackColor = Global.System.Drawing.Color.White
                 'tmdi_.AttachedTo = Nothing
                 Call CloseAllWindows(True) ''' Close all windows on logout
                 TmrNotif.Enabled = False
