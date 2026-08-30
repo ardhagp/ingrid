@@ -3,6 +3,7 @@ Imports System.Runtime.Versioning
 
 Namespace UI.Canvas
     Public Class FRMpdfViewer
+        Inherits UI.Canvas.FRMstandardFooter
 
         Private varLocalFs As FileStream
         Public Property LocalFS As FileStream

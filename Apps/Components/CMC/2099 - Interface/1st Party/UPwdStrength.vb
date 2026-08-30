@@ -2,6 +2,8 @@
 
 Namespace UI.Control
     Public Class UPwdStrength
+        Inherits System.Windows.Forms.UserControl
+
         <SupportedOSPlatform("windows")>
         Public Sub New()
 

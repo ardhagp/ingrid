@@ -1,5 +1,5 @@
 ﻿Namespace UI.Control
-    Partial Class Csmnu
+    Partial Class CsMnu
         Inherits System.Windows.Forms.ContextMenuStrip
 
         <System.Diagnostics.DebuggerNonUserCode()>

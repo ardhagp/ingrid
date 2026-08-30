@@ -2,6 +2,8 @@
 
 Namespace UI.Canvas
     Public Class FRMphtrz
+        Inherits UI.Canvas.FRMstandardFooter
+
         Private varImageCompressor As New ImageEditor.Proccessor.Compress
         Private varFileHandler As New OperatingSystem.File.Info
 

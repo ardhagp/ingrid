@@ -3,6 +3,8 @@ Imports System.Windows.Forms
 
 Namespace UI.Control
     Public Class ULbl
+        Inherits System.Windows.Forms.UserControl
+
         Private iLoop As Integer
 
         <SupportedOSPlatform("windows")>

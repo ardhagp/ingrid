@@ -314,6 +314,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="0010 - Embeded Files\080. Database\Classic\" />
+    <Folder Include="2001 - Service\90 - Camera\" />
     <Folder Include="2099 - Interface\Controls\MergerToolStrips\" />
     <Folder Include="2099 - Interface\Controls\TextEditor\" />
   </ItemGroup>

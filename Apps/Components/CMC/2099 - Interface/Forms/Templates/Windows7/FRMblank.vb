@@ -2,6 +2,7 @@
 
 Namespace UI.Canvas
     Public Class FRMblank
+        Inherits System.Windows.Forms.Form
 
         Private Sub Blank_FormClosed(sender As Object, e As system.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
             Me.Dispose()

@@ -2,7 +2,7 @@
 
 Namespace UI.Control
     ''' <summary>
-    ''' Custom radiobutton
+    ''' Custom radio button
     ''' </summary>
     Public Class Rdo
         Inherits System.Windows.Forms.RadioButton

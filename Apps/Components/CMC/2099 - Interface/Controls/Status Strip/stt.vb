@@ -3,7 +3,7 @@
 Namespace UI.Control
     Public Class Stt
         ''' <summary>
-        ''' Custom statusstrip
+        ''' Custom status strip
         ''' </summary>
         Inherits System.Windows.Forms.StatusStrip
 

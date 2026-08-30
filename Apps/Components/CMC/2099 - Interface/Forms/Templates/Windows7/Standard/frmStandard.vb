@@ -3,6 +3,7 @@ Imports System.Runtime.Versioning
 
 Namespace UI.Canvas
     Public Class FRMstandard
+        Inherits UI.Canvas.FRMblank
 
         <SupportedOSPlatform("windows")>
         Private Sub FRMstandard_Load(sender As Object, e As EventArgs) Handles Me.Load

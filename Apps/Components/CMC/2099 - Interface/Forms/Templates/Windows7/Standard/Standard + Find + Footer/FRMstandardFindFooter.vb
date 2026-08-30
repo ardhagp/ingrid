@@ -1,5 +1,7 @@
 ﻿Namespace UI.Canvas
     Public Class FRMstandardFindFooter
+        Inherits UI.Canvas.FRMstandardFind
+
         Public Sub New()
 
             ' This call is required by the designer.

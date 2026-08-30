@@ -3,7 +3,7 @@
 Namespace UI.Control
     Public Class Tv
         ''' <summary>
-        ''' Custom treeview
+        ''' Custom tree view
         ''' </summary>
         Inherits System.Windows.Forms.TreeView
 

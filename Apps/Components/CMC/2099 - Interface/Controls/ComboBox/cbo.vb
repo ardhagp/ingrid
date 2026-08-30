@@ -4,7 +4,7 @@ Namespace UI.Control
     ''' <project>CMCC</project>
     ''' <author>Ardha Gp</author>
     ''' <summary>
-    ''' Custom combobox
+    ''' Custom combo box
     ''' </summary>
     Public Class Cbo
         Inherits System.Windows.Forms.ComboBox
