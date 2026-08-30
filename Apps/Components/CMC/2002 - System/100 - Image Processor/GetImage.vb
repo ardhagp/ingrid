@@ -1,6 +1,4 @@
-﻿Imports System.Windows.Forms
-
-Namespace ImageEditor.File
+﻿Namespace ImageEditor.File
     Public Class GetImage
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetImageExtensionFromFile(filePath As String) As String
@@ -222,8 +220,8 @@ Namespace ImageEditor.File
                     dataproperties.EmployeeIsForceChangePhoto = True
                 End If
 
-                MessageBox.Show($"Unable to load SVG image: {ex.Message}", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error)
+                System.Windows.Forms.MessageBox.Show($"Unable to load SVG image: {ex.Message}", "Error",
+                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
 
                 Return False
             End Try
@@ -295,8 +293,8 @@ Namespace ImageEditor.File
                     dataproperties.EmployeeIsForceChangePhoto = True
                 End If
 
-                MessageBox.Show($"Unable to load SVG image: {ex.Message}", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error)
+                System.Windows.Forms.MessageBox.Show($"Unable to load SVG image: {ex.Message}", "Error",
+                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
 
                 Return False
             End Try

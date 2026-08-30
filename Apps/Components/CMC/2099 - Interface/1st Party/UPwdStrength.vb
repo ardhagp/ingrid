@@ -1,10 +1,8 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Control
+﻿Namespace UI.Control
     Public Class UPwdStrength
         Inherits System.Windows.Forms.UserControl
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
 
             ' This call is required by the designer.

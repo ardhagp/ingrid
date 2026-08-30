@@ -1,9 +1,7 @@
-﻿Imports System.Windows.Forms
-
-Namespace UI.Components.Behavior
+﻿Namespace UI.Components.Behavior
     Public Class Datagrid
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Sub AdaptiveRowHeight(frm As Form, dgn As DataGridView)
+        Public Shared Sub AdaptiveRowHeight(frm As System.Windows.Forms.Form, dgn As System.Windows.Forms.DataGridView)
             Dim g As System.Drawing.Graphics = frm.CreateGraphics()
             Dim varDpiVertical As Single = g.DpiY
 
@@ -12,7 +10,7 @@ Namespace UI.Components.Behavior
 
             dgn.RowTemplate.Height = adaptiveHeight
 
-            For Each row As DataGridViewRow In dgn.Rows
+            For Each row As System.Windows.Forms.DataGridViewRow In dgn.Rows
                 row.Height = adaptiveHeight
             Next
         End Sub

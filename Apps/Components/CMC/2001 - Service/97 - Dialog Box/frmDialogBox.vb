@@ -1,7 +1,6 @@
-﻿'Imports 
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMdialogbox
+        Inherits UI.Canvas.FRMstandardFooter
 
 #Region "Initialize"
         ''' <summary>

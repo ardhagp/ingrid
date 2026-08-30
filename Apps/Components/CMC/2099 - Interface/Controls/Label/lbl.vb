@@ -1,16 +1,13 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Control
+﻿Namespace UI.Control
     Public Class Lbl
         Inherits System.Windows.Forms.Label
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
 
             Try
-                Call ActivateLicenses()
-                MyBase.Font = globalFontTxt
+                MyBase.Font = Component.Properties.globalFontTxt
                 Me.XOCustomElipsis = False
                 'Me.SLFTypeOfElipsis = TextFormatFlags.Default
                 MyBase.DoubleBuffered = True

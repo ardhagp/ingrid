@@ -1,4 +1,4 @@
-﻿Namespace UI
+﻿Namespace Component.Properties
     Module [Global]
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public globalFontBtn As New System.Drawing.Font("Segoe UI", 12, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)

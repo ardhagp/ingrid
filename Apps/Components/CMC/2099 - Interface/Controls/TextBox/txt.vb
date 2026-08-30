@@ -5,8 +5,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
-            Call ActivateLicenses()
-            MyBase.Font = globalFontTxt
+            MyBase.Font = Component.Properties.globalFontTxt
             MyBase.MaxLength = 255
             MyBase.Height = 23
             MyBase.Width = 206

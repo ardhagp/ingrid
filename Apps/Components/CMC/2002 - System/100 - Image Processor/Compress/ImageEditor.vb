@@ -91,8 +91,8 @@
 
                 Return varNewImage
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With component.properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[OutputAsImage] $\Ingrid\Apps\Components\CMC\2002 - System\100 - Image Processor\Compress\clsImageEditor.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -106,7 +106,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(component.properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -138,8 +138,8 @@
 
                 Return varNewImage
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With component.properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[OutputAsImage] $\Ingrid\Apps\Components\CMC\2002 - System\100 - Image Processor\Compress\clsImageEditor.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -153,7 +153,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(component.properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -181,8 +181,8 @@
 
                 Return varNewImage
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With component.properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[OutputAsImage] $\Ingrid\Apps\Components\CMC\2002 - System\100 - Image Processor\Compress\clsImageEditor.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -196,7 +196,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(component.properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -303,8 +303,8 @@
 
                 Return varBitmap
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With component.properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[WaterMarker] $\Ingrid\Apps\Components\CMC\2002 - System\100 - Image Processor\Compress\clsImageEditor.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -318,7 +318,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(component.properties.proLog)
                 clsLog = Nothing
                 Return Nothing
             End Try

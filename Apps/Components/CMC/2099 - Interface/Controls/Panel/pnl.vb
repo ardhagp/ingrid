@@ -1,16 +1,13 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Control
+﻿Namespace UI.Control
     ''' <summary>
     ''' Custom panel
     ''' </summary>
     Public Class Pnl
         Inherits System.Windows.Forms.Panel
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
-            Call ActivateLicenses()
             MyBase.DoubleBuffered = True
         End Sub
     End Class

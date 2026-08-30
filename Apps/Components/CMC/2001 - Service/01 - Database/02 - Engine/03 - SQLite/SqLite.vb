@@ -34,8 +34,8 @@
                 Return (prodOk)
 
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[CheckDBCatalog] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -49,7 +49,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return False
@@ -75,8 +75,8 @@
                 Dim varLocation As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\ardhagp\Ingrid .NET"
 
                 If Not (CheckDBCatalog(localsqlitedb)) Then
-                    With UI.proLog
-                        .AppVersion = UI.GetAppVersion()
+                    With Component.Properties.proLog
+                        .AppVersion = Component.Properties.GetAppVersion()
                         .FromSender = "[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\SQLitevb.vb"
                         .InternalStackTrace = ""
                         .Message = "File configuration Not found"
@@ -90,7 +90,7 @@
                     End With
 
                     Dim clsLog As New Ladybug.Log.Events
-                    clsLog.ShowData(UI.proLog)
+                    clsLog.ShowData(Component.Properties.proLog)
                     clsLog = Nothing
                     Return Nothing
                 End If
@@ -104,8 +104,8 @@
                 End If
                 Return varConnectionString
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -119,7 +119,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
                 Return Nothing
             End Try
@@ -133,8 +133,8 @@
                     varConnection.Open()
                 End Using
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -148,7 +148,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             End Try
         End Sub
@@ -192,8 +192,8 @@
                     Return databaseproperties
                 End With
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDatabaseProperties] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -207,7 +207,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -241,8 +241,8 @@
                 End Using
             Catch ex As System.Data.SQLite.SQLiteException
                 'Catch ex As Microsoft.Data.Sqlite.SqliteException
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -256,7 +256,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -288,8 +288,8 @@
                     Return varRowValue
                 End Using
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -303,7 +303,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -376,8 +376,8 @@
                 End Using
             Catch ex As System.Data.SQLite.SQLiteException
                 'Catch ex As Microsoft.Data.Sqlite.SqliteException
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -391,11 +391,11 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -409,7 +409,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             End Try
         End Sub
@@ -451,8 +451,8 @@
                     Return varDataset
                 End Using
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLite.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -467,7 +467,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
                 Return Nothing
             End Try
@@ -505,8 +505,8 @@
                     End Using
                 End Using
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLite.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -521,7 +521,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
                 Return Nothing
             End Try
@@ -550,8 +550,8 @@
                 End Using
             Catch ex As System.Data.SQLite.SQLiteException
                 'Catch ex As Microsoft.Data.Sqlite.SqliteException
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[PushData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\03 - SQLite\clsSQLitevb.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -565,7 +565,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             End Try
         End Sub

@@ -1,17 +1,13 @@
-﻿Imports System.Runtime.Versioning
-Imports System.Windows.Forms
-
-Namespace UI.Control
+﻿Namespace UI.Control
     Public Class ULbl
         Inherits System.Windows.Forms.UserControl
 
         Private iLoop As Integer
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             ' This call is required by the designer.
             InitializeComponent()
-            Call ActivateLicenses()
 
             ' Add any initialization after the InitializeComponent() call.
             MyBase.DoubleBuffered = True
@@ -25,7 +21,7 @@ Namespace UI.Control
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Specifies the text value displayed by the component and used as its primary content")>
         Private varText As String
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Property XOText As String
             Get
                 Return varText
@@ -36,13 +32,13 @@ Namespace UI.Control
             End Set
         End Property
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ChangeText(newtext As String)
             UText.Text = newtext
         End Sub
 
         Private varTextBorder As Boolean
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         <System.ComponentModel.Category("XO.Format"),
         System.ComponentModel.Description("Specifies the border style applied to the component's text area, controlling how its outline is rendered")>
         Public Property XOTextBorder As Boolean
@@ -55,7 +51,7 @@ Namespace UI.Control
             End Set
         End Property
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ChangeTextBorder(value As Boolean)
             If value Then
                 UText.BorderStyle = BorderStyle.FixedSingle
@@ -65,7 +61,7 @@ Namespace UI.Control
         End Sub
 
         Private varTextAdjuster As Boolean
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         <System.ComponentModel.Category("XO.Format"),
         System.ComponentModel.Description("Applies automatic text adjustments to the component’s value")>
         Public Property XOTextAdjuster As Boolean
@@ -78,7 +74,7 @@ Namespace UI.Control
             End Set
         End Property
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ReadjustmentText(value As Boolean)
             If value Then
                 Tmr_.Enabled = True
@@ -88,7 +84,7 @@ Namespace UI.Control
         End Sub
 
         Private varLabelColor As UI.Control.ControlCodeBase.EnumColorSelect
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         <System.ComponentModel.Category("XO.Format"),
         System.ComponentModel.Description("Specifies the color used to render the component’s label")>
         Public Property XOLabelColor() As UI.Control.ControlCodeBase.EnumColorSelect
@@ -101,7 +97,7 @@ Namespace UI.Control
             End Set
         End Property
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ChangeLabelColor(valEnuJenisTombol As UI.Control.ControlCodeBase.EnumColorSelect)
             Select Case valEnuJenisTombol
                 Case UI.Control.ControlCodeBase.EnumColorSelect.Green
@@ -137,12 +133,12 @@ Namespace UI.Control
             End Select
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ULbl_Resize(sender As Object, e As EventArgs) Handles Me.Resize
             UText.Height = Me.Height
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tmr_Tick(sender As Object, e As EventArgs) Handles Tmr_.Tick
             If iLoop < 10 Then
                 UText.Height = Me.Height
@@ -154,13 +150,13 @@ Namespace UI.Control
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ULbl_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
             UText.Height = Me.Height
         End Sub
 
-        <SupportedOSPlatform("windows")>
-        Private Sub ULbl_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub ULbl_Paint(sender As Object, e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
             UText.Height = Me.Height
         End Sub
     End Class

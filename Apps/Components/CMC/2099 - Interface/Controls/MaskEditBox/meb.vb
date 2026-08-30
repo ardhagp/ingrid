@@ -1,14 +1,12 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Control
+﻿Namespace UI.Control
     Public Class Meb
         Inherits System.Windows.Forms.MaskedTextBox
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
-            Call ActivateLicenses()
-            MyBase.Font = globalFontTxt
+            Call Component.Properties.ActivateLicenses()
+            MyBase.Font = Component.Properties.globalFontTxt
             MyBase.Width = 206
             Me.XOIsMandatory = False
             Me.XOMandatoryBgColor = Drawing.Color.LightPink
@@ -18,7 +16,6 @@ Namespace UI.Control
             Me.XOSelectOnFocus = False
         End Sub
 
-#Region "Properties"
         <System.ComponentModel.Category("XO.Format"),
             System.ComponentModel.Description("Indicates whether this component requires a value and must not be left empty during user input")>
         Private varIsMandatory As Boolean
@@ -90,10 +87,9 @@ Namespace UI.Control
                 varSelectOnFocus = value
             End Set
         End Property
-#End Region
 
         Private varFlagAutoSelect As Boolean
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Meb_GotFocus(sender As Object, e As System.EventArgs) Handles Me.GotFocus
             If Me.XOSelectOnFocus AndAlso (MouseButtons = System.Windows.Forms.MouseButtons.None) Then
                 Me.SelectAll()
@@ -107,7 +103,7 @@ Namespace UI.Control
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Meb_LostFocus(sender As Object, e As System.EventArgs) Handles Me.LostFocus
             'If Me.XOHighlightOnFocus AndAlso Not Me.Focused AndAlso Not Me.SLFHarusDiisi Then
             '    MyBase.BackColor = _varHarusDiisiWarnaLatarDefault
@@ -120,21 +116,21 @@ Namespace UI.Control
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Meb_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
             If Me.XOHighlightOnFocus Then
                 MyBase.BackColor = Me.XOHighlightColor
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Meb_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
             If Me.XOHighlightOnFocus AndAlso Not Me.Focused Then
                 MyBase.BackColor = Me.XOMandatoryBgColorDefault
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Meb_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseUp
             If Me.XOSelectOnFocus AndAlso (Not varFlagAutoSelect AndAlso Me.SelectionLength = 0) Then
                 varFlagAutoSelect = True

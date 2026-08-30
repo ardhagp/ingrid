@@ -8,8 +8,6 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Private Sub FRMstandard_Load(sender As Object, e As EventArgs) Handles Me.Load
             Try
-                'SLFLogo.Image = Nothing
-                Call ActivateLicenses()
                 GC.Collect()
                 Me.KeyPreview = True
             Catch ex As Exception
