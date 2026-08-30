@@ -4,6 +4,7 @@
     <SccProvider>SAK</SccProvider>
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -29,7 +30,19 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineDebug>True</DefineDebug>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <DefineDebug>True</DefineDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DefineDebug>True</DefineDebug>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineDebug>False</DefineDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <DefineDebug>False</DefineDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <DefineDebug>False</DefineDebug>
   </PropertyGroup>
   <ItemGroup>

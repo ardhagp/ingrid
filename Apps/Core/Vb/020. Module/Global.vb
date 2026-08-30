@@ -28,7 +28,8 @@
         Public proLog As New CMCv.Ladybug.Log.Fields
         Public varSecurityencrypt As New CMCv.Security.Encryption
 
-        Public WithEvents FRMmsg As New CMCv.UI.Canvas.FRMdialogbox
+        Public WithEvents FRMmsg As CMCv.UI.Canvas.FRMdialogBox
+        Public WithEvents FRMcam As CMCv.UI.Canvas.FRMcamera
 
         Public varVersionapplication As String
         Public varVersionnetworkapplication As Version
@@ -347,5 +348,12 @@
             Return result
         End Function
 
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Function GetCamera() As DialogResult
+            FRMcam = New CMCv.UI.Canvas.FRMcamera()
+            Dim result As System.Windows.Forms.DialogResult = FRMcam.ShowDialog()
+            FRMcam.Dispose()
+            Return result
+        End Function
     End Module
 End Namespace

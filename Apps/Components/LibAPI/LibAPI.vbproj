@@ -8,6 +8,7 @@
     <VBOptionExplicit>On</VBOptionExplicit>
     <VBOptionInfer>Off</VBOptionInfer>
     <OptionStrict>On</OptionStrict>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

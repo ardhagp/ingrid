@@ -2,13 +2,10 @@
 
 Namespace UI
     Public Class Workspace
-#Region "Declaration"
         Private varCommandCode As String()
         Private varModuleCode As String
         Private varModuleCaption As String
-#End Region
 
-#Region "Declare Modules"
         'Accounting
         Private WithEvents Frm_acgr As New UI.Canvas.FRMacgr
         Private WithEvents Frm_acbk As New UI.Canvas.FRMacbk
@@ -47,7 +44,7 @@ Namespace UI
         'Others
         Private WithEvents Frm_dummy As New UI.Canvas.FRMdummy
         Private WithEvents Frm_reset As New UI.Canvas.FRMreset
-#End Region
+
         ''' <summary>
         ''' Opens a specific module form based on the provided command code. This method checks the command code, retrieves module properties, and ensures that the corresponding form is created and displayed. If the form is already open, it brings it to focus. The method also handles exceptions and logs any errors that occur during the process.
         ''' </summary>

@@ -1,6 +1,6 @@
 ﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-    Partial Class FRMdialogbox
+    Partial Class FRMdialogBox
         Inherits UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
@@ -273,7 +273,7 @@
             ' 
             ' FRMdialogbox
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
             ClientSize = New System.Drawing.Size(1115, 608)
             ControlBox = False
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog

@@ -82,6 +82,7 @@
             TbctlEmployee = New CMCv.UI.Control.Tbx(components)
             ULbl8 = New CMCv.UI.Control.ULbl()
             BtnRemovePhoto = New CMCv.UI.Control.Btn(components)
+            Btn1 = New CMCv.UI.Control.Btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -119,6 +120,7 @@
             ' SLFPanel
             ' 
             SLFPanel.AutoScroll = True
+            SLFPanel.Controls.Add(Btn1)
             SLFPanel.Controls.Add(BtnRemovePhoto)
             SLFPanel.Controls.Add(ULbl8)
             SLFPanel.Controls.Add(TbctlEmployee)
@@ -134,6 +136,7 @@
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(ULbl8, 0)
             SLFPanel.Controls.SetChildIndex(BtnRemovePhoto, 0)
+            SLFPanel.Controls.SetChildIndex(Btn1, 0)
             ' 
             ' ChkAddNew
             ' 
@@ -353,7 +356,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(229), CByte(218), CByte(162))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(240), CByte(214), CByte(172))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnModulesRoles.BorderStyle = BorderStyle.None
@@ -1200,6 +1203,26 @@
             BtnRemovePhoto.XOValidateAllInput = False
             BtnRemovePhoto.XOValidateAllInputTag = Nothing
             ' 
+            ' Btn1
+            ' 
+            Btn1.BackColor = Color.RoyalBlue
+            Btn1.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
+            Btn1.FlatAppearance.BorderSize = 2
+            Btn1.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
+            Btn1.FlatStyle = FlatStyle.Flat
+            Btn1.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            Btn1.ForeColor = Color.White
+            Btn1.Location = New Point(942, 612)
+            Btn1.Name = "Btn1"
+            Btn1.Size = New Size(150, 60)
+            Btn1.TabIndex = 1043
+            Btn1.Text = "Btn1"
+            Btn1.UseVisualStyleBackColor = False
+            Btn1.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
+            Btn1.XOShowBorderOnFocus = False
+            Btn1.XOValidateAllInput = False
+            Btn1.XOValidateAllInputTag = Nothing
+            ' 
             ' FRMeplsEditor
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
@@ -1286,5 +1309,6 @@
         Friend WithEvents module_id As DataGridViewTextBoxColumn
         Friend WithEvents TxtCompanyEmail As CMCv.UI.Control.Txt
         Friend WithEvents ULbl13 As CMCv.UI.Control.ULbl
+        Friend WithEvents Btn1 As CMCv.UI.Control.Btn
     End Class
 End Namespace

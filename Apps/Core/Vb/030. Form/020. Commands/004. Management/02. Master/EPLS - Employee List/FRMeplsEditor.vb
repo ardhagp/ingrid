@@ -380,5 +380,10 @@
                 varIsTabPermissionFirstLoad = False
             End If
         End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Btn1_Click(sender As Object, e As EventArgs) Handles Btn1.Click
+            GetCamera()
+        End Sub
     End Class
 End Namespace

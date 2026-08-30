@@ -4,6 +4,7 @@
     <SccProvider>SAK</SccProvider>
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
   <PropertyGroup>
     <TargetFramework>net8.0-windows7.0</TargetFramework>

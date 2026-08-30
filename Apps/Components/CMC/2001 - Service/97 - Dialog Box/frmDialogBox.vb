@@ -1,5 +1,5 @@
 ﻿Namespace UI.Canvas
-    Public Class FRMdialogbox
+    Public Class FRMdialogBox
         Inherits UI.Canvas.FRMstandardFooter
 
 #Region "Initialize"

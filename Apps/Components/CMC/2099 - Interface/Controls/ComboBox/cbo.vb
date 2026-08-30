@@ -4,6 +4,7 @@
     ''' <summary>
     ''' Custom combo box
     ''' </summary>
+    <System.ComponentModel.DesignerCategory("Code")>
     Public Class Cbo
         Inherits System.Windows.Forms.ComboBox
 
