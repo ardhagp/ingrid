@@ -26,6 +26,9 @@
             BtnClose = New UI.Control.Btn(components)
             BtnOK = New UI.Control.Btn(components)
             PbxLive = New UI.Control.Pbx(components)
+            BtnCapture = New UI.Control.Btn(components)
+            PbxSnapshot = New UI.Control.Pbx(components)
+            PbxOverlay = New UI.Control.Pbx(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -33,12 +36,15 @@
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(PbxLive, ComponentModel.ISupportInitialize).BeginInit()
+            CType(PbxSnapshot, ComponentModel.ISupportInitialize).BeginInit()
+            CType(PbxOverlay, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' PnlBottomButton
             ' 
             PnlBottomButton.Controls.Add(BtnOK)
             PnlBottomButton.Controls.Add(BtnClose)
+            PnlBottomButton.Location = New System.Drawing.Point(0, 767)
             PnlBottomButton.Size = New System.Drawing.Size(587, 96)
             PnlBottomButton.Controls.SetChildIndex(BtnClose, 0)
             PnlBottomButton.Controls.SetChildIndex(BtnOK, 0)
@@ -49,12 +55,18 @@
             ' 
             ' SLFPanel
             ' 
+            SLFPanel.Controls.Add(PbxSnapshot)
+            SLFPanel.Controls.Add(PbxOverlay)
+            SLFPanel.Controls.Add(BtnCapture)
             SLFPanel.Controls.Add(PbxLive)
             SLFPanel.Controls.Add(CboCamera)
-            SLFPanel.Size = New System.Drawing.Size(587, 947)
+            SLFPanel.Size = New System.Drawing.Size(587, 863)
             SLFPanel.Controls.SetChildIndex(CboCamera, 0)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(PbxLive, 0)
+            SLFPanel.Controls.SetChildIndex(BtnCapture, 0)
+            SLFPanel.Controls.SetChildIndex(PbxOverlay, 0)
+            SLFPanel.Controls.SetChildIndex(PbxSnapshot, 0)
             ' 
             ' CboCamera
             ' 
@@ -113,7 +125,7 @@
             ' PbxLive
             ' 
             PbxLive.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-            PbxLive.BackColor = Drawing.Color.White
+            PbxLive.BackColor = Drawing.Color.FromArgb(CByte(31), CByte(48), CByte(75))
             PbxLive.ErrorImage = CType(resources.GetObject("PbxLive.ErrorImage"), Drawing.Image)
             PbxLive.InitialImage = CType(resources.GetObject("PbxLive.InitialImage"), Drawing.Image)
             PbxLive.Location = New System.Drawing.Point(12, 15)
@@ -125,10 +137,60 @@
             PbxLive.XOBorderColor = Drawing.Color.DodgerBlue
             PbxLive.XOShowBorder = False
             ' 
+            ' BtnCapture
+            ' 
+            BtnCapture.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+            BtnCapture.BackColor = Drawing.Color.Yellow
+            BtnCapture.FlatAppearance.BorderColor = Drawing.Color.FromArgb(CByte(195), CByte(195), CByte(0))
+            BtnCapture.FlatAppearance.BorderSize = 2
+            BtnCapture.FlatAppearance.MouseOverBackColor = Drawing.Color.FromArgb(CByte(255), CByte(255), CByte(20))
+            BtnCapture.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            BtnCapture.Font = New System.Drawing.Font("Segoe UI", 12.0F, Drawing.FontStyle.Bold)
+            BtnCapture.ForeColor = Drawing.Color.Black
+            BtnCapture.Location = New System.Drawing.Point(12, 682)
+            BtnCapture.Name = "BtnCapture"
+            BtnCapture.Size = New System.Drawing.Size(563, 60)
+            BtnCapture.TabIndex = 1002
+            BtnCapture.Text = "Capture"
+            BtnCapture.UseVisualStyleBackColor = False
+            BtnCapture.XOButtonType = UI.Control.ControlCodeBase.ButtonType.Warning
+            BtnCapture.XOShowBorderOnFocus = False
+            BtnCapture.XOValidateAllInput = False
+            BtnCapture.XOValidateAllInputTag = Nothing
+            ' 
+            ' PbxSnapshot
+            ' 
+            PbxSnapshot.BackColor = Drawing.Color.White
+            PbxSnapshot.ErrorImage = CType(resources.GetObject("PbxSnapshot.ErrorImage"), Drawing.Image)
+            PbxSnapshot.InitialImage = CType(resources.GetObject("PbxSnapshot.InitialImage"), Drawing.Image)
+            PbxSnapshot.Location = New System.Drawing.Point(12, 15)
+            PbxSnapshot.Name = "PbxSnapshot"
+            PbxSnapshot.Size = New System.Drawing.Size(150, 75)
+            PbxSnapshot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+            PbxSnapshot.TabIndex = 1003
+            PbxSnapshot.TabStop = False
+            PbxSnapshot.XOBorderColor = Drawing.Color.DodgerBlue
+            PbxSnapshot.XOShowBorder = False
+            ' 
+            ' PbxOverlay
+            ' 
+            PbxOverlay.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+            PbxOverlay.BackColor = Drawing.Color.Transparent
+            PbxOverlay.ErrorImage = CType(resources.GetObject("PbxOverlay.ErrorImage"), Drawing.Image)
+            PbxOverlay.InitialImage = CType(resources.GetObject("PbxOverlay.InitialImage"), Drawing.Image)
+            PbxOverlay.Location = New System.Drawing.Point(12, 15)
+            PbxOverlay.Name = "PbxOverlay"
+            PbxOverlay.Size = New System.Drawing.Size(563, 563)
+            PbxOverlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+            PbxOverlay.TabIndex = 1004
+            PbxOverlay.TabStop = False
+            PbxOverlay.XOBorderColor = Drawing.Color.DodgerBlue
+            PbxOverlay.XOShowBorder = False
+            ' 
             ' FRMcamera
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
-            ClientSize = New System.Drawing.Size(587, 1079)
+            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
+            ClientSize = New System.Drawing.Size(587, 995)
             Name = "FRMcamera"
             PnlBottomButton.ResumeLayout(False)
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
@@ -138,6 +200,8 @@
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(PbxLive, ComponentModel.ISupportInitialize).EndInit()
+            CType(PbxSnapshot, ComponentModel.ISupportInitialize).EndInit()
+            CType(PbxOverlay, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub
@@ -146,5 +210,8 @@
         Friend WithEvents BtnOK As UI.Control.Btn
         Friend WithEvents BtnClose As UI.Control.Btn
         Friend WithEvents PbxLive As UI.Control.Pbx
+        Friend WithEvents BtnCapture As UI.Control.Btn
+        Friend WithEvents PbxSnapshot As UI.Control.Pbx
+        Friend WithEvents PbxOverlay As UI.Control.Pbx
     End Class
 End Namespace

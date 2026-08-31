@@ -383,7 +383,7 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Btn1_Click(sender As Object, e As EventArgs) Handles Btn1.Click
-            GetCamera()
+            GetCamera(LibApp.Ingrid.Global.CameraMode.PhotoCamera, varDataProperties)
         End Sub
     End Class
 End Namespace

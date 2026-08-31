@@ -349,11 +349,12 @@
         End Function
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function GetCamera() As DialogResult
-            FRMcam = New CMCv.UI.Canvas.FRMcamera()
-            Dim result As System.Windows.Forms.DialogResult = FRMcam.ShowDialog()
+        Public Function GetCamera(cameramode As LibApp.Ingrid.Global.CameraMode, dataproperties As LibApp.Ingrid.Global.Properties) As System.Drawing.Image
+            FRMcam = New CMCv.UI.Canvas.FRMcamera(cameramode, dataproperties)
+            Display(FRMcam, Nothing, "Camera", "Camera", "Camera", True, Nothing)
+            'Dim result As System.Windows.Forms.DialogResult = FRMcam.ShowDialog()
+            'Dim img As System.Drawing.Image = FRMcam.PbxLive.Image
             FRMcam.Dispose()
-            Return result
         End Function
     End Module
 End Namespace

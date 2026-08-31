@@ -1,4 +1,6 @@
-﻿Namespace UI.Canvas
+﻿Imports System.Windows.Forms
+
+Namespace UI.Canvas
     Public Class FRMdialogBox
         Inherits UI.Canvas.FRMstandardFooter
 
@@ -125,7 +127,6 @@
         End Sub
 #End Region
 
-#Region "Declaration"
         Public Enum MessageTypes
             YesNo = 1
             OkCancel = 2
@@ -138,9 +139,7 @@
             [Error] = 3
             Information = 4
         End Enum
-#End Region
 
-#Region "Component Events"
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnYes_Click(sender As Object, e As EventArgs) Handles BtnYes.Click
             Me.DialogResult = System.Windows.Forms.DialogResult.Yes
@@ -167,9 +166,9 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnOkOnly_Click(sender As Object, e As EventArgs) Handles BtnOkOnly.Click
+            TxtMessage.Text = ""
             Me.DialogResult = System.Windows.Forms.DialogResult.OK
             Me.Close()
         End Sub
-#End Region
     End Class
 End Namespace
