@@ -22,9 +22,9 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMeplsEditor))
-            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
             ChkAddNew = New CMCv.UI.Control.Chk(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
@@ -82,7 +82,6 @@
             TbctlEmployee = New CMCv.UI.Control.Tbx(components)
             ULbl8 = New CMCv.UI.Control.ULbl()
             BtnRemovePhoto = New CMCv.UI.Control.Btn(components)
-            Btn1 = New CMCv.UI.Control.Btn(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -120,7 +119,6 @@
             ' SLFPanel
             ' 
             SLFPanel.AutoScroll = True
-            SLFPanel.Controls.Add(Btn1)
             SLFPanel.Controls.Add(BtnRemovePhoto)
             SLFPanel.Controls.Add(ULbl8)
             SLFPanel.Controls.Add(TbctlEmployee)
@@ -136,7 +134,6 @@
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(ULbl8, 0)
             SLFPanel.Controls.SetChildIndex(BtnRemovePhoto, 0)
-            SLFPanel.Controls.SetChildIndex(Btn1, 0)
             ' 
             ' ChkAddNew
             ' 
@@ -356,20 +353,20 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(240), CByte(214), CByte(172))
-            DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(215), CByte(210), CByte(188))
+            DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnModulesRoles.BorderStyle = BorderStyle.None
             DgnModulesRoles.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnModulesRoles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
-            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
-            DataGridViewCellStyle2.SelectionForeColor = Color.Black
-            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-            DgnModulesRoles.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+            DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle5.BackColor = Color.YellowGreen
+            DataGridViewCellStyle5.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
+            DataGridViewCellStyle5.SelectionForeColor = Color.Black
+            DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
+            DgnModulesRoles.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
             DgnModulesRoles.ColumnHeadersHeight = 43
             DgnModulesRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             DgnModulesRoles.Columns.AddRange(New DataGridViewColumn() {modulegroup_name, module_code, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports, empty, useraccess_id, module_id})
@@ -381,14 +378,14 @@
             DgnModulesRoles.Name = "DgnModulesRoles"
             DgnModulesRoles.ReadOnly = True
             DgnModulesRoles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle3.BackColor = Color.YellowGreen
-            DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
-            DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
-            DataGridViewCellStyle3.SelectionForeColor = Color.Black
-            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-            DgnModulesRoles.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+            DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle6.BackColor = Color.YellowGreen
+            DataGridViewCellStyle6.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
+            DataGridViewCellStyle6.SelectionForeColor = Color.Black
+            DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+            DgnModulesRoles.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
             DgnModulesRoles.RowHeadersWidth = 62
             DgnModulesRoles.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
             DgnModulesRoles.Size = New Size(786, 466)
@@ -1203,26 +1200,6 @@
             BtnRemovePhoto.XOValidateAllInput = False
             BtnRemovePhoto.XOValidateAllInputTag = Nothing
             ' 
-            ' Btn1
-            ' 
-            Btn1.BackColor = Color.RoyalBlue
-            Btn1.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
-            Btn1.FlatAppearance.BorderSize = 2
-            Btn1.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
-            Btn1.FlatStyle = FlatStyle.Flat
-            Btn1.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
-            Btn1.ForeColor = Color.White
-            Btn1.Location = New Point(942, 612)
-            Btn1.Name = "Btn1"
-            Btn1.Size = New Size(150, 60)
-            Btn1.TabIndex = 1043
-            Btn1.Text = "Btn1"
-            Btn1.UseVisualStyleBackColor = False
-            Btn1.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Default
-            Btn1.XOShowBorderOnFocus = False
-            Btn1.XOValidateAllInput = False
-            Btn1.XOValidateAllInputTag = Nothing
-            ' 
             ' FRMeplsEditor
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
@@ -1309,6 +1286,5 @@
         Friend WithEvents module_id As DataGridViewTextBoxColumn
         Friend WithEvents TxtCompanyEmail As CMCv.UI.Control.Txt
         Friend WithEvents ULbl13 As CMCv.UI.Control.ULbl
-        Friend WithEvents Btn1 As CMCv.UI.Control.Btn
     End Class
 End Namespace

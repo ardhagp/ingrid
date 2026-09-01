@@ -381,8 +381,8 @@
             End If
         End Sub
 
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub Btn1_Click(sender As Object, e As EventArgs) Handles Btn1.Click
+        <Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Btn1_Click(sender As Object, e As EventArgs)
             GetCamera(LibApp.Ingrid.Global.CameraMode.PhotoCamera, varDataProperties)
         End Sub
     End Class

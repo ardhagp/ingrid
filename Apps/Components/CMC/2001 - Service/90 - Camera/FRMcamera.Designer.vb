@@ -160,7 +160,7 @@
             ' 
             ' PbxSnapshot
             ' 
-            PbxSnapshot.BackColor = Drawing.Color.White
+            PbxSnapshot.BackColor = Drawing.Color.Transparent
             PbxSnapshot.ErrorImage = CType(resources.GetObject("PbxSnapshot.ErrorImage"), Drawing.Image)
             PbxSnapshot.InitialImage = CType(resources.GetObject("PbxSnapshot.InitialImage"), Drawing.Image)
             PbxSnapshot.Location = New System.Drawing.Point(12, 15)
@@ -176,6 +176,7 @@
             ' 
             PbxOverlay.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             PbxOverlay.BackColor = Drawing.Color.Transparent
+            PbxOverlay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             PbxOverlay.ErrorImage = CType(resources.GetObject("PbxOverlay.ErrorImage"), Drawing.Image)
             PbxOverlay.InitialImage = CType(resources.GetObject("PbxOverlay.InitialImage"), Drawing.Image)
             PbxOverlay.Location = New System.Drawing.Point(12, 15)
@@ -184,8 +185,8 @@
             PbxOverlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             PbxOverlay.TabIndex = 1004
             PbxOverlay.TabStop = False
-            PbxOverlay.XOBorderColor = Drawing.Color.DodgerBlue
-            PbxOverlay.XOShowBorder = False
+            PbxOverlay.XOBorderColor = Drawing.Color.Red
+            PbxOverlay.XOShowBorder = True
             ' 
             ' FRMcamera
             ' 

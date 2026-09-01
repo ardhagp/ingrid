@@ -21,6 +21,7 @@ Namespace UI.Canvas
         Private varCameraMode As LibApp.Ingrid.Global.CameraMode
         Private varDataProperties As LibApp.Ingrid.Global.Properties
         Private varFirstLoad As Boolean = True
+        Private varIsCaptured As Boolean
         Public Event PhotoCaptureSuccess()
 
         Private _cameraWidth As Integer
@@ -53,14 +54,15 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcamera_Load(sender As Object, e As EventArgs) Handles Me.Load
             varFirstLoad = True
+            varIsCaptured = False
             PbxOverlay.BackColor = Color.Transparent
             PbxOverlay.Parent = PbxLive
             PbxOverlay.Dock = DockStyle.Fill
             CboCamera.Items.Clear()
             If varCameraMode = LibApp.Ingrid.Global.CameraMode.PhotoCamera Then
-                BtnCapture.text = "Capture"
+                BtnCapture.Text = "Capture"
             Else
-                BtnCapture.text = "Scan QR Code"
+                BtnCapture.Text = "Scan QR Code"
             End If
 
             Dim devices As DsDevice() = DsDevice.GetDevicesOfCat(FilterCategory.VideoInputDevice)
@@ -199,6 +201,9 @@ Namespace UI.Canvas
             End If
 
             Return New Rectangle(x, y, w, h)
+
+            '====
+
         End Function
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
@@ -338,7 +343,7 @@ Namespace UI.Canvas
                 bmp.Save(savePath, Imaging.ImageFormat.Jpeg)
                 cropped.Save(savePathcrop, Imaging.ImageFormat.Jpeg)
                 PbxSnapshot.Image = cropped
-
+                varIsCaptured = True
                 RaiseEvent PhotoCaptureSuccess()
             Else
                 ' QR mode → decode
@@ -351,6 +356,7 @@ Namespace UI.Canvas
                 '    MessageBox.Show("No QR code detected.")
                 'End If
             End If
+            BtnCapture.Text = "Retake"
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
@@ -382,7 +388,7 @@ Namespace UI.Canvas
                 Dim x = (PbxOverlay.Width - w) \ 2
                 Dim y = (PbxOverlay.Height - h) \ 2
 
-                Using pen As New Pen(Color.FromArgb(200, Color.White), 3)
+                Using pen As New Pen(Color.FromArgb(200, Color.Lime), 3)
                     g.DrawRectangle(pen, x, y, w, h)
                 End Using
 
@@ -396,6 +402,16 @@ Namespace UI.Canvas
                     g.DrawRectangle(pen, x, y, size, size)
                 End Using
             End If
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub BtnOK_Click(sender As Object, e As EventArgs) Handles BtnOK.Click
+            If Not varIsCaptured Then
+                MessageBox.Show("Please capture a photo before proceeding.")
+                Return
+            End If
+
+            Me.Close()
         End Sub
     End Class
 End Namespace
