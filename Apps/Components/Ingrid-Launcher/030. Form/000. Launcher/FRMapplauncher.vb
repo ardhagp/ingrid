@@ -95,6 +95,7 @@
                 My.Settings.Save()
 
                 If appnameindex = 0 Then
+                    tmrCountdown.Enabled = False
                     Frm_conn = New Connect.UI.Canvas.FRMconn
                     Display(Frm_conn, , "INGRID - CONNECTION SETTINGS", "Connection Settings", "Manage your database connection settings", False)
                 ElseIf appnameindex = 1 Then

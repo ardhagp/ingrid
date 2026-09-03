@@ -2847,6 +2847,8 @@ Namespace Ingrid.UI.Dataset
             
             Private columnemployee_gender As Global.System.Data.DataColumn
             
+            Private columnemployee_token As Global.System.Data.DataColumn
+            
             Private columnemployee_isactive As Global.System.Data.DataColumn
             
             Private columnuser_username As Global.System.Data.DataColumn
@@ -2866,6 +2868,10 @@ Namespace Ingrid.UI.Dataset
             Private columnattachment_id As Global.System.Data.DataColumn
             
             Private columnattachment_url As Global.System.Data.DataColumn
+            
+            Private columnattachment_parenttoken As Global.System.Data.DataColumn
+            
+            Private columnattachment_token As Global.System.Data.DataColumn
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -3034,6 +3040,14 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property employee_tokenColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnemployee_token
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public ReadOnly Property employee_isactiveColumn() As Global.System.Data.DataColumn
                 Get
                     Return Me.columnemployee_isactive
@@ -3113,6 +3127,22 @@ Namespace Ingrid.UI.Dataset
             End Property
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property attachment_parenttokenColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnattachment_parenttoken
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public ReadOnly Property attachment_tokenColumn() As Global.System.Data.DataColumn
+                Get
+                    Return Me.columnattachment_token
+                End Get
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
              Global.System.ComponentModel.Browsable(false)>  _
             Public ReadOnly Property Count() As Integer
@@ -3166,6 +3196,7 @@ Namespace Ingrid.UI.Dataset
                         ByVal employee_fullname As String,  _
                         ByVal employee_nickname As String,  _
                         ByVal employee_gender As String,  _
+                        ByVal employee_token As String,  _
                         ByVal employee_isactive As Boolean,  _
                         ByVal user_username As String,  _
                         ByVal employee_birthdate As Date,  _
@@ -3175,9 +3206,11 @@ Namespace Ingrid.UI.Dataset
                         ByVal employee_email As String,  _
                         ByVal ishavephoto As Boolean,  _
                         ByVal attachment_id As UShort,  _
-                        ByVal attachment_url As String) As EPLS_EditorRow
+                        ByVal attachment_url As String,  _
+                        ByVal attachment_parenttoken As String,  _
+                        ByVal attachment_token As String) As EPLS_EditorRow
                 Dim rowEPLS_EditorRow As EPLS_EditorRow = CType(Me.NewRow,EPLS_EditorRow)
-                Dim columnValuesArray() As Object = New Object() {employee_id, company_id, company_code, company_name, department_id, department_code, department_name, position_id, position_code, position_name, employmenttype_name, employee_personalidnumber, employee_number, employee_fullname, employee_nickname, employee_gender, employee_isactive, user_username, employee_birthdate, employee_birthplace, employee_address, employee_employmenttype, employee_email, ishavephoto, attachment_id, attachment_url}
+                Dim columnValuesArray() As Object = New Object() {employee_id, company_id, company_code, company_name, department_id, department_code, department_name, position_id, position_code, position_name, employmenttype_name, employee_personalidnumber, employee_number, employee_fullname, employee_nickname, employee_gender, employee_token, employee_isactive, user_username, employee_birthdate, employee_birthplace, employee_address, employee_employmenttype, employee_email, ishavephoto, attachment_id, attachment_url, attachment_parenttoken, attachment_token}
                 rowEPLS_EditorRow.ItemArray = columnValuesArray
                 Me.Rows.Add(rowEPLS_EditorRow)
                 Return rowEPLS_EditorRow
@@ -3216,6 +3249,7 @@ Namespace Ingrid.UI.Dataset
                 Me.columnemployee_fullname = MyBase.Columns("employee_fullname")
                 Me.columnemployee_nickname = MyBase.Columns("employee_nickname")
                 Me.columnemployee_gender = MyBase.Columns("employee_gender")
+                Me.columnemployee_token = MyBase.Columns("employee_token")
                 Me.columnemployee_isactive = MyBase.Columns("employee_isactive")
                 Me.columnuser_username = MyBase.Columns("user_username")
                 Me.columnemployee_birthdate = MyBase.Columns("employee_birthdate")
@@ -3226,6 +3260,8 @@ Namespace Ingrid.UI.Dataset
                 Me.columnishavephoto = MyBase.Columns("ishavephoto")
                 Me.columnattachment_id = MyBase.Columns("attachment_id")
                 Me.columnattachment_url = MyBase.Columns("attachment_url")
+                Me.columnattachment_parenttoken = MyBase.Columns("attachment_parenttoken")
+                Me.columnattachment_token = MyBase.Columns("attachment_token")
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3263,6 +3299,8 @@ Namespace Ingrid.UI.Dataset
                 MyBase.Columns.Add(Me.columnemployee_nickname)
                 Me.columnemployee_gender = New Global.System.Data.DataColumn("employee_gender", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnemployee_gender)
+                Me.columnemployee_token = New Global.System.Data.DataColumn("employee_token", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnemployee_token)
                 Me.columnemployee_isactive = New Global.System.Data.DataColumn("employee_isactive", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnemployee_isactive)
                 Me.columnuser_username = New Global.System.Data.DataColumn("user_username", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -3283,6 +3321,10 @@ Namespace Ingrid.UI.Dataset
                 MyBase.Columns.Add(Me.columnattachment_id)
                 Me.columnattachment_url = New Global.System.Data.DataColumn("attachment_url", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnattachment_url)
+                Me.columnattachment_parenttoken = New Global.System.Data.DataColumn("attachment_parenttoken", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnattachment_parenttoken)
+                Me.columnattachment_token = New Global.System.Data.DataColumn("attachment_token", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                MyBase.Columns.Add(Me.columnattachment_token)
             End Sub
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6677,6 +6719,21 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property employee_token() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableEPLS_Editor.employee_tokenColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'employee_token' in table 'EPLS_Editor' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableEPLS_Editor.employee_tokenColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Property employee_isactive() As Boolean
                 Get
                     Try 
@@ -6822,6 +6879,36 @@ Namespace Ingrid.UI.Dataset
                 End Get
                 Set
                     Me(Me.tableEPLS_Editor.attachment_urlColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property attachment_parenttoken() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableEPLS_Editor.attachment_parenttokenColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'attachment_parenttoken' in table 'EPLS_Editor' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableEPLS_Editor.attachment_parenttokenColumn) = value
+                End Set
+            End Property
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Property attachment_token() As String
+                Get
+                    Try 
+                        Return CType(Me(Me.tableEPLS_Editor.attachment_tokenColumn),String)
+                    Catch e As Global.System.InvalidCastException
+                        Throw New Global.System.Data.StrongTypingException("The value for column 'attachment_token' in table 'EPLS_Editor' is DBNull.", e)
+                    End Try
+                End Get
+                Set
+                    Me(Me.tableEPLS_Editor.attachment_tokenColumn) = value
                 End Set
             End Property
             
@@ -7019,6 +7106,18 @@ Namespace Ingrid.UI.Dataset
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isemployee_tokenNull() As Boolean
+                Return Me.IsNull(Me.tableEPLS_Editor.employee_tokenColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setemployee_tokenNull()
+                Me(Me.tableEPLS_Editor.employee_tokenColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Function Isemployee_isactiveNull() As Boolean
                 Return Me.IsNull(Me.tableEPLS_Editor.employee_isactiveColumn)
             End Function
@@ -7135,6 +7234,30 @@ Namespace Ingrid.UI.Dataset
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Sub Setattachment_urlNull()
                 Me(Me.tableEPLS_Editor.attachment_urlColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isattachment_parenttokenNull() As Boolean
+                Return Me.IsNull(Me.tableEPLS_Editor.attachment_parenttokenColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setattachment_parenttokenNull()
+                Me(Me.tableEPLS_Editor.attachment_parenttokenColumn) = Global.System.Convert.DBNull
+            End Sub
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Function Isattachment_tokenNull() As Boolean
+                Return Me.IsNull(Me.tableEPLS_Editor.attachment_tokenColumn)
+            End Function
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+            Public Sub Setattachment_tokenNull()
+                Me(Me.tableEPLS_Editor.attachment_tokenColumn) = Global.System.Convert.DBNull
             End Sub
         End Class
         

@@ -58,7 +58,9 @@
     <None Remove="Resources\svg-lock.svg" />
     <None Remove="Resources\svg-LOGIN.svg" />
     <None Remove="Resources\svg-LOGIN02.svg" />
+    <None Remove="Resources\svg-OPENCOMMAND.svg" />
     <None Remove="Resources\svg-play-fill.svg" />
+    <None Remove="Resources\svg-UPDATE.svg" />
     <None Remove="Resources\svg-x-circle-fill.svg" />
   </ItemGroup>
   <ItemGroup>
@@ -99,7 +101,13 @@
     <Content Include="Resources\svg-LOGIN02.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\svg-OPENCOMMAND.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\svg-play-fill.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-UPDATE.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\svg-x-circle-fill.svg">

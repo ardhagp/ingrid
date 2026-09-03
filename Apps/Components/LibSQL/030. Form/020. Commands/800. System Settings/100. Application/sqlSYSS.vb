@@ -34,9 +34,9 @@ Namespace CMDsyss
                                                        $"inner join {tClient.TableName} {tClient.S} " &
                                                        $"on {tClient.S}.{tClient.C_ClientId} = {tSettings.S}.{tSettings.C_SettingsClient} " &
                                                        $"where {tClient.S}.{tClient.C_ClientCode} = {tIngrid.P_ClientCode}"
-                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "SYSS_Editor", parametername)
+                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, dstTableName.SyssEditor, parametername)
                     Dim varColumnstoEncrypt As String() = {"settings_apikey", "settings_apisecret", "settings_apibucketname", "settings_apiserviceurl"}
-                    For Each row As DataRow In datasetname.Tables("SYSS_Editor").Rows
+                    For Each row As DataRow In datasetname.Tables(dstTableName.SyssEditor).Rows
                         For Each col In varColumnstoEncrypt
                             If row(col) IsNot DBNull.Value OrElse String.IsNullOrEmpty(CStr(row(col))) Then
                                 row(col) = CMCv.Security.Encryption.Aes(CStr(row(col)))
@@ -93,7 +93,7 @@ Namespace CMDsyss
                                                        $"{tSettings.C_SettingsApiServiceUrl} = {tSettings.P_SettingsApiServiceUrl}, " &
                                                        $"{tSettings.C_SettingsStorageDb} = {tSettings.P_SettingsStorageDb}, " &
                                                        $"{tSettings.C_SettingsMinPasswordLength} = {tSettings.P_SettingsMinPasswordLength} " &
-                                                       $"where {tSettings.C_SettingsId} = {tIngrid.P_SettingsId}"
+                                                       $"where {tSettings.C_SettingsId} = {tSettings.P_SettingsId}"
 
                     varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, parametername)
                 End If

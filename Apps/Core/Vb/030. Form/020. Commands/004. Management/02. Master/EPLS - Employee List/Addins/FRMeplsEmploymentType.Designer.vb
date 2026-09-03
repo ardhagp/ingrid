@@ -40,6 +40,7 @@
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             Pnl1.SuspendLayout()
             CType(DgnAddinEmploymentType, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
@@ -148,7 +149,7 @@
             ' 
             DgnAddinEmploymentType.AllowUserToAddRows = False
             DgnAddinEmploymentType.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(232), CByte(213), CByte(139))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(192), CByte(193), CByte(172))
             DgnAddinEmploymentType.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnAddinEmploymentType.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnAddinEmploymentType.BorderStyle = BorderStyle.None
@@ -287,6 +288,7 @@
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             Pnl1.ResumeLayout(False)
             Pnl1.PerformLayout()
             CType(DgnAddinEmploymentType, ComponentModel.ISupportInitialize).EndInit()

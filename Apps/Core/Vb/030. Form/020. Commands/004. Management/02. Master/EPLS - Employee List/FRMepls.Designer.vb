@@ -28,6 +28,7 @@
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
             DgnEPLS = New CMCv.UI.Control.Dgn(components)
             employee_id = New DataGridViewTextBoxColumn()
+            employee_token = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
             company_name = New DataGridViewTextBoxColumn()
             department_code = New DataGridViewTextBoxColumn()
@@ -45,6 +46,7 @@
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(DgnEPLS, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
@@ -73,7 +75,7 @@
             ' 
             DgnEPLS.AllowUserToAddRows = False
             DgnEPLS.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(213), CByte(247), CByte(98))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(212), CByte(249), CByte(182))
             DgnEPLS.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnEPLS.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnEPLS.BorderStyle = BorderStyle.None
@@ -89,7 +91,7 @@
             DgnEPLS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             DgnEPLS.ColumnHeadersHeight = 43
             DgnEPLS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-            DgnEPLS.Columns.AddRange(New DataGridViewColumn() {employee_id, company_code, company_name, department_code, department_name, position_code, position_name, employee_number, employee_fullname, employee_nickname, employmenttype_name, employee_gender, employee_isactive})
+            DgnEPLS.Columns.AddRange(New DataGridViewColumn() {employee_id, employee_token, company_code, company_name, department_code, department_name, position_code, position_name, employee_number, employee_fullname, employee_nickname, employmenttype_name, employee_gender, employee_isactive})
             DgnEPLS.Dock = DockStyle.Fill
             DgnEPLS.EnableHeadersVisualStyles = False
             DgnEPLS.Font = New Font("Verdana", 8F)
@@ -124,6 +126,16 @@
             employee_id.Visible = False
             employee_id.Width = 150
             ' 
+            ' employee_token
+            ' 
+            employee_token.DataPropertyName = "employee_token"
+            employee_token.HeaderText = "EMP. TOKEN"
+            employee_token.MinimumWidth = 8
+            employee_token.Name = "employee_token"
+            employee_token.ReadOnly = True
+            employee_token.Visible = False
+            employee_token.Width = 150
+            ' 
             ' company_code
             ' 
             company_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
@@ -143,7 +155,7 @@
             company_name.Name = "company_name"
             company_name.ReadOnly = True
             company_name.Visible = False
-            company_name.Width = 150
+            company_name.Width = 93
             ' 
             ' department_code
             ' 
@@ -164,7 +176,7 @@
             department_name.Name = "department_name"
             department_name.ReadOnly = True
             department_name.Visible = False
-            department_name.Width = 150
+            department_name.Width = 88
             ' 
             ' position_code
             ' 
@@ -185,7 +197,7 @@
             position_name.Name = "position_name"
             position_name.ReadOnly = True
             position_name.Visible = False
-            position_name.Width = 150
+            position_name.Width = 124
             ' 
             ' employee_number
             ' 
@@ -268,12 +280,14 @@
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(DgnEPLS, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub
         Friend WithEvents DgnEPLS As CMCv.UI.Control.Dgn
         Friend WithEvents employee_id As DataGridViewTextBoxColumn
+        Friend WithEvents employee_token As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
         Friend WithEvents company_name As DataGridViewTextBoxColumn
         Friend WithEvents department_code As DataGridViewTextBoxColumn

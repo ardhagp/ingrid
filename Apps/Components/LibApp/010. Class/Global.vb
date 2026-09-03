@@ -51,6 +51,12 @@
         [QRCode] = 2
     End Enum
 
+    Public Enum ComponentType
+        [Button] = 1
+        [Picture] = 2
+        [ToolStrip] = 3
+    End Enum
+
     ''' <summary>
     ''' Properties class is used to store various properties related to the application, such as parameters, user information, and other settings.
     ''' </summary>

@@ -44,8 +44,25 @@
                 CboGender.SelectedIndex = 0
                 BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
                 BtnRemovePhoto.Enabled = False
-                SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeToken, CMCv.Security.Encryption.MD5())
-                SetValue(varDataProperties.AllParameters, tPosition.P_PositionId, DBNull.Value)
+
+                With varDataProperties
+                    ' Clear the EmployeeId parameter to ensure that a new employee record is created instead of updating an existing one.
+                    SetValue(.AllParameters, tEmployee.P_EmployeeId, DBNull.Value)
+                    .AllParameters.Remove(tEmployee.P_EmployeePersonalIdNumber)
+                    .AllParameters.Remove(tEmployee.P_EmployeeFullName)
+                    .AllParameters.Remove(tEmployee.P_EmployeeBirthPlace)
+                    .AllParameters.Remove(tEmployee.P_EmployeeGender)
+                    .AllParameters.Remove(tEmployee.P_EmployeeAddress)
+                    .AllParameters.Remove(tEmployee.P_EmployeeBirthDate)
+                    .AllParameters.Remove(tEmployee.P_EmployeeNickname)
+                    .AllParameters.Remove(tEmployee.P_EmployeeCompanyEmail)
+                    .AllParameters.Remove(tEmployee.P_EmployeeIsActive)
+
+                    ' Set the necessary parameters for a new employee record, including generating a new employee token using MD5 encryption.
+                    SetValue(.AllParameters, tEmployee.P_EmployeeToken, CMCv.Security.Encryption.MD5())
+                    SetValue(.AllParameters, tPosition.P_PositionId, DBNull.Value)
+                    SetValue(.AllParameters, tEmploymentType.P_EmploymentTypeId, DBNull.Value)
+                End With
             Else
                 ChkAddNew.Visible = False
                 ChkAddNew.Checked = False
@@ -68,15 +85,19 @@
                     TxtPosition.Text = .Item(tPosition.C_PositionName).ToString
                     SetValue(varDataProperties.AllParameters, tPosition.P_PositionId, CLng(.Item(tPosition.C_PositionId)))
                     SetValue(varDataProperties.AllParameters, tEmploymentType.P_EmploymentTypeId, IIf(.Item(tEmployee.C_EmployeeEmploymentType) Is Nothing OrElse .Item(tEmployee.C_EmployeeEmploymentType).ToString = String.Empty OrElse .Item(tEmployee.C_EmployeeEmploymentType).ToString = "", DBNull.Value, .Item(tEmployee.C_EmployeeEmploymentType)))
+                    TxtEmploymentType.Text = .Item(tEmploymentType.C_EmploymentTypeName).ToString
                     TxtEmployeeNumber.Text = .Item(tEmployee.C_EmployeeNumber).ToString
                     TxtEmployeeNickname.Text = .Item(tEmployee.C_EmployeeNickname).ToString
                     ChkActiveEmployee.Checked = CBool(.Item(tEmployee.C_EmployeeIsActive))
+                    SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeToken, .Item(tEmployee.C_EmployeeToken).ToString)
                     TxtUsername.Text = .Item(tUser.C_UserUsername).ToString
                     TxtCompanyEmail.Text = .Item(tEmployee.C_EmployeeCompanyEmail).ToString
-                    'varDataProperties.EmployeeIsHavePhoto = CMDepls.Editor.GetIsHavePhoto(varDataProperties, varDatasetIngrid, varDataProperties.UserParameters)
                     varDataProperties.EmployeeIsHavePhoto = CBool(.Item("ishavephoto"))
                     If varDataProperties.EmployeeIsHavePhoto Then
+                        varDataProperties.EmployeeIsNewPhoto = False
+                        varDataProperties.EmployeeIsForceChangePhoto = False
                         SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentId, CLng(.Item(tAttachment.C_AttachmentId)))
+                        SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentToken, .Item(tAttachment.C_AttachmentToken).ToString)
                         CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(.Item(tAttachment.C_AttachmentUrl).ToString, pctbxPhoto)
                         BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
                         BtnRemovePhoto.Enabled = True
@@ -117,15 +138,23 @@
                 If (CMCv.OperatingSystem.File.Upload.IsAllowedSize(OfdPhoto.FileName, varMaxUploadSizePhoto, True)) Then
                     varDataProperties.EmployeePhoto = CMCv.ImageEditor.Proccessor.Compress.OutputAsImage(OfdPhoto.FileName)
                     pctbxPhoto.Image = varDataProperties.EmployeePhoto
-                    varDataProperties.EmployeeIsForceChangePhoto = True
-                    varDataProperties.EmployeeIsHavePhoto = True
+                    If varDataProperties.EmployeeIsHavePhoto Then
+                        varDataProperties.EmployeeIsForceChangePhoto = True
+                        varDataProperties.EmployeeIsNewPhoto = False
+                    Else
+                        varDataProperties.EmployeeIsForceChangePhoto = False
+                        varDataProperties.EmployeeIsNewPhoto = True
+                    End If
                     BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
                     BtnRemovePhoto.Enabled = True
                     SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentExtension, ext)
                 End If
             Else
-                varDataProperties.EmployeeIsHavePhoto = False
-                Return
+                If varDataProperties.EmployeeIsHavePhoto Then
+                    Return
+                End If
+                varDataProperties.EmployeeIsForceChangePhoto = False
+                varDataProperties.EmployeeIsNewPhoto = False
             End If
         End Sub
 
@@ -165,16 +194,18 @@
                 SetValue(.AllParameters, tEmployee.P_EmployeePosition, IIf(TxtPosition.XOSqlText = String.Empty OrElse TxtPosition.XOSqlText = "", DBNull.Value, TxtPosition.XOSqlText))
                 SetValue(.AllParameters, tEmployee.P_EmployeeNumber, IIf(TxtEmployeeNumber.XOSqlText = String.Empty OrElse TxtEmployeeNumber.XOSqlText = "", DBNull.Value, TxtEmployeeNumber.XOSqlText))
                 SetValue(.AllParameters, tEmployee.P_EmployeeNickname, IIf(TxtEmployeeNickname.XOSqlText = String.Empty OrElse TxtEmployeeNickname.XOSqlText = "", DBNull.Value, TxtEmployeeNickname.XOSqlText))
+                SetValue(.AllParameters, tEmployee.P_EmployeeCompanyEmail, IIf(TxtCompanyEmail.XOSqlText = String.Empty OrElse TxtCompanyEmail.XOSqlText = "", DBNull.Value, TxtCompanyEmail.XOSqlText))
                 SetValue(.AllParameters, tEmployee.P_EmployeeIsActive, ChkActiveEmployee.Checked)
 
-                ' Please update this method when EmploymentType is ready
+                ' Employment Type is filled automatically when user select the employment type
+                ' from the browse form. If the user does not select an employment type, it will
+                ' be set to DBNull.Value.
                 SetValue(.AllParameters, tEmployee.P_EmployeeEmploymentType, IIf(TxtEmploymentType.XOSqlText = String.Empty OrElse TxtEmploymentType.XOSqlText = "", DBNull.Value, DBNull.Value))
             End With
 
             If Await CMDepls.Editor.PushData(varDataProperties, varDataProperties.AllParameters) Then
                 UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
                 RaiseEvent EventRecordSaved()
-
             Else
                 UI.Canvas.FRMmainframe6.Ts_status.Text = "Failed to save"
                 Return
@@ -309,11 +340,13 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckEmployeeNoPhoto() As Integer
             Dim varInvalidScore As Integer = 0
-            If varDataProperties.EmployeeIsHavePhoto Then
+            If varDataProperties.EmployeeIsHavePhoto AndAlso Not varDataProperties.EmployeeIsForceRefresh AndAlso Not varDataProperties.EmployeeIsNewPhoto Then
                 varInvalidScore = 0
             Else
-                varCannotSaveMessage += "• You haven't select an Employee photo" & Environment.NewLine
-                varInvalidScore = 1
+                If Not (varDataProperties.EmployeeIsForceRefresh) AndAlso Not (varDataProperties.EmployeeIsNewPhoto) Then
+                    varCannotSaveMessage += "• You haven't select an Employee photo" & Environment.NewLine
+                    varInvalidScore = 1
+                End If
             End If
             Return varInvalidScore
         End Function
@@ -379,11 +412,6 @@
                 MsgBox("This feature is not available yet. Please contact your system administrator.", MsgBoxStyle.Information, "Feature Unavailable")
                 varIsTabPermissionFirstLoad = False
             End If
-        End Sub
-
-        <Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub Btn1_Click(sender As Object, e As EventArgs)
-            GetCamera(LibApp.Ingrid.Global.CameraMode.PhotoCamera, varDataProperties)
         End Sub
     End Class
 End Namespace

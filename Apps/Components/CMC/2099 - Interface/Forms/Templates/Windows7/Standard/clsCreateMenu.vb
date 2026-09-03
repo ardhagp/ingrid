@@ -47,28 +47,31 @@ Namespace UI.View
             'Com_menu = New CMCv.mnu
             With Com_menu
                 .Visible = isshown
+                .BackColor = System.Drawing.SystemColors.Control
+                .ForeColor = System.Drawing.Color.Black
                 .Font = New Drawing.Font("Segoe UI", 12)
             End With
 
 
             'Add menu RECORD
-            varItem(0) = New ToolStripMenuItem() With {.Name = "RECORD", .Text = "RECORD", .MergeAction = system.Windows.Forms.MergeAction.Insert, .MergeIndex = 1}
+            varItem(0) = New ToolStripMenuItem() With {.Name = "RECORD", .Text = "RECORD", .ForeColor = System.Drawing.Color.Black, .MergeAction = System.Windows.Forms.MergeAction.Insert, .MergeIndex = 1}
             Com_menu.Items.Add(varItem(0))
 
             'Add menu TOOLS
-            varItem(1) = New ToolStripMenuItem() With {.Name = "TOOLS", .Text = "TOOLS", .MergeAction = system.Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
+            varItem(1) = New ToolStripMenuItem() With {.Name = "TOOLS", .Text = "TOOLS", .ForeColor = System.Drawing.Color.Black, .MergeAction = System.Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
             Com_menu.Items.Add(varItem(1))
 
             'Add menu TOOLS
-            varItem(2) = New ToolStripMenuItem() With {.Name = "REPORTS", .Text = "REPORTS", .MergeAction = system.Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
+            varItem(2) = New ToolStripMenuItem() With {.Name = "REPORTS", .Text = "REPORTS", .ForeColor = System.Drawing.Color.Black, .MergeAction = System.Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
             Com_menu.Items.Add(varItem(2))
 
             'Add menu FILE
-            varItem(3) = New ToolStripMenuItem() With {.Name = "FILE", .Text = "FILE", .MergeAction = system.Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
+            varItem(3) = New ToolStripMenuItem() With {.Name = "FILE", .Text = "FILE", .ForeColor = System.Drawing.Color.Black, .MergeAction = System.Windows.Forms.MergeAction.Insert, .MergeIndex = 2}
             Com_menu.Items.Add(varItem(3))
 
             For Each varItem As ToolStripMenuItem In Com_menu.Items
                 varItem.Visible = False
+                varItem.ForeColor = System.Drawing.Color.Black
             Next
 
             formname.Controls.Add(Com_menu)
@@ -77,21 +80,20 @@ Namespace UI.View
             ReDim varItemSeparator(5) 'separator items
 
             For Each varEachSubItem As ToolStripMenuItem In Com_menu.Items
-
                 Select Case varEachSubItem.Name
                     Case "RECORD"
                         'Insert "Add New..."
-                        varItemSubmenu(0) = New ToolStripMenuItem() With {.Name = "EventDataAddNew", .Text = "Add New...", .ShortcutKeys = CType(Keys.Control + Keys.N, Keys), .ShortcutKeyDisplayString = "Ctrl+N"}
+                        varItemSubmenu(0) = New ToolStripMenuItem() With {.Name = "EventDataAddNew", .Text = "Add New...", .ForeColor = System.Drawing.Color.Black, .ShortcutKeys = CType(Keys.Control + Keys.N, Keys), .ShortcutKeyDisplayString = "Ctrl+N"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(0))
                         AddHandler varItemSubmenu(0).Click, AddressOf EventDataAddNew_Clicked
 
                         'Insert "Edit..."
-                        varItemSubmenu(1) = New ToolStripMenuItem() With {.Name = "EventDataEdit", .Text = "Edit...", .ShortcutKeys = CType(Keys.Control + Keys.E, Keys), .ShortcutKeyDisplayString = "Ctrl+E"}
+                        varItemSubmenu(1) = New ToolStripMenuItem() With {.Name = "EventDataEdit", .Text = "Edit...", .ForeColor = System.Drawing.Color.Black, .ShortcutKeys = CType(Keys.Control + Keys.E, Keys), .ShortcutKeyDisplayString = "Ctrl+E"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(1))
                         AddHandler varItemSubmenu(1).Click, AddressOf EventDataEdit_Clicked
 
                         'Insert "Delete..."
-                        varItemSubmenu(2) = New ToolStripMenuItem() With {.Name = "EventDataDelete", .Text = "Delete", .ShortcutKeys = CType(Keys.Control + Keys.Delete, Keys), .ShortcutKeyDisplayString = "Ctrl+Del"}
+                        varItemSubmenu(2) = New ToolStripMenuItem() With {.Name = "EventDataDelete", .Text = "Delete", .ForeColor = System.Drawing.Color.Black, .ShortcutKeys = CType(Keys.Control + Keys.Delete, Keys), .ShortcutKeyDisplayString = "Ctrl+Del"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(2))
                         AddHandler varItemSubmenu(2).Click, AddressOf EventDataDelete_Clicked
 
@@ -100,12 +102,12 @@ Namespace UI.View
                         varEachSubItem.DropDown.Items.Add(varItemSeparator(0))
 
                         'Insert "Find"
-                        varItemSubmenu(3) = New ToolStripMenuItem() With {.Name = "EventToolsFind", .Text = "Find", .ShortcutKeys = CType(Keys.Control + Keys.F, Keys), .ShortcutKeyDisplayString = "Ctrl+F"}
+                        varItemSubmenu(3) = New ToolStripMenuItem() With {.Name = "EventToolsFind", .Text = "Find", .ForeColor = System.Drawing.Color.Black, .ShortcutKeys = CType(Keys.Control + Keys.F, Keys), .ShortcutKeyDisplayString = "Ctrl+F"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(3))
                         AddHandler varItemSubmenu(3).Click, AddressOf EventToolsFind_Clicked
 
                         'Insert "Refresh"
-                        varItemSubmenu(4) = New ToolStripMenuItem() With {.Name = "EventDataRefresh", .Text = "Refresh", .ShortcutKeys = Keys.F5, .ShortcutKeyDisplayString = "F5"}
+                        varItemSubmenu(4) = New ToolStripMenuItem() With {.Name = "EventDataRefresh", .Text = "Refresh", .ForeColor = System.Drawing.Color.Black, .ShortcutKeys = Keys.F5, .ShortcutKeyDisplayString = "F5"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(4))
                         AddHandler varItemSubmenu(4).Click, AddressOf EventDataRefresh_Clicked
 
@@ -114,18 +116,18 @@ Namespace UI.View
                         varEachSubItem.DropDown.Items.Add(varItemSeparator(1))
 
                         'Insert "Close"
-                        varItemSubmenu(5) = New ToolStripMenuItem() With {.Name = "EventDataClose", .Text = "Close", .ShortcutKeys = CType(Keys.Control + Keys.F4, Keys), .ShortcutKeyDisplayString = "Ctrl+F4"}
+                        varItemSubmenu(5) = New ToolStripMenuItem() With {.Name = "EventDataClose", .Text = "Close", .ForeColor = System.Drawing.Color.Black, .ShortcutKeys = CType(Keys.Control + Keys.F4, Keys), .ShortcutKeyDisplayString = "Ctrl+F4"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(5))
                         AddHandler varItemSubmenu(5).Click, AddressOf EventDataClose_Clicked
 
                     Case "TOOLS"
                         'Insert "Import"
-                        varItemSubmenu(6) = New ToolStripMenuItem() With {.Name = "EventToolsImport", .Text = "Import...", .Enabled = False}
+                        varItemSubmenu(6) = New ToolStripMenuItem() With {.Name = "EventToolsImport", .ForeColor = System.Drawing.Color.Black, .Text = "Import...", .Enabled = False}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(6))
                         AddHandler varItemSubmenu(6).Click, AddressOf EventToolsImport_Clicked
 
                         'Insert "Export"
-                        varItemSubmenu(7) = New ToolStripMenuItem() With {.Name = "EventToolsExport", .Text = "Export...", .Enabled = False}
+                        varItemSubmenu(7) = New ToolStripMenuItem() With {.Name = "EventToolsExport", .ForeColor = System.Drawing.Color.Black, .Text = "Export...", .Enabled = False}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(7))
                         AddHandler varItemSubmenu(7).Click, AddressOf EventToolsExport_Clicked
 
@@ -134,17 +136,17 @@ Namespace UI.View
                         varEachSubItem.DropDown.Items.Add(varItemSeparator(2))
 
                         'Insert "ViewAttachment"
-                        varItemSubmenu(8) = New ToolStripMenuItem() With {.Name = "EventToolsViewAttachment", .Text = "Attachment Viewer", .Visible = False, .CheckOnClick = True, .Checked = False, .ShortcutKeys = CType(Keys.Alt + Keys.P, Keys), .ShortcutKeyDisplayString = "Alt+P"}
+                        varItemSubmenu(8) = New ToolStripMenuItem() With {.Name = "EventToolsViewAttachment", .ForeColor = System.Drawing.Color.Black, .Text = "Attachment Viewer", .Visible = False, .CheckOnClick = True, .Checked = False, .ShortcutKeys = CType(Keys.Alt + Keys.P, Keys), .ShortcutKeyDisplayString = "Alt+P"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(8))
                         AddHandler varItemSubmenu(8).Click, AddressOf EventToolsViewAttachment_Clicked
                     Case "FILE"
                         'Insert "Save"
-                        varItemSubmenu(9) = New ToolStripMenuItem() With {.Name = "EventToolsSave", .Text = "Save", .ShortcutKeys = CType(Keys.Control + Keys.S, Keys), .ShortcutKeyDisplayString = "Ctrl+S"}
+                        varItemSubmenu(9) = New ToolStripMenuItem() With {.Name = "EventToolsSave", .ForeColor = System.Drawing.Color.Black, .Text = "Save", .ShortcutKeys = CType(Keys.Control + Keys.S, Keys), .ShortcutKeyDisplayString = "Ctrl+S"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(9))
                         AddHandler varItemSubmenu(9).Click, AddressOf EventFileSave_Clicked
 
                         'Insert "Undo All"
-                        varItemSubmenu(10) = New ToolStripMenuItem() With {.Name = "EventToolsUndoAll", .Text = "Undo All", .ShortcutKeys = CType(Keys.Control + Keys.Z, Keys), .ShortcutKeyDisplayString = "Ctrl+Z"}
+                        varItemSubmenu(10) = New ToolStripMenuItem() With {.Name = "EventToolsUndoAll", .ForeColor = System.Drawing.Color.Black, .Text = "Undo All", .ShortcutKeys = CType(Keys.Control + Keys.Z, Keys), .ShortcutKeyDisplayString = "Ctrl+Z"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(10))
                         AddHandler varItemSubmenu(10).Click, AddressOf EventFileUndoAll_Clicked
 
@@ -153,12 +155,12 @@ Namespace UI.View
                         varEachSubItem.DropDown.Items.Add(varItemSeparator(3))
 
                         'Insert "Close"
-                        varItemSubmenu(11) = New ToolStripMenuItem() With {.Name = "EventFileCancel", .Text = "Cancel", .ShortcutKeys = CType(Keys.Control + Keys.F4, Keys), .ShortcutKeyDisplayString = "Ctrl+F4"}
+                        varItemSubmenu(11) = New ToolStripMenuItem() With {.Name = "EventFileCancel", .ForeColor = System.Drawing.Color.Black, .Text = "Cancel", .ShortcutKeys = CType(Keys.Control + Keys.F4, Keys), .ShortcutKeyDisplayString = "Ctrl+F4"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(11))
                         AddHandler varItemSubmenu(11).Click, AddressOf EventFileCancel_Clicked
                     Case "REPORTS"
                         'Insert "Report"
-                        varItemSubmenu(12) = New ToolStripMenuItem() With {.Name = "EventReportsShow", .Text = "Generate...", .ShortcutKeys = CType(Keys.Control + Keys.L, Keys), .ShortcutKeyDisplayString = "Ctrl+L"}
+                        varItemSubmenu(12) = New ToolStripMenuItem() With {.Name = "EventReportsShow", .ForeColor = System.Drawing.Color.Black, .Text = "Generate...", .ShortcutKeys = CType(Keys.Control + Keys.L, Keys), .ShortcutKeyDisplayString = "Ctrl+L"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(12))
                         AddHandler varItemSubmenu(12).Click, AddressOf EventReportsViewClicked
                 End Select
@@ -368,18 +370,22 @@ Namespace UI.View
 
         Public Sub ShowMenuData(Optional value As ShowItem = CType(False, UI.View.MenuStrip.ShowItem))
             varItem(0).Visible = CType(value, Boolean)
+            varItem(0).ForeColor = System.Drawing.Color.Black
         End Sub
 
         Public Sub ShowMenuTools(Optional value As ShowItem = CType(False, UI.View.MenuStrip.ShowItem))
             varItem(1).Visible = CType(value, Boolean)
+            varItem(1).ForeColor = System.Drawing.Color.Black
         End Sub
 
         Public Sub ShowMenuReports(Optional value As ShowItem = CType(False, UI.View.MenuStrip.ShowItem))
             varItem(2).Visible = CType(value, Boolean)
+            varItem(2).ForeColor = System.Drawing.Color.Black
         End Sub
 
         Public Sub ShowMenuFile(Optional value As ShowItem = CType(False, UI.View.MenuStrip.ShowItem))
             varItem(3).Visible = CType(value, Boolean)
+            varItem(3).ForeColor = System.Drawing.Color.Black
         End Sub
 
 #End Region
@@ -440,7 +446,7 @@ Namespace UI.View
 
             varContextMenu.Visible = True
 
-            varItem(0) = New ToolStripMenuItem() With {.Name = "COPYCELL", .Text = "Copy"}
+            varItem(0) = New ToolStripMenuItem() With {.Name = "COPYCELL", .ForeColor = System.Drawing.Color.Black, .Text = "Copy"}
             varContextMenu.Items.Add(varItem(0))
             AddHandler varItem(0).Click, AddressOf ContextCopy_Clicked
             grid.ContextMenuStrip = varContextMenu

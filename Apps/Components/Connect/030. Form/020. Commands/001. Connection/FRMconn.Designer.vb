@@ -40,6 +40,7 @@
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(DgnConnection, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
@@ -94,11 +95,15 @@
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(DgnConnection, 0)
             ' 
+            ' XOLogo
+            ' 
+            XOLogo.Size = New Size(84, 98)
+            ' 
             ' DgnConnection
             ' 
             DgnConnection.AllowUserToAddRows = False
             DgnConnection.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(247), CByte(193), CByte(123))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(197), CByte(224), CByte(178))
             DgnConnection.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnConnection.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnConnection.BorderStyle = BorderStyle.None
@@ -249,6 +254,7 @@
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(DgnConnection, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()

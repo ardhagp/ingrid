@@ -187,7 +187,7 @@
             ' APPSYSTEM
             ' 
             APPSYSTEM.DropDownItems.AddRange(New ToolStripItem() {Ms_start_Login, Ms_start_Logout, Ms_g_line1, Ms_start_Connection, Ms_start_Settings, Ms_g_line2, Ms_start_Exit})
-            APPSYSTEM.ForeColor = SystemColors.ControlText
+            APPSYSTEM.ForeColor = Color.Black
             APPSYSTEM.ImageTransparentColor = SystemColors.ActiveBorder
             APPSYSTEM.MergeIndex = 0
             APPSYSTEM.Name = "APPSYSTEM"
@@ -252,6 +252,7 @@
             ' WORKSPACE
             ' 
             WORKSPACE.DropDownItems.AddRange(New ToolStripItem() {Ms_workspace_Cascade, Ms_workspace_TileVertical, Ms_workspace_TileHorizontal, ToolStripSeparator1, Ms_workspace_InputCommand, Ms_workspace_Maximize, ToolStripMenuItem1, Ms_workspace_CloseAll})
+            WORKSPACE.ForeColor = Color.Black
             WORKSPACE.MergeIndex = 800
             WORKSPACE.Name = "WORKSPACE"
             WORKSPACE.Size = New Size(164, 36)
@@ -309,6 +310,7 @@
             ' HELP
             ' 
             HELP.DropDownItems.AddRange(New ToolStripItem() {ContentsToolStripMenuItem, AppsCollectionToolStripMenuItem, ToolStripSeparator8, BuymeacoffeToolStripMenuItem, AboutToolStripMenuItem})
+            HELP.ForeColor = Color.Black
             HELP.MergeIndex = 801
             HELP.Name = "HELP"
             HELP.Size = New Size(83, 36)
@@ -366,6 +368,7 @@
             ' 
             USERMENU.Alignment = ToolStripItemAlignment.Right
             USERMENU.DropDownItems.AddRange(New ToolStripItem() {NotificationToolStripMenuItem, MyAccountToolStripMenuItem, ToolStripSeparator2, LoginToolStripMenuItem, LogoutToolStripMenuItem})
+            USERMENU.ForeColor = Color.Black
             USERMENU.MergeIndex = 999
             USERMENU.Name = "USERMENU"
             USERMENU.Size = New Size(174, 36)

@@ -166,6 +166,7 @@
             End Try
         End Function
 
+
         ''' <summary>
         ''' This function is used to get an SVG image from a URL and set it as the image of a PictureBox. It takes in the URL of the SVG image, the PictureBox object, optional dataproperties object, and optional width and height parameters for the resulting Bitmap. If the SVG image is successfully loaded and converted to a Bitmap, it sets the EmployeeIsForceChangePhoto property to False. If there is an error loading or converting the SVG image, it sets the EmployeeIsForceChangePhoto property to True, displays an error message, and sets a default "svg-404.svg" image as the PictureBox image.
         ''' </summary>
@@ -226,6 +227,59 @@
                 Return False
             End Try
         End Function
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Async Function GetSvgImageFromUrlAsync(
+    url As String,
+    [button] As System.Windows.Forms.Button,
+    Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing,
+    Optional width As Integer = 24,
+    Optional height As Integer = 24
+) As Task(Of Boolean)
+
+            Try
+                Dim client As New Net.Http.HttpClient()
+
+                ' Download SVG as text
+                Dim svgContent As String = Await client.GetStringAsync(url)
+
+                ' Load SVG from string
+                Dim svgDoc As Svg.SvgDocument
+                Using svgStream As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(svgContent))
+                    svgDoc = Svg.SvgDocument.Open(Of Svg.SvgDocument)(svgStream)
+                End Using
+
+                ' Convert to Bitmap
+                Dim bmp As System.Drawing.Bitmap = svgDoc.Draw(width, height)
+
+                ' Assign to Button
+                button.Image = bmp
+
+                If dataproperties IsNot Nothing Then
+                    dataproperties.EmployeeIsForceChangePhoto = False
+                End If
+
+                Return True
+
+            Catch ex As Exception
+                ' Fallback SVG
+                Dim fallbackPath As String = IO.Path.Combine(Environment.CurrentDirectory, "Resources\svg-404.svg")
+                Dim fallbackSvg As Svg.SvgDocument = Svg.SvgDocument.Open(fallbackPath)
+                Dim fallbackBmp As System.Drawing.Bitmap = fallbackSvg.Draw(width, height)
+
+                button.Image = fallbackBmp
+
+                If dataproperties IsNot Nothing Then
+                    dataproperties.EmployeeIsForceChangePhoto = True
+                End If
+
+                System.Windows.Forms.MessageBox.Show($"Unable to load SVG image: {ex.Message}", "Error",
+                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
+
+                Return False
+            End Try
+        End Function
+
 
         ''' <summary>
         ''' This function is used to get an SVG image from a URL and set it as the image of a ToolStrip item. It takes in the URL of the SVG image, the MenuStrip object, the name of the ToolStrip item, optional dataproperties object, and optional width and height parameters for the resulting Bitmap. If the SVG image is successfully loaded and converted to a Bitmap, it sets the EmployeeIsForceChangePhoto property to False. If there is an error loading or converting the SVG image, it sets the EmployeeIsForceChangePhoto property to True, displays an error message, and sets a default "svg-404.svg" image as the ToolStrip item image.

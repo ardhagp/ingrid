@@ -194,6 +194,17 @@ Namespace My
                 Return CType(Me("URL_Logo_EDIT"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/media/component-image-al"& _ 
+            "l-platforms/svg-OPENCOMMAND.svg")>  _
+        Public ReadOnly Property URL_Image_OPENCOMMAND() As String
+            Get
+                Return CType(Me("URL_Image_OPENCOMMAND"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

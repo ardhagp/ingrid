@@ -41,5 +41,8 @@
     <Setting Name="URL_Logo_EDIT" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/media/module-logo-all-platforms/svg-EDIT.svg</Value>
     </Setting>
+    <Setting Name="URL_Image_OPENCOMMAND" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/files/media/component-image-all-platforms/svg-OPENCOMMAND.svg</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
