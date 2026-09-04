@@ -1,19 +1,16 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Control
+﻿Namespace UI.Control
     Public Class Dtp
         Inherits System.Windows.Forms.DateTimePicker
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
-            Call ActivateLicenses()
-            MyBase.Font = globalFontTxt
+            MyBase.Font = Component.Properties.globalFontTxt
             MyBase.MaxDate = DateAdd(DateInterval.Year, 10, Now.Date)
             MyBase.MinDate = DateAdd(DateInterval.Year, -100, Now.Date)
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Dtp_EnabledChanged(sender As Object, e As EventArgs) Handles Me.EnabledChanged
             If (XOResetOnDisabled) AndAlso Not (Me.Enabled) Then
                 MyBase.MaxDate = DateAdd(DateInterval.Year, 10, Now.Date)

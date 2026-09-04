@@ -1,9 +1,8 @@
-﻿Imports System.Runtime.Versioning
-'Imports Org.BouncyCastle.Cmp
-'Imports Org.BouncyCastle.Tls
+﻿Imports System.Windows.Forms
 
 Namespace UI.Canvas
-    Public Class FRMdialogbox
+    Public Class FRMdialogBox
+        Inherits UI.Canvas.FRMstandardFooter
 
 #Region "Initialize"
         ''' <summary>
@@ -20,14 +19,14 @@ Namespace UI.Canvas
         End Sub
 
         ''' <summary>
-        ''' Custom Message Box
+        ''' This constructor initializes a custom message box with specified parameters, including window title, message content, popup type, subtitle, message icon, and button type. It configures the appearance and behavior of the message box based on the provided arguments.
         ''' </summary>
-        ''' <param name="Message">Tuliskan pesan anda di sini</param>
-        ''' <param name="Caption">Judul Form dan Caption</param>
-        ''' <param name="MessageIcon">Jenis icon yang akan digunakan</param>
-        ''' <param name="ButtonType">Tipe tombol yang akan digunakan</param>
+        ''' <param name="Message">Message content to be displayed in the custom message box.</param>
+        ''' <param name="Caption">Title of the form and caption.</param>
+        ''' <param name="MessageIcon">Type of icon to be used.</param>
+        ''' <param name="ButtonType">Type of buttons to be used.</param>
         ''' <remarks></remarks>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New(windowtitle As String, message As String, title As LibApp.Ingrid.Global.PopupType, subtitle As String, messageicon As MessageIcon, buttontype As MessageTypes)
 
             ' This call is required by the designer.
@@ -52,7 +51,7 @@ Namespace UI.Canvas
                     logoColor = System.Drawing.Color.DodgerBlue
             End Select
 
-            Me.SLFLogo.Image = logoImg
+            Me.XOLogo.Image = logoImg
             Me.SLFLogo.BackColor = logoColor
 
             ' --- Title and subtitle (compute once, avoid repeated trims and checks) ---
@@ -128,7 +127,6 @@ Namespace UI.Canvas
         End Sub
 #End Region
 
-#Region "Declaration"
         Public Enum MessageTypes
             YesNo = 1
             OkCancel = 2
@@ -141,38 +139,36 @@ Namespace UI.Canvas
             [Error] = 3
             Information = 4
         End Enum
-#End Region
 
-#Region "Component Events"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnYes_Click(sender As Object, e As EventArgs) Handles BtnYes.Click
-            Me.DialogResult = system.Windows.Forms.DialogResult.Yes
+            Me.DialogResult = System.Windows.Forms.DialogResult.Yes
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnNo_Click(sender As Object, e As EventArgs) Handles BtnNo.Click
-            Me.DialogResult = system.Windows.Forms.DialogResult.No
+            Me.DialogResult = System.Windows.Forms.DialogResult.No
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
-            Me.DialogResult = system.Windows.Forms.DialogResult.OK
+            Me.DialogResult = System.Windows.Forms.DialogResult.OK
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
-            Me.DialogResult = system.Windows.Forms.DialogResult.Cancel
+            Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnOkOnly_Click(sender As Object, e As EventArgs) Handles BtnOkOnly.Click
-            Me.DialogResult = system.Windows.Forms.DialogResult.OK
+            TxtMessage.Text = ""
+            Me.DialogResult = System.Windows.Forms.DialogResult.OK
             Me.Close()
         End Sub
-#End Region
     End Class
 End Namespace

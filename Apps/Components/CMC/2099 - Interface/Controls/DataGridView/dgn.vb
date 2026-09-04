@@ -8,13 +8,12 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
-            Call ActivateLicenses()
             'MyBase.AlternatingRowsDefaultCellStyle.BackColor = CBS.NewRandomColor(190, 190, 190, 255, 255, 255)
             MyBase.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
             MyBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             MyBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             MyBase.ColumnHeadersHeight = 43
-            MyBase.Font = globalFontDgn
+            MyBase.Font = Component.Properties.globalFontDgn
             MyBase.EnableHeadersVisualStyles = False
             MyBase.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
             MyBase.ColumnHeadersDefaultCellStyle.BackColor = Drawing.Color.YellowGreen

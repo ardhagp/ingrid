@@ -73,6 +73,7 @@ Namespace UI.Canvas
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             TbctlSettings.SuspendLayout()
             tbInterface.SuspendLayout()
             GbxPanels.SuspendLayout()
@@ -873,11 +874,9 @@ Namespace UI.Canvas
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1307, 1078)
-            ControlBox = False
             Margin = New Padding(10, 5, 10, 5)
-            MaximizeBox = False
-            MinimizeBox = False
             Name = "FRMsyss"
+            WindowState = FormWindowState.Maximized
             PnlFind.ResumeLayout(False)
             PnlFind.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
@@ -885,6 +884,7 @@ Namespace UI.Canvas
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             TbctlSettings.ResumeLayout(False)
             tbInterface.ResumeLayout(False)
             GbxPanels.ResumeLayout(False)

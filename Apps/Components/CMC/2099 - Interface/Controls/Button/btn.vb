@@ -1,7 +1,4 @@
-﻿Imports System.ComponentModel
-Imports System.Runtime.Versioning
-
-Namespace UI.Control
+﻿Namespace UI.Control
     ''' <project>CMCC</project>
     ''' <author>Ardha Gp</author>
     ''' <summary>
@@ -12,16 +9,15 @@ Namespace UI.Control
         Inherits System.Windows.Forms.Button
         Public Event ValidasiBerhasil()
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
-            Call ActivateLicenses()
             MyBase.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             MyBase.FlatAppearance.BorderSize = 2
             'MyBase.BackColor = System.Drawing.Color.Orange
             MyBase.Size = New System.Drawing.Size(100, 40)
             MyBase.Cursor = System.Windows.Forms.Cursors.Hand
-            MyBase.Font = globalFontBtn
+            MyBase.Font = Component.Properties.globalFontBtn
             'Me.XOShowBorder = False
             Me.XOShowBorderOnFocus = False
             Me.XOButtonType = UI.Control.ControlCodeBase.ButtonType.Default
@@ -29,9 +25,9 @@ Namespace UI.Control
         End Sub
 
         Private varButtonType As UI.Control.ControlCodeBase.ButtonType
-        <SupportedOSPlatform("windows")>
-        <Category("Button"),
-    Description("Button type will affect (background color, font type) of the button")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        <System.ComponentModel.Category("Button"),
+    System.ComponentModel.Description("Button type will affect (background color, font type) of the button")>
         Public Property XOButtonType() As UI.Control.ControlCodeBase.ButtonType
             Get
                 Return varButtonType
@@ -47,8 +43,8 @@ Namespace UI.Control
         ''' Validate all input from textbox in the form
         ''' </summary>
         ''' <returns>True if all input is valid, otherwise False</returns>
-        <Category("Button"),
-    Description("Validate all input from textbox")>
+        <System.ComponentModel.Category("Button"),
+    System.ComponentModel.Description("Validate all input from textbox")>
         Public Property XOValidateAllInput() As Boolean
             Get
                 Return varValidateAllInput
@@ -63,8 +59,8 @@ Namespace UI.Control
         ''' Validate all input from textbox with the same tag
         ''' </summary>
         ''' <returns>Tag of the input to be validated</returns>
-        <Category("Button"),
-    Description("Validate all input with this tag")>
+        <System.ComponentModel.Category("Button"),
+    System.ComponentModel.Description("Validate all input with this tag")>
         Public Property XOValidateAllInputTag() As String
             Get
                 Return varValidateAllInputTag
@@ -102,7 +98,7 @@ Namespace UI.Control
         ''' Change button color based on button type
         ''' </summary>
         ''' <param name="enubuttontype">Button type</param>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ChangeButtonColor(enubuttontype As UI.Control.ControlCodeBase.ButtonType)
             Select Case enubuttontype
                 Case UI.Control.ControlCodeBase.ButtonType.Yes
@@ -126,7 +122,7 @@ Namespace UI.Control
             End Select
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Btn_BackColorChanged(sender As Object, e As System.EventArgs) Handles Me.BackColorChanged
             If Me.FlatStyle = System.Windows.Forms.FlatStyle.Flat Then
                 MyBase.FlatAppearance.BorderColor = UI.Control.ControlCodeBase.GetColor(MyBase.BackColor, UI.Control.ControlCodeBase.EnumColorRange.Darker, 60)

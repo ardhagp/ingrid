@@ -1,17 +1,13 @@
-﻿Imports System.ComponentModel
-Imports System.Runtime.Versioning
-
-Namespace UI.Control
+﻿Namespace UI.Control
     Public Class Nud
         Inherits System.Windows.Forms.NumericUpDown
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
-            Call ActivateLicenses()
             MyBase.Height = 23
             MyBase.Width = 206
-            MyBase.Font = globalFontTxt
+            MyBase.Font = Component.Properties.globalFontTxt
             Me.XOHighlightOnFocus = False
             Me.XOHighlightColor = Drawing.Color.LightYellow
             Me.XOSelectOnFocus = False

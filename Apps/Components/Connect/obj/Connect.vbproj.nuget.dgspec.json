@@ -141,6 +141,10 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows7.0",
           "dependencies": {
+            "DirectShowLib.Standard": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
             "Microsoft.CSharp": {
               "target": "Package",
               "version": "[4.7.0, )"

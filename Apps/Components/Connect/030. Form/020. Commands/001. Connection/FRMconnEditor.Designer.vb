@@ -60,6 +60,7 @@
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             TbctlBasic.SuspendLayout()
             tp1_.SuspendLayout()
             tp2_.SuspendLayout()
@@ -153,6 +154,7 @@
             ' tp1_
             ' 
             tp1_.AutoScroll = True
+            tp1_.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             tp1_.Controls.Add(ULbl3)
             tp1_.Controls.Add(TxtClient)
             tp1_.Controls.Add(ChkIsMasked)
@@ -179,7 +181,6 @@
             tp1_.Size = New Size(759, 563)
             tp1_.TabIndex = 0
             tp1_.Text = "CONFIG"
-            tp1_.UseVisualStyleBackColor = True
             ' 
             ' ULbl3
             ' 
@@ -236,6 +237,7 @@
             ChkIsMasked.TabIndex = 10
             ChkIsMasked.Text = "Unreadable after saving"
             ChkIsMasked.UseVisualStyleBackColor = False
+            ChkIsMasked.XOCheckColor = Color.Empty
             ' 
             ' btnExport
             ' 
@@ -329,7 +331,7 @@
             ' ChkDefault
             ' 
             ChkDefault.AutoSize = True
-            ChkDefault.BackColor = Color.Transparent
+            ChkDefault.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             ChkDefault.FlatStyle = FlatStyle.Flat
             ChkDefault.Font = New Font("Segoe UI", 12F)
             ChkDefault.Location = New Point(306, 562)
@@ -339,6 +341,7 @@
             ChkDefault.TabIndex = 9
             ChkDefault.Text = "Set as Default Connection"
             ChkDefault.UseVisualStyleBackColor = False
+            ChkDefault.XOCheckColor = Color.Empty
             ' 
             ' TxtPassword
             ' 
@@ -565,6 +568,7 @@
             ' tp2_
             ' 
             tp2_.AutoScroll = True
+            tp2_.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             tp2_.Controls.Add(btnImport)
             tp2_.Controls.Add(btnSaveAs)
             tp2_.Controls.Add(Pnl1)
@@ -577,7 +581,6 @@
             tp2_.Size = New Size(759, 563)
             tp2_.TabIndex = 1
             tp2_.Text = "IMPORT / EXPORT"
-            tp2_.UseVisualStyleBackColor = True
             ' 
             ' btnImport
             ' 
@@ -762,6 +765,7 @@
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             TbctlBasic.ResumeLayout(False)
             tp1_.ResumeLayout(False)
             tp1_.PerformLayout()

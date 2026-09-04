@@ -66,16 +66,28 @@ Namespace My
                 Me("MRUFiles") = value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Black")>  _
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("Black")>
         Public Property SLFBackground() As Global.System.Drawing.Color
             Get
-                Return CType(Me("SLFBackground"),Global.System.Drawing.Color)
+                Return CType(Me("SLFBackground"), Global.System.Drawing.Color)
             End Get
             Set
                 Me("SLFBackground") = value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>
+        Public Property CameraDeviceId() As Integer
+            Get
+                Return CType(Me("CameraDeviceId"), Integer)
+            End Get
+            Set
+                Me("CameraDeviceId") = Value
             End Set
         End Property
     End Class

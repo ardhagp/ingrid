@@ -3,11 +3,11 @@ Imports System.Runtime.Versioning
 
 Namespace UI.Canvas
     Public Class FRMstandard
+        Inherits UI.Canvas.FRMblank
 
         <SupportedOSPlatform("windows")>
         Private Sub FRMstandard_Load(sender As Object, e As EventArgs) Handles Me.Load
             Try
-                Call ActivateLicenses()
                 GC.Collect()
                 Me.KeyPreview = True
             Catch ex As Exception
@@ -36,7 +36,7 @@ Namespace UI.Canvas
         End Sub
 
         Private Sub FRMstandard_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-            Me.Dispose()
+            'Me.Dispose()
         End Sub
 
         ''' <summary>

@@ -1,28 +1,26 @@
-﻿Imports System.IO
-Imports System.Runtime.Versioning
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMpdfViewer
+        Inherits UI.Canvas.FRMstandardFooter
 
-        Private varLocalFs As FileStream
-        Public Property LocalFS As FileStream
+        Private varLocalFs As System.IO.FileStream
+        Public Property LocalFS As System.IO.FileStream
             Get
                 Return varLocalFs
             End Get
-            Set(value As FileStream)
+            Set(value As System.IO.FileStream)
                 varLocalFs = value
             End Set
         End Property
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMpdfViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            Call ActivateLicenses()
+            Call Component.Properties.ActivateLicenses()
 
             'use this line for old version of pdf handler
             'PDFContent.RenderingEngine = Syncfusion.Windows.Forms.PdfViewer.PdfRenderingEngine.SfPdf
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
             PDFContent.Dispose()
             Me.Close()
@@ -34,7 +32,7 @@ Namespace UI.Canvas
         End Enum
 
         Public Sub FRMpdfViewerLoadDocument(fs As Object, filenname As String)
-            PDFContent.Load(CType(fs, Stream))
+            PDFContent.Load(CType(fs, System.IO.Stream))
         End Sub
 
         Public Sub FRMpdfViewerEnableFileOpen(enableproperties As IsActive)

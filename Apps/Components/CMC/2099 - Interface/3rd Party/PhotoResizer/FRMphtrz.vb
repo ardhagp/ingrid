@@ -1,7 +1,7 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMphtrz
+        Inherits UI.Canvas.FRMstandardFooter
+
         Private varImageCompressor As New ImageEditor.Proccessor.Compress
         Private varFileHandler As New OperatingSystem.File.Info
 
@@ -10,13 +10,13 @@ Namespace UI.Canvas
         Const varMesageJpg As String = ".jpg"
         Const varMessageJpeg As String = ".jpeg"
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
             Close()
             RaiseEvent EventDone()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
 
             Try
@@ -50,7 +50,7 @@ Namespace UI.Canvas
 
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnLoad_Click(sender As Object, e As EventArgs) Handles BtnLoad.Click
             SLFStatusLabel.Text = ""
 
@@ -73,7 +73,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TxtLoad_TextChanged(sender As Object, e As EventArgs) Handles TxtLoad.TextChanged
             If TxtLoad.Text IsNot String.Empty Then
                 If (TxtLoad.Text.Contains(varMesageJpg)) AndAlso (ChkSaveAsACopy.Checked) Then
@@ -86,13 +86,13 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMphtrz_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            Call ActivateLicenses()
+            Call Component.Properties.ActivateLicenses()
             ChkSaveAsACopy.Checked = True
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ChkSaveAsACopy_CheckedChanged(sender As Object, e As EventArgs) Handles ChkSaveAsACopy.CheckedChanged
             If TxtLoad.Text IsNot String.Empty Then
                 If (TxtLoad.Text.Contains(varMesageJpg)) AndAlso (ChkSaveAsACopy.Checked) Then

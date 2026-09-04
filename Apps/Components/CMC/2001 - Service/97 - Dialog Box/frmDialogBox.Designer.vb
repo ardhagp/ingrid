@@ -1,6 +1,6 @@
 ﻿Namespace UI.Canvas
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-    Partial Class FRMdialogbox
+    Partial Class FRMdialogBox
         Inherits UI.Canvas.FRMstandardFooter
 
         'Form overrides dispose to clean up the component list.
@@ -36,6 +36,7 @@
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             PnlBottomButtonYesNo.SuspendLayout()
             CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
             PnlBottomButtonOkOnly.SuspendLayout()
@@ -272,7 +273,7 @@
             ' 
             ' FRMdialogbox
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
             ClientSize = New System.Drawing.Size(1115, 608)
             ControlBox = False
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -287,6 +288,7 @@
             SLFPanel.ResumeLayout(False)
             SLFPanel.PerformLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             PnlBottomButtonYesNo.ResumeLayout(False)
             CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
             PnlBottomButtonOkOnly.ResumeLayout(False)

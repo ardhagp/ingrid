@@ -1,5 +1,5 @@
 ﻿Namespace UI.Control
-    <Drawing.ToolboxBitmap(GetType(Dgn), "dgn.ico")>
+    <Drawing.ToolboxBitmap(GetType(UI.Control.Dgn), "dgn.ico")>
     Partial Class Dgn
         Inherits System.Windows.Forms.DataGridView
 

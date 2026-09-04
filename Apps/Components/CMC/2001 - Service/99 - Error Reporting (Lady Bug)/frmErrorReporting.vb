@@ -1,7 +1,7 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMerrorreporting
+        Inherits UI.Canvas.FRMstandardFooter
+
         ' Private Catcher As New Ladybug.Log.Fields
         Private ResumeNext As Boolean
 
@@ -14,10 +14,10 @@ Namespace UI.Canvas
 
         End Sub
 
-        <SupportedOSPlatform("windows")>
-        Public Sub New(proLog As Ladybug.Log.Fields, Optional dbengine As Database.Engine.SQLiteV3 = Nothing)
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Sub New(proLog As Ladybug.Log.Fields, Optional dbengine As Database.Engine.SqliteV3 = Nothing)
             InitializeComponent()
-            varBetterstack.SendFailure(Bridge.Getkey.Betterstack_heartbeats)
+            Component.Properties.varBetterstack.SendFailure(Bridge.Getkey.Betterstack_heartbeats)
             Me.Text = "INGRID - Error Reporting"
             SLFNamaForm.Text = "Error Reporting"
             SLFSubNamaForm.Text = "A simple diagnostic tool for logging exceptions"
@@ -41,7 +41,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
             Me.Close()
             Me.Dispose()

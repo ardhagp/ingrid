@@ -1,4 +1,6 @@
-﻿Namespace CMDepls
+﻿Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
+
+Namespace CMDepls
     ''' <summary>
     ''' The View class provides methods for displaying and managing employee data in a user interface. It includes functionality to display employee data in a grid, delete employee records, and retrieve various employee properties from the database. The class supports both MSSQL and MySQL database engines and handles data retrieval and manipulation based on the specified database engine.
     ''' </summary>
@@ -47,16 +49,22 @@
                                                    $"{tDepartment.S}.{tDepartment.C_DepartmentName}, " &
                                                    $"{tPosition.S}.{tPosition.C_PositionCode}, " &
                                                    $"{tPosition.S}.{tPosition.C_PositionName}, " &
-                                                   $"(select {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeName} from {tEmploymentType.TableName} {tEmploymentType.S} where {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeId} = {tEmployee.S}.{tEmployee.C_EmployeeEmploymentType}) as `{tEmploymentType.C_EmploymentTypeName}`, " &
+                                                   $"{tEmploymentType.C_EmploymentTypeName}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeNumber}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeFullName}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeNickname}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeGender}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeToken}, " &
                                                    $"(case {tEmployee.S}.{tEmployee.C_EmployeeIsActive} when 0 then 'No' when 1 then 'Yes' end) as `{tEmployee.C_EmployeeIsActive}` " &
                                                    $"From {tEmployee.TableName} {tEmployee.S} " &
-                                                   $"inner Join {tPosition.TableName} {tPosition.S} on {tPosition.S}.{tPosition.C_PositionId} = {tEmployee.S}.{tEmployee.C_EmployeePosition} " &
-                                                   $"inner Join {tDepartment.TableName} {tDepartment.S} on {tDepartment.S}.{tDepartment.C_DepartmentId} = {tPosition.S}.{tPosition.C_PositionDepartment} " &
-                                                   $"inner Join {tCompany.TableName} {tCompany.S} On {tCompany.S}.{tCompany.C_CompanyId} = {tDepartment.S}.{tDepartment.C_DepartmentCompany} " &
+                                                   $"left join {tEmploymentType.TableName} {tEmploymentType.S} on " &
+                                                   $"{tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeId} = {tEmployee.S}.{tEmployee.C_EmployeeEmploymentType} " &
+                                                   $"inner Join {tPosition.TableName} {tPosition.S} on " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionId} = {tEmployee.S}.{tEmployee.C_EmployeePosition} " &
+                                                   $"inner Join {tDepartment.TableName} {tDepartment.S} " &
+                                                   $"on {tDepartment.S}.{tDepartment.C_DepartmentId} = {tPosition.S}.{tPosition.C_PositionDepartment} " &
+                                                   $"inner Join {tCompany.TableName} {tCompany.S} " &
+                                                   $"on {tCompany.S}.{tCompany.C_CompanyId} = {tDepartment.S}.{tDepartment.C_DepartmentCompany} " &
                                                    $"{varWhere} " &
                                                    $"order by {tCompany.S}.{tCompany.C_CompanyCode}, {tDepartment.S}.{tDepartment.C_DepartmentCode}, {tPosition.S}.{tPosition.C_PositionCode}, {tEmployee.S}.{tEmployee.C_EmployeeFullName}"
 
@@ -121,7 +129,7 @@
                                                    $"inner join man_company cm on cm.company_id = dp.department_company " &
                                                    $"where em.employee_id = @EmployeeId " &
                                                    $"order by em.employee_id"
-                varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query, datasetname, "EPLS_Editor")
+                varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query, datasetname, dstTableName.EplsEditor)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                 varDatabaseRequestMysql(0).Query = $"select {tEmployee.S}.{tEmployee.C_EmployeeId}, " &
                                                    $"{tCompany.S}.{tCompany.C_CompanyId}, " &
@@ -143,11 +151,15 @@
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeBirthPlace}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeAddress}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeEmploymentType}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeCompanyEmail}, " &
+                                                   $"{tEmployee.S}.{tEmployee.C_EmployeeToken}, " &
                                                    $"{tEmployee.S}.{tEmployee.C_EmployeeIsActive}, " &
                                                    $"{tUser.S}.{tUser.C_UserUsername}, " &
                                                    $"if({tAttachment.S}.{tAttachment.C_AttachmentId} Is null, 0, 1) `ishavephoto`, " &
                                                    $"{tAttachment.S}.{tAttachment.C_AttachmentId}, " &
-                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentUrl} " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentUrl}, " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentParentToken}, " &
+                                                   $"{tAttachment.S}.{tAttachment.C_AttachmentToken} " &
                                                    $"from {tEmployee.TableName} {tEmployee.S} " &
                                                    $"left join {tAttachment.TableName} {tAttachment.S} " &
                                                    $"on {tEmployee.S}.{tEmployee.C_EmployeeId} = {tAttachment.S}.{tAttachment.C_AttachmentParentId} And " &
@@ -164,7 +176,7 @@
                                                    $"on {tUser.S}.{tUser.C_UserEmployee} = {tEmployee.S}.{tEmployee.C_EmployeeId} " &
                                                    $"where {tEmployee.S}.{tEmployee.C_EmployeeId} = {tEmployee.P_EmployeeId} " &
                                                    $"order by {tEmployee.S}.{tEmployee.C_EmployeeFullName}"
-                varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, "EPLS_Editor", dataproperties.AllParameters)
+                varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, dstTableName.EplsEditor, dataproperties.AllParameters)
             End If
         End Sub
 
@@ -677,7 +689,8 @@
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     If dataproperties.EmployeeIsNew Then
                         SetValue(dataproperties.AllParameters, tEmployee.P_EmployeeToken, CMCv.Security.Encryption.MD5())
-                        varDatabaseRequestMysql(1).Query = $"insert into {tEmployee.TableName}({tEmployee.C_EmployeeToken}, " &
+                        varDatabaseRequestMysql(1).Query = $"insert into {tEmployee.TableName}( " &
+                                                           $"{tEmployee.C_EmployeeToken}, " &
                                                            $"{tEmployee.C_EmployeePersonalIdNumber}, " &
                                                            $"{tEmployee.C_EmployeePosition}, " &
                                                            $"{tEmployee.C_EmployeeEmploymentType}, " &
@@ -690,7 +703,8 @@
                                                            $"{tEmployee.C_EmployeeIsActive}, " &
                                                            $"{tEmployee.C_EmployeeGender}, " &
                                                            $"{tEmployee.C_EmployeeClient}) " &
-                                                           $"values ({tEmployee.P_EmployeeToken}, " &
+                                                           $"values ( " &
+                                                           $"{tEmployee.P_EmployeeToken}, " &
                                                            $"{tEmployee.P_EmployeePersonalIdNumber}, " &
                                                            $"{tPosition.P_PositionId}, " &
                                                            $"{tEmploymentType.P_EmploymentTypeId}, " &
@@ -705,125 +719,72 @@
                                                            $"{tIngrid.P_ClientId});"
 
                         If varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters) Then
-                            With dataproperties.DatasetCopy.Tables("SYSS_Editor").Rows(0)
+                            ' If the insert operation is successful,
+                            ' save photo meta to database if the storage provider is not disabled
+                            ' and upload the photo to Backblaze.
+
+                            With dataproperties.DatasetCopy.Tables(dstTableName.SyssEditor).Rows(0)
                                 If .Item($"{tSettings.C_SettingsStorageProvider}").ToString = "Disabled" Then
                                     Return True
                                 End If
-                                ' If the insert operation is successful, save photo meta to database
-                                Dim imageFolder = CMCv.OperatingSystem.Folder.GetPhotoFolder
-                                Dim img As New System.Drawing.Bitmap(dataproperties.EmployeePhoto)
-                                SetValue(dataproperties.AllParameters, tAttachment.P_AttachmentExtension, System.Drawing.Imaging.ImageFormat.Jpeg)
-                                Dim varDestinationPathAndFileName As String = $"client_data/{dataproperties.AllParameters(tIngrid.P_ClientId)}/EPLS/{dataproperties.AllParameters(tEmployee.P_EmployeeToken)}.{dataproperties.AllParameters(tAttachment.P_AttachmentExtension)}"
-                                Dim url As String = $"{If(.Item(tSettings.C_SettingsApiServiceUrl) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiServiceUrl).ToString))}/{varDestinationPathAndFileName}"
-                                url = url.Replace("https://", $"https://{If(.Item(tSettings.C_SettingsApiBucketName) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiBucketName).ToString))}.")
-                                SetValue(dataproperties.AllParameters, tAttachment.P_AttachmentUrl, url)
-                                SetValue(dataproperties.AllParameters, tSettings.P_SettingsStorageProvider, dataproperties.DatasetCopy.Tables("SYSS_Editor").Rows(0).Item($"{tSettings.C_SettingsStorageProvider}").ToString)
-                                img.Save(imageFolder & $"\{dataproperties.AllParameters(tEmployee.P_EmployeeToken)}.{dataproperties.AllParameters(tAttachment.P_AttachmentExtension)}", System.Drawing.Imaging.ImageFormat.Jpeg)
-                                varDatabaseRequestMysql(1).Query = $"insert into {tAttachment.TableName}( " &
-                                                                   $"{tAttachment.C_AttachmentParentToken}, " &
-                                                                   $"{tAttachment.C_AttachmentModule}, " &
-                                                                   $"{tAttachment.C_AttachmentFileNameOriginal}, " &
-                                                                   $"{tAttachment.C_AttachmentFileNameStandard}, " &
-                                                                   $"{tAttachment.C_AttachmentExtension}, " &
-                                                                   $"{tAttachment.C_AttachmentUrl}, " &
-                                                                   $"{tAttachment.C_AttachmentTag}, " &
-                                                                   $"{tAttachment.C_AttachmentProvider}, " &
-                                                                   $"{tAttachment.C_AttachmentClient}) " &
-                                                                   $"values (" &
-                                                                   $"{tEmployee.P_EmployeeToken}, " &
-                                                                   $"{tIngrid.P_ModuleId}, " &
-                                                                   $"{tAttachment.P_AttachmentFileNameOriginal}, " &
-                                                                   $"{tEmployee.P_EmployeeToken}, " &
-                                                                   $"{tAttachment.P_AttachmentExtension}, " &
-                                                                   $"{tAttachment.P_AttachmentUrl}, " &
-                                                                   $"'EMPLOYEE-PROFILE-PHOTO', " &
-                                                                   $"{tSettings.P_SettingsStorageProvider}, " &
-                                                                   $"{tIngrid.P_ClientId});"
-
-                                If Not varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters) Then
-                                    Decision(My.Application.Info.AssemblyName.ToUpper, "Employee record are saved but failed to store photo data", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                                If Await UploadNewPhotoToBackblaze(dataproperties) Then
                                     Return True
-                                End If
-
-                                Dim backblaze = LibAPI.Api.BackblazeB2.Create(If(.Item(tSettings.C_SettingsApiKey) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiKey).ToString)),
-                                                                              If(.Item(tSettings.C_SettingsApiSecret) Is Nothing, "", CMCv.Security.Decrypt.Aes(CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiSecret).ToString))),
-                                                                              If(.Item(tSettings.C_SettingsApiServiceUrl) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiServiceUrl).ToString)))
-                                Dim result = Await backblaze.Upload(If(.Item(tSettings.C_SettingsApiBucketName) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiBucketName).ToString)),
-                                                           varDestinationPathAndFileName,
-                                                           imageFolder & $"\{dataproperties.AllParameters(tEmployee.P_EmployeeToken)}.{dataproperties.AllParameters(tAttachment.P_AttachmentExtension)}")
-                                If result Then
-                                    Return True
-                                    backblaze.Dispose()
                                 Else
-                                    Decision(My.Application.Info.AssemblyName.ToUpper, "Employee record And photo data are saved but failed to upload photo data", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                                    System.Windows.Forms.MessageBox.Show("Failed to upload photo to cloud storage.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
+                                    Return False
                                 End If
                             End With
                         Else
-                            Dim baseFolder = IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ardhagp\Ingrid .NET")
-
-                            Dim imageFolder = IO.Path.Combine(baseFolder, "Files.Image")
-                            IO.Directory.CreateDirectory(imageFolder)
-
-                            Dim img As New System.Drawing.Bitmap(dataproperties.EmployeePhoto)
-                            img.Save(imageFolder & "\a.jpg", System.Drawing.Imaging.ImageFormat.Jpeg)
-
-                            varDatabaseRequestMysql(1).Query = $"update man_employee Set employee_position = @PositionId, " &
-                                                           $"employee_number = @EmployeeNumber, " &
-                                                           $"employee_fullname = @EmployeeFullName, " &
-                                                           $"employee_birthdate = @EmployeeBirthDate, " &
-                                                           $"employee_birthplace = @EmployeeBirthPlace, " &
-                                                           $"employee_address = @EmployeeAddress, " &
-                                                           $"employee_nickname = @EmployeeNickname, " &
-                                                           $"employee_isactive = @EmployeeIsActive, " &
-                                                           $"employee_gender = @EmployeeGender, " &
-                                                           $"employee_personalid = @EmployeePersonalId " &
-                                                           $"where employee_id = @EmployeeId;"
+                            ' Failed to insert employee record
+                            ' Also failed to insert photo meta to database
+                            ' Also failed to upload photo to backblaze
+                            Return False
                         End If
+                    Else
+                        ' Update existing employee record
+                        varDatabaseRequestMysql(1).Query = $"update {tEmployee.TableName} set " &
+                                                           $"{tEmployee.C_EmployeePersonalIdNumber} = {tEmployee.P_EmployeePersonalIdNumber}, " &
+                                                           $"{tEmployee.C_EmployeePosition} = {tPosition.P_PositionId}, " &
+                                                           $"{tEmployee.C_EmployeeEmploymentType} = {tEmploymentType.P_EmploymentTypeId}, " &
+                                                           $"{tEmployee.C_EmployeeNumber} = {tEmployee.P_EmployeeNumber}, " &
+                                                           $"{tEmployee.C_EmployeeFullName} = {tEmployee.P_EmployeeFullName}, " &
+                                                           $"{tEmployee.C_EmployeeBirthDate} = {tEmployee.P_EmployeeBirthDate}, " &
+                                                           $"{tEmployee.C_EmployeeBirthPlace} = {tEmployee.P_EmployeeBirthPlace}, " &
+                                                           $"{tEmployee.C_EmployeeAddress} = {tEmployee.P_EmployeeAddress}, " &
+                                                           $"{tEmployee.C_EmployeeNickname} = {tEmployee.P_EmployeeNickname}, " &
+                                                           $"{tEmployee.C_EmployeeIsActive} = {tEmployee.P_EmployeeIsActive}, " &
+                                                           $"{tEmployee.C_EmployeeGender} = {tEmployee.P_EmployeeGender}, " &
+                                                           $"{tEmployee.C_EmployeeCompanyEmail} = {tEmployee.P_EmployeeCompanyEmail} " &
+                                                           $"where " &
+                                                           $"{tEmployee.C_EmployeeId} = {tEmployee.P_EmployeeId}"
+
+                        If varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters) Then
+                            If dataproperties.EmployeeIsNewPhoto Then
+                                If Await UploadNewPhotoToBackblaze(dataproperties) Then
+                                    Return True
+                                Else
+                                    System.Windows.Forms.MessageBox.Show("Failed to upload photo to cloud storage.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
+                                    Return False
+                                End If
+                            ElseIf dataproperties.EmployeeIsForceChangePhoto Then
+                                If Await ReuploadPhotoToBackblaze(dataproperties) Then
+                                    Return True
+                                Else
+                                    System.Windows.Forms.MessageBox.Show("Failed to re-upload photo to cloud storage.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
+                                    Return False
+                                End If
+                            ElseIf Not dataproperties.EmployeeIsNewPhoto AndAlso Not dataproperties.EmployeeIsForceChangePhoto Then
+                                ' No photo change, just update employee record
+                                Return True
+                            End If
+                        Else
+                            System.Windows.Forms.MessageBox.Show("Failed to update employee record.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
+                            Return False
+                        End If
+                        ' Check existing photo meta in database, if exist, upload new photo to backblaze and update photo meta in database, if not exist, upload new photo to backblaze and insert new photo meta to databaase
+
+                        ' if photo meta exist in database, upload new photo to backblaze and update photo meta in database
                     End If
-
-                    'varDatabaseEngineMssql2008.PUSHDATA(varDatabaseRequestMssql2008(1).Query)
-                    'Dim varQuery As String = String.Empty
-                    'Dim varCommand As System.Data.SqlClient.SqlCommand = Nothing
-                    'varCommand = New System.Data.SqlClient.SqlCommand
-
-                    'If dataproperties.EmployeeIsForceChangePhoto Then
-                    '    Dim varIsHavePhoto As Integer = GetIsHavePhoto(varDataProperties, varHash)
-                    '    Dim varPhotoHash As String = CMCv.Security.Encrypt.MD5()
-
-                    '    If varIsHavePhoto = 0 Then
-                    '        varQuery = "insert into db_universe_erp_file.dbo.sto_file([file_id], file_parent, file_filetype, file_content, file_tag, file_datetime, file_attribute, file_uploader, file_parentdate) " &
-                    '            "values(@ID, @ParentID, 'jpg', @FileContent, 'EMPLOYEE-PROFILE-PHOTO', @DateNow, 'module=EPLS;', @Uploader,@ParentDate);"
-                    '    Else
-                    '        varCommand = New System.Data.SqlClient.SqlCommand
-                    '        varQuery = String.Format("update db_universe_erp_file.dbo.sto_file set file_content = @FileContent, file_datetime = GETDATE(), file_parentdate = GETDATE() where file_parent = '{0}' and " &
-                    '                              "file_tag = 'EMPLOYEE-PROFILE-PHOTO';", varHash)
-                    '    End If
-
-                    '    varDatabaseRequestMssql2008(1).Query += varQuery
-
-                    '    varCommand.Parameters.AddWithValue("@ID", varPhotoHash)
-                    '    varCommand.Parameters.AddWithValue("@ParentID", varHash)
-                    '    varCommand.Parameters.AddWithValue("@Uploader", creatoreditor)
-                    '    varCommand.Parameters.AddWithValue("@ParentDate", Now.Date)
-
-                    '    Dim varMemorystream = New MemoryStream()
-                    '    Dim varImage As Image = employeephoto
-                    '    Dim varPhotobyte As Byte() = Nothing
-
-                    '    varImage.Save(varMemorystream, Imaging.ImageFormat.Jpeg) ', Row.Cells("file_content").Value)
-                    '    varPhotobyte = varMemorystream.ToArray
-
-                    '    Dim varImageparameter As New System.Data.SqlClient.SqlParameter("@FileContent", System.Data.SqlDbType.Image) With {
-                    '    .Value = varPhotobyte
-                    '    }
-                    '    varCommand.Parameters.Add(varImageparameter)
-                    '    varCommand.Parameters.AddWithValue("@DateNow", Now.Date)
-                    'End If
-
-                    'varCommand.CommandText = String.Format("RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' " &
-                    '                                 "GOTO RETRY END END CATCH", varDatabaseRequestMssql2008(1).Query)
-
-                    'varSuccess = varDatabaseEngineMssql2008.PushImage(varCommand)
                 End If
             Catch ex As Exception
                 System.Windows.Forms.MessageBox.Show(ex.ToString)
@@ -831,6 +792,98 @@
             End Try
 
             Return varSuccess
+        End Function
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Shared Async Function UploadNewPhotoToBackblaze(dataproperties As LibApp.Ingrid.Global.Properties) As Task(Of Boolean)
+            With dataproperties.DatasetCopy.Tables(dstTableName.SyssEditor).Rows(0)
+                ' Generate a new attachment token for the employee photo and set it in the parameters
+                SetValue(dataproperties.AllParameters, tAttachment.P_AttachmentToken, CMCv.Security.Encryption.MD5())
+
+                ' Check if employee token is empty, if empty, refer to employee id
+                Dim varParentColumn As String
+                Dim varParentValue As String
+                If dataproperties.AllParameters(tEmployee.P_EmployeeId) Is DBNull.Value OrElse dataproperties.AllParameters(tEmployee.P_EmployeeId).ToString = String.Empty Then
+                    varParentColumn = $"{tAttachment.C_AttachmentParentToken}"
+                    varParentValue = $"{tEmployee.P_EmployeeToken}"
+                Else
+                    varParentColumn = $"{tAttachment.C_AttachmentParentId}"
+                    varParentValue = $"{tEmployee.P_EmployeeId}"
+                End If
+
+                Dim imageFolder = CMCv.OperatingSystem.Folder.GetPhotoFolder
+                Dim img As New System.Drawing.Bitmap(dataproperties.EmployeePhoto)
+                SetValue(dataproperties.AllParameters, tAttachment.P_AttachmentExtension, System.Drawing.Imaging.ImageFormat.Jpeg)
+                Dim varDestinationPathAndFileName As String = $"client_data/{dataproperties.AllParameters(tIngrid.P_ClientId)}/EPLS/{dataproperties.AllParameters(tAttachment.P_AttachmentToken)}.{dataproperties.AllParameters(tAttachment.P_AttachmentExtension)}"
+
+                ' Prepare the bucket settings and construct the URL for the uploaded photo
+                Dim url As String = $"{If(.Item(tSettings.C_SettingsApiServiceUrl) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiServiceUrl).ToString))}/{varDestinationPathAndFileName}"
+                url = url.Replace("https://", $"https://{If(.Item(tSettings.C_SettingsApiBucketName) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiBucketName).ToString))}.")
+
+                SetValue(dataproperties.AllParameters, tAttachment.P_AttachmentUrl, url)
+                SetValue(dataproperties.AllParameters, tSettings.P_SettingsStorageProvider, .Item($"{tSettings.C_SettingsStorageProvider}").ToString)
+
+                img.Save(imageFolder & $"\{dataproperties.AllParameters(tEmployee.P_EmployeeToken)}.{dataproperties.AllParameters(tAttachment.P_AttachmentExtension)}", System.Drawing.Imaging.ImageFormat.Jpeg)
+                varDatabaseRequestMysql(1).Query = $"insert into {tAttachment.TableName}( " &
+                                                   $"{varParentColumn}, " &
+                                                   $"{tAttachment.C_AttachmentModule}, " &
+                                                   $"{tAttachment.C_AttachmentFileNameOriginal}, " &
+                                                   $"{tAttachment.C_AttachmentFileNameStandard}, " &
+                                                   $"{tAttachment.C_AttachmentExtension}, " &
+                                                   $"{tAttachment.C_AttachmentUrl}, " &
+                                                   $"{tAttachment.C_AttachmentTag}, " &
+                                                   $"{tAttachment.C_AttachmentProvider}, " &
+                                                   $"{tAttachment.C_AttachmentToken}, " &
+                                                   $"{tAttachment.C_AttachmentClient}) " &
+                                                   $"values ( " &
+                                                   $"{varParentValue}, " &
+                                                   $"{tIngrid.P_ModuleId}, " &
+                                                   $"{tAttachment.P_AttachmentFileNameOriginal}, " &
+                                                   $"{tEmployee.P_EmployeeToken}, " &
+                                                   $"{tAttachment.P_AttachmentExtension}, " &
+                                                   $"{tAttachment.P_AttachmentUrl}, " &
+                                                   $"'EMPLOYEE-PROFILE-PHOTO', " &
+                                                   $"{tSettings.P_SettingsStorageProvider}, " &
+                                                   $"{tAttachment.P_AttachmentToken}, " &
+                                                   $"{tIngrid.P_ClientId});"
+
+                If Not varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters) Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Employee record are saved but failed to store photo data", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
+                    Return True
+                End If
+
+                Dim backblaze = LibAPI.Api.BackblazeB2.Create(If(.Item(tSettings.C_SettingsApiKey) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiKey).ToString)),
+                                                                                  If(.Item(tSettings.C_SettingsApiSecret) Is Nothing, "", CMCv.Security.Decrypt.Aes(CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiSecret).ToString))),
+                                                                                  If(.Item(tSettings.C_SettingsApiServiceUrl) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiServiceUrl).ToString)))
+                Dim result = Await backblaze.Upload(If(.Item(tSettings.C_SettingsApiBucketName) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiBucketName).ToString)),
+                                                           varDestinationPathAndFileName,
+                                                           imageFolder & $"\{dataproperties.AllParameters(tEmployee.P_EmployeeToken)}.{dataproperties.AllParameters(tAttachment.P_AttachmentExtension)}")
+                If result Then
+                    Return True
+                Else
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Employee record And photo data are saved but failed to upload photo data", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
+                    Return False
+                End If
+                backblaze.Dispose()
+            End With
+        End Function
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Shared Async Function ReuploadPhotoToBackblaze(dataproperties As LibApp.Ingrid.Global.Properties) As Task(Of Boolean)
+            With dataproperties.DatasetCopy.Tables(dstTableName.EplsEditor).Rows(0)
+                Dim imageFolder = CMCv.OperatingSystem.Folder.GetPhotoFolder
+                Dim backblaze = LibAPI.Api.BackblazeB2.Create(If(.Item(tSettings.C_SettingsApiKey) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiKey).ToString)),
+                                                                                  If(.Item(tSettings.C_SettingsApiSecret) Is Nothing, "", CMCv.Security.Decrypt.Aes(CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiSecret).ToString))),
+                                                                                  If(.Item(tSettings.C_SettingsApiServiceUrl) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiServiceUrl).ToString)))
+                Dim result = Await backblaze.DeleteAsync(If(.Item(tSettings.C_SettingsApiBucketName) Is Nothing, "", CMCv.Security.Decrypt.Aes(.Item(tSettings.C_SettingsApiBucketName).ToString)), imageFolder & $"\{dataproperties.AllParameters(tEmployee.P_EmployeeToken)}.{dataproperties.AllParameters(tAttachment.P_AttachmentExtension)}")
+                If Not result Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Employee record And photo data are saved but failed to upload photo data", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
+                    Return False
+                End If
+
+
+                backblaze.Dispose()
+            End With
         End Function
     End Class
 End Namespace

@@ -117,6 +117,94 @@ Namespace My
                 Return CType(Me("URL_Home"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/background-al"& _ 
+            "l-platforms/waving-red-band.png")>  _
+        Public ReadOnly Property URL_MainframeBackground() As String
+            Get
+                Return CType(Me("URL_MainframeBackground"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-ima"& _ 
+            "ge-all-platforms/svg-EPLS.svg")>  _
+        Public ReadOnly Property URL_Logo_EPLS() As String
+            Get
+                Return CType(Me("URL_Logo_EPLS"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-ima"& _ 
+            "ge-all-platforms/svg-LOGIN.svg")>  _
+        Public ReadOnly Property URL_Logo_LOGIN() As String
+            Get
+                Return CType(Me("URL_Logo_LOGIN"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-ima"& _ 
+            "ge-all-platforms/svg-CCIN.svg")>  _
+        Public ReadOnly Property URL_Logo_CCIN() As String
+            Get
+                Return CType(Me("URL_Logo_CCIN"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-ima"& _ 
+            "ge-all-platforms/svg-CDIN.svg")>  _
+        Public ReadOnly Property URL_Logo_CDIN() As String
+            Get
+                Return CType(Me("URL_Logo_CDIN"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-ima"& _ 
+            "ge-all-platforms/svg-UPDATE.svg")>  _
+        Public ReadOnly Property URL_Menu_UPDATE() As String
+            Get
+                Return CType(Me("URL_Menu_UPDATE"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-ima"& _ 
+            "ge-all-platforms/svg-EDIT.svg")>  _
+        Public ReadOnly Property URL_Logo_EDIT() As String
+            Get
+                Return CType(Me("URL_Logo_EDIT"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-ima"& _ 
+            "ge-all-platforms/svg-OPENCOMMAND.svg")>  _
+        Public ReadOnly Property URL_Image_OPENCOMMAND() As String
+            Get
+                Return CType(Me("URL_Image_OPENCOMMAND"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

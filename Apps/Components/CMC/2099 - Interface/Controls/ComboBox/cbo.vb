@@ -1,19 +1,17 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Control
+﻿Namespace UI.Control
     ''' <project>CMCC</project>
     ''' <author>Ardha Gp</author>
     ''' <summary>
-    ''' Custom combobox
+    ''' Custom combo box
     ''' </summary>
+    <System.ComponentModel.DesignerCategory("Code")>
     Public Class Cbo
         Inherits System.Windows.Forms.ComboBox
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
-            Call ActivateLicenses()
-            MyBase.Font = globalFontLbl
+            MyBase.Font = Component.Properties.globalFontLbl
             MyBase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
             MyBase.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             MyBase.DoubleBuffered = True

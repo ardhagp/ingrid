@@ -1,14 +1,11 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Control
+﻿Namespace UI.Control
     Public Class Lnk
         Inherits System.Windows.Forms.LinkLabel
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
-            Call ActivateLicenses()
-            MyBase.Font = globalFontLbl
+            MyBase.Font = Component.Properties.globalFontLbl
             MyBase.DoubleBuffered = True
         End Sub
     End Class

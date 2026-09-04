@@ -61,8 +61,8 @@ Namespace Database.Engine
             Catch ex As MySqlException
                 varSuccess = False
 
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -76,7 +76,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             End Try
             Return varSuccess
@@ -126,8 +126,8 @@ Namespace Database.Engine
                 End Using
                 Return varDataReader
             Catch ex As MySqlException
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -142,13 +142,13 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -163,7 +163,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -211,8 +211,8 @@ Namespace Database.Engine
                 End Using
                 Return varRowValue
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\MySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -227,7 +227,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -282,8 +282,8 @@ Namespace Database.Engine
                 End Using
                 Return varDataset
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDataSet] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -298,7 +298,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -369,8 +369,8 @@ Namespace Database.Engine
                     End Using
                 End Using
             Catch ex As MySqlException
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -385,11 +385,11 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -404,7 +404,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             End Try
         End Sub
@@ -448,8 +448,8 @@ Namespace Database.Engine
                 End Using
                 Return True
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[PushData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -464,7 +464,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
                 Return False
             End Try
@@ -503,8 +503,8 @@ Namespace Database.Engine
                 varSuccess = True
             Catch ex As Exception
                 varSuccess = False
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[PushImage] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -518,7 +518,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             End Try
 
@@ -576,8 +576,8 @@ Namespace Database.Engine
                 End Using
             Catch ex As Exception
                 datasetname = Nothing
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\05 - MySQL\clsMySQL.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -592,7 +592,7 @@ Namespace Database.Engine
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             End Try
 

@@ -1,4 +1,4 @@
-﻿Namespace Sys.Hardware
+﻿Namespace Hardware
     ''' <summary>
     ''' This class provides methods to check the presence of a keyboard on the system using Windows Management Instrumentation (WMI).
     ''' </summary>

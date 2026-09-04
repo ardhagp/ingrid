@@ -1,5 +1,7 @@
 ﻿Namespace UI
     Public Class FRMapplauncher
+        Inherits System.Windows.Forms.Form
+
         Private WithEvents Frm_mainframe6 As Ingrid.UI.Canvas.FRMmainframe6
         Private WithEvents Frm_conn As Connect.UI.Canvas.FRMconn
 
@@ -11,7 +13,7 @@
         Private varLabelCountdown As String = $"app in {varSecond} seconds..."
         Private Const varItemLocalDB As String = "Local DB"
 
-        Private Async Sub Frmapplauncher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Private Async Sub FRMappLauncher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Dim baseFolder = IO.Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "ardhagp\Ingrid .NET")
@@ -93,6 +95,7 @@
                 My.Settings.Save()
 
                 If appnameindex = 0 Then
+                    tmrCountdown.Enabled = False
                     Frm_conn = New Connect.UI.Canvas.FRMconn
                     Display(Frm_conn, , "INGRID - CONNECTION SETTINGS", "Connection Settings", "Manage your database connection settings", False)
                 ElseIf appnameindex = 1 Then

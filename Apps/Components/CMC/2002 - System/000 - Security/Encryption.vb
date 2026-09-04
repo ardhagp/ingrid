@@ -46,12 +46,12 @@
         ''' <returns>The encrypted message, or an empty string if an error occurs.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function Aes(message As String) As String
-            Dim varMessage As String = NETCore.Encrypt.EncryptProvider.AESEncrypt(message, UI.varSalt)
+            Dim varMessage As String = NETCore.Encrypt.EncryptProvider.AESEncrypt(message, Component.Properties.varSalt)
             Try
                 Return varMessage
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[AES] $\Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -65,7 +65,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return String.Empty
@@ -90,8 +90,8 @@
                     Return varCRCvalue.ToString(Globalization.CultureInfo.InvariantCulture)
                 End If
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[CRC32] $\Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -105,7 +105,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return String.Empty
@@ -165,11 +165,11 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function Aes(message As String) As String
             Try
-                Dim varMessage As String = NETCore.Encrypt.EncryptProvider.AESDecrypt(message, UI.varSalt)
+                Dim varMessage As String = NETCore.Encrypt.EncryptProvider.AESDecrypt(message, Component.Properties.varSalt)
                 Return varMessage
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[AES] $\Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -183,7 +183,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return String.Empty
@@ -197,11 +197,11 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetSalt() As String
             Try
-                Dim varMessage As String = UI.varSalt
+                Dim varMessage As String = Component.Properties.varSalt
                 Return varMessage
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetSalt] $\Ingrid\Apps\Components\CMC\2002 - System\000 - Security\clsEncrypt.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -215,7 +215,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return String.Empty

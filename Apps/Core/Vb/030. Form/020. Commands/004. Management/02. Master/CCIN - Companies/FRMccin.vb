@@ -128,7 +128,7 @@ Namespace UI.Canvas
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMcompany_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            SLFLogo.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp($"\Resources\svg-{varThisModuleCode}.svg", True, 512, 512)
+            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_CCIN, XOLogo,, 512, 512)
 
             ' Set active module to UserParameters
             With varDataProperties

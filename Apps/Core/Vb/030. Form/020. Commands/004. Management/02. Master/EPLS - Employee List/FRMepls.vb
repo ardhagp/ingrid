@@ -3,6 +3,9 @@
     ''' This is the main form for the Employee List module. It provides functionalities to view, add, edit, delete, and refresh employee records. The form interacts with the underlying data properties and handles user access permissions for various operations. It also includes a search feature to filter employee records based on user input.
     ''' </summary>
     Public Class FRMepls
+        ' ----------------------------------------------------------
+        '  Variables
+        ' ----------------------------------------------------------
         Private WithEvents Frm_epls_Editor As New FRMeplsEditor
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
@@ -10,6 +13,33 @@
         Private varThisModuleId As Long = 0
         Private Const varThisModuleCode As String = "EPLS"
 
+
+        ' ----------------------------------------------------------
+        ' Form Events Handlers
+        ' ----------------------------------------------------------
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMepls_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_EPLS, XOLogo,, 512, 512)
+
+            ' Set active module to UserParameters
+            With varDataProperties
+                SetValue(.AllParameters, tIngrid.P_ModuleCode, varThisModuleCode)
+                varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.AllParameters)
+                SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
+            End With
+
+            ' Continue to Load anything for this module
+            Com_mms_Menu.LoadIn(Me)
+            Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+            DgnEPLS.XOGetNewColor()
+            Call GetData()
+            TxtFind.ClearSearch()
+            CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnEPLS)
+        End Sub
+
+        ' ---------------------------------------------------------
+        ' Functions and Subroutines
+        ' ---------------------------------------------------------
         ''' <summary>
         ''' This method retrieves employee data and displays it in the DataGridView. It can optionally force a refresh of the data, ensuring that the latest information is shown to the user. The method uses double buffering for smoother rendering of the DataGridView and updates the status label accordingly.
         ''' </summary>
@@ -142,25 +172,6 @@
             TxtFind.Focus()
         End Sub
 
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMepls_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            SLFLogo.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp($"\Resources\svg-{varThisModuleCode}.svg", True, 512, 512)
-
-            ' Set active module to UserParameters
-            With varDataProperties
-                SetValue(.AllParameters, tIngrid.P_ModuleCode, varThisModuleCode)
-                varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.AllParameters)
-                SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
-            End With
-
-            ' Continue to Load anything for this module
-            Com_mms_Menu.LoadIn(Me)
-            Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
-            DgnEPLS.XOGetNewColor()
-            Call GetData()
-            TxtFind.ClearSearch()
-            CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnEPLS)
-        End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown

@@ -11,6 +11,7 @@
         Public ReadOnly C_AttachmentExtension As String = "attachment_extension"
         Public ReadOnly C_AttachmentUrl As String = "attachment_url"
         Public ReadOnly C_AttachmentTag As String = "attachment_tag"
+        Public ReadOnly C_AttachmentToken As String = "attachment_token"
         Public ReadOnly C_AttachmentProvider As String = "attachment_provider"
         Public ReadOnly C_AttachmentClient As String = "attachment_client"
         Public ReadOnly P_AttachmentId As String = "@AttachmentId"
@@ -22,6 +23,7 @@
         Public ReadOnly P_AttachmentExtension As String = "@AttachmentExtension"
         Public ReadOnly P_AttachmentUrl As String = "@AttachmentUrl"
         Public ReadOnly P_AttachmentTag As String = "@AttachmentTag"
+        Public ReadOnly P_AttachmentToken As String = "@AttachmentToken"
         Public ReadOnly P_AttachmentProvider As String = "@AttachmentProvider"
         Public ReadOnly P_AttachmentSearch As String = "@AttachmentSearch"
     End Class

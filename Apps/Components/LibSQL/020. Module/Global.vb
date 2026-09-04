@@ -16,7 +16,9 @@
     Public varSecurityMd5 As System.Security.Cryptography.MD5
     Public varSecurityCrc32 As New System.IO.Hashing.Crc32
 
-    Public WithEvents MSG As New CMCv.UI.Canvas.FRMdialogbox
+    Public WithEvents MSG As New CMCv.UI.Canvas.FRMdialogBox
+
+    Public dstTableName As New LibApp.Table.Dataset.Name
 
     Public tIngrid As New LibApp.Table.Application.Ingrid
     Public tCompany As New LibApp.Table.Man.Company

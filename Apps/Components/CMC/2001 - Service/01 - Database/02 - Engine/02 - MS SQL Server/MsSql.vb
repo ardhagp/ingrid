@@ -53,8 +53,8 @@
                 splash?.Close()
                 varSuccess = False
 
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[Open] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -68,7 +68,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
             End Try
@@ -99,8 +99,8 @@
 
                 Return varDataReader(1)
             Catch ex As Microsoft.Data.SqlClient.SqlException
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -115,13 +115,13 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDataRow] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -136,7 +136,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -169,8 +169,8 @@
                 Return varRowValue
 
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetValue] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -185,7 +185,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -228,8 +228,8 @@
 
                 Return varDataset
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDataSet] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -244,7 +244,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
 
                 Return Nothing
@@ -301,8 +301,8 @@
                 End If
 
             Catch ex As Microsoft.Data.SqlClient.SqlException
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -317,11 +317,11 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[GetDataTable] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -336,7 +336,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             End Try
         End Sub
@@ -359,8 +359,8 @@
                 varCommand(1).CommandText = String.Format(Globalization.CultureInfo.InvariantCulture, "RETRY: BEGIN TRANSACTION BEGIN TRY {0} COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION	IF ERROR_NUMBER() = 1205 BEGIN WAITFOR DELAY '00:00:00.05' GOTO RETRY END END CATCH", query)
                 varCommand(1).ExecuteNonQuery()
             Catch ex As Exception
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[PushData] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -375,7 +375,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             End Try
         End Sub
@@ -403,8 +403,8 @@
             Catch ex As Exception
                 varSuccess = False
 
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[PushImage] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -418,7 +418,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             End Try
 
@@ -456,8 +456,8 @@
             Catch ex As Exception
                 datasetname = Nothing
 
-                With UI.proLog
-                    .AppVersion = UI.GetAppVersion()
+                With Component.Properties.proLog
+                    .AppVersion = Component.Properties.GetAppVersion()
                     .FromSender = "[FillDataset] $\Ingrid\Apps\Components\CMC\2001 - Service\01 - Database\02 - Engine\02 - MS SQL Server 2008\clsMSSQL2008.vb"
                     .InternalStackTrace = ex.StackTrace
                     .Message = ex.Message
@@ -472,7 +472,7 @@
                 End With
 
                 Dim clsLog As New Ladybug.Log.Events
-                clsLog.ShowData(UI.proLog)
+                clsLog.ShowData(Component.Properties.proLog)
                 clsLog = Nothing
             End Try
 

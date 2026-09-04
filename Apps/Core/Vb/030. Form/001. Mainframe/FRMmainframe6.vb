@@ -55,8 +55,10 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Try
-                BtnExecute.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-play-fill.svg", True, 48, 48)
+                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(My.Settings.URL_MainframeBackground, Me)
+                CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Image_OPENCOMMAND, BtnExecute,, 48, 48)
                 PctProfile.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-images.svg", True, 72, 72)
+                Ms_mainframe.Items("SUPPORT").Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-UPDATE.svg", True, 24, 24)
 
                 ' Set MDI Client Background Color
                 For Each ctrl As Control In Me.Controls
@@ -446,6 +448,7 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMlogin_LoginSuccess() Handles Frm_login.EventLoginSuccess
             Call GetNotification()
+            PnlProfile.Height = 320
             PnlProfile.Visible = True
             PctProfile.Image = Nothing
             PctProfile.BackgroundImage = Nothing
@@ -707,7 +710,7 @@ Namespace UI.Canvas
                 LogoutToolStripMenuItem.Visible = False
                 LogoutToolStripMenuItem.Enabled = False
                 USERMENU.Text = "NOT LOGGED"
-                USERMENU.BackColor = Global.System.Drawing.SystemColors.Control
+                USERMENU.BackColor = Global.System.Drawing.Color.White
                 'tmdi_.AttachedTo = Nothing
                 Call CloseAllWindows(True) ''' Close all windows on logout
                 TmrNotif.Enabled = False
@@ -782,7 +785,7 @@ Namespace UI.Canvas
                 End If
 
                 PnlProfile.Visible = IsProfileVisible(CInt(.Rows(0).Item(tSettings.C_SettingsShowProfile)), CBool(varDataProperties.AllParameters(tIngrid.P_UserIsRoot)))
-
+                PnlProfile.Height = 320
                 If (PnlProfile.Visible) Then
                     LblWelcome.Text = LibSQL.CMDapp.ProfilePanel.Welcome(varDataProperties)
                     LblEmpNumber.Text = varDataProperties.AllParameters(tIngrid.P_EmployeeNumber).ToString
@@ -792,7 +795,6 @@ Namespace UI.Canvas
                     LblEmployeeName.Text = String.Join(" ", varNama.Take(2))
                     LblPosition.Text = varDataProperties.AllParameters(tIngrid.P_PositionName).ToString
                     'PctProfile.Image = varSqlProfiles.GetPhoto(varDataProperties.ConnectionDatabaseName, varDataProperties.EmployeeId, varDataProperties.EmployeeGender)
-                    PnlProfile.Height = 320
                 Else
                     LblWelcome.Text = String.Empty
                     LblEmpNumber.Text = String.Empty
@@ -819,9 +821,8 @@ Namespace UI.Canvas
                 End If
 
                 PnlStorage.Visible = IsPanelVisible(CInt(.Rows(0).Item(tSettings.C_SettingsShowStorage)), CBool(varDataProperties.AllParameters(tIngrid.P_UserIsRoot)))
-
+                PnlStorage.Height = 158
                 If (PnlStorage.Visible) Then
-                    PnlStorage.Height = 158
                     varFreespace = CInt(LibSQL.CMDapp.StorageSense.MaxSize(varDataProperties.ConnectionDatabaseName, LibSQL.CMDapp.StorageSense.DBSizeType.FreeSpace))
                     pgDataStorage.Maximum = varFreespace
                     varDatacurrentsize = CInt(LibSQL.CMDapp.StorageSense.DataCurrentSize(varDataProperties.ConnectionDatabaseName))

@@ -8,7 +8,6 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub New()
             InitializeComponent()
-            Call ActivateLicenses()
             MyBase.DoubleBuffered = True
             Me.Renderer = New CustomMenuStripRenderer(varForeColor, varForeColorOnClick)
         End Sub

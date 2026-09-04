@@ -21,9 +21,10 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Dim MySettings1 As My.MySettings = New My.MySettings()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMstandard))
+            Dim MySettings1 As My.MySettings = New My.MySettings()
             pnl_ = New UI.Control.Pnl(components)
+            XOLogo = New UI.Control.Pbx(components)
             SLFLogo = New UI.Control.Pbx(components)
             SLFBackground = New UI.Control.Pbx(components)
             SLFNamaForm = New UI.Control.Lbl(components)
@@ -32,6 +33,7 @@
             SLFStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
             SLFPanel = New UI.Control.Pnl(components)
             pnl_.SuspendLayout()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
             SLFStatus.SuspendLayout()
@@ -42,6 +44,7 @@
             pnl_.AutoSize = True
             pnl_.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
             pnl_.BackColor = Drawing.Color.Black
+            pnl_.Controls.Add(XOLogo)
             pnl_.Controls.Add(SLFLogo)
             pnl_.Controls.Add(SLFBackground)
             pnl_.Controls.Add(SLFNamaForm)
@@ -53,6 +56,20 @@
             pnl_.Size = New System.Drawing.Size(1307, 104)
             pnl_.TabIndex = 999
             ' 
+            ' XOLogo
+            ' 
+            XOLogo.BackColor = Drawing.Color.Transparent
+            XOLogo.ErrorImage = CType(resources.GetObject("XOLogo.ErrorImage"), Drawing.Image)
+            XOLogo.InitialImage = CType(resources.GetObject("XOLogo.InitialImage"), Drawing.Image)
+            XOLogo.Location = New System.Drawing.Point(7, 10)
+            XOLogo.Name = "XOLogo"
+            XOLogo.Size = New System.Drawing.Size(73, 85)
+            XOLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+            XOLogo.TabIndex = 999
+            XOLogo.TabStop = False
+            XOLogo.XOBorderColor = Drawing.Color.DodgerBlue
+            XOLogo.XOShowBorder = False
+            ' 
             ' SLFLogo
             ' 
             SLFLogo.BackColor = Drawing.Color.Black
@@ -61,6 +78,7 @@
             MySettings1.SLFBackground = Drawing.Color.Black
             SLFLogo.DataBindings.Add(New System.Windows.Forms.Binding("BackColor", MySettings1, "SLFBackground", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
             SLFLogo.ErrorImage = CType(resources.GetObject("SLFLogo.ErrorImage"), Drawing.Image)
+            SLFLogo.Image = CType(resources.GetObject("SLFLogo.Image"), Drawing.Image)
             SLFLogo.InitialImage = CType(resources.GetObject("SLFLogo.InitialImage"), Drawing.Image)
             SLFLogo.Location = New System.Drawing.Point(7, 10)
             SLFLogo.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -69,6 +87,7 @@
             SLFLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             SLFLogo.TabIndex = 0
             SLFLogo.TabStop = False
+            SLFLogo.Visible = False
             SLFLogo.XOBorderColor = Drawing.Color.DodgerBlue
             SLFLogo.XOShowBorder = False
             ' 
@@ -93,7 +112,7 @@
             SLFNamaForm.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             SLFNamaForm.AutoSize = True
             SLFNamaForm.BackColor = Drawing.Color.Transparent
-            SLFNamaForm.Font = New System.Drawing.Font("Segoe UI", 18F, Drawing.FontStyle.Bold)
+            SLFNamaForm.Font = New System.Drawing.Font("Segoe UI", 18.0F, Drawing.FontStyle.Bold)
             SLFNamaForm.ForeColor = Drawing.Color.White
             SLFNamaForm.Location = New System.Drawing.Point(88, 7)
             SLFNamaForm.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
@@ -109,7 +128,7 @@
             SLFSubNamaForm.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
             SLFSubNamaForm.AutoSize = True
             SLFSubNamaForm.BackColor = Drawing.Color.Transparent
-            SLFSubNamaForm.Font = New System.Drawing.Font("Segoe UI", 9F)
+            SLFSubNamaForm.Font = New System.Drawing.Font("Segoe UI", 9.0F)
             SLFSubNamaForm.ForeColor = Drawing.Color.White
             SLFSubNamaForm.Location = New System.Drawing.Point(117, 58)
             SLFSubNamaForm.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
@@ -124,10 +143,10 @@
             SLFStatus.BackColor = Drawing.SystemColors.Control
             SLFStatus.ImageScalingSize = New System.Drawing.Size(24, 24)
             SLFStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {SLFStatusLabel})
-            SLFStatus.Location = New System.Drawing.Point(0, 1051)
+            SLFStatus.Location = New System.Drawing.Point(0, 1057)
             SLFStatus.Name = "SLFStatus"
             SLFStatus.Padding = New System.Windows.Forms.Padding(2, 0, 23, 0)
-            SLFStatus.Size = New System.Drawing.Size(1307, 28)
+            SLFStatus.Size = New System.Drawing.Size(1307, 22)
             SLFStatus.TabIndex = 994
             SLFStatus.Text = "Stt1"
             ' 
@@ -135,7 +154,7 @@
             ' 
             SLFStatusLabel.ForeColor = Drawing.Color.Black
             SLFStatusLabel.Name = "SLFStatusLabel"
-            SLFStatusLabel.Size = New System.Drawing.Size(0, 21)
+            SLFStatusLabel.Size = New System.Drawing.Size(0, 15)
             ' 
             ' SLFPanel
             ' 
@@ -146,12 +165,12 @@
             SLFPanel.Location = New System.Drawing.Point(0, 104)
             SLFPanel.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             SLFPanel.Name = "SLFPanel"
-            SLFPanel.Size = New System.Drawing.Size(1307, 947)
+            SLFPanel.Size = New System.Drawing.Size(1307, 953)
             SLFPanel.TabIndex = 7
             ' 
             ' FRMstandard
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
             BackColor = Drawing.Color.FromArgb(CByte(11), CByte(28), CByte(45))
             ClientSize = New System.Drawing.Size(1307, 1079)
             Controls.Add(SLFPanel)
@@ -163,6 +182,7 @@
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
             SLFStatus.ResumeLayout(False)
@@ -179,5 +199,6 @@
         Friend WithEvents SLFStatusLabel As System.Windows.Forms.ToolStripStatusLabel
         Public WithEvents SLFPanel As UI.Control.Pnl
         Public WithEvents SLFBackground As UI.Control.Pbx
+        Public WithEvents XOLogo As UI.Control.Pbx
     End Class
 End Namespace

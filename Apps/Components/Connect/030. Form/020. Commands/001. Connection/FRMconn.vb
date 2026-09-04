@@ -1,6 +1,8 @@
 ﻿Namespace UI.Canvas
     <System.Runtime.Versioning.SupportedOSPlatform("windows")>
     Public Class FRMconn
+        Inherits CMCv.UI.Canvas.FRMstandardFindFooter
+
         Private WithEvents FRMconn_editor As FRMconnEditor
         Private WithEvents COMmainframemenu As New CMCv.UI.View.MenuStrip
 

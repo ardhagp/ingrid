@@ -58,6 +58,30 @@ Namespace Api
         End Function
 
         ''' <summary>
+        ''' Deletes a file from a Backblaze B2 bucket using its key.
+        ''' </summary>
+        ''' <param name="bucketname">The bucket name.</param>
+        ''' <param name="key">The file key to delete.</param>
+        ''' <returns>True if deletion succeeded.</returns>
+        Public Async Function DeleteAsync(bucketname As String, key As String) As Task(Of Boolean)
+            Try
+                Dim deleteRequest As New DeleteObjectRequest With {
+                .BucketName = bucketname,
+                .Key = key
+                }
+
+                Dim deleteResponse = Await AWSClient.DeleteObjectAsync(deleteRequest)
+
+                Return deleteResponse.HttpStatusCode = Net.HttpStatusCode.NoContent OrElse
+               deleteResponse.HttpStatusCode = Net.HttpStatusCode.OK
+
+            Catch ex As Exception
+                Return False
+            End Try
+        End Function
+
+
+        ''' <summary>
         ''' Calculates the total storage usage (in bytes) of a Backblaze B2 bucket
         ''' by listing all objects and summing their sizes.
         ''' </summary>

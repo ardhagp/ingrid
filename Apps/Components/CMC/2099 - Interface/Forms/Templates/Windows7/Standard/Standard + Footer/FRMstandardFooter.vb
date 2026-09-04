@@ -1,5 +1,7 @@
 ﻿Namespace UI.Canvas
     Public Class FRMstandardFooter
+        Inherits UI.Canvas.FRMstandard
+
         Public Sub New()
 
             ' This call is required by the designer.

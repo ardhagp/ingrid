@@ -44,8 +44,37 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <UserSecretsId>6a79fad4-b2d4-4093-8fa0-744b9ed27bb8</UserSecretsId>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DocumentationFile>CMCv.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <CodeAnalysisLogFile>bin\Release\Mainframe_n_6.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisRuleSet>..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\2022\Community\Team Tools\Static Analysis Tools\Rule Sets\MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DocumentationFile>CMCv.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <CodeAnalysisLogFile>bin\Release\Mainframe_n_6.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisRuleSet>..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\2022\Community\Team Tools\Static Analysis Tools\Rule Sets\MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <DebugSymbols>true</DebugSymbols>
     <DefineDebug>true</DefineDebug>
     <DocumentationFile>CMCv.xml</DocumentationFile>
@@ -74,6 +103,12 @@
     <OptionStrict>On</OptionStrict>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <DebugType>portable</DebugType>
   </PropertyGroup>
   <ItemGroup>
@@ -154,9 +189,7 @@
     <Compile Update="2099 - Interface\Controls\ComboBox\cbo.Designer.vb">
       <DependentUpon>Cbo.vb</DependentUpon>
     </Compile>
-    <Compile Update="2099 - Interface\Controls\ComboBox\Cbo.vb">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Update="2099 - Interface\Controls\ComboBox\Cbo.vb" />
     <Compile Update="2099 - Interface\Controls\Context Menu\csmnu.Designer.vb">
       <DependentUpon>CsMnu.vb</DependentUpon>
     </Compile>
@@ -519,6 +552,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DirectShowLib.Standard" Version="2.1.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.2" />
     <PackageReference Include="MySql.Data" Version="9.7.0" />
     <PackageReference Include="NETCore.Encrypt" Version="2.1.1" />

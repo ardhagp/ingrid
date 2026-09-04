@@ -98,7 +98,7 @@ Namespace UI.Control
         ''' <param name="BMin">Nilai minimum warna biru</param>
         ''' <param name="BMax">Nilai maksimum warna biru</param>
         Public Shared Function NewRandomColor(rmin As Integer, rmax As Integer, gmin As Integer, gmax As Integer, bmin As Integer, bmax As Integer) As System.Drawing.Color
-            Return System.Drawing.Color.FromArgb(varRandomColor.Next(rmin, rmax), varRandomColor.Next(gmin, gmax), varRandomColor.Next(bmin, bmax))
+            Return System.Drawing.Color.FromArgb(Component.Properties.varRandomColor.Next(rmin, rmax), Component.Properties.varRandomColor.Next(gmin, gmax), Component.Properties.varRandomColor.Next(bmin, bmax))
         End Function
 
         ''' <summary>
