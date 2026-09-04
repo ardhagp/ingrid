@@ -47,8 +47,8 @@ Namespace UI.View
             'Com_menu = New CMCv.mnu
             With Com_menu
                 .Visible = isshown
-                .BackColor = System.Drawing.SystemColors.Control
-                .ForeColor = System.Drawing.Color.Black
+                .BackColor = System.Drawing.Color.White
+                .XOForeColor = System.Drawing.Color.Black
                 .Font = New Drawing.Font("Segoe UI", 12)
             End With
 

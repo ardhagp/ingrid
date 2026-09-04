@@ -1,4 +1,6 @@
-﻿Namespace CMDepls
+﻿Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
+
+Namespace CMDepls
     ''' <summary>
     ''' The View class provides methods for displaying and managing employee data in a user interface. It includes functionality to display employee data in a grid, delete employee records, and retrieve various employee properties from the database. The class supports both MSSQL and MySQL database engines and handles data retrieval and manipulation based on the specified database engine.
     ''' </summary>
@@ -764,13 +766,16 @@
                                     System.Windows.Forms.MessageBox.Show("Failed to upload photo to cloud storage.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
                                     Return False
                                 End If
-                            Else
+                            ElseIf dataproperties.EmployeeIsForceChangePhoto Then
                                 If Await ReuploadPhotoToBackblaze(dataproperties) Then
                                     Return True
                                 Else
                                     System.Windows.Forms.MessageBox.Show("Failed to re-upload photo to cloud storage.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
                                     Return False
                                 End If
+                            ElseIf Not dataproperties.EmployeeIsNewPhoto AndAlso Not dataproperties.EmployeeIsForceChangePhoto Then
+                                ' No photo change, just update employee record
+                                Return True
                             End If
                         Else
                             System.Windows.Forms.MessageBox.Show("Failed to update employee record.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
