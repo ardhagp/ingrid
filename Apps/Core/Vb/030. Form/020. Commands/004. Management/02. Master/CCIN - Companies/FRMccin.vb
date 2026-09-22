@@ -91,8 +91,7 @@ Namespace UI.Canvas
                     Dim varLine As New String("─"c, 80)
                     varMessage.AppendLine(varLine)
 
-                    varMessage.AppendLine("Company ID : " & .Cells("company_id").Value.ToString & Environment.NewLine &
-                        "Company Code : " & .Cells("company_code").Value.ToString & Environment.NewLine &
+                    varMessage.AppendLine("Company Code : " & .Cells("company_code").Value.ToString & Environment.NewLine &
                         "Company Name : " & .Cells("company_name").Value.ToString & Environment.NewLine &
                         "Search Term1 : " & .Cells("company_searchterm1").Value.ToString & Environment.NewLine &
                         "Search Term2 : " & .Cells("company_searchterm1").Value.ToString & Environment.NewLine &

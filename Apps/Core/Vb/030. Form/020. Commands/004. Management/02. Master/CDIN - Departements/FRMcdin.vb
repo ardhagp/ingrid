@@ -75,8 +75,8 @@
                     Dim varLine As String = New String("─"c, 80)
                     varMessage.AppendLine(varLine)
 
-                    varMessage.AppendLine("Department ID : " & .Cells("department_id").Value.ToString & Environment.NewLine &
-                        "Department Code : " & .Cells("department_code").Value.ToString & Environment.NewLine &
+                    varMessage.AppendLine("Department Code : " & .Cells("department_code").Value.ToString & Environment.NewLine &
+                        "Company Name : " & .Cells("company_name").Value.ToString & Environment.NewLine &
                         "Department Name : " & .Cells("department_name").Value.ToString & Environment.NewLine &
                         "Description : " & .Cells("department_description").Value.ToString)
 

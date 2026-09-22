@@ -36,6 +36,7 @@
 
                 varDatabaseRequestMysql(0).Query = $"select {tDepartment.S}.{tDepartment.C_DepartmentId}, " &
                                                    $"{tCompany.S}.{tCompany.C_CompanyCode}, " &
+                                                   $"{tCompany.S}.{tCompany.C_CompanyName}," &
                                                    $"{tDepartment.S}.{tDepartment.C_DepartmentCode}, " &
                                                    $"{tDepartment.S}.{tDepartment.C_DepartmentName}, " &
                                                    $"{tDepartment.S}.{tDepartment.C_DepartmentDescription} " &
