@@ -132,10 +132,10 @@
 
                     varMessage.AppendLine("Employee ID : " & .Cells("employee_number").Value.ToString & Environment.NewLine &
                             "Employee Name : " & .Cells("employee_fullname").Value.ToString & Environment.NewLine &
-                            "Company : " & .Cells("company_name").Value.ToString & Environment.NewLine &
+                            "Position : " & .Cells("position_name").Value.ToString & Environment.NewLine &
                             "Department : " & .Cells("department_name").Value.ToString & Environment.NewLine &
-                            "Position : " & .Cells("position_name").Value.ToString & Environment.NewLine)
-
+                            "Company : " & .Cells("company_name").Value.ToString & Environment.NewLine
+                            )
                     varMessage.AppendLine(varLine)
                     If Decision(My.Application.Info.AssemblyName.ToUpper, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDepls.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
                         Call GetData(True)

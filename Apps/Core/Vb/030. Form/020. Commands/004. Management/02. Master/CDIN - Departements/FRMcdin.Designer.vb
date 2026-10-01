@@ -27,6 +27,7 @@
             DgnCDIN = New CMCv.UI.Control.Dgn(components)
             department_id = New DataGridViewTextBoxColumn()
             company_code = New DataGridViewTextBoxColumn()
+            company_name = New DataGridViewTextBoxColumn()
             department_code = New DataGridViewTextBoxColumn()
             department_name = New DataGridViewTextBoxColumn()
             department_description = New DataGridViewTextBoxColumn()
@@ -35,6 +36,7 @@
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(DgnCDIN, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
@@ -59,8 +61,9 @@
             ' 
             DgnCDIN.AllowUserToAddRows = False
             DgnCDIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(197), CByte(227), CByte(184))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(236), CByte(226), CByte(152))
             DgnCDIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+            DgnCDIN.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnCDIN.BorderStyle = BorderStyle.None
             DgnCDIN.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnCDIN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
@@ -74,7 +77,7 @@
             DgnCDIN.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             DgnCDIN.ColumnHeadersHeight = 43
             DgnCDIN.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-            DgnCDIN.Columns.AddRange(New DataGridViewColumn() {department_id, company_code, department_code, department_name, department_description})
+            DgnCDIN.Columns.AddRange(New DataGridViewColumn() {department_id, company_code, company_name, department_code, department_name, department_description})
             DgnCDIN.Dock = DockStyle.Fill
             DgnCDIN.EnableHeadersVisualStyles = False
             DgnCDIN.Font = New Font("Verdana", 8F)
@@ -118,6 +121,17 @@
             company_code.Name = "company_code"
             company_code.ReadOnly = True
             company_code.Width = 160
+            ' 
+            ' company_name
+            ' 
+            company_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            company_name.DataPropertyName = "company_name"
+            company_name.HeaderText = "COMPANY NAME"
+            company_name.MinimumWidth = 8
+            company_name.Name = "company_name"
+            company_name.ReadOnly = True
+            company_name.Visible = False
+            company_name.Width = 160
             ' 
             ' department_code
             ' 
@@ -167,6 +181,7 @@
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(DgnCDIN, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
@@ -174,6 +189,7 @@
         Friend WithEvents DgnCDIN As CMCv.UI.Control.Dgn
         Friend WithEvents department_id As DataGridViewTextBoxColumn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
+        Friend WithEvents company_name As DataGridViewTextBoxColumn
         Friend WithEvents department_code As DataGridViewTextBoxColumn
         Friend WithEvents department_name As DataGridViewTextBoxColumn
         Friend WithEvents department_description As DataGridViewTextBoxColumn

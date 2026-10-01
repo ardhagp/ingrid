@@ -172,7 +172,7 @@
                                                        $"{tCompany.P_CompanySearchTerm2}, " &
                                                        $"{tCompany.P_CompanyDescription}, " &
                                                        $"{tCompany.P_CompanyToken}, " &
-                                                       $"{tClient.P_ClientId})"
+                                                       $"{tIngrid.P_ClientId})"
                 ElseIf Not (dataproperties.CompanyIsNew) AndAlso dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
                     varDatabaseRequestMysql(1).Query = $"update {tCompany.TableName} set " &
                                                        $"{tCompany.C_CompanyCode} = {tCompany.P_CompanyCode}, " &
