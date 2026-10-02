@@ -353,6 +353,66 @@
                 Return False
             End Try
         End Function
+
+        ''' <summary>
+        ''' This function is used to get an SVG image from a URL and set it as the image of a System.Drawing.Image object. It takes in the URL of the SVG image, the Image object, optional dataproperties object, and optional width and height parameters for the resulting Bitmap. If the SVG image is successfully loaded and converted to a Bitmap, it sets the EmployeeIsForceChangePhoto property to False. If there is an error loading or converting the SVG image, it sets the EmployeeIsForceChangePhoto property to True, displays an error message, and sets a default "svg-404.svg" image as the Image object.
+        ''' </summary>
+        ''' <param name="url">The URL of the SVG image to load.</param>
+        ''' <param name="img">The Image object to set the loaded SVG image.</param>
+        ''' <param name="dataproperties">Optional dataproperties object.</param>
+        ''' <param name="width">Optional width of the resulting Bitmap.</param>
+        ''' <param name="height">Optional height of the resulting Bitmap.</param>
+        ''' <returns>True if the SVG image was successfully loaded and set; otherwise, False.</returns>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Public Shared Async Function GetSvgImageFromUrlAsync(
+    url As String,
+    img As System.Drawing.Image,
+    Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing,
+    Optional width As Integer = 24,
+    Optional height As Integer = 24
+) As Task(Of Boolean)
+            Try
+                Dim client As New Net.Http.HttpClient()
+
+                ' Download SVG as text
+                Dim svgContent As String = Await client.GetStringAsync(url)
+
+                ' Load SVG from string
+                Dim svgDoc As Svg.SvgDocument
+                Using svgStream As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(svgContent))
+                    svgDoc = Svg.SvgDocument.Open(Of Svg.SvgDocument)(svgStream)
+                End Using
+
+                ' Convert to Bitmap
+                Dim bmp As System.Drawing.Bitmap = svgDoc.Draw(width, height)
+
+                ' Assign to img variable
+                img = bmp
+
+                If dataproperties IsNot Nothing Then
+                    dataproperties.EmployeeIsForceChangePhoto = False
+                End If
+
+                Return True
+
+            Catch ex As Exception
+                ' Fallback SVG
+                Dim fallbackPath As String = IO.Path.Combine(Environment.CurrentDirectory, "Resources\svg-404.svg")
+                Dim fallbackSvg As Svg.SvgDocument = Svg.SvgDocument.Open(fallbackPath)
+                Dim fallbackBmp As System.Drawing.Bitmap = fallbackSvg.Draw(width, height)
+
+                img = fallbackBmp
+
+                If dataproperties IsNot Nothing Then
+                    dataproperties.EmployeeIsForceChangePhoto = True
+                End If
+
+                System.Windows.Forms.MessageBox.Show($"Unable to load SVG image: {ex.Message}", "Error",
+                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
+
+                Return False
+            End Try
+        End Function
     End Class
 
     Public Class TransformImage
@@ -362,7 +422,7 @@
         ''' <param name="image">The Image object to be cropped into a square.</param>
         ''' <returns>A new Image object that is cropped to a square.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function CroptoSquare(image As System.Drawing.Image) As System.Drawing.Image
+        Public Shared Function CropToSquare(image As System.Drawing.Image) As System.Drawing.Image
             Dim size As Integer = Math.Min(image.Width, image.Height)
             Dim x As Integer = CInt((image.Width - size) / 2)
             Dim y As Integer = CInt((image.Height - size) / 2)

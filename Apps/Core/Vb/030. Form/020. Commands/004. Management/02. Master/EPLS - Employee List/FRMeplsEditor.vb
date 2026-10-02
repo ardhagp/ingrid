@@ -167,7 +167,14 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnBrowsePosition_Click(sender As Object, e As EventArgs) Handles BtnBrowsePosition.Click
             Frm_epls_AddinPosition = New UI.Canvas.FRMeplsPosition
-            Display(Frm_epls_AddinPosition, ImageDb.Main.ImageLibrary.SEARCH_ICON, My.Application.Info.AssemblyName.ToUpper, "Find Position", "Browse for position data", True)
+            With varDataProperties
+                .IngridFormImage = ImageDb.Main.ImageLibrary.SEARCH_ICON
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "Find Position"
+                .IngridFormSubtitle = "Browse for position data"
+                .IngridFormIsDialog = True
+            End With
+            Display(Frm_epls_AddinPosition,, varDataProperties)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
@@ -248,7 +255,14 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnBrowseEmploymentType_Click(sender As Object, e As EventArgs) Handles BtnBrowseEmploymentType.Click
             Frm_epls_AddinEmploymentType = New UI.Canvas.FRMeplsEmploymentType
-            Display(Frm_epls_AddinEmploymentType, ImageDb.Main.ImageLibrary.SEARCH_ICON, My.Application.Info.AssemblyName.ToUpper, "Find Employment Type", "Browse for Employment Type data", True)
+            With varDataProperties
+                .IngridFormImage = ImageDb.Main.ImageLibrary.SEARCH_ICON
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "Find Employment Type"
+                .IngridFormSubtitle = "Browse for Employment Type data"
+                .IngridFormIsDialog = True
+            End With
+            Display(Frm_epls_AddinEmploymentType,, varDataProperties)
         End Sub
 
         ' ---------------------------------------------------------

@@ -157,5 +157,10 @@
         Property SystemModuleHash As String
         Property SystemTypeOfAccess As TypeOfAccess
         Property SystemStorageType As StorageType
+        Property IngridFormImage As System.Drawing.Image
+        Property IngridWindowName As String
+        Property IngridFormTitle As String
+        Property IngridFormSubtitle As String
+        Property IngridFormIsDialog As Boolean = False
     End Class
 End Namespace

@@ -1,5 +1,5 @@
 ﻿'For clickonce .net 6 prequisites please paste here : C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VisualStudio\BootstrapperPackages
-'Imports Ingrid.My.Resources
+
 Imports Svg
 
 Namespace UI.Canvas
@@ -112,7 +112,7 @@ Namespace UI.Canvas
                         SetValue(varDataProperties.AllParameters, tIngrid.P_ClientCode, .Item("CLIENT").ToString)
                     End With
                 Else
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties not found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Database properties not found.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                     Return
                 End If
 
@@ -123,19 +123,27 @@ Namespace UI.Canvas
                     varLogApplication.Run(varDataProperties, varDataProperties.AllParameters)
                     Dim varRecords As Integer = LibSQL.CMDccin.View.CountRecords(varDataProperties)
                     If varRecords = 0 Then
-                        Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "Initial setup and essential information", True, Me)
+                        varDataProperties.IngridFormImage = Nothing
+                        varDataProperties.IngridFormTitle = "First Guide"
+                        varDataProperties.IngridFormSubtitle = "Initial setup and essential information"
+                        varDataProperties.IngridFormIsDialog = True
+                        Display(FRMfirstguide, Me, varDataProperties)
                     End If
                     CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.AllParameters, varDatasetIngrid)
                 Else
                     Ts_connection.Text = "Disconnected"
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot connect to server." & Environment.NewLine & "Please check your settings in APP -> Connection." & Environment.NewLine & "Restart Ingrid after you made any changes!", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                     Return
                 End If
                 SetValue(varDataProperties.AllParameters, tIngrid.P_ClientId, IIf(CInt(varDataProperties.AllParameters(tIngrid.P_ClientId)) = 0, DBNull.Value, varDataProperties.AllParameters(tIngrid.P_ClientId)))
 
                 Call CommandAutoComplete()
                 If Not (LibSQL.CMDdbic.Applications.IsCompanyExist(varDataProperties) OrElse Not LibSQL.CMDdbic.Applications.IsDepartmentExist(varDataProperties)) Then
-                    Display(FRMfirstguide,, My.Application.Info.AssemblyName.ToUpper, "First Guide", "", True, Me)
+                    varDataProperties.IngridFormImage = Nothing
+                    varDataProperties.IngridFormTitle = "First Guide"
+                    varDataProperties.IngridFormSubtitle = "Initial setup and essential information"
+                    varDataProperties.IngridFormIsDialog = True
+                    Display(FRMfirstguide, Me, varDataProperties)
                 End If
             Catch ex As Exception
                 With proLog
@@ -263,7 +271,11 @@ Namespace UI.Canvas
                     .UserAccessIsChangePasswordForm = True
                 End With
                 Frm_uac_Editor = New FRMuacEditor
-                Display(Frm_uac_Editor, ImageDb.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Change My Account", "Update your account username or password", True)
+                varDataProperties.IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                varDataProperties.IngridFormTitle = "Change My Account"
+                varDataProperties.IngridFormSubtitle = "Update your account username or password"
+                varDataProperties.IngridFormIsDialog = True
+                Display(Frm_uac_Editor, Me, varDataProperties)
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
@@ -380,7 +392,11 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub NotificationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotificationToolStripMenuItem.Click
             Frm_ntfc = New FRMntfc
-            Display(Frm_ntfc, ImageDb.Main.ImageLibrary.NOTIF_ICON, My.Application.Info.AssemblyName.ToUpper, "Notification", "Show all notification that addressed to you", True)
+            varDataProperties.IngridFormImage = ImageDb.Main.ImageLibrary.NOTIF_ICON
+            varDataProperties.IngridFormTitle = "Notification"
+            varDataProperties.IngridFormSubtitle = "Show all notification that addressed to you"
+            varDataProperties.IngridFormIsDialog = True
+            Display(Frm_ntfc, Me, varDataProperties)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
@@ -416,7 +432,11 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Msstartconnectionapp_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_app.Click
             Frm_conn = New Connect.UI.Canvas.FRMconn(varProductionMode, True)
-            Display(Frm_conn, ImageDb.Main.ImageLibrary.CONN_ICON, My.Application.Info.AssemblyName.ToUpper, "Connection Settings", "Configure Ingrid database connection", True)
+            varDataProperties.IngridFormImage = ImageDb.Main.ImageLibrary.CONN_ICON
+            varDataProperties.IngridFormTitle = "Connection Settings"
+            varDataProperties.IngridFormSubtitle = "Configure Ingrid database connection"
+            varDataProperties.IngridFormIsDialog = True
+            Display(Frm_conn, Me, varDataProperties)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
@@ -647,7 +667,12 @@ Namespace UI.Canvas
         Private Function LoginClicked() As Boolean
             If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
                 Frm_login = New UI.Canvas.FRMlogin
-                Display(Frm_login, ImageDb.Main.ImageLibrary.LOGIN_ICON, My.Application.Info.AssemblyName.ToUpper, "Sign In", "Please enter your credentials to continue", True)
+                varDataProperties.IngridFormImage = ImageDb.Main.ImageLibrary.LOGIN_ICON
+                varDataProperties.IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                varDataProperties.IngridFormTitle = My.Application.Info.AssemblyName.ToUpper
+                varDataProperties.IngridFormSubtitle = "Sign In"
+                varDataProperties.IngridFormIsDialog = True
+                Display(Frm_login,, varDataProperties)
             End If
             If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
                 varSession = False
@@ -851,6 +876,10 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Sub GetSettings()
             LibSQL.CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.AllParameters, varDatasetIngrid)
+        End Sub
+
+        Private Sub FRMmainframe6_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+
         End Sub
     End Class
 End Namespace

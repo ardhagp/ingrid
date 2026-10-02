@@ -93,11 +93,11 @@
             ' TxtCode
             ' 
             TxtCode.Font = New Font("Segoe UI", 12F)
-            TxtCode.Location = New Point(273, 15)
+            TxtCode.Location = New Point(306, 38)
             TxtCode.Margin = New Padding(6, 5, 6, 5)
             TxtCode.MaxLength = 255
             TxtCode.Name = "TxtCode"
-            TxtCode.Size = New Size(533, 39)
+            TxtCode.Size = New Size(425, 39)
             TxtCode.TabIndex = 0
             TxtCode.Tag = "txt"
             TxtCode.XOAutoTrim = True
@@ -123,11 +123,11 @@
             ' TxtSearchTerm1
             ' 
             TxtSearchTerm1.Font = New Font("Segoe UI", 12F)
-            TxtSearchTerm1.Location = New Point(273, 150)
+            TxtSearchTerm1.Location = New Point(306, 178)
             TxtSearchTerm1.Margin = New Padding(6, 5, 6, 5)
             TxtSearchTerm1.MaxLength = 255
             TxtSearchTerm1.Name = "TxtSearchTerm1"
-            TxtSearchTerm1.Size = New Size(533, 39)
+            TxtSearchTerm1.Size = New Size(425, 39)
             TxtSearchTerm1.TabIndex = 2
             TxtSearchTerm1.Tag = "txt"
             TxtSearchTerm1.XOAutoTrim = True
@@ -153,11 +153,11 @@
             ' TxtSearchTerm2
             ' 
             TxtSearchTerm2.Font = New Font("Segoe UI", 12F)
-            TxtSearchTerm2.Location = New Point(273, 217)
+            TxtSearchTerm2.Location = New Point(306, 247)
             TxtSearchTerm2.Margin = New Padding(6, 5, 6, 5)
             TxtSearchTerm2.MaxLength = 255
             TxtSearchTerm2.Name = "TxtSearchTerm2"
-            TxtSearchTerm2.Size = New Size(534, 39)
+            TxtSearchTerm2.Size = New Size(425, 39)
             TxtSearchTerm2.TabIndex = 3
             TxtSearchTerm2.Tag = "txt"
             TxtSearchTerm2.XOAutoTrim = True
@@ -183,12 +183,12 @@
             ' TxtDescription
             ' 
             TxtDescription.Font = New Font("Segoe UI", 12F)
-            TxtDescription.Location = New Point(273, 285)
+            TxtDescription.Location = New Point(306, 313)
             TxtDescription.Margin = New Padding(6, 5, 6, 5)
             TxtDescription.MaxLength = 255
             TxtDescription.Multiline = True
             TxtDescription.Name = "TxtDescription"
-            TxtDescription.Size = New Size(533, 254)
+            TxtDescription.Size = New Size(425, 254)
             TxtDescription.TabIndex = 4
             TxtDescription.Tag = "txt"
             TxtDescription.XOAutoTrim = True
@@ -260,11 +260,11 @@
             ' TxtName
             ' 
             TxtName.Font = New Font("Segoe UI", 12F)
-            TxtName.Location = New Point(273, 83)
+            TxtName.Location = New Point(306, 108)
             TxtName.Margin = New Padding(6, 5, 6, 5)
             TxtName.MaxLength = 255
             TxtName.Name = "TxtName"
-            TxtName.Size = New Size(533, 39)
+            TxtName.Size = New Size(425, 39)
             TxtName.TabIndex = 1
             TxtName.Tag = "txt"
             TxtName.XOAutoTrim = True
@@ -307,10 +307,10 @@
             ' ULbl1
             ' 
             ULbl1.BackColor = Color.MistyRose
-            ULbl1.Location = New Point(14, 15)
+            ULbl1.Location = New Point(16, 38)
             ULbl1.Margin = New Padding(12, 8, 12, 8)
             ULbl1.Name = "ULbl1"
-            ULbl1.Size = New Size(250, 39)
+            ULbl1.Size = New Size(272, 39)
             ULbl1.TabIndex = 1006
             ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl1.XOText = "Company Code"
@@ -320,10 +320,10 @@
             ' ULbl2
             ' 
             ULbl2.BackColor = Color.MistyRose
-            ULbl2.Location = New Point(14, 83)
+            ULbl2.Location = New Point(16, 108)
             ULbl2.Margin = New Padding(12, 8, 12, 8)
             ULbl2.Name = "ULbl2"
-            ULbl2.Size = New Size(250, 39)
+            ULbl2.Size = New Size(272, 39)
             ULbl2.TabIndex = 1007
             ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl2.XOText = "Company Name"
@@ -333,10 +333,10 @@
             ' ULbl3
             ' 
             ULbl3.BackColor = Color.MistyRose
-            ULbl3.Location = New Point(14, 150)
+            ULbl3.Location = New Point(16, 178)
             ULbl3.Margin = New Padding(12, 8, 12, 8)
             ULbl3.Name = "ULbl3"
-            ULbl3.Size = New Size(250, 39)
+            ULbl3.Size = New Size(272, 39)
             ULbl3.TabIndex = 1008
             ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl3.XOText = "Search Term 1"
@@ -346,10 +346,10 @@
             ' ULbl4
             ' 
             ULbl4.BackColor = Color.MistyRose
-            ULbl4.Location = New Point(15, 217)
+            ULbl4.Location = New Point(16, 247)
             ULbl4.Margin = New Padding(12, 8, 12, 8)
             ULbl4.Name = "ULbl4"
-            ULbl4.Size = New Size(250, 39)
+            ULbl4.Size = New Size(272, 39)
             ULbl4.TabIndex = 1009
             ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl4.XOText = "Search Term 2"
@@ -359,10 +359,10 @@
             ' ULbl5
             ' 
             ULbl5.BackColor = Color.Moccasin
-            ULbl5.Location = New Point(15, 285)
+            ULbl5.Location = New Point(16, 313)
             ULbl5.Margin = New Padding(12, 8, 12, 8)
             ULbl5.Name = "ULbl5"
-            ULbl5.Size = New Size(250, 254)
+            ULbl5.Size = New Size(272, 254)
             ULbl5.TabIndex = 1010
             ULbl5.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.XOText = "Description"
@@ -371,7 +371,7 @@
             ' 
             ' TbxCompany
             ' 
-            TbxCompany.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+            TbxCompany.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
             TbxCompany.Controls.Add(TpDetail)
             TbxCompany.Font = New Font("Segoe UI", 12F)
             TbxCompany.ItemSize = New Size(126, 37)

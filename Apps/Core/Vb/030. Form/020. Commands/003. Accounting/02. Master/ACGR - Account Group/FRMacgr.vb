@@ -1,9 +1,6 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMacgr
 
-#Region "Declaration"
         Private WithEvents Frm_acgr_Editor As New FRMacgrEditor
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
@@ -12,14 +9,12 @@ Namespace UI.Canvas
         Private varIsClosing As Boolean = False
 
         Const msgRows As String = " Row(s)"
-#End Region
 
-#Region "Sub Collections"
         ''' <summary>
         ''' Isikan data buku akuntansi ke CBO
         ''' </summary>
         ''' <remarks></remarks>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetData()
             CMDacgr.View.FillCompany(varDataProperties, CboCompany)
             CMDacgr.View.FillAccountingBook(varDataProperties, CboAccountingBook, CboCompany)
@@ -30,7 +25,7 @@ Namespace UI.Canvas
         ''' </summary>
         ''' <param name="ForceRefresh">True / False</param>
         ''' <remarks>True akan memaksa data untuk direfresh tanpa filter apapun</remarks>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetDataGrid(Optional forcerefresh As Boolean = False)
             CMDacgr.View.GetAccountList(varDataProperties, DgnACGRAssets, DgnACGRLiabities, DgnACGREquity, DgnACGRRevenue, DgnACGRExpense, CboAccountingBook, TxtFind, forcerefresh)
         End Sub
@@ -42,7 +37,7 @@ Namespace UI.Canvas
         ''' </summary>
         ''' <param name="GridTable"></param>
         ''' <remarks></remarks>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function GetAccountID(gridtable As CMCv.UI.Control.Dgn) As String
             With gridtable
                 If .Rows.Count < 1 Then
@@ -58,7 +53,7 @@ Namespace UI.Canvas
         ''' Prosedur untuk mendapatkan Tabel ID
         ''' </summary>
         ''' <remarks></remarks>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetRowID()
             Select Case varSelectedGroup
                 Case "tpAssets"
@@ -79,40 +74,51 @@ Namespace UI.Canvas
             End Select
         End Sub
 
-#End Region
-
-#Region "Menu Strip Function"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CommmmsMenu_EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
             With varDataProperties
                 .AccountGroupId = "-1"
                 .AccountGroupIsNew = True
             End With
             Frm_acgr_Editor = New FRMacgrEditor
-            Display(Frm_acgr_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new account for each accounting book and accounting group", True)
+            With varDataProperties
+                .IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "Add New Record"
+                .IngridFormSubtitle = "Add new account for each accounting book and accounting group"
+                .IngridFormIsDialog = True
+            End With
+            Display(Frm_acgr_Editor, , varDataProperties)
             Call GetRowID()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CommmmsMenu_EventDataEdit() Handles Com_mms_Menu.EventDataEdit
             Call GetRowID()
             varDataProperties.AccountGroupIsNew = False
             If Convert.ToString(Convert.ToString(varDataProperties.AccountGroupId)) = "-1" Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
             Else
                 Frm_acgr_Editor = New FRMacgrEditor
-                Display(Frm_acgr_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your account data", True)
+                With varDataProperties
+                    .IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                    .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                    .IngridFormTitle = "Update Record"
+                    .IngridFormSubtitle = "Update your account data"
+                    .IngridFormIsDialog = True
+                End With
+                Display(Frm_acgr_Editor,, varDataProperties)
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CommmmsMenu_EventDataDelete() Handles Com_mms_Menu.EventDataDelete
             Call GetRowID()
             If Convert.ToString(Convert.ToString(varDataProperties.AccountGroupId)) = "-1" Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
             Else
                 varDataProperties.AccountGroupIsNew = False
-                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                     If (CMDacgr.View.DeleteData(varDataProperties, Convert.ToString(Convert.ToString(varDataProperties.AccountGroupId)))) Then
                         Call GetDataGrid(True)
                         UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
@@ -124,36 +130,37 @@ Namespace UI.Canvas
             Call GetRowID()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CommmmsMenu_EventToolsFind() Handles Com_mms_Menu.EventToolsFind
             TxtFind.Focus()
         End Sub
-#End Region
 
-#Region "Upper Form Bar"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
             If e.KeyCode = Keys.Enter Then
                 Call GetDataGrid()
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
             TxtFind.Clear()
             Call GetData()
             Call GetDataGrid(True)
             TxtFind.ClearSearch()
         End Sub
-#End Region
 
-#Region "Main Form Events"
+#Disable Warning IDE1006 ' Naming Styles
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub frmAccountGroup_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+#Enable Warning IDE1006 ' Naming Styles
             varIsClosing = True
         End Sub
 
-        <SupportedOSPlatform("windows")>
+#Disable Warning IDE1006 ' Naming Styles
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub frmAccountGroup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+#Enable Warning IDE1006 ' Naming Styles
             Com_mms_Menu.LoadIn(Me)
             Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
@@ -163,10 +170,8 @@ Namespace UI.Canvas
             Call GetRowID()
             varIsFirstLoad = False
         End Sub
-#End Region
 
-#Region "Component Events"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TbctlAccountGroup_Selected(sender As Object, e As TabControlEventArgs) Handles TbctlAccountGroup.Selected
             If Not (varIsClosing) Then
                 varSelectedGroup = TbctlAccountGroup.SelectedTab.Name
@@ -174,7 +179,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CboAccountingBook_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboAccountingBook.SelectedIndexChanged
             If Not (varIsFirstLoad) Then
                 Call GetDataGrid(True)
@@ -182,21 +187,17 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CboPlant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
             If Not (varIsFirstLoad) Then
                 CMDacgr.View.FillAccountingBook(varDataProperties, CboAccountingBook, CboCompany)
                 Call GetDataGrid(True)
             End If
         End Sub
-#End Region
 
-#Region "WithEvents"
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventRecordSaved() Handles Frm_acgr_Editor.EventRecordSaved
             Call GetDataGrid(True)
         End Sub
-#End Region
-
     End Class
 End Namespace

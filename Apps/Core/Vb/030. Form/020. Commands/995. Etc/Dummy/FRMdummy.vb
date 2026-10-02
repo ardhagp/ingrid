@@ -1,22 +1,26 @@
-﻿Imports System.Runtime.Versioning
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMdummy
         Public Event Done()
         Private WithEvents Frm_dummy_Editor As New FRMdummyEditor
         'Private _MMSmenu As VisualInheritanceFixer.MergeableMenuStrip
 
-        <SupportedOSPlatform("Windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("Windows")>
         Private Sub AddNewToolStripMenuItem_Click(sender As Object, e As EventArgs)
-            Frm_dummy_Editor = New FRMdummyEditor
-            Display(Frm_dummy_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new activity", True, Me)
+            With varDataProperties
+                Frm_dummy_Editor = New FRMdummyEditor
+                .IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "Add New Record"
+                .IngridFormSubtitle = "Add new activity"
+                .IngridFormIsDialog = True
+                Display(Frm_dummy_Editor,, varDataProperties)
+            End With
         End Sub
 
         Private Sub Dummy_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             'Call CreateMenu()
         End Sub
 
-#Region "CreateMenu"
         'Private Sub CreateMenu()
         '    Dim _MMSmenu As New VisualInheritanceFixer.MergeableMenuStrip
         '    Dim _item() As ToolStripMenuItem
@@ -104,9 +108,7 @@ Namespace UI.Canvas
 
         '    Next
         'End Sub
-#End Region
 
-#Region "CreateMenu_Events"
         'Private Sub AddNewToolStripMenuItem_Clicked(sender As Object, e As EventArgs)
         '    Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         '    If item IsNot Nothing Then
@@ -162,7 +164,6 @@ Namespace UI.Canvas
         '        'Put your code here
         '    End If
         'End Sub
-#End Region
 
     End Class
 End Namespace

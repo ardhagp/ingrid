@@ -353,7 +353,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(239), CByte(196), CByte(137))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(252), CByte(212), CByte(99))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnModulesRoles.BorderStyle = BorderStyle.None
@@ -534,10 +534,10 @@
             ' ULbl13
             ' 
             ULbl13.BackColor = Color.Moccasin
-            ULbl13.Location = New Point(14, 353)
+            ULbl13.Location = New Point(16, 379)
             ULbl13.Margin = New Padding(5, 6, 5, 6)
             ULbl13.Name = "ULbl13"
-            ULbl13.Size = New Size(250, 39)
+            ULbl13.Size = New Size(272, 39)
             ULbl13.TabIndex = 1062
             ULbl13.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl13.XOText = "Company Email"
@@ -547,10 +547,10 @@
             ' TxtCompanyEmail
             ' 
             TxtCompanyEmail.Font = New Font("Segoe UI", 12F)
-            TxtCompanyEmail.Location = New Point(273, 353)
+            TxtCompanyEmail.Location = New Point(306, 379)
             TxtCompanyEmail.MaxLength = 255
             TxtCompanyEmail.Name = "TxtCompanyEmail"
-            TxtCompanyEmail.Size = New Size(455, 39)
+            TxtCompanyEmail.Size = New Size(425, 39)
             TxtCompanyEmail.TabIndex = 208
             TxtCompanyEmail.Tag = "txt"
             TxtCompanyEmail.XOAutoTrim = False
@@ -582,7 +582,7 @@
             BtnBrowseEmploymentType.FlatStyle = FlatStyle.Flat
             BtnBrowseEmploymentType.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowseEmploymentType.ForeColor = Color.White
-            BtnBrowseEmploymentType.Location = New Point(740, 217)
+            BtnBrowseEmploymentType.Location = New Point(740, 247)
             BtnBrowseEmploymentType.Name = "BtnBrowseEmploymentType"
             BtnBrowseEmploymentType.Size = New Size(66, 39)
             BtnBrowseEmploymentType.TabIndex = 206
@@ -596,10 +596,10 @@
             ' ULbl14
             ' 
             ULbl14.BackColor = Color.Moccasin
-            ULbl14.Location = New Point(14, 421)
+            ULbl14.Location = New Point(16, 445)
             ULbl14.Margin = New Padding(12, 17, 12, 17)
             ULbl14.Name = "ULbl14"
-            ULbl14.Size = New Size(250, 39)
+            ULbl14.Size = New Size(272, 39)
             ULbl14.TabIndex = 1061
             ULbl14.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl14.XOText = "Initial"
@@ -609,10 +609,10 @@
             ' ULbl12
             ' 
             ULbl12.BackColor = Color.MistyRose
-            ULbl12.Location = New Point(14, 285)
+            ULbl12.Location = New Point(16, 313)
             ULbl12.Margin = New Padding(12, 17, 12, 17)
             ULbl12.Name = "ULbl12"
-            ULbl12.Size = New Size(250, 39)
+            ULbl12.Size = New Size(272, 39)
             ULbl12.TabIndex = 1059
             ULbl12.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl12.XOText = "Emp. Code"
@@ -622,10 +622,10 @@
             ' ULbl11
             ' 
             ULbl11.BackColor = Color.MistyRose
-            ULbl11.Location = New Point(14, 217)
+            ULbl11.Location = New Point(16, 247)
             ULbl11.Margin = New Padding(12, 17, 12, 17)
             ULbl11.Name = "ULbl11"
-            ULbl11.Size = New Size(250, 39)
+            ULbl11.Size = New Size(272, 39)
             ULbl11.TabIndex = 1058
             ULbl11.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl11.XOText = "Emp. Type"
@@ -635,10 +635,10 @@
             ' ULbl10
             ' 
             ULbl10.BackColor = Color.MistyRose
-            ULbl10.Location = New Point(14, 150)
+            ULbl10.Location = New Point(16, 178)
             ULbl10.Margin = New Padding(12, 17, 12, 17)
             ULbl10.Name = "ULbl10"
-            ULbl10.Size = New Size(250, 39)
+            ULbl10.Size = New Size(272, 39)
             ULbl10.TabIndex = 1057
             ULbl10.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl10.XOText = "Position"
@@ -648,10 +648,10 @@
             ' ULbl9
             ' 
             ULbl9.BackColor = Color.MistyRose
-            ULbl9.Location = New Point(14, 83)
+            ULbl9.Location = New Point(16, 108)
             ULbl9.Margin = New Padding(12, 17, 12, 17)
             ULbl9.Name = "ULbl9"
-            ULbl9.Size = New Size(250, 39)
+            ULbl9.Size = New Size(272, 39)
             ULbl9.TabIndex = 1056
             ULbl9.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl9.XOText = "Department"
@@ -661,10 +661,10 @@
             ' ULbl6
             ' 
             ULbl6.BackColor = Color.MistyRose
-            ULbl6.Location = New Point(14, 15)
+            ULbl6.Location = New Point(16, 38)
             ULbl6.Margin = New Padding(12, 17, 12, 17)
             ULbl6.Name = "ULbl6"
-            ULbl6.Size = New Size(250, 39)
+            ULbl6.Size = New Size(272, 39)
             ULbl6.TabIndex = 1055
             ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl6.XOText = "Company"
@@ -678,7 +678,7 @@
             ChkActiveEmployee.FlatStyle = FlatStyle.Flat
             ChkActiveEmployee.Font = New Font("Segoe UI", 12F)
             ChkActiveEmployee.ForeColor = Color.Yellow
-            ChkActiveEmployee.Location = New Point(273, 489)
+            ChkActiveEmployee.Location = New Point(306, 511)
             ChkActiveEmployee.Margin = New Padding(6, 5, 6, 5)
             ChkActiveEmployee.Name = "ChkActiveEmployee"
             ChkActiveEmployee.Size = New Size(213, 36)
@@ -690,7 +690,7 @@
             ' TxtEmployeeNickname
             ' 
             TxtEmployeeNickname.Font = New Font("Segoe UI", 12F)
-            TxtEmployeeNickname.Location = New Point(273, 421)
+            TxtEmployeeNickname.Location = New Point(306, 445)
             TxtEmployeeNickname.Margin = New Padding(6, 5, 6, 5)
             TxtEmployeeNickname.MaxLength = 255
             TxtEmployeeNickname.Name = "TxtEmployeeNickname"
@@ -721,7 +721,7 @@
             ' TxtEmployeeNumber
             ' 
             TxtEmployeeNumber.Font = New Font("Segoe UI", 12F)
-            TxtEmployeeNumber.Location = New Point(273, 285)
+            TxtEmployeeNumber.Location = New Point(306, 313)
             TxtEmployeeNumber.Margin = New Padding(6, 5, 6, 5)
             TxtEmployeeNumber.MaxLength = 255
             TxtEmployeeNumber.Name = "TxtEmployeeNumber"
@@ -752,12 +752,12 @@
             ' TxtEmploymentType
             ' 
             TxtEmploymentType.Font = New Font("Segoe UI", 12F)
-            TxtEmploymentType.Location = New Point(273, 217)
+            TxtEmploymentType.Location = New Point(306, 247)
             TxtEmploymentType.Margin = New Padding(6, 5, 6, 5)
             TxtEmploymentType.MaxLength = 255
             TxtEmploymentType.Name = "TxtEmploymentType"
             TxtEmploymentType.ReadOnly = True
-            TxtEmploymentType.Size = New Size(455, 39)
+            TxtEmploymentType.Size = New Size(425, 39)
             TxtEmploymentType.TabIndex = 205
             TxtEmploymentType.TabStop = False
             TxtEmploymentType.Tag = "txt"
@@ -784,12 +784,12 @@
             ' TxtPosition
             ' 
             TxtPosition.Font = New Font("Segoe UI", 12F)
-            TxtPosition.Location = New Point(273, 150)
+            TxtPosition.Location = New Point(306, 178)
             TxtPosition.Margin = New Padding(6, 5, 6, 5)
             TxtPosition.MaxLength = 255
             TxtPosition.Name = "TxtPosition"
             TxtPosition.ReadOnly = True
-            TxtPosition.Size = New Size(455, 39)
+            TxtPosition.Size = New Size(425, 39)
             TxtPosition.TabIndex = 203
             TxtPosition.TabStop = False
             TxtPosition.Tag = "txt"
@@ -823,7 +823,7 @@
             BtnBrowsePosition.FlatStyle = FlatStyle.Flat
             BtnBrowsePosition.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnBrowsePosition.ForeColor = Color.White
-            BtnBrowsePosition.Location = New Point(740, 150)
+            BtnBrowsePosition.Location = New Point(740, 178)
             BtnBrowsePosition.Name = "BtnBrowsePosition"
             BtnBrowsePosition.Size = New Size(66, 39)
             BtnBrowsePosition.TabIndex = 204
@@ -837,12 +837,12 @@
             ' TxTDepartment
             ' 
             TxTDepartment.Font = New Font("Segoe UI", 12F)
-            TxTDepartment.Location = New Point(273, 83)
+            TxTDepartment.Location = New Point(306, 108)
             TxTDepartment.Margin = New Padding(6, 5, 6, 5)
             TxTDepartment.MaxLength = 255
             TxTDepartment.Name = "TxTDepartment"
             TxTDepartment.ReadOnly = True
-            TxTDepartment.Size = New Size(454, 39)
+            TxTDepartment.Size = New Size(425, 39)
             TxTDepartment.TabIndex = 201
             TxTDepartment.TabStop = False
             TxTDepartment.Tag = "txt"
@@ -869,12 +869,12 @@
             ' TxtCompany
             ' 
             TxtCompany.Font = New Font("Segoe UI", 12F)
-            TxtCompany.Location = New Point(273, 15)
+            TxtCompany.Location = New Point(306, 38)
             TxtCompany.Margin = New Padding(6, 5, 6, 5)
             TxtCompany.MaxLength = 255
             TxtCompany.Name = "TxtCompany"
             TxtCompany.ReadOnly = True
-            TxtCompany.Size = New Size(454, 39)
+            TxtCompany.Size = New Size(425, 39)
             TxtCompany.TabIndex = 200
             TxtCompany.TabStop = False
             TxtCompany.Tag = "txt"
@@ -925,10 +925,10 @@
             ' ULbl1
             ' 
             ULbl1.BackColor = Color.MistyRose
-            ULbl1.Location = New Point(14, 15)
+            ULbl1.Location = New Point(16, 38)
             ULbl1.Margin = New Padding(9, 13, 9, 13)
             ULbl1.Name = "ULbl1"
-            ULbl1.Size = New Size(250, 39)
+            ULbl1.Size = New Size(272, 39)
             ULbl1.TabIndex = 1056
             ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl1.XOText = "National ID Card"
@@ -938,10 +938,10 @@
             ' ULbl5
             ' 
             ULbl5.BackColor = Color.Moccasin
-            ULbl5.Location = New Point(14, 352)
+            ULbl5.Location = New Point(16, 379)
             ULbl5.Margin = New Padding(9, 13, 9, 13)
             ULbl5.Name = "ULbl5"
-            ULbl5.Size = New Size(250, 254)
+            ULbl5.Size = New Size(272, 254)
             ULbl5.TabIndex = 1055
             ULbl5.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.XOText = "Address"
@@ -951,10 +951,10 @@
             ' ULbl4
             ' 
             ULbl4.BackColor = Color.MistyRose
-            ULbl4.Location = New Point(14, 285)
+            ULbl4.Location = New Point(16, 313)
             ULbl4.Margin = New Padding(9, 13, 9, 13)
             ULbl4.Name = "ULbl4"
-            ULbl4.Size = New Size(250, 39)
+            ULbl4.Size = New Size(272, 39)
             ULbl4.TabIndex = 1054
             ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl4.XOText = "Gender"
@@ -964,10 +964,10 @@
             ' ULbl3
             ' 
             ULbl3.BackColor = Color.MistyRose
-            ULbl3.Location = New Point(14, 217)
+            ULbl3.Location = New Point(16, 247)
             ULbl3.Margin = New Padding(9, 13, 9, 13)
             ULbl3.Name = "ULbl3"
-            ULbl3.Size = New Size(250, 39)
+            ULbl3.Size = New Size(272, 39)
             ULbl3.TabIndex = 1053
             ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl3.XOText = "Birth Place"
@@ -977,10 +977,10 @@
             ' ULbl16
             ' 
             ULbl16.BackColor = Color.MistyRose
-            ULbl16.Location = New Point(14, 150)
+            ULbl16.Location = New Point(16, 178)
             ULbl16.Margin = New Padding(9, 13, 9, 13)
             ULbl16.Name = "ULbl16"
-            ULbl16.Size = New Size(250, 39)
+            ULbl16.Size = New Size(272, 39)
             ULbl16.TabIndex = 1052
             ULbl16.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl16.XOText = "Date of Birth"
@@ -990,10 +990,10 @@
             ' ULbl2
             ' 
             ULbl2.BackColor = Color.MistyRose
-            ULbl2.Location = New Point(14, 83)
+            ULbl2.Location = New Point(16, 108)
             ULbl2.Margin = New Padding(9, 13, 9, 13)
             ULbl2.Name = "ULbl2"
-            ULbl2.Size = New Size(250, 39)
+            ULbl2.Size = New Size(272, 39)
             ULbl2.TabIndex = 1051
             ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl2.XOText = "Full Name"
@@ -1004,13 +1004,13 @@
             ' 
             TxtAddress.BackColor = Color.White
             TxtAddress.Font = New Font("Segoe UI", 12F)
-            TxtAddress.Location = New Point(273, 352)
+            TxtAddress.Location = New Point(306, 379)
             TxtAddress.Margin = New Padding(6, 5, 6, 5)
             TxtAddress.MaxLength = 1024
             TxtAddress.Multiline = True
             TxtAddress.Name = "TxtAddress"
             TxtAddress.ScrollBars = ScrollBars.Both
-            TxtAddress.Size = New Size(533, 254)
+            TxtAddress.Size = New Size(425, 254)
             TxtAddress.TabIndex = 105
             TxtAddress.Tag = "txt"
             TxtAddress.XOAutoTrim = True
@@ -1037,11 +1037,11 @@
             ' 
             TxtBirthPlace.BackColor = Color.White
             TxtBirthPlace.Font = New Font("Segoe UI", 12F)
-            TxtBirthPlace.Location = New Point(273, 217)
+            TxtBirthPlace.Location = New Point(306, 247)
             TxtBirthPlace.Margin = New Padding(6, 5, 6, 5)
             TxtBirthPlace.MaxLength = 255
             TxtBirthPlace.Name = "TxtBirthPlace"
-            TxtBirthPlace.Size = New Size(533, 39)
+            TxtBirthPlace.Size = New Size(425, 39)
             TxtBirthPlace.TabIndex = 103
             TxtBirthPlace.Tag = "txt"
             TxtBirthPlace.XOAutoTrim = True
@@ -1067,12 +1067,12 @@
             ' DtpBirthDate
             ' 
             DtpBirthDate.Font = New Font("Segoe UI", 12F)
-            DtpBirthDate.Location = New Point(273, 150)
+            DtpBirthDate.Location = New Point(306, 178)
             DtpBirthDate.Margin = New Padding(6, 5, 6, 5)
             DtpBirthDate.MaxDate = New Date(2029, 4, 3, 0, 0, 0, 0)
             DtpBirthDate.MinDate = New Date(1919, 4, 3, 0, 0, 0, 0)
             DtpBirthDate.Name = "DtpBirthDate"
-            DtpBirthDate.Size = New Size(393, 39)
+            DtpBirthDate.Size = New Size(425, 39)
             DtpBirthDate.TabIndex = 102
             DtpBirthDate.XOResetOnDisabled = False
             ' 
@@ -1080,11 +1080,11 @@
             ' 
             TxtPersonalID.BackColor = Color.LightPink
             TxtPersonalID.Font = New Font("Segoe UI", 12F)
-            TxtPersonalID.Location = New Point(273, 15)
+            TxtPersonalID.Location = New Point(306, 38)
             TxtPersonalID.Margin = New Padding(6, 5, 6, 5)
             TxtPersonalID.MaxLength = 16
             TxtPersonalID.Name = "TxtPersonalID"
-            TxtPersonalID.Size = New Size(537, 39)
+            TxtPersonalID.Size = New Size(425, 39)
             TxtPersonalID.TabIndex = 100
             TxtPersonalID.Tag = "txt"
             TxtPersonalID.XOAutoTrim = True
@@ -1114,21 +1114,21 @@
             CboGender.Font = New Font("Segoe UI", 12F)
             CboGender.FormattingEnabled = True
             CboGender.Items.AddRange(New Object() {"FEMALE", "MALE"})
-            CboGender.Location = New Point(273, 285)
+            CboGender.Location = New Point(306, 313)
             CboGender.Margin = New Padding(6, 5, 6, 5)
             CboGender.Name = "CboGender"
-            CboGender.Size = New Size(533, 40)
+            CboGender.Size = New Size(425, 40)
             CboGender.TabIndex = 104
             ' 
             ' TxtFullName
             ' 
             TxtFullName.BackColor = Color.LightPink
             TxtFullName.Font = New Font("Segoe UI", 12F)
-            TxtFullName.Location = New Point(273, 83)
+            TxtFullName.Location = New Point(306, 108)
             TxtFullName.Margin = New Padding(6, 5, 6, 5)
             TxtFullName.MaxLength = 255
             TxtFullName.Name = "TxtFullName"
-            TxtFullName.Size = New Size(533, 39)
+            TxtFullName.Size = New Size(425, 39)
             TxtFullName.TabIndex = 101
             TxtFullName.Tag = "txt"
             TxtFullName.XOAutoTrim = True

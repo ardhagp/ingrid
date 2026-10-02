@@ -29,8 +29,15 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub CommmsMenu_EventDataEdit() Handles Com_mms_Menu.EventDataEdit
-            Frm_rems_Switch = New FRMremsEditorSwitch
-            Display(Frm_rems_Switch, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Please Select",, True,)
+            With varDataProperties
+                Frm_rems_Switch = New FRMremsEditorSwitch
+                .IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "Please Select"
+                .IngridFormSubtitle = "Select the type of data you want to edit"
+                .IngridFormIsDialog = True
+                Display(Frm_rems_Switch,, varDataProperties)
+            End With
         End Sub
 #End Region
 

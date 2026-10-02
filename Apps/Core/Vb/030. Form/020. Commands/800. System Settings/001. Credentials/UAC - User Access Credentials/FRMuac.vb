@@ -33,41 +33,55 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Add
-            varDataProperties.AllParameters.Remove(pCommand)
-            varDataProperties.AllParameters.Add(pCommand, "UAC")
-            If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                Return
-            End If
+            With varDataProperties
+                .SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Add
+                .AllParameters.Remove(pCommand)
+                .AllParameters.Add(pCommand, "UAC")
+                If Not (varUserAccess.User(varDataProperties)) Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Return
+                End If
 
-            varDataProperties.UserAccessIsChangePasswordForm = False
+                .UserAccessIsChangePasswordForm = False
 
-            varDataProperties.UserAccessIsNew = True
-            Frm_uac_Editor = New FRMuacEditor
-            Display(Frm_uac_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new credential data", True)
+                .UserAccessIsNew = True
+                Frm_uac_Editor = New FRMuacEditor
+                .IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "Add New Record"
+                .IngridFormSubtitle = "Add new credential data"
+                .IngridFormIsDialog = True
+                Display(Frm_uac_Editor,, varDataProperties)
+            End With
         End Sub
 
         <SupportedOSPlatform("windows")>
         Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
-            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Edit
-            varDataProperties.AllParameters.Remove(pCommand)
-            varDataProperties.AllParameters.Add(pCommand, "UAC")
-            If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                Return
-            End If
+            With varDataProperties
+                .SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Edit
+                .AllParameters.Remove(pCommand)
+                .AllParameters.Add(pCommand, "UAC")
+                If Not (varUserAccess.User(varDataProperties)) Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Return
+                End If
 
-            Call GetRowID()
+                Call GetRowID()
 
-            varDataProperties.UserAccessIsChangePasswordForm = False
+                .UserAccessIsChangePasswordForm = False
 
-            If varDataProperties.UserAccessIsNew Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-            Else
-                Frm_uac_Editor = New FRMuacEditor
-                Display(Frm_uac_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your employee data", True)
-            End If
+                If .UserAccessIsNew Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
+                Else
+                    Frm_uac_Editor = New FRMuacEditor
+                    .IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                    .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                    .IngridFormTitle = "Update Record"
+                    .IngridFormSubtitle = "Update your employee data"
+                    .IngridFormIsDialog = True
+                    Display(Frm_uac_Editor,, varDataProperties)
+                End If
+            End With
         End Sub
 
         <SupportedOSPlatform("windows")>

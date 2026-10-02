@@ -47,7 +47,14 @@ Namespace UI.Canvas
 
                 .CompanyIsNew = True
                 Frm_ccin_Editor = New FRMccinEditor
-                Display(Frm_ccin_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new company data", True)
+                With varDataProperties
+                    .IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                    .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                    .IngridFormTitle = "Add New Record"
+                    .IngridFormSubtitle = "Add new company data"
+                    .IngridFormIsDialog = True
+                End With
+                Display(Frm_ccin_Editor,, varDataProperties)
             End With
         End Sub
 
@@ -65,7 +72,14 @@ Namespace UI.Canvas
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 Frm_ccin_Editor = New FRMccinEditor
-                Display(Frm_ccin_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your company data", True)
+                With varDataProperties
+                    .IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                    .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                    .IngridFormTitle = "Update Record"
+                    .IngridFormSubtitle = "Update your company data"
+                    .IngridFormIsDialog = True
+                End With
+                Display(Frm_ccin_Editor,, varDataProperties)
             End If
 
             UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty

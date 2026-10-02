@@ -41,7 +41,14 @@
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
             varDataProperties.DepartmentIsNew = True
             Frm_cdin_Editor = New FRMcdinEditor
-            Display(Frm_cdin_Editor, ImageDb.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new departement data", True)
+            With varDataProperties
+                .IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "Add New Record"
+                .IngridFormSubtitle = "Add new departement data"
+                .IngridFormIsDialog = True
+            End With
+            Display(Frm_cdin_Editor,, varDataProperties)
         End Sub
 
         ''' <summary>
@@ -54,7 +61,14 @@
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 Frm_cdin_Editor = New FRMcdinEditor
-                Display(Frm_cdin_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your departement data", True)
+                With varDataProperties
+                    .IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                    .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                    .IngridFormTitle = "Update Record"
+                    .IngridFormSubtitle = "Update your departement data"
+                    .IngridFormIsDialog = True
+                End With
+                Display(Frm_cdin_Editor,, varDataProperties)
             End If
             UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
         End Sub
@@ -72,7 +86,7 @@
                     Dim varMessage As New System.Text.StringBuilder()
                     varMessage.AppendLine("Do you want to delete this record?")
 
-                    Dim varLine As String = New String("─"c, 80)
+                    Dim varLine As New String("─"c, 80)
                     varMessage.AppendLine(varLine)
 
                     varMessage.AppendLine("Department Code : " & .Cells("department_code").Value.ToString & Environment.NewLine &

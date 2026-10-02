@@ -1,4 +1,6 @@
-﻿Namespace UI.Canvas
+﻿Imports Org.BouncyCastle.Pqc.Crypto.Cmce
+
+Namespace UI.Canvas
     ''' <summary>
     ''' This is the main form for the Employee List module. It provides functionalities to view, add, edit, delete, and refresh employee records. The form interacts with the underlying data properties and handles user access permissions for various operations. It also includes a search feature to filter employee records based on user input.
     ''' </summary>
@@ -74,13 +76,17 @@
             With varDataProperties
                 .SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Add
                 If Not (varUserAccess.User(varDataProperties)) Then
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                     Return
                 End If
 
                 .EmployeeIsNew = True
                 Frm_epls_Editor = New FRMeplsEditor
-                Display(Frm_epls_Editor, ImageDb.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new employee data", True)
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "Add New Record"
+                .IngridFormSubtitle = "Add new employee data"
+                .IngridFormIsDialog = True
+                Display(Frm_epls_Editor,, varDataProperties)
             End With
         End Sub
 
@@ -89,22 +95,28 @@
         ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
-            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Edit
-            If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                Return
-            End If
+            With varDataProperties
+                .SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Edit
+                If Not (varUserAccess.User(varDataProperties)) Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
+                    Return
+                End If
 
-            Call GetRowID()
+                Call GetRowID()
 
-            If varDataProperties.EmployeeIsNew Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-            Else
-                Frm_epls_Editor = New FRMeplsEditor
-                Display(Frm_epls_Editor, ImageDb.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update your employee data", True)
-            End If
+                If varDataProperties.EmployeeIsNew Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
+                Else
+                    Frm_epls_Editor = New FRMeplsEditor
+                    .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                    .IngridFormTitle = "Update Record"
+                    .IngridFormSubtitle = "Update your employee data"
+                    .IngridFormIsDialog = True
+                    Display(Frm_epls_Editor,, varDataProperties)
+                End If
 
-            ClearMainFrameFooterText()
+                ClearMainFrameFooterText()
+            End With
         End Sub
 
         ''' <summary>
@@ -112,39 +124,41 @@
         ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
-            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Delete
-            If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                Return
-            End If
+            With varDataProperties
+                .SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Delete
+                If Not (varUserAccess.User(varDataProperties)) Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Return
+                End If
 
-            Call GetRowID()
+                Call GetRowID()
 
-            If varDataProperties.EmployeeIsNew Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-            Else
-                With DgnEPLS.CurrentRow
-                    Dim varMessage As New System.Text.StringBuilder()
-                    varMessage.AppendLine("Do you want to delete this record?")
+                If .EmployeeIsNew Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
+                Else
+                    With DgnEPLS.CurrentRow
+                        Dim varMessage As New System.Text.StringBuilder()
+                        varMessage.AppendLine("Do you want to delete this record?")
 
-                    Dim varLine As New String("─"c, 80)
-                    varMessage.AppendLine(varLine)
+                        Dim varLine As New String("─"c, 80)
+                        varMessage.AppendLine(varLine)
 
-                    varMessage.AppendLine("Employee ID : " & .Cells("employee_number").Value.ToString & Environment.NewLine &
-                            "Employee Name : " & .Cells("employee_fullname").Value.ToString & Environment.NewLine &
-                            "Position : " & .Cells("position_name").Value.ToString & Environment.NewLine &
-                            "Department : " & .Cells("department_name").Value.ToString & Environment.NewLine &
-                            "Company : " & .Cells("company_name").Value.ToString & Environment.NewLine
-                            )
-                    varMessage.AppendLine(varLine)
-                    If Decision(My.Application.Info.AssemblyName.ToUpper, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDepls.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
-                        Call GetData(True)
-                        UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
-                    Else
-                        UI.Canvas.FRMmainframe6.Ts_status.Text = "Delete failed"
-                    End If
-                End With
-            End If
+                        varMessage.AppendLine("Employee ID : " & .Cells("employee_number").Value.ToString & Environment.NewLine &
+                                "Employee Name : " & .Cells("employee_fullname").Value.ToString & Environment.NewLine &
+                                "Position : " & .Cells("position_name").Value.ToString & Environment.NewLine &
+                                "Department : " & .Cells("department_name").Value.ToString & Environment.NewLine &
+                                "Company : " & .Cells("company_name").Value.ToString & Environment.NewLine
+                                )
+                        varMessage.AppendLine(varLine)
+                        If Decision(My.Application.Info.AssemblyName.ToUpper, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDepls.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
+                            Call GetData(True)
+                            UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
+                        Else
+                            UI.Canvas.FRMmainframe6.Ts_status.Text = "Delete failed"
+                        End If
+                    End With
+                End If
+            End With
         End Sub
 
         ''' <summary>
