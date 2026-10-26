@@ -58,6 +58,8 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMconn_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_CONN, XOLogo,, 512, 512)
+
             ' Notify that the connection settings form is opened
             RaiseEvent ConnectFrameOpen()
 

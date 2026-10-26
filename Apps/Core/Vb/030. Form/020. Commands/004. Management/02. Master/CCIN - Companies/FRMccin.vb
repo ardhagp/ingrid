@@ -155,7 +155,7 @@ Namespace UI.Canvas
             Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
             DgnCCIN.XOGetNewColor()
             Call GetData(True)
-            DatagridBehaviour.AdaptiveRowHeight(Me, DgnCCIN)
+            CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnCCIN)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>

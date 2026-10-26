@@ -69,7 +69,7 @@
 
                 CMDepls.Editor.GetEmployeeProperties(varDataProperties, varDatasetIngrid)
 
-                With varDatasetIngrid.Tables("EPLS_Editor").Rows(0)
+                With varDatasetIngrid.Tables(dstTableName.EplsEditor).Rows(0)
                     'Displaying Employee Detail
                     SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeId, CLng(.Item(tEmployee.C_EmployeeId)))
                     TxtPersonalID.Text = .Item(tEmployee.C_EmployeePersonalIdNumber).ToString

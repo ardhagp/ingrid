@@ -153,7 +153,7 @@
             DgnCDIN.XOGetNewColor()
             Call GetData(True)
             TxtFind.ClearSearch()
-            DatagridBehaviour.AdaptiveRowHeight(Me, DgnCDIN)
+            CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnCDIN)
         End Sub
 
         ''' <summary>

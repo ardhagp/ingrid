@@ -16,7 +16,7 @@
     Public Enum DatabaseEngine
         [MSSQL]
         [MYSQL]
-        [PGSQL]
+        '[PGSQL]
     End Enum
 
     ''' <summary>

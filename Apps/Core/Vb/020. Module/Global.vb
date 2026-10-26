@@ -40,6 +40,8 @@
 
         'Dataset Tables
         Public varDatasetIngrid As New Ingrid.UI.Dataset.ADSglobal
+        Public dstTableName As New LibApp.Table.Dataset.Name
+
         Public Const dtSettings As String = "SYSS_Editor"
         Public Const dtModule As String = "SysModule"
         Public Const dtUserData As String = "UserData"
@@ -57,9 +59,6 @@
         Public tLog As New LibApp.Table.Sys.Log
         Public tUser As New LibApp.Table.Sys.User
         Public tAttachment As New LibApp.Table.File.Attachment
-
-        Public ReadOnly DatagridBehaviour As CMCv.UI.Components.Behavior.Datagrid
-
 
         ''' <summary>
         ''' Sets a value in the provided dictionary (parametername) for the specified key. If the key already exists, it removes the existing entry before adding the new key-value pair. If the value is Nothing, it adds DBNull.Value instead. This method is marked to be supported only on Windows platforms.
