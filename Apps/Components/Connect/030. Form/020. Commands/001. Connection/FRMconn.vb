@@ -77,6 +77,8 @@
 
             ' Load data into the grid
             Call GetData(True)
+
+            CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnConnection)
         End Sub
 
         Private Sub LoadMenu()

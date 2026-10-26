@@ -359,8 +359,9 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnTest_Click(sender As Object, e As EventArgs) Handles Btn_Test.Click
-            If Not CheckInvalidInput() Then
-                Decision("INGRID - CONNECTION SETTINGS", "Unable to test your connection." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+            If CheckInvalidInput() Then
+                ' Run if invalid input is detected
+                Decision("INGRID - CONNECTION SETTINGS", "Unable to test your connection." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -370,7 +371,7 @@ Namespace UI.Canvas
                     Dim varConnection As MySql.Data.MySqlClient.MySqlConnection
                     varConnection = New MySql.Data.MySqlClient.MySqlConnection(varMysql.MysqlForceSsl(TxtAddress.XOSqlText, CInt(TxtPort.XOSqlText), TxtDatabaseName.XOSqlText, TxtUsername.XOSqlText, TxtPassword.XOSqlText))
                     varConnection.Open()
-                    MessageBox.Show("Connection test successful.")
+                    MessageBox.Show("Connection test successful.", "INGRID - CONNECTION SETTINGS", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     varConnection.Close()
                     varConnection.Dispose()
                 Catch ex As Exception
