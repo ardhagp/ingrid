@@ -39,6 +39,7 @@
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' PnlBottomButton
@@ -97,7 +98,7 @@
             TxtPositionDescription.Tag = "txt"
             TxtPositionDescription.XOAutoTrim = False
             TxtPositionDescription.XOHighlightColor = Color.LightYellow
-            TxtPositionDescription.XOHighlightOnFocus = False
+            TxtPositionDescription.XOHighlightOnFocus = True
             TxtPositionDescription.XOIsBlank = True
             TxtPositionDescription.XOIsMandatory = False
             TxtPositionDescription.XOIsPlaceholder = False
@@ -251,17 +252,18 @@
             ' 
             ChkAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             ChkAddNew.AutoSize = True
-            ChkAddNew.BackColor = Color.Transparent
+            ChkAddNew.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             ChkAddNew.FlatStyle = FlatStyle.Flat
             ChkAddNew.Font = New Font("Segoe UI", 12F)
-            ChkAddNew.ForeColor = Color.Tomato
-            ChkAddNew.Location = New Point(263, 22)
+            ChkAddNew.ForeColor = Color.White
+            ChkAddNew.Location = New Point(263, 28)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
             ChkAddNew.Name = "ChkAddNew"
             ChkAddNew.Size = New Size(221, 36)
             ChkAddNew.TabIndex = 803
             ChkAddNew.Text = "Add new on Save"
             ChkAddNew.UseVisualStyleBackColor = False
+            ChkAddNew.XOCheckColor = Color.White
             ' 
             ' ULbl1
             ' 
@@ -291,26 +293,26 @@
             ' 
             ' ULbl3
             ' 
-            ULbl3.BackColor = Color.Moccasin
+            ULbl3.BackColor = Color.MistyRose
             ULbl3.Location = New Point(20, 153)
             ULbl3.Margin = New Padding(7, 5, 7, 5)
             ULbl3.Name = "ULbl3"
             ULbl3.Size = New Size(250, 39)
             ULbl3.TabIndex = 1016
-            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl3.XOText = "Position Code"
             ULbl3.XOTextAdjuster = False
             ULbl3.XOTextBorder = False
             ' 
             ' ULbl4
             ' 
-            ULbl4.BackColor = Color.Moccasin
+            ULbl4.BackColor = Color.MistyRose
             ULbl4.Location = New Point(20, 222)
             ULbl4.Margin = New Padding(7, 5, 7, 5)
             ULbl4.Name = "ULbl4"
             ULbl4.Size = New Size(250, 39)
             ULbl4.TabIndex = 1017
-            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl4.XOText = "Position Name"
             ULbl4.XOTextAdjuster = False
             ULbl4.XOTextBorder = False
@@ -342,6 +344,7 @@
             SLFPanel.ResumeLayout(False)
             SLFPanel.PerformLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub

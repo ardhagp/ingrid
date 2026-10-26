@@ -294,7 +294,7 @@
             ChkAddNew.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             ChkAddNew.FlatStyle = FlatStyle.Flat
             ChkAddNew.Font = New Font("Segoe UI", 12F)
-            ChkAddNew.ForeColor = Color.Yellow
+            ChkAddNew.ForeColor = Color.White
             ChkAddNew.Location = New Point(586, 28)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
             ChkAddNew.Name = "ChkAddNew"
@@ -302,7 +302,7 @@
             ChkAddNew.TabIndex = 6
             ChkAddNew.Text = "Add new on Save"
             ChkAddNew.UseVisualStyleBackColor = False
-            ChkAddNew.XOCheckColor = Color.Yellow
+            ChkAddNew.XOCheckColor = Color.White
             ' 
             ' ULbl1
             ' 

@@ -54,9 +54,9 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ChangeTextBorder(value As Boolean)
             If value Then
-                UText.BorderStyle = BorderStyle.FixedSingle
+                UText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Else
-                UText.BorderStyle = BorderStyle.None
+                UText.BorderStyle = System.Windows.Forms.BorderStyle.None
             End If
         End Sub
 

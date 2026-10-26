@@ -278,14 +278,14 @@
             ChkAddNew.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             ChkAddNew.FlatStyle = FlatStyle.Flat
             ChkAddNew.Font = New Font("Segoe UI", 12F)
-            ChkAddNew.ForeColor = Color.Yellow
+            ChkAddNew.ForeColor = Color.White
             ChkAddNew.Location = New Point(588, 33)
             ChkAddNew.Name = "ChkAddNew"
             ChkAddNew.Size = New Size(221, 36)
             ChkAddNew.TabIndex = 7
             ChkAddNew.Text = "Add new on Save"
             ChkAddNew.UseVisualStyleBackColor = False
-            ChkAddNew.XOCheckColor = Color.Yellow
+            ChkAddNew.XOCheckColor = Color.White
             ' 
             ' TbxDepartment
             ' 

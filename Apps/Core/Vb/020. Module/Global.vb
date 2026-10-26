@@ -11,7 +11,7 @@
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(varSyncfusionkey)
         End Sub
 
-        Public varDevice As CMCv.DeviceFormFactor = CMCv.Device.DetectFormFactor()
+        Public varDevice As CMCv.Device.DeviceFormFactor
 
         Public varFormimage(4) As System.Drawing.Image
         Public varWorkspace As New Workspace
@@ -241,7 +241,7 @@
                             formname.WindowState = FormWindowState.Maximized
 
                             ' Activate MDI if device is desktop
-                            If varDevice = DeviceFormFactor.Desktop Then
+                            If varDevice = CMCv.Device.DeviceFormFactor.Desktop Then
                                 formname.MdiParent = parentframe
                                 formname.Visible = True
                                 formname.Show()
@@ -250,7 +250,7 @@
                                 formname.ShowDialog()
                             End If
                         Else
-                            If varDevice = DeviceFormFactor.Desktop Then
+                            If varDevice = CMCv.Device.DeviceFormFactor.Desktop Then
                                 formname.Show()
                             Else
                                 formname.ShowDialog()
@@ -317,7 +317,7 @@
                             formname.WindowState = FormWindowState.Maximized
 
                             ' Activate MDI if device is desktop
-                            If varDevice = DeviceFormFactor.Desktop Then
+                            If varDevice = CMCv.Device.DeviceFormFactor.Desktop Then
                                 formname.MdiParent = parentframe
                                 formname.Visible = True
                                 formname.Show()
@@ -326,7 +326,7 @@
                                 formname.ShowDialog()
                             End If
                         Else
-                            If varDevice = DeviceFormFactor.Desktop Then
+                            If varDevice = CMCv.Device.DeviceFormFactor.Desktop Then
                                 formname.Show()
                             Else
                                 formname.ShowDialog()

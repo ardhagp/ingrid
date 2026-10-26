@@ -55,6 +55,7 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Try
+                varDevice = CMCv.Device.Device.DetectFormFactor
                 CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(My.Settings.URL_MainframeBackground, Me)
                 CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Image_OPENCOMMAND, BtnExecute,, 48, 48)
                 PctProfile.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-images.svg", True, 72, 72)
