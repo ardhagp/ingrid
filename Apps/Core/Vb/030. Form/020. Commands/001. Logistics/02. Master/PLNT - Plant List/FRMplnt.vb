@@ -9,7 +9,6 @@ Namespace UI.Canvas
         Private Const pCommand As String = "@Command"
         Private Const pPlantId As String = "@PlantId"
 
-#Region "Sub Collections"
         <SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnPLNT)
@@ -31,9 +30,6 @@ Namespace UI.Canvas
             End If
         End Sub
 
-#End Region
-
-#Region "Menu Strip Functions"
         ''' <summary>
         ''' Add new data
         ''' </summary>
@@ -49,7 +45,12 @@ Namespace UI.Canvas
 
             varDataProperties.PlantIsNew = True
             Frm_plnt_Editor = New FRMplntEditor
-            Display(Frm_plnt_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new plant", True)
+            varDataProperties.IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+            varDataProperties.IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+            varDataProperties.IngridFormTitle = "Add New Record"
+            varDataProperties.IngridFormSubtitle = "Add new plant"
+            varDataProperties.IngridFormIsDialog = True
+            Display(Frm_plnt_Editor,, varDataProperties)
             UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
         End Sub
 
@@ -69,7 +70,12 @@ Namespace UI.Canvas
                 Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
             Else
                 Frm_plnt_Editor = New FRMplntEditor
-                Display(Frm_plnt_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "Update plant data", True)
+                varDataProperties.IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                varDataProperties.IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                varDataProperties.IngridFormTitle = "Update Record"
+                varDataProperties.IngridFormSubtitle = "Update plant data"
+                varDataProperties.IngridFormIsDialog = True
+                Display(Frm_plnt_Editor,, varDataProperties)
             End If
             UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
         End Sub
@@ -110,18 +116,12 @@ Namespace UI.Canvas
         Private Sub CommmsMenu_EventDataClose() Handles Com_mms_Menu.EventDataClose
             Me.Close()
         End Sub
-#End Region
 
-#Region "Upper Form Bar"
-
-#End Region
-
-#Region "Main Form Events"
         <SupportedOSPlatform("windows")>
         Private Sub FRMplnt_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Com_mms_Menu.LoadIn(Me)
             Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
-            DgnPLNT.XOGETNewColor()
+            DgnPLNT.XOGetNewColor()
             Call GetData(True)
         End Sub
 
@@ -134,7 +134,5 @@ Namespace UI.Canvas
         Private Sub FRMplntEditor_RecordSaved() Handles Frm_plnt_Editor.EventRecordSaved
             'Call SavedOrRefresh()'
         End Sub
-
-#End Region
     End Class
 End Namespace

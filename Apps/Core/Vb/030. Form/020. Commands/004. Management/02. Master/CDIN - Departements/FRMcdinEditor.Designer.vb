@@ -118,11 +118,11 @@
             ' TxtDeptCode
             ' 
             TxtDeptCode.Font = New Font("Segoe UI", 12F)
-            TxtDeptCode.Location = New Point(273, 83)
+            TxtDeptCode.Location = New Point(306, 108)
             TxtDeptCode.Margin = New Padding(6, 5, 6, 5)
             TxtDeptCode.MaxLength = 255
             TxtDeptCode.Name = "TxtDeptCode"
-            TxtDeptCode.Size = New Size(533, 39)
+            TxtDeptCode.Size = New Size(425, 39)
             TxtDeptCode.TabIndex = 1
             TxtDeptCode.Tag = "txt"
             TxtDeptCode.XOAutoTrim = True
@@ -152,20 +152,20 @@
             CboCompany.FlatStyle = FlatStyle.Flat
             CboCompany.Font = New Font("Segoe UI", 12F)
             CboCompany.FormattingEnabled = True
-            CboCompany.Location = New Point(273, 15)
+            CboCompany.Location = New Point(306, 38)
             CboCompany.Margin = New Padding(6, 5, 6, 5)
             CboCompany.Name = "CboCompany"
-            CboCompany.Size = New Size(533, 40)
+            CboCompany.Size = New Size(425, 40)
             CboCompany.TabIndex = 0
             ' 
             ' TxtDeptName
             ' 
             TxtDeptName.Font = New Font("Segoe UI", 12F)
-            TxtDeptName.Location = New Point(273, 150)
+            TxtDeptName.Location = New Point(306, 178)
             TxtDeptName.Margin = New Padding(6, 5, 6, 5)
             TxtDeptName.MaxLength = 255
             TxtDeptName.Name = "TxtDeptName"
-            TxtDeptName.Size = New Size(533, 39)
+            TxtDeptName.Size = New Size(425, 39)
             TxtDeptName.TabIndex = 2
             TxtDeptName.Tag = "txt"
             TxtDeptName.XOAutoTrim = True
@@ -191,12 +191,12 @@
             ' TxtDescription
             ' 
             TxtDescription.Font = New Font("Segoe UI", 12F)
-            TxtDescription.Location = New Point(273, 217)
+            TxtDescription.Location = New Point(306, 247)
             TxtDescription.Margin = New Padding(6, 5, 6, 5)
             TxtDescription.MaxLength = 255
             TxtDescription.Multiline = True
             TxtDescription.Name = "TxtDescription"
-            TxtDescription.Size = New Size(533, 254)
+            TxtDescription.Size = New Size(425, 254)
             TxtDescription.TabIndex = 3
             TxtDescription.Tag = "txt"
             TxtDescription.XOAutoTrim = False
@@ -222,10 +222,10 @@
             ' ULbl1
             ' 
             ULbl1.BackColor = Color.MistyRose
-            ULbl1.Location = New Point(14, 15)
+            ULbl1.Location = New Point(16, 38)
             ULbl1.Margin = New Padding(9, 6, 9, 6)
             ULbl1.Name = "ULbl1"
-            ULbl1.Size = New Size(250, 39)
+            ULbl1.Size = New Size(272, 39)
             ULbl1.TabIndex = 1004
             ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl1.XOText = "Company"
@@ -235,10 +235,10 @@
             ' ULbl2
             ' 
             ULbl2.BackColor = Color.MistyRose
-            ULbl2.Location = New Point(14, 83)
+            ULbl2.Location = New Point(16, 108)
             ULbl2.Margin = New Padding(9, 6, 9, 6)
             ULbl2.Name = "ULbl2"
-            ULbl2.Size = New Size(250, 39)
+            ULbl2.Size = New Size(272, 39)
             ULbl2.TabIndex = 1005
             ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl2.XOText = "Dept. Code"
@@ -248,10 +248,10 @@
             ' ULbl3
             ' 
             ULbl3.BackColor = Color.MistyRose
-            ULbl3.Location = New Point(14, 150)
+            ULbl3.Location = New Point(16, 178)
             ULbl3.Margin = New Padding(9, 6, 9, 6)
             ULbl3.Name = "ULbl3"
-            ULbl3.Size = New Size(250, 39)
+            ULbl3.Size = New Size(272, 39)
             ULbl3.TabIndex = 1006
             ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl3.XOText = "Dept. Name"
@@ -261,10 +261,10 @@
             ' ULbl4
             ' 
             ULbl4.BackColor = Color.Moccasin
-            ULbl4.Location = New Point(15, 217)
+            ULbl4.Location = New Point(16, 247)
             ULbl4.Margin = New Padding(9, 6, 9, 6)
             ULbl4.Name = "ULbl4"
-            ULbl4.Size = New Size(250, 254)
+            ULbl4.Size = New Size(272, 254)
             ULbl4.TabIndex = 1007
             ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.XOText = "Description"
@@ -289,6 +289,7 @@
             ' 
             ' TbxDepartment
             ' 
+            TbxDepartment.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
             TbxDepartment.Controls.Add(TpDetail)
             TbxDepartment.Font = New Font("Segoe UI", 12F)
             TbxDepartment.Location = New Point(20, 25)
@@ -299,6 +300,7 @@
             ' 
             ' TpDetail
             ' 
+            TpDetail.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             TpDetail.Controls.Add(ULbl3)
             TpDetail.Controls.Add(ULbl4)
             TpDetail.Controls.Add(ULbl2)
@@ -313,7 +315,6 @@
             TpDetail.Size = New Size(822, 655)
             TpDetail.TabIndex = 0
             TpDetail.Text = "DETAIL"
-            TpDetail.UseVisualStyleBackColor = True
             ' 
             ' FRMcdinEditor
             ' 

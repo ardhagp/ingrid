@@ -36,7 +36,12 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub EventToolsImport() Handles Com_mms_Menu.EventToolsImport
-            Display(New FRMimports(Import.Data.DataType.TypeofImports.MaterialMasterCatalog), IMAGEDB.Main.ImageLibrary.IMPORTS_ICON, My.Application.Info.AssemblyName.ToUpper, "Catalog Imports", "Imports your catalog data from other database", True)
+            varDataProperties.IngridFormImage = ImageDb.Main.ImageLibrary.IMPORTS_ICON
+            varDataProperties.IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+            varDataProperties.IngridFormTitle = "Catalog Imports"
+            varDataProperties.IngridFormSubtitle = "Imports your catalog data from other database"
+            varDataProperties.IngridFormIsDialog = True
+            Display(New FRMimports(Import.Data.DataType.TypeofImports.MaterialMasterCatalog),, varDataProperties)
         End Sub
 
         <SupportedOSPlatform("windows")>

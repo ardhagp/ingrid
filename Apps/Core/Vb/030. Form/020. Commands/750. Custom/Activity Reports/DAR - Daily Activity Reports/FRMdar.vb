@@ -3,7 +3,6 @@ Imports Serilog.Sinks.Http
 
 Namespace UI.Canvas
     Public Class FRMdar
-#Region "Declaration"
         Private WithEvents Frm_dar_SinglePhotoViewer As UI.Canvas.FRMaddinsDARsinglePhotoViewer
         Private WithEvents Frm_dar_SinglePDFViewer As UI.Canvas.FRMaddinsDARsinglePDFViewer
         Private WithEvents Frm_dar_Editor As New UI.Canvas.FRMdarEditor
@@ -24,9 +23,7 @@ Namespace UI.Canvas
 
         Private Const pCommand As String = "@Command"
         Private Const pCustomActivityId As String = "@pCustomActivityId"
-#End Region
 
-#Region "Sub Collections"
         ''' <summary>
         ''' Mengisi CBOBy dengan data karyawan
         ''' </summary>
@@ -210,26 +207,31 @@ Namespace UI.Canvas
                 CMDdar.View.DisplayFileGrid(varDataProperties, varContentID, DgnFile)
             End If
         End Sub
-#End Region
 
-#Region "Menu Strip Function"
         ''' <summary>
         ''' Add new data
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub EventDataAddNew() Handles Com_mms_Menu.EventDataAddNew
-            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Add
-            varDataProperties.AllParameters.Remove(pCommand)
-            varDataProperties.AllParameters.Add(pCommand, "DAR")
-            If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                Return
-            End If
+            With varDataProperties
+                .SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Add
+                .AllParameters.Remove(pCommand)
+                .AllParameters.Add(pCommand, "DAR")
+                If Not (varUserAccess.User(varDataProperties)) Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Add new record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Return
+                End If
 
-            varDataProperties.CustomDailyActivityIsNew = True
-            Frm_dar_Editor = New FRMdarEditor
-            Display(Frm_dar_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Add New Record", "Add new activity", True)
-            UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
+                .CustomDailyActivityIsNew = True
+                Frm_dar_Editor = New FRMdarEditor
+                .IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "Add New Record"
+                .IngridFormSubtitle = "Add new activity"
+                .IngridFormIsDialog = True
+                Display(Frm_dar_Editor,, varDataProperties)
+                UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
+            End With
         End Sub
 
         ''' <summary>
@@ -237,25 +239,32 @@ Namespace UI.Canvas
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Public Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
-            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Edit
-            varDataProperties.AllParameters.Remove(pCommand)
-            varDataProperties.AllParameters.Add(pCommand, "DAR")
-            If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                Return
-            End If
+            With varDataProperties
+                .SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Edit
+                .AllParameters.Remove(pCommand)
+                .AllParameters.Add(pCommand, "DAR")
+                If Not (varUserAccess.User(varDataProperties)) Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Modify existing record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Return
+                End If
 
-            Call GetRowID()
+                Call GetRowID()
 
-            varDataProperties.CustomDailyActivityIsNew = False
+                .CustomDailyActivityIsNew = False
 
-            If varDataProperties.CustomDailyActivityIsNew Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-            Else
-                Frm_dar_Editor = New FRMdarEditor
-                Display(Frm_dar_Editor, IMAGEDB.Main.ImageLibrary.EDIT_ICON, My.Application.Info.AssemblyName.ToUpper, "Update Record", "update activity", True)
-            End If
-            UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
+                If .CustomDailyActivityIsNew Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
+                Else
+                    Frm_dar_Editor = New FRMdarEditor
+                    .IngridFormImage = ImageDb.Main.ImageLibrary.EDIT_ICON
+                    .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                    .IngridFormTitle = "Update Record"
+                    .IngridFormSubtitle = "Update activity"
+                    .IngridFormIsDialog = True
+                    Display(Frm_dar_Editor,, varDataProperties)
+                End If
+                UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
+            End With
         End Sub
 
         ''' <summary>
@@ -263,30 +272,32 @@ Namespace UI.Canvas
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
-            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Delete
-            varDataProperties.AllParameters.Remove(pCommand)
-            varDataProperties.AllParameters.Add(pCommand, "DAR")
-            If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                Return
-            End If
+            With varDataProperties
+                .SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Delete
+                .AllParameters.Remove(pCommand)
+                .AllParameters.Add(pCommand, "DAR")
+                If Not (varUserAccess.User(varDataProperties)) Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Return
+                End If
 
-            Call GetRowID()
+                Call GetRowID()
 
-            If Convert.ToString(varDataProperties.CustomDailyActivityId) Is "-1" Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-            Else
-                varDataProperties.CustomDailyActivityIsNew = False
-                If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString & vbCrLf & "=======================================================", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
-                    If (CMDdar.View.DeleteData(varDataProperties, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString)) Then
-                        Call GetData(True)
-                        Call FillEmployee()
-                        UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
-                    Else
-                        UI.Canvas.FRMmainframe6.Ts_status.Text = "Delete failed"
+                If Convert.ToString(.CustomDailyActivityId) Is "-1" Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
+                Else
+                    .CustomDailyActivityIsNew = False
+                    If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?" & vbCrLf & vbCrLf & "=======================================================" & vbCrLf & DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString & vbCrLf & "=======================================================", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+                        If (CMDdar.View.DeleteData(varDataProperties, Convert.ToString(varDataProperties.CustomDailyActivityId).ToString)) Then
+                            Call GetData(True)
+                            Call FillEmployee()
+                            UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
+                        Else
+                            UI.Canvas.FRMmainframe6.Ts_status.Text = "Delete failed"
+                        End If
                     End If
                 End If
-            End If
+            End With
         End Sub
 
         ''' <summary>
@@ -333,20 +344,16 @@ Namespace UI.Canvas
             End If
             Call LoadAttachment(varShowAttachment)
         End Sub
-#End Region
 
-#Region "Context Menu Event"
         <SupportedOSPlatform("windows")>
         Private Sub ContextCopy() Handles Com_cs_Menu.ContextCopy
             If DgnDARActivity.RowCount = 0 Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
             Else
                 Clipboard.SetText(DgnDARActivity.CurrentRow.Cells("employeeactivity_description").Value.ToString)
             End If
         End Sub
-#End Region
 
-#Region "Upper Form Bar"
         <SupportedOSPlatform("windows")>
         Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
             If e.KeyCode = Keys.Enter Then
@@ -370,9 +377,7 @@ Namespace UI.Canvas
         Private Sub ChkEnableDateFilter_CheckedChanged(sender As Object, e As EventArgs) Handles ChkEnableDateFilter.CheckedChanged
             DtpMonth.Enabled = ChkEnableDateFilter.Checked
         End Sub
-#End Region
 
-#Region "Main Form Events"
         <SupportedOSPlatform("windows")>
         Private Sub FRMdar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             'Memuat Menu
@@ -402,18 +407,14 @@ Namespace UI.Canvas
             End If
             SpcPhoto.SplitterDistance = (TPPhotos.Width - (300 + SpcPhoto.SplitterWidth))
         End Sub
-#End Region
 
-#Region "Component Events : Cbo"
         <SupportedOSPlatform("windows")>
         Private Sub CboBy_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboBy.SelectedIndexChanged
             If (ChkEnableByFilter.Checked) Then
                 Call GetData(False)
             End If
         End Sub
-#End Region
 
-#Region "Component Events : Chk"
         <SupportedOSPlatform("windows")>
         Private Sub ByFilterChkEnableBy_CheckedChanged(sender As Object, e As EventArgs) Handles ChkEnableByFilter.CheckedChanged
             CboBy.Enabled = ChkEnableByFilter.Checked
@@ -421,9 +422,7 @@ Namespace UI.Canvas
                 Call GetData(False)
             End If
         End Sub
-#End Region
 
-#Region "Component Events : Dgn"
         <SupportedOSPlatform("windows")>
         Private Sub DgndarDate_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnDARDate.CellClick
             If DgnDARDate.RowCount <> 0 Then
@@ -458,13 +457,20 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub DgnPhoto_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnPhoto.CellContentClick
-            Dim sendergrid = DirectCast(sender, CMCv.UI.Control.Dgn)
+            With varDataProperties
+                Dim sendergrid = DirectCast(sender, CMCv.UI.Control.Dgn)
 
-            If TypeOf sendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
-                Frm_dar_SinglePhotoViewer = New FRMaddinsDARsinglePhotoViewer(PctbxActivityPhoto.Image)
-                Display(Frm_dar_SinglePhotoViewer, IMAGEDB.Main.ImageLibrary.PCTPRV_ICON, My.Application.Info.AssemblyName.ToUpper, "Photo Viewer", "Preview your photo", True)
-                UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
-            End If
+                If TypeOf sendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
+                    Frm_dar_SinglePhotoViewer = New FRMaddinsDARsinglePhotoViewer(PctbxActivityPhoto.Image)
+                    .IngridFormImage = ImageDb.Main.ImageLibrary.PCTPRV_ICON
+                    .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                    .IngridFormTitle = "Photo Viewer"
+                    .IngridFormSubtitle = "Preview your photo"
+                    .IngridFormIsDialog = True
+                    Display(Frm_dar_SinglePhotoViewer,, varDataProperties)
+                    UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
+                End If
+            End With
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -481,45 +487,49 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub DgnFile_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnFile.CellContentClick
-            Dim sendergrid = DirectCast(sender, CMCv.UI.Control.Dgn)
-            Dim varBytes As Byte()
+            With varDataProperties
+                Dim sendergrid = DirectCast(sender, CMCv.UI.Control.Dgn)
+                Dim varBytes As Byte()
 
-            Try
-                If TypeOf sendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
-                    Dim varFileName As String = DgnFile.CurrentRow.Cells("file_id").Value.ToString
-                    Dim varFullPath As String = Nothing
-                    Dim varDirTempLocation As String = Nothing
+                Try
+                    If TypeOf sendergrid.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso e.RowIndex >= 0 Then
+                        Dim varFileName As String = DgnFile.CurrentRow.Cells("file_id").Value.ToString
+                        Dim varFullPath As String = Nothing
+                        Dim varDirTempLocation As String = Nothing
 
-                    'Cek apakah folder sudah ada
-                    varDirTempLocation = CheckRequiredFolder(DirName.PDF)
+                        'Cek apakah folder sudah ada
+                        varDirTempLocation = CheckRequiredFolder(DirName.PDF)
 
-                    varFullPath = varDirTempLocation & varFileName & ".pdf"
+                        varFullPath = varDirTempLocation & varFileName & ".pdf"
 
-                    If (Not System.IO.File.Exists(varFullPath)) Then
-                        varBytes = CType(CMDdar.View.GetPdfFile(varDataProperties, varFileName), Byte())
-                        System.IO.File.WriteAllBytes(varFullPath, varBytes)
+                        If (Not System.IO.File.Exists(varFullPath)) Then
+                            varBytes = CType(CMDdar.View.GetPdfFile(varDataProperties, varFileName), Byte())
+                            System.IO.File.WriteAllBytes(varFullPath, varBytes)
+                        End If
+
+                        Frm_dar_SinglePDFViewer = New UI.Canvas.FRMaddinsDARsinglePdfViewer(varFullPath, varFileName, True)
+                        .IngridFormImage = ImageDb.Main.ImageLibrary.PDFPRV_ICON
+                        .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                        .IngridFormTitle = "PDF Viewer"
+                        .IngridFormSubtitle = "Preview your file"
+                        .IngridFormIsDialog = True
+                        Display(Frm_dar_SinglePDFViewer,, varDataProperties)
+                        UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
+
+                        varBytes = Nothing
                     End If
-
-                    Frm_dar_SinglePDFViewer = New UI.Canvas.FRMaddinsDARsinglePDFViewer(varFullPath, varFileName, True)
-                    Display(Frm_dar_SinglePDFViewer, IMAGEDB.Main.ImageLibrary.PDFPRV_ICON, My.Application.Info.AssemblyName.ToUpper, "PDF Viewer", "Preview your file", True)
-                    UI.Canvas.FRMmainframe6.Ts_status.Text = String.Empty
-
-                    varBytes = Nothing
-                End If
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            End Try
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+                End Try
+            End With
         End Sub
-#End Region
-
-#Region "Component Events : Btn"
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnCopyPhoto_Click(sender As Object, e As EventArgs) Handles BtnCopyPhoto.Click
             Dim varCopyPicture As Image = Nothing
 
             If PctbxActivityPhoto.Image Is Nothing Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No photo selected.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No photo selected.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                 Return
             Else
                 If varTextmark = String.Empty Then
@@ -571,9 +581,7 @@ Namespace UI.Canvas
                 End If
             End If
         End Sub
-#End Region
 
-#Region "WithEvents"
         <SupportedOSPlatform("windows")>
         Private Sub FRMdarEditor_RecordSaved() Handles Frm_dar_Editor.EventRecordSaved
             Call GetData(True)
@@ -587,19 +595,24 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub CommmsMenu_EventReportShow() Handles Com_mms_Menu.EventReportShow
-            varDataProperties.SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Delete
-            varDataProperties.AllParameters.Remove(pCommand)
-            varDataProperties.AllParameters.Add(pCommand, "DAR")
+            With varDataProperties
+                .SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Delete
+                .AllParameters.Remove(pCommand)
+                .AllParameters.Add(pCommand, "DAR")
 
-            If Not (varUserAccess.User(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Generate Report", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                Return
-            End If
+                If Not (varUserAccess.User(varDataProperties)) Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Generate Report", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Return
+                End If
 
-            Frm_dar_Reports = New FRMreportsDARfilter
-            Display(Frm_dar_Reports, IMAGEDB.Main.ImageLibrary.SEARCH_ICON, My.Application.Info.AssemblyName.ToUpper, "Report Filter", "", True,)
+                Frm_dar_Reports = New FRMreportsDARfilter
+                .IngridFormImage = ImageDb.Main.ImageLibrary.SEARCH_ICON
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "Report Filter"
+                .IngridFormSubtitle = ""
+                .IngridFormIsDialog = True
+                Display(Frm_dar_Reports,, varDataProperties)
+            End With
         End Sub
-#End Region
-
     End Class
 End Namespace

@@ -228,16 +228,17 @@
             ' ChkIsMasked
             ' 
             ChkIsMasked.AutoSize = True
-            ChkIsMasked.BackColor = Color.Transparent
+            ChkIsMasked.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             ChkIsMasked.FlatStyle = FlatStyle.Flat
             ChkIsMasked.Font = New Font("Segoe UI", 12F)
+            ChkIsMasked.ForeColor = Color.White
             ChkIsMasked.Location = New Point(306, 606)
             ChkIsMasked.Name = "ChkIsMasked"
             ChkIsMasked.Size = New Size(288, 36)
             ChkIsMasked.TabIndex = 10
             ChkIsMasked.Text = "Unreadable after saving"
             ChkIsMasked.UseVisualStyleBackColor = False
-            ChkIsMasked.XOCheckColor = Color.Empty
+            ChkIsMasked.XOCheckColor = Color.White
             ' 
             ' btnExport
             ' 
@@ -334,6 +335,7 @@
             ChkDefault.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             ChkDefault.FlatStyle = FlatStyle.Flat
             ChkDefault.Font = New Font("Segoe UI", 12F)
+            ChkDefault.ForeColor = Color.White
             ChkDefault.Location = New Point(306, 562)
             ChkDefault.Margin = New Padding(6, 5, 6, 5)
             ChkDefault.Name = "ChkDefault"
@@ -341,7 +343,7 @@
             ChkDefault.TabIndex = 9
             ChkDefault.Text = "Set as Default Connection"
             ChkDefault.UseVisualStyleBackColor = False
-            ChkDefault.XOCheckColor = Color.Empty
+            ChkDefault.XOCheckColor = Color.White
             ' 
             ' TxtPassword
             ' 

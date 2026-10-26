@@ -164,7 +164,12 @@ Namespace UI
         Private Sub EnsureOpen(Of F As {CMCv.UI.Canvas.FRMstandard, New})(ByRef formcode As F, icon As Object, title As String, caption As String, Optional isModal As Boolean = False, Optional parent As Form = Nothing)
             If formcode Is Nothing OrElse Not formcode.IsHandleCreated Then
                 formcode = New F()
-                Display(formcode, CType(icon, Image), varCommandCode(0).ToString.ToUpper, title, caption, isModal, parent)
+                varDataProperties.IngridWindowName = varCommandCode(0).ToString.ToUpper
+                varDataProperties.IngridFormTitle = title
+                varDataProperties.IngridFormSubtitle = caption
+                varDataProperties.IngridFormImage = CType(icon, Image)
+                varDataProperties.IngridFormIsDialog = isModal
+                Display(formcode, parent, varDataProperties)
                 formcode.Focus()
             Else
                 formcode.WindowState = FormWindowState.Maximized

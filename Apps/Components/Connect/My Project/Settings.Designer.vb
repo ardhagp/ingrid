@@ -62,6 +62,26 @@ Namespace My
                 Return CType(Me("ConnectionURL"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-ima"& _ 
+            "ge-all-platforms/svg-CONN.svg")>  _
+        Public ReadOnly Property URL_Logo_CONN() As String
+            Get
+                Return CType(Me("URL_Logo_CONN"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-ima"& _ 
+            "ge-all-platforms/svg-EDIT.svg")>  _
+        Public ReadOnly Property URL_Logo_EDIT() As String
+            Get
+                Return CType(Me("URL_Logo_EDIT"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

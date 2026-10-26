@@ -107,19 +107,26 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnShow_Click(sender As Object, e As EventArgs) Handles BtnShow.Click
-            varDataSet = New UI.DAR_RDS
-            CMDdar.Reports.Display(varDataProperties, ChkFrom, ChkTo, ChkArea, ChkActivity, ChkBy, DtpFrom, DtpTo, CboArea, CboActivity, CboBy, TxtDescription, varDataSet)
+            With varDataProperties
+                varDataSet = New UI.DAR_RDS
+                CMDdar.Reports.Display(varDataProperties, ChkFrom, ChkTo, ChkArea, ChkActivity, ChkBy, DtpFrom, DtpTo, CboArea, CboActivity, CboBy, TxtDescription, varDataSet)
 
-            Dim varColor As Boolean
+                Dim varColor As Boolean
 
-            If (RdoColor.Checked) Then
-                varColor = True
-            Else
-                varColor = False
-            End If
+                If (RdoColor.Checked) Then
+                    varColor = True
+                Else
+                    varColor = False
+                End If
 
-            FRMdar_RPTContainer = New FRMreportsDARcontainer(varDataSet, varDataProperties.EmployeeFirstName, varColor, GetAppVersion)
-            Display(FRMdar_RPTContainer, IMAGEDB.Main.ImageLibrary.PRINTER_ICON, My.Application.Info.AssemblyName.ToUpper, "Print - Daily Activity Report", "Generated Daily Activity Report", True,)
+                FRMdar_RPTContainer = New FRMreportsDARcontainer(varDataSet, varDataProperties.EmployeeFirstName, varColor, GetAppVersion)
+                .IngridFormImage = ImageDb.Main.ImageLibrary.PRINTER_ICON
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "Print - Daily Activity Report"
+                .IngridFormSubtitle = "Generated Daily Activity Report"
+                .IngridFormIsDialog = True
+                Display(FRMdar_RPTContainer,, varDataProperties)
+            End With
         End Sub
 
         Private Sub FRMdarRptContainer_ReportClosed() Handles FRMdar_RPTContainer.ReportClosed

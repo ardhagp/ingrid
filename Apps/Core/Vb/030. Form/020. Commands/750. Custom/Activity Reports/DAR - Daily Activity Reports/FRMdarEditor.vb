@@ -338,17 +338,23 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnPeekPhoto_Click(sender As Object, e As EventArgs) Handles BtnPeekPhoto.Click
-            If TxtPhotoPath.Text.Trim = String.Empty Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Plase pick your photo first.", LibApp.Ingrid.Global.PopupType.NoFileSelected, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                Return
-            ElseIf Not CMCv.OperatingSystem.File.Info.IsExists(TxtPhotoPath.Text) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Your photo cannot be found.", LibApp.Ingrid.Global.PopupType.FileNotFound, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                Return
-            End If
+            With varDataProperties
+                If TxtPhotoPath.Text.Trim = String.Empty Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Plase pick your photo first.", LibApp.Ingrid.Global.PopupType.NoFileSelected, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
+                    Return
+                ElseIf Not CMCv.OperatingSystem.File.Info.IsExists(TxtPhotoPath.Text) Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Your photo cannot be found.", LibApp.Ingrid.Global.PopupType.FileNotFound, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Return
+                End If
 
-            Frm_dar_SinglePhotoViewer = New FRMaddinsDARsinglePhotoViewer(TxtPhotoPath.Text)
-            Display(Frm_dar_SinglePhotoViewer, IMAGEDB.Main.ImageLibrary.PCTPRV_ICON, My.Application.Info.AssemblyName.ToUpper, "Photo Viewer", "Preview your photo", True)
-
+                Frm_dar_SinglePhotoViewer = New FRMaddinsDARsinglePhotoViewer(TxtPhotoPath.Text)
+                .IngridFormImage = ImageDb.Main.ImageLibrary.PCTPRV_ICON
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "Photo Viewer"
+                .IngridFormSubtitle = "Preview your photo"
+                .IngridFormIsDialog = True
+                Display(Frm_dar_SinglePhotoViewer,, varDataProperties)
+            End With
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -399,16 +405,22 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnPeekFile_Click(sender As Object, e As EventArgs) Handles BtnPeekFile.Click
-            If TxtFilePath.Text.Trim = String.Empty Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Plase pick your file first.", LibApp.Ingrid.Global.PopupType.NoFileSelected, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                Return
-            ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtFilePath.Text)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Your file cannot be found.", LibApp.Ingrid.Global.PopupType.FileNotFound, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
-                Return
-            End If
+            With varDataProperties
+                If TxtFilePath.Text.Trim = String.Empty Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Plase pick your file first.", LibApp.Ingrid.Global.PopupType.NoFileSelected, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
+                    Return
+                ElseIf Not (CMCv.OperatingSystem.File.Info.IsExists(TxtFilePath.Text)) Then
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "Your file cannot be found.", LibApp.Ingrid.Global.PopupType.FileNotFound, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Return
+                End If
 
-            Frm_dar_SinglePDFViewer = New FRMaddinsDARsinglePdfViewer(TxtFilePath.Text, "", False)
-            Display(Frm_dar_SinglePDFViewer, IMAGEDB.Main.ImageLibrary.PDFPRV_ICON, My.Application.Info.AssemblyName.ToUpper, "PDF Viewer", "Preview your file", True)
+                Frm_dar_SinglePDFViewer = New FRMaddinsDARsinglePdfViewer(TxtFilePath.Text, "", False)
+                .IngridFormImage = ImageDb.Main.ImageLibrary.PDFPRV_ICON
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "PDF Viewer"
+                .IngridFormIsDialog = True
+                Display(Frm_dar_SinglePDFViewer,, varDataProperties)
+            End With
         End Sub
 
         <SupportedOSPlatform("windows")>

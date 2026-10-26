@@ -3,7 +3,6 @@
 Namespace UI.Canvas
     Public Class FRMuacEditor
 
-#Region "Declaration"
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
         Private WithEvents Frm_employee_Addin As New FRMuacEmployee
 
@@ -16,9 +15,7 @@ Namespace UI.Canvas
         Private varIsAdminstrator As Boolean
         Private varIsPWDChange As Boolean = False
         Private varMessageCannotSave As String = "Cannot save your record."
-#End Region
 
-#Region "Subs Collections"
 
         <SupportedOSPlatform("windows")>
         Private Sub GetData()
@@ -33,7 +30,6 @@ Namespace UI.Canvas
             TxtPassword.Focus()
             BtnSave.Focus()
         End Sub
-#End Region
 
         <SupportedOSPlatform("windows")>
         Private Sub FRMemployeeAddin_RecordSelected() Handles Frm_employee_Addin.EventRecordSelected
@@ -43,8 +39,15 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub BtnBrowseEmployee_Click(sender As Object, e As EventArgs) Handles BtnBrowseEmployee.Click
-            Frm_employee_Addin = New FRMuacEmployee
-            Display(Frm_employee_Addin, IMAGEDB.Main.ImageLibrary.SEARCH_ICON, My.Application.Info.AssemblyName.ToUpper, "Find Employee", "Browse for employee data", True)
+            With varDataProperties
+                Frm_employee_Addin = New FRMuacEmployee
+                .IngridFormImage = ImageDb.Main.ImageLibrary.SEARCH_ICON
+                .IngridWindowName = My.Application.Info.AssemblyName.ToUpper
+                .IngridFormTitle = "Find Employee"
+                .IngridFormSubtitle = "Browse for employee data"
+                .IngridFormIsDialog = True
+                Display(Frm_employee_Addin,, varDataProperties)
+            End With
         End Sub
 
         <SupportedOSPlatform("windows")>
