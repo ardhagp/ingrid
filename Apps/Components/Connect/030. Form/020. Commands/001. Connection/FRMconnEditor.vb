@@ -70,27 +70,27 @@ Namespace UI.Canvas
         Private Function CheckInvalidInput() As Boolean
             Dim varInvalidScore As Integer = 0
 
-            TxtConnectionName.Focus()
+            'TxtConnectionName.Focus()
             If TxtConnectionName.XOSqlText = String.Empty Then
                 varInvalidScore += 1
             End If
-            TxtAddress.Focus()
+            'TxtAddress.Focus()
             If TxtAddress.XOSqlText = String.Empty Then
                 varInvalidScore += 1
             End If
-            TxtPort.Focus()
+            'TxtPort.Focus()
             If TxtPort.XOSqlText = String.Empty OrElse CInt(TxtPort.XOSqlText) <= 0 Then
                 varInvalidScore += 1
             End If
-            TxtUsername.Focus()
+            'TxtUsername.Focus()
             If TxtUsername.XOSqlText = String.Empty Then
                 varInvalidScore += 1
             End If
-            TxtPassword.Focus()
+            'TxtPassword.Focus()
             If TxtPassword.XOSqlText = String.Empty Then
                 varInvalidScore += 1
             End If
-            TxtDatabaseName.Focus()
+            'TxtDatabaseName.Focus()
             If TxtDatabaseName.XOSqlText = String.Empty Then
                 varInvalidScore += 1
             End If
@@ -361,11 +361,11 @@ Namespace UI.Canvas
         Private Sub BtnTest_Click(sender As Object, e As EventArgs) Handles Btn_Test.Click
             If CheckInvalidInput() Then
                 ' Run if invalid input is detected
-                Decision("INGRID - CONNECTION SETTINGS", "Unable to test your connection." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
+                Decision("Test Failed", "Unable to test your connection." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                 Return
             End If
 
-            If CboDBEngine.Text = "MYSQL" Then
+            If String.Equals(CboDBEngine.Text, LibApp.Ingrid.Global.DatabaseEngine.MYSQL.ToString(), StringComparison.OrdinalIgnoreCase) Then
                 Try
                     Dim varMysql As New CMCv.Database.Connect.MysqlConnection
                     Dim varConnection As MySql.Data.MySqlClient.MySqlConnection

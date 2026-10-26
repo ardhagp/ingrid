@@ -97,9 +97,9 @@
             BtnSave.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             BtnSave.BackColor = Color.LimeGreen
             BtnSave.Cursor = Cursors.Hand
-            BtnSave.FlatAppearance.BorderColor = Color.FromArgb(CByte(50), CByte(145), CByte(50))
+            BtnSave.FlatAppearance.BorderColor = Color.FromArgb(50, 145, 50)
             BtnSave.FlatAppearance.BorderSize = 2
-            BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
+            BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(70, 225, 70)
             BtnSave.FlatStyle = FlatStyle.Flat
             BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnSave.ForeColor = Color.White
@@ -120,9 +120,9 @@
             BtnCancel.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             BtnCancel.BackColor = Color.Red
             BtnCancel.Cursor = Cursors.Hand
-            BtnCancel.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
+            BtnCancel.FlatAppearance.BorderColor = Color.FromArgb(195, 0, 0)
             BtnCancel.FlatAppearance.BorderSize = 2
-            BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
+            BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 20, 20)
             BtnCancel.FlatStyle = FlatStyle.Flat
             BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
@@ -154,7 +154,7 @@
             ' tp1_
             ' 
             tp1_.AutoScroll = True
-            tp1_.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            tp1_.BackColor = Color.FromArgb(11, 28, 45)
             tp1_.Controls.Add(ULbl3)
             tp1_.Controls.Add(TxtClient)
             tp1_.Controls.Add(ChkIsMasked)
@@ -228,7 +228,7 @@
             ' ChkIsMasked
             ' 
             ChkIsMasked.AutoSize = True
-            ChkIsMasked.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            ChkIsMasked.BackColor = Color.FromArgb(11, 28, 45)
             ChkIsMasked.FlatStyle = FlatStyle.Flat
             ChkIsMasked.Font = New Font("Segoe UI", 12F)
             ChkIsMasked.ForeColor = Color.White
@@ -243,9 +243,9 @@
             ' btnExport
             ' 
             btnExport.BackColor = Color.RoyalBlue
-            btnExport.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
+            btnExport.FlatAppearance.BorderColor = Color.FromArgb(5, 45, 165)
             btnExport.FlatAppearance.BorderSize = 2
-            btnExport.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
+            btnExport.FlatAppearance.MouseOverBackColor = Color.FromArgb(85, 125, 245)
             btnExport.FlatStyle = FlatStyle.Flat
             btnExport.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             btnExport.ForeColor = Color.White
@@ -332,7 +332,7 @@
             ' ChkDefault
             ' 
             ChkDefault.AutoSize = True
-            ChkDefault.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            ChkDefault.BackColor = Color.FromArgb(11, 28, 45)
             ChkDefault.FlatStyle = FlatStyle.Flat
             ChkDefault.Font = New Font("Segoe UI", 12F)
             ChkDefault.ForeColor = Color.White
@@ -570,7 +570,7 @@
             ' tp2_
             ' 
             tp2_.AutoScroll = True
-            tp2_.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            tp2_.BackColor = Color.FromArgb(11, 28, 45)
             tp2_.Controls.Add(btnImport)
             tp2_.Controls.Add(btnSaveAs)
             tp2_.Controls.Add(Pnl1)
@@ -587,9 +587,9 @@
             ' btnImport
             ' 
             btnImport.BackColor = Color.RoyalBlue
-            btnImport.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
+            btnImport.FlatAppearance.BorderColor = Color.FromArgb(5, 45, 165)
             btnImport.FlatAppearance.BorderSize = 2
-            btnImport.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
+            btnImport.FlatAppearance.MouseOverBackColor = Color.FromArgb(85, 125, 245)
             btnImport.FlatStyle = FlatStyle.Flat
             btnImport.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             btnImport.ForeColor = Color.White
@@ -607,9 +607,9 @@
             ' btnSaveAs
             ' 
             btnSaveAs.BackColor = Color.RoyalBlue
-            btnSaveAs.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
+            btnSaveAs.FlatAppearance.BorderColor = Color.FromArgb(5, 45, 165)
             btnSaveAs.FlatAppearance.BorderSize = 2
-            btnSaveAs.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
+            btnSaveAs.FlatAppearance.MouseOverBackColor = Color.FromArgb(85, 125, 245)
             btnSaveAs.FlatStyle = FlatStyle.Flat
             btnSaveAs.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             btnSaveAs.ForeColor = Color.White
@@ -666,9 +666,9 @@
             ' btnGet
             ' 
             btnGet.BackColor = Color.RoyalBlue
-            btnGet.FlatAppearance.BorderColor = Color.FromArgb(CByte(5), CByte(45), CByte(165))
+            btnGet.FlatAppearance.BorderColor = Color.FromArgb(5, 45, 165)
             btnGet.FlatAppearance.BorderSize = 2
-            btnGet.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(85), CByte(125), CByte(245))
+            btnGet.FlatAppearance.MouseOverBackColor = Color.FromArgb(85, 125, 245)
             btnGet.FlatStyle = FlatStyle.Flat
             btnGet.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             btnGet.ForeColor = Color.White
@@ -729,9 +729,9 @@
             ' 
             Btn_Test.BackColor = Color.Yellow
             Btn_Test.Cursor = Cursors.Hand
-            Btn_Test.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(195), CByte(0))
+            Btn_Test.FlatAppearance.BorderColor = Color.FromArgb(195, 195, 0)
             Btn_Test.FlatAppearance.BorderSize = 2
-            Btn_Test.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(255), CByte(20))
+            Btn_Test.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 20)
             Btn_Test.FlatStyle = FlatStyle.Flat
             Btn_Test.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             Btn_Test.ForeColor = Color.Black
