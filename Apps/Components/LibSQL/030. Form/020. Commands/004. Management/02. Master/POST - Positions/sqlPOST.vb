@@ -26,7 +26,7 @@ Namespace CMDpost
                 varDatabaseRequestMssql2008(0).StatusBar = status
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TPositions")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = $"select c.company_code, d.department_code, ps.position_id, ps.position_code,ps.position_name, ps.position_description from man_position ps " &
+                varDatabaseRequestMysql(0).Query = $"select c.company_code, c.company_name, d.department_code, d.department_name, ps.position_id, ps.position_code,ps.position_name, ps.position_description from man_position ps " &
                                                        $"inner join man_department d on d.department_id = ps.position_department inner join man_company c on c.company_id = d.department_company {varWhere} " &
                                                        $"order by c.company_code, d.department_code, ps.position_code"
 
@@ -41,8 +41,8 @@ Namespace CMDpost
             Dim varHasChild As Boolean = True
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varQuery = $"SELECT now() as `timestamp`, (select count(*) from v_post_granularity_epls where employee_position = @PositionId limit 0,1) as `relation1`;"
-                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName)
+                    varQuery = $"SELECT now() as `timestamp`, (select count(*) from v_post_granularity_epls where employee_position = {tPosition.P_PositionId} limit 0,1) as `relation1`;"
+                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName, dataproperties.AllParameters)
                 End If
 
                 If datasetname.Tables(consTableName).Rows.Count > 0 Then
@@ -61,7 +61,8 @@ Namespace CMDpost
 
         <SupportedOSPlatform("windows")>
         Public Shared Function DeleteData(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet) As Boolean
-            Dim varSuccess As Boolean = False
+            Dim varSuccess As Boolean
+            varSuccess = False
 
             If CheckGranularity(dataproperties, datasetname) Then
                 Return False
@@ -72,7 +73,7 @@ Namespace CMDpost
                     varDatabaseRequestMssql2008(1).Query = $"delete from dbo.man_position where position_id = @PositionId"
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(1).Query = $"delete from man_position where position_id = @PositionId"
+                    varDatabaseRequestMysql(1).Query = $"delete from {tPosition.TableName} where {tPosition.C_PositionId} = {tPosition.P_PositionId}"
                     varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                 End If
                 varSuccess = True
