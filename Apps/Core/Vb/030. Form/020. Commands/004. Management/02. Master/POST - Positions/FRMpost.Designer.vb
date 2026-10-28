@@ -63,7 +63,7 @@
             ' 
             DgnPOST.AllowUserToAddRows = False
             DgnPOST.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(241), CByte(212), CByte(159))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(240), CByte(232), CByte(138))
             DgnPOST.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnPOST.BackgroundColor = Color.Black
             DgnPOST.BorderStyle = BorderStyle.None
@@ -121,6 +121,7 @@
             company_name.MinimumWidth = 8
             company_name.Name = "company_name"
             company_name.ReadOnly = True
+            company_name.Visible = False
             company_name.Width = 150
             ' 
             ' department_code
@@ -140,6 +141,7 @@
             department_name.MinimumWidth = 8
             department_name.Name = "department_name"
             department_name.ReadOnly = True
+            department_name.Visible = False
             department_name.Width = 150
             ' 
             ' position_id
