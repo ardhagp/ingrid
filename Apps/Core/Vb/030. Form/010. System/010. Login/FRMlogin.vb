@@ -114,7 +114,7 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMlogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_LOGIN, XOLogo,, 512, 512)
+            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_LOGIN, XOLogo,, 512, 512, True, "Module")
 
             varWrongLogin = 0
             varCooldownLogin = 0

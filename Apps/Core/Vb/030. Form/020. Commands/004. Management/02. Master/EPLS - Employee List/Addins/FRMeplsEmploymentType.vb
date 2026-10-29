@@ -15,7 +15,7 @@
         ' ----------------------------------------------------------
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMeplsPosition_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_FIND, XOLogo,, 512, 512)
+            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_FIND, XOLogo,, 512, 512, True, "Module")
 
             varDataProperties.EmploymentTypeIsForceRefresh = True
             Call GetData()

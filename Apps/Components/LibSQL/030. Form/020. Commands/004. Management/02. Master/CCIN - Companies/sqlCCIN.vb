@@ -32,7 +32,8 @@
                                                    $"{tCompany.S}.{tCompany.C_CompanySearchTerm1}, " &
                                                    $"{tCompany.S}.{tCompany.C_CompanySearchTerm2}, " &
                                                    $"{tCompany.S}.{tCompany.C_CompanyDescription} " &
-                                                   $"from {tCompany.TableName} {tCompany.S} {varWhere} " &
+                                                   $"from {tCompany.TableName} {tCompany.S} " &
+                                                   $"{varWhere} " &
                                                    $"order by " &
                                                    $"{tCompany.S}.{tCompany.C_CompanyCode}"
                 varDatabaseRequestMysql(0).DataGrid = datagrid

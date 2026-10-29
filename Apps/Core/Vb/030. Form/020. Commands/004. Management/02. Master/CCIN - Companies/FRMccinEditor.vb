@@ -37,7 +37,7 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMccinEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_EDIT, XOLogo,, 512, 512)
+            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_EDIT, XOLogo,, 512, 512, True, "Module")
 
             SetValue(varDataProperties.AllParameters, tCompany.P_CompanyClient, varDataProperties.AllParameters(tIngrid.P_ClientId))
             If (varDataProperties.CompanyIsNew) Then

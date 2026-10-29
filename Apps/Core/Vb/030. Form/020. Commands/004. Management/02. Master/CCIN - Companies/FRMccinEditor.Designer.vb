@@ -314,7 +314,6 @@
             ULbl1.TabIndex = 1006
             ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl1.XOText = "Company Code"
-            ULbl1.XOTextAdjuster = False
             ULbl1.XOTextBorder = False
             ' 
             ' ULbl2
@@ -327,7 +326,6 @@
             ULbl2.TabIndex = 1007
             ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl2.XOText = "Company Name"
-            ULbl2.XOTextAdjuster = False
             ULbl2.XOTextBorder = False
             ' 
             ' ULbl3
@@ -340,7 +338,6 @@
             ULbl3.TabIndex = 1008
             ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl3.XOText = "Search Term 1"
-            ULbl3.XOTextAdjuster = False
             ULbl3.XOTextBorder = False
             ' 
             ' ULbl4
@@ -353,7 +350,6 @@
             ULbl4.TabIndex = 1009
             ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl4.XOText = "Search Term 2"
-            ULbl4.XOTextAdjuster = False
             ULbl4.XOTextBorder = False
             ' 
             ' ULbl5
@@ -366,7 +362,6 @@
             ULbl5.TabIndex = 1010
             ULbl5.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl5.XOText = "Description"
-            ULbl5.XOTextAdjuster = False
             ULbl5.XOTextBorder = False
             ' 
             ' TbxCompany
@@ -413,7 +408,6 @@
             ULbl6.TabIndex = 1012
             ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl6.XOText = "Company Logo"
-            ULbl6.XOTextAdjuster = False
             ULbl6.XOTextBorder = False
             ' 
             ' BtnRemovePhoto

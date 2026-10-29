@@ -1,5 +1,11 @@
-﻿Namespace ImageEditor.File
+﻿Imports System.IO
+Imports System.Net.Http
+
+Namespace ImageEditor.File
     Public Class GetImage
+        Private Shared ReadOnly client As New Net.Http.HttpClient()
+        Private Shared svgDoc As Svg.SvgDocument
+
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Function GetImageExtensionFromFile(filePath As String) As String
             Dim extension As String = System.IO.Path.GetExtension(filePath).ToLowerInvariant()
@@ -182,20 +188,43 @@
     picturebox As System.Windows.Forms.PictureBox,
     Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing,
     Optional width As Integer = 24,
-    Optional height As Integer = 24
+    Optional height As Integer = 24,
+    Optional isusecache As Boolean = False,
+    Optional cachesubdirectory As String = ""
 ) As Task(Of Boolean)
 
             Try
-                Dim client As New Net.Http.HttpClient()
+                cachesubdirectory = cachesubdirectory.Trim & "\"
 
-                ' Download SVG as text
-                Dim svgContent As String = Await client.GetStringAsync(url)
+                ' Download SVG as text and image
+                Dim svgContent As String
+                If isusecache Then
+                    Dim cacheFolder As String =
+                IO.Path.Combine(
+                    Environment.CurrentDirectory,
+                    "Cache",
+                    cachesubdirectory
+                )
 
-                ' Load SVG from string
-                Dim svgDoc As Svg.SvgDocument
-                Using svgStream As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(svgContent))
-                    svgDoc = Svg.SvgDocument.Open(Of Svg.SvgDocument)(svgStream)
-                End Using
+                    Dim localFile As String =
+                IO.Path.Combine(
+                    cacheFolder,
+                    IO.Path.GetFileName(New Uri(url).LocalPath)
+                )
+
+                    If Not IO.File.Exists(localFile) Then
+                        Await DownloadFileAsync(url, cacheFolder)
+                    End If
+
+                    svgDoc = Svg.SvgDocument.Open(localFile)
+                Else
+                    svgContent = Await client.GetStringAsync(url)
+
+                    ' Load SVG from string
+                    Using svgStream As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(svgContent))
+                        svgDoc = Svg.SvgDocument.Open(Of Svg.SvgDocument)(svgStream)
+                    End Using
+                End If
 
                 ' Convert to Bitmap
                 Dim bmp As System.Drawing.Bitmap = svgDoc.Draw(width, height)
@@ -234,20 +263,54 @@
     [button] As System.Windows.Forms.Button,
     Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing,
     Optional width As Integer = 24,
-    Optional height As Integer = 24
+    Optional height As Integer = 24,
+    Optional isusecache As Boolean = False,
+    Optional cachesubdirectory As String = ""
 ) As Task(Of Boolean)
 
             Try
-                Dim client As New Net.Http.HttpClient()
+                cachesubdirectory = cachesubdirectory.Trim & "\"
 
-                ' Download SVG as text
-                Dim svgContent As String = Await client.GetStringAsync(url)
+                ' Download SVG as text and image
+                Dim svgContent As String
+                If isusecache Then
+                    Dim cacheFolder As String =
+                IO.Path.Combine(
+                    Environment.CurrentDirectory,
+                    "Cache",
+                    cachesubdirectory
+                )
 
-                ' Load SVG from string
-                Dim svgDoc As Svg.SvgDocument
-                Using svgStream As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(svgContent))
-                    svgDoc = Svg.SvgDocument.Open(Of Svg.SvgDocument)(svgStream)
-                End Using
+                    Dim localFile As String =
+                IO.Path.Combine(
+                    cacheFolder,
+                    IO.Path.GetFileName(New Uri(url).LocalPath)
+                )
+
+                    If Not IO.File.Exists(localFile) Then
+                        Await DownloadFileAsync(url, cacheFolder)
+                    End If
+
+                    svgDoc = Svg.SvgDocument.Open(localFile)
+                Else
+                    svgContent = Await client.GetStringAsync(url)
+
+                    ' Load SVG from string
+                    Using svgStream As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(svgContent))
+                        svgDoc = Svg.SvgDocument.Open(Of Svg.SvgDocument)(svgStream)
+                    End Using
+                End If
+
+                'Dim client As New Net.Http.HttpClient()
+
+                '' Download SVG as text
+                'Dim svgContent As String = Await client.GetStringAsync(url)
+
+                '' Load SVG from string
+                'Dim svgDoc As Svg.SvgDocument
+                'Using svgStream As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(svgContent))
+                '    svgDoc = Svg.SvgDocument.Open(Of Svg.SvgDocument)(svgStream)
+                'End Using
 
                 ' Convert to Bitmap
                 Dim bmp As System.Drawing.Bitmap = svgDoc.Draw(width, height)
@@ -294,23 +357,58 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Shared Async Function GetSvgImageFromUrlAsync(
     url As String,
-    menustripname As System.Windows.Forms.MenuStrip, tooltipitemname As String,
+    menustripname As System.Windows.Forms.MenuStrip,
+    tooltipitemname As String,
     Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing,
     Optional width As Integer = 24,
-    Optional height As Integer = 24
+    Optional height As Integer = 24,
+    Optional isusecache As Boolean = False,
+    Optional cachesubdirectory As String = ""
 ) As Task(Of Boolean)
 
             Try
-                Dim client As New Net.Http.HttpClient()
+                cachesubdirectory = cachesubdirectory.Trim & "\"
 
-                ' Download SVG as text
-                Dim svgContent As String = Await client.GetStringAsync(url)
+                ' Download SVG as text and image
+                Dim svgContent As String
+                If isusecache Then
+                    Dim cacheFolder As String =
+                IO.Path.Combine(
+                    Environment.CurrentDirectory,
+                    "Cache",
+                    cachesubdirectory
+                )
 
-                ' Load SVG from string
-                Dim svgDoc As Svg.SvgDocument
-                Using svgStream As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(svgContent))
-                    svgDoc = Svg.SvgDocument.Open(Of Svg.SvgDocument)(svgStream)
-                End Using
+                    Dim localFile As String =
+                IO.Path.Combine(
+                    cacheFolder,
+                    IO.Path.GetFileName(New Uri(url).LocalPath)
+                )
+
+                    If Not IO.File.Exists(localFile) Then
+                        Await DownloadFileAsync(url, cacheFolder)
+                    End If
+
+                    svgDoc = Svg.SvgDocument.Open(localFile)
+                Else
+                    svgContent = Await client.GetStringAsync(url)
+
+                    ' Load SVG from string
+                    Using svgStream As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(svgContent))
+                        svgDoc = Svg.SvgDocument.Open(Of Svg.SvgDocument)(svgStream)
+                    End Using
+                End If
+
+                'Dim client As New Net.Http.HttpClient()
+
+                '' Download SVG as text
+                'Dim svgContent As String = Await client.GetStringAsync(url)
+
+                '' Load SVG from string
+                'Dim svgDoc As Svg.SvgDocument
+                'Using svgStream As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(svgContent))
+                '    svgDoc = Svg.SvgDocument.Open(Of Svg.SvgDocument)(svgStream)
+                'End Using
 
                 ' Convert to Bitmap
                 Dim bmp As System.Drawing.Bitmap = svgDoc.Draw(width, height)
@@ -369,19 +467,53 @@
     img As System.Drawing.Image,
     Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing,
     Optional width As Integer = 24,
-    Optional height As Integer = 24
+    Optional height As Integer = 24,
+    Optional isusecache As Boolean = False,
+    Optional cachesubdirectory As String = ""
 ) As Task(Of Boolean)
             Try
-                Dim client As New Net.Http.HttpClient()
+                cachesubdirectory = cachesubdirectory.Trim & "\"
 
-                ' Download SVG as text
-                Dim svgContent As String = Await client.GetStringAsync(url)
+                ' Download SVG as text and image
+                Dim svgContent As String
+                If isusecache Then
+                    Dim cacheFolder As String =
+                IO.Path.Combine(
+                    Environment.CurrentDirectory,
+                    "Cache",
+                    cachesubdirectory
+                )
 
-                ' Load SVG from string
-                Dim svgDoc As Svg.SvgDocument
-                Using svgStream As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(svgContent))
-                    svgDoc = Svg.SvgDocument.Open(Of Svg.SvgDocument)(svgStream)
-                End Using
+                    Dim localFile As String =
+                IO.Path.Combine(
+                    cacheFolder,
+                    IO.Path.GetFileName(New Uri(url).LocalPath)
+                )
+
+                    If Not IO.File.Exists(localFile) Then
+                        Await DownloadFileAsync(url, cacheFolder)
+                    End If
+
+                    svgDoc = Svg.SvgDocument.Open(localFile)
+                Else
+                    svgContent = Await client.GetStringAsync(url)
+
+                    ' Load SVG from string
+                    Using svgStream As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(svgContent))
+                        svgDoc = Svg.SvgDocument.Open(Of Svg.SvgDocument)(svgStream)
+                    End Using
+                End If
+
+                'Dim client As New Net.Http.HttpClient()
+
+                '' Download SVG as text
+                'Dim svgContent As String = Await client.GetStringAsync(url)
+
+                '' Load SVG from string
+                'Dim svgDoc As Svg.SvgDocument
+                'Using svgStream As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(svgContent))
+                '    svgDoc = Svg.SvgDocument.Open(Of Svg.SvgDocument)(svgStream)
+                'End Using
 
                 ' Convert to Bitmap
                 Dim bmp As System.Drawing.Bitmap = svgDoc.Draw(width, height)
@@ -410,6 +542,29 @@
                 System.Windows.Forms.MessageBox.Show($"Unable to load SVG image: {ex.Message}", "Error",
                         System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
 
+                Return False
+            End Try
+        End Function
+
+        Public Shared Async Function DownloadFileAsync(url As String, saveFolder As String) As Task(Of Boolean)
+            Try
+                Dim fileName As String = Path.GetFileName(New Uri(url).LocalPath)
+                Dim localFile As String = Path.Combine(saveFolder, fileName)
+
+                Directory.CreateDirectory(saveFolder)
+
+                Using client As New HttpClient()
+
+                    Dim response = Await client.GetAsync(url)
+                    response.EnsureSuccessStatusCode()
+
+                    Using fs As New FileStream(localFile, FileMode.Create, FileAccess.Write)
+                        Await response.Content.CopyToAsync(fs)
+                    End Using
+
+                End Using
+                Return True
+            Catch ex As Exception
                 Return False
             End Try
         End Function

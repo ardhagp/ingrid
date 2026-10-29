@@ -54,9 +54,9 @@
             Me.Close()
         End Sub
 
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub CboCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
-            If Not (varIsFirstLoad) Then
+        <Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub CboCompany_SelectedIndexChanged(sender As Object, e As EventArgs)
+            If Not varIsFirstLoad Then
                 CMDpost.Editor.FillDepartement(varDataProperties, CboDepartement, CboCompany)
             End If
         End Sub

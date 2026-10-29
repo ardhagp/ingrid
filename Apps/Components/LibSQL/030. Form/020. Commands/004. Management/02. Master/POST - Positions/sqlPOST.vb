@@ -4,17 +4,17 @@ Imports CMCv
 Namespace CMDpost
     Public Class View
         Private Shared varQuery As String = String.Empty
-        Private Shared consTableName As String = "CheckRelation"
+        Private Shared ReadOnly consTableName As String = "CheckRelation"
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, grid As CMCv.UI.Control.dgn, status As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt)
             'ReDim varDatabaseRequestMssql2008(2)
-            Dim varWhere As String = "where "
+            Dim varWhere As String = $"where ({tPosition.S}.{tPosition.C_PositionClient} = {tIngrid.P_ClientId}) "
 
             If (find.XOSqlText = String.Empty) AndAlso (dataproperties.EmployeePositionIsForceRefresh) Then
-                varWhere = $""
+                varWhere += $""
             Else
-                varWhere += $"({tCompany.S}.{tCompany.C_CompanyCode} Like '%{find.XOSqlText}%') or ({tDepartment.S}.{tDepartment.C_DepartmentCode} like '%{find.XOSqlText}%') or ({tPosition.S}.{tPosition.C_PositionCode} like '%{find.XOSqlText}%') or ({tPosition.S}.{tPosition.C_PositionName} like '%{find.XOSqlText}%')"
+                varWhere += $" and ({tCompany.S}.{tCompany.C_CompanyCode} Like '%{find.XOSqlText}%') or ({tDepartment.S}.{tDepartment.C_DepartmentCode} like '%{find.XOSqlText}%') or ({tPosition.S}.{tPosition.C_PositionCode} like '%{find.XOSqlText}%') or ({tPosition.S}.{tPosition.C_PositionName} like '%{find.XOSqlText}%')"
             End If
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -44,7 +44,7 @@ Namespace CMDpost
 
                 varDatabaseRequestMysql(0).DataGrid = grid
                 varDatabaseRequestMysql(0).StatusBar = status
-                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TPositions")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TPositions", dataproperties.AllParameters)
             End If
         End Sub
 

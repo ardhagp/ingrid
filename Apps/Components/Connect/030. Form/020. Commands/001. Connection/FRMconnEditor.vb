@@ -185,7 +185,7 @@ Namespace UI.Canvas
         ''' </summary>
         <SupportedOSPlatform("windows")>
         Private Sub FRMconnEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_EDIT, XOLogo,, 512, 512)
+            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_EDIT, XOLogo,, 512, 512, True, "Module")
 
             ComponentMainframeMenu.LoadIn(Me, True)
             ComponentMainframeMenu.ShowMenuFile(CMCv.UI.View.MenuStrip.ShowItem.Yes)
