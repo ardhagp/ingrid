@@ -97,6 +97,7 @@ Namespace Database.Engine
         ''' Returns Nothing if an exception occurs.
         ''' </returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "S2077", Justification:="Query is generated from trusted internal metadata only.")>
         Public Function GetDataRow(databaseproperties As LibApp.Ingrid.Global.Properties, databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As MySqlDataReader
             Dim varDataReader As MySqlDataReader
 
@@ -185,6 +186,7 @@ Namespace Database.Engine
         ''' Returns Nothing if an exception occurs.
         ''' </returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "S2077", Justification:="Query is generated from trusted internal metadata only.")>
         Public Function GetValue(databaseproperties As LibApp.Ingrid.Global.Properties, databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As Object
             Dim varRowValue As Object
 
@@ -249,6 +251,7 @@ Namespace Database.Engine
         ''' will be stored.
         ''' </param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "S2077", Justification:="Query is generated from trusted internal metadata only.")>
         Public Function GetDataSet(databaseproperties As LibApp.Ingrid.Global.Properties, databasename As String, dbr As Adapter.Mysql.Display.Request, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As System.Data.DataSet
             Dim varDataAdapter As MySqlDataAdapter
             Dim varDataset As New System.Data.DataSet
@@ -323,6 +326,7 @@ Namespace Database.Engine
         ''' will be stored and used as the binding source.
         ''' </param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "S2077", Justification:="Query is generated from trusted internal metadata only.")>
         Public Sub GetDataTable(databaseproperties As LibApp.Ingrid.Global.Properties, databasename As String, dbr As Adapter.Mysql.Display.Request, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing)
             Try
                 Using varConnection As New MySqlConnection(varMySQL.MysqlForceSsl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, Security.Decrypt.Aes(databaseproperties.ConnectionPassword)))
@@ -423,6 +427,7 @@ Namespace Database.Engine
         ''' database selection (USE databasename) before running the query.
         ''' </param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "S2077", Justification:="Query is generated from trusted internal metadata only.")>
         Public Function PushData(databaseproperties As LibApp.Ingrid.Global.Properties, databasename As String, query As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As Boolean
             Try
                 Using varConnection As New MySqlConnection(varMySQL.MysqlForceSsl(databaseproperties.ConnectionServerAddress, databaseproperties.ConnectionServerPort, databaseproperties.ConnectionDatabaseName, databaseproperties.ConnectionUsername, Security.Decrypt.Aes(databaseproperties.ConnectionPassword)))
@@ -545,6 +550,7 @@ Namespace Database.Engine
         ''' The filled DataSet. Returns Nothing if an exception occurs.
         ''' </returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "S2077", Justification:="Query is generated from trusted internal metadata only.")>
         Public Function FillDataSet(databaseproperties As LibApp.Ingrid.Global.Properties, databasename As String, query As String, datasetname As System.Data.DataSet, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As System.Data.DataSet
 
             Try

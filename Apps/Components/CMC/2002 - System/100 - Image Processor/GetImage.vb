@@ -1,8 +1,10 @@
 ﻿Imports System.IO
 Imports System.Net.Http
+Imports System.Windows.Forms
 
 Namespace ImageEditor.File
     Public Class GetImage
+        Private Shared ReadOnly cacheFolderFolderName As String = "Cache"
         Private Shared ReadOnly client As New Net.Http.HttpClient()
         Private Shared svgDoc As Svg.SvgDocument
 
@@ -56,15 +58,42 @@ Namespace ImageEditor.File
         ''' <param name="dataproperties">Optional dataproperties object to update the EmployeeIsForceChangePhoto property.</param>
         ''' <returns>True if the image was successfully loaded and set; otherwise, False.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Async Function GetImageFromUrlAsync(url As String, picturebox As System.Windows.Forms.PictureBox, Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing) As Task(Of Boolean)
+        Public Shared Async Function GetImageFromUrlAsync(url As String,
+                                                          picturebox As System.Windows.Forms.PictureBox,
+                                                          Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing,
+                                                          Optional isusecache As Boolean = False,
+                                                          Optional cachesubdirectory As String = ""
+                                                          ) As Task(Of Boolean)
             Try
-                Dim client As New Net.Http.HttpClient()
+                cachesubdirectory = cachesubdirectory.Trim & "\"
 
-                Dim data As Byte() = Await client.GetByteArrayAsync(url)
+                If isusecache Then
+                    Dim cacheFolder As String =
+                IO.Path.Combine(
+                    Environment.CurrentDirectory,
+                    cacheFolderFolderName,
+                    cachesubdirectory
+                )
 
-                Using ms As New IO.MemoryStream(data)
-                    picturebox.Image = System.Drawing.Image.FromStream(ms)
-                End Using
+                    Dim localFile As String =
+                IO.Path.Combine(
+                    cacheFolder,
+                    IO.Path.GetFileName(New Uri(url).LocalPath)
+                )
+
+                    If Not IO.File.Exists(localFile) Then
+                        Await DownloadFileAsync(url, cacheFolder)
+                    End If
+
+                    picturebox.Image = System.Drawing.Image.FromFile(localFile)
+                Else
+                    Dim data As Byte() = Await client.GetByteArrayAsync(url)
+
+                    Using ms As New IO.MemoryStream(data)
+                        picturebox.Image = System.Drawing.Image.FromStream(ms)
+                    End Using
+                End If
+
                 If dataproperties IsNot Nothing Then
                     dataproperties.EmployeeIsForceChangePhoto = False
                 End If
@@ -86,15 +115,40 @@ Namespace ImageEditor.File
         ''' <param name="dataproperties">Optional dataproperties object to update the EmployeeIsForceChangePhoto property.</param>
         ''' <returns>True if the image was successfully loaded and set; otherwise, False.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Async Function GetImageFromUrlAsync(url As String, formname As System.Windows.Forms.Form, Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing) As Task(Of Boolean)
+        Public Shared Async Function GetImageFromUrlAsync(url As String,
+                                                          formname As System.Windows.Forms.Form,
+                                                          Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing,
+                                                          Optional isusecache As Boolean = False,
+                                                          Optional cachesubdirectory As String = ""
+                                                          ) As Task(Of Boolean)
             Try
-                Dim client As New Net.Http.HttpClient()
+                If isusecache Then
+                    Dim cacheFolder As String =
+                IO.Path.Combine(
+                    Environment.CurrentDirectory,
+                    cacheFolderFolderName,
+                    cachesubdirectory
+                )
 
-                Dim data As Byte() = Await client.GetByteArrayAsync(url)
+                    Dim localFile As String =
+                IO.Path.Combine(
+                    cacheFolder,
+                    IO.Path.GetFileName(New Uri(url).LocalPath)
+                )
 
-                Using ms As New IO.MemoryStream(data)
-                    formname.BackgroundImage = System.Drawing.Image.FromStream(ms)
-                End Using
+                    If Not IO.File.Exists(localFile) Then
+                        Await DownloadFileAsync(url, cacheFolder)
+                    End If
+
+                    formname.BackgroundImage = System.Drawing.Image.FromFile(localFile)
+                Else
+                    Dim data As Byte() = Await client.GetByteArrayAsync(url)
+
+                    Using ms As New IO.MemoryStream(data)
+                        formname.BackgroundImage = System.Drawing.Image.FromStream(ms)
+                    End Using
+                End If
+
                 If dataproperties IsNot Nothing Then
                     dataproperties.EmployeeIsForceChangePhoto = False
                 End If
@@ -117,17 +171,42 @@ Namespace ImageEditor.File
         ''' <param name="dataproperties">Optional dataproperties object to update the EmployeeIsForceChangePhoto property.</param>
         ''' <returns>True if the image was successfully loaded and set; otherwise, False.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Async Function GetImageFromUrlAsync(url As String, toolstrip As System.Windows.Forms.ToolStrip, tooltipitemname As String, Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing) As Task(Of Boolean)
+        Public Shared Async Function GetImageFromUrlAsync(url As String, toolstrip As System.Windows.Forms.ToolStrip,
+                                                          tooltipitemname As String,
+                                                          Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing,
+                                                          Optional isusecache As Boolean = False,
+                                                          Optional cachesubdirectory As String = ""
+                                                          ) As Task(Of Boolean)
             Try
-                Dim client As New Net.Http.HttpClient()
-                'Dim imgSix As SixLabors.ImageSharp.Image
-                Dim data As Byte() = Await client.GetByteArrayAsync(url)
+                If isusecache Then
+                    Dim cacheFolder As String =
+                IO.Path.Combine(
+                    Environment.CurrentDirectory,
+                    cacheFolderFolderName,
+                    cachesubdirectory
+                )
 
-                Using ms As New IO.MemoryStream(data)
-                    'This is the current implementation that loads the image directly into the toolstrip
-                    'item without cropping.
-                    toolstrip.Items(tooltipitemname).Image = System.Drawing.Image.FromStream(ms)
-                End Using
+                    Dim localFile As String =
+                IO.Path.Combine(
+                    cacheFolder,
+                    IO.Path.GetFileName(New Uri(url).LocalPath)
+                )
+
+                    If Not IO.File.Exists(localFile) Then
+                        Await DownloadFileAsync(url, cacheFolder)
+                    End If
+
+                    toolstrip.Items(tooltipitemname).Image = System.Drawing.Image.FromFile(localFile)
+                Else
+                    Dim data As Byte() = Await client.GetByteArrayAsync(url)
+
+                    Using ms As New IO.MemoryStream(data)
+                        'This is the current implementation that loads the image directly into the toolstrip
+                        'item without cropping.
+                        toolstrip.Items(tooltipitemname).Image = System.Drawing.Image.FromStream(ms)
+                    End Using
+                End If
+
                 If dataproperties IsNot Nothing Then
                     dataproperties.EmployeeIsForceChangePhoto = False
                 End If
@@ -150,7 +229,11 @@ Namespace ImageEditor.File
         ''' <param name="height">The height of the resulting Bitmap. Default is 24.</param>
         ''' <returns>A Bitmap image converted from the SVG image. If there is an error, returns a default "svg-404.svg" image as a Bitmap.</returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Function ConvertSvgToBmp(imagepathandfilename As String, Optional isinsidecurrentdirectory As Boolean = False, Optional width As Integer = 24, Optional height As Integer = 24) As System.Drawing.Bitmap
+        Public Shared Function ConvertSvgToBmp(imagepathandfilename As String,
+                                               Optional isinsidecurrentdirectory As Boolean = False,
+                                               Optional width As Integer = 24,
+                                               Optional height As Integer = 24
+                                               ) As System.Drawing.Bitmap
             Dim path As String
             Dim svgImage As Svg.SvgDocument
             Dim bmp As System.Drawing.Bitmap
@@ -202,7 +285,7 @@ Namespace ImageEditor.File
                     Dim cacheFolder As String =
                 IO.Path.Combine(
                     Environment.CurrentDirectory,
-                    "Cache",
+                    cacheFolderFolderName,
                     cachesubdirectory
                 )
 
@@ -277,7 +360,7 @@ Namespace ImageEditor.File
                     Dim cacheFolder As String =
                 IO.Path.Combine(
                     Environment.CurrentDirectory,
-                    "Cache",
+                    cacheFolderFolderName,
                     cachesubdirectory
                 )
 
@@ -375,7 +458,7 @@ Namespace ImageEditor.File
                     Dim cacheFolder As String =
                 IO.Path.Combine(
                     Environment.CurrentDirectory,
-                    "Cache",
+                    cacheFolderFolderName,
                     cachesubdirectory
                 )
 
@@ -480,7 +563,7 @@ Namespace ImageEditor.File
                     Dim cacheFolder As String =
                 IO.Path.Combine(
                     Environment.CurrentDirectory,
-                    "Cache",
+                    cacheFolderFolderName,
                     cachesubdirectory
                 )
 
