@@ -216,6 +216,17 @@ Namespace My
                 Return CType(Me("URL_Logo_FIND"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-ima"& _ 
+            "ge-all-platforms/svg-POST.svg")>  _
+        Public ReadOnly Property URL_Logo_POST() As String
+            Get
+                Return CType(Me("URL_Logo_POST"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

@@ -4,17 +4,17 @@ Imports CMCv
 Namespace CMDpost
     Public Class View
         Private Shared varQuery As String = String.Empty
-        Private Shared consTableName As String = "CheckRelation"
+        Private Shared ReadOnly consTableName As String = "CheckRelation"
 
         <SupportedOSPlatform("windows")>
         Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, grid As CMCv.UI.Control.dgn, status As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt)
             'ReDim varDatabaseRequestMssql2008(2)
-            Dim varWhere As String = "where "
+            Dim varWhere As String = $"where ({tPosition.S}.{tPosition.C_PositionClient} = {tIngrid.P_ClientId}) "
 
             If (find.XOSqlText = String.Empty) AndAlso (dataproperties.EmployeePositionIsForceRefresh) Then
-                varWhere = $""
+                varWhere += $""
             Else
-                varWhere += $"(c.company_code Like '%{find.XOSqlText}%') or (d.department_code like '%{find.XOSqlText}%') or (ps.position_code like '%{find.XOSqlText}%') or (ps.position_name like '%{find.XOSqlText}%')"
+                varWhere += $" and ({tCompany.S}.{tCompany.C_CompanyCode} Like '%{find.XOSqlText}%') or ({tDepartment.S}.{tDepartment.C_DepartmentCode} like '%{find.XOSqlText}%') or ({tPosition.S}.{tPosition.C_PositionCode} like '%{find.XOSqlText}%') or ({tPosition.S}.{tPosition.C_PositionName} like '%{find.XOSqlText}%')"
             End If
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -26,13 +26,25 @@ Namespace CMDpost
                 varDatabaseRequestMssql2008(0).StatusBar = status
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0), "TPositions")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = $"select c.company_code, d.department_code, ps.position_id, ps.position_code,ps.position_name, ps.position_description from man_position ps " &
-                                                       $"inner join man_department d on d.department_id = ps.position_department inner join man_company c on c.company_id = d.department_company {varWhere} " &
-                                                       $"order by c.company_code, d.department_code, ps.position_code"
+                varDatabaseRequestMysql(0).Query = $"select {tCompany.S}.{tCompany.C_CompanyCode}, " &
+                                                   $"{tCompany.S}.{tCompany.C_CompanyName}, " &
+                                                   $"{tDepartment.S}.{tDepartment.C_DepartmentCode}, " &
+                                                   $"{tDepartment.S}.{tDepartment.C_DepartmentName}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionId}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionCode}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionName}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionDescription} " &
+                                                   $"from {tPosition.TableName} {tPosition.S} " &
+                                                   $"inner join {tDepartment.TableName} {tDepartment.S} " &
+                                                   $"on {tDepartment.S}.{tDepartment.C_DepartmentId} = {tPosition.S}.{tPosition.C_PositionDepartment} " &
+                                                   $"inner join {tCompany.TableName} {tCompany.S} " &
+                                                   $"on {tCompany.S}.{tCompany.C_CompanyId} = {tDepartment.S}.{tDepartment.C_DepartmentCompany} " &
+                                                   $"{varWhere} " &
+                                                   $"order by {tCompany.S}.{tCompany.C_CompanyCode}, {tDepartment.S}.{tDepartment.C_DepartmentCode}, {tPosition.S}.{tPosition.C_PositionCode}"
 
                 varDatabaseRequestMysql(0).DataGrid = grid
                 varDatabaseRequestMysql(0).StatusBar = status
-                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TPositions")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TPositions", dataproperties.AllParameters)
             End If
         End Sub
 
@@ -41,8 +53,8 @@ Namespace CMDpost
             Dim varHasChild As Boolean = True
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varQuery = $"SELECT now() as `timestamp`, (select count(*) from v_post_granularity_epls where employee_position = @PositionId limit 0,1) as `relation1`;"
-                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName)
+                    varQuery = $"SELECT now() as `timestamp`, (select count(*) from v_post_granularity_epls where employee_position = {tPosition.P_PositionId} limit 0,1) as `relation1`;"
+                    datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varQuery, datasetname, consTableName, dataproperties.AllParameters)
                 End If
 
                 If datasetname.Tables(consTableName).Rows.Count > 0 Then
@@ -61,7 +73,8 @@ Namespace CMDpost
 
         <SupportedOSPlatform("windows")>
         Public Shared Function DeleteData(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet) As Boolean
-            Dim varSuccess As Boolean = False
+            Dim varSuccess As Boolean
+            varSuccess = False
 
             If CheckGranularity(dataproperties, datasetname) Then
                 Return False
@@ -72,7 +85,7 @@ Namespace CMDpost
                     varDatabaseRequestMssql2008(1).Query = $"delete from dbo.man_position where position_id = @PositionId"
                     varDatabaseEngineMssql2008.PushData(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1).Query)
                 ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                    varDatabaseRequestMysql(1).Query = $"delete from man_position where position_id = @PositionId"
+                    varDatabaseRequestMysql(1).Query = $"delete from {tPosition.TableName} where {tPosition.C_PositionId} = {tPosition.P_PositionId}"
                     varDatabaseEngineMysql.PushData(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1).Query, dataproperties.AllParameters)
                 End If
                 varSuccess = True

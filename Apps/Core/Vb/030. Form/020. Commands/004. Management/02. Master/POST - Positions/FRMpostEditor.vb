@@ -24,6 +24,8 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMpostEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_EDIT, XOLogo,, 512, 512)
+
             varIsFirstLoad = True
             If (varDataProperties.EmployeePositionIsNew) Then
                 ChkAddNew.Visible = True
@@ -35,9 +37,9 @@
                 CMDpost.Editor.GetPositionProperties(varDataProperties, varDatasetIngrid)
                 If varDatasetIngrid.Tables(tPosition.TableName).Rows.Count > 0 Then
                     With varDatasetIngrid.Tables(tPosition.TableName).Rows(0)
-                        CboCompany.SelectedValue = .Item(tCompany.C_CompanyId).ToString
+                        CboCompany.SelectedValue = .Item(tDepartment.C_DepartmentCompany).ToString
                         CMDpost.Editor.FillDepartement(varDataProperties, CboDepartement, CboCompany)
-                        CboDepartement.SelectedValue = .Item(tDepartment.C_DepartmentId).ToString
+                        CboDepartement.SelectedValue = .Item(tPosition.C_PositionDepartment).ToString
                         TxtPositionCode.Text = .Item(tPosition.C_PositionCode).ToString
                         TxtPositionName.Text = .Item(tPosition.C_PositionName).ToString
                         TxtPositionDescription.Text = .Item(tPosition.C_PositionDescription).ToString
@@ -52,9 +54,9 @@
             Me.Close()
         End Sub
 
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub CboCompany_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboCompany.SelectedIndexChanged
-            If Not (varIsFirstLoad) Then
+        <Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub CboCompany_SelectedIndexChanged(sender As Object, e As EventArgs)
+            If Not varIsFirstLoad Then
                 CMDpost.Editor.FillDepartement(varDataProperties, CboDepartement, CboCompany)
             End If
         End Sub

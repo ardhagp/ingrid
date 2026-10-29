@@ -119,9 +119,13 @@ Namespace CMDepls.Addins.Browse
         Private Shared Sub RunMsSql(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt)
             varWhere = "where "
             If dataproperties.EmploymentTypeIsForceRefresh Then
-
+                ' This code runs when the user wants to refresh the data without any search term.
+                varWhere += "(" & tEmploymentType.C_EmploymentTypeClient & " = " & tIngrid.P_ClientId & ") "
             Else
-
+                ' This code runs when the user has provided a search term.
+                varWhere += "(" & tEmploymentType.C_EmploymentTypeClient & " = " & tIngrid.P_ClientId & ") and " &
+                            "((" & tEmploymentType.C_EmploymentTypeCode & " like '%" & tEmploymentType.P_EmploymentTypeSearch & "%') or " &
+                            "(" & tEmploymentType.C_EmploymentTypeName & " like '%" & tEmploymentType.P_EmploymentTypeSearch & "%'))"
             End If
         End Sub
 

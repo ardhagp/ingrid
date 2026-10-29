@@ -22,9 +22,9 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMeplsEditor))
-            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
             ChkAddNew = New CMCv.UI.Control.Chk(components)
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
@@ -353,20 +353,20 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(203), CByte(245), CByte(169))
-            DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(253), CByte(227), CByte(167))
+            DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnModulesRoles.BorderStyle = BorderStyle.None
             DgnModulesRoles.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnModulesRoles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle5.BackColor = Color.YellowGreen
-            DataGridViewCellStyle5.Font = New Font("Verdana", 8F)
-            DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle5.SelectionBackColor = Color.YellowGreen
-            DataGridViewCellStyle5.SelectionForeColor = Color.Black
-            DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
-            DgnModulesRoles.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.YellowGreen
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
+            DataGridViewCellStyle2.SelectionForeColor = Color.Black
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            DgnModulesRoles.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             DgnModulesRoles.ColumnHeadersHeight = 43
             DgnModulesRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
             DgnModulesRoles.Columns.AddRange(New DataGridViewColumn() {modulegroup_name, module_code, useraccess_view, useraccess_add, useraccess_edit, useraccess_delete, useraccess_reports, empty, useraccess_id, module_id})
@@ -378,14 +378,14 @@
             DgnModulesRoles.Name = "DgnModulesRoles"
             DgnModulesRoles.ReadOnly = True
             DgnModulesRoles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-            DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle6.BackColor = Color.YellowGreen
-            DataGridViewCellStyle6.Font = New Font("Verdana", 8F)
-            DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle6.SelectionBackColor = Color.Yellow
-            DataGridViewCellStyle6.SelectionForeColor = Color.Black
-            DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-            DgnModulesRoles.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle3.BackColor = Color.YellowGreen
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
+            DataGridViewCellStyle3.SelectionForeColor = Color.Black
+            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+            DgnModulesRoles.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
             DgnModulesRoles.RowHeadersWidth = 62
             DgnModulesRoles.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
             DgnModulesRoles.Size = New Size(786, 466)

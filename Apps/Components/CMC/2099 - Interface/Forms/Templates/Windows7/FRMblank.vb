@@ -16,6 +16,7 @@
             End Try
         End Sub
 
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Blank_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
             Try
                 GC.Collect()

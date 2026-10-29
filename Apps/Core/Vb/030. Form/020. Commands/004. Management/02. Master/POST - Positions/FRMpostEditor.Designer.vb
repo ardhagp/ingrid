@@ -21,24 +21,29 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
+            BtnSave = New CMCv.UI.Control.Btn(components)
+            BtnCancel = New CMCv.UI.Control.Btn(components)
+            ChkAddNew = New CMCv.UI.Control.Chk(components)
+            TbxPosition = New CMCv.UI.Control.Tbx(components)
+            tpDetail = New TabPage()
+            ULbl3 = New CMCv.UI.Control.ULbl()
+            ULbl2 = New CMCv.UI.Control.ULbl()
+            ULbl1 = New CMCv.UI.Control.ULbl()
+            ULblDepartment = New CMCv.UI.Control.ULbl()
+            ULblCompany = New CMCv.UI.Control.ULbl()
             TxtPositionDescription = New CMCv.UI.Control.Txt(components)
             TxtPositionName = New CMCv.UI.Control.Txt(components)
             CboDepartement = New CMCv.UI.Control.Cbo(components)
             CboCompany = New CMCv.UI.Control.Cbo(components)
             TxtPositionCode = New CMCv.UI.Control.Txt(components)
-            BtnSave = New CMCv.UI.Control.Btn(components)
-            BtnCancel = New CMCv.UI.Control.Btn(components)
-            ChkAddNew = New CMCv.UI.Control.Chk(components)
-            ULbl1 = New CMCv.UI.Control.ULbl()
-            ULbl2 = New CMCv.UI.Control.ULbl()
-            ULbl3 = New CMCv.UI.Control.ULbl()
-            ULbl4 = New CMCv.UI.Control.ULbl()
-            ULbl5 = New CMCv.UI.Control.ULbl()
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
+            TbxPosition.SuspendLayout()
+            tpDetail.SuspendLayout()
             SuspendLayout()
             ' 
             ' PnlBottomButton
@@ -46,9 +51,9 @@
             PnlBottomButton.Controls.Add(ChkAddNew)
             PnlBottomButton.Controls.Add(BtnCancel)
             PnlBottomButton.Controls.Add(BtnSave)
-            PnlBottomButton.Location = New Point(0, 671)
+            PnlBottomButton.Location = New Point(0, 736)
             PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
-            PnlBottomButton.Size = New Size(854, 97)
+            PnlBottomButton.Size = New Size(824, 97)
             PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
             PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
             PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
@@ -56,48 +61,190 @@
             ' pnl_
             ' 
             pnl_.Margin = New Padding(7, 5, 7, 5)
-            pnl_.Size = New Size(854, 110)
+            pnl_.Size = New Size(824, 110)
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(ULbl5)
-            SLFPanel.Controls.Add(ULbl4)
-            SLFPanel.Controls.Add(ULbl3)
-            SLFPanel.Controls.Add(ULbl2)
-            SLFPanel.Controls.Add(ULbl1)
-            SLFPanel.Controls.Add(TxtPositionDescription)
-            SLFPanel.Controls.Add(TxtPositionName)
-            SLFPanel.Controls.Add(CboDepartement)
-            SLFPanel.Controls.Add(CboCompany)
-            SLFPanel.Controls.Add(TxtPositionCode)
+            SLFPanel.Controls.Add(TbxPosition)
             SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(854, 768)
+            SLFPanel.Size = New Size(824, 833)
+            SLFPanel.Controls.SetChildIndex(TbxPosition, 0)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(TxtPositionCode, 0)
-            SLFPanel.Controls.SetChildIndex(CboCompany, 0)
-            SLFPanel.Controls.SetChildIndex(CboDepartement, 0)
-            SLFPanel.Controls.SetChildIndex(TxtPositionName, 0)
-            SLFPanel.Controls.SetChildIndex(TxtPositionDescription, 0)
-            SLFPanel.Controls.SetChildIndex(ULbl1, 0)
-            SLFPanel.Controls.SetChildIndex(ULbl2, 0)
-            SLFPanel.Controls.SetChildIndex(ULbl3, 0)
-            SLFPanel.Controls.SetChildIndex(ULbl4, 0)
-            SLFPanel.Controls.SetChildIndex(ULbl5, 0)
+            ' 
+            ' BtnSave
+            ' 
+            BtnSave.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            BtnSave.BackColor = Color.LimeGreen
+            BtnSave.Cursor = Cursors.Hand
+            BtnSave.FlatAppearance.BorderColor = Color.FromArgb(CByte(50), CByte(145), CByte(50))
+            BtnSave.FlatAppearance.BorderSize = 2
+            BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
+            BtnSave.FlatStyle = FlatStyle.Flat
+            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            BtnSave.ForeColor = Color.White
+            BtnSave.Location = New Point(460, 13)
+            BtnSave.Margin = New Padding(6, 5, 6, 5)
+            BtnSave.Name = "BtnSave"
+            BtnSave.Size = New Size(167, 77)
+            BtnSave.TabIndex = 801
+            BtnSave.Text = "&Save"
+            BtnSave.UseVisualStyleBackColor = False
+            BtnSave.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
+            BtnSave.XOShowBorderOnFocus = False
+            BtnSave.XOValidateAllInput = False
+            BtnSave.XOValidateAllInputTag = Nothing
+            ' 
+            ' BtnCancel
+            ' 
+            BtnCancel.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            BtnCancel.BackColor = Color.Red
+            BtnCancel.Cursor = Cursors.Hand
+            BtnCancel.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
+            BtnCancel.FlatAppearance.BorderSize = 2
+            BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
+            BtnCancel.FlatStyle = FlatStyle.Flat
+            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+            BtnCancel.ForeColor = Color.White
+            BtnCancel.Location = New Point(637, 13)
+            BtnCancel.Margin = New Padding(6, 5, 6, 5)
+            BtnCancel.Name = "BtnCancel"
+            BtnCancel.Size = New Size(167, 77)
+            BtnCancel.TabIndex = 802
+            BtnCancel.Text = "&Close"
+            BtnCancel.UseVisualStyleBackColor = False
+            BtnCancel.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
+            BtnCancel.XOShowBorderOnFocus = False
+            BtnCancel.XOValidateAllInput = False
+            BtnCancel.XOValidateAllInputTag = Nothing
+            ' 
+            ' ChkAddNew
+            ' 
+            ChkAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            ChkAddNew.AutoSize = True
+            ChkAddNew.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
+            ChkAddNew.FlatStyle = FlatStyle.Flat
+            ChkAddNew.Font = New Font("Segoe UI", 12F)
+            ChkAddNew.ForeColor = Color.White
+            ChkAddNew.Location = New Point(233, 28)
+            ChkAddNew.Margin = New Padding(6, 5, 6, 5)
+            ChkAddNew.Name = "ChkAddNew"
+            ChkAddNew.Size = New Size(221, 36)
+            ChkAddNew.TabIndex = 803
+            ChkAddNew.Text = "Add new on Save"
+            ChkAddNew.UseVisualStyleBackColor = False
+            ChkAddNew.XOCheckColor = Color.White
+            ' 
+            ' TbxPosition
+            ' 
+            TbxPosition.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+            TbxPosition.Controls.Add(tpDetail)
+            TbxPosition.Font = New Font("Segoe UI", 12F)
+            TbxPosition.Location = New Point(20, 25)
+            TbxPosition.Name = "TbxPosition"
+            TbxPosition.SelectedIndex = 0
+            TbxPosition.Size = New Size(784, 700)
+            TbxPosition.TabIndex = 1019
+            ' 
+            ' tpDetail
+            ' 
+            tpDetail.AutoScroll = True
+            tpDetail.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            tpDetail.Controls.Add(ULbl3)
+            tpDetail.Controls.Add(ULbl2)
+            tpDetail.Controls.Add(ULbl1)
+            tpDetail.Controls.Add(ULblDepartment)
+            tpDetail.Controls.Add(ULblCompany)
+            tpDetail.Controls.Add(TxtPositionDescription)
+            tpDetail.Controls.Add(TxtPositionName)
+            tpDetail.Controls.Add(CboDepartement)
+            tpDetail.Controls.Add(CboCompany)
+            tpDetail.Controls.Add(TxtPositionCode)
+            tpDetail.Location = New Point(4, 41)
+            tpDetail.Name = "tpDetail"
+            tpDetail.Padding = New Padding(3)
+            tpDetail.Size = New Size(776, 655)
+            tpDetail.TabIndex = 0
+            tpDetail.Text = "DETAIL"
+            ' 
+            ' ULbl3
+            ' 
+            ULbl3.BackColor = Color.Moccasin
+            ULbl3.Location = New Point(16, 316)
+            ULbl3.Margin = New Padding(5, 6, 5, 6)
+            ULbl3.Name = "ULbl3"
+            ULbl3.Size = New Size(272, 254)
+            ULbl3.TabIndex = 1028
+            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULbl3.XOText = "Description"
+            ULbl3.XOTextAdjuster = False
+            ULbl3.XOTextBorder = False
+            ' 
+            ' ULbl2
+            ' 
+            ULbl2.BackColor = Color.MistyRose
+            ULbl2.Location = New Point(16, 247)
+            ULbl2.Margin = New Padding(5, 6, 5, 6)
+            ULbl2.Name = "ULbl2"
+            ULbl2.Size = New Size(272, 38)
+            ULbl2.TabIndex = 1027
+            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
+            ULbl2.XOText = "Position Name"
+            ULbl2.XOTextAdjuster = False
+            ULbl2.XOTextBorder = False
+            ' 
+            ' ULbl1
+            ' 
+            ULbl1.BackColor = Color.MistyRose
+            ULbl1.Location = New Point(16, 178)
+            ULbl1.Margin = New Padding(5, 6, 5, 6)
+            ULbl1.Name = "ULbl1"
+            ULbl1.Size = New Size(272, 38)
+            ULbl1.TabIndex = 1026
+            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
+            ULbl1.XOText = "Position Code"
+            ULbl1.XOTextAdjuster = False
+            ULbl1.XOTextBorder = False
+            ' 
+            ' ULblDepartment
+            ' 
+            ULblDepartment.BackColor = Color.MistyRose
+            ULblDepartment.Location = New Point(16, 108)
+            ULblDepartment.Margin = New Padding(5, 6, 5, 6)
+            ULblDepartment.Name = "ULblDepartment"
+            ULblDepartment.Size = New Size(272, 38)
+            ULblDepartment.TabIndex = 1025
+            ULblDepartment.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
+            ULblDepartment.XOText = "Department"
+            ULblDepartment.XOTextAdjuster = False
+            ULblDepartment.XOTextBorder = False
+            ' 
+            ' ULblCompany
+            ' 
+            ULblCompany.BackColor = Color.MistyRose
+            ULblCompany.Location = New Point(16, 38)
+            ULblCompany.Margin = New Padding(6, 8, 6, 8)
+            ULblCompany.Name = "ULblCompany"
+            ULblCompany.Size = New Size(272, 38)
+            ULblCompany.TabIndex = 1024
+            ULblCompany.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
+            ULblCompany.XOText = "Company"
+            ULblCompany.XOTextAdjuster = False
+            ULblCompany.XOTextBorder = False
             ' 
             ' TxtPositionDescription
             ' 
             TxtPositionDescription.Font = New Font("Segoe UI", 12F)
-            TxtPositionDescription.Location = New Point(280, 288)
+            TxtPositionDescription.Location = New Point(306, 316)
             TxtPositionDescription.Margin = New Padding(6, 5, 6, 5)
             TxtPositionDescription.MaxLength = 255
             TxtPositionDescription.Multiline = True
             TxtPositionDescription.Name = "TxtPositionDescription"
-            TxtPositionDescription.Size = New Size(545, 221)
-            TxtPositionDescription.TabIndex = 4
+            TxtPositionDescription.Size = New Size(425, 254)
+            TxtPositionDescription.TabIndex = 1023
             TxtPositionDescription.Tag = "txt"
             TxtPositionDescription.XOAutoTrim = False
             TxtPositionDescription.XOHighlightColor = Color.LightYellow
-            TxtPositionDescription.XOHighlightOnFocus = False
+            TxtPositionDescription.XOHighlightOnFocus = True
             TxtPositionDescription.XOIsBlank = True
             TxtPositionDescription.XOIsMandatory = False
             TxtPositionDescription.XOIsPlaceholder = False
@@ -118,12 +265,12 @@
             ' TxtPositionName
             ' 
             TxtPositionName.Font = New Font("Segoe UI", 12F)
-            TxtPositionName.Location = New Point(280, 222)
+            TxtPositionName.Location = New Point(306, 247)
             TxtPositionName.Margin = New Padding(6, 5, 6, 5)
             TxtPositionName.MaxLength = 255
             TxtPositionName.Name = "TxtPositionName"
-            TxtPositionName.Size = New Size(341, 39)
-            TxtPositionName.TabIndex = 3
+            TxtPositionName.Size = New Size(425, 39)
+            TxtPositionName.TabIndex = 1022
             TxtPositionName.Tag = "txt"
             TxtPositionName.XOAutoTrim = True
             TxtPositionName.XOHighlightColor = Color.LightYellow
@@ -152,11 +299,11 @@
             CboDepartement.FlatStyle = FlatStyle.Flat
             CboDepartement.Font = New Font("Segoe UI", 12F)
             CboDepartement.FormattingEnabled = True
-            CboDepartement.Location = New Point(280, 87)
+            CboDepartement.Location = New Point(306, 108)
             CboDepartement.Margin = New Padding(6, 5, 6, 5)
             CboDepartement.Name = "CboDepartement"
-            CboDepartement.Size = New Size(341, 40)
-            CboDepartement.TabIndex = 1
+            CboDepartement.Size = New Size(425, 40)
+            CboDepartement.TabIndex = 1020
             ' 
             ' CboCompany
             ' 
@@ -165,21 +312,21 @@
             CboCompany.FlatStyle = FlatStyle.Flat
             CboCompany.Font = New Font("Segoe UI", 12F)
             CboCompany.FormattingEnabled = True
-            CboCompany.Location = New Point(280, 20)
+            CboCompany.Location = New Point(306, 38)
             CboCompany.Margin = New Padding(6, 5, 6, 5)
             CboCompany.Name = "CboCompany"
-            CboCompany.Size = New Size(341, 40)
-            CboCompany.TabIndex = 0
+            CboCompany.Size = New Size(425, 40)
+            CboCompany.TabIndex = 1019
             ' 
             ' TxtPositionCode
             ' 
             TxtPositionCode.Font = New Font("Segoe UI", 12F)
-            TxtPositionCode.Location = New Point(280, 153)
+            TxtPositionCode.Location = New Point(306, 178)
             TxtPositionCode.Margin = New Padding(6, 5, 6, 5)
             TxtPositionCode.MaxLength = 255
             TxtPositionCode.Name = "TxtPositionCode"
-            TxtPositionCode.Size = New Size(341, 39)
-            TxtPositionCode.TabIndex = 2
+            TxtPositionCode.Size = New Size(425, 39)
+            TxtPositionCode.TabIndex = 1021
             TxtPositionCode.Tag = "txt"
             TxtPositionCode.XOAutoTrim = True
             TxtPositionCode.XOHighlightColor = Color.LightYellow
@@ -201,137 +348,10 @@
             TxtPositionCode.XOSelectOnFocus = True
             TxtPositionCode.XOSqlText = ""
             ' 
-            ' BtnSave
-            ' 
-            BtnSave.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            BtnSave.BackColor = Color.LimeGreen
-            BtnSave.Cursor = Cursors.Hand
-            BtnSave.FlatAppearance.BorderColor = Color.FromArgb(CByte(50), CByte(145), CByte(50))
-            BtnSave.FlatAppearance.BorderSize = 2
-            BtnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(225), CByte(70))
-            BtnSave.FlatStyle = FlatStyle.Flat
-            BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
-            BtnSave.ForeColor = Color.White
-            BtnSave.Location = New Point(490, 13)
-            BtnSave.Margin = New Padding(6, 5, 6, 5)
-            BtnSave.Name = "BtnSave"
-            BtnSave.Size = New Size(167, 77)
-            BtnSave.TabIndex = 801
-            BtnSave.Text = "&Save"
-            BtnSave.UseVisualStyleBackColor = False
-            BtnSave.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Yes
-            BtnSave.XOShowBorderOnFocus = False
-            BtnSave.XOValidateAllInput = False
-            BtnSave.XOValidateAllInputTag = Nothing
-            ' 
-            ' BtnCancel
-            ' 
-            BtnCancel.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            BtnCancel.BackColor = Color.Red
-            BtnCancel.Cursor = Cursors.Hand
-            BtnCancel.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
-            BtnCancel.FlatAppearance.BorderSize = 2
-            BtnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
-            BtnCancel.FlatStyle = FlatStyle.Flat
-            BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
-            BtnCancel.ForeColor = Color.White
-            BtnCancel.Location = New Point(667, 13)
-            BtnCancel.Margin = New Padding(6, 5, 6, 5)
-            BtnCancel.Name = "BtnCancel"
-            BtnCancel.Size = New Size(167, 77)
-            BtnCancel.TabIndex = 802
-            BtnCancel.Text = "&Close"
-            BtnCancel.UseVisualStyleBackColor = False
-            BtnCancel.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
-            BtnCancel.XOShowBorderOnFocus = False
-            BtnCancel.XOValidateAllInput = False
-            BtnCancel.XOValidateAllInputTag = Nothing
-            ' 
-            ' ChkAddNew
-            ' 
-            ChkAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            ChkAddNew.AutoSize = True
-            ChkAddNew.BackColor = Color.Transparent
-            ChkAddNew.FlatStyle = FlatStyle.Flat
-            ChkAddNew.Font = New Font("Segoe UI", 12F)
-            ChkAddNew.ForeColor = Color.Tomato
-            ChkAddNew.Location = New Point(263, 22)
-            ChkAddNew.Margin = New Padding(6, 5, 6, 5)
-            ChkAddNew.Name = "ChkAddNew"
-            ChkAddNew.Size = New Size(221, 36)
-            ChkAddNew.TabIndex = 803
-            ChkAddNew.Text = "Add new on Save"
-            ChkAddNew.UseVisualStyleBackColor = False
-            ' 
-            ' ULbl1
-            ' 
-            ULbl1.BackColor = Color.Moccasin
-            ULbl1.Location = New Point(20, 20)
-            ULbl1.Margin = New Padding(7, 5, 7, 5)
-            ULbl1.Name = "ULbl1"
-            ULbl1.Size = New Size(250, 39)
-            ULbl1.TabIndex = 1014
-            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl1.XOText = "Company"
-            ULbl1.XOTextAdjuster = False
-            ULbl1.XOTextBorder = False
-            ' 
-            ' ULbl2
-            ' 
-            ULbl2.BackColor = Color.Moccasin
-            ULbl2.Location = New Point(20, 87)
-            ULbl2.Margin = New Padding(7, 5, 7, 5)
-            ULbl2.Name = "ULbl2"
-            ULbl2.Size = New Size(250, 39)
-            ULbl2.TabIndex = 1015
-            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl2.XOText = "Department"
-            ULbl2.XOTextAdjuster = False
-            ULbl2.XOTextBorder = False
-            ' 
-            ' ULbl3
-            ' 
-            ULbl3.BackColor = Color.Moccasin
-            ULbl3.Location = New Point(20, 153)
-            ULbl3.Margin = New Padding(7, 5, 7, 5)
-            ULbl3.Name = "ULbl3"
-            ULbl3.Size = New Size(250, 39)
-            ULbl3.TabIndex = 1016
-            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl3.XOText = "Position Code"
-            ULbl3.XOTextAdjuster = False
-            ULbl3.XOTextBorder = False
-            ' 
-            ' ULbl4
-            ' 
-            ULbl4.BackColor = Color.Moccasin
-            ULbl4.Location = New Point(20, 222)
-            ULbl4.Margin = New Padding(7, 5, 7, 5)
-            ULbl4.Name = "ULbl4"
-            ULbl4.Size = New Size(250, 39)
-            ULbl4.TabIndex = 1017
-            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl4.XOText = "Position Name"
-            ULbl4.XOTextAdjuster = False
-            ULbl4.XOTextBorder = False
-            ' 
-            ' ULbl5
-            ' 
-            ULbl5.BackColor = Color.Moccasin
-            ULbl5.Location = New Point(20, 288)
-            ULbl5.Margin = New Padding(7, 5, 7, 5)
-            ULbl5.Name = "ULbl5"
-            ULbl5.Size = New Size(250, 225)
-            ULbl5.TabIndex = 1018
-            ULbl5.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl5.XOText = "Description"
-            ULbl5.XOTextAdjuster = False
-            ULbl5.XOTextBorder = False
-            ' 
             ' FRMpostEditor
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
-            ClientSize = New Size(854, 900)
+            ClientSize = New Size(824, 965)
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMpostEditor"
             PnlBottomButton.ResumeLayout(False)
@@ -340,23 +360,28 @@
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
-            SLFPanel.PerformLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
+            TbxPosition.ResumeLayout(False)
+            tpDetail.ResumeLayout(False)
+            tpDetail.PerformLayout()
             ResumeLayout(False)
             PerformLayout()
         End Sub
+        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
+        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
+        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
+        Friend WithEvents TbxPosition As CMCv.UI.Control.Tbx
+        Friend WithEvents tpDetail As TabPage
         Friend WithEvents TxtPositionDescription As CMCv.UI.Control.Txt
         Friend WithEvents TxtPositionName As CMCv.UI.Control.Txt
         Friend WithEvents CboDepartement As CMCv.UI.Control.Cbo
         Friend WithEvents CboCompany As CMCv.UI.Control.Cbo
         Friend WithEvents TxtPositionCode As CMCv.UI.Control.Txt
-        Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
-        Friend WithEvents BtnCancel As CMCv.UI.Control.Btn
-        Friend WithEvents BtnSave As CMCv.UI.Control.Btn
-        Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl
-        Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
-        Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
-        Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULblCompany As CMCv.UI.Control.ULbl
+        Friend WithEvents ULblDepartment As CMCv.UI.Control.ULbl
         Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
     End Class
 End Namespace

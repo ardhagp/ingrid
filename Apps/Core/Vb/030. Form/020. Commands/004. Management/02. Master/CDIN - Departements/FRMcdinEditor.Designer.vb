@@ -51,7 +51,7 @@
             PnlBottomButton.Controls.Add(BtnCancel)
             PnlBottomButton.Location = New Point(0, 736)
             PnlBottomButton.Margin = New Padding(7, 5, 7, 5)
-            PnlBottomButton.Size = New Size(1181, 97)
+            PnlBottomButton.Size = New Size(824, 97)
             PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
             PnlBottomButton.Controls.SetChildIndex(BtnSave, 0)
             PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
@@ -59,13 +59,13 @@
             ' pnl_
             ' 
             pnl_.Margin = New Padding(7, 5, 7, 5)
-            pnl_.Size = New Size(1181, 110)
+            pnl_.Size = New Size(824, 110)
             ' 
             ' SLFPanel
             ' 
             SLFPanel.Controls.Add(TbxDepartment)
             SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(1181, 833)
+            SLFPanel.Size = New Size(824, 833)
             SLFPanel.Controls.SetChildIndex(TbxDepartment, 0)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             ' 
@@ -80,7 +80,7 @@
             BtnSave.FlatStyle = FlatStyle.Flat
             BtnSave.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnSave.ForeColor = Color.White
-            BtnSave.Location = New Point(817, 13)
+            BtnSave.Location = New Point(460, 13)
             BtnSave.Margin = New Padding(6, 5, 6, 5)
             BtnSave.Name = "BtnSave"
             BtnSave.Size = New Size(167, 77)
@@ -103,7 +103,7 @@
             BtnCancel.FlatStyle = FlatStyle.Flat
             BtnCancel.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
             BtnCancel.ForeColor = Color.White
-            BtnCancel.Location = New Point(994, 13)
+            BtnCancel.Location = New Point(637, 13)
             BtnCancel.Margin = New Padding(6, 5, 6, 5)
             BtnCancel.Name = "BtnCancel"
             BtnCancel.Size = New Size(167, 77)
@@ -229,7 +229,6 @@
             ULbl1.TabIndex = 1004
             ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl1.XOText = "Company"
-            ULbl1.XOTextAdjuster = False
             ULbl1.XOTextBorder = False
             ' 
             ' ULbl2
@@ -242,7 +241,6 @@
             ULbl2.TabIndex = 1005
             ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl2.XOText = "Dept. Code"
-            ULbl2.XOTextAdjuster = False
             ULbl2.XOTextBorder = False
             ' 
             ' ULbl3
@@ -255,7 +253,6 @@
             ULbl3.TabIndex = 1006
             ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl3.XOText = "Dept. Name"
-            ULbl3.XOTextAdjuster = False
             ULbl3.XOTextBorder = False
             ' 
             ' ULbl4
@@ -268,7 +265,6 @@
             ULbl4.TabIndex = 1007
             ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.XOText = "Description"
-            ULbl4.XOTextAdjuster = False
             ULbl4.XOTextBorder = False
             ' 
             ' ChkAddNew
@@ -278,14 +274,14 @@
             ChkAddNew.BackColor = Color.FromArgb(CByte(12), CByte(18), CByte(40))
             ChkAddNew.FlatStyle = FlatStyle.Flat
             ChkAddNew.Font = New Font("Segoe UI", 12F)
-            ChkAddNew.ForeColor = Color.Yellow
-            ChkAddNew.Location = New Point(588, 33)
+            ChkAddNew.ForeColor = Color.White
+            ChkAddNew.Location = New Point(231, 33)
             ChkAddNew.Name = "ChkAddNew"
             ChkAddNew.Size = New Size(221, 36)
             ChkAddNew.TabIndex = 7
             ChkAddNew.Text = "Add new on Save"
             ChkAddNew.UseVisualStyleBackColor = False
-            ChkAddNew.XOCheckColor = Color.Yellow
+            ChkAddNew.XOCheckColor = Color.White
             ' 
             ' TbxDepartment
             ' 
@@ -295,11 +291,12 @@
             TbxDepartment.Location = New Point(20, 25)
             TbxDepartment.Name = "TbxDepartment"
             TbxDepartment.SelectedIndex = 0
-            TbxDepartment.Size = New Size(830, 700)
+            TbxDepartment.Size = New Size(784, 700)
             TbxDepartment.TabIndex = 1008
             ' 
             ' TpDetail
             ' 
+            TpDetail.AutoScroll = True
             TpDetail.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             TpDetail.Controls.Add(ULbl3)
             TpDetail.Controls.Add(ULbl4)
@@ -312,14 +309,14 @@
             TpDetail.Location = New Point(4, 41)
             TpDetail.Name = "TpDetail"
             TpDetail.Padding = New Padding(3)
-            TpDetail.Size = New Size(822, 655)
+            TpDetail.Size = New Size(776, 655)
             TpDetail.TabIndex = 0
             TpDetail.Text = "DETAIL"
             ' 
             ' FRMcdinEditor
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
-            ClientSize = New Size(1181, 965)
+            ClientSize = New Size(824, 965)
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMcdinEditor"
             PnlBottomButton.ResumeLayout(False)

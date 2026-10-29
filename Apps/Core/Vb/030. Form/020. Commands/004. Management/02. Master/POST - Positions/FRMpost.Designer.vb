@@ -26,7 +26,9 @@
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
             DgnPOST = New CMCv.UI.Control.Dgn(components)
             company_code = New DataGridViewTextBoxColumn()
+            company_name = New DataGridViewTextBoxColumn()
             department_code = New DataGridViewTextBoxColumn()
+            department_name = New DataGridViewTextBoxColumn()
             position_id = New DataGridViewTextBoxColumn()
             position_code = New DataGridViewTextBoxColumn()
             position_name = New DataGridViewTextBoxColumn()
@@ -36,6 +38,7 @@
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(DgnPOST, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
@@ -60,7 +63,7 @@
             ' 
             DgnPOST.AllowUserToAddRows = False
             DgnPOST.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(231), CByte(210), CByte(148))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(240), CByte(232), CByte(138))
             DgnPOST.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnPOST.BackgroundColor = Color.Black
             DgnPOST.BorderStyle = BorderStyle.None
@@ -76,7 +79,7 @@
             DgnPOST.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             DgnPOST.ColumnHeadersHeight = 43
             DgnPOST.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-            DgnPOST.Columns.AddRange(New DataGridViewColumn() {company_code, department_code, position_id, position_code, position_name, position_description})
+            DgnPOST.Columns.AddRange(New DataGridViewColumn() {company_code, company_name, department_code, department_name, position_id, position_code, position_name, position_description})
             DgnPOST.Dock = DockStyle.Fill
             DgnPOST.EnableHeadersVisualStyles = False
             DgnPOST.Font = New Font("Verdana", 8F)
@@ -109,8 +112,17 @@
             company_code.MinimumWidth = 8
             company_code.Name = "company_code"
             company_code.ReadOnly = True
-            company_code.SortMode = DataGridViewColumnSortMode.Programmatic
             company_code.Width = 123
+            ' 
+            ' company_name
+            ' 
+            company_name.DataPropertyName = "company_name"
+            company_name.HeaderText = "COM. NAME"
+            company_name.MinimumWidth = 8
+            company_name.Name = "company_name"
+            company_name.ReadOnly = True
+            company_name.Visible = False
+            company_name.Width = 150
             ' 
             ' department_code
             ' 
@@ -120,8 +132,17 @@
             department_code.MinimumWidth = 8
             department_code.Name = "department_code"
             department_code.ReadOnly = True
-            department_code.SortMode = DataGridViewColumnSortMode.Programmatic
             department_code.Width = 88
+            ' 
+            ' department_name
+            ' 
+            department_name.DataPropertyName = "department_name"
+            department_name.HeaderText = "DEPT. NAME"
+            department_name.MinimumWidth = 8
+            department_name.Name = "department_name"
+            department_name.ReadOnly = True
+            department_name.Visible = False
+            department_name.Width = 150
             ' 
             ' position_id
             ' 
@@ -130,7 +151,6 @@
             position_id.MinimumWidth = 8
             position_id.Name = "position_id"
             position_id.ReadOnly = True
-            position_id.SortMode = DataGridViewColumnSortMode.Programmatic
             position_id.Visible = False
             position_id.Width = 150
             ' 
@@ -142,7 +162,6 @@
             position_code.MinimumWidth = 8
             position_code.Name = "position_code"
             position_code.ReadOnly = True
-            position_code.SortMode = DataGridViewColumnSortMode.Programmatic
             position_code.Width = 161
             ' 
             ' position_name
@@ -153,7 +172,6 @@
             position_name.MinimumWidth = 8
             position_name.Name = "position_name"
             position_name.ReadOnly = True
-            position_name.SortMode = DataGridViewColumnSortMode.Programmatic
             position_name.Width = 161
             ' 
             ' position_description
@@ -164,7 +182,6 @@
             position_description.MinimumWidth = 8
             position_description.Name = "position_description"
             position_description.ReadOnly = True
-            position_description.SortMode = DataGridViewColumnSortMode.Programmatic
             ' 
             ' FRMpost
             ' 
@@ -184,13 +201,16 @@
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(DgnPOST, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub
         Friend WithEvents DgnPOST As CMCv.UI.Control.Dgn
         Friend WithEvents company_code As DataGridViewTextBoxColumn
+        Friend WithEvents company_name As DataGridViewTextBoxColumn
         Friend WithEvents department_code As DataGridViewTextBoxColumn
+        Friend WithEvents department_name As DataGridViewTextBoxColumn
         Friend WithEvents position_id As DataGridViewTextBoxColumn
         Friend WithEvents position_code As DataGridViewTextBoxColumn
         Friend WithEvents position_name As DataGridViewTextBoxColumn

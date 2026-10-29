@@ -100,15 +100,13 @@ Namespace UI.Canvas
                         Dim varLine As New String("─"c, 80)
                         varMessage.AppendLine(varLine)
 
-                        varMessage.AppendLine("Employee ID : " & .Cells("employee_number").Value.ToString & Environment.NewLine &
-                                "Employee Name : " & .Cells("employee_fullname").Value.ToString & Environment.NewLine &
+                        varMessage.AppendLine($"Position Code : " & .Cells("position_code").Value.ToString & Environment.NewLine &
+                                "Position Name : " & .Cells("position_name").Value.ToString & Environment.NewLine &
                                 "Company : " & .Cells("company_name").Value.ToString & Environment.NewLine &
-                                "Department : " & .Cells("department_name").Value.ToString & Environment.NewLine &
-                                "Position : " & .Cells("positition_name").Value.ToString & Environment.NewLine &
-                                "Grade : " & .Cells("grade_code").Value.ToString)
+                                "Department : " & .Cells("department_name").Value.ToString)
 
                         varMessage.AppendLine(varLine)
-                        If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to delete this record?", LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDpost.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
+                        If Decision(My.Application.Info.AssemblyName.ToUpper, varMessage.ToString, LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDpost.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
                             Call GetData(True)
                             UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
                         Else
@@ -139,6 +137,8 @@ Namespace UI.Canvas
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMpost_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_POST, XOLogo,, 512, 512, True, "Module")
+
             ' Set active module to UserParameters
             With varDataProperties
                 SetValue(.AllParameters, tModule.P_ModuleCode, varThisModuleCode)
@@ -152,6 +152,7 @@ Namespace UI.Canvas
             DgnPOST.XOGetNewColor()
             Call GetData(True)
             TxtFind.ClearSearch()
+            CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnPOST)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
