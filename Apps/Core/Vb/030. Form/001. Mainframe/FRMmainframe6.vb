@@ -476,9 +476,9 @@ Namespace UI.Canvas
             If varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString = String.Empty Then
                 PctProfile.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-404.svg", True, 512, 512)
             Else
-                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, PctProfile)
+                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, PctProfile,, True, "Profile")
                 'PctProfile.ImageLocation = varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString
-                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, Ms_mainframe, "USERMENU")
+                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, Ms_mainframe, "USERMENU",, True, "Profile")
             End If
         End Sub
 

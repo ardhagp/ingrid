@@ -63,9 +63,9 @@
             ' 
             DgnPOST.AllowUserToAddRows = False
             DgnPOST.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(240), CByte(232), CByte(138))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(218), CByte(215), CByte(177))
             DgnPOST.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-            DgnPOST.BackgroundColor = Color.Black
+            DgnPOST.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnPOST.BorderStyle = BorderStyle.None
             DgnPOST.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnPOST.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
