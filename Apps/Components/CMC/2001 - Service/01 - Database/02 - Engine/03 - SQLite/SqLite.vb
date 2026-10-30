@@ -216,7 +216,8 @@
 
         'Private Function GetDataRow(query As String) As Microsoft.Data.Sqlite.SqliteDataReader
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Function GetDataRow(dataproperties As LibApp.Ingrid.Global.Properties, query As String) As System.Data.SQLite.SQLiteDataReader ' Activate this when using System.Data.Sqlite.Core
+        Private Function GetDataRow(dataproperties As LibApp.Ingrid.Global.Properties,
+                                    query As String) As System.Data.SQLite.SQLiteDataReader ' Activate this when using System.Data.Sqlite.Core
             Try
                 Using varConnection As New System.Data.SQLite.SQLiteConnection(ConnectionString("catalog.db")) 'OleDb.OleDbConnection(_CS(0))
                     varConnection.Open()
@@ -311,7 +312,9 @@
         End Function
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Sub GetDataTable(dbr As Adapter.Sqlite.Display.Request, datasetname As System.Data.DataSet, tablename As String)
+        Public Sub GetDataTable(dbr As Adapter.Sqlite.Display.Request,
+                                datasetname As System.Data.DataSet,
+                                tablename As String)
 
             Try
                 GC.Collect()
@@ -415,7 +418,11 @@
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function GetDataSet(dataproperties As LibApp.Ingrid.Global.Properties, query As String, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As System.Data.DataSet
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "S2077", Justification:="Query is generated from trusted internal metadata only.")>
+        Public Function GetDataSet(dataproperties As LibApp.Ingrid.Global.Properties,
+                                   query As String,
+                                   tablename As String,
+                                   Optional parameters As Dictionary(Of String, Object) = Nothing) As System.Data.DataSet
             GC.Collect()
 
             Try
@@ -474,7 +481,12 @@
         End Function
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function FillDataSet(dataproperties As LibApp.Ingrid.Global.Properties, query As String, datasetname As System.Data.DataSet, tablename As String, Optional parameters As Dictionary(Of String, Object) = Nothing) As System.Data.DataSet
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "S2077", Justification:="Query is generated from trusted internal metadata only.")>
+        Public Function FillDataSet(dataproperties As LibApp.Ingrid.Global.Properties,
+                                    query As String,
+                                    datasetname As System.Data.DataSet,
+                                    tablename As String,
+                                    Optional parameters As Dictionary(Of String, Object) = Nothing) As System.Data.DataSet
             GC.Collect()
 
             Try
