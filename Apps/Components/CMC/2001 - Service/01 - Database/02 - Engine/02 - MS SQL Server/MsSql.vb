@@ -82,6 +82,7 @@
         ''' <param name="databasename"></param>
         ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "S2077", Justification:="Query is generated from trusted internal metadata only.")>
         Public Function GetDataRow(query As String, databasename As String) As Microsoft.Data.SqlClient.SqlDataReader
             Dim varDataReader(1) As Microsoft.Data.SqlClient.SqlDataReader
 
@@ -150,7 +151,9 @@
         ''' <param name="query"></param>
         ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function GetValue(databasename As String, query As String) As Object
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "S2077", Justification:="Query is generated from trusted internal metadata only.")>
+        Public Function GetValue(databasename As String,
+                                 query As String) As Object
             Try
                 Dim varRowValue As Object
 
@@ -200,7 +203,9 @@
         ''' <param name="tablename"></param>
         ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function GetDataSet(databasename As String, dbr As Database.Adapter.MsSql.Display.Request, tablename As String) As System.Data.DataSet
+        Public Function GetDataSet(databasename As String,
+                                   dbr As Database.Adapter.MsSql.Display.Request,
+                                   tablename As String) As System.Data.DataSet
             Dim varDataAdapter(1) As Microsoft.Data.SqlClient.SqlDataAdapter
 
             Try
@@ -258,7 +263,9 @@
         ''' <param name="dbr"></param>
         ''' <param name="tablename"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Sub GetDataTable(databasename As String, dbr As Database.Adapter.MsSql.Display.Request, tablename As String)
+        Public Sub GetDataTable(databasename As String,
+                                dbr As Database.Adapter.MsSql.Display.Request,
+                                tablename As String)
 
             Dim varDataAdapter(1) As Microsoft.Data.SqlClient.SqlDataAdapter
 
@@ -347,7 +354,9 @@
         ''' <param name="databasename"></param>
         ''' <param name="query"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Sub PushData(databasename As String, query As String)
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "S2077", Justification:="Query is generated from trusted internal metadata only.")>
+        Public Sub PushData(databasename As String,
+                            query As String)
             Try
                 varCommand(1) = New Microsoft.Data.SqlClient.SqlCommand With {
                 .Connection = varConnection(1),
@@ -434,6 +443,7 @@
         ''' <param name="tablename"></param>
         ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "S2077", Justification:="Query is generated from trusted internal metadata only.")>
         Public Function FillDataset(databasename As String, query As String, datasetname As System.Data.DataSet, tablename As String) As System.Data.DataSet
             GC.Collect()
 
