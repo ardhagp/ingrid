@@ -1,15 +1,15 @@
 ﻿Namespace Component.Properties
     Module [Global]
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public globalFontBtn As New System.Drawing.Font("Segoe UI", 12, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
+        Public ReadOnly globalFontBtn As New System.Drawing.Font("Segoe UI", 12, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public globalFontTxt As New System.Drawing.Font("Segoe UI", 12, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        Public ReadOnly globalFontTxt As New System.Drawing.Font("Segoe UI", 12, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public globalFontTxtItalic As New System.Drawing.Font("Segoe UI", 12, Drawing.FontStyle.Italic, Drawing.GraphicsUnit.Point)
+        Public ReadOnly globalFontTxtItalic As New System.Drawing.Font("Segoe UI", 12, Drawing.FontStyle.Italic, Drawing.GraphicsUnit.Point)
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public globalFontLbl As New System.Drawing.Font("Segoe UI", 12, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        Public ReadOnly globalFontLbl As New System.Drawing.Font("Segoe UI", 12, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public globalFontDgn As New System.Drawing.Font("Verdana", 8, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        Public ReadOnly globalFontDgn As New System.Drawing.Font("Verdana", 8, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point)
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public varSalt As String = Bridge.Getkey.Salt()

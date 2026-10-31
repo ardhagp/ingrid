@@ -229,6 +229,7 @@
             ULbl1.TabIndex = 1004
             ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl1.XOText = "Company"
+            ULbl1.XOTextAdjuster = False
             ULbl1.XOTextBorder = False
             ' 
             ' ULbl2
@@ -241,6 +242,7 @@
             ULbl2.TabIndex = 1005
             ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl2.XOText = "Dept. Code"
+            ULbl2.XOTextAdjuster = False
             ULbl2.XOTextBorder = False
             ' 
             ' ULbl3
@@ -253,6 +255,7 @@
             ULbl3.TabIndex = 1006
             ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
             ULbl3.XOText = "Dept. Name"
+            ULbl3.XOTextAdjuster = False
             ULbl3.XOTextBorder = False
             ' 
             ' ULbl4
@@ -265,6 +268,7 @@
             ULbl4.TabIndex = 1007
             ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
             ULbl4.XOText = "Description"
+            ULbl4.XOTextAdjuster = False
             ULbl4.XOTextBorder = False
             ' 
             ' ChkAddNew

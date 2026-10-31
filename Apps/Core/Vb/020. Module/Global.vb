@@ -298,50 +298,58 @@
         ''' <param name="isdialog">Indicates whether the form should be displayed as a dialog.</param>
         ''' <param name="parentframe">The parent frame for the form, if any.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        <System.Diagnostics.CodeAnalysis.SuppressMessage("Maintainability", "S3776", Justification:="Function name already standard")>
         Public Sub Display(formname As CMCv.UI.Canvas.FRMstandardFooter,
                            Optional parentframe As System.Windows.Forms.Form = Nothing,
                            Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing)
             Try
-                formname.Text = dataproperties.IngridWindowName.Trim
-                formname.SLFNamaForm.Text = dataproperties.IngridFormTitle.Trim
+                If formname Is Nothing Then
+                    Throw New ArgumentNullException(NameOf(formname), "Form name cannot be null.")
+                End If
+
+                formname.Text = If(dataproperties.IngridWindowName, String.Empty).Trim
+                formname.SLFNamaForm.Text = If(dataproperties.IngridFormTitle, String.Empty).Trim
+                formname.SLFSubNamaForm.Text = If(dataproperties.IngridFormSubtitle, String.Empty).Trim
+
                 If dataproperties.IngridFormImage IsNot Nothing Then
                     formname.SLFLogo.Image = dataproperties.IngridFormImage
                 End If
-                formname.SLFSubNamaForm.Text = dataproperties.IngridFormSubtitle.Trim
-                If Not (dataproperties.IngridFormIsDialog) Then
-                    If (formname.IsHandleCreated) Then
-                        formname.Focus()
-                    Else
-                        If parentframe IsNot Nothing Then
-                            formname.Visible = False
-                            formname.WindowState = FormWindowState.Maximized
 
-                            ' Activate MDI if device is desktop
-                            If varDevice = CMCv.Device.DeviceFormFactor.Desktop Then
-                                formname.MdiParent = parentframe
-                                formname.Visible = True
-                                formname.Show()
-                            Else
-                                formname.Visible = True
-                                formname.ShowDialog()
-                            End If
-                        Else
-                            If varDevice = CMCv.Device.DeviceFormFactor.Desktop Then
-                                formname.Show()
-                            Else
-                                formname.ShowDialog()
-                            End If
-                        End If
-                    End If
-                    dataproperties.IngridFormImage = Nothing
-                    dataproperties.IngridFormIsDialog = False
-                    dataproperties.IngridFormSubtitle = Nothing
-                    dataproperties.IngridFormTitle = Nothing
-                    dataproperties.IngridWindowName = Nothing
-                Else
+                If dataproperties.IngridFormIsDialog Then
                     formname.ShowDialog()
                     formname.Dispose()
+                    Return
                 End If
+
+                If formname.ishandlecreated Then
+                    formname.Focus()
+                ElseIf parentframe IsNot Nothing Then
+                    formname.Visible = False
+                    formname.WindowState = FormWindowState.Maximized
+                    ' Activate MDI if device is desktop
+                    If varDevice = CMCv.Device.DeviceFormFactor.Desktop Then
+                        formname.MdiParent = parentframe
+                        formname.Visible = True
+                        formname.Show()
+                    Else
+                        formname.Visible = True
+                        formname.ShowDialog()
+                    End If
+                Else
+                    If varDevice = CMCv.Device.DeviceFormFactor.Desktop Then
+                        formname.Show()
+                    Else
+                        formname.ShowDialog()
+                    End If
+                End If
+
+                With dataproperties
+                    .IngridFormImage = Nothing
+                    .IngridFormIsDialog = False
+                    .IngridFormSubtitle = Nothing
+                    .IngridFormTitle = Nothing
+                    .IngridWindowName = Nothing
+                End With
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
@@ -382,17 +390,21 @@
         End Function
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Function GetCamera(cameramode As LibApp.Ingrid.Global.CameraMode, dataproperties As LibApp.Ingrid.Global.Properties) As System.Drawing.Image
-            FRMcam = New CMCv.UI.Canvas.FRMcamera(cameramode, dataproperties)
-            varDataProperties.IngridWindowName = "Camera"
-            varDataProperties.IngridFormTitle = "Camera"
-            varDataProperties.IngridFormSubtitle = "Camera"
-            varDataProperties.IngridFormIsDialog = True
-            varDataProperties.IngridFormImage = Nothing
-            Display(FRMcam, Nothing, varDataProperties)
-            'Dim result As System.Windows.Forms.DialogResult = FRMcam.ShowDialog()
-            'Dim img As System.Drawing.Image = FRMcam.PbxLive.Image
-            FRMcam.Dispose()
-        End Function
+        Public Sub GetCamera(cameramode As LibApp.Ingrid.Global.CameraMode, dataproperties As LibApp.Ingrid.Global.Properties) 'As System.Drawing.Image
+            Try
+                FRMcam = New CMCv.UI.Canvas.FRMcamera(cameramode, dataproperties)
+                varDataProperties.IngridWindowName = "Camera"
+                varDataProperties.IngridFormTitle = "Camera"
+                varDataProperties.IngridFormSubtitle = "Camera"
+                varDataProperties.IngridFormIsDialog = True
+                varDataProperties.IngridFormImage = Nothing
+                Display(FRMcam, Nothing, varDataProperties)
+                'Dim result As System.Windows.Forms.DialogResult = FRMcam.ShowDialog()
+                'Dim img As System.Drawing.Image = FRMcam.PbxLive.Image
+                FRMcam.Dispose()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Sub
     End Module
 End Namespace
