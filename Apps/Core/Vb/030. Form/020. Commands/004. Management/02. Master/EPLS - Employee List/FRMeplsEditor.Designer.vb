@@ -353,7 +353,7 @@
             ' 
             DgnModulesRoles.AllowUserToAddRows = False
             DgnModulesRoles.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(253), CByte(227), CByte(167))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(236), CByte(216), CByte(159))
             DgnModulesRoles.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnModulesRoles.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnModulesRoles.BorderStyle = BorderStyle.None

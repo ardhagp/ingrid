@@ -24,31 +24,37 @@
       <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/background-all-platforms/waving-red-band.png</Value>
     </Setting>
     <Setting Name="URL_Logo_EPLS" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-image-all-platforms/svg-EPLS.svg</Value>
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/module-logo-all-platforms/svg-EPLS.svg</Value>
     </Setting>
     <Setting Name="URL_Logo_LOGIN" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-image-all-platforms/svg-LOGIN.svg</Value>
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/module-logo-all-platforms/svg-LOGIN.svg</Value>
     </Setting>
     <Setting Name="URL_Logo_CCIN" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-image-all-platforms/svg-CCIN.svg</Value>
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/module-logo-all-platforms/svg-CCIN.svg</Value>
     </Setting>
     <Setting Name="URL_Logo_CDIN" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-image-all-platforms/svg-CDIN.svg</Value>
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/module-logo-all-platforms/svg-CDIN.svg</Value>
     </Setting>
     <Setting Name="URL_Menu_UPDATE" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-image-all-platforms/svg-UPDATE.svg</Value>
     </Setting>
     <Setting Name="URL_Logo_EDIT" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-image-all-platforms/svg-EDIT.svg</Value>
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/module-logo-all-platforms/svg-EDIT.svg</Value>
     </Setting>
     <Setting Name="URL_Image_OPENCOMMAND" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-image-all-platforms/svg-OPENCOMMAND.svg</Value>
     </Setting>
     <Setting Name="URL_Logo_FIND" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-image-all-platforms/svg-FIND.svg</Value>
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/module-logo-all-platforms/svg-FIND.svg</Value>
     </Setting>
     <Setting Name="URL_Logo_POST" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-image-all-platforms/svg-POST.svg</Value>
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/module-logo-all-platforms/svg-POST.svg</Value>
+    </Setting>
+    <Setting Name="URL_Logo_PLNT" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/module-logo-all-platforms/svg-PLNT.svg</Value>
+    </Setting>
+    <Setting Name="URL_Logo_SLOC" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/module-logo-all-platforms/svg-SLOC.svg</Value>
     </Setting>
   </Settings>
 </SettingsFile>

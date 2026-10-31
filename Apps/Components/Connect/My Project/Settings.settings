@@ -6,10 +6,10 @@
       <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com</Value>
     </Setting>
     <Setting Name="URL_Logo_CONN" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-image-all-platforms/svg-CONN.svg</Value>
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/module-logo-all-platforms/svg-CONN.svg</Value>
     </Setting>
     <Setting Name="URL_Logo_EDIT" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-image-all-platforms/svg-EDIT.svg</Value>
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/module-logo-all-platforms/svg-EDIT.svg</Value>
     </Setting>
   </Settings>
 </SettingsFile>

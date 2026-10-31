@@ -1,6 +1,4 @@
-﻿Imports Org.BouncyCastle.Pqc.Crypto.Cmce
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     ''' <summary>
     ''' This is the main form for the Employee List module. It provides functionalities to view, add, edit, delete, and refresh employee records. The form interacts with the underlying data properties and handles user access permissions for various operations. It also includes a search feature to filter employee records based on user input.
     ''' </summary>
@@ -19,6 +17,11 @@ Namespace UI.Canvas
         ' ----------------------------------------------------------
         ' Form Events Handlers
         ' ----------------------------------------------------------
+        ''' <summary>
+        ''' This event handler is triggered when the FRMepls form is loaded. It performs several initialization tasks, including loading the logo image from a specified URL, setting the active module to UserParameters, loading the menu strip, displaying menu data, applying color settings to the DataGridView, and retrieving initial data to populate the DataGridView. It also clears any existing search text in the TxtFind control and adjusts the row height of the DataGridView for better display.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMepls_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_EPLS, XOLogo,, 512, 512, True, "Module")
@@ -38,6 +41,51 @@ Namespace UI.Canvas
             TxtFind.ClearSearch()
             CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnEPLS)
         End Sub
+
+        ''' <summary>
+        ''' This event handler is triggered when the form is activated. It sets the active module identifier to ensure that the application recognizes the current context as the Employee List module. This is important for managing user permissions and interactions within the application.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMepls_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+            ' Set active module to UserParameters
+            SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
+        End Sub
+
+        ''' <summary>
+        ''' This event handler is triggered when the form gains focus. It maximizes the window state of the form, ensuring that the Employee List module is displayed in full screen for better visibility and user experience.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMepls_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus
+            Me.WindowState = FormWindowState.Maximized
+        End Sub
+
+        ''' <summary>
+        ''' This event handler is triggered when the form is closed. It can be used to perform any necessary cleanup or resource disposal related to the Employee List module. Currently, it does not contain any specific logic.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMepls_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+            Com_mms_Menu.Dispose()
+        End Sub
+
+
+        ' ----------------------------------------------------------
+        ' Other or Extended Form Events Handlers
+        ' ----------------------------------------------------------
+        ''' <summary>
+        ''' This event handler is triggered when a record is saved in the FRMeplsEditor form. It calls the GetData method to refresh the employee data displayed in the DataGridView, ensuring that any changes made in the editor are reflected in the main form.
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMeplsEditor_RecordSaved() Handles Frm_epls_Editor.EventRecordSaved
+            ' Refresh the data in the DataGridView after a record is saved in the editor form
+            Call GetData()
+        End Sub
+
 
         ' ---------------------------------------------------------
         ' Functions and Subroutines
@@ -68,6 +116,10 @@ Namespace UI.Canvas
             End With
         End Sub
 
+
+        ' ---------------------------------------------------------
+        ' Components Handlers
+        ' ---------------------------------------------------------
         ''' <summary>
         ''' This event handler is triggered when the "Add New" option is selected from the menu. It checks if the user has the necessary permissions to add a new employee record. If authorized, it initializes a new instance of the FRMeplsEditor form for adding employee data and displays it to the user. If not authorized, it shows an error message indicating that the user does not have permission to perform this action.
         ''' </summary>
@@ -102,6 +154,7 @@ Namespace UI.Canvas
                     Return
                 End If
 
+                ' Get the ID of the currently selected employee in the DataGridView
                 Call GetRowID()
 
                 If varDataProperties.EmployeeIsNew Then
@@ -127,10 +180,11 @@ Namespace UI.Canvas
             With varDataProperties
                 .SystemTypeOfAccess = LibApp.Ingrid.Global.TypeOfAccess.Delete
                 If Not (varUserAccess.User(varDataProperties)) Then
-                    Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, "You are not authorized to : Delete record", LibApp.Ingrid.Global.PopupType.NotAuthorized, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                     Return
                 End If
 
+                ' Get the ID of the currently selected employee in the DataGridView
                 Call GetRowID()
 
                 If .EmployeeIsNew Then
@@ -150,7 +204,7 @@ Namespace UI.Canvas
                                 "Company : " & .Cells("company_name").Value.ToString & Environment.NewLine
                                 )
                         varMessage.AppendLine(varLine)
-                        If Decision(My.Application.Info.AssemblyName.ToUpper, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDepls.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
+                        If Decision(My.Application.Info.AssemblyName.ToUpper, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDepls.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
                             Call GetData(True)
                             UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
                         Else
@@ -167,6 +221,8 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataRefresh() Handles Com_mms_Menu.EventDataRefresh
             TxtFind.Clear()
+
+            ' Refresh the data in the DataGridView to show the latest employee records
             Call GetData(True)
         End Sub
 
@@ -190,31 +246,18 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TxtFind_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtFind.KeyDown
             If e.KeyCode = Keys.Enter Then
+                ' Refresh the data in the DataGridView based on the search query
                 Call GetData()
             End If
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMeplsEditor_RecordSaved() Handles Frm_epls_Editor.EventRecordSaved
-            Call GetData()
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
             TxtFind.Clear()
+
+            ' Refresh the data in the DataGridView to show all employee records after clearing the search query
             Call GetData(True)
             TxtFind.ClearSearch()
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMepls_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus
-            Me.WindowState = FormWindowState.Maximized
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMepls_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-            ' Set active module to UserParameters
-            SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
         End Sub
 
     End Class
