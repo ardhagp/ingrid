@@ -38,13 +38,16 @@
             position_name = New DataGridViewTextBoxColumn()
             BtnOk = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
+            Bnav = New CMCv.UI.Control.Bnav(components)
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
             SLFPanel.SuspendLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             Pnl1.SuspendLayout()
             CType(DgnAddinPosition, ComponentModel.ISupportInitialize).BeginInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' PnlBottomButton
@@ -63,12 +66,14 @@
             ' 
             ' SLFPanel
             ' 
+            SLFPanel.Controls.Add(Bnav)
             SLFPanel.Controls.Add(DgnAddinPosition)
             SLFPanel.Controls.Add(Pnl1)
             SLFPanel.Size = New Size(1095, 789)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(Pnl1, 0)
             SLFPanel.Controls.SetChildIndex(DgnAddinPosition, 0)
+            SLFPanel.Controls.SetChildIndex(Bnav, 0)
             ' 
             ' Pnl1
             ' 
@@ -151,7 +156,7 @@
             ' 
             DgnAddinPosition.AllowUserToAddRows = False
             DgnAddinPosition.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(248), CByte(224), CByte(164))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(193), CByte(246), CByte(161))
             DgnAddinPosition.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnAddinPosition.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnAddinPosition.BorderStyle = BorderStyle.None
@@ -310,6 +315,20 @@
             BtnCancel.XOValidateAllInput = False
             BtnCancel.XOValidateAllInputTag = Nothing
             ' 
+            ' Bnav
+            ' 
+            Bnav.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            Bnav.Dock = DockStyle.Bottom
+            Bnav.Font = New Font("Verdana", 8F)
+            Bnav.ImageScalingSize = New Size(24, 24)
+            Bnav.Location = New Point(0, 660)
+            Bnav.Name = "Bnav"
+            Bnav.Size = New Size(1095, 33)
+            Bnav.TabIndex = 1006
+            Bnav.Text = "Bnav1"
+            Bnav.XOIsShowAddNewButton = False
+            Bnav.XOIsShowDeleteButton = False
+            ' 
             ' FRMeplsPosition
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
@@ -321,10 +340,13 @@
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
+            SLFPanel.PerformLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             Pnl1.ResumeLayout(False)
             Pnl1.PerformLayout()
             CType(DgnAddinPosition, ComponentModel.ISupportInitialize).EndInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
 
@@ -343,5 +365,6 @@
         Friend WithEvents department_name As DataGridViewTextBoxColumn
         Friend WithEvents position_code As DataGridViewTextBoxColumn
         Friend WithEvents position_name As DataGridViewTextBoxColumn
+        Friend WithEvents Bnav As CMCv.UI.Control.Bnav
     End Class
 End Namespace

@@ -97,7 +97,7 @@
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnCCIN)
             varDataProperties.CompanyIsForceRefresh = forcerefresh
-            CMDccin.View.DisplayData(varDataProperties, DgnCCIN, SLFStatus, TxtFind)
+            CMDccin.View.DisplayData(varDataProperties, DgnCCIN, SLFStatus, TxtFind, Bnav)
         End Sub
 
         ''' <summary>

@@ -355,21 +355,32 @@ Namespace Database.Engine
                             End Using
                         End Using
 
-                        If Not (dbr.DataGrid Is Nothing) Then
-                            dbr.DataGrid.DataSource = dbr.BindingSource
-                        End If
+                        With dbr
+                            If .DataGrid IsNot Nothing Then
+                                .DataGrid.DataSource = .BindingSource
+                                Debug.WriteLine("DataGrid bound to BindingSource with " & .DataGrid.RowCount & " rows.")
+                            End If
 
-                        If Not (dbr.Dropdown Is Nothing) Then
-                            dbr.Dropdown.DataSource = dbr.BindingSource
-                        End If
+                            If .Dropdown IsNot Nothing Then
+                                .Dropdown.DataSource = .BindingSource
+                                Debug.WriteLine("Dropdown bound to BindingSource with " & .Dropdown.Items.Count & " items.")
+                            End If
 
-                        If Not (dbr.StatusBar Is Nothing) AndAlso (dbr.StatusBar.Items.Count <> 0) Then
-                            dbr.StatusBar.Items(0).Text = dbr.BindingSource.Count & " Row(s)"
-                        End If
+                            If .RecordNavigator IsNot Nothing Then
+                                .RecordNavigator.BindingSource = .BindingSource
+                                Debug.WriteLine("RecordNavigator bound to BindingSource with " & .RecordNavigator.BindingSource.Count & " records.")
+                                .RecordNavigator.InitializeNavigator()
+                            End If
 
-                        If Not (dbr.Chart Is Nothing) Then
-                            dbr.Chart.DataSource = dbr.BindingSource
-                        End If
+                            If (.StatusBar IsNot Nothing) AndAlso (.StatusBar.Items.Count <> 0) Then
+                                .StatusBar.Items(0).Text = .BindingSource.Count & " Row(s)"
+                                Debug.WriteLine("StatusBar updated with " & .StatusBar.Items.Count & " rows.")
+                            End If
+
+                            If .Chart IsNot Nothing Then
+                                .Chart.DataSource = .BindingSource
+                            End If
+                        End With
                     End Using
                 End Using
             Catch ex As MySqlException

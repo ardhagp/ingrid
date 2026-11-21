@@ -1,4 +1,6 @@
-﻿Namespace UI
+﻿Imports System.ComponentModel
+
+Namespace UI
     Public Class FRMapplauncher
         Inherits System.Windows.Forms.Form
 
@@ -62,14 +64,18 @@
         End Sub
 
         Private Async Sub BtnLaunch_Click(sender As Object, e As EventArgs) Handles BtnLaunch.Click
+            Await LaunchApp()
+        End Sub
+
+        Private Async Function LaunchApp() As Task
             If CboApplication.Text = varItemLocalDB Then
-                If Decision("Confirmation", $"Do you want to download and replace current configuration file with new configuration file format?", LibApp.Ingrid.Global.PopupType.Confirmation, "Update your existing configuration file format", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+                If Decision("Confirmation", $"Do you want to download and replace current configuration file with new configuration file format?", LibApp.Ingrid.Global.PopupType.Confirmation, "Update your existing configuration file format", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
                     Await DownloadCatalogAsync()
                 End If
             Else
                 Call OpenApp(CboApplication.SelectedIndex)
             End If
-        End Sub
+        End Function
 
         Private Sub Frmmainframe6_IngridFrameClose() Handles Frm_mainframe6.EventMainframeClose
             Close()
@@ -181,7 +187,7 @@
                     Dim headResponse = Await client.GetAsync(url, System.Net.Http.HttpCompletionOption.ResponseHeadersRead) '(headRequest)
 
                     If Not headResponse.IsSuccessStatusCode Then
-                        Decision("Error", $"Failed to download catalog.db. The file does not exist at the specified URL: {url}", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                        Decision("Error", $"Failed to download catalog.db. The file does not exist at the specified URL: {url}", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                         Return
                     End If
 
@@ -220,5 +226,12 @@
 
             Return IO.File.Exists(targetPath)
         End Function
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Async Sub CboApplication_KeyPress(sender As Object, e As KeyPressEventArgs) Handles CboApplication.KeyPress
+            If e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Enter) Then
+                Await LaunchApp()
+            End If
+        End Sub
     End Class
 End Namespace

@@ -29,8 +29,13 @@
             End Try
         End Sub
 
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Blank_FormClosed(sender As Object, e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
-            Me.Dispose()
+            Try
+                Me.Dispose()
+            Catch ex As Exception
+                Component.Properties.varBetterstack.SendFailure(Bridge.Getkey.Betterstack_heartbeats)
+            End Try
         End Sub
     End Class
 End Namespace

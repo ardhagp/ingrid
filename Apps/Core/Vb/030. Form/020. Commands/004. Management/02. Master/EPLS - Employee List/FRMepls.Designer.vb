@@ -41,6 +41,7 @@
             employmenttype_name = New DataGridViewTextBoxColumn()
             employee_gender = New DataGridViewTextBoxColumn()
             employee_isactive = New DataGridViewTextBoxColumn()
+            Bnav = New CMCv.UI.Control.Bnav(components)
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -48,6 +49,7 @@
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(DgnEPLS, ComponentModel.ISupportInitialize).BeginInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' BtnClear
@@ -66,16 +68,18 @@
             ' 
             ' SLFPanel
             ' 
+            SLFPanel.Controls.Add(Bnav)
             SLFPanel.Controls.Add(DgnEPLS)
             SLFPanel.Size = New Size(1307, 946)
             SLFPanel.Controls.SetChildIndex(PnlFind, 0)
             SLFPanel.Controls.SetChildIndex(DgnEPLS, 0)
+            SLFPanel.Controls.SetChildIndex(Bnav, 0)
             ' 
             ' DgnEPLS
             ' 
             DgnEPLS.AllowUserToAddRows = False
             DgnEPLS.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(212), CByte(249), CByte(182))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(199), CByte(193), CByte(152))
             DgnEPLS.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnEPLS.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnEPLS.BorderStyle = BorderStyle.None
@@ -155,7 +159,7 @@
             company_name.Name = "company_name"
             company_name.ReadOnly = True
             company_name.Visible = False
-            company_name.Width = 93
+            company_name.Width = 150
             ' 
             ' department_code
             ' 
@@ -176,7 +180,7 @@
             department_name.Name = "department_name"
             department_name.ReadOnly = True
             department_name.Visible = False
-            department_name.Width = 88
+            department_name.Width = 150
             ' 
             ' position_code
             ' 
@@ -197,7 +201,7 @@
             position_name.Name = "position_name"
             position_name.ReadOnly = True
             position_name.Visible = False
-            position_name.Width = 124
+            position_name.Width = 150
             ' 
             ' employee_number
             ' 
@@ -261,6 +265,20 @@
             employee_isactive.ReadOnly = True
             employee_isactive.Resizable = DataGridViewTriState.True
             ' 
+            ' Bnav
+            ' 
+            Bnav.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            Bnav.Dock = DockStyle.Bottom
+            Bnav.Font = New Font("Verdana", 8F)
+            Bnav.ImageScalingSize = New Size(24, 24)
+            Bnav.Location = New Point(0, 913)
+            Bnav.Name = "Bnav"
+            Bnav.Size = New Size(1307, 33)
+            Bnav.TabIndex = 802
+            Bnav.Text = "Bnav1"
+            Bnav.XOIsShowAddNewButton = False
+            Bnav.XOIsShowDeleteButton = False
+            ' 
             ' FRMepls
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
@@ -279,9 +297,11 @@
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
+            SLFPanel.PerformLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(DgnEPLS, ComponentModel.ISupportInitialize).EndInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub
@@ -300,5 +320,6 @@
         Friend WithEvents employmenttype_name As DataGridViewTextBoxColumn
         Friend WithEvents employee_gender As DataGridViewTextBoxColumn
         Friend WithEvents employee_isactive As DataGridViewTextBoxColumn
+        Friend WithEvents Bnav As CMCv.UI.Control.Bnav
     End Class
 End Namespace

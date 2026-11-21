@@ -31,19 +31,20 @@
     ''' </summary>
     Public Enum PopupType
         [Alert]
-        [Error]
-        [Information]
-        [WrongInstructionSet]
-        [ConfirmationBeforeReset]
         [Confirmation]
+        [ConfirmationBeforeReset]
         [Delete]
-        [Question]
-        [NotAuthorized]
-        [LimitExceeded]
-        [ModuleUnderMaintenance]
-        [Logout]
-        [NoFileSelected]
+        [Error]
         [FileNotFound]
+        [Information]
+        [LimitExceeded]
+        [Logout]
+        [ModuleUnderMaintenance]
+        [NoFileSelected]
+        [NotAuthorized]
+        [Question]
+        [UndoChanges]
+        [WrongInstructionSet]
     End Enum
 
     Public Enum CameraMode

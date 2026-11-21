@@ -31,6 +31,7 @@
             department_code = New DataGridViewTextBoxColumn()
             department_name = New DataGridViewTextBoxColumn()
             department_description = New DataGridViewTextBoxColumn()
+            Bnav = New CMCv.UI.Control.Bnav(components)
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -38,13 +39,14 @@
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(DgnCDIN, ComponentModel.ISupportInitialize).BeginInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' BtnClear
             ' 
-            BtnClear.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
+            BtnClear.FlatAppearance.BorderColor = Color.FromArgb(195, 0, 0)
             BtnClear.FlatAppearance.BorderSize = 2
-            BtnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
+            BtnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 20, 20)
             ' 
             ' TxtFind
             ' 
@@ -52,24 +54,26 @@
             ' 
             ' SLFPanel
             ' 
+            SLFPanel.Controls.Add(Bnav)
             SLFPanel.Controls.Add(DgnCDIN)
             SLFPanel.Size = New Size(1307, 946)
             SLFPanel.Controls.SetChildIndex(PnlFind, 0)
             SLFPanel.Controls.SetChildIndex(DgnCDIN, 0)
+            SLFPanel.Controls.SetChildIndex(Bnav, 0)
             ' 
             ' DgnCDIN
             ' 
             DgnCDIN.AllowUserToAddRows = False
             DgnCDIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(236), CByte(226), CByte(152))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(238, 228, 159)
             DgnCDIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-            DgnCDIN.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            DgnCDIN.BackgroundColor = Color.FromArgb(11, 28, 45)
             DgnCDIN.BorderStyle = BorderStyle.None
             DgnCDIN.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnCDIN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F)
             DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
             DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -80,7 +84,7 @@
             DgnCDIN.Columns.AddRange(New DataGridViewColumn() {department_id, company_code, company_name, department_code, department_name, department_description})
             DgnCDIN.Dock = DockStyle.Fill
             DgnCDIN.EnableHeadersVisualStyles = False
-            DgnCDIN.Font = New Font("Verdana", 8F)
+            DgnCDIN.Font = New Font("Verdana", 8.0F)
             DgnCDIN.Location = New Point(0, 88)
             DgnCDIN.Margin = New Padding(6, 5, 6, 5)
             DgnCDIN.Name = "DgnCDIN"
@@ -88,7 +92,7 @@
             DgnCDIN.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle3.BackColor = Color.YellowGreen
-            DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F)
             DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
             DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -131,7 +135,7 @@
             company_name.Name = "company_name"
             company_name.ReadOnly = True
             company_name.Visible = False
-            company_name.Width = 160
+            company_name.Width = 150
             ' 
             ' department_code
             ' 
@@ -163,9 +167,31 @@
             department_description.ReadOnly = True
             department_description.SortMode = DataGridViewColumnSortMode.Programmatic
             ' 
+            ' Bnav
+            ' 
+            Bnav.AddNewItem = Nothing
+            Bnav.BackColor = Color.FromArgb(11, 28, 45)
+            Bnav.CountItem = Nothing
+            Bnav.DeleteItem = Nothing
+            Bnav.Dock = DockStyle.Bottom
+            Bnav.Font = New Font("Verdana", 8.0F)
+            Bnav.GripStyle = ToolStripGripStyle.Hidden
+            Bnav.ImageScalingSize = New Size(24, 24)
+            Bnav.Location = New Point(0, 913)
+            Bnav.MoveFirstItem = Nothing
+            Bnav.MoveLastItem = Nothing
+            Bnav.MoveNextItem = Nothing
+            Bnav.MovePreviousItem = Nothing
+            Bnav.Name = "Bnav"
+            Bnav.PositionItem = Nothing
+            Bnav.Size = New Size(1307, 33)
+            Bnav.Stretch = True
+            Bnav.TabIndex = 802
+            Bnav.Text = "Bnav1"
+            ' 
             ' FRMcdin
             ' 
-            AutoScaleDimensions = New SizeF(10F, 25F)
+            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
             ClientSize = New Size(1307, 1078)
             Margin = New Padding(10, 5, 10, 5)
             MdiChildrenMinimizedAnchorBottom = False
@@ -180,9 +206,11 @@
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
+            SLFPanel.PerformLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(DgnCDIN, ComponentModel.ISupportInitialize).EndInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub
@@ -193,6 +221,7 @@
         Friend WithEvents department_code As DataGridViewTextBoxColumn
         Friend WithEvents department_name As DataGridViewTextBoxColumn
         Friend WithEvents department_description As DataGridViewTextBoxColumn
+        Friend WithEvents Bnav As CMCv.UI.Control.Bnav
 
     End Class
 End Namespace

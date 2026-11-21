@@ -4,7 +4,7 @@
         Private Shared ReadOnly consTableName As String = "CheckRelation"
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt, find As CMCv.UI.Control.Txt)
+        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt, find As CMCv.UI.Control.Txt, Optional recordnavigator As CMCv.UI.Control.Bnav = Nothing)
             Dim varWhere As String = "where "
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -49,6 +49,9 @@
 
                 varDatabaseRequestMysql(0).DataGrid = datagrid
                 varDatabaseRequestMysql(0).StatusBar = statusbar
+                If recordnavigator IsNot Nothing Then
+                    varDatabaseRequestMysql(0).RecordNavigator = recordnavigator
+                End If
                 varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TDepartment", dataproperties.AllParameters)
             End If
         End Sub
@@ -69,7 +72,7 @@
 
                 If datasetname.Tables(consTableName).Rows.Count > 0 Then
                     If Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation1")) > 0 Then
-                        Decision(My.Application.Info.AssemblyName.ToUpper, $"The department has {Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation1"))} related record(s) in [POST] Position module.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                        Decision(My.Application.Info.AssemblyName.ToUpper, $"The department has {Convert.ToInt32(datasetname.Tables(consTableName).Rows(0).Item("relation1"))} related record(s) in [POST] Position module.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                         varHasChild = True
                     Else
                         varHasChild = False

@@ -1,7 +1,10 @@
-﻿Namespace UI.Canvas
+﻿Imports System.Runtime.CompilerServices.RuntimeHelpers
+
+Namespace UI.Canvas
     Public Class FRMcdinEditor
 
         Public Event EventRecordSaved()
+        Private WithEvents ComponentMainframeMenu As New CMCv.UI.View.MenuStrip
 
         ' This Module Identifier
         Private varThisModuleId As Long = 0
@@ -35,6 +38,9 @@
         Private Sub FRMcdinEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_EDIT, XOLogo,, 512, 512, True, "Module")
 
+            ComponentMainframeMenu.LoadIn(Me, True)
+            ComponentMainframeMenu.ShowMenuFile(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+
             Call FillCompany(CboCompany)
             If varDataProperties.DepartmentIsNew Then
 
@@ -43,22 +49,45 @@
             Else
                 ChkAddNew.Visible = False
                 ChkAddNew.Checked = False
-                CMDcdin.Editor.GetDepartmentProperties(varDataProperties, varDatasetIngrid)
-                If varDatasetIngrid.Tables(tDepartment.TableName).Rows.Count > 0 Then
-                    With varDatasetIngrid.Tables(tDepartment.TableName).Rows(0)
-                        CboCompany.SelectedValue = .Item(tDepartment.C_DepartmentCompany).ToString
-                        TxtDeptCode.Text = .Item(tDepartment.C_DepartmentCode).ToString
-                        TxtDeptName.Text = .Item(tDepartment.C_DepartmentName).ToString
-                        TxtDescription.Text = .Item(tDepartment.C_DepartmentDescription).ToString
-                    End With
+                Call LoadData()
+            End If
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub LoadData()
+            CMDcdin.Editor.GetDepartmentProperties(varDataProperties, varDatasetIngrid)
+            If varDatasetIngrid.Tables(tDepartment.TableName).Rows.Count > 0 Then
+                With varDatasetIngrid.Tables(tDepartment.TableName).Rows(0)
+                    CboCompany.SelectedValue = .Item(tDepartment.C_DepartmentCompany).ToString
+                    TxtDeptCode.Text = .Item(tDepartment.C_DepartmentCode).ToString
+                    TxtDeptName.Text = .Item(tDepartment.C_DepartmentName).ToString
+                    TxtDescription.Text = .Item(tDepartment.C_DepartmentDescription).ToString
+                End With
+            End If
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub ComponentMainframeMenu_EventFileSave() Handles ComponentMainframeMenu.EventFileSave
+            Call Save()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub ComponentMainframeMenu_EventFileUndo() Handles ComponentMainframeMenu.EventFileUndoAll
+            If Decision(My.Application.Info.AssemblyName, "Do you want to undo all changes?", LibApp.Ingrid.Global.PopupType.UndoChanges, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
+                If (varDataProperties.DepartmentIsNew) Then
+                    TxtDeptCode.Clear()
+                    TxtDeptName.Clear()
+                    TxtDescription.Clear()
+                Else
+                    Call LoadData()
                 End If
             End If
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+        Private Sub Save()
             If CheckInvalidInput() Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable to save your record." & Environment.NewLine & "Please verify that both the Department Code and Department Name fields have been entered correctly.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Unable to save your record." & Environment.NewLine & "Please verify that both the Department Code and Department Name fields have been entered correctly.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -70,13 +99,13 @@
             End With
 
             If (CboCompany.Items.Count = 0) AndAlso (varDataProperties.AllParameters("@DepartmentCode").ToString = String.Empty) OrElse (varDataProperties.AllParameters("@DepartmentName").ToString = String.Empty) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Ensure that the Company Code is selected and that both the Department Code and Department Name are properly filled in.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Ensure that the Company Code is selected and that both the Department Code and Department Name are properly filled in.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                 Return
             ElseIf (varDataProperties.DepartmentIsNew) AndAlso (CMDcdin.Editor.IsDuplicate(varDataProperties)) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Department Code is already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Department Code is already registered.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                 Return
             ElseIf (Not (varDataProperties.DepartmentIsNew) AndAlso (CMDcdin.Editor.IsDuplicate(varDataProperties))) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Department Code cannot be used because it is already assigned to another company.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Department Code cannot be used because it is already assigned to another company.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -97,6 +126,11 @@
             Else
                 Me.Close()
             End If
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+            Call Save()
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>

@@ -1,9 +1,12 @@
-﻿Namespace UI.Canvas
+﻿Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
+
+Namespace UI.Canvas
     Public Class FRMeplsEditor
         ' ----------------------------------------------------------
         '  Variables
         ' ----------------------------------------------------------
         Public Event EventRecordSaved()
+        Private WithEvents ComponentMainframeMenu As New CMCv.UI.View.MenuStrip
 
         Private WithEvents Frm_epls_AddinPosition As New UI.Canvas.FRMeplsPosition
         Private WithEvents Frm_epls_AddinEmploymentType As New UI.Canvas.FRMeplsEmploymentType
@@ -28,6 +31,9 @@
         Private Sub FRMeplsEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_EDIT, XOLogo,, 512, 512, True, "Module")
 
+            ComponentMainframeMenu.LoadIn(Me, True)
+            ComponentMainframeMenu.ShowMenuFile(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+
             ' Set active module to UserParameters
             CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnModulesRoles)
             SetValue(varDataProperties.AllParameters, tModule.P_ModuleCode, varThisModuleCode)
@@ -42,6 +48,7 @@
                 ChkAddNew.Visible = True
                 ChkAddNew.Enabled = True
                 CboGender.SelectedIndex = 0
+                DtpBirthDate.Value = Date.Today.AddYears(-17)
                 BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
                 BtnRemovePhoto.Enabled = False
 
@@ -66,49 +73,53 @@
             Else
                 ChkAddNew.Visible = False
                 ChkAddNew.Checked = False
-
-                CMDepls.Editor.GetEmployeeProperties(varDataProperties, varDatasetIngrid)
-
-                With varDatasetIngrid.Tables(dstTableName.EplsEditor).Rows(0)
-                    'Displaying Employee Detail
-                    SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeId, CLng(.Item(tEmployee.C_EmployeeId)))
-                    TxtPersonalID.Text = .Item(tEmployee.C_EmployeePersonalIdNumber).ToString
-                    TxtFullName.Text = .Item(tEmployee.C_EmployeeFullName).ToString
-                    CboGender.SelectedItem = .Item(tEmployee.C_EmployeeGender).ToString
-                    DtpBirthDate.Value = If(IsDBNull(.Item(tEmployee.C_EmployeeBirthDate)) OrElse .Item(tEmployee.C_EmployeeBirthDate) Is Nothing, Date.Today, CDate(.Item(tEmployee.C_EmployeeBirthDate)))
-                    TxtBirthPlace.Text = .Item(tEmployee.C_EmployeeBirthPlace).ToString
-                    TxtAddress.Text = .Item(tEmployee.C_EmployeeAddress).ToString
-
-                    'Displaying Employment Detail
-                    TxtCompany.Text = .Item(tCompany.C_CompanyName).ToString
-                    TxTDepartment.Text = .Item(tDepartment.C_DepartmentName).ToString
-                    TxtPosition.Text = .Item(tPosition.C_PositionName).ToString
-                    SetValue(varDataProperties.AllParameters, tPosition.P_PositionId, CLng(.Item(tPosition.C_PositionId)))
-                    SetValue(varDataProperties.AllParameters, tEmploymentType.P_EmploymentTypeId, IIf(.Item(tEmployee.C_EmployeeEmploymentType) Is Nothing OrElse .Item(tEmployee.C_EmployeeEmploymentType).ToString = String.Empty OrElse .Item(tEmployee.C_EmployeeEmploymentType).ToString = "", DBNull.Value, .Item(tEmployee.C_EmployeeEmploymentType)))
-                    TxtEmploymentType.Text = .Item(tEmploymentType.C_EmploymentTypeName).ToString
-                    TxtEmployeeNumber.Text = .Item(tEmployee.C_EmployeeNumber).ToString
-                    TxtEmployeeNickname.Text = .Item(tEmployee.C_EmployeeNickname).ToString
-                    ChkActiveEmployee.Checked = CBool(.Item(tEmployee.C_EmployeeIsActive))
-                    SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeToken, .Item(tEmployee.C_EmployeeToken).ToString)
-                    TxtUsername.Text = .Item(tUser.C_UserUsername).ToString
-                    TxtCompanyEmail.Text = .Item(tEmployee.C_EmployeeCompanyEmail).ToString
-                    varDataProperties.EmployeeIsHavePhoto = CBool(.Item("ishavephoto"))
-                    If varDataProperties.EmployeeIsHavePhoto Then
-                        varDataProperties.EmployeeIsNewPhoto = False
-                        varDataProperties.EmployeeIsForceChangePhoto = False
-                        SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentId, CLng(.Item(tAttachment.C_AttachmentId)))
-                        SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentToken, .Item(tAttachment.C_AttachmentToken).ToString)
-                        CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(.Item(tAttachment.C_AttachmentUrl).ToString, pctbxPhoto)
-                        BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
-                        BtnRemovePhoto.Enabled = True
-                    Else
-                        BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
-                        BtnRemovePhoto.Enabled = False
-                    End If
-                End With
+                Call LoadData()
             End If
             Call ResetPhoto()
             TxtPersonalID.Focus()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub LoadData()
+            CMDepls.Editor.GetEmployeeProperties(varDataProperties, varDatasetIngrid)
+
+            With varDatasetIngrid.Tables(dstTableName.EplsEditor).Rows(0)
+                'Displaying Employee Detail
+                SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeId, CLng(.Item(tEmployee.C_EmployeeId)))
+                TxtPersonalID.Text = .Item(tEmployee.C_EmployeePersonalIdNumber).ToString
+                TxtFullName.Text = .Item(tEmployee.C_EmployeeFullName).ToString
+                CboGender.SelectedItem = .Item(tEmployee.C_EmployeeGender).ToString
+                DtpBirthDate.Value = If(IsDBNull(.Item(tEmployee.C_EmployeeBirthDate)) OrElse .Item(tEmployee.C_EmployeeBirthDate) Is Nothing, Date.Today, CDate(.Item(tEmployee.C_EmployeeBirthDate)))
+                TxtBirthPlace.Text = .Item(tEmployee.C_EmployeeBirthPlace).ToString
+                TxtAddress.Text = .Item(tEmployee.C_EmployeeAddress).ToString
+
+                'Displaying Employment Detail
+                TxtCompany.Text = .Item(tCompany.C_CompanyName).ToString
+                TxTDepartment.Text = .Item(tDepartment.C_DepartmentName).ToString
+                TxtPosition.Text = .Item(tPosition.C_PositionName).ToString
+                SetValue(varDataProperties.AllParameters, tPosition.P_PositionId, CLng(.Item(tPosition.C_PositionId)))
+                SetValue(varDataProperties.AllParameters, tEmploymentType.P_EmploymentTypeId, IIf(.Item(tEmployee.C_EmployeeEmploymentType) Is Nothing OrElse .Item(tEmployee.C_EmployeeEmploymentType).ToString = String.Empty OrElse .Item(tEmployee.C_EmployeeEmploymentType).ToString = "", DBNull.Value, .Item(tEmployee.C_EmployeeEmploymentType)))
+                TxtEmploymentType.Text = .Item(tEmploymentType.C_EmploymentTypeName).ToString
+                TxtEmployeeNumber.Text = .Item(tEmployee.C_EmployeeNumber).ToString
+                TxtEmployeeNickname.Text = .Item(tEmployee.C_EmployeeNickname).ToString
+                ChkActiveEmployee.Checked = CBool(.Item(tEmployee.C_EmployeeIsActive))
+                SetValue(varDataProperties.AllParameters, tEmployee.P_EmployeeToken, .Item(tEmployee.C_EmployeeToken).ToString)
+                TxtUsername.Text = .Item(tUser.C_UserUsername).ToString
+                TxtCompanyEmail.Text = .Item(tEmployee.C_EmployeeCompanyEmail).ToString
+                varDataProperties.EmployeeIsHavePhoto = CBool(.Item("ishavephoto"))
+                If varDataProperties.EmployeeIsHavePhoto Then
+                    varDataProperties.EmployeeIsNewPhoto = False
+                    varDataProperties.EmployeeIsForceChangePhoto = False
+                    SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentId, CLng(.Item(tAttachment.C_AttachmentId)))
+                    SetValue(varDataProperties.AllParameters, tAttachment.P_AttachmentToken, .Item(tAttachment.C_AttachmentToken).ToString)
+                    CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(.Item(tAttachment.C_AttachmentUrl).ToString, pctbxPhoto)
+                    BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.No
+                    BtnRemovePhoto.Enabled = True
+                Else
+                    BtnRemovePhoto.XOButtonType = CMCv.UI.Control.ControlCodeBase.ButtonType.Disabled
+                    BtnRemovePhoto.Enabled = False
+                End If
+            End With
         End Sub
 
         ' ----------------------------------------------------------
@@ -117,7 +128,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnBrowsePhoto_Click(sender As Object, e As EventArgs) Handles BtnBrowsePhoto.Click
             If varDatasetIngrid.Tables(dtSettings).Rows(0).Item(tSettings.C_SettingsStorageProvider).ToString = "Disabled" Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Photo upload is disabled. Please contact your system administrator.", LibApp.Ingrid.Global.PopupType.Alert, "Cloud storage is disabled", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Photo upload is disabled. Please contact your system administrator.", LibApp.Ingrid.Global.PopupType.Alert, "Cloud storage is disabled", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -128,7 +139,7 @@
             If OfdPhoto.ShowDialog = DialogResult.OK Then
                 Dim result = LibAPI.Api.Magika.Validate(OfdPhoto.FileName, {"jpg", "jpeg"})
                 If Not result.IsValid Then
-                    Decision(My.Application.Info.AssemblyName.ToUpper, result.Reason & Environment.NewLine & "Please select a JPG or JPEG file.", LibApp.Ingrid.Global.PopupType.Alert, "Invalid Photo Format", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                    Decision(My.Application.Info.AssemblyName.ToUpper, result.Reason & Environment.NewLine & "Please select a JPG or JPEG file.", LibApp.Ingrid.Global.PopupType.Alert, "Invalid Photo Format", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                     Return
                 End If
 
@@ -178,7 +189,44 @@
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Async Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+        Private Sub ComponentMainframeMenu_EventFileSave() Handles ComponentMainframeMenu.EventFileSave
+            Call Save()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub ComponentMainframeMenu_EventFileUndo() Handles ComponentMainframeMenu.EventFileUndoAll
+            If Decision(My.Application.Info.AssemblyName, "Do you want to undo all changes?", LibApp.Ingrid.Global.PopupType.UndoChanges, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
+                If (varDataProperties.EmployeeIsNew) Then
+                    TxtPersonalID.Clear()
+                    TxtFullName.Clear()
+                    CboGender.SelectedItem = 0
+                    DtpBirthDate.Value = Date.Today.AddYears(-17)
+                    TxtBirthPlace.Clear()
+                    TxtAddress.Clear()
+
+                    TxtCompany.Clear()
+                    TxTDepartment.Clear()
+                    TxtPosition.Clear()
+                    TxtEmploymentType.Clear()
+                    TxtEmployeeNumber.Clear()
+                    TxtEmployeeNickname.Clear()
+                    ChkActiveEmployee.Checked = True
+                    TxtUsername.Clear()
+                    TxtCompanyEmail.Clear()
+                    varDataProperties.EmployeeIsHavePhoto = False
+                Else
+                    Call LoadData()
+                End If
+            End If
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+            Call Save()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Async Sub Save()
             Dim varInvalidScore As Integer = 0
             varCannotSaveMessage = String.Empty
             varInvalidScore += CheckInvalidInputs()
@@ -187,7 +235,7 @@
             varInvalidScore += CheckEmployeeNoPhoto()
 
             If varInvalidScore > 0 Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, varCannotSaveMessageTitle & Environment.NewLine & "Please ensure that the following item(s) have been checked:" & Environment.NewLine & varCannotSaveMessage, LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, varCannotSaveMessageTitle & Environment.NewLine & "Please ensure that the following item(s) have been checked:" & Environment.NewLine & varCannotSaveMessage, LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                 Return
             End If
 

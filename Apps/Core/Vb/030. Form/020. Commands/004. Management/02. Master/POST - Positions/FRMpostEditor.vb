@@ -1,16 +1,14 @@
 ﻿Namespace UI.Canvas
     Public Class FRMpostEditor
-#Region "Declaration"
+
         Public Event EventRecordSaved()
+        Private WithEvents ComponentMainframeMenu As New CMCv.UI.View.MenuStrip
 
         Public varIsFirstLoad As Boolean
 
         ' This Module Identifier
         Private varThisModuleId As Long = 0
         Private Const varThisModuleCode As String = "POST"
-#End Region
-
-#Region "Subs Collections"
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub CheckAllInput()
@@ -20,11 +18,13 @@
             TxtPositionName.Focus()
             BtnSave.Focus()
         End Sub
-#End Region
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMpostEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_EDIT, XOLogo,, 512, 512)
+
+            ComponentMainframeMenu.LoadIn(Me, True)
+            ComponentMainframeMenu.ShowMenuFile(CMCv.UI.View.MenuStrip.ShowItem.Yes)
 
             varIsFirstLoad = True
             If (varDataProperties.EmployeePositionIsNew) Then
@@ -63,6 +63,32 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+            Call Save()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub ComponentMainframeMenu_EventFileSave() Handles ComponentMainframeMenu.EventFileSave
+            Call Save()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub ComponentMainframeMenu_EventFileUndoAll() Handles ComponentMainframeMenu.EventFileUndoAll
+            If Decision(My.Application.Info.AssemblyName, "Do you want to undo all changes?", LibApp.Ingrid.Global.PopupType.UndoChanges, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
+                If (varDataProperties.EmployeePositionIsNew) Then
+                    CboCompany.SelectedIndex = -1
+                    CboDepartement.SelectedIndex = -1
+                    TxtPositionCode.Clear()
+                    TxtPositionName.Clear()
+                    TxtPositionDescription.Clear()
+                Else
+                    'Call LoadData()
+                    TxtPositionDescription.Text = ""
+                End If
+            End If
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Save()
             With varDataProperties
                 SetValue(.AllParameters, tCompany.P_CompanyId, CLng(CboCompany.SelectedValue))
                 SetValue(.AllParameters, tDepartment.P_DepartmentId, CLng(CboDepartement.SelectedValue))
@@ -72,13 +98,13 @@
             End With
 
             If (CboDepartement.Items.Count = 0) OrElse (varDataProperties.AllParameters(tPosition.P_PositionCode).ToString = String.Empty) OrElse (varDataProperties.AllParameters(tPosition.P_PositionName).ToString = String.Empty) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Make sure you have Department selected, Postition Code and Position Description are properly filled.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "Make sure you have Department selected, Postition Code and Position Description are properly filled.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                 Return
             ElseIf ((varDataProperties.EmployeePositionIsNew) AndAlso (CMDpost.Editor.IsDuplicate(varDataProperties))) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                 Return
             ElseIf (Not (varDataProperties.EmployeePositionIsNew) AndAlso (CMDpost.Editor.IsDuplicate(varDataProperties))) Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "Cannot save your record." & Environment.NewLine & "This Posititon Code already used.", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -98,6 +124,7 @@
             Else
                 Me.Close()
             End If
+
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>

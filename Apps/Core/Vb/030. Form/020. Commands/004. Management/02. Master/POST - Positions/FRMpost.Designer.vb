@@ -33,6 +33,7 @@
             position_code = New DataGridViewTextBoxColumn()
             position_name = New DataGridViewTextBoxColumn()
             position_description = New DataGridViewTextBoxColumn()
+            Bnav = New CMCv.UI.Control.Bnav(components)
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
@@ -40,6 +41,7 @@
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(DgnPOST, ComponentModel.ISupportInitialize).BeginInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' BtnClear
@@ -54,16 +56,18 @@
             ' 
             ' SLFPanel
             ' 
+            SLFPanel.Controls.Add(Bnav)
             SLFPanel.Controls.Add(DgnPOST)
             SLFPanel.Size = New Size(1307, 946)
             SLFPanel.Controls.SetChildIndex(PnlFind, 0)
             SLFPanel.Controls.SetChildIndex(DgnPOST, 0)
+            SLFPanel.Controls.SetChildIndex(Bnav, 0)
             ' 
             ' DgnPOST
             ' 
             DgnPOST.AllowUserToAddRows = False
             DgnPOST.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(218), CByte(215), CByte(177))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(212), CByte(214), CByte(122))
             DgnPOST.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnPOST.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnPOST.BorderStyle = BorderStyle.None
@@ -183,6 +187,20 @@
             position_description.Name = "position_description"
             position_description.ReadOnly = True
             ' 
+            ' Bnav
+            ' 
+            Bnav.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            Bnav.Dock = DockStyle.Bottom
+            Bnav.Font = New Font("Verdana", 8F)
+            Bnav.ImageScalingSize = New Size(24, 24)
+            Bnav.Location = New Point(0, 913)
+            Bnav.Name = "Bnav"
+            Bnav.Size = New Size(1307, 33)
+            Bnav.TabIndex = 802
+            Bnav.Text = "Bnav1"
+            Bnav.XOIsShowAddNewButton = False
+            Bnav.XOIsShowDeleteButton = False
+            ' 
             ' FRMpost
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
@@ -200,9 +218,11 @@
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
+            SLFPanel.PerformLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(DgnPOST, ComponentModel.ISupportInitialize).EndInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub
@@ -215,6 +235,7 @@
         Friend WithEvents position_code As DataGridViewTextBoxColumn
         Friend WithEvents position_name As DataGridViewTextBoxColumn
         Friend WithEvents position_description As DataGridViewTextBoxColumn
+        Friend WithEvents Bnav As CMCv.UI.Control.Bnav
 
     End Class
 End Namespace

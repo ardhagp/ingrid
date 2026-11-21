@@ -11,11 +11,11 @@ Namespace CMDepls.Addins.Browse
         ''' <param name="datagrid">The datagrid control where the data will be displayed.</param>
         ''' <param name="statusbar">The statusbar control to show the status of the operation.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt)
+        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt, Optional recordnavigator As CMCv.UI.Control.Bnav = Nothing)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 RunMsSql(dataproperties, datagrid, statusbar)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                RunMySql(dataproperties, datagrid, statusbar)
+                RunMySql(dataproperties, datagrid, statusbar, recordnavigator)
             End If
         End Sub
 
@@ -45,7 +45,7 @@ Namespace CMDepls.Addins.Browse
         ''' <param name="datagrid">The datagrid control where the data will be displayed.</param>
         ''' <param name="statusbar">The statusbar control to show the status of the operation.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Shared Sub RunMySql(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt)
+        Private Shared Sub RunMySql(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt, Optional recordnavigator As CMCv.UI.Control.Bnav = Nothing)
             varWhere = $"where "
             If (dataproperties.EmployeePositionIsForceRefresh) Then
                 varWhere += $"({tPosition.C_PositionClient} = {tIngrid.P_ClientId}) "
@@ -88,6 +88,9 @@ Namespace CMDepls.Addins.Browse
             End If
             varDatabaseRequestMysql(0).DataGrid = datagrid
             varDatabaseRequestMysql(0).StatusBar = statusbar
+            If recordnavigator IsNot Nothing Then
+                varDatabaseRequestMysql(0).RecordNavigator = recordnavigator
+            End If
             varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TBrowsePosition", dataproperties.AllParameters)
         End Sub
     End Class
@@ -101,11 +104,11 @@ Namespace CMDepls.Addins.Browse
         ''' <param name="datagrid">The datagrid control where the data will be displayed.</param>
         ''' <param name="statusbar">The statusbar control to show the status of the operation.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt)
+        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt, Optional recordnavigator As CMCv.UI.Control.Bnav = Nothing)
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
                 RunMsSql(dataproperties, datagrid, statusbar)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                RunMySql(dataproperties, datagrid, statusbar)
+                RunMySql(dataproperties, datagrid, statusbar, recordnavigator)
             End If
         End Sub
 
@@ -136,7 +139,7 @@ Namespace CMDepls.Addins.Browse
         ''' <param name="datagrid">The datagrid control where the data will be displayed.</param>
         ''' <param name="statusbar">The statusbar control to show the status of the operation.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Shared Sub RunMySql(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt)
+        Private Shared Sub RunMySql(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt, Optional recordnavigator As CMCv.UI.Control.Bnav = Nothing)
             varWhere = "where "
             If dataproperties.EmploymentTypeIsForceRefresh Then
                 varWhere += $"({tEmploymentType.C_EmploymentTypeClient} = {tIngrid.P_ClientId}) "
@@ -154,6 +157,9 @@ Namespace CMDepls.Addins.Browse
                                                $"order by {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeCode}, {tEmploymentType.S}.{tEmploymentType.C_EmploymentTypeName}"
             varDatabaseRequestMysql(0).DataGrid = datagrid
             varDatabaseRequestMysql(0).StatusBar = statusbar
+            If recordnavigator IsNot Nothing Then
+                varDatabaseRequestMysql(0).RecordNavigator = recordnavigator
+            End If
             varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TBrowseEmploymentType", dataproperties.AllParameters)
         End Sub
     End Class

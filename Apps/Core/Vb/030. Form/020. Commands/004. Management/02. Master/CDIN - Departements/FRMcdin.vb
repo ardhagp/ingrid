@@ -1,6 +1,8 @@
-﻿Namespace UI.Canvas
-    Public Class FRMcdin
+﻿Imports System.Drawing.Text
 
+Namespace UI.Canvas
+    <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+    Public Class FRMcdin
         Private WithEvents Frm_cdin_Editor As FRMcdinEditor
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
@@ -16,7 +18,7 @@
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnCDIN)
             varDataProperties.DepartmentIsForceRefresh = forcerefresh
-            LibSQL.CMDcdin.View.DisplayData(varDataProperties, DgnCDIN, SLFStatus, TxtFind)
+            LibSQL.CMDcdin.View.DisplayData(varDataProperties, DgnCDIN, SLFStatus, TxtFind, Bnav)
         End Sub
 
         ''' <summary>
@@ -58,7 +60,7 @@
         Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
             Call GetRowID()
             If varDataProperties.DepartmentIsNew Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
             Else
                 Frm_cdin_Editor = New FRMcdinEditor
                 With varDataProperties
@@ -80,7 +82,7 @@
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
             Call GetRowID()
             If varDataProperties.DepartmentIsNew Then
-                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision(My.Application.Info.AssemblyName.ToUpper, "No record selected", LibApp.Ingrid.Global.PopupType.Error, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Error, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
             Else
                 With DgnCDIN.CurrentRow
                     Dim varMessage As New System.Text.StringBuilder()
@@ -96,7 +98,7 @@
 
                     varMessage.AppendLine(varLine)
 
-                    If Decision(My.Application.Info.AssemblyName.ToUpper, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDcdin.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
+                    If Decision(My.Application.Info.AssemblyName.ToUpper, Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes AndAlso (LibSQL.CMDcdin.View.DeleteData(varDataProperties, varDatasetIngrid)) Then
                         Call GetData(True)
                         UI.Canvas.FRMmainframe6.Ts_status.Text = "Success"
                     Else

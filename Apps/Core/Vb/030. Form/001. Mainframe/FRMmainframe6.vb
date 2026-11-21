@@ -670,8 +670,8 @@ Namespace UI.Canvas
                 Frm_login = New UI.Canvas.FRMlogin
                 varDataProperties.IngridFormImage = ImageDb.Main.ImageLibrary.LOGIN_ICON
                 varDataProperties.IngridWindowName = My.Application.Info.AssemblyName.ToUpper
-                varDataProperties.IngridFormTitle = My.Application.Info.AssemblyName.ToUpper
-                varDataProperties.IngridFormSubtitle = "Sign In"
+                varDataProperties.IngridFormTitle = "Sign In"
+                varDataProperties.IngridFormSubtitle = "Please enter your credentials to access the application"
                 varDataProperties.IngridFormIsDialog = True
                 Display(Frm_login,, varDataProperties)
             End If
