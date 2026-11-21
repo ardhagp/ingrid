@@ -106,6 +106,14 @@
         End Sub
 
         ''' <summary>
+        ''' This subroutine is an event handler for the "Cancel" menu item in the mainframe menu. When the "Cancel" option is selected, it triggers the form to close by calling the Close() method. The method is marked with the SupportedOSPlatform attribute, indicating that it is intended to run on Windows platforms. This ensures that the cancel functionality is only executed in a compatible environment.
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub ComponentMainframeMenu_EventFileCancel() Handles ComponentMainframeMenu.EventFileCancel
+            Call CancelEdit()
+        End Sub
+
+        ''' <summary>
         ''' This subroutine is intended to handle the saving of company data. It is currently a placeholder and does not contain any implementation. The method is marked with the SupportedOSPlatform attribute, indicating that it is intended to run on Windows platforms. When implemented, this method would likely include logic to validate input, prepare data for saving, and interact with a database or data service to persist the company information.
         ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
@@ -159,8 +167,13 @@
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
+        Private Sub CancelEdit()
             Me.Close()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
+            Call CancelEdit()
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>

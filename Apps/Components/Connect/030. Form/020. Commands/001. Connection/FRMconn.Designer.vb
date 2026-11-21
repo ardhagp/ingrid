@@ -34,6 +34,7 @@
             defaultconnection = New DataGridViewCheckBoxColumn()
             spring = New DataGridViewTextBoxColumn()
             Btn_Close = New CMCv.UI.Control.Btn(components)
+            Bnav = New CMCv.UI.Control.Bnav(components)
             PnlBottomButton.SuspendLayout()
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -42,6 +43,7 @@
             CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(DgnConnection, ComponentModel.ISupportInitialize).BeginInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' PnlBottomButton
@@ -87,6 +89,7 @@
             ' 
             ' SLFPanel
             ' 
+            SLFPanel.Controls.Add(Bnav)
             SLFPanel.Controls.Add(DgnConnection)
             SLFPanel.Location = New Point(0, 113)
             SLFPanel.Margin = New Padding(7, 10, 7, 10)
@@ -94,6 +97,7 @@
             SLFPanel.Controls.SetChildIndex(PnlFind, 0)
             SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             SLFPanel.Controls.SetChildIndex(DgnConnection, 0)
+            SLFPanel.Controls.SetChildIndex(Bnav, 0)
             ' 
             ' XOLogo
             ' 
@@ -103,7 +107,7 @@
             ' 
             DgnConnection.AllowUserToAddRows = False
             DgnConnection.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(197), CByte(224), CByte(178))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(227), CByte(218), CByte(175))
             DgnConnection.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnConnection.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnConnection.BorderStyle = BorderStyle.None
@@ -238,6 +242,20 @@
             Btn_Close.XOValidateAllInput = False
             Btn_Close.XOValidateAllInputTag = Nothing
             ' 
+            ' Bnav
+            ' 
+            Bnav.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            Bnav.Dock = DockStyle.Bottom
+            Bnav.Font = New Font("Verdana", 8F)
+            Bnav.ImageScalingSize = New Size(24, 24)
+            Bnav.Location = New Point(0, 814)
+            Bnav.Name = "Bnav"
+            Bnav.Size = New Size(1307, 33)
+            Bnav.TabIndex = 998
+            Bnav.Text = "Bnav1"
+            Bnav.XOIsShowAddNewButton = False
+            Bnav.XOIsShowDeleteButton = False
+            ' 
             ' FRMconn
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
@@ -253,9 +271,11 @@
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
             SLFPanel.ResumeLayout(False)
+            SLFPanel.PerformLayout()
             CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(DgnConnection, ComponentModel.ISupportInitialize).EndInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub
@@ -269,5 +289,6 @@
         Friend WithEvents serverport As DataGridViewTextBoxColumn
         Friend WithEvents defaultconnection As DataGridViewCheckBoxColumn
         Friend WithEvents spring As DataGridViewTextBoxColumn
+        Friend WithEvents Bnav As CMCv.UI.Control.Bnav
     End Class
 End Namespace

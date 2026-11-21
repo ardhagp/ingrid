@@ -18,6 +18,17 @@
         ' Form Events Handlers
         ' ----------------------------------------------------------
         ''' <summary>
+        ''' This event handler is triggered when the form is activated. It sets the active module identifier to ensure that the application recognizes the current context as the Employee List module. This is important for managing user permissions and interactions within the application.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMepls_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+            ' Set active module to UserParameters
+            SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
+        End Sub
+
+        ''' <summary>
         ''' This event handler is triggered when the FRMepls form is loaded. It performs several initialization tasks, including loading the logo image from a specified URL, setting the active module to UserParameters, loading the menu strip, displaying menu data, applying color settings to the DataGridView, and retrieving initial data to populate the DataGridView. It also clears any existing search text in the TxtFind control and adjusts the row height of the DataGridView for better display.
         ''' </summary>
         ''' <param name="sender"></param>
@@ -36,21 +47,15 @@
             ' Continue to Load anything for this module
             Com_mms_Menu.LoadIn(Me)
             Com_mms_Menu.ShowMenuData(CMCv.UI.View.MenuStrip.ShowItem.Yes)
+
+            ' Apply color settings to the DataGridView and retrieve initial data
             DgnEPLS.XOGetNewColor()
+
+            ' Retrieve and display employee data in the DataGridView
             Call GetData()
+
             TxtFind.ClearSearch()
             CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnEPLS)
-        End Sub
-
-        ''' <summary>
-        ''' This event handler is triggered when the form is activated. It sets the active module identifier to ensure that the application recognizes the current context as the Employee List module. This is important for managing user permissions and interactions within the application.
-        ''' </summary>
-        ''' <param name="sender"></param>
-        ''' <param name="e"></param>
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMepls_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-            ' Set active module to UserParameters
-            SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
         End Sub
 
         ''' <summary>

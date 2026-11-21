@@ -40,7 +40,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnConnection) ' Enable double buffering to reduce flickering
-            CMDconn.View.DisplayData(DgnConnection, SLFStatus, TxtFind, varDataset, forcerefresh)
+            CMDconn.View.DisplayData(DgnConnection, SLFStatus, TxtFind, varDataset, forcerefresh, Bnav)
         End Sub
 
         ''' <summary>

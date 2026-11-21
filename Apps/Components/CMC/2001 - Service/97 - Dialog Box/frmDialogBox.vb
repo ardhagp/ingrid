@@ -98,7 +98,7 @@ Namespace UI.Canvas
                     defaultSubtitle = "Invalid instruction set detected. Please follow the designated instructions."
                 Case LibApp.Ingrid.Global.PopupType.UndoChanges
                     headerText = "Undo Changes"
-                    defaultSubtitle = "Are you sure you want to undo all changes made?"
+                    defaultSubtitle = "This will revert all changes to their original state."
                 Case Else
                     headerText = String.Empty
                     defaultSubtitle = String.Empty

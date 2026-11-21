@@ -16,6 +16,12 @@
         Public Property DataGrid As UI.Control.Dgn
 
         ''' <summary>
+        ''' The BindingNavigator for DataGrid additional control
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property RecordNavigator As UI.Control.Bnav
+
+        ''' <summary>
         ''' The StatusBar control where the data will be displayed.
         ''' </summary>
         ''' <returns>The StatusBar control.</returns>
