@@ -295,7 +295,7 @@
             ChkAddNew.FlatStyle = FlatStyle.Flat
             ChkAddNew.Font = New Font("Segoe UI", 12F)
             ChkAddNew.ForeColor = Color.White
-            ChkAddNew.Location = New Point(586, 28)
+            ChkAddNew.Location = New Point(586, 35)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
             ChkAddNew.Name = "ChkAddNew"
             ChkAddNew.Size = New Size(221, 36)

@@ -125,7 +125,7 @@
             ChkAddNew.FlatStyle = FlatStyle.Flat
             ChkAddNew.Font = New Font("Segoe UI", 12F)
             ChkAddNew.ForeColor = Color.White
-            ChkAddNew.Location = New Point(233, 28)
+            ChkAddNew.Location = New Point(233, 35)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
             ChkAddNew.Name = "ChkAddNew"
             ChkAddNew.Size = New Size(221, 36)
@@ -354,6 +354,7 @@
             ClientSize = New Size(824, 965)
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMpostEditor"
+            XOModuleCode = "POST"
             PnlBottomButton.ResumeLayout(False)
             PnlBottomButton.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

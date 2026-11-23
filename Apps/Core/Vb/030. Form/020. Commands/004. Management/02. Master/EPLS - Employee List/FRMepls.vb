@@ -79,19 +79,6 @@
         End Sub
 
 
-        ' ----------------------------------------------------------
-        ' Other or Extended Form Events Handlers
-        ' ----------------------------------------------------------
-        ''' <summary>
-        ''' This event handler is triggered when a record is saved in the FRMeplsEditor form. It calls the GetData method to refresh the employee data displayed in the DataGridView, ensuring that any changes made in the editor are reflected in the main form.
-        ''' </summary>
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMeplsEditor_RecordSaved() Handles Frm_epls_Editor.EventRecordSaved
-            ' Refresh the data in the DataGridView after a record is saved in the editor form
-            Call GetData()
-        End Sub
-
-
         ' ---------------------------------------------------------
         ' Functions and Subroutines
         ' ---------------------------------------------------------
@@ -263,6 +250,19 @@
             ' Refresh the data in the DataGridView to show all employee records after clearing the search query
             Call GetData(True)
             TxtFind.ClearSearch()
+        End Sub
+
+
+        ' ---------------------------------------------------------
+        ' Addins or External Forms Events Handlers
+        ' ---------------------------------------------------------
+        ''' <summary>
+        ''' This event handler is triggered when a record is saved in the FRMeplsEditor form. It calls the GetData method to refresh the employee data displayed in the DataGridView, ensuring that any changes made in the editor are reflected in the main form.
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMeplsEditor_RecordSaved() Handles Frm_epls_Editor.EventRecordSaved
+            ' Refresh the data in the DataGridView after a record is saved in the editor form
+            Call GetData()
         End Sub
 
     End Class

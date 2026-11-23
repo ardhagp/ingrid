@@ -67,7 +67,7 @@
             ' 
             DgnPOST.AllowUserToAddRows = False
             DgnPOST.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(212), CByte(214), CByte(122))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(197), CByte(226), CByte(100))
             DgnPOST.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnPOST.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnPOST.BorderStyle = BorderStyle.None
@@ -211,6 +211,7 @@
             ShowIcon = False
             ShowInTaskbar = False
             WindowState = FormWindowState.Maximized
+            XOModuleCode = "POST"
             XOWindowAlwaysMaximized = True
             PnlFind.ResumeLayout(False)
             PnlFind.PerformLayout()

@@ -761,6 +761,7 @@
             Icon = CType(resources.GetObject("$this.Icon"), Icon)
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMconnEditor"
+            XOModuleCode = "CONN"
             PnlBottomButton.ResumeLayout(False)
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)

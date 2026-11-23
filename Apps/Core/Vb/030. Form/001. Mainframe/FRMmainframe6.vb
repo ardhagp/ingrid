@@ -1,6 +1,20 @@
-﻿'For clickonce .net 6 prequisites please paste here : C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VisualStudio\BootstrapperPackages
-
-Imports Svg
+﻿' ----------------------------------------------------------
+' Licensed under the MIT (the "License");
+' you may not use this file except in compliance with the License.
+' You may obtain a copy of the License at
+' http://opensource.org/licenses/MIT
+' Unless required by applicable law or agreed to in writing, software
+' distributed under the License is distributed on an "AS IS" BASIS,
+' WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+' See the License for the specific language governing permissions and
+' limitations under the License.
+'
+' Author: ardhagp
+'
+' Additional Notes:
+' 'For Clickonce .NET prerequisites please paste here :
+' C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VisualStudio\BootstrapperPackages
+' ----------------------------------------------------------
 
 Namespace UI.Canvas
     Public Class FRMmainframe6
@@ -52,6 +66,11 @@ Namespace UI.Canvas
         ' ----------------------------------------------------------
         ' Forms Events Handlers
         ' ----------------------------------------------------------
+        ''' <summary>
+        ''' This event handler is triggered when the mainframe form is loaded. It initializes various components, sets up the user interface, retrieves application settings, and establishes a connection to the database. It also handles exceptions that may occur during the loading process and logs relevant information for debugging purposes.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Try
@@ -96,11 +115,18 @@ Namespace UI.Canvas
                 varGetNotifCounter = 58
                 varForceRefreshMainframeData = False
                 TmrStatus.Interval = varStatusTimeWait * 1000
+
+                ' Make sure user is logged out before loading the mainframe
                 Call SystemLogout()
+
+                ' Setup components and load initial data
                 Call FirstLoad()
+
                 SetValue(varDataProperties.AllParameters, tIngrid.P_UserId, 0)
                 Text += " - Ver. " & varVersionapplication
                 LibSQL.Mainframe.Database.GetDatabaseProperties(varDatasetIngrid)
+
+                ' Check if database properties exist
                 If varDatasetIngrid.Tables(dtDatabaseProperties).Rows.Count > 0 Then
                     With varDatasetIngrid.Tables(dtDatabaseProperties).Rows(0)
                         varDataProperties.ConnectionServerAddress = .Item("SERVERADDRESS").ToString
@@ -117,12 +143,15 @@ Namespace UI.Canvas
                     Return
                 End If
 
+                ' Connect to Database
                 If Mainframe.Database.Connect(varDataProperties) Then
                     SetValue(varDataProperties.AllParameters, tIngrid.P_ClientId, varAppClient.GetClientId(varDataProperties))
                     'varClientId = varAppClient.GetClientId(varDataProperties)
                     Ts_connection.Text = "Connected"
                     varLogApplication.Run(varDataProperties, varDataProperties.AllParameters)
                     Dim varRecords As Integer = LibSQL.CMDccin.View.CountRecords(varDataProperties)
+
+                    ' Check if company and department exist, if not, show first guide
                     If varRecords = 0 Then
                         varDataProperties.IngridFormImage = Nothing
                         varDataProperties.IngridFormTitle = "First Guide"
@@ -139,6 +168,8 @@ Namespace UI.Canvas
                 SetValue(varDataProperties.AllParameters, tIngrid.P_ClientId, IIf(CInt(varDataProperties.AllParameters(tIngrid.P_ClientId)) = 0, DBNull.Value, varDataProperties.AllParameters(tIngrid.P_ClientId)))
 
                 Call CommandAutoComplete()
+
+                ' Check if company and department exist, if not, show first guide
                 If Not (LibSQL.CMDdbic.Applications.IsCompanyExist(varDataProperties) OrElse Not LibSQL.CMDdbic.Applications.IsDepartmentExist(varDataProperties)) Then
                     varDataProperties.IngridFormImage = Nothing
                     varDataProperties.IngridFormTitle = "First Guide"
@@ -168,6 +199,11 @@ Namespace UI.Canvas
             End Try
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the mainframe form is closing. It performs cleanup operations such as logging the closure event and deleting temporary files in the PDF directory. If any exceptions occur during this process, they are logged appropriately. The method ensures that necessary resources are released and that the application state is properly managed before the form is closed.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
             Dim varRequiredFolder = CheckRequiredFolder(DirName.PDF)
@@ -214,55 +250,105 @@ Namespace UI.Canvas
             End Try
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the mainframe form is closed. It raises the EventMainframeClose event to notify any subscribers that the mainframe has been closed. This can be used to perform cleanup operations or update the application state accordingly.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMmainframe6_Closed(sender As Object, e As EventArgs) Handles Me.Closed
             RaiseEvent EventMainframeClose()
         End Sub
 
+
         ' ----------------------------------------------------------
         ' Controls Events Handlers
         ' ----------------------------------------------------------
-        ' Start Menu
+        ''' <summary>
+        ''' This event handler is triggered when the "Login" option in the start menu is clicked.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsstartLogin_Click(sender As Object, e As EventArgs) Handles Ms_start_Login.Click
             Call LoginClicked()
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Logout" option in the start menu is clicked.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsstartLogout_Click(sender As Object, e As EventArgs) Handles Ms_start_Logout.Click
             Call LogoutClicked()
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Cascade" option in the workspace menu is clicked.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsworkspaceCascade_Click(sender As Object, e As EventArgs) Handles Ms_workspace_Cascade.Click
             Me.LayoutMdi(MdiLayout.Cascade)
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Tile Vertical" option in the workspace menu is clicked.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsworkspaceTileVertical_Click(sender As Object, e As EventArgs) Handles Ms_workspace_TileVertical.Click
             Me.LayoutMdi(MdiLayout.TileVertical)
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Tile Horizontal" option in the workspace menu is clicked.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsworkspaceTileHorizontal_Click(sender As Object, e As EventArgs) Handles Ms_workspace_TileHorizontal.Click
             Me.LayoutMdi(MdiLayout.TileHorizontal)
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Close All" option in the workspace menu is clicked.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsworkspaceCloseAll_Click(sender As Object, e As EventArgs) Handles Ms_workspace_CloseAll.Click
             Call CloseAllWindows()
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Input Command" option in the workspace menu is clicked.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsworkspaceInputCommand_Click(sender As Object, e As EventArgs) Handles Ms_workspace_InputCommand.Click
             Txt_shortcut.Focus()
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Maximize" option in the workspace menu is clicked.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsworkspaceMaximize_Click(sender As Object, e As EventArgs) Handles Ms_workspace_Maximize.Click
             Me.WindowState = FormWindowState.Maximized
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Change Password" option in the start menu is clicked.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ChangePasswordToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangePasswordToolStripMenuItem.Click
             Try
@@ -299,6 +385,11 @@ Namespace UI.Canvas
             End Try
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when a node in the mainframe tree view is double-clicked.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tvmainframe_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles Tv_mainframe.NodeMouseDoubleClick
             Try
@@ -312,6 +403,11 @@ Namespace UI.Canvas
             End Try
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when a key is pressed while the Txt_shortcut textbox has focus.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TxtShortcut_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_shortcut.KeyDown
             If e.KeyCode = Keys.Enter Then
@@ -320,26 +416,46 @@ Namespace UI.Canvas
             End If
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the BtnExecute button is clicked. It calls the EnterCommand method with the text entered in the Txt_shortcut textbox and adds the command to the auto-complete source for future use.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnExecute_Click(sender As Object, e As EventArgs) Handles BtnExecute.Click
             Call EnterCommand(Txt_shortcut.Text)
             Txt_shortcut.AutoCompleteCustomSource.Add(Txt_shortcut.Text.Trim)
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Photo Resizer" option in the start menu is clicked. It calls the EnterCommand method with the command code "PHTRZ" to open the photo resizer tool.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub PhotoResizerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PhotoResizerToolStripMenuItem.Click
             Call EnterCommand("PHTRZ")
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Contents" option in the start menu is clicked. It attempts to open the Wiki URL specified in the application settings using the default web browser. If any exceptions occur during this process, an error message is displayed to the user.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         Private Sub ContentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentsToolStripMenuItem.Click
             Try
-                'Open Wiki URL in default browser
+                ' Open Wiki URL in default browser
                 Process.Start(New ProcessStartInfo(My.Settings.URL_Wiki) With {.UseShellExecute = True})
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
             End Try
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the TmrNotif timer ticks. It increments the notification counter and calls the GetNotification method every 60 ticks.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TmrNotif_Tick(sender As Object, e As EventArgs) Handles TmrNotif.Tick
             varGetNotifCounter += 1
@@ -349,6 +465,11 @@ Namespace UI.Canvas
             End If
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the TmrMOD timer ticks. It checks if the mainframe data needs to be refreshed and calls the CommandAutoComplete method if necessary.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tmrmod_Tick(sender As Object, e As EventArgs) Handles TmrMOD.Tick
             If (varForceRefreshMainframeData) Then
@@ -357,6 +478,11 @@ Namespace UI.Canvas
             End If
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the TmrStatus timer ticks. It increments the clear status counter and calls the ClearStatus method when the counter reaches the specified wait time.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub TmrStatus_Tick(sender As Object, e As EventArgs) Handles TmrStatus.Tick
             varClearStatus += 1
@@ -365,11 +491,21 @@ Namespace UI.Canvas
             End If
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the Tmr_gc timer ticks. It forces garbage collection to free up memory.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tmrgc_Tick(sender As Object, e As EventArgs) Handles Tmr_gc.Tick
             GC.Collect()
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the SUPPORT button is clicked. It attempts to open the Wiki URL specified in the application settings using the default web browser. If any exceptions occur during this process, an error message is displayed to the user.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Support_Click(sender As Object, e As EventArgs) Handles SUPPORT.Click
             Try
@@ -380,16 +516,31 @@ Namespace UI.Canvas
             End Try
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Logout" option in the start menu is clicked. It calls the LogoutClicked method to handle the logout process.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
             Call LogoutClicked()
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Login" option in the start menu is clicked. It calls the LoginClicked method to handle the login process.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub LoginToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem.Click
             Call LoginClicked()
         End Sub
 
+        ''' <summary>
+        ''' This event handler triggered when "Notification" option is clicked from start menu.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub NotificationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotificationToolStripMenuItem.Click
             Frm_ntfc = New FRMntfc
@@ -400,6 +551,11 @@ Namespace UI.Canvas
             Display(Frm_ntfc, Me, varDataProperties)
         End Sub
 
+        ''' <summary>
+        ''' Triggered everytime status text changed
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tsstatus_TextChanged(sender As Object, e As EventArgs) Handles Ts_status.TextChanged
             varClearStatus = 0
@@ -410,12 +566,22 @@ Namespace UI.Canvas
             End If
         End Sub
 
+        ''' <summary>
+        ''' Timer for running text
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tmrrunningtext_Tick(sender As Object, e As EventArgs) Handles Tmr_runningtext.Tick
             varMyMarquee.Tick()
             TxtRunning.Text = varMyMarquee.MarqueeText
         End Sub
 
+        ''' <summary>
+        ''' This event handler when the "Buy me a coffe" option in the start menu is clicked.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         Private Sub BuymeacoffeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BuymeacoffeToolStripMenuItem.Click
             Try
                 ' Open Saweria URL
@@ -425,11 +591,21 @@ Namespace UI.Canvas
             End Try
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Settings" option in the start menu is clicked. It calls the EnterCommand method with the command code "SYSS" to open the system settings form. This allows users to access and modify various application settings through the system settings interface.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsstartSettings_Click(sender As Object, e As EventArgs) Handles Ms_start_Settings.Click
             Call EnterCommand("SYSS")
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Connection Settings" option in the start menu is clicked. It opens a new instance of the connection settings form (FRMconn) and configures its properties, such as the form image, title, subtitle, and dialog behavior. The Display method is then called to show the connection settings form to the user, allowing them to configure the Ingrid database connection.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Msstartconnectionapp_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_app.Click
             Frm_conn = New Connect.UI.Canvas.FRMconn(varProductionMode, True)
@@ -440,6 +616,11 @@ Namespace UI.Canvas
             Display(Frm_conn, Me, varDataProperties)
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Connection Folder" option in the start menu is clicked. It attempts to open the "Resources" folder located in the application's directory using the default file explorer. If any exceptions occur during this process, such as if the folder cannot be found or accessed, an error message is displayed to the user in a message box.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Msstartconnectionfolder_Click(sender As Object, e As EventArgs) Handles Ms_start_connection_folder.Click
             Try
@@ -450,6 +631,11 @@ Namespace UI.Canvas
             End Try
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the "Exit" option in the start menu is clicked. It checks if there is an active session, and if so, it calls the SystemLogout method to handle the logout process, logs the user out, and clears any login data. Finally, it closes the mainframe form and exits the application. This ensures that all necessary cleanup operations are performed before the application terminates.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub MsstartExit_Click(sender As Object, e As EventArgs) Handles Ms_start_Exit.Click
             If (varSession) Then
@@ -462,41 +648,6 @@ Namespace UI.Canvas
             Return
         End Sub
 
-
-        ' ---------------------------------------------------------
-        ' External Forms Events Handlers
-        ' ---------------------------------------------------------
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMlogin_LoginSuccess() Handles Frm_login.EventLoginSuccess
-            Call GetNotification()
-            PnlProfile.Height = 320
-            PnlProfile.Visible = True
-            PctProfile.Image = Nothing
-            PctProfile.BackgroundImage = Nothing
-            If varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString = String.Empty Then
-                PctProfile.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-404.svg", True, 512, 512)
-            Else
-                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, PctProfile,, True, "Profile")
-                'PctProfile.ImageLocation = varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString
-                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, Ms_mainframe, "USERMENU",, True, "Profile")
-            End If
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMlogin_LoginFailed() Handles Frm_login.EventLoginFailed
-            Call ClearLoginData()
-            Call SystemLogout(True)
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMphtrz_Done() Handles Frm_phtrz.EventDone
-            Frm_phtrz.Dispose()
-        End Sub
-
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub Frmconn_Done() Handles Frm_conn.ConnectFrameClose 'uncomment this when add Connect to library
-            Frm_conn.Dispose()
-        End Sub
 
         ' ---------------------------------------------------------
         ' Functions and Subroutines
@@ -556,6 +707,8 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetNotification()
             varTotalNotification = varAppNotification.Exist(varDataProperties)
+
+            ' Check if there are any notifications for the user. If there are notifications, update the USERMENU text to include an asterisk and change the background color to light pink. If there are no notifications, display the user's full name without an asterisk and set the background color to yellow. Update the NotificationToolStripMenuItem text to show the total number of notifications.
             If varTotalNotification > 0 Then
                 USERMENU.Text = varDatasetIngrid.Tables(dtUserData).Rows(0).Item("employee_fullname").ToString & "*"
                 USERMENU.BackColor = Global.System.Drawing.Color.LightPink
@@ -584,6 +737,7 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub CloseAllWindows(Optional isforced As Boolean = False)
             Try
+                ' Prompt the user for confirmation before closing all workspace windows, unless the operation is forced.
                 If Not (isforced) AndAlso (Global.System.Windows.Forms.MessageBox.Show("Do you want to close all Workspace windows?", "Close All Windows", Global.System.Windows.Forms.MessageBoxButtons.YesNo, Global.System.Windows.Forms.MessageBoxIcon.Question) = Global.System.Windows.Forms.DialogResult.No) Then
                     Return
                 Else
@@ -635,6 +789,7 @@ Namespace UI.Canvas
                 Return
             End If
 
+            ' Check if the module exists and retrieve its properties. If the module is not found, display a message in the status bar. If the module is under maintenance, inform the user and log the attempt. If the user does not have access to the module, display an unauthorized access message and log the attempt. If all checks pass, open the module in the workspace and log the action.
             LibSQL.UI.Workspace.GetModuleProperties(varDataProperties, varDataProperties.AllParameters, commandcode, varDatasetIngrid)
 
             With varDatasetIngrid.Tables(dtModule)
@@ -666,6 +821,7 @@ Namespace UI.Canvas
         ''' <returns></returns>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function LoginClicked() As Boolean
+            ' Check if user data is available. If no user data is found, it indicates that the user is not logged in, and the login form is displayed to prompt the user for credentials. The login form is configured with appropriate properties such as form image, window name, title, subtitle, and dialog behavior. The Display function is called to show the login form to the user.
             If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
                 Frm_login = New UI.Canvas.FRMlogin
                 varDataProperties.IngridFormImage = ImageDb.Main.ImageLibrary.LOGIN_ICON
@@ -675,6 +831,8 @@ Namespace UI.Canvas
                 varDataProperties.IngridFormIsDialog = True
                 Display(Frm_login,, varDataProperties)
             End If
+
+            ' Check if user data is available after the login form is displayed. If no user data is found, it indicates that the login was unsuccessful, and the session state is set to False. The SystemLogout function is called with True to manage UI changes and data clearing for a logged-out state. If user data is found, it indicates a successful login, and the session state is set to True. The SystemLogout function is called with False to manage UI changes and data clearing for a logged-in state. Finally, the function returns the session state (True or False) to indicate whether the user is successfully logged in or not.
             If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
                 varSession = False
                 Call SystemLogout(True)
@@ -692,8 +850,11 @@ Namespace UI.Canvas
         Private Sub LogoutClicked()
             If Decision(My.Application.Info.AssemblyName.ToUpper, "Do you want to end your session now?", LibApp.Ingrid.Global.PopupType.Logout, "Please confirm your action", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
                 Bridge.Writelog.Sendlog("""message"" : " & varDataProperties.EmployeeFirstName & " is logout."",", "Information")
+                ' Call SystemLogout to update the UI and clear data for logout
                 Call SystemLogout()
                 varLogUser.Logout(varDataProperties, varDataProperties.AllParameters)
+
+                ' Clear login data to reset the application state
                 Call ClearLoginData()
             End If
         End Sub
@@ -704,6 +865,7 @@ Namespace UI.Canvas
         ''' <param name="islogout"></param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub SystemLogout(Optional islogout As Boolean = True)
+            ' When user is logged in, update the UI to reflect the logged-in state. This includes hiding the login button, showing the logout button, disabling the connection settings, enabling account management options, and starting the notification timer to fetch new notifications. It also retrieves user settings, profile information, and storage details to ensure the application reflects the current user's data and preferences.
             If Not (islogout) Then
                 Ms_start_Login.Visible = False
                 Ms_start_Login.Enabled = False
@@ -716,12 +878,20 @@ Namespace UI.Canvas
                 LogoutToolStripMenuItem.Visible = True
                 LogoutToolStripMenuItem.Enabled = True
                 varGetNotifCounter = 58
+
+                ' Retrieve and display notifications for the logged-in user. This includes fetching the count of notifications and updating the notification menu item to reflect the current number of notifications. The timer for notifications is enabled to periodically check for new notifications, ensuring that the user is kept informed of any updates or alerts relevant to their account or activities within the application.
                 Call GetNotification()
                 TmrNotif.Enabled = True
                 NotificationToolStripMenuItem.Enabled = True
+
+                ' Retrieve settings values from the database and update the application state accordingly. This includes fetching user profile information and storage details to ensure that the application reflects the current user's data and preferences.
                 Call GetSettings()
-                Call GetProfile() ''' Get Profile Info
-                Call GetStorage() ''' Get Storage Info
+
+                ' Get Profile Info
+                Call GetProfile()
+
+                ' Get Storage Info
+                Call GetStorage()
             Else
                 Call ClearLoginData()
                 Ms_start_Login.Visible = True
@@ -738,7 +908,7 @@ Namespace UI.Canvas
                 USERMENU.Text = "NOT LOGGED"
                 USERMENU.BackColor = Global.System.Drawing.Color.White
                 'tmdi_.AttachedTo = Nothing
-                Call CloseAllWindows(True) ''' Close all windows on logout
+                Call CloseAllWindows(True) ' Close all windows on logout
                 TmrNotif.Enabled = False
                 varGetNotifCounter = 0
                 NotificationToolStripMenuItem.Text = "0 Notification(s)"
@@ -806,12 +976,14 @@ Namespace UI.Canvas
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetProfile()
             With varDatasetIngrid.Tables(dtSettings)
+                ' When the dataset is empty, it means there are no settings available, so we exit the subroutine early to avoid any further processing.
                 If .Rows.Count = 0 Then
                     Return
                 End If
 
                 PnlProfile.Visible = IsProfileVisible(CInt(.Rows(0).Item(tSettings.C_SettingsShowProfile)), CBool(varDataProperties.AllParameters(tIngrid.P_UserIsRoot)))
                 PnlProfile.Height = 320
+                ' If the profile panel is visible, we retrieve and display the user's profile information, including welcome message, employee number, name, position, and profile image. If the profile panel is not visible, we clear the labels and image to ensure no sensitive information is displayed.
                 If (PnlProfile.Visible) Then
                     LblWelcome.Text = LibSQL.CMDapp.ProfilePanel.Welcome(varDataProperties)
                     LblEmpNumber.Text = varDataProperties.AllParameters(tIngrid.P_EmployeeNumber).ToString
@@ -879,8 +1051,52 @@ Namespace UI.Canvas
             LibSQL.CMDsyss.View.GetSettingsProperties(varDataProperties, varDataProperties.AllParameters, varDatasetIngrid)
         End Sub
 
-        Private Sub FRMmainframe6_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
 
+        ' ---------------------------------------------------------
+        ' Addins or External Forms Events Handlers
+        ' ---------------------------------------------------------
+        ''' <summary>
+        ''' Handles the event when the login is successful. It retrieves notifications, updates the profile panel, and loads the user's profile image from the specified URL. If no profile image URL is provided, it sets a default image.
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMlogin_LoginSuccess() Handles Frm_login.EventLoginSuccess
+            Call GetNotification()
+            PnlProfile.Height = 320
+            PnlProfile.Visible = True
+            PctProfile.Image = Nothing
+            PctProfile.BackgroundImage = Nothing
+            If varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString = String.Empty Then
+                PctProfile.Image = CMCv.ImageEditor.File.GetImage.ConvertSvgToBmp("\Resources\svg-404.svg", True, 512, 512)
+            Else
+                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, PctProfile,, True, "Profile")
+                'PctProfile.ImageLocation = varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString
+                CMCv.ImageEditor.File.GetImage.GetImageFromUrlAsync(varDataProperties.AllParameters(tIngrid.P_AttachmentUrl).ToString, Ms_mainframe, "USERMENU",, True, "Profile")
+            End If
+        End Sub
+
+        ''' <summary>
+        ''' Handles the event when the login fails. It clears the login data and logs out the user, resetting the application state accordingly.
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMlogin_LoginFailed() Handles Frm_login.EventLoginFailed
+            Call ClearLoginData()
+            Call SystemLogout(True)
+        End Sub
+
+        ''' <summary>
+        ''' Handles the event when the authorization form is closed. It disposes of the authorization form to free up resources.
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMphtrz_Done() Handles Frm_phtrz.EventDone
+            Frm_phtrz.Dispose()
+        End Sub
+
+        ''' <summary>
+        ''' Handles the event when the connection settings form is closed. It disposes of the connection form to free up resources.
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Frmconn_Done() Handles Frm_conn.ConnectFrameClose 'uncomment this when add Connect to library
+            Frm_conn.Dispose()
         End Sub
     End Class
 End Namespace

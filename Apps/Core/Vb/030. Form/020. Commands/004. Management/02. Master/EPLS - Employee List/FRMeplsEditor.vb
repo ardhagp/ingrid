@@ -596,7 +596,7 @@
 
 
         ' ---------------------------------------------------------
-        ' Addins Events Handlers
+        ' Addins or External Forms Events Handlers
         ' ---------------------------------------------------------
         ''' <summary>
         ''' This event handler is triggered when a record is selected in the FRMepls_AddinPosition form. It retrieves the selected company's name, department's name, and position's name from the AllParameters collection of varDataProperties and updates the corresponding text fields (TxtCompany, TxTDepartment, TxtPosition) in the FRMeplsEditor form with these values.

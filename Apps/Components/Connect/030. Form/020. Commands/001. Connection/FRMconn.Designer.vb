@@ -107,7 +107,7 @@
             ' 
             DgnConnection.AllowUserToAddRows = False
             DgnConnection.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(227), CByte(218), CByte(175))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(201), CByte(192), CByte(96))
             DgnConnection.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnConnection.BackgroundColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
             DgnConnection.BorderStyle = BorderStyle.None
@@ -264,6 +264,7 @@
             Margin = New Padding(11, 5, 11, 5)
             Name = "FRMconn"
             StartPosition = FormStartPosition.CenterScreen
+            XOModuleCode = "CONN"
             PnlBottomButton.ResumeLayout(False)
             PnlFind.ResumeLayout(False)
             PnlFind.PerformLayout()
