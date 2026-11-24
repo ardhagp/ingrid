@@ -82,11 +82,16 @@
                 varDataProperties.EmploymentTypeIsForceRefresh = False
             End If
 
-            CMDepls.Addins.Browse.EmploymentType.DisplayData(varDataProperties, DgnAddinEmploymentType, SLFStatus)
+            CMDepls.Addins.Browse.EmploymentType.DisplayData(varDataProperties, DgnAddinEmploymentType, XOStatus, Bnav)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub DgnAddinEmploymentType_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnAddinEmploymentType.CellContentDoubleClick
+            Call SelectData()
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub DgnAddinEmploymentType_DoubleClick(sender As Object, e As EventArgs) Handles DgnAddinEmploymentType.DoubleClick
             Call SelectData()
         End Sub
     End Class

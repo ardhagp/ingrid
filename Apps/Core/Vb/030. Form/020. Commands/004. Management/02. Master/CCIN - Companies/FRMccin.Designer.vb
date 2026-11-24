@@ -31,12 +31,15 @@
             company_searchterm1 = New DataGridViewTextBoxColumn()
             company_searchterm2 = New DataGridViewTextBoxColumn()
             company_description = New DataGridViewTextBoxColumn()
+            Bnav = New CMCv.UI.Control.Bnav(components)
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(DgnCCIN, ComponentModel.ISupportInitialize).BeginInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' BtnClear
@@ -49,19 +52,22 @@
             ' 
             TxtFind.Margin = New Padding(7, 5, 7, 5)
             ' 
-            ' SLFPanel
+            ' XOPanel
             ' 
-            SLFPanel.Controls.Add(DgnCCIN)
-            SLFPanel.Size = New Size(1307, 946)
-            SLFPanel.Controls.SetChildIndex(PnlFind, 0)
-            SLFPanel.Controls.SetChildIndex(DgnCCIN, 0)
+            XOPanel.Controls.Add(Bnav)
+            XOPanel.Controls.Add(DgnCCIN)
+            XOPanel.Size = New Size(1307, 946)
+            XOPanel.Controls.SetChildIndex(PnlFind, 0)
+            XOPanel.Controls.SetChildIndex(DgnCCIN, 0)
+            XOPanel.Controls.SetChildIndex(Bnav, 0)
             ' 
             ' DgnCCIN
             ' 
             DgnCCIN.AllowUserToAddRows = False
             DgnCCIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(196), CByte(235), CByte(107))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(205), CByte(217), CByte(166))
             DgnCCIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+            DgnCCIN.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnCCIN.BorderStyle = BorderStyle.None
             DgnCCIN.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnCCIN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
@@ -161,6 +167,20 @@
             company_description.ReadOnly = True
             company_description.SortMode = DataGridViewColumnSortMode.Programmatic
             ' 
+            ' Bnav
+            ' 
+            Bnav.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            Bnav.Dock = DockStyle.Bottom
+            Bnav.Font = New Font("Verdana", 8F)
+            Bnav.ImageScalingSize = New Size(24, 24)
+            Bnav.Location = New Point(0, 913)
+            Bnav.Name = "Bnav"
+            Bnav.Size = New Size(1307, 33)
+            Bnav.TabIndex = 802
+            Bnav.Text = "Bnav1"
+            Bnav.XOIsShowAddNewButton = False
+            Bnav.XOIsShowDeleteButton = False
+            ' 
             ' FRMccin
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
@@ -176,10 +196,12 @@
             PnlFind.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
-            pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            XOPanel.PerformLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(DgnCCIN, ComponentModel.ISupportInitialize).EndInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub
@@ -190,6 +212,7 @@
         Friend WithEvents company_searchterm1 As DataGridViewTextBoxColumn
         Friend WithEvents company_searchterm2 As DataGridViewTextBoxColumn
         Friend WithEvents company_description As DataGridViewTextBoxColumn
+        Friend WithEvents Bnav As CMCv.UI.Control.Bnav
 
     End Class
 End Namespace

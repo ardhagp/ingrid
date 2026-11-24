@@ -1,8 +1,4 @@
-﻿Imports System.IO
-Imports System.Net.Http
-Imports System.Runtime.Versioning
-
-Namespace UI.Canvas
+﻿Namespace UI.Canvas
     Public Class FRMconnEditor
 
         Private WithEvents ComponentMainframeMenu As New CMCv.UI.View.MenuStrip
@@ -21,7 +17,7 @@ Namespace UI.Canvas
             ' Add any initialization after the InitializeComponent() call.
 
         End Sub
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub LoadData()
             Try
                 CMDconn.Editor.GetRowValue(varDataProperties)
@@ -66,7 +62,7 @@ Namespace UI.Canvas
             End Try
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Function CheckInvalidInput() As Boolean
             Dim varInvalidScore As Integer = 0
 
@@ -112,10 +108,10 @@ Namespace UI.Canvas
         ''' <summary>
         ''' Saves the connection record after validating input fields.
         ''' </summary>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Save()
             If CheckInvalidInput() Then
-                Decision("INGRID - CONNECTION SETTINGS", "Unable to save your record." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.OkOnly)
+                Decision("INGRID - CONNECTION SETTINGS", "Unable to save your record." & Environment.NewLine & "Make sure the Connection Name, Address, Port, Username, Password, and Database Name are filled in correctly.", LibApp.Ingrid.Global.PopupType.Alert, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Alert, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.OkOnly)
                 Return
             End If
 
@@ -135,22 +131,22 @@ Namespace UI.Canvas
             End With
 
             If (CMDconn.Editor.PushData(varDataProperties)) Then
-                SLFStatus.Text = "Success"
+                XOStatus.Text = "Success"
                 RaiseEvent EventRecordSaved()
                 Me.Close()
             Else
-                SLFStatus.Text = "Failed to save"
+                XOStatus.Text = "Failed to save"
                 Return
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Function ReadConnectionString(url As String, connectioncode As String) As String
             Try
                 Dim varFullurl As String
                 varFullurl = url & "conf/" & connectioncode.Trim & "/host.conn"
 
-                Using client As New HttpClient()
+                Using client As New System.Net.Http.HttpClient()
                     Dim response = client.GetAsync(varFullurl).Result
                     response.EnsureSuccessStatusCode()
                     Dim content = response.Content.ReadAsStringAsync().Result
@@ -183,7 +179,7 @@ Namespace UI.Canvas
         ''' <summary>
         ''' Loads existing connection data into the form fields based on the RowID.
         ''' </summary>
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub FRMconnEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             CMCv.ImageEditor.File.GetImage.GetSvgImageFromUrlAsync(My.Settings.URL_Logo_EDIT, XOLogo,, 512, 512, True, "Module")
 
@@ -203,12 +199,12 @@ Namespace UI.Canvas
 
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
             Call Save()
         End Sub
@@ -217,19 +213,19 @@ Namespace UI.Canvas
             Call CheckPasswordChange()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ComponentMainframeMenu_EventFileSave() Handles ComponentMainframeMenu.EventFileSave
             Call Save()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ComponentMainframeMenu_EventFileCancel() Handles ComponentMainframeMenu.EventFileCancel
             Me.Close()
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ComponentMainframeMenu_EventFileUndoAll() Handles ComponentMainframeMenu.EventFileUndoAll
-            If Decision(My.Application.Info.AssemblyName, "Do you want to undo all changes?", LibApp.Ingrid.Global.PopupType.Question, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = DialogResult.Yes Then
+            If Decision("INGRID - CONNECTION SETTINGS", "Do you want to undo all changes?", LibApp.Ingrid.Global.PopupType.UndoChanges, "", CMCv.UI.Canvas.FRMdialogBox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogBox.MessageTypes.YesNo) = DialogResult.Yes Then
                 If (varDataProperties.ConnectionIsNew) Then
                     TxtConnectionName.Clear()
                     TxtAddress.Clear()
@@ -243,9 +239,9 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
-        Private Sub btnGet_Click(sender As Object, e As EventArgs) Handles btnGet.Click
-            Dim varDownloadCenter As String = String.Empty
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub BtnGet_Click(sender As Object, e As EventArgs) Handles btnGet.Click
+            Dim varDownloadCenter As String
 
             If txtImportCode.Text = String.Empty Then
                 MessageBox.Show("Please enter the connection code to import.")
@@ -258,9 +254,9 @@ Namespace UI.Canvas
             txtImportContent.Text = conn
         End Sub
 
-        <SupportedOSPlatform("windows")>
-        Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
-            If Not CheckInvalidInput() Then
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub BtnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+            If CheckInvalidInput() Then
                 Return
             End If
 
@@ -271,8 +267,8 @@ Namespace UI.Canvas
             varConnectionName = CMCv.Security.Encryption.CRC32(TxtConnectionName.Text.Trim)
         End Sub
 
-        <SupportedOSPlatform("windows")>
-        Private Sub btnSaveAs_Click(sender As Object, e As EventArgs) Handles btnSaveAs.Click
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub BtnSaveAs_Click(sender As Object, e As EventArgs) Handles btnSaveAs.Click
             Dim varDialog As New FolderBrowserDialog With {
         .Description = "Select a folder to save the connection config"
         }
@@ -289,9 +285,9 @@ Namespace UI.Canvas
                 Dim crc As String = varConnectionName  ' replace with your CRC5 or CRC32 result
 
                 ' Create CRC folder
-                Dim crcFolder As String = Path.Combine(selectedPath, crc)
-                If Not Directory.Exists(crcFolder) Then
-                    Directory.CreateDirectory(crcFolder)
+                Dim crcFolder As String = System.IO.Path.Combine(selectedPath, crc)
+                If Not System.IO.Directory.Exists(crcFolder) Then
+                    System.IO.Directory.CreateDirectory(crcFolder)
                 End If
 
                 ' Encrypted content
@@ -299,15 +295,15 @@ Namespace UI.Canvas
                 encrypted = txtImportContent.Text.Trim
 
                 ' Save as host.conn
-                Dim filePath As String = Path.Combine(crcFolder, "host.conn")
-                File.WriteAllText(filePath, encrypted)
+                Dim filePath As String = System.IO.Path.Combine(crcFolder, "host.conn")
+                System.IO.File.WriteAllText(filePath, encrypted)
 
                 MessageBox.Show("Config saved to: " & filePath)
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
-        Private Sub btnImport_Click(sender As Object, e As EventArgs) Handles btnImport.Click
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub BtnImport_Click(sender As Object, e As EventArgs) Handles btnImport.Click
             If txtImportContent.Text = String.Empty Then
                 MessageBox.Show("Please enter the connection content to import.")
                 Return
@@ -342,7 +338,7 @@ Namespace UI.Canvas
             MessageBox.Show("Connection imported successfully.")
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub ChangeIsMaskedState()
             If (ChkIsMasked.Checked) Then
                 TxtAddress.UseSystemPasswordChar = True
@@ -357,7 +353,7 @@ Namespace UI.Canvas
             End If
         End Sub
 
-        <SupportedOSPlatform("windows")>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnTest_Click(sender As Object, e As EventArgs) Handles Btn_Test.Click
             If CheckInvalidInput() Then
                 ' Run if invalid input is detected

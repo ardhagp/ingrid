@@ -23,7 +23,7 @@
             Me.PnlBottomButton.SuspendLayout()
             CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.pnl_.SuspendLayout()
-            Me.SLFPanel.SuspendLayout()
+            Me.XOPanel.SuspendLayout()
             Me.SuspendLayout()
             '
             'BtnClose
@@ -42,7 +42,7 @@
             CType(Me.SLFLogo, System.ComponentModel.ISupportInitialize).EndInit()
             Me.pnl_.ResumeLayout(False)
             Me.pnl_.PerformLayout()
-            Me.SLFPanel.ResumeLayout(False)
+            Me.XOPanel.ResumeLayout(False)
             Me.ResumeLayout(False)
             Me.PerformLayout()
 

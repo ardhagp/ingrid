@@ -39,8 +39,8 @@
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             TbxPosition.SuspendLayout()
             tpDetail.SuspendLayout()
@@ -58,18 +58,26 @@
             PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
             PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
             ' 
+            ' XOSubtitle
+            ' 
+            XOSubtitle.Size = New Size(0, 25)
+            ' 
+            ' XOFormTitle
+            ' 
+            XOFormTitle.Size = New Size(0, 48)
+            ' 
             ' pnl_
             ' 
             pnl_.Margin = New Padding(7, 5, 7, 5)
             pnl_.Size = New Size(824, 110)
             ' 
-            ' SLFPanel
+            ' XOPanel
             ' 
-            SLFPanel.Controls.Add(TbxPosition)
-            SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(824, 833)
-            SLFPanel.Controls.SetChildIndex(TbxPosition, 0)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.Add(TbxPosition)
+            XOPanel.Margin = New Padding(7, 5, 7, 5)
+            XOPanel.Size = New Size(824, 833)
+            XOPanel.Controls.SetChildIndex(TbxPosition, 0)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             ' 
             ' BtnSave
             ' 
@@ -125,7 +133,7 @@
             ChkAddNew.FlatStyle = FlatStyle.Flat
             ChkAddNew.Font = New Font("Segoe UI", 12F)
             ChkAddNew.ForeColor = Color.White
-            ChkAddNew.Location = New Point(233, 28)
+            ChkAddNew.Location = New Point(233, 35)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
             ChkAddNew.Name = "ChkAddNew"
             ChkAddNew.Size = New Size(221, 36)
@@ -250,6 +258,7 @@
             TxtPositionDescription.XOIsPlaceholder = False
             TxtPositionDescription.XOIsReplaceEmptyString = False
             TxtPositionDescription.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtPositionDescription.XOLinkedLabel = Nothing
             TxtPositionDescription.XOMandatoryBgColor = Color.LightPink
             TxtPositionDescription.XOMandatoryBgColorDefault = Color.White
             TxtPositionDescription.XOMandatoryMessage = Nothing
@@ -280,6 +289,7 @@
             TxtPositionName.XOIsPlaceholder = False
             TxtPositionName.XOIsReplaceEmptyString = False
             TxtPositionName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtPositionName.XOLinkedLabel = Nothing
             TxtPositionName.XOMandatoryBgColor = Color.LightPink
             TxtPositionName.XOMandatoryBgColorDefault = Color.White
             TxtPositionName.XOMandatoryMessage = Nothing
@@ -336,6 +346,7 @@
             TxtPositionCode.XOIsPlaceholder = False
             TxtPositionCode.XOIsReplaceEmptyString = False
             TxtPositionCode.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtPositionCode.XOLinkedLabel = Nothing
             TxtPositionCode.XOMandatoryBgColor = Color.LightPink
             TxtPositionCode.XOMandatoryBgColorDefault = Color.White
             TxtPositionCode.XOMandatoryMessage = Nothing
@@ -354,13 +365,14 @@
             ClientSize = New Size(824, 965)
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMpostEditor"
+            XOModuleCode = "POST"
+            XOWikiUrl = "https://github.com/ardhagp/ingrid/wiki/05.01.05-%E2%80%90-%5BPOST%5D-Position#editor"
             PnlBottomButton.ResumeLayout(False)
             PnlBottomButton.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
-            pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             TbxPosition.ResumeLayout(False)
             tpDetail.ResumeLayout(False)

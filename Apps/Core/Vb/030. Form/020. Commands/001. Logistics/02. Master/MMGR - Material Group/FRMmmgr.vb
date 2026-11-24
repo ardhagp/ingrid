@@ -4,7 +4,7 @@ Namespace UI.Canvas
     Public Class FRMmmgr
         <SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
-            CMDmmgr.View.DisplayData(varDataProperties, DgnMMGR, SLFStatus, TxtFind, forcerefresh)
+            CMDmmgr.View.DisplayData(varDataProperties, DgnMMGR, XOStatus, TxtFind, forcerefresh)
         End Sub
 
         <SupportedOSPlatform("windows")>

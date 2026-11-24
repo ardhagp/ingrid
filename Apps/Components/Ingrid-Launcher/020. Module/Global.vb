@@ -26,13 +26,13 @@
                        Optional parentframe As System.Windows.Forms.Form = Nothing)
         Try
             formname.Text = windowtitle
-            formname.SLFNamaForm.Text = formtitle
+            formname.XOFormTitle.Text = formtitle
 
             If formimage IsNot Nothing Then
                 formname.SLFLogo.Image = formimage
             End If
 
-            formname.SLFSubNamaForm.Text = formsubtitle
+            formname.XOSubtitle.Text = formsubtitle
 
             If isdialog Then
                 formname.ShowDialog()
@@ -92,13 +92,13 @@
                        Optional parentframe As System.Windows.Forms.Form = Nothing)
         Try
             formname.Text = windowtitle
-            formname.SLFNamaForm.Text = formtitle
+            formname.XOFormTitle.Text = formtitle
 
             If formimage IsNot Nothing Then
                 formname.SLFLogo.Image = formimage
             End If
 
-            formname.SLFSubNamaForm.Text = formsubtitle
+            formname.XOSubtitle.Text = formsubtitle
 
             If isdialog Then
                 formname.ShowDialog()

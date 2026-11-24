@@ -17,7 +17,7 @@ Namespace UI.Canvas
         <SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnMCTG)
-            CMDmctg.View.DisplayData(varDataProperties, DgnMCTG, SLFStatus, TxtFind, forcerefresh)
+            CMDmctg.View.DisplayData(varDataProperties, DgnMCTG, XOStatus, TxtFind, forcerefresh)
         End Sub
 #End Region
 

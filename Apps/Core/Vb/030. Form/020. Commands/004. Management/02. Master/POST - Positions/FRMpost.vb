@@ -8,14 +8,21 @@ Namespace UI.Canvas
         Private WithEvents Frm_post_Editor As New FRMpostEditor
         Private WithEvents Com_mms_Menu As New CMCv.UI.View.MenuStrip
 
-        ' This Module Identifier
-        Private varThisModuleId As Long = 0
-        Private Const varThisModuleCode As String = "POST"
-
 
         ' ----------------------------------------------------------
         ' Form Events Handlers
         ' ----------------------------------------------------------
+        ''' <summary>
+        ''' This event handler is triggered when the FRMpost form is activated. It sets the active module to UserParameters by updating the AllParameters collection with the current module code. This ensures that the application recognizes the FRMpost form as the active module for any subsequent operations or interactions.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMpost_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+            ' Set active module to UserParameters
+            SetModuleIdentifier(varDataProperties.AllParameters, XOModuleCode, XOModuleId)
+        End Sub
+
         ''' <summary>
         ''' This event handler is triggered when the FRMpost form is loaded. It performs several initialization tasks, including loading the logo image from a specified URL, setting the active module to UserParameters, loading the menu strip, displaying menu data, applying color settings to the DataGridView, and retrieving initial data to populate the DataGridView. It also clears any existing search text in the TxtFind control and adjusts the row height of the DataGridView for better display.
         ''' </summary>
@@ -27,9 +34,9 @@ Namespace UI.Canvas
 
             ' Set active module to UserParameters
             With varDataProperties
-                SetValue(.AllParameters, tModule.P_ModuleCode, varThisModuleCode)
-                varThisModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.AllParameters)
-                SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
+                SetValue(.AllParameters, tModule.P_ModuleCode, XOModuleCode)
+                XOModuleId = CMDmods.View.GetModuleIdByCode(varDataProperties, varDataProperties.AllParameters)
+                SetModuleIdentifier(varDataProperties.AllParameters, XOModuleCode, XOModuleId)
             End With
 
             ' Continue to Load anything for this module
@@ -39,17 +46,6 @@ Namespace UI.Canvas
             Call GetData(True)
             TxtFind.ClearSearch()
             CMCv.UI.Components.Behavior.Datagrid.AdaptiveRowHeight(Me, DgnPOST)
-        End Sub
-
-        ''' <summary>
-        ''' This event handler is triggered when the FRMpost form is activated. It sets the active module to UserParameters by updating the AllParameters collection with the current module code. This ensures that the application recognizes the FRMpost form as the active module for any subsequent operations or interactions.
-        ''' </summary>
-        ''' <param name="sender"></param>
-        ''' <param name="e"></param>
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMpost_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-            ' Set active module to UserParameters
-            SetModuleIdentifier(varDataProperties.AllParameters, varThisModuleCode, varThisModuleId)
         End Sub
 
         ''' <summary>
@@ -73,18 +69,6 @@ Namespace UI.Canvas
         End Sub
 
 
-        ' ----------------------------------------------------------
-        ' Other or Extended Form Events Handlers
-        ' ----------------------------------------------------------
-        ''' <summary>
-        ''' This event handler is triggered when a record is saved in the FRMpostEditor form. It calls the GetData method with the forcerefresh parameter set to True, which refreshes the data displayed in the DgnPOST DataGridView to reflect any changes made during the record editing process. This ensures that the user sees the most up-to-date information after saving a record.
-        ''' </summary>
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMpostEditor_RecordSaved() Handles Frm_post_Editor.EventRecordSaved
-            Call GetData(True)
-        End Sub
-
-
         ' ---------------------------------------------------------
         ' Functions and Subroutines
         ' ---------------------------------------------------------
@@ -96,7 +80,7 @@ Namespace UI.Canvas
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnPOST)
             varDataProperties.EmployeePositionIsForceRefresh = forcerefresh
-            CMDpost.View.DisplayData(varDataProperties, DgnPOST, SLFStatus, TxtFind)
+            CMDpost.View.DisplayData(varDataProperties, DgnPOST, XOStatus, TxtFind, Bnav)
         End Sub
 
         ''' <summary>
@@ -141,6 +125,9 @@ Namespace UI.Canvas
             End With
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the user selects the "Edit" option from the menu. It checks if the user has the necessary permissions to modify an existing employee position record. If authorized, it retrieves the ID of the currently selected position in the DgnPOST DataGridView and initializes a new instance of the FRMpostEditor form for editing the record. It sets the appropriate properties for the form and displays it as a dialog. If no record is selected or if the user is not authorized, it shows an error message indicating the issue.
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataEdit() Handles Com_mms_Menu.EventDataEdit
             With varDataProperties
@@ -168,6 +155,9 @@ Namespace UI.Canvas
             End With
         End Sub
 
+        ''' <summary>
+        ''' This event handler is triggered when the user selects the "Delete" option from the menu. It checks if the user has the necessary permissions to delete an employee position record. If authorized, it retrieves the ID of the currently selected position in the DgnPOST DataGridView and prompts the user for confirmation to delete the record. If confirmed, it attempts to delete the record from the database and refreshes the DataGridView to reflect the changes. If the user is not authorized or if no record is selected, it shows an appropriate error message.
+        ''' </summary>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub EventDataDelete() Handles Com_mms_Menu.EventDataDelete
             With varDataProperties
@@ -255,6 +245,18 @@ Namespace UI.Canvas
             TxtFind.Clear()
             Call GetData(True)
             TxtFind.ClearSearch()
+        End Sub
+
+
+        ' ----------------------------------------------------------
+        ' Addins or External Forms Events Handlers
+        ' ----------------------------------------------------------
+        ''' <summary>
+        ''' This event handler is triggered when a record is saved in the FRMpostEditor form. It calls the GetData method with the forcerefresh parameter set to True, which refreshes the data displayed in the DgnPOST DataGridView to reflect any changes made during the record editing process. This ensures that the user sees the most up-to-date information after saving a record.
+        ''' </summary>
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMpostEditor_RecordSaved() Handles Frm_post_Editor.EventRecordSaved
+            Call GetData(True)
         End Sub
     End Class
 End Namespace

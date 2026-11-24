@@ -361,21 +361,28 @@
 
                     varBindingSource = New System.Windows.Forms.BindingSource(datasetname, tablename)
 
-                    If Not (dbr.DataGrid Is Nothing) Then
-                        dbr.DataGrid.DataSource = varBindingSource
-                    End If
+                    With dbr
+                        If .DataGrid IsNot Nothing Then
+                            .DataGrid.DataSource = varBindingSource
+                        End If
 
-                    If Not (dbr.Dropdown Is Nothing) Then
-                        dbr.Dropdown.DataSource = varBindingSource
-                    End If
+                        If .RecordNavigator IsNot Nothing Then
+                            .RecordNavigator.BindingSource = varBindingSource
+                            .RecordNavigator.InitializeNavigator()
+                        End If
 
-                    If Not (dbr.StatusBar Is Nothing) AndAlso (dbr.StatusBar.Items.Count <> 0) Then
-                        dbr.StatusBar.Items(0).Text = varBindingSource.Count & " Row(s)"
-                    End If
+                        If .Dropdown IsNot Nothing Then
+                            .Dropdown.DataSource = varBindingSource
+                        End If
 
-                    If Not (dbr.Chart Is Nothing) Then
-                        dbr.Chart.DataSource = varBindingSource
-                    End If
+                        If (.StatusBar IsNot Nothing) AndAlso (.StatusBar.Items.Count <> 0) Then
+                            .StatusBar.Items(0).Text = varBindingSource.Count & " Row(s)"
+                        End If
+
+                        If .Chart IsNot Nothing Then
+                            .Chart.DataSource = varBindingSource
+                        End If
+                    End With
                 End Using
             Catch ex As System.Data.SQLite.SQLiteException
                 'Catch ex As Microsoft.Data.Sqlite.SqliteException

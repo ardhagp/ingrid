@@ -58,8 +58,8 @@
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             TbctlBasic.SuspendLayout()
             tp1_.SuspendLayout()
@@ -86,11 +86,11 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(TbctlBasic)
-            SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(807, 728)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(TbctlBasic, 0)
+            XOPanel.Controls.Add(TbctlBasic)
+            XOPanel.Margin = New Padding(7, 5, 7, 5)
+            XOPanel.Size = New Size(807, 728)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.SetChildIndex(TbctlBasic, 0)
             ' 
             ' BtnSave
             ' 
@@ -761,12 +761,13 @@
             Icon = CType(resources.GetObject("$this.Icon"), Icon)
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMconnEditor"
+            XOModuleCode = "CONN"
             PnlBottomButton.ResumeLayout(False)
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             TbctlBasic.ResumeLayout(False)
             tp1_.ResumeLayout(False)

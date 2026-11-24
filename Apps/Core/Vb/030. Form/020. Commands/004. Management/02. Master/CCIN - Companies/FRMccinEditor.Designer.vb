@@ -23,21 +23,21 @@
             components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRMccinEditor))
             TxtCode = New CMCv.UI.Control.Txt(components)
+            ULblCompanyCode = New CMCv.UI.Control.ULbl()
             TxtSearchTerm1 = New CMCv.UI.Control.Txt(components)
+            ULblSearchTerm1 = New CMCv.UI.Control.ULbl()
             TxtSearchTerm2 = New CMCv.UI.Control.Txt(components)
+            ULblSearchTerm2 = New CMCv.UI.Control.ULbl()
             TxtDescription = New CMCv.UI.Control.Txt(components)
+            ULblDescription = New CMCv.UI.Control.ULbl()
             BtnSave = New CMCv.UI.Control.Btn(components)
             BtnCancel = New CMCv.UI.Control.Btn(components)
             TxtName = New CMCv.UI.Control.Txt(components)
+            ULblCompanyName = New CMCv.UI.Control.ULbl()
             ChkAddNew = New CMCv.UI.Control.Chk(components)
-            ULbl1 = New CMCv.UI.Control.ULbl()
-            ULbl2 = New CMCv.UI.Control.ULbl()
-            ULbl3 = New CMCv.UI.Control.ULbl()
-            ULbl4 = New CMCv.UI.Control.ULbl()
-            ULbl5 = New CMCv.UI.Control.ULbl()
             TbxCompany = New CMCv.UI.Control.Tbx(components)
             TpDetail = New TabPage()
-            ULbl6 = New CMCv.UI.Control.ULbl()
+            ULblCompanyLogo = New CMCv.UI.Control.ULbl()
             BtnRemovePhoto = New CMCv.UI.Control.Btn(components)
             BtnBrowsePhoto = New CMCv.UI.Control.Btn(components)
             pctbxPhoto = New CMCv.UI.Control.Pbx(components)
@@ -45,8 +45,8 @@
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             TbxCompany.SuspendLayout()
             TpDetail.SuspendLayout()
@@ -71,24 +71,24 @@
             pnl_.Margin = New Padding(7, 5, 7, 5)
             pnl_.Size = New Size(1181, 110)
             ' 
-            ' SLFPanel
+            ' XOPanel
             ' 
-            SLFPanel.AutoScroll = True
-            SLFPanel.Controls.Add(BtnRemovePhoto)
-            SLFPanel.Controls.Add(BtnBrowsePhoto)
-            SLFPanel.Controls.Add(pctbxPhoto)
-            SLFPanel.Controls.Add(pcbxFrame)
-            SLFPanel.Controls.Add(ULbl6)
-            SLFPanel.Controls.Add(TbxCompany)
-            SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(1181, 833)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(TbxCompany, 0)
-            SLFPanel.Controls.SetChildIndex(ULbl6, 0)
-            SLFPanel.Controls.SetChildIndex(pcbxFrame, 0)
-            SLFPanel.Controls.SetChildIndex(pctbxPhoto, 0)
-            SLFPanel.Controls.SetChildIndex(BtnBrowsePhoto, 0)
-            SLFPanel.Controls.SetChildIndex(BtnRemovePhoto, 0)
+            XOPanel.AutoScroll = True
+            XOPanel.Controls.Add(BtnRemovePhoto)
+            XOPanel.Controls.Add(BtnBrowsePhoto)
+            XOPanel.Controls.Add(pctbxPhoto)
+            XOPanel.Controls.Add(pcbxFrame)
+            XOPanel.Controls.Add(ULblCompanyLogo)
+            XOPanel.Controls.Add(TbxCompany)
+            XOPanel.Margin = New Padding(7, 5, 7, 5)
+            XOPanel.Size = New Size(1181, 833)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.SetChildIndex(TbxCompany, 0)
+            XOPanel.Controls.SetChildIndex(ULblCompanyLogo, 0)
+            XOPanel.Controls.SetChildIndex(pcbxFrame, 0)
+            XOPanel.Controls.SetChildIndex(pctbxPhoto, 0)
+            XOPanel.Controls.SetChildIndex(BtnBrowsePhoto, 0)
+            XOPanel.Controls.SetChildIndex(BtnRemovePhoto, 0)
             ' 
             ' TxtCode
             ' 
@@ -108,6 +108,7 @@
             TxtCode.XOIsPlaceholder = False
             TxtCode.XOIsReplaceEmptyString = False
             TxtCode.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtCode.XOLinkedLabel = ULblCompanyCode
             TxtCode.XOMandatoryBgColor = Color.LightPink
             TxtCode.XOMandatoryBgColorDefault = Color.White
             TxtCode.XOMandatoryMessage = Nothing
@@ -119,6 +120,19 @@
             TxtCode.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberNoSpace
             TxtCode.XOSelectOnFocus = True
             TxtCode.XOSqlText = ""
+            ' 
+            ' ULblCompanyCode
+            ' 
+            ULblCompanyCode.BackColor = Color.MistyRose
+            ULblCompanyCode.Location = New Point(16, 38)
+            ULblCompanyCode.Margin = New Padding(12, 8, 12, 8)
+            ULblCompanyCode.Name = "ULblCompanyCode"
+            ULblCompanyCode.Size = New Size(272, 39)
+            ULblCompanyCode.TabIndex = 1006
+            ULblCompanyCode.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
+            ULblCompanyCode.XOText = "Company Code"
+            ULblCompanyCode.XOTextAdjuster = False
+            ULblCompanyCode.XOTextBorder = False
             ' 
             ' TxtSearchTerm1
             ' 
@@ -138,6 +152,7 @@
             TxtSearchTerm1.XOIsPlaceholder = False
             TxtSearchTerm1.XOIsReplaceEmptyString = False
             TxtSearchTerm1.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtSearchTerm1.XOLinkedLabel = ULblSearchTerm1
             TxtSearchTerm1.XOMandatoryBgColor = Color.LightPink
             TxtSearchTerm1.XOMandatoryBgColorDefault = Color.White
             TxtSearchTerm1.XOMandatoryMessage = Nothing
@@ -149,6 +164,19 @@
             TxtSearchTerm1.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberAndSpace
             TxtSearchTerm1.XOSelectOnFocus = False
             TxtSearchTerm1.XOSqlText = ""
+            ' 
+            ' ULblSearchTerm1
+            ' 
+            ULblSearchTerm1.BackColor = Color.MistyRose
+            ULblSearchTerm1.Location = New Point(16, 178)
+            ULblSearchTerm1.Margin = New Padding(12, 8, 12, 8)
+            ULblSearchTerm1.Name = "ULblSearchTerm1"
+            ULblSearchTerm1.Size = New Size(272, 39)
+            ULblSearchTerm1.TabIndex = 1008
+            ULblSearchTerm1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
+            ULblSearchTerm1.XOText = "Search Term 1"
+            ULblSearchTerm1.XOTextAdjuster = False
+            ULblSearchTerm1.XOTextBorder = False
             ' 
             ' TxtSearchTerm2
             ' 
@@ -168,6 +196,7 @@
             TxtSearchTerm2.XOIsPlaceholder = False
             TxtSearchTerm2.XOIsReplaceEmptyString = False
             TxtSearchTerm2.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtSearchTerm2.XOLinkedLabel = ULblSearchTerm2
             TxtSearchTerm2.XOMandatoryBgColor = Color.LightPink
             TxtSearchTerm2.XOMandatoryBgColorDefault = Color.White
             TxtSearchTerm2.XOMandatoryMessage = Nothing
@@ -179,6 +208,19 @@
             TxtSearchTerm2.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.TextNumberAndSpace
             TxtSearchTerm2.XOSelectOnFocus = False
             TxtSearchTerm2.XOSqlText = ""
+            ' 
+            ' ULblSearchTerm2
+            ' 
+            ULblSearchTerm2.BackColor = Color.MistyRose
+            ULblSearchTerm2.Location = New Point(16, 247)
+            ULblSearchTerm2.Margin = New Padding(12, 8, 12, 8)
+            ULblSearchTerm2.Name = "ULblSearchTerm2"
+            ULblSearchTerm2.Size = New Size(272, 39)
+            ULblSearchTerm2.TabIndex = 1009
+            ULblSearchTerm2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
+            ULblSearchTerm2.XOText = "Search Term 2"
+            ULblSearchTerm2.XOTextAdjuster = False
+            ULblSearchTerm2.XOTextBorder = False
             ' 
             ' TxtDescription
             ' 
@@ -199,6 +241,7 @@
             TxtDescription.XOIsPlaceholder = False
             TxtDescription.XOIsReplaceEmptyString = False
             TxtDescription.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtDescription.XOLinkedLabel = ULblDescription
             TxtDescription.XOMandatoryBgColor = Color.LightPink
             TxtDescription.XOMandatoryBgColorDefault = Color.White
             TxtDescription.XOMandatoryMessage = Nothing
@@ -210,6 +253,19 @@
             TxtDescription.XORestriction = CMCv.UI.Control.ControlCodeBase.EnumRestriction.None
             TxtDescription.XOSelectOnFocus = False
             TxtDescription.XOSqlText = ""
+            ' 
+            ' ULblDescription
+            ' 
+            ULblDescription.BackColor = Color.Moccasin
+            ULblDescription.Location = New Point(16, 313)
+            ULblDescription.Margin = New Padding(12, 8, 12, 8)
+            ULblDescription.Name = "ULblDescription"
+            ULblDescription.Size = New Size(272, 254)
+            ULblDescription.TabIndex = 1010
+            ULblDescription.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULblDescription.XOText = "Description"
+            ULblDescription.XOTextAdjuster = False
+            ULblDescription.XOTextBorder = False
             ' 
             ' BtnSave
             ' 
@@ -275,6 +331,7 @@
             TxtName.XOIsPlaceholder = False
             TxtName.XOIsReplaceEmptyString = False
             TxtName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtName.XOLinkedLabel = ULblCompanyName
             TxtName.XOMandatoryBgColor = Color.LightPink
             TxtName.XOMandatoryBgColorDefault = Color.White
             TxtName.XOMandatoryMessage = Nothing
@@ -287,6 +344,19 @@
             TxtName.XOSelectOnFocus = False
             TxtName.XOSqlText = ""
             ' 
+            ' ULblCompanyName
+            ' 
+            ULblCompanyName.BackColor = Color.MistyRose
+            ULblCompanyName.Location = New Point(16, 108)
+            ULblCompanyName.Margin = New Padding(12, 8, 12, 8)
+            ULblCompanyName.Name = "ULblCompanyName"
+            ULblCompanyName.Size = New Size(272, 39)
+            ULblCompanyName.TabIndex = 1007
+            ULblCompanyName.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
+            ULblCompanyName.XOText = "Company Name"
+            ULblCompanyName.XOTextAdjuster = False
+            ULblCompanyName.XOTextBorder = False
+            ' 
             ' ChkAddNew
             ' 
             ChkAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
@@ -295,7 +365,7 @@
             ChkAddNew.FlatStyle = FlatStyle.Flat
             ChkAddNew.Font = New Font("Segoe UI", 12F)
             ChkAddNew.ForeColor = Color.White
-            ChkAddNew.Location = New Point(586, 28)
+            ChkAddNew.Location = New Point(586, 35)
             ChkAddNew.Margin = New Padding(6, 5, 6, 5)
             ChkAddNew.Name = "ChkAddNew"
             ChkAddNew.Size = New Size(221, 36)
@@ -303,71 +373,6 @@
             ChkAddNew.Text = "Add new on Save"
             ChkAddNew.UseVisualStyleBackColor = False
             ChkAddNew.XOCheckColor = Color.White
-            ' 
-            ' ULbl1
-            ' 
-            ULbl1.BackColor = Color.MistyRose
-            ULbl1.Location = New Point(16, 38)
-            ULbl1.Margin = New Padding(12, 8, 12, 8)
-            ULbl1.Name = "ULbl1"
-            ULbl1.Size = New Size(272, 39)
-            ULbl1.TabIndex = 1006
-            ULbl1.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
-            ULbl1.XOText = "Company Code"
-            ULbl1.XOTextAdjuster = False
-            ULbl1.XOTextBorder = False
-            ' 
-            ' ULbl2
-            ' 
-            ULbl2.BackColor = Color.MistyRose
-            ULbl2.Location = New Point(16, 108)
-            ULbl2.Margin = New Padding(12, 8, 12, 8)
-            ULbl2.Name = "ULbl2"
-            ULbl2.Size = New Size(272, 39)
-            ULbl2.TabIndex = 1007
-            ULbl2.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
-            ULbl2.XOText = "Company Name"
-            ULbl2.XOTextAdjuster = False
-            ULbl2.XOTextBorder = False
-            ' 
-            ' ULbl3
-            ' 
-            ULbl3.BackColor = Color.MistyRose
-            ULbl3.Location = New Point(16, 178)
-            ULbl3.Margin = New Padding(12, 8, 12, 8)
-            ULbl3.Name = "ULbl3"
-            ULbl3.Size = New Size(272, 39)
-            ULbl3.TabIndex = 1008
-            ULbl3.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
-            ULbl3.XOText = "Search Term 1"
-            ULbl3.XOTextAdjuster = False
-            ULbl3.XOTextBorder = False
-            ' 
-            ' ULbl4
-            ' 
-            ULbl4.BackColor = Color.MistyRose
-            ULbl4.Location = New Point(16, 247)
-            ULbl4.Margin = New Padding(12, 8, 12, 8)
-            ULbl4.Name = "ULbl4"
-            ULbl4.Size = New Size(272, 39)
-            ULbl4.TabIndex = 1009
-            ULbl4.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Red
-            ULbl4.XOText = "Search Term 2"
-            ULbl4.XOTextAdjuster = False
-            ULbl4.XOTextBorder = False
-            ' 
-            ' ULbl5
-            ' 
-            ULbl5.BackColor = Color.Moccasin
-            ULbl5.Location = New Point(16, 313)
-            ULbl5.Margin = New Padding(12, 8, 12, 8)
-            ULbl5.Name = "ULbl5"
-            ULbl5.Size = New Size(272, 254)
-            ULbl5.TabIndex = 1010
-            ULbl5.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl5.XOText = "Description"
-            ULbl5.XOTextAdjuster = False
-            ULbl5.XOTextBorder = False
             ' 
             ' TbxCompany
             ' 
@@ -385,12 +390,12 @@
             ' 
             TpDetail.AutoScroll = True
             TpDetail.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
-            TpDetail.Controls.Add(ULbl1)
-            TpDetail.Controls.Add(ULbl5)
+            TpDetail.Controls.Add(ULblCompanyCode)
+            TpDetail.Controls.Add(ULblDescription)
             TpDetail.Controls.Add(TxtCode)
-            TpDetail.Controls.Add(ULbl4)
-            TpDetail.Controls.Add(ULbl2)
-            TpDetail.Controls.Add(ULbl3)
+            TpDetail.Controls.Add(ULblSearchTerm2)
+            TpDetail.Controls.Add(ULblCompanyName)
+            TpDetail.Controls.Add(ULblSearchTerm1)
             TpDetail.Controls.Add(TxtSearchTerm1)
             TpDetail.Controls.Add(TxtSearchTerm2)
             TpDetail.Controls.Add(TxtName)
@@ -402,19 +407,19 @@
             TpDetail.TabIndex = 0
             TpDetail.Text = "DETAIL"
             ' 
-            ' ULbl6
+            ' ULblCompanyLogo
             ' 
-            ULbl6.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            ULbl6.BackColor = Color.Moccasin
-            ULbl6.Location = New Point(887, 83)
-            ULbl6.Margin = New Padding(5, 6, 5, 6)
-            ULbl6.Name = "ULbl6"
-            ULbl6.Size = New Size(250, 39)
-            ULbl6.TabIndex = 1012
-            ULbl6.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
-            ULbl6.XOText = "Company Logo"
-            ULbl6.XOTextAdjuster = False
-            ULbl6.XOTextBorder = False
+            ULblCompanyLogo.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            ULblCompanyLogo.BackColor = Color.Moccasin
+            ULblCompanyLogo.Location = New Point(887, 83)
+            ULblCompanyLogo.Margin = New Padding(5, 6, 5, 6)
+            ULblCompanyLogo.Name = "ULblCompanyLogo"
+            ULblCompanyLogo.Size = New Size(250, 39)
+            ULblCompanyLogo.TabIndex = 1012
+            ULblCompanyLogo.XOLabelColor = CMCv.UI.Control.ControlCodeBase.EnumColorSelect.Yellow
+            ULblCompanyLogo.XOText = "Company Logo"
+            ULblCompanyLogo.XOTextAdjuster = False
+            ULblCompanyLogo.XOTextBorder = False
             ' 
             ' BtnRemovePhoto
             ' 
@@ -508,8 +513,8 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             TbxCompany.ResumeLayout(False)
             TpDetail.ResumeLayout(False)
@@ -527,14 +532,14 @@
         Friend WithEvents BtnSave As CMCv.UI.Control.Btn
         Friend WithEvents TxtName As CMCv.UI.Control.Txt
         Friend WithEvents ChkAddNew As CMCv.UI.Control.Chk
-        Friend WithEvents ULbl2 As CMCv.UI.Control.ULbl
-        Friend WithEvents ULbl1 As CMCv.UI.Control.ULbl
-        Friend WithEvents ULbl5 As CMCv.UI.Control.ULbl
-        Friend WithEvents ULbl4 As CMCv.UI.Control.ULbl
-        Friend WithEvents ULbl3 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULblCompanyName As CMCv.UI.Control.ULbl
+        Friend WithEvents ULblCompanyCode As CMCv.UI.Control.ULbl
+        Friend WithEvents ULblDescription As CMCv.UI.Control.ULbl
+        Friend WithEvents ULblSearchTerm2 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULblSearchTerm1 As CMCv.UI.Control.ULbl
         Friend WithEvents TbxCompany As CMCv.UI.Control.Tbx
         Friend WithEvents TpDetail As TabPage
-        Friend WithEvents ULbl6 As CMCv.UI.Control.ULbl
+        Friend WithEvents ULblCompanyLogo As CMCv.UI.Control.ULbl
         Friend WithEvents BtnRemovePhoto As CMCv.UI.Control.Btn
         Friend WithEvents BtnBrowsePhoto As CMCv.UI.Control.Btn
         Friend WithEvents pctbxPhoto As CMCv.UI.Control.Pbx

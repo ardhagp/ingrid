@@ -28,8 +28,8 @@ Namespace UI.Canvas
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' PnlBottomButton
@@ -46,11 +46,11 @@ Namespace UI.Canvas
             ' 
             ' SLFSubNamaForm
             ' 
-            SLFSubNamaForm.Margin = New System.Windows.Forms.Padding(11, 0, 11, 0)
+            XOSubtitle.Margin = New System.Windows.Forms.Padding(11, 0, 11, 0)
             ' 
-            ' SLFNamaForm
+            ' XOFormTitle
             ' 
-            SLFNamaForm.Margin = New System.Windows.Forms.Padding(11, 0, 11, 0)
+            XOFormTitle.Margin = New System.Windows.Forms.Padding(11, 0, 11, 0)
             ' 
             ' pnl_
             ' 
@@ -59,17 +59,17 @@ Namespace UI.Canvas
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(Rv_)
-            SLFPanel.Dock = System.Windows.Forms.DockStyle.None
-            SLFPanel.Location = New System.Drawing.Point(0, 103)
-            SLFPanel.Margin = New System.Windows.Forms.Padding(11, 20, 11, 20)
-            SLFPanel.Size = New System.Drawing.Size(0, 97)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(Rv_, 0)
+            XOPanel.Controls.Add(Rv_)
+            XOPanel.Dock = System.Windows.Forms.DockStyle.None
+            XOPanel.Location = New System.Drawing.Point(0, 103)
+            XOPanel.Margin = New System.Windows.Forms.Padding(11, 20, 11, 20)
+            XOPanel.Size = New System.Drawing.Size(0, 97)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.SetChildIndex(Rv_, 0)
             ' 
             ' SLFBackground
             ' 
-            SLFBackground.Margin = New System.Windows.Forms.Padding(11, 20, 11, 20)
+            XOLogoBackground.Margin = New System.Windows.Forms.Padding(11, 20, 11, 20)
             ' 
             ' BtnClose
             ' 
@@ -115,8 +115,8 @@ Namespace UI.Canvas
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub

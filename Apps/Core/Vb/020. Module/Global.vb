@@ -227,11 +227,11 @@
                        Optional parentframe As System.Windows.Forms.Form = Nothing, Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing)
             Try
                 formname.Text = dataproperties.IngridWindowName.Trim
-                formname.SLFNamaForm.Text = dataproperties.IngridFormTitle.Trim
+                formname.XOFormTitle.Text = dataproperties.IngridFormTitle.Trim
                 If dataproperties.IngridFormImage IsNot Nothing Then
                     formname.SLFLogo.Image = dataproperties.IngridFormImage
                 End If
-                formname.SLFSubNamaForm.Text = dataproperties.IngridFormSubtitle.Trim
+                formname.XOSubtitle.Text = dataproperties.IngridFormSubtitle.Trim
                 If Not (dataproperties.IngridFormIsDialog) Then
                     If formname.IsHandleCreated Then
                         formname.Focus()
@@ -308,8 +308,8 @@
                 End If
 
                 formname.Text = If(dataproperties.IngridWindowName, String.Empty).Trim
-                formname.SLFNamaForm.Text = If(dataproperties.IngridFormTitle, String.Empty).Trim
-                formname.SLFSubNamaForm.Text = If(dataproperties.IngridFormSubtitle, String.Empty).Trim
+                formname.XOFormTitle.Text = If(dataproperties.IngridFormTitle, String.Empty).Trim
+                formname.XOSubtitle.Text = If(dataproperties.IngridFormSubtitle, String.Empty).Trim
 
                 If dataproperties.IngridFormImage IsNot Nothing Then
                     formname.SLFLogo.Image = dataproperties.IngridFormImage

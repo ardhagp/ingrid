@@ -141,12 +141,12 @@ Namespace UI.View
                         AddHandler varItemSubmenu(8).Click, AddressOf EventToolsViewAttachment_Clicked
                     Case "FILE"
                         'Insert "Save"
-                        varItemSubmenu(9) = New ToolStripMenuItem() With {.Name = "EventToolsSave", .ForeColor = System.Drawing.Color.Black, .Text = "Save", .ShortcutKeys = CType(Keys.Control + Keys.S, Keys), .ShortcutKeyDisplayString = "Ctrl+S"}
+                        varItemSubmenu(9) = New ToolStripMenuItem() With {.Name = "EventToolsSave", .ForeColor = System.Drawing.Color.Black, .Text = "&Save", .ShortcutKeys = CType(Keys.Control + Keys.S, Keys), .ShortcutKeyDisplayString = "Ctrl+S"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(9))
                         AddHandler varItemSubmenu(9).Click, AddressOf EventFileSave_Clicked
 
                         'Insert "Undo All"
-                        varItemSubmenu(10) = New ToolStripMenuItem() With {.Name = "EventToolsUndoAll", .ForeColor = System.Drawing.Color.Black, .Text = "Undo All", .ShortcutKeys = CType(Keys.Control + Keys.Z, Keys), .ShortcutKeyDisplayString = "Ctrl+Z"}
+                        varItemSubmenu(10) = New ToolStripMenuItem() With {.Name = "EventToolsUndoAll", .ForeColor = System.Drawing.Color.Black, .Text = "&Undo All", .ShortcutKeys = CType(Keys.Control + Keys.Z, Keys), .ShortcutKeyDisplayString = "Ctrl+Z"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(10))
                         AddHandler varItemSubmenu(10).Click, AddressOf EventFileUndoAll_Clicked
 
@@ -155,7 +155,7 @@ Namespace UI.View
                         varEachSubItem.DropDown.Items.Add(varItemSeparator(3))
 
                         'Insert "Close"
-                        varItemSubmenu(11) = New ToolStripMenuItem() With {.Name = "EventFileCancel", .ForeColor = System.Drawing.Color.Black, .Text = "Cancel", .ShortcutKeys = CType(Keys.Control + Keys.F4, Keys), .ShortcutKeyDisplayString = "Ctrl+F4"}
+                        varItemSubmenu(11) = New ToolStripMenuItem() With {.Name = "EventFileCancel", .ForeColor = System.Drawing.Color.Black, .Text = "&Close", .ShortcutKeys = CType(Keys.Control + Keys.F4, Keys), .ShortcutKeyDisplayString = "Ctrl+F4"}
                         varEachSubItem.DropDown.Items.Add(varItemSubmenu(11))
                         AddHandler varItemSubmenu(11).Click, AddressOf EventFileCancel_Clicked
                     Case "REPORTS"

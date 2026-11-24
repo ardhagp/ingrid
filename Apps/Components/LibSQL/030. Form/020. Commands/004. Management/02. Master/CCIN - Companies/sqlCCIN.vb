@@ -4,7 +4,7 @@
         Private Shared varQuery As String
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt, find As CMCv.UI.Control.Txt)
+        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt, find As CMCv.UI.Control.Txt, Optional recordnavigator As CMCv.UI.Control.Bnav = Nothing)
             Dim varWhere As String = "where "
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -38,6 +38,9 @@
                                                    $"{tCompany.S}.{tCompany.C_CompanyCode}"
                 varDatabaseRequestMysql(0).DataGrid = datagrid
                 varDatabaseRequestMysql(0).StatusBar = statusbar
+                If recordnavigator IsNot Nothing Then
+                    varDatabaseRequestMysql(0).RecordNavigator = recordnavigator
+                End If
                 varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TCompany", dataproperties.AllParameters)
             End If
         End Sub

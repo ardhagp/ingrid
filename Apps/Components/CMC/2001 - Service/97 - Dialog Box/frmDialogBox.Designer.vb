@@ -34,8 +34,8 @@
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             PnlBottomButtonYesNo.SuspendLayout()
             CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -60,14 +60,14 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(TxtMessage)
-            SLFPanel.Controls.Add(PnlBottomButtonOkOnly)
-            SLFPanel.Controls.Add(PnlBottomButtonYesNo)
-            SLFPanel.Size = New System.Drawing.Size(1115, 476)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButtonYesNo, 0)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButtonOkOnly, 0)
-            SLFPanel.Controls.SetChildIndex(TxtMessage, 0)
+            XOPanel.Controls.Add(TxtMessage)
+            XOPanel.Controls.Add(PnlBottomButtonOkOnly)
+            XOPanel.Controls.Add(PnlBottomButtonYesNo)
+            XOPanel.Size = New System.Drawing.Size(1115, 476)
+            XOPanel.Controls.SetChildIndex(PnlBottomButtonYesNo, 0)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.SetChildIndex(PnlBottomButtonOkOnly, 0)
+            XOPanel.Controls.SetChildIndex(TxtMessage, 0)
             ' 
             ' PnlBottomButtonYesNo
             ' 
@@ -285,9 +285,9 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            SLFPanel.PerformLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            XOPanel.PerformLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             PnlBottomButtonYesNo.ResumeLayout(False)
             CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()

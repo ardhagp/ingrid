@@ -23,8 +23,8 @@
             TrackBar1 = New TrackBar()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(TrackBar1, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
@@ -41,11 +41,11 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(TrackBar1)
-            SLFPanel.Margin = New Padding(8, 12, 8, 12)
-            SLFPanel.Size = New Size(818, 953)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(TrackBar1, 0)
+            XOPanel.Controls.Add(TrackBar1)
+            XOPanel.Margin = New Padding(8, 12, 8, 12)
+            XOPanel.Size = New Size(818, 953)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.SetChildIndex(TrackBar1, 0)
             ' 
             ' TrackBar1
             ' 
@@ -68,9 +68,9 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            SLFPanel.PerformLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            XOPanel.PerformLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(TrackBar1, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()

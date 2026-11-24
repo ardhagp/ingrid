@@ -28,7 +28,7 @@
 
             varWrongLogin = 0
             varCooldownLogin = 0
-            SLFStatus.Items(0).Text = String.Empty
+            XOStatus.Items(0).Text = String.Empty
             TxtUsername.Clear()
             TxtPassword.Clear()
             TxtUsername.Focus()
@@ -80,7 +80,7 @@
             If varDatasetIngrid.Tables(dtUserData).Rows.Count = 0 Then
                 RaiseEvent EventLoginFailed()
                 varWrongLogin += 1
-                SLFStatus.Items(0).Text = "Login Failed"
+                XOStatus.Items(0).Text = "Login Failed"
                 varLogUser.LoginFailed(varDataProperties, varDataProperties.AllParameters)
 
                 With proLog
@@ -187,7 +187,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub Tmrstatus_Tick(sender As Object, e As EventArgs) Handles tmr_status.Tick
             If varStatusTimer = 5 Then
-                SLFStatus.Items(0).Text = ""
+                XOStatus.Items(0).Text = ""
                 tmr_status.Enabled = False
                 varStatusTimer = 0
             Else

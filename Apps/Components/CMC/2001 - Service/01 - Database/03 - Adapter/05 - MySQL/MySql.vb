@@ -24,6 +24,12 @@ Namespace Database.Adapter.Mysql.Display
         Public Property DataGrid As UI.Control.Dgn
 
         ''' <summary>
+        ''' The RecordNavigator control where the data will be displayed.
+        ''' </summary>
+        ''' <returns>The RecordNavigator control.</returns>
+        Public Property RecordNavigator As UI.Control.Bnav
+
+        ''' <summary>
         ''' The StatusBar control where the data will be displayed.
         ''' </summary>
         ''' <returns>The StatusBar control.</returns>

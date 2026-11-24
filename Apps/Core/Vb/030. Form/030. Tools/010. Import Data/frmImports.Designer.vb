@@ -31,8 +31,8 @@
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             Pnl1.SuspendLayout()
             SuspendLayout()
             ' 
@@ -51,12 +51,12 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(TxtProgress)
-            SLFPanel.Controls.Add(Pnl1)
-            SLFPanel.Size = New Size(1095, 795)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(Pnl1, 0)
-            SLFPanel.Controls.SetChildIndex(TxtProgress, 0)
+            XOPanel.Controls.Add(TxtProgress)
+            XOPanel.Controls.Add(Pnl1)
+            XOPanel.Size = New Size(1095, 795)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.SetChildIndex(Pnl1, 0)
+            XOPanel.Controls.SetChildIndex(TxtProgress, 0)
             ' 
             ' Pnl1
             ' 
@@ -200,9 +200,9 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            SLFPanel.PerformLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            XOPanel.PerformLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             Pnl1.ResumeLayout(False)
             ResumeLayout(False)
             PerformLayout()

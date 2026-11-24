@@ -116,7 +116,7 @@ Namespace UI.Canvas
                 End With
 
                 If CMDsyss.Editor.SaveSettings(varDataProperties, varDataProperties.AllParameters) Then
-                    SLFStatus.Items(0).Text = "Saved"
+                    XOStatus.Items(0).Text = "Saved"
                 End If
             Catch ex As Exception
                 With proLog

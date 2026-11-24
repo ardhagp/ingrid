@@ -5,7 +5,9 @@ Namespace CMDconn
     Public Class View
 
         Public Shared Sub DisplayData(datagrid As CMCv.UI.Control.Dgn, statusbar As CMCv.UI.Control.Stt,
-                                      find As CMCv.UI.Control.Txt, datasetname As System.Data.DataSet, Optional forcerefresh As Boolean = False)
+                                      find As CMCv.UI.Control.Txt, datasetname As System.Data.DataSet,
+                                      Optional forcerefresh As Boolean = False,
+                                      Optional recordnavigator As CMCv.UI.Control.Bnav = Nothing)
             Try
                 If (find.XOSqlText = String.Empty) OrElse (forcerefresh) Then 'to display all data
                     varDatabaseRequestSqlite(0).Query = $"select serverlist.ID, serverlist.CONNECTIONNAME, " &
@@ -23,6 +25,9 @@ Namespace CMDconn
                 End If
                 varDatabaseRequestSqlite(0).DataGrid = datagrid
                 varDatabaseRequestSqlite(0).StatusBar = statusbar
+                If recordnavigator IsNot Nothing Then
+                    varDatabaseRequestSqlite(0).RecordNavigator = recordnavigator
+                End If
                 varDatabaseEngineSqlite.GetDataTable(varDatabaseRequestSqlite(0), datasetname, "serverlist")
                 'varDatabaseEngineSqlite.FillDataSet(varDatabaseRequestSqlite(0).Query, datasetname, "serverlist")
             Catch ex As Exception

@@ -50,7 +50,7 @@ Namespace UI.Canvas
             varShowAttachment = Com_mms_Menu.Checked(varMessageViewAttachment)
 
             'Mengisi Datagrid dengan data dari database    
-            CMDdar.View.DisplayMainGrid(varDataProperties, TxtFind, DgnDARDate, SLFStatus, SttActivity, ChkEnableDateFilter, DtpMonth, ChkEnableByFilter, CboBy, forcerefresh)
+            CMDdar.View.DisplayMainGrid(varDataProperties, TxtFind, DgnDARDate, XOStatus, SttActivity, ChkEnableDateFilter, DtpMonth, ChkEnableByFilter, CboBy, forcerefresh)
 
             'Mengisi Datagrid Activity dengan data dari database
             Call OnDgnDateChange()
@@ -576,7 +576,7 @@ Namespace UI.Canvas
                     If (CMDdar.View.LikePhoto(varDataProperties, DgnPhoto.CurrentRow.Cells("photo_id").Value.ToString, varDataProperties.EmployeeId, DgnDARActivity.CurrentRow.Cells("employee_id").Value.ToString)) Then
                         UI.Canvas.FRMmainframe6.Ts_status.Text = DgnPhoto.CurrentRow.Cells("photo_employee_fullname").Value.ToString & " would like to say thank you for your appreciation."
                     Else
-                        SLFStatus.Items(0).Text = ""
+                        XOStatus.Items(0).Text = ""
                     End If
                 End If
             End If

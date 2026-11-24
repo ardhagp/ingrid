@@ -12,5 +12,11 @@
     <Setting Name="CameraDeviceId" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="URL_Logo_HELP" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ingrid-blob.s3.us-west-004.backblazeb2.com/app-assets/media/component-image-all-platforms/svg-HELP.svg</Value>
+    </Setting>
+    <Setting Name="Test123" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Hello</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -7,7 +7,7 @@ Namespace CMDpost
         Private Shared ReadOnly consTableName As String = "CheckRelation"
 
         <SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, grid As CMCv.UI.Control.dgn, status As CMCv.UI.Control.stt, find As CMCv.UI.Control.txt)
+        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, grid As CMCv.UI.Control.Dgn, status As CMCv.UI.Control.Stt, find As CMCv.UI.Control.Txt, Optional recordnavigator As CMCv.UI.Control.Bnav = Nothing)
             'ReDim varDatabaseRequestMssql2008(2)
             Dim varWhere As String = $"where ({tPosition.S}.{tPosition.C_PositionClient} = {tIngrid.P_ClientId}) "
 
@@ -44,6 +44,9 @@ Namespace CMDpost
 
                 varDatabaseRequestMysql(0).DataGrid = grid
                 varDatabaseRequestMysql(0).StatusBar = status
+                If recordnavigator IsNot Nothing Then
+                    varDatabaseRequestMysql(0).RecordNavigator = recordnavigator
+                End If
                 varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TPositions", dataproperties.AllParameters)
             End If
         End Sub

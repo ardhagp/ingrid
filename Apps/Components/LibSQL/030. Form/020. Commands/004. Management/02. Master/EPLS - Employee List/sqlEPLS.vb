@@ -13,7 +13,7 @@ Namespace CMDepls
         ''' <param name="status">The status bar control to update with the current state of the data display.</param>
         ''' <param name="find">The text box control containing the search criteria for filtering employee data.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, grid As CMCv.UI.Control.Dgn, status As CMCv.UI.Control.Stt, find As CMCv.UI.Control.Txt)
+        Public Shared Sub DisplayData(dataproperties As LibApp.Ingrid.Global.Properties, grid As CMCv.UI.Control.Dgn, status As CMCv.UI.Control.Stt, find As CMCv.UI.Control.Txt, Optional recordnavigator As CMCv.UI.Control.Bnav = Nothing)
             ReDim varDatabaseRequestMssql2008(2)
             Dim varWhere As String = $"where "
 
@@ -70,6 +70,9 @@ Namespace CMDepls
 
                 varDatabaseRequestMysql(0).DataGrid = grid
                 varDatabaseRequestMysql(0).StatusBar = status
+                If recordnavigator IsNot Nothing Then
+                    varDatabaseRequestMysql(0).RecordNavigator = recordnavigator
+                End If
                 varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0), "TEmployee", dataproperties.AllParameters)
             End If
         End Sub

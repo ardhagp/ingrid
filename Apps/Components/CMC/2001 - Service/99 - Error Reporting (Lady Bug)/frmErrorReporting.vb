@@ -19,8 +19,8 @@
             InitializeComponent()
             Component.Properties.varBetterstack.SendFailure(Bridge.Getkey.Betterstack_heartbeats)
             Me.Text = "INGRID - Error Reporting"
-            SLFNamaForm.Text = "Error Reporting"
-            SLFSubNamaForm.Text = "A simple diagnostic tool for logging exceptions"
+            XOFormTitle.Text = "Error Reporting"
+            XOSubtitle.Text = "A simple diagnostic tool for logging exceptions"
 
             TxtErrorType.Text = proLog.TypeOfFaulty.ToString()
             TxtErrorMessage.Text = proLog.Message & System.Environment.NewLine & System.Environment.NewLine & "Sender: " & proLog.FromSender

@@ -19,7 +19,7 @@
                 varDataProperties.EmployeePositionIsForceRefresh = False
             End If
 
-            CMDepls.Addins.Browse.Position.DisplayData(varDataProperties, DgnAddinPosition, SLFStatus)
+            CMDepls.Addins.Browse.Position.DisplayData(varDataProperties, DgnAddinPosition, XOStatus, Bnav)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
@@ -73,6 +73,15 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub DgnAddinPosition_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnAddinPosition.CellContentDoubleClick
+            Call SelectData()
+        End Sub
+
+        Private Sub DgnAddinPosition_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgnAddinPosition.CellContentClick
+
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub DgnAddinPosition_DoubleClick(sender As Object, e As EventArgs) Handles DgnAddinPosition.DoubleClick
             Call SelectData()
         End Sub
     End Class

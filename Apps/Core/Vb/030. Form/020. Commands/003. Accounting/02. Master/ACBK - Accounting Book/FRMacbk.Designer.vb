@@ -37,17 +37,17 @@
             book_datecreated = New DataGridViewTextBoxColumn()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             Pnl1.SuspendLayout()
             CType(DgnACBK, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(DgnACBK)
-            SLFPanel.Controls.Add(Pnl1)
-            SLFPanel.Size = New Size(1307, 952)
+            XOPanel.Controls.Add(DgnACBK)
+            XOPanel.Controls.Add(Pnl1)
+            XOPanel.Size = New Size(1307, 952)
             ' 
             ' Pnl1
             ' 
@@ -236,8 +236,8 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             Pnl1.ResumeLayout(False)
             Pnl1.PerformLayout()
             CType(DgnACBK, ComponentModel.ISupportInitialize).EndInit()

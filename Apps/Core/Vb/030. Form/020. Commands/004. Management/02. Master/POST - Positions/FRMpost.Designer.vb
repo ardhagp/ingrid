@@ -33,13 +33,15 @@
             position_code = New DataGridViewTextBoxColumn()
             position_name = New DataGridViewTextBoxColumn()
             position_description = New DataGridViewTextBoxColumn()
+            Bnav = New CMCv.UI.Control.Bnav(components)
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(DgnPOST, ComponentModel.ISupportInitialize).BeginInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' BtnClear
@@ -52,18 +54,20 @@
             ' 
             TxtFind.Margin = New Padding(7, 5, 7, 5)
             ' 
-            ' SLFPanel
+            ' XOPanel
             ' 
-            SLFPanel.Controls.Add(DgnPOST)
-            SLFPanel.Size = New Size(1307, 946)
-            SLFPanel.Controls.SetChildIndex(PnlFind, 0)
-            SLFPanel.Controls.SetChildIndex(DgnPOST, 0)
+            XOPanel.Controls.Add(Bnav)
+            XOPanel.Controls.Add(DgnPOST)
+            XOPanel.Size = New Size(1307, 946)
+            XOPanel.Controls.SetChildIndex(PnlFind, 0)
+            XOPanel.Controls.SetChildIndex(DgnPOST, 0)
+            XOPanel.Controls.SetChildIndex(Bnav, 0)
             ' 
             ' DgnPOST
             ' 
             DgnPOST.AllowUserToAddRows = False
             DgnPOST.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(218), CByte(215), CByte(177))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(222), CByte(216), CByte(95))
             DgnPOST.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnPOST.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnPOST.BorderStyle = BorderStyle.None
@@ -183,6 +187,20 @@
             position_description.Name = "position_description"
             position_description.ReadOnly = True
             ' 
+            ' Bnav
+            ' 
+            Bnav.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
+            Bnav.Dock = DockStyle.Bottom
+            Bnav.Font = New Font("Verdana", 8F)
+            Bnav.ImageScalingSize = New Size(24, 24)
+            Bnav.Location = New Point(0, 913)
+            Bnav.Name = "Bnav"
+            Bnav.Size = New Size(1307, 33)
+            Bnav.TabIndex = 802
+            Bnav.Text = "Bnav1"
+            Bnav.XOIsShowAddNewButton = False
+            Bnav.XOIsShowDeleteButton = False
+            ' 
             ' FRMpost
             ' 
             AutoScaleDimensions = New SizeF(10F, 25F)
@@ -193,16 +211,19 @@
             ShowIcon = False
             ShowInTaskbar = False
             WindowState = FormWindowState.Maximized
+            XOModuleCode = "POST"
+            XOWikiUrl = "https://github.com/ardhagp/ingrid/wiki/05.01.05-%E2%80%90-%5BPOST%5D-Position"
             XOWindowAlwaysMaximized = True
             PnlFind.ResumeLayout(False)
             PnlFind.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
-            pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            XOPanel.PerformLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(DgnPOST, ComponentModel.ISupportInitialize).EndInit()
+            CType(Bnav, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub
@@ -215,6 +236,7 @@
         Friend WithEvents position_code As DataGridViewTextBoxColumn
         Friend WithEvents position_name As DataGridViewTextBoxColumn
         Friend WithEvents position_description As DataGridViewTextBoxColumn
+        Friend WithEvents Bnav As CMCv.UI.Control.Bnav
 
     End Class
 End Namespace

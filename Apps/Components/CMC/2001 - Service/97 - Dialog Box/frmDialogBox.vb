@@ -96,13 +96,16 @@ Namespace UI.Canvas
                 Case LibApp.Ingrid.Global.PopupType.WrongInstructionSet
                     headerText = "Wrong Instruction Set"
                     defaultSubtitle = "Invalid instruction set detected. Please follow the designated instructions."
+                Case LibApp.Ingrid.Global.PopupType.UndoChanges
+                    headerText = "Undo Changes"
+                    defaultSubtitle = "This will revert all changes to their original state."
                 Case Else
                     headerText = String.Empty
                     defaultSubtitle = String.Empty
             End Select
 
-            SLFNamaForm.Text = headerText
-            SLFSubNamaForm.Text = If(String.IsNullOrEmpty(trimmedSubtitle), defaultSubtitle, trimmedSubtitle)
+            XOFormTitle.Text = headerText
+            XOSubtitle.Text = If(String.IsNullOrEmpty(trimmedSubtitle), defaultSubtitle, trimmedSubtitle)
 
             ' --- Button layout (use enum values directly) ---
             Select Case buttontype

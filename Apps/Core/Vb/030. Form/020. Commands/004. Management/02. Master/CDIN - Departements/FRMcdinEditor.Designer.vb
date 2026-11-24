@@ -37,8 +37,8 @@
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             TbxDepartment.SuspendLayout()
             TpDetail.SuspendLayout()
@@ -63,11 +63,11 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(TbxDepartment)
-            SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(824, 833)
-            SLFPanel.Controls.SetChildIndex(TbxDepartment, 0)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.Add(TbxDepartment)
+            XOPanel.Margin = New Padding(7, 5, 7, 5)
+            XOPanel.Size = New Size(824, 833)
+            XOPanel.Controls.SetChildIndex(TbxDepartment, 0)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
             ' 
             ' BtnSave
             ' 
@@ -279,7 +279,7 @@
             ChkAddNew.FlatStyle = FlatStyle.Flat
             ChkAddNew.Font = New Font("Segoe UI", 12F)
             ChkAddNew.ForeColor = Color.White
-            ChkAddNew.Location = New Point(231, 33)
+            ChkAddNew.Location = New Point(231, 35)
             ChkAddNew.Name = "ChkAddNew"
             ChkAddNew.Size = New Size(221, 36)
             ChkAddNew.TabIndex = 7
@@ -328,8 +328,8 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             TbxDepartment.ResumeLayout(False)
             TpDetail.ResumeLayout(False)
