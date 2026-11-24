@@ -104,8 +104,8 @@ Namespace UI.Canvas
                     defaultSubtitle = String.Empty
             End Select
 
-            SLFNamaForm.Text = headerText
-            SLFSubNamaForm.Text = If(String.IsNullOrEmpty(trimmedSubtitle), defaultSubtitle, trimmedSubtitle)
+            XOFormTitle.Text = headerText
+            XOSubtitle.Text = If(String.IsNullOrEmpty(trimmedSubtitle), defaultSubtitle, trimmedSubtitle)
 
             ' --- Button layout (use enum values directly) ---
             Select Case buttontype

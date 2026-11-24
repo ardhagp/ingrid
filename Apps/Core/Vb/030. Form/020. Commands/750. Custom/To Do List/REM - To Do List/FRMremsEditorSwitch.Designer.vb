@@ -26,8 +26,8 @@
             BtnMarkAsVerified = New CMCv.UI.Control.Btn(components)
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' pnl_
@@ -37,11 +37,11 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(BtnMarkAsVerified)
-            SLFPanel.Controls.Add(BtnChangeProgress)
-            SLFPanel.Controls.Add(BtnEdit)
-            SLFPanel.Margin = New Padding(8, 12, 8, 12)
-            SLFPanel.Size = New Size(350, 312)
+            XOPanel.Controls.Add(BtnMarkAsVerified)
+            XOPanel.Controls.Add(BtnChangeProgress)
+            XOPanel.Controls.Add(BtnEdit)
+            XOPanel.Margin = New Padding(8, 12, 8, 12)
+            XOPanel.Size = New Size(350, 312)
             ' 
             ' BtnEdit
             ' 
@@ -125,8 +125,8 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
 

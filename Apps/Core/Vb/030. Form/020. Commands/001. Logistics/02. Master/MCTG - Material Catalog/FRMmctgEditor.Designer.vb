@@ -22,8 +22,8 @@
         Private Sub InitializeComponent()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' PnlBottomButton
@@ -39,8 +39,8 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(760, 586)
+            XOPanel.Margin = New Padding(7, 5, 7, 5)
+            XOPanel.Size = New Size(760, 586)
             ' 
             ' FRMmctgEditor
             ' 
@@ -52,8 +52,8 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub

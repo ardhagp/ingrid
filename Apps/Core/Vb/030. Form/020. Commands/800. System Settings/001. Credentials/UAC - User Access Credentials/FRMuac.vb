@@ -14,7 +14,7 @@ Namespace UI.Canvas
 
         <SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
-            CMDuac.View.DisplayData(varDataProperties, DgnUAC, SLFStatus, TxtFind, forcerefresh)
+            CMDuac.View.DisplayData(varDataProperties, DgnUAC, XOStatus, TxtFind, forcerefresh)
         End Sub
 
         <SupportedOSPlatform("windows")>

@@ -58,19 +58,19 @@
             Select Case varSelectedGroup
                 Case "tpAssets"
                     GetAccountID(DgnACGRAssets)
-                    SLFStatus.Items(0).Text = DgnACGRAssets.RowCount & msgRows
+                    XOStatus.Items(0).Text = DgnACGRAssets.RowCount & msgRows
                 Case "tpLiabilities"
                     GetAccountID(DgnACGRLiabities)
-                    SLFStatus.Items(0).Text = DgnACGRLiabities.RowCount & msgRows
+                    XOStatus.Items(0).Text = DgnACGRLiabities.RowCount & msgRows
                 Case "tpEquity"
                     GetAccountID(DgnACGREquity)
-                    SLFStatus.Items(0).Text = DgnACGREquity.RowCount & msgRows
+                    XOStatus.Items(0).Text = DgnACGREquity.RowCount & msgRows
                 Case "tpRevenue"
                     GetAccountID(DgnACGRRevenue)
-                    SLFStatus.Items(0).Text = DgnACGRRevenue.RowCount & msgRows
+                    XOStatus.Items(0).Text = DgnACGRRevenue.RowCount & msgRows
                 Case "tpExpense"
                     GetAccountID(DgnACGRExpense)
-                    SLFStatus.Items(0).Text = DgnACGRExpense.RowCount & msgRows
+                    XOStatus.Items(0).Text = DgnACGRExpense.RowCount & msgRows
             End Select
         End Sub
 

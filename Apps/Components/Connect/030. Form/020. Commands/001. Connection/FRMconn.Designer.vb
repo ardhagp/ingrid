@@ -39,8 +39,8 @@
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(DgnConnection, ComponentModel.ISupportInitialize).BeginInit()
             CType(Bnav, ComponentModel.ISupportInitialize).BeginInit()
@@ -72,15 +72,15 @@
             ' 
             ' SLFSubNamaForm
             ' 
-            SLFSubNamaForm.Margin = New Padding(7, 0, 7, 0)
-            SLFSubNamaForm.Size = New Size(311, 25)
-            SLFSubNamaForm.Text = "Configure Ingrid database connection"
+            XOSubtitle.Margin = New Padding(7, 0, 7, 0)
+            XOSubtitle.Size = New Size(311, 25)
+            XOSubtitle.Text = "Configure Ingrid database connection"
             ' 
-            ' SLFNamaForm
+            ' XOFormTitle
             ' 
-            SLFNamaForm.Margin = New Padding(7, 0, 7, 0)
-            SLFNamaForm.Size = New Size(359, 48)
-            SLFNamaForm.Text = "Connection Settings"
+            XOFormTitle.Margin = New Padding(7, 0, 7, 0)
+            XOFormTitle.Size = New Size(359, 48)
+            XOFormTitle.Text = "Connection Settings"
             ' 
             ' pnl_
             ' 
@@ -89,15 +89,15 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(Bnav)
-            SLFPanel.Controls.Add(DgnConnection)
-            SLFPanel.Location = New Point(0, 113)
-            SLFPanel.Margin = New Padding(7, 10, 7, 10)
-            SLFPanel.Size = New Size(1307, 943)
-            SLFPanel.Controls.SetChildIndex(PnlFind, 0)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(DgnConnection, 0)
-            SLFPanel.Controls.SetChildIndex(Bnav, 0)
+            XOPanel.Controls.Add(Bnav)
+            XOPanel.Controls.Add(DgnConnection)
+            XOPanel.Location = New Point(0, 113)
+            XOPanel.Margin = New Padding(7, 10, 7, 10)
+            XOPanel.Size = New Size(1307, 943)
+            XOPanel.Controls.SetChildIndex(PnlFind, 0)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.SetChildIndex(DgnConnection, 0)
+            XOPanel.Controls.SetChildIndex(Bnav, 0)
             ' 
             ' XOLogo
             ' 
@@ -271,9 +271,9 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            SLFPanel.PerformLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            XOPanel.PerformLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(DgnConnection, ComponentModel.ISupportInitialize).EndInit()
             CType(Bnav, ComponentModel.ISupportInitialize).EndInit()

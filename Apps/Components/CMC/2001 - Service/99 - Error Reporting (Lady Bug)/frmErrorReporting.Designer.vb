@@ -38,8 +38,8 @@
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             Tbctl1.SuspendLayout()
             tp_ApplicationFault.SuspendLayout()
             SuspendLayout()
@@ -62,13 +62,13 @@
             ' 
             ' SLFSubNamaForm
             ' 
-            SLFSubNamaForm.Margin = New System.Windows.Forms.Padding(11, 0, 11, 0)
+            XOSubtitle.Margin = New System.Windows.Forms.Padding(11, 0, 11, 0)
             ' 
-            ' SLFNamaForm
+            ' XOFormTitle
             ' 
-            SLFNamaForm.AutoSize = False
-            SLFNamaForm.Margin = New System.Windows.Forms.Padding(11, 0, 11, 0)
-            SLFNamaForm.Size = New System.Drawing.Size(513, 48)
+            XOFormTitle.AutoSize = False
+            XOFormTitle.Margin = New System.Windows.Forms.Padding(11, 0, 11, 0)
+            XOFormTitle.Size = New System.Drawing.Size(513, 48)
             ' 
             ' pnl_
             ' 
@@ -77,16 +77,16 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(Tbctl1)
-            SLFPanel.Location = New System.Drawing.Point(0, 118)
-            SLFPanel.Margin = New System.Windows.Forms.Padding(7, 5, 7, 5)
-            SLFPanel.Size = New System.Drawing.Size(1086, 860)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(Tbctl1, 0)
+            XOPanel.Controls.Add(Tbctl1)
+            XOPanel.Location = New System.Drawing.Point(0, 118)
+            XOPanel.Margin = New System.Windows.Forms.Padding(7, 5, 7, 5)
+            XOPanel.Size = New System.Drawing.Size(1086, 860)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.SetChildIndex(Tbctl1, 0)
             ' 
             ' SLFBackground
             ' 
-            SLFBackground.Margin = New System.Windows.Forms.Padding(11, 20, 11, 20)
+            XOLogoBackground.Margin = New System.Windows.Forms.Padding(11, 20, 11, 20)
             ' 
             ' BtnClose
             ' 
@@ -368,8 +368,8 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             Tbctl1.ResumeLayout(False)
             tp_ApplicationFault.ResumeLayout(False)
             tp_ApplicationFault.PerformLayout()

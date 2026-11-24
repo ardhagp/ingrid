@@ -10,7 +10,7 @@ Namespace UI.Canvas
 #Region "Sub Collections"
         <SupportedOSPlatform("windows")>
         Private Sub GetData()
-            CMDacbk.View.DisplayData(varDataProperties, DgnACBK, SLFStatus, TxtFind, True)
+            CMDacbk.View.DisplayData(varDataProperties, DgnACBK, XOStatus, TxtFind, True)
         End Sub
 #End Region
 

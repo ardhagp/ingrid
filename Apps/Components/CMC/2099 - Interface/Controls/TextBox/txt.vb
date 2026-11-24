@@ -688,6 +688,25 @@
         Public Sub ClearSearch()
             Call FontSearchBox(False)
         End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub Txt_HandleCreated(sender As Object, e As EventArgs) Handles Me.HandleCreated
+            If XOLinkedLabel IsNot Nothing Then
+                XOLinkedLabel.Height = Me.Height
+            End If
+        End Sub
+
+        Private varLinkedLabel As UI.Control.ULbl
+        <System.ComponentModel.Category("XO.Format"),
+            System.ComponentModel.Description("Specifies the label control that is visually linked to this text box for enhanced user guidance")>
+        Public Property XOLinkedLabel() As UI.Control.ULbl
+            Get
+                Return varLinkedLabel
+            End Get
+            Set(value As UI.Control.ULbl)
+                varLinkedLabel = value
+            End Set
+        End Property
     End Class
 
     ''' <summary>

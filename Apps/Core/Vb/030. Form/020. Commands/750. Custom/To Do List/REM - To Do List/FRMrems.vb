@@ -15,7 +15,7 @@ Namespace UI.Canvas
             Call LoadMenu()
             TxtFind.ClearSearch()
 
-            CMDrems.View.DisplayGrid(varDataProperties, DgnOnProgress, DgnDone, DgnVerified, SLFStatus)
+            CMDrems.View.DisplayGrid(varDataProperties, DgnOnProgress, DgnDone, DgnVerified, XOStatus)
         End Sub
 
         <SupportedOSPlatform("windows")>

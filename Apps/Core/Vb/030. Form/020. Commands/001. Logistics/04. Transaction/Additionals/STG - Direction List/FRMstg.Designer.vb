@@ -23,8 +23,8 @@
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' BtnClear
@@ -39,7 +39,7 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Size = New Size(1307, 952)
+            XOPanel.Size = New Size(1307, 952)
             ' 
             ' FRMstg
             ' 
@@ -53,8 +53,8 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub

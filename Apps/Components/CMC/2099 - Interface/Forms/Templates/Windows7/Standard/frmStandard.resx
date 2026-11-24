@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="Ttp.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>149, 56</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="XOLogo.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAADBtJREFUeF7tnd2LXPUdh/3TCoFAwCtBELwq5FbwqldCoVAQAoWCV4VCEbwSelWw
+        vAAADrwBlbxySQAADBtJREFUeF7tnd2LXPUdh/3TCoFAwCtBELwq5FbwqldCoVAQAoWCV4VCEbwSelWw
         SRTfGiFSDNW0UhKCoanFyJZiNDvvp3wnHtY9v93ZOXN+L9+X54HnRmoyO+4830/jzvjc8Z9/1iFiTJ8b
         /gVEjCMBQAwsAUAMLAFADCwBQAwsAUAMLAFADCwBQAwsAUAMLAFADCwBQAwsAUAMLAFADCwBQAwsAUAM
         LAFADCwBQAwsAUAMLAFADCwBQAwsAYjmjcvd4u61bv34k27z/cNu88Ojbv3t7W755Rvd8c0r6f8eXUsA
@@ -603,7 +606,16 @@
         ICh3d3cuZXZhbm9sZHMuY29tKQAh/hdNb2RpZmllZCBAIEdpZk1hZ2ljLmNvbQA7
 </value>
   </data>
-  <data name="SLFBackground.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="MySettings2.MRUFiles" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0
+        cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAvU3lzdGVtLkNvbGxlY3Rpb25z
+        LlNwZWNpYWxpemVkLlN0cmluZ0NvbGxlY3Rpb24BAAAABGRhdGEDHFN5c3RlbS5Db2xsZWN0aW9ucy5B
+        cnJheUxpc3QCAAAACQMAAAAEAwAAABxTeXN0ZW0uQ29sbGVjdGlvbnMuQXJyYXlMaXN0AwAAAAZfaXRl
+        bXMFX3NpemUIX3ZlcnNpb24FAAAICAkEAAAAAAAAAAAAAAAQBAAAAAAAAAAL
+</value>
+  </data>
+  <data name="XOLogoBackground.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAADBtJREFUeF7tnd2LXPUdh/3TCoFAwCtBELwq5FbwqldCoVAQAoWCV4VCEbwSelWw
@@ -661,7 +673,7 @@
         yQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="SLFBackground.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="XOLogoBackground.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhLQAyAPQAAPj4+NDQ0NjY2EhISLi4uCgoKAAAAGhoaBgYGAgICHh4eICAgFBQUPDw8ODg4JiY
         mKCgoKioqOjo6DAwMGBgYDg4OLCwsFhYWEBAQCAgIIiIiMjIyBAQEHBwcMDAwJCQkCH/C05FVFNDQVBF
@@ -781,7 +793,7 @@
         ICh3d3cuZXZhbm9sZHMuY29tKQAh/hdNb2RpZmllZCBAIEdpZk1hZ2ljLmNvbQA7
 </value>
   </data>
-  <metadata name="SLFStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="XOStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 56</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

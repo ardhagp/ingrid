@@ -11,7 +11,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetData(Optional ByVal forcerefresh As Boolean = False)
             DblBuffer(DgnMODS)
-            CMDmods.View.DisplayData(varDataProperties, DgnMODS, SLFStatus, TxtFind, forcerefresh)
+            CMDmods.View.DisplayData(varDataProperties, DgnMODS, XOStatus, TxtFind, forcerefresh)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>

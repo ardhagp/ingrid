@@ -35,8 +35,8 @@
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             CType(DgnCDIN, ComponentModel.ISupportInitialize).BeginInit()
             CType(Bnav, ComponentModel.ISupportInitialize).BeginInit()
@@ -54,12 +54,12 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(Bnav)
-            SLFPanel.Controls.Add(DgnCDIN)
-            SLFPanel.Size = New Size(1307, 946)
-            SLFPanel.Controls.SetChildIndex(PnlFind, 0)
-            SLFPanel.Controls.SetChildIndex(DgnCDIN, 0)
-            SLFPanel.Controls.SetChildIndex(Bnav, 0)
+            XOPanel.Controls.Add(Bnav)
+            XOPanel.Controls.Add(DgnCDIN)
+            XOPanel.Size = New Size(1307, 946)
+            XOPanel.Controls.SetChildIndex(PnlFind, 0)
+            XOPanel.Controls.SetChildIndex(DgnCDIN, 0)
+            XOPanel.Controls.SetChildIndex(Bnav, 0)
             ' 
             ' DgnCDIN
             ' 
@@ -205,9 +205,9 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            SLFPanel.PerformLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            XOPanel.PerformLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             CType(DgnCDIN, ComponentModel.ISupportInitialize).EndInit()
             CType(Bnav, ComponentModel.ISupportInitialize).EndInit()

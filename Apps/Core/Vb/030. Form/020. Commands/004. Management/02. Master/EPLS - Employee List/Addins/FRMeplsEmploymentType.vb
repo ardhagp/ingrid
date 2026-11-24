@@ -82,7 +82,7 @@
                 varDataProperties.EmploymentTypeIsForceRefresh = False
             End If
 
-            CMDepls.Addins.Browse.EmploymentType.DisplayData(varDataProperties, DgnAddinEmploymentType, SLFStatus, Bnav)
+            CMDepls.Addins.Browse.EmploymentType.DisplayData(varDataProperties, DgnAddinEmploymentType, XOStatus, Bnav)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>

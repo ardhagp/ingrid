@@ -340,7 +340,9 @@
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
     <None Update="My Project\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <EmbeddedResource Include="2002 - System\000 - Security\Manual+Source\Security Engine Source.pdf" />
     <EmbeddedResource Include="2001 - Service\01 - Database\01 - Connection\Manual+Source\MSSQL2008 Manual.pdf" />

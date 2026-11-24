@@ -131,11 +131,11 @@
             End With
 
             If (CMDconn.Editor.PushData(varDataProperties)) Then
-                SLFStatus.Text = "Success"
+                XOStatus.Text = "Success"
                 RaiseEvent EventRecordSaved()
                 Me.Close()
             Else
-                SLFStatus.Text = "Failed to save"
+                XOStatus.Text = "Failed to save"
                 Return
             End If
         End Sub

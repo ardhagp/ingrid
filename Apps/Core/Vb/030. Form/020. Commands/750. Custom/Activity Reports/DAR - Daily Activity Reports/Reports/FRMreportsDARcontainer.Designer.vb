@@ -26,8 +26,8 @@
             DAR_RDS = New DAR_RDS()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(EmployeeactivityBindingSource, ComponentModel.ISupportInitialize).BeginInit()
             CType(DAR_RDS, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
@@ -56,13 +56,13 @@
             ' 
             ' SLFSubNamaForm
             ' 
-            SLFSubNamaForm.Location = New Point(167, 97)
-            SLFSubNamaForm.Margin = New Padding(16, 0, 16, 0)
+            XOSubtitle.Location = New Point(167, 97)
+            XOSubtitle.Margin = New Padding(16, 0, 16, 0)
             ' 
-            ' SLFNamaForm
+            ' XOFormTitle
             ' 
-            SLFNamaForm.Location = New Point(126, 12)
-            SLFNamaForm.Margin = New Padding(16, 0, 16, 0)
+            XOFormTitle.Location = New Point(126, 12)
+            XOFormTitle.Margin = New Padding(16, 0, 16, 0)
             ' 
             ' pnl_
             ' 
@@ -71,17 +71,17 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Location = New Point(0, 172)
-            SLFPanel.Margin = New Padding(16, 33, 16, 33)
-            SLFPanel.Size = New Size(0, 162)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(Rv_, 0)
+            XOPanel.Location = New Point(0, 172)
+            XOPanel.Margin = New Padding(16, 33, 16, 33)
+            XOPanel.Size = New Size(0, 162)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.SetChildIndex(Rv_, 0)
             ' 
             ' SLFBackground
             ' 
-            SLFBackground.Location = New Point(4, 10)
-            SLFBackground.Margin = New Padding(16, 33, 16, 33)
-            SLFBackground.Size = New Size(114, 153)
+            XOLogoBackground.Location = New Point(4, 10)
+            XOLogoBackground.Margin = New Padding(16, 33, 16, 33)
+            XOLogoBackground.Size = New Size(114, 153)
             ' 
             ' EmployeeactivityBindingSource
             ' 
@@ -104,8 +104,8 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(EmployeeactivityBindingSource, ComponentModel.ISupportInitialize).EndInit()
             CType(DAR_RDS, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)

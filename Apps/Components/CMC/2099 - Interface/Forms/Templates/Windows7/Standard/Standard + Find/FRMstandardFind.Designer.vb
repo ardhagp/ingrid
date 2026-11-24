@@ -27,8 +27,9 @@
             TxtFind = New UI.Control.Txt(components)
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             PnlFind.SuspendLayout()
             SuspendLayout()
             ' 
@@ -36,13 +37,15 @@
             ' 
             SLFLogo.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
             ' 
-            ' SLFSubNamaForm
+            ' XOSubtitle
             ' 
-            SLFSubNamaForm.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
+            XOSubtitle.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
+            XOSubtitle.Size = New System.Drawing.Size(82, 25)
+            XOSubtitle.Text = "{Subtitle}"
             ' 
-            ' SLFNamaForm
+            ' XOFormTitle
             ' 
-            SLFNamaForm.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
+            XOFormTitle.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
             ' 
             ' pnl_
             ' 
@@ -51,14 +54,14 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(PnlFind)
-            SLFPanel.Location = New System.Drawing.Point(0, 110)
-            SLFPanel.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
-            SLFPanel.Size = New System.Drawing.Size(1307, 947)
+            XOPanel.Controls.Add(PnlFind)
+            XOPanel.Location = New System.Drawing.Point(0, 110)
+            XOPanel.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
+            XOPanel.Size = New System.Drawing.Size(1307, 947)
             ' 
-            ' SLFBackground
+            ' XOLogoBackground
             ' 
-            SLFBackground.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
+            XOLogoBackground.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
             ' 
             ' PnlFind
             ' 
@@ -144,12 +147,12 @@
             KeyPreview = True
             Margin = New System.Windows.Forms.Padding(13, 23, 13, 23)
             Name = "FRMstandardFind"
-            Text = "Nama Form"
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             PnlFind.ResumeLayout(False)
             PnlFind.PerformLayout()
             ResumeLayout(False)

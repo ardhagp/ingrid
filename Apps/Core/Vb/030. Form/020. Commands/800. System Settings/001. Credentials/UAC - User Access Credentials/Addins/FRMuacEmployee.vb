@@ -19,7 +19,7 @@
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
-            CMDuac.Addins.Browse.Employee.DisplayData(varDataProperties, DgnAddinEmployee, SLFStatus, TxtFind, forcerefresh)
+            CMDuac.Addins.Browse.Employee.DisplayData(varDataProperties, DgnAddinEmployee, XOStatus, TxtFind, forcerefresh)
         End Sub
 
 #End Region

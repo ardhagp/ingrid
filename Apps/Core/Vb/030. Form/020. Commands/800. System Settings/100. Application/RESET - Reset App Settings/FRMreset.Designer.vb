@@ -31,8 +31,8 @@
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' PnlBottomButton
@@ -50,15 +50,15 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(BtnRun)
-            SLFPanel.Controls.Add(Txt_Confirmation)
-            SLFPanel.Controls.Add(LblNotification)
-            SLFPanel.Margin = New Padding(7, 10, 7, 10)
-            SLFPanel.Size = New Size(1143, 624)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(LblNotification, 0)
-            SLFPanel.Controls.SetChildIndex(Txt_Confirmation, 0)
-            SLFPanel.Controls.SetChildIndex(BtnRun, 0)
+            XOPanel.Controls.Add(BtnRun)
+            XOPanel.Controls.Add(Txt_Confirmation)
+            XOPanel.Controls.Add(LblNotification)
+            XOPanel.Margin = New Padding(7, 10, 7, 10)
+            XOPanel.Size = New Size(1143, 624)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.SetChildIndex(LblNotification, 0)
+            XOPanel.Controls.SetChildIndex(Txt_Confirmation, 0)
+            XOPanel.Controls.SetChildIndex(BtnRun, 0)
             ' 
             ' LblNotification
             ' 
@@ -172,9 +172,9 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            SLFPanel.PerformLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            XOPanel.PerformLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub

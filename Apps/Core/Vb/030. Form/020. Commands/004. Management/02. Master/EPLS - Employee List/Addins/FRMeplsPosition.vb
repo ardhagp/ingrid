@@ -19,7 +19,7 @@
                 varDataProperties.EmployeePositionIsForceRefresh = False
             End If
 
-            CMDepls.Addins.Browse.Position.DisplayData(varDataProperties, DgnAddinPosition, SLFStatus, Bnav)
+            CMDepls.Addins.Browse.Position.DisplayData(varDataProperties, DgnAddinPosition, XOStatus, Bnav)
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>

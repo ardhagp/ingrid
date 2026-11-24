@@ -80,7 +80,7 @@ Namespace UI.Canvas
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnPOST)
             varDataProperties.EmployeePositionIsForceRefresh = forcerefresh
-            CMDpost.View.DisplayData(varDataProperties, DgnPOST, SLFStatus, TxtFind, Bnav)
+            CMDpost.View.DisplayData(varDataProperties, DgnPOST, XOStatus, TxtFind, Bnav)
         End Sub
 
         ''' <summary>

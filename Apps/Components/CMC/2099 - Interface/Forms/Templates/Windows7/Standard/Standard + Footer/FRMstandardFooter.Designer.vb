@@ -25,8 +25,9 @@
             imgLine = New System.Windows.Forms.PictureBox()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             PnlBottomButton.SuspendLayout()
             CType(imgLine, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
@@ -35,13 +36,13 @@
             ' 
             SLFLogo.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
             ' 
-            ' SLFSubNamaForm
+            ' XOSubtitle
             ' 
-            SLFSubNamaForm.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
+            XOSubtitle.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
             ' 
-            ' SLFNamaForm
+            ' XOFormTitle
             ' 
-            SLFNamaForm.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
+            XOFormTitle.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
             ' 
             ' pnl_
             ' 
@@ -50,15 +51,15 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.AutoScroll = False
-            SLFPanel.Controls.Add(PnlBottomButton)
-            SLFPanel.Location = New System.Drawing.Point(0, 110)
-            SLFPanel.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
-            SLFPanel.Size = New System.Drawing.Size(1307, 947)
+            XOPanel.AutoScroll = False
+            XOPanel.Controls.Add(PnlBottomButton)
+            XOPanel.Location = New System.Drawing.Point(0, 110)
+            XOPanel.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
+            XOPanel.Size = New System.Drawing.Size(1307, 947)
             ' 
-            ' SLFBackground
+            ' XOLogoBackground
             ' 
-            SLFBackground.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
+            XOLogoBackground.Margin = New System.Windows.Forms.Padding(8, 12, 8, 12)
             ' 
             ' PnlBottomButton
             ' 
@@ -90,12 +91,12 @@
             Margin = New System.Windows.Forms.Padding(13, 23, 13, 23)
             Name = "FRMstandardFooter"
             ShowInTaskbar = False
-            Text = "Nama Form"
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
+            CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             PnlBottomButton.ResumeLayout(False)
             CType(imgLine, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)

@@ -18,7 +18,7 @@ Namespace UI.Canvas
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnCDIN)
             varDataProperties.DepartmentIsForceRefresh = forcerefresh
-            LibSQL.CMDcdin.View.DisplayData(varDataProperties, DgnCDIN, SLFStatus, TxtFind, Bnav)
+            LibSQL.CMDcdin.View.DisplayData(varDataProperties, DgnCDIN, XOStatus, TxtFind, Bnav)
         End Sub
 
         ''' <summary>

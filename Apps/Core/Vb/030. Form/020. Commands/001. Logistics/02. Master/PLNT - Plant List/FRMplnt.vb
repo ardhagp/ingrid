@@ -13,7 +13,7 @@ Namespace UI.Canvas
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnPLNT)
             varDataProperties.PlantIsForceRefresh = forcerefresh
-            CMDplnt.View.DisplayData(varDataProperties, DgnPLNT, SLFStatus, TxtFind)
+            CMDplnt.View.DisplayData(varDataProperties, DgnPLNT, XOStatus, TxtFind)
         End Sub
 
         ''' <summary>

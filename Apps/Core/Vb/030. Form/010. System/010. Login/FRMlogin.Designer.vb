@@ -32,8 +32,8 @@
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' PnlBottomButton
@@ -53,17 +53,17 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(Lbl2)
-            SLFPanel.Controls.Add(Lbl1)
-            SLFPanel.Controls.Add(TxtPassword)
-            SLFPanel.Controls.Add(TxtUsername)
-            SLFPanel.Margin = New Padding(7, 5, 7, 5)
-            SLFPanel.Size = New Size(630, 356)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(TxtUsername, 0)
-            SLFPanel.Controls.SetChildIndex(TxtPassword, 0)
-            SLFPanel.Controls.SetChildIndex(Lbl1, 0)
-            SLFPanel.Controls.SetChildIndex(Lbl2, 0)
+            XOPanel.Controls.Add(Lbl2)
+            XOPanel.Controls.Add(Lbl1)
+            XOPanel.Controls.Add(TxtPassword)
+            XOPanel.Controls.Add(TxtUsername)
+            XOPanel.Margin = New Padding(7, 5, 7, 5)
+            XOPanel.Size = New Size(630, 356)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.SetChildIndex(TxtUsername, 0)
+            XOPanel.Controls.SetChildIndex(TxtPassword, 0)
+            XOPanel.Controls.SetChildIndex(Lbl1, 0)
+            XOPanel.Controls.SetChildIndex(Lbl2, 0)
             ' 
             ' BtnLogin
             ' 
@@ -220,9 +220,9 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            SLFPanel.PerformLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            XOPanel.PerformLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub

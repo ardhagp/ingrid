@@ -79,8 +79,8 @@
             PnlFind.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             TbctlAccountGroup.SuspendLayout()
             tpAssets.SuspendLayout()
             CType(DgnACGRAssets, ComponentModel.ISupportInitialize).BeginInit()
@@ -120,10 +120,10 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(TbctlAccountGroup)
-            SLFPanel.Size = New Size(1307, 952)
-            SLFPanel.Controls.SetChildIndex(PnlFind, 0)
-            SLFPanel.Controls.SetChildIndex(TbctlAccountGroup, 0)
+            XOPanel.Controls.Add(TbctlAccountGroup)
+            XOPanel.Size = New Size(1307, 952)
+            XOPanel.Controls.SetChildIndex(PnlFind, 0)
+            XOPanel.Controls.SetChildIndex(TbctlAccountGroup, 0)
             ' 
             ' CboCompany
             ' 
@@ -714,8 +714,8 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             TbctlAccountGroup.ResumeLayout(False)
             tpAssets.ResumeLayout(False)
             CType(DgnACGRAssets, ComponentModel.ISupportInitialize).EndInit()

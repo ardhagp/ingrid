@@ -39,8 +39,8 @@
             PnlBottomButton.SuspendLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).BeginInit()
             pnl_.SuspendLayout()
-            SLFPanel.SuspendLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).BeginInit()
+            XOPanel.SuspendLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).BeginInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).BeginInit()
             Pnl1.SuspendLayout()
             CType(DgnAddinEmploymentType, ComponentModel.ISupportInitialize).BeginInit()
@@ -63,14 +63,14 @@
             ' 
             ' SLFPanel
             ' 
-            SLFPanel.Controls.Add(Bnav)
-            SLFPanel.Controls.Add(DgnAddinEmploymentType)
-            SLFPanel.Controls.Add(Pnl1)
-            SLFPanel.Size = New Size(1095, 789)
-            SLFPanel.Controls.SetChildIndex(PnlBottomButton, 0)
-            SLFPanel.Controls.SetChildIndex(Pnl1, 0)
-            SLFPanel.Controls.SetChildIndex(DgnAddinEmploymentType, 0)
-            SLFPanel.Controls.SetChildIndex(Bnav, 0)
+            XOPanel.Controls.Add(Bnav)
+            XOPanel.Controls.Add(DgnAddinEmploymentType)
+            XOPanel.Controls.Add(Pnl1)
+            XOPanel.Size = New Size(1095, 789)
+            XOPanel.Controls.SetChildIndex(PnlBottomButton, 0)
+            XOPanel.Controls.SetChildIndex(Pnl1, 0)
+            XOPanel.Controls.SetChildIndex(DgnAddinEmploymentType, 0)
+            XOPanel.Controls.SetChildIndex(Bnav, 0)
             ' 
             ' Pnl1
             ' 
@@ -304,9 +304,9 @@
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
             pnl_.PerformLayout()
-            SLFPanel.ResumeLayout(False)
-            SLFPanel.PerformLayout()
-            CType(SLFBackground, ComponentModel.ISupportInitialize).EndInit()
+            XOPanel.ResumeLayout(False)
+            XOPanel.PerformLayout()
+            CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
             Pnl1.ResumeLayout(False)
             Pnl1.PerformLayout()

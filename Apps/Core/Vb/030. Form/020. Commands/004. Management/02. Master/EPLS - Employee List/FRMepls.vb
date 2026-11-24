@@ -90,7 +90,7 @@
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnEPLS)
             varDataProperties.EmployeeIsForceRefresh = forcerefresh
-            CMDepls.View.DisplayData(varDataProperties, DgnEPLS, SLFStatus, TxtFind, Bnav)
+            CMDepls.View.DisplayData(varDataProperties, DgnEPLS, XOStatus, TxtFind, Bnav)
         End Sub
 
         ''' <summary>

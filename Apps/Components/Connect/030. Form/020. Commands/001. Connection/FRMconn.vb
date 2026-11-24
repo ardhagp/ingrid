@@ -40,7 +40,7 @@
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub GetData(Optional forcerefresh As Boolean = False)
             DblBuffer(DgnConnection) ' Enable double buffering to reduce flickering
-            CMDconn.View.DisplayData(DgnConnection, SLFStatus, TxtFind, varDataset, forcerefresh, Bnav)
+            CMDconn.View.DisplayData(DgnConnection, XOStatus, TxtFind, varDataset, forcerefresh, Bnav)
         End Sub
 
         ''' <summary>
@@ -110,7 +110,7 @@
             varDataProperties.ConnectionId = "-1"
             FRMconn_editor = New FRMconnEditor
             Display(FRMconn_editor, UI.Resource.ImageLibrary.EDIT_ICON, "INGRID - CONNECTION SETTINGS", "Add New Record", "Add new connection", True)
-            SLFStatus.Text = String.Empty
+            XOStatus.Text = String.Empty
         End Sub
 
         ''' <summary>
@@ -127,7 +127,7 @@
                 FRMconn_editor = New FRMconnEditor
                 Display(FRMconn_editor, UI.Resource.ImageLibrary.EDIT_ICON, "INGRID - CONNECTION SETTINGS", "Update Record", "Update connection", True)
             End If
-            SLFStatus.Text = String.Empty
+            XOStatus.Text = String.Empty
         End Sub
 
         ''' <summary>
@@ -159,9 +159,9 @@
                     If Decision("INGRID - CONNECTION SETTINGS", Convert.ToString(varMessage), LibApp.Ingrid.Global.PopupType.Delete, "", CMCv.UI.Canvas.FRMdialogbox.MessageIcon.Question, CMCv.UI.Canvas.FRMdialogbox.MessageTypes.YesNo) = System.Windows.Forms.DialogResult.Yes Then
                         If (CMDconn.View.DeleteData(Convert.ToString(varDataProperties.ConnectionId))) Then
                             Call GetData(True)
-                            SLFStatus.Text = "Success"
+                            XOStatus.Text = "Success"
                         Else
-                            SLFStatus.Text = "Delete failed"
+                            XOStatus.Text = "Delete failed"
                         End If
                     End If
                 End With
