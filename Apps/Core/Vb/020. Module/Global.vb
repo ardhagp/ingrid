@@ -321,7 +321,8 @@
                     Return
                 End If
 
-                If formname.ishandlecreated Then
+                If formname.IsHandleCreated Then
+                    formname.WindowState = FormWindowState.Maximized
                     formname.Focus()
                 ElseIf parentframe IsNot Nothing Then
                     formname.Visible = False

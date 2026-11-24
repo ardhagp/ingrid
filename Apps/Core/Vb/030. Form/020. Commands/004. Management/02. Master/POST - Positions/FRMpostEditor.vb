@@ -188,7 +188,7 @@
                     TxtPositionName.Clear()
                     TxtPositionDescription.Clear()
                 Else
-                    'Call LoadData()
+                    Call LoadData()
                 End If
             End If
         End Sub
