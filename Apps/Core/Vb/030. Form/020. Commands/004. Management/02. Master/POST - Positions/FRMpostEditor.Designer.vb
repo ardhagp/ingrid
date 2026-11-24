@@ -58,12 +58,20 @@
             PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
             PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
             ' 
+            ' XOSubtitle
+            ' 
+            XOSubtitle.Size = New Size(0, 25)
+            ' 
+            ' XOFormTitle
+            ' 
+            XOFormTitle.Size = New Size(0, 48)
+            ' 
             ' pnl_
             ' 
             pnl_.Margin = New Padding(7, 5, 7, 5)
             pnl_.Size = New Size(824, 110)
             ' 
-            ' SLFPanel
+            ' XOPanel
             ' 
             XOPanel.Controls.Add(TbxPosition)
             XOPanel.Margin = New Padding(7, 5, 7, 5)
@@ -250,6 +258,7 @@
             TxtPositionDescription.XOIsPlaceholder = False
             TxtPositionDescription.XOIsReplaceEmptyString = False
             TxtPositionDescription.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtPositionDescription.XOLinkedLabel = Nothing
             TxtPositionDescription.XOMandatoryBgColor = Color.LightPink
             TxtPositionDescription.XOMandatoryBgColorDefault = Color.White
             TxtPositionDescription.XOMandatoryMessage = Nothing
@@ -280,6 +289,7 @@
             TxtPositionName.XOIsPlaceholder = False
             TxtPositionName.XOIsReplaceEmptyString = False
             TxtPositionName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
+            TxtPositionName.XOLinkedLabel = Nothing
             TxtPositionName.XOMandatoryBgColor = Color.LightPink
             TxtPositionName.XOMandatoryBgColorDefault = Color.White
             TxtPositionName.XOMandatoryMessage = Nothing
@@ -336,6 +346,7 @@
             TxtPositionCode.XOIsPlaceholder = False
             TxtPositionCode.XOIsReplaceEmptyString = False
             TxtPositionCode.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
+            TxtPositionCode.XOLinkedLabel = Nothing
             TxtPositionCode.XOMandatoryBgColor = Color.LightPink
             TxtPositionCode.XOMandatoryBgColorDefault = Color.White
             TxtPositionCode.XOMandatoryMessage = Nothing
@@ -355,11 +366,11 @@
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMpostEditor"
             XOModuleCode = "POST"
+            XOWikiUrl = "https://github.com/ardhagp/ingrid/wiki/05.01.05-%E2%80%90-%5BPOST%5D-Position#editor"
             PnlBottomButton.ResumeLayout(False)
             PnlBottomButton.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
-            pnl_.PerformLayout()
             XOPanel.ResumeLayout(False)
             CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
             CType(XOLogo, ComponentModel.ISupportInitialize).EndInit()
