@@ -58,14 +58,6 @@
             PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
             PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
             ' 
-            ' XOSubtitle
-            ' 
-            XOSubtitle.Size = New Size(0, 25)
-            ' 
-            ' XOFormTitle
-            ' 
-            XOFormTitle.Size = New Size(0, 48)
-            ' 
             ' pnl_
             ' 
             pnl_.Margin = New Padding(7, 5, 7, 5)

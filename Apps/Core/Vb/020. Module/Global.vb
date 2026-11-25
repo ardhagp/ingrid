@@ -216,56 +216,62 @@
         ''' This method is used to display a standard form with optional parameters for form image, window name, form title, form subtitle, dialog mode, and parent frame. It sets the properties of the form and handles its display based on the provided parameters.
         ''' </summary>
         ''' <param name="formname">The standard form to be displayed.</param>
-        ''' <param name="formimage">The image to be displayed on the form.</param>
-        ''' <param name="windowname">The name of the window.</param>
-        ''' <param name="formtitle">The title of the form.</param>
-        ''' <param name="formsubtitle">The subtitle of the form.</param>
-        ''' <param name="isdialog">Indicates whether the form should be displayed as a dialog.</param>
         ''' <param name="parentframe">The parent form for the form to be displayed.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Public Sub Display(formname As CMCv.UI.Canvas.FRMstandard,
-                       Optional parentframe As System.Windows.Forms.Form = Nothing, Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing)
+                       Optional parentframe As System.Windows.Forms.Form = Nothing,
+                           Optional dataproperties As LibApp.Ingrid.Global.Properties = Nothing)
             Try
-                formname.Text = dataproperties.IngridWindowName.Trim
-                formname.XOFormTitle.Text = dataproperties.IngridFormTitle.Trim
+                If formname Is Nothing Then
+                    Throw New ArgumentNullException(NameOf(formname), "Form name cannot be null.")
+                End If
+
+                formname.Text = If(dataproperties.IngridWindowName, String.Empty).Trim
+                formname.XOFormTitle.Text = If(dataproperties.IngridFormTitle, String.Empty).Trim
+                formname.XOSubtitle.Text = If(dataproperties.IngridFormSubtitle, String.Empty).Trim
+
+                ' Retrieve image from properties if any
                 If dataproperties.IngridFormImage IsNot Nothing Then
                     formname.SLFLogo.Image = dataproperties.IngridFormImage
                 End If
-                formname.XOSubtitle.Text = dataproperties.IngridFormSubtitle.Trim
-                If Not (dataproperties.IngridFormIsDialog) Then
-                    If formname.IsHandleCreated Then
-                        formname.Focus()
-                    Else
-                        If parentframe IsNot Nothing Then
-                            formname.Visible = False
-                            formname.WindowState = FormWindowState.Maximized
 
-                            ' Activate MDI if device is desktop
-                            If varDevice = CMCv.Device.DeviceFormFactor.Desktop Then
-                                formname.MdiParent = parentframe
-                                formname.Visible = True
-                                formname.Show()
-                            Else
-                                formname.Visible = True
-                                formname.ShowDialog()
-                            End If
-                        Else
-                            If varDevice = CMCv.Device.DeviceFormFactor.Desktop Then
-                                formname.Show()
-                            Else
-                                formname.ShowDialog()
-                            End If
-                        End If
-                    End If
-                    dataproperties.IngridFormImage = Nothing
-                    dataproperties.IngridFormIsDialog = False
-                    dataproperties.IngridFormSubtitle = Nothing
-                    dataproperties.IngridFormTitle = Nothing
-                    dataproperties.IngridWindowName = Nothing
-                Else
+
+                If dataproperties.IngridFormIsDialog Then
                     formname.ShowDialog()
                     formname.Dispose()
+                    Return
                 End If
+
+                If formname.IsHandleCreated Then
+                    formname.WindowState = FormWindowState.Maximized
+                    formname.Focus()
+                ElseIf parentframe IsNot Nothing Then
+                    formname.Visible = False
+                    formname.WindowState = FormWindowState.Maximized
+                    ' Activate MDI if device is desktop
+                    If varDevice = CMCv.Device.DeviceFormFactor.Desktop Then
+                        formname.MdiParent = parentframe
+                        formname.Visible = True
+                        formname.Show()
+                    Else
+                        formname.Visible = True
+                        formname.ShowDialog()
+                    End If
+                Else
+                    If varDevice = CMCv.Device.DeviceFormFactor.Desktop Then
+                        formname.Show()
+                    Else
+                        formname.ShowDialog()
+                    End If
+                End If
+
+                With dataproperties
+                    .IngridFormImage = Nothing
+                    .IngridFormIsDialog = False
+                    .IngridFormSubtitle = Nothing
+                    .IngridFormTitle = Nothing
+                    .IngridWindowName = Nothing
+                End With
             Catch ex As Exception
                 With proLog
                     .AppVersion = GetAppVersion()
@@ -291,11 +297,6 @@
         ''' This method is used to display a standard footer form with optional parameters for form image, window name, form title, form subtitle, dialog mode, and parent frame. It sets the properties of the form and handles its display based on the provided parameters.
         ''' </summary>
         ''' <param name="formname">The form to be displayed.</param>
-        ''' <param name="formimage">The image to be displayed on the form.</param>
-        ''' <param name="windowname">The name of the window.</param>
-        ''' <param name="formtitle">The title of the form.</param>
-        ''' <param name="formsubtitle">The subtitle of the form.</param>
-        ''' <param name="isdialog">Indicates whether the form should be displayed as a dialog.</param>
         ''' <param name="parentframe">The parent frame for the form, if any.</param>
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         <System.Diagnostics.CodeAnalysis.SuppressMessage("Maintainability", "S3776", Justification:="Function name already standard")>
@@ -321,7 +322,8 @@
                     Return
                 End If
 
-                If formname.ishandlecreated Then
+                If formname.IsHandleCreated Then
+                    formname.WindowState = FormWindowState.Maximized
                     formname.Focus()
                 ElseIf parentframe IsNot Nothing Then
                     formname.Visible = False
