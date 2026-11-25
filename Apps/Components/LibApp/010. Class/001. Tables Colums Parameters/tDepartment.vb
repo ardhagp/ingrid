@@ -10,6 +10,7 @@
         Public ReadOnly C_DepartmentClient As String = "department_client"
         Public ReadOnly C_DepartmentDateLastModified As String = "department_datelastmodified"
         Public ReadOnly P_DepartmentId As String = "@DepartmentId"
+        Public ReadOnly P_DepartmentCompany As String = "@DepartmentCompany"
         Public ReadOnly P_DepartmentCode As String = "@DepartmentCode"
         Public ReadOnly P_DepartmentName As String = "@DepartmentName"
         Public ReadOnly P_DepartmentDescription As String = "@DepartmentDescription"

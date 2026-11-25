@@ -58,6 +58,14 @@
             PnlBottomButton.Controls.SetChildIndex(BtnCancel, 0)
             PnlBottomButton.Controls.SetChildIndex(ChkAddNew, 0)
             ' 
+            ' XOSubtitle
+            ' 
+            XOSubtitle.Size = New Size(693, 25)
+            ' 
+            ' XOFormTitle
+            ' 
+            XOFormTitle.Size = New Size(722, 48)
+            ' 
             ' pnl_
             ' 
             pnl_.Margin = New Padding(7, 5, 7, 5)
@@ -249,6 +257,7 @@
             TxtPositionDescription.XOIsMandatory = False
             TxtPositionDescription.XOIsPlaceholder = False
             TxtPositionDescription.XOIsReplaceEmptyString = False
+            TxtPositionDescription.XOIsSearch = False
             TxtPositionDescription.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtPositionDescription.XOLinkedLabel = Nothing
             TxtPositionDescription.XOMandatoryBgColor = Color.LightPink
@@ -280,6 +289,7 @@
             TxtPositionName.XOIsMandatory = True
             TxtPositionName.XOIsPlaceholder = False
             TxtPositionName.XOIsReplaceEmptyString = False
+            TxtPositionName.XOIsSearch = False
             TxtPositionName.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.Normal
             TxtPositionName.XOLinkedLabel = Nothing
             TxtPositionName.XOMandatoryBgColor = Color.LightPink
@@ -337,6 +347,7 @@
             TxtPositionCode.XOIsMandatory = True
             TxtPositionCode.XOIsPlaceholder = False
             TxtPositionCode.XOIsReplaceEmptyString = False
+            TxtPositionCode.XOIsSearch = False
             TxtPositionCode.XOLetterCase = CMCv.UI.Control.ControlCodeBase.EnumLetterCase.UPPERCASE
             TxtPositionCode.XOLinkedLabel = Nothing
             TxtPositionCode.XOMandatoryBgColor = Color.LightPink
@@ -358,7 +369,7 @@
             Margin = New Padding(10, 5, 10, 5)
             Name = "FRMpostEditor"
             XOModuleCode = "POST"
-            XOWikiUrl = "https://github.com/ardhagp/ingrid/wiki/05.01.05-%E2%80%90-%5BPOST%5D-Position#editor"
+            XOWikiUrl = "https://github.com/ardhagp/ingrid/wiki/05.04.03-%E2%80%90-%5BPOST%5D-Position#editor"
             PnlBottomButton.ResumeLayout(False)
             PnlBottomButton.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()

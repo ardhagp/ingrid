@@ -51,6 +51,11 @@
             ' TxtFind
             ' 
             TxtFind.Margin = New Padding(7, 5, 7, 5)
+            TxtFind.XOIsSearch = True
+            ' 
+            ' XOSubtitle
+            ' 
+            XOSubtitle.Size = New Size(1176, 25)
             ' 
             ' XOPanel
             ' 
@@ -65,7 +70,7 @@
             ' 
             DgnCCIN.AllowUserToAddRows = False
             DgnCCIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(205), CByte(217), CByte(166))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(232), CByte(204), CByte(143))
             DgnCCIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnCCIN.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnCCIN.BorderStyle = BorderStyle.None

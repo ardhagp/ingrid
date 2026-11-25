@@ -54,6 +54,10 @@
             ' 
             TxtFind.Margin = New Padding(7, 5, 7, 5)
             ' 
+            ' XOSubtitle
+            ' 
+            XOSubtitle.Size = New Size(1176, 25)
+            ' 
             ' XOPanel
             ' 
             XOPanel.Controls.Add(Bnav)
@@ -67,7 +71,7 @@
             ' 
             DgnPOST.AllowUserToAddRows = False
             DgnPOST.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(222), CByte(216), CByte(95))
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(208), CByte(224), CByte(111))
             DgnPOST.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             DgnPOST.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnPOST.BorderStyle = BorderStyle.None
@@ -212,7 +216,7 @@
             ShowInTaskbar = False
             WindowState = FormWindowState.Maximized
             XOModuleCode = "POST"
-            XOWikiUrl = "https://github.com/ardhagp/ingrid/wiki/05.01.05-%E2%80%90-%5BPOST%5D-Position"
+            XOWikiUrl = "https://github.com/ardhagp/ingrid/wiki/05.04.03-%E2%80%90-%5BPOST%5D-Position#display"
             XOWindowAlwaysMaximized = True
             PnlFind.ResumeLayout(False)
             PnlFind.PerformLayout()

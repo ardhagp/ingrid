@@ -11,7 +11,12 @@
                 If (find.XOSqlText = String.Empty) OrElse (dataproperties.DepartmentIsForceRefresh) Then
                     varWhere += $"{tDepartment.C_DepartmentClient} = {tIngrid.P_ClientId}"
                 Else
-                    varWhere += $"{tDepartment.C_DepartmentClient} = {tIngrid.P_ClientId} and (c.company_code like '%{find.XOSqlText}%') or (d.department_code like '%{find.XOSqlText}%') or (d.department_name like '%{find.XOSqlText}%') or (d.department_description like '%{find.XOSqlText}%')"
+                    SetValue(dataproperties.AllParameters, tCompany.P_CompanyCode, find.XOSqlText)
+                    SetValue(dataproperties.AllParameters, tDepartment.P_DepartmentCode, find.XOSqlText)
+                    SetValue(dataproperties.AllParameters, tDepartment.P_DepartmentName, find.XOSqlText)
+                    SetValue(dataproperties.AllParameters, tDepartment.P_DepartmentDescription, find.XOSqlText)
+                    varWhere += $"({tDepartment.C_DepartmentClient} = {tIngrid.P_ClientId}) and " &
+                                $"(({tCompany.S}.{tCompany.C_CompanyCode} like '%{tCompany.P_CompanyCode}%') or ({tDepartment.S}.{tDepartment.C_DepartmentCode} like '%{tDepartment.P_DepartmentCode}%') or ({tDepartment.S}.{tDepartment.C_DepartmentName} like '%{tDepartment.P_DepartmentName}%') or ({tDepartment.S}.{tDepartment.C_DepartmentDescription} like '%{tDepartment.P_DepartmentDescription}%'))"
                 End If
 
                 varDatabaseRequestMssql2008(0).Query = $"select d.department_id, " &
@@ -31,7 +36,15 @@
                 If (find.XOSqlText = String.Empty) OrElse (dataproperties.DepartmentIsForceRefresh) Then
                     varWhere += $"({tDepartment.C_DepartmentClient} = {tIngrid.P_ClientId})"
                 Else
-                    varWhere += $"({tDepartment.C_DepartmentClient} = {tIngrid.P_ClientId}) and (c.company_code Like '%{find.XOSqlText}%') or (d.department_code like '%{find.XOSqlText}%') or (d.department_name like '%{find.XOSqlText}%') or (d.department_description like '%{find.XOSqlText}%')"
+                    SetValue(dataproperties.AllParameters, tCompany.P_CompanyCode, find.XOSqlText)
+                    SetValue(dataproperties.AllParameters, tDepartment.P_DepartmentCode, find.XOSqlText)
+                    SetValue(dataproperties.AllParameters, tDepartment.P_DepartmentName, find.XOSqlText)
+                    SetValue(dataproperties.AllParameters, tDepartment.P_DepartmentDescription, find.XOSqlText)
+                    varWhere += $"({tDepartment.C_DepartmentClient} = {tIngrid.P_ClientId}) and ( " &
+                                $"({tCompany.S}.{tCompany.C_CompanyCode} Like {tCompany.P_CompanyCode}) or " &
+                                $"({tDepartment.S}.{tDepartment.C_DepartmentCode} like {tDepartment.P_DepartmentCode}) or " &
+                                $"({tDepartment.S}.{tDepartment.C_DepartmentName} like {tDepartment.P_DepartmentName}) or " &
+                                $"({tDepartment.S}.{tDepartment.C_DepartmentDescription} like {tDepartment.P_DepartmentDescription}))"
                 End If
 
                 varDatabaseRequestMysql(0).Query = $"select {tDepartment.S}.{tDepartment.C_DepartmentId}, " &

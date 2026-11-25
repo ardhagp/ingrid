@@ -77,7 +77,6 @@ Namespace CMDpost
         <SupportedOSPlatform("windows")>
         Public Shared Function DeleteData(dataproperties As LibApp.Ingrid.Global.Properties, datasetname As System.Data.DataSet) As Boolean
             Dim varSuccess As Boolean
-            varSuccess = False
 
             If CheckGranularity(dataproperties, datasetname) Then
                 Return False
@@ -109,12 +108,15 @@ Namespace CMDpost
                 varDatabaseRequestMssql2008(1).Dropdown = company
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1), "TCompany")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(1).Query = "select c.company_id, concat(c.company_code, ' - ', c.company_name) as `company_name` from man_company c order by c.company_code"
+                varDatabaseRequestMysql(1).Query = $"select {tCompany.S}.{tCompany.C_CompanyId}, " &
+                                                   $"concat({tCompany.S}.{tCompany.C_CompanyCode}, ' - ', {tCompany.S}.{tCompany.C_CompanyName}) as `{tCompany.C_CompanyName}` " &
+                                                   $"from {tCompany.TableName} {tCompany.S} " &
+                                                   $"order by {tCompany.S}.{tCompany.C_CompanyCode}"
                 varDatabaseRequestMysql(1).Dropdown = company
                 varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "TCompany")
             End If
-            company.ValueMember = "company_id"
-            company.DisplayMember = "company_name"
+            company.ValueMember = $"{tCompany.C_CompanyId}"
+            company.DisplayMember = $"{tCompany.C_CompanyName}"
         End Sub
 
         <SupportedOSPlatform("windows")>
@@ -122,7 +124,8 @@ Namespace CMDpost
             Dim varDepartment As String = String.Empty
 
             If company.Items.Count <> 0 Then
-                varDepartment = company.SelectedValue.ToString
+                SetValue(dataproperties.AllParameters, tDepartment.P_DepartmentCompany, company.SelectedValue)
+                'varDepartment = company.SelectedValue.ToString
             End If
 
             If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then
@@ -131,13 +134,18 @@ Namespace CMDpost
                 varDatabaseRequestMssql2008(1).Dropdown = department
                 varDatabaseEngineMssql2008.GetDataTable(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(1), "Departement")
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(1).Query = $"select d.department_id, concat(d.department_code, ' - ', d.department_name) as `departement_code` from man_department d where d.department_company = '{varDepartment}' " &
-                                                   $"order by d.department_code"
+                varDatabaseRequestMysql(1).Query = $"select {tDepartment.S}.{tDepartment.C_DepartmentId}, " &
+                                                   $"concat({tDepartment.S}.{tDepartment.C_DepartmentCode}, " &
+                                                   $"' - ', {tDepartment.S}.{tDepartment.C_DepartmentName}) as `{tDepartment.C_DepartmentCode}` " &
+                                                   $"from {tDepartment.TableName} {tDepartment.S} " &
+                                                   $"where ({tDepartment.S}.{tDepartment.C_DepartmentClient} = {tIngrid.P_ClientId}) and " &
+                                                   $"({tDepartment.S}.{tDepartment.C_DepartmentCompany} = {tDepartment.P_DepartmentCompany})" &
+                                                   $"order by {tDepartment.S}.{tDepartment.C_DepartmentCode}"
                 varDatabaseRequestMysql(1).Dropdown = department
-                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "Departement")
+                varDatabaseEngineMysql.GetDataTable(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(1), "Departement", dataproperties.AllParameters)
             End If
-            department.ValueMember = "department_id"
-            department.DisplayMember = "departement_code"
+            department.ValueMember = $"{tDepartment.C_DepartmentId}"
+            department.DisplayMember = $"{tDepartment.C_DepartmentCode}"
         End Sub
 
         <SupportedOSPlatform("Windows")>
@@ -146,12 +154,20 @@ Namespace CMDpost
                 varDatabaseRequestMssql2008(0).Query = $"SELECT ps.position_id, d.department_company, ps.position_department, ps.position_code, ps.position_name, ps.position_description, ps.position_parent " &
                            $"FROM dbo.man_position ps inner join dbo.man_department d on d.department_id = ps.position_department " &
                            $"WHERE ps.position_id = @PositionId;"
-                datasetname = varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query, datasetname, "man_position")
+                datasetname = varDatabaseEngineMssql2008.FillDataset(dataproperties.ConnectionDatabaseName, varDatabaseRequestMssql2008(0).Query, datasetname, tPosition.TableName)
             ElseIf dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MYSQL Then
-                varDatabaseRequestMysql(0).Query = $"SELECT ps.position_id, d.department_company, ps.position_department, ps.position_code, ps.position_name, ps.position_description, ps.position_parent " &
-                           $"FROM man_position ps inner join man_department d on d.department_id = ps.position_department " &
-                           $"WHERE ps.position_id = @PositionId;"
-                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tManPosition, dataproperties.AllParameters)
+                varDatabaseRequestMysql(0).Query = $"select {tPosition.S}.{tPosition.C_PositionId}, " &
+                                                   $"{tDepartment.S}.{tDepartment.C_DepartmentCompany}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionDepartment}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionCode}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionName}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionDescription}, " &
+                                                   $"{tPosition.S}.{tPosition.C_PositionParent} " &
+                                                   $"from {tPosition.TableName} {tPosition.S} " &
+                                                   $"inner join {tDepartment.TableName} {tDepartment.S} " &
+                                                   $"on {tDepartment.S}.{tDepartment.C_DepartmentId} = {tPosition.S}.{tPosition.C_PositionDepartment} " &
+                                                   $"where {tPosition.S}.{tPosition.C_PositionId} = {tPosition.P_PositionId};"
+                datasetname = varDatabaseEngineMysql.FillDataSet(dataproperties, dataproperties.ConnectionDatabaseName, varDatabaseRequestMysql(0).Query, datasetname, tPosition.TableName, dataproperties.AllParameters)
             End If
         End Sub
 
@@ -183,7 +199,7 @@ Namespace CMDpost
 
         <SupportedOSPlatform("windows")>
         Public Shared Function PushData(dataproperties As LibApp.Ingrid.Global.Properties) As Boolean
-            Dim varSuccess As Boolean = False
+            Dim varSuccess As Boolean
 
             Try
                 If dataproperties.ConnectionDatabaseEngineE = LibApp.Ingrid.Global.DatabaseEngine.MSSQL Then

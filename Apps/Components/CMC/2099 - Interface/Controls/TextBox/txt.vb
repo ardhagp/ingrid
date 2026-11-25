@@ -270,6 +270,10 @@
                 varSqlSafeText = varSqlSafeText.ToLower(System.Globalization.CultureInfo.CurrentCulture)
             End If
 
+            If XOIsSearch Then
+                varSqlSafeText = varSqlSafeText.Replace("*", "%")
+            End If
+
             Return varSqlSafeText
         End Function
 
@@ -705,6 +709,16 @@
             End Get
             Set(value As UI.Control.ULbl)
                 varLinkedLabel = value
+            End Set
+        End Property
+
+        Private varIsSearch As Boolean
+        Public Property XOIsSearch As Boolean
+            Get
+                Return varIsSearch
+            End Get
+            Set(value As Boolean)
+                varIsSearch = value
             End Set
         End Property
     End Class

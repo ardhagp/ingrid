@@ -23,8 +23,17 @@
                 If (find.XOSqlText = String.Empty) OrElse (dataproperties.CompanyIsForceRefresh) Then
                     varWhere += $"({tCompany.S}.{tCompany.C_CompanyClient} = {tIngrid.P_ClientId})"
                 Else
-                    varWhere += $"({tCompany.S}.{tCompany.C_CompanyClient} = {tIngrid.P_ClientId}) and ({tCompany.S}.{tCompany.C_CompanyCode} ='{find.XOSqlText}') or ({tCompany.S}.{tCompany.C_CompanyName} like '%{find.XOSqlText}%') or ({tCompany.S}.{tCompany.C_CompanySearchTerm1} like '%{find.XOSqlText}%') or ({tCompany.S}.{tCompany.C_CompanySearchTerm2} like '%{find.XOSqlText}%') or ({tCompany.S}.{tCompany.C_CompanyDescription} " &
-                                $"like '%{find.XOSqlText}%')"
+                    SetValue(dataproperties.AllParameters, tCompany.P_CompanyCode, find.XOSqlText)
+                    SetValue(dataproperties.AllParameters, tCompany.P_CompanyName, find.XOSqlText)
+                    SetValue(dataproperties.AllParameters, tCompany.P_CompanySearchTerm1, find.XOSqlText)
+                    SetValue(dataproperties.AllParameters, tCompany.P_CompanySearchTerm2, find.XOSqlText)
+                    SetValue(dataproperties.AllParameters, tCompany.P_CompanyDescription, find.XOSqlText)
+                    varWhere += $"({tCompany.S}.{tCompany.C_CompanyClient} = {tIngrid.P_ClientId}) and ( " &
+                                $"({tCompany.S}.{tCompany.C_CompanyCode} like {tCompany.P_CompanyCode}) or " &
+                                $"({tCompany.S}.{tCompany.C_CompanyName} like {tCompany.P_CompanyName}) or " &
+                                $"({tCompany.S}.{tCompany.C_CompanySearchTerm1} like {tCompany.P_CompanySearchTerm1}) or " &
+                                $"({tCompany.S}.{tCompany.C_CompanySearchTerm2} like {tCompany.P_CompanySearchTerm2}) or " &
+                                $"({tCompany.S}.{tCompany.C_CompanyDescription} like {tCompany.P_CompanyDescription}))"
                 End If
                 varDatabaseRequestMysql(0).Query = $"select {tCompany.S}.{tCompany.C_CompanyId}, " &
                                                    $"{tCompany.S}.{tCompany.C_CompanyCode}, " &

@@ -25,12 +25,12 @@
             Dim MySettings1 As My.MySettings = New My.MySettings()
             Dim MySettings2 As My.MySettings = New My.MySettings()
             pnl_ = New UI.Control.Pnl(components)
+            XOSubtitle = New UI.Control.Lbl(components)
+            XOFormTitle = New UI.Control.Lbl(components)
             BtnHelp = New UI.Control.Btn(components)
             XOLogo = New UI.Control.Pbx(components)
             SLFLogo = New UI.Control.Pbx(components)
             XOLogoBackground = New UI.Control.Pbx(components)
-            XOFormTitle = New UI.Control.Lbl(components)
-            XOSubtitle = New UI.Control.Lbl(components)
             XOStatus = New UI.Control.Stt(components)
             SLFStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
             XOPanel = New UI.Control.Pnl(components)
@@ -47,18 +47,47 @@
             pnl_.AutoSize = True
             pnl_.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
             pnl_.BackColor = Drawing.Color.Black
+            pnl_.Controls.Add(XOSubtitle)
+            pnl_.Controls.Add(XOFormTitle)
             pnl_.Controls.Add(BtnHelp)
             pnl_.Controls.Add(XOLogo)
             pnl_.Controls.Add(SLFLogo)
             pnl_.Controls.Add(XOLogoBackground)
-            pnl_.Controls.Add(XOFormTitle)
-            pnl_.Controls.Add(XOSubtitle)
             pnl_.Dock = System.Windows.Forms.DockStyle.Top
             pnl_.Location = New System.Drawing.Point(0, 0)
             pnl_.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
             pnl_.Name = "pnl_"
             pnl_.Size = New System.Drawing.Size(1307, 104)
             pnl_.TabIndex = 999
+            ' 
+            ' XOSubtitle
+            ' 
+            XOSubtitle.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+            XOSubtitle.BackColor = Drawing.Color.Transparent
+            XOSubtitle.Font = New System.Drawing.Font("Segoe UI", 9.0F)
+            XOSubtitle.ForeColor = Drawing.Color.White
+            XOSubtitle.Location = New System.Drawing.Point(117, 58)
+            XOSubtitle.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+            XOSubtitle.Name = "XOSubtitle"
+            XOSubtitle.Size = New System.Drawing.Size(1176, 25)
+            XOSubtitle.TabIndex = 996
+            XOSubtitle.Text = "Sub Deskripsi Form"
+            XOSubtitle.XOCustomElipsis = False
+            ' 
+            ' XOFormTitle
+            ' 
+            XOFormTitle.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+            XOFormTitle.BackColor = Drawing.Color.Transparent
+            XOFormTitle.Font = New System.Drawing.Font("Segoe UI", 18.0F, Drawing.FontStyle.Bold)
+            XOFormTitle.ForeColor = Drawing.Color.White
+            XOFormTitle.Location = New System.Drawing.Point(88, 7)
+            XOFormTitle.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+            XOFormTitle.Name = "XOFormTitle"
+            XOFormTitle.Size = New System.Drawing.Size(1205, 48)
+            XOFormTitle.TabIndex = 997
+            XOFormTitle.Text = "{Form Title}"
+            XOFormTitle.TextAlign = Drawing.ContentAlignment.MiddleLeft
+            XOFormTitle.XOCustomElipsis = False
             ' 
             ' BtnHelp
             ' 
@@ -138,35 +167,6 @@
             XOLogoBackground.XOBorderColor = Drawing.Color.DodgerBlue
             XOLogoBackground.XOShowBorder = False
             ' 
-            ' XOFormTitle
-            ' 
-            XOFormTitle.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-            XOFormTitle.BackColor = Drawing.Color.Transparent
-            XOFormTitle.Font = New System.Drawing.Font("Segoe UI", 18.0F, Drawing.FontStyle.Bold)
-            XOFormTitle.ForeColor = Drawing.Color.White
-            XOFormTitle.Location = New System.Drawing.Point(88, 7)
-            XOFormTitle.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
-            XOFormTitle.Name = "XOFormTitle"
-            XOFormTitle.Size = New System.Drawing.Size(1136, 48)
-            XOFormTitle.TabIndex = 997
-            XOFormTitle.Text = "{Form Title}"
-            XOFormTitle.TextAlign = Drawing.ContentAlignment.MiddleLeft
-            XOFormTitle.XOCustomElipsis = False
-            ' 
-            ' XOSubtitle
-            ' 
-            XOSubtitle.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
-            XOSubtitle.BackColor = Drawing.Color.Transparent
-            XOSubtitle.Font = New System.Drawing.Font("Segoe UI", 9.0F)
-            XOSubtitle.ForeColor = Drawing.Color.White
-            XOSubtitle.Location = New System.Drawing.Point(117, 58)
-            XOSubtitle.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
-            XOSubtitle.Name = "XOSubtitle"
-            XOSubtitle.Size = New System.Drawing.Size(1107, 25)
-            XOSubtitle.TabIndex = 996
-            XOSubtitle.Text = "Sub Deskripsi Form"
-            XOSubtitle.XOCustomElipsis = False
-            ' 
             ' XOStatus
             ' 
             XOStatus.BackColor = Drawing.SystemColors.Control
@@ -204,7 +204,7 @@
             ' 
             ' FRMstandard
             ' 
-            AutoScaleDimensions = New System.Drawing.SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New System.Drawing.SizeF(10F, 25F)
             BackColor = Drawing.Color.FromArgb(CByte(11), CByte(28), CByte(45))
             ClientSize = New System.Drawing.Size(1307, 1079)
             Controls.Add(XOPanel)

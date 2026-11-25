@@ -1,4 +1,6 @@
-﻿Namespace UI.Canvas
+﻿Imports System.Windows.Forms
+
+Namespace UI.Canvas
     Public Class FRMstandard
         ' ----------------------------------------------------------
         ' Interfaces
@@ -66,6 +68,7 @@
                 Else
                     BtnHelp.Visible = False
                 End If
+                Call ResizeTitle()
             Catch ex As Exception
                 MsgBox(ex.ToString)
             Finally
@@ -83,17 +86,6 @@
             If Not SLFStatusLabel.IsDisposed Then
                 SLFStatusLabel.Text = ""
             End If
-        End Sub
-
-        ''' <summary>
-        ''' This event is triggered when the form's resizing operation ends. It adjusts the width of the XOFormTitle and XOSubtitle controls based on the width of the pnl_ panel, ensuring that they are properly sized after the form has been resized.
-        ''' </summary>
-        ''' <param name="sender"></param>
-        ''' <param name="e"></param>
-        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
-        Private Sub FRMstandard_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
-            XOFormTitle.Width = pnl_.Width - 111
-            XOSubtitle.Width = pnl_.Width - 134
         End Sub
 
         ''' <summary>
@@ -176,6 +168,17 @@
         End Sub
 
         <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub ResizeTitle()
+            If XOWikiUrl <> String.Empty Then
+                XOFormTitle.Width = pnl_.Width - 171 ' pnl_.width = 1307 ; XOFormTitle.widht = 1136
+                XOSubtitle.Width = pnl_.Width - 200 ' pnl_.width = 1307 ; XOSubtitle.widht = 1107
+            Else
+                XOFormTitle.Width = pnl_.Width - 102 ' pnl_.width = 1307 ; XOFormTitle.widht = 1205
+                XOSubtitle.Width = pnl_.Width - 131 ' pnl_.width = 1307 ; XOSubtitle.widht = 1176
+            End If
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
         Private Sub BtnHelp_Click(sender As Object, e As EventArgs) Handles BtnHelp.Click
             Try
                 ' Open Wiki or guide page for current module in default browser
@@ -183,6 +186,11 @@
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
             End Try
+        End Sub
+
+        <System.Runtime.Versioning.SupportedOSPlatform("windows")>
+        Private Sub FRMstandard_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+            Call ResizeTitle()
         End Sub
     End Class
 End Namespace

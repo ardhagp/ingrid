@@ -44,15 +44,20 @@
             ' 
             ' BtnClear
             ' 
-            BtnClear.FlatAppearance.BorderColor = Color.FromArgb(195, 0, 0)
+            BtnClear.FlatAppearance.BorderColor = Color.FromArgb(CByte(195), CByte(0), CByte(0))
             BtnClear.FlatAppearance.BorderSize = 2
-            BtnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 20, 20)
+            BtnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(20), CByte(20))
             ' 
             ' TxtFind
             ' 
             TxtFind.Margin = New Padding(7, 5, 7, 5)
+            TxtFind.XOIsSearch = True
             ' 
-            ' SLFPanel
+            ' XOSubtitle
+            ' 
+            XOSubtitle.Size = New Size(1176, 25)
+            ' 
+            ' XOPanel
             ' 
             XOPanel.Controls.Add(Bnav)
             XOPanel.Controls.Add(DgnCDIN)
@@ -65,15 +70,15 @@
             ' 
             DgnCDIN.AllowUserToAddRows = False
             DgnCDIN.AllowUserToDeleteRows = False
-            DataGridViewCellStyle1.BackColor = Color.FromArgb(238, 228, 159)
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(252), CByte(225), CByte(163))
             DgnCDIN.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-            DgnCDIN.BackgroundColor = Color.FromArgb(11, 28, 45)
+            DgnCDIN.BackgroundColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             DgnCDIN.BorderStyle = BorderStyle.None
             DgnCDIN.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
             DgnCDIN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.YellowGreen
-            DataGridViewCellStyle2.Font = New Font("Verdana", 8.0F)
+            DataGridViewCellStyle2.Font = New Font("Verdana", 8F)
             DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle2.SelectionBackColor = Color.YellowGreen
             DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -84,7 +89,7 @@
             DgnCDIN.Columns.AddRange(New DataGridViewColumn() {department_id, company_code, company_name, department_code, department_name, department_description})
             DgnCDIN.Dock = DockStyle.Fill
             DgnCDIN.EnableHeadersVisualStyles = False
-            DgnCDIN.Font = New Font("Verdana", 8.0F)
+            DgnCDIN.Font = New Font("Verdana", 8F)
             DgnCDIN.Location = New Point(0, 88)
             DgnCDIN.Margin = New Padding(6, 5, 6, 5)
             DgnCDIN.Name = "DgnCDIN"
@@ -92,7 +97,7 @@
             DgnCDIN.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
             DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle3.BackColor = Color.YellowGreen
-            DataGridViewCellStyle3.Font = New Font("Verdana", 8.0F)
+            DataGridViewCellStyle3.Font = New Font("Verdana", 8F)
             DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle3.SelectionBackColor = Color.Yellow
             DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -170,11 +175,11 @@
             ' Bnav
             ' 
             Bnav.AddNewItem = Nothing
-            Bnav.BackColor = Color.FromArgb(11, 28, 45)
+            Bnav.BackColor = Color.FromArgb(CByte(11), CByte(28), CByte(45))
             Bnav.CountItem = Nothing
             Bnav.DeleteItem = Nothing
             Bnav.Dock = DockStyle.Bottom
-            Bnav.Font = New Font("Verdana", 8.0F)
+            Bnav.Font = New Font("Verdana", 8F)
             Bnav.GripStyle = ToolStripGripStyle.Hidden
             Bnav.ImageScalingSize = New Size(24, 24)
             Bnav.Location = New Point(0, 913)
@@ -188,10 +193,12 @@
             Bnav.Stretch = True
             Bnav.TabIndex = 802
             Bnav.Text = "Bnav1"
+            Bnav.XOIsShowAddNewButton = False
+            Bnav.XOIsShowDeleteButton = False
             ' 
             ' FRMcdin
             ' 
-            AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+            AutoScaleDimensions = New SizeF(10F, 25F)
             ClientSize = New Size(1307, 1078)
             Margin = New Padding(10, 5, 10, 5)
             MdiChildrenMinimizedAnchorBottom = False
@@ -204,7 +211,6 @@
             PnlFind.PerformLayout()
             CType(SLFLogo, ComponentModel.ISupportInitialize).EndInit()
             pnl_.ResumeLayout(False)
-            pnl_.PerformLayout()
             XOPanel.ResumeLayout(False)
             XOPanel.PerformLayout()
             CType(XOLogoBackground, ComponentModel.ISupportInitialize).EndInit()
